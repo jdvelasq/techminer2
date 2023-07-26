@@ -1,10 +1,6 @@
-Modeling of Emerging Themes
+Modeling of Emerging Themes (Topic Model)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        :maxdepth: 1
 
 
-        
-        
 

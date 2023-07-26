@@ -1,6 +1,8 @@
-Clustering
+Clustering/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
-      coupling_matrix_list
-      coupling_network
+.. toctree::
+   clustering_by_coupling
+
+
+

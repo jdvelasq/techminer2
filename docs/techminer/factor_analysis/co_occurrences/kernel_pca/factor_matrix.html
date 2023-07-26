@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factor Matrix &mdash; TechMiner 2+ Jul 21, 2023 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Factor Clusters" href="factor_clusters.html" />
+    <link rel="prev" title="Kernel PCA/" href="__index__.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Jul 21, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TECHMINER 2++</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../ingest/__index__.html">Ingest/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../refine/__index__.html">Refine/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../search/__index__.html">Search/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../co_occurrence_analysis/__index__.html">Co-occurrence Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../co_word_analysis/__index__.html">Co-word Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../correlation_analysis/__index__.html">Correlation Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../emergence_analysis/__index__.html">Emergence Analysis/</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../__index__.html">Factor Analysis/</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../__index__.html">Co-occurrences/</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="__index__.html">Kernel PCA/</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Factor Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="factor_clusters.html">Factor Clusters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pca/__index__.html">PCA/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../svd/__index__.html">SVD/</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tfidf/__index__.html">TFIDF/</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network_analysis/__index__.html">Network Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../performance_analysis/__index__.html">Performance Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../time_analysis/__index__.html">Time Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../thematic_analysis/__index__.html">Thematic Analysis/</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES / HOW'S TO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bibliometrix/__index__.html">Bibliometrix 4.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vantagepoint/__index__.html">VantagePoint v15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tlab/__index__.html">T-LAB 10.1.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../scientopy/__index__.html">ScientoPy 2.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vosviewer/__index__.html">VOSviewer 1.6.19</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../__index__.html">Factor Analysis/</a></li>
+          <li class="breadcrumb-item"><a href="../__index__.html">Co-occurrences/</a></li>
+          <li class="breadcrumb-item"><a href="__index__.html">Kernel PCA/</a></li>
+      <li class="breadcrumb-item active">Factor Matrix</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/techminer/factor_analysis/co_occurrences/kernel_pca/factor_matrix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-techminer2.factor_analysis.co_occurrences.kernel_pca.factor_matrix"></span><section id="factor-matrix">
+<h1>Factor Matrix<a class="headerlink" href="#factor-matrix" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.factor_analysis.co_occurrences.kernel_pca</span> <span class="kn">import</span> <span class="n">factor_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">factor_matrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COOC PARAMS:</span>
+<span class="gp">... </span>    <span class="n">rows_and_columns</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEM PARAMS:</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># KERNEL PCA PARAMS:</span>
+<span class="gp">... </span>    <span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">gamma</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">coef0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">kernel_params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">fit_inverse_transform</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">eigen_solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">max_iter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">iterated_power</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">remove_zero_eig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">                                 DIM_0  DIM_1  DIM_2  DIM_3  DIM_4</span>
+<span class="go">author_keywords</span>
+<span class="go">REGTECH 28:329                  27.114 -2.512 -0.067 -1.633  0.379</span>
+<span class="go">FINTECH 12:249                  11.927  5.381 -0.382  0.657 -0.995</span>
+<span class="go">REGULATORY_TECHNOLOGY 07:037    -2.275  0.710  6.022 -0.410  2.329</span>
+<span class="go">COMPLIANCE 07:030                3.563 -4.286  0.788  3.675  0.388</span>
+<span class="go">REGULATION 05:164                1.280  3.410  0.569  1.854 -0.744</span>
+<span class="go">ANTI_MONEY_LAUNDERING 05:034    -4.296 -0.963  2.453 -3.119 -0.277</span>
+<span class="go">FINANCIAL_SERVICES 04:168       -1.277  1.490 -2.557 -0.979  1.950</span>
+<span class="go">FINANCIAL_REGULATION 04:035     -2.712  0.842 -2.698 -1.279  2.822</span>
+<span class="go">ARTIFICIAL_INTELLIGENCE 04:023  -2.568 -0.938  1.186 -1.150 -1.847</span>
+<span class="go">RISK_MANAGEMENT 03:014          -1.732  1.653  1.876  1.397 -0.448</span>
+<span class="go">INNOVATION 03:012               -3.693  1.191 -0.367  0.089  1.115</span>
+<span class="go">BLOCKCHAIN 03:005               -2.548 -0.318 -0.814  0.643 -1.435</span>
+<span class="go">SUPTECH 03:004                  -1.127  0.720  0.470  1.011 -0.113</span>
+<span class="go">SEMANTIC_TECHNOLOGIES 02:041    -2.363  1.425 -0.773  0.531 -0.973</span>
+<span class="go">DATA_PROTECTION 02:027          -3.002  0.165 -1.579 -0.456  0.390</span>
+<span class="go">SMART_CONTRACTS 02:022          -3.457 -0.694 -1.231 -0.210 -0.511</span>
+<span class="go">CHARITYTECH 02:017              -3.436 -1.225 -0.475 -1.993 -1.398</span>
+<span class="go">ENGLISH_LAW 02:017              -3.436 -1.225 -0.475 -1.993 -1.398</span>
+<span class="go">ACCOUNTABILITY 02:014           -2.981 -2.413 -0.973  1.682  0.383</span>
+<span class="go">DATA_PROTECTION_OFFICER 02:014  -2.981 -2.413 -0.973  1.682  0.383</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">cosine_similarities_</span>
+<span class="go">                                                              cosine_similariries</span>
+<span class="go">author_keywords</span>
+<span class="go">REGTECH 28:329                  FINTECH 12:249 (0.860); COMPLIANCE 07:030 (0.5...</span>
+<span class="go">FINTECH 12:249                  REGTECH 28:329 (0.860); REGULATION 05:164 (0.6...</span>
+<span class="go">REGULATORY_TECHNOLOGY 07:037    RISK_MANAGEMENT 03:014 (0.635); ANTI_MONEY_LAU...</span>
+<span class="go">COMPLIANCE 07:030               REGTECH 28:329 (0.552); FINTECH 12:249 (0.239)...</span>
+<span class="go">REGULATION 05:164               FINTECH 12:249 (0.642); RISK_MANAGEMENT 03:014...</span>
+<span class="go">ANTI_MONEY_LAUNDERING 05:034    ARTIFICIAL_INTELLIGENCE 04:023 (0.865); CHARIT...</span>
+<span class="go">FINANCIAL_SERVICES 04:168       FINANCIAL_REGULATION 04:035 (0.945); DATA_PROT...</span>
+<span class="go">FINANCIAL_REGULATION 04:035     FINANCIAL_SERVICES 04:168 (0.945); DATA_PROTEC...</span>
+<span class="go">ARTIFICIAL_INTELLIGENCE 04:023  CHARITYTECH 02:017 (0.878); ENGLISH_LAW 02:017...</span>
+<span class="go">RISK_MANAGEMENT 03:014          SUPTECH 03:004 (0.931); REGULATORY_TECHNOLOGY ...</span>
+<span class="go">INNOVATION 03:012               DATA_PROTECTION 02:027 (0.877); SEMANTIC_TECHN...</span>
+<span class="go">BLOCKCHAIN 03:005               SMART_CONTRACTS 02:022 (0.903); SEMANTIC_TECHN...</span>
+<span class="go">SUPTECH 03:004                  RISK_MANAGEMENT 03:014 (0.931); SEMANTIC_TECHN...</span>
+<span class="go">SEMANTIC_TECHNOLOGIES 02:041    BLOCKCHAIN 03:005 (0.828); INNOVATION 03:012 (...</span>
+<span class="go">DATA_PROTECTION 02:027          SMART_CONTRACTS 02:022 (0.930); INNOVATION 03:...</span>
+<span class="go">SMART_CONTRACTS 02:022          DATA_PROTECTION 02:027 (0.930); BLOCKCHAIN 03:...</span>
+<span class="go">CHARITYTECH 02:017              ENGLISH_LAW 02:017 (1.000); ARTIFICIAL_INTELLI...</span>
+<span class="go">ENGLISH_LAW 02:017              CHARITYTECH 02:017 (1.000); ARTIFICIAL_INTELLI...</span>
+<span class="go">ACCOUNTABILITY 02:014           DATA_PROTECTION_OFFICER 02:014 (1.000); SMART_...</span>
+<span class="go">DATA_PROTECTION_OFFICER 02:014  ACCOUNTABILITY 02:014 (1.000); SMART_CONTRACTS...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">fig_</span><span class="p">(</span><span class="s1">&#39;DIM_0&#39;</span><span class="p">,</span> <span class="s1">&#39;DIM_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;sphinx/_static/factor_analysis/co_occurrences/kernel_pca/map.html&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../../../_static/factor_analysis/co_occurrences/kernel_pca/map.html"
+height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">MDS_</span><span class="p">()</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;sphinx/_static/factor_analysis/co_occurrences/kernel_pca/mds.html&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../../../_static/factor_analysis/co_occurrences/kernel_pca/mds.html"
+height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">TSNE_</span><span class="p">()</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;sphinx/_static/factor_analysis/co_occurrences/kernel_pca/tsne.html&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../../../_static/factor_analysis/co_occurrences/kernel_pca/tsne.html"
+height="600px" width="100%" frameBorder="0"></iframe></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="__index__.html" class="btn btn-neutral float-left" title="Kernel PCA/" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="factor_clusters.html" class="btn btn-neutral float-right" title="Factor Clusters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

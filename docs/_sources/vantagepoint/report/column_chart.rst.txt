@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.column_chart
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Column Char
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Performance Analysis > Graphs >`  :ref:`performance_analysis.graphs.column_chart`. 

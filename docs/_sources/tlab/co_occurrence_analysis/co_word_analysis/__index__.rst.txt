@@ -1,7 +1,19 @@
-Co-Word Analysis
+Co-Word Analysis/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        :maxdepth: 1
+.. toctree::
+    :maxdepth: 1
 
-        co_word_analysis
+    graphs/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+
+    tables/__index__
+
+.. toctree::
+    :maxdepth: 1
+
+    graph_maker/__index__
+

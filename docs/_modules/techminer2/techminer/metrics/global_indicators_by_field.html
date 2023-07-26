@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>techminer2.techminer.metrics.global_indicators_by_field &mdash; TechMiner 2+ Jul 21, 2023 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Jul 21, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TECHMINER 2++</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/ingest/__index__.html">Ingest/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/refine/__index__.html">Refine/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/search/__index__.html">Search/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/co_occurrence_analysis/__index__.html">Co-occurrence Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/co_word_analysis/__index__.html">Co-word Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/correlation_analysis/__index__.html">Correlation Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/emergence_analysis/__index__.html">Emergence Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/factor_analysis/__index__.html">Factor Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/network_analysis/__index__.html">Network Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/performance_analysis/__index__.html">Performance Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/time_analysis/__index__.html">Time Analysis/</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/thematic_analysis/__index__.html">Thematic Analysis/</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES / HOW'S TO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bibliometrix/__index__.html">Bibliometrix 4.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vantagepoint/__index__.html">VantagePoint v15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tlab/__index__.html">T-LAB 10.1.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../scientopy/__index__.html">ScientoPy 2.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vosviewer/__index__.html">VOSviewer 1.6.19</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">techminer2.techminer.metrics.global_indicators_by_field</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for techminer2.techminer.metrics.global_indicators_by_field</h1><div class="highlight"><pre>
+<span></span><span class="c1"># flake8: noqa</span>
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="c1"># pylint: disable=line-too-long</span>
+<span class="c1"># pylint: disable=missing-docstring</span>
+<span class="c1"># pylint: disable=too-many-arguments</span>
+<span class="c1"># pylint: disable=too-many-locals</span>
+<span class="c1"># pylint: disable=too-many-statements</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Indicators by Field</span>
+<span class="sd">===============================================================================</span>
+
+
+<span class="sd">TechMiner2+ computes three growth indicators for each item in a field (usually</span>
+<span class="sd">keywords or noun phrases):</span>
+
+<span class="sd">* Average growth rate (AGR):</span>
+
+<span class="sd">.. code-block::</span>
+
+<span class="sd">           sum_{i=Y_start}^Y_end  Num_Documents[i] - Num_Documents[i-1]</span>
+<span class="sd">    AGR = --------------------------------------------------------------</span>
+<span class="sd">                            Y_end - Y_start + 1</span>
+
+
+<span class="sd">* Average documents per year (ADY):</span>
+
+<span class="sd">.. code-block::</span>
+
+<span class="sd">           sum_{i=Y_start}^Y_end  Num_Documents[i]</span>
+<span class="sd">    ADY = -----------------------------------------</span>
+<span class="sd">                    Y_end - Y_start + 1</span>
+
+
+<span class="sd">* Percentage of documents in last year (PDLY):</span>
+
+<span class="sd">.. code-block::</span>
+
+<span class="sd">           sum_{i=Y_start}^Y_end  Num_Documents[i]      1</span>
+<span class="sd">    PDLY = ---------------------------------------- * _____</span>
+<span class="sd">                  Y_end - Y_start + 1                  TND</span>
+
+
+<span class="sd">With:</span>
+
+<span class="sd">.. code-block::</span>
+
+<span class="sd">    Y_start = Y_end - time_window + 1</span>
+
+
+
+<span class="sd">    </span>
+<span class="sd">If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.</span>
+
+
+
+
+<span class="sd">&gt;&gt;&gt; root_dir = &quot;data/regtech/&quot;</span>
+
+
+<span class="sd">&gt;&gt;&gt; import techminer2 as tm2</span>
+<span class="sd">&gt;&gt;&gt; indicators = tm2p.global_indicators_by_field(</span>
+<span class="sd">...     field=&#39;author_keywords&#39;,</span>
+<span class="sd">...     root_dir=root_dir,</span>
+<span class="sd">... )</span>
+<span class="sd">&gt;&gt;&gt; print(indicators.head(30).to_markdown())</span>
+<span class="sd">| author_keywords           |   rank_occ |   rank_gc |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |</span>
+<span class="sd">|:--------------------------|-----------:|----------:|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|</span>
+<span class="sd">| REGTECH                   |          1 |         1 |    28 |            20 |                   8 |                329 |                74 |                           11.75 |                           2.64 |                  -0.5 |                     4   |                   0.142857  |                     2017 |     7 |                       47    |         9 |         4 |      1.29 |</span>
+<span class="sd">| FINTECH                   |          2 |         2 |    12 |            10 |                   2 |                249 |                49 |                           20.75 |                           4.08 |                  -0.5 |                     1   |                   0.0833333 |                     2018 |     6 |                       41.5  |         5 |         3 |      0.83 |</span>
+<span class="sd">| REGULATORY_TECHNOLOGY     |          3 |         8 |     7 |             5 |                   2 |                 37 |                14 |                            5.29 |                           2    |                  -1.5 |                     1   |                   0.142857  |                     2020 |     4 |                        9.25 |         4 |         2 |      1    |</span>
+<span class="sd">| COMPLIANCE                |          4 |        12 |     7 |             5 |                   2 |                 30 |                 9 |                            4.29 |                           1.29 |                   0   |                     1   |                   0.142857  |                     2019 |     5 |                        6    |         3 |         2 |      0.6  |</span>
+<span class="sd">| REGULATION                |          5 |         4 |     5 |             4 |                   1 |                164 |                22 |                           32.8  |                           4.4  |                  -0.5 |                     0.5 |                   0.1       |                     2018 |     6 |                       27.33 |         2 |         2 |      0.33 |</span>
+<span class="sd">| ANTI_MONEY_LAUNDERING     |          6 |        10 |     5 |             5 |                   0 |                 34 |                 8 |                            6.8  |                           1.6  |                  -1.5 |                     0   |                   0         |                     2020 |     4 |                        8.5  |         3 |         2 |      0.75 |</span>
+<span class="sd">| FINANCIAL_SERVICES        |          7 |         3 |     4 |             3 |                   1 |                168 |                20 |                           42    |                           5    |                   0   |                     0.5 |                   0.125     |                     2017 |     7 |                       24    |         3 |         2 |      0.43 |</span>
+<span class="sd">| FINANCIAL_REGULATION      |          8 |         9 |     4 |             2 |                   2 |                 35 |                 8 |                            8.75 |                           2    |                   0   |                     1   |                   0.25      |                     2017 |     7 |                        5    |         2 |         2 |      0.29 |</span>
+<span class="sd">| ARTIFICIAL_INTELLIGENCE   |          9 |        19 |     4 |             3 |                   1 |                 23 |                 6 |                            5.75 |                           1.5  |                   0   |                     0.5 |                   0.125     |                     2019 |     5 |                        4.6  |         3 |         2 |      0.6  |</span>
+<span class="sd">| RISK_MANAGEMENT           |         10 |        25 |     3 |             2 |                   1 |                 14 |                 8 |                            4.67 |                           2.67 |                   0   |                     0.5 |                   0.166667  |                     2018 |     6 |                        2.33 |         2 |         2 |      0.33 |</span>
+<span class="sd">| INNOVATION                |         11 |        32 |     3 |             2 |                   1 |                 12 |                 4 |                            4    |                           1.33 |                  -0.5 |                     0.5 |                   0.166667  |                     2020 |     4 |                        3    |         1 |         1 |      0.25 |</span>
+<span class="sd">| BLOCKCHAIN                |         12 |        59 |     3 |             3 |                   0 |                  5 |                 0 |                            1.67 |                           0    |                  -0.5 |                     0   |                   0         |                     2017 |     7 |                        0.71 |         1 |         1 |      0.14 |</span>
+<span class="sd">| SUPTECH                   |         13 |        60 |     3 |             1 |                   2 |                  4 |                 2 |                            1.33 |                           0.67 |                   0   |                     1   |                   0.333333  |                     2019 |     5 |                        0.8  |         1 |         1 |      0.2  |</span>
+<span class="sd">| SEMANTIC_TECHNOLOGIES     |         14 |         7 |     2 |             2 |                   0 |                 41 |                19 |                           20.5  |                           9.5  |                   0   |                     0   |                   0         |                     2018 |     6 |                        6.83 |         2 |         2 |      0.33 |</span>
+<span class="sd">| DATA_PROTECTION           |         15 |        13 |     2 |             1 |                   1 |                 27 |                 5 |                           13.5  |                           2.5  |                   0   |                     0.5 |                   0.25      |                     2020 |     4 |                        6.75 |         2 |         1 |      0.5  |</span>
+<span class="sd">| SMART_CONTRACTS           |         16 |        20 |     2 |             2 |                   0 |                 22 |                 8 |                           11    |                           4    |                   0   |                     0   |                   0         |                     2017 |     7 |                        3.14 |         1 |         1 |      0.14 |</span>
+<span class="sd">| CHARITYTECH               |         17 |        23 |     2 |             1 |                   1 |                 17 |                 4 |                            8.5  |                           2    |                   0   |                     0.5 |                   0.25      |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |</span>
+<span class="sd">| ENGLISH_LAW               |         18 |        24 |     2 |             1 |                   1 |                 17 |                 4 |                            8.5  |                           2    |                   0   |                     0.5 |                   0.25      |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |</span>
+<span class="sd">| ACCOUNTABILITY            |         19 |        26 |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                   0         |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |</span>
+<span class="sd">| DATA_PROTECTION_OFFICER   |         20 |        27 |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                   0         |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |</span>
+<span class="sd">| GDPR                      |         21 |        28 |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                   0         |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |</span>
+<span class="sd">| SANDBOXES                 |         22 |        33 |     2 |             2 |                   0 |                 12 |                 3 |                            6    |                           1.5  |                  -0.5 |                     0   |                   0         |                     2017 |     7 |                        1.71 |         1 |         1 |      0.14 |</span>
+<span class="sd">| TECHNOLOGY                |         23 |        44 |     2 |             1 |                   1 |                 10 |                 3 |                            5    |                           1.5  |                   0   |                     0.5 |                   0.25      |                     2020 |     4 |                        2.5  |         1 |         1 |      0.25 |</span>
+<span class="sd">| FINANCE                   |         24 |        96 |     2 |             1 |                   1 |                  1 |                 0 |                            0.5  |                           0    |                   0   |                     0.5 |                   0.25      |                     2020 |     4 |                        0.25 |         1 |         1 |      0.25 |</span>
+<span class="sd">| REPORTING                 |         25 |        97 |     2 |             0 |                   2 |                  1 |                 0 |                            0.5  |                           0    |                   0   |                     1   |                   0.5       |                     2022 |     2 |                        0.5  |         1 |         1 |      0.5  |</span>
+<span class="sd">| BUSINESS_MODELS           |         26 |         5 |     1 |             1 |                   0 |                153 |                17 |                          153    |                          17    |                   0   |                     0   |                   0         |                     2018 |     6 |                       25.5  |         1 |         1 |      0.17 |</span>
+<span class="sd">| FUTURE_RESEARCH_DIRECTION |         27 |         6 |     1 |             1 |                   0 |                153 |                17 |                          153    |                          17    |                   0   |                     0   |                   0         |                     2018 |     6 |                       25.5  |         1 |         1 |      0.17 |</span>
+<span class="sd">| STANDARDS                 |         28 |        11 |     1 |             1 |                   0 |                 33 |                14 |                           33    |                          14    |                   0   |                     0   |                   0         |                     2019 |     5 |                        6.6  |         1 |         1 |      0.2  |</span>
+<span class="sd">| DIGITAL_IDENTITY          |         29 |        14 |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                   0         |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |</span>
+<span class="sd">| EUROPEAN_UNION            |         30 |        15 |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                   0         |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">..._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
+<span class="kn">from</span> <span class="nn">..._sorting_lib</span> <span class="kn">import</span> <span class="n">sort_indicators_by_metric</span>
+<span class="kn">from</span> <span class="nn">..._stopwords_lib</span> <span class="kn">import</span> <span class="n">load_stopwords</span>
+<span class="kn">from</span> <span class="nn">.items_occurrences_by_year</span> <span class="kn">import</span> <span class="n">items_occurrences_by_year</span>
+
+
+<span class="c1"># pylint: disable=too-many-arguments</span>
+<span class="c1"># pylint: disable=too-many-locals</span>
+<span class="c1"># pylint: disable=too-many-statements</span>
+<div class="viewcode-block" id="global_indicators_by_field"><a class="viewcode-back" href="../../../../techminer/metrics/global_indicators_by_field.html#techminer2.techminer.metrics.global_indicators_by_field.global_indicators_by_field">[docs]</a><span class="k">def</span> <span class="nf">global_indicators_by_field</span><span class="p">(</span>
+    <span class="n">field</span><span class="p">,</span>
+    <span class="n">time_window</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="c1">#</span>
+    <span class="c1"># DATABASE PARAMS:</span>
+    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="n">year_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bibliometric column indicators.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">extract_items_from_field</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a dataframe with the items in the field column.&quot;&quot;&quot;</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">unique_items</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="n">unique_items</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">field</span><span class="p">]</span>
+        <span class="n">unique_items</span> <span class="o">=</span> <span class="n">unique_items</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">unique_items</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">unique_items</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">unique_items</span>
+
+    <span class="k">def</span> <span class="nf">compute_column_sum_by_item</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes global citations from database and adds the column to indicators.&quot;&quot;&quot;</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">column_sum</span> <span class="o">=</span> <span class="n">records</span><span class="p">[[</span><span class="n">field</span><span class="p">,</span> <span class="n">column</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">column_sum</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_sum</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+        <span class="n">column_sum</span> <span class="o">=</span> <span class="n">column_sum</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+        <span class="n">column_sum</span> <span class="o">=</span> <span class="n">column_sum</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">column_sum</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_sum</span>
+
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_global_citations_per_document</span><span class="p">(</span><span class="n">indicators</span><span class="p">):</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">global_citations_per_document</span><span class="o">=</span><span class="p">(</span><span class="n">indicators</span><span class="o">.</span><span class="n">global_citations</span> <span class="o">/</span> <span class="n">indicators</span><span class="o">.</span><span class="n">OCC</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_local_citations_per_document</span><span class="p">(</span><span class="n">indicators</span><span class="p">):</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">local_citations_per_document</span><span class="o">=</span><span class="p">(</span><span class="n">indicators</span><span class="o">.</span><span class="n">local_citations</span> <span class="o">/</span> <span class="n">indicators</span><span class="o">.</span><span class="n">OCC</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_age</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">):</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">age</span><span class="o">=</span><span class="p">(</span><span class="n">records</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">indicators</span><span class="o">.</span><span class="n">first_publication_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_global_citations_per_year</span><span class="p">(</span><span class="n">indicators</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the global citations per year.&quot;&quot;&quot;</span>
+
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">global_citations_per_year</span><span class="o">=</span><span class="p">(</span><span class="n">indicators</span><span class="o">.</span><span class="n">global_citations</span> <span class="o">/</span> <span class="n">indicators</span><span class="o">.</span><span class="n">age</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_first_publication_year</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the first publication year for each item.&quot;&quot;&quot;</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[[</span><span class="n">field</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+        <span class="n">records</span><span class="p">[</span><span class="s2">&quot;first_publication_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">field</span><span class="p">)[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s2">&quot;min&quot;</span><span class="p">)</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">records</span><span class="o">.</span><span class="n">first_publication_year</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;first_publication_year&quot;</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">first_publication_year</span>
+
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_growth_indicators</span><span class="p">(</span><span class="n">indicators</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the average growth rate.&quot;&quot;&quot;</span>
+
+        <span class="c1"># computes item occurrences by year</span>
+        <span class="n">items_by_year</span> <span class="o">=</span> <span class="n">items_occurrences_by_year</span><span class="p">(</span>
+            <span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">,</span>
+            <span class="n">cumulative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="c1"># Database params:</span>
+            <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">,</span>
+            <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+            <span class="n">year_filter</span><span class="o">=</span><span class="n">year_filter</span><span class="p">,</span>
+            <span class="n">cited_by_filter</span><span class="o">=</span><span class="n">cited_by_filter</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># computes the range of years in the time window</span>
+        <span class="n">year_end</span> <span class="o">=</span> <span class="n">items_by_year</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">year_start</span> <span class="o">=</span> <span class="n">year_end</span> <span class="o">-</span> <span class="n">time_window</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">year_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">year_start</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">year_end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="c1"># computes the number of documents per period by item</span>
+        <span class="n">between</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Between </span><span class="si">{</span><span class="n">year_start</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">year_end</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">before</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Before </span><span class="si">{</span><span class="n">year_start</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">between_occ</span> <span class="o">=</span> <span class="n">items_by_year</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">year_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">before_occ</span> <span class="o">=</span> <span class="n">items_by_year</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">between_occ</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">between_occ</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">between</span><span class="p">]</span> <span class="o">=</span> <span class="n">between_occ</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">before_occ</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">before</span><span class="p">]</span> <span class="o">=</span> <span class="n">before_occ</span>
+
+        <span class="c1"># sort the columns</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">between</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">indicators</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="n">before</span><span class="p">,</span> <span class="n">between</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+
+        <span class="c1"># selects the columns of interest</span>
+        <span class="n">items_by_year</span> <span class="o">=</span> <span class="n">items_by_year</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">year_columns</span><span class="p">]</span>
+
+        <span class="c1"># agr: average growth rate</span>
+        <span class="n">agr</span> <span class="o">=</span> <span class="n">items_by_year</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">agr</span> <span class="o">=</span> <span class="n">agr</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">year_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+        <span class="n">agr</span> <span class="o">=</span> <span class="n">agr</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">time_window</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">agr</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;average_growth_rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">agr</span>
+
+        <span class="c1"># ady: average documents per year</span>
+        <span class="n">ady</span> <span class="o">=</span> <span class="n">items_by_year</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">year_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">time_window</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ady</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;average_docs_per_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ady</span>
+
+        <span class="c1"># pdly: percentage of documents in last year</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">percentage_docs_last_year</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">indicators</span><span class="o">.</span><span class="n">average_docs_per_year</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="o">/</span> <span class="n">indicators</span><span class="o">.</span><span class="n">OCC</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="k">def</span> <span class="nf">compute_impact_indicators</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the impact indicators.&quot;&quot;&quot;</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[[</span><span class="n">field</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+        <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+        <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="n">field</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">cumcount_</span><span class="o">=</span><span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">cumcount</span><span class="p">()</span>
+            <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">)</span>
+
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">cumcount_2</span><span class="o">=</span><span class="n">records</span><span class="o">.</span><span class="n">cumcount_</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">w</span> <span class="o">*</span> <span class="n">w</span><span class="p">))</span>
+
+        <span class="n">h_indexes</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;global_citations &gt;= cumcount_&quot;</span><span class="p">)</span>
+        <span class="n">h_indexes</span> <span class="o">=</span> <span class="n">h_indexes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;cumcount_&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">})</span>
+        <span class="n">h_indexes</span> <span class="o">=</span> <span class="n">h_indexes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cumcount_&quot;</span><span class="p">:</span> <span class="s2">&quot;h_index&quot;</span><span class="p">})</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">h_indexes</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;h_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">h_indexes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">indicators</span><span class="p">[</span><span class="s2">&quot;h_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="s2">&quot;h_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">g_indexes</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;global_citations &gt;= cumcount_2&quot;</span><span class="p">)</span>
+        <span class="n">g_indexes</span> <span class="o">=</span> <span class="n">g_indexes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;cumcount_&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">})</span>
+        <span class="n">g_indexes</span> <span class="o">=</span> <span class="n">g_indexes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cumcount_&quot;</span><span class="p">:</span> <span class="s2">&quot;g_index&quot;</span><span class="p">})</span>
+        <span class="n">indicators</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">g_indexes</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;g_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g_indexes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">indicators</span><span class="p">[</span><span class="s2">&quot;g_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="s2">&quot;g_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">m_index</span><span class="o">=</span><span class="n">indicators</span><span class="o">.</span><span class="n">h_index</span> <span class="o">/</span> <span class="n">indicators</span><span class="o">.</span><span class="n">age</span><span class="p">)</span>
+        <span class="n">indicators</span><span class="p">[</span><span class="s2">&quot;m_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">m_index</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">indicators</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># MAIN CODE:</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">read_records</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+        <span class="n">year_filter</span><span class="o">=</span><span class="n">year_filter</span><span class="p">,</span>
+        <span class="n">cited_by_filter</span><span class="o">=</span><span class="n">cited_by_filter</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">extract_items_from_field</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_column_sum_by_item</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">,</span> <span class="s2">&quot;OCC&quot;</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_column_sum_by_item</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_column_sum_by_item</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_global_citations_per_document</span><span class="p">(</span><span class="n">indicators</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_local_citations_per_document</span><span class="p">(</span><span class="n">indicators</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_growth_indicators</span><span class="p">(</span><span class="n">indicators</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_first_publication_year</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_age</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_global_citations_per_year</span><span class="p">(</span><span class="n">indicators</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">compute_impact_indicators</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">indicators</span><span class="p">)</span>
+
+    <span class="n">stopwords</span> <span class="o">=</span> <span class="n">load_stopwords</span><span class="p">(</span><span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">stopwords</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># indicators = indicators.sort_index(axis=0, ascending=True)</span>
+
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">sort_indicators_by_metric</span><span class="p">(</span><span class="n">indicators</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">)</span>
+    <span class="n">indicators</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rank_gc&quot;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">indicators</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">sort_indicators_by_metric</span><span class="p">(</span><span class="n">indicators</span><span class="p">,</span> <span class="s2">&quot;OCC&quot;</span><span class="p">)</span>
+    <span class="n">indicators</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rank_occ&quot;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">indicators</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">indicators</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

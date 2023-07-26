@@ -1,6 +1,6 @@
-Concordances and Word Trees
+Concordances and Word Trees/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        
-        concordances
+.. toctree::
+    concordances
+    

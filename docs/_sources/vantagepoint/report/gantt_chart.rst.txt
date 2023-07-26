@@ -1,4 +1,5 @@
-.. automodule:: techminer2.vantagepoint.report.gantt_chart
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Gantt Chart
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Performance Analysis > Fields > Organizations >`  :ref:`performance_analysis.organizations.production_over_time`
+

@@ -1,6 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.bubble_chart
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Bubble Chart
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+See: `TechMiner 2+ > Co-occurrence Analysis > Graphs >` :ref:`co_occurrence_analysis.graphs.bubble_chart`

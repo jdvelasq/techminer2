@@ -1,3 +1,4 @@
-.. automodule:: techminer2.bibliometrix.overview.main_information
-    :members:
-    :show-inheritance:
+Main Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Performance Analysis >` :ref:`performance_analysis.main_metrics`.

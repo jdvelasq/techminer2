@@ -1,11 +1,14 @@
-Singular Value Decomposition
+Singular Value Decomposition (SVD)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+See:
 
-    .. toctree::
-        :maxdepth: 1
+    * `TechMiner 2+ > Factor Analysis > Co-occurrences >` :ref:`factor_analysis.co_occurrences.svd` 
 
-        svd__co_occ_matrix
-        svd__tf_matrix
-        
+    .. raw:: html
+
+        <br>
+
+    * `TechMiner 2+ > Factor Analysis > TFIDF >` :ref:`factor_analysis.tfidf.svd` 
+
 

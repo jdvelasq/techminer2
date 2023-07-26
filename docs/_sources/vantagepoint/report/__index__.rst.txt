@@ -1,20 +1,48 @@
-Report
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Report/ 
+==============================================================================
 
-    .. toctree::
+.. toctree::
+    column_chart    
 
-        bar_chart
-        cleveland_chart
-        column_chart
-        line_chart
-        pie_chart
-        treemap
+.. toctree::
+    bar_chart
 
-    .. toctree::
-        
-        world_map
-        matrix_viewer
-        heat_map
-        bubble_chart
-        gantt_chart
-        word_cloud
+.. toctree::
+    pie_chart
+
+.. toctree::
+    line_chart
+
+.. toctree::
+    word_cloud
+
+.. toctree::
+    multi_donut
+
+.. toctree::
+    bubble_chart
+
+.. toctree::
+    gantt_chart
+
+.. toctree::
+    butterfly_chart
+
+.. toctree::
+    scatter_plot
+
+.. toctree::
+    cluster_map
+
+.. toctree::
+    super_profile
+
+..  toctree::
+    world_map
+
+..  toctree::
+    plot_classifications
+
+..  toctree::
+    plot_emergence
+

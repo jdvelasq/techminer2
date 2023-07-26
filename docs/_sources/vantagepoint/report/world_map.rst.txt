@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.world_map
-    :members:
-    :undoc-members:
-    :show-inheritance:
+World Map
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Performance Analysis > Graphs >`  :ref:`performance_analysis.graphs.world_map`. 

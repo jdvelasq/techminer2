@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.pie_chart
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Pie Char
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Performance Analysis > Graphs >`  :ref:`performance_analysis.graphs.pie_chart`. 

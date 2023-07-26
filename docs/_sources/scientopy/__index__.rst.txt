@@ -1,4 +1,6 @@
-ScientoPy
+.. _scientopy:
+
+ScientoPy 2.1.3
 #########################################################################################
 
 .. raw:: html
@@ -11,13 +13,17 @@ most relevant topics or for a group of user-defined topics. The presented compar
 based on the type of plots.
 
 
-    .. * `Bar Chart <../vantagepoint/report/bar_chart.html>`_
+.. toctree::
+    bar_graph
 
-    .. toctree::
-        :maxdepth: 1
+.. toctree::    
+    bar_trends_graph
 
-        bar
-        bar_trends
-        time_line
-        word_cloud
-        top_trending_topics
+.. toctree::    
+    time_line_graph
+
+.. toctree::    
+    word_cloud_graph
+
+.. toctree::    
+    top_trending_topics_graph

@@ -1,3 +1,4 @@
-.. automodule:: techminer2.bibliometrix.overview.average_citations_per_year
-    :members:
-    :show-inheritance:
+Average Citations per Year
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Time Analysis >` :ref:`time_analysis.average_citations_per_year`

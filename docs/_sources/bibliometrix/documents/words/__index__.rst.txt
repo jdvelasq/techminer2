@@ -1,11 +1,32 @@
-Words
+Words/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
-      most_frequent_words
-      word_cloud
-      treemap
-      word_dynamics
-      trend_topics
-
    
+
+.. toctree::
+   author_keywords
+
+.. toctree::
+   index_keywords
+
+.. toctree::
+   keywords
+
+.. toctree::
+   title_nlp_phrases
+
+.. toctree::
+   abstract_nlp_phrases
+
+.. toctree::
+   nlp_phrases
+
+.. toctree::
+   descriptors
+
+
+
+
+
+
+
