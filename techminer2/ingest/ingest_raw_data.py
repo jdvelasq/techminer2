@@ -286,7 +286,7 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
     process_column(
         root_dir,
         "num_authors",
-        lambda x: x.str.split(";").map(len).fillna(0).astype(int),
+        lambda x: x.str.split(";").map(len, na_action="ignore").fillna(0).astype(int),
     )
 
     copy_to_column(root_dir, "global_references", "num_global_references")
@@ -1103,7 +1103,9 @@ def disambiguate_author_names(root_dir):
             data = pd.read_csv(file, encoding="utf-8")
             data = data.assign(authors=data.authors_id.copy())
             data["authors"] = data["authors"].str.split(";")
-            data["authors"] = data["authors"].map(lambda x: [author_id2name[id] for id in x], na_action="ignore")
+            data["authors"] = data["authors"].map(
+                lambda x: [author_id2name[id] for id in x], na_action="ignore"
+            )
             data["authors"] = data["authors"].str.join("; ")
             data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
