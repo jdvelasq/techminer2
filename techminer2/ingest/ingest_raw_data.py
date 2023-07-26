@@ -896,6 +896,8 @@ def repair_authors_id(authors_id: pd.Series, max_length: int) -> pd.Series:
     :meta private:
     """
 
+    max_length = int(max_length)
+
     return (
         authors_id.str.rstrip(";")
         .str.split(";")
