@@ -8,6 +8,6 @@
 Bar Chart
 ===============================================================================
 
-See **VantagePoint / Report /** :ref:`butterfly_chart`.
+See `TechMiner 2++ > Co-occurrence Analysis > Graphs >` :ref:`co_occurrence_analysis.graphs.butterfly_chart`
 
 """

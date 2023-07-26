@@ -142,7 +142,10 @@ def factor_clusters(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a factor matrix from the co-occurrence matrix."""
+    """Creates a factor matrix from the co-occurrence matrix.
+
+    :meta private:
+    """
 
     matrix = factor_matrix(
         #

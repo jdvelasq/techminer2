@@ -5,11 +5,13 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
+.. _co_occurrence_analysis.word_pairs.radial_diagram:
+
 Radial Diagram
 ===============================================================================
 
 
->>> from techminer2.analyze.co_occurrences.item_pairs import radial_diagram
+>>> from techminer2.co_occurrence_analysis.word_pairs import radial_diagram
 >>> radial_diagram(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -58,11 +60,11 @@ Radial Diagram
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/co_occurrences/item_pairs/radial_diagram.html")
+... ).write_html("sphinx/_static/co_occurrence_analysis/word_pairs/radial_diagram.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/co_occurrences/item_pairs/radial_diagram.html" 
+    <iframe src="../../../../../_static/co_occurrence_analysis/word_pairs/radial_diagram.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -132,7 +134,10 @@ def radial_diagram(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Makes a butterfly chart."""
+    """Makes a butterfly chart.
+
+    :meta private:
+    """
 
     def extract_item_position_and_name(candidate_items, item):
         """Obtains the positions of topics in a list."""

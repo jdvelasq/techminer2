@@ -1,4 +1,4 @@
-.. _vosviewer_thematic_map:
+.. _network_analysis.thematic_map:
 
 Thematic Map/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

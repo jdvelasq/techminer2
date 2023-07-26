@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _factor_analysis.co_occurrences.svd.factor_matrix:
+
 Factor Matrix
 ===============================================================================
 
@@ -152,7 +154,10 @@ def factor_matrix(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a factor matrix from the co-occurrence matrix."""
+    """Creates a factor matrix from the co-occurrence matrix.
+
+    :meta private:
+    """
 
     cooc_matrix = co_occurrence_matrix(
         #

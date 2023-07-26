@@ -18,3 +18,6 @@ Author Keywords/
 
 .. toctree::
    metrics
+
+.. toctree::
+   report

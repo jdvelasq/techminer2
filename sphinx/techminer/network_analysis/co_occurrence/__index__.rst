@@ -1,4 +1,4 @@
-.. _vosviewer_co_occurrence_network:
+.. _network_analysis.co_occurrence:
 
 Co-occurrence/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

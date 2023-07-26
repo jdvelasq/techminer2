@@ -109,31 +109,17 @@ TM2 module.
     techminer/thematic_analysis/__index__
     
     
-
-
-.. toctree::
-    :caption: OLD
-    :hidden:
-    :maxdepth: 1
-
-    techminer/ingest_and_clean/__index__
-    techminer/search/__index__
-    techminer/analyze/__index__
-    techminer/visualize/__index__
-
-
-
 .. toctree::
     :caption: EXAMPLES / HOW'S TO
     :hidden:
     :maxdepth: 1
 
     
-  bibliometrix/__index__
-  vantagepoint/__index__
-  tlab/__index__
-  scientopy/__index__
-  vosviewer/__index__
+    bibliometrix/__index__
+    vantagepoint/__index__
+    tlab/__index__
+    scientopy/__index__
+    vosviewer/__index__
     
     
  

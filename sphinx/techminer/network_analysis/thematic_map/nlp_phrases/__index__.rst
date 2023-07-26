@@ -18,3 +18,6 @@ NLP Phrases/
 
 .. toctree::
    metrics
+
+.. toctree::
+   report

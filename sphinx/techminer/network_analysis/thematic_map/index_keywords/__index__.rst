@@ -18,3 +18,6 @@ Index Keywords/
 
 .. toctree::
    metrics
+
+.. toctree::
+   report

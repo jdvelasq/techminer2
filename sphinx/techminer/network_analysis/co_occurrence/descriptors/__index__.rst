@@ -18,3 +18,6 @@ Descriptors/
 
 .. toctree::
    metrics
+
+.. toctree::
+   report

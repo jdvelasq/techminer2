@@ -123,6 +123,10 @@ def factor_clusters(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
+
     matrix = factor_matrix(
         #
         # TF PARAMS:

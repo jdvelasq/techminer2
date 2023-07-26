@@ -107,7 +107,11 @@ from .format_prompt_for_dataframes import format_prompt_for_dataframes
 
 
 def nx_create_degree_plot(
+    #
+    # NX GRAPH:
     nx_graph,
+    #
+    # CHART PARAMS:
     textfont_size=10,
     marker_size=7,
     line_color="black",
