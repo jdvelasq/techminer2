@@ -69,7 +69,7 @@ setup(
         "techminer2.co_occurrence_analysis.word_pairs",
         #
         # ======================================================================
-        "techminer2.co_word_analysis",
+        # "techminer2.co_word_analysis",
         #
         # ======================================================================
         "techminer2.correlation_analysis",
