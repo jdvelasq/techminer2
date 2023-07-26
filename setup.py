@@ -118,11 +118,11 @@ setup(
         "techminer2.network_analysis.co_authorship.countries",
         "techminer2.network_analysis.co_authorship.organizations",
         #
-        "techminer2.network_analysis.co_citation",
+        # "techminer2.network_analysis.co_citation",
         #
-        "techminer2.network_analysis.co_citation.cited_authors",
-        "techminer2.network_analysis.co_citation.cited_references",
-        "techminer2.network_analysis.co_citation.cited_sources",
+        # "techminer2.network_analysis.co_citation.cited_authors",
+        # "techminer2.network_analysis.co_citation.cited_references",
+        # "techminer2.network_analysis.co_citation.cited_sources",
         #
         "techminer2.network_analysis.co_occurrence",
         "techminer2.network_analysis.co_occurrence.abstract_nlp_phrases",
