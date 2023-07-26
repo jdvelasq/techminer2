@@ -17,6 +17,9 @@ Author Keywords/
    communities     
 
 .. toctree::
+   communities_summary   
+
+.. toctree::
    metrics
 
 .. toctree::

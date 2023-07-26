@@ -9,12 +9,15 @@ Keywords/
 
 .. toctree::
    treemap
-   
+
 .. toctree::
    degree_plot
 
 .. toctree::
    communities     
+
+.. toctree::
+   communities_summary
 
 .. toctree::
    metrics

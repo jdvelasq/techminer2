@@ -77,7 +77,7 @@ def report(
     association_index="association",
     #
     # REPORT PARAMS:
-    report_dir="network_analysis/co_occurrence/" + FIELD + "/",
+    report_dir="network_analysis/thematic_map/" + FIELD + "/",
     #
     # DATABASE PARAMS:
     root_dir="./",

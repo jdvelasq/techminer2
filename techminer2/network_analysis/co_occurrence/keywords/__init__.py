@@ -1,6 +1,7 @@
 """Network Analysis."""
 
 from .communities import communities
+from .communities_summary import communities_summary
 from .degree_plot import degree_plot
 from .item_density_visualization import item_density_visualization
 from .metrics import metrics
@@ -10,6 +11,7 @@ from .treemap import treemap
 
 __all__ = [
     "communities",
+    "communities_summary",
     "degree_plot",
     "item_density_visualization",
     "metrics",

@@ -142,7 +142,11 @@ def __add_nodes_from(
     nx_graph.add_nodes_from(nodes, group=0)
 
     for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = node
+        # nx_graph.nodes[node]["text"] = node
+
+        #
+        # Remove metrics from the name
+        nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
 
     return nx_graph
 
