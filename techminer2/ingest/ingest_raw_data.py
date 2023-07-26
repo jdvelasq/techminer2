@@ -899,8 +899,11 @@ def repair_authors_id(authors_id: pd.Series, max_length: int) -> pd.Series:
     return (
         authors_id.str.rstrip(";")
         .str.split(";")
-        .map(lambda x: [i.strip() for i in x], na_action="ignore")
-        .map(lambda x: [i.rjust(max_length, "0") for i in x], na_action="ignore")
+        .map(lambda x: [i.strip() for i in x] if x is not pd.NA else x, na_action="ignore")
+        .map(
+            lambda x: [i.rjust(max_length, "0") for i in x] if x is not pd.NA else x,
+            na_action="ignore",
+        )
         .str.join(";")
     )
 
