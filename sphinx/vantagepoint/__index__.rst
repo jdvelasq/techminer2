@@ -17,36 +17,6 @@ VantagePoint v15
 
    analyze/__index__
 
-* Analyze XXXX/
-
-   * Discover/
-
-      * :ref:`analyze.terms.list_items`
-
-      * :ref:`analyze.terms.terms_by_year`
-
-      * :ref:`analyze.terms.tfidf`
-
-      .. toctree::
-         :maxdepth: 1
-
-         discover/__index__
-
-   * Explore/
-
-      .. toctree::
-         :maxdepth: 1
-
-         explore/__index__
-
-
-   * Calculate/
-
-      .. toctree::
-         :maxdepth: 1
-
-         calculate/__index__
-
 .. toctree::
    :maxdepth: 1
 

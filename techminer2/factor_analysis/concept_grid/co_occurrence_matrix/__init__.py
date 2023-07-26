@@ -1,3 +1,0 @@
-from .kernel_pca_decomposition import kernel_pca_decomposition
-from .pca_decomposition import pca_decomposition
-from .svd_decomposition import svd_decomposition

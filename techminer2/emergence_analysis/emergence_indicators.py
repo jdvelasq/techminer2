@@ -1,9 +1,9 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-.. _emergence_indicators:
+.. _emergence_analysis.emergence_indicators:
 
-Emergence Indicators (TODO)
+TODO: Emergence Indicators
 ===============================================================================
 
 
@@ -14,4 +14,6 @@ Emergence Indicators (TODO)
 
 
 def emergence_indicators():
-    pass
+    """
+    :meta private:
+    """

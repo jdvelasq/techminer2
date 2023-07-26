@@ -5,17 +5,15 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _pivot_tool:
+.. _co_occurrence_analysis.pivot_tool:
 
 TODO: Pivot Tool
 ===============================================================================
-
-
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
 
 """
 
 
 def pivot_tool():
-    pass
+    """
+    :meta private:
+    """

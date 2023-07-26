@@ -30,12 +30,6 @@ Discover/
 .. toctree::
     terms_by_year
 
-.. toctree::
-    trending_terms_per_year
-
-
-.. toctree::
-    pcd
 
 
 

@@ -1,6 +1,5 @@
-.. automodule:: techminer2.vantagepoint.explore.pivot_tool
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Pivot Tool
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+See: `TechMiner 2+ > Co-occurrence Analysis >` :ref:`co_occurrence_analysis.pivot_tool`.
 

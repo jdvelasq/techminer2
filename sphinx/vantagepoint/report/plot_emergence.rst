@@ -1,4 +1,4 @@
-TODO: Plot Emergence
+Plot Emergence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See: 
+See: `TechMiner 2+ > Emergence Analysis >` :ref:`emergence_analysis.plot_emergence`

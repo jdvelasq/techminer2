@@ -12,6 +12,9 @@ Matrix/
     cross_correlation_matrix    
 
 .. toctree::
+    factor_matrix    
+
+.. toctree::
     tfidf 
 
  

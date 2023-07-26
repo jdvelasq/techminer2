@@ -24,4 +24,7 @@ Co-occurrence Analysis/
     matrix_viewer
 
 .. toctree::
+    pivot_tool
+
+.. toctree::
     sankey_chart

@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _find_similar_records:
+.. _search.find_similar_records:
 
 TODO: Find Similar Records
 ===============================================================================

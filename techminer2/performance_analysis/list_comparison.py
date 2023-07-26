@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _analyze.terms.list_comparison:
+.. _performance_analysis.list_comparison:
 
 TODO: List Comparison
 ===============================================================================
