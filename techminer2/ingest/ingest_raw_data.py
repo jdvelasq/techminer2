@@ -1103,7 +1103,7 @@ def disambiguate_author_names(root_dir):
             data = pd.read_csv(file, encoding="utf-8")
             data = data.assign(authors=data.authors_id.copy())
             data["authors"] = data["authors"].str.split(";")
-            data["authors"] = data["authors"].map(lambda x: [author_id2name[id] for id in x])
+            data["authors"] = data["authors"].map(lambda x: [author_id2name[id] for id in x], na_action="ignore")
             data["authors"] = data["authors"].str.join("; ")
             data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
