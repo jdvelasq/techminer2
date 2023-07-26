@@ -899,8 +899,8 @@ def repair_authors_id(authors_id: pd.Series, max_length: int) -> pd.Series:
     return (
         authors_id.str.rstrip(";")
         .str.split(";")
-        .apply(lambda x: [i.strip() for i in x], na_action="ignore")
-        .apply(lambda x: [i.rjust(max_length, "0") for i in x], na_action="ignore")
+        .map(lambda x: [i.strip() for i in x], na_action="ignore")
+        .map(lambda x: [i.rjust(max_length, "0") for i in x], na_action="ignore")
         .str.join(";")
     )
 
