@@ -64,7 +64,7 @@ setup(
         "techminer2.co_occurrence_analysis",
         "techminer2.co_occurrence_analysis.associations",
         "techminer2.co_occurrence_analysis.associations.graphs",
-        "techminer2.co_occurrence_analysis.associations.tables",
+        # "techminer2.co_occurrence_analysis.associations.tables",
         "techminer2.co_occurrence_analysis.graphs",
         "techminer2.co_occurrence_analysis.word_pairs",
         #
