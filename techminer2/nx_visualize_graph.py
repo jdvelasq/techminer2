@@ -209,6 +209,7 @@ def __add_node_labels_to_fig(fig, nx_graph):
     node_labels = [data["text"] for _, data in nx_graph.nodes(data=True)]
 
     textfont_sizes = [data["textfont_size"] for _, data in nx_graph.nodes(data=True)]
+    textfont_opacities = [data["textfont_opacity"] for _, data in nx_graph.nodes(data=True)]
 
     textpositions = [data["textposition"] for _, data in nx_graph.nodes(data=True)]
 
@@ -218,11 +219,12 @@ def __add_node_labels_to_fig(fig, nx_graph):
     node_labels.reverse()
     textfont_sizes.reverse()
     textpositions.reverse()
+    textfont_opacities.reverse()
 
     #
 
-    for pos_x, pos_y, name, textfont_size, textpos in zip(
-        node_x, node_y, node_labels, textfont_sizes, textpositions
+    for pos_x, pos_y, name, textfont_size, textpos, textcolor in zip(
+        node_x, node_y, node_labels, textfont_sizes, textpositions, textfont_opacities
     ):
         if textpos == "top right":
             xanchor = "left"
@@ -260,6 +262,7 @@ def __add_node_labels_to_fig(fig, nx_graph):
             yanchor=yanchor,
             xshift=xshift,
             yshift=yshift,
+            opacity=textcolor,
         )
 
     return fig

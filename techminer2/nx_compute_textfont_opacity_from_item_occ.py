@@ -35,13 +35,13 @@ def nx_compute_textfont_opacity_from_item_occ(
         #
         # Scales the node size to the range [node_size_min, node_size_max]
         textfont_opacities -= textfont_opacity_min
-        textfont_opacities /= textfont_opacities.max() - textfont_opacity_min
+        textfont_opacities /= textfont_opacities.max()
         textfont_opacities *= textfont_opacity_max - textfont_opacity_min
         textfont_opacities += textfont_opacity_min
 
     #
     # Sets the value of node_size
     for opacity, node in zip(textfont_opacities, nx_graph.nodes()):
-        nx_graph.nodes[node]["textfont_opacity"] = opacity
+        nx_graph.nodes[node]["textfont_opacity"] = np.sqrt(opacity)
 
     return nx_graph
