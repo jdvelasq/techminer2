@@ -142,7 +142,18 @@ def world_map(
             color_discrete_map={0: "gray"},
             scope="world",
         )
-        fig.update_layout(coloraxis_showscale=False)
+        # fig.update_layout(coloraxis_showscale=False)
+        fig.update_layout(
+            coloraxis_colorbar=dict(
+                title=dict(text=""),
+                orientation="h",
+                thickness=10,
+                tickfont=dict(size=8),
+                len=0.9,
+                x=0.5,
+                y=-0.2,
+            )
+        )
         fig.update_layout(title=title)
 
         return fig

@@ -177,6 +177,14 @@ def trending_terms_per_year(
     )
     words_by_year = words_by_year.assign(width=words_by_year.year_q3 - words_by_year.year_q1 + 1)
 
+    # -----------------------------------------------------------------------------------
+    # Reordeer the terms with the aim of improving the visualization
+    words_by_year = words_by_year.sort_values(
+        ["year_q1", "width", "height"], ascending=[True, True, True]
+    )
+    #
+    # -----------------------------------------------------------------------------------
+
     fig = go.Figure(
         go.Bar(
             x=words_by_year.width,

@@ -24,16 +24,16 @@ Records per Year
 ... )
 
 >>> chart.df_
-      OCC  cum_OCC
-year              
-2016    1        1
-2017    4        5
-2018    3        8
-2019    6       14
-2020   14       28
-2021   10       38
-2022   12       50
-2023    2       52
+      OCC  cum_OCC  global_citations
+year                                
+2016    1        1                30
+2017    4        5               162
+2018    3        8               182
+2019    6       14                47
+2020   14       28                93
+2021   10       38                27
+2022   12       50                22
+2023    2       52                 0
 
 >>> print(chart.prompt_)
 The table below, delimited by triple backticks, provides data on the annual \\
@@ -49,16 +49,16 @@ description to one paragraph with no more than 250 words.
 <BLANKLINE>
 Table:
 ```
-|   year |   OCC |   cum_OCC |
-|-------:|------:|----------:|
-|   2016 |     1 |         1 |
-|   2017 |     4 |         5 |
-|   2018 |     3 |         8 |
-|   2019 |     6 |        14 |
-|   2020 |    14 |        28 |
-|   2021 |    10 |        38 |
-|   2022 |    12 |        50 |
-|   2023 |     2 |        52 |
+|   year |   OCC |   cum_OCC |   global_citations |
+|-------:|------:|----------:|-------------------:|
+|   2016 |     1 |         1 |                 30 |
+|   2017 |     4 |         5 |                162 |
+|   2018 |     3 |         8 |                182 |
+|   2019 |     6 |        14 |                 47 |
+|   2020 |    14 |        28 |                 93 |
+|   2021 |    10 |        38 |                 27 |
+|   2022 |    12 |        50 |                 22 |
+|   2023 |     2 |        52 |                  0 |
 ```
 <BLANKLINE>
 
@@ -83,7 +83,15 @@ from .metrics_per_year import metrics_per_year
 
 
 def records_per_year(
+    #
+    # CHART PARAMS:
     title: str = "Annual Scientific Production",
+    year_label=None,
+    metric_label=None,
+    textfont_size=10,
+    marker_size=7,
+    line_width=1.5,
+    yshift=4,
     #
     # DATABASE PARAMS:
     root_dir: str = "./",
@@ -106,13 +114,22 @@ def records_per_year(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-    data_frame = data_frame[["OCC", "cum_OCC"]]
+    data_frame = data_frame[["OCC", "cum_OCC", "global_citations"]]
 
     prompt = __generate_prompt(data_frame)
 
     fig = metrics_by_year_chart(
         indicator_to_plot="OCC",
+        auxiliary_indicator="global_citations",
+        #
+        # CHART PARAMS:
         title=title,
+        year_label=year_label,
+        metric_label=metric_label,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_width=line_width,
+        yshift=yshift,
         #
         # DATABASE PARAMS
         root_dir=root_dir,
