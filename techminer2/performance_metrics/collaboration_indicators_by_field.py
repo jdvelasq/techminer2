@@ -48,7 +48,7 @@ China             5                27  ...                     3      0.60
 
 import numpy as np
 
-from ..._read_records import read_records
+from .._read_records import read_records
 
 
 def collaboration_indicators_by_field(
@@ -125,9 +125,7 @@ def collaboration_indicators_by_field(
     )
 
     # Compute the multiple publication ratio for each topic
-    indicators["mp_ratio"] = (
-        indicators["multiple_publication"] / indicators["OCC"]
-    )
+    indicators["mp_ratio"] = indicators["multiple_publication"] / indicators["OCC"]
     indicators["mp_ratio"] = indicators["mp_ratio"].round(2)
 
     # Sort the topics by number of occurrences, global citations, and local

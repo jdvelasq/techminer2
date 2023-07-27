@@ -34,8 +34,8 @@ stopwords list.
 
 
 """
-from ..._read_records import read_records
-from ..._stopwords_lib import load_stopwords
+from .._read_records import read_records
+from .._stopwords_lib import load_stopwords
 
 
 def global_co_occurrence_matrix_list(
@@ -72,12 +72,8 @@ def global_co_occurrence_matrix_list(
         matrix_list = matrix_list[~matrix_list[name].isin(stopwords)]
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(
-        ["row", "column"], as_index=False
-    ).aggregate("sum")
+    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
 
-    matrix_list = matrix_list.sort_values(
-        ["OCC", "row", "column"], ascending=[False, True, True]
-    )
+    matrix_list = matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
 
     return matrix_list

@@ -68,9 +68,7 @@ def sort_indicators_by_metric(indicators, metric):
         # -------------------------------------------
     }[metric]
 
-    indicators = indicators.sort_values(
-        columns, ascending=[False, False, False, True]
-    )
+    indicators = indicators.sort_values(columns, ascending=[False, False, False, True])
 
     indicators = indicators.drop(columns=["_name_"])
 
@@ -94,9 +92,7 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from .techminer.metrics.global_indicators_by_field import (
-        global_indicators_by_field,
-    )
+    from .performance_metrics.global_indicators_by_field import global_indicators_by_field
 
     matrix = matrix.copy()
 
@@ -114,9 +110,7 @@ def sort_matrix_axis(
 
     if axis == 0:
         topics = [
-            topic
-            for topic in indicators_by_topic.index.tolist()
-            if topic in matrix.index.tolist()
+            topic for topic in indicators_by_topic.index.tolist() if topic in matrix.index.tolist()
         ]
         matrix = matrix.loc[topics, :]
     else:

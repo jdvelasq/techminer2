@@ -95,7 +95,7 @@ import plotly.express as px
 from ...._filtering_lib import generate_custom_items
 from ...._sorting_lib import sort_indicators_by_metric
 from ....format_prompt_for_dataframes import format_prompt_for_dataframes
-from ....techminer.metrics.collaboration_indicators_by_field import (
+from ....performance_metrics.collaboration_indicators_by_field import (
     collaboration_indicators_by_field,
 )
 

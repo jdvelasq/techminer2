@@ -33,7 +33,7 @@ import pandas as pd
 #     None
 
 
-def replace(
+def text_replace(
     criterion,
     to_replace,
     value,
@@ -42,7 +42,7 @@ def replace(
     """Replace text in columns."""
 
     # Load the data
-    file_path = os.path.join(directory, "processed/_documents.csv")
+    file_path = os.path.join(directory, "processed/_main.csv")
     records = pd.read_csv(file_path, encoding="utf-8")
 
     # If the text to replace is a string, convert it into a list

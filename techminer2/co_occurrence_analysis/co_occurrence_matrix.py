@@ -186,8 +186,8 @@ from .._counters_lib import add_counters_to_frame_axis
 from .._filtering_lib import generate_custom_items
 from .._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from ..format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..techminer.metrics.global_co_occurrence_matrix_list import global_co_occurrence_matrix_list
-from ..techminer.metrics.global_indicators_by_field import global_indicators_by_field
+from ..performance_metrics.global_co_occurrence_matrix_list import global_co_occurrence_matrix_list
+from ..performance_metrics.global_indicators_by_field import global_indicators_by_field
 
 
 def co_occurrence_matrix(

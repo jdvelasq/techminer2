@@ -191,10 +191,10 @@ from .._counters_lib import add_counters_to_frame_axis
 from .._filtering_lib import generate_custom_items
 from .._sorting_lib import sort_indicators_by_metric
 from ..format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..techminer.metrics.global_indicators_by_field import global_indicators_by_field
-from ..techminer.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
-from ..techminer.metrics.items_occurrences_by_year import items_occurrences_by_year
-from ..techminer.reports.documents_per_item import documents_per_item
+from ..performance_analysis.documents_per_item import documents_per_item
+from ..performance_metrics.global_indicators_by_field import global_indicators_by_field
+from ..performance_metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
+from ..performance_metrics.items_occurrences_by_year import items_occurrences_by_year
 
 COLOR = "#465c6b"
 TEXTLEN = 40
