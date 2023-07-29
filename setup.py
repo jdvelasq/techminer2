@@ -170,11 +170,11 @@ setup(
         "techminer2.search",
         #
         # ======================================================================
-        "techminer2.techminer",
+        # "techminer2.techminer",
         #
-        "techminer2.techminer.metrics",
-        "techminer2.techminer.reports",
-        "techminer2.techminer.tools",
+        # "techminer2.techminer.metrics",
+        # "techminer2.techminer.reports",
+        # "techminer2.techminer.tools",
         #
         # ======================================================================
         "techminer2.thematic_analysis",

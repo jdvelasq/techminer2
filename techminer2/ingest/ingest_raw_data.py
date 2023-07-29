@@ -63,9 +63,10 @@ Import a scopus data file in the working directory.
 --INFO-- Processing `raw_nlp_phrases` column
 --INFO-- Concatenating `raw_nlp_phrases` and `raw_keywords` columns to `raw_descriptors`
 --INFO-- Processing `raw_descriptors` column
---INFO-- Searching `references` using DOI
---INFO-- Searching `references` using (year, title, author)
---INFO-- Searching `references` using (title)
+--INFO-- Homogenizing global references
+--INFO-- 765 global references homogenized
+--INFO-- Homogenizing local references
+--INFO-- 27 local references homogenized
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
 --INFO-- The data/regtech/countries.txt thesaurus file was created
@@ -91,13 +92,12 @@ authors, authors_id, authors_with_affiliations, coden, correspondence_address,
 countries, country_1st_author, descriptors, document_type, doi, eid,
 global_citations, global_references, index_keywords, isbn, issn, issue,
 keywords, link, local_citations, local_references, nlp_phrases, num_authors,
-num_global_references, open_access, organization_1st_author, organizations,
-page_end, page_start, publication_stage, raw_abstract_nlp_phrases,
-raw_author_keywords, raw_authors, raw_authors_id, raw_countries,
-raw_descriptors, raw_index_keywords, raw_keywords, raw_nlp_phrases,
-raw_organizations, raw_title_nlp_phrases, source, source_abbr, source_title,
-title, title_nlp_phrases, volume, year
-
+open_access, organization_1st_author, organizations, page_end, page_start,
+publication_stage, raw_abstract_nlp_phrases, raw_author_keywords, raw_authors,
+raw_authors_id, raw_countries, raw_descriptors, raw_global_references,
+raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,
+raw_title_nlp_phrases, source, source_abbr, source_title, title,
+title_nlp_phrases, volume, year
 
 
 
@@ -124,7 +124,6 @@ import re
 
 import pandas as pd
 from textblob import TextBlob
-from tqdm import tqdm
 
 from ..refine.apply_countries_thesaurus import apply_countries_thesaurus
 from ..refine.apply_descriptors_thesaurus import apply_descriptors_thesaurus
@@ -134,6 +133,8 @@ from ..refine.apply_organizations_thesaurus import apply_organizations_thesaurus
 from .create_countries_thesaurus import create_countries_thesaurus
 from .create_descriptors_thesaurus import create_descriptors_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
+from .homogenize_global_references import homogenize_global_references
+from .homogenize_local_references import homogenize_local_references
 
 KEYWORDS_MAX_LENGTH = 50
 
@@ -173,6 +174,11 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
 
     remove_records(root_dir, "document_type", discarded_types)
     drop_empty_columns_in_database_files(root_dir)
+
+    #
+    # Additional Step:
+    # Replace journal nanme by journal abbr in references.
+    replace_journal_name_in_references(root_dir)
 
     #
     #
@@ -531,7 +537,10 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
     # Phase 4: References
     #
     #
-    create_references(root_dir, disable_progress_bar)
+    # create_references(root_dir, disable_progress_bar)
+    homogenize_global_references(root_dir)
+    homogenize_local_references(root_dir)
+    #
     create__local_citations__column_in_references_database(root_dir)
     create__local_citations__column_in_documents_database(root_dir)
 
@@ -559,6 +568,30 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
 # End of main function
 #
 #
+
+
+def replace_journal_name_in_references(root_dir):
+    abbrs = []
+
+    processed_dir = pathlib.Path(root_dir) / "databases"
+    files = list(processed_dir.glob("_*.csv"))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        data = data[["source", "source_abbr"]]
+        data = data.dropna()
+        data = data.drop_duplicates()
+
+        abbrs.append(data)
+    abbrs = pd.concat(abbrs, ignore_index=True)
+
+    main_path = pathlib.Path(root_dir) / "databases/_main.csv"
+    main = pd.read_csv(main_path, encoding="utf-8")
+
+    for source, source_abbr in zip(abbrs.source, abbrs.source_abbr):
+        main["raw_global_references"] = main["raw_global_references"].str.replace(
+            source, source_abbr, regex=False
+        )
+    main.to_csv(main_path, sep=",", encoding="utf-8", index=False)
 
 
 def create_working_directories(root_dir):
@@ -1185,338 +1218,363 @@ def create__article__column(root_dir):
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def create_references(directory, disable_progress_bar=False):
-    """Create references from `documents.csv` or `_references.csv` file.
+# def create_references(directory, disable_progress_bar=False):
+#     """Create references from `documents.csv` or `_references.csv` file.
 
-    :meta private:
-    """
+#     :meta private:
+#     """
+#     create_references_from_documents_csv_file(directory, disable_progress_bar)
 
-    references_path = os.path.join(directory, "databases/_references.csv")
-    if os.path.exists(references_path):
-        create_references_from_references_csv_file(directory, disable_progress_bar)
-    else:
-        create_references_from_documents_csv_file(directory, disable_progress_bar)
+#     #
+#     # Formats only references in the documents.csv file. Creates a thesurus
+#     # for homogenizing the references.
 
-
-def create_references_from_documents_csv_file(directory, disable_progress_bar=False):
-    """Create references from `documents.csv` file.
-
-    :meta private:
-    """
-
-    print("--INFO-- Creating references from  `_main.csv` file.")
-
-    documents_path = os.path.join(directory, "databases/_main.csv")
-    documents = pd.read_csv(documents_path)
-
-    # references como aparecen en los articulos
-    raw_cited_references = documents.global_references.copy()
-    raw_cited_references = raw_cited_references.str.lower()
-    raw_cited_references = raw_cited_references.str.split(";")
-    raw_cited_references = raw_cited_references.explode()
-    raw_cited_references = raw_cited_references.str.strip()
-    raw_cited_references = raw_cited_references.dropna()
-    raw_cited_references = raw_cited_references.drop_duplicates()
-    raw_cited_references = raw_cited_references.reset_index(drop=True)
-
-    # record in document.csv ---> reference
-    thesaurus = {t: None for t in raw_cited_references.tolist()}
-
-    # references = pd.read_csv(references_path)
-
-    # marcador para indicar si la referencia fue encontrada
-    references = documents.copy()
-    references["found"] = False
-
-    # busqueda por doi
-    print("--INFO-- Searching `references` using DOI")
-    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for doi, article in zip(references.doi, references.article):
-            for key in thesaurus.keys():
-                if thesaurus[key] is None:
-                    if not pd.isna(doi) and doi in key:
-                        thesaurus[key] = article
-                        references.loc[references.doi == doi, "found"] = True
-            pbar.update(1)
-
-    # Reduce la base de búsqueda
-    references = references[~references.found]
-
-    # Busqueda por (año, autor y tttulo)
-    print("--INFO-- Searching `references` using (year, title, author)")
-    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for article, year, authors, title in zip(
-            references.article,
-            references.year,
-            references.authors,
-            references.title,
-        ):
-            year = str(year)
-            author = authors.split()[0].lower()
-            title = (
-                title.lower()
-                .replace(".", "")
-                .replace(",", "")
-                .replace(":", "")
-                .replace(";", "")
-                .replace("-", " ")
-                .replace("'", "")
-            )
-
-            for key in thesaurus.keys():
-                if thesaurus[key] is None:
-                    text = key
-                    text = (
-                        text.lower()
-                        .replace(".", "")
-                        .replace(",", "")
-                        .replace(":", "")
-                        .replace(";", "")
-                        .replace("-", " ")
-                        .replace("'", "")
-                    )
-
-                    if author in text and str(year) in text and title[:29] in text:
-                        thesaurus[key] = article
-                        references.found[references.article == article] = True
-                    elif author in text and str(year) in text and title[-29:] in text:
-                        thesaurus[key] = article
-                        references.found[references.article == article] = True
-
-            pbar.update(1)
-
-    # Reduce la base de búsqueda
-    references = references[~references.found]
-
-    # Busqueda por titulo
-    print("--INFO-- Searching `references` using (title)")
-    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for article, title in zip(
-            references.article,
-            references.title,
-        ):
-            title = (
-                title.lower()
-                .replace(".", "")
-                .replace(",", "")
-                .replace(":", "")
-                .replace(";", "")
-                .replace("-", " ")
-                .replace("'", "")
-            )
-
-            for key in thesaurus.keys():
-                text = key
-                text = (
-                    text.lower()
-                    .replace(".", "")
-                    .replace(",", "")
-                    .replace(":", "")
-                    .replace(";", "")
-                    .replace("-", " ")
-                    .replace("'", "")
-                )
-
-                if title in text:
-                    thesaurus[key] = article
-                    references.found[references.article == article] = True
-
-            pbar.update(1)
-    #
-    # Crea la columna de referencias locales
-    #
-    documents["local_references"] = documents.global_references.copy()
-    documents["local_references"] = documents["local_references"].str.lower()
-    documents["local_references"] = documents["local_references"].str.split(";")
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [t.strip() for t in x] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].str.join("; ")
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: pd.NA if x == "" else x
-    )
-    #
-    documents.to_csv(documents_path, index=False)
+#     # references_path = os.path.join(directory, "databases/_references.csv")
+#     # if os.path.exists(references_path):
+#     #     create_references_from_references_csv_file(directory, disable_progress_bar)
+#     # else:
+#     #     create_references_from_documents_csv_file(directory, disable_progress_bar)
 
 
-def create_references_from_references_csv_file(directory, disable_progress_bar=False):
-    """Create the references from the references.csv file.
+# def create_references_from_documents_csv_file(directory, disable_progress_bar=False):
+#     """Create references from `documents.csv` file.
 
-    :meta private:
-    """
+#     :meta private:
+#     """
 
-    references_path = os.path.join(directory, "databases/_references.csv")
+#     print("--INFO-- Creating references from  `_main.csv` file.")
 
-    if not os.path.exists(references_path):
-        print(f"--WARN-- The  file {references_path} does not exists.")
-        print("--WARN-- Some functionalities are disabled.")
-        return
+#     documents_path = os.path.join(directory, "databases/_main.csv")
+#     documents = pd.read_csv(documents_path)
 
-    references = pd.read_csv(references_path)
+#     # references como aparecen en los articulos
+#     raw_cited_references = documents.raw_global_references.copy()
+#     raw_cited_references = raw_cited_references.str.lower()
+#     raw_cited_references = raw_cited_references.str.split(";")
+#     raw_cited_references = raw_cited_references.explode()
+#     raw_cited_references = raw_cited_references.str.strip()
+#     raw_cited_references = raw_cited_references.dropna()
+#     raw_cited_references = raw_cited_references.drop_duplicates()
+#     raw_cited_references = raw_cited_references.reset_index(drop=True)
 
-    documents_path = os.path.join(directory, "databases/_main.csv")
-    documents = pd.read_csv(documents_path)
+#     # record in document.csv ---> reference
+#     searching_thesaurus = {t: None for t in raw_cited_references.tolist()}
+#     found_thesaurus = {}
 
-    # references como aparecen en los articulos
-    raw_cited_references = documents.global_references.copy()
-    raw_cited_references = raw_cited_references.str.lower()
-    raw_cited_references = raw_cited_references.str.split(";")
-    raw_cited_references = raw_cited_references.explode()
-    raw_cited_references = raw_cited_references.str.strip()
-    raw_cited_references = raw_cited_references.dropna()
-    raw_cited_references = raw_cited_references.drop_duplicates()
-    raw_cited_references = raw_cited_references.reset_index(drop=True)
+#     # marcador para indicar si la referencia fue encontrada
+#     references = documents.copy()
+#     references["found"] = False
 
-    # raw_cited_reference --> article
-    thesaurus = {t: None for t in raw_cited_references.tolist()}
+#     # busqueda por doi
+#     print("--INFO-- Searching `references` using DOI")
+#     i_counter = 0
+#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+#         for doi, article in zip(references.doi, references.article):
+#             for key in searching_thesaurus.keys():
+#                 if searching_thesaurus[key] is None:
+#                     if not pd.isna(doi) and doi in key:
+#                         searching_thesaurus[key] = article
+#                         found_thesaurus[key] = article
+#                         references.loc[references.doi == doi, "found"] = True
 
-    # marcador para indicar si la referencia fue encontrada
-    references["found"] = False
+#             i_counter += 1
+#             if i_counter >= 100:
+#                 searching_thesaurus = {k: v for k, v in searching_thesaurus.items() if v is None}
+#                 i_counter = 0
+#             pbar.update(1)
 
-    # busqueda por doi
-    print("--INFO-- Searching `references` using DOI")
-    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for doi, article in zip(references.doi, references.article):
-            for key in thesaurus.keys():
-                if thesaurus[key] is None:
-                    if not pd.isna(doi) and doi in key:
-                        thesaurus[key] = article
-                        references.loc[references.doi == doi, "found"] = True
-            pbar.update(1)
+#     # Reduce la base de búsqueda
+#     references = references[~references.found]
 
-    # Reduce la base de búsqueda
-    references = references[~references.found]
+#     # Busqueda por (año, autor y tttulo)
+#     i_counter = 0
+#     print("--INFO-- Searching `references` using (year, title, author)")
+#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+#         for article, year, authors, title in zip(
+#             references.article,
+#             references.year,
+#             references.authors,
+#             references.title,
+#         ):
+#             year = str(year)
+#             author = authors.split()[0].lower()
+#             title = (
+#                 title.lower()
+#                 .replace(".", "")
+#                 .replace(",", "")
+#                 .replace(":", "")
+#                 .replace(";", "")
+#                 .replace("-", " ")
+#                 .replace("'", "")
+#             )
 
-    # Busqueda por (año, autor y tttulo)
-    print("--INFO-- Searching `references` using (year, title, author)")
-    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for article, year, authors, title in zip(
-            references.article,
-            references.year,
-            references.authors,
-            references.title,
-        ):
-            if pd.isna(authors) or pd.isna(year) or pd.isna(title) or pd.isna(article):
-                continue
+#             for key in searching_thesaurus.keys():
+#                 if searching_thesaurus[key] is None:
+#                     text = key
+#                     text = (
+#                         text.lower()
+#                         .replace(".", "")
+#                         .replace(",", "")
+#                         .replace(":", "")
+#                         .replace(";", "")
+#                         .replace("-", " ")
+#                         .replace("'", "")
+#                     )
 
-            year = str(year)
-            author = authors.split()[0].lower()
-            title = (
-                title.lower()
-                .replace(".", "")
-                .replace(",", "")
-                .replace(":", "")
-                .replace(";", "")
-                .replace("-", " ")
-                .replace("'", "")
-            )
+#                     if author in text and str(year) in text and title[:29] in text:
+#                         searching_thesaurus[key] = article
+#                         references.loc[references.article == article, "found"] = True
+#                         found_thesaurus[key] = article
 
-            for key in thesaurus.keys():
-                if thesaurus[key] is None:
-                    text = key
-                    text = (
-                        text.lower()
-                        .replace(".", "")
-                        .replace(",", "")
-                        .replace(":", "")
-                        .replace(";", "")
-                        .replace("-", " ")
-                        .replace("'", "")
-                    )
+#                     elif author in text and str(year) in text and title[-29:] in text:
+#                         searching_thesaurus[key] = article
+#                         references.loc[references.article == article, "found"] = True
+#                         found_thesaurus[key] = article
 
-                    if author in text and str(year) in text and title[:29] in text:
-                        thesaurus[key] = article
-                        references.loc[references.article == article, "found"] = True
-                    elif author in text and str(year) in text and title[-29:] in text:
-                        thesaurus[key] = article
-                        references.loc[references.article == article, "found"] = True
+#             i_counter += 1
+#             if i_counter >= 100:
+#                 searching_thesaurus = {k: v for k, v in searching_thesaurus.items() if v is None}
+#                 i_counter = 0
+#             pbar.update(1)
 
-            pbar.update(1)
+#     # Reduce la base de búsqueda
+#     references = references[~references.found]
 
-    # Reduce la base de búsqueda
-    references = references[~references.found]
+#     # Busqueda por titulo
+#     print("--INFO-- Searching `references` using (title)")
+#     i_counter = 0
+#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+#         for article, title in zip(
+#             references.article,
+#             references.title,
+#         ):
+#             title = (
+#                 title.lower()
+#                 .replace(".", "")
+#                 .replace(",", "")
+#                 .replace(":", "")
+#                 .replace(";", "")
+#                 .replace("-", " ")
+#                 .replace("'", "")
+#             )
 
-    # Busqueda por titulo
-    print("--INFO-- Searching `references` using (title)")
-    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for article, title in zip(
-            references.article,
-            references.title,
-        ):
-            if isinstance(title, str):
-                title = (
-                    title.lower()
-                    .replace(".", "")
-                    .replace(",", "")
-                    .replace(":", "")
-                    .replace(";", "")
-                    .replace("-", " ")
-                    .replace("'", "")
-                )
+#             for key in searching_thesaurus.keys():
+#                 text = key
+#                 text = (
+#                     text.lower()
+#                     .replace(".", "")
+#                     .replace(",", "")
+#                     .replace(":", "")
+#                     .replace(";", "")
+#                     .replace("-", " ")
+#                     .replace("'", "")
+#                 )
 
-                for key in thesaurus.keys():
-                    text = key
-                    text = (
-                        text.lower()
-                        .replace(".", "")
-                        .replace(",", "")
-                        .replace(":", "")
-                        .replace(";", "")
-                        .replace("-", " ")
-                        .replace("'", "")
-                    )
-                    if title in text:
-                        thesaurus[key] = article
-                        references.loc[references.article == article, "found"] = True
+#                 if title in text:
+#                     searching_thesaurus[key] = article
+#                     found_thesaurus[key] = article
+#                     references.loc[references.article == article, "found"] = True
 
-            pbar.update(1)
-    #
-    # Crea la columna de referencias locales
-    #
-    documents["local_references"] = documents.global_references.copy()
-    documents["local_references"] = documents["local_references"].str.lower()
-    documents["local_references"] = documents["local_references"].str.split(";")
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [t.strip() for t in x] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].str.join("; ")
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: pd.NA if x == "" else x
-    )
-    #
-    # NOTA: realmente local_references contiene las referencias globales
-    # en formato WoS
-    documents["global_references"] = documents["local_references"].copy()
+#             i_counter += 1
+#             if i_counter >= 100:
+#                 searching_thesaurus = {k: v for k, v in searching_thesaurus.items() if v is None}
+#                 i_counter = 0
+#             pbar.update(1)
+#     #
+#     # Crea la columna de referencias locales
+#     #
+#     documents["local_references"] = documents.raw_global_references.copy()
+#     documents["local_references"] = documents["local_references"].str.lower()
+#     documents["local_references"] = documents["local_references"].str.split(";")
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [found_thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].str.join("; ")
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: pd.NA if x == "" else x
+#     )
+#     #
+#     documents.to_csv(documents_path, index=False)
 
-    #
-    # Se filtran local references para que contengan unicamente records
-    # que estan en la base de datos principal
-    local_documents = documents.article.copy()
-    documents["local_references"] = documents["local_references"].str.split(";")
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [t.strip() for t in x] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: [t for t in x if t in local_documents.tolist()] if isinstance(x, list) else x
-    )
-    documents["local_references"] = documents["local_references"].map(
-        lambda x: "; ".join(x) if isinstance(x, list) else x
-    )
 
-    #
-    documents.to_csv(documents_path, index=False)
+# def create_references_from_references_csv_file(directory, disable_progress_bar=False):
+#     """Create the references from the references.csv file.
+
+#     :meta private:
+#     """
+
+#     references_path = os.path.join(directory, "databases/_references.csv")
+
+#     if not os.path.exists(references_path):
+#         print(f"--WARN-- The  file {references_path} does not exists.")
+#         print("--WARN-- Some functionalities are disabled.")
+#         return
+
+#     references = pd.read_csv(references_path)
+
+#     documents_path = os.path.join(directory, "databases/_main.csv")
+#     documents = pd.read_csv(documents_path)
+
+#     # references como aparecen en los articulos
+#     raw_cited_references = documents.global_references.copy()
+#     raw_cited_references = raw_cited_references.str.lower()
+#     raw_cited_references = raw_cited_references.str.split(";")
+#     raw_cited_references = raw_cited_references.explode()
+#     raw_cited_references = raw_cited_references.str.strip()
+#     raw_cited_references = raw_cited_references.dropna()
+#     raw_cited_references = raw_cited_references.drop_duplicates()
+#     raw_cited_references = raw_cited_references.reset_index(drop=True)
+
+#     # raw_cited_reference --> article
+#     thesaurus = {t: None for t in raw_cited_references.tolist()}
+
+#     # marcador para indicar si la referencia fue encontrada
+#     references["found"] = False
+
+#     # busqueda por doi
+#     print("--INFO-- Searching `references` using DOI")
+#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+#         for doi, article in zip(references.doi, references.article):
+#             for key in thesaurus.keys():
+#                 if thesaurus[key] is None:
+#                     if not pd.isna(doi) and doi in key:
+#                         thesaurus[key] = article
+#                         references.loc[references.doi == doi, "found"] = True
+#             pbar.update(1)
+
+#     # Reduce la base de búsqueda
+#     references = references[~references.found]
+
+#     # Busqueda por (año, autor y tttulo)
+#     print("--INFO-- Searching `references` using (year, title, author)")
+#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+#         for article, year, authors, title in zip(
+#             references.article,
+#             references.year,
+#             references.authors,
+#             references.title,
+#         ):
+#             if pd.isna(authors) or pd.isna(year) or pd.isna(title) or pd.isna(article):
+#                 continue
+
+#             year = str(year)
+#             author = authors.split()[0].lower()
+#             title = (
+#                 title.lower()
+#                 .replace(".", "")
+#                 .replace(",", "")
+#                 .replace(":", "")
+#                 .replace(";", "")
+#                 .replace("-", " ")
+#                 .replace("'", "")
+#             )
+
+#             for key in thesaurus.keys():
+#                 if thesaurus[key] is None:
+#                     text = key
+#                     text = (
+#                         text.lower()
+#                         .replace(".", "")
+#                         .replace(",", "")
+#                         .replace(":", "")
+#                         .replace(";", "")
+#                         .replace("-", " ")
+#                         .replace("'", "")
+#                     )
+
+#                     if author in text and str(year) in text and title[:29] in text:
+#                         thesaurus[key] = article
+#                         references.loc[references.article == article, "found"] = True
+#                     elif author in text and str(year) in text and title[-29:] in text:
+#                         thesaurus[key] = article
+#                         references.loc[references.article == article, "found"] = True
+
+#             pbar.update(1)
+
+#     # Reduce la base de búsqueda
+#     references = references[~references.found]
+
+#     # Busqueda por titulo
+#     print("--INFO-- Searching `references` using (title)")
+#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+#         for article, title in zip(
+#             references.article,
+#             references.title,
+#         ):
+#             if isinstance(title, str):
+#                 title = (
+#                     title.lower()
+#                     .replace(".", "")
+#                     .replace(",", "")
+#                     .replace(":", "")
+#                     .replace(";", "")
+#                     .replace("-", " ")
+#                     .replace("'", "")
+#                 )
+
+#                 for key in thesaurus.keys():
+#                     text = key
+#                     text = (
+#                         text.lower()
+#                         .replace(".", "")
+#                         .replace(",", "")
+#                         .replace(":", "")
+#                         .replace(";", "")
+#                         .replace("-", " ")
+#                         .replace("'", "")
+#                     )
+#                     if title in text:
+#                         thesaurus[key] = article
+#                         references.loc[references.article == article, "found"] = True
+
+#             pbar.update(1)
+#     #
+#     # Crea la columna de referencias locales
+#     #
+#     documents["local_references"] = documents.global_references.copy()
+#     documents["local_references"] = documents["local_references"].str.lower()
+#     documents["local_references"] = documents["local_references"].str.split(";")
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].str.join("; ")
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: pd.NA if x == "" else x
+#     )
+#     #
+#     # NOTA: realmente local_references contiene las referencias globales
+#     # en formato WoS
+#     documents["global_references"] = documents["local_references"].copy()
+
+#     #
+#     # Se filtran local references para que contengan unicamente records
+#     # que estan en la base de datos principal
+#     local_documents = documents.article.copy()
+#     documents["local_references"] = documents["local_references"].str.split(";")
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: [t for t in x if t in local_documents.tolist()] if isinstance(x, list) else x
+#     )
+#     documents["local_references"] = documents["local_references"].map(
+#         lambda x: "; ".join(x) if isinstance(x, list) else x
+#     )
+
+#     #
+#     documents.to_csv(documents_path, index=False)
 
 
 def create__local_citations__column_in_references_database(directory):
