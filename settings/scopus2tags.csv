@@ -5,7 +5,7 @@ Author(s) ID,raw_authors_id
 Authors,raw_authors
 Cited by,global_citations
 Index Keywords,raw_index_keywords
-References,global_references
+References,raw_global_references
 Source title,source_title
 Title,title
 Year,year
