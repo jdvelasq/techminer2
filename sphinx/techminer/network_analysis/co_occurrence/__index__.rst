@@ -1,6 +1,6 @@
 .. _network_analysis.co_occurrence:
 
-Co-occurrence/
+Co-occurrence >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

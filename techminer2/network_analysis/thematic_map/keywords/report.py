@@ -29,12 +29,12 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/keywords/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/keywords/CL_1_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/keywords/CL_2_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/keywords/CL_0_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/keywords/CL_1_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/keywords/CL_2_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/thematic_map/keywords/CL_0_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/thematic_map/keywords/CL_1_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/thematic_map/keywords/CL_2_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/thematic_map/keywords/CL_0_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/thematic_map/keywords/CL_1_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/thematic_map/keywords/CL_2_prompt.txt' was created.
 
 
 """

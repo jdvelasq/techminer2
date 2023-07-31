@@ -30,31 +30,32 @@ Report
 ...     cited_by_filter=(None, None),
 ... )
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_00_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_02_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_05_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_01_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_02_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_03_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_04_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_05_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_06_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_07_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_08_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_09_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_10_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_03_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_11_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_04_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_12_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_00_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_02_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_05_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_01_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_02_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_03_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_04_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_05_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_06_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_07_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_08_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_09_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_10_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_03_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_11_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_04_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/title_nlp_phrases/CL_12_prompt.txt' was created.
+
 
 
 """

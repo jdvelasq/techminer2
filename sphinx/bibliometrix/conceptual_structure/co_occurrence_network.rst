@@ -1,6 +1,4 @@
-.. automodule:: techminer2.bibliometrix.conceptual_structure.co_occurrence_network
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Co-occurrence Network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+See: `TechMiner 2++ > Network Analysis >` :ref:`network_analysis.co_occurrence`

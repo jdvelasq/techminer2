@@ -76,8 +76,8 @@ Table:
 | 13 |     13 | EUROPEAN_UNION 1:024                       |        0 |
 | 14 |     14 | FINANCIAL_RISK 1:021                       |        0 |
 | 15 |     15 | FINANCIAL_DEVELOPMENT 1:013                |        0 |
-| 16 |     16 | REGULATORY_TECHNOLOGY_REGTECH 1:011        |        0 |
-| 17 |     17 | FINANCIAL_SYSTEM 1:011                     |        0 |
+| 16 |     16 | FINANCIAL_SYSTEM 1:011                     |        0 |
+| 17 |     17 | REGULATORY_TECHNOLOGY_REGTECH 1:011        |        0 |
 | 18 |     18 | SMART_REGULATION 1:004                     |        0 |
 | 19 |     19 | CHARITABLE_ORGANISATIONS 1:003             |        0 |
 ```

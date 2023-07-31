@@ -30,11 +30,11 @@ Report
 ...     cited_by_filter=(None, None),
 ... )
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_2_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_1_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_2_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_0_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_2_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_1_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_analysis/co_occurrence/descriptors/CL_2_prompt.txt' was created.
 
 
 """

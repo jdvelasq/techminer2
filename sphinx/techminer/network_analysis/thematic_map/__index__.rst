@@ -1,6 +1,6 @@
 .. _network_analysis.thematic_map:
 
-Thematic Map/
+Thematic Map >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

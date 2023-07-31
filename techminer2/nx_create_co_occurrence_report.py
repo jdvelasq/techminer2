@@ -313,7 +313,7 @@ def __generate_records_prompt(
         "the central idea of the  all text, in at most 200 words."
     )
 
-    for cluster in communities:
+    for cluster in sorted(communities.keys()):
         records = records_per_cluster[cluster]
         records = records.sort_values(
             ["global_citations", "local_citations", "year"], ascending=False
@@ -339,7 +339,7 @@ def __generate_records_report(
 ):
     """Generates records report."""
 
-    for cluster in communities:
+    for cluster in sorted(communities.keys()):
         records = records_per_cluster[cluster]
         records = records.sort_values(
             ["global_citations", "local_citations", "year"], ascending=False

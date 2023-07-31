@@ -35,4 +35,7 @@ def nx_communities_summary(nx_graph, conserve_counters):
         }
     )
 
+    summary = summary.sort_values("Cluster", ascending=True)
+    summary = summary.reset_index(drop=True)
+
     return summary

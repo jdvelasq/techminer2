@@ -1,6 +1,6 @@
 .. _network_analysis.co_authorship:
 
-Co-authorship/
+Co-authorship >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

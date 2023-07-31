@@ -1,4 +1,4 @@
-Conceptual Structure/
+Conceptual Structure >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

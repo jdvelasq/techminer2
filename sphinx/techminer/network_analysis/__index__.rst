@@ -1,6 +1,6 @@
 .. _network_analysis:
 
-Network Analysis/
+Network Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

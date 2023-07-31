@@ -34,21 +34,20 @@ Communities Summary
 ... )
    Cluster  ...                                              Terms
 0    CL_00  ...  REGULATORY_TECHNOLOGY; BANK_TREASURY; DIGITAL_...
-1    CL_02  ...       ARTIFICIAL_INTELLIGENCE; EFFECTIVE_SOLUTIONS
-2    CL_05  ...                               FINANCIAL_REGULATION
-3    CL_01  ...  FINANCIAL_CRIME; AML_COMPLIANCE; REGTECH_SOLUT...
-4    CL_06  ...                                     EUROPEAN_UNION
-5    CL_07  ...                                     FINANCIAL_RISK
-6    CL_08  ...                              FINANCIAL_DEVELOPMENT
-7    CL_09  ...                      REGULATORY_TECHNOLOGY_REGTECH
-8    CL_10  ...                                   FINANCIAL_SYSTEM
-9    CL_03  ...  MODERN_INFORMATION_TECHNOLOGY; REGULATORY_AFFAIRS
-10   CL_11  ...                                   SMART_REGULATION
-11   CL_04  ...  FINANCIAL_STABILITY; TRADITIONAL_FINANCIAL_INT...
+1    CL_01  ...  FINANCIAL_CRIME; AML_COMPLIANCE; REGTECH_SOLUT...
+2    CL_02  ...       ARTIFICIAL_INTELLIGENCE; EFFECTIVE_SOLUTIONS
+3    CL_03  ...  MODERN_INFORMATION_TECHNOLOGY; REGULATORY_AFFAIRS
+4    CL_04  ...  FINANCIAL_STABILITY; TRADITIONAL_FINANCIAL_INT...
+5    CL_05  ...                               FINANCIAL_REGULATION
+6    CL_06  ...                                     EUROPEAN_UNION
+7    CL_07  ...                                     FINANCIAL_RISK
+8    CL_08  ...                              FINANCIAL_DEVELOPMENT
+9    CL_09  ...                                   FINANCIAL_SYSTEM
+10   CL_10  ...                      REGULATORY_TECHNOLOGY_REGTECH
+11   CL_11  ...                                   SMART_REGULATION
 12   CL_12  ...                           CHARITABLE_ORGANISATIONS
 <BLANKLINE>
 [13 rows x 4 columns]
-
 
 
 """

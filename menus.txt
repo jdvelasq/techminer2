@@ -1,161 +1,138 @@
-VANTAGEPOINT                    T-LAB                          BIBLIOMETRIX
-|                               |                              |
-+- Record Display               +- Text Screaning              +- Data
-|                               |                              |  \- Load Data 
-+- Summary View                 +- Co-occ Analysis             |  
-|                               |  +- Word Associations        +- Filters 
-+- Thesaurus                    |  |  +- Coc Bar Plot          |
-|                               |  |  +- Radial Diagram        +- Overview
-+- Analyze                      |  |  +- 2D MDS Map            |  +- Main Information
-|  +- Discover                  |  |  +- 2D SVD Map            |  +- Annual Scientific Production
-|  |  +- List                   |  |  +- 2D TSNE Map           |  +- Average Citations Per Year
-|  |  +- Matrix                 |  |  +- Cosine Association    |  +- Three Field Plot
-|  |  |  +- Coc Matrix          |  |  \- Coc Matrix            | 
-|  |  |  +- Auto-corr Matrix    |  |                           +- Sources
-|  |  |  +- Cross-corr Matrix   |  +- Comparison Word Pairs    |  +- Most Frequent Sources
-|  |  |  \- Factor Matrix       |  |                           |  +- Most Local Cited Sources
-|  |  |                         |  +- Sequence & Networks      |  +- Bradford's Law
-|  |  +- Map                    |  |  +- Ego Graph             |  +- Sources' Local Impact
-|  |  |  +- Corr Map            |  |  \- Ego Network           |  \- Sources' Production over Time
-|  |  |  \- Factor Map          |  |                           | 
-|  |  |                         |  \- Concordances             +- Authors
-|  |  \- Terms by Year          |                              |  +- Authors
-|  |                            +- Thematic Analysis           |  |  +- Most Relevant Authors
-|  +- Explore                   |  +- Them Anal of Contexts    |  |  +- Most Local Cited Authors
-|  |  +- VizLink Charts         |  +- Emerging Themes          |  |  +- Authors' Production over Time
-|  |  +- Pivot Tool             |  +- Document Clustering      |  |  +- Lotka's Law
-|  |  +- Matrix Viewer          |  +- Dictionary-based Clust   |  |  \- Authors' Local Impact
-|  |  +- Cluster Records        |  \- Text and Discourses      |  |
-|  |  +- Sankey Chart           |                              |  +- Affiliations
-|  |  \- Concept Grid           \- Comparative Analysis        |  |  +- Most Relevant Affiliations
-|  |                               +- Specificity Analysis     |  |  +- Affiliations' Production over Time
-|  \- Calculate                    +- CA                       |  |  
-|     +- Emergence indicators      +- MCA                      |  \- Countries
-|     +- Date Difference           +- Cluster Analysis         |     +- Corresponding Author's Countries
-|     +- Network Metrics           +- SVD                      |     +- Countries' Scientific Production
-|     +- Statistics                \- MDS                      |     +- Countries' Production over Time
-|                                                              |     \- Most Cited Countries
-\- Report                                                      |
-   +- Column Chart              SCIENTOPY                      +- Documents
-   +- Bar Chart                 |                              |  +- Documents
-   +- Pie Chart                 +- Bar                         |  |  +- Most Global Cited Countries
-   +- Line Chart                +- Bar Trends                  |  |  +- Most Local Cited Countries
-   +- Cleveland Dot Chart (*)   +- Time Line                   |  |
-   +- Ranking Chart (*)         +- Word Cloud                  |  +- Cited References
-   +- Word Cloud                \- Top Trending Topics         |  |  +- Most Local Cited References
-   +- Multi Donut                                              |  |  \- RPYS 
-   +- Bubble Chart                                             |  |
-   +- Gantt Chart                                              |  \- Words
-   +- Butterfly Chart                                          |     +- Most Frequent Words
-   +- Cluster Map                                              |     +- WordCloud
-   +- Super Profile                                            |     +- Treemap
-   +- World Map                                                |     +- Words Frequency over Time
-   +- Plot Classifications                                     |     \- Trend Topics      
-   \- Plot Emergence                                           |
-                                                               +- Clustering 
-                                                               |  \- Clustering by Coupling
-                                                               |
-                                                               +- Conceptual Structure
-                                                               |  +- Network Approach
-                                                               |  |  +- Co-occurrence Network
-                                                               |  |  +- Thematic Map
-                                                               |  |  \- Thematic Evolution
-                                                               |  |
-                                                               |  \- Factorial Approach
-                                                               |     \- Factorial Analysis
-                                                               |
-                                                               +- Intellectual Structure
-                                                               |  +- Co-citation Network
-                                                               |  \- Historiograph
-                                                               |
-                                                               \- Social Structure
-                                                                  +- Collaboration Network
-                                                                  +- Countries' Collaboration World Map
-
-##### 
-
-VANTAGEPOINT                    T-LAB                          BIBLIOMETRIX
-|                               |                              |
-+- Record Display               +- Text Screaning              +- Data
-|                               |                              |  \- Load Data 
-+- Summary View                 +- Co-occ Analysis             |  
-|                               |  +- Word Associations        +- Filters 
-+- Thesaurus                    |  |  +- Coc Bar Plot          |
-|                               |  |  +- Radial Diagram        +- Overview
-+- Analyze                      |  |  +- 2D MDS Map            |  +- Main Information
-|  +- Discover                  |  |  +- 2D SVD Map            |  +- Annual Scientific Production
-|  |  +- List                   |  |  +- 2D TSNE Map           |  +- Average Citations Per Year
-|  |  +- Matrix                 |  |  +- Cosine Association    |  +- Three Field Plot
-|  |  |  +- Coc Matrix          |  |  \- Coc Matrix            | 
-|  |  |  +- Auto-corr Matrix    |  |                           +- Sources
-|  |  |  +- Cross-corr Matrix   |  +- Comparison Word Pairs    |  +- Most Frequent Sources
-|  |  |  \- Factor Matrix       |  |                           |  +- Most Local Cited Sources
-|  |  |                         |  +- Sequence & Networks      |  +- Bradford's Law
-|  |  +- Map                    |  |  +- Ego Graph             |  +- Sources' Local Impact
-|  |  |  +- Corr Map            |  |  \- Ego Network           |  \- Sources' Production over Time
-|  |  |  \- Factor Map          |  |                           | 
-|  |  |                         |  \- Concordances             +- Authors
-|  |  \- Terms by Year          |                              |  +- Authors
-|  |                            +- Thematic Analysis           |  |  +- Most Relevant Authors
-|  +- Explore                   |  +- Them Anal of Contexts    |  |  +- Most Local Cited Authors
-|  |  +- VizLink Charts         |  +- Emerging Themes          |  |  +- Authors' Production over Time
-|  |  +- Pivot Tool             |  +- Document Clustering      |  |  +- Lotka's Law
-|  |  +- Matrix Viewer          |  +- Dictionary-based Clust   |  |  \- Authors' Local Impact
-|  |  +- Cluster Records        |  \- Text and Discourses      |  |
-|  |  +- Sankey Chart           |                              |  +- Affiliations
-|  |  \- Concept Grid           \- Comparative Analysis        |  |  +- Most Relevant Affiliations
-|  |                               +- Specificity Analysis     |  |  +- Affiliations' Production over Time
-|  \- Calculate                    +- CA                       |  |  
-|     +- Emergence indicators      +- MCA                      |  \- Countries
-|     +- Date Difference           +- Cluster Analysis         |     +- Corresponding Author's Countries
-|     +- Network Metrics           +- SVD                      |     +- Countries' Scientific Production
-|     +- Statistics                \- MDS                      |     +- Countries' Production over Time
-|                                                              |     \- Most Cited Countries
-\- Report                                                      |
-   +- Column Chart              SCIENTOPY                      +- Documents
-   +- Bar Chart                 |                              |  +- Documents
-   +- Pie Chart                 +- Bar                         |  |  +- Most Global Cited Countries
-   +- Line Chart                +- Bar Trends                  |  |  +- Most Local Cited Countries
-   +- Cleveland Dot Chart (*)   +- Time Line                   |  |
-   +- Ranking Chart (*)         +- Word Cloud                  |  +- Cited References
-   +- Word Cloud                \- Top Trending Topics         |  |  +- Most Local Cited References
-   +- Multi Donut                                              |  |  \- RPYS 
-   +- Bubble Chart                                             |  |
-   +- Gantt Chart                                              |  \- Words
-   +- Butterfly Chart                                          |     +- Most Frequent Words
-   +- Cluster Map                                              |     +- WordCloud
-   +- Super Profile                                            |     +- Treemap
-   +- World Map                                                |     +- Words Frequency over Time
-   +- Plot Classifications                                     |     \- Trend Topics      
-   \- Plot Emergence                                           |
-                                                               +- Clustering 
-                                                               |  \- Clustering by Coupling
-                                                               |
-                                                               +- Conceptual Structure
-                                                               |  +- Network Approach
-                                                               |  |  +- Co-occurrence Network
-                                                               |  |  +- Thematic Map
-                                                               |  |  \- Thematic Evolution
-                                                               |  |
-                                                               |  \- Factorial Approach
-                                                               |     \- Factorial Analysis
-                                                               |
-                                                               +- Intellectual Structure
-                                                               |  +- Co-citation Network
-                                                               |  \- Historiograph
-                                                               |
-                                                               \- Social Structure
-                                                                  +- Collaboration Network
-                                                                  +- Countries' Collaboration World Map
- 
+BIBLIOMETRIX                              VANTAGEPOINT                     VOSVIEWER
+|                                         |                                |
++- Data                                   +- Search                        +- Co-authorship
+|  \- Load Data                           |                                |  +- Authors
+|                                         +- Refine                        |  +- Organizations
++- Filters                                |                                |  \- Countries
+|                                         +- Analyze                       |
++- Overview                               |  +- Discover                   +- Co-occurrence
+|  +- Main Information                    |  |  +- List                    |  +- All keywords
+|  +- Annual Scientific Production        |  |  +- Matrix                  |  +- Author keywords
+|  +- Average Citations Per Year          |  |  |  +- Co-occurrence        |  +- Index keywords
+|  +- Three Field Plot                    |  |  |  +- Auto-correlation     |
+|                                         |  |  |  +- Cross-correlation    +- Citation 
++- Sources                                |  |  |  +- Factor               |  +- Documents
+|  +- Most Frequent Sources               |  |  |  \- TFIDF                |  +- Sources
+|  +- Most Local Cited Sources            |  |  |                          |  +- Authors 
+|  +- Bradford's Law                      |  |  +- Map                     |  +- Organizations
+|  +- Sources' Local Impact               |  |  |  +- Autocorrelation      |  +- Countries
+|  \- Sources' Production over Time       |  |  |  +- Cross-correlation    |
+|                                         |  |  |  \- Factor               +- Bibliographic Coupling
++- Authors                                |  |  |                          |  +- Documents 
+|  +- Authors                             |  |  +- List Comparison         |  +- Sources
+|  |  +- Most Relevant Authors            |  |  +- Find Similar Records    |  +- Authors
+|  |  +- Most Local Cited Authors         |  |  \- Terms by Year           |  +- Organizations
+|  |  +- Authors' Production over Time    |  |                             |  +- Countries
+|  |  +- Lotka's Law                      |  +- Classify                   |
+|  |  \- Authors' Local Impact            |  |  +- Build Classifications   \- Co-citation
+|  |                                      |  |  +- Smart Trainer              +- Cited References
+|  +- Affiliations                        |  |  \- Auto-classifier            +- Cited Sources
+|  |  +- Most Relevant Affiliations       |  |                                +- Cited Authors
+|  |  +- Production over Time             |  +- Explore                    
+|  |                                      |  |  +- VizLink Chart           
+|  \- Countries                           |  |  +- Pivot Tool             
+|     +- Corresponding Author's Countries |  |  +- Matrix Viewer           
+|     +- Countries' Scientific Production |  |  +- Cluster Records         
+|     +- Countries' Production over Time  |  |  +- Sankey Chart            
+|     \- Most Cited Countries             |  |  \- Concept Grid            
+|                                         |  |                             
++- Documents                              |  \- Calculate                  
+|  +- Documents                           |     +- Emergence Indicators    
+|  |  +- Most Global Cited Countries      |     +- Date Difference         
+|  |  +- Most Local Cited Countries       |     +- Network Metrics         
+|  |                                      |     +- Statistics              
+|  +- Cited References                    |                                
+|  |  +- Most Local Cited References      \- Report                        
+|  |  \- RPYS                                +- Column Chart               
+|  |                                         +- Bar Chart                  
+|  \- Words                                  +- Pie Chart                  
+|     +- Most Frequent Words                 +- Line Chart                 
+|     +- WordCloud                           +- Word Cloud                 
+|     +- Treemap                             +- Multi Donut                
+|     +- Words Frequency over Time           +- Bubble Chart               
+|     \- Trend Topics                        +- Gantt Chart                
+|                                            +- Butterfly Chart            
++- Clustering                                +- Scatter Plot               
+|  \- Clustering by Coupling                 +- Cluster Map                
+|                                            +- Super Profile              
++- Conceptual Structure                      +- World Map                  
+|  +- Network Approach                       +- Plot Classifications       
+|  |  +- Co-occurrence Network               +- Plot Emergence             
+|  |  +- Thematic Map                                                        
+|  |  \- Thematic Evolution                                         
+|  |                                SCIENTOPTY                 
+|  \- Factorial Approach            |                            
+|     \- Factorial Analysis         +- Bar                      
+|                                   +- Bar Trends                          
++- Intellectual Structure           +- Time Line                                        
+|  +- Co-citation Network           +- Word Cloud                                        
+|  \- Historiograph                 \- Top Trending Topics                                         
+|                                                                            
+\- Social Structure                                                          
+   +- Collaboration Network                                                  
+   +- Countries' Coll World Map                                              
+                                                                             
 
 
-
-
-
-
-
-
-
-
-
+TLAB      
+|
++----------------------------------+----------------------------------\
+|                                  |                                  |
++- Co-occurrence Analysis          +- Thematic Analysis               +- Comparative Analysis
+   +- Word Associations               +- Elementary Contexts             +- Specificity Analysis
+   |  +- Graphs                       |    +- 2d Chart                   |  +- Bar Chart
+   |  |  +- Radial Diagram            |    +- Cluster Summary            |  +- Treemap                              
+   |  |  +- Cosine                    |    +- 3d Chart                   |  +- Contexts
+   |  |  +- Co-occurrences            |    +- Cluster characteristics    |  +- TFIDF                         
+   |  |  +- MDS Map                   |    +- Cross tabulation           |                
+   |  |                               |    +- Contigency table           +- CA 
+   |  \- Tables                       |    +- Dendogram                  |                                   
+   |     +- Selected Item             |    +- Heatmap                    +- MCA                                 
+   |     +- All items                 |    +- Treemap                    |           
+   |     +- Co-occurence Matrix       |    +- Word Network               +- Cluster Analysis                         
+   |     +- Significance Tests        |    +- Sunburst                   |  +- Co-word HCA                          
+   |     +- Bar Chart                 |    +- Word Cloud                 |  +- Networ Analysis              
+   |     +- Word Network              |                                  |  +- SVD + KMeans    
+   |     \- Word Cloud                +- Topic Modeling                  |                                         
+   |                                  |  +- Topic Summary                \- SVD                                  
+   +- Co-word Analysis                |  +- Topics Bar Chart                +- Co-occ Matrix                 
+   |  +- Graphs                       |  +- Contexts                        |  +- 2D Chart
+   |  |  +- MDS Map                   |  +- MDS Map                         |  +- Eigenvalues
+   |  |  +- tSNE                      |  +- Shared words                    |  +- Word Embeddings                          
+   |  |  +- PCA 3D                    |  \- Correspondence Analysis         |  +- Cosine Similarities                                           
+   |  |  +- CA                        |                                     |  +- Radial Diagrams
+   |  |  +- Dendogram                 +- Document Clustering                |  +- Dendogram          
+   |  |  \- Clustered Word Network    |  +- Corrrespondence Analysis        |                                                         
+   |  |                               |  +- Cluster summary                 \- TFIDF (Binary)
+   |  \- Tables                       |  +- Contingency Table                  +- 2D Chart          
+   |     +- Summary                   |                                        +- Eigenvalues
+   |     +- Association Indexes       +- Dictionary-Based Class           +- Word Embeddings                                                         
+   |     +- Co-occurrences            |                                        +- Cosine Similarities
+   |                                  +- Texts and Discourses                  +- Radial Diagrams 
+   +- Word Pairs                                                               +- Cluster map                        
+   |  +- Bar Chart                                                                                
+   |  +- Radial Diagram                                                                                
+   |  +- Dual Bar Chart                                                                    
+   |  +- Contexts                                                  
+   |                                                  
+   +- Secuences and Networks                                                                
+   |   +- Graphs                                                                              
+   |   |  +- Ego Network                                                                          
+   |   |  +- Ego Graph                                                  
+   |   |  +- Dendogram                                                  
+   |   |  +- Heatmap                                                                 
+   |   |  +- Treemap                                                  
+   |   |  +- Bar Chart                                                  
+   |   |  +- Word Network                                                  
+   |   |  +- Sunburst                                                              
+   |   |  +- Word Cloud                                                  
+   |   |                                                     
+   |   \- Tables                                                                         
+   |      +- Contexts                                                                
+   |      +- Adjacency Matrix                                                  
+   |      +- Significance Test                                                  
+   |      +- Rank of appearance                                                               
+   |                                                   
+   +- Concordances and Word Trees                                                           
+      +- Concordances                                                                     
+                             
