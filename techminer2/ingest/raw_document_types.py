@@ -36,7 +36,7 @@ No document types found
 """
 import os
 
-from .ingest_raw_data import concat_raw_csv_files, get_subdirectories
+from .ingest_raw_data import concat_raw_zip_files, get_subdirectories
 
 
 def raw_document_types(root_dir):
@@ -47,7 +47,7 @@ def raw_document_types(root_dir):
 
     folders = get_subdirectories(raw_dir)
     for folder in folders:
-        data = concat_raw_csv_files(os.path.join(raw_dir, folder))
+        data = concat_raw_zip_files(os.path.join(raw_dir, folder))
         if "docuemnt_type" in data.columns:
             print(f"--INFO-- Document types in: {folder}")
             print(data.document_type.value_counts())

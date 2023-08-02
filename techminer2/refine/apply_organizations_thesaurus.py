@@ -45,10 +45,10 @@ def apply_organizations_thesaurus(
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     # Apply thesaurus
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
 
     for file in files:
-        records = pd.read_csv(file, encoding="utf-8")
+        records = pd.read_csv(file, encoding="utf-8", compression="zip")
         #
         #
         records = records.assign(raw_organizations=records.affiliations.str.split(";"))
@@ -73,7 +73,7 @@ def apply_organizations_thesaurus(
         records = records.assign(organizations=records.organizations.str.join("; "))
         #
         #
-        records.to_csv(file, sep=",", encoding="utf-8", index=False)
+        records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
     print(
         f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases"

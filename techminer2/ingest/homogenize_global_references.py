@@ -48,8 +48,8 @@ def __apply_thesaururs(root_dir):
 
     #
     # Loadas the main database
-    main_file = os.path.join(root_dir, "databases/_main.csv")
-    data = pd.read_csv(main_file, encoding="utf-8")
+    main_file = os.path.join(root_dir, "databases/_main.zip")
+    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
 
     #
     # Replace raw_global_references
@@ -61,7 +61,7 @@ def __apply_thesaururs(root_dir):
         lambda x: ";".join(x) if isinstance(x, list) else x
     )
 
-    data.to_csv(main_file, index=False, encoding="utf-8")
+    data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")
 
 
 def __homogeneize_references(root_dir):
@@ -69,8 +69,8 @@ def __homogeneize_references(root_dir):
     # Crates the thesaurus file
     #
 
-    main_file = os.path.join(root_dir, "databases/_main.csv")
-    refs_file = os.path.join(root_dir, "databases/_references.csv")
+    main_file = os.path.join(root_dir, "databases/_main.zip")
+    refs_file = os.path.join(root_dir, "databases/_references.zip")
 
     if not os.path.exists(refs_file):
         return False
@@ -79,14 +79,14 @@ def __homogeneize_references(root_dir):
 
     #
     # Loads raw references from the main database
-    data = pd.read_csv(main_file, encoding="utf-8")
+    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
     raw_references = data["raw_global_references"].dropna()
     raw_references = raw_references.str.split(";").explode().str.strip().drop_duplicates()
     raw_references = ";".join(raw_references)
 
     #
     # Loads refernece info from the references database
-    references = pd.read_csv(refs_file, encoding="utf-8")
+    references = pd.read_csv(refs_file, encoding="utf-8", compression="zip")
     references = references[["article", "title", "authors", "year"]]
     references["first_author"] = references["authors"].str.split(" ").map(lambda x: x[0].lower())
     references["title"] = references["title"].str.lower()

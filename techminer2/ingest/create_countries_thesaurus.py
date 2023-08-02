@@ -41,9 +41,9 @@ def load_affiliations_frame(directory):
 
     affiliations = []
 
-    files = list(glob.glob(os.path.join(directory, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(directory, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if "affiliations" in data.columns:
             affiliations.append(
                 data.affiliations.dropna()

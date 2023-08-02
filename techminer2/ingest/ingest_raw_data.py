@@ -18,7 +18,7 @@ Import a scopus data file in the working directory.
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/", 
-...     disable_progress_bar=True
+...     remove_raw_csv_files=True,
 ... )
 --INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw-data/references/
@@ -76,15 +76,15 @@ Import a scopus data file in the working directory.
 --INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words
 --INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
---INFO-- data/regtech/databases/_references.csv: 909 imported records
---INFO-- data/regtech/databases/_main.csv: 52 imported records
---INFO-- data/regtech/databases/_cited_by.csv: 387 imported records
+--INFO-- data/regtech/databases/_references.zip: 909 imported records
+--INFO-- data/regtech/databases/_main.zip: 52 imported records
+--INFO-- data/regtech/databases/_cited_by.zip: 387 imported records
 
 >>> import pandas as pd
 >>> from pprint import pprint
 >>> import textwrap
 >>> root_dir = "data/regtech/"
->>> my_list = pd.read_csv(root_dir + "databases/_main.csv", encoding="utf-8").columns.tolist()
+>>> my_list = pd.read_csv(root_dir + "databases/_main.zip", encoding="utf-8", compression="zip").columns.tolist()
 >>> wrapped_list = textwrap.fill(", ".join(sorted(my_list)), width=79)
 >>> print(wrapped_list)
 abstract, abstract_nlp_phrases, affiliations, art_no, article, author_keywords,
@@ -103,7 +103,7 @@ title_nlp_phrases, volume, year
 
 
 
->>> recors = pd.read_csv(root_dir + "databases/_main.csv", encoding="utf-8")
+>>> recors = pd.read_csv(root_dir + "databases/_main.zip", encoding="utf-8", compression="zip")
 >>> print(recors[["raw_authors_id", "authors_id"]].head().to_markdown())
 |    | raw_authors_id                                                           | authors_id                                                                                                                                            |
 |---:|:-------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -139,7 +139,7 @@ from .homogenize_local_references import homogenize_local_references
 KEYWORDS_MAX_LENGTH = 50
 
 
-def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types):
+def ingest_raw_data(root_dir="./", remove_raw_csv_files=True, **document_types):
     """
     Import a Scopus data file in the working directory.
 
@@ -158,6 +158,8 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
     # Phase 1: Preparing database files
     #
     #
+    compress_raw_data(root_dir, remove_raw_csv_files)
+
     create_working_directories(root_dir)
     create_stopword_txt_file(root_dir)
     create_database_files(root_dir)
@@ -568,15 +570,33 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
 # End of main function
 #
 #
+def compress_raw_data(root_dir, remove_raw_csv_files):
+    """
+    :meta private:
+    """
+
+    raw_dir = os.path.join(root_dir, "raw-data")
+
+    folders = get_subdirectories(raw_dir)
+    for folder in folders:
+        csv_files = os.listdir(os.path.join(raw_dir, folder))
+        csv_files = [f for f in csv_files if f.endswith(".csv")]
+        for csv_file in csv_files:
+            csv_file_path = os.path.join(raw_dir, folder, csv_file)
+            zip_file_path = os.path.join(raw_dir, folder, csv_file[:-4] + ".zip")
+            df = pd.read_csv(csv_file_path, encoding="utf-8")
+            df.to_csv(zip_file_path, encoding="utf-8", index=False, compression="zip")
+            if remove_raw_csv_files:
+                os.remove(csv_file_path)
 
 
 def replace_journal_name_in_references(root_dir):
     abbrs = []
 
     processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.csv"))
+    files = list(processed_dir.glob("_*.zip"))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         data = data[["source", "source_abbr"]]
         data = data.dropna()
         data = data.drop_duplicates()
@@ -584,14 +604,14 @@ def replace_journal_name_in_references(root_dir):
         abbrs.append(data)
     abbrs = pd.concat(abbrs, ignore_index=True)
 
-    main_path = pathlib.Path(root_dir) / "databases/_main.csv"
-    main = pd.read_csv(main_path, encoding="utf-8")
+    main_path = pathlib.Path(root_dir) / "databases/_main.zip"
+    main = pd.read_csv(main_path, encoding="utf-8", compression="zip")
 
     for source, source_abbr in zip(abbrs.source, abbrs.source_abbr):
         main["raw_global_references"] = main["raw_global_references"].str.replace(
             source, source_abbr, regex=False
         )
-    main.to_csv(main_path, sep=",", encoding="utf-8", index=False)
+    main.to_csv(main_path, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def create_working_directories(root_dir):
@@ -648,10 +668,10 @@ def create_database_files(root_dir):
 
     folders = get_subdirectories(raw_dir)
     for folder in folders:
-        data = concat_raw_csv_files(os.path.join(raw_dir, folder))
-        file_name = f"_{folder}.csv"
+        data = concat_raw_zip_files(os.path.join(raw_dir, folder))
+        file_name = f"_{folder}.zip"
         file_path = os.path.join(processed_dir, file_name)
-        data.to_csv(file_path, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file_path, sep=",", encoding="utf-8", index=False, compression="zip")
 
     file_path = os.path.join(root_dir, "databases/_DO_NOT_TOUCH_.txt")
     with open(file_path, "w", encoding="utf-8"):
@@ -675,9 +695,9 @@ def get_subdirectories(directory):
     return subdirectories
 
 
-def concat_raw_csv_files(path, quiet=False):
+def concat_raw_zip_files(path, quiet=False):
     """
-    Concatenate raw CSV files in a directory.
+    Concatenate raw ZIP files in a directory.
 
     Args:
         path (str): The path to the directory containing the raw CSV files.
@@ -691,9 +711,9 @@ def concat_raw_csv_files(path, quiet=False):
     if not quiet:
         print(f"--INFO-- Concatenating raw files in {path}/")
 
-    files = get_csv_files(path)
+    files = get_zip_files(path)
     if not files:
-        raise FileNotFoundError(f"No CSV files found in {path}")
+        raise FileNotFoundError(f"No ZIP files found in {path}")
 
     data = []
     for file_name in files:
@@ -706,20 +726,20 @@ def concat_raw_csv_files(path, quiet=False):
     return data
 
 
-def get_csv_files(directory):
+def get_zip_files(directory):
     """
-    Get a list of CSV files in a directory.
+    Get a list of ZIP files in a directory.
 
     Args:
         directory (str): The directory to get the CSV files from.
 
     Returns:
-        A list of CSV files.
+        A list of ZIP files.
 
     :meta private:
     """
     csv_files = os.listdir(directory)
-    csv_files = [f for f in csv_files if f.endswith(".csv")]
+    csv_files = [f for f in csv_files if f.endswith(".zip")]
     return csv_files
 
 
@@ -746,11 +766,11 @@ def rename_scopus_columns_in_database_files(root_dir):
     scopus2tags = dict(zip(tags["scopus"], tags["techminer"]))
 
     processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.csv"))
+    files = list(processed_dir.glob("_*.zip"))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         data.rename(columns=scopus2tags, inplace=True)
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def filter_nlp_phrases(root_dir):
@@ -761,10 +781,10 @@ def filter_nlp_phrases(root_dir):
 
     def get_nlp_phrases(column):
         databases_dir = pathlib.Path(root_dir) / "databases"
-        files = list(databases_dir.glob("_*.csv"))
+        files = list(databases_dir.glob("_*.zip"))
         nlp_phrases = set()
         for file in files:
-            data = pd.read_csv(file, encoding="utf-8")
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if column not in data.columns:
                 continue
             file_nlp_phrases = data[column].dropna()
@@ -783,10 +803,10 @@ def filter_nlp_phrases(root_dir):
         """Apply filter to nlp phrases to the specicied column"""
 
         databases_dir = pathlib.Path(root_dir) / "databases"
-        files = list(databases_dir.glob("_*.csv"))
+        files = list(databases_dir.glob("_*.zip"))
 
         for file in files:
-            data = pd.read_csv(file, encoding="utf-8")
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if column not in data.columns:
                 continue
             data[column] = (
@@ -799,7 +819,7 @@ def filter_nlp_phrases(root_dir):
                 .map(lambda x: "; ".join(sorted(x)))
                 .map(lambda x: pd.NA if x == "" else x)
             )
-            data.to_csv(file, sep=",", encoding="utf-8", index=False)
+            data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
     #
     # Main code:
@@ -842,11 +862,11 @@ def format_columns_names_in_database_files(root_dir: str) -> None:
     print("--INFO-- Formatting column names in database files")
 
     processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.csv"))
+    files = list(processed_dir.glob("_*.zip"))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         data = format_column_names(data)
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def format_column_names(data: pd.DataFrame) -> pd.DataFrame:
@@ -881,20 +901,20 @@ def repair_authors_id_in_database_files(root_dir: str) -> None:
     print("--INFO-- Repairing authors ID")
 
     processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.csv"))
+    files = list(processed_dir.glob("_*.zip"))
     max_length = get_max_authors_id_length(files)
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         data["authors_id"] = repair_authors_id(data["raw_authors_id"], max_length)
-        data.to_csv(file, index=False, encoding="utf-8")
+        data.to_csv(file, index=False, encoding="utf-8", compression="zip")
 
 
 def get_max_authors_id_length(files: list) -> int:
     """
-    Get the maximum length of authors IDs in a list of CSV files.
+    Get the maximum length of authors IDs in a list of ZIP files.
 
     Args:
-        files: A list of CSV files.
+        files: A list of ZIP files.
 
     Returns:
         The maximum length of authors IDs.
@@ -903,7 +923,7 @@ def get_max_authors_id_length(files: list) -> int:
     """
     lengths = []
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         ids = data["raw_authors_id"].copy()
         ids = ids.str.rstrip(";")
         ids = ids.str.split(";")
@@ -960,13 +980,13 @@ def repair_bad_separators_in_keywords(root_dir):
     """
     print("--INFO-- Repairing bad separators in keywords")
     processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.csv"))
+    files = list(processed_dir.glob("_*.zip"))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         for column in ["raw_index_keywords", "raw_authors_keywords"]:
             if column in data.columns:
                 data[column] = repair_keywords_in_column(data[column])
-        data.to_csv(file, index=False, encoding="utf-8")
+        data.to_csv(file, index=False, encoding="utf-8", compression="zip")
 
 
 def repair_keywords_in_column(raw_keywords: pd.Series) -> pd.Series:
@@ -1000,15 +1020,15 @@ def remove_records(root_dir, col_name, values_to_remove):
         return
     print(f"--INFO-- Removing records with `{col_name}` in {values_to_remove}")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         org_length = len(data)
         data = data[~data[col_name].isin(values_to_remove)]
         new_length = len(data)
         if org_length != new_length:
             print(f"--INFO-- Removed {org_length - new_length} records")
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def drop_empty_columns_in_database_files(root_dir):
@@ -1019,15 +1039,15 @@ def drop_empty_columns_in_database_files(root_dir):
 
     print("--INFO-- Dropping NA columns in database files")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         original_cols = data.columns.copy()
         data = data.dropna(axis=1, how="all")
         if len(data.columns) != len(original_cols):
             removed_cols = set(original_cols) - set(data.columns)
             print(f"--INFO-- Removed columns: {removed_cols}")
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def process_text_columns(root_dir, process_func, msg):
@@ -1041,13 +1061,13 @@ def process_text_columns(root_dir, process_func, msg):
     """
     print(f"--INFO-- Processing text columns ({msg})")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         cols = data.select_dtypes(include=["object"]).columns
         for col in cols:
             data[col] = process_func(data[col])
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def process_column(root_dir, column_name, process_func):
@@ -1065,12 +1085,12 @@ def process_column(root_dir, column_name, process_func):
     """
     print(f"--INFO-- Processing `{column_name}` column")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if column_name in data.columns:
             data[column_name] = process_func(data[column_name])
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def mask_column(root_dir, masked_col, rep_col):
@@ -1080,12 +1100,12 @@ def mask_column(root_dir, masked_col, rep_col):
     """
     print(f"--INFO-- Mask `{masked_col}` column with `{rep_col}`")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if masked_col in data.columns and rep_col in data.columns:
             data[masked_col].mask(data[masked_col].isnull(), data[rep_col])
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def disambiguate_author_names(root_dir):
@@ -1096,9 +1116,10 @@ def disambiguate_author_names(root_dir):
 
     #
     def load_authors_names():
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
         data = [
-            pd.read_csv(file, encoding="utf-8")[["raw_authors", "authors_id"]] for file in files
+            pd.read_csv(file, encoding="utf-8", compression="zip")[["raw_authors", "authors_id"]]
+            for file in files
         ]
         data = pd.concat(data)
         data = data.dropna()
@@ -1130,17 +1151,17 @@ def disambiguate_author_names(root_dir):
         return author_id2name
 
     def repair_names(author_id2name):
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
         # total_items = len(files)
         for file in files:
-            data = pd.read_csv(file, encoding="utf-8")
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
             data = data.assign(authors=data.authors_id.copy())
             data["authors"] = data["authors"].str.split(";")
             data["authors"] = data["authors"].map(
                 lambda x: [author_id2name[id] for id in x], na_action="ignore"
             )
             data["authors"] = data["authors"].str.join("; ")
-            data.to_csv(file, sep=",", encoding="utf-8", index=False)
+            data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
     #
     print("--INFO-- Disambiguating `authors` column")
@@ -1156,12 +1177,12 @@ def copy_to_column(root_dir, src, dest):
     """
     print(f"--INFO-- Copying `{src}` column to `{dest}`")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if src in data.columns:
             data[dest] = data[src]
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def concatenate_columns(root_dir, dest, column_name1, column_name2):
@@ -1171,9 +1192,9 @@ def concatenate_columns(root_dir, dest, column_name1, column_name2):
     """
     print(f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if column_name1 in data.columns and column_name2 in data.columns:
             src = data[column_name1].astype(str).str.split("; ")
             dst = data[column_name2].astype(str).str.split("; ")
@@ -1184,7 +1205,7 @@ def concatenate_columns(root_dir, dest, column_name1, column_name2):
             con = con.map(lambda x: x if x != "" else pd.NA)
             data[dest] = con
 
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def create__article__column(root_dir):
@@ -1197,9 +1218,9 @@ def create__article__column(root_dir):
     #
     print("--INFO-- Creating `article` column")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         #
         wos_ref = data.authors.map(
             lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]"
@@ -1215,7 +1236,7 @@ def create__article__column(root_dir):
         # wos_ref += data.doi.map(lambda x: ", DOI " + str(x) if not pd.isna(x) else "")
         data["article"] = wos_ref.copy()
         data = data.drop_duplicates(subset=["article"])
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 # def create_references(directory, disable_progress_bar=False):
@@ -1583,15 +1604,15 @@ def create__local_citations__column_in_references_database(directory):
     :meta private:
     """
 
-    references_path = os.path.join(directory, "databases", "_references.csv")
+    references_path = os.path.join(directory, "databases", "_references.zip")
     if not os.path.exists(references_path):
         return
 
     print("--INFO-- Creating `local_citations` column in references database")
 
     # counts the number of citations for each local reference
-    documents_path = os.path.join(directory, "databases", "_main.csv")
-    documents = pd.read_csv(documents_path)
+    documents_path = os.path.join(directory, "databases", "_main.zip")
+    documents = pd.read_csv(documents_path, compression="zip")
     local_references = documents.local_references.copy()
     local_references = local_references.dropna()
     local_references = local_references.str.split(";")
@@ -1602,13 +1623,13 @@ def create__local_citations__column_in_references_database(directory):
 
     # assigns the number of citations to each reference in references database
 
-    references = pd.read_csv(references_path)
+    references = pd.read_csv(references_path, compression="zip")
     references["local_citations"] = references.article
     references["local_citations"] = references["local_citations"].map(values_dict)
     references["local_citations"] = references["local_citations"].fillna(0)
 
     # saves the new column in the references database
-    references.to_csv(references_path, index=False)
+    references.to_csv(references_path, index=False, compression="zip")
 
 
 def create__local_citations__column_in_documents_database(root_dir):
@@ -1620,8 +1641,8 @@ def create__local_citations__column_in_documents_database(root_dir):
     print("--INFO-- Creating `local_citations` column in documents database")
 
     # counts the number of citations for each local reference
-    documents_path = os.path.join(root_dir, "databases", "_main.csv")
-    documents = pd.read_csv(documents_path)
+    documents_path = os.path.join(root_dir, "databases", "_main.zip")
+    documents = pd.read_csv(documents_path, compression="zip")
     local_references = documents.local_references.copy()
     local_references = local_references.dropna()
     local_references = local_references.str.split(";")
@@ -1636,7 +1657,7 @@ def create__local_citations__column_in_documents_database(root_dir):
     documents["local_citations"] = documents["local_citations"].fillna(0)
 
     # saves the new column in the references database
-    documents.to_csv(documents_path, index=False)
+    documents.to_csv(documents_path, index=False, compression="zip")
 
 
 def report_imported_records_per_file(root_dir):
@@ -1648,9 +1669,9 @@ def report_imported_records_per_file(root_dir):
     :meta private:
     """
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         print(f"--INFO-- {file}: {len(data.index)} imported records")
 
 
@@ -1663,10 +1684,10 @@ def transform_abstract_keywords_to_underscore(root_dir):
     def get_raw_descriptors():
         """Returns a pandas Series with all NLP phrases in the database files"""
         processed_dir = pathlib.Path(root_dir) / "databases"
-        files = list(processed_dir.glob("_*.csv"))
+        files = list(processed_dir.glob("_*.zip"))
         descriptors = []
         for file in files:
-            data = pd.read_csv(file, encoding="utf-8")
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if "raw_nlp_phrases" not in data.columns:
                 continue
             candidate_descriptors = data["raw_descriptors"].copy()
@@ -1718,14 +1739,12 @@ def transform_abstract_keywords_to_underscore(root_dir):
         descriptors = "|".join(descriptors)
         regex = r"\b(" + descriptors + r")\b"
 
-        documents_path = pathlib.Path(root_dir) / "databases/_main.csv"
-        documents = pd.read_csv(documents_path, encoding="utf-8")
+        documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
+        documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
         for col in ["abstract", "title"]:
             hyphenated_words = documents[col].str.findall(r"\b\w+-\w+\b").sum()
             hyphenated_words = list(set(hyphenated_words))
             hyphenated_words = r"\b(" + "|".join(hyphenated_words) + r")\b"
-            #
-            aux = hyphenated_words[9370:]
             #
             documents[col] = (
                 documents[col]
@@ -1738,7 +1757,7 @@ def transform_abstract_keywords_to_underscore(root_dir):
                 regex=True,
             )
 
-        documents.to_csv(documents_path, index=False)
+        documents.to_csv(documents_path, index=False, compression="zip")
 
     #
     # Main code:

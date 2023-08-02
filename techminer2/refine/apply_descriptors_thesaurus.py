@@ -49,9 +49,9 @@ def apply_descriptors_thesaurus(
     thesaurus_file = os.path.join(root_dir, "descriptors.txt")
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
         #
         for raw_column, column in [
             ("raw_author_keywords", "author_keywords"),
@@ -74,4 +74,4 @@ def apply_descriptors_thesaurus(
                 )
                 data[column] = data[column].str.join("; ")
         #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

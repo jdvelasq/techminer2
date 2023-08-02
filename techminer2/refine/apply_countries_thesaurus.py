@@ -48,9 +48,9 @@ def apply_countries_thesaurus(
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     # apply thesaurus
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        records = pd.read_csv(file, encoding="utf-8")
+        records = pd.read_csv(file, encoding="utf-8", compression="zip")
         #
         records["raw_countries"] = (
             records.astype(str)
@@ -83,7 +83,7 @@ def apply_countries_thesaurus(
         records = records.assign(raw_countries=records.raw_countries.str.join("; "))
         records = records.assign(countries=records.countries.str.join("; "))
         #
-        records.to_csv(file, sep=",", encoding="utf-8", index=False)
+        records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
     sys.stdout.write(
         f"--INFO-- The {thesaurus_file} thesaurus file was applied to "
