@@ -1,4 +1,5 @@
-.. automodule:: techminer2.bibliometrix.coupling.clustering_by_coupling
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Clustering by Coupling
+===============================================================================
+
+See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.bibliograpic_coupling`
+

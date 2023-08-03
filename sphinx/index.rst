@@ -96,7 +96,7 @@ TM2 module.
     techminer/refine/__index__  
     techminer/search/__index__  
     #
-    techminer/bibliometric_coupling/__index__
+    techminer/bibliographic_coupling/__index__
     techminer/citation_analysis/__index__
     techminer/co_occurrence_analysis/__index__
     techminer/co_word_analysis/__index__

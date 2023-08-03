@@ -28,7 +28,7 @@ Network Analysis >
 .. toctree::
    :maxdepth: 1
 
-   bibliometric_coupling_by_refs/__index__
+   bibliographic_coupling/__index__
 
 
 .. toctree::
