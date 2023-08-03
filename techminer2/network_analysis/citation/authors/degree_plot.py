@@ -9,26 +9,47 @@
 Degree Plot
 ===============================================================================
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> plot = vosviewer.citation.authors.degree_plot(
-...     root_dir=root_dir,
-...     top_n=20, 
+>>> from techminer2.network_analysis.citation.authors import degree_plot
+>>> plot = degree_plot(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=None,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DEGREE PLOT:
+...     textfont_size=10,
+...     marker_size=7,
+...     line_color="black",
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/vosviewer/citation/authors/degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/network_analysis/citation/authors/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/citation/authors/degree_plot.html" 
+    <iframe src="../../../../_static/network_analysis/citation/authors/degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
    Node               Name  Degree
-0     0           Arman AA      13
-1     1           Grassi L      13
-2     2       Lanfranchi D      13
-3     3  Anagnostopoulos I       9
-4     4          Brennan R       4
+0     0  Anagnostopoulos I      13
+1     1           Arner DW       4
+2     2        Barberis JN       4
+3     3         Buckley RP       4
+4     4          Colaert V       3
+
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -40,22 +61,30 @@ Table:
 ```
 |    |   Node | Name              |   Degree |
 |---:|-------:|:------------------|---------:|
-|  0 |      0 | Arman AA          |       13 |
-|  1 |      1 | Grassi L          |       13 |
-|  2 |      2 | Lanfranchi D      |       13 |
-|  3 |      3 | Anagnostopoulos I |        9 |
-|  4 |      4 | Brennan R         |        4 |
-|  5 |      5 | Crane M           |        4 |
-|  6 |      6 | Hamdan A          |        4 |
-|  7 |      7 | Ryan P            |        4 |
-|  8 |      8 | Sarea A           |        4 |
-|  9 |      9 | Turki M           |        4 |
-| 10 |     10 | Arner DW          |        3 |
-| 11 |     11 | Buckley RP        |        3 |
-| 12 |     12 | Butler T          |        3 |
-| 13 |     13 | OBrien L          |        3 |
-| 14 |     14 | Weber RH          |        3 |
-| 15 |     15 | Zetzsche DA       |        3 |
+|  0 |      0 | Anagnostopoulos I |       13 |
+|  1 |      1 | Arner DW          |        4 |
+|  2 |      2 | Barberis JN       |        4 |
+|  3 |      3 | Buckley RP        |        4 |
+|  4 |      4 | Colaert V         |        3 |
+|  5 |      5 | McCarthy J        |        3 |
+|  6 |      6 | Mohamed H         |        3 |
+|  7 |      7 | Yildirim R        |        3 |
+|  8 |      8 | von Solms J       |        2 |
+|  9 |      9 | Anasweh M         |        1 |
+| 10 |     10 | Arman AA          |        1 |
+| 11 |     11 | Battanta L        |        1 |
+| 12 |     12 | Cummings RT       |        1 |
+| 13 |     13 | Giorgino M        |        1 |
+| 14 |     14 | Grassi L          |        1 |
+| 15 |     15 | Hamdan A          |        1 |
+| 16 |     16 | Karolak M         |        1 |
+| 17 |     17 | Kristanto AD      |        1 |
+| 18 |     18 | Lanfranchi D      |        1 |
+| 19 |     19 | Muzammil M        |        1 |
+| 20 |     20 | Narang S          |        1 |
+| 21 |     21 | Sarea A           |        1 |
+| 22 |     22 | Turki M           |        1 |
+| 23 |     23 | Vihari NS         |        1 |
 ```
 <BLANKLINE>
 
@@ -93,6 +122,9 @@ def degree_plot(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

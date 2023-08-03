@@ -9,26 +9,47 @@
 Degree Plot
 ===============================================================================
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> plot = vosviewer.citation.countries.degree_plot(
-...     root_dir=root_dir,
-...     top_n=20, 
+>>> from techminer2.network_analysis.citation.countries import degree_plot
+>>> plot = degree_plot(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=None,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DEGREE PLOT:
+...     textfont_size=10,
+...     marker_size=7,
+...     line_color="black",
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/vosviewer/citation/countries/degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/network_analysis/citation/countries/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/citation/countries/degree_plot.html" 
+    <iframe src="../../../../_static/network_analysis/citation/countries/degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
    Node            Name  Degree
-0     0  United Kingdom      17
-1     1           Italy      14
-2     2     Switzerland      12
-3     3   United States      12
-4     4       Indonesia      12
+0     0  United Kingdom       5
+1     1       Australia       4
+2     2       Hong Kong       4
+3     3         Bahrain       3
+4     4         Belgium       2
+
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -40,26 +61,22 @@ Table:
 ```
 |    |   Node | Name                 |   Degree |
 |---:|-------:|:---------------------|---------:|
-|  0 |      0 | United Kingdom       |       17 |
-|  1 |      1 | Italy                |       14 |
-|  2 |      2 | Switzerland          |       12 |
-|  3 |      3 | United States        |       12 |
-|  4 |      4 | Indonesia            |       12 |
-|  5 |      5 | Germany              |       10 |
-|  6 |      6 | Ireland              |        9 |
-|  7 |      7 | Greece               |        9 |
-|  8 |      8 | China                |        7 |
-|  9 |      9 | United Arab Emirates |        7 |
-| 10 |     10 | Malaysia             |        6 |
-| 11 |     11 | Japan                |        5 |
-| 12 |     12 | Australia            |        4 |
-| 13 |     13 | Luxembourg           |        4 |
-| 14 |     14 | Bahrain              |        3 |
-| 15 |     15 | Jordan               |        3 |
-| 16 |     16 | Hong Kong            |        2 |
-| 17 |     17 | South Africa         |        1 |
+|  0 |      0 | United Kingdom       |        5 |
+|  1 |      1 | Australia            |        4 |
+|  2 |      2 | Hong Kong            |        4 |
+|  3 |      3 | Bahrain              |        3 |
+|  4 |      4 | Belgium              |        2 |
+|  5 |      5 | Ireland              |        2 |
+|  6 |      6 | Singapore            |        2 |
+|  7 |      7 | India                |        1 |
+|  8 |      8 | Indonesia            |        1 |
+|  9 |      9 | South Africa         |        1 |
+| 10 |     10 | Italy                |        1 |
+| 11 |     11 | Jordan               |        1 |
+| 12 |     12 | United Arab Emirates |        1 |
 ```
 <BLANKLINE>
+
 
 """
 from ....nx_create_citation_graph import nx_create_citation_graph
@@ -94,6 +111,9 @@ def degree_plot(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

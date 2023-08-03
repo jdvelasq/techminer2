@@ -1,6 +1,6 @@
 .. _vosviewer_citation_ortanizations:
 
-Organizations/
+Organizations >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

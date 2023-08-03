@@ -10,11 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network_analysis.co_authorship.documents import communities
+>>> from techminer2.network_analysis.citation.documents import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=20, 
+...     top_n=None, 
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
@@ -29,20 +29,15 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                                 CL_0  ...                                               CL_4
-0   Becker M, 2020, INTELL SYST ACCOUNT FINANCE M,...  ...                         Turki M, 2020, HELIYON, V6
-1   Chirulli P, 2021, ROUTLEDGE HANDBFINANCIAL TEC...  ...         von Solms J, 2021, J BANK REGUL, V22, P152
-2         Gasparri G, 2019, FRONTIER ARTIF INTELL, V2  ...     Ghanem S, 2021, STUD COMPUT INTELL, V954, P139
-3   Firmansyah B, 2022, INT CONF INF TECHNOL SYST ...  ...  Turki M, 2021, ADV INTELL SYS COMPUT, V1141, P349
-4   Brand V, 2020, UNIV NEW SOUTH WALES LAW J, V43...  ...                Teichmann F, 2023, TECHNOL SOC, V72
-5   Goul M, 2019, PROC - IEEE WORLD CONGR SERV,, P219  ...                                                   
-6                       Kurum E, 2020, J FINANC CRIME  ...                                                   
-7      Nicholls R, 2021, J ANTITRUST ENFORC, V9, P135  ...                                                   
-8           Siering M, 2022, DECIS SUPPORT SYST, V158  ...                                                   
-9                      Gu M, 2022, J CORP FINANC, V76  ...                                                   
-10  Kristanto AD, 2022, INT CONF INF TECHNOL SYST ...  ...                                                   
+                                              CL_0  ...                                               CL_2
+0  Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN  ...  Kristanto AD, 2022, INT CONF INF TECHNOL SYST INN
+1              Anagnostopoulos I, 2018, J ECON BUS  ...                    von Solms J, 2021, J BANK REGUL
+2             Muzammil M, 2020, CEUR WORKSHOP PROC  ...                                                   
+3    Narang S, 2020, FOSTER INNOVCOMPET WITH FINTE  ...                                                   
+4                           Turki M, 2020, HELIYON  ...                                                   
 <BLANKLINE>
-[11 rows x 5 columns]
+[5 rows x 3 columns]
+
 
 
 """
@@ -71,6 +66,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

@@ -9,26 +9,48 @@
 Degree Plot
 ===============================================================================
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> plot = vosviewer.citation.sources.degree_plot(
-...     root_dir=root_dir,
-...     top_n=20, 
+>>> from techminer2.network_analysis.citation.sources import degree_plot
+>>> plot = degree_plot(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=None,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DEGREE PLOT:
+...     textfont_size=10,
+...     marker_size=7,
+...     line_color="black",
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/vosviewer/citation/sources/degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/network_analysis/citation/sources/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/citation/sources/degree_plot.html" 
+    <iframe src="../../../../_static/network_analysis/citation/sources/degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
+
 
 >>> plot.df_.head()
    Node                           Name  Degree
-0     0  INT CONF INF TECHNOL SYST INN       8
-1     1                     J ECON BUS       7
-2     2                  J RISK FINANC       5
-3     3  INTELL SYST ACCOUNT FINANCE M       4
-4     4                 J FINANC CRIME       4
+0     0                     J ECON BUS       4
+1     1       NORTHWEST J INTL LAW BUS       3
+2     2             CEUR WORKSHOP PROC       1
+3     3  FOSTER INNOVCOMPET WITH FINTE       1
+4     4                        HELIYON       1
+
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -40,21 +62,17 @@ Table:
 ```
 |    |   Node | Name                          |   Degree |
 |---:|-------:|:------------------------------|---------:|
-|  0 |      0 | INT CONF INF TECHNOL SYST INN |        8 |
-|  1 |      1 | J ECON BUS                    |        7 |
-|  2 |      2 | J RISK FINANC                 |        5 |
-|  3 |      3 | INTELL SYST ACCOUNT FINANCE M |        4 |
-|  4 |      4 | J FINANC CRIME                |        4 |
-|  5 |      5 | FOSTER INNOVCOMPET WITH FINTE |        3 |
-|  6 |      6 | ICEIS - PROC INT CONF ENTERP  |        3 |
-|  7 |      7 | J RISK MANG FINANCIAL INST    |        2 |
-|  8 |      8 | FINANCIAL INNOV               |        2 |
-|  9 |      9 | HELIYON                       |        2 |
-| 10 |     10 | J BANK REGUL                  |        2 |
-| 11 |     11 | ROUTLEDGE HANDBFINANCIAL TECH |        2 |
-| 12 |     12 | STUD COMPUT INTELL            |        2 |
-| 13 |     13 | ADELAIDE LAW REV              |        1 |
-| 14 |     14 | PALGRAVE STUD DIGIT BUS ENABL |        1 |
+|  0 |      0 | J ECON BUS                    |        4 |
+|  1 |      1 | NORTHWEST J INTL LAW BUS      |        3 |
+|  2 |      2 | CEUR WORKSHOP PROC            |        1 |
+|  3 |      3 | FOSTER INNOVCOMPET WITH FINTE |        1 |
+|  4 |      4 | HELIYON                       |        1 |
+|  5 |      5 | INT CONF INF TECHNOL SYST INN |        1 |
+|  6 |      6 | J BANK REGUL                  |        1 |
+|  7 |      7 | J FINANC REGUL COMPLIANCE     |        1 |
+|  8 |      8 | PROC EUR CONF INNOV ENTREPREN |        1 |
+|  9 |      9 | ROUTLEDGE HANDBFINANCIAL TECH |        1 |
+| 10 |     10 | STUD COMPUT INTELL            |        1 |
 ```
 <BLANKLINE>
 
@@ -93,6 +111,9 @@ def degree_plot(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

@@ -1,6 +1,6 @@
 .. _vosviewer_citation_documents:
 
-Documents/
+Documents >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

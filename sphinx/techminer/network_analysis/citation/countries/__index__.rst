@@ -1,6 +1,6 @@
 .. _vosviewer_citation_countries:
 
-Countries/
+Countries >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

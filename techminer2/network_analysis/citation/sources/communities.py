@@ -10,11 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network_analysis.co_authorship.authors import sources
+>>> from techminer2.network_analysis.citation.sources import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=20, 
+...     top_n=None, 
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
@@ -29,15 +29,15 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                            CL_0  ...                          CL_3
-0                     J ECON BUS  ...  ICEIS - PROC INT CONF ENTERP
-1                        HELIYON  ...            STUD COMPUT INTELL
-2  INT CONF INF TECHNOL SYST INN  ...                              
-3  INTELL SYST ACCOUNT FINANCE M  ...                              
-4                   J BANK REGUL  ...                              
-5  PALGRAVE STUD DIGIT BUS ENABL  ...                              
+                            CL_0  ...                           CL_2
+0             CEUR WORKSHOP PROC  ...  INT CONF INF TECHNOL SYST INN
+1                     J ECON BUS  ...                   J BANK REGUL
+2  FOSTER INNOVCOMPET WITH FINTE  ...                               
+3                        HELIYON  ...                               
+4  PROC EUR CONF INNOV ENTREPREN  ...                               
 <BLANKLINE>
-[6 rows x 4 columns]
+[5 rows x 3 columns]
+
 
 
 """
@@ -66,6 +66,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

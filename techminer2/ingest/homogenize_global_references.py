@@ -22,7 +22,7 @@ import pathlib
 
 import pandas as pd
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ..refine.apply_references_thesaurus import apply_references_thesaururs
 
 
 def homogenize_global_references(root_dir):
@@ -33,35 +33,7 @@ def homogenize_global_references(root_dir):
     result = __homogeneize_references(root_dir=root_dir)
 
     if result:
-        __apply_thesaururs(root_dir=root_dir)
-
-
-def __apply_thesaururs(root_dir):
-    #
-    # Apply the thesaurus to raw_global_references
-    #
-
-    #
-    # Loads the thesaurus
-    file_path = pathlib.Path(root_dir) / "global_references.txt"
-    th = load_system_thesaurus_as_dict_reversed(file_path=file_path)
-
-    #
-    # Loadas the main database
-    main_file = os.path.join(root_dir, "databases/_main.zip")
-    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
-
-    #
-    # Replace raw_global_references
-    data["global_references"] = data["raw_global_references"].str.split(";")
-    data["global_references"] = data["global_references"].map(
-        lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
-    )
-    data["global_references"] = data["global_references"].map(
-        lambda x: ";".join(x) if isinstance(x, list) else x
-    )
-
-    data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")
+        apply_references_thesaururs(root_dir=root_dir)
 
 
 def __homogeneize_references(root_dir):
@@ -123,7 +95,7 @@ def __homogeneize_references(root_dir):
 
     #
     # Reference matching
-    references = references.loc[
+    selected_references = references.loc[
         references.apply(
             lambda row: row.year in row.text
             and row.first_author in row.text
@@ -133,11 +105,9 @@ def __homogeneize_references(root_dir):
         :,
     ]
 
-    # references = references.drop_duplicates(subset=["text"])
-
     #
     #
-    grouped_references = references.groupby("article", as_index=False).agg(list)
+    grouped_references = selected_references.groupby("article", as_index=False).agg(list)
 
     file_path = pathlib.Path(root_dir) / "global_references.txt"
     with open(file_path, "w", encoding="utf-8") as file:
@@ -150,5 +120,20 @@ def __homogeneize_references(root_dir):
     print(
         f"--INFO-- {grouped_references.article.drop_duplicates().shape[0]} global references homogenized"
     )
+
+    #
+    # Check not recognized references
+    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
+    raw_references = data["raw_global_references"].dropna()
+    raw_references = raw_references.str.split(";").explode().str.strip()
+
+    not_recognized = raw_references[~raw_references.isin(selected_references.raw)]
+    not_recognized = not_recognized.value_counts()
+
+    file_path = pathlib.Path(root_dir) / "not_recognized_references.txt"
+    with open(file_path, "w", encoding="utf-8") as file:
+        for ref, value in zip(not_recognized.index, not_recognized.values):
+            file.write(str(value) + "\n")
+            file.write("    " + ref + "\n")
 
     return True

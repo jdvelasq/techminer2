@@ -58,6 +58,9 @@ def __apply_thesaururs(root_dir):
         lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
     )
     data["local_references"] = data["local_references"].map(
+        lambda x: pd.NA if x == [] else x, na_action="ignore"
+    )
+    data["local_references"] = data["local_references"].map(
         lambda x: ";".join(x) if isinstance(x, list) else x
     )
 
@@ -146,5 +149,20 @@ def __homogeneize_references(root_dir):
     print(
         f"--INFO-- {grouped_references.article.drop_duplicates().shape[0]} local references homogenized"
     )
+
+    #
+    # Check not recognized references
+    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
+    raw_references = data["raw_global_references"].dropna()
+    raw_references = raw_references.str.split(";").explode().str.strip()
+
+    not_recognized = raw_references[~raw_references.isin(references.raw)]
+    not_recognized = not_recognized.value_counts()
+
+    file_path = pathlib.Path(root_dir) / "not_recognized_references.txt"
+    with open(file_path, "w", encoding="utf-8") as file:
+        for ref, value in zip(not_recognized.index, not_recognized.values):
+            file.write(str(value) + "\n")
+            file.write("    " + ref + "\n")
 
     return True

@@ -148,64 +148,79 @@ def __add_weighted_edges_from(
     )
 
     #
-    # Explodes local_references field. Each row in the dataframe is equivalent
-    # to a link between two documents. This step obtains the data when the
-    # unit_of_analysis == 'documents'.
-    records["local_references"] = records.local_references.str.split(";")
-    records = records.explode("local_references")
-    records["local_references"] = records.local_references.str.strip()
+    # data_frame contains the citing and cited articles.
+    data_frame = records[["article", "local_references"]]
+    data_frame = data_frame.dropna()
+    data_frame["local_references"] = data_frame.local_references.str.split(";")
+    data_frame = data_frame.explode("local_references")
+    data_frame["local_references"] = data_frame["local_references"].str.strip()
+    data_frame.columns = ["citing_unit", "cited_unit"]
+
     records.index = records.article.copy()
 
-    if unit_of_analysis == "article":
-        records["citing_unit"] = records.article
-        records["cited_unit"] = records.local_references
+    if unit_of_analysis == "authors":
+        article2authors = {
+            row.article: row.authors for _, row in records[["article", "authors"]].iterrows()
+        }
+        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2authors)
+        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2authors)
+
+    elif unit_of_analysis == "countries":
+        article2countries = {
+            row.article: row.countries for _, row in records[["article", "countries"]].iterrows()
+        }
+        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2countries)
+        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2countries)
+
+    elif unit_of_analysis == "article":
+        data_frame["citing_unit"] = (
+            data_frame["citing_unit"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
+        )
+        data_frame["cited_unit"] = (
+            data_frame["cited_unit"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
+        )
+
+    elif unit_of_analysis == "organizations":
+        article2organizations = {
+            row.article: row.organizations
+            for _, row in records[["article", "organizations"]].iterrows()
+        }
+        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2organizations)
+        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2organizations)
+
+    elif unit_of_analysis == "source_abbr":
+        article2source_abbr = {
+            row.article: row.source_abbr
+            for _, row in records[["article", "source_abbr"]].iterrows()
+        }
+        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2source_abbr)
+        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2source_abbr)
+
     else:
-        records["citing_unit"] = records[unit_of_analysis].copy()
-        records["cited_unit"] = records.local_references
-
-        ref_to_unit_of_analysis = dict(
-            zip(
-                records.local_references.dropna().to_list(),
-                records.loc[records.local_references.dropna(), unit_of_analysis],
-            )
-        )
-        records["cited_unit"] = records.cited_unit.map(
-            lambda x: ref_to_unit_of_analysis[x] if x in ref_to_unit_of_analysis else x
-        )
-
-        records["citing_unit"] = records.citing_unit.str.split(";")
-        records = records.explode("citing_unit")
-        records["citing_unit"] = records.citing_unit.str.strip()
-
-        records["cited_unit"] = records.cited_unit.str.split(";")
-        records = records.explode("cited_unit")
-        records["cited_unit"] = records.cited_unit.str.strip()
+        raise ValueError("Bad unit_of_analysis")
 
     #
-    # Computes the number of citations per citing_unit-cited_unit pair
-    records = records[["citing_unit", "cited_unit"]]
+    # Explode columns to find the relationships
+    data_frame["citing_unit"] = data_frame["citing_unit"].str.split(";")
+    data_frame = data_frame.explode("citing_unit")
+    data_frame["citing_unit"] = data_frame["citing_unit"].str.strip()
 
-    records = records.groupby(
-        #
-        # Generates:
-        #      citing_unit           cited_unit  size
-        # 0      Anasweh M    Anagnostopoulos I     1
-        # 1       Arman AA    Anagnostopoulos I     4
-        # 2       Arman AA            Anasweh M     3
-        # 3       Arman AA             Arner DW     2
-        # 4       Arman AA             Becker M     4
-        # ..           ...                  ...   ...
-        ["citing_unit", "cited_unit"],
-        as_index=False,
-    ).size()
+    data_frame["cited_unit"] = data_frame["cited_unit"].str.split(";")
+    data_frame = data_frame.explode("cited_unit")
+    data_frame["cited_unit"] = data_frame["cited_unit"].str.strip()
 
+    data_frame = data_frame.loc[
+        data_frame.apply(lambda row: row.citing_unit != row.cited_unit, axis=1), :
+    ]
+
+    #
+    # Filter the data
     if unit_of_analysis != "article":
-        #
-        # Filters the records.
         metrics = item_metrics(
             #
             # ITEMS PARAMS:
             field=unit_of_analysis,
+            metric="OCC",
             #
             # ITEM FILTERS:
             top_n=top_n,
@@ -221,15 +236,28 @@ def __add_weighted_edges_from(
             **filters,
         ).df_
 
-        records = records.loc[
-            (records.citing_unit.isin(metrics.index.to_list()))
-            & (records.cited_unit.isin(metrics.index.to_list())),
-            :,
-        ]
+        data_frame = data_frame.loc[data_frame.citing_unit.isin(metrics.index), :]
+        data_frame = data_frame.loc[data_frame.cited_unit.isin(metrics.index), :]
 
     #
+    # Computes the number of citations per citing_unit-cited_unit pair
+    data_frame = data_frame.groupby(
+        #
+        # Generates:
+        #      citing_unit           cited_unit  size
+        # 0      Anasweh M    Anagnostopoulos I     1
+        # 1       Arman AA    Anagnostopoulos I     4
+        # 2       Arman AA            Anasweh M     3
+        # 3       Arman AA             Arner DW     2
+        # 4       Arman AA             Becker M     4
+        # ..           ...                  ...   ...
+        ["citing_unit", "cited_unit"],
+        as_index=False,
+    ).size()
+
     #
-    for _, row in records.iterrows():
+    # Adds the data to the network:
+    for _, row in data_frame.iterrows():
         nx_graph.add_weighted_edges_from(
             ebunch_to_add=[(row.citing_unit, row.cited_unit, row["size"])],
             dash="solid",

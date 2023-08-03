@@ -40,7 +40,7 @@ Most Local Cited References
 
 
 """
-from ..publications.most_cited_documents import most_cited_documents
+from .most_cited_documents import most_cited_documents
 
 
 def most_local_cited_references(

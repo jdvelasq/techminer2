@@ -10,20 +10,51 @@ Network Visualization
 ===============================================================================
 
 
-
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.citation.countries.network_visualization(
-...     root_dir=root_dir,
-...     top_n=20, 
-...     node_size=15,
-...     textfont_size=8,
-... ).write_html("sphinx/_static/vosviewer/citation/countries/network_visualization.html")
+>>> from techminer2.network_analysis.citation.countries import network_visualization
+>>> network_visualization(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=None,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK CLUSTERING:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # LAYOUT:
+...     nx_k=None,
+...     nx_iterations=30,
+...     nx_random_state=0,
+...     #
+...     # NODES:
+...     node_size=20,
+...     textfont_size=9,
+...     textfont_opacity=1.0,
+...     #
+...     # EDGES:
+...     edge_color="#7793a5",
+...     edge_width_min=0.8,
+...     edge_width_max=3.0,
+...     #
+...     # AXES:
+...     xaxes_range=None,
+...     yaxes_range=None,
+...     show_axes=False,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... ).write_html("sphinx/_static/network_analysis/citation/countries/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/citation/countries/network_visualization.html" 
+    <iframe src="../../../../_static/network_analysis/citation/countries/network_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
 from ....nx_create_citation_graph import nx_create_citation_graph
@@ -50,9 +81,9 @@ def network_visualization(
     nx_random_state=0,
     #
     # NODES:
-    node_size=30,
-    textfont_size=10,
-    textfont_opacity=0.35,
+    node_size=20,
+    textfont_size=9,
+    textfont_opacity=1.00,
     #
     # EDGES:
     edge_color="#7793a5",
@@ -71,6 +102,9 @@ def network_visualization(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     nx_graph = nx_create_citation_graph(
         #
         # FUNCTION PARAMS:

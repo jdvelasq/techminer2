@@ -10,11 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network_analysis.co_authorship.authors import communities
+>>> from techminer2.network_analysis.citation.authors import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=20, 
+...     top_n=None, 
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
@@ -29,15 +29,21 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                CL_0          CL_1
-0           Arman AA      Arner DW
-1  Anagnostopoulos I    Buckley RP
-2          Brennan R      Butler T
-3            Crane M      OBrien L
-4           Hamdan A      Weber RH
-5             Ryan P   Zetzsche DA
-6            Sarea A      Grassi L
-7            Turki M  Lanfranchi D
+                 CL_0         CL_1          CL_2
+0           Anasweh M    Colaert V      Arman AA
+1   Anagnostopoulos I     Arner DW   von Solms J
+2          Battanta L  Barberis JN  Kristanto AD
+3         Cummings RT   Buckley RP              
+4          Giorgino M   McCarthy J              
+5            Grassi L    Mohamed H              
+6            Hamdan A   Yildirim R              
+7           Karolak M                           
+8        Lanfranchi D                           
+9          Muzammil M                           
+10           Narang S                           
+11            Sarea A                           
+12            Turki M                           
+13          Vihari NS                           
 
 
 """
@@ -66,6 +72,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

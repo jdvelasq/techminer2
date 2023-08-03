@@ -9,26 +9,48 @@
 Degree Plot
 ===============================================================================
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> plot = vosviewer.citation.organizations.degree_plot(
-...     root_dir=root_dir,
-...     top_n=20, 
+>>> from techminer2.network_analysis.citation.organizations import degree_plot
+>>> plot = degree_plot(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=None,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DEGREE PLOT:
+...     textfont_size=10,
+...     marker_size=7,
+...     line_color="black",
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/vosviewer/citation/organizations/degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/network_analysis/citation/organizations/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/citation/organizations/degree_plot.html" 
+    <iframe src="../../../../_static/network_analysis/citation/organizations/degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
+    
 >>> plot.df_.head()
-   Node                      Name  Degree
-0     0   Politec di Milano (ITA)      14
-1     1    Dublin City Univ (IRL)       7
-2     2      Univ Coll Cork (IRL)       6
-3     3    Kingston Bus Sch (GBR)       3
-4     4  European Central B (DEU)       3
+   Node                                               Name  Degree
+0     0                             Kingston Bus Sch (GBR)       6
+1     1                        FinTech HK, Hong Kong (HKG)       4
+2     2                            Univ of Hong Kong (HKG)       4
+3     3  ctr for Law, Markets & Regulation, UNSW Austra...       4
+4     4                               KU Leuven Univ (BEL)       3
+
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -38,25 +60,27 @@ in the data, and discuss their implications in the network.
 <BLANKLINE>
 Table:
 ```
-|    |   Node | Name                                                         |   Degree |
-|---:|-------:|:-------------------------------------------------------------|---------:|
-|  0 |      0 | Politec di Milano (ITA)                                      |       14 |
-|  1 |      1 | Dublin City Univ (IRL)                                       |        7 |
-|  2 |      2 | Univ Coll Cork (IRL)                                         |        6 |
-|  3 |      3 | Kingston Bus Sch (GBR)                                       |        3 |
-|  4 |      4 | European Central B (DEU)                                     |        3 |
-|  5 |      5 | Harvard Univ Weatherhead ctr for International Affairs (USA) |        3 |
-|  6 |      6 | KS Strategic, London, United Kingdom (GBR)                   |        3 |
-|  7 |      7 | Panepistemio Aigaiou, Chios, Greece (GRC)                    |        3 |
-|  8 |      8 | Sch of Eng (CHE)                                             |        3 |
-|  9 |      9 | Ahlia Univ (BHR)                                             |        2 |
-| 10 |     10 | Heinrich-Heine-Univ (DEU)                                    |        1 |
-| 11 |     11 | UNSW Sydney, Kensington, Australia (AUS)                     |        1 |
-| 12 |     12 | Univ of Hong Kong (HKG)                                      |        1 |
-| 13 |     13 | Univ of Luxembourg (LUX)                                     |        1 |
-| 14 |     14 | Univ of Zurich (CHE)                                         |        1 |
+|    |   Node | Name                                                               |   Degree |
+|---:|-------:|:-------------------------------------------------------------------|---------:|
+|  0 |      0 | Kingston Bus Sch (GBR)                                             |        6 |
+|  1 |      1 | FinTech HK, Hong Kong (HKG)                                        |        4 |
+|  2 |      2 | Univ of Hong Kong (HKG)                                            |        4 |
+|  3 |      3 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |        4 |
+|  4 |      4 | KU Leuven Univ (BEL)                                               |        3 |
+|  5 |      5 | Stellar Consulting Group, Singapore, Singapore (SGP)               |        3 |
+|  6 |      6 | Univ Coll Cork (IRL)                                               |        3 |
+|  7 |      7 | Upsite Consulting, Muharraq, Bahrain (BHR)                         |        3 |
+|  8 |      8 | Ahlia Univ (BHR)                                                   |        1 |
+|  9 |      9 | BITS Pilani, Dubai Campus, Dubai, United Arab Emirates (ARE)       |        1 |
+| 10 |     10 | Bandung Inst of Technol (IDN)                                      |        1 |
+| 11 |     11 | Univ of Johannesburg (ZAF)                                         |        1 |
+| 12 |     12 | Guru Gobind Singh Indraprastha Univ (IND)                          |        1 |
+| 13 |     13 | Mutah Univ (JOR)                                                   |        1 |
+| 14 |     14 | Politec di Milano (ITA)                                            |        1 |
+| 15 |     15 | Zayed Univ (ARE)                                                   |        1 |
 ```
 <BLANKLINE>
+
 
 
 """
@@ -92,6 +116,9 @@ def degree_plot(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

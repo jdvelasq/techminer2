@@ -10,11 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network_analysis.co_authorship.organizations import communities
+>>> from techminer2.network_analysis.citation.organizations import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=20, 
+...     top_n=None, 
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
@@ -29,16 +29,16 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                       CL_0                                               CL_1
-0                          Ahlia Univ (BHR)                             Dublin City Univ (IRL)
-1                    Kingston Bus Sch (GBR)  Harvard Univ Weatherhead ctr for International...
-2                  European Central B (DEU)         KS Strategic, London, United Kingdom (GBR)
-3                   Politec di Milano (ITA)          Panepistemio Aigaiou, Chios, Greece (GRC)
-4                 Heinrich-Heine-Univ (DEU)                                   Sch of Eng (CHE)
-5  UNSW Sydney, Kensington, Australia (AUS)                               Univ Coll Cork (IRL)
-6                   Univ of Hong Kong (HKG)                                                   
-7                  Univ of Luxembourg (LUX)                                                   
-8                      Univ of Zurich (CHE)                                                   
+                                                CL_0  ...                           CL_2
+0                                   Ahlia Univ (BHR)  ...  Bandung Inst of Technol (IDN)
+1                             Kingston Bus Sch (GBR)  ...     Univ of Johannesburg (ZAF)
+2  BITS Pilani, Dubai Campus, Dubai, United Arab ...  ...                               
+3          Guru Gobind Singh Indraprastha Univ (IND)  ...                               
+4                                   Mutah Univ (JOR)  ...                               
+5                            Politec di Milano (ITA)  ...                               
+6                                   Zayed Univ (ARE)  ...                               
+<BLANKLINE>
+[7 rows x 3 columns]
 
 
 
@@ -68,6 +68,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

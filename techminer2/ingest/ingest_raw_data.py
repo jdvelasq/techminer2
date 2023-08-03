@@ -63,10 +63,11 @@ Import a scopus data file in the working directory.
 --INFO-- Processing `raw_nlp_phrases` column
 --INFO-- Concatenating `raw_nlp_phrases` and `raw_keywords` columns to `raw_descriptors`
 --INFO-- Processing `raw_descriptors` column
---INFO-- Homogenizing global references
---INFO-- 765 global references homogenized
 --INFO-- Homogenizing local references
 --INFO-- 27 local references homogenized
+--INFO-- Homogenizing global references
+--INFO-- 765 global references homogenized
+--INFO-- The data/regtech/global_references.txt thesaurus file was applied to global_references in 'main' database
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
 --INFO-- The data/regtech/countries.txt thesaurus file was created
@@ -103,8 +104,8 @@ title_nlp_phrases, volume, year
 
 
 
->>> recors = pd.read_csv(root_dir + "databases/_main.zip", encoding="utf-8", compression="zip")
->>> print(recors[["raw_authors_id", "authors_id"]].head().to_markdown())
+>>> records = pd.read_csv(root_dir + "databases/_main.zip", encoding="utf-8", compression="zip")
+>>> print(records[["raw_authors_id", "authors_id"]].head().to_markdown())
 |    | raw_authors_id                                                           | authors_id                                                                                                                                            |
 |---:|:-------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  0 | 57194137877;57694114300;35369323900;                                     | 000000000000057194137877;000000000000057694114300;000000000000035369323900                                                                            |
@@ -114,7 +115,15 @@ title_nlp_phrases, volume, year
 |  4 | 57206840410;57226162166;57189220315;                                     | 000000000000057206840410;000000000000057226162166;000000000000057189220315                                                                            |
 
     
-
+>>> records = pd.read_csv(root_dir + "databases/_main.zip", encoding="utf-8", compression="zip")
+>>> print(records["local_references"].dropna().head().to_markdown())
+|    | local_references                                    |
+|---:|:----------------------------------------------------|
+| 10 | von Solms J, 2021, J BANK REGUL, V22, P152          |
+| 12 | Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373 |
+| 19 | Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373 |
+| 22 | Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373 |
+| 24 | Anagnostopoulos I, 2018, J ECON BUS, V100, P7       |
 
 """
 import glob
@@ -540,8 +549,9 @@ def ingest_raw_data(root_dir="./", remove_raw_csv_files=True, **document_types):
     #
     #
     # create_references(root_dir, disable_progress_bar)
-    homogenize_global_references(root_dir)
     homogenize_local_references(root_dir)
+    homogenize_global_references(root_dir)
+
     #
     create__local_citations__column_in_references_database(root_dir)
     create__local_citations__column_in_documents_database(root_dir)

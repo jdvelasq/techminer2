@@ -28,13 +28,13 @@ def read_records(
 
         if file_name is None:
             file_name = {
-                "main": "_main.csv",
-                "references": "_references.csv",
-                "cited_by": "_cited_by.csv",
+                "main": "_main.zip",
+                "references": "_references.zip",
+                "cited_by": "_cited_by.zip",
             }[database]
 
         file_path = os.path.join(directory, "databases", file_name)
-        records = pd.read_csv(file_path, sep=",", encoding="utf-8")
+        records = pd.read_csv(file_path, sep=",", encoding="utf-8", compression="zip")
         records = records.drop_duplicates()
 
         return records
@@ -46,14 +46,10 @@ def read_records(
             return records
 
         if not isinstance(year_filter, tuple):
-            raise TypeError(
-                "The year_filter parameter must be a tuple of two values."
-            )
+            raise TypeError("The year_filter parameter must be a tuple of two values.")
 
         if len(year_filter) != 2:
-            raise ValueError(
-                "The year_filter parameter must be a tuple of two values."
-            )
+            raise ValueError("The year_filter parameter must be a tuple of two values.")
 
         start_year, end_year = year_filter
 
@@ -72,14 +68,10 @@ def read_records(
             return records
 
         if not isinstance(cited_by_filter, tuple):
-            raise TypeError(
-                "The cited_by_range parameter must be a tuple of two values."
-            )
+            raise TypeError("The cited_by_range parameter must be a tuple of two values.")
 
         if len(cited_by_filter) != 2:
-            raise ValueError(
-                "The cited_by_range parameter must be a tuple of two values."
-            )
+            raise ValueError("The cited_by_range parameter must be a tuple of two values.")
 
         cited_by_min, cited_by_max = cited_by_filter
 

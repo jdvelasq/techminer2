@@ -11,10 +11,10 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ...._read_records import read_records
-from ....format_prompt_for_records import format_prompt_for_records
-from ....format_report_for_records import format_report_for_records
-from ....performance_metrics.global_indicators_by_document import global_indicators_by_document
+from ..._read_records import read_records
+from ...format_prompt_for_records import format_prompt_for_records
+from ...format_report_for_records import format_report_for_records
+from ...performance_metrics.global_indicators_by_document import global_indicators_by_document
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

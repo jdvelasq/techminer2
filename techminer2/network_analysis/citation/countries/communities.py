@@ -10,11 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network_analysis.co_authorship.countries import communities
+>>> from techminer2.network_analysis.citation.countries import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=20, 
+...     top_n=None, 
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
@@ -29,14 +29,13 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-         CL_0                  CL_1           CL_2
-0   Australia               Ireland          China
-1     Bahrain        United Kingdom          Japan
-2  Luxembourg                Greece        Germany
-3   Indonesia  United Arab Emirates    Switzerland
-4   Hong Kong              Malaysia  United States
-5      Jordan          South Africa          Italy
-
+        CL_0                  CL_1          CL_2
+0    Bahrain        United Kingdom     Indonesia
+1  Australia                 India  South Africa
+2  Hong Kong                 Italy              
+3    Belgium                Jordan              
+4    Ireland  United Arab Emirates              
+5  Singapore                                    
 
 """
 from ....nx_create_citation_graph import nx_create_citation_graph
@@ -64,6 +63,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #
