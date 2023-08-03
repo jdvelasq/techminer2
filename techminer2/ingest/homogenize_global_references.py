@@ -88,6 +88,16 @@ def __homogeneize_references(root_dir):
     #
     # Cross-product
     references["raw"] = references["raw"].str.split(";")
+    #
+    references["raw"] = references.apply(
+        lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1
+    )
+    references["raw"] = references.apply(
+        lambda row: [t for t in row.raw if row.year in t.lower()], axis=1
+    )
+    references["raw"] = references["raw"].map(lambda x: pd.NA if x == [] else x)
+    references = references.dropna()
+    #
     references = references.explode("raw")
     references["raw"] = references["raw"].str.strip()
     references["text"] = references["raw"]
@@ -114,7 +124,7 @@ def __homogeneize_references(root_dir):
         for _, row in grouped_references.iterrows():
             if row.raw[0] != "":
                 file.write(row.article + "\n")
-                for ref in row.raw:
+                for ref in sorted(row.raw):
                     file.write("    " + ref + "\n")
 
     print(

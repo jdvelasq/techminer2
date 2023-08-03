@@ -53,7 +53,7 @@ def __apply_thesaururs(root_dir):
 
     #
     # Replace raw_global_references
-    data["local_references"] = data["raw_global_references"].str.split(";")
+    data["local_references"] = data["raw_global_references"].str.split("; ")
     data["local_references"] = data["local_references"].map(
         lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
     )
@@ -61,7 +61,7 @@ def __apply_thesaururs(root_dir):
         lambda x: pd.NA if x == [] else x, na_action="ignore"
     )
     data["local_references"] = data["local_references"].map(
-        lambda x: ";".join(x) if isinstance(x, list) else x
+        lambda x: ";".join(sorted(x)) if isinstance(x, list) else x
     )
 
     data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")
@@ -115,6 +115,16 @@ def __homogeneize_references(root_dir):
     #
     # Cross-product
     references["raw"] = references["raw"].str.split(";")
+    #
+    references["raw"] = references.apply(
+        lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1
+    )
+    references["raw"] = references.apply(
+        lambda row: [t for t in row.raw if row.year in t.lower()], axis=1
+    )
+    references["raw"] = references["raw"].map(lambda x: pd.NA if x == [] else x)
+    references = references.dropna()
+    #
     references = references.explode("raw")
     references["raw"] = references["raw"].str.strip()
     references["text"] = references["raw"]
@@ -143,7 +153,7 @@ def __homogeneize_references(root_dir):
         for _, row in grouped_references.iterrows():
             if row.raw[0] != "":
                 file.write(row.article + "\n")
-                for ref in row.raw:
+                for ref in sorted(row.raw):
                     file.write("    " + ref + "\n")
 
     print(

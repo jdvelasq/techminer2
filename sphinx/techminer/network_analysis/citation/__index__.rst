@@ -1,4 +1,4 @@
-.. _vosviewer_citation_network:
+.. _network_analysis.citation:
 
 Citation >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

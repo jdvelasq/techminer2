@@ -49,7 +49,7 @@ def apply_references_thesaururs(root_dir):
 
     #
     # Replace raw_global_references
-    data["global_references"] = data["raw_global_references"].str.split(";")
+    data["global_references"] = data["raw_global_references"].str.split("; ")
     data["global_references"] = data["global_references"].map(
         lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
     )
@@ -57,7 +57,7 @@ def apply_references_thesaururs(root_dir):
         lambda x: pd.NA if x == [] else x, na_action="ignore"
     )
     data["global_references"] = data["global_references"].map(
-        lambda x: ";".join(x) if isinstance(x, list) else x
+        lambda x: ";".join(sorted(x)) if isinstance(x, list) else x
     )
 
     data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")

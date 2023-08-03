@@ -35,9 +35,9 @@ def nx_compute_metrics(
     nodes = list(nx_graph.nodes())
     degree = [nx_graph.nodes[node]["degree"] for node in nodes]
 
-    occ_gc = [node.split(" ")[-1] for node in nodes]
-    occ = [int(text.split(":")[0]) for text in occ_gc]
-    gc = [int(text.split(":")[-1]) for text in occ_gc]
+    # occ_gc = [node.split(" ")[-1] for node in nodes]
+    # occ = [int(text.split(":")[0]) for text in occ_gc]
+    # gc = [int(text.split(":")[-1]) for text in occ_gc]
     betweenness = nx.betweenness_centrality(nx_graph)
     closeness = nx.closeness_centrality(nx_graph)
     pagerank = nx.pagerank(nx_graph)
@@ -58,18 +58,23 @@ def nx_compute_metrics(
             "PageRank": pagerank,
             ## "Centrality": callon_centrality,
             ## "Density": callon_density,
-            "_occ_": occ,
-            "_gc_": gc,
+            ## "_occ_": occ,
+            ## "_gc_": gc,
             "_name_": nodes,
         },
         index=nodes,
     )
 
-    data_frame = data_frame.sort_values(
-        by=["Degree", "_occ_", "_gc_", "_name_"],
-        ascending=[False, False, False, True],
-    )
+    ## data_frame = data_frame.sort_values(
+    ##     by=["Degree", "_occ_", "_gc_", "_name_"],
+    ##     ascending=[False, False, False, True],
+    ## )
+    ## data_frame = data_frame.drop(columns=["_occ_", "_gc_", "_name_"])
 
-    data_frame = data_frame.drop(columns=["_occ_", "_gc_", "_name_"])
+    data_frame = data_frame.sort_values(
+        by=["Degree", "_name_"],
+        ascending=[False, True],
+    )
+    data_frame = data_frame.drop(columns=["_name_"])
 
     return data_frame

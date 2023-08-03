@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.intellectual_structure.co_citation_network
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Co-citation Network
+===============================================================================
+
+See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.co_citation`

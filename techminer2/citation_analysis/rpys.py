@@ -38,7 +38,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ..._read_records import read_records
+from .._read_records import read_records
 
 
 def rpys(

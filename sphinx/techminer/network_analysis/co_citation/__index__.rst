@@ -1,5 +1,19 @@
-.. _vosviewer_co_citation_network:
+.. _network_analysis.co_citation:
 
-Co-citation/
+Co-citation >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::
+    :maxdepth: 1
+    
+    cited_references/__index__
+
+.. toctree::
+    :maxdepth: 1
+    
+    cited_sources/__index__
+
+.. toctree::
+    :maxdepth: 1
+    
+    cited_authors/__index__

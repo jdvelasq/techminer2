@@ -104,6 +104,7 @@ import pandas as pd
 import plotly.express as px
 
 from .format_prompt_for_dataframes import format_prompt_for_dataframes
+from .nx_compute_node_degree import nx_compute_node_degree
 
 
 def nx_create_degree_plot(
@@ -201,21 +202,13 @@ def nx_create_degree_plot(
 
         return format_prompt_for_dataframes(main_text, table.to_markdown())
 
-    def compute_node_degree(nx_graph):
-        """Computes the degree of each node in a networkx graph."""
-
-        for node, adjacencies in nx_graph.adjacency():
-            nx_graph.nodes[node]["degree"] = len(adjacencies)
-
-        return nx_graph
-
     #
     #
     # MAIN CODE:
     #
     #
 
-    nx_graph = compute_node_degree(nx_graph)
+    nx_graph = nx_compute_node_degree(nx_graph)
     degrees = collect_degrees(nx_graph)
     dataframe = to_dataframe(degrees)
     dataframe = dataframe[["Node", "Name", "Degree"]]
