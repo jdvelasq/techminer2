@@ -40,14 +40,14 @@ Local Impact --- Global Citations (Recipe)
 >>> print(items.df_.to_markdown())
 | countries      |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:---------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| United Kingdom |         1 |                199 |                34 |                           28.43 |                           4.86 |                       33.17 |
-| Australia      |         2 |                199 |                15 |                           28.43 |                           2.14 |                       28.43 |
-| Hong Kong      |         3 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
-| United States  |         4 |                 59 |                11 |                            9.83 |                           1.83 |                        7.38 |
+| United Kingdom |         1 |                199 |                35 |                           28.43 |                           5    |                       33.17 |
+| Australia      |         2 |                199 |                30 |                           28.43 |                           4.29 |                       28.43 |
+| Hong Kong      |         3 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
+| United States  |         4 |                 59 |                19 |                            9.83 |                           3.17 |                        7.38 |
 | Ireland        |         5 |                 55 |                22 |                           11    |                           4.4  |                        9.17 |
-| Germany        |         6 |                 51 |                17 |                           12.75 |                           4.25 |                        8.5  |
-| Switzerland    |         7 |                 45 |                13 |                           11.25 |                           3.25 |                        6.43 |
-| Luxembourg     |         8 |                 34 |                 8 |                           17    |                           4    |                        8.5  |
+| Germany        |         6 |                 51 |                14 |                           12.75 |                           3.5  |                        8.5  |
+| Switzerland    |         7 |                 45 |                12 |                           11.25 |                           3    |                        6.43 |
+| Luxembourg     |         8 |                 34 |                 7 |                           17    |                           3.5  |                        8.5  |
 | China          |         9 |                 27 |                 5 |                            5.4  |                           1    |                        3.86 |
 | Greece         |        10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 
@@ -72,18 +72,17 @@ Table:
 ```
 | countries      |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:---------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| United Kingdom |         1 |                199 |                34 |                           28.43 |                           4.86 |                       33.17 |
-| Australia      |         2 |                199 |                15 |                           28.43 |                           2.14 |                       28.43 |
-| Hong Kong      |         3 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
-| United States  |         4 |                 59 |                11 |                            9.83 |                           1.83 |                        7.38 |
+| United Kingdom |         1 |                199 |                35 |                           28.43 |                           5    |                       33.17 |
+| Australia      |         2 |                199 |                30 |                           28.43 |                           4.29 |                       28.43 |
+| Hong Kong      |         3 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
+| United States  |         4 |                 59 |                19 |                            9.83 |                           3.17 |                        7.38 |
 | Ireland        |         5 |                 55 |                22 |                           11    |                           4.4  |                        9.17 |
-| Germany        |         6 |                 51 |                17 |                           12.75 |                           4.25 |                        8.5  |
-| Switzerland    |         7 |                 45 |                13 |                           11.25 |                           3.25 |                        6.43 |
-| Luxembourg     |         8 |                 34 |                 8 |                           17    |                           4    |                        8.5  |
+| Germany        |         6 |                 51 |                14 |                           12.75 |                           3.5  |                        8.5  |
+| Switzerland    |         7 |                 45 |                12 |                           11.25 |                           3    |                        6.43 |
+| Luxembourg     |         8 |                 34 |                 7 |                           17    |                           3.5  |                        8.5  |
 | China          |         9 |                 27 |                 5 |                            5.4  |                           1    |                        3.86 |
 | Greece         |        10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 ```
 <BLANKLINE>
-
 
 """

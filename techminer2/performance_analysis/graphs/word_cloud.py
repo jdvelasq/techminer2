@@ -101,20 +101,22 @@ Table:
 | COUNTER_TERROR_FINANCE                    |         36 |     1 |
 | CHINA                                     |         37 |     1 |
 | FINANCIAL_DEVELOPMENT                     |         38 |     1 |
-| BUSINESS_MANAGEMENT                       |         39 |     1 |
-| BUSINESS_POLICY                           |         40 |     1 |
-| CORONAVIRUS                               |         41 |     1 |
-| CORPORATE_FINANCE                         |         42 |     1 |
-| DIGITAL_TECHNOLOGY                        |         43 |     1 |
-| INTERNATIONAL_FINANCE                     |         44 |     1 |
-| KNOW_YOUR_CUSTOMER (KYC)_COMPLIANCE       |         45 |     1 |
-| REGULATIONS_AND_COMPLIANCE                |         46 |     1 |
-| SMART_TREASURY                            |         47 |     1 |
+| CORONAVIRUS                               |         39 |     1 |
+| DIGITAL_TECHNOLOGY                        |         40 |     1 |
+| REGULATIONS_AND_COMPLIANCE                |         41 |     1 |
+| SMART_TREASURY                            |         42 |     1 |
+| BUSINESS_MANAGEMENT                       |         43 |     1 |
+| BUSINESS_POLICY                           |         44 |     1 |
+| CORPORATE_FINANCE                         |         45 |     1 |
+| INTERNATIONAL_FINANCE                     |         46 |     1 |
+| KNOW_YOUR_CUSTOMER (KYC)_COMPLIANCE       |         47 |     1 |
 | SUSTAINABLE_BUSINESS                      |         48 |     1 |
 | FINANCIAL_CRIME                           |         49 |     1 |
 | MONEY_LAUNDERING                          |         50 |     1 |
 ```
 <BLANKLINE>
+
+
 
 """
 import matplotlib.pyplot as plt

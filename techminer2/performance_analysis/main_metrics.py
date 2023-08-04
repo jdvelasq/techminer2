@@ -26,10 +26,10 @@ GENERAL        Timespan                                 2016:2023
                Documents                                       52
                Annual growth rate %                         63.87
                Document average age                          2.77
-               References                                    1101
+               References                                     932
                Average citations per document               10.83
                Average citations per document per year       1.35
-               Average references per document              23.93
+               Average references per document              20.71
                Sources                                         46
                Average documents per source                  1.13
 DOCUMENT TYPES article                                         31
@@ -89,10 +89,10 @@ Table:
 | ('GENERAL', 'Documents')                               | 52        |
 | ('GENERAL', 'Annual growth rate %')                    | 63.87     |
 | ('GENERAL', 'Document average age')                    | 2.77      |
-| ('GENERAL', 'References')                              | 1101      |
+| ('GENERAL', 'References')                              | 932       |
 | ('GENERAL', 'Average citations per document')          | 10.83     |
 | ('GENERAL', 'Average citations per document per year') | 1.35      |
-| ('GENERAL', 'Average references per document')         | 23.93     |
+| ('GENERAL', 'Average references per document')         | 20.71     |
 | ('GENERAL', 'Sources')                                 | 46        |
 | ('GENERAL', 'Average documents per source')            | 1.13      |
 | ('DOCUMENT TYPES', 'article')                          | 31        |

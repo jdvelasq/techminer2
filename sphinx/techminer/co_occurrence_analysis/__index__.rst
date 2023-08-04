@@ -1,4 +1,4 @@
-Co-occurrence Analysis/
+Co-occurrence Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

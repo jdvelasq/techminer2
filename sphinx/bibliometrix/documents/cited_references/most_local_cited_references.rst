@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.cited_references.most_local_cited_references
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Most Local Cited References
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Citation Analysis >` :ref:`citation_analysis.most_local_cited_references`

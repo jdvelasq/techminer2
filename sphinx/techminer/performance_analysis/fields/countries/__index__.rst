@@ -1,6 +1,6 @@
 .. _performance.countries:
 
-Countries/
+Countries >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

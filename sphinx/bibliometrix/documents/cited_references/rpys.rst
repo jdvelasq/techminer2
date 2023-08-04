@@ -1,7 +1,4 @@
-.. automodule:: techminer2.bibliometrix.cited_references.rpys
-    :members:
-    :undoc-members:
-    :show-inheritance:
+RPYS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
+See: `TechMiner 2+ > Citation Analysis >` :ref:`citation_analysis.rpys`

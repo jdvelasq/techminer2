@@ -11,7 +11,7 @@ Production over Time (Recipe)
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import terms_by_year
+>>> from techminer2.time_analysis import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -83,19 +83,20 @@ Table:
 >>> print(terms.metrics_.head().to_markdown())
 |    | organizations           |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
 |---:|:------------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | Univ of Hong Kong (HKG) |   2017 |     2 |         2 |                161 |                 3 |     7 |                      23     |                      0.429 |
-|  1 | Univ of Hong Kong (HKG) |   2020 |     1 |         3 |                 24 |                 5 |     4 |                       6     |                      1.25  |
+|  0 | Univ of Hong Kong (HKG) |   2017 |     2 |         2 |                161 |                19 |     7 |                      23     |                      2.714 |
+|  1 | Univ of Hong Kong (HKG) |   2020 |     1 |         3 |                 24 |                 4 |     4 |                       6     |                      1     |
 |  2 | Univ Coll Cork (IRL)    |   2018 |     1 |         1 |                  8 |                 5 |     6 |                       1.333 |                      0.833 |
 |  3 | Univ Coll Cork (IRL)    |   2019 |     1 |         2 |                 33 |                14 |     5 |                       6.6   |                      2.8   |
 |  4 | Univ Coll Cork (IRL)    |   2022 |     1 |         3 |                  0 |                 0 |     2 |                       0     |                      0     |
+
 
 >>> print(terms.documents_.head().to_markdown())
 |    | organizations                                                      | title                                                                 |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
 |---:|:-------------------------------------------------------------------|:----------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
 |  0 | Kingston Bus Sch (GBR)                                             | FINTECH and REGTECH: impact on regulators and BANKS                   |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  1 | FinTech HK, Hong Kong (HKG)                                        | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
-|  2 | Univ of Hong Kong (HKG)                                            | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
-|  3 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
+|  1 | FinTech HK, Hong Kong (HKG)                                        | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
+|  2 | Univ of Hong Kong (HKG)                                            | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
+|  3 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
 |  4 | Univ Coll Cork (IRL)                                               | understanding REGTECH for digital REGULATORY_COMPLIANCE               |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
 
 

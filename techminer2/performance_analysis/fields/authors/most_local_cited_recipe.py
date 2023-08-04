@@ -40,16 +40,16 @@ Most Local Cited (Recipe)
 >>> print(items.df_.to_markdown())
 | authors           |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:------------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
+| Arner DW          |         1 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
+| Buckley RP        |         2 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
+| Barberis JN       |         3 |                161 |                19 |                           80.5  |                           9.5  |                       23    |
 | Butler T          |         5 |                 41 |                19 |                           20.5  |                           9.5  |                        6.83 |
 | Anagnostopoulos I |         4 |                153 |                17 |                          153    |                          17    |                       25.5  |
 | OBrien L          |         6 |                 33 |                14 |                           33    |                          14    |                        6.6  |
-| Arner DW          |         1 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
-| Buckley RP        |         2 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
+| Baxter LG         |         7 |                 30 |                 8 |                           30    |                           8    |                        3.75 |
 | Breymann W        |        10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 | Gross FJ          |        11 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 | Kavassalis P      |        12 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| Saxton K          |        13 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| Stieber H         |        14 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 
 
 >>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/authors/most_local_cited_chart.html")
@@ -72,17 +72,19 @@ Table:
 ```
 | authors           |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:------------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
+| Arner DW          |         1 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
+| Buckley RP        |         2 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
+| Barberis JN       |         3 |                161 |                19 |                           80.5  |                           9.5  |                       23    |
 | Butler T          |         5 |                 41 |                19 |                           20.5  |                           9.5  |                        6.83 |
 | Anagnostopoulos I |         4 |                153 |                17 |                          153    |                          17    |                       25.5  |
 | OBrien L          |         6 |                 33 |                14 |                           33    |                          14    |                        6.6  |
-| Arner DW          |         1 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
-| Buckley RP        |         2 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
+| Baxter LG         |         7 |                 30 |                 8 |                           30    |                           8    |                        3.75 |
 | Breymann W        |        10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 | Gross FJ          |        11 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 | Kavassalis P      |        12 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| Saxton K          |        13 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| Stieber H         |        14 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 ```
 <BLANKLINE>
+
+
 
 """

@@ -10,7 +10,7 @@ Production over Time (Recipe)
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import terms_by_year
+>>> from techminer2.time_analysis import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -84,20 +84,21 @@ Table:
 >>> print(terms.metrics_.head().to_markdown())
 |    | authors     |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
 |---:|:------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | Arner DW    |   2017 |     2 |         2 |                161 |                 3 |     7 |                          23 |                      0.429 |
-|  1 | Arner DW    |   2020 |     1 |         3 |                 24 |                 5 |     4 |                           6 |                      1.25  |
-|  2 | Buckley RP  |   2017 |     2 |         2 |                161 |                 3 |     7 |                          23 |                      0.429 |
-|  3 | Buckley RP  |   2020 |     1 |         3 |                 24 |                 5 |     4 |                           6 |                      1.25  |
-|  4 | Barberis JN |   2017 |     2 |         2 |                161 |                 3 |     7 |                          23 |                      0.429 |
+|  0 | Arner DW    |   2017 |     2 |         2 |                161 |                19 |     7 |                          23 |                      2.714 |
+|  1 | Arner DW    |   2020 |     1 |         3 |                 24 |                 4 |     4 |                           6 |                      1     |
+|  2 | Buckley RP  |   2017 |     2 |         2 |                161 |                19 |     7 |                          23 |                      2.714 |
+|  3 | Buckley RP  |   2020 |     1 |         3 |                 24 |                 4 |     4 |                           6 |                      1     |
+|  4 | Barberis JN |   2017 |     2 |         2 |                161 |                19 |     7 |                          23 |                      2.714 |
+
 
 >>> print(terms.documents_.head().to_markdown())
 |    | authors     | title                                                                 |   year | source_title                                                   |   global_citations |   local_citations | doi                         |
 |---:|:------------|:----------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:----------------------------|
-|  0 | Arner DW    | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                         |
-|  1 | Barberis JN | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                         |
-|  2 | Buckley RP  | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                         |
+|  0 | Arner DW    | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                         |
+|  1 | Barberis JN | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                         |
+|  2 | Buckley RP  | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                         |
 |  3 | Butler T    | understanding REGTECH for digital REGULATORY_COMPLIANCE               |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6 |
-|  4 | Buckley RP  | the road to REGTECH: the (astonishing) example of the EUROPEAN_UNION  |   2020 | Journal of Banking Regulation                                  |                 24 |                 5 | 10.1057/S41261-019-00104-1  |
+|  4 | Buckley RP  | the road to REGTECH: the (astonishing) example of the EUROPEAN_UNION  |   2020 | Journal of Banking Regulation                                  |                 24 |                 4 | 10.1057/S41261-019-00104-1  |
 
 
 

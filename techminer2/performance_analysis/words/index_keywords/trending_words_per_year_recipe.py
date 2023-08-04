@@ -9,7 +9,7 @@
 Trending Words per Year (Recipe)
 ===============================================================================
 
->>> from techminer2.performance_analysis import trending_terms_per_year
+>>> from techminer2.time_analysis import trending_terms_per_year
 >>> words = trending_terms_per_year(
 ...     #
 ...     # PARAMS:
@@ -36,16 +36,16 @@ SANDBOXES                                     2     2018  ...  0.2525      3
 BLOCKCHAIN                                    2     2018  ...  0.2525      3
 SMART_CONTRACTS                               2     2018  ...  0.2525      3
 ADDITIONAL_KNOWLEDGE                          1     2019  ...  0.1500      1
-REGULATORY_COMPLIANCE                         9     2020  ...  0.9700      3
-FINANCIAL_INSTITUTIONS                        6     2020  ...  0.6625      3
+FINANCE                                       5     2019  ...  0.5600      4
 FINTECH                                       3     2020  ...  0.3550      1
 INFORMATION_SYSTEMS                           2     2020  ...  0.2525      2
 INFORMATION_USE                               2     2020  ...  0.2525      2
-FINANCE                                       5     2019  ...  0.5600      4
 ANTI_MONEY_LAUNDERING                         3     2020  ...  0.3550      2
-LAUNDERING                                    2     2021  ...  0.2525      1
+FINANCIAL_INSTITUTIONS                        6     2020  ...  0.6625      3
+REGULATORY_COMPLIANCE                         9     2020  ...  0.9700      3
 BANKING_INDUSTRY                              1     2021  ...  0.1500      1
 COMPLIANCE_COSTS                              1     2021  ...  0.1500      1
+LAUNDERING                                    2     2021  ...  0.2525      1
 <BLANKLINE>
 [20 rows x 8 columns]
 

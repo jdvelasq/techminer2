@@ -27,10 +27,10 @@ authors                                       ...
 Abdullah Y          1.0  2022.0  NaN  2022.0  ...             0.0   0.0   0.0   0.0
 Ajmi JA             1.0  2021.0  NaN  2021.0  ...             1.0   1.0   1.0   1.0
 Anagnostopoulos I   1.0  2018.0  NaN  2018.0  ...            17.0  17.0  17.0  17.0
-Anasweh M           1.0  2020.0  NaN  2020.0  ...             4.0   4.0   4.0   4.0
+Anasweh M           1.0  2020.0  NaN  2020.0  ...             2.0   2.0   2.0   2.0
 Arman AA            2.0  2022.0  0.0  2022.0  ...             0.0   0.0   0.0   0.0
 <BLANKLINE>
-[5 rows x 56 columns]
+[5 rows x 48 columns]
 
 
 

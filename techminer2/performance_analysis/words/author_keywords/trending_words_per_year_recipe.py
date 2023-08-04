@@ -9,7 +9,7 @@
 Trending Words per Year (Recipe)
 ===============================================================================
 
->>> from techminer2.performance_analysis import trending_terms_per_year
+>>> from techminer2.time_analysis import trending_terms_per_year
 >>> words = trending_terms_per_year(
 ...     #
 ...     # PARAMS:
@@ -28,24 +28,24 @@ year                                     OCC  year_q1  ...    height  width
 author_keywords                                        ...                 
 CORPORATE_SOCIAL_RESPONSIBILITIES (CSR)    1     2017  ...  0.150000      1
 CREDIT                                     1     2017  ...  0.150000      1
-SEMANTIC_TECHNOLOGIES                      2     2018  ...  0.180370      2
 SMART_CONTRACTS                            2     2017  ...  0.180370      2
 BUSINESS_MODELS                            1     2018  ...  0.150000      1
 FUTURE_RESEARCH_DIRECTION                  1     2018  ...  0.150000      1
 ALGORITHMIC_STANDARDS                      1     2018  ...  0.150000      1
-FINANCIAL_SERVICES                         4     2018  ...  0.241111      3
-BLOCKCHAIN                                 3     2018  ...  0.210741      3
+SEMANTIC_TECHNOLOGIES                      2     2018  ...  0.180370      2
 SANDBOXES                                  2     2018  ...  0.180370      3
+BLOCKCHAIN                                 3     2018  ...  0.210741      3
+FINANCIAL_SERVICES                         4     2018  ...  0.241111      3
+REGULATION                                 5     2018  ...  0.271481      4
 STANDARDS                                  1     2019  ...  0.150000      1
 DOGMAS                                     1     2019  ...  0.150000      1
-REGTECH                                   28     2019  ...  0.970000      4
 FINTECH                                   12     2019  ...  0.484074      2
-COMPLIANCE                                 7     2020  ...  0.332222      3
-REGULATION                                 5     2018  ...  0.271481      4
-ARTIFICIAL_INTELLIGENCE                    4     2020  ...  0.241111      1
-REGULATORY_TECHNOLOGY                      7     2020  ...  0.332222      3
-ANTI_MONEY_LAUNDERING                      5     2020  ...  0.271481      2
 FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
+REGTECH                                   28     2019  ...  0.970000      4
+ARTIFICIAL_INTELLIGENCE                    4     2020  ...  0.241111      1
+ANTI_MONEY_LAUNDERING                      5     2020  ...  0.271481      2
+DATA_PROTECTION                            2     2020  ...  0.180370      3
+INNOVATION                                 3     2020  ...  0.210741      3
 <BLANKLINE>
 [20 rows x 8 columns]
 

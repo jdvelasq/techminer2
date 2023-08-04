@@ -8,7 +8,7 @@
 Trending Words per Year (Recipe)
 ===============================================================================
 
->>> from techminer2.performance_analysis import trending_terms_per_year
+>>> from techminer2.time_analysis import trending_terms_per_year
 >>> words = trending_terms_per_year(
 ...     #
 ...     # PARAMS:
@@ -29,11 +29,11 @@ FINANCIAL_REGULATION             2     2016      2016  ...   0    0.56      2
 FINANCIAL_SYSTEM                 1     2017      2017  ...   0    0.15      1
 FINANCIAL_RISK                   1     2018      2018  ...   0    0.15      1
 REVIEW_ARTICLE                   1     2019      2019  ...   0    0.15      1
-FINANCIAL_CRIME                  2     2020      2020  ...   0    0.56      2
 EUROPEAN_UNION                   1     2020      2020  ...   1    0.15      1
 EFFECTIVE_SOLUTIONS              1     2020      2020  ...   2    0.15      1
 REGULATORY_TECHNOLOGY_REGTECH    1     2020      2020  ...   3    0.15      1
 AML_COMPLIANCE                   1     2020      2020  ...   4    0.15      1
+FINANCIAL_CRIME                  2     2020      2020  ...   0    0.56      2
 REGULATORY_TECHNOLOGY            3     2020      2021  ...   0    0.97      2
 ARTIFICIAL_INTELLIGENCE          3     2020      2021  ...   1    0.97      3
 BANK_TREASURY                    1     2021      2021  ...   2    0.15      1
@@ -47,7 +47,6 @@ REGTECH                          1     2022      2022  ...   4    0.15      1
 FIRM_PERFORMANCE                 1     2023      2023  ...   0    0.15      1
 <BLANKLINE>
 [20 rows x 8 columns]
-
 
 >>> words.fig_.write_html("sphinx/_static/performance_analysis/fields/title_nlp_phrases/trending_words_per_year.html")
 

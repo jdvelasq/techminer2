@@ -77,8 +77,8 @@ Table:
 | Indonesia            |         14 |     2 |
 | Greece               |         15 |     1 |
 | Japan                |         16 |     1 |
-| Jordan               |         17 |     1 |
-| South Africa         |         18 |     1 |
+| South Africa         |         17 |     1 |
+| Jordan               |         18 |     1 |
 | Ukraine              |         19 |     1 |
 | Malaysia             |         20 |     1 |
 ```

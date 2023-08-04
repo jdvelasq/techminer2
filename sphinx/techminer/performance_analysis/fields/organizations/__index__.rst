@@ -1,6 +1,6 @@
 .. _performance.organizations:
 
-Organizations/
+Organizations >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

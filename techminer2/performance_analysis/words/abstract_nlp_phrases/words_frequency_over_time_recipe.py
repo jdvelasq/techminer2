@@ -9,7 +9,7 @@
 Word Frequency over Time (Recipe)
 ===============================================================================
 
->>> from techminer2.performance_analysis import terms_by_year
+>>> from techminer2.time_analysis import terms_by_year
 >>> words = terms_by_year(
 ...     #
 ...     # PARAMS:

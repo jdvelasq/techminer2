@@ -6,23 +6,27 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
+.. _citation_analysis.rpys:
+
 RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
->>> from techminer2 import bibliometrix
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix/cited_references/rpys_chart.html"
->>> rpys = bibliometrix.cited_references.rpys(root_dir=root_dir)
->>> rpys.fig_.write_html(file_name)
+>>> from techminer2.citation_analysis import rpys
+>>> chart = rpys(
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+... )
+>>> chart.fig_.write_html("sphinx/_static/citation_analysis/rpys_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix/cited_references/rpys_chart.html" 
+    <iframe src="../../../../_static/citation_analysis/rpys_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> rpys.df_.head()
+>>> chart.df_.head()
       Num References  Median
 1937               1    -1.0
 1938               0     0.0
@@ -46,7 +50,10 @@ def rpys(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Reference Publication Year Spectroscopy."""
+    """Reference Publication Year Spectroscopy.
+
+    :meta private:
+    """
 
     data_frame = __table(root_dir=root_dir)
     fig = __fig(data_frame)

@@ -36,9 +36,9 @@ Corresponding Author's Countries
 >>> print(result.df_.head().to_markdown())
 | countries      |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
 |:---------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
-| United Kingdom |     7 |                199 |                34 |                    4 |                      3 |       0.43 |
-| Australia      |     7 |                199 |                15 |                    4 |                      3 |       0.43 |
-| United States  |     6 |                 59 |                11 |                    4 |                      2 |       0.33 |
+| United Kingdom |     7 |                199 |                35 |                    4 |                      3 |       0.43 |
+| Australia      |     7 |                199 |                30 |                    4 |                      3 |       0.43 |
+| United States  |     6 |                 59 |                19 |                    4 |                      2 |       0.33 |
 | Ireland        |     5 |                 55 |                22 |                    4 |                      1 |       0.2  |
 | China          |     5 |                 27 |                 5 |                    2 |                      3 |       0.6  |
 
@@ -63,29 +63,28 @@ Table:
 ```
 | countries            |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
 |:---------------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
-| United Kingdom       |     7 |                199 |                34 |                    4 |                      3 |       0.43 |
-| Australia            |     7 |                199 |                15 |                    4 |                      3 |       0.43 |
-| United States        |     6 |                 59 |                11 |                    4 |                      2 |       0.33 |
+| United Kingdom       |     7 |                199 |                35 |                    4 |                      3 |       0.43 |
+| Australia            |     7 |                199 |                30 |                    4 |                      3 |       0.43 |
+| United States        |     6 |                 59 |                19 |                    4 |                      2 |       0.33 |
 | Ireland              |     5 |                 55 |                22 |                    4 |                      1 |       0.2  |
 | China                |     5 |                 27 |                 5 |                    2 |                      3 |       0.6  |
 | Italy                |     5 |                  5 |                 2 |                    4 |                      1 |       0.2  |
-| Germany              |     4 |                 51 |                17 |                    2 |                      2 |       0.5  |
-| Switzerland          |     4 |                 45 |                13 |                    1 |                      3 |       0.75 |
-| Bahrain              |     4 |                 19 |                 5 |                    2 |                      2 |       0.5  |
-| Hong Kong            |     3 |                185 |                 8 |                    0 |                      3 |       1    |
-| Luxembourg           |     2 |                 34 |                 8 |                    1 |                      1 |       0.5  |
-| United Arab Emirates |     2 |                 13 |                 7 |                    1 |                      1 |       0.5  |
+| Germany              |     4 |                 51 |                14 |                    2 |                      2 |       0.5  |
+| Switzerland          |     4 |                 45 |                12 |                    1 |                      3 |       0.75 |
+| Bahrain              |     4 |                 19 |                 3 |                    2 |                      2 |       0.5  |
+| Hong Kong            |     3 |                185 |                23 |                    0 |                      3 |       1    |
+| Luxembourg           |     2 |                 34 |                 7 |                    1 |                      1 |       0.5  |
+| United Arab Emirates |     2 |                 13 |                 5 |                    1 |                      1 |       0.5  |
 | Spain                |     2 |                  4 |                 0 |                    2 |                      0 |       0    |
 | Indonesia            |     2 |                  0 |                 0 |                    2 |                      0 |       0    |
 | Greece               |     1 |                 21 |                 8 |                    0 |                      1 |       1    |
 | Japan                |     1 |                 13 |                 1 |                    0 |                      1 |       1    |
-| Jordan               |     1 |                 11 |                 4 |                    0 |                      1 |       1    |
 | South Africa         |     1 |                 11 |                 4 |                    1 |                      0 |       0    |
+| Jordan               |     1 |                 11 |                 2 |                    0 |                      1 |       1    |
 | Ukraine              |     1 |                  4 |                 0 |                    1 |                      0 |       0    |
 | Malaysia             |     1 |                  3 |                 0 |                    1 |                      0 |       0    |
 ```
 <BLANKLINE>
-
 
 """
 from dataclasses import dataclass

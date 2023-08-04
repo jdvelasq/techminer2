@@ -40,16 +40,16 @@ Local Impact --- Global Citations (Recipe)
 >>> print(items.df_.to_markdown())
 | organizations                                                      |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:-------------------------------------------------------------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| Univ of Hong Kong (HKG)                                            |         1 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
+| Univ of Hong Kong (HKG)                                            |         1 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
 | Kingston Bus Sch (GBR)                                             |         2 |                153 |                17 |                          153    |                          17    |                       25.5  |
-| FinTech HK, Hong Kong (HKG)                                        |         3 |                150 |                 0 |                          150    |                           0    |                       21.43 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         4 |                150 |                 0 |                          150    |                           0    |                       21.43 |
+| FinTech HK, Hong Kong (HKG)                                        |         3 |                150 |                16 |                          150    |                          16    |                       21.43 |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         4 |                150 |                16 |                          150    |                          16    |                       21.43 |
 | Univ Coll Cork (IRL)                                               |         5 |                 41 |                19 |                           13.67 |                           6.33 |                        6.83 |
-| Duke Univ Sch of Law (USA)                                         |         6 |                 30 |                 0 |                           30    |                           0    |                        3.75 |
-| Heinrich-Heine-Univ (DEU)                                          |         7 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| UNSW Sydney, Kensington, Australia (AUS)                           |         8 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| Univ of Luxembourg (LUX)                                           |         9 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| Univ of Zurich (CHE)                                               |        10 |                 24 |                 5 |                           24    |                           5    |                        6    |
+| Duke Univ Sch of Law (USA)                                         |         6 |                 30 |                 8 |                           30    |                           8    |                        3.75 |
+| Heinrich-Heine-Univ (DEU)                                          |         7 |                 24 |                 4 |                           24    |                           4    |                        6    |
+| UNSW Sydney, Kensington, Australia (AUS)                           |         8 |                 24 |                 4 |                           24    |                           4    |                        6    |
+| Univ of Luxembourg (LUX)                                           |         9 |                 24 |                 4 |                           24    |                           4    |                        6    |
+| Univ of Zurich (CHE)                                               |        10 |                 24 |                 4 |                           24    |                           4    |                        6    |
 
 
 
@@ -73,17 +73,18 @@ Table:
 ```
 | organizations                                                      |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:-------------------------------------------------------------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| Univ of Hong Kong (HKG)                                            |         1 |                185 |                 8 |                           61.67 |                           2.67 |                       26.43 |
+| Univ of Hong Kong (HKG)                                            |         1 |                185 |                23 |                           61.67 |                           7.67 |                       26.43 |
 | Kingston Bus Sch (GBR)                                             |         2 |                153 |                17 |                          153    |                          17    |                       25.5  |
-| FinTech HK, Hong Kong (HKG)                                        |         3 |                150 |                 0 |                          150    |                           0    |                       21.43 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         4 |                150 |                 0 |                          150    |                           0    |                       21.43 |
+| FinTech HK, Hong Kong (HKG)                                        |         3 |                150 |                16 |                          150    |                          16    |                       21.43 |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         4 |                150 |                16 |                          150    |                          16    |                       21.43 |
 | Univ Coll Cork (IRL)                                               |         5 |                 41 |                19 |                           13.67 |                           6.33 |                        6.83 |
-| Duke Univ Sch of Law (USA)                                         |         6 |                 30 |                 0 |                           30    |                           0    |                        3.75 |
-| Heinrich-Heine-Univ (DEU)                                          |         7 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| UNSW Sydney, Kensington, Australia (AUS)                           |         8 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| Univ of Luxembourg (LUX)                                           |         9 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| Univ of Zurich (CHE)                                               |        10 |                 24 |                 5 |                           24    |                           5    |                        6    |
+| Duke Univ Sch of Law (USA)                                         |         6 |                 30 |                 8 |                           30    |                           8    |                        3.75 |
+| Heinrich-Heine-Univ (DEU)                                          |         7 |                 24 |                 4 |                           24    |                           4    |                        6    |
+| UNSW Sydney, Kensington, Australia (AUS)                           |         8 |                 24 |                 4 |                           24    |                           4    |                        6    |
+| Univ of Luxembourg (LUX)                                           |         9 |                 24 |                 4 |                           24    |                           4    |                        6    |
+| Univ of Zurich (CHE)                                               |        10 |                 24 |                 4 |                           24    |                           4    |                        6    |
 ```
 <BLANKLINE>
+
 
 """

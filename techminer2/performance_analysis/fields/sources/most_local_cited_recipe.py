@@ -40,16 +40,16 @@ Most Local Cited (Recipe)
 >>> print(items.df_.to_markdown())
 | source_abbr                   |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:------------------------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| J ECON BUS                    |         1 |                153 |                17 |                           153   |                           17   |                       25.5  |
-| PALGRAVE STUD DIGIT BUS ENABL |         4 |                 33 |                14 |                            33   |                           14   |                        6.6  |
-| J BANK REGUL                  |         3 |                 35 |                 9 |                            17.5 |                            4.5 |                        8.75 |
-| J RISK FINANC                 |         6 |                 21 |                 8 |                            21   |                            8   |                        3.5  |
-| J RISK MANG FINANCIAL INST    |        13 |                  8 |                 5 |                             8   |                            5   |                        1.33 |
-| J FINANC CRIME                |         8 |                 13 |                 4 |                             6.5 |                            2   |                        3.25 |
-| HELIYON                       |        11 |                 11 |                 4 |                            11   |                            4   |                        2.75 |
-| J MONEY LAUND CONTROL         |         7 |                 14 |                 3 |                            14   |                            3   |                        3.5  |
-| ICEIS - PROC INT CONF ENTERP  |        10 |                 12 |                 3 |                            12   |                            3   |                        3    |
-| HANDBBLOCKCHAIN, DIGIT FINANC |        12 |                 11 |                 3 |                            11   |                            3   |                        1.57 |
+| J ECON BUS                    |         1 |                153 |                17 |                           153   |                             17 |                       25.5  |
+| NORTHWEST J INTL LAW BUS      |         2 |                150 |                16 |                           150   |                             16 |                       21.43 |
+| PALGRAVE STUD DIGIT BUS ENABL |         4 |                 33 |                14 |                            33   |                             14 |                        6.6  |
+| J BANK REGUL                  |         3 |                 35 |                 8 |                            17.5 |                              4 |                        8.75 |
+| DUKE LAW J                    |         5 |                 30 |                 8 |                            30   |                              8 |                        3.75 |
+| J RISK FINANC                 |         6 |                 21 |                 8 |                            21   |                              8 |                        3.5  |
+| J RISK MANG FINANCIAL INST    |        13 |                  8 |                 5 |                             8   |                              5 |                        1.33 |
+| J FINANC CRIME                |         8 |                 13 |                 4 |                             6.5 |                              2 |                        3.25 |
+| J MONEY LAUND CONTROL         |         7 |                 14 |                 3 |                            14   |                              3 |                        3.5  |
+| ICEIS - PROC INT CONF ENTERP  |        10 |                 12 |                 3 |                            12   |                              3 |                        3    |
 
 
 >>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/sources/most_local_cited_chart.html")
@@ -72,17 +72,19 @@ Table:
 ```
 | source_abbr                   |   rank_gc |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:------------------------------|----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| J ECON BUS                    |         1 |                153 |                17 |                           153   |                           17   |                       25.5  |
-| PALGRAVE STUD DIGIT BUS ENABL |         4 |                 33 |                14 |                            33   |                           14   |                        6.6  |
-| J BANK REGUL                  |         3 |                 35 |                 9 |                            17.5 |                            4.5 |                        8.75 |
-| J RISK FINANC                 |         6 |                 21 |                 8 |                            21   |                            8   |                        3.5  |
-| J RISK MANG FINANCIAL INST    |        13 |                  8 |                 5 |                             8   |                            5   |                        1.33 |
-| J FINANC CRIME                |         8 |                 13 |                 4 |                             6.5 |                            2   |                        3.25 |
-| HELIYON                       |        11 |                 11 |                 4 |                            11   |                            4   |                        2.75 |
-| J MONEY LAUND CONTROL         |         7 |                 14 |                 3 |                            14   |                            3   |                        3.5  |
-| ICEIS - PROC INT CONF ENTERP  |        10 |                 12 |                 3 |                            12   |                            3   |                        3    |
-| HANDBBLOCKCHAIN, DIGIT FINANC |        12 |                 11 |                 3 |                            11   |                            3   |                        1.57 |
+| J ECON BUS                    |         1 |                153 |                17 |                           153   |                             17 |                       25.5  |
+| NORTHWEST J INTL LAW BUS      |         2 |                150 |                16 |                           150   |                             16 |                       21.43 |
+| PALGRAVE STUD DIGIT BUS ENABL |         4 |                 33 |                14 |                            33   |                             14 |                        6.6  |
+| J BANK REGUL                  |         3 |                 35 |                 8 |                            17.5 |                              4 |                        8.75 |
+| DUKE LAW J                    |         5 |                 30 |                 8 |                            30   |                              8 |                        3.75 |
+| J RISK FINANC                 |         6 |                 21 |                 8 |                            21   |                              8 |                        3.5  |
+| J RISK MANG FINANCIAL INST    |        13 |                  8 |                 5 |                             8   |                              5 |                        1.33 |
+| J FINANC CRIME                |         8 |                 13 |                 4 |                             6.5 |                              2 |                        3.25 |
+| J MONEY LAUND CONTROL         |         7 |                 14 |                 3 |                            14   |                              3 |                        3.5  |
+| ICEIS - PROC INT CONF ENTERP  |        10 |                 12 |                 3 |                            12   |                              3 |                        3    |
 ```
 <BLANKLINE>
+
+
 
 """

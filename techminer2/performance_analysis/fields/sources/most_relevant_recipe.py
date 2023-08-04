@@ -44,10 +44,10 @@ Most Relevant (Recipe)
 |:------------------------------|-----------:|----------:|------:|-------------------:|
 | J BANK REGUL                  |          1 |         3 |     2 |                 35 |
 | J FINANC CRIME                |          2 |         8 |     2 |                 13 |
-| FOSTER INNOVCOMPET WITH FINTE |          3 |        28 |     2 |                  1 |
-| STUD COMPUT INTELL            |          4 |        29 |     2 |                  1 |
-| INT CONF INF TECHNOL SYST INN |          5 |        36 |     2 |                  0 |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |        37 |     2 |                  0 |
+| STUD COMPUT INTELL            |          3 |        28 |     2 |                  1 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |        30 |     2 |                  1 |
+| INT CONF INF TECHNOL SYST INN |          5 |        37 |     2 |                  0 |
+| ROUTLEDGE HANDBFINANCIAL TECH |          6 |        38 |     2 |                  0 |
 | J ECON BUS                    |          7 |         1 |     1 |                153 |
 | NORTHWEST J INTL LAW BUS      |          8 |         2 |     1 |                150 |
 | PALGRAVE STUD DIGIT BUS ENABL |          9 |         4 |     1 |                 33 |
@@ -56,6 +56,8 @@ Most Relevant (Recipe)
 | J MONEY LAUND CONTROL         |         12 |         7 |     1 |                 14 |
 | FINANCIAL INNOV               |         13 |         9 |     1 |                 13 |
 | ICEIS - PROC INT CONF ENTERP  |         14 |        10 |     1 |                 12 |
+
+
 
 >>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/sources/most_relevant_chart.html")
 
@@ -78,10 +80,10 @@ Table:
 |:------------------------------|-----------:|----------:|------:|-------------------:|
 | J BANK REGUL                  |          1 |         3 |     2 |                 35 |
 | J FINANC CRIME                |          2 |         8 |     2 |                 13 |
-| FOSTER INNOVCOMPET WITH FINTE |          3 |        28 |     2 |                  1 |
-| STUD COMPUT INTELL            |          4 |        29 |     2 |                  1 |
-| INT CONF INF TECHNOL SYST INN |          5 |        36 |     2 |                  0 |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |        37 |     2 |                  0 |
+| STUD COMPUT INTELL            |          3 |        28 |     2 |                  1 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |        30 |     2 |                  1 |
+| INT CONF INF TECHNOL SYST INN |          5 |        37 |     2 |                  0 |
+| ROUTLEDGE HANDBFINANCIAL TECH |          6 |        38 |     2 |                  0 |
 | J ECON BUS                    |          7 |         1 |     1 |                153 |
 | NORTHWEST J INTL LAW BUS      |          8 |         2 |     1 |                150 |
 | PALGRAVE STUD DIGIT BUS ENABL |          9 |         4 |     1 |                 33 |

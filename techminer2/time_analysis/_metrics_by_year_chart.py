@@ -52,15 +52,27 @@ def metrics_by_year_chart(
         if column not in ["OCC", "cum_OCC"]
     }
     column_names["OCC"] = "OCC"
-    column_names["cum_OCC"] = "cum_OCC"
+    column_names["cum_OCC"] = "cum OCC"
     df = df.rename(columns=column_names)
 
-    auxiliary_indicator = auxiliary_indicator.replace("_", " ").title()
+    if indicator_to_plot == "OCC":
+        pass
+    elif indicator_to_plot == "cum_OCC":
+        indicator_to_plot = "cum OCC"
+    else:
+        indicator_to_plot = indicator_to_plot.replace("_", " ").title()
+
+    if auxiliary_indicator == "OCC":
+        pass
+    elif auxiliary_indicator == "cum_OCC":
+        auxiliary_indicator = "cum OCC"
+    else:
+        auxiliary_indicator = auxiliary_indicator.replace("_", " ").title()
 
     fig = px.line(
         df,
         x=df.index,
-        y=column_names[indicator_to_plot],
+        y=indicator_to_plot,
         title=title,
         markers=True,
         hover_data=["OCC", "Global Citations", "Local Citations"],
@@ -96,7 +108,7 @@ def metrics_by_year_chart(
     for index, row in df.iterrows():
         fig.add_annotation(
             x=index,
-            y=row[indicator_to_plot],
+            y=indicator_to_plot,
             text=str(int(row[auxiliary_indicator])),
             showarrow=False,
             textangle=-90,

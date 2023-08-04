@@ -154,16 +154,16 @@ Table:
 |  0 | REGTECH               |   2017 |     2 |         2 |                 12 |                 3 |     7 |                       1.714 |                      0.429 |
 |  1 | REGTECH               |   2018 |     3 |         5 |                182 |                30 |     6 |                      30.333 |                      5     |
 |  2 | REGTECH               |   2019 |     4 |         9 |                 42 |                18 |     5 |                       8.4   |                      3.6   |
-|  3 | REGTECH               |   2020 |     8 |        17 |                 67 |                17 |     4 |                      16.75  |                      4.25  |
+|  3 | REGTECH               |   2020 |     8 |        17 |                 67 |                16 |     4 |                      16.75  |                      4     |
 |  4 | REGTECH               |   2021 |     3 |        20 |                  6 |                 4 |     3 |                       2     |                      1.333 |
 |  5 | REGTECH               |   2022 |     6 |        26 |                 20 |                 2 |     2 |                      10     |                      1     |
 |  6 | REGTECH               |   2023 |     2 |        28 |                  0 |                 0 |     1 |                       0     |                      0     |
 |  7 | FINTECH               |   2018 |     2 |         2 |                161 |                22 |     6 |                      26.833 |                      3.667 |
 |  8 | FINTECH               |   2019 |     4 |         6 |                 42 |                18 |     5 |                       8.4   |                      3.6   |
-|  9 | FINTECH               |   2020 |     3 |         9 |                 29 |                 5 |     4 |                       7.25  |                      1.25  |
+|  9 | FINTECH               |   2020 |     3 |         9 |                 29 |                 4 |     4 |                       7.25  |                      1     |
 | 10 | FINTECH               |   2021 |     1 |        10 |                  3 |                 3 |     3 |                       1     |                      1     |
 | 11 | FINTECH               |   2022 |     2 |        12 |                 14 |                 1 |     2 |                       7     |                      0.5   |
-| 12 | REGULATORY_TECHNOLOGY |   2020 |     2 |         2 |                 16 |                 7 |     4 |                       4     |                      1.75  |
+| 12 | REGULATORY_TECHNOLOGY |   2020 |     2 |         2 |                 16 |                 3 |     4 |                       4     |                      0.75  |
 | 13 | REGULATORY_TECHNOLOGY |   2021 |     3 |         5 |                 19 |                 6 |     3 |                       6.333 |                      2     |
 | 14 | REGULATORY_TECHNOLOGY |   2022 |     2 |         7 |                  2 |                 1 |     2 |                       1     |                      0.5   |
 | 15 | COMPLIANCE            |   2019 |     1 |         1 |                  3 |                 0 |     5 |                       0.6   |                      0     |
@@ -171,6 +171,8 @@ Table:
 | 17 | COMPLIANCE            |   2021 |     1 |         5 |                  2 |                 0 |     3 |                       0.667 |                      0     |
 | 18 | COMPLIANCE            |   2022 |     1 |         6 |                  1 |                 0 |     2 |                       0.5   |                      0     |
 | 19 | COMPLIANCE            |   2023 |     1 |         7 |                  0 |                 0 |     1 |                       0     |                      0     |
+
+
 
 >>> print(terms.documents_.head().to_markdown())
 |    | author_keywords    | title                                                   |   year | source_title                                                   |   global_citations |   local_citations | doi                            |

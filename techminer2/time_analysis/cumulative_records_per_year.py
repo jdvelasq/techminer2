@@ -110,6 +110,7 @@ def cumulative_records_per_year(
 
     fig = metrics_by_year_chart(
         indicator_to_plot="cum_OCC",
+        auxiliary_indicator="global_citations",
         title=title,
         #
         # DATABASE PARAMS

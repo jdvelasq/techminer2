@@ -6,27 +6,44 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
+.. _citation_analysis.most_global_cited_references:
+
 Most Global Cited References
 ===============================================================================
 
 
->>> from techminer2 import bibliometrix
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix/cited_references/most_global_cited_references.html"
->>> documents = bibliometrix.cited_references.most_global_cited_references(
+>>> from techminer2.citation_analysis import most_global_cited_references
+>>> documents = most_global_cited_references(
+...     #
+...     # FUNCTION PARAMS:
 ...     top_n=20,
-...     root_dir=root_dir,
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     field_label=None,
+...     metric_label=None,
+...     textfont_size=10,
+...     marker_size=7,
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="references",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 --INFO-- The file 'data/regtech/reports/most_global_cited_references__abstracts.txt' was created.
 --INFO-- The file 'data/regtech/reports/most_global_cited_references__prompt.txt' was created.
 
 
->>> documents.fig_.write_html(file_name)
+>>> documents.fig_.write_html("sphinx/_static/citation_analysis/most_global_cited_references.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix/cited_references/most_global_cited_references.html" 
+    <iframe src="../../../../_static/citation_analysis/most_global_cited_references.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
+
 
 >>> print(documents.df_.head(5).to_markdown())
 | article                                             |   year |   global_citations |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                                |
@@ -62,7 +79,10 @@ def most_global_cited_references(
     cited_by_filter=None,
     **filters,
 ):
-    """Plots the most local cited documents in the main collection."""
+    """Plots the most local cited documents in the main collection.
+
+    :meta private:
+    """
 
     from .most_cited_documents import most_cited_documents
 

@@ -9,7 +9,7 @@ Production over Time (Recipe)
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import terms_by_year
+>>> from techminer2.time_analysis import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -43,8 +43,8 @@ Production over Time (Recipe)
 |:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
 | STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
 | INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
 | ROUTLEDGE HANDBFINANCIAL TECH 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
 | J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
@@ -68,8 +68,8 @@ Table:
 |:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
 | STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
 | INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
 | ROUTLEDGE HANDBFINANCIAL TECH 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
 | J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
@@ -80,23 +80,23 @@ Table:
 <BLANKLINE>
 
 >>> print(terms.metrics_.head().to_markdown())
-|    | source_abbr                   |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
-|---:|:------------------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | J BANK REGUL                  |   2020 |     1 |         1 |                 24 |                 5 |     4 |                       6     |                      1.25  |
-|  1 | J BANK REGUL                  |   2021 |     1 |         2 |                 11 |                 4 |     3 |                       3.667 |                      1.333 |
-|  2 | J FINANC CRIME                |   2020 |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
-|  3 | J FINANC CRIME                |   2022 |     1 |         2 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
-|  4 | FOSTER INNOVCOMPET WITH FINTE |   2020 |     2 |         2 |                  1 |                 1 |     4 |                       0.25  |                      0.25  |
+|    | source_abbr        |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
+|---:|:-------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | J BANK REGUL       |   2020 |     1 |         1 |                 24 |                 4 |     4 |                       6     |                      1     |
+|  1 | J BANK REGUL       |   2021 |     1 |         2 |                 11 |                 4 |     3 |                       3.667 |                      1.333 |
+|  2 | J FINANC CRIME     |   2020 |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
+|  3 | J FINANC CRIME     |   2022 |     1 |         2 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
+|  4 | STUD COMPUT INTELL |   2021 |     2 |         2 |                  1 |                 1 |     3 |                       0.333 |                      0.333 |
 
 
 >>> print(terms.documents_.head().to_markdown())
 |    | source_abbr                   | title                                                                                                             |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
 |---:|:------------------------------|:------------------------------------------------------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
 |  0 | J ECON BUS                    | FINTECH and REGTECH: impact on regulators and BANKS                                                               |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  1 | NORTHWEST J INTL LAW BUS      | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION                                             |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
+|  1 | NORTHWEST J INTL LAW BUS      | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION                                             |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
 |  2 | PALGRAVE STUD DIGIT BUS ENABL | understanding REGTECH for digital REGULATORY_COMPLIANCE                                                           |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
-|  3 | DUKE LAW J                    | adaptive FINANCIAL_REGULATION and REGTECH: a concept ARTICLE on realistic protection for victims of BANK failures |   2016 | Duke Law Journal                                               |                 30 |                 0 | nan                            |
-|  4 | J BANK REGUL                  | the road to REGTECH: the (astonishing) example of the EUROPEAN_UNION                                              |   2020 | Journal of Banking Regulation                                  |                 24 |                 5 | 10.1057/S41261-019-00104-1     |
+|  3 | DUKE LAW J                    | adaptive FINANCIAL_REGULATION and REGTECH: a concept ARTICLE on realistic protection for victims of BANK failures |   2016 | Duke Law Journal                                               |                 30 |                 8 | nan                            |
+|  4 | J BANK REGUL                  | the road to REGTECH: the (astonishing) example of the EUROPEAN_UNION                                              |   2020 | Journal of Banking Regulation                                  |                 24 |                 4 | 10.1057/S41261-019-00104-1     |
 
 
 

@@ -34,11 +34,11 @@ Average Citations per Year
 >>> print(chart.df_.head().to_markdown())
 |   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
 |-------:|------:|----------:|------------------:|-------------------:|----------------:|------------------------:|-----------------------:|---------------------------------:|-----------------------:|----------------------:|--------------------------------:|
-|   2016 |     1 |         1 |                 0 |                 30 |               8 |                30       |                     30 |                             3.75 |                0       |                     0 |                            0    |
-|   2017 |     4 |         5 |                 3 |                162 |               7 |                40.5     |                    192 |                             5.79 |                0.75    |                     3 |                            0.11 |
-|   2018 |     3 |         8 |                30 |                182 |               6 |                60.6667  |                    374 |                            10.11 |               10       |                    33 |                            1.67 |
-|   2019 |     6 |        14 |                19 |                 47 |               5 |                 7.83333 |                    421 |                             1.57 |                3.16667 |                    52 |                            0.63 |
-|   2020 |    14 |        28 |                29 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                2.07143 |                    81 |                            0.52 |
+|   2016 |     1 |         1 |                 8 |                 30 |               8 |                30       |                     30 |                             3.75 |                8       |                     8 |                            1    |
+|   2017 |     4 |         5 |                19 |                162 |               7 |                40.5     |                    192 |                             5.79 |                4.75    |                    27 |                            0.68 |
+|   2018 |     3 |         8 |                30 |                182 |               6 |                60.6667  |                    374 |                            10.11 |               10       |                    57 |                            1.67 |
+|   2019 |     6 |        14 |                20 |                 47 |               5 |                 7.83333 |                    421 |                             1.57 |                3.33333 |                    77 |                            0.67 |
+|   2020 |    14 |        28 |                23 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                1.64286 |                   100 |                            0.41 |
 
 
 >>> print(chart.prompt_)
@@ -63,6 +63,8 @@ Table:
 |   2023 |                 0       |                  0 |
 ```
 <BLANKLINE>
+
+
 
 """
 from dataclasses import dataclass
@@ -106,6 +108,7 @@ def average_citations_per_year(
 
     fig = metrics_by_year_chart(
         indicator_to_plot="mean_global_citations",
+        auxiliary_indicator="mean_local_citations",
         title=title,
         #
         # DATABASE PARAMS:

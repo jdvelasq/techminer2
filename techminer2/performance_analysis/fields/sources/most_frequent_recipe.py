@@ -51,14 +51,15 @@ Most Frequent (Recipe)
 |:------------------------------|-----------:|------:|
 | J BANK REGUL                  |          1 |     2 |
 | J FINANC CRIME                |          2 |     2 |
-| FOSTER INNOVCOMPET WITH FINTE |          3 |     2 |
-| STUD COMPUT INTELL            |          4 |     2 |
+| STUD COMPUT INTELL            |          3 |     2 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |
 | INT CONF INF TECHNOL SYST INN |          5 |     2 |
 | ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |
 | J ECON BUS                    |          7 |     1 |
 | NORTHWEST J INTL LAW BUS      |          8 |     1 |
 | PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |
 | DUKE LAW J                    |         10 |     1 |
+
 
 >>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/sources/most_frequent_chart.html")
 
@@ -82,8 +83,8 @@ Table:
 |:------------------------------|-----------:|------:|
 | J BANK REGUL                  |          1 |     2 |
 | J FINANC CRIME                |          2 |     2 |
-| FOSTER INNOVCOMPET WITH FINTE |          3 |     2 |
-| STUD COMPUT INTELL            |          4 |     2 |
+| STUD COMPUT INTELL            |          3 |     2 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |
 | INT CONF INF TECHNOL SYST INN |          5 |     2 |
 | ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |
 | J ECON BUS                    |          7 |     1 |
