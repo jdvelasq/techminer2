@@ -1,6 +1,6 @@
 .. _performance.descriptors:
 
-Descriptors/
+Descriptors >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

@@ -1,4 +1,4 @@
-Comparison between Word Pairs/
+Comparison between Word Pairs >
 =========================================================================================
 
 .. toctree::

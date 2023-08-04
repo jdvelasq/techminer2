@@ -1,6 +1,6 @@
 .. _performance.author_keywords:
 
-Author Keywords/
+Author Keywords >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

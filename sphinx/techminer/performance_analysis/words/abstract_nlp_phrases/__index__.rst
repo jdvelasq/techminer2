@@ -1,6 +1,6 @@
 .. _performance.abstract_nlp_phrases:
 
-Abstract NLP Phrases/
+Abstract NLP Phrases >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

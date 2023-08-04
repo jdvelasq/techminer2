@@ -1,4 +1,4 @@
-Multiple Correspondence Analysis
+Multiple Correspondence Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

@@ -1,6 +1,6 @@
 .. _performance.keywords:
 
-Keywords/
+Keywords >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

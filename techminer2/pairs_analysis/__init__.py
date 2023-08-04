@@ -1,0 +1,1 @@
+from .lemma_associations import lemma_associations

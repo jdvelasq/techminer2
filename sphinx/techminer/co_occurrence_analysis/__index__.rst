@@ -9,11 +9,6 @@ Co-occurrence Analysis >
 .. toctree::
     :maxdepth: 1
 
-    word_pairs/__index__
-
-.. toctree::
-    :maxdepth: 1
-
     graphs/__index__
 
 .. toctree::

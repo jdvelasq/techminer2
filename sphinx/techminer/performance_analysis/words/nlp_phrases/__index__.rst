@@ -1,6 +1,6 @@
 .. _performance.nlp_phrases:
 
-NLP Phrases/
+NLP Phrases >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

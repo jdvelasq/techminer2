@@ -1,4 +1,4 @@
-Correspondence Analysis
+Correspondence Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

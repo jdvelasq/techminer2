@@ -1,8 +1,12 @@
-Sequences and Network Analysis/
+Sequences and Network Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   ego_graph
+   :maxdepth: 1
+
+   fields/__index__
 
 .. toctree::
-   ego_network
+   :maxdepth: 1
+
+   words/__index__

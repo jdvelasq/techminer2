@@ -1,6 +1,6 @@
 .. _performance.index_keywords:
 
-Index Keywords/
+Index Keywords >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
