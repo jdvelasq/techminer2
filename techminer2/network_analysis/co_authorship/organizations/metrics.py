@@ -29,12 +29,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                                Degree  ...  PageRank
-Univ of Hong Kong (HKG) 3:185                        6  ...  0.105925
-Heinrich-Heine-Univ (DEU) 1:024                      4  ...  0.069164
-UNSW Sydney, Kensington, Australia (AUS) 1:024       4  ...  0.069164
-Univ of Luxembourg (LUX) 1:024                       4  ...  0.069164
-Univ of Zurich (CHE) 1:024                           4  ...  0.069164
+                                                    Degree  ...  PageRank
+Univ of Hong Kong (HKG) 3:185                            6  ...  0.105925
+European Central B (DEU) 1:021                           4  ...  0.067114
+Harvard Univ Weatherhead ctr for International ...       4  ...  0.067114
+Heinrich-Heine-Univ (DEU) 1:024                          4  ...  0.069164
+KS Strategic, London, United Kingdom (GBR) 1:021         4  ...  0.067114
 <BLANKLINE>
 [5 rows x 4 columns]
 

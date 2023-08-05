@@ -30,10 +30,10 @@ Metrics
 ...     cited_by_filter=(None, None),
 ... ).head()
                                Degree  Betweenness  Closeness  PageRank
+FINANCIAL_INSTITUTIONS 16:198      19     0.021135       1.00  0.069769
 REGTECH 29:330                     19     0.021135       1.00  0.119160
 REGULATORY_TECHNOLOGY 20:274       19     0.021135       1.00  0.093350
-FINANCIAL_INSTITUTIONS 16:198      19     0.021135       1.00  0.069769
-REGULATORY_COMPLIANCE 15:232       18     0.014470       0.95  0.077426
+FINANCE 07:017                     18     0.016847       0.95  0.046255
 FINTECH 12:249                     18     0.019621       0.95  0.068944
 
 """

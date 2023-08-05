@@ -58,7 +58,7 @@ Radial Diagram
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....associations_analysis.pairs_radial_diagram import pairs_radial_diagram
+from ....co_occurrence_analysis.pairs_radial_diagram import pairs_radial_diagram
 
 ROWS_AND_COLUMNS = "keywords"
 

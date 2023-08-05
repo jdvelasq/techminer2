@@ -29,12 +29,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                              Degree  Betweenness  Closeness  PageRank
-REGTECH 28:329                    19     0.461111   1.000000  0.211985
-FINTECH 12:249                    13     0.088791   0.760000  0.120338
-COMPLIANCE 07:030                 10     0.046881   0.678571  0.075003
-REGULATION 05:164                 10     0.031579   0.678571  0.066678
-REGULATORY_TECHNOLOGY 07:037       9     0.023099   0.655172  0.051138
+                                Degree  Betweenness  Closeness  PageRank
+REGTECH 28:329                      19     0.461111   1.000000  0.211985
+FINTECH 12:249                      13     0.088791   0.760000  0.120338
+COMPLIANCE 07:030                   10     0.046881   0.678571  0.075003
+REGULATION 05:164                   10     0.031579   0.678571  0.066678
+ARTIFICIAL_INTELLIGENCE 04:023       9     0.038402   0.655172  0.044793
 
 """
 from ....nx_compute_metrics import nx_compute_metrics

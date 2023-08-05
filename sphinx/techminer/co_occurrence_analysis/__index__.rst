@@ -4,12 +4,33 @@ Co-occurrence Analysis >
 .. toctree::
     :maxdepth: 1
 
-    associations/__index__
+    fields/__index__
 
 .. toctree::
     :maxdepth: 1
 
-    graphs/__index__
+    words/__index__
+
+.. toctree::
+    bubble_chart    
+
+.. toctree::
+    butterfly_chart
+
+.. toctree::
+    cluster_map
+
+.. toctree::
+    heat_map
+
+.. toctree::
+    multi_donut
+
+.. toctree::
+    scatter_plot
+
+.. toctree::
+    collaboration_worldmap
 
 .. toctree::
     co_occurrence_matrix

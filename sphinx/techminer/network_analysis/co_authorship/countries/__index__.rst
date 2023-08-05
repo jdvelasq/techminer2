@@ -12,7 +12,7 @@ Countries >
 
 .. toctree::
    degree_plot
-
+   
 .. toctree::
    communities     
 

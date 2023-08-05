@@ -31,10 +31,10 @@ Metrics
 ... ).head()
                              Degree  Betweenness  Closeness  PageRank
 REGULATORY_COMPLIANCE 9:34       14     0.364822   0.791667  0.124907
-FINANCIAL_INSTITUTIONS 6:09      12     0.084413   0.730769  0.080093
 FINANCE 5:16                     12     0.093895   0.730769  0.095964
-REGTECH 5:15                     10     0.091564   0.678571  0.081235
+FINANCIAL_INSTITUTIONS 6:09      12     0.084413   0.730769  0.080093
 ANTI_MONEY_LAUNDERING 3:10       10     0.037460   0.593750  0.062375
+REGTECH 5:15                     10     0.091564   0.678571  0.081235
 
 
 """

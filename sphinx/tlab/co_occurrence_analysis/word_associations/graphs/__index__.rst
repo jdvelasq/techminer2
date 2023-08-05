@@ -2,7 +2,9 @@ Graphs >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    radial_diagram
+    :maxdepth: 1
+
+    radial_diagram/__index__
 
 .. toctree::
     cosine
