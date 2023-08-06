@@ -63,8 +63,8 @@ Ego Network
 
 
 """
-from .co_occurrence_matrix import co_occurrence_matrix
-from .matrix_viewer import matrix_viewer
+from ..co_occurrence_matrix import co_occurrence_matrix
+from ..matrix_viewer import matrix_viewer
 
 
 def ego_network(

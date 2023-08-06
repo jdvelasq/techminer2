@@ -35,7 +35,7 @@ def nx_compute_textfont_size_from_item_occ(
         #
         # Scales the node size to the range [node_size_min, node_size_max]
         textfont_sizes -= textfont_size_min
-        textfont_sizes /= textfont_sizes.max() - textfont_size_min
+        textfont_sizes /= textfont_sizes.max()
         textfont_sizes *= textfont_size_max - textfont_size_min
         textfont_sizes += textfont_size_min
 

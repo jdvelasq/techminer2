@@ -48,7 +48,7 @@ Bubble Chart
 """
 import plotly.express as px
 
-from .co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence_matrix import co_occurrence_matrix
 
 
 def bubble_chart(

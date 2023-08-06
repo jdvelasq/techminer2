@@ -96,8 +96,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ..performance_metrics.global_indicators_by_field import global_indicators_by_field
-from ..performance_metrics.items_occurrences_by_year import items_occurrences_by_year
+from ..indicators.global_indicators_by_field import global_indicators_by_field
+from ..indicators.items_occurrences_by_year import items_occurrences_by_year
 
 
 def trending_terms_per_year(

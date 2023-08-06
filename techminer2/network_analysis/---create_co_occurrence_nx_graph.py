@@ -9,7 +9,7 @@
 
 import networkx as nx
 
-from ..co_occurrence_analysis.co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence_matrix import co_occurrence_matrix
 
 # from .matrix_normalization import matrix_normalization
 # from .nx_utils import (

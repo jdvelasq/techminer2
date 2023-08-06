@@ -88,7 +88,7 @@ TM2 module.
 
 
 .. toctree::
-    :caption: TECHMINER 2++
+    :caption: TECHMINER 2+
     :hidden:
     :maxdepth: 1
 
@@ -96,16 +96,32 @@ TM2 module.
     techminer/refine/__index__  
     techminer/search/__index__  
     
+    techminer/performance/__index__
+    
+    techminer/co_authorship/__index__
+    techminer/co_occurrence/__index__
+    techminer/citation/__index__
+    techminer/bibliographic_coupling/__index__
+    techminer/co_citation/__index__
+    techminer/expertise/__index__
+    techminer/emergence/__index__
+    
 
-    techminer/citation_analysis/__index__
-    techminer/co_occurrence_analysis/__index__
+
+
+.. toctree::
+    :caption: OTHER
+    :hidden:
+    :maxdepth: 1
+
+    
+    
     techminer/co_word_analysis/__index__
     techminer/correlation_analysis/__index__
-    techminer/emergence_analysis/__index__
+    
     techminer/factor_analysis/__index__
-    techminer/network_analysis/__index__
     techminer/pairs_analysis/__index__
-    techminer/performance_analysis/__index__
+    
     techminer/time_analysis/__index__
     techminer/thematic_analysis/__index__
     

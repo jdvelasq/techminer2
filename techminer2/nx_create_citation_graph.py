@@ -9,7 +9,7 @@
 import networkx as nx
 
 from ._read_records import read_records
-from .co_occurrence_analysis.co_occurrence_matrix import co_occurrence_matrix
+from .co_occurrence_matrix import co_occurrence_matrix
 from .normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
@@ -23,7 +23,7 @@ from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
 from .nx_set_node_size_to_constant import nx_set_node_size_to_constant
 from .nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
 from .nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
-from .performance_analysis.item_metrics import item_metrics
+from .performance_analysis.performance_metrics import performance_metrics
 
 
 def nx_create_citation_graph(
@@ -216,7 +216,7 @@ def __add_weighted_edges_from(
     #
     # Filter the data
     if unit_of_analysis != "article":
-        metrics = item_metrics(
+        metrics = performance_metrics(
             #
             # ITEMS PARAMS:
             field=unit_of_analysis,

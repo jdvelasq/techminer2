@@ -84,7 +84,7 @@ Table:
 """
 from dataclasses import dataclass
 
-from ..co_occurrence_analysis.co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence_matrix import co_occurrence_matrix
 from ..format_prompt_for_dataframes import format_prompt_for_dataframes
 from .compute_corr_matrix import compute_corr_matrix
 
