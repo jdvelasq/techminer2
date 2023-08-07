@@ -1,3 +1,4 @@
+from .co_occurrences_chart import co_occurrences_chart
 from .cosine_similarities_graph import cosine_similarities_graph
 from .network_graph import network_graph
 from .radial_diagram import radial_diagram

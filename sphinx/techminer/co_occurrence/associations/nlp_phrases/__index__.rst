@@ -10,3 +10,6 @@ NLP Phrases >
 .. toctree::
     cosine_similarities_graph
     
+.. toctree::
+    co_occurrences_chart
+    

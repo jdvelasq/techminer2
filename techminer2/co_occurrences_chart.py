@@ -5,14 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _co_occurrence_analysis.associations.graphs.co_occurrences:
-
-Co-occurrences
+Co-occurrences Chart
 ===============================================================================
 
 
->>> from techminer2.associations_analysis.graphs import co_occurrences
->>> co_occurrences(
+>>> from techminer2.associations_analysis.graphs import co_occurrences_chart
+>>> co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     item='REGTECH',
@@ -79,8 +77,14 @@ def co_occurrences_chart(
     row_gc_range=(None, None),
     row_custom_items=None,
     #
-    # CHART:
+    # CHART PARAMS:
     title=None,
+    field_label=None,
+    y_label=None,
+    textfont_size=10,
+    marker_size=7,
+    line_width=1.5,
+    yshift=4,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -137,49 +141,66 @@ def co_occurrences_chart(
         by=["percentage", "occ", "gc", "name"], ascending=[False, False, False, True]
     )
 
+    #
+    # Graph
+    associations["Rank"] = list(range(1, len(associations) + 1))
+
+    y_label = r"% of Co-occurrence with " + item if y_label is None else y_label
+
     if title is None:
         title = f"(%) Co-occurrences with '{item}'"
 
-    metric_label = "(%) OCC"
-
-    if rows is None:
-        field_label = columns.replace("_", " ").upper()
-    else:
-        field_label = rows.replace("_", " ").upper()
+    if field_label is None:
+        field_label = columns.replace("_", " ").upper() + " RANKING"
 
     data_frame = associations.copy()
 
-    fig = px.bar(
+    fig = px.line(
         data_frame,
-        x="percentage",
-        y=None,
+        x="Rank",
+        y=data_frame.percentage,
         hover_data=data_frame.columns.to_list(),
-        orientation="h",
+        markers=True,
     )
 
+    fig.update_traces(
+        marker={
+            "size": marker_size,
+            "line": {"color": MARKER_LINE_COLOR, "width": 1},
+        },
+        marker_color=MARKER_COLOR,
+        line={"color": MARKER_LINE_COLOR, "width": line_width},
+    )
     fig.update_layout(
         paper_bgcolor="white",
         plot_bgcolor="white",
         title_text=title if title is not None else "",
     )
-    fig.update_traces(
-        marker_color=MARKER_COLOR,
-        marker_line={"color": MARKER_LINE_COLOR},
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=1,
+        gridcolor="lightgray",
+        griddash="dot",
+        title=y_label,
     )
     fig.update_xaxes(
         linecolor="gray",
-        linewidth=2,
+        linewidth=1,
         gridcolor="lightgray",
         griddash="dot",
-        title_text=metric_label,
+        title=field_label,
     )
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        autorange="reversed",
-        gridcolor="lightgray",
-        griddash="dot",
-        title_text=field_label,
-    )
+
+    for name, row in data_frame.iterrows():
+        fig.add_annotation(
+            x=row["Rank"],
+            y=row.percentage,
+            text=name,
+            showarrow=False,
+            textangle=-90,
+            yanchor="bottom",
+            font={"size": textfont_size},
+            yshift=yshift,
+        )
 
     return fig
