@@ -121,8 +121,8 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from ....co_occurrence_matrix import co_occurrence_matrix
+from ....compute_cosine_similarity import compute_cosine_similarity
 from ....normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
-from ...compute_cosine_similarity import compute_cosine_similarity
 from ...results import Results
 
 

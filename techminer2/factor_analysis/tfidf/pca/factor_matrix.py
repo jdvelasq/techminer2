@@ -131,8 +131,8 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 
+from ....compute_cosine_similarity import compute_cosine_similarity
 from ....performance_analysis.tfidf import tfidf
-from ...compute_cosine_similarity import compute_cosine_similarity
 from ...results import Results
 
 

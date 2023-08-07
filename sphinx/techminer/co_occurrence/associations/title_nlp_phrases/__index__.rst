@@ -6,3 +6,7 @@ Title NLP Phrases >
 
 .. toctree::
     radial_diagram
+    
+.. toctree::
+    cosine_similarities_graph
+    
