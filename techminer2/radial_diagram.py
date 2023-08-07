@@ -68,22 +68,21 @@ Pairs Radial Diagram
 """
 import networkx as nx
 
-from ..co_occurrence_matrix import co_occurrence_matrix
-from ..nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
-from ..nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from ..nx_compute_spring_layout import nx_compute_spring_layout
-from ..nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from ..nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from ..nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ..nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ..nx_visualize_graph import nx_visualize_graph
+from .co_occurrence_matrix import co_occurrence_matrix
+from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from .nx_compute_spring_layout import nx_compute_spring_layout
+from .nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
+from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from .nx_visualize_graph import nx_visualize_graph
 
 
-def pairs_radial_diagram(
+def radial_diagram(
     #
     # FUNCTION PARAMS:
-    item_a,
-    item_b,
+    items,
     columns,
     rows=None,
     #
@@ -178,16 +177,22 @@ def pairs_radial_diagram(
 
     #
     # Extracts name and position for item_a and item_b
-    pos_a, name_a = extract_item_position_and_name(associations.columns.tolist(), item_a)
-    pos_b, name_b = extract_item_position_and_name(associations.columns.tolist(), item_b)
-    associations = associations.iloc[:, [pos_a, pos_b]]
+    if isinstance(items, str):
+        items = [items]
+
+    positions = []
+    names = []
+    for item in items:
+        position, name = extract_item_position_and_name(associations.columns.tolist(), item)
+        positions.append(position)
+        names.append(name)
+
+    associations = associations.iloc[:, positions]
 
     #
-    # Delete name_a and name_b from matrix.index if exists
-    if name_a in associations.index:
-        associations = associations.drop([name_a])
-    if name_b in associations.index:
-        associations = associations.drop([name_b])
+    # Delete names from matrix.index if exists
+    for name in names:
+        associations = associations.drop([name])
 
     #
     # delete rows with all zeros
@@ -205,7 +210,6 @@ def pairs_radial_diagram(
 
     #
     # Sets the node attributes
-    # nx_graph = nx_set_node_color_from_group_attr(nx_graph)
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
     nx_graph = nx_compute_textfont_size_from_item_occ(
         nx_graph, textfont_size_min, textfont_size_max

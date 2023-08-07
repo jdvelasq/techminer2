@@ -1,5 +1,8 @@
-Abstract NLP Phrases >
+Authors >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     network_graph
+
+.. toctree::
+    radial_diagram

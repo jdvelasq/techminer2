@@ -9,12 +9,11 @@ Radial Diagram
 ===============================================================================
 
 
->>> from techminer2.pairs_analysis.words.author_keywords import radial_diagram
+>>> from techminer2.co_occurrence.associations.nlp_phrases import radial_diagram
 >>> radial_diagram(
 ...     #
 ...     # FUNCTION PARAMS:
-...     item_a="REGTECH",
-...     item_b="FINTECH",
+...     items=["REGULATORY_TECHNOLOGY", "FINANCIAL_REGULATION"],
 ...     #
 ...     # LAYOUT:
 ...     nx_k=None,
@@ -50,24 +49,23 @@ Radial Diagram
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/pairs_analysis/words/author_keywords/radial_diagram.html")
+... ).write_html("sphinx/_static/co_occurrence/associations/nlp_phrases/radial_diagram.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/pairs_analysis/words/author_keywords/radial_diagram.html" 
+    <iframe src="../../../../_static/co_occurrence/associations/nlp_phrases/radial_diagram.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....co_occurrence_analysis.pairs_radial_diagram import pairs_radial_diagram
+from ....radial_diagram import radial_diagram as __radial_diagram
 
-ROWS_AND_COLUMNS = "author_keywords"
+ROWS_AND_COLUMNS = "nlp_phrases"
 
 
 def radial_diagram(
     #
     # FUNCTION PARAMS:
-    item_a,
-    item_b,
+    items,
     #
     # CHART PARAMS:
     title=None,
@@ -112,11 +110,10 @@ def radial_diagram(
     :meta private:
     """
 
-    return pairs_radial_diagram(
+    return __radial_diagram(
         #
         # FUNCTION PARAMS:
-        item_a,
-        item_b,
+        items=items,
         columns=ROWS_AND_COLUMNS,
         rows=None,
         #
