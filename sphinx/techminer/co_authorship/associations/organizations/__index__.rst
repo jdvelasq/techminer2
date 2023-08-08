@@ -5,6 +5,9 @@ Organizations >
     network_graph
 
 .. toctree::
+    bubble_chart
+
+.. toctree::
     radial_diagram
    
 .. toctree::
@@ -12,3 +15,11 @@ Organizations >
 
 .. toctree::
     co_occurrences_chart
+
+.. toctree::
+    butterfly_chart
+
+.. toctree::
+    co_occurrence_matrix
+    
+    

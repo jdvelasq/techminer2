@@ -3,7 +3,10 @@ Search >
 
 .. toctree::
     concordances
-    
+
+.. toctree::
+   lemma_associations
+       
 .. toctree::
     find_records
     

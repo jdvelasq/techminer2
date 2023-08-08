@@ -1,7 +1,3 @@
-from ..co_occurrence_matrix import co_occurrence_matrix
-from ..matrix_viewer import matrix_viewer
-from .bubble_chart import bubble_chart
-from .butterfly_chart import butterfly_chart
 from .cluster_map import cluster_map
 from .collaboration_worldmap import collaboration_worldmap
 from .heat_map import heat_map

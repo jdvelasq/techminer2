@@ -5,6 +5,9 @@ Keywords >
     network_graph
 
 .. toctree::
+    bubble_chart
+
+.. toctree::
     radial_diagram
     
 .. toctree::
@@ -12,4 +15,12 @@ Keywords >
     
 .. toctree::
     co_occurrences_chart
+
+.. toctree::
+    butterfly_chart
+
+.. toctree::
+    co_occurrence_matrix
+    
+    
     

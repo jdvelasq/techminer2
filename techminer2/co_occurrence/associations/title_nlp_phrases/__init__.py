@@ -1,3 +1,6 @@
+from .bubble_chart import bubble_chart
+from .butterfly_chart import butterfly_chart
+from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrences_chart import co_occurrences_chart
 from .cosine_similarities_graph import cosine_similarities_graph
 from .network_graph import network_graph
