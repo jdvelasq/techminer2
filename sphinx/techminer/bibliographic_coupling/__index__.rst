@@ -1,4 +1,4 @@
-.. _network_analysis.bibliograpic_coupling:
+.. _bibliograpic_coupling:
 
 Bibliographic Coupling >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

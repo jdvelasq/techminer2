@@ -1,4 +1,4 @@
-.. automodule:: techminer2.network_analysis.citation.sources.communities
+.. automodule:: techminer2.citation.network.sources.communities
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network_analysis.bibliographic_coupling.organizations.network_visualization
+.. automodule:: techminer2.bibliographic_coupling.organizations.network_visualization
     :members:
     :undoc-members:
     :show-inheritance:

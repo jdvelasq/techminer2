@@ -1,4 +1,4 @@
-.. _network_analysis.co_occurrence:
+.. _co_occurrence.network.co_occurrence:
 
 Co-occurrence >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

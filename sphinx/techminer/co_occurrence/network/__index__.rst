@@ -1,5 +1,3 @@
-.. _network_analysis.co_occurrence:
-
 Network Approach >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -13,3 +11,27 @@ Network Approach >
    
    thematic_map/__index__
 
+.. toctree::
+   :maxdepth: 1
+   
+   keywords/__index__   
+
+.. toctree::
+   :maxdepth: 1
+   
+   abstract_nlp_phrases/__index__      
+
+.. toctree::
+   :maxdepth: 1
+   
+   title_nlp_phrases/__index__         
+
+.. toctree::
+   :maxdepth: 1
+   
+   nlp_phrases/__index__      
+
+.. toctree::
+   :maxdepth: 1
+   
+   descriptors/__index__         

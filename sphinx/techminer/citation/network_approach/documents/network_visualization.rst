@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network_analysis.citation.documents.network_visualization
+.. automodule:: techminer2.citation.network.documents.network_visualization
     :members:
     :undoc-members:
     :show-inheritance:

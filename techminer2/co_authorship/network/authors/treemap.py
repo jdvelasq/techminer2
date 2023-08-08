@@ -9,7 +9,7 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.network_analysis.co_authorship.authors import treemap
+>>> from techminer2.co_authorship.network.authors import treemap
 >>> treemap(
 ...     #
 ...     # COLUMN PARAMS:
@@ -30,11 +30,11 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network_analysis/co_authorship/authors/treemap.html")
+... ).write_html("sphinx/_static/co_authorship/network/authors/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network_analysis/co_authorship/authors/treemap.html" 
+    <iframe src="../../../../../../_static/co_authorship/network/authors/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

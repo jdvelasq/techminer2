@@ -12,7 +12,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network_analysis.co_authorship.authors import metrics
+>>> from techminer2.co_authorship.network.authors import metrics
 >>> metrics(
 ...     #
 ...     # COLUMN PARAMS:

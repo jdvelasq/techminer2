@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network_analysis.citation.countries.degree_plot
+.. automodule:: techminer2.citation.network.countries.degree_plot
     :members:
     :undoc-members:
     :show-inheritance:

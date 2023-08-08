@@ -1,4 +1,4 @@
-.. _network_analysis.citation:
+.. _citation.network:
 
 Network Approach >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

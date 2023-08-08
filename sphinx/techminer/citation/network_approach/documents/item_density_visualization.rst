@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network_analysis.citation.documents.item_density_visualization
+.. automodule:: techminer2.citation.network.documents.item_density_visualization
     :members:
     :undoc-members:
     :show-inheritance:

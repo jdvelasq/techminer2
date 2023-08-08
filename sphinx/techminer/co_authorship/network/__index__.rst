@@ -1,4 +1,4 @@
-.. _network_analysis.co_authorship:
+.. _co_authorship.network:
 
 Network Approach >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

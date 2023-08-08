@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network_analysis.co_occurrence.keywords.communities
+.. automodule:: techminer2.co_occurrence.network.co_occurrence.keywords.communities
     :members:
     :undoc-members:
     :show-inheritance:
