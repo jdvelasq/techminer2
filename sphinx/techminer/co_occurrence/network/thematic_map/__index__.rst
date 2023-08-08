@@ -1,4 +1,4 @@
-.. _network_analysis.co_occurrence:
+.. _co_occurrence.network.thematic_map:
 
 Thematic Map >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

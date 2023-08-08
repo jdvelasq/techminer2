@@ -1,5 +1,4 @@
-Clustering by Coupling
-===============================================================================
+Bibliographic Coupling >
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.bibliograpic_coupling`
-
+See `TechMiner 2+ >` :ref:`bibliograpic_coupling` 

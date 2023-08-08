@@ -1,4 +1,4 @@
 Co-citation Network
 ===============================================================================
 
-See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.co_citation`
+See `TechMiner 2+ >` :ref:`co_citation` 

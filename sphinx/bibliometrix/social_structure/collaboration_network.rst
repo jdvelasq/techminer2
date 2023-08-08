@@ -1,4 +1,4 @@
 Collaboration Network
 ===============================================================================
 
-See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.co_authorship`.
+See `TechMiner 2+ > Co-authorship >` :ref:`co_authorship.network` 

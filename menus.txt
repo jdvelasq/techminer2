@@ -74,7 +74,7 @@ BIBLIOMETRIX                              VANTAGEPOINT                     VOSVI
                                                                              
 
 
-TLAB      
+TLAB
 |
 +----------------------------------+----------------------------------\
 |                                  |                                  |
@@ -86,52 +86,101 @@ TLAB
    |  |  +- Co-occurrences            |    +- Cluster characteristics    |  +- TFIDF                         
    |  |  +- MDS Map                   |    +- Cross tabulation           |                
    |  |                               |    +- Contigency table           +- CA 
-   |  \- Tables                       |    +- Dendogram                  |                                   
-   |     +- Selected Item             |    +- Heatmap                    +- MCA                                 
-   |     +- All items                 |    +- Treemap                    |           
-   |     +- Co-occurence Matrix       |    +- Word Network               +- Cluster Analysis                         
-   |     +- Significance Tests        |    +- Sunburst                   |  +- Co-word HCA                          
-   |     +- Bar Chart                 |    +- Word Cloud                 |  +- Networ Analysis              
-   |     +- Word Network              |                                  |  +- SVD + KMeans    
-   |     \- Word Cloud                +- Topic Modeling                  |                                         
-   |                                  |  +- Topic Summary                \- SVD                                  
-   +- Co-word Analysis                |  +- Topics Bar Chart                +- Co-occ Matrix                 
-   |  +- Graphs                       |  +- Contexts                        |  +- 2D Chart
-   |  |  +- MDS Map                   |  +- MDS Map                         |  +- Eigenvalues
-   |  |  +- tSNE                      |  +- Shared words                    |  +- Word Embeddings                          
-   |  |  +- PCA 3D                    |  \- Correspondence Analysis         |  +- Cosine Similarities                                           
-   |  |  +- CA                        |                                     |  +- Radial Diagrams
-   |  |  +- Dendogram                 +- Document Clustering                |  +- Dendogram          
-   |  |  \- Clustered Word Network    |  +- Corrrespondence Analysis        |                                                         
-   |  |                               |  +- Cluster summary                 \- TFIDF (Binary)
-   |  \- Tables                       |  +- Contingency Table                  +- 2D Chart          
-   |     +- Summary                   |                                        +- Eigenvalues
-   |     +- Association Indexes       +- Dictionary-Based Class           +- Word Embeddings                                                         
-   |     +- Co-occurrences            |                                        +- Cosine Similarities
-   |                                  +- Texts and Discourses                  +- Radial Diagrams 
-   +- Word Pairs                                                               +- Cluster map                        
-   |  +- Bar Chart                                                                                
-   |  +- Radial Diagram                                                                                
-   |  +- Dual Bar Chart                                                                    
-   |  +- Contexts                                                  
+   |  +- Tables                       |    +- Dendogram                  |                                   
+   |  |  +- Selected Item             |    +- Heatmap                    +- MCA                                 
+   |  |  +- All items (lemma asso)    |    +- Treemap                    |           
+   |  |  +- Co-occurence Matrix       |    +- Word Network               +- Cluster Analysis                         
+   |  |  +- Significance Test         |    +- Sunburst                   |  +- Co-word HCA                          
+   |  |                               |    +- Word Cloud                 |  +- Networ Analysis              
+   |  \- Quick Menu                   |                                  |  +- SVD + KMeans    
+   |     +- Cosine                    +- Topic Modeling                  |                                         
+   |     +- Selected Item             |  +- Topic Summary                \- SVD                                  
+   |     +- Radial Diagram            |  +- Topics Bar Chart                +- Co-occ Matrix                 
+   |     +- Significance Test         |  +- Contexts                        |  +- 2D Chart
+   |     +- All items (lemma asso)    |  +- MDS Map                         |  +- Eigenvalues
+   |     +- Graph Maker               |  +- Shared words                    |  +- Word Embeddings                          
+   |     |  +- Dendogram              |  \- Correspondence Analysis         |  +- Cosine Similarities                                           
+   |     |  +- Heatmap                |                                     |  +- Radial Diagrams
+   |     |  +- MDS map                +- Document Clustering                |  +- Dendogram          
+   |     |  +- Treemap                |  +- Corrrespondence Analysis        |                                                         
+   |     |  +- PCA 3D                 |  +- Cluster summary                 \- TFIDF (Binary)
+   |     |  +- Word Network           |  +- Contingency Table                  +- 2D Chart          
+   |     |  +- Sunburst               |                                        +- Eigenvalues
+   |     |  +- Word Cloud             +- Dictionary-Based Class                +- Word Embeddings                                                         
+   |     |                            |                                        +- Cosine Similarities
+   |     \- Elementary Contexts       +- Texts and Discourses                  +- Radial Diagrams 
+   |                                                                           +- Cluster map      
+   +- Co-word Analysis
+   |  +- Graphs
+   |  |  +- MDS Map
+   |  |  +- tSNE
+   |  |  +- PCA 3D
+   |  |  +- CA
+   |  |  +- Dendogram
+   |  |  +- Associatios
+   |  |  \- Bar Chart
+   |  |
+   |  +- Tables
+   |  |  +- Summary                   
+   |  |  +- Association Indexes       
+   |  |  +- Co-occurrences
+   |  |
+   |  \- Quick Menu
+   |     +- MDS Map
+   |     +- PCA 3D
+   |     +- Complete dendogram
+   |     +- Centrality & Density
+   |     +- Association Indexes
+   |     +- Radial Diagram
+   |     +- CA
+   |     \- Graph Maker
+   |        +- Dendogram
+   |        +- Heatmap
+   |        +- MDS map
+   |        +- Treemap
+   |        +- Bar Graph  
+   |        +- Word Network
+   |        +- Clustered Word Network
+   |        \- Word Cloud
+   |      
+   +- Word Pairs                     
+   |  +- Bar Chart          
+   |  \- Quick Menu
+   |     +- Radial Diagram
+   |     +- Butterfly Chart
+   |     +- Co-occurrences
+   |     +- Lemma associations
+   |     \- Pie Chart
    |                                                  
-   +- Secuences and Networks                                                                
+   +- Network Analysis                                                              
    |   +- Graphs                                                                              
    |   |  +- Ego Network                                                                          
-   |   |  +- Ego Graph                                                  
-   |   |  +- Dendogram                                                  
-   |   |  +- Heatmap                                                                 
-   |   |  +- Treemap                                                  
-   |   |  +- Bar Chart                                                  
-   |   |  +- Word Network                                                  
-   |   |  +- Sunburst                                                              
-   |   |  +- Word Cloud                                                  
+   |   |  +- Ego Graph     
    |   |                                                     
-   |   \- Tables                                                                         
-   |      +- Contexts                                                                
-   |      +- Adjacency Matrix                                                  
-   |      +- Significance Test                                                  
-   |      +- Rank of appearance                                                               
+   |   +- Tables                                                                         
+   |   |  +- Lemma Associations                                                                
+   |   |  +- Adjacency Matrix                                                  
+   |   |  +- Significance Test                                                  
+   |   |  \- Rank of appearance                                                               
+   |   |
+   |   \- Quick Menu
+   |      +- Radial Diagram
+   |      +- Significance Test
+   |      +- Lemma Associations
+   |      +- Ego Network
+   |      +- Communities 
+   |      +- MDS map
+   |      +- Bar Chart
+   |      +- Cluster Analysis
+   |      \- Graph Maker
+   |         +- Dendogram
+   |         +- Heatmap
+   |         +- MDS map
+   |         +- Treemap  
+   |         +- Bar Chart                                                  
+   |         +- Word Network                                                  
+   |         +- Sunburst                                                              
+   |         +- Word Cloud                                                  
    |                                                   
    +- Concordances and Word Trees                                                           
       +- Concordances                                                                     

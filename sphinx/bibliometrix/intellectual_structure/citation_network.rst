@@ -1,4 +1,4 @@
 Citation Network
 ===============================================================================
 
-See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.citation`
+See `TechMiner 2+ > Citation >` :ref:`citation.network` 
