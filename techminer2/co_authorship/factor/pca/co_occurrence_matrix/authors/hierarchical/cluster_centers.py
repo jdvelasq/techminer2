@@ -1,0 +1,136 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+"""
+Cluster Centers
+===============================================================================
+
+
+>>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import cluster_centers
+>>> cluster_centers(
+...     #
+...     # PARAMS:
+...     association_index=None,
+...     #
+...     # ITEM PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # PCA PARAMS:
+...     n_components=5,
+...     whiten=False,
+...     svd_solver="auto",
+...     tol=0.0,
+...     iterated_power="auto",
+...     n_oversamples=10,
+...     power_iteration_normalizer="auto",
+...     random_state=0, 
+...     #
+...     # AGLOMERATIVE_CLUSTERING PARAMS:
+...     metric=None,
+...     memory=None,
+...     connectivity=None,
+...     compute_full_tree="auto",
+...     linkage="ward",
+...     distance_threshold=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+
+
+"""
+
+from .......factor_analysis.pca.hierachical.co_occurrence_matrix.factor_clusters import (
+    factor_clusters,
+)
+
+UNIT_OF_ANALYSIS = "authors"
+
+
+def cluster_centers(
+    #
+    # PARAMS:
+    association_index=None,
+    #
+    # ITEM PARAMS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # PCA PARAMS:
+    n_components=None,
+    whiten=False,
+    svd_solver="auto",
+    tol=0.0,
+    iterated_power="auto",
+    n_oversamples=10,
+    power_iteration_normalizer="auto",
+    random_state=0,
+    #
+    # HIERARCHICAL PARAMS:
+    metric=None,
+    memory=None,
+    connectivity=None,
+    compute_full_tree="auto",
+    linkage="ward",
+    distance_threshold=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
+):
+    """
+    :meta private:
+    """
+
+    return factor_clusters(
+        #
+        # COOC PARAMS:
+        rows_and_columns=UNIT_OF_ANALYSIS,
+        association_index=association_index,
+        #
+        # ITEM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # PCA PARAMS:
+        n_components=n_components,
+        whiten=whiten,
+        svd_solver=svd_solver,
+        tol=tol,
+        iterated_power=iterated_power,
+        n_oversamples=n_oversamples,
+        power_iteration_normalizer=power_iteration_normalizer,
+        random_state=random_state,
+        #
+        # AGLOMERATIVE_CLUSTERING PARAMS:
+        metric=metric,
+        memory=memory,
+        connectivity=connectivity,
+        compute_full_tree=compute_full_tree,
+        linkage=linkage,
+        distance_threshold=distance_threshold,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    ).centers_

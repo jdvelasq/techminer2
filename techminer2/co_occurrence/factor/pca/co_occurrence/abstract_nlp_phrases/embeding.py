@@ -38,20 +38,12 @@ Embeding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                    DIM_0     DIM_1  ...     DIM_4     DIM_5
-abstract_nlp_phrases                                 ...                    
-REGULATORY_TECHNOLOGY 17:266    14.486131 -4.799390  ... -1.441894 -1.017154
-FINANCIAL_INSTITUTIONS 15:194    8.634350  9.744695  ...  0.754883 -0.986673
-REGULATORY_COMPLIANCE 07:198     1.319748  0.958875  ...  0.323482  1.671473
-FINANCIAL_SECTOR 07:169          1.752593 -2.740274  ...  2.818486  2.347245
-ARTIFICIAL_INTELLIGENCE 07:033   0.327995  0.520527  ...  5.630711 -0.927419
-<BLANKLINE>
-[5 rows x 6 columns]
+
 
 """
 from typing import Literal
 
-from ......factor_analysis.co_occurrence.pca.factor_matrix import factor_matrix
+from ......factor_pca_cooc_embedding import factor_pca_cooc_embedding
 
 UNIT_OF_ANALYSIS = "abstract_nlp_phrases"
 
@@ -88,7 +80,7 @@ def embeding(
     :meta private:
     """
 
-    return factor_matrix(
+    return factor_pca_cooc_embedding(
         #
         # COOC PARAMS:
         rows_and_columns=UNIT_OF_ANALYSIS,

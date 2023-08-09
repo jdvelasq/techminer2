@@ -1,0 +1,13 @@
+K-Means >
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+    cluster_centers
+    
+.. toctree::
+    communities
+
+.. toctree::
+    treemap
+
+

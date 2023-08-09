@@ -25,6 +25,7 @@ Map 2D
 ...     textfont_color="#465c6b",
 ...     xaxes_range=None,
 ...     yaxes_range=None,
+...     #
 ...     # ITEM PARAMS:
 ...     top_n=20,
 ...     occ_range=(None, None),
@@ -54,7 +55,7 @@ Map 2D
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ......factor_analysis.co_occurrence.pca.factor_matrix import factor_matrix
+from ......factor_pca_cooc_2d_map import factor_pca_cooc_2d_map
 
 UNIT_OF_ANALYSIS = "abstract_nlp_phrases"
 
@@ -101,7 +102,7 @@ def map_2d(
     :meta private:
     """
 
-    return factor_matrix(
+    return factor_pca_cooc_2d_map(
         #
         # COOC PARAMS:
         rows_and_columns=UNIT_OF_ANALYSIS,
@@ -112,6 +113,16 @@ def map_2d(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        #
+        # 2-D MAP:
+        dim_x=dim_x,
+        dim_y=dim_y,
+        node_color=node_color,
+        node_size=node_size,
+        textfont_size=textfont_size,
+        textfont_color=textfont_color,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
         #
         # PCA PARAMS:
         n_components=n_components,
@@ -129,13 +140,4 @@ def map_2d(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).fig_(
-        dim_x=dim_x,
-        dim_y=dim_y,
-        node_color=node_color,
-        node_size=node_size,
-        textfont_size=textfont_size,
-        textfont_color=textfont_color,
-        xaxes_range=xaxes_range,
-        yaxes_range=yaxes_range,
     )

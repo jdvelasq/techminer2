@@ -38,18 +38,10 @@ Cosine Similarities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                                              cosine_similariries
-abstract_nlp_phrases                                                             
-REGULATORY_TECHNOLOGY 17:266    INFORMATION_TECHNOLOGY 05:177 (0.427); FINANCI...
-FINANCIAL_INSTITUTIONS 15:194   FINANCIAL_REGULATION 06:330 (0.328); REGULATOR...
-REGULATORY_COMPLIANCE 07:198    DIGITAL_INNOVATION 03:164 (0.353); FINANCIAL_T...
-FINANCIAL_SECTOR 07:169         INFORMATION_TECHNOLOGY 05:177 (0.577); FINANCI...
-ARTIFICIAL_INTELLIGENCE 07:033  MACHINE_LEARNING 04:007 (0.483); RISK_MANAGEME...
+
 
 """
-
-
-from ......factor_analysis.co_occurrence.pca.factor_matrix import factor_matrix
+from ......factor_pca_cooc_cosine_similarities import factor_pca_cooc_cosine_similarities
 
 UNIT_OF_ANALYSIS = "abstract_nlp_phrases"
 
@@ -86,7 +78,7 @@ def cosine_similarities(
     :meta private:
     """
 
-    return factor_matrix(
+    return factor_pca_cooc_cosine_similarities(
         #
         # COOC PARAMS:
         rows_and_columns=UNIT_OF_ANALYSIS,
@@ -114,4 +106,4 @@ def cosine_similarities(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).cosine_similarities_
+    )

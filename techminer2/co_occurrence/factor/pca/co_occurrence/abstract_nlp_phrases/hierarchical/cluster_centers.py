@@ -1,0 +1,141 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+"""
+Cluster Centers
+===============================================================================
+
+
+>>> from techminer2.co_occurrence.factor.pca.co_occurrence.abstract_nlp_phrases import cluster_centers
+>>> cluster_centers(
+...     #
+...     # PARAMS:
+...     association_index=None,
+...     #
+...     # ITEM PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # PCA PARAMS:
+...     n_components=6,
+...     whiten=False,
+...     svd_solver="auto",
+...     tol=0.0,
+...     iterated_power="auto",
+...     n_oversamples=10,
+...     power_iteration_normalizer="auto",
+...     random_state=0,
+...     #
+...     # KMEANS PARAMS:
+...     kmeans_init="k-means++",
+...     kmeans_n_init=10,
+...     kmeans_max_iter=300,
+...     kmeans_tol=0.0001,
+...     kmeans_random_state=0,
+...     kmeans_algorithm="auto",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+          DIM_0     DIM_1      DIM_2     DIM_3     DIM_4     DIM_5
+CL_0   0.082541 -0.243010   0.280762  0.373976  0.282301  0.076876
+CL_1  -1.234908  0.931087  -0.868113 -0.333016 -0.426402  0.049419
+CL_2   0.327348 -1.671680   1.000000 -1.307245 -0.839316 -0.250512
+CL_3 -51.397529 -9.570334   1.000000 -2.076984 -4.537660 -8.716455
+CL_4 -12.082879 -8.255817   0.298134 -8.209026  1.000000  0.383406
+CL_5  -7.835144  1.000000 -10.817926 -4.446552 -2.165378  0.900615
+
+"""
+from typing import Literal
+
+from ......factor_analysis.svd.co_occurrence_matrix.factor_clusters import factor_clusters
+
+UNIT_OF_ANALYSIS = "abstract_nlp_phrases"
+
+
+def cluster_centers(
+    #
+    # PARAMS:
+    association_index=None,
+    #
+    # ITEM PARAMS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # PCA PARAMS:
+    n_components=None,
+    whiten=False,
+    svd_solver="auto",
+    tol=0.0,
+    iterated_power="auto",
+    n_oversamples=10,
+    power_iteration_normalizer="auto",
+    random_state=0,
+    #
+    # KMEANS PARAMS:
+    kmeans_init="k-means++",
+    kmeans_n_init=10,
+    kmeans_max_iter=300,
+    kmeans_tol=0.0001,
+    kmeans_random_state=0,
+    kmeans_algorithm: Literal["lloyd", "elkan", "auto", "full"] = "auto",
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
+):
+    """
+    :meta private:
+    """
+
+    return factor_clusters(
+        #
+        # COOC PARAMS:
+        rows_and_columns=UNIT_OF_ANALYSIS,
+        association_index=association_index,
+        #
+        # ITEM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # PCA PARAMS:
+        n_components=n_components,
+        whiten=whiten,
+        svd_solver=svd_solver,
+        tol=tol,
+        iterated_power=iterated_power,
+        n_oversamples=n_oversamples,
+        power_iteration_normalizer=power_iteration_normalizer,
+        random_state=random_state,
+        #
+        # KMEANS PARAMS:
+        kmeans_init=kmeans_init,
+        kmeans_n_init=kmeans_n_init,
+        kmeans_max_iter=kmeans_max_iter,
+        kmeans_tol=kmeans_tol,
+        kmeans_random_state=kmeans_random_state,
+        kmeans_algorithm=kmeans_algorithm,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    ).centers_

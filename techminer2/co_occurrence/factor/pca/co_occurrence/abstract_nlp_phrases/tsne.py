@@ -16,7 +16,6 @@ TSNE
 ...     # PARAMS:
 ...     association_index=None,
 ...     #
-...     #
 ...     # TSNE PARAMS:
 ...     perplexity=10.0,
 ...     early_exaggeration=12.0,
@@ -63,7 +62,7 @@ TSNE
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ......factor_analysis.co_occurrence.pca.factor_matrix import factor_matrix
+from ......factor_pca_cooc_tsne import factor_pca_cooc_tsne
 
 UNIT_OF_ANALYSIS = "abstract_nlp_phrases"
 
@@ -83,7 +82,7 @@ def tsne(
     metric="euclidean",
     metric_params=None,
     init="pca",
-    tsne_random_state=0,
+    random_state=0,
     method="barnes_hut",
     angle=0.5,
     n_jobs=None,
@@ -110,7 +109,6 @@ def tsne(
     iterated_power="auto",
     n_oversamples=10,
     power_iteration_normalizer="auto",
-    random_state=0,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -123,7 +121,7 @@ def tsne(
     :meta private:
     """
 
-    return factor_matrix(
+    return factor_pca_cooc_tsne(
         #
         # COOC PARAMS:
         rows_and_columns=UNIT_OF_ANALYSIS,
@@ -135,23 +133,7 @@ def tsne(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # PCA PARAMS:
-        n_components=n_components,
-        whiten=whiten,
-        svd_solver=svd_solver,
-        tol=tol,
-        iterated_power=iterated_power,
-        n_oversamples=n_oversamples,
-        power_iteration_normalizer=power_iteration_normalizer,
-        random_state=random_state,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).TSNE_(
+        # TSNE PARAMS:
         perplexity=perplexity,
         early_exaggeration=early_exaggeration,
         learning_rate=learning_rate,
@@ -161,16 +143,32 @@ def tsne(
         metric=metric,
         metric_params=metric_params,
         init=init,
-        random_state=tsne_random_state,
+        random_state=random_state,
         method=method,
         angle=angle,
         n_jobs=n_jobs,
         #
-        # MAP:
+        # VISUALIZATION PARAMS:
         node_color=node_color,
         node_size=node_size,
         textfont_size=textfont_size,
         textfont_color=textfont_color,
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
+        #
+        # PCA PARAMS:
+        n_components=n_components,
+        whiten=whiten,
+        svd_solver=svd_solver,
+        tol=tol,
+        iterated_power=iterated_power,
+        n_oversamples=n_oversamples,
+        power_iteration_normalizer=power_iteration_normalizer,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
     )
