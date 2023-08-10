@@ -58,7 +58,7 @@ TSNE
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/co_occurrence/factor/pca/co_occurrence_matrix/nlp_phrases/tsne.html" 
+    <iframe src="../../../../../../_static/co_occurrence/factor/pca/co_occurrence_matrix/nlp_phrases/tsne.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

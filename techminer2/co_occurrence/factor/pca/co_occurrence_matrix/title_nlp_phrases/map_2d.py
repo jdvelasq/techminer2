@@ -50,7 +50,7 @@ Map 2D
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/co_occurrence/factor/pca/co_occurrence_matrix/title_nlp_phrases/map_2d.html" 
+    <iframe src="../../../../../../_static/co_occurrence/factor/pca/co_occurrence_matrix/title_nlp_phrases/map_2d.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

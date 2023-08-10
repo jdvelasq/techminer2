@@ -2,16 +2,11 @@ Factor Approach >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   :maxdepth: 1
-   
-   kernel_pca/__index__
-
-.. toctree::
-   :maxdepth: 1
+   :maxdepth: 10
    
    pca/__index__
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 10
    
    svd/__index__

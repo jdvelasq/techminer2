@@ -49,8 +49,6 @@ Cluster Centers
 
 
 """
-from typing import Literal
-
 from .......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "abstract_nlp_phrases"

@@ -52,7 +52,7 @@ Treemap
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_occurrence/factor/pca/co_occurrence_matrix/nlp_phrases/kmeans/treemap.html" 
+    <iframe src="../../../../../../../_static/co_occurrence/factor/pca/co_occurrence_matrix/nlp_phrases/kmeans/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

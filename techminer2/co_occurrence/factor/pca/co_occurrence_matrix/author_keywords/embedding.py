@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Embeding
+Embedding
 ===============================================================================
 
 
@@ -38,6 +38,7 @@ Embeding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
+
 
 
 """
