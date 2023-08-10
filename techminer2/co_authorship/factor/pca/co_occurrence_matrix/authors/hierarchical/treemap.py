@@ -10,7 +10,7 @@ Treemap
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import treemap
+>>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.hierarchical import treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:
@@ -35,7 +35,8 @@ Treemap
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # AGLOMERATIVE_CLUSTERING PARAMS:
+...     # HIERARCHICAL PARAMS:
+...     n_clusters=6,
 ...     metric=None,
 ...     memory=None,
 ...     connectivity=None,
@@ -48,20 +49,15 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/co_occurrence_matrix/authors/treemap.html")
+... ).write_html("sphinx/_static/co_authorship/factor/pca/co_occurrence_matrix/authors/hierarchical/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_authorship/factor/pca/co_occurrence_matrix/authors/treemap.html" 
+    <iframe src="../../../../../../../_static/co_authorship/factor/pca/co_occurrence_matrix/authors/hierarchical/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from typing import Literal
-
-from .......factor_analysis.pca.hierachical.co_occurrence_matrix.factor_clusters import (
-    factor_clusters,
-)
-from ......factor_analysis.factor_treemap import factor_treemap
+from .......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -91,6 +87,7 @@ def treemap(
     random_state=0,
     #
     # HIERARCHICAL PARAMS:
+    n_clusters=None,
     metric=None,
     memory=None,
     connectivity=None,
@@ -109,10 +106,11 @@ def treemap(
     :meta private:
     """
 
-    communities = factor_clusters(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -120,6 +118,16 @@ def treemap(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    analyzer.pca(
         #
         # PCA PARAMS:
         n_components=n_components,
@@ -130,28 +138,26 @@ def treemap(
         n_oversamples=n_oversamples,
         power_iteration_normalizer=power_iteration_normalizer,
         random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    analyzer.hierarchical(
         #
-        # AGLOMERATIVE_CLUSTERING PARAMS:
+        # HIERARCHICAL PARAMS:
+        n_clusters=n_clusters,
         metric=metric,
         memory=memory,
         connectivity=connectivity,
         compute_full_tree=compute_full_tree,
         linkage=linkage,
         distance_threshold=distance_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).communities_
+    )
 
-    return factor_treemap(
+    analyzer.run_clustering()
+
+    return analyzer.treemap(
         #
-        # FACTOR:
-        communities=communities,
-        #
-        # CHART PARAMS:
+        # FIGURE PARAMS:
         title=title,
     )

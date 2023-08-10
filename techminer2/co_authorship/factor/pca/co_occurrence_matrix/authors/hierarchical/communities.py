@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import communities
+>>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.hierarchical import communities
 >>> communities(
 ...     #
 ...     # PARAMS:
@@ -32,7 +32,8 @@ Communities
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # AGLOMERATIVE_CLUSTERING PARAMS:
+...     # HIERARCHICAL PARAMS:
+...     n_clusters=6,
 ...     metric=None,
 ...     memory=None,
 ...     connectivity=None,
@@ -45,16 +46,19 @@ Communities
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-
+... ).head()
+                      CL_0  ...           CL_5
+0           Butler T 2:041  ...    Lin W 2:017
+1           Arman AA 2:000  ...  Singh C 2:017
+2  Anagnostopoulos I 1:153  ...               
+3           OBrien L 1:033  ...               
+4          Baxter LG 1:030  ...               
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """
-from typing import Literal
-
-from .......factor_analysis.pca.hierachical.co_occurrence_matrix.factor_clusters import (
-    factor_clusters,
-)
+from .......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -81,6 +85,7 @@ def communities(
     random_state=0,
     #
     # HIERARCHICAL PARAMS:
+    n_clusters=None,
     metric=None,
     memory=None,
     connectivity=None,
@@ -99,10 +104,11 @@ def communities(
     :meta private:
     """
 
-    return factor_clusters(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -110,6 +116,16 @@ def communities(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    analyzer.pca(
         #
         # PCA PARAMS:
         n_components=n_components,
@@ -120,19 +136,22 @@ def communities(
         n_oversamples=n_oversamples,
         power_iteration_normalizer=power_iteration_normalizer,
         random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    analyzer.hierarchical(
         #
-        # AGLOMERATIVE_CLUSTERING PARAMS:
+        # HIERARCHICAL PARAMS:
+        n_clusters=n_clusters,
         metric=metric,
         memory=memory,
         connectivity=connectivity,
         compute_full_tree=compute_full_tree,
         linkage=linkage,
         distance_threshold=distance_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).communities_
+    )
+
+    analyzer.run_clustering()
+
+    return analyzer.communities()

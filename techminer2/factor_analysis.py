@@ -20,7 +20,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from .co_occurrence_matrix import co_occurrence_matrix
 from .manifold_2d_map import manifold_2d_map
 from .normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
-from .performance_analysis.tfidf import tfidf as __tfidf
+from .performance_analysis.tfidf import tfidf as _tfidf
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24
@@ -40,7 +40,7 @@ class FactorAnalyzer:
         self.field = field
         self.embedding_estimator = None
         self.matrix_values = None
-        self.embedding = None
+        self.embedding_ = None
         self.n_components = None
         self.clustering_estimator = None
         self.n_clusters = None
@@ -96,8 +96,7 @@ class FactorAnalyzer:
         self,
         #
         # TF PARAMS:
-        field: str,
-        is_binary: bool = False,
+        is_binary: bool = True,
         cooc_within: int = 1,
         #
         # TF-IDF parameters:
@@ -119,10 +118,10 @@ class FactorAnalyzer:
         cited_by_filter=(None, None),
         **filters,
     ):
-        matrix = __tfidf(
+        matrix = _tfidf(
             #
             # TF PARAMS:
-            field=field,
+            field=self.field,
             is_binary=is_binary,
             cooc_within=cooc_within,
             #
@@ -266,11 +265,14 @@ class FactorAnalyzer:
             columns=columns,
         )
         embedding.index.name = self.matrix_values.index.name
-        self.embedding = embedding
+        self.embedding_ = embedding
 
     # --------------------------------------------------------------------------------------------
     # Embedding Results
     #
+    def embedding(self):
+        return self.embedding_.copy()
+
     def embedding_2d_chart(
         self,
         #
@@ -285,9 +287,9 @@ class FactorAnalyzer:
         yaxes_range=None,
     ):
         return manifold_2d_map(
-            node_x=self.embedding[dim_x],
-            node_y=self.embedding[dim_y],
-            node_text=self.embedding.index.to_list(),
+            node_x=self.embedding_[dim_x],
+            node_y=self.embedding_[dim_y],
+            node_text=self.embedding_.index.to_list(),
             node_color=node_color,
             node_size=node_size,
             title_x=dim_x,
@@ -301,7 +303,7 @@ class FactorAnalyzer:
     def cosine_similarities(
         self,
     ):
-        similarity = cosine_similarity(self.embedding)
+        similarity = cosine_similarity(self.embedding_)
 
         term_similarities = []
         for i in range(similarity.shape[0]):
@@ -310,7 +312,7 @@ class FactorAnalyzer:
                 if i != j and similarity[i, j] > 0:
                     values_to_sort.append(
                         (
-                            self.embedding.index[j],
+                            self.embedding_.index[j],
                             similarity[i, j],
                         )
                     )
@@ -321,7 +323,7 @@ class FactorAnalyzer:
 
         term_similarities = pd.DataFrame(
             {"cosine_similariries": term_similarities},
-            index=self.embedding.index,
+            index=self.embedding_.index,
         )
 
         return term_similarities
@@ -367,12 +369,12 @@ class FactorAnalyzer:
             method=method,
             angle=angle,
             n_jobs=n_jobs,
-        ).fit_transform(self.embedding)
+        ).fit_transform(self.embedding_)
 
         return manifold_2d_map(
             node_x=decomposed_matrix[:, 0],
             node_y=decomposed_matrix[:, 1],
-            node_text=self.embedding.index.to_list(),
+            node_text=self.embedding_.index.to_list(),
             node_color=node_color,
             node_size=node_size,
             textfont_size=textfont_size,
@@ -410,12 +412,12 @@ class FactorAnalyzer:
             n_jobs=n_jobs,
             random_state=random_state,
             dissimilarity=dissimilarity,
-        ).fit_transform(self.embedding)
+        ).fit_transform(self.embedding_)
 
         return manifold_2d_map(
             node_x=decomposed_matrix[:, 0],
             node_y=decomposed_matrix[:, 1],
-            node_text=self.embedding.index.to_list(),
+            node_text=self.embedding_.index.to_list(),
             node_color=node_color,
             node_size=node_size,
             textfont_size=textfont_size,
@@ -478,7 +480,7 @@ class FactorAnalyzer:
     def run_clustering(self):
         #
         # Selects first n_cluster components for clustering
-        matrix = self.embedding.iloc[:, : self.n_clusters]
+        matrix = self.embedding_.iloc[:, : self.n_clusters]
         self.clustering_estimator.fit(matrix)
 
         #
@@ -509,22 +511,20 @@ class FactorAnalyzer:
         centers = centers.groupby("LABELS").mean()
         centers = centers.sort_index(axis=0)
 
-        # adds the prefix 'CL_' to the labels
+        #
+        # Formats cluster name with prefix CL_ and zeros
         n_zeros = int(np.log10(self.n_clusters - 1)) + 1
         fmt = "CL_{:0" + str(n_zeros) + "d}"
-        new_labels = [fmt.format(label) for label in labels]
-        centers.index = new_labels
-        centers = pd.DataFrame(
-            centers,
-            columns=matrix.columns,
-            index=[fmt.format(i) for i in range(self.n_clusters)],
-        )
+        cluster_names = {i_cluster: fmt.format(i_cluster) for i_cluster in range(self.n_clusters)}
+
+        centers.index = centers.index.map(cluster_names)
+        centers = centers.sort_index(axis=0)
         self.cluster_centers_ = centers.copy()
 
         #
         # Creates a dataframe with the communities
         communities = {fmt.format(key): communities[key] for key in communities.keys()}
-        self.communtiies_dict_ = communities.copy()
+        self.communities_dict_ = communities.copy()
 
         communities = pd.DataFrame.from_dict(communities, orient="index").T
         communities = communities.fillna("")
@@ -534,7 +534,7 @@ class FactorAnalyzer:
     # --------------------------------------------------------------------------------------------
     # Clustering Results
     #
-    def communtiies(self):
+    def communities(self):
         return self.communities_
 
     def cluster_centers(self):
@@ -542,6 +542,8 @@ class FactorAnalyzer:
 
     def treemap(
         self,
+        #
+        # TREEMAP PARAMS:
         title,
     ):
         node_occ = []
@@ -550,7 +552,7 @@ class FactorAnalyzer:
         parents = []
 
         name2color = {}
-        for name, label in zip(self.embedding.index, self.label_):
+        for name, label in zip(self.embedding_.index, self.labels_):
             name2color[name] = CLUSTER_COLORS[label]
 
         clusters = self.communities_dict_.copy()

@@ -2,11 +2,11 @@ PCA >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 10
    
-   co_occurrence/__index__
+   co_occurrence_matrix/__index__
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 10
    
    tfidf/__index__

@@ -10,7 +10,7 @@ Cluster Centers
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import cluster_centers
+>>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.hierarchical import cluster_centers
 >>> cluster_centers(
 ...     #
 ...     # PARAMS:
@@ -33,6 +33,7 @@ Cluster Centers
 ...     random_state=0, 
 ...     #
 ...     # AGLOMERATIVE_CLUSTERING PARAMS:
+...     n_clusters=6,
 ...     metric=None,
 ...     memory=None,
 ...     connectivity=None,
@@ -46,13 +47,17 @@ Cluster Centers
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-
+           DIM_0     DIM_1     DIM_2         DIM_3     DIM_4
+LABELS                                                      
+CL_0   -0.110116 -0.342892 -0.270565 -2.136513e-16  0.821408
+CL_1    3.594663  0.466378  0.164824  9.899972e-17 -0.197320
+CL_2   -1.497384  2.707063  0.316470  1.365093e-16 -0.195044
+CL_3   -0.866762 -1.323229  1.942264  2.937909e-16 -0.390917
+CL_4   -0.730184 -0.787597 -1.344180 -2.000000e+00 -0.850003
+CL_5   -0.730184 -0.787597 -1.344180  2.000000e+00 -0.850003
 
 """
-
-from .......factor_analysis.pca.hierachical.co_occurrence_matrix.factor_clusters import (
-    factor_clusters,
-)
+from .......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -79,6 +84,7 @@ def cluster_centers(
     random_state=0,
     #
     # HIERARCHICAL PARAMS:
+    n_clusters=None,
     metric=None,
     memory=None,
     connectivity=None,
@@ -97,10 +103,11 @@ def cluster_centers(
     :meta private:
     """
 
-    return factor_clusters(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -108,6 +115,16 @@ def cluster_centers(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    analyzer.pca(
         #
         # PCA PARAMS:
         n_components=n_components,
@@ -118,19 +135,22 @@ def cluster_centers(
         n_oversamples=n_oversamples,
         power_iteration_normalizer=power_iteration_normalizer,
         random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    analyzer.hierarchical(
         #
-        # AGLOMERATIVE_CLUSTERING PARAMS:
+        # HIERARCHICAL PARAMS:
+        n_clusters=n_clusters,
         metric=metric,
         memory=memory,
         connectivity=connectivity,
         compute_full_tree=compute_full_tree,
         linkage=linkage,
         distance_threshold=distance_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).centers_
+    )
+
+    analyzer.run_clustering()
+
+    return analyzer.cluster_centers()

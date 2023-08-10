@@ -62,7 +62,7 @@ TSNE
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ......factor_analysis.pca.hierachical.co_occurrence_matrix.factor_matrix import factor_matrix
+from ......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -122,10 +122,11 @@ def tsne(
     :meta private:
     """
 
-    return factor_matrix(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -133,6 +134,16 @@ def tsne(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    analyzer.pca(
         #
         # PCA PARAMS:
         n_components=n_components,
@@ -143,14 +154,13 @@ def tsne(
         n_oversamples=n_oversamples,
         power_iteration_normalizer=power_iteration_normalizer,
         random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    return analyzer.tsne(
         #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).TSNE_(
+        # TSNE PARAMS:
         perplexity=perplexity,
         early_exaggeration=early_exaggeration,
         learning_rate=learning_rate,

@@ -10,7 +10,7 @@ Cluster Centers
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import cluster_centers
+>>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.kmeans import cluster_centers
 >>> cluster_centers(
 ...     #
 ...     # PARAMS:
@@ -26,19 +26,19 @@ Cluster Centers
 ...     n_components=5,
 ...     whiten=False,
 ...     svd_solver="auto",
-...     tol=0.0,
+...     pca_tol=0.0,
 ...     iterated_power="auto",
 ...     n_oversamples=10,
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # AGLOMERATIVE_CLUSTERING PARAMS:
-...     metric=None,
-...     memory=None,
-...     connectivity=None,
-...     compute_full_tree="auto",
-...     linkage="ward",
-...     distance_threshold=None,
+...     # KMEANS PARAMS:
+...     n_clusters=6,
+...     init="k-means++",
+...     n_init=10,
+...     max_iter=300,
+...     kmeans_tol=0.0001,
+...     algorithm="auto",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -46,11 +46,19 @@ Cluster Centers
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-
+           DIM_0     DIM_1     DIM_2         DIM_3     DIM_4
+LABELS                                                      
+CL_0   -0.110116 -0.342892 -0.270565 -2.136513e-16  0.821408
+CL_1    3.594663  0.466378  0.164824  9.899972e-17 -0.197320
+CL_2   -0.866762 -1.323229  1.942264  2.937909e-16 -0.390917
+CL_3   -1.497384  2.707063  0.316470  1.365093e-16 -0.195044
+CL_4   -0.730184 -0.787597 -1.344180 -2.000000e+00 -0.850003
+CL_5   -0.730184 -0.787597 -1.344180  2.000000e+00 -0.850003
 
 """
+from typing import Literal
 
-from ......factor_analysis.pca.co_occurrence_matrix.factor_clusters import factor_clusters
+from .......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -70,19 +78,19 @@ def cluster_centers(
     n_components=None,
     whiten=False,
     svd_solver="auto",
-    tol=0.0,
+    pca_tol=0.0,
     iterated_power="auto",
     n_oversamples=10,
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # AGLOMERATIVE_CLUSTERING PARAMS:
-    metric=None,
-    memory=None,
-    connectivity=None,
-    compute_full_tree="auto",
-    linkage="ward",
-    distance_threshold=None,
+    # KMEANS PARAMS:
+    n_clusters=8,
+    init="k-means++",
+    n_init=10,
+    max_iter=300,
+    kmeans_tol=0.0001,
+    algorithm="auto",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -95,10 +103,11 @@ def cluster_centers(
     :meta private:
     """
 
-    return factor_clusters(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -107,28 +116,41 @@ def cluster_centers(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # PCA PARAMS:
-        n_components=n_components,
-        whiten=whiten,
-        svd_solver=svd_solver,
-        tol=tol,
-        iterated_power=iterated_power,
-        n_oversamples=n_oversamples,
-        power_iteration_normalizer=power_iteration_normalizer,
-        random_state=random_state,
-        #
-        # AGLOMERATIVE_CLUSTERING PARAMS:
-        metric=metric,
-        memory=memory,
-        connectivity=connectivity,
-        compute_full_tree=compute_full_tree,
-        linkage=linkage,
-        distance_threshold=distance_threshold,
-        #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).centers_
+    )
+
+    analyzer.pca(
+        #
+        # PCA PARAMS:
+        n_components=n_components,
+        whiten=whiten,
+        svd_solver=svd_solver,
+        tol=pca_tol,
+        iterated_power=iterated_power,
+        n_oversamples=n_oversamples,
+        power_iteration_normalizer=power_iteration_normalizer,
+        random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    analyzer.kmeans(
+        #
+        # KMEANS PARAMS:
+        n_clusters=n_clusters,
+        init=init,
+        n_init=n_init,
+        max_iter=max_iter,
+        tol=kmeans_tol,
+        random_state=random_state,
+        algorithm=algorithm,
+    )
+
+    analyzer.run_clustering()
+
+    return analyzer.cluster_centers()

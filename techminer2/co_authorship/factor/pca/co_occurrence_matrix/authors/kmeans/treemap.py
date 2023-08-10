@@ -10,7 +10,7 @@ Treemap
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import treemap
+>>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.kmeans import treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:
@@ -29,37 +29,34 @@ Treemap
 ...     n_components=5,
 ...     whiten=False,
 ...     svd_solver="auto",
-...     tol=0.0,
+...     pca_tol=0.0,
 ...     iterated_power="auto",
 ...     n_oversamples=10,
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # AGLOMERATIVE_CLUSTERING PARAMS:
-...     metric=None,
-...     memory=None,
-...     connectivity=None,
-...     compute_full_tree="auto",
-...     linkage="ward",
-...     distance_threshold=None,
+...     # KMEANS PARAMS:
+...     n_clusters=6,
+...     init="k-means++",
+...     n_init=10,
+...     max_iter=300,
+...     kmeans_tol=0.0001,
+...     algorithm="auto",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/co_occurrence_matrix/authors/treemap.html")
+... ).write_html("sphinx/_static/co_authorship/factor/pca/co_occurrence_matrix/authors/kmeans/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_authorship/factor/pca/co_occurrence_matrix/authors/treemap.html" 
+    <iframe src="../../../../../../../_static/co_authorship/factor/pca/co_occurrence_matrix/authors/kmeans/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from typing import Literal
-
-from ......factor_analysis.factor_treemap import factor_treemap
-from ......factor_analysis.pca.co_occurrence_matrix.factor_clusters import factor_clusters
+from .......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -82,19 +79,19 @@ def treemap(
     n_components=None,
     whiten=False,
     svd_solver="auto",
-    tol=0.0,
+    pca_tol=0.0,
     iterated_power="auto",
     n_oversamples=10,
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # AGLOMERATIVE_CLUSTERING PARAMS:
-    metric=None,
-    memory=None,
-    connectivity=None,
-    compute_full_tree="auto",
-    linkage="ward",
-    distance_threshold=None,
+    # KMEANS PARAMS:
+    n_clusters=8,
+    init="k-means++",
+    n_init=10,
+    max_iter=300,
+    kmeans_tol=0.0001,
+    algorithm="auto",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -107,10 +104,11 @@ def treemap(
     :meta private:
     """
 
-    communities = factor_clusters(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -119,37 +117,45 @@ def treemap(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # PCA PARAMS:
-        n_components=n_components,
-        whiten=whiten,
-        svd_solver=svd_solver,
-        tol=tol,
-        iterated_power=iterated_power,
-        n_oversamples=n_oversamples,
-        power_iteration_normalizer=power_iteration_normalizer,
-        random_state=random_state,
-        #
-        # AGLOMERATIVE_CLUSTERING PARAMS:
-        metric=metric,
-        memory=memory,
-        connectivity=connectivity,
-        compute_full_tree=compute_full_tree,
-        linkage=linkage,
-        distance_threshold=distance_threshold,
-        #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).communities_
+    )
 
-    return factor_treemap(
+    analyzer.pca(
         #
-        # FACTOR:
-        communities=communities,
+        # PCA PARAMS:
+        n_components=n_components,
+        whiten=whiten,
+        svd_solver=svd_solver,
+        tol=pca_tol,
+        iterated_power=iterated_power,
+        n_oversamples=n_oversamples,
+        power_iteration_normalizer=power_iteration_normalizer,
+        random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    analyzer.kmeans(
         #
-        # CHART PARAMS:
+        # KMEANS PARAMS:
+        n_clusters=n_clusters,
+        init=init,
+        n_init=n_init,
+        max_iter=max_iter,
+        tol=kmeans_tol,
+        random_state=random_state,
+        algorithm=algorithm,
+    )
+
+    analyzer.run_clustering()
+
+    return analyzer.treemap(
+        #
+        # FIGURE PARAMS:
         title=title,
     )

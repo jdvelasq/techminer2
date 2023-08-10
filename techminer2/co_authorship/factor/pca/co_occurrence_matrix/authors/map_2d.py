@@ -54,7 +54,7 @@ Map 2D
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ......factor_analysis.pca.hierachical.co_occurrence_matrix.factor_matrix import factor_matrix
+from ......factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -101,10 +101,11 @@ def map_2d(
     :meta private:
     """
 
-    return factor_matrix(
+    analyzer = FactorAnalyzer(field=UNIT_OF_ANALYSIS)
+
+    analyzer.cooc_matrix(
         #
         # COOC PARAMS:
-        rows_and_columns=UNIT_OF_ANALYSIS,
         association_index=association_index,
         #
         # ITEM PARAMS:
@@ -112,6 +113,16 @@ def map_2d(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    analyzer.pca(
         #
         # PCA PARAMS:
         n_components=n_components,
@@ -122,14 +133,11 @@ def map_2d(
         n_oversamples=n_oversamples,
         power_iteration_normalizer=power_iteration_normalizer,
         random_state=random_state,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).fig_(
+    )
+
+    analyzer.compute_embedding()
+
+    return analyzer.embedding_2d_chart(
         dim_x=dim_x,
         dim_y=dim_y,
         node_color=node_color,

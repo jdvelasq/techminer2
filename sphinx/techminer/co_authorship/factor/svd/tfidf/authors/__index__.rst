@@ -18,7 +18,7 @@ Authors >
     cosine_similarities
 
 .. toctree::
-    embeding
+    embedding
 
 .. toctree::
     map_2d
