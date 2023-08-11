@@ -47,7 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                             CL_0  ...                          CL_5
+0  ARTIFICIAL_INTELLIGENCE 08:036  ...  REGULATORY_TECHNOLOGY 20:274
+1         FINANCIAL_CRISIS 07:058  ...                              
+2               COMPLIANCE 07:030  ...                              
+3    ANTI_MONEY_LAUNDERING 06:035  ...                              
+4               REGULATION 05:164  ...                              
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

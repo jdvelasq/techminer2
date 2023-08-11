@@ -1,12 +1,4 @@
 Sequences and Network Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   :maxdepth: 1
-
-   fields/__index__
-
-.. toctree::
-   :maxdepth: 1
-
-   words/__index__
+See `TechMiner 2+ > Co-occurrence >` :ref:`tm2.co_occurrence.network`

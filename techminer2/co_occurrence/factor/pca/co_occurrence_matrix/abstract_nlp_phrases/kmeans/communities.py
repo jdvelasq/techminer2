@@ -46,7 +46,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                       CL_0  ...                            CL_5
+0   FINANCIAL_CRISIS 06:058  ...  ARTIFICIAL_INTELLIGENCE 07:033
+1  REGTECH_SOLUTIONS 05:018  ...                                
+2   FINANCIAL_SYSTEM 04:178  ...                                
+3    RISK_MANAGEMENT 04:015  ...                                
+4   NEW_TECHNOLOGIES 04:012  ...                                
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

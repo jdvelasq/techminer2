@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _tm2.co_authorship.associations.countries.co_occurrences_chart:
+
 Co-occurrences Chart
 ===============================================================================
 

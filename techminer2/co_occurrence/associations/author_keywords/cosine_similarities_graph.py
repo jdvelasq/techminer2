@@ -6,11 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _tm2.co_occurrence.associations.author_keywords.cosine_similarities_graph:
+
 Cosine Similarities Graph
 ===============================================================================
 
 
->>> from techminer2.co_occurrence.associations.keywords import cosine_similarities_graph
+>>> from techminer2.co_occurrence.associations.author_keywords import cosine_similarities_graph
 >>> cosine_similarities_graph(
 ...     #
 ...     # FUNCTION PARAMS:

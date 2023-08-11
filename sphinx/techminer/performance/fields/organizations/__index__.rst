@@ -26,3 +26,6 @@ Organizations >
 
 .. toctree::
    production_over_time_recipe 
+
+.. toctree::
+   word_cloud

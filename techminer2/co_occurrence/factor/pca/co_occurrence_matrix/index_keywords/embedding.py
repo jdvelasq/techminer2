@@ -38,6 +38,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
+                                DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+index_keywords                                                               
+REGULATORY_COMPLIANCE 9:34   8.628055 -0.817749  2.996985 -0.608337 -0.753074
+FINANCIAL_INSTITUTIONS 6:09  1.806933  4.605971  1.830276 -0.667645  1.830801
+FINANCE 5:16                 5.237703  1.003288 -2.300287 -0.970889 -0.136053
+REGTECH 5:15                 5.129950 -0.548219 -2.322758  1.070954 -0.416818
+ANTI_MONEY_LAUNDERING 3:10  -2.389595  2.951822 -0.047101 -1.264885 -0.998302
 
 
 

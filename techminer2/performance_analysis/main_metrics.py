@@ -66,11 +66,11 @@ DESCRIPTORS    Raw descriptors                                373
                Cleaned descriptors                            338
 
                
->>> info.fig_.write_html("sphinx/_static/performance_analysis/main_metrics_dashboard.html")
+>>> info.fig_.write_html("sphinx/_static/performance/main_metrics_dashboard.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance_analysis/main_metrics_dashboard.html"
+    <iframe src="../../../../_static/performance/main_metrics_dashboard.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(info.prompt_)

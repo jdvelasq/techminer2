@@ -4,7 +4,7 @@ PCA >
 .. toctree::
    :maxdepth: 1
    
-   co_occurrence/__index__
+   co_occurrence_matrix/__index__
 
 .. toctree::
    :maxdepth: 1

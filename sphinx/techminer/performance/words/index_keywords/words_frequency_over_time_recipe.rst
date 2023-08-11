@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.words.index_keywords.words_frequency_over_time_recipe
+.. automodule:: techminer2.performance_analysis.index_keywords.words_frequency_over_time_recipe
     :members:
     :undoc-members:
     :show-inheritance:

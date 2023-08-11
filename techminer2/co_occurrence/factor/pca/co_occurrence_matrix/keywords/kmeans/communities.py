@@ -46,6 +46,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
+                             CL_0  ...            CL_5
+0    ANTI_MONEY_LAUNDERING 06:035  ...  FINTECH 12:249
+1  ARTIFICIAL_INTELLIGENCE 06:025  ...                
+2          SMART_CONTRACTS 03:023  ...                
+3               INNOVATION 03:012  ...                
+4               BLOCKCHAIN 03:005  ...                
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 

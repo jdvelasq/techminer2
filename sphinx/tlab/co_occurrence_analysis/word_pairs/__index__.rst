@@ -6,6 +6,3 @@ Comparison between Word Pairs >
 
 .. toctree::
    radial_diagram
-
-.. toctree::
-   dual_bar_chart   

@@ -5,5 +5,4 @@ from .line_chart import line_chart
 from .pie_chart import pie_chart
 from .ranking_chart import ranking_chart
 from .top_trending_topics_chart import top_trending_topics_chart
-from .word_cloud import word_cloud
 from .world_map import world_map

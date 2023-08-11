@@ -47,7 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                           CL_0  ...            CL_5
+0     FINANCIAL_SERVICES 04:168  ...  REGTECH 28:329
+1   FINANCIAL_REGULATION 04:035  ...                
+2             INNOVATION 03:012  ...                
+3             BLOCKCHAIN 03:005  ...                
+4  SEMANTIC_TECHNOLOGIES 02:041  ...                
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

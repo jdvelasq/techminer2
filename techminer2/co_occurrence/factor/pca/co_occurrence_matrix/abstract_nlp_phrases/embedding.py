@@ -38,7 +38,15 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                                    DIM_0     DIM_1  ...     DIM_3     DIM_4
+abstract_nlp_phrases                                 ...                    
+REGULATORY_TECHNOLOGY 17:266    14.486131 -4.799390  ...  0.264202 -1.441894
+FINANCIAL_INSTITUTIONS 15:194    8.634350  9.744695  ... -0.373543  0.754883
+REGULATORY_COMPLIANCE 07:198     1.319748  0.958875  ...  4.934481  0.323482
+FINANCIAL_SECTOR 07:169          1.752593 -2.740274  ... -1.526218  2.818486
+ARTIFICIAL_INTELLIGENCE 07:033   0.327995  0.520527  ... -1.593412  5.630711
+<BLANKLINE>
+[5 rows x 5 columns]
 
 
 """

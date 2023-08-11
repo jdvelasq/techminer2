@@ -46,7 +46,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                               CL_0  ...                        CL_5
+0                    SANDBOXES 2:12  ...  REGULATORY_COMPLIANCE 9:34
+1         FINANCIAL_REGULATION 2:11  ...                            
+2  FINANCIAL_SERVICES_INDUSTRY 2:11  ...                            
+3      ARTIFICIAL_INTELLIGENCE 2:02  ...                            
+4                   BLOCKCHAIN 2:02  ...                            
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

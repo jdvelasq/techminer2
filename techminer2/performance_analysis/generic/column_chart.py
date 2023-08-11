@@ -35,11 +35,11 @@ Column Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance_analysis/graphs/column_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/performance/graphs/column_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance_analysis/graphs/column_chart.html" 
+    <iframe src="../../../../../_static/performance/graphs/column_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()

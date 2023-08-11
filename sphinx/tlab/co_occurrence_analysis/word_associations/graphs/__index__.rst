@@ -2,15 +2,13 @@ Graphs >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :maxdepth: 1
-
-    radial_diagram/__index__
+    radial_diagram
 
 .. toctree::
-    cosine
+    cosine_similarities_graph
 
 .. toctree::
-    co_occurrences
+    co_occurrences_chart
 
 .. toctree::
     mds_map

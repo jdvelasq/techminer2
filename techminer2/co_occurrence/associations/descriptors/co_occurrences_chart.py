@@ -6,11 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _tm2.co_occurrence.associations.descriptors.co_occurrences_chart:
+
 Co-occurrences Chart
 ===============================================================================
 
 
->>> from techminer2.co_occurrence.associations.abstract_nlp_phrases import co_occurrences_chart
+>>> from techminer2.co_occurrence.associations.descriptors import co_occurrences_chart
 >>> co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:

@@ -46,6 +46,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
+                                 CL_0  ...                           CL_5
+0         FINANCIAL_REGULATION 07:360  ...  FINANCIAL_INSTITUTIONS 15:194
+1             FINANCIAL_SECTOR 07:169  ...                               
+2      GLOBAL_FINANCIAL_CRISIS 06:177  ...                               
+3  FINANCIAL_SERVICES_INDUSTRY 05:315  ...                               
+4       INFORMATION_TECHNOLOGY 05:177  ...                               
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 

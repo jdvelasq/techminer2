@@ -47,7 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                                   CL_0  ...                        CL_5
+0            ANTI_MONEY_LAUNDERING 3:10  ...  REGULATORY_COMPLIANCE 9:34
+1                       LAUNDERING 2:09  ...                            
+2                          BANKING 2:08  ...                            
+3                 FINANCIAL_CRISIS 2:07  ...                            
+4  CLASSIFICATION (OF_INFORMATION) 2:03  ...                            
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

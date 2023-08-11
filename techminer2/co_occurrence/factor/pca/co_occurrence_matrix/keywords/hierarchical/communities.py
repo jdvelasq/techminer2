@@ -47,7 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                           CL_0  ...            CL_5
+0        SMART_CONTRACTS 03:023  ...  FINTECH 12:249
+1             INNOVATION 03:012  ...                
+2             BLOCKCHAIN 03:005  ...                
+3                SUPTECH 03:004  ...                
+4  SEMANTIC_TECHNOLOGIES 02:041  ...                
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

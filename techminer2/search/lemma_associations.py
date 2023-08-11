@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _tm2.search.lemma_associations:
+
 Lemma Associations
 =========================================================================================
 

@@ -47,7 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                                 CL_0  ...                          CL_5
+0        REGULATORY_COMPLIANCE 07:198  ...  REGULATORY_TECHNOLOGY 18:273
+1      ARTIFICIAL_INTELLIGENCE 07:033  ...                              
+2  FINANCIAL_SERVICES_INDUSTRY 05:315  ...                              
+3             MACHINE_LEARNING 04:007  ...                              
+4           DIGITAL_INNOVATION 03:164  ...                              
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 """

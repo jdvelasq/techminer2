@@ -16,7 +16,7 @@ average growth rate.
 
 
 >>> from techminer2.performance_analysis.graphs import top_trending_topics
->>> file_name = "sphinx/_static/performance_analysis/graphs/top_trending_topics.html"
+>>> file_name = "sphinx/_static/performance/graphs/top_trending_topics.html"
 >>> chart = top_trending_topics_graph(
 ...     field="author_keywords",
 ...     top_n=5,
@@ -27,7 +27,7 @@ average growth rate.
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance_analysis/graphs/top_trending_topics.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/performance/graphs/top_trending_topics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 

@@ -38,7 +38,15 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-
+                                   DIM_0     DIM_1  ...     DIM_3     DIM_4
+descriptors                                         ...                    
+REGTECH 29:330                 28.648589 -2.154412  ... -1.779599  1.938009
+REGULATORY_TECHNOLOGY 20:274   14.456327  9.010102  ... -3.732462 -4.002875
+FINANCIAL_INSTITUTIONS 16:198   5.789746 -5.696337  ...  6.036227 -0.581933
+REGULATORY_COMPLIANCE 15:232   11.945212 -1.009508  ... -0.925741  0.654153
+FINANCIAL_REGULATION 12:395     0.907102  6.373118  ...  7.670168  1.250138
+<BLANKLINE>
+[5 rows x 5 columns]
 
 
 """

@@ -2,16 +2,19 @@ Quick Menu >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    cosine
+    ../graphs/cosine_similarities_graph
 
 .. toctree::
-    selected_item
+    ../tables/selected_item
 
 .. toctree::
-   radial_diagram
+    ../graphs/radial_diagram
 
 .. toctree::
-    lemma_associations
+    ../tables/significance_test
+
+.. toctree::
+    ../../../../techminer/search/lemma_associations
 
 .. toctree::
     :maxdepth: 1
@@ -19,7 +22,7 @@ Quick Menu >
     graph_maker/__index__
 
 .. toctree::
-    mds_map
+    ../graphs/mds_map
 
 
 

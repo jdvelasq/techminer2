@@ -82,11 +82,11 @@ Table:
 ```
 <BLANKLINE>
 
->>> items.fig_.write_html("sphinx/_static/performance_analysis/item_metrics.html")
+>>> items.fig_.write_html("sphinx/_static/performance/item_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance_analysis/item_metrics.html"
+    <iframe src="../../../../_static/performance/item_metrics.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

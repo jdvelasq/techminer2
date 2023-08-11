@@ -47,6 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
+                          CL_0  ...                        CL_5
+0         EUROPEAN_UNION 1:024  ...  FINANCIAL_REGULATION 2:180
+1         FINANCIAL_RISK 1:021  ...                            
+2    EFFECTIVE_SOLUTIONS 1:014  ...                            
+3  FINANCIAL_DEVELOPMENT 1:013  ...                            
+4       FINANCIAL_SYSTEM 1:011  ...                            
+<BLANKLINE>
+[5 rows x 6 columns]
 
 
 

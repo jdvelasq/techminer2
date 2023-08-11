@@ -25,11 +25,11 @@ Cluster Records
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/performance_analysis/cluster_records.html")
+... ).write_html("sphinx/_static/performance/cluster_records.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance_analysis/cluster_records.html" 
+    <iframe src="../../../../_static/performance/cluster_records.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

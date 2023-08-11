@@ -38,6 +38,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
+                                  DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+keywords                                                                       
+REGTECH 28:329                27.436173 -0.130216  1.176906 -0.230165  1.782992
+FINTECH 12:249                10.270460 -5.634127 -3.650147 -0.551197 -0.515095
+REGULATORY_COMPLIANCE 09:034   5.837926  6.392996  1.732474 -0.868693 -1.931541
+REGULATORY_TECHNOLOGY 08:037  -2.577014 -2.144705  4.671647  3.836461 -2.822336
+COMPLIANCE 07:030              2.550594  0.595419  5.424870 -1.403305 -1.234025
 
 
 

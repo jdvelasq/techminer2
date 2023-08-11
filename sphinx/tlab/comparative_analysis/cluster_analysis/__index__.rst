@@ -1,29 +1,14 @@
 Cluster Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+-----
 
+* :ref:`Co-Word Analysis + Hierarchical  <tm2.co_occurrence.factor.svd.co_occurrence_matrix>`
 
-* Sequences and Network Analysis:
+-----
 
+* :ref:`Network Analysis + Louvain  <tm2.co_occurrence.network>`
 
-    * `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.co_occurrence` 
+-----
 
-    .. raw:: html
-
-        <br>
-
-    * `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.thematic_map`
-
-
-* Singular Value Decomposition:
-
-    * `TechMiner 2+ > Factor Analysis > Co-occurrences >` :ref:`factor_analysis.co_occurrences.svd` 
-
-    .. raw:: html
-
-        <br>
-
-    * `TechMiner 2+ > Factor Analysis > TFIDF >` :ref:`factor_analysis.tfidf.svd` 
-
-
-
+* :ref:`Singular Value Decomposition + K-Means <tm2.co_occurrence.factor.svd>`

@@ -7,7 +7,7 @@ NLP Phrases >
    most_frequent_words_recipe
       
 .. toctree::
-   word_cloud_recipe
+   word_cloud
 
 .. toctree::
    words_frequency_over_time_recipe

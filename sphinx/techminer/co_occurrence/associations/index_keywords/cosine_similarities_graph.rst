@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.co_occurrence.associations.abstract_nlp_phrases.cosine_similarities_graph
+.. automodule:: techminer2.co_occurrence.associations.index_keywords.cosine_similarities_graph
     :members:
     :undoc-members:
     :show-inheritance:

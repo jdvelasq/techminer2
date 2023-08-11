@@ -5,6 +5,8 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
+.. _tm2.co_occurrence.associations.author_keywords.co_occurrence_matrix:
+
 Co-occurrence Matrix
 ===============================================================================
 
