@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _tm2.co_authorship.associations.organizations.network_graph:
+
 Network Graph
 ===============================================================================
 
