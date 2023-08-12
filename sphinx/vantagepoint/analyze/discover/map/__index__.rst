@@ -1,4 +1,4 @@
-Map/
+Map >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * :ref:`correlation_analysis.auto_correlation_map`

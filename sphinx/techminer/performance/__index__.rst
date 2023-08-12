@@ -25,7 +25,7 @@ Performance >
     coverage
 
 .. toctree::
-    item_metrics
+    performance_metrics
 
 .. toctree::
     list_comparison
@@ -42,6 +42,9 @@ Performance >
 .. toctree::
     tfidf
 
+------
+
 .. toctree::
     trending_terms_per_year
+
 

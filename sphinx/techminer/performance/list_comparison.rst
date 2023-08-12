@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.list_comparison
+.. automodule:: techminer2.performance.list_comparison
     :members:
     :undoc-members:
     :show-inheritance:

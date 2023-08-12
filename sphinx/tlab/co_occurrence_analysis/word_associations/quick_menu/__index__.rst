@@ -1,28 +1,41 @@
 Quick Menu >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    ../graphs/cosine_similarities_graph
+------
 
 .. toctree::
-    ../tables/selected_item
+    cosine_similarities_graph
+
+------
 
 .. toctree::
-    ../graphs/radial_diagram
+    selected_item
+
+------
 
 .. toctree::
-    ../tables/significance_test
+    radial_diagram
+
+------
 
 .. toctree::
-    ../../../../techminer/search/lemma_associations
+    significance_test
+
+------
+
+* :ref:`tm2.search.lemma_associations`
+
+------
 
 .. toctree::
     :maxdepth: 1
 
     graph_maker/__index__
 
+------
+
 .. toctree::
-    ../graphs/mds_map
+    mds_map
 
 
 

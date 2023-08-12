@@ -1,3 +1,3 @@
-.. automodule:: techminer2.performance_analysis.graphs.column_chart
+.. automodule:: techminer2.performance.graphs.column_chart
     :members:
 

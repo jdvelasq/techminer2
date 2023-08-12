@@ -336,10 +336,10 @@ def global_indicators_by_field(
     indicators = indicators.drop(field, axis=1)
     # indicators = indicators.sort_index(axis=0, ascending=True)
 
-    indicators = sort_indicators_by_metric(indicators, "global_citations")
+    indicators = sort_indicators_by_metric(indicators, "global_citations", is_trend_analysis=False)
     indicators.insert(0, "rank_gc", range(1, len(indicators) + 1))
 
-    indicators = sort_indicators_by_metric(indicators, "OCC")
+    indicators = sort_indicators_by_metric(indicators, "OCC", is_trend_analysis=False)
     indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))
 
     return indicators

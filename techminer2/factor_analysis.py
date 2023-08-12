@@ -20,7 +20,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from .co_occurrence_matrix import co_occurrence_matrix
 from .manifold_2d_map import manifold_2d_map
 from .normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
-from .performance_analysis.tfidf import tfidf as _tfidf
+from .performance.tfidf import tfidf as _tfidf
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24

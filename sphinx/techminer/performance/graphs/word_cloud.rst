@@ -1,3 +1,3 @@
-.. automodule:: techminer2.performance_analysis.graphs.word_cloud
+.. automodule:: techminer2.performance.word_cloud
     :members:
 

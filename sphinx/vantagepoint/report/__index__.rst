@@ -1,4 +1,4 @@
-Report/ 
+Report >
 ==============================================================================
 
 .. toctree::
@@ -13,8 +13,12 @@ Report/
 .. toctree::
     line_chart
 
-.. toctree::
-    word_cloud
+-----
+
+* :ref:`tm2.performance.word_cloud`
+
+-----
+
 
 .. toctree::
     multi_donut

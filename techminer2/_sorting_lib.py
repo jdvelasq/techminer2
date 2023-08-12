@@ -1,11 +1,18 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=import-outside-toplevel
 """
 Sorts the indicators dataframe by the given metric.
 
 """
 
 
-def sort_indicators_by_metric(indicators, metric):
+def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
     """
     Sorts the indicators dataframe by the given metric.
 
@@ -68,14 +75,19 @@ def sort_indicators_by_metric(indicators, metric):
         # -------------------------------------------
     }[metric]
 
-    indicators = indicators.sort_values(columns, ascending=[False, False, False, True])
+    ascending = [False, False, False, True]
+
+    if is_trend_analysis:
+        columns = ["average_growth_rate"] + columns
+        ascending = [False] + ascending
+
+    indicators = indicators.sort_values(columns, ascending=ascending)
 
     indicators = indicators.drop(columns=["_name_"])
 
     return indicators
 
 
-# pylint: disable=import-outside-toplevel
 def sort_matrix_axis(
     matrix,
     axis,

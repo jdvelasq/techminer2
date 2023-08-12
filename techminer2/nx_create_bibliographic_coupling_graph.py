@@ -21,7 +21,7 @@ from .nx_compute_textfont_size_from_node_degree import nx_compute_textfont_size_
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
-from .performance_analysis.performance_metrics import performance_metrics
+from .performance.performance_metrics import performance_metrics
 
 
 def nx_create_bibliographic_coupling_graph(

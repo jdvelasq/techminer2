@@ -1,7 +1,8 @@
-Words/
+Words >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   
+.. toctree::
+   word_cloud   
 
 .. toctree::
    author_keywords

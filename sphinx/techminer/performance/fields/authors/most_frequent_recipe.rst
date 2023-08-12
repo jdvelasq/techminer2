@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.authors.most_frequent_recipe
+.. automodule:: techminer2.performance.authors.most_frequent_recipe
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,3 +1,3 @@
-.. automodule:: techminer2.performance_analysis.graphs.world_map
+.. automodule:: techminer2.performance.graphs.world_map
     :members:
 

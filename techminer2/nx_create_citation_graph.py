@@ -23,7 +23,7 @@ from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
 from .nx_set_node_size_to_constant import nx_set_node_size_to_constant
 from .nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
 from .nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
-from .performance_analysis.performance_metrics import performance_metrics
+from .performance.performance_metrics import performance_metrics
 
 
 def nx_create_citation_graph(

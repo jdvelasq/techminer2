@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.coverage
+.. automodule:: techminer2.performance.coverage
     :members:
     :undoc-members:
     :show-inheritance:

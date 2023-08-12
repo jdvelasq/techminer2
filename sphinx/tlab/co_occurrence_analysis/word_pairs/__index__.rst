@@ -2,7 +2,7 @@ Comparison between Word Pairs >
 =========================================================================================
 
 .. toctree::
-   bar_chart
+   butterfly_chart
 
 .. toctree::
    radial_diagram

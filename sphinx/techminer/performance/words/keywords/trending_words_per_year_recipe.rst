@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.keywords.trending_words_per_year_recipe
+.. automodule:: techminer2.performance.keywords.trending_words_per_year_recipe
     :members:
     :undoc-members:
     :show-inheritance:

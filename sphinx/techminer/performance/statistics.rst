@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.statistics
+.. automodule:: techminer2.performance.statistics
     :members:
     :undoc-members:
     :show-inheritance:

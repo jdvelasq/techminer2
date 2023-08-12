@@ -196,7 +196,7 @@ from ..format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..indicators.global_indicators_by_field import global_indicators_by_field
 from ..indicators.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 from ..indicators.items_occurrences_by_year import items_occurrences_by_year
-from ..performance_analysis.documents_per_item import documents_per_item
+from ..performance.documents_per_item import documents_per_item
 
 COLOR = "#465c6b"
 TEXTLEN = 40

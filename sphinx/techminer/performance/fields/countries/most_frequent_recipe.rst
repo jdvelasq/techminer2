@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance_analysis.countries.most_frequent_recipe
+.. automodule:: techminer2.performance.countries.most_frequent_recipe
     :members:
     :undoc-members:
     :show-inheritance:
