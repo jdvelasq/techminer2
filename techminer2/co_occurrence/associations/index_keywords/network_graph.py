@@ -59,7 +59,7 @@ Network Graph
     
     
 """
-from ....matrix_viewer import matrix_viewer
+from ...matrix_viewer import matrix_viewer
 
 UNIT_OF_ANALYSIS = "index_keywords"
 

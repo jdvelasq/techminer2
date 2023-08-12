@@ -182,12 +182,12 @@ Table:
 """
 from dataclasses import dataclass
 
-from ._counters_lib import add_counters_to_frame_axis
-from ._filtering_lib import generate_custom_items
-from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
-from .format_prompt_for_dataframes import format_prompt_for_dataframes
-from .indicators.global_co_occurrence_matrix_list import global_co_occurrence_matrix_list
-from .indicators.global_indicators_by_field import global_indicators_by_field
+from .._counters_lib import add_counters_to_frame_axis
+from .._filtering_lib import generate_custom_items
+from .._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
+from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..indicators.global_co_occurrence_matrix_list import global_co_occurrence_matrix_list
+from ..indicators.global_indicators_by_field import global_indicators_by_field
 
 
 def co_occurrence_matrix(
@@ -330,7 +330,7 @@ def ___matrix(
                 **filters,
             )
 
-            indicators = sort_indicators_by_metric(indicators, "OCC")
+            indicators = sort_indicators_by_metric(indicators, "OCC", is_trend_analysis=False)
 
             custom_items = generate_custom_items(
                 indicators=indicators,

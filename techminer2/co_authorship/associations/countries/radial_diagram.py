@@ -59,7 +59,7 @@ Radial Diagram
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....radial_diagram import radial_diagram as __radial_diagram
+from ....co_occurrence.radial_diagram import radial_diagram as __radial_diagram
 
 ROWS_AND_COLUMNS = "countries"
 

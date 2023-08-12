@@ -46,7 +46,9 @@ Cosine Similarities Graph
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....cosine_similarities_graph import cosine_similarities_graph as __cosine_similarities_graph
+from ....co_occurrence.cosine_similarities_graph import (
+    cosine_similarities_graph as __cosine_similarities_graph,
+)
 
 ROWS_AND_COLUMNS = "countries"
 

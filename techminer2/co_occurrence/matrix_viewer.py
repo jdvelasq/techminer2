@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _co_occurrence_analysis.matrix_viewer:
+.. _tm2.co_occurrence.matrix_viewer:
 
 Matrix Viewer
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_analysis import matrix_viewer
+>>> from techminer2.co_occurrence import matrix_viewer
 >>> matrix_viewer(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -37,8 +37,12 @@ Matrix Viewer
 ...     nx_random_state=0,
 ...     #
 ...     # NODES:
-...     node_size=30,
-...     textfont_size=10,
+...     node_size_min=30,
+...     node_size_max=70,
+...     textfont_size_min=10,
+...     textfont_size_max=20,
+...     textfont_opacity_min=0.35,
+...     textfont_opacity_max=1.00,
 ...     #
 ...     # EDGES
 ...     edge_color="#b8c6d0",
@@ -55,11 +59,11 @@ Matrix Viewer
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_analysis/matrix_viewer_0.html")
+... ).write_html("sphinx/_static/co_occurrence/matrix_viewer_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence_analysis/matrix_viewer_0.html" 
+    <iframe src="../../../../_static/co_occurrence/matrix_viewer_0.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -87,8 +91,12 @@ Matrix Viewer
 ...     nx_random_state=0,
 ...     #
 ...     # NODES:
-...     node_size=30,
-...     textfont_size=10,
+...     node_size_min=30,
+...     node_size_max=70,
+...     textfont_size_min=10,
+...     textfont_size_max=20,
+...     textfont_opacity_min=0.35,
+...     textfont_opacity_max=1.00,
 ...     #
 ...     # EDGES
 ...     edge_color="#b8c6d0",
@@ -105,26 +113,26 @@ Matrix Viewer
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_analysis/matrix_viewer_1.html")
+... ).write_html("sphinx/_static/co_occurrence/matrix_viewer_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence_analysis/matrix_viewer_1.html" 
+    <iframe src="../../../../_static/co_occurrence/matrix_viewer_1.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
 """
 import networkx as nx
 
+from ..nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from ..nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ..nx_compute_spring_layout import nx_compute_spring_layout
+from ..nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
+from ..nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from ..nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ..nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ..nx_visualize_graph import nx_visualize_graph
 from .co_occurrence_matrix import co_occurrence_matrix
-from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
-from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from .nx_visualize_graph import nx_visualize_graph
 
 
 def matrix_viewer(

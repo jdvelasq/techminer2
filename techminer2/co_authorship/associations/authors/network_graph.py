@@ -59,7 +59,7 @@ Network Graph
     
     
 """
-from ....matrix_viewer import matrix_viewer
+from ....co_occurrence.matrix_viewer import matrix_viewer
 
 UNIT_OF_ANALYSIS = "authors"
 

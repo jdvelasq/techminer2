@@ -79,7 +79,7 @@ Table:
 <BLANKLINE>
 
 """
-from ....co_occurrence_matrix import co_occurrence_matrix as __co_occurrence_matrix
+from ...co_occurrence_matrix import co_occurrence_matrix as __co_occurrence_matrix
 
 ROWS_AND_COLUMNS = "keywords"
 

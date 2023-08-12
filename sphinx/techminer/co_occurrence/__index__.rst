@@ -17,4 +17,6 @@ Co-occurrence >
    
    network/__index__
 
+.. toctree::
+   matrix_viewer
 

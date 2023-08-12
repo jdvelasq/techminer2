@@ -46,7 +46,7 @@ Co-occurrences Chart
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....co_occurrences_chart import co_occurrences_chart as __co_occurrences_chart
+from ....co_occurrence.co_occurrences_chart import co_occurrences_chart as __co_occurrences_chart
 
 ROWS_AND_COLUMNS = "authors"
 

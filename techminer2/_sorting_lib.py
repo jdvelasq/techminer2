@@ -118,7 +118,9 @@ def sort_matrix_axis(
         **filters,
     )
 
-    indicators_by_topic = sort_indicators_by_metric(indicators_by_topic, "OCC")
+    indicators_by_topic = sort_indicators_by_metric(
+        indicators_by_topic, "OCC", is_trend_analysis=False
+    )
 
     if axis == 0:
         topics = [

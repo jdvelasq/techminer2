@@ -79,7 +79,7 @@ identifying the most relevant terms associated with a given term.
 """
 import networkx as nx
 
-from .item_associations import item_associations
+from .co_occurrence.item_associations import item_associations
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
 from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
 from .nx_compute_spring_layout import nx_compute_spring_layout
