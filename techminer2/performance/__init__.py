@@ -3,7 +3,7 @@
 
 from .cluster_records import cluster_records
 from .coverage import coverage
-from .main_metrics import main_metrics
+from .overview.general_metrics import general_metrics
 from .performance_metrics import performance_metrics
 from .statistics import statistics
 from .tfidf import tfidf
@@ -13,7 +13,7 @@ __all__ = [
     "cluster_records",
     "coverage",
     "performance_metrics",
-    "main_metrics",
+    "general_metrics",
     "statistics",
     "tfidf",
     "word_cloud",
