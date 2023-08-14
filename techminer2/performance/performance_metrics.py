@@ -15,9 +15,19 @@ Performance Metrics
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
-...     metric="OCC",
+...     metrics=[
+...         "rank_occ", 
+...         "OCC", 
+...         "rank_gc", 
+...         "global_citations", 
+...         "local_citations", 
+...         "h_index", 
+...         "g_index", 
+...         "m_index",
+...     ]
 ...     #
 ...     # CHART PARAMS:
+...     metric_to_plot="OCC",
 ...     title=None,
 ...     field_label=None,
 ...     metric_label=None,
@@ -108,7 +118,7 @@ def performance_metrics(
     #
     # PERFORMANCE PARAMS:
     field,
-    metric="OCC",
+    metrics=None,
     #
     # CHART PARAMS:
     title=None,
@@ -143,11 +153,11 @@ def performance_metrics(
     #
     # MAIN CODE:
     #
-    data_frame = __table(
+    data_frame = _table(
         #
         # ITEMS PARAMS:
         field=field,
-        metric=metric,
+        metric=metrics,
         #
         # ITEM FILTERS:
         top_n=top_n,
@@ -167,24 +177,24 @@ def performance_metrics(
         **filters,
     )
 
-    data_frame = __select_columns(
-        data_frame=data_frame, metric=metric, is_trend_analysis=is_trend_analysis
+    data_frame = _select_columns(
+        data_frame=data_frame, metric=metrics, is_trend_analysis=is_trend_analysis
     )
 
-    if metric == "OCCGC":
-        metric = "OCC"
+    if metrics == "OCCGC":
+        metrics = "OCC"
 
-    prompt = __prompt(
+    prompt = _prompt(
         field=field,
-        metric=metric,
+        metric=metrics,
         data_frame=data_frame,
     )
 
-    fig = __fig(
+    fig = _fig(
         #
         # DATA PARAMS:
         field=field,
-        metric=metric,
+        metric=metrics,
         data_frame=data_frame,
         #
         # CHART PARAMS:
@@ -206,7 +216,7 @@ def performance_metrics(
     return Results()
 
 
-def __table(
+def _table(
     #
     # ITEMS PARAMS:
     field,
@@ -291,7 +301,7 @@ def __table(
     return data_frame
 
 
-def __select_columns(data_frame, metric, is_trend_analysis):
+def _select_columns(data_frame, metric, is_trend_analysis):
     #
     #
     if metric == "OCCGC":
@@ -340,7 +350,7 @@ def __select_columns(data_frame, metric, is_trend_analysis):
     return data_frame[columns]
 
 
-def __prompt(field, metric, data_frame):
+def _prompt(field, metric, data_frame):
     main_text = (
         "Your task is to generate an analysis about the bibliometric indicators of the "
         f"'{field}' field in a scientific bibliography database. Summarize the table below, "
@@ -352,7 +362,7 @@ def __prompt(field, metric, data_frame):
     return format_prompt_for_dataframes(main_text, data_frame.to_markdown())
 
 
-def __fig(
+def _fig(
     #
     # DATA PARAMS:
     field,
