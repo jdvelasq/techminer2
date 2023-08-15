@@ -212,11 +212,15 @@ def global_indicators_by_field(
     def compute_growth_indicators(indicators):
         """Computes the average growth rate."""
 
+        #
         # computes item occurrences by year
         items_by_year = items_occurrences_by_year(
+            #
+            # FUNCTION PARAMS:
             field=field,
             cumulative=False,
-            # Database params:
+            #
+            # DATABASE PARAMS:
             root_dir=root_dir,
             database=database,
             year_filter=year_filter,
@@ -224,15 +228,17 @@ def global_indicators_by_field(
             **filters,
         )
 
+        #
         # computes the range of years in the time window
         year_end = items_by_year.columns.max()
         year_start = year_end - time_window + 1
-        year_columns = list(range(year_start - 1, year_end + 1))
+        year_columns = list(range(year_start, year_end + 1))
 
+        #
         # computes the number of documents per period by item
         between = f"Between {year_start}-{year_end}"
         before = f"Before {year_start}"
-        between_occ = items_by_year.loc[:, year_columns[1:]].sum(axis=1)
+        between_occ = items_by_year.loc[:, year_columns].sum(axis=1)
         before_occ = items_by_year.sum(axis=1) - between_occ
         indicators.loc[between_occ.index, between] = between_occ
         indicators.loc[before_occ.index, before] = before_occ
@@ -244,16 +250,16 @@ def global_indicators_by_field(
         indicators = indicators[columns]
 
         # selects the columns of interest
-        items_by_year = items_by_year.loc[:, year_columns]
+        items_by_year = items_by_year.loc[:, [year_columns[0] - 1] + year_columns]
 
         # agr: average growth rate
         agr = items_by_year.diff(axis=1)
-        agr = agr.loc[:, year_columns[1:]]
+        agr = agr.loc[:, year_columns]
         agr = agr.sum(axis=1) / time_window
         indicators.loc[agr.index, "average_growth_rate"] = agr
 
         # ady: average documents per year
-        ady = items_by_year.loc[:, year_columns[1:]].sum(axis=1) / time_window
+        ady = items_by_year.loc[:, year_columns].sum(axis=1) / time_window
         indicators.loc[ady.index, "average_docs_per_year"] = ady
 
         # pdly: percentage of documents in last year

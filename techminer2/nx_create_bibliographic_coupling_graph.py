@@ -198,7 +198,7 @@ def __add_weighted_edges_from(
             #
             # ITEMS PARAMS:
             field=unit_of_analysis,
-            metrics="OCC",
+            metric="OCC",
             #
             # ITEM FILTERS:
             top_n=top_n,

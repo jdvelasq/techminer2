@@ -9,8 +9,8 @@
 Most Frequent
 ===============================================================================
 
->>> from techminer2.performance_analysis import performance_metrics
->>> items = item_metrics(
+>>> from techminer2.performance import performance_metrics
+>>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='countries',
@@ -52,11 +52,11 @@ Most Frequent
 | Hong Kong      |         10 |     3 |
 
 
->>> items.fig_.write_html("sphinx/_static/performance/countries/most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance/contributors/countries/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/countries/most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/performance/contributors/countries/most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

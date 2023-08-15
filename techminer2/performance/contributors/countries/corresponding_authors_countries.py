@@ -10,7 +10,7 @@ Corresponding Author's Countries
 ===============================================================================
 
 
->>> from techminer2.performance_analysis.fields.countries import corresponding_authors_countries
+>>> from techminer2.performance.contributors.countries import corresponding_authors_countries
 >>> result = corresponding_authors_countries(
 ...     #
 ...     # ITEM FILTERS:
@@ -25,11 +25,11 @@ Corresponding Author's Countries
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> result.fig_.write_html("sphinx/_static/performance/countries/corresponding_authors_countries.html")
+>>> result.fig_.write_html("sphinx/_static/performance/contributors/countries/corresponding_authors_countries.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/countries/corresponding_authors_countries.html" 
+    <iframe src="../../../../_static/performance/contributors/countries/corresponding_authors_countries.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -170,7 +170,7 @@ def __indicators(
         **filters,
     )
 
-    indicators = sort_indicators_by_metric(indicators, "OCC")
+    indicators = sort_indicators_by_metric(indicators, "OCC", is_trend_analysis=False)
 
     if custom_items is None:
         custom_items = generate_custom_items(

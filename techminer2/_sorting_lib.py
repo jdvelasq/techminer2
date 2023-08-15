@@ -15,14 +15,19 @@ Sorts the indicators dataframe by the given metric.
 def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
     """
     Sorts the indicators dataframe by the given metric.
-
-
     """
 
     indicators = indicators.copy()
     indicators["_name_"] = indicators.index.tolist()
 
     columns = {
+        # -------------------------------------------
+        "trending_words": [
+            "OCC",
+            "global_citations",
+            "local_citations",
+            "_name_",
+        ],
         # -------------------------------------------
         "OCCGC": [
             "OCC",
@@ -72,9 +77,7 @@ def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
             "OCC",
             "_name_",
         ],
-        # -------------------------------------------
     }[metric]
-
     ascending = [False, False, False, True]
 
     if is_trend_analysis:
@@ -82,8 +85,10 @@ def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
         ascending = [False] + ascending
 
     indicators = indicators.sort_values(columns, ascending=ascending)
-
     indicators = indicators.drop(columns=["_name_"])
+
+    # if is_trend_analysis:
+    #    indicators = indicators.drop(columns=["average_growth_rate"])
 
     return indicators
 
@@ -92,7 +97,8 @@ def sort_matrix_axis(
     matrix,
     axis,
     field,
-    # Database params:
+    #
+    # DATABASE PARAMS:
     root_dir,
     database,
     year_filter,

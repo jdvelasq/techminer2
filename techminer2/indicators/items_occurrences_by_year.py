@@ -40,6 +40,8 @@ from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
 # pylint: disable=too-many-arguments
 def items_occurrences_by_year(
+    #
+    # FUNCTION PARAMS:
     field,
     cumulative=False,
     #
