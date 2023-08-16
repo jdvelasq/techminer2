@@ -9,31 +9,25 @@
 Find Abbreviations 
 ===============================================================================
 
-Finds string abbreviations in the keywords of a thesaurus.
-
->>> from techminer2.refine import find_abbreviations
+>>> from techminer2.refine.words import find_abbreviations
 >>> find_abbreviations(
-...     #
-...     # THESAURUS PARAMS:
-...     thesaurus_file="descriptors.txt",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
---INFO-- The file data/regtech/descriptors.txt has been reordered.
+--INFO-- The file data/regtech/words.txt has been reordered.
 
 """
 import os.path
 
 import pandas as pd
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict, load_system_thesaurus_as_frame
+from ...thesaurus_lib import load_system_thesaurus_as_dict, load_system_thesaurus_as_frame
+
+THESAURUS_FILE = "words.txt"
 
 
 def find_abbreviations(
-    #
-    # THESAURUS PARAMS:
-    thesaurus_file="descriptors.txt",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -43,9 +37,7 @@ def find_abbreviations(
     :meta private:
     """
 
-    ###
-
-    file_path = os.path.join(root_dir, thesaurus_file)
+    file_path = os.path.join(root_dir, THESAURUS_FILE)
     frame = load_system_thesaurus_as_frame(file_path)
     frame["value"] = frame["value"].str.replace("_", " ")
 

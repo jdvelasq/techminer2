@@ -71,10 +71,10 @@ Import a scopus data file in the working directory.
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
 --INFO-- The data/regtech/countries.txt thesaurus file was created
---INFO-- Creating `descriptors.txt` from author/index keywords, and abstract/title nlp phrases
+--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
 --INFO-- The data/regtech/organizations.txt thesaurus file was created
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
---INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
 --INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
 --INFO-- data/regtech/databases/_references.zip: 909 imported records
@@ -158,9 +158,9 @@ import re
 import pandas as pd
 from textblob import TextBlob
 
-from ..refine.apply_countries_thesaurus import apply_countries_thesaurus
-from ..refine.apply_descriptors_thesaurus import apply_descriptors_thesaurus
-from ..refine.apply_organizations_thesaurus import apply_organizations_thesaurus
+from ..refine.countries.apply_countries_thesaurus import apply_countries_thesaurus
+from ..refine.organizations.apply_organizations_thesaurus import apply_organizations_thesaurus
+from ..refine.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
 
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
@@ -172,7 +172,13 @@ from .homogenize_local_references import homogenize_local_references
 KEYWORDS_MAX_LENGTH = 50
 
 
-def ingest_raw_data(root_dir="./", remove_raw_csv_files=True, **document_types):
+def ingest_raw_data(
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    remove_raw_csv_files=True,
+    **document_types,
+):
     """
     Import a Scopus data file in the working directory.
 
@@ -590,7 +596,7 @@ def ingest_raw_data(root_dir="./", remove_raw_csv_files=True, **document_types):
     create_organizations_thesaurus(root_dir)
 
     apply_countries_thesaurus(root_dir)
-    apply_descriptors_thesaurus(root_dir)
+    apply_words_thesaurus(root_dir)
     apply_organizations_thesaurus(root_dir)
 
     print("--INFO-- Process finished!!!")

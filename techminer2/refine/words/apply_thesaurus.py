@@ -6,19 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Descriptors Thesaurus 
+Apply Thesaurus 
 ===============================================================================
 
-Cleans the keywords columns using the `descriptors.txt` file.
 
-
->>> from techminer2.refine import apply_descriptors_thesaurus
->>> apply_descriptors_thesaurus(
+>>> from techminer2.refine.words import apply_thesaurus
+>>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
---INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
 
 """
 
@@ -28,25 +26,24 @@ import os.path
 
 import pandas as pd
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ...thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
-def apply_descriptors_thesaurus(
+def apply_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Clean all words columns in the records using a descriptors.txt.
-
+    """
     :meta private:
     """
 
     # pylint: disable=line-too-long
     print(
-        "--INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words"
+        "--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words"
     )
 
-    thesaurus_file = os.path.join(root_dir, "descriptors.txt")
+    thesaurus_file = os.path.join(root_dir, "words.txt")
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))

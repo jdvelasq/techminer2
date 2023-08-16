@@ -14,7 +14,7 @@ Create key-concepts thesaurus
 
 >>> import techminer2plus
 >>> techminer2plus.ingest.create_descriptors_thesaurus(root_dir=root_dir)
---INFO-- Creating `descriptors.txt` from author/index keywords, and abstract/title nlp phrases
+--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
 
 # pylint: disable=line-too-long
 """
@@ -29,11 +29,15 @@ from nltk.stem import PorterStemmer
 from ..thesaurus_lib import load_system_thesaurus_as_frame
 
 
-def create_descriptors_thesaurus(root_dir="./"):
+def create_descriptors_thesaurus(
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+):
     """Creates a thesaurus from raw keywords and title/abstact words."""
 
     print(
-        "--INFO-- Creating `descriptors.txt` from author/index keywords, and abstract/title nlp phrases"
+        "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
     )
 
     series = load_value_phrases_from_databases(root_dir=root_dir)
@@ -71,7 +75,7 @@ def create_descriptors_thesaurus(root_dir="./"):
 
     frame = frame.groupby("key_phrase", as_index=False).agg({"value_phrase": list})
     frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
-    file_path = pathlib.Path(root_dir) / "descriptors.txt"
+    file_path = pathlib.Path(root_dir) / "words.txt"
 
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in frame.iterrows():
@@ -103,7 +107,7 @@ def process_frame(frame):
 def load_existent_thesaurus(root_dir):
     """Load existence thesaurus."""
 
-    file_path = pathlib.Path(root_dir) / "descriptors.txt"
+    file_path = pathlib.Path(root_dir) / "words.txt"
 
     if not file_path.exists():
         return None

@@ -1,31 +1,26 @@
-.. _refine:
+.. _tm2.refine:
 
 Refine >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   apply_countries_thesaurus
-
+------
 
 .. toctree::
-   apply_descriptor_thesaurus
+    :maxdepth: 1
 
+    countries/__index__
 
-.. toctree::
-    apply_organizations_thesaurus
-
-
-.. toctree::    
-    find_abbreviations
-
+------
 
 .. toctree::
-    find_string
+    :maxdepth: 1
 
+    organizations/__index__
 
-.. toctree::    
-    fuzzy_search
+------
 
+.. toctree::
+    :maxdepth: 1
 
-.. toctree::    
-    misspelling_search
+    words/__index__
+

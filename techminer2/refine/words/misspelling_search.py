@@ -9,13 +9,8 @@
 Misspelling Search
 ===============================================================================
 
-Look for misspeling mistakes in the keywords of a thesaurus.
-
->>> from techminer2.refine import misspelling_search
+>>> from techminer2.refine.words import misspelling_search
 >>> misspelling_search(
-...     #
-...     # SEARCH PARAMS:
-...     thesaurus_file="descriptors.txt",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -29,13 +24,12 @@ from os.path import isfile, join
 from spellchecker import SpellChecker
 from textblob import TextBlob
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict
+from ...thesaurus_lib import load_system_thesaurus_as_dict
+
+THESAURUS_FILE = "words.txt"
 
 
 def misspelling_search(
-    #
-    # SEARCH PARAMS:
-    thesaurus_file="descriptors.txt",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -43,7 +37,7 @@ def misspelling_search(
     """Look for misspeling mistakes in the keywords of a thesaurus."""
 
     # Load the thesaurus file
-    th_file = join(root_dir, thesaurus_file)
+    th_file = join(root_dir, THESAURUS_FILE)
 
     if not isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")

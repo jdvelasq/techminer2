@@ -1,0 +1,34 @@
+.. _refine.words:
+
+Words >
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+------
+
+.. toctree::
+   apply_thesaurus
+
+------
+
+.. toctree::    
+    find_abbreviations
+
+------
+
+.. toctree::
+    find_string
+
+------
+
+.. toctree::    
+    fuzzy_search
+
+------
+
+.. toctree::    
+    misspelling_search
+
+------
+
+.. toctree::    
+    sort_thesaurus

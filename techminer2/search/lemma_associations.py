@@ -259,7 +259,7 @@ def lemma_associations(
 def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
-    thesaurus_file = os.path.join(root_dir, "descriptors.txt")
+    thesaurus_file = os.path.join(root_dir, "words.txt")
     thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
     return list(thesaurus.values())
 

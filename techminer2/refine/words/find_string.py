@@ -13,11 +13,10 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine import find_string
+>>> from techminer2.refine.words import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
-...     thesaurus_file="descriptors.txt",
 ...     contains='ARTIFICIAL_INTELLIGENCE',
 ...     startswith=None,
 ...     endswith=None,
@@ -25,20 +24,21 @@ Finds a string in the terms of a thesaurus.
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
---INFO-- The file data/regtech/descriptors.txt has been reordered.
+--INFO-- The file data/regtech/words.txt has been reordered.
 
 """
 import os.path
 
 import pandas as pd
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict
+from ...thesaurus_lib import load_system_thesaurus_as_dict
+
+THESAURUS_FILE = "words.txt"
 
 
 def find_string(
     #
     # SEARCH PARAMS:
-    thesaurus_file="descriptors.txt",
     contains=None,
     startswith=None,
     endswith=None,
@@ -51,7 +51,7 @@ def find_string(
     :meta private:
     """
 
-    th_file = os.path.join(root_dir, thesaurus_file)
+    th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 

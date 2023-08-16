@@ -10,15 +10,12 @@
 Fuzzy Search 
 ===============================================================================
 
-Finds a string in the terms of a thesaurus using fuzzy search.
 
-
->>> from techminer2.refine import fuzzy_search
+>>> from techminer2.refine.words import fuzzy_search
 >>> fuzzy_search(
 ...     #
 ...     # SEARCH PARAMS:
 ...     patterns='INTELIGEN',
-...     thesaurus_file="descriptors.txt",
 ...     threshold=70,
 ...     #
 ...     # DATABASE PARAMS:
@@ -35,14 +32,15 @@ import os.path
 import pandas as pd
 from fuzzywuzzy import process
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict
+from ...thesaurus_lib import load_system_thesaurus_as_dict
+
+THESAURUS_FILE = "words.txt"
 
 
 def fuzzy_search(
     #
     # SEARCH PARAMS:
     patterns,
-    thesaurus_file="descriptors.txt",
     threshold=80,
     #
     # DATABASE PARAMS:
@@ -50,7 +48,7 @@ def fuzzy_search(
 ):
     """Find the specified keyword and reorder the thesaurus file."""
 
-    th_file = os.path.join(root_dir, thesaurus_file)
+    th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 

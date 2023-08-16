@@ -1,4 +1,4 @@
-.. automodule:: techminer2.refine.misspelling_search
+.. automodule:: techminer2.refine.words.find_abbreviations
     :members:
     :undoc-members:
     :show-inheritance:
