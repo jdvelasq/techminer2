@@ -5,13 +5,13 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _co_occurrence_analysis.co_occurrence_matrix:
+.. _tm2.co_occurrence.co_occurrence_matrix:
 
 Co-occurrence Matrix 
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_analysis import co_occurrence_matrix
+>>> from techminer2.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 >>> matrix = co_occurrence_matrix(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -184,9 +184,10 @@ from dataclasses import dataclass
 
 from .._counters_lib import add_counters_to_frame_axis
 from .._filtering_lib import generate_custom_items
+from .._read_records import read_records
 from .._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
+from .._stopwords_lib import load_stopwords
 from ..format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..indicators.global_co_occurrence_matrix_list import global_co_occurrence_matrix_list
 from ..indicators.global_indicators_by_field import global_indicators_by_field
 
 
@@ -488,3 +489,44 @@ def __prompt(matrix, columns, rows):
         )
 
     return format_prompt_for_dataframes(main_text, matrix.to_markdown())
+
+
+def global_co_occurrence_matrix_list(
+    columns,
+    rows,
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
+):
+    """Creates a matrix list with all terms of the database."""
+
+    records = read_records(
+        # Database params:
+        root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    matrix_list = records[[columns]].copy()
+    matrix_list = matrix_list.rename(columns={columns: "column"})
+    matrix_list = matrix_list.assign(row=records[[rows]])
+
+    stopwords = load_stopwords(root_dir=root_dir)
+
+    for name in ["column", "row"]:
+        matrix_list[name] = matrix_list[name].str.split(";")
+        matrix_list = matrix_list.explode(name)
+        matrix_list[name] = matrix_list[name].str.strip()
+        matrix_list = matrix_list[~matrix_list[name].isin(stopwords)]
+
+    matrix_list["OCC"] = 1
+    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
+
+    matrix_list = matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
+
+    return matrix_list
