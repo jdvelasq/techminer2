@@ -158,8 +158,8 @@ import re
 import pandas as pd
 from textblob import TextBlob
 
-from ..refine.countries.apply_countries_thesaurus import apply_countries_thesaurus
-from ..refine.organizations.apply_organizations_thesaurus import apply_organizations_thesaurus
+from ..refine.countries.apply_thesaurus import apply_thesaurus as apply_thesaurus
+from ..refine.organizations.apply_thesaurus import apply_thesaurus as apply_thesaurus
 from ..refine.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
 
 # from ..reports import abstracts_report
@@ -595,9 +595,9 @@ def ingest_raw_data(
     create_descriptors_thesaurus(root_dir)
     create_organizations_thesaurus(root_dir)
 
-    apply_countries_thesaurus(root_dir)
+    apply_thesaurus(root_dir)
     apply_words_thesaurus(root_dir)
-    apply_organizations_thesaurus(root_dir)
+    apply_thesaurus(root_dir)
 
     print("--INFO-- Process finished!!!")
 

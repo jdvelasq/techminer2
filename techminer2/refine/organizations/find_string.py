@@ -13,23 +13,23 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.words import find_string
+>>> from techminer2.refine.organizations import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
-...     contains='ARTIFICIAL_INTELLIGENCE',
+...     contains='ABES',
 ...     startswith=None,
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
---INFO-- The file data/regtech/words.txt has been reordered.
+--INFO-- The file data/regtech/organizations.txt has been reordered.
 
 """
 from .._find_string import _find_string
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "organizations.txt"
 
 
 def find_string(

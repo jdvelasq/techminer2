@@ -13,7 +13,7 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.words import find_string
+>>> from techminer2.refine.references import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
@@ -29,7 +29,7 @@ Finds a string in the terms of a thesaurus.
 """
 from .._find_string import _find_string
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "references.txt"
 
 
 def find_string(

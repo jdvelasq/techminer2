@@ -3,6 +3,18 @@
 Countries >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+------
+
 .. toctree::
-   apply_countries_thesaurus
+   apply_thesaurus
+
+------
+
+.. toctree::
+   find_string
+
+------
+
+.. toctree::
+   sort_thesaurus
 

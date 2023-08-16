@@ -3,6 +3,17 @@
 Organizations >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   apply_organizations_thesaurus
+-----
 
+.. toctree::
+   apply_thesaurus
+
+-----
+
+.. toctree::
+   find_string
+
+-----
+
+.. toctree::
+   sort_thesaurus

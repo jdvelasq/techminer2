@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Countries Thesaurus 
+Apply Thesaurus 
 ===============================================================================
 
 Cleans the country columns using the file countries.txt, located in
 the same directory as the documents.csv file.
 
 
->>> from techminer2.refine import apply_countries_thesaurus
->>> apply_countries_thesaurus(
+>>> from techminer2.refine.countries import apply_thesaurus
+>>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -33,7 +33,7 @@ import pandas as pd
 from ...thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
-def apply_countries_thesaurus(
+def apply_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",
