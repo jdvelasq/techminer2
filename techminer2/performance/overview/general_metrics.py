@@ -14,7 +14,7 @@ General Metrics
 >>> info = general_metrics(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="data/karla/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
@@ -798,6 +798,6 @@ def main_metrics_prompt(
         "most 100 words. "
     )
 
-    table_text = data_frame.to_markdown()
+    table_text = data_frame.dropna().to_markdown()
 
     return format_prompt_for_dataframes(main_text, table_text)

@@ -33,6 +33,39 @@ Performance Metrics
 ...     custom_items=None,
 ...     #
 ...     # DATABASE PARAMS:
+...     root_dir="data/karla/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+...     #
+...     authors=['Lau HC', 'Handoko SD'],
+... )
+>>> print(metrics.df_.head().to_markdown())
+
+
+>>> from techminer2.performance import performance_metrics
+>>> metrics = performance_metrics(
+...     #
+...     # ITEMS PARAMS:
+...     field='author_keywords',
+...     metric='OCCGC',
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     field_label=None,
+...     metric_label=None,
+...     textfont_size=10,
+...     marker_size=7,
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # ITEM FILTERS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),

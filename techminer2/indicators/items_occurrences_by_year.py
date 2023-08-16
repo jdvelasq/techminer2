@@ -33,7 +33,7 @@ Becker M              0     0     0     0     1     0     0     0
 
 
 """
-
+from .._read_records import read_records
 from .._stopwords_lib import load_stopwords
 from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
@@ -95,6 +95,20 @@ def items_occurrences_by_year(
 
     stopwords = load_stopwords(root_dir=root_dir)
     indicators_by_year = indicators_by_year.drop(stopwords, axis=0, errors="ignore")
+
+    records = read_records(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    year_min = records.year.min()
+    year_max = records.year.max()
+    for year in range(year_min, year_max + 1):
+        if year not in indicators_by_year.columns:
+            indicators_by_year[year] = 0
 
     if cumulative:
         indicators_by_year = indicators_by_year.cumsum(axis=1)
