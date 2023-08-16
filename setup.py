@@ -62,106 +62,264 @@ setup(
         "techminer2._files",
         #
         # ======================================================================
-        "techminer2.co_occurrence_analysis",
-        "techminer2.co_occurrence_analysis.associations",
-        "techminer2.co_occurrence_analysis.associations.graphs",
-        # "techminer2.co_occurrence_analysis.associations.tables",
-        "techminer2.co_occurrence_analysis.graphs",
-        "techminer2.co_occurrence_analysis.word_pairs",
+        "techminer2.bibliographic_coupling",
+        "techminer2.bibliographic_coupling.authors",
+        "techminer2.bibliographic_coupling.countries",
+        "techminer2.bibliographic_coupling.documents",
+        "techminer2.bibliographic_coupling.sources",
         #
         # ======================================================================
-        # "techminer2.co_word_analysis",
+        "techminer2.citation",
+        #
+        "techminer2.citation.most_cited_documents",
+        #
+        "techminer2.citation.network",
+        "techminer2.citation.network.authors",
+        "techminer2.citation.network.countries",
+        "techminer2.citation.network.documents",
+        "techminer2.citation.network.organizations",
+        "techminer2.citation.network.sources",
         #
         # ======================================================================
-        "techminer2.correlation_analysis",
+        "techminer2.co_authorship",
+        #
+        "techminer2.co_authorship.associations",
+        "techminer2.co_authorship.associations.authors",
+        "techminer2.co_authorship.associations.countries",
+        "techminer2.co_authorship.associations.organizations",
+        #
+        "techminer2.co_authorship.factor",
+        #
+        "techminer2.co_authorship.factor.pca",
+        #
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix",
+        #
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors",
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.hierarchical",
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.kmeans",
+        #
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.countries",
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.countries.hierarchical",
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.countries.kmeans",
+        #
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.organizations",
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.organizations.hierarchical",
+        "techminer2.co_authorship.factor.pca.co_occurrence_matrix.organizations.kmeans",
+        #
+        "techminer2.co_authorship.factor.pca.tfidf",
+        #
+        "techminer2.co_authorship.factor.pca.tfidf.authors",
+        "techminer2.co_authorship.factor.pca.tfidf.authors.hierarchical",
+        "techminer2.co_authorship.factor.pca.tfidf.authors.kmeans",
+        #
+        "techminer2.co_authorship.factor.pca.tfidf.countries",
+        "techminer2.co_authorship.factor.pca.tfidf.countries.hierarchical",
+        "techminer2.co_authorship.factor.pca.tfidf.countries.kmeans",
+        #
+        "techminer2.co_authorship.factor.pca.tfidf.organizations",
+        "techminer2.co_authorship.factor.pca.tfidf.organizations.hierarchical",
+        "techminer2.co_authorship.factor.pca.tfidf.organizations.kmeans",
+        #
+        "techminer2.co_authorship.factor.svd",
+        #
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix",
+        #
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.authors",
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.authors.hierarchical",
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.authors.kmeans",
+        #
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.countries",
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.countries.hierarchical",
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.countries.kmeans",
+        #
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.organizations",
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.organizations.hierarchical",
+        "techminer2.co_authorship.factor.svd.co_occurrence_matrix.organizations.kmeans",
+        #
+        "techminer2.co_authorship.factor.svd.tfidf",
+        #
+        "techminer2.co_authorship.factor.svd.tfidf.authors",
+        "techminer2.co_authorship.factor.svd.tfidf.authors.hierarchical",
+        "techminer2.co_authorship.factor.svd.tfidf.authors.kmeans",
+        #
+        "techminer2.co_authorship.factor.svd.tfidf.countries",
+        "techminer2.co_authorship.factor.svd.tfidf.countries.hierarchical",
+        "techminer2.co_authorship.factor.svd.tfidf.countries.kmeans",
+        #
+        "techminer2.co_authorship.factor.svd.tfidf.organizations",
+        "techminer2.co_authorship.factor.svd.tfidf.organizations.hierarchical",
+        "techminer2.co_authorship.factor.svd.tfidf.organizations.kmeans",
+        #
+        "techminer2.co_authorship.network",
+        #
+        "techminer2.co_authorship.network.authors",
+        "techminer2.co_authorship.network.countries",
+        "techminer2.co_authorship.network.organizations",
         #
         # ======================================================================
-        "techminer2.emergence_analysis",
+        "techminer2.co_citation",
+        #
+        "techminer2.co_citation.cited_authors",
+        "techminer2.co_citation.cited_references",
+        "techminer2.co_citation.cited_sources",
         #
         # ======================================================================
-        "techminer2.factor_analysis",
-        "techminer2.factor_analysis.co_occurrences",
-        "techminer2.factor_analysis.co_occurrences.kernel_pca",
-        "techminer2.factor_analysis.co_occurrences.pca",
-        "techminer2.factor_analysis.co_occurrences.svd",
-        "techminer2.factor_analysis.tfidf",
-        "techminer2.factor_analysis.tfidf.kernel_pca",
-        "techminer2.factor_analysis.tfidf.pca",
-        "techminer2.factor_analysis.tfidf.svd",
+        "techminer2.co_occurrence",
+        #
+        "techminer2.co_occurrence.associations",
+        #
+        "techminer2.co_occurrence.associations.abstract_nlp_phrases",
+        "techminer2.co_occurrence.associations.author_keywords",
+        "techminer2.co_occurrence.associations.descriptors",
+        "techminer2.co_occurrence.associations.index_keywords",
+        "techminer2.co_occurrence.associations.keywords",
+        "techminer2.co_occurrence.associations.nlp_phrases",
+        "techminer2.co_occurrence.associations.title_nlp_phrases",
+        #
+        "techminer2.co_occurrence.factor",
+        #
+        "techminer2.co_occurrence.factor.pca",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.abstract_nlp_phrases",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.abstract_nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.abstract_nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.author_keywords",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.author_keywords.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.author_keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.descriptors",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.descriptors.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.descriptors.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.index_keywords",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.index_keywords.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.index_keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.keywords",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.keywords.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.nlp_phrases",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.title_nlp_phrases",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.title_nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.pca.co_occurrence_matrix.title_nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.abstract_nlp_phrases",
+        "techminer2.co_occurrence.factor.pca.tfidf.abstract_nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.abstract_nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.author_keywords",
+        "techminer2.co_occurrence.factor.pca.tfidf.author_keywords.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.author_keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.descriptors",
+        "techminer2.co_occurrence.factor.pca.tfidf.descriptors.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.descriptors.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.index_keywords",
+        "techminer2.co_occurrence.factor.pca.tfidf.index_keywords.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.index_keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.keywords",
+        "techminer2.co_occurrence.factor.pca.tfidf.keywords.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.nlp_phrases",
+        "techminer2.co_occurrence.factor.pca.tfidf.nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.pca.tfidf.title_nlp_phrases",
+        "techminer2.co_occurrence.factor.pca.tfidf.title_nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.pca.tfidf.title_nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.abstract_nlp_phrases",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.abstract_nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.abstract_nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.author_keywords",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.author_keywords.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.author_keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.descriptors",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.descriptors.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.descriptors.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.index_keywords",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.index_keywords.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.index_keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.keywords",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.keywords.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.keywords.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.nlp_phrases",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.title_nlp_phrases",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.title_nlp_phrases.hierarchical",
+        "techminer2.co_occurrence.factor.svd.co_occurrence_matrix.title_nlp_phrases.kmeans",
+        #
+        "techminer2.co_occurrence.network",
+        #
+        "techminer2.co_occurrence.network.co_occurrence",
+        "techminer2.co_occurrence.network.co_occurrence.abstract_nlp_phrases",
+        "techminer2.co_occurrence.network.co_occurrence.author_keywords",
+        "techminer2.co_occurrence.network.co_occurrence.descriptors",
+        "techminer2.co_occurrence.network.co_occurrence.index_keywords",
+        "techminer2.co_occurrence.network.co_occurrence.keywords",
+        "techminer2.co_occurrence.network.co_occurrence.nlp_phrases",
+        "techminer2.co_occurrence.network.co_occurrence.title_nlp_phrases",
+        #
+        "techminer2.co_occurrence.network.thematic_map.abstract_nlp_phrases",
+        "techminer2.co_occurrence.network.thematic_map.author_keywords",
+        "techminer2.co_occurrence.network.thematic_map.descriptors",
+        "techminer2.co_occurrence.network.thematic_map.index_keywords",
+        "techminer2.co_occurrence.network.thematic_map.keywords",
+        "techminer2.co_occurrence.network.thematic_map.nlp_phrases",
+        "techminer2.co_occurrence.network.thematic_map.title_nlp_phrases",
+        #
+        # ======================================================================
+        "techminer2.indicators",
         #
         # ======================================================================
         "techminer2.ingest",
         #
         # ======================================================================
-        "techminer2.network_analysis",
+        "techminer2.performance",
         #
-        "techminer2.network_analysis.bibliographic_coupling",
+        "techminer2.performance.contributors",
         #
-        "techminer2.network_analysis.bibliographic_coupling.authors",
-        "techminer2.network_analysis.bibliographic_coupling.countries",
-        "techminer2.network_analysis.bibliographic_coupling.documents",
-        "techminer2.network_analysis.bibliographic_coupling.organizations",
-        "techminer2.network_analysis.bibliographic_coupling.sources",
+        "techminer2.performance.contributors.authors",
+        "techminer2.performance.contributors.countries",
+        "techminer2.performance.contributors.organizations",
+        "techminer2.performance.contributors.sources",
         #
-        "techminer2.network_analysis.citation",
+        "techminer2.performance.overview",
         #
-        "techminer2.network_analysis.citation.authors",
-        "techminer2.network_analysis.citation.countries",
-        "techminer2.network_analysis.citation.documents",
-        "techminer2.network_analysis.citation.organizations",
-        "techminer2.network_analysis.citation.publications",
-        "techminer2.network_analysis.citation.references",
-        "techminer2.network_analysis.citation.sources",
+        "techminer2.performance.plots",
         #
-        "techminer2.network_analysis.co_authorship",
+        "techminer2.performance.words",
         #
-        "techminer2.network_analysis.co_authorship.authors",
-        "techminer2.network_analysis.co_authorship.countries",
-        "techminer2.network_analysis.co_authorship.organizations",
-        #
-        # "techminer2.network_analysis.co_citation",
-        #
-        # "techminer2.network_analysis.co_citation.cited_authors",
-        # "techminer2.network_analysis.co_citation.cited_references",
-        # "techminer2.network_analysis.co_citation.cited_sources",
-        #
-        "techminer2.network_analysis.co_occurrence",
-        "techminer2.network_analysis.co_occurrence.abstract_nlp_phrases",
-        "techminer2.network_analysis.co_occurrence.author_keywords",
-        "techminer2.network_analysis.co_occurrence.descriptors",
-        "techminer2.network_analysis.co_occurrence.index_keywords",
-        "techminer2.network_analysis.co_occurrence.keywords",
-        "techminer2.network_analysis.co_occurrence.nlp_phrases",
-        "techminer2.network_analysis.co_occurrence.title_nlp_phrases",
-        #
-        "techminer2.network_analysis.thematic_map",
-        "techminer2.network_analysis.thematic_map.abstract_nlp_phrases",
-        "techminer2.network_analysis.thematic_map.author_keywords",
-        "techminer2.network_analysis.thematic_map.descriptors",
-        "techminer2.network_analysis.thematic_map.index_keywords",
-        "techminer2.network_analysis.thematic_map.keywords",
-        "techminer2.network_analysis.thematic_map.nlp_phrases",
-        "techminer2.network_analysis.thematic_map.title_nlp_phrases",
-        #
-        # ======================================================================
-        "techminer2.performance_analysis",
-        #
-        "techminer2.performance_analysis.fields",
-        "techminer2.performance_analysis.fields.authors",
-        "techminer2.performance_analysis.fields.countries",
-        "techminer2.performance_analysis.fields.organizations",
-        "techminer2.performance_analysis.fields.sources",
-        #
-        "techminer2.performance_analysis.graphs",
-        #
-        "techminer2.performance_analysis.words",
-        "techminer2.performance_analysis.words.abstract_nlp_phrases",
-        "techminer2.performance_analysis.words.author_keywords",
-        "techminer2.performance_analysis.words.descriptors",
-        "techminer2.performance_analysis.words.index_keywords",
-        "techminer2.performance_analysis.words.keywords",
-        "techminer2.performance_analysis.words.nlp_phrases",
-        "techminer2.performance_analysis.words.title_nlp_phrases",
+        "techminer2.performance.words.abstract_nlp_phrases",
+        "techminer2.performance.words.author_keywords",
+        "techminer2.performance.words.descriptors",
+        "techminer2.performance.words.index_keywords",
+        "techminer2.performance.words.keywords",
+        "techminer2.performance.words.nlp_phrases",
+        "techminer2.performance.words.title_nlp_phrases",
         #
         # ======================================================================
         "techminer2.refine",
@@ -169,18 +327,6 @@ setup(
         # ======================================================================
         "techminer2.search",
         #
-        # ======================================================================
-        # "techminer2.techminer",
-        #
-        # "techminer2.techminer.metrics",
-        # "techminer2.techminer.reports",
-        # "techminer2.techminer.tools",
-        #
-        # ======================================================================
-        "techminer2.thematic_analysis",
-        #
-        # ======================================================================
-        "techminer2.time_analysis",
     ],
     package_dir={"techminer2": "techminer2"},
     include_package_data=True,
