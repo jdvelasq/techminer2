@@ -6,16 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-.. _citation_analysis.most_global_cited_references:
+.. _tm2.citation.documentsmost_global_cited_references:
 
 Most Global Cited References
 ===============================================================================
 
 
->>> from techminer2.citation_analysis import most_global_cited_references
->>> documents = most_global_cited_references(
+>>> from techminer2.citation.documents import most_cited_documents
+>>> documents = most_cited_documents(
 ...     #
 ...     # FUNCTION PARAMS:
+...     metric="global_citations",
 ...     top_n=20,
 ...     #
 ...     # CHART PARAMS:
@@ -37,11 +38,11 @@ Most Global Cited References
 --INFO-- The file 'data/regtech/reports/most_global_cited_references__prompt.txt' was created.
 
 
->>> documents.fig_.write_html("sphinx/_static/citation_analysis/most_global_cited_references.html")
+>>> documents.fig_.write_html("sphinx/_static/citation/documents/most_global_cited_references.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/citation_analysis/most_global_cited_references.html" 
+    <iframe src="../../../../_static/citation/documents/most_global_cited_references.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -56,55 +57,3 @@ Most Global Cited References
 
 
 """
-
-
-def most_global_cited_references(
-    #
-    # FUNCTION PARAMS:
-    top_n=None,
-    #
-    # CHART PARAMS:
-    title="Most Global Cited References",
-    field_label=None,
-    metric_label=None,
-    textfont_size=10,
-    marker_size=7,
-    line_width=1.5,
-    yshift=4,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="references",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
-):
-    """Plots the most local cited documents in the main collection.
-
-    :meta private:
-    """
-
-    from .most_cited_documents import most_cited_documents
-
-    return most_cited_documents(
-        #
-        # FUNCTION PARAMS:
-        metric="global_citations",
-        top_n=top_n,
-        #
-        # CHART PARAMS:
-        title=title,
-        field_label=field_label,
-        metric_label=metric_label,
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_width=line_width,
-        yshift=yshift,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )

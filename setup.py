@@ -71,7 +71,7 @@ setup(
         # ======================================================================
         "techminer2.citation",
         #
-        "techminer2.citation.most_cited_documents",
+        "techminer2.citation.documents",
         #
         "techminer2.citation.network",
         "techminer2.citation.network.authors",
