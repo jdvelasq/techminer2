@@ -1,10 +1,13 @@
-.. _performance.organizations:
+.. _tm2.performance.organizations:
 
 Organizations >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
    performance_metrics
+
+.. toctree::
+   collaboration_metrics   
 
 .. toctree::
    most_frequent

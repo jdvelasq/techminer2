@@ -3,14 +3,15 @@
 Countries >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   corresponding_authors_countries
-
-.. toctree::
-   countries_scientific_production
 
 .. toctree::
    performance_metrics
+
+.. toctree::
+   collaboration_metrics
+
+.. toctree::
+   countries_scientific_production
 
 .. toctree::
    most_frequent
