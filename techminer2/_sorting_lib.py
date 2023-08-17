@@ -22,6 +22,14 @@ def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
 
     columns = {
         # -------------------------------------------
+        "average_growth_rate": [
+            "average_growth_rate",
+            indicators.columns[2],
+            "average_docs_per_year",
+            "percentage_docs_last_year",
+            "_name_",
+        ],
+        # -------------------------------------------
         "trending_words": [
             "OCC",
             "global_citations",
@@ -78,11 +86,16 @@ def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
             "_name_",
         ],
     }[metric]
-    ascending = [False, False, False, True]
+    ascending = [False] * (len(columns) - 1) + [True]
 
     if is_trend_analysis:
-        columns = ["average_growth_rate"] + columns
-        ascending = [False] + ascending
+        columns = [
+            "percentage_between",
+            "average_growth_rate",
+            "average_docs_per_year",
+            "percentage_docs_last_year",
+        ] + columns
+        ascending = [False, False, False, False] + ascending
 
     indicators = indicators.sort_values(columns, ascending=ascending)
     indicators = indicators.drop(columns=["_name_"])

@@ -247,12 +247,20 @@ def global_indicators_by_field(
         indicators.loc[between_occ.index, between] = between_occ
         indicators.loc[before_occ.index, before] = before_occ
 
+        indicators = indicators.assign(
+            percentage_between=(100 * indicators[between].copy() / indicators["OCC"].copy()).round(
+                2
+            )
+        )
+
+        #
         # sort the columns
         columns = ["OCC", before, between] + [
             col for col in indicators.columns if col not in ["OCC", before, between]
         ]
         indicators = indicators[columns]
 
+        #
         # selects the columns of interest
         items_by_year = items_by_year.loc[:, [year_columns[0] - 1] + year_columns]
 

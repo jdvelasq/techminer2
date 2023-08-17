@@ -335,9 +335,11 @@ def ___matrix(
 
             custom_items = generate_custom_items(
                 indicators=indicators,
+                metric="OCC",
                 top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=False,
             )
 
         raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(custom_items)]

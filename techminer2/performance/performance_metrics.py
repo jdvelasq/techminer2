@@ -32,38 +32,9 @@ Performance Metrics
 ...     gc_range=(None, None),
 ...     custom_items=None,
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="data/karla/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     #
-...     authors=['Lau HC', 'Handoko SD'],
-... )
->>> print(metrics.df_.head().to_markdown())
-
-
->>> from techminer2.performance import performance_metrics
->>> metrics = performance_metrics(
-...     #
-...     # ITEMS PARAMS:
-...     field='author_keywords',
-...     metric='OCCGC',
-...     #
-...     # CHART PARAMS:
-...     title=None,
-...     field_label=None,
-...     metric_label=None,
-...     textfont_size=10,
-...     marker_size=7,
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
+...     # TREND ANALYSIS:
+...     time_window=2,
+...     is_trend_analysis=False,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -133,6 +104,62 @@ Table:
     <iframe src="../../../../_static/performance/performance_metrics.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
+    
+>>> from techminer2.performance import performance_metrics
+>>> metrics = performance_metrics(
+...     #
+...     # ITEMS PARAMS:
+...     field='author_keywords',
+...     metric='OCC',
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     field_label=None,
+...     metric_label=None,
+...     textfont_size=10,
+...     marker_size=7,
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # ITEM FILTERS:
+...     top_n=20,
+...     occ_range=(2, 4),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # TREND ANALYSIS:
+...     time_window=2,
+...     is_trend_analysis=True,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+>>> print(metrics.df_.to_markdown())
+| author_keywords         |   rank_occ |   OCC |   percentage_between |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   Between 2022-2023 |
+|:------------------------|-----------:|------:|---------------------:|----------------------:|------------------------:|----------------------------:|--------------------:|
+| REPORTING               |         25 |     2 |               100    |                   0   |                     1   |                    0.5      |                   2 |
+| SUPTECH                 |         13 |     3 |                66.67 |                   0   |                     1   |                    0.333333 |                   2 |
+| FINANCIAL_REGULATION    |          8 |     4 |                50    |                   0   |                     1   |                    0.25     |                   2 |
+| DATA_PROTECTION         |         15 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| CHARITYTECH             |         17 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| ENGLISH_LAW             |         18 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| TECHNOLOGY              |         23 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| FINANCE                 |         24 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| RISK_MANAGEMENT         |         10 |     3 |                33.33 |                   0   |                     0.5 |                    0.166667 |                   1 |
+| INNOVATION              |         11 |     3 |                33.33 |                  -0.5 |                     0.5 |                    0.166667 |                   1 |
+| FINANCIAL_SERVICES      |          7 |     4 |                25    |                   0   |                     0.5 |                    0.125    |                   1 |
+| ARTIFICIAL_INTELLIGENCE |          9 |     4 |                25    |                   0   |                     0.5 |                    0.125    |                   1 |
+| SEMANTIC_TECHNOLOGIES   |         14 |     2 |                 0    |                   0   |                     0   |                    0        |                   0 |
+| SMART_CONTRACTS         |         16 |     2 |                 0    |                   0   |                     0   |                    0        |                   0 |
+| BLOCKCHAIN              |         12 |     3 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| ACCOUNTABILITY          |         19 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| DATA_PROTECTION_OFFICER |         20 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| GDPR                    |         21 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| SANDBOXES               |         22 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+
 
 """
 from dataclasses import dataclass
@@ -171,7 +198,6 @@ def performance_metrics(
     #
     # TREND ANALYSIS:
     time_window=2,
-    top_n_trend=200,
     is_trend_analysis=False,
     #
     # DATABASE PARAMS:
@@ -187,7 +213,7 @@ def performance_metrics(
     #
     # MAIN CODE:
     #
-    data_frame = _table(
+    data_frame = ___table(
         #
         # ITEMS PARAMS:
         field=field,
@@ -201,7 +227,6 @@ def performance_metrics(
         #
         # TREND ANALYSIS:
         time_window=time_window,
-        top_n_trend=top_n_trend,
         is_trend_analysis=is_trend_analysis,
         #
         # DATABASE PARAMS:
@@ -226,9 +251,6 @@ def performance_metrics(
     )
 
     if metric == "word_trends":
-        metric = "OCC"
-
-    if metric == "trending_words":
         metric = "OCC"
 
     fig = _fig(
@@ -257,7 +279,7 @@ def performance_metrics(
     return Results()
 
 
-def _table(
+def ___table(
     #
     # ITEMS PARAMS:
     field,
@@ -271,7 +293,6 @@ def _table(
     #
     # TREND ANALYSIS:
     time_window,
-    top_n_trend,
     is_trend_analysis,
     #
     # DATABASE PARAMS:
@@ -303,33 +324,33 @@ def _table(
 
     #
     # Sorts the performance metrics table with all indicators by the metric
-    data_frame = sort_indicators_by_metric(data_frame, metric, is_trend_analysis=False)
-
-    if is_trend_analysis is False:
-        top_n_trend = top_n
+    # data_frame = sort_indicators_by_metric(data_frame, metric, is_trend_analysis=False)
 
     if custom_items is None:
+        #
         if metric == "OCCGC":
+            #
+            # In this case not is possibe to use trend_analysis
+            #
+            # Selects the top_n items by OCC
             custom_items_occ = generate_custom_items(
-                indicators=sort_indicators_by_metric(
-                    data_frame,
-                    "OCC",
-                    is_trend_analysis=False,
-                ),
-                top_n=top_n_trend,
+                indicators=data_frame,
+                metric="OCC",
+                top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=False,
             )
 
+            #
+            # Selects the top_n items by GCS
             custom_items_gc = generate_custom_items(
-                indicators=sort_indicators_by_metric(
-                    data_frame,
-                    "global_citations",
-                    is_trend_analysis=False,
-                ),
-                top_n=top_n_trend,
+                indicators=data_frame,
+                metric="global_citations",
+                top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=False,
             )
 
             custom_items = custom_items_occ[:]
@@ -340,16 +361,15 @@ def _table(
             # Default custom items selection
             custom_items = generate_custom_items(
                 indicators=data_frame,
-                top_n=top_n_trend,
+                metric=metric,
+                top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=is_trend_analysis,
             )
 
     data_frame = data_frame[data_frame.index.isin(custom_items)]
-
-    if is_trend_analysis is True:
-        data_frame = sort_indicators_by_metric(data_frame, metric, is_trend_analysis=True)
-        data_frame = data_frame.head(top_n)
+    data_frame = sort_indicators_by_metric(data_frame, metric, is_trend_analysis)
 
     return data_frame
 
@@ -357,15 +377,6 @@ def _table(
 def _select_columns(data_frame, metric, is_trend_analysis):
     #
     #
-    # if metric == "trending_words":
-    #     columns = [
-    #         "OCC",
-    #         data_frame.columns[3],
-    #         data_frame.columns[4],
-    #         "average_growth_rate",
-    #         "average_docs_per_year",
-    #         "percentage_docs_last_year",
-    #     ]
     if metric == "trending_words":
         columns = [
             "rank_occ",
@@ -425,16 +436,20 @@ def _select_columns(data_frame, metric, is_trend_analysis):
     if metric in ["h_index", "g_index", "m_index"]:
         columns = ["h_index", "g_index", "m_index"]
 
-    # if is_trend_analysis and metric not in [
-    #     "average_growth_rate",
-    #     "average_docs_per_year",
-    #     "percentage_docs_last_year",
-    # ]:
-    #     columns += [
-    #         "average_growth_rate",
-    #         "average_docs_per_year",
-    #         "percentage_docs_last_year",
-    #     ]
+    if is_trend_analysis and "percentage_between" not in columns:
+        columns += ["percentage_between"]
+
+    if is_trend_analysis and "average_growth_rate" not in columns:
+        columns += ["average_growth_rate"]
+
+    if is_trend_analysis and "average_docs_per_year" not in columns:
+        columns += ["average_docs_per_year"]
+
+    if is_trend_analysis and "percentage_docs_last_year" not in columns:
+        columns += ["percentage_docs_last_year"]
+
+    if is_trend_analysis and data_frame.columns[4] not in columns:
+        columns += [data_frame.columns[4]]
 
     return data_frame[columns]
 

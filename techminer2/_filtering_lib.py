@@ -1,4 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Functions for item selection.
 
@@ -22,9 +28,7 @@ def filter_custom_items_from_column(dataframe, col_name, custom_items):
     """Filters custom items from a dataframe column."""
 
     custom_items = [
-        item
-        for item in custom_items
-        if item in dataframe[col_name].drop_duplicates().tolist()
+        item for item in custom_items if item in dataframe[col_name].drop_duplicates().tolist()
     ]
 
     return custom_items
@@ -32,9 +36,11 @@ def filter_custom_items_from_column(dataframe, col_name, custom_items):
 
 def generate_custom_items(
     indicators,
+    metric,
     top_n,
     occ_range,
     gc_range,
+    is_trend_analysis,
 ):
     """Generates custom topics from the index techminer indicators dataframe.
 
@@ -49,6 +55,8 @@ def generate_custom_items(
         A list of items.
 
     """
+
+    from ._sorting_lib import sort_indicators_by_metric
 
     def filter_by_top_n(indicators, top_n):
         """Returns the table of indicators filtered by top_n."""
@@ -68,13 +76,9 @@ def generate_custom_items(
         """Returns the table of indicators filtered by global citations range."""
 
         if gc_range[0] is not None:
-            indicators = indicators[
-                indicators["global_citations"] >= gc_range[0]
-            ]
+            indicators = indicators[indicators["global_citations"] >= gc_range[0]]
         if gc_range[1] is not None:
-            indicators = indicators[
-                indicators["global_citations"] <= gc_range[1]
-            ]
+            indicators = indicators[indicators["global_citations"] <= gc_range[1]]
         return indicators
 
     #
@@ -84,12 +88,27 @@ def generate_custom_items(
     # the requirements of ScientoPy for calculating the top trending items.
     #
 
+    #
+    # 1. Filters the dataframe by OCC y GCS ranges.
+    #    With this step, items with very low frequency are ignored.
     if gc_range is not None:
         indicators = filter_by_gc_range(indicators, gc_range)
 
     if occ_range is not None:
         indicators = filter_by_occ_range(indicators, occ_range)
 
+    #
+    # 2. In trend analysis, the dataframe is sorted by the AGR;
+    #    otherwise, it is sorted by the metric.
+    if is_trend_analysis:
+        indicators = sort_indicators_by_metric(
+            indicators, "average_growth_rate", is_trend_analysis=True
+        )
+    else:
+        indicators = sort_indicators_by_metric(indicators, metric, is_trend_analysis=False)
+
+    #
+    # 3. Filters the dataframe by top_n.
     if top_n is not None:
         indicators = filter_by_top_n(indicators, top_n)
 

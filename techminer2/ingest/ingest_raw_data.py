@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _ingest.ingest_raw_data:
+.. _tm2.ingest.ingest_raw_data:
 
 Ingest Raw Data
 ===============================================================================
@@ -156,16 +156,18 @@ import pathlib
 import re
 
 import pandas as pd
+import requests
+from nltk.stem import PorterStemmer
 from textblob import TextBlob
 
-from ..refine.countries.apply_thesaurus import apply_thesaurus as apply_thesaurus
-from ..refine.organizations.apply_thesaurus import apply_thesaurus as apply_thesaurus
+from ..refine.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
+from ..refine.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
 from ..refine.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
 
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
-from .create_descriptors_thesaurus import create_descriptors_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
+from .create_words_thesaurus import create_words_thesaurus
 from .homogenize_global_references import homogenize_global_references
 from .homogenize_local_references import homogenize_local_references
 
@@ -592,12 +594,12 @@ def ingest_raw_data(
     #
     #
     create_countries_thesaurus(root_dir)
-    create_descriptors_thesaurus(root_dir)
+    create_words_thesaurus(root_dir)
     create_organizations_thesaurus(root_dir)
 
-    apply_thesaurus(root_dir)
+    apply_countries_thesaurus(root_dir)
     apply_words_thesaurus(root_dir)
-    apply_thesaurus(root_dir)
+    apply_organizations_thesaurus(root_dir)
 
     print("--INFO-- Process finished!!!")
 
@@ -814,29 +816,53 @@ def rename_scopus_columns_in_database_files(root_dir):
 
 
 def filter_nlp_phrases(root_dir):
-    """Filter nlp phrases in abstract and title
-
+    """
     :meta private:
     """
 
+    def select_nlp_phrases_by_frequency(nlp_phrases):
+        #
+        # Transforms the pandas series to a data frame
+        nlp_phrases = nlp_phrases.copy()
+        nlp_phrases = nlp_phrases.to_frame()
+        nlp_phrases.columns = ["nlp_phrase"]
+
+        #
+        # Computes the fingerprint key
+        stemmer = PorterStemmer()
+
+        nlp_phrases["fingerprint"] = nlp_phrases["nlp_phrase"].str.replace("_", " ")
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].str.split(" ")
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(
+            lambda x: [stemmer.stem(w) for w in x]
+        )
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(set)
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(sorted)
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(" ".join)
+        nlp_phrases["OCC"] = 1
+
+        #
+        # Computes the occurrences and select terms with occ > 2
+        nlp_phrases["appareances"] = nlp_phrases.groupby("fingerprint")["OCC"].transform("sum")
+        nlp_phrases = nlp_phrases.loc[nlp_phrases["appareances"] > 2, :]
+
+        #
+        # Returns a list of unique terms
+        return nlp_phrases.nlp_phrase.drop_duplicates().copy()
+
     def get_nlp_phrases(column):
+        #
+        # Get nlp phrase appareances from all files
         databases_dir = pathlib.Path(root_dir) / "databases"
         files = list(databases_dir.glob("_*.zip"))
-        nlp_phrases = set()
+        nlp_phrases = pd.Series()
         for file in files:
             data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if column not in data.columns:
                 continue
             file_nlp_phrases = data[column].dropna()
-            file_nlp_phrases = (
-                file_nlp_phrases.dropna()
-                .str.split(";")
-                .explode()
-                .str.strip()
-                .drop_duplicates()
-                .to_list()
-            )
-            nlp_phrases.update(file_nlp_phrases)
+            file_nlp_phrases = file_nlp_phrases.dropna().str.split(";").explode().str.strip()
+            nlp_phrases = pd.concat([nlp_phrases, file_nlp_phrases])
         return nlp_phrases
 
     def apply_filter_to_nlp_phrases(column, selected_nlp_phrases):
@@ -861,21 +887,50 @@ def filter_nlp_phrases(root_dir):
             )
             data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
+    def get_nlp_stopwords_from_github():
+        owner = "jdvelasq"
+        repo = "techminer2"
+        path = "settings/nlp_stopwords.txt"
+        url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+
+        response = requests.get(url, timeout=5)
+        nlp_stopwords = response.text.split("\n")
+        nlp_stopwords = [org.strip() for org in nlp_stopwords]
+        return nlp_stopwords
+
     #
-    # Main code:
+    #
+    # MAIN CODE:
+    # The methodology is based on Emergence scoring to identify frontier R&D
+    # topics and key players, Porter et al (2019) Technological Forecasting
+    # & Social Change
     #
 
+    #
     # Obtain the raw nlp phrases
     raw_keywords = get_nlp_phrases("raw_keywords")
     raw_title_nlp_phrases = get_nlp_phrases("raw_title_nlp_phrases")
     raw_abstract_nlp_phrases = get_nlp_phrases("raw_abstract_nlp_phrases")
 
-    # nlp phrases appearing in the title and abstract
-    selected_nlp_phrases = raw_title_nlp_phrases & raw_abstract_nlp_phrases
+    #
+    # Merge appareances of title and abstract terms and selects
+    # NLP phrases with frequency > 1
+    raw_nlp_phrases = pd.concat([raw_title_nlp_phrases, raw_abstract_nlp_phrases, raw_keywords])
+    raw_nlp_phrases = select_nlp_phrases_by_frequency(raw_nlp_phrases)
 
-    # adds raw keywords
-    selected_nlp_phrases.update(raw_keywords)
+    #
+    # Removes NLP stopwords
+    nlp_stopwords = get_nlp_stopwords_from_github()
+    raw_nlp_phrases = raw_nlp_phrases[~raw_nlp_phrases.isin(nlp_stopwords)]
+    raw_nlp_phrases = set(raw_nlp_phrases.to_list())
 
+    #
+    # Creates the final list of nlp phrases
+    selected_nlp_phrases = set(raw_keywords.to_list())
+    selected_nlp_phrases.update(raw_nlp_phrases)
+
+    #
+    # Filter the columns in the data frame
     apply_filter_to_nlp_phrases(
         "raw_title_nlp_phrases",
         selected_nlp_phrases,

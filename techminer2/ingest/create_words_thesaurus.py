@@ -7,16 +7,11 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-Create key-concepts thesaurus
-===============================================================================
 
->>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.ingest.create_descriptors_thesaurus(root_dir=root_dir)
+>>> from techminer2.ingest.create_words_thesaurus import create_words_thesaurus
+>>> create_words_thesaurus(root_dir="data/regtech/")
 --INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
 
-# pylint: disable=line-too-long
 """
 import os
 import os.path
@@ -29,7 +24,7 @@ from nltk.stem import PorterStemmer
 from ..thesaurus_lib import load_system_thesaurus_as_frame
 
 
-def create_descriptors_thesaurus(
+def create_words_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -40,8 +35,8 @@ def create_descriptors_thesaurus(
         "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
     )
 
-    series = load_value_phrases_from_databases(root_dir=root_dir)
-    series = explode_raw_nlp_phrases(series)
+    series = load_raw_descriptors_from_databases(root_dir=root_dir)
+    series = explode_raw_descriptors(series)
     series = remove_strange_characters(series)
     frame = build_occurrences_table(series)
     #
@@ -53,18 +48,23 @@ def create_descriptors_thesaurus(
     if existent_frame is not None:
         existent_frame = process_frame(existent_frame)
         key2value = dict(zip(existent_frame.value_fingerprint, existent_frame.key_phrase))
-        frame["key_phrase"] = frame["value_fingerprint"].map(lambda x: key2value.get(x, x))
-        frame = frame[["key_phrase", "value_phrase"]]
-        existent_frame = existent_frame[["key_phrase", "value_phrase"]]
-        frame = pd.concat([existent_frame, frame])
-        # frame["key_phrase"] = frame["key_phrase"].str.lower()
-        frame = frame.drop_duplicates(subset=["value_phrase"])
 
-        #
-        # Intelligent merging
-        #
-    else:
-        frame = frame[["key_phrase", "value_phrase"]]
+        frame.loc[
+            frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "key_phrase"
+        ] = frame.loc[
+            frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "value_fingerprint"
+        ].map(
+            lambda x: key2value[x]
+        )
+
+        # frame["key_phrase"] = frame["value_fingerprint"].map(lambda x: key2value.get(x, x))
+        # frame = frame[["key_phrase", "value_phrase"]]
+        # existent_frame = existent_frame[["key_phrase", "value_phrase"]]
+        # frame = pd.concat([existent_frame, frame])
+        # frame["key_phrase"] = frame["key_phrase"].str.lower()
+        # frame = frame.drop_duplicates(subset=["value_phrase"])
+
+    frame = frame[["key_phrase", "value_phrase"]]
 
     frame["key_phrase"] = (
         frame["key_phrase"].str.replace(" ", "_").str.replace("_(", " (", regex=False).str.upper()
@@ -127,10 +127,10 @@ def load_existent_thesaurus(root_dir):
     return existent_thesaurus
 
 
-def load_value_phrases_from_databases(root_dir="./"):
+def load_raw_descriptors_from_databases(root_dir="./"):
     """Loads keywords from author/index keywords, and abstract/title words."""
 
-    words_list = []
+    descriptors_list = []
 
     # files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     # for file in files:
@@ -141,17 +141,17 @@ def load_value_phrases_from_databases(root_dir="./"):
     file = os.path.join(root_dir, "databases/_main.zip")
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
     if "raw_descriptors" in data.columns:
-        words_list.append(data["raw_descriptors"])
+        descriptors_list.append(data["raw_descriptors"])
 
-    words_list = pd.concat(words_list, ignore_index=True)
-    words_list = words_list.str.strip()
-    words_list = words_list[words_list.str.len() > 0]
-    words_list = words_list.rename("value_phrase")
-    words_list = words_list.str.replace("_", " ").str.upper()
-    return words_list
+    descriptors_list = pd.concat(descriptors_list, ignore_index=True)
+    descriptors_list = descriptors_list.str.strip()
+    descriptors_list = descriptors_list[descriptors_list.str.len() > 0]
+    descriptors_list = descriptors_list.rename("descriptors")
+    descriptors_list = descriptors_list.str.replace("_", " ").str.upper()
+    return descriptors_list
 
 
-def explode_raw_nlp_phrases(frame):
+def explode_raw_descriptors(frame):
     """Explodes the raw noun phrases column."""
 
     frame = frame.copy()
