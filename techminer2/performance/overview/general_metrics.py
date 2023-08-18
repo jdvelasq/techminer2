@@ -56,15 +56,14 @@ KEYWORDS       Raw author keywords                            148
                Cleaned index keywords                         149
                Raw keywords                                   273
                Cleaned keywords                               252
-NLP PHRASES    Raw title NLP phrases                           53
-               Cleaned title NLP phrases                       53
-               Raw abstract NLP phrases                       276
-               Cleaned abstract NLP phrases                   257
-               Raw NLP phrases                                301
-               Cleaned NLP phrases                            279
-DESCRIPTORS    Raw descriptors                                507
-               Cleaned descriptors                            450
-
+NLP PHRASES    Raw title NLP phrases                           71
+               Cleaned title NLP phrases                       71
+               Raw abstract NLP phrases                       853
+               Cleaned abstract NLP phrases                   830
+               Raw NLP phrases                                894
+               Cleaned NLP phrases                            867
+DESCRIPTORS    Raw descriptors                               1100
+               Cleaned descriptors                           1034
 
 >>> info.fig_.write_html("sphinx/_static/performance/overview/general_metrics.html")
 
@@ -119,14 +118,14 @@ Table:
 | ('KEYWORDS', 'Cleaned index keywords')                 | 149       |
 | ('KEYWORDS', 'Raw keywords')                           | 273       |
 | ('KEYWORDS', 'Cleaned keywords')                       | 252       |
-| ('NLP PHRASES', 'Raw title NLP phrases')               | 53        |
-| ('NLP PHRASES', 'Cleaned title NLP phrases')           | 53        |
-| ('NLP PHRASES', 'Raw abstract NLP phrases')            | 276       |
-| ('NLP PHRASES', 'Cleaned abstract NLP phrases')        | 257       |
-| ('NLP PHRASES', 'Raw NLP phrases')                     | 301       |
-| ('NLP PHRASES', 'Cleaned NLP phrases')                 | 279       |
-| ('DESCRIPTORS', 'Raw descriptors')                     | 507       |
-| ('DESCRIPTORS', 'Cleaned descriptors')                 | 450       |
+| ('NLP PHRASES', 'Raw title NLP phrases')               | 71        |
+| ('NLP PHRASES', 'Cleaned title NLP phrases')           | 71        |
+| ('NLP PHRASES', 'Raw abstract NLP phrases')            | 853       |
+| ('NLP PHRASES', 'Cleaned abstract NLP phrases')        | 830       |
+| ('NLP PHRASES', 'Raw NLP phrases')                     | 894       |
+| ('NLP PHRASES', 'Cleaned NLP phrases')                 | 867       |
+| ('DESCRIPTORS', 'Raw descriptors')                     | 1100      |
+| ('DESCRIPTORS', 'Cleaned descriptors')                 | 1034      |
 ```
 <BLANKLINE>
 
