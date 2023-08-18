@@ -40,7 +40,6 @@ def generate_custom_items(
     top_n,
     occ_range,
     gc_range,
-    is_trend_analysis,
 ):
     """Generates custom topics from the index techminer indicators dataframe.
 
@@ -89,8 +88,8 @@ def generate_custom_items(
     #
 
     #
-    # 1. Filters the dataframe by OCC y GCS ranges.
-    #    With this step, items with very low frequency are ignored.
+    # 1. Filters the dataframe by OCC y GCS ranges. With this step,
+    #    items with very low frequency are ignored.
     if gc_range is not None:
         indicators = filter_by_gc_range(indicators, gc_range)
 
@@ -98,14 +97,8 @@ def generate_custom_items(
         indicators = filter_by_occ_range(indicators, occ_range)
 
     #
-    # 2. In trend analysis, the dataframe is sorted by the AGR;
-    #    otherwise, it is sorted by the metric.
-    if is_trend_analysis:
-        indicators = sort_indicators_by_metric(
-            indicators, "average_growth_rate", is_trend_analysis=True
-        )
-    else:
-        indicators = sort_indicators_by_metric(indicators, metric, is_trend_analysis=False)
+    # 2. Sort the dataframe by metric.
+    indicators = sort_indicators_by_metric(indicators, metric)
 
     #
     # 3. Filters the dataframe by top_n.

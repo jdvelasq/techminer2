@@ -5,17 +5,16 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tm2.performance.performance_metrics:
+.. _tm2.agenda.emergent_terms:
 
-Performance Metrics
+Emergent Terms
 ===============================================================================
 
->>> from techminer2.performance import performance_metrics
->>> metrics = performance_metrics(
+>>> from techminer2.agenda import emergent_terms
+>>> metrics = growth_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
-...     metric='OCCGC',
 ...     #
 ...     # CHART PARAMS:
 ...     title=None,
@@ -34,6 +33,7 @@ Performance Metrics
 ...     #
 ...     # TREND ANALYSIS:
 ...     time_window=2,
+...     is_trend_analysis=False,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -49,6 +49,7 @@ Performance Metrics
 | REGULATORY_TECHNOLOGY |          3 |         8 |     7 |                 37 |                10 |         4 |         2 |      1    |
 | COMPLIANCE            |          4 |        12 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |
 | REGULATION            |          5 |         4 |     5 |                164 |                22 |         2 |         2 |      0.33 |
+
 
 >>> print(metrics.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
@@ -127,6 +128,7 @@ Table:
 ...     #
 ...     # TREND ANALYSIS:
 ...     time_window=2,
+...     is_trend_analysis=True,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -135,27 +137,27 @@ Table:
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |
-|:------------------------|-----------:|------:|--------------:|--------------------:|
-| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |
-| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |
-| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |
-| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |
-| INNOVATION              |         11 |     3 |             2 |                   1 |
-| BLOCKCHAIN              |         12 |     3 |             3 |                   0 |
-| SUPTECH                 |         13 |     3 |             1 |                   2 |
-| SEMANTIC_TECHNOLOGIES   |         14 |     2 |             2 |                   0 |
-| DATA_PROTECTION         |         15 |     2 |             1 |                   1 |
-| SMART_CONTRACTS         |         16 |     2 |             2 |                   0 |
-| CHARITYTECH             |         17 |     2 |             1 |                   1 |
-| ENGLISH_LAW             |         18 |     2 |             1 |                   1 |
-| ACCOUNTABILITY          |         19 |     2 |             2 |                   0 |
-| DATA_PROTECTION_OFFICER |         20 |     2 |             2 |                   0 |
-| GDPR                    |         21 |     2 |             2 |                   0 |
-| SANDBOXES               |         22 |     2 |             2 |                   0 |
-| TECHNOLOGY              |         23 |     2 |             1 |                   1 |
-| FINANCE                 |         24 |     2 |             1 |                   1 |
-| REPORTING               |         25 |     2 |             0 |                   2 |
+| author_keywords         |   rank_occ |   OCC |   percentage_between |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   Between 2022-2023 |
+|:------------------------|-----------:|------:|---------------------:|----------------------:|------------------------:|----------------------------:|--------------------:|
+| REPORTING               |         25 |     2 |               100    |                   0   |                     1   |                    0.5      |                   2 |
+| SUPTECH                 |         13 |     3 |                66.67 |                   0   |                     1   |                    0.333333 |                   2 |
+| FINANCIAL_REGULATION    |          8 |     4 |                50    |                   0   |                     1   |                    0.25     |                   2 |
+| DATA_PROTECTION         |         15 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| CHARITYTECH             |         17 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| ENGLISH_LAW             |         18 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| TECHNOLOGY              |         23 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| FINANCE                 |         24 |     2 |                50    |                   0   |                     0.5 |                    0.25     |                   1 |
+| RISK_MANAGEMENT         |         10 |     3 |                33.33 |                   0   |                     0.5 |                    0.166667 |                   1 |
+| INNOVATION              |         11 |     3 |                33.33 |                  -0.5 |                     0.5 |                    0.166667 |                   1 |
+| FINANCIAL_SERVICES      |          7 |     4 |                25    |                   0   |                     0.5 |                    0.125    |                   1 |
+| ARTIFICIAL_INTELLIGENCE |          9 |     4 |                25    |                   0   |                     0.5 |                    0.125    |                   1 |
+| SEMANTIC_TECHNOLOGIES   |         14 |     2 |                 0    |                   0   |                     0   |                    0        |                   0 |
+| SMART_CONTRACTS         |         16 |     2 |                 0    |                   0   |                     0   |                    0        |                   0 |
+| BLOCKCHAIN              |         12 |     3 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| ACCOUNTABILITY          |         19 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| DATA_PROTECTION_OFFICER |         20 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| GDPR                    |         21 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
+| SANDBOXES               |         22 |     2 |                 0    |                  -0.5 |                     0   |                    0        |                   0 |
 
 
 """
@@ -195,6 +197,7 @@ def performance_metrics(
     #
     # TREND ANALYSIS:
     time_window=2,
+    is_trend_analysis=False,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -223,6 +226,7 @@ def performance_metrics(
         #
         # TREND ANALYSIS:
         time_window=time_window,
+        is_trend_analysis=is_trend_analysis,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -232,7 +236,9 @@ def performance_metrics(
         **filters,
     )
 
-    data_frame = _select_columns(data_frame=data_frame, metric=metric)
+    data_frame = _select_columns(
+        data_frame=data_frame, metric=metric, is_trend_analysis=is_trend_analysis
+    )
 
     if metric == "OCCGC":
         metric = "OCC"
@@ -242,6 +248,9 @@ def performance_metrics(
         metric=metric,
         data_frame=data_frame,
     )
+
+    if metric == "word_trends":
+        metric = "OCC"
 
     fig = _fig(
         #
@@ -283,6 +292,7 @@ def ___table(
     #
     # TREND ANALYSIS:
     time_window,
+    is_trend_analysis,
     #
     # DATABASE PARAMS:
     root_dir,
@@ -328,6 +338,7 @@ def ___table(
                 top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=False,
             )
 
             #
@@ -338,6 +349,7 @@ def ___table(
                 top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=False,
             )
 
             custom_items = custom_items_occ[:]
@@ -352,17 +364,35 @@ def ___table(
                 top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
+                is_trend_analysis=is_trend_analysis,
             )
 
     data_frame = data_frame[data_frame.index.isin(custom_items)]
-    data_frame = sort_indicators_by_metric(data_frame, metric)
+    data_frame = sort_indicators_by_metric(data_frame, metric, is_trend_analysis)
 
     return data_frame
 
 
-def _select_columns(data_frame, metric):
+def _select_columns(data_frame, metric, is_trend_analysis):
     #
     #
+    if metric == "trending_words":
+        columns = [
+            "rank_occ",
+            "OCC",
+            data_frame.columns[3],
+            data_frame.columns[4],
+            "average_growth_rate",
+            "average_docs_per_year",
+            "percentage_docs_last_year",
+        ]
+
+    if metric == "word_trends":
+        columns = [
+            "OCC",
+            data_frame.columns[3],
+            data_frame.columns[4],
+        ]
 
     if metric == "OCCGC":
         columns = [
@@ -377,18 +407,9 @@ def _select_columns(data_frame, metric):
         ]
 
     if metric == "OCC":
-        columns = [
-            "rank_occ",
-            "OCC",
-            data_frame.columns[3],
-            data_frame.columns[4],
-            "growth_percentage",
-        ]
+        columns = ["rank_occ", "OCC"]
 
-    if metric in [
-        "global_citations",
-        "local_citations",
-    ]:
+    if metric in ["global_citations", "local_citations"]:
         columns = [
             "rank_gc",
             "global_citations",
@@ -399,15 +420,35 @@ def _select_columns(data_frame, metric):
         ]
 
     if metric in [
-        "h_index",
-        "g_index",
-        "m_index",
+        "average_growth_rate",
+        "average_docs_per_year",
+        "percentage_docs_last_year",
     ]:
         columns = [
-            "h_index",
-            "g_index",
-            "m_index",
+            data_frame.columns[3],
+            data_frame.columns[4],
+            "average_growth_rate",
+            "average_docs_per_year",
+            "percentage_docs_last_year",
         ]
+
+    if metric in ["h_index", "g_index", "m_index"]:
+        columns = ["h_index", "g_index", "m_index"]
+
+    if is_trend_analysis and "percentage_between" not in columns:
+        columns += ["percentage_between"]
+
+    if is_trend_analysis and "average_growth_rate" not in columns:
+        columns += ["average_growth_rate"]
+
+    if is_trend_analysis and "average_docs_per_year" not in columns:
+        columns += ["average_docs_per_year"]
+
+    if is_trend_analysis and "percentage_docs_last_year" not in columns:
+        columns += ["percentage_docs_last_year"]
+
+    if is_trend_analysis and data_frame.columns[4] not in columns:
+        columns += [data_frame.columns[4]]
 
     return data_frame[columns]
 

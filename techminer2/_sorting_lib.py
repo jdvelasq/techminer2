@@ -12,7 +12,10 @@ Sorts the indicators dataframe by the given metric.
 """
 
 
-def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
+def sort_indicators_by_metric(
+    indicators,
+    metric,
+):
     """
     Sorts the indicators dataframe by the given metric.
     """
@@ -21,21 +24,6 @@ def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
     indicators["_name_"] = indicators.index.tolist()
 
     columns = {
-        # -------------------------------------------
-        "average_growth_rate": [
-            "average_growth_rate",
-            indicators.columns[2],
-            "average_docs_per_year",
-            "percentage_docs_last_year",
-            "_name_",
-        ],
-        # -------------------------------------------
-        "trending_words": [
-            "OCC",
-            "global_citations",
-            "local_citations",
-            "_name_",
-        ],
         # -------------------------------------------
         "OCCGC": [
             "OCC",
@@ -88,20 +76,8 @@ def sort_indicators_by_metric(indicators, metric, is_trend_analysis):
     }[metric]
     ascending = [False] * (len(columns) - 1) + [True]
 
-    if is_trend_analysis:
-        columns = [
-            "percentage_between",
-            "average_growth_rate",
-            "average_docs_per_year",
-            "percentage_docs_last_year",
-        ] + columns
-        ascending = [False, False, False, False] + ascending
-
     indicators = indicators.sort_values(columns, ascending=ascending)
     indicators = indicators.drop(columns=["_name_"])
-
-    # if is_trend_analysis:
-    #    indicators = indicators.drop(columns=["average_growth_rate"])
 
     return indicators
 
@@ -138,7 +114,8 @@ def sort_matrix_axis(
     )
 
     indicators_by_topic = sort_indicators_by_metric(
-        indicators_by_topic, "OCC", is_trend_analysis=False
+        indicators_by_topic,
+        "OCC",
     )
 
     if axis == 0:

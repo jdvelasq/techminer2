@@ -69,6 +69,13 @@ TechMiner 2+ (Jul 21, 2023)
 .. toctree::
    :maxdepth: 1
 
+   agenda/__index__
+
+------
+
+.. toctree::
+   :maxdepth: 1
+
    _expertise/__index__
 
 ------
