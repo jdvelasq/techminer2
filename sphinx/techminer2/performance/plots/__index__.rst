@@ -51,3 +51,4 @@ Plots >
 .. toctree::
     trending_words_per_year
 
+-----
