@@ -46,7 +46,9 @@ def fuzzy_search(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Find the specified keyword and reorder the thesaurus file."""
+    """
+    :meta private:
+    """
 
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
