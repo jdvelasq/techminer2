@@ -34,7 +34,9 @@ def misspelling_search(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Look for misspeling mistakes in the keywords of a thesaurus."""
+    """
+    :meta private:
+    """
 
     # Load the thesaurus file
     th_file = join(root_dir, THESAURUS_FILE)
