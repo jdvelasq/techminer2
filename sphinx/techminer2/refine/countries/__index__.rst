@@ -18,3 +18,4 @@ Countries >
 .. toctree::
    sort_thesaurus
 
+------

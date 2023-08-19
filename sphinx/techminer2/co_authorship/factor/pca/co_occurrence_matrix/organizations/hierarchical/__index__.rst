@@ -1,12 +1,20 @@
 Hierarchical >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+------
+
 .. toctree::
     cluster_centers
+
+------
     
 .. toctree::
     communities
 
+------
+
 .. toctree::
     treemap
+
+------
 

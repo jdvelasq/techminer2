@@ -17,3 +17,5 @@ Organizations >
 
 .. toctree::
    sort_thesaurus
+
+------

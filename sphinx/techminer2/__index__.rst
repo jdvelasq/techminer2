@@ -84,3 +84,5 @@ TechMiner 2+ (Jul 21, 2023)
    :maxdepth: 1
 
    _emergence/__index__
+
+------

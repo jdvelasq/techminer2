@@ -1,18 +1,30 @@
 Sources >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+------
+
 .. toctree::
    communities   
+
+------
 
 .. toctree::
    degree_plot
 
+------
+
 .. toctree::
    item_density_visualization
+
+------
 
 .. toctree::
    metrics
 
+------
+
 .. toctree::
    network_visualization
+
+------
 
