@@ -331,7 +331,7 @@ def ___matrix(
                 **filters,
             )
 
-            indicators = sort_indicators_by_metric(indicators, "OCC", is_trend_analysis=False)
+            indicators = sort_indicators_by_metric(indicators, "OCC")
 
             custom_items = generate_custom_items(
                 indicators=indicators,
@@ -339,7 +339,6 @@ def ___matrix(
                 top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
-                is_trend_analysis=False,
             )
 
         raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(custom_items)]

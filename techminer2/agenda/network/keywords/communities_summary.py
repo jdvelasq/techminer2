@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Report
+Communities Summary
 ===============================================================================
 
 
->>> from techminer2.agenda.network.descriptors import report
->>> report(
+>>> from techminer2.agenda.network.keywords import communities_summary
+>>> communities_summary(
 ...     #
 ...     # AGENDA PARAMS:
 ...     occ_range=(2, None),
@@ -29,27 +29,23 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_1_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_2_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_3_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_4_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_0_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_1_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_2_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_3_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_4_prompt.txt' was created.
+  Cluster  ...                                              Terms
+0    CL_0  ...  FINANCIAL_REGULATION; SUPTECH; DATA_PROTECTION...
+1    CL_1  ...  FINANCIAL_CRISIS; REGULATORY_FRAMEWORK; REGULA...
+2    CL_2  ...         CHARITYTECH; ENGLISH_LAW; MACHINE_LEARNING
+3    CL_3  ...                    CLASSIFICATION (OF_INFORMATION)
+<BLANKLINE>
+[4 rows x 4 columns]
 
 """
 from ....nx_communities_summary import nx_communities_summary
 from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....nx_create_co_occurrence_report import nx_create_co_occurrences_report
 from ....performance import performance_metrics
 
-UNIT_OF_ANALYSIS = "descriptors"
+UNIT_OF_ANALYSIS = "keywords"
 
 
-def report(
+def communities_summary(
     #
     # AGENDA PARAMS:
     occ_range=(None, None),
@@ -60,9 +56,6 @@ def report(
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
     association_index="association",
-    #
-    # REPORT PARAMS:
-    report_dir="agenda/network/" + UNIT_OF_ANALYSIS + "/",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -170,27 +163,9 @@ def report(
         **filters,
     )
 
-    print(
-        nx_communities_summary(
-            #
-            # SUMMARY PARAMS:
-            nx_graph=nx_graph,
-            conserve_counters=False,
-        )
-    )
-
-    return nx_create_co_occurrences_report(
+    return nx_communities_summary(
         #
-        # REPORT PARAMS:
+        # SUMMARY PARAMS:
         nx_graph=nx_graph,
-        rows_and_columns=UNIT_OF_ANALYSIS,
-        report_dir=report_dir,
-        top_n=20,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+        conserve_counters=False,
     )

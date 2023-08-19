@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Report
+Communities Summary
 ===============================================================================
 
 
->>> from techminer2.agenda.network.descriptors import report
->>> report(
+>>> from techminer2.agenda.network.title_nlp_phrases import communities_summary
+>>> communities_summary(
 ...     #
 ...     # AGENDA PARAMS:
-...     occ_range=(2, None),
+...     occ_range=(1, None),
 ...     gc_range=(None, None),
 ...     time_window=2,
 ...     growth_percentage_min=50,
@@ -29,27 +29,33 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_1_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_2_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_3_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_4_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_0_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_1_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_2_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_3_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/agenda/network/descriptors/CL_4_prompt.txt' was created.
+   Cluster  ...                                              Terms
+0    CL_00  ...  CHARITABLE_ORGANISATIONS; MACHINE_LEARNING; RE...
+1    CL_01  ...                    FINTECH_SUSTAINABILITY; REGTECH
+2    CL_02  ...        CONSUMER_COMPLAINTS; REGULATORY_ENFORCEMENT
+3    CL_03  ...                 FIRM_PERFORMANCE; REGTECH_ADOPTION
+4    CL_04  ...                              FINANCIAL_DEVELOPMENT
+5    CL_05  ...                                    ISLAMIC_FINANCE
+6    CL_06  ...                                    PRIVATE_SECTORS
+7    CL_07  ...                                  IMAGINARY_FAILURE
+8    CL_08  ...                               REGTECH_DEVELOPMENTS
+9    CL_09  ...                         REGTECH_POTENTIAL_BENEFITS
+10   CL_10  ...                                     REGTECH_S_RISE
+11   CL_11  ...                        SMART_REGULATORY_COMPLIANCE
+<BLANKLINE>
+[12 rows x 4 columns]
+
+
 
 """
 from ....nx_communities_summary import nx_communities_summary
 from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....nx_create_co_occurrence_report import nx_create_co_occurrences_report
 from ....performance import performance_metrics
 
-UNIT_OF_ANALYSIS = "descriptors"
+UNIT_OF_ANALYSIS = "title_nlp_phrases"
 
 
-def report(
+def communities_summary(
     #
     # AGENDA PARAMS:
     occ_range=(None, None),
@@ -60,9 +66,6 @@ def report(
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
     association_index="association",
-    #
-    # REPORT PARAMS:
-    report_dir="agenda/network/" + UNIT_OF_ANALYSIS + "/",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -170,27 +173,9 @@ def report(
         **filters,
     )
 
-    print(
-        nx_communities_summary(
-            #
-            # SUMMARY PARAMS:
-            nx_graph=nx_graph,
-            conserve_counters=False,
-        )
-    )
-
-    return nx_create_co_occurrences_report(
+    return nx_communities_summary(
         #
-        # REPORT PARAMS:
+        # SUMMARY PARAMS:
         nx_graph=nx_graph,
-        rows_and_columns=UNIT_OF_ANALYSIS,
-        report_dir=report_dir,
-        top_n=20,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+        conserve_counters=False,
     )

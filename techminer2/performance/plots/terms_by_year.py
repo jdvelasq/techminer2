@@ -331,7 +331,7 @@ def __table(
             **filters,
         )
 
-        indicators = sort_indicators_by_metric(indicators, metric="OCC", is_trend_analysis=False)
+        indicators = sort_indicators_by_metric(indicators, metric="OCC")
 
         custom_items = generate_custom_items(
             indicators=indicators,
