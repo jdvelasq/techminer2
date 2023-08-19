@@ -32,3 +32,10 @@ Words >
 
 .. toctree::    
     sort_thesaurus
+
+------
+
+.. toctree::    
+    words_frequency
+
+------
