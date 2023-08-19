@@ -24,3 +24,9 @@ Refine >
 
     words/__index__
 
+------
+
+.. toctree::
+    sort_stopwords
+
+------
