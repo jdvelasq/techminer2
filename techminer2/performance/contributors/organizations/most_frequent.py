@@ -37,18 +37,20 @@ Most Frequent
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| organizations                                                      |   rank_occ |   OCC |
-|:-------------------------------------------------------------------|-----------:|------:|
-| Univ of Hong Kong (HKG)                                            |          1 |     3 |
-| Univ Coll Cork (IRL)                                               |          2 |     3 |
-| Ahlia Univ (BHR)                                                   |          3 |     3 |
-| Coventry Univ (GBR)                                                |          4 |     2 |
-| Univ of Westminster (GBR)                                          |          5 |     2 |
-| Dublin City Univ (IRL)                                             |          6 |     2 |
-| Politec di Milano (ITA)                                            |          7 |     2 |
-| Kingston Bus Sch (GBR)                                             |          8 |     1 |
-| FinTech HK, Hong Kong (HKG)                                        |          9 |     1 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         10 |     1 |
+| organizations                                                      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:-------------------------------------------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| Univ of Hong Kong (HKG)                                            |          1 |     3 |             3 |                   0 |                0    |
+| Univ Coll Cork (IRL)                                               |          2 |     3 |             2 |                   1 |               33.33 |
+| Ahlia Univ (BHR)                                                   |          3 |     3 |             2 |                   1 |               33.33 |
+| Coventry Univ (GBR)                                                |          4 |     2 |             1 |                   1 |               50    |
+| Univ of Westminster (GBR)                                          |          5 |     2 |             1 |                   1 |               50    |
+| Dublin City Univ (IRL)                                             |          6 |     2 |             2 |                   0 |                0    |
+| Politec di Milano (ITA)                                            |          7 |     2 |             1 |                   1 |               50    |
+| Kingston Bus Sch (GBR)                                             |          8 |     1 |             1 |                   0 |                0    |
+| FinTech HK, Hong Kong (HKG)                                        |          9 |     1 |             1 |                   0 |                0    |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         10 |     1 |             1 |                   0 |                0    |
+
+
 
 
 >>> items.fig_.write_html("sphinx/_static/performance/contributors/organizations/most_frequent_chart.html")
@@ -69,20 +71,21 @@ concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| organizations                                                      |   rank_occ |   OCC |
-|:-------------------------------------------------------------------|-----------:|------:|
-| Univ of Hong Kong (HKG)                                            |          1 |     3 |
-| Univ Coll Cork (IRL)                                               |          2 |     3 |
-| Ahlia Univ (BHR)                                                   |          3 |     3 |
-| Coventry Univ (GBR)                                                |          4 |     2 |
-| Univ of Westminster (GBR)                                          |          5 |     2 |
-| Dublin City Univ (IRL)                                             |          6 |     2 |
-| Politec di Milano (ITA)                                            |          7 |     2 |
-| Kingston Bus Sch (GBR)                                             |          8 |     1 |
-| FinTech HK, Hong Kong (HKG)                                        |          9 |     1 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         10 |     1 |
+| organizations                                                      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:-------------------------------------------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| Univ of Hong Kong (HKG)                                            |          1 |     3 |             3 |                   0 |                0    |
+| Univ Coll Cork (IRL)                                               |          2 |     3 |             2 |                   1 |               33.33 |
+| Ahlia Univ (BHR)                                                   |          3 |     3 |             2 |                   1 |               33.33 |
+| Coventry Univ (GBR)                                                |          4 |     2 |             1 |                   1 |               50    |
+| Univ of Westminster (GBR)                                          |          5 |     2 |             1 |                   1 |               50    |
+| Dublin City Univ (IRL)                                             |          6 |     2 |             2 |                   0 |                0    |
+| Politec di Milano (ITA)                                            |          7 |     2 |             1 |                   1 |               50    |
+| Kingston Bus Sch (GBR)                                             |          8 |     1 |             1 |                   0 |                0    |
+| FinTech HK, Hong Kong (HKG)                                        |          9 |     1 |             1 |                   0 |                0    |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         10 |     1 |             1 |                   0 |                0    |
 ```
 <BLANKLINE>
+
 
 
 """

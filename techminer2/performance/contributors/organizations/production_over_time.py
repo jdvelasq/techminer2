@@ -97,7 +97,7 @@ Table:
 |  1 | FinTech HK, Hong Kong (HKG)                                        | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
 |  2 | Univ of Hong Kong (HKG)                                            | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
 |  3 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
-|  4 | Univ Coll Cork (IRL)                                               | understanding REGTECH for digital REGULATORY_COMPLIANCE               |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
+|  4 | Univ Coll Cork (IRL)                                               | UNDERSTANDING_REGTECH for DIGITAL_REGULATORY_COMPLIANCE               |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
 
 
 
