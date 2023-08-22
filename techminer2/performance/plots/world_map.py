@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-.. _performance.plots.world_map:
+.. _tm2.performance.contributors.countries.world_map:
 
 World Map
 ===============================================================================
 
->>> from techminer2.performance.plots import world_map
+>>> from techminer2.performance.contributors.countries import world_map
 >>> chart = world_map(
 ...     #
 ...     # ITEMS PARAMS:
@@ -33,11 +33,11 @@ World Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/plots/world_map.html")
+>>> chart.fig_.write_html("sphinx/_static/performance/contributors/countries/world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/world_map.html" 
+    <iframe src="../../../../../_static/performance/contributors/countries/world_map.html" 
     height="400px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()

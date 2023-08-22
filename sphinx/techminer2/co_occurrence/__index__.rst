@@ -29,3 +29,7 @@ Co-occurrence >
 
 ------
 
+.. toctree::
+   sankey_chart
+
+------

@@ -96,6 +96,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
+from ..._filtering_lib import generate_custom_items
+from ..._sorting_lib import sort_indicators_by_metric
 from ...indicators.global_indicators_by_field import global_indicators_by_field
 from ...indicators.items_occurrences_by_year import items_occurrences_by_year
 
@@ -104,7 +106,11 @@ def trending_words_per_year(
     #
     # PARAMS:
     field,
+    #
+    # ITEM FILTERS:
     n_words_per_year=5,
+    occ_range=(None, None),
+    gc_range=(None, None),
     custom_items=None,
     #
     # DATABASE PARAMS:
@@ -119,9 +125,15 @@ def trending_words_per_year(
     :meta private:
     """
 
+    #
+    # Compute occurrences for all words
     words_by_year = items_occurrences_by_year(
+        #
+        # FUNCTION PARAMS:
         field=field,
-        # min_occ=1,
+        cumulative=False,
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -129,9 +141,36 @@ def trending_words_per_year(
         **filters,
     )
 
-    if custom_items is not None:
-        words_by_year = words_by_year.loc[custom_items, :]
+    #
+    # Apply filters
+    if custom_items is None:
+        indicators = global_indicators_by_field(
+            field=field,
+            #
+            # DATABASE PARAMS:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
+        indicators = sort_indicators_by_metric(indicators, metric="OCC")
+
+        custom_items = generate_custom_items(
+            indicators=indicators,
+            metric="OCC",
+            top_n=None,
+            occ_range=occ_range,
+            gc_range=gc_range,
+        )
+
+    #
+    # Select custom items
+    words_by_year = words_by_year.loc[custom_items, :]
+
+    #
+    # Compute percentiles
     year_q1 = []
     year_med = []
     year_q3 = []

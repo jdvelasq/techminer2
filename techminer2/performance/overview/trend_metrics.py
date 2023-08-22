@@ -39,11 +39,11 @@ Trend Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/performance/overview/annual_scientific_production.html")
+>>> metrics.fig_.write_html("sphinx/_static/performance/overview/trend_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/overview/annual_scientific_production.html"  
+    <iframe src="../../../../../_static/performance/overview/trend_metrics.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

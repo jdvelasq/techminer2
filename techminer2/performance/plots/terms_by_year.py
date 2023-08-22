@@ -335,6 +335,7 @@ def __table(
 
         custom_items = generate_custom_items(
             indicators=indicators,
+            metric="OCC",
             top_n=top_n,
             occ_range=occ_range,
             gc_range=gc_range,

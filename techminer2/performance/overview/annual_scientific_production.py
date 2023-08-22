@@ -1,0 +1,94 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+"""
+.. _tm2.performance.overview.annual_scientific_production:
+
+Annual Scientific Production
+===============================================================================
+
+
+>>> from techminer2.performance.overview import trend_metrics
+>>> metrics = trend_metrics(
+...     #
+...     # TABLE PARAMS:
+...     selected_columns=[
+...         "OCC",
+...     ],
+...     #
+...     # CHART PARAMS:
+...     metric_to_plot="OCC",
+...     auxiliary_metric_to_plot=None,
+...     title="Annual Scientific Production",
+...     year_label=None,
+...     metric_label=None,
+...     textfont_size=10,
+...     marker_size=7,
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+>>> metrics.fig_.write_html("sphinx/_static/performance/overview/annual_scientific_production.html")
+
+.. raw:: html
+
+    <iframe src="../../../../../_static/performance/overview/annual_scientific_production.html"  
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+
+>>> print(metrics.df_.to_markdown())
+|   year |   OCC |
+|-------:|------:|
+|   2016 |     1 |
+|   2017 |     4 |
+|   2018 |     3 |
+|   2019 |     6 |
+|   2020 |    14 |
+|   2021 |    10 |
+|   2022 |    12 |
+|   2023 |     2 |
+
+
+
+>>> print(metrics.df_.T.to_markdown())
+|     |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:----|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| OCC |      1 |      4 |      3 |      6 |     14 |     10 |     12 |      2 |
+
+
+
+>>> print(metrics.prompt_)
+Your task is to generate a short summary for a research paper about the \\
+annual performance metrics of a bibliographic dataset. The table below \\
+provides data on: the number of publications per yeear (OCC);  Use the the \\
+information in the table to draw conclusions about the impact per year. In \\
+your analysis, be sure to describe in a clear and concise way, any trends \\
+or patterns you observe, and identify any outliers or anomalies  in the \\
+data. Limit your description to one paragraph with no more than 250 words.
+<BLANKLINE>
+Table:
+```
+|   year |   OCC |
+|-------:|------:|
+|   2016 |     1 |
+|   2017 |     4 |
+|   2018 |     3 |
+|   2019 |     6 |
+|   2020 |    14 |
+|   2021 |    10 |
+|   2022 |    12 |
+|   2023 |     2 |
+```
+<BLANKLINE>
+
+
+"""
