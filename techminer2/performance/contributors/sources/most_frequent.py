@@ -41,18 +41,19 @@ Performance Metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| source_abbr                   |   rank_occ |   OCC |
-|:------------------------------|-----------:|------:|
-| J BANK REGUL                  |          1 |     2 |
-| J FINANC CRIME                |          2 |     2 |
-| STUD COMPUT INTELL            |          3 |     2 |
-| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |
-| INT CONF INF TECHNOL SYST INN |          5 |     2 |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |
-| J ECON BUS                    |          7 |     1 |
-| NORTHWEST J INTL LAW BUS      |          8 |     1 |
-| PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |
-| DUKE LAW J                    |         10 |     1 |
+| source_abbr                   |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| J BANK REGUL                  |          1 |     2 |             2 |                   0 |                   0 |
+| J FINANC CRIME                |          2 |     2 |             1 |                   1 |                  50 |
+| STUD COMPUT INTELL            |          3 |     2 |             2 |                   0 |                   0 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |             2 |                   0 |                   0 |
+| INT CONF INF TECHNOL SYST INN |          5 |     2 |             0 |                   2 |                 100 |
+| ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |             2 |                   0 |                   0 |
+| J ECON BUS                    |          7 |     1 |             1 |                   0 |                   0 |
+| NORTHWEST J INTL LAW BUS      |          8 |     1 |             1 |                   0 |                   0 |
+| PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |             1 |                   0 |                   0 |
+| DUKE LAW J                    |         10 |     1 |             1 |                   0 |                   0 |
+
 
 
 >>> items.fig_.write_html("sphinx/_static/performance/contributors/sources/most_frequent_chart.html")
@@ -73,20 +74,21 @@ concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| source_abbr                   |   rank_occ |   OCC |
-|:------------------------------|-----------:|------:|
-| J BANK REGUL                  |          1 |     2 |
-| J FINANC CRIME                |          2 |     2 |
-| STUD COMPUT INTELL            |          3 |     2 |
-| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |
-| INT CONF INF TECHNOL SYST INN |          5 |     2 |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |
-| J ECON BUS                    |          7 |     1 |
-| NORTHWEST J INTL LAW BUS      |          8 |     1 |
-| PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |
-| DUKE LAW J                    |         10 |     1 |
+| source_abbr                   |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| J BANK REGUL                  |          1 |     2 |             2 |                   0 |                   0 |
+| J FINANC CRIME                |          2 |     2 |             1 |                   1 |                  50 |
+| STUD COMPUT INTELL            |          3 |     2 |             2 |                   0 |                   0 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |             2 |                   0 |                   0 |
+| INT CONF INF TECHNOL SYST INN |          5 |     2 |             0 |                   2 |                 100 |
+| ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |             2 |                   0 |                   0 |
+| J ECON BUS                    |          7 |     1 |             1 |                   0 |                   0 |
+| NORTHWEST J INTL LAW BUS      |          8 |     1 |             1 |                   0 |                   0 |
+| PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |             1 |                   0 |                   0 |
+| DUKE LAW J                    |         10 |     1 |             1 |                   0 |                   0 |
 ```
 <BLANKLINE>
+
 
 
 """
