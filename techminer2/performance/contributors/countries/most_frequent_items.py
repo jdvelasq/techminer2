@@ -38,18 +38,18 @@ Most Frequent
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| countries      |   rank_occ |   OCC |
-|:---------------|-----------:|------:|
-| United Kingdom |          1 |     7 |
-| Australia      |          2 |     7 |
-| United States  |          3 |     6 |
-| Ireland        |          4 |     5 |
-| China          |          5 |     5 |
-| Italy          |          6 |     5 |
-| Germany        |          7 |     4 |
-| Switzerland    |          8 |     4 |
-| Bahrain        |          9 |     4 |
-| Hong Kong      |         10 |     3 |
+| countries      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:---------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| United Kingdom |          1 |     7 |             6 |                   1 |               14.29 |
+| Australia      |          2 |     7 |             7 |                   0 |                0    |
+| United States  |          3 |     6 |             4 |                   2 |               33.33 |
+| Ireland        |          4 |     5 |             4 |                   1 |               20    |
+| China          |          5 |     5 |             1 |                   4 |               80    |
+| Italy          |          6 |     5 |             3 |                   2 |               40    |
+| Germany        |          7 |     4 |             3 |                   1 |               25    |
+| Switzerland    |          8 |     4 |             3 |                   1 |               25    |
+| Bahrain        |          9 |     4 |             3 |                   1 |               25    |
+| Hong Kong      |         10 |     3 |             3 |                   0 |                0    |
 
 
 >>> items.fig_.write_html("sphinx/_static/performance/contributors/countries/most_frequent_chart.html")
@@ -69,20 +69,21 @@ summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| countries      |   rank_occ |   OCC |
-|:---------------|-----------:|------:|
-| United Kingdom |          1 |     7 |
-| Australia      |          2 |     7 |
-| United States  |          3 |     6 |
-| Ireland        |          4 |     5 |
-| China          |          5 |     5 |
-| Italy          |          6 |     5 |
-| Germany        |          7 |     4 |
-| Switzerland    |          8 |     4 |
-| Bahrain        |          9 |     4 |
-| Hong Kong      |         10 |     3 |
+| countries      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:---------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| United Kingdom |          1 |     7 |             6 |                   1 |               14.29 |
+| Australia      |          2 |     7 |             7 |                   0 |                0    |
+| United States  |          3 |     6 |             4 |                   2 |               33.33 |
+| Ireland        |          4 |     5 |             4 |                   1 |               20    |
+| China          |          5 |     5 |             1 |                   4 |               80    |
+| Italy          |          6 |     5 |             3 |                   2 |               40    |
+| Germany        |          7 |     4 |             3 |                   1 |               25    |
+| Switzerland    |          8 |     4 |             3 |                   1 |               25    |
+| Bahrain        |          9 |     4 |             3 |                   1 |               25    |
+| Hong Kong      |         10 |     3 |             3 |                   0 |                0    |
 ```
 <BLANKLINE>
+
 
 
 

@@ -15,10 +15,5 @@ Citation >
     
     documents/__index__
 
--------
-
-.. toctree::
-    rpys
-    
 
     

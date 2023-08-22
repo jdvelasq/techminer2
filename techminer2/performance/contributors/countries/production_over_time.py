@@ -100,8 +100,8 @@ Table:
 |  0 | United Kingdom | FINTECH and REGTECH: impact on regulators and BANKS                                                               |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
 |  1 | Australia      | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION                                             |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
 |  2 | Hong Kong      | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION                                             |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
-|  3 | Ireland        | understanding REGTECH for digital REGULATORY_COMPLIANCE                                                           |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
-|  4 | United States  | adaptive FINANCIAL_REGULATION and REGTECH: a concept ARTICLE on realistic protection for victims of BANK failures |   2016 | Duke Law Journal                                               |                 30 |                 8 | nan                            |
+|  3 | Ireland        | UNDERSTANDING_REGTECH for DIGITAL_REGULATORY_COMPLIANCE                                                           |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
+|  4 | United States  | adaptive FINANCIAL_REGULATION and REGTECH: a CONCEPT_ARTICLE on REALISTIC_PROTECTION for victims of BANK_FAILURES |   2016 | Duke Law Journal                                               |                 30 |                 8 | nan                            |
 
 
 

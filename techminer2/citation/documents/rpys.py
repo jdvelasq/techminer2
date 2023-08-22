@@ -6,23 +6,23 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-.. _citation_analysis.rpys:
+.. _tm2.citation.documents.rpys:
 
 RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
->>> from techminer2.citation_analysis import rpys
+>>> from techminer2.citation.documents import rpys
 >>> chart = rpys(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
->>> chart.fig_.write_html("sphinx/_static/citation_analysis/rpys_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/citation/documents/rpys_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/citation_analysis/rpys_chart.html" 
+    <iframe src="../../../../../_static/citation/documents/rpys_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -42,7 +42,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from .._read_records import read_records
+from ..._read_records import read_records
 
 
 def rpys(
