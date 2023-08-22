@@ -4,13 +4,13 @@ Title NLP Phrases >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   most_frequent_words_recipe
+   most_frequent_words
       
 .. toctree::
    word_cloud
 
 .. toctree::
-   words_frequency_over_time_recipe
+   words_frequency_over_time
 
 .. toctree::
-   trending_words_per_year_recipe
+   trending_words_per_year

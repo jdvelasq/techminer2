@@ -29,12 +29,14 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                    Degree  Betweenness  Closeness  PageRank
-REGULATORY_TECHNOLOGY 17:266            19     0.108535   1.000000  0.129282
-FINANCIAL_INSTITUTIONS 15:194           17     0.054808   0.904762  0.090566
-FINANCIAL_SERVICES_INDUSTRY 05:315      14     0.048069   0.791667  0.061511
-REGULATORY_COMPLIANCE 07:198            14     0.027887   0.791667  0.062338
-ARTIFICIAL_INTELLIGENCE 07:033          13     0.032298   0.760000  0.053456
+                               Degree  Betweenness  Closeness  PageRank
+REGULATORY_TECHNOLOGY 17:266       18     0.080567   0.947368  0.128055
+FINANCIAL_INSTITUTIONS 15:194      16     0.035538   0.852632  0.091279
+FINANCIAL_SYSTEM 05:328            15     0.036986   0.812030  0.056783
+REGULATORY_COMPLIANCE 07:198       15     0.052745   0.812030  0.061726
+COMPLIANCE_COSTS 06:033            13     0.026652   0.741419  0.057039
+
+
 
 """
 from .....nx_compute_metrics import nx_compute_metrics

@@ -45,12 +45,12 @@ Degree Plot
 
 
 >>> plot.df_.head()
-   Node                           Name  Degree
-0     0          FINANCIAL_CRIME 2:012       3
-1     1    REGULATORY_TECHNOLOGY 3:020       2
-2     2  ARTIFICIAL_INTELLIGENCE 3:017       2
-3     3            BANK_TREASURY 1:011       2
-4     4   DIGITAL_TRANSFORMATION 1:011       2
+   Node                         Name  Degree
+0     0   FINANCIAL_REGULATION 2:180       3
+1     1          BANK_FAILURES 1:030       3
+2     2        CONCEPT_ARTICLE 1:030       3
+3     3   REALISTIC_PROTECTION 1:030       3
+4     4  REGULATORY_TECHNOLOGY 3:020       2
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -60,30 +60,33 @@ in the data, and discuss their implications in the network.
 <BLANKLINE>
 Table:
 ```
-|    |   Node | Name                                       |   Degree |
-|---:|-------:|:-------------------------------------------|---------:|
-|  0 |      0 | FINANCIAL_CRIME 2:012                      |        3 |
-|  1 |      1 | REGULATORY_TECHNOLOGY 3:020                |        2 |
-|  2 |      2 | ARTIFICIAL_INTELLIGENCE 3:017              |        2 |
-|  3 |      3 | BANK_TREASURY 1:011                        |        2 |
-|  4 |      4 | DIGITAL_TRANSFORMATION 1:011               |        2 |
-|  5 |      5 | AML_COMPLIANCE 1:010                       |        2 |
-|  6 |      6 | REGTECH_SOLUTIONS 1:010                    |        2 |
-|  7 |      7 | EFFECTIVE_SOLUTIONS 1:014                  |        1 |
-|  8 |      8 | MODERN_INFORMATION_TECHNOLOGY 1:005        |        1 |
-|  9 |      9 | REGULATORY_AFFAIRS 1:005                   |        1 |
-| 10 |     10 | FINANCIAL_STABILITY 1:004                  |        1 |
-| 11 |     11 | TRADITIONAL_FINANCIAL_INTERMEDIATION 1:004 |        1 |
-| 12 |     12 | FINANCIAL_REGULATION 2:180                 |        0 |
-| 13 |     13 | EUROPEAN_UNION 1:024                       |        0 |
-| 14 |     14 | FINANCIAL_RISK 1:021                       |        0 |
-| 15 |     15 | FINANCIAL_DEVELOPMENT 1:013                |        0 |
-| 16 |     16 | FINANCIAL_SYSTEM 1:011                     |        0 |
-| 17 |     17 | REGULATORY_TECHNOLOGY_REGTECH 1:011        |        0 |
-| 18 |     18 | SMART_REGULATION 1:004                     |        0 |
-| 19 |     19 | CHARITABLE_ORGANISATIONS 1:003             |        0 |
+|    |   Node | Name                                |   Degree |
+|---:|-------:|:------------------------------------|---------:|
+|  0 |      0 | FINANCIAL_REGULATION 2:180          |        3 |
+|  1 |      1 | BANK_FAILURES 1:030                 |        3 |
+|  2 |      2 | CONCEPT_ARTICLE 1:030               |        3 |
+|  3 |      3 | REALISTIC_PROTECTION 1:030          |        3 |
+|  4 |      4 | REGULATORY_TECHNOLOGY 3:020         |        2 |
+|  5 |      5 | ARTIFICIAL_INTELLIGENCE 3:017       |        2 |
+|  6 |      6 | FINANCIAL_CRIME 2:012               |        2 |
+|  7 |      7 | BANK_TREASURY 1:011                 |        2 |
+|  8 |      8 | DIGITAL_TRANSFORMATION 1:011        |        2 |
+|  9 |      9 | DIGITAL_REGULATORY_COMPLIANCE 1:033 |        1 |
+| 10 |     10 | UNDERSTANDING_REGTECH 1:033         |        1 |
+| 11 |     11 | FINANCIAL_RISK 1:021                |        1 |
+| 12 |     12 | INNOVATIVE_REGTECH_APPROACH 1:021   |        1 |
+| 13 |     13 | EFFECTIVE_SOLUTIONS 1:014           |        1 |
+| 14 |     14 | AML_COMPLIANCE 1:010                |        1 |
+| 15 |     15 | EUROPEAN_UNION 1:024                |        0 |
+| 16 |     16 | FINANCIAL_DEVELOPMENT 1:013         |        0 |
+| 17 |     17 | GDPR_REGTECH 1:012                  |        0 |
+| 18 |     18 | FINANCIAL_SYSTEM 1:011              |        0 |
+| 19 |     19 | REGULATORY_TECHNOLOGY_REGTECH 1:011 |        0 |
 ```
 <BLANKLINE>
+
+
+
 
 
 

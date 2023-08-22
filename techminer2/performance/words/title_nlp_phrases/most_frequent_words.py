@@ -9,8 +9,8 @@ Most Frequent Words
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import performance_metrics
->>> items = item_metrics(
+>>> from techminer2.performance import performance_metrics
+>>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='title_nlp_phrases',
@@ -37,31 +37,31 @@ Most Frequent Words
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(items.df_.to_markdown())
-| title_nlp_phrases       |   rank_occ |   OCC |
-|:------------------------|-----------:|------:|
-| REGULATORY_TECHNOLOGY   |          1 |     3 |
-| ARTIFICIAL_INTELLIGENCE |          2 |     3 |
-| FINANCIAL_REGULATION    |          3 |     2 |
-| FINANCIAL_CRIME         |          4 |     2 |
-| EUROPEAN_UNION          |          5 |     1 |
-| FINANCIAL_RISK          |          6 |     1 |
-| EFFECTIVE_SOLUTIONS     |          7 |     1 |
-| FINANCIAL_DEVELOPMENT   |          8 |     1 |
-| BANK_TREASURY           |          9 |     1 |
-| DIGITAL_TRANSFORMATION  |         10 |     1 |
+>>> print(metrics.df_.to_markdown())
+| title_nlp_phrases             |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| REGULATORY_TECHNOLOGY         |          1 |     3 |             3 |                   0 |                0    |
+| ARTIFICIAL_INTELLIGENCE       |          2 |     3 |             2 |                   1 |               33.33 |
+| FINANCIAL_REGULATION          |          3 |     2 |             2 |                   0 |                0    |
+| FINANCIAL_CRIME               |          4 |     2 |             2 |                   0 |                0    |
+| DIGITAL_REGULATORY_COMPLIANCE |          5 |     1 |             1 |                   0 |                0    |
+| UNDERSTANDING_REGTECH         |          6 |     1 |             1 |                   0 |                0    |
+| BANK_FAILURES                 |          7 |     1 |             1 |                   0 |                0    |
+| CONCEPT_ARTICLE               |          8 |     1 |             1 |                   0 |                0    |
+| REALISTIC_PROTECTION          |          9 |     1 |             1 |                   0 |                0    |
+| EUROPEAN_UNION                |         10 |     1 |             1 |                   0 |                0    |
 
 
 
->>> items.fig_.write_html("sphinx/_static/performance/title_nlp_phrases/most_frequent_chart.html")
+>>> metrics.fig_.write_html("sphinx/_static/performance/words/title_nlp_phrases/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/title_nlp_phrases/most_frequent_chart.html" 
+    <iframe src="../../../../_static/performance/words/title_nlp_phrases/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> print(items.prompt_)
+>>> print(metrics.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'title_nlp_phrases' field in a scientific bibliography database. \\
 Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
@@ -71,18 +71,18 @@ provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| title_nlp_phrases       |   rank_occ |   OCC |
-|:------------------------|-----------:|------:|
-| REGULATORY_TECHNOLOGY   |          1 |     3 |
-| ARTIFICIAL_INTELLIGENCE |          2 |     3 |
-| FINANCIAL_REGULATION    |          3 |     2 |
-| FINANCIAL_CRIME         |          4 |     2 |
-| EUROPEAN_UNION          |          5 |     1 |
-| FINANCIAL_RISK          |          6 |     1 |
-| EFFECTIVE_SOLUTIONS     |          7 |     1 |
-| FINANCIAL_DEVELOPMENT   |          8 |     1 |
-| BANK_TREASURY           |          9 |     1 |
-| DIGITAL_TRANSFORMATION  |         10 |     1 |
+| title_nlp_phrases             |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| REGULATORY_TECHNOLOGY         |          1 |     3 |             3 |                   0 |                0    |
+| ARTIFICIAL_INTELLIGENCE       |          2 |     3 |             2 |                   1 |               33.33 |
+| FINANCIAL_REGULATION          |          3 |     2 |             2 |                   0 |                0    |
+| FINANCIAL_CRIME               |          4 |     2 |             2 |                   0 |                0    |
+| DIGITAL_REGULATORY_COMPLIANCE |          5 |     1 |             1 |                   0 |                0    |
+| UNDERSTANDING_REGTECH         |          6 |     1 |             1 |                   0 |                0    |
+| BANK_FAILURES                 |          7 |     1 |             1 |                   0 |                0    |
+| CONCEPT_ARTICLE               |          8 |     1 |             1 |                   0 |                0    |
+| REALISTIC_PROTECTION          |          9 |     1 |             1 |                   0 |                0    |
+| EUROPEAN_UNION                |         10 |     1 |             1 |                   0 |                0    |
 ```
 <BLANKLINE>
 

@@ -37,13 +37,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                      DIM_0  ...         DIM_4
-title_nlp_phrases                            ...              
-REGULATORY_TECHNOLOGY 3:020    3.019807e-14  ...  4.668846e-18
-ARTIFICIAL_INTELLIGENCE 3:017  2.873370e+00  ... -1.215401e-13
-FINANCIAL_REGULATION 2:180    -1.025045e-16  ...  2.960123e-01
-FINANCIAL_CRIME 2:012          2.372785e+00  ...  1.831731e-13
-EUROPEAN_UNION 1:024          -9.496737e-20  ... -1.324587e-16
+                                            DIM_0  ...         DIM_4
+title_nlp_phrases                                  ...              
+REGULATORY_TECHNOLOGY 3:020          1.129652e-14  ...  1.870283e-16
+ARTIFICIAL_INTELLIGENCE 3:017       -2.471114e-15  ...  1.685680e-15
+FINANCIAL_REGULATION 2:180           2.586412e+00  ... -2.437625e-16
+FINANCIAL_CRIME 2:012               -1.282828e-15  ... -4.534771e-15
+DIGITAL_REGULATORY_COMPLIANCE 1:033  1.227859e-17  ...  1.227671e+00
 <BLANKLINE>
 [5 rows x 5 columns]
 

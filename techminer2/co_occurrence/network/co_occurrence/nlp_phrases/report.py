@@ -32,9 +32,12 @@ Report
 --INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_0_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_1_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_2_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_3_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_0_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_1_prompt.txt' was created.
 --INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_2_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/nlp_phrases/CL_3_prompt.txt' was created.
+
 
 """
 from .....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph

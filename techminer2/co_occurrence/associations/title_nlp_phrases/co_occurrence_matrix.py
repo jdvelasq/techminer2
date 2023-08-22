@@ -27,13 +27,13 @@ Co-occurrence Matrix
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_.head()
-title_nlp_phrases              REGULATORY_TECHNOLOGY 3:020  ...  DIGITAL_TRANSFORMATION 1:011
-title_nlp_phrases                                           ...                              
-REGULATORY_TECHNOLOGY 3:020                              3  ...                             1
-ARTIFICIAL_INTELLIGENCE 3:017                            0  ...                             0
-FINANCIAL_REGULATION 2:180                               0  ...                             0
-FINANCIAL_CRIME 2:012                                    0  ...                             0
-EUROPEAN_UNION 1:024                                     0  ...                             0
+title_nlp_phrases                    REGULATORY_TECHNOLOGY 3:020  ...  EUROPEAN_UNION 1:024
+title_nlp_phrases                                                 ...                      
+REGULATORY_TECHNOLOGY 3:020                                    3  ...                     0
+ARTIFICIAL_INTELLIGENCE 3:017                                  0  ...                     0
+FINANCIAL_REGULATION 2:180                                     0  ...                     0
+FINANCIAL_CRIME 2:012                                          0  ...                     0
+DIGITAL_REGULATORY_COMPLIANCE 1:033                            0  ...                     0
 <BLANKLINE>
 [5 rows x 10 columns]
 
@@ -43,12 +43,14 @@ EUROPEAN_UNION 1:024                                     0  ...                 
 
 
 >>> matrix.list_cells_.head()
-                           row                         column  matrix_value
-0  REGULATORY_TECHNOLOGY 3:020    REGULATORY_TECHNOLOGY 3:020             3
-1  REGULATORY_TECHNOLOGY 3:020  ARTIFICIAL_INTELLIGENCE 3:017             0
-2  REGULATORY_TECHNOLOGY 3:020     FINANCIAL_REGULATION 2:180             0
-3  REGULATORY_TECHNOLOGY 3:020          FINANCIAL_CRIME 2:012             0
-4  REGULATORY_TECHNOLOGY 3:020           EUROPEAN_UNION 1:024             0
+                           row  ... matrix_value
+0  REGULATORY_TECHNOLOGY 3:020  ...            3
+1  REGULATORY_TECHNOLOGY 3:020  ...            0
+2  REGULATORY_TECHNOLOGY 3:020  ...            0
+3  REGULATORY_TECHNOLOGY 3:020  ...            0
+4  REGULATORY_TECHNOLOGY 3:020  ...            0
+<BLANKLINE>
+[5 rows x 3 columns]
 
 >>> print(matrix.prompt_)
 Your task is to generate a short paragraph for a research paper analyzing \\
@@ -62,18 +64,18 @@ of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| title_nlp_phrases             |   REGULATORY_TECHNOLOGY 3:020 |   ARTIFICIAL_INTELLIGENCE 3:017 |   FINANCIAL_REGULATION 2:180 |   FINANCIAL_CRIME 2:012 |   EUROPEAN_UNION 1:024 |   FINANCIAL_RISK 1:021 |   EFFECTIVE_SOLUTIONS 1:014 |   FINANCIAL_DEVELOPMENT 1:013 |   BANK_TREASURY 1:011 |   DIGITAL_TRANSFORMATION 1:011 |
-|:------------------------------|------------------------------:|--------------------------------:|-----------------------------:|------------------------:|-----------------------:|-----------------------:|----------------------------:|------------------------------:|----------------------:|-------------------------------:|
-| REGULATORY_TECHNOLOGY 3:020   |                             3 |                               0 |                            0 |                       0 |                      0 |                      0 |                           0 |                             0 |                     1 |                              1 |
-| ARTIFICIAL_INTELLIGENCE 3:017 |                             0 |                               3 |                            0 |                       1 |                      0 |                      0 |                           1 |                             0 |                     0 |                              0 |
-| FINANCIAL_REGULATION 2:180    |                             0 |                               0 |                            2 |                       0 |                      0 |                      0 |                           0 |                             0 |                     0 |                              0 |
-| FINANCIAL_CRIME 2:012         |                             0 |                               1 |                            0 |                       2 |                      0 |                      0 |                           0 |                             0 |                     0 |                              0 |
-| EUROPEAN_UNION 1:024          |                             0 |                               0 |                            0 |                       0 |                      1 |                      0 |                           0 |                             0 |                     0 |                              0 |
-| FINANCIAL_RISK 1:021          |                             0 |                               0 |                            0 |                       0 |                      0 |                      1 |                           0 |                             0 |                     0 |                              0 |
-| EFFECTIVE_SOLUTIONS 1:014     |                             0 |                               1 |                            0 |                       0 |                      0 |                      0 |                           1 |                             0 |                     0 |                              0 |
-| FINANCIAL_DEVELOPMENT 1:013   |                             0 |                               0 |                            0 |                       0 |                      0 |                      0 |                           0 |                             1 |                     0 |                              0 |
-| BANK_TREASURY 1:011           |                             1 |                               0 |                            0 |                       0 |                      0 |                      0 |                           0 |                             0 |                     1 |                              1 |
-| DIGITAL_TRANSFORMATION 1:011  |                             1 |                               0 |                            0 |                       0 |                      0 |                      0 |                           0 |                             0 |                     1 |                              1 |
+| title_nlp_phrases                   |   REGULATORY_TECHNOLOGY 3:020 |   ARTIFICIAL_INTELLIGENCE 3:017 |   FINANCIAL_REGULATION 2:180 |   FINANCIAL_CRIME 2:012 |   DIGITAL_REGULATORY_COMPLIANCE 1:033 |   UNDERSTANDING_REGTECH 1:033 |   BANK_FAILURES 1:030 |   CONCEPT_ARTICLE 1:030 |   REALISTIC_PROTECTION 1:030 |   EUROPEAN_UNION 1:024 |
+|:------------------------------------|------------------------------:|--------------------------------:|-----------------------------:|------------------------:|--------------------------------------:|------------------------------:|----------------------:|------------------------:|-----------------------------:|-----------------------:|
+| REGULATORY_TECHNOLOGY 3:020         |                             3 |                               0 |                            0 |                       0 |                                     0 |                             0 |                     0 |                       0 |                            0 |                      0 |
+| ARTIFICIAL_INTELLIGENCE 3:017       |                             0 |                               3 |                            0 |                       1 |                                     0 |                             0 |                     0 |                       0 |                            0 |                      0 |
+| FINANCIAL_REGULATION 2:180          |                             0 |                               0 |                            2 |                       0 |                                     0 |                             0 |                     1 |                       1 |                            1 |                      0 |
+| FINANCIAL_CRIME 2:012               |                             0 |                               1 |                            0 |                       2 |                                     0 |                             0 |                     0 |                       0 |                            0 |                      0 |
+| DIGITAL_REGULATORY_COMPLIANCE 1:033 |                             0 |                               0 |                            0 |                       0 |                                     1 |                             1 |                     0 |                       0 |                            0 |                      0 |
+| UNDERSTANDING_REGTECH 1:033         |                             0 |                               0 |                            0 |                       0 |                                     1 |                             1 |                     0 |                       0 |                            0 |                      0 |
+| BANK_FAILURES 1:030                 |                             0 |                               0 |                            1 |                       0 |                                     0 |                             0 |                     1 |                       1 |                            1 |                      0 |
+| CONCEPT_ARTICLE 1:030               |                             0 |                               0 |                            1 |                       0 |                                     0 |                             0 |                     1 |                       1 |                            1 |                      0 |
+| REALISTIC_PROTECTION 1:030          |                             0 |                               0 |                            1 |                       0 |                                     0 |                             0 |                     1 |                       1 |                            1 |                      0 |
+| EUROPEAN_UNION 1:024                |                             0 |                               0 |                            0 |                       0 |                                     0 |                             0 |                     0 |                       0 |                            0 |                      1 |
 ```
 <BLANKLINE>
 

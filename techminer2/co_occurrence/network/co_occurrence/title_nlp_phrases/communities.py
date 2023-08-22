@@ -29,12 +29,15 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                          CL_00  ...                           CL_12
-0   REGULATORY_TECHNOLOGY 3:020  ...  CHARITABLE_ORGANISATIONS 1:003
-1           BANK_TREASURY 1:011  ...                                
-2  DIGITAL_TRANSFORMATION 1:011  ...                                
+                            CL_0  ...                                 CL_9
+0  ARTIFICIAL_INTELLIGENCE 3:017  ...  REGULATORY_TECHNOLOGY_REGTECH 1:011
+1          FINANCIAL_CRIME 2:012  ...                                     
+2      EFFECTIVE_SOLUTIONS 1:014  ...                                     
+3           AML_COMPLIANCE 1:010  ...                                     
 <BLANKLINE>
-[3 rows x 13 columns]
+[4 rows x 10 columns]
+
+
 
 
 """

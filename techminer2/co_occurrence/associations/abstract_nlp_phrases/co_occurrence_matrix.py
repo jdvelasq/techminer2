@@ -27,13 +27,13 @@ Co-occurrence Matrix
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_.head()
-abstract_nlp_phrases            REGULATORY_TECHNOLOGY 17:266  ...  INFORMATION_TECHNOLOGY 05:177
-abstract_nlp_phrases                                          ...                               
-REGULATORY_TECHNOLOGY 17:266                              17  ...                              5
-FINANCIAL_INSTITUTIONS 15:194                              5  ...                              1
-REGULATORY_COMPLIANCE 07:198                               4  ...                              0
-FINANCIAL_SECTOR 07:169                                    4  ...                              2
-ARTIFICIAL_INTELLIGENCE 07:033                             3  ...                              1
+abstract_nlp_phrases            REGULATORY_TECHNOLOGY 17:266  ...  FINANCIAL_SYSTEM 05:328
+abstract_nlp_phrases                                          ...                         
+REGULATORY_TECHNOLOGY 17:266                              17  ...                        2
+FINANCIAL_INSTITUTIONS 15:194                              5  ...                        2
+REGULATORY_COMPLIANCE 07:198                               4  ...                        1
+FINANCIAL_SECTOR 07:169                                    4  ...                        1
+ARTIFICIAL_INTELLIGENCE 07:033                             3  ...                        0
 <BLANKLINE>
 [5 rows x 10 columns]
 
@@ -62,21 +62,20 @@ summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| abstract_nlp_phrases               |   REGULATORY_TECHNOLOGY 17:266 |   FINANCIAL_INSTITUTIONS 15:194 |   REGULATORY_COMPLIANCE 07:198 |   FINANCIAL_SECTOR 07:169 |   ARTIFICIAL_INTELLIGENCE 07:033 |   FINANCIAL_REGULATION 06:330 |   GLOBAL_FINANCIAL_CRISIS 06:177 |   FINANCIAL_CRISIS 06:058 |   FINANCIAL_SERVICES_INDUSTRY 05:315 |   INFORMATION_TECHNOLOGY 05:177 |
-|:-----------------------------------|-------------------------------:|--------------------------------:|-------------------------------:|--------------------------:|---------------------------------:|------------------------------:|---------------------------------:|--------------------------:|-------------------------------------:|--------------------------------:|
-| REGULATORY_TECHNOLOGY 17:266       |                             17 |                               5 |                              4 |                         4 |                                3 |                             3 |                                3 |                         2 |                                    4 |                               5 |
-| FINANCIAL_INSTITUTIONS 15:194      |                              5 |                              15 |                              3 |                         2 |                                3 |                             4 |                                2 |                         3 |                                    1 |                               1 |
-| REGULATORY_COMPLIANCE 07:198       |                              4 |                               3 |                              7 |                         1 |                                1 |                             1 |                                0 |                         2 |                                    2 |                               0 |
-| FINANCIAL_SECTOR 07:169            |                              4 |                               2 |                              1 |                         7 |                                2 |                             3 |                                1 |                         0 |                                    2 |                               2 |
-| ARTIFICIAL_INTELLIGENCE 07:033     |                              3 |                               3 |                              1 |                         2 |                                7 |                             0 |                                0 |                         0 |                                    1 |                               1 |
-| FINANCIAL_REGULATION 06:330        |                              3 |                               4 |                              1 |                         3 |                                0 |                             6 |                                2 |                         1 |                                    2 |                               2 |
-| GLOBAL_FINANCIAL_CRISIS 06:177     |                              3 |                               2 |                              0 |                         1 |                                0 |                             2 |                                6 |                         0 |                                    1 |                               2 |
-| FINANCIAL_CRISIS 06:058            |                              2 |                               3 |                              2 |                         0 |                                0 |                             1 |                                0 |                         6 |                                    0 |                               1 |
-| FINANCIAL_SERVICES_INDUSTRY 05:315 |                              4 |                               1 |                              2 |                         2 |                                1 |                             2 |                                1 |                         0 |                                    5 |                               2 |
-| INFORMATION_TECHNOLOGY 05:177      |                              5 |                               1 |                              0 |                         2 |                                1 |                             2 |                                2 |                         1 |                                    2 |                               5 |
+| abstract_nlp_phrases           |   REGULATORY_TECHNOLOGY 17:266 |   FINANCIAL_INSTITUTIONS 15:194 |   REGULATORY_COMPLIANCE 07:198 |   FINANCIAL_SECTOR 07:169 |   ARTIFICIAL_INTELLIGENCE 07:033 |   FINANCIAL_REGULATION 06:330 |   GLOBAL_FINANCIAL_CRISIS 06:177 |   FINANCIAL_CRISIS 06:058 |   COMPLIANCE_COSTS 06:033 |   FINANCIAL_SYSTEM 05:328 |
+|:-------------------------------|-------------------------------:|--------------------------------:|-------------------------------:|--------------------------:|---------------------------------:|------------------------------:|---------------------------------:|--------------------------:|--------------------------:|--------------------------:|
+| REGULATORY_TECHNOLOGY 17:266   |                             17 |                               5 |                              4 |                         4 |                                3 |                             3 |                                3 |                         2 |                         3 |                         2 |
+| FINANCIAL_INSTITUTIONS 15:194  |                              5 |                              15 |                              3 |                         2 |                                3 |                             4 |                                2 |                         3 |                         2 |                         2 |
+| REGULATORY_COMPLIANCE 07:198   |                              4 |                               3 |                              7 |                         1 |                                1 |                             1 |                                0 |                         2 |                         1 |                         1 |
+| FINANCIAL_SECTOR 07:169        |                              4 |                               2 |                              1 |                         7 |                                2 |                             3 |                                1 |                         0 |                         0 |                         1 |
+| ARTIFICIAL_INTELLIGENCE 07:033 |                              3 |                               3 |                              1 |                         2 |                                7 |                             0 |                                0 |                         0 |                         1 |                         0 |
+| FINANCIAL_REGULATION 06:330    |                              3 |                               4 |                              1 |                         3 |                                0 |                             6 |                                2 |                         1 |                         1 |                         2 |
+| GLOBAL_FINANCIAL_CRISIS 06:177 |                              3 |                               2 |                              0 |                         1 |                                0 |                             2 |                                6 |                         0 |                         1 |                         1 |
+| FINANCIAL_CRISIS 06:058        |                              2 |                               3 |                              2 |                         0 |                                0 |                             1 |                                0 |                         6 |                         2 |                         1 |
+| COMPLIANCE_COSTS 06:033        |                              3 |                               2 |                              1 |                         0 |                                1 |                             1 |                                1 |                         2 |                         6 |                         2 |
+| FINANCIAL_SYSTEM 05:328        |                              2 |                               2 |                              1 |                         1 |                                0 |                             2 |                                1 |                         1 |                         2 |                         5 |
 ```
 <BLANKLINE>
-
 
 """
 from ...co_occurrence_matrix import co_occurrence_matrix as __co_occurrence_matrix

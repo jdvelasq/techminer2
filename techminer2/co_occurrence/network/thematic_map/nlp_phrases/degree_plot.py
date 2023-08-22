@@ -45,12 +45,14 @@ Degree Plot
 
 
 >>> plot.df_.head()
-   Node                                Name  Degree
-0     0        REGULATORY_TECHNOLOGY 18:273      19
-1     1       FINANCIAL_INSTITUTIONS 15:194      17
-2     2  FINANCIAL_SERVICES_INDUSTRY 05:315      15
-3     3        REGULATORY_COMPLIANCE 07:198      14
-4     4         FINANCIAL_REGULATION 07:360      13
+   Node                           Name  Degree
+0     0   REGULATORY_TECHNOLOGY 18:273      18
+1     1  FINANCIAL_INSTITUTIONS 15:194      15
+2     2   REGULATORY_COMPLIANCE 07:198      15
+3     3        FINANCIAL_SYSTEM 06:339      15
+4     4    FINANCIAL_REGULATION 07:360      13
+
+
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -60,30 +62,33 @@ in the data, and discuss their implications in the network.
 <BLANKLINE>
 Table:
 ```
-|    |   Node | Name                                |   Degree |
-|---:|-------:|:------------------------------------|---------:|
-|  0 |      0 | REGULATORY_TECHNOLOGY 18:273        |       19 |
-|  1 |      1 | FINANCIAL_INSTITUTIONS 15:194       |       17 |
-|  2 |      2 | FINANCIAL_SERVICES_INDUSTRY 05:315  |       15 |
-|  3 |      3 | REGULATORY_COMPLIANCE 07:198        |       14 |
-|  4 |      4 | FINANCIAL_REGULATION 07:360         |       13 |
-|  5 |      5 | FINANCIAL_SECTOR 07:169             |       13 |
-|  6 |      6 | ARTIFICIAL_INTELLIGENCE 07:033      |       13 |
-|  7 |      7 | FINANCIAL_SYSTEM 05:189             |       13 |
-|  8 |      8 | INFORMATION_TECHNOLOGY 05:177       |       13 |
-|  9 |      9 | DIGITAL_INNOVATION 03:164           |       13 |
-| 10 |     10 | SYSTEMATIC_LITERATURE_REVIEW 03:004 |       12 |
-| 11 |     11 | FINANCIAL_TECHNOLOGY 05:173         |       11 |
-| 12 |     12 | RISK_MANAGEMENT 04:015              |       11 |
-| 13 |     13 | FINANCIAL_CRISIS 06:058             |       10 |
-| 14 |     14 | GLOBAL_FINANCIAL_CRISIS 06:177      |        9 |
-| 15 |     15 | REGTECH_SOLUTIONS 05:018            |        9 |
-| 16 |     16 | FINANCIAL_MARKETS 04:151            |        9 |
-| 17 |     17 | MACHINE_LEARNING 04:007             |        9 |
-| 18 |     18 | NEW_TECHNOLOGIES 04:012             |        8 |
-| 19 |     19 | REGTECH 04:037                      |        5 |
+|    |   Node | Name                               |   Degree |
+|---:|-------:|:-----------------------------------|---------:|
+|  0 |      0 | REGULATORY_TECHNOLOGY 18:273       |       18 |
+|  1 |      1 | FINANCIAL_INSTITUTIONS 15:194      |       15 |
+|  2 |      2 | REGULATORY_COMPLIANCE 07:198       |       15 |
+|  3 |      3 | FINANCIAL_SYSTEM 06:339            |       15 |
+|  4 |      4 | FINANCIAL_REGULATION 07:360        |       13 |
+|  5 |      5 | COMPLIANCE_COSTS 06:033            |       13 |
+|  6 |      6 | FINANCIAL_SERVICES_INDUSTRY 05:315 |       13 |
+|  7 |      7 | FINANCIAL_SECTOR 07:169            |       12 |
+|  8 |      8 | INFORMATION_TECHNOLOGY 05:177      |       12 |
+|  9 |      9 | ARTIFICIAL_INTELLIGENCE 07:033     |       11 |
+| 10 |     10 | GLOBAL_FINANCIAL_CRISIS 06:177     |       11 |
+| 11 |     11 | RISK_MANAGEMENT 04:015             |       11 |
+| 12 |     12 | REGTECH_SOLUTIONS 05:018           |       10 |
+| 13 |     13 | FINANCIAL_MARKETS 04:151           |       10 |
+| 14 |     14 | FINANCIAL_CRISIS 06:058            |        9 |
+| 15 |     15 | FINANCIAL_TECHNOLOGY 05:173        |        9 |
+| 16 |     16 | TECHNOLOGICAL_SOLUTIONS 05:016     |        9 |
+| 17 |     17 | REGTECH 05:040                     |        7 |
+| 18 |     18 | REGTECH_APPLICATION 04:012         |        5 |
+| 19 |     19 | AVAILABLE_] 04:013                 |        0 |
 ```
 <BLANKLINE>
+
+
+
 
 
 

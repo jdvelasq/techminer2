@@ -29,16 +29,16 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                  CL_0  ...                            CL_2
-0         REGULATORY_TECHNOLOGY 18:273  ...   FINANCIAL_INSTITUTIONS 15:194
-1          FINANCIAL_REGULATION 07:360  ...  ARTIFICIAL_INTELLIGENCE 07:033
-2              FINANCIAL_SECTOR 07:169  ...         FINANCIAL_CRISIS 06:058
-3       GLOBAL_FINANCIAL_CRISIS 06:177  ...        REGTECH_SOLUTIONS 05:018
-4        INFORMATION_TECHNOLOGY 05:177  ...          RISK_MANAGEMENT 04:015
-5             FINANCIAL_MARKETS 04:151  ...         NEW_TECHNOLOGIES 04:012
-6  SYSTEMATIC_LITERATURE_REVIEW 03:004  ...                                
+                             CL_0  ...                CL_3
+0    REGULATORY_TECHNOLOGY 18:273  ...  AVAILABLE_] 04:013
+1         FINANCIAL_SECTOR 07:169  ...                    
+2  ARTIFICIAL_INTELLIGENCE 07:033  ...                    
+3  GLOBAL_FINANCIAL_CRISIS 06:177  ...                    
+4   INFORMATION_TECHNOLOGY 05:177  ...                    
+5        FINANCIAL_MARKETS 04:151  ...                    
+6          RISK_MANAGEMENT 04:015  ...                    
 <BLANKLINE>
-[7 rows x 3 columns]
+[7 rows x 4 columns]
 
 
 """

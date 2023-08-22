@@ -30,11 +30,12 @@ Metrics
 ...     cited_by_filter=(None, None),
 ... ).head()
                                Degree  Betweenness  Closeness  PageRank
-FINANCIAL_CRIME 2:012               3     0.023392   0.168421  0.107347
-AML_COMPLIANCE 1:010                2     0.000000   0.120301  0.072660
-ARTIFICIAL_INTELLIGENCE 3:017       2     0.017544   0.140351  0.080533
-BANK_TREASURY 1:011                 2     0.000000   0.105263  0.075758
-DIGITAL_TRANSFORMATION 1:011        2     0.000000   0.105263  0.075758
+BANK_FAILURES 1:030                 3     0.000000   0.157895  0.063492
+CONCEPT_ARTICLE 1:030               3     0.000000   0.157895  0.063492
+FINANCIAL_REGULATION 2:180          3     0.000000   0.157895  0.063492
+REALISTIC_PROTECTION 1:030          3     0.000000   0.157895  0.063492
+ARTIFICIAL_INTELLIGENCE 3:017       2     0.011696   0.118421  0.082429
+
 
 
 """

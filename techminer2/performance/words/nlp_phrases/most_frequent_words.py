@@ -9,8 +9,8 @@ Most Frequent Words
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import performance_metrics
->>> items = item_metrics(
+>>> from techminer2.performance import performance_metrics
+>>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='nlp_phrases',
@@ -37,30 +37,31 @@ Most Frequent Words
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(items.df_.to_markdown())
-| nlp_phrases                 |   rank_occ |   OCC |
-|:----------------------------|-----------:|------:|
-| REGULATORY_TECHNOLOGY       |          1 |    18 |
-| FINANCIAL_INSTITUTIONS      |          2 |    15 |
-| FINANCIAL_REGULATION        |          3 |     7 |
-| REGULATORY_COMPLIANCE       |          4 |     7 |
-| FINANCIAL_SECTOR            |          5 |     7 |
-| ARTIFICIAL_INTELLIGENCE     |          6 |     7 |
-| GLOBAL_FINANCIAL_CRISIS     |          7 |     6 |
-| FINANCIAL_CRISIS            |          8 |     6 |
-| FINANCIAL_SERVICES_INDUSTRY |          9 |     5 |
-| FINANCIAL_SYSTEM            |         10 |     5 |
+>>> print(metrics.df_.to_markdown())
+| nlp_phrases             |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| REGULATORY_TECHNOLOGY   |          1 |    18 |            13 |                   5 |               27.78 |
+| FINANCIAL_INSTITUTIONS  |          2 |    15 |            11 |                   4 |               26.67 |
+| FINANCIAL_REGULATION    |          3 |     7 |             6 |                   1 |               14.29 |
+| REGULATORY_COMPLIANCE   |          4 |     7 |             6 |                   1 |               14.29 |
+| FINANCIAL_SECTOR        |          5 |     7 |             5 |                   2 |               28.57 |
+| ARTIFICIAL_INTELLIGENCE |          6 |     7 |             4 |                   3 |               42.86 |
+| FINANCIAL_SYSTEM        |          7 |     6 |             5 |                   1 |               16.67 |
+| GLOBAL_FINANCIAL_CRISIS |          8 |     6 |             3 |                   3 |               50    |
+| FINANCIAL_CRISIS        |          9 |     6 |             6 |                   0 |                0    |
+| COMPLIANCE_COSTS        |         10 |     6 |             5 |                   1 |               16.67 |
 
 
->>> items.fig_.write_html("sphinx/_static/performance/nlp_phrases/most_frequent_chart.html")
+
+>>> metrics.fig_.write_html("sphinx/_static/performance/words/nlp_phrases/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/nlp_phrases/most_frequent_chart.html" 
+    <iframe src="../../../../_static/performance/words/nlp_phrases/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> print(items.prompt_)
+>>> print(metrics.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'nlp_phrases' field in a scientific bibliography database. Summarize \\
 the table below, sorted by the 'OCC' metric, and delimited by triple \\
@@ -70,18 +71,18 @@ concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| nlp_phrases                 |   rank_occ |   OCC |
-|:----------------------------|-----------:|------:|
-| REGULATORY_TECHNOLOGY       |          1 |    18 |
-| FINANCIAL_INSTITUTIONS      |          2 |    15 |
-| FINANCIAL_REGULATION        |          3 |     7 |
-| REGULATORY_COMPLIANCE       |          4 |     7 |
-| FINANCIAL_SECTOR            |          5 |     7 |
-| ARTIFICIAL_INTELLIGENCE     |          6 |     7 |
-| GLOBAL_FINANCIAL_CRISIS     |          7 |     6 |
-| FINANCIAL_CRISIS            |          8 |     6 |
-| FINANCIAL_SERVICES_INDUSTRY |          9 |     5 |
-| FINANCIAL_SYSTEM            |         10 |     5 |
+| nlp_phrases             |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| REGULATORY_TECHNOLOGY   |          1 |    18 |            13 |                   5 |               27.78 |
+| FINANCIAL_INSTITUTIONS  |          2 |    15 |            11 |                   4 |               26.67 |
+| FINANCIAL_REGULATION    |          3 |     7 |             6 |                   1 |               14.29 |
+| REGULATORY_COMPLIANCE   |          4 |     7 |             6 |                   1 |               14.29 |
+| FINANCIAL_SECTOR        |          5 |     7 |             5 |                   2 |               28.57 |
+| ARTIFICIAL_INTELLIGENCE |          6 |     7 |             4 |                   3 |               42.86 |
+| FINANCIAL_SYSTEM        |          7 |     6 |             5 |                   1 |               16.67 |
+| GLOBAL_FINANCIAL_CRISIS |          8 |     6 |             3 |                   3 |               50    |
+| FINANCIAL_CRISIS        |          9 |     6 |             6 |                   0 |                0    |
+| COMPLIANCE_COSTS        |         10 |     6 |             5 |                   1 |               16.67 |
 ```
 <BLANKLINE>
 

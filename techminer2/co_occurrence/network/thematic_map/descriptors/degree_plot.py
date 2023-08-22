@@ -51,7 +51,10 @@ Degree Plot
 1     1   REGULATORY_TECHNOLOGY 20:274      19
 2     2  FINANCIAL_INSTITUTIONS 16:198      19
 3     3   REGULATORY_COMPLIANCE 15:232      18
-4     4                 FINTECH 12:249      18
+4     4    FINANCIAL_REGULATION 12:395      18
+
+
+
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -67,24 +70,27 @@ Table:
 |  1 |      1 | REGULATORY_TECHNOLOGY 20:274       |       19 |
 |  2 |      2 | FINANCIAL_INSTITUTIONS 16:198      |       19 |
 |  3 |      3 | REGULATORY_COMPLIANCE 15:232       |       18 |
-|  4 |      4 | FINTECH 12:249                     |       18 |
-|  5 |      5 | FINANCE 07:017                     |       18 |
-|  6 |      6 | FINANCIAL_REGULATION 12:395        |       17 |
-|  7 |      7 | INFORMATION_TECHNOLOGY 06:177      |       16 |
-|  8 |      8 | REGULATION 05:164                  |       16 |
-|  9 |      9 | ARTIFICIAL_INTELLIGENCE 08:036     |       15 |
-| 10 |     10 | FINANCIAL_SERVICES_INDUSTRY 05:315 |       15 |
-| 11 |     11 | FINANCIAL_SYSTEM 05:189            |       15 |
-| 12 |     12 | RISK_MANAGEMENT 05:019             |       15 |
-| 13 |     13 | FINANCIAL_CRISIS 07:058            |       14 |
-| 14 |     14 | FINANCIAL_SERVICES 06:195          |       14 |
-| 15 |     15 | GLOBAL_FINANCIAL_CRISIS 06:177     |       14 |
-| 16 |     16 | FINANCIAL_SECTOR 07:169            |       12 |
+|  4 |      4 | FINANCIAL_REGULATION 12:395        |       18 |
+|  5 |      5 | FINTECH 12:249                     |       17 |
+|  6 |      6 | FINANCE 07:017                     |       17 |
+|  7 |      7 | GLOBAL_FINANCIAL_CRISIS 06:177     |       17 |
+|  8 |      8 | FINANCIAL_SYSTEM 06:339            |       16 |
+|  9 |      9 | INFORMATION_TECHNOLOGY 06:177      |       16 |
+| 10 |     10 | ARTIFICIAL_INTELLIGENCE 08:036     |       15 |
+| 11 |     11 | COMPLIANCE_COSTS 06:033            |       15 |
+| 12 |     12 | FINANCIAL_CRISIS 07:058            |       14 |
+| 13 |     13 | TECHNOLOGICAL_SOLUTIONS 06:016     |       14 |
+| 14 |     14 | FINANCIAL_SERVICES_INDUSTRY 05:315 |       14 |
+| 15 |     15 | FINANCIAL_SECTOR 07:169            |       13 |
+| 16 |     16 | FINANCIAL_TECHNOLOGY 06:173        |       13 |
 | 17 |     17 | COMPLIANCE 07:030                  |       12 |
-| 18 |     18 | FINANCIAL_TECHNOLOGY 06:173        |       12 |
+| 18 |     18 | FINANCIAL_SERVICES 06:195          |       12 |
 | 19 |     19 | ANTI_MONEY_LAUNDERING 06:035       |       10 |
 ```
 <BLANKLINE>
+
+
+
 
 """
 from .....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph

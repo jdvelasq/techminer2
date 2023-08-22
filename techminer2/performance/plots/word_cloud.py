@@ -70,7 +70,6 @@ def word_cloud(
     #
     # TREND ANALYSIS:
     time_window=2,
-    is_trend_analysis=False,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -98,7 +97,6 @@ def word_cloud(
         #
         # TREND ANALYSIS:
         time_window=time_window,
-        is_trend_analysis=is_trend_analysis,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

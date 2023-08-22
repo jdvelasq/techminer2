@@ -110,6 +110,8 @@ def items_occurrences_by_year(
         if year not in indicators_by_year.columns:
             indicators_by_year[year] = 0
 
+    indicators_by_year = indicators_by_year.sort_index(axis=1)
+
     if cumulative:
         indicators_by_year = indicators_by_year.cumsum(axis=1)
 

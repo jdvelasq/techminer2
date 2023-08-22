@@ -57,6 +57,7 @@ Import a scopus data file in the working directory.
 --INFO-- Copying `title` column to `raw_title_nlp_phrases`
 --INFO-- Processing `raw_title_nlp_phrases` column
 --INFO-- Processing `abstract` column
+--INFO-- Processing `abstract` column
 --INFO-- Copying `abstract` column to `raw_abstract_nlp_phrases`
 --INFO-- Processing `raw_abstract_nlp_phrases` column
 --INFO-- Concatenating `raw_title_nlp_phrases` and `raw_abstract_nlp_phrases` columns to `raw_nlp_phrases`
@@ -501,7 +502,13 @@ def ingest_raw_data(
     process_column(
         root_dir,
         "abstract",
-        lambda x: x.mask(x == "[no abstract available]", pd.NA).str.lower(),
+        lambda x: x.mask(x.str.strip() == "[no abstract available]", pd.NA).str.lower(),
+    )
+
+    process_column(
+        root_dir,
+        "abstract",
+        lambda x: x.mask(x.str.strip() == "[ no abstract available ]", pd.NA).str.lower(),
     )
 
     copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
@@ -932,9 +939,7 @@ def filter_nlp_phrases(root_dir):
         #
         # Selects countries in nlp phrases
         countries = [w.upper().replace(" ", "_") for w in countries]
-        countries = [
-            country for country in countries if country in nlp_phrases
-        ]
+        countries = [country for country in countries if country in nlp_phrases]
 
         return countries
 

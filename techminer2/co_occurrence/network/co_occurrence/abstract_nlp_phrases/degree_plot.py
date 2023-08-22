@@ -44,12 +44,12 @@ Degree Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
-   Node                                Name  Degree
-0     0        REGULATORY_TECHNOLOGY 17:266      19
-1     1       FINANCIAL_INSTITUTIONS 15:194      17
-2     2        REGULATORY_COMPLIANCE 07:198      14
-3     3  FINANCIAL_SERVICES_INDUSTRY 05:315      14
-4     4      ARTIFICIAL_INTELLIGENCE 07:033      13
+   Node                           Name  Degree
+0     0   REGULATORY_TECHNOLOGY 17:266      18
+1     1  FINANCIAL_INSTITUTIONS 15:194      16
+2     2   REGULATORY_COMPLIANCE 07:198      15
+3     3        FINANCIAL_SYSTEM 05:328      15
+4     4        COMPLIANCE_COSTS 06:033      13
 
 >>> print(plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
@@ -61,28 +61,29 @@ Table:
 ```
 |    |   Node | Name                               |   Degree |
 |---:|-------:|:-----------------------------------|---------:|
-|  0 |      0 | REGULATORY_TECHNOLOGY 17:266       |       19 |
-|  1 |      1 | FINANCIAL_INSTITUTIONS 15:194      |       17 |
-|  2 |      2 | REGULATORY_COMPLIANCE 07:198       |       14 |
-|  3 |      3 | FINANCIAL_SERVICES_INDUSTRY 05:315 |       14 |
-|  4 |      4 | ARTIFICIAL_INTELLIGENCE 07:033     |       13 |
-|  5 |      5 | FINANCIAL_SYSTEM 04:178            |       13 |
-|  6 |      6 | FINANCIAL_SECTOR 07:169            |       12 |
-|  7 |      7 | FINANCIAL_REGULATION 06:330        |       12 |
-|  8 |      8 | INFORMATION_TECHNOLOGY 05:177      |       12 |
-|  9 |      9 | DIGITAL_INNOVATION 03:164          |       12 |
-| 10 |     10 | FINANCIAL_CRISIS 06:058            |       11 |
-| 11 |     11 | RISK_MANAGEMENT 04:015             |       11 |
-| 12 |     12 | FINANCIAL_TECHNOLOGY 05:173        |       10 |
-| 13 |     13 | REGTECH_SOLUTIONS 05:018           |       10 |
-| 14 |     14 | FINANCIAL_MARKETS 03:151           |        9 |
-| 15 |     15 | COMPLIANCE_COSTS 03:002            |        9 |
-| 16 |     16 | GLOBAL_FINANCIAL_CRISIS 06:177     |        8 |
-| 17 |     17 | MACHINE_LEARNING 04:007            |        8 |
-| 18 |     18 | NEW_TECHNOLOGIES 04:012            |        7 |
-| 19 |     19 | REGTECH 03:034                     |        3 |
+|  0 |      0 | REGULATORY_TECHNOLOGY 17:266       |       18 |
+|  1 |      1 | FINANCIAL_INSTITUTIONS 15:194      |       16 |
+|  2 |      2 | REGULATORY_COMPLIANCE 07:198       |       15 |
+|  3 |      3 | FINANCIAL_SYSTEM 05:328            |       15 |
+|  4 |      4 | COMPLIANCE_COSTS 06:033            |       13 |
+|  5 |      5 | FINANCIAL_REGULATION 06:330        |       12 |
+|  6 |      6 | FINANCIAL_SERVICES_INDUSTRY 05:315 |       12 |
+|  7 |      7 | FINANCIAL_SECTOR 07:169            |       11 |
+|  8 |      8 | ARTIFICIAL_INTELLIGENCE 07:033     |       11 |
+|  9 |      9 | INFORMATION_TECHNOLOGY 05:177      |       11 |
+| 10 |     10 | REGTECH_SOLUTIONS 05:018           |       11 |
+| 11 |     11 | GLOBAL_FINANCIAL_CRISIS 06:177     |       10 |
+| 12 |     12 | FINANCIAL_CRISIS 06:058            |       10 |
+| 13 |     13 | FINANCIAL_TECHNOLOGY 05:173        |       10 |
+| 14 |     14 | RISK_MANAGEMENT 04:015             |       10 |
+| 15 |     15 | TECHNOLOGICAL_SOLUTIONS 05:016     |        9 |
+| 16 |     16 | NEW_TECHNOLOGIES 04:012            |        8 |
+| 17 |     17 | REGTECH 04:037                     |        7 |
+| 18 |     18 | REGTECH_APPLICATION 04:012         |        5 |
+| 19 |     19 | AVAILABLE_] 04:013                 |        0 |
 ```
 <BLANKLINE>
+
 
 
 """

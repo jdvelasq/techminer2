@@ -119,6 +119,7 @@ def tfidf(
     if custom_items is None:
         custom_items = generate_custom_items(
             indicators=indicators,
+            metric="OCC",
             top_n=top_n,
             occ_range=occ_range,
             gc_range=gc_range,

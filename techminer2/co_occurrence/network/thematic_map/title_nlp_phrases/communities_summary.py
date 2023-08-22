@@ -32,22 +32,22 @@ Communities Summary
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-   Cluster  ...                                              Terms
-0    CL_00  ...  REGULATORY_TECHNOLOGY; BANK_TREASURY; DIGITAL_...
-1    CL_01  ...  FINANCIAL_CRIME; AML_COMPLIANCE; REGTECH_SOLUT...
-2    CL_02  ...       ARTIFICIAL_INTELLIGENCE; EFFECTIVE_SOLUTIONS
-3    CL_03  ...  MODERN_INFORMATION_TECHNOLOGY; REGULATORY_AFFAIRS
-4    CL_04  ...  FINANCIAL_STABILITY; TRADITIONAL_FINANCIAL_INT...
-5    CL_05  ...                               FINANCIAL_REGULATION
-6    CL_06  ...                                     EUROPEAN_UNION
-7    CL_07  ...                                     FINANCIAL_RISK
-8    CL_08  ...                              FINANCIAL_DEVELOPMENT
-9    CL_09  ...                                   FINANCIAL_SYSTEM
-10   CL_10  ...                      REGULATORY_TECHNOLOGY_REGTECH
-11   CL_11  ...                                   SMART_REGULATION
-12   CL_12  ...                           CHARITABLE_ORGANISATIONS
+  Cluster  ...                                              Terms
+0    CL_0  ...  ARTIFICIAL_INTELLIGENCE; FINANCIAL_CRIME; EFFE...
+1    CL_1  ...  FINANCIAL_REGULATION; BANK_FAILURES; CONCEPT_A...
+2    CL_2  ...  REGULATORY_TECHNOLOGY; BANK_TREASURY; DIGITAL_...
+3    CL_3  ...  DIGITAL_REGULATORY_COMPLIANCE; UNDERSTANDING_R...
+4    CL_4  ...        FINANCIAL_RISK; INNOVATIVE_REGTECH_APPROACH
+5    CL_5  ...                                     EUROPEAN_UNION
+6    CL_6  ...                              FINANCIAL_DEVELOPMENT
+7    CL_7  ...                                       GDPR_REGTECH
+8    CL_8  ...                                   FINANCIAL_SYSTEM
+9    CL_9  ...                      REGULATORY_TECHNOLOGY_REGTECH
 <BLANKLINE>
-[13 rows x 4 columns]
+[10 rows x 4 columns]
+
+
+
 
 
 """

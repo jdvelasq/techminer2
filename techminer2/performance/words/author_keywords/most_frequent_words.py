@@ -9,8 +9,8 @@ Most Frequent Words
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import performance_metrics
->>> items = item_metrics(
+>>> from techminer2.performance import performance_metrics
+>>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -37,29 +37,29 @@ Most Frequent Words
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(items.df_.to_markdown())
-| author_keywords         |   rank_occ |   OCC |
-|:------------------------|-----------:|------:|
-| REGTECH                 |          1 |    28 |
-| FINTECH                 |          2 |    12 |
-| REGULATORY_TECHNOLOGY   |          3 |     7 |
-| COMPLIANCE              |          4 |     7 |
-| REGULATION              |          5 |     5 |
-| ANTI_MONEY_LAUNDERING   |          6 |     5 |
-| FINANCIAL_SERVICES      |          7 |     4 |
-| FINANCIAL_REGULATION    |          8 |     4 |
-| ARTIFICIAL_INTELLIGENCE |          9 |     4 |
-| RISK_MANAGEMENT         |         10 |     3 |
+>>> print(metrics.df_.to_markdown())
+| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| REGTECH                 |          1 |    28 |            20 |                   8 |               28.57 |
+| FINTECH                 |          2 |    12 |            10 |                   2 |               16.67 |
+| REGULATORY_TECHNOLOGY   |          3 |     7 |             5 |                   2 |               28.57 |
+| COMPLIANCE              |          4 |     7 |             5 |                   2 |               28.57 |
+| REGULATION              |          5 |     5 |             4 |                   1 |               20    |
+| ANTI_MONEY_LAUNDERING   |          6 |     5 |             5 |                   0 |                0    |
+| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |               25    |
+| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |               50    |
+| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |               25    |
+| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |               33.33 |
 
->>> items.fig_.write_html("sphinx/_static/performance/author_keywords/most_frequent_chart.html")
+>>> metrics.fig_.write_html("sphinx/_static/performance/words/author_keywords/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/author_keywords/most_frequent_chart.html" 
+    <iframe src="../../../../_static/performance/words/author_keywords/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> print(items.prompt_)
+>>> print(metrics.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'author_keywords' field in a scientific bibliography database. \\
 Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
@@ -69,18 +69,18 @@ provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| author_keywords         |   rank_occ |   OCC |
-|:------------------------|-----------:|------:|
-| REGTECH                 |          1 |    28 |
-| FINTECH                 |          2 |    12 |
-| REGULATORY_TECHNOLOGY   |          3 |     7 |
-| COMPLIANCE              |          4 |     7 |
-| REGULATION              |          5 |     5 |
-| ANTI_MONEY_LAUNDERING   |          6 |     5 |
-| FINANCIAL_SERVICES      |          7 |     4 |
-| FINANCIAL_REGULATION    |          8 |     4 |
-| ARTIFICIAL_INTELLIGENCE |          9 |     4 |
-| RISK_MANAGEMENT         |         10 |     3 |
+| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| REGTECH                 |          1 |    28 |            20 |                   8 |               28.57 |
+| FINTECH                 |          2 |    12 |            10 |                   2 |               16.67 |
+| REGULATORY_TECHNOLOGY   |          3 |     7 |             5 |                   2 |               28.57 |
+| COMPLIANCE              |          4 |     7 |             5 |                   2 |               28.57 |
+| REGULATION              |          5 |     5 |             4 |                   1 |               20    |
+| ANTI_MONEY_LAUNDERING   |          6 |     5 |             5 |                   0 |                0    |
+| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |               25    |
+| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |               50    |
+| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |               25    |
+| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |               33.33 |
 ```
 <BLANKLINE>
 
