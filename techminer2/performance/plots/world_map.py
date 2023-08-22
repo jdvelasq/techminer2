@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-.. _tm2.performance.contributors.countries.world_map:
+.. _tm2.performance.plots.world_map:
 
 World Map
 ===============================================================================
 
->>> from techminer2.performance.contributors.countries import world_map
+>>> from techminer2.performance.plots import world_map
 >>> chart = world_map(
 ...     #
 ...     # ITEMS PARAMS:
@@ -33,21 +33,24 @@ World Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/contributors/countries/world_map.html")
+>>> chart.fig_.write_html("sphinx/_static/performance/plots/world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/countries/world_map.html" 
+    <iframe src="../../../../../_static/performance/plots/world_map.html" 
     height="400px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()
-                rank_occ  OCC
-countries                    
-United Kingdom         1    7
-Australia              2    7
-United States          3    6
-Ireland                4    5
-China                  5    5
+                rank_occ  OCC  ...  between_2022_2023  growth_percentage
+countries                      ...                                      
+United Kingdom         1    7  ...                  1              14.29
+Australia              2    7  ...                  0               0.00
+United States          3    6  ...                  2              33.33
+Ireland                4    5  ...                  1              20.00
+China                  5    5  ...                  4              80.00
+<BLANKLINE>
+[5 rows x 5 columns]
+
 
 >>> print(chart.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
@@ -59,30 +62,31 @@ summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| countries            |   rank_occ |   OCC |
-|:---------------------|-----------:|------:|
-| United Kingdom       |          1 |     7 |
-| Australia            |          2 |     7 |
-| United States        |          3 |     6 |
-| Ireland              |          4 |     5 |
-| China                |          5 |     5 |
-| Italy                |          6 |     5 |
-| Germany              |          7 |     4 |
-| Switzerland          |          8 |     4 |
-| Bahrain              |          9 |     4 |
-| Hong Kong            |         10 |     3 |
-| Luxembourg           |         11 |     2 |
-| United Arab Emirates |         12 |     2 |
-| Spain                |         13 |     2 |
-| Indonesia            |         14 |     2 |
-| Greece               |         15 |     1 |
-| Japan                |         16 |     1 |
-| South Africa         |         17 |     1 |
-| Jordan               |         18 |     1 |
-| Ukraine              |         19 |     1 |
-| Malaysia             |         20 |     1 |
+| countries            |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:---------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| United Kingdom       |          1 |     7 |             6 |                   1 |               14.29 |
+| Australia            |          2 |     7 |             7 |                   0 |                0    |
+| United States        |          3 |     6 |             4 |                   2 |               33.33 |
+| Ireland              |          4 |     5 |             4 |                   1 |               20    |
+| China                |          5 |     5 |             1 |                   4 |               80    |
+| Italy                |          6 |     5 |             3 |                   2 |               40    |
+| Germany              |          7 |     4 |             3 |                   1 |               25    |
+| Switzerland          |          8 |     4 |             3 |                   1 |               25    |
+| Bahrain              |          9 |     4 |             3 |                   1 |               25    |
+| Hong Kong            |         10 |     3 |             3 |                   0 |                0    |
+| Luxembourg           |         11 |     2 |             2 |                   0 |                0    |
+| United Arab Emirates |         12 |     2 |             2 |                   0 |                0    |
+| Spain                |         13 |     2 |             1 |                   1 |               50    |
+| Indonesia            |         14 |     2 |             0 |                   2 |              100    |
+| Greece               |         15 |     1 |             1 |                   0 |                0    |
+| Japan                |         16 |     1 |             0 |                   1 |              100    |
+| South Africa         |         17 |     1 |             1 |                   0 |                0    |
+| Jordan               |         18 |     1 |             1 |                   0 |                0    |
+| Ukraine              |         19 |     1 |             1 |                   0 |                0    |
+| Malaysia             |         20 |     1 |             1 |                   0 |                0    |
 ```
 <BLANKLINE>
+
 
 
 """

@@ -70,7 +70,9 @@ def sankey_chart(
     cited_by_filter=None,
     **filters,
 ):
-    """Sankey plot"""
+    """
+    :meta private:
+    """
 
     def build_matrices():
         matrices = []
