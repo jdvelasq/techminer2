@@ -48,11 +48,11 @@ Word Trends
 >>> chart.df_.head()
                        rank_occ  OCC  ...  between_2022_2023  growth_percentage
 author_keywords                       ...                                      
-REGTECH                       1   28  ...                  8              28.57
-FINTECH                       2   12  ...                  2              16.67
-REGULATORY_TECHNOLOGY         3    7  ...                  2              28.57
-COMPLIANCE                    4    7  ...                  2              28.57
-REGULATION                    5    5  ...                  1              20.00
+REGTECH                       1   28  ...                8.0              28.57
+FINTECH                       2   12  ...                2.0              16.67
+REGULATORY_TECHNOLOGY         3    7  ...                2.0              28.57
+COMPLIANCE                    4    7  ...                2.0              28.57
+REGULATION                    5    5  ...                1.0              20.00
 <BLANKLINE>
 [5 rows x 5 columns]
 

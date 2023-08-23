@@ -9,16 +9,50 @@ ScientoPy 2.1.3
 
 
 .. toctree::
-    bar_graph
+    :maxdepth: 1
 
-.. toctree::    
-    bar_trends_graph
+    author_keywords/__index__
 
-.. toctree::    
-    time_line_graph
+------
 
-.. toctree::    
-    word_cloud
+.. toctree::
+    :maxdepth: 1
 
-.. toctree::    
-    top_trending_topics_graph
+    index_keywords/__index__
+
+------
+
+.. toctree::
+    :maxdepth: 1
+
+    keywords/__index__
+
+------
+
+.. toctree::
+    :maxdepth: 1
+
+    abstract_nlp_phrases/__index__
+
+------
+
+.. toctree::
+    :maxdepth: 1
+
+    title_nlp_phrases/__index__
+
+------
+
+.. toctree::
+    :maxdepth: 1
+
+    nlp_phrases/__index__
+
+------
+
+.. toctree::
+    :maxdepth: 1
+
+    descriptors/__index__
+
+------

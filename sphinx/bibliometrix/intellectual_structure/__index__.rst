@@ -4,9 +4,11 @@ Intellectual Structure >
 .. toctree::
    :maxdepth: 1
 
-   /techminer2/co_citation/__index__
+   co_citation_network/__index__
 
 
 .. toctree::   
-   /techminer2/citation/__index__
+   :maxdepth: 1
+   
+   citation_network/__index__
 
