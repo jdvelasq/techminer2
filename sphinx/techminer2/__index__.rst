@@ -1,4 +1,4 @@
-TechMiner 2+ (Jul 21, 2023)
+TechMiner 2+
 #########################################################################################
 
 ------
@@ -34,35 +34,35 @@ TechMiner 2+ (Jul 21, 2023)
 .. toctree::
    :maxdepth: 1
 
-   _co_authorship/__index__
+   co_authorship/__index__
 
 ------
 
 .. toctree::
    :maxdepth: 1
    
-   _co_occurrence/__index__
+   co_occurrence/__index__
 
 ------
 
 .. toctree::
    :maxdepth: 1
 
-   _citation/__index__
+   citation/__index__
 
 ------
 
 .. toctree::
    :maxdepth: 1
 
-   _bibliographic_coupling/__index__
+   bibliographic_coupling/__index__
 
 ------
 
 .. toctree::
    :maxdepth: 1
 
-   _co_citation/__index__
+   co_citation/__index__
 
 ------
 
@@ -76,13 +76,13 @@ TechMiner 2+ (Jul 21, 2023)
 .. toctree::
    :maxdepth: 1
 
-   _expertise/__index__
+   expertise/__index__
 
 ------
 
 .. toctree::
    :maxdepth: 1
 
-   _emergence/__index__
+   emergence/__index__
 
 ------

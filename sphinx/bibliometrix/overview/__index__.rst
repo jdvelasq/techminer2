@@ -2,16 +2,16 @@ Overview >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   main_information
+   /techminer2/performance/overview/general_metrics
 
 .. toctree::
-   annual_scientific_production
+   /techminer2/performance/overview/annual_scientific_production
 
 .. toctree::   
-   average_citations_per_year
+   /techminer2/performance/overview/average_citations_per_year
 
 .. toctree::
-   three_field_plot
+   /techminer2/co_occurrence/sankey_chart
 
 
 
