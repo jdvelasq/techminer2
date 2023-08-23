@@ -46,7 +46,7 @@ Cosine Similarities Graph
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....co_occurrence.cosine_similarities_graph import (
+from ....co_occurrence.plots.cosine_similarities_graph import (
     cosine_similarities_graph as __cosine_similarities_graph,
 )
 

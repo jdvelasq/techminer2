@@ -36,7 +36,7 @@ Bubble Chart
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...bubble_chart import bubble_chart as __bubble_chart
+from ...plots.bubble_chart import bubble_chart as __bubble_chart
 
 ROWS_AND_COLUMNS = "abstract_nlp_phrases"
 

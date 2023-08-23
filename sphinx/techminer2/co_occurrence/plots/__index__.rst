@@ -1,4 +1,4 @@
-Co-occurrence >
+Plots >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ------
@@ -23,14 +23,6 @@ Co-occurrence >
    network/__index__
 
 ------
-
-.. toctree::
-   :maxdepth: 1
-   
-   plots/__index__
-
-------
-
 
 .. toctree::
    matrix_viewer

@@ -9,7 +9,7 @@ Co-occurrences Chart
 ===============================================================================
 
 
->>> from techminer2.associations_analysis.graphs import co_occurrences_chart
+>>> from techminer2.co_occurrence.plots import co_occurrences_chart
 >>> co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -50,7 +50,7 @@ Co-occurrences Chart
 """
 import plotly.express as px
 
-from .item_associations import item_associations
+from ..item_associations import item_associations
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

@@ -1,52 +1,78 @@
 Report >
 ==============================================================================
 
-.. toctree::
-    column_chart    
+-------
 
 .. toctree::
-    bar_chart
+    /techminer2/performance/plots/column_chart    
+
+-------
 
 .. toctree::
-    pie_chart
+    /techminer2/performance/plots/bar_chart
+
+-------
 
 .. toctree::
-    line_chart
+    /techminer2/performance/plots/pie_chart
 
------
+-------
 
-* :ref:`tm2.performance.word_cloud`
+.. toctree::
+    /techminer2/performance/plots/line_chart
 
------
+-------
 
+.. toctree::
+    /techminer2/performance/plots/word_cloud
+
+-------
 
 .. toctree::
     multi_donut
+-------
 
 .. toctree::
-    bubble_chart
+    /techminer/co_occurrence/plots/bubble_chart
+
+-------
 
 .. toctree::
     gantt_chart
 
+-------
+
 .. toctree::
-    butterfly_chart
+    /techminer/co_occurrence/plots/butterfly_chart
+
+-------
 
 .. toctree::
     scatter_plot
 
+-------
+
 .. toctree::
     cluster_map
+
+-------
 
 .. toctree::
     super_profile
 
+-------
+
 ..  toctree::
-    world_map
+    /techminer2/performance/plots/world_map
+
+-------
 
 ..  toctree::
     plot_classifications
 
+-------
+
 ..  toctree::
     plot_emergence
 
+-------

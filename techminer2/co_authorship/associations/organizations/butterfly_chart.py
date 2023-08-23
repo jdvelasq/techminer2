@@ -38,7 +38,7 @@ Butterfly Chart
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....co_occurrence.butterfly_chart import butterfly_chart as __butterfly_chart
+from ....co_occurrence.plots.butterfly_chart import butterfly_chart as __butterfly_chart
 
 ROWS_AND_COLUMNS = "organizations"
 

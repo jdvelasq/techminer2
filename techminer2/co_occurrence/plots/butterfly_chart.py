@@ -13,7 +13,7 @@ Butterfly Chart
 
 
 
->>> from techminer2.co_occurrence_analysis.graphs import butterfly_chart
+>>> from techminer2.co_occurrence.plots import butterfly_chart
 >>> chart = butterfly_chart(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -52,7 +52,7 @@ Butterfly Chart
 """
 import plotly.graph_objects as go
 
-from .co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence_matrix import co_occurrence_matrix
 
 
 def butterfly_chart(
