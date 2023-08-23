@@ -2,11 +2,11 @@ Cited References >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   most_local_cited_references
+   /techminer2/citation/documents/most_global_cited_references
 
 .. toctree::
-   most_global_cited_references
+   /techminer2/citation/documents/most_local_cited_references
 
 .. toctree::
-   rpys
+   /techminer2/citation/documents/rpys
 

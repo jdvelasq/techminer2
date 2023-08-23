@@ -4,14 +4,14 @@ Authors >
 .. toctree::
     :maxdepth: 1
 
-    authors/__index__
+    /techminer2/performance/contributors/authors/__index__
 
 .. toctree::
     :maxdepth: 1
 
-    affiliations/__index__
+    /techminer2/performance/contributors/organizations/__index__
 
 .. toctree::
     :maxdepth: 1
 
-    countries/__index__        
+    /techminer2/performance/contributors/countries/__index__

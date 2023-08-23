@@ -1,12 +1,12 @@
 Intellectual Structure >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::   
-   co_citation_network
+.. toctree::
+   :maxdepth: 1
+
+   /techminer2/co_citation/__index__
 
 
 .. toctree::   
-   historiograph
+   /techminer2/citation/__index__
 
-.. toctree::   
-   citation_network   

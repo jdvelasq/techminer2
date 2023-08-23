@@ -2,7 +2,9 @@ Clustering >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   clustering_by_coupling
+   :maxdepth: 1
+
+   /techminer2/bibliographic_coupling/__index__
 
 
 

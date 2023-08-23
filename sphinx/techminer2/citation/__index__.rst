@@ -6,7 +6,7 @@ Citation >
 .. toctree::
     :maxdepth: 1
 
-    network_approach/__index__
+    network/__index__
 
 -------
 
@@ -15,5 +15,5 @@ Citation >
     
     documents/__index__
 
-
+-------
     

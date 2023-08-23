@@ -2,10 +2,14 @@ Conceptual Structure >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   co_occurrence_network
+   :maxdeep: 1
+
+   /techminer2/co_occurrence/network/co_occurrence/__index__
 
 .. toctree::
-   thematic_map
+   :maxdeep: 1
+
+   /techminer2/co_occurrence/network/thematic_map/__index__
 
 .. toctree::
    thematic_evolution   
