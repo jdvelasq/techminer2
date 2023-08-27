@@ -1,8 +1,10 @@
-Social Structure/
+Social Structure >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::      
-   collaboration_network
+.. toctree::    
+   :maxdepth: 1  
+   
+   collaboration_network/__index__
 
 .. toctree::   
    collaboration_worldmap

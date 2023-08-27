@@ -1,9 +1,9 @@
-Discover/
+Discover >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. toctree::
-    list
+    /techminer2/performance/performance_metrics
 
 .. toctree::
     :maxdepth: 1
@@ -28,7 +28,7 @@ Discover/
     find_similar_records
 
 .. toctree::
-    terms_by_year
+    /techminer2/performance/plots/terms_by_year
 
 
 

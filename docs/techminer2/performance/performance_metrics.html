@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Performance Metrics &mdash; TechMiner 2+ Ago 24, 2023 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="collaboration_metrics.html" />
+    <link rel="prev" title="Trending Words per Year" href="words/descriptors/trending_words_per_year.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Ago 24, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES / HOW'S TO</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../__index__.html">TechMiner 2+</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliometrix/__index__.html">Bibliometrix 4.1.3</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../vantagepoint/__index__.html">VantagePoint v15</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../search/__index__.html">Search &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refine/__index__.html">Refine &gt;</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../vantagepoint/analyze/__index__.html">Analyze &gt;</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../vantagepoint/analyze/discover/__index__.html">Discover &gt;</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Performance Metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../vantagepoint/analyze/discover/matrix/__index__.html">Matrix &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../vantagepoint/analyze/discover/map/__index__.html">Map &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../vantagepoint/analyze/discover/list_comparison.html">List Comparison</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../vantagepoint/analyze/discover/find_similar_records.html">Find Similar Records</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots/terms_by_year.html">Terms by Year</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../vantagepoint/analyze/classify/__index__.html">Classify &gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../vantagepoint/analyze/explore/__index__.html">Explore &gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../vantagepoint/analyze/calculate/__index__.html">Calculate &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../vantagepoint/report/__index__.html">Report &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tlab/__index__.html">T-LAB 10.1.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scientopy/__index__.html">ScientoPy 2.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vosviewer/__index__.html">VOSviewer 1.6.19</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../__index__.html">TechMiner 2+</a></li>
+          <li class="breadcrumb-item"><a href="__index__.html">Performance &gt;</a></li>
+      <li class="breadcrumb-item active">Performance Metrics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/techminer2/performance/performance_metrics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-techminer2.performance.performance_metrics"></span><section id="performance-metrics">
+<span id="tm2-performance-performance-metrics"></span><h1>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.performance</span> <span class="kn">import</span> <span class="n">performance_metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span> <span class="o">=</span> <span class="n">performance_metrics</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEMS PARAMS:</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;OCCGC&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CHART PARAMS:</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">field_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">metric_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">textfont_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">marker_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">line_width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEM FILTERS:</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># TREND ANALYSIS:</span>
+<span class="gp">... </span>    <span class="n">time_window</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+<span class="go">| author_keywords       |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |</span>
+<span class="go">|:----------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|</span>
+<span class="go">| REGTECH               |          1 |         1 |    28 |                329 |                73 |         9 |         4 |      1.29 |</span>
+<span class="go">| FINTECH               |          2 |         2 |    12 |                249 |                48 |         5 |         3 |      0.83 |</span>
+<span class="go">| REGULATORY_TECHNOLOGY |          3 |         8 |     7 |                 37 |                10 |         4 |         2 |      1    |</span>
+<span class="go">| COMPLIANCE            |          4 |        12 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |</span>
+<span class="go">| REGULATION            |          5 |         4 |     5 |                164 |                22 |         2 |         2 |      0.33 |</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">prompt_</span><span class="p">)</span>
+<span class="go">Your task is to generate an analysis about the bibliometric indicators of \</span>
+<span class="go">the &#39;author_keywords&#39; field in a scientific bibliography database. \</span>
+<span class="go">Summarize the table below, sorted by the &#39;OCC&#39; metric, and delimited by \</span>
+<span class="go">triple backticks, identify any notable patterns, trends, or outliers in the \</span>
+<span class="go">data, and discuss their implications for the research field. Be sure to \</span>
+<span class="go">provide a concise summary of your findings in no more than 150 words.</span>
+
+<span class="go">Table:</span>
+<span class="go">```</span>
+<span class="go">| author_keywords                           |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |</span>
+<span class="go">|:------------------------------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|</span>
+<span class="go">| REGTECH                                   |          1 |         1 |    28 |                329 |                73 |         9 |         4 |      1.29 |</span>
+<span class="go">| FINTECH                                   |          2 |         2 |    12 |                249 |                48 |         5 |         3 |      0.83 |</span>
+<span class="go">| REGULATORY_TECHNOLOGY                     |          3 |         8 |     7 |                 37 |                10 |         4 |         2 |      1    |</span>
+<span class="go">| COMPLIANCE                                |          4 |        12 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |</span>
+<span class="go">| REGULATION                                |          5 |         4 |     5 |                164 |                22 |         2 |         2 |      0.33 |</span>
+<span class="go">| ANTI_MONEY_LAUNDERING                     |          6 |        10 |     5 |                 34 |                 6 |         3 |         2 |      0.75 |</span>
+<span class="go">| FINANCIAL_SERVICES                        |          7 |         3 |     4 |                168 |                20 |         3 |         2 |      0.43 |</span>
+<span class="go">| FINANCIAL_REGULATION                      |          8 |         9 |     4 |                 35 |                 7 |         2 |         2 |      0.29 |</span>
+<span class="go">| ARTIFICIAL_INTELLIGENCE                   |          9 |        19 |     4 |                 23 |                 4 |         3 |         2 |      0.6  |</span>
+<span class="go">| RISK_MANAGEMENT                           |         10 |        25 |     3 |                 14 |                 6 |         2 |         2 |      0.33 |</span>
+<span class="go">| INNOVATION                                |         11 |        32 |     3 |                 12 |                 4 |         1 |         1 |      0.25 |</span>
+<span class="go">| BLOCKCHAIN                                |         12 |        59 |     3 |                  5 |                 0 |         1 |         1 |      0.14 |</span>
+<span class="go">| SUPTECH                                   |         13 |        60 |     3 |                  4 |                 2 |         1 |         1 |      0.2  |</span>
+<span class="go">| SEMANTIC_TECHNOLOGIES                     |         14 |         7 |     2 |                 41 |                19 |         2 |         2 |      0.33 |</span>
+<span class="go">| DATA_PROTECTION                           |         15 |        13 |     2 |                 27 |                 4 |         2 |         1 |      0.5  |</span>
+<span class="go">| SMART_CONTRACTS                           |         16 |        20 |     2 |                 22 |                 8 |         1 |         1 |      0.14 |</span>
+<span class="go">| CHARITYTECH                               |         17 |        23 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |</span>
+<span class="go">| ENGLISH_LAW                               |         18 |        24 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |</span>
+<span class="go">| ACCOUNTABILITY                            |         19 |        26 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |</span>
+<span class="go">| DATA_PROTECTION_OFFICER                   |         20 |        27 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |</span>
+<span class="go">| BUSINESS_MODELS                           |         26 |         5 |     1 |                153 |                17 |         1 |         1 |      0.17 |</span>
+<span class="go">| FUTURE_RESEARCH_DIRECTION                 |         27 |         6 |     1 |                153 |                17 |         1 |         1 |      0.17 |</span>
+<span class="go">| STANDARDS                                 |         28 |        11 |     1 |                 33 |                14 |         1 |         1 |      0.2  |</span>
+<span class="go">| DIGITAL_IDENTITY                          |         29 |        14 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |</span>
+<span class="go">| EUROPEAN_UNION                            |         30 |        15 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |</span>
+<span class="go">| GENERAL_DATA_PROTECTION_REGULATION (GDPR) |         31 |        16 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |</span>
+<span class="go">| OPEN_BANKING                              |         32 |        17 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |</span>
+<span class="go">| PAYMENT_SERVICES_DIRECTIVE_2 (PSD_2)      |         33 |        18 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |</span>
+<span class="go">```</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/performance/performance_metrics.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../../../_static/performance/performance_metrics.html"
+height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.performance</span> <span class="kn">import</span> <span class="n">performance_metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span> <span class="o">=</span> <span class="n">performance_metrics</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEMS PARAMS:</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;OCC&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CHART PARAMS:</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">field_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">metric_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">textfont_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">marker_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">line_width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEM FILTERS:</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># TREND ANALYSIS:</span>
+<span class="gp">... </span>    <span class="n">time_window</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+<span class="go">| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |</span>
+<span class="go">|:------------------------|-----------:|------:|--------------:|--------------------:|</span>
+<span class="go">| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |</span>
+<span class="go">| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |</span>
+<span class="go">| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |</span>
+<span class="go">| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |</span>
+<span class="go">| INNOVATION              |         11 |     3 |             2 |                   1 |</span>
+<span class="go">| BLOCKCHAIN              |         12 |     3 |             3 |                   0 |</span>
+<span class="go">| SUPTECH                 |         13 |     3 |             1 |                   2 |</span>
+<span class="go">| SEMANTIC_TECHNOLOGIES   |         14 |     2 |             2 |                   0 |</span>
+<span class="go">| DATA_PROTECTION         |         15 |     2 |             1 |                   1 |</span>
+<span class="go">| SMART_CONTRACTS         |         16 |     2 |             2 |                   0 |</span>
+<span class="go">| CHARITYTECH             |         17 |     2 |             1 |                   1 |</span>
+<span class="go">| ENGLISH_LAW             |         18 |     2 |             1 |                   1 |</span>
+<span class="go">| ACCOUNTABILITY          |         19 |     2 |             2 |                   0 |</span>
+<span class="go">| DATA_PROTECTION_OFFICER |         20 |     2 |             2 |                   0 |</span>
+<span class="go">| GDPR                    |         21 |     2 |             2 |                   0 |</span>
+<span class="go">| SANDBOXES               |         22 |     2 |             2 |                   0 |</span>
+<span class="go">| TECHNOLOGY              |         23 |     2 |             1 |                   1 |</span>
+<span class="go">| FINANCE                 |         24 |     2 |             1 |                   1 |</span>
+<span class="go">| REPORTING               |         25 |     2 |             0 |                   2 |</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="words/descriptors/trending_words_per_year.html" class="btn btn-neutral float-left" title="Trending Words per Year" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="collaboration_metrics.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

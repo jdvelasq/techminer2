@@ -1,14 +1,18 @@
-Conceptual Structure/
+Conceptual Structure >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   co_occurrence_network
+    :maxdeep: 1
+
+    co_occurrence/__index__
 
 .. toctree::
-   thematic_map
+    :maxdeep: 1
+
+    thematic_map/__index__
 
 .. toctree::
-   thematic_evolution   
+    thematic_evolution   
 
 .. toctree::
-   factorial_analysis   
+    factorial_analysis   

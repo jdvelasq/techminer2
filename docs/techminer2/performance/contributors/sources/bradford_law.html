@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bradford’s Law &mdash; TechMiner 2+ Ago 24, 2023 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Local Impact — H-Index" href="local_impact_h_index.html" />
+    <link rel="prev" title="Most Local Cited" href="most_local_cited.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Ago 24, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES / HOW'S TO</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../__index__.html">TechMiner 2+</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../ingest/__index__.html">Ingest &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../refine/__index__.html">Refine &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../search/__index__.html">Search &gt;</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../__index__.html">Performance &gt;</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../plots/__index__.html">Plots &gt;</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../__index__.html">Contributors &gt;</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../authors/__index__.html">Authors &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../organizations/__index__.html">Organizations &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../countries/__index__.html">Countries &gt;</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="__index__.html">Sources &gt;</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="most_frequent.html">Performance Metrics</a></li>
+<li class="toctree-l5"><a class="reference internal" href="most_local_cited.html">Most Local Cited</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Bradford’s Law</a></li>
+<li class="toctree-l5"><a class="reference internal" href="local_impact_h_index.html">Local Impact — H-Index</a></li>
+<li class="toctree-l5"><a class="reference internal" href="local_impact_m_index.html">Local Impact — M-Index</a></li>
+<li class="toctree-l5"><a class="reference internal" href="local_impact_g_index.html">Local Impact — G-Index</a></li>
+<li class="toctree-l5"><a class="reference internal" href="local_impact_global_citations.html">Local Impact — Global Citations</a></li>
+<li class="toctree-l5"><a class="reference internal" href="production_over_time.html">Production over Time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../co_authorship/__index__.html">Co-authorship &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../co_occurrence/__index__.html">Co-occurrence &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../correlation/__index__.html">Correlation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../citation/__index__.html">Citation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bibliographic_coupling/__index__.html">Bibliographic Coupling &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../co_citation/__index__.html">Co-citation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../thematics/__index__.html">Thematics &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../agenda/__index__.html">Agenda &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../expertise/__index__.html">Expertise &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../emergence/__index__.html">Emergence &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bibliometrix/__index__.html">Bibliometrix 4.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vantagepoint/__index__.html">VantagePoint v15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tlab/__index__.html">T-LAB 10.1.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../scientopy/__index__.html">ScientoPy 2.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vosviewer/__index__.html">VOSviewer 1.6.19</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../__index__.html">TechMiner 2+</a></li>
+          <li class="breadcrumb-item"><a href="../../__index__.html">Performance &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../__index__.html">Contributors &gt;</a></li>
+          <li class="breadcrumb-item"><a href="__index__.html">Sources &gt;</a></li>
+      <li class="breadcrumb-item active">Bradford’s Law</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/techminer2/performance/contributors/sources/bradford_law.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-techminer2.performance.contributors.sources.bradford_law"></span><section id="bradford-s-law">
+<h1>Bradford’s Law<a class="headerlink" href="#bradford-s-law" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.performance.plots</span> <span class="kn">import</span> <span class="n">bradford_law</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bradford</span> <span class="o">=</span> <span class="n">bradford_law</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bradford</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+<span class="go">|    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford&#39;s Group |</span>
+<span class="go">|---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|</span>
+<span class="go">|  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |</span>
+<span class="go">|  1 |            40 | 86.96 % |                 46 | 100.0 %  |                     1 |                        40 |              52 | 100.0 %         |                  3 |</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bradford</span><span class="o">.</span><span class="n">zones_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+<span class="go">| source_abbr                   |   no |   OCC |   cum_OCC |   global_citations |   zone |</span>
+<span class="go">|:------------------------------|-----:|------:|----------:|-------------------:|-------:|</span>
+<span class="go">| J BANK REGUL                  |    1 |     2 |         2 |                 35 |      1 |</span>
+<span class="go">| J FINANC CRIME                |    2 |     2 |         4 |                 13 |      1 |</span>
+<span class="go">| FOSTER INNOVCOMPET WITH FINTE |    3 |     2 |         6 |                  1 |      1 |</span>
+<span class="go">| STUD COMPUT INTELL            |    4 |     2 |         8 |                  1 |      1 |</span>
+<span class="go">| INT CONF INF TECHNOL SYST INN |    5 |     2 |        10 |                  0 |      1 |</span>
+<span class="go">| ROUTLEDGE HANDBFINANCIAL TECH |    6 |     2 |        12 |                  0 |      1 |</span>
+<span class="go">| J ECON BUS                    |    7 |     1 |        13 |                153 |      1 |</span>
+<span class="go">| NORTHWEST J INTL LAW BUS      |    8 |     1 |        14 |                150 |      1 |</span>
+<span class="go">| PALGRAVE STUD DIGIT BUS ENABL |    9 |     1 |        15 |                 33 |      1 |</span>
+<span class="go">| DUKE LAW J                    |   10 |     1 |        16 |                 30 |      1 |</span>
+<span class="go">| J RISK FINANC                 |   11 |     1 |        17 |                 21 |      2 |</span>
+<span class="go">| J MONEY LAUND CONTROL         |   12 |     1 |        18 |                 14 |      2 |</span>
+<span class="go">| FINANCIAL INNOV               |   13 |     1 |        19 |                 13 |      2 |</span>
+<span class="go">| ICEIS - PROC INT CONF ENTERP  |   14 |     1 |        20 |                 12 |      2 |</span>
+<span class="go">| HANDBBLOCKCHAIN, DIGIT FINANC |   15 |     1 |        21 |                 11 |      2 |</span>
+<span class="go">| HELIYON                       |   16 |     1 |        22 |                 11 |      2 |</span>
+<span class="go">| J RISK MANG FINANCIAL INST    |   17 |     1 |        23 |                  8 |      2 |</span>
+<span class="go">| ADV INTELL SYS COMPUT         |   18 |     1 |        24 |                  7 |      2 |</span>
+<span class="go">| ADELAIDE LAW REV              |   19 |     1 |        25 |                  5 |      2 |</span>
+<span class="go">| INTELL SYST ACCOUNT FINANCE M |   20 |     1 |        26 |                  5 |      2 |</span>
+<span class="go">| J FINANCIAL DATA SCI          |   21 |     1 |        27 |                  5 |      2 |</span>
+<span class="go">| LECTURE NOTES DATA ENG COMMUN |   22 |     1 |        28 |                  4 |      2 |</span>
+<span class="go">| UNIV NEW SOUTH WALES LAW J    |   23 |     1 |        29 |                  4 |      2 |</span>
+<span class="go">| EUR J RISK REGUL              |   24 |     1 |        30 |                  3 |      2 |</span>
+<span class="go">| FRONTIER ARTIF INTELL         |   25 |     1 |        31 |                  3 |      2 |</span>
+<span class="go">| J ADV RES DYN CONTROL SYST    |   26 |     1 |        32 |                  3 |      2 |</span>
+<span class="go">| J ANTITRUST ENFORC            |   27 |     1 |        33 |                  3 |      2 |</span>
+<span class="go">| PROC - IEEE WORLD CONGR SERV, |   28 |     1 |        34 |                  3 |      3 |</span>
+<span class="go">| ACM INT CONF PROC SER         |   29 |     1 |        35 |                  2 |      3 |</span>
+<span class="go">| CEUR WORKSHOP PROC            |   30 |     1 |        36 |                  2 |      3 |</span>
+<span class="go">| LECT NOTES BUS INF PROCESS    |   31 |     1 |        37 |                  2 |      3 |</span>
+<span class="go">| DECIS SUPPORT SYST            |   32 |     1 |        38 |                  1 |      3 |</span>
+<span class="go">| EAI/SPRINGER INNO COMM COMP   |   33 |     1 |        39 |                  1 |      3 |</span>
+<span class="go">| J IND BUS ECON                |   34 |     1 |        40 |                  1 |      3 |</span>
+<span class="go">| LECT NOTES NETWORKS SYST      |   35 |     1 |        41 |                  1 |      3 |</span>
+<span class="go">| PROC EUR CONF INNOV ENTREPREN |   36 |     1 |        42 |                  1 |      3 |</span>
+<span class="go">| PROC INT CONF ELECTRON BUS (I |   37 |     1 |        43 |                  1 |      3 |</span>
+<span class="go">| COMPUTER                      |   38 |     1 |        44 |                  0 |      3 |</span>
+<span class="go">| EUR BUS LAW REV               |   39 |     1 |        45 |                  0 |      3 |</span>
+<span class="go">| FINTECH: LAWREGULATION        |   40 |     1 |        46 |                  0 |      3 |</span>
+<span class="go">| J CORP FINANC                 |   41 |     1 |        47 |                  0 |      3 |</span>
+<span class="go">| J FINANC REGUL COMPLIANCE     |   42 |     1 |        48 |                  0 |      3 |</span>
+<span class="go">| JUSLETTER IT                  |   43 |     1 |        49 |                  0 |      3 |</span>
+<span class="go">| NEW POLIT ECON                |   44 |     1 |        50 |                  0 |      3 |</span>
+<span class="go">| RES INT BUS FINANC            |   45 |     1 |        51 |                  0 |      3 |</span>
+<span class="go">| TECHNOL SOC                   |   46 |     1 |        52 |                  0 |      3 |</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bradford</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/performance/plots/bradford_law.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../../../_static/performance/plots/bradford_law.html")
+height="600px" width="100%" frameBorder="0"></iframe></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="most_local_cited.html" class="btn btn-neutral float-left" title="Most Local Cited" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="local_impact_h_index.html" class="btn btn-neutral float-right" title="Local Impact — H-Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

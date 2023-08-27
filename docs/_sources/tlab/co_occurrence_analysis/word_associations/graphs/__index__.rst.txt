@@ -1,14 +1,14 @@
-Graphs/
+Graphs >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     radial_diagram
 
 .. toctree::
-    cosine
+    cosine_similarities_graph
 
 .. toctree::
-    co_occurrences
+    co_occurrences_chart
 
 .. toctree::
     mds_map

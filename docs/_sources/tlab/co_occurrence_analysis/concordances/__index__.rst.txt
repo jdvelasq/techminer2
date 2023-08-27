@@ -1,4 +1,4 @@
-Concordances and Word Trees/
+Concordances and Word Trees >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::

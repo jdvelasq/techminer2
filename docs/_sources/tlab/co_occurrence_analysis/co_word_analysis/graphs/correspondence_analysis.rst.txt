@@ -1,2 +1,2 @@
-Correspondence Analysis
+TODO: Correspondence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

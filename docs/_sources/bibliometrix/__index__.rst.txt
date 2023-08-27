@@ -19,7 +19,7 @@ Bibliometrix 4.1.3
 .. toctree::
    :maxdepth: 1
 
-   sources/__index__
+   /techminer2/performance/contributors/sources/__index__
 
 .. toctree::
    :maxdepth: 1

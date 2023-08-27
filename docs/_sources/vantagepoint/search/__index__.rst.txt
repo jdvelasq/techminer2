@@ -2,5 +2,5 @@ Search/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   find_records
+   /techminer2/search/find_records
 

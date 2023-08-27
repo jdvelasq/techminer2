@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Techminer2: A package for the analysis of bibliographic datasets using Python &mdash; TechMiner 2+ Jul 21, 2023 documentation</title>
+  <title>Techminer2: A package for the analysis of bibliographic datasets using Python &mdash; TechMiner 2+ Ago 24, 2023 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -38,7 +38,7 @@
             TechMiner 2+
           </a>
               <div class="version">
-                Jul 21, 2023
+                Ago 24, 2023
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -54,23 +54,9 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">TECHMINER 2++</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="techminer/ingest/__index__.html">Ingest/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/refine/__index__.html">Refine/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/search/__index__.html">Search/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/co_occurrence_analysis/__index__.html">Co-occurrence Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/co_word_analysis/__index__.html">Co-word Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/correlation_analysis/__index__.html">Correlation Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/emergence_analysis/__index__.html">Emergence Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/factor_analysis/__index__.html">Factor Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/network_analysis/__index__.html">Network Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/performance_analysis/__index__.html">Performance Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/time_analysis/__index__.html">Time Analysis/</a></li>
-<li class="toctree-l1"><a class="reference internal" href="techminer/thematic_analysis/__index__.html">Thematic Analysis/</a></li>
-</ul>
 <p class="caption" role="heading"><span class="caption-text">EXAMPLES / HOW'S TO</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="techminer2/__index__.html">TechMiner 2+</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliometrix/__index__.html">Bibliometrix 4.1.3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vantagepoint/__index__.html">VantagePoint v15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tlab/__index__.html">T-LAB 10.1.5</a></li>
@@ -104,67 +90,6 @@
              
   <section id="techminer2-a-package-for-the-analysis-of-bibliographic-datasets-using-python">
 <h1>Techminer2: A package for the analysis of bibliographic datasets using Python<a class="headerlink" href="#techminer2-a-package-for-the-analysis-of-bibliographic-datasets-using-python" title="Permalink to this headline"></a></h1>
-<p>Bibliographic data can be analyzed in various ways, including science mapping
-analysis, technology mining, systematic mapping of literature, bibliometric
-analysis, and scientometric analysis.</p>
-<p>To perform these studies, several software tools are available for analyzing
-bibliographic databases. Common options include Bibliometrix, VantagePoint,
-T-LAB, and ScientoPy. However, each tool has its strengths and weaknesses. For
-instance, VantagePoint is powerful for data cleaning but is not open source,
-while Bibliometrix has a friendly user interface but lacks options for data
-cleaning and disambiguation. Similarly, T-LAB excels in text mining but is not
-specifically designed for bibliographic data analysis by fields. The problem
-arises when attempting to conduct a study that combines the strengths of
-multiple software tools. For instance:</p>
-<ul class="simple">
-<li><p>VantagePoint can be used to clean and disambiguate terms.</p></li>
-<li><p>Bibliometrix enables the creation of a thematic map using the cleaned author
-keywords.</p></li>
-<li><p>ScientoPy can help identify the cleaned author keywords with a higher average
-growth rate.</p></li>
-<li><p>Lastly, T-LAB can be utilized for topic modeling using the cleaned NLP
-phrases.</p></li>
-</ul>
-<p>However, in this scenario, a significant amount of time is wasted on exporting
-data from one software to another.</p>
-<p><strong>TechMiner2</strong> is an experimental package designed to facilitate the
-analysis of bibliographic datasets. It aims to support various analysis tasks
-performed by the aforementioned software tools without replacing them. The
-objectives behind its development are:</p>
-<ul class="simple">
-<li><p>Experimenting with data product design strategies, focusing on data-related
-challenges.</p></li>
-<li><p>Experiment with our interpretation of the thecniques implemented in the
-aforementioned software tools.</p></li>
-<li><p>Facilitating the design and experimentation with new algorithms for
-bibliographic data analysis.</p></li>
-<li><p>Assisting in the preparation of MSc and PhD theses, as well as scientific
-papers based on bibliographic data.</p></li>
-<li><p>Providing a platform for the combination and integration of various
-algorithms available separately in different software tools.</p></li>
-</ul>
-<p><strong>TechMiner2</strong> features modules that resemble the user interfaces of existing
-software tools, along with additional functionalities inspired by their
-comparison. It is an open-source package distributed under the MIT license
-and is user-friendly, developed and tested in Python version 3.6.</p>
-<p>The following figure shows the hierarchical dependencies of the functions.
-For example, VantagePoint module depends on the functions of the
-TM2 module.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------------+</span>    <span class="o">+--------------+</span>         <span class="o">+--------------+</span>
-<span class="o">|</span>      <span class="n">TM2</span>     <span class="o">|---&gt;|</span> <span class="n">VantagePoint</span> <span class="o">|--------&gt;|</span> <span class="n">Bibliometrix</span> <span class="o">|</span>
-<span class="o">+--------------+</span>    <span class="o">+--------------+</span>         <span class="o">+--------------+</span>
-                            <span class="o">|</span>                        <span class="o">|</span>
-                            <span class="o">|</span>    <span class="o">+--------------+</span>    <span class="o">|</span>
-                            <span class="o">+---&gt;|</span>    <span class="n">T</span><span class="o">-</span><span class="n">LAB</span>     <span class="o">|---&gt;|</span>
-                            <span class="o">|</span>    <span class="o">+--------------+</span>    <span class="o">|</span>
-                            <span class="o">|</span>                        <span class="o">|</span>
-                            <span class="o">|</span>    <span class="o">+--------------+</span>    <span class="o">|</span>
-                            <span class="o">+---&gt;|</span>   <span class="n">ScientoPy</span>  <span class="o">|---&gt;+</span>
-                                 <span class="o">+--------------+</span>
-</pre></div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">

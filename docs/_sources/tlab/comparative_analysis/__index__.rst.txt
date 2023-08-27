@@ -1,4 +1,4 @@
-Comparative Analysis
+Comparative Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::   
@@ -25,6 +25,6 @@ Comparative Analysis
 .. toctree::   
     :maxdepth: 1
 
-    singular_value_decomposition/__index__
+    /techminer2/co_occurrence/factor/svd/__index__
 
 

@@ -1,8 +1,4 @@
-Sequences and Network Analysis/
+Sequences and Network Analysis >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   ego_graph
-
-.. toctree::
-   ego_network
+See `TechMiner 2+ > Co-occurrence >` :ref:`tm2.co_occurrence.network`

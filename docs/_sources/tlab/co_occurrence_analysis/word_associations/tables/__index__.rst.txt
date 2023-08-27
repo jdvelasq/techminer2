@@ -1,14 +1,21 @@
-Tables/
+Tables >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-----
 
 .. toctree::
    selected_item
 
-.. toctree::
-   all_items
+-----
+
+* :ref:`tm2.search.lemma_associations`
+
+-----
 
 .. toctree::
    co_occurrence_matrix
+
+-----
 
 .. toctree::
    significance_test

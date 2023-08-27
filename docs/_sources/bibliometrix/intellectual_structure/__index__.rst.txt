@@ -1,12 +1,14 @@
-Intellectual Structure
+Intellectual Structure >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::   
-   co_citation_network
+.. toctree::
+   :maxdepth: 1
+
+   co_citation_network/__index__
 
 
 .. toctree::   
-   historiograph
+   :maxdepth: 1
+   
+   citation_network/__index__
 
-.. toctree::   
-   citation_network   

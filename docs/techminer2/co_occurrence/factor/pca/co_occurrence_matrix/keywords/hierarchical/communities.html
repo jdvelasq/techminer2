@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communities &mdash; TechMiner 2+ Ago 24, 2023 documentation</title>
+      <link rel="stylesheet" href="../../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../../_static/underscore.js"></script>
+        <script src="../../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../../../_static/copybutton.js"></script>
+        <script src="../../../../../../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../search.html" />
+    <link rel="next" title="Treemap" href="treemap.html" />
+    <link rel="prev" title="Cluster Centers" href="cluster_centers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Ago 24, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">EXAMPLES / HOW'S TO</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../__index__.html">TechMiner 2+</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../ingest/__index__.html">Ingest &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../refine/__index__.html">Refine &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../search/__index__.html">Search &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../performance/__index__.html">Performance &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../co_authorship/__index__.html">Co-authorship &gt;</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../../__index__.html">Co-occurrence &gt;</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../../associations/__index__.html">Associations &gt;</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../../__index__.html">Factor Approach &gt;</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../../__index__.html">PCA &gt;</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="../../__index__.html">Co-occurrence Matrix &gt;</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="../../author_keywords/__index__.html">Author Keywords &gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../index_keywords/__index__.html">Index Keywords &gt;</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="../__index__.html">Keywords &gt;</a><ul class="current">
+<li class="toctree-l7 current"><a class="reference internal" href="__index__.html">Hierarchical Clustering &gt;</a><ul class="current">
+<li class="toctree-l8"><a class="reference internal" href="cluster_centers.html">Cluster Centers</a></li>
+<li class="toctree-l8 current"><a class="current reference internal" href="#">Communities</a></li>
+<li class="toctree-l8"><a class="reference internal" href="treemap.html">Treemap</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../kmeans/__index__.html">K-Means &gt;</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../cosine_similarities.html">Cosine Similarities</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../embedding.html">Embedding</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../map_2d.html">Map 2D</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../tsne.html">TSNE</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../title_nlp_phrases/__index__.html">Title NLP Phrases &gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../abstract_nlp_phrases/__index__.html">Abstract NLP Phrases &gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../nlp_phrases/__index__.html">NLP Phrases &gt;</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../descriptors/__index__.html">Descriptors &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../tfidf/__index__.html">TFIDF &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../svd/__index__.html">SVD &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../network/__index__.html">Network Approach &gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../plots/__index__.html">Plots &gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../co_occurrence_matrix.html">Co-occurrence Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../matrix_viewer.html">Matrix Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../word_network.html">Word Network</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../correlation/__index__.html">Correlation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../citation/__index__.html">Citation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../bibliographic_coupling/__index__.html">Bibliographic Coupling &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../co_citation/__index__.html">Co-citation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../thematics/__index__.html">Thematics &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../agenda/__index__.html">Agenda &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../expertise/__index__.html">Expertise &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../emergence/__index__.html">Emergence &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../bibliometrix/__index__.html">Bibliometrix 4.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../vantagepoint/__index__.html">VantagePoint v15</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../tlab/__index__.html">T-LAB 10.1.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../scientopy/__index__.html">ScientoPy 2.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../vosviewer/__index__.html">VOSviewer 1.6.19</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../../../__index__.html">TechMiner 2+</a></li>
+          <li class="breadcrumb-item"><a href="../../../../../__index__.html">Co-occurrence &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../../../../__index__.html">Factor Approach &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../../../__index__.html">PCA &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../../__index__.html">Co-occurrence Matrix &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../__index__.html">Keywords &gt;</a></li>
+          <li class="breadcrumb-item"><a href="__index__.html">Hierarchical Clustering &gt;</a></li>
+      <li class="breadcrumb-item active">Communities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../../../_sources/techminer2/co_occurrence/factor/pca/co_occurrence_matrix/keywords/hierarchical/communities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-techminer2.co_occurrence.factor.pca.co_occurrence_matrix.keywords.hierarchical.communities"></span><section id="communities">
+<h1>Communities<a class="headerlink" href="#communities" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.co_occurrence.factor.pca.co_occurrence_matrix.keywords.hierarchical</span> <span class="kn">import</span> <span class="n">communities</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">communities</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># PARAMS:</span>
+<span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEM PARAMS:</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># PCA PARAMS:</span>
+<span class="gp">... </span>    <span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">whiten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tol</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">iterated_power</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_oversamples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">power_iteration_normalizer</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># HIERARCHICAL PARAMS:</span>
+<span class="gp">... </span>    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">connectivity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">compute_full_tree</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">distance_threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                           CL_0  ...            CL_5</span>
+<span class="go">0        SMART_CONTRACTS 03:023  ...  FINTECH 12:249</span>
+<span class="go">1             INNOVATION 03:012  ...</span>
+<span class="go">2             BLOCKCHAIN 03:005  ...</span>
+<span class="go">3                SUPTECH 03:004  ...</span>
+<span class="go">4  SEMANTIC_TECHNOLOGIES 02:041  ...</span>
+
+<span class="go">[5 rows x 6 columns]</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cluster_centers.html" class="btn btn-neutral float-left" title="Cluster Centers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="treemap.html" class="btn btn-neutral float-right" title="Treemap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
