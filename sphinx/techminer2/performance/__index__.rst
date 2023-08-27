@@ -40,3 +40,8 @@ Performance >
     collaboration_metrics    
 
 -----
+
+.. toctree::
+    statistics
+
+-----

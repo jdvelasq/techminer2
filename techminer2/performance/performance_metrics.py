@@ -240,7 +240,7 @@ def performance_metrics(
     prompt = _prompt(
         field=field,
         metric=metric,
-        data_frame=data_frame,
+        data_frame=data_frame.head(200),
     )
 
     fig = _fig(
@@ -248,7 +248,7 @@ def performance_metrics(
         # DATA PARAMS:
         field=field,
         metric=metric,
-        data_frame=data_frame,
+        data_frame=data_frame.head(200),
         #
         # CHART PARAMS:
         title=title,

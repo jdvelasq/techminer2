@@ -31,13 +31,21 @@ Co-occurrence >
 
 ------
 
-
 .. toctree::
-   matrix_viewer
+   /techminer2/co_occurrence/co_occurrence_matrix
 
 ------
 
 .. toctree::
-   sankey_chart
+   /techminer2/co_occurrence/matrix_viewer
+
+------
+
+.. toctree::
+   /techminer2/co_occurrence/word_network
+
+------
+.. toctree::
+   /techminer2/co_occurrence/sankey_chart
 
 ------

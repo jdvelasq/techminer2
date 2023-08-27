@@ -4,32 +4,32 @@ Plots >
 ------
 
 .. toctree::
-   :maxdepth: 1
-   
-   associations/__index__
+    /techminer2/co_occurrence/plots/multi_donut
+
 
 ------
 
 .. toctree::
-   :maxdepth: 1
-   
-   factor/__index__
+    /techminer2/co_occurrence/plots/bubble_chart
 
 ------
 
 .. toctree::
-   :maxdepth: 1
-   
-   network/__index__
+    /techminer2/co_occurrence/plots/butterfly_chart
 
 ------
 
 .. toctree::
-   matrix_viewer
+    /techminer2/co_occurrence/plots/co_occurrence_chart
 
 ------
 
 .. toctree::
-   sankey_chart
+    /techminer2/co_occurrence/plots/cosine_similarity_chart
+
+------
+
+.. toctree::
+    /techminer2/co_occurrence/plots/radial_diagram
 
 ------

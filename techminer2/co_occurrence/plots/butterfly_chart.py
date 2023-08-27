@@ -42,11 +42,11 @@ Butterfly Chart
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_analysis/graphs/butterfly_chart.html")
+... ).write_html("sphinx/_static/co_occurrence/plots/butterfly_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/co_occurrence_analysis/graphs/butterfly_chart.html" 
+    <iframe src="../../../../../_static/co_occurrence/plots/butterfly_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

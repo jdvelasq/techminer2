@@ -50,6 +50,13 @@ TechMiner 2+
 
 .. toctree::
    :maxdepth: 1
+   
+   correlation/__index__
+
+------
+
+.. toctree::
+   :maxdepth: 1
 
    citation/__index__
 
@@ -66,6 +73,13 @@ TechMiner 2+
    :maxdepth: 1
 
    co_citation/__index__
+
+------
+
+.. toctree::
+   :maxdepth: 1
+
+   thematics/__index__
 
 ------
 

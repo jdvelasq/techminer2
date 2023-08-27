@@ -5,6 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+# pylint: disable=global-statement
 """
 .. _tm2.ingest.ingest_raw_data:
 
@@ -20,67 +21,7 @@ Import a scopus data file in the working directory.
 ...     root_dir="data/regtech/", 
 ...     remove_raw_csv_files=True,
 ... )
---INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
---INFO-- Concatenating raw files in data/regtech/raw-data/references/
---INFO-- Concatenating raw files in data/regtech/raw-data/main/
---INFO-- Applying scopus tags to database files
---INFO-- Formatting column names in database files
---INFO-- Repairing authors ID
---INFO-- Repairing bad separators in keywords
---INFO-- Dropping NA columns in database files
---INFO-- Removed columns: {'page_count'}
---INFO-- Processing text columns (remove accents)
---INFO-- Processing text columns (remove stranger chars)
---INFO-- Removing records with `raw_authors` in ['Anon', '[No author name available]']
---INFO-- Removed 1 records
---INFO-- Processing `authors_id` column
---INFO-- Processing `document_type` column
---INFO-- Processing `eissn` column
---INFO-- Processing `global_citations` column
---INFO-- Processing `isbn` column
---INFO-- Processing `issn` column
---INFO-- Processing `raw_authors` column
---INFO-- Processing `source_name` column
---INFO-- Mask `source_abbr` column with `source_name`
---INFO-- Processing `source_abbr` column
---INFO-- Processing `doi` column
---INFO-- Disambiguating `authors` column
---INFO-- Copying `authors` column to `num_authors`
---INFO-- Processing `num_authors` column
---INFO-- Copying `global_references` column to `num_global_references`
---INFO-- Processing `num_global_references` column
---INFO-- Creating `article` column
---INFO-- Processing `raw_author_keywords` column
---INFO-- Processing `raw_index_keywords` column
---INFO-- Concatenating `raw_author_keywords` and `raw_index_keywords` columns to `raw_keywords`
---INFO-- Processing `title` column
---INFO-- Copying `title` column to `raw_title_nlp_phrases`
---INFO-- Processing `raw_title_nlp_phrases` column
---INFO-- Processing `abstract` column
---INFO-- Processing `abstract` column
---INFO-- Copying `abstract` column to `raw_abstract_nlp_phrases`
---INFO-- Processing `raw_abstract_nlp_phrases` column
---INFO-- Concatenating `raw_title_nlp_phrases` and `raw_abstract_nlp_phrases` columns to `raw_nlp_phrases`
---INFO-- Processing `raw_nlp_phrases` column
---INFO-- Concatenating `raw_nlp_phrases` and `raw_keywords` columns to `raw_descriptors`
---INFO-- Processing `raw_descriptors` column
---INFO-- Homogenizing local references
---INFO-- 27 local references homogenized
---INFO-- Homogenizing global references
---INFO-- 765 global references homogenized
---INFO-- The data/regtech/global_references.txt thesaurus file was applied to global_references in 'main' database
---INFO-- Creating `local_citations` column in references database
---INFO-- Creating `local_citations` column in documents database
---INFO-- The data/regtech/countries.txt thesaurus file was created
---INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
---INFO-- The data/regtech/organizations.txt thesaurus file was created
---INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
---INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
---INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
---INFO-- Process finished!!!
---INFO-- data/regtech/databases/_references.zip: 909 imported records
---INFO-- data/regtech/databases/_main.zip: 52 imported records
---INFO-- data/regtech/databases/_cited_by.zip: 387 imported records
+
 
 >>> import pandas as pd
 >>> from pprint import pprint
@@ -155,11 +96,13 @@ import glob
 import os
 import pathlib
 import re
+import time
 
 import pandas as pd
 import requests
 from nltk.stem import PorterStemmer
 from textblob import TextBlob
+from tqdm import tqdm
 
 from ..refine.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
 from ..refine.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
@@ -173,6 +116,16 @@ from .homogenize_global_references import homogenize_global_references
 from .homogenize_local_references import homogenize_local_references
 
 KEYWORDS_MAX_LENGTH = 50
+
+#
+# Define a message output with counter
+counter = 0
+
+
+def message(msg):
+    global counter
+    counter += 1
+    print(f"-- {counter:03d} -- {msg}")
 
 
 def ingest_raw_data(
@@ -196,12 +149,62 @@ def ingest_raw_data(
     """
 
     #
+    # Register tqdm pandas progress bar
+    tqdm.pandas()
+
+    #
+    # Elapsed time report
+    start_time = time.time()
+
+    # transform_abstract_keywords_to_underscore(root_dir)
+
+    # #
+    # #
+    # # Phase 4: References
+    # #
+    # #
+    # # create_references(root_dir, disable_progress_bar)
+    # message("Homogenizing local references")
+    # homogenize_local_references(root_dir)
+    # message("Homogenizing global references")
+    # homogenize_global_references(root_dir)
+
+    # #
+    # create__local_citations__column_in_references_database(root_dir)
+    # create__local_citations__column_in_documents_database(root_dir)
+
+    # #
+    # #
+    # # Phase 5: Thesaurus files
+    # #
+    # #
+    # create_countries_thesaurus(root_dir)
+    # create_words_thesaurus(root_dir)
+    # create_organizations_thesaurus(root_dir)
+
+    # apply_countries_thesaurus(root_dir)
+    # apply_words_thesaurus(root_dir)
+    # apply_organizations_thesaurus(root_dir)
+
+    # ## abstracts_report(root_dir=root_dir, file_name="imported_records.txt")
+    # report_imported_records_per_file(root_dir)
+
+    # message("Process finished!!!")
+
+    # #
+    # # Elapsed time report
+    # end_time = time.time()
+    # print("Execution time:", round(end_time - start_time, 1), "seconds")
+
+    # return
+
+    #
     #
     # Phase 1: Preparing database files
     #
     #
-    compress_raw_data(root_dir, remove_raw_csv_files)
 
+    compress_raw_data(root_dir, remove_raw_csv_files)
     create_working_directories(root_dir)
     create_stopword_txt_file(root_dir)
     create_database_files(root_dir)
@@ -222,6 +225,7 @@ def ingest_raw_data(
     #
     # Additional Step:
     # Replace journal nanme by journal abbr in references.
+
     replace_journal_name_in_references(root_dir)
 
     #
@@ -267,7 +271,7 @@ def ingest_raw_data(
     process_column(
         root_dir,
         "eissn",
-        lambda x: x.astype(str).str.replace("-", "", regex=True).str.upper(),
+        lambda x: x.astype(str).str.replace("-", "", regex=False).str.upper(),
     )
 
     process_column(
@@ -279,13 +283,13 @@ def ingest_raw_data(
     process_column(
         root_dir,
         "isbn",
-        lambda x: x.astype(str).str.replace("-", "", regex=True).str.upper(),
+        lambda x: x.astype(str).str.replace("-", "", regex=False).str.upper(),
     )
 
     process_column(
         root_dir,
         "issn",
-        lambda x: x.astype(str).str.replace("-", "", regex=True).str.upper(),
+        lambda x: x.astype(str).str.replace("-", "", regex=False).str.upper(),
     )
 
     process_column(
@@ -383,6 +387,7 @@ def ingest_raw_data(
     # To upper() and replace spaces with underscores
     # Merge author/index keywords into a single column
     #
+
     process_column(
         root_dir,
         "raw_author_keywords",
@@ -413,9 +418,10 @@ def ingest_raw_data(
     process_column(
         root_dir,
         "raw_index_keywords",
-        lambda x: x.str.upper()
+        lambda x: x.astype(str)
+        .str.upper()
         .str.split(";")
-        .map(
+        .apply(
             lambda w: "; ".join(
                 sorted(
                     z.strip()
@@ -434,7 +440,6 @@ def ingest_raw_data(
                     for z in w
                 )
             ),
-            na_action="ignore",
         ),
     )
     concatenate_columns(
@@ -476,14 +481,17 @@ def ingest_raw_data(
         root_dir,
         "raw_title_nlp_phrases",
         lambda x: x.astype(str)
-        .map(lambda z: TextBlob(z).noun_phrases)
-        .map(set, na_action="ignore")
-        .map(sorted, na_action="ignore")
+        .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
+        .map(
+            lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
+        )
+        .map(set)
+        .map(sorted)
         .map(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
         .str.upper()
-        .replace("   ", "  ")
-        .replace("  ", " ")
+        .str.replace("   ", "  ")
+        .str.replace("  ", " ")
         .str.replace(" ", "_")
         .str.replace("/", "_")
         .str.replace("\\", "_")
@@ -511,19 +519,23 @@ def ingest_raw_data(
         lambda x: x.mask(x.str.strip() == "[ no abstract available ]", pd.NA).str.lower(),
     )
 
+    # ***
     copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
     process_column(
         root_dir,
         "raw_abstract_nlp_phrases",
         lambda x: x.astype(str)
-        .map(lambda z: TextBlob(z).noun_phrases)
-        .map(sorted, na_action="ignore")
-        .map(set, na_action="ignore")
+        .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
+        .map(
+            lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
+        )
+        .map(sorted)
+        .map(set)
         .map(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
         .str.upper()
-        .replace("   ", "  ")
-        .replace("  ", " ")
+        .str.replace("   ", "  ")
+        .str.replace("  ", " ")
         .str.replace(" ", "_")
         .str.replace("/", "_")
         .str.replace("\\", "_")
@@ -556,7 +568,8 @@ def ingest_raw_data(
         "raw_nlp_phrases",
         lambda x: x.astype(str)
         .str.split("; ")
-        .apply(lambda x: sorted(set(x)))
+        .apply(set)
+        .apply(sorted)
         .apply(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
         .apply(lambda x: pd.NA if x == "" else x),
@@ -574,12 +587,14 @@ def ingest_raw_data(
         "raw_descriptors",
         lambda x: x.astype(str)
         .str.split("; ")
-        .apply(lambda x: sorted(set(x)))
-        .apply(lambda x: [z for z in x if z != "nan"])
+        .map(lambda x: sorted(set(x)))
+        .map(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
-        .apply(lambda x: pd.NA if x == "" else x),
+        .map(lambda x: pd.NA if x == "" else x),
     )
 
+    replace_underscores_in_title_column(root_dir)
+    replace_underscores_in_abstract_column(root_dir)
     transform_abstract_keywords_to_underscore(root_dir)
 
     #
@@ -588,7 +603,9 @@ def ingest_raw_data(
     #
     #
     # create_references(root_dir, disable_progress_bar)
+    message("Homogenizing local references")
     homogenize_local_references(root_dir)
+    message("Homogenizing global references")
     homogenize_global_references(root_dir)
 
     #
@@ -608,10 +625,18 @@ def ingest_raw_data(
     apply_words_thesaurus(root_dir)
     apply_organizations_thesaurus(root_dir)
 
-    print("--INFO-- Process finished!!!")
-
     ## abstracts_report(root_dir=root_dir, file_name="imported_records.txt")
     report_imported_records_per_file(root_dir)
+
+    message("Process finished!!!")
+
+    end_time = time.time()
+    print("Execution time:", round(end_time - start_time, 1), "seconds")
+
+    #
+    # Elapsed time report
+    end_time = time.time()
+    print("Execution time:", round(end_time - start_time, 1), "seconds")
 
 
 #
@@ -619,10 +644,14 @@ def ingest_raw_data(
 # End of main function
 #
 #
+
+
 def compress_raw_data(root_dir, remove_raw_csv_files):
     """
     :meta private:
     """
+
+    message("Compressing raw data files")
 
     raw_dir = os.path.join(root_dir, "raw-data")
 
@@ -640,6 +669,9 @@ def compress_raw_data(root_dir, remove_raw_csv_files):
 
 
 def replace_journal_name_in_references(root_dir):
+    #
+    message("Replacing journal name in references")
+
     abbrs = []
 
     processed_dir = pathlib.Path(root_dir) / "databases"
@@ -656,7 +688,7 @@ def replace_journal_name_in_references(root_dir):
     main_path = pathlib.Path(root_dir) / "databases/_main.zip"
     main = pd.read_csv(main_path, encoding="utf-8", compression="zip")
 
-    for source, source_abbr in zip(abbrs.source, abbrs.source_abbr):
+    for source, source_abbr in tqdm(zip(abbrs.source, abbrs.source_abbr), total=len(abbrs)):
         main["raw_global_references"] = main["raw_global_references"].str.replace(
             source, source_abbr, regex=False
         )
@@ -675,6 +707,7 @@ def create_working_directories(root_dir):
 
     :meta private:
     """
+    message("Creating working directories")
     for directory in ["databases", "reports"]:
         directory_path = os.path.join(root_dir, directory)
         if not os.path.exists(directory_path):
@@ -693,8 +726,8 @@ def create_stopword_txt_file(root_dir):
 
     :meta private:
     """
+    message("Creating stopwords.txt file")
     file_path = os.path.join(root_dir, "stopwords.txt")
-
     if not os.path.exists(file_path):
         with open(file_path, "w", encoding="utf-8"):
             pass
@@ -712,12 +745,19 @@ def create_database_files(root_dir):
 
     :meta private:
     """
+    message("Creating database files")
     raw_dir = os.path.join(root_dir, "raw-data")
     processed_dir = os.path.join(root_dir, "databases")
 
     folders = get_subdirectories(raw_dir)
     for folder in folders:
         data = concat_raw_zip_files(os.path.join(raw_dir, folder))
+        #
+        if len(data) < 500:
+            os.environ["TQDM_DISABLE"] = "True"
+        else:
+            os.environ["TQDM_DISABLE"] = "False"
+        #
         file_name = f"_{folder}.zip"
         file_path = os.path.join(processed_dir, file_name)
         data.to_csv(file_path, sep=",", encoding="utf-8", index=False, compression="zip")
@@ -744,7 +784,7 @@ def get_subdirectories(directory):
     return subdirectories
 
 
-def concat_raw_zip_files(path, quiet=False):
+def concat_raw_zip_files(path):
     """
     Concatenate raw ZIP files in a directory.
 
@@ -757,13 +797,12 @@ def concat_raw_zip_files(path, quiet=False):
 
     :meta private:
     """
-    if not quiet:
-        print(f"--INFO-- Concatenating raw files in {path}/")
 
     files = get_zip_files(path)
     if not files:
         raise FileNotFoundError(f"No ZIP files found in {path}")
 
+    message(f"Concatenating raw files in {path}/")
     data = []
     for file_name in files:
         file_path = os.path.join(path, file_name)
@@ -771,6 +810,7 @@ def concat_raw_zip_files(path, quiet=False):
 
     data = pd.concat(data, ignore_index=True)
     data = data.drop_duplicates()
+    data = data.reset_index(drop=True)
 
     return data
 
@@ -802,7 +842,7 @@ def rename_scopus_columns_in_database_files(root_dir):
 
     :meta private:
     """
-    print("--INFO-- Applying scopus tags to database files")
+    message("Applying Scopus tags to database files")
 
     owner = "jdvelasq"
     repo = "techminer2"
@@ -870,11 +910,20 @@ def filter_nlp_phrases(root_dir):
         # Computes the fingerprint key
         stemmer = PorterStemmer()
 
-        nlp_phrases["fingerprint"] = nlp_phrases["nlp_phrase"].str.replace("_", " ")
+        nlp_phrases["fingerprint"] = nlp_phrases["nlp_phrase"].str.translate(
+            str.maketrans("-", " ")
+        )
         nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].str.split(" ")
+        #
+        # ***
         nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(
             lambda x: [stemmer.stem(w) for w in x]
         )
+        # nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].swifter.apply(
+        #     lambda x: [stemmer.stem(w) for w in x]
+        # )
+        #
+        #
         nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(set)
         nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(sorted)
         nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(" ".join)
@@ -951,6 +1000,8 @@ def filter_nlp_phrases(root_dir):
     # & Social Change.
     #
 
+    message("Filtering nlp phrases")
+
     #
     # Selects the stopwords from GitHub and countries using only
     # nlp phrases on main
@@ -979,7 +1030,7 @@ def format_columns_names_in_database_files(root_dir: str) -> None:
 
     :meta private:
     """
-    print("--INFO-- Formatting column names in database files")
+    message("Formatting column names in database files")
 
     processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.zip"))
@@ -1018,7 +1069,7 @@ def repair_authors_id_in_database_files(root_dir: str) -> None:
 
     :meta private:
     """
-    print("--INFO-- Repairing authors ID")
+    message("Repairing authors ID")
 
     processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.zip"))
@@ -1098,7 +1149,7 @@ def repair_bad_separators_in_keywords(root_dir):
 
     :meta private:
     """
-    print("--INFO-- Repairing bad separators in keywords")
+    message("Repairing bad separators in keywords")
     processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.zip"))
     for file in files:
@@ -1121,7 +1172,7 @@ def repair_keywords_in_column(raw_keywords: pd.Series) -> pd.Series:
     keywords = keywords[keywords.str.len() > KEYWORDS_MAX_LENGTH]
     if len(keywords) > 0:
         for keyword in keywords:
-            print(f"--WARNING-- Keyword with bad separator: {keyword}")
+            print(f"     ---> Keyword with bad separator: {keyword}")
             raw_keywords = raw_keywords.str.replace(keyword, keyword.replace(",", ";"))
     return raw_keywords
 
@@ -1138,7 +1189,7 @@ def remove_records(root_dir, col_name, values_to_remove):
     """
     if len(values_to_remove) == 0:
         return
-    print(f"--INFO-- Removing records with `{col_name}` in {values_to_remove}")
+    message(f"Removing records with `{col_name}` in {values_to_remove}")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1147,7 +1198,7 @@ def remove_records(root_dir, col_name, values_to_remove):
         data = data[~data[col_name].isin(values_to_remove)]
         new_length = len(data)
         if org_length != new_length:
-            print(f"--INFO-- Removed {org_length - new_length} records")
+            print(f"     ---> Removed {org_length - new_length} records")
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
@@ -1157,7 +1208,7 @@ def drop_empty_columns_in_database_files(root_dir):
     :meta private:
     """
 
-    print("--INFO-- Dropping NA columns in database files")
+    message("Dropping NA columns in database files")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1166,7 +1217,7 @@ def drop_empty_columns_in_database_files(root_dir):
         data = data.dropna(axis=1, how="all")
         if len(data.columns) != len(original_cols):
             removed_cols = set(original_cols) - set(data.columns)
-            print(f"--INFO-- Removed columns: {removed_cols}")
+            print(f"     ---> Removed columns: {removed_cols}")
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
@@ -1179,7 +1230,7 @@ def process_text_columns(root_dir, process_func, msg):
 
     :meta private:
     """
-    print(f"--INFO-- Processing text columns ({msg})")
+    message(f"Processing text columns ({msg})")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1203,7 +1254,7 @@ def process_column(root_dir, column_name, process_func):
 
     :meta private:
     """
-    print(f"--INFO-- Processing `{column_name}` column")
+    message(f"Processing `{column_name}` column")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1218,7 +1269,7 @@ def mask_column(root_dir, masked_col, rep_col):
 
     :meta private:
     """
-    print(f"--INFO-- Mask `{masked_col}` column with `{rep_col}`")
+    message(f"Mask `{masked_col}` column with `{rep_col}`")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1284,7 +1335,7 @@ def disambiguate_author_names(root_dir):
             data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
     #
-    print("--INFO-- Disambiguating `authors` column")
+    message("Disambiguating `authors` column")
     data = load_authors_names()
     author_id2name = build_dict_names(data)
     repair_names(author_id2name)
@@ -1295,7 +1346,7 @@ def copy_to_column(root_dir, src, dest):
 
     :meta private:
     """
-    print(f"--INFO-- Copying `{src}` column to `{dest}`")
+    message(f"Copying `{src}` column to `{dest}`")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1310,7 +1361,7 @@ def concatenate_columns(root_dir, dest, column_name1, column_name2):
 
     :meta private:
     """
-    print(f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`")
+    message(f"Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1336,7 +1387,7 @@ def create__article__column(root_dir):
     #
     # First Author, year, source_abbr, 'V'volumne, 'P'page_start, ' DOI ' doi
     #
-    print("--INFO-- Creating `article` column")
+    message("Creating `article` column")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -1359,365 +1410,6 @@ def create__article__column(root_dir):
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
-# def create_references(directory, disable_progress_bar=False):
-#     """Create references from `documents.csv` or `_references.csv` file.
-
-#     :meta private:
-#     """
-#     create_references_from_documents_csv_file(directory, disable_progress_bar)
-
-#     #
-#     # Formats only references in the documents.csv file. Creates a thesurus
-#     # for homogenizing the references.
-
-#     # references_path = os.path.join(directory, "databases/_references.csv")
-#     # if os.path.exists(references_path):
-#     #     create_references_from_references_csv_file(directory, disable_progress_bar)
-#     # else:
-#     #     create_references_from_documents_csv_file(directory, disable_progress_bar)
-
-
-# def create_references_from_documents_csv_file(directory, disable_progress_bar=False):
-#     """Create references from `documents.csv` file.
-
-#     :meta private:
-#     """
-
-#     print("--INFO-- Creating references from  `_main.csv` file.")
-
-#     documents_path = os.path.join(directory, "databases/_main.csv")
-#     documents = pd.read_csv(documents_path)
-
-#     # references como aparecen en los articulos
-#     raw_cited_references = documents.raw_global_references.copy()
-#     raw_cited_references = raw_cited_references.str.lower()
-#     raw_cited_references = raw_cited_references.str.split(";")
-#     raw_cited_references = raw_cited_references.explode()
-#     raw_cited_references = raw_cited_references.str.strip()
-#     raw_cited_references = raw_cited_references.dropna()
-#     raw_cited_references = raw_cited_references.drop_duplicates()
-#     raw_cited_references = raw_cited_references.reset_index(drop=True)
-
-#     # record in document.csv ---> reference
-#     searching_thesaurus = {t: None for t in raw_cited_references.tolist()}
-#     found_thesaurus = {}
-
-#     # marcador para indicar si la referencia fue encontrada
-#     references = documents.copy()
-#     references["found"] = False
-
-#     # busqueda por doi
-#     print("--INFO-- Searching `references` using DOI")
-#     i_counter = 0
-#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-#         for doi, article in zip(references.doi, references.article):
-#             for key in searching_thesaurus.keys():
-#                 if searching_thesaurus[key] is None:
-#                     if not pd.isna(doi) and doi in key:
-#                         searching_thesaurus[key] = article
-#                         found_thesaurus[key] = article
-#                         references.loc[references.doi == doi, "found"] = True
-
-#             i_counter += 1
-#             if i_counter >= 100:
-#                 searching_thesaurus = {k: v for k, v in searching_thesaurus.items() if v is None}
-#                 i_counter = 0
-#             pbar.update(1)
-
-#     # Reduce la base de búsqueda
-#     references = references[~references.found]
-
-#     # Busqueda por (año, autor y tttulo)
-#     i_counter = 0
-#     print("--INFO-- Searching `references` using (year, title, author)")
-#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-#         for article, year, authors, title in zip(
-#             references.article,
-#             references.year,
-#             references.authors,
-#             references.title,
-#         ):
-#             year = str(year)
-#             author = authors.split()[0].lower()
-#             title = (
-#                 title.lower()
-#                 .replace(".", "")
-#                 .replace(",", "")
-#                 .replace(":", "")
-#                 .replace(";", "")
-#                 .replace("-", " ")
-#                 .replace("'", "")
-#             )
-
-#             for key in searching_thesaurus.keys():
-#                 if searching_thesaurus[key] is None:
-#                     text = key
-#                     text = (
-#                         text.lower()
-#                         .replace(".", "")
-#                         .replace(",", "")
-#                         .replace(":", "")
-#                         .replace(";", "")
-#                         .replace("-", " ")
-#                         .replace("'", "")
-#                     )
-
-#                     if author in text and str(year) in text and title[:29] in text:
-#                         searching_thesaurus[key] = article
-#                         references.loc[references.article == article, "found"] = True
-#                         found_thesaurus[key] = article
-
-#                     elif author in text and str(year) in text and title[-29:] in text:
-#                         searching_thesaurus[key] = article
-#                         references.loc[references.article == article, "found"] = True
-#                         found_thesaurus[key] = article
-
-#             i_counter += 1
-#             if i_counter >= 100:
-#                 searching_thesaurus = {k: v for k, v in searching_thesaurus.items() if v is None}
-#                 i_counter = 0
-#             pbar.update(1)
-
-#     # Reduce la base de búsqueda
-#     references = references[~references.found]
-
-#     # Busqueda por titulo
-#     print("--INFO-- Searching `references` using (title)")
-#     i_counter = 0
-#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-#         for article, title in zip(
-#             references.article,
-#             references.title,
-#         ):
-#             title = (
-#                 title.lower()
-#                 .replace(".", "")
-#                 .replace(",", "")
-#                 .replace(":", "")
-#                 .replace(";", "")
-#                 .replace("-", " ")
-#                 .replace("'", "")
-#             )
-
-#             for key in searching_thesaurus.keys():
-#                 text = key
-#                 text = (
-#                     text.lower()
-#                     .replace(".", "")
-#                     .replace(",", "")
-#                     .replace(":", "")
-#                     .replace(";", "")
-#                     .replace("-", " ")
-#                     .replace("'", "")
-#                 )
-
-#                 if title in text:
-#                     searching_thesaurus[key] = article
-#                     found_thesaurus[key] = article
-#                     references.loc[references.article == article, "found"] = True
-
-#             i_counter += 1
-#             if i_counter >= 100:
-#                 searching_thesaurus = {k: v for k, v in searching_thesaurus.items() if v is None}
-#                 i_counter = 0
-#             pbar.update(1)
-#     #
-#     # Crea la columna de referencias locales
-#     #
-#     documents["local_references"] = documents.raw_global_references.copy()
-#     documents["local_references"] = documents["local_references"].str.lower()
-#     documents["local_references"] = documents["local_references"].str.split(";")
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [found_thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].str.join("; ")
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: pd.NA if x == "" else x
-#     )
-#     #
-#     documents.to_csv(documents_path, index=False)
-
-
-# def create_references_from_references_csv_file(directory, disable_progress_bar=False):
-#     """Create the references from the references.csv file.
-
-#     :meta private:
-#     """
-
-#     references_path = os.path.join(directory, "databases/_references.csv")
-
-#     if not os.path.exists(references_path):
-#         print(f"--WARN-- The  file {references_path} does not exists.")
-#         print("--WARN-- Some functionalities are disabled.")
-#         return
-
-#     references = pd.read_csv(references_path)
-
-#     documents_path = os.path.join(directory, "databases/_main.csv")
-#     documents = pd.read_csv(documents_path)
-
-#     # references como aparecen en los articulos
-#     raw_cited_references = documents.global_references.copy()
-#     raw_cited_references = raw_cited_references.str.lower()
-#     raw_cited_references = raw_cited_references.str.split(";")
-#     raw_cited_references = raw_cited_references.explode()
-#     raw_cited_references = raw_cited_references.str.strip()
-#     raw_cited_references = raw_cited_references.dropna()
-#     raw_cited_references = raw_cited_references.drop_duplicates()
-#     raw_cited_references = raw_cited_references.reset_index(drop=True)
-
-#     # raw_cited_reference --> article
-#     thesaurus = {t: None for t in raw_cited_references.tolist()}
-
-#     # marcador para indicar si la referencia fue encontrada
-#     references["found"] = False
-
-#     # busqueda por doi
-#     print("--INFO-- Searching `references` using DOI")
-#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-#         for doi, article in zip(references.doi, references.article):
-#             for key in thesaurus.keys():
-#                 if thesaurus[key] is None:
-#                     if not pd.isna(doi) and doi in key:
-#                         thesaurus[key] = article
-#                         references.loc[references.doi == doi, "found"] = True
-#             pbar.update(1)
-
-#     # Reduce la base de búsqueda
-#     references = references[~references.found]
-
-#     # Busqueda por (año, autor y tttulo)
-#     print("--INFO-- Searching `references` using (year, title, author)")
-#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-#         for article, year, authors, title in zip(
-#             references.article,
-#             references.year,
-#             references.authors,
-#             references.title,
-#         ):
-#             if pd.isna(authors) or pd.isna(year) or pd.isna(title) or pd.isna(article):
-#                 continue
-
-#             year = str(year)
-#             author = authors.split()[0].lower()
-#             title = (
-#                 title.lower()
-#                 .replace(".", "")
-#                 .replace(",", "")
-#                 .replace(":", "")
-#                 .replace(";", "")
-#                 .replace("-", " ")
-#                 .replace("'", "")
-#             )
-
-#             for key in thesaurus.keys():
-#                 if thesaurus[key] is None:
-#                     text = key
-#                     text = (
-#                         text.lower()
-#                         .replace(".", "")
-#                         .replace(",", "")
-#                         .replace(":", "")
-#                         .replace(";", "")
-#                         .replace("-", " ")
-#                         .replace("'", "")
-#                     )
-
-#                     if author in text and str(year) in text and title[:29] in text:
-#                         thesaurus[key] = article
-#                         references.loc[references.article == article, "found"] = True
-#                     elif author in text and str(year) in text and title[-29:] in text:
-#                         thesaurus[key] = article
-#                         references.loc[references.article == article, "found"] = True
-
-#             pbar.update(1)
-
-#     # Reduce la base de búsqueda
-#     references = references[~references.found]
-
-#     # Busqueda por titulo
-#     print("--INFO-- Searching `references` using (title)")
-#     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-#         for article, title in zip(
-#             references.article,
-#             references.title,
-#         ):
-#             if isinstance(title, str):
-#                 title = (
-#                     title.lower()
-#                     .replace(".", "")
-#                     .replace(",", "")
-#                     .replace(":", "")
-#                     .replace(";", "")
-#                     .replace("-", " ")
-#                     .replace("'", "")
-#                 )
-
-#                 for key in thesaurus.keys():
-#                     text = key
-#                     text = (
-#                         text.lower()
-#                         .replace(".", "")
-#                         .replace(",", "")
-#                         .replace(":", "")
-#                         .replace(";", "")
-#                         .replace("-", " ")
-#                         .replace("'", "")
-#                     )
-#                     if title in text:
-#                         thesaurus[key] = article
-#                         references.loc[references.article == article, "found"] = True
-
-#             pbar.update(1)
-#     #
-#     # Crea la columna de referencias locales
-#     #
-#     documents["local_references"] = documents.global_references.copy()
-#     documents["local_references"] = documents["local_references"].str.lower()
-#     documents["local_references"] = documents["local_references"].str.split(";")
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].str.join("; ")
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: pd.NA if x == "" else x
-#     )
-#     #
-#     # NOTA: realmente local_references contiene las referencias globales
-#     # en formato WoS
-#     documents["global_references"] = documents["local_references"].copy()
-
-#     #
-#     # Se filtran local references para que contengan unicamente records
-#     # que estan en la base de datos principal
-#     local_documents = documents.article.copy()
-#     documents["local_references"] = documents["local_references"].str.split(";")
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: [t for t in x if t in local_documents.tolist()] if isinstance(x, list) else x
-#     )
-#     documents["local_references"] = documents["local_references"].map(
-#         lambda x: "; ".join(x) if isinstance(x, list) else x
-#     )
-
-#     #
-#     documents.to_csv(documents_path, index=False)
-
-
 def create__local_citations__column_in_references_database(directory):
     """Create `local_citations` column in references database
 
@@ -1728,7 +1420,7 @@ def create__local_citations__column_in_references_database(directory):
     if not os.path.exists(references_path):
         return
 
-    print("--INFO-- Creating `local_citations` column in references database")
+    message("Creating `local_citations` column in references database")
 
     # counts the number of citations for each local reference
     documents_path = os.path.join(directory, "databases", "_main.zip")
@@ -1758,7 +1450,7 @@ def create__local_citations__column_in_documents_database(root_dir):
     :meta private:
     """
 
-    print("--INFO-- Creating `local_citations` column in documents database")
+    message("Creating `local_citations` column in documents database")
 
     # counts the number of citations for each local reference
     documents_path = os.path.join(root_dir, "databases", "_main.zip")
@@ -1792,7 +1484,33 @@ def report_imported_records_per_file(root_dir):
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        print(f"--INFO-- {file}: {len(data.index)} imported records")
+        message(f"{file}: {len(data.index)} imported records")
+
+
+def replace_underscores_in_title_column(root_dir):
+    #
+    message('Replacing "-" by " " in `title` column')
+    documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
+    documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
+    #
+    documents["title"] = (
+        documents["title"].astype(str).apply(lambda x: x.translate(str.maketrans("-", " ")))
+    )
+    #
+    documents.to_csv(documents_path, index=False, compression="zip")
+
+
+def replace_underscores_in_abstract_column(root_dir):
+    #
+    message('Replacing "-" by " " in `abstract` column')
+    documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
+    documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
+    #
+    documents["abstract"] = (
+        documents["abstract"].astype(str).apply(lambda x: x.translate(str.maketrans("-", " ")))
+    )
+    #
+    documents.to_csv(documents_path, index=False, compression="zip")
 
 
 def transform_abstract_keywords_to_underscore(root_dir):
@@ -1800,89 +1518,37 @@ def transform_abstract_keywords_to_underscore(root_dir):
 
     :meta private:
     """
+    message("Transforming keywords in abstracts to upper case with underscores")
 
-    def get_raw_descriptors():
-        """Returns a pandas Series with all NLP phrases in the database files"""
-        processed_dir = pathlib.Path(root_dir) / "databases"
-        files = list(processed_dir.glob("_*.zip"))
-        descriptors = []
-        for file in files:
-            data = pd.read_csv(file, encoding="utf-8", compression="zip")
-            if "raw_nlp_phrases" not in data.columns:
-                continue
-            candidate_descriptors = data["raw_descriptors"].copy()
-            candidate_descriptors = candidate_descriptors.dropna().str.replace("_", " ").str.lower()
-            descriptors.append(candidate_descriptors)
-        descriptors = pd.concat(descriptors)
-        descriptors = descriptors.str.split("; ").explode().str.strip().drop_duplicates()
-        # nlp_phrases = nlp_phrases[nlp_phrases.str.contains(" ")]
-        return descriptors
+    #
+    # Load documents
+    documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
+    documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
 
-    def clean(descriptors):
-        """Remove abbreviations from NLP phrases"""
+    regex1 = re.compile(r"\(.*\)")
+    regex2 = re.compile(r"\[.*\]")
 
-        descriptors = descriptors.copy()
+    for _, row in tqdm(documents.iterrows(), total=len(documents)):
+        #
+        descriptors = row["raw_descriptors"]
 
-        # remove abbreviations
-        descriptors = descriptors.str.replace(r"\(.*\)", "", regex=True).replace(
-            r"\[].*\]", "", regex=True
-        )
+        descriptors = descriptors.translate(str.maketrans("", "", "\"'#!"))
+        descriptors = re.sub(regex1, "", descriptors)
+        descriptors = re.sub(regex2, "", descriptors)
 
-        # strage characters
-        descriptors = (
-            descriptors.str.replace(r'"', "", regex=True)
-            .str.replace("'", "", regex=False)
-            .str.replace("#", "", regex=False)
-            .str.replace("!", "", regex=False)
-            .str.strip()
-        )
+        descriptors = descriptors.translate(str.maketrans("_", " "))
+        descriptors = descriptors.lower()
+        descriptors = descriptors.split("; ")
+        descriptors = [d.strip() for d in descriptors]
 
-        descriptors = descriptors[descriptors != ""]
-        return descriptors
+        descriptors = sorted(descriptors, key=lambda x: len(x.split(" ")), reverse=True)
 
-    def sort_by_num_words(descriptors):
-        """Sort keywords by number of words"""
-
-        descriptors = descriptors.copy()
-        frame = descriptors.to_frame()
-        frame["length"] = frame[descriptors.name].str.split(" ").map(len)
-        frame = frame.sort_values(["length", descriptors.name], ascending=[False, True])
-        descriptors = frame[descriptors.name].copy()
-        return descriptors
-
-    def replace_in_abstracts_and_titles(root_dir, descriptors):
-        """Replace keywords in abstracts"""
-
-        descriptors = descriptors.copy()
-        descriptors = descriptors.to_list()
-        descriptors = [re.escape(text) for text in descriptors]
+        descriptors = [re.escape(d) for d in descriptors]
         descriptors = "|".join(descriptors)
-        regex = r"\b(" + descriptors + r")\b"
+        regex = re.compile(r"\b(" + descriptors + r")\b")
 
-        documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
-        documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
-        for col in ["abstract", "title"]:
-            hyphenated_words = documents[col].str.findall(r"\b\w+-\w+\b").sum()
-            hyphenated_words = list(set(hyphenated_words))
-            hyphenated_words = r"\b(" + "|".join(hyphenated_words) + r")\b"
-            #
-            documents[col] = (
-                documents[col]
-                .str.replace("-", " ", regex=False)
-                .str.replace(regex, lambda x: x.group().upper().replace(" ", "_"), regex=True)
-            )
-            documents[col] = documents[col].str.replace(
-                hyphenated_words.replace("-", " "),
-                lambda x: x.group().replace(" ", "-"),
-                regex=True,
-            )
+        row["title"] = re.sub(
+            regex, lambda z: z.group().upper().replace(" ", "_"), str(row["title"])
+        )
 
-        documents.to_csv(documents_path, index=False, compression="zip")
-
-    #
-    # Main code:
-    #
-    descriptors = get_raw_descriptors()
-    descriptors = clean(descriptors)
-    descriptors = sort_by_num_words(descriptors)
-    replace_in_abstracts_and_titles(root_dir, descriptors)
+    documents.to_csv(documents_path, index=False, compression="zip")

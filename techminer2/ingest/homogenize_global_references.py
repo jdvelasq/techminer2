@@ -47,8 +47,6 @@ def __homogeneize_references(root_dir):
     if not os.path.exists(refs_file):
         return False
 
-    print("--INFO-- Homogenizing global references")
-
     #
     # Loads raw references from the main database
     data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
@@ -128,7 +126,7 @@ def __homogeneize_references(root_dir):
                     file.write("    " + ref + "\n")
 
     print(
-        f"--INFO-- {grouped_references.article.drop_duplicates().shape[0]} global references homogenized"
+        f"     ---> {grouped_references.article.drop_duplicates().shape[0]} global references homogenized"
     )
 
     #

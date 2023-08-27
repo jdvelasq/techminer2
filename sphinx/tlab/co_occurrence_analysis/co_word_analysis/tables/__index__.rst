@@ -8,7 +8,7 @@ Tables  >
     association_indexes
 
 .. toctree::
-    co_occurrences
+    /techminer2/co_occurrence/co_occurrence_matrix
 
 
 

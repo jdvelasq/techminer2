@@ -12,8 +12,7 @@ Conceptual Structure >
     thematic_map/__index__
 
 .. toctree::
-   
-   thematic_evolution   
+    thematic_evolution   
 
 .. toctree::
-   factorial_analysis   
+    factorial_analysis   

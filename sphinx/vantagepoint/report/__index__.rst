@@ -29,31 +29,31 @@ Report >
 -------
 
 .. toctree::
-    multi_donut
+    /techminer2/co_occurrence/plots/multi_donut
 -------
 
 .. toctree::
-    /techminer/co_occurrence/plots/bubble_chart
-
--------
-
-.. toctree::
-    gantt_chart
+    /techminer2/co_occurrence/plots/bubble_chart
 
 -------
 
 .. toctree::
-    /techminer/co_occurrence/plots/butterfly_chart
+    /techminer2/performance/contributors/organizations/production_over_time
 
 -------
 
 .. toctree::
-    scatter_plot
+    /techminer2/co_occurrence/plots/butterfly_chart
 
 -------
 
 .. toctree::
-    cluster_map
+    /techminer2/co_occurrence/plots/scatter_plot
+
+-------
+
+.. toctree::
+    /techminer2/performance/plots/cluster_map
 
 -------
 

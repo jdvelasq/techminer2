@@ -33,24 +33,26 @@ Terms by Year
 ...     cited_by_filter=(None, None),
 ... )
 >>> terms.df_
-year                            2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                         
-REGTECH 28:329                     2     3     4     8     3     6     2
-FINTECH 12:249                     0     2     4     3     1     2     0
-REGULATORY_TECHNOLOGY 07:037       0     0     0     2     3     2     0
-COMPLIANCE 07:030                  0     0     1     3     1     1     1
-REGULATION 05:164                  0     2     0     1     1     1     0
-ANTI_MONEY_LAUNDERING 05:034       0     0     0     2     3     0     0
-FINANCIAL_SERVICES 04:168          1     1     0     1     0     1     0
-FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
-ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
-RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
+year                            2016  2017  2018  2019  2020  2021  2022  2023
+author_keywords                                                               
+REGTECH 28:329                     0     2     3     4     8     3     6     2
+FINTECH 12:249                     0     0     2     4     3     1     2     0
+REGULATORY_TECHNOLOGY 07:037       0     0     0     0     2     3     2     0
+COMPLIANCE 07:030                  0     0     0     1     3     1     1     1
+REGULATION 05:164                  0     0     2     0     1     1     1     0
+ANTI_MONEY_LAUNDERING 05:034       0     0     0     0     2     3     0     0
+FINANCIAL_SERVICES 04:168          0     1     1     0     1     0     1     0
+FINANCIAL_REGULATION 04:035        0     1     0     0     1     0     2     0
+ARTIFICIAL_INTELLIGENCE 04:023     0     0     0     1     2     0     1     0
+RISK_MANAGEMENT 03:014             0     0     1     0     1     0     1     0
+
+
 
 >>> terms.fig_.write_html("sphinx/_static/performance/plots/terms_by_year_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/plots/terms_by_year_0.html" 
+    <iframe src="../../../../../_static/performance/plots/terms_by_year_0.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
     
@@ -64,18 +66,18 @@ more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGTECH 28:329                 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| FINTECH 12:249                 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
-| COMPLIANCE 07:030              |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| REGULATION 05:164              |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
-| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      2 |      3 |      0 |      0 |
-| FINANCIAL_SERVICES 04:168      |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
-| FINANCIAL_REGULATION 04:035    |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
-| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| RISK_MANAGEMENT 03:014         |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+| author_keywords                |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                 |      0 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| FINTECH 12:249                 |      0 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+| COMPLIANCE 07:030              |      0 |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| REGULATION 05:164              |      0 |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      0 |      2 |      3 |      0 |      0 |
+| FINANCIAL_SERVICES 04:168      |      0 |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
+| FINANCIAL_REGULATION 04:035    |      0 |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
+| RISK_MANAGEMENT 03:014         |      0 |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
 ```
 <BLANKLINE>
 
@@ -103,24 +105,25 @@ Table:
 ...     cited_by_filter=(None, None),
 ... )
 >>> terms.df_
-year                            2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                         
-REGTECH 28:329                     2     5     9    17    20    26    28
-FINTECH 12:249                     0     2     6     9    10    12    12
-REGULATORY_TECHNOLOGY 07:037       0     0     0     2     5     7     7
-COMPLIANCE 07:030                  0     0     1     4     5     6     7
-REGULATION 05:164                  0     2     2     3     4     5     5
-ANTI_MONEY_LAUNDERING 05:034       0     0     0     2     5     5     5
-FINANCIAL_SERVICES 04:168          1     2     2     3     3     4     4
-FINANCIAL_REGULATION 04:035        1     1     1     2     2     4     4
-ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     3     3     4     4
-RISK_MANAGEMENT 03:014             0     1     1     2     2     3     3
+year                            2016  2017  2018  2019  2020  2021  2022  2023
+author_keywords                                                               
+REGTECH 28:329                     0     2     5     9    17    20    26    28
+FINTECH 12:249                     0     0     2     6     9    10    12    12
+REGULATORY_TECHNOLOGY 07:037       0     0     0     0     2     5     7     7
+COMPLIANCE 07:030                  0     0     0     1     4     5     6     7
+REGULATION 05:164                  0     0     2     2     3     4     5     5
+ANTI_MONEY_LAUNDERING 05:034       0     0     0     0     2     5     5     5
+FINANCIAL_SERVICES 04:168          0     1     2     2     3     3     4     4
+FINANCIAL_REGULATION 04:035        0     1     1     1     2     2     4     4
+ARTIFICIAL_INTELLIGENCE 04:023     0     0     0     1     3     3     4     4
+RISK_MANAGEMENT 03:014             0     0     1     1     2     2     3     3
+
 
 >>> terms.fig_.write_html("sphinx/_static/performance/plots/terms_by_year_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/plots/terms_by_year_1.html" 
+    <iframe src="../../../../../_static/performance/plots/terms_by_year_1.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(terms.prompt_)    
@@ -133,20 +136,22 @@ of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGTECH 28:329                 |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
-| FINTECH 12:249                 |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
-| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
-| COMPLIANCE 07:030              |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
-| REGULATION 05:164              |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
-| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      2 |      5 |      5 |      5 |
-| FINANCIAL_SERVICES 04:168      |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
-| FINANCIAL_REGULATION 04:035    |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
-| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
-| RISK_MANAGEMENT 03:014         |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
+| author_keywords                |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                 |      0 |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
+| FINTECH 12:249                 |      0 |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
+| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
+| COMPLIANCE 07:030              |      0 |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
+| REGULATION 05:164              |      0 |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
+| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      0 |      2 |      5 |      5 |      5 |
+| FINANCIAL_SERVICES 04:168      |      0 |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
+| FINANCIAL_REGULATION 04:035    |      0 |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
+| RISK_MANAGEMENT 03:014         |      0 |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
 ```
 <BLANKLINE>
+
+
 
 >>> print(terms.metrics_.head(20).to_markdown())
 |    | author_keywords       |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
@@ -154,13 +159,13 @@ Table:
 |  0 | REGTECH               |   2017 |     2 |         2 |                 12 |                 3 |     7 |                       1.714 |                      0.429 |
 |  1 | REGTECH               |   2018 |     3 |         5 |                182 |                30 |     6 |                      30.333 |                      5     |
 |  2 | REGTECH               |   2019 |     4 |         9 |                 42 |                18 |     5 |                       8.4   |                      3.6   |
-|  3 | REGTECH               |   2020 |     8 |        17 |                 67 |                16 |     4 |                      16.75  |                      4     |
+|  3 | REGTECH               |   2020 |     8 |        17 |                 67 |                17 |     4 |                      16.75  |                      4.25  |
 |  4 | REGTECH               |   2021 |     3 |        20 |                  6 |                 4 |     3 |                       2     |                      1.333 |
 |  5 | REGTECH               |   2022 |     6 |        26 |                 20 |                 2 |     2 |                      10     |                      1     |
 |  6 | REGTECH               |   2023 |     2 |        28 |                  0 |                 0 |     1 |                       0     |                      0     |
 |  7 | FINTECH               |   2018 |     2 |         2 |                161 |                22 |     6 |                      26.833 |                      3.667 |
 |  8 | FINTECH               |   2019 |     4 |         6 |                 42 |                18 |     5 |                       8.4   |                      3.6   |
-|  9 | FINTECH               |   2020 |     3 |         9 |                 29 |                 4 |     4 |                       7.25  |                      1     |
+|  9 | FINTECH               |   2020 |     3 |         9 |                 29 |                 5 |     4 |                       7.25  |                      1.25  |
 | 10 | FINTECH               |   2021 |     1 |        10 |                  3 |                 3 |     3 |                       1     |                      1     |
 | 11 | FINTECH               |   2022 |     2 |        12 |                 14 |                 1 |     2 |                       7     |                      0.5   |
 | 12 | REGULATORY_TECHNOLOGY |   2020 |     2 |         2 |                 16 |                 3 |     4 |                       4     |                      0.75  |
@@ -177,11 +182,11 @@ Table:
 >>> print(terms.documents_.head().to_markdown())
 |    | author_keywords    | title                                                   |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
 |---:|:-------------------|:--------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
-|  0 | FINANCIAL_SERVICES | FINTECH and REGTECH: impact on regulators and BANKS     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  1 | FINTECH            | FINTECH and REGTECH: impact on regulators and BANKS     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  2 | REGTECH            | FINTECH and REGTECH: impact on regulators and BANKS     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  3 | REGULATION         | FINTECH and REGTECH: impact on regulators and BANKS     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  4 | FINTECH            | understanding REGTECH for digital REGULATORY_COMPLIANCE |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
+|  0 | FINANCIAL_SERVICES | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  1 | FINTECH            | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  2 | REGTECH            | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  3 | REGULATION         | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  4 | FINTECH            | understanding regtech for digital regulatory compliance |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
 
 
 """

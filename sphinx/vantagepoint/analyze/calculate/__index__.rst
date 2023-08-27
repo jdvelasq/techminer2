@@ -8,7 +8,7 @@ Calculate >
     date_difference
 
 .. toctree::
-    network_metrics
+    /techminer2/co_authorship/network/authors/metrics
 
 .. toctree::
     statistics

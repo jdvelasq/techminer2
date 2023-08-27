@@ -3,12 +3,16 @@ Cluster Analysis >
 
 -----
 
-* :ref:`Co-Word Analysis + Hierarchical  <tm2.co_occurrence.factor.svd.co_occurrence_matrix>`
+.. toctree::
+    :maxdepth: 1  
+    
+    /techminer2/co_occurrence/network/__index__
 
 -----
 
-* :ref:`Network Analysis + Louvain  <tm2.co_occurrence.network>`
+.. toctree::
+    :maxdepth: 1  
+    
+    /techminer2/co_occurrence/factor/svd/__index__
 
------
 
-* :ref:`Singular Value Decomposition + K-Means <tm2.co_occurrence.factor.svd>`

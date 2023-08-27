@@ -36,11 +36,11 @@ Bubble Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.write_html("sphinx/_static/co_occurrence_analysis/graphs/bubble_chart.html")
+>>> chart.write_html("sphinx/_static/co_occurrence/plots/bubble_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/co_occurrence_analysis/graphs/bubble_chart.html" 
+    <iframe src="../../../../../_static/co_occurrence/plots/bubble_chart.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """

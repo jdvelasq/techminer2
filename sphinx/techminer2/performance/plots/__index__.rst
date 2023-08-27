@@ -4,51 +4,61 @@ Plots >
 -----
 
 .. toctree::
-    bar_chart
+    /techminer2/performance/plots/bar_chart
 
 -----
 
 .. toctree::
-    cleveland_dot_chart
+    /techminer2/performance/plots/cleveland_dot_chart
 
 -----
 
 .. toctree::
-    column_chart
+    /techminer2/performance/plots/column_chart
 
 -----
 
 .. toctree::
-    line_chart
+    /techminer2/performance/plots/line_chart
 
 -----
 
 .. toctree::
-    pie_chart
+    /techminer2/performance/plots/pie_chart
 
 -----
 
 .. toctree::
-    ranking_chart
+    /techminer2/performance/plots/ranking_chart
 
 -----
 
 .. toctree::
-    word_cloud
+    /techminer2/performance/plots/word_cloud
 
 -----
 
 .. toctree::
-    world_map
+    /techminer2/performance/plots/cluster_map
 
 -----
 
 .. toctree::
-    word_trends
+    /techminer2/performance/plots/world_map
 
 -----
 
 .. toctree::
-    trending_words_per_year
+    /techminer2/performance/plots/word_trends
+
+-----
+
+.. toctree::
+    /techminer2/performance/plots/terms_by_year
+
+-----
+
+.. toctree::
+    /techminer2/performance/plots/trending_words_per_year
 
 -----

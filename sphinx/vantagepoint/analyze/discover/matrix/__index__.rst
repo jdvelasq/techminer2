@@ -3,13 +3,13 @@ Matrix >
 
 
 .. toctree::
-    co_occurrence_matrix
+    /techminer2/co_occurrence/co_occurrence_matrix
 
 .. toctree::
-    auto_correlation_matrix
+    /techminer2/correlation/auto_correlation_matrix
 
 .. toctree::
-    cross_correlation_matrix    
+    /techminer2/correlation/cross_correlation_matrix    
 
 .. toctree::
     factor_matrix    
