@@ -19,8 +19,10 @@ Find Abbreviations
 
 """
 import os.path
+import re
 
 import pandas as pd
+from tqdm import tqdm
 
 from ...thesaurus_lib import load_system_thesaurus_as_dict, load_system_thesaurus_as_frame
 
@@ -44,7 +46,8 @@ def find_abbreviations(
     frame["abbreviation"] = frame["value"].map(_extract_abbreviation)
     abbreviations = frame["abbreviation"].dropna().drop_duplicates().to_list()
 
-    for abbr in abbreviations:
+    for abbr in tqdm(abbreviations, total=len(abbreviations)):
+        abbr = re.escape(abbr)
         frame["found"] = False
         frame["found"] = frame["found"] | frame["value"].map(lambda x: x == abbr)
         frame["found"] = frame["found"] | frame["value"].map(lambda x: "(" + abbr + ")" in x)
