@@ -7,14 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-.. _performance_analysis.coverage:
-
 Coverage
 ===============================================================================
 
 Computes coverage of terms in a column discarding stopwords.
 
->>> from techminer2.performance_analysis import coverage
+>>> from techminer2.performance import coverage
 >>> coverage(
 ...     #
 ...     # PARAMS:
@@ -28,16 +26,16 @@ Computes coverage of terms in a column discarding stopwords.
 ... )
 --INFO-- Number of documents : 52
 --INFO--   Documents with NA : 11
---INFO--  Efective documents : 52
-   min_occ  cum_sum_documents coverage  cum num items
-0       28                 28  53.85 %              1
-1       12                 28  53.85 %              2
-2        7                 33  63.46 %              4
-3        5                 36  69.23 %              6
-4        4                 39  75.00 %              9
-5        3                 39  75.00 %             13
-6        2                 39  75.00 %             25
-7        1                 41  78.85 %            143
+--INFO--  Efective documents : 41
+   min_occ  cum_sum_documents  coverage  cum num items
+0       28                 28   68.29 %              1
+1       12                 28   68.29 %              2
+2        7                 33   80.49 %              4
+3        5                 36   87.80 %              6
+4        4                 39   95.12 %              9
+5        3                 39   95.12 %             13
+6        2                 39   95.12 %             25
+7        1                 41  100.00 %            140
 
 
 
@@ -88,8 +86,8 @@ def coverage(
     n_documents = len(documents)
     print(f"--INFO-- Number of documents : {n_documents}")
     print("--INFO--   Documents with NA : " f"{n_documents - len(documents.dropna())}")
-
     documents = documents.dropna()
+    n_documents = len(documents)
     print(f"--INFO--  Efective documents : {n_documents}")
 
     documents = documents.assign(num_documents=1)
