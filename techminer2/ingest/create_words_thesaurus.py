@@ -57,29 +57,42 @@ def create_words_thesaurus(
             lambda x: key2value[x]
         )
 
-        # frame["key_phrase"] = frame["value_fingerprint"].map(lambda x: key2value.get(x, x))
-        # frame = frame[["key_phrase", "value_phrase"]]
-        # existent_frame = existent_frame[["key_phrase", "value_phrase"]]
-        # frame = pd.concat([existent_frame, frame])
-        # frame["key_phrase"] = frame["key_phrase"].str.lower()
-        # frame = frame.drop_duplicates(subset=["value_phrase"])
-
     frame = frame[["key_phrase", "value_phrase"]]
 
     frame["key_phrase"] = (
-        frame["key_phrase"].str.replace(" ", "_").str.replace("_(", " (", regex=False).str.upper()
+        frame["key_phrase"]
+        .str.replace(" ", "_")
+        .str.replace("_(", " (", regex=False)
+        .str.replace(")_", ") ", regex=False)
+        .str.upper()
     )
     frame["value_phrase"] = (
-        frame["value_phrase"].str.replace(" ", "_").str.replace("_(", " (", regex=False).str.upper()
+        frame["value_phrase"]
+        .str.replace(" ", "_")
+        .str.replace("_(", " (", regex=False)
+        .str.replace(")_", ") ", regex=False)
+        .str.upper()
     )
 
     frame = frame.groupby("key_phrase", as_index=False).agg({"value_phrase": list})
     frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
-    file_path = pathlib.Path(root_dir) / "words.txt"
 
+    #
+    # Remove parenthesis from dictionary keys
+    frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
+    frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
+    frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
+    frame["key_phrase"] = frame["key_phrase"].str.strip()
+    frame["key_phrase"] = frame["key_phrase"].str.replace("   ", "  ", regex=False)
+    frame["key_phrase"] = frame["key_phrase"].str.replace("  ", " ", regex=False)
+    frame["key_phrase"] = frame["key_phrase"].str.replace(" ", "_", regex=False)
+
+    file_path = pathlib.Path(root_dir) / "words.txt"
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in frame.iterrows():
             file.write(row.key_phrase + "\n")
+            if row.key_phrase not in row.value_phrase:
+                file.write("    " + row.key_phrase + "\n")
             for aff in row.value_phrase:
                 file.write("    " + aff + "\n")
 
@@ -92,11 +105,13 @@ def process_frame(frame):
     frame["value_fingerprint"] = invert_parenthesis(frame["value_fingerprint"])
     frame["value_fingerprint"] = remove_brackets(frame["value_fingerprint"])
     frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
     frame["value_fingerprint"] = remove_initial_articles(frame["value_fingerprint"])
     frame["value_fingerprint"] = replace_sinonimous(frame["value_fingerprint"])
-    # frame["value_fingerprint"] = remove_hypen_from_know_keywords(
-    #     frame["value_fingerprint"]
-    # )
+    frame["value_fingerprint"] = remove_starting_terms(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_ending_terms(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_starting_terms(frame["value_fingerprint"])
     frame["value_fingerprint"] = remove_ending_terms(frame["value_fingerprint"])
     frame["value_fingerprint"] = british_to_american_spelling(frame["value_fingerprint"])
     frame["value_fingerprint"] = apply_porter_stemmer(frame["value_fingerprint"])
@@ -288,57 +303,53 @@ def replace_sinonimous(series):
     return series
 
 
-# def remove_hypen_from_know_keywords(series):
-#     """Removes hypen from known keywords."""
-
-#     series = series.copy()
-#     keywords_with_hypen = [
-#         "auto-associative",
-#         "auto-encoder",
-#         "back-propagation",
-#         "big-data",
-#         "feed-forward",
-#         "lithium-ion",
-#         "micro-grid",
-#         "micro-grids",
-#         "multi-layer",
-#         "multi-step",
-#         "non-linear",
-#         "photo-voltaic",
-#         "power-point",
-#         "radial-basis",
-#         "smart-grid",
-#         "smart-grids",
-#         "stand-alone",
-#     ]
-#     for word in keywords_with_hypen:
-#         series = series.str.replace(
-#             r"\b" + word + r"\b", word.replace("-", ""), regex=True
-#         )
-#     return series
-
-
 def remove_ending_terms(series):
     """Removes ending terms from the keywords list."""
     series = series.copy()
     replacements = [
-        "TECHNIQUES",
-        "TECHNIQUE",
-        "ALGORITHMS",
         "ALGORITHM",
-        "METHODS",
-        "METHOD",
-        "APPROACHES",
+        "ALGORITHMS",
         "APPROACH",
-        "STRATEGIES",
-        "STRATEGY",
-        "MODELS",
-        "MODEL",
+        "APPROACHES",
+        "METAHEURISTIC",
+        "METHOD",
         "METHODOLOGIES",
         "METHODOLOGY",
+        "METHODS",
+        "MODEL",
+        "MODELS",
+        "STRATEGIES",
+        "STRATEGY",
+        "TECHNIQUE",
+        "TECHNIQUES",
     ]
     for to_replace in replacements:
         series = series.str.replace(" " + to_replace + "$", "", regex=True)
+    return series
+
+
+def remove_starting_terms(series):
+    """Removes ending terms from the keywords list."""
+    series = series.copy()
+    replacements = [
+        "ADAPTIVE",
+        "ADDITIONAL",
+        "ADVANCED",
+        "CLASSICAL",
+        "INDIVIDUAL",
+        "CONVENTIONAL",
+        "ENHANCED",
+        "IMPROVED",
+        "NEW",
+        "NOVEL",
+        "STANDARD",
+        "TRADITIONAL",
+        "POPULAR",
+        "VARIOUS",
+        "SIMPLE",
+    ]
+    for to_replace in replacements:
+        series = series.str.replace("^" + to_replace + " ", "", regex=True)
     return series
 
 
@@ -350,7 +361,7 @@ def british_to_american_spelling(series):
 
         owner = "jdvelasq"
         repo = "techminer2"
-        path = "settings/bg2am.txt.txt"
+        path = "settings/bg2am.txt"
         url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
 
         response = requests.get(url, timeout=5)
