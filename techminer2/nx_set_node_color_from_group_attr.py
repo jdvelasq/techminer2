@@ -31,7 +31,7 @@ CLUSTER_COLORS = (
     + px.colors.qualitative.Set1
     + px.colors.qualitative.Set2
     + px.colors.qualitative.Set3
-)
+) * 10
 
 
 def nx_set_node_color_from_group_attr(nx_graph):
