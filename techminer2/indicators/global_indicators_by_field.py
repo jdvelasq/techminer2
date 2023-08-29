@@ -223,6 +223,12 @@ def global_indicators_by_field(
         year_columns = list(range(year_start, year_end + 1))
 
         #
+        # TODO: CHECK
+        if items_by_year.columns.max() - items_by_year.columns.min() <= time_window:
+            return indicators
+        #
+
+        #
         # Computes the number of documents per period by item
         between = f"between_{year_start}_{year_end}"
         before = f"before_{year_start}"
