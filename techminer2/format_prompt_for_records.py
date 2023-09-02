@@ -26,7 +26,7 @@ def format_prompt_for_records(main_text, records, weight=None):
     text = ""
     for i_record, (_, record) in enumerate(records.iterrows()):
         # Article ID
-        record_id = record.article + " / " + record.title
+        record_id = str(record.article) + " / " + str(record.title)
         record_id = textwrap.fill(record_id, width=TEXTWRAP_WIDTH)
         record_id = record_id.replace("\n", " \\\n")
 
