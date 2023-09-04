@@ -60,6 +60,7 @@ setup(
     packages=[
         "techminer2",
         "techminer2._files",
+        "techminer2.word_lists",
         #
         # ======================================================================
         "techminer2.bibliographic_coupling",
