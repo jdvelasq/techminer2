@@ -398,6 +398,7 @@ def ingest_raw_data(
                 sorted(
                     z.strip()
                     .replace("&", "AND")
+                    .replace("    ", "   ")
                     .replace("   ", "  ")
                     .replace("  ", " ")
                     .replace(" ", "_")
@@ -407,8 +408,12 @@ def ingest_raw_data(
                     .replace(",", "_")
                     .replace("'", "_")
                     .replace("-", "_")
+                    .replace("___", "__")
                     .replace("__", "_")
                     .replace("_(", " (")
+                    .replace(")_", ") ")
+                    .replace("_[", " [")
+                    .replace("]_", "] ")
                     for z in w
                 )
             ),
@@ -426,6 +431,7 @@ def ingest_raw_data(
                 sorted(
                     z.strip()
                     .replace("&", "AND")
+                    .replace("    ", "   ")
                     .replace("   ", "  ")
                     .replace("  ", " ")
                     .replace(" ", "_")
@@ -435,8 +441,12 @@ def ingest_raw_data(
                     .replace(",", "_")
                     .replace("'", "_")
                     .replace("-", "_")
+                    .replace("___", "__")
                     .replace("__", "_")
                     .replace("_(", " (")
+                    .replace(")_", ") ")
+                    .replace("_[", " [")
+                    .replace("]_", "] ")
                     for z in w
                 )
             ),
@@ -499,6 +509,7 @@ def ingest_raw_data(
         .str.replace(",", "_")
         .str.replace("'", "_")
         .str.replace("-", "_")
+        .str.replace("___", "__")
         .str.replace("__", "_")
         .str.replace(";_", "; ")
         .map(lambda x: pd.NA if x == "" else x),
@@ -534,6 +545,7 @@ def ingest_raw_data(
         .map(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
         .str.upper()
+        .str.replace("    ", "   ")
         .str.replace("   ", "  ")
         .str.replace("  ", " ")
         .str.replace(" ", "_")
@@ -543,6 +555,7 @@ def ingest_raw_data(
         .str.replace(",", "_")
         .str.replace("'", "_")
         .str.replace("-", "_")
+        .str.replace("___", "__")
         .str.replace("__", "_")
         .str.replace(";_", "; ")
         .map(lambda x: pd.NA if x == "" else x),
