@@ -583,7 +583,7 @@ def ingest_raw_data(
         .str.split("; ")
         .apply(set)
         .apply(sorted)
-        .apply(lambda x: [z for z in x if z != "nan"])
+        .apply(lambda x: [z for z in x if z != "nan" and z != "NAN"])
         .str.join("; ")
         .apply(lambda x: pd.NA if x == "" else x),
     )
