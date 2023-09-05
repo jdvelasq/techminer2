@@ -156,48 +156,6 @@ def ingest_raw_data(
     # Elapsed time report
     start_time = time.time()
 
-    # transform_abstract_keywords_to_underscore(root_dir)
-
-    # #
-    # #
-    # # Phase 4: References
-    # #
-    # #
-    # # create_references(root_dir, disable_progress_bar)
-    # message("Homogenizing local references")
-    # homogenize_local_references(root_dir)
-    # message("Homogenizing global references")
-    # homogenize_global_references(root_dir)
-
-    # #
-    # create__local_citations__column_in_references_database(root_dir)
-    # create__local_citations__column_in_documents_database(root_dir)
-
-    # #
-    # #
-    # # Phase 5: Thesaurus files
-    # #
-    # #
-    # create_countries_thesaurus(root_dir)
-    # create_words_thesaurus(root_dir)
-    # create_organizations_thesaurus(root_dir)
-
-    # apply_countries_thesaurus(root_dir)
-    # apply_words_thesaurus(root_dir)
-    # apply_organizations_thesaurus(root_dir)
-
-    # ## abstracts_report(root_dir=root_dir, file_name="imported_records.txt")
-    # report_imported_records_per_file(root_dir)
-
-    # message("Process finished!!!")
-
-    # #
-    # # Elapsed time report
-    # end_time = time.time()
-    # print("Execution time:", round(end_time - start_time, 1), "seconds")
-
-    # return
-
     #
     #
     # Phase 1: Preparing database files
@@ -606,6 +564,8 @@ def ingest_raw_data(
         .map(lambda x: pd.NA if x == "" else x),
     )
 
+    #
+    # Highlight terms
     replace_underscores_in_title_column(root_dir)
     replace_underscores_in_abstract_column(root_dir)
     transform_abstract_keywords_to_underscore(root_dir)
@@ -642,9 +602,6 @@ def ingest_raw_data(
     report_imported_records_per_file(root_dir)
 
     message("Process finished!!!")
-
-    end_time = time.time()
-    print("Execution time:", round(end_time - start_time, 1), "seconds")
 
     #
     # Elapsed time report
@@ -1541,7 +1498,7 @@ def transform_abstract_keywords_to_underscore(root_dir):
     regex1 = re.compile(r"\(.*\)")
     regex2 = re.compile(r"\[.*\]")
 
-    for _, row in tqdm(documents.iterrows(), total=len(documents)):
+    for index, row in tqdm(documents.iterrows(), total=len(documents)):
         #
         descriptors = row["raw_descriptors"]
 
@@ -1560,8 +1517,13 @@ def transform_abstract_keywords_to_underscore(root_dir):
         descriptors = "|".join(descriptors)
         regex = re.compile(r"\b(" + descriptors + r")\b")
 
-        row["title"] = re.sub(
-            regex, lambda z: z.group().upper().replace(" ", "_"), str(row["title"])
+        new_title = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), str(row["title"]))
+
+        new_abstract = re.sub(
+            regex, lambda z: z.group().upper().replace(" ", "_"), str(row["abstract"])
         )
+
+        documents.loc[index, "title"] = new_title
+        documents.loc[index, "abstract"] = new_abstract
 
     documents.to_csv(documents_path, index=False, compression="zip")

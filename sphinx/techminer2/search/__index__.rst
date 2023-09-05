@@ -19,6 +19,11 @@ Search >
 ------
     
 .. toctree::
-    find_similar_records
+    find_similar_phrases
+
+------
+    
+.. toctree::
+    highlight_phrase
 
 ------
