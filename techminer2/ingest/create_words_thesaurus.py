@@ -9,19 +9,300 @@
 """
 
 >>> from techminer2.ingest.create_words_thesaurus import create_words_thesaurus
->>> create_words_thesaurus(root_dir="data/regtech/")
+
+>> create_words_thesaurus(root_dir="data/regtech/")
+
+>>> create_words_thesaurus(root_dir="data/tm2/")
+
 --INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
 
 """
 import os
 import os.path
 import pathlib
+import re
+from os.path import dirname
 
+import numpy as np
 import pandas as pd
-import requests
 from nltk.stem import PorterStemmer
 
 from ..thesaurus_lib import load_system_thesaurus_as_frame
+
+
+def create_column_data_frame(root_dir, column):
+    """
+    :meta private:
+    """
+
+    #
+    # The thesaurus is created only from the main databaase.
+    file = os.path.join(root_dir, "databases/_main.zip")
+    data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
+    data_frame = data_frame[[column]]
+    data_frame.columns = ["raw_term"]
+    data_frame = data_frame.dropna()
+
+    #
+    # Basic preprocessing
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("_", " ")
+    data_frame["raw_term"] = data_frame["raw_term"].str.strip()
+    data_frame["raw_term"] = data_frame["raw_term"].str.upper()
+
+    #
+    # Only non-empty descriptors
+    data_frame = data_frame.loc[data_frame["raw_term"].str.len() > 0, :]
+
+    #
+    # Explodes the terms list
+    data_frame["raw_term"] = data_frame["raw_term"].str.split(";")
+    data_frame = data_frame.explode("raw_term")
+    data_frame["raw_term"] = data_frame["raw_term"].str.strip()
+
+    #
+    # Replace strange characters
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace('"', "")
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(chr(8212), "")
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(chr(8220), "")
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(chr(8221), "")
+    data_frame["raw_term"] = data_frame["raw_term"].mask(
+        (data_frame["raw_term"].str[0] == "-") & data_frame["raw_term"].str.len() > 1,
+        data_frame["raw_term"].str.replace("^-", "", regex=True),
+    )
+
+    #
+    # Counts term frequency
+    data_frame["OCC"] = 1
+    data_frame = data_frame.groupby("raw_term", as_index=False).agg({"OCC": np.sum})
+
+    #
+    # Creates 'fingerprint' column
+    data_frame["fingerprint"] = data_frame["raw_term"]
+
+    return data_frame
+
+
+def load_stopwords():
+    """
+    :meta private:
+    """
+    module_path = dirname(__file__)
+    file_path = os.path.join(module_path, "../word_lists/stopwords.txt")
+    with open(file_path, "r", encoding="utf-8") as file:
+        stopwords = file.read().split("\n")
+    stopwords = [w.strip() for w in stopwords]
+    stopwords = [w for w in stopwords if w != ""]
+    return stopwords
+
+
+def create_data_frame(root_dir):
+    """
+    :meta private:
+    """
+
+    #
+    # Loads raw keywords
+    keywords_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_keywords")
+
+    #
+    # Loads raw nlp phrases discarding existent keywords
+    nlp_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_nlp_phrases")
+    nlp_data_frame = nlp_data_frame.loc[
+        ~nlp_data_frame["fingerprint"].isin(keywords_data_frame["fingerprint"]), :
+    ]
+
+    #
+    # Remove stopwords from nlp phrases
+    stopwords = load_stopwords()
+    regex = re.compile(r"\b(" + "|".join(stopwords) + r")\b")
+    nlp_data_frame["fingerprint"] = nlp_data_frame["fingerprint"].str.replace(regex, "", regex=True)
+    nlp_data_frame["fingerprint"] = nlp_data_frame["fingerprint"].str.strip()
+
+    #
+    # Concats the dataframes
+    data_frame = pd.concat([keywords_data_frame, nlp_data_frame], ignore_index=True)
+    data_frame = data_frame.reset_index(drop=True)
+
+    return data_frame
+
+
+def process_fingerprint_key(data_frame):
+    """
+    :meta private:
+    """
+    data_frame = data_frame.copy()
+
+    data_frame["fingerprint"] = process_error_terms(data_frame["fingerprint"])
+    data_frame["fingerprint"] = process_hypened_words(data_frame["fingerprint"])
+    data_frame["fingerprint"] = invert_parenthesis(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_brackets(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_initial_articles(data_frame["fingerprint"])
+    data_frame["fingerprint"] = replace_sinonimous(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
+    data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
+    data_frame["fingerprint"] = british_to_american_spelling(data_frame["fingerprint"])
+    data_frame["fingerprint"] = apply_porter_stemmer(data_frame["fingerprint"])
+
+    return data_frame
+
+
+def process_error_terms(column):
+    """
+    :meta private:
+    """
+    terms = [
+        "ABSOLUTE-PERCENTAGE-ERROR",
+        "ABSOLUTE-RELATIVE-ERROR",
+        "ABSOLUTE-AVERAGE-DEVIATION",
+        "AVERAGE-ABSOLUTE-PERCENTAGE-ERROR",
+        "AVERAGE-MAXIMUM-RELATIVE-ERROR",
+        "AVERAGE-PERCENT-ERROR",
+        "AVERAGE-QUADRATIC-ERROR",
+        "AVERAGE-RELATIVE-ERROR",
+        "MAXIMUM-ABSOLUTE-ERROR",
+        "MAXIMUM-ABSOLUTE-PERCENTAGE-ERROR",
+        "MAXIMUM-ERROR-PERCENTAGE",
+        "MAXIMUM-PERCENTAGE-ERROR",
+        "MEAN-ABSOLUTE-ERROR",
+        "MEAN-ABSOLUTE-DEVIATION",
+        "MEAN-RELATIVE-ERROR",
+        "MEAN-SQUARE-ERROR",
+        "MEAN-SQUARED-ERROR",
+        "RELATIVE-ABSOLUTE-ERROR",
+        "RELATIVE-PERCENTAGE-ERROR",
+        "ROOT-MEAN-SQUARE-ERROR",
+        "ROOT-MEAN-SQUARED-ERROR",
+        "RMSE-ERROR-VALUE",
+        "RMSE-ERROR",
+        "STANDARD-DEVIATION-ERROR",
+        "SUM-OF-SQUARE-ERROR",
+        "SUM-OF-SQUARED-ERROR",
+        "SUM-SQUARE-ERROR",
+    ]
+    terms = [term.replace("-", " ") for term in terms]
+
+    for term in terms:
+        column = column.map(lambda x: "ERROR METRICS" if term in x else x)
+
+    return column
+
+
+def create_thesuarus(data_frame):
+    """
+    :meta private:
+    """
+
+    data_frame = data_frame.copy()
+
+    #
+    # Creates key column
+    data_frame = data_frame.sort_values(
+        ["fingerprint", "OCC", "raw_term"], ascending=[True, False, True]
+    )
+
+    #
+    # Process raw terms
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("    ", "   ", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("   ", "  ", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("  ", " ", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(" ", "_", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("_(", " (", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(")_", ") ", regex=False)
+
+    thesaurus = (
+        data_frame[["fingerprint", "raw_term"]]
+        .groupby("fingerprint", as_index=True)
+        .agg({"raw_term": list})
+    )
+    thesaurus["key"] = thesaurus["raw_term"].map(lambda x: x[0])
+
+    #
+    # Remove parenthesis from dictionary keys
+    thesaurus["key"] = remove_parenthesis(thesaurus["key"])
+    thesaurus["key"] = remove_parenthesis(thesaurus["key"])
+    thesaurus["key"] = remove_parenthesis(thesaurus["key"])
+
+    # ---------------------------------------------------------------------------------------------------
+    # Replace hypened words
+
+    module_path = dirname(__file__)
+    file_path = os.path.join(module_path, "../word_lists/hypened_words.txt")
+    with open(file_path, "r", encoding="utf-8") as file:
+        hypened_words = file.read().split("\n")
+
+    regex = [word.replace("-", " ") for word in hypened_words]
+    regex = "|".join(regex)
+    regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
+
+    thesaurus["key"] = thesaurus["key"].str.replace("_", " ")
+    thesaurus["key"] = (
+        thesaurus["key"]
+        .astype(str)
+        .str.replace(regex, lambda z: z.group().replace(" ", ""), regex=True)
+    )
+
+    thesaurus["key"] = (
+        thesaurus["key"]
+        .str.replace(" ", "_")
+        .str.replace("_(", " (", regex=False)
+        .str.replace(")_", ") ", regex=False)
+    )
+
+    # ---------------------------------------------------------------------------------------------------
+
+    thesaurus["key"] = thesaurus["key"].str.strip()
+    thesaurus["key"] = thesaurus["key"].str.replace("    ", "   ", regex=False)
+    thesaurus["key"] = thesaurus["key"].str.replace("   ", "  ", regex=False)
+    thesaurus["key"] = thesaurus["key"].str.replace("  ", " ", regex=False)
+    thesaurus["key"] = thesaurus["key"].str.replace(" ", "_", regex=False)
+
+    #
+    # Replace hypened words
+    thesaurus = {row.key: row.raw_term for _, row in thesaurus.iterrows()}
+
+    return thesaurus
+
+
+def update_stopwords(data_frame, root_dir):
+    """
+    :meta private:
+    """
+
+    data_frame = data_frame.copy()
+
+    #
+    # Terms with an empty fingerprint
+    phrases = data_frame.loc[data_frame.fingerprint.str.strip() == "", :].copy()
+    data_frame.loc[data_frame.fingerprint.str.strip() == "", "fingerprint"] = data_frame.loc[
+        data_frame.fingerprint.str.strip() == "", "raw_term"
+    ]
+
+    #
+    # Process stopwords
+    phrases["raw_term"] = phrases["raw_term"].str.replace(" ", "_")
+    phrases["raw_term"] = phrases["raw_term"].str.replace("_(", " (", regex=False)
+    phrases["raw_term"] = phrases["raw_term"].str.replace(")_", ") ", regex=False)
+    phrases["raw_term"] = phrases["raw_term"].str.strip()
+
+    #
+    # Lodas the exitent stopwords file
+    file_path = pathlib.Path(root_dir) / "stopwords.txt"
+    with open(file_path, "r", encoding="utf-8") as in_file:
+        stopwords = in_file.read().split("\n")
+
+    stopwords = sorted(set(stopwords + phrases.raw_term.to_list()))
+    stopwords = [w.strip() for w in stopwords]
+    stopwords = [w for w in stopwords if w != ""]
+
+    with open(file_path, "w", encoding="utf-8") as out_file:
+        out_file.write("\n".join(stopwords))
+
+    return data_frame
 
 
 def create_words_thesaurus(
@@ -29,94 +310,98 @@ def create_words_thesaurus(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Creates a thesaurus from raw keywords and title/abstact words."""
-
+    """
+    :meta private:
+    """
     print(
         "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
     )
 
-    series = load_raw_descriptors_from_databases(root_dir=root_dir)
-    series = explode_raw_descriptors(series)
-    series = remove_strange_characters(series)
-    frame = build_occurrences_table(series)
     #
-    frame = process_frame(frame)
+    # Creates a dataframe with the raw keywords of the database and the raw
+    # nlp phrases (removing generic stopwords).
     #
-    frame = create_key_phrase(frame)
-
-    existent_frame = load_existent_thesaurus(root_dir)
-    if existent_frame is not None:
-        existent_frame = process_frame(existent_frame)
-        key2value = dict(zip(existent_frame.value_fingerprint, existent_frame.key_phrase))
-
-        frame.loc[
-            frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "key_phrase"
-        ] = frame.loc[
-            frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "value_fingerprint"
-        ].map(
-            lambda x: key2value[x]
-        )
-
-    frame = frame[["key_phrase", "value_phrase"]]
-
-    frame["key_phrase"] = (
-        frame["key_phrase"]
-        .str.replace(" ", "_")
-        .str.replace("_(", " (", regex=False)
-        .str.replace(")_", ") ", regex=False)
-        .str.upper()
-    )
-    frame["value_phrase"] = (
-        frame["value_phrase"]
-        .str.replace(" ", "_")
-        .str.replace("_(", " (", regex=False)
-        .str.replace(")_", ") ", regex=False)
-        .str.upper()
-    )
-
-    frame = frame.groupby("key_phrase", as_index=False).agg({"value_phrase": list})
-    frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
-
-    #
-    # Remove parenthesis from dictionary keys
-    frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
-    frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
-    frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
-    frame["key_phrase"] = frame["key_phrase"].str.strip()
-    frame["key_phrase"] = frame["key_phrase"].str.replace("   ", "  ", regex=False)
-    frame["key_phrase"] = frame["key_phrase"].str.replace("  ", " ", regex=False)
-    frame["key_phrase"] = frame["key_phrase"].str.replace(" ", "_", regex=False)
+    data_frame = create_data_frame(root_dir=root_dir)
+    data_frame = update_stopwords(data_frame, root_dir=root_dir)
+    data_frame = process_fingerprint_key(data_frame)
+    thesaurus = create_thesuarus(data_frame)
 
     file_path = pathlib.Path(root_dir) / "words.txt"
     with open(file_path, "w", encoding="utf-8") as file:
-        for _, row in frame.iterrows():
-            file.write(row.key_phrase + "\n")
-            if row.key_phrase not in row.value_phrase:
-                file.write("    " + row.key_phrase + "\n")
-            for aff in row.value_phrase:
-                file.write("    " + aff + "\n")
+        for key in sorted(thesaurus.keys()):
+            file.write(key + "\n")
+
+            for term in sorted(set(thesaurus[key])):
+                file.write("    " + term + "\n")
 
 
-def process_frame(frame):
-    """Group techniques for preprocessing"""
+# def _create_words_thesaurus(
+#     #
+#     # DATABASE PARAMS:
+#     root_dir="./",
+# ):
+#     """Creates a thesaurus from raw keywords and title/abstact words."""
 
-    frame = frame.copy()
-    frame = create_fingerprint_column(frame)
-    frame["value_fingerprint"] = invert_parenthesis(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_brackets(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_initial_articles(frame["value_fingerprint"])
-    frame["value_fingerprint"] = replace_sinonimous(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_starting_terms(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_ending_terms(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_starting_terms(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_ending_terms(frame["value_fingerprint"])
-    frame["value_fingerprint"] = british_to_american_spelling(frame["value_fingerprint"])
-    frame["value_fingerprint"] = apply_porter_stemmer(frame["value_fingerprint"])
+#     print(
+#         "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
+#     )
 
-    return frame
+#     #
+#     frame = process_frame(frame)
+#     #
+#     frame = create_key_phrase(frame)
+
+#     existent_frame = load_existent_thesaurus(root_dir)
+#     if existent_frame is not None:
+#         existent_frame = process_frame(existent_frame)
+#         key2value = dict(zip(existent_frame.value_fingerprint, existent_frame.key_phrase))
+
+#         frame.loc[
+#             frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "key_phrase"
+#         ] = frame.loc[
+#             frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "value_fingerprint"
+#         ].map(
+#             lambda x: key2value[x]
+#         )
+
+#     frame = frame[["key_phrase", "value_phrase"]]
+
+#     frame["key_phrase"] = (
+#         frame["key_phrase"]
+#         .str.replace(" ", "_")
+#         .str.replace("_(", " (", regex=False)
+#         .str.replace(")_", ") ", regex=False)
+#         .str.upper()
+#     )
+#     frame["value_phrase"] = (
+#         frame["value_phrase"]
+#         .str.replace(" ", "_")
+#         .str.replace("_(", " (", regex=False)
+#         .str.replace(")_", ") ", regex=False)
+#         .str.upper()
+#     )
+
+#     frame = frame.groupby("key_phrase", as_index=False).agg({"value_phrase": list})
+#     frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
+
+#     #
+#     # Remove parenthesis from dictionary keys
+#     frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
+#     frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
+#     frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
+#     frame["key_phrase"] = frame["key_phrase"].str.strip()
+#     frame["key_phrase"] = frame["key_phrase"].str.replace("   ", "  ", regex=False)
+#     frame["key_phrase"] = frame["key_phrase"].str.replace("  ", " ", regex=False)
+#     frame["key_phrase"] = frame["key_phrase"].str.replace(" ", "_", regex=False)
+
+#     file_path = pathlib.Path(root_dir) / "words.txt"
+#     with open(file_path, "w", encoding="utf-8") as file:
+#         for _, row in frame.iterrows():
+#             file.write(row.key_phrase + "\n")
+#             if row.key_phrase not in row.value_phrase:
+#                 file.write("    " + row.key_phrase + "\n")
+#             for aff in row.value_phrase:
+#                 file.write("    " + aff + "\n")
 
 
 def load_existent_thesaurus(root_dir):
@@ -142,75 +427,23 @@ def load_existent_thesaurus(root_dir):
     return existent_thesaurus
 
 
-def load_raw_descriptors_from_databases(root_dir="./"):
-    """Loads keywords from author/index keywords, and abstract/title words."""
+def process_hypened_words(column):
+    """
+    Converts "CO-EVOLUTION" ---> "COEVOLUTION"
+    """
 
-    descriptors_list = []
+    module_path = dirname(__file__)
+    file_path = os.path.join(module_path, "../word_lists/hypened_words.txt")
+    with open(file_path, "r", encoding="utf-8") as file:
+        hypened_words = file.read().split("\n")
 
-    # files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
-    # for file in files:
-    #     data = pd.read_csv(file, encoding="utf-8")
-    #     if "raw_nlp_phrases" in data.columns:
-    #         words_list.append(data["raw_nlp_phrases"])
+    regex = [word.replace("-", "_") for word in hypened_words]
+    regex = "|".join(regex)
+    regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
 
-    file = os.path.join(root_dir, "databases/_main.zip")
-    data = pd.read_csv(file, encoding="utf-8", compression="zip")
-    if "raw_descriptors" in data.columns:
-        descriptors_list.append(data["raw_descriptors"])
+    column = column.astype(str).str.replace(regex, lambda z: z.group().replace("_", ""), regex=True)
 
-    descriptors_list = pd.concat(descriptors_list, ignore_index=True)
-    descriptors_list = descriptors_list.str.strip()
-    descriptors_list = descriptors_list[descriptors_list.str.len() > 0]
-    descriptors_list = descriptors_list.rename("descriptors")
-    descriptors_list = descriptors_list.str.replace("_", " ").str.upper()
-    return descriptors_list
-
-
-def explode_raw_descriptors(frame):
-    """Explodes the raw noun phrases column."""
-
-    frame = frame.copy()
-    frame = frame.dropna()
-    frame = frame.str.upper()
-    frame = frame.str.split(";")
-    frame = frame.explode()
-    frame = frame.str.strip()
-    return frame
-
-
-def remove_strange_characters(series):
-    """Removes strange characters from the series."""
-
-    series = series.copy()
-    series = series.str.replace('"', "")
-    series = series.str.replace(chr(8212), "")
-    series = series.str.replace(chr(8220), "")
-    series = series.str.replace(chr(8221), "")
-    series = series.mask(
-        (series.str[0] == "-") & series.str.len() > 1,
-        series.str.replace("^-", "", regex=True),
-    )
-    return series
-
-
-def build_occurrences_table(series):
-    """Builds the occurrences table."""
-
-    series = series.copy()
-    series = series.value_counts()
-    frame = series.to_frame()
-    frame = frame.reset_index()
-    frame.columns = ["value_phrase", "OCC"]
-
-    return frame
-
-
-def create_fingerprint_column(frame):
-    """Creates the fingerprint column."""
-
-    frame = frame.copy()
-    frame = frame.assign(value_fingerprint=frame.value_phrase)
-    return frame
+    return column
 
 
 def invert_parenthesis(column):
@@ -286,12 +519,10 @@ def remove_initial_articles(series):
 def replace_sinonimous(series):
     """Replaces sinonimous terms."""
 
-    owner = "jdvelasq"
-    repo = "techminer2"
-    path = "settings/keywords_replacements.csv"
-    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+    module_path = dirname(__file__)
+    file_path = os.path.join(module_path, "../word_lists/keywords_replacements.csv")
 
-    replacements = pd.read_csv(url, encoding="utf-8")
+    replacements = pd.read_csv(file_path, encoding="utf-8")
 
     series = series.copy()
     for _, row in replacements.iterrows():
@@ -311,6 +542,7 @@ def remove_ending_terms(series):
         "ALGORITHMS",
         "APPROACH",
         "APPROACHES",
+        "FRAMEWORK",
         "METAHEURISTIC",
         "METHOD",
         "METHODOLOGIES",
@@ -334,11 +566,14 @@ def remove_starting_terms(series):
     replacements = [
         "ADAPTIVE",
         "ADDITIONAL",
+        "AUGMENTED",
         "ADVANCED",
         "CLASSICAL",
+        "DISCRETE",
         "INDIVIDUAL",
         "CONVENTIONAL",
         "ENHANCED",
+        "HYBRID",
         "IMPROVED",
         "NEW",
         "NOVEL",
@@ -359,13 +594,18 @@ def british_to_american_spelling(series):
     def load_br2am_dict():
         """Gets the regex from the settings file."""
 
-        owner = "jdvelasq"
-        repo = "techminer2"
-        path = "settings/bg2am.txt"
-        url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+        # owner = "jdvelasq"
+        # repo = "techminer2"
+        # path = "settings/bg2am.txt"
+        # url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
 
-        response = requests.get(url, timeout=5)
-        text = response.text.split("\n")
+        # response = requests.get(url, timeout=5)
+        # text = response.text.split("\n")
+
+        module_path = dirname(__file__)
+        file_path = os.path.join(module_path, "../word_lists/hypened_words.txt")
+        with open(file_path, "r", encoding="utf-8") as file:
+            text = file.read().split("\n")
 
         values = []
         keys = []
@@ -407,33 +647,3 @@ def apply_porter_stemmer(series):
     stemmer = PorterStemmer()
     series = series.apply(lambda x: " ".join(sorted(set(stemmer.stem(word) for word in x.split()))))
     return series
-
-
-def create_key_phrase(frame):
-    """Creates a keyterm column."""
-
-    frame = frame.copy()
-    frame = frame.sort_values(
-        ["value_fingerprint", "OCC", "value_phrase"],
-        ascending=[True, False, True],
-    )
-    frame = frame.assign(
-        rnk=frame.groupby(["value_fingerprint"])["OCC"].rank(method="first", ascending=False)
-    )
-    #
-    key_frame = frame.loc[frame["rnk"] == 1]
-    frame = pd.merge(
-        frame,
-        key_frame[["value_fingerprint", "value_phrase"]],
-        on="value_fingerprint",
-        how="left",
-    )
-
-    frame = frame.rename(
-        columns={
-            "value_phrase_x": "value_phrase",
-            "value_phrase_y": "key_phrase",
-        }
-    )
-
-    return frame
