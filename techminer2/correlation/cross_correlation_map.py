@@ -28,6 +28,7 @@ Creates an Cross-correlation Map.
 ...     nx_random_state=0,
 ...     #
 ...     # NODES:
+...     node_color="#7793a5",
 ...     node_size_min=30,
 ...     node_size_max=70,
 ...     textfont_size_min=10,
@@ -36,7 +37,7 @@ Creates an Cross-correlation Map.
 ...     textfont_opacity_max=1.00,
 ...     #
 ...     # EDGES:
-...     edge_color="#7793a5",
+...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
 ...     #
 ...     # AXES:
 ...     xaxes_range=None,
@@ -82,6 +83,7 @@ def cross_correlation_map(
     nx_random_state=0,
     #
     # NODES:
+    node_color="#7793a5",
     node_size_min=30,
     node_size_max=70,
     textfont_size_min=10,
@@ -90,7 +92,7 @@ def cross_correlation_map(
     textfont_opacity_max=1.00,
     #
     # EDGES:
-    edge_color="#7793a5",
+    edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
     #
     # AXES:
     xaxes_range=None,
@@ -151,6 +153,7 @@ def cross_correlation_map(
         nx_random_state=nx_random_state,
         #
         # NODES:
+        node_color=node_color,
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
@@ -159,7 +162,7 @@ def cross_correlation_map(
         textfont_opacity_max=textfont_opacity_max,
         #
         # EDGES:
-        edge_color=edge_color,
+        edge_colors=edge_colors,
         #
         # AXES:
         xaxes_range=xaxes_range,

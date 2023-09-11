@@ -25,6 +25,7 @@ def correlation_map(
     nx_random_state=0,
     #
     # NODES:
+    node_color="#7793a5",
     node_size_min=30,
     node_size_max=70,
     textfont_size_min=10,
@@ -33,7 +34,7 @@ def correlation_map(
     textfont_opacity_max=1.00,
     #
     # EDGES:
-    edge_color="#7793a5",
+    edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
     #
     # AXES:
     xaxes_range=None,
@@ -43,7 +44,7 @@ def correlation_map(
     #
     # Create a empty networkx graph
     nx_graph = nx.Graph()
-    nx_graph = __add_nodes_from(nx_graph, similarity)
+    nx_graph = __add_nodes_from(nx_graph, similarity, node_color)
     nx_graph = __add_weighted_edges_from(nx_graph, similarity)
 
     #
@@ -62,7 +63,7 @@ def correlation_map(
 
     #
     # Sets the edge attributes
-    nx_graph = __set_edge_properties(nx_graph, edge_color)
+    nx_graph = __set_edge_properties(nx_graph, edge_colors)
 
     #
     #
@@ -86,10 +87,11 @@ def correlation_map(
 def __add_nodes_from(
     nx_graph,
     similarity,
+    node_color,
 ):
     matrix = similarity.copy()
     nodes = matrix.columns.tolist()
-    nx_graph.add_nodes_from(nodes, group=0, node_color="#7793a5")
+    nx_graph.add_nodes_from(nodes, group=0, node_color=node_color)
 
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = node
@@ -119,21 +121,25 @@ def __add_weighted_edges_from(
     return nx_graph
 
 
-def __set_edge_properties(nx_graph, edge_color):
+def __set_edge_properties(nx_graph, edge_colors):
     for edge in nx_graph.edges():
         weight = nx_graph.edges[edge]["weight"]
 
         if weight < 0.25:
             width, dash = 2, "dot"
+            edge_color = edge_colors[0]
 
         elif weight < 0.5:
             width, dash = 2, "dash"
+            edge_color = edge_colors[1]
 
         elif weight < 0.75:
             width, dash = 4, "solid"
+            edge_color = edge_colors[2]
 
         else:
             width, dash = 6, "solid"
+            edge_color = edge_colors[3]
 
         nx_graph.edges[edge]["width"] = width
         nx_graph.edges[edge]["dash"] = dash
