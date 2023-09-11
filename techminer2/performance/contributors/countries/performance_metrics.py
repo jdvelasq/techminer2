@@ -37,21 +37,14 @@ Performance Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(items.df_.to_markdown())
-| countries      |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:---------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| United Kingdom |          1 |         1 |     7 |                199 |                35 |         4 |         3 |      0.67 |
-| Australia      |          2 |         2 |     7 |                199 |                30 |         4 |         3 |      0.57 |
-| United States  |          3 |         4 |     6 |                 59 |                19 |         3 |         2 |      0.38 |
-| Ireland        |          4 |         5 |     5 |                 55 |                22 |         3 |         2 |      0.5  |
-| China          |          5 |         9 |     5 |                 27 |                 5 |         3 |         2 |      0.43 |
-| Italy          |          6 |        16 |     5 |                  5 |                 2 |         1 |         1 |      0.2  |
-| Germany        |          7 |         6 |     4 |                 51 |                14 |         3 |         2 |      0.5  |
-| Switzerland    |          8 |         7 |     4 |                 45 |                12 |         2 |         2 |      0.29 |
-| Bahrain        |          9 |        11 |     4 |                 19 |                 3 |         2 |         2 |      0.5  |
-| Hong Kong      |         10 |         3 |     3 |                185 |                23 |         3 |         3 |      0.43 |
-| Luxembourg     |         11 |         8 |     2 |                 34 |                 7 |         2 |         2 |      0.5  |
-| Greece         |         15 |        10 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
+>>> print(items.df_.head().to_markdown())
+| countries      |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:---------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| United Kingdom |          1 |          1 |          1 |     7 |                199 |                35 |         4 |         3 |      0.67 |
+| Australia      |          2 |          2 |          2 |     7 |                199 |                31 |         4 |         3 |      0.57 |
+| United States  |          3 |          4 |          5 |     6 |                 59 |                19 |         3 |         2 |      0.38 |
+| Ireland        |          4 |          5 |          4 |     5 |                 55 |                22 |         3 |         2 |      0.5  |
+| China          |          5 |          9 |         10 |     5 |                 27 |                 5 |         3 |         2 |      0.43 |
 
 
 >>> items.fig_.write_html("sphinx/_static/performance/contributors/countries/most_relevant_chart.html")
@@ -63,30 +56,31 @@ Performance Metrics
     
 >>> print(items.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
-the 'countries' field in a scientific bibliography database. Summarize the \\
-table below, sorted by the 'OCC' metric, and delimited by triple backticks, \\
-identify any notable patterns, trends, or outliers in the data, and discuss \\
-their implications for the research field. Be sure to provide a concise \\
-summary of your findings in no more than 150 words.
+the 'countries' field in a scientific bibliography database. Summarize \\
+the table below, sorted by the 'OCC' metric, and delimited by triple \\
+backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| countries      |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:---------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| United Kingdom |          1 |         1 |     7 |                199 |                35 |         4 |         3 |      0.67 |
-| Australia      |          2 |         2 |     7 |                199 |                30 |         4 |         3 |      0.57 |
-| United States  |          3 |         4 |     6 |                 59 |                19 |         3 |         2 |      0.38 |
-| Ireland        |          4 |         5 |     5 |                 55 |                22 |         3 |         2 |      0.5  |
-| China          |          5 |         9 |     5 |                 27 |                 5 |         3 |         2 |      0.43 |
-| Italy          |          6 |        16 |     5 |                  5 |                 2 |         1 |         1 |      0.2  |
-| Germany        |          7 |         6 |     4 |                 51 |                14 |         3 |         2 |      0.5  |
-| Switzerland    |          8 |         7 |     4 |                 45 |                12 |         2 |         2 |      0.29 |
-| Bahrain        |          9 |        11 |     4 |                 19 |                 3 |         2 |         2 |      0.5  |
-| Hong Kong      |         10 |         3 |     3 |                185 |                23 |         3 |         3 |      0.43 |
-| Luxembourg     |         11 |         8 |     2 |                 34 |                 7 |         2 |         2 |      0.5  |
-| Greece         |         15 |        10 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
+| countries      |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:---------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| United Kingdom |          1 |          1 |          1 |     7 |                199 |                35 |         4 |         3 |      0.67 |
+| Australia      |          2 |          2 |          2 |     7 |                199 |                31 |         4 |         3 |      0.57 |
+| United States  |          3 |          4 |          5 |     6 |                 59 |                19 |         3 |         2 |      0.38 |
+| Ireland        |          4 |          5 |          4 |     5 |                 55 |                22 |         3 |         2 |      0.5  |
+| China          |          5 |          9 |         10 |     5 |                 27 |                 5 |         3 |         2 |      0.43 |
+| Italy          |          6 |         16 |         15 |     5 |                  5 |                 2 |         1 |         1 |      0.2  |
+| Germany        |          7 |          6 |          6 |     4 |                 51 |                15 |         3 |         2 |      0.5  |
+| Switzerland    |          8 |          7 |          7 |     4 |                 45 |                13 |         2 |         2 |      0.29 |
+| Bahrain        |          9 |         11 |         13 |     4 |                 19 |                 3 |         2 |         2 |      0.5  |
+| Hong Kong      |         10 |          3 |          3 |     3 |                185 |                24 |         3 |         3 |      0.43 |
+| Luxembourg     |         11 |          8 |          8 |     2 |                 34 |                 8 |         2 |         2 |      0.5  |
+| Greece         |         15 |         10 |          9 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
 ```
 <BLANKLINE>
+
 
 
 

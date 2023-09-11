@@ -345,7 +345,10 @@ def global_indicators_by_field(
     # indicators = indicators.sort_index(axis=0, ascending=True)
 
     indicators = sort_indicators_by_metric(indicators, "global_citations")
-    indicators.insert(0, "rank_gc", range(1, len(indicators) + 1))
+    indicators.insert(0, "rank_gcs", range(1, len(indicators) + 1))
+
+    indicators = sort_indicators_by_metric(indicators, "local_citations")
+    indicators.insert(0, "rank_lcs", range(1, len(indicators) + 1))
 
     indicators = sort_indicators_by_metric(indicators, "OCC")
     indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))

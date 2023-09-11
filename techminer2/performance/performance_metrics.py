@@ -42,54 +42,56 @@ Performance Metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.head().to_markdown())
-| author_keywords       |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:----------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| REGTECH               |          1 |         1 |    28 |                329 |                73 |         9 |         4 |      1.29 |
-| FINTECH               |          2 |         2 |    12 |                249 |                48 |         5 |         3 |      0.83 |
-| REGULATORY_TECHNOLOGY |          3 |         8 |     7 |                 37 |                10 |         4 |         2 |      1    |
-| COMPLIANCE            |          4 |        12 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |
-| REGULATION            |          5 |         4 |     5 |                164 |                22 |         2 |         2 |      0.33 |
+| author_keywords       |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:----------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| REGTECH               |          1 |          1 |          1 |    28 |                329 |                74 |         9 |         4 |      1.29 |
+| FINTECH               |          2 |          2 |          2 |    12 |                249 |                49 |         5 |         3 |      0.83 |
+| REGULATORY_TECHNOLOGY |          3 |          8 |          9 |     7 |                 37 |                10 |         4 |         2 |      1    |
+| COMPLIANCE            |          4 |         12 |         10 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |
+| REGULATION            |          5 |          4 |          3 |     5 |                164 |                22 |         2 |         2 |      0.33 |
+
+
 
 >>> print(metrics.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'author_keywords' field in a scientific bibliography database. \\
 Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
-triple backticks, identify any notable patterns, trends, or outliers in the \\
-data, and discuss their implications for the research field. Be sure to \\
-provide a concise summary of your findings in no more than 150 words.
+triple backticks, identify any notable patterns, trends, or outliers in \\
+the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| author_keywords                           |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:------------------------------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| REGTECH                                   |          1 |         1 |    28 |                329 |                73 |         9 |         4 |      1.29 |
-| FINTECH                                   |          2 |         2 |    12 |                249 |                48 |         5 |         3 |      0.83 |
-| REGULATORY_TECHNOLOGY                     |          3 |         8 |     7 |                 37 |                10 |         4 |         2 |      1    |
-| COMPLIANCE                                |          4 |        12 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |
-| REGULATION                                |          5 |         4 |     5 |                164 |                22 |         2 |         2 |      0.33 |
-| ANTI_MONEY_LAUNDERING                     |          6 |        10 |     5 |                 34 |                 6 |         3 |         2 |      0.75 |
-| FINANCIAL_SERVICES                        |          7 |         3 |     4 |                168 |                20 |         3 |         2 |      0.43 |
-| FINANCIAL_REGULATION                      |          8 |         9 |     4 |                 35 |                 7 |         2 |         2 |      0.29 |
-| ARTIFICIAL_INTELLIGENCE                   |          9 |        19 |     4 |                 23 |                 4 |         3 |         2 |      0.6  |
-| RISK_MANAGEMENT                           |         10 |        25 |     3 |                 14 |                 6 |         2 |         2 |      0.33 |
-| INNOVATION                                |         11 |        32 |     3 |                 12 |                 4 |         1 |         1 |      0.25 |
-| BLOCKCHAIN                                |         12 |        59 |     3 |                  5 |                 0 |         1 |         1 |      0.14 |
-| SUPTECH                                   |         13 |        60 |     3 |                  4 |                 2 |         1 |         1 |      0.2  |
-| SEMANTIC_TECHNOLOGIES                     |         14 |         7 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
-| DATA_PROTECTION                           |         15 |        13 |     2 |                 27 |                 4 |         2 |         1 |      0.5  |
-| SMART_CONTRACTS                           |         16 |        20 |     2 |                 22 |                 8 |         1 |         1 |      0.14 |
-| CHARITYTECH                               |         17 |        23 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| ENGLISH_LAW                               |         18 |        24 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| ACCOUNTABILITY                            |         19 |        26 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
-| DATA_PROTECTION_OFFICER                   |         20 |        27 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
-| BUSINESS_MODELS                           |         26 |         5 |     1 |                153 |                17 |         1 |         1 |      0.17 |
-| FUTURE_RESEARCH_DIRECTION                 |         27 |         6 |     1 |                153 |                17 |         1 |         1 |      0.17 |
-| STANDARDS                                 |         28 |        11 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
-| DIGITAL_IDENTITY                          |         29 |        14 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| EUROPEAN_UNION                            |         30 |        15 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| GENERAL_DATA_PROTECTION_REGULATION (GDPR) |         31 |        16 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| OPEN_BANKING                              |         32 |        17 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| PAYMENT_SERVICES_DIRECTIVE_2 (PSD_2)      |         33 |        18 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
+| author_keywords                    |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:-----------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| REGTECH                            |          1 |          1 |          1 |    28 |                329 |                74 |         9 |         4 |      1.29 |
+| FINTECH                            |          2 |          2 |          2 |    12 |                249 |                49 |         5 |         3 |      0.83 |
+| REGULATORY_TECHNOLOGY              |          3 |          8 |          9 |     7 |                 37 |                10 |         4 |         2 |      1    |
+| COMPLIANCE                         |          4 |         12 |         10 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |
+| REGULATION                         |          5 |          4 |          3 |     5 |                164 |                22 |         2 |         2 |      0.33 |
+| ANTI_MONEY_LAUNDERING              |          6 |         10 |         15 |     5 |                 34 |                 6 |         3 |         2 |      0.75 |
+| FINANCIAL_SERVICES                 |          7 |          3 |          4 |     4 |                168 |                20 |         3 |         2 |      0.43 |
+| FINANCIAL_REGULATION               |          8 |          9 |         11 |     4 |                 35 |                 8 |         2 |         2 |      0.29 |
+| ARTIFICIAL_INTELLIGENCE            |          9 |         19 |         24 |     4 |                 23 |                 4 |         3 |         2 |      0.6  |
+| RISK_MANAGEMENT                    |         10 |         25 |         16 |     3 |                 14 |                 6 |         2 |         2 |      0.33 |
+| INNOVATION                         |         11 |         31 |         27 |     3 |                 12 |                 4 |         1 |         1 |      0.25 |
+| NEW_TECHNOLOGIES                   |         12 |         43 |         37 |     3 |                 10 |                 3 |         1 |         1 |      0.25 |
+| BLOCKCHAIN                         |         13 |         57 |         79 |     3 |                  5 |                 0 |         1 |         1 |      0.14 |
+| SUPTECH                            |         14 |         58 |         52 |     3 |                  4 |                 2 |         1 |         1 |      0.2  |
+| SEMANTIC_TECHNOLOGIES              |         15 |          7 |          5 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
+| DATA_PROTECTION                    |         16 |         13 |         17 |     2 |                 27 |                 5 |         2 |         1 |      0.5  |
+| SMART_CONTRACT                     |         17 |         20 |         12 |     2 |                 22 |                 8 |         1 |         1 |      0.14 |
+| CHARITYTECH                        |         18 |         23 |         25 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
+| ENGLISH_LAW                        |         19 |         24 |         26 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
+| ACCOUNTABILITY                     |         20 |         26 |         32 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
+| BUSINESS_MODELS                    |         26 |          5 |          6 |     1 |                153 |                17 |         1 |         1 |      0.17 |
+| FUTURE_RESEARCH_DIRECTION          |         27 |          6 |          7 |     1 |                153 |                17 |         1 |         1 |      0.17 |
+| STANDARDS                          |         28 |         11 |          8 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
+| DIGITAL_IDENTITY                   |         29 |         14 |         18 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
+| EUROPEAN_UNION                     |         30 |         15 |         19 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
+| GENERAL_DATA_PROTECTION_REGULATION |         31 |         16 |         20 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
+| OPEN_BANKING                       |         32 |         17 |         21 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
+| PAYMENT_SERVICES_DIRECTIVE_2       |         33 |         18 |         22 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
 ```
 <BLANKLINE>
 
@@ -134,31 +136,19 @@ Table:
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(metrics.df_.to_markdown())
-| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |
-|:------------------------|-----------:|------:|--------------:|--------------------:|
-| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |
-| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |
-| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |
-| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |
-| INNOVATION              |         11 |     3 |             2 |                   1 |
-| BLOCKCHAIN              |         12 |     3 |             3 |                   0 |
-| SUPTECH                 |         13 |     3 |             1 |                   2 |
-| SEMANTIC_TECHNOLOGIES   |         14 |     2 |             2 |                   0 |
-| DATA_PROTECTION         |         15 |     2 |             1 |                   1 |
-| SMART_CONTRACTS         |         16 |     2 |             2 |                   0 |
-| CHARITYTECH             |         17 |     2 |             1 |                   1 |
-| ENGLISH_LAW             |         18 |     2 |             1 |                   1 |
-| ACCOUNTABILITY          |         19 |     2 |             2 |                   0 |
-| DATA_PROTECTION_OFFICER |         20 |     2 |             2 |                   0 |
-| GDPR                    |         21 |     2 |             2 |                   0 |
-| SANDBOXES               |         22 |     2 |             2 |                   0 |
-| TECHNOLOGY              |         23 |     2 |             1 |                   1 |
-| FINANCE                 |         24 |     2 |             1 |                   1 |
-| REPORTING               |         25 |     2 |             0 |                   2 |
+>>> print(metrics.df_.head().to_markdown())
+| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |               25    |
+| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |               50    |
+| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |               25    |
+| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |               33.33 |
+| INNOVATION              |         11 |     3 |             2 |                   1 |               33.33 |
+
 
 
 """
+import os
 from dataclasses import dataclass
 
 import plotly.express as px
@@ -259,6 +249,12 @@ def performance_metrics(
         line_width=line_width,
         yshift=yshift,
     )
+
+    #
+    # Save results to disk as csv tab-delimited file for papers
+    file_path = os.path.join(root_dir, "reports", field + ".csv")
+    data_frame.to_csv(file_path, sep="\t", header=True, index=True)
+    # print("--INFO-- File saved to ", file_path)
 
     @dataclass
     class Results:
@@ -367,7 +363,8 @@ def _select_columns(data_frame, metric):
     if metric == "OCCGC":
         columns = [
             "rank_occ",
-            "rank_gc",
+            "rank_gcs",
+            "rank_lcs",
             "OCC",
             "global_citations",
             "local_citations",
@@ -380,8 +377,8 @@ def _select_columns(data_frame, metric):
         columns = [
             "rank_occ",
             "OCC",
-            data_frame.columns[3],
             data_frame.columns[4],
+            data_frame.columns[5],
             "growth_percentage",
         ]
 
@@ -390,7 +387,8 @@ def _select_columns(data_frame, metric):
         "local_citations",
     ]:
         columns = [
-            "rank_gc",
+            "rank_gcs",
+            "rank_lcs",
             "global_citations",
             "local_citations",
             "global_citations_per_document",

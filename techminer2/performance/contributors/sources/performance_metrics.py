@@ -39,23 +39,15 @@ Most Relevant
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(items.df_.to_markdown())
-| source_abbr                   |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:------------------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| J BANK REGUL                  |          1 |         3 |     2 |                 35 |                 8 |         2 |         2 |      0.5  |
-| J FINANC CRIME                |          2 |         8 |     2 |                 13 |                 4 |         2 |         1 |      0.5  |
-| STUD COMPUT INTELL            |          3 |        28 |     2 |                  1 |                 1 |         1 |         1 |      0.33 |
-| FOSTER INNOVCOMPET WITH FINTE |          4 |        30 |     2 |                  1 |                 0 |         1 |         1 |      0.25 |
-| INT CONF INF TECHNOL SYST INN |          5 |        37 |     2 |                  0 |                 0 |         0 |         0 |      0    |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |        38 |     2 |                  0 |                 0 |         0 |         0 |      0    |
-| J ECON BUS                    |          7 |         1 |     1 |                153 |                17 |         1 |         1 |      0.17 |
-| NORTHWEST J INTL LAW BUS      |          8 |         2 |     1 |                150 |                16 |         1 |         1 |      0.14 |
-| PALGRAVE STUD DIGIT BUS ENABL |          9 |         4 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
-| DUKE LAW J                    |         10 |         5 |     1 |                 30 |                 8 |         1 |         1 |      0.12 |
-| J RISK FINANC                 |         11 |         6 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
-| J MONEY LAUND CONTROL         |         12 |         7 |     1 |                 14 |                 3 |         1 |         1 |      0.25 |
-| FINANCIAL INNOV               |         13 |         9 |     1 |                 13 |                 1 |         1 |         1 |      0.5  |
-| ICEIS - PROC INT CONF ENTERP  |         14 |        10 |     1 |                 12 |                 3 |         1 |         1 |      0.25 |
+>>> print(items.df_.head().to_markdown())
+| source_abbr                   |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| J BANK REGUL                  |          1 |          3 |          4 |     2 |                 35 |                 9 |         2 |         2 |      0.5  |
+| J FINANC CRIME                |          2 |          8 |          8 |     2 |                 13 |                 4 |         2 |         1 |      0.5  |
+| STUD COMPUT INTELL            |          3 |         28 |         23 |     2 |                  1 |                 1 |         1 |         1 |      0.33 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |         30 |         31 |     2 |                  1 |                 0 |         1 |         1 |      0.25 |
+| INT CONF INF TECHNOL SYST INN |          5 |         37 |         37 |     2 |                  0 |                 0 |         0 |         0 |      0    |
+
 
 
 >>> items.fig_.write_html("sphinx/_static/performance/contributors/sources/most_relevant_chart.html")
@@ -69,28 +61,28 @@ Most Relevant
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'source_abbr' field in a scientific bibliography database. Summarize \\
 the table below, sorted by the 'OCC' metric, and delimited by triple \\
-backticks, identify any notable patterns, trends, or outliers in the data, \\
-and discuss their implications for the research field. Be sure to provide a \\
-concise summary of your findings in no more than 150 words.
+backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| source_abbr                   |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:------------------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| J BANK REGUL                  |          1 |         3 |     2 |                 35 |                 8 |         2 |         2 |      0.5  |
-| J FINANC CRIME                |          2 |         8 |     2 |                 13 |                 4 |         2 |         1 |      0.5  |
-| STUD COMPUT INTELL            |          3 |        28 |     2 |                  1 |                 1 |         1 |         1 |      0.33 |
-| FOSTER INNOVCOMPET WITH FINTE |          4 |        30 |     2 |                  1 |                 0 |         1 |         1 |      0.25 |
-| INT CONF INF TECHNOL SYST INN |          5 |        37 |     2 |                  0 |                 0 |         0 |         0 |      0    |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |        38 |     2 |                  0 |                 0 |         0 |         0 |      0    |
-| J ECON BUS                    |          7 |         1 |     1 |                153 |                17 |         1 |         1 |      0.17 |
-| NORTHWEST J INTL LAW BUS      |          8 |         2 |     1 |                150 |                16 |         1 |         1 |      0.14 |
-| PALGRAVE STUD DIGIT BUS ENABL |          9 |         4 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
-| DUKE LAW J                    |         10 |         5 |     1 |                 30 |                 8 |         1 |         1 |      0.12 |
-| J RISK FINANC                 |         11 |         6 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
-| J MONEY LAUND CONTROL         |         12 |         7 |     1 |                 14 |                 3 |         1 |         1 |      0.25 |
-| FINANCIAL INNOV               |         13 |         9 |     1 |                 13 |                 1 |         1 |         1 |      0.5  |
-| ICEIS - PROC INT CONF ENTERP  |         14 |        10 |     1 |                 12 |                 3 |         1 |         1 |      0.25 |
+| source_abbr                   |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| J BANK REGUL                  |          1 |          3 |          4 |     2 |                 35 |                 9 |         2 |         2 |      0.5  |
+| J FINANC CRIME                |          2 |          8 |          8 |     2 |                 13 |                 4 |         2 |         1 |      0.5  |
+| STUD COMPUT INTELL            |          3 |         28 |         23 |     2 |                  1 |                 1 |         1 |         1 |      0.33 |
+| FOSTER INNOVCOMPET WITH FINTE |          4 |         30 |         31 |     2 |                  1 |                 0 |         1 |         1 |      0.25 |
+| INT CONF INF TECHNOL SYST INN |          5 |         37 |         37 |     2 |                  0 |                 0 |         0 |         0 |      0    |
+| ROUTLEDGE HANDBFINANCIAL TECH |          6 |         38 |         38 |     2 |                  0 |                 0 |         0 |         0 |      0    |
+| J ECON BUS                    |          7 |          1 |          1 |     1 |                153 |                17 |         1 |         1 |      0.17 |
+| NORTHWEST J INTL LAW BUS      |          8 |          2 |          2 |     1 |                150 |                16 |         1 |         1 |      0.14 |
+| PALGRAVE STUD DIGIT BUS ENABL |          9 |          4 |          3 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
+| DUKE LAW J                    |         10 |          5 |          5 |     1 |                 30 |                 8 |         1 |         1 |      0.12 |
+| J RISK FINANC                 |         11 |          6 |          6 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
+| J MONEY LAUND CONTROL         |         12 |          7 |          9 |     1 |                 14 |                 3 |         1 |         1 |      0.25 |
+| FINANCIAL INNOV               |         13 |          9 |         18 |     1 |                 13 |                 1 |         1 |         1 |      0.5  |
+| ICEIS - PROC INT CONF ENTERP  |         14 |         10 |         10 |     1 |                 12 |                 3 |         1 |         1 |      0.25 |
 ```
 <BLANKLINE>
 

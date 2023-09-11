@@ -37,25 +37,14 @@ Performance Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(metrics.df_.to_markdown())
-| authors           |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| Arner DW          |          1 |         1 |     3 |                185 |                23 |         3 |         3 |      0.43 |
-| Buckley RP        |          2 |         2 |     3 |                185 |                23 |         3 |         3 |      0.43 |
-| Barberis JN       |          3 |         3 |     2 |                161 |                19 |         2 |         2 |      0.29 |
-| Butler T          |          4 |         5 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
-| Hamdan A          |          5 |        15 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
-| Turki M           |          6 |        16 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
-| Lin W             |          7 |        17 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| Singh C           |          8 |        18 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| Brennan R         |          9 |        19 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
-| Crane M           |         10 |        20 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
-| Anagnostopoulos I |         16 |         4 |     1 |                153 |                17 |         1 |         1 |      0.17 |
-| OBrien L          |         17 |         6 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
-| Baxter LG         |         18 |         7 |     1 |                 30 |                 8 |         1 |         1 |      0.12 |
-| Weber RH          |         19 |         8 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| Zetzsche DA       |         20 |         9 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| Breymann W        |         21 |        10 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
+>>> print(metrics.df_.head().to_markdown())
+| authors     |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| Arner DW    |          1 |          1 |          1 |     3 |                185 |                24 |         3 |         3 |      0.43 |
+| Buckley RP  |          2 |          2 |          2 |     3 |                185 |                24 |         3 |         3 |      0.43 |
+| Barberis JN |          3 |          3 |          3 |     2 |                161 |                19 |         2 |         2 |      0.29 |
+| Butler T    |          4 |          5 |          4 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
+| Hamdan A    |          5 |         15 |         19 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
 
 
 
@@ -70,31 +59,31 @@ Performance Metrics
 >>> print(metrics.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'authors' field in a scientific bibliography database. Summarize the \\
-table below, sorted by the 'OCC' metric, and delimited by triple backticks, \\
-identify any notable patterns, trends, or outliers in the data, and discuss \\
-their implications for the research field. Be sure to provide a concise \\
-summary of your findings in no more than 150 words.
+table below, sorted by the 'OCC' metric, and delimited by triple \\
+backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| authors           |   rank_occ |   rank_gc |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:------------------|-----------:|----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| Arner DW          |          1 |         1 |     3 |                185 |                23 |         3 |         3 |      0.43 |
-| Buckley RP        |          2 |         2 |     3 |                185 |                23 |         3 |         3 |      0.43 |
-| Barberis JN       |          3 |         3 |     2 |                161 |                19 |         2 |         2 |      0.29 |
-| Butler T          |          4 |         5 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
-| Hamdan A          |          5 |        15 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
-| Turki M           |          6 |        16 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
-| Lin W             |          7 |        17 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| Singh C           |          8 |        18 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| Brennan R         |          9 |        19 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
-| Crane M           |         10 |        20 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
-| Anagnostopoulos I |         16 |         4 |     1 |                153 |                17 |         1 |         1 |      0.17 |
-| OBrien L          |         17 |         6 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
-| Baxter LG         |         18 |         7 |     1 |                 30 |                 8 |         1 |         1 |      0.12 |
-| Weber RH          |         19 |         8 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| Zetzsche DA       |         20 |         9 |     1 |                 24 |                 4 |         1 |         1 |      0.25 |
-| Breymann W        |         21 |        10 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
+| authors           |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| Arner DW          |          1 |          1 |          1 |     3 |                185 |                24 |         3 |         3 |      0.43 |
+| Buckley RP        |          2 |          2 |          2 |     3 |                185 |                24 |         3 |         3 |      0.43 |
+| Barberis JN       |          3 |          3 |          3 |     2 |                161 |                19 |         2 |         2 |      0.29 |
+| Butler T          |          4 |          5 |          4 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
+| Hamdan A          |          5 |         15 |         19 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
+| Turki M           |          6 |         16 |         20 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
+| Lin W             |          7 |         17 |         16 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
+| Singh C           |          8 |         18 |         17 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
+| Brennan R         |          9 |         19 |         21 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
+| Crane M           |         10 |         20 |         22 |     2 |                 14 |                 3 |         2 |         1 |      0.5  |
+| Anagnostopoulos I |         16 |          4 |          5 |     1 |                153 |                17 |         1 |         1 |      0.17 |
+| OBrien L          |         17 |          6 |          6 |     1 |                 33 |                14 |         1 |         1 |      0.2  |
+| Baxter LG         |         18 |          7 |          7 |     1 |                 30 |                 8 |         1 |         1 |      0.12 |
+| Weber RH          |         19 |          8 |         13 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
+| Zetzsche DA       |         20 |          9 |         14 |     1 |                 24 |                 5 |         1 |         1 |      0.25 |
+| Breymann W        |         21 |         10 |          8 |     1 |                 21 |                 8 |         1 |         1 |      0.17 |
 ```
 <BLANKLINE>
 
