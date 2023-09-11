@@ -10,7 +10,17 @@
 Join Keys
 ===============================================================================
 
->>> from techminer2.refine.words import join_keys
+>>> from techminer2.refine.words import join_thesaurus_keys
+>>> join_thesaurus_keys(
+...     contains=("ARTIFICIAL_INTELLIGENCE", "AI"),
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/chatgpt/",
+... )
+
+
+
+
 >>> join_keys(
 ...     contains=("MULTI_LAYER", "MULTILAYER"),
 ...     #
@@ -72,39 +82,121 @@ def join_thesaurus_keys(
     # Extracts the list of keys to be replaced
     if equals is not None:
         #
-        main_term = contains[0]
-        secondary_term = contains[1]
+        main_term = equals[0]
+        secondary_term = equals[1]
         data_frame.loc[data_frame.key == secondary_term, "key"] = main_term
         #
     elif contains is not None:
         #
         main_term = contains[0]
         secondary_term = contains[1]
-        data_frame["key"] = data_frame["key"].str.replace(secondary_term, main_term, regex=False)
+        #
+        # startswith:
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + secondary_term + "_"),
+            main_term + "_",
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + secondary_term + r"\b"),
+            main_term,
+            regex=True,
+        )
+        #
+        # endswith:
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + secondary_term + "$"),
+            "_" + main_term,
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(r"\b" + secondary_term + "$"),
+            main_term,
+            regex=True,
+        )
+        #
+        # contains:
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + secondary_term + "_"),
+            "_" + main_term + "_",
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + secondary_term + r"\b"),
+            "_" + main_term,
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(r"\b" + secondary_term + "_"),
+            main_term + "_",
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(r"\b" + secondary_term + r"\b"),
+            main_term,
+            regex=True,
+        )
         #
     elif startswith is not None:
         #
         main_term = startswith[0]
         secondary_term = startswith[1]
-        regex = re.compile(f"^{secondary_term}")
-        data_frame["key"] = data_frame["key"].str.replace(regex, main_term, regex=True)
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(f"^{secondary_term}_"),
+            main_term + "_",
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(f"^{secondary_term}" + r"\b"),
+            main_term,
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(f"^{secondary_term}$"),
+            main_term,
+            regex=True,
+        )
         #
     elif endswith is not None:
         #
         main_term = endswith[0]
         secondary_term = endswith[1]
-        regex = re.compile(f"{secondary_term}$")
-        data_frame["key"] = data_frame["key"].str.replace(regex, main_term, regex=True)
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(f"_{secondary_term}$"),
+            "_" + main_term,
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(r"\b" + f"{secondary_term}$"),
+            main_term,
+            regex=True,
+        )
+        #
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(f"^{secondary_term}$"),
+            main_term,
+            regex=True,
+        )
         #
     else:
         raise ValueError(
-            "You must specify at least one of the following parameters: equals, contains, startswith, endswith."
+            "You must specify one of the following parameters: equals, contains, startswith, endswith."
         )
 
     #
     # Checks non grouped keys
-    thesaurus = {row.value: row.key for _, row in data_frame.iterrows()}
-    data_frame["key"] = data_frame["key"].map(thesaurus)
+    # thesaurus = {row.value: row.key for _, row in data_frame.iterrows()}
+    # data_frame["key"] = data_frame["key"].map(thesaurus)
 
     #
     # Saves the new thesaurus to disk

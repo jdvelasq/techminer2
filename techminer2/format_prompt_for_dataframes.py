@@ -7,7 +7,7 @@
 
 import textwrap
 
-TEXTWRAP_WIDTH = 75
+TEXTWRAP_WIDTH = 73
 
 
 def format_prompt_for_dataframes(

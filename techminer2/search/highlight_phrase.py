@@ -50,7 +50,7 @@ import textwrap
 
 from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
-TEXTWRAP_WIDTH = 75
+TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "words.txt"
 
 

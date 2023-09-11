@@ -139,7 +139,6 @@ def most_cited_documents(
 
         #
         # Global citations per year
-        # metrics["global_citations"] = metrics.global_citations.map(int, na_action="ignore")
         data_frame["global_citations"] = data_frame.global_citations.astype(int)
         data_frame = data_frame.assign(
             global_citations_per_year=data_frame.global_citations.astype(float)
@@ -148,6 +147,22 @@ def most_cited_documents(
         data_frame = data_frame.assign(
             global_citations_per_year=data_frame.global_citations_per_year.round(3)
         )
+
+        #
+        # Global citation score rank
+        data_frame = data_frame.sort_values(
+            ["global_citations", "local_citations", "year", "authors"],
+            ascending=[False, False, True, True],
+        )
+        data_frame["rank_gcs"] = range(1, len(data_frame) + 1)
+
+        #
+        # Local citation score rank
+        data_frame = data_frame.sort_values(
+            ["local_citations", "global_citations", "year", "authors"],
+            ascending=[False, False, True, True],
+        )
+        data_frame["rank_lcs"] = range(1, len(data_frame) + 1)
 
         #
         # Local citations per year
@@ -345,7 +360,9 @@ def most_cited_documents(
     data_frame = data_frame[
         [
             "year",
+            "rank_gcs",
             "global_citations",
+            "rank_lcs",
             "local_citations",
             "global_citations_per_year",
             "local_citations_per_year",
