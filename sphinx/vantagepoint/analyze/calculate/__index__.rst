@@ -11,5 +11,5 @@ Calculate >
     /techminer2/co_authorship/network/authors/metrics
 
 .. toctree::
-    statistics
+    /techminer2/performance/statistics
 
