@@ -19,6 +19,14 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     ingest/__index__  
     refine/__index__ 
     search/__index__ 
+    
+    overview/__index__
+    
+    analyze/__index__
+    expertise/__index__
+    agenda/__index__
+
+    report/__index__
 
 ..     techminer2/performance/__index__
 ..     techminer2/co_authorship/__index__
@@ -41,7 +49,6 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     vantagepoint/__index__
     tlab/__index__
     scientopy/__index__
-    vosviewer/__index__
     
 
 **Author**:
