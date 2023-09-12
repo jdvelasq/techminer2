@@ -12,9 +12,11 @@ Matrix >
     /techminer2/correlation/cross_correlation_matrix    
 
 .. toctree::
-    factor_matrix    
+    :maxdepth: 1
+
+    /techminer2/co_occurrence/factor/pca/__index__
 
 .. toctree::
-    tfidf 
+    /techminer2/performance/tfidf 
 
  

@@ -45,3 +45,8 @@ Performance >
     statistics
 
 -----
+
+.. toctree::
+    tfidf
+
+-----
