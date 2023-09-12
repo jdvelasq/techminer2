@@ -10,6 +10,7 @@ import numpy as np
 
 
 def nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max):
+    #
     widths = np.array([nx_graph.edges[edge]["weight"] for edge in nx_graph.edges()])
 
     #

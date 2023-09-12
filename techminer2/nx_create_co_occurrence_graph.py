@@ -20,6 +20,7 @@ from .nx_compute_spring_layout import nx_compute_spring_layout
 from .nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
 from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from .nx_set_edge_color_from_palette import nx_set_edge_color_from_palette
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
 
@@ -129,6 +130,7 @@ def nx_create_co_occurrence_graph(
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
 
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
+    nx_graph = nx_set_edge_color_from_palette(nx_graph)
 
     return nx_graph
 

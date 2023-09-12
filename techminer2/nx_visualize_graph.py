@@ -106,6 +106,8 @@ def __create_edge_traces(graph):
 
     edge_traces = []
 
+    data = []
+
     for edge in graph.edges():
         #
         pos_x0 = graph.nodes[edge[0]]["x"]
@@ -130,7 +132,13 @@ def __create_edge_traces(graph):
             mode="lines",
         )
 
-        edge_traces.append(edge_trace)
+        # edge_traces.append(edge_trace)
+        data.append((edge_trace, width))
+
+    #
+    # Ascending order
+    data = sorted(data, key=lambda x: x[1])
+    edge_traces = [x[0] for x in data]
 
     return edge_traces
 

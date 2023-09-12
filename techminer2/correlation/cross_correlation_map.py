@@ -14,6 +14,7 @@ Cross-correlation Map
 
 Creates an Cross-correlation Map.
 
+>>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
 >>> from techminer2.correlation import cross_correlation_map
 >>> cross_correlation_map(
 ...     #
