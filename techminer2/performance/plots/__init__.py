@@ -2,6 +2,7 @@ from .bar_chart import bar_chart
 from .bradford_law import bradford_law
 from .cleveland_dot_chart import cleveland_dot_chart
 from .cluster_map import cluster_map
+from .collaboration_world_map import collaboration_world_map
 from .column_chart import column_chart
 from .line_chart import line_chart
 from .lotka_law import lotka_law

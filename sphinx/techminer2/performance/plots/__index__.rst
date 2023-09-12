@@ -49,6 +49,11 @@ Plots >
 -----
 
 .. toctree::
+    /techminer2/performance/plots/collaboration_world_map
+
+-----
+
+.. toctree::
     /techminer2/performance/plots/word_trends
 
 -----

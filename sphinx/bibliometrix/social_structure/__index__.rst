@@ -7,6 +7,6 @@ Social Structure >
    collaboration_network/__index__
 
 .. toctree::   
-   collaboration_worldmap
+   /techminer2/performance/plots/collaboration_world_map
 
       
