@@ -11,14 +11,15 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     introduction/release_info
     introduction/license
 
-.. .. toctree::
-..     :caption: TECHMINER 2+
-..     :hidden:
-..     :maxdepth: 1
-.. 
-..     techminer2/ingest/__index__  
-..     techminer2/refine/__index__ 
-..     techminer2/search/__index__ 
+.. toctree::
+    :caption: TECHMINER 2+
+    :hidden:
+    :maxdepth: 1
+
+    ingest/__index__  
+    refine/__index__ 
+    search/__index__ 
+
 ..     techminer2/performance/__index__
 ..     techminer2/co_authorship/__index__
 ..     techminer2/co_occurrence/__index__
