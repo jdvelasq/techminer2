@@ -6,23 +6,21 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-.. _tm2.citation.documents.rpys:
-
 RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
->>> from techminer2.citation import rpys
+>>> from techminer2.citations import rpys
 >>> chart = rpys(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
->>> chart.fig_.write_html("sphinx/_static/citation/rpys_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/citations/rpys_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/citation/rpys_chart.html" 
+    <iframe src="../../../../../_static/citations/rpys_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

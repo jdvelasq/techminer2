@@ -24,8 +24,6 @@ Analyze >
 
 ------
 
-
-
 .. toctree::
     :maxdepth: 1
 
@@ -58,6 +56,13 @@ Analyze >
     :maxdepth: 1
 
     pca/__index__
+
+------
+
+.. toctree::
+    :maxdepth: 1
+
+    performance/__index__
 
 ------
 

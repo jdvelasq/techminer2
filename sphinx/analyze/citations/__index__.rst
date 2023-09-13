@@ -4,22 +4,14 @@ Citations >
 ------
 
 .. toctree::
-    most_global_cited_documents
+    :maxdepth: 1
+
+    examples/__index__
 
 ------
 
 .. toctree::
-    most_local_cited_documents
-
-------
-
-.. toctree::
-    most_global_cited_references
-
-------
-
-.. toctree::
-    most_local_cited_references
+    most_cited_documents
 
 ------
 
