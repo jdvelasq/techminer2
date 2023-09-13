@@ -5,34 +5,30 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 """
-Auto-correlation Map
+Network Visualization
 ===============================================================================
 
-Creates an Auto-correlation Map.
 
->>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
->>> from techminer2.correlation import auto_correlation_map
->>> auto_correlation_map(
+>>> from techminer2.bibliographic_coupling.organizations import network_visualization
+>>> network_visualization(
 ...     #
-...     # FUNCTION PARAMS:
-...     rows_and_columns='authors',
-...     method="pearson",
-...     #
-...     # ITEM PARAMS:
-...     top_n=None,
-...     occ_range=(2, None),
-...     gc_range=(None, None),
+...     # COLUMN PARAMS:
+...     top_n=20, 
+...     citations_min=0,
+...     documents_min=2,
 ...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
 ...     #
 ...     # LAYOUT:
 ...     nx_k=None,
 ...     nx_iterations=30,
 ...     nx_random_state=0,
 ...     #
+...     #
 ...     # NODES:
-...     node_color="#7793a5",
 ...     node_size_min=30,
 ...     node_size_max=70,
 ...     textfont_size_min=10,
@@ -41,7 +37,9 @@ Creates an Auto-correlation Map.
 ...     textfont_opacity_max=1.00,
 ...     #
 ...     # EDGES:
-...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
+...     edge_color="#7793a5",
+...     edge_width_min=0.8,
+...     edge_width_max=3.0,
 ...     #
 ...     # AXES:
 ...     xaxes_range=None,
@@ -53,32 +51,31 @@ Creates an Auto-correlation Map.
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/correlation/auto_correlation_map.html")
+... ).write_html("sphinx/_static/bibliographic_coupling/organizations/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/correlation/auto_correlation_map.html"
+    <iframe src="../../../../../_static/bibliographic_coupling/organizations/network_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
+                                             
 """
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
+from ....nx_create_bibliographic_coupling_graph import nx_create_bibliographic_coupling_graph
+from ....nx_visualize_graph import nx_visualize_graph
 
-from .auto_correlation_matrix import auto_correlation_matrix
-from .correlation_map import correlation_map
+UNIT_OF_ANALYSIS = "organizations"
 
 
-def auto_correlation_map(
+def network_visualization(
     #
-    # FUNCTION PARAMS:
-    rows_and_columns,
-    method="pearson",
-    #
-    # ITEM PARAMS:
+    # COLUMN PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
+    citations_min=0,
+    documents_min=2,
     custom_items=None,
+    #
+    # NETWORK PARAMS:
+    algorithm_or_dict="louvain",
     #
     # LAYOUT:
     nx_k=None,
@@ -86,7 +83,6 @@ def auto_correlation_map(
     nx_random_state=0,
     #
     # NODES:
-    node_color="#7793a5",
     node_size_min=30,
     node_size_max=70,
     textfont_size_min=10,
@@ -95,7 +91,9 @@ def auto_correlation_map(
     textfont_opacity_max=1.00,
     #
     # EDGES:
-    edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
+    edge_color="#7793a5",
+    edge_width_min=0.8,
+    edge_width_max=3.0,
     #
     # AXES:
     xaxes_range=None,
@@ -109,39 +107,23 @@ def auto_correlation_map(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Auto-correlation Map.
-
+    """
     :meta private:
     """
 
-    corr_matrix = auto_correlation_matrix(
+    nx_graph = nx_create_bibliographic_coupling_graph(
         #
         # FUNCTION PARAMS:
-        rows_and_columns=rows_and_columns,
-        method=method,
+        unit_of_analysis=UNIT_OF_ANALYSIS,
         #
-        # ITEM PARAMS:
+        # COLUMN PARAMS:
         top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
+        citations_min=citations_min,
+        documents_min=documents_min,
         custom_items=custom_items,
         #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    ).df_
-
-    similarity = pd.DataFrame(
-        cosine_similarity(corr_matrix),
-        index=corr_matrix.index,
-        columns=corr_matrix.columns,
-    )
-
-    return correlation_map(
-        similarity=similarity,
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
         #
         # LAYOUT:
         nx_k=nx_k,
@@ -149,7 +131,6 @@ def auto_correlation_map(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_color=node_color,
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
@@ -158,9 +139,24 @@ def auto_correlation_map(
         textfont_opacity_max=textfont_opacity_max,
         #
         # EDGES:
-        edge_colors=edge_colors,
+        edge_color=edge_color,
+        edge_width_min=edge_width_min,
+        edge_width_max=edge_width_max,
         #
-        # AXES:
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    return nx_visualize_graph(
+        #
+        # FUNCTION PARAMS:
+        nx_graph=nx_graph,
+        #
+        # NETWORK PARAMS:
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,

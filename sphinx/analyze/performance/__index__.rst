@@ -1,4 +1,4 @@
-Analyze >
+Performance >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ------
@@ -6,7 +6,7 @@ Analyze >
 .. toctree::
     :maxdepth: 1
 
-    agenda/__index__
+    overview/__index__
 
 ------
 

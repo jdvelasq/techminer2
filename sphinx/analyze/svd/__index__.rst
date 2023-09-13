@@ -4,15 +4,15 @@ SVD >
 ------
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 1
    
-   co_occurrence_matrix/__index__
+   cooc_matrix/__index__
 
 ------
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 1
    
-   tfidf/__index__
+   tfidf_matrix/__index__
 
 ------

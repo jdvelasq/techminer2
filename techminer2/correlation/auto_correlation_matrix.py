@@ -56,13 +56,13 @@ Crane M 2:014                0.00  ...            1.0
 
 >>> print(matrix.prompt_)
 Your task is to generate a short paragraph of a research paper analyzing \\
-the auto-correlation values between the items of the column 'authors' of a \\
-bibliographic dataset.  Analyze the table below which contains the auto- \\
-correlation values for the 'authors'. High correlation values indicate that \\
-the items tends to appear together in the same document and forms a group. \\
-Identify any notable patterns, trends, or outliers in the data, and discuss \\
-their implications for the research field. Be sure to provide a concise \\
-summary of your findings, in at most 50 words.
+the auto-correlation values between the items of the column 'authors' of \\
+a bibliographic dataset.  Analyze the table below which contains the \\
+auto-correlation values for the 'authors'. High correlation values \\
+indicate that the items tends to appear together in the same document and \\
+forms a group. Identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings, in at most 50 words.
 <BLANKLINE>
 Table:
 ```

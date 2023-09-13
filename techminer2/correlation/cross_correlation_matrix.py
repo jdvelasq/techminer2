@@ -55,12 +55,12 @@ Crane M 2:014               0.000  ...          1.000
 
 
 >>> print(matrix.prompt_)
-Analyze the table below which contains the cross-correlation values for the \\
-authors based on the values of the countries. High correlation values \\
-indicate that the topics in authors are related based on the values of the \\
-countries. Identify any notable patterns, trends, or outliers in the data, \\
-and discuss their implications for the research field. Be sure to provide a \\
-concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the cross-correlation values for \\
+the authors based on the values of the countries. High correlation values \\
+indicate that the topics in authors are related based on the values of \\
+the countries. Identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
