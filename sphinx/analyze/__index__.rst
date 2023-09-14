@@ -6,9 +6,15 @@ Analyze >
 .. toctree::
     :maxdepth: 1
 
-    research_agenda/__index__
+    co_occurrence/__index__
+
 
 ------
+
+------
+
+------
+
 
 .. toctree::
     :maxdepth: 1
@@ -81,3 +87,9 @@ Analyze >
 ------
 
 
+.. toctree::
+    :maxdepth: 1
+
+    research_agenda/__index__
+
+------
