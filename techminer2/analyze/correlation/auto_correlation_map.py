@@ -13,7 +13,7 @@ Auto-correlation Map
 Creates an Auto-correlation Map.
 
 >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
->>> from techminer2.correlation import auto_correlation_map
+>>> from techminer2.analyze.correlation import auto_correlation_map
 >>> auto_correlation_map(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -53,11 +53,11 @@ Creates an Auto-correlation Map.
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/correlation/auto_correlation_map.html")
+... ).write_html("sphinx/_static/analyze/correlation/auto_correlation_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/correlation/auto_correlation_map.html"
+    <iframe src="../../../../_static/analyze/correlation/auto_correlation_map.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

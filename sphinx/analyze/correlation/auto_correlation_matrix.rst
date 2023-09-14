@@ -1,3 +1,3 @@
-.. automodule:: techminer2.correlation.auto_correlation_matrix
+.. automodule:: techminer2.analyze.correlation.auto_correlation_matrix
     :members:
 

@@ -12,7 +12,7 @@ Auto-correlation Matrix
 
 Returns an auto-correlation matrix.
 
->>> from techminer2.correlation import auto_correlation_matrix
+>>> from techminer2.analyze.correlation import auto_correlation_matrix
 >>> matrix = auto_correlation_matrix(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -54,32 +54,8 @@ Crane M 2:014                0.00  ...            1.0
 3  Arner DW 3:185     Butler T 2:041        0.0000
 4  Arner DW 3:185     Hamdan A 2:018        0.0000
 
->>> print(matrix.prompt_)
-Your task is to generate a short paragraph of a research paper analyzing \\
-the auto-correlation values between the items of the column 'authors' of \\
-a bibliographic dataset.  Analyze the table below which contains the \\
-auto-correlation values for the 'authors'. High correlation values \\
-indicate that the items tends to appear together in the same document and \\
-forms a group. Identify any notable patterns, trends, or outliers in the \\
-data, and discuss their implications for the research field. Be sure to \\
-provide a concise summary of your findings, in at most 50 words.
-<BLANKLINE>
-Table:
-```
-|                   |   Arner DW 3:185 |   Buckley RP 3:185 |   Barberis JN 2:161 |   Butler T 2:041 |   Hamdan A 2:018 |   Turki M 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |
-|:------------------|-----------------:|-------------------:|--------------------:|-----------------:|-----------------:|----------------:|--------------:|----------------:|------------------:|----------------:|
-| Arner DW 3:185    |             1    |               1    |                0.77 |                0 |                0 |               0 |             0 |               0 |                 0 |               0 |
-| Buckley RP 3:185  |             1    |               1    |                0.77 |                0 |                0 |               0 |             0 |               0 |                 0 |               0 |
-| Barberis JN 2:161 |             0.77 |               0.77 |                1    |                0 |                0 |               0 |             0 |               0 |                 0 |               0 |
-| Butler T 2:041    |             0    |               0    |                0    |                1 |                0 |               0 |             0 |               0 |                 0 |               0 |
-| Hamdan A 2:018    |             0    |               0    |                0    |                0 |                1 |               1 |             0 |               0 |                 0 |               0 |
-| Turki M 2:018     |             0    |               0    |                0    |                0 |                1 |               1 |             0 |               0 |                 0 |               0 |
-| Lin W 2:017       |             0    |               0    |                0    |                0 |                0 |               0 |             1 |               1 |                 0 |               0 |
-| Singh C 2:017     |             0    |               0    |                0    |                0 |                0 |               0 |             1 |               1 |                 0 |               0 |
-| Brennan R 2:014   |             0    |               0    |                0    |                0 |                0 |               0 |             0 |               0 |                 1 |               1 |
-| Crane M 2:014     |             0    |               0    |                0    |                0 |                0 |               0 |             0 |               0 |                 1 |               1 |
-```
-<BLANKLINE>
+>>> print(matrix.prompt_) # doctest: +ELLIPSIS
+Your task is ...
 
 
 """

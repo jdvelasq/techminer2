@@ -1,3 +1,3 @@
-.. automodule:: techminer2.correlation.cross_correlation_map
+.. automodule:: techminer2.analyze.correlation.cross_correlation_map
     :members:
 

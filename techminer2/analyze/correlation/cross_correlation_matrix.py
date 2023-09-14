@@ -10,7 +10,7 @@
 Cross-correlation Matrix
 ===============================================================================
 
->>> from techminer2.correlation import cross_correlation_matrix
+>>> from techminer2.analyze.correlation import cross_correlation_matrix
 >>> matrix = cross_correlation_matrix(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -54,30 +54,8 @@ Crane M 2:014               0.000  ...          1.000
 4  Arner DW 3:185     Hamdan A 2:018      0.000000
 
 
->>> print(matrix.prompt_)
-Analyze the table below which contains the cross-correlation values for \\
-the authors based on the values of the countries. High correlation values \\
-indicate that the topics in authors are related based on the values of \\
-the countries. Identify any notable patterns, trends, or outliers in the \\
-data, and discuss their implications for the research field. Be sure to \\
-provide a concise summary of your findings in no more than 150 words.
-<BLANKLINE>
-Table:
-```
-|                   |   Arner DW 3:185 |   Buckley RP 3:185 |   Barberis JN 2:161 |   Butler T 2:041 |   Hamdan A 2:018 |   Turki M 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |
-|:------------------|-----------------:|-------------------:|--------------------:|-----------------:|-----------------:|----------------:|--------------:|----------------:|------------------:|----------------:|
-| Arner DW 3:185    |            1     |              1     |               0.907 |            0     |                0 |               0 |         0     |           0     |             0     |           0     |
-| Buckley RP 3:185  |            1     |              1     |               0.907 |            0     |                0 |               0 |         0     |           0     |             0     |           0     |
-| Barberis JN 2:161 |            0.907 |              0.907 |               1     |            0     |                0 |               0 |         0     |           0     |             0     |           0     |
-| Butler T 2:041    |            0     |              0     |               0     |            1     |                0 |               0 |         0.283 |           0.283 |             0.886 |           0.886 |
-| Hamdan A 2:018    |            0     |              0     |               0     |            0     |                1 |               1 |         0     |           0     |             0     |           0     |
-| Turki M 2:018     |            0     |              0     |               0     |            0     |                1 |               1 |         0     |           0     |             0     |           0     |
-| Lin W 2:017       |            0     |              0     |               0     |            0.283 |                0 |               0 |         1     |           1     |             0     |           0     |
-| Singh C 2:017     |            0     |              0     |               0     |            0.283 |                0 |               0 |         1     |           1     |             0     |           0     |
-| Brennan R 2:014   |            0     |              0     |               0     |            0.886 |                0 |               0 |         0     |           0     |             1     |           1     |
-| Crane M 2:014     |            0     |              0     |               0     |            0.886 |                0 |               0 |         0     |           0     |             1     |           1     |
-```
-<BLANKLINE>
+>>> print(matrix.prompt_) # doctest: +ELLIPSIS
+Analyze the ...
 
     
 

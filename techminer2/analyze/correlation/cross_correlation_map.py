@@ -15,7 +15,7 @@ Cross-correlation Map
 Creates an Cross-correlation Map.
 
 >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
->>> from techminer2.correlation import cross_correlation_map
+>>> from techminer2.analyze.correlation import cross_correlation_map
 >>> cross_correlation_map(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -56,11 +56,11 @@ Creates an Cross-correlation Map.
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/correlation/cross_correlation_map.html")
+... ).write_html("sphinx/_static/analyze/correlation/cross_correlation_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/correlation/cross_correlation_map.html"
+    <iframe src="../../../../_static/analyze/correlation/cross_correlation_map.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

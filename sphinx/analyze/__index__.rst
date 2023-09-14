@@ -11,6 +11,13 @@ Analyze >
 ------
 
 .. toctree::
+    :maxdepth: 1
+
+    correlation/__index__
+
+------
+
+.. toctree::
     performance_metrics
 
 ------
@@ -58,12 +65,6 @@ Analyze >
 
     citations/__index__
 
-------
-
-.. toctree::
-    :maxdepth: 1
-
-    correlation/__index__
 
 ------
 
