@@ -9,6 +9,11 @@ Co-occurrence >
 ------
 
 .. toctree::
+    matrix_viewer
+
+------
+
+.. toctree::
     sankey_chart
 
 ------

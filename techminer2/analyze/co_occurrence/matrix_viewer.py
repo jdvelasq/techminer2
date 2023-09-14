@@ -6,13 +6,11 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _tm2.co_occurrence.matrix_viewer:
-
 Matrix Viewer
 ===============================================================================
 
 
->>> from techminer2.co_occurrence import matrix_viewer
+>>> from techminer2.analyze.co_occurrence import matrix_viewer
 >>> matrix_viewer(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -59,11 +57,11 @@ Matrix Viewer
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/matrix_viewer_0.html")
+... ).write_html("sphinx/_static/analyze/co_occurrence/matrix_viewer_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence/matrix_viewer_0.html" 
+    <iframe src="../../../../_static/analyze/co_occurrence/matrix_viewer_0.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -113,11 +111,11 @@ Matrix Viewer
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/matrix_viewer_1.html")
+... ).write_html("sphinx/_static/analyze/co_occurrence/matrix_viewer_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence/matrix_viewer_1.html" 
+    <iframe src="../../../../_static/analyze/co_occurrence/matrix_viewer_1.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

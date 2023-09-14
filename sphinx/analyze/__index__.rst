@@ -16,6 +16,11 @@ Analyze >
 ------
 
 .. toctree::
+    cluster_records
+
+------
+
+.. toctree::
     terms_by_year
 
 ------

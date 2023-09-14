@@ -5,12 +5,10 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _performance_analysis.cluster_records:
-
 Cluster Records
 ===============================================================================
 
->>> from techminer2.performance_analysis import cluster_records 
+>>> from techminer2.analyze import cluster_records 
 >>> cluster_records(
 ...     field='author_keywords',
 ...     #
@@ -25,11 +23,11 @@ Cluster Records
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/performance/cluster_records.html")
+... ).write_html("sphinx/_static/analyze/cluster_records.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/cluster_records.html" 
+    <iframe src="../../../_static/analyze/cluster_records.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
