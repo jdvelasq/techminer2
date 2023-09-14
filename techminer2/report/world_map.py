@@ -31,11 +31,11 @@ World Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/plots/world_map.html")
+>>> chart.fig_.write_html("sphinx/_static/report/world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/world_map.html" 
+    <iframe src="../../../_static/report/world_map.html" 
     height="400px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()

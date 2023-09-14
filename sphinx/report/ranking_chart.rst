@@ -1,3 +1,3 @@
-.. automodule:: techminer2.performance.plots.ranking_chart
+.. automodule:: techminer2.report.ranking_chart
     :members:
 

@@ -33,21 +33,23 @@ Line Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/plots/line_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/report/line_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/line_chart.html" 
+    <iframe src="../../../_static/report/line_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()
-                       rank_occ  OCC
-author_keywords                     
-REGTECH                       1   28
-FINTECH                       2   12
-REGULATORY_TECHNOLOGY         3    7
-COMPLIANCE                    4    7
-REGULATION                    5    5
+                       rank_occ  OCC  ...  between_2022_2023  growth_percentage
+author_keywords                       ...                                      
+REGTECH                       1   28  ...                8.0              28.57
+FINTECH                       2   12  ...                2.0              16.67
+REGULATORY_TECHNOLOGY         3    7  ...                2.0              28.57
+COMPLIANCE                    4    7  ...                2.0              28.57
+REGULATION                    5    5  ...                1.0              20.00
+<BLANKLINE>
+[5 rows x 5 columns]
 
 
 >>> print(chart.prompt_) # doctest: +ELLIPSIS
@@ -56,6 +58,8 @@ Your task is ...
 
 """
 import plotly.express as px
+
+from ..analyze.performance_metrics import performance_metrics
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -98,8 +102,6 @@ def line_chart(
 
     :meta private:
     """
-
-    from ..performance.performance_metrics import performance_metrics
 
     items = performance_metrics(
         #

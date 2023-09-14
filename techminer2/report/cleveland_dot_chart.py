@@ -11,7 +11,7 @@
 Cleveland Dot Chart
 ===============================================================================
 
->>> from techminer2.performance.plots import cleveland_dot_chart
+>>> from techminer2.report import cleveland_dot_chart
 >>> chart = cleveland_dot_chart(
 ...     #
 ...     # ITEMS PARAMS:
@@ -35,11 +35,11 @@ Cleveland Dot Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/plots/cleveland_dot_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/report/cleveland_dot_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/cleveland_dot_chart.html" 
+    <iframe src="../../../_static/report/cleveland_dot_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
