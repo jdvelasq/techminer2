@@ -8,6 +8,11 @@ Analyze >
 
     co_occurrence/__index__
 
+------
+
+.. toctree::
+    performance_metrics
+
 
 ------
 

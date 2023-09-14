@@ -59,11 +59,11 @@ Your task is ...
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/performance_metrics.html"
+    <iframe src="../../../_static/analyze/performance_metrics.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
