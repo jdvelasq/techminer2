@@ -11,7 +11,7 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> from techminer2.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+>>> from techminer2.analyze.co_occurrence import co_occurrence_matrix
 >>> matrix = co_occurrence_matrix(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -68,37 +68,8 @@ Arman AA 2:000                   2  ...                 0
 3  REGTECH 28:329     Butler T 2:041             2
 4  REGTECH 28:329     Hamdan A 2:018             0
 
->>> print(matrix.prompt_)
-Your task is to generate a short paragraph for a research paper analyzing \\
-the co-occurrence between the values of different columns in a \\
-bibliographic dataset. Analyze the table below, and delimited by triple \\
-backticks, which contains values of co-occurrence (OCC) for the \\
-'author_keywords' and 'authors' fields in a bibliographic dataset. Identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
-<BLANKLINE>
-Table:
-```
-| authors            |   REGTECH 28:329 |   FINTECH 12:249 |   REGULATORY_TECHNOLOGY 07:037 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   ANTI_MONEY_LAUNDERING 05:034 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   RISK_MANAGEMENT 03:014 |   INNOVATION 03:012 |   SUPTECH 03:004 |   SEMANTIC_TECHNOLOGIES 02:041 |   DATA_PROTECTION 02:027 |   CHARITYTECH 02:017 |   ENGLISH_LAW 02:017 |   ACCOUNTABILITY 02:014 |   DATA_PROTECTION_OFFICER 02:014 |   GDPR 02:014 |   SANDBOXES 02:012 |   TECHNOLOGY 02:010 |   FINANCE 02:001 |   REPORTING 02:001 |
-|:-------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|-------------------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------:|--------------------:|-----------------:|-------------------------------:|-------------------------:|---------------------:|---------------------:|------------------------:|---------------------------------:|--------------:|-------------------:|--------------------:|-----------------:|-------------------:|
-| Arner DW 3:185     |                2 |                1 |                              0 |                   0 |                   0 |                              0 |                           1 |                             2 |                                0 |                        0 |                   0 |                0 |                              0 |                        1 |                    0 |                    0 |                       0 |                                0 |             0 |                  1 |                   0 |                0 |                  0 |
-| Buckley RP 3:185   |                2 |                1 |                              0 |                   0 |                   0 |                              0 |                           1 |                             2 |                                0 |                        0 |                   0 |                0 |                              0 |                        1 |                    0 |                    0 |                       0 |                                0 |             0 |                  1 |                   0 |                0 |                  0 |
-| Barberis JN 2:161  |                1 |                0 |                              0 |                   0 |                   0 |                              0 |                           1 |                             1 |                                0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  1 |                   0 |                0 |                  0 |
-| Butler T 2:041     |                2 |                2 |                              0 |                   0 |                   1 |                              0 |                           0 |                             0 |                                0 |                        1 |                   0 |                0 |                              2 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   0 |                0 |                  0 |
-| Hamdan A 2:018     |                0 |                0 |                              2 |                   0 |                   0 |                              2 |                           0 |                             0 |                                0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   0 |                0 |                  0 |
-| Turki M 2:018      |                0 |                0 |                              2 |                   0 |                   0 |                              2 |                           0 |                             0 |                                0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   0 |                0 |                  0 |
-| Lin W 2:017        |                2 |                0 |                              0 |                   0 |                   0 |                              1 |                           0 |                             0 |                                1 |                        0 |                   0 |                0 |                              0 |                        0 |                    2 |                    2 |                       0 |                                0 |             0 |                  0 |                   0 |                0 |                  0 |
-| Singh C 2:017      |                2 |                0 |                              0 |                   0 |                   0 |                              1 |                           0 |                             0 |                                1 |                        0 |                   0 |                0 |                              0 |                        0 |                    2 |                    2 |                       0 |                                0 |             0 |                  0 |                   0 |                0 |                  0 |
-| Brennan R 2:014    |                2 |                0 |                              0 |                   2 |                   0 |                              0 |                           0 |                             0 |                                0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       2 |                                2 |             2 |                  0 |                   0 |                0 |                  0 |
-| Crane M 2:014      |                2 |                0 |                              0 |                   2 |                   0 |                              0 |                           0 |                             0 |                                0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       2 |                                2 |             2 |                  0 |                   0 |                0 |                  0 |
-| Ryan P 2:014       |                2 |                0 |                              0 |                   2 |                   0 |                              0 |                           0 |                             0 |                                0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       2 |                                2 |             2 |                  0 |                   0 |                0 |                  0 |
-| Sarea A 2:012      |                0 |                0 |                              1 |                   0 |                   0 |                              1 |                           0 |                             0 |                                1 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   0 |                0 |                  0 |
-| Grassi L 2:002     |                2 |                2 |                              1 |                   1 |                   2 |                              0 |                           0 |                             0 |                                0 |                        1 |                   1 |                1 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   0 |                1 |                  1 |
-| Lanfranchi D 2:002 |                2 |                2 |                              1 |                   1 |                   2 |                              0 |                           0 |                             0 |                                0 |                        1 |                   1 |                1 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   0 |                1 |                  1 |
-| Arman AA 2:000     |                2 |                0 |                              0 |                   0 |                   0 |                              0 |                           0 |                             0 |                                0 |                        0 |                   0 |                1 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                  0 |                   1 |                0 |                  0 |
-```
-<BLANKLINE>
+>>> print(matrix.prompt_) # doctest: +ELLIPSIS
+Your task is ...
 
 
 
@@ -150,32 +121,8 @@ RISK_MANAGEMENT 03:014                       2  ...                       3
 3  REGTECH 28:329             COMPLIANCE 07:030             7
 4  REGTECH 28:329             REGULATION 05:164             4
 
->>> print(matrix.prompt_)
-Your task is to generate a short paragraph for a research paper analyzing \\
-the co-occurrence between the values of different columns in a \\
-bibliographic dataset. Analyze the table below, and delimited by triple \\
-backticks, which contains values of co-occurrence (OCC) for the \\
-'author_keywords' and 'None' fields in a bibliographic dataset. Identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
-<BLANKLINE>
-Table:
-```
-| author_keywords                |   REGTECH 28:329 |   FINTECH 12:249 |   REGULATORY_TECHNOLOGY 07:037 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   ANTI_MONEY_LAUNDERING 05:034 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   RISK_MANAGEMENT 03:014 |
-|:-------------------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|-------------------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------:|
-| REGTECH 28:329                 |               28 |               12 |                              2 |                   7 |                   4 |                              1 |                           3 |                             2 |                                2 |                        2 |
-| FINTECH 12:249                 |               12 |               12 |                              1 |                   2 |                   4 |                              0 |                           2 |                             1 |                                1 |                        2 |
-| REGULATORY_TECHNOLOGY 07:037   |                2 |                1 |                              7 |                   1 |                   1 |                              2 |                           0 |                             0 |                                1 |                        2 |
-| COMPLIANCE 07:030              |                7 |                2 |                              1 |                   7 |                   1 |                              0 |                           0 |                             0 |                                1 |                        1 |
-| REGULATION 05:164              |                4 |                4 |                              1 |                   1 |                   5 |                              0 |                           1 |                             0 |                                0 |                        2 |
-| ANTI_MONEY_LAUNDERING 05:034   |                1 |                0 |                              2 |                   0 |                   0 |                              5 |                           0 |                             0 |                                1 |                        0 |
-| FINANCIAL_SERVICES 04:168      |                3 |                2 |                              0 |                   0 |                   1 |                              0 |                           4 |                             2 |                                0 |                        0 |
-| FINANCIAL_REGULATION 04:035    |                2 |                1 |                              0 |                   0 |                   0 |                              0 |                           2 |                             4 |                                0 |                        0 |
-| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                              1 |                   1 |                   0 |                              1 |                           0 |                             0 |                                4 |                        1 |
-| RISK_MANAGEMENT 03:014         |                2 |                2 |                              2 |                   1 |                   2 |                              0 |                           0 |                             0 |                                1 |                        3 |
-```
-<BLANKLINE>
+>>> print(matrix.prompt_) # doctest: +ELLIPSIS
+Your task is ...
 
 
 
