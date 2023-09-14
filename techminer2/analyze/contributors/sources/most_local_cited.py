@@ -8,7 +8,7 @@
 Most Local Cited
 ===============================================================================
 
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> root_dir = "data/regtech/"
 >>> items = performance_metrics(
 ...     #
@@ -53,11 +53,11 @@ Most Local Cited
 
 
 
->>> items.fig_.write_html("sphinx/_static/performance/examples/contributors/sources/most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/contributors/sources/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/sources/most_local_cited_chart.html" 
+    <iframe src="../../../../../_static/analyze/contributors/sources/most_local_cited_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

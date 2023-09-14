@@ -8,7 +8,7 @@
 Words Frequency over Time
 ===============================================================================
 
->>> from techminer2.performance.plots import terms_by_year
+>>> from techminer2.analyze import terms_by_year
 >>> words = terms_by_year(
 ...     #
 ...     # PARAMS:

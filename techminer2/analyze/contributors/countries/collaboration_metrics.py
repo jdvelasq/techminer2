@@ -10,7 +10,7 @@ Collaboration Metrics
 ===============================================================================
 
 
->>> from techminer2.performance import collaboration_metrics
+>>> from techminer2.analyze import collaboration_metrics
 >>> metrics = collaboration_metrics(
 ...     # 
 ...     # PARAMS:
@@ -28,11 +28,11 @@ Collaboration Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/performance/contributors/countries/collaboration_metrics.html")
+>>> metrics.fig_.write_html("sphinx/_static/analyze/contributors/countries/collaboration_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/countries/collaboration_metrics.html" 
+    <iframe src="../../../../../_static/analyze/contributors/countries/collaboration_metrics.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

@@ -9,7 +9,7 @@
 Most Local Cited
 ===============================================================================
 
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
@@ -52,11 +52,11 @@ Most Local Cited
 | Kavassalis P      |         12 |         10 |                 21 |                 8 |                           21    |                            8   |                        3.5  |
 
 
->>> items.fig_.write_html("sphinx/_static/performance/contributors/authors/most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/authors/most_local_cited_chart.html" 
+    <iframe src="../../../../../_static/analyze/contributors/authors/most_local_cited_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

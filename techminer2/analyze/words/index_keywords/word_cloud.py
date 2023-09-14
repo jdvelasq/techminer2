@@ -11,7 +11,7 @@
 Word Cloud
 ===============================================================================
 
->>> from techminer2.performance.plots import word_cloud
+>>> from techminer2.report import word_cloud
 >>> chart = word_cloud(
 ...     #
 ...     # PERFORMANCE PARAMS:

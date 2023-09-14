@@ -8,7 +8,7 @@
 Most Frequent
 ===============================================================================
 
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
@@ -53,11 +53,11 @@ Most Frequent
 
 
 
->>> items.fig_.write_html("sphinx/_static/performance/contributors/organizations/most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/contributors/organizations/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/organizations/most_frequent_chart.html" 
+    <iframe src="../../../../../_static/analyze/contributors/organizations/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

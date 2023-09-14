@@ -9,7 +9,7 @@
 Local Impact --- Global Citations
 ===============================================================================
 
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
@@ -51,11 +51,11 @@ Local Impact --- Global Citations
 | Zetzsche DA       |          9 |         14 |                 24 |                 5 |                           24    |                            5   |                        6    |
 | Breymann W        |         10 |          8 |                 21 |                 8 |                           21    |                            8   |                        3.5  |
 
->>> items.fig_.write_html("sphinx/_static/performance/contributors/authors/global_citations_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/global_citations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/authors/global_citations_chart.html" 
+    <iframe src="../../../../../_static/analyze/contributors/authors/global_citations_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

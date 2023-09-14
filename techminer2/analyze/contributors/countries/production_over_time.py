@@ -10,7 +10,7 @@ Production over Time
 ===============================================================================
 
 
->>> from techminer2.performance.plots import terms_by_year
+>>> from techminer2.analyze import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -32,11 +32,11 @@ Production over Time
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> terms.fig_.write_html("sphinx/_static/performance/contributors/countries/production_over_time.html")
+>>> terms.fig_.write_html("sphinx/_static/analyze/contributors/countries/production_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/countries/production_over_time.html" 
+    <iframe src="../../../../../_static/analyze/contributors/countries/production_over_time.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(terms.df_.to_markdown())

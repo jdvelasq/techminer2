@@ -9,7 +9,7 @@
 Performance Metrics
 ===============================================================================
 
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
@@ -47,11 +47,11 @@ Performance Metrics
 | China          |          5 |          9 |         10 |     5 |                 27 |                 5 |         3 |         2 |      0.43 |
 
     
->>> items.fig_.write_html("sphinx/_static/performance/contributors/countries/most_relevant_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/contributors/countries/most_relevant_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/contributors/countries/most_relevant_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/analyze/contributors/countries/most_relevant_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_) # doctest: +ELLIPSIS
