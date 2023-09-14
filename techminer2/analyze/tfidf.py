@@ -9,7 +9,7 @@ TFIDF
 ===============================================================================
 
 
->>> from techminer2.performance_analysis import tfidf
+>>> from techminer2.analyze import tfidf
 >>> tfidf(
 ...     #
 ...     # TF PARAMS:
@@ -34,32 +34,16 @@ TFIDF
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).head(20)
-author_keywords                                     REGTECH 28:329  ...  MONEY_LAUNDERING 01:010
-article                                                             ...                         
-Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    1  ...                        0
-Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, ...               1  ...                        0
-Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               1  ...                        0
-Becker M, 2020, INTELL SYST ACCOUNT FINANCE M, ...               0  ...                        0
-Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...                        0
-Butler T, 2018, J RISK MANG FINANCIAL INST, V11...               1  ...                        0
-Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85               1  ...                        0
-Campbell-Verduyn M, 2022, NEW POLIT ECON                         0  ...                        0
-Cruz Rambaud S, 2022, EUR J RISK REGUL, V13, P333                1  ...                        0
-Firmansyah B, 2022, INT CONF INF TECHNOL SYST I...               1  ...                        0
-Gasparri G, 2019, FRONTIER ARTIF INTELL, V2                      1  ...                        0
-Ghanem S, 2021, STUD COMPUT INTELL, V954, P139                   1  ...                        0
-Goul M, 2019, PROC - IEEE WORLD CONGR SERV,, P219                1  ...                        0
-Grassi L, 2022, J IND BUS ECON, V49, P441                        1  ...                        0
-Huang GKJ, 2017, PROC INT CONF ELECTRON BUS (I,...               1  ...                        0
-Kavassalis P, 2018, J RISK FINANC, V19, P39                      1  ...                        0
-Kera DR, 2021, EAI/SPRINGER INNO COMM COMP, P67                  0  ...                        0
-Kristanto AD, 2022, INT CONF INF TECHNOL SYST I...               1  ...                        0
-Kurum E, 2020, J FINANC CRIME                                    1  ...                        1
-Lan G, 2023, RES INT BUS FINANC, V64                             1  ...                        0
+... ).head()
+author_keywords                                     REGTECH 28:329  ...  COMPLIANCE_REPORTING 01:008
+article                                                             ...                             
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    1  ...                            0
+Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, ...               1  ...                            0
+Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               1  ...                            0
+Becker M, 2020, INTELL SYST ACCOUNT FINANCE M, ...               0  ...                            0
+Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...                            0
 <BLANKLINE>
-[20 rows x 50 columns]
-
+[5 rows x 50 columns]
 
 """
 from typing import Literal

@@ -10,7 +10,7 @@
 Terms by Year
 ===============================================================================
 
->>> from techminer2.performance.plots import terms_by_year
+>>> from techminer2.analyze import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -48,11 +48,11 @@ RISK_MANAGEMENT 03:014             0     0     1     0     1     0     1     0
 
 
 
->>> terms.fig_.write_html("sphinx/_static/performance/plots/terms_by_year_0.html")
+>>> terms.fig_.write_html("sphinx/_static/analyze/terms_by_year_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/terms_by_year_0.html" 
+    <iframe src="../../../_static/analyze/terms_by_year_0.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
     
@@ -97,37 +97,15 @@ ARTIFICIAL_INTELLIGENCE 04:023     0     0     0     1     3     3     4     4
 RISK_MANAGEMENT 03:014             0     0     1     1     2     2     3     3
 
 
->>> terms.fig_.write_html("sphinx/_static/performance/plots/terms_by_year_1.html")
+>>> terms.fig_.write_html("sphinx/_static/analyze/terms_by_year_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/terms_by_year_1.html" 
+    <iframe src="../../../_static/performance/plots/terms_by_year_1.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
->>> print(terms.prompt_)    
-Your task is to generate an analysis about the cumulative occurrences by \\
-year of the 'author_keywords' in a scientific bibliography database. \\
-Summarize the table below, delimited by triple backticks, identify any \\
-notable patterns, trends, or outliers in the data, and disc  uss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
-<BLANKLINE>
-Table:
-```
-| author_keywords                |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGTECH 28:329                 |      0 |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
-| FINTECH 12:249                 |      0 |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
-| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
-| COMPLIANCE 07:030              |      0 |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
-| REGULATION 05:164              |      0 |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
-| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      0 |      2 |      5 |      5 |      5 |
-| FINANCIAL_SERVICES 04:168      |      0 |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
-| FINANCIAL_REGULATION 04:035    |      0 |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
-| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
-| RISK_MANAGEMENT 03:014         |      0 |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
-```
-<BLANKLINE>
+>>> print(terms.prompt_) # doctest: +ELLIPSIS    
+Your task is ...
 
 
 
@@ -160,11 +138,11 @@ Table:
 >>> print(terms.documents_.head().to_markdown())
 |    | author_keywords    | title                                                   |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
 |---:|:-------------------|:--------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
-|  0 | FINANCIAL_SERVICES | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  1 | FINTECH            | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  2 | REGTECH            | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  3 | REGULATION         | fintech and regtech: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  4 | FINTECH            | understanding regtech for digital regulatory compliance |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
+|  0 | FINANCIAL_SERVICES | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  1 | FINTECH            | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  2 | REGTECH            | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  3 | REGULATION         | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  4 | FINTECH            | UNDERSTANDING_REGTECH for DIGITAL_REGULATORY_COMPLIANCE |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
 
 
 """
