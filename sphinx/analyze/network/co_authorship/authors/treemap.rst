@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.co_authorship.network.authors.treemap
+.. automodule:: techminer2.network.co_authorship.authors.treemap
     :members:
     :undoc-members:
     :show-inheritance:

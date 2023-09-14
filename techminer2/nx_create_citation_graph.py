@@ -9,8 +9,9 @@
 import networkx as nx
 
 from ._read_records import read_records
-from .co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from .co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from .analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from .analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from .analyze.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
 from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
@@ -23,7 +24,6 @@ from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
 from .nx_set_node_size_to_constant import nx_set_node_size_to_constant
 from .nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
 from .nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
-from .performance.performance_metrics import performance_metrics
 
 
 def nx_create_citation_graph(

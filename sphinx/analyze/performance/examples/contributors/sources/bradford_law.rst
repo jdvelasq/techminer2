@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance._examples.contributors.sources.bradford_law
+.. automodule:: techminer2.performance.bradford_law
     :members:
     :undoc-members:
     :show-inheritance:

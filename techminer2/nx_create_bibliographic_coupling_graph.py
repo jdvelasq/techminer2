@@ -9,6 +9,7 @@
 import networkx as nx
 
 from ._read_records import read_records
+from .analyze.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
 from .nx_compute_node_degree import nx_compute_node_degree
@@ -21,7 +22,6 @@ from .nx_compute_textfont_size_from_node_degree import nx_compute_textfont_size_
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
-from .performance.performance_metrics import performance_metrics
 
 
 def nx_create_bibliographic_coupling_graph(

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance._examples.words.nlp_phrases.bar_chart
+.. automodule:: techminer2.performance.examples.words.nlp_phrases.bar_chart
     :members:
     :undoc-members:
     :show-inheritance:

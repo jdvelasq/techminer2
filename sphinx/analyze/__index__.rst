@@ -6,7 +6,7 @@ Analyze >
 .. toctree::
     :maxdepth: 1
 
-    agenda/__index__
+    research_agenda/__index__
 
 ------
 

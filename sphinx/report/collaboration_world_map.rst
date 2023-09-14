@@ -1,3 +1,3 @@
-.. automodule:: techminer2.performance.plots.collaboration_world_map
+.. automodule:: techminer2.report.collaboration_world_map
     :members:
 

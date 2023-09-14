@@ -16,11 +16,11 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    ingest/__index__  
+    ingest/__index__ 
     refine/__index__ 
     search/__index__ 
     
-    overview/__index__
+    dataset_properties/__index__ 
     
     analyze/__index__
     expertise/__index__

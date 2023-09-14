@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance._examples.contributors.countries.countries_scientific_production
+.. automodule:: techminer2.performance.plots.world_map
     :members:
     :undoc-members:
     :show-inheritance:

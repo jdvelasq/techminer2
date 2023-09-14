@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.bibliographic_coupling.documents.degree_plot
+.. automodule:: techminer2.network.bibliographic_coupling.documents.degree_plot
     :members:
     :undoc-members:
     :show-inheritance:

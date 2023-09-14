@@ -1,3 +1,3 @@
-.. automodule:: techminer2.co_occurrence.plots.scatter_plot
+.. automodule:: techminer2.report.scatter_plot
     :members:
 

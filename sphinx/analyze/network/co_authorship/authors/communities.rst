@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.co_authorship.network.authors.communities
+.. automodule:: techminer2.network.co_authorship.authors.communities
     :members:
     :undoc-members:
     :show-inheritance:

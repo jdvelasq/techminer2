@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance._examples.words.index_keywords.word_cloud
+.. automodule:: techminer2.performance.examples.words.index_keywords.word_cloud
     :members:
     :undoc-members:
     :show-inheritance:

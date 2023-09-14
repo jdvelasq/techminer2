@@ -1,3 +1,3 @@
-.. automodule:: techminer2.co_occurrence.matrix_viewer
+.. automodule:: techminer2.report.matrix_viewer
     :members:
 

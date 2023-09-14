@@ -1,4 +1,4 @@
-.. automodule:: techminer2.performance._examples.contributors.countries.most_frequent
+.. automodule:: techminer2.performance.examples.contributors.countries.most_frequent
     :members:
     :undoc-members:
     :show-inheritance:

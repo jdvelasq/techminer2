@@ -44,11 +44,6 @@ Report >
 ------
 
 .. toctree::
-    gantt_chart
-
-------
-
-.. toctree::
     butterfly_chart
 
 ------

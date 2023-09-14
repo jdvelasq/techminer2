@@ -1,3 +1,3 @@
-.. automodule:: techminer2.co_occurrence.plots.multi_donut
+.. automodule:: techminer2.report.multi_donut
     :members:
 

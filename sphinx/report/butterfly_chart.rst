@@ -1,3 +1,3 @@
-.. automodule:: techminer2.co_occurrence.plots.butterfly_chart
+.. automodule:: techminer2.report.butterfly_chart
     :members:
 

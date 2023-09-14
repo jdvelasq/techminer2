@@ -6,7 +6,7 @@ Citations >
 .. toctree::
     :maxdepth: 1
 
-    examples/__index__
+    _examples/__index__
 
 ------
 
