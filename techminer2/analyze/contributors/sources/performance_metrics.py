@@ -5,9 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _most_relevant_sources_recipe:
-
-Most Relevant
+Performance metrics
 ===============================================================================
 
 >>> from techminer2.analyze import performance_metrics

@@ -7,9 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-.. _most_frequent_sources_recipe:
-
-Performance Metrics
+Most Frequent
 ===============================================================================
 
 >>> from techminer2.analyze import performance_metrics
