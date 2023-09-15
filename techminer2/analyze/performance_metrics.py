@@ -212,7 +212,6 @@ def performance_metrics(
     # Save results to disk as csv tab-delimited file for papers
     file_path = os.path.join(root_dir, "reports", field + ".csv")
     data_frame.to_csv(file_path, sep="\t", header=True, index=True)
-    # print("--INFO-- File saved to ", file_path)
 
     @dataclass
     class Results:
