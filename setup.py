@@ -146,11 +146,11 @@ setup(
         "techminer2.analyze.pca",
         #
         "techminer2.analyze.pca.cooc_matrix",
-        "techminer2.analyze.pca.cooc_matrix.hirarchical",
+        "techminer2.analyze.pca.cooc_matrix.hierarchical",
         "techminer2.analyze.pca.cooc_matrix.kmeans",
         #
         "techminer2.analyze.pca.tfidf_matrix",
-        "techminer2.analyze.pca.tfidf_matrix.hirarchical",
+        "techminer2.analyze.pca.tfidf_matrix.hierarchical",
         "techminer2.analyze.pca.tfidf_matrix.kmeans",
         #
         # ======================================================================
@@ -160,11 +160,11 @@ setup(
         "techminer2.analyze.svd",
         #
         "techminer2.analyze.svd.cooc_matrix",
-        "techminer2.analyze.svd.cooc_matrix.hirarchical",
+        "techminer2.analyze.svd.cooc_matrix.hierarchical",
         "techminer2.analyze.svd.cooc_matrix.kmeans",
         #
         "techminer2.analyze.svd.tfidf_matrix",
-        "techminer2.analyze.svd.tfidf_matrix.hirarchical",
+        "techminer2.analyze.svd.tfidf_matrix.hierarchical",
         "techminer2.analyze.svd.tfidf_matrix.kmeans",
         #
         # ======================================================================
