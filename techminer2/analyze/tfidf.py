@@ -206,7 +206,7 @@ def _create_tf_matrix(
     records = records.explode(field)
     records[field] = records[field].str.strip()
 
-    grouped_records = records.groupby(["article", field], as_index=False).agg({"OCC": np.sum})
+    grouped_records = records.groupby(["article", field], as_index=False).agg({"OCC": "sum"})
 
     result = pd.pivot(
         index="article",
