@@ -9,7 +9,7 @@ Bar Chart
 ===============================================================================
 
 
->>> from techminer2.performance.plots import bar_chart
+>>> from techminer2.report import bar_chart
 >>> chart = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:
@@ -33,11 +33,11 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/words/nlp_phrases/bar_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/words/nlp_phrases/bar_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/words/nlp_phrases/bar_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/nlp_phrases/bar_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

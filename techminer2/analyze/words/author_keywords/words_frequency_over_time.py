@@ -31,11 +31,11 @@ Word Frequency over Time
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> words.fig_.write_html("sphinx/_static/performance/words/author_keywords/words_frequency_over_time.html")
+>>> words.fig_.write_html("sphinx/_static/analyze/words/author_keywords/words_frequency_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/words/author_keywords/words_frequency_over_time.html" 
+    <iframe src="../../../../../_static/analyze/words/author_keywords/words_frequency_over_time.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

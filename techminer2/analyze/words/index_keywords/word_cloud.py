@@ -35,9 +35,9 @@ Word Cloud
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.save("sphinx/_static/performance/words/index_keywords/word_cloud.png")
+>>> chart.fig_.save("sphinx/images/analyze/words/index_keywords/word_cloud.png")
 
-.. image:: ../../../../../_static/performance/words/index_keywords/word_cloud.png
+.. image:: /images/analyze/words/index_keywords/word_cloud.png
     :width: 900px
     :align: center
 

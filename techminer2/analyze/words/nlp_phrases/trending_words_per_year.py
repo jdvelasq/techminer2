@@ -8,7 +8,7 @@
 Trending Words per Year
 ===============================================================================
 
->>> from techminer2.performance.plots import trending_words_per_year
+>>> from techminer2.analyze.words import trending_words_per_year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
@@ -34,11 +34,11 @@ CONCEPT_ARTICLE    1     2016      2016  ...   4    0.15      1
 [5 rows x 8 columns]
 
 
->>> words.fig_.write_html("sphinx/_static/performance/words/nlp_phrases/trending_words_per_year.html")
+>>> words.fig_.write_html("sphinx/_static/analyze/words/nlp_phrases/trending_words_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/words/nlp_phrases/trending_words_per_year.html" 
+    <iframe src="../../../../../_static/analyze/words/nlp_phrases/trending_words_per_year.html" 
     height="900px" width="100%" frameBorder="0"></iframe>
 
 

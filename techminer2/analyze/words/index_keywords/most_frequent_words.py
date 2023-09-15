@@ -10,7 +10,7 @@ Most Frequent Words
 ===============================================================================
 
 
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
@@ -53,11 +53,11 @@ Most Frequent Words
 | SANDBOXES              |         10 |     2 |             2 |                   0 |                0    |
 
 
->>> metrics.fig_.write_html("sphinx/_static/performance/words/index_keywords/most_frequent_chart.html")
+>>> metrics.fig_.write_html("sphinx/_static/analyze/words/index_keywords/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/words/index_keywords/most_frequent_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/index_keywords/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

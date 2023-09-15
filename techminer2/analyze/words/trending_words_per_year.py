@@ -8,7 +8,7 @@
 Trending Words per Year
 ===============================================================================
 
->>> from techminer2.plots import trending_words_per_year
+>>> from techminer2.analyze.words import trending_words_per_year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
@@ -22,40 +22,26 @@ Trending Words per Year
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> words.fig_.write_html("sphinx/_static/performance/plots/trending_words_per_year.html")
+>>> words.fig_.write_html("sphinx/_static/analyze/words/trending_words_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/plots/trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/analyze/words/trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 
->>> words.df_.head(20)
-year                                     OCC  year_q1  ...    height  width
-author_keywords                                        ...                 
-CORPORATE_SOCIAL_RESPONSIBILITIES (CSR)    1     2017  ...  0.150000      1
-CREDIT                                     1     2017  ...  0.150000      1
-SMART_CONTRACTS                            2     2017  ...  0.180370      2
-BUSINESS_MODELS                            1     2018  ...  0.150000      1
-FUTURE_RESEARCH_DIRECTION                  1     2018  ...  0.150000      1
-ALGORITHMIC_STANDARDS                      1     2018  ...  0.150000      1
-SEMANTIC_TECHNOLOGIES                      2     2018  ...  0.180370      2
-SANDBOXES                                  2     2018  ...  0.180370      3
-BLOCKCHAIN                                 3     2018  ...  0.210741      3
-FINANCIAL_SERVICES                         4     2018  ...  0.241111      3
-REGULATION                                 5     2018  ...  0.271481      4
-STANDARDS                                  1     2019  ...  0.150000      1
-DOGMAS                                     1     2019  ...  0.150000      1
-FINTECH                                   12     2019  ...  0.484074      2
-FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
-REGTECH                                   28     2019  ...  0.970000      4
-ARTIFICIAL_INTELLIGENCE                    4     2020  ...  0.241111      1
-ANTI_MONEY_LAUNDERING                      5     2020  ...  0.271481      2
-DATA_PROTECTION                            2     2020  ...  0.180370      3
-INNOVATION                                 3     2020  ...  0.210741      3
+>>> words.df_.head()
+year                               OCC  year_q1  year_med  ...  rn   height  width
+author_keywords                                            ...                    
+CORPORATE_SOCIAL_RESPONSIBILITIES    1     2017      2017  ...   0  0.15000      1
+CREDIT                               1     2017      2017  ...   1  0.15000      1
+SMART_CONTRACT                       2     2017      2018  ...   1  0.18037      2
+BUSINESS_MODELS                      1     2018      2018  ...   2  0.15000      1
+FUTURE_RESEARCH_DIRECTION            1     2018      2018  ...   3  0.15000      1
 <BLANKLINE>
-[20 rows x 8 columns]
+[5 rows x 8 columns]
 
->>> from techminer2.performance.plots import trending_words_per_year
+
+>>> from techminer2.analyze.words import trending_words_per_year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
@@ -85,7 +71,6 @@ SUPTECH                    3     2020      2022  ...   0  0.150000      3
 REGULATORY_TECHNOLOGY      7     2020      2021  ...   0  0.514444      3
 <BLANKLINE>
 [5 rows x 8 columns]
-
 
 
 """

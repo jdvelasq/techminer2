@@ -198,7 +198,7 @@ Word Cloud
 
 
     
->>> from techminer2.performance import performance_metrics
+>>> from techminer2.analyze import performance_metrics
 >>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:

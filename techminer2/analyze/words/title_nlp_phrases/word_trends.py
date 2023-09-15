@@ -11,7 +11,7 @@ Word Trends
 ===============================================================================
 
 
->>> from techminer2.performance.plots import word_trends
+>>> from techminer2.analyze.words import word_trends
 >>> chart = word_trends(
 ...     #
 ...     # ITEMS PARAMS:
@@ -37,11 +37,11 @@ Word Trends
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/performance/words/title_nlp_phrases/word_trends.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/words/title_nlp_phrases/word_trends.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/performance/words/title_nlp_phrases/word_trends.html" 
+    <iframe src="../../../../../_static/analyze/words/title_nlp_phrases/word_trends.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
