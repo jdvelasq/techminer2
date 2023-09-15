@@ -295,13 +295,13 @@ def global_indicators_by_field(
         records = records.assign(cumcount_2=records.cumcount_.map(lambda w: w * w))
 
         h_indexes = records.query("global_citations >= cumcount_")
-        h_indexes = h_indexes.groupby(field, as_index=True).agg({"cumcount_": np.max})
+        h_indexes = h_indexes.groupby(field, as_index=True).agg({"cumcount_": "max"})
         h_indexes = h_indexes.rename(columns={"cumcount_": "h_index"})
         indicators.loc[h_indexes.index, "h_index"] = h_indexes.astype(int)
         indicators["h_index"] = indicators["h_index"].fillna(0)
 
         g_indexes = records.query("global_citations >= cumcount_2")
-        g_indexes = g_indexes.groupby(field, as_index=True).agg({"cumcount_": np.max})
+        g_indexes = g_indexes.groupby(field, as_index=True).agg({"cumcount_": "max"})
         g_indexes = g_indexes.rename(columns={"cumcount_": "g_index"})
         indicators.loc[g_indexes.index, "g_index"] = g_indexes.astype(int)
         indicators["g_index"] = indicators["g_index"].fillna(0)
@@ -352,5 +352,20 @@ def global_indicators_by_field(
 
     indicators = sort_indicators_by_metric(indicators, "OCC")
     indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))
+
+    if "OCC" in indicators.columns:
+        indicators["OCC"] = indicators["OCC"].astype(int)
+
+    if "global_citations" in indicators.columns:
+        indicators["global_citations"] = indicators["global_citations"].astype(int)
+
+    if "local_citations" in indicators.columns:
+        indicators["local_citations"] = indicators["local_citations"].astype(int)
+
+    if "h_index" in indicators.columns:
+        indicators["h_index"] = indicators["h_index"].astype(int)
+
+    if "g_index" in indicators.columns:
+        indicators["g_index"] = indicators["g_index"].astype(int)
 
     return indicators
