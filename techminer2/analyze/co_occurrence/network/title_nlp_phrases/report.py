@@ -10,7 +10,7 @@ Report
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.title_nlp_phrases import report
+>>> from techminer2.analyze.co_occurrence.network.title_nlp_phrases import report
 >>> report(
 ...     #
 ...     # COLUMN PARAMS:

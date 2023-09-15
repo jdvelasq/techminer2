@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network.co_occurrence.author_keywords.network_visualization
+.. automodule:: techminer2.analyze.co_occurrence.network.author_keywords.network_visualization
     :members:
     :undoc-members:
     :show-inheritance:

@@ -9,7 +9,7 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.network.co_occurrence.author_keywords import treemap
+>>> from techminer2.analyze.co_occurrence.network.author_keywords import treemap
 >>> treemap(
 ...     #
 ...     # COLUMN PARAMS:
@@ -30,11 +30,11 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/co_occurrence/author_keywords/treemap.html")
+... ).write_html("sphinx/_static/analyze/co_occurrence/network/author_keywords/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/co_occurrence/author_keywords/treemap.html" 
+    <iframe src="../../../../../../_static/analyze/co_occurrence/network/author_keywords/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network.co_occurrence.nlp_phrases.network_visualization
+.. automodule:: techminer2.analyze.co_occurrence.network.nlp_phrases.network_visualization
     :members:
     :undoc-members:
     :show-inheritance:

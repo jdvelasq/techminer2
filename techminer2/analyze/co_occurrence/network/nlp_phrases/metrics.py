@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.nlp_phrases import metrics
+>>> from techminer2.analyze.co_occurrence.network.nlp_phrases import metrics
 >>> metrics(
 ...     #
 ...     # COLUMN PARAMS:

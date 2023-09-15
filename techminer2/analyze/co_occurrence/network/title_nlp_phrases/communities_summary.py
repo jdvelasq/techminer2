@@ -10,7 +10,7 @@ Communities Summary
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.title_nlp_phrases import communities_summary
+>>> from techminer2.analyze.co_occurrence.network.title_nlp_phrases import communities_summary
 >>> communities_summary(
 ...     #
 ...     # SUMMARY PARAMS:

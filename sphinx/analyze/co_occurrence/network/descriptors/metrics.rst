@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network.co_occurrence.descriptors.metrics
+.. automodule:: techminer2.analyze.co_occurrence.network.descriptors.metrics
     :members:
     :undoc-members:
     :show-inheritance:

@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.index_keywords import communities
+>>> from techminer2.analyze.co_occurrence.network.index_keywords import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:

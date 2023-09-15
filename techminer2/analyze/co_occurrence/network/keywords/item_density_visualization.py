@@ -10,7 +10,7 @@ Item Density Visualization
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.keywords import item_density_visualization
+>>> from techminer2.analyze.co_occurrence.network.keywords import item_density_visualization
 >>> item_density_visualization(
 ...     #
 ...     # COLUMN PARAMS:
@@ -43,11 +43,11 @@ Item Density Visualization
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/co_occurrence/keywords/item_density_visualization.html")
+... ).write_html("sphinx/_static/analyze/co_occurrence/network/keywords/item_density_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/co_occurrence/keywords/item_density_visualization.html" 
+    <iframe src="../../../../../../_static/analyze/co_occurrence/network/keywords/item_density_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

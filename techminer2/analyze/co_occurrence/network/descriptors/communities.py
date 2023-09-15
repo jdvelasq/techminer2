@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.descriptors import communities
+>>> from techminer2.analyze.co_occurrence.network.descriptors import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:

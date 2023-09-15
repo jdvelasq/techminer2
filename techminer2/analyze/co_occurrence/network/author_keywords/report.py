@@ -10,7 +10,7 @@ Report
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.author_keywords import report
+>>> from techminer2.analyze.co_occurrence.network.author_keywords import report
 >>> report(
 ...     #
 ...     # COLUMN PARAMS:

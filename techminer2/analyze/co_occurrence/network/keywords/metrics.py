@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence.keywords import metrics
+>>> from techminer2.analyze.co_occurrence.network.keywords import metrics
 >>> metrics(
 ...     #
 ...     # COLUMN PARAMS:

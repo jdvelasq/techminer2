@@ -9,7 +9,7 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.network.co_occurrence.abstract_nlp_phrases import treemap
+>>> from techminer2.analyze.co_occurrence.network.abstract_nlp_phrases import treemap
 >>> treemap(
 ...     #
 ...     # COLUMN PARAMS:
@@ -30,11 +30,11 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/co_occurrence/abstract_nlp_phrases/treemap.html")
+... ).write_html("sphinx/_static/analyze/co_occurrence/network/abstract_nlp_phrases/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/co_occurrence/abstract_nlp_phrases/treemap.html" 
+    <iframe src="../../../../../../_static/analyze/co_occurrence/network/abstract_nlp_phrases/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

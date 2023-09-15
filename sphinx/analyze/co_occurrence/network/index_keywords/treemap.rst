@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.network.co_occurrence.index_keywords.treemap
+.. automodule:: techminer2.analyze.co_occurrence.network.index_keywords.treemap
     :members:
     :undoc-members:
     :show-inheritance:
