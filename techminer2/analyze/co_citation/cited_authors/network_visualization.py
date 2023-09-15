@@ -9,7 +9,7 @@
 Network Visualization
 ===============================================================================
 
->>> from techminer2.network.co_citation.cited_authors import network_visualization
+>>> from techminer2.analyze.co_citation.cited_authors import network_visualization
 >>> network_visualization(
 ...     #
 ...     # COLUMN PARAMS:
@@ -48,11 +48,11 @@ Network Visualization
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/co_citation/cited_authors/network_visualization.html")
+... ).write_html("sphinx/_static/analyze/co_citation/cited_authors/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/co_citation/cited_authors/network_visualization.html" 
+    <iframe src="../../../../../_static/analyze/co_citation/cited_authors/network_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

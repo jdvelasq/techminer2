@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network.co_citation.cited_references import metrics
+>>> from techminer2.analyze.co_citation.cited_references import metrics
 >>> metrics(
 ...     #
 ...     # COLUMN PARAMS:
