@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network.bibliographic_coupling.sources import metrics
+>>> from techminer2.analyze.bibliographic_coupling.sources import metrics
 >>> metrics(
 ...     #
 ...     # COLUMN PARAMS:

@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.network.bibliographic_coupling.sources import communities
+>>> from techminer2.analyze.bibliographic_coupling.sources import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:

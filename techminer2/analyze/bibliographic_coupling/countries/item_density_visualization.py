@@ -10,7 +10,7 @@ Item Density Visualization
 ===============================================================================
 
 
->>> from techminer2.network.bibliographic_coupling.countries import item_density_visualization
+>>> from techminer2.analyze.bibliographic_coupling.countries import item_density_visualization
 >>> item_density_visualization(
 ...     #
 ...     # COLUMN PARAMS:
@@ -42,11 +42,11 @@ Item Density Visualization
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/bibliographic_coupling/countries/item_density_visualization.html")
+... ).write_html("sphinx/_static/analyze/bibliographic_coupling/countries/item_density_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/bibliographic_coupling/countries/item_density_visualization.html" 
+    <iframe src="../../../../../_static/analyze/bibliographic_coupling/countries/item_density_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
                                              

@@ -10,7 +10,7 @@ Degree Plot
 ===============================================================================
 
 
->>> from techminer2.network.bibliographic_coupling.countries import degree_plot
+>>> from techminer2.analyze.bibliographic_coupling.countries import degree_plot
 >>> plot = degree_plot(
 ...     #
 ...     # COLUMN PARAMS:
@@ -35,11 +35,11 @@ Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/network/bibliographic_coupling/countries/degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/analyze/bibliographic_coupling/countries/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/bibliographic_coupling/countries/degree_plot.html" 
+    <iframe src="../../../../../_static/analyze/bibliographic_coupling/countries/degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
