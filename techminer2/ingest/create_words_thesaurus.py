@@ -23,7 +23,6 @@ import pathlib
 import re
 from os.path import dirname
 
-import numpy as np
 import pandas as pd
 from nltk.stem import PorterStemmer
 
@@ -73,7 +72,7 @@ def create_column_data_frame(root_dir, column):
     #
     # Counts term frequency
     data_frame["OCC"] = 1
-    data_frame = data_frame.groupby("raw_term", as_index=False).agg({"OCC": np.sum})
+    data_frame = data_frame.groupby("raw_term", as_index=False).agg({"OCC": "sum"})
 
     #
     # Creates 'fingerprint' column
