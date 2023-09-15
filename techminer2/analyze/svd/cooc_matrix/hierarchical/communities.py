@@ -14,6 +14,7 @@ Communities
 >>> communities(
 ...     #
 ...     # PARAMS:
+...     field="nlp_phrases",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
@@ -46,15 +47,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                 CL_0  ...                          CL_5
-0             FINANCIAL_SECTOR 07:169  ...  REGULATORY_TECHNOLOGY 17:266
-1         FINANCIAL_REGULATION 06:330  ...                              
-2      GLOBAL_FINANCIAL_CRISIS 06:177  ...                              
-3             FINANCIAL_SYSTEM 05:328  ...                              
-4  FINANCIAL_SERVICES_INDUSTRY 05:315  ...                              
+                                 CL_0  ...                           CL_5
+0             FINANCIAL_SYSTEM 08:340  ...  FINANCIAL_INSTITUTIONS 15:194
+1         FINANCIAL_REGULATION 07:360  ...                               
+2             FINANCIAL_SECTOR 07:169  ...                               
+3      GLOBAL_FINANCIAL_CRISIS 06:177  ...                               
+4  FINANCIAL_SERVICES_INDUSTRY 05:315  ...                               
 <BLANKLINE>
 [5 rows x 6 columns]
-
 
 """
 from .....factor_analysis import FactorAnalyzer

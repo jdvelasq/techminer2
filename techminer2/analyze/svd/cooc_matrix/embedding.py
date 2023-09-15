@@ -14,6 +14,7 @@ Embedding
 >>> embedding(
 ...     #
 ...     # PARAMS:
+...     field="nlp_phrases",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
@@ -37,13 +38,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                    DIM_0     DIM_1  ...     DIM_3     DIM_4
-abstract_nlp_phrases                                 ...                    
-REGULATORY_TECHNOLOGY 17:266    20.153487 -5.759933  ... -2.106244  0.485889
-FINANCIAL_INSTITUTIONS 15:194   15.004119  8.686975  ...  1.438091  1.753875
-REGULATORY_COMPLIANCE 07:198     7.718819  0.208973  ...  3.082813  2.668882
-FINANCIAL_SECTOR 07:169          7.402549 -2.454150  ... -1.879219  0.588173
-ARTIFICIAL_INTELLIGENCE 07:033   6.224962  1.146732  ... -3.827830  3.866885
+                                   DIM_0      DIM_1  ...     DIM_3     DIM_4
+nlp_phrases                                          ...                    
+REGULATORY_TECHNOLOGY 20:276   24.062092  -5.351854  ...  1.635141 -1.135873
+FINANCIAL_INSTITUTIONS 15:194  14.735496  10.551467  ...  0.094923  0.197063
+FINANCIAL_SYSTEM 08:340        11.036082  -2.278069  ... -3.355966 -0.353362
+FINANCIAL_REGULATION 07:360     8.005518   1.534439  ...  1.145890 -2.420147
+REGULATORY_COMPLIANCE 07:198    7.694193   1.454806  ... -2.730564  2.309500
 <BLANKLINE>
 [5 rows x 5 columns]
 

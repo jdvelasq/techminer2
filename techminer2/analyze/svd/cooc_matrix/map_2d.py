@@ -6,8 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _tm2.co_occurrence.factor.svd.co_occurrence_matrix.abstract_nlp_phrases.map_2d:
-
 Map 2D
 ===============================================================================
 
@@ -16,6 +14,7 @@ Map 2D
 >>> map_2d(
 ...     #
 ...     # PARAMS:
+...     field="nlp_phrases",
 ...     association_index=None,
 ...     #
 ...     # MAP:
@@ -47,11 +46,11 @@ Map 2D
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/factor/svd/co_occurrence_matrix/abstract_nlp_phrases/map_2d.html")
+... ).write_html("sphinx/_static/analyze/svd/cooc_matrix/map_2d.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_occurrence/factor/svd/co_occurrence_matrix/abstract_nlp_phrases/map_2d.html" 
+    <iframe src="../../../../../_static/analyze/svd/cooc_matrix/map_2d.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -61,6 +60,7 @@ from ....factor_analysis import FactorAnalyzer
 def map_2d(
     #
     # PARAMS:
+    field,
     association_index=None,
     #
     # MAP:

@@ -12,6 +12,9 @@ Embedding
 
 >>> from techminer2.analyze.svd.tfidf_matrix import embedding
 >>> embedding(
+...     #  
+...     # PARAMS:
+...     field="nlp_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -44,16 +47,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                   DIM_0     DIM_1  ...     DIM_3     DIM_4
-abstract_nlp_phrases                                ...                    
-REGULATORY_TECHNOLOGY 17:266    3.454401 -1.555597  ... -0.692340  0.168121
-FINANCIAL_INSTITUTIONS 15:194   2.571775  2.346107  ...  0.472666  0.606768
-REGULATORY_COMPLIANCE 07:198    1.323041  0.056440  ...  1.013363  0.923412
-FINANCIAL_SECTOR 07:169         1.268831 -0.662804  ... -0.617709  0.203439
-ARTIFICIAL_INTELLIGENCE 07:033  1.066987  0.309706  ... -1.258099  1.337914
-<BLANKLINE>
-[5 rows x 5 columns]
-
+                                  DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+nlp_phrases                                                                    
+REGULATORY_TECHNOLOGY 20:276   3.817076 -1.428794 -1.094541  0.491738 -0.364631
+FINANCIAL_INSTITUTIONS 15:194  2.337557  2.816962  0.504369  0.028552  0.063188
+FINANCIAL_SYSTEM 08:340        1.750703 -0.608198  0.714911 -1.009242 -0.112868
+FINANCIAL_REGULATION 07:360    1.269950  0.409674  1.445541  0.344660 -0.776842
+REGULATORY_COMPLIANCE 07:198   1.220564  0.388371 -0.015627 -0.821207  0.741367
 
 """
 from typing import Literal

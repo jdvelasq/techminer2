@@ -12,6 +12,9 @@ TSNE
 
 >>> from techminer2.analyze.svd.tfidf_matrix import tsne
 >>> tsne(
+...     #  
+...     # PARAMS:
+...     field="nlp_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -66,11 +69,11 @@ TSNE
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/factor/svd/tfidf/abstract_nlp_phrases/tsne.html")
+... ).write_html("sphinx/_static/analyze/svd/tfidf_matrix/tsne.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_occurrence/factor/svd/tfidf/abstract_nlp_phrases/tsne.html" 
+    <iframe src="../../../../../_static/analyze/svd/tfidf_matrix/tsne.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

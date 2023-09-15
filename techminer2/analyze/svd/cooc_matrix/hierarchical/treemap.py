@@ -14,6 +14,7 @@ Treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:
+...     field="nlp_phrases",
 ...     association_index=None,
 ...     #
 ...     # FIGURE PARAMS:
@@ -48,11 +49,11 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/factor/svd/co_occurrence_matrix/abstract_nlp_phrases/hierarchical/treemap.html")
+... ).write_html("sphinx/_static/analyze/svd/cooc_matrix/hierarchical/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../../_static/co_occurrence/factor/svd/co_occurrence_matrix/abstract_nlp_phrases/hierarchical/treemap.html" 
+    <iframe src="../../../../../../_static/analyze/svd/cooc_matrix/hierarchical/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

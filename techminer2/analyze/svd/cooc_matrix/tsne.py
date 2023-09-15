@@ -14,7 +14,14 @@ TSNE
 >>> tsne(
 ...     #
 ...     # PARAMS:
+...     field="nlp_phrases",
 ...     association_index=None,
+...     #
+...     # ITEM PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
 ...     #
 ...     # TSNE PARAMS:
 ...     perplexity=10.0,
@@ -53,11 +60,11 @@ TSNE
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/factor/svd/co_occurrence_matrix/abstract_nlp_phrases/tsne.html")
+... ).write_html("sphinx/_static/analyze/svd/cooc_matrix/tsne.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_occurrence/factor/svd/co_occurrence_matrix/abstract_nlp_phrases/tsne.html" 
+    <iframe src="../../../../../_static/analyze/svd/cooc_matrix/tsne.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
