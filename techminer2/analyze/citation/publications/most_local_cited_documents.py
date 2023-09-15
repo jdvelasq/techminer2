@@ -11,7 +11,7 @@
 Most Local Cited Documents
 ===============================================================================
 
->>> from techminer2.citations import most_cited_documents
+>>> from techminer2.analyze.citation import most_cited_documents
 >>> documents = most_cited_documents(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -36,11 +36,11 @@ Most Local Cited Documents
 --INFO-- The file 'data/regtech/reports/most_local_cited_documents__abstracts.txt' was created.
 --INFO-- The file 'data/regtech/reports/most_local_cited_documents__prompt.txt' was created.
 
->>> documents.fig_.write_html("sphinx/_static/citations/most_local_cited_documents.html")
+>>> documents.fig_.write_html("sphinx/_static/analyze/citation/publications/most_local_cited_documents.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/citations/most_local_cited_documents.html" 
+    <iframe src="../../../../../_static/analyze/citation/publications/most_local_cited_documents.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

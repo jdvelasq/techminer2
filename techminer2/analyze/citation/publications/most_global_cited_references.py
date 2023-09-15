@@ -10,7 +10,7 @@ Most Global Cited References
 ===============================================================================
 
 
->>> from techminer2.citations import most_cited_documents
+>>> from techminer2.analyze.citation import most_cited_documents
 >>> documents = most_cited_documents(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -36,11 +36,11 @@ Most Global Cited References
 --INFO-- The file 'data/regtech/reports/most_global_cited_references__prompt.txt' was created.
 
 
->>> documents.fig_.write_html("sphinx/_static/citations/most_global_cited_references.html")
+>>> documents.fig_.write_html("sphinx/_static/analyze/citation/publications/most_global_cited_references.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/citations/most_global_cited_references.html" 
+    <iframe src="../../../../../_static/analyze/citation/publications/most_global_cited_references.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

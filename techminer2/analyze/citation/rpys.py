@@ -10,17 +10,17 @@ RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
->>> from techminer2.citations import rpys
+>>> from techminer2.analyze.citation import rpys
 >>> chart = rpys(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
->>> chart.fig_.write_html("sphinx/_static/citations/rpys_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/citation/rpys_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/citations/rpys_chart.html" 
+    <iframe src="../../../../_static/analyze/citation/rpys_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
