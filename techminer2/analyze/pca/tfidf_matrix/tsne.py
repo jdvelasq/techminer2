@@ -10,8 +10,11 @@ TSNE
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries import tsne
+>>> from techminer2.analyze.pca.tfidf_matrix import tsne
 >>> tsne(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -67,11 +70,11 @@ TSNE
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/tfidf/countries/tsne.html")
+... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/tsne.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_authorship/factor/pca/tfidf/countries/tsne.html" 
+    <iframe src="../../../../../_static/analyze/pca/tfidf_matrix/tsne.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

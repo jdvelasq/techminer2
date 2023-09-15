@@ -10,10 +10,11 @@ Cosine Similarities
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import cosine_similarities
+>>> from techminer2.analyze.pca.cooc_matrix import cosine_similarities
 >>> cosine_similarities(
 ...     #
 ...     # PARAMS:
+...     field="author_keywords",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
@@ -38,13 +39,13 @@ Cosine Similarities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                                 cosine_similariries
-authors                                                             
-Arner DW 3:185     Buckley RP 3:185 (1.000); Barberis JN 2:161 (0...
-Buckley RP 3:185   Arner DW 3:185 (1.000); Barberis JN 2:161 (0.9...
-Barberis JN 2:161  Arner DW 3:185 (0.999); Buckley RP 3:185 (0.99...
-Butler T 2:041     OBrien L 1:033 (0.995); Arman AA 2:000 (0.959)...
-Hamdan A 2:018     Turki M 2:018 (1.000); Sarea A 2:012 (0.992); ...
+                                                            cosine_similariries
+author_keywords                                                                
+REGTECH 28:329                FINTECH 12:249 (0.859); COMPLIANCE 07:030 (0.5...
+FINTECH 12:249                REGTECH 28:329 (0.859); REGULATION 05:164 (0.6...
+REGULATORY_TECHNOLOGY 07:037  RISK_MANAGEMENT 03:014 (0.635); ANTI_MONEY_LAU...
+COMPLIANCE 07:030             REGTECH 28:329 (0.557); FINTECH 12:249 (0.246)...
+REGULATION 05:164             FINTECH 12:249 (0.642); RISK_MANAGEMENT 03:014...
 
 """
 from ....factor_analysis import FactorAnalyzer

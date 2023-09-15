@@ -10,8 +10,11 @@ Treemap
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries.hierarchical import treemap
+>>> from techminer2.analyze.pca.tfidf_matrix.hierarchical import treemap
 >>> treemap(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -56,11 +59,11 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/tfidf/countries/hierarchical/treemap.html")
+... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/hierarchical/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../../_static/co_authorship/factor/pca/tfidf/countries/hierarchical/treemap.html" 
+    <iframe src="../../../../../../_static/analyze/pca/tfidf_matrix/hierarchical/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

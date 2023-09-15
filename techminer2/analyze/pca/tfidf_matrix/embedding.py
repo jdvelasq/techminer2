@@ -10,8 +10,11 @@ Embedding
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries import embedding
+>>> from techminer2.analyze.pca.tfidf_matrix import embedding
 >>> embedding(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -45,13 +48,14 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                         DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
-countries                                                             
-Australia 7:199       2.112353  0.540347  0.257963 -0.093406  0.291444
-United Kingdom 7:199 -1.079151  0.700950  1.858113 -0.007093 -0.230059
-United States 6:059  -0.918575  1.276760 -0.757443  0.392950 -0.099726
-Ireland 5:055        -0.452142 -0.565856  0.664846 -0.822504  1.537669
-China 5:027           0.413237 -0.411601  0.886894  1.528779 -0.300195
+                                 DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+author_keywords                                                               
+REGTECH 28:329                4.373464 -0.905224 -0.045945 -0.492363  0.247571
+FINTECH 12:249                1.979806  1.787175  0.038151 -0.131046 -0.387653
+REGULATORY_TECHNOLOGY 07:037 -0.594277  0.141583  1.866264 -0.411981  1.188108
+COMPLIANCE 07:030             0.586187 -1.188016  0.515199  1.557220  0.037163
+REGULATION 05:164             0.153374  1.177271  0.277960  0.523503 -0.345724
+
 
 
 """

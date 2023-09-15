@@ -10,8 +10,11 @@ Map 2D
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries import map_2d
+>>> from techminer2.analyze.pca.tfidf_matrix import map_2d
 >>> map_2d(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -54,11 +57,11 @@ Map 2D
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/tfidf/countries/map_2d.html")
+... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/map_2d.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_authorship/factor/pca/tfidf/countries/map_2d.html" 
+    <iframe src="../../../../../_static/analyze/pca/tfidf_matrix/map_2d.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

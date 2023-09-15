@@ -10,10 +10,11 @@ Map 2D
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors import map_2d
+>>> from techminer2.analyze.pca.cooc_matrix import map_2d
 >>> map_2d(
 ...     #
 ...     # PARAMS:
+...     field="author_keywords",
 ...     association_index=None,
 ...     #
 ...     # MAP:
@@ -46,11 +47,11 @@ Map 2D
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/co_occurrence_matrix/authors/map_2d.html")
+... ).write_html("sphinx/_static/analyze/pca/cooc_matrix/map_2d.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_authorship/factor/pca/co_occurrence_matrix/authors/map_2d.html" 
+    <iframe src="../../../../../_static/analyze/pca/cooc_matrix/map_2d.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

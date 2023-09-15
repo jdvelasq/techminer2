@@ -10,10 +10,11 @@ Cluster Centers
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.kmeans import cluster_centers
+>>> from techminer2.analyze.pca.cooc_matrix.kmeans import cluster_centers
 >>> cluster_centers(
 ...     #
 ...     # PARAMS:
+...     field="author_keywords",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
@@ -46,14 +47,14 @@ Cluster Centers
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-           DIM_0     DIM_1     DIM_2         DIM_3     DIM_4
-LABELS                                                      
-CL_0   -0.110116 -0.342892 -0.270565 -2.136513e-16  0.821408
-CL_1    3.594663  0.466378  0.164824  9.899972e-17 -0.197320
-CL_2   -0.866762 -1.323229  1.942264  2.937909e-16 -0.390917
-CL_3   -1.497384  2.707063  0.316470  1.365093e-16 -0.195044
-CL_4   -0.730184 -0.787597 -1.344180 -2.000000e+00 -0.850003
-CL_5   -0.730184 -0.787597 -1.344180  2.000000e+00 -0.850003
+            DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+LABELS                                                   
+CL_0    -2.793533  0.024502 -1.373339  0.170275  0.462454
+CL_1    -0.947513  1.621578  2.316966  0.700024  0.361589
+CL_2    -3.418979 -1.444599  0.646212 -1.780453 -1.343433
+CL_3    27.123823 -2.752543 -0.259543 -1.234468  0.412103
+CL_4    11.936802  5.439135 -0.184185 -0.135850 -1.049529
+CL_5     3.547138 -3.615022  0.951064  4.159554  0.402718
 
 """
 from typing import Literal

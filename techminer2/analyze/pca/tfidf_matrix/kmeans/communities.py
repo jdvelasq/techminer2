@@ -10,8 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries.kmeans import communities
+>>> from techminer2.analyze.pca.tfidf_matrix.kmeans import communities
 >>> communities(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -53,12 +56,12 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                         CL_0                 CL_1  ...         CL_4           CL_5
-0                 Italy 5:005  United States 6:059  ...  China 5:027  Ireland 5:055
-1               Bahrain 4:019        Germany 4:051  ...                            
-2            Luxembourg 2:034    Switzerland 4:045  ...                            
-3  United Arab Emirates 2:013                       ...                            
-4                 Spain 2:004                       ...                            
+                          CL_0  ...            CL_5
+0    FINANCIAL_SERVICES 04:168  ...  FINTECH 12:249
+1  FINANCIAL_REGULATION 04:035  ...                
+2            INNOVATION 03:012  ...                
+3      NEW_TECHNOLOGIES 03:010  ...                
+4       DATA_PROTECTION 02:027  ...                
 <BLANKLINE>
 [5 rows x 6 columns]
 

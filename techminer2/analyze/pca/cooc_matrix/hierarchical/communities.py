@@ -10,10 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.hierarchical import communities
+>>> from techminer2.analyze.pca.cooc_matrix.hierarchical import communities
 >>> communities(
 ...     #
 ...     # PARAMS:
+...     field="author_keywords",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
@@ -47,12 +48,12 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                      CL_0  ...           CL_5
-0           Butler T 2:041  ...    Lin W 2:017
-1           Arman AA 2:000  ...  Singh C 2:017
-2  Anagnostopoulos I 1:153  ...               
-3           OBrien L 1:033  ...               
-4          Baxter LG 1:030  ...               
+                          CL_0  ...            CL_5
+0    FINANCIAL_SERVICES 04:168  ...  REGTECH 28:329
+1  FINANCIAL_REGULATION 04:035  ...                
+2            INNOVATION 03:012  ...                
+3      NEW_TECHNOLOGIES 03:010  ...                
+4            BLOCKCHAIN 03:005  ...                
 <BLANKLINE>
 [5 rows x 6 columns]
 

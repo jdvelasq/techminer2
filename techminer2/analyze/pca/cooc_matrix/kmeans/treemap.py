@@ -10,10 +10,11 @@ Treemap
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.co_occurrence_matrix.authors.kmeans import treemap
+>>> from techminer2.analyze.pca.cooc_matrix.kmeans import treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:
+...     field="author_keywords",
 ...     association_index=None,
 ...     #
 ...     # FIGURE PARAMS:
@@ -48,11 +49,11 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_authorship/factor/pca/co_occurrence_matrix/authors/kmeans/treemap.html")
+... ).write_html("sphinx/_static/analyze/pca/cooc_matrix/kmeans/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../../_static/co_authorship/factor/pca/co_occurrence_matrix/authors/kmeans/treemap.html" 
+    <iframe src="../../../../../../_static/analyze/pca/cooc_matrix/kmeans/treemap.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

@@ -10,8 +10,11 @@ Cosine Similarities
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries import cosine_similarities
+>>> from techminer2.analyze.pca.tfidf_matrix import cosine_similarities
 >>> cosine_similarities(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -45,13 +48,13 @@ Cosine Similarities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                                    cosine_similariries
-countries                                                              
-Australia 7:199       Hong Kong 3:185 (0.995); Luxembourg 2:034 (0.7...
-United Kingdom 7:199  Greece 1:021 (0.533); China 5:027 (0.227); Ire...
-United States 6:059   Switzerland 4:045 (0.797); Greece 1:021 (0.703...
-Ireland 5:055         South Africa 1:011 (0.235); Ukraine 1:004 (0.2...
-China 5:027           Japan 1:013 (0.745); United Kingdom 7:199 (0.2...
+                                                            cosine_similariries
+author_keywords                                                                
+REGTECH 28:329                FINTECH 12:249 (0.577); COMPLIANCE 07:030 (0.301)
+FINTECH 12:249                REGULATION 05:164 (0.671); REGTECH 28:329 (0.5...
+REGULATORY_TECHNOLOGY 07:037  RISK_MANAGEMENT 03:014 (0.518); ANTI_MONEY_LAU...
+COMPLIANCE 07:030             ACCOUNTABILITY 02:014 (0.682); REGTECH 28:329 ...
+REGULATION 05:164             RISK_MANAGEMENT 03:014 (0.736); SUPTECH 03:004...
 
     
 """

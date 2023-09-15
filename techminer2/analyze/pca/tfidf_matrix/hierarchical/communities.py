@@ -10,8 +10,11 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.co_authorship.factor.pca.tfidf.countries.hierarchical import communities
+>>> from techminer2.analyze.pca.tfidf_matrix.hierarchical import communities
 >>> communities(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -54,14 +57,15 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                         CL_0  ...                  CL_5
-0               Bahrain 4:019  ...  United Kingdom 7:199
-1            Luxembourg 2:034  ...                      
-2  United Arab Emirates 2:013  ...                      
-3                 Spain 2:004  ...                      
-4             Indonesia 2:000  ...                      
+                          CL_0  ...            CL_5
+0            REGULATION 05:164  ...  REGTECH 28:329
+1    FINANCIAL_SERVICES 04:168  ...                
+2  FINANCIAL_REGULATION 04:035  ...                
+3       RISK_MANAGEMENT 03:014  ...                
+4            INNOVATION 03:012  ...                
 <BLANKLINE>
 [5 rows x 6 columns]
+
 
 
 
