@@ -12,7 +12,7 @@ Coverage
 
 Computes coverage of terms in a column discarding stopwords.
 
->>> from techminer2.dataset_properties import coverage
+>>> from techminer2.overview import coverage
 >>> coverage(
 ...     #
 ...     # PARAMS:

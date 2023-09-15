@@ -19,37 +19,11 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     ingest/__index__ 
     refine/__index__ 
     search/__index__ 
-    
-    dataset_properties/__index__ 
-    
+    overview/__index__ 
     analyze/__index__
-    expertise/__index__
-    agenda/__index__
-
     report/__index__
 
-..     techminer2/performance/__index__
-..     techminer2/co_authorship/__index__
-..     techminer2/co_occurrence/__index__
-..     techminer2/citation/__index__
-..     techminer2/bibliographic_coupling/__index__
-..     techminer2/co_citation/__index__
-..     techminer2/expertise/__index__
-..     techminer2/agenda/__index__
-..     techminer2/emergence/__index__
 
-
-.. toctree::
-    :caption: EXAMPLES / HOW'S TO
-    :hidden:
-    :maxdepth: 1
- 
-    techminer2/__index__    
-    bibliometrix/__index__
-    vantagepoint/__index__
-    tlab/__index__
-    scientopy/__index__
-    
 
 **Author**:
 

@@ -10,7 +10,7 @@
 General Metrics
 ===============================================================================
 
->>> from techminer2.dataset_properties import general_metrics
+>>> from techminer2.overview import general_metrics
 >>> info = general_metrics(
 ...     #
 ...     # DATABASE PARAMS:
@@ -66,11 +66,11 @@ DESCRIPTORS    Raw descriptors                               1041
                Cleaned descriptors                            939
 
 
->>> info.fig_.write_html("sphinx/_static/dataset_properties/general_metrics.html")
+>>> info.fig_.write_html("sphinx/_static/overview/general_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/dataset_properties/general_metrics.html"
+    <iframe src="../../../_static/overview/general_metrics.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(info.prompt_) # doctest: +ELLIPSIS

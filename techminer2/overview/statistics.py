@@ -11,7 +11,7 @@ Statistics
 ===============================================================================
 
 
->>> from techminer2.dataset_properties import statistics
+>>> from techminer2.overview import statistics
 >>> statistics(
 ...     field='authors',
 ...     #

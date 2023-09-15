@@ -11,7 +11,7 @@ Average Citations per Year
 ===============================================================================
 
 
->>> from techminer2.dataset_properties import trend_metrics
+>>> from techminer2.overview import trend_metrics
 >>> metrics = trend_metrics(
 ...     #
 ...     # TABLE PARAMS:
@@ -36,11 +36,11 @@ Average Citations per Year
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/dataset_properties/average_citations_per_year.html")
+>>> metrics.fig_.write_html("sphinx/_static/overview/average_citations_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/dataset_properties/average_citations_per_year.html"  
+    <iframe src="../../../_static/overview/average_citations_per_year.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

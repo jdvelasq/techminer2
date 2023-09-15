@@ -11,7 +11,7 @@ Trend Metrics
 ===============================================================================
 
 
->>> from techminer2.dataset_properties import trend_metrics
+>>> from techminer2.overview import trend_metrics
 >>> metrics = trend_metrics(
 ...     #
 ...     # TABLE PARAMS:
@@ -39,11 +39,11 @@ Trend Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/dataset_properties/trend_metrics.html")
+>>> metrics.fig_.write_html("sphinx/_static/overview/trend_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/dataset_properties/trend_metrics.html"  
+    <iframe src="../../../_static/overview/trend_metrics.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

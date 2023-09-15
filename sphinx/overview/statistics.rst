@@ -1,4 +1,4 @@
-.. automodule:: techminer2.dataset_properties.statistics
+.. automodule:: techminer2.overview.statistics
     :members:
     :undoc-members:
     :show-inheritance:
