@@ -9,7 +9,7 @@ Co-occurrences Chart
 ===============================================================================
 
 
->>> from techminer2.co_occurrence import co_occurrences_chart
+>>> from techminer2.analyze.associations import co_occurrences_chart
 >>> co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -39,11 +39,11 @@ Co-occurrences Chart
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_analysis/associations/co_occurrences.html")
+... ).write_html("sphinx/_static/analyze/associations/co_occurrences.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/co_occurrence_analysis/associations/co_occurrences.html"
+    <iframe src="../../../../_static/analyze/associations/co_occurrences.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

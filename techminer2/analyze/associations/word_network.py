@@ -10,7 +10,7 @@ Word Network
 ===============================================================================
 
 
->>> from techminer2.co_occurrence import word_network
+>>> from techminer2.analyze.associations import word_network
 >>> word_network(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -58,11 +58,11 @@ Word Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/word_network_0.html")
+... ).write_html("sphinx/_static/analyze/associations/word_network_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence/word_network_0.html" 
+    <iframe src="../../../../_static/analyze/associations/word_network_0.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -113,11 +113,11 @@ Word Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence/word_network_1.html")
+... ).write_html("sphinx/_static/analyze/associations/word_network_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence/word_network_1.html" 
+    <iframe src="../../../../_static/analyze/associations/word_network_1.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

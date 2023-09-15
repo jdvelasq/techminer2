@@ -5,16 +5,15 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Pairs Radial Diagram
+Radial Diagram
 ===============================================================================
 
 
->>> from techminer2.co_occurrence import radial_diagram
+>>> from techminer2.analyze.associations import radial_diagram
 >>> radial_diagram(
 ...     #
 ...     # FUNCTION PARAMS:
-...     item_a="ARTIFICIAL_INTELLIGENCE",
-...     item_b="REGTECH",
+...     items=["ARTIFICIAL_INTELLIGENCE", "REGTECH"],
 ...     columns='author_keywords',
 ...     rows=None,
 ...     #
@@ -58,11 +57,11 @@ Pairs Radial Diagram
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_analysis/word_pairs/radial_diagram.html")
+... ).write_html("sphinx/_static/analyze/associations/radial_diagram.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/co_occurrence_analysis/word_pairs/radial_diagram.html" 
+    <iframe src="../../../../_static/analyze/associations/radial_diagram.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

@@ -11,7 +11,7 @@ Item Associations
 ===============================================================================
 
 
->>> from techminer2.analyze.co_occurrences.associations import item_associations
+>>> from techminer2.analyze.associations import item_associations
 >>> associations = item_associations(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -60,23 +60,23 @@ REGULATORY_TECHNOLOGY 07:037                 2
 FINANCIAL_REGULATION 04:035                  2
 ARTIFICIAL_INTELLIGENCE 04:023               2
 RISK_MANAGEMENT 03:014                       2
+NEW_TECHNOLOGIES 03:010                      2
 BLOCKCHAIN 03:005                            2
 SEMANTIC_TECHNOLOGIES 02:041                 2
 DATA_PROTECTION 02:027                       2
-SMART_CONTRACTS 02:022                       2
+SMART_CONTRACT 02:022                        2
 CHARITYTECH 02:017                           2
 ENGLISH_LAW 02:017                           2
 ACCOUNTABILITY 02:014                        2
-DATA_PROTECTION_OFFICER 02:014               2
 ANTI_MONEY_LAUNDERING 05:034                 1
 INNOVATION 03:012                            1
 
 
->>> associations.fig_.write_html("sphinx/_static/analyze/co_occurrences/associations/item_associations_chart.html")
+>>> associations.fig_.write_html("sphinx/_static/analyze/associations/item_associations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/co_occurrences/associations/item_associations_chart.html" 
+    <iframe src="../../../../_static/analyze/associations/item_associations_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

@@ -1,3 +1,5 @@
 from .co_occurrences_chart import co_occurrences_chart
 from .cosine_similarities_graph import cosine_similarities_graph
+from .item_associations import item_associations
 from .radial_diagram import radial_diagram
+from .word_network import word_network
