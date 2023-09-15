@@ -13,7 +13,7 @@ Network Visualization
 
 
 
->>> from techminer2.network.citation.documents import network_visualization
+>>> from techminer2.analyze.citation.network.documents import network_visualization
 >>> network_visualization(
 ...     #
 ...     # COLUMN PARAMS:
@@ -51,11 +51,11 @@ Network Visualization
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/citation/documents/network_visualization.html")
+... ).write_html("sphinx/_static/analyze/citation/network/documents/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/citation/documents/network_visualization.html" 
+    <iframe src="../../../../../../_static/analyze/citation/network/documents/network_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

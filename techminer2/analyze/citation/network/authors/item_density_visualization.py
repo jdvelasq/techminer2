@@ -10,7 +10,7 @@ Item Density Visualization
 ===============================================================================
 
 
->>> from techminer2.network.citation.authors import item_density_visualization
+>>> from techminer2.analyze.citation.network.authors import item_density_visualization
 >>> item_density_visualization(
 ...     # COLUMN PARAMS:
 ...     #
@@ -48,11 +48,11 @@ Item Density Visualization
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/network/citation/authors/item_density_visualization.html")
+... ).write_html("sphinx/_static/analyze/citation/network/authors/item_density_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/network/citation/authors/item_density_visualization.html" 
+    <iframe src="../../../../../../_static/analyze/citation/network/authors/item_density_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
