@@ -10,7 +10,7 @@ Collaboration WorldMap
 ===============================================================================
 
 
->>> from techminer2.performance import collaboration_world_map
+>>> from techminer2.analyze.co_authorship import collaboration_world_map
 >>> collaboration_world_map(
 ...     #
 ...     # DATABASE PARAMS:
@@ -18,11 +18,11 @@ Collaboration WorldMap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/performance/collaboration_world_map.html")
+... ).write_html("sphinx/_static/analyze/co_authorship/collaboration_world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance/collaboration_world_map.html" 
+    <iframe src="../../../../_static/analyze/co_authorship//collaboration_world_map.html" 
     height="410px" width="100%" frameBorder="0"></iframe>
 
 

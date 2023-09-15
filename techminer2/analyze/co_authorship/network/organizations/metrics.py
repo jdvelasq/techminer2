@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network.co_authorship.organizations import metrics
+>>> from techminer2.analyze.co_authorship.network.organizations import metrics
 >>> metrics(
 ...     #
 ...     # COLUMN PARAMS:
