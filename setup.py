@@ -28,7 +28,7 @@ from setuptools import setup
 setup(
     # cmdclass={"build_py": BuildPyCommand},
     name="techminer2",
-    version="2023.8.30",
+    version="2023.9.18",
     author="Juan D. Velasquez",
     author_email="jdvelasq@unal.edu.co",
     license="MIT",

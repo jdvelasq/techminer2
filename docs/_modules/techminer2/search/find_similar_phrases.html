@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>techminer2.search.find_similar_phrases &mdash; TechMiner 2+ Sep 18, 2023 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Sep 18, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TECHMINER 2+</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ingest/__index__.html">Ingest &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../refine/__index__.html">Refine &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../search/__index__.html">Search &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analyze/__index__.html">Analyze &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">techminer2.search.find_similar_phrases</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for techminer2.search.find_similar_phrases</h1><div class="highlight"><pre>
+<span></span><span class="c1"># flake8: noqa</span>
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="c1"># pylint: disable=line-too-long</span>
+<span class="c1"># pylint: disable=missing-docstring</span>
+<span class="c1"># pylint: disable=too-many-arguments</span>
+<span class="c1"># pylint: disable=too-many-locals</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Find Similar Records</span>
+<span class="sd">===============================================================================</span>
+
+
+
+
+<span class="sd">&gt;&gt;&gt; from techminer2.search import find_similar_phrases</span>
+<span class="sd">&gt;&gt;&gt; find_similar_phrases(</span>
+<span class="sd">...     text=(</span>
+<span class="sd">...         &quot;whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, &quot;</span>
+<span class="sd">...         &quot;PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, &quot;</span>
+<span class="sd">...         &quot;and MARKET_COMPETITION and DEVELOPMENT) remain, their means of application &quot;</span>
+<span class="sd">...         &quot;are increasingly inadequate.&quot;</span>
+<span class="sd">...     ),</span>
+<span class="sd">...     top_n=3,</span>
+<span class="sd">...     #</span>
+<span class="sd">...     # DATABASE PARAMS:</span>
+<span class="sd">...     root_dir=&quot;data/regtech/&quot;,</span>
+<span class="sd">...     database=&quot;main&quot;,</span>
+<span class="sd">...     year_filter=(None, None),</span>
+<span class="sd">...     cited_by_filter=(None, None),</span>
+<span class="sd">... )</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+<span class="sd">SIMILARITY: 1.0</span>
+<span class="sd">AR: Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373</span>
+<span class="sd">TI: fintech, regtech, and the reconceptualization of FINANCIAL_REGULATION</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+<span class="sd">whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY,</span>
+<span class="sd">PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY,</span>
+<span class="sd">and MARKET_COMPETITION and development) remain, their means of application</span>
+<span class="sd">are increasingly inadequate.</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+<span class="sd">----------------------------------------------------------------------------------------------------</span>
+<span class="sd">SIMILARITY: 0.204</span>
+<span class="sd">AR: Pantielieieva N, 2020, LECTURE NOTES DATA ENG COMMUN, V42, P1</span>
+<span class="sd">TI: FINTECH, REGTECH and TRADITIONAL_FINANCIAL_INTERMEDIATION: trends and threats for FINANCIAL_STABILITY</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+<span class="sd">the spectrum of potential FINANCIAL_STABILITY_RISKS posed by FINTECH, which</span>
+<span class="sd">requires systematic monitoring by entities providing FINANCIAL_STABILITY,</span>
+<span class="sd">is determined.</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
+
+<span class="kn">from</span> <span class="nn">.._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
+<span class="kn">from</span> <span class="nn">..thesaurus_lib</span> <span class="kn">import</span> <span class="n">load_system_thesaurus_as_dict_reversed</span>
+<span class="kn">from</span> <span class="nn">.extract_descriptors_from_text</span> <span class="kn">import</span> <span class="n">extract_descriptors_from_text</span>
+
+<span class="n">TEXTWRAP_WIDTH</span> <span class="o">=</span> <span class="mi">73</span>
+<span class="n">THESAURUS_FILE</span> <span class="o">=</span> <span class="s2">&quot;words.txt&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">find_similar_phrases</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="c1">#</span>
+    <span class="c1"># DATABASE PARAMS:</span>
+    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+    <span class="n">year_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :meta private:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># Prepare abstracts</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">read_records</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+        <span class="n">year_filter</span><span class="o">=</span><span class="n">year_filter</span><span class="p">,</span>
+        <span class="n">cited_by_filter</span><span class="o">=</span><span class="n">cited_by_filter</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">extract_keywords</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;phrase_no&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">))</span>
+    <span class="n">tf_matrix</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;keyword&quot;</span><span class="p">)</span>
+    <span class="n">tf_matrix</span> <span class="o">=</span> <span class="n">build_tf_matrix</span><span class="p">(</span><span class="n">tf_matrix</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># Prepare text</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">extract_descriptors_from_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">)</span>
+
+    <span class="n">df_text</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tf_matrix</span><span class="o">.</span><span class="n">columns</span><span class="p">)],</span> <span class="n">columns</span><span class="o">=</span><span class="n">tf_matrix</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">df_text</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">similarity</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">tf_matrix</span><span class="p">,</span> <span class="n">df_text</span><span class="p">)</span>
+    <span class="n">similarity</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">similarity</span><span class="p">]</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;similarity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">similarity</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;similarity&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">&quot;similarity&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SIMILARITY: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">similarity</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AR: &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">article</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TI: &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">phrase</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">TEXTWRAP_WIDTH</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="load_thesaurus"><a class="viewcode-back" href="../../../search/find_similar_phrases.html#techminer2.search.find_similar_phrases.load_thesaurus">[docs]</a><span class="k">def</span> <span class="nf">load_thesaurus</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+    <span class="n">th_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">THESAURUS_FILE</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">th_file</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The file </span><span class="si">{</span><span class="n">th_file</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span><span class="p">)</span>
+    <span class="n">thesaurus</span> <span class="o">=</span> <span class="n">load_system_thesaurus_as_dict_reversed</span><span class="p">(</span><span class="n">th_file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">thesaurus</span></div>
+
+
+<span class="k">def</span> <span class="nf">build_tf_matrix</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :meta private:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;phrase_no&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;keyword&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+
+<span class="k">def</span> <span class="nf">extract_keywords</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :meta private:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># -----------------------------------------------------------------------------------------</span>
+    <span class="c1"># Obtains a regex for descriptors</span>
+    <span class="n">thesaurus</span> <span class="o">=</span> <span class="n">load_thesaurus</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+    <span class="n">descriptors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">thesaurus</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">descriptors</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>
+    <span class="n">descriptors</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>
+    <span class="n">descriptors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">descriptors</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">descriptors</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>
+    <span class="n">descriptors</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptors</span><span class="p">)</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b(&quot;</span> <span class="o">+</span> <span class="n">descriptors</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;)\b&quot;</span><span class="p">)</span>
+    <span class="c1"># -----------------------------------------------------------------------------------------</span>
+
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">records</span><span class="p">[[</span><span class="s2">&quot;article&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">paragraph</span><span class="p">:</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">paragraph</span><span class="p">)</span><span class="o">.</span><span class="n">sentences</span>
+    <span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;abstract&quot;</span><span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------------------------</span>
+    <span class="c1">#</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">sentence</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span> <span class="n">sentence</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">text</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">words</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">descriptors</span><span class="p">:</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">descriptors</span> <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">t</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="ow">and</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s2">&quot;0123456789&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># -----------------------------------------------------------------------------------------</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="p">[]</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;abstract&quot;</span><span class="p">:</span> <span class="s2">&quot;keyword&quot;</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">abstracts</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
