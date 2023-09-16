@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tlab_co_occurrence_analysis_word_associations_item_associations:
-
 Item Associations
 ===============================================================================
 

@@ -5,7 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+"""
+Cosine Similarities Graph
+===============================================================================
 
+
+"""
 import pandas as pd
 import plotly.express as px
 from sklearn.metrics.pairwise import cosine_similarity

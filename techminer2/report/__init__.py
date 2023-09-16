@@ -4,6 +4,7 @@ from .butterfly_chart import butterfly_chart
 from .cleveland_dot_chart import cleveland_dot_chart
 from .cluster_map import cluster_map
 from .column_chart import column_chart
+from .heat_map import heat_map
 from .line_chart import line_chart
 from .multi_donut import multi_donut
 from .pie_chart import pie_chart

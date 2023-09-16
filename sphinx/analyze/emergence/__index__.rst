@@ -4,5 +4,7 @@ Emergence >
 .. toctree::
     emergence_indicators
 
+--------------------------------------------------------------------------------
+
 .. toctree::
     plot_emergence

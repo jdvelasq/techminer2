@@ -7,8 +7,6 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-.. _emergence_analysis.plot_emergence:
-
 TODO: Plot Emergence
 ===============================================================================
 

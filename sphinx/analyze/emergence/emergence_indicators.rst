@@ -1,4 +1,4 @@
-.. automodule:: techminer2.emergence_analysis.emergence_indicators
+.. automodule:: techminer2.analyze.emergence.emergence_indicators
     :members:
     :undoc-members:
     :show-inheritance:
