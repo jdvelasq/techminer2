@@ -47,10 +47,10 @@ Most Frequent Words
 | REGULATORY_COMPLIANCE   |          4 |    15 |            12 |                   3 |               20    |
 | FINANCIAL_REGULATION    |          5 |    12 |             8 |                   4 |               33.33 |
 | FINTECH                 |          6 |    12 |            10 |                   2 |               16.67 |
-| NEW_TECHNOLOGIES        |          7 |     9 |             5 |                   4 |               44.44 |
-| FINANCIAL_SYSTEM        |          8 |     8 |             5 |                   3 |               37.5  |
-| REGULATION              |          9 |     8 |             5 |                   3 |               37.5  |
-| ARTIFICIAL_INTELLIGENCE |         10 |     8 |             5 |                   3 |               37.5  |
+| REGULATION              |          7 |     8 |             5 |                   3 |               37.5  |
+| ARTIFICIAL_INTELLIGENCE |          8 |     8 |             5 |                   3 |               37.5  |
+| NEW_TECHNOLOGIES        |          9 |     8 |             4 |                   4 |               50    |
+| FINANCIAL_SECTOR        |         10 |     7 |             5 |                   2 |               28.57 |
 
 
 >>> metrics.fig_.write_html("sphinx/_static/analyze/words/descriptors/most_frequent_chart.html")
