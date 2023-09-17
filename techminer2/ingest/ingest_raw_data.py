@@ -573,6 +573,10 @@ def ingest_raw_data(
     transform_abstract_keywords_to_underscore(root_dir)
 
     #
+    # rec-no field
+    assign__rec_no__field(root_dir)
+
+    #
     #
     # Phase 4: References
     #
@@ -616,6 +620,18 @@ def ingest_raw_data(
 # End of main function
 #
 #
+
+
+def assign__rec_no__field(root_dir):
+    #
+    message("Assign REC-No identifier to each record")
+
+    processed_dir = pathlib.Path(root_dir) / "databases"
+    files = list(processed_dir.glob("_*.zip"))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data["art_no"] = range(1, len(data) + 1)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def compress_raw_data(root_dir, remove_raw_csv_files):
