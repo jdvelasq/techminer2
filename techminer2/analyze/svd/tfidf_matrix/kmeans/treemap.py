@@ -14,7 +14,7 @@ Treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:
-...     field="nlp_phrases",
+...     field="noun_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,

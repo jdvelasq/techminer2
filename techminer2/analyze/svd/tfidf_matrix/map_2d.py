@@ -14,7 +14,7 @@ Map 2D
 >>> map_2d(
 ...     #  
 ...     # PARAMS:
-...     field="nlp_phrases",
+...     field="noun_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.words.title_nlp_phrases.word_cloud
+.. automodule:: techminer2.analyze.words.title_noun_phrases.word_cloud
     :members:
     :undoc-members:
     :show-inheritance:

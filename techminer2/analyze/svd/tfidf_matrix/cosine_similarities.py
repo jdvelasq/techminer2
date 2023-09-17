@@ -14,7 +14,7 @@ Cosine Similarities
 >>> cosine_similarities(
 ...     #  
 ...     # PARAMS:
-...     field="nlp_phrases",
+...     field="noun_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -48,7 +48,7 @@ Cosine Similarities
 ...     cited_by_filter=(None, None),
 ... ).head()
                                                              cosine_similariries
-nlp_phrases                                                                     
+noun_phrases                                                                     
 REGULATORY_TECHNOLOGY 20:276   INFORMATION_TECHNOLOGY 05:177 (0.761); COMPLIA...
 FINANCIAL_INSTITUTIONS 15:194  TECHNOLOGICAL_SOLUTIONS 05:016 (0.911); FINANC...
 FINANCIAL_SYSTEM 08:340        FINANCIAL_TECHNOLOGY 05:173 (0.814); FINANCIAL...

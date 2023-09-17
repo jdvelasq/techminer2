@@ -29,7 +29,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
             # "index_keywords",
             "raw_author_keywords",
             "raw_index_keywords",
-            "raw_nlp_phrases",
+            "raw_noun_phrases",
         ]
 
         for criterion in reported_columns:
@@ -48,9 +48,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
     def write_report_to_file(records, directory, target_dir, report_filename):
         """Writes the report to the file."""
 
-        file_path = os.path.join(
-            directory, "reports", target_dir, report_filename
-        )
+        file_path = os.path.join(directory, "reports", target_dir, report_filename)
 
         with open(file_path, "w", encoding="utf-8") as file:
             for i_record, (index, row) in enumerate(records.iterrows()):
@@ -90,7 +88,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
                     if criterion == "raw_index_keywords":
                         print("ID ", end="", file=file)
 
-                    if criterion == "raw_nlp_phrases":
+                    if criterion == "raw_noun_phrases":
                         print("** ", end="", file=file)
 
                     if str(row[criterion]) == "nan":

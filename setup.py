@@ -109,13 +109,13 @@ setup(
         #
         "techminer2.analyze.co_occurrence.network",
         #
-        "techminer2.analyze.co_occurrence.network.abstract_nlp_phrases",
+        "techminer2.analyze.co_occurrence.network.abstract_noun_phrases",
         "techminer2.analyze.co_occurrence.network.author_keywords",
         "techminer2.analyze.co_occurrence.network.descriptors",
         "techminer2.analyze.co_occurrence.network.index_keywords",
         "techminer2.analyze.co_occurrence.network.keywords",
-        "techminer2.analyze.co_occurrence.network.nlp_phrases",
-        "techminer2.analyze.co_occurrence.network.title_nlp_phrases",
+        "techminer2.analyze.co_occurrence.network.noun_phrases",
+        "techminer2.analyze.co_occurrence.network.title_noun_phrases",
         #
         # ======================================================================
         "techminer2.analyze.contributors",
@@ -128,13 +128,13 @@ setup(
         # ======================================================================
         "techminer2.analyze.words",
         #
-        "techminer2.analyze.words.abstract_nlp_phrases",
+        "techminer2.analyze.words.abstract_noun_phrases",
         "techminer2.analyze.words.author_keywords",
         "techminer2.analyze.words.descriptors",
         "techminer2.analyze.words.index_keywords",
         "techminer2.analyze.words.keywords",
-        "techminer2.analyze.words.nlp_phrases",
-        "techminer2.analyze.words.title_nlp_phrases",
+        "techminer2.analyze.words.noun_phrases",
+        "techminer2.analyze.words.title_noun_phrases",
         #
         # ======================================================================
         "techminer2.analyze.correlation",

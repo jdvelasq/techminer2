@@ -14,7 +14,7 @@ Treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:
-...     field="nlp_phrases",
+...     field="noun_phrases",
 ...     association_index=None,
 ...     #
 ...     # FIGURE PARAMS:

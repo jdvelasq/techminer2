@@ -25,21 +25,21 @@ Words >
 .. toctree::
     :maxdepth: 1
 
-    abstract_nlp_phrases/__index__        
+    abstract_noun_phrases/__index__        
 
 --------------------------------------------------------------------------------
 
 .. toctree::
     :maxdepth: 1
 
-    title_nlp_phrases/__index__        
+    title_noun_phrases/__index__        
 
 --------------------------------------------------------------------------------
 
 .. toctree::
     :maxdepth: 1
 
-    nlp_phrases/__index__         
+    noun_phrases/__index__         
 
 --------------------------------------------------------------------------------
 

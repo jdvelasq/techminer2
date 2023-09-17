@@ -14,7 +14,7 @@ Embedding
 >>> embedding(
 ...     #  
 ...     # PARAMS:
-...     field="nlp_phrases",
+...     field="noun_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -48,7 +48,7 @@ Embedding
 ...     cited_by_filter=(None, None),
 ... ).head()
                                   DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
-nlp_phrases                                                                    
+noun_phrases                                                                    
 REGULATORY_TECHNOLOGY 20:276   3.817076 -1.428794 -1.094541  0.491738 -0.364631
 FINANCIAL_INSTITUTIONS 15:194  2.337557  2.816962  0.504369  0.028552  0.063188
 FINANCIAL_SYSTEM 08:340        1.750703 -0.608198  0.714911 -1.009242 -0.112868

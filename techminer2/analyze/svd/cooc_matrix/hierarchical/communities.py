@@ -14,7 +14,7 @@ Communities
 >>> communities(
 ...     #
 ...     # PARAMS:
-...     field="nlp_phrases",
+...     field="noun_phrases",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
