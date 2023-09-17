@@ -9,7 +9,7 @@ Annual Scientific Production
 ===============================================================================
 
 
->>> from techminer2.overview import trend_metrics
+>>> from techminer2.analyze.overview import trend_metrics
 >>> metrics = trend_metrics(
 ...     #
 ...     # TABLE PARAMS:
@@ -34,11 +34,11 @@ Annual Scientific Production
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/overview/annual_scientific_production.html")
+>>> metrics.fig_.write_html("sphinx/_static/analyze/overview/annual_scientific_production.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/overview/annual_scientific_production.html"  
+    <iframe src="../../../../_static/analyze/overview/annual_scientific_production.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

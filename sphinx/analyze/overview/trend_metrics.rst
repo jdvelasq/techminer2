@@ -1,4 +1,4 @@
-.. automodule:: techminer2.overview.statistics
+.. automodule:: techminer2.analyze.overview.trend_metrics
     :members:
     :undoc-members:
     :show-inheritance:

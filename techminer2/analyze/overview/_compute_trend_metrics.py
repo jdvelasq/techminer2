@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.overview._compute_trend_metrics import compute_trend_metrics
+>>> from techminer2.analyze.overview._compute_trend_metrics import compute_trend_metrics
 >>> metrics = compute_trend_metrics(
 ...     #
 ...     # DATABASE PARAMS
@@ -48,7 +48,7 @@
 
 
 """
-from .._read_records import read_records
+from ..._read_records import read_records
 
 
 def compute_trend_metrics(

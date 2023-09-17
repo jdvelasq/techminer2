@@ -5,12 +5,10 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tm2.performance.overview.general_metrics:
-
 General Metrics
 ===============================================================================
 
->>> from techminer2.overview import general_metrics
+>>> from techminer2.analyze.overview import general_metrics
 >>> info = general_metrics(
 ...     #
 ...     # DATABASE PARAMS:
@@ -66,11 +64,11 @@ DESCRIPTORS    Raw descriptors                               1041
                Cleaned descriptors                            939
 
 
->>> info.fig_.write_html("sphinx/_static/overview/general_metrics.html")
+>>> info.fig_.write_html("sphinx/_static/analyze/overview/general_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/overview/general_metrics.html"
+    <iframe src="../../../../_static/analyze/overview/general_metrics.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(info.prompt_) # doctest: +ELLIPSIS
@@ -88,8 +86,8 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from .._read_records import read_records
-from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..._read_records import read_records
+from ...format_prompt_for_dataframes import format_prompt_for_dataframes
 
 
 def general_metrics(

@@ -5,13 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tm2.performance.overview.trend_metrics:
-
 Trend Metrics
 ===============================================================================
 
 
->>> from techminer2.overview import trend_metrics
+>>> from techminer2.analyze.overview import trend_metrics
 >>> metrics = trend_metrics(
 ...     #
 ...     # TABLE PARAMS:
@@ -39,11 +37,11 @@ Trend Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/overview/trend_metrics.html")
+>>> metrics.fig_.write_html("sphinx/_static/analyze/overview/trend_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/overview/trend_metrics.html"  
+    <iframe src="../../../../_static/analyze/overview/trend_metrics.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -82,7 +80,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from ...format_prompt_for_dataframes import format_prompt_for_dataframes
 from ._compute_trend_metrics import compute_trend_metrics
 from ._plot_trend_metrics import plot_trend_metrics
 

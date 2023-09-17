@@ -19,7 +19,6 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     ingest/__index__ 
     refine/__index__ 
     search/__index__ 
-    overview/__index__ 
     analyze/__index__
     report/__index__
 
