@@ -10,7 +10,7 @@ import textwrap
 TEXTWRAP_WIDTH = 73
 
 
-def format_prompt_for_records(main_text, records, weight=None):
+def format_prompt_for_records(main_text, secondary_text, records, weight=None):
     """Generate prompt for records."""
 
     if "abstract" not in records.columns:
@@ -19,12 +19,25 @@ def format_prompt_for_records(main_text, records, weight=None):
     records = records.copy()
     records = records.dropna(subset=["abstract"])
 
-    prompt = textwrap.fill(main_text, width=TEXTWRAP_WIDTH)
-    prompt = prompt.replace("\n", " \\\n")
-    prompt += "\n\n"
+    # main_prompt = textwrap.fill(main_text, width=TEXTWRAP_WIDTH)
+    # main_prompt = main_prompt.replace("\n", " \\\n")
+    # main_prompt += "\n\n"
+
+    # secondary_prompt = textwrap.fill(secondary_text, width=TEXTWRAP_WIDTH)
+    # secondary_prompt = secondary_prompt.replace("\n", " \\\n")
+    # secondary_prompt += "\n\n"
 
     text = ""
+    counter = 0
     for i_record, (_, record) in enumerate(records.iterrows()):
+        #
+        # Header counter
+        counter += 1
+        if counter > 10:
+            counter = 1
+            if i_record < len(records) - 1:
+                text += secondary_text
+
         #
         # Article ID
         record_id = str(record.article)
@@ -44,7 +57,7 @@ def format_prompt_for_records(main_text, records, weight=None):
 
         #
         # Text:
-        text += "\nBelow appears the following records: \n\n"
+        # text += "\nBelow appears the following records: \n\n"
 
         text += f"##: {i_record+1}\n"
         text += f"Record-No: {record.art_no}\n"
@@ -58,4 +71,4 @@ def format_prompt_for_records(main_text, records, weight=None):
         text += f"Abstract:\n```\n{abstract}\n```\n\n"
         text += "--\n\n"
 
-    return prompt + text
+    return main_text + text

@@ -69,6 +69,7 @@ Network Report
 """
 import os
 import os.path
+import textwrap
 from collections import defaultdict
 
 import pandas as pd
@@ -79,6 +80,8 @@ from .format_report_for_records import format_report_for_records
 from .make_report_dir import make_report_dir
 from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
 from .search.concordances import concordances_from_records
+
+TEXTWRAP_WIDTH = 73
 
 
 def nx_create_co_occurrences_report(
@@ -310,33 +313,64 @@ def __generate_records_prompt(
         # Terms:
         terms = "; ".join(communities[cluster][:10])
 
-        main_text = (
+        #
+        # Main text:
+        text = (
             "You are an automated scientific writer assistant. Use only the information provided "
             "in the following records to write one paragraph explaining and exemplifying the "
             "relationships among the following keywords: "
-            "\n\n"
-            f"{terms}"
-            "\n\n"
+        )
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        main_text = text + "\n\n"
+
+        text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        main_text += text + "\n\n"
+
+        text = (
             "Use the Record-No value between brackets to indicate the reference to the record. "
             "For example, [1] means that the information is in the Record-No 1. Use notes below "
             "of the generated text to justify the affirmation. Use only phrases appearing in the "
             "provided text. Here are the records: "
-            "\n\n"
-            "--\n\n"
-            "Improve and make more clear the explanation of the relationships among the keywords: "
-            "\n\n"
-            f"{terms}"
-            "\n\n"
+        )
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        main_text += text + "\n\n"
+
+        #
+        # Secondary text:
+        text = (
+            "Improve and make more clear the explanation of the relationships among the keywords:"
+        )
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text = text + "\n\n"
+
+        text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text += text + "\n\n"
+
+        text = (
             "in the next paragraphs delimited by '<<<' and '>>>', using only the information "
             "provided in the records presented below. Add cites to the added text using the "
-            "corresponding Record-No value between brackets. "
-            "\n\n"
-            "Here are text to improve and make more clear: "
-            "\n"
-            "<<<\n\n\n>>>"
-            "\n\n\n"
-            "Here are the records: "
+            "corresponding Record-No value between brackets."
         )
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text += text + "\n\n"
+
+        text = "Here are text to improve and make more clear: "
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text += text + "\n\n"
+
+        secondary_text += "<<<\n\n>>>\n\n"
+
+        text = "Here are the records: "
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text += text + "\n\n"
 
         # -------------------------------------------------------------------------------------
         records = records_per_cluster[cluster]
@@ -345,7 +379,9 @@ def __generate_records_prompt(
         )
 
         file_name = f"{cluster}_abstracts_prompt.txt"
-        prompt = format_prompt_for_records(main_text, records, weight="global_citations")
+        prompt = format_prompt_for_records(
+            main_text, secondary_text, records, weight="global_citations"
+        )
 
         file_name = f"{cluster}_prompt.txt"
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)
