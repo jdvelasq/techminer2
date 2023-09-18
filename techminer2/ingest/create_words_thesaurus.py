@@ -9,11 +9,7 @@
 """
 
 >>> from techminer2.ingest.create_words_thesaurus import create_words_thesaurus
-
->> create_words_thesaurus(root_dir="data/regtech/")
-
->>> create_words_thesaurus(root_dir="data/tm2/")
-
+>>> create_words_thesaurus(root_dir="data/regtech/")
 --INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
 
 """
@@ -27,6 +23,100 @@ import pandas as pd
 from nltk.stem import PorterStemmer
 
 from ..thesaurus_lib import load_system_thesaurus_as_frame
+
+
+def concept_clumping(column):
+    """
+    :meta private:
+    """
+
+    data_frame = pd.DataFrame({"fingerprint": column})
+
+    data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
+    data_frame = data_frame.sort_values(["len_fingerprint", "fingerprint"], ascending=[False, True])
+
+    #
+    # Terms with 4 words
+    terms4 = data_frame.loc[data_frame.len_fingerprint == 4, :].copy()
+    for _, row in terms4.iterrows():
+        #
+        # Splits the term in words
+        term = row.fingerprint
+        word0, word1, word2, word3 = term.split(" ")
+
+        #
+        # Terms with 4 words that conatins the current term of 4 words
+        terms5 = data_frame.loc[data_frame.len_fingerprint == 5, :].copy()
+        terms5 = terms5.loc[terms5.fingerprint.str.contains(word0), :]
+        terms5 = terms5.loc[terms5.fingerprint.str.contains(word1), :]
+        terms5 = terms5.loc[terms5.fingerprint.str.contains(word2), :]
+        terms5 = terms5.loc[terms5.fingerprint.str.contains(word3), :]
+        data_frame.loc[terms5.index, "fingerprint"] = term
+
+    #
+    # Terms with 3 words
+    terms3 = data_frame.loc[data_frame.len_fingerprint == 3, :].copy()
+    for _, row in terms3.iterrows():
+        #
+        # Splits the term in words
+        term = row.fingerprint
+        word0, word1, word2 = term.split(" ")
+
+        #
+        # Terms with 4 words that conatins the current term of 3 words
+        terms4 = data_frame.loc[data_frame.len_fingerprint == 4, :].copy()
+        terms4 = terms4.loc[terms4.fingerprint.str.contains(word0), :]
+        terms4 = terms4.loc[terms4.fingerprint.str.contains(word1), :]
+        terms4 = terms4.loc[terms4.fingerprint.str.contains(word2), :]
+        data_frame.loc[terms4.index, "fingerprint"] = term
+
+    #
+    # Terms with 2 words
+    terms2 = data_frame.loc[data_frame.len_fingerprint == 2, :].copy()
+    for _, row in terms2.iterrows():
+        #
+        # Splits the term in words
+        term = row.fingerprint
+        word0, word1 = term.split(" ")
+        term == "DIGITAL TRANSFORMATION"
+        #
+        # Terms with 4 words that conatins the current term of 3 words
+        terms3 = data_frame.loc[data_frame.len_fingerprint == 3, :].copy()
+        terms3 = terms3.loc[terms3.fingerprint.str.contains(word0), :]
+        terms3 = terms3.loc[terms3.fingerprint.str.contains(word1), :]
+        data_frame.loc[terms3.index, "fingerprint"] = term
+
+    return data_frame["fingerprint"]
+
+
+def create_words_thesaurus(
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+):
+    """
+    :meta private:
+    """
+    print(
+        "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
+    )
+
+    #
+    # Creates a dataframe with the raw keywords of the database and the raw
+    # nlp phrases (removing generic stopwords).
+    #
+    data_frame = create_data_frame(root_dir=root_dir)
+    data_frame = update_stopwords(data_frame, root_dir=root_dir)
+    data_frame = process_fingerprint_key(data_frame)
+    thesaurus = create_thesuarus(data_frame)
+
+    file_path = pathlib.Path(root_dir) / "words.txt"
+    with open(file_path, "w", encoding="utf-8") as file:
+        for key in sorted(thesaurus.keys()):
+            file.write(key + "\n")
+
+            for term in sorted(set(thesaurus[key])):
+                file.write("    " + term + "\n")
 
 
 def create_column_data_frame(root_dir, column):
@@ -138,13 +228,14 @@ def process_fingerprint_key(data_frame):
     data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
     data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
     data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_initial_articles(data_frame["fingerprint"])
-    data_frame["fingerprint"] = replace_sinonimous(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
+    ## data_frame["fingerprint"] = remove_initial_articles(data_frame["fingerprint"])
+    ## data_frame["fingerprint"] = replace_sinonimous(data_frame["fingerprint"])
+    ## data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
+    ## data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
+    ## data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
+    ## data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
     data_frame["fingerprint"] = british_to_american_spelling(data_frame["fingerprint"])
+    data_frame["fingerprint"] = concept_clumping(data_frame["fingerprint"])
     data_frame["fingerprint"] = apply_porter_stemmer(data_frame["fingerprint"])
 
     return data_frame
@@ -302,105 +393,6 @@ def update_stopwords(data_frame, root_dir):
         out_file.write("\n".join(stopwords))
 
     return data_frame
-
-
-def create_words_thesaurus(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-):
-    """
-    :meta private:
-    """
-    print(
-        "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
-    )
-
-    #
-    # Creates a dataframe with the raw keywords of the database and the raw
-    # nlp phrases (removing generic stopwords).
-    #
-    data_frame = create_data_frame(root_dir=root_dir)
-    data_frame = update_stopwords(data_frame, root_dir=root_dir)
-    data_frame = process_fingerprint_key(data_frame)
-    thesaurus = create_thesuarus(data_frame)
-
-    file_path = pathlib.Path(root_dir) / "words.txt"
-    with open(file_path, "w", encoding="utf-8") as file:
-        for key in sorted(thesaurus.keys()):
-            file.write(key + "\n")
-
-            for term in sorted(set(thesaurus[key])):
-                file.write("    " + term + "\n")
-
-
-# def _create_words_thesaurus(
-#     #
-#     # DATABASE PARAMS:
-#     root_dir="./",
-# ):
-#     """Creates a thesaurus from raw keywords and title/abstact words."""
-
-#     print(
-#         "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
-#     )
-
-#     #
-#     frame = process_frame(frame)
-#     #
-#     frame = create_key_phrase(frame)
-
-#     existent_frame = load_existent_thesaurus(root_dir)
-#     if existent_frame is not None:
-#         existent_frame = process_frame(existent_frame)
-#         key2value = dict(zip(existent_frame.value_fingerprint, existent_frame.key_phrase))
-
-#         frame.loc[
-#             frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "key_phrase"
-#         ] = frame.loc[
-#             frame["value_fingerprint"].map(lambda x: x in key2value.keys()), "value_fingerprint"
-#         ].map(
-#             lambda x: key2value[x]
-#         )
-
-#     frame = frame[["key_phrase", "value_phrase"]]
-
-#     frame["key_phrase"] = (
-#         frame["key_phrase"]
-#         .str.replace(" ", "_")
-#         .str.replace("_(", " (", regex=False)
-#         .str.replace(")_", ") ", regex=False)
-#         .str.upper()
-#     )
-#     frame["value_phrase"] = (
-#         frame["value_phrase"]
-#         .str.replace(" ", "_")
-#         .str.replace("_(", " (", regex=False)
-#         .str.replace(")_", ") ", regex=False)
-#         .str.upper()
-#     )
-
-#     frame = frame.groupby("key_phrase", as_index=False).agg({"value_phrase": list})
-#     frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
-
-#     #
-#     # Remove parenthesis from dictionary keys
-#     frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
-#     frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
-#     frame["key_phrase"] = remove_parenthesis(frame["key_phrase"])
-#     frame["key_phrase"] = frame["key_phrase"].str.strip()
-#     frame["key_phrase"] = frame["key_phrase"].str.replace("   ", "  ", regex=False)
-#     frame["key_phrase"] = frame["key_phrase"].str.replace("  ", " ", regex=False)
-#     frame["key_phrase"] = frame["key_phrase"].str.replace(" ", "_", regex=False)
-
-#     file_path = pathlib.Path(root_dir) / "words.txt"
-#     with open(file_path, "w", encoding="utf-8") as file:
-#         for _, row in frame.iterrows():
-#             file.write(row.key_phrase + "\n")
-#             if row.key_phrase not in row.value_phrase:
-#                 file.write("    " + row.key_phrase + "\n")
-#             for aff in row.value_phrase:
-#                 file.write("    " + aff + "\n")
 
 
 def load_existent_thesaurus(root_dir):
