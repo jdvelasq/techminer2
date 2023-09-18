@@ -16,7 +16,7 @@ Import a scopus data file in the working directory.
 >>> ingest_raw_data(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/", 
+...     root_dir="data/tm2-reviews/", 
 ...     remove_raw_csv_files=True,
 ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files

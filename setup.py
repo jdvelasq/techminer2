@@ -109,14 +109,6 @@ setup(
         #
         "techminer2.analyze.co_occurrence.network",
         #
-        "techminer2.analyze.co_occurrence.network.abstract_noun_phrases",
-        "techminer2.analyze.co_occurrence.network.author_keywords",
-        "techminer2.analyze.co_occurrence.network.descriptors",
-        "techminer2.analyze.co_occurrence.network.index_keywords",
-        "techminer2.analyze.co_occurrence.network.keywords",
-        "techminer2.analyze.co_occurrence.network.noun_phrases",
-        "techminer2.analyze.co_occurrence.network.title_noun_phrases",
-        #
         # ======================================================================
         "techminer2.analyze.contributors",
         #
@@ -141,6 +133,9 @@ setup(
         #
         # ======================================================================
         "techminer2.analyze.emergence",
+        #
+        # ======================================================================
+        "techminer2.analyze.overview",
         #
         # ======================================================================
         "techminer2.analyze.pca",
@@ -173,9 +168,6 @@ setup(
         "techminer2.analyze.topic_modeling.berttopic",
         "techminer2.analyze.topic_modeling.lda",
         "techminer2.analyze.topic_modeling.nmf",
-        #
-        # ======================================================================
-        "techminer2.dataset_properties",
         #
         # ======================================================================
         "techminer2.indicators",

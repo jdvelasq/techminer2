@@ -132,7 +132,16 @@ def nx_create_co_occurrences_report(
         root_dir=root_dir,
     )
 
-    __generate_records_prompt(
+    __generate_terms_relationships_prompt(
+        communities=communities,
+        records_per_cluster=records_per_cluster,
+        report_dir=report_dir,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+    __generate_conclusions_prompt(
         communities=communities,
         records_per_cluster=records_per_cluster,
         report_dir=report_dir,
@@ -300,7 +309,7 @@ def __genereate_concordances_report(
             )
 
 
-def __generate_records_prompt(
+def __generate_terms_relationships_prompt(
     communities,
     records_per_cluster,
     report_dir,
@@ -345,6 +354,7 @@ def __generate_records_prompt(
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
         text = text.replace("\n", " \\\n")
+        text = "*" * 70 + "\n\n" + text
         secondary_text = text + "\n\n"
 
         text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
@@ -383,7 +393,7 @@ def __generate_records_prompt(
             main_text, secondary_text, records, weight="global_citations"
         )
 
-        file_name = f"{cluster}_prompt.txt"
+        file_name = f"{cluster}_relationships_prompt.txt"
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)
 
         with open(file_path, "w", encoding="utf-8") as file:
@@ -412,3 +422,74 @@ def __generate_records_report(
             records=records,
             report_filename=file_name,
         )
+
+
+def __generate_conclusions_prompt(
+    communities,
+    records_per_cluster,
+    report_dir,
+    root_dir,
+):
+    """ChatGPT prompt."""
+
+    for cluster in sorted(communities.keys()):
+        #
+        # Main text:
+        text = (
+            "You are an automathic writer asistant. Write one list of bullets summarizing the "
+            "conclussions that are common in the following abstracts. Generate an unique "
+            "list, not a list per abstract. "
+            "Use the Record-No value between brackets to indicate the reference to the record. "
+            "For example, [1] means that the information is in the Record-No 1."
+        )
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        main_text = text + "\n\n"
+
+        text = "Here are the records: "
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        main_text += text + "\n\n"
+
+        #
+        # Secondary text:
+        text = (
+            "Improve, complete and make more clear the following list of bullets. Adds new conclussions "
+            "that are common in the following abstracts or adds new common conclusions. "
+            "Generate an unique list, not a list per abstract. "
+            "Use the Record-No value between brackets to indicate the reference to the record. "
+            "For example, [1] means that the information is in the Record-No 1."
+        )
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        text = "*" * 70 + "\n\n" + text
+        secondary_text = text + "\n\n"
+
+        text = "Here is the list of bullets to improve, complete and make more clear: "
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text += text + "\n\n"
+
+        secondary_text += "<<<\n\n>>>\n\n"
+
+        text = "Here are the records: "
+        text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
+        text = text.replace("\n", " \\\n")
+        secondary_text += text + "\n\n"
+
+        # -------------------------------------------------------------------------------------
+        records = records_per_cluster[cluster]
+        records = records.sort_values(
+            ["global_citations", "local_citations", "year"], ascending=False
+        )
+
+        prompt = format_prompt_for_records(
+            main_text, secondary_text, records, weight="global_citations"
+        )
+
+        file_name = f"{cluster}_conclusions_prompt.txt"
+        file_path = os.path.join(root_dir, "reports", report_dir, file_name)
+        with open(file_path, "w", encoding="utf-8") as file:
+            print(prompt, file=file)
+
+        print(f"--INFO-- The file '{file_path}' was created.")
