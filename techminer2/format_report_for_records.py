@@ -18,6 +18,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
         column_list = []
 
         reported_columns = [
+            "art_no",
             "article",
             "title",
             "authors",
@@ -25,8 +26,6 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
             "source_title",
             "year",
             "abstract",
-            # "author_keywords",
-            # "index_keywords",
             "raw_author_keywords",
             "raw_index_keywords",
             "raw_noun_phrases",
@@ -60,6 +59,9 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
 
                     if row[criterion] is None:
                         continue
+
+                    if criterion == "art_no":
+                        print("## ", end="", file=file)
 
                     if criterion == "article":
                         print("AR ", end="", file=file)

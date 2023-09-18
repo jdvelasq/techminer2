@@ -46,7 +46,7 @@ def format_prompt_for_records(main_text, records, weight=None):
         # Text:
         text += "\nBelow appears the following records: \n\n"
 
-        text += f"Counter: {i_record+1}\n"
+        text += f"##: {i_record+1}\n"
         text += f"Record-No: {record.art_no}\n"
 
         # Weight

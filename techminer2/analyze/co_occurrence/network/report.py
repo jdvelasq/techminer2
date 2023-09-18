@@ -32,12 +32,12 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/CL_1_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/CL_2_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/CL_0_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/CL_1_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/co_occurrence/CL_2_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_0_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_1_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_2_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_0_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_1_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_2_prompt.txt' was created.
 
 
 """
@@ -61,7 +61,7 @@ def report(
     association_index="association",
     #
     # REPORT PARAMS:
-    report_dir="co_occurrence/network/co_occurrence/",
+    report_dir="co_occurrence/network/",
     #
     # DATABASE PARAMS:
     root_dir="./",
