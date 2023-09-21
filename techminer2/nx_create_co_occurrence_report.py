@@ -354,7 +354,7 @@ def __generate_terms_relationships_prompt(
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
         text = text.replace("\n", " \\\n")
-        text = "*" * 70 + "\n\n" + text
+        text = "*" * 75 + "\n\n" + text
         secondary_text = text + "\n\n"
 
         text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)

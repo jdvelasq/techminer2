@@ -15,7 +15,10 @@ def nx_extract_communities_as_dict(nx_graph, conserve_counters):
     communities = {}
 
     n_clusters = len(set(nx_graph.nodes[node]["group"] for node in nx_graph.nodes()))
-    n_zeros = int(np.log10(n_clusters - 1)) + 1
+    if n_clusters > 1:
+        n_zeros = int(np.log10(n_clusters - 1)) + 1
+    else:
+        n_zeros = 1
     fmt = "CL_{:0" + str(n_zeros) + "d}"
 
     for node, data in nx_graph.nodes(data=True):

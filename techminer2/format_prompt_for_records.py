@@ -33,7 +33,7 @@ def format_prompt_for_records(main_text, secondary_text, records, weight=None):
         #
         # Header counter
         counter += 1
-        if counter > 10:
+        if counter > 5:
             counter = 1
             if i_record < len(records) - 1:
                 text += secondary_text
@@ -59,7 +59,7 @@ def format_prompt_for_records(main_text, secondary_text, records, weight=None):
         # Text:
         # text += "\nBelow appears the following records: \n\n"
 
-        text += f"##: {i_record+1}\n"
+        # text += f"##: {i_record+1}\n"
         text += f"Record-No: {record.art_no}\n"
 
         # Weight

@@ -61,7 +61,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
                         continue
 
                     if criterion == "art_no":
-                        print("## ", end="", file=file)
+                        print("Record-No: ", end="", file=file)
 
                     if criterion == "article":
                         print("AR ", end="", file=file)
