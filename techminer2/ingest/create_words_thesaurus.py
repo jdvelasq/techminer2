@@ -194,7 +194,7 @@ def create_data_frame(root_dir):
 
     #
     # Loads raw nlp phrases discarding existent keywords
-    nlp_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_noun_phrases")
+    nlp_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_nlp_phrases")
     nlp_data_frame = nlp_data_frame.loc[
         ~nlp_data_frame["fingerprint"].isin(keywords_data_frame["fingerprint"]), :
     ]

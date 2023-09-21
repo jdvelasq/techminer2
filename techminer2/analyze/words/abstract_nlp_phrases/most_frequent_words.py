@@ -13,7 +13,7 @@ Most Frequent Words
 >>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='abstract_noun_phrases',
+...     field='abstract_nlp_phrases',
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -38,25 +38,25 @@ Most Frequent Words
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| abstract_noun_phrases   |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+| abstract_nlp_phrases    |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
 |:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
 | REGULATORY_TECHNOLOGY   |          1 |    19 |            13 |                   6 |               31.58 |
-| FINANCIAL_INSTITUTIONS  |          2 |    15 |            11 |                   4 |               26.67 |
-| REGULATORY_COMPLIANCE   |          3 |     7 |             6 |                   1 |               14.29 |
-| FINANCIAL_SECTOR        |          4 |     7 |             5 |                   2 |               28.57 |
-| ARTIFICIAL_INTELLIGENCE |          5 |     7 |             4 |                   3 |               42.86 |
-| FINANCIAL_REGULATION    |          6 |     6 |             5 |                   1 |               16.67 |
-| GLOBAL_FINANCIAL_CRISIS |          7 |     6 |             3 |                   3 |               50    |
-| FINANCIAL_CRISIS        |          8 |     6 |             6 |                   0 |                0    |
-| COMPLIANCE_COST         |          9 |     6 |             5 |                   1 |               16.67 |
-| NEW_TECHNOLOGIES        |         10 |     6 |             3 |                   3 |               50    |
+| FINANCIAL_INSTITUTIONS  |          2 |    16 |            12 |                   4 |               25    |
+| FINANCIAL_CRISIS        |          3 |    12 |             9 |                   3 |               25    |
+| REGULATORY_COMPLIANCE   |          4 |    10 |             8 |                   2 |               20    |
+| FINANCIAL_SECTOR        |          5 |     9 |             7 |                   2 |               22.22 |
+| FINANCIAL_REGULATION    |          6 |     7 |             6 |                   1 |               14.29 |
+| ARTIFICIAL_INTELLIGENCE |          7 |     7 |             4 |                   3 |               42.86 |
+| FINANCIAL_SYSTEM        |          8 |     6 |             5 |                   1 |               16.67 |
+| INFORMATION_TECHNOLOGY  |          9 |     6 |             4 |                   2 |               33.33 |
+| COMPLIANCE_COST         |         10 |     6 |             5 |                   1 |               16.67 |
 
 
->>> metrics.fig_.write_html("sphinx/_static/analyze/words/abstract_noun_phrases/most_frequent_chart.html")
+>>> metrics.fig_.write_html("sphinx/_static/analyze/words/abstract_nlp_phrases/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/abstract_noun_phrases/most_frequent_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/abstract_nlp_phrases/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

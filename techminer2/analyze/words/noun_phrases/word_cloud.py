@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tm2.performance.noun_phrases.word_cloud:
+.. _tm2.performance.nlp_phrases.word_cloud:
 
 Word Cloud
 ===============================================================================
@@ -14,7 +14,7 @@ Word Cloud
 >>> chart = word_cloud(
 ...     #
 ...     # PERFORMANCE PARAMS:
-...     field="noun_phrases",
+...     field="nlp_phrases",
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -34,9 +34,9 @@ Word Cloud
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.save("sphinx/images/analyze/words/noun_phrases/word_cloud.png")
+>>> chart.fig_.save("sphinx/images/analyze/words/nlp_phrases/word_cloud.png")
 
-.. image:: /images/analyze/words/noun_phrases/word_cloud.png
+.. image:: /images/analyze/words/nlp_phrases/word_cloud.png
     :width: 900px
     :align: center
 

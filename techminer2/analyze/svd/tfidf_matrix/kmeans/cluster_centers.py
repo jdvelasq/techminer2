@@ -14,7 +14,7 @@ Cluster Centers
 >>> cluster_centers(
 ...     #  
 ...     # PARAMS:
-...     field="noun_phrases",
+...     field="nlp_phrases",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,

@@ -12,7 +12,7 @@ Trending Words per Year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
-...     field="noun_phrases",
+...     field="nlp_phrases",
 ...     n_words_per_year=5,
 ...     custom_items=None,
 ...     #
@@ -24,7 +24,7 @@ Trending Words per Year
 ... )
 >>> words.df_.head()
 year             OCC  year_q1  year_med  ...  rn  height  width
-noun_phrases                             ...                   
+nlp_phrases                             ...                   
 BANK_EXECUTIVES    1     2016      2016  ...   0    0.15      1
 BANK_FAILURES      1     2016      2016  ...   1    0.15      1
 CLASS_ACTION       1     2016      2016  ...   2    0.15      1
@@ -34,11 +34,11 @@ CONCEPT_ARTICLE    1     2016      2016  ...   4    0.15      1
 [5 rows x 8 columns]
 
 
->>> words.fig_.write_html("sphinx/_static/analyze/words/noun_phrases/trending_words_per_year.html")
+>>> words.fig_.write_html("sphinx/_static/analyze/words/nlp_phrases/trending_words_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/noun_phrases/trending_words_per_year.html" 
+    <iframe src="../../../../../_static/analyze/words/nlp_phrases/trending_words_per_year.html" 
     height="900px" width="100%" frameBorder="0"></iframe>
 
 

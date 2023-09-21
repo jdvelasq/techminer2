@@ -22,7 +22,7 @@ Summary Sheet
 ... ).head()
                  column  number of terms coverage (%)
 0              abstract               52         1.0%
-1  abstract_noun_phrases               47         0.9%
+1  abstract_nlp_phrases               47         0.9%
 2          affiliations               52         1.0%
 3                art_no                8        0.15%
 4               article               52         1.0%

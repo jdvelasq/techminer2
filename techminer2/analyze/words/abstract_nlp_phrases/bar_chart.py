@@ -13,7 +13,7 @@ Bar Chart
 >>> chart = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='abstract_noun_phrases',
+...     field='abstract_nlp_phrases',
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -33,22 +33,22 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/analyze/words/abstract_noun_phrases/bar_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/words/abstract_nlp_phrases/bar_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/abstract_noun_phrases/bar_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/abstract_nlp_phrases/bar_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.df_.head()
-                         rank_occ  OCC  ...  between_2022_2023  growth_percentage
-abstract_noun_phrases                   ...                                      
-REGULATORY_TECHNOLOGY           1   19  ...                6.0              31.58
-FINANCIAL_INSTITUTIONS          2   15  ...                4.0              26.67
-REGULATORY_COMPLIANCE           3    7  ...                1.0              14.29
-FINANCIAL_SECTOR                4    7  ...                2.0              28.57
-ARTIFICIAL_INTELLIGENCE         5    7  ...                3.0              42.86
+                        rank_occ  OCC  ...  between_2022_2023  growth_percentage
+abstract_nlp_phrases                   ...                                      
+REGULATORY_TECHNOLOGY          1   19  ...                6.0              31.58
+FINANCIAL_INSTITUTIONS         2   16  ...                4.0              25.00
+FINANCIAL_CRISIS               3   12  ...                3.0              25.00
+REGULATORY_COMPLIANCE          4   10  ...                2.0              20.00
+FINANCIAL_SECTOR               5    9  ...                2.0              22.22
 <BLANKLINE>
 [5 rows x 5 columns]
 

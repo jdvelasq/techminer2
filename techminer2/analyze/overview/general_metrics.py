@@ -241,7 +241,7 @@ class MainInformation:
         self.__compute_document_types_stats()
         self.__compute_authors_stats()
         self.__compute_keywords_stats()
-        self.__compute_noun_phrases_stats()
+        self.__compute_nlp_phrases_stats()
         self.__compute_descriptors_stats()
         self.__make_report()
 
@@ -648,38 +648,38 @@ class MainInformation:
     # COMPUTE NLP PHRASES STATS
     #
     #
-    def __compute_noun_phrases_stats(self):
+    def __compute_nlp_phrases_stats(self):
         """Computes the nlp phrases stats"""
 
         self.insert_stats(
             "NLP PHRASES",
             "Raw title NLP phrases",
-            self.count_unique_items("raw_title_noun_phrases"),
+            self.count_unique_items("raw_title_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
             "Cleaned title NLP phrases",
-            self.count_unique_items("title_noun_phrases"),
+            self.count_unique_items("title_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
             "Raw abstract NLP phrases",
-            self.count_unique_items("raw_abstract_noun_phrases"),
+            self.count_unique_items("raw_abstract_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
             "Cleaned abstract NLP phrases",
-            self.count_unique_items("abstract_noun_phrases"),
+            self.count_unique_items("abstract_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
             "Raw NLP phrases",
-            self.count_unique_items("raw_noun_phrases"),
+            self.count_unique_items("raw_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
             "Cleaned NLP phrases",
-            self.count_unique_items("noun_phrases"),
+            self.count_unique_items("nlp_phrases"),
         )
 
     #

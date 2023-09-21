@@ -13,7 +13,7 @@ Word Cloud
 >>> chart = word_cloud(
 ...     #
 ...     # PERFORMANCE PARAMS:
-...     field="title_noun_phrases",
+...     field="title_nlp_phrases",
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:

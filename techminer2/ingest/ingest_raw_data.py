@@ -16,7 +16,7 @@ Import a scopus data file in the working directory.
 >>> ingest_raw_data(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/tm2-reviews/", 
+...     root_dir="data/regtech/", 
 ...     remove_raw_csv_files=True,
 ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files
@@ -32,17 +32,17 @@ Import a scopus data file in the working directory.
 >>> my_list = pd.read_csv(root_dir + "databases/_main.zip", encoding="utf-8", compression="zip").columns.tolist()
 >>> wrapped_list = textwrap.fill(", ".join(sorted(my_list)), width=79)
 >>> print(wrapped_list)
-abstract, abstract_noun_phrases, affiliations, art_no, article,
-author_keywords, authors, authors_id, authors_with_affiliations, coden,
-correspondence_address, countries, country_1st_author, descriptors,
-document_type, doi, eid, global_citations, global_references, index_keywords,
-isbn, issn, issue, keywords, link, local_citations, local_references,
-noun_phrases, num_authors, open_access, organization_1st_author, organizations,
-page_end, page_start, publication_stage, raw_abstract_noun_phrases,
-raw_author_keywords, raw_authors, raw_authors_id, raw_countries,
-raw_descriptors, raw_global_references, raw_index_keywords, raw_keywords,
-raw_noun_phrases, raw_organizations, raw_title_noun_phrases, source,
-source_abbr, source_title, title, title_noun_phrases, volume, year
+abstract, abstract_nlp_phrases, affiliations, art_no, article, author_keywords,
+authors, authors_id, authors_with_affiliations, coden, correspondence_address,
+countries, country_1st_author, descriptors, document_type, doi, eid,
+global_citations, global_references, index_keywords, isbn, issn, issue,
+keywords, link, local_citations, local_references, nlp_phrases, num_authors,
+open_access, organization_1st_author, organizations, page_end, page_start,
+publication_stage, raw_abstract_nlp_phrases, raw_author_keywords, raw_authors,
+raw_authors_id, raw_countries, raw_descriptors, raw_global_references,
+raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,
+raw_title_nlp_phrases, source, source_abbr, source_title, title,
+title_nlp_phrases, volume, year
 
 
 
@@ -185,7 +185,6 @@ def ingest_raw_data(
     #
     # Additional Step:
     # Replace journal nanme by journal abbr in references.
-
     replace_journal_name_in_references(root_dir)
 
     #
@@ -446,10 +445,10 @@ def ingest_raw_data(
     #
     # Step 1: Create a candidate list of title nlp phrases
     #
-    copy_to_column(root_dir, "title", "raw_title_noun_phrases")
+    copy_to_column(root_dir, "title", "raw_title_nlp_phrases")
     process_column(
         root_dir,
-        "raw_title_noun_phrases",
+        "raw_title_nlp_phrases",
         lambda x: x.astype(str)
         .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
         .map(
@@ -491,10 +490,10 @@ def ingest_raw_data(
     )
 
     # ***
-    copy_to_column(root_dir, "abstract", "raw_abstract_noun_phrases")
+    copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
     process_column(
         root_dir,
-        "raw_abstract_noun_phrases",
+        "raw_abstract_nlp_phrases",
         lambda x: x.astype(str)
         .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
         .map(
@@ -524,21 +523,21 @@ def ingest_raw_data(
     #
     # Step 3: Filter terms in title and abstract nlp phrases
     #
-    filter_noun_phrases(root_dir)
+    filter_nlp_phrases(root_dir)
 
     #
     # Continue normal processing ....
     #
     concatenate_columns(
         root_dir,
-        "raw_noun_phrases",
-        "raw_title_noun_phrases",
-        "raw_abstract_noun_phrases",
+        "raw_nlp_phrases",
+        "raw_title_nlp_phrases",
+        "raw_abstract_nlp_phrases",
     )
 
     process_column(
         root_dir,
-        "raw_noun_phrases",
+        "raw_nlp_phrases",
         lambda x: x.astype(str)
         .str.split("; ")
         .apply(set)
@@ -551,7 +550,7 @@ def ingest_raw_data(
     concatenate_columns(
         root_dir,
         "raw_descriptors",
-        "raw_noun_phrases",
+        "raw_nlp_phrases",
         "raw_keywords",
     )
 
@@ -850,82 +849,82 @@ def rename_scopus_columns_in_database_files(root_dir):
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
-def filter_noun_phrases(root_dir):
+def filter_nlp_phrases(root_dir):
     """
     :meta private:
     """
 
-    def read_all_noun_phrases(root_dir):
+    def read_all_nlp_phrases(root_dir):
         #
         # Get nlp phrase appareances from all files
         databases_dir = pathlib.Path(root_dir) / "databases"
-        noun_phrases = pd.Series()
-        for column in ["raw_keywords", "raw_title_noun_phrases", "raw_abstract_noun_phrases"]:
+        nlp_phrases = pd.Series()
+        for column in ["raw_keywords", "raw_title_nlp_phrases", "raw_abstract_nlp_phrases"]:
             files = list(databases_dir.glob("_*.zip"))
             for file in files:
                 data = pd.read_csv(file, encoding="utf-8", compression="zip")
                 if column not in data.columns:
                     continue
-                file_noun_phrases = data[column].dropna()
-                file_noun_phrases = file_noun_phrases.dropna().str.split(";").explode().str.strip()
-                noun_phrases = pd.concat([noun_phrases, file_noun_phrases])
+                file_nlp_phrases = data[column].dropna()
+                file_nlp_phrases = file_nlp_phrases.dropna().str.split(";").explode().str.strip()
+                nlp_phrases = pd.concat([nlp_phrases, file_nlp_phrases])
 
-        return noun_phrases
+        return nlp_phrases
 
-    def read_main_noun_phrases(root_dir):
+    def read_main_nlp_phrases(root_dir):
         #
         # Get nlp phrase appareances from all files
         file = pathlib.Path(root_dir) / "databases/_main.zip"
-        noun_phrases = pd.Series()
-        for column in ["raw_keywords", "raw_title_noun_phrases", "raw_abstract_noun_phrases"]:
+        nlp_phrases = pd.Series()
+        for column in ["raw_keywords", "raw_title_nlp_phrases", "raw_abstract_nlp_phrases"]:
             data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if column not in data.columns:
                 continue
-            file_noun_phrases = data[column].dropna()
-            file_noun_phrases = file_noun_phrases.dropna().str.split(";").explode().str.strip()
-            noun_phrases = pd.concat([noun_phrases, file_noun_phrases])
+            file_nlp_phrases = data[column].dropna()
+            file_nlp_phrases = file_nlp_phrases.dropna().str.split(";").explode().str.strip()
+            nlp_phrases = pd.concat([nlp_phrases, file_nlp_phrases])
 
-        return noun_phrases.drop_duplicates().to_list()
+        return nlp_phrases.drop_duplicates().to_list()
 
-    def select_stopwords_from_noun_phrases(noun_phrases):
+    def select_stopwords_from_nlp_phrases(nlp_phrases):
         #
         # Transforms the pandas series to a data frame
-        noun_phrases = noun_phrases.copy()
-        noun_phrases = noun_phrases.to_frame()
-        noun_phrases.columns = ["nlp_phrase"]
+        nlp_phrases = nlp_phrases.copy()
+        nlp_phrases = nlp_phrases.to_frame()
+        nlp_phrases.columns = ["nlp_phrase"]
 
         #
         # Computes the fingerprint key
         stemmer = PorterStemmer()
 
-        noun_phrases["fingerprint"] = noun_phrases["nlp_phrase"].str.translate(
+        nlp_phrases["fingerprint"] = nlp_phrases["nlp_phrase"].str.translate(
             str.maketrans("-", " ")
         )
-        noun_phrases["fingerprint"] = noun_phrases["fingerprint"].str.split(" ")
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].str.split(" ")
         #
         # ***
-        noun_phrases["fingerprint"] = noun_phrases["fingerprint"].map(
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(
             lambda x: [stemmer.stem(w) for w in x]
         )
-        # noun_phrases["fingerprint"] = noun_phrases["fingerprint"].swifter.apply(
+        # nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].swifter.apply(
         #     lambda x: [stemmer.stem(w) for w in x]
         # )
         #
         #
-        noun_phrases["fingerprint"] = noun_phrases["fingerprint"].map(set)
-        noun_phrases["fingerprint"] = noun_phrases["fingerprint"].map(sorted)
-        noun_phrases["fingerprint"] = noun_phrases["fingerprint"].map(" ".join)
-        noun_phrases["OCC"] = 1
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(set)
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(sorted)
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(" ".join)
+        nlp_phrases["OCC"] = 1
 
         #
         # Computes the occurrences and select terms with occ > 1
-        noun_phrases["appareances"] = noun_phrases.groupby("fingerprint")["OCC"].transform("sum")
-        stopword_noun_phrases = noun_phrases.loc[noun_phrases["appareances"] < 2, :]
-        stopword_noun_phrases = stopword_noun_phrases.nlp_phrase.drop_duplicates().to_list()
+        nlp_phrases["appareances"] = nlp_phrases.groupby("fingerprint")["OCC"].transform("sum")
+        stopword_nlp_phrases = nlp_phrases.loc[nlp_phrases["appareances"] < 2, :]
+        stopword_nlp_phrases = stopword_nlp_phrases.nlp_phrase.drop_duplicates().to_list()
 
-        return stopword_noun_phrases
+        return stopword_nlp_phrases
 
-    def get_nlp_stopwords_from_github(noun_phrases):
+    def get_nlp_stopwords_from_github(nlp_phrases):
         owner = "jdvelasq"
         repo = "techminer2"
         path = "settings/nlp_stopwords.txt"
@@ -934,7 +933,7 @@ def filter_noun_phrases(root_dir):
         response = requests.get(url, timeout=5)
         github_stopwords = response.text.split("\n")
         github_stopwords = [org.strip() for org in github_stopwords]
-        github_stopwords = [w for w in github_stopwords if w in noun_phrases]
+        github_stopwords = [w for w in github_stopwords if w in nlp_phrases]
         return github_stopwords
 
     def save_to_stopwords_txt_file(root_dir, stopwords):
@@ -955,7 +954,7 @@ def filter_noun_phrases(root_dir):
         with open(file_path, "w", encoding="utf-8") as file:
             file.write("\n".join(content))
 
-    def extract_countries_from_noun_phrases(noun_phrases):
+    def extract_countries_from_nlp_phrases(nlp_phrases):
         #
         # Loads country codes from GitHub
         owner = "jdvelasq"
@@ -976,7 +975,7 @@ def filter_noun_phrases(root_dir):
         #
         # Selects countries in nlp phrases
         countries = [w.upper().replace(" ", "_") for w in countries]
-        countries = [country for country in countries if country in noun_phrases]
+        countries = [country for country in countries if country in nlp_phrases]
 
         return countries
 
@@ -993,15 +992,15 @@ def filter_noun_phrases(root_dir):
     #
     # Selects the stopwords from GitHub and countries using only
     # nlp phrases on main
-    main_noun_phrases = read_main_noun_phrases(root_dir)
-    stopwords = get_nlp_stopwords_from_github(main_noun_phrases)
-    stopwords += extract_countries_from_noun_phrases(main_noun_phrases)
+    main_nlp_phrases = read_main_nlp_phrases(root_dir)
+    stopwords = get_nlp_stopwords_from_github(main_nlp_phrases)
+    stopwords += extract_countries_from_nlp_phrases(main_nlp_phrases)
 
     #
     # Selects stopwords by frequency using all databases
-    all_noun_phrases = read_all_noun_phrases(root_dir)
-    candidate_stopwords = select_stopwords_from_noun_phrases(all_noun_phrases)
-    candidate_stopwords = [w for w in candidate_stopwords if w in main_noun_phrases]
+    all_nlp_phrases = read_all_nlp_phrases(root_dir)
+    candidate_stopwords = select_stopwords_from_nlp_phrases(all_nlp_phrases)
+    candidate_stopwords = [w for w in candidate_stopwords if w in main_nlp_phrases]
 
     save_to_stopwords_txt_file(root_dir, stopwords)
 

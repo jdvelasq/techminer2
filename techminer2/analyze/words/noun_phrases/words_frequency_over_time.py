@@ -12,7 +12,7 @@ Word Frequency over Time
 >>> words = terms_by_year(
 ...     #
 ...     # PARAMS:
-...     field="noun_phrases",
+...     field="nlp_phrases",
 ...     cumulative=False,
 ...     #
 ...     # CHART PARAMS:
@@ -30,16 +30,16 @@ Word Frequency over Time
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> words.fig_.write_html("sphinx/_static/analyze/words/noun_phrases/words_frequency_over_time.html")
+>>> words.fig_.write_html("sphinx/_static/analyze/words/nlp_phrases/words_frequency_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/noun_phrases/words_frequency_over_time.html" 
+    <iframe src="../../../../../_static/analyze/words/nlp_phrases/words_frequency_over_time.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(words.df_.to_markdown())
-| noun_phrases                  |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+| nlp_phrases                  |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | REGULATORY_TECHNOLOGY 20:276  |      0 |      2 |      0 |      3 |      6 |      3 |      5 |      1 |
 | FINANCIAL_INSTITUTIONS 15:194 |      0 |      0 |      2 |      2 |      4 |      3 |      4 |      0 |

@@ -13,7 +13,7 @@ Bar Chart
 >>> chart = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='title_noun_phrases',
+...     field='title_nlp_phrases',
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -33,25 +33,24 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/analyze/words/title_noun_phrases/bar_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/words/title_nlp_phrases/bar_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/title_noun_phrases/bar_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/title_nlp_phrases/bar_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.df_.head()
-                               rank_occ  ...  growth_percentage
-title_noun_phrases                       ...                   
-REGULATORY_TECHNOLOGY                 1  ...               0.00
-ARTIFICIAL_INTELLIGENCE               2  ...              33.33
-FINANCIAL_REGULATION                  3  ...               0.00
-FINANCIAL_CRIME                       4  ...               0.00
-DIGITAL_REGULATORY_COMPLIANCE         5  ...               0.00
+                         rank_occ  OCC  ...  between_2022_2023  growth_percentage
+title_nlp_phrases                       ...                                      
+REGULATORY_TECHNOLOGY           1    3  ...                0.0               0.00
+ARTIFICIAL_INTELLIGENCE         2    3  ...                1.0              33.33
+FINANCIAL_REGULATION            3    2  ...                0.0               0.00
+REGULATORY_COMPLIANCE           4    2  ...                1.0              50.00
+FINANCIAL_CRIME                 5    2  ...                0.0               0.00
 <BLANKLINE>
 [5 rows x 5 columns]
-
 
 
 >>> print(chart.prompt_) # doctest: +ELLIPSIS

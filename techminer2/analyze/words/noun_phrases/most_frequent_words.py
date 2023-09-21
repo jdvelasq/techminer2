@@ -13,7 +13,7 @@ Most Frequent Words
 >>> metrics = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='noun_phrases',
+...     field='nlp_phrases',
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -38,7 +38,7 @@ Most Frequent Words
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| noun_phrases            |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+| nlp_phrases            |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
 |:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
 | REGULATORY_TECHNOLOGY   |          1 |    20 |            14 |                   6 |               30    |
 | FINANCIAL_INSTITUTIONS  |          2 |    15 |            11 |                   4 |               26.67 |
@@ -52,11 +52,11 @@ Most Frequent Words
 | COMPLIANCE_COST         |         10 |     6 |             5 |                   1 |               16.67 |
 
 
->>> metrics.fig_.write_html("sphinx/_static/analyze/words/noun_phrases/most_frequent_chart.html")
+>>> metrics.fig_.write_html("sphinx/_static/analyze/words/nlp_phrases/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/noun_phrases/most_frequent_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/nlp_phrases/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

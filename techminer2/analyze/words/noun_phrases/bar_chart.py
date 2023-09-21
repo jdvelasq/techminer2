@@ -13,7 +13,7 @@ Bar Chart
 >>> chart = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='noun_phrases',
+...     field='nlp_phrases',
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -33,17 +33,17 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/analyze/words/noun_phrases/bar_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/words/nlp_phrases/bar_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/noun_phrases/bar_chart.html" 
+    <iframe src="../../../../../_static/analyze/words/nlp_phrases/bar_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.df_.head()
                         rank_occ  OCC  ...  between_2022_2023  growth_percentage
-noun_phrases                           ...                                      
+nlp_phrases                           ...                                      
 REGULATORY_TECHNOLOGY          1   20  ...                6.0              30.00
 FINANCIAL_INSTITUTIONS         2   15  ...                4.0              26.67
 FINANCIAL_REGULATION           3    7  ...                1.0              14.29

@@ -15,7 +15,7 @@ Word Trends
 >>> chart = word_trends(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='abstract_noun_phrases',
+...     field='title_nlp_phrases',
 ...     #
 ...     # TREND ANALYSIS:
 ...     time_window=2,
@@ -37,22 +37,22 @@ Word Trends
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/analyze/words/abstract_noun_phrases/word_trends.html")
+>>> chart.fig_.write_html("sphinx/_static/analyze/words/title_nlp_phrases/word_trends.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/words/abstract_noun_phrases/word_trends.html" 
+    <iframe src="../../../../../_static/analyze/words/title_nlp_phrases/word_trends.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> chart.df_.head()
                          rank_occ  OCC  ...  between_2022_2023  growth_percentage
-abstract_noun_phrases                   ...                                      
-REGULATORY_TECHNOLOGY           1   19  ...                6.0              31.58
-FINANCIAL_INSTITUTIONS          2   15  ...                4.0              26.67
-REGULATORY_COMPLIANCE           3    7  ...                1.0              14.29
-FINANCIAL_SECTOR                4    7  ...                2.0              28.57
-ARTIFICIAL_INTELLIGENCE         5    7  ...                3.0              42.86
+title_nlp_phrases                       ...                                      
+REGULATORY_TECHNOLOGY           1    3  ...                0.0               0.00
+ARTIFICIAL_INTELLIGENCE         2    3  ...                1.0              33.33
+FINANCIAL_REGULATION            3    2  ...                0.0               0.00
+REGULATORY_COMPLIANCE           4    2  ...                1.0              50.00
+FINANCIAL_CRIME                 5    2  ...                0.0               0.00
 <BLANKLINE>
 [5 rows x 5 columns]
 

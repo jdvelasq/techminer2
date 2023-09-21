@@ -14,7 +14,7 @@ Embedding
 >>> embedding(
 ...     #
 ...     # PARAMS:
-...     field="noun_phrases",
+...     field="nlp_phrases",
 ...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
@@ -39,7 +39,7 @@ Embedding
 ...     cited_by_filter=(None, None),
 ... ).head()
                                    DIM_0      DIM_1  ...     DIM_3     DIM_4
-noun_phrases                                          ...                    
+nlp_phrases                                          ...                    
 REGULATORY_TECHNOLOGY 20:276   24.062092  -5.351854  ...  1.635141 -1.135873
 FINANCIAL_INSTITUTIONS 15:194  14.735496  10.551467  ...  0.094923  0.197063
 FINANCIAL_SYSTEM 08:340        11.036082  -2.278069  ... -3.355966 -0.353362

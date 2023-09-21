@@ -28,7 +28,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
             "abstract",
             "raw_author_keywords",
             "raw_index_keywords",
-            "raw_noun_phrases",
+            "raw_nlp_phrases",
         ]
 
         for criterion in reported_columns:
@@ -90,7 +90,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
                     if criterion == "raw_index_keywords":
                         print("ID ", end="", file=file)
 
-                    if criterion == "raw_noun_phrases":
+                    if criterion == "raw_nlp_phrases":
                         print("** ", end="", file=file)
 
                     if str(row[criterion]) == "nan":

@@ -4,9 +4,8 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-# pylint: disable=import-outside-toplevel
 """
-.. _tm2.performance.abstract_noun_phrases.word_cloud:
+.. _tm2.performance.title_nlp_phrases.word_cloud:
 
 Word Cloud
 ===============================================================================
@@ -15,11 +14,11 @@ Word Cloud
 >>> chart = word_cloud(
 ...     #
 ...     # PERFORMANCE PARAMS:
-...     field="abstract_noun_phrases",
+...     field="title_nlp_phrases",
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
-...     title="Most Frequent Abstract NLP Phrases",
+...     title="Most Frequent Title NLP Phrases",
 ...     width=400, 
 ...     height=400,
 ...     #
@@ -35,9 +34,9 @@ Word Cloud
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.save("sphinx/images/analyze/words/abstract_noun_phrases/word_cloud.png")
+>>> chart.fig_.save("sphinx/images/analyze/words/title_nlp_phrases/word_cloud.png")
 
-.. image:: /images/analyze/words/abstract_noun_phrases/word_cloud.png
+.. image:: /images/analyze/words/title_nlp_phrases/word_cloud.png
     :width: 900px
     :align: center
 
