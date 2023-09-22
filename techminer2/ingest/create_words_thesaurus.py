@@ -25,12 +25,12 @@ from nltk.stem import PorterStemmer
 from ..thesaurus_lib import load_system_thesaurus_as_frame
 
 
-def concept_clumping(column):
+def concept_clumping(data_frame):
     """
     :meta private:
     """
 
-    data_frame = pd.DataFrame({"fingerprint": column})
+    data_frame = data_frame.copy()
 
     data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
     data_frame = data_frame.sort_values(["len_fingerprint", "fingerprint"], ascending=[False, True])
@@ -44,6 +44,9 @@ def concept_clumping(column):
         term = row.fingerprint
         word0, word1, word2, word3 = term.split(" ")
 
+        if len(word0) < 3 or len(word1) < 2 or len(word2) < 2 and len(word3) < 2:
+            continue
+
         #
         # Terms with 4 words that conatins the current term of 4 words
         terms5 = data_frame.loc[data_frame.len_fingerprint == 5, :].copy()
@@ -52,7 +55,13 @@ def concept_clumping(column):
         terms5 = terms5.loc[terms5.fingerprint.str.contains(word2, regex=False), :]
         terms5 = terms5.loc[terms5.fingerprint.str.contains(word3, regex=False), :]
         data_frame.loc[terms5.index, "fingerprint"] = term
+        data_frame.loc[terms5.index, "len_fingerprint"] = 4
 
+        # if terms5.shape[0] > 0:
+        #     print(term)
+        #     print(data_frame.loc[terms5.index, :].to_markdown())
+        #     print()
+        #     print()
     #
     # Terms with 3 words
     terms3 = data_frame.loc[data_frame.len_fingerprint == 3, :].copy()
@@ -62,6 +71,9 @@ def concept_clumping(column):
         term = row.fingerprint
         word0, word1, word2 = term.split(" ")
 
+        if len(word0) < 3 or len(word1) < 2 or len(word2) < 2:
+            continue
+
         #
         # Terms with 4 words that conatins the current term of 3 words
         terms4 = data_frame.loc[data_frame.len_fingerprint == 4, :].copy()
@@ -69,6 +81,13 @@ def concept_clumping(column):
         terms4 = terms4.loc[terms4.fingerprint.str.contains(word1, regex=False), :]
         terms4 = terms4.loc[terms4.fingerprint.str.contains(word2, regex=False), :]
         data_frame.loc[terms4.index, "fingerprint"] = term
+        data_frame.loc[terms4.index, "len_fingerprint"] = 3
+
+        # if terms4.shape[0] > 0:
+        #     print(term)
+        #     print(data_frame.loc[terms4.index, :].to_markdown())
+        #     print()
+        #     print()
 
     #
     # Terms with 2 words
@@ -78,14 +97,25 @@ def concept_clumping(column):
         # Splits the term in words
         term = row.fingerprint
         word0, word1 = term.split(" ")
+
+        if len(word0) < 3 or len(word1) < 2:
+            continue
+
         #
-        # Terms with 4 words that conatins the current term of 3 words
+        # Terms with 3 words that conatins the current term of 2 words
         terms3 = data_frame.loc[data_frame.len_fingerprint == 3, :].copy()
         terms3 = terms3.loc[terms3.fingerprint.str.contains(word0, regex=False), :]
         terms3 = terms3.loc[terms3.fingerprint.str.contains(word1, regex=False), :]
         data_frame.loc[terms3.index, "fingerprint"] = term
+        data_frame.loc[terms3.index, "len_fingerprint"] = 2
 
-    return data_frame["fingerprint"]
+        # if terms3.shape[0] > 0:
+        #     print(term)
+        #     print(data_frame.loc[terms3.index, :].to_markdown())
+        #     print()
+        #     print()
+
+    return data_frame
 
 
 def create_words_thesaurus(
@@ -234,7 +264,9 @@ def process_fingerprint_key(data_frame):
     data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
     data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
     data_frame["fingerprint"] = british_to_american_spelling(data_frame["fingerprint"])
-    data_frame["fingerprint"] = concept_clumping(data_frame["fingerprint"])
+    #
+    data_frame = concept_clumping(data_frame)
+    #
     data_frame["fingerprint"] = apply_porter_stemmer(data_frame["fingerprint"])
 
     return data_frame

@@ -2,6 +2,7 @@
 # pylint: disable=invalid-name
 # pylint: disable=line-too-long
 # pylint: disable=missing-docstring
+# pylint: disable=import-outside-toplevel
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
@@ -433,7 +434,7 @@ def ingest_raw_data(
     )
 
     #
-    # Technological Emergence Indicators using Emergence Score
+    # Technological Emergence Indicators using Emergence Score.
     # Garner et al. 2017.
     # ------------------------------------------------------------------------
     #
@@ -443,14 +444,36 @@ def ingest_raw_data(
     #
 
     #
-    # Step 1: Create a candidate list of title nlp phrases
+    # The following routine is required for capturing noun phrases and
+    # isolated nouns in title and abstract
+    def extract_noun_phrases(text):
+        #
+        # extract noun phrases
+        noun_phrases = [str(phrase) for phrase in TextBlob(text).noun_phrases]
+        noun_phrases = sorted(noun_phrases, key=lambda x: len(x.split(" ")), reverse=True)
+
+        #
+        # transform noun phrases to upper cases and replace space with underscore
+        if len(noun_phrases) > 0:
+            regex = "|".join([re.escape(phrase) for phrase in noun_phrases])
+            regex = re.compile(r"\b(" + regex + r")\b")
+            text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
+
+        tags = TextBlob(text).tags
+        noun_phrases = sorted(set(tag[0].upper() for tag in tags if tag[1][:2] == "NN"))
+
+        return noun_phrases
+
+    #
+    # Step 1: Create a candidate list of title noun phrases
     #
     copy_to_column(root_dir, "title", "raw_title_nlp_phrases")
     process_column(
         root_dir,
         "raw_title_nlp_phrases",
         lambda x: x.astype(str)
-        .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
+        # .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
+        .progress_apply(extract_noun_phrases)
         .map(
             lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
         )
@@ -475,7 +498,7 @@ def ingest_raw_data(
     )
 
     #
-    # Step 2: Create a candidate list of abstract nlp phrases
+    # Step 2: Create a candidate list of abstract noun phrases
     #
     process_column(
         root_dir,
@@ -495,12 +518,13 @@ def ingest_raw_data(
         root_dir,
         "raw_abstract_nlp_phrases",
         lambda x: x.astype(str)
-        .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
+        # .progress_apply(lambda z: list(TextBlob(z).noun_phrases))
+        .progress_apply(extract_noun_phrases)
         .map(
             lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
         )
-        .map(sorted)
         .map(set)
+        .map(sorted)
         .map(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
         .str.upper()
@@ -523,7 +547,7 @@ def ingest_raw_data(
     #
     # Step 3: Filter terms in title and abstract nlp phrases
     #
-    filter_nlp_phrases(root_dir)
+    ## filter_nlp_phrases(root_dir)
 
     #
     # Continue normal processing ....
@@ -567,9 +591,114 @@ def ingest_raw_data(
 
     #
     # Highlight terms
-    replace_underscores_in_title_column(root_dir)
-    replace_underscores_in_abstract_column(root_dir)
+    replace_hypen_in_title_column(root_dir)
+    replace_hypen_in_abstract_column(root_dir)
     transform_abstract_keywords_to_underscore(root_dir)
+
+    # _filename = os.path.join(root_dir, "databases/_references.zip")
+    # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
+
+    #
+    # Mark only noun phrases is not sufficient to extract knowledge from
+    # titles and abstracts. By definition, noun phrases have a lenght > 1.
+    # As a consequence, the following code is required to extract single
+    # keywords, or other terms not captured by the noun phrases.
+    # At this point, title and abstracts are in lower case with
+    # meaningul noun phrases  and keywords in upper case.
+    #
+
+    # copy_to_column(root_dir, "raw_title_noun_phrases", "raw_title_nlp_phrases")
+    # copy_to_column(root_dir, "title", "raw_title_nlp_phrases")
+    # process_column(
+    #     root_dir,
+    #     "raw_title_nlp_phrases",
+    #     lambda x: x.astype(str)
+    #     .apply(lambda z: list(TextBlob(z).words))
+    #     .map(
+    #         lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
+    #     )
+    #     .map(lambda x: [z for z in x if z == z.upper()])
+    #     .map(set)
+    #     .map(sorted)
+    #     .str.join("; ")
+    #     .map(lambda x: pd.NA if x == "" else x),
+    # )
+
+    ###
+    # processed_dir = pathlib.Path(root_dir) / "databases"
+    # files = list(processed_dir.glob("_*.zip"))
+    # for file in files:
+    #     data = pd.read_csv(file, encoding="utf-8", compression="zip")
+    #     nlp = data["raw_title_nlp_phrases"].dropna()
+    #     if len(nlp) == 0:
+    #         data["raw_title_nlp_phrases"] = data.raw_title_noun_phrases
+    #         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    ###
+
+    # _filename = os.path.join(root_dir, "databases/_main.zip")
+    # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
+
+    # copy_to_column(root_dir, "raw_abstract_noun_phrases", "raw_abstract_nlp_phrases")
+    # copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
+    # process_column(
+    #     root_dir,
+    #     "raw_abstract_nlp_phrases",
+    #     lambda x: x.astype(str)
+    #     .apply(lambda z: list(TextBlob(z).words))
+    #     .map(
+    #         lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
+    #     )
+    #     .map(lambda x: [z for z in x if z == z.upper()])
+    #     .map(set)
+    #     .map(sorted)
+    #     .str.join("; ")
+    #     .map(lambda x: pd.NA if x == "" else x),
+    # )
+
+    ###
+    # processed_dir = pathlib.Path(root_dir) / "databases"
+    # files = list(processed_dir.glob("_*.zip"))
+    # for file in files:
+    #     data = pd.read_csv(file, encoding="utf-8", compression="zip")
+    #     if "raw_abstract_nlp_phrases" in data.columns:
+    #         nlp = data["raw_abstract_nlp_phrases"].dropna()
+    #         if len(nlp) == 0:
+    #             data["raw_abstract_nlp_phrases"] = data.raw_abstract_noun_phrases
+    #             data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    #     else:
+    #         if "raw_abstract_noun_phrases" in data.columns:
+    #             data["raw_abstract_nlp_phrases"] = data.raw_abstract_noun_phrases
+    #             data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+
+    ###
+
+    # concatenate_columns(
+    #     root_dir,
+    #     "raw_nlp_phrases",
+    #     "raw_title_nlp_phrases",
+    #     "raw_abstract_nlp_phrases",
+    # )
+    #
+    # concatenate_columns(
+    #     root_dir,
+    #     "raw_descriptors",
+    #     "raw_nlp_phrases",
+    #     "raw_keywords",
+    # )
+    #
+    # process_column(
+    #     root_dir,
+    #     "raw_descriptors",
+    #     lambda x: x.astype(str)
+    #     .str.split("; ")
+    #     .map(lambda x: sorted(set(x)))
+    #     .map(lambda x: [z for z in x if z != "nan"])
+    #     .str.join("; ")
+    #     .map(lambda x: pd.NA if x == "" else x),
+    # )
+
+    # _filename = os.path.join(root_dir, "databases/_main.zip")
+    # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
 
     #
     # rec-no field
@@ -603,8 +732,8 @@ def ingest_raw_data(
     apply_words_thesaurus(root_dir)
     apply_organizations_thesaurus(root_dir)
 
-    ## abstracts_report(root_dir=root_dir, file_name="imported_records.txt")
     report_imported_records_per_file(root_dir)
+    report_records(root_dir)
 
     message("Process finished!!!")
 
@@ -621,7 +750,32 @@ def ingest_raw_data(
 #
 
 
+def report_records(root_dir):
+    """
+    :meta private:
+    """
+    from .._read_records import read_records
+    from ..format_report_for_records import format_report_for_records
+
+    records = read_records(
+        root_dir=root_dir,
+        database="main",
+        year_filter=(None, None),
+        cited_by_filter=(None, None),
+    )
+
+    format_report_for_records(
+        root_dir=root_dir,
+        target_dir="",
+        records=records,
+        report_filename="../records.txt",
+    )
+
+
 def assign__rec_no__field(root_dir):
+    """
+    :meta private:
+    """
     #
     message("Assign REC-No identifier to each record")
 
@@ -1247,7 +1401,8 @@ def process_column(root_dir, column_name, process_func):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if column_name in data.columns:
-            data[column_name] = process_func(data[column_name])
+            if data[column_name].dropna().shape[0] > 0:
+                data[column_name] = process_func(data[column_name])
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
@@ -1474,7 +1629,7 @@ def report_imported_records_per_file(root_dir):
         message(f"{file}: {len(data.index)} imported records")
 
 
-def replace_underscores_in_title_column(root_dir):
+def replace_hypen_in_title_column(root_dir):
     #
     message('Replacing "-" by " " in `title` column')
     documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
@@ -1487,7 +1642,7 @@ def replace_underscores_in_title_column(root_dir):
     documents.to_csv(documents_path, index=False, compression="zip")
 
 
-def replace_underscores_in_abstract_column(root_dir):
+def replace_hypen_in_abstract_column(root_dir):
     #
     message('Replacing "-" by " " in `abstract` column')
     documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
@@ -1507,30 +1662,48 @@ def transform_abstract_keywords_to_underscore(root_dir):
     """
     message("Transforming keywords in abstracts to upper case with underscores")
 
-    #
-    # Load documents
-    documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
-    documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
-
     regex1 = re.compile(r"\(.*\)")
     regex2 = re.compile(r"\[.*\]")
 
+    #
+    # Load documents
+    all_descriptors = []
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        if "raw_descriptors" in data.columns:
+            all_descriptors.append(data["raw_descriptors"].dropna().copy())
+    all_descriptors = pd.concat(all_descriptors)
+
+    #
+    # Process all descriptors
+    all_descriptors = all_descriptors.str.translate(str.maketrans("", "", "\"'#!"))
+    all_descriptors = all_descriptors.str.replace(regex1, "")
+    all_descriptors = all_descriptors.str.replace(regex2, "")
+    all_descriptors = all_descriptors.str.translate(str.maketrans("_", " "))
+    all_descriptors = all_descriptors.str.lower()
+    all_descriptors = all_descriptors.str.split("; ")
+    all_descriptors = all_descriptors.explode()
+    all_descriptors = all_descriptors.str.strip()
+    all_descriptors = all_descriptors.drop_duplicates()
+    all_descriptors = all_descriptors.to_list()
+    all_descriptors = sorted(all_descriptors, key=lambda x: len(x.split(" ")), reverse=True)
+
+    #
+    # Process the main database
+    documents_path = pathlib.Path(root_dir) / "databases/_main.zip"
+    documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
+
     for index, row in tqdm(documents.iterrows(), total=len(documents)):
         #
-        descriptors = row["raw_descriptors"]
-
-        descriptors = descriptors.translate(str.maketrans("", "", "\"'#!"))
-        descriptors = re.sub(regex1, "", descriptors)
-        descriptors = re.sub(regex2, "", descriptors)
-
-        descriptors = descriptors.translate(str.maketrans("_", " "))
-        descriptors = descriptors.lower()
-        descriptors = descriptors.split("; ")
-        descriptors = [d.strip() for d in descriptors]
+        descriptors = [d for d in all_descriptors if d in row["title"] or d in row["abstract"]]
 
         descriptors = sorted(descriptors, key=lambda x: len(x.split(" ")), reverse=True)
 
         descriptors = [re.escape(d) for d in descriptors]
+        descriptors += [d + r"(?:'s)" for d in descriptors]  # apostrophe
+        descriptors += [d + r":" for d in descriptors]  # colon
+        descriptors += [r"\(" + d + r"\)" for d in descriptors]  # parenthesis
         descriptors = "|".join(descriptors)
         regex = re.compile(r"\b(" + descriptors + r")\b")
 

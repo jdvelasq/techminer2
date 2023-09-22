@@ -60,7 +60,7 @@ def apply_thesaurus(
             ("raw_descriptors", "descriptors"),
         ]:
             if raw_column in data.columns:
-                data[column] = data[raw_column].str.split(";")
+                data[column] = data[raw_column].str.split("; ")
                 data[column] = data[column].map(
                     lambda x: [thesaurus.get(y.strip(), y.strip()) for y in x]
                     if isinstance(x, list)
