@@ -33,6 +33,52 @@ CLUSTER_COLORS = (
 )
 
 
+class ConceptGridClustering:
+    def __init__(self, threshold):
+        self.threshold = threshold
+        self.labels_ = None
+        self.n_clusters_ = None
+
+    def fit(self, matrix):
+        #
+        #
+        labels = {index: None for index in matrix.index}
+        i_cluster = 0
+        matrix = matrix.copy()
+
+        for i_col, col in enumerate(matrix.columns):
+            #
+            # Upper part:
+            selected_matrix = matrix.loc[matrix.iloc[:, i_col] > self.threshold, :]
+            max_col = selected_matrix.idxmax(axis=1)
+            selected_matrix = selected_matrix.loc[max_col == col, :]
+            if selected_matrix.shape[0] > 0:
+                found = False
+                for index in selected_matrix.index:
+                    if labels[index] is None:
+                        labels[index] = i_cluster
+                        found = True
+                if found is True:
+                    i_cluster += 1
+
+            #
+            # Lower part
+            selected_matrix = matrix.loc[matrix.iloc[:, i_col] < -self.threshold, :]
+            min_col = selected_matrix.idxmin(axis=1)
+            selected_matrix = selected_matrix.loc[min_col == col, :]
+            if selected_matrix.shape[0] > 0:
+                found = False
+                for index in selected_matrix.index:
+                    if labels[index] is None:
+                        labels[index] = i_cluster
+                        found = True
+                if found is True:
+                    i_cluster += 1
+
+        self.labels_ = [labels[index] for index in matrix.index]
+        self.n_clusters_ = len(set(self.labels_))
+
+
 class FactorAnalyzer:
     def __init__(self, field):
         #
@@ -48,6 +94,8 @@ class FactorAnalyzer:
         self.communities_ = None
         self.communtiies_dict_ = None
         self.labels_ = None
+        self.threshold = None
+        self.communities_dict_ = None
 
     # --------------------------------------------------------------------------------------------
     # STEP 1: Embedding
@@ -475,6 +523,14 @@ class FactorAnalyzer:
             distance_threshold=distance_threshold,
         )
 
+    def concept_grid(
+        self,
+        #
+        # VANTAGEPOINT CONCEPT GRID PARAMS:
+        threshold=0.5,
+    ):
+        self.clustering_estimator = ConceptGridClustering(threshold=threshold)
+
     # --------------------------------------------------------------------------------------------
     #
     def run_clustering(self):
@@ -482,6 +538,9 @@ class FactorAnalyzer:
         # Selects first n_cluster components for clustering
         matrix = self.embedding_.iloc[:, : self.n_clusters]
         self.clustering_estimator.fit(matrix)
+
+        if self.n_clusters is None:
+            self.n_clusters = self.clustering_estimator.n_clusters_
 
         #
         # Obtain the communities
@@ -499,7 +558,7 @@ class FactorAnalyzer:
         self.labels_ = labels
 
         #
-        # Recompute the communities with the new centers
+        # Recompute the communities with the new labels
         communities = {i_cluster: [] for i_cluster in range(self.n_clusters)}
         for item, label in zip(matrix.index, labels):
             communities[label].append(item)
