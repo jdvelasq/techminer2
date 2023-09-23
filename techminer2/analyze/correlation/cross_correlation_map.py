@@ -7,8 +7,6 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-.. _correlation_analysis.cross_correlation_map:
-
 Cross-correlation Map
 ===============================================================================
 

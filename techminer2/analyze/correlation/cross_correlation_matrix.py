@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _correlation_analysis.cross_correlation_matrix:
-
 Cross-correlation Matrix
 ===============================================================================
 

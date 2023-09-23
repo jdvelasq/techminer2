@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _correlation_analysis.auto_correlation_matrix:
-
 Auto-correlation Matrix
 ===============================================================================
 

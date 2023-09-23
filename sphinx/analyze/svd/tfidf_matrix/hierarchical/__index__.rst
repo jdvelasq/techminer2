@@ -14,4 +14,8 @@ Hierarchical Clustering >
 .. toctree::
     treemap
 
+--------------------------------------------------------------------------------
+
+.. toctree::
+    factor_map
 
