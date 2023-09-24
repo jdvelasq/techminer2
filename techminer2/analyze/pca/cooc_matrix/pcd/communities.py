@@ -6,25 +6,16 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Cluster Centers
+Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.pca.tfidf_matrix.concept_grid import cluster_centers
->>> cluster_centers(
+>>> from techminer2.analyze.pca.cooc_matrix.pcd import communities
+>>> communities(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
-...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=1,
-...     #
-...     # TF-IDF parameters:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
+...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
 ...     top_n=20,
@@ -43,46 +34,32 @@ Cluster Centers
 ...     random_state=0, 
 ...     #
 ...     # CONCEPT GRID PARAMS:
-...     threshold=0,
+...     threshold=0.5,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-           DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
-LABELS                                                  
-CL_0   -0.465723  0.179721  0.291475  0.102501  0.260106
-CL_1    0.018744 -0.866794 -0.260665  0.983802  0.078881
-CL_2    3.161301  0.456330  0.050170 -0.256663 -0.023070
-CL_3   -0.092407  0.869490 -0.016684  0.263307 -0.300694
-CL_4   -0.611295 -0.501801  0.693619 -0.715314 -0.353265
-CL_5   -0.327472  0.291416 -1.020212 -0.458296  0.804687
-CL_6   -0.555163 -0.368557 -0.072902 -0.717895 -0.636627
-CL_7   -0.411821  0.028298 -0.234838  0.203309 -0.779340
-
+... ).head()
+                             CL_0  ...                    CL_3
+0    REGULATORY_TECHNOLOGY 07:037  ...       COMPLIANCE 07:030
+1    ANTI_MONEY_LAUNDERING 06:044  ...  DATA_PROTECTION 04:041
+2     FINANCIAL_REGULATION 04:035  ...                        
+3  ARTIFICIAL_INTELLIGENCE 04:023  ...                        
+4          RISK_MANAGEMENT 03:014  ...                        
+<BLANKLINE>
+[5 rows x 4 columns]
 
 """
-from typing import Literal
-
 from .....factor_analysis import FactorAnalyzer
 
 
-def cluster_centers(
+def communities(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
-    #
-    # TF-IDF parameters:
-    norm: Literal["l1", "l2", None] = None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
+    association_index=None,
     #
     # ITEM PARAMS:
     top_n=None,
@@ -116,17 +93,10 @@ def cluster_centers(
 
     analyzer = FactorAnalyzer(field=field)
 
-    analyzer.tfidf(
+    analyzer.cooc_matrix(
         #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
+        # COOC PARAMS:
+        association_index=association_index,
         #
         # ITEM PARAMS:
         top_n=top_n,
@@ -165,4 +135,4 @@ def cluster_centers(
 
     analyzer.run_clustering()
 
-    return analyzer.cluster_centers()
+    return analyzer.communities()

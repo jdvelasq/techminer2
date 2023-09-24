@@ -6,19 +6,25 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Treemap
+Cluster Centers
 ===============================================================================
 
 
->>> from techminer2.analyze.pca.cooc_matrix.concept_grid import treemap
->>> treemap(
+>>> from techminer2.analyze.pca.tfidf_matrix.pcd import cluster_centers
+>>> cluster_centers(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
-...     association_index=None,
 ...     #
-...     # FIGURE PARAMS:
-...     title=None,
+...     # TF PARAMS:
+...     is_binary=True,
+...     cooc_within=1,
+...     #
+...     # TF-IDF parameters:
+...     norm=None,
+...     use_idf=False,
+...     smooth_idf=False,
+...     sublinear_tf=False,
 ...     #
 ...     # ITEM PARAMS:
 ...     top_n=20,
@@ -37,32 +43,46 @@ Treemap
 ...     random_state=0, 
 ...     #
 ...     # CONCEPT GRID PARAMS:
-...     threshold=0.5,
+...     threshold=0,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/pca/cooc_matrix/concept_grid/treemap.html")
+... )
+           DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+LABELS                                                  
+CL_0   -0.465723  0.179721  0.291475  0.102501  0.260106
+CL_1    0.018744 -0.866794 -0.260665  0.983802  0.078881
+CL_2    3.161301  0.456330  0.050170 -0.256663 -0.023070
+CL_3   -0.092407  0.869490 -0.016684  0.263307 -0.300694
+CL_4   -0.611295 -0.501801  0.693619 -0.715314 -0.353265
+CL_5   -0.327472  0.291416 -1.020212 -0.458296  0.804687
+CL_6   -0.555163 -0.368557 -0.072902 -0.717895 -0.636627
+CL_7   -0.411821  0.028298 -0.234838  0.203309 -0.779340
 
-.. raw:: html
-
-    <iframe src="../../../../../../_static/analyze/pca/cooc_matrix/concept_grid/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from typing import Literal
+
 from .....factor_analysis import FactorAnalyzer
 
 
-def treemap(
+def cluster_centers(
     #
     # PARAMS:
     field,
-    association_index=None,
     #
-    # FIGURE PARAMS:
-    title=None,
+    # TF PARAMS:
+    is_binary: bool = True,
+    cooc_within: int = 1,
+    #
+    # TF-IDF parameters:
+    norm: Literal["l1", "l2", None] = None,
+    use_idf=False,
+    smooth_idf=False,
+    sublinear_tf=False,
     #
     # ITEM PARAMS:
     top_n=None,
@@ -96,10 +116,17 @@ def treemap(
 
     analyzer = FactorAnalyzer(field=field)
 
-    analyzer.cooc_matrix(
+    analyzer.tfidf(
         #
-        # COOC PARAMS:
-        association_index=association_index,
+        # TF PARAMS:
+        is_binary=is_binary,
+        cooc_within=cooc_within,
+        #
+        # TF-IDF parameters:
+        norm=norm,
+        use_idf=use_idf,
+        smooth_idf=smooth_idf,
+        sublinear_tf=sublinear_tf,
         #
         # ITEM PARAMS:
         top_n=top_n,
@@ -138,8 +165,4 @@ def treemap(
 
     analyzer.run_clustering()
 
-    return analyzer.treemap(
-        #
-        # FIGURE PARAMS:
-        title=title,
-    )
+    return analyzer.cluster_centers()

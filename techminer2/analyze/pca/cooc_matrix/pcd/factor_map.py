@@ -12,21 +12,12 @@ Factor Map
 
 >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
 
->>> from techminer2.analyze.pca.tfidf_matrix.concept_grid import factor_map
+>>> from techminer2.analyze.pca.cooc_matrix.pcd import factor_map
 >>> factor_map(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
-...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=1,
-...     #
-...     # TF-IDF parameters:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
+...     association_index=None,
 ...     #
 ...     # ITEM PARAMS:
 ...     top_n=20,
@@ -45,7 +36,7 @@ Factor Map
 ...     random_state=0, 
 ...     #
 ...     # CONCEPT GRID PARAMS:
-...     threshold=0,
+...     threshold=0.5,
 ...     #
 ...     # LAYOUT:
 ...     nx_k=None,
@@ -74,16 +65,14 @@ Factor Map
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/concept_grid/factor_map.html")
+... ).write_html("sphinx/_static/analyze/pca/cooc_matrix/pcd/factor_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/pca/tfidf_matrix/concept_grid/factor_map.html"
+    <iframe src="../../../../_static/analyze/pca/cooc_matrix/pcd/factor_map.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from typing import Literal
-
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -96,16 +85,7 @@ def factor_map(
     #
     # PARAMS:
     field,
-    #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
-    #
-    # TF-IDF parameters:
-    norm: Literal["l1", "l2", None] = None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
+    association_index=None,
     #
     # ITEM PARAMS:
     top_n=None,
@@ -124,7 +104,7 @@ def factor_map(
     random_state=0,
     #
     # CONCEPT GRID PARAMS:
-    threshold=0,
+    threshold=0.5,
     #
     # LAYOUT:
     nx_k=None,
@@ -164,16 +144,7 @@ def factor_map(
         #
         # PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
+        association_index=association_index,
         #
         # ITEM PARAMS:
         top_n=top_n,
@@ -206,16 +177,7 @@ def factor_map(
         #
         # PARAMS:
         field=field,
-        #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
+        association_index=association_index,
         #
         # ITEM PARAMS:
         top_n=top_n,
@@ -245,6 +207,7 @@ def factor_map(
     )
 
     terms = members.iloc[0, :].tolist()
+    # terms = [" ".join(name.split(" ")[:-1]) for name in terms]
     clusters = members.columns.tolist()
     names = [cluster + ": " + term for term, cluster in zip(terms, clusters)]
 

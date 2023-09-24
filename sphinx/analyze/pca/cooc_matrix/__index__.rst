@@ -18,7 +18,7 @@ Co-occurrence Matrix >
 .. toctree::
     :maxdepth: 1
 
-    concept_grid/__index__
+    pcd/__index__
 
 --------------------------------------------------------------------------------
 

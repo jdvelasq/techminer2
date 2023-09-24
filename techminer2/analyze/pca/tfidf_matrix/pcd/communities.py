@@ -6,16 +6,25 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Cluster Centers
+Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.pca.cooc_matrix.concept_grid import cluster_centers
->>> cluster_centers(
+>>> from techminer2.analyze.pca.tfidf_matrix.pcd import communities
+>>> communities(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
-...     association_index=None,
+...     #
+...     # TF PARAMS:
+...     is_binary=True,
+...     cooc_within=1,
+...     #
+...     # TF-IDF parameters:
+...     norm=None,
+...     use_idf=False,
+...     smooth_idf=False,
+...     sublinear_tf=False,
 ...     #
 ...     # ITEM PARAMS:
 ...     top_n=20,
@@ -34,31 +43,46 @@ Cluster Centers
 ...     random_state=0, 
 ...     #
 ...     # CONCEPT GRID PARAMS:
-...     threshold=0.5,
+...     threshold=0,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-            DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
-LABELS                                                   
-CL_0    -2.941733 -0.172822  0.260505 -0.292743 -0.111353
-CL_1    19.415519  1.538977 -0.100765 -0.621320 -0.179684
-CL_2    -0.233177  2.728505 -0.861820 -0.173842  0.543185
-CL_3     1.409791 -3.057728 -0.860950  2.844362  0.415973
+... ).head()
+                           CL_0  ...               CL_7
+0  REGULATORY_TECHNOLOGY 07:037  ...  BLOCKCHAIN 03:005
+1        RISK_MANAGEMENT 03:014  ...                   
+2             INNOVATION 03:012  ...                   
+3       NEW_TECHNOLOGIES 03:010  ...                   
+4                SUPTECH 03:004  ...                   
+<BLANKLINE>
+[5 rows x 8 columns]
 
 
 """
+from typing import Literal
+
 from .....factor_analysis import FactorAnalyzer
 
+UNIT_OF_ANALYSIS = "countries"
 
-def cluster_centers(
+
+def communities(
     #
     # PARAMS:
     field,
-    association_index=None,
+    #
+    # TF PARAMS:
+    is_binary: bool = True,
+    cooc_within: int = 1,
+    #
+    # TF-IDF parameters:
+    norm: Literal["l1", "l2", None] = None,
+    use_idf=False,
+    smooth_idf=False,
+    sublinear_tf=False,
     #
     # ITEM PARAMS:
     top_n=None,
@@ -77,7 +101,7 @@ def cluster_centers(
     random_state=0,
     #
     # CONCEPT GRID PARAMS:
-    threshold=0.5,
+    threshold=0,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -92,10 +116,17 @@ def cluster_centers(
 
     analyzer = FactorAnalyzer(field=field)
 
-    analyzer.cooc_matrix(
+    analyzer.tfidf(
         #
-        # COOC PARAMS:
-        association_index=association_index,
+        # TF PARAMS:
+        is_binary=is_binary,
+        cooc_within=cooc_within,
+        #
+        # TF-IDF parameters:
+        norm=norm,
+        use_idf=use_idf,
+        smooth_idf=smooth_idf,
+        sublinear_tf=sublinear_tf,
         #
         # ITEM PARAMS:
         top_n=top_n,
@@ -134,4 +165,4 @@ def cluster_centers(
 
     analyzer.run_clustering()
 
-    return analyzer.cluster_centers()
+    return analyzer.communities()
