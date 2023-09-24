@@ -36,7 +36,7 @@ Treemap
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # CONCEPT GRID PARAMS:
+...     # PCD PARAMS:
 ...     threshold=0.5,
 ...     #
 ...     # DATABASE PARAMS:
@@ -80,7 +80,7 @@ def treemap(
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # CONCEPT GRID PARAMS:
+    # PCD PARAMS:
     threshold=0.5,
     #
     # DATABASE PARAMS:
@@ -130,7 +130,7 @@ def treemap(
 
     analyzer.compute_embedding()
 
-    analyzer.concept_grid(
+    analyzer.pcd(
         #
         # FACTOR MAP PARAMS:
         threshold=threshold,

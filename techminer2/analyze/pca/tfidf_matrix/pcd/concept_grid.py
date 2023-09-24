@@ -6,15 +6,20 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Treemap
+Concept Grid
 ===============================================================================
 
 
->>> from techminer2.analyze.pca.tfidf_matrix.pcd import treemap
->>> treemap(
+>>> from techminer2.analyze.pca.tfidf_matrix.pcd import concept_grid
+>>> concept_grid(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
+...     #
+...     # CONCEPT GRID PARAMS:
+...     conserve_counters=True,
+...     n_head=None,
+...     fontsize="9",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -31,9 +36,6 @@ Treemap
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
-...     #
-...     # FIGURE PARAMS:
-...     title=None,
 ...     #
 ...     # PCA PARAMS:
 ...     n_components=5,
@@ -53,23 +55,32 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/pcd/treemap.html")
+... ).render("sphinx/images/analyze/pca/tfidf_matrix/pcd/concept_grid", format="png")
+'sphinx/images/analyze/pca/tfidf_matrix/pcd/concept_grid.png'
 
-.. raw:: html
+.. image:: /images/analyze/pca/tfidf_matrix/pcd/concept_grid.png
+    :width: 900px
+    :align: center
 
-    <iframe src="../../../../../../_static/analyze/pca/tfidf_matrix/pcd/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
 from typing import Literal
 
 from .....factor_analysis import FactorAnalyzer
 
+UNIT_OF_ANALYSIS = "countries"
 
-def treemap(
+
+def concept_grid(
     #
     # PARAMS:
     field,
+    #
+    # CONCEPT GRID PARAMS:
+    conserve_counters=True,
+    n_head=None,
+    fontsize="9",
     #
     # TF PARAMS:
     is_binary: bool = True,
@@ -80,9 +91,6 @@ def treemap(
     use_idf=False,
     smooth_idf=False,
     sublinear_tf=False,
-    #
-    # FIGURE PARAMS:
-    title=None,
     #
     # ITEM PARAMS:
     top_n=None,
@@ -165,8 +173,10 @@ def treemap(
 
     analyzer.run_clustering()
 
-    return analyzer.treemap(
+    return analyzer.concept_grid(
         #
-        # FIGURE PARAMS:
-        title=title,
+        # CONCEPT GRID PARAMS:
+        conserve_counters=conserve_counters,
+        n_head=n_head,
+        fontsize=fontsize,
     )

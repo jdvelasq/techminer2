@@ -42,7 +42,7 @@ Communities
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # CONCEPT GRID PARAMS:
+...     # PCD PARAMS:
 ...     threshold=0,
 ...     #
 ...     # DATABASE PARAMS:
@@ -100,7 +100,7 @@ def communities(
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # CONCEPT GRID PARAMS:
+    # PCD PARAMS:
     threshold=0,
     #
     # DATABASE PARAMS:
@@ -157,7 +157,7 @@ def communities(
 
     analyzer.compute_embedding()
 
-    analyzer.concept_grid(
+    analyzer.pcd(
         #
         # FACTOR MAP PARAMS:
         threshold=threshold,

@@ -44,7 +44,7 @@ Factor Map
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # CONCEPT GRID PARAMS:
+...     # PCD PARAMS:
 ...     threshold=0,
 ...     #
 ...     # LAYOUT:
@@ -123,7 +123,7 @@ def factor_map(
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # CONCEPT GRID PARAMS:
+    # PCD PARAMS:
     threshold=0,
     #
     # LAYOUT:

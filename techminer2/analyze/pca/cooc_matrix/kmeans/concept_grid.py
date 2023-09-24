@@ -6,34 +6,27 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Treemap
+Concept Grid
 ===============================================================================
 
 
->>> from techminer2.analyze.pca.tfidf_matrix.pcd import treemap
->>> treemap(
+>>> from techminer2.analyze.pca.cooc_matrix.kmeans import concept_grid
+>>> concept_grid(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
+...     association_index=None,
 ...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=1,
-...     #
-...     # TF-IDF parameters:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
+...     # CONCEPT GRID PARAMS:
+...     conserve_counters=True,
+...     n_head=None,
+...     fontsize="9",
 ...     #
 ...     # ITEM PARAMS:
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
-...     #
-...     # FIGURE PARAMS:
-...     title=None,
 ...     #
 ...     # PCA PARAMS:
 ...     n_components=5,
@@ -45,44 +38,42 @@ Treemap
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # PCD PARAMS:
-...     threshold=0,
+...     # KMEANS PARAMS:
+...     n_clusters=6,
+...     init="k-means++",
+...     n_init=10,
+...     max_iter=300,
+...     kmeans_tol=0.0001,
+...     algorithm="auto",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/pcd/treemap.html")
+... ).render("sphinx/images/analyze/pca/cooc_matrix/kmeans/concept_grid", format="png")
+'sphinx/images/analyze/pca/cooc_matrix/kmeans/concept_grid.png'
 
-.. raw:: html
+.. image:: /images/analyze/pca/cooc_matrix/kmeans/concept_grid.png
+    :width: 900px
+    :align: center
 
-    <iframe src="../../../../../../_static/analyze/pca/tfidf_matrix/pcd/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
-from typing import Literal
-
 from .....factor_analysis import FactorAnalyzer
 
 
-def treemap(
+def concept_grid(
     #
     # PARAMS:
     field,
+    association_index=None,
     #
-    # TF PARAMS:
-    is_binary: bool = True,
-    cooc_within: int = 1,
-    #
-    # TF-IDF parameters:
-    norm: Literal["l1", "l2", None] = None,
-    use_idf=False,
-    smooth_idf=False,
-    sublinear_tf=False,
-    #
-    # FIGURE PARAMS:
-    title=None,
+    # CONCEPT GRID PARAMS:
+    conserve_counters=True,
+    n_head=None,
+    fontsize="9",
     #
     # ITEM PARAMS:
     top_n=None,
@@ -100,8 +91,13 @@ def treemap(
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # PCD PARAMS:
-    threshold=0,
+    # KMEANS PARAMS:
+    n_clusters=8,
+    init="k-means++",
+    n_init=10,
+    max_iter=300,
+    kmeans_tol=0.0001,
+    algorithm="auto",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -116,17 +112,10 @@ def treemap(
 
     analyzer = FactorAnalyzer(field=field)
 
-    analyzer.tfidf(
+    analyzer.cooc_matrix(
         #
-        # TF PARAMS:
-        is_binary=is_binary,
-        cooc_within=cooc_within,
-        #
-        # TF-IDF parameters:
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
+        # COOC PARAMS:
+        association_index=association_index,
         #
         # ITEM PARAMS:
         top_n=top_n,
@@ -157,16 +146,24 @@ def treemap(
 
     analyzer.compute_embedding()
 
-    analyzer.pcd(
+    analyzer.kmeans(
         #
-        # FACTOR MAP PARAMS:
-        threshold=threshold,
+        # KMEANS PARAMS:
+        n_clusters=n_clusters,
+        init=init,
+        n_init=n_init,
+        max_iter=max_iter,
+        tol=kmeans_tol,
+        random_state=random_state,
+        algorithm=algorithm,
     )
 
     analyzer.run_clustering()
 
-    return analyzer.treemap(
+    return analyzer.concept_grid(
         #
-        # FIGURE PARAMS:
-        title=title,
+        # CONCEPT GRID PARAMS:
+        conserve_counters=conserve_counters,
+        n_head=n_head,
+        fontsize=fontsize,
     )

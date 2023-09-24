@@ -33,7 +33,7 @@ Cluster Centers
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # CONCEPT GRID PARAMS:
+...     # PCD PARAMS:
 ...     threshold=0.5,
 ...     #
 ...     # DATABASE PARAMS:
@@ -76,7 +76,7 @@ def cluster_centers(
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # CONCEPT GRID PARAMS:
+    # PCD PARAMS:
     threshold=0.5,
     #
     # DATABASE PARAMS:
@@ -126,7 +126,7 @@ def cluster_centers(
 
     analyzer.compute_embedding()
 
-    analyzer.concept_grid(
+    analyzer.pcd(
         #
         # FACTOR MAP PARAMS:
         threshold=threshold,

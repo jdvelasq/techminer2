@@ -19,3 +19,8 @@ Hierarchical Clustering >
 .. toctree::
     factor_map
 
+--------------------------------------------------------------------------------
+
+.. toctree::
+    concept_grid
+

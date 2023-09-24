@@ -6,15 +6,20 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Treemap
+Concept Grid
 ===============================================================================
 
 
->>> from techminer2.analyze.pca.tfidf_matrix.pcd import treemap
->>> treemap(
+>>> from techminer2.analyze.pca.tfidf_matrix.hierarchical import concept_grid
+>>> concept_grid(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
+...     #
+...     # CONCEPT GRID PARAMS:
+...     conserve_counters=True,
+...     n_head=None,
+...     fontsize="9",
 ...     #
 ...     # TF PARAMS:
 ...     is_binary=True,
@@ -32,33 +37,40 @@ Treemap
 ...     gc_range=(None, None),
 ...     custom_items=None,
 ...     #
-...     # FIGURE PARAMS:
-...     title=None,
-...     #
 ...     # PCA PARAMS:
 ...     n_components=5,
 ...     whiten=False,
 ...     svd_solver="auto",
-...     pca_tol=0.0,
+...     tol=0.0,
 ...     iterated_power="auto",
 ...     n_oversamples=10,
 ...     power_iteration_normalizer="auto",
 ...     random_state=0, 
 ...     #
-...     # PCD PARAMS:
-...     threshold=0,
+...     # HIERARCHICAL PARAMS:
+...     n_clusters=6,
+...     metric=None,
+...     memory=None,
+...     connectivity=None,
+...     compute_full_tree="auto",
+...     linkage="ward",
+...     distance_threshold=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/pca/tfidf_matrix/pcd/treemap.html")
+... ).render("sphinx/images/analyze/pca/tfidf_matrix/hierarchical/concept_grid", format="png")
+'sphinx/images/analyze/pca/tfidf_matrix/hierarchical/concept_grid.png'
 
-.. raw:: html
+.. image:: /images/analyze/pca/tfidf_matrix/hierarchical/concept_grid.png
+    :width: 900px
+    :align: center
 
-    <iframe src="../../../../../../_static/analyze/pca/tfidf_matrix/pcd/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+
 
 """
 from typing import Literal
@@ -66,7 +78,7 @@ from typing import Literal
 from .....factor_analysis import FactorAnalyzer
 
 
-def treemap(
+def concept_grid(
     #
     # PARAMS:
     field,
@@ -75,14 +87,16 @@ def treemap(
     is_binary: bool = True,
     cooc_within: int = 1,
     #
+    # CONCEPT GRID PARAMS:
+    conserve_counters=True,
+    n_head=None,
+    fontsize="9",
+    #
     # TF-IDF parameters:
     norm: Literal["l1", "l2", None] = None,
     use_idf=False,
     smooth_idf=False,
     sublinear_tf=False,
-    #
-    # FIGURE PARAMS:
-    title=None,
     #
     # ITEM PARAMS:
     top_n=None,
@@ -94,14 +108,20 @@ def treemap(
     n_components=None,
     whiten=False,
     svd_solver="auto",
-    pca_tol=0.0,
+    tol=0.0,
     iterated_power="auto",
     n_oversamples=10,
     power_iteration_normalizer="auto",
     random_state=0,
     #
-    # PCD PARAMS:
-    threshold=0,
+    # HIERARCHICAL PARAMS:
+    n_clusters=None,
+    metric=None,
+    memory=None,
+    connectivity=None,
+    compute_full_tree="auto",
+    linkage="ward",
+    distance_threshold=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -148,7 +168,7 @@ def treemap(
         n_components=n_components,
         whiten=whiten,
         svd_solver=svd_solver,
-        tol=pca_tol,
+        tol=tol,
         iterated_power=iterated_power,
         n_oversamples=n_oversamples,
         power_iteration_normalizer=power_iteration_normalizer,
@@ -157,16 +177,24 @@ def treemap(
 
     analyzer.compute_embedding()
 
-    analyzer.pcd(
+    analyzer.hierarchical(
         #
-        # FACTOR MAP PARAMS:
-        threshold=threshold,
+        # HIERARCHICAL PARAMS:
+        n_clusters=n_clusters,
+        metric=metric,
+        memory=memory,
+        connectivity=connectivity,
+        compute_full_tree=compute_full_tree,
+        linkage=linkage,
+        distance_threshold=distance_threshold,
     )
 
     analyzer.run_clustering()
 
-    return analyzer.treemap(
+    return analyzer.concept_grid(
         #
-        # FIGURE PARAMS:
-        title=title,
+        # CONCEPT GRID PARAMS:
+        conserve_counters=conserve_counters,
+        n_head=n_head,
+        fontsize=fontsize,
     )

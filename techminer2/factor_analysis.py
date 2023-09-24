@@ -8,6 +8,7 @@
 
 from typing import Literal
 
+import graphviz
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -523,7 +524,7 @@ class FactorAnalyzer:
             distance_threshold=distance_threshold,
         )
 
-    def concept_grid(
+    def pcd(
         self,
         #
         # VANTAGEPOINT CONCEPT GRID PARAMS:
@@ -674,3 +675,37 @@ class FactorAnalyzer:
         fig.update_traces(textfont_size=12)
 
         return fig
+
+    # --------------------------------------------------------------------------------------------
+    # Concept Grid
+    #
+    def concept_grid(
+        self,
+        conserve_counters,
+        n_head,
+        fontsize,
+    ):
+        data_frame = self.communities()
+
+        if n_head is not None:
+            data_frame = data_frame.head(n_head)
+
+        graph = graphviz.Digraph(
+            "graph",
+            node_attr={"shape": "record"},
+        )
+
+        for _, col in enumerate(data_frame.columns):
+            text = data_frame[col].to_list()
+            if conserve_counters is False:
+                text = [" ".join(str(t).split(" ")[:-1]) for t in text]
+            text = [t if t != "" else "." for t in text]
+            text = "\\r".join(text) + "\\r"
+            cluster_name = col
+            graph.node(
+                col,
+                label=r"{" + cluster_name + "|" + text + r"}",
+                fontsize=fontsize,
+            )
+
+        return graph
