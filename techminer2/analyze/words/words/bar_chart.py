@@ -42,13 +42,13 @@ Bar Chart
 
     
 >>> chart.df_.head()
-                  rank_occ  OCC  ...  between_2022_2023  growth_percentage
-words                            ...                                      
-REGTECH                  1   48  ...               12.0              25.00
-be                       2   46  ...               14.0              30.43
-have                     3   31  ...                7.0              22.58
-REGULATORS               4   30  ...                9.0              30.00
-NEW_TECHNOLOGIES         5   22  ...                7.0              31.82
+                       rank_occ  OCC  ...  between_2022_2023  growth_percentage
+words                                 ...                                      
+REGTECH                       1   48  ...                 12              25.00
+REGULATORS                    2   30  ...                  9              30.00
+NEW_TECHNOLOGIES              3   22  ...                  7              31.82
+REGULATORY_TECHNOLOGY         4   20  ...                  6              30.00
+COMPLIANCE                    5   18  ...                  3              16.67
 <BLANKLINE>
 [5 rows x 5 columns]
 

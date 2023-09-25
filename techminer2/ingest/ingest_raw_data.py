@@ -107,6 +107,7 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
+from .._stopwords_lib import load_generic_stopwords
 from ..refine.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
 from ..refine.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
 from ..refine.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
@@ -645,6 +646,12 @@ def ingest_raw_data(
         text_column = text_column.apply(set)
         text_column = text_column.apply(sorted)
         text_column = text_column.apply(lambda terms: [term for term in terms if term != "nan"])
+
+        stopwords = [word.lower() for word in load_generic_stopwords()]
+        text_column = text_column.apply(
+            lambda terms: [term for term in terms if term.lower() not in stopwords]
+        )
+
         text_column = text_column.apply("; ".join)
         return text_column
 

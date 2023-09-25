@@ -8,8 +8,8 @@
 Themes
 ===============================================================================
 
->>> from techminer2.analyze.document.kmeans import report
->>> report(
+>>> from techminer2.analyze.document.kmeans import themes
+>>> x = themes(
 ...     field='words',
 ...     #
 ...     # ITEM FILTERS:
@@ -32,19 +32,42 @@ Themes
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/document_clustering/kmeans/theme_000_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/kmeans/theme_001_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/kmeans/theme_002_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/kmeans/theme_003_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/kmeans/theme_004_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/kmeans/theme_005_abstracts_report.txt' was created.
+>>> print(x.to_markdown())
+|    | TH_0                    | TH_1                          | TH_2            | TH_3            | TH_4              |
+|---:|:------------------------|:------------------------------|:----------------|:----------------|:------------------|
+|  0 | APPLICATION 15:210      | NEW_TECHNOLOGIES 22:381       | CHANGING 07:183 | base 13:061     | REGTECH 48:557    |
+|  1 | AUTHOR 13:243           | REGULATORY_TECHNOLOGY 20:276  |                 | propose 11:188  | REGULATORS 30:466 |
+|  2 | FINTECH 12:364          | COMPLIANCE 18:368             |                 | reserve 11:184  | CHALLENGE 16:203  |
+|  3 | FINDINGS 12:120         | BANK 18:305                   |                 | RESEARCH 10:212 | develop 13:254    |
+|  4 | FINANCIAL_SECTOR 09:196 | FINANCIAL_INSTITUTIONS 16:224 |                 | explore 08:037  | well 11:194       |
+|  5 | FINANCE 09:030          | PAPER 15:371                  |                 |                 | limit 10:087      |
+|  6 | suggest 08:238          | APPROACH 14:360               |                 |                 | STUDY 10:068      |
+|  7 | BUSINESS 08:027         | FINANCIAL_CRISIS 12:235       |                 |                 | increase 08:171   |
+|  8 | PRACTICE 07:187         | REGULATORY_COMPLIANCE 11:360  |                 |                 | enhance 08:049    |
+|  9 |                         | DATA 11:221                   |                 |                 | CHANGE 07:331     |
+| 10 |                         | RIGHTS 11:186                 |                 |                 |                   |
+| 11 |                         | DEVELOPMENT 10:385            |                 |                 |                   |
+| 12 |                         | PURPOSE 10:212                |                 |                 |                   |
+| 13 |                         | apply 10:169                  |                 |                 |                   |
+| 14 |                         | POTENTIAL 09:387              |                 |                 |                   |
+| 15 |                         | REPORTING 09:255              |                 |                 |                   |
+| 16 |                         | improve 09:183                |                 |                 |                   |
+| 17 |                         | SOLUTION 09:060               |                 |                 |                   |
+| 18 |                         | reduce 09:054                 |                 |                 |                   |
+| 19 |                         | FINANCIAL_REGULATION 08:361   |                 |                 |                   |
+| 20 |                         | address 08:167                |                 |                 |                   |
+| 21 |                         | RISKS 08:043                  |                 |                 |                   |
+| 22 |                         | FINANCIAL_SYSTEM 07:363       |                 |                 |                   |
+| 23 |                         | IMPACT 07:203                 |                 |                 |                   |
+| 24 |                         | make 07:190                   |                 |                 |                   |
+
+
 
 """
-
 from ..document_classifier import DocumentClassifier
 
 
-def report(
+def themes(
     #
     # TF PARAMS:
     field: str,
@@ -108,4 +131,4 @@ def report(
         algorithm=algorithm,
     )
     classifier.fit()
-    classifier.report()
+    return classifier.themes()

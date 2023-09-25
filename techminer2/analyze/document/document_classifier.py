@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import numpy as np
+import pandas as pd
 from sklearn.cluster import AgglomerativeClustering, KMeans
 
 from ..._read_records import read_records
@@ -25,6 +27,7 @@ class DocumentClassifier:
         self.records = None
         self.method = None
         self.root_dir = None
+        self.labels = None
 
     def build_tf_matrix(
         self,
@@ -96,6 +99,7 @@ class DocumentClassifier:
         max_iter=300,
         tol=0.0001,
         algorithm="auto",
+        random_state=0,
     ):
         self.method = "kmeans"
         self.n_themes = n_themes
@@ -106,6 +110,7 @@ class DocumentClassifier:
             max_iter=max_iter,
             tol=tol,
             algorithm=algorithm,
+            random_state=random_state,
         )
 
     def fit(self):
@@ -136,3 +141,65 @@ class DocumentClassifier:
                 records=records,
                 report_filename=file_name,
             )
+
+    def contingecy_table(self):
+        #
+        # Formats the theme label
+        if self.n_themes > 1:
+            n_zeros = int(np.log10(self.n_themes - 1)) + 1
+        else:
+            n_zeros = 1
+        fmt = "TH_{:0" + str(n_zeros) + "d}"
+
+        #
+        # Assigns the cluster to the record
+        tf_matrix = self.tf_matrix.copy()
+        tf_matrix["theme"] = [fmt.format(label) for label in self.estimator.labels_]
+        data_frame = tf_matrix.groupby("theme").sum()
+        data_frame = data_frame.T
+        return data_frame
+
+    def themes_summary(self):
+        #
+        # Formats the theme label
+        table = self.contingecy_table()
+        themes = table.idxmax(axis=1)
+
+        result = {}
+        for word, theme in zip(themes.index, themes):
+            if theme not in result:
+                result[theme] = []
+            result[theme].append(word)
+
+        labels = sorted(result.keys())
+        n_terms = [len(result[label]) for label in labels]
+        terms = ["; ".join(result[label]) for label in labels]
+        percentage = [round(n_term / sum(n_terms) * 100, 1) for n_term in n_terms]
+
+        data_frame = pd.DataFrame(
+            {
+                "Theme": labels,
+                "Num Terms": n_terms,
+                "Percentage": percentage,
+                "Terms": terms,
+            }
+        )
+
+        return data_frame
+
+    def themes(self):
+        #
+        #
+        table = self.contingecy_table()
+        themes = table.idxmax(axis=1)
+
+        result = {}
+        for word, theme in zip(themes.index, themes):
+            if theme not in result:
+                result[theme] = []
+            result[theme].append(word)
+
+        communities = pd.DataFrame.from_dict(result, orient="index").T
+        communities = communities.fillna("")
+        communities = communities.sort_index(axis=1)
+        return communities
