@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Find Similar Records
+Find Similar Phrases
 ===============================================================================
 
 
