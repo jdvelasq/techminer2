@@ -58,6 +58,9 @@ def apply_thesaurus(
             ("raw_abstract_nlp_phrases", "abstract_nlp_phrases"),
             ("raw_nlp_phrases", "nlp_phrases"),
             ("raw_descriptors", "descriptors"),
+            ("raw_title_words", "title_words"),
+            ("raw_abstract_words", "abstract_words"),
+            ("raw_words", "words"),
         ]:
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split("; ")

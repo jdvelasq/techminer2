@@ -42,8 +42,8 @@ open_access, organization_1st_author, organizations, page_end, page_start,
 publication_stage, raw_abstract_nlp_phrases, raw_author_keywords, raw_authors,
 raw_authors_id, raw_countries, raw_descriptors, raw_global_references,
 raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,
-raw_title_nlp_phrases, source, source_abbr, source_title, title,
-title_nlp_phrases, volume, year
+raw_title_nlp_phrases, raw_words, raw_words_abstract, raw_words_title, source,
+source_abbr, source_title, title, title_nlp_phrases, volume, words, year
 
 
 
@@ -103,7 +103,7 @@ import time
 
 import pandas as pd
 import requests
-from nltk.stem import PorterStemmer
+from nltk.stem import PorterStemmer, WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
@@ -512,7 +512,6 @@ def ingest_raw_data(
         lambda x: x.mask(x.str.strip() == "[ no abstract available ]", pd.NA).str.lower(),
     )
 
-    # ***
     copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
     process_column(
         root_dir,
@@ -594,6 +593,75 @@ def ingest_raw_data(
     replace_hypen_in_title_column(root_dir)
     replace_hypen_in_abstract_column(root_dir)
     transform_abstract_keywords_to_underscore(root_dir)
+
+    #
+    #
+    # Meaningful terms
+    #
+    #
+
+    #
+    # The routine captures verbs, adverbs, adjectives, and nouns
+    # including noun phrases
+
+    lemmatizer = WordNetLemmatizer()
+
+    def to_lemma(tag):
+        if tag[0] == tag[0].upper():
+            return tag
+
+        if tag[1][:2] == "NN":
+            return (lemmatizer.lemmatize(tag[0], pos="n"), tag[1])
+
+        if tag[1][:2] == "VB":
+            return (lemmatizer.lemmatize(tag[0], pos="v"), tag[1])
+
+        if tag[1][:2] == "RB":
+            return (lemmatizer.lemmatize(tag[0], pos="r"), tag[1])
+
+        if tag[1][:2] == "JJ":
+            return (lemmatizer.lemmatize(tag[0], pos="a"), tag[1])
+
+        return None
+
+    def extract_meaningful_terms(text_column):
+        #
+        #
+        text_column = text_column.copy()
+        text_column = text_column.apply(lambda paragraph: TextBlob(paragraph).sentences)
+        text_column = text_column.apply(lambda sentences: [sentence.tags for sentence in sentences])
+        text_column = text_column.apply(
+            lambda tagged_sentences: [
+                tag
+                for tagged_sentence in tagged_sentences
+                for tag in tagged_sentence
+                if tag[1][:2] in ["NN", "VB", "RB", "JJ"]
+            ]
+        )
+        text_column = text_column.apply(
+            lambda tagged_words: [to_lemma(tag) for tag in tagged_words]
+        )
+        text_column = text_column.apply(lambda tagged_words: [tag[0] for tag in tagged_words])
+        text_column = text_column.apply(set)
+        text_column = text_column.apply(sorted)
+        text_column = text_column.apply(lambda terms: [term for term in terms if term != "nan"])
+        text_column = text_column.apply("; ".join)
+        return text_column
+
+    #
+    copy_to_column(root_dir, "title", "raw_words_title")
+    process_column(root_dir, "raw_words_title", extract_meaningful_terms)
+
+    #
+    copy_to_column(root_dir, "abstract", "raw_words_abstract")
+    process_column(root_dir, "raw_words_abstract", extract_meaningful_terms)
+
+    concatenate_columns(
+        root_dir,
+        "raw_words",
+        "raw_words_abstract",
+        "raw_words_title",
+    )
 
     # _filename = os.path.join(root_dir, "databases/_references.zip")
     # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
@@ -701,7 +769,10 @@ def ingest_raw_data(
     # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
 
     #
+    #
     # rec-no field
+    #
+    #
     assign__rec_no__field(root_dir)
 
     #
