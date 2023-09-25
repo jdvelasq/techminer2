@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.document.kmeans.themes
+.. automodule:: techminer2.analyze.document.kmeans.report
     :members:
     :undoc-members:
     :show-inheritance:

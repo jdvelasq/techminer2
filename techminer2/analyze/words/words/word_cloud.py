@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tm2.performance.title_nlp_phrases.word_cloud:
-
 Word Cloud
 ===============================================================================
 
