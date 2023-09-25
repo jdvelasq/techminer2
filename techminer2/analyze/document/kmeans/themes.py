@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Report
+Themes
 ===============================================================================
 
 >>> from techminer2.analyze.document.kmeans import report
