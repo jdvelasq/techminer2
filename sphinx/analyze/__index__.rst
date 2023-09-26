@@ -109,7 +109,7 @@ Analyze >
 .. toctree::
     :maxdepth: 1
 
-    thematics/__index__
+    topic_modeling/__index__
 
 --------------------------------------------------------------------------------
 
