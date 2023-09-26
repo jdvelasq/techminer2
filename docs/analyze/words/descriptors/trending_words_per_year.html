@@ -23,7 +23,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Trending Words per Year" href="../trending_words_per_year.html" />
+    <link rel="next" title="Words &gt;" href="../words/__index__.html" />
     <link rel="prev" title="Word Frequency over Time" href="words_frequency_over_time.html" /> 
 </head>
 
@@ -60,7 +60,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ingest/__index__.html">Ingest &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../refine/__index__.html">Refine &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../search/__index__.html">Search &gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../__index__.html">Analyze &gt;</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../associations/__index__.html">Associations &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../bibliographic_coupling/__index__.html">Bibliographic Coupling &gt;</a></li>
@@ -70,12 +69,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../co_occurrence/__index__.html">Co-occurrence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../research_agenda/__index__.html">Research Agenda &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../svd/__index__.html">SVD &gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../thematics/__index__.html">Thematics &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../topic_modeling/__index__.html">Topic Modeling &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../__index__.html">Words &gt;</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../author_keywords/__index__.html">Author Keywords &gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../index_keywords/__index__.html">Index Keywords &gt;</a></li>
@@ -92,12 +92,15 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Trending Words per Year</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../trending_words_per_year.html">Trending Words per Year</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../word_trends.html">Word Trends</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tfidf.html">TFIDF</a></li>
 </ul>
@@ -149,28 +152,28 @@
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">words</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="go">year                         OCC  year_q1  year_med  ...  rn    height  width</span>
-<span class="go">descriptors                                          ...</span>
-<span class="go">BANK_EXECUTIVES                1     2016      2016  ...   0  0.150000      1</span>
-<span class="go">BANK_FAILURES                  1     2016      2016  ...   1  0.150000      1</span>
-<span class="go">CLASS_ACTION                   1     2016      2016  ...   2  0.150000      1</span>
-<span class="go">COMPLEX_TASK                   1     2016      2016  ...   3  0.150000      1</span>
-<span class="go">CONCEPT_ARTICLE                1     2016      2016  ...   4  0.150000      1</span>
-<span class="go">ADDRESSES_RISK                 2     2017      2017  ...   2  0.179286      1</span>
-<span class="go">ANALOGUE_PROCESSES             2     2017      2017  ...   3  0.179286      1</span>
-<span class="go">COMPLIANCE_PROCESSES           2     2017      2017  ...   4  0.179286      1</span>
-<span class="go">DIGITAL_IDENTITY               3     2017      2017  ...   0  0.208571      2</span>
-<span class="go">NEW_APPROACH                   3     2017      2017  ...   1  0.208571      4</span>
-<span class="go">FINANCIAL_SERVICES_INDUSTRY    5     2017      2018  ...   0  0.267143      6</span>
-<span class="go">PRACTICAL_IMPLICATIONS         2     2018      2018  ...   1  0.179286      1</span>
-<span class="go">FUTURE_AREAS                   2     2018      2018  ...   2  0.179286      2</span>
-<span class="go">FINANCIAL_STABILITY            2     2018      2018  ...   3  0.179286      2</span>
-<span class="go">SEMANTIC_TECHNOLOGIES          2     2018      2018  ...   4  0.179286      2</span>
-<span class="go">DISRUPTIVE_INNOVATION          2     2018      2019  ...   3  0.179286      3</span>
-<span class="go">TECHNOLOGY_POSES               2     2018      2019  ...   4  0.179286      3</span>
-<span class="go">BLOCKCHAIN                     3     2018      2019  ...   2  0.208571      3</span>
-<span class="go">FINANCIAL_SYSTEM               8     2018      2019  ...   0  0.355000      5</span>
-<span class="go">FINANCIAL_REGULATION          12     2018      2020  ...   4  0.472143      5</span>
+<span class="go">year                             OCC  year_q1  year_med  ...  rn    height  width</span>
+<span class="go">descriptors                                              ...</span>
+<span class="go">BANK_EXECUTIVES                    1     2016      2016  ...   0  0.150000      1</span>
+<span class="go">BANK_FAILURES                      1     2016      2016  ...   1  0.150000      1</span>
+<span class="go">CLASS_ACTION                       1     2016      2016  ...   2  0.150000      1</span>
+<span class="go">COMPLEX_TASK                       1     2016      2016  ...   3  0.150000      1</span>
+<span class="go">CONCEPT_ARTICLE                    1     2016      2016  ...   4  0.150000      1</span>
+<span class="go">ADDRESSES_RISK                     2     2017      2017  ...   1  0.179286      1</span>
+<span class="go">ANALOGUE_PROCESSES                 2     2017      2017  ...   2  0.179286      1</span>
+<span class="go">COMPLIANCE_PROCESSES               2     2017      2017  ...   3  0.179286      1</span>
+<span class="go">EFFICIENT_REGULATORY_COMPLIANCE    2     2017      2017  ...   4  0.179286      1</span>
+<span class="go">DIGITAL_IDENTITY                   3     2017      2017  ...   0  0.208571      2</span>
+<span class="go">FINANCIAL_SYSTEM                   6     2017      2018  ...   0  0.296429      4</span>
+<span class="go">FINANCIAL_SERVICES_INDUSTRY        5     2017      2018  ...   1  0.267143      6</span>
+<span class="go">PRACTICAL_IMPLICATIONS             2     2018      2018  ...   2  0.179286      1</span>
+<span class="go">FINANCIAL_STABILITY                2     2018      2018  ...   3  0.179286      2</span>
+<span class="go">SEMANTIC_TECHNOLOGIES              2     2018      2018  ...   4  0.179286      2</span>
+<span class="go">DISRUPTIVE_INNOVATION              2     2018      2019  ...   1  0.179286      3</span>
+<span class="go">REGULATORY_SYSTEM                  2     2018      2019  ...   2  0.179286      3</span>
+<span class="go">TECHNOLOGY_POSES                   2     2018      2019  ...   3  0.179286      3</span>
+<span class="go">BLOCKCHAIN_TECHNOLOGY              2     2018      2019  ...   4  0.179286      3</span>
+<span class="go">BLOCKCHAIN                         3     2018      2019  ...   0  0.208571      3</span>
 
 <span class="go">[20 rows x 8 columns]</span>
 </pre></div>
@@ -186,7 +189,7 @@ height="900px" width="100%" frameBorder="0"></iframe></section>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="words_frequency_over_time.html" class="btn btn-neutral float-left" title="Word Frequency over Time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../trending_words_per_year.html" class="btn btn-neutral float-right" title="Trending Words per Year" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../words/__index__.html" class="btn btn-neutral float-right" title="Words &gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

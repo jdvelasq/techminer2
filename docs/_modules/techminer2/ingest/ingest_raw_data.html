@@ -57,7 +57,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ingest/__index__.html">Ingest &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../refine/__index__.html">Refine &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../search/__index__.html">Search &gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analyze/__index__.html">Analyze &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
 </ul>
@@ -91,13 +90,12 @@
 <span class="c1"># pylint: disable=invalid-name</span>
 <span class="c1"># pylint: disable=line-too-long</span>
 <span class="c1"># pylint: disable=missing-docstring</span>
+<span class="c1"># pylint: disable=import-outside-toplevel</span>
 <span class="c1"># pylint: disable=too-many-arguments</span>
 <span class="c1"># pylint: disable=too-many-locals</span>
 <span class="c1"># pylint: disable=too-many-statements</span>
 <span class="c1"># pylint: disable=global-statement</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">.. _tm2.ingest.ingest_raw_data:</span>
-
 <span class="sd">Ingest Raw Data</span>
 <span class="sd">===============================================================================</span>
 
@@ -109,8 +107,12 @@
 <span class="sd">...     # DATABASE PARAMS:</span>
 <span class="sd">...     root_dir=&quot;data/regtech/&quot;, </span>
 <span class="sd">...     remove_raw_csv_files=True,</span>
-<span class="sd">... )</span>
-
+<span class="sd">... ) # doctest: +ELLIPSIS</span>
+<span class="sd">-- 001 -- Compressing raw data files</span>
+<span class="sd">-- 002 -- Creating working directories</span>
+<span class="sd">-- 003 -- Creating stopwords.txt file</span>
+<span class="sd">-- 004 -- Creating database files</span>
+<span class="sd">...</span>
 
 <span class="sd">&gt;&gt;&gt; import pandas as pd</span>
 <span class="sd">&gt;&gt;&gt; from pprint import pprint</span>
@@ -128,8 +130,8 @@
 <span class="sd">publication_stage, raw_abstract_nlp_phrases, raw_author_keywords, raw_authors,</span>
 <span class="sd">raw_authors_id, raw_countries, raw_descriptors, raw_global_references,</span>
 <span class="sd">raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,</span>
-<span class="sd">raw_title_nlp_phrases, source, source_abbr, source_title, title,</span>
-<span class="sd">title_nlp_phrases, volume, year</span>
+<span class="sd">raw_title_nlp_phrases, raw_words, raw_words_abstract, raw_words_title, source,</span>
+<span class="sd">source_abbr, source_title, title, title_nlp_phrases, volume, words, year</span>
 
 
 
@@ -189,10 +191,11 @@
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span><span class="p">,</span> <span class="n">WordNetLemmatizer</span>
 <span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
+<span class="kn">from</span> <span class="nn">.._stopwords_lib</span> <span class="kn">import</span> <span class="n">load_generic_stopwords</span>
 <span class="kn">from</span> <span class="nn">..refine.countries.apply_thesaurus</span> <span class="kn">import</span> <span class="n">apply_thesaurus</span> <span class="k">as</span> <span class="n">apply_countries_thesaurus</span>
 <span class="kn">from</span> <span class="nn">..refine.organizations.apply_thesaurus</span> <span class="kn">import</span> <span class="n">apply_thesaurus</span> <span class="k">as</span> <span class="n">apply_organizations_thesaurus</span>
 <span class="kn">from</span> <span class="nn">..refine.words.apply_thesaurus</span> <span class="kn">import</span> <span class="n">apply_thesaurus</span> <span class="k">as</span> <span class="n">apply_words_thesaurus</span>
@@ -272,7 +275,6 @@
     <span class="c1">#</span>
     <span class="c1"># Additional Step:</span>
     <span class="c1"># Replace journal nanme by journal abbr in references.</span>
-
     <span class="n">replace_journal_name_in_references</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
 
     <span class="c1">#</span>
@@ -521,7 +523,7 @@
     <span class="p">)</span>
 
     <span class="c1">#</span>
-    <span class="c1"># Technological Emergence Indicators using Emergence Score</span>
+    <span class="c1"># Technological Emergence Indicators using Emergence Score.</span>
     <span class="c1"># Garner et al. 2017.</span>
     <span class="c1"># ------------------------------------------------------------------------</span>
     <span class="c1">#</span>
@@ -531,14 +533,36 @@
     <span class="c1">#</span>
 
     <span class="c1">#</span>
-    <span class="c1"># Step 1: Create a candidate list of title nlp phrases</span>
+    <span class="c1"># The following routine is required for capturing noun phrases and</span>
+    <span class="c1"># isolated nouns in title and abstract</span>
+    <span class="k">def</span> <span class="nf">extract_noun_phrases</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="c1"># extract noun phrases</span>
+        <span class="n">noun_phrases</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span> <span class="k">for</span> <span class="n">phrase</span> <span class="ow">in</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">noun_phrases</span><span class="p">]</span>
+        <span class="n">noun_phrases</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">noun_phrases</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1">#</span>
+        <span class="c1"># transform noun phrases to upper cases and replace space with underscore</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">noun_phrases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span> <span class="k">for</span> <span class="n">phrase</span> <span class="ow">in</span> <span class="n">noun_phrases</span><span class="p">])</span>
+            <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b(&quot;</span> <span class="o">+</span> <span class="n">regex</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;)\b&quot;</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
+
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">tags</span>
+        <span class="n">noun_phrases</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span> <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NN&quot;</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">noun_phrases</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># Step 1: Create a candidate list of title noun phrases</span>
     <span class="c1">#</span>
     <span class="n">copy_to_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;raw_title_nlp_phrases&quot;</span><span class="p">)</span>
     <span class="n">process_column</span><span class="p">(</span>
         <span class="n">root_dir</span><span class="p">,</span>
         <span class="s2">&quot;raw_title_nlp_phrases&quot;</span><span class="p">,</span>
         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">TextBlob</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">noun_phrases</span><span class="p">))</span>
+        <span class="c1"># .progress_apply(lambda z: list(TextBlob(z).noun_phrases))</span>
+        <span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="n">extract_noun_phrases</span><span class="p">)</span>
         <span class="o">.</span><span class="n">map</span><span class="p">(</span>
             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">z</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&#39;~|!$%&amp;/+-*:&lt;&gt;=@#[]()</span><span class="si">{}</span><span class="s2">0123456789&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">()]</span>
         <span class="p">)</span>
@@ -563,7 +587,7 @@
     <span class="p">)</span>
 
     <span class="c1">#</span>
-    <span class="c1"># Step 2: Create a candidate list of abstract nlp phrases</span>
+    <span class="c1"># Step 2: Create a candidate list of abstract noun phrases</span>
     <span class="c1">#</span>
     <span class="n">process_column</span><span class="p">(</span>
         <span class="n">root_dir</span><span class="p">,</span>
@@ -577,18 +601,18 @@
         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;[ no abstract available ]&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
     <span class="p">)</span>
 
-    <span class="c1"># ***</span>
     <span class="n">copy_to_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span> <span class="s2">&quot;raw_abstract_nlp_phrases&quot;</span><span class="p">)</span>
     <span class="n">process_column</span><span class="p">(</span>
         <span class="n">root_dir</span><span class="p">,</span>
         <span class="s2">&quot;raw_abstract_nlp_phrases&quot;</span><span class="p">,</span>
         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">TextBlob</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">noun_phrases</span><span class="p">))</span>
+        <span class="c1"># .progress_apply(lambda z: list(TextBlob(z).noun_phrases))</span>
+        <span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="n">extract_noun_phrases</span><span class="p">)</span>
         <span class="o">.</span><span class="n">map</span><span class="p">(</span>
             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">z</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&#39;~|!$%&amp;/+-*:&lt;&gt;=@#[]()</span><span class="si">{}</span><span class="s2">0123456789&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">()]</span>
         <span class="p">)</span>
-        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span>
         <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span>
         <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">z</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">z</span> <span class="o">!=</span> <span class="s2">&quot;nan&quot;</span><span class="p">])</span>
         <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
         <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -611,7 +635,7 @@
     <span class="c1">#</span>
     <span class="c1"># Step 3: Filter terms in title and abstract nlp phrases</span>
     <span class="c1">#</span>
-    <span class="n">filter_nlp_phrases</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+    <span class="c1">## filter_nlp_phrases(root_dir)</span>
 
     <span class="c1">#</span>
     <span class="c1"># Continue normal processing ....</span>
@@ -655,9 +679,196 @@
 
     <span class="c1">#</span>
     <span class="c1"># Highlight terms</span>
-    <span class="n">replace_underscores_in_title_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
-    <span class="n">replace_underscores_in_abstract_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+    <span class="n">replace_hypen_in_title_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+    <span class="n">replace_hypen_in_abstract_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
     <span class="n">transform_abstract_keywords_to_underscore</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># Meaningful terms</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># The routine captures verbs, adverbs, adjectives, and nouns</span>
+    <span class="c1"># including noun phrases</span>
+
+    <span class="n">lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">to_lemma</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">tag</span>
+
+        <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NN&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">),</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;VB&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">),</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;RB&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">),</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;JJ&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">),</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">extract_meaningful_terms</span><span class="p">(</span><span class="n">text_column</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="c1">#</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">paragraph</span><span class="p">:</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">paragraph</span><span class="p">)</span><span class="o">.</span><span class="n">sentences</span><span class="p">)</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sentences</span><span class="p">:</span> <span class="p">[</span><span class="n">sentence</span><span class="o">.</span><span class="n">tags</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">])</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">tagged_sentences</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">tag</span>
+                <span class="k">for</span> <span class="n">tagged_sentence</span> <span class="ow">in</span> <span class="n">tagged_sentences</span>
+                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tagged_sentence</span>
+                <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;NN&quot;</span><span class="p">,</span> <span class="s2">&quot;VB&quot;</span><span class="p">,</span> <span class="s2">&quot;RB&quot;</span><span class="p">,</span> <span class="s2">&quot;JJ&quot;</span><span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">tagged_words</span><span class="p">:</span> <span class="p">[</span><span class="n">to_lemma</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tagged_words</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tagged_words</span><span class="p">:</span> <span class="p">[</span><span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tagged_words</span><span class="p">])</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">terms</span><span class="p">:</span> <span class="p">[</span><span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">terms</span> <span class="k">if</span> <span class="n">term</span> <span class="o">!=</span> <span class="s2">&quot;nan&quot;</span><span class="p">])</span>
+
+        <span class="n">stopwords</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">load_generic_stopwords</span><span class="p">()]</span>
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">terms</span><span class="p">:</span> <span class="p">[</span><span class="n">term</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">terms</span> <span class="k">if</span> <span class="n">term</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">text_column</span> <span class="o">=</span> <span class="n">text_column</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text_column</span>
+
+    <span class="c1">#</span>
+    <span class="n">copy_to_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;raw_words_title&quot;</span><span class="p">)</span>
+    <span class="n">process_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;raw_words_title&quot;</span><span class="p">,</span> <span class="n">extract_meaningful_terms</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="n">copy_to_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;abstract&quot;</span><span class="p">,</span> <span class="s2">&quot;raw_words_abstract&quot;</span><span class="p">)</span>
+    <span class="n">process_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;raw_words_abstract&quot;</span><span class="p">,</span> <span class="n">extract_meaningful_terms</span><span class="p">)</span>
+
+    <span class="n">concatenate_columns</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="p">,</span>
+        <span class="s2">&quot;raw_words&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;raw_words_abstract&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;raw_words_title&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># _filename = os.path.join(root_dir, &quot;databases/_references.zip&quot;)</span>
+    <span class="c1"># _data = pd.read_csv(_filename, encoding=&quot;utf-8&quot;, compression=&quot;zip&quot;)</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># Mark only noun phrases is not sufficient to extract knowledge from</span>
+    <span class="c1"># titles and abstracts. By definition, noun phrases have a lenght &gt; 1.</span>
+    <span class="c1"># As a consequence, the following code is required to extract single</span>
+    <span class="c1"># keywords, or other terms not captured by the noun phrases.</span>
+    <span class="c1"># At this point, title and abstracts are in lower case with</span>
+    <span class="c1"># meaningul noun phrases  and keywords in upper case.</span>
+    <span class="c1">#</span>
+
+    <span class="c1"># copy_to_column(root_dir, &quot;raw_title_noun_phrases&quot;, &quot;raw_title_nlp_phrases&quot;)</span>
+    <span class="c1"># copy_to_column(root_dir, &quot;title&quot;, &quot;raw_title_nlp_phrases&quot;)</span>
+    <span class="c1"># process_column(</span>
+    <span class="c1">#     root_dir,</span>
+    <span class="c1">#     &quot;raw_title_nlp_phrases&quot;,</span>
+    <span class="c1">#     lambda x: x.astype(str)</span>
+    <span class="c1">#     .apply(lambda z: list(TextBlob(z).words))</span>
+    <span class="c1">#     .map(</span>
+    <span class="c1">#         lambda x: [z for z in x if set(&quot;\&quot;&#39;~|!$%&amp;/+-*:&lt;&gt;=@#[](){}0123456789&quot;) &amp; set(z) == set()]</span>
+    <span class="c1">#     )</span>
+    <span class="c1">#     .map(lambda x: [z for z in x if z == z.upper()])</span>
+    <span class="c1">#     .map(set)</span>
+    <span class="c1">#     .map(sorted)</span>
+    <span class="c1">#     .str.join(&quot;; &quot;)</span>
+    <span class="c1">#     .map(lambda x: pd.NA if x == &quot;&quot; else x),</span>
+    <span class="c1"># )</span>
+
+    <span class="c1">###</span>
+    <span class="c1"># processed_dir = pathlib.Path(root_dir) / &quot;databases&quot;</span>
+    <span class="c1"># files = list(processed_dir.glob(&quot;_*.zip&quot;))</span>
+    <span class="c1"># for file in files:</span>
+    <span class="c1">#     data = pd.read_csv(file, encoding=&quot;utf-8&quot;, compression=&quot;zip&quot;)</span>
+    <span class="c1">#     nlp = data[&quot;raw_title_nlp_phrases&quot;].dropna()</span>
+    <span class="c1">#     if len(nlp) == 0:</span>
+    <span class="c1">#         data[&quot;raw_title_nlp_phrases&quot;] = data.raw_title_noun_phrases</span>
+    <span class="c1">#         data.to_csv(file, sep=&quot;,&quot;, encoding=&quot;utf-8&quot;, index=False, compression=&quot;zip&quot;)</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># _filename = os.path.join(root_dir, &quot;databases/_main.zip&quot;)</span>
+    <span class="c1"># _data = pd.read_csv(_filename, encoding=&quot;utf-8&quot;, compression=&quot;zip&quot;)</span>
+
+    <span class="c1"># copy_to_column(root_dir, &quot;raw_abstract_noun_phrases&quot;, &quot;raw_abstract_nlp_phrases&quot;)</span>
+    <span class="c1"># copy_to_column(root_dir, &quot;abstract&quot;, &quot;raw_abstract_nlp_phrases&quot;)</span>
+    <span class="c1"># process_column(</span>
+    <span class="c1">#     root_dir,</span>
+    <span class="c1">#     &quot;raw_abstract_nlp_phrases&quot;,</span>
+    <span class="c1">#     lambda x: x.astype(str)</span>
+    <span class="c1">#     .apply(lambda z: list(TextBlob(z).words))</span>
+    <span class="c1">#     .map(</span>
+    <span class="c1">#         lambda x: [z for z in x if set(&quot;\&quot;&#39;~|!$%&amp;/+-*:&lt;&gt;=@#[](){}0123456789&quot;) &amp; set(z) == set()]</span>
+    <span class="c1">#     )</span>
+    <span class="c1">#     .map(lambda x: [z for z in x if z == z.upper()])</span>
+    <span class="c1">#     .map(set)</span>
+    <span class="c1">#     .map(sorted)</span>
+    <span class="c1">#     .str.join(&quot;; &quot;)</span>
+    <span class="c1">#     .map(lambda x: pd.NA if x == &quot;&quot; else x),</span>
+    <span class="c1"># )</span>
+
+    <span class="c1">###</span>
+    <span class="c1"># processed_dir = pathlib.Path(root_dir) / &quot;databases&quot;</span>
+    <span class="c1"># files = list(processed_dir.glob(&quot;_*.zip&quot;))</span>
+    <span class="c1"># for file in files:</span>
+    <span class="c1">#     data = pd.read_csv(file, encoding=&quot;utf-8&quot;, compression=&quot;zip&quot;)</span>
+    <span class="c1">#     if &quot;raw_abstract_nlp_phrases&quot; in data.columns:</span>
+    <span class="c1">#         nlp = data[&quot;raw_abstract_nlp_phrases&quot;].dropna()</span>
+    <span class="c1">#         if len(nlp) == 0:</span>
+    <span class="c1">#             data[&quot;raw_abstract_nlp_phrases&quot;] = data.raw_abstract_noun_phrases</span>
+    <span class="c1">#             data.to_csv(file, sep=&quot;,&quot;, encoding=&quot;utf-8&quot;, index=False, compression=&quot;zip&quot;)</span>
+    <span class="c1">#     else:</span>
+    <span class="c1">#         if &quot;raw_abstract_noun_phrases&quot; in data.columns:</span>
+    <span class="c1">#             data[&quot;raw_abstract_nlp_phrases&quot;] = data.raw_abstract_noun_phrases</span>
+    <span class="c1">#             data.to_csv(file, sep=&quot;,&quot;, encoding=&quot;utf-8&quot;, index=False, compression=&quot;zip&quot;)</span>
+
+    <span class="c1">###</span>
+
+    <span class="c1"># concatenate_columns(</span>
+    <span class="c1">#     root_dir,</span>
+    <span class="c1">#     &quot;raw_nlp_phrases&quot;,</span>
+    <span class="c1">#     &quot;raw_title_nlp_phrases&quot;,</span>
+    <span class="c1">#     &quot;raw_abstract_nlp_phrases&quot;,</span>
+    <span class="c1"># )</span>
+    <span class="c1">#</span>
+    <span class="c1"># concatenate_columns(</span>
+    <span class="c1">#     root_dir,</span>
+    <span class="c1">#     &quot;raw_descriptors&quot;,</span>
+    <span class="c1">#     &quot;raw_nlp_phrases&quot;,</span>
+    <span class="c1">#     &quot;raw_keywords&quot;,</span>
+    <span class="c1"># )</span>
+    <span class="c1">#</span>
+    <span class="c1"># process_column(</span>
+    <span class="c1">#     root_dir,</span>
+    <span class="c1">#     &quot;raw_descriptors&quot;,</span>
+    <span class="c1">#     lambda x: x.astype(str)</span>
+    <span class="c1">#     .str.split(&quot;; &quot;)</span>
+    <span class="c1">#     .map(lambda x: sorted(set(x)))</span>
+    <span class="c1">#     .map(lambda x: [z for z in x if z != &quot;nan&quot;])</span>
+    <span class="c1">#     .str.join(&quot;; &quot;)</span>
+    <span class="c1">#     .map(lambda x: pd.NA if x == &quot;&quot; else x),</span>
+    <span class="c1"># )</span>
+
+    <span class="c1"># _filename = os.path.join(root_dir, &quot;databases/_main.zip&quot;)</span>
+    <span class="c1"># _data = pd.read_csv(_filename, encoding=&quot;utf-8&quot;, compression=&quot;zip&quot;)</span>
+
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="c1"># rec-no field</span>
+    <span class="c1">#</span>
+    <span class="c1">#</span>
+    <span class="n">assign__rec_no__field</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
 
     <span class="c1">#</span>
     <span class="c1">#</span>
@@ -687,8 +898,8 @@
     <span class="n">apply_words_thesaurus</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
     <span class="n">apply_organizations_thesaurus</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
 
-    <span class="c1">## abstracts_report(root_dir=root_dir, file_name=&quot;imported_records.txt&quot;)</span>
     <span class="n">report_imported_records_per_file</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
+    <span class="n">report_records</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span>
 
     <span class="n">message</span><span class="p">(</span><span class="s2">&quot;Process finished!!!&quot;</span><span class="p">)</span>
 
@@ -703,6 +914,43 @@
 <span class="c1"># End of main function</span>
 <span class="c1">#</span>
 <span class="c1">#</span>
+
+
+<span class="k">def</span> <span class="nf">report_records</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :meta private:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">.._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
+    <span class="kn">from</span> <span class="nn">..format_report_for_records</span> <span class="kn">import</span> <span class="n">format_report_for_records</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">read_records</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+        <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+        <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">format_report_for_records</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="o">=</span><span class="n">root_dir</span><span class="p">,</span>
+        <span class="n">target_dir</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">records</span><span class="o">=</span><span class="n">records</span><span class="p">,</span>
+        <span class="n">report_filename</span><span class="o">=</span><span class="s2">&quot;../records.txt&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">assign__rec_no__field</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :meta private:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="n">message</span><span class="p">(</span><span class="s2">&quot;Assign REC-No identifier to each record&quot;</span><span class="p">)</span>
+
+    <span class="n">processed_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;databases&quot;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">processed_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;_*.zip&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;art_no&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">compress_raw_data</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">remove_raw_csv_files</span><span class="p">):</span>
@@ -1319,7 +1567,8 @@
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">process_func</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">process_func</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">])</span>
         <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
 
 
@@ -1546,7 +1795,7 @@
         <span class="n">message</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="si">}</span><span class="s2"> imported records&quot;</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="replace_underscores_in_title_column"><a class="viewcode-back" href="../../../ingest/ingest_raw_data.html#techminer2.ingest.ingest_raw_data.replace_underscores_in_title_column">[docs]</a><span class="k">def</span> <span class="nf">replace_underscores_in_title_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+<div class="viewcode-block" id="replace_hypen_in_title_column"><a class="viewcode-back" href="../../../ingest/ingest_raw_data.html#techminer2.ingest.ingest_raw_data.replace_hypen_in_title_column">[docs]</a><span class="k">def</span> <span class="nf">replace_hypen_in_title_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
     <span class="c1">#</span>
     <span class="n">message</span><span class="p">(</span><span class="s1">&#39;Replacing &quot;-&quot; by &quot; &quot; in `title` column&#39;</span><span class="p">)</span>
     <span class="n">documents_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;databases/_main.zip&quot;</span>
@@ -1559,7 +1808,7 @@
     <span class="n">documents</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">documents_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="replace_underscores_in_abstract_column"><a class="viewcode-back" href="../../../ingest/ingest_raw_data.html#techminer2.ingest.ingest_raw_data.replace_underscores_in_abstract_column">[docs]</a><span class="k">def</span> <span class="nf">replace_underscores_in_abstract_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
+<div class="viewcode-block" id="replace_hypen_in_abstract_column"><a class="viewcode-back" href="../../../ingest/ingest_raw_data.html#techminer2.ingest.ingest_raw_data.replace_hypen_in_abstract_column">[docs]</a><span class="k">def</span> <span class="nf">replace_hypen_in_abstract_column</span><span class="p">(</span><span class="n">root_dir</span><span class="p">):</span>
     <span class="c1">#</span>
     <span class="n">message</span><span class="p">(</span><span class="s1">&#39;Replacing &quot;-&quot; by &quot; &quot; in `abstract` column&#39;</span><span class="p">)</span>
     <span class="n">documents_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;databases/_main.zip&quot;</span>
@@ -1579,30 +1828,48 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">message</span><span class="p">(</span><span class="s2">&quot;Transforming keywords in abstracts to upper case with underscores&quot;</span><span class="p">)</span>
 
-    <span class="c1">#</span>
-    <span class="c1"># Load documents</span>
-    <span class="n">documents_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;databases/_main.zip&quot;</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">documents_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
-
     <span class="n">regex1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\(.*\)&quot;</span><span class="p">)</span>
     <span class="n">regex2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[.*\]&quot;</span><span class="p">)</span>
 
+    <span class="c1">#</span>
+    <span class="c1"># Load documents</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;databases/_*.zip&quot;</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;raw_descriptors&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">all_descriptors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;raw_descriptors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_descriptors</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># Process all descriptors</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&#39;#!&quot;</span><span class="p">))</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">regex2</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="n">all_descriptors</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="n">all_descriptors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">all_descriptors</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># Process the main database</span>
+    <span class="n">documents_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;databases/_main.zip&quot;</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">documents_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
+
     <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">iterrows</span><span class="p">(),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)):</span>
         <span class="c1">#</span>
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;raw_descriptors&quot;</span><span class="p">]</span>
-
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">descriptors</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&#39;#!&quot;</span><span class="p">))</span>
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">regex1</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">descriptors</span><span class="p">)</span>
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">regex2</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">descriptors</span><span class="p">)</span>
-
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">descriptors</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">descriptors</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="n">descriptors</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
-        <span class="n">descriptors</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>
+        <span class="n">descriptors</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">all_descriptors</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]]</span>
 
         <span class="n">descriptors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">descriptors</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="n">descriptors</span> <span class="o">=</span> <span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>
+        <span class="n">descriptors</span> <span class="o">+=</span> <span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;(?:&#39;s)&quot;</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>  <span class="c1"># apostrophe</span>
+        <span class="n">descriptors</span> <span class="o">+=</span> <span class="p">[</span><span class="n">d</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;:&quot;</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>  <span class="c1"># colon</span>
+        <span class="n">descriptors</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;\(&quot;</span> <span class="o">+</span> <span class="n">d</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\)&quot;</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">descriptors</span><span class="p">]</span>  <span class="c1"># parenthesis</span>
         <span class="n">descriptors</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptors</span><span class="p">)</span>
         <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b(&quot;</span> <span class="o">+</span> <span class="n">descriptors</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;)\b&quot;</span><span class="p">)</span>
 

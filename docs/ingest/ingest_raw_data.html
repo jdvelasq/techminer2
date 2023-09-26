@@ -65,7 +65,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refine/__index__.html">Refine &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../search/__index__.html">Search &gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analyze/__index__.html">Analyze &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../report/__index__.html">Report &gt;</a></li>
 </ul>
@@ -96,7 +95,7 @@
            <div itemprop="articleBody">
              
   <span class="target" id="module-techminer2.ingest.ingest_raw_data"></span><section id="ingest-raw-data">
-<span id="tm2-ingest-ingest-raw-data"></span><h1>Ingest Raw Data<a class="headerlink" href="#ingest-raw-data" title="Permalink to this headline"></a></h1>
+<h1>Ingest Raw Data<a class="headerlink" href="#ingest-raw-data" title="Permalink to this headline"></a></h1>
 <p>Import a scopus data file in the working directory.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.ingest</span> <span class="kn">import</span> <span class="n">ingest_raw_data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ingest_raw_data</span><span class="p">(</span>
@@ -104,7 +103,12 @@
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
 <span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">remove_raw_csv_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span> 
+<span class="go">-- 001 -- Compressing raw data files</span>
+<span class="go">-- 002 -- Creating working directories</span>
+<span class="go">-- 003 -- Creating stopwords.txt file</span>
+<span class="go">-- 004 -- Creating database files</span>
+<span class="go">...</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -123,8 +127,8 @@
 <span class="go">publication_stage, raw_abstract_nlp_phrases, raw_author_keywords, raw_authors,</span>
 <span class="go">raw_authors_id, raw_countries, raw_descriptors, raw_global_references,</span>
 <span class="go">raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,</span>
-<span class="go">raw_title_nlp_phrases, source, source_abbr, source_title, title,</span>
-<span class="go">title_nlp_phrases, volume, year</span>
+<span class="go">raw_title_nlp_phrases, raw_words, raw_words_abstract, raw_words_title, source,</span>
+<span class="go">source_abbr, source_title, title, title_nlp_phrases, volume, words, year</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;databases/_main.zip&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
@@ -194,18 +198,18 @@
 <dd></dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="techminer2.ingest.ingest_raw_data.replace_hypen_in_abstract_column">
+<span class="sig-prename descclassname"><span class="pre">techminer2.ingest.ingest_raw_data.</span></span><span class="sig-name descname"><span class="pre">replace_hypen_in_abstract_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/ingest/ingest_raw_data.html#replace_hypen_in_abstract_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.ingest.ingest_raw_data.replace_hypen_in_abstract_column" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="techminer2.ingest.ingest_raw_data.replace_hypen_in_title_column">
+<span class="sig-prename descclassname"><span class="pre">techminer2.ingest.ingest_raw_data.</span></span><span class="sig-name descname"><span class="pre">replace_hypen_in_title_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/ingest/ingest_raw_data.html#replace_hypen_in_title_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.ingest.ingest_raw_data.replace_hypen_in_title_column" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="techminer2.ingest.ingest_raw_data.replace_journal_name_in_references">
 <span class="sig-prename descclassname"><span class="pre">techminer2.ingest.ingest_raw_data.</span></span><span class="sig-name descname"><span class="pre">replace_journal_name_in_references</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/ingest/ingest_raw_data.html#replace_journal_name_in_references"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.ingest.ingest_raw_data.replace_journal_name_in_references" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="techminer2.ingest.ingest_raw_data.replace_underscores_in_abstract_column">
-<span class="sig-prename descclassname"><span class="pre">techminer2.ingest.ingest_raw_data.</span></span><span class="sig-name descname"><span class="pre">replace_underscores_in_abstract_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/ingest/ingest_raw_data.html#replace_underscores_in_abstract_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.ingest.ingest_raw_data.replace_underscores_in_abstract_column" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="techminer2.ingest.ingest_raw_data.replace_underscores_in_title_column">
-<span class="sig-prename descclassname"><span class="pre">techminer2.ingest.ingest_raw_data.</span></span><span class="sig-name descname"><span class="pre">replace_underscores_in_title_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/ingest/ingest_raw_data.html#replace_underscores_in_title_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.ingest.ingest_raw_data.replace_underscores_in_title_column" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
