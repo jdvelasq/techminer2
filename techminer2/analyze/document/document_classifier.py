@@ -113,6 +113,30 @@ class DocumentClassifier:
             random_state=random_state,
         )
 
+    def hierarchical(
+        self,
+        #
+        # HIERARCHICAL PARAMS:
+        n_themes=None,
+        metric=None,
+        memory=None,
+        connectivity=None,
+        compute_full_tree="auto",
+        linkage="ward",
+        distance_threshold=None,
+    ):
+        self.method = "hierarchical"
+        self.n_themes = n_themes
+        self.estimator = AgglomerativeClustering(
+            n_clusters=n_themes,
+            metric=metric,
+            memory=memory,
+            connectivity=connectivity,
+            compute_full_tree=compute_full_tree,
+            linkage=linkage,
+            distance_threshold=distance_threshold,
+        )
+
     def fit(self):
         self.estimator.fit(self.tf_matrix)
 
