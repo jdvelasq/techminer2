@@ -6,7 +6,6 @@
             "source.organizeImports": true
         },
     },
-    "python.formatting.provider": "none",
     "isort.args": [
         "--profile",
         "black"
@@ -29,8 +28,6 @@
         "**/docs/searchindex.js": true,
         "**/searchindex.js": true
     },
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
     "editor.fontSize": 11,
     "debug.console.fontSize": 11,
     "scm.inputFontSize": 11,
