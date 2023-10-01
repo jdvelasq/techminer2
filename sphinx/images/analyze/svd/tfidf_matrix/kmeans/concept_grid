@@ -1,0 +1,9 @@
+digraph "graph" {
+	node [shape=record]
+	CL_0 [label="{CL_0|FINANCIAL_INSTITUTIONS 16:224\rFINANCIAL_CRISIS 12:235\rAPPROACH 11:345\rFINTECH 11:331\rRIGHTS 11:186\rDEVELOPMENT 10:385\r}" fontsize=9]
+	CL_1 [label="{CL_1|AUTHOR 13:243\rPAPER 12:357\rPURPOSE 10:212\rRESEARCH 10:212\rDATA 10:209\r.\r}" fontsize=9]
+	CL_2 [label="{CL_2|REGULATORY_TECHNOLOGY 20:276\rBANK 17:261\rAPPLICATION 15:210\rREGULATORY_COMPLIANCE 11:360\r.\r.\r}" fontsize=9]
+	CL_3 [label="{CL_3|REGTECH 46:552\rREGULATORS 28:464\r.\r.\r.\r.\r}" fontsize=9]
+	CL_4 [label="{CL_4|NEW_TECHNOLOGIES 22:381\rCOMPLIANCE 17:368\r.\r.\r.\r.\r}" fontsize=9]
+	CL_5 [label="{CL_5|CHALLENGE 17:215\r.\r.\r.\r.\r.\r}" fontsize=9]
+}

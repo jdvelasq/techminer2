@@ -28,9 +28,9 @@ def read_records(
 
         if file_name is None:
             file_name = {
-                "main": "_main.zip",
-                "references": "_references.zip",
-                "cited_by": "_cited_by.zip",
+                "main": "_main.csv.zip",
+                "references": "_references.csv.zip",
+                "cited_by": "_cited_by.csv.zip",
             }[database]
 
         file_path = os.path.join(directory, "databases", file_name)

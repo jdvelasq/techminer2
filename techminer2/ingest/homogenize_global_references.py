@@ -10,7 +10,7 @@
 
 >>> from techminer2.ingest.homogenize_global_references import homogenize_global_references
 >>> homogenize_global_references(
-...     root_dir="data/regtech/"
+...     root_dir="example/", 
 ... )
 --INFO-- Homogenizing global references
 --INFO-- 765 global references homogenized
@@ -41,8 +41,8 @@ def __homogeneize_references(root_dir):
     # Crates the thesaurus file
     #
 
-    main_file = os.path.join(root_dir, "databases/_main.zip")
-    refs_file = os.path.join(root_dir, "databases/_references.zip")
+    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
+    refs_file = os.path.join(root_dir, "databases/_references.csv.zip")
 
     if not os.path.exists(refs_file):
         return False

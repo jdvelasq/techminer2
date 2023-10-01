@@ -46,7 +46,7 @@ def words_frequency(
     """
     descriptors_list = []
 
-    file = os.path.join(root_dir, "databases/_main.zip")
+    file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
     if "raw_descriptors" in data.columns:
         descriptors_list.append(data["raw_descriptors"])

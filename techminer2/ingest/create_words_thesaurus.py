@@ -155,7 +155,7 @@ def create_column_data_frame(root_dir, column):
 
     #
     # The thesaurus is created only from the main databaase.
-    file = os.path.join(root_dir, "databases/_main.zip")
+    file = os.path.join(root_dir, "databases/_main.csv.zip")
     data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
     data_frame = data_frame[[column]]
     data_frame.columns = ["raw_term"]

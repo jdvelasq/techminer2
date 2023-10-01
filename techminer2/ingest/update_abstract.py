@@ -62,7 +62,7 @@ def update_abstract(
 
     records.loc[records.article == article, "abstract"] = new_text
 
-    file_path = os.path.join(root_dir, "databases/_main.zip")
+    file_path = os.path.join(root_dir, "databases/_main.csv.zip")
     records.to_csv(file_path, sep=",", encoding="utf-8", compression="zip")
 
     print(f"--INFO-- The record {article} was updated.")

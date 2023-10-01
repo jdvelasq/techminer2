@@ -1,0 +1,11 @@
+digraph "graph" {
+	node [shape=record]
+	CL_0 [label="{CL_0|REGULATORY_TECHNOLOGY 07:037\rRISK_MANAGEMENT 03:014\rINNOVATION 03:012\rNEW_TECHNOLOGIES 03:010\rSUPTECH 03:004\rSMART_CONTRACT 02:022\r}" fontsize=9]
+	CL_1 [label="{CL_1|COMPLIANCE 07:030\rDATA_PROTECTION 04:041\rACCOUNTABILITY 02:014\r.\r.\r.\r}" fontsize=9]
+	CL_2 [label="{CL_2|REGTECH 28:329\rFINTECH 12:249\r.\r.\r.\r.\r}" fontsize=9]
+	CL_3 [label="{CL_3|REGULATORS 05:164\rSEMANTIC_TECHNOLOGIES 02:041\r.\r.\r.\r.\r}" fontsize=9]
+	CL_4 [label="{CL_4|ANTI_MONEY_LAUNDERING 06:044\rARTIFICIAL_INTELLIGENCE 04:023\r.\r.\r.\r.\r}" fontsize=9]
+	CL_5 [label="{CL_5|FINANCIAL_SERVICES 04:168\rFINANCIAL_REGULATION 04:035\r.\r.\r.\r.\r}" fontsize=9]
+	CL_6 [label="{CL_6|CHARITYTECH 02:017\rENGLISH_LAW 02:017\r.\r.\r.\r.\r}" fontsize=9]
+	CL_7 [label="{CL_7|BLOCKCHAIN 03:005\r.\r.\r.\r.\r.\r}" fontsize=9]
+}

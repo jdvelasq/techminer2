@@ -10,7 +10,7 @@
 
 >>> from techminer2.ingest.homogenize_local_references import homogenize_local_references
 >>> homogenize_local_references(
-...     root_dir="data/regtech/"
+...     root_dir="example/", 
 ... )
 --INFO-- Homogenizing local references
 --INFO-- 27 local references homogenized
@@ -49,7 +49,7 @@ def __apply_thesaururs(root_dir):
 
     #
     # Loadas the main database
-    main_file = os.path.join(root_dir, "databases/_main.zip")
+    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
 
     #
@@ -116,7 +116,7 @@ def load_dataframe_from_main_zip(main_file):
 
 def ___homogeneize_references(root_dir):
     #
-    main_file = os.path.join(root_dir, "databases/_main.zip")
+    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
     raw_references = load_raw_global_references_from_main_zip(main_file)
     data_frame = load_dataframe_from_main_zip(main_file)
 
@@ -149,7 +149,7 @@ def xxx__homogeneize_references(root_dir):
     # Crates the thesaurus file
     #
 
-    main_file = os.path.join(root_dir, "databases/_main.zip")
+    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
     raw_references = load_raw_global_references_from_main_zip(main_file)
     references = load_dataframe_from_main_zip(main_file)
 

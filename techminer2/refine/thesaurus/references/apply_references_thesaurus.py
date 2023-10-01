@@ -44,7 +44,7 @@ def apply_references_thesaururs(root_dir):
 
     #
     # Loadas the main database
-    main_file = os.path.join(root_dir, "databases/_main.zip")
+    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
 
     #
