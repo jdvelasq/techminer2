@@ -114,8 +114,6 @@ from ..refine.thesaurus.organizations.apply_thesaurus import (
     apply_thesaurus as apply_organizations_thesaurus,
 )
 from ..refine.thesaurus.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
-
-# from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
 from .create_words_thesaurus import create_words_thesaurus
