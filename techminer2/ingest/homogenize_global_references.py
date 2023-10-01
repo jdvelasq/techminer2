@@ -22,7 +22,7 @@ import pathlib
 
 import pandas as pd
 
-from ..refine.references.apply_references_thesaurus import apply_references_thesaururs
+from ..refine.thesaurus.references.apply_references_thesaurus import apply_references_thesaururs
 
 
 def homogenize_global_references(root_dir):

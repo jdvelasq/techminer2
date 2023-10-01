@@ -45,7 +45,7 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from ...thesaurus_lib import load_system_thesaurus_as_dict
+from ....thesaurus_lib import load_system_thesaurus_as_dict
 
 THESAURUS_FILE = "words.txt"
 

@@ -32,7 +32,7 @@ import os.path
 import pandas as pd
 from fuzzywuzzy import process
 
-from ...thesaurus_lib import load_system_thesaurus_as_dict
+from ....thesaurus_lib import load_system_thesaurus_as_dict
 
 THESAURUS_FILE = "words.txt"
 

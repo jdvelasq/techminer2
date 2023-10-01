@@ -24,7 +24,7 @@ from os.path import isfile, join
 from spellchecker import SpellChecker
 from textblob import TextBlob
 
-from ...thesaurus_lib import load_system_thesaurus_as_dict
+from ....thesaurus_lib import load_system_thesaurus_as_dict
 
 THESAURUS_FILE = "words.txt"
 

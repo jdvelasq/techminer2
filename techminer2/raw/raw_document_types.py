@@ -13,30 +13,19 @@ Document Types in Raw Documents
 Return the number of records by document type in the databases.
 
 
->>> from techminer2.ingest import raw_document_types
+>>> from techminer2.raw import document_types
 >>> raw_document_types(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ... )
---INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
---INFO-- Document types in: cited_by
-No document types found
-<BLANKLINE>
---INFO-- Concatenating raw files in data/regtech/raw-data/references/
---INFO-- Document types in: references
-No document types found
-<BLANKLINE>
---INFO-- Concatenating raw files in data/regtech/raw-data/main/
---INFO-- Document types in: main
-No document types found
-<BLANKLINE>
+
 
 
 """
 import os
 
-from .ingest_raw_data import concat_raw_zip_files, get_subdirectories
+from ..ingest.ingest_raw_data import concat_raw_zip_files, get_subdirectories
 
 
 def raw_document_types(root_dir):

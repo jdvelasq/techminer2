@@ -108,9 +108,13 @@ from textblob import TextBlob
 from tqdm import tqdm
 
 from .._stopwords_lib import load_generic_stopwords
-from ..refine.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
-from ..refine.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
-from ..refine.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
+from ..refine.thesaurus.countries.apply_thesaurus import (
+    apply_thesaurus as apply_countries_thesaurus,
+)
+from ..refine.thesaurus.organizations.apply_thesaurus import (
+    apply_thesaurus as apply_organizations_thesaurus,
+)
+from ..refine.thesaurus.words.apply_thesaurus import apply_thesaurus as apply_words_thesaurus
 
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
