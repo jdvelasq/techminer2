@@ -1,27 +1,20 @@
 .DS_Store
 
-data/sustainability/
-data/mateo/
-data/karla/
-data/tm2/
-data/tm2-reviews/
+example/countries.txt
+example/databases/
+example/global_references.txt
+example/keywords.txt
+example/local_references.txt
+example/not_recognized_references.txt
+example/organizations.txt
+example/records.txt
+example/reports/
+example/stopwords.txt
+example/words.txt
 
-
-data/regtech/databases/
-data/regtech/reports/
-data/regtech/stopwords.txt
-data/regtech/organizations.txt
-data/regtech/keywords.txt
-data/regtech/countries.txt
-data/dyna/
-
-
-sphinx/images/
 
 debug/
-
 trash/
-
 sphinx/_build/
 
 # Byte-compiled / optimized / DLL files
@@ -154,5 +147,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-data/Archivo.zip
-data/dyna.py
