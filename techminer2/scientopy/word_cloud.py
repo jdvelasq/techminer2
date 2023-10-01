@@ -24,7 +24,7 @@ Word Cloud
 ...     custom_items=None,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
@@ -58,7 +58,7 @@ Word Cloud
 ...     custom_items=None,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(2018, 2021),
 ...     cited_by_filter=(None, None),
@@ -98,7 +98,7 @@ Word Cloud
 ...     ],
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(2018, 2021),
 ...     cited_by_filter=(None, None),
@@ -138,7 +138,7 @@ Word Cloud
 ...     ],
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(2018, 2021),
 ...     cited_by_filter=(None, None),
@@ -180,7 +180,7 @@ Word Cloud
 ...     is_trend_analysis=True,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(2018, 2021),
 ...     cited_by_filter=(None, None),
@@ -225,7 +225,7 @@ Word Cloud
 ...     is_trend_analysis=True,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),

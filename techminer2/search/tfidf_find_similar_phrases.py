@@ -22,7 +22,7 @@ Find Similar Records
 ...     top_n=3,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
@@ -38,7 +38,7 @@ Find Similar Records
 ...     top_n=3,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),

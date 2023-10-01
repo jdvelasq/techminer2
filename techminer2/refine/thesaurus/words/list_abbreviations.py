@@ -13,7 +13,7 @@ List Abbreviations
 >>> list_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 ANTI_MONEY_LAUNDERING (AML)
 CLASSIFICATION (OF_INFORMATION)

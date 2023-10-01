@@ -19,7 +19,7 @@ Fuzzy Search
 ...     threshold=70,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 ARTIFICIAL_INTELLIGENCE
 ARTIFICIAL_INTELLIGENCE_AND_LAW

@@ -15,7 +15,7 @@ Records with No Abstract Available
 >>> records_with_no_abstract_available(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 
 

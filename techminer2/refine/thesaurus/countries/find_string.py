@@ -22,7 +22,7 @@ Finds a string in the terms of a thesaurus.
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 --INFO-- The file data/regtech/countries.txt has been reordered.
 

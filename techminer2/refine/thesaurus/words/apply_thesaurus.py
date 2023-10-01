@@ -14,7 +14,7 @@ Apply Thesaurus
 >>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 --INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
 

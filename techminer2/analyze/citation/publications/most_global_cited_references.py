@@ -27,7 +27,7 @@ Most Global Cited References
 ...     yshift=4,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="references",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),

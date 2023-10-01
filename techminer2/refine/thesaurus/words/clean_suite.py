@@ -19,7 +19,7 @@ Clean Suite
 ...     acronym_identifier=True,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 (
     ('AML', 'ANTI MONEY LAUNDERING'),

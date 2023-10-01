@@ -17,7 +17,7 @@ Trending Words per Year
 ...     custom_items=None,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,
@@ -56,7 +56,7 @@ FUTURE_RESEARCH_DIRECTION            1     2018      2018  ...   3  0.15000     
 ...     ], 
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,

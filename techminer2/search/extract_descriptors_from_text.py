@@ -26,7 +26,7 @@ Extract Descriptors from Text
 ...     ),
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 ['ARTIFICIAL_INTELLIGENCE', 'BANKING', 'COMPLIANCE', 'ELECTRONIC_TRANSACTIONS_UNIT', 'ETHICAL_ISSUES', 'FINANCE', 'FINANCIAL_INDUSTRY', 'ISLAMIC_FINANCE', 'REGTECH', 'REGULATORY_COMPLIANCE', 'REGULATORY_TECHNOLOGY', 'REPORTING', 'RISK_MANAGEMENT']
 

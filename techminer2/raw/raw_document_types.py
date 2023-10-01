@@ -17,7 +17,7 @@ Return the number of records by document type in the databases.
 >>> raw_document_types(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 
 

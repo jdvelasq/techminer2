@@ -26,7 +26,7 @@ Highlight phrase
 ...     ),
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 they highlight the limited adoption of REGULATORY_TECHNOLOGY (REGTECH) and
 electronic signatures in palestine's BANKING sector, proposing the

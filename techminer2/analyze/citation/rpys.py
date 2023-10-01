@@ -14,7 +14,7 @@ RPYS (Reference Publication Year Spectroscopy)
 >>> chart = rpys(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 >>> chart.fig_.write_html("sphinx/_static/analyze/citation/rpys_chart.html")
 

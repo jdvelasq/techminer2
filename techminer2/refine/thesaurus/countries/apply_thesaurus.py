@@ -17,7 +17,7 @@ the same directory as the documents.csv file.
 >>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     )
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 

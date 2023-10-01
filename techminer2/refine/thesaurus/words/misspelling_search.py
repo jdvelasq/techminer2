@@ -13,7 +13,7 @@ Misspelling Search
 >>> misspelling_search(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 --INFO-- The file data/regtech/misspelled.txt has been generated.
 

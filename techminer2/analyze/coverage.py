@@ -19,7 +19,7 @@ Computes coverage of terms in a column discarding stopwords.
 ...     field="author_keywords",
 ...     #
 ...     # DATABASE_PARAMS
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),

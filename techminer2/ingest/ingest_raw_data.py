@@ -17,7 +17,7 @@ Import a scopus data file in the working directory.
 >>> ingest_raw_data(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/", 
+...     root_dir="example/", 
 ...     remove_raw_csv_files=True,
 ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files
@@ -673,112 +673,6 @@ def ingest_raw_data(
         "raw_words_abstract",
         "raw_words_title",
     )
-
-    # _filename = os.path.join(root_dir, "databases/_references.zip")
-    # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
-
-    #
-    # Mark only noun phrases is not sufficient to extract knowledge from
-    # titles and abstracts. By definition, noun phrases have a lenght > 1.
-    # As a consequence, the following code is required to extract single
-    # keywords, or other terms not captured by the noun phrases.
-    # At this point, title and abstracts are in lower case with
-    # meaningul noun phrases  and keywords in upper case.
-    #
-
-    # copy_to_column(root_dir, "raw_title_noun_phrases", "raw_title_nlp_phrases")
-    # copy_to_column(root_dir, "title", "raw_title_nlp_phrases")
-    # process_column(
-    #     root_dir,
-    #     "raw_title_nlp_phrases",
-    #     lambda x: x.astype(str)
-    #     .apply(lambda z: list(TextBlob(z).words))
-    #     .map(
-    #         lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
-    #     )
-    #     .map(lambda x: [z for z in x if z == z.upper()])
-    #     .map(set)
-    #     .map(sorted)
-    #     .str.join("; ")
-    #     .map(lambda x: pd.NA if x == "" else x),
-    # )
-
-    ###
-    # processed_dir = pathlib.Path(root_dir) / "databases"
-    # files = list(processed_dir.glob("_*.zip"))
-    # for file in files:
-    #     data = pd.read_csv(file, encoding="utf-8", compression="zip")
-    #     nlp = data["raw_title_nlp_phrases"].dropna()
-    #     if len(nlp) == 0:
-    #         data["raw_title_nlp_phrases"] = data.raw_title_noun_phrases
-    #         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
-    ###
-
-    # _filename = os.path.join(root_dir, "databases/_main.zip")
-    # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
-
-    # copy_to_column(root_dir, "raw_abstract_noun_phrases", "raw_abstract_nlp_phrases")
-    # copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
-    # process_column(
-    #     root_dir,
-    #     "raw_abstract_nlp_phrases",
-    #     lambda x: x.astype(str)
-    #     .apply(lambda z: list(TextBlob(z).words))
-    #     .map(
-    #         lambda x: [z for z in x if set("\"'~|!$%&/+-*:<>=@#[](){}0123456789") & set(z) == set()]
-    #     )
-    #     .map(lambda x: [z for z in x if z == z.upper()])
-    #     .map(set)
-    #     .map(sorted)
-    #     .str.join("; ")
-    #     .map(lambda x: pd.NA if x == "" else x),
-    # )
-
-    ###
-    # processed_dir = pathlib.Path(root_dir) / "databases"
-    # files = list(processed_dir.glob("_*.zip"))
-    # for file in files:
-    #     data = pd.read_csv(file, encoding="utf-8", compression="zip")
-    #     if "raw_abstract_nlp_phrases" in data.columns:
-    #         nlp = data["raw_abstract_nlp_phrases"].dropna()
-    #         if len(nlp) == 0:
-    #             data["raw_abstract_nlp_phrases"] = data.raw_abstract_noun_phrases
-    #             data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
-    #     else:
-    #         if "raw_abstract_noun_phrases" in data.columns:
-    #             data["raw_abstract_nlp_phrases"] = data.raw_abstract_noun_phrases
-    #             data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
-
-    ###
-
-    # concatenate_columns(
-    #     root_dir,
-    #     "raw_nlp_phrases",
-    #     "raw_title_nlp_phrases",
-    #     "raw_abstract_nlp_phrases",
-    # )
-    #
-    # concatenate_columns(
-    #     root_dir,
-    #     "raw_descriptors",
-    #     "raw_nlp_phrases",
-    #     "raw_keywords",
-    # )
-    #
-    # process_column(
-    #     root_dir,
-    #     "raw_descriptors",
-    #     lambda x: x.astype(str)
-    #     .str.split("; ")
-    #     .map(lambda x: sorted(set(x)))
-    #     .map(lambda x: [z for z in x if z != "nan"])
-    #     .str.join("; ")
-    #     .map(lambda x: pd.NA if x == "" else x),
-    # )
-
-    # _filename = os.path.join(root_dir, "databases/_main.zip")
-    # _data = pd.read_csv(_filename, encoding="utf-8", compression="zip")
-
     #
     #
     # rec-no field
@@ -884,7 +778,7 @@ def compress_raw_data(root_dir, remove_raw_csv_files):
         csv_files = [f for f in csv_files if f.endswith(".csv")]
         for csv_file in csv_files:
             csv_file_path = os.path.join(raw_dir, folder, csv_file)
-            zip_file_path = os.path.join(raw_dir, folder, csv_file[:-4] + ".zip")
+            zip_file_path = os.path.join(raw_dir, folder, csv_file + ".zip")
             df = pd.read_csv(csv_file_path, encoding="utf-8")
             df.to_csv(zip_file_path, encoding="utf-8", index=False, compression="zip")
             if remove_raw_csv_files:

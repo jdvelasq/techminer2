@@ -15,7 +15,7 @@ Update Abstract
 ...     new_text=
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 
 

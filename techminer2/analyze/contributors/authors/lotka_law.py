@@ -14,7 +14,7 @@ Lotka's Law
 >>> lotka = lotka_law(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,

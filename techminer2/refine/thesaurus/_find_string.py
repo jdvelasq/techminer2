@@ -20,7 +20,7 @@
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... )
 --INFO-- The file data/regtech/words.txt has been reordered.
 

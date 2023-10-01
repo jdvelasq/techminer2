@@ -15,7 +15,7 @@ Suggest thesurus words to analyze based on frequency.
 >>> words_frequency(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ... ).head(10)
 FINANCIAL       145
 REGULATORY      109

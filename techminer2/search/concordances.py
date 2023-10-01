@@ -24,7 +24,7 @@ Abstract concordances exploration tool.
 ...     prompt_file="concordances_prompt.txt",
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="data/regtech/",
+...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
