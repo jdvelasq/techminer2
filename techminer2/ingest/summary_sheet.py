@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _ingest.summary_sheet:
-
 Summary Sheet
 ===============================================================================
 
