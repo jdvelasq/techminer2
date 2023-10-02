@@ -499,7 +499,7 @@ VI
     virgin islands (u.s.)
 VN
     vietnam
-    viet nam
+    viet nam 
 VU
     vanuatu
 WF
