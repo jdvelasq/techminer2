@@ -1,0 +1,521 @@
+[UKN]
+    [UKN]
+AW
+    aruba
+AF
+    afghanistan
+AO
+    angola
+AI
+    anguilla
+AX
+    åland islands
+AL
+    albania
+AD
+    andorra
+AN
+    netherlands antilles
+AE
+    united arab emirates
+AR
+    argentina
+AM
+    armenia
+AS
+    american samoa
+AQ
+    antarctica
+TF
+    french southern territories
+AG
+    antigua and barbuda
+AU
+    australia
+AT
+    austria
+AZ
+    azerbaijan
+BI
+    burundi
+BE
+    belgium
+BJ
+    benin
+BF
+    burkina faso
+BD
+    bangladesh
+BG
+    bulgaria
+BH
+    bahrain
+BS
+    bahamas
+BA
+    bosnia and herz.
+    bosnia and herzegovina
+BL
+    saint barthélemy
+BY
+    belarus
+BZ
+    belize
+BM
+    bermuda
+BO
+    bolivia
+BR
+    brazil
+BB
+    barbados
+BN
+    brunei darussalam
+BT
+    bhutan
+BV
+    bouvet island
+BW
+    botswana
+BQ
+    bonaire
+CF
+    central african republic
+    central african rep.
+CA
+    canada
+CC
+    cocos (keeling) islands
+CH
+    switzerland
+CL
+    chile
+CN
+    china
+CI
+    côte d'ivoire
+    cote d'ivoire
+CM
+    cameroon
+CD
+    democratic republic of the congo
+    congo, democratic republic of the
+    dem. rep. congo
+CG
+    congo
+CK
+    cook islands
+CO
+    colombia
+KM
+    comoros
+CV
+    cabo verde
+    cape verde
+CR
+    costa rica
+CU
+    cuba
+CX
+    christmas island
+KY
+    cayman islands
+CY
+    n. cyprus
+    cyprus
+CZ
+    czechia
+DE
+    germany
+DJ
+    djibouti
+DM
+    dominica
+DK
+    denmark
+DO
+    dominican republic
+    dominican rep.
+CW
+    curaçao
+DZ
+    algeria
+EC
+    ecuador
+EG
+    egypt
+ER
+    eritrea
+EH
+    w. sahara
+    western sahara
+ES
+    spain
+EE
+    estonia
+ET
+    ethiopia
+FI
+    finland
+FJ
+    fiji
+FK
+    falkland is.
+    falkland islands
+FR
+    france
+FO
+    faroe islands
+FM
+    micronesia
+GA
+    gabon
+GB
+    united kingdom
+GE
+    georgia
+GG
+    guernsey
+GH
+    ghana
+GI
+    gibraltar
+GN
+    guinea
+GP
+    guadeloupe
+GM
+    gambia
+GW
+    guinea-bissau
+GQ
+    equatorial guinea
+    eq. guinea
+GR
+    greece
+GD
+    grenada
+GL
+    greenland
+GT
+    guatemala
+GF
+    french guiana
+GU
+    guam
+GY
+    guyana
+HK
+    hong kong
+HM
+    heard island and mcdonald islands
+HN
+    honduras
+HR
+    croatia
+HT
+    haiti
+HU
+    hungary
+ID
+    indonesia
+IM
+    isle of man
+IN
+    india
+IO
+    british indian ocean territory
+IE
+    ireland
+IR
+    iran
+IQ
+    iraq
+IS
+    iceland
+IL
+    israel
+IT
+    italy
+JM
+    jamaica
+JE
+    jersey
+JO
+    jordan
+JP
+    japan
+KZ
+    kazakhstan
+KE
+    kenya
+KG
+    kyrgyzstan
+KH
+    cambodia
+KI
+    kiribati
+KN
+    saint kitts and nevis
+KR
+    south korea
+XK
+    kosovo
+KW
+    kuwait
+LA
+    lao people's democratic republic
+LB
+    lebanon
+LR
+    liberia
+LY
+    libya
+LC
+    saint lucia
+LI
+    liechtenstein
+LK
+    sri lanka
+LS
+    lesotho
+LT
+    lithuania
+LU
+    luxembourg
+LV
+    latvia
+MO
+    macao
+MF
+    saint martin (french part)
+MA
+    morocco
+MC
+    monaco
+MD
+    moldova
+MG
+    madagascar
+MV
+    maldives
+MX
+    mexico
+MH
+    marshall islands
+MK
+    macedonia
+    north macedonia
+ML
+    mali
+MT
+    malta
+MM
+    myanmar
+ME
+    montenegro
+MN
+    mongolia
+MP
+    northern mariana islands
+MZ
+    mozambique
+MR
+    mauritania
+MS
+    montserrat
+MQ
+    martinique
+MU
+    mauritius
+MW
+    malawi
+MY
+    malaysia
+YT
+    mayotte
+NA
+    namibia
+NC
+    new caledonia
+NE
+    niger
+NF
+    norfolk island
+NG
+    nigeria
+NI
+    nicaragua
+NU
+    niue
+NL
+    netherlands
+NO
+    norway
+NP
+    nepal
+NR
+    nauru
+NZ
+    new zealand
+OM
+    oman
+PK
+    pakistan
+PA
+    panama
+PN
+    pitcairn
+PE
+    peru
+PH
+    philippines
+PW
+    palau    
+PG
+    papua new guinea
+PL
+    poland
+PR
+    puerto rico
+KP
+    north korea
+PT
+    portugal
+PY
+    paraguay
+PS
+    palestine
+PF
+    french polynesia
+QA
+    qatar
+RE
+    réunion
+RO
+    romania
+RU
+    russia
+RW
+    rwanda
+SA
+    saudi arabia
+SD
+    sudan
+SN
+    senegal
+SG
+    singapore
+GS
+    south georgia and the south sandwich islands
+SH
+    saint helena
+SJ
+    svalbard and jan mayen
+SB
+    solomon islands
+    solomon is.
+SL
+    sierra leone
+SV
+    el salvador
+SM
+    san marino
+SO
+    somalia
+PM
+    saint pierre and miquelon
+RS
+    serbia
+ST
+    sao tome and principe
+SR
+    suriname
+SK
+    slovakia
+SI
+    slovenia
+SE
+    sweden
+SZ
+    eswatini
+    swaziland
+SC
+    seychelles
+SY
+    syria
+    syrian arab republic
+TC
+    turks and caicos islands
+TD
+    chad
+TG
+    togo
+TH
+    thailand
+TJ
+    tajikistan
+TK
+    tokelau
+TM
+    turkmenistan
+TL
+    timor-leste
+TO
+    tonga
+TT
+    trinidad and tobago
+TN
+    tunisia
+TR
+    turkey
+TV
+    tuvalu
+TW
+    taiwan
+TZ
+    tanzania
+UG
+    uganda
+UA
+    ukraine
+UM
+    united states minor outlying islands
+UY
+    uruguay
+US
+    united states
+UZ
+    uzbekistan
+VA
+    holy see
+VC
+    saint vincent and the grenadines
+VE
+    venezuela
+VG
+    virgin islands (british)
+VI
+    virgin islands (u.s.)
+VN
+    vietnam
+    viet nam
+VU
+    vanuatu
+WF
+    wallis and futuna
+WS
+    samoa
+YE
+    yemen
+ZA
+    south africa
+ZM
+    zambia
+ZW
+    zimbabwe
+SS
+    south sudan
+SX
+    sint maarten
+
