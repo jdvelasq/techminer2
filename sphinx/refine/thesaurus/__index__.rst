@@ -1,20 +1,22 @@
-Refine >
+Thesaurus >
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 1
 
-    fields/__index__
+    countries/__index__
 
 --------------------------------------------------------------------------------
 
 .. toctree::
     :maxdepth: 1
 
-    thesaurus/__index__
+    organizations/__index__
 
 --------------------------------------------------------------------------------
 
 .. toctree::
-    sort_stopwords
+    :maxdepth: 1
+
+    words/__index__
 
