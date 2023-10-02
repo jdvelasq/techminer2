@@ -191,7 +191,7 @@ def ingest_raw_data(
     # *********************************************************************************************
     def create_working_directories(root_dir):
         message("Creating working directories")
-        for directory in ["databases", "reports"]:
+        for directory in ["databases", "reports", "my_keywords"]:
             directory_path = os.path.join(root_dir, directory)
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
@@ -754,6 +754,7 @@ def ingest_raw_data(
     #
     create__local_citations__column_in_references_database(root_dir)
     create__local_citations__column_in_documents_database(root_dir)
+    create__local_citations__column_in_cited_by_database(root_dir)
 
     #
     #
@@ -1500,7 +1501,7 @@ def create__local_citations__column_in_references_database(directory):
     :meta private:
     """
 
-    references_path = os.path.join(directory, "databases", "_references.zip")
+    references_path = os.path.join(directory, "databases", "_references.csv.zip")
     if not os.path.exists(references_path):
         return
 
@@ -1526,6 +1527,22 @@ def create__local_citations__column_in_references_database(directory):
 
     # saves the new column in the references database
     references.to_csv(references_path, index=False, compression="zip")
+
+
+def create__local_citations__column_in_cited_by_database(root_dir):
+    """
+    :meta private:
+    """
+
+    # message("Creating `local_citations` column in documents database")
+
+    # counts the number of citations for each local reference
+    documents_path = os.path.join(root_dir, "databases", "_cited_by.csv.zip")
+    documents = pd.read_csv(documents_path, compression="zip")
+    documents["local_citations"] = 0
+
+    # saves the new column in the references database
+    documents.to_csv(documents_path, index=False, compression="zip")
 
 
 def create__local_citations__column_in_documents_database(root_dir):
