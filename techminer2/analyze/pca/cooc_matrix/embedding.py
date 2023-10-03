@@ -48,7 +48,7 @@ COMPLIANCE 07:030              3.547138 -3.615022  0.951064  4.159554  0.402718
 REGULATION 05:164              1.294097  3.580421  0.761440  1.399094 -0.620766
 
 """
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def embedding(

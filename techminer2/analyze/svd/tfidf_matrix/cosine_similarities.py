@@ -58,7 +58,7 @@ REGULATORY_COMPLIANCE 07:198   REGULATION 04:018 (0.837); FINANCIAL_TECHNOLOG...
 """
 from typing import Literal
 
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

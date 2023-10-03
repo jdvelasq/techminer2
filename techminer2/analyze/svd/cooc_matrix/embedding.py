@@ -49,7 +49,7 @@ REGULATORY_COMPLIANCE 07:198    7.694193   1.454806  ... -2.730564  2.309500
 [5 rows x 5 columns]
 
 """
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def embedding(

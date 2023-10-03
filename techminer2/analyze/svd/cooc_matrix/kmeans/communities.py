@@ -56,7 +56,7 @@ Communities
 [5 rows x 6 columns]
 
 """
-from .....factor_analysis import FactorAnalyzer
+from ....._common.factor_analysis import FactorAnalyzer
 
 
 def communities(

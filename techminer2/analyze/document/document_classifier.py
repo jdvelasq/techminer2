@@ -10,10 +10,10 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering, KMeans
 
-from ..._read_records import read_records
+from ..._common._read_records import read_records
+from ..._common.format_report_for_records import format_report_for_records
+from ..._common.make_report_dir import make_report_dir
 from ...analyze import tfidf
-from ...format_report_for_records import format_report_for_records
-from ...make_report_dir import make_report_dir
 
 
 class DocumentClassifier:

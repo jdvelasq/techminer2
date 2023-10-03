@@ -74,12 +74,12 @@ from collections import defaultdict
 
 import pandas as pd
 
+from ..search.concordances import concordances_from_records
 from ._read_records import read_records
 from .format_prompt_for_records import format_prompt_for_records
 from .format_report_for_records import format_report_for_records
 from .make_report_dir import make_report_dir
 from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
-from .search.concordances import concordances_from_records
 
 TEXTWRAP_WIDTH = 73
 

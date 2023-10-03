@@ -48,7 +48,7 @@ COMPLIANCE 07:030             REGTECH 28:329 (0.557); FINTECH 12:249 (0.246)...
 REGULATION 05:164             FINTECH 12:249 (0.642); RISK_MANAGEMENT 03:014...
 
 """
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

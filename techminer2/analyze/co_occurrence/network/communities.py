@@ -49,8 +49,8 @@ Communities
 
 
 """
-from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
 
 
 def communities(

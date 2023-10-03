@@ -41,8 +41,8 @@ Report
 
 
 """
-from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....nx_create_co_occurrence_report import nx_create_co_occurrences_report
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_create_co_occurrence_report import nx_create_co_occurrences_report
 from ...performance_metrics import performance_metrics
 
 

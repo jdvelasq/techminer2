@@ -22,7 +22,7 @@ from os.path import dirname
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from ..thesaurus_lib import load_system_thesaurus_as_frame
+from .._common.thesaurus_lib import load_system_thesaurus_as_frame
 
 
 def concept_clumping(data_frame):

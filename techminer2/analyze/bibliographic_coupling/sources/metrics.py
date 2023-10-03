@@ -46,8 +46,10 @@ NORTHWEST J INTL LAW BUS            1     0.000000   0.333333  0.035109
 
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_bibliographic_coupling_graph import nx_create_bibliographic_coupling_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_bibliographic_coupling_graph import (
+    nx_create_bibliographic_coupling_graph,
+)
 
 UNIT_OF_ANALYSIS = "source_abbr"
 

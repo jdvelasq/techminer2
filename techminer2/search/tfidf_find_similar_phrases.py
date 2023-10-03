@@ -89,8 +89,8 @@ from nltk.stem import PorterStemmer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
-from .._read_records import read_records
-from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from .._common._read_records import read_records
+from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "words.txt"

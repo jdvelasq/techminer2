@@ -11,8 +11,8 @@
 #
 import networkx as nx
 
-from .analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from .analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
 from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ

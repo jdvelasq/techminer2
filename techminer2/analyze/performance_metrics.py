@@ -111,9 +111,9 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from .._filtering_lib import generate_custom_items
-from .._sorting_lib import sort_indicators_by_metric
-from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from .._common._filtering_lib import generate_custom_items
+from .._common._sorting_lib import sort_indicators_by_metric
+from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..indicators.global_indicators_by_field import global_indicators_by_field
 
 MARKER_COLOR = "#7793a5"

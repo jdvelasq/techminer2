@@ -53,8 +53,8 @@ Item Density Visualization
 
 
 """
-from .....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from .....nx_visualize_item_density import nx_visualize_item_density
+from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....._common.nx_visualize_item_density import nx_visualize_item_density
 
 FIELD = "organizations"
 

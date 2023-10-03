@@ -23,7 +23,7 @@ import pathlib
 import pandas as pd
 from tqdm import tqdm
 
-from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
 def homogenize_local_references(root_dir):

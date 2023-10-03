@@ -61,7 +61,7 @@ REGULATION 05:164             0.153374  1.177271  0.277960  0.523503 -0.345724
 """
 from typing import Literal
 
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def embedding(

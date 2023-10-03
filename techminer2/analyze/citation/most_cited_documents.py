@@ -77,9 +77,9 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..._read_records import read_records
-from ...format_prompt_for_records import format_prompt_for_records
-from ...format_report_for_records import format_report_for_records
+from ..._common._read_records import read_records
+from ..._common.format_prompt_for_records import format_prompt_for_records
+from ..._common.format_report_for_records import format_report_for_records
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

@@ -79,8 +79,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ..._filtering_lib import generate_custom_items
-from ..._sorting_lib import sort_indicators_by_metric
+from ..._common._filtering_lib import generate_custom_items
+from ..._common._sorting_lib import sort_indicators_by_metric
 from ...indicators.global_indicators_by_field import global_indicators_by_field
 from ...indicators.items_occurrences_by_year import items_occurrences_by_year
 

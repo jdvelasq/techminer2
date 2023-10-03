@@ -55,7 +55,7 @@ Map 2D
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def map_2d(

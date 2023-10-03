@@ -48,8 +48,10 @@ Ryan P, 2020, ICEIS - PROC INT CONF ENTERP          1  ...  0.020434
 
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_bibliographic_coupling_graph import nx_create_bibliographic_coupling_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_bibliographic_coupling_graph import (
+    nx_create_bibliographic_coupling_graph,
+)
 
 UNIT_OF_ANALYSIS = "article"
 

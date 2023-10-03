@@ -43,8 +43,8 @@ Concept Grid
     :align: center
 
 """
-from ....nx_concept_grid import nx_concept_grid
-from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_concept_grid import nx_concept_grid
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 
 def concept_grid(

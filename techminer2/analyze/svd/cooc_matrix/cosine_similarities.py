@@ -48,7 +48,7 @@ REGULATORY_COMPLIANCE 07:198   REGULATION 04:018 (0.932); TECHNOLOGICAL_SOLUT...
 
 
 """
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

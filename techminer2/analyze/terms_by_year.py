@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _performance.plots.terms_by_year:
-
 Terms by Year
 ===============================================================================
 
@@ -150,10 +148,10 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from .._counters_lib import add_counters_to_frame_axis
-from .._filtering_lib import generate_custom_items
-from .._sorting_lib import sort_indicators_by_metric
-from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from .._common._counters_lib import add_counters_to_frame_axis
+from .._common._filtering_lib import generate_custom_items
+from .._common._sorting_lib import sort_indicators_by_metric
+from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..indicators.global_indicators_by_field import global_indicators_by_field
 from ..indicators.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 from ..indicators.items_occurrences_by_year import items_occurrences_by_year

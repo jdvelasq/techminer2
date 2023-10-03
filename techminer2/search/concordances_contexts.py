@@ -57,7 +57,7 @@ Abstract concordances exploration tool.
 """
 import pandas as pd
 
-from .._read_records import read_records
+from .._common._read_records import read_records
 from .concordances_lib import get_context_phrases_from_records
 
 

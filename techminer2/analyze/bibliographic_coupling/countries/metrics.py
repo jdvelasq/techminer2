@@ -51,8 +51,10 @@ Spain                      3     0.000000   0.548387  0.011296
 
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_bibliographic_coupling_graph import nx_create_bibliographic_coupling_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_bibliographic_coupling_graph import (
+    nx_create_bibliographic_coupling_graph,
+)
 
 UNIT_OF_ANALYSIS = "countries"
 

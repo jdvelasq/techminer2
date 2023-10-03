@@ -56,8 +56,8 @@ Network Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....nx_create_co_citation_graph import nx_create_co_citation_graph
-from ....nx_visualize_graph import nx_visualize_graph
+from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
+from ...._common.nx_visualize_graph import nx_visualize_graph
 
 UNIT_OF_ANALYSIS = "cited_authors"
 

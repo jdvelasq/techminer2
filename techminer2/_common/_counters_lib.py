@@ -10,7 +10,7 @@ in the values or axis of a dataframe.
 
 import numpy as np
 
-from .indicators.global_indicators_by_field import global_indicators_by_field
+from ..indicators.global_indicators_by_field import global_indicators_by_field
 
 
 # pylint: disable=too-many-arguments

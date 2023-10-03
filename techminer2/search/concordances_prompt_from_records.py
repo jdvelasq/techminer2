@@ -8,7 +8,7 @@
 
 import pandas as pd
 
-from ..format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from .._common.format_prompt_for_paragraphs import format_prompt_for_paragraphs
 from .concordances_lib import (
     get_context_phrases_from_records,
     transform_context_phrases_to_contexts_paragraphs,

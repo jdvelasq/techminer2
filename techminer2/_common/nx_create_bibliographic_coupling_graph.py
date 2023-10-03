@@ -8,8 +8,8 @@
 
 import networkx as nx
 
+from ..analyze.performance_metrics import performance_metrics
 from ._read_records import read_records
-from .analyze.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
 from .nx_compute_node_degree import nx_compute_node_degree

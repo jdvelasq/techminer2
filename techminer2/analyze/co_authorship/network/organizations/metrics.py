@@ -39,8 +39,8 @@ KS Strategic, London, United Kingdom (GBR) 1:021         4  ...  0.067114
 [5 rows x 4 columns]
 
 """
-from .....nx_compute_metrics import nx_compute_metrics
-from .....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....._common.nx_compute_metrics import nx_compute_metrics
+from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 FIELD = "organizations"
 

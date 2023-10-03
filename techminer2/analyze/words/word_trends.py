@@ -66,7 +66,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ...format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..performance_metrics import performance_metrics
 
 

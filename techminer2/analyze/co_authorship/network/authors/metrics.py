@@ -40,8 +40,8 @@ Barberis JN 2:161       2     0.000000   0.140351  0.047588
 
 
 """
-from .....nx_compute_metrics import nx_compute_metrics
-from .....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....._common.nx_compute_metrics import nx_compute_metrics
+from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 FIELD = "authors"
 

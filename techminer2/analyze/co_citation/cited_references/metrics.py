@@ -37,8 +37,8 @@ Kavassalis P, 2018, J RISK FINANC                  27  ...  0.038967
 [5 rows x 4 columns]
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_co_citation_graph import nx_create_co_citation_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_references"
 

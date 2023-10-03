@@ -39,8 +39,8 @@ Hong Kong 3:185            5     0.016569   0.353801  0.082418
 
 
 """
-from .....nx_compute_metrics import nx_compute_metrics
-from .....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....._common.nx_compute_metrics import nx_compute_metrics
+from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 FIELD = "countries"
 

@@ -22,7 +22,7 @@ Records with No Abstract Available
 
 
 """
-from .._read_records import read_records
+from .._common._read_records import read_records
 
 
 def records_with_no_abstract_available(

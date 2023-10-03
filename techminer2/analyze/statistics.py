@@ -34,7 +34,7 @@ Arman AA            2.0  2022.0  0.0  2022.0  ...             0.0   0.0   0.0   
 
 
 """
-from .._read_records import read_records
+from .._common._read_records import read_records
 
 
 def statistics(

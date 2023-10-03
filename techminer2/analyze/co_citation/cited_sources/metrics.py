@@ -35,8 +35,8 @@ J ECON BUS              28     0.016321   0.966667  0.040583
 J MANAGE INF SYST       28     0.016321   0.966667  0.040583
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_co_citation_graph import nx_create_co_citation_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_sources"
 

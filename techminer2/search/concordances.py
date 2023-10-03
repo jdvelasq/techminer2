@@ -246,8 +246,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .._read_records import read_records
-from ..format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from .._common._read_records import read_records
+from .._common.format_prompt_for_paragraphs import format_prompt_for_paragraphs
 
 
 def concordances(

@@ -47,7 +47,7 @@ import numpy as np
 import pandas as pd
 import pkg_resources
 
-from ....thesaurus_lib import load_system_thesaurus_as_dict
+from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 from ..protected_fields import PROTECTED_FIELDS
 
 

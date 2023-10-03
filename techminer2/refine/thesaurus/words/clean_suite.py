@@ -43,7 +43,7 @@ import pathlib
 
 import pandas as pd
 
-from ....thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ...._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
 def clean_suite(

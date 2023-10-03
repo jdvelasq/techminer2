@@ -41,8 +41,8 @@ ARTIFICIAL_INTELLIGENCE 04:023       9     0.038402   0.655172  0.045057
 
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 
 def metrics(

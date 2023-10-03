@@ -58,7 +58,7 @@ REGULATORY_COMPLIANCE 07:198   1.220564  0.388371 -0.015627 -0.821207  0.741367
 """
 from typing import Literal
 
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def embedding(

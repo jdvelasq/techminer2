@@ -43,8 +43,8 @@ Communities Summary
 [3 rows x 4 columns]
 
 """
-from ....nx_communities_summary import nx_communities_summary
-from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_communities_summary import nx_communities_summary
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 
 def communities_summary(

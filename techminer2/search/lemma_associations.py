@@ -94,9 +94,9 @@ from dataclasses import dataclass
 
 from textblob import TextBlob
 
-from .._read_records import read_records
-from ..format_prompt_for_paragraphs import format_prompt_for_paragraphs
-from ..thesaurus_lib import load_system_thesaurus_as_dict
+from .._common._read_records import read_records
+from .._common.format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from .._common.thesaurus_lib import load_system_thesaurus_as_dict
 
 
 def lemma_associations(

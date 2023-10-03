@@ -43,8 +43,8 @@ DATA_PROTECTION 02:027            1     0.000000   0.357143  0.069672
 
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from ...performance_metrics import performance_metrics
 
 

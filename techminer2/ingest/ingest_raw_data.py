@@ -106,7 +106,7 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
-from .._stopwords_lib import load_generic_stopwords
+from .._common._stopwords_lib import load_generic_stopwords
 from ..refine.thesaurus.countries.apply_thesaurus import (
     apply_thesaurus as apply_countries_thesaurus,
 )
@@ -791,8 +791,8 @@ def report_records(root_dir):
     """
     :meta private:
     """
-    from .._read_records import read_records
-    from ..format_report_for_records import format_report_for_records
+    from .._common._read_records import read_records
+    from .._common.format_report_for_records import format_report_for_records
 
     records = read_records(
         root_dir=root_dir,

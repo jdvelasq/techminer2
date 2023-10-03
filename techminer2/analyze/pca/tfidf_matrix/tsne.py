@@ -80,7 +80,7 @@ TSNE
 """
 from typing import Literal
 
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def tsne(

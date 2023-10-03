@@ -36,8 +36,8 @@ Buckley RP             22     0.014128   0.823529  0.041321
 
 
 """
-from ....nx_compute_metrics import nx_compute_metrics
-from ....nx_create_co_citation_graph import nx_create_co_citation_graph
+from ...._common.nx_compute_metrics import nx_compute_metrics
+from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_authors"
 

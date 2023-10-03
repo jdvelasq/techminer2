@@ -67,14 +67,16 @@ Radial Diagram
 """
 import networkx as nx
 
-from ...nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
-from ...nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from ...nx_compute_spring_layout import nx_compute_spring_layout
-from ...nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from ...nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from ...nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ...nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ...nx_visualize_graph import nx_visualize_graph
+from ..._common.nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from ..._common.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
+from ..._common.nx_compute_textfont_opacity_from_item_occ import (
+    nx_compute_textfont_opacity_from_item_occ,
+)
+from ..._common.nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from ..._common.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ..._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ..._common.nx_visualize_graph import nx_visualize_graph
 from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 

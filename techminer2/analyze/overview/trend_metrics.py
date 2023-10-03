@@ -80,7 +80,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ...format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ._compute_trend_metrics import compute_trend_metrics
 from ._plot_trend_metrics import plot_trend_metrics
 

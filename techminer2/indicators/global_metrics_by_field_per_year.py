@@ -60,7 +60,7 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from .._read_records import read_records
+from .._common._read_records import read_records
 
 
 def global_metrics_by_field_per_year(

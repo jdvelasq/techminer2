@@ -75,8 +75,8 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 --INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
 """
-from .._read_records import read_records
-from ..format_report_for_records import format_report_for_records
+from .._common._read_records import read_records
+from .._common.format_report_for_records import format_report_for_records
 
 
 def find_records(

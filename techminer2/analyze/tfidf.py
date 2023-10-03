@@ -52,9 +52,9 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
 
-from .._counters_lib import add_counters_to_frame_axis
-from .._filtering_lib import generate_custom_items
-from .._read_records import read_records
+from .._common._counters_lib import add_counters_to_frame_axis
+from .._common._filtering_lib import generate_custom_items
+from .._common._read_records import read_records
 from ..indicators.global_indicators_by_field import global_indicators_by_field
 
 

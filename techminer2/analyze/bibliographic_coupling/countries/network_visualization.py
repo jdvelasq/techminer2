@@ -60,8 +60,10 @@ Network Visualization
 
                                              
 """
-from ....nx_create_bibliographic_coupling_graph import nx_create_bibliographic_coupling_graph
-from ....nx_visualize_graph import nx_visualize_graph
+from ...._common.nx_create_bibliographic_coupling_graph import (
+    nx_create_bibliographic_coupling_graph,
+)
+from ...._common.nx_visualize_graph import nx_visualize_graph
 
 UNIT_OF_ANALYSIS = "countries"
 

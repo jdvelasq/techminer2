@@ -8,12 +8,14 @@
 
 import networkx as nx
 
-from ...nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from ...nx_compute_spring_layout import nx_compute_spring_layout
-from ...nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from ...nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from ...nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ...nx_visualize_graph import nx_visualize_graph
+from ..._common.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
+from ..._common.nx_compute_textfont_opacity_from_item_occ import (
+    nx_compute_textfont_opacity_from_item_occ,
+)
+from ..._common.nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from ..._common.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ..._common.nx_visualize_graph import nx_visualize_graph
 
 
 def correlation_map(

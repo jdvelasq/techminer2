@@ -60,7 +60,7 @@ REGULATION 05:164             RISK_MANAGEMENT 03:014 (0.736); SUPTECH 03:004...
 """
 from typing import Literal
 
-from ....factor_analysis import FactorAnalyzer
+from ...._common.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

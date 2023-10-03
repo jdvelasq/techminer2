@@ -33,8 +33,8 @@ Becker M              0     0     0     0     1     0     0     0
 
 
 """
-from .._read_records import read_records
-from .._stopwords_lib import load_stopwords
+from .._common._read_records import read_records
+from .._common._stopwords_lib import load_stopwords
 from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
 
