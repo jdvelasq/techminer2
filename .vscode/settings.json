@@ -19,6 +19,7 @@
     "python.testing.pytestEnabled": true,
     "search.exclude": {
         "**./*.js": true,
+        "**/.venv/**": true,
         "**/*.html": true
     },
     "notebook.formatOnSave.enabled": true,

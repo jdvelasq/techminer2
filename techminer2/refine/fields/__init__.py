@@ -10,6 +10,8 @@ from .filter_field import filter_field
 from .merge_fields import merge_fields
 from .process_field import process_field
 from .rename_field import rename_field
+from .stemming_and import stemming_and
+from .stemming_or import stemming_or
 
 __all__ = [
     "copy_field",
@@ -22,4 +24,6 @@ __all__ = [
     "merge_fields",
     "process_field",
     "rename_field",
+    "stemming_and",
+    "stemming_or",
 ]
