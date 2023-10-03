@@ -39,7 +39,7 @@ def sort_stopwords(
     with open(stopwords_file_path, "r", encoding="utf-8") as file:
         stopwords = [line.strip() for line in file.readlines()]
 
-    stopwords = sorted(stopwords)
+    stopwords = sorted(set(stopwords))
     with open(stopwords_file_path, "w", encoding="utf-8") as file:
         for word in stopwords:
             file.write(word + "\n")
