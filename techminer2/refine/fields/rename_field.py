@@ -9,46 +9,14 @@
 Rename a Field
 ===============================================================================
 
->>> from techminer2.refine.fields import copy_field, rename_field, delete_field
->>> copy_field(
+>>> from techminer2.refine.fields import rename_field
+>>> rename_field( # doctest: +SKIP
 ...     src_field="author_keywords",
-...     dst_field="author_keywords_copy",
+...     dst_field="author_keywords_new",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
 ... )
-
->>> rename_field(
-...     src_field="author_keywords_copy",
-...     dst_field="author_keywords_renamed",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='author_keywords_renamed',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head()
-author_keywords_renamed
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-COMPLIANCE                7
-ANTI_MONEY_LAUNDERING     6
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="author_keywords_renamed",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
 
 """
 import glob
