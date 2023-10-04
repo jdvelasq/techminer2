@@ -120,7 +120,9 @@ from .create_words_thesaurus import create_words_thesaurus
 from .homogenize_global_references import homogenize_global_references
 from .homogenize_local_references import homogenize_local_references
 
-KEYWORDS_MAX_LENGTH = 50
+KEYWORDS_MAX_LENGTH = 60
+
+PROJECT_WORKING_DIRECTORIES = ["databases", "reports", "my_keywords"]
 
 #
 # Define a message output with counter
@@ -141,39 +143,42 @@ def ingest_raw_data(
     **document_types,
 ):
     """
-    Import a Scopus data file in the working directory.
-
-    Args:
-        root_dir (str): The root directory to import the data to.
-        disable_progress_bar (bool): Whether to disable the progress bar.
-        **document_types: Keyword arguments specifying the document types to import.
-
-    Returns:
-        None
     :meta private:
     """
 
     #
+    # NOTE:
+    # This file is very long. Process original csv Scopus files to a format that is
+    # easier to work with. Due to great number of transformations, I decide to put
+    # each function and the their inmediate call, in order to clarify the process.
+    #
+
+    #
+    # Prepararion
+    # =============================================================================================
+    #
+
     # Register tqdm pandas progress bar
     tqdm.pandas()
 
-    #
     # Elapsed time report
     start_time = time.time()
 
     #
     #
-    # Phase 1: Preparing database files
+    # PHASE 1: Preparing database files
+    # =============================================================================================
     #
     #
 
-    # *********************************************************************************************
-    def compress_raw_data(root_dir, remove_raw_csv_files):
-        #
+    def compress_original_raw_csv_data_files_in_situ(root_dir, remove_raw_csv_files):
+        """Converts the original data files downloaded from Scopus to *.csv.zip files.
+
+        All the functions of the package operate with *.csv.zip files.
+        """
+
         message("Compressing raw data files")
-
         raw_dir = os.path.join(root_dir, "raw-data")
-
         folders = get_subdirectories(raw_dir)
         for folder in folders:
             csv_files = os.listdir(os.path.join(raw_dir, folder))
@@ -186,20 +191,48 @@ def ingest_raw_data(
                 if remove_raw_csv_files:
                     os.remove(csv_file_path)
 
-    compress_raw_data(root_dir, remove_raw_csv_files)
+    compress_original_raw_csv_data_files_in_situ(root_dir, remove_raw_csv_files)
 
-    # *********************************************************************************************
-    def create_working_directories(root_dir):
+    #
+    #
+    def create_project_subdirectories(root_dir):
+        """Create project working subdirectories.
+
+        +-- root_dir/
+            +-- raw-data/
+            |   +-- cited_by/
+            |   +-- main/
+            |   +-- references/
+            +-- databases/
+            +-- my_keywords/
+            +-- reports/
+
+        """
+
         message("Creating working directories")
         for directory in ["databases", "reports", "my_keywords"]:
             directory_path = os.path.join(root_dir, directory)
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
 
-    create_working_directories(root_dir)
+    create_project_subdirectories(root_dir)
 
-    # *********************************************************************************************
+    #
+    #
     def create_stopword_txt_file(root_dir):
+        """Creates a stopwords.txt file if it does not exist.
+
+        +-- root_dir/
+            +-- raw-data/
+            |   +-- cited_by/
+            |   +-- main/
+            |   +-- references/
+            +-- databases/
+            +-- my_keywords/
+            +-- reports/
+            +-- stopwords.txt
+
+        """
         message("Creating stopwords.txt file")
         file_path = os.path.join(root_dir, "stopwords.txt")
         if not os.path.exists(file_path):
@@ -208,9 +241,13 @@ def ingest_raw_data(
 
     create_stopword_txt_file(root_dir)
 
-    # *********************************************************************************************
-    def create_database_files(root_dir):
+    #
+    #
+    def create_database_csv_zip_files(root_dir):
+        """Creates a database *.csv.zip files, one for each directory in raw-data/."""
+
         message("Creating database files")
+
         raw_dir = os.path.join(root_dir, "raw-data")
         processed_dir = os.path.join(root_dir, "databases")
 
@@ -218,10 +255,12 @@ def ingest_raw_data(
         for folder in folders:
             data = concat_raw_zip_files(os.path.join(raw_dir, folder))
             #
+            #
             if len(data) < 500:
                 os.environ["TQDM_DISABLE"] = "True"
             else:
                 os.environ["TQDM_DISABLE"] = "False"
+            #
             #
             file_name = f"_{folder}.csv.zip"
             file_path = os.path.join(processed_dir, file_name)
@@ -231,21 +270,144 @@ def ingest_raw_data(
         with open(file_path, "w", encoding="utf-8"):
             pass
 
-    create_database_files(root_dir)
+    create_database_csv_zip_files(root_dir)
 
-    # *********************************************************************************************
+    #
+    #
+    def rename_scopus_columns_in_database_files(root_dir):
+        """Change Scopus original names."""
+
+        scopus2tags = {
+            "Abbreviated Source Title": "abbr_source_title",
+            "Abstract": "abstract",
+            "Affiliations": "affiliations",
+            "Art. No.": "art_no",
+            "Author full names": "author_full_names",
+            "Author Keywords": "raw_author_keywords",
+            "Author(s) ID": "raw_authors_id",
+            "Authors with affiliations": "authors_with_affiliations",
+            "Authors": "raw_authors",
+            "Chemicals/CAS": "casregnumber",
+            "Cited by": "global_citations",
+            "CODEN": "coden",
+            "Conference code": "conference_code",
+            "Conference date": "conference_date",
+            "Conference location": "conference_location",
+            "Conference name": "conference_name",
+            "Correspondence Address": "correspondence_address",
+            "Document Type": "document_type",
+            "DOI": "doi",
+            "Editors": "editors",
+            "EID": "eid",
+            "Funding Details": "funding_details",
+            "Funding Texts": "funding_texts",
+            "Index Keywords": "raw_index_keywords",
+            "ISBN": "isbn",
+            "ISSN": "issn",
+            "Issue": "issue",
+            "Language of Original Document": "languate",
+            "Link": "link",
+            "Manufacturers": "manufacturers",
+            "Molecular Sequence Numbers": "molecular_sequence_numbers",
+            "Open Access": "open_access",
+            "Page count": "page_count",
+            "Page end": "page_end",
+            "Page start": "page_start",
+            "Publication Stage": "publication_stage",
+            "Publisher": "publisher",
+            "PubMed ID": "pubmed",
+            "References": "raw_global_references",
+            "Source title": "source_title",
+            "Source": "source",
+            "Sponsors": "sponsors",
+            "Title": "title",
+            "Tradenames": "tradenames",
+            "Volume": "volume",
+            "Year": "year",
+        }
+
+        message("Applying Scopus tags to database files")
+
+        processed_dir = pathlib.Path(root_dir) / "databases"
+        files = list(processed_dir.glob("_*.zip"))
+        for file in files:
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
+            data.rename(columns=scopus2tags, inplace=True)
+            #
+            # Other columns names not in the standard Scopus format
+            data.columns = [
+                name.lower().replace(".", "").replace(" ", "_") for name in data.columns
+            ]
+            #
+            data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+
     rename_scopus_columns_in_database_files(root_dir)
-    format_columns_names_in_database_files(root_dir)
+
+    #
+    # TODO
     repair_authors_id_in_database_files(root_dir)
+
+    #
+    #
+    def repair_bad_separators_in_keywords(root_dir):
+        """Repair keywords with bad separators in the processed CSV files.
+        In Scopus, keywords are separated by semicolons. However, some records
+        contain keywords separated by commas.
+        keywords.
+
+        :meta private:
+        """
+        message("Repairing bad separators in keywords")
+        processed_dir = pathlib.Path(root_dir) / "databases"
+        files = list(processed_dir.glob("_*.zip"))
+        for file in files:
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
+            for column in ["raw_index_keywords", "raw_authors_keywords"]:
+                if column in data.columns:
+                    data[column] = data[column].map(
+                        lambda x: x.replace(",", ";")
+                        if isinstance(x, str) and ";" not in x and len(x) > KEYWORDS_MAX_LENGTH
+                        else x
+                    )
+            data.to_csv(file, index=False, encoding="utf-8", compression="zip")
+
     repair_bad_separators_in_keywords(root_dir)
 
-    discarded_types = [
-        key.lower()
-        for key, value in document_types.items()
-        if isinstance(value, bool) and value is False
-    ]
+    #
+    #
+    def remove_documents_by_type(root_dir):
+        """Remove types specified by the user"""
 
-    remove_records(root_dir, "document_type", discarded_types)
+        discarded_types = [
+            key.lower()
+            for key, value in document_types.items()
+            if isinstance(value, bool) and value is False
+        ]
+
+        remove_records(root_dir, "document_type", discarded_types)
+
+    remove_documents_by_type(root_dir)
+
+    #
+    #
+    def drop_empty_columns_in_database_files(root_dir):
+        """Drop NA columns in database files.
+
+        :meta private:
+        """
+
+        message("Dropping NA columns in database files")
+
+        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
+        for file in files:
+            data = pd.read_csv(file, encoding="utf-8", compression="zip")
+            original_cols = data.columns.copy()
+            data = data.dropna(axis=1, how="all")
+            if len(data.columns) != len(original_cols):
+                removed_cols = set(original_cols) - set(data.columns)
+                print(f"     ---> Removed columns: {removed_cols}")
+            data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+
     drop_empty_columns_in_database_files(root_dir)
 
     #
@@ -255,7 +417,8 @@ def ingest_raw_data(
 
     #
     #
-    # Phase 2: Process each column in isolation
+    # PHASE 2: Process each column in isolation
+    # =============================================================================================
     #
     #
 
@@ -379,9 +542,11 @@ def ingest_raw_data(
 
     #
     #
-    # Phase 3: Keywords & noun phrases & abstracts
+    # PHASE 2: Keywords & noun phrases & abstracts
+    # =============================================================================================
     #
     #
+
     # In the context of topic modeling for research abstracts, it is generally
     # more common and beneficial to use "noun phrases" extracted using text
     # mining techniques rather than relying solely on provided "keywords" for
@@ -404,7 +569,6 @@ def ingest_raw_data(
     # Therefore, leveraging text mining techniques to extract noun phrases is
     # often preferred over relying solely on provided keywords when
     # conducting topic modeling on research abstracts.
-    #
 
     #
     #
@@ -742,10 +906,11 @@ def ingest_raw_data(
 
     #
     #
-    # Phase 4: References
+    # PHASE 4: References
+    # =============================================================================================
     #
     #
-    # create_references(root_dir, disable_progress_bar)
+
     message("Homogenizing local references")
     homogenize_local_references(root_dir)
     message("Homogenizing global references")
@@ -758,9 +923,11 @@ def ingest_raw_data(
 
     #
     #
-    # Phase 5: Thesaurus files
+    # PHASE 5: Thesaurus files
+    # =============================================================================================
     #
     #
+
     create_countries_thesaurus(root_dir)
     create_words_thesaurus(root_dir)
     create_organizations_thesaurus(root_dir)
@@ -914,36 +1081,6 @@ def get_zip_files(directory):
     csv_files = os.listdir(directory)
     csv_files = [f for f in csv_files if f.endswith(".zip")]
     return csv_files
-
-
-def rename_scopus_columns_in_database_files(root_dir):
-    """Rename Scopus columns in the processed CSV files.
-
-    The name equivalences are stored in a repository file.
-
-
-
-
-    :meta private:
-    """
-    message("Applying Scopus tags to database files")
-
-    owner = "jdvelasq"
-    repo = "techminer2"
-    path = "settings/scopus2tags.csv"
-    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
-
-    tags = pd.read_csv(url, encoding="utf-8")
-    tags["scopus"] = tags["scopus"].str.strip()
-    tags["techminer"] = tags["techminer"].str.strip()
-    scopus2tags = dict(zip(tags["scopus"], tags["techminer"]))
-
-    processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.zip"))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        data.rename(columns=scopus2tags, inplace=True)
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
 def filter_nlp_phrases(root_dir):
@@ -1102,45 +1239,6 @@ def filter_nlp_phrases(root_dir):
     save_to_stopwords_txt_file(root_dir, stopwords)
 
 
-def format_columns_names_in_database_files(root_dir: str) -> None:
-    """
-    Format column names in database files.
-
-    Args:
-        root_dir: The root directory containing the processed CSV files.
-
-    Returns:
-        None
-
-    :meta private:
-    """
-    message("Formatting column names in database files")
-
-    processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.zip"))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        data = format_column_names(data)
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
-
-
-def format_column_names(data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Format column names in a pandas DataFrame.
-
-    Args:
-        data: The pandas DataFrame to format.
-
-    Returns:
-        The pandas DataFrame with formatted column names.
-
-    :meta private:
-    """
-    return data.rename(
-        columns={col: col.replace(".", "").replace(" ", "_").lower() for col in data.columns}
-    )
-
-
 def repair_authors_id_in_database_files(root_dir: str) -> None:
     """
     Repair authors IDs in the processed CSV files.
@@ -1218,49 +1316,6 @@ def repair_authors_id(authors_id: pd.Series, max_length: int) -> pd.Series:
     )
 
 
-def repair_bad_separators_in_keywords(root_dir):
-    """Repair keywords with bad separators in the processed CSV files.
-
-    In Scopus, keywords are separated by semicolons. However, some records
-    contain keywords separated by commas. This function repairs these
-    keywords.
-
-    Args:
-        root_dir: The root directory containing the processed CSV files.
-
-    Returns:
-        None
-
-    :meta private:
-    """
-    message("Repairing bad separators in keywords")
-    processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.zip"))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        for column in ["raw_index_keywords", "raw_authors_keywords"]:
-            if column in data.columns:
-                data[column] = repair_keywords_in_column(data[column])
-        data.to_csv(file, index=False, encoding="utf-8", compression="zip")
-
-
-def repair_keywords_in_column(raw_keywords: pd.Series) -> pd.Series:
-    """Repair keywords in a pandas Series.
-
-
-    :meta private:
-    """
-    keywords = raw_keywords.copy()
-    keywords = keywords.dropna()
-    keywords = keywords.str.split("; ").explode().str.strip().drop_duplicates()
-    keywords = keywords[keywords.str.len() > KEYWORDS_MAX_LENGTH]
-    if len(keywords) > 0:
-        for keyword in keywords:
-            print(f"     ---> Keyword with bad separator: {keyword}")
-            raw_keywords = raw_keywords.str.replace(keyword, keyword.replace(",", ";"))
-    return raw_keywords
-
-
 def remove_records(root_dir, col_name, values_to_remove):
     """Remove records with a given value in a given column.
 
@@ -1283,25 +1338,6 @@ def remove_records(root_dir, col_name, values_to_remove):
         new_length = len(data)
         if org_length != new_length:
             print(f"     ---> Removed {org_length - new_length} records")
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
-
-
-def drop_empty_columns_in_database_files(root_dir):
-    """Drop NA columns in database files.
-
-    :meta private:
-    """
-
-    message("Dropping NA columns in database files")
-
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        original_cols = data.columns.copy()
-        data = data.dropna(axis=1, how="all")
-        if len(data.columns) != len(original_cols):
-            removed_cols = set(original_cols) - set(data.columns)
-            print(f"     ---> Removed columns: {removed_cols}")
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
 
