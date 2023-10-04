@@ -11,7 +11,7 @@ example/records.txt
 example/reports/
 example/stopwords.txt
 example/words.txt
-
+tmp/*
 
 debug/
 trash/
