@@ -53,4 +53,5 @@ def count_terms_per_record(
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if src_field in data.columns:
             data[dst_field] = data[src_field].str.split("; ").map(len, na_action="ignore")
+            data[dst_field] = data[dst_field].fillna(0).astype(int)
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
