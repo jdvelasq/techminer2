@@ -16,16 +16,14 @@ def test_rename_field():
     """Test rename_field."""
 
     # Test data:
-    test_df = pd.DataFrame(
-        {
-            "col_a": ["a", "b", "c"],
-        }
-    )
     if not os.path.exists("tmp/databases"):
         os.makedirs("tmp/databases")
-
     for file in DATABASE_FILES:
-        test_df.to_csv(file, index=False, compression="zip")
+        pd.DataFrame(
+            {
+                "col_a": ["a", "b", "c"],
+            }
+        ).to_csv(file, index=False, compression="zip")
 
     # Run:
     from techminer2.refine.fields import rename_field
