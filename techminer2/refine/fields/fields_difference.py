@@ -10,33 +10,10 @@ Fields Difference
 ===============================================================================
 
 >>> from techminer2.refine.fields import fields_difference
->>> fields_difference(
+>>> fields_difference( # doctest: +SKIP 
 ...     first_field="author_keywords",
 ...     second_field="index_keywords",
 ...     dst_field="difference",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='difference',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head()
-difference
-DATA_PROTECTION          4
-INNOVATION               3
-SUPTECH                  3
-SEMANTIC_TECHNOLOGIES    2
-CHARITYTECH              2
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="difference",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",

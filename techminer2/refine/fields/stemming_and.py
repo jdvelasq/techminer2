@@ -10,7 +10,7 @@ Stemming AND
 ===============================================================================
 
 >>> from techminer2.refine.fields import stemming_and
->>> stemming_and( # doctest: +SKIP
+>>> stemming_and(  # doctest: +SKIP
 ...     items="ARTIFICIAL_INTELLIGENCE",
 ...     src_field="author_keywords",
 ...     dst_field="stemming",
@@ -18,9 +18,6 @@ Stemming AND
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
 ... )
-
-
-
 
 """
 import glob

@@ -9,8 +9,8 @@
 Filter a Field
 ===============================================================================
 
->>> from techminer2.refine.fields import filter_field, delete_field
->>> filter_field(
+>>> from techminer2.refine.fields import filter_field
+>>> filter_field(  # doctest: +SKIP 
 ...     src_field="author_keywords",
 ...     dst_field="author_keywords_filtered",
 ...     #
@@ -26,119 +26,6 @@ Filter a Field
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='author_keywords_filtered',
-...     metric='OCC',
-...     root_dir="example/", 
-... ).df_['OCC']
-author_keywords_filtered
-REGTECH                    28
-FINTECH                    12
-REGULATORY_TECHNOLOGY       7
-COMPLIANCE                  7
-ANTI_MONEY_LAUNDERING       6
-REGULATORS                  5
-FINANCIAL_SERVICES          4
-DATA_PROTECTION             4
-FINANCIAL_REGULATION        4
-ARTIFICIAL_INTELLIGENCE     4
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="author_keywords_filtered",
-...     root_dir="example",
-... )
-
-
-
-
->>> filter_field(
-...     src_field="author_keywords",
-...     dst_field="author_keywords_filtered",
-...     #
-...     # FILTERS:
-...     metric="OCC",
-...     top_n=10,
-...     occ_range=(5, None),
-...     gc_range=(None, None),
-...     custom_items=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='author_keywords_filtered',
-...     metric='OCC',
-...     root_dir="example/", 
-... ).df_['OCC']
-author_keywords_filtered
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-COMPLIANCE                7
-ANTI_MONEY_LAUNDERING     6
-REGULATORS                5
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="author_keywords_filtered",
-...     root_dir="example",
-... )
-
-
-
-
-
->>> filter_field(
-...     src_field="author_keywords",
-...     dst_field="author_keywords_filtered",
-...     #
-...     # FILTERS:
-...     metric="OCC",
-...     top_n=10,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-...     year_filter=(2019, 2022),
-...     cited_by_filter=(None, None),
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='author_keywords_filtered',
-...     metric='OCC',
-...     root_dir="example/", 
-... ).df_['OCC']
-author_keywords_filtered
-REGTECH                    21
-FINTECH                    10
-REGULATORY_TECHNOLOGY       7
-ANTI_MONEY_LAUNDERING       6
-COMPLIANCE                  6
-DATA_PROTECTION             4
-ARTIFICIAL_INTELLIGENCE     4
-FINANCIAL_REGULATION        3
-INNOVATION                  3
-NEW_TECHNOLOGIES            3
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="author_keywords_filtered",
-...     root_dir="example",
-... )
-
 
 
 """

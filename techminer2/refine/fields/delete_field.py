@@ -17,8 +17,6 @@ Delete a Field
 ...     root_dir="example",
 ... )
 
-
-
 """
 import glob
 import os.path

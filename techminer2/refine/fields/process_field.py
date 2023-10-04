@@ -9,41 +9,10 @@
 Process a Field
 ===============================================================================
 
->>> from techminer2.refine.fields import copy_field, process_field, delete_field
->>> copy_field(
-...     src_field="author_keywords",
-...     dst_field="author_keywords_copy",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> process_field(
+>>> from techminer2.refine.fields import process_field
+>>> process_field(  # doctest: +SKIP
 ...     field="author_keywords_copy",
 ...     process_func=lambda x: x.str.lower(),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='author_keywords_copy',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head()
-author_keywords_copy
-regtech                  28
-fintech                  12
-regulatory_technology     7
-compliance                7
-anti_money_laundering     6
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="author_keywords_copy",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",

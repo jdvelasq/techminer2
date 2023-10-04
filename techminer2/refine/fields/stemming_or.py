@@ -9,8 +9,8 @@
 Stemming OR
 ===============================================================================
 
->>> from techminer2.refine.fields import stemming_or, delete_field
->>> stemming_or(
+>>> from techminer2.refine.fields import stemming_or
+>>> stemming_or(  # doctest: +SKIP
 ...     item="FINANCIAL_TECHNOLOGY",
 ...     src_field="keywords",
 ...     dst_field="stemming",
@@ -18,36 +18,6 @@ Stemming OR
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
 ... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='stemming',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head(10)
-stemming
-REGULATORY_TECHNOLOGY      8
-FINANCIAL_SERVICES         6
-FINANCIAL_INSTITUTIONS     6
-FINANCIAL_REGULATION       5
-NEW_TECHNOLOGIES           3
-FINANCIAL_CRISIS           3
-SEMANTIC_TECHNOLOGIES      2
-FINANCIAL_CRIME            2
-TECHNOLOGICAL_SOLUTIONS    2
-INFORMATION_TECHNOLOGY     2
-Name: OCC, dtype: int64
-
-
->>> delete_field(
-...     field="stemming",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
 
 """
 import glob

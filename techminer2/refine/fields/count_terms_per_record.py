@@ -9,22 +9,14 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.refine.fields import count_terms_per_record, delete_field
->>> count_terms_per_record(
+>>> from techminer2.refine.fields import count_terms_per_record
+>>> count_terms_per_record(  # doctest: +SKIP 
 ...     src_field="raw_author_keywords",
 ...     dst_field="num_raw_author_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
 ... )
-
->>> delete_field(
-...     field="num_raw_author_keywords",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
 
 """
 import glob

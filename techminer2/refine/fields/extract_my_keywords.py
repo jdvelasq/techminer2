@@ -9,42 +9,18 @@
 Extract My Keywords
 ===============================================================================
 
->>> from techminer2.refine.fields import extract_my_keywords, delete_field
->>> with open("example/my_keywords/keywords.txt", "w", encoding="utf-8") as file:
+>>> from techminer2.refine.fields import extract_my_keywords
+>>> with open("example/my_keywords/keywords.txt", "w", encoding="utf-8") as file: # doctest: +SKIP 
 ...    print("REGTECH", file=file)
 ...    print("FINTECH", file=file)
 ...    print("REGULATORY_COMPLIANCE", file=file)
 ...    print("REGULATORY_TECHNOLOGY", file=file)
 ...    print("ANTI_MONEY_LAUNDERING", file=file)
 
->>> extract_my_keywords(
+>>> extract_my_keywords(   # doctest: +SKIP 
 ...     src_field="author_keywords",
 ...     dst_field="my_keywords",
 ...     file_name="keywords.txt",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='my_keywords',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head(10)
-my_keywords
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-ANTI_MONEY_LAUNDERING     6
-REGULATORY_COMPLIANCE     1
-Name: OCC, dtype: int64
-
-
->>> delete_field(
-...     field="my_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",

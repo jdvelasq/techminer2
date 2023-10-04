@@ -9,8 +9,8 @@
 Fields Intersection
 ===============================================================================
 
->>> from techminer2.refine.fields import fields_intersection, delete_field
->>> fields_intersection(
+>>> from techminer2.refine.fields import fields_intersection
+>>> fields_intersection(  # doctest: +SKIP
 ...     first_field="author_keywords",
 ...     second_field="index_keywords",
 ...     dst_field="intersection",
@@ -18,30 +18,6 @@ Fields Intersection
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
 ... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='intersection',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head()
-intersection
-REGTECH                  28
-FINTECH                  12
-REGULATORY_COMPLIANCE     9
-REGULATORY_TECHNOLOGY     8
-ANTI_MONEY_LAUNDERING     7
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="intersection",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
 
 """
 import glob

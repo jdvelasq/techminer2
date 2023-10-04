@@ -10,7 +10,7 @@ Rename a Field
 ===============================================================================
 
 >>> from techminer2.refine.fields import rename_field
->>> rename_field( # doctest: +SKIP
+>>> rename_field(  # doctest: +SKIP
 ...     src_field="author_keywords",
 ...     dst_field="author_keywords_new",
 ...     #
