@@ -60,7 +60,7 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def stemming_or(
-    item,
+    items,
     src_field,
     dst_field,
     #
@@ -73,11 +73,14 @@ def stemming_or(
     if dst_field in PROTECTED_FIELDS:
         raise ValueError(f"Field `{dst_field}` is protected")
 
-    item_blob = TextBlob(item.replace("_", " "))
-    stemmed = [word.stem() for word in item_blob.words]
+    if isinstance(items, str):
+        items = [items]
+
+    item_blobs = [TextBlob(item.replace("_", " ")) for item in items]
+    stemmed_terms = [[word.stem() for word in item_blob.words] for item_blob in item_blobs]
 
     #
-    # Computes the intersection per database
+    # Collects the terms in all databases to compute the intersection
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     column = []
     for file in files:
@@ -86,20 +89,37 @@ def stemming_or(
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if src_field in data.columns:
             column.append(data[[src_field]])
-
     items = pd.concat(column, ignore_index=True)
     items = items.dropna()
+
+    #
+    # Explode multiple terms in a single cell
     items[src_field] = items[src_field].str.split("; ")
     items = items.explode(src_field)
     items[src_field] = items[src_field].str.strip()
+
+    #
+    # Stemming all words in each cell
     items["keys"] = items[src_field].copy()
     items["keys"] = items["keys"].str.replace("_", " ")
     items["keys"] = items["keys"].map(TextBlob)
     items["keys"] = items["keys"].map(lambda x: [word.stem() for word in x.words])
-    items["keys"] = items["keys"].map(lambda x: any(t in x for t in stemmed))
 
+    #
+    # Checks if all stemmed words are in the list of stemmed words
+    items["keys"] = items["keys"].map(
+        lambda words: any(
+            any(stemmed_word in words for stemmed_word in stemmed_term)
+            for stemmed_term in stemmed_terms
+        )
+    )
+
+    #
+    # Extracts the selected terms
     items = sorted(set(items.loc[items["keys"], src_field].to_list()))
 
+    #
+    # Updates the databases
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         #
