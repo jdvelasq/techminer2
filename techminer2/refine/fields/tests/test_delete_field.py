@@ -1,5 +1,5 @@
 # pylint: disable=import-outside-toplevel
-"""Test rename_field.py"""
+"""Test delete_field.py"""
 
 import os
 
@@ -12,13 +12,14 @@ DATABASE_FILES = [
 ]
 
 
-def rename_field_test():
-    """Test rename_field."""
+def test_delete_field():
+    """Test copy_field."""
 
     # Test data:
     test_df = pd.DataFrame(
         {
             "col_a": ["a", "b", "c"],
+            "col_b": ["a", "b", "c"],
         }
     )
     if not os.path.exists("tmp/databases"):
@@ -28,11 +29,10 @@ def rename_field_test():
         test_df.to_csv(file, index=False, compression="zip")
 
     # Run:
-    from techminer2.refine.fields import rename_field
+    from techminer2.refine.fields import delete_field
 
-    rename_field(
-        src_field="col_a",
-        dst_field="col_b",
+    delete_field(
+        field="col_b",
         #
         # DATABASE PARAMS:
         root_dir="tmp/",
@@ -41,6 +41,4 @@ def rename_field_test():
     # Check:
     for file in DATABASE_FILES:
         test_df = pd.read_csv(file, compression="zip")
-
-        assert "col_a" not in test_df.columns
-        assert "col_b" in test_df.columns
+        assert "col_b" not in test_df.columns

@@ -24,7 +24,7 @@ h,
 """
 
 
-def merge_fields_test():
+def test_merge_fields():
     """Test copy_field."""
 
     # Test data:

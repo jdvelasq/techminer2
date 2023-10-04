@@ -12,7 +12,7 @@
     ],
     "python.testing.pytestArgs": [
         ".",
-        "--doctest-glob=\"*.py\"",
+        "--doctest-glob=*.py",
         "--doctest-modules"
     ],
     "python.testing.unittestEnabled": false,

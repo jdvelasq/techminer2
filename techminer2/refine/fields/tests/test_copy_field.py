@@ -12,7 +12,7 @@ DATABASE_FILES = [
 ]
 
 
-def copy_field_test():
+def test_copy_field():
     """Test copy_field."""
 
     # Test data:
