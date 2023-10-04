@@ -9,7 +9,7 @@
 Fields Difference
 ===============================================================================
 
->>> from techminer2.refine.fields import fields_difference, delete_field
+>>> from techminer2.refine.fields import fields_difference
 >>> fields_difference(
 ...     first_field="author_keywords",
 ...     second_field="index_keywords",
@@ -54,9 +54,9 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def fields_difference(
-    first_field,
-    second_field,
-    dst_field,
+    compare_field,
+    to_field,
+    output_field,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -64,14 +64,14 @@ def fields_difference(
     """
     :meta private:
     """
-    if dst_field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dst_field}` is protected")
+    if output_field in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{output_field}` is protected")
 
     #
     # Merge the two fields
     merge_fields(
-        fields_to_merge=[first_field, second_field],
-        dst_field=dst_field,
+        fields_to_merge=[compare_field, to_field],
+        dst_field=output_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -88,7 +88,7 @@ def fields_difference(
         #
         # Compute terms in both columns
         first_terms = (
-            data[first_field]
+            data[compare_field]
             .dropna()
             .str.split("; ")
             .explode()
@@ -98,25 +98,19 @@ def fields_difference(
         )
 
         second_terms = (
-            data[second_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
+            data[to_field].dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
         )
 
         common_terms = list(set(first_terms).difference(set(second_terms)))
 
         #
         # Update columns
-        data[dst_field] = (
-            data[dst_field]
+        data[output_field] = (
+            data[output_field]
             .str.split("; ")
             .map(lambda x: [z for z in x if z in common_terms], na_action="ignore")
         )
-        data[dst_field] = data[dst_field].map(
+        data[output_field] = data[output_field].map(
             lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore"
         )
 
