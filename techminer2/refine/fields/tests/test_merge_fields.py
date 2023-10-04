@@ -51,13 +51,11 @@ def test_merge_fields():
     for file in DATABASE_FILES:
         test_df = pd.read_csv(file, compression="zip")
         assert "col_c" in test_df.columns
-        assert test_df["col_c"].tolist()[:7] == [
-            "A; a; b",
-            "B; C; c",
-            "D; d",
-            "E",
-            "F",
-            "g",
-            "h",
-        ]
-        assert pd.isna(test_df["col_c"].tolist()[7])
+        assert test_df["col_c"][0] == "A; a; b"
+        assert test_df["col_c"][1] == "B; C; c"
+        assert test_df["col_c"][2] == "D; d"
+        assert test_df["col_c"][3] == "E"
+        assert test_df["col_c"][4] == "F"
+        assert test_df["col_c"][5] == "g"
+        assert test_df["col_c"][6] == "h"
+        assert pd.isna(test_df["col_c"][7])
