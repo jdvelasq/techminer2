@@ -12,17 +12,6 @@ DATABASE_FILES = [
     "tmp/databases/_references.csv.zip",
 ]
 
-DATA = """col_a,col_b
-a; b,A
-c,B; C
-d,D
-,E
-F,
-g,
-h,
-,
-"""
-
 
 def test_merge_fields():
     """Test copy_field."""
