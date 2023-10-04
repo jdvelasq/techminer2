@@ -30,11 +30,17 @@ def test_merge_fields():
     # Test data:
     if not os.path.exists("tmp/databases"):
         os.makedirs("tmp/databases")
-
     for file in DATABASE_FILES:
-        with open(file[:-4], "wt", encoding="utf-8") as out_fp:
-            out_fp.write(DATA)
-        pd.read_csv(file[:-4]).to_csv(file, index=False, compression="zip")
+        pd.DataFrame(
+            [
+                {"col_a": "a; b", "col_b": "A"},
+                {"col_a": "c", "col_b": "B; C"},
+                {"col_a": "d", "col_b": "D"},
+                {"col_a": pd.NA, "col_b": "E"},
+                {"col_a": "e", "col_b": pd.NA},
+                {"col_a": pd.NA, "col_b": pd.NA},
+            ]
+        ).to_csv(file, index=False, compression="zip")
 
     # Run:
     from techminer2.refine.fields import merge_fields
@@ -55,7 +61,5 @@ def test_merge_fields():
         assert test_df["col_c"][1] == "B; C; c"
         assert test_df["col_c"][2] == "D; d"
         assert test_df["col_c"][3] == "E"
-        assert test_df["col_c"][4] == "F"
-        assert test_df["col_c"][5] == "g"
-        assert test_df["col_c"][6] == "h"
-        assert pd.isna(test_df["col_c"][7])
+        assert test_df["col_c"][4] == "e"
+        assert pd.isna(test_df["col_c"][5])
