@@ -97,7 +97,7 @@ def extract_my_keywords(
             .str.split("; ")
             .map(lambda x: [z for z in x if z in my_keywords], na_action="ignore")
             .map(set, na_action="ignore")
-            .map(list, na_action="ignore")
+            .map(sorted, na_action="ignore")
             .str.join("; ")
         )
 
