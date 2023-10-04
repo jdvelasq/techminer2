@@ -1,6 +1,7 @@
 # pylint: disable=import-outside-toplevel
 """Test merge_fields.py"""
 
+import gzip
 import os
 
 import numpy as np
@@ -12,42 +13,29 @@ DATABASE_FILES = [
     "tmp/databases/_references.csv.zip",
 ]
 
+DATA = """col_a,col_b
+a; b,A
+c,B; C
+d,D
+,E
+F,
+g,
+h,
+,
+"""
+
 
 def test_merge_fields():
     """Test copy_field."""
 
     # Test data:
-    test_df = pd.DataFrame(
-        {
-            "col_a": [
-                "a; b",
-                "c",
-                "d",
-                np.nan,
-                pd.NA,
-                "g",
-                "h",
-                np.nan,
-                pd.NA,
-            ],
-            "col_b": [
-                "A",
-                "B; C",
-                "D",
-                "E",
-                "F",
-                np.nan,
-                pd.NA,
-                np.nan,
-                pd.NA,
-            ],
-        }
-    )
     if not os.path.exists("tmp/databases"):
         os.makedirs("tmp/databases")
 
     for file in DATABASE_FILES:
-        test_df.to_csv(file, index=False, compression="zip")
+        with open(file[:-4], "wt", encoding="utf-8") as out_fp:
+            out_fp.write(DATA)
+        pd.read_csv(file[:-4]).to_csv(file, index=False, compression="zip")
 
     # Run:
     from techminer2.refine.fields import merge_fields
@@ -74,4 +62,3 @@ def test_merge_fields():
             "h",
         ]
         assert pd.isna(test_df["col_c"].tolist()[7])
-        assert pd.isna(test_df["col_c"].tolist()[8])

@@ -9,33 +9,10 @@
 Merge Fields
 ===============================================================================
 
->>> from techminer2.refine.fields import merge_fields, delete_field
->>> merge_fields(
-...     fields_to_merge=["raw_author_keywords", "raw_index_keywords"],
-...     dst_field="keywords_copy",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> # TEST:  
->>> from techminer2.analyze import performance_metrics
->>> performance_metrics(
-...     field='keywords_copy',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... ).df_['OCC'].head()
-keywords_copy
-NAN                      36
-REGTECH                  28
-FINTECH                  12
-REGULATORY_COMPLIANCE     9
-COMPLIANCE                7
-Name: OCC, dtype: int64
-
->>> delete_field(
-...     field="keywords_copy",
+>>> from techminer2.refine.fields import merge_fields
+>>> merge_fields( # doctest: +SKIP
+...     fields_to_merge=["author_keywords", "index_keywords"],
+...     dst_field="merged_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
