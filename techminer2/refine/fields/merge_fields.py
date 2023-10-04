@@ -10,7 +10,7 @@ Merge Fields
 ===============================================================================
 
 >>> from techminer2.refine.fields import merge_fields
->>> merge_fields( # doctest: +SKIP
+>>> merge_fields(  # doctest: +SKIP
 ...     fields_to_merge=["author_keywords", "index_keywords"],
 ...     dst_field="merged_keywords",
 ...     #
