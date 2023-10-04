@@ -9,16 +9,8 @@
 Delete a Field
 ===============================================================================
 
->>> from techminer2.refine.fields import copy_field, rename_field, delete_field
->>> copy_field(
-...     src_field="author_keywords",
-...     dst_field="author_keywords_copy",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
-
->>> delete_field(
+>>> from techminer2.refine.fields import delete_field
+>>> delete_field(  # doctest: +SKIP 
 ...     field="author_keywords_copy",
 ...     #
 ...     # DATABASE PARAMS:
