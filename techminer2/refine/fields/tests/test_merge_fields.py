@@ -1,10 +1,9 @@
 # pylint: disable=import-outside-toplevel
 """Test merge_fields.py"""
 
-import gzip
+
 import os
 
-import numpy as np
 import pandas as pd
 
 DATABASE_FILES = [
