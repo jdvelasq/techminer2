@@ -28,8 +28,9 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def process_field(
-    field,
-    process_func,
+    source,
+    dest,
+    func,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -37,13 +38,31 @@ def process_field(
     """
     :meta private:
     """
-    if field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{field}` is protected")
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
+    _process_field(
+        field=source,
+        dest=dest,
+        func=func,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _process_field(
+    field,
+    dest,
+    func,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+):
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if field in data.columns:
             if data[field].dropna().shape[0] > 0:
-                data[field] = process_func(data[field])
+                data[dest] = func(data[field])
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

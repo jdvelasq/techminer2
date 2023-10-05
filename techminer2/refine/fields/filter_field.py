@@ -11,8 +11,8 @@ Filter a Field
 
 >>> from techminer2.refine.fields import filter_field
 >>> filter_field(  # doctest: +SKIP 
-...     src_field="author_keywords",
-...     dst_field="author_keywords_filtered",
+...     source="author_keywords",
+...     dest="author_keywords_filtered",
 ...     #
 ...     # FILTERS:
 ...     metric="OCC",
@@ -39,8 +39,8 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def filter_field(
-    src_field,
-    dst_field,
+    source,
+    dest,
     #
     # FILTERS:
     metric=None,
@@ -58,15 +58,15 @@ def filter_field(
     """
     :meta private:
     """
-    if dst_field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dst_field}` is protected")
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         #
         # If src_field is not in the database, continue with the next database
         data_full = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if src_field not in data_full.columns:
+        if source not in data_full.columns:
             continue
 
         #
@@ -83,7 +83,7 @@ def filter_field(
         data_frame = performance_metrics(
             #
             # PERFORMANCE PARAMS:
-            field=src_field,
+            field=source,
             metric=metric,
             #
             # ITEM FILTERS:
@@ -140,17 +140,17 @@ def filter_field(
 
         #
         # Extracts valida values for the new field
-        data_full[dst_field] = pd.NA
+        data_full[dest] = pd.NA
 
         idx = data_filtered.index.copy()
-        data_full.loc[idx, dst_field] = data_full.loc[idx, src_field].copy()
-        data_full.loc[idx, dst_field] = data_full.loc[idx, dst_field].map(
+        data_full.loc[idx, dest] = data_full.loc[idx, source].copy()
+        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
             lambda w: w.split("; "), na_action="ignore"
         )
-        data_full.loc[idx, dst_field] = data_full.loc[idx, dst_field].map(
+        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
             lambda ws: [w for w in ws if w in valid_items], na_action="ignore"
         )
-        data_full.loc[idx, dst_field] = data_full.loc[idx, dst_field].map(
+        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
             lambda ws: "; ".join(ws) if isinstance(ws, list) else ws,
             na_action="ignore",
         )

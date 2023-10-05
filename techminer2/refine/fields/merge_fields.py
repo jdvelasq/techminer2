@@ -12,7 +12,7 @@ Merge Fields
 >>> from techminer2.refine.fields import merge_fields
 >>> merge_fields(  # doctest: +SKIP
 ...     fields_to_merge=["author_keywords", "index_keywords"],
-...     dst_field="merged_keywords",
+...     dest="merged_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -28,8 +28,8 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def merge_fields(
-    fields_to_merge,
-    dst_field,
+    sources,
+    dest,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -37,9 +37,25 @@ def merge_fields(
     """
     :meta private:
     """
-    if dst_field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dst_field}` is protected")
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
+    _merge_fields(
+        sources=sources,
+        dest=dest,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _merge_fields(
+    sources,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
+):
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         #
@@ -49,7 +65,7 @@ def merge_fields(
         #
         # Merge fields
         new_field = None
-        for field in fields_to_merge:
+        for field in sources:
             if field in data.columns:
                 if new_field is None:
                     new_field = data[field].astype(str).str.split("; ")
@@ -65,6 +81,6 @@ def merge_fields(
 
         #
         # Create the new field
-        data[dst_field] = new_field
+        data[dest] = new_field
 
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

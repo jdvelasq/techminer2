@@ -35,8 +35,8 @@ def test_merge_fields():
     from techminer2.refine.fields import merge_fields
 
     merge_fields(
-        fields_to_merge=["col_a", "col_b"],
-        dst_field="col_c",
+        sources=["col_a", "col_b"],
+        dest="col_c",
         #
         # DATABASE PARAMS:
         root_dir="tmp/",

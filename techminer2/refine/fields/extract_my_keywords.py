@@ -18,8 +18,8 @@ Extract My Keywords
 ...    print("ANTI_MONEY_LAUNDERING", file=file)
 
 >>> extract_my_keywords(   # doctest: +SKIP 
-...     src_field="author_keywords",
-...     dst_field="my_keywords",
+...     source="author_keywords",
+...     dest="my_keywords",
 ...     file_name="keywords.txt",
 ...     #
 ...     # DATABASE PARAMS:
@@ -37,8 +37,8 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def extract_my_keywords(
-    src_field,
-    dst_field,
+    source,
+    dest,
     file_name,
     #
     # DATABASE PARAMS:
@@ -47,9 +47,27 @@ def extract_my_keywords(
     """
     :meta private:
     """
-    if dst_field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dst_field}` is protected")
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
+    _extract_my_keywords(
+        source=source,
+        dest=dest,
+        file_name=file_name,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _extract_my_keywords(
+    source,
+    dest,
+    file_name,
+    #
+    # DATABASE PARAMS:
+    root_dir,
+):
     #
     # Reads my keywords from file
     file_path = os.path.join(root_dir, "my_keywords", file_name)
@@ -67,9 +85,9 @@ def extract_my_keywords(
 
         #
         #
-        data[dst_field] = data[src_field].copy()
-        data[dst_field] = (
-            data[dst_field]
+        data[dest] = data[source].copy()
+        data[dest] = (
+            data[dest]
             .str.split("; ")
             .map(lambda x: [z for z in x if z in my_keywords], na_action="ignore")
             .map(set, na_action="ignore")

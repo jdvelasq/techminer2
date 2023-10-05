@@ -35,8 +35,8 @@ def test_extract_my_keywords():
     from techminer2.refine.fields import extract_my_keywords
 
     extract_my_keywords(
-        src_field="col_a",
-        dst_field="col_b",
+        source="col_a",
+        dest="col_b",
         file_name="my_keywords.txt",
         #
         # DATABASE PARAMS:

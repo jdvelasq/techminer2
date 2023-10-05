@@ -29,8 +29,8 @@ def test_count_terms_per_record():
     from techminer2.refine.fields import count_terms_per_record
 
     count_terms_per_record(
-        src_field="col_a",
-        dst_field="col_b",
+        source="col_a",
+        dest="col_b",
         #
         # DATABASE PARAMS:
         root_dir="tmp/",

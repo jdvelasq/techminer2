@@ -30,8 +30,9 @@ def test_process_field():
     from techminer2.refine.fields import process_field
 
     process_field(
-        field="col_a",
-        process_func=lambda x: x.str.upper(),
+        source="col_a",
+        dest="col_a",
+        func=lambda x: x.str.upper(),
         #
         # DATABASE PARAMS:
         root_dir="tmp/",

@@ -13,7 +13,7 @@ Fields Intersection
 >>> fields_intersection(  # doctest: +SKIP
 ...     first_field="author_keywords",
 ...     second_field="index_keywords",
-...     dst_field="intersection",
+...     dest="intersection",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -43,11 +43,29 @@ def fields_intersection(
     if output_field in PROTECTED_FIELDS:
         raise ValueError(f"Field `{output_field}` is protected")
 
+    _fields_intersection(
+        compare_field=compare_field,
+        to_field=to_field,
+        output_field=output_field,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _fields_intersection(
+    compare_field,
+    to_field,
+    output_field,
+    #
+    # DATABASE PARAMS:
+    root_dir,
+):
     #
     # Merge the two fields
     merge_fields(
-        fields_to_merge=[compare_field, to_field],
-        dst_field=output_field,
+        sources=[compare_field, to_field],
+        dest=output_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -1,5 +1,5 @@
 # pylint: disable=import-outside-toplevel
-"""Test test_stemming_or.py"""
+"""Test rename_field.py"""
 
 import os
 
@@ -12,7 +12,7 @@ DATABASE_FILES = [
 ]
 
 
-def test_stemming_or():
+def test_stemming_and():
     """Test rename_field."""
 
     # Test data:
@@ -33,12 +33,12 @@ def test_stemming_or():
         ).to_csv(file, index=False, compression="zip")
 
     # Run:
-    from techminer2.refine.fields import stemming_or
+    from techminer2.refine.fields import stemming_field_with_and
 
-    stemming_or(
-        items=["COMPUTER_SOFTWARE"],
-        src_field="col_a",
-        dst_field="col_b",
+    stemming_field_with_and(
+        items=["CONTROL_SYSTEM"],
+        source="col_a",
+        dest="col_b",
         #
         # DATABASE PARAMS:
         root_dir="tmp/",
@@ -52,8 +52,8 @@ def test_stemming_or():
         assert (
             test_df["col_b"][0] == "COMPUTER_CONTROL_SYSTEMS; CONTROL_SYSTEMS_COMPUTER_APPLICATIONS"
         )
-        assert pd.isna(test_df["col_b"][1])
+        assert test_df["col_b"][1] == "SYSTEM_CONTROL"
         assert test_df["col_b"][2] == "CONTROL_SYSTEMS_COMPUTER_APPLICATIONS"
-        assert test_df["col_b"][3] == "COMPUTER_SOFTWARE"
-        assert test_df["col_b"][4] == "SOFTWARE_ENGINEERING"
+        assert pd.isna(test_df["col_b"][3])
+        assert pd.isna(test_df["col_b"][4])
         assert pd.isna(test_df["col_b"][5])

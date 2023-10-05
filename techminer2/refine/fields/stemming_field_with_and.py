@@ -6,14 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Stemming AND
+Stemming Field with AND
 ===============================================================================
 
->>> from techminer2.refine.fields import stemming_and
->>> stemming_and(  # doctest: +SKIP
+>>> from techminer2.refine.fields import stemming_field_with_and
+>>> stemming_field_with_and(  # doctest: +SKIP
 ...     items="ARTIFICIAL_INTELLIGENCE",
-...     src_field="author_keywords",
-...     dst_field="stemming",
+...     source="author_keywords",
+...     dest="stemming",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -29,10 +29,10 @@ from textblob import TextBlob
 from .protected_fields import PROTECTED_FIELDS
 
 
-def stemming_and(
+def stemming_field_with_and(
     items,
-    src_field,
-    dst_field,
+    source,
+    dest,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -40,9 +40,27 @@ def stemming_and(
     """
     :meta private:
     """
-    if dst_field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dst_field}` is protected")
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
+    _stemming_field_with_and(
+        items=items,
+        source=source,
+        dest=dest,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _stemming_field_with_and(
+    items,
+    source,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
+):
     if isinstance(items, str):
         items = [items]
 
@@ -57,20 +75,20 @@ def stemming_and(
         #
         # Loads data
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if src_field in data.columns:
-            column.append(data[[src_field]])
+        if source in data.columns:
+            column.append(data[[source]])
     items = pd.concat(column, ignore_index=True)
     items = items.dropna()
 
     #
     # Explode multiple terms in a single cell
-    items[src_field] = items[src_field].str.split("; ")
-    items = items.explode(src_field)
-    items[src_field] = items[src_field].str.strip()
+    items[source] = items[source].str.split("; ")
+    items = items.explode(source)
+    items[source] = items[source].str.strip()
 
     #
     # Stemming all words in each cell
-    items["keys"] = items[src_field].copy()
+    items["keys"] = items[source].copy()
     items["keys"] = items["keys"].str.replace("_", " ")
     items["keys"] = items["keys"].map(TextBlob)
     items["keys"] = items["keys"].map(lambda x: [word.stem() for word in x.words])
@@ -86,7 +104,7 @@ def stemming_and(
 
     #
     # Extracts the selected terms
-    items = sorted(set(items.loc[items["keys"], src_field].to_list()))
+    items = sorted(set(items.loc[items["keys"], source].to_list()))
 
     #
     # Updates the databases
@@ -96,13 +114,11 @@ def stemming_and(
         # Loads data
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         #
-        data[dst_field] = data[src_field].copy()
+        data[dest] = data[source].copy()
         #
-        data[dst_field] = data[dst_field].map(lambda x: x.split("; "), na_action="ignore")
-        data[dst_field] = data[dst_field].map(
-            lambda x: [y for y in x if y in items], na_action="ignore"
-        )
-        data[dst_field] = data[dst_field].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
-        data[dst_field] = data[dst_field].map(lambda x: "; ".join(x) if isinstance(x, list) else x)
+        data[dest] = data[dest].map(lambda x: x.split("; "), na_action="ignore")
+        data[dest] = data[dest].map(lambda x: [y for y in x if y in items], na_action="ignore")
+        data[dest] = data[dest].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
+        data[dest] = data[dest].map(lambda x: "; ".join(x) if isinstance(x, list) else x)
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

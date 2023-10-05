@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Rename a Field
+Fill NA
 ===============================================================================
 
->>> from techminer2.refine.fields import rename_field
->>> rename_field(  # doctest: +SKIP
-...     source="author_keywords",
-...     dest="author_keywords_new",
+>>> from techminer2.refine.fields import fillna
+>>> fillna(  # doctest: +SKIP 
+...     fill_field="author_keywords",
+...     with_field="index_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -27,9 +27,9 @@ import pandas as pd
 from .protected_fields import PROTECTED_FIELDS
 
 
-def rename_field(
-    source,
-    dest,
+def fillna_field(
+    fill_field,
+    with_field,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -37,29 +37,28 @@ def rename_field(
     """
     :meta private:
     """
-    if dest in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dest}` is protected")
+    if fill_field in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{fill_field}` is protected")
 
-    _rename_field(
-        source=source,
-        dest=dest,
+    _fillna_field(
+        fill_field=fill_field,
+        with_field=with_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
 
 
-def _rename_field(
-    source,
-    dest,
+def _fillna_field(
+    fill_field,
+    with_field,
     #
     # DATABASE PARAMS:
     root_dir,
 ):
-    rename = {source: dest}
-
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        data = data.rename(columns=rename)
+        if fill_field in data.columns:
+            data[fill_field].mask(data[fill_field].isnull(), data[with_field])
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

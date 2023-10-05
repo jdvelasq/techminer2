@@ -29,8 +29,8 @@ def test_rename_field():
     from techminer2.refine.fields import rename_field
 
     rename_field(
-        src_field="col_a",
-        dst_field="col_b",
+        source="col_a",
+        dest="col_b",
         #
         # DATABASE PARAMS:
         root_dir="tmp/",

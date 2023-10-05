@@ -38,6 +38,20 @@ def delete_field(
     if field in PROTECTED_FIELDS:
         raise ValueError(f"Field `{field}` is protected")
 
+    _delete_field(
+        field=field,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _delete_field(
+    field,
+    #
+    # DATABASE PARAMS:
+    root_dir,
+):
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")

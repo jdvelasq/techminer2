@@ -30,8 +30,8 @@ def test_copy_field():
     from techminer2.refine.fields import copy_field
 
     copy_field(
-        src_field="col_a",
-        dst_field="col_b",
+        source="col_a",
+        dest="col_b",
         #
         # DATABASE PARAMS:
         root_dir="tmp/",
