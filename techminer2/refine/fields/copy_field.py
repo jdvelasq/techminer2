@@ -11,8 +11,8 @@ Copy a Field
 
 >>> from techminer2.refine.fields import copy_field
 >>> copy_field(  # doctest: +SKIP 
-...     src_field="author_keywords",
-...     dst_field="author_keywords_copy",
+...     source="author_keywords",
+...     dest="author_keywords_copy",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -28,8 +28,8 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 def copy_field(
-    src_field,
-    dst_field,
+    source,
+    dest,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -37,12 +37,31 @@ def copy_field(
     """
     :meta private:
     """
-    if dst_field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dst_field}` is protected")
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
+    _copy_field(
+        source=source,
+        dest=dest,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+    )
+
+
+def _copy_field(
+    source,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
+):
+    """
+    :meta private:
+    """
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if src_field in data.columns:
-            data[dst_field] = data[src_field].copy()
+        if source in data.columns:
+            data[dest] = data[source].copy()
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
