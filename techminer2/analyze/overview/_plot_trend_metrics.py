@@ -97,7 +97,7 @@ def plot_trend_metrics(
             fig.add_annotation(
                 x=index,
                 y=row[metric_to_plot],
-                text=str(int(row[auxiliary_metric_to_plot])),
+                text=format(int(row[auxiliary_metric_to_plot]), ","),
                 showarrow=False,
                 textangle=-90,
                 yanchor="bottom",
