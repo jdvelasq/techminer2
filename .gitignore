@@ -1,16 +1,6 @@
 .DS_Store
 
-example/countries.txt
-example/databases/
-example/global_references.txt
-example/keywords.txt
-example/local_references.txt
-example/not_recognized_references.txt
-example/organizations.txt
-example/records.txt
-example/reports/
-example/stopwords.txt
-example/words.txt
+example/*
 tmp/*
 
 debug/
