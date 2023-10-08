@@ -1,6 +1,7 @@
 .DS_Store
 
-example/*
+example/
+
 tmp/*
 
 debug/
@@ -137,3 +138,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
+example/raw-data/main/scopus.csv
