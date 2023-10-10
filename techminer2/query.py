@@ -19,12 +19,12 @@ Query
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                        source_title
-0  Fintech and the Remaking of Financial Institut...
-1  Northwestern Journal of International Law and ...
-2                  European Research Studies Journal
-3  KSII Transactions on Internet and Information ...
-4          Review of International Political Economy
+                                      source_title
+0                      Review of Financial Studies
+1  International Journal of Information Management
+2                             Financial Innovation
+3                           China Economic Journal
+4                Journal of Economics and Business
 
 
 
@@ -44,6 +44,8 @@ def query(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """:meta private:"""
+
     database = read_records(
         #
         # DATABASE PARAMS:

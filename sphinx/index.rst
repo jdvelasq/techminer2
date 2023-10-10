@@ -21,7 +21,8 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     search/__index__ 
     analyze/__index__
     report/__index__
-
+    query
+    summary_sheet
 
 
 **Author**:
