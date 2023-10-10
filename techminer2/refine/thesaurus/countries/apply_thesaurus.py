@@ -44,7 +44,7 @@ def apply_thesaurus(
     """
 
     # thesaurus preparation
-    thesaurus_file = os.path.join(root_dir, "countries.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/countries.the.txt")
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     # apply thesaurus

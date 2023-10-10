@@ -18,23 +18,23 @@ import pathlib
 import re
 
 import pandas as pd
-import requests  # type: ignore
+import pkg_resources
 
 
-def create_organizations_thesaurus(root_dir="./"):
+def list_cleanup_organizations(root_dir="./"):
     """Creates organizations.txt thesaurus file."""
 
     frame = load_affiliations_from_country_thesaurus(root_dir)
-    frame = add_country_code_column(frame)
+    frame = add_country_code_column(frame, root_dir)
     frame = add_candidate_organization_column(frame)
-    frame = clean_candidate_organization_column(frame)
-    knwon_orgs = load_known_orgs()
+    frame = replace_abbreviations(frame, root_dir)
+    knwon_orgs = load_known_organizations()
     frame = assigns_from_kwown_organizations(frame, knwon_orgs)
     frame = assings_names_by_priority(frame)
     frame = format_organization_names(frame)
     save_organizations_thesaurus(frame, root_dir)
     print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'organizations.txt'} "
+        f"--INFO-- The {pathlib.Path(root_dir) / 'thesauri/organizations.the.txt'} "
         "thesaurus file was created"
     )
 
@@ -42,13 +42,13 @@ def create_organizations_thesaurus(root_dir="./"):
 def load_affiliations_from_country_thesaurus(root_dir):
     """Loads data from countries.txt file."""
 
-    file_path = pathlib.Path(root_dir) / "countries.txt"
-
     country = None
     countries = []
     affiliations = []
 
+    #
     # collects the countries and the respective affiliations
+    file_path = pathlib.Path(root_dir) / "thesauri/countries.the.txt"
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
             if not line.startswith(" "):
@@ -67,31 +67,26 @@ def load_affiliations_from_country_thesaurus(root_dir):
     return frame
 
 
-def add_country_code_column(frame):
+def add_country_code_column(frame, root_dir):
     """Add 'code' column to the frame."""
 
-    owner = "jdvelasq"
-    repo = "techminer2"
-    path = "settings/country_codes.txt"
-    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
-
-    response = requests.get(url, timeout=5)
-    country_codes = response.text.split("\n")
-
-    countries = []
-    codes = []
-    code = None
-    for line in country_codes:
-        if line[0] != " ":
-            code = line.strip()
-        else:
-            countries.append(line.strip())
-            codes.append(code)
+    #
+    # Load country thesaurus
+    countries = {}
+    #
+    file_path = pathlib.Path(root_dir) / "thesauri/country-to-alpha3.the.txt"
+    with open(file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            if not line.startswith(" "):
+                country = line.strip()
+            else:
+                code = line.strip()
+                countries[country] = code
 
     frame = frame.copy()
     frame["code"] = "unknown"
-    for country, code in zip(countries, codes):
-        frame.loc[frame.country.str.lower() == country.lower(), "code"] = code
+    for country, code in countries.items():
+        frame.loc[frame.country == country, "code"] = code
 
     return frame
 
@@ -108,32 +103,22 @@ def add_candidate_organization_column(frame):
     return frame
 
 
-def clean_candidate_organization_column(frame):
-    """Cleans the candidate organizations column."""
+def replace_abbreviations(frame, root_dir):
+    """Replace abbr in affiliation names."""
 
-    owner = "jdvelasq"
-    repo = "techminer2"
-    path = "settings/organizations_abbr.csv"
-    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+    abbr_dict = {}
+    file_path = pathlib.Path(root_dir) / "thesauri/organizations_abbr.the.txt"
+    with open(file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            if not line.startswith(" "):
+                word = line.strip()
+            else:
+                abbr = line.strip()
+                abbr_dict[word] = abbr
 
-    repl_frame = pd.read_csv(url)
-    frame = frame.copy()
-
-    for pat, repl in [
-        ('"', ""),
-        (".", ""),
-        ("“", ""),
-        ("”", ""),
-        ("’", ""),
-        # ("-", " "),
-    ]:
+    for word, abbr in abbr_dict.items():
         frame["organization"] = frame["organization"].str.replace(
-            pat, repl, regex=False
-        )
-
-    for _, row in repl_frame.iterrows():
-        frame["organization"] = frame["organization"].str.replace(
-            r"\b" + row.pat + r"\b", row.repl, regex=True
+            r"\b" + word + r"\b", abbr, regex=True
         )
 
     frame["organization"] = frame["organization"].str.strip()
@@ -149,16 +134,14 @@ def add_a_empty_organization_column(frame):
     return frame
 
 
-def load_known_orgs():
+def load_known_organizations():
     """Loads known organizations from GitHub repo."""
 
-    owner = "jdvelasq"
-    repo = "techminer2"
-    path = "settings/known_organizations.txt"
-    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
-
-    response = requests.get(url, timeout=5)
-    known_organizations = response.text.split("\n")
+    file_path = pkg_resources.resource_filename(
+        "techminer2", "word_lists/known_organizations.txt"
+    )
+    with open(file_path, "r", encoding="utf-8") as file:
+        known_organizations = file.read().split("\n")
     known_organizations = [org.strip() for org in known_organizations]
     return known_organizations
 
@@ -179,13 +162,15 @@ def assigns_from_kwown_organizations(frame, knwon_orgs):
 NAMES = [
     "Min",  # ministry, ministerio
     "Univ",  # university, universidad, univedade, ...
-    "B",  # bank, banco
+    "Bank",  # bank, banco
+    "Banco",
     "AG",  # agency, agencia
     "Counc",  # council, concilio, consejo
     "Conc",  # concilio, consejo
     "Com",  # comission, comision
     "Consortium",
     "Politec",  # polytechnic, politecnico
+    "Polytech",  # polytechnic, politecnico
     "Hosp",  # hospital
     "Assn",  # association
     "Asoc",  # asociacion
@@ -260,9 +245,7 @@ def save_organizations_thesaurus(frame, root_dir):
 
     frame = frame.copy()
 
-    existent_organizations = read_existent_organizations_txt_thesaurus(
-        root_dir
-    )
+    existent_organizations = read_existent_organizations_txt_thesaurus(root_dir)
 
     if existent_organizations is not None:
         frame = pd.concat([existent_organizations, frame], ignore_index=True)
@@ -271,11 +254,9 @@ def save_organizations_thesaurus(frame, root_dir):
 
     ##
     frame = frame.sort_values(["organization", "raw_affiliation"])
-    frame = frame.groupby("organization", as_index=False).agg(
-        {"raw_affiliation": list}
-    )
+    frame = frame.groupby("organization", as_index=False).agg({"raw_affiliation": list})
 
-    file_path = pathlib.Path(root_dir) / "organizations.txt"
+    file_path = pathlib.Path(root_dir) / "thesauri/organizations.the.txt"
 
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in frame.iterrows():
@@ -286,7 +267,7 @@ def save_organizations_thesaurus(frame, root_dir):
 
 def read_existent_organizations_txt_thesaurus(root_dir):
     """Read the existent thesaurus if exists."""
-    file_path = pathlib.Path(root_dir) / "organizations.txt"
+    file_path = pathlib.Path(root_dir) / "thesauri/organizations.the.txt"
 
     organization = None
     organizations = []

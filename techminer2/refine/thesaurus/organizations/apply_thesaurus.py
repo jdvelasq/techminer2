@@ -41,7 +41,7 @@ def apply_thesaurus(
     """
 
     # Read the thesaurus
-    thesaurus_file = os.path.join(root_dir, "organizations.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/organizations.the.txt")
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     # Apply thesaurus
@@ -69,7 +69,9 @@ def apply_thesaurus(
                 lambda x: sorted(set(x)) if isinstance(x, list) else x
             )
         )
-        records = records.assign(raw_organizations=records.raw_organizations.str.join("; "))
+        records = records.assign(
+            raw_organizations=records.raw_organizations.str.join("; ")
+        )
         records = records.assign(organizations=records.organizations.str.join("; "))
         #
         #

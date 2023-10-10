@@ -19,12 +19,14 @@ Query
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                     source_title
-0                           Technology in Society
-1  Research in International Business and Finance
-2                                        Computer
-3                            Financial Innovation
-4                    Journal of Corporate Finance
+                                        source_title
+0  Fintech and the Remaking of Financial Institut...
+1  Northwestern Journal of International Law and ...
+2                  European Research Studies Journal
+3  KSII Transactions on Internet and Information ...
+4          Review of International Political Economy
+
+
 
 """
 import duckdb

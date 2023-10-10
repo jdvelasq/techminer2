@@ -25,7 +25,7 @@ Return the number of records by document type in the databases.
 """
 import os
 
-from ..ingest.ingest_raw_data import concat_raw_zip_files, get_subdirectories
+# from ..ingest.ingest_raw_data import concat_raw_zip_files, get_subdirectories
 
 
 def raw_document_types(root_dir):

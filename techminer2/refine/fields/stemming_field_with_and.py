@@ -26,6 +26,7 @@ import os.path
 import pandas as pd
 from textblob import TextBlob
 
+from ..._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
@@ -74,7 +75,7 @@ def _stemming_field_with_and(
     for file in files:
         #
         # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
         if source in data.columns:
             column.append(data[[source]])
     items = pd.concat(column, ignore_index=True)
@@ -112,7 +113,7 @@ def _stemming_field_with_and(
     for file in files:
         #
         # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
         #
         data[dest] = data[source].copy()
         #

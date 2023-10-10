@@ -23,6 +23,7 @@ import os.path
 
 import pandas as pd
 
+from ..._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
@@ -54,6 +55,6 @@ def _delete_field(
 ):
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
         data = data.drop(field, axis=1)
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

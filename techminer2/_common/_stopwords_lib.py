@@ -4,6 +4,8 @@ Stopwords
 import os
 from os.path import dirname
 
+import pkg_resources
+
 
 def load_stopwords(root_dir):
     """Load user stopwords from the specified directory.
@@ -32,8 +34,10 @@ def load_generic_stopwords():
 
     :meta private:
     """
-    module_path = dirname(__file__)
-    file_path = os.path.join(module_path, "word_lists/stopwords.txt")
+    file_path = pkg_resources.resource_filename("techminer2", "word_lists/stopwords.txt")
+
+    ###  module_path = dirname(__file__)
+    ### file_path = os.path.join(module_path, "word_lists/stopwords.txt")
     with open(file_path, "r", encoding="utf-8") as file:
         stopwords = file.read().split("\n")
     stopwords = [w.strip() for w in stopwords]

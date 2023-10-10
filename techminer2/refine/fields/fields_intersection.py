@@ -25,6 +25,7 @@ import os.path
 
 import pandas as pd
 
+from ..._dtypes import DTYPES
 from .merge_fields import merge_fields
 from .protected_fields import PROTECTED_FIELDS
 
@@ -77,7 +78,7 @@ def _fields_intersection(
     for file in files:
         #
         # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
 
         #
         # Compute terms in both columns

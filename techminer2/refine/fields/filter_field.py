@@ -34,6 +34,7 @@ import os.path
 
 import pandas as pd
 
+from ..._dtypes import DTYPES
 from ...analyze import performance_metrics
 from .protected_fields import PROTECTED_FIELDS
 
@@ -65,7 +66,7 @@ def filter_field(
     for file in files:
         #
         # If src_field is not in the database, continue with the next database
-        data_full = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data_full = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
         if source not in data_full.columns:
             continue
 

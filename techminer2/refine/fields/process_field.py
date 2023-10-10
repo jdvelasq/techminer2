@@ -11,8 +11,9 @@ Process a Field
 
 >>> from techminer2.refine.fields import process_field
 >>> process_field(  # doctest: +SKIP
-...     field="author_keywords_copy",
-...     process_func=lambda x: x.str.lower(),
+...     source="author_keywords",
+...     dest="author_keywords_copy",
+...     func=lambda x: x.str.lower(),
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -24,6 +25,7 @@ import os.path
 
 import pandas as pd
 
+from ..._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
@@ -42,7 +44,7 @@ def process_field(
         raise ValueError(f"Field `{dest}` is protected")
 
     _process_field(
-        field=source,
+        source=source,
         dest=dest,
         func=func,
         #
@@ -52,7 +54,7 @@ def process_field(
 
 
 def _process_field(
-    field,
+    source,
     dest,
     func,
     #
@@ -62,7 +64,7 @@ def _process_field(
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if field in data.columns:
-            if data[field].dropna().shape[0] > 0:
-                data[dest] = func(data[field])
+        if source in data.columns:
+            if data[source].dropna().shape[0] > 0:
+                data[dest] = func(data[source])
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

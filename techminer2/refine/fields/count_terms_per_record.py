@@ -24,6 +24,7 @@ import os.path
 
 import pandas as pd
 
+from ..._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
@@ -58,7 +59,7 @@ def _count_terms_per_record(
 ):
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
+        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
         if source in data.columns:
             data[dest] = data[source].str.split("; ").map(len, na_action="ignore")
             data[dest] = data[dest].fillna(0).astype(int)

@@ -16,7 +16,7 @@ Sort Stopwords
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file data/regtech/stopwords.txt has been sorted.
+--INFO-- The file example/my_keywords/stopwords.txt has been sorted.
 
 """
 import os
@@ -31,7 +31,7 @@ def sort_stopwords(
     :meta private:
     """
 
-    stopwords_file_path = os.path.join(root_dir, "stopwords.txt")
+    stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
 
     if not os.path.isfile(stopwords_file_path):
         raise FileNotFoundError(f"The file '{stopwords_file_path}' does not exist.")
