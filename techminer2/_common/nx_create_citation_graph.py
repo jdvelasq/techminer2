@@ -9,15 +9,23 @@
 import networkx as nx
 
 from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from ..analyze.co_occurrence.normalize_co_occurrence_matrix import (
+    normalize_co_occurrence_matrix,
+)
 from ..analyze.performance_metrics import performance_metrics
 from ._read_records import read_records
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
-from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from .nx_compute_edge_width_from_edge_weight import (
+    nx_compute_edge_width_from_edge_weight,
+)
 from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
 from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from .nx_compute_textfont_opacity_from_item_occ import (
+    nx_compute_textfont_opacity_from_item_occ,
+)
+from .nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
+)
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
@@ -113,7 +121,9 @@ def nx_create_citation_graph(
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
+    nx_graph = nx_compute_edge_width_from_edge_weight(
+        nx_graph, edge_width_min, edge_width_max
+    )
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
 
@@ -160,21 +170,26 @@ def __add_weighted_edges_from(
 
     if unit_of_analysis == "authors":
         article2authors = {
-            row.article: row.authors for _, row in records[["article", "authors"]].iterrows()
+            row.article: row.authors
+            for _, row in records[["article", "authors"]].iterrows()
         }
         data_frame["citing_unit"] = data_frame["citing_unit"].map(article2authors)
         data_frame["cited_unit"] = data_frame["cited_unit"].map(article2authors)
 
     elif unit_of_analysis == "countries":
         article2countries = {
-            row.article: row.countries for _, row in records[["article", "countries"]].iterrows()
+            row.article: row.countries
+            for _, row in records[["article", "countries"]].iterrows()
         }
         data_frame["citing_unit"] = data_frame["citing_unit"].map(article2countries)
         data_frame["cited_unit"] = data_frame["cited_unit"].map(article2countries)
 
     elif unit_of_analysis == "article":
         data_frame["citing_unit"] = (
-            data_frame["citing_unit"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
+            data_frame["citing_unit"]
+            .str.split(", ")
+            .map(lambda x: x[:3])
+            .str.join(", ")
         )
         data_frame["cited_unit"] = (
             data_frame["cited_unit"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
@@ -188,10 +203,10 @@ def __add_weighted_edges_from(
         data_frame["citing_unit"] = data_frame["citing_unit"].map(article2organizations)
         data_frame["cited_unit"] = data_frame["cited_unit"].map(article2organizations)
 
-    elif unit_of_analysis == "source_abbr":
+    elif unit_of_analysis == "abbr_source_title":
         article2source_abbr = {
             row.article: row.source_abbr
-            for _, row in records[["article", "source_abbr"]].iterrows()
+            for _, row in records[["article", "abbr_source_title"]].iterrows()
         }
         data_frame["citing_unit"] = data_frame["citing_unit"].map(article2source_abbr)
         data_frame["cited_unit"] = data_frame["cited_unit"].map(article2source_abbr)
