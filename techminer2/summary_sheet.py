@@ -9,7 +9,7 @@ Summary Sheet
 ===============================================================================
 
 
->>> from techminer2.ingest import summary_sheet
+>>> from techminer2 import summary_sheet
 >>> summary_sheet(
 ...     #
 ...     # DATABASE PARAMS:
@@ -18,12 +18,12 @@ Summary Sheet
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                 column  number of terms coverage (%)
-0              abstract               52         1.0%
-1  abstract_nlp_phrases               47         0.9%
-2          affiliations               52         1.0%
-3                art_no                8        0.15%
-4               article               52         1.0%
+              column  number of terms coverage (%)
+0  abbr_source_title               50         1.0%
+1           abstract               48        0.96%
+2       affiliations               49        0.98%
+3             art_no               50         1.0%
+4            article               50         1.0%
 
 """
 import pandas as pd
