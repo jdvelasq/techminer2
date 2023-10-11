@@ -136,19 +136,6 @@ def __add_weighted_edges_from(
             ebunch_to_add=[(row["row"], row["col"], row["weight"])],
         )
 
-    # for i_row, row in enumerate(similarity.index.tolist()):
-    #     for i_col, col in enumerate(similarity.columns.tolist()):
-    #         #
-    #         # Unicamente toma valores por encima de la diagonal principal
-    #         if i_col <= i_row:
-    #             continue
-
-    #         weight = matrix.loc[row, col]
-    #         if weight > 0:
-    #             nx_graph.add_weighted_edges_from(
-    #                 ebunch_to_add=[(row, col, weight)],
-    #             )
-
     return nx_graph
 
 

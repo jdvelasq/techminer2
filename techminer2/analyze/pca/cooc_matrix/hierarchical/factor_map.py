@@ -230,10 +230,12 @@ def factor_map(
         **filters,
     )
 
-    terms = members.iloc[0, :].tolist()
-    # terms = [" ".join(name.split(" ")[:-1]) for name in terms]
-    clusters = members.columns.tolist()
-    names = [cluster + ": " + term for term, cluster in zip(terms, clusters)]
+    names = []
+    for cluster in members.columns:
+        cluster_members = members[cluster].head(4).tolist()
+        cluster_members = [member for member in cluster_members if member != ""]
+        cluster_members = "<br>".join(cluster_members)
+        names.append(cluster_members)
 
     similarity = pd.DataFrame(
         cosine_similarity(centers),
