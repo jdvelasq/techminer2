@@ -29,27 +29,27 @@ Cross-correlation Matrix
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_.round(3)
-                   Arner DW 3:185  ...  Crane M 2:014
-Arner DW 3:185              1.000  ...          0.000
-Buckley RP 3:185            1.000  ...          0.000
-Barberis JN 2:161           0.907  ...          0.000
-Butler T 2:041              0.000  ...          0.886
-Hamdan A 2:018              0.000  ...          0.000
-Turki M 2:018               0.000  ...          0.000
-Lin W 2:017                -0.235  ...          0.000
-Singh C 2:017              -0.235  ...          0.000
-Brennan R 2:014             0.000  ...          1.000
-Crane M 2:014               0.000  ...          1.000
+                      Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
+Jagtiani J. 3:0317                 1.000  ...                   0.0
+Gomber P. 2:1065                   0.200  ...                   0.0
+Hornuf L. 2:0358                   0.000  ...                   0.0
+Gai K. 2:0323                      0.632  ...                   0.0
+Qiu M. 2:0323                      0.632  ...                   0.0
+Sun X./3 2:0323                    0.632  ...                   0.0
+Lemieux C. 2:0253                  1.000  ...                   0.0
+Dolata M. 2:0181                   0.000  ...                   1.0
+Schwabe G. 2:0181                  0.000  ...                   1.0
+Zavolokina L. 2:0181               0.000  ...                   1.0
 <BLANKLINE>
 [10 rows x 10 columns]
 
 >>> matrix.list_cells_.head()
-              row             column  matrix_value
-0  Arner DW 3:185     Arner DW 3:185      1.000000
-1  Arner DW 3:185   Buckley RP 3:185      1.000000
-2  Arner DW 3:185  Barberis JN 2:161      0.907242
-3  Arner DW 3:185     Butler T 2:041      0.000000
-4  Arner DW 3:185     Hamdan A 2:018      0.000000
+                  row              column  matrix_value
+0  Jagtiani J. 3:0317  Jagtiani J. 3:0317      1.000000
+1  Jagtiani J. 3:0317    Gomber P. 2:1065      0.200000
+2  Jagtiani J. 3:0317    Hornuf L. 2:0358      0.000000
+3  Jagtiani J. 3:0317       Gai K. 2:0323      0.632456
+4  Jagtiani J. 3:0317       Qiu M. 2:0323      0.632456
 
 
 >>> print(matrix.prompt_) # doctest: +ELLIPSIS

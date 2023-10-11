@@ -30,27 +30,27 @@ Returns an auto-correlation matrix.
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_.round(3)
-                   Arner DW 3:185  ...  Crane M 2:014
-Arner DW 3:185               1.00  ...            0.0
-Buckley RP 3:185             1.00  ...            0.0
-Barberis JN 2:161            0.77  ...            0.0
-Butler T 2:041               0.00  ...            0.0
-Hamdan A 2:018               0.00  ...            0.0
-Turki M 2:018                0.00  ...            0.0
-Lin W 2:017                  0.00  ...            0.0
-Singh C 2:017                0.00  ...            0.0
-Brennan R 2:014              0.00  ...            1.0
-Crane M 2:014                0.00  ...            1.0
+                      Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
+Jagtiani J. 3:0317                  1.00  ...                   0.0
+Gomber P. 2:1065                    0.00  ...                   0.0
+Hornuf L. 2:0358                    0.00  ...                   0.0
+Gai K. 2:0323                       0.00  ...                   0.0
+Qiu M. 2:0323                       0.00  ...                   0.0
+Sun X./3 2:0323                     0.00  ...                   0.0
+Lemieux C. 2:0253                   0.77  ...                   0.0
+Dolata M. 2:0181                    0.00  ...                   1.0
+Schwabe G. 2:0181                   0.00  ...                   1.0
+Zavolokina L. 2:0181                0.00  ...                   1.0
 <BLANKLINE>
 [10 rows x 10 columns]
 
 >>> matrix.list_cells_.head()
-              row             column  matrix_value
-0  Arner DW 3:185     Arner DW 3:185        1.0000
-1  Arner DW 3:185   Buckley RP 3:185        1.0000
-2  Arner DW 3:185  Barberis JN 2:161        0.7698
-3  Arner DW 3:185     Butler T 2:041        0.0000
-4  Arner DW 3:185     Hamdan A 2:018        0.0000
+                  row              column  matrix_value
+0  Jagtiani J. 3:0317  Jagtiani J. 3:0317           1.0
+1  Jagtiani J. 3:0317    Gomber P. 2:1065           0.0
+2  Jagtiani J. 3:0317    Hornuf L. 2:0358           0.0
+3  Jagtiani J. 3:0317       Gai K. 2:0323           0.0
+4  Jagtiani J. 3:0317       Qiu M. 2:0323           0.0
 
 >>> print(matrix.prompt_) # doctest: +ELLIPSIS
 Your task is ...
@@ -107,7 +107,9 @@ def auto_correlation_matrix(
         **filters,
     )
 
-    custom_items = [" ".join(col.split(" ")[:-1]) for col in data_matrix.columns.tolist()]
+    custom_items = [
+        " ".join(col.split(" ")[:-1]) for col in data_matrix.columns.tolist()
+    ]
 
     corr_matrix = compute_corr_matrix(method=method, data_matrix=data_matrix)
 

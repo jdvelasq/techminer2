@@ -8,13 +8,19 @@
 
 import networkx as nx
 
-from ..._common.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ..._common.nx_compute_node_size_from_item_occ import (
+    nx_compute_node_size_from_item_occ,
+)
 from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
 from ..._common.nx_compute_textfont_opacity_from_item_occ import (
     nx_compute_textfont_opacity_from_item_occ,
 )
-from ..._common.nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from ..._common.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ..._common.nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
+)
+from ..._common.nx_compute_textposition_from_graph import (
+    nx_compute_textposition_from_graph,
+)
 from ..._common.nx_visualize_graph import nx_visualize_graph
 
 
@@ -22,32 +28,34 @@ def correlation_map(
     similarity,
     #
     # LAYOUT:
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
+    nx_k,
+    nx_iterations,
+    nx_random_state,
     #
     # NODES:
-    node_color="#7793a5",
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    node_color,
+    node_size_range,
+    textfont_size_range,
+    textfont_opacity_range,
     #
     # EDGES:
-    edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
+    edge_top_n,
+    edge_similarity_min,
+    edge_widths,
+    edge_colors,
     #
     # AXES:
-    xaxes_range=None,
-    yaxes_range=None,
-    show_axes=False,
+    xaxes_range,
+    yaxes_range,
+    show_axes,
 ):
     #
     # Create a empty networkx graph
     nx_graph = nx.Graph()
     nx_graph = __add_nodes_from(nx_graph, similarity, node_color)
-    nx_graph = __add_weighted_edges_from(nx_graph, similarity)
+    nx_graph = __add_weighted_edges_from(
+        nx_graph, similarity, edge_similarity_min, edge_top_n
+    )
 
     #
     # Sets the layout
@@ -55,17 +63,15 @@ def correlation_map(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
-    nx_graph = nx_compute_textfont_size_from_item_occ(
-        nx_graph, textfont_size_min, textfont_size_max
-    )
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
+    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
     nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_min, textfont_opacity_max
+        nx_graph, textfont_opacity_range
     )
 
     #
     # Sets the edge attributes
-    nx_graph = __set_edge_properties(nx_graph, edge_colors)
+    nx_graph = __set_edge_properties(nx_graph, edge_colors, edge_widths)
 
     #
     #
@@ -104,43 +110,66 @@ def __add_nodes_from(
 def __add_weighted_edges_from(
     nx_graph,
     similarity,
+    edge_similarity_min,
+    edge_top_n,
 ):
     matrix = similarity.copy()
 
-    for i_row, row in enumerate(similarity.index.tolist()):
-        for i_col, col in enumerate(similarity.columns.tolist()):
-            #
-            # Unicamente toma valores por encima de la diagonal principal
-            if i_col <= i_row:
-                continue
+    stacked_matrix = matrix.stack().reset_index()
+    stacked_matrix.columns = ["row", "col", "weight"]
 
-            weight = matrix.loc[row, col]
-            if weight > 0:
-                nx_graph.add_weighted_edges_from(
-                    ebunch_to_add=[(row, col, weight)],
-                )
+    row_index_dict = {row: i for i, row in enumerate(matrix.index.tolist())}
+    col_index_dict = {col: i for i, col in enumerate(matrix.columns.tolist())}
+    stacked_matrix["i_row"] = stacked_matrix["row"].map(row_index_dict)
+    stacked_matrix["i_col"] = stacked_matrix["col"].map(col_index_dict)
+    stacked_matrix = stacked_matrix[stacked_matrix["i_col"] > stacked_matrix["i_row"]]
+    stacked_matrix = stacked_matrix[stacked_matrix.weight > 0]
+    if edge_similarity_min is not None:
+        stacked_matrix = stacked_matrix[stacked_matrix.weight >= edge_similarity_min]
+    stacked_matrix = stacked_matrix.sort_values(by="weight", ascending=False)
+
+    if edge_top_n is not None:
+        stacked_matrix = stacked_matrix.head(edge_top_n)
+
+    for _, row in stacked_matrix.iterrows():
+        nx_graph.add_weighted_edges_from(
+            ebunch_to_add=[(row["row"], row["col"], row["weight"])],
+        )
+
+    # for i_row, row in enumerate(similarity.index.tolist()):
+    #     for i_col, col in enumerate(similarity.columns.tolist()):
+    #         #
+    #         # Unicamente toma valores por encima de la diagonal principal
+    #         if i_col <= i_row:
+    #             continue
+
+    #         weight = matrix.loc[row, col]
+    #         if weight > 0:
+    #             nx_graph.add_weighted_edges_from(
+    #                 ebunch_to_add=[(row, col, weight)],
+    #             )
 
     return nx_graph
 
 
-def __set_edge_properties(nx_graph, edge_colors):
+def __set_edge_properties(nx_graph, edge_colors, edge_widths):
     for edge in nx_graph.edges():
         weight = nx_graph.edges[edge]["weight"]
 
         if weight < 0.25:
-            width, dash = 2, "dot"
+            width, dash = edge_widths[0], "dot"
             edge_color = edge_colors[0]
 
         elif weight < 0.5:
-            width, dash = 2, "dash"
+            width, dash = edge_widths[1], "dash"
             edge_color = edge_colors[1]
 
         elif weight < 0.75:
-            width, dash = 4, "solid"
+            width, dash = edge_widths[2], "solid"
             edge_color = edge_colors[2]
 
         else:
-            width, dash = 6, "solid"
+            width, dash = edge_widths[3], "solid"
             edge_color = edge_colors[3]
 
         nx_graph.edges[edge]["width"] = width

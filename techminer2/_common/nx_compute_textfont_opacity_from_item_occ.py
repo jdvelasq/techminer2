@@ -14,8 +14,7 @@ import numpy as np
 
 def nx_compute_textfont_opacity_from_item_occ(
     nx_graph,
-    textfont_opacity_min,
-    textfont_opacity_max,
+    textfont_opacity_range,
 ):
     #
     # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
@@ -27,17 +26,17 @@ def nx_compute_textfont_opacity_from_item_occ(
     #
     # Set the lower value of the node size to node_size_min
     min_occ = min(occ)
-    textfont_opacities = occ - min_occ + textfont_opacity_min
+    textfont_opacities = occ - min_occ + textfont_opacity_range[0]
 
     #
     # Checks if node_sizes.max() > node_size_max and, if so, rescales
-    if textfont_opacities.max() > textfont_opacity_max:
+    if textfont_opacities.max() > textfont_opacity_range[1]:
         #
         # Scales the node size to the range [node_size_min, node_size_max]
-        textfont_opacities -= textfont_opacity_min
+        textfont_opacities -= textfont_opacity_range[0]
         textfont_opacities /= textfont_opacities.max()
-        textfont_opacities *= textfont_opacity_max - textfont_opacity_min
-        textfont_opacities += textfont_opacity_min
+        textfont_opacities *= textfont_opacity_range[1] - textfont_opacity_range[0]
+        textfont_opacities += textfont_opacity_range[0]
 
     #
     # Sets the value of node_size

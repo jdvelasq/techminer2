@@ -14,8 +14,7 @@ import numpy as np
 
 def nx_compute_node_size_from_item_occ(
     nx_graph,
-    node_size_min,
-    node_size_max,
+    node_size_range,
 ):
     #
     # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
@@ -27,17 +26,17 @@ def nx_compute_node_size_from_item_occ(
     #
     # Set the lower value of the node size to node_size_min
     min_occ = min(occ)
-    node_sizes = occ - min_occ + node_size_min
+    node_sizes = occ - min_occ + node_size_range[0]
 
     #
     # Checks if node_sizes.max() > node_size_max and, if so, rescales
-    if node_sizes.max() > node_size_max:
+    if node_sizes.max() > node_size_range[1]:
         #
         # Scales the node size to the range [node_size_min, node_size_max]
-        node_sizes -= node_size_min
+        node_sizes -= node_size_range
         node_sizes /= node_sizes.max()
-        node_sizes *= node_size_max
-        node_sizes += node_size_min
+        node_sizes *= node_size_range[1]
+        node_sizes += node_size_range
 
     #
     # Sets the value of node_size
