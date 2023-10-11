@@ -32,25 +32,24 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                            CL_0  ...                         CL_2
-0                 REGTECH 28:329  ...  FINANCIAL_REGULATION 04:035
-1                 FINTECH 12:249  ...            INNOVATION 03:012
-2              COMPLIANCE 07:030  ...      NEW_TECHNOLOGIES 03:010
-3              REGULATION 05:164  ...       DATA_PROTECTION 02:027
-4      FINANCIAL_SERVICES 04:168  ...                             
-5         RISK_MANAGEMENT 03:014  ...                             
-6              BLOCKCHAIN 03:005  ...                             
-7                 SUPTECH 03:004  ...                             
-8   SEMANTIC_TECHNOLOGIES 02:041  ...                             
-9          SMART_CONTRACT 02:022  ...                             
-10         ACCOUNTABILITY 02:014  ...                             
+                              CL_0  ...                          CL_3
+0                  FINTECH 31:5168  ...        SHADOW_BANKING 03:0643
+1      FINANCIAL_INCLUSION 03:0590  ...  PEER_TO_PEER_LENDING 03:0324
+2             CASE_STUDIES 03:0442  ...   MARKETPLACE_LENDING 03:0317
+3               BLOCKCHAIN 03:0369  ...                              
+4             CROWDFUNDING 03:0335  ...                              
+5           MOBILE_PAYMENT 03:0309  ...                              
+6           CYBER_SECURITY 02:0342  ...                              
+7  ARTIFICIAL_INTELLIGENCE 02:0327  ...                              
 <BLANKLINE>
-[11 rows x 3 columns]
+[8 rows x 4 columns]
 
 
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ...._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ...._common.nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 
 def communities(
@@ -83,10 +82,8 @@ def communities(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
     edge_width_min = 0.8
@@ -120,10 +117,8 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
         edge_width_min=edge_width_min,

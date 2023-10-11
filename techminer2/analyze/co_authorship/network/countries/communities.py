@@ -43,7 +43,9 @@ Communities
 
 """
 from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ....._common.nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 FIELD = "countries"
 
@@ -112,9 +114,9 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
+        node_size_range=node_size_min,
         node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
+        textfont_size_range=textfont_size_min,
         textfont_size_max=textfont_size_max,
         #
         # EDGES:

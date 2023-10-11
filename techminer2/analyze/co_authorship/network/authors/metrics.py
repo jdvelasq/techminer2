@@ -110,9 +110,9 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
+        node_size_range=node_size_min,
         node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
+        textfont_size_range=textfont_size_min,
         textfont_size_max=textfont_size_max,
         #
         # EDGES:

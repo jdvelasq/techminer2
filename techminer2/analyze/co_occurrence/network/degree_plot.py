@@ -48,11 +48,11 @@ Degree Plot
 
 >>> plot.df_.head()
    Node                          Name  Degree
-0     0                REGTECH 28:329      19
-1     1                FINTECH 12:249      13
-2     2             COMPLIANCE 07:030      10
-3     3             REGULATION 05:164      10
-4     4  REGULATORY_TECHNOLOGY 07:037       9
+0     0               FINTECH 31:5168      19
+1     1    FINANCIAL_SERVICES 04:0667      10
+2     2            INNOVATION 07:0911       9
+3     3  FINANCIAL_TECHNOLOGY 04:0551       7
+4     4          CASE_STUDIES 03:0442       6
 
 >>> print(plot.prompt_) # doctest: +ELLIPSIS
 Your task is ...
@@ -106,10 +106,8 @@ def degree_plot(
     nx_random_state = 0
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
     edge_width_min = 0.8
@@ -138,10 +136,8 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
         edge_width_min=edge_width_min,

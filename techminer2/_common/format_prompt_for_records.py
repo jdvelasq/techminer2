@@ -46,7 +46,7 @@ def format_prompt_for_records(main_text, secondary_text, records, weight=None):
 
         #
         # Article title
-        record_title = str(record.title)
+        record_title = str(record.document_title)
         record_title = textwrap.fill(record_title, width=TEXTWRAP_WIDTH)
         record_title = record_title.replace("\n", " \\\n")
 

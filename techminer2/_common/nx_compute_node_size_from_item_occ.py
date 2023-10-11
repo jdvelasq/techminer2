@@ -19,6 +19,7 @@ def nx_compute_node_size_from_item_occ(
     #
     # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
     occ = list(nx_graph.nodes())
+    # occ = [node.split("<br>")[0] for node in occ]
     occ = [node.split(" ")[-1] for node in occ]
     occ = [node.split(":")[0] for node in occ]
     occ = np.array([float(node) for node in occ])

@@ -32,12 +32,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                Degree  Betweenness  Closeness  PageRank
-REGTECH 28:329                      19     0.441813   1.000000  0.214202
-FINTECH 12:249                      13     0.087524   0.760000  0.121016
-COMPLIANCE 07:030                   10     0.046394   0.678571  0.072258
-REGULATION 05:164                   10     0.031287   0.678571  0.066992
-ARTIFICIAL_INTELLIGENCE 04:023       9     0.038402   0.655172  0.045057
+                              Degree  Betweenness  Closeness  PageRank
+FINTECH 31:5168                   19     0.655945   1.000000  0.245063
+FINANCIAL_SERVICES 04:0667        10     0.057505   0.678571  0.074543
+INNOVATION 07:0911                 9     0.038012   0.655172  0.097081
+FINANCIAL_TECHNOLOGY 04:0551       7     0.033138   0.612903  0.045803
+CASE_STUDIES 03:0442               6     0.020468   0.593750  0.045780
 
 
 """
@@ -75,10 +75,8 @@ def metrics(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
     edge_width_min = 0.8
@@ -112,10 +110,8 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
         edge_width_min=edge_width_min,

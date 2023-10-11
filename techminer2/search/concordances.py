@@ -311,7 +311,9 @@ def concordances_from_records(
     def get_phrases(records):
         """Gets the phrases with the searched text."""
 
-        records = records.set_index(pd.Index(records.article + " / " + records.title))
+        records = records.set_index(
+            pd.Index(records.article + " / " + records.document_title)
+        )
 
         records = records.sort_values(
             ["global_citations", "local_citations", "year"],
@@ -319,7 +321,9 @@ def concordances_from_records(
         )
 
         records["_found_"] = (
-            records["abstract"].astype(str).str.contains(r"\b" + search_for + r"\b", regex=True)
+            records["abstract"]
+            .astype(str)
+            .str.contains(r"\b" + search_for + r"\b", regex=True)
         )
         records = records[records["_found_"]].head(top_n)
 
@@ -368,7 +372,9 @@ def concordances_from_records(
 
         texts = []
         for _, row in contexts.iterrows():
-            text = f"{row['left_context']:>60} {search_for.upper()} {row['right_context']}"
+            text = (
+                f"{row['left_context']:>60} {search_for.upper()} {row['right_context']}"
+            )
             texts.append(text)
 
         return "\n".join(texts)

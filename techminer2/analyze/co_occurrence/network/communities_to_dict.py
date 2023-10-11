@@ -6,15 +6,18 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Communities
+Communities to dict
 ===============================================================================
 
 
->>> from techminer2.analyze.co_authorship.network.organizations import communities
->>> communities(
+>>> from techminer2.analyze.co_occurrence.network import communities_to_dict
+>>> communities_to_dict(
+...     #
+...     # PARAMS:
+...     field='author_keywords',
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=20, 
+...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
 ...     custom_items=None,
@@ -29,28 +32,20 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                                CL_0  ...                              CL_8
-0                      Univ of Hong Kong (HKG) 3:185  ...  Duke Univ Sch of Law (USA) 1:030
-1                  FinTech HK, Hong Kong (HKG) 1:150  ...                                  
-2  ctr for Law, Markets & Regulation, UNSW Austra...  ...                                  
-3                    Heinrich-Heine-Univ (DEU) 1:024  ...                                  
-4     UNSW Sydney, Kensington, Australia (AUS) 1:024  ...                                  
-5                     Univ of Luxembourg (LUX) 1:024  ...                                  
-6                         Univ of Zurich (CHE) 1:024  ...                                  
-<BLANKLINE>
-[7 rows x 9 columns]
+{'FINTECH': 0, 'FINANCIAL_INCLUSION': 0, 'CASE_STUDIES': 0, 'BLOCKCHAIN': 0, 'CROWDFUNDING': 0, 'MOBILE_PAYMENT': 0, 'CYBER_SECURITY': 0, 'ARTIFICIAL_INTELLIGENCE': 0, 'INNOVATION': 1, 'DIGITAL': 1, 'BANKING': 1, 'FINANCIAL_INSTITUTION': 1, 'TECHNOLOGIES': 1, 'FINANCIAL_SERVICES': 2, 'FINANCIAL_TECHNOLOGY': 2, 'BUSINESS': 2, 'FUTURE_RESEARCH': 2, 'SHADOW_BANKING': 3, 'PEER_TO_PEER_LENDING': 3, 'MARKETPLACE_LENDING': 3}
 
 
 """
-from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....._common.nx_extract_communities_as_data_frame import (
+from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...._common.nx_extract_communities_as_data_frame import (
     nx_extract_communities_as_data_frame,
 )
 
-FIELD = "organizations"
 
-
-def communities(
+def communities_to_dict(
+    #
+    # PARAMS:
+    field,
     #
     # COLUMN PARAMS:
     top_n=None,
@@ -77,10 +72,8 @@ def communities(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
     edge_width_min = 0.8
@@ -96,7 +89,7 @@ def communities(
     nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
-        rows_and_columns=FIELD,
+        rows_and_columns=field,
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -114,10 +107,8 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
         edge_width_min=edge_width_min,
@@ -131,9 +122,19 @@ def communities(
         **filters,
     )
 
-    return nx_extract_communities_as_data_frame(
+    data_frame = nx_extract_communities_as_data_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
         conserve_counters=True,
     )
+
+    member2group = {}
+    for i_col, col in enumerate(data_frame.columns):
+        terms = data_frame[col].to_list()
+        terms = [term for term in terms if term != ""]
+        terms = [" ".join(term.split(" ")[:-1]) for term in terms]
+        for term in terms:
+            member2group[term] = i_col
+
+    return member2group

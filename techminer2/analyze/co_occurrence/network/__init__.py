@@ -2,6 +2,7 @@
 
 from .communities import communities
 from .communities_summary import communities_summary
+from .communities_to_dict import communities_to_dict
 from .concept_grid import concept_grid
 from .degree_plot import degree_plot
 from .item_density_visualization import item_density_visualization

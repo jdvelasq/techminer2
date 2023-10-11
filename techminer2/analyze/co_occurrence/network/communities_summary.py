@@ -36,11 +36,13 @@ Communities Summary
 ...     cited_by_filter=(None, None),
 ... )
   Cluster  ...                                              Terms
-0    CL_0  ...  REGTECH; FINTECH; COMPLIANCE; REGULATION; FINA...
-1    CL_1  ...  REGULATORY_TECHNOLOGY; ANTI_MONEY_LAUNDERING; ...
-2    CL_2  ...  FINANCIAL_REGULATION; INNOVATION; NEW_TECHNOLO...
+0    CL_0  ...  FINTECH; FINANCIAL_INCLUSION; CASE_STUDIES; BL...
+1    CL_1  ...  INNOVATION; DIGITAL; BANKING; FINANCIAL_INSTIT...
+2    CL_2  ...  FINANCIAL_SERVICES; FINANCIAL_TECHNOLOGY; BUSI...
+3    CL_3  ...  SHADOW_BANKING; PEER_TO_PEER_LENDING; MARKETPL...
 <BLANKLINE>
-[3 rows x 4 columns]
+[4 rows x 4 columns]
+
 
 """
 from ...._common.nx_communities_summary import nx_communities_summary
@@ -80,10 +82,8 @@ def communities_summary(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
     edge_width_min = 0.8
@@ -117,10 +117,8 @@ def communities_summary(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
         edge_width_min=edge_width_min,

@@ -32,15 +32,18 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_1_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_2_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_0_relationships_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_1_relationships_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_2_relationships_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_0_conclusions_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_1_conclusions_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/co_occurrence/network/CL_2_conclusions_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_0_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_1_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_2_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_3_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_0_relationships_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_1_relationships_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_2_relationships_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_3_relationships_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_0_conclusions_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_1_conclusions_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_2_conclusions_prompt.txt' was created.
+--INFO-- The file 'example/reports/co_occurrence/network/CL_3_conclusions_prompt.txt' was created.
 
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -80,10 +83,8 @@ def report(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
     edge_width_min = 0.8
@@ -117,10 +118,8 @@ def report(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
         edge_width_min=edge_width_min,

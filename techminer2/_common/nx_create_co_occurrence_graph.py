@@ -12,13 +12,21 @@
 import networkx as nx
 
 from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from ..analyze.co_occurrence.normalize_co_occurrence_matrix import (
+    normalize_co_occurrence_matrix,
+)
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
-from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from .nx_compute_edge_width_from_edge_weight import (
+    nx_compute_edge_width_from_edge_weight,
+)
 from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
 from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from .nx_compute_textfont_opacity_from_item_occ import (
+    nx_compute_textfont_opacity_from_item_occ,
+)
+from .nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
+)
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_from_palette import nx_set_edge_color_from_palette
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
@@ -46,12 +54,9 @@ def nx_create_co_occurrence_graph(
     nx_random_state=0,
     #
     # NODES:
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    node_size_range=(30, 70),
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # EDGES:
     edge_color="#7793a5",
@@ -113,19 +118,19 @@ def nx_create_co_occurrence_graph(
     # Sets the node attributes
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
 
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
 
-    nx_graph = nx_compute_textfont_size_from_item_occ(
-        nx_graph, textfont_size_min, textfont_size_max
-    )
+    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
 
     nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_min, textfont_opacity_max
+        nx_graph, textfont_opacity_range
     )
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
+    nx_graph = nx_compute_edge_width_from_edge_weight(
+        nx_graph, edge_width_min, edge_width_max
+    )
 
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
 
