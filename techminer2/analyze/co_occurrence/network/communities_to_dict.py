@@ -32,8 +32,7 @@ Communities to dict
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-{'FINTECH': 0, 'FINANCIAL_INCLUSION': 0, 'CASE_STUDIES': 0, 'BLOCKCHAIN': 0, 'CROWDFUNDING': 0, 'MOBILE_PAYMENT': 0, 'CYBER_SECURITY': 0, 'ARTIFICIAL_INTELLIGENCE': 0, 'INNOVATION': 1, 'DIGITAL': 1, 'BANKING': 1, 'FINANCIAL_INSTITUTION': 1, 'TECHNOLOGIES': 1, 'FINANCIAL_SERVICES': 2, 'FINANCIAL_TECHNOLOGY': 2, 'BUSINESS': 2, 'FUTURE_RESEARCH': 2, 'SHADOW_BANKING': 3, 'PEER_TO_PEER_LENDING': 3, 'MARKETPLACE_LENDING': 3}
-
+{'FINTECH 31:5168': 0, 'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 'MOBILE_PAYMENT 03:0309': 0, 'CYBER_SECURITY 02:0342': 0, 'ARTIFICIAL_INTELLIGENCE 02:0327': 0, 'INNOVATION 07:0911': 1, 'DIGITAL 03:0434': 1, 'BANKING 03:0375': 1, 'FINANCIAL_INSTITUTION 02:0484': 1, 'TECHNOLOGIES 02:0310': 1, 'FINANCIAL_SERVICES 04:0667': 2, 'FINANCIAL_TECHNOLOGY 04:0551': 2, 'BUSINESS 03:0896': 2, 'FUTURE_RESEARCH 02:0691': 2, 'SHADOW_BANKING 03:0643': 3, 'PEER_TO_PEER_LENDING 03:0324': 3, 'MARKETPLACE_LENDING 03:0317': 3}
 
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -133,7 +132,7 @@ def communities_to_dict(
     for i_col, col in enumerate(data_frame.columns):
         terms = data_frame[col].to_list()
         terms = [term for term in terms if term != ""]
-        terms = [" ".join(term.split(" ")[:-1]) for term in terms]
+        # terms = [" ".join(term.split(" ")[:-1]) for term in terms]
         for term in terms:
             member2group[term] = i_col
 

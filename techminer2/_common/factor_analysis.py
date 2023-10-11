@@ -19,7 +19,9 @@ from sklearn.manifold import MDS, TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 
 from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from ..analyze.co_occurrence.normalize_co_occurrence_matrix import (
+    normalize_co_occurrence_matrix,
+)
 from ..analyze.tfidf import tfidf as _tfidf
 from .manifold_2d_map import manifold_2d_map
 
@@ -534,40 +536,50 @@ class FactorAnalyzer:
 
     # --------------------------------------------------------------------------------------------
     #
-    def run_clustering(self):
+    def run_clustering(self, brute_force_labels):
         #
         # Selects first n_cluster components for clustering
         matrix = self.embedding_.iloc[:, : self.n_clusters]
-        self.clustering_estimator.fit(matrix)
 
-        if self.n_clusters is None:
-            self.n_clusters = self.clustering_estimator.n_clusters_
+        if brute_force_labels is None:
+            #
+            # Train the clustering estimator
+            self.clustering_estimator.fit(matrix)
 
-        #
-        # Obtain the communities
-        communities = {i_cluster: [] for i_cluster in range(self.n_clusters)}
-        for item, label in zip(matrix.index, self.clustering_estimator.labels_):
-            communities[label].append(item)
+            #
+            # Set n_clusters
+            if self.n_clusters is None:
+                self.n_clusters = self.clustering_estimator.n_clusters_
 
-        #
-        # Sorts the communities by the number of members
-        lengths = [(key, len(communities[key])) for key in communities.keys()]
-        lengths = sorted(lengths, key=lambda x: x[1], reverse=True)
-        sorted_labels = [index for index, _ in lengths]
-        old_2_new = {old: new for new, old in enumerate(sorted_labels)}
-        labels = [old_2_new[label] for label in self.clustering_estimator.labels_]
-        self.labels_ = labels
+            #
+            # Obtain the communities
+            communities = {i_cluster: [] for i_cluster in range(self.n_clusters)}
+            for item, label in zip(matrix.index, self.clustering_estimator.labels_):
+                communities[label].append(item)
+
+            #
+            # Sorts the communities by the number of members
+            lengths = [(key, len(communities[key])) for key in communities.keys()]
+            lengths = sorted(lengths, key=lambda x: x[1], reverse=True)
+            sorted_labels = [index for index, _ in lengths]
+            old_2_new = {old: new for new, old in enumerate(sorted_labels)}
+            labels = [old_2_new[label] for label in self.clustering_estimator.labels_]
+            self.labels_ = labels
+
+        else:
+            self.labels_ = [brute_force_labels[index] for index in matrix.index]
+            self.n_clusters = len(set(self.labels_))
 
         #
         # Recompute the communities with the new labels
         communities = {i_cluster: [] for i_cluster in range(self.n_clusters)}
-        for item, label in zip(matrix.index, labels):
+        for item, label in zip(matrix.index, self.labels_):
             communities[label].append(item)
 
         #
         # Computes the centers
         centers = matrix.copy()
-        centers["LABELS"] = labels
+        centers["LABELS"] = self.labels_
         centers = centers.groupby("LABELS").mean()
         centers = centers.sort_index(axis=0)
 
@@ -575,7 +587,9 @@ class FactorAnalyzer:
         # Formats cluster name with prefix CL_ and zeros
         n_zeros = int(np.log10(self.n_clusters - 1)) + 1
         fmt = "CL_{:0" + str(n_zeros) + "d}"
-        cluster_names = {i_cluster: fmt.format(i_cluster) for i_cluster in range(self.n_clusters)}
+        cluster_names = {
+            i_cluster: fmt.format(i_cluster) for i_cluster in range(self.n_clusters)
+        }
 
         centers.index = centers.index.map(cluster_names)
         centers = centers.sort_index(axis=0)

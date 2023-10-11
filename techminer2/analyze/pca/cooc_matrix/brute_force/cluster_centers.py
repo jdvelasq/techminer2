@@ -1,0 +1,146 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+"""
+Cluster Centers
+===============================================================================
+
+
+>>> from techminer2.analyze.pca.cooc_matrix.brute_force import cluster_centers
+>>> cluster_centers(
+...     #
+...     # PARAMS:
+...     field="author_keywords",
+...     association_index=None,
+...     #
+...     # ITEM PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # PCA PARAMS:
+...     n_components=5,
+...     whiten=False,
+...     svd_solver="auto",
+...     pca_tol=0.0,
+...     iterated_power="auto",
+...     n_oversamples=10,
+...     power_iteration_normalizer="auto",
+...     random_state=0, 
+...     #
+...     # BRUTE FORCE PARAMS:
+...     brute_force_labels={
+...        'FINTECH 31:5168': 0, 'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 
+...        'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 'MOBILE_PAYMENT 03:0309': 0, 
+...        'CYBER_SECURITY 02:0342': 0, 'ARTIFICIAL_INTELLIGENCE 02:0327': 0, 
+...        'INNOVATION 07:0911': 1, 'DIGITAL 03:0434': 1, 'BANKING 03:0375': 1, 
+...        'FINANCIAL_INSTITUTION 02:0484': 1, 'TECHNOLOGIES 02:0310': 1, 
+...        'FINANCIAL_SERVICES 04:0667': 2, 'FINANCIAL_TECHNOLOGY 04:0551': 2, 
+...        'BUSINESS 03:0896': 2, 'FUTURE_RESEARCH 02:0691': 2, 'SHADOW_BANKING 03:0643': 3, 
+...        'PEER_TO_PEER_LENDING 03:0324': 3, 'MARKETPLACE_LENDING 03:0317': 3
+...     },
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+           DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+LABELS                                                  
+CL_0    2.086570 -0.905992 -0.827128 -0.952107  0.114876
+CL_1   -1.473562  2.896645  0.750822 -0.371153 -0.021407
+CL_2   -1.340508  0.128112 -1.287307  1.968237  0.157411
+CL_3   -1.320904 -2.582578  2.670715  0.533225 -0.480539
+
+
+"""
+from ....._common.factor_analysis import FactorAnalyzer
+
+
+def cluster_centers(
+    #
+    # PARAMS:
+    field,
+    association_index=None,
+    #
+    # ITEM PARAMS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # PCA PARAMS:
+    n_components=None,
+    whiten=False,
+    svd_solver="auto",
+    pca_tol=0.0,
+    iterated_power="auto",
+    n_oversamples=10,
+    power_iteration_normalizer="auto",
+    random_state=0,
+    #
+    # BRUTE FORCE PARAMS:
+    brute_force_labels=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
+):
+    """
+    :meta private:
+    """
+
+    analyzer = FactorAnalyzer(field=field)
+
+    analyzer.cooc_matrix(
+        #
+        # COOC PARAMS:
+        association_index=association_index,
+        #
+        # ITEM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    analyzer.pca(
+        #
+        # PCA PARAMS:
+        n_components=n_components,
+        whiten=whiten,
+        svd_solver=svd_solver,
+        tol=pca_tol,
+        iterated_power=iterated_power,
+        n_oversamples=n_oversamples,
+        power_iteration_normalizer=power_iteration_normalizer,
+        random_state=random_state,
+    )
+
+    analyzer.compute_embedding()
+
+    # analyzer.pcd(
+    #     #
+    #     # FACTOR MAP PARAMS:
+    #     threshold=threshold,
+    # )
+
+    analyzer.run_clustering(brute_force_labels=brute_force_labels)
+
+    return analyzer.cluster_centers()
