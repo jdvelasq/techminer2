@@ -20,48 +20,49 @@ General Metrics
 >>> info.df_
                                                             Value
 Category       Item                                              
-GENERAL        Timespan                                 2016:2023
-               Documents                                       52
-               Annual growth rate %                         63.87
-               Document average age                          2.77
-               References                                     932
-               Average citations per document               10.83
-               Average citations per document per year       1.35
-               Average references per document              20.71
-               Sources                                         46
-               Average documents per source                  1.13
-DOCUMENT TYPES article                                         31
-               book                                             1
-               book_chapter                                     9
-               conference_paper                                11
-AUTHORS        Authors                                        102
-               Authors of single-authored documents            19
-               Single-authored documents                       19
-               Multi-authored documents                        33
-               Authors per document                          2.29
-               Co-authors per document                       3.03
-               International co-authorship %                23.08
-               Author appearances                             119
-               Documents per author                          0.44
+GENERAL        Timespan                                 2015:2019
+               Documents                                       50
+               Annual growth rate %                        118.67
+               Document average age                          5.24
+               References                                    1277
+               Average citations per document               162.7
+               Average citations per document per year      32.54
+               Average references per document              26.06
+               Sources                                         41
+               Average documents per source                  1.22
+DOCUMENT TYPES Article                                         37
+               Book                                             1
+               Conference paper                                 4
+               Editorial                                        2
+               Review                                           6
+AUTHORS        Authors                                        115
+               Authors of single-authored documents            12
+               Single-authored documents                       12
+               Multi-authored documents                        38
+               Authors per document                          2.52
+               Co-authors per document                        3.0
+               International co-authorship %                30.61
+               Author appearances                             126
+               Documents per author                           0.4
                Collaboration index                            1.0
-               Organizations                                   81
-               Organizations (1st author)                       0
-               Countries                                       29
-               Countries (1st author)                           0
+               Organizations                                   91
+               Organizations (1st author)                      43
+               Countries                                       24
+               Countries (1st author)                          18
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        142
-               Raw index keywords                             156
-               Cleaned index keywords                         151
-               Raw keywords                                   274
-               Cleaned keywords                               253
-NLP PHRASES    Raw title NLP phrases                           68
-               Cleaned title NLP phrases                       68
-               Raw abstract NLP phrases                       796
-               Cleaned abstract NLP phrases                   743
-               Raw NLP phrases                                834
-               Cleaned NLP phrases                            776
-DESCRIPTORS    Raw descriptors                               1041
-               Cleaned descriptors                            939
+               Cleaned author keywords                        137
+               Raw index keywords                             179
+               Cleaned index keywords                         170
+               Raw keywords                                   279
+               Cleaned keywords                               245
+NLP PHRASES    Raw title NLP phrases                          130
+               Cleaned title NLP phrases                      122
+               Raw abstract NLP phrases                      1469
+               Cleaned abstract NLP phrases                  1248
+               Raw NLP phrases                               1517
+               Cleaned NLP phrases                           1280
+DESCRIPTORS    Raw descriptors                               1684
+               Cleaned descriptors                           1388
 
 
 >>> info.fig_.write_html("sphinx/_static/analyze/overview/general_metrics.html")
@@ -439,9 +440,13 @@ class MainInformation:
 
         records = self.records[["document_type"]].dropna()
 
-        document_types_count = records[["document_type"]].groupby("document_type").size()
+        document_types_count = (
+            records[["document_type"]].groupby("document_type").size()
+        )
 
-        for document_type, count in zip(document_types_count.index, document_types_count):
+        for document_type, count in zip(
+            document_types_count.index, document_types_count
+        ):
             self.insert_stats(
                 "DOCUMENT TYPES",
                 document_type,
@@ -522,7 +527,7 @@ class MainInformation:
         self.insert_stats(
             "AUTHORS",
             "Organizations (1st author)",
-            self.count_unique_items("organizations_1st_author"),
+            self.count_unique_items("organization_1st_author"),
         )
 
         self.insert_stats(
@@ -534,7 +539,7 @@ class MainInformation:
         self.insert_stats(
             "AUTHORS",
             "Countries (1st author)",
-            self.count_unique_items("countries_1st_author"),
+            self.count_unique_items("country_1st_author"),
         )
 
     def authors_of_single_authored_documents(self):

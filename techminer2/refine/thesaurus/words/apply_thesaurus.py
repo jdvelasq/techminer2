@@ -10,7 +10,7 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.words import apply_thesaurus
+>>> from techminer2.refine.thesaurus.words import apply_thesaurus
 >>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
@@ -43,7 +43,7 @@ def apply_thesaurus(
         "--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words"
     )
 
-    thesaurus_file = os.path.join(root_dir, "words.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
