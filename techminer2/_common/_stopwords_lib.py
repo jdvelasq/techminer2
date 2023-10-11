@@ -18,7 +18,7 @@ def load_stopwords(root_dir):
 
     """
 
-    stopwords_file_path = os.path.join(root_dir, "stopwords.txt")
+    stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
 
     if not os.path.isfile(stopwords_file_path):
         raise FileNotFoundError(f"The file '{stopwords_file_path}' does not exist.")
@@ -34,7 +34,9 @@ def load_generic_stopwords():
 
     :meta private:
     """
-    file_path = pkg_resources.resource_filename("techminer2", "word_lists/stopwords.txt")
+    file_path = pkg_resources.resource_filename(
+        "techminer2", "word_lists/stopwords.txt"
+    )
 
     ###  module_path = dirname(__file__)
     ### file_path = os.path.join(module_path, "word_lists/stopwords.txt")

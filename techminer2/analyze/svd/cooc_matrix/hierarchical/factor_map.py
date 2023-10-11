@@ -50,14 +50,14 @@ Factor Map
 ...     #
 ...     # NODES:
 ...     node_color="#7793a5",
-...     node_size_min=30,
-...     node_size_max=70,
-...     textfont_size_min=10,
-...     textfont_size_max=20,
-...     textfont_opacity_min=0.35,
-...     textfont_opacity_max=1.00,
+...     node_size_range=(30, 70),
+...     textfont_size_range=(10, 20),
+...     textfont_opacity_range=(0.35, 1.00),
 ...     #
 ...     # EDGES:
+...     edge_top_n=None,
+...     edge_similarity_min=None,
+...     edge_widths=(2, 2, 4, 6),
 ...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
 ...     #
 ...     # AXES:
@@ -125,14 +125,14 @@ def factor_map(
     #
     # NODES:
     node_color="#7793a5",
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    node_size_range=(30, 70),
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # EDGES:
+    edge_top_n=None,
+    edge_similarity_min=None,
+    edge_widths=(2, 2, 4, 6),
     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
     #
     # AXES:
@@ -248,14 +248,14 @@ def factor_map(
         #
         # NODES:
         node_color=node_color,
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
+        edge_top_n=edge_top_n,
+        edge_similarity_min=edge_similarity_min,
+        edge_widths=edge_widths,
         edge_colors=edge_colors,
         #
         # AXES:
