@@ -41,7 +41,7 @@ To Brute Force Labels
  'CASE_STUDIES 03:0442': 0,
  'CROWDFUNDING 03:0335': 0,
  'CYBER_SECURITY 02:0342': 0,
- 'DIGITAL 03:0434': 1,
+ 'DIGITALIZATION 03:0434': 1,
  'FINANCIAL_INCLUSION 03:0590': 0,
  'FINANCIAL_INSTITUTION 02:0484': 1,
  'FINANCIAL_SERVICES 04:0667': 2,
@@ -50,7 +50,7 @@ To Brute Force Labels
  'FUTURE_RESEARCH 02:0691': 2,
  'INNOVATION 07:0911': 1,
  'MARKETPLACE_LENDING 03:0317': 3,
- 'MOBILE_PAYMENT 03:0309': 0,
+ 'MOBILE_FINTECH_PAYMENT_SERVICES 03:0309': 0,
  'PEER_TO_PEER_LENDING 03:0324': 3,
  'SHADOW_BANKING 03:0643': 3,
  'TECHNOLOGIES 02:0310': 1}
@@ -77,16 +77,16 @@ To Brute Force Labels
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).to_markdown())
-|    | CL_0                            | CL_1                          | CL_2                         | CL_3                         |
-|---:|:--------------------------------|:------------------------------|:-----------------------------|:-----------------------------|
-|  0 | FINTECH 31:5168                 | INNOVATION 07:0911            | FINANCIAL_SERVICES 04:0667   | SHADOW_BANKING 03:0643       |
-|  1 | FINANCIAL_INCLUSION 03:0590     | DIGITAL 03:0434               | FINANCIAL_TECHNOLOGY 04:0551 | PEER_TO_PEER_LENDING 03:0324 |
-|  2 | CASE_STUDIES 03:0442            | BANKING 03:0375               | BUSINESS 03:0896             | MARKETPLACE_LENDING 03:0317  |
-|  3 | BLOCKCHAIN 03:0369              | FINANCIAL_INSTITUTION 02:0484 | FUTURE_RESEARCH 02:0691      |                              |
-|  4 | CROWDFUNDING 03:0335            | TECHNOLOGIES 02:0310          |                              |                              |
-|  5 | MOBILE_PAYMENT 03:0309          |                               |                              |                              |
-|  6 | CYBER_SECURITY 02:0342          |                               |                              |                              |
-|  7 | ARTIFICIAL_INTELLIGENCE 02:0327 |                               |                              |                              |
+|    | CL_0                                    | CL_1                          | CL_2                         | CL_3                         |
+|---:|:----------------------------------------|:------------------------------|:-----------------------------|:-----------------------------|
+|  0 | FINTECH 31:5168                         | INNOVATION 07:0911            | FINANCIAL_SERVICES 04:0667   | SHADOW_BANKING 03:0643       |
+|  1 | FINANCIAL_INCLUSION 03:0590             | DIGITALIZATION 03:0434        | FINANCIAL_TECHNOLOGY 04:0551 | PEER_TO_PEER_LENDING 03:0324 |
+|  2 | CASE_STUDIES 03:0442                    | BANKING 03:0375               | BUSINESS 03:0896             | MARKETPLACE_LENDING 03:0317  |
+|  3 | BLOCKCHAIN 03:0369                      | FINANCIAL_INSTITUTION 02:0484 | FUTURE_RESEARCH 02:0691      |                              |
+|  4 | CROWDFUNDING 03:0335                    | TECHNOLOGIES 02:0310          |                              |                              |
+|  5 | MOBILE_FINTECH_PAYMENT_SERVICES 03:0309 |                               |                              |                              |
+|  6 | CYBER_SECURITY 02:0342                  |                               |                              |                              |
+|  7 | ARTIFICIAL_INTELLIGENCE 02:0327         |                               |                              |                              |
 
 
 
