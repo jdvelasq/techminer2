@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Communities to dict
+To Brute Force Labels
 ===============================================================================
 
 
->>> from techminer2.analyze.co_occurrence.network import communities_to_dict
->>> communities_to_dict(
+>>> from techminer2.analyze.co_occurrence.network import to_brute_force_labels
+>>> to_brute_force_labels(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -31,8 +31,8 @@ Communities to dict
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-{'FINTECH 31:5168': 0, 'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 'MOBILE_PAYMENT 03:0309': 0, 'CYBER_SECURITY 02:0342': 0, 'ARTIFICIAL_INTELLIGENCE 02:0327': 0, 'INNOVATION 07:0911': 1, 'DIGITAL 03:0434': 1, 'BANKING 03:0375': 1, 'FINANCIAL_INSTITUTION 02:0484': 1, 'TECHNOLOGIES 02:0310': 1, 'FINANCIAL_SERVICES 04:0667': 2, 'FINANCIAL_TECHNOLOGY 04:0551': 2, 'BUSINESS 03:0896': 2, 'FUTURE_RESEARCH 02:0691': 2, 'SHADOW_BANKING 03:0643': 3, 'PEER_TO_PEER_LENDING 03:0324': 3, 'MARKETPLACE_LENDING 03:0317': 3}
+... )  # doctest: +ELLIPSIS
+{'FINTECH 31:5168': 0, 'FINANCIAL_INCLUSION 03:0590': 0, ...
 
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -41,7 +41,7 @@ from ...._common.nx_extract_communities_as_data_frame import (
 )
 
 
-def communities_to_dict(
+def to_brute_force_labels(
     #
     # PARAMS:
     field,

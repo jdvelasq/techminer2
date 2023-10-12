@@ -2,13 +2,13 @@
 
 from .communities import communities
 from .communities_summary import communities_summary
-from .communities_to_dict import communities_to_dict
 from .concept_grid import concept_grid
 from .degree_plot import degree_plot
 from .item_density_visualization import item_density_visualization
 from .metrics import metrics
 from .network_visualization import network_visualization
 from .report import report
+from .to_brute_force_labels import to_brute_force_labels
 from .treemap import treemap
 
 __all__ = [
@@ -20,5 +20,6 @@ __all__ = [
     "metrics",
     "network_visualization",
     "report",
+    "to_brute_force_labels",
     "treemap",
 ]
