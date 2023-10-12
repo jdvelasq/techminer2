@@ -25,11 +25,50 @@ Concordances
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(results.contexts_)
-
-
+                                                             REGTECH to DATE has focused on the DIGITIZATION of manual REPORT >>>
+<<< LD, SETS the FOUNDATION for a PRACTICAL_UNDERSTANDING of REGTECH , and proposes sequenced REFORMS that could BENEFIT REGU >>>
+                                   however, the POTENTIAL of REGTECH is far greater  IT has the POTENTIAL to enable a nearly  >>>
+<<< L_SYSTEMS requires increasing the USE of and RELIANCE on REGTECH 
 
 
 >>> print(results.prompt_)                        
+You are an automated scientific writer assistant. Use only the
+information provided in the following records to write one paragraph
+focusing on the any aspect contributing to the definition and
+characteristics of the term:
+<BLANKLINE>
+'REGTECH'
+<BLANKLINE>
+Use the Record-No value between brackets to indicate the reference to the
+record. For example, [1] means that the information is in the Record-No
+1. Use notes below of the generated text to justify the affirmation. Use
+only phrases appearing in the provided text.
+<BLANKLINE>
+Here are the records: 
+<BLANKLINE>
+--
+<BLANKLINE>
+Record-No: 1
+Artile: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373 / FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+Text:```
+at the JUNCTURE of these PHENOMENA lies REGULATORY_TECHNOLOGY or
+REGTECHTHE_USE of TECHNOLOGY, particularly INFORMATION_TECHNOLOGY, in the
+CONTEXT of regulatory MONITORING, REPORTING, and COMPLIANCE.  regulating
+rapidly TRANSFORMING FINANCIAL_SYSTEMS requires increasing the USE of and
+RELIANCE on REGTECH.  REGTECH_DEVELOPMENTS are leading TOWARDS a PARADIGM
+SHIFT necessitating the RECONCEPTUALIZATION of FINANCIAL_REGULATION.
+REGTECH to DATE has focused on the DIGITIZATION of manual REPORTING and
+COMPLIANCE_PROCESSES.  however, the POTENTIAL of REGTECH is far greater
+IT has the POTENTIAL to enable a nearly real_time and
+PROPORTIONATE_REGULATORY_REGIME that IDENTIFIES and ADDRESSES_RISK while
+facilitating more EFFICIENT_REGULATORY_COMPLIANCE.  this PAPER seeks to
+expose the INADEQUACY of digitizing ANALOGUE_PROCESSES in a digital
+FINANCIAL_WORLD, SETS the FOUNDATION for a PRACTICAL_UNDERSTANDING of
+REGTECH, and proposes sequenced REFORMS that could BENEFIT REGULATORS,
+INDUSTRY, and ENTREPRENEURS in the FINANCIAL_SECTOR and other INDUSTRIES
+```
+<BLANKLINE>
+<BLANKLINE>
 
 
 """

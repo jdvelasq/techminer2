@@ -23,6 +23,7 @@ def run_abstract_importer(root_dir):
         .str.replace("-", "_", regex=False)
         .str.normalize("NFKD")
         .str.encode("ascii", errors="ignore")
-        .str.decode("utf-8"),
+        .str.decode("utf-8")
+        .str.lower(),
         root_dir=root_dir,
     )
