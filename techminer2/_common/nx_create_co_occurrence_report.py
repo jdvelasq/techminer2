@@ -15,32 +15,6 @@ Network Report
 >>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 
-* Object oriented interface
-
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         col_top_n=20,
-...     )
-...     .network_create(
-...         algorithm_or_estimator="louvain",
-...     )
-...     .network_report(
-...         report_dir='network_report_0',
-...     )
-... )
---INFO-- The file 'data/regtech/reports/network_report_0/CL_00_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_01_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_02_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_03_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_00_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_01_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_02_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_0/CL_03_prompt.txt' was created.
-
-
-* Functional interface
 
 >>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
@@ -202,7 +176,9 @@ def __extract_records_per_cluster(
         records["clusters"] = records[field].map(clusters)
         # records["article"] = records.index.to_list()
         records = records.groupby("article").agg({"clusters": list})
-        records["clusters"] = records["clusters"].apply(lambda x: sorted(x)).str.join("; ")
+        records["clusters"] = (
+            records["clusters"].apply(lambda x: sorted(x)).str.join("; ")
+        )
 
         return records
 
@@ -265,7 +241,9 @@ def __extract_records_per_cluster(
     records_per_cluster = {}
 
     for cluster in clusters:
-        clustered_records = records_main[records_main.ASSIGNED_CLUSTER == cluster].copy()
+        clustered_records = records_main[
+            records_main.ASSIGNED_CLUSTER == cluster
+        ].copy()
         clustered_records = clustered_records.sort_values(
             ["global_citations", "local_citations", "year", "authors"],
             ascending=[False, False, False, True],
@@ -325,40 +303,37 @@ def __generate_terms_relationships_prompt(
         #
         # Main text:
         text = (
-            "You are an automated scientific writer assistant. Use only the information provided "
-            "in the following records to write one paragraph explaining and exemplifying the "
-            "relationships among the following keywords: "
+            "You are an automated scientific writer assistant. Use only the information "
+            "provided in the following records to write one paragraph explaining and "
+            "exemplifying the relationships among the following keywords: "
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         main_text = text + "\n\n"
 
         text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         main_text += text + "\n\n"
 
         text = (
             "Use the Record-No value between brackets to indicate the reference to the record. "
             "For example, [1] means that the information is in the Record-No 1. Use notes below "
             "of the generated text to justify the affirmation. Use only phrases appearing in the "
-            "provided text. Here are the records: "
+            "provided text."
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
-        main_text += text + "\n\n"
+        ## text = text.replace("\n", " \\\n")
+        main_text += text + "\n\nHere are the records:\n\n"
 
         #
         # Secondary text:
-        text = (
-            "Improve and make more clear the explanation of the relationships among the keywords:"
-        )
+        text = "Improve and make more clear the explanation of the relationships among the keywords:"
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
-        text = "*" * 75 + "\n\n" + text
+        ## text = text.replace("\n", " \\\n")
         secondary_text = text + "\n\n"
 
         text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         text = (
@@ -367,19 +342,19 @@ def __generate_terms_relationships_prompt(
             "corresponding Record-No value between brackets."
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
-        text = "Here are text to improve and make more clear: "
+        text = "Here are the text to improve and make more clear: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         secondary_text += "<<<\n\n>>>\n\n"
 
         text = "Here are the records: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         # -------------------------------------------------------------------------------------
@@ -443,12 +418,12 @@ def __generate_conclusions_prompt(
             "For example, [1] means that the information is in the Record-No 1."
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         main_text = text + "\n\n"
 
         text = "Here are the records: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         main_text += text + "\n\n"
 
         #
@@ -461,20 +436,20 @@ def __generate_conclusions_prompt(
             "For example, [1] means that the information is in the Record-No 1."
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
-        text = "*" * 70 + "\n\n" + text
+        ## text = text.replace("\n", " \\\n")
+        ## text = "*" * 70 + "\n\n" + text
         secondary_text = text + "\n\n"
 
         text = "Here is the list of bullets to improve, complete and make more clear: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         secondary_text += "<<<\n\n>>>\n\n"
 
         text = "Here are the records: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        text = text.replace("\n", " \\\n")
+        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         # -------------------------------------------------------------------------------------
