@@ -23,3 +23,8 @@ Hierarchical Clustering >
 
 .. toctree::
     concept_grid
+
+--------------------------------------------------------------------------------
+
+.. toctree::
+    to_brute_force_labels

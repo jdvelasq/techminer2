@@ -24,5 +24,8 @@ Brute Force >
 .. toctree::
     concept_grid
 
+--------------------------------------------------------------------------------
 
+.. toctree::
+    to_brute_force_labels
 
