@@ -7,11 +7,8 @@
 # pylint: disable=too-many-statements
 
 import networkx as nx
+import numpy as np
 
-from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..analyze.co_occurrence.normalize_co_occurrence_matrix import (
-    normalize_co_occurrence_matrix,
-)
 from ..analyze.performance_metrics import performance_metrics
 from ._read_records import read_records
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
@@ -29,24 +26,20 @@ from .nx_compute_textfont_size_from_item_occ import (
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
-from .nx_set_node_size_to_constant import nx_set_node_size_to_constant
-from .nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
-from .nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
 
 
-def nx_create_citation_graph(
+def nx_create_citation_graph_others(
     #
     # FUNCTION PARAMS:
     unit_of_analysis,
     #
     # COLUMN PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
+    citations_threshold=(None, None),
+    occurrence_threshold=(None, None),
     custom_items=None,
     #
     # NETWORK CLUSTERING:
-    association_index="association",
     algorithm_or_dict="louvain",
     #
     # LAYOUT:
@@ -55,19 +48,13 @@ def nx_create_citation_graph(
     nx_random_state=0,
     #
     # NODES:
-    node_size=30,
-    textfont_size=10,
-    textfont_opacity=1.00,
+    node_size_range=(30, 70),
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # EDGES:
     edge_color="#7793a5",
-    edge_width_min=0.8,
-    edge_width_max=3.0,
-    #
-    # AXES:
-    # xaxes_range=None,
-    # yaxes_range=None,
-    # show_axes=False,
+    edge_width_range=(0.8, 3.0),
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -86,8 +73,8 @@ def nx_create_citation_graph(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # DATABASE PARAMS:
@@ -99,7 +86,7 @@ def nx_create_citation_graph(
     )
 
     for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = node
+        nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
 
     #
     # Cluster the networkx graph
@@ -115,15 +102,16 @@ def nx_create_citation_graph(
     #
     # Sets the node attributes
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-    nx_graph = nx_set_node_size_to_constant(nx_graph, node_size)
-    nx_graph = nx_set_textfont_size_to_constant(nx_graph, textfont_size)
-    nx_graph = nx_set_textfont_opacity_to_constant(nx_graph, textfont_opacity)
+    #
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
+    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(
+        nx_graph, textfont_opacity_range
+    )
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(
-        nx_graph, edge_width_min, edge_width_max
-    )
+    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_range)
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
 
@@ -136,8 +124,8 @@ def __add_weighted_edges_from(
     #
     # COLUMN PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
+    citations_threshold=(None, None),
+    occurrence_threshold=(None, None),
     custom_items=None,
     #
     # DATABASE PARAMS:
@@ -168,51 +156,12 @@ def __add_weighted_edges_from(
 
     records.index = records.article.copy()
 
-    if unit_of_analysis == "authors":
-        article2authors = {
-            row.article: row.authors
-            for _, row in records[["article", "authors"]].iterrows()
-        }
-        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2authors)
-        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2authors)
-
-    elif unit_of_analysis == "countries":
-        article2countries = {
-            row.article: row.countries
-            for _, row in records[["article", "countries"]].iterrows()
-        }
-        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2countries)
-        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2countries)
-
-    elif unit_of_analysis == "article":
-        data_frame["citing_unit"] = (
-            data_frame["citing_unit"]
-            .str.split(", ")
-            .map(lambda x: x[:3])
-            .str.join(", ")
-        )
-        data_frame["cited_unit"] = (
-            data_frame["cited_unit"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
-        )
-
-    elif unit_of_analysis == "organizations":
-        article2organizations = {
-            row.article: row.organizations
-            for _, row in records[["article", "organizations"]].iterrows()
-        }
-        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2organizations)
-        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2organizations)
-
-    elif unit_of_analysis == "abbr_source_title":
-        article2source_abbr = {
-            row.article: row.source_abbr
-            for _, row in records[["article", "abbr_source_title"]].iterrows()
-        }
-        data_frame["citing_unit"] = data_frame["citing_unit"].map(article2source_abbr)
-        data_frame["cited_unit"] = data_frame["cited_unit"].map(article2source_abbr)
-
-    else:
-        raise ValueError("Bad unit_of_analysis")
+    article2unit = {
+        row.article: row[unit_of_analysis]
+        for _, row in records[["article", unit_of_analysis]].iterrows()
+    }
+    data_frame["citing_unit"] = data_frame["citing_unit"].map(article2unit)
+    data_frame["cited_unit"] = data_frame["cited_unit"].map(article2unit)
 
     #
     # Explode columns to find the relationships
@@ -224,48 +173,60 @@ def __add_weighted_edges_from(
     data_frame = data_frame.explode("cited_unit")
     data_frame["cited_unit"] = data_frame["cited_unit"].str.strip()
 
-    data_frame = data_frame.loc[
-        data_frame.apply(lambda row: row.citing_unit != row.cited_unit, axis=1), :
-    ]
+    #
+    # Compute citations and occurrences
+    metrics = performance_metrics(
+        #
+        # ITEMS PARAMS:
+        field=unit_of_analysis,
+        metric="OCCGC",
+        #
+        # ITEM FILTERS:
+        top_n=top_n,
+        occ_range=(occurrence_threshold, None),
+        gc_range=(citations_threshold, None),
+        custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    ).df_
+    data_frame = data_frame.loc[data_frame.citing_unit.isin(metrics.index.to_list()), :]
+    data_frame = data_frame.loc[data_frame.cited_unit.isin(metrics.index.to_list()), :]
 
     #
-    # Filter the data
-    if unit_of_analysis != "article":
-        metrics = performance_metrics(
-            #
-            # ITEMS PARAMS:
-            field=unit_of_analysis,
-            metric="OCC",
-            #
-            # ITEM FILTERS:
-            top_n=top_n,
-            occ_range=occ_range,
-            gc_range=gc_range,
-            custom_items=custom_items,
-            #
-            # DATABASE PARAMS:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        ).df_
+    # Adds citations and occurrences to items
+    max_occ = metrics.OCC.max()
+    n_zeros = int(np.log10(max_occ - 1)) + 1
+    fmt_occ = "{:0" + str(n_zeros) + "d}"
 
-        data_frame = data_frame.loc[data_frame.citing_unit.isin(metrics.index), :]
-        data_frame = data_frame.loc[data_frame.cited_unit.isin(metrics.index), :]
+    max_citations = metrics.global_citations.max()
+    n_zeros = int(np.log10(max_citations - 1)) + 1
+    fmt_citations = "{:0" + str(n_zeros) + "d}"
+
+    rename_dict = {
+        key: value
+        for key, value in zip(
+            metrics.index.to_list(),
+            (
+                metrics.index
+                + " "
+                + metrics["OCC"].map(fmt_occ.format)
+                + ":"
+                + metrics["global_citations"].map(fmt_citations.format)
+            ).to_list(),
+        )
+    }
+
+    data_frame["citing_unit"] = data_frame["citing_unit"].map(rename_dict)
+    data_frame["cited_unit"] = data_frame["cited_unit"].map(rename_dict)
 
     #
     # Computes the number of citations per citing_unit-cited_unit pair
     data_frame = data_frame.groupby(
-        #
-        # Generates:
-        #      citing_unit           cited_unit  size
-        # 0      Anasweh M    Anagnostopoulos I     1
-        # 1       Arman AA    Anagnostopoulos I     4
-        # 2       Arman AA            Anasweh M     3
-        # 3       Arman AA             Arner DW     2
-        # 4       Arman AA             Becker M     4
-        # ..           ...                  ...   ...
         ["citing_unit", "cited_unit"],
         as_index=False,
     ).size()

@@ -15,13 +15,12 @@ Communities
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=30, 
-...     occ_range=(None, None),
-...     gc_range=(None, None),
+...     citations_threshold=0,
+...     occurrence_threshold=2,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
-...     association_index="association",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -29,37 +28,33 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                            CL_0  ...                           CL_3
-0             CEUR WORKSHOP PROC  ...                     J ECON BUS
-1   ICEIS - PROC INT CONF ENTERP  ...                FINANCIAL INNOV
-2  INT CONF INF TECHNOL SYST INN  ...  HANDBBLOCKCHAIN, DIGIT FINANC
-3                     DUKE LAW J  ...                 J FINANC CRIME
-4             J ANTITRUST ENFORC  ...     J ADV RES DYN CONTROL SYST
-<BLANKLINE>
-[5 rows x 4 columns]
+                      CL_0                    CL_1                       CL_2
+0    Electron. Mark. 2:287   Financ. Manage. 2:161  Ind Manage Data Sys 2:386
+1  J Manage Inf Syst 2:696     J. Econ. Bus. 3:422                           
+2     Sustainability 2:150  Financial Innov. 2:190                           
+
 
 
 
 """
-from ....._common.nx_create_citation_graph_others import nx_create_citation_graph
+from ....._common.nx_create_citation_graph_others import nx_create_citation_graph_others
 from ....._common.nx_extract_communities_as_data_frame import (
     nx_extract_communities_as_data_frame,
 )
 
-UNIT_OF_ANALYSIS = "source_abbr"
+UNIT_OF_ANALYSIS = "abbr_source_title"
 
 
 def communities(
     #
     # COLUMN PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
+    citations_threshold=None,
+    occurrence_threshold=None,
     custom_items=None,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
-    association_index="association",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -72,17 +67,14 @@ def communities(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size = 30
-    textfont_size = 10
-    textfont_opacity = 0.35
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -91,19 +83,18 @@ def communities(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph(
+    nx_graph = nx_create_citation_graph_others(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
-        association_index=association_index,
         algorithm_or_dict=algorithm_or_dict,
         #
         # LAYOUT:
@@ -112,14 +103,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size=node_size,
-        textfont_size=textfont_size,
-        textfont_opacity=textfont_opacity,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
