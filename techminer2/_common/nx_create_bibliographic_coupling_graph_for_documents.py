@@ -104,6 +104,7 @@ def nx_create_bibliographic_coupling_graph_for_documents(
     #
     # Sets the node attributes
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
+    #
     nx_graph = nx_compute_node_size_from_item_citations(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_citations(
         nx_graph, textfont_size_range
