@@ -16,23 +16,13 @@ from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )
-from .nx_compute_node_degree import nx_compute_node_degree
-from .nx_compute_node_size_from_item_citations import (
-    nx_compute_node_size_from_item_citations,
-)
-from .nx_compute_node_size_from_node_degree import nx_compute_node_size_from_node_degree
+from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
 from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_citations import (
-    nx_compute_textfont_opacity_from_item_citations,
+from .nx_compute_textfont_opacity_from_item_occ import (
+    nx_compute_textfont_opacity_from_item_occ,
 )
-from .nx_compute_textfont_opacity_from_node_degree import (
-    nx_compute_textfont_opacity_from_node_degree,
-)
-from .nx_compute_textfont_size_from_item_citations import (
-    nx_compute_textfont_size_from_item_citations,
-)
-from .nx_compute_textfont_size_from_node_degree import (
-    nx_compute_textfont_size_from_node_degree,
+from .nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
 )
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
@@ -66,11 +56,6 @@ def nx_create_bibliographic_coupling_graph_for_others(
     # EDGES:
     edge_color="#7793a5",
     edge_width_range=(0.8, 3.0),
-    #
-    # AXES:
-    # xaxes_range=None,
-    # yaxes_range=None,
-    # show_axes=False,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -117,10 +102,16 @@ def nx_create_bibliographic_coupling_graph_for_others(
     #
     # Sets the node attributes
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-    nx_graph = nx_compute_node_degree(nx_graph)
-    nx_graph = nx_compute_node_size_from_node_degree(nx_graph, node_size_range)
-    nx_graph = nx_compute_textfont_size_from_node_degree(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_node_degree(
+
+    # nx_graph = nx_compute_node_degree(nx_graph)
+    # nx_graph = nx_compute_node_size_from_node_degree(nx_graph, node_size_range)
+    # nx_graph = nx_compute_textfont_size_from_node_degree(nx_graph, textfont_size_range)
+    # nx_graph = nx_compute_textfont_opacity_from_node_degree(
+    #     nx_graph, textfont_opacity_range
+    # )
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
+    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(
         nx_graph, textfont_opacity_range
     )
 

@@ -59,7 +59,7 @@ Your task is ...
 
 
 """
-from ....._common.nx_create_citation_graph import nx_create_citation_graph
+from ....._common.nx_create_citation_graph_others import nx_create_citation_graph
 from ....._common.nx_create_degree_plot import nx_create_degree_plot
 
 UNIT_OF_ANALYSIS = "organizations"

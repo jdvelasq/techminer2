@@ -117,11 +117,8 @@ def nx_create_co_occurrence_graph(
     #
     # Sets the node attributes
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
-
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-
     nx_graph = nx_compute_textfont_opacity_from_item_occ(
         nx_graph, textfont_opacity_range
     )
