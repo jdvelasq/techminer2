@@ -13,14 +13,11 @@ Degree Plot
 >>> plot = degree_plot(
 ...     #
 ...     # COLUMN PARAMS:
-...     top_n=30,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
+...     top_n=30, 
+...     citations_threshold=0,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
-...     association_index="association",
 ...     #
 ...     # DEGREE PLOT:
 ...     textfont_size=10,
@@ -44,11 +41,11 @@ Degree Plot
 
 >>> plot.df_.head()
    Node                                               Name  Degree
-0     0                Anagnostopoulos I, 2018, J ECON BUS      16
-1     1           Arner DW, 2017, NORTHWEST J INTL LAW BUS      16
-2     2                     Grassi L, 2022, J IND BUS ECON      16
-3     3      Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL      14
-4     4  Kristanto AD, 2022, INT CONF INF TECHNOL SYST INN      14
+0     0  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       3
+1     1                   Hu Z., 2019, SYMMETRY, V11 1:176       3
+2     2  Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P5...       2
+3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       2
+4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       1
 
 
 
@@ -58,7 +55,9 @@ Your task is ...
 
 
 """
-from ....._common.nx_create_citation_graph_others import nx_create_citation_graph
+from ....._common.nx_create_citation_graph_documents import (
+    nx_create_citation_graph_documents,
+)
 from ....._common.nx_create_degree_plot import nx_create_degree_plot
 
 UNIT_OF_ANALYSIS = "article"
@@ -68,13 +67,10 @@ def degree_plot(
     #
     # COLUMN PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
+    citations_threshold=0,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
-    association_index="association",
     #
     # DEGREE PLOT:
     textfont_size=10,
@@ -102,30 +98,23 @@ def degree_plot(
     nx_random_state = 0
     #
     # NODES:
-    node_size = 30
-    # textfont_size=10,
-    textfont_opacity = 0.35
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=UNIT_OF_ANALYSIS,
+    nx_graph = nx_create_citation_graph_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
+        citations_threshold=citations_threshold,
         #
         # NETWORK CLUSTERING:
-        association_index=association_index,
         algorithm_or_dict=algorithm_or_dict,
         #
         # LAYOUT:
@@ -134,14 +123,13 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size=node_size,
-        textfont_size=textfont_size,
-        textfont_opacity=textfont_opacity,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

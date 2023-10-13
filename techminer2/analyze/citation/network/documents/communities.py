@@ -11,55 +11,47 @@ Communities
 
 
 >>> from techminer2.analyze.citation.network.documents import communities
->>> communities(
+>>> x = communities(
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=30, 
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
+...     citations_threshold=0,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
-...     association_index="association",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).head()
-                                              CL_0  ...                                  CL_4
-0  Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN  ...       von Solms J, 2021, J BANK REGUL
-1              Anagnostopoulos I, 2018, J ECON BUS  ...    Ghanem S, 2021, STUD COMPUT INTELL
-2                      Baxter LG, 2016, DUKE LAW J  ...                Turki M, 2020, HELIYON
-3    Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL  ...  Turki M, 2021, ADV INTELL SYS COMPUT
-4                Kavassalis P, 2018, J RISK FINANC  ...        Teichmann F, 2023, TECHNOL SOC
-<BLANKLINE>
-[5 rows x 5 columns]
+... )
+>>> print(x.to_markdown())
+|    | CL_0                                                 | CL_1                                                  | CL_2                                                      |
+|---:|:-----------------------------------------------------|:------------------------------------------------------|:----------------------------------------------------------|
+|  0 | Gozman D., 2018, J MANAGE INF SYST, V35, P145 1:120  | Alt R., 2018, ELECTRON MARK, V28, P235 1:150          | Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P541 1:161    |
+|  1 | Gomber P., 2018, J MANAGE INF SYST, V35, P220 1:576  | Hu Z., 2019, SYMMETRY, V11 1:176                      | Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411 1:225 |
+|  2 | Iman N., 2018, ELECT COMMER RES APPL, V30, P72 1:102 | Gai K., 2018, J NETWORK COMPUT APPL, V103, P262 1:238 |                                                           |
 
 
 
 """
-from ....._common.nx_create_citation_graph_others import nx_create_citation_graph
+from ....._common.nx_create_citation_graph_documents import (
+    nx_create_citation_graph_documents,
+)
 from ....._common.nx_extract_communities_as_data_frame import (
     nx_extract_communities_as_data_frame,
 )
-
-UNIT_OF_ANALYSIS = "article"
 
 
 def communities(
     #
     # COLUMN PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
+    citations_threshold=0,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
-    association_index="association",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -72,17 +64,14 @@ def communities(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size = 30
-    textfont_size = 10
-    textfont_opacity = 0.35
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -91,19 +80,13 @@ def communities(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=UNIT_OF_ANALYSIS,
+    nx_graph = nx_create_citation_graph_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
+        citations_threshold=citations_threshold,
         #
         # NETWORK CLUSTERING:
-        association_index=association_index,
         algorithm_or_dict=algorithm_or_dict,
         #
         # LAYOUT:
@@ -112,14 +95,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size=node_size,
-        textfont_size=textfont_size,
-        textfont_opacity=textfont_opacity,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
