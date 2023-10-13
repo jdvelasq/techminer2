@@ -15,8 +15,8 @@ Communities
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     documents_min=2,
+...     citations_threshold=0,
+...     occurrence_threshold=2,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -28,27 +28,23 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                                CL_0  ...                       CL_3
-0                             Kingston Bus Sch (GBR)  ...        Coventry Univ (GBR)
-1                        FinTech HK, Hong Kong (HKG)  ...  Univ of Westminster (GBR)
-2                            Univ of Hong Kong (HKG)  ...                           
-3  ctr for Law, Markets & Regulation, UNSW Austra...  ...                           
-4                          Heinrich-Heine-Univ (DEU)  ...                           
-5           UNSW Sydney, Kensington, Australia (AUS)  ...                           
-6                           Univ of Luxembourg (LUX)  ...                           
-7                               Univ of Zurich (CHE)  ...                           
-<BLANKLINE>
-[8 rows x 4 columns]
+                                                CL_0                                  CL_1
+0        Federal Reserve Bank of Chicago (USA) 2:253              Baylor Univ. (USA) 2:395
+1   Federal Reserve Bank of Philadelphia (USA) 3:317  Univ. of New South Wales (AUS) 2:340
+2  Max Planck Inst. for Innovation and Competitio...           Univ. of Sydney (AUS) 2:300
+3                     Sungkyunkwan Univ. (KOR) 2:307                                      
 
 
 
 
 
 """
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+    nx_create_bibliographic_coupling_graph_for_others,
 )
-from ...._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ...._common.nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 UNIT_OF_ANALYSIS = "organizations"
 
@@ -57,8 +53,8 @@ def communities(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=0,
-    documents_min=2,
+    citations_threshold=0,
+    occurrence_threshold=2,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -75,20 +71,14 @@ def communities(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -97,15 +87,15 @@ def communities(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
+    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=documents_min,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -117,17 +107,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

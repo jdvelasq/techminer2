@@ -13,11 +13,9 @@ Degree Plot
 >>> from techminer2.analyze.bibliographic_coupling.documents import degree_plot
 >>> plot = degree_plot(
 ...     #
-...     # COLUMN PARAMS:
+...     # ARTICLE PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     documents_min=2,
-...     custom_items=None,
+...     citations_threshold=0,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
@@ -44,36 +42,30 @@ Degree Plot
 
     
 >>> plot.df_.head()
-   Node                                           Name  Degree
-0     0  Becker M, 2020, INTELL SYST ACCOUNT FINANCE M      10
-1     1                  Kurum E, 2020, J FINANC CRIME       9
-2     2                         Turki M, 2020, HELIYON       8
-3     3              Kavassalis P, 2018, J RISK FINANC       7
-4     4             Das SR, 2019, J FINANCIAL DATA SCI       6
+   Node                                        Name  Degree
+0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
+1     1           Gomber P., 2017, J BUS ECON 1:489       7
+2     2    Gomber P., 2018, J MANAGE INF SYST 1:576       5
+3     3                 Hu Z., 2019, SYMMETRY 1:176       4
+4     4  Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4
 
 
 >>> print(plot.prompt_) # doctest: +ELLIPSIS                                        
 Your task is ...
 
 
-
-
 """
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_documents import (
+    nx_create_bibliographic_coupling_graph_for_documents,
 )
 from ...._common.nx_create_degree_plot import nx_create_degree_plot
-
-UNIT_OF_ANALYSIS = "article"
 
 
 def degree_plot(
     #
-    # COLUMN PARAMS:
+    # ARTICLE PARAMS:
     top_n=None,
-    citations_min=0,
-    documents_min=2,
-    custom_items=None,
+    citations_threshold=0,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
@@ -104,17 +96,13 @@ def degree_plot(
     nx_random_state = 0
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -123,16 +111,11 @@ def degree_plot(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=UNIT_OF_ANALYSIS,
+    nx_graph = nx_create_bibliographic_coupling_graph_for_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=documents_min,
-        custom_items=custom_items,
+        citations_threshold=citations_threshold,
         #
         # NETWORK CLUSTERING:
         algorithm_or_dict=algorithm_or_dict,
@@ -143,17 +126,13 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

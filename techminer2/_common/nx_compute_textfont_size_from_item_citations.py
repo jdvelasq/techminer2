@@ -12,21 +12,21 @@
 import numpy as np
 
 
-def nx_compute_textfont_size_from_node_degree(
+def nx_compute_textfont_size_from_item_citations(
     nx_graph,
     textfont_size_range,
 ):
     #
-    # Compute node degree
-    degrees = []
-    for node in nx_graph.nodes():
-        degrees.append(nx_graph.nodes[node]["degree"])
-    degrees = np.array([float(degree) for degree in degrees])
+    # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
+    citations = list(nx_graph.nodes())
+    citations = [node.split(" ")[-1] for node in citations]
+    citations = [node.split(":")[1] for node in citations]
+    citations = np.array([float(node) for node in citations])
 
     #
     # Set the lower value of the node size to node_size_min
-    min_degree = min(degrees)
-    textfont_sizes = degrees - min_degree + textfont_size_range[0]
+    min_citations = min(citations)
+    textfont_sizes = citations - min_citations + textfont_size_range[0]
 
     #
     # Checks if node_sizes.max() > node_size_max and, if so, rescales
@@ -34,7 +34,7 @@ def nx_compute_textfont_size_from_node_degree(
         #
         # Scales the node size to the range [node_size_min, node_size_max]
         textfont_sizes -= textfont_size_range[0]
-        textfont_sizes /= textfont_sizes.max() - textfont_size_range[0]
+        textfont_sizes /= textfont_sizes.max()
         textfont_sizes *= textfont_size_range[1] - textfont_size_range[0]
         textfont_sizes += textfont_size_range[0]
 

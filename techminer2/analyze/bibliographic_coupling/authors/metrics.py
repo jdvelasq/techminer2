@@ -15,8 +15,8 @@ Metrics
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     documents_min=2,
+...     citations_threshold=0,
+...     occurrence_threshold=2,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -27,34 +27,19 @@ Metrics
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-                   Degree  Betweenness  Closeness  PageRank
-Grassi L               15     0.253190   0.818182  0.132104
-Lanfranchi D           15     0.253190   0.818182  0.132104
-Breymann W              9     0.044818   0.642857  0.022192
-Brennan R               8     0.000000   0.562500  0.072379
-Crane M                 8     0.000000   0.562500  0.072379
-Hamdan A                8     0.000000   0.562500  0.028881
-Ryan P                  8     0.000000   0.562500  0.072379
-Sarea A                 8     0.000000   0.562500  0.028881
-Turki M                 8     0.000000   0.562500  0.028881
-Anagnostopoulos I       7     0.245565   0.620690  0.027620
-Arner DW                7     0.036259   0.600000  0.060146
-Buckley RP              7     0.036259   0.600000  0.060146
-Weber RH                5     0.000000   0.529412  0.047361
-Zetzsche DA             5     0.000000   0.529412  0.047361
-Barberis JN             3     0.000000   0.428571  0.018552
-Lin W                   3     0.000000   0.486486  0.043228
-Singh C                 3     0.000000   0.486486  0.043228
-Butler T                2     0.111111   0.409091  0.034649
-OBrien L                1     0.000000   0.295082  0.027529
-
+... ).head()
+                    Degree  Betweenness  Closeness  PageRank
+Gomber P. 2:1065         3          0.0   0.333333  0.075911
+Hornuf L. 2:0358         3          0.0   0.333333  0.065572
+Jagtiani J. 3:0317       3          0.0   0.333333  0.129258
+Lemieux C. 2:0253        3          0.0   0.333333  0.129258
+Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 """
 from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+    nx_create_bibliographic_coupling_graph_for_others,
 )
 
 UNIT_OF_ANALYSIS = "authors"
@@ -64,8 +49,8 @@ def metrics(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=0,
-    documents_min=2,
+    citations_threshold=0,
+    occurrence_threshold=2,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -82,20 +67,15 @@ def metrics(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -104,15 +84,15 @@ def metrics(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
+    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=documents_min,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -124,17 +104,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

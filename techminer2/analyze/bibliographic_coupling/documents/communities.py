@@ -13,10 +13,9 @@ Communities
 >>> from techminer2.analyze.bibliographic_coupling.documents import communities
 >>> communities(
 ...     #
-...     # COLUMN PARAMS:
+...     # ARTICLE PARAMS:
 ...     top_n=30, 
-...     citations_min=None,
-...     custom_items=None,
+...     citations_threshold=0,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
@@ -27,39 +26,34 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                             CL_0  ...                                  CL_4
-0                  Grassi L, 2022, J IND BUS ECON  ...         Singh C, 2022, J FINANC CRIME
-1   Becker M, 2020, INTELL SYST ACCOUNT FINANCE M  ...  Singh C, 2020, J MONEY LAUND CONTROL
-2     Goul M, 2019, PROC - IEEE WORLD CONGR SERV,  ...                                      
-3                   Kurum E, 2020, J FINANC CRIME  ...                                      
-4                Muganyi T, 2022, FINANCIAL INNOV  ...                                      
-5            Muzammil M, 2020, CEUR WORKSHOP PROC  ...                                      
-6       Nasir F, 2019, J ADV RES DYN CONTROL SYST  ...                                      
-7             Siering M, 2022, DECIS SUPPORT SYST  ...                                      
-8                          Turki M, 2020, HELIYON  ...                                      
-9                 von Solms J, 2021, J BANK REGUL  ...                                      
-10                 Buckley RP, 2020, J BANK REGUL  ...                                      
-11                 Waye V, 2020, ADELAIDE LAW REV  ...                                      
+                                     CL_0  ...                                        CL_3
+0     Jagtiani J., 2018, J ECON BUS 1:156  ...           Alt R., 2018, ELECTRON MARK 1:150
+1      Jakšič M., 2019, RISK MANAGE 1:102  ...    Gomber P., 2018, J MANAGE INF SYST 1:576
+2    Cai C.W., 2018, ACCOUNT FINANC 1:145  ...    Gozman D., 2018, J MANAGE INF SYST 1:120
+3       Gomber P., 2017, J BUS ECON 1:489  ...  Iman N., 2018, ELECT COMMER RES APPL 1:102
+4   Haddad C., 2019, SMALL BUS ECON 1:258  ...                                            
+5           Lee I., 2018, BUS HORIZ 1:557  ...                                            
+6  Chen M.A., 2019, REV FINANC STUD 1:235  ...                                            
+7  Leong C., 2017, INT J INF MANAGE 1:180  ...                                            
 <BLANKLINE>
-[12 rows x 5 columns]
+[8 rows x 4 columns]
 
 
 
 """
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_documents import (
+    nx_create_bibliographic_coupling_graph_for_documents,
 )
-from ...._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
-
-UNIT_OF_ANALYSIS = "article"
+from ...._common.nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 
 def communities(
     #
-    # COLUMN PARAMS:
+    # ARTICLE PARAMS:
     top_n=None,
-    citations_min=0,
-    custom_items=None,
+    citations_threshold=0,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
@@ -78,17 +72,13 @@ def communities(
     # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -97,16 +87,11 @@ def communities(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=UNIT_OF_ANALYSIS,
+    nx_graph = nx_create_bibliographic_coupling_graph_for_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=None,
-        custom_items=custom_items,
+        citations_threshold=citations_threshold,
         #
         # NETWORK CLUSTERING:
         algorithm_or_dict=algorithm_or_dict,
@@ -117,17 +102,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -13,10 +13,9 @@ Metrics
 >>> from techminer2.analyze.bibliographic_coupling.documents import metrics
 >>> metrics(
 ...     #
-...     # COLUMN PARAMS:
+...     # ARTICLE PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     custom_items=None,
+...     citations_threshold=0,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
@@ -26,42 +25,30 @@ Metrics
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-                                               Degree  ...  PageRank
-Becker M, 2020, INTELL SYST ACCOUNT FINANCE M      10  ...  0.148655
-Kurum E, 2020, J FINANC CRIME                       9  ...  0.132326
-Turki M, 2020, HELIYON                              8  ...  0.109986
-Kavassalis P, 2018, J RISK FINANC                   7  ...  0.099831
-Das SR, 2019, J FINANCIAL DATA SCI                  6  ...  0.069294
-Gasparri G, 2019, FRONTIER ARTIF INTELL             6  ...  0.069294
-Nicholls R, 2021, J ANTITRUST ENFORC                6  ...  0.080003
-Muganyi T, 2022, FINANCIAL INNOV                    4  ...  0.049722
-von Solms J, 2021, J BANK REGUL                     4  ...  0.049722
-Anagnostopoulos I, 2018, J ECON BUS                 3  ...  0.076273
-Goul M, 2019, PROC - IEEE WORLD CONGR SERV,         2  ...  0.029807
-Arner DW, 2017, NORTHWEST J INTL LAW BUS            1  ...  0.032327
-Butler T, 2018, J RISK MANG FINANCIAL INST          1  ...  0.032327
-Ryan P, 2020, ICEIS - PROC INT CONF ENTERP          1  ...  0.020434
+... ).head()
+                                            Degree  ...  PageRank
+Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.108354
+Gomber P., 2017, J BUS ECON 1:489                7  ...  0.172423
+Gomber P., 2018, J MANAGE INF SYST 1:576         5  ...  0.102747
+Hu Z., 2019, SYMMETRY 1:176                      4  ...  0.101092
+Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
 <BLANKLINE>
-[14 rows x 4 columns]
+[5 rows x 4 columns]
 
 
 
 """
 from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_documents import (
+    nx_create_bibliographic_coupling_graph_for_documents,
 )
-
-UNIT_OF_ANALYSIS = "article"
 
 
 def metrics(
     #
-    # COLUMN PARAMS:
+    # ARTICLE PARAMS:
     top_n=None,
-    citations_min=0,
-    custom_items=None,
+    citations_threshold=0,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
@@ -80,17 +67,13 @@ def metrics(
     # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -99,16 +82,11 @@ def metrics(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=UNIT_OF_ANALYSIS,
+    nx_graph = nx_create_bibliographic_coupling_graph_for_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=None,
-        custom_items=custom_items,
+        citations_threshold=citations_threshold,
         #
         # NETWORK CLUSTERING:
         algorithm_or_dict=algorithm_or_dict,
@@ -119,17 +97,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

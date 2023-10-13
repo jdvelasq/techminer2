@@ -15,8 +15,8 @@ Item Density Visualization
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     documents_min=2,
+...     citations_threshold=0,
+...     occurrence_threshold=2,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -51,20 +51,20 @@ Item Density Visualization
 
                                              
 """
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+    nx_create_bibliographic_coupling_graph_for_others,
 )
 from ...._common.nx_visualize_item_density import nx_visualize_item_density
 
-UNIT_OF_ANALYSIS = "source_abbr"
+UNIT_OF_ANALYSIS = "abbr_source_title"
 
 
 def item_density_visualization(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=0,
-    documents_min=2,
+    citations_threshold=0,
+    occurrence_threshold=2,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -81,10 +81,8 @@ def item_density_visualization(
     opacity=0.6,
     #
     # NODES:
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # AXES:
     xaxes_range=None,
@@ -105,25 +103,23 @@ def item_density_visualization(
     # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
+    node_size_range = (30, 70)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
+    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=documents_min,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -135,17 +131,13 @@ def item_density_visualization(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

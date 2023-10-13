@@ -15,8 +15,8 @@ Metrics
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     documents_min=2,
+...     citations_threshold=0,
+...     occurrence_threshold=2,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -27,39 +27,31 @@ Metrics
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
-                               Degree  Betweenness  Closeness  PageRank
-INTELL SYST ACCOUNT FINANCE M       8     0.227273   0.666667  0.136659
-J FINANC CRIME                      8     0.227273   0.666667  0.171511
-HELIYON                             7     0.060606   0.631579  0.108737
-J RISK FINANC                       6     0.409091   0.666667  0.098537
-J ANTITRUST ENFORC                  5     0.000000   0.571429  0.077062
-J FINANCIAL DATA SCI                5     0.000000   0.571429  0.064969
-FINANCIAL INNOV                     4     0.000000   0.480000  0.053444
-J BANK REGUL                        4     0.000000   0.480000  0.053444
-J ECON BUS                          3     0.318182   0.480000  0.083187
-ICEIS - PROC INT CONF ENTERP        1     0.000000   0.413793  0.022098
-J MONEY LAUND CONTROL               1     0.000000   0.413793  0.060133
-J RISK MANG FINANCIAL INST          1     0.000000   0.333333  0.035109
-NORTHWEST J INTL LAW BUS            1     0.000000   0.333333  0.035109
+... ).head()
+                         Degree  Betweenness  Closeness  PageRank
+J Manage Inf Syst 2:696       5     0.246032   0.777778  0.187620
+Electron. Mark. 2:287         4     0.309524   0.700000  0.149601
+J. Econ. Bus. 3:422           4     0.134921   0.700000  0.190022
+Financ. Manage. 2:161         3     0.103175   0.583333  0.178954
+Sustainability 2:150          3     0.134921   0.636364  0.100130
 
 
 
 """
 from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+    nx_create_bibliographic_coupling_graph_for_others,
 )
 
-UNIT_OF_ANALYSIS = "source_abbr"
+UNIT_OF_ANALYSIS = "abbr_source_title"
 
 
 def metrics(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=0,
-    documents_min=2,
+    citations_threshold=0,
+    occurrence_threshold=2,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -76,20 +68,15 @@ def metrics(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -98,15 +85,15 @@ def metrics(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
+    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=documents_min,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -118,17 +105,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

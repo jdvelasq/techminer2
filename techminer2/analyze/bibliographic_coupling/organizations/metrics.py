@@ -15,8 +15,8 @@ Metrics
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=20, 
-...     citations_min=0,
-...     documents_min=2,
+...     citations_threshold=0,
+...     occurrence_threshold=2,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -27,36 +27,20 @@ Metrics
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
+... ).head()
                                                     Degree  ...  PageRank
-Politec di Milano (ITA)                                 16  ...  0.056480
-Kingston Bus Sch (GBR)                                  10  ...  0.024360
-European Central B (DEU)                                 9  ...  0.082172
-Harvard Univ Weatherhead ctr for International ...       9  ...  0.082172
-KS Strategic, London, United Kingdom (GBR)               9  ...  0.082172
-Panepistemio Aigaiou, Chios, Greece (GRC)                9  ...  0.082172
-Sch of Eng (CHE)                                         9  ...  0.082172
-Univ Coll Cork (IRL)                                     9  ...  0.021974
-Ahlia Univ (BHR)                                         8  ...  0.019753
-Dublin City Univ (IRL)                                   8  ...  0.028294
-Univ of Hong Kong (HKG)                                  8  ...  0.071777
-Heinrich-Heine-Univ (DEU)                                5  ...  0.056674
-UNSW Sydney, Kensington, Australia (AUS)                 5  ...  0.056674
-Univ of Luxembourg (LUX)                                 5  ...  0.056674
-Univ of Zurich (CHE)                                     5  ...  0.056674
-FinTech HK, Hong Kong (HKG)                              3  ...  0.020537
-ctr for Law, Markets & Regulation, UNSW Austral...       3  ...  0.020537
-Coventry Univ (GBR)                                      2  ...  0.049365
-Univ of Westminster (GBR)                                2  ...  0.049365
+Max Planck Inst. for Innovation and Competition...       3  ...  0.083472
+Federal Reserve Bank of Chicago (USA) 2:253              2  ...  0.229322
+Federal Reserve Bank of Philadelphia (USA) 3:317         2  ...  0.229322
+Univ. of New South Wales (AUS) 2:340                     2  ...  0.208493
+Baylor Univ. (USA) 2:395                                 1  ...  0.165421
 <BLANKLINE>
-[19 rows x 4 columns]
-
-
+[5 rows x 4 columns]
 
 """
 from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph import (
-    nx_create_bibliographic_coupling_graph,
+from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+    nx_create_bibliographic_coupling_graph_for_others,
 )
 
 UNIT_OF_ANALYSIS = "organizations"
@@ -66,8 +50,8 @@ def metrics(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=0,
-    documents_min=2,
+    citations_threshold=0,
+    occurrence_threshold=2,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -84,20 +68,15 @@ def metrics(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -106,15 +85,15 @@ def metrics(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph(
+    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
-        documents_min=documents_min,
+        citations_threshold=citations_threshold,
+        occurrence_threshold=occurrence_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -126,17 +105,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
