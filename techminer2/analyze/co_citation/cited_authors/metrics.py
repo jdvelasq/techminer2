@@ -15,7 +15,7 @@ Metrics
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=30, 
-...     citations_min=None,
+...     citations_threshold=None,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -28,11 +28,11 @@ Metrics
 ...     cited_by_filter=(None, None),
 ... ).head()
                    Degree  Betweenness  Closeness  PageRank
-Arner DW               28     0.102570   1.000000  0.054966
-Butler T               27     0.060242   0.965517  0.051400
-Anagnostopoulos I      23     0.015102   0.848485  0.042953
-Yang D                 23     0.015102   0.848485  0.042953
-Buckley RP             22     0.014128   0.823529  0.041321
+Lin M. 1:09            21     0.163238   0.743590  0.067396
+Burtch G. 1:14         20     0.094272   0.725000  0.060964
+Mackenzie A. 1:04      15     0.155287   0.659091  0.051298
+Dahlberg T. 1:06       14     0.033007   0.630435  0.043756
+Duarte J. 1:06         14     0.037626   0.630435  0.044547
 
 
 """
@@ -46,7 +46,7 @@ def metrics(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -63,26 +63,19 @@ def metrics(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    # NODES
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
     nx_iterations = 10
     nx_random_state = 0
-    #
     # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_citation_graph(
@@ -92,7 +85,7 @@ def metrics(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -104,17 +97,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

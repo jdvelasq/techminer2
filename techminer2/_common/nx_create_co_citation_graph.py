@@ -7,17 +7,23 @@
 # pylint: disable=too-many-statements
 
 import networkx as nx
+import numpy as np
 
 from ._read_records import read_records
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
-from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
-from .nx_compute_node_degree import nx_compute_node_degree
-from .nx_compute_node_size_from_node_degree import nx_compute_node_size_from_node_degree
-from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_node_degree import (
-    nx_compute_textfont_opacity_from_node_degree,
+from .nx_compute_edge_width_from_edge_weight import (
+    nx_compute_edge_width_from_edge_weight,
 )
-from .nx_compute_textfont_size_from_node_degree import nx_compute_textfont_size_from_node_degree
+from .nx_compute_node_size_from_item_citations import (
+    nx_compute_node_size_from_item_citations,
+)
+from .nx_compute_spring_layout import nx_compute_spring_layout
+from .nx_compute_textfont_opacity_from_item_citations import (
+    nx_compute_textfont_opacity_from_item_citations,
+)
+from .nx_compute_textfont_size_from_item_citations import (
+    nx_compute_textfont_size_from_item_citations,
+)
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
@@ -30,7 +36,7 @@ def nx_create_co_citation_graph(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # NETWORK CLUSTERING:
@@ -42,22 +48,13 @@ def nx_create_co_citation_graph(
     nx_random_state=0,
     #
     # NODES:
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    node_size_range=(30, 70),
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # EDGES:
     edge_color="#7793a5",
-    edge_width_min=0.8,
-    edge_width_max=3.0,
-    #
-    # AXES:
-    # xaxes_range=None,
-    # yaxes_range=None,
-    # show_axes=False,
+    edge_width_range=(0.8, 3.0),
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -76,7 +73,7 @@ def nx_create_co_citation_graph(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
         #
         # DATABASE PARAMS:
@@ -108,21 +105,29 @@ def nx_create_co_citation_graph(
 
     #
     # Sets the node attributes
-    nx_graph = nx_compute_node_degree(nx_graph)
+    # nx_graph = nx_compute_node_degree(nx_graph)
 
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
 
-    nx_graph = nx_compute_node_size_from_node_degree(nx_graph, node_size_min, node_size_max)
-    nx_graph = nx_compute_textfont_size_from_node_degree(
-        nx_graph, textfont_size_min, textfont_size_max
+    nx_graph = nx_compute_node_size_from_item_citations(
+        nx_graph,
+        node_size_range,
     )
-    nx_graph = nx_compute_textfont_opacity_from_node_degree(
-        nx_graph, textfont_opacity_min, textfont_opacity_max
+    nx_graph = nx_compute_textfont_size_from_item_citations(
+        nx_graph,
+        textfont_size_range,
+    )
+    nx_graph = nx_compute_textfont_opacity_from_item_citations(
+        nx_graph,
+        textfont_opacity_range,
     )
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
+    nx_graph = nx_compute_edge_width_from_edge_weight(
+        nx_graph,
+        edge_width_range,
+    )
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
 
@@ -135,7 +140,7 @@ def __add_weighted_edges_from(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # DATABASE PARAMS:
@@ -166,40 +171,73 @@ def __add_weighted_edges_from(
 
     if unit_of_analysis == "cited_authors":
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[0])
-        matrix_list["column"] = matrix_list["column"].str.split(", ").map(lambda x: x[0])
-
+        matrix_list["column"] = (
+            matrix_list["column"].str.split(", ").map(lambda x: x[0])
+        )
     elif unit_of_analysis == "cited_sources":
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[2])
-        matrix_list["column"] = matrix_list["column"].str.split(", ").map(lambda x: x[2])
-
+        matrix_list["column"] = (
+            matrix_list["column"].str.split(", ").map(lambda x: x[2])
+        )
     elif unit_of_analysis == "cited_references":
-        matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
+        matrix_list["row"] = (
+            matrix_list["row"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
+        )
         matrix_list["column"] = (
             matrix_list["column"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
         )
-
     else:
         raise ValueError("Bad unit_of_analysis")
 
-    matrix_list = matrix_list.loc[matrix_list.apply(lambda x: x.row != x.column, axis=1), :]
+    matrix_list = matrix_list.loc[
+        matrix_list.apply(lambda x: x.row != x.column, axis=1), :
+    ]
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
+    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
+        "sum"
+    )
 
-    matrix_list = matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
+    matrix_list = matrix_list.sort_values(
+        ["OCC", "row", "column"], ascending=[False, True, True]
+    )
 
     #
-    # Filter the data
+    # Computes valild items
     valid_items = __compute_valid_items(
         unit_of_analysis=unit_of_analysis,
         records=records,
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
     )
 
-    matrix_list = matrix_list.loc[matrix_list.row.isin(valid_items), :]
-    matrix_list = matrix_list.loc[matrix_list.column.isin(valid_items), :]
+    #
+    # Filter data
+    matrix_list = matrix_list.loc[
+        matrix_list.row.isin(valid_items["index"].to_list()), :
+    ]
+    matrix_list = matrix_list.loc[
+        matrix_list.column.isin(valid_items["index"].to_list()), :
+    ]
+
+    #
+    # Adds citations
+    max_citations = valid_items.citations.max()
+    n_zeros = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros) + "d}"
+
+    #
+    # Rename the items adding the citations
+    rename_dict = {
+        key: value
+        for key, value in zip(
+            valid_items["index"].to_list(),
+            (valid_items["index"] + valid_items["citations"].map(fmt.format)).to_list(),
+        )
+    }
+    matrix_list["row"] = matrix_list["row"].map(rename_dict)
+    matrix_list["column"] = matrix_list["column"].map(rename_dict)
 
     #
     # Adds the data to the network:
@@ -226,39 +264,48 @@ def __compute_valid_items(
     unit_of_analysis,
     records,
     top_n,
-    citations_min,
+    citations_threshold,
     custom_items,
 ):
     if custom_items is not None:
         return custom_items
 
+    #
+    # Creates a list with global references
     global_references = records["global_references"].dropna().copy()
-
     global_references = global_references.str.split(";")
     global_references = global_references.explode()
     global_references = global_references.str.strip()
 
+    #
+    # Transforms each reference into the element of interest
     if unit_of_analysis == "cited_authors":
         global_references = global_references.str.split(", ").map(lambda x: x[0])
-
     elif unit_of_analysis == "cited_sources":
         global_references = global_references.str.split(", ").map(lambda x: x[2])
-
     elif unit_of_analysis == "cited_references":
-        global_references = global_references.str.split(", ").map(lambda x: x[:3]).str.join(", ")
-
+        global_references = (
+            global_references.str.split(", ").map(lambda x: x[:3]).str.join(", ")
+        )
     else:
         raise ValueError("Bad unit_of_analysis")
 
+    #
+    # Counts the number of appareances of each element of interest
     valid_items = global_references.value_counts().to_frame()
     valid_items.columns = ["citations"]
     valid_items = valid_items.reset_index()
-    valid_items.sort_values(["citations", "index"], ascending=[False, True], inplace=True)
+    valid_items = valid_items.sort_values(
+        ["citations", "index"], ascending=[False, True]
+    )
 
+    #
+    # Applies the filters
     if top_n is not None:
         valid_items = valid_items.head(top_n)
+    if citations_threshold is not None:
+        valid_items = valid_items.loc[valid_items.citations >= citations_threshold]
 
-    if citations_min is not None:
-        valid_items = valid_items.loc[valid_items.citations >= citations_min]
-
-    return valid_items["index"].tolist()
+    #
+    # Returns the selected elements as a list
+    return valid_items

@@ -15,7 +15,7 @@ Communities
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=None, 
-...     citations_min=None,
+...     citations_threshold=None,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -27,21 +27,23 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-           CL_00         CL_01  ...       CL_12         CL_13
-0         Das SR      Arner DW  ...  Kerikmae T      Heiler S
-1         Beck T      Butler T  ...   Lamport L  Kontchakov R
-2  Qamruzzaman M  Kavassalis P  ...     Szabo N              
-3    Crawford JA        Yang D  ...                          
-4      DeYoung R      Becker M  ...                          
+                   CL_00  ...                   CL_14
+0          Kim D.J. 1:04  ...       Anikina I.D. 1:01
+1      Venkatesh V. 1:12  ...           Fetai B. 1:01
+2        Davis F.D. 1:07  ...        Harrison R. 1:01
+3  Bhattacherjee A. 1:04  ...             Hes A. 1:01
+4            Alt R. 1:06  ...  Menshchikova V.I. 1:01
 <BLANKLINE>
-[5 rows x 14 columns]
+[5 rows x 15 columns]
 
 
 
 
 """
 from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ...._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ...._common.nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 UNIT_OF_ANALYSIS = "cited_authors"
 
@@ -50,7 +52,7 @@ def communities(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -67,26 +69,19 @@ def communities(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
     nx_iterations = 10
     nx_random_state = 0
-    #
     # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_citation_graph(
@@ -96,7 +91,7 @@ def communities(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -108,17 +103,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

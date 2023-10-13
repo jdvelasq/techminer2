@@ -15,7 +15,7 @@ Communities
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=None, 
-...     citations_min=None,
+...     citations_threshold=None,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -27,20 +27,22 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                             CL_00  ...                                      CL_15
-0    Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL  ...            Heiler S, 1995, ACM COMPUT SURV
-1       Butler T, 2018, J RISK MANG FINANCIAL INST  ...  Kontchakov R, 2013, LECT NOTES COMPUT SCI
-2                Gomber P, 2018, J MANAGE INF SYST  ...                                           
-3  Romanova I, 2016, CONTEMP STUD ECON FINANC ANAL  ...                                           
-4                  Crossan MM, 2010, J MANAGE STUD  ...                                           
+                                               CL_00  ...                                           CL_19
+0    Davis F.D., 1989, MIS QUART MANAGE INF SYST 1:6  ...  Hacklin F., 2004, IEEE INT ENG MANAGE CONF 1:1
+1  Venkatesh V., 2003, MIS QUART MANAGE INF SYST 1:5  ...      Puschmann T., 2016, BUSIN INFO SYS ENG 1:1
+2                 Venkatesh V., 2000, MANAGE SCI 1:5  ...                                                
+3            Abbad M.M., 2013, BEHAV INF TECHNOL 1:1  ...                                                
+4          Chang Y., 2016, ACM INT CONF PROC SER 1:2  ...                                                
 <BLANKLINE>
-[5 rows x 16 columns]
+[5 rows x 20 columns]
 
 
 
 """
 from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ...._common.nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ...._common.nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 UNIT_OF_ANALYSIS = "cited_references"
 
@@ -49,7 +51,7 @@ def communities(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -66,26 +68,19 @@ def communities(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
     nx_iterations = 10
     nx_random_state = 0
-    #
     # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_citation_graph(
@@ -95,7 +90,7 @@ def communities(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -107,17 +102,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

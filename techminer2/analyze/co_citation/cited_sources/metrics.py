@@ -15,7 +15,7 @@ Metrics
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=30, 
-...     citations_min=None,
+...     citations_threshold=None,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -27,12 +27,13 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                    Degree  Betweenness  Closeness  PageRank
-BUSIN INFO SYS ENG      28     0.016321   0.966667  0.040583
-DECIS SUPPORT SYST      28     0.016321   0.966667  0.040583
-J BUS RES               28     0.016321   0.966667  0.040583
-J ECON BUS              28     0.016321   0.966667  0.040583
-J MANAGE INF SYST       28     0.016321   0.966667  0.040583
+                                Degree  Betweenness  Closeness  PageRank
+MIS QUART MANAGE INF SYST 1:47      26     0.019660   0.933333  0.044138
+ELECT COMMER RES APPL 1:32          25     0.052744   0.903226  0.044545
+INF SYST RES 1:18                   25     0.017027   0.903226  0.042610
+J MANAGE INF SYST 1:31              25     0.014031   0.903226  0.042494
+MANAGE SCI 1:33                     25     0.018472   0.903226  0.042645
+
 
 """
 from ...._common.nx_compute_metrics import nx_compute_metrics
@@ -45,7 +46,7 @@ def metrics(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -62,26 +63,19 @@ def metrics(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
     nx_iterations = 10
     nx_random_state = 0
-    #
     # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_citation_graph(
@@ -91,7 +85,7 @@ def metrics(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -103,17 +97,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

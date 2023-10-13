@@ -14,7 +14,7 @@ Degree Plot
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=30, 
-...     citations_min=None,
+...     citations_threshold=None,
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
@@ -41,12 +41,12 @@ Degree Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
-   Node                                           Name  Degree
-0     0  Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL      28
-1     1       Arner DW, 2017, NORTHWEST J INTL LAW BUS      28
-2     2            Anagnostopoulos I, 2018, J ECON BUS      27
-3     3              Kavassalis P, 2018, J RISK FINANC      27
-4     4          Yang D, 2018, EMERG MARK FINANC TRADE      27
+   Node                                            Name  Degree
+0     0                    Lin M., 2013, MANAGE SCI 1:7      15
+1     1               Burtch G., 2013, INF SYST RES 1:4      15
+2     2    Dahlberg T., 2008, ELECT COMMER RES APPL 1:3      14
+3     3  Burtch G., 2014, MIS QUART MANAGE INF SYST 1:4      12
+4     4            Duarte J., 2012, REV FINANC STUD 1:6      11
 
 
 >>> print(plot.prompt_) # doctest: +ELLIPSIS
@@ -65,7 +65,7 @@ def degree_plot(
     #
     # COLUMN PARAMS:
     top_n=None,
-    citations_min=None,
+    citations_threshold=None,
     custom_items=None,
     #
     # NETWORK PARAMS:
@@ -89,26 +89,19 @@ def degree_plot(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
     nx_iterations = 10
     nx_random_state = 0
-    #
     # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_citation_graph(
@@ -118,7 +111,7 @@ def degree_plot(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        citations_min=citations_min,
+        citations_threshold=citations_threshold,
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
@@ -130,17 +123,13 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_min=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_min=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_min=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
