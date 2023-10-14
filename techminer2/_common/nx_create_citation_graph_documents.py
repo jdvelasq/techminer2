@@ -151,10 +151,6 @@ def __add_weighted_edges_from(
     data_frame = records[["article", "local_references", "global_citations"]]
 
     #
-    # Removes documents without local citations in references
-    data_frame = data_frame.dropna()
-
-    #
     # Continues the processing
     data_frame["local_references"] = data_frame.local_references.str.split(";")
     data_frame = data_frame.explode("local_references")
@@ -165,12 +161,6 @@ def __add_weighted_edges_from(
     data_frame_with_links = data_frame[
         data_frame["local_references"].map(lambda x: x in data_frame.article.to_list())
     ]
-
-    # data_frame_without_links = data_frame[
-    #     data_frame["local_references"].map(
-    #         lambda x: x not in data_frame.article.to_list()
-    #     )
-    # ]
 
     #
     # Adds citations to the article
@@ -193,25 +183,9 @@ def __add_weighted_edges_from(
         "local_references"
     ].map(rename_dict)
 
-    # data_frame_without_links["article"] = data_frame_without_links["article"].map(
-    #     rename_dict
-    # )
-    # data_frame_without_links["local_references"] = data_frame_without_links[
-    #     "local_references"
-    # ].map(rename_dict)
-
     #
-    # # Removes self-citations (this case not exists)
-    # data_frame_with_links = data_frame_with_links[
-    #     data_frame_with_links.apply(
-    #         lambda row: row.article != row.local_references, axis=1
-    #     )
-    # ]
-
-    # #
-    # # Adds isolated nodes to the network:
-    # nodes = data_frame_without_links["article"].drop_duplicates().to_list()
-    # nx_graph.add_nodes_from(nodes, group=0)
+    # Removes documents without local citations in references
+    data_frame = data_frame.dropna()
 
     #
     # Adds the links to the network:

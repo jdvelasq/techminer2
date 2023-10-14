@@ -10,7 +10,6 @@ Network Visualization
 ===============================================================================
 
 
-
 >>> from techminer2.analyze.citation.network.documents import network_visualization
 >>> network_visualization(
 ...     #
@@ -97,9 +96,8 @@ def network_visualization(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
+
     nx_graph = nx_create_citation_graph_documents(
         #
         # COLUMN PARAMS:
