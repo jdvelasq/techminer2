@@ -76,6 +76,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../authors/__index__.html">Authors &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../organizations/__index__.html">Organizations &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../countries/__index__.html">Countries &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../main_path_analysis.html">Main Path Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../publications/__index__.html">Documents &gt;</a></li>
@@ -89,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pca/__index__.html">PCA &gt;</a></li>
@@ -98,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../terms_by_year.html">Terms by Year</a></li>
@@ -105,6 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -139,16 +144,13 @@
 <h1>Item Density Visualization<a class="headerlink" href="#item-density-visualization" title="Permalink to this headline"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.analyze.citation.network.documents</span> <span class="kn">import</span> <span class="n">item_density_visualization</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">item_density_visualization</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="c1"># COLUMN PARAMS:</span>
 <span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># COLUMN PARAMS:</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">citations_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NETWORK PARAMS:</span>
 <span class="gp">... </span>    <span class="n">algorithm_or_dict</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="s2">&quot;association&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># LAYOUT:</span>
 <span class="gp">... </span>    <span class="n">nx_k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -171,7 +173,7 @@
 <span class="gp">... </span>    <span class="n">show_axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>

@@ -74,6 +74,7 @@
 <li class="toctree-l4"><a class="reference internal" href="degree_plot.html">Degree Plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="communities.html">Communities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="communities_summary.html">Communities Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="to_brute_force_labels.html">To Brute Force Labels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="concept_grid.html">Concept Grid</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="report.html">Report</a></li>
@@ -88,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -97,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -104,6 +107,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -152,17 +157,17 @@
 <span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="s2">&quot;association&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                                Degree  Betweenness  Closeness  PageRank</span>
-<span class="go">REGTECH 28:329                      19     0.441813   1.000000  0.214202</span>
-<span class="go">FINTECH 12:249                      13     0.087524   0.760000  0.121016</span>
-<span class="go">COMPLIANCE 07:030                   10     0.046394   0.678571  0.072258</span>
-<span class="go">REGULATION 05:164                   10     0.031287   0.678571  0.066992</span>
-<span class="go">ARTIFICIAL_INTELLIGENCE 04:023       9     0.038402   0.655172  0.045057</span>
+<span class="go">                              Degree  Betweenness  Closeness  PageRank</span>
+<span class="go">FINTECH 31:5168                   19     0.655945   1.000000  0.245063</span>
+<span class="go">FINANCIAL_SERVICES 04:0667        10     0.057505   0.678571  0.074543</span>
+<span class="go">INNOVATION 07:0911                 9     0.038012   0.655172  0.097081</span>
+<span class="go">FINANCIAL_TECHNOLOGY 04:0551       7     0.033138   0.612903  0.045803</span>
+<span class="go">CASE_STUDIES 03:0442               6     0.020468   0.593750  0.045780</span>
 </pre></div>
 </div>
 </section>

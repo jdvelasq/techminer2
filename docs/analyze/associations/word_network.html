@@ -77,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pca/__index__.html">PCA &gt;</a></li>
@@ -86,6 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../terms_by_year.html">Terms by Year</a></li>
@@ -93,6 +95,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -127,7 +131,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">word_network</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FUNCTION PARAMS:</span>
-<span class="gp">... </span>    <span class="n">item</span><span class="o">=</span><span class="s1">&#39;FINANCIAL_SERVICES&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">item</span><span class="o">=</span><span class="s1">&#39;INNOVATION&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">rows</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
@@ -149,17 +153,13 @@
 <span class="gp">... </span>    <span class="n">nx_random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NODES:</span>
-<span class="gp">... </span>    <span class="n">node_size_min</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">node_size_max</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_size_min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_size_max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_opacity_min</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_opacity_max</span><span class="o">=</span><span class="mf">1.00</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">node_size_range</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">textfont_size_range</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">textfont_opacity_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># EDGES</span>
 <span class="gp">... </span>    <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;#b8c6d0&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">edge_width_min</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">edge_width_max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">edge_width_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># AXES:</span>
 <span class="gp">... </span>    <span class="n">xaxes_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -167,7 +167,7 @@
 <span class="gp">... </span>    <span class="n">show_axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
@@ -200,17 +200,13 @@ height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlig
 <span class="gp">... </span>    <span class="n">nx_random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NODES:</span>
-<span class="gp">... </span>    <span class="n">node_size_min</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">node_size_max</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_size_min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_size_max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_opacity_min</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">textfont_opacity_max</span><span class="o">=</span><span class="mf">1.00</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">node_size_range</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">textfont_size_range</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">textfont_opacity_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># EDGES</span>
 <span class="gp">... </span>    <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;#b8c6d0&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">edge_width_min</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">edge_width_max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">edge_width_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># AXES:</span>
 <span class="gp">... </span>    <span class="n">xaxes_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -218,7 +214,7 @@ height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlig
 <span class="gp">... </span>    <span class="n">show_axes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>

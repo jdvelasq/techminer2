@@ -89,6 +89,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -98,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -105,6 +107,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -159,24 +163,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| countries            |   h_index |   g_index |   m_index |</span>
-<span class="go">|:---------------------|----------:|----------:|----------:|</span>
-<span class="go">| United Kingdom       |         4 |         3 |      0.67 |</span>
-<span class="go">| Australia            |         4 |         3 |      0.57 |</span>
-<span class="go">| Ireland              |         3 |         2 |      0.5  |</span>
-<span class="go">| Germany              |         3 |         2 |      0.5  |</span>
-<span class="go">| Luxembourg           |         2 |         2 |      0.5  |</span>
-<span class="go">| Bahrain              |         2 |         2 |      0.5  |</span>
-<span class="go">| United Arab Emirates |         2 |         1 |      0.5  |</span>
-<span class="go">| Japan                |         1 |         1 |      0.5  |</span>
-<span class="go">| Hong Kong            |         3 |         3 |      0.43 |</span>
-<span class="go">| China                |         3 |         2 |      0.43 |</span>
+<span class="go">| countries      |   h_index |   g_index |   m_index |</span>
+<span class="go">|:---------------|----------:|----------:|----------:|</span>
+<span class="go">| United States  |        16 |        10 |      5.33 |</span>
+<span class="go">| Germany        |         7 |         7 |      2.33 |</span>
+<span class="go">| China          |         8 |         8 |      2    |</span>
+<span class="go">| Australia      |         5 |         5 |      1.67 |</span>
+<span class="go">| South Korea    |         6 |         6 |      1.5  |</span>
+<span class="go">| Switzerland    |         4 |         4 |      1    |</span>
+<span class="go">| United Kingdom |         3 |         3 |      1    |</span>
+<span class="go">| Netherlands    |         3 |         3 |      1    |</span>
+<span class="go">| France         |         1 |         1 |      1    |</span>
+<span class="go">| Spain          |         1 |         1 |      1    |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">items</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/contributors/countries/m_index_chart.html&quot;</span><span class="p">)</span>

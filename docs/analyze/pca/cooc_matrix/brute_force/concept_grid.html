@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concept Grid &mdash; TechMiner 2+ Sep 18, 2023 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="To Brute Force Labels" href="to_brute_force_labels.html" />
+    <link rel="prev" title="Factor Map" href="factor_map.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Sep 18, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TECHMINER 2+</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../ingest/__index__.html">Ingest &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../refine/__index__.html">Refine &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../search/__index__.html">Search &gt;</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../__index__.html">Analyze &gt;</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../associations/__index__.html">Associations &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bibliographic_coupling/__index__.html">Bibliographic Coupling &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../citation/__index__.html">Citation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../co_authorship/__index__.html">Co-authorship &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../co_citation/__index__.html">Co-citation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../co_occurrence/__index__.html">Co-occurrence &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../contributors/__index__.html">Contributors &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../correlation/__index__.html">Correlation &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../emergence/__index__.html">Emergence &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../expertise/__index__.html">Expertise &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../__index__.html">PCA &gt;</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../__index__.html">Co-occurrence Matrix &gt;</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="__index__.html">Brute Force &gt;</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="cluster_centers.html">Cluster Centers</a></li>
+<li class="toctree-l5"><a class="reference internal" href="communities.html">Communities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="treemap.html">Treemap</a></li>
+<li class="toctree-l5"><a class="reference internal" href="factor_map.html">Factor Map</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Concept Grid</a></li>
+<li class="toctree-l5"><a class="reference internal" href="to_brute_force_labels.html">To Brute Force Labels</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../hierarchical/__index__.html">Hierarchical Clustering &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../kmeans/__index__.html">K-Means &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pcd/__index__.html">PCD &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cosine_similarities.html">Cosine Similarities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../embedding.html">Embedding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../map_2d.html">Map 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tsne.html">TSNE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tfidf_matrix/__index__.html">TFIDF Matrix &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../research_agenda/__index__.html">Research Agenda &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../svd/__index__.html">SVD &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../topic_modeling/__index__.html">Topic Modeling &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../words/__index__.html">Words &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cluster_records.html">Cluster Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../collaboration_metrics.html">Collaboration Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../performance_metrics.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../terms_by_year.html">Terms by Year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tfidf.html">TFIDF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../summary_sheet.html">Summary Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../__index__.html">Analyze &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../../__index__.html">PCA &gt;</a></li>
+          <li class="breadcrumb-item"><a href="../__index__.html">Co-occurrence Matrix &gt;</a></li>
+          <li class="breadcrumb-item"><a href="__index__.html">Brute Force &gt;</a></li>
+      <li class="breadcrumb-item active">Concept Grid</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/analyze/pca/cooc_matrix/brute_force/concept_grid.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-techminer2.analyze.pca.cooc_matrix.brute_force.concept_grid"></span><section id="concept-grid">
+<h1>Concept Grid<a class="headerlink" href="#concept-grid" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.analyze.pca.cooc_matrix.brute_force</span> <span class="kn">import</span> <span class="n">concept_grid</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">concept_grid</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># PARAMS:</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># CONCEPT GRID PARAMS:</span>
+<span class="gp">... </span>    <span class="n">conserve_counters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_head</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;9&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># ITEM PARAMS:</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># PCA PARAMS:</span>
+<span class="gp">... </span>    <span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">whiten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pca_tol</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">iterated_power</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_oversamples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">power_iteration_normalizer</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># BRUTE FORCE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">brute_force_labels</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;MOBILE_FINTECH_PAYMENT_SERVICES 04:0485&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;FINANCIAL_INCLUSION 03:0590&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;CASE_STUDIES 03:0442&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;BLOCKCHAIN 03:0369&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;CROWDFUNDING 03:0335&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;FUTURE_RESEARCH 02:0691&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;CYBER_SECURITY 02:0342&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;ARTIFICIAL_INTELLIGENCE 02:0327&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DIGITALIZATION 03:0434&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;BANKING 03:0375&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;FINANCIAL_INSTITUTION 02:0484&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;TECHNOLOGIES 02:0310&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;SHADOW_BANKING 03:0643&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;PEER_TO_PEER_LENDING 03:0324&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;MARKETPLACE_LENDING 03:0317&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;FINANCIAL_SERVICES 04:0667&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;FINANCIAL_TECHNOLOGY 04:0551&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;BUSINESS 03:0896&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;FINTECH 31:5168&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;INNOVATION 07:0911&#39;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;sphinx/images/analyze/pca/cooc_matrix/brute_force/concept_grid&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
+<span class="go">&#39;sphinx/images/analyze/pca/cooc_matrix/brute_force/concept_grid.png&#39;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../../_images/concept_grid1.png"><img alt="../../../../_images/concept_grid1.png" class="align-center" src="../../../../_images/concept_grid1.png" style="width: 900px;" /></a>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="factor_map.html" class="btn btn-neutral float-left" title="Factor Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="to_brute_force_labels.html" class="btn btn-neutral float-right" title="To Brute Force Labels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

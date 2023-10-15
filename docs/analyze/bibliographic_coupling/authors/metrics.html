@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -93,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -100,6 +102,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -136,39 +140,25 @@
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COLUMN PARAMS:</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">citations_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">documents_min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">citations_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occurrence_threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NETWORK PARAMS:</span>
 <span class="gp">... </span>    <span class="n">algorithm_or_dict</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">                   Degree  Betweenness  Closeness  PageRank</span>
-<span class="go">Grassi L               15     0.253190   0.818182  0.132104</span>
-<span class="go">Lanfranchi D           15     0.253190   0.818182  0.132104</span>
-<span class="go">Breymann W              9     0.044818   0.642857  0.022192</span>
-<span class="go">Brennan R               8     0.000000   0.562500  0.072379</span>
-<span class="go">Crane M                 8     0.000000   0.562500  0.072379</span>
-<span class="go">Hamdan A                8     0.000000   0.562500  0.028881</span>
-<span class="go">Ryan P                  8     0.000000   0.562500  0.072379</span>
-<span class="go">Sarea A                 8     0.000000   0.562500  0.028881</span>
-<span class="go">Turki M                 8     0.000000   0.562500  0.028881</span>
-<span class="go">Anagnostopoulos I       7     0.245565   0.620690  0.027620</span>
-<span class="go">Arner DW                7     0.036259   0.600000  0.060146</span>
-<span class="go">Buckley RP              7     0.036259   0.600000  0.060146</span>
-<span class="go">Weber RH                5     0.000000   0.529412  0.047361</span>
-<span class="go">Zetzsche DA             5     0.000000   0.529412  0.047361</span>
-<span class="go">Barberis JN             3     0.000000   0.428571  0.018552</span>
-<span class="go">Lin W                   3     0.000000   0.486486  0.043228</span>
-<span class="go">Singh C                 3     0.000000   0.486486  0.043228</span>
-<span class="go">Butler T                2     0.111111   0.409091  0.034649</span>
-<span class="go">OBrien L                1     0.000000   0.295082  0.027529</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                    Degree  Betweenness  Closeness  PageRank</span>
+<span class="go">Gomber P. 2:1065         3          0.0   0.333333  0.075911</span>
+<span class="go">Hornuf L. 2:0358         3          0.0   0.333333  0.065572</span>
+<span class="go">Jagtiani J. 3:0317       3          0.0   0.333333  0.129258</span>
+<span class="go">Lemieux C. 2:0253        3          0.0   0.333333  0.129258</span>
+<span class="go">Dolata M. 2:0181         2          0.0   0.222222  0.100000</span>
 </pre></div>
 </div>
 </section>

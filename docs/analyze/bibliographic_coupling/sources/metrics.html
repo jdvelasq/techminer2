@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -93,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -100,6 +102,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -136,33 +140,25 @@
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COLUMN PARAMS:</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">citations_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">documents_min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">citations_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occurrence_threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NETWORK PARAMS:</span>
 <span class="gp">... </span>    <span class="n">algorithm_or_dict</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="go">                               Degree  Betweenness  Closeness  PageRank</span>
-<span class="go">INTELL SYST ACCOUNT FINANCE M       8     0.227273   0.666667  0.136659</span>
-<span class="go">J FINANC CRIME                      8     0.227273   0.666667  0.171511</span>
-<span class="go">HELIYON                             7     0.060606   0.631579  0.108737</span>
-<span class="go">J RISK FINANC                       6     0.409091   0.666667  0.098537</span>
-<span class="go">J ANTITRUST ENFORC                  5     0.000000   0.571429  0.077062</span>
-<span class="go">J FINANCIAL DATA SCI                5     0.000000   0.571429  0.064969</span>
-<span class="go">FINANCIAL INNOV                     4     0.000000   0.480000  0.053444</span>
-<span class="go">J BANK REGUL                        4     0.000000   0.480000  0.053444</span>
-<span class="go">J ECON BUS                          3     0.318182   0.480000  0.083187</span>
-<span class="go">ICEIS - PROC INT CONF ENTERP        1     0.000000   0.413793  0.022098</span>
-<span class="go">J MONEY LAUND CONTROL               1     0.000000   0.413793  0.060133</span>
-<span class="go">J RISK MANG FINANCIAL INST          1     0.000000   0.333333  0.035109</span>
-<span class="go">NORTHWEST J INTL LAW BUS            1     0.000000   0.333333  0.035109</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                         Degree  Betweenness  Closeness  PageRank</span>
+<span class="go">J Manage Inf Syst 2:696       5     0.246032   0.777778  0.187620</span>
+<span class="go">Electron. Mark. 2:287         4     0.309524   0.700000  0.149601</span>
+<span class="go">J. Econ. Bus. 3:422           4     0.134921   0.700000  0.190022</span>
+<span class="go">Financ. Manage. 2:161         3     0.103175   0.583333  0.178954</span>
+<span class="go">Sustainability 2:150          3     0.134921   0.636364  0.100130</span>
 </pre></div>
 </div>
 </section>

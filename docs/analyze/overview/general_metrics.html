@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="__index__.html">Overview &gt;</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">General Metrics</a></li>
@@ -85,6 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../terms_by_year.html">Terms by Year</a></li>
@@ -92,6 +94,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -126,7 +130,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="n">general_metrics</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
@@ -134,48 +138,49 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="o">.</span><span class="n">df_</span>
 <span class="go">                                                            Value</span>
 <span class="go">Category       Item</span>
-<span class="go">GENERAL        Timespan                                 2016:2023</span>
-<span class="go">               Documents                                       52</span>
-<span class="go">               Annual growth rate %                         63.87</span>
-<span class="go">               Document average age                          2.77</span>
-<span class="go">               References                                     932</span>
-<span class="go">               Average citations per document               10.83</span>
-<span class="go">               Average citations per document per year       1.35</span>
-<span class="go">               Average references per document              20.71</span>
-<span class="go">               Sources                                         46</span>
-<span class="go">               Average documents per source                  1.13</span>
-<span class="go">DOCUMENT TYPES article                                         31</span>
-<span class="go">               book                                             1</span>
-<span class="go">               book_chapter                                     9</span>
-<span class="go">               conference_paper                                11</span>
-<span class="go">AUTHORS        Authors                                        102</span>
-<span class="go">               Authors of single-authored documents            19</span>
-<span class="go">               Single-authored documents                       19</span>
-<span class="go">               Multi-authored documents                        33</span>
-<span class="go">               Authors per document                          2.29</span>
-<span class="go">               Co-authors per document                       3.03</span>
-<span class="go">               International co-authorship %                23.08</span>
-<span class="go">               Author appearances                             119</span>
-<span class="go">               Documents per author                          0.44</span>
+<span class="go">GENERAL        Timespan                                 2015:2019</span>
+<span class="go">               Documents                                       50</span>
+<span class="go">               Annual growth rate %                        118.67</span>
+<span class="go">               Document average age                          5.24</span>
+<span class="go">               References                                    1277</span>
+<span class="go">               Average citations per document               162.7</span>
+<span class="go">               Average citations per document per year      32.54</span>
+<span class="go">               Average references per document              26.06</span>
+<span class="go">               Sources                                         41</span>
+<span class="go">               Average documents per source                  1.22</span>
+<span class="go">DOCUMENT TYPES Article                                         37</span>
+<span class="go">               Book                                             1</span>
+<span class="go">               Conference paper                                 4</span>
+<span class="go">               Editorial                                        2</span>
+<span class="go">               Review                                           6</span>
+<span class="go">AUTHORS        Authors                                        115</span>
+<span class="go">               Authors of single-authored documents            12</span>
+<span class="go">               Single-authored documents                       12</span>
+<span class="go">               Multi-authored documents                        38</span>
+<span class="go">               Authors per document                          2.52</span>
+<span class="go">               Co-authors per document                        3.0</span>
+<span class="go">               International co-authorship %                30.61</span>
+<span class="go">               Author appearances                             126</span>
+<span class="go">               Documents per author                           0.4</span>
 <span class="go">               Collaboration index                            1.0</span>
-<span class="go">               Organizations                                   81</span>
-<span class="go">               Organizations (1st author)                       0</span>
-<span class="go">               Countries                                       29</span>
-<span class="go">               Countries (1st author)                           0</span>
+<span class="go">               Organizations                                   91</span>
+<span class="go">               Organizations (1st author)                      43</span>
+<span class="go">               Countries                                       24</span>
+<span class="go">               Countries (1st author)                          18</span>
 <span class="go">KEYWORDS       Raw author keywords                            148</span>
-<span class="go">               Cleaned author keywords                        142</span>
-<span class="go">               Raw index keywords                             156</span>
-<span class="go">               Cleaned index keywords                         151</span>
-<span class="go">               Raw keywords                                   274</span>
-<span class="go">               Cleaned keywords                               253</span>
-<span class="go">NLP PHRASES    Raw title NLP phrases                           68</span>
-<span class="go">               Cleaned title NLP phrases                       68</span>
-<span class="go">               Raw abstract NLP phrases                       796</span>
-<span class="go">               Cleaned abstract NLP phrases                   743</span>
-<span class="go">               Raw NLP phrases                                834</span>
-<span class="go">               Cleaned NLP phrases                            776</span>
-<span class="go">DESCRIPTORS    Raw descriptors                               1041</span>
-<span class="go">               Cleaned descriptors                            939</span>
+<span class="go">               Cleaned author keywords                        136</span>
+<span class="go">               Raw index keywords                             179</span>
+<span class="go">               Cleaned index keywords                         170</span>
+<span class="go">               Raw keywords                                   279</span>
+<span class="go">               Cleaned keywords                               244</span>
+<span class="go">NLP PHRASES    Raw title NLP phrases                          130</span>
+<span class="go">               Cleaned title NLP phrases                      121</span>
+<span class="go">               Raw abstract NLP phrases                      1472</span>
+<span class="go">               Cleaned abstract NLP phrases                  1234</span>
+<span class="go">               Raw NLP phrases                               1518</span>
+<span class="go">               Cleaned NLP phrases                           1265</span>
+<span class="go">DESCRIPTORS    Raw descriptors                               1684</span>
+<span class="go">               Cleaned descriptors                           1373</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/overview/general_metrics.html&quot;</span><span class="p">)</span>

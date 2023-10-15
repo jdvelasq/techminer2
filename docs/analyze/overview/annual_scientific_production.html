@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="__index__.html">Overview &gt;</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="general_metrics.html">General Metrics</a></li>
@@ -85,6 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../terms_by_year.html">Terms by Year</a></li>
@@ -92,6 +94,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -142,7 +146,7 @@
 <span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
@@ -154,20 +158,17 @@
 height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
 <span class="go">|   year |   OCC |</span>
 <span class="go">|-------:|------:|</span>
-<span class="go">|   2016 |     1 |</span>
-<span class="go">|   2017 |     4 |</span>
-<span class="go">|   2018 |     3 |</span>
-<span class="go">|   2019 |     6 |</span>
-<span class="go">|   2020 |    14 |</span>
-<span class="go">|   2021 |    10 |</span>
-<span class="go">|   2022 |    12 |</span>
-<span class="go">|   2023 |     2 |</span>
+<span class="go">|   2015 |     1 |</span>
+<span class="go">|   2016 |     7 |</span>
+<span class="go">|   2017 |    10 |</span>
+<span class="go">|   2018 |    17 |</span>
+<span class="go">|   2019 |    15 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">|     |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |</span>
-<span class="go">|:----|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|</span>
-<span class="go">| OCC |      1 |      4 |      3 |      6 |     14 |     10 |     12 |      2 |</span>
+<span class="go">|     |   2015 |   2016 |   2017 |   2018 |   2019 |</span>
+<span class="go">|:----|-------:|-------:|-------:|-------:|-------:|</span>
+<span class="go">| OCC |      1 |      7 |     10 |     17 |     15 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">prompt_</span><span class="p">)</span> 

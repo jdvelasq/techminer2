@@ -76,6 +76,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../authors/__index__.html">Authors &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../organizations/__index__.html">Organizations &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../countries/__index__.html">Countries &gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../main_path_analysis.html">Main Path Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../publications/__index__.html">Documents &gt;</a></li>
@@ -89,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pca/__index__.html">PCA &gt;</a></li>
@@ -98,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../terms_by_year.html">Terms by Year</a></li>
@@ -105,6 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -138,32 +143,30 @@
   <span class="target" id="module-techminer2.analyze.citation.network.documents.communities"></span><section id="communities">
 <h1>Communities<a class="headerlink" href="#communities" title="Permalink to this headline"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.analyze.citation.network.documents</span> <span class="kn">import</span> <span class="n">communities</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">communities</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">communities</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COLUMN PARAMS:</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">citations_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NETWORK PARAMS:</span>
 <span class="gp">... </span>    <span class="n">algorithm_or_dict</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="s2">&quot;association&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                                              CL_0  ...                                  CL_4</span>
-<span class="go">0  Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN  ...       von Solms J, 2021, J BANK REGUL</span>
-<span class="go">1              Anagnostopoulos I, 2018, J ECON BUS  ...    Ghanem S, 2021, STUD COMPUT INTELL</span>
-<span class="go">2                      Baxter LG, 2016, DUKE LAW J  ...                Turki M, 2020, HELIYON</span>
-<span class="go">3    Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL  ...  Turki M, 2021, ADV INTELL SYS COMPUT</span>
-<span class="go">4                Kavassalis P, 2018, J RISK FINANC  ...        Teichmann F, 2023, TECHNOL SOC</span>
-
-<span class="go">[5 rows x 5 columns]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+<span class="go">|    | CL_0                                                 | CL_1                                                      | CL_2                                                  | CL_3                                                   | CL_4                                                 | CL_5                                               |</span>
+<span class="go">|---:|:-----------------------------------------------------|:----------------------------------------------------------|:------------------------------------------------------|:-------------------------------------------------------|:-----------------------------------------------------|:---------------------------------------------------|</span>
+<span class="go">|  0 | Gomber P., 2017, J BUS ECON, V87, P537 1:489         | Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P541 1:161    | Shim Y., 2016, TELECOMMUN POLICY, V40, P168 1:146     | Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69 1:253 | Anagnostopoulos I., 2018, J ECON BUS, V100, P7 1:202 | Kim Y., 2016, INT J APPL ENG RES, V11, P1058 1:125 |</span>
+<span class="go">|  1 | Gomber P., 2018, J MANAGE INF SYST, V35, P220 1:576  | Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411 1:225 | Gai K., 2018, J NETWORK COMPUT APPL, V103, P262 1:238 | Haddad C., 2019, SMALL BUS ECON, V53, P81 1:258        | Zavolokina L., 2016, FINANCIAL INNOV, V2 1:106       | Gimpel H., 2018, ELECTRON MARK, V28, P245 1:137    |</span>
+<span class="go">|  2 | Gozman D., 2018, J MANAGE INF SYST, V35, P145 1:120  | Hu Z., 2019, SYMMETRY, V11 1:176                          | Schueffel P., 2016, J INNOV MANAG, V4, P32 1:226      |                                                        |                                                      |                                                    |</span>
+<span class="go">|  3 | Alt R., 2018, ELECTRON MARK, V28, P235 1:150         | Gabor D., 2017, NEW POLIT ECON, V22, P423 1:314           |                                                       |                                                        |                                                      |                                                    |</span>
+<span class="go">|  4 | Lee I., 2018, BUS HORIZ, V61, P35 1:557              | Leong C., 2017, INT J INF MANAGE, V37, P92 1:180          |                                                       |                                                        |                                                      |                                                    |</span>
+<span class="go">|  5 | Iman N., 2018, ELECT COMMER RES APPL, V30, P72 1:102 | Stewart H., 2018, INF COMPUT SECURITY, V26, P109 1:104    |                                                       |                                                        |                                                      |                                                    |</span>
 </pre></div>
 </div>
 </section>

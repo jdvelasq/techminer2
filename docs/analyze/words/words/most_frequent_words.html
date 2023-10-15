@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -99,6 +100,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -106,6 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -160,24 +164,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| words                  |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |</span>
-<span class="go">|:-----------------------|-----------:|------:|--------------:|--------------------:|--------------------:|</span>
-<span class="go">| REGTECH                |          1 |    48 |            36 |                  12 |               25    |</span>
-<span class="go">| REGULATORS             |          2 |    30 |            21 |                   9 |               30    |</span>
-<span class="go">| NEW_TECHNOLOGIES       |          3 |    22 |            15 |                   7 |               31.82 |</span>
-<span class="go">| REGULATORY_TECHNOLOGY  |          4 |    20 |            14 |                   6 |               30    |</span>
-<span class="go">| COMPLIANCE             |          5 |    18 |            15 |                   3 |               16.67 |</span>
-<span class="go">| BANK                   |          6 |    18 |            14 |                   4 |               22.22 |</span>
-<span class="go">| FINANCIAL_INSTITUTIONS |          7 |    16 |            12 |                   4 |               25    |</span>
-<span class="go">| CHALLENGE              |          8 |    16 |            13 |                   3 |               18.75 |</span>
-<span class="go">| PAPER                  |          9 |    15 |            11 |                   4 |               26.67 |</span>
-<span class="go">| APPLICATION            |         10 |    15 |            10 |                   5 |               33.33 |</span>
+<span class="go">| words      |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |</span>
+<span class="go">|:-----------|-----------:|------:|--------------:|--------------------:|--------------------:|</span>
+<span class="go">| fintech    |          1 |    50 |            18 |                  32 |               64    |</span>
+<span class="go">| financial  |          2 |    44 |            15 |                  29 |               65.91 |</span>
+<span class="go">| ©          |          3 |    42 |            14 |                  28 |               66.67 |</span>
+<span class="go">| technology |          4 |    39 |            13 |                  26 |               66.67 |</span>
+<span class="go">| new        |          5 |    26 |             9 |                  17 |               65.38 |</span>
+<span class="go">| service    |          6 |    26 |            10 |                  16 |               61.54 |</span>
+<span class="go">| industry   |          7 |    23 |            11 |                  12 |               52.17 |</span>
+<span class="go">| study      |          8 |    23 |             9 |                  14 |               60.87 |</span>
+<span class="go">| model      |          9 |    19 |             5 |                  14 |               73.68 |</span>
+<span class="go">| innovation |         10 |    19 |             8 |                  11 |               57.89 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/words/words/most_frequent_chart.html&quot;</span><span class="p">)</span>

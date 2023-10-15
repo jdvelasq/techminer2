@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -99,6 +100,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -106,6 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -146,34 +150,34 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">words</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="go">year                               OCC  year_q1  year_med  ...  rn    height  width</span>
-<span class="go">author_keywords                                            ...</span>
-<span class="go">CORPORATE_SOCIAL_RESPONSIBILITIES    1     2017      2017  ...   0  0.150000      1</span>
-<span class="go">CREDIT                               1     2017      2017  ...   1  0.150000      1</span>
-<span class="go">SMART_CONTRACT                       2     2017      2018  ...   1  0.180370      2</span>
-<span class="go">BUSINESS_MODELS                      1     2018      2018  ...   2  0.150000      1</span>
-<span class="go">FUTURE_RESEARCH_DIRECTION            1     2018      2018  ...   3  0.150000      1</span>
-<span class="go">ALGORITHMIC_STANDARDS                1     2018      2018  ...   4  0.150000      1</span>
-<span class="go">SEMANTIC_TECHNOLOGIES                2     2018      2018  ...   0  0.180370      2</span>
-<span class="go">SANDBOXES                            2     2018      2019  ...   2  0.180370      3</span>
-<span class="go">BLOCKCHAIN                           3     2018      2019  ...   1  0.210741      3</span>
-<span class="go">FINANCIAL_SERVICES                   4     2018      2019  ...   0  0.241111      3</span>
-<span class="go">REGULATION                           5     2018      2020  ...   3  0.271481      4</span>
-<span class="go">STANDARDS                            1     2019      2019  ...   3  0.150000      1</span>
-<span class="go">DOGMAS                               1     2019      2019  ...   4  0.150000      1</span>
-<span class="go">FINTECH                             12     2019      2020  ...   1  0.484074      2</span>
-<span class="go">FINANCIAL_REGULATION                 4     2019      2021  ...   2  0.241111      4</span>
-<span class="go">REGTECH                             28     2019      2020  ...   0  0.970000      4</span>
-<span class="go">ARTIFICIAL_INTELLIGENCE              4     2020      2020  ...   4  0.241111      1</span>
-<span class="go">ANTI_MONEY_LAUNDERING                5     2020      2021  ...   1  0.271481      2</span>
-<span class="go">DATA_PROTECTION                      2     2020      2021  ...   4  0.180370      3</span>
-<span class="go">INNOVATION                           3     2020      2021  ...   3  0.210741      3</span>
+<span class="go">year                             OCC  year_q1  year_med  ...  rn    height  width</span>
+<span class="go">author_keywords                                          ...</span>
+<span class="go">RESEARCHERS                        1     2016      2016  ...   4  0.150000      1</span>
+<span class="go">CONTENT_ANALYSIS                   2     2016      2016  ...   2  0.177333      1</span>
+<span class="go">POPULAR_PRESS                      2     2016      2016  ...   3  0.177333      1</span>
+<span class="go">DIGITALIZATION                     3     2016      2016  ...   0  0.204667      1</span>
+<span class="go">TECHNOLOGIES                       2     2016      2016  ...   1  0.177333      2</span>
+<span class="go">FINANCIAL_INCLUSION                3     2016      2017  ...   1  0.204667      2</span>
+<span class="go">BANKING                            3     2016      2017  ...   2  0.204667      2</span>
+<span class="go">INNOVATION                         7     2016      2017  ...   0  0.314000      2</span>
+<span class="go">DIGITAL_FINANCE                    1     2017      2017  ...   3  0.150000      1</span>
+<span class="go">E_FINANCE                          1     2017      2017  ...   4  0.150000      1</span>
+<span class="go">FINTECH                           31     2017      2018  ...   0  0.970000      2</span>
+<span class="go">BUSINESS                           3     2018      2018  ...   4  0.204667      1</span>
+<span class="go">FINANCIAL_SERVICES                 4     2018      2018  ...   1  0.232000      1</span>
+<span class="go">MOBILE_FINTECH_PAYMENT_SERVICES    4     2018      2018  ...   3  0.232000      1</span>
+<span class="go">BLOCKCHAIN                         3     2018      2019  ...   0  0.204667      2</span>
+<span class="go">PEER_TO_PEER_LENDING               3     2018      2019  ...   1  0.204667      2</span>
+<span class="go">FINANCIAL_TECHNOLOGY               4     2018      2018  ...   2  0.232000      2</span>
+<span class="go">ENTREPRENEURSHIP                   1     2019      2019  ...   4  0.150000      1</span>
+<span class="go">ARTIFICIAL_INTELLIGENCE            2     2019      2019  ...   2  0.177333      1</span>
+<span class="go">ROBOTS                             2     2019      2019  ...   3  0.177333      1</span>
 
 <span class="go">[20 rows x 8 columns]</span>
 </pre></div>

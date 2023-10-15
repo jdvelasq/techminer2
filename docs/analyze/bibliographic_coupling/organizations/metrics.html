@@ -84,6 +84,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -93,6 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -100,6 +102,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -136,41 +140,27 @@
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># COLUMN PARAMS:</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">citations_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">documents_min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">citations_threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occurrence_threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># NETWORK PARAMS:</span>
 <span class="gp">... </span>    <span class="n">algorithm_or_dict</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">                                                    Degree  ...  PageRank</span>
-<span class="go">Politec di Milano (ITA)                                 16  ...  0.056480</span>
-<span class="go">Kingston Bus Sch (GBR)                                  10  ...  0.024360</span>
-<span class="go">European Central B (DEU)                                 9  ...  0.082172</span>
-<span class="go">Harvard Univ Weatherhead ctr for International ...       9  ...  0.082172</span>
-<span class="go">KS Strategic, London, United Kingdom (GBR)               9  ...  0.082172</span>
-<span class="go">Panepistemio Aigaiou, Chios, Greece (GRC)                9  ...  0.082172</span>
-<span class="go">Sch of Eng (CHE)                                         9  ...  0.082172</span>
-<span class="go">Univ Coll Cork (IRL)                                     9  ...  0.021974</span>
-<span class="go">Ahlia Univ (BHR)                                         8  ...  0.019753</span>
-<span class="go">Dublin City Univ (IRL)                                   8  ...  0.028294</span>
-<span class="go">Univ of Hong Kong (HKG)                                  8  ...  0.071777</span>
-<span class="go">Heinrich-Heine-Univ (DEU)                                5  ...  0.056674</span>
-<span class="go">UNSW Sydney, Kensington, Australia (AUS)                 5  ...  0.056674</span>
-<span class="go">Univ of Luxembourg (LUX)                                 5  ...  0.056674</span>
-<span class="go">Univ of Zurich (CHE)                                     5  ...  0.056674</span>
-<span class="go">FinTech HK, Hong Kong (HKG)                              3  ...  0.020537</span>
-<span class="go">ctr for Law, Markets &amp; Regulation, UNSW Austral...       3  ...  0.020537</span>
-<span class="go">Coventry Univ (GBR)                                      2  ...  0.049365</span>
-<span class="go">Univ of Westminster (GBR)                                2  ...  0.049365</span>
+<span class="go">Max Planck Inst. for Innovation and Competition...       3  ...  0.083472</span>
+<span class="go">Federal Reserve Bank of Chicago (USA) 2:253              2  ...  0.229322</span>
+<span class="go">Federal Reserve Bank of Philadelphia (USA) 3:317         2  ...  0.229322</span>
+<span class="go">Univ. of New South Wales (AUS) 2:340                     2  ...  0.208493</span>
+<span class="go">Baylor Univ. (USA) 2:395                                 1  ...  0.165421</span>
 
-<span class="go">[19 rows x 4 columns]</span>
+<span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
 </section>

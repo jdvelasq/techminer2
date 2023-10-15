@@ -70,6 +70,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../analyze/__index__.html">Analyze &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -103,71 +105,18 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lemmas</span> <span class="o">=</span> <span class="n">lemma_associations</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FUNCTION PARAMS:</span>
-<span class="gp">... </span>    <span class="n">lemma_a</span><span class="o">=</span><span class="s1">&#39;REGTECH&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">lemma_a</span><span class="o">=</span><span class="s1">&#39;INNOVATION&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">lemma_b</span><span class="o">=</span><span class="s1">&#39;FINTECH&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lemmas</span><span class="o">.</span><span class="n">contexts_</span><span class="p">)</span>
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN, V2020-September, P112</span>
-<span class="go">due to the scarcity of papers about CASE_STUDY in REGTECH_FIELD, we adopt an</span>
-<span class="go">approach already used for well studied cases widespread in the FINTECH_AREA and</span>
-<span class="go">an EXPLORATORY_INVESTIGATION through in DEEP_INTERVIEWS following models used in</span>
-<span class="go">FINTECH_AREA and in ERM_FIELD.. results/findings: in this article, we will,</span>
-<span class="go">therefore, propose CASE_STUDIES in the FINTECH_SECTOR applied to</span>
-<span class="go">REGULATORY_TECHNOLOGY in italy and we expect to answer the following</span>
-<span class="go">RESEARCH_QUESTIONS: we present three REGTECH&#39;s cases in italy&#39;s FINANCIAL_SYSTEM</span>
-<span class="go">exposing the fields of collaboration with FINANCIAL_INSTITUTIONS in</span>
-<span class="go">REGTECH_FIELD between incumbents and REGTECH_INDUSTRIES.</span>
-
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Butler T, 2018, J RISK MANG FINANCIAL INST, V11, P19</span>
-<span class="go">it also examines the POTENTIAL_IMPACT_FINTECH has on the riskiness of banks and</span>
-<span class="go">proposes REGTECH as the solution.</span>
-
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85</span>
-<span class="go">this CHAPTER_EXPLORES the promise and potential of REGULATORY_TECHNOLOGIES</span>
-<span class="go">(REGTECH), a new and VITAL_DIMENSION to FINTECH.</span>
-
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Goul M, 2019, PROC - IEEE WORLD CONGR SERV,, P219</span>
-<span class="go">as FINANCIAL_TECHNOLOGIES (FINTECH) pioneers seek to disintermediate the world&#39;s</span>
-<span class="go">traditional banking sector&#39;s intermediary role, NEW_REGULATORY_TECHNOLOGIES</span>
-<span class="go">(REGTECH) will be required to guarantee markets can be trusted, CONTRACT_LAWS</span>
-<span class="go">are adhered to and compliance can be verified through TRANSPARENT_PROCESSES..</span>
-<span class="go">services computing researchers will play an IMPORTANT_ROLE in advancing REGTECH,</span>
-<span class="go">but they must add to their repertoire ADDITIONAL_KNOWLEDGE of</span>
-<span class="go">FINANCIAL_PRINCIPLES, an understanding of COMMON_FINTECH_PATHOLOGIES that may be</span>
-<span class="go">exploited by BAD_ACTORS, and new thinking in regard to protecting CUSTOMER_DATA</span>
-<span class="go">across MULTIPLE_LEGAL_JURISDICTIONS and the related compliance of</span>
-<span class="go">BOUNDARY_CROSSING banking RELATED_ALGORITHMS.</span>
-
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Muganyi T, 2022, FINANCIAL INNOV, V8</span>
-<span class="go">we also show that the emergence of FINTECH in the area of FINANCIAL_REGULATION</span>
-<span class="go">(REGULATORY_TECHNOLOGY: REGTECH) can significantly improve</span>
-<span class="go">FINANCIAL_DEVELOPMENT_OUTCOMES.</span>
-
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Nasir F, 2019, J ADV RES DYN CONTROL SYST, V11, P912</span>
-<span class="go">these COMPLIANCE challenges created the market for REGTECH, which is a part of</span>
-<span class="go">FINTECH_INDUSTRY, where the REGTECH_INDUSTRY promise to act as a solution to</span>
-<span class="go">reduce COMPLIANCE_COST and burden for FINANCIAL_INSTITUTIONS as well as</span>
-<span class="go">regulators.</span>
-
-<span class="go">------------------------------------------------------------------------------------------</span>
-<span class="go">Pantielieieva N, 2020, LECTURE NOTES DATA ENG COMMUN, V42, P1</span>
-<span class="go">the PAPER_DEALS with the issues of MAIN_DIRECTIONS, challenges and threats of</span>
-<span class="go">development of the newest FINANCIAL_TECHNOLOGIESFINTECH, REGTECH and</span>
-<span class="go">TRADITIONAL_FINANCIAL_INTERMEDIATION.</span>
-
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lemmas</span><span class="o">.</span><span class="n">contexts_</span><span class="p">)</span> 
+<span class="go">---...</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lemmas</span><span class="o">.</span><span class="n">prompt_</span><span class="p">)</span>  

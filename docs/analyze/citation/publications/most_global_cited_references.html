@@ -82,6 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -91,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -98,6 +100,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -146,13 +150,13 @@
 <span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;references&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/most_global_cited_references__abstracts.txt&#39; was created.</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/most_global_cited_references__prompt.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/most_global_cited_references__abstracts.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/most_global_cited_references__prompt.txt&#39; was created.</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">documents</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/citation/publications/most_global_cited_references.html&quot;</span><span class="p">)</span>
@@ -160,13 +164,13 @@
 </div>
 <iframe src="../../../../../_static/analyze/citation/publications/most_global_cited_references.html"
 height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| article                                             |   year |   rank_gcs |   global_citations |   rank_lcs |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                                |</span>
-<span class="go">|:----------------------------------------------------|-------:|-----------:|-------------------:|-----------:|------------------:|----------------------------:|---------------------------:|:-----------------------------------|</span>
-<span class="go">| Jensen MC, 1976, J FINANC ECON, V3, P305            |   1976 |          1 |              29405 |         27 |                 0 |                     625.638 |                          0 | 10.1016/0304-405X(76)90026-X       |</span>
-<span class="go">| Blei DM, 2003, J MACH LEARN RES, V3, P993           |   2003 |          2 |              25474 |         28 |                 0 |                    1273.7   |                          0 | nan                                |</span>
-<span class="go">| Pritchard JK, 2000, GENETICS, V155, P945            |   2000 |          3 |              25177 |         29 |                 0 |                    1094.65  |                          0 | 10.1093/GENETICS/155.2.945         |</span>
-<span class="go">| Coase RH, 1937, ECONOMICA, V4, P386                 |   1937 |          4 |              12819 |         30 |                 0 |                     149.058 |                          0 | 10.1111/J.1468-0335.1937.TB00002.X |</span>
-<span class="go">| Pan SJ, 2010, IEEE TRANS KNOWL DATA ENG, V22, P1345 |   2010 |          5 |              12506 |         31 |                 0 |                     962     |                          0 | 10.1109/TKDE.2009.191              |</span>
+<span class="go">| article                                                    |   year |   rank_gcs |   global_citations |   rank_lcs |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                          |</span>
+<span class="go">|:-----------------------------------------------------------|-------:|-----------:|-------------------:|-----------:|------------------:|----------------------------:|---------------------------:|:-----------------------------|</span>
+<span class="go">| Landis J.R., 1977, BIOMETRICS, V33, P159                   |   1977 |          1 |              54055 |         23 |                 0 |                    1228.52  |                          0 | 10.2307/2529310              |</span>
+<span class="go">| Ajzen I., 1991, ORGAN BEHAV HUM DECIS PROCESSES, V50, P179 |   1991 |          2 |              50106 |         24 |                 0 |                    1670.2   |                          0 | 10.1016/0749-5978(91)90020-T |</span>
+<span class="go">| Podsakoff P.M., 2003, J APPL PSYCHOL, V88, P879            |   2003 |          3 |              46470 |         25 |                 0 |                    2581.67  |                          0 | 10.1037/0021-9010.88.5.879   |</span>
+<span class="go">| Davis F.D., 1989, MIS QUART MANAGE INF SYST, V13, P319     |   1989 |          4 |              32939 |         26 |                 0 |                    1029.34  |                          0 | 10.2307/249008               |</span>
+<span class="go">| Anderson J.C., 1988, PSYCHOL BULL, V103, P411              |   1988 |          5 |              28119 |         27 |                 0 |                     852.091 |                          0 | 10.1037/0033-2909.103.3.411  |</span>
 </pre></div>
 </div>
 </section>

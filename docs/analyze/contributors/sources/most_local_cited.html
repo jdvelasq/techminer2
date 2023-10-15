@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -97,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -104,6 +106,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -140,7 +144,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">performance_metrics</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># ITEMS PARAMS:</span>
-<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;source_abbr&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;abbr_source_title&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;local_citations&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># CHART PARAMS:</span>
@@ -159,24 +163,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| source_abbr                   |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |</span>
-<span class="go">|:------------------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|</span>
-<span class="go">| J ECON BUS                    |          1 |          1 |                153 |                17 |                           153   |                           17   |                       25.5  |</span>
-<span class="go">| NORTHWEST J INTL LAW BUS      |          2 |          2 |                150 |                16 |                           150   |                           16   |                       21.43 |</span>
-<span class="go">| PALGRAVE STUD DIGIT BUS ENABL |          4 |          3 |                 33 |                14 |                            33   |                           14   |                        6.6  |</span>
-<span class="go">| J BANK REGUL                  |          3 |          4 |                 35 |                 9 |                            17.5 |                            4.5 |                        8.75 |</span>
-<span class="go">| DUKE LAW J                    |          5 |          5 |                 30 |                 8 |                            30   |                            8   |                        3.75 |</span>
-<span class="go">| J RISK FINANC                 |          6 |          6 |                 21 |                 8 |                            21   |                            8   |                        3.5  |</span>
-<span class="go">| J RISK MANG FINANCIAL INST    |         13 |          7 |                  8 |                 5 |                             8   |                            5   |                        1.33 |</span>
-<span class="go">| J FINANC CRIME                |          8 |          8 |                 13 |                 4 |                             6.5 |                            2   |                        3.25 |</span>
-<span class="go">| J MONEY LAUND CONTROL         |          7 |          9 |                 14 |                 3 |                            14   |                            3   |                        3.5  |</span>
-<span class="go">| ICEIS - PROC INT CONF ENTERP  |         10 |         10 |                 12 |                 3 |                            12   |                            3   |                        3    |</span>
+<span class="go">| abbr_source_title     |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |</span>
+<span class="go">|:----------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|</span>
+<span class="go">| J Manage Inf Syst     |          1 |          1 |                696 |                 4 |                          348    |                              2 |                      348    |</span>
+<span class="go">| J. Bus. Econ.         |          3 |          2 |                489 |                 4 |                          489    |                              4 |                      163    |</span>
+<span class="go">| Financial Innov.      |         14 |          3 |                190 |                 4 |                           95    |                              2 |                       47.5  |</span>
+<span class="go">| London Bus. Sch. Rev. |         36 |          4 |                 76 |                 4 |                           76    |                              4 |                       15.2  |</span>
+<span class="go">| J. Econ. Bus.         |          5 |          5 |                422 |                 3 |                          140.67 |                              1 |                      211    |</span>
+<span class="go">| Telecommun Policy     |         21 |          6 |                146 |                 3 |                          146    |                              3 |                       36.5  |</span>
+<span class="go">| Bus. Horiz.           |          2 |          7 |                557 |                 2 |                          557    |                              2 |                      278.5  |</span>
+<span class="go">| Ind Manage Data Sys   |          7 |          8 |                386 |                 2 |                          193    |                              1 |                      193    |</span>
+<span class="go">| New Polit. Econ.      |          8 |          9 |                314 |                 2 |                          314    |                              2 |                      104.67 |</span>
+<span class="go">| Int J Inf Manage      |         15 |         10 |                180 |                 2 |                          180    |                              2 |                       60    |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">items</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/contributors/sources/most_local_cited_chart.html&quot;</span><span class="p">)</span>

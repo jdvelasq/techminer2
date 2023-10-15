@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -97,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -104,6 +106,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -139,7 +143,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="n">performance_metrics</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># ITEMS PARAMS:</span>
-<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;source_abbr&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;abbr_source_title&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;g_index&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># CHART PARAMS:</span>
@@ -158,24 +162,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| source_abbr                   |   h_index |   g_index |   m_index |</span>
-<span class="go">|:------------------------------|----------:|----------:|----------:|</span>
-<span class="go">| J BANK REGUL                  |         2 |         2 |      0.5  |</span>
-<span class="go">| J ECON BUS                    |         1 |         1 |      0.17 |</span>
-<span class="go">| NORTHWEST J INTL LAW BUS      |         1 |         1 |      0.14 |</span>
-<span class="go">| PALGRAVE STUD DIGIT BUS ENABL |         1 |         1 |      0.2  |</span>
-<span class="go">| DUKE LAW J                    |         1 |         1 |      0.12 |</span>
-<span class="go">| J RISK FINANC                 |         1 |         1 |      0.17 |</span>
-<span class="go">| J MONEY LAUND CONTROL         |         1 |         1 |      0.25 |</span>
-<span class="go">| J FINANC CRIME                |         2 |         1 |      0.5  |</span>
-<span class="go">| FINANCIAL INNOV               |         1 |         1 |      0.5  |</span>
-<span class="go">| ICEIS - PROC INT CONF ENTERP  |         1 |         1 |      0.25 |</span>
+<span class="go">| abbr_source_title   |   h_index |   g_index |   m_index |</span>
+<span class="go">|:--------------------|----------:|----------:|----------:|</span>
+<span class="go">| J. Econ. Bus.       |         3 |         3 |      1.5  |</span>
+<span class="go">| J Manage Inf Syst   |         2 |         2 |      1    |</span>
+<span class="go">| Rev. Financ. Stud.  |         2 |         2 |      2    |</span>
+<span class="go">| Ind Manage Data Sys |         2 |         2 |      1    |</span>
+<span class="go">| Electron. Mark.     |         2 |         2 |      1    |</span>
+<span class="go">| Financial Innov.    |         2 |         2 |      0.5  |</span>
+<span class="go">| Financ. Manage.     |         2 |         2 |      2    |</span>
+<span class="go">| Sustainability      |         2 |         2 |      2    |</span>
+<span class="go">| Bus. Horiz.         |         1 |         1 |      0.5  |</span>
+<span class="go">| J. Bus. Econ.       |         1 |         1 |      0.33 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">items</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/contributors/sources/g_index_chart.html&quot;</span><span class="p">)</span>

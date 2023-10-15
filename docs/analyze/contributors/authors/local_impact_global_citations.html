@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -97,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -104,6 +106,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -158,24 +162,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| authors           |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |</span>
-<span class="go">|:------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|</span>
-<span class="go">| Arner DW          |          1 |          1 |                185 |                24 |                           61.67 |                            8   |                       26.43 |</span>
-<span class="go">| Buckley RP        |          2 |          2 |                185 |                24 |                           61.67 |                            8   |                       26.43 |</span>
-<span class="go">| Barberis JN       |          3 |          3 |                161 |                19 |                           80.5  |                            9.5 |                       23    |</span>
-<span class="go">| Anagnostopoulos I |          4 |          5 |                153 |                17 |                          153    |                           17   |                       25.5  |</span>
-<span class="go">| Butler T          |          5 |          4 |                 41 |                19 |                           20.5  |                            9.5 |                        6.83 |</span>
-<span class="go">| OBrien L          |          6 |          6 |                 33 |                14 |                           33    |                           14   |                        6.6  |</span>
-<span class="go">| Baxter LG         |          7 |          7 |                 30 |                 8 |                           30    |                            8   |                        3.75 |</span>
-<span class="go">| Weber RH          |          8 |         13 |                 24 |                 5 |                           24    |                            5   |                        6    |</span>
-<span class="go">| Zetzsche DA       |          9 |         14 |                 24 |                 5 |                           24    |                            5   |                        6    |</span>
-<span class="go">| Breymann W        |         10 |          8 |                 21 |                 8 |                           21    |                            8   |                        3.5  |</span>
+<span class="go">| authors       |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |</span>
+<span class="go">|:--------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|</span>
+<span class="go">| Gomber P.     |          1 |          1 |               1065 |                 7 |                           532.5 |                            3.5 |                       355   |</span>
+<span class="go">| Kauffman R.J. |          2 |          5 |                576 |                 3 |                           576   |                            3   |                       288   |</span>
+<span class="go">| Parker C.     |          3 |          6 |                576 |                 3 |                           576   |                            3   |                       288   |</span>
+<span class="go">| Weber B.W.    |          4 |          7 |                576 |                 3 |                           576   |                            3   |                       288   |</span>
+<span class="go">| Lee I.        |          5 |         13 |                557 |                 2 |                           557   |                            2   |                       278.5 |</span>
+<span class="go">| Shin Y.J.     |          6 |         14 |                557 |                 2 |                           557   |                            2   |                       278.5 |</span>
+<span class="go">| Koch J.-A.    |          7 |          2 |                489 |                 4 |                           489   |                            4   |                       163   |</span>
+<span class="go">| Siering M.    |          8 |          3 |                489 |                 4 |                           489   |                            4   |                       163   |</span>
+<span class="go">| Buchak G.     |          9 |         53 |                390 |                 0 |                           390   |                            0   |                       195   |</span>
+<span class="go">| Matvos G.     |         10 |         54 |                390 |                 0 |                           390   |                            0   |                       195   |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">items</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/contributors/authors/global_citations_chart.html&quot;</span><span class="p">)</span>

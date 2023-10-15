@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="__index__.html">Overview &gt;</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="general_metrics.html">General Metrics</a></li>
@@ -85,6 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../terms_by_year.html">Terms by Year</a></li>
@@ -92,6 +94,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -145,7 +149,7 @@
 <span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
@@ -157,23 +161,20 @@
 height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
 <span class="go">|   year |   OCC |   global_citations |   mean_global_citations |   mean_global_citations_per_year |</span>
 <span class="go">|-------:|------:|-------------------:|------------------------:|---------------------------------:|</span>
-<span class="go">|   2016 |     1 |                 30 |                30       |                             3.75 |</span>
-<span class="go">|   2017 |     4 |                162 |                40.5     |                             5.79 |</span>
-<span class="go">|   2018 |     3 |                182 |                60.6667  |                            10.11 |</span>
-<span class="go">|   2019 |     6 |                 47 |                 7.83333 |                             1.57 |</span>
-<span class="go">|   2020 |    14 |                 93 |                 6.64286 |                             1.66 |</span>
-<span class="go">|   2021 |    10 |                 27 |                 2.7     |                             0.9  |</span>
-<span class="go">|   2022 |    12 |                 22 |                 1.83333 |                             0.92 |</span>
-<span class="go">|   2023 |     2 |                  0 |                 0       |                             0    |</span>
+<span class="go">|   2015 |     1 |                 76 |                  76     |                            15.2  |</span>
+<span class="go">|   2016 |     7 |                870 |                 124.286 |                            31.07 |</span>
+<span class="go">|   2017 |    10 |               1815 |                 181.5   |                            60.5  |</span>
+<span class="go">|   2018 |    17 |               3366 |                 198     |                            99    |</span>
+<span class="go">|   2019 |    15 |               2008 |                 133.867 |                           133.87 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">|                                |   2016 |   2017 |     2018 |     2019 |     2020 |   2021 |     2022 |   2023 |</span>
-<span class="go">|:-------------------------------|-------:|-------:|---------:|---------:|---------:|-------:|---------:|-------:|</span>
-<span class="go">| OCC                            |   1    |   4    |   3      |  6       | 14       |   10   | 12       |      2 |</span>
-<span class="go">| global_citations               |  30    | 162    | 182      | 47       | 93       |   27   | 22       |      0 |</span>
-<span class="go">| mean_global_citations          |  30    |  40.5  |  60.6667 |  7.83333 |  6.64286 |    2.7 |  1.83333 |      0 |</span>
-<span class="go">| mean_global_citations_per_year |   3.75 |   5.79 |  10.11   |  1.57    |  1.66    |    0.9 |  0.92    |      0 |</span>
+<span class="go">|                                |   2015 |    2016 |   2017 |   2018 |     2019 |</span>
+<span class="go">|:-------------------------------|-------:|--------:|-------:|-------:|---------:|</span>
+<span class="go">| OCC                            |    1   |   7     |   10   |     17 |   15     |</span>
+<span class="go">| global_citations               |   76   | 870     | 1815   |   3366 | 2008     |</span>
+<span class="go">| mean_global_citations          |   76   | 124.286 |  181.5 |    198 |  133.867 |</span>
+<span class="go">| mean_global_citations_per_year |   15.2 |  31.07  |   60.5 |     99 |  133.87  |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">prompt_</span><span class="p">)</span> 

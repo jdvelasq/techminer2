@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -99,6 +100,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -106,6 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -160,24 +164,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| nlp_phrases            |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |</span>
-<span class="go">|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|</span>
-<span class="go">| REGULATORY_TECHNOLOGY   |          1 |    20 |            14 |                   6 |               30    |</span>
-<span class="go">| FINANCIAL_INSTITUTIONS  |          2 |    15 |            11 |                   4 |               26.67 |</span>
-<span class="go">| FINANCIAL_REGULATION    |          3 |     7 |             6 |                   1 |               14.29 |</span>
-<span class="go">| REGULATORY_COMPLIANCE   |          4 |     7 |             6 |                   1 |               14.29 |</span>
-<span class="go">| FINANCIAL_SECTOR        |          5 |     7 |             5 |                   2 |               28.57 |</span>
-<span class="go">| ARTIFICIAL_INTELLIGENCE |          6 |     7 |             4 |                   3 |               42.86 |</span>
-<span class="go">| FINANCIAL_SYSTEM        |          7 |     6 |             5 |                   1 |               16.67 |</span>
-<span class="go">| GLOBAL_FINANCIAL_CRISIS |          8 |     6 |             3 |                   3 |               50    |</span>
-<span class="go">| FINANCIAL_CRISIS        |          9 |     6 |             6 |                   0 |                0    |</span>
-<span class="go">| COMPLIANCE_COST         |         10 |     6 |             5 |                   1 |               16.67 |</span>
+<span class="go">| nlp_phrases          |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |</span>
+<span class="go">|:---------------------|-----------:|------:|--------------:|--------------------:|--------------------:|</span>
+<span class="go">| FINTECH              |          1 |    40 |            15 |                  25 |               62.5  |</span>
+<span class="go">| TECHNOLOGIES         |          2 |    23 |             9 |                  14 |               60.87 |</span>
+<span class="go">| AUTHOR               |          3 |    18 |             5 |                  13 |               72.22 |</span>
+<span class="go">| FINANCIAL_INDUSTRY   |          4 |    17 |             9 |                   8 |               47.06 |</span>
+<span class="go">| FINANCIAL_TECHNOLOGY |          5 |    17 |             3 |                  14 |               82.35 |</span>
+<span class="go">| BANKING              |          6 |    14 |             5 |                   9 |               64.29 |</span>
+<span class="go">| INNOVATION           |          7 |    13 |             5 |                   8 |               61.54 |</span>
+<span class="go">| FINANCE              |          8 |    13 |             7 |                   6 |               46.15 |</span>
+<span class="go">| RESEARCHERS          |          9 |    13 |             6 |                   7 |               53.85 |</span>
+<span class="go">| PAPER                |         10 |    12 |             5 |                   7 |               58.33 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/words/nlp_phrases/most_frequent_chart.html&quot;</span><span class="p">)</span>

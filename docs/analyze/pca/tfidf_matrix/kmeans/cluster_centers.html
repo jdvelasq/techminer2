@@ -70,11 +70,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../__index__.html">PCA &gt;</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../cooc_matrix/__index__.html">Co-occurrence Matrix &gt;</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../__index__.html">TFIDF Matrix &gt;</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../brute_force/__index__.html">Brute Force &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../hierarchical/__index__.html">Hierarchical Clustering &gt;</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="__index__.html">K-Means &gt;</a><ul class="current">
 <li class="toctree-l5 current"><a class="current reference internal" href="#">Cluster Centers</a></li>
@@ -82,6 +84,7 @@
 <li class="toctree-l5"><a class="reference internal" href="treemap.html">Treemap</a></li>
 <li class="toctree-l5"><a class="reference internal" href="factor_map.html">Factor Map</a></li>
 <li class="toctree-l5"><a class="reference internal" href="concept_grid.html">Concept Grid</a></li>
+<li class="toctree-l5"><a class="reference internal" href="to_brute_force_labels.html">To Brute Force Labels</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../pcd/__index__.html">PCD &gt;</a></li>
@@ -99,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../terms_by_year.html">Terms by Year</a></li>
@@ -106,6 +110,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -179,19 +185,19 @@
 <span class="gp">... </span>    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="go">           DIM_0     DIM_1     DIM_2     DIM_3     DIM_4</span>
 <span class="go">LABELS</span>
-<span class="go">CL_0   -0.421348 -0.044213 -0.554254  0.098315  0.359499</span>
-<span class="go">CL_1   -0.067021  0.197100  0.250867  0.542294 -0.255634</span>
-<span class="go">CL_2   -0.601858 -0.474160  0.129026 -0.726644 -0.507679</span>
-<span class="go">CL_3   -0.594277  0.141583  1.866264 -0.411981  1.188108</span>
-<span class="go">CL_4    4.373464 -0.905224 -0.045945 -0.492363  0.247571</span>
-<span class="go">CL_5    1.979806  1.787175  0.038151 -0.131046 -0.387653</span>
+<span class="go">CL_0   -0.264746 -0.180485 -0.301750 -0.414520  0.176149</span>
+<span class="go">CL_1   -0.225090  0.028654 -0.705276  0.629492 -0.568162</span>
+<span class="go">CL_2   -0.208823 -0.908649  0.974307  0.112261 -0.311183</span>
+<span class="go">CL_3   -0.335839  1.207883  0.444156 -0.154529 -0.181772</span>
+<span class="go">CL_4   -0.230390  0.251824  0.141264  0.763006  0.920070</span>
+<span class="go">CL_5    4.887997 -0.043436 -0.008087  0.028478 -0.065983</span>
 </pre></div>
 </div>
 </section>

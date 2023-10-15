@@ -70,6 +70,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../analyze/__index__.html">Analyze &gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -98,7 +100,7 @@
            <div itemprop="articleBody">
              
   <span class="target" id="module-techminer2.search.find_records"></span><section id="find-records">
-<span id="search-find-records"></span><h1>Find records<a class="headerlink" href="#find-records" title="Permalink to this headline"></a></h1>
+<h1>Find records<a class="headerlink" href="#find-records" title="Permalink to this headline"></a></h1>
 <p>Extracts documents from the databaase containing the text string specified by
 the parameter <code class="docutils literal notranslate"><span class="pre">search_for</span></code> in the column specified by the parameter
 <code class="docutils literal notranslate"><span class="pre">field</span></code>. This functions allows the use of regular expressions for
@@ -116,12 +118,12 @@ searching. The report is saved to the file <code class="docutils literal notrans
 <span class="gp">... </span>    <span class="n">report_filename</span><span class="o">=</span><span class="s2">&quot;find_records.txt&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/find_records.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/find_records.txt&#39; was created.</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">find_records</span><span class="p">(</span>
@@ -135,12 +137,12 @@ searching. The report is saved to the file <code class="docutils literal notrans
 <span class="gp">... </span>    <span class="n">report_filename</span><span class="o">=</span><span class="s2">&quot;find_records.txt&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/find_records.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/find_records.txt&#39; was created.</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">find_records</span><span class="p">(</span>
@@ -154,12 +156,12 @@ searching. The report is saved to the file <code class="docutils literal notrans
 <span class="gp">... </span>    <span class="n">report_filename</span><span class="o">=</span><span class="s2">&quot;find_records.txt&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/find_records.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/find_records.txt&#39; was created.</span>
 </pre></div>
 </div>
 </section>

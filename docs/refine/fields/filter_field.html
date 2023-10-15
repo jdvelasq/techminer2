@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filter a Field &mdash; TechMiner 2+ Sep 18, 2023 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/toggleprompt.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Merge Fields" href="merge_fields.html" />
+    <link rel="prev" title="Fields Intersection" href="fields_intersection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            TechMiner 2+
+          </a>
+              <div class="version">
+                Sep 18, 2023
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">INTRODUCTION</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TECHMINER 2+</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../ingest/__index__.html">Ingest &gt;</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../__index__.html">Refine &gt;</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="__index__.html">Fields &gt;</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="copy_field.html">Copy a Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="count_terms_per_record.html">Count Terms per Record</a></li>
+<li class="toctree-l3"><a class="reference internal" href="delete_field.html">Delete a Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extract_my_keywords.html">Extract My Keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fields_difference.html">Fields Difference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fields_intersection.html">Fields Intersection</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Filter a Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge_fields.html">Merge Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process_field.html">Process a Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rename_field.html">Rename a Field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stemming_field_with_and.html">Stemming Field with AND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stemming_field_with_or.html">Stemming OR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="further_processing/__index__.html">Further Processing &gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../thesaurus/__index__.html">Thesaurus &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sort_my_keywords.html">Sort My Keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sort_stopwords.html">Sort Stopwords</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../search/__index__.html">Search &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../analyze/__index__.html">Analyze &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner 2+</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../__index__.html">Refine &gt;</a></li>
+          <li class="breadcrumb-item"><a href="__index__.html">Fields &gt;</a></li>
+      <li class="breadcrumb-item active">Filter a Field</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/refine/fields/filter_field.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-techminer2.refine.fields.filter_field"></span><section id="filter-a-field">
+<h1>Filter a Field<a class="headerlink" href="#filter-a-field" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.refine.fields</span> <span class="kn">import</span> <span class="n">filter_field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filter_field</span><span class="p">(</span>  
+<span class="gp">... </span>    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;author_keywords_filtered&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># FILTERS:</span>
+<span class="gp">... </span>    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fields_intersection.html" class="btn btn-neutral float-left" title="Fields Intersection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="merge_fields.html" class="btn btn-neutral float-right" title="Merge Fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

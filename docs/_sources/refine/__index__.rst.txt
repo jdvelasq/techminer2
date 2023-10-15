@@ -4,24 +4,21 @@ Refine >
 .. toctree::
     :maxdepth: 1
 
-    countries/__index__
+    fields/__index__
 
 --------------------------------------------------------------------------------
 
 .. toctree::
     :maxdepth: 1
 
-    organizations/__index__
+    thesaurus/__index__
 
 --------------------------------------------------------------------------------
 
 .. toctree::
-    :maxdepth: 1
-
-    words/__index__
+    sort_my_keywords
 
 --------------------------------------------------------------------------------
 
 .. toctree::
     sort_stopwords
-

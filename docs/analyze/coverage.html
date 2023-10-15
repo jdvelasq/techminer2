@@ -23,7 +23,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Performance Metrics" href="performance_metrics.html" />
+    <link rel="next" title="Collaboration Metrics" href="collaboration_metrics.html" />
     <link rel="prev" title="Cluster Records" href="cluster_records.html" /> 
 </head>
 
@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pca/__index__.html">PCA &gt;</a></li>
@@ -79,6 +80,7 @@
 <li class="toctree-l2"><a class="reference internal" href="words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="terms_by_year.html">Terms by Year</a></li>
@@ -86,6 +88,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -116,30 +120,28 @@
   <span class="target" id="module-techminer2.analyze.coverage"></span><section id="coverage">
 <h1>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline"></a></h1>
 <p>Computes coverage of terms in a column discarding stopwords.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.overview</span> <span class="kn">import</span> <span class="n">coverage</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.analyze</span> <span class="kn">import</span> <span class="n">coverage</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coverage</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># PARAMS:</span>
 <span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE_PARAMS</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">--INFO-- Number of documents : 52</span>
-<span class="go">--INFO--   Documents with NA : 11</span>
-<span class="go">--INFO--  Efective documents : 41</span>
+<span class="go">--INFO-- Number of documents : 50</span>
+<span class="go">--INFO--   Documents with NA : 12</span>
+<span class="go">--INFO--  Efective documents : 38</span>
 <span class="go">   min_occ  cum_sum_documents  coverage  cum num items</span>
-<span class="go">0       28                 28   68.29 %              1</span>
-<span class="go">1       12                 28   68.29 %              2</span>
-<span class="go">2        7                 33   80.49 %              4</span>
-<span class="go">3        5                 36   87.80 %              6</span>
-<span class="go">4        4                 39   95.12 %              9</span>
-<span class="go">5        3                 39   95.12 %             14</span>
-<span class="go">6        2                 39   95.12 %             25</span>
-<span class="go">7        1                 41  100.00 %            139</span>
+<span class="go">0       31                 31   81.58 %              1</span>
+<span class="go">1        7                 33   86.84 %              2</span>
+<span class="go">2        4                 36   94.74 %              5</span>
+<span class="go">3        3                 36   94.74 %             15</span>
+<span class="go">4        2                 37   97.37 %             27</span>
+<span class="go">5        1                 38  100.00 %            136</span>
 </pre></div>
 </div>
 </section>
@@ -149,7 +151,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="cluster_records.html" class="btn btn-neutral float-left" title="Cluster Records" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="performance_metrics.html" class="btn btn-neutral float-right" title="Performance Metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="collaboration_metrics.html" class="btn btn-neutral float-right" title="Collaboration Metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

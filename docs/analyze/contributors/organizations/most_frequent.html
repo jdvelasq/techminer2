@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -97,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -104,6 +106,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -158,24 +162,24 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| organizations                                                      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |</span>
-<span class="go">|:-------------------------------------------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|</span>
-<span class="go">| Univ of Hong Kong (HKG)                                            |          1 |     3 |             3 |                   0 |                0    |</span>
-<span class="go">| Univ Coll Cork (IRL)                                               |          2 |     3 |             2 |                   1 |               33.33 |</span>
-<span class="go">| Ahlia Univ (BHR)                                                   |          3 |     3 |             2 |                   1 |               33.33 |</span>
-<span class="go">| Coventry Univ (GBR)                                                |          4 |     2 |             1 |                   1 |               50    |</span>
-<span class="go">| Univ of Westminster (GBR)                                          |          5 |     2 |             1 |                   1 |               50    |</span>
-<span class="go">| Dublin City Univ (IRL)                                             |          6 |     2 |             2 |                   0 |                0    |</span>
-<span class="go">| Politec di Milano (ITA)                                            |          7 |     2 |             1 |                   1 |               50    |</span>
-<span class="go">| Kingston Bus Sch (GBR)                                             |          8 |     1 |             1 |                   0 |                0    |</span>
-<span class="go">| FinTech HK, Hong Kong (HKG)                                        |          9 |     1 |             1 |                   0 |                0    |</span>
-<span class="go">| ctr for Law, Markets &amp; Regulation, UNSW Australia, Australia (AUS) |         10 |     1 |             1 |                   0 |                0    |</span>
+<span class="go">| organizations                                         |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |</span>
+<span class="go">|:------------------------------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|</span>
+<span class="go">| Univ. of Zurich (CHE)                                 |          1 |     3 |             3 |                   0 |                   0 |</span>
+<span class="go">| Federal Reserve Bank of Philadelphia (USA)            |          2 |     3 |             0 |                   3 |                 100 |</span>
+<span class="go">| Baylor Univ. (USA)                                    |          3 |     2 |             0 |                   2 |                 100 |</span>
+<span class="go">| Max Planck Inst. for Innovation and Competition (DEU) |          4 |     2 |             1 |                   1 |                  50 |</span>
+<span class="go">| Univ. of New South Wales (AUS)                        |          5 |     2 |             1 |                   1 |                  50 |</span>
+<span class="go">| Pace Univ. (USA)                                      |          6 |     2 |             1 |                   1 |                  50 |</span>
+<span class="go">| Sungkyunkwan Univ. (KOR)                              |          7 |     2 |             1 |                   1 |                  50 |</span>
+<span class="go">| Univ. of Sydney (AUS)                                 |          8 |     2 |             1 |                   1 |                  50 |</span>
+<span class="go">| Federal Reserve Bank of Chicago (USA)                 |          9 |     2 |             0 |                   2 |                 100 |</span>
+<span class="go">| Univ. of Latvia (LVA)                                 |         10 |     2 |             2 |                   0 |                   0 |</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">items</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/contributors/organizations/most_frequent_chart.html&quot;</span><span class="p">)</span>

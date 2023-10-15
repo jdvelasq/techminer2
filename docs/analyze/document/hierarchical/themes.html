@@ -80,6 +80,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../kmeans/__index__.html">K-Means &gt;</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -89,6 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -96,6 +98,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -147,39 +151,28 @@
 <span class="gp">... </span>    <span class="n">distance_threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">|    | TH_0                        | TH_1                          | TH_2                    | TH_3            | TH_4            | TH_5           |</span>
-<span class="go">|---:|:----------------------------|:------------------------------|:------------------------|:----------------|:----------------|:---------------|</span>
-<span class="go">|  0 | APPROACH 14:360             | REGTECH 48:557                | BANK 18:305             | develop 13:254  | CHANGING 07:183 | PURPOSE 10:212 |</span>
-<span class="go">|  1 | FINTECH 12:364              | REGULATORS 30:466             | APPLICATION 15:210      | suggest 08:238  |                 | limit 10:087   |</span>
-<span class="go">|  2 | well 11:194                 | NEW_TECHNOLOGIES 22:381       | AUTHOR 13:243           | increase 08:171 |                 |                |</span>
-<span class="go">|  3 | RIGHTS 11:186               | REGULATORY_TECHNOLOGY 20:276  | FINDINGS 12:120         | CHANGE 07:331   |                 |                |</span>
-<span class="go">|  4 | reserve 11:184              | COMPLIANCE 18:368             | RESEARCH 10:212         |                 |                 |                |</span>
-<span class="go">|  5 | DEVELOPMENT 10:385          | FINANCIAL_INSTITUTIONS 16:224 | apply 10:169            |                 |                 |                |</span>
-<span class="go">|  6 | POTENTIAL 09:387            | CHALLENGE 16:203              | FINANCIAL_SECTOR 09:196 |                 |                 |                |</span>
-<span class="go">|  7 | REPORTING 09:255            | PAPER 15:371                  |                         |                 |                 |                |</span>
-<span class="go">|  8 | SOLUTION 09:060             | base 13:061                   |                         |                 |                 |                |</span>
-<span class="go">|  9 | FINANCIAL_REGULATION 08:361 | FINANCIAL_CRISIS 12:235       |                         |                 |                 |                |</span>
-<span class="go">| 10 | FINANCIAL_SYSTEM 07:363     | REGULATORY_COMPLIANCE 11:360  |                         |                 |                 |                |</span>
-<span class="go">| 11 |                             | DATA 11:221                   |                         |                 |                 |                |</span>
-<span class="go">| 12 |                             | propose 11:188                |                         |                 |                 |                |</span>
-<span class="go">| 13 |                             | STUDY 10:068                  |                         |                 |                 |                |</span>
-<span class="go">| 14 |                             | improve 09:183                |                         |                 |                 |                |</span>
-<span class="go">| 15 |                             | reduce 09:054                 |                         |                 |                 |                |</span>
-<span class="go">| 16 |                             | FINANCE 09:030                |                         |                 |                 |                |</span>
-<span class="go">| 17 |                             | address 08:167                |                         |                 |                 |                |</span>
-<span class="go">| 18 |                             | enhance 08:049                |                         |                 |                 |                |</span>
-<span class="go">| 19 |                             | RISKS 08:043                  |                         |                 |                 |                |</span>
-<span class="go">| 20 |                             | explore 08:037                |                         |                 |                 |                |</span>
-<span class="go">| 21 |                             | BUSINESS 08:027               |                         |                 |                 |                |</span>
-<span class="go">| 22 |                             | IMPACT 07:203                 |                         |                 |                 |                |</span>
-<span class="go">| 23 |                             | make 07:190                   |                         |                 |                 |                |</span>
-<span class="go">| 24 |                             | PRACTICE 07:187               |                         |                 |                 |                |</span>
+<span class="go">|    | TH_0                | TH_1                | TH_2                | TH_3             | TH_4             | TH_5               |</span>
+<span class="go">|---:|:--------------------|:--------------------|:--------------------|:-----------------|:-----------------|:-------------------|</span>
+<span class="go">|  0 | service 26:4327     | innovation 19:3070  | information 12:2653 | data 17:2392     | industry 23:4517 | fintech 50:8135    |</span>
+<span class="go">|  1 | author 18:2443      | development 19:2499 | “ 09:1743           | research 17:2383 | study 23:3158    | financial 44:7123  |</span>
+<span class="go">|  2 | sector 13:2748      | market 17:3446      | ” 09:1743           | impact 13:2198   | model 19:3820    | © 42:6879          |</span>
+<span class="go">|  3 | institution 13:2648 | paper 14:2240       |                     | propose 13:1711  | business 13:2615 | technology 39:6527 |</span>
+<span class="go">|  4 | offer 13:1850       | result 14:2183      |                     | consumer 12:1472 | discuss 10:2133  | new 26:4793        |</span>
+<span class="go">|  5 | system 12:1826      | well 13:1908        |                     | finding 10:1362  | process 10:2113  | finance 14:2199    |</span>
+<span class="go">|  6 | customer 11:2437    | bank 13:1843        |                     |                  | area 09:1646     | identify 11:1435   |</span>
+<span class="go">|  7 | increase 11:1716    | make 13:1355        |                     |                  |                  | investment 09:2077 |</span>
+<span class="go">|  8 | digital 10:1855     | traditional 11:2254 |                     |                  |                  | potential 09:1570  |</span>
+<span class="go">|  9 | company 09:1671     | apply 11:2052       |                     |                  |                  |                    |</span>
+<span class="go">| 10 | focus 09:1631       | risk 11:1636        |                     |                  |                  |                    |</span>
+<span class="go">| 11 |                     | change 10:2050      |                     |                  |                  |                    |</span>
+<span class="go">| 12 |                     | aim 10:1111         |                     |                  |                  |                    |</span>
+<span class="go">| 13 |                     | banking 10:1032     |                     |                  |                  |                    |</span>
 </pre></div>
 </div>
 </section>

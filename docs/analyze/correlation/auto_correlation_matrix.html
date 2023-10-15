@@ -76,6 +76,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pca/__index__.html">PCA &gt;</a></li>
@@ -85,6 +86,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../terms_by_year.html">Terms by Year</a></li>
@@ -92,6 +94,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -137,34 +141,34 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">                   Arner DW 3:185  ...  Crane M 2:014</span>
-<span class="go">Arner DW 3:185               1.00  ...            0.0</span>
-<span class="go">Buckley RP 3:185             1.00  ...            0.0</span>
-<span class="go">Barberis JN 2:161            0.77  ...            0.0</span>
-<span class="go">Butler T 2:041               0.00  ...            0.0</span>
-<span class="go">Hamdan A 2:018               0.00  ...            0.0</span>
-<span class="go">Turki M 2:018                0.00  ...            0.0</span>
-<span class="go">Lin W 2:017                  0.00  ...            0.0</span>
-<span class="go">Singh C 2:017                0.00  ...            0.0</span>
-<span class="go">Brennan R 2:014              0.00  ...            1.0</span>
-<span class="go">Crane M 2:014                0.00  ...            1.0</span>
+<span class="go">                      Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181</span>
+<span class="go">Jagtiani J. 3:0317                  1.00  ...                   0.0</span>
+<span class="go">Gomber P. 2:1065                    0.00  ...                   0.0</span>
+<span class="go">Hornuf L. 2:0358                    0.00  ...                   0.0</span>
+<span class="go">Gai K. 2:0323                       0.00  ...                   0.0</span>
+<span class="go">Qiu M. 2:0323                       0.00  ...                   0.0</span>
+<span class="go">Sun X./3 2:0323                     0.00  ...                   0.0</span>
+<span class="go">Lemieux C. 2:0253                   0.77  ...                   0.0</span>
+<span class="go">Dolata M. 2:0181                    0.00  ...                   1.0</span>
+<span class="go">Schwabe G. 2:0181                   0.00  ...                   1.0</span>
+<span class="go">Zavolokina L. 2:0181                0.00  ...                   1.0</span>
 
 <span class="go">[10 rows x 10 columns]</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">list_cells_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">              row             column  matrix_value</span>
-<span class="go">0  Arner DW 3:185     Arner DW 3:185        1.0000</span>
-<span class="go">1  Arner DW 3:185   Buckley RP 3:185        1.0000</span>
-<span class="go">2  Arner DW 3:185  Barberis JN 2:161        0.7698</span>
-<span class="go">3  Arner DW 3:185     Butler T 2:041        0.0000</span>
-<span class="go">4  Arner DW 3:185     Hamdan A 2:018        0.0000</span>
+<span class="go">                  row              column  matrix_value</span>
+<span class="go">0  Jagtiani J. 3:0317  Jagtiani J. 3:0317           1.0</span>
+<span class="go">1  Jagtiani J. 3:0317    Gomber P. 2:1065           0.0</span>
+<span class="go">2  Jagtiani J. 3:0317    Hornuf L. 2:0358           0.0</span>
+<span class="go">3  Jagtiani J. 3:0317       Gai K. 2:0323           0.0</span>
+<span class="go">4  Jagtiani J. 3:0317       Qiu M. 2:0323           0.0</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">prompt_</span><span class="p">)</span> 

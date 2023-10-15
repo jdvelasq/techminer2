@@ -81,6 +81,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ranking_chart.html">Ranking Chart</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -129,7 +131,7 @@
 <span class="gp">... </span>    <span class="n">custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
@@ -139,15 +141,13 @@
 </div>
 <iframe src="../../../_static/report/world_map.html"
 height="400px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                rank_occ  OCC  ...  between_2022_2023  growth_percentage</span>
-<span class="go">countries                      ...</span>
-<span class="go">United Kingdom         1    7  ...                  1              14.29</span>
-<span class="go">Australia              2    7  ...                  0               0.00</span>
-<span class="go">United States          3    6  ...                  2              33.33</span>
-<span class="go">Ireland                4    5  ...                  1              20.00</span>
-<span class="go">China                  5    5  ...                  4              80.00</span>
-
-<span class="go">[5 rows x 5 columns]</span>
+<span class="go">               rank_occ  OCC  before_2018  between_2018_2019  growth_percentage</span>
+<span class="go">countries</span>
+<span class="go">United States         1   16            1                 15              93.75</span>
+<span class="go">China                 2    8            3                  5              62.50</span>
+<span class="go">Germany               3    7            2                  5              71.43</span>
+<span class="go">South Korea           4    6            2                  4              66.67</span>
+<span class="go">Australia             5    5            2                  3              60.00</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">chart</span><span class="o">.</span><span class="n">prompt_</span><span class="p">)</span> 

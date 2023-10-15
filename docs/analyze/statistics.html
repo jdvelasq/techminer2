@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pca/__index__.html">PCA &gt;</a></li>
@@ -79,6 +80,7 @@
 <li class="toctree-l2"><a class="reference internal" href="words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="terms_by_year.html">Terms by Year</a></li>
@@ -86,6 +88,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -115,26 +119,26 @@
              
   <span class="target" id="module-techminer2.analyze.statistics"></span><section id="statistics">
 <span id="performance-analysis-statistics"></span><h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline"></a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.overview</span> <span class="kn">import</span> <span class="n">statistics</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.analyze</span> <span class="kn">import</span> <span class="n">statistics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">statistics</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                   year                       ... local_citations</span>
-<span class="go">                  count    mean  std     min  ...             25%   50%   75%   max</span>
-<span class="go">authors                                       ...</span>
-<span class="go">Abdullah Y          1.0  2022.0  NaN  2022.0  ...             0.0   0.0   0.0   0.0</span>
-<span class="go">Ajmi JA             1.0  2021.0  NaN  2021.0  ...             1.0   1.0   1.0   1.0</span>
-<span class="go">Anagnostopoulos I   1.0  2018.0  NaN  2018.0  ...            17.0  17.0  17.0  17.0</span>
-<span class="go">Anasweh M           1.0  2020.0  NaN  2020.0  ...             2.0   2.0   2.0   2.0</span>
-<span class="go">Arman AA            2.0  2022.0  0.0  2022.0  ...             0.0   0.0   0.0   0.0</span>
+<span class="go">                    year                              ... countries_from_affiliations</span>
+<span class="go">                   count    mean std     min     25%  ...                         min 25% 50% 75% max</span>
+<span class="go">authors                                               ...</span>
+<span class="go">Almunawar M.N.       1.0  2019.0 NaN  2019.0  2019.0  ...                         NaN NaN NaN NaN NaN</span>
+<span class="go">Alt R.               1.0  2018.0 NaN  2018.0  2018.0  ...                         NaN NaN NaN NaN NaN</span>
+<span class="go">Anagnostopoulos I.   1.0  2018.0 NaN  2018.0  2018.0  ...                         NaN NaN NaN NaN NaN</span>
+<span class="go">Anshari M.           1.0  2019.0 NaN  2019.0  2019.0  ...                         NaN NaN NaN NaN NaN</span>
+<span class="go">Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...                         NaN NaN NaN NaN NaN</span>
 
-<span class="go">[5 rows x 48 columns]</span>
+<span class="go">[5 rows x 80 columns]</span>
 </pre></div>
 </div>
 </section>

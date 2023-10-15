@@ -70,12 +70,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../research_agenda/__index__.html">Research Agenda &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../__index__.html">SVD &gt;</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="__index__.html">Co-occurrence Matrix &gt;</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="brute_force/__index__.html">Brute Force &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hierarchical/__index__.html">Hierarchical Clustering &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kmeans/__index__.html">K-Means &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="cosine_similarities.html">Cosine Similarities</a></li>
@@ -91,6 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -98,6 +101,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -152,20 +157,18 @@
 <span class="gp">... </span>    <span class="n">tol</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                                   DIM_0      DIM_1  ...     DIM_3     DIM_4</span>
-<span class="go">nlp_phrases                                          ...</span>
-<span class="go">REGULATORY_TECHNOLOGY 20:276   24.062092  -5.351854  ...  1.635141 -1.135873</span>
-<span class="go">FINANCIAL_INSTITUTIONS 15:194  14.735496  10.551467  ...  0.094923  0.197063</span>
-<span class="go">FINANCIAL_SYSTEM 08:340        11.036082  -2.278069  ... -3.355966 -0.353362</span>
-<span class="go">FINANCIAL_REGULATION 07:360     8.005518   1.534439  ...  1.145890 -2.420147</span>
-<span class="go">REGULATORY_COMPLIANCE 07:198    7.694193   1.454806  ... -2.730564  2.309500</span>
-
-<span class="go">[5 rows x 5 columns]</span>
+<span class="go">                                  DIM_0     DIM_1     DIM_2     DIM_3     DIM_4</span>
+<span class="go">nlp_phrases</span>
+<span class="go">FINTECH 40:6331               61.204459 -5.451855 -2.678751 -2.755433  2.281138</span>
+<span class="go">TECHNOLOGIES 23:3317          38.639767 -4.804213  9.913155 -3.231461 -1.608852</span>
+<span class="go">AUTHOR 18:2443                32.261454 -0.167374 -1.748088  7.199162 -2.934915</span>
+<span class="go">FINANCIAL_INDUSTRY 17:3704    27.627180  5.953923  6.172145  3.950076  3.441536</span>
+<span class="go">FINANCIAL_TECHNOLOGY 17:2225  31.796134 -2.831143 -4.256727 -5.413894 -4.614704</span>
 </pre></div>
 </div>
 </section>

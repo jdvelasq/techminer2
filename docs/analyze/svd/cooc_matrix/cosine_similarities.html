@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Embedding" href="embedding.html" />
-    <link rel="prev" title="Concept Grid" href="kmeans/concept_grid.html" /> 
+    <link rel="prev" title="To Brute Force Labels" href="kmeans/to_brute_force_labels.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -70,12 +70,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../research_agenda/__index__.html">Research Agenda &gt;</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../__index__.html">SVD &gt;</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="__index__.html">Co-occurrence Matrix &gt;</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="brute_force/__index__.html">Brute Force &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hierarchical/__index__.html">Hierarchical Clustering &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="kmeans/__index__.html">K-Means &gt;</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Cosine Similarities</a></li>
@@ -91,6 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -98,6 +101,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -152,18 +157,18 @@
 <span class="gp">... </span>    <span class="n">tol</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                                                             cosine_similariries</span>
+<span class="go">                                                            cosine_similariries</span>
 <span class="go">nlp_phrases</span>
-<span class="go">REGULATORY_TECHNOLOGY 20:276   INFORMATION_TECHNOLOGY 05:177 (0.905); FINANCI...</span>
-<span class="go">FINANCIAL_INSTITUTIONS 15:194  TECHNOLOGICAL_SOLUTIONS 05:016 (0.944); FINANC...</span>
-<span class="go">FINANCIAL_SYSTEM 08:340        FINANCIAL_SERVICES_INDUSTRY 05:315 (0.918); FI...</span>
-<span class="go">FINANCIAL_REGULATION 07:360    GLOBAL_FINANCIAL_CRISIS 06:177 (0.893); TECHNO...</span>
-<span class="go">REGULATORY_COMPLIANCE 07:198   REGULATION 04:018 (0.932); TECHNOLOGICAL_SOLUT...</span>
+<span class="go">FINTECH 40:6331               CHALLENGES 09:1473 (0.977); FINANCIAL_TECHNOLO...</span>
+<span class="go">TECHNOLOGIES 23:3317          FINANCIAL_SECTOR 09:1733 (0.962); CHALLENGES 0...</span>
+<span class="go">AUTHOR 18:2443                DATA 10:1569 (0.995); CHALLENGES 09:1473 (0.96...</span>
+<span class="go">FINANCIAL_INDUSTRY 17:3704    INNOVATION 13:2298 (0.984); FINANCIAL_SECTOR 0...</span>
+<span class="go">FINANCIAL_TECHNOLOGY 17:2225  FINTECH 40:6331 (0.973); IMPACT 09:1495 (0.967...</span>
 </pre></div>
 </div>
 </section>
@@ -172,7 +177,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="kmeans/concept_grid.html" class="btn btn-neutral float-left" title="Concept Grid" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kmeans/to_brute_force_labels.html" class="btn btn-neutral float-left" title="To Brute Force Labels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="embedding.html" class="btn btn-neutral float-right" title="Embedding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

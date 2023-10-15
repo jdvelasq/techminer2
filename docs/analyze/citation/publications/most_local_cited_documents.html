@@ -82,6 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pca/__index__.html">PCA &gt;</a></li>
@@ -91,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../terms_by_year.html">Terms by Year</a></li>
@@ -98,6 +100,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -146,42 +150,27 @@
 <span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/most_local_cited_documents__abstracts.txt&#39; was created.</span>
-<span class="go">--INFO-- The file &#39;data/regtech/reports/most_local_cited_documents__prompt.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/most_local_cited_documents__abstracts.txt&#39; was created.</span>
+<span class="go">--INFO-- The file &#39;example/reports/most_local_cited_documents__prompt.txt&#39; was created.</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">documents</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/citation/publications/most_local_cited_documents.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <iframe src="../../../../../_static/analyze/citation/publications/most_local_cited_documents.html"
-height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
-<span class="go">| article                                               |   year |   rank_gcs |   global_citations |   rank_lcs |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                                |</span>
-<span class="go">|:------------------------------------------------------|-------:|-----------:|-------------------:|-----------:|------------------:|----------------------------:|---------------------------:|:-----------------------------------|</span>
-<span class="go">| Anagnostopoulos I, 2018, J ECON BUS, V100, P7         |   2018 |          1 |                153 |          1 |                17 |                      25.5   |                      2.833 | 10.1016/J.JECONBUS.2018.07.003     |</span>
-<span class="go">| Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373   |   2017 |          2 |                150 |          2 |                16 |                      21.429 |                      2.286 | nan                                |</span>
-<span class="go">| Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85    |   2019 |          3 |                 33 |          3 |                14 |                       6.6   |                      2.8   | 10.1007/978-3-030-02330-0_6        |</span>
-<span class="go">| Baxter LG, 2016, DUKE LAW J, V66, P567                |   2016 |          4 |                 30 |          4 |                 8 |                       3.75  |                      1     | nan                                |</span>
-<span class="go">| Kavassalis P, 2018, J RISK FINANC, V19, P39           |   2018 |          6 |                 21 |          5 |                 8 |                       3.5   |                      1.333 | 10.1108/JRF-07-2017-0111           |</span>
-<span class="go">| Buckley RP, 2020, J BANK REGUL, V21, P26              |   2020 |          5 |                 24 |          6 |                 5 |                       6     |                      1.25  | 10.1057/S41261-019-00104-1         |</span>
-<span class="go">| Butler T, 2018, J RISK MANG FINANCIAL INST, V11, P19  |   2018 |         14 |                  8 |          7 |                 5 |                       1.333 |                      0.833 | nan                                |</span>
-<span class="go">| von Solms J, 2021, J BANK REGUL, V22, P152            |   2021 |         10 |                 11 |          8 |                 4 |                       3.667 |                      1.333 | 10.1057/S41261-020-00134-0         |</span>
-<span class="go">| Brand V, 2020, UNIV NEW SOUTH WALES LAW J, V43, P801  |   2020 |         19 |                  4 |         13 |                 3 |                       1     |                      0.75  | nan                                |</span>
-<span class="go">| Muzammil M, 2020, CEUR WORKSHOP PROC, V2815, P382     |   2020 |         27 |                  2 |         15 |                 3 |                       0.5   |                      0.75  | nan                                |</span>
-<span class="go">| Nicholls R, 2021, J ANTITRUST ENFORC, V9, P135        |   2021 |         21 |                  3 |         14 |                 3 |                       1     |                      1     | 10.1093/JAENFO/JNAA011             |</span>
-<span class="go">| Kurum E, 2020, J FINANC CRIME                         |   2020 |         13 |                 10 |         12 |                 3 |                       2.5   |                      0.75  | 10.1108/JFC-04-2020-0051           |</span>
-<span class="go">| Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, P359   |   2017 |         11 |                 11 |         11 |                 3 |                       1.571 |                      0.429 | 10.1016/B978-0-12-810441-5.00016-6 |</span>
-<span class="go">| Ryan P, 2020, ICEIS - PROC INT CONF ENTERP , V2, P787 |   2020 |          9 |                 12 |         10 |                 3 |                       3     |                      0.75  | nan                                |</span>
-<span class="go">| Singh C, 2020, J MONEY LAUND CONTROL, V24, P464       |   2020 |          7 |                 14 |          9 |                 3 |                       3.5   |                      0.75  | 10.1108/JMLC-09-2020-0100          |</span>
-<span class="go">| Turki M, 2020, HELIYON, V6                            |   2020 |         12 |                 11 |         16 |                 2 |                       2.75  |                      0.5   | 10.1016/J.HELIYON.2020.E04949      |</span>
-<span class="go">| Gasparri G, 2019, FRONTIER ARTIF INTELL, V2           |   2019 |         22 |                  3 |         17 |                 2 |                       0.6   |                      0.4   | 10.3389/FRAI.2019.00014            |</span>
-<span class="go">| Goul M, 2019, PROC - IEEE WORLD CONGR SERV,, P219     |   2019 |         23 |                  3 |         18 |                 2 |                       0.6   |                      0.4   | 10.1109/SERVICES.2019.00061        |</span>
-<span class="go">| Waye V, 2020, ADELAIDE LAW REV, V40, P363             |   2020 |         18 |                  5 |         23 |                 1 |                       1.25  |                      0.25  | nan                                |</span>
-<span class="go">| Siering M, 2022, DECIS SUPPORT SYST, V158             |   2022 |         31 |                  1 |         26 |                 1 |                       0.5   |                      0.5   | 10.1016/J.DSS.2022.113782          |</span>
+height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">documents</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">())</span>
+<span class="go">| article                                          |   year |   rank_gcs |   global_citations |   rank_lcs |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                           |</span>
+<span class="go">|:-------------------------------------------------|-------:|-----------:|-------------------:|-----------:|------------------:|----------------------------:|---------------------------:|:------------------------------|</span>
+<span class="go">| Gomber P., 2017, J BUS ECON, V87, P537           |   2017 |          3 |                489 |          1 |                 4 |                       163   |                      1.333 | 10.1007/S11573-017-0852-X     |</span>
+<span class="go">| Mackenzie A., 2015, LONDON BUS SCH REV, V26, P50 |   2015 |         42 |                 76 |          2 |                 4 |                        15.2 |                      0.8   | 10.1111/2057-1615.12059       |</span>
+<span class="go">| Gomber P., 2018, J MANAGE INF SYST, V35, P220    |   2018 |          1 |                576 |          3 |                 3 |                       288   |                      1.5   | 10.1080/07421222.2018.1440766 |</span>
+<span class="go">| Shim Y., 2016, TELECOMMUN POLICY, V40, P168      |   2016 |         21 |                146 |          4 |                 3 |                        36.5 |                      0.75  | 10.1016/J.TELPOL.2015.11.005  |</span>
+<span class="go">| Zavolokina L., 2016, FINANCIAL INNOV, V2         |   2016 |         27 |                106 |          5 |                 3 |                        26.5 |                      0.75  | 10.1186/S40854-016-0036-7     |</span>
 </pre></div>
 </div>
 </section>

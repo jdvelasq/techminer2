@@ -77,6 +77,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../contributors/__index__.html">Contributors &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../correlation/__index__.html">Correlation &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../document/__index__.html">Document Classification &gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../emergence/__index__.html">Emergence &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../expertise/__index__.html">Expertise &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview/__index__.html">Overview &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pca/__index__.html">PCA &gt;</a></li>
@@ -86,6 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../words/__index__.html">Words &gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coverage.html">Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collaboration_metrics.html">Collaboration Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../performance_metrics.html">Performance Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../statistics.html">Statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../terms_by_year.html">Terms by Year</a></li>
@@ -93,6 +95,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../report/__index__.html">Report &gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../query.html">Query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../summary_sheet.html">Summary Sheet</a></li>
 </ul>
 
         </div>
@@ -127,7 +131,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">associations</span> <span class="o">=</span> <span class="n">item_associations</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FUNCTION PARAMS:</span>
-<span class="gp">... </span>    <span class="n">item</span><span class="o">=</span><span class="s1">&#39;REGTECH&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">item</span><span class="o">=</span><span class="s1">&#39;FINTECH&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># CO-OCC PARAMS:</span>
 <span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
@@ -155,33 +159,19 @@
 <span class="gp">... </span>    <span class="n">yshift</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data/regtech/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">associations</span><span class="o">.</span><span class="n">df_</span>
-<span class="go">                                REGTECH 28:329</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">associations</span><span class="o">.</span><span class="n">df_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                                         FINTECH 31:5168</span>
 <span class="go">author_keywords</span>
-<span class="go">FINTECH 12:249                              12</span>
-<span class="go">COMPLIANCE 07:030                            7</span>
-<span class="go">REGULATION 05:164                            4</span>
-<span class="go">FINANCIAL_SERVICES 04:168                    3</span>
-<span class="go">SUPTECH 03:004                               3</span>
-<span class="go">REGULATORY_TECHNOLOGY 07:037                 2</span>
-<span class="go">FINANCIAL_REGULATION 04:035                  2</span>
-<span class="go">ARTIFICIAL_INTELLIGENCE 04:023               2</span>
-<span class="go">RISK_MANAGEMENT 03:014                       2</span>
-<span class="go">NEW_TECHNOLOGIES 03:010                      2</span>
-<span class="go">BLOCKCHAIN 03:005                            2</span>
-<span class="go">SEMANTIC_TECHNOLOGIES 02:041                 2</span>
-<span class="go">DATA_PROTECTION 02:027                       2</span>
-<span class="go">SMART_CONTRACT 02:022                        2</span>
-<span class="go">CHARITYTECH 02:017                           2</span>
-<span class="go">ENGLISH_LAW 02:017                           2</span>
-<span class="go">ACCOUNTABILITY 02:014                        2</span>
-<span class="go">ANTI_MONEY_LAUNDERING 05:034                 1</span>
-<span class="go">INNOVATION 03:012                            1</span>
+<span class="go">INNOVATION 07:0911                                     5</span>
+<span class="go">FINANCIAL_SERVICES 04:0667                             3</span>
+<span class="go">MOBILE_FINTECH_PAYMENT_SERVICES 04:0485                3</span>
+<span class="go">BUSINESS 03:0896                                       3</span>
+<span class="go">SHADOW_BANKING 03:0643                                 3</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">associations</span><span class="o">.</span><span class="n">fig_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/associations/item_associations_chart.html&quot;</span><span class="p">)</span>
