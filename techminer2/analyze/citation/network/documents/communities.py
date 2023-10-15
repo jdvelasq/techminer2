@@ -27,12 +27,14 @@ Communities
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(x.to_markdown())
-|    | CL_0                                                 | CL_1                                                  | CL_2                                                      |
-|---:|:-----------------------------------------------------|:------------------------------------------------------|:----------------------------------------------------------|
-|  0 | Gozman D., 2018, J MANAGE INF SYST, V35, P145 1:120  | Alt R., 2018, ELECTRON MARK, V28, P235 1:150          | Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P541 1:161    |
-|  1 | Gomber P., 2018, J MANAGE INF SYST, V35, P220 1:576  | Hu Z., 2019, SYMMETRY, V11 1:176                      | Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411 1:225 |
-|  2 | Iman N., 2018, ELECT COMMER RES APPL, V30, P72 1:102 | Gai K., 2018, J NETWORK COMPUT APPL, V103, P262 1:238 |                                                           |
-
+|    | CL_0                                                 | CL_1                                                      | CL_2                                                  | CL_3                                                   | CL_4                                                 | CL_5                                               |
+|---:|:-----------------------------------------------------|:----------------------------------------------------------|:------------------------------------------------------|:-------------------------------------------------------|:-----------------------------------------------------|:---------------------------------------------------|
+|  0 | Gomber P., 2017, J BUS ECON, V87, P537 1:489         | Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P541 1:161    | Shim Y., 2016, TELECOMMUN POLICY, V40, P168 1:146     | Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69 1:253 | Anagnostopoulos I., 2018, J ECON BUS, V100, P7 1:202 | Kim Y., 2016, INT J APPL ENG RES, V11, P1058 1:125 |
+|  1 | Gomber P., 2018, J MANAGE INF SYST, V35, P220 1:576  | Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411 1:225 | Gai K., 2018, J NETWORK COMPUT APPL, V103, P262 1:238 | Haddad C., 2019, SMALL BUS ECON, V53, P81 1:258        | Zavolokina L., 2016, FINANCIAL INNOV, V2 1:106       | Gimpel H., 2018, ELECTRON MARK, V28, P245 1:137    |
+|  2 | Gozman D., 2018, J MANAGE INF SYST, V35, P145 1:120  | Hu Z., 2019, SYMMETRY, V11 1:176                          | Schueffel P., 2016, J INNOV MANAG, V4, P32 1:226      |                                                        |                                                      |                                                    |
+|  3 | Alt R., 2018, ELECTRON MARK, V28, P235 1:150         | Gabor D., 2017, NEW POLIT ECON, V22, P423 1:314           |                                                       |                                                        |                                                      |                                                    |
+|  4 | Lee I., 2018, BUS HORIZ, V61, P35 1:557              | Leong C., 2017, INT J INF MANAGE, V37, P92 1:180          |                                                       |                                                        |                                                      |                                                    |
+|  5 | Iman N., 2018, ELECT COMMER RES APPL, V30, P72 1:102 | Stewart H., 2018, INF COMPUT SECURITY, V26, P109 1:104    |                                                       |                                                        |                                                      |                                                    |
 
 
 """

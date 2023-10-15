@@ -34,15 +34,16 @@ Communities
 ... )
                                       CL_0  ...                          CL_3
 0                          FINTECH 31:5168  ...        SHADOW_BANKING 03:0643
-1              FINANCIAL_INCLUSION 03:0590  ...  PEER_TO_PEER_LENDING 03:0324
-2                     CASE_STUDIES 03:0442  ...   MARKETPLACE_LENDING 03:0317
-3                       BLOCKCHAIN 03:0369  ...                              
-4                     CROWDFUNDING 03:0335  ...                              
-5  MOBILE_FINTECH_PAYMENT_SERVICES 03:0309  ...                              
+1  MOBILE_FINTECH_PAYMENT_SERVICES 04:0485  ...  PEER_TO_PEER_LENDING 03:0324
+2              FINANCIAL_INCLUSION 03:0590  ...   MARKETPLACE_LENDING 03:0317
+3                     CASE_STUDIES 03:0442  ...                              
+4                       BLOCKCHAIN 03:0369  ...                              
+5                     CROWDFUNDING 03:0335  ...                              
 6                   CYBER_SECURITY 02:0342  ...                              
 7          ARTIFICIAL_INTELLIGENCE 02:0327  ...                              
 <BLANKLINE>
 [8 rows x 4 columns]
+
 
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -85,8 +86,7 @@ def communities(
     textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -120,8 +120,7 @@ def communities(
         textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -20,60 +20,57 @@ Bradford's Law
 >>> print(bradford.df_.to_markdown())
 |    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford's Group |
 |---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|
-|  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |
-|  1 |            40 | 86.96 % |                 46 | 100.0 %  |                     1 |                        40 |              52 | 100.0 %         |                  3 |
+|  0 |             1 | 2.44 %  |                  1 | 2.44 %   |                     3 |                         3 |               3 | 6.0 %           |                  1 |
+|  1 |             7 | 17.07 % |                  8 | 19.51 %  |                     2 |                        14 |              17 | 34.0 %          |                  2 |
+|  2 |            33 | 80.49 % |                 41 | 100.0 %  |                     1 |                        33 |              50 | 100.0 %         |                  3 |
 
-
+    
 
 >>> print(bradford.zones_.to_markdown())
-| source_abbr                   |   no |   OCC |   cum_OCC |   global_citations |   zone |
-|:------------------------------|-----:|------:|----------:|-------------------:|-------:|
-| J BANK REGUL                  |    1 |     2 |         2 |                 35 |      1 |
-| J FINANC CRIME                |    2 |     2 |         4 |                 13 |      1 |
-| FOSTER INNOVCOMPET WITH FINTE |    3 |     2 |         6 |                  1 |      1 |
-| STUD COMPUT INTELL            |    4 |     2 |         8 |                  1 |      1 |
-| INT CONF INF TECHNOL SYST INN |    5 |     2 |        10 |                  0 |      1 |
-| ROUTLEDGE HANDBFINANCIAL TECH |    6 |     2 |        12 |                  0 |      1 |
-| J ECON BUS                    |    7 |     1 |        13 |                153 |      1 |
-| NORTHWEST J INTL LAW BUS      |    8 |     1 |        14 |                150 |      1 |
-| PALGRAVE STUD DIGIT BUS ENABL |    9 |     1 |        15 |                 33 |      1 |
-| DUKE LAW J                    |   10 |     1 |        16 |                 30 |      1 |
-| J RISK FINANC                 |   11 |     1 |        17 |                 21 |      2 |
-| J MONEY LAUND CONTROL         |   12 |     1 |        18 |                 14 |      2 |
-| FINANCIAL INNOV               |   13 |     1 |        19 |                 13 |      2 |
-| ICEIS - PROC INT CONF ENTERP  |   14 |     1 |        20 |                 12 |      2 |
-| HANDBBLOCKCHAIN, DIGIT FINANC |   15 |     1 |        21 |                 11 |      2 |
-| HELIYON                       |   16 |     1 |        22 |                 11 |      2 |
-| J RISK MANG FINANCIAL INST    |   17 |     1 |        23 |                  8 |      2 |
-| ADV INTELL SYS COMPUT         |   18 |     1 |        24 |                  7 |      2 |
-| ADELAIDE LAW REV              |   19 |     1 |        25 |                  5 |      2 |
-| INTELL SYST ACCOUNT FINANCE M |   20 |     1 |        26 |                  5 |      2 |
-| J FINANCIAL DATA SCI          |   21 |     1 |        27 |                  5 |      2 |
-| LECTURE NOTES DATA ENG COMMUN |   22 |     1 |        28 |                  4 |      2 |
-| UNIV NEW SOUTH WALES LAW J    |   23 |     1 |        29 |                  4 |      2 |
-| EUR J RISK REGUL              |   24 |     1 |        30 |                  3 |      2 |
-| FRONTIER ARTIF INTELL         |   25 |     1 |        31 |                  3 |      2 |
-| J ADV RES DYN CONTROL SYST    |   26 |     1 |        32 |                  3 |      2 |
-| J ANTITRUST ENFORC            |   27 |     1 |        33 |                  3 |      2 |
-| PROC - IEEE WORLD CONGR SERV, |   28 |     1 |        34 |                  3 |      3 |
-| ACM INT CONF PROC SER         |   29 |     1 |        35 |                  2 |      3 |
-| CEUR WORKSHOP PROC            |   30 |     1 |        36 |                  2 |      3 |
-| LECT NOTES BUS INF PROCESS    |   31 |     1 |        37 |                  2 |      3 |
-| DECIS SUPPORT SYST            |   32 |     1 |        38 |                  1 |      3 |
-| EAI/SPRINGER INNO COMM COMP   |   33 |     1 |        39 |                  1 |      3 |
-| J IND BUS ECON                |   34 |     1 |        40 |                  1 |      3 |
-| LECT NOTES NETWORKS SYST      |   35 |     1 |        41 |                  1 |      3 |
-| PROC EUR CONF INNOV ENTREPREN |   36 |     1 |        42 |                  1 |      3 |
-| PROC INT CONF ELECTRON BUS (I |   37 |     1 |        43 |                  1 |      3 |
-| COMPUTER                      |   38 |     1 |        44 |                  0 |      3 |
-| EUR BUS LAW REV               |   39 |     1 |        45 |                  0 |      3 |
-| FINTECH: LAWREGULATION        |   40 |     1 |        46 |                  0 |      3 |
-| J CORP FINANC                 |   41 |     1 |        47 |                  0 |      3 |
-| J FINANC REGUL COMPLIANCE     |   42 |     1 |        48 |                  0 |      3 |
-| JUSLETTER IT                  |   43 |     1 |        49 |                  0 |      3 |
-| NEW POLIT ECON                |   44 |     1 |        50 |                  0 |      3 |
-| RES INT BUS FINANC            |   45 |     1 |        51 |                  0 |      3 |
-| TECHNOL SOC                   |   46 |     1 |        52 |                  0 |      3 |
+| abbr_source_title                   |   no |   OCC |   cum_OCC |   global_citations |   zone |
+|:------------------------------------|-----:|------:|----------:|-------------------:|-------:|
+| J. Econ. Bus.                       |    1 |     3 |         3 |                422 |      1 |
+| J Manage Inf Syst                   |    2 |     2 |         5 |                696 |      1 |
+| Rev. Financ. Stud.                  |    3 |     2 |         7 |                432 |      1 |
+| Ind Manage Data Sys                 |    4 |     2 |         9 |                386 |      1 |
+| Electron. Mark.                     |    5 |     2 |        11 |                287 |      1 |
+| Financial Innov.                    |    6 |     2 |        13 |                190 |      1 |
+| Financ. Manage.                     |    7 |     2 |        15 |                161 |      1 |
+| Sustainability                      |    8 |     2 |        17 |                150 |      2 |
+| Bus. Horiz.                         |    9 |     1 |        18 |                557 |      2 |
+| J. Bus. Econ.                       |   10 |     1 |        19 |                489 |      2 |
+| J. Financ. Econ.                    |   11 |     1 |        20 |                390 |      2 |
+| New Polit. Econ.                    |   12 |     1 |        21 |                314 |      2 |
+| Small Bus. Econ.                    |   13 |     1 |        22 |                258 |      2 |
+| Busin. Info. Sys. Eng.              |   14 |     1 |        23 |                253 |      2 |
+| J Network Comput Appl               |   15 |     1 |        24 |                238 |      2 |
+| J. Innov. Manag.                    |   16 |     1 |        25 |                226 |      2 |
+| Int J Inf Manage                    |   17 |     1 |        26 |                180 |      2 |
+| Northwest. J. Intl. Law Bus.        |   18 |     1 |        27 |                178 |      2 |
+| Symmetry                            |   19 |     1 |        28 |                176 |      2 |
+| J Strategic Inform Syst             |   20 |     1 |        29 |                160 |      2 |
+| Telecommun Policy                   |   21 |     1 |        30 |                146 |      2 |
+| Account. Financ.                    |   22 |     1 |        31 |                145 |      2 |
+| Int. J. Appl. Eng. Res.             |   23 |     1 |        32 |                125 |      2 |
+| Int. J. Hum.-Comput. Interact.      |   24 |     1 |        33 |                121 |      3 |
+| Inf. Comput. Security               |   25 |     1 |        34 |                104 |      3 |
+| Elect. Commer. Res. Appl.           |   26 |     1 |        35 |                102 |      3 |
+| Risk Manage.                        |   27 |     1 |        36 |                102 |      3 |
+| J.  Financ. Regul.                  |   28 |     1 |        37 |                101 |      3 |
+| FinTech in Ger.                     |   29 |     1 |        38 |                100 |      3 |
+| China Econ. J.                      |   30 |     1 |        39 |                 96 |      3 |
+| Contemp. Stud. Econ. Financ. Anal.  |   31 |     1 |        40 |                 96 |      3 |
+| Energy Procedia                     |   32 |     1 |        41 |                 90 |      3 |
+| Lect. Notes Comput. Sci.            |   33 |     1 |        42 |                 85 |      3 |
+| Hum.-centric Comput. Inf. Sci.      |   34 |     1 |        43 |                 82 |      3 |
+| Vanderbilt Law Rev.                 |   35 |     1 |        44 |                 81 |      3 |
+| London Bus. Sch. Rev.               |   36 |     1 |        45 |                 76 |      3 |
+| Int. Conf. Inf. Syst., ICIS         |   37 |     1 |        46 |                 75 |      3 |
+| Eur. Res. Stud.                     |   38 |     1 |        47 |                 67 |      3 |
+| Georget. Law J.                     |   39 |     1 |        48 |                 67 |      3 |
+| Curr. Opin. Environ. Sustainability |   40 |     1 |        49 |                 66 |      3 |
+| Foresight                           |   41 |     1 |        50 |                 65 |      3 |
+
 
 >>> bradford.fig_.write_html("sphinx/_static/analyze/contributors/sources/bradford_law.html")
 
@@ -156,9 +153,9 @@ def __zones(
         **filters,
     )
 
-    indicators = records[["source_abbr", "global_citations"]]
+    indicators = records[["abbr_source_title", "global_citations"]]
     indicators = indicators.assign(OCC=1)
-    indicators = indicators.groupby(["source_abbr"], as_index=False).sum()
+    indicators = indicators.groupby(["abbr_source_title"], as_index=False).sum()
     indicators = indicators.sort_values(by=["OCC", "global_citations"], ascending=False)
     indicators = indicators.assign(cum_OCC=indicators["OCC"].cumsum())
     indicators = indicators.assign(no=1)
@@ -167,9 +164,11 @@ def __zones(
     cum_occ = indicators["OCC"].sum()
     indicators = indicators.reset_index(drop=True)
     indicators = indicators.assign(zone=3)
-    indicators.zone = indicators.zone.where(indicators.cum_OCC >= int(cum_occ * 2 / 3), 2)
+    indicators.zone = indicators.zone.where(
+        indicators.cum_OCC >= int(cum_occ * 2 / 3), 2
+    )
     indicators.zone = indicators.zone.where(indicators.cum_OCC >= int(cum_occ / 3), 1)
-    indicators = indicators.set_index("source_abbr")
+    indicators = indicators.set_index("abbr_source_title")
     indicators = indicators[["no", "OCC", "cum_OCC", "global_citations", "zone"]]
 
     return indicators
@@ -217,7 +216,9 @@ def __table(
         for a in sources["Acum Num Sources"]
     ]
 
-    sources["Tot Documents published"] = sources["Num Sources"] * sources["Documents published"]
+    sources["Tot Documents published"] = (
+        sources["Num Sources"] * sources["Documents published"]
+    )
     sources["Num Documents"] = sources["Tot Documents published"].cumsum()
     sources["Tot Documents"] = sources["Num Documents"].map(
         lambda w: str(round(w / sources["Num Documents"].max() * 100, 2)) + " %"

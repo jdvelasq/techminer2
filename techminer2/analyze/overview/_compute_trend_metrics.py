@@ -19,32 +19,31 @@
 >>> print(metrics.to_markdown())
 |   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
 |-------:|------:|----------:|------------------:|-------------------:|----------------:|------------------------:|-----------------------:|---------------------------------:|-----------------------:|----------------------:|--------------------------------:|
-|   2016 |     1 |         1 |                 8 |                 30 |               8 |                30       |                     30 |                             3.75 |                8       |                     8 |                            1    |
-|   2017 |     4 |         5 |                19 |                162 |               7 |                40.5     |                    192 |                             5.79 |                4.75    |                    27 |                            0.68 |
-|   2018 |     3 |         8 |                30 |                182 |               6 |                60.6667  |                    374 |                            10.11 |               10       |                    57 |                            1.67 |
-|   2019 |     6 |        14 |                20 |                 47 |               5 |                 7.83333 |                    421 |                             1.57 |                3.33333 |                    77 |                            0.67 |
-|   2020 |    14 |        28 |                24 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                1.71429 |                   101 |                            0.43 |
-|   2021 |    10 |        38 |                 9 |                 27 |               3 |                 2.7     |                    541 |                             0.9  |                0.9     |                   110 |                            0.3  |
-|   2022 |    12 |        50 |                 3 |                 22 |               2 |                 1.83333 |                    563 |                             0.92 |                0.25    |                   113 |                            0.12 |
-|   2023 |     2 |        52 |                 0 |                  0 |               1 |                 0       |                    563 |                             0    |                0       |                   113 |                            0    |
+|   2015 |     1 |         1 |                 4 |                 76 |               5 |                  76     |                     76 |                            15.2  |              4         |                     4 |                            0.8  |
+|   2016 |     7 |         8 |                 9 |                870 |               4 |                 124.286 |                    946 |                            31.07 |              1.28571   |                    13 |                            0.32 |
+|   2017 |    10 |        18 |                11 |               1815 |               3 |                 181.5   |                   2761 |                            60.5  |              1.1       |                    24 |                            0.37 |
+|   2018 |    17 |        35 |                14 |               3366 |               2 |                 198     |                   6127 |                            99    |              0.823529  |                    38 |                            0.41 |
+|   2019 |    15 |        50 |                 1 |               2008 |               1 |                 133.867 |                   8135 |                           133.87 |              0.0666667 |                    39 |                            0.07 |
 
 
 
 
 >>> print(metrics.T.to_markdown())
-|                                |   2016 |   2017 |     2018 |      2019 |      2020 |   2021 |      2022 |   2023 |
-|:-------------------------------|-------:|-------:|---------:|----------:|----------:|-------:|----------:|-------:|
-| OCC                            |   1    |   4    |   3      |   6       |  14       |   10   |  12       |      2 |
-| cum_OCC                        |   1    |   5    |   8      |  14       |  28       |   38   |  50       |     52 |
-| local_citations                |   8    |  19    |  30      |  20       |  24       |    9   |   3       |      0 |
-| global_citations               |  30    | 162    | 182      |  47       |  93       |   27   |  22       |      0 |
-| citable_years                  |   8    |   7    |   6      |   5       |   4       |    3   |   2       |      1 |
-| mean_global_citations          |  30    |  40.5  |  60.6667 |   7.83333 |   6.64286 |    2.7 |   1.83333 |      0 |
-| cum_global_citations           |  30    | 192    | 374      | 421       | 514       |  541   | 563       |    563 |
-| mean_global_citations_per_year |   3.75 |   5.79 |  10.11   |   1.57    |   1.66    |    0.9 |   0.92    |      0 |
-| mean_local_citations           |   8    |   4.75 |  10      |   3.33333 |   1.71429 |    0.9 |   0.25    |      0 |
-| cum_local_citations            |   8    |  27    |  57      |  77       | 101       |  110   | 113       |    113 |
-| mean_local_citations_per_year  |   1    |   0.68 |   1.67   |   0.67    |   0.43    |    0.3 |   0.12    |      0 |
+|                                |   2015 |      2016 |    2017 |        2018 |         2019 |
+|:-------------------------------|-------:|----------:|--------:|------------:|-------------:|
+| OCC                            |    1   |   7       |   10    |   17        |   15         |
+| cum_OCC                        |    1   |   8       |   18    |   35        |   50         |
+| local_citations                |    4   |   9       |   11    |   14        |    1         |
+| global_citations               |   76   | 870       | 1815    | 3366        | 2008         |
+| citable_years                  |    5   |   4       |    3    |    2        |    1         |
+| mean_global_citations          |   76   | 124.286   |  181.5  |  198        |  133.867     |
+| cum_global_citations           |   76   | 946       | 2761    | 6127        | 8135         |
+| mean_global_citations_per_year |   15.2 |  31.07    |   60.5  |   99        |  133.87      |
+| mean_local_citations           |    4   |   1.28571 |    1.1  |    0.823529 |    0.0666667 |
+| cum_local_citations            |    4   |  13       |   24    |   38        |   39         |
+| mean_local_citations_per_year  |    0.8 |   0.32    |    0.37 |    0.41     |    0.07      |
+
+
 
 
 """
@@ -93,19 +92,29 @@ def compute_trend_metrics(
     records = records.assign(citable_years=current_year - records.index + 1)
 
     if "global_citations" in records.columns:
-        records = records.assign(mean_global_citations=records.global_citations / records.OCC)
+        records = records.assign(
+            mean_global_citations=records.global_citations / records.OCC
+        )
         records = records.assign(cum_global_citations=records.global_citations.cumsum())
         records = records.assign(
-            mean_global_citations_per_year=records.mean_global_citations / records.citable_years
+            mean_global_citations_per_year=records.mean_global_citations
+            / records.citable_years
         )
-        records.mean_global_citations_per_year = records.mean_global_citations_per_year.round(2)
+        records.mean_global_citations_per_year = (
+            records.mean_global_citations_per_year.round(2)
+        )
 
     if "local_citations" in records.columns:
-        records = records.assign(mean_local_citations=records.local_citations / records.OCC)
+        records = records.assign(
+            mean_local_citations=records.local_citations / records.OCC
+        )
         records = records.assign(cum_local_citations=records.local_citations.cumsum())
         records = records.assign(
-            mean_local_citations_per_year=records.mean_local_citations / records.citable_years
+            mean_local_citations_per_year=records.mean_local_citations
+            / records.citable_years
         )
-        records.mean_local_citations_per_year = records.mean_local_citations_per_year.round(2)
+        records.mean_local_citations_per_year = (
+            records.mean_local_citations_per_year.round(2)
+        )
 
     return records

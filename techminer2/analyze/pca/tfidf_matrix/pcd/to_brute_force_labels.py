@@ -51,7 +51,7 @@ To Brute Force Labels
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )  # doctest: +ELLIPSIS
-{'FINANCIAL_TECHNOLOGY 04:0551': 0, 'DIGITAL 03:0434': 0, ...
+{'FINANCIAL_TECHNOLOGY 04:0551': 0, 'DIGITALIZATION 03:0434': 0, ...
 
 """
 from typing import Literal

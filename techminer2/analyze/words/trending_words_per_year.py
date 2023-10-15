@@ -30,13 +30,13 @@ Trending Words per Year
 
 
 >>> words.df_.head()
-year                               OCC  year_q1  year_med  ...  rn   height  width
-author_keywords                                            ...                    
-CORPORATE_SOCIAL_RESPONSIBILITIES    1     2017      2017  ...   0  0.15000      1
-CREDIT                               1     2017      2017  ...   1  0.15000      1
-SMART_CONTRACT                       2     2017      2018  ...   1  0.18037      2
-BUSINESS_MODELS                      1     2018      2018  ...   2  0.15000      1
-FUTURE_RESEARCH_DIRECTION            1     2018      2018  ...   3  0.15000      1
+year              OCC  year_q1  year_med  ...  rn    height  width
+author_keywords                           ...                     
+RESEARCHERS         1     2016      2016  ...   4  0.150000      1
+CONTENT_ANALYSIS    2     2016      2016  ...   2  0.177333      1
+POPULAR_PRESS       2     2016      2016  ...   3  0.177333      1
+DIGITALIZATION      3     2016      2016  ...   0  0.204667      1
+TECHNOLOGIES        2     2016      2016  ...   1  0.177333      2
 <BLANKLINE>
 [5 rows x 8 columns]
 
@@ -172,14 +172,20 @@ def trending_words_per_year(
     words_by_year["year_med"] = year_med
     words_by_year["year_q3"] = year_q3
 
-    words_by_year = words_by_year.assign(OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1))
+    words_by_year = words_by_year.assign(
+        OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1)
+    )
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = global_indicators_by_field(field, root_dir=root_dir).global_citations
+    global_citations = global_indicators_by_field(
+        field, root_dir=root_dir
+    ).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
-    words_by_year = words_by_year.assign(global_citations=words_by_year.index.map(word2citation))
+    words_by_year = words_by_year.assign(
+        global_citations=words_by_year.index.map(word2citation)
+    )
 
     words_by_year = words_by_year.sort_values(
         by=["year_med", "OCC", "global_citations"],
@@ -197,7 +203,9 @@ def trending_words_per_year(
     words_by_year = words_by_year.assign(
         height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
     )
-    words_by_year = words_by_year.assign(width=words_by_year.year_q3 - words_by_year.year_q1 + 1)
+    words_by_year = words_by_year.assign(
+        width=words_by_year.year_q3 - words_by_year.year_q1 + 1
+    )
 
     # -----------------------------------------------------------------------------------
     # Reordeer the terms with the aim of improving the visualization

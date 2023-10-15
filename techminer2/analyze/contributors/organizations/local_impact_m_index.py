@@ -37,18 +37,18 @@ Local Impact --- M-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| organizations                     |   h_index |   g_index |   m_index |
-|:----------------------------------|----------:|----------:|----------:|
-| Ahlia Univ (BHR)                  |         2 |         2 |       0.5 |
-| Coventry Univ (GBR)               |         2 |         1 |       0.5 |
-| Univ of Westminster (GBR)         |         2 |         1 |       0.5 |
-| Dublin City Univ (IRL)            |         2 |         1 |       0.5 |
-| Hebei Univ of Technol (CHN)       |         1 |         1 |       0.5 |
-| Jiangsu Univ (CHN)                |         1 |         1 |       0.5 |
-| Shanghai Univ (CHN)               |         1 |         1 |       0.5 |
-| Tokai Univ (JPN)                  |         1 |         1 |       0.5 |
-| Tongji Univ (CHN)                 |         1 |         1 |       0.5 |
-| 3PB, London, United Kingdom (GBR) |         1 |         1 |       0.5 |
+| organizations                                          |   h_index |   g_index |   m_index |
+|:-------------------------------------------------------|----------:|----------:|----------:|
+| Baylor Univ. (USA)                                     |         2 |         2 |       2   |
+| Federal Reserve Bank of Philadelphia (USA)             |         3 |         3 |       1.5 |
+| CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU) |         1 |         1 |       1   |
+| SKEMA Bus. Sch. (FRA)                                  |         1 |         1 |       1   |
+| Univ. of Bremen (DEU)                                  |         1 |         1 |       1   |
+| Univ. of Lille Nord de France (FRA)                    |         1 |         1 |       1   |
+| Federal Reserve Bank of Chicago (USA)                  |         2 |         2 |       1   |
+| Georgia State Univ. (USA)                              |         1 |         1 |       1   |
+| Univ. of Zaragoza (ESP)                                |         1 |         1 |       1   |
+| Columbia Univ. (USA)                                   |         1 |         1 |       1   |
 
 
 

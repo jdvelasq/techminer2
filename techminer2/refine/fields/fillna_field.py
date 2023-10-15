@@ -9,8 +9,8 @@
 Fill NA
 ===============================================================================
 
->>> from techminer2.refine.fields import fillna
->>> fillna(  # doctest: +SKIP 
+>>> from techminer2.refine.fields import fillna_field
+>>> fillna_field(  # doctest: +SKIP 
 ...     fill_field="author_keywords",
 ...     with_field="index_keywords",
 ...     #

@@ -8,11 +8,11 @@
 # pylint: disable=too-many-branches
 """
 
->>> from techminer2.refine._find_string import _find_string
+>>> from techminer2.refine.thesaurus._find_string import _find_string
 >>> _find_string(
 ...     #
 ...     # THESAURUS FILE:
-...     thesaurus_file="words.txt",
+...     thesaurus_file="thesauri/words.the.txt",
 ...     #
 ...     # SEARCH PARAMS:
 ...     contains='ARTIFICIAL_INTELLIGENCE',
@@ -22,7 +22,7 @@
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file data/regtech/words.txt has been reordered.
+--INFO-- The file example/thesauri/words.the.txt has been reordered.
 
 """
 import os.path
@@ -35,7 +35,7 @@ from ..._common.thesaurus_lib import load_system_thesaurus_as_dict
 def _find_string(
     #
     # THESAURUS FILE:
-    thesaurus_file="words.txt",
+    thesaurus_file="thesauri/words.the.txt",
     #
     # SEARCH PARAMS:
     contains=None,

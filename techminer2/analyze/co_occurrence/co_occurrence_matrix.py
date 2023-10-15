@@ -37,36 +37,33 @@ Co-occurrence Matrix
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_
-author_keywords     REGTECH 28:329  ...  REPORTING 02:001
-authors                             ...                  
-Arner DW 3:185                   2  ...                 0
-Buckley RP 3:185                 2  ...                 0
-Barberis JN 2:161                1  ...                 0
-Butler T 2:041                   2  ...                 0
-Hamdan A 2:018                   0  ...                 0
-Turki M 2:018                    0  ...                 0
-Lin W 2:017                      2  ...                 0
-Singh C 2:017                    2  ...                 0
-Brennan R 2:014                  2  ...                 0
-Crane M 2:014                    2  ...                 0
-Ryan P 2:014                     2  ...                 0
-Sarea A 2:012                    0  ...                 0
-Grassi L 2:002                   2  ...                 1
-Lanfranchi D 2:002               2  ...                 1
-Arman AA 2:000                   2  ...                 0
+author_keywords       FINTECH 31:5168  ...  P2P_LENDING 02:0161
+authors                                ...                     
+Jagtiani J. 3:0317                  3  ...                    2
+Gomber P. 2:1065                    1  ...                    0
+Hornuf L. 2:0358                    2  ...                    0
+Gai K. 2:0323                       2  ...                    0
+Qiu M. 2:0323                       2  ...                    0
+Sun X./3 2:0323                     2  ...                    0
+Lemieux C. 2:0253                   2  ...                    1
+Dolata M. 2:0181                    2  ...                    0
+Schwabe G. 2:0181                   2  ...                    0
+Zavolokina L. 2:0181                2  ...                    0
 <BLANKLINE>
-[15 rows x 23 columns]
+[10 rows x 14 columns]
+
 
 >>> matrix.heat_map_ # doctest: +ELLIPSIS
 <pandas.io.formats.style.Styler object ...
 
 >>> matrix.list_cells_.head()
-              row             column  matrix_value
-0  REGTECH 28:329     Arner DW 3:185             2
-1  REGTECH 28:329   Buckley RP 3:185             2
-2  REGTECH 28:329  Barberis JN 2:161             1
-3  REGTECH 28:329     Butler T 2:041             2
-4  REGTECH 28:329     Hamdan A 2:018             0
+               row              column  matrix_value
+0  FINTECH 31:5168  Jagtiani J. 3:0317             3
+1  FINTECH 31:5168    Gomber P. 2:1065             1
+2  FINTECH 31:5168    Hornuf L. 2:0358             2
+3  FINTECH 31:5168       Gai K. 2:0323             2
+4  FINTECH 31:5168       Qiu M. 2:0323             2
+
 
 >>> print(matrix.prompt_) # doctest: +ELLIPSIS
 Your task is ...
@@ -98,28 +95,30 @@ Your task is ...
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_
-author_keywords                 REGTECH 28:329  ...  RISK_MANAGEMENT 03:014
-author_keywords                                 ...                        
-REGTECH 28:329                              28  ...                       2
-FINTECH 12:249                              12  ...                       2
-REGULATORY_TECHNOLOGY 07:037                 2  ...                       2
-COMPLIANCE 07:030                            7  ...                       1
-REGULATION 05:164                            4  ...                       2
-ANTI_MONEY_LAUNDERING 05:034                 1  ...                       0
-FINANCIAL_SERVICES 04:168                    3  ...                       0
-FINANCIAL_REGULATION 04:035                  2  ...                       0
-ARTIFICIAL_INTELLIGENCE 04:023               2  ...                       1
-RISK_MANAGEMENT 03:014                       2  ...                       3
+author_keywords                          FINTECH 31:5168  ...  DIGITALIZATION 03:0434
+author_keywords                                           ...                        
+FINTECH 31:5168                                       31  ...                       3
+INNOVATION 07:0911                                     5  ...                       3
+FINANCIAL_SERVICES 04:0667                             3  ...                       0
+FINANCIAL_TECHNOLOGY 04:0551                           2  ...                       1
+MOBILE_FINTECH_PAYMENT_SERVICES 04:0485                3  ...                       0
+BUSINESS 03:0896                                       3  ...                       0
+SHADOW_BANKING 03:0643                                 3  ...                       0
+FINANCIAL_INCLUSION 03:0590                            3  ...                       0
+CASE_STUDIES 03:0442                                   3  ...                       0
+DIGITALIZATION 03:0434                                 3  ...                       3
 <BLANKLINE>
 [10 rows x 10 columns]
 
+
+
 >>> matrix.list_cells_.head()
-              row                        column  matrix_value
-0  REGTECH 28:329                REGTECH 28:329            28
-1  REGTECH 28:329                FINTECH 12:249            12
-2  REGTECH 28:329  REGULATORY_TECHNOLOGY 07:037             2
-3  REGTECH 28:329             COMPLIANCE 07:030             7
-4  REGTECH 28:329             REGULATION 05:164             4
+               row                                   column  matrix_value
+0  FINTECH 31:5168                          FINTECH 31:5168            31
+1  FINTECH 31:5168                       INNOVATION 07:0911             5
+2  FINTECH 31:5168               FINANCIAL_SERVICES 04:0667             3
+3  FINTECH 31:5168             FINANCIAL_TECHNOLOGY 04:0551             2
+4  FINTECH 31:5168  MOBILE_FINTECH_PAYMENT_SERVICES 04:0485             3
 
 >>> print(matrix.prompt_) # doctest: +ELLIPSIS
 Your task is ...
@@ -473,8 +472,12 @@ def global_co_occurrence_matrix_list(
         matrix_list = matrix_list[~matrix_list[name].isin(stopwords)]
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
+    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
+        "sum"
+    )
 
-    matrix_list = matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
+    matrix_list = matrix_list.sort_values(
+        ["OCC", "row", "column"], ascending=[False, True, True]
+    )
 
     return matrix_list

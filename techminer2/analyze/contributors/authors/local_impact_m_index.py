@@ -38,19 +38,18 @@ Local Impact --- M-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown()) 
-| authors   |   h_index |   g_index |   m_index |
-|:----------|----------:|----------:|----------:|
-| Hamdan A  |         2 |         2 |       0.5 |
-| Turki M   |         2 |         2 |       0.5 |
-| Lin W     |         2 |         1 |       0.5 |
-| Singh C   |         2 |         1 |       0.5 |
-| Brennan R |         2 |         1 |       0.5 |
-| Crane M   |         2 |         1 |       0.5 |
-| Ryan P    |         2 |         1 |       0.5 |
-| Gong X    |         1 |         1 |       0.5 |
-| Muganyi T |         1 |         1 |       0.5 |
-| Sun H-P   |         1 |         1 |       0.5 |
-
+| authors           |   h_index |   g_index |   m_index |
+|:------------------|----------:|----------:|----------:|
+| Jagtiani J.       |         3 |         3 |       1.5 |
+| Haddad C.         |         1 |         1 |       1   |
+| Lemieux C.        |         2 |         2 |       1   |
+| Chen M.A.         |         1 |         1 |       1   |
+| Wu Q.             |         1 |         1 |       1   |
+| Yang B.           |         1 |         1 |       1   |
+| Casaló-Ariño L.V. |         1 |         1 |       1   |
+| Flavián C.        |         1 |         1 |       1   |
+| Gracia D.B.       |         1 |         1 |       1   |
+| Goldstein I.      |         1 |         1 |       1   |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/m_index_chart.html")

@@ -40,13 +40,13 @@ Performance Metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.head().to_markdown())
-| author_keywords       |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:----------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| REGTECH               |          1 |          1 |          1 |    28 |                329 |                74 |         9 |         4 |      1.29 |
-| FINTECH               |          2 |          2 |          2 |    12 |                249 |                49 |         5 |         3 |      0.83 |
-| REGULATORY_TECHNOLOGY |          3 |          8 |          9 |     7 |                 37 |                10 |         4 |         2 |      1    |
-| COMPLIANCE            |          4 |         12 |         10 |     7 |                 30 |                 9 |         3 |         2 |      0.6  |
-| REGULATION            |          5 |          4 |          3 |     5 |                164 |                22 |         2 |         2 |      0.33 |
+| author_keywords                 |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:--------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| FINTECH                         |          1 |          1 |          1 |    31 |               5168 |                27 |        31 |        12 |      7.75 |
+| INNOVATION                      |          2 |          2 |          2 |     7 |                911 |                 5 |         7 |         7 |      1.75 |
+| FINANCIAL_SERVICES              |          3 |          5 |         40 |     4 |                667 |                 1 |         4 |         4 |      1    |
+| FINANCIAL_TECHNOLOGY            |          4 |         12 |         41 |     4 |                551 |                 1 |         4 |         4 |      1.33 |
+| MOBILE_FINTECH_PAYMENT_SERVICES |          5 |         17 |         42 |     4 |                485 |                 1 |         4 |         4 |      1    |
 
 
 
@@ -95,14 +95,13 @@ Your task is ...
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.head().to_markdown())
-| author_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
-|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| FINANCIAL_SERVICES      |          7 |     4 |             3 |                   1 |               25    |
-| FINANCIAL_REGULATION    |          8 |     4 |             2 |                   2 |               50    |
-| ARTIFICIAL_INTELLIGENCE |          9 |     4 |             3 |                   1 |               25    |
-| RISK_MANAGEMENT         |         10 |     3 |             2 |                   1 |               33.33 |
-| INNOVATION              |         11 |     3 |             2 |                   1 |               33.33 |
-
+| author_keywords                 |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:--------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINANCIAL_SERVICES              |          3 |     4 |             1 |                   3 |                  75 |
+| FINANCIAL_TECHNOLOGY            |          4 |     4 |             1 |                   3 |                  75 |
+| MOBILE_FINTECH_PAYMENT_SERVICES |          5 |     4 |             1 |                   3 |                  75 |
+| BUSINESS                        |          6 |     3 |             0 |                   3 |                 100 |
+| SHADOW_BANKING                  |          7 |     3 |             0 |                   3 |                 100 |
 
 
 """
@@ -294,7 +293,9 @@ def ___table(
             )
 
             custom_items = custom_items_occ[:]
-            custom_items += [item for item in custom_items_gc if item not in custom_items_occ]
+            custom_items += [
+                item for item in custom_items_gc if item not in custom_items_occ
+            ]
 
         else:
             #
@@ -400,10 +401,14 @@ def _fig(
     if metric == "word_trends":
         metric = "OCC"
 
-    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
+    metric_label = (
+        metric.replace("_", " ").upper() if metric_label is None else metric_label
+    )
 
     field_label = (
-        field.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
+        field.replace("_", " ").upper() + " RANKING"
+        if field_label is None
+        else field_label
     )
 
     table = data_frame.copy()

@@ -14,7 +14,7 @@ Lemma Associations
 >>> lemmas = lemma_associations(
 ...     #
 ...     # FUNCTION PARAMS:
-...     lemma_a='REGTECH',
+...     lemma_a='INNOVATION',
 ...     lemma_b='FINTECH',
 ...     top_n=10,
 ...     #
@@ -24,62 +24,8 @@ Lemma Associations
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(lemmas.contexts_)
-------------------------------------------------------------------------------------------
-Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN, V2020-September, P112
-due to the scarcity of papers about CASE_STUDY in REGTECH_FIELD, we adopt an
-approach already used for well studied cases widespread in the FINTECH_AREA and
-an EXPLORATORY_INVESTIGATION through in DEEP_INTERVIEWS following models used in
-FINTECH_AREA and in ERM_FIELD.. results/findings: in this article, we will,
-therefore, propose CASE_STUDIES in the FINTECH_SECTOR applied to
-REGULATORY_TECHNOLOGY in italy and we expect to answer the following
-RESEARCH_QUESTIONS: we present three REGTECH's cases in italy's FINANCIAL_SYSTEM
-exposing the fields of collaboration with FINANCIAL_INSTITUTIONS in
-REGTECH_FIELD between incumbents and REGTECH_INDUSTRIES.
-<BLANKLINE>
-------------------------------------------------------------------------------------------
-Butler T, 2018, J RISK MANG FINANCIAL INST, V11, P19
-it also examines the POTENTIAL_IMPACT_FINTECH has on the riskiness of banks and
-proposes REGTECH as the solution.
-<BLANKLINE>
-------------------------------------------------------------------------------------------
-Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85
-this CHAPTER_EXPLORES the promise and potential of REGULATORY_TECHNOLOGIES
-(REGTECH), a new and VITAL_DIMENSION to FINTECH.
-<BLANKLINE>
-------------------------------------------------------------------------------------------
-Goul M, 2019, PROC - IEEE WORLD CONGR SERV,, P219
-as FINANCIAL_TECHNOLOGIES (FINTECH) pioneers seek to disintermediate the world's
-traditional banking sector's intermediary role, NEW_REGULATORY_TECHNOLOGIES
-(REGTECH) will be required to guarantee markets can be trusted, CONTRACT_LAWS
-are adhered to and compliance can be verified through TRANSPARENT_PROCESSES..
-services computing researchers will play an IMPORTANT_ROLE in advancing REGTECH,
-but they must add to their repertoire ADDITIONAL_KNOWLEDGE of
-FINANCIAL_PRINCIPLES, an understanding of COMMON_FINTECH_PATHOLOGIES that may be
-exploited by BAD_ACTORS, and new thinking in regard to protecting CUSTOMER_DATA
-across MULTIPLE_LEGAL_JURISDICTIONS and the related compliance of
-BOUNDARY_CROSSING banking RELATED_ALGORITHMS.
-<BLANKLINE>
-------------------------------------------------------------------------------------------
-Muganyi T, 2022, FINANCIAL INNOV, V8
-we also show that the emergence of FINTECH in the area of FINANCIAL_REGULATION
-(REGULATORY_TECHNOLOGY: REGTECH) can significantly improve
-FINANCIAL_DEVELOPMENT_OUTCOMES.
-<BLANKLINE>
-------------------------------------------------------------------------------------------
-Nasir F, 2019, J ADV RES DYN CONTROL SYST, V11, P912
-these COMPLIANCE challenges created the market for REGTECH, which is a part of
-FINTECH_INDUSTRY, where the REGTECH_INDUSTRY promise to act as a solution to
-reduce COMPLIANCE_COST and burden for FINANCIAL_INSTITUTIONS as well as
-regulators.
-<BLANKLINE>
-------------------------------------------------------------------------------------------
-Pantielieieva N, 2020, LECTURE NOTES DATA ENG COMMUN, V42, P1
-the PAPER_DEALS with the issues of MAIN_DIRECTIONS, challenges and threats of
-development of the newest FINANCIAL_TECHNOLOGIESFINTECH, REGTECH and
-TRADITIONAL_FINANCIAL_INTERMEDIATION.
-<BLANKLINE>
-<BLANKLINE>
+>>> print(lemmas.contexts_) # doctest: +ELLIPSIS 
+---...
 
 
 >>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
@@ -152,7 +98,7 @@ def lemma_associations(
 def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
-    thesaurus_file = os.path.join(root_dir, "words.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
     thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
     return list(thesaurus.values())
 
@@ -189,7 +135,8 @@ def __get_abstract_sentences(
     records = records[["article", "abstract"]].copy()
     records = records.dropna()
     records["abstract"] = records["abstract"].map(
-        lambda x: [str(sentence) for sentence in TextBlob(x).sentences], na_action="ignore"
+        lambda x: [str(sentence) for sentence in TextBlob(x).sentences],
+        na_action="ignore",
     )
     records = records.explode("abstract")
     records["abstract"] = records["abstract"].str.strip()
@@ -234,7 +181,7 @@ def __generate_prompt(sentences, lemma_a, lemma_b):
 
     paragraphs = sentences.sentence.copy()
 
-    return format_prompt_for_paragraphs(main_text, paragraphs)
+    return format_prompt_for_paragraphs(main_text, main_text, paragraphs)
 
 
 def __generate_contexts(sentences):

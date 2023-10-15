@@ -38,13 +38,13 @@ Performance Metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.head().to_markdown()) 
-| countries      |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:---------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| United Kingdom |          1 |          1 |          1 |     7 |                199 |                35 |         4 |         3 |      0.67 |
-| Australia      |          2 |          2 |          2 |     7 |                199 |                31 |         4 |         3 |      0.57 |
-| United States  |          3 |          4 |          5 |     6 |                 59 |                19 |         3 |         2 |      0.38 |
-| Ireland        |          4 |          5 |          4 |     5 |                 55 |                22 |         3 |         2 |      0.5  |
-| China          |          5 |          9 |         10 |     5 |                 27 |                 5 |         3 |         2 |      0.43 |
+| countries     |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:--------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| United States |          1 |          1 |          2 |    16 |               3189 |                 8 |        16 |        10 |      5.33 |
+| China         |          2 |          4 |          4 |     8 |               1085 |                 4 |         8 |         8 |      2    |
+| Germany       |          3 |          2 |          1 |     7 |               1814 |                11 |         7 |         7 |      2.33 |
+| South Korea   |          4 |          3 |          3 |     6 |               1192 |                 8 |         6 |         6 |      1.5  |
+| Australia     |          5 |          5 |          7 |     5 |                783 |                 3 |         5 |         5 |      1.67 |
 
     
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/countries/most_relevant_chart.html")

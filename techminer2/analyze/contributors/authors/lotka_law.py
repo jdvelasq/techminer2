@@ -29,9 +29,9 @@ Lotka's Law
 >>> print(lotka.df_.to_markdown())
 |    |   Documents Written |   Num Authors |   Proportion of Authors |   Theoretical Num Authors |   Prop Theoretical Authors |
 |---:|--------------------:|--------------:|------------------------:|--------------------------:|---------------------------:|
-|  0 |                   1 |            87 |                   0.853 |                    87     |                      0.735 |
-|  1 |                   2 |            13 |                   0.127 |                    21.75  |                      0.184 |
-|  2 |                   3 |             2 |                   0.02  |                     9.667 |                      0.082 |
+|  0 |                   1 |           105 |                   0.913 |                   105     |                      0.735 |
+|  1 |                   2 |             9 |                   0.078 |                    26.25  |                      0.184 |
+|  2 |                   3 |             1 |                   0.009 |                    11.667 |                      0.082 |
 
 
 """
@@ -162,7 +162,9 @@ def __core_authors_table(
     indicators = indicators.reset_index(drop=True)
     indicators = indicators[["Documents Written", "Num Authors"]]
     indicators["Proportion of Authors"] = (
-        indicators["Num Authors"].map(lambda x: x / indicators["Num Authors"].sum()).round(3)
+        indicators["Num Authors"]
+        .map(lambda x: x / indicators["Num Authors"].sum())
+        .round(3)
     )
 
     #
@@ -170,7 +172,9 @@ def __core_authors_table(
     #
     total_authors = indicators["Num Authors"].max()
     indicators["Theoretical Num Authors"] = (
-        indicators["Documents Written"].map(lambda x: total_authors / float(x * x)).round(3)
+        indicators["Documents Written"]
+        .map(lambda x: total_authors / float(x * x))
+        .round(3)
     )
     total_theoretical_num_authors = indicators["Theoretical Num Authors"].sum()
     indicators["Prop Theoretical Authors"] = (

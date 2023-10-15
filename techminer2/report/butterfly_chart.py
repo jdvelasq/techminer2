@@ -15,8 +15,8 @@ Butterfly Chart
 >>> chart = butterfly_chart(
 ...     #
 ...     # FUNCTION PARAMS:
-...     item_a="ARTIFICIAL_INTELLIGENCE",
-...     item_b="REGTECH",
+...     item_a="FINTECH",
+...     item_b="INNOVATION",
 ...     columns='author_keywords',
 ...     rows=None,
 ...     #

@@ -24,13 +24,13 @@ Trending Words per Year
 ...     cited_by_filter=None,
 ... )
 >>> words.df_.head()
-year                                        OCC  year_q1  ...  height  width
-index_keywords                                            ...               
-CUSTOMER_REQUIREMENTS                         1     2017  ...    0.15      1
-ELECTRONIC_DOCUMENT_IDENTIFICATION_SYSTEMS    1     2017  ...    0.15      1
-FINANCIAL_SERVICES                            1     2017  ...    0.15      1
-REAL_TIME_MONITORING                          1     2017  ...    0.15      1
-REGULATORY_REGIME                             1     2017  ...    0.15      1
+year                                       OCC  year_q1  ...  height  width
+index_keywords                                           ...               
+ACTOR_NETWORK_THEORY                         1     2016  ...    0.15      1
+CONVERGENCE_SERVICES                         1     2016  ...    0.15      1
+DISCUSSES_POLICY_IMPLICATIONS                1     2016  ...    0.15      1
+HISTORICAL_DEVELOPMENT                       1     2016  ...    0.15      1
+INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY    1     2016  ...    0.15      1
 <BLANKLINE>
 [5 rows x 8 columns]
 

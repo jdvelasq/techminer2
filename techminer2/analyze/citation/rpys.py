@@ -26,11 +26,11 @@ RPYS (Reference Publication Year Spectroscopy)
     
 >>> chart.df_.head()
       Num References  Median
-1937               1    -1.0
-1938               0     0.0
-1939               0     0.0
-1940               0     0.0
-1941               0     0.0
+1957               1    -1.0
+1958               0     0.0
+1959               0     0.0
+1960               0     0.0
+1961               0     0.0
 
 
 """
@@ -95,7 +95,9 @@ def __table(
 
     indicator.loc[references_by_year.index, "Num References"] = references_by_year
     indicator = indicator.sort_index(axis=0, ascending=True)
-    indicator["Median"] = indicator["Num References"].rolling(window=5).median().fillna(0)
+    indicator["Median"] = (
+        indicator["Num References"].rolling(window=5).median().fillna(0)
+    )
 
     indicator["Median"] = indicator["Median"] - indicator["Num References"]
     return indicator

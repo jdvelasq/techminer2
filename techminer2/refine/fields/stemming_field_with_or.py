@@ -9,8 +9,8 @@
 Stemming OR
 ===============================================================================
 
->>> from techminer2.refine.fields import stemming_or
->>> stemming_or(  # doctest: +SKIP
+>>> from techminer2.refine.fields import stemming_field_with_or
+>>> stemming_field_with_or(  # doctest: +SKIP
 ...     items="FINANCIAL_TECHNOLOGY",
 ...     source="keywords",
 ...     dest="stemming",
@@ -66,7 +66,9 @@ def _stemming_field_with_or(
         items = [items]
 
     item_blobs = [TextBlob(item.replace("_", " ")) for item in items]
-    stemmed_terms = [[word.stem() for word in item_blob.words] for item_blob in item_blobs]
+    stemmed_terms = [
+        [word.stem() for word in item_blob.words] for item_blob in item_blobs
+    ]
 
     #
     # Collects the terms in all databases to compute the intersection
@@ -118,8 +120,14 @@ def _stemming_field_with_or(
         data[dest] = data[source].copy()
         #
         data[dest] = data[dest].map(lambda x: x.split("; "), na_action="ignore")
-        data[dest] = data[dest].map(lambda x: [y for y in x if y in items], na_action="ignore")
-        data[dest] = data[dest].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
-        data[dest] = data[dest].map(lambda x: "; ".join(x) if isinstance(x, list) else x)
+        data[dest] = data[dest].map(
+            lambda x: [y for y in x if y in items], na_action="ignore"
+        )
+        data[dest] = data[dest].map(
+            lambda x: pd.NA if x == [] else x, na_action="ignore"
+        )
+        data[dest] = data[dest].map(
+            lambda x: "; ".join(x) if isinstance(x, list) else x
+        )
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

@@ -9,13 +9,13 @@
 Misspelling Search
 ===============================================================================
 
->>> from techminer2.refine.words import misspelling_search
+>>> from techminer2.refine.thesaurus.words import misspelling_search
 >>> misspelling_search(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file data/regtech/misspelled.txt has been generated.
+--INFO-- The file example/misspelled.txt has been generated.
 
 """
 import sys
@@ -26,7 +26,7 @@ from textblob import TextBlob
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def misspelling_search(

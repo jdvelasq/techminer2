@@ -29,22 +29,31 @@ Find Similar Phrases
 ... )
 ----------------------------------------------------------------------------------------------------
 SIMILARITY: 1.0
-AR: Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: fintech, regtech, and the reconceptualization of FINANCIAL_REGULATION
+AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+TI: FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
 <BLANKLINE>
 whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY,
-PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY,
-and MARKET_COMPETITION and development) remain, their means of application
-are increasingly inadequate.
+PRUDENTIAL_SAFETY and SOUNDNESS, CONSUMER_PROTECTION and
+MARKET_INTEGRITY, and MARKET_COMPETITION and DEVELOPMENT) remain, their
+MEANS of APPLICATION are increasingly inadequate.
 <BLANKLINE>
 ----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.204
-AR: Pantielieieva N, 2020, LECTURE NOTES DATA ENG COMMUN, V42, P1
-TI: FINTECH, REGTECH and TRADITIONAL_FINANCIAL_INTERMEDIATION: trends and threats for FINANCIAL_STABILITY
+SIMILARITY: 0.252
+AR: Hu Z., 2019, SYMMETRY, V11
+TI: ADOPTION_INTENTION of FINTECH_SERVICES for BANK_USERS: an EMPIRICAL_EXAMINATION with an extended TECHNOLOGY_ACCEPTANCE_MODEL
 <BLANKLINE>
-the spectrum of potential FINANCIAL_STABILITY_RISKS posed by FINTECH, which
-requires systematic monitoring by entities providing FINANCIAL_STABILITY,
-is determined.
+along with the DEVELOPMENT of FINTECH, many SCHOLARS have studied how
+INFORMATION_TECHNOLOGY is applied to FINANCIAL_SERVICES with a FOCUS on
+extended METHODS for APPLICATION.
+<BLANKLINE>
+----------------------------------------------------------------------------------------------------
+SIMILARITY: 0.252
+AR: Jagtiani J., 2018, J ECON BUS, V100, P1
+TI: FINTECH: the IMPACT on CONSUMERS and REGULATORY_RESPONSES
+<BLANKLINE>
+REGULATORS around the GLOBE are working diligently and thoughtfully to
+provide CONSUMER_PROTECTION and to maintain FINANCIAL_STABILITY while at
+the same TIME to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS.
 <BLANKLINE>
 
 
@@ -55,7 +64,6 @@ import re
 import textwrap
 
 import pandas as pd
-from nltk.stem import PorterStemmer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
@@ -64,7 +72,7 @@ from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def find_similar_phrases(
@@ -105,7 +113,9 @@ def find_similar_phrases(
     # Prepare text
     words = extract_descriptors_from_text(text, root_dir)
 
-    df_text = pd.DataFrame(data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns)
+    df_text = pd.DataFrame(
+        data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns
+    )
     for word in words:
         df_text[word] = 1
 
@@ -120,7 +130,7 @@ def find_similar_phrases(
         print("-" * 100)
         print("SIMILARITY: " + str(round(row.similarity, 3)))
         print("AR: " + row.article)
-        print("TI: " + row.title)
+        print("TI: " + row.document_title)
         print()
         print(textwrap.fill(str(row.phrase), width=TEXTWRAP_WIDTH))
         print()
@@ -162,7 +172,7 @@ def extract_keywords(records, root_dir):
     regex = re.compile(r"\b(" + descriptors + r")\b")
     # -----------------------------------------------------------------------------------------
 
-    abstracts = records[["article", "title", "abstract"]].dropna()
+    abstracts = records[["article", "document_title", "abstract"]].dropna()
     abstracts["abstract"] = abstracts["abstract"].apply(
         lambda paragraph: TextBlob(paragraph).sentences
     )
@@ -175,17 +185,23 @@ def extract_keywords(records, root_dir):
     #
     abstracts["abstract"] = abstracts["abstract"].str.lower().str.replace("_", " ")
     abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda sentence: re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), sentence)
+        lambda sentence: re.sub(
+            regex, lambda z: z.group().upper().replace(" ", "_"), sentence
+        )
     )
     abstracts["abstract"] = abstracts["abstract"].apply(
         lambda text: sorted(set(str(t) for t in TextBlob(text).words))
     )
     abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda descriptors: [t for t in descriptors if t == t.upper() and t[0] not in "0123456789"]
+        lambda descriptors: [
+            t for t in descriptors if t == t.upper() and t[0] not in "0123456789"
+        ]
     )
     #
     # -----------------------------------------------------------------------------------------
-    abstracts["abstract"] = abstracts["abstract"].apply(lambda x: pd.NA if x == [] else x)
+    abstracts["abstract"] = abstracts["abstract"].apply(
+        lambda x: pd.NA if x == [] else x
+    )
     abstracts = abstracts.dropna()
     abstracts = abstracts.rename(columns={"abstract": "keyword"})
     return abstracts

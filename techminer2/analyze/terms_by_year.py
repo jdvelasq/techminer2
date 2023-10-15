@@ -31,18 +31,18 @@ Terms by Year
 ...     cited_by_filter=(None, None),
 ... )
 >>> terms.df_
-year                            2016  2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                               
-REGTECH 28:329                     0     2     3     4     8     3     6     2
-FINTECH 12:249                     0     0     2     4     3     1     2     0
-REGULATORY_TECHNOLOGY 07:037       0     0     0     0     2     3     2     0
-COMPLIANCE 07:030                  0     0     0     1     3     1     1     1
-REGULATION 05:164                  0     0     2     0     1     1     1     0
-ANTI_MONEY_LAUNDERING 05:034       0     0     0     0     2     3     0     0
-FINANCIAL_SERVICES 04:168          0     1     1     0     1     0     1     0
-FINANCIAL_REGULATION 04:035        0     1     0     0     1     0     2     0
-ARTIFICIAL_INTELLIGENCE 04:023     0     0     0     1     2     0     1     0
-RISK_MANAGEMENT 03:014             0     0     1     0     1     0     1     0
+year                          2015  2016  2017  2018  2019
+author_keywords                                           
+FINTECH 31:5168                  0     5     8    12     6
+INNOVATION 07:0911               0     3     3     1     0
+FINANCIAL_SERVICES 04:0667       0     1     0     3     0
+FINANCIAL_INCLUSION 03:0590      0     1     2     0     0
+FINANCIAL_TECHNOLOGY 03:0461     0     0     1     1     1
+CROWDFUNDING 03:0335             0     0     1     1     1
+MARKETPLACE_LENDING 03:0317      0     0     0     2     1
+BUSINESS_MODELS 02:0759          0     0     0     2     0
+CYBER_SECURITY 02:0342           0     0     0     2     0
+CASE_STUDY 02:0340               0     0     1     0     1
 
 
 
@@ -153,7 +153,9 @@ from .._common._filtering_lib import generate_custom_items
 from .._common._sorting_lib import sort_indicators_by_metric
 from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..indicators.global_indicators_by_field import global_indicators_by_field
-from ..indicators.global_metrics_by_field_per_year import global_metrics_by_field_per_year
+from ..indicators.global_metrics_by_field_per_year import (
+    global_metrics_by_field_per_year,
+)
 from ..indicators.items_occurrences_by_year import items_occurrences_by_year
 from .documents_per_item import documents_per_item
 
@@ -300,7 +302,9 @@ def __table(
             gc_range=gc_range,
         )
 
-    descriptors_by_year = descriptors_by_year[descriptors_by_year.index.isin(custom_items)]
+    descriptors_by_year = descriptors_by_year[
+        descriptors_by_year.index.isin(custom_items)
+    ]
 
     descriptors_by_year = descriptors_by_year.loc[custom_items, :]
 
@@ -431,8 +435,12 @@ def __metrics(
     data_frame = data_frame[data_frame[field].isin(items)]
 
     data_frame["TOTAL_OCC"] = data_frame.groupby(field)["OCC"].transform("sum")
-    data_frame["TOTAL_GC"] = data_frame.groupby(field)["global_citations"].transform("sum")
-    data_frame["TOTAL_LC"] = data_frame.groupby(field)["local_citations"].transform("sum")
+    data_frame["TOTAL_GC"] = data_frame.groupby(field)["global_citations"].transform(
+        "sum"
+    )
+    data_frame["TOTAL_LC"] = data_frame.groupby(field)["local_citations"].transform(
+        "sum"
+    )
     data_frame = data_frame.sort_values(
         ["TOTAL_OCC", "TOTAL_GC", "TOTAL_LC", field, "year"],
         ascending=[False, False, False, True, True],
@@ -470,7 +478,7 @@ def __documents(
 
     documents = documents[documents[field].isin(items)]
     documents = documents.sort_values(
-        ["global_citations", "local_citations", "year", "title"],
+        ["global_citations", "local_citations", "year", "document_title"],
         ascending=[False, False, True, True],
     )
     documents = documents.reset_index(drop=True)

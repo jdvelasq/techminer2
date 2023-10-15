@@ -38,18 +38,18 @@ Local Impact --- H-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown()) 
-| authors     |   h_index |   g_index |   m_index |
-|:------------|----------:|----------:|----------:|
-| Arner DW    |         3 |         3 |      0.43 |
-| Buckley RP  |         3 |         3 |      0.43 |
-| Barberis JN |         2 |         2 |      0.29 |
-| Butler T    |         2 |         2 |      0.33 |
-| Hamdan A    |         2 |         2 |      0.5  |
-| Turki M     |         2 |         2 |      0.5  |
-| Lin W       |         2 |         1 |      0.5  |
-| Singh C     |         2 |         1 |      0.5  |
-| Brennan R   |         2 |         1 |      0.5  |
-| Crane M     |         2 |         1 |      0.5  |
+| authors       |   h_index |   g_index |   m_index |
+|:--------------|----------:|----------:|----------:|
+| Jagtiani J.   |         3 |         3 |      1.5  |
+| Gomber P.     |         2 |         2 |      0.67 |
+| Hornuf L.     |         2 |         2 |      0.67 |
+| Gai K.        |         2 |         2 |      0.67 |
+| Qiu M.        |         2 |         2 |      0.67 |
+| Sun X./3      |         2 |         2 |      0.67 |
+| Lemieux C.    |         2 |         2 |      1    |
+| Dolata M.     |         2 |         2 |      0.5  |
+| Schwabe G.    |         2 |         2 |      0.5  |
+| Zavolokina L. |         2 |         2 |      0.5  |
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/h_index_chart.html")
 

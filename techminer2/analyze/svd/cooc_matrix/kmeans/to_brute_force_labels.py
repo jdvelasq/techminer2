@@ -46,7 +46,7 @@ To Brute Force Labels
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )  # doctest: +ELLIPSIS
-{'FINANCE 13:2099': 0, 'FINANCIAL_TECHNOLOGY 12:1577': 0, 'STUDY 11:1357': 0, ...
+{'BANKING 14:1848': 0, 'INNOVATION 13:2298': 0, 'PAPER 12:1700': 0, ...
 
 """
 from ....._common.factor_analysis import FactorAnalyzer

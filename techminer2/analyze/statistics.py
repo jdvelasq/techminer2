@@ -11,7 +11,7 @@ Statistics
 ===============================================================================
 
 
->>> from techminer2.overview import statistics
+>>> from techminer2.analyze import statistics
 >>> statistics(
 ...     field='authors',
 ...     #
@@ -21,16 +21,16 @@ Statistics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                   year                       ... local_citations                  
-                  count    mean  std     min  ...             25%   50%   75%   max
-authors                                       ...                                  
-Abdullah Y          1.0  2022.0  NaN  2022.0  ...             0.0   0.0   0.0   0.0
-Ajmi JA             1.0  2021.0  NaN  2021.0  ...             1.0   1.0   1.0   1.0
-Anagnostopoulos I   1.0  2018.0  NaN  2018.0  ...            17.0  17.0  17.0  17.0
-Anasweh M           1.0  2020.0  NaN  2020.0  ...             2.0   2.0   2.0   2.0
-Arman AA            2.0  2022.0  0.0  2022.0  ...             0.0   0.0   0.0   0.0
+                    year                              ... countries_from_affiliations                
+                   count    mean std     min     25%  ...                         min 25% 50% 75% max
+authors                                               ...                                            
+Almunawar M.N.       1.0  2019.0 NaN  2019.0  2019.0  ...                         NaN NaN NaN NaN NaN
+Alt R.               1.0  2018.0 NaN  2018.0  2018.0  ...                         NaN NaN NaN NaN NaN
+Anagnostopoulos I.   1.0  2018.0 NaN  2018.0  2018.0  ...                         NaN NaN NaN NaN NaN
+Anshari M.           1.0  2019.0 NaN  2019.0  2019.0  ...                         NaN NaN NaN NaN NaN
+Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...                         NaN NaN NaN NaN NaN
 <BLANKLINE>
-[5 rows x 48 columns]
+[5 rows x 80 columns]
 
 
 """

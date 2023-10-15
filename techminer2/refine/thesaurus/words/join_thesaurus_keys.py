@@ -10,34 +10,34 @@
 Join Keys
 ===============================================================================
 
->>> from techminer2.refine.words import join_thesaurus_keys
->>> join_thesaurus_keys(
-...     contains=("ARTIFICIAL_INTELLIGENCE", "AI"),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="data/chatgpt/",
-... )
+# >>> from techminer2.refine.thesaurus.words import join_thesaurus_keys
+# >>> join_thesaurus_keys(
+# ...     contains=("ARTIFICIAL_INTELLIGENCE", "AI"),
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="data/chatgpt/",
+# ... )
 
 
 
 
->>> join_keys(
-...     contains=("MULTI_LAYER", "MULTILAYER"),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="data/tm2/",
-... )
->>> from techminer2.refine.words import find_string
->>> find_string(
-...     #
-...     # SEARCH PARAMS:
-...     contains=["MULTILAYER"],
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="data/tm2/",
-)
+# >>> join_keys(
+# ...     contains=("MULTI_LAYER", "MULTILAYER"),
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/",
+# ... )
+# >>> from techminer2.refine.words import find_string
+# >>> find_string(
+# ...     #
+# ...     # SEARCH PARAMS:
+# ...     contains=["MULTILAYER"],
+# ...     startswith=None,
+# ...     endswith=None,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="data/tm2/",
+# )
 
 """
 import re
@@ -47,7 +47,7 @@ import pandas as pd
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def join_thesaurus_keys(

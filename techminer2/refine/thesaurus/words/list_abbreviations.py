@@ -9,21 +9,18 @@
 List Abbreviations 
 ===============================================================================
 
->>> from techminer2.refine.words import list_abbreviations
+>>> from techminer2.refine.thesaurus.words import list_abbreviations
 >>> list_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-ANTI_MONEY_LAUNDERING (AML)
 CLASSIFICATION (OF_INFORMATION)
-CORPORATE_SOCIAL_RESPONSIBILITIES (CSR)
-GENERAL_DATA_PROTECTION_REGULATION (GDPR)
-KNOW_YOUR_CUSTOMER (KYC) COMPLIANCE
-MERGERS_AND_ACQUISITIONS (MANDAS)
-PAYMENT_SERVICES_DIRECTIVE_2 (PSD_2)
-REGULATION_TECHNOLOGY (REGTECH)
-REGULATORY_TECHNOLOGY (REGTECH)
+COMPETITION (ECONOMICS)
+FINANCIAL_TECHNOLOGY (FINTECH)
+INTERNET_OF_THING (IOT)
+NETWORKS (CIRCUITS)
+PRESSES (MACHINE_TOOLS)
 
 """
 import os.path
@@ -32,9 +29,12 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict, load_system_thesaurus_as_frame
+from ...._common.thesaurus_lib import (
+    load_system_thesaurus_as_dict,
+    load_system_thesaurus_as_frame,
+)
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def list_abbreviations(

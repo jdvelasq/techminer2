@@ -37,18 +37,18 @@ Most Local Cited
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| organizations                                                      |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
-|:-------------------------------------------------------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| Univ of Hong Kong (HKG)                                            |          1 |          1 |                185 |                24 |                           61.67 |                           8    |                       26.43 |
-| Univ Coll Cork (IRL)                                               |          5 |          2 |                 41 |                19 |                           13.67 |                           6.33 |                        6.83 |
-| Kingston Bus Sch (GBR)                                             |          2 |          3 |                153 |                17 |                          153    |                          17    |                       25.5  |
-| FinTech HK, Hong Kong (HKG)                                        |          3 |          4 |                150 |                16 |                          150    |                          16    |                       21.43 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |          4 |          5 |                150 |                16 |                          150    |                          16    |                       21.43 |
-| Duke Univ Sch of Law (USA)                                         |          6 |          6 |                 30 |                 8 |                           30    |                           8    |                        3.75 |
-| European Central B (DEU)                                           |         11 |          7 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| Harvard Univ Weatherhead ctr for International Affairs (USA)       |         12 |          8 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| KS Strategic, London, United Kingdom (GBR)                         |         13 |          9 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| Panepistemio Aigaiou, Chios, Greece (GRC)                          |         14 |         10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
+| organizations                        |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
+|:-------------------------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
+| Sungkyunkwan Univ. (KOR)             |         20 |          1 |                307 |                 5 |                          153.5  |                           2.5  |                       76.75 |
+| Goethe Univ. Frankfurt (DEU)         |          7 |          2 |                489 |                 4 |                          489    |                           4    |                      163    |
+| Univ. of Zurich (CHE)                |          8 |          3 |                434 |                 4 |                          144.67 |                           1.33 |                      108.5  |
+| Goethe Univ. of Frankfurt (DEU)      |          1 |          4 |                576 |                 3 |                          576    |                           3    |                      288    |
+| Pennsylvania State Univ. (USA)       |          2 |          5 |                576 |                 3 |                          576    |                           3    |                      288    |
+| Singapore Manag. Univ. (SMU) (SGP)   |          3 |          6 |                576 |                 3 |                          576    |                           3    |                      288    |
+| Univ. of Delaware (USA)              |          4 |          7 |                576 |                 3 |                          576    |                           3    |                      288    |
+| Univ. of Sydney (AUS)                |         21 |          8 |                300 |                 3 |                          150    |                           1.5  |                      100    |
+| SK Telecom, Seoul, South Korea (KOR) |         50 |          9 |                146 |                 3 |                          146    |                           3    |                       36.5  |
+| Hankyong Nac. Univ. (KOR)            |          5 |         10 |                557 |                 2 |                          557    |                           2    |                      278.5  |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/organizations/most_local_cited_chart.html")

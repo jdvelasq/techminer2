@@ -40,12 +40,11 @@ Performance Metrics
 >>> print(metrics.df_.head().to_markdown()) 
 | authors     |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
 |:------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| Arner DW    |          1 |          1 |          1 |     3 |                185 |                24 |         3 |         3 |      0.43 |
-| Buckley RP  |          2 |          2 |          2 |     3 |                185 |                24 |         3 |         3 |      0.43 |
-| Barberis JN |          3 |          3 |          3 |     2 |                161 |                19 |         2 |         2 |      0.29 |
-| Butler T    |          4 |          5 |          4 |     2 |                 41 |                19 |         2 |         2 |      0.33 |
-| Hamdan A    |          5 |         15 |         19 |     2 |                 18 |                 3 |         2 |         2 |      0.5  |
-
+| Jagtiani J. |          1 |         17 |         16 |     3 |                317 |                 2 |         3 |         3 |      1.5  |
+| Gomber P.   |          2 |          1 |          1 |     2 |               1065 |                 7 |         2 |         2 |      0.67 |
+| Hornuf L.   |          3 |         13 |         15 |     2 |                358 |                 2 |         2 |         2 |      0.67 |
+| Gai K.      |          4 |         14 |         26 |     2 |                323 |                 1 |         2 |         2 |      0.67 |
+| Qiu M.      |          5 |         15 |         27 |     2 |                323 |                 1 |         2 |         2 |      0.67 |
 
 >>> metrics.fig_.write_html("sphinx/_static/analyze/contributors/authors/most_relevant_chart.html")
 

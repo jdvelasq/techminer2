@@ -14,7 +14,7 @@ Most Frequent
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='source_abbr',
+...     field='abbr_source_title',
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
@@ -39,18 +39,18 @@ Most Frequent
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| source_abbr                   |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
-|:------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| J BANK REGUL                  |          1 |     2 |             2 |                   0 |                   0 |
-| J FINANC CRIME                |          2 |     2 |             1 |                   1 |                  50 |
-| STUD COMPUT INTELL            |          3 |     2 |             2 |                   0 |                   0 |
-| FOSTER INNOVCOMPET WITH FINTE |          4 |     2 |             2 |                   0 |                   0 |
-| INT CONF INF TECHNOL SYST INN |          5 |     2 |             0 |                   2 |                 100 |
-| ROUTLEDGE HANDBFINANCIAL TECH |          6 |     2 |             2 |                   0 |                   0 |
-| J ECON BUS                    |          7 |     1 |             1 |                   0 |                   0 |
-| NORTHWEST J INTL LAW BUS      |          8 |     1 |             1 |                   0 |                   0 |
-| PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |             1 |                   0 |                   0 |
-| DUKE LAW J                    |         10 |     1 |             1 |                   0 |                   0 |
+| abbr_source_title   |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:--------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| J. Econ. Bus.       |          1 |     3 |             0 |                   3 |                 100 |
+| J Manage Inf Syst   |          2 |     2 |             0 |                   2 |                 100 |
+| Rev. Financ. Stud.  |          3 |     2 |             0 |                   2 |                 100 |
+| Ind Manage Data Sys |          4 |     2 |             0 |                   2 |                 100 |
+| Electron. Mark.     |          5 |     2 |             0 |                   2 |                 100 |
+| Financial Innov.    |          6 |     2 |             2 |                   0 |                   0 |
+| Financ. Manage.     |          7 |     2 |             0 |                   2 |                 100 |
+| Sustainability      |          8 |     2 |             0 |                   2 |                 100 |
+| Bus. Horiz.         |          9 |     1 |             0 |                   1 |                 100 |
+| J. Bus. Econ.       |         10 |     1 |             1 |                   0 |                   0 |
 
 
 

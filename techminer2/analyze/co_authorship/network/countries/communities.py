@@ -29,16 +29,15 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                   CL_0              CL_1  ...           CL_6            CL_7
-0  United Kingdom 7:199   Australia 7:199  ...  Ukraine 1:004  Malaysia 1:003
-1   United States 6:059       China 5:027  ...                               
-2         Ireland 5:055   Hong Kong 3:185  ...                               
-3           Italy 5:005  Luxembourg 2:034  ...                               
-4         Germany 4:051       Japan 1:013  ...                               
-5     Switzerland 4:045                    ...                               
-6          Greece 1:021                    ...                               
+                    CL_0  ...                       CL_8
+0  United States 16:3189  ...  Brunei Darussalam 01:0090
+1          China 08:1085  ...                           
+2    South Korea 06:1192  ...                           
+3         Sweden 01:0160  ...                           
+4     Kazakhstan 01:0121  ...                           
+5        Belgium 01:0101  ...                           
 <BLANKLINE>
-[7 rows x 8 columns]
+[6 rows x 9 columns]
 
 
 """
@@ -77,14 +76,11 @@ def communities(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -114,14 +110,11 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

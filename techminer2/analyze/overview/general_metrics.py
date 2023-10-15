@@ -50,19 +50,20 @@ AUTHORS        Authors                                        115
                Countries                                       24
                Countries (1st author)                          18
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        137
+               Cleaned author keywords                        136
                Raw index keywords                             179
                Cleaned index keywords                         170
                Raw keywords                                   279
-               Cleaned keywords                               245
+               Cleaned keywords                               244
 NLP PHRASES    Raw title NLP phrases                          130
-               Cleaned title NLP phrases                      122
-               Raw abstract NLP phrases                      1469
-               Cleaned abstract NLP phrases                  1248
-               Raw NLP phrases                               1517
-               Cleaned NLP phrases                           1280
+               Cleaned title NLP phrases                      121
+               Raw abstract NLP phrases                      1472
+               Cleaned abstract NLP phrases                  1234
+               Raw NLP phrases                               1518
+               Cleaned NLP phrases                           1265
 DESCRIPTORS    Raw descriptors                               1684
-               Cleaned descriptors                           1388
+               Cleaned descriptors                           1373
+
 
 
 >>> info.fig_.write_html("sphinx/_static/analyze/overview/general_metrics.html")

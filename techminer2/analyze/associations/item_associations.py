@@ -13,7 +13,7 @@ Item Associations
 >>> associations = item_associations(
 ...     #
 ...     # FUNCTION PARAMS:
-...     item='REGTECH',
+...     item='FINTECH',
 ...     #
 ...     # CO-OCC PARAMS:
 ...     columns='author_keywords',
@@ -46,28 +46,15 @@ Item Associations
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> associations.df_
-                                REGTECH 28:329
-author_keywords                               
-FINTECH 12:249                              12
-COMPLIANCE 07:030                            7
-REGULATION 05:164                            4
-FINANCIAL_SERVICES 04:168                    3
-SUPTECH 03:004                               3
-REGULATORY_TECHNOLOGY 07:037                 2
-FINANCIAL_REGULATION 04:035                  2
-ARTIFICIAL_INTELLIGENCE 04:023               2
-RISK_MANAGEMENT 03:014                       2
-NEW_TECHNOLOGIES 03:010                      2
-BLOCKCHAIN 03:005                            2
-SEMANTIC_TECHNOLOGIES 02:041                 2
-DATA_PROTECTION 02:027                       2
-SMART_CONTRACT 02:022                        2
-CHARITYTECH 02:017                           2
-ENGLISH_LAW 02:017                           2
-ACCOUNTABILITY 02:014                        2
-ANTI_MONEY_LAUNDERING 05:034                 1
-INNOVATION 03:012                            1
+>>> associations.df_.head()
+                                         FINTECH 31:5168
+author_keywords                                         
+INNOVATION 07:0911                                     5
+FINANCIAL_SERVICES 04:0667                             3
+MOBILE_FINTECH_PAYMENT_SERVICES 04:0485                3
+BUSINESS 03:0896                                       3
+SHADOW_BANKING 03:0643                                 3
+
 
 
 >>> associations.fig_.write_html("sphinx/_static/analyze/associations/item_associations_chart.html")
@@ -292,7 +279,9 @@ def __table(
     frame["OCC"] = [text.split(" ")[-1].split(":")[0] for text in frame.index]
     frame["GC"] = [text.split(" ")[-1].split(":")[-1] for text in frame.index]
     frame["NAME"] = [" ".join(text.split(" ")[:-1]) for text in frame.index]
-    frame = frame.sort_values(by=[name, "OCC", "GC", "NAME"], ascending=[False, False, False, True])
+    frame = frame.sort_values(
+        by=[name, "OCC", "GC", "NAME"], ascending=[False, False, False, True]
+    )
     series = frame[[name]]
 
     return series
@@ -331,7 +320,9 @@ def __chart(
     metric_label = "OCC" if metric_label is None else metric_label
 
     field_label = (
-        rows.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
+        rows.replace("_", " ").upper() + " RANKING"
+        if field_label is None
+        else field_label
     )
 
     table = data_frame.copy()

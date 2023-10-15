@@ -24,28 +24,28 @@ Trending Words per Year
 ...     cited_by_filter=None,
 ... )
 >>> words.df_.head(20)
-year                         OCC  year_q1  year_med  ...  rn    height  width
-abstract_nlp_phrases                                 ...                     
-BANK_EXECUTIVES                1     2016      2016  ...   0  0.150000      1
-CLASS_ACTION                   1     2016      2016  ...   1  0.150000      1
-COMPLEX_TASK                   1     2016      2016  ...   2  0.150000      1
-ECONOMIC_CONDITIONS            1     2016      2016  ...   3  0.150000      1
-FOCUS_REGULATORY_DISCRETION    1     2016      2016  ...   4  0.150000      1
-ADDRESSES_RISK                 2     2017      2017  ...   0  0.195556      1
-ANALOGUE_PROCESSES             2     2017      2017  ...   1  0.195556      1
-COMPLIANCE_PROCESSES           2     2017      2017  ...   2  0.195556      1
-DIGITAL_IDENTITY               2     2017      2017  ...   3  0.195556      1
-FINANCIAL_WORLD                2     2017      2017  ...   4  0.195556      1
-FINANCIAL_SERVICES_INDUSTRY    5     2017      2018  ...   0  0.332222      6
-ACTION_RESEARCH                1     2018      2018  ...   4  0.150000      1
-PRACTICAL_IMPLICATIONS         2     2018      2018  ...   1  0.195556      1
-FINANCIAL_STABILITY            2     2018      2018  ...   2  0.195556      2
-OPERATIONAL_RISK               2     2018      2018  ...   3  0.195556      2
-REGULATORY_SYSTEM              2     2018      2019  ...   3  0.195556      3
-TECHNOLOGY_POSES               2     2018      2019  ...   4  0.195556      3
-REGTECH_DEVELOPMENTS           3     2018      2019  ...   2  0.241111      3
-FINANCIAL_SYSTEM               6     2018      2019  ...   0  0.377778      3
-FINANCIAL_TECHNOLOGY           5     2018      2019  ...   1  0.332222      4
+year                     OCC  year_q1  year_med  ...  rn    height  width
+abstract_nlp_phrases                             ...                     
+LONDON_BUSINESS_SCHOOL     1     2015      2015  ...   0  0.150000      1
+STATE                      3     2016      2016  ...   0  0.202903      1
+YEARS                      3     2016      2016  ...   2  0.202903      1
+NOVEL                      2     2016      2016  ...   4  0.176452      2
+PRACTICE                   3     2016      2016  ...   1  0.202903      2
+DIGITAL_INNOVATION         3     2016      2016  ...   3  0.202903      2
+FINANCE                   13     2016      2017  ...   1  0.467419      3
+FIELD                      7     2016      2017  ...   4  0.308710      4
+FINANCIAL_SECTOR           9     2017      2017  ...   3  0.361613      2
+DEVELOPMENT               11     2017      2017  ...   2  0.414516      2
+RESEARCHERS               13     2017      2018  ...   4  0.467419      2
+FINANCIAL_INDUSTRY        16     2017      2017  ...   0  0.546774      2
+BANKING                   14     2017      2018  ...   3  0.493871      3
+AUTHOR                    18     2017      2018  ...   2  0.599677      3
+TECHNOLOGIES              23     2017      2018  ...   1  0.731935      3
+FINTECH                   32     2017      2018  ...   0  0.970000      3
+IMPACT                     6     2018      2019  ...   1  0.282258      2
+COUNTRIES                  6     2018      2019  ...   2  0.282258      2
+FINANCIAL_TECHNOLOGY      17     2018      2019  ...   0  0.573226      2
+ARTIFICIAL_INTELLIGENCE    4     2019      2019  ...   3  0.229355      1
 <BLANKLINE>
 [20 rows x 8 columns]
 

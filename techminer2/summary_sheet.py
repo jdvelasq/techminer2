@@ -18,12 +18,12 @@ Summary Sheet
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-              column  number of terms coverage (%)
-0  abbr_source_title               50         1.0%
-1           abstract               48        0.96%
-2       affiliations               49        0.98%
-3             art_no               50         1.0%
-4            article               50         1.0%
+                 column  number of terms coverage (%)
+0     abbr_source_title               50         1.0%
+1              abstract               48        0.96%
+2  abstract_nlp_phrases               48        0.96%
+3          affiliations               49        0.98%
+4                art_no               50         1.0%
 
 """
 import pandas as pd

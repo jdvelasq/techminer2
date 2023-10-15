@@ -38,18 +38,18 @@ Most Local Cited
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown()) 
-| authors           |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
-|:------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| Arner DW          |          1 |          1 |                185 |                24 |                           61.67 |                            8   |                       26.43 |
-| Buckley RP        |          2 |          2 |                185 |                24 |                           61.67 |                            8   |                       26.43 |
-| Barberis JN       |          3 |          3 |                161 |                19 |                           80.5  |                            9.5 |                       23    |
-| Butler T          |          5 |          4 |                 41 |                19 |                           20.5  |                            9.5 |                        6.83 |
-| Anagnostopoulos I |          4 |          5 |                153 |                17 |                          153    |                           17   |                       25.5  |
-| OBrien L          |          6 |          6 |                 33 |                14 |                           33    |                           14   |                        6.6  |
-| Baxter LG         |          7 |          7 |                 30 |                 8 |                           30    |                            8   |                        3.75 |
-| Breymann W        |         10 |          8 |                 21 |                 8 |                           21    |                            8   |                        3.5  |
-| Gross FJ          |         11 |          9 |                 21 |                 8 |                           21    |                            8   |                        3.5  |
-| Kavassalis P      |         12 |         10 |                 21 |                 8 |                           21    |                            8   |                        3.5  |
+| authors       |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
+|:--------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
+| Gomber P.     |          1 |          1 |               1065 |                 7 |                           532.5 |                            3.5 |                      355    |
+| Koch J.-A.    |          7 |          2 |                489 |                 4 |                           489   |                            4   |                      163    |
+| Siering M.    |          8 |          3 |                489 |                 4 |                           489   |                            4   |                      163    |
+| Mackenzie A.  |        102 |          4 |                 76 |                 4 |                            76   |                            4   |                       15.2  |
+| Kauffman R.J. |          2 |          5 |                576 |                 3 |                           576   |                            3   |                      288    |
+| Parker C.     |          3 |          6 |                576 |                 3 |                           576   |                            3   |                      288    |
+| Weber B.W.    |          4 |          7 |                576 |                 3 |                           576   |                            3   |                      288    |
+| Dolata M.     |         34 |          8 |                181 |                 3 |                            90.5 |                            1.5 |                       45.25 |
+| Schwabe G.    |         35 |          9 |                181 |                 3 |                            90.5 |                            1.5 |                       45.25 |
+| Zavolokina L. |         36 |         10 |                181 |                 3 |                            90.5 |                            1.5 |                       45.25 |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/most_local_cited_chart.html")

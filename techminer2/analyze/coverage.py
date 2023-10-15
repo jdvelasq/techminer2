@@ -12,7 +12,7 @@ Coverage
 
 Computes coverage of terms in a column discarding stopwords.
 
->>> from techminer2.overview import coverage
+>>> from techminer2.analyze import coverage
 >>> coverage(
 ...     #
 ...     # PARAMS:
@@ -24,18 +24,17 @@ Computes coverage of terms in a column discarding stopwords.
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- Number of documents : 52
---INFO--   Documents with NA : 11
---INFO--  Efective documents : 41
+--INFO-- Number of documents : 50
+--INFO--   Documents with NA : 12
+--INFO--  Efective documents : 38
    min_occ  cum_sum_documents  coverage  cum num items
-0       28                 28   68.29 %              1
-1       12                 28   68.29 %              2
-2        7                 33   80.49 %              4
-3        5                 36   87.80 %              6
-4        4                 39   95.12 %              9
-5        3                 39   95.12 %             14
-6        2                 39   95.12 %             25
-7        1                 41  100.00 %            139
+0       31                 31   81.58 %              1
+1        7                 33   86.84 %              2
+2        4                 36   94.74 %              5
+3        3                 36   94.74 %             15
+4        2                 37   97.37 %             27
+5        1                 38  100.00 %            136
+
 
 
 
@@ -96,7 +95,9 @@ def coverage(
 
     documents = documents[~documents[field].isin(stopwords)]
 
-    documents = documents.groupby(by=[field]).agg({"num_documents": "count", "article": list})
+    documents = documents.groupby(by=[field]).agg(
+        {"num_documents": "count", "article": list}
+    )
     documents = documents.sort_values(by=["num_documents"], ascending=False)
 
     documents = documents.reset_index()
@@ -115,7 +116,9 @@ def coverage(
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
     documents = documents.assign(
-        coverage=documents.cum_sum_documents.map(lambda x: f"{100 * x / n_documents:5.2f} %")
+        coverage=documents.cum_sum_documents.map(
+            lambda x: f"{100 * x / n_documents:5.2f} %"
+        )
     )
 
     documents = documents.assign(cum_sum_items=documents[field].cumsum())

@@ -39,13 +39,15 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                  DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
-author_keywords                                                                
-REGTECH 28:329                27.123823 -2.752543 -0.259543 -1.234468  0.412103
-FINTECH 12:249                11.936802  5.439135 -0.184185 -0.135850 -1.049529
-REGULATORY_TECHNOLOGY 07:037  -2.259333  0.418535  5.924599 -0.786429  2.511890
-COMPLIANCE 07:030              3.547138 -3.615022  0.951064  4.159554  0.402718
-REGULATION 05:164              1.294097  3.580421  0.761440  1.399094 -0.620766
+                                             DIM_0  ...     DIM_4
+author_keywords                                     ...          
+FINTECH 31:5168                          28.639787  ... -0.078264
+INNOVATION 07:0911                        2.209097  ...  0.615174
+FINANCIAL_SERVICES 04:0667               -0.393412  ... -1.631608
+FINANCIAL_TECHNOLOGY 04:0551             -1.762255  ...  2.668771
+MOBILE_FINTECH_PAYMENT_SERVICES 04:0485  -0.851489  ... -1.097691
+<BLANKLINE>
+[5 rows x 5 columns]
 
 """
 from ...._common.factor_analysis import FactorAnalyzer

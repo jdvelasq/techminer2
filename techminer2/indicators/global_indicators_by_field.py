@@ -22,29 +22,16 @@ Indicators by Field
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(indicators.head(20).to_markdown())
-| author_keywords         |   rank_occ |   rank_gc |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
-|:------------------------|-----------:|----------:|------:|--------------:|--------------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
-| REGTECH                 |          1 |         1 |    28 |            20 |                   8 |               28.57 |                329 |                73 |                           11.75 |                           2.61 |                     2017 |     7 |                       47    |         9 |         4 |      1.29 |
-| FINTECH                 |          2 |         2 |    12 |            10 |                   2 |               16.67 |                249 |                48 |                           20.75 |                           4    |                     2018 |     6 |                       41.5  |         5 |         3 |      0.83 |
-| REGULATORY_TECHNOLOGY   |          3 |         8 |     7 |             5 |                   2 |               28.57 |                 37 |                10 |                            5.29 |                           1.43 |                     2020 |     4 |                        9.25 |         4 |         2 |      1    |
-| COMPLIANCE              |          4 |        12 |     7 |             5 |                   2 |               28.57 |                 30 |                 9 |                            4.29 |                           1.29 |                     2019 |     5 |                        6    |         3 |         2 |      0.6  |
-| REGULATION              |          5 |         4 |     5 |             4 |                   1 |               20    |                164 |                22 |                           32.8  |                           4.4  |                     2018 |     6 |                       27.33 |         2 |         2 |      0.33 |
-| ANTI_MONEY_LAUNDERING   |          6 |        10 |     5 |             5 |                   0 |                0    |                 34 |                 6 |                            6.8  |                           1.2  |                     2020 |     4 |                        8.5  |         3 |         2 |      0.75 |
-| FINANCIAL_SERVICES      |          7 |         3 |     4 |             3 |                   1 |               25    |                168 |                20 |                           42    |                           5    |                     2017 |     7 |                       24    |         3 |         2 |      0.43 |
-| FINANCIAL_REGULATION    |          8 |         9 |     4 |             2 |                   2 |               50    |                 35 |                 7 |                            8.75 |                           1.75 |                     2017 |     7 |                        5    |         2 |         2 |      0.29 |
-| ARTIFICIAL_INTELLIGENCE |          9 |        19 |     4 |             3 |                   1 |               25    |                 23 |                 4 |                            5.75 |                           1    |                     2019 |     5 |                        4.6  |         3 |         2 |      0.6  |
-| RISK_MANAGEMENT         |         10 |        25 |     3 |             2 |                   1 |               33.33 |                 14 |                 6 |                            4.67 |                           2    |                     2018 |     6 |                        2.33 |         2 |         2 |      0.33 |
-| INNOVATION              |         11 |        32 |     3 |             2 |                   1 |               33.33 |                 12 |                 4 |                            4    |                           1.33 |                     2020 |     4 |                        3    |         1 |         1 |      0.25 |
-| BLOCKCHAIN              |         12 |        59 |     3 |             3 |                   0 |                0    |                  5 |                 0 |                            1.67 |                           0    |                     2017 |     7 |                        0.71 |         1 |         1 |      0.14 |
-| SUPTECH                 |         13 |        60 |     3 |             1 |                   2 |               66.67 |                  4 |                 2 |                            1.33 |                           0.67 |                     2019 |     5 |                        0.8  |         1 |         1 |      0.2  |
-| SEMANTIC_TECHNOLOGIES   |         14 |         7 |     2 |             2 |                   0 |                0    |                 41 |                19 |                           20.5  |                           9.5  |                     2018 |     6 |                        6.83 |         2 |         2 |      0.33 |
-| DATA_PROTECTION         |         15 |        13 |     2 |             1 |                   1 |               50    |                 27 |                 4 |                           13.5  |                           2    |                     2020 |     4 |                        6.75 |         2 |         1 |      0.5  |
-| SMART_CONTRACTS         |         16 |        20 |     2 |             2 |                   0 |                0    |                 22 |                 8 |                           11    |                           4    |                     2017 |     7 |                        3.14 |         1 |         1 |      0.14 |
-| CHARITYTECH             |         17 |        23 |     2 |             1 |                   1 |               50    |                 17 |                 4 |                            8.5  |                           2    |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |
-| ENGLISH_LAW             |         18 |        24 |     2 |             1 |                   1 |               50    |                 17 |                 4 |                            8.5  |                           2    |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |
-| ACCOUNTABILITY          |         19 |        26 |     2 |             2 |                   0 |                0    |                 14 |                 3 |                            7    |                           1.5  |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
-| DATA_PROTECTION_OFFICER |         20 |        27 |     2 |             2 |                   0 |                0    |                 14 |                 3 |                            7    |                           1.5  |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
+>>> print(indicators.head().to_markdown())
+| author_keywords      |   rank_occ |   rank_lcs |   rank_gcs |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+|:---------------------|-----------:|-----------:|-----------:|------:|--------------:|--------------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
+| FINTECH              |          1 |          1 |          1 |    31 |            13 |                  18 |               58.06 |               5168 |                27 |                          166.71 |                           0.87 |                  -1   |                     9   |                   0.290323  |                     2016 |     4 |                     1292    |        31 |        12 |      7.75 |
+| INNOVATION           |          2 |          2 |          2 |     7 |             6 |                   1 |               14.29 |                911 |                 5 |                          130.14 |                           0.71 |                  -1.5 |                     0.5 |                   0.0714286 |                     2016 |     4 |                      227.75 |         7 |         7 |      1.75 |
+| FINANCIAL_SERVICES   |          3 |         40 |          4 |     4 |             1 |                   3 |               75    |                667 |                 1 |                          166.75 |                           0.25 |                   0   |                     1.5 |                   0.375     |                     2016 |     4 |                      166.75 |         4 |         4 |      1    |
+| FINANCIAL_INCLUSION  |          4 |          3 |          5 |     3 |             3 |                   0 |                0    |                590 |                 5 |                          196.67 |                           1.67 |                  -1   |                     0   |                   0         |                     2016 |     4 |                      147.5  |         3 |         3 |      0.75 |
+| FINANCIAL_TECHNOLOGY |          5 |         41 |         15 |     3 |             1 |                   2 |               66.67 |                461 |                 1 |                          153.67 |                           0.33 |                   0   |                     1   |                   0.333333  |                     2017 |     3 |                      153.67 |         3 |         3 |      1    |
+
+
 
 """
 
@@ -87,8 +74,6 @@ Indicators by Field
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
 
-
-import numpy as np
 
 from .._common._read_records import read_records
 from .._common._sorting_lib import sort_indicators_by_metric
@@ -138,7 +123,9 @@ def global_indicators_by_field(
         records = records.copy()
 
         column_sum = records[[field, column]].dropna()
-        column_sum[field] = column_sum[field].str.split(";").map(lambda x: [_.strip() for _ in x])
+        column_sum[field] = (
+            column_sum[field].str.split(";").map(lambda x: [_.strip() for _ in x])
+        )
         column_sum = column_sum.explode(field)
         column_sum = column_sum.groupby(field, as_index=True).sum().astype(int)
         indicators.loc[column_sum.index, column] = column_sum
@@ -148,14 +135,18 @@ def global_indicators_by_field(
     def compute_global_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            global_citations_per_document=(indicators.global_citations / indicators.OCC).round(2)
+            global_citations_per_document=(
+                indicators.global_citations / indicators.OCC
+            ).round(2)
         )
         return indicators
 
     def compute_local_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            local_citations_per_document=(indicators.local_citations / indicators.OCC).round(2)
+            local_citations_per_document=(
+                indicators.local_citations / indicators.OCC
+            ).round(2)
         )
         return indicators
 
@@ -171,7 +162,9 @@ def global_indicators_by_field(
 
         indicators = indicators.copy()
         indicators = indicators.assign(
-            global_citations_per_year=(indicators.global_citations / indicators.age).round(2)
+            global_citations_per_year=(
+                indicators.global_citations / indicators.age
+            ).round(2)
         )
 
         return indicators
@@ -182,10 +175,14 @@ def global_indicators_by_field(
         records = records.copy()
 
         records = records[[field, "year"]].dropna()
-        records[field] = records[field].str.split(";").map(lambda x: [_.strip() for _ in x])
+        records[field] = (
+            records[field].str.split(";").map(lambda x: [_.strip() for _ in x])
+        )
         records = records.explode(field)
 
-        records["first_publication_year"] = records.groupby(field)["year"].transform("min")
+        records["first_publication_year"] = records.groupby(field)["year"].transform(
+            "min"
+        )
 
         records = records.drop("year", axis=1)
         records = records.drop_duplicates()
@@ -238,7 +235,9 @@ def global_indicators_by_field(
         indicators.loc[before_occ.index, before] = before_occ
 
         indicators = indicators.assign(
-            growth_percentage=(100 * indicators[between].copy() / indicators["OCC"].copy()).round(2)
+            growth_percentage=(
+                100 * indicators[between].copy() / indicators["OCC"].copy()
+            ).round(2)
         )
 
         #
@@ -250,26 +249,26 @@ def global_indicators_by_field(
         ]
         indicators = indicators[columns]
 
-        # #
-        # # selects the columns of interest
-        # items_by_year = items_by_year.loc[:, [year_columns[0] - 1] + year_columns]
         #
-        # # agr: average growth rate
-        # agr = items_by_year.diff(axis=1)
-        # agr = agr.loc[:, year_columns]
-        # agr = agr.sum(axis=1) / time_window
-        # indicators.loc[agr.index, "average_growth_rate"] = agr
-        #
-        # # ady: average documents per year
-        # ady = items_by_year.loc[:, year_columns].sum(axis=1) / time_window
-        # indicators.loc[ady.index, "average_docs_per_year"] = ady
-        #
-        # # pdly: percentage of documents in last year
-        # indicators = indicators.assign(
-        #     percentage_docs_last_year=(
-        #         indicators.average_docs_per_year.copy() / indicators.OCC.copy()
-        #     )
-        # )
+        # selects the columns of interest
+        items_by_year = items_by_year.loc[:, [year_columns[0] - 1] + year_columns]
+
+        # agr: average growth rate
+        agr = items_by_year.diff(axis=1)
+        agr = agr.loc[:, year_columns]
+        agr = agr.sum(axis=1) / time_window
+        indicators.loc[agr.index, "average_growth_rate"] = agr
+
+        # ady: average documents per year
+        ady = items_by_year.loc[:, year_columns].sum(axis=1) / time_window
+        indicators.loc[ady.index, "average_docs_per_year"] = ady
+
+        # pdly: percentage of documents in last year
+        indicators = indicators.assign(
+            percentage_docs_last_year=(
+                indicators.average_docs_per_year.copy() / indicators.OCC.copy()
+            )
+        )
 
         return indicators
 
@@ -282,7 +281,9 @@ def global_indicators_by_field(
         records[field] = records[field].str.split(";")
         records = records.explode(field)
         records[field] = records[field].str.strip()
-        records = records.sort_values([field, "global_citations"], ascending=[True, False])
+        records = records.sort_values(
+            [field, "global_citations"], ascending=[True, False]
+        )
         records = records.reset_index(drop=True)
 
         records = records.assign(

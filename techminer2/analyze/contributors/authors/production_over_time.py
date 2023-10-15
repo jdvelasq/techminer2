@@ -40,18 +40,18 @@ Production over Time
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(terms.df_.to_markdown())
-| authors           |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| Arner DW 3:185    |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
-| Buckley RP 3:185  |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
-| Barberis JN 2:161 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
-| Butler T 2:041    |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
-| Hamdan A 2:018    |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
-| Turki M 2:018     |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
-| Lin W 2:017       |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| Singh C 2:017     |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| Brennan R 2:014   |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
-| Crane M 2:014     |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| authors              |   2015 |   2016 |   2017 |   2018 |   2019 |
+|:---------------------|-------:|-------:|-------:|-------:|-------:|
+| Jagtiani J. 3:0317   |      0 |      0 |      0 |      2 |      1 |
+| Gomber P. 2:1065     |      0 |      0 |      1 |      1 |      0 |
+| Hornuf L. 2:0358     |      0 |      0 |      1 |      0 |      1 |
+| Gai K. 2:0323        |      0 |      0 |      1 |      1 |      0 |
+| Qiu M. 2:0323        |      0 |      0 |      1 |      1 |      0 |
+| Sun X./3 2:0323      |      0 |      0 |      1 |      1 |      0 |
+| Lemieux C. 2:0253    |      0 |      0 |      0 |      1 |      1 |
+| Dolata M. 2:0181     |      0 |      2 |      0 |      0 |      0 |
+| Schwabe G. 2:0181    |      0 |      2 |      0 |      0 |      0 |
+| Zavolokina L. 2:0181 |      0 |      2 |      0 |      0 |      0 |
 
 
 
@@ -63,21 +63,21 @@ Your task is ...
 >>> print(terms.metrics_.head().to_markdown())
 |    | authors     |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
 |---:|:------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | Arner DW    |   2017 |     2 |         2 |                161 |                19 |     7 |                          23 |                      2.714 |
-|  1 | Arner DW    |   2020 |     1 |         3 |                 24 |                 5 |     4 |                           6 |                      1.25  |
-|  2 | Buckley RP  |   2017 |     2 |         2 |                161 |                19 |     7 |                          23 |                      2.714 |
-|  3 | Buckley RP  |   2020 |     1 |         3 |                 24 |                 5 |     4 |                           6 |                      1.25  |
-|  4 | Barberis JN |   2017 |     2 |         2 |                161 |                19 |     7 |                          23 |                      2.714 |
+|  0 | Jagtiani J. |   2018 |     2 |         2 |                220 |                 2 |     2 |                     110     |                      1     |
+|  1 | Jagtiani J. |   2019 |     1 |         3 |                 97 |                 0 |     1 |                      97     |                      0     |
+|  2 | Gomber P.   |   2017 |     1 |         1 |                489 |                 4 |     3 |                     163     |                      1.333 |
+|  3 | Gomber P.   |   2018 |     1 |         2 |                576 |                 3 |     2 |                     288     |                      1.5   |
+|  4 | Hornuf L.   |   2017 |     1 |         1 |                100 |                 1 |     3 |                      33.333 |                      0.333 |
 
 
 >>> print(terms.documents_.head().to_markdown())
-|    | authors     | title                                                                 |   year | source_title                                                   |   global_citations |   local_citations | doi                         |
-|---:|:------------|:----------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:----------------------------|
-|  0 | Arner DW    | fintech, regtech, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                         |
-|  1 | Barberis JN | fintech, regtech, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                         |
-|  2 | Buckley RP  | fintech, regtech, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                         |
-|  3 | Butler T    | UNDERSTANDING_REGTECH for DIGITAL_REGULATORY_COMPLIANCE               |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6 |
-|  4 | Buckley RP  | the road to REGTECH: the (astonishing) example of the EUROPEAN_UNION  |   2020 | Journal of Banking Regulation                                  |                 24 |                 5 | 10.1057/S41261-019-00104-1  |
+|    | authors   | document_title                                                                                                         |   year | source_title                                 |   global_citations |   local_citations | doi                           |
+|---:|:----------|:-----------------------------------------------------------------------------------------------------------------------|-------:|:---------------------------------------------|-------------------:|------------------:|:------------------------------|
+|  0 | Gomber P. | on the FINTECH_REVOLUTION: interpreting the FORCES of INNOVATION, DISRUPTION, and TRANSFORMATION in FINANCIAL_SERVICES |   2018 | Journal of Management Information Systems    |                576 |                 3 | 10.1080/07421222.2018.1440766 |
+|  1 | Gomber P. | DIGITAL_FINANCE and FINTECH: CURRENT_RESEARCH and FUTURE_RESEARCH_DIRECTIONS                                           |   2017 | Journal of Business Economics                |                489 |                 4 | 10.1007/S11573-017-0852-X     |
+|  2 | Hornuf L. | the EMERGENCE of the GLOBAL_FINTECH_MARKET: economic and TECHNOLOGICAL_DETERMINANTS                                    |   2019 | Small Business Economics                     |                258 |                 1 | 10.1007/S11187-018-9991-X     |
+|  3 | Gai K.    | a SURVEY on FINTECH                                                                                                    |   2018 | Journal of Network and Computer Applications |                238 |                 1 | 10.1016/J.JNCA.2017.10.011    |
+|  4 | Qiu M.    | a SURVEY on FINTECH                                                                                                    |   2018 | Journal of Network and Computer Applications |                238 |                 1 | 10.1016/J.JNCA.2017.10.011    |
 
 
 

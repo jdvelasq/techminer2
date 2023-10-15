@@ -11,7 +11,7 @@ Clean Suite
 
 * Acronym identifier:
 
->>> from techminer2.refine.words import clean_suite
+>>> from techminer2.refine.thesaurus.words import clean_suite
 >>> clean_suite(
 ...     #
 ...     # ACTIONS:
@@ -55,14 +55,12 @@ def clean_suite(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     # ====================================================================================================
     def restart():
         terms = set()
-        thesaurus_file = pathlib.Path(root_dir) / "words.txt"
+        thesaurus_file = pathlib.Path(root_dir) / "thesauri/words.the.txt"
         with open(thesaurus_file, "r", encoding="utf-8") as file:
             for line in file.readlines():
                 if line.startswith("   "):
@@ -76,7 +74,7 @@ def clean_suite(
     def create_data_frame():
         #
         # Creates a data frame with the existent thesaurus
-        thesaurus_file = os.path.join(root_dir, "words.txt")
+        thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
         thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
         data_frame = pd.DataFrame(
             {
@@ -87,8 +85,12 @@ def clean_suite(
 
         #
         # Replace hypen by " "
-        data_frame["descriptor_key"] = data_frame["descriptor_key"].str.replace("_", " ")
-        data_frame["descriptor_text"] = data_frame["descriptor_text"].str.replace("_", " ")
+        data_frame["descriptor_key"] = data_frame["descriptor_key"].str.replace(
+            "_", " "
+        )
+        data_frame["descriptor_text"] = data_frame["descriptor_text"].str.replace(
+            "_", " "
+        )
 
         return data_frame
 
@@ -138,7 +140,7 @@ def to_check():
         "--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words"
     )
 
-    thesaurus_file = os.path.join(root_dir, "words.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))

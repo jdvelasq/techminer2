@@ -38,18 +38,18 @@ Most Frequent
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| countries      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
+| countries      |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
 |:---------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| United Kingdom |          1 |     7 |             6 |                   1 |               14.29 |
-| Australia      |          2 |     7 |             7 |                   0 |                0    |
-| United States  |          3 |     6 |             4 |                   2 |               33.33 |
-| Ireland        |          4 |     5 |             4 |                   1 |               20    |
-| China          |          5 |     5 |             1 |                   4 |               80    |
-| Italy          |          6 |     5 |             3 |                   2 |               40    |
-| Germany        |          7 |     4 |             3 |                   1 |               25    |
-| Switzerland    |          8 |     4 |             3 |                   1 |               25    |
-| Bahrain        |          9 |     4 |             3 |                   1 |               25    |
-| Hong Kong      |         10 |     3 |             3 |                   0 |                0    |
+| United States  |          1 |    16 |             1 |                  15 |               93.75 |
+| China          |          2 |     8 |             3 |                   5 |               62.5  |
+| Germany        |          3 |     7 |             2 |                   5 |               71.43 |
+| South Korea    |          4 |     6 |             2 |                   4 |               66.67 |
+| Australia      |          5 |     5 |             2 |                   3 |               60    |
+| Switzerland    |          6 |     4 |             4 |                   0 |                0    |
+| United Kingdom |          7 |     3 |             1 |                   2 |               66.67 |
+| Netherlands    |          8 |     3 |             1 |                   2 |               66.67 |
+| Denmark        |          9 |     2 |             1 |                   1 |               50    |
+| Latvia         |         10 |     2 |             2 |                   0 |                0    |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/countries/most_frequent_chart.html")

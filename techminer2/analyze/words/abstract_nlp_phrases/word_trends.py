@@ -46,13 +46,13 @@ Word Trends
 
 
 >>> chart.df_.head() 
-                        rank_occ  OCC  ...  between_2022_2023  growth_percentage
-abstract_nlp_phrases                   ...                                      
-REGULATORY_TECHNOLOGY          1   19  ...                6.0              31.58
-FINANCIAL_INSTITUTIONS         2   16  ...                4.0              25.00
-FINANCIAL_CRISIS               3   12  ...                3.0              25.00
-REGULATORY_COMPLIANCE          4   10  ...                2.0              20.00
-FINANCIAL_SECTOR               5    9  ...                2.0              22.22
+                      rank_occ  OCC  ...  between_2018_2019  growth_percentage
+abstract_nlp_phrases                 ...                                      
+FINTECH                      1   32  ...               21.0              65.62
+TECHNOLOGIES                 2   23  ...               14.0              60.87
+AUTHOR                       3   18  ...               13.0              72.22
+FINANCIAL_TECHNOLOGY         4   17  ...               14.0              82.35
+FINANCIAL_INDUSTRY           5   16  ...                7.0              43.75
 <BLANKLINE>
 [5 rows x 5 columns]
 

@@ -29,7 +29,7 @@ def documents_per_item(
     records = records[
         [
             field,
-            "title",
+            "document_title",
             "year",
             "source_title",
             "global_citations",

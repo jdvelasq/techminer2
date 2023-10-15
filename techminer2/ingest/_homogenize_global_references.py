@@ -22,9 +22,7 @@ import pathlib
 
 import pandas as pd
 
-from ..refine.thesaurus.references.apply_references_thesaurus import (
-    apply_references_thesaururs,
-)
+from ..refine.thesaurus.references.apply_thesaurus import apply_thesaurus
 from ._message import message
 
 
@@ -38,7 +36,7 @@ def homogenize_global_references(root_dir):
     result = __homogeneize_references(root_dir=root_dir)
 
     if result:
-        apply_references_thesaururs(root_dir=root_dir)
+        apply_thesaurus(root_dir=root_dir)
 
 
 def __homogeneize_references(root_dir):

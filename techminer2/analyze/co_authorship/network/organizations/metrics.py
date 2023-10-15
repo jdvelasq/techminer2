@@ -29,12 +29,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                                    Degree  ...  PageRank
-Univ of Hong Kong (HKG) 3:185                            6  ...  0.105925
-European Central B (DEU) 1:021                           4  ...  0.067114
-Harvard Univ Weatherhead ctr for International ...       4  ...  0.067114
-Heinrich-Heine-Univ (DEU) 1:024                          4  ...  0.069164
-KS Strategic, London, United Kingdom (GBR) 1:021         4  ...  0.067114
+                                            Degree  ...  PageRank
+Goethe Univ. of Frankfurt (DEU) 1:576            3  ...  0.067114
+Pennsylvania State Univ. (USA) 1:576             3  ...  0.067114
+Singapore Manag. Univ. (SMU) (SGP) 1:576         3  ...  0.067114
+Univ. of Delaware (USA) 1:576                    3  ...  0.067114
+Columbia Graduate Sch. of Bus. (USA) 1:390       2  ...  0.067114
 <BLANKLINE>
 [5 rows x 4 columns]
 
@@ -72,14 +72,11 @@ def metrics(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -109,14 +106,11 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

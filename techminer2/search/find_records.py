@@ -7,8 +7,6 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-.. _search.find_records:
-
 Find records
 ===============================================================================
 
@@ -36,7 +34,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
---INFO-- The file 'data/regtech/reports/find_records.txt' was created.
+--INFO-- The file 'example/reports/find_records.txt' was created.
 
 >>> find_records(
 ...     #
@@ -54,7 +52,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
---INFO-- The file 'data/regtech/reports/find_records.txt' was created.
+--INFO-- The file 'example/reports/find_records.txt' was created.
 
 >>> find_records(
 ...     #
@@ -72,7 +70,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
---INFO-- The file 'data/regtech/reports/find_records.txt' was created.
+--INFO-- The file 'example/reports/find_records.txt' was created.
 
 """
 from .._common._read_records import read_records
@@ -122,7 +120,9 @@ def find_records(
         """Filter records by the specified criteria."""
 
         records = records.copy()
-        contains = records[criterion].str.contains(search_for, case=case, flags=flags, regex=regex)
+        contains = records[criterion].str.contains(
+            search_for, case=case, flags=flags, regex=regex
+        )
         contains = contains.dropna()
         contains = contains[contains]
         records = records.loc[contains.index, :]

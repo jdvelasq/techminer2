@@ -37,13 +37,13 @@ Collaboration Metrics
 
 
 >>> print(metrics.df_.head().to_markdown())
-| countries      |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
-|:---------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
-| United Kingdom |     7 |                199 |                35 |                    4 |                      3 |       0.43 |
-| Australia      |     7 |                199 |                31 |                    4 |                      3 |       0.43 |
-| United States  |     6 |                 59 |                19 |                    4 |                      2 |       0.33 |
-| Ireland        |     5 |                 55 |                22 |                    4 |                      1 |       0.2  |
-| China          |     5 |                 27 |                 5 |                    2 |                      3 |       0.6  |
+| countries     |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
+|:--------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
+| United States |    16 |               3189 |                 8 |                    8 |                      8 |       0.5  |
+| China         |     8 |               1085 |                 4 |                    3 |                      5 |       0.62 |
+| Germany       |     7 |               1814 |                11 |                    4 |                      3 |       0.43 |
+| South Korea   |     6 |               1192 |                 8 |                    4 |                      2 |       0.33 |
+| Australia     |     5 |                783 |                 3 |                    1 |                      4 |       0.8  |
 
 
 >>> print(metrics.prompt_) # doctest: +ELLIPSIS

@@ -37,13 +37,13 @@ Performance Metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.head().to_markdown())
-| organizations             |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:--------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| Univ of Hong Kong (HKG)   |          1 |          1 |          1 |     3 |                185 |                24 |         3 |         3 |      0.43 |
-| Univ Coll Cork (IRL)      |          2 |          5 |          2 |     3 |                 41 |                19 |         2 |         2 |      0.33 |
-| Ahlia Univ (BHR)          |          3 |         16 |         20 |     3 |                 19 |                 3 |         2 |         2 |      0.5  |
-| Coventry Univ (GBR)       |          4 |         17 |         17 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
-| Univ of Westminster (GBR) |          5 |         18 |         18 |     2 |                 17 |                 4 |         2 |         1 |      0.5  |
+| organizations                                         |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:------------------------------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| Univ. of Zurich (CHE)                                 |          1 |          8 |          3 |     3 |                434 |                 4 |         3 |         3 |      0.75 |
+| Federal Reserve Bank of Philadelphia (USA)            |          2 |         17 |         14 |     3 |                317 |                 2 |         3 |         3 |      1.5  |
+| Baylor Univ. (USA)                                    |          3 |          9 |         43 |     2 |                395 |                 0 |         2 |         2 |      2    |
+| Max Planck Inst. for Innovation and Competition (DEU) |          4 |         14 |         12 |     2 |                358 |                 2 |         2 |         2 |      0.67 |
+| Univ. of New South Wales (AUS)                        |          5 |         15 |         13 |     2 |                340 |                 2 |         2 |         2 |      0.67 |
 
 
 

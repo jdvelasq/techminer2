@@ -23,68 +23,69 @@ Find Similar Records
 ----------------------------------------------------------------------------------------------------
 SIMILARITY: 1.0
 No: 1
-AR: Teichmann F, 2023, TECHNOL SOC, V72
-TI: REGTECH_POTENTIAL_BENEFITS and CHALLENGES for BUSINESSES
+AR: Goldstein I., 2019, REV FINANC STUD, V32, P1647
+TI: to FINTECH and beyond
 <BLANKLINE>
-the last GLOBAL_FINANCIAL_CRISIS in 2008 fuelled the NEED for REGULATION
-to avoid HISTORY repeating itself. NEW_REGULATORY_TECHNOLOGIES (REGTECH)
-are helping to transform how COMPLIANCE_ISSUES are handled. this
-STUDY_AIMS to highlight the BENEFITS of REGTECH_SOLUTIONS for COMPANIES
-as well as the CHALLENGES of adopting these TECHNOLOGIES. IT also
-ADDRESSES the MARKETS in FINANCIAL_INSTRUMENTS_DIRECTIVE (MIFID)
-II_LEGISLATION, which has led to an INCREASE in the NUMBER of
-REGTECH_COMPANIES. although these SYSTEMS of TECHNOLOGY OFFER COMPELLING
-COMPLIANCE_TOOLS, they also pose SIGNIFICANT_RISKS. for this REASON, this
-STUDY_AIMS to draw ATTENTION to the OPPORTUNITIES and POTENTIAL_PITFALLS
-associated with REGTECH and propose RECOMMENDATIONS for addressing the
-CHALLENGES related to IMPLEMENTING REGTECH_SOLUTIONS.  2022 ELSEVIER_LTD
-<BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.302
-No: 45
-AR: Butler T, 2018, J RISK MANG FINANCIAL INST, V11, P19
-TI: on the ROLE of ontology based REGTECH for MANAGING RISK and COMPLIANCE_REPORTING in the AGE of REGULATION
-<BLANKLINE>
-this PAPER_ADDRESSES IMPORTANT_QUESTIONS such as: what CHALLENGES are
-presented by NEW_REGULATION to BANKS_INFRASTRUCTURE, RISK_MANAGEMENT and
-PROFITABILITY, and how can these CHALLENGES be best addressed? IT also
-examines the POTENTIAL_IMPACT_FINTECH has on the RISKINESS of BANKS and
-proposes REGTECH as the SOLUTION. following a BRIEF_OVERVIEW of the
-IMPACT and COSTS of REGULATION since the FINANCIAL_CRISIS, the
-PAPER_INTRODUCES_REGTECH in the CONTEXT of CHALLENGES FACING
-FINANCIAL_INSTITUTIONS and the LIMITATIONS of GOVERNANCE, RISK and
-COMPLIANCE (GRC) SYSTEMS. this PAPERS MAIN_CONTRIBUTION is in its
-DELINEATION of a REGULATORY_COMPLIANCE and RISK_ONTOLOGY, the
-TECHNOLOGIES that underpin IT and the related OBJECTIVE RISK CONTROL
-(ORC) MODEL. the PAPER_ARGUES that these provide a PLATFORM on which
-REGTECH can perform EFFECTIVE_RISK_MANAGEMENT and COMPLIANCE_REPORTING in
-a global post CRISIS REGULATORY_ENVIRONMENT.  HENRY_STEWART_PUBLICATIONS
-1752 8887 (2018).
+FINTECH is about the INTRODUCTION of NEW_TECHNOLOGIES into the
+FINANCIAL_SECTOR, and IT is now revolutionizing the FINANCIAL_INDUSTRY.
+in 2017, when the academic FINANCE COMMUNITY was not actively researching
+FINTECH, the EDITORIAL_TEAM of the REVIEW of FINANCIAL_STUDIES launched a
+COMPETITION to develop RESEARCH_PROPOSALS focused on this TOPIC. this
+SPECIAL_ISSUE is the RESULT. in this INTRODUCTORY_ARTICLE, we describe
+the RECENT_FINTECH_PHENOMENON and the NOVEL_EDITORIAL_PROTOCOL employed
+for this SPECIAL_ISSUE following the registered REPORTS_FORMAT.WE DISCUSS
+what we learned from the submitted PROPOSALS about the FIELD of FINTECH
+and which ONES we selected to be completed and ultimately come out in
+this SPECIAL_ISSUE. we also provide several OBSERVATIONS to HELP GUIDE
+FUTURE_RESEARCH in the EMERGING AREA of FINTECH. (JEL_G00, G21, G23, G28,
+L51, O31).  the AUTHOR(S) 2019.
 <BLANKLINE>
 ----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.268
-No: 44
-AR: Nasir F, 2019, J ADV RES DYN CONTROL SYST, V11, P912
-TI: REGTECH as a SOLUTION for COMPLIANCE_CHALLENGE: a REVIEW_ARTICLE
+SIMILARITY: 0.217
+No: 32
+AR: Zavolokina L., 2016, INT CONF INF SYST ICIS
+TI: FINTECH   what'S in a NAME?
 <BLANKLINE>
-due to the GLOBAL_FINANCIAL_CRISIS of 2007 2008, several
-FINANCIAL_REGULATIONS are BROUGHT by the REGULATORS with high REPORTING
-STANDARDS, which are to be followed by FINANCIAL_INSTITUTIONS. every
-YEAR, these REQUIREMENTS are increasing and IT has BECOME a CHALLENGE for
-FINANCIAL_INSTITUTIONS to meet the REQUIREMENTS manually, due to the
-HIGH_COST and increasing NUMBER of COMPLEX_COMPLIANCE_REQUIREMENTS. these
-COMPLIANCE CHALLENGES created the MARKET for REGTECH, which is a PART of
-FINTECH_INDUSTRY, where the REGTECH_INDUSTRY PROMISE to ACT as a SOLUTION
-to reduce COMPLIANCE_COST and BURDEN for FINANCIAL_INSTITUTIONS as well
-as REGULATORS. the PURPOSE of this PAPER is to PRESENT a
-SYSTEMATIC_LITERATURE_REVIEW conducted, on applying REGTECH to reduce
-COMPLIANCE_COST and BURDEN, while focusing on PROMISING_REGTECH_TOOLS and
-VARIOUS_BENEFITS and CHALLENGES of REGTECH. the AREA of REGTECH is very
-recent, which RESULTS in a GAP in LITERATURE and RESEARCH for the PURPOSE
-of this REVIEW. FUTURE_AREAS for RESEARCH are provided in this PAPER.
-2019, INSTITUTE of advanced SCIENTIFIC_RESEARCH, INC. all RIGHTS
-reserved.
+FINTECH, the WORD which originates from MARRIAGE of "FINANCE" and
+"TECHNOLOGY", designates currently a NOVEL, innovative and EMERGING FIELD
+which ATTRACTS_ATTENTION from the PUBLICITY. at the MOMENT there is no
+UNIVERSAL_UNDERSTANDING and DEFINITION of FINTECH in the RESEARCH,
+however, the TOPIC is widely addressed by the english_ and
+german_speaking PRESS. in this STUDY we AIM to make INSIGHTS into how the
+PRESS and other POPULAR_MEDIA UNDERSTAND and FRAME_FINTECH, discussing
+DEFINITIONS that represents the MEANING of IT for the PRESS, and deliver
+the CONCEPTUAL_FRAMEWORK to be used in RESEARCH and
+SCIENTIFIC_LITERATURE. in doing so, we also IDENTIFY_DRIVERS of FINTECH
+and put them in the CONTEXT of financial and DIGITAL_INNOVATION_RESEARCH.
+thereby, we provide OBJECTIVE UNDERSTANDING of FINTECH, how IT is
+reflected in the POPULAR_MEDIA.
 <BLANKLINE>
+----------------------------------------------------------------------------------------------------
+SIMILARITY: 0.217
+No: 3
+AR: Zavolokina L., 2016, FINANCIAL INNOV, V2
+TI: the FINTECH_PHENOMENON: ANTECEDENTS of FINANCIAL_INNOVATION perceived by the POPULAR_PRESS
+<BLANKLINE>
+the FINANCIAL_INDUSTRY has been strongly influenced by DIGITALIZATION in
+the PAST few YEARS reflected by the EMERGENCE of FINTECH, which
+represents the MARRIAGE of FINANCE and INFORMATION_TECHNOLOGY. FINTECH
+provides OPPORTUNITIES for the CREATION of NEW_SERVICES and
+BUSINESS_MODELS and POSES CHALLENGES to traditional
+FINANCIAL_SERVICE_PROVIDERS. therefore, FINTECH has become a SUBJECT of
+DEBATE among PRACTITIONERS, INVESTORS, and RESEARCHERS and is highly
+visible in the POPULAR_MEDIA. in this STUDY, we unveil the DRIVERS
+motivating the FINTECH_PHENOMENON perceived by the ENGLISH and german
+POPULAR_PRESS including the SUBJECTS discussed in the CONTEXT of FINTECH.
+this STUDY is the first one to reflect the MEDIA_PERSPECTIVE on the
+FINTECH_PHENOMENON in the RESEARCH. in doing so, we extend the growing
+KNOWLEDGE on FINTECH and CONTRIBUTE to a COMMON_UNDERSTANDING in the
+financial and DIGITAL_INNOVATION_LITERATURE. these STUDY_CONTRIBUTES to
+RESEARCH in the AREAS of INFORMATION_SYSTEMS, FINANCE and
+interdisciplinary SOCIAL_SCIENCES. moreover, IT BRINGS VALUE to
+PRACTITIONERS (ENTREPRENEURS, INVESTORS, REGULATORS, ETC.), who explore
+the FIELD of FINTECH.  2016, the AUTHOR(S).
+<BLANKLINE>
+
 
 
 
@@ -151,7 +152,7 @@ def find_similar_records(
         print("SIMILARITY: " + str(round(row.similarity, 3)))
         print("No: " + str(row.art_no))
         print("AR: " + row.article)
-        print("TI: " + row.title)
+        print("TI: " + row.document_title)
         print()
         print(textwrap.fill(str(row.abstract), width=TEXTWRAP_WIDTH))
         print()
@@ -178,7 +179,9 @@ def paragraph_to_meaningful_words(records):
             return (lemmatizer.lemmatize(tag[0], pos="a"), tag[1])
 
     records = records.copy()
-    records = records[["art_no", "article", "title", "abstract", "paragraph"]].dropna()
+    records = records[
+        ["art_no", "article", "document_title", "abstract", "paragraph"]
+    ].dropna()
 
     #
     # Split the  abstract in sentences
@@ -201,9 +204,13 @@ def paragraph_to_meaningful_words(records):
         ]
     )
 
-    records["paragraph"] = records["paragraph"].apply(lambda tags: [to_lemma(tag) for tag in tags])
+    records["paragraph"] = records["paragraph"].apply(
+        lambda tags: [to_lemma(tag) for tag in tags]
+    )
 
-    records["paragraph"] = records["paragraph"].apply(lambda tags: [tag[0] for tag in tags])
+    records["paragraph"] = records["paragraph"].apply(
+        lambda tags: [tag[0] for tag in tags]
+    )
 
     records["paragraph"] = records["paragraph"].apply(set)
     records["paragraph"] = records["paragraph"].apply(sorted)

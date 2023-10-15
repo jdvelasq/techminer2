@@ -12,7 +12,7 @@ Local Impact --- G-Index
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='source_abbr',
+...     field='abbr_source_title',
 ...     metric="g_index",
 ...     #
 ...     # CHART PARAMS:
@@ -37,18 +37,18 @@ Local Impact --- G-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| source_abbr                   |   h_index |   g_index |   m_index |
-|:------------------------------|----------:|----------:|----------:|
-| J BANK REGUL                  |         2 |         2 |      0.5  |
-| J ECON BUS                    |         1 |         1 |      0.17 |
-| NORTHWEST J INTL LAW BUS      |         1 |         1 |      0.14 |
-| PALGRAVE STUD DIGIT BUS ENABL |         1 |         1 |      0.2  |
-| DUKE LAW J                    |         1 |         1 |      0.12 |
-| J RISK FINANC                 |         1 |         1 |      0.17 |
-| J MONEY LAUND CONTROL         |         1 |         1 |      0.25 |
-| J FINANC CRIME                |         2 |         1 |      0.5  |
-| FINANCIAL INNOV               |         1 |         1 |      0.5  |
-| ICEIS - PROC INT CONF ENTERP  |         1 |         1 |      0.25 |
+| abbr_source_title   |   h_index |   g_index |   m_index |
+|:--------------------|----------:|----------:|----------:|
+| J. Econ. Bus.       |         3 |         3 |      1.5  |
+| J Manage Inf Syst   |         2 |         2 |      1    |
+| Rev. Financ. Stud.  |         2 |         2 |      2    |
+| Ind Manage Data Sys |         2 |         2 |      1    |
+| Electron. Mark.     |         2 |         2 |      1    |
+| Financial Innov.    |         2 |         2 |      0.5  |
+| Financ. Manage.     |         2 |         2 |      2    |
+| Sustainability      |         2 |         2 |      2    |
+| Bus. Horiz.         |         1 |         1 |      0.5  |
+| J. Bus. Econ.       |         1 |         1 |      0.33 |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/sources/g_index_chart.html")

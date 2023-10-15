@@ -28,19 +28,21 @@ Highlight phrase
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-they highlight the limited adoption of REGULATORY_TECHNOLOGY (REGTECH) and
-electronic signatures in palestine's BANKING sector, proposing the
-establishment of an independent ELECTRONIC_TRANSACTIONS_UNIT as a solution.
-they emphasize the need for REGTECH in achieving REGULATORY_COMPLIANCE,
-RISK_MANAGEMENT, and REPORTING in the face of changing regulations and
-digital dynamics. additionally, the papers delve into ethical concerns
-surrounding the application of ARTIFICIAL_INTELLIGENCE (ai) in FINANCE and
-suggest that REGTECH, combined with ISLAMIC_FINANCE principles, can
-mitigate these ETHICAL_ISSUES. overall, the papers underscore the
-transformative potential of REGTECH while discussing its benefits,
-challenges, and implications for diverse sectors, ultimately aiming to
-improve COMPLIANCE, efficiency, and ethical practices in the
+they highlight the limited ADOPTION of REGULATORY_TECHNOLOGY (REGTECH)
+and electronic signatures in palestine'S BANKING sector, proposing the
+establishment of an independent electronic transactions unit as a
+solution. they emphasize the NEED for REGTECH in achieving regulatory
+COMPLIANCE, RISK_MANAGEMENT, and reporting in the face of changing
+regulations and digital dynamics. additionally, the papers delve into
+ethical concerns surrounding the APPLICATION of ARTIFICIAL_INTELLIGENCE
+(AI) in FINANCE and suggest that REGTECH, combined with islamic FINANCE
+principles, can mitigate these ethical issues. overall, the papers
+underscore the transformative POTENTIAL of REGTECH while discussing its
+BENEFITS, CHALLENGES, and IMPLICATIONS for diverse sectors, ultimately
+aiming to improve COMPLIANCE, EFFICIENCY, and ethical practices in the
 FINANCIAL_INDUSTRY.
+
+
 
 """
 import os
@@ -51,7 +53,7 @@ import textwrap
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def highlight_phrase(

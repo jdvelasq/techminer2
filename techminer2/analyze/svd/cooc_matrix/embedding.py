@@ -38,15 +38,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                   DIM_0      DIM_1  ...     DIM_3     DIM_4
-nlp_phrases                                          ...                    
-REGULATORY_TECHNOLOGY 20:276   24.062092  -5.351854  ...  1.635141 -1.135873
-FINANCIAL_INSTITUTIONS 15:194  14.735496  10.551467  ...  0.094923  0.197063
-FINANCIAL_SYSTEM 08:340        11.036082  -2.278069  ... -3.355966 -0.353362
-FINANCIAL_REGULATION 07:360     8.005518   1.534439  ...  1.145890 -2.420147
-REGULATORY_COMPLIANCE 07:198    7.694193   1.454806  ... -2.730564  2.309500
-<BLANKLINE>
-[5 rows x 5 columns]
+                                  DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+nlp_phrases                                                                    
+FINTECH 40:6331               61.204459 -5.451855 -2.678751 -2.755433  2.281138
+TECHNOLOGIES 23:3317          38.639767 -4.804213  9.913155 -3.231461 -1.608852
+AUTHOR 18:2443                32.261454 -0.167374 -1.748088  7.199162 -2.934915
+FINANCIAL_INDUSTRY 17:3704    27.627180  5.953923  6.172145  3.950076  3.441536
+FINANCIAL_TECHNOLOGY 17:2225  31.796134 -2.831143 -4.256727 -5.413894 -4.614704
 
 """
 from ...._common.factor_analysis import FactorAnalyzer

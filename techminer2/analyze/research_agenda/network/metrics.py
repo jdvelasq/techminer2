@@ -32,13 +32,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                             Degree  Betweenness  Closeness  PageRank
-FINANCIAL_REGULATION 04:035       4     0.333333   0.595238  0.239634
-REPORTING 02:001                  3     0.190476   0.510204  0.180383
-FINANCE 02:001                    2     0.000000   0.446429  0.120781
-CHARITYTECH 02:017                1     0.000000   0.142857  0.125000
-DATA_PROTECTION 02:027            1     0.000000   0.357143  0.069672
-
+                              Degree  Betweenness  Closeness  PageRank
+FINTECH 31:5168                   19     0.689084   1.000000  0.233873
+FINANCIAL_SERVICES 04:0667         8     0.043860   0.633333  0.067482
+PEER_TO_PEER_LENDING 03:0324       6     0.011696   0.593750  0.055815
+REGTECH 02:0266                    6     0.016569   0.593750  0.045281
+BLOCKCHAIN 03:0369                 5     0.013645   0.575758  0.045465
 
 
 
@@ -78,17 +77,13 @@ def metrics(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.30
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.30, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -149,17 +144,13 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_range=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

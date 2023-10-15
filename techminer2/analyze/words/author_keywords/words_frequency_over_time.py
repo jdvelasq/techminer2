@@ -40,13 +40,15 @@ Word Frequency over Time
 
     
 >>> print(words.df_.to_markdown())
-| author_keywords              |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGTECH 28:329               |      0 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| FINTECH 12:249               |      0 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| REGULATORY_TECHNOLOGY 07:037 |      0 |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
-| COMPLIANCE 07:030            |      0 |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| REGULATION 05:164            |      0 |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| author_keywords                         |   2015 |   2016 |   2017 |   2018 |   2019 |
+|:----------------------------------------|-------:|-------:|-------:|-------:|-------:|
+| FINTECH 31:5168                         |      0 |      5 |      8 |     12 |      6 |
+| INNOVATION 07:0911                      |      0 |      3 |      3 |      1 |      0 |
+| FINANCIAL_SERVICES 04:0667              |      0 |      1 |      0 |      3 |      0 |
+| FINANCIAL_TECHNOLOGY 04:0551            |      0 |      0 |      1 |      1 |      2 |
+| MOBILE_FINTECH_PAYMENT_SERVICES 04:0485 |      0 |      1 |      0 |      2 |      1 |
+
+
 
 >>> print(words.prompt_) # doctest: +ELLIPSIS
 Your task is ...

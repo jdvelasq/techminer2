@@ -13,7 +13,7 @@ Production over Time
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
-...     field="source_abbr",
+...     field="abbr_source_title",
 ...     cumulative=False,
 ...     #
 ...     # CHART PARAMS:
@@ -39,18 +39,18 @@ Production over Time
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(terms.df_.to_markdown())
-| source_abbr                         |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
-| J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
-| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
-| INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| ROUTLEDGE HANDBFINANCIAL TECH 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
-| J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
-| NORTHWEST J INTL LAW BUS 1:150      |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
-| PALGRAVE STUD DIGIT BUS ENABL 1:033 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
-| DUKE LAW J 1:030                    |      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |
+| abbr_source_title         |   2015 |   2016 |   2017 |   2018 |   2019 |
+|:--------------------------|-------:|-------:|-------:|-------:|-------:|
+| J. Econ. Bus. 3:422       |      0 |      0 |      0 |      3 |      0 |
+| J Manage Inf Syst 2:696   |      0 |      0 |      0 |      2 |      0 |
+| Rev. Financ. Stud. 2:432  |      0 |      0 |      0 |      0 |      2 |
+| Ind Manage Data Sys 2:386 |      0 |      0 |      0 |      1 |      1 |
+| Electron. Mark. 2:287     |      0 |      0 |      0 |      2 |      0 |
+| Financial Innov. 2:190    |      0 |      1 |      1 |      0 |      0 |
+| Financ. Manage. 2:161     |      0 |      0 |      0 |      0 |      2 |
+| Sustainability 2:150      |      0 |      0 |      0 |      0 |      2 |
+| Bus. Horiz. 1:557         |      0 |      0 |      0 |      1 |      0 |
+| J. Bus. Econ. 1:489       |      0 |      0 |      1 |      0 |      0 |
 
 
 
@@ -58,25 +58,23 @@ Production over Time
 Your task is ...
 
 >>> print(terms.metrics_.head().to_markdown())
-|    | source_abbr        |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
-|---:|:-------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | J BANK REGUL       |   2020 |     1 |         1 |                 24 |                 5 |     4 |                       6     |                      1.25  |
-|  1 | J BANK REGUL       |   2021 |     1 |         2 |                 11 |                 4 |     3 |                       3.667 |                      1.333 |
-|  2 | J FINANC CRIME     |   2020 |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
-|  3 | J FINANC CRIME     |   2022 |     1 |         2 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
-|  4 | STUD COMPUT INTELL |   2021 |     2 |         2 |                  1 |                 1 |     3 |                       0.333 |                      0.333 |
+|    | abbr_source_title   |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
+|---:|:--------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | J. Econ. Bus.       |   2018 |     3 |         3 |                422 |                 3 |     2 |                       211   |                        1.5 |
+|  1 | J Manage Inf Syst   |   2018 |     2 |         2 |                696 |                 4 |     2 |                       348   |                        2   |
+|  2 | Rev. Financ. Stud.  |   2019 |     2 |         2 |                432 |                 0 |     1 |                       432   |                        0   |
+|  3 | Ind Manage Data Sys |   2018 |     1 |         1 |                161 |                 2 |     2 |                        80.5 |                        1   |
+|  4 | Ind Manage Data Sys |   2019 |     1 |         2 |                225 |                 0 |     1 |                       225   |                        0   |
 
 
 >>> print(terms.documents_.head().to_markdown())
-|    | source_abbr                   | title                                                                                                             |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
-|---:|:------------------------------|:------------------------------------------------------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
-|  0 | J ECON BUS                    | FINTECH and REGTECH: impact on regulators and banks                                                               |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  1 | NORTHWEST J INTL LAW BUS      | fintech, regtech, and the reconceptualization of FINANCIAL_REGULATION                                             |   2017 | Northwestern Journal of International Law and Business         |                150 |                16 | nan                            |
-|  2 | PALGRAVE STUD DIGIT BUS ENABL | UNDERSTANDING_REGTECH for DIGITAL_REGULATORY_COMPLIANCE                                                           |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
-|  3 | DUKE LAW J                    | adaptive FINANCIAL_REGULATION and regtech: a CONCEPT_ARTICLE on REALISTIC_PROTECTION for victims of BANK_FAILURES |   2016 | Duke Law Journal                                               |                 30 |                 8 | nan                            |
-|  4 | J BANK REGUL                  | the road to REGTECH: the (astonishing) example of the EUROPEAN_UNION                                              |   2020 | Journal of Banking Regulation                                  |                 24 |                 5 | 10.1057/S41261-019-00104-1     |
-
-
+|    | abbr_source_title   | document_title                                                                                                         |   year | source_title                              |   global_citations |   local_citations | doi                           |
+|---:|:--------------------|:-----------------------------------------------------------------------------------------------------------------------|-------:|:------------------------------------------|-------------------:|------------------:|:------------------------------|
+|  0 | J Manage Inf Syst   | on the FINTECH_REVOLUTION: interpreting the FORCES of INNOVATION, DISRUPTION, and TRANSFORMATION in FINANCIAL_SERVICES |   2018 | Journal of Management Information Systems |                576 |                 3 | 10.1080/07421222.2018.1440766 |
+|  1 | Bus. Horiz.         | FINTECH: ECOSYSTEM, BUSINESS_MODELS, INVESTMENT_DECISIONS, and CHALLENGES                                              |   2018 | Business Horizons                         |                557 |                 2 | 10.1016/J.BUSHOR.2017.09.003  |
+|  2 | J. Bus. Econ.       | DIGITAL_FINANCE and FINTECH: CURRENT_RESEARCH and FUTURE_RESEARCH_DIRECTIONS                                           |   2017 | Journal of Business Economics             |                489 |                 4 | 10.1007/S11573-017-0852-X     |
+|  3 | Rev. Financ. Stud.  | how valuable is FINTECH_INNOVATION?                                                                                    |   2019 | Review of Financial Studies               |                235 |                 0 | 10.1093/RFS/HHY130            |
+|  4 | Ind Manage Data Sys | ARTIFICIAL_INTELLIGENCE in FINTECH: UNDERSTANDING ROBO_ADVISORS ADOPTION among CUSTOMERS                               |   2019 | Industrial Management and Data Systems    |                225 |                 0 | 10.1108/IMDS-08-2018-0368     |
 
 
 """

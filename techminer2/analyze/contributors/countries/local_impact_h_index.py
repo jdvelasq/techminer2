@@ -40,17 +40,16 @@ Local Impact --- H-Index
 >>> print(items.df_.to_markdown())
 | countries      |   h_index |   g_index |   m_index |
 |:---------------|----------:|----------:|----------:|
-| Australia      |         4 |         3 |      0.57 |
-| United Kingdom |         4 |         3 |      0.67 |
-| Hong Kong      |         3 |         3 |      0.43 |
-| United States  |         3 |         2 |      0.38 |
-| Ireland        |         3 |         2 |      0.5  |
-| Germany        |         3 |         2 |      0.5  |
-| China          |         3 |         2 |      0.43 |
-| Switzerland    |         2 |         2 |      0.29 |
-| Luxembourg     |         2 |         2 |      0.5  |
-| Bahrain        |         2 |         2 |      0.5  |
-
+| United States  |        16 |        10 |      5.33 |
+| China          |         8 |         8 |      2    |
+| Germany        |         7 |         7 |      2.33 |
+| South Korea    |         6 |         6 |      1.5  |
+| Australia      |         5 |         5 |      1.67 |
+| Switzerland    |         4 |         4 |      1    |
+| United Kingdom |         3 |         3 |      1    |
+| Netherlands    |         3 |         3 |      1    |
+| Denmark        |         2 |         2 |      0.67 |
+| Latvia         |         2 |         2 |      0.5  |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/countries/h_index_chart.html")

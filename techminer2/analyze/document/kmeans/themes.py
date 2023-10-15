@@ -33,33 +33,24 @@ Themes
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(x.to_markdown())
-|    | TH_0                    | TH_1                          | TH_2            | TH_3            | TH_4              |
-|---:|:------------------------|:------------------------------|:----------------|:----------------|:------------------|
-|  0 | APPLICATION 15:210      | NEW_TECHNOLOGIES 22:381       | CHANGING 07:183 | base 13:061     | REGTECH 48:557    |
-|  1 | AUTHOR 13:243           | REGULATORY_TECHNOLOGY 20:276  |                 | propose 11:188  | REGULATORS 30:466 |
-|  2 | FINTECH 12:364          | COMPLIANCE 18:368             |                 | reserve 11:184  | CHALLENGE 16:203  |
-|  3 | FINDINGS 12:120         | BANK 18:305                   |                 | RESEARCH 10:212 | develop 13:254    |
-|  4 | FINANCIAL_SECTOR 09:196 | FINANCIAL_INSTITUTIONS 16:224 |                 | explore 08:037  | well 11:194       |
-|  5 | FINANCE 09:030          | PAPER 15:371                  |                 |                 | limit 10:087      |
-|  6 | suggest 08:238          | APPROACH 14:360               |                 |                 | STUDY 10:068      |
-|  7 | BUSINESS 08:027         | FINANCIAL_CRISIS 12:235       |                 |                 | increase 08:171   |
-|  8 | PRACTICE 07:187         | REGULATORY_COMPLIANCE 11:360  |                 |                 | enhance 08:049    |
-|  9 |                         | DATA 11:221                   |                 |                 | CHANGE 07:331     |
-| 10 |                         | RIGHTS 11:186                 |                 |                 |                   |
-| 11 |                         | DEVELOPMENT 10:385            |                 |                 |                   |
-| 12 |                         | PURPOSE 10:212                |                 |                 |                   |
-| 13 |                         | apply 10:169                  |                 |                 |                   |
-| 14 |                         | POTENTIAL 09:387              |                 |                 |                   |
-| 15 |                         | REPORTING 09:255              |                 |                 |                   |
-| 16 |                         | improve 09:183                |                 |                 |                   |
-| 17 |                         | SOLUTION 09:060               |                 |                 |                   |
-| 18 |                         | reduce 09:054                 |                 |                 |                   |
-| 19 |                         | FINANCIAL_REGULATION 08:361   |                 |                 |                   |
-| 20 |                         | address 08:167                |                 |                 |                   |
-| 21 |                         | RISKS 08:043                  |                 |                 |                   |
-| 22 |                         | FINANCIAL_SYSTEM 07:363       |                 |                 |                   |
-| 23 |                         | IMPACT 07:203                 |                 |                 |                   |
-| 24 |                         | make 07:190                   |                 |                 |                   |
+|    | TH_0               | TH_1                | TH_2                | TH_4                | TH_5             |
+|---:|:-------------------|:--------------------|:--------------------|:--------------------|:-----------------|
+|  0 | © 42:6879          | technology 39:6527  | fintech 50:8135     | innovation 19:3070  | increase 11:1716 |
+|  1 | study 23:3158      | new 26:4793         | financial 44:7123   | development 19:2499 | company 09:1671  |
+|  2 | model 19:3820      | service 26:4327     | research 17:2383    | paper 14:2240       |                  |
+|  3 | author 18:2443     | industry 23:4517    | finance 14:2199     | well 13:1908        |                  |
+|  4 | data 17:2392       | market 17:3446      | make 13:1355        | offer 13:1850       |                  |
+|  5 | result 14:2183     | sector 13:2748      | consumer 12:1472    | bank 13:1843        |                  |
+|  6 | impact 13:2198     | institution 13:2648 | traditional 11:2254 | apply 11:2052       |                  |
+|  7 | propose 13:1711    | business 13:2615    | discuss 10:2133     | aim 10:1111         |                  |
+|  8 | system 12:1826     | information 12:2653 | area 09:1646        | banking 10:1032     |                  |
+|  9 | customer 11:2437   | risk 11:1636        |                     |                     |                  |
+| 10 | identify 11:1435   | process 10:2113     |                     |                     |                  |
+| 11 | digital 10:1855    | change 10:2050      |                     |                     |                  |
+| 12 | finding 10:1362    | “ 09:1743           |                     |                     |                  |
+| 13 | investment 09:2077 | ” 09:1743           |                     |                     |                  |
+| 14 |                    | focus 09:1631       |                     |                     |                  |
+| 15 |                    | potential 09:1570   |                     |                     |                  |
 
 
 

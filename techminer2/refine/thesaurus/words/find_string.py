@@ -13,7 +13,7 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.words import find_string
+>>> from techminer2.refine.thesaurus.words import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
@@ -24,7 +24,7 @@ Finds a string in the terms of a thesaurus.
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file data/regtech/words.txt has been reordered.
+--INFO-- The file example/thesauri/words.the.txt has been reordered.
 
 """
 import os.path
@@ -34,7 +34,7 @@ import pandas as pd
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def find_string(

@@ -57,12 +57,12 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                          CL_0  ...            CL_5
-0            REGULATION 05:164  ...  REGTECH 28:329
-1    FINANCIAL_SERVICES 04:168  ...                
-2  FINANCIAL_REGULATION 04:035  ...                
-3       RISK_MANAGEMENT 03:014  ...                
-4            INNOVATION 03:012  ...                
+                                      CL_0  ...             CL_5
+0  MOBILE_FINTECH_PAYMENT_SERVICES 04:0485  ...  FINTECH 31:5168
+1              FINANCIAL_INCLUSION 03:0590  ...                 
+2                     CASE_STUDIES 03:0442  ...                 
+3                       BLOCKCHAIN 03:0369  ...                 
+4                     CROWDFUNDING 03:0335  ...                 
 <BLANKLINE>
 [5 rows x 6 columns]
 
@@ -181,6 +181,6 @@ def communities(
         distance_threshold=distance_threshold,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.communities()

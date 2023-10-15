@@ -23,13 +23,13 @@ Trending Words per Year
 ...     cited_by_filter=None,
 ... )
 >>> words.df_.head()
-year             OCC  year_q1  year_med  ...  rn    height  width
-words                                    ...                     
-ACCOUNT            1     2016      2016  ...   1  0.150000      1
-BANK_EXECUTIVES    1     2016      2016  ...   2  0.150000      1
-BANK_FAILURES      1     2016      2016  ...   3  0.150000      1
-CHOICES            1     2016      2016  ...   4  0.150000      1
-nearly             2     2016      2016  ...   0  0.167447      2
+year           OCC  year_q1  year_med  ...  rn    height  width
+words                                  ...                     
+london           1     2015      2015  ...   0  0.150000      1
+communication    3     2016      2016  ...   4  0.183469      1
+represent        4     2016      2016  ...   3  0.200204      1
+provider         4     2016      2016  ...   0  0.200204      2
+cover            4     2016      2016  ...   1  0.200204      2
 <BLANKLINE>
 [5 rows x 8 columns]
 

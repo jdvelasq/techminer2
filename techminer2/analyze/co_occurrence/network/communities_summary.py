@@ -36,12 +36,13 @@ Communities Summary
 ...     cited_by_filter=(None, None),
 ... )
   Cluster  ...                                              Terms
-0    CL_0  ...  FINTECH; FINANCIAL_INCLUSION; CASE_STUDIES; BL...
+0    CL_0  ...  FINTECH; MOBILE_FINTECH_PAYMENT_SERVICES; FINA...
 1    CL_1  ...  INNOVATION; DIGITALIZATION; BANKING; FINANCIAL...
 2    CL_2  ...  FINANCIAL_SERVICES; FINANCIAL_TECHNOLOGY; BUSI...
 3    CL_3  ...  SHADOW_BANKING; PEER_TO_PEER_LENDING; MARKETPL...
 <BLANKLINE>
 [4 rows x 4 columns]
+
 
 
 """
@@ -86,8 +87,7 @@ def communities_summary(
     textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -121,8 +121,7 @@ def communities_summary(
         textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

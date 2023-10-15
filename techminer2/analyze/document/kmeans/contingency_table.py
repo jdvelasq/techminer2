@@ -32,28 +32,28 @@ Contingency Table
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head(20)
-theme                          TH_0  TH_1  TH_2  TH_3  TH_4  TH_5
-words                                                            
-REGTECH 48:557                    7    10     3     9    17     2
-REGULATORS 30:466                 3    10     2     3    11     1
-NEW_TECHNOLOGIES 22:381           3     8     0     1     8     2
-REGULATORY_TECHNOLOGY 20:276      6     7     0     2     5     0
-COMPLIANCE 18:368                 1    10     1     2     3     1
-BANK 18:305                       3     4     1     3     4     3
-FINANCIAL_INSTITUTIONS 16:224     2     6     2     2     4     0
-CHALLENGE 16:203                  1     5     2     1     7     0
-PAPER 15:371                      0     6     1     3     2     3
-APPLICATION 15:210                5     3     0     4     3     0
-APPROACH 14:360                   2     4     2     3     3     0
-develop 13:254                    0     2     2     3     4     2
-AUTHOR 13:243                     6     2     0     2     2     1
-base 13:061                       1     2     2     6     2     0
-FINTECH 12:364                    3     3     0     3     3     0
-FINANCIAL_CRISIS 12:235           0     5     1     1     5     0
-FINDINGS 12:120                   5     0     0     2     2     3
-REGULATORY_COMPLIANCE 11:360      3     7     0     1     0     0
-DATA 11:221                       1     3     0     2     2     3
-well 11:194                       0     4     0     1     5     1
+theme                TH_0  TH_1  TH_2  TH_3  TH_4  TH_5
+words                                                  
+fintech 50:8135        10    10    15     1     7     7
+financial 44:7123       9     9    13     1     7     5
+© 42:6879              10     9     9     1     6     7
+technology 39:6527      9    10     7     1     7     5
+new 26:4793             1    10     6     1     6     2
+service 26:4327         6     8     1     1     6     4
+industry 23:4517        2     8     4     0     6     3
+study 23:3158           8     1     3     1     6     4
+model 19:3820           6     4     2     1     4     2
+innovation 19:3070      1     3     6     1     7     1
+development 19:2499     2     2     3     0     6     6
+author 18:2443          5     0     5     1     3     4
+market 17:3446          0     5     3     0     4     5
+data 17:2392            7     2     6     1     0     1
+research 17:2383        4     2     5     1     2     3
+paper 14:2240           4     1     3     1     5     0
+finance 14:2199         1     4     7     0     0     2
+result 14:2183          6     1     1     1     4     1
+sector 13:2748          2     4     2     1     2     2
+institution 13:2648     0     6     1     0     4     2
 
 
 """

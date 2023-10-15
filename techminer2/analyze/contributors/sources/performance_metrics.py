@@ -13,7 +13,7 @@ Performance metrics
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='source_abbr',
+...     field='abbr_source_title',
 ...     metric="OCCGC",
 ...     #
 ...     # CHART PARAMS:
@@ -38,13 +38,13 @@ Performance metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.head().to_markdown())
-| source_abbr                   |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| J BANK REGUL                  |          1 |          3 |          4 |     2 |                 35 |                 9 |         2 |         2 |      0.5  |
-| J FINANC CRIME                |          2 |          8 |          8 |     2 |                 13 |                 4 |         2 |         1 |      0.5  |
-| STUD COMPUT INTELL            |          3 |         28 |         23 |     2 |                  1 |                 1 |         1 |         1 |      0.33 |
-| FOSTER INNOVCOMPET WITH FINTE |          4 |         30 |         31 |     2 |                  1 |                 0 |         1 |         1 |      0.25 |
-| INT CONF INF TECHNOL SYST INN |          5 |         37 |         37 |     2 |                  0 |                 0 |         0 |         0 |      0    |
+| abbr_source_title   |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:--------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| J. Econ. Bus.       |          1 |          5 |          5 |     3 |                422 |                 3 |         3 |         3 |       1.5 |
+| J Manage Inf Syst   |          2 |          1 |          1 |     2 |                696 |                 4 |         2 |         2 |       1   |
+| Rev. Financ. Stud.  |          3 |          4 |         20 |     2 |                432 |                 0 |         2 |         2 |       2   |
+| Ind Manage Data Sys |          4 |          7 |          8 |     2 |                386 |                 2 |         2 |         2 |       1   |
+| Electron. Mark.     |          5 |          9 |         11 |     2 |                287 |                 1 |         2 |         2 |       1   |
 
 
 

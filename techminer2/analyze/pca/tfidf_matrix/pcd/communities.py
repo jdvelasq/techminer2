@@ -51,15 +51,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                           CL_0  ...               CL_7
-0  REGULATORY_TECHNOLOGY 07:037  ...  BLOCKCHAIN 03:005
-1        RISK_MANAGEMENT 03:014  ...                   
-2             INNOVATION 03:012  ...                   
-3       NEW_TECHNOLOGIES 03:010  ...                   
-4                SUPTECH 03:004  ...                   
+                            CL_0  ...                        CL_6
+0   FINANCIAL_TECHNOLOGY 04:0551  ...  FINANCIAL_SERVICES 04:0667
+1         DIGITALIZATION 03:0434  ...                            
+2                BANKING 03:0375  ...                            
+3  FINANCIAL_INSTITUTION 02:0484  ...                            
+4         CYBER_SECURITY 02:0342  ...                            
 <BLANKLINE>
-[5 rows x 8 columns]
-
+[5 rows x 7 columns]
 
 """
 from typing import Literal
@@ -163,6 +162,6 @@ def communities(
         threshold=threshold,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.communities()

@@ -39,15 +39,13 @@ World Map
     height="400px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()
-                rank_occ  OCC  ...  between_2022_2023  growth_percentage
-countries                      ...                                      
-United Kingdom         1    7  ...                  1              14.29
-Australia              2    7  ...                  0               0.00
-United States          3    6  ...                  2              33.33
-Ireland                4    5  ...                  1              20.00
-China                  5    5  ...                  4              80.00
-<BLANKLINE>
-[5 rows x 5 columns]
+               rank_occ  OCC  before_2018  between_2018_2019  growth_percentage
+countries                                                                      
+United States         1   16            1                 15              93.75
+China                 2    8            3                  5              62.50
+Germany               3    7            2                  5              71.43
+South Korea           4    6            2                  4              66.67
+Australia             5    5            2                  3              60.00
 
 
 >>> print(chart.prompt_) # doctest: +ELLIPSIS
@@ -106,7 +104,9 @@ def world_map(
             locations="iso_alpha",
             color=metric,
             hover_name="country",
-            hover_data=[col for col in dataframe.columns if col not in ["country", "iso_alpha"]],
+            hover_data=[
+                col for col in dataframe.columns if col not in ["country", "iso_alpha"]
+            ],
             range_color=(1, data_frame[metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},

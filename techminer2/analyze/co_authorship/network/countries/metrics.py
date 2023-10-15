@@ -29,12 +29,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                      Degree  Betweenness  Closeness  PageRank
-Switzerland 4:045          8     0.069201   0.424561  0.115724
-Germany 4:051              7     0.031189   0.398026  0.092546
-United Kingdom 7:199       6     0.095517   0.398026  0.081182
-Australia 7:199            5     0.016569   0.353801  0.082418
-Hong Kong 3:185            5     0.016569   0.353801  0.082418
+                       Degree  Betweenness  Closeness  PageRank
+United States 16:3189       8     0.253411   0.494152  0.187008
+Australia 05:0783           6     0.147173   0.423559  0.126959
+Germany 07:1814             5     0.115010   0.386728  0.098902
+China 08:1085               4     0.012671   0.386728  0.115357
+Denmark 02:0330             4     0.050682   0.355789  0.074453
 
 
 
@@ -68,18 +68,12 @@ def metrics(
     :meta private:
     """
     # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -109,14 +103,11 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -34,10 +34,10 @@ def nx_compute_node_size_from_item_occ(
     if node_sizes.max() > node_size_range[1]:
         #
         # Scales the node size to the range [node_size_min, node_size_max]
-        node_sizes -= node_size_range
+        node_sizes -= node_size_range[0]
         node_sizes /= node_sizes.max()
         node_sizes *= node_size_range[1]
-        node_sizes += node_size_range
+        node_sizes += node_size_range[0]
 
     #
     # Sets the value of node_size

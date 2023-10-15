@@ -13,7 +13,7 @@ Local Impact --- Global Citations
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='source_abbr',
+...     field='abbr_source_title',
 ...     metric="global_citations",
 ...     #
 ...     # CHART PARAMS:
@@ -38,19 +38,18 @@ Local Impact --- Global Citations
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| source_abbr                   |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
-|:------------------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| J ECON BUS                    |          1 |          1 |                153 |                17 |                           153   |                           17   |                       25.5  |
-| NORTHWEST J INTL LAW BUS      |          2 |          2 |                150 |                16 |                           150   |                           16   |                       21.43 |
-| J BANK REGUL                  |          3 |          4 |                 35 |                 9 |                            17.5 |                            4.5 |                        8.75 |
-| PALGRAVE STUD DIGIT BUS ENABL |          4 |          3 |                 33 |                14 |                            33   |                           14   |                        6.6  |
-| DUKE LAW J                    |          5 |          5 |                 30 |                 8 |                            30   |                            8   |                        3.75 |
-| J RISK FINANC                 |          6 |          6 |                 21 |                 8 |                            21   |                            8   |                        3.5  |
-| J MONEY LAUND CONTROL         |          7 |          9 |                 14 |                 3 |                            14   |                            3   |                        3.5  |
-| J FINANC CRIME                |          8 |          8 |                 13 |                 4 |                             6.5 |                            2   |                        3.25 |
-| FINANCIAL INNOV               |          9 |         18 |                 13 |                 1 |                            13   |                            1   |                        6.5  |
-| ICEIS - PROC INT CONF ENTERP  |         10 |         10 |                 12 |                 3 |                            12   |                            3   |                        3    |
-
+| abbr_source_title   |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
+|:--------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
+| J Manage Inf Syst   |          1 |          1 |                696 |                 4 |                          348    |                            2   |                      348    |
+| Bus. Horiz.         |          2 |          7 |                557 |                 2 |                          557    |                            2   |                      278.5  |
+| J. Bus. Econ.       |          3 |          2 |                489 |                 4 |                          489    |                            4   |                      163    |
+| Rev. Financ. Stud.  |          4 |         20 |                432 |                 0 |                          216    |                            0   |                      432    |
+| J. Econ. Bus.       |          5 |          5 |                422 |                 3 |                          140.67 |                            1   |                      211    |
+| J. Financ. Econ.    |          6 |         21 |                390 |                 0 |                          390    |                            0   |                      195    |
+| Ind Manage Data Sys |          7 |          8 |                386 |                 2 |                          193    |                            1   |                      193    |
+| New Polit. Econ.    |          8 |          9 |                314 |                 2 |                          314    |                            2   |                      104.67 |
+| Electron. Mark.     |          9 |         11 |                287 |                 1 |                          143.5  |                            0.5 |                      143.5  |
+| Small Bus. Econ.    |         10 |         12 |                258 |                 1 |                          258    |                            1   |                      258    |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/sources/global_citations_chart.html")

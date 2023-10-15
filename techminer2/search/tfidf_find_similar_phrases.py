@@ -27,51 +27,36 @@ Find Similar Records
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
+----------------------------------------------------------------------------------------------------
+SIMILARITY: 1.0
+AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+TI: FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+<BLANKLINE>
+whilst the principal regulatory objectives (e.g., financial stability,
+prudential safety and soundness, consumer protection and market
+integrity, and market competition and development) remain, their means of
+application are increasingly inadequate.
+<BLANKLINE>
+----------------------------------------------------------------------------------------------------
+SIMILARITY: 0.302
+AR: Anagnostopoulos I., 2018, J ECON BUS, V100, P7
+TI: FINTECH and REGTECH: IMPACT on REGULATORS and BANKS
+<BLANKLINE>
+these should be of interest to regulatory standard setters, investors,
+international organisations and other academics who are researching
+regulatory and competition issues, and their manifestation within the
+financial and social contexts.
+<BLANKLINE>
+----------------------------------------------------------------------------------------------------
+SIMILARITY: 0.277
+AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+TI: FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+<BLANKLINE>
+regulatory change and technological developments following the 2008
+global financial crisis are changing the nature of financial markets,
+services, and institutions.
+<BLANKLINE>
 
-
->>> tfidf_find_similar_phrases(
-...     text=(
-...         "Butler (2019) emphasizes the importance of semantic standards in realizing "
-...         "the full benefits of RegTech, as demonstrated by initiatives like the Bank "
-...         "of England/FCA RegTech Sprint."
-...     ),
-...     top_n=3,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
-
-
->>> text = (
-...    "They highlight the limited adoption of Regulatory Technology (RegTech) and "
-...    "Electronic Signatures in Palestine's banking sector, proposing the establishment "
-...    "of an independent Electronic Transactions Unit as a solution. They emphasize the "
-...    "need for RegTech in achieving regulatory compliance, risk management, and reporting "
-...    "in the face of changing regulations and digital dynamics. Additionally, the papers "
-...    "delve into ethical concerns surrounding the application of Artificial Intelligence (AI) "
-...    "in finance and suggest that RegTech, combined with Islamic finance principles, can "
-...    "mitigate these ethical issues. Overall, the papers underscore the transformative "
-...    "potential of RegTech while discussing its benefits, challenges, and implications "
-...    "for diverse sectors, ultimately aiming to improve compliance, efficiency, and ethical "
-...    "practices in the financial industry."
-... )
->>> text = text.split(".")
->>> for phrase in text:
-...     print("=" * 100)
-...     print(phrase.strip())
-...     tfidf_find_similar_phrases(
-...         text=phrase.strip(),
-...         top_n=5,
-...         #
-...         # DATABASE PARAMS:
-...         root_dir="data/regtech/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...    )
 
 
 
@@ -93,7 +78,7 @@ from .._common._read_records import read_records
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def tfidf_find_similar_phrases(
@@ -141,7 +126,9 @@ def tfidf_find_similar_phrases(
     # words = apply_thesaurus_to_text(root_dir, words)
     words = [w for w in words if w in tf_matrix.columns]
 
-    df_text = pd.DataFrame(data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns)
+    df_text = pd.DataFrame(
+        data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns
+    )
     for word in words:
         df_text[word] = 1
 
@@ -156,7 +143,7 @@ def tfidf_find_similar_phrases(
         print("-" * 100)
         print("SIMILARITY: " + str(round(row.similarity, 3)))
         print("AR: " + row.article)
-        print("TI: " + row.title)
+        print("TI: " + row.document_title)
         print()
         print(textwrap.fill(str(row.phrase), width=TEXTWRAP_WIDTH))
         print()
@@ -294,7 +281,9 @@ def remove_stopwords(records):
         lambda words: [w.replace("'", "") for w in words]
     )
 
-    records["abstract"] = records["abstract"].apply(lambda words: [w for w in words if len(w) > 2])
+    records["abstract"] = records["abstract"].apply(
+        lambda words: [w for w in words if len(w) > 2]
+    )
 
     return records
 
@@ -303,7 +292,7 @@ def extract_sentences(records):
     """
     :meta private:
     """
-    abstracts = records[["article", "title", "abstract"]].dropna()
+    abstracts = records[["article", "document_title", "abstract"]].dropna()
 
     #
     #

@@ -13,7 +13,7 @@ Co-occurrences Chart
 >>> co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
-...     item='REGTECH',
+...     item='FINTECH',
 ...     #
 ...     # CO-OCC PARAMS:
 ...     columns='author_keywords',
@@ -133,7 +133,9 @@ def co_occurrences_chart(
     associations["gc"] = associations["occ"].str[1]
     associations["occ"] = associations["occ"].str[0]
 
-    associations["percentage"] = associations.iloc[:, 0] / associations["occ"].astype(float) * 100
+    associations["percentage"] = (
+        associations.iloc[:, 0] / associations["occ"].astype(float) * 100
+    )
     associations["percentage"] = associations["percentage"].round(2)
     associations["name"] = associations.index.copy()
 

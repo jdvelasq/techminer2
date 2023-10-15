@@ -31,12 +31,12 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                   Degree  Betweenness  Closeness  PageRank
-Arner DW 3:185          4     0.005848   0.210526  0.080275
-Buckley RP 3:185        4     0.005848   0.210526  0.080275
-Weber RH 1:024          3     0.000000   0.168421  0.039198
-Zetzsche DA 1:024       3     0.000000   0.168421  0.039198
-Barberis JN 2:161       2     0.000000   0.140351  0.047588
+                      Degree  Betweenness  Closeness  PageRank
+Gomber P. 2:1065           5     0.035088   0.263158  0.083753
+Kauffman R.J. 1:0576       3     0.000000   0.187970  0.050930
+Parker C. 1:0576           3     0.000000   0.187970  0.050930
+Weber B.W. 1:0576          3     0.000000   0.187970  0.050930
+Buchak G. 1:0390           2     0.000000   0.105263  0.052219
 
 
 """
@@ -73,14 +73,11 @@ def metrics(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -110,14 +107,11 @@ def metrics(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

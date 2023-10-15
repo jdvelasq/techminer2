@@ -42,16 +42,16 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_000_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_001_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_002_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_003_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_004_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_005_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_006_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_007_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_008_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/topic_modeling/nmf/theme_009_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_000_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_001_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_002_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_003_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_004_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_005_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_006_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_007_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_008_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/topic_modeling/nmf/theme_009_abstracts_report.txt' was created.
 
 """
 

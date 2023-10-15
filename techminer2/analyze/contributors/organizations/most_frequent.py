@@ -37,18 +37,18 @@ Most Frequent
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| organizations                                                      |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
-|:-------------------------------------------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| Univ of Hong Kong (HKG)                                            |          1 |     3 |             3 |                   0 |                0    |
-| Univ Coll Cork (IRL)                                               |          2 |     3 |             2 |                   1 |               33.33 |
-| Ahlia Univ (BHR)                                                   |          3 |     3 |             2 |                   1 |               33.33 |
-| Coventry Univ (GBR)                                                |          4 |     2 |             1 |                   1 |               50    |
-| Univ of Westminster (GBR)                                          |          5 |     2 |             1 |                   1 |               50    |
-| Dublin City Univ (IRL)                                             |          6 |     2 |             2 |                   0 |                0    |
-| Politec di Milano (ITA)                                            |          7 |     2 |             1 |                   1 |               50    |
-| Kingston Bus Sch (GBR)                                             |          8 |     1 |             1 |                   0 |                0    |
-| FinTech HK, Hong Kong (HKG)                                        |          9 |     1 |             1 |                   0 |                0    |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         10 |     1 |             1 |                   0 |                0    |
+| organizations                                         |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:------------------------------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| Univ. of Zurich (CHE)                                 |          1 |     3 |             3 |                   0 |                   0 |
+| Federal Reserve Bank of Philadelphia (USA)            |          2 |     3 |             0 |                   3 |                 100 |
+| Baylor Univ. (USA)                                    |          3 |     2 |             0 |                   2 |                 100 |
+| Max Planck Inst. for Innovation and Competition (DEU) |          4 |     2 |             1 |                   1 |                  50 |
+| Univ. of New South Wales (AUS)                        |          5 |     2 |             1 |                   1 |                  50 |
+| Pace Univ. (USA)                                      |          6 |     2 |             1 |                   1 |                  50 |
+| Sungkyunkwan Univ. (KOR)                              |          7 |     2 |             1 |                   1 |                  50 |
+| Univ. of Sydney (AUS)                                 |          8 |     2 |             1 |                   1 |                  50 |
+| Federal Reserve Bank of Chicago (USA)                 |          9 |     2 |             0 |                   2 |                 100 |
+| Univ. of Latvia (LVA)                                 |         10 |     2 |             2 |                   0 |                   0 |
 
 
 

@@ -13,7 +13,7 @@ Local Impact --- M-Index
 >>> items = performance_metrics(
 ...     #
 ...     # ITEMS PARAMS:
-...     field='source_abbr',
+...     field='abbr_source_title',
 ...     metric="m_index",
 ...     #
 ...     # CHART PARAMS:
@@ -38,18 +38,18 @@ Local Impact --- M-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| source_abbr              |   h_index |   g_index |   m_index |
-|:-------------------------|----------:|----------:|----------:|
-| J BANK REGUL             |         2 |         2 |      0.5  |
-| J FINANC CRIME           |         2 |         1 |      0.5  |
-| FINANCIAL INNOV          |         1 |         1 |      0.5  |
-| EUR J RISK REGUL         |         1 |         1 |      0.5  |
-| DECIS SUPPORT SYST       |         1 |         1 |      0.5  |
-| J IND BUS ECON           |         1 |         1 |      0.5  |
-| LECT NOTES NETWORKS SYST |         1 |         1 |      0.5  |
-| ADV INTELL SYS COMPUT    |         1 |         1 |      0.33 |
-| J ANTITRUST ENFORC       |         1 |         1 |      0.33 |
-| ACM INT CONF PROC SER    |         1 |         1 |      0.33 |
+| abbr_source_title       |   h_index |   g_index |   m_index |
+|:------------------------|----------:|----------:|----------:|
+| Rev. Financ. Stud.      |         2 |         2 |       2   |
+| Financ. Manage.         |         2 |         2 |       2   |
+| Sustainability          |         2 |         2 |       2   |
+| J. Econ. Bus.           |         3 |         3 |       1.5 |
+| J Manage Inf Syst       |         2 |         2 |       1   |
+| Ind Manage Data Sys     |         2 |         2 |       1   |
+| Electron. Mark.         |         2 |         2 |       1   |
+| Small Bus. Econ.        |         1 |         1 |       1   |
+| Symmetry                |         1 |         1 |       1   |
+| J Strategic Inform Syst |         1 |         1 |       1   |
 
 
 

@@ -33,9 +33,9 @@ Communities Summary
 ...     cited_by_filter=(None, None),
 ... )
   Cluster  ...                                              Terms
-0    CL_0  ...  FINANCIAL_REGULATION; NEW_TECHNOLOGIES; DATA_P...
-1    CL_1  ...                        SUPTECH; FINANCE; REPORTING
-2    CL_2  ...                           CHARITYTECH; ENGLISH_LAW
+0    CL_0  ...  FINTECH; FINANCIAL_SERVICES; FINANCIAL_TECHNOL...
+1    CL_1  ...  SHADOW_BANKING; PEER_TO_PEER_LENDING; MARKETPL...
+2    CL_2  ...           ARTIFICIAL_INTELLIGENCE; FINANCE; ROBOTS
 <BLANKLINE>
 [3 rows x 4 columns]
 
@@ -76,17 +76,13 @@ def communities_summary(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.30
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.30, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -147,17 +143,13 @@ def communities_summary(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_range=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

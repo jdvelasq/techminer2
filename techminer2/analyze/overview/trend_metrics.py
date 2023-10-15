@@ -49,24 +49,20 @@ Trend Metrics
 >>> print(metrics.df_.to_markdown())
 |   year |   OCC |   global_citations |   mean_global_citations |   mean_global_citations_per_year |
 |-------:|------:|-------------------:|------------------------:|---------------------------------:|
-|   2016 |     1 |                 30 |                30       |                             3.75 |
-|   2017 |     4 |                162 |                40.5     |                             5.79 |
-|   2018 |     3 |                182 |                60.6667  |                            10.11 |
-|   2019 |     6 |                 47 |                 7.83333 |                             1.57 |
-|   2020 |    14 |                 93 |                 6.64286 |                             1.66 |
-|   2021 |    10 |                 27 |                 2.7     |                             0.9  |
-|   2022 |    12 |                 22 |                 1.83333 |                             0.92 |
-|   2023 |     2 |                  0 |                 0       |                             0    |
-
+|   2015 |     1 |                 76 |                  76     |                            15.2  |
+|   2016 |     7 |                870 |                 124.286 |                            31.07 |
+|   2017 |    10 |               1815 |                 181.5   |                            60.5  |
+|   2018 |    17 |               3366 |                 198     |                            99    |
+|   2019 |    15 |               2008 |                 133.867 |                           133.87 |
 
 
 >>> print(metrics.df_.T.to_markdown())
-|                                |   2016 |   2017 |     2018 |     2019 |     2020 |   2021 |     2022 |   2023 |
-|:-------------------------------|-------:|-------:|---------:|---------:|---------:|-------:|---------:|-------:|
-| OCC                            |   1    |   4    |   3      |  6       | 14       |   10   | 12       |      2 |
-| global_citations               |  30    | 162    | 182      | 47       | 93       |   27   | 22       |      0 |
-| mean_global_citations          |  30    |  40.5  |  60.6667 |  7.83333 |  6.64286 |    2.7 |  1.83333 |      0 |
-| mean_global_citations_per_year |   3.75 |   5.79 |  10.11   |  1.57    |  1.66    |    0.9 |  0.92    |      0 |
+|                                |   2015 |    2016 |   2017 |   2018 |     2019 |
+|:-------------------------------|-------:|--------:|-------:|-------:|---------:|
+| OCC                            |    1   |   7     |   10   |     17 |   15     |
+| global_citations               |   76   | 870     | 1815   |   3366 | 2008     |
+| mean_global_citations          |   76   | 124.286 |  181.5 |    198 |  133.867 |
+| mean_global_citations_per_year |   15.2 |  31.07  |   60.5 |     99 |  133.87  |
 
 
 
@@ -133,7 +129,9 @@ def trend_metrics(
     if selected_columns is None:
         selected_columns = data_frame.columns.copy()
     else:
-        selected_columns = [col for col in selected_columns if col in data_frame.columns]
+        selected_columns = [
+            col for col in selected_columns if col in data_frame.columns
+        ]
     data_frame = data_frame[selected_columns]
 
     #

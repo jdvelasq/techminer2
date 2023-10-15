@@ -38,18 +38,18 @@ Most Frequent Words
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| abstract_nlp_phrases    |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
-|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| REGULATORY_TECHNOLOGY   |          1 |    19 |            13 |                   6 |               31.58 |
-| FINANCIAL_INSTITUTIONS  |          2 |    16 |            12 |                   4 |               25    |
-| FINANCIAL_CRISIS        |          3 |    12 |             9 |                   3 |               25    |
-| REGULATORY_COMPLIANCE   |          4 |    10 |             8 |                   2 |               20    |
-| FINANCIAL_SECTOR        |          5 |     9 |             7 |                   2 |               22.22 |
-| FINANCIAL_REGULATION    |          6 |     7 |             6 |                   1 |               14.29 |
-| ARTIFICIAL_INTELLIGENCE |          7 |     7 |             4 |                   3 |               42.86 |
-| FINANCIAL_SYSTEM        |          8 |     6 |             5 |                   1 |               16.67 |
-| INFORMATION_TECHNOLOGY  |          9 |     6 |             4 |                   2 |               33.33 |
-| COMPLIANCE_COST         |         10 |     6 |             5 |                   1 |               16.67 |
+| abstract_nlp_phrases   |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:-----------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINTECH                |          1 |    32 |            11 |                  21 |               65.62 |
+| TECHNOLOGIES           |          2 |    23 |             9 |                  14 |               60.87 |
+| AUTHOR                 |          3 |    18 |             5 |                  13 |               72.22 |
+| FINANCIAL_TECHNOLOGY   |          4 |    17 |             3 |                  14 |               82.35 |
+| FINANCIAL_INDUSTRY     |          5 |    16 |             9 |                   7 |               43.75 |
+| BANKING                |          6 |    14 |             5 |                   9 |               64.29 |
+| FINANCE                |          7 |    13 |             7 |                   6 |               46.15 |
+| RESEARCHERS            |          8 |    13 |             6 |                   7 |               53.85 |
+| INNOVATION             |          9 |    12 |             5 |                   7 |               58.33 |
+| PAPER                  |         10 |    12 |             5 |                   7 |               58.33 |
 
 
 >>> metrics.fig_.write_html("sphinx/_static/analyze/words/abstract_nlp_phrases/most_frequent_chart.html")

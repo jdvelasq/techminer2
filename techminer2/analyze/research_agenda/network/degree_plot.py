@@ -47,12 +47,12 @@ Degree Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
-   Node                         Name  Degree
-0     0  FINANCIAL_REGULATION 04:035       4
-1     1             REPORTING 02:001       3
-2     2               FINANCE 02:001       2
-3     3      NEW_TECHNOLOGIES 03:010       1
-4     4               SUPTECH 03:004       1
+   Node                          Name  Degree
+0     0               FINTECH 31:5168      19
+1     1    FINANCIAL_SERVICES 04:0667       8
+2     2  PEER_TO_PEER_LENDING 03:0324       6
+3     3               REGTECH 02:0266       6
+4     4  FINANCIAL_TECHNOLOGY 04:0551       5
 
 
 >>> print(plot.prompt_) # doctest: +ELLIPSIS
@@ -107,17 +107,13 @@ def degree_plot(
     nx_random_state = 0
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.30
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.30, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # --------------------------------------------------------------------------
 
@@ -173,17 +169,13 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_range=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

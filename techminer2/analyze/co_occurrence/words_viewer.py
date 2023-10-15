@@ -36,12 +36,9 @@ Words Viewer
 ...     #
 ...     # NODES:
 ...     node_colors=("#7793a5", "#465c6b"),
-...     node_size_min=30,
-...     node_size_max=70,
-...     textfont_size_min=10,
-...     textfont_size_max=20,
-...     textfont_opacity_min=0.35,
-...     textfont_opacity_max=1.00,
+...     node_size_range=(30, 70),
+...     textfont_size_range=(10, 20),
+...     textfont_opacity_range=(0.35, 1.00),
 ...     #
 ...     # EDGES
 ...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
@@ -89,12 +86,9 @@ Words Viewer
 ...     #
 ...     # NODES:
 ...     node_colors=("#7793a5", "#465c6b"),
-...     node_size_min=30,
-...     node_size_max=70,
-...     textfont_size_min=10,
-...     textfont_size_max=20,
-...     textfont_opacity_min=0.35,
-...     textfont_opacity_max=1.00,
+...     node_size_range=(30, 70),
+...     textfont_size_range=(10, 20),
+...     textfont_opacity_range=(0.35, 1.00),
 ...     #
 ...     # EDGES
 ...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
@@ -122,15 +116,19 @@ import networkx as nx
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ..._common.nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
-from ..._common.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ..._common.nx_compute_node_size_from_item_occ import (
+    nx_compute_node_size_from_item_occ,
+)
 from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
 from ..._common.nx_compute_textfont_opacity_from_item_occ import (
     nx_compute_textfont_opacity_from_item_occ,
 )
-from ..._common.nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from ..._common.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ..._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ..._common.nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
+)
+from ..._common.nx_compute_textposition_from_graph import (
+    nx_compute_textposition_from_graph,
+)
 from ..._common.nx_visualize_graph import nx_visualize_graph
 from .co_occurrence_matrix import co_occurrence_matrix
 
@@ -160,12 +158,9 @@ def words_viewer(
     #
     # NODES:
     node_colors=("#7793a5", "#465c6b"),
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    node_size_range=(30, 70),
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # EDGES
     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
@@ -220,7 +215,7 @@ def words_viewer(
     similarity = pd.DataFrame(
         cosine_similarity(cooc_matrix.df_),
         index=cooc_matrix.df_.index,
-        columns=cooc_matrix.df_.columns,
+        columns=cooc_matrix.df_.index,
     )
 
     #
@@ -235,13 +230,11 @@ def words_viewer(
 
     #
     # Sets the node attributes
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
-    nx_graph = nx_compute_textfont_size_from_item_occ(
-        nx_graph, textfont_size_min, textfont_size_max
-    )
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
+    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
 
     nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_min, textfont_opacity_max
+        nx_graph, textfont_opacity_range
     )
     #
     # Sets the edge attributes

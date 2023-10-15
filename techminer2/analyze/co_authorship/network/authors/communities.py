@@ -29,14 +29,15 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                CL_0            CL_1  ...                     CL_7             CL_8
-0     Arner DW 3:185  Hamdan A 2:018  ...  Anagnostopoulos I 1:153  Baxter LG 1:030
-1   Buckley RP 3:185   Turki M 2:018  ...                                          
-2  Barberis JN 2:161   Sarea A 2:012  ...                                          
-3     Weber RH 1:024                  ...                                          
-4  Zetzsche DA 1:024                  ...                                          
+                   CL_0             CL_1  ...              CL_5              CL_6
+0      Gomber P. 2:1065    Gai K. 2:0323  ...     Lee I. 1:0557  Hornuf L. 2:0358
+1  Kauffman R.J. 1:0576    Qiu M. 2:0323  ...  Shin Y.J. 1:0557                  
+2      Parker C. 1:0576  Sun X./3 2:0323  ...                                    
+3     Weber B.W. 1:0576                   ...                                    
+4     Koch J.-A. 1:0489                   ...                                    
+5     Siering M. 1:0489                   ...                                    
 <BLANKLINE>
-[5 rows x 9 columns]
+[6 rows x 7 columns]
 
 
 """
@@ -75,14 +76,11 @@ def communities(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -112,14 +110,11 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

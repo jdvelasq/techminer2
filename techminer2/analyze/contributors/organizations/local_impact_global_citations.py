@@ -38,19 +38,18 @@ Local Impact --- Global Citations
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| organizations                                                      |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
-|:-------------------------------------------------------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| Univ of Hong Kong (HKG)                                            |          1 |          1 |                185 |                24 |                           61.67 |                           8    |                       26.43 |
-| Kingston Bus Sch (GBR)                                             |          2 |          3 |                153 |                17 |                          153    |                          17    |                       25.5  |
-| FinTech HK, Hong Kong (HKG)                                        |          3 |          4 |                150 |                16 |                          150    |                          16    |                       21.43 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |          4 |          5 |                150 |                16 |                          150    |                          16    |                       21.43 |
-| Univ Coll Cork (IRL)                                               |          5 |          2 |                 41 |                19 |                           13.67 |                           6.33 |                        6.83 |
-| Duke Univ Sch of Law (USA)                                         |          6 |          6 |                 30 |                 8 |                           30    |                           8    |                        3.75 |
-| Heinrich-Heine-Univ (DEU)                                          |          7 |         12 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| UNSW Sydney, Kensington, Australia (AUS)                           |          8 |         13 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| Univ of Luxembourg (LUX)                                           |          9 |         14 |                 24 |                 5 |                           24    |                           5    |                        6    |
-| Univ of Zurich (CHE)                                               |         10 |         15 |                 24 |                 5 |                           24    |                           5    |                        6    |
-
+| organizations                        |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
+|:-------------------------------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
+| Goethe Univ. of Frankfurt (DEU)      |          1 |          4 |                576 |                 3 |                          576    |                           3    |                       288   |
+| Pennsylvania State Univ. (USA)       |          2 |          5 |                576 |                 3 |                          576    |                           3    |                       288   |
+| Singapore Manag. Univ. (SMU) (SGP)   |          3 |          6 |                576 |                 3 |                          576    |                           3    |                       288   |
+| Univ. of Delaware (USA)              |          4 |          7 |                576 |                 3 |                          576    |                           3    |                       288   |
+| Hankyong Nac. Univ. (KOR)            |          5 |         10 |                557 |                 2 |                          557    |                           2    |                       278.5 |
+| Western Illinois Univ. (USA)         |          6 |         11 |                557 |                 2 |                          557    |                           2    |                       278.5 |
+| Goethe Univ. Frankfurt (DEU)         |          7 |          2 |                489 |                 4 |                          489    |                           4    |                       163   |
+| Univ. of Zurich (CHE)                |          8 |          3 |                434 |                 4 |                          144.67 |                           1.33 |                       108.5 |
+| Baylor Univ. (USA)                   |          9 |         43 |                395 |                 0 |                          197.5  |                           0    |                       395   |
+| Columbia Graduate Sch. of Bus. (USA) |         10 |         44 |                390 |                 0 |                          390    |                           0    |                       195   |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/organizations/global_citations_chart.html")

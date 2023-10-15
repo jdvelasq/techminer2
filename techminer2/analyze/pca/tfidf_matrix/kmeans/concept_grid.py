@@ -187,7 +187,7 @@ def concept_grid(
         algorithm=algorithm,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.concept_grid(
         #

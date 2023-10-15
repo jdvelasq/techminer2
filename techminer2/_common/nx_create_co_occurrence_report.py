@@ -10,35 +10,7 @@ Network Report
 ===============================================================================
 
 
-* Preparation
 
->>> import techminer2 as tm2
->>> root_dir = "data/regtech/"
-
-
->>> cooc_matrix = tm2p.co_occurrence_matrix(
-...    columns='author_keywords',
-...    col_top_n=20,
-...    root_dir=root_dir,
-... )
->>> network = tm2p.network_create(
-...     cooc_matrix,
-...     algorithm_or_estimator='louvain',
-...     root_dir=root_dir,
-... )
->>> network_report(
-...     network, 
-...     report_dir='network_report_1',
-...     root_dir=root_dir,
-... )
---INFO-- The file 'data/regtech/reports/network_report_1/CL_00_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_01_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_02_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_03_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_00_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_01_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_02_prompt.txt' was created.
---INFO-- The file 'data/regtech/reports/network_report_1/CL_03_prompt.txt' was created.
 
 """
 import os

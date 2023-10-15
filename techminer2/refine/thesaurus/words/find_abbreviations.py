@@ -9,13 +9,13 @@
 Find Abbreviations 
 ===============================================================================
 
->>> from techminer2.refine.words import find_abbreviations
+>>> from techminer2.refine.thesaurus.words import find_abbreviations
 >>> find_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file data/regtech/words.txt has been reordered.
+--INFO-- The file example/thesauri/words.the.txt has been reordered.
 
 """
 import os.path
@@ -24,9 +24,12 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict, load_system_thesaurus_as_frame
+from ...._common.thesaurus_lib import (
+    load_system_thesaurus_as_dict,
+    load_system_thesaurus_as_frame,
+)
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def find_abbreviations(
@@ -50,7 +53,9 @@ def find_abbreviations(
         abbr = re.escape(abbr)
         frame["found"] = False
         frame["found"] = frame["found"] | frame["value"].map(lambda x: x == abbr)
-        frame["found"] = frame["found"] | frame["value"].map(lambda x: "(" + abbr + ")" in x)
+        frame["found"] = frame["found"] | frame["value"].map(
+            lambda x: "(" + abbr + ")" in x
+        )
         frame["found"] = frame["found"] | frame["value"].str.contains(
             r"\b" + abbr + r"\b", regex=True
         )

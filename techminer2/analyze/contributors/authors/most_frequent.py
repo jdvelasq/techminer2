@@ -38,18 +38,18 @@ Most Frequent
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown()) 
-| authors     |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
-|:------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| Arner DW    |          1 |     3 |             3 |                   0 |                   0 |
-| Buckley RP  |          2 |     3 |             3 |                   0 |                   0 |
-| Barberis JN |          3 |     2 |             2 |                   0 |                   0 |
-| Butler T    |          4 |     2 |             2 |                   0 |                   0 |
-| Hamdan A    |          5 |     2 |             2 |                   0 |                   0 |
-| Turki M     |          6 |     2 |             2 |                   0 |                   0 |
-| Lin W       |          7 |     2 |             1 |                   1 |                  50 |
-| Singh C     |          8 |     2 |             1 |                   1 |                  50 |
-| Brennan R   |          9 |     2 |             2 |                   0 |                   0 |
-| Crane M     |         10 |     2 |             2 |                   0 |                   0 |
+| authors       |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:--------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| Jagtiani J.   |          1 |     3 |             0 |                   3 |                 100 |
+| Gomber P.     |          2 |     2 |             1 |                   1 |                  50 |
+| Hornuf L.     |          3 |     2 |             1 |                   1 |                  50 |
+| Gai K.        |          4 |     2 |             1 |                   1 |                  50 |
+| Qiu M.        |          5 |     2 |             1 |                   1 |                  50 |
+| Sun X./3      |          6 |     2 |             1 |                   1 |                  50 |
+| Lemieux C.    |          7 |     2 |             0 |                   2 |                 100 |
+| Dolata M.     |          8 |     2 |             2 |                   0 |                   0 |
+| Schwabe G.    |          9 |     2 |             2 |                   0 |                   0 |
+| Zavolokina L. |         10 |     2 |             2 |                   0 |                   0 |
 
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/most_frequent_chart.html")

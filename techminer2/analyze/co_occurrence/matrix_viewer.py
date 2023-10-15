@@ -35,17 +35,13 @@ Matrix Viewer
 ...     nx_random_state=0,
 ...     #
 ...     # NODES:
-...     node_size_min=30,
-...     node_size_max=70,
-...     textfont_size_min=10,
-...     textfont_size_max=20,
-...     textfont_opacity_min=0.35,
-...     textfont_opacity_max=1.00,
+...     node_size_range=(30, 70),
+...     textfont_size_range=(10, 20),
+...     textfont_opacity_range=(0.35, 1.00),
 ...     #
 ...     # EDGES
 ...     edge_color="#b8c6d0",
-...     edge_width_min=0.8,
-...     edge_width_max=4.0,
+...     edge_width_range=(0.8, 4.0),
 ...     #
 ...     # AXES:
 ...     xaxes_range=None,
@@ -89,17 +85,13 @@ Matrix Viewer
 ...     nx_random_state=0,
 ...     #
 ...     # NODES:
-...     node_size_min=30,
-...     node_size_max=70,
-...     textfont_size_min=10,
-...     textfont_size_max=20,
-...     textfont_opacity_min=0.35,
-...     textfont_opacity_max=1.00,
+...     node_size_range=(30, 70),
+...     textfont_size_range=(10, 20),
+...     textfont_opacity_range=(0.35, 1.00),
 ...     #
 ...     # EDGES
 ...     edge_color="#b8c6d0",
-...     edge_width_min=0.8,
-...     edge_width_max=4.0,
+...     edge_width_range=(0.8, 4.0),
 ...     #
 ...     # AXES:
 ...     xaxes_range=None,
@@ -122,14 +114,22 @@ Matrix Viewer
 """
 import networkx as nx
 
-from ..._common.nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
-from ..._common.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ..._common.nx_compute_edge_width_from_edge_weight import (
+    nx_compute_edge_width_from_edge_weight,
+)
+from ..._common.nx_compute_node_size_from_item_occ import (
+    nx_compute_node_size_from_item_occ,
+)
 from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
 from ..._common.nx_compute_textfont_opacity_from_item_occ import (
     nx_compute_textfont_opacity_from_item_occ,
 )
-from ..._common.nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
-from ..._common.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ..._common.nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
+)
+from ..._common.nx_compute_textposition_from_graph import (
+    nx_compute_textposition_from_graph,
+)
 from ..._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from ..._common.nx_visualize_graph import nx_visualize_graph
 from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
@@ -159,17 +159,13 @@ def matrix_viewer(
     nx_random_state=0,
     #
     # NODES:
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    textfont_opacity_min=0.35,
-    textfont_opacity_max=1.00,
+    node_size_range=(30, 70),
+    textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
     #
     # EDGES
     edge_color="#b8c6d0",
-    edge_width_min=0.8,
-    edge_width_max=4.0,
+    edge_width_range=(0.8, 4.0),
     #
     # AXES:
     xaxes_range=None,
@@ -226,17 +222,15 @@ def matrix_viewer(
 
     #
     # Sets the node attributes
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
-    nx_graph = nx_compute_textfont_size_from_item_occ(
-        nx_graph, textfont_size_min, textfont_size_max
-    )
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
+    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
 
     nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_min, textfont_opacity_max
+        nx_graph, textfont_opacity_range
     )
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
+    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_range)
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
 
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)

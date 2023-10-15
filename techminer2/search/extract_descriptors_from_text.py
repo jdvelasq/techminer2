@@ -27,8 +27,8 @@ Extract Descriptors from Text
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
-... )
-['ARTIFICIAL_INTELLIGENCE', 'BANKING', 'COMPLIANCE', 'ELECTRONIC_TRANSACTIONS_UNIT', 'ETHICAL_ISSUES', 'FINANCE', 'FINANCIAL_INDUSTRY', 'ISLAMIC_FINANCE', 'REGTECH', 'REGULATORY_COMPLIANCE', 'REGULATORY_TECHNOLOGY', 'REPORTING', 'RISK_MANAGEMENT']
+... ) # doctest: +ELLIPSIS
+["'S", 'ADOPTION', 'AI', 'APPLICATION', 'ARTIFICIAL_INTELLIGENCE', ...
 
 """
 import os
@@ -40,7 +40,7 @@ from textblob import TextBlob
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "thesauri/words.the.txt"
 
 
 def extract_descriptors_from_text(
@@ -70,7 +70,9 @@ def extract_descriptors_from_text(
     text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
 
     descriptors = sorted(set(str(t) for t in TextBlob(text).words))
-    descriptors = [t for t in descriptors if t == t.upper() and t[0] not in "0123456789"]
+    descriptors = [
+        t for t in descriptors if t == t.upper() and t[0] not in "0123456789"
+    ]
     return descriptors
 
 

@@ -40,17 +40,16 @@ Most Local Cited
 >>> print(items.df_.to_markdown())
 | countries      |   rank_gcs |   rank_lcs |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   global_citations_per_year |
 |:---------------|-----------:|-----------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------------:|
-| United Kingdom |          1 |          1 |                199 |                35 |                           28.43 |                           5    |                       33.17 |
-| Australia      |          2 |          2 |                199 |                31 |                           28.43 |                           4.43 |                       28.43 |
-| Hong Kong      |          3 |          3 |                185 |                24 |                           61.67 |                           8    |                       26.43 |
-| Ireland        |          5 |          4 |                 55 |                22 |                           11    |                           4.4  |                        9.17 |
-| United States  |          4 |          5 |                 59 |                19 |                            9.83 |                           3.17 |                        7.38 |
-| Germany        |          6 |          6 |                 51 |                15 |                           12.75 |                           3.75 |                        8.5  |
-| Switzerland    |          7 |          7 |                 45 |                13 |                           11.25 |                           3.25 |                        6.43 |
-| Luxembourg     |          8 |          8 |                 34 |                 8 |                           17    |                           4    |                        8.5  |
-| Greece         |         10 |          9 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
-| China          |          9 |         10 |                 27 |                 5 |                            5.4  |                           1    |                        3.86 |
-
+| Germany        |          2 |          1 |               1814 |                11 |                          259.14 |                           1.57 |                      604.67 |
+| United States  |          1 |          2 |               3189 |                 8 |                          199.31 |                           0.5  |                     1063    |
+| South Korea    |          3 |          3 |               1192 |                 8 |                          198.67 |                           1.33 |                      298    |
+| China          |          4 |          4 |               1085 |                 4 |                          135.62 |                           0.5  |                      271.25 |
+| Switzerland    |          6 |          5 |                660 |                 4 |                          165    |                           1    |                      165    |
+| United Kingdom |          7 |          6 |                636 |                 4 |                          212    |                           1.33 |                      212    |
+| Australia      |          5 |          7 |                783 |                 3 |                          156.6  |                           0.6  |                      261    |
+| Singapore      |          8 |          8 |                576 |                 3 |                          576    |                           3    |                      288    |
+| Denmark        |          9 |          9 |                330 |                 3 |                          165    |                           1.5  |                      110    |
+| Netherlands    |         10 |         10 |                300 |                 2 |                          100    |                           0.67 |                      100    |
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/countries/most_local_cited_chart.html")
 

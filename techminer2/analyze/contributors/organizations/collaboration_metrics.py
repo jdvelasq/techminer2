@@ -37,13 +37,13 @@ Collaboration Metrics
 
 
 >>> print(metrics.df_.head().to_markdown())
-| organizations             |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
-|:--------------------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
-| Univ of Hong Kong (HKG)   |     3 |                185 |                24 |                    0 |                      3 |       1    |
-| Univ Coll Cork (IRL)      |     3 |                 41 |                19 |                    2 |                      1 |       0.33 |
-| Ahlia Univ (BHR)          |     3 |                 19 |                 3 |                    0 |                      3 |       1    |
-| Coventry Univ (GBR)       |     2 |                 17 |                 4 |                    0 |                      2 |       1    |
-| Univ of Westminster (GBR) |     2 |                 17 |                 4 |                    0 |                      2 |       1    |
+| organizations                                         |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
+|:------------------------------------------------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
+| Univ. of Zurich (CHE)                                 |     3 |                434 |                 4 |                    3 |                      0 |          0 |
+| Federal Reserve Bank of Philadelphia (USA)            |     3 |                317 |                 2 |                    0 |                      3 |          1 |
+| Baylor Univ. (USA)                                    |     2 |                395 |                 0 |                    0 |                      2 |          1 |
+| Max Planck Inst. for Innovation and Competition (DEU) |     2 |                358 |                 2 |                    0 |                      2 |          1 |
+| Univ. of New South Wales (AUS)                        |     2 |                340 |                 2 |                    0 |                      2 |          1 |
 
 
 >>> print(metrics.prompt_) # doctest: +ELLIPSIS

@@ -1,9 +1,9 @@
 digraph "graph" {
 	node [shape=record]
-	CL_0 [label="{CL_0|REGULATORY_TECHNOLOGY 20:276\rBANK 17:261\rFINANCIAL_CRISIS 12:235\rREGULATORY_COMPLIANCE 11:360\rAPPROACH 11:345\rFINTECH 11:331\rRIGHTS 11:186\rDEVELOPMENT 10:385\r}" fontsize=9]
-	CL_1 [label="{CL_1|NEW_TECHNOLOGIES 22:381\rCOMPLIANCE 17:368\rCHALLENGE 17:215\r.\r.\r.\r.\r.\r}" fontsize=9]
-	CL_2 [label="{CL_2|APPLICATION 15:210\rAUTHOR 13:243\rRESEARCH 10:212\r.\r.\r.\r.\r.\r}" fontsize=9]
-	CL_3 [label="{CL_3|PAPER 12:357\rPURPOSE 10:212\rDATA 10:209\r.\r.\r.\r.\r.\r}" fontsize=9]
-	CL_4 [label="{CL_4|REGULATORS 28:464\rFINANCIAL_INSTITUTIONS 16:224\r.\r.\r.\r.\r.\r.\r}" fontsize=9]
-	CL_5 [label="{CL_5|REGTECH 46:552\r.\r.\r.\r.\r.\r.\r.\r}" fontsize=9]
+	CL_0 [label="{CL_0|FINANCIAL_INDUSTRY 17:3704\rINNOVATION 13:2298\rFINANCIAL_SERVICES 11:2191\rRESULTS 11:1810\rDEVELOPMENT 11:1538\rNEW_SERVICES 10:1734\rINDUSTRY 10:1728\rFINANCIAL_SECTOR 09:1733\rCHALLENGES 09:1473\r}" fontsize=9]
+	CL_1 [label="{CL_1|AUTHOR 18:2443\rRESEARCHERS 13:1986\rDATA 10:1569\rSTUDY 10:1160\rIMPACT 09:1495\r.\r.\r.\r.\r}" fontsize=9]
+	CL_2 [label="{CL_2|TECHNOLOGIES 23:3317\rFINANCE 13:2099\r.\r.\r.\r.\r.\r.\r.\r}" fontsize=9]
+	CL_3 [label="{CL_3|BANKING 14:1848\rPAPER 12:1700\r.\r.\r.\r.\r.\r.\r.\r}" fontsize=9]
+	CL_4 [label="{CL_4|FINANCIAL_TECHNOLOGY 17:2225\r.\r.\r.\r.\r.\r.\r.\r.\r}" fontsize=9]
+	CL_5 [label="{CL_5|FINTECH 40:6331\r.\r.\r.\r.\r.\r.\r.\r.\r}" fontsize=9]
 }

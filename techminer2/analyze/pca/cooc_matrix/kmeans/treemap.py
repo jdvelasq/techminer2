@@ -152,7 +152,7 @@ def treemap(
         algorithm=algorithm,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.treemap(
         #

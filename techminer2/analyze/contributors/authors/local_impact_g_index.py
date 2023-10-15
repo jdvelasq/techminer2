@@ -36,30 +36,14 @@ Local Impact --- G-Index
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> print(items.df_.to_markdown()) 
-| authors           |   h_index |   g_index |   m_index |
-|:------------------|----------:|----------:|----------:|
-| Arner DW          |         3 |         3 |      0.43 |
-| Buckley RP        |         3 |         3 |      0.43 |
-| Barberis JN       |         2 |         2 |      0.29 |
-| Butler T          |         2 |         2 |      0.33 |
-| Hamdan A          |         2 |         2 |      0.5  |
-| Turki M           |         2 |         2 |      0.5  |
-| Anagnostopoulos I |         1 |         1 |      0.17 |
-| OBrien L          |         1 |         1 |      0.2  |
-| Baxter LG         |         1 |         1 |      0.12 |
-| Weber RH          |         1 |         1 |      0.25 |
-| Zetzsche DA       |         1 |         1 |      0.25 |
-| Breymann W        |         1 |         1 |      0.17 |
-| Gross FJ          |         1 |         1 |      0.17 |
-| Kavassalis P      |         1 |         1 |      0.17 |
-| Saxton K          |         1 |         1 |      0.17 |
-| Stieber H         |         1 |         1 |      0.17 |
-| Lin W             |         2 |         1 |      0.5  |
-| Singh C           |         2 |         1 |      0.5  |
-| Brennan R         |         2 |         1 |      0.5  |
-| Crane M           |         2 |         1 |      0.5  |
-
+>>> print(items.df_.head().to_markdown()) 
+| authors     |   h_index |   g_index |   m_index |
+|:------------|----------:|----------:|----------:|
+| Jagtiani J. |         3 |         3 |      1.5  |
+| Gomber P.   |         2 |         2 |      0.67 |
+| Hornuf L.   |         2 |         2 |      0.67 |
+| Gai K.      |         2 |         2 |      0.67 |
+| Qiu M.      |         2 |         2 |      0.67 |
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/authors/g_index_chart.html")
 

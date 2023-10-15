@@ -56,7 +56,7 @@ To Brute Force Labels
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )  # doctest: +ELLIPSIS
-{'FINANCIAL_INDUSTRY 17:3704': 0, 'INNOVATION 16:2790': 0, 'BANKING 15:2024': 0, ...
+{'FINANCIAL_INDUSTRY 17:3704': 0, 'INNOVATION 13:2298': 0, 'FINANCIAL_SERVICES 11:2191': 0, ...
 
 
 """

@@ -38,18 +38,18 @@ Local Impact --- M-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| countries            |   h_index |   g_index |   m_index |
-|:---------------------|----------:|----------:|----------:|
-| United Kingdom       |         4 |         3 |      0.67 |
-| Australia            |         4 |         3 |      0.57 |
-| Ireland              |         3 |         2 |      0.5  |
-| Germany              |         3 |         2 |      0.5  |
-| Luxembourg           |         2 |         2 |      0.5  |
-| Bahrain              |         2 |         2 |      0.5  |
-| United Arab Emirates |         2 |         1 |      0.5  |
-| Japan                |         1 |         1 |      0.5  |
-| Hong Kong            |         3 |         3 |      0.43 |
-| China                |         3 |         2 |      0.43 |
+| countries      |   h_index |   g_index |   m_index |
+|:---------------|----------:|----------:|----------:|
+| United States  |        16 |        10 |      5.33 |
+| Germany        |         7 |         7 |      2.33 |
+| China          |         8 |         8 |      2    |
+| Australia      |         5 |         5 |      1.67 |
+| South Korea    |         6 |         6 |      1.5  |
+| Switzerland    |         4 |         4 |      1    |
+| United Kingdom |         3 |         3 |      1    |
+| Netherlands    |         3 |         3 |      1    |
+| France         |         1 |         1 |      1    |
+| Spain          |         1 |         1 |      1    |
 
 
 

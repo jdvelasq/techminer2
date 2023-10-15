@@ -44,12 +44,12 @@ Degree Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
-   Node                  Name  Degree
-0     0     Switzerland 4:045       8
-1     1         Germany 4:051       7
-2     2  United Kingdom 7:199       6
-3     3       Australia 7:199       5
-4     4   United States 6:059       5
+   Node                   Name  Degree
+0     0  United States 16:3189       8
+1     1      Australia 05:0783       6
+2     2        Germany 07:1814       5
+3     3          China 08:1085       4
+4     4        Denmark 02:0330       4
 
 >>> print(plot.prompt_) # doctest: +ELLIPSIS
 Your task is ...
@@ -101,14 +101,11 @@ def degree_plot(
     nx_random_state = 0
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # --------------------------------------------------------------------------
 
@@ -133,14 +130,11 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

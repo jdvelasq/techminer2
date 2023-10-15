@@ -60,8 +60,7 @@ def nx_create_co_occurrence_graph(
     #
     # EDGES:
     edge_color="#7793a5",
-    edge_width_min=0.8,
-    edge_width_max=3.0,
+    edge_width_range=(0.8, 3.0),
     #
     # AXES:
     # xaxes_range=None,
@@ -125,9 +124,7 @@ def nx_create_co_occurrence_graph(
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(
-        nx_graph, edge_width_min, edge_width_max
-    )
+    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_range)
 
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
 

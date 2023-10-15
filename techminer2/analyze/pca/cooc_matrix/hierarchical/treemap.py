@@ -154,7 +154,7 @@ def treemap(
         distance_threshold=distance_threshold,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.treemap(
         #

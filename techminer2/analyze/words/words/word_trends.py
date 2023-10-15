@@ -46,15 +46,14 @@ Word Trends
 
 
 >>> chart.df_.head()
-                       rank_occ  OCC  ...  between_2022_2023  growth_percentage
-words                                 ...                                      
-REGTECH                       1   48  ...                 12              25.00
-REGULATORS                    2   30  ...                  9              30.00
-NEW_TECHNOLOGIES              3   22  ...                  7              31.82
-REGULATORY_TECHNOLOGY         4   20  ...                  6              30.00
-COMPLIANCE                    5   18  ...                  3              16.67
-<BLANKLINE>
-[5 rows x 5 columns]
+            rank_occ  OCC  before_2018  between_2018_2019  growth_percentage
+words                                                                       
+fintech            1   50           18                 32              64.00
+financial          2   44           15                 29              65.91
+©                  3   42           14                 28              66.67
+technology         4   39           13                 26              66.67
+new                5   26            9                 17              65.38
+
 
 
 >>> print(chart.prompt_) # doctest: +ELLIPSIS

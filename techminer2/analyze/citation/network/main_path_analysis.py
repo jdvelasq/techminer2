@@ -46,7 +46,6 @@ Main Path Analysis
 """
 
 import copy
-import os
 from dataclasses import dataclass
 
 import networkx as nx

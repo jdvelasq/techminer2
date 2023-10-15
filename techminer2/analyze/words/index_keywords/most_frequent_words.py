@@ -39,18 +39,18 @@ Most Frequent Words
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| index_keywords         |   rank_occ |   OCC |   before_2022 |   between_2022_2023 |   growth_percentage |
-|:-----------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| REGULATORY_COMPLIANCE  |          1 |     9 |             6 |                   3 |               33.33 |
-| FINANCIAL_INSTITUTIONS |          2 |     6 |             4 |                   2 |               33.33 |
-| FINANCE                |          3 |     5 |             3 |                   2 |               40    |
-| REGTECH                |          4 |     5 |             3 |                   2 |               40    |
-| ANTI_MONEY_LAUNDERING  |          5 |     3 |             3 |                   0 |                0    |
-| FINTECH                |          6 |     3 |             3 |                   0 |                0    |
-| INFORMATION_SYSTEMS    |          7 |     2 |             2 |                   0 |                0    |
-| INFORMATION_USE        |          8 |     2 |             2 |                   0 |                0    |
-| SOFTWARE_SOLUTION      |          9 |     2 |             2 |                   0 |                0    |
-| SANDBOXES              |         10 |     2 |             2 |                   0 |                0    |
+| index_keywords          |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINANCE                 |          1 |    10 |             3 |                   7 |               70    |
+| FINTECH                 |          2 |    10 |             3 |                   7 |               70    |
+| FINANCIAL_SERVICES      |          3 |     5 |             0 |                   5 |              100    |
+| FINANCIAL_INDUSTRY      |          4 |     4 |             1 |                   3 |               75    |
+| COMMERCE                |          5 |     3 |             1 |                   2 |               66.67 |
+| SURVEY                  |          6 |     3 |             1 |                   2 |               66.67 |
+| ELECTRONIC_MONEY        |          7 |     3 |             0 |                   3 |              100    |
+| SUSTAINABLE_DEVELOPMENT |          8 |     3 |             0 |                   3 |              100    |
+| BLOCKCHAIN              |          9 |     2 |             0 |                   2 |              100    |
+| INVESTMENT              |         10 |     2 |             1 |                   1 |               50    |
 
 
 >>> metrics.fig_.write_html("sphinx/_static/analyze/words/index_keywords/most_frequent_chart.html")

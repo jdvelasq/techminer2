@@ -16,7 +16,7 @@ Sort My Keywords
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/my_keywords/keywords.txt has been sorted.
+--INFO-- The file example/my_keywords/stopwords.txt has been sorted.
 
 """
 import glob

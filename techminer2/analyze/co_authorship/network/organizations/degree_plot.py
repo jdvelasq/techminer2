@@ -45,12 +45,12 @@ Degree Plot
 
 
 >>> plot.df_.head()
-   Node                                            Name  Degree
-0     0                   Univ of Hong Kong (HKG) 3:185       6
-1     1                 Heinrich-Heine-Univ (DEU) 1:024       4
-2     2  UNSW Sydney, Kensington, Australia (AUS) 1:024       4
-3     3                  Univ of Luxembourg (LUX) 1:024       4
-4     4                      Univ of Zurich (CHE) 1:024       4
+   Node                                      Name  Degree
+0     0     Goethe Univ. of Frankfurt (DEU) 1:576       3
+1     1      Pennsylvania State Univ. (USA) 1:576       3
+2     2  Singapore Manag. Univ. (SMU) (SGP) 1:576       3
+3     3             Univ. of Delaware (USA) 1:576       3
+4     4      Univ. of New South Wales (AUS) 2:340       2
 
 
 >>> print(plot.prompt_) # doctest: +ELLIPSIS
@@ -104,14 +104,11 @@ def degree_plot(
     nx_random_state = 0
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # --------------------------------------------------------------------------
 
@@ -136,14 +133,11 @@ def degree_plot(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

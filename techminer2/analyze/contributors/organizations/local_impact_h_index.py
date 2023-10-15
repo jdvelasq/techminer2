@@ -37,18 +37,18 @@ Local Impact --- H-Index
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
-| organizations                                                      |   h_index |   g_index |   m_index |
-|:-------------------------------------------------------------------|----------:|----------:|----------:|
-| Univ of Hong Kong (HKG)                                            |         3 |         3 |      0.43 |
-| Univ Coll Cork (IRL)                                               |         2 |         2 |      0.33 |
-| Ahlia Univ (BHR)                                                   |         2 |         2 |      0.5  |
-| Coventry Univ (GBR)                                                |         2 |         1 |      0.5  |
-| Univ of Westminster (GBR)                                          |         2 |         1 |      0.5  |
-| Dublin City Univ (IRL)                                             |         2 |         1 |      0.5  |
-| Kingston Bus Sch (GBR)                                             |         1 |         1 |      0.17 |
-| FinTech HK, Hong Kong (HKG)                                        |         1 |         1 |      0.14 |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         1 |         1 |      0.14 |
-| Duke Univ Sch of Law (USA)                                         |         1 |         1 |      0.12 |
+| organizations                                         |   h_index |   g_index |   m_index |
+|:------------------------------------------------------|----------:|----------:|----------:|
+| Univ. of Zurich (CHE)                                 |         3 |         3 |      0.75 |
+| Federal Reserve Bank of Philadelphia (USA)            |         3 |         3 |      1.5  |
+| Baylor Univ. (USA)                                    |         2 |         2 |      2    |
+| Max Planck Inst. for Innovation and Competition (DEU) |         2 |         2 |      0.67 |
+| Univ. of New South Wales (AUS)                        |         2 |         2 |      0.67 |
+| Pace Univ. (USA)                                      |         2 |         2 |      0.67 |
+| Sungkyunkwan Univ. (KOR)                              |         2 |         2 |      0.5  |
+| Univ. of Sydney (AUS)                                 |         2 |         2 |      0.67 |
+| Federal Reserve Bank of Chicago (USA)                 |         2 |         2 |      1    |
+| Univ. of Latvia (LVA)                                 |         2 |         2 |      0.5  |
 
 >>> items.fig_.write_html("sphinx/_static/analyze/contributors/organizations/h_index_chart.html")
 

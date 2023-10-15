@@ -34,33 +34,22 @@ Themes
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(x.to_markdown())
-|    | TH_0                        | TH_1                          | TH_2                    | TH_3            | TH_4            | TH_5           |
-|---:|:----------------------------|:------------------------------|:------------------------|:----------------|:----------------|:---------------|
-|  0 | APPROACH 14:360             | REGTECH 48:557                | BANK 18:305             | develop 13:254  | CHANGING 07:183 | PURPOSE 10:212 |
-|  1 | FINTECH 12:364              | REGULATORS 30:466             | APPLICATION 15:210      | suggest 08:238  |                 | limit 10:087   |
-|  2 | well 11:194                 | NEW_TECHNOLOGIES 22:381       | AUTHOR 13:243           | increase 08:171 |                 |                |
-|  3 | RIGHTS 11:186               | REGULATORY_TECHNOLOGY 20:276  | FINDINGS 12:120         | CHANGE 07:331   |                 |                |
-|  4 | reserve 11:184              | COMPLIANCE 18:368             | RESEARCH 10:212         |                 |                 |                |
-|  5 | DEVELOPMENT 10:385          | FINANCIAL_INSTITUTIONS 16:224 | apply 10:169            |                 |                 |                |
-|  6 | POTENTIAL 09:387            | CHALLENGE 16:203              | FINANCIAL_SECTOR 09:196 |                 |                 |                |
-|  7 | REPORTING 09:255            | PAPER 15:371                  |                         |                 |                 |                |
-|  8 | SOLUTION 09:060             | base 13:061                   |                         |                 |                 |                |
-|  9 | FINANCIAL_REGULATION 08:361 | FINANCIAL_CRISIS 12:235       |                         |                 |                 |                |
-| 10 | FINANCIAL_SYSTEM 07:363     | REGULATORY_COMPLIANCE 11:360  |                         |                 |                 |                |
-| 11 |                             | DATA 11:221                   |                         |                 |                 |                |
-| 12 |                             | propose 11:188                |                         |                 |                 |                |
-| 13 |                             | STUDY 10:068                  |                         |                 |                 |                |
-| 14 |                             | improve 09:183                |                         |                 |                 |                |
-| 15 |                             | reduce 09:054                 |                         |                 |                 |                |
-| 16 |                             | FINANCE 09:030                |                         |                 |                 |                |
-| 17 |                             | address 08:167                |                         |                 |                 |                |
-| 18 |                             | enhance 08:049                |                         |                 |                 |                |
-| 19 |                             | RISKS 08:043                  |                         |                 |                 |                |
-| 20 |                             | explore 08:037                |                         |                 |                 |                |
-| 21 |                             | BUSINESS 08:027               |                         |                 |                 |                |
-| 22 |                             | IMPACT 07:203                 |                         |                 |                 |                |
-| 23 |                             | make 07:190                   |                         |                 |                 |                |
-| 24 |                             | PRACTICE 07:187               |                         |                 |                 |                |
+|    | TH_0                | TH_1                | TH_2                | TH_3             | TH_4             | TH_5               |
+|---:|:--------------------|:--------------------|:--------------------|:-----------------|:-----------------|:-------------------|
+|  0 | service 26:4327     | innovation 19:3070  | information 12:2653 | data 17:2392     | industry 23:4517 | fintech 50:8135    |
+|  1 | author 18:2443      | development 19:2499 | “ 09:1743           | research 17:2383 | study 23:3158    | financial 44:7123  |
+|  2 | sector 13:2748      | market 17:3446      | ” 09:1743           | impact 13:2198   | model 19:3820    | © 42:6879          |
+|  3 | institution 13:2648 | paper 14:2240       |                     | propose 13:1711  | business 13:2615 | technology 39:6527 |
+|  4 | offer 13:1850       | result 14:2183      |                     | consumer 12:1472 | discuss 10:2133  | new 26:4793        |
+|  5 | system 12:1826      | well 13:1908        |                     | finding 10:1362  | process 10:2113  | finance 14:2199    |
+|  6 | customer 11:2437    | bank 13:1843        |                     |                  | area 09:1646     | identify 11:1435   |
+|  7 | increase 11:1716    | make 13:1355        |                     |                  |                  | investment 09:2077 |
+|  8 | digital 10:1855     | traditional 11:2254 |                     |                  |                  | potential 09:1570  |
+|  9 | company 09:1671     | apply 11:2052       |                     |                  |                  |                    |
+| 10 | focus 09:1631       | risk 11:1636        |                     |                  |                  |                    |
+| 11 |                     | change 10:2050      |                     |                  |                  |                    |
+| 12 |                     | aim 10:1111         |                     |                  |                  |                    |
+| 13 |                     | banking 10:1032     |                     |                  |                  |                    |
 
 
 

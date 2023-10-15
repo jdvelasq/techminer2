@@ -55,12 +55,12 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                 CL_0  ...                           CL_5
-0         FINANCIAL_REGULATION 07:360  ...  FINANCIAL_INSTITUTIONS 15:194
-1             FINANCIAL_SECTOR 07:169  ...                               
-2      GLOBAL_FINANCIAL_CRISIS 06:177  ...                               
-3  FINANCIAL_SERVICES_INDUSTRY 05:315  ...                               
-4       INFORMATION_TECHNOLOGY 05:177  ...                               
+                           CL_0  ...                  CL_5
+0                AUTHOR 18:2443  ...  TECHNOLOGIES 23:3317
+1  FINANCIAL_TECHNOLOGY 17:2225  ...                      
+2               RESULTS 11:1810  ...                      
+3          NEW_SERVICES 10:1734  ...                      
+4                  DATA 10:1569  ...                      
 <BLANKLINE>
 [5 rows x 6 columns]
 
@@ -176,6 +176,6 @@ def communities(
         algorithm=algorithm_kmeans,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.communities()

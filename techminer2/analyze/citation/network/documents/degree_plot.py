@@ -41,11 +41,11 @@ Degree Plot
 
 >>> plot.df_.head()
    Node                                               Name  Degree
-0     0  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       3
-1     1                   Hu Z., 2019, SYMMETRY, V11 1:176       3
-2     2  Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P5...       2
-3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       2
-4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       1
+0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
+1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
+2     2  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
+3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
+4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       2
 
 
 

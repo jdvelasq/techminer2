@@ -47,13 +47,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                  DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
-nlp_phrases                                                                    
-REGULATORY_TECHNOLOGY 20:276   3.817076 -1.428794 -1.094541  0.491738 -0.364631
-FINANCIAL_INSTITUTIONS 15:194  2.337557  2.816962  0.504369  0.028552  0.063188
-FINANCIAL_SYSTEM 08:340        1.750703 -0.608198  0.714911 -1.009242 -0.112868
-FINANCIAL_REGULATION 07:360    1.269950  0.409674  1.445541  0.344660 -0.776842
-REGULATORY_COMPLIANCE 07:198   1.220564  0.388371 -0.015627 -0.821207  0.741367
+                                 DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+nlp_phrases                                                                   
+FINTECH 40:6331               5.637435 -1.177566 -0.626955 -0.713120  0.625639
+TECHNOLOGIES 23:3317          3.559041 -1.037701  2.320191 -0.835742 -0.441154
+AUTHOR 18:2443                2.971546 -0.036158 -0.409148  1.862706 -0.805102
+FINANCIAL_INDUSTRY 17:3704    2.544691  1.286022  1.444606  1.022023  0.944388
+FINANCIAL_TECHNOLOGY 17:2225  2.928686 -0.611500 -0.996298 -1.400737 -1.266301
 
 """
 from typing import Literal

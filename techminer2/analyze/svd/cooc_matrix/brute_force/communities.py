@@ -34,14 +34,16 @@ Communities
 ...     #
 ...     # BRUTE FORCE PARAMS:
 ...     brute_force_labels={
-...        'FINTECH 31:5168': 0, 'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 
-...        'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 'MOBILE_PAYMENT 03:0309': 0, 
-...        'CYBER_SECURITY 02:0342': 0, 'ARTIFICIAL_INTELLIGENCE 02:0327': 0, 
-...        'INNOVATION 07:0911': 1, 'DIGITAL 03:0434': 1, 'BANKING 03:0375': 1, 
-...        'FINANCIAL_INSTITUTION 02:0484': 1, 'TECHNOLOGIES 02:0310': 1, 
-...        'FINANCIAL_SERVICES 04:0667': 2, 'FINANCIAL_TECHNOLOGY 04:0551': 2, 
-...        'BUSINESS 03:0896': 2, 'FUTURE_RESEARCH 02:0691': 2, 'SHADOW_BANKING 03:0643': 3, 
-...        'PEER_TO_PEER_LENDING 03:0324': 3, 'MARKETPLACE_LENDING 03:0317': 3
+...         'MOBILE_FINTECH_PAYMENT_SERVICES 04:0485': 0, 
+...         'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 
+...         'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 
+...         'FUTURE_RESEARCH 02:0691': 0, 'CYBER_SECURITY 02:0342': 0, 
+...         'ARTIFICIAL_INTELLIGENCE 02:0327': 0, 'DIGITALIZATION 03:0434': 1, 
+...         'BANKING 03:0375': 1, 'FINANCIAL_INSTITUTION 02:0484': 1, 
+...         'TECHNOLOGIES 02:0310': 1, 'SHADOW_BANKING 03:0643': 2, 
+...         'PEER_TO_PEER_LENDING 03:0324': 2, 'MARKETPLACE_LENDING 03:0317': 2, 
+...         'FINANCIAL_SERVICES 04:0667': 3, 'FINANCIAL_TECHNOLOGY 04:0551': 3, 
+...         'BUSINESS 03:0896': 3, 'FINTECH 31:5168': 4, 'INNOVATION 07:0911': 5
 ...     },
 ...     #
 ...     # DATABASE PARAMS:
@@ -50,14 +52,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                          CL_0  ...                          CL_3
-0              FINTECH 31:5168  ...        SHADOW_BANKING 03:0643
-1  FINANCIAL_INCLUSION 03:0590  ...  PEER_TO_PEER_LENDING 03:0324
-2         CASE_STUDIES 03:0442  ...   MARKETPLACE_LENDING 03:0317
-3           BLOCKCHAIN 03:0369  ...                              
-4         CROWDFUNDING 03:0335  ...                              
+                                      CL_0  ...                CL_5
+0  MOBILE_FINTECH_PAYMENT_SERVICES 04:0485  ...  INNOVATION 07:0911
+1              FINANCIAL_INCLUSION 03:0590  ...                    
+2                     CASE_STUDIES 03:0442  ...                    
+3                       BLOCKCHAIN 03:0369  ...                    
+4                     CROWDFUNDING 03:0335  ...                    
 <BLANKLINE>
-[5 rows x 4 columns]
+[5 rows x 6 columns]
 
 """
 from ....._common.factor_analysis import FactorAnalyzer

@@ -42,14 +42,14 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                             CL_0  ...                    CL_3
-0    REGULATORY_TECHNOLOGY 07:037  ...       COMPLIANCE 07:030
-1    ANTI_MONEY_LAUNDERING 06:044  ...  DATA_PROTECTION 04:041
-2     FINANCIAL_REGULATION 04:035  ...                        
-3  ARTIFICIAL_INTELLIGENCE 04:023  ...                        
-4          RISK_MANAGEMENT 03:014  ...                        
+                           CL_0  ...                CL_5
+0  FINANCIAL_TECHNOLOGY 04:0551  ...  INNOVATION 07:0911
+1        DIGITALIZATION 03:0434  ...                    
+2               BANKING 03:0375  ...                    
+3          CROWDFUNDING 03:0335  ...                    
+4       FUTURE_RESEARCH 02:0691  ...                    
 <BLANKLINE>
-[5 rows x 4 columns]
+[5 rows x 6 columns]
 
 """
 from ....._common.factor_analysis import FactorAnalyzer
@@ -133,6 +133,6 @@ def communities(
         threshold=threshold,
     )
 
-    analyzer.run_clustering()
+    analyzer.run_clustering(brute_force_labels=None)
 
     return analyzer.communities()

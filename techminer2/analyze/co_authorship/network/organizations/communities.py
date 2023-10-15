@@ -29,16 +29,13 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                                CL_0  ...                              CL_8
-0                      Univ of Hong Kong (HKG) 3:185  ...  Duke Univ Sch of Law (USA) 1:030
-1                  FinTech HK, Hong Kong (HKG) 1:150  ...                                  
-2  ctr for Law, Markets & Regulation, UNSW Austra...  ...                                  
-3                    Heinrich-Heine-Univ (DEU) 1:024  ...                                  
-4     UNSW Sydney, Kensington, Australia (AUS) 1:024  ...                                  
-5                     Univ of Luxembourg (LUX) 1:024  ...                                  
-6                         Univ of Zurich (CHE) 1:024  ...                                  
+                                      CL_00  ...                               CL_10
+0     Goethe Univ. of Frankfurt (DEU) 1:576  ...  Goethe Univ. Frankfurt (DEU) 1:489
+1      Pennsylvania State Univ. (USA) 1:576  ...                                    
+2  Singapore Manag. Univ. (SMU) (SGP) 1:576  ...                                    
+3             Univ. of Delaware (USA) 1:576  ...                                    
 <BLANKLINE>
-[7 rows x 9 columns]
+[4 rows x 11 columns]
 
 
 """
@@ -77,14 +74,11 @@ def communities(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
     #
     # EDGES:
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -114,14 +108,11 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
         #
         # EDGES:
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

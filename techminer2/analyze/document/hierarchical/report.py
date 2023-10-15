@@ -33,12 +33,12 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'data/regtech/reports/document_clustering/hierarchical/theme_000_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/hierarchical/theme_001_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/hierarchical/theme_002_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/hierarchical/theme_003_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/hierarchical/theme_004_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_clustering/hierarchical/theme_005_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/document_clustering/hierarchical/theme_000_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/document_clustering/hierarchical/theme_001_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/document_clustering/hierarchical/theme_002_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/document_clustering/hierarchical/theme_003_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/document_clustering/hierarchical/theme_004_abstracts_report.txt' was created.
+--INFO-- The file 'example/reports/document_clustering/hierarchical/theme_005_abstracts_report.txt' was created.
 
 
 """

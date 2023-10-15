@@ -32,10 +32,22 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                          CL_0              CL_1                CL_2
-0  FINANCIAL_REGULATION 04:035    SUPTECH 03:004  CHARITYTECH 02:017
-1      NEW_TECHNOLOGIES 03:010    FINANCE 02:001  ENGLISH_LAW 02:017
-2       DATA_PROTECTION 02:027  REPORTING 02:001                    
+                                       CL_0  ...                             CL_2
+0                           FINTECH 31:5168  ...  ARTIFICIAL_INTELLIGENCE 02:0327
+1                FINANCIAL_SERVICES 04:0667  ...                  FINANCE 02:0309
+2              FINANCIAL_TECHNOLOGY 04:0551  ...                   ROBOTS 02:0289
+3   MOBILE_FINTECH_PAYMENT_SERVICES 04:0485  ...                                 
+4                          BUSINESS 03:0896  ...                                 
+5                      CASE_STUDIES 03:0442  ...                                 
+6                        BLOCKCHAIN 03:0369  ...                                 
+7                      CROWDFUNDING 03:0335  ...                                 
+8                   FUTURE_RESEARCH 02:0691  ...                                 
+9             FINANCIAL_INSTITUTION 02:0484  ...                                 
+10                   CYBER_SECURITY 02:0342  ...                                 
+11                          REGTECH 02:0266  ...                                 
+<BLANKLINE>
+[12 rows x 3 columns]
+
 
 
 """
@@ -76,17 +88,13 @@ def communities(
     #
     #
     # NODES:
-    node_size_min = 30
-    node_size_max = 70
-    textfont_size_min = 10
-    textfont_size_max = 20
-    textfont_opacity_min = 0.30
-    textfont_opacity_max = 1.00
+    node_size_range = (30, 70)
+    textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.30, 1.00)
     #
     # EDGES:
     edge_color = "#7793a5"
-    edge_width_min = 0.8
-    edge_width_max = 3.0
+    edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
     nx_k = None
@@ -147,17 +155,13 @@ def communities(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size_range=node_size_min,
-        node_size_max=node_size_max,
-        textfont_size_range=textfont_size_min,
-        textfont_size_max=textfont_size_max,
-        textfont_opacity_range=textfont_opacity_min,
-        textfont_opacity_max=textfont_opacity_max,
+        node_size_range=node_size_range,
+        textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
         edge_color=edge_color,
-        edge_width_min=edge_width_min,
-        edge_width_max=edge_width_max,
+        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
