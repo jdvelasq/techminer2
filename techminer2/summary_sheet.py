@@ -17,7 +17,7 @@ Summary Sheet
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).view().head()
+... ).compute().head()
                  column  number of terms coverage (%)
 0     abbr_source_title               50         1.0%
 1              abstract               48        0.96%
@@ -50,7 +50,7 @@ class SummarySheet(ReadRecordsMixin):
             **filters,
         )
 
-    def _compute(self):
+    def compute(self):
         records = self.read_records()
 
         #
@@ -71,9 +71,6 @@ class SummarySheet(ReadRecordsMixin):
         ]
 
         return report
-
-    def view(self):
-        return self._compute()
 
 
 # def summary_sheet(

@@ -5,21 +5,20 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _performance_analysis.statistics:
-
 Statistics
 ===============================================================================
 
 
->>> from techminer2.analyze import statistics
->>> statistics(
-...     field='authors',
+>>> from techminer2.analyze import Statistics
+>>> Statistics(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
+... ).compute(
+...     field='authors',    
 ... ).head()
                     year                              ... countries_from_affiliations                
                    count    mean std     min     25%  ...                         min 25% 50% 75% max
@@ -34,36 +33,67 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...                       
 
 
 """
-from .._read_records import read_records
+from .._read_records import ReadRecordsMixin
 
 
-def statistics(
-    field,
-    #
-    # DATABASE PARAMS:
-    root_dir: str = "./",
-    database: str = "main",
-    year_filter: tuple = (None, None),
-    cited_by_filter: tuple = (None, None),
-    **filters,
-):
-    """Returns the statistics of the records.
-
-    :meta private:
-    """
-
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
+class Statistics(ReadRecordsMixin):
+    def __init__(
+        self,
+        #
+        # DATABASE PARAMS:
+        root_dir: str = "./",
+        database: str = "main",
+        year_filter: tuple = (None, None),
+        cited_by_filter: tuple = (None, None),
         **filters,
-    )
+    ):
+        super().__init__(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
-    records = records.dropna(subset=[field])
-    records[field] = records[field].str.split("; ")
-    records = records.explode(field)
-    records[field] = records[field].str.strip()
-    summary = records.groupby(field).describe()
+    def compute(self, field):
+        records = self.read_records()
 
-    return summary
+        records = records.dropna(subset=[field])
+        records[field] = records[field].str.split("; ")
+        records = records.explode(field)
+        records[field] = records[field].str.strip()
+        summary = records.groupby(field).describe()
+
+        return summary
+
+
+# def statistics(
+#     field,
+#     #
+#     # DATABASE PARAMS:
+#     root_dir: str = "./",
+#     database: str = "main",
+#     year_filter: tuple = (None, None),
+#     cited_by_filter: tuple = (None, None),
+#     **filters,
+# ):
+#     """Returns the statistics of the records.
+
+#     :meta private:
+#     """
+
+#     records = read_records(
+#         root_dir=root_dir,
+#         database=database,
+#         year_filter=year_filter,
+#         cited_by_filter=cited_by_filter,
+#         **filters,
+#     )
+
+#     records = records.dropna(subset=[field])
+#     records[field] = records[field].str.split("; ")
+#     records = records.explode(field)
+#     records[field] = records[field].str.strip()
+#     summary = records.groupby(field).describe()
+
+#     return summary
