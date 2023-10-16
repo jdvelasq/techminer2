@@ -9,15 +9,15 @@ Summary Sheet
 ===============================================================================
 
 
->>> from techminer2 import summary_sheet
->>> summary_sheet(
+>>> from techminer2 import SummarySheet
+>>> SummarySheet(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).head()
+... ).view().head()
                  column  number of terms coverage (%)
 0     abbr_source_title               50         1.0%
 1              abstract               48        0.96%
@@ -28,40 +28,85 @@ Summary Sheet
 """
 import pandas as pd
 
-from ._read_records import read_records
+from ._read_records import ReadRecordsMixin
 
 
-def summary_sheet(
-    #
-    # DATABASE PARAMS:
-    root_dir: str = "./",
-    database: str = "main",
-    year_filter: tuple = (None, None),
-    cited_by_filter: tuple = (None, None),
-    **filters,
-):
-    """:meta private:"""
-
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
+class SummarySheet(ReadRecordsMixin):
+    def __init__(
+        self,
+        #
+        # DATABASE PARAMS
+        root_dir: str = "./",
+        database: str = "main",
+        year_filter: tuple = (None, None),
+        cited_by_filter: tuple = (None, None),
         **filters,
-    )
+    ):
+        super().__init__(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
-    columns = sorted(records.columns)
-    n_documents = len(records)
+    def _compute(self):
+        records = self.read_records()
 
-    report = pd.DataFrame({"column": columns})
+        #
+        # Compute stats per column
+        columns = sorted(records.columns)
 
-    report["number of terms"] = [
-        n_documents - records[col].isnull().sum() for col in columns
-    ]
+        n_documents = len(records)
 
-    report["coverage (%)"] = [
-        f"{ (n_documents - records[col].isnull().sum()) / n_documents:5.2}%"
-        for col in columns
-    ]
+        report = pd.DataFrame({"column": columns})
 
-    return report
+        report["number of terms"] = [
+            n_documents - records[col].isnull().sum() for col in columns
+        ]
+
+        report["coverage (%)"] = [
+            f"{(n_documents - records[col].isnull().sum()) / n_documents:5.2}%"
+            for col in columns
+        ]
+
+        return report
+
+    def view(self):
+        return self._compute()
+
+
+# def summary_sheet(
+#     #
+#     # DATABASE PARAMS:
+#     root_dir: str = "./",
+#     database: str = "main",
+#     year_filter: tuple = (None, None),
+#     cited_by_filter: tuple = (None, None),
+#     **filters,
+# ):
+#     """:meta private:"""
+
+#     records = read_records(
+#         root_dir=root_dir,
+#         database=database,
+#         year_filter=year_filter,
+#         cited_by_filter=cited_by_filter,
+#         **filters,
+#     )
+
+#     columns = sorted(records.columns)
+#     n_documents = len(records)
+
+#     report = pd.DataFrame({"column": columns})
+
+#     report["number of terms"] = [
+#         n_documents - records[col].isnull().sum() for col in columns
+#     ]
+
+#     report["coverage (%)"] = [
+#         f"{ (n_documents - records[col].isnull().sum()) / n_documents:5.2}%"
+#         for col in columns
+#     ]
+
+#     return report
