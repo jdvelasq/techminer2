@@ -1,8 +1,8 @@
 """Create a text report with the imported records."""
 
 
-from .._common._read_records import read_records
 from .._common.format_report_for_records import format_report_for_records
+from .._read_records import read_records
 
 
 def create_imported_records_report(root_dir):

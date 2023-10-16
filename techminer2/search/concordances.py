@@ -78,8 +78,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .._common._read_records import read_records
 from .._common.format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from .._read_records import read_records
 
 TEXTWRAP_WIDTH = 73
 

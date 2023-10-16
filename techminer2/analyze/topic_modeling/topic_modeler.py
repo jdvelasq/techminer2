@@ -11,9 +11,9 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
-from ..._common._read_records import read_records
 from ..._common.format_report_for_records import format_report_for_records
 from ..._common.make_report_dir import make_report_dir
+from ..._read_records import read_records
 from ...analyze import tfidf
 
 
@@ -181,7 +181,9 @@ class TopicModeler:
         assigned_topics_to_documents = doc_topic_matrix.idxmax(axis=1)
 
         self.documents_by_theme = {}
-        for article, theme in zip(assigned_topics_to_documents.index, assigned_topics_to_documents):
+        for article, theme in zip(
+            assigned_topics_to_documents.index, assigned_topics_to_documents
+        ):
             if theme not in self.documents_by_theme:
                 self.documents_by_theme[theme] = []
             self.documents_by_theme[theme].append(article)

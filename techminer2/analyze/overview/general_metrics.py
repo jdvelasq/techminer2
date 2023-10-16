@@ -88,8 +88,8 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ..._common._read_records import read_records
 from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..._read_records import read_records
 
 
 def general_metrics(

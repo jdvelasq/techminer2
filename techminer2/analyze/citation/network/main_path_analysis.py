@@ -51,7 +51,6 @@ from dataclasses import dataclass
 import networkx as nx
 import numpy as np
 
-from ...._common._read_records import read_records
 from ...._common.format_report_for_records import format_report_for_records
 from ...._common.nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
@@ -72,6 +71,7 @@ from ...._common.nx_compute_textposition_from_graph import (
 from ...._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from ...._common.nx_set_node_color_to_constant import nx_set_node_color_to_constant
 from ...._common.nx_visualize_graph import nx_visualize_graph
+from ...._read_records import read_records
 
 
 def main_path_analysis(

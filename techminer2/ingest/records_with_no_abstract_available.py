@@ -22,7 +22,7 @@ Records with No Abstract Available
 
 
 """
-from .._common._read_records import read_records
+from .._read_records import read_records
 
 
 def records_with_no_abstract_available(
@@ -41,7 +41,9 @@ def records_with_no_abstract_available(
         cited_by_filter=(None, None),
     )
 
-    records = records[records.abstract.isna() | (records.abstract == "[no abstract available]")]
+    records = records[
+        records.abstract.isna() | (records.abstract == "[no abstract available]")
+    ]
 
     for _, record in records.iterrows():
         print(record.title)

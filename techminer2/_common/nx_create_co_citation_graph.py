@@ -9,7 +9,7 @@
 import networkx as nx
 import numpy as np
 
-from ._read_records import read_records
+from .._read_records import read_records
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,

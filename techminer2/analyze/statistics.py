@@ -34,7 +34,7 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...                       
 
 
 """
-from .._common._read_records import read_records
+from .._read_records import read_records
 
 
 def statistics(

@@ -47,7 +47,7 @@
 
 
 """
-from ..._common._read_records import read_records
+from ..._read_records import read_records
 
 
 def compute_trend_metrics(

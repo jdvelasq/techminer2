@@ -24,7 +24,7 @@ Update Abstract
 """
 import os
 
-from .._common._read_records import read_records
+from .._read_records import read_records
 
 
 def update_abstract(
@@ -53,7 +53,8 @@ def update_abstract(
         raise ValueError(f"Key '{article}' match multiple records.")
 
     if not (
-        current_abstract.iloc[0] == "[no abstract available]" or current_abstract.isna().iloc[0]
+        current_abstract.iloc[0] == "[no abstract available]"
+        or current_abstract.isna().iloc[0]
     ):
         raise ValueError(f"Article '{article}' has already an abstract.")
 

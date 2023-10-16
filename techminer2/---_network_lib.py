@@ -18,7 +18,7 @@ from cdlib import algorithms
 #     CoocCellsList,
 #     list_cells_in_matrix,
 # )
-from ._common._read_records import read_records
+from ._read_records import read_records
 
 # from .vantagepoint.discover.matrix.list_cells_in_matrix import (
 #     list_cells_in_matrix,
@@ -40,14 +40,18 @@ def nx_add_nodes__to_graph_from_matrix(graph, matrix):
 
     # Adds the items in 'row' column as nodes
     nodes = matrix.df_.index.to_list()
-    nodes = [(node, {"group": 0, "color": "#7793a5", "textfont_color": "black"}) for node in nodes]
+    nodes = [
+        (node, {"group": 0, "color": "#7793a5", "textfont_color": "black"})
+        for node in nodes
+    ]
     graph.add_nodes_from(nodes)
 
     if matrix.rows_ != matrix.columns_:
         # Adds the items in 'column' column as nodes
         nodes = matrix.df_.columns.to_list()
         nodes = [
-            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"}) for node in nodes
+            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"})
+            for node in nodes
         ]
         graph.add_nodes_from(nodes)
 
@@ -111,7 +115,9 @@ def nx_create_graph_from_matrix(
 
     graph = nx_add_nodes_to_graph_from_matrix(graph, matrix)
     graph = nx_create_node_occ_property_from_node_name(graph)
-    graph = nx_compute_node_property_from_occ(graph, "node_size", node_size_min, node_size_max)
+    graph = nx_compute_node_property_from_occ(
+        graph, "node_size", node_size_min, node_size_max
+    )
     graph = nx_compute_node_property_from_occ(
         graph, "textfont_size", textfont_size_min, textfont_size_max
     )
@@ -126,7 +132,10 @@ def nx_add_nodes_to_graph_from_matrix(graph, matrix):
 
     # adds items in 'row' column as nodes
     nodes = matrix.index.to_list()
-    nodes = [(node, {"group": 0, "color": "#7793a5", "textfont_color": "black"}) for node in nodes]
+    nodes = [
+        (node, {"group": 0, "color": "#7793a5", "textfont_color": "black"})
+        for node in nodes
+    ]
     graph.add_nodes_from(nodes)
 
     # adds items in 'column' column as nodes
@@ -137,7 +146,8 @@ def nx_add_nodes_to_graph_from_matrix(graph, matrix):
             nodes.append(candidate)
     if len(nodes) > 0:
         nodes = [
-            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"}) for node in nodes
+            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"})
+            for node in nodes
         ]
         graph.add_nodes_from(nodes)
 
@@ -157,7 +167,9 @@ def nx_create_graph_from_matrix_list(
 
     graph = nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list)
     graph = nx_create_node_occ_property_from_node_name(graph)
-    graph = nx_compute_node_property_from_occ(graph, "node_size", node_size_min, node_size_max)
+    graph = nx_compute_node_property_from_occ(
+        graph, "node_size", node_size_min, node_size_max
+    )
     graph = nx_compute_node_property_from_occ(
         graph, "textfont_size", textfont_size_min, textfont_size_max
     )
@@ -172,7 +184,10 @@ def nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list):
 
     # adds items in 'row' column as nodes
     nodes = matrix_list.df_["row"].drop_duplicates().to_list()
-    nodes = [(node, {"group": 0, "color": "#7793a5", "textfont_color": "black"}) for node in nodes]
+    nodes = [
+        (node, {"group": 0, "color": "#7793a5", "textfont_color": "black"})
+        for node in nodes
+    ]
     graph.add_nodes_from(nodes)
 
     # adds items in 'column' column as nodes
@@ -183,7 +198,8 @@ def nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list):
             nodes.append(candidate)
     if len(nodes) > 0:
         nodes = [
-            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"}) for node in nodes
+            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"})
+            for node in nodes
         ]
         graph.add_nodes_from(nodes)
 
@@ -276,7 +292,9 @@ def nx_compute_node_textfont_color_from_occ(graph):
     occ = [graph.nodes[node]["OCC"] for node in graph.nodes()]
     occ_scaled = nx_scale_node_occ(occ, max_size=1.0, min_size=0.40)
     colors = px.colors.sequential.Greys
-    textfont_color = np.array(colors)[np.round(occ_scaled * (len(colors) - 1)).astype(int)]
+    textfont_color = np.array(colors)[
+        np.round(occ_scaled * (len(colors) - 1)).astype(int)
+    ]
 
     for index, node in enumerate(graph.nodes()):
         graph.nodes[node]["textfont_color"] = textfont_color[index]
@@ -412,7 +430,9 @@ def nx_node_occ_to_node_textfont_color(occ):
     """Computes the textfont color from an OCC list."""
     occ_scaled = nx_scale_node_occ(occ, max_size=1.0, min_size=0.35)
     colors = px.colors.sequential.Greys
-    textfont_color = np.array(colors)[np.round(occ_scaled * (len(colors) - 1)).astype(int)]
+    textfont_color = np.array(colors)[
+        np.round(occ_scaled * (len(colors) - 1)).astype(int)
+    ]
     return textfont_color
 
 
@@ -424,7 +444,9 @@ def nx_scale_node_occ(occ, max_size, min_size):
     occ = occ - min_occ + min_size
     max_value = occ.max()
     if max_value > max_size:
-        occ = min_size + (occ - min_size) / (max_value - min_size) * (max_size - min_size)
+        occ = min_size + (occ - min_size) / (max_value - min_size) * (
+            max_size - min_size
+        )
     return occ
 
 

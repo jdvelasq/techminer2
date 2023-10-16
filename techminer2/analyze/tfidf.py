@@ -54,7 +54,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 from .._common._counters_lib import add_counters_to_frame_axis
 from .._common._filtering_lib import generate_custom_items
-from .._common._read_records import read_records
+from .._read_records import read_records
 from ..indicators.global_indicators_by_field import global_indicators_by_field
 
 
@@ -168,7 +168,9 @@ def _sort_columns(result):
     topics["citations"] = topics["citations"].str.split(":")
     topics["citations"] = topics["citations"].map(lambda x: x[1]).astype(int)
 
-    topics = topics.sort_values(by=["OCC", "citations", "topic"], ascending=[False, False, True])
+    topics = topics.sort_values(
+        by=["OCC", "citations", "topic"], ascending=[False, False, True]
+    )
     sorted_topics = topics.topic.tolist()
     result = result[sorted_topics]
     return result
@@ -206,7 +208,9 @@ def _create_tf_matrix(
     records = records.explode(field)
     records[field] = records[field].str.strip()
 
-    grouped_records = records.groupby(["article", field], as_index=False).agg({"OCC": "sum"})
+    grouped_records = records.groupby(["article", field], as_index=False).agg(
+        {"OCC": "sum"}
+    )
 
     result = pd.pivot(
         index="article",

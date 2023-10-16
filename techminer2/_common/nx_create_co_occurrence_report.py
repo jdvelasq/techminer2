@@ -20,8 +20,8 @@ from collections import defaultdict
 
 import pandas as pd
 
+from .._read_records import read_records
 from ..search.concordances import concordances_from_records
-from ._read_records import read_records
 from .format_prompt_for_records import format_prompt_for_records
 from .format_report_for_records import format_report_for_records
 from .make_report_dir import make_report_dir
