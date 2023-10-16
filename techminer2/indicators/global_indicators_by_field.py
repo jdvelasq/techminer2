@@ -76,8 +76,8 @@ Indicators by Field
 
 
 from .._common._sorting_lib import sort_indicators_by_metric
-from .._common._stopwords_lib import load_stopwords
 from .._read_records import read_records
+from .._stopwords import load_stopwords
 from .items_occurrences_by_year import items_occurrences_by_year
 
 

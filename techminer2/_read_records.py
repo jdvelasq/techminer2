@@ -5,10 +5,11 @@ import os.path
 
 import pandas as pd
 
+from ._parameters import DatabaseMixin
 from .constansts import DATABASE_NAMES_TO_FILE_NAMES
 
 
-class ReadRecordsMixin:
+class ReadRecordsMixin(DatabaseMixin):
     """Base class for reading records from the main database."""
 
     def __init__(
@@ -21,11 +22,13 @@ class ReadRecordsMixin:
         cited_by_filter: tuple = (None, None),
         **filters,
     ):
-        self._root_dir = root_dir
-        self._database = database
-        self._year_filter = year_filter
-        self._cited_by_filter = cited_by_filter
-        self._filters = filters
+        super().__init__(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     def _get_records_from_file(self):
         """Read raw records from a file."""

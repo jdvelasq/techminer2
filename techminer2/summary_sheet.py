@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Summary Sheet
+SummarySheet
 ===============================================================================
 
 
@@ -32,6 +32,8 @@ from ._read_records import ReadRecordsMixin
 
 
 class SummarySheet(ReadRecordsMixin):
+    """:meta private:"""
+
     def __init__(
         self,
         #
@@ -51,6 +53,7 @@ class SummarySheet(ReadRecordsMixin):
         )
 
     def compute(self):
+        """:meta private:"""
         records = self.read_records()
 
         #
@@ -71,39 +74,3 @@ class SummarySheet(ReadRecordsMixin):
         ]
 
         return report
-
-
-# def summary_sheet(
-#     #
-#     # DATABASE PARAMS:
-#     root_dir: str = "./",
-#     database: str = "main",
-#     year_filter: tuple = (None, None),
-#     cited_by_filter: tuple = (None, None),
-#     **filters,
-# ):
-#     """:meta private:"""
-
-#     records = read_records(
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
-
-#     columns = sorted(records.columns)
-#     n_documents = len(records)
-
-#     report = pd.DataFrame({"column": columns})
-
-#     report["number of terms"] = [
-#         n_documents - records[col].isnull().sum() for col in columns
-#     ]
-
-#     report["coverage (%)"] = [
-#         f"{ (n_documents - records[col].isnull().sum()) / n_documents:5.2}%"
-#         for col in columns
-#     ]
-
-#     return report

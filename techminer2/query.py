@@ -35,7 +35,7 @@ from ._read_records import ReadRecordsMixin
 
 
 class Query(ReadRecordsMixin):
-    """Query class."""
+    """:meta private:"""
 
     def __init__(
         self,
@@ -56,7 +56,7 @@ class Query(ReadRecordsMixin):
         )
 
     def execute(self, expr):
-        """Query."""
+        """:meta private:"""
 
         # The variable 'database' is required by duckdb.query(expr).df()
         database = self.read_records()

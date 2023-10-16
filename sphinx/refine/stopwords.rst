@@ -1,4 +1,4 @@
-.. automodule:: techminer2.refine.sort_stopwords
+.. automodule:: techminer2.refine.stopwords
     :members:
     :undoc-members:
     :show-inheritance:

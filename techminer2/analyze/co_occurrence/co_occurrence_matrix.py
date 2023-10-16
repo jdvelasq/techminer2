@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _tm2.co_occurrence.co_occurrence_matrix:
-
 Co-occurrence Matrix 
 ===============================================================================
 
@@ -131,9 +129,9 @@ from dataclasses import dataclass
 from ..._common._counters_lib import add_counters_to_frame_axis
 from ..._common._filtering_lib import generate_custom_items
 from ..._common._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
-from ..._common._stopwords_lib import load_stopwords
 from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..._read_records import read_records
+from ..._stopwords import load_stopwords
 from ...indicators.global_indicators_by_field import global_indicators_by_field
 
 

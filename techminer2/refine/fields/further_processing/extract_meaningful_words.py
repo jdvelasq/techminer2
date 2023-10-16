@@ -15,7 +15,7 @@ from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ...._common._stopwords_lib import load_generic_stopwords
+from ...._stopwords import load_package_stopwords
 from ..protected_fields import PROTECTED_FIELDS
 
 #
@@ -88,7 +88,8 @@ def _extract_meaningful_words(
             lambda paragraph: TextBlob(paragraph).sentences, na_action="ignore"
         )
         data[dest] = data[dest].map(
-            lambda sentences: [sentence.tags for sentence in sentences], na_action="ignore"
+            lambda sentences: [sentence.tags for sentence in sentences],
+            na_action="ignore",
         )
         data[dest] = data[dest].map(
             lambda tagged_sentences: [
@@ -99,14 +100,15 @@ def _extract_meaningful_words(
             ]
         )
         data[dest] = data[dest].map(
-            lambda tagged_words: [to_lemma(tag) for tag in tagged_words], na_action="ignore"
+            lambda tagged_words: [to_lemma(tag) for tag in tagged_words],
+            na_action="ignore",
         )
         data[dest] = data[dest].map(
             lambda tagged_words: [tag[0] for tag in tagged_words], na_action="ignore"
         )
         data[dest] = data[dest].map(set, na_action="ignore")
         data[dest] = data[dest].map(sorted, na_action="ignore")
-        stopwords = [word.lower() for word in load_generic_stopwords()]
+        stopwords = [word.lower() for word in load_package_stopwords()]
         data[dest] = data[dest].map(
             lambda terms: [term for term in terms if term.lower() not in stopwords],
             na_action="ignore",
