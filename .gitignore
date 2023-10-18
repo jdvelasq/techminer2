@@ -1,12 +1,19 @@
 .DS_Store
 
-example/
+example/raw-data/main/scopus.csv
+debug.ipynb
 
+example/
 tmp/*
+
+
+sphinx/_build/
+sphinx/_static/
+sphinx/images/
 
 debug/
 trash/
-sphinx/_build/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -139,5 +146,3 @@ dmypy.json
 .pyre/
 
 
-example/raw-data/main/scopus.csv
-debug.ipynb

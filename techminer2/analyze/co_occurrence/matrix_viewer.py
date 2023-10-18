@@ -13,17 +13,15 @@ Matrix Viewer
 >>> from techminer2.analyze.co_occurrence import matrix_viewer
 >>> matrix_viewer(
 ...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='authors',
-...     #
 ...     # COLUMN PARAMS:
+...     columns='author_keywords',
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
 ...     col_custom_items=None,
 ...     #
 ...     # ROW PARAMS:
+...     rows='authors',
 ...     row_top_n=10,    
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
@@ -34,12 +32,10 @@ Matrix Viewer
 ...     nx_iterations=30,
 ...     nx_random_state=0,
 ...     #
-...     # NODES:
+...     # NODES AND EDGES:
 ...     node_size_range=(30, 70),
 ...     textfont_size_range=(10, 20),
 ...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES
 ...     edge_color="#b8c6d0",
 ...     edge_width_range=(0.8, 4.0),
 ...     #
@@ -63,17 +59,15 @@ Matrix Viewer
     
 >>> matrix_viewer(
 ...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
 ...     # COLUMN PARAMS:
+...     columns='author_keywords',
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
 ...     col_custom_items=None,
 ...     #
 ...     # ROW PARAMS:
+...     rows=None,
 ...     row_top_n=None,    
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
@@ -84,12 +78,10 @@ Matrix Viewer
 ...     nx_iterations=30,
 ...     nx_random_state=0,
 ...     #
-...     # NODES:
+...     # NODES AND EDGES:
 ...     node_size_range=(30, 70),
 ...     textfont_size_range=(10, 20),
 ...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES
 ...     edge_color="#b8c6d0",
 ...     edge_width_range=(0.8, 4.0),
 ...     #
@@ -137,17 +129,15 @@ from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 def matrix_viewer(
     #
-    # FUNCTION PARAMS:
-    columns,
-    rows=None,
-    #
     # COLUMN PARAMS:
+    columns,
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
     col_custom_items=None,
     #
     # ROW PARAMS:
+    rows=None,
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
@@ -158,12 +148,10 @@ def matrix_viewer(
     nx_iterations=30,
     nx_random_state=0,
     #
-    # NODES:
+    # NODES AND EDGES:
     node_size_range=(30, 70),
     textfont_size_range=(10, 20),
     textfont_opacity_range=(0.35, 1.00),
-    #
-    # EDGES
     edge_color="#b8c6d0",
     edge_width_range=(0.8, 4.0),
     #
@@ -186,17 +174,15 @@ def matrix_viewer(
 
     cooc_matrix = co_occurrence_matrix(
         #
-        # FUNCTION PARAMS:
-        columns=columns,
-        rows=rows,
-        #
         # COLUMN PARAMS:
+        columns=columns,
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
         col_custom_items=col_custom_items,
         #
         # ROW PARAMS:
+        rows=rows,
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
