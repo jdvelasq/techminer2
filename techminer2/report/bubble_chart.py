@@ -11,24 +11,22 @@ Bubble Chart
 >>> from techminer2.report import bubble_chart
 >>> chart = bubble_chart(
 ...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # CHART PARAMS:
-...     title=None,
-...     #
 ...     # COLUMN PARAMS:
+...     columns='author_keywords',
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
 ...     col_custom_items=None,
 ...     #
 ...     # ROW PARAMS:
+...     rows=None,
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
 ...     row_custom_items=None,
+...     #
+...     # CHART PARAMS:
+...     title=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -51,24 +49,22 @@ from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 def bubble_chart(
     #
-    # FUNCTION PARAMS:
-    columns,
-    rows=None,
-    #
-    # CHART PARAMS:
-    title=None,
-    #
     # COLUMN PARAMS:
+    columns,
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
     col_custom_items=None,
     #
     # ROW PARAMS:
+    rows=None,
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
     row_custom_items=None,
+    #
+    # CHART PARAMS:
+    title=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -84,17 +80,15 @@ def bubble_chart(
 
     matrix = co_occurrence_matrix(
         #
-        # FUNCTION PARAMS:
-        columns=columns,
-        rows=rows,
-        #
         # COLUMN PARAMS:
+        columns=columns,
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
         col_custom_items=col_custom_items,
         #
         # ROW PARAMS:
+        rows=rows,
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
@@ -111,7 +105,9 @@ def bubble_chart(
     matrix = matrix.melt(value_name="VALUE", var_name="column", ignore_index=False)
     matrix = matrix.reset_index()
     matrix = matrix.rename(columns={matrix.columns[0]: "row"})
-    matrix = matrix.sort_values(by=["VALUE", "row", "column"], ascending=[False, True, True])
+    matrix = matrix.sort_values(
+        by=["VALUE", "row", "column"], ascending=[False, True, True]
+    )
     matrix = matrix.reset_index(drop=True)
 
     fig = px.scatter(

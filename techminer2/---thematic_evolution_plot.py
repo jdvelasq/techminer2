@@ -11,58 +11,58 @@ Thematic evolution plot
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+# >>> directory = "data/regtech/"
 
->>> import techminer2plus
+# >>> import techminer2plus
 
->>> tm1 = techminer2plus.publish.conceptual_structure.thematic_map(
-...     criterion="author_keywords",
-...     topics_length=100,
-...     directory=directory,
-...     start_year=2016,
-...     end_year=2019,
-... )
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_00.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_01.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_02.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_03.txt' was created
+# >>> tm1 = techminer2plus.publish.conceptual_structure.thematic_map(
+# ...     criterion="author_keywords",
+# ...     topics_length=100,
+# ...     directory=directory,
+# ...     start_year=2016,
+# ...     end_year=2019,
+# ... )
+# --INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_00.txt' was created
+# --INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_01.txt' was created
+# --INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_02.txt' was created
+# --INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_03.txt' was created
 
->>> tm1.communities_.head()
-                         CL_00  ...                                CL_03
-0                regtech 9:236  ...            algorithmic process 1:003
-1                fintech 6:203  ...  artificial intelligence & law 1:003
-2     financial services 2:164  ...               equality of arms 1:003
-3             regulation 2:161  ...           knowledge impairment 1:003
-4  semantic technologies 2:041  ...                        suptech 1:003
-<BLANKLINE>
-[5 rows x 4 columns]
+# >>> tm1.communities_.head()
+#                          CL_00  ...                                CL_03
+# 0                regtech 9:236  ...            algorithmic process 1:003
+# 1                fintech 6:203  ...  artificial intelligence & law 1:003
+# 2     financial services 2:164  ...               equality of arms 1:003
+# 3             regulation 2:161  ...           knowledge impairment 1:003
+# 4  semantic technologies 2:041  ...                        suptech 1:003
+# <BLANKLINE>
+# [5 rows x 4 columns]
 
->>> tm2 = techminer2plus.publish.conceptual_structure.thematic_map(
-...     criterion="author_keywords",
-...     topics_length=100,
-...     directory=directory,
-...     start_year=2020,
-...     end_year=2023,
-... )
->>> tm2.communities_.head()
-                           CL_00  ...                             CL_11
-0    anti-money laundering 03:21  ...  analytic hierarchy process 01:02
-1  artificial intelligence 03:20  ...       regulatory monitoring 01:02
-2              charitytech 02:17  ...                                  
-3              english law 02:17  ...                                  
-4   counter-terror finance 01:14  ...                                  
-<BLANKLINE>
-[5 rows x 12 columns]
+# >>> tm2 = techminer2plus.publish.conceptual_structure.thematic_map(
+# ...     criterion="author_keywords",
+# ...     topics_length=100,
+# ...     directory=directory,
+# ...     start_year=2020,
+# ...     end_year=2023,
+# ... )
+# >>> tm2.communities_.head()
+#                            CL_00  ...                             CL_11
+# 0    anti-money laundering 03:21  ...  analytic hierarchy process 01:02
+# 1  artificial intelligence 03:20  ...       regulatory monitoring 01:02
+# 2              charitytech 02:17  ...                                  
+# 3              english law 02:17  ...                                  
+# 4   counter-terror finance 01:14  ...                                  
+# <BLANKLINE>
+# [5 rows x 12 columns]
 
 
->>> file_name = "sphinx/_static/examples/thematic_evolution_plot.html"
->>> bibliometrix.conceptual_structure.thematic_evolution_plot(
-...     indicators=[tm1, tm2],
-... ).write_html(file_name)
+# >>> file_name = "sphinx/_static/examples/thematic_evolution_plot.html"
+# >>> bibliometrix.conceptual_structure.thematic_evolution_plot(
+# ...     indicators=[tm1, tm2],
+# ... ).write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../../../_static/examples/thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../../_static/examples/thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """

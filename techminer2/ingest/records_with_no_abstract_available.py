@@ -17,7 +17,14 @@ Records with No Abstract Available
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-
+FINTECH
+Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
+nan
+<BLANKLINE>
+FINTECH and the TRANSFORMATION of the FINANCIAL_INDUSTRY
+Alt R., 2018, ELECTRON MARK, V28, P235
+nan
+<BLANKLINE>
 
 
 
@@ -46,7 +53,7 @@ def records_with_no_abstract_available(
     ]
 
     for _, record in records.iterrows():
-        print(record.title)
+        print(record.document_title)
         print(record.article)
         print(record.abstract)
         print()

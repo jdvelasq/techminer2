@@ -50,19 +50,19 @@ AUTHORS        Authors                                        115
                Countries                                       24
                Countries (1st author)                          18
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        136
+               Cleaned author keywords                        137
                Raw index keywords                             179
                Cleaned index keywords                         170
                Raw keywords                                   279
-               Cleaned keywords                               244
+               Cleaned keywords                               246
 NLP PHRASES    Raw title NLP phrases                          130
-               Cleaned title NLP phrases                      121
+               Cleaned title NLP phrases                      122
                Raw abstract NLP phrases                      1472
-               Cleaned abstract NLP phrases                  1234
+               Cleaned abstract NLP phrases                  1239
                Raw NLP phrases                               1518
-               Cleaned NLP phrases                           1265
+               Cleaned NLP phrases                           1271
 DESCRIPTORS    Raw descriptors                               1684
-               Cleaned descriptors                           1373
+               Cleaned descriptors                           1380
 
 
 

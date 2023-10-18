@@ -36,13 +36,13 @@ author_keywords
 FINTECH 31:5168                  0     5     8    12     6
 INNOVATION 07:0911               0     3     3     1     0
 FINANCIAL_SERVICES 04:0667       0     1     0     3     0
+FINANCIAL_TECHNOLOGY 04:0551     0     0     1     1     2
+BUSINESS 03:0896                 0     0     0     3     0
+SHADOW_BANKING 03:0643           0     0     0     2     1
 FINANCIAL_INCLUSION 03:0590      0     1     2     0     0
-FINANCIAL_TECHNOLOGY 03:0461     0     0     1     1     1
-CROWDFUNDING 03:0335             0     0     1     1     1
-MARKETPLACE_LENDING 03:0317      0     0     0     2     1
-BUSINESS_MODELS 02:0759          0     0     0     2     0
-CYBER_SECURITY 02:0342           0     0     0     2     0
-CASE_STUDY 02:0340               0     0     1     0     1
+CASE_STUDIES 03:0442             0     0     1     1     1
+DIGITALIZATION 03:0434           0     2     1     0     0
+BANKING 03:0375                  0     1     2     0     0
 
 
 
@@ -81,18 +81,18 @@ Your task is ...
 ...     cited_by_filter=(None, None),
 ... )
 >>> terms.df_
-year                            2016  2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                               
-REGTECH 28:329                     0     2     5     9    17    20    26    28
-FINTECH 12:249                     0     0     2     6     9    10    12    12
-REGULATORY_TECHNOLOGY 07:037       0     0     0     0     2     5     7     7
-COMPLIANCE 07:030                  0     0     0     1     4     5     6     7
-REGULATION 05:164                  0     0     2     2     3     4     5     5
-ANTI_MONEY_LAUNDERING 05:034       0     0     0     0     2     5     5     5
-FINANCIAL_SERVICES 04:168          0     1     2     2     3     3     4     4
-FINANCIAL_REGULATION 04:035        0     1     1     1     2     2     4     4
-ARTIFICIAL_INTELLIGENCE 04:023     0     0     0     1     3     3     4     4
-RISK_MANAGEMENT 03:014             0     0     1     1     2     2     3     3
+year                          2015  2016  2017  2018  2019
+author_keywords                                           
+FINTECH 31:5168                  0     5    13    25    31
+INNOVATION 07:0911               0     3     6     7     7
+FINANCIAL_SERVICES 04:0667       0     1     1     4     4
+FINANCIAL_TECHNOLOGY 04:0551     0     0     1     2     4
+BUSINESS 03:0896                 0     0     0     3     3
+SHADOW_BANKING 03:0643           0     0     0     2     3
+FINANCIAL_INCLUSION 03:0590      0     1     3     3     3
+CASE_STUDIES 03:0442             0     0     1     2     3
+DIGITALIZATION 03:0434           0     2     3     3     3
+BANKING 03:0375                  0     1     3     3     3
 
 
 >>> terms.fig_.write_html("sphinx/_static/analyze/terms_by_year_1.html")
@@ -108,39 +108,39 @@ Your task is ...
 
 
 >>> print(terms.metrics_.head(20).to_markdown())
-|    | author_keywords       |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
-|---:|:----------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | REGTECH               |   2017 |     2 |         2 |                 12 |                 3 |     7 |                       1.714 |                      0.429 |
-|  1 | REGTECH               |   2018 |     3 |         5 |                182 |                30 |     6 |                      30.333 |                      5     |
-|  2 | REGTECH               |   2019 |     4 |         9 |                 42 |                18 |     5 |                       8.4   |                      3.6   |
-|  3 | REGTECH               |   2020 |     8 |        17 |                 67 |                17 |     4 |                      16.75  |                      4.25  |
-|  4 | REGTECH               |   2021 |     3 |        20 |                  6 |                 4 |     3 |                       2     |                      1.333 |
-|  5 | REGTECH               |   2022 |     6 |        26 |                 20 |                 2 |     2 |                      10     |                      1     |
-|  6 | REGTECH               |   2023 |     2 |        28 |                  0 |                 0 |     1 |                       0     |                      0     |
-|  7 | FINTECH               |   2018 |     2 |         2 |                161 |                22 |     6 |                      26.833 |                      3.667 |
-|  8 | FINTECH               |   2019 |     4 |         6 |                 42 |                18 |     5 |                       8.4   |                      3.6   |
-|  9 | FINTECH               |   2020 |     3 |         9 |                 29 |                 5 |     4 |                       7.25  |                      1.25  |
-| 10 | FINTECH               |   2021 |     1 |        10 |                  3 |                 3 |     3 |                       1     |                      1     |
-| 11 | FINTECH               |   2022 |     2 |        12 |                 14 |                 1 |     2 |                       7     |                      0.5   |
-| 12 | REGULATORY_TECHNOLOGY |   2020 |     2 |         2 |                 16 |                 3 |     4 |                       4     |                      0.75  |
-| 13 | REGULATORY_TECHNOLOGY |   2021 |     3 |         5 |                 19 |                 6 |     3 |                       6.333 |                      2     |
-| 14 | REGULATORY_TECHNOLOGY |   2022 |     2 |         7 |                  2 |                 1 |     2 |                       1     |                      0.5   |
-| 15 | COMPLIANCE            |   2019 |     1 |         1 |                  3 |                 0 |     5 |                       0.6   |                      0     |
-| 16 | COMPLIANCE            |   2020 |     3 |         4 |                 24 |                 9 |     4 |                       6     |                      2.25  |
-| 17 | COMPLIANCE            |   2021 |     1 |         5 |                  2 |                 0 |     3 |                       0.667 |                      0     |
-| 18 | COMPLIANCE            |   2022 |     1 |         6 |                  1 |                 0 |     2 |                       0.5   |                      0     |
-| 19 | COMPLIANCE            |   2023 |     1 |         7 |                  0 |                 0 |     1 |                       0     |                      0     |
+|    | author_keywords      |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
+|---:|:---------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | FINTECH              |   2016 |     5 |         5 |                498 |                 6 |     4 |                     124.5   |                      1.5   |
+|  1 | FINTECH              |   2017 |     8 |        13 |               1572 |                11 |     3 |                     524     |                      3.667 |
+|  2 | FINTECH              |   2018 |    12 |        25 |               2338 |                 9 |     2 |                    1169     |                      4.5   |
+|  3 | FINTECH              |   2019 |     6 |        31 |                760 |                 1 |     1 |                     760     |                      1     |
+|  4 | INNOVATION           |   2016 |     3 |         3 |                407 |                 3 |     4 |                     101.75  |                      0.75  |
+|  5 | INNOVATION           |   2017 |     3 |         6 |                402 |                 2 |     3 |                     134     |                      0.667 |
+|  6 | INNOVATION           |   2018 |     1 |         7 |                102 |                 0 |     2 |                      51     |                      0     |
+|  7 | FINANCIAL_SERVICES   |   2016 |     1 |         1 |                226 |                 0 |     4 |                      56.5   |                      0     |
+|  8 | FINANCIAL_SERVICES   |   2018 |     3 |         4 |                441 |                 1 |     2 |                     220.5   |                      0.5   |
+|  9 | FINANCIAL_TECHNOLOGY |   2017 |     1 |         1 |                253 |                 1 |     3 |                      84.333 |                      0.333 |
+| 10 | FINANCIAL_TECHNOLOGY |   2018 |     1 |         2 |                137 |                 0 |     2 |                      68.5   |                      0     |
+| 11 | FINANCIAL_TECHNOLOGY |   2019 |     2 |         4 |                161 |                 0 |     1 |                     161     |                      0     |
+| 12 | BUSINESS             |   2018 |     3 |         3 |                896 |                 3 |     2 |                     448     |                      1.5   |
+| 13 | SHADOW_BANKING       |   2018 |     2 |         2 |                546 |                 2 |     2 |                     273     |                      1     |
+| 14 | SHADOW_BANKING       |   2019 |     1 |         3 |                 97 |                 0 |     1 |                      97     |                      0     |
+| 15 | FINANCIAL_INCLUSION  |   2016 |     1 |         1 |                 96 |                 1 |     4 |                      24     |                      0.25  |
+| 16 | FINANCIAL_INCLUSION  |   2017 |     2 |         3 |                494 |                 4 |     3 |                     164.667 |                      1.333 |
+| 17 | CASE_STUDIES         |   2017 |     1 |         1 |                180 |                 2 |     3 |                      60     |                      0.667 |
+| 18 | CASE_STUDIES         |   2018 |     1 |         2 |                102 |                 0 |     2 |                      51     |                      0     |
+| 19 | CASE_STUDIES         |   2019 |     1 |         3 |                160 |                 0 |     1 |                     160     |                      0     |
 
 
 
 >>> print(terms.documents_.head().to_markdown())
-|    | author_keywords    | title                                                   |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
-|---:|:-------------------|:--------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
-|  0 | FINANCIAL_SERVICES | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  1 | FINTECH            | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  2 | REGTECH            | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  3 | REGULATION         | FINTECH and REGTECH: impact on regulators and banks     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
-|  4 | FINTECH            | UNDERSTANDING_REGTECH for DIGITAL_REGULATORY_COMPLIANCE |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
+|    | author_keywords   | document_title                                                               |   year | source_title                   |   global_citations |   local_citations | doi                           |
+|---:|:------------------|:-----------------------------------------------------------------------------|-------:|:-------------------------------|-------------------:|------------------:|:------------------------------|
+|  0 | BUSINESS          | FINTECH: ECOSYSTEM, BUSINESS_MODELS, INVESTMENT_DECISIONS, and CHALLENGES    |   2018 | Business Horizons              |                557 |                 2 | 10.1016/J.BUSHOR.2017.09.003  |
+|  1 | FINTECH           | FINTECH: ECOSYSTEM, BUSINESS_MODELS, INVESTMENT_DECISIONS, and CHALLENGES    |   2018 | Business Horizons              |                557 |                 2 | 10.1016/J.BUSHOR.2017.09.003  |
+|  2 | FINTECH           | DIGITAL_FINANCE and FINTECH: CURRENT_RESEARCH and FUTURE_RESEARCH_DIRECTIONS |   2017 | Journal of Business Economics  |                489 |                 4 | 10.1007/S11573-017-0852-X     |
+|  3 | FINTECH           | FINTECH, REGULATORY_ARBITRAGE, and the RISE of SHADOW_BANKS                  |   2018 | Journal of Financial Economics |                390 |                 0 | 10.1016/J.JFINECO.2018.03.011 |
+|  4 | SHADOW_BANKING    | FINTECH, REGULATORY_ARBITRAGE, and the RISE of SHADOW_BANKS                  |   2018 | Journal of Financial Economics |                390 |                 0 | 10.1016/J.JFINECO.2018.03.011 |
 
 
 """

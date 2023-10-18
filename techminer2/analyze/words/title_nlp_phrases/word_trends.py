@@ -46,13 +46,13 @@ Word Trends
 
 
 >>> chart.df_.head()
-                                 rank_occ  ...  growth_percentage
-title_nlp_phrases                          ...                   
-FINTECH                                 1  ...              62.96
-BANKING                                 2  ...              57.14
-MOBILE_FINTECH_PAYMENT_SERVICES         3  ...              80.00
-CHINA                                   4  ...              40.00
-IMPACT                                  5  ...              75.00
+                   rank_occ  OCC  ...  between_2018_2019  growth_percentage
+title_nlp_phrases                 ...                                      
+FINTECH                   1   27  ...               17.0              62.96
+BANKING                   2    7  ...                4.0              57.14
+CHINA                     3    5  ...                2.0              40.00
+IMPACT                    4    4  ...                3.0              75.00
+CHALLENGES                5    3  ...                2.0              66.67
 <BLANKLINE>
 [5 rows x 5 columns]
 

@@ -43,12 +43,12 @@ Themes
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                           TH_0  ...                            TH_9
-0                REGTECH 28:329  ...    ANTI_MONEY_LAUNDERING 06:044
-1     FINANCIAL_SERVICES 04:168  ...               INNOVATION 03:012
-2  REGULATORY_TECHNOLOGY 07:037  ...    REGULATORY_TECHNOLOGY 07:037
-3                FINTECH 12:249  ...  ARTIFICIAL_INTELLIGENCE 04:023
-4         DIGITAL_DIVIDE 01:004  ...          BUSINESS_POLICY 01:011
+                         TH_0  ...                      TH_9
+0             FINTECH 31:5168  ...           FINTECH 31:5168
+1          BLOCKCHAIN 03:0369  ...        INNOVATION 07:0911
+2  FINANCIAL_SERVICES 04:0667  ...    DIGITALIZATION 03:0434
+3        CASE_STUDIES 03:0442  ...     POPULAR_PRESS 02:0181
+4      MOBILE_PAYMENT 03:0309  ...  CONTENT_ANALYSIS 02:0181
 <BLANKLINE>
 [5 rows x 10 columns]
 

@@ -30,7 +30,6 @@ def run_authors_importer(root_dir):
         dest="authors",
         func=lambda x: x.str.replace(r", \(\d\)", "", regex=True)
         .str.replace(", Jr.", " Jr.", regex=False)
-        .str.replace(",", ";", regex=False)
         .str.replace("; ", ";", regex=False)
         .str.replace(";", "; ", regex=False)
         .str.title()

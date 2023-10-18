@@ -40,14 +40,13 @@ Performance Metrics
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.head().to_markdown())
-| author_keywords                 |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
-|:--------------------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| FINTECH                         |          1 |          1 |          1 |    31 |               5168 |                27 |        31 |        12 |      7.75 |
-| INNOVATION                      |          2 |          2 |          2 |     7 |                911 |                 5 |         7 |         7 |      1.75 |
-| FINANCIAL_SERVICES              |          3 |          5 |         40 |     4 |                667 |                 1 |         4 |         4 |      1    |
-| FINANCIAL_TECHNOLOGY            |          4 |         12 |         41 |     4 |                551 |                 1 |         4 |         4 |      1.33 |
-| MOBILE_FINTECH_PAYMENT_SERVICES |          5 |         17 |         42 |     4 |                485 |                 1 |         4 |         4 |      1    |
-
+| author_keywords      |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
+|:---------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
+| FINTECH              |          1 |          1 |          1 |    31 |               5168 |                27 |        31 |        12 |      7.75 |
+| INNOVATION           |          2 |          2 |          2 |     7 |                911 |                 5 |         7 |         7 |      1.75 |
+| FINANCIAL_SERVICES   |          3 |          5 |         40 |     4 |                667 |                 1 |         4 |         4 |      1    |
+| FINANCIAL_TECHNOLOGY |          4 |         12 |         41 |     4 |                551 |                 1 |         4 |         4 |      1.33 |
+| BUSINESS             |          5 |          3 |         10 |     3 |                896 |                 3 |         3 |         3 |      1.5  |
 
 
 >>> print(metrics.prompt_) # doctest: +ELLIPSIS
@@ -95,13 +94,13 @@ Your task is ...
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.head().to_markdown())
-| author_keywords                 |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
-|:--------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| FINANCIAL_SERVICES              |          3 |     4 |             1 |                   3 |                  75 |
-| FINANCIAL_TECHNOLOGY            |          4 |     4 |             1 |                   3 |                  75 |
-| MOBILE_FINTECH_PAYMENT_SERVICES |          5 |     4 |             1 |                   3 |                  75 |
-| BUSINESS                        |          6 |     3 |             0 |                   3 |                 100 |
-| SHADOW_BANKING                  |          7 |     3 |             0 |                   3 |                 100 |
+| author_keywords      |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:---------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINANCIAL_SERVICES   |          3 |     4 |             1 |                   3 |                  75 |
+| FINANCIAL_TECHNOLOGY |          4 |     4 |             1 |                   3 |                  75 |
+| BUSINESS             |          5 |     3 |             0 |                   3 |                 100 |
+| SHADOW_BANKING       |          6 |     3 |             0 |                   3 |                 100 |
+| FINANCIAL_INCLUSION  |          7 |     3 |             3 |                   0 |                   0 |
 
 
 """

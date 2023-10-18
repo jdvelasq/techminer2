@@ -14,18 +14,17 @@ Column Chart
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
 ...     title="Most Frequent Author Keywords",
 ...     metric_label=None,
 ...     field_label=None,
-...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -42,16 +41,15 @@ Column Chart
     
     
 >>> chart.df_.head()
-                                 rank_occ  ...  growth_percentage
-author_keywords                            ...                   
-FINTECH                                 1  ...              58.06
-INNOVATION                              2  ...              14.29
-FINANCIAL_SERVICES                      3  ...              75.00
-FINANCIAL_TECHNOLOGY                    4  ...              75.00
-MOBILE_FINTECH_PAYMENT_SERVICES         5  ...              75.00
+                      rank_occ  OCC  ...  between_2018_2019  growth_percentage
+author_keywords                      ...                                      
+FINTECH                      1   31  ...                 18              58.06
+INNOVATION                   2    7  ...                  1              14.29
+FINANCIAL_SERVICES           3    4  ...                  3              75.00
+FINANCIAL_TECHNOLOGY         4    4  ...                  3              75.00
+BUSINESS                     5    3  ...                  3             100.00
 <BLANKLINE>
 [5 rows x 5 columns]
-
 
 >>> print(chart.prompt_) # doctest: +ELLIPSIS
 Your task is ...
@@ -70,18 +68,17 @@ def column_chart(
     #
     # ITEMS PARAMS:
     field,
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
     metric="OCC",
     #
     # CHART PARAMS:
     title=None,
     metric_label=None,
     field_label=None,
-    #
-    # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -90,22 +87,17 @@ def column_chart(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Column chart.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     items = performance_metrics(
         #
         # ITEMS PARAMS:
         field=field,
-        metric=metric,
-        #
-        # ITEM FILTERS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
+        metric=metric,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

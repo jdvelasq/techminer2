@@ -18,7 +18,7 @@ in the same directory as the documents.csv file.
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
 
 """
 import os.path

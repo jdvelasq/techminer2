@@ -6,11 +6,9 @@ Create 'organizations.txt' thesaurus file
 Creates a organizations thesaurus from the data in the database.
 
 
->>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.ingest.create_organizations_thesaurus(root_dir)
---INFO-- The data/regtech/organizations.txt thesaurus file was created
+>>> from techminer2.ingest._list_cleanup_organizations import list_cleanup_organizations
+>>> list_cleanup_organizations(root_dir="example/")
+--INFO-- The example/thesauri/organizations.the.txt thesaurus file was created
 
 
 """

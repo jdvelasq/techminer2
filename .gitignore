@@ -1,15 +1,19 @@
 .DS_Store
 
+**/*.html
+
 example/raw-data/main/scopus.csv
 debug.ipynb
 
+
+
+sphinx/_static/**/*
+sphinx/_build/
 example/
 tmp/*
 
 
 sphinx/_build/
-sphinx/_static/
-sphinx/images/
 
 debug/
 trash/
@@ -86,7 +90,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+sphinx/_build/
 
 # PyBuilder
 target/
@@ -144,5 +148,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
 
 

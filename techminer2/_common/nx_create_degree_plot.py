@@ -9,92 +9,92 @@
 Network Deegre Plot
 ===============================================================================
 
-* Preparation
+# * Preparation
 
->>> import techminer2 as tm2
->>> root_dir = "data/regtech/"
+# >>> import techminer2 as tm2
+# >>> root_dir = "data/regtech/"
 
-* Object oriented interface
+# * Object oriented interface
 
->>> degree_plot = (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         col_top_n=20,
-...     )
-...     .network_create(
-...         algorithm_or_estimator="louvain"
-...     )
-...     .network_degree_plot()
-... )
->>> degree_plot
-NetworkDegreePlot()
-
-
-* Functional interface
-
->>> cooc_matrix = tm2p.co_occurrence_matrix(
-...    columns='author_keywords',
-...    col_top_n=20,
-...    root_dir=root_dir,
-... )
->>> network = tm2p.network_create(
-...     cooc_matrix,
-...     algorithm_or_estimator='louvain',
-... )
->>> degree_plot = network_degree_plot(network)
->>> degree_plot
-NetworkDegreePlot()
+# >>> degree_plot = (
+# ...     tm2p.records(root_dir=root_dir)
+# ...     .co_occurrence_matrix(
+# ...         columns='author_keywords',
+# ...         col_top_n=20,
+# ...     )
+# ...     .network_create(
+# ...         algorithm_or_estimator="louvain"
+# ...     )
+# ...     .network_degree_plot()
+# ... )
+# >>> degree_plot
+# NetworkDegreePlot()
 
 
-* Results
+# * Functional interface
 
->>> degree_plot.fig_.write_html("sphinx/_static/network_degree_plot.html")
+# >>> cooc_matrix = tm2p.co_occurrence_matrix(
+# ...    columns='author_keywords',
+# ...    col_top_n=20,
+# ...    root_dir=root_dir,
+# ... )
+# >>> network = tm2p.network_create(
+# ...     cooc_matrix,
+# ...     algorithm_or_estimator='louvain',
+# ... )
+# >>> degree_plot = network_degree_plot(network)
+# >>> degree_plot
+# NetworkDegreePlot()
 
-.. raw:: html
 
-    <iframe src="../../_static/network_degree_plot.html"   height="600px" width="100%" frameBorder="0"></iframe>
+# * Results
 
->>> degree_plot.df_.head()
-   Node                          Name  Degree
-0     0                REGTECH 28:329      19
-1     1                FINTECH 12:249      13
-2     2             COMPLIANCE 07:030      10
-3     3             REGULATION 05:164      10
-4     4  REGULATORY_TECHNOLOGY 07:037       9
+# >>> degree_plot.fig_.write_html("sphinx/_static/network_degree_plot.html")
 
->>> print(degree_plot.prompt_)
-Your task is to generate an analysis about the degree of the nodes in a \\
-networkx graph of a co-ocurrence matrix. Analyze the table below, delimited \\
-by triple backticks, identifying any notable patterns, trends, or outliers \\
-in the data, and discuss their implications in the network.
-<BLANKLINE>
-Table:
-```
-|    |   Node | Name                           |   Degree |
-|---:|-------:|:-------------------------------|---------:|
-|  0 |      0 | REGTECH 28:329                 |       19 |
-|  1 |      1 | FINTECH 12:249                 |       13 |
-|  2 |      2 | COMPLIANCE 07:030              |       10 |
-|  3 |      3 | REGULATION 05:164              |       10 |
-|  4 |      4 | REGULATORY_TECHNOLOGY 07:037   |        9 |
-|  5 |      5 | ARTIFICIAL_INTELLIGENCE 04:023 |        9 |
-|  6 |      6 | RISK_MANAGEMENT 03:014         |        8 |
-|  7 |      7 | BLOCKCHAIN 03:005              |        6 |
-|  8 |      8 | SUPTECH 03:004                 |        6 |
-|  9 |      9 | ANTI_MONEY_LAUNDERING 05:034   |        5 |
-| 10 |     10 | FINANCIAL_REGULATION 04:035    |        5 |
-| 11 |     11 | INNOVATION 03:012              |        5 |
-| 12 |     12 | FINANCIAL_SERVICES 04:168      |        4 |
-| 13 |     13 | SEMANTIC_TECHNOLOGIES 02:041   |        4 |
-| 14 |     14 | CHARITYTECH 02:017             |        4 |
-| 15 |     15 | ENGLISH_LAW 02:017             |        4 |
-| 16 |     16 | DATA_PROTECTION 02:027         |        3 |
-| 17 |     17 | ACCOUNTABILITY 02:014          |        3 |
-| 18 |     18 | DATA_PROTECTION_OFFICER 02:014 |        3 |
-| 19 |     19 | SMART_CONTRACTS 02:022         |        2 |
-```
-<BLANKLINE>
+# .. raw:: html
+
+#     <iframe src="../../_static/network_degree_plot.html"   height="600px" width="100%" frameBorder="0"></iframe>
+
+# >>> degree_plot.df_.head()
+#    Node                          Name  Degree
+# 0     0                REGTECH 28:329      19
+# 1     1                FINTECH 12:249      13
+# 2     2             COMPLIANCE 07:030      10
+# 3     3             REGULATION 05:164      10
+# 4     4  REGULATORY_TECHNOLOGY 07:037       9
+
+# >>> print(degree_plot.prompt_)
+# Your task is to generate an analysis about the degree of the nodes in a \\
+# networkx graph of a co-ocurrence matrix. Analyze the table below, delimited \\
+# by triple backticks, identifying any notable patterns, trends, or outliers \\
+# in the data, and discuss their implications in the network.
+# <BLANKLINE>
+# Table:
+# ```
+# |    |   Node | Name                           |   Degree |
+# |---:|-------:|:-------------------------------|---------:|
+# |  0 |      0 | REGTECH 28:329                 |       19 |
+# |  1 |      1 | FINTECH 12:249                 |       13 |
+# |  2 |      2 | COMPLIANCE 07:030              |       10 |
+# |  3 |      3 | REGULATION 05:164              |       10 |
+# |  4 |      4 | REGULATORY_TECHNOLOGY 07:037   |        9 |
+# |  5 |      5 | ARTIFICIAL_INTELLIGENCE 04:023 |        9 |
+# |  6 |      6 | RISK_MANAGEMENT 03:014         |        8 |
+# |  7 |      7 | BLOCKCHAIN 03:005              |        6 |
+# |  8 |      8 | SUPTECH 03:004                 |        6 |
+# |  9 |      9 | ANTI_MONEY_LAUNDERING 05:034   |        5 |
+# | 10 |     10 | FINANCIAL_REGULATION 04:035    |        5 |
+# | 11 |     11 | INNOVATION 03:012              |        5 |
+# | 12 |     12 | FINANCIAL_SERVICES 04:168      |        4 |
+# | 13 |     13 | SEMANTIC_TECHNOLOGIES 02:041   |        4 |
+# | 14 |     14 | CHARITYTECH 02:017             |        4 |
+# | 15 |     15 | ENGLISH_LAW 02:017             |        4 |
+# | 16 |     16 | DATA_PROTECTION 02:027         |        3 |
+# | 17 |     17 | ACCOUNTABILITY 02:014          |        3 |
+# | 18 |     18 | DATA_PROTECTION_OFFICER 02:014 |        3 |
+# | 19 |     19 | SMART_CONTRACTS 02:022         |        2 |
+# ```
+# <BLANKLINE>
 
 
 """

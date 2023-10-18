@@ -35,7 +35,7 @@ Communities
 ...     #
 ...     # BRUTE FORCE PARAMS:
 ...     brute_force_labels={
-...         'MOBILE_FINTECH_PAYMENT_SERVICES 04:0485': 0, 
+...         'MOBILE_PAYMENT 03:0309': 0, 
 ...         'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 
 ...         'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 
 ...         'FUTURE_RESEARCH 02:0691': 0, 'CYBER_SECURITY 02:0342': 0, 
@@ -53,12 +53,12 @@ Communities
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                      CL_0  ...                CL_5
-0  MOBILE_FINTECH_PAYMENT_SERVICES 04:0485  ...  INNOVATION 07:0911
-1              FINANCIAL_INCLUSION 03:0590  ...                    
-2                     CASE_STUDIES 03:0442  ...                    
-3                       BLOCKCHAIN 03:0369  ...                    
-4                     CROWDFUNDING 03:0335  ...                    
+                          CL_0  ...                CL_5
+0  FINANCIAL_INCLUSION 03:0590  ...  INNOVATION 07:0911
+1         CASE_STUDIES 03:0442  ...                    
+2           BLOCKCHAIN 03:0369  ...                    
+3         CROWDFUNDING 03:0335  ...                    
+4       MOBILE_PAYMENT 03:0309  ...                    
 <BLANKLINE>
 [5 rows x 6 columns]
 

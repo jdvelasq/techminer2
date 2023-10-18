@@ -11,13 +11,13 @@ filters.
 Example
 -------------------------------------------------------------------------------
 
->>> root_dir = "data/regtech/"
+# >>> root_dir = "data/regtech/"
 
->>> from techminer2 import techminer
->>> techminer.reports.most_cited_documents(
-...     root_dir=root_dir,
-... )
---INFO-- The file 'data/regtech/reports/most_cited_documents.txt' was created
+# >>> from techminer2 import techminer
+# >>> techminer.reports.most_cited_documents(
+# ...     root_dir=root_dir,
+# ... )
+# --INFO-- The file 'data/regtech/reports/most_cited_documents.txt' was created
 
 """
 

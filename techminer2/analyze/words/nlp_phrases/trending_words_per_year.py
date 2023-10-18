@@ -28,8 +28,8 @@ nlp_phrases                                     ...
 LONDON_BUSINESS_SCHOOL    1     2015      2015  ...   0  0.150000      1
 STATE                     3     2016      2016  ...   0  0.192051      1
 YEARS                     3     2016      2016  ...   2  0.192051      1
-NOVEL                     2     2016      2016  ...   4  0.171026      2
 PRACTICE                  3     2016      2016  ...   1  0.192051      2
+DIGITAL_INNOVATION        3     2016      2016  ...   3  0.192051      2
 <BLANKLINE>
 [5 rows x 8 columns]
 

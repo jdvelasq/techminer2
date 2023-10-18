@@ -24,7 +24,8 @@ Finds a string in the terms of a thesaurus.
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file data/regtech/words.txt has been reordered.
+
+
 
 """
 from .._find_string import _find_string

@@ -11,27 +11,27 @@ Clean Suite
 
 * Acronym identifier:
 
->>> from techminer2.refine.thesaurus.words import clean_suite
->>> clean_suite(
-...     #
-...     # ACTIONS:
-...     restart_thesaurus=True,
-...     acronym_identifier=True,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
-(
-    ('AML', 'ANTI MONEY LAUNDERING'),
-    ('OF INFORMATION', 'CLASSIFICATION'),
-    ('CSR', 'CORPORATE SOCIAL RESPONSIBILITIES'),
-    ('GDPR', 'GENERAL DATA PROTECTION REGULATION'),
-    ('KYC', 'KNOW YOUR CUSTOMER'),
-    ('MANDAS', 'MERGERS AND ACQUISITIONS'),
-    ('PSD 2', 'PAYMENT SERVICES DIRECTIVE 2'),
-    ('REGTECH', 'REGULATION TECHNOLOGY'),
-    ('REGTECH', 'REGULATORY TECHNOLOGY'),
-)
+# >>> from techminer2.refine.thesaurus.words import clean_suite
+# >>> clean_suite(
+# ...     #
+# ...     # ACTIONS:
+# ...     restart_thesaurus=True,
+# ...     acronym_identifier=True,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... )
+# (
+#     ('AML', 'ANTI MONEY LAUNDERING'),
+#     ('OF INFORMATION', 'CLASSIFICATION'),
+#     ('CSR', 'CORPORATE SOCIAL RESPONSIBILITIES'),
+#     ('GDPR', 'GENERAL DATA PROTECTION REGULATION'),
+#     ('KYC', 'KNOW YOUR CUSTOMER'),
+#     ('MANDAS', 'MERGERS AND ACQUISITIONS'),
+#     ('PSD 2', 'PAYMENT SERVICES DIRECTIVE 2'),
+#     ('REGTECH', 'REGULATION TECHNOLOGY'),
+#     ('REGTECH', 'REGULATORY TECHNOLOGY'),
+# )
 
 
 

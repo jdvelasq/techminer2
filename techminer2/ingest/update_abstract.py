@@ -9,14 +9,14 @@ Update Abstract
 ===============================================================================
 
 
->>> from techminer2.ingest import update_abstract
->>> update_abstract(
-...     record_id=
-...     new_text=
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+# >>> from techminer2.ingest import update_abstract
+# >>> update_abstract(
+# ...     record_id=
+# ...     new_text=
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... )
 
 
 

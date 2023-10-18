@@ -6,8 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _associations_analysis.radial_diagram:
-
 Radial Diagram
 ===============================================================================
 
@@ -18,73 +16,79 @@ co-occurrence between the terms. The radial diagram is a useful tool for
 identifying the most relevant terms associated with a given term.
 
 
->>> from techminer2.co_occurrence_analysis.associations.graphs import radial_diagram
->>> radial_diagram(
-...     #
-...     # FUNCTION PARAMS:
-...     item="REGTECH", 
-...     #
-...     # CO-OCC PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_min=30,
-...     node_size_max=70,
-...     textfont_size_min=10,
-...     textfont_size_max=20,
-...     textfont_opacity_min=0.35,
-...     textfont_opacity_max=1.00,
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_min=0.8,
-...     edge_width_max=3.0,
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=20,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_items=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_items=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_analysis/associations/radial_diagram.html")
+# >>> from techminer2.co_occurrence_analysis.associations.graphs import radial_diagram
+# >>> radial_diagram(
+# ...     #
+# ...     # FUNCTION PARAMS:
+# ...     item="REGTECH", 
+# ...     #
+# ...     # CO-OCC PARAMS:
+# ...     columns='author_keywords',
+# ...     rows=None,
+# ...     #
+# ...     # LAYOUT:
+# ...     nx_k=None,
+# ...     nx_iterations=30,
+# ...     nx_random_state=0,
+# ...     #
+# ...     # NODES:
+# ...     node_size_min=30,
+# ...     node_size_max=70,
+# ...     textfont_size_min=10,
+# ...     textfont_size_max=20,
+# ...     textfont_opacity_min=0.35,
+# ...     textfont_opacity_max=1.00,
+# ...     #
+# ...     # EDGES:
+# ...     edge_color="#7793a5",
+# ...     edge_width_min=0.8,
+# ...     edge_width_max=3.0,
+# ...     #
+# ...     # AXES:
+# ...     xaxes_range=None,
+# ...     yaxes_range=None,
+# ...     show_axes=False,
+# ...     #
+# ...     # COLUMN PARAMS:
+# ...     col_top_n=20,
+# ...     col_occ_range=(None, None),
+# ...     col_gc_range=(None, None),
+# ...     col_custom_items=None,
+# ...     #
+# ...     # ROW PARAMS:
+# ...     row_top_n=None,
+# ...     row_occ_range=(None, None),
+# ...     row_gc_range=(None, None),
+# ...     row_custom_items=None,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=(None, None),
+# ...     cited_by_filter=(None, None),
+# ... ).write_html("sphinx/_static/co_occurrence_analysis/associations/radial_diagram.html")
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../../../../../../_static/co_occurrence_analysis/associations/radial_diagram.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../../../../../_static/co_occurrence_analysis/associations/radial_diagram.html" 
+#     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
 import networkx as nx
 
 from ..analyze.associations.item_associations import item_associations
-from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from .nx_compute_edge_width_from_edge_weight import (
+    nx_compute_edge_width_from_edge_weight,
+)
 from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
 from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
-from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from .nx_compute_textfont_opacity_from_item_occ import (
+    nx_compute_textfont_opacity_from_item_occ,
+)
+from .nx_compute_textfont_size_from_item_occ import (
+    nx_compute_textfont_size_from_item_occ,
+)
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_visualize_graph import nx_visualize_graph
@@ -188,7 +192,9 @@ def nx_radial_diagram(
     #
     # Sets the node attributes
     # nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
+    nx_graph = nx_compute_node_size_from_item_occ(
+        nx_graph, node_size_min, node_size_max
+    )
     nx_graph = nx_compute_textfont_size_from_item_occ(
         nx_graph, textfont_size_min, textfont_size_max
     )
@@ -198,7 +204,9 @@ def nx_radial_diagram(
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
+    nx_graph = nx_compute_edge_width_from_edge_weight(
+        nx_graph, edge_width_min, edge_width_max
+    )
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
 

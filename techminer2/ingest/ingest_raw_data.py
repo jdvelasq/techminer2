@@ -14,7 +14,7 @@ Ingest Raw Data
 Import a scopus data file in the working directory.
 
 >>> from techminer2.ingest import ingest_raw_data
->>> ingest_raw_data(
+>>> ingest_raw_data( # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 

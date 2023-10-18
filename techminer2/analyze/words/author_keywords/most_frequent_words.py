@@ -38,20 +38,20 @@ Most Frequent Words
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| author_keywords                 |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
-|:--------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| FINTECH                         |          1 |    31 |            13 |                  18 |               58.06 |
-| INNOVATION                      |          2 |     7 |             6 |                   1 |               14.29 |
-| FINANCIAL_SERVICES              |          3 |     4 |             1 |                   3 |               75    |
-| FINANCIAL_TECHNOLOGY            |          4 |     4 |             1 |                   3 |               75    |
-| MOBILE_FINTECH_PAYMENT_SERVICES |          5 |     4 |             1 |                   3 |               75    |
-| BUSINESS                        |          6 |     3 |             0 |                   3 |              100    |
-| SHADOW_BANKING                  |          7 |     3 |             0 |                   3 |              100    |
-| FINANCIAL_INCLUSION             |          8 |     3 |             3 |                   0 |                0    |
-| CASE_STUDIES                    |          9 |     3 |             1 |                   2 |               66.67 |
-| DIGITALIZATION                  |         10 |     3 |             3 |                   0 |                0    |
+| author_keywords      |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:---------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINTECH              |          1 |    31 |            13 |                  18 |               58.06 |
+| INNOVATION           |          2 |     7 |             6 |                   1 |               14.29 |
+| FINANCIAL_SERVICES   |          3 |     4 |             1 |                   3 |               75    |
+| FINANCIAL_TECHNOLOGY |          4 |     4 |             1 |                   3 |               75    |
+| BUSINESS             |          5 |     3 |             0 |                   3 |              100    |
+| SHADOW_BANKING       |          6 |     3 |             0 |                   3 |              100    |
+| FINANCIAL_INCLUSION  |          7 |     3 |             3 |                   0 |                0    |
+| CASE_STUDIES         |          8 |     3 |             1 |                   2 |               66.67 |
+| DIGITALIZATION       |          9 |     3 |             3 |                   0 |                0    |
+| BANKING              |         10 |     3 |             3 |                   0 |                0    |
 
-
+    
 
 >>> metrics.fig_.write_html("sphinx/_static/analyze/words/author_keywords/most_frequent_chart.html")
 

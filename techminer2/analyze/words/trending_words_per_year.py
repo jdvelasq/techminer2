@@ -49,9 +49,7 @@ TECHNOLOGIES        2     2016      2016  ...   1  0.177333      2
 ...     n_words_per_year=5,
 ...     custom_items=[
 ...         "FINTECH",
-...         "REGULATORY_TECHNOLOGY",
 ...         "BLOCKCHAIN",
-...         "SUPTECH",
 ...         "ARTIFICIAL_INTELLIGENCE",
 ...     ], 
 ...     #
@@ -64,13 +62,11 @@ TECHNOLOGIES        2     2016      2016  ...   1  0.177333      2
 >>> words.df_
 year                     OCC  year_q1  year_med  ...  rn    height  width
 author_keywords                                  ...                     
-BLOCKCHAIN                 3     2018      2019  ...   0  0.150000      3
-FINTECH                   12     2019      2020  ...   0  0.970000      2
-ARTIFICIAL_INTELLIGENCE    4     2020      2020  ...   1  0.241111      1
-SUPTECH                    3     2020      2022  ...   0  0.150000      3
-REGULATORY_TECHNOLOGY      7     2020      2021  ...   0  0.514444      3
+FINTECH                   31     2017      2018  ...   0  0.970000      2
+BLOCKCHAIN                 3     2018      2019  ...   0  0.178276      2
+ARTIFICIAL_INTELLIGENCE    2     2019      2019  ...   1  0.150000      1
 <BLANKLINE>
-[5 rows x 8 columns]
+[3 rows x 8 columns]
 
 
 """

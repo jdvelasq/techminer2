@@ -8,166 +8,166 @@ ScientoPy Bar Trends
 
 **Basic Usage.**
 
->>> from techminer2 import scientopy
->>> root_dir = "data/regtech/"
+# >>> from techminer2 import scientopy
+# >>> root_dir = "data/regtech/"
 
->>> file_name = "sphinx/_static/scientpy__bar_trends-1.html"
->>> r = scientopy.bar_trends_graph(
-...     field="author_keywords",
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
+# >>> file_name = "sphinx/_static/scientpy__bar_trends-1.html"
+# >>> r = scientopy.bar_trends_graph(
+# ...     field="author_keywords",
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../_static/scientpy__bar_trends-1.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
->>> r.table_.head()
-                    OCC  Before 2022  Between 2022-2023
-author_keywords                                        
-REGTECH              28           20                  8
-FINTECH              12           10                  2
-COMPLIANCE            7            5                  2
-REGULATION            5            4                  1
-FINANCIAL_SERVICES    4            3                  1
+#     <iframe src="../_static/scientpy__bar_trends-1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> print(r.prompt_)
-Your task is to generate a short analysis for a scientific research paper. Analyze the table below, delimited by triple backticks, in at most 100 words, for the occurrences per year of different items of the field 'author_keywords' and years in the columns. 
-<BLANKLINE>
-Table:
-```
-| author_keywords                 |   OCC |   Before 2022 |   Between 2022-2023 |
-|:--------------------------------|------:|--------------:|--------------------:|
-| REGTECH                         |    28 |            20 |                   8 |
-| FINTECH                         |    12 |            10 |                   2 |
-| COMPLIANCE                      |     7 |             5 |                   2 |
-| REGULATION                      |     5 |             4 |                   1 |
-| FINANCIAL_SERVICES              |     4 |             3 |                   1 |
-| FINANCIAL_REGULATION            |     4 |             2 |                   2 |
-| REGULATORY_TECHNOLOGY (REGTECH) |     4 |             3 |                   1 |
-| ARTIFICIAL_INTELLIGENCE         |     4 |             3 |                   1 |
-| ANTI_MONEY_LAUNDERING           |     4 |             4 |                   0 |
-| RISK_MANAGEMENT                 |     3 |             2 |                   1 |
-| INNOVATION                      |     3 |             2 |                   1 |
-| REGULATORY_TECHNOLOGY           |     3 |             2 |                   1 |
-| BLOCKCHAIN                      |     3 |             3 |                   0 |
-| SUPTECH                         |     3 |             1 |                   2 |
-| DATA_PROTECTION                 |     2 |             1 |                   1 |
-| SMART_CONTRACT                  |     2 |             2 |                   0 |
-| CHARITYTECH                     |     2 |             1 |                   1 |
-| ENGLISH_LAW                     |     2 |             1 |                   1 |
-| ACCOUNTABILITY                  |     2 |             2 |                   0 |
-| DATA_PROTECTION_OFFICER         |     2 |             2 |                   0 |
-```
-<BLANKLINE>
-
-**Time Filter.**
-
->>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
->>> r = scientopy.bar_trends_graph(
-...     field="author_keywords",
-...     year_filter=(2018, 2021),
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../_static/scientpy__bar_trends-3.html" height="800px" width="100%" frameBorder="0"></iframe>
-
->>> r.table_.head()
-                       OCC  Before 2020  Between 2020-2021
-author_keywords                                           
-REGTECH                 18            7                 11
-FINTECH                 10            6                  4
-COMPLIANCE               5            1                  4
-REGULATION               4            2                  2
-ANTI_MONEY_LAUNDERING    4            0                  4
+# >>> r.table_.head()
+#                     OCC  Before 2022  Between 2022-2023
+# author_keywords                                        
+# REGTECH              28           20                  8
+# FINTECH              12           10                  2
+# COMPLIANCE            7            5                  2
+# REGULATION            5            4                  1
+# FINANCIAL_SERVICES    4            3                  1
 
 
+# >>> print(r.prompt_)
+# Your task is to generate a short analysis for a scientific research paper. Analyze the table below, delimited by triple backticks, in at most 100 words, for the occurrences per year of different items of the field 'author_keywords' and years in the columns. 
+# <BLANKLINE>
+# Table:
+# ```
+# | author_keywords                 |   OCC |   Before 2022 |   Between 2022-2023 |
+# |:--------------------------------|------:|--------------:|--------------------:|
+# | REGTECH                         |    28 |            20 |                   8 |
+# | FINTECH                         |    12 |            10 |                   2 |
+# | COMPLIANCE                      |     7 |             5 |                   2 |
+# | REGULATION                      |     5 |             4 |                   1 |
+# | FINANCIAL_SERVICES              |     4 |             3 |                   1 |
+# | FINANCIAL_REGULATION            |     4 |             2 |                   2 |
+# | REGULATORY_TECHNOLOGY (REGTECH) |     4 |             3 |                   1 |
+# | ARTIFICIAL_INTELLIGENCE         |     4 |             3 |                   1 |
+# | ANTI_MONEY_LAUNDERING           |     4 |             4 |                   0 |
+# | RISK_MANAGEMENT                 |     3 |             2 |                   1 |
+# | INNOVATION                      |     3 |             2 |                   1 |
+# | REGULATORY_TECHNOLOGY           |     3 |             2 |                   1 |
+# | BLOCKCHAIN                      |     3 |             3 |                   0 |
+# | SUPTECH                         |     3 |             1 |                   2 |
+# | DATA_PROTECTION                 |     2 |             1 |                   1 |
+# | SMART_CONTRACT                  |     2 |             2 |                   0 |
+# | CHARITYTECH                     |     2 |             1 |                   1 |
+# | ENGLISH_LAW                     |     2 |             1 |                   1 |
+# | ACCOUNTABILITY                  |     2 |             2 |                   0 |
+# | DATA_PROTECTION_OFFICER         |     2 |             2 |                   0 |
+# ```
+# <BLANKLINE>
 
-**Custom Topics Extraction.**
+# **Time Filter.**
 
->>> file_name = "sphinx/_static/scientpy__bar_trends-4.html"
->>> from techminer2 import scientopy
->>> r = scientopy.bar_trends_graph(
-...     field="author_keywords",
-...     custom_items=[
-...         "FINTECH",
-...         "BLOCKCHAIN",
-...         "FINANCIAL_REGULATION",
-...         "MACHINE_LEARNING",
-...         "BIG_DATA",
-...         "CRYPTOCURRENCY",
-...     ],
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
+# >>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
+# >>> r = scientopy.bar_trends_graph(
+# ...     field="author_keywords",
+# ...     year_filter=(2018, 2021),
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../_static/scientpy__bar_trends-4.html" height="800px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../_static/scientpy__bar_trends-3.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+# >>> r.table_.head()
+#                        OCC  Before 2020  Between 2020-2021
+# author_keywords                                           
+# REGTECH                 18            7                 11
+# FINTECH                 10            6                  4
+# COMPLIANCE               5            1                  4
+# REGULATION               4            2                  2
+# ANTI_MONEY_LAUNDERING    4            0                  4
 
 
 
+# **Custom Topics Extraction.**
 
->>> file_name = "sphinx/_static/scientpy__bar_trends-5.html"
->>> r = scientopy.bar_trends_graph(
-...     field="author_keywords",
-...     is_trend_analysis=True,
-...     year_filter=(2018, 2021),
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
+# >>> file_name = "sphinx/_static/scientpy__bar_trends-4.html"
+# >>> from techminer2 import scientopy
+# >>> r = scientopy.bar_trends_graph(
+# ...     field="author_keywords",
+# ...     custom_items=[
+# ...         "FINTECH",
+# ...         "BLOCKCHAIN",
+# ...         "FINANCIAL_REGULATION",
+# ...         "MACHINE_LEARNING",
+# ...         "BIG_DATA",
+# ...         "CRYPTOCURRENCY",
+# ...     ],
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../_static/scientpy__bar_trends-5.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
->>> r.table_.head()    
-                                 OCC  Before 2020  Between 2020-2021
-author_keywords                                                     
-ANTI_MONEY_LAUNDERING              4            0                  4
-REGULATORY_TECHNOLOGY (REGTECH)    3            0                  3
-REGULATION                         4            2                  2
-ACCOUNTABILITY                     2            0                  2
-DATA_PROTECTION_OFFICER            2            0                  2
+#     <iframe src="../_static/scientpy__bar_trends-4.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
 
->>> print(r.prompt_)
-Your task is to generate a short analysis for a scientific research paper. Analyze the table below, delimited by triple backticks, in at most 100 words, for the occurrences per year of different items of the field 'author_keywords' and years in the columns. 
-<BLANKLINE>
-Table:
-```
-| author_keywords                 |   OCC |   Before 2020 |   Between 2020-2021 |
-|:--------------------------------|------:|--------------:|--------------------:|
-| ANTI_MONEY_LAUNDERING           |     4 |             0 |                   4 |
-| REGULATORY_TECHNOLOGY (REGTECH) |     3 |             0 |                   3 |
-| REGULATION                      |     4 |             2 |                   2 |
-| ACCOUNTABILITY                  |     2 |             0 |                   2 |
-| DATA_PROTECTION_OFFICER         |     2 |             0 |                   2 |
-| GDPR                            |     2 |             0 |                   2 |
-| INNOVATION                      |     2 |             0 |                   2 |
-| REGULATORY_TECHNOLOGY           |     2 |             0 |                   2 |
-| CORONAVIRUS                     |     1 |             0 |                   1 |
-| DIGITAL_TECHNOLOGIES            |     1 |             0 |                   1 |
-| REGULATIONS_AND_COMPLIANCE      |     1 |             0 |                   1 |
-| SMART_TREASURY                  |     1 |             0 |                   1 |
-| BAHRAIN                         |     1 |             0 |                   1 |
-| ANTITRUST                       |     1 |             0 |                   1 |
-| COMPETITION_LAW                 |     1 |             0 |                   1 |
-| RESALE_PRICE_MAINTENANCE        |     1 |             0 |                   1 |
-| VERTICAL_PRICE_FIXING           |     1 |             0 |                   1 |
-| ANOMALY_DETECTION               |     1 |             0 |                   1 |
-| CLASSIFICATION                  |     1 |             0 |                   1 |
-| DATA_ANALYSIS                   |     1 |             0 |                   1 |
-```
-<BLANKLINE>
+# >>> file_name = "sphinx/_static/scientpy__bar_trends-5.html"
+# >>> r = scientopy.bar_trends_graph(
+# ...     field="author_keywords",
+# ...     is_trend_analysis=True,
+# ...     year_filter=(2018, 2021),
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
+
+# .. raw:: html
+
+#     <iframe src="../_static/scientpy__bar_trends-5.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+# >>> r.table_.head()    
+#                                  OCC  Before 2020  Between 2020-2021
+# author_keywords                                                     
+# ANTI_MONEY_LAUNDERING              4            0                  4
+# REGULATORY_TECHNOLOGY (REGTECH)    3            0                  3
+# REGULATION                         4            2                  2
+# ACCOUNTABILITY                     2            0                  2
+# DATA_PROTECTION_OFFICER            2            0                  2
+
+
+
+
+# >>> print(r.prompt_)
+# Your task is to generate a short analysis for a scientific research paper. Analyze the table below, delimited by triple backticks, in at most 100 words, for the occurrences per year of different items of the field 'author_keywords' and years in the columns. 
+# <BLANKLINE>
+# Table:
+# ```
+# | author_keywords                 |   OCC |   Before 2020 |   Between 2020-2021 |
+# |:--------------------------------|------:|--------------:|--------------------:|
+# | ANTI_MONEY_LAUNDERING           |     4 |             0 |                   4 |
+# | REGULATORY_TECHNOLOGY (REGTECH) |     3 |             0 |                   3 |
+# | REGULATION                      |     4 |             2 |                   2 |
+# | ACCOUNTABILITY                  |     2 |             0 |                   2 |
+# | DATA_PROTECTION_OFFICER         |     2 |             0 |                   2 |
+# | GDPR                            |     2 |             0 |                   2 |
+# | INNOVATION                      |     2 |             0 |                   2 |
+# | REGULATORY_TECHNOLOGY           |     2 |             0 |                   2 |
+# | CORONAVIRUS                     |     1 |             0 |                   1 |
+# | DIGITAL_TECHNOLOGIES            |     1 |             0 |                   1 |
+# | REGULATIONS_AND_COMPLIANCE      |     1 |             0 |                   1 |
+# | SMART_TREASURY                  |     1 |             0 |                   1 |
+# | BAHRAIN                         |     1 |             0 |                   1 |
+# | ANTITRUST                       |     1 |             0 |                   1 |
+# | COMPETITION_LAW                 |     1 |             0 |                   1 |
+# | RESALE_PRICE_MAINTENANCE        |     1 |             0 |                   1 |
+# | VERTICAL_PRICE_FIXING           |     1 |             0 |                   1 |
+# | ANOMALY_DETECTION               |     1 |             0 |                   1 |
+# | CLASSIFICATION                  |     1 |             0 |                   1 |
+# | DATA_ANALYSIS                   |     1 |             0 |                   1 |
+# ```
+# <BLANKLINE>
 
 
 

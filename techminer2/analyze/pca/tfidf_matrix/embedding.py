@@ -48,15 +48,13 @@ Embedding
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                            DIM_0     DIM_1  ...     DIM_3     DIM_4
-author_keywords                                              ...                    
-FINTECH 31:5168                          4.887997 -0.043436  ...  0.028478 -0.065983
-INNOVATION 07:0911                       0.150115  2.038414  ...  0.006770  0.246045
-FINANCIAL_SERVICES 04:0667              -0.218986  0.551622  ...  0.624285 -0.903117
-FINANCIAL_TECHNOLOGY 04:0551            -0.368726 -0.092950  ...  1.234653  0.898308
-MOBILE_FINTECH_PAYMENT_SERVICES 04:0485 -0.108311  0.065666  ... -0.640044 -0.289408
-<BLANKLINE>
-[5 rows x 5 columns]
+                                 DIM_0     DIM_1     DIM_2     DIM_3     DIM_4
+author_keywords                                                               
+FINTECH 31:5168               4.887806 -0.043138 -0.014483  0.018812 -0.074537
+INNOVATION 07:0911            0.149896  2.039274  0.737841  0.015960  0.269611
+FINANCIAL_SERVICES 04:0667   -0.219131  0.551349 -0.797362  0.712416 -0.826560
+FINANCIAL_TECHNOLOGY 04:0551 -0.369026 -0.091873 -0.202058  1.133968  1.054857
+BUSINESS 03:0896             -0.144818 -0.220816 -0.865907  0.967946 -0.375656
 
 
 

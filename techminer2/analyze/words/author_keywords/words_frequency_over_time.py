@@ -40,13 +40,13 @@ Word Frequency over Time
 
     
 >>> print(words.df_.to_markdown())
-| author_keywords                         |   2015 |   2016 |   2017 |   2018 |   2019 |
-|:----------------------------------------|-------:|-------:|-------:|-------:|-------:|
-| FINTECH 31:5168                         |      0 |      5 |      8 |     12 |      6 |
-| INNOVATION 07:0911                      |      0 |      3 |      3 |      1 |      0 |
-| FINANCIAL_SERVICES 04:0667              |      0 |      1 |      0 |      3 |      0 |
-| FINANCIAL_TECHNOLOGY 04:0551            |      0 |      0 |      1 |      1 |      2 |
-| MOBILE_FINTECH_PAYMENT_SERVICES 04:0485 |      0 |      1 |      0 |      2 |      1 |
+| author_keywords              |   2015 |   2016 |   2017 |   2018 |   2019 |
+|:-----------------------------|-------:|-------:|-------:|-------:|-------:|
+| FINTECH 31:5168              |      0 |      5 |      8 |     12 |      6 |
+| INNOVATION 07:0911           |      0 |      3 |      3 |      1 |      0 |
+| FINANCIAL_SERVICES 04:0667   |      0 |      1 |      0 |      3 |      0 |
+| FINANCIAL_TECHNOLOGY 04:0551 |      0 |      0 |      1 |      1 |      2 |
+| BUSINESS 03:0896             |      0 |      0 |      0 |      3 |      0 |
 
 
 

@@ -50,7 +50,6 @@ Zavolokina L. 2:0181                2  ...                    0
 <BLANKLINE>
 [10 rows x 14 columns]
 
-
 >>> matrix.heat_map_ # doctest: +ELLIPSIS
 <pandas.io.formats.style.Styler object ...
 
@@ -93,30 +92,30 @@ Your task is ...
 ...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_
-author_keywords                          FINTECH 31:5168  ...  DIGITALIZATION 03:0434
-author_keywords                                           ...                        
-FINTECH 31:5168                                       31  ...                       3
-INNOVATION 07:0911                                     5  ...                       3
-FINANCIAL_SERVICES 04:0667                             3  ...                       0
-FINANCIAL_TECHNOLOGY 04:0551                           2  ...                       1
-MOBILE_FINTECH_PAYMENT_SERVICES 04:0485                3  ...                       0
-BUSINESS 03:0896                                       3  ...                       0
-SHADOW_BANKING 03:0643                                 3  ...                       0
-FINANCIAL_INCLUSION 03:0590                            3  ...                       0
-CASE_STUDIES 03:0442                                   3  ...                       0
-DIGITALIZATION 03:0434                                 3  ...                       3
+author_keywords               FINTECH 31:5168  ...  BANKING 03:0375
+author_keywords                                ...                 
+FINTECH 31:5168                            31  ...                1
+INNOVATION 07:0911                          5  ...                3
+FINANCIAL_SERVICES 04:0667                  3  ...                1
+FINANCIAL_TECHNOLOGY 04:0551                2  ...                0
+BUSINESS 03:0896                            3  ...                0
+SHADOW_BANKING 03:0643                      3  ...                0
+FINANCIAL_INCLUSION 03:0590                 3  ...                0
+CASE_STUDIES 03:0442                        3  ...                0
+DIGITALIZATION 03:0434                      3  ...                0
+BANKING 03:0375                             1  ...                3
 <BLANKLINE>
 [10 rows x 10 columns]
 
 
 
 >>> matrix.list_cells_.head()
-               row                                   column  matrix_value
-0  FINTECH 31:5168                          FINTECH 31:5168            31
-1  FINTECH 31:5168                       INNOVATION 07:0911             5
-2  FINTECH 31:5168               FINANCIAL_SERVICES 04:0667             3
-3  FINTECH 31:5168             FINANCIAL_TECHNOLOGY 04:0551             2
-4  FINTECH 31:5168  MOBILE_FINTECH_PAYMENT_SERVICES 04:0485             3
+               row                        column  matrix_value
+0  FINTECH 31:5168               FINTECH 31:5168            31
+1  FINTECH 31:5168            INNOVATION 07:0911             5
+2  FINTECH 31:5168    FINANCIAL_SERVICES 04:0667             3
+3  FINTECH 31:5168  FINANCIAL_TECHNOLOGY 04:0551             2
+4  FINTECH 31:5168              BUSINESS 03:0896             3
 
 >>> print(matrix.prompt_) # doctest: +ELLIPSIS
 Your task is ...

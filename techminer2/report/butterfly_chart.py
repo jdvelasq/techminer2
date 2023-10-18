@@ -14,26 +14,25 @@ Butterfly Chart
 >>> from techminer2.report import butterfly_chart
 >>> chart = butterfly_chart(
 ...     #
-...     # FUNCTION PARAMS:
+...     # COLUMN PARAMS:
 ...     item_a="FINTECH",
 ...     item_b="INNOVATION",
+...     #
 ...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # CHART PARAMS:
-...     title=None,
-...     #
-...     # COLUMN PARAMS:
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
 ...     col_custom_items=None,
 ...     #
 ...     # ROW PARAMS:
+...     rows=None,
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
 ...     row_custom_items=None,
+...     #
+...     # CHART PARAMS:
+...     title=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -55,26 +54,25 @@ from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 def butterfly_chart(
     #
-    # FUNCTION PARAMS:
+    # COLUMN PARAMS:
     item_a,
     item_b,
+    #
     columns,
-    rows=None,
-    #
-    # CHART PARAMS:
-    title=None,
-    #
-    # COLUMN PARAMS:
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
     col_custom_items=None,
     #
     # ROW PARAMS:
+    rows=None,
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
     row_custom_items=None,
+    #
+    # CHART PARAMS:
+    title=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -103,17 +101,15 @@ def butterfly_chart(
     #
     matrix = co_occurrence_matrix(
         #
-        # FUNCTION PARAMS:
-        columns=columns,
-        rows=rows,
-        #
         # COLUMN PARAMS:
+        columns=columns,
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
         col_custom_items=col_custom_items,
         #
         # ROW PARAMS:
+        rows=rows,
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,

@@ -29,9 +29,9 @@ abstract_nlp_phrases                             ...
 LONDON_BUSINESS_SCHOOL     1     2015      2015  ...   0  0.150000      1
 STATE                      3     2016      2016  ...   0  0.202903      1
 YEARS                      3     2016      2016  ...   2  0.202903      1
-NOVEL                      2     2016      2016  ...   4  0.176452      2
 PRACTICE                   3     2016      2016  ...   1  0.202903      2
 DIGITAL_INNOVATION         3     2016      2016  ...   3  0.202903      2
+OPPORTUNITIES              3     2016      2016  ...   4  0.202903      2
 FINANCE                   13     2016      2017  ...   1  0.467419      3
 FIELD                      7     2016      2017  ...   4  0.308710      4
 FINANCIAL_SECTOR           9     2017      2017  ...   3  0.361613      2

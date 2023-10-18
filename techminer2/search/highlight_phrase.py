@@ -42,8 +42,6 @@ BENEFITS, CHALLENGES, and IMPLICATIONS for diverse sectors, ultimately
 aiming to improve COMPLIANCE, EFFICIENCY, and ethical practices in the
 FINANCIAL_INDUSTRY.
 
-
-
 """
 import os
 import os.path

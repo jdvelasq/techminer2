@@ -6,100 +6,100 @@ Time Line Graph
 ScientoPy Time Line Plot.
 
 
->>> root_dir = "data/regtech/"
->>> from techminer2 import scientopy
+# >>> root_dir = "data/regtech/"
+# >>> from techminer2 import scientopy
 
->>> file_name = "sphinx/_static/scientopy__time_line-1.html"
->>> r = scientopy.time_line_graph(
-...     field="author_keywords",
-...     top_n=5,
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
+# >>> file_name = "sphinx/_static/scientopy__time_line-1.html"
+# >>> r = scientopy.time_line_graph(
+# ...     field="author_keywords",
+# ...     top_n=5,
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../_static/scientopy__time_line-1.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
->>> r.table_.head()
-             author_keywords  Year  OCC
-0             REGTECH 28:329  2017    2
-1  FINANCIAL_SERVICES 04:168  2017    1
-2             REGTECH 28:329  2018    3
-3             FINTECH 12:249  2018    2
-4          REGULATION 05:164  2018    2
-
->>> print(r.prompt_)
-<BLANKLINE>
+#     <iframe src="../_static/scientopy__time_line-1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
+# >>> r.table_.head()
+#              author_keywords  Year  OCC
+# 0             REGTECH 28:329  2017    2
+# 1  FINANCIAL_SERVICES 04:168  2017    1
+# 2             REGTECH 28:329  2018    3
+# 3             FINTECH 12:249  2018    2
+# 4          REGULATION 05:164  2018    2
 
-**Time Filter.**
-
->>> file_name = "sphinx/_static/scientopy__time_line-3.html"
->>> r = scientopy.time_line_graph(
-...     field="author_keywords",
-...     top_n=5,
-...     root_dir=root_dir,
-...     year_filter=(2018, 2021),
-... )
->>> r.plot_.write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../_static/scientopy__time_line-3.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
->>> r.table_.head()
-     author_keywords  Year  OCC
-0     REGTECH 18:297  2018    3
-1     FINTECH 10:235  2018    2
-2  REGULATION 04:163  2018    2
-3     REGTECH 18:297  2019    4
-4     FINTECH 10:235  2019    4
+# >>> print(r.prompt_)
+# <BLANKLINE>
 
 
 
-**Custom Topics Extraction.**
+# **Time Filter.**
 
->>> file_name = "sphinx/_static/scientopy__time_line-4.html"
->>> r = scientopy.time_line_graph(
-...     field="author_keywords",
-...     custom_items=[
-...         "FINTECH",
-...         "BLOCKCHAIN",
-...         "FINANCIAL_REGULATION",
-...         "MACHINE_LEARNING",
-...         "BIG_DATA",
-...         "CRYPTOCURRENCY",
-...     ],
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
+# >>> file_name = "sphinx/_static/scientopy__time_line-3.html"
+# >>> r = scientopy.time_line_graph(
+# ...     field="author_keywords",
+# ...     top_n=5,
+# ...     root_dir=root_dir,
+# ...     year_filter=(2018, 2021),
+# ... )
+# >>> r.plot_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../_static/scientopy__time_line-4.html" height="800px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../_static/scientopy__time_line-3.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> file_name = "sphinx/_static/scientopy__time_line-5.html"
->>> r = scientopy.time_line_graph(
-...     field="author_keywords",
-...     top_n=5,
-...     is_trend_analysis=True,
-...     year_filter=(2018, 2021),
-...     root_dir=root_dir,
-... )
->>> r.plot_.write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../_static/scientopy__time_line-5.html" height="800px" width="100%" frameBorder="0"></iframe>
+# >>> r.table_.head()
+#      author_keywords  Year  OCC
+# 0     REGTECH 18:297  2018    3
+# 1     FINTECH 10:235  2018    2
+# 2  REGULATION 04:163  2018    2
+# 3     REGTECH 18:297  2019    4
+# 4     FINTECH 10:235  2019    4
 
 
->>> print(r.prompt_)
-<BLANKLINE>
+
+# **Custom Topics Extraction.**
+
+# >>> file_name = "sphinx/_static/scientopy__time_line-4.html"
+# >>> r = scientopy.time_line_graph(
+# ...     field="author_keywords",
+# ...     custom_items=[
+# ...         "FINTECH",
+# ...         "BLOCKCHAIN",
+# ...         "FINANCIAL_REGULATION",
+# ...         "MACHINE_LEARNING",
+# ...         "BIG_DATA",
+# ...         "CRYPTOCURRENCY",
+# ...     ],
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
+
+# .. raw:: html
+
+#     <iframe src="../_static/scientopy__time_line-4.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+# >>> file_name = "sphinx/_static/scientopy__time_line-5.html"
+# >>> r = scientopy.time_line_graph(
+# ...     field="author_keywords",
+# ...     top_n=5,
+# ...     is_trend_analysis=True,
+# ...     year_filter=(2018, 2021),
+# ...     root_dir=root_dir,
+# ... )
+# >>> r.plot_.write_html(file_name)
+
+# .. raw:: html
+
+#     <iframe src="../_static/scientopy__time_line-5.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+# >>> print(r.prompt_)
+# <BLANKLINE>
 
 
 # pylint: disable=line-too-long

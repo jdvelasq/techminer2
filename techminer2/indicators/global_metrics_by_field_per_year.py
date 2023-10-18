@@ -9,44 +9,41 @@ Global Indicators by Field per Year
 ===============================================================================
 
 
->>> root_dir = "data/regtech/"
-
->>> import techminer2 as tm2
->>> tm2.metrics.global_metrics_by_field_per_year(
+>>> from techminer2.indicators import global_metrics_by_field_per_year 
+>>> global_metrics_by_field_per_year(
 ...     'authors',
-...     root_dir=root_dir,
+...     root_dir="example/",
 ... ).head(20)
-                        OCC  ...  local_citations_per_year
-authors           year       ...                          
-Abdullah Y        2022    1  ...                     0.000
-Ajmi JA           2021    1  ...                     0.333
-Anagnostopoulos I 2018    1  ...                     2.833
-Anasweh M         2020    1  ...                     1.000
-Arman AA          2022    2  ...                     0.000
-Arner DW          2017    2  ...                     0.429
-                  2020    1  ...                     1.250
-Barberis JN       2017    2  ...                     0.429
-Battanta L        2020    1  ...                     0.000
-Baxter LG         2016    1  ...                     0.000
-Becker M          2020    1  ...                     0.750
-Beheshti A/1      2021    1  ...                     0.000
-Boitan IA         2020    1  ...                     0.000
-Boticiu SR        2023    1  ...                     0.000
-Brand V           2020    1  ...                     0.750
-Brennan R         2020    1  ...                     0.750
-                  2021    1  ...                     0.000
-Breymann W        2018    1  ...                     1.333
-Brooks R          2018    1  ...                     0.833
-Buchkremer R      2020    1  ...                     0.750
+                         OCC  ...  local_citations_per_year
+authors            year       ...                          
+Almunawar M.N.     2019    1  ...                     0.000
+Alt R.             2018    1  ...                     0.500
+Anagnostopoulos I. 2018    1  ...                     0.500
+Anshari M.         2019    1  ...                     0.000
+Arner D.W.         2017    1  ...                     0.000
+Barberis J.        2017    1  ...                     0.000
+Beck R.            2018    1  ...                     0.500
+Brooks S.          2017    1  ...                     0.667
+Brummer C.         2019    1  ...                     0.000
+Buchak G.          2018    1  ...                     0.000
+Buckley R.P.       2017    1  ...                     0.000
+Cai C.W.           2018    1  ...                     0.000
+Casaló-Ariño L.V.  2019    1  ...                     0.000
+Chen L.            2016    1  ...                     0.250
+Chen L./1          2019    1  ...                     0.000
+Chen M.A.          2019    1  ...                     0.000
+Cheng X.           2019    1  ...                     0.000
+Choi J./1          2016    1  ...                     0.250
+Das S.R.           2019    1  ...                     0.000
+Demertzis M.       2018    1  ...                     0.000
 <BLANKLINE>
 [20 rows x 7 columns]
-
 
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         tm2.global_metrics_by_field_per_year(
-...             'authors', root_dir=root_dir).columns.to_list()
+...         global_metrics_by_field_per_year(
+...             'authors', root_dir="example/").columns.to_list()
 ...     )
 ... )
 ['OCC',

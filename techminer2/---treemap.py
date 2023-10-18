@@ -11,19 +11,19 @@ Treemap
 ===============================================================================
 
 
->>> from techminer2.visualize import treemap
->>> import techminer2plus
->>> itemslist = techminer2plus.list_items(
-...    field='author_keywords',
-...    top_n=20,
-...    root_dir=root_dir,
-... )
->>> chart = treemap(itemslist, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+# >>> from techminer2.visualize import treemap
+# >>> import techminer2plus
+# >>> itemslist = techminer2plus.list_items(
+# ...    field='author_keywords',
+# ...    top_n=20,
+# ...    root_dir=root_dir,
+# ... )
+# >>> chart = treemap(itemslist, title="Most Frequent Author Keywords")
+# >>> chart.plot_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../_static/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../_static/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from dataclasses import dataclass

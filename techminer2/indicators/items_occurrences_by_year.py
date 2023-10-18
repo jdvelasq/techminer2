@@ -11,25 +11,23 @@ Items Occurrence by Year
 
 Computes the annual occurrence matrix for the items in a given field.
 
-
->>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.metrics.items_occ_by_year(
-...     'authors',  root_dir=root_dir
+>>> from techminer2.indicators import items_occurrences_by_year
+>>> items_occurrences_by_year(
+...     field='authors',  
+...     root_dir="example/",
 ... ).head(10)
-year               2016  2017  2018  2019  2020  2021  2022  2023
-authors                                                          
-Abdullah Y            0     0     0     0     0     0     1     0
-Ajmi JA               0     0     0     0     0     1     0     0
-Anagnostopoulos I     0     0     1     0     0     0     0     0
-Anasweh M             0     0     0     0     1     0     0     0
-Arman AA              0     0     0     0     0     0     2     0
-Arner DW              0     2     0     0     1     0     0     0
-Barberis JN           0     2     0     0     0     0     0     0
-Battanta L            0     0     0     0     1     0     0     0
-Baxter LG             1     0     0     0     0     0     0     0
-Becker M              0     0     0     0     1     0     0     0
+year                2015  2016  2017  2018  2019
+authors                                         
+Almunawar M.N.         0     0     0     0     1
+Alt R.                 0     0     0     1     0
+Anagnostopoulos I.     0     0     0     1     0
+Anshari M.             0     0     0     0     1
+Arner D.W.             0     0     1     0     0
+Barberis J.            0     0     1     0     0
+Beck R.                0     0     0     1     0
+Brooks S.              0     0     1     0     0
+Brummer C.             0     0     0     0     1
+Buchak G.              0     0     0     1     0
 
 
 """

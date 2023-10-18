@@ -44,12 +44,12 @@ Themes
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                           TH_0  ...                               TH_9
-0                FINTECH 12:249  ...       REGULATORY_TECHNOLOGY 07:037
-1                REGTECH 28:329  ...                  INNOVATION 03:012
-2             REGULATORS 05:164  ...              SMART_TREASURY 01:011
-3  SEMANTIC_TECHNOLOGIES 02:041  ...  REGULATIONS_AND_COMPLIANCE 01:011
-4    ALGORITHMIC_PROCESS 01:003  ...          DIGITAL_TECHNOLOGY 01:011
+                       TH_0  ...                               TH_9
+0           FINTECH 31:5168  ...        FINANCIAL_INCLUSION 03:0590
+1    DIGITALIZATION 03:0434  ...                    FINTECH 31:5168
+2    CYBER_SECURITY 02:0342  ...  INTERNATIONAL_DEVELOPMENT 01:0314
+3     POPULAR_PRESS 02:0181  ...            GOVERNMENTALITY 01:0314
+4  CONTENT_ANALYSIS 02:0181  ...           FINANCIALISATION 01:0314
 <BLANKLINE>
 [5 rows x 10 columns]
 

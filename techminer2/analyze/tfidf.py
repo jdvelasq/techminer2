@@ -35,20 +35,21 @@ TFIDF
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-author_keywords                                     REGTECH 28:329  ...  COMPLIANCE_REPORTING 01:008
-article                                                             ...                             
-Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    1  ...                            0
-Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, ...               1  ...                            0
-Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               1  ...                            0
-Becker M, 2020, INTELL SYST ACCOUNT FINANCE M, ...               0  ...                            0
-Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...                            0
+author_keywords                                 FINTECH 31:5168  ...  DATA_DRIVEN 01:0238
+article                                                          ...                     
+Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                    0
+Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                    0
+Buchak G., 2018, J FINANC ECON, V130, P453                    1  ...                    0
+Cai C.W., 2018, ACCOUNT FINANC, V58, P965                     1  ...                    0
+Chen L., 2016, CHINA ECON J, V9, P225                         1  ...                    0
 <BLANKLINE>
 [5 rows x 50 columns]
+
+
 
 """
 from typing import Literal
 
-import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
 

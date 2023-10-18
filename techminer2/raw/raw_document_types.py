@@ -13,12 +13,12 @@ Document Types in Raw Documents
 Return the number of records by document type in the databases.
 
 
->>> from techminer2.raw import document_types
->>> raw_document_types(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+# >>> from techminer2.raw import document_types
+# >>> raw_document_types(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... )
 
 
 

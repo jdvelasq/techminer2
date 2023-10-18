@@ -44,7 +44,7 @@ To Brute Force Labels
 ...     #
 ...     # BRUTE FORCE PARAMS:
 ...     brute_force_labels={
-...         'MOBILE_FINTECH_PAYMENT_SERVICES 04:0485': 0, 
+...         'MOBILE_PAYMENT 03:0309': 0, 
 ...         'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 
 ...         'BLOCKCHAIN 03:0369': 0, 'CROWDFUNDING 03:0335': 0, 
 ...         'FUTURE_RESEARCH 02:0691': 0, 'CYBER_SECURITY 02:0342': 0, 
@@ -62,7 +62,7 @@ To Brute Force Labels
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )  # doctest: +ELLIPSIS
-{'MOBILE_FINTECH_PAYMENT_SERVICES 04:0485': 0, 'FINANCIAL_INCLUSION 03:0590': 0, ...
+{'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 'BLOCKCHAIN 03:0369': 0, ...
 
 
 

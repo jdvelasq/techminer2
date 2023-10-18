@@ -38,18 +38,18 @@ Most Frequent Words
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(metrics.df_.to_markdown())
-| title_nlp_phrases               |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
-|:--------------------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
-| FINTECH                         |          1 |    27 |            10 |                  17 |               62.96 |
-| BANKING                         |          2 |     7 |             3 |                   4 |               57.14 |
-| MOBILE_FINTECH_PAYMENT_SERVICES |          3 |     5 |             1 |                   4 |               80    |
-| CHINA                           |          4 |     5 |             3 |                   2 |               40    |
-| IMPACT                          |          5 |     4 |             1 |                   3 |               75    |
-| CHALLENGES                      |          6 |     3 |             1 |                   2 |               66.67 |
-| FINTECH_REVOLUTION              |          7 |     3 |             1 |                   2 |               66.67 |
-| INDUSTRY                        |          8 |     3 |             2 |                   1 |               33.33 |
-| SECURE                          |          9 |     3 |             1 |                   2 |               66.67 |
-| ROLE                            |         10 |     3 |             0 |                   3 |              100    |
+| title_nlp_phrases   |   rank_occ |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |
+|:--------------------|-----------:|------:|--------------:|--------------------:|--------------------:|
+| FINTECH             |          1 |    27 |            10 |                  17 |               62.96 |
+| BANKING             |          2 |     7 |             3 |                   4 |               57.14 |
+| CHINA               |          3 |     5 |             3 |                   2 |               40    |
+| IMPACT              |          4 |     4 |             1 |                   3 |               75    |
+| CHALLENGES          |          5 |     3 |             1 |                   2 |               66.67 |
+| FINTECH_REVOLUTION  |          6 |     3 |             1 |                   2 |               66.67 |
+| MOBILE_PAYMENT      |          7 |     3 |             1 |                   2 |               66.67 |
+| INDUSTRY            |          8 |     3 |             2 |                   1 |               33.33 |
+| SECURE              |          9 |     3 |             1 |                   2 |               66.67 |
+| ROLE                |         10 |     3 |             0 |                   3 |              100    |
 
 
 

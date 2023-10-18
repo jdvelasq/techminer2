@@ -7,7 +7,7 @@ Create countries thesaurus from affiliations.
 ...     # DATABASE PARAMS:
 ...     root_dir="example/",
 ... )
---INFO-- The example/countries.the.txt thesaurus file was created
+--INFO-- The example/thesauri/countries.the.txt thesaurus file was created
 
 """
 import glob

@@ -47,14 +47,13 @@ Item Associations
 ...     cited_by_filter=(None, None),
 ... )
 >>> associations.df_.head()
-                                         FINTECH 31:5168
-author_keywords                                         
-INNOVATION 07:0911                                     5
-FINANCIAL_SERVICES 04:0667                             3
-MOBILE_FINTECH_PAYMENT_SERVICES 04:0485                3
-BUSINESS 03:0896                                       3
-SHADOW_BANKING 03:0643                                 3
-
+                             FINTECH 31:5168
+author_keywords                             
+INNOVATION 07:0911                         5
+FINANCIAL_SERVICES 04:0667                 3
+BUSINESS 03:0896                           3
+SHADOW_BANKING 03:0643                     3
+FINANCIAL_INCLUSION 03:0590                3
 
 
 >>> associations.fig_.write_html("sphinx/_static/analyze/associations/item_associations_chart.html")
