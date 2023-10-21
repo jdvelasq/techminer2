@@ -20,6 +20,7 @@ def run_abstract_importer(root_dir):
         func=lambda x: x.map(
             lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
         )
+        .str.replace("<.*?>", "", regex=True)
         .str.replace("-", "_", regex=False)
         .str.normalize("NFKD")
         .str.encode("ascii", errors="ignore")
