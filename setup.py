@@ -59,8 +59,8 @@ setup(
     ],
     packages=[
         "techminer2",
+        "techminer2._common",
         "techminer2._files",
-        "techminer2.word_lists",
         #
         # ======================================================================
         "techminer2.analyze",
@@ -118,18 +118,13 @@ setup(
         "techminer2.analyze.contributors.sources",
         #
         # ======================================================================
-        "techminer2.analyze.words",
-        #
-        "techminer2.analyze.words.abstract_nlp_phrases",
-        "techminer2.analyze.words.author_keywords",
-        "techminer2.analyze.words.descriptors",
-        "techminer2.analyze.words.index_keywords",
-        "techminer2.analyze.words.keywords",
-        "techminer2.analyze.words.nlp_phrases",
-        "techminer2.analyze.words.title_nlp_phrases",
+        "techminer2.analyze.correlation",
         #
         # ======================================================================
-        "techminer2.analyze.correlation",
+        "techminer2.analyze.document",
+        #
+        "techminer2.analyze.document.hierarchical",
+        "techminer2.analyze.document.kmeans",
         #
         # ======================================================================
         "techminer2.analyze.emergence",
@@ -141,24 +136,32 @@ setup(
         "techminer2.analyze.pca",
         #
         "techminer2.analyze.pca.cooc_matrix",
+        "techminer2.analyze.pca.cooc_matrix.brute_force",
         "techminer2.analyze.pca.cooc_matrix.hierarchical",
         "techminer2.analyze.pca.cooc_matrix.kmeans",
+        "techminer2.analyze.pca.cooc_matrix.pcd",
         #
         "techminer2.analyze.pca.tfidf_matrix",
+        "techminer2.analyze.pca.tfidf_matrix.brute_force",
         "techminer2.analyze.pca.tfidf_matrix.hierarchical",
         "techminer2.analyze.pca.tfidf_matrix.kmeans",
+        "techminer2.analyze.pca.tfidf_matrix.pcd",
         #
         # ======================================================================
         "techminer2.analyze.research_agenda",
+        #
+        "techminer2.analyze.research_agenda.network",
         #
         # ======================================================================
         "techminer2.analyze.svd",
         #
         "techminer2.analyze.svd.cooc_matrix",
+        "techminer2.analyze.svd.cooc_matrix.brute_force",
         "techminer2.analyze.svd.cooc_matrix.hierarchical",
         "techminer2.analyze.svd.cooc_matrix.kmeans",
         #
         "techminer2.analyze.svd.tfidf_matrix",
+        "techminer2.analyze.svd.tfidf_matrix.brute_force",
         "techminer2.analyze.svd.tfidf_matrix.hierarchical",
         "techminer2.analyze.svd.tfidf_matrix.kmeans",
         #
@@ -170,19 +173,51 @@ setup(
         "techminer2.analyze.topic_modeling.nmf",
         #
         # ======================================================================
+        "techminer2.analyze.words",
+        #
+        "techminer2.analyze.words.abstract_nlp_phrases",
+        "techminer2.analyze.words.author_keywords",
+        "techminer2.analyze.words.descriptors",
+        "techminer2.analyze.words.index_keywords",
+        "techminer2.analyze.words.keywords",
+        "techminer2.analyze.words.nlp_phrases",
+        "techminer2.analyze.words.title_nlp_phrases",
+        "techminer2.analyze.words.words",
+        #
+        # ======================================================================
         "techminer2.indicators",
         #
         # ======================================================================
         "techminer2.ingest",
         #
+        "techminer2.ingest.field_importers",
+        #
+        # ======================================================================
+        "techminer2.raw",
+        #
         # ======================================================================
         "techminer2.refine",
+        #
+        "techminer2.refine.fields",
+        "techminer2.refine.fields.further_processing",
+        #
+        "techminer2.refine.thesaurus",
+        "techminer2.refine.thesaurus.countries",
+        "techminer2.refine.thesaurus.organizations",
+        "techminer2.refine.thesaurus.references",
+        "techminer2.refine.thesaurus.words",
         #
         # ======================================================================
         "techminer2.report",
         #
         # ======================================================================
         "techminer2.search",
+        #
+        # ======================================================================
+        "techminer2.thesauri_data",
+        #
+        # ======================================================================
+        "techminer2.word_lists",
         #
     ],
     package_dir={"techminer2": "techminer2"},
