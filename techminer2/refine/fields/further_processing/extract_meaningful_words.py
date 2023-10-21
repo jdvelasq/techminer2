@@ -106,6 +106,28 @@ def _extract_meaningful_words(
         data[dest] = data[dest].map(
             lambda tagged_words: [tag[0] for tag in tagged_words], na_action="ignore"
         )
+        data[dest] = data[dest].map(
+            lambda phrases: [
+                phrase for phrase in phrases if not phrase.startswith("//")
+            ],
+            na_action="ignore",
+        )
+        data[dest] = data[dest].map(
+            lambda phrases: [phrase.replace("'", "") for phrase in phrases],
+            na_action="ignore",
+        )
+        data[dest] = data[dest].map(
+            lambda phrases: [
+                phrase for phrase in phrases if not re.search(r"[^\w\s]", phrase)
+            ],
+            na_action="ignore",
+        )
+        data[dest] = data[dest].map(
+            lambda phrases: [phrase for phrase in phrases if phrase != ""],
+            na_action="ignore",
+        )
+        #
+        #
         data[dest] = data[dest].map(set, na_action="ignore")
         data[dest] = data[dest].map(sorted, na_action="ignore")
         stopwords = [word.lower() for word in load_package_stopwords()]
