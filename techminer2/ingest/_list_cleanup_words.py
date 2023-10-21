@@ -72,7 +72,6 @@ def list_cleanup_words(
         )
         new_frame["OCC"] = 1
         data_frame = pd.concat([data_frame, new_frame], ignore_index=True)
-    
 
     #
     #
@@ -85,6 +84,98 @@ def list_cleanup_words(
             file.write(key + "\n")
             for term in sorted(set(thesaurus[key])):
                 file.write("    " + term + "\n")
+
+
+##################
+
+
+def modified_concept_clumping(data_frame):
+    """
+    :meta private:
+    """
+
+    data_frame = data_frame.copy()
+
+    data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
+    data_frame = data_frame.sort_values(
+        ["len_fingerprint", "fingerprint"], ascending=[False, True]
+    )
+
+    #
+    # Terms with 4 words
+    terms4 = data_frame.loc[data_frame.len_fingerprint == 4, :].copy()
+    for _, row in terms4.iterrows():
+        #
+        # Splits the term in words
+        term = row.fingerprint
+        word0, word1, word2, word3 = term.split(" ")
+
+        if len(word0) < 3 or len(word1) < 3 or len(word2) < 3 and len(word3) < 3:
+            continue
+
+        #
+        # Terms with 4 words that conatins the current term of 4 words
+        terms5 = data_frame.loc[data_frame.len_fingerprint == 5, :].copy()
+        terms5 = terms5.loc[terms5.fingerprint.str.contains(term, regex=False), :]
+        # terms5 = terms5.loc[terms5.fingerprint.str.contains(word0, regex=False), :]
+        # terms5 = terms5.loc[terms5.fingerprint.str.contains(word1, regex=False), :]
+        # terms5 = terms5.loc[terms5.fingerprint.str.contains(word2, regex=False), :]
+        # terms5 = terms5.loc[terms5.fingerprint.str.contains(word3, regex=False), :]
+        data_frame.loc[terms5.index, "fingerprint"] = term
+        data_frame.loc[terms5.index, "len_fingerprint"] = 4
+
+        # if terms5.shape[0] > 0:
+        #     print(term)
+        #     print(data_frame.loc[terms5.index, :].to_markdown())
+        #     print()
+        #     print()
+    #
+    # Terms with 3 words
+    terms3 = data_frame.loc[data_frame.len_fingerprint == 3, :].copy()
+    for _, row in terms3.iterrows():
+        #
+        # Splits the term in words
+        term = row.fingerprint
+        word0, word1, word2 = term.split(" ")
+
+        if len(word0) < 3 or len(word1) < 3 or len(word2) < 3:
+            continue
+
+        #
+        # Terms with 4 words that conatins the current term of 3 words
+        terms4 = data_frame.loc[data_frame.len_fingerprint == 4, :].copy()
+        terms4 = terms4.loc[terms4.fingerprint.str.contains(term, regex=False), :]
+        # terms4 = terms4.loc[terms4.fingerprint.str.contains(word0, regex=False), :]
+        # terms4 = terms4.loc[terms4.fingerprint.str.contains(word1, regex=False), :]
+        # terms4 = terms4.loc[terms4.fingerprint.str.contains(word2, regex=False), :]
+        data_frame.loc[terms4.index, "fingerprint"] = term
+        data_frame.loc[terms4.index, "len_fingerprint"] = 3
+
+    #
+    # Terms with 2 words
+    terms2 = data_frame.loc[data_frame.len_fingerprint == 2, :].copy()
+    for _, row in terms2.iterrows():
+        #
+        # Splits the term in words
+        term = row.fingerprint
+        word0, word1 = term.split(" ")
+
+        if len(word0) < 3 or len(word1) < 3:
+            continue
+
+        #
+        # Terms with 3 words that conatins the current term of 2 words
+        terms3 = data_frame.loc[data_frame.len_fingerprint == 3, :].copy()
+        terms3 = terms3.loc[terms3.fingerprint.str.contains(term, regex=False), :]
+        # terms3 = terms3.loc[terms3.fingerprint.str.contains(word0, regex=False), :]
+        # terms3 = terms3.loc[terms3.fingerprint.str.contains(word1, regex=False), :]
+        data_frame.loc[terms3.index, "fingerprint"] = term
+        data_frame.loc[terms3.index, "len_fingerprint"] = 2
+
+    return data_frame
+
+
+##################
 
 
 def concept_clumping(data_frame):
@@ -147,12 +238,6 @@ def concept_clumping(data_frame):
         data_frame.loc[terms4.index, "fingerprint"] = term
         data_frame.loc[terms4.index, "len_fingerprint"] = 3
 
-        # if terms4.shape[0] > 0:
-        #     print(term)
-        #     print(data_frame.loc[terms4.index, :].to_markdown())
-        #     print()
-        #     print()
-
     #
     # Terms with 2 words
     terms2 = data_frame.loc[data_frame.len_fingerprint == 2, :].copy()
@@ -172,12 +257,6 @@ def concept_clumping(data_frame):
         terms3 = terms3.loc[terms3.fingerprint.str.contains(word1, regex=False), :]
         data_frame.loc[terms3.index, "fingerprint"] = term
         data_frame.loc[terms3.index, "len_fingerprint"] = 2
-
-        # if terms3.shape[0] > 0:
-        #     print(term)
-        #     print(data_frame.loc[terms3.index, :].to_markdown())
-        #     print()
-        #     print()
 
     return data_frame
 
@@ -284,6 +363,10 @@ def create_data_frame(root_dir):
     #
     # Concats the dataframes
     data_frame = pd.concat([keywords_data_frame, nlp_data_frame], ignore_index=True)
+
+    ##
+    ## Ignore nlp data for fintech model
+    data_frame = keywords_data_frame.copy()
     data_frame = data_frame.reset_index(drop=True)
 
     return data_frame
@@ -304,13 +387,14 @@ def process_fingerprint_key(data_frame):
     data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
     data_frame["fingerprint"] = remove_initial_articles(data_frame["fingerprint"])
     data_frame["fingerprint"] = replace_sinonimous(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
+    # data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
+    # data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
+    # data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
+    # data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
     data_frame["fingerprint"] = british_to_american_spelling(data_frame["fingerprint"])
     #
-    data_frame = concept_clumping(data_frame)
+    # data_frame = concept_clumping(data_frame)
+    data_frame = modified_concept_clumping(data_frame)
     #
     data_frame["fingerprint"] = apply_porter_stemmer(data_frame["fingerprint"])
 
@@ -724,6 +808,6 @@ def apply_porter_stemmer(series):
     series = series.copy()
     stemmer = PorterStemmer()
     series = series.apply(
-        lambda x: " ".join(sorted(set(stemmer.stem(word) for word in x.split())))
+        lambda x: " ".join(sorted(stemmer.stem(word) for word in x.split()))
     )
     return series
