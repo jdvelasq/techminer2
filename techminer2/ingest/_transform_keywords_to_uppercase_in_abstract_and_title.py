@@ -38,8 +38,8 @@ def transform_keywords_to_uppercase_in_abstract_and_title(root_dir):
     #
     # Process all descriptors
     all_descriptors = all_descriptors.str.translate(str.maketrans("", "", "\"'#!"))
-    all_descriptors = all_descriptors.str.replace(regex1, "")
-    all_descriptors = all_descriptors.str.replace(regex2, "")
+    all_descriptors = all_descriptors.str.replace(regex1, "", regex=True)
+    all_descriptors = all_descriptors.str.replace(regex2, "", regex=True)
     all_descriptors = all_descriptors.str.translate(str.maketrans("_", " "))
     all_descriptors = all_descriptors.str.lower()
     all_descriptors = all_descriptors.str.split("; ")
