@@ -13,7 +13,8 @@ Find Abbreviations
 >>> find_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="example/", 
+...     # root_dir="example/", 
+...     root_dir="/Volumes/GitHub/tm2_fintech/",
 ... )
 --INFO-- The file example/thesauri/words.the.txt has been reordered.
 
@@ -48,6 +49,7 @@ def find_abbreviations(
 
     frame["abbreviation"] = frame["value"].map(_extract_abbreviation)
     abbreviations = frame["abbreviation"].dropna().drop_duplicates().to_list()
+    abbreviations = [abbr for abbr in abbreviations if abbr.strip() != ""]
 
     for abbr in tqdm(abbreviations, total=len(abbreviations)):
         abbr = re.escape(abbr)
@@ -63,6 +65,12 @@ def find_abbreviations(
 
     frame = frame[~frame.abbreviation.isna()]
     frame = frame.sort_values(["abbreviation", "key", "value"])
+    #
+    #
+    for abbr in frame["abbreviation"].drop_duplicates().to_list():
+        print(abbr)
+    #
+    #
 
     keys_with_abbr = frame.key.drop_duplicates().to_list()
     thesaurus = load_system_thesaurus_as_dict(file_path)
