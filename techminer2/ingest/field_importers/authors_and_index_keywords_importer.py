@@ -20,6 +20,7 @@ def run_authors_and_index_keywords_importer(root_dir):
             func=lambda x: x.str.upper()
             .str.replace("&", " AND ", regex=False)
             .str.replace(r"\s+", " ", regex=True)
+            .str.replace("<.*?>", "", regex=True)
             .str.replace("-", "_", regex=False)
             .str.replace('"', "", regex=False)
             .str.replace(".", "", regex=False)
