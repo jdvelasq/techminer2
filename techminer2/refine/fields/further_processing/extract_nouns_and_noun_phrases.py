@@ -72,6 +72,16 @@ def extract_noun_phrases(text):
         return pd.NA
 
     noun_phrases = [str(phrase) for phrase in TextBlob(text.lower()).noun_phrases]
+    #
+    #
+    noun_phrases = [phrase for phrase in noun_phrases if not phrase.startswith("//")]
+    noun_phrases = [phrase.replace("'", "") for phrase in noun_phrases]
+    noun_phrases = [
+        phrase for phrase in noun_phrases if not re.search(r"[^\w\s]", phrase)
+    ]
+    noun_phrases = [phrase for phrase in noun_phrases if phrase not in ""]
+    #
+    #
     noun_phrases = sorted(noun_phrases, key=lambda x: len(x.split(" ")), reverse=True)
 
     #
@@ -83,6 +93,16 @@ def extract_noun_phrases(text):
 
     tags = TextBlob(text).tags
     noun_phrases = sorted(set(tag[0].upper() for tag in tags if tag[1][:2] == "NN"))
+    #
+    #
+    noun_phrases = [phrase for phrase in noun_phrases if not phrase.startswith("//")]
+    noun_phrases = [phrase.replace("'", "") for phrase in noun_phrases]
+    noun_phrases = [
+        phrase for phrase in noun_phrases if not re.search(r"[^\w\s]", phrase)
+    ]
+    noun_phrases = [phrase for phrase in noun_phrases if phrase not in ""]
+    #
+    #
     noun_phrases = "; ".join(noun_phrases)
 
     return noun_phrases
