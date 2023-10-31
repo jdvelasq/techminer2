@@ -2172,6 +2172,8 @@ omelet
     omelette
 omelets
     omelettes
+optimization
+    optimisation 
 optimize
     optimise
 optimized

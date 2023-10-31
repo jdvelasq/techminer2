@@ -18,6 +18,18 @@ def run_document_title_importer(root_dir):
         func=lambda x: x.str.replace(r"\[.*", "", regex=True)
         .str.strip()
         .str.replace(r"\s+", " ", regex=True)
+        # -----------------------------------------------------------------------------
+        # remove all non-ascii characters
+        .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
+        # -----------------------------------------------------------------------------
+        # remove all html tags
+        .str.replace("<.*?>", "", regex=True)
+        # -----------------------------------------------------------------------------
+        # remove appostrophes
+        .str.replace("ʿ", "'", regex=False)
+        .str.replace("’", "'", regex=False)
+        .str.replace("'", "'", regex=False)
+        # -----------------------------------------------------------------------------
         .str.lower(),
         root_dir=root_dir,
     )

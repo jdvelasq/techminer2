@@ -38,19 +38,110 @@ def find_abbreviations(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Find abbreviations and reorder the thesaurus to reflect the search.
+    """:meta private:"""
 
-    :meta private:
-    """
-
+    #
+    # Load thesaurus as a data frame
     file_path = os.path.join(root_dir, THESAURUS_FILE)
     frame = load_system_thesaurus_as_frame(file_path)
+
+    #
+    # Find abbreviations
+    def extract_abbreviation(x):
+        if "(" in x:
+            abbreviation = x[x.find("(") + 1 : x.find(")")]
+            return abbreviation
+        return pd.NA
+
+    #
+    # List abbreviations
+    def list_abbreviations_as_tuples(frame):
+        """:meta private:"""
+
+        #
+        # Preserve dataframe for checking
+        data_frame_org = frame.copy()
+
+        #
+        # Search for abbreviations
+        frame = frame.copy()
+        frame = frame.loc[frame.value.str.contains("(", regex=False), :]
+        frame = frame.loc[frame.value.str.contains(")", regex=False), :]
+        frame = frame[["value"]].drop_duplicates()
+        frame["abbreviation"] = frame["value"].map(extract_abbreviation)
+        regex = r"\((" + "|".join(frame.abbreviation.dropna().to_list()) + r")\)"
+        frame["value"] = frame["value"].str.replace(regex, "", regex=True)
+        frame["value"] = frame["value"].str.strip()
+        frame = frame.loc[frame.abbreviation != "", :]
+        frame = frame.loc[
+            frame.value.map(lambda x: " " not in x, na_action="ignore"), :
+        ]
+        frame = frame.sort_values(by="abbreviation")
+
+        #
+        # Check if there is replacements
+        frame["valid"] = False
+        data_frame_org["value"] = data_frame_org["value"].str.replace(
+            regex, "", regex=True
+        )
+        for index, row in frame.iterrows():
+            #
+            data_frame = data_frame_org.copy()
+            data_frame["valid"] = False
+            #
+            # contains:
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"_" + row.abbreviation + r"_", regex=False)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"\b" + row.abbreviation + r"_", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"_" + row.abbreviation + r"\b", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"\b" + row.abbreviation + r"\b", regex=True)
+            #
+            # ends with:
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"_" + row.abbreviation + r"$", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r" " + row.abbreviation + r"$", regex=True)
+            #
+            # starts with:
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"^" + row.abbreviation + r"_", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"^" + row.abbreviation + r" ", regex=True)
+            #
+            frame.loc[index, "valid"] = data_frame["valid"].any()
+
+        #
+        # Select only abbreviations that exists in other rows
+        frame = frame.loc[frame.valid, :]
+
+        #
+        # Print abbreviations
+        for _, row in frame.iterrows():
+            print(f"{row.abbreviation}\t{row.value}")
+
+    list_abbreviations_as_tuples(frame)
+
+    #
+    # Replace "_" by " "
     frame["value"] = frame["value"].str.replace("_", " ")
 
-    frame["abbreviation"] = frame["value"].map(_extract_abbreviation)
+    frame["abbreviation"] = frame["value"].map(extract_abbreviation)
     abbreviations = frame["abbreviation"].dropna().drop_duplicates().to_list()
     abbreviations = [abbr for abbr in abbreviations if abbr.strip() != ""]
 
+    #
+    # Find terms with abbreviations
     for abbr in tqdm(abbreviations, total=len(abbreviations)):
         abbr = re.escape(abbr)
         frame["found"] = False
@@ -65,13 +156,9 @@ def find_abbreviations(
 
     frame = frame[~frame.abbreviation.isna()]
     frame = frame.sort_values(["abbreviation", "key", "value"])
-    #
-    #
-    for abbr in frame["abbreviation"].drop_duplicates().to_list():
-        print(abbr)
-    #
-    #
 
+    #
+    # Reorder thesaurus
     keys_with_abbr = frame.key.drop_duplicates().to_list()
     thesaurus = load_system_thesaurus_as_dict(file_path)
 
@@ -88,12 +175,3 @@ def find_abbreviations(
                     file.write("    " + item + "\n")
 
     print(f"--INFO-- The file {file_path} has been reordered.")
-
-
-def _extract_abbreviation(x):
-    """Extracts the abbreviation."""
-
-    if "(" in x:
-        abbreviation = x[x.find("(") + 1 : x.find(")")]
-        return abbreviation
-    return pd.NA

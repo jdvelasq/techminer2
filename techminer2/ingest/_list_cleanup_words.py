@@ -364,9 +364,11 @@ def create_data_frame(root_dir):
     # Concats the dataframes
     data_frame = pd.concat([keywords_data_frame, nlp_data_frame], ignore_index=True)
 
-    ##
+    ## --------------------------------------------------------------------------------
     ## Ignore nlp data for fintech model
     data_frame = keywords_data_frame.copy()
+    ## --------------------------------------------------------------------------------
+
     data_frame = data_frame.reset_index(drop=True)
 
     return data_frame

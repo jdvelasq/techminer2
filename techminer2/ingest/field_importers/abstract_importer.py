@@ -19,12 +19,19 @@ def run_abstract_importer(root_dir):
         dest="abstract",
         func=lambda x: x.map(
             lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
-        )
+        ).str.replace("-", "_", regex=False)
+        # -----------------------------------------------------------------------------
+        # remove all html tags
         .str.replace("<.*?>", "", regex=True)
-        .str.replace("-", "_", regex=False)
-        .str.normalize("NFKD")
-        .str.encode("ascii", errors="ignore")
-        .str.decode("utf-8")
+        # -----------------------------------------------------------------------------
+        # remove all non-ascii characters
+        .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
+        # -----------------------------------------------------------------------------
+        # remove appostrophes
+        .str.replace("ʿ", "'", regex=False)
+        .str.replace("’", "'", regex=False)
+        .str.replace("'", "'", regex=False)
+        # -----------------------------------------------------------------------------
         .str.lower(),
         root_dir=root_dir,
     )

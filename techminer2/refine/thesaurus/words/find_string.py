@@ -218,33 +218,3 @@ def find_string(
                 file.write("    " + item + "\n")
 
     print(f"--INFO-- The file {th_file} has been reordered.")
-
-
-# def find_string(
-#     #
-#     # SEARCH PARAMS:
-#     contains=None,
-#     startswith=None,
-#     endswith=None,
-#     #
-#     # DATABASE PARAMS:
-#     root_dir="./",
-# ):
-#     """Find the specified keyword and reorder the thesaurus file.
-
-#     :meta private:
-#     """
-
-#     return _find_string(
-#         #
-#         # THESAURUS FILE:
-#         thesaurus_file=THESAURUS_FILE,
-#         #
-#         # SEARCH PARAMS:
-#         contains=contains,
-#         startswith=startswith,
-#         endswith=endswith,
-#         #
-#         # DATABASE PARAMS:
-#         root_dir=root_dir,
-#     )

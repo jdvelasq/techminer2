@@ -61,6 +61,9 @@ Factor Map
 ...     textfont_opacity_range=(0.35, 1.00),
 ...     #
 ...     # EDGES:
+...     edge_top_n=None,
+...     edge_similarity_min=None,
+...     edge_widths=(2, 2, 4, 6),
 ...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
 ...     #
 ...     # AXES:

@@ -116,7 +116,7 @@ from .field_importers.global_citations_importer import run_global_citations_impo
 from .field_importers.issb_isbn_eissn_importer import run_issb_isbn_eissn_importer
 from .field_importers.source_title_importer import run_source_title_importer
 
-DEBUG = True
+DEBUG = False
 
 
 def ingest_raw_data(
@@ -224,6 +224,7 @@ def ingest_raw_data(
     # Merge author/index keywords into a single column
     #
     if DEBUG is False:
+        #
         run_authors_and_index_keywords_importer(root_dir)
 
         _merge_fields(
@@ -342,7 +343,33 @@ def ingest_raw_data(
         list_cleanup_organizations(root_dir)
         apply_organizations_thesaurus(root_dir)
 
-    list_cleanup_words(root_dir)
+    ## ------------------------------------------------------------------------------------------
+    ## Ignore thesaurus creation for testing new cleaning process
+    # list_cleanup_words(root_dir)
+    import os
+
+    import pandas as pd
+
+    file = os.path.join(root_dir, "databases/_main.csv.zip")
+    data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
+    words = (
+        data_frame["raw_author_keywords"]
+        .dropna()
+        .str.split("; ", expand=False)
+        .explode()
+        .str.strip()
+        .drop_duplicates()
+        .sort_values()
+        .to_list()
+    )
+
+    thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
+    with open(thesaurus_file, "w", encoding="utf-8") as f:
+        for word in words:
+            f.write(word + "\n")
+            f.write("    " + word + "\n")
+
+    ## ------------------------------------------------------------------------------------------
     apply_words_thesaurus(root_dir)
 
     if DEBUG is False:

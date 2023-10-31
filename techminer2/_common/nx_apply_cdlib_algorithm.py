@@ -26,6 +26,17 @@ def nx_apply_cdlib_algorithm(
         "walktrap": algorithms.walktrap,
     }[algorithm]
 
+    # if algorithm == "label_propagation":
+    #     communities = cdlib_algorithm(nx_graph, weight="weight").communities
+    # elif algorithm == "leiden":
+    #     communities = cdlib_algorithm(nx_graph, weight="weight").communities
+    # elif algorithm == "louvain":
+    #     communities = cdlib_algorithm(
+    #         nx_graph, weight="weight", randomize=False
+    #     ).communities
+    # elif algorithm == "walktrap":
+    #     communities = cdlib_algorithm(nx_graph, weight="weight").communities
+
     if algorithm == "label_propagation":
         communities = cdlib_algorithm(nx_graph).communities
     elif algorithm == "leiden":

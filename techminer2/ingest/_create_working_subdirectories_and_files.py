@@ -56,3 +56,19 @@ def create_working_subdirectories_and_files(root_dir):
         dst_file_path = os.path.join(dst_dir, filename)
         if not os.path.exists(dst_file_path):
             shutil.copy2(src_file_path, dst_file_path)
+
+    #
+    # Create replacements.the.txt file
+    message("Creating abbreviations.the.txt file")
+    file_path = os.path.join(root_dir, "thesauri/abbreviations.the.txt")
+    if not os.path.exists(file_path):
+        with open(file_path, "w", encoding="utf-8"):
+            pass
+
+    #
+    # Create replacements.the.txt file
+    message("Creating replacements.the.txt file")
+    file_path = os.path.join(root_dir, "thesauri/replacements.the.txt")
+    if not os.path.exists(file_path):
+        with open(file_path, "w", encoding="utf-8"):
+            pass

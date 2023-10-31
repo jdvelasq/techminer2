@@ -10,11 +10,9 @@
 
 import os.path
 
-import pandas as pd
-
 from ..._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "words.txt"
+THESAURUS_FILE = "words.the.txt"
 
 
 def _sort_thesaurus(

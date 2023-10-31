@@ -40,7 +40,7 @@ def apply_thesaurus(
 
     # pylint: disable=line-too-long
     print(
-        "--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words"
+        "--INFO-- Applying `words.the.txt` thesaurus to author/index keywords and abstract/title words"
     )
 
     thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")

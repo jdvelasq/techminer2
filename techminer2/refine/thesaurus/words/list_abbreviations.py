@@ -24,15 +24,8 @@ PRESSES (MACHINE_TOOLS)
 
 """
 import os.path
-import re
 
-import pandas as pd
-from tqdm import tqdm
-
-from ...._common.thesaurus_lib import (
-    load_system_thesaurus_as_dict,
-    load_system_thesaurus_as_frame,
-)
+from ...._common.thesaurus_lib import load_system_thesaurus_as_frame
 
 THESAURUS_FILE = "thesauri/words.the.txt"
 
