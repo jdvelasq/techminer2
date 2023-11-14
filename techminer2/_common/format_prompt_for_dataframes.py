@@ -14,7 +14,7 @@ def format_prompt_for_dataframes(
     main_text: str,
     df_text: str,
 ):
-    """Generate prompt for table analysis."""
+    """:meta private:"""
 
     prompt = textwrap.fill(main_text, width=TEXTWRAP_WIDTH)
     prompt = prompt.replace("\n", " \\\n")
