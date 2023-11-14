@@ -24,11 +24,15 @@ def disambiguate_author_names(root_dir):
         data = pd.concat(data)
         data = data.dropna()
 
+        assert data.authors_id.map(lambda x: "7401744122" in x).sum() > 0
+
         return data
 
     #
     def build_dict_names(data):
         data = data.copy()
+
+        assert data.authors_id.map(lambda x: "7401744122" in x).sum() > 0
 
         data = data.assign(authors_and_ids=data.authors + "#" + data.authors_id)
         data.authors_and_ids = data.authors_and_ids.str.split("#")
@@ -46,6 +50,9 @@ def disambiguate_author_names(root_dir):
         data = data[["authors_and_ids"]]
         data["author"] = data.authors_and_ids.apply(lambda x: x[0])
         data["author_id"] = data.authors_and_ids.apply(lambda x: x[1])
+
+        assert data.author_id.map(lambda x: "7401744122" in x).sum() > 0
+
         data = data.drop(columns=["authors_and_ids"])
         data = data.drop_duplicates()
         data = data.sort_values(by=["author"])
