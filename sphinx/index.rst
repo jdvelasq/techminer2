@@ -1,16 +1,6 @@
 Techminer 2+
 ################################################################################
 
-
-.. toctree::
-    :caption: INTRODUCTION
-    :hidden:
-    :maxdepth: 1
-
-    introduction/getting_started
-    introduction/release_info
-    introduction/license
-
 .. toctree::
     :caption: TECHMINER 2+
     :hidden:
@@ -21,7 +11,7 @@ Techminer 2+
     search/__index__ 
     analyze/__index__
     report/__index__
-    summary_sheet
+    
 
 
 .. toctree::
@@ -30,6 +20,7 @@ Techminer 2+
     :maxdepth: 1
 
     tools/query
+    tools/summary_sheet
 
 
 **Author**:
