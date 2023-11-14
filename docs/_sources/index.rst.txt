@@ -2,7 +2,6 @@ Techminer 2+
 ################################################################################
 
 .. toctree::
-    :caption: TECHMINER 2+
     :hidden:
     :maxdepth: 1
 
@@ -24,6 +23,23 @@ Techminer 2+
     tools/statistics
     tools/summary_sheet
 
+.. toctree::
+    :caption: report
+    :hidden:
+    :maxdepth: 1
+
+    report/column_chart
+    report/bar_chart
+    report/pie_chart
+    report/line_chart
+    report/word_cloud
+    report/bubble_chart
+    report/butterfly_chart
+    report/scatter_plot
+    report/cluster_map
+    report/world_map
+    report/cleveland_dot_chart
+    report/ranking_chart
 
 **Author**:
 
