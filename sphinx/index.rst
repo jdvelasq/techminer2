@@ -1,4 +1,4 @@
-Techminer2: A package for the analysis of bibliographic datasets using Python
+Techminer 2+
 ################################################################################
 
 
