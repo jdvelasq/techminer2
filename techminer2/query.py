@@ -29,38 +29,90 @@ Query
 
 
 """
+from dataclasses import dataclass
+from typing import Dict
+
 import duckdb
+import pandas as pd
 
-from ._read_records import ReadRecordsMixin
+from .records import Records
 
 
-class Query(ReadRecordsMixin):
-    """:meta private:"""
-
+@dataclass
+class Query:
     def __init__(
         self,
         #
-        # DATABASE PARAMS
-        root_dir="./",
-        database="main",
-        year_filter=(None, None),
-        cited_by_filter=(None, None),
+        # QUERY:
+        expr: str,
+        #
+        # DATABASE PARAMS:
+        root_dir: str = "./",
+        database: str = "main",
+        year_filter: tuple = (None, None),
+        cited_by_filter: tuple = (None, None),
         **filters,
     ):
-        super().__init__(
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
+        #
+        # QUERY:
+        self._expr = expr
 
-    def execute(self, expr):
+        #
+        # DATABASE PARAMS:
+        self._root_dir = root_dir
+        self._database = database
+        self._year_filter = year_filter
+        self._cited_by_filter = cited_by_filter
+        self._filters = filters
+
+        #
+        # RESULTS:
+        self.df_: pd.DataFrame = pd.DataFrame()
+
+    def __post_init__(self):
         """:meta private:"""
 
         # The variable 'database' is required by duckdb.query(expr).df()
-        database = self.read_records()
-        return duckdb.query(expr).df()
+        database = Records(
+            #
+            # DATABASE PARAMS:
+            root_dir=self._root_dir,
+            database=self._database,
+            year_filter=self._year_filter,
+            cited_by_filter=self._cited_by_filter,
+            **self._filters,
+        ).df_
+
+        self.df_ = duckdb.query(self._expr).df()
+
+
+# class _Query(ReadRecordsMixin):
+#     """:meta private:"""
+
+#     def __init__(
+#         self,
+#         #
+#         # DATABASE PARAMS
+#         root_dir="./",
+#         database="main",
+#         year_filter=(None, None),
+#         cited_by_filter=(None, None),
+#         **filters,
+#     ):
+#         super().__init__(
+#             root_dir=root_dir,
+#             database=database,
+#             year_filter=year_filter,
+#             cited_by_filter=cited_by_filter,
+#             **filters,
+#         )
+
+#     def execute(self, expr):
+#         """:meta private:"""
+
+#         # The variable 'database' is required by duckdb.query(expr).df()
+#         database = self.read_records()
+#         return duckdb.query(expr).df()
 
 
 # def query(
