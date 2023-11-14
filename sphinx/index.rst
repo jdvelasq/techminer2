@@ -21,8 +21,15 @@ Techminer 2+
     search/__index__ 
     analyze/__index__
     report/__index__
-    query
     summary_sheet
+
+
+.. toctree::
+    :caption: tools
+    :hidden:
+    :maxdepth: 1
+
+    tools/query
 
 
 **Author**:
