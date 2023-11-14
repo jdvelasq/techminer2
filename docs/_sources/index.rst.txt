@@ -1,15 +1,5 @@
-Techminer2: A package for the analysis of bibliographic datasets using Python
+Techminer 2+
 ################################################################################
-
-
-.. toctree::
-    :caption: INTRODUCTION
-    :hidden:
-    :maxdepth: 1
-
-    introduction/getting_started
-    introduction/release_info
-    introduction/license
 
 .. toctree::
     :caption: TECHMINER 2+
@@ -21,8 +11,18 @@ Techminer2: A package for the analysis of bibliographic datasets using Python
     search/__index__ 
     analyze/__index__
     report/__index__
-    query
-    summary_sheet
+    
+
+
+.. toctree::
+    :caption: tools
+    :hidden:
+    :maxdepth: 1
+
+    tools/coverage
+    tools/query
+    tools/statistics
+    tools/summary_sheet
 
 
 **Author**:
