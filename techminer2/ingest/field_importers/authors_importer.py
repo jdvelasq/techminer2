@@ -32,6 +32,10 @@ def run_authors_importer(root_dir):
         .str.replace(", Jr.", " Jr.", regex=False)
         .str.replace("; ", ";", regex=False)
         .str.replace(";", "; ", regex=False)
+        #
+        # some old database records uses ',' as separator
+        .str.replace(", ", ",", regex=False).str.replace(",", "; ", regex=False)
+        #
         .str.title()
         .fillna(pd.NA)
         .map(
