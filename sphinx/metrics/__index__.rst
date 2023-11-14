@@ -1,9 +1,8 @@
-Ingest
+Metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 .. toctree::
-    ingest_raw_data
+    :hidden:
 
-
-
+    performance_metrics
+    

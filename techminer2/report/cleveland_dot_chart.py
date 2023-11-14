@@ -45,7 +45,7 @@ Cleveland Dot Chart
 """
 import plotly.express as px
 
-from ..analyze.performance_metrics import performance_metrics
+from ..metrics.performance_metrics import performance_metrics
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -109,9 +109,13 @@ def cleveland_dot_chart(
         **filters,
     )
 
-    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
+    metric_label = (
+        metric.replace("_", " ").upper() if metric_label is None else metric_label
+    )
 
-    field_label = field.replace("_", " ").upper() if field_label is None else field_label
+    field_label = (
+        field.replace("_", " ").upper() if field_label is None else field_label
+    )
 
     data_frame = items.df_.copy()
 

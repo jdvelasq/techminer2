@@ -69,7 +69,7 @@ from dataclasses import dataclass
 import plotly.express as px
 
 from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..performance_metrics import performance_metrics
+from ...metrics.performance_metrics import performance_metrics
 
 
 def word_trends(

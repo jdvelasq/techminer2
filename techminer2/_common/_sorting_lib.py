@@ -99,7 +99,7 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from ..indicators.global_indicators_by_field import global_indicators_by_field
+    from ..metrics.global_indicators_by_field import global_indicators_by_field
 
     matrix = matrix.copy()
 
@@ -120,7 +120,9 @@ def sort_matrix_axis(
 
     if axis == 0:
         topics = [
-            topic for topic in indicators_by_topic.index.tolist() if topic in matrix.index.tolist()
+            topic
+            for topic in indicators_by_topic.index.tolist()
+            if topic in matrix.index.tolist()
         ]
         matrix = matrix.loc[topics, :]
     else:

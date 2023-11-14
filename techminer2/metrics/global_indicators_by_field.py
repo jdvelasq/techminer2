@@ -6,21 +6,20 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Indicators by Field
-===============================================================================
 
 >>> from techminer2.indicators import global_indicators_by_field
 >>> indicators = global_indicators_by_field(
 ...     #
 ...     # METRICS PARAMS:
 ...     field='author_keywords',
-...     time_window=2,
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     database_params = {
+...         "root_dir": "example/",
+...         "database": "main",
+...         "year_filter": (None, None),
+...         "cited_by_filter": (None, None),
+...     }
 ... )
 >>> print(indicators.head().to_markdown())
 | author_keywords      |   rank_occ |   rank_lcs |   rank_gcs |   OCC |   before_2018 |   between_2018_2019 |   growth_percentage |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
@@ -34,68 +33,22 @@ Indicators by Field
 
 
 """
-
-#
-# TechMiner2+ computes three growth indicators for each item in a field (usually
-# keywords or noun phrases):
-#
-# * Average growth rate (AGR):
-#
-# .. code-block::
-#
-#            sum_{i=Y_start}^Y_end  Num_Documents[i] - Num_Documents[i-1]
-#     AGR = --------------------------------------------------------------
-#                             Y_end - Y_start + 1
-#
-#
-# * Average documents per year (ADY):
-#
-# .. code-block::
-#
-#            sum_{i=Y_start}^Y_end  Num_Documents[i]
-#     ADY = -----------------------------------------
-#                     Y_end - Y_start + 1
-#
-#
-# * Percentage of documents in last year (PDLY):
-#
-# .. code-block::
-#
-#            sum_{i=Y_start}^Y_end  Num_Documents[i]      1
-#     PDLY = ---------------------------------------- * _____
-#                   Y_end - Y_start + 1                  TND
-#
-# With:
-#
-# .. code-block::
-#
-#     Y_start = Y_end - time_window + 1
-#
-# If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
-#
-
-
 from .._common._sorting_lib import sort_indicators_by_metric
 from .._read_records import read_records
 from .._stopwords import load_user_stopwords
-from .items_occurrences_by_year import items_occurrences_by_year
 
 
 def global_indicators_by_field(
-    #
-    # METRICS PARAMS:
     field,
-    time_window=2,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+    database_params,
 ):
     """Bibliometric column indicators."""
 
+    records = read_records(**database_params)
+
+    records["OCC"] = 1
+
+    # --------------------------------------------------------------------------------------------
     def extract_items_from_field(records):
         """Creates a dataframe with the items in the field column."""
 
@@ -117,6 +70,9 @@ def global_indicators_by_field(
 
         return unique_items
 
+    indicators = extract_items_from_field(records)
+
+    # --------------------------------------------------------------------------------------------
     def compute_column_sum_by_item(records, indicators, column):
         """Computes global citations from database and adds the column to indicators."""
 
@@ -132,6 +88,11 @@ def global_indicators_by_field(
 
         return indicators
 
+    indicators = compute_column_sum_by_item(records, indicators, "OCC")
+    indicators = compute_column_sum_by_item(records, indicators, "global_citations")
+    indicators = compute_column_sum_by_item(records, indicators, "local_citations")
+
+    # --------------------------------------------------------------------------------------------
     def compute_global_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
@@ -141,6 +102,9 @@ def global_indicators_by_field(
         )
         return indicators
 
+    indicators = compute_global_citations_per_document(indicators)
+
+    # --------------------------------------------------------------------------------------------
     def compute_local_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
@@ -150,25 +114,9 @@ def global_indicators_by_field(
         )
         return indicators
 
-    def compute_age(records, indicators):
-        indicators = indicators.copy()
-        indicators = indicators.assign(
-            age=(records.year.max() - indicators.first_publication_year + 1).astype(int)
-        )
-        return indicators
+    indicators = compute_local_citations_per_document(indicators)
 
-    def compute_global_citations_per_year(indicators):
-        """Computes the global citations per year."""
-
-        indicators = indicators.copy()
-        indicators = indicators.assign(
-            global_citations_per_year=(
-                indicators.global_citations / indicators.age
-            ).round(2)
-        )
-
-        return indicators
-
+    # --------------------------------------------------------------------------------------------
     def compute_first_publication_year(records, indicators):
         """Computes the first publication year for each item."""
 
@@ -194,84 +142,34 @@ def global_indicators_by_field(
 
         return indicators
 
-    def compute_growth_indicators(indicators):
-        """Computes growth indicators."""
+    indicators = compute_first_publication_year(records, indicators)
 
-        #
-        # Computes item occurrences by year
-        items_by_year = items_occurrences_by_year(
-            #
-            # FUNCTION PARAMS:
-            field=field,
-            cumulative=False,
-            #
-            # DATABASE PARAMS:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
-
-        #
-        # Computes the range of years in the time window
-        year_end = items_by_year.columns.max()
-        year_start = year_end - time_window + 1
-        year_columns = list(range(year_start, year_end + 1))
-
-        #
-        # TODO: CHECK
-        if items_by_year.columns.max() - items_by_year.columns.min() <= time_window:
-            return indicators
-        #
-
-        #
-        # Computes the number of documents per period by item
-        between = f"between_{year_start}_{year_end}"
-        before = f"before_{year_start}"
-        between_occ = items_by_year.loc[:, year_columns].sum(axis=1)
-        before_occ = items_by_year.sum(axis=1) - between_occ
-        indicators.loc[between_occ.index, between] = between_occ
-        indicators.loc[before_occ.index, before] = before_occ
-
+    # --------------------------------------------------------------------------------------------
+    def compute_age(records, indicators):
+        indicators = indicators.copy()
         indicators = indicators.assign(
-            growth_percentage=(
-                100 * indicators[between].copy() / indicators["OCC"].copy()
+            age=(records.year.max() - indicators.first_publication_year + 1).astype(int)
+        )
+        return indicators
+
+    indicators = compute_age(records, indicators)
+
+    # --------------------------------------------------------------------------------------------
+    def compute_global_citations_per_year(indicators):
+        """Computes the global citations per year."""
+
+        indicators = indicators.copy()
+        indicators = indicators.assign(
+            global_citations_per_year=(
+                indicators.global_citations / indicators.age
             ).round(2)
-        )
-
-        #
-        # sort the columns
-        columns = ["OCC", before, between, "growth_percentage"] + [
-            col
-            for col in indicators.columns
-            if col not in ["OCC", before, between, "growth_percentage"]
-        ]
-        indicators = indicators[columns]
-
-        #
-        # selects the columns of interest
-        items_by_year = items_by_year.loc[:, [year_columns[0] - 1] + year_columns]
-
-        # agr: average growth rate
-        agr = items_by_year.diff(axis=1)
-        agr = agr.loc[:, year_columns]
-        agr = agr.sum(axis=1) / time_window
-        indicators.loc[agr.index, "average_growth_rate"] = agr
-
-        # ady: average documents per year
-        ady = items_by_year.loc[:, year_columns].sum(axis=1) / time_window
-        indicators.loc[ady.index, "average_docs_per_year"] = ady
-
-        # pdly: percentage of documents in last year
-        indicators = indicators.assign(
-            percentage_docs_last_year=(
-                indicators.average_docs_per_year.copy() / indicators.OCC.copy()
-            )
         )
 
         return indicators
 
+    indicators = compute_global_citations_per_year(indicators)
+
+    # --------------------------------------------------------------------------------------------
     def compute_impact_indicators(records, indicators):
         """Computes the impact indicators."""
 
@@ -312,61 +210,51 @@ def global_indicators_by_field(
 
         return indicators
 
-    #
-    #
-    # MAIN CODE:
-    #
-    #
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    records["OCC"] = 1
-
-    indicators = extract_items_from_field(records)
-    indicators = compute_column_sum_by_item(records, indicators, "OCC")
-    indicators = compute_column_sum_by_item(records, indicators, "global_citations")
-    indicators = compute_column_sum_by_item(records, indicators, "local_citations")
-    indicators = compute_global_citations_per_document(indicators)
-    indicators = compute_local_citations_per_document(indicators)
-    indicators = compute_growth_indicators(indicators)
-    indicators = compute_first_publication_year(records, indicators)
-    indicators = compute_age(records, indicators)
-    indicators = compute_global_citations_per_year(indicators)
     indicators = compute_impact_indicators(records, indicators)
 
-    stopwords = load_user_stopwords(root_dir=root_dir)
-    indicators = indicators.drop(stopwords, axis=0, errors="ignore")
+    # --------------------------------------------------------------------------------------------
+    def remove_stopwords(indicators):
+        stopwords = load_user_stopwords(root_dir=database_params["root_dir"])
+        indicators = indicators.drop(stopwords, axis=0, errors="ignore")
+        indicators = indicators.drop(field, axis=1)
+        return indicators
 
-    indicators = indicators.drop(field, axis=1)
-    # indicators = indicators.sort_index(axis=0, ascending=True)
+    indicators = remove_stopwords(indicators)
 
-    indicators = sort_indicators_by_metric(indicators, "global_citations")
-    indicators.insert(0, "rank_gcs", range(1, len(indicators) + 1))
+    # --------------------------------------------------------------------------------------------
+    def compute_ranks(indicators):
+        indicators = sort_indicators_by_metric(indicators, "global_citations")
+        indicators.insert(0, "rank_gcs", range(1, len(indicators) + 1))
 
-    indicators = sort_indicators_by_metric(indicators, "local_citations")
-    indicators.insert(0, "rank_lcs", range(1, len(indicators) + 1))
+        indicators = sort_indicators_by_metric(indicators, "local_citations")
+        indicators.insert(0, "rank_lcs", range(1, len(indicators) + 1))
 
-    indicators = sort_indicators_by_metric(indicators, "OCC")
-    indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))
+        indicators = sort_indicators_by_metric(indicators, "OCC")
+        indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))
+        return indicators
 
-    if "OCC" in indicators.columns:
-        indicators["OCC"] = indicators["OCC"].astype(int)
+    indicators = compute_ranks(indicators)
 
-    if "global_citations" in indicators.columns:
-        indicators["global_citations"] = indicators["global_citations"].astype(int)
+    # --------------------------------------------------------------------------------------------
+    def check_types(indicators):
+        if "OCC" in indicators.columns:
+            indicators["OCC"] = indicators["OCC"].astype(int)
 
-    if "local_citations" in indicators.columns:
-        indicators["local_citations"] = indicators["local_citations"].astype(int)
+        if "global_citations" in indicators.columns:
+            indicators["global_citations"] = indicators["global_citations"].astype(int)
 
-    if "h_index" in indicators.columns:
-        indicators["h_index"] = indicators["h_index"].astype(int)
+        if "local_citations" in indicators.columns:
+            indicators["local_citations"] = indicators["local_citations"].astype(int)
 
-    if "g_index" in indicators.columns:
-        indicators["g_index"] = indicators["g_index"].astype(int)
+        if "h_index" in indicators.columns:
+            indicators["h_index"] = indicators["h_index"].astype(int)
+
+        if "g_index" in indicators.columns:
+            indicators["g_index"] = indicators["g_index"].astype(int)
+
+        return indicators
+
+    indicators = check_types(indicators)
+    # --------------------------------------------------------------------------------------------
 
     return indicators

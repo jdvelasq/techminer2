@@ -62,7 +62,7 @@ Your task is ...
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from ...._common.nx_create_degree_plot import nx_create_degree_plot
-from ...performance_metrics import performance_metrics
+from ....metrics.performance_metrics import performance_metrics
 
 
 def degree_plot(

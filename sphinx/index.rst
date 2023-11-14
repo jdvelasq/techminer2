@@ -8,6 +8,7 @@ Techminer 2+
     ingest/__index__ 
     refine/__index__ 
     search/__index__ 
+    metrics/__index__ 
     analyze/__index__
     tools/__index__
     report/__index__

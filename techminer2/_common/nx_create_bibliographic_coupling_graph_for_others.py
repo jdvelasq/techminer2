@@ -11,7 +11,7 @@ import numpy as np
 
 from .._common._counters_lib import add_counters_to_frame_axis
 from .._read_records import read_records
-from ..analyze.performance_metrics import performance_metrics
+from ..metrics.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,

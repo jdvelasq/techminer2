@@ -56,7 +56,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from .._common._counters_lib import add_counters_to_frame_axis
 from .._common._filtering_lib import generate_custom_items
 from .._read_records import read_records
-from ..indicators.global_indicators_by_field import global_indicators_by_field
+from ..metrics.global_indicators_by_field import global_indicators_by_field
 
 
 def tfidf(

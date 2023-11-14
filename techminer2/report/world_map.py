@@ -57,7 +57,7 @@ Your task is ...
 import pandas as pd
 import plotly.express as px
 
-from ..analyze.performance_metrics import performance_metrics
+from ..metrics.performance_metrics import performance_metrics
 
 
 def world_map(

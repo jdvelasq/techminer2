@@ -131,7 +131,7 @@ from ..._common._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..._read_records import read_records
 from ..._stopwords import load_user_stopwords
-from ...indicators.global_indicators_by_field import global_indicators_by_field
+from ...metrics.global_indicators_by_field import global_indicators_by_field
 
 
 def co_occurrence_matrix(

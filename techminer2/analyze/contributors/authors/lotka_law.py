@@ -132,7 +132,7 @@ def __core_authors_table(
     cited_by_filter,
     **filters,
 ):
-    from ....indicators.global_indicators_by_field import global_indicators_by_field
+    from ....metrics.global_indicators_by_field import global_indicators_by_field
 
     #
     # Part 1: Computes the number of written documents per number of authors.

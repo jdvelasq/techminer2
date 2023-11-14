@@ -152,11 +152,11 @@ from .._common._counters_lib import add_counters_to_frame_axis
 from .._common._filtering_lib import generate_custom_items
 from .._common._sorting_lib import sort_indicators_by_metric
 from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..indicators.global_indicators_by_field import global_indicators_by_field
 from ..indicators.global_metrics_by_field_per_year import (
     global_metrics_by_field_per_year,
 )
 from ..indicators.items_occurrences_by_year import items_occurrences_by_year
+from ..metrics.global_indicators_by_field import global_indicators_by_field
 from .documents_per_item import documents_per_item
 
 COLOR = "#465c6b"

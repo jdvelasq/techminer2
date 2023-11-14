@@ -47,7 +47,7 @@ Word Cloud
 import numpy as np
 from wordcloud import WordCloud
 
-from ..analyze.performance_metrics import performance_metrics
+from ..metrics.performance_metrics import performance_metrics
 
 
 def word_cloud(

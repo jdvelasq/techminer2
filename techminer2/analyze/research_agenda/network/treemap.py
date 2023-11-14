@@ -43,7 +43,7 @@ Treemap
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from ...._common.nx_visualize_treemap import nx_visualize_treemap
-from ...performance_metrics import performance_metrics
+from ....metrics.performance_metrics import performance_metrics
 
 
 def treemap(

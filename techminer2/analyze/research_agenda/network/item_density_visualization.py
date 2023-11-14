@@ -57,7 +57,7 @@ Item Density Visualization
 """
 from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from ...._common.nx_visualize_item_density import nx_visualize_item_density
-from ...performance_metrics import performance_metrics
+from ....metrics.performance_metrics import performance_metrics
 
 
 def item_density_visualization(

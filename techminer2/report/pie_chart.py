@@ -56,7 +56,7 @@ Your task is ...
 """
 import plotly.express as px
 
-from ..analyze.performance_metrics import performance_metrics
+from ..metrics.performance_metrics import performance_metrics
 
 
 def pie_chart(

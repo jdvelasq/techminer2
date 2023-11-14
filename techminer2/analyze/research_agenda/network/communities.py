@@ -55,7 +55,7 @@ from ...._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_gr
 from ...._common.nx_extract_communities_as_data_frame import (
     nx_extract_communities_as_data_frame,
 )
-from ...performance_metrics import performance_metrics
+from ....metrics.performance_metrics import performance_metrics
 
 
 def communities(

@@ -35,7 +35,7 @@ import os.path
 import pandas as pd
 
 from ..._dtypes import DTYPES
-from ...analyze import performance_metrics
+from ...metrics import performance_metrics
 from .protected_fields import PROTECTED_FIELDS
 
 
@@ -117,9 +117,13 @@ def filter_field(
         if cited_by_filter is not None:
             cited_by_min, cited_by_max = cited_by_filter
             if cited_by_min is not None:
-                data_filtered = data_filtered[data_filtered.global_citations >= cited_by_min]
+                data_filtered = data_filtered[
+                    data_filtered.global_citations >= cited_by_min
+                ]
             if cited_by_max is not None:
-                data_filtered = data_filtered[data_filtered.global_citations <= cited_by_max]
+                data_filtered = data_filtered[
+                    data_filtered.global_citations <= cited_by_max
+                ]
 
         #
         # Filter by other fields
@@ -137,7 +141,9 @@ def filter_field(
 
                 # Keep only records that match the filter value
                 database = database[database[filter_name].isin(filter_value)]
-                data_filtered = data_filtered[data_filtered["article"].isin(database["article"])]
+                data_filtered = data_filtered[
+                    data_filtered["article"].isin(database["article"])
+                ]
 
         #
         # Extracts valida values for the new field
@@ -158,4 +164,6 @@ def filter_field(
 
         #
         # Saves the database with the new field
-        data_full.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+        data_full.to_csv(
+            file, sep=",", encoding="utf-8", index=False, compression="zip"
+        )
