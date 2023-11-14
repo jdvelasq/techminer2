@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.statistics
+.. automodule:: techminer2.tools.coverage
     :members:
     :undoc-members:
     :show-inheritance:

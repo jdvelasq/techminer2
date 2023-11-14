@@ -19,7 +19,9 @@ Techminer 2+
     :hidden:
     :maxdepth: 1
 
+    tools/coverage
     tools/query
+    tools/statistics
     tools/summary_sheet
 
 

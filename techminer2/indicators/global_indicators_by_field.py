@@ -77,7 +77,7 @@ Indicators by Field
 
 from .._common._sorting_lib import sort_indicators_by_metric
 from .._read_records import read_records
-from .._stopwords import load_stopwords
+from .._stopwords import load_user_stopwords
 from .items_occurrences_by_year import items_occurrences_by_year
 
 
@@ -339,7 +339,7 @@ def global_indicators_by_field(
     indicators = compute_global_citations_per_year(indicators)
     indicators = compute_impact_indicators(records, indicators)
 
-    stopwords = load_stopwords(root_dir=root_dir)
+    stopwords = load_user_stopwords(root_dir=root_dir)
     indicators = indicators.drop(stopwords, axis=0, errors="ignore")
 
     indicators = indicators.drop(field, axis=1)

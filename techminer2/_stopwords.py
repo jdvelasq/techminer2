@@ -44,16 +44,8 @@ class StopwordsMixin(RootDirMixin):
         return stopwords
 
 
-def load_stopwords(root_dir):
-    """Load user stopwords from the specified directory.
-
-    Args:
-        root_dir (str): the root directory of the database.
-
-    Returns:
-        list: list of user-defined stopwords.
-
-    """
+def load_user_stopwords(root_dir):
+    """:meta private:"""
 
     stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
 

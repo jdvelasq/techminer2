@@ -37,7 +37,7 @@ from .._read_records import read_records
 
 def query(
     expr,
-    database_params=None,
+    database_params,
 ):
     """:meta private:"""
 
