@@ -77,7 +77,7 @@ identifying the most relevant terms associated with a given term.
 """
 import networkx as nx
 
-from ..analyze.associations.item_associations import item_associations
+from ..tools.associations.item_associations import item_associations
 from .nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )

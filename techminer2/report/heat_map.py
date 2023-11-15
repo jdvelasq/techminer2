@@ -83,7 +83,9 @@ def heat_map(
     :meta private:
     """
 
-    from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+    from ..science_mapping.co_occurrence.co_occurrence_matrix import (
+        co_occurrence_matrix,
+    )
 
     data_frame = co_occurrence_matrix(
         #

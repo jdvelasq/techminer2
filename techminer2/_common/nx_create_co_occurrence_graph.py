@@ -11,8 +11,8 @@
 #
 import networkx as nx
 
-from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..analyze.co_occurrence.normalize_co_occurrence_matrix import (
+from ..science_mapping.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..science_mapping.co_occurrence.normalize_co_occurrence_matrix import (
     normalize_co_occurrence_matrix,
 )
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm

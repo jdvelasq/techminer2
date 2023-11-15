@@ -10,8 +10,10 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import KernelPCA
 
-from ..analyze.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..analyze.co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from ..science_mapping.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..science_mapping.co_occurrence.normalize_co_occurrence_matrix import (
+    normalize_co_occurrence_matrix,
+)
 
 
 def factor_kpca_cooc_embedding(

@@ -1,12 +1,10 @@
-Tools
+Tech Mining
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
 
-    associations/__index__
-    coverage
-    query
-    statistics
-    summary_sheet
+    correlation/__index__
+
+    
     
