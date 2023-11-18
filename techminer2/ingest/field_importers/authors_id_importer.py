@@ -9,7 +9,7 @@
 
 import pandas as pd
 
-from ...refine.fields.process_field import _process_field
+from ...fields.process_field import _process_field
 
 
 def run_authors_id_importer(root_dir):
@@ -27,7 +27,9 @@ def run_authors_id_importer(root_dir):
         func=lambda w: w.map(lambda x: pd.NA if isinstance(x, str) and x == "1" else x)
         .str.replace(";$", "", regex=True)
         .map(
-            lambda x: pd.NA if isinstance(x, str) and x.startswith("[") and x.endswith("]") else x
+            lambda x: pd.NA
+            if isinstance(x, str) and x.startswith("[") and x.endswith("]")
+            else x
         ),
         root_dir=root_dir,
     )

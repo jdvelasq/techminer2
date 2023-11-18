@@ -60,13 +60,11 @@ def highlight_phrase(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     #
     # Obtains a regex for descriptors
-    thesaurus = load_thesaurus(root_dir)
+    thesaurus = _load_thesaurus(root_dir)
     descriptors = list(thesaurus.values())
     descriptors = [d.translate(str.maketrans("_", " ")) for d in descriptors]
     descriptors = [d.lower().strip() for d in descriptors]
@@ -83,7 +81,7 @@ def highlight_phrase(
     print(textwrap.fill(str(text), width=TEXTWRAP_WIDTH))
 
 
-def load_thesaurus(root_dir):
+def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")

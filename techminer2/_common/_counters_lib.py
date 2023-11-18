@@ -1,56 +1,44 @@
 # flake8: noqa
+# pylint: disable=too-many-arguments
+# pylint: disable=line-too-long
 """
 This module implements functions to add OCC:citations counters to topics 
 in the values or axis of a dataframe.
 
 
 
-# pylint: disable=line-too-long
+
 """
 
 import numpy as np
 
-from ..metrics.global_indicators_by_field import global_indicators_by_field
+from ..metrics.globals.global_indicators_by_field import global_indicators_by_field
 
 
-# pylint: disable=too-many-arguments
 def add_counters_to_frame_axis(
     dataframe,
     axis,
     field,
-    # Database params:
-    root_dir,
-    database,
-    year_filter,
-    cited_by_filter,
+    #
+    # DATABASE PARAMS
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
     **filters,
 ):
-    """Adds OCC:citations counters to topics in the axis of a dataframe.
-
-    Args:
-        dataframe (pandas.DataFrame): The dataframe.
-        axis (int): 0 for index, 1 for columns.
-        criterion (str): The criterion to be analyzed.
-        root_dir (str): The working directory.
-        database (str): The database name. It can be 'documents', 'cited_by' or 'references'.
-        year_filter (tuple, optional): Year database filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
-
-
-    Returns:
-        pandas.DataFrame: The dataframe with OCC:citations counters added to topics in the axis.
-
-    """
+    """:meta private:"""
 
     dataframe = dataframe.copy()
 
     new_column_names = items2counters(
         criterion=field,
+        #
+        # DATABASE PARAMS
         root_dir=root_dir,
         database=database,
-        start_year=year_filter,
-        end_year=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -64,20 +52,25 @@ def add_counters_to_frame_axis(
 
 def add_counters_to_column_values(
     criterion,
-    name,
-    root_dir,
-    database,
     table,
-    start_year,
-    end_year,
+    name,
+    #
+    # DATABASE PARAMS
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
     **filters,
 ):
+    """:meta private:"""
     new_column_names = items2counters(
         criterion=criterion,
+        #
+        # DATABASE PARAMS
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
     table[name] = table[name].map(new_column_names)
@@ -86,20 +79,24 @@ def add_counters_to_column_values(
 
 def items2counters(
     criterion,
-    root_dir,
-    database,
-    start_year,
-    end_year,
+    #
+    # DATABASE PARAMS
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
     **filters,
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
     indicators = global_indicators_by_field(
         field=criterion,
+        #
+        # DATABASE PARAMS
         root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

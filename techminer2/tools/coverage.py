@@ -13,12 +13,12 @@ Coverage
 >>> from techminer2.tools import coverage
 >>> coverage(
 ...     field="author_keywords",
-...     database_params = {
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     }
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 --INFO-- Number of documents : 50
 --INFO--   Documents with NA : 12
@@ -34,19 +34,33 @@ Coverage
 
 
 """
-from .._read_records import read_records
 from .._stopwords import load_user_stopwords
+from ..read_records import read_records
 
 
 def coverage(
     field,
-    database_params,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """:meta private:"""
 
-    stopwords = load_user_stopwords(database_params["root_dir"])
+    stopwords = load_user_stopwords(root_dir)
 
-    documents = read_records(**database_params)
+    documents = read_records(
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     documents = documents.reset_index()
     documents = documents[[field, "article"]]

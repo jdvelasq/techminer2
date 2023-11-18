@@ -11,19 +11,19 @@ Performance Metrics
 >>> from techminer2.metrics import performance_metrics
 >>> metrics = performance_metrics(
 ...     field='author_keywords',
-...     filter_params = {
-...         "metric": 'OCCGC',
-...         "top_n": 20,
-...         "occ_range": (None, None),
-...         "gc_range": (None, None),
-...         "custom_items": None,
-...     },
-...     database_params = {
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     }
+...     #
+...     # FILTER PARAMS:
+...     metric='OCCGC',
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
 ... )
 >>> print(metrics.df_.head().to_markdown())
 | author_keywords      |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
@@ -49,7 +49,7 @@ from dataclasses import dataclass
 from .._common._filtering_lib import generate_custom_items
 from .._common._sorting_lib import sort_indicators_by_metric
 from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from .global_indicators_by_field import global_indicators_by_field
+from .globals.global_indicators_by_field import global_indicators_by_field
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -57,35 +57,55 @@ MARKER_LINE_COLOR = "#465c6b"
 
 def performance_metrics(
     field,
-    filter_params,
-    database_params,
+    #
+    # FILTER PARAMS:
+    metric="OCCGC",
+    top_n=20,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """:meta private:"""
 
     global_indicators = global_indicators_by_field(
         field=field,
-        database_params=database_params,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
     )
     filtered_indicators = filter_indicators_by_metric(
         indicators=global_indicators,
-        **filter_params,
+        metric=metric,
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
     )
-    selected_indicators = select_indicators_by_metric(
-        filtered_indicators, filter_params["metric"]
-    )
+    selected_indicators = select_indicators_by_metric(filtered_indicators, metric)
 
-    if filter_params["metric"] == "OCCGC":
-        filter_params["metric"] = "OCC"
+    if metric == "OCCGC":
+        metric = "OCC"
 
     prompt = generate_prompt(
         field=field,
-        metric=filter_params["metric"],
+        metric=metric,
         indicators=selected_indicators.head(200),
     )
 
     #
     # Save results to disk as csv tab-delimited file for papers
-    file_path = os.path.join(database_params["root_dir"], "reports", field + ".csv")
+    file_path = os.path.join(root_dir, "reports", field + ".csv")
     selected_indicators.to_csv(file_path, sep="\t", header=True, index=True)
 
     @dataclass
@@ -172,13 +192,35 @@ def select_indicators_by_metric(indicators, metric):
         ]
 
     if metric == "OCC":
+        #
+        between = [_ for _ in indicators.columns if _.startswith("between")]
+        if len(between) > 0:
+            between = between[0]
+        else:
+            between = None
+        #
+        before = [_ for _ in indicators.columns if _.startswith("before")]
+        if len(before) > 0:
+            before = before[0]
+        else:
+            before = None
+        #
         columns = [
             "rank_occ",
             "OCC",
-            indicators.columns[4],
-            indicators.columns[5],
-            "growth_percentage",
         ]
+        #
+        if between is not None:
+            columns += [between]
+        if before is not None:
+            columns += [before]
+        if "growth_percentage" in indicators.columns:
+            columns += ["growth_percentage"]
+        if "average_growth_rate" in indicators.columns:
+            columns += ["average_growth_rate"]
+        if "average_docs_per_year" in indicators.columns:
+            columns += ["average_docs_per_year"]
+        indicators.columns
 
     if metric in [
         "global_citations",

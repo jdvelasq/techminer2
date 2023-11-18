@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.analyze.bibliographic_coupling.authors.communities
+.. automodule:: techminer2.science_mapping.bibliographic_coupling.authors.communities
     :members:
     :undoc-members:
     :show-inheritance:

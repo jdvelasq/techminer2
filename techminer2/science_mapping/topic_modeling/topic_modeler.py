@@ -13,8 +13,8 @@ from sklearn.decomposition import NMF, LatentDirichletAllocation
 
 from ..._common.format_report_for_records import format_report_for_records
 from ..._common.make_report_dir import make_report_dir
-from ..._read_records import read_records
-from ...science_mapping import tfidf
+from ...metrics import tfidf
+from ...read_records import read_records
 
 
 class TopicModeler:

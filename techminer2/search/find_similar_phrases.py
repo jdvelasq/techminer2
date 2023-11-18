@@ -64,11 +64,11 @@ import re
 import textwrap
 
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-from textblob import TextBlob
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
+from textblob import TextBlob  # type: ignore
 
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
-from .._read_records import read_records
+from ..read_records import read_records
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 73
@@ -104,10 +104,10 @@ def find_similar_phrases(
         **filters,
     )
 
-    records = extract_keywords(records, root_dir)
+    records = _extract_keywords(records, root_dir)
     records["phrase_no"] = range(len(records))
     tf_matrix = records.explode("keyword")
-    tf_matrix = build_tf_matrix(tf_matrix)
+    tf_matrix = _build_tf_matrix(tf_matrix)
 
     #
     # Prepare text
@@ -136,7 +136,7 @@ def find_similar_phrases(
         print()
 
 
-def load_thesaurus(root_dir):
+def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
@@ -144,7 +144,7 @@ def load_thesaurus(root_dir):
     return thesaurus
 
 
-def build_tf_matrix(records):
+def _build_tf_matrix(records):
     """
     :meta private:
     """
@@ -155,14 +155,14 @@ def build_tf_matrix(records):
     return records
 
 
-def extract_keywords(records, root_dir):
+def _extract_keywords(records, root_dir):
     """
     :meta private:
     """
 
     # -----------------------------------------------------------------------------------------
     # Obtains a regex for descriptors
-    thesaurus = load_thesaurus(root_dir)
+    thesaurus = _load_thesaurus(root_dir)
     descriptors = list(thesaurus.values())
     descriptors = [d.translate(str.maketrans("_", " ")) for d in descriptors]
     descriptors = [d.lower().strip() for d in descriptors]

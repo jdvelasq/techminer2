@@ -20,7 +20,7 @@ Concordances Prompt
 
 
 """
-from .._read_records import read_records
+from ..read_records import read_records
 from .concordances_prompt_from_records import concordances_prompt_from_records
 
 

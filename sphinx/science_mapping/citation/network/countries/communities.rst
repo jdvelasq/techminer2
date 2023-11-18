@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.analyze.citation.network.countries.communities
+.. automodule:: techminer2.science_mapping.citation.network.countries.communities
     :members:
     :undoc-members:
     :show-inheritance:

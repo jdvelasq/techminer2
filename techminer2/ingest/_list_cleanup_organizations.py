@@ -72,7 +72,10 @@ def add_country_code_column(frame, root_dir):
     # Load country thesaurus
     countries = {}
     #
-    file_path = pathlib.Path(root_dir) / "thesauri/country-to-alpha3.the.txt"
+    file_path = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/country-to-alpha3.the.txt"
+    )
+    # file_path = pathlib.Path(root_dir) / "thesauri/country-to-alpha3.the.txt"
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
             if not line.startswith(" "):
@@ -105,7 +108,11 @@ def replace_abbreviations(frame, root_dir):
     """Replace abbr in affiliation names."""
 
     abbr_dict = {}
-    file_path = pathlib.Path(root_dir) / "thesauri/organizations_abbr.the.txt"
+    file_path = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/organizations_abbr.the.txt"
+    )
+
+    # file_path = pathlib.Path(root_dir) / "thesauri/organizations_abbr.the.txt"
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
             if not line.startswith(" "):

@@ -11,12 +11,12 @@ SummarySheet
 
 >>> from techminer2.tools import summary_sheet
 >>> summary_sheet(
-...     database_params = {
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     }
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... ).head()
                  column  number of terms coverage (%)
 0     abbr_source_title               50         1.0%
@@ -28,15 +28,29 @@ SummarySheet
 """
 import pandas as pd
 
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def summary_sheet(
-    database_params,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """:meta private:"""
 
-    records = read_records(**database_params)
+    records = read_records(
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     #
     # Compute stats per column

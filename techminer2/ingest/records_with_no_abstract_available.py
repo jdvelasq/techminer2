@@ -29,7 +29,7 @@ nan
 
 
 """
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def records_with_no_abstract_available(

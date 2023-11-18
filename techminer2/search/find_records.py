@@ -74,7 +74,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 
 """
 from .._common.format_report_for_records import format_report_for_records
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def find_records(

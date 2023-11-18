@@ -18,11 +18,11 @@ from sklearn.decomposition import PCA, KernelPCA, TruncatedSVD
 from sklearn.manifold import MDS, TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ..science_mapping.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..science_mapping.co_occurrence.normalize_co_occurrence_matrix import (
+from ..metrics.tfidf import tfidf as _tfidf
+from ..tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..tech_mining.co_occurrence.normalize_co_occurrence_matrix import (
     normalize_co_occurrence_matrix,
 )
-from ..science_mapping.tfidf import tfidf as _tfidf
 from .manifold_2d_map import manifold_2d_map
 
 CLUSTER_COLORS = (

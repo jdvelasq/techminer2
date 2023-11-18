@@ -81,7 +81,7 @@ from ..._common.nx_compute_textposition_from_graph import (
 )
 from ..._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from ..._common.nx_visualize_graph import nx_visualize_graph
-from ...science_mapping.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 
 def radial_diagram(

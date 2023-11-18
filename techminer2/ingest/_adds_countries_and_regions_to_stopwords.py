@@ -11,6 +11,7 @@ import glob
 import os
 
 import pandas as pd
+import pkg_resources
 
 
 def _adds_countries_and_regions_to_stopwords(
@@ -27,9 +28,14 @@ def _adds_countries_and_regions_to_stopwords(
     #
     # Adds countries and regions to stopwords
     countries_and_regions = []
-    country2regions_file_path = os.path.join(
-        root_dir, "thesauri/country-to-region.the.txt"
+
+    country2regions_file_path = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/country-to-region.the.txt"
     )
+
+    # country2regions_file_path = os.path.join(
+    #     root_dir, "thesauri/country-to-region.the.txt"
+    # )
     with open(country2regions_file_path, "r", encoding="utf-8") as file:
         for name in file.readlines():
             name = name.strip()
@@ -38,9 +44,13 @@ def _adds_countries_and_regions_to_stopwords(
 
     #
     # Adds countries and sub-regions to stopwords
-    country2regions_file_path = os.path.join(
-        root_dir, "thesauri/country-to-subregion.the.txt"
+    country2regions_file_path = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/country-to-subregion.the.txt"
     )
+
+    # country2regions_file_path = os.path.join(
+    #     root_dir, "thesauri/country-to-subregion.the.txt"
+    # )
     with open(country2regions_file_path, "r", encoding="utf-8") as file:
         for name in file.readlines():
             name = name.strip()

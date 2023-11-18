@@ -39,186 +39,132 @@ setup(
     platforms="any",
     provides=["techminer2"],
     install_requires=[
-        "nltk",
         "cdlib",
+        "duckdb",
         "fuzzywuzzy",
+        "igraph",
+        "leidenalg",
         "networkx",
+        "nltk",
         "pandas",
         "plotly",
+        "pyspellchecker",
         "python-Levenshtein",
         "PyYAML",
         "scikit-learn",
-        "pyspellchecker",
         "sumy",
+        "tabulate",
         "textblob",
         "wordcloud",
-        # "kelaido",
-        "igraph",
-        "leidenalg",
-        "tabulate",
     ],
     packages=[
-        "techminer2",
         "techminer2._common",
+        #
         "techminer2._files",
         #
-        # ======================================================================
-        "techminer2.analyze",
-        #
-        # ======================================================================
-        "techminer2.analyze.associations",
-        #
-        # ======================================================================
-        "techminer2.analyze.bibliographic_coupling",
-        "techminer2.analyze.bibliographic_coupling.authors",
-        "techminer2.analyze.bibliographic_coupling.countries",
-        "techminer2.analyze.bibliographic_coupling.documents",
-        "techminer2.analyze.bibliographic_coupling.organizations",
-        "techminer2.analyze.bibliographic_coupling.sources",
-        #
-        # ======================================================================
-        "techminer2.analyze.citation",
-        #
-        "techminer2.analyze.citation.network",
-        "techminer2.analyze.citation.network.authors",
-        "techminer2.analyze.citation.network.countries",
-        "techminer2.analyze.citation.network.documents",
-        "techminer2.analyze.citation.network.organizations",
-        "techminer2.analyze.citation.network.sources",
-        #
-        "techminer2.analyze.citation.publications",
-        #
-        # ======================================================================
-        "techminer2.analyze.co_authorship",
-        #
-        "techminer2.analyze.co_authorship.network",
-        #
-        "techminer2.analyze.co_authorship.network.authors",
-        "techminer2.analyze.co_authorship.network.countries",
-        "techminer2.analyze.co_authorship.network.organizations",
-        #
-        # ======================================================================
-        "techminer2.analyze.co_citation",
-        #
-        "techminer2.analyze.co_citation.cited_authors",
-        "techminer2.analyze.co_citation.cited_references",
-        "techminer2.analyze.co_citation.cited_sources",
-        #
-        # ======================================================================
-        "techminer2.analyze.co_occurrence",
-        #
-        "techminer2.analyze.co_occurrence.network",
-        #
-        # ======================================================================
-        "techminer2.analyze.contributors",
-        #
-        "techminer2.analyze.contributors.authors",
-        "techminer2.analyze.contributors.countries",
-        "techminer2.analyze.contributors.organizations",
-        "techminer2.analyze.contributors.sources",
-        #
-        # ======================================================================
-        "techminer2.analyze.correlation",
-        #
-        # ======================================================================
-        "techminer2.analyze.document",
-        #
-        "techminer2.analyze.document.hierarchical",
-        "techminer2.analyze.document.kmeans",
-        #
-        # ======================================================================
-        "techminer2.analyze.emergence",
-        #
-        # ======================================================================
-        "techminer2.analyze.overview",
-        #
-        # ======================================================================
-        "techminer2.analyze.pca",
-        #
-        "techminer2.analyze.pca.cooc_matrix",
-        "techminer2.analyze.pca.cooc_matrix.brute_force",
-        "techminer2.analyze.pca.cooc_matrix.hierarchical",
-        "techminer2.analyze.pca.cooc_matrix.kmeans",
-        "techminer2.analyze.pca.cooc_matrix.pcd",
-        #
-        "techminer2.analyze.pca.tfidf_matrix",
-        "techminer2.analyze.pca.tfidf_matrix.brute_force",
-        "techminer2.analyze.pca.tfidf_matrix.hierarchical",
-        "techminer2.analyze.pca.tfidf_matrix.kmeans",
-        "techminer2.analyze.pca.tfidf_matrix.pcd",
-        #
-        # ======================================================================
-        "techminer2.analyze.research_agenda",
-        #
-        "techminer2.analyze.research_agenda.network",
-        #
-        # ======================================================================
-        "techminer2.analyze.svd",
-        #
-        "techminer2.analyze.svd.cooc_matrix",
-        "techminer2.analyze.svd.cooc_matrix.brute_force",
-        "techminer2.analyze.svd.cooc_matrix.hierarchical",
-        "techminer2.analyze.svd.cooc_matrix.kmeans",
-        #
-        "techminer2.analyze.svd.tfidf_matrix",
-        "techminer2.analyze.svd.tfidf_matrix.brute_force",
-        "techminer2.analyze.svd.tfidf_matrix.hierarchical",
-        "techminer2.analyze.svd.tfidf_matrix.kmeans",
-        #
-        # ======================================================================
-        "techminer2.analyze.topic_modeling",
-        #
-        "techminer2.analyze.topic_modeling.berttopic",
-        "techminer2.analyze.topic_modeling.lda",
-        "techminer2.analyze.topic_modeling.nmf",
-        #
-        # ======================================================================
-        "techminer2.analyze.words",
-        #
-        "techminer2.analyze.words.abstract_nlp_phrases",
-        "techminer2.analyze.words.author_keywords",
-        "techminer2.analyze.words.descriptors",
-        "techminer2.analyze.words.index_keywords",
-        "techminer2.analyze.words.keywords",
-        "techminer2.analyze.words.nlp_phrases",
-        "techminer2.analyze.words.title_nlp_phrases",
-        "techminer2.analyze.words.words",
-        #
-        # ======================================================================
-        "techminer2.indicators",
-        #
-        # ======================================================================
-        "techminer2.ingest",
+        "techminer2.fields.further_processing",
+        "techminer2.fields.tests",
+        "techminer2.fields",
         #
         "techminer2.ingest.field_importers",
+        "techminer2.ingest",
         #
-        # ======================================================================
+        "techminer2.metrics.globals",
+        "techminer2.metrics",
+        #
         "techminer2.raw",
         #
-        # ======================================================================
-        "techminer2.refine",
-        #
-        "techminer2.refine.fields",
-        "techminer2.refine.fields.further_processing",
-        #
-        "techminer2.refine.thesaurus",
         "techminer2.refine.thesaurus.countries",
         "techminer2.refine.thesaurus.organizations",
         "techminer2.refine.thesaurus.references",
         "techminer2.refine.thesaurus.words",
+        "techminer2.refine.thesaurus",
+        "techminer2.refine",
         #
-        # ======================================================================
         "techminer2.report",
         #
-        # ======================================================================
+        "techminer2.science_mapping.bibliographic_coupling.authors",
+        "techminer2.science_mapping.bibliographic_coupling.countries",
+        "techminer2.science_mapping.bibliographic_coupling.documents",
+        "techminer2.science_mapping.bibliographic_coupling.organizations",
+        "techminer2.science_mapping.bibliographic_coupling.sources",
+        "techminer2.science_mapping.bibliographic_coupling",
+        #
+        "techminer2.science_mapping.citation.publications",
+        "techminer2.science_mapping.citation.network.authors",
+        "techminer2.science_mapping.citation.network.countries",
+        "techminer2.science_mapping.citation.network.documents",
+        "techminer2.science_mapping.citation.network.organizations",
+        "techminer2.science_mapping.citation.network.sources",
+        "techminer2.science_mapping.citation.network",
+        "techminer2.science_mapping.citation",
+        #
+        "techminer2.science_mapping.co_authorship.network.authors",
+        "techminer2.science_mapping.co_authorship.network.countries",
+        "techminer2.science_mapping.co_authorship.network.organizations",
+        "techminer2.science_mapping.co_authorship.network",
+        "techminer2.science_mapping.co_authorship",
+        #
+        "techminer2.science_mapping.co_citation.cited_authors",
+        "techminer2.science_mapping.co_citation.cited_references",
+        "techminer2.science_mapping.co_citation.cited_sources",
+        "techminer2.science_mapping.co_citation",
+        #
+        "techminer2.science_mapping.co_occurrence",
+        #
+        "techminer2.science_mapping.topic_modeling.berttopic",
+        "techminer2.science_mapping.topic_modeling.lda",
+        "techminer2.science_mapping.topic_modeling.nmf",
+        "techminer2.science_mapping.topic_modeling",
+        #
+        "techminer2.science_mapping",
+        #
         "techminer2.search",
         #
-        # ======================================================================
+        "techminer2.tech_mining.co_occurrence",
+        "techminer2.tech_mining.correlation",
+        "techminer2.tech_mining.document",
+        "techminer2.tech_mining.emergence",
+        #
+        "techminer2.tech_mining.pca.cooc_matrix.brute_force",
+        "techminer2.tech_mining.pca.cooc_matrix.hierarchical",
+        "techminer2.tech_mining.pca.cooc_matrix.kmeans",
+        "techminer2.tech_mining.pca.cooc_matrix.pcd",
+        "techminer2.tech_mining.pca.cooc_matrix",
+        #
+        "techminer2.tech_mining.pca.tfidf_matrix.brute_force",
+        "techminer2.tech_mining.pca.tfidf_matrix.hierarchical",
+        "techminer2.tech_mining.pca.tfidf_matrix.kmeans",
+        "techminer2.tech_mining.pca.tfidf_matrix.pcd",
+        "techminer2.tech_mining.pca.tfidf_matrix",
+        #
+        "techminer2.tech_mining.pca",
+        #
+        "techminer2.tech_mining.research_agenda.network",
+        "techminer2.tech_mining.research_agenda",
+        #
+        "techminer2.tech_mining.svd.cooc_matrix.brute_force",
+        "techminer2.tech_mining.svd.cooc_matrix.hierarchical",
+        "techminer2.tech_mining.svd.cooc_matrix.kmeans",
+        "techminer2.tech_mining.svd.cooc_matrix",
+        #
+        "techminer2.tech_mining.svd.tfidf_matrix.brute_force",
+        "techminer2.tech_mining.svd.tfidf_matrix.hierarchical",
+        "techminer2.tech_mining.svd.tfidf_matrix.kmeans",
+        "techminer2.tech_mining.svd.tfidf_matrix",
+        #
+        "techminer2.tech_mining.svd",
+        #
+        "techminer2.tech_mining",
+        #
         "techminer2.thesauri_data",
         #
-        # ======================================================================
+        "techminer2.tools.associations",
+        "techminer2.tools",
+        #
         "techminer2.word_lists",
         #
+        "techminer2",
     ],
     package_dir={"techminer2": "techminer2"},
     include_package_data=True,

@@ -1,3 +1,51 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+"""
+Growth Metrics
+===============================================================================
+
+>>> from techminer2.metrics import growth_metrics
+>>> metrics = growth_metrics(
+...     field='author_keywords',
+...     time_window=2,
+...     #
+...     # FILTER PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
+... )
+>>> print(metrics.df_.head().to_markdown())
+| author_keywords      |   rank_occ |   OCC |   between_2018_2019 |   before_2018 |   growth_percentage |   average_growth_rate |   average_docs_per_year |
+|:---------------------|-----------:|------:|--------------------:|--------------:|--------------------:|----------------------:|------------------------:|
+| FINTECH              |          1 |    31 |                  18 |            13 |               58.06 |                  -1   |                     9   |
+| INNOVATION           |          2 |     7 |                   1 |             6 |               14.29 |                  -1.5 |                     0.5 |
+| FINANCIAL_SERVICES   |          3 |     4 |                   3 |             1 |               75    |                   0   |                     1.5 |
+| FINANCIAL_INCLUSION  |          4 |     3 |                   0 |             3 |                0    |                  -1   |                     0   |
+| FINANCIAL_TECHNOLOGY |          5 |     3 |                   2 |             1 |               66.67 |                   0   |                     1   |
+
+
+
+
+>>> print(metrics.prompt_) # doctest: +ELLIPSIS
+Your task is ...
+
+
+
+
+"""
+import os
+
 #
 # TechMiner2+ computes three growth indicators for each item in a field (usually
 # keywords or noun phrases):
@@ -36,11 +84,48 @@
 #
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
+from dataclasses import dataclass
+
+from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from .globals.global_indicators_by_field import global_indicators_by_field
+from .globals.items_occurrences_by_year import items_occurrences_by_year
+from .performance_metrics import (
+    filter_indicators_by_metric,
+    select_indicators_by_metric,
+)
 
 
-def compute_growth_indicators(indicators):
-    """Computes growth indicators."""
+def growth_metrics(
+    field,
+    time_window=2,
+    #
+    # FILTER PARAMS:
+    top_n=20,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
+):
+    """:meta private:"""
 
+    #
+    # Compute global performance metrics
+    global_indicators = global_indicators_by_field(
+        field=field,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
     #
     # Computes item occurrences by year
     items_by_year = items_occurrences_by_year(
@@ -64,10 +149,11 @@ def compute_growth_indicators(indicators):
     year_columns = list(range(year_start, year_end + 1))
 
     #
-    # TODO: CHECK
+    # Check the time window
     if items_by_year.columns.max() - items_by_year.columns.min() <= time_window:
-        return indicators
-    #
+        raise ValueError(
+            "Time window must be less than the number of years in the database"
+        )
 
     #
     # Computes the number of documents per period by item
@@ -75,12 +161,12 @@ def compute_growth_indicators(indicators):
     before = f"before_{year_start}"
     between_occ = items_by_year.loc[:, year_columns].sum(axis=1)
     before_occ = items_by_year.sum(axis=1) - between_occ
-    indicators.loc[between_occ.index, between] = between_occ
-    indicators.loc[before_occ.index, before] = before_occ
+    global_indicators.loc[between_occ.index, between] = between_occ
+    global_indicators.loc[before_occ.index, before] = before_occ
 
-    indicators = indicators.assign(
+    global_indicators = global_indicators.assign(
         growth_percentage=(
-            100 * indicators[between].copy() / indicators["OCC"].copy()
+            100 * global_indicators[between].copy() / global_indicators["OCC"].copy()
         ).round(2)
     )
 
@@ -88,10 +174,10 @@ def compute_growth_indicators(indicators):
     # sort the columns
     columns = ["OCC", before, between, "growth_percentage"] + [
         col
-        for col in indicators.columns
+        for col in global_indicators.columns
         if col not in ["OCC", before, between, "growth_percentage"]
     ]
-    indicators = indicators[columns]
+    global_indicators = global_indicators[columns]
 
     #
     # selects the columns of interest
@@ -101,17 +187,60 @@ def compute_growth_indicators(indicators):
     agr = items_by_year.diff(axis=1)
     agr = agr.loc[:, year_columns]
     agr = agr.sum(axis=1) / time_window
-    indicators.loc[agr.index, "average_growth_rate"] = agr
+    global_indicators.loc[agr.index, "average_growth_rate"] = agr
 
     # ady: average documents per year
     ady = items_by_year.loc[:, year_columns].sum(axis=1) / time_window
-    indicators.loc[ady.index, "average_docs_per_year"] = ady
+    global_indicators.loc[ady.index, "average_docs_per_year"] = ady
 
     # pdly: percentage of documents in last year
-    indicators = indicators.assign(
+    global_indicators = global_indicators.assign(
         percentage_docs_last_year=(
-            indicators.average_docs_per_year.copy() / indicators.OCC.copy()
+            global_indicators.average_docs_per_year.copy()
+            / global_indicators.OCC.copy()
         )
     )
 
-    return indicators
+    filtered_indicators = filter_indicators_by_metric(
+        indicators=global_indicators,
+        metric="OCC",
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+    )
+    selected_indicators = select_indicators_by_metric(filtered_indicators, "OCC")
+
+    prompt = generate_prompt(
+        field=field,
+        metric="OCC",
+        indicators=selected_indicators.head(200),
+    )
+
+    #
+    # Save results to disk as csv tab-delimited file for papers
+    file_path = os.path.join(root_dir, "reports", field + ".csv")
+    selected_indicators.to_csv(file_path, sep="\t", header=True, index=True)
+
+    @dataclass
+    class Results:
+        """:meta private:"""
+
+        df_ = selected_indicators
+        prompt_ = prompt
+
+    return Results()
+
+
+def generate_prompt(field, metric, indicators):
+    """:meta private:"""
+
+    main_text = (
+        "Your task is to generate an analysis about the bibliometric indicators of the "
+        f"'{field}' field in a scientific bibliography database. Summarize the table below, "
+        f"sorted by the '{metric}' metric, and delimited by triple backticks, identify "
+        "any notable patterns, trends, or outliers in the data, and discuss their "
+        "implications for the research field. Be sure to provide a concise summary "
+        "of your findings in no more than 150 words. "
+    )
+    return format_prompt_for_dataframes(main_text, indicators.to_markdown())

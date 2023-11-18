@@ -12,12 +12,12 @@ Statistics
 >>> from techminer2.tools import statistics
 >>> statistics(
 ...     field='authors',    
-...     database_params = {
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     }
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... ).head()
                     year                              ... local_citations                    
                    count    mean std     min     25%  ...             min  25%  50%  75%  max
@@ -32,16 +32,30 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...             0.0  0.0  
 
 
 """
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def statistics(
     field,
-    database_params,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """:meta private:"""
 
-    records = read_records(**database_params)
+    records = read_records(
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
     records = records.dropna(subset=[field])
     records[field] = records[field].str.split("; ")
     records = records.explode(field)

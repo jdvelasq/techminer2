@@ -6,6 +6,7 @@ Techminer 2+
     :maxdepth: 1
 
     ingest/__index__ 
+    fields/__index__
     refine/__index__ 
     search/__index__ 
     metrics/__index__ 

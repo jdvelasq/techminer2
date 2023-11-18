@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.citation.rpys
+.. automodule:: techminer2.science_mapping.citation.rpys
     :members:
     :undoc-members:
     :show-inheritance:

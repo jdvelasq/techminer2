@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.topic_modeling.lda.report
+.. automodule:: techminer2.science_mapping.topic_modeling.lda.report
     :members:
     :undoc-members:
     :show-inheritance:

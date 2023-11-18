@@ -109,7 +109,10 @@ def check_country_names(affiliations, root_dir):
 
     #
     # Loads country names from thesaurus
-    file_path = os.path.join(root_dir, "thesauri/alpha3-to-country.the.txt")
+    # file_path = os.path.join(root_dir, "thesauri/alpha3-to-country.the.txt")
+    file_path = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/alpha3-to-country.the.txt"
+    )
     countries = []
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:

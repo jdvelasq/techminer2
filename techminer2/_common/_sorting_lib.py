@@ -99,7 +99,7 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from ..metrics.global_indicators_by_field import global_indicators_by_field
+    from ..metrics.globals.global_indicators_by_field import global_indicators_by_field
 
     matrix = matrix.copy()
 

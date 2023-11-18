@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.analyze.bibliographic_coupling.authors.degree_plot
+.. automodule:: techminer2.science_mapping.bibliographic_coupling.authors.degree_plot
     :members:
     :undoc-members:
     :show-inheritance:

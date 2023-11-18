@@ -8,7 +8,7 @@
 
 import re
 
-from ...refine.fields.process_field import _process_field
+from ...fields.process_field import _process_field
 
 
 def run_authors_and_index_keywords_importer(root_dir):

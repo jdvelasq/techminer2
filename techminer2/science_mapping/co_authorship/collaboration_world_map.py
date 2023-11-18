@@ -30,7 +30,7 @@ Collaboration WorldMap
 """
 import plotly.express as px
 
-from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 
 def collaboration_world_map(
@@ -61,7 +61,9 @@ def collaboration_world_map(
 
     collaboration = collaboration[collaboration.row != collaboration.column]
     collaboration["row"] = collaboration["row"].map(lambda x: " ".join(x.split()[:-1]))
-    collaboration["column"] = collaboration["column"].map(lambda x: " ".join(x.split()[:-1]))
+    collaboration["column"] = collaboration["column"].map(
+        lambda x: " ".join(x.split()[:-1])
+    )
 
     collaboration["pair"] = list(zip(collaboration.row, collaboration.column))
     collaboration["line"] = list(range(len(collaboration)))

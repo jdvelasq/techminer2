@@ -10,8 +10,8 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 
-from ..science_mapping.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..science_mapping.co_occurrence.normalize_co_occurrence_matrix import (
+from ..tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..tech_mining.co_occurrence.normalize_co_occurrence_matrix import (
     normalize_co_occurrence_matrix,
 )
 

@@ -13,12 +13,12 @@ Query
 >>> from techminer2.tools import query
 >>> query(  
 ...     expr="SELECT source_title FROM database LIMIT 5;",
-...     database_params = {
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     }
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
                                       source_title
 0                      Review of Financial Studies
@@ -32,14 +32,28 @@ Query
 """
 import duckdb
 
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def query(
     expr,
-    database_params,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """:meta private:"""
 
-    database = read_records(**database_params)
+    database = read_records(
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
     return duckdb.query(expr).df()

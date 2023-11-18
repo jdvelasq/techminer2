@@ -31,6 +31,7 @@ import os.path
 import sys
 
 import pandas as pd
+import pkg_resources
 
 from ...._common.thesaurus_lib import (
     load_system_thesaurus_as_dict,
@@ -83,7 +84,11 @@ def apply_thesaurus(
 
     # ---------------------------------------------------------------------------------
     # regions thesaurus preparation
-    thesaurus_file = os.path.join(root_dir, "thesauri/country-to-region.the.txt")
+    thesaurus_file = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/country-to-region.the.txt"
+    )
+
+    # thesaurus_file = os.path.join(root_dir, "thesauri/country-to-region.the.txt")
     thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
     thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
@@ -115,7 +120,10 @@ def apply_thesaurus(
 
     # ---------------------------------------------------------------------------------
     # regions thesaurus preparation
-    thesaurus_file = os.path.join(root_dir, "thesauri/country-to-subregion.the.txt")
+    thesaurus_file = pkg_resources.resource_filename(
+        "techminer2", "thesauri_data/country-to-subregion.the.txt"
+    )
+    # thesaurus_file = os.path.join(root_dir, "thesauri/country-to-subregion.the.txt")
     thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
     thesaurus = {k: v[0] for k, v in thesaurus.items()}
 

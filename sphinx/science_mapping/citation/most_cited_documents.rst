@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.citation.most_cited_documents
+.. automodule:: techminer2.science_mapping.citation.most_cited_documents
     :members:
     :undoc-members:
     :show-inheritance:

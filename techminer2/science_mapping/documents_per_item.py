@@ -1,15 +1,15 @@
 """documents by each item in a column"""
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def documents_per_item(
     field,
-    root_dir="./",
-    database="main",
     #
-    # DATABASE PARAMS:
-    year_filter=None,
-    cited_by_filter=None,
+    # DATABASE PARAMS
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
     **filters,
 ):
     """Documents"""
