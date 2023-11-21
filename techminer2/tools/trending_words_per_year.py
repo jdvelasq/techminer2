@@ -8,7 +8,7 @@
 Trending Words per Year
 ===============================================================================
 
->>> from techminer2.analyze.words import trending_words_per_year
+>>> from techminer2.tools.words import trending_words_per_year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
