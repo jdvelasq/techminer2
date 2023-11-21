@@ -9,12 +9,26 @@
 Main Path Analysis
 ===============================================================================
 
->>> from techminer2.analyze.citation.network import main_path_analysis
+>>> from techminer2.science_mapping.citation.network import main_path_analysis
 >>> results = main_path_analysis(
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=None,
 ...     citations_threshold=0,
+...     #
+...     # LAYOUT:
+...     nx_k=None,
+...     nx_iterations=30,
+...     nx_random_state=0,
+...     #
+...     # NODES:
+...     node_size_range=(30, 70),
+...     textfont_size_range=(10, 20),
+...     textfont_opacity_range=(0.35, 1.00),
+...     #
+...     # EDGES:
+...     edge_color="#7793a5",
+...     edge_width_range=(0.8, 3.0),
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/",
