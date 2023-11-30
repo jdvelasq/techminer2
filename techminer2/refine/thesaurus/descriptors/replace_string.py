@@ -10,7 +10,7 @@
 Replace String 
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.keywords import replace_string
+>>> from techminer2.refine.thesaurus.descriptors import replace_string
 >>> replace_string(  
 ...     #
 ...     # SEARCH PARAMS:
@@ -37,7 +37,7 @@ import pandas as pd
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def replace_string(

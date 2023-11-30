@@ -10,7 +10,7 @@ Cluster Centers
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix.kmeans import cluster_centers
+>>> from techminer2.tech_mining.svd.cooc_matrix.kmeans import cluster_centers
 >>> cluster_centers(
 ...     #
 ...     # PARAMS:

@@ -10,7 +10,7 @@ Map 2D
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix import map_2d
+>>> from techminer2.tech_mining.svd.cooc_matrix import map_2d
 >>> map_2d(
 ...     #
 ...     # PARAMS:

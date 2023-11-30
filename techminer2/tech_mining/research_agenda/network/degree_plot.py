@@ -10,7 +10,7 @@ Degree Plot
 ===============================================================================
 
 
->>> from techminer2.analyze.research_agenda.network import degree_plot
+>>> from techminer2.tech_mining.research_agenda.network import degree_plot
 >>> plot = degree_plot(
 ...     #
 ...     # FUNCTION PARAMS:

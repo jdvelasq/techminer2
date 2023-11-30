@@ -9,7 +9,7 @@ Report
 ===============================================================================
 
 
->>> from techminer2.analyze.topic_modeling.lda import report
+>>> from techminer2.science_mapping.topic_modeling.lda import report
 >>> report(
 ...     #
 ...     # TF PARAMS:

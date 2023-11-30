@@ -10,7 +10,7 @@ Communities Summary
 ===============================================================================
 
 
->>> from techminer2.analyze.research_agenda.network import communities_summary
+>>> from techminer2.tech_mining.research_agenda.network import communities_summary
 >>> communities_summary(
 ...     #
 ...     # FUNCTION PARAMS:

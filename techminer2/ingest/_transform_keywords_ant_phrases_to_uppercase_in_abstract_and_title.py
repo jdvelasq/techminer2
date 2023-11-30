@@ -12,7 +12,7 @@ from tqdm import tqdm
 from ._message import message
 
 
-def transform_keywords_to_uppercase_in_abstract_and_title(root_dir):
+def _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir):
     """:meta private:"""
 
     message("Transforming keywords in abstracts to upper case with underscores")
@@ -54,31 +54,31 @@ def transform_keywords_to_uppercase_in_abstract_and_title(root_dir):
 
     #
     # --------------------------------------------------------------------------------------------
-    def collect_keywords(column):
-        keywords = []
+    def collect_terms(column):
+        terms = []
         files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
         for file in files:
             data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if column in data.columns:
-                keywords.append(data[column].dropna().copy())
-        keywords = pd.concat(keywords)
-        return keywords
+                terms.append(data[column].dropna().copy())
+        terms = pd.concat(terms)
+        return terms
 
-    def prepare_keywords(keywords):
-        keywords = keywords.str.translate(str.maketrans("", "", "\"'#!"))
-        keywords = keywords.str.replace(re.compile(r"\(.*\)"), "", regex=True)
-        keywords = keywords.str.replace(re.compile(r"\[.*\]"), "", regex=True)
-        keywords = keywords.str.translate(str.maketrans("_", " "))
-        keywords = keywords.str.lower()
-        keywords = keywords.str.split("; ")
-        keywords = keywords.explode()
-        keywords = keywords.str.strip()
-        keywords = keywords.drop_duplicates()
-        keywords = keywords.to_list()
-        keywords = sorted(keywords, key=lambda x: len(x.split(" ")), reverse=True)
-        return keywords
+    def prepare_terms(terms):
+        terms = terms.str.translate(str.maketrans("", "", "\"'#!"))
+        terms = terms.str.replace(re.compile(r"\(.*\)"), "", regex=True)
+        terms = terms.str.replace(re.compile(r"\[.*\]"), "", regex=True)
+        terms = terms.str.translate(str.maketrans("_", " "))
+        terms = terms.str.lower()
+        terms = terms.str.split("; ")
+        terms = terms.explode()
+        terms = terms.str.strip()
+        terms = terms.drop_duplicates()
+        terms = terms.to_list()
+        terms = sorted(terms, key=lambda x: len(x.split(" ")), reverse=True)
+        return terms
 
-    def process_data(keywords):
+    def process_data(terms):
         #
         documents_path = pathlib.Path(root_dir) / "databases/_main.csv.zip"
         documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
@@ -87,7 +87,7 @@ def transform_keywords_to_uppercase_in_abstract_and_title(root_dir):
             #
             descriptors = [
                 d
-                for d in keywords
+                for d in terms
                 if (
                     isinstance(row["document_title"], str)
                     and d in row["document_title"]
@@ -124,9 +124,10 @@ def transform_keywords_to_uppercase_in_abstract_and_title(root_dir):
         documents.to_csv(documents_path, index=False, compression="zip")
 
     for column in [
+        "raw_nlp_phrases",
         "raw_author_keywords",
         "raw_index_keywords",
     ]:
-        keywords = collect_keywords(column)
-        keywords = prepare_keywords(keywords)
+        keywords = collect_terms(column)
+        keywords = prepare_terms(keywords)
         process_data(keywords)

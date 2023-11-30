@@ -9,7 +9,7 @@
 List Abbreviations 
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.keywords import list_abbreviations
+>>> from techminer2.refine.thesaurus.descriptors import list_abbreviations
 >>> list_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
@@ -27,7 +27,7 @@ import os.path
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_frame
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def list_abbreviations(
@@ -35,10 +35,7 @@ def list_abbreviations(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Find abbreviations and reorder the thesaurus to reflect the search.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     file_path = os.path.join(root_dir, THESAURUS_FILE)
     frame = load_system_thesaurus_as_frame(file_path)

@@ -10,7 +10,7 @@ Map 2D
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.tfidf_matrix import map_2d
+>>> from techminer2.tech_mining.svd.tfidf_matrix import map_2d
 >>> map_2d(
 ...     #  
 ...     # PARAMS:

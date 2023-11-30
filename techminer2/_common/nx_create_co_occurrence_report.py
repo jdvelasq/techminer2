@@ -20,6 +20,7 @@ from collections import defaultdict
 
 import pandas as pd
 
+from .._common.thesaurus_lib import load_system_thesaurus_as_dict
 from ..read_records import read_records
 from ..search.concordances import concordances_from_records
 from .format_prompt_for_records import format_prompt_for_records
@@ -63,20 +64,20 @@ def nx_create_co_occurrences_report(
         **filters,
     )
 
-    __genereate_concordances_report(
-        communities=communities,
-        records_per_cluster=records_per_cluster,
-        top_n=top_n,
-        report_dir=report_dir,
-        root_dir=root_dir,
-    )
+    # __genereate_concordances_report(
+    #     communities=communities,
+    #     records_per_cluster=records_per_cluster,
+    #     top_n=top_n,
+    #     report_dir=report_dir,
+    #     root_dir=root_dir,
+    # )
 
-    __generate_records_report(
-        communities=communities,
-        records_per_cluster=records_per_cluster,
-        report_dir=report_dir,
-        root_dir=root_dir,
-    )
+    # __generate_records_report(
+    #     communities=communities,
+    #     records_per_cluster=records_per_cluster,
+    #     report_dir=report_dir,
+    #     root_dir=root_dir,
+    # )
 
     __generate_terms_relationships_prompt(
         communities=communities,
@@ -87,14 +88,14 @@ def nx_create_co_occurrences_report(
         root_dir=root_dir,
     )
 
-    __generate_conclusions_prompt(
-        communities=communities,
-        records_per_cluster=records_per_cluster,
-        report_dir=report_dir,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+    # __generate_conclusions_prompt(
+    #     communities=communities,
+    #     records_per_cluster=records_per_cluster,
+    #     report_dir=report_dir,
+    #     #
+    #     # DATABASE PARAMS:
+    #     root_dir=root_dir,
+    # )
 
 
 def __extract_records_per_cluster(
@@ -267,10 +268,19 @@ def __generate_terms_relationships_prompt(
 ):
     """ChatGPT prompt."""
 
+    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
+    thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
+
     for cluster in sorted(communities.keys()):
         # -------------------------------------------------------------------------------------
         # Terms:
-        terms = "; ".join(communities[cluster][:10])
+        cleaned_terms = communities[cluster].copy()[:10]
+        expanded_terms = []
+        for term in cleaned_terms:
+            expanded_terms.append(term)
+            expanded_terms.extend(thesaurus.get(term, []))
+
+        terms = "; ".join(expanded_terms)
 
         #
         # Main text:

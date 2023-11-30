@@ -10,7 +10,7 @@ Degree Plot
 ===============================================================================
 
 
->>> from techminer2.analyze.co_authorship.network.organizations import degree_plot
+>>> from techminer2.science_mapping.co_authorship.network.organizations import degree_plot
 >>> plot = degree_plot(
 ...     #
 ...     # COLUMN PARAMS:

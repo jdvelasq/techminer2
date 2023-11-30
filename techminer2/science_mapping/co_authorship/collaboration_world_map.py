@@ -10,7 +10,7 @@ Collaboration WorldMap
 ===============================================================================
 
 
->>> from techminer2.analyze.co_authorship import collaboration_world_map
+>>> from techminer2.science_mapping.co_authorship import collaboration_world_map
 >>> collaboration_world_map(
 ...     #
 ...     # DATABASE PARAMS:

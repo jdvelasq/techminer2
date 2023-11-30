@@ -10,7 +10,7 @@ To Brute Force Labels
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix.brute_force import to_brute_force_labels
+>>> from techminer2.tech_mining.svd.cooc_matrix.brute_force import to_brute_force_labels
 >>> to_brute_force_labels(
 ...     #
 ...     # PARAMS:

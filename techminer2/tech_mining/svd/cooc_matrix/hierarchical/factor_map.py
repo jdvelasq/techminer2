@@ -12,7 +12,7 @@ Factor Map
 
 >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
 
->>> from techminer2.analyze.svd.cooc_matrix.hierarchical import factor_map
+>>> from techminer2.tech_mining.svd.cooc_matrix.hierarchical import factor_map
 >>> factor_map(
 ...     #
 ...     # PARAMS:

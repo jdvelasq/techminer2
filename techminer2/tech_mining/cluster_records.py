@@ -8,7 +8,7 @@
 Cluster Records
 ===============================================================================
 
->>> from techminer2.analyze import cluster_records 
+>>> from techminer2.tech_mining import cluster_records 
 >>> cluster_records(
 ...     field='author_keywords',
 ...     #

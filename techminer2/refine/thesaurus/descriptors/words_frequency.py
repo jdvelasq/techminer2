@@ -11,7 +11,7 @@ Words Frequency
 
 Suggest thesurus words to analyze based on frequency.
 
->>> from techminer2.refine.thesaurus.keywords import words_frequency
+>>> from techminer2.refine.thesaurus.descriptors import words_frequency
 >>> words_frequency(
 ...     #
 ...     # DATABASE PARAMS:
@@ -47,8 +47,8 @@ def words_frequency(
 
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
-    if "raw_keywords" in data.columns:
-        descriptors_list.append(data["raw_keywords"])
+    if "raw_descriptors" in data.columns:
+        descriptors_list.append(data["raw_descriptors"])
 
     descriptors = pd.concat(descriptors_list, ignore_index=True)
     descriptors = descriptors.dropna()

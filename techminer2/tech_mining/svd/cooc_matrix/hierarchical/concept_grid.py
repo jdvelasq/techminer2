@@ -10,7 +10,7 @@ Concept Grid
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix.hierarchical import concept_grid
+>>> from techminer2.tech_mining.svd.cooc_matrix.hierarchical import concept_grid
 >>> concept_grid(
 ...     #
 ...     # PARAMS:

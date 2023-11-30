@@ -44,10 +44,7 @@ def apply_thesaurus(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Apply country thesaurus.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     # ---------------------------------------------------------------------------------
     # countries thesaurus preparation

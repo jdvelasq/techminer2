@@ -9,7 +9,7 @@
 Network Visualization
 ===============================================================================
 
->>> from techminer2.analyze.citation.network.authors import network_visualization
+>>> from techminer2.science_mapping.citation.network.authors import network_visualization
 >>> network_visualization(
 ...     #
 ...     # COLUMN PARAMS:

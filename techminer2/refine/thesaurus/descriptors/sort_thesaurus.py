@@ -11,18 +11,18 @@ Sort Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.keywords import sort_thesaurus
+>>> from techminer2.refine.thesaurus.descriptors import sort_thesaurus
 >>> sort_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/words.the.txt has been sorted.
+--INFO-- The file example/thesauri/descriptors.the.txt has been sorted.
 
 """
 from .._sort_thesaurus import _sort_thesaurus
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def sort_thesaurus(

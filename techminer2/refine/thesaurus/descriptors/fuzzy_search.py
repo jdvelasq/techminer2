@@ -11,7 +11,7 @@ Fuzzy Search
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.keywords import fuzzy_search
+>>> from techminer2.refine.thesaurus.descriptors import fuzzy_search
 >>> fuzzy_search(
 ...     #
 ...     # SEARCH PARAMS:
@@ -74,7 +74,7 @@ from fuzzywuzzy import process
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def fuzzy_search(
@@ -86,9 +86,7 @@ def fuzzy_search(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):

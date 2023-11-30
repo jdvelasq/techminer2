@@ -9,7 +9,7 @@
 Find Abbreviations 
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.keywords import find_abbreviations
+>>> from techminer2.refine.thesaurus.descriptors import find_abbreviations
 >>> find_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
@@ -30,7 +30,7 @@ from ...._common.thesaurus_lib import (
     load_system_thesaurus_as_frame,
 )
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def find_abbreviations(

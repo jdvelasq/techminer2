@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.tfidf_matrix.kmeans import communities
+>>> from techminer2.tech_mining.svd.tfidf_matrix.kmeans import communities
 >>> communities(
 ...     #  
 ...     # PARAMS:

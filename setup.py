@@ -77,7 +77,7 @@ setup(
         "techminer2.refine.thesaurus.countries",
         "techminer2.refine.thesaurus.organizations",
         "techminer2.refine.thesaurus.references",
-        "techminer2.refine.thesaurus.words",
+        "techminer2.refine.thesaurus.descriptors",
         "techminer2.refine.thesaurus",
         "techminer2.refine",
         #

@@ -8,7 +8,7 @@
 Contingency Table
 ===============================================================================
 
->>> from techminer2.analyze.document.kmeans import contingency_table
+>>> from techminer2.tech_mining.document.kmeans import contingency_table
 >>> contingency_table(
 ...     field='words',
 ...     #

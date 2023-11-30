@@ -9,7 +9,7 @@
 Item Density Visualization
 ===============================================================================
 
->>> from techminer2.analyze.citation.network.documents import item_density_visualization
+>>> from techminer2.science_mapping.citation.network.documents import item_density_visualization
 >>> item_density_visualization(
 ...     #
 ...     # COLUMN PARAMS:

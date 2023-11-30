@@ -9,7 +9,7 @@ Terms by Theme Summary
 ===============================================================================
 
 
->>> from techminer2.analyze.topic_modeling.nmf import terms_by_theme_summary
+>>> from techminer2.science_mapping.topic_modeling.nmf import terms_by_theme_summary
 >>> terms_by_theme_summary(
 ...     #
 ...     # TF PARAMS:

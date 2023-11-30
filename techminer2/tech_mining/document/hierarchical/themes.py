@@ -8,7 +8,7 @@
 Themes
 ===============================================================================
 
->>> from techminer2.analyze.document.hierarchical import themes
+>>> from techminer2.tech_mining.document.hierarchical import themes
 >>> x = themes(
 ...     field='words',
 ...     #

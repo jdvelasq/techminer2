@@ -9,7 +9,7 @@
 Misspelling Search
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.keywords import misspelling_search
+>>> from techminer2.refine.thesaurus.descriptors import misspelling_search
 >>> misspelling_search(
 ...     #
 ...     # DATABASE PARAMS:
@@ -26,7 +26,7 @@ from textblob import TextBlob
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def misspelling_search(

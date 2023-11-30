@@ -8,7 +8,7 @@
 Report
 ===============================================================================
 
->>> from techminer2.analyze.document.hierarchical import report
+>>> from techminer2.tech_mining.document.hierarchical import report
 >>> report(
 ...     field='words',
 ...     #

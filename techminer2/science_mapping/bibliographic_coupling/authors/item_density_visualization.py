@@ -10,7 +10,7 @@ Item Density Visualization
 ===============================================================================
 
 
->>> from techminer2.analyze.bibliographic_coupling.authors import item_density_visualization
+>>> from techminer2.science_mapping.bibliographic_coupling.authors import item_density_visualization
 >>> item_density_visualization(
 ...     #
 ...     # COLUMN PARAMS:

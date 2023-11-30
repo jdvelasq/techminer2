@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.citation.network.organizations import communities
+>>> from techminer2.science_mapping.citation.network.organizations import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:

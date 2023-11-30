@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix.brute_force import communities
+>>> from techminer2.tech_mining.svd.cooc_matrix.brute_force import communities
 >>> communities(
 ...     #
 ...     # PARAMS:

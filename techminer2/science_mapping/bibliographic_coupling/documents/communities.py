@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.bibliographic_coupling.documents import communities
+>>> from techminer2.science_mapping.bibliographic_coupling.documents import communities
 >>> communities(
 ...     #
 ...     # ARTICLE PARAMS:

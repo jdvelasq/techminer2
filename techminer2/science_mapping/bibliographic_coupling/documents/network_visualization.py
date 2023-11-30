@@ -10,7 +10,7 @@ Network Visualization
 ===============================================================================
 
 
->>> from techminer2.analyze.bibliographic_coupling.documents import network_visualization
+>>> from techminer2.science_mapping.bibliographic_coupling.documents import network_visualization
 >>> network_visualization(
 ...     #
 ...     # ARTICLE PARAMS:

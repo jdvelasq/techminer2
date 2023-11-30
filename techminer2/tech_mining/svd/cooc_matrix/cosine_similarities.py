@@ -10,7 +10,7 @@ Cosine Similarities
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix import cosine_similarities
+>>> from techminer2.tech_mining.svd.cooc_matrix import cosine_similarities
 >>> cosine_similarities(
 ...     #
 ...     # PARAMS:

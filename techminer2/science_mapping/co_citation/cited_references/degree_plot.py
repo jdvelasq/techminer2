@@ -9,7 +9,7 @@
 Degree Plot
 ===============================================================================
 
->>> from techminer2.analyze.co_citation.cited_references import degree_plot
+>>> from techminer2.science_mapping.co_citation.cited_references import degree_plot
 >>> plot = degree_plot(
 ...     #
 ...     # COLUMN PARAMS:

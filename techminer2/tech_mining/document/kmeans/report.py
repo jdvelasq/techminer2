@@ -8,7 +8,7 @@
 Report
 ===============================================================================
 
->>> from techminer2.analyze.document.kmeans import report
+>>> from techminer2.tech_mining.document.kmeans import report
 >>> report(
 ...     field='words',
 ...     #

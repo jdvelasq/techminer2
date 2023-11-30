@@ -9,7 +9,7 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.analyze.co_authorship.network.authors import treemap
+>>> from techminer2.science_mapping.co_authorship.network.authors import treemap
 >>> treemap(
 ...     #
 ...     # COLUMN PARAMS:

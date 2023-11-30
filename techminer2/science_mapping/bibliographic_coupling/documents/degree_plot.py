@@ -10,7 +10,7 @@ Degree Plot
 ===============================================================================
 
 
->>> from techminer2.analyze.bibliographic_coupling.documents import degree_plot
+>>> from techminer2.science_mapping.bibliographic_coupling.documents import degree_plot
 >>> plot = degree_plot(
 ...     #
 ...     # ARTICLE PARAMS:

@@ -8,7 +8,7 @@
 Themes
 ===============================================================================
 
->>> from techminer2.analyze.document.kmeans import themes
+>>> from techminer2.tech_mining.document.kmeans import themes
 >>> x = themes(
 ...     field='words',
 ...     #

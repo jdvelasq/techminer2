@@ -8,7 +8,7 @@
 Contingency Table
 ===============================================================================
 
->>> from techminer2.analyze.document.hierarchical import contingency_table
+>>> from techminer2.tech_mining.document.hierarchical import contingency_table
 >>> contingency_table(
 ...     field='words',
 ...     #

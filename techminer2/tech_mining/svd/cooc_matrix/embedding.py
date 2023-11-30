@@ -10,7 +10,7 @@ Embedding
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix import embedding
+>>> from techminer2.tech_mining.svd.cooc_matrix import embedding
 >>> embedding(
 ...     #
 ...     # PARAMS:

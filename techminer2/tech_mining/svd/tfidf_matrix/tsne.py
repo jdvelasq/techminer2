@@ -10,7 +10,7 @@ TSNE
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.tfidf_matrix import tsne
+>>> from techminer2.tech_mining.svd.tfidf_matrix import tsne
 >>> tsne(
 ...     #  
 ...     # PARAMS:

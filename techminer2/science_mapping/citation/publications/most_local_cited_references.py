@@ -9,7 +9,7 @@
 Most Local Cited References
 ===============================================================================
 
->>> from techminer2.analyze.citation import most_cited_documents
+>>> from techminer2.science_mapping.citation import most_cited_documents
 >>> documents = most_cited_documents(
 ...     #
 ...     # FUNCTION PARAMS:

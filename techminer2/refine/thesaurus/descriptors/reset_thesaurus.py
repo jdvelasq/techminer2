@@ -11,19 +11,18 @@ Reset Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.keywords import reset_thesaurus
+>>> from techminer2.refine.thesaurus.descriptors import reset_thesaurus
 >>> reset_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
-...     # ...     root_dir="example/", 
-...     root_dir="/Volumes/GitHub/tm2_fintech_test",
+...     root_dir="example/", 
 ... )
 --INFO-- The file example/thesauri/words.the.txt has been reseted.
 
 """
 import os
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def reset_thesaurus(

@@ -5,118 +5,69 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
+# pylint: disable=import-outside-toplevel
 """
-List Cleanup
+Text Clumping
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.keywords import list_cleanup
->>> list_cleanup(
+>>> from techminer2.refine.thesaurus.descriptors import text_clumping
+>>> text_clumping(
+...     text="FINTECH",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/keywords.the.txt has been grouped.
+--INFO-- The thesaurus `descriptors.the.txt` was rewritten.
 
 """
 import os.path
-import re
 
 import pandas as pd
 import pkg_resources
 from nltk.stem import PorterStemmer  # type: ignore
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
-def list_cleanup(
+def text_clumping(
+    text,
     #
     # DATABASE PARAMS:
     root_dir="./",
 ):
     """:meta private:"""
 
-    # -------------------------------------------------------------------------------------------
-    # Here begins the processing
     th_file = os.path.join(root_dir, THESAURUS_FILE)
 
     # -------------------------------------------------------------------------------------------
-    def load_thesaurus_as_data_frame(th_file):
-        #
-        records = []
-        with open(th_file, "r", encoding="utf-8") as file:
-            for line in file.readlines():
-                text = line.strip()
-                if not line.startswith(" "):
-                    key = text
-                else:
-                    records.append({"key": key, "fingerprint": key, "text": text})
+    def load_thesaurus_as_dict(th_file):
+        if not os.path.isfile(th_file):
+            raise FileNotFoundError(f"The file {th_file} does not exist.")
+        th_dict = load_system_thesaurus_as_dict(th_file)
+        return th_dict
 
-        return pd.DataFrame(records)
-
-    data_frame = load_thesaurus_as_data_frame(th_file)
+    #
+    th_dict = load_thesaurus_as_dict(th_file)
 
     # -------------------------------------------------------------------------------------------
-    def process_hypened_words(data_frame):
-        #
-        # Remove hypens from the words.
-        #
-
-        data_frame = data_frame.copy()
-        #
-        # Loads a generic list of hypened words
-        module_path = os.path.dirname(__file__)
-        file_path = os.path.join(module_path, "../../../word_lists/hypened_words.txt")
-        with open(file_path, "r", encoding="utf-8") as file:
-            hypened_words = file.read().split("\n")
-        hypened_words = [word.strip() for word in hypened_words]
-
-        #
-        # Creates a regular expression for hypened words
-        regex = [word.replace("-", "_") for word in hypened_words]
-        regex = "|".join(regex)
-        regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
-
-        #
-        # Replace hypened words
-
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            regex, lambda z: z.group().replace("_", ""), regex=True
+    def dict_to_dataframe(th_dict):
+        reversed_th = {
+            value: key for key, values in th_dict.items() for value in values
+        }
+        data_frame = pd.DataFrame(
+            {
+                "term": reversed_th.keys(),
+                "key": reversed_th.values(),
+            }
         )
-
+        data_frame["fingerprint"] = data_frame["term"]
         return data_frame
 
-    data_frame = process_hypened_words(data_frame)
-
-    # -------------------------------------------------------------------------------------------
-    def invert_terms_in_parenthesis(data_frame):
-        #
-        # Transforms `word (meaning)` into `meaning (word)`.
-        #
-        # "regtech (regulatory technology)" -> "regulatory technology (regtech)"
-        #
-
-        data_frame = data_frame.copy()
-
-        def invert_parenthesis_in_text(text):
-            if "(" in text:
-                text_to_remove = text[text.find("(") + 1 : text.find(")")]
-                meaning = text[: text.find("(")].strip()
-                if (
-                    len(meaning) < len(text_to_remove)
-                    and len(text_to_remove.strip()) > 1
-                ):
-                    text = text_to_remove + " (" + meaning + ")"
-            return text
-
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            invert_parenthesis_in_text
-        )
-
-        return data_frame
-
-    data_frame = invert_terms_in_parenthesis(data_frame)
+    #
+    data_frame = dict_to_dataframe(th_dict)
 
     # -------------------------------------------------------------------------------------------
     def remove_brackets(data_frame):
@@ -201,38 +152,12 @@ def list_cleanup(
     data_frame = remove_initial_articles(data_frame)
 
     # -------------------------------------------------------------------------------------------
-    def replace_sinonimous(data_frame):
-        #
-        # Replaces sinonimous terms
-
-        module_path = os.path.dirname(__file__)
-        file_path = os.path.join(
-            module_path, "../../../word_lists/keywords_replacements.csv"
-        )
-        replacements = pd.read_csv(file_path, encoding="utf-8")
-
-        data_frame = data_frame.copy()
-        for _, row in replacements.iterrows():
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                r"\b" + row.to_replace + r"\b", row.value, regex=True
-            )
-
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            "  +", " ", regex=True
-        )
-
-        return data_frame
-
-    data_frame = replace_sinonimous(data_frame)
-
-    # -------------------------------------------------------------------------------------------
     def british_to_american_spelling(root_dir, data_frame):
         #
         # Loads the thesaurus
         def load_br2am_dict():
             #
             br2am = {}
-
             file_path = pkg_resources.resource_filename(
                 "techminer2", "thesauri_data/british2american.the.txt"
             )
@@ -271,6 +196,17 @@ def list_cleanup(
     data_frame = british_to_american_spelling(root_dir, data_frame)
 
     # -------------------------------------------------------------------------------------------
+    def remove_separators(data_frame):
+        #
+        data_frame = data_frame.copy()
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+            "_", " ", regex=False
+        )
+        return data_frame
+
+    data_frame = remove_separators(data_frame)
+
+    # -------------------------------------------------------------------------------------------
     def apply_porter_stemmer(data_frame):
         #
         # Applies Porter Stemmer to the keywords list.
@@ -282,28 +218,29 @@ def list_cleanup(
         #
         # Remove particles
         for particle in [
-            "_APPLIED_TO_",
-            "_AND_THE_",
-            "_OF_USING_",
-            "_OF_THE_",
-            "_AND_",
-            "_AT_",
-            "_IN_",
-            "_ON_",
-            "_OF_",
-            "_TO_",
-            "_FOR_",
-            "_BASED_",
-            "_UNDER_",
-            "_USING_",
+            "^AND THE ",
+            " OF USING ",
+            " OF THE ",
+            "^AND ",
+            " AND THE ",
+            " AND ",
+            " AT ",
+            " IN ",
+            " ON ",
+            " OF ",
+            " FOR ",
+            " BASED ",
+            " TO ",
+            " UNDER ",
+            " USING ",
         ]:
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
                 particle,
-                "_",
-                regex=False,
+                " ",
+                regex=True,
             )
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.split("_")
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
         data_frame["fingerprint"] = data_frame["fingerprint"].map(
             lambda x: [z.strip() for z in x]
         )
@@ -311,54 +248,98 @@ def list_cleanup(
             lambda x: [stemmer.stem(z) for z in x]
         )
         data_frame["fingerprint"] = data_frame["fingerprint"].map(sorted)
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.join("_")
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.join(" ")
 
         return data_frame
 
     data_frame = apply_porter_stemmer(data_frame)
 
     # -------------------------------------------------------------------------------------------
-    def compute_terms_by_key(data_frame):
-        #
+    def compute_key_lengths(data_frame):
         data_frame = data_frame.copy()
-        data_frame["n_terms"] = data_frame.groupby(["fingerprint", "key"]).transform(
-            "count"
+
+        data_frame["len_fingerprint"] = (
+            data_frame["fingerprint"].str.split(" ").map(len)
         )
         data_frame = data_frame.sort_values(
-            ["fingerprint", "n_terms", "key"], ascending=True
+            ["len_fingerprint", "fingerprint"], ascending=[False, True]
         )
-        return data_frame
-
-    data_frame = compute_terms_by_key(data_frame)
-
-    # -------------------------------------------------------------------------------------------
-    def replace_fingerprint(data_frame):
-        #
-        # replace the fingerprint for the most frequent key (i.e., the key with the highest number of terms)
-        #
-        data_frame = data_frame.copy()
-        repl = {row.fingerprint: row.key for _, row in data_frame.iterrows()}
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(repl)
 
         return data_frame
 
-    data_frame = replace_fingerprint(data_frame)
+    data_frame = compute_key_lengths(data_frame)
 
     # -------------------------------------------------------------------------------------------
-    # Creates a new thesaurus file
-    #
-    def save_thesaurus(data_frame, th_file):
+    def extract_words_from_user_text(text):
+        #
+        stemmer = PorterStemmer()
+
+        #
+        # Remove particles
+        for particle in [
+            "_AND_THE_",
+            "_AND_",
+            "_AT_",
+            "_IN_",
+            "_ON_",
+        ]:
+            text = text.replace(particle, "_")
+
+        words = text.split("_")
+        words = [w.strip() for w in words]
+        words = [stemmer.stem(w) for w in words]
+
+        return words
+
+    words = extract_words_from_user_text(text)
+
+    # -------------------------------------------------------------------------------------------
+    def filter_terms_from_dataframe(words, data_frame):
         #
         data_frame = data_frame.copy()
-        data_frame = data_frame[["fingerprint", "text"]]
-        data_frame = data_frame.drop_duplicates()
-        data_frame = data_frame.sort_values(["fingerprint", "text"], ascending=True)
-        data_frame = data_frame.groupby("fingerprint").agg(list)
+
+        data_frame = data_frame.loc[
+            data_frame.len_fingerprint.map(lambda x: x >= len(words)), :
+        ]
+
+        data_frame["found"] = True
+        for word in words:
+            data_frame["found"] = data_frame["found"] & data_frame[
+                "fingerprint"
+            ].str.contains(r"\b" + word + r"\b", case=True)
+
+        data_frame = data_frame.loc[data_frame.found, :]
+
+        return data_frame
+
+    data_frame = filter_terms_from_dataframe(words, data_frame)
+
+    # -------------------------------------------------------------------------------------------
+    def save_thesaurus(data_frame, th_dict, th_file):
+        #
+        data_frame = data_frame.copy()
+
+        data_frame = data_frame[["term", "key"]]
+        data_frame = data_frame.groupby("key", as_index=False).agg(list)
+        data_frame = data_frame.sort_values("key")
 
         with open(th_file, "w", encoding="utf-8") as file:
-            for key, row in data_frame.iterrows():
-                file.write(key + "\n")
-                for value in row.text:
-                    file.write("    " + value + "\n")
+            #
+            # write found terms
+            for _, row in data_frame.iterrows():
+                file.write(row.key + "\n")
+                for value in row.term:
+                    file.write(f"    {value}\n")
 
-    save_thesaurus(data_frame, th_file)
+            #
+            # write the rest of terms in dictionary
+            for key in sorted(th_dict.keys()):
+                if key not in data_frame.key.to_list():
+                    #
+                    file.write(key + "\n")
+
+                    for value in th_dict[key]:
+                        file.write(f"    {value}\n")
+
+    save_thesaurus(data_frame, th_dict, th_file)
+    print("--INFO-- The thesaurus `words.the.txt` was rewritten.")

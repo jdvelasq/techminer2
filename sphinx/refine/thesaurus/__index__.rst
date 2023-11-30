@@ -7,5 +7,5 @@ Thesaurus
 
     countries/__index__
     organizations/__index__
-    keywords/__index__
+    descriptors/__index__
 

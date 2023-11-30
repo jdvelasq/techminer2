@@ -10,7 +10,7 @@ Network Visualization
 ===============================================================================
 
 
->>> from techminer2.analyze.bibliographic_coupling.countries import network_visualization
+>>> from techminer2.science_mapping.bibliographic_coupling.countries import network_visualization
 >>> network_visualization(
 ...     #
 ...     # COLUMN PARAMS:

@@ -10,7 +10,7 @@ Cluster Centers
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.tfidf_matrix.brute_force import cluster_centers
+>>> from techminer2.tech_mining.svd.tfidf_matrix.brute_force import cluster_centers
 >>> cluster_centers(
 ...     #  
 ...     # PARAMS:

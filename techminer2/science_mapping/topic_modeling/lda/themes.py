@@ -9,7 +9,7 @@ Themes
 ===============================================================================
 
 
->>> from techminer2.analyze.topic_modeling.lda import themes
+>>> from techminer2.science_mapping.topic_modeling.lda import themes
 >>> themes(
 ...     #
 ...     # TF PARAMS:

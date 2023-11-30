@@ -9,7 +9,7 @@
 Network Visualization
 ===============================================================================
 
->>> from techminer2.analyze.research_agenda.network import network_visualization
+>>> from techminer2.tech_mining.research_agenda.network import network_visualization
 >>> network_visualization(
 ...     #
 ...     # FUNCTION PARAMS:

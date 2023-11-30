@@ -9,7 +9,7 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.analyze.research_agenda.network import treemap
+>>> from techminer2.tech_mining.research_agenda.network import treemap
 >>> treemap(
 ...     #
 ...     # FUNCTION PARAMS:

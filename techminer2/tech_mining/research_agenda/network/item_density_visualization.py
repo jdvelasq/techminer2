@@ -10,7 +10,7 @@ Item Density Visualization
 ===============================================================================
 
 
->>> from techminer2.analyze.research_agenda.network import item_density_visualization
+>>> from techminer2.tech_mining.research_agenda.network import item_density_visualization
 >>> item_density_visualization(
 ...     #
 ...     # FUNCTION PARAMS:

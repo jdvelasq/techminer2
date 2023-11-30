@@ -10,7 +10,7 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.analyze.co_authorship.network.authors import communities
+>>> from techminer2.science_mapping.co_authorship.network.authors import communities
 >>> communities(
 ...     #
 ...     # COLUMN PARAMS:

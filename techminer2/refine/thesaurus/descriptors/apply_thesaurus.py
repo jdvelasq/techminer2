@@ -10,7 +10,7 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.keywords import apply_thesaurus
+>>> from techminer2.refine.thesaurus.descriptors import apply_thesaurus
 >>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
@@ -28,6 +28,8 @@ import pandas as pd
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
+
 
 def apply_thesaurus(
     #
@@ -38,10 +40,10 @@ def apply_thesaurus(
 
     # pylint: disable=line-too-long
     print(
-        "--INFO-- Applying `keywords.the.txt` thesaurus to author/index keywords and abstract/title words"
+        "--INFO-- Applying `descriptors.the.txt` thesaurus to author/index keywords and abstract/title words"
     )
 
-    thesaurus_file = os.path.join(root_dir, "thesauri/keywords.the.txt")
+    thesaurus_file = os.path.join(root_dir, THESAURUS_FILE)
     thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
@@ -56,9 +58,6 @@ def apply_thesaurus(
             ("raw_abstract_nlp_phrases", "abstract_nlp_phrases"),
             ("raw_nlp_phrases", "nlp_phrases"),
             ("raw_descriptors", "descriptors"),
-            ("raw_title_words", "title_words"),
-            ("raw_abstract_words", "abstract_words"),
-            ("raw_words", "words"),
         ]:
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split("; ")

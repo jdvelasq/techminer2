@@ -10,7 +10,7 @@ RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
->>> from techminer2.analyze.citation import rpys
+>>> from techminer2.science_mapping.citation import rpys
 >>> chart = rpys(
 ...     #
 ...     # DATABASE PARAMS:

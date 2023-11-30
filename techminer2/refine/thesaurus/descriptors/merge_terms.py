@@ -10,7 +10,7 @@
 Merge Terms
 ===============================================================================
 
-# >>> from techminer2.refine.thesaurus.keywords import join_thesaurus_keys
+# >>> from techminer2.refine.thesaurus.descriptors import join_thesaurus_keys
 # >>> join_thesaurus_keys(
 # ...     contains=("ARTIFICIAL_INTELLIGENCE", "AI"),
 # ...     #
@@ -27,7 +27,7 @@ Merge Terms
 # ...     # DATABASE PARAMS:
 # ...     root_dir="example/",
 # ... )
-# >>> from techminer2.refine.words import find_string
+# >>> from techminer2.refine.descriptors import find_string
 # >>> find_string(
 # ...     #
 # ...     # SEARCH PARAMS:
@@ -47,7 +47,7 @@ import pandas as pd
 
 from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
 
-THESAURUS_FILE = "thesauri/keywords.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def merge_terms(

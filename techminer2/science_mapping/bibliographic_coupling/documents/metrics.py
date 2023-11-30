@@ -10,7 +10,7 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.analyze.bibliographic_coupling.documents import metrics
+>>> from techminer2.science_mapping.bibliographic_coupling.documents import metrics
 >>> metrics(
 ...     #
 ...     # ARTICLE PARAMS:

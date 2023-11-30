@@ -40,9 +40,7 @@ from ..fields.further_processing.count_terms_per_record import _count_terms_per_
 # from ..fields.further_processing.extract_meaningful_words import (
 #     _extract_meaningful_words,
 # )
-# from ..fields.further_processing.extract_nouns_and_noun_phrases import (
-#     _extract_nouns_and_noun_phrases,
-# )
+from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
 from ..fields.merge_fields import _merge_fields
 
 #
@@ -50,7 +48,7 @@ from ..fields.merge_fields import _merge_fields
 from ..refine.thesaurus.countries.apply_thesaurus import (
     apply_thesaurus as apply_countries_thesaurus,
 )
-from ..refine.thesaurus.keywords.apply_thesaurus import (
+from ..refine.thesaurus.descriptors.apply_thesaurus import (
     apply_thesaurus as apply_words_thesaurus,
 )
 from ..refine.thesaurus.organizations.apply_thesaurus import (
@@ -96,8 +94,8 @@ from ._rename_columns_in_database_files import rename_columns_in_database_files
 from ._repair_bad_separators_in_keywords import repair_bad_separators_in_keywords
 from ._replace_journal_name_in_references import replace_journal_name_in_references
 from ._report_imported_records_per_file import report_imported_records_per_file
-from ._transform_keywords_to_uppercase_in_abstract_and_title import (
-    transform_keywords_to_uppercase_in_abstract_and_title,
+from ._transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title import (
+    _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title,
 )
 
 # -------------------------------------------------------------------------------------
@@ -246,44 +244,39 @@ def ingest_raw_data(
     #
     # Step 1: Create a candidate list of title noun phrases
     #
-
-    # _extract_nouns_and_noun_phrases(
-    #     source="document_title",
-    #     dest="raw_title_nlp_phrases",
-    #     root_dir=root_dir,
-    # )
+    _extract_noun_phrases(
+        source="document_title",
+        dest="raw_title_nlp_phrases",
+        root_dir=root_dir,
+    )
 
     #
     # Step 2: Create a candidate list of abstract noun phrases
     #
-
-    # _extract_nouns_and_noun_phrases(
-    #     source="abstract",
-    #     dest="raw_abstract_nlp_phrases",
-    #     root_dir=root_dir,
-    # )
+    _extract_noun_phrases(
+        source="abstract",
+        dest="raw_abstract_nlp_phrases",
+        root_dir=root_dir,
+    )
 
     #
     # Step 3: Merge fields
     #
-
-    # _merge_fields(
-    #     sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
-    #     dest="raw_nlp_phrases",
-    #     root_dir=root_dir,
-    # )
-
-    # _merge_fields(
-    #     sources=["raw_nlp_phrases", "raw_keywords"],
-    #     dest="raw_descriptors",
-    #     root_dir=root_dir,
-    # )
+    _merge_fields(
+        sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
+        dest="raw_nlp_phrases",
+        root_dir=root_dir,
+    )
+    _merge_fields(
+        sources=["raw_nlp_phrases", "raw_keywords"],
+        dest="raw_descriptors",
+        root_dir=root_dir,
+    )
 
     #
     # Highlight author and index keywords
     #
-
-    transform_keywords_to_uppercase_in_abstract_and_title(root_dir)
+    _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
 
     #
     #
@@ -343,7 +336,7 @@ def ingest_raw_data(
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
     words = (
-        data_frame["raw_keywords"]
+        data_frame["raw_descriptors"]
         .dropna()
         .str.split("; ", expand=False)
         .explode()
@@ -353,7 +346,7 @@ def ingest_raw_data(
         .to_list()
     )
 
-    thesaurus_file = os.path.join(root_dir, "thesauri/keywords.the.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
     with open(thesaurus_file, "w", encoding="utf-8") as f:
         for word in words:
             f.write(word + "\n")

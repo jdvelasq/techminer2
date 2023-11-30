@@ -10,7 +10,7 @@ Treemap
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.tfidf_matrix.brute_force import treemap
+>>> from techminer2.tech_mining.svd.tfidf_matrix.brute_force import treemap
 >>> treemap(
 ...     #
 ...     # PARAMS:

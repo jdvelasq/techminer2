@@ -10,7 +10,7 @@ TSNE
 ===============================================================================
 
 
->>> from techminer2.analyze.svd.cooc_matrix import tsne
+>>> from techminer2.tech_mining.svd.cooc_matrix import tsne
 >>> tsne(
 ...     #
 ...     # PARAMS:

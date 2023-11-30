@@ -32,18 +32,7 @@ Report
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
---INFO-- The file 'example/reports/co_occurrence/network/CL_0_abstracts_report.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_1_abstracts_report.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_2_abstracts_report.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_3_abstracts_report.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_0_relationships_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_1_relationships_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_2_relationships_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_3_relationships_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_0_conclusions_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_1_conclusions_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_2_conclusions_prompt.txt' was created.
---INFO-- The file 'example/reports/co_occurrence/network/CL_3_conclusions_prompt.txt' was created.
+
 
 """
 from ..._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -66,7 +55,7 @@ def report(
     association_index="association",
     #
     # REPORT PARAMS:
-    report_dir="co_occurrence/network/",
+    report_dir="co_occurrence/",
     #
     # DATABASE PARAMS:
     root_dir="./",
