@@ -148,7 +148,7 @@ html_theme = "furo"
 # "<project> v<release> documentation".
 html_title = """TechMiner 2+<br>
 <div style="font-size: 14px;">
-    <p>Nov 10, 2023</p>
+    <p>Dic 4, 2023</p>
 </div>
 """
 
