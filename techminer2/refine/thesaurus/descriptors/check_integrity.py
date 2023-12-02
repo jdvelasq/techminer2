@@ -49,11 +49,11 @@ def check_integrity(
 
     #
     # Loads the descriptors
-    file = list(glob.glob(os.path.join(root_dir, "databases/_main.csv.zip")))
+    file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
-    descriptors = data.descriptors.copy()
-    descriptors = (
-        descriptors.dropna()
+    raw_descriptors = data.raw_descriptors.copy()
+    raw_descriptors = (
+        raw_descriptors.dropna()
         .str.split("; ")
         .explode()
         .str.strip()
@@ -63,8 +63,8 @@ def check_integrity(
 
     #
     # Computes the set union between terms and descriptors
-    union = set(terms).union(set(descriptors))
+    union = set(terms).union(set(raw_descriptors))
 
     # union must be equal to terms and equal to descriptors
     assert len(union) == len(terms)
-    assert len(union) == len(descriptors)
+    assert len(union) == len(raw_descriptors)
