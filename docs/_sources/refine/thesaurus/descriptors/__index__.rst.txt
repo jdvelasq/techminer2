@@ -16,4 +16,5 @@ Descriptors
     text_clumping
     apply_thesaurus
     words_frequency
+    check_integrity
 
