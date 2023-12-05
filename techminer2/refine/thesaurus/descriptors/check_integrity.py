@@ -64,6 +64,11 @@ def check_integrity(
     #
     # Computes the set union between terms and descriptors
     union = set(terms).union(set(raw_descriptors))
+    if len(union) != len(terms) or len(union) != len(raw_descriptors):
+        if len(raw_descriptors) > len(terms):
+            print(set(raw_descriptors) - set(terms))
+        else:
+            print(set(terms) - set(raw_descriptors))
 
     # union must be equal to terms and equal to descriptors
     assert len(union) == len(terms)
