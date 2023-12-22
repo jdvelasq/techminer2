@@ -66,7 +66,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
                     if criterion == "article":
                         print("AR ", end="", file=file)
 
-                    if criterion == "title":
+                    if criterion == "document_title":
                         print("TI ", end="", file=file)
 
                     if criterion == "authors":

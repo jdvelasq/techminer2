@@ -7,6 +7,7 @@ from .list_abbreviations import list_abbreviations
 from .list_cleanup import list_cleanup
 from .merge_terms import merge_terms
 from .misspelling_search import misspelling_search
+from .prepare_thesaurus import prepare_thesaurus
 from .replace_string import replace_string
 from .reset_thesaurus import reset_thesaurus
 from .sort_thesaurus import sort_thesaurus

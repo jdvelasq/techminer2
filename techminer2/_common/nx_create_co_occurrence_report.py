@@ -275,12 +275,23 @@ def __generate_terms_relationships_prompt(
         # -------------------------------------------------------------------------------------
         # Terms:
         cleaned_terms = communities[cluster].copy()
+
+        ##
+        ##
+        cleaned_terms = cleaned_terms[:10]
+        ##
+        ##
         expanded_terms = []
         for term in cleaned_terms:
             # expanded_terms.append(term)
             expanded_terms.extend(thesaurus.get(term, []))
 
         terms = "; ".join(expanded_terms)
+        ##
+        ##
+        terms = "; ".join(cleaned_terms)
+        ##
+        ##
 
         #
         # Main text:

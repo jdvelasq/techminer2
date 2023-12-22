@@ -58,38 +58,6 @@ def list_cleanup(
     data_frame = load_thesaurus_as_data_frame(th_file)
 
     # -------------------------------------------------------------------------------------------
-    def process_hypened_words(data_frame):
-        #
-        # Remove hypens from the words.
-        #
-
-        data_frame = data_frame.copy()
-        #
-        # Loads a generic list of hypened words
-        module_path = os.path.dirname(__file__)
-        file_path = os.path.join(module_path, "../../../word_lists/hypened_words.txt")
-        with open(file_path, "r", encoding="utf-8") as file:
-            hypened_words = file.read().split("\n")
-        hypened_words = [word.strip() for word in hypened_words]
-
-        #
-        # Creates a regular expression for hypened words
-        regex = [word.replace("-", "_") for word in hypened_words]
-        regex = "|".join(regex)
-        regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
-
-        #
-        # Replace hypened words
-
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            regex, lambda z: z.group().replace("_", ""), regex=True
-        )
-
-        return data_frame
-
-    data_frame = process_hypened_words(data_frame)
-
-    # -------------------------------------------------------------------------------------------
     def invert_terms_in_parenthesis(data_frame):
         #
         # Transforms `word (meaning)` into `meaning (word)`.
@@ -191,6 +159,7 @@ def list_cleanup(
             "^A_",
             "^AN ",
             "^AN_",
+            "_S_",
         ]:
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
                 word, "", regex=True
@@ -201,32 +170,7 @@ def list_cleanup(
     data_frame = remove_initial_articles(data_frame)
 
     # -------------------------------------------------------------------------------------------
-    def replace_sinonimous(data_frame):
-        #
-        # Replaces sinonimous terms
-
-        module_path = os.path.dirname(__file__)
-        file_path = os.path.join(
-            module_path, "../../../word_lists/keywords_replacements.csv"
-        )
-        replacements = pd.read_csv(file_path, encoding="utf-8")
-
-        data_frame = data_frame.copy()
-        for _, row in replacements.iterrows():
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                r"\b" + row.to_replace + r"\b", row.value, regex=True
-            )
-
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            "  +", " ", regex=True
-        )
-
-        return data_frame
-
-    data_frame = replace_sinonimous(data_frame)
-
-    # -------------------------------------------------------------------------------------------
-    def british_to_american_spelling(root_dir, data_frame):
+    def british_to_american_spelling(data_frame):
         #
         # Loads the thesaurus
         def load_br2am_dict():
@@ -268,7 +212,7 @@ def list_cleanup(
 
         return data_frame
 
-    data_frame = british_to_american_spelling(root_dir, data_frame)
+    data_frame = british_to_american_spelling(data_frame)
 
     # -------------------------------------------------------------------------------------------
     def apply_porter_stemmer(data_frame):
@@ -280,7 +224,7 @@ def list_cleanup(
         stemmer = PorterStemmer()
 
         #
-        # Remove particles
+        # Remove intermediate particles
         for particle in [
             "_APPLIED_TO_",
             "_AND_THE_",
@@ -296,6 +240,9 @@ def list_cleanup(
             "_BASED_",
             "_UNDER_",
             "_USING_",
+            "_LIKE_",
+            "_S_",
+            "_AIDED_",
         ]:
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
                 particle,

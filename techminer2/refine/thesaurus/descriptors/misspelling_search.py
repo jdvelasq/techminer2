@@ -60,7 +60,7 @@ def misspelling_search(
         if misspelled_word != corrected_word
     ]
 
-    misspelled_file = join(root_dir, "misspelled.txt")
+    misspelled_file = join(root_dir, "reports/misspelled.txt")
     with open(misspelled_file, "w", encoding="utf-8") as file:
         for misspelled, corrected in words:
             file.write(misspelled.upper() + "\n")

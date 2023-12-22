@@ -138,7 +138,7 @@ def ___homogeneize_references(root_dir):
         if refs != []:
             thesaurus[row.article] = sorted(refs)
 
-    file_path = pathlib.Path(root_dir) / "local_references.txt"
+    file_path = pathlib.Path(root_dir) / "report/local_references.txt"
     with open(file_path, "w", encoding="utf-8") as file:
         for key in sorted(thesaurus.keys()):
             values = thesaurus[key]
