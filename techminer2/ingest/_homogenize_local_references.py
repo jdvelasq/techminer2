@@ -47,7 +47,7 @@ def __apply_thesaururs(root_dir):
 
     #
     # Loads the thesaurus
-    file_path = pathlib.Path(root_dir) / "local_references.txt"
+    file_path = pathlib.Path(root_dir) / "reports/local_references.txt"
     th = load_system_thesaurus_as_dict_reversed(file_path=file_path)
 
     #
@@ -138,7 +138,7 @@ def ___homogeneize_references(root_dir):
         if refs != []:
             thesaurus[row.article] = sorted(refs)
 
-    file_path = pathlib.Path(root_dir) / "report/local_references.txt"
+    file_path = pathlib.Path(root_dir) / "reports/local_references.txt"
     with open(file_path, "w", encoding="utf-8") as file:
         for key in sorted(thesaurus.keys()):
             values = thesaurus[key]

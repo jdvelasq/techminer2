@@ -32,6 +32,8 @@ import time
 import pandas as pd
 from tqdm import tqdm
 
+from .._common.thesaurus_lib import load_system_thesaurus_as_frame
+
 # -------------------------------------------------------------------------------------
 # Field basic operations
 # -------------------------------------------------------------------------------------
@@ -49,7 +51,7 @@ from ..refine.thesaurus.countries.apply_thesaurus import (
     apply_thesaurus as apply_countries_thesaurus,
 )
 from ..refine.thesaurus.descriptors.apply_thesaurus import (
-    apply_thesaurus as apply_words_thesaurus,
+    apply_thesaurus as apply_descriptors_thesaurus,
 )
 from ..refine.thesaurus.organizations.apply_thesaurus import (
     apply_thesaurus as apply_organizations_thesaurus,
@@ -352,8 +354,29 @@ def ingest_raw_data(
             f.write(word + "\n")
             f.write("    " + word + "\n")
 
+    apply_descriptors_thesaurus(root_dir)
     ## ------------------------------------------------------------------------------------------
-    apply_words_thesaurus(root_dir)
+    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
+    frame = load_system_thesaurus_as_frame(thesaurus_file)
+    frame = frame.loc[frame.value.str.contains("(", regex=False), :]
+    frame = frame.loc[frame.value.str.endswith(")"), :]
+    frame = frame[["value"]].drop_duplicates()
+    frame["value"] = frame["value"].str[:-1]
+    frame["value"] = frame["value"].str.split(" (", regex=False)
+
+    frame = frame[frame.value.map(len) == 2]
+    frame["abbr"] = frame.value.map(lambda x: x[1])
+
+    frame = frame.sort_values(by="abbr")
+
+    thesaurus_file = os.path.join(root_dir, "thesauri/abbreviations.the.txt")
+    with open(thesaurus_file, "w", encoding="utf-8") as f:
+        for _, row in frame.iterrows():
+            if len(row.value) == 2:
+                f.write(row.value[1] + "\n")
+                f.write("    " + row.value[0] + "\n")
+
+    ## ------------------------------------------------------------------------------------------
 
     _adds_countries_and_regions_to_stopwords(root_dir)
 

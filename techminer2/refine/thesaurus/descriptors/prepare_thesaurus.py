@@ -15,7 +15,7 @@ Prepare Thesaurus
 >>> prepare_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
-...     # root_dir="example/", 
+...     # root_dir="example/", 
 ...     root_dir="/Volumes/GitHub/tm2_digital_twins_in_sustainable_energy",
 ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been prepared.
@@ -24,6 +24,7 @@ Prepare Thesaurus
 import os.path
 
 import pandas as pd
+from tqdm import tqdm
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -56,12 +57,29 @@ def prepare_thesaurus(
     data_frame = load_thesaurus_as_data_frame(th_file)
 
     # -------------------------------------------------------------------------------------------
-    def replace(data_frame, pattern, repl):
+    def remove_parenthesis(data_frame):
         #
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            pattern, repl, regex=True
+        # Removes parenthesis from the column.
+        #
+        #    "regtech (regulatory technology)" -> "regtech"
+        #
+
+        data_frame = data_frame.copy()
+
+        def remove_parenthesis_from_text(text):
+            if "(" in text:
+                text_to_remove = text[text.find("(") : text.find(")") + 1]
+                text = text.replace(text_to_remove, "")
+                text = " ".join([w.strip() for w in text.split()])
+            return text
+
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            remove_parenthesis_from_text
         )
+
         return data_frame
+
+    data_frame = remove_parenthesis(data_frame)
 
     # -------------------------------------------------------------------------------------------
     def process_hypened_words(data_frame):
@@ -78,7 +96,7 @@ def prepare_thesaurus(
             hypened_words = file.read().split("\n")
         hypened_words = [word.strip() for word in hypened_words]
 
-        for word in hypened_words:
+        for word in tqdm(hypened_words, desc="Processing hypened words"):
             #
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
                 r"^" + word.replace("_", "") + "$",
@@ -138,7 +156,9 @@ def prepare_thesaurus(
         )
         pdf = pd.read_csv(file_path, encoding="utf-8")
 
-        for _, row in pdf.iterrows():
+        for _, row in tqdm(
+            pdf.iterrows(), total=pdf.shape[0], desc="Processing sinonimous terms"
+        ):
             #
             pattern = row.to_replace
             repl = row.value
@@ -202,7 +222,7 @@ def prepare_thesaurus(
             words = file.read().split("\n")
         words = [word.strip() for word in words]
 
-        for word in words:
+        for word in tqdm(words, desc="Removing common starting words"):
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
                 "^" + word + "_", "", regex=True
             )
@@ -222,7 +242,7 @@ def prepare_thesaurus(
             words = file.read().split("\n")
         words = [word.strip() for word in words]
 
-        for word in words:
+        for word in tqdm(words, desc="Removing common ending words"):
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
                 "_" + word + "$", "", regex=True
             )

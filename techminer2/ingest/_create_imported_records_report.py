@@ -19,5 +19,5 @@ def create_imported_records_report(root_dir):
         root_dir=root_dir,
         target_dir="",
         records=records,
-        report_filename="../report/records.txt",
+        report_filename="../reports/records.txt",
     )

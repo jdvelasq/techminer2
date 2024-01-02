@@ -13,8 +13,7 @@ Find Abbreviations
 >>> find_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:
-...     # root_dir="example/", 
-...     root_dir="/Volumes/GitHub/tm2_fintech/",
+...    root_dir="example/", 
 ... )
 --INFO-- The file example/thesauri/words.the.txt has been reordered.
 
