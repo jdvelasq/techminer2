@@ -37,7 +37,7 @@ def nx_create_co_occurrences_report(
     nx_graph,
     rows_and_columns,
     report_dir,
-    top_n=100,
+    emergence_years,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -55,6 +55,7 @@ def nx_create_co_occurrences_report(
     records_per_cluster = __extract_records_per_cluster(
         communities=communities,
         field=rows_and_columns,
+        emergence_years=emergence_years,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -101,6 +102,7 @@ def nx_create_co_occurrences_report(
 def __extract_records_per_cluster(
     communities,
     field,
+    emergence_years,
     # Database params:
     root_dir,
     database,
@@ -188,6 +190,10 @@ def __extract_records_per_cluster(
         cited_by_filter=cited_by_filter,
         **filters,
     )
+
+    if emergence_years is not None:
+        records_main = records_main[records_main.year.isin(emergence_years)]
+
     records_main.index = pd.Index(records_main.article)
 
     records_main["RAW_CLUSTERS"] = pd.NA
