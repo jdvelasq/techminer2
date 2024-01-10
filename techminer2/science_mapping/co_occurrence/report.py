@@ -56,6 +56,7 @@ def report(
     #
     # REPORT PARAMS:
     report_dir="co_occurrence/",
+    emergence_years=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -126,7 +127,7 @@ def report(
         nx_graph=nx_graph,
         rows_and_columns=field,
         report_dir=report_dir,
-        top_n=top_n,
+        emergence_years=emergence_years,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
