@@ -20,7 +20,7 @@ def format_report_for_records(root_dir, target_dir, records, report_filename):
         reported_columns = [
             "art_no",
             "article",
-            "docuemnt_title",
+            "raw_docuemnt_title",
             "authors",
             "global_citations",
             "source_title",
