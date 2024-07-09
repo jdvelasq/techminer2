@@ -144,12 +144,13 @@ def ingest_raw_data(
     # PHASE 1: Preparing database files and folders
     # =================================================================================
     #
-    compress_csv_files_in_raw_data_subdirectories(root_dir)
-    create_working_subdirectories_and_files(root_dir)
-    create_database_files(root_dir)
-    rename_columns_in_database_files(root_dir)
-    repair_bad_separators_in_keywords(root_dir)
-    drop_empty_columns_in_databases(root_dir)
+    if True:
+        compress_csv_files_in_raw_data_subdirectories(root_dir)
+        create_working_subdirectories_and_files(root_dir)
+        create_database_files(root_dir)
+        rename_columns_in_database_files(root_dir)
+        repair_bad_separators_in_keywords(root_dir)
+        drop_empty_columns_in_databases(root_dir)
 
     #
     #
@@ -157,33 +158,34 @@ def ingest_raw_data(
     # =================================================================================
     #
     #
-    run_authors_importer(root_dir)
-    run_document_type_importer(root_dir)
-    run_authors_id_importer(root_dir)
-    run_issb_isbn_eissn_importer(root_dir)
-    run_global_citations_importer(root_dir)
-    run_doi_importer(root_dir)
-    run_source_title_importer(root_dir)
-    run_abbr_source_title_importer(root_dir)
-    run_abstract_importer(root_dir)
-    run_document_title_importer(root_dir)
+    if True:
+        run_authors_importer(root_dir)
+        run_document_type_importer(root_dir)
+        run_authors_id_importer(root_dir)
+        run_issb_isbn_eissn_importer(root_dir)
+        run_global_citations_importer(root_dir)
+        run_doi_importer(root_dir)
+        run_source_title_importer(root_dir)
+        run_abbr_source_title_importer(root_dir)
+        run_abstract_importer(root_dir)
+        run_document_title_importer(root_dir)
 
-    _count_terms_per_record(
-        source="authors",
-        dest="num_authors",
-        root_dir=root_dir,
-    )
+        _count_terms_per_record(
+            source="authors",
+            dest="num_authors",
+            root_dir=root_dir,
+        )
 
-    _count_terms_per_record(
-        source="global_references",
-        dest="num_global_references",
-        root_dir=root_dir,
-    )
+        _count_terms_per_record(
+            source="global_references",
+            dest="num_global_references",
+            root_dir=root_dir,
+        )
 
-    disambiguate_author_names(root_dir)
-    replace_journal_name_in_references(root_dir)
-    create_article_column(root_dir)
-    create_art_no_column(root_dir)
+        disambiguate_author_names(root_dir)
+        replace_journal_name_in_references(root_dir)
+        create_article_column(root_dir)
+        create_art_no_column(root_dir)
 
     #
     #
@@ -220,13 +222,14 @@ def ingest_raw_data(
     # To upper() and replace spaces with underscores
     # Merge author/index keywords into a single column
     #
-    run_authors_and_index_keywords_importer(root_dir)
+    if True:
+        run_authors_and_index_keywords_importer(root_dir)
 
-    _merge_fields(
-        sources=["raw_author_keywords", "raw_index_keywords"],
-        dest="raw_keywords",
-        root_dir=root_dir,
-    )
+        _merge_fields(
+            sources=["raw_author_keywords", "raw_index_keywords"],
+            dest="raw_keywords",
+            root_dir=root_dir,
+        )
 
     #
     # Prepare title:
@@ -246,39 +249,43 @@ def ingest_raw_data(
     #
     # Step 1: Create a candidate list of title noun phrases
     #
-    _extract_noun_phrases(
-        source="document_title",
-        dest="raw_title_nlp_phrases",
-        root_dir=root_dir,
-    )
+    if True:
+        _extract_noun_phrases(
+            source="document_title",
+            dest="raw_title_nlp_phrases",
+            root_dir=root_dir,
+        )
 
     #
     # Step 2: Create a candidate list of abstract noun phrases
     #
-    _extract_noun_phrases(
-        source="abstract",
-        dest="raw_abstract_nlp_phrases",
-        root_dir=root_dir,
-    )
+    if True:
+        _extract_noun_phrases(
+            source="abstract",
+            dest="raw_abstract_nlp_phrases",
+            root_dir=root_dir,
+        )
 
     #
     # Step 3: Merge fields
     #
-    _merge_fields(
-        sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
-        dest="raw_nlp_phrases",
-        root_dir=root_dir,
-    )
-    _merge_fields(
-        sources=["raw_nlp_phrases", "raw_keywords"],
-        dest="raw_descriptors",
-        root_dir=root_dir,
-    )
+    if True:
+        _merge_fields(
+            sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
+            dest="raw_nlp_phrases",
+            root_dir=root_dir,
+        )
+        _merge_fields(
+            sources=["raw_nlp_phrases", "raw_keywords"],
+            dest="raw_descriptors",
+            root_dir=root_dir,
+        )
 
     #
     # Highlight author and index keywords
     #
-    _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
+    if True:
+        _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
 
     #
     #

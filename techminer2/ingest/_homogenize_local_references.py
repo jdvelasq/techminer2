@@ -19,6 +19,7 @@
 import os
 import os.path
 import pathlib
+import re
 
 import pandas as pd
 from tqdm import tqdm
@@ -131,7 +132,10 @@ def ___homogeneize_references(root_dir):
         refs = refs.loc[refs.key.str.lower().str.contains(row.first_author.lower()), :]
         refs = refs.loc[refs.key.str.lower().str.contains(row.year), :]
         refs = refs.loc[
-            refs.key.str.lower().str.contains(row.document_title[:50].lower()), :
+            refs.key.str.lower().str.contains(
+                re.escape(row.document_title[:50].lower())
+            ),
+            :,
         ]
 
         refs = refs.text.tolist()

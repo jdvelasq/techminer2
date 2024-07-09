@@ -289,7 +289,7 @@ def __generate_terms_relationships_prompt(
         ##
         expanded_terms = []
         for term in cleaned_terms:
-            # expanded_terms.append(term)
+            #
             expanded_terms.extend(thesaurus.get(term, []))
 
         terms = "; ".join(expanded_terms)
@@ -307,11 +307,9 @@ def __generate_terms_relationships_prompt(
             "exemplifying the relationships among the following keywords: "
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         main_text = text + "\n\n"
 
         text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         main_text += text + "\n\n"
 
         text = (
@@ -321,18 +319,15 @@ def __generate_terms_relationships_prompt(
             "provided text."
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         main_text += text + "\n\nHere are the records:\n\n"
 
         #
         # Secondary text:
         text = "Improve and make more clear the explanation of the relationships among the keywords:"
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         secondary_text = text + "\n\n"
 
         text = textwrap.fill(terms, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         text = (
@@ -341,19 +336,16 @@ def __generate_terms_relationships_prompt(
             "corresponding Record-No value between brackets."
         )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         text = "Here are the text to improve and make more clear: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         secondary_text += "<<<\n\n>>>\n\n"
 
         text = "Here are the records: "
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
-        ## text = text.replace("\n", " \\\n")
         secondary_text += text + "\n\n"
 
         # -------------------------------------------------------------------------------------
