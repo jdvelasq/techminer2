@@ -30,7 +30,7 @@ Pie Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/report/pie_chart.html")
+>>> # chart.fig_.write_html("sphinx/_static/report/pie_chart.html")
 
 .. raw:: html
 
