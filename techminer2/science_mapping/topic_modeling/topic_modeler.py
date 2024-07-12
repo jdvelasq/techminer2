@@ -12,7 +12,7 @@ import pandas as pd
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
 from ..._common.format_report_for_records import format_report_for_records
-from ..._common.make_report_dir import make_report_dir
+from ...helpers.make_report_dir import make_report_dir
 from ...core.read_filtered_database import read_filtered_database
 from ...metrics import tfidf
 

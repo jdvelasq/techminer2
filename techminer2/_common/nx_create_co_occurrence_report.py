@@ -25,7 +25,7 @@ from ..core.read_filtered_database import read_filtered_database
 from ..search.concordances import concordances_from_records
 from ..helpers.format_prompt_for_records import format_prompt_for_records
 from .format_report_for_records import format_report_for_records
-from .make_report_dir import make_report_dir
+from ..helpers.make_report_dir import make_report_dir
 from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
 
 TEXTWRAP_WIDTH = 73
