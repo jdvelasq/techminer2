@@ -26,7 +26,7 @@ import pathlib
 
 import pandas as pd
 
-from ....core.thesaurus.load_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 
 def apply_thesaurus(root_dir):
