@@ -1,3 +1,3 @@
-from .apply_thesaurus import apply_thesaurus
-from .find_string import find_string
-from .sort_thesaurus import sort_thesaurus
+from .apply_countries_thesaurus import apply_countries_thesaurus
+from .find_string_in_countries_thesaurus import find_string_in_countries_thesaurus
+from .sort_countries_thesaurus import sort_countries_thesaurus

@@ -1,8 +1,8 @@
-Descriptors
+Abbreviations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
 
-    apply_thesaurus
+    apply_abbreviations_thesaurus
 

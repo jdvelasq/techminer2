@@ -1,1 +1,1 @@
-from .apply_thesaurus import apply_thesaurus
+from .apply_abbreviations_thesaurus import apply_abbreviations_thesaurus

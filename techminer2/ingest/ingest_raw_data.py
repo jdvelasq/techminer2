@@ -43,8 +43,8 @@ from ..fields.merge_fields import _merge_fields
 
 #
 # Thesaurus
-from ..refine.thesaurus.countries.apply_thesaurus import (
-    apply_thesaurus as apply_countries_thesaurus,
+from ..refine.thesaurus.countries.apply_countries_thesaurus import (
+    apply_countries_thesaurus as apply_countries_thesaurus,
 )
 from ..refine.thesaurus.descriptors.apply_thesaurus import (
     apply_thesaurus as apply_descriptors_thesaurus,

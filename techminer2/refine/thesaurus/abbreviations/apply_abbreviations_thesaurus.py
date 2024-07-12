@@ -31,7 +31,7 @@ DESCRIPTORS_FILE = "thesauri/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
 
 
-def apply_thesaurus(
+def apply_abbreviations_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",

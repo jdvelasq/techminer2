@@ -7,12 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort Thesaurus
+Sort Countries Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.countries import sort_thesaurus
->>> sort_thesaurus(
+>>> from techminer2.refine.thesaurus.countries import sort_countries_thesaurus
+>>> sort_countries_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -20,19 +20,19 @@ Sort Thesaurus
 --INFO-- The file example/thesauri/countries.the.txt has been sorted.
 
 """
-from ....core.thesaurus.sort_thesaurus import sort_thesaurus as core_sort_thesaurus
+from ....core.thesaurus.sort_thesaurus import sort_thesaurus
 
 THESAURUS_FILE = "thesauri/countries.the.txt"
 
 
-def sort_thesaurus(
+def sort_countries_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",
 ):
     """:meta private:"""
 
-    core_sort_thesaurus(
+    sort_thesaurus(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
