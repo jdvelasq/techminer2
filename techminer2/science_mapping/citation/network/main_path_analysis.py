@@ -85,7 +85,7 @@ from ...._common.nx_compute_textposition_from_graph import (
 from ...._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from ...._common.nx_set_node_color_to_constant import nx_set_node_color_to_constant
 from ...._common.nx_visualize_graph import nx_visualize_graph
-from ....read_records import read_records
+from ....core.read_records import read_records
 
 
 def main_path_analysis(

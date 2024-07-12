@@ -68,7 +68,7 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
-from ..read_records import read_records
+from ..core.read_records import read_records
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 73

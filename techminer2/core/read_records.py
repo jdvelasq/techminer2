@@ -5,8 +5,8 @@ import os.path
 
 import pandas as pd
 
-from ._parameters import DatabaseMixin
-from .constansts import DATABASE_NAMES_TO_FILE_NAMES
+from .._parameters import DatabaseMixin
+from ..constansts import DATABASE_NAMES_TO_FILE_NAMES
 
 ##class ReadRecordsMixin(DatabaseMixin):
 ##    """Base class for reading records from the main database."""

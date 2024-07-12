@@ -32,7 +32,7 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...             0.0  0.0  
 
 
 """
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def statistics(

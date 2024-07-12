@@ -35,7 +35,7 @@ Coverage
 
 """
 from .._stopwords import load_user_stopwords
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def coverage(

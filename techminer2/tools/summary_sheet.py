@@ -28,7 +28,7 @@ SummarySheet
 """
 import pandas as pd
 
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def summary_sheet(

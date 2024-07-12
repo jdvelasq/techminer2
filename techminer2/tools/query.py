@@ -32,7 +32,7 @@ Query
 """
 import duckdb
 
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def query(

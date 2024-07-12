@@ -52,7 +52,7 @@ import plotly.express as px
 
 from .._common._filtering_lib import generate_custom_items
 from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def collaboration_metrics(

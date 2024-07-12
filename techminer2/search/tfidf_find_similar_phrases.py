@@ -75,7 +75,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "thesauri/words.the.txt"

@@ -23,7 +23,7 @@ Abstract concordances exploration tool.
 """
 import pandas as pd
 
-from ..read_records import read_records
+from ..core.read_records import read_records
 from .concordances_lib import get_context_phrases_from_records
 
 

@@ -1,5 +1,6 @@
 """documents by each item in a column"""
-from ..read_records import read_records
+
+from ..core.read_records import read_records
 
 
 def documents_per_item(

@@ -87,7 +87,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def bradford_law(

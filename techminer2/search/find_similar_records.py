@@ -96,7 +96,7 @@ from nltk.stem import WordNetLemmatizer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "words.txt"

@@ -38,7 +38,7 @@ Buchak G.              0     0     0     1     0
 
 """
 from ..._stopwords import load_user_stopwords
-from ...read_records import read_records
+from ...core.read_records import read_records
 from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
 

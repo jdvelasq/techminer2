@@ -24,7 +24,7 @@ Update Abstract
 """
 import os
 
-from ..read_records import read_records
+from ..core.read_records import read_records
 
 
 def update_abstract(
