@@ -32,7 +32,7 @@ Word Cloud
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.save("sphinx/images/report/word_cloud.png")
+>>> # chart.fig_.save("sphinx/images/report/word_cloud.png")
 
 .. image:: /images/report/word_cloud.png
     :width: 900px
