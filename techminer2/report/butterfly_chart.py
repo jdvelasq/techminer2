@@ -43,7 +43,7 @@ Butterfly Chart
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/butterfly_chart.html" 
+    <iframe src="../_static/report/butterfly_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
