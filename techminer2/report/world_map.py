@@ -31,7 +31,7 @@ World Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/report/world_map.html")
+>>> # chart.fig_.write_html("sphinx/_static/report/world_map.html")
 
 .. raw:: html
 
