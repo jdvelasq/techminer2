@@ -66,11 +66,11 @@ DESCRIPTORS    Raw descriptors                               1114
 
 
 
->>> info.fig_.write_html("sphinx/_static/analyze/overview/general_metrics.html")
+>>> # info.fig_.write_html("sphinx/_static/analyze/overview/general_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/overview/general_metrics.html"
+    <iframe src="../_static/analyze/overview/general_metrics.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(info.prompt_) # doctest: +ELLIPSIS
