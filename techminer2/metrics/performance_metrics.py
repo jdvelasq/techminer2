@@ -49,7 +49,9 @@ from dataclasses import dataclass
 from .._common._filtering_lib import generate_custom_items
 from .._common._sorting_lib import sort_indicators_by_metric
 from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from .globals.global_indicators_by_field import global_indicators_by_field
+from ..core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -74,7 +76,7 @@ def performance_metrics(
 ):
     """:meta private:"""
 
-    global_indicators = global_indicators_by_field(
+    global_indicators = calculate_global_performance_metrics(
         field=field,
         #
         # DATABASE PARAMS:

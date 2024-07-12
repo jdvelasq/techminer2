@@ -1,7 +1,9 @@
 """Metrics menu options"""
 
+from ..core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 from .general_metrics import general_metrics
-from .globals.global_indicators_by_field import global_indicators_by_field
 from .globals.items_occurrences_by_year import items_occurrences_by_year
 from .growth_metrics import growth_metrics
 from .performance_metrics import performance_metrics
@@ -11,7 +13,7 @@ from .trend_metrics import trend_metrics
 
 __all__ = [
     "general_metrics",
-    "global_indicators_by_field",
+    "calculate_global_performance_metrics",
     "growth_metrics",
     "items_occurrences_by_year",
     "performance_metrics",

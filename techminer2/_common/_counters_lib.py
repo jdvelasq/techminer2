@@ -12,7 +12,9 @@ in the values or axis of a dataframe.
 
 import numpy as np
 
-from ..metrics.globals.global_indicators_by_field import global_indicators_by_field
+from ..core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 
 
 def add_counters_to_frame_axis(
@@ -89,7 +91,7 @@ def items2counters(
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
-    indicators = global_indicators_by_field(
+    indicators = calculate_global_performance_metrics(
         field=criterion,
         #
         # DATABASE PARAMS

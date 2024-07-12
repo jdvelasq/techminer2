@@ -56,8 +56,10 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from .._common._counters_lib import add_counters_to_frame_axis
 from .._common._filtering_lib import generate_custom_items
-from ..read_records import read_records
-from .globals.global_indicators_by_field import global_indicators_by_field
+from ..core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
+from ..core.read_records import read_records
 
 
 def tfidf(
@@ -91,7 +93,7 @@ def tfidf(
     :meta private:
     """
 
-    indicators = global_indicators_by_field(
+    indicators = calculate_global_performance_metrics(
         field=field,
         root_dir=root_dir,
         database=database,

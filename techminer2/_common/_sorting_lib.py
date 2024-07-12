@@ -99,11 +99,13 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from ..metrics.globals.global_indicators_by_field import global_indicators_by_field
+    from ..core.calculate_global_performance_metrics import (
+        calculate_global_performance_metrics,
+    )
 
     matrix = matrix.copy()
 
-    indicators_by_topic = global_indicators_by_field(
+    indicators_by_topic = calculate_global_performance_metrics(
         field=field,
         # Database params:
         root_dir=root_dir,

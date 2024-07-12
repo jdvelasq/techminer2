@@ -130,8 +130,10 @@ from ..._common._filtering_lib import generate_custom_items
 from ..._common._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..._stopwords import load_user_stopwords
-from ...metrics.globals.global_indicators_by_field import global_indicators_by_field
-from ...read_records import read_records
+from ...core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
+from ...core.read_records import read_records
 
 
 def co_occurrence_matrix(
@@ -262,7 +264,7 @@ def ___matrix(
         custom_items,
     ):
         if custom_items is None:
-            indicators = global_indicators_by_field(
+            indicators = calculate_global_performance_metrics(
                 field=field,
                 root_dir=root_dir,
                 database=database,

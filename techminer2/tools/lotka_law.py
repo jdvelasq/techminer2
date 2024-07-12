@@ -132,7 +132,9 @@ def __core_authors_table(
     cited_by_filter,
     **filters,
 ):
-    from ..metrics.globals.global_indicators_by_field import global_indicators_by_field
+    from ..core.calculate_global_performance_metrics import (
+        calculate_global_performance_metrics,
+    )
 
     #
     # Part 1: Computes the number of written documents per number of authors.
@@ -146,7 +148,7 @@ def __core_authors_table(
     # 4                  6            1
     # 5                  7            1
     #
-    indicators = global_indicators_by_field(
+    indicators = calculate_global_performance_metrics(
         field="authors",
         root_dir=root_dir,
         database=database,

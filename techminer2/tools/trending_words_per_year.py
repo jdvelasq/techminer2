@@ -77,7 +77,9 @@ import plotly.graph_objects as go
 
 from .._common._filtering_lib import generate_custom_items
 from .._common._sorting_lib import sort_indicators_by_metric
-from ..metrics.globals.global_indicators_by_field import global_indicators_by_field
+from ..core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 from ..metrics.globals.items_occurrences_by_year import items_occurrences_by_year
 
 
@@ -123,7 +125,7 @@ def trending_words_per_year(
     #
     # Apply filters
     if custom_items is None:
-        indicators = global_indicators_by_field(
+        indicators = calculate_global_performance_metrics(
             field=field,
             #
             # DATABASE PARAMS:
@@ -174,7 +176,7 @@ def trending_words_per_year(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = global_indicators_by_field(
+    global_citations = calculate_global_performance_metrics(
         field, root_dir=root_dir
     ).global_citations
 

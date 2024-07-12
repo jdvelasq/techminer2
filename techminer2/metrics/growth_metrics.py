@@ -87,7 +87,9 @@ import os
 from dataclasses import dataclass
 
 from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from .globals.global_indicators_by_field import global_indicators_by_field
+from ..core.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 from .globals.items_occurrences_by_year import items_occurrences_by_year
 from .performance_metrics import (
     filter_indicators_by_metric,
@@ -116,7 +118,7 @@ def growth_metrics(
 
     #
     # Compute global performance metrics
-    global_indicators = global_indicators_by_field(
+    global_indicators = calculate_global_performance_metrics(
         field=field,
         #
         # DATABASE PARAMS:
