@@ -38,7 +38,7 @@ Bubble Chart
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/bubble_chart.html" 
+    <iframe src="../_static/report/bubble_chart.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -105,9 +105,7 @@ def bubble_chart(
     matrix = matrix.melt(value_name="VALUE", var_name="column", ignore_index=False)
     matrix = matrix.reset_index()
     matrix = matrix.rename(columns={matrix.columns[0]: "row"})
-    matrix = matrix.sort_values(
-        by=["VALUE", "row", "column"], ascending=[False, True, True]
-    )
+    matrix = matrix.sort_values(by=["VALUE", "row", "column"], ascending=[False, True, True])
     matrix = matrix.reset_index(drop=True)
 
     fig = px.scatter(
