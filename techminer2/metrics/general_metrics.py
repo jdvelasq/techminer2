@@ -23,7 +23,7 @@ Category       Item
 GENERAL        Timespan                                 2015:2019
                Documents                                       50
                Annual growth rate %                        118.67
-               Document average age                          5.24
+               Document average age                          6.24
                References                                    1275
                Average citations per document               162.7
                Average citations per document per year      32.54
@@ -55,14 +55,14 @@ KEYWORDS       Raw author keywords                            148
                Cleaned index keywords                         179
                Raw keywords                                   279
                Cleaned keywords                               279
-NLP PHRASES    Raw title NLP phrases                          124
-               Cleaned title NLP phrases                      124
-               Raw abstract NLP phrases                      1461
-               Cleaned abstract NLP phrases                  1461
-               Raw NLP phrases                               1501
-               Cleaned NLP phrases                           1501
-DESCRIPTORS    Raw descriptors                               1668
-               Cleaned descriptors                           1668
+NLP PHRASES    Raw title NLP phrases                           67
+               Cleaned title NLP phrases                       67
+               Raw abstract NLP phrases                       867
+               Cleaned abstract NLP phrases                   867
+               Raw NLP phrases                                895
+               Cleaned NLP phrases                            895
+DESCRIPTORS    Raw descriptors                               1114
+               Cleaned descriptors                           1114
 
 
 
@@ -441,13 +441,9 @@ class MainInformation:
 
         records = self.records[["document_type"]].dropna()
 
-        document_types_count = (
-            records[["document_type"]].groupby("document_type").size()
-        )
+        document_types_count = records[["document_type"]].groupby("document_type").size()
 
-        for document_type, count in zip(
-            document_types_count.index, document_types_count
-        ):
+        for document_type, count in zip(document_types_count.index, document_types_count):
             self.insert_stats(
                 "DOCUMENT TYPES",
                 document_type,
