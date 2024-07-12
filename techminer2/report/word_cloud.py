@@ -17,7 +17,6 @@ Word Cloud
 ...     metric="OCC",
 ...     #
 ...     # CHART PARAMS:
-...     title="Most Frequent Title NLP Phrases",
 ...     width=400, 
 ...     height=400,
 ...     #
@@ -92,9 +91,6 @@ def word_cloud(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
-        #
-        # TREND ANALYSIS:
-        time_window=time_window,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

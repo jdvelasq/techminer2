@@ -39,15 +39,13 @@ Pie Chart
 
     
 >>> chart.df_.head()
-                      rank_occ  OCC  ...  between_2018_2019  growth_percentage
-author_keywords                      ...                                      
-FINTECH                      1   31  ...                 18              58.06
-INNOVATION                   2    7  ...                  1              14.29
-FINANCIAL_SERVICES           3    4  ...                  3              75.00
-FINANCIAL_TECHNOLOGY         4    4  ...                  3              75.00
-BUSINESS                     5    3  ...                  3             100.00
-<BLANKLINE>
-[5 rows x 5 columns]
+                      rank_occ  OCC
+author_keywords                    
+FINTECH                      1   31
+INNOVATION                   2    7
+FINANCIAL_SERVICES           3    4
+FINANCIAL_INCLUSION          4    3
+FINANCIAL_TECHNOLOGY         5    3
 
 >>> print(chart.prompt_) # doctest: +ELLIPSIS
 Your task is ...
