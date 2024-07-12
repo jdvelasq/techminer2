@@ -25,7 +25,7 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 DESCRIPTORS_FILE = "thesauri/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
@@ -45,7 +45,7 @@ def apply_thesaurus(
     def load_descriptors_as_dict():
         if not os.path.isfile(descriptors_file):
             raise FileNotFoundError(f"The file {descriptors_file} does not exist.")
-        descriptors_dict = load_system_thesaurus_as_dict(descriptors_file)
+        descriptors_dict = load_thesaurus_as_dict(descriptors_file)
         return descriptors_dict
 
     #
@@ -53,9 +53,7 @@ def apply_thesaurus(
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(descriptors_dict):
-        reversed_th = {
-            value: key for key, values in descriptors_dict.items() for value in values
-        }
+        reversed_th = {value: key for key, values in descriptors_dict.items() for value in values}
         data_frame = pd.DataFrame(
             {
                 "value": reversed_th.keys(),
@@ -71,16 +69,14 @@ def apply_thesaurus(
     def load_abbreviations_as_dict():
         if not os.path.isfile(abbreviations_file):
             raise FileNotFoundError(f"The file {abbreviations_file} does not exist.")
-        abbreviations_dict = load_system_thesaurus_as_dict(abbreviations_file)
+        abbreviations_dict = load_thesaurus_as_dict(abbreviations_file)
         return abbreviations_dict
 
     #
     abbreviations_dict = load_abbreviations_as_dict()
 
     # -------------------------------------------------------------------------------------------
-    for abbr, values in tqdm(
-        abbreviations_dict.items(), desc="Remplacing abbreviations"
-    ):
+    for abbr, values in tqdm(abbreviations_dict.items(), desc="Remplacing abbreviations"):
         #
         # Replace abbreviations in descriptor keys
         for value in values:

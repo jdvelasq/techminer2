@@ -33,10 +33,8 @@ import sys
 import pandas as pd
 import pkg_resources
 
-from ...._common.thesaurus_lib import (
-    load_system_thesaurus_as_dict,
-    load_system_thesaurus_as_dict_reversed,
-)
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 
 def apply_thesaurus(
@@ -49,7 +47,7 @@ def apply_thesaurus(
     # ---------------------------------------------------------------------------------
     # countries thesaurus preparation
     thesaurus_file = os.path.join(root_dir, "thesauri/countries.the.txt")
-    thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
+    thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
 
     # apply countries thesaurus
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
@@ -86,7 +84,7 @@ def apply_thesaurus(
     )
 
     # thesaurus_file = os.path.join(root_dir, "thesauri/country-to-region.the.txt")
-    thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
+    thesaurus = load_thesaurus_as_dict(thesaurus_file)
     thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
     # apply countries thesaurus
@@ -99,8 +97,7 @@ def apply_thesaurus(
             .countries.str.split(";")
             .map(
                 lambda countries: [
-                    thesaurus.get(country.strip(), country.strip())
-                    for country in countries
+                    thesaurus.get(country.strip(), country.strip()) for country in countries
                 ]
             )
         )
@@ -121,7 +118,7 @@ def apply_thesaurus(
         "techminer2", "thesauri_data/country-to-subregion.the.txt"
     )
     # thesaurus_file = os.path.join(root_dir, "thesauri/country-to-subregion.the.txt")
-    thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
+    thesaurus = load_thesaurus_as_dict(thesaurus_file)
     thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
     # apply countries thesaurus
@@ -134,8 +131,7 @@ def apply_thesaurus(
             .countries.str.split(";")
             .map(
                 lambda countries: [
-                    thesaurus.get(country.strip(), country.strip())
-                    for country in countries
+                    thesaurus.get(country.strip(), country.strip()) for country in countries
                 ]
             )
         )

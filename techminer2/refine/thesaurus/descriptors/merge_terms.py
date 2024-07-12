@@ -45,7 +45,7 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -70,7 +70,7 @@ def merge_terms(
     th_file = join(root_dir, THESAURUS_FILE)
     if not isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_system_thesaurus_as_dict(th_file)
+    thesaurus = load_thesaurus_as_dict(th_file)
 
     #
     # Transforms the thesaurus to a dataframe

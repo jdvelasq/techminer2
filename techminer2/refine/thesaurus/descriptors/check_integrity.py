@@ -26,7 +26,7 @@ import os.path
 
 import pandas as pd
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ....core.thesaurus.load_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -44,7 +44,7 @@ def check_integrity(
     #
     # Loads the terms to check
     thesaurus_file = os.path.join(root_dir, THESAURUS_FILE)
-    thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
+    thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
     terms = list(thesaurus.keys())
 
     #
@@ -53,12 +53,7 @@ def check_integrity(
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
     raw_descriptors = data.raw_descriptors.copy()
     raw_descriptors = (
-        raw_descriptors.dropna()
-        .str.split("; ")
-        .explode()
-        .str.strip()
-        .drop_duplicates()
-        .tolist()
+        raw_descriptors.dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
     )
 
     #

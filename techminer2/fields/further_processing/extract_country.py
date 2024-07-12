@@ -46,7 +46,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from ..._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..protected_fields import PROTECTED_FIELDS
 
 
@@ -75,7 +75,7 @@ def _extract_country(
     #
     # Loads the thesaurus
     thesaurus_path = os.path.join(root_dir, "thesauri/countries.the.txt")
-    thesaurus = load_system_thesaurus_as_dict(thesaurus_path)
+    thesaurus = load_thesaurus_as_dict(thesaurus_path)
     names = list(thesaurus.keys())
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
@@ -96,14 +96,10 @@ def _extract_country(
             data[dest] = data[dest].map(
                 lambda x: [y for y in x if y is not pd.NA], na_action="ignore"
             )
-            data[dest] = data[dest].map(
-                lambda x: pd.NA if x == [] else x, na_action="ignore"
-            )
+            data[dest] = data[dest].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
             data[dest] = data[dest].map(
                 lambda x: pd.NA if x is pd.NA else list(set(x)), na_action="ignore"
             )
             data[dest] = data[dest].str.join("; ")
-            data[dest] = data[dest].map(
-                lambda x: pd.NA if x == "" else x, na_action="ignore"
-            )
+            data[dest] = data[dest].map(lambda x: pd.NA if x == "" else x, na_action="ignore")
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

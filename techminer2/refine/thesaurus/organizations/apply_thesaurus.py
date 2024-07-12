@@ -27,7 +27,7 @@ import os.path
 
 import pandas as pd
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 
 def apply_thesaurus(
@@ -39,7 +39,7 @@ def apply_thesaurus(
 
     # Read the thesaurus
     thesaurus_file = os.path.join(root_dir, "thesauri/organizations.the.txt")
-    thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
+    thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
 
     # Apply thesaurus
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
@@ -51,9 +51,9 @@ def apply_thesaurus(
         records = records.assign(organizations=records.affiliations.str.split("; "))
         records = records.assign(
             organizations=records.organizations.map(
-                lambda x: [thesaurus.get(y.strip(), y.strip()) for y in x]
-                if isinstance(x, list)
-                else x
+                lambda x: (
+                    [thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x
+                )
             )
         )
         #

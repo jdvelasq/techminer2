@@ -26,7 +26,7 @@ import os.path
 
 import pandas as pd
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ....core.thesaurus.load_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -44,7 +44,7 @@ def apply_thesaurus(
     )
 
     thesaurus_file = os.path.join(root_dir, THESAURUS_FILE)
-    thesaurus = load_system_thesaurus_as_dict_reversed(thesaurus_file)
+    thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
@@ -62,9 +62,11 @@ def apply_thesaurus(
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split("; ")
                 data[column] = data[column].map(
-                    lambda x: [thesaurus.get(y.strip(), y.strip()) for y in x]
-                    if isinstance(x, list)
-                    else x
+                    lambda x: (
+                        [thesaurus.get(y.strip(), y.strip()) for y in x]
+                        if isinstance(x, list)
+                        else x
+                    )
                 )
                 data[column] = data[column].map(
                     lambda x: sorted(set(x)) if isinstance(x, list) else x

@@ -74,7 +74,7 @@ from nltk.stem import PorterStemmer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ..core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from ..core.read_filtered_database import read_filtered_database
 
 TEXTWRAP_WIDTH = 73
@@ -126,9 +126,7 @@ def tfidf_find_similar_phrases(
     # words = apply_thesaurus_to_text(root_dir, words)
     words = [w for w in words if w in tf_matrix.columns]
 
-    df_text = pd.DataFrame(
-        data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns
-    )
+    df_text = pd.DataFrame(data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns)
     for word in words:
         df_text[word] = 1
 
@@ -162,7 +160,7 @@ def load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_system_thesaurus_as_dict_reversed(th_file)
+    thesaurus = load_inverted_thesaurus_as_dict(th_file)
     return thesaurus
 
 

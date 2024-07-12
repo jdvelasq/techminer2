@@ -24,7 +24,7 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ..core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from ._message import message
 
 
@@ -49,7 +49,7 @@ def __apply_thesaururs(root_dir):
     #
     # Loads the thesaurus
     file_path = pathlib.Path(root_dir) / "reports/local_references.txt"
-    th = load_system_thesaurus_as_dict_reversed(file_path=file_path)
+    th = load_inverted_thesaurus_as_dict(file_path=file_path)
 
     #
     # Loadas the main database
@@ -132,9 +132,7 @@ def ___homogeneize_references(root_dir):
         refs = refs.loc[refs.key.str.lower().str.contains(row.first_author.lower()), :]
         refs = refs.loc[refs.key.str.lower().str.contains(row.year), :]
         refs = refs.loc[
-            refs.key.str.lower().str.contains(
-                re.escape(row.document_title[:50].lower())
-            ),
+            refs.key.str.lower().str.contains(re.escape(row.document_title[:50].lower())),
             :,
         ]
 

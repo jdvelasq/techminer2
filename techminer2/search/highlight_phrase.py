@@ -48,7 +48,7 @@ import os.path
 import re
 import textwrap
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ..core.thesaurus.load_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "thesauri/words.the.txt"
@@ -85,5 +85,5 @@ def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_system_thesaurus_as_dict_reversed(th_file)
+    thesaurus = load_inverted_thesaurus_as_dict(th_file)
     return thesaurus

@@ -20,7 +20,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..core.read_filtered_database import read_filtered_database
 from ..search.concordances import concordances_from_records
 from ..helpers.format_prompt_for_records import format_prompt_for_records
@@ -151,9 +151,7 @@ def __extract_records_per_cluster(
         records["clusters"] = records[field].map(clusters)
         # records["article"] = records.index.to_list()
         records = records.groupby("article").agg({"clusters": list})
-        records["clusters"] = (
-            records["clusters"].apply(lambda x: sorted(x)).str.join("; ")
-        )
+        records["clusters"] = records["clusters"].apply(lambda x: sorted(x)).str.join("; ")
 
         return records
 
@@ -220,9 +218,7 @@ def __extract_records_per_cluster(
     records_per_cluster = {}
 
     for cluster in clusters:
-        clustered_records = records_main[
-            records_main.ASSIGNED_CLUSTER == cluster
-        ].copy()
+        clustered_records = records_main[records_main.ASSIGNED_CLUSTER == cluster].copy()
         clustered_records = clustered_records.sort_values(
             ["global_citations", "local_citations", "year", "authors"],
             ascending=[False, False, False, True],
@@ -275,7 +271,7 @@ def __generate_terms_relationships_prompt(
     """ChatGPT prompt."""
 
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
+    thesaurus = load_thesaurus_as_dict(thesaurus_file)
 
     for cluster in sorted(communities.keys()):
         # -------------------------------------------------------------------------------------
@@ -323,7 +319,9 @@ def __generate_terms_relationships_prompt(
 
         #
         # Secondary text:
-        text = "Improve and make more clear the explanation of the relationships among the keywords:"
+        text = (
+            "Improve and make more clear the explanation of the relationships among the keywords:"
+        )
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
         secondary_text = text + "\n\n"
 

@@ -24,10 +24,8 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ...._common.thesaurus_lib import (
-    load_system_thesaurus_as_dict,
-    load_system_thesaurus_as_frame,
-)
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_frame import load_thesaurus_as_frame
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -42,7 +40,7 @@ def find_abbreviations(
     #
     # Load thesaurus as a data frame
     file_path = os.path.join(root_dir, THESAURUS_FILE)
-    frame = load_system_thesaurus_as_frame(file_path)
+    frame = load_thesaurus_as_frame(file_path)
 
     #
     # Find abbreviations
@@ -72,51 +70,47 @@ def find_abbreviations(
         frame["value"] = frame["value"].str.replace(regex, "", regex=True)
         frame["value"] = frame["value"].str.strip()
         frame = frame.loc[frame.abbreviation != "", :]
-        frame = frame.loc[
-            frame.value.map(lambda x: " " not in x, na_action="ignore"), :
-        ]
+        frame = frame.loc[frame.value.map(lambda x: " " not in x, na_action="ignore"), :]
         frame = frame.sort_values(by="abbreviation")
 
         #
         # Check if there is replacements
         frame["valid"] = False
-        data_frame_org["value"] = data_frame_org["value"].str.replace(
-            regex, "", regex=True
-        )
+        data_frame_org["value"] = data_frame_org["value"].str.replace(regex, "", regex=True)
         for index, row in frame.iterrows():
             #
             data_frame = data_frame_org.copy()
             data_frame["valid"] = False
             #
             # contains:
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"_" + row.abbreviation + r"_", regex=False)
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"\b" + row.abbreviation + r"_", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"_" + row.abbreviation + r"\b", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"\b" + row.abbreviation + r"\b", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"_" + row.abbreviation + r"_", regex=False
+            )
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"\b" + row.abbreviation + r"_", regex=True
+            )
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"_" + row.abbreviation + r"\b", regex=True
+            )
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"\b" + row.abbreviation + r"\b", regex=True
+            )
             #
             # ends with:
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"_" + row.abbreviation + r"$", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r" " + row.abbreviation + r"$", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"_" + row.abbreviation + r"$", regex=True
+            )
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r" " + row.abbreviation + r"$", regex=True
+            )
             #
             # starts with:
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"^" + row.abbreviation + r"_", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame[
-                "value"
-            ].str.contains(r"^" + row.abbreviation + r" ", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"^" + row.abbreviation + r"_", regex=True
+            )
+            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(
+                r"^" + row.abbreviation + r" ", regex=True
+            )
             #
             frame.loc[index, "valid"] = data_frame["valid"].any()
 
@@ -145,9 +139,7 @@ def find_abbreviations(
         abbr = re.escape(abbr)
         frame["found"] = False
         frame["found"] = frame["found"] | frame["value"].map(lambda x: x == abbr)
-        frame["found"] = frame["found"] | frame["value"].map(
-            lambda x: "(" + abbr + ")" in x
-        )
+        frame["found"] = frame["found"] | frame["value"].map(lambda x: "(" + abbr + ")" in x)
         frame["found"] = frame["found"] | frame["value"].str.contains(
             r"\b" + abbr + r"\b", regex=True
         )
@@ -159,7 +151,7 @@ def find_abbreviations(
     #
     # Reorder thesaurus
     keys_with_abbr = frame.key.drop_duplicates().to_list()
-    thesaurus = load_system_thesaurus_as_dict(file_path)
+    thesaurus = load_thesaurus_as_dict(file_path)
 
     with open(file_path, "w", encoding="utf-8") as file:
         for key in keys_with_abbr:

@@ -67,7 +67,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_dict_reversed
+from ..core.thesaurus.load_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from ..core.read_filtered_database import read_filtered_database
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
@@ -113,9 +113,7 @@ def find_similar_phrases(
     # Prepare text
     words = extract_descriptors_from_text(text, root_dir)
 
-    df_text = pd.DataFrame(
-        data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns
-    )
+    df_text = pd.DataFrame(data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns)
     for word in words:
         df_text[word] = 1
 
@@ -140,7 +138,7 @@ def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_system_thesaurus_as_dict_reversed(th_file)
+    thesaurus = load_inverted_thesaurus_as_dict(th_file)
     return thesaurus
 
 
@@ -185,9 +183,7 @@ def _extract_keywords(records, root_dir):
     #
     abstracts["abstract"] = abstracts["abstract"].str.lower().str.replace("_", " ")
     abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda sentence: re.sub(
-            regex, lambda z: z.group().upper().replace(" ", "_"), sentence
-        )
+        lambda sentence: re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), sentence)
     )
     abstracts["abstract"] = abstracts["abstract"].apply(
         lambda text: sorted(set(str(t) for t in TextBlob(text).words))
@@ -199,9 +195,7 @@ def _extract_keywords(records, root_dir):
     )
     #
     # -----------------------------------------------------------------------------------------
-    abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda x: pd.NA if x == [] else x
-    )
+    abstracts["abstract"] = abstracts["abstract"].apply(lambda x: pd.NA if x == [] else x)
     abstracts = abstracts.dropna()
     abstracts = abstracts.rename(columns={"abstract": "keyword"})
     return abstracts

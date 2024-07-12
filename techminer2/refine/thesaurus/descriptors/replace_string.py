@@ -35,7 +35,7 @@ import re
 
 import pandas as pd
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -90,22 +90,11 @@ def _replace_string(
     """:meta private:"""
 
     th_file = os.path.join(root_dir, THESAURUS_FILE)
-
-    # -------------------------------------------------------------------------------------------
-    def load_thesaurus_as_dict():
-        if not os.path.isfile(th_file):
-            raise FileNotFoundError(f"The file {th_file} does not exist.")
-        th_dict = load_system_thesaurus_as_dict(th_file)
-        return th_dict
-
-    #
     th_dict = load_thesaurus_as_dict()
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(th_dict):
-        reversed_th = {
-            value: key for key, values in th_dict.items() for value in values
-        }
+        reversed_th = {value: key for key, values in th_dict.items() for value in values}
         data_frame = pd.DataFrame(
             {
                 "value": reversed_th.keys(),
@@ -119,12 +108,7 @@ def _replace_string(
 
     # -------------------------------------------------------------------------------------------
     def check_parameters():
-        if (
-            exact is None
-            and contains is None
-            and startswith is None
-            and endswith is None
-        ):
+        if exact is None and contains is None and startswith is None and endswith is None:
             raise ValueError("No filter provided")
 
         n_params = 0

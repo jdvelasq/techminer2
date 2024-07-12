@@ -22,7 +22,7 @@ from os.path import dirname
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_frame
+from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 
 def list_cleanup_words(
@@ -338,15 +338,11 @@ def create_data_frame(root_dir):
 
     #
     # Loads raw keywords
-    keywords_data_frame = create_column_data_frame(
-        root_dir=root_dir, column="raw_keywords"
-    )
+    keywords_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_keywords")
 
     #
     # Loads raw nlp phrases discarding existent keywords
-    nlp_data_frame = create_column_data_frame(
-        root_dir=root_dir, column="raw_nlp_phrases"
-    )
+    nlp_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_nlp_phrases")
     nlp_data_frame = nlp_data_frame.loc[
         ~nlp_data_frame["fingerprint"].isin(keywords_data_frame["fingerprint"]), :
     ]
@@ -459,12 +455,8 @@ def create_thesuarus(data_frame):
 
     #
     # Process raw terms
-    data_frame["raw_term"] = data_frame["raw_term"].str.replace(
-        "    ", "   ", regex=False
-    )
-    data_frame["raw_term"] = data_frame["raw_term"].str.replace(
-        "   ", "  ", regex=False
-    )
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("    ", "   ", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace("   ", "  ", regex=False)
     data_frame["raw_term"] = data_frame["raw_term"].str.replace("  ", " ", regex=False)
     data_frame["raw_term"] = data_frame["raw_term"].str.replace(" ", "_", regex=False)
     data_frame["raw_term"] = data_frame["raw_term"].str.replace("_(", " (", regex=False)
@@ -534,9 +526,9 @@ def update_stopwords(data_frame, root_dir):
     #
     # Terms with an empty fingerprint
     phrases = data_frame.loc[data_frame.fingerprint.str.strip() == "", :].copy()
-    data_frame.loc[
-        data_frame.fingerprint.str.strip() == "", "fingerprint"
-    ] = data_frame.loc[data_frame.fingerprint.str.strip() == "", "raw_term"]
+    data_frame.loc[data_frame.fingerprint.str.strip() == "", "fingerprint"] = data_frame.loc[
+        data_frame.fingerprint.str.strip() == "", "raw_term"
+    ]
 
     #
     # Process stopwords
@@ -569,7 +561,7 @@ def load_existent_thesaurus(root_dir):
     if not file_path.exists():
         return None
 
-    existent_thesaurus = load_system_thesaurus_as_frame(file_path)
+    existent_thesaurus = load_thesaurus_as_frame(file_path)
     existent_thesaurus = existent_thesaurus.rename(
         columns={"key": "key_phrase", "value": "value_phrase"}
     )
@@ -685,9 +677,7 @@ def replace_sinonimous(series):
 
     series = series.copy()
     for _, row in replacements.iterrows():
-        series = series.str.replace(
-            r"\b" + row.to_replace + r"\b", row.value, regex=True
-        )
+        series = series.str.replace(r"\b" + row.to_replace + r"\b", row.value, regex=True)
 
     for _ in range(3):
         series = series.str.replace("  ", " ", regex=False)
@@ -809,7 +799,5 @@ def apply_porter_stemmer(series):
 
     series = series.copy()
     stemmer = PorterStemmer()
-    series = series.apply(
-        lambda x: " ".join(sorted(stemmer.stem(word) for word in x.split()))
-    )
+    series = series.apply(lambda x: " ".join(sorted(stemmer.stem(word) for word in x.split())))
     return series

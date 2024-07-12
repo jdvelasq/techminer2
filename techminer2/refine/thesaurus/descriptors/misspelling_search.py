@@ -24,7 +24,7 @@ from os.path import isfile, join
 from spellchecker import SpellChecker
 from textblob import TextBlob
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -42,7 +42,7 @@ def misspelling_search(
     if not isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    th_current = load_system_thesaurus_as_dict(th_file)
+    th_current = load_thesaurus_as_dict(th_file)
 
     spell = SpellChecker()
 

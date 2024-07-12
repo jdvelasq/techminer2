@@ -6,16 +6,16 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
+"""
+Sorts a thesaurus file.
 
-
+"""
 import os.path
 
-from ..._common.thesaurus_lib import load_system_thesaurus_as_dict
-
-THESAURUS_FILE = "words.the.txt"
+from .load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
-def _sort_thesaurus(
+def sort_thesaurus(
     #
     # THESAURURS FILE:
     thesaurus_file,
@@ -23,16 +23,14 @@ def _sort_thesaurus(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     #
     # Loads the thesaurus file as a dict
     th_file = os.path.join(root_dir, thesaurus_file)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    th_dict = load_system_thesaurus_as_dict(th_file)
+    th_dict = load_thesaurus_as_dict(th_file)
 
     #
     # Saves the sorted thesaurus to the file

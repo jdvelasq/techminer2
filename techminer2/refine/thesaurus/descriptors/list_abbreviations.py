@@ -25,7 +25,7 @@ PRESSES (MACHINE_TOOLS)
 """
 import os.path
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_frame
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -38,7 +38,7 @@ def list_abbreviations(
     """:meta private:"""
 
     file_path = os.path.join(root_dir, THESAURUS_FILE)
-    frame = load_system_thesaurus_as_frame(file_path)
+    frame = load_thesaurus_as_frame(file_path)
     frame = frame.loc[frame.value.str.contains("(", regex=False), :]
     frame = frame.loc[frame.value.str.contains(")", regex=False), :]
     frame = frame[["value"]].drop_duplicates()

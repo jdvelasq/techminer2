@@ -20,7 +20,7 @@ Sort Thesaurus
 --INFO-- The file example/thesauri/descriptors.the.txt has been sorted.
 
 """
-from .._sort_thesaurus import _sort_thesaurus
+from ....core.thesaurus.sort_thesaurus import sort_thesaurus as core_sort_thesaurus
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -32,7 +32,7 @@ def sort_thesaurus(
 ):
     """:meta private:"""
 
-    _sort_thesaurus(
+    core_sort_thesaurus(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

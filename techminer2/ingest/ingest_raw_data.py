@@ -32,7 +32,7 @@ import time
 import pandas as pd
 from tqdm import tqdm
 
-from .._common.thesaurus_lib import load_system_thesaurus_as_frame
+from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 # -------------------------------------------------------------------------------------
 # Field basic operations
@@ -336,7 +336,7 @@ def ingest_raw_data(
     apply_descriptors_thesaurus(root_dir)
     ## ------------------------------------------------------------------------------------------
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    frame = load_system_thesaurus_as_frame(thesaurus_file)
+    frame = load_thesaurus_as_frame(thesaurus_file)
     frame = frame.loc[frame.value.str.contains("(", regex=False), :]
     frame = frame.loc[frame.value.str.endswith(")"), :]
     frame = frame[["value"]].drop_duplicates()

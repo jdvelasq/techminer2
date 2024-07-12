@@ -34,7 +34,7 @@ import re
 
 import pandas as pd
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -55,7 +55,7 @@ def find_string(
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    th_dict = load_system_thesaurus_as_dict(th_file)
+    th_dict = load_thesaurus_as_dict(th_file)
 
     reversed_th = {value: key for key, values in th_dict.items() for value in values}
 
@@ -82,9 +82,7 @@ def find_string(
                     re.compile("_" + word + r"\b"),
                     re.compile(r"\b" + word + r"\b"),
                 ]:
-                    result.append(
-                        pdf[pdf[column].str.contains(compiled_regex, regex=True)]
-                    )
+                    result.append(pdf[pdf[column].str.contains(compiled_regex, regex=True)])
 
     if startswith is not None:
         if isinstance(startswith, str):
@@ -95,9 +93,7 @@ def find_string(
                     re.compile("^" + word + "_"),
                     re.compile("^" + word + r"\b"),
                 ]:
-                    result.append(
-                        pdf[pdf[column].str.contains(compiled_regex, regex=True)]
-                    )
+                    result.append(pdf[pdf[column].str.contains(compiled_regex, regex=True)])
 
     if endswith is not None:
         if isinstance(endswith, str):
@@ -108,9 +104,7 @@ def find_string(
                     re.compile("_" + word + "$"),
                     re.compile(r"\b" + word + "$"),
                 ]:
-                    result.append(
-                        pdf[pdf[column].str.contains(compiled_regex, regex=True)]
-                    )
+                    result.append(pdf[pdf[column].str.contains(compiled_regex, regex=True)])
 
     pdf = pd.concat(result)
     keys = pdf.key.drop_duplicates()

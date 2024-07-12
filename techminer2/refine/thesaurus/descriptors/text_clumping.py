@@ -27,7 +27,7 @@ import pandas as pd
 import pkg_resources
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -41,22 +41,11 @@ def text_clumping(
     """:meta private:"""
 
     th_file = os.path.join(root_dir, THESAURUS_FILE)
-
-    # -------------------------------------------------------------------------------------------
-    def load_thesaurus_as_dict(th_file):
-        if not os.path.isfile(th_file):
-            raise FileNotFoundError(f"The file {th_file} does not exist.")
-        th_dict = load_system_thesaurus_as_dict(th_file)
-        return th_dict
-
-    #
     th_dict = load_thesaurus_as_dict(th_file)
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(th_dict):
-        reversed_th = {
-            value: key for key, values in th_dict.items() for value in values
-        }
+        reversed_th = {value: key for key, values in th_dict.items() for value in values}
         data_frame = pd.DataFrame(
             {
                 "term": reversed_th.keys(),
@@ -85,9 +74,7 @@ def text_clumping(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            remove_brackets_from_text
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_brackets_from_text)
 
         return data_frame
 
@@ -110,9 +97,7 @@ def text_clumping(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            remove_parenthesis_from_text
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_parenthesis_from_text)
 
         return data_frame
 
@@ -179,9 +164,7 @@ def text_clumping(
 
         #
         # Replaces "_" by " "
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            "_", " ", regex=False
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_", " ", regex=False)
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
         data_frame["fingerprint"] = data_frame["fingerprint"].map(
             lambda x: [z.strip() for z in x]
@@ -199,9 +182,7 @@ def text_clumping(
     def remove_separators(data_frame):
         #
         data_frame = data_frame.copy()
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            "_", " ", regex=False
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_", " ", regex=False)
         return data_frame
 
     data_frame = remove_separators(data_frame)
@@ -258,9 +239,7 @@ def text_clumping(
     def compute_key_lengths(data_frame):
         data_frame = data_frame.copy()
 
-        data_frame["len_fingerprint"] = (
-            data_frame["fingerprint"].str.split(" ").map(len)
-        )
+        data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
         data_frame = data_frame.sort_values(
             ["len_fingerprint", "fingerprint"], ascending=[False, True]
         )
@@ -298,15 +277,13 @@ def text_clumping(
         #
         data_frame = data_frame.copy()
 
-        data_frame = data_frame.loc[
-            data_frame.len_fingerprint.map(lambda x: x >= len(words)), :
-        ]
+        data_frame = data_frame.loc[data_frame.len_fingerprint.map(lambda x: x >= len(words)), :]
 
         data_frame["found"] = True
         for word in words:
-            data_frame["found"] = data_frame["found"] & data_frame[
-                "fingerprint"
-            ].str.contains(r"\b" + word + r"\b", case=True)
+            data_frame["found"] = data_frame["found"] & data_frame["fingerprint"].str.contains(
+                r"\b" + word + r"\b", case=True
+            )
 
         data_frame = data_frame.loc[data_frame.found, :]
 

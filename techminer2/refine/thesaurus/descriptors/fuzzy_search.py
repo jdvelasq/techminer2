@@ -72,7 +72,7 @@ import os.path
 import pandas as pd
 from fuzzywuzzy import process
 
-from ...._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -92,7 +92,7 @@ def fuzzy_search(
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    th_dict = load_system_thesaurus_as_dict(th_file)
+    th_dict = load_thesaurus_as_dict(th_file)
 
     reversed_th = {value: key for key, values in th_dict.items() for value in values}
 

@@ -41,7 +41,7 @@ from dataclasses import dataclass
 from textblob import TextBlob
 
 from ..helpers.format_prompt_for_paragraphs import format_prompt_for_paragraphs
-from .._common.thesaurus_lib import load_system_thesaurus_as_dict
+from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..core.read_filtered_database import read_filtered_database
 
 
@@ -99,7 +99,7 @@ def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
     thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
-    thesaurus = load_system_thesaurus_as_dict(thesaurus_file)
+    thesaurus = load_thesaurus_as_dict(thesaurus_file)
     return list(thesaurus.values())
 
 
