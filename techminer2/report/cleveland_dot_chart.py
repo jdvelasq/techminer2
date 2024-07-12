@@ -39,7 +39,7 @@ Cleveland Dot Chart
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/cleveland_dot_chart.html" 
+    <iframe src="../_static/report/cleveland_dot_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -109,13 +109,9 @@ def cleveland_dot_chart(
         **filters,
     )
 
-    metric_label = (
-        metric.replace("_", " ").upper() if metric_label is None else metric_label
-    )
+    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
-    field_label = (
-        field.replace("_", " ").upper() if field_label is None else field_label
-    )
+    field_label = field.replace("_", " ").upper() if field_label is None else field_label
 
     data_frame = items.df_.copy()
 
