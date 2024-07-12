@@ -35,7 +35,7 @@ World Map
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/world_map.html" 
+    <iframe src="../_static/report/world_map.html" 
     height="400px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()
