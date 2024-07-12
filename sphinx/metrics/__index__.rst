@@ -4,7 +4,6 @@ Metrics
 .. toctree::
     :hidden:
 
-    globals/__index__
     general_metrics
     trend_metrics
     performance_metrics
