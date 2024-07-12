@@ -131,7 +131,7 @@ from ...helpers.append_occurrences_and_citations_to_axis import (
 from ...core.sort_records_by_metric import sort_records_by_metric
 from ...helpers.sort_matrix_axis import sort_matrix_axis
 from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..._stopwords import load_user_stopwords
+from ...core.load_user_stopwords import load_user_stopwords
 from ...core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )

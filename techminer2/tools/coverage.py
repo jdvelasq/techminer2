@@ -34,7 +34,7 @@ Coverage
 
 
 """
-from .._stopwords import load_user_stopwords
+from ..core.load_user_stopwords import load_user_stopwords
 from ..core.read_filtered_database import read_filtered_database
 
 
@@ -78,9 +78,7 @@ def coverage(
 
     documents = documents[~documents[field].isin(stopwords)]
 
-    documents = documents.groupby(by=[field]).agg(
-        {"num_documents": "count", "article": list}
-    )
+    documents = documents.groupby(by=[field]).agg({"num_documents": "count", "article": list})
     documents = documents.sort_values(by=["num_documents"], ascending=False)
 
     documents = documents.reset_index()
@@ -99,9 +97,7 @@ def coverage(
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
     documents = documents.assign(
-        coverage=documents.cum_sum_documents.map(
-            lambda x: f"{100 * x / n_documents:5.2f} %"
-        )
+        coverage=documents.cum_sum_documents.map(lambda x: f"{100 * x / n_documents:5.2f} %")
     )
 
     documents = documents.assign(cum_sum_items=documents[field].cumsum())

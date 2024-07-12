@@ -34,9 +34,7 @@ class StopwordsMixin(RootDirMixin):
     def load_package_stopwords(self):
         """:meta private:"""
 
-        file_path = pkg_resources.resource_filename(
-            "techminer2", "word_lists/stopwords.txt"
-        )
+        file_path = pkg_resources.resource_filename("techminer2", "word_lists/stopwords.txt")
         with open(file_path, "r", encoding="utf-8") as file:
             stopwords = file.read().split("\n")
         stopwords = [w.strip() for w in stopwords]
@@ -44,28 +42,12 @@ class StopwordsMixin(RootDirMixin):
         return stopwords
 
 
-def load_user_stopwords(root_dir):
-    """:meta private:"""
-
-    stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
-
-    if not os.path.isfile(stopwords_file_path):
-        raise FileNotFoundError(f"The file '{stopwords_file_path}' does not exist.")
-
-    with open(stopwords_file_path, "r", encoding="utf-8") as file:
-        stopwords = [line.strip() for line in file.readlines()]
-
-    return stopwords
-
-
 def load_package_stopwords():
     """Loads system stopwords.
 
     :meta private:
     """
-    file_path = pkg_resources.resource_filename(
-        "techminer2", "word_lists/stopwords.txt"
-    )
+    file_path = pkg_resources.resource_filename("techminer2", "word_lists/stopwords.txt")
 
     ###  module_path = dirname(__file__)
     ### file_path = os.path.join(module_path, "word_lists/stopwords.txt")
