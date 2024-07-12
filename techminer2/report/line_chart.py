@@ -36,7 +36,7 @@ Line Chart
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/line_chart.html" 
+    <iframe src="../_static/report/line_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.df_.head()
