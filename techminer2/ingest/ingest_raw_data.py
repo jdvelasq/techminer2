@@ -38,10 +38,6 @@ from .._common.thesaurus_lib import load_system_thesaurus_as_frame
 # Field basic operations
 # -------------------------------------------------------------------------------------
 from ..fields.further_processing.count_terms_per_record import _count_terms_per_record
-
-# from ..fields.further_processing.extract_meaningful_words import (
-#     _extract_meaningful_words,
-# )
 from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
 from ..fields.merge_fields import _merge_fields
 
@@ -286,30 +282,6 @@ def ingest_raw_data(
     #
     if True:
         _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
-
-    #
-    #
-    # Meaningful terms
-    #
-    #
-
-    # _extract_meaningful_words(
-    #     source="raw_document_title",
-    #     dest="raw_words_title",
-    #     root_dir=root_dir,
-    # )
-
-    # _extract_meaningful_words(
-    #     source="raw_abstract",
-    #     dest="raw_words_abstract",
-    #     root_dir=root_dir,
-    # )
-
-    # _merge_fields(
-    #     sources=["raw_words_abstract", "raw_words_title"],
-    #     dest="raw_words",
-    #     root_dir=root_dir,
-    # )
 
     #
     #

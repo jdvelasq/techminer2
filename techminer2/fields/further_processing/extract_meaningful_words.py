@@ -15,7 +15,7 @@ from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ..._stopwords import load_package_stopwords
+from ...core.load_package_stopwords import load_package_stopwords
 from ..protected_fields import PROTECTED_FIELDS
 
 #
@@ -107,9 +107,7 @@ def _extract_meaningful_words(
             lambda tagged_words: [tag[0] for tag in tagged_words], na_action="ignore"
         )
         data[dest] = data[dest].map(
-            lambda phrases: [
-                phrase for phrase in phrases if not phrase.startswith("//")
-            ],
+            lambda phrases: [phrase for phrase in phrases if not phrase.startswith("//")],
             na_action="ignore",
         )
         data[dest] = data[dest].map(
@@ -117,9 +115,7 @@ def _extract_meaningful_words(
             na_action="ignore",
         )
         data[dest] = data[dest].map(
-            lambda phrases: [
-                phrase for phrase in phrases if not re.search(r"[^\w\s]", phrase)
-            ],
+            lambda phrases: [phrase for phrase in phrases if not re.search(r"[^\w\s]", phrase)],
             na_action="ignore",
         )
         data[dest] = data[dest].map(
