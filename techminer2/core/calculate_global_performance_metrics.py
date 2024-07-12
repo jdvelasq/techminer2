@@ -6,30 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Global Indicators by Field
-===============================================================================
-
->>> from techminer2.indicators import global_indicators_by_field
->>> indicators = global_indicators_by_field(
-...     #
-...     # METRICS PARAMS:
-...     field='author_keywords',
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> print(indicators.head().to_markdown())
-| author_keywords      |   rank_occ |   rank_lcs |   rank_gcs |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
-|:---------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
-| FINTECH              |          1 |          1 |          1 |    31 |               5168 |                26 |                          166.71 |                           0.84 |                     2016 |     4 |                     1292    |        31 |        12 |      7.75 |
-| INNOVATION           |          2 |          2 |          2 |     7 |                911 |                 5 |                          130.14 |                           0.71 |                     2016 |     4 |                      227.75 |         7 |         7 |      1.75 |
-| FINANCIAL_SERVICES   |          3 |         40 |          4 |     4 |                667 |                 1 |                          166.75 |                           0.25 |                     2016 |     4 |                      166.75 |         4 |         4 |      1    |
-| FINANCIAL_INCLUSION  |          4 |          3 |          5 |     3 |                590 |                 5 |                          196.67 |                           1.67 |                     2016 |     4 |                      147.5  |         3 |         3 |      0.75 |
-| FINANCIAL_TECHNOLOGY |          5 |         41 |         15 |     3 |                461 |                 1 |                          153.67 |                           0.33 |                     2017 |     3 |                      153.67 |         3 |         3 |      1    |
-
+This function computes global performance (bibliometric) metrics for a given field.
 
 
 """
@@ -39,6 +16,8 @@ from .read_records import read_records
 
 
 def calculate_global_performance_metrics(
+    #
+    # FIELD PARAMS
     field: str,
     #
     # DATABASE PARAMS
