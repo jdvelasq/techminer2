@@ -20,7 +20,7 @@ Concordances Prompt
 
 
 """
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 from .concordances_prompt_from_records import concordances_prompt_from_records
 
 
@@ -42,7 +42,7 @@ def concordances_prompt(
     #
     # MAIN CODE:
     #
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

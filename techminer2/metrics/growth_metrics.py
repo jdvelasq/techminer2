@@ -86,15 +86,13 @@ import os
 #
 from dataclasses import dataclass
 
-from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
+from ..core.filter_records_by_metric import filter_records_by_metric
+from ..core.select_record_columns_by_metric import select_record_columns_by_metric
 from .globals.items_occurrences_by_year import items_occurrences_by_year
-from .performance_metrics import (
-    filter_indicators_by_metric,
-    select_indicators_by_metric,
-)
 
 
 def growth_metrics(
@@ -203,15 +201,15 @@ def growth_metrics(
         )
     )
 
-    filtered_indicators = filter_indicators_by_metric(
-        indicators=global_indicators,
+    filtered_indicators = filter_records_by_metric(
+        records=global_indicators,
         metric="OCC",
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
     )
-    selected_indicators = select_indicators_by_metric(filtered_indicators, "OCC")
+    selected_indicators = select_record_columns_by_metric(filtered_indicators, "OCC")
 
     prompt = generate_prompt(
         field=field,

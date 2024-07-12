@@ -32,7 +32,7 @@ Query
 """
 import duckdb
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def query(
@@ -47,7 +47,7 @@ def query(
 ):
     """:meta private:"""
 
-    database = read_records(
+    database = read_filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

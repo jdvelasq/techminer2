@@ -58,6 +58,10 @@ setup(
         "wordcloud",
     ],
     packages=[
+        #
+        "techminer2.core",
+        "techminer2.helpers",
+        #
         "techminer2._common",
         #
         "techminer2._files",

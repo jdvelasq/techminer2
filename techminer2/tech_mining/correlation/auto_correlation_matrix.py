@@ -59,7 +59,7 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ...metrics.tfidf import tfidf
 from .compute_corr_matrix import compute_corr_matrix
 

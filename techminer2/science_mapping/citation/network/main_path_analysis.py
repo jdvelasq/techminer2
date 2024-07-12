@@ -85,7 +85,7 @@ from ...._common.nx_compute_textposition_from_graph import (
 from ...._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from ...._common.nx_set_node_color_to_constant import nx_set_node_color_to_constant
 from ...._common.nx_visualize_graph import nx_visualize_graph
-from ....core.read_records import read_records
+from ....core.read_filtered_database import read_filtered_database
 
 
 def main_path_analysis(
@@ -222,7 +222,7 @@ def ___generate_report(
 
     #
     # Extracts the records using the specified parameters
-    records = read_records(
+    records = read_filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -391,7 +391,7 @@ def ___create_citations_table(
 ):
     #
     # Extracts the records using the specified parameters
-    records = read_records(
+    records = read_filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -62,9 +62,9 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..._common.format_prompt_for_records import format_prompt_for_records
+from ...helpers.format_prompt_for_records import format_prompt_for_records
 from ..._common.format_report_for_records import format_report_for_records
-from ...core.read_records import read_records
+from ...core.read_filtered_database import read_filtered_database
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -111,7 +111,7 @@ def most_cited_documents(
         cited_by_filter,
         **filters,
     ):
-        data_frame = read_records(
+        data_frame = read_filtered_database(
             root_dir=root_dir,
             database=database,
             year_filter=year_filter,

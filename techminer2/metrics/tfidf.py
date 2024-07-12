@@ -55,11 +55,11 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from .._common._counters_lib import add_counters_to_frame_axis
-from .._common._filtering_lib import generate_custom_items
+from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def tfidf(
@@ -103,7 +103,7 @@ def tfidf(
     )
 
     if custom_items is None:
-        custom_items = generate_custom_items(
+        custom_items = extract_top_n_items_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=top_n,
@@ -196,7 +196,7 @@ def _create_tf_matrix(
     cited_by_filter,
     **filters,
 ):
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

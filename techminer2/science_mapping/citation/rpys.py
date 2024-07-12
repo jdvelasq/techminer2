@@ -40,7 +40,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ...core.read_records import read_records
+from ...core.read_filtered_database import read_filtered_database
 
 
 def rpys(
@@ -71,7 +71,7 @@ def __table(
 ):
     """Reference Publication Year Spectroscopy."""
 
-    references = read_records(
+    references = read_filtered_database(
         root_dir=root_dir,
         database="references",
         year_filter=(None, None),

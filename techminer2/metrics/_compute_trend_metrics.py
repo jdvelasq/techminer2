@@ -47,7 +47,7 @@
 
 
 """
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def compute_trend_metrics(
@@ -64,7 +64,7 @@ def compute_trend_metrics(
     :meta private:
     """
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

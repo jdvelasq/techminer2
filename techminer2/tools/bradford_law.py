@@ -87,7 +87,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def bradford_law(
@@ -145,7 +145,7 @@ def __zones(
 ):
     """Source clustering throught Bradfors's Law."""
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -183,7 +183,7 @@ def __table(
     cited_by_filter=(None, None),
     **filters,
 ):
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

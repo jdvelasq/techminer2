@@ -9,7 +9,7 @@ import os.path
 import pandas as pd
 
 
-def read_records(
+def read_filtered_database(
     #
     # DATABASE PARAMS
     root_dir: str,

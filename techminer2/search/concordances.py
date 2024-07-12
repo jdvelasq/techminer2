@@ -78,8 +78,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .._common.format_prompt_for_paragraphs import format_prompt_for_paragraphs
-from ..core.read_records import read_records
+from ..helpers.format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from ..core.read_filtered_database import read_filtered_database
 
 TEXTWRAP_WIDTH = 73
 
@@ -101,7 +101,7 @@ def concordances(
 ):
     """:meta private:"""
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

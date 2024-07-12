@@ -8,7 +8,8 @@
     },
     "isort.args": [
         "--profile",
-        "black"
+        "black",
+        "--line-length 98"
     ],
     "python.testing.pytestArgs": [
         ".",

@@ -21,9 +21,9 @@ from collections import defaultdict
 import pandas as pd
 
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 from ..search.concordances import concordances_from_records
-from .format_prompt_for_records import format_prompt_for_records
+from ..helpers.format_prompt_for_records import format_prompt_for_records
 from .format_report_for_records import format_report_for_records
 from .make_report_dir import make_report_dir
 from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
@@ -169,7 +169,7 @@ def __extract_records_per_cluster(
     # Main code:
     #
 
-    records_main = read_records(
+    records_main = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -183,7 +183,7 @@ def __extract_records_per_cluster(
     selected_records = select_valid_records(exploded_records, communities)
     selected_records = create_raw_cluster_field(selected_records, field, items2cluster)
 
-    records_main = read_records(
+    records_main = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

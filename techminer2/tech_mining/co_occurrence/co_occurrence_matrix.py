@@ -126,14 +126,15 @@ Your task is ...
 from dataclasses import dataclass
 
 from ..._common._counters_lib import add_counters_to_frame_axis
-from ..._common._filtering_lib import generate_custom_items
-from ..._common._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
-from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ...core.sort_records_by_metric import sort_records_by_metric
+from ...helpers.sort_matrix_axis import sort_matrix_axis
+from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..._stopwords import load_user_stopwords
 from ...core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ...core.read_records import read_records
+from ...core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ...core.read_filtered_database import read_filtered_database
 
 
 def co_occurrence_matrix(
@@ -273,9 +274,9 @@ def ___matrix(
                 **filters,
             )
 
-            indicators = sort_indicators_by_metric(indicators, "OCC")
+            indicators = sort_records_by_metric(indicators, "OCC")
 
-            custom_items = generate_custom_items(
+            custom_items = extract_top_n_items_by_metric(
                 indicators=indicators,
                 metric="OCC",
                 top_n=top_n,
@@ -446,7 +447,7 @@ def global_co_occurrence_matrix_list(
 ):
     """:meta private:"""
 
-    records = read_records(
+    records = read_filtered_database(
         # Database params:
         root_dir,
         database=database,
@@ -468,12 +469,8 @@ def global_co_occurrence_matrix_list(
         matrix_list = matrix_list[~matrix_list[name].isin(stopwords)]
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-        "sum"
-    )
+    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
 
-    matrix_list = matrix_list.sort_values(
-        ["OCC", "row", "column"], ascending=[False, True, True]
-    )
+    matrix_list = matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
 
     return matrix_list

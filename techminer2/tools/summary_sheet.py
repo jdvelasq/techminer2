@@ -28,7 +28,7 @@ SummarySheet
 """
 import pandas as pd
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def summary_sheet(
@@ -42,7 +42,7 @@ def summary_sheet(
 ):
     """:meta private:"""
 
-    records = read_records(
+    records = read_filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

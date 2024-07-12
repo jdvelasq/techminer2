@@ -74,7 +74,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 
 """
 from .._common.format_report_for_records import format_report_for_records
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def find_records(
@@ -129,7 +129,7 @@ def find_records(
 
         return records
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

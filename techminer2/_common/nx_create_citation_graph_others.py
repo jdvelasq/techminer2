@@ -9,7 +9,7 @@
 import networkx as nx
 import numpy as np
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 from ..metrics.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import (
@@ -135,7 +135,7 @@ def __add_weighted_edges_from(
     cited_by_filter=(None, None),
     **filters,
 ):
-    records = read_records(
+    records = read_filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

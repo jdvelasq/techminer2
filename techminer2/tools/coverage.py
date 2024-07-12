@@ -35,7 +35,7 @@ Coverage
 
 """
 from .._stopwords import load_user_stopwords
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def coverage(
@@ -52,7 +52,7 @@ def coverage(
 
     stopwords = load_user_stopwords(root_dir)
 
-    documents = read_records(
+    documents = read_filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

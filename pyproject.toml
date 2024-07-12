@@ -1,5 +1,5 @@
 [tool.isort]
-line_length = 88
+line_length = 98
 
 [tool.black]
-line-length = 88
+line-length = 98

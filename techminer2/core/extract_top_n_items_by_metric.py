@@ -1,40 +1,10 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
-Functions for item selection.
+Extracts the top n items (row names) by a metric.
 
 """
 
 
-def filter_custom_items_from_axis(dataframe, custom_items, axis):
-    """Filters custom items from a dataframe axis."""
-
-    if axis == 0:
-        topics_list = dataframe.index.tolist()
-    else:
-        topics_list = dataframe.column.tolist()
-
-    custom_items = [topic for topic in custom_items if topic in topics_list]
-
-    return custom_items
-
-
-def filter_custom_items_from_column(dataframe, col_name, custom_items):
-    """Filters custom items from a dataframe column."""
-
-    custom_items = [
-        item for item in custom_items if item in dataframe[col_name].drop_duplicates().tolist()
-    ]
-
-    return custom_items
-
-
-def generate_custom_items(
+def extract_top_n_items_by_metric(
     indicators,
     metric,
     top_n,
@@ -55,10 +25,9 @@ def generate_custom_items(
 
     """
 
-    from ._sorting_lib import sort_indicators_by_metric
+    from .sort_records_by_metric import sort_records_by_metric
 
     def filter_by_top_n(indicators, top_n):
-        """Returns the table of indicators filtered by top_n."""
 
         return indicators.head(top_n)
 
@@ -98,7 +67,7 @@ def generate_custom_items(
 
     #
     # 2. Sort the dataframe by metric.
-    indicators = sort_indicators_by_metric(indicators, metric)
+    indicators = sort_records_by_metric(indicators, metric)
 
     #
     # 3. Filters the dataframe by top_n.

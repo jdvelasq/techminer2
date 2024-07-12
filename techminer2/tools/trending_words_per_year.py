@@ -75,11 +75,11 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from .._common._filtering_lib import generate_custom_items
-from .._common._sorting_lib import sort_indicators_by_metric
+from ..core.sort_records_by_metric import sort_records_by_metric
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
+from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..metrics.globals.items_occurrences_by_year import items_occurrences_by_year
 
 
@@ -136,9 +136,9 @@ def trending_words_per_year(
             **filters,
         )
 
-        indicators = sort_indicators_by_metric(indicators, metric="OCC")
+        indicators = sort_records_by_metric(indicators, metric="OCC")
 
-        custom_items = generate_custom_items(
+        custom_items = extract_top_n_items_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=None,
@@ -181,9 +181,7 @@ def trending_words_per_year(
     ).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
-    words_by_year = words_by_year.assign(
-        global_citations=words_by_year.index.map(word2citation)
-    )
+    words_by_year = words_by_year.assign(global_citations=words_by_year.index.map(word2citation))
 
     words_by_year = words_by_year.sort_values(
         by=["year_med", "OCC", "global_citations"],
@@ -201,9 +199,7 @@ def trending_words_per_year(
     words_by_year = words_by_year.assign(
         height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
     )
-    words_by_year = words_by_year.assign(
-        width=words_by_year.year_q3 - words_by_year.year_q1 + 1
-    )
+    words_by_year = words_by_year.assign(width=words_by_year.year_q3 - words_by_year.year_q1 + 1)
 
     # -----------------------------------------------------------------------------------
     # Reordeer the terms with the aim of improving the visualization

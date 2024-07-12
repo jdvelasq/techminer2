@@ -40,9 +40,9 @@ from dataclasses import dataclass
 
 from textblob import TextBlob
 
-from .._common.format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from ..helpers.format_prompt_for_paragraphs import format_prompt_for_paragraphs
 from .._common.thesaurus_lib import load_system_thesaurus_as_dict
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def lemma_associations(
@@ -119,7 +119,7 @@ def __get_abstract_sentences(
     cited_by_filter,
     **filters,
 ):
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

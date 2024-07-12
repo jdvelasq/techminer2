@@ -13,7 +13,7 @@ from sklearn.decomposition import NMF, LatentDirichletAllocation
 
 from ..._common.format_report_for_records import format_report_for_records
 from ..._common.make_report_dir import make_report_dir
-from ...core.read_records import read_records
+from ...core.read_filtered_database import read_filtered_database
 from ...metrics import tfidf
 
 
@@ -53,7 +53,7 @@ class TopicModeler:
     ):
         self.root_dir = root_dir
 
-        self.records = read_records(
+        self.records = read_filtered_database(
             #
             # DATABASE PARAMS:
             root_dir=root_dir,

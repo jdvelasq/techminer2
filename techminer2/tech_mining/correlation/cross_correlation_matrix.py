@@ -60,7 +60,7 @@ Analyze the ...
 """
 from dataclasses import dataclass
 
-from ..._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 from .compute_corr_matrix import compute_corr_matrix
 

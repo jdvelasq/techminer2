@@ -46,18 +46,20 @@ Your task is ...
 import os
 from dataclasses import dataclass
 
-from .._common._filtering_lib import generate_custom_items
-from .._common._sorting_lib import sort_indicators_by_metric
-from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
+from ..core.filter_records_by_metric import filter_records_by_metric
+from ..core.select_record_columns_by_metric import select_record_columns_by_metric
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
 def performance_metrics(
+    #
+    # ITEMS PARAMS:
     field,
     #
     # FILTER PARAMS:
@@ -76,7 +78,9 @@ def performance_metrics(
 ):
     """:meta private:"""
 
-    global_indicators = calculate_global_performance_metrics(
+    records = calculate_global_performance_metrics(
+        #
+        # ITEMS PARAMS:
         field=field,
         #
         # DATABASE PARAMS:
@@ -86,15 +90,20 @@ def performance_metrics(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-    filtered_indicators = filter_indicators_by_metric(
-        indicators=global_indicators,
+
+    filtered_records = filter_records_by_metric(
+        records=records,
         metric=metric,
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
     )
-    selected_indicators = select_indicators_by_metric(filtered_indicators, metric)
+
+    selected_records = select_record_columns_by_metric(
+        filtered_records,
+        metric,
+    )
 
     if metric == "OCCGC":
         metric = "OCC"
@@ -102,154 +111,20 @@ def performance_metrics(
     prompt = generate_prompt(
         field=field,
         metric=metric,
-        indicators=selected_indicators.head(200),
+        indicators=selected_records.head(200),
     )
 
     #
     # Save results to disk as csv tab-delimited file for papers
     file_path = os.path.join(root_dir, "reports", field + ".csv")
-    selected_indicators.to_csv(file_path, sep="\t", header=True, index=True)
+    selected_records.to_csv(file_path, sep="\t", header=True, index=True)
 
     @dataclass
     class Results:
-        df_ = selected_indicators
+        df_ = selected_records
         prompt_ = prompt
 
     return Results()
-
-
-def filter_indicators_by_metric(
-    indicators,
-    metric,
-    top_n,
-    occ_range,
-    gc_range,
-    custom_items,
-):
-    """:meta private:"""
-
-    indicators = indicators.copy()
-
-    if custom_items is None:
-        #
-        if metric == "OCCGC":
-            #
-            # In this case not is possibe to use trend_analysis
-            #
-            # Selects the top_n items by OCC
-            custom_items_occ = generate_custom_items(
-                indicators=indicators,
-                metric="OCC",
-                top_n=top_n,
-                occ_range=occ_range,
-                gc_range=gc_range,
-            )
-
-            #
-            # Selects the top_n items by GCS
-            custom_items_gc = generate_custom_items(
-                indicators=indicators,
-                metric="global_citations",
-                top_n=top_n,
-                occ_range=occ_range,
-                gc_range=gc_range,
-            )
-
-            custom_items = custom_items_occ[:]
-            custom_items += [
-                item for item in custom_items_gc if item not in custom_items_occ
-            ]
-
-        else:
-            #
-            # Default custom items selection
-            custom_items = generate_custom_items(
-                indicators=indicators,
-                metric=metric,
-                top_n=top_n,
-                occ_range=occ_range,
-                gc_range=gc_range,
-            )
-
-    indicators = indicators[indicators.index.isin(custom_items)]
-    indicators = sort_indicators_by_metric(indicators, metric)
-
-    return indicators
-
-
-def select_indicators_by_metric(indicators, metric):
-    """:meta private:"""
-
-    if metric == "OCCGC":
-        columns = [
-            "rank_occ",
-            "rank_gcs",
-            "rank_lcs",
-            "OCC",
-            "global_citations",
-            "local_citations",
-            "h_index",
-            "g_index",
-            "m_index",
-        ]
-
-    if metric == "OCC":
-        #
-        between = [_ for _ in indicators.columns if _.startswith("between")]
-        if len(between) > 0:
-            between = between[0]
-        else:
-            between = None
-        #
-        before = [_ for _ in indicators.columns if _.startswith("before")]
-        if len(before) > 0:
-            before = before[0]
-        else:
-            before = None
-        #
-        columns = [
-            "rank_occ",
-            "OCC",
-        ]
-        #
-        if between is not None:
-            columns += [between]
-        if before is not None:
-            columns += [before]
-        if "growth_percentage" in indicators.columns:
-            columns += ["growth_percentage"]
-        if "average_growth_rate" in indicators.columns:
-            columns += ["average_growth_rate"]
-        if "average_docs_per_year" in indicators.columns:
-            columns += ["average_docs_per_year"]
-        indicators.columns
-
-    if metric in [
-        "global_citations",
-        "local_citations",
-    ]:
-        columns = [
-            "rank_gcs",
-            "rank_lcs",
-            "global_citations",
-            "local_citations",
-            "global_citations_per_document",
-            "local_citations_per_document",
-            "global_citations_per_year",
-        ]
-
-    if metric in [
-        "h_index",
-        "g_index",
-        "m_index",
-    ]:
-        columns = [
-            "h_index",
-            "g_index",
-            "m_index",
-        ]
-
-    return indicators[columns]
 
 
 def generate_prompt(field, metric, indicators):

@@ -88,8 +88,8 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.read_records import read_records
+from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..core.read_filtered_database import read_filtered_database
 
 
 def general_metrics(
@@ -721,7 +721,7 @@ def main_metrics_table(
     :meta private:
     """
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

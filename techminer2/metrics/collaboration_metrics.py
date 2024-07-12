@@ -50,9 +50,9 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.express as px
 
-from .._common._filtering_lib import generate_custom_items
-from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.read_records import read_records
+from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.read_filtered_database import read_filtered_database
 
 
 def collaboration_metrics(
@@ -96,7 +96,7 @@ def collaboration_metrics(
     ):
         #
         # Read documents from the database
-        records = read_records(
+        records = read_filtered_database(
             #
             # DATABASE PARAMS:
             root_dir=root_dir,
@@ -168,7 +168,7 @@ def collaboration_metrics(
         #
         #  Filter the metrics
         if custom_items is None:
-            custom_items = generate_custom_items(
+            custom_items = extract_top_n_items_by_metric(
                 indicators=metrics,
                 metric="OCC",
                 top_n=top_n,

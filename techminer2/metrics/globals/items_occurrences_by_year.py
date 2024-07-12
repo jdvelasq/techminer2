@@ -38,7 +38,7 @@ Buchak G.              0     0     0     1     0
 
 """
 from ..._stopwords import load_user_stopwords
-from ...core.read_records import read_records
+from ...core.read_filtered_database import read_filtered_database
 from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
 
@@ -82,7 +82,7 @@ def items_occurrences_by_year(
     stopwords = load_user_stopwords(root_dir=root_dir)
     indicators_by_year = indicators_by_year.drop(stopwords, axis=0, errors="ignore")
 
-    records = read_records(
+    records = read_filtered_database(
         #
         # DATABASE PARAMS
         root_dir=root_dir,

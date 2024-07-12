@@ -202,11 +202,11 @@ from dataclasses import dataclass
 import plotly.express as px  # type: ignore
 
 from .._common._counters_lib import add_counters_to_frame_axis
-from .._common._filtering_lib import generate_custom_items
-from .._common.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
+from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..science_mapping.documents_per_item import documents_per_item
 from .globals.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 from .globals.items_occurrences_by_year import items_occurrences_by_year
@@ -263,7 +263,7 @@ def terms_by_year(
                 **filters,
             )
 
-            custom_items = generate_custom_items(
+            custom_items = extract_top_n_items_by_metric(
                 indicators,
                 metric=metric,
                 top_n=top_n,

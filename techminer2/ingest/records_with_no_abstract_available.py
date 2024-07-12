@@ -29,7 +29,7 @@ nan
 
 
 """
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def records_with_no_abstract_available(
@@ -41,7 +41,7 @@ def records_with_no_abstract_available(
     :meta private:
     """
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database="main",
         year_filter=(None, None),

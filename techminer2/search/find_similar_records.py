@@ -96,7 +96,7 @@ from nltk.stem import WordNetLemmatizer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "words.txt"
@@ -119,7 +119,7 @@ def find_similar_records(
 
     #
     # Load the abstracts
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

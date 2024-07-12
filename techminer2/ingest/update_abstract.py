@@ -24,7 +24,7 @@ Update Abstract
 """
 import os
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 
 
 def update_abstract(
@@ -38,7 +38,7 @@ def update_abstract(
     :meta private:
     """
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database="main",
         year_filter=(None, None),

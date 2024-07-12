@@ -23,7 +23,7 @@ Abstract concordances exploration tool.
 """
 import pandas as pd
 
-from ..core.read_records import read_records
+from ..core.read_filtered_database import read_filtered_database
 from .concordances_lib import get_context_phrases_from_records
 
 
@@ -92,7 +92,7 @@ def concordances_contexts(
 
         return "\n".join(texts)
 
-    records = read_records(
+    records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

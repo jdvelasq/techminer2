@@ -10,9 +10,9 @@ This function computes global performance (bibliometric) metrics for a given fie
 
 
 """
-from .._common._sorting_lib import sort_indicators_by_metric
+from .sort_records_by_metric import sort_records_by_metric
 from .._stopwords import load_user_stopwords
-from .read_records import read_records
+from .read_filtered_database import read_filtered_database
 
 
 def calculate_global_performance_metrics(
@@ -29,7 +29,7 @@ def calculate_global_performance_metrics(
 ):
     """:meta private:"""
 
-    records = read_records(
+    records = read_filtered_database(
         #
         # DATABASE PARAMS
         root_dir=root_dir,
@@ -72,9 +72,7 @@ def calculate_global_performance_metrics(
         records = records.copy()
 
         column_sum = records[[field, column]].dropna()
-        column_sum[field] = (
-            column_sum[field].str.split(";").map(lambda x: [_.strip() for _ in x])
-        )
+        column_sum[field] = column_sum[field].str.split(";").map(lambda x: [_.strip() for _ in x])
         column_sum = column_sum.explode(field)
         column_sum = column_sum.groupby(field, as_index=True).sum().astype(int)
         indicators.loc[column_sum.index, column] = column_sum
@@ -89,9 +87,7 @@ def calculate_global_performance_metrics(
     def compute_global_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            global_citations_per_document=(
-                indicators.global_citations / indicators.OCC
-            ).round(2)
+            global_citations_per_document=(indicators.global_citations / indicators.OCC).round(2)
         )
         return indicators
 
@@ -101,9 +97,7 @@ def calculate_global_performance_metrics(
     def compute_local_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            local_citations_per_document=(
-                indicators.local_citations / indicators.OCC
-            ).round(2)
+            local_citations_per_document=(indicators.local_citations / indicators.OCC).round(2)
         )
         return indicators
 
@@ -116,22 +110,18 @@ def calculate_global_performance_metrics(
         records = records.copy()
 
         records = records[[field, "year"]].dropna()
-        records[field] = (
-            records[field].str.split(";").map(lambda x: [_.strip() for _ in x])
-        )
+        records[field] = records[field].str.split(";").map(lambda x: [_.strip() for _ in x])
         records = records.explode(field)
 
-        records["first_publication_year"] = records.groupby(field)["year"].transform(
-            "min"
-        )
+        records["first_publication_year"] = records.groupby(field)["year"].transform("min")
 
         records = records.drop("year", axis=1)
         records = records.drop_duplicates()
         records = records.set_index(field)
 
-        indicators.loc[
-            records.first_publication_year.index, "first_publication_year"
-        ] = records.first_publication_year
+        indicators.loc[records.first_publication_year.index, "first_publication_year"] = (
+            records.first_publication_year
+        )
 
         return indicators
 
@@ -153,9 +143,7 @@ def calculate_global_performance_metrics(
 
         indicators = indicators.copy()
         indicators = indicators.assign(
-            global_citations_per_year=(
-                indicators.global_citations / indicators.age
-            ).round(2)
+            global_citations_per_year=(indicators.global_citations / indicators.age).round(2)
         )
 
         return indicators
@@ -172,9 +160,7 @@ def calculate_global_performance_metrics(
         records[field] = records[field].str.split(";")
         records = records.explode(field)
         records[field] = records[field].str.strip()
-        records = records.sort_values(
-            [field, "global_citations"], ascending=[True, False]
-        )
+        records = records.sort_values([field, "global_citations"], ascending=[True, False])
         records = records.reset_index(drop=True)
 
         records = records.assign(
@@ -216,13 +202,13 @@ def calculate_global_performance_metrics(
 
     # --------------------------------------------------------------------------------------------
     def compute_ranks(indicators):
-        indicators = sort_indicators_by_metric(indicators, "global_citations")
+        indicators = sort_records_by_metric(indicators, "global_citations")
         indicators.insert(0, "rank_gcs", range(1, len(indicators) + 1))
 
-        indicators = sort_indicators_by_metric(indicators, "local_citations")
+        indicators = sort_records_by_metric(indicators, "local_citations")
         indicators.insert(0, "rank_lcs", range(1, len(indicators) + 1))
 
-        indicators = sort_indicators_by_metric(indicators, "OCC")
+        indicators = sort_records_by_metric(indicators, "OCC")
         indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))
         return indicators
 
