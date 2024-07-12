@@ -54,7 +54,9 @@ from typing import Literal
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from .._common._counters_lib import add_counters_to_frame_axis
+from ..helpers.append_occurrences_and_citations_to_axis import (
+    append_occurrences_and_citations_to_axis,
+)
 from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
@@ -142,7 +144,7 @@ def tfidf(
     else:
         result = result.astype(int)
 
-    result = add_counters_to_frame_axis(
+    result = append_occurrences_and_citations_to_axis(
         dataframe=result,
         axis=1,
         field=field,
@@ -172,9 +174,7 @@ def _sort_columns(result):
     topics["citations"] = topics["citations"].str.split(":")
     topics["citations"] = topics["citations"].map(lambda x: x[1]).astype(int)
 
-    topics = topics.sort_values(
-        by=["OCC", "citations", "topic"], ascending=[False, False, True]
-    )
+    topics = topics.sort_values(by=["OCC", "citations", "topic"], ascending=[False, False, True])
     sorted_topics = topics.topic.tolist()
     result = result[sorted_topics]
     return result
@@ -212,9 +212,7 @@ def _create_tf_matrix(
     records = records.explode(field)
     records[field] = records[field].str.strip()
 
-    grouped_records = records.groupby(["article", field], as_index=False).agg(
-        {"OCC": "sum"}
-    )
+    grouped_records = records.groupby(["article", field], as_index=False).agg({"OCC": "sum"})
 
     result = pd.pivot(
         index="article",

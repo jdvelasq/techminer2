@@ -125,7 +125,9 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-from ..._common._counters_lib import add_counters_to_frame_axis
+from ...helpers.append_occurrences_and_citations_to_axis import (
+    append_occurrences_and_citations_to_axis,
+)
 from ...core.sort_records_by_metric import sort_records_by_metric
 from ...helpers.sort_matrix_axis import sort_matrix_axis
 from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
@@ -375,7 +377,7 @@ def ___matrix(
     row_custom_items = matrix.index.tolist()
     col_custom_items = matrix.columns.tolist()
 
-    matrix = add_counters_to_frame_axis(
+    matrix = append_occurrences_and_citations_to_axis(
         dataframe=matrix,
         axis=0,
         field=rows,
@@ -388,7 +390,7 @@ def ___matrix(
         **filters,
     )
 
-    matrix = add_counters_to_frame_axis(
+    matrix = append_occurrences_and_citations_to_axis(
         dataframe=matrix,
         axis=1,
         field=columns,

@@ -74,7 +74,7 @@ SHADOW_BANKING 02:0253              0     0     0     1     1
 
 .. raw:: html
 
-    <iframe src="../../../_static/metrics/terms_by_year.html" 
+    <iframe src="../_static/metrics/terms_by_year.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
     
@@ -201,7 +201,9 @@ from dataclasses import dataclass
 
 import plotly.express as px  # type: ignore
 
-from .._common._counters_lib import add_counters_to_frame_axis
+from ..helpers.append_occurrences_and_citations_to_axis import (
+    append_occurrences_and_citations_to_axis,
+)
 from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..core.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
@@ -273,7 +275,7 @@ def terms_by_year(
 
         data_frame = data_frame[data_frame.index.isin(custom_items)]
         data_frame = data_frame.loc[custom_items, :]
-        data_frame = add_counters_to_frame_axis(
+        data_frame = append_occurrences_and_citations_to_axis(
             data_frame,
             axis=0,
             field=field,
@@ -386,12 +388,8 @@ def terms_by_year(
         data_frame = data_frame[data_frame[field].isin(items)]
 
         data_frame["TOTAL_OCC"] = data_frame.groupby(field)["OCC"].transform("sum")
-        data_frame["TOTAL_GC"] = data_frame.groupby(field)[
-            "global_citations"
-        ].transform("sum")
-        data_frame["TOTAL_LC"] = data_frame.groupby(field)["local_citations"].transform(
-            "sum"
-        )
+        data_frame["TOTAL_GC"] = data_frame.groupby(field)["global_citations"].transform("sum")
+        data_frame["TOTAL_LC"] = data_frame.groupby(field)["local_citations"].transform("sum")
         data_frame = data_frame.sort_values(
             ["TOTAL_OCC", "TOTAL_GC", "TOTAL_LC", field, "year"],
             ascending=[False, False, False, True, True],

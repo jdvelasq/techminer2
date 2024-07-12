@@ -9,7 +9,9 @@
 import networkx as nx
 import numpy as np
 
-from .._common._counters_lib import add_counters_to_frame_axis
+from ..helpers.append_occurrences_and_citations_to_axis import (
+    append_occurrences_and_citations_to_axis,
+)
 from ..core.read_filtered_database import read_filtered_database
 from ..metrics.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
@@ -111,9 +113,7 @@ def nx_create_bibliographic_coupling_graph_for_others(
     # )
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
@@ -155,14 +155,10 @@ def __add_weighted_edges_from(
     data_frame = records[[unit_of_analysis, "global_references"]]
     data_frame = data_frame.dropna()
     data_frame[unit_of_analysis] = (
-        data_frame[unit_of_analysis]
-        .str.split("; ")
-        .map(lambda x: [y.strip() for y in x])
+        data_frame[unit_of_analysis].str.split("; ").map(lambda x: [y.strip() for y in x])
     )
     data_frame["global_references"] = (
-        data_frame["global_references"]
-        .str.split(";")
-        .map(lambda x: [y.strip() for y in x])
+        data_frame["global_references"].str.split(";").map(lambda x: [y.strip() for y in x])
     )
 
     data_frame = data_frame.explode(unit_of_analysis)
@@ -209,7 +205,7 @@ def __add_weighted_edges_from(
     #
     # Adds the counters to the data frame:
     data_frame.index = data_frame.row.values
-    data_frame = add_counters_to_frame_axis(
+    data_frame = append_occurrences_and_citations_to_axis(
         dataframe=data_frame,
         axis=0,
         field=unit_of_analysis,
@@ -226,7 +222,7 @@ def __add_weighted_edges_from(
     #
     # Adds the counters to the data frame:
     data_frame.index = data_frame.column.values
-    data_frame = add_counters_to_frame_axis(
+    data_frame = append_occurrences_and_citations_to_axis(
         dataframe=data_frame,
         axis=0,
         field=unit_of_analysis,
