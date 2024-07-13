@@ -7,11 +7,11 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Replace Abbreviations 
+Apply Abbreviations Thesaurus
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.descriptors import replace_abbreviations
->>> replace_string(  
+>>> from techminer2.refine.thesaurus.abbreviations import apply_abbreviations_thesaurus
+>>> apply_abbreviations_thesaurus(  
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -76,7 +76,7 @@ def apply_abbreviations_thesaurus(
     abbreviations_dict = load_abbreviations_as_dict()
 
     # -------------------------------------------------------------------------------------------
-    for abbr, values in tqdm(abbreviations_dict.items(), desc="Remplacing abbreviations"):
+    for abbr, values in tqdm(abbreviations_dict.items(), desc="Remmplacing abbreviations"):
         #
         # Replace abbreviations in descriptor keys
         for value in values:
@@ -121,3 +121,4 @@ def apply_abbreviations_thesaurus(
                     file.write("    " + item + "\n")
 
     save_thesaurus()
+    print("--INFO-- The file example/thesauri/descriptors.the.txt has been modified.")
