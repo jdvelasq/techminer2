@@ -77,7 +77,7 @@ identifying the most relevant terms associated with a given term.
 """
 import networkx as nx
 
-from ..tools.associations.item_associations import item_associations
+from ...tools.associations.item_associations import item_associations
 from .nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )
@@ -192,9 +192,7 @@ def nx_radial_diagram(
     #
     # Sets the node attributes
     # nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-    nx_graph = nx_compute_node_size_from_item_occ(
-        nx_graph, node_size_min, node_size_max
-    )
+    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
     nx_graph = nx_compute_textfont_size_from_item_occ(
         nx_graph, textfont_size_min, textfont_size_max
     )
@@ -204,9 +202,7 @@ def nx_radial_diagram(
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(
-        nx_graph, edge_width_min, edge_width_max
-    )
+    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
 

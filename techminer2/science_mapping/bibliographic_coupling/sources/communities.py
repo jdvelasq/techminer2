@@ -45,10 +45,10 @@ Communities
 
 
 """
-from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
     nx_create_bibliographic_coupling_graph_for_others,
 )
-from ...._common.nx_extract_communities_as_data_frame import (
+from ....core.network.nx_extract_communities_as_data_frame import (
     nx_extract_communities_as_data_frame,
 )
 

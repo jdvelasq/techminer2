@@ -38,8 +38,8 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
 
 
 """
-from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph_for_documents import (
+from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
     nx_create_bibliographic_coupling_graph_for_documents,
 )
 

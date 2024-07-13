@@ -36,8 +36,8 @@ MANAGE SCI 1:33                     25     0.018472   0.903226  0.042645
 
 
 """
-from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
+from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_sources"
 

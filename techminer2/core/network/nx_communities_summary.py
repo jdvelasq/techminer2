@@ -15,7 +15,9 @@ from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
 def nx_communities_summary(nx_graph, conserve_counters):
     """Gets communities from a networkx graph as a data frame."""
 
-    communities_dict = nx_extract_communities_as_dict(nx_graph, conserve_counters=conserve_counters)
+    communities_dict = nx_extract_communities_as_dict(
+        nx_graph, conserve_counters=conserve_counters
+    )
     communities_len = {}
     communities_perc = {}
 

@@ -9,7 +9,9 @@
 import graphviz
 
 from .nx_communities_summary import nx_communities_summary
-from .nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from .nx_extract_communities_as_data_frame import (
+    nx_extract_communities_as_data_frame,
+)
 
 
 def nx_concept_grid(

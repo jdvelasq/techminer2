@@ -66,25 +66,25 @@ import networkx as nx
 import numpy as np
 
 from ...._common.format_report_for_records import format_report_for_records
-from ...._common.nx_compute_edge_width_from_edge_weight import (
+from ....core.network.nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )
-from ...._common.nx_compute_node_size_from_item_citations import (
+from ....core.network.nx_compute_node_size_from_item_citations import (
     nx_compute_node_size_from_item_citations,
 )
-from ...._common.nx_compute_spring_layout import nx_compute_spring_layout
-from ...._common.nx_compute_textfont_opacity_from_item_citations import (
+from ....core.network.nx_compute_spring_layout import nx_compute_spring_layout
+from ....core.network.nx_compute_textfont_opacity_from_item_citations import (
     nx_compute_textfont_opacity_from_item_citations,
 )
-from ...._common.nx_compute_textfont_size_from_item_citations import (
+from ....core.network.nx_compute_textfont_size_from_item_citations import (
     nx_compute_textfont_size_from_item_citations,
 )
-from ...._common.nx_compute_textposition_from_graph import (
+from ....core.network.nx_compute_textposition_from_graph import (
     nx_compute_textposition_from_graph,
 )
-from ...._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ...._common.nx_set_node_color_to_constant import nx_set_node_color_to_constant
-from ...._common.nx_visualize_graph import nx_visualize_graph
+from ....core.network.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ....core.network.nx_set_node_color_to_constant import nx_set_node_color_to_constant
+from ....core.network.nx_visualize_graph import nx_visualize_graph
 from ....core.read_filtered_database import read_filtered_database
 
 

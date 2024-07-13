@@ -11,8 +11,8 @@
 #
 import networkx as nx
 
-from ..tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
-from ..tech_mining.co_occurrence.normalize_co_occurrence_matrix import (
+from ...tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...tech_mining.co_occurrence.normalize_co_occurrence_matrix import (
     normalize_co_occurrence_matrix,
 )
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
@@ -118,9 +118,7 @@ def nx_create_co_occurrence_graph(
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes

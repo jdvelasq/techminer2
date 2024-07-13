@@ -63,24 +63,24 @@ Radial Diagram
 """
 import networkx as nx
 
-from ..._common.nx_compute_edge_width_from_edge_weight import (
+from ...core.network.nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )
-from ..._common.nx_compute_node_size_from_item_occ import (
+from ...core.network.nx_compute_node_size_from_item_occ import (
     nx_compute_node_size_from_item_occ,
 )
-from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
-from ..._common.nx_compute_textfont_opacity_from_item_occ import (
+from ...core.network.nx_compute_spring_layout import nx_compute_spring_layout
+from ...core.network.nx_compute_textfont_opacity_from_item_occ import (
     nx_compute_textfont_opacity_from_item_occ,
 )
-from ..._common.nx_compute_textfont_size_from_item_occ import (
+from ...core.network.nx_compute_textfont_size_from_item_occ import (
     nx_compute_textfont_size_from_item_occ,
 )
-from ..._common.nx_compute_textposition_from_graph import (
+from ...core.network.nx_compute_textposition_from_graph import (
     nx_compute_textposition_from_graph,
 )
-from ..._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ..._common.nx_visualize_graph import nx_visualize_graph
+from ...core.network.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ...core.network.nx_visualize_graph import nx_visualize_graph
 from ...tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 
@@ -184,9 +184,7 @@ def radial_diagram(
     positions = []
     names = []
     for item in items:
-        position, name = extract_item_position_and_name(
-            associations.columns.tolist(), item
-        )
+        position, name = extract_item_position_and_name(associations.columns.tolist(), item)
         positions.append(position)
         names.append(name)
 
@@ -215,9 +213,7 @@ def radial_diagram(
     # Sets the node attributes
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes

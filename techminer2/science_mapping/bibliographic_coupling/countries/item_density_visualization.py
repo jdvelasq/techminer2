@@ -51,10 +51,10 @@ Item Density Visualization
 
                                              
 """
-from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
     nx_create_bibliographic_coupling_graph_for_others,
 )
-from ...._common.nx_visualize_item_density import nx_visualize_item_density
+from ....core.network.nx_visualize_item_density import nx_visualize_item_density
 
 UNIT_OF_ANALYSIS = "countries"
 

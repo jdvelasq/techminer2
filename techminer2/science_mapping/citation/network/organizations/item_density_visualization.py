@@ -54,8 +54,8 @@ Item Density Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....._common.nx_create_citation_graph_others import nx_create_citation_graph_others
-from ....._common.nx_visualize_item_density import nx_visualize_item_density
+from .....core.network.nx_create_citation_graph_others import nx_create_citation_graph_others
+from .....core.network.nx_visualize_item_density import nx_visualize_item_density
 
 UNIT_OF_ANALYSIS = "organizations"
 

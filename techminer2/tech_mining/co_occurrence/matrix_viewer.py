@@ -106,24 +106,24 @@ Matrix Viewer
 """
 import networkx as nx
 
-from ..._common.nx_compute_edge_width_from_edge_weight import (
+from ...core.network.nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )
-from ..._common.nx_compute_node_size_from_item_occ import (
+from ...core.network.nx_compute_node_size_from_item_occ import (
     nx_compute_node_size_from_item_occ,
 )
-from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
-from ..._common.nx_compute_textfont_opacity_from_item_occ import (
+from ...core.network.nx_compute_spring_layout import nx_compute_spring_layout
+from ...core.network.nx_compute_textfont_opacity_from_item_occ import (
     nx_compute_textfont_opacity_from_item_occ,
 )
-from ..._common.nx_compute_textfont_size_from_item_occ import (
+from ...core.network.nx_compute_textfont_size_from_item_occ import (
     nx_compute_textfont_size_from_item_occ,
 )
-from ..._common.nx_compute_textposition_from_graph import (
+from ...core.network.nx_compute_textposition_from_graph import (
     nx_compute_textposition_from_graph,
 )
-from ..._common.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ..._common.nx_visualize_graph import nx_visualize_graph
+from ...core.network.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ...core.network.nx_visualize_graph import nx_visualize_graph
 from .co_occurrence_matrix import co_occurrence_matrix
 
 
@@ -211,9 +211,7 @@ def matrix_viewer(
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
 
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
     #
     # Sets the edge attributes
     nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_range)

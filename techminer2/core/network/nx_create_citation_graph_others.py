@@ -9,8 +9,8 @@
 import networkx as nx
 import numpy as np
 
-from ..core.read_filtered_database import read_filtered_database
-from ..metrics.performance_metrics import performance_metrics
+from ..read_filtered_database import read_filtered_database
+from ...metrics.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,

@@ -41,8 +41,8 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from ..._common.nx_compute_metrics import nx_compute_metrics
-from ..._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.network.nx_compute_metrics import nx_compute_metrics
+from ...core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 
 def metrics(

@@ -40,8 +40,8 @@ Buchak G. 1:0390           2     0.000000   0.105263  0.052219
 
 
 """
-from ....._common.nx_compute_metrics import nx_compute_metrics
-from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .....core.network.nx_compute_metrics import nx_compute_metrics
+from .....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 FIELD = "authors"
 

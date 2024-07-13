@@ -55,8 +55,8 @@ Network Visualization
 
 
 """
-from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....._common.nx_visualize_graph import nx_visualize_graph
+from .....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .....core.network.nx_visualize_graph import nx_visualize_graph
 
 FIELD = "countries"
 

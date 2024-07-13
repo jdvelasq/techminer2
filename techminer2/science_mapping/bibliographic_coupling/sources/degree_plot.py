@@ -57,10 +57,10 @@ Your task is ...
 
 
 """
-from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
     nx_create_bibliographic_coupling_graph_for_others,
 )
-from ...._common.nx_create_degree_plot import nx_create_degree_plot
+from ....core.network.nx_create_degree_plot import nx_create_degree_plot
 
 UNIT_OF_ANALYSIS = "abbr_source_title"
 

@@ -39,8 +39,8 @@ Denmark 02:0330             4     0.050682   0.355789  0.074453
 
 
 """
-from ....._common.nx_compute_metrics import nx_compute_metrics
-from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .....core.network.nx_compute_metrics import nx_compute_metrics
+from .....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 FIELD = "countries"
 

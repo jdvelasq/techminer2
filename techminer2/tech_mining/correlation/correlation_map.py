@@ -8,20 +8,20 @@
 
 import networkx as nx
 
-from ..._common.nx_compute_node_size_from_item_occ import (
+from ...core.network.nx_compute_node_size_from_item_occ import (
     nx_compute_node_size_from_item_occ,
 )
-from ..._common.nx_compute_spring_layout import nx_compute_spring_layout
-from ..._common.nx_compute_textfont_opacity_from_item_occ import (
+from ...core.network.nx_compute_spring_layout import nx_compute_spring_layout
+from ...core.network.nx_compute_textfont_opacity_from_item_occ import (
     nx_compute_textfont_opacity_from_item_occ,
 )
-from ..._common.nx_compute_textfont_size_from_item_occ import (
+from ...core.network.nx_compute_textfont_size_from_item_occ import (
     nx_compute_textfont_size_from_item_occ,
 )
-from ..._common.nx_compute_textposition_from_graph import (
+from ...core.network.nx_compute_textposition_from_graph import (
     nx_compute_textposition_from_graph,
 )
-from ..._common.nx_visualize_graph import nx_visualize_graph
+from ...core.network.nx_visualize_graph import nx_visualize_graph
 
 
 def correlation_map(
@@ -53,9 +53,7 @@ def correlation_map(
     # Create a empty networkx graph
     nx_graph = nx.Graph()
     nx_graph = __add_nodes_from(nx_graph, similarity, node_color)
-    nx_graph = __add_weighted_edges_from(
-        nx_graph, similarity, edge_similarity_min, edge_top_n
-    )
+    nx_graph = __add_weighted_edges_from(nx_graph, similarity, edge_similarity_min, edge_top_n)
 
     #
     # Sets the layout
@@ -65,9 +63,7 @@ def correlation_map(
     # Sets the layout
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes

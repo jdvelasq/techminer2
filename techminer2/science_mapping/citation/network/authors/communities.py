@@ -38,8 +38,8 @@ Communities
 [5 rows x 4 columns]
 
 """
-from ....._common.nx_create_citation_graph_others import nx_create_citation_graph_others
-from ....._common.nx_extract_communities_as_data_frame import (
+from .....core.network.nx_create_citation_graph_others import nx_create_citation_graph_others
+from .....core.network.nx_extract_communities_as_data_frame import (
     nx_extract_communities_as_data_frame,
 )
 

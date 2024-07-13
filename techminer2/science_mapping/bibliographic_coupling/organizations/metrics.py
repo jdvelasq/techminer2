@@ -38,8 +38,8 @@ Baylor Univ. (USA) 2:395                                 1  ...  0.165421
 [5 rows x 4 columns]
 
 """
-from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
     nx_create_bibliographic_coupling_graph_for_others,
 )
 

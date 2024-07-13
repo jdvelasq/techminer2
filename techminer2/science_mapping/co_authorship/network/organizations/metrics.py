@@ -39,8 +39,8 @@ Columbia Graduate Sch. of Bus. (USA) 1:390       2  ...  0.067114
 [5 rows x 4 columns]
 
 """
-from ....._common.nx_compute_metrics import nx_compute_metrics
-from ....._common.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .....core.network.nx_compute_metrics import nx_compute_metrics
+from .....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 FIELD = "organizations"
 

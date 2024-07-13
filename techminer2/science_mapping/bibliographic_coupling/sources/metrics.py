@@ -38,8 +38,8 @@ Sustainability 2:150          3     0.134921   0.636364  0.100130
 
 
 """
-from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_bibliographic_coupling_graph_for_others import (
+from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
     nx_create_bibliographic_coupling_graph_for_others,
 )
 

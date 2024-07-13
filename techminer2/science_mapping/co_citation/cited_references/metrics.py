@@ -37,8 +37,8 @@ Belleflamme P., 2014, J BUS VENTURING 1:3           11  ...  0.037319
 [5 rows x 4 columns]
 
 """
-from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
+from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_references"
 

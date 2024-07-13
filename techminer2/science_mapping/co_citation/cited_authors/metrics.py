@@ -36,8 +36,8 @@ Duarte J. 1:06         14     0.037626   0.630435  0.044547
 
 
 """
-from ...._common.nx_compute_metrics import nx_compute_metrics
-from ...._common.nx_create_co_citation_graph import nx_create_co_citation_graph
+from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_authors"
 

@@ -54,10 +54,10 @@ Network Visualization
 
                                              
 """
-from ...._common.nx_create_bibliographic_coupling_graph_for_documents import (
+from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
     nx_create_bibliographic_coupling_graph_for_documents,
 )
-from ...._common.nx_visualize_graph import nx_visualize_graph
+from ....core.network.nx_visualize_graph import nx_visualize_graph
 
 
 def network_visualization(

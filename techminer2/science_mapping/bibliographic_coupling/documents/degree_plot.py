@@ -55,10 +55,10 @@ Your task is ...
 
 
 """
-from ...._common.nx_create_bibliographic_coupling_graph_for_documents import (
+from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
     nx_create_bibliographic_coupling_graph_for_documents,
 )
-from ...._common.nx_create_degree_plot import nx_create_degree_plot
+from ....core.network.nx_create_degree_plot import nx_create_degree_plot
 
 
 def degree_plot(
