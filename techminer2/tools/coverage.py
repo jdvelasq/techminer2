@@ -34,7 +34,7 @@ Coverage
 
 
 """
-from ..core.load_user_stopwords import load_user_stopwords
+from ..core.stopwords.load_user_stopwords import load_user_stopwords
 from ..core.read_filtered_database import read_filtered_database
 
 

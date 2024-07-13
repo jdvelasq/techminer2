@@ -60,6 +60,8 @@ setup(
     packages=[
         #
         "techminer2.core",
+        "techminer2.core.network",
+        "techminer2.core.stopwords",
         "techminer2.core.thesaurus",
         #
         "techminer2.helpers",
