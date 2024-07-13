@@ -92,7 +92,7 @@ from ..core.metrics.calculate_global_performance_metrics import (
 )
 from ..core.metrics.filter_records_by_metric import filter_records_by_metric
 from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
-from .globals.items_occurrences_by_year import items_occurrences_by_year
+from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
 
 
 def growth_metrics(

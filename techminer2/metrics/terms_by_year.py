@@ -210,8 +210,8 @@ from ..core.metrics.calculate_global_performance_metrics import (
 )
 from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..science_mapping.documents_per_item import documents_per_item
-from .globals.global_metrics_by_field_per_year import global_metrics_by_field_per_year
-from .globals.items_occurrences_by_year import items_occurrences_by_year
+from ..core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
+from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
 
 COLOR = "#465c6b"
 TEXTLEN = 40

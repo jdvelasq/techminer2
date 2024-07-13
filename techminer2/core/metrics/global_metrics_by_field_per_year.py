@@ -49,7 +49,7 @@ Demertzis M.       2018    1  ...                     0.000
 """
 import pandas as pd
 
-from ...core.read_filtered_database import read_filtered_database
+from ..read_filtered_database import read_filtered_database
 
 
 def global_metrics_by_field_per_year(

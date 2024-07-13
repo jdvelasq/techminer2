@@ -80,7 +80,7 @@ from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
 from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
-from ..metrics.globals.items_occurrences_by_year import items_occurrences_by_year
+from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
 
 
 def trending_words_per_year(
