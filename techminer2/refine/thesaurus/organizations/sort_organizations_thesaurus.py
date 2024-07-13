@@ -7,12 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort Thesaurus
+Sort Organizations Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.organizations import sort_thesaurus
->>> sort_thesaurus(
+>>> from techminer2.refine.thesaurus.organizations import sort_organizations_thesaurus
+>>> sort_organizations_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -25,7 +25,7 @@ from ....core.thesaurus.sort_thesaurus import sort_thesaurus as core_sort_thesau
 THESAURUS_FILE = "thesauri/organizations.the.txt"
 
 
-def sort_thesaurus(
+def sort_organizations_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",

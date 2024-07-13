@@ -1,3 +1,3 @@
-from .apply_thesaurus import apply_thesaurus
-from .find_string import find_string
-from .sort_thesaurus import sort_thesaurus
+from .apply_organizations_thesaurus import apply_organizations_thesaurus
+from .find_string_in_organizations_thesaurus import find_string_in_organizations_thesaurus
+from .sort_organizations_thesaurus import sort_organizations_thesaurus

@@ -49,8 +49,8 @@ from ..refine.thesaurus.countries.apply_countries_thesaurus import (
 from ..refine.thesaurus.descriptors.apply_thesaurus import (
     apply_thesaurus as apply_descriptors_thesaurus,
 )
-from ..refine.thesaurus.organizations.apply_thesaurus import (
-    apply_thesaurus as apply_organizations_thesaurus,
+from ..refine.thesaurus.organizations.apply_organizations_thesaurus import (
+    apply_organizations_thesaurus as apply_organizations_thesaurus,
 )
 from ._adds_countries_and_regions_to_stopwords import (
     _adds_countries_and_regions_to_stopwords,

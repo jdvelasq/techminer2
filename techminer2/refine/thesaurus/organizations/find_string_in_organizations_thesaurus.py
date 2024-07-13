@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Find String 
+Find String in Organizations Thesaurus
 ===============================================================================
 
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.thesaurus.organizations import find_string
->>> find_string(
+>>> from techminer2.refine.thesaurus.organizations import find_string_in_organizations_thesaurus
+>>> find_string_in_organizations_thesaurus(
 ...     #
 ...     # SEARCH PARAMS:
 ...     contains='ABES',
@@ -32,7 +32,7 @@ from .._find_string import _find_string
 THESAURUS_FILE = "thesauri/organizations.the.txt"
 
 
-def find_string(
+def find_string_in_organizations_thesaurus(
     #
     # SEARCH PARAMS:
     contains=None,

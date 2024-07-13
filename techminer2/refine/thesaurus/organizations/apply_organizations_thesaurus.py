@@ -6,14 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Thesaurus 
+Apply Organizatons Thesaurus 
 ===============================================================================
 
 Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
->>> from techminer2.refine.thesaurus.organizations import apply_thesaurus
->>> apply_thesaurus(
+>>> from techminer2.refine.thesaurus.organizations import apply_organizations_thesaurus
+>>> apply_organizations_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -30,7 +30,7 @@ import pandas as pd
 from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 
-def apply_thesaurus(
+def apply_organizations_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",
