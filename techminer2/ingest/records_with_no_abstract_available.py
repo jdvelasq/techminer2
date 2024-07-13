@@ -48,9 +48,7 @@ def records_with_no_abstract_available(
         cited_by_filter=(None, None),
     )
 
-    records = records[
-        records.abstract.isna() | (records.abstract == "[no abstract available]")
-    ]
+    records = records[records.abstract.isna() | (records.abstract == "[no abstract available]")]
 
     for _, record in records.iterrows():
         print(record.document_title)

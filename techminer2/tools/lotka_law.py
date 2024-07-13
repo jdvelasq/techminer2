@@ -132,7 +132,7 @@ def __core_authors_table(
     cited_by_filter,
     **filters,
 ):
-    from ..core.calculate_global_performance_metrics import (
+    from ..core.metrics.calculate_global_performance_metrics import (
         calculate_global_performance_metrics,
     )
 
@@ -164,9 +164,7 @@ def __core_authors_table(
     indicators = indicators.reset_index(drop=True)
     indicators = indicators[["Documents Written", "Num Authors"]]
     indicators["Proportion of Authors"] = (
-        indicators["Num Authors"]
-        .map(lambda x: x / indicators["Num Authors"].sum())
-        .round(3)
+        indicators["Num Authors"].map(lambda x: x / indicators["Num Authors"].sum()).round(3)
     )
 
     #
@@ -174,9 +172,7 @@ def __core_authors_table(
     #
     total_authors = indicators["Num Authors"].max()
     indicators["Theoretical Num Authors"] = (
-        indicators["Documents Written"]
-        .map(lambda x: total_authors / float(x * x))
-        .round(3)
+        indicators["Documents Written"].map(lambda x: total_authors / float(x * x)).round(3)
     )
     total_theoretical_num_authors = indicators["Theoretical Num Authors"].sum()
     indicators["Prop Theoretical Authors"] = (

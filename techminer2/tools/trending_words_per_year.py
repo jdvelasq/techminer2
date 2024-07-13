@@ -75,11 +75,11 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ..core.sort_records_by_metric import sort_records_by_metric
-from ..core.calculate_global_performance_metrics import (
+from ..core.metrics.sort_records_by_metric import sort_records_by_metric
+from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..metrics.globals.items_occurrences_by_year import items_occurrences_by_year
 
 

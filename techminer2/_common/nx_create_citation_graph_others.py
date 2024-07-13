@@ -105,9 +105,7 @@ def nx_create_citation_graph_others(
     #
     nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
     nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes

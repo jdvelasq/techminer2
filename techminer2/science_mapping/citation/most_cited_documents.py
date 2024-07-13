@@ -187,14 +187,10 @@ def most_cited_documents(
     ):
         data_frame = data_frame.copy()
 
-        metric_label = (
-            metric.replace("_", " ").upper() if metric_label is None else metric_label
-        )
+        metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
         field_label = (
-            metric.replace("_", " ").upper() + " RANKING"
-            if field_label is None
-            else field_label
+            metric.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
         )
 
         data_frame["Rank"] = list(range(1, len(data_frame) + 1))

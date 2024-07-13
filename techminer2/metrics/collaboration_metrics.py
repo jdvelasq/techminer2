@@ -51,7 +51,7 @@ import numpy as np
 import plotly.express as px
 
 from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..core.read_filtered_database import read_filtered_database
 
 
@@ -215,12 +215,8 @@ def collaboration_metrics(
             id_vars=field,
             value_vars=["single_publication", "multiple_publication"],
         )
-        metrics = metrics.rename(
-            columns={"variable": "publication", "value": "Num Documents"}
-        )
-        metrics.publication = metrics.publication.map(
-            lambda x: x.replace("_", " ").title()
-        )
+        metrics = metrics.rename(columns={"variable": "publication", "value": "Num Documents"})
+        metrics.publication = metrics.publication.map(lambda x: x.replace("_", " ").title())
         metrics[field] = metrics[field].map(lambda x: x.title())
 
         fig = px.bar(

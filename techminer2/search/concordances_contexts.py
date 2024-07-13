@@ -85,9 +85,7 @@ def concordances_contexts(
 
         texts = []
         for _, row in contexts.iterrows():
-            text = (
-                f"{row['left_context']:>60} {search_for.upper()} {row['right_context']}"
-            )
+            text = f"{row['left_context']:>60} {search_for.upper()} {row['right_context']}"
             texts.append(text)
 
         return "\n".join(texts)

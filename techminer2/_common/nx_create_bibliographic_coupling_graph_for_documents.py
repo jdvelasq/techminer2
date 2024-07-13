@@ -106,12 +106,8 @@ def nx_create_bibliographic_coupling_graph_for_documents(
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
     #
     nx_graph = nx_compute_node_size_from_item_citations(nx_graph, node_size_range)
-    nx_graph = nx_compute_textfont_size_from_item_citations(
-        nx_graph, textfont_size_range
-    )
-    nx_graph = nx_compute_textfont_opacity_from_item_citations(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_size_from_item_citations(nx_graph, textfont_size_range)
+    nx_graph = nx_compute_textfont_opacity_from_item_citations(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
@@ -161,9 +157,7 @@ def __add_weighted_edges_from(
     max_citations = records.global_citations.max()
     n_zeros = int(np.log10(max_citations - 1)) + 1
     fmt = " 1:{:0" + str(n_zeros) + "d}"
-    records["article"] = records["article"] + records["global_citations"].map(
-        fmt.format
-    )
+    records["article"] = records["article"] + records["global_citations"].map(fmt.format)
 
     data_frame = records[["article", "global_references"]]
     data_frame = data_frame.dropna()
@@ -171,17 +165,13 @@ def __add_weighted_edges_from(
         data_frame["article"].str.split("; ").map(lambda x: [y.strip() for y in x])
     )
     data_frame["global_references"] = (
-        data_frame["global_references"]
-        .str.split(";")
-        .map(lambda x: [y.strip() for y in x])
+        data_frame["global_references"].str.split(";").map(lambda x: [y.strip() for y in x])
     )
 
     data_frame = data_frame.explode("article")
     data_frame = data_frame.explode("global_references")
 
-    data_frame = data_frame.groupby(["global_references"], as_index=True).agg(
-        {"article": list}
-    )
+    data_frame = data_frame.groupby(["global_references"], as_index=True).agg({"article": list})
 
     data_frame.columns = ["row"]
     data_frame["column"] = data_frame.row.copy()

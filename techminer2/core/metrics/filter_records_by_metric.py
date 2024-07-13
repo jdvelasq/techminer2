@@ -4,7 +4,7 @@
 This function filters a dataframe of performance metrics by an specific metric.
 
 """
-from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from .extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from .sort_records_by_metric import sort_records_by_metric
 
 

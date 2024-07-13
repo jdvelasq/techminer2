@@ -79,9 +79,7 @@ def global_metrics_by_field_per_year(
     indicators = indicators.explode(field)
     indicators[field] = indicators[field].str.strip()
     indicators = indicators.reset_index(drop=True)
-    indicators = indicators[
-        [field, "OCC", "global_citations", "local_citations", "year"]
-    ].copy()
+    indicators = indicators[[field, "OCC", "global_citations", "local_citations", "year"]].copy()
     indicators = indicators.dropna()
     max_pub_year = indicators.year.max()
     indicators = (
@@ -105,12 +103,8 @@ def global_metrics_by_field_per_year(
         local_citations_per_year=indicators.local_citations / indicators.age
     )
 
-    indicators["global_citations_per_year"] = indicators[
-        "global_citations_per_year"
-    ].round(3)
-    indicators["local_citations_per_year"] = indicators[
-        "local_citations_per_year"
-    ].round(3)
+    indicators["global_citations_per_year"] = indicators["global_citations_per_year"].round(3)
+    indicators["local_citations_per_year"] = indicators["local_citations_per_year"].round(3)
 
     indicators["OCC"] = indicators.OCC.astype(int)
     indicators["cum_OCC"] = indicators.cum_OCC.astype(int)

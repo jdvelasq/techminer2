@@ -1,6 +1,6 @@
 """Global metrics """
 
-from ...core.calculate_global_performance_metrics import (
+from ...core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
 from .global_metrics_by_field_per_year import global_metrics_by_field_per_year

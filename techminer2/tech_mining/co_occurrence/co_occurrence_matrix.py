@@ -128,14 +128,14 @@ from dataclasses import dataclass
 from ...helpers.append_occurrences_and_citations_to_axis import (
     append_occurrences_and_citations_to_axis,
 )
-from ...core.sort_records_by_metric import sort_records_by_metric
+from ...core.metrics.sort_records_by_metric import sort_records_by_metric
 from ...helpers.sort_matrix_axis import sort_matrix_axis
 from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ...core.stopwords.load_user_stopwords import load_user_stopwords
-from ...core.calculate_global_performance_metrics import (
+from ...core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ...core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ...core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ...core.read_filtered_database import read_filtered_database
 
 

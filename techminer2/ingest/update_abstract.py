@@ -53,8 +53,7 @@ def update_abstract(
         raise ValueError(f"Key '{article}' match multiple records.")
 
     if not (
-        current_abstract.iloc[0] == "[no abstract available]"
-        or current_abstract.isna().iloc[0]
+        current_abstract.iloc[0] == "[no abstract available]" or current_abstract.isna().iloc[0]
     ):
         raise ValueError(f"Article '{article}' has already an abstract.")
 

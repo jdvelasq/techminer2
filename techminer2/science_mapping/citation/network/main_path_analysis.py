@@ -172,12 +172,8 @@ def main_path_analysis(
     nx_graph = nx_set_node_color_to_constant(nx_graph, "#7793a5")
     nx_graph = nx_compute_spring_layout(nx_graph, nx_k, nx_iterations, nx_random_state)
     nx_graph = nx_compute_node_size_from_item_citations(nx_graph, node_size_range)
-    nx_graph = nx_compute_textfont_size_from_item_citations(
-        nx_graph, textfont_size_range
-    )
-    nx_graph = nx_compute_textfont_opacity_from_item_citations(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_size_from_item_citations(nx_graph, textfont_size_range)
+    nx_graph = nx_compute_textfont_opacity_from_item_citations(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
@@ -369,9 +365,7 @@ def ___compute_main_path(data_frame):
 def _create_prompts(documents):
     prompts = []
     for _, row in documents.iterrows():
-        prompt = (
-            f"Summarize the following text in 30 words or less:\n\n{row.abstract}\n\n"
-        )
+        prompt = f"Summarize the following text in 30 words or less:\n\n{row.abstract}\n\n"
         prompts.append(prompt)
     return prompts
 
@@ -433,9 +427,7 @@ def ___create_citations_table(
         key: value
         for key, value in zip(
             records["article"].to_list(),
-            (
-                records["article"] + records["global_citations"].map(fmt.format)
-            ).to_list(),
+            (records["article"] + records["global_citations"].map(fmt.format)).to_list(),
         )
     }
     #

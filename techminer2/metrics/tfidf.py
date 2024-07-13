@@ -57,8 +57,8 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 from ..helpers.append_occurrences_and_citations_to_axis import (
     append_occurrences_and_citations_to_axis,
 )
-from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
-from ..core.calculate_global_performance_metrics import (
+from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
 from ..core.read_filtered_database import read_filtered_database

@@ -179,9 +179,7 @@ def paragraph_to_meaningful_words(records):
             return (lemmatizer.lemmatize(tag[0], pos="a"), tag[1])
 
     records = records.copy()
-    records = records[
-        ["art_no", "article", "document_title", "abstract", "paragraph"]
-    ].dropna()
+    records = records[["art_no", "article", "document_title", "abstract", "paragraph"]].dropna()
 
     #
     # Split the  abstract in sentences
@@ -208,9 +206,7 @@ def paragraph_to_meaningful_words(records):
         lambda tags: [to_lemma(tag) for tag in tags]
     )
 
-    records["paragraph"] = records["paragraph"].apply(
-        lambda tags: [tag[0] for tag in tags]
-    )
+    records["paragraph"] = records["paragraph"].apply(lambda tags: [tag[0] for tag in tags])
 
     records["paragraph"] = records["paragraph"].apply(set)
     records["paragraph"] = records["paragraph"].apply(sorted)

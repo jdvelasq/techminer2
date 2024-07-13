@@ -171,14 +171,10 @@ def __add_weighted_edges_from(
 
     if unit_of_analysis == "cited_authors":
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[0])
-        matrix_list["column"] = (
-            matrix_list["column"].str.split(", ").map(lambda x: x[0])
-        )
+        matrix_list["column"] = matrix_list["column"].str.split(", ").map(lambda x: x[0])
     elif unit_of_analysis == "cited_sources":
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[2])
-        matrix_list["column"] = (
-            matrix_list["column"].str.split(", ").map(lambda x: x[2])
-        )
+        matrix_list["column"] = matrix_list["column"].str.split(", ").map(lambda x: x[2])
     elif unit_of_analysis == "cited_references":
         matrix_list["row"] = (
             matrix_list["row"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
@@ -189,18 +185,12 @@ def __add_weighted_edges_from(
     else:
         raise ValueError("Bad unit_of_analysis")
 
-    matrix_list = matrix_list.loc[
-        matrix_list.apply(lambda x: x.row != x.column, axis=1), :
-    ]
+    matrix_list = matrix_list.loc[matrix_list.apply(lambda x: x.row != x.column, axis=1), :]
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-        "sum"
-    )
+    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
 
-    matrix_list = matrix_list.sort_values(
-        ["OCC", "row", "column"], ascending=[False, True, True]
-    )
+    matrix_list = matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
 
     #
     # Computes valild items
@@ -214,12 +204,8 @@ def __add_weighted_edges_from(
 
     #
     # Filter data
-    matrix_list = matrix_list.loc[
-        matrix_list.row.isin(valid_items["index"].to_list()), :
-    ]
-    matrix_list = matrix_list.loc[
-        matrix_list.column.isin(valid_items["index"].to_list()), :
-    ]
+    matrix_list = matrix_list.loc[matrix_list.row.isin(valid_items["index"].to_list()), :]
+    matrix_list = matrix_list.loc[matrix_list.column.isin(valid_items["index"].to_list()), :]
 
     #
     # Adds citations
@@ -284,9 +270,7 @@ def __compute_valid_items(
     elif unit_of_analysis == "cited_sources":
         global_references = global_references.str.split(", ").map(lambda x: x[2])
     elif unit_of_analysis == "cited_references":
-        global_references = (
-            global_references.str.split(", ").map(lambda x: x[:3]).str.join(", ")
-        )
+        global_references = global_references.str.split(", ").map(lambda x: x[:3]).str.join(", ")
     else:
         raise ValueError("Bad unit_of_analysis")
 
@@ -295,9 +279,7 @@ def __compute_valid_items(
     valid_items = global_references.value_counts().to_frame()
     valid_items.columns = ["citations"]
     valid_items = valid_items.reset_index()
-    valid_items = valid_items.sort_values(
-        ["citations", "index"], ascending=[False, True]
-    )
+    valid_items = valid_items.sort_values(["citations", "index"], ascending=[False, True])
 
     #
     # Applies the filters

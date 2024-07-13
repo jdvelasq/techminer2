@@ -11,7 +11,7 @@ This module implements
 import numpy as np
 
 
-from ..core.calculate_global_performance_metrics import (
+from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
 

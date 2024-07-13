@@ -47,11 +47,11 @@ import os
 from dataclasses import dataclass
 
 from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.calculate_global_performance_metrics import (
+from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.filter_records_by_metric import filter_records_by_metric
-from ..core.select_record_columns_by_metric import select_record_columns_by_metric
+from ..core.metrics.filter_records_by_metric import filter_records_by_metric
+from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

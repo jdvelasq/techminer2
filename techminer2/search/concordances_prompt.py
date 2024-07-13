@@ -50,6 +50,4 @@ def concordances_prompt(
         **filters,
     )
 
-    return concordances_prompt_from_records(
-        search_for=search_for, top_n=top_n, records=records
-    )
+    return concordances_prompt_from_records(search_for=search_for, top_n=top_n, records=records)

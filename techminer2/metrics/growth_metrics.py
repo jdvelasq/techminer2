@@ -87,11 +87,11 @@ import os
 from dataclasses import dataclass
 
 from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.calculate_global_performance_metrics import (
+from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.filter_records_by_metric import filter_records_by_metric
-from ..core.select_record_columns_by_metric import select_record_columns_by_metric
+from ..core.metrics.filter_records_by_metric import filter_records_by_metric
+from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
 from .globals.items_occurrences_by_year import items_occurrences_by_year
 
 
@@ -151,9 +151,7 @@ def growth_metrics(
     #
     # Check the time window
     if items_by_year.columns.max() - items_by_year.columns.min() <= time_window:
-        raise ValueError(
-            "Time window must be less than the number of years in the database"
-        )
+        raise ValueError("Time window must be less than the number of years in the database")
 
     #
     # Computes the number of documents per period by item
@@ -196,8 +194,7 @@ def growth_metrics(
     # pdly: percentage of documents in last year
     global_indicators = global_indicators.assign(
         percentage_docs_last_year=(
-            global_indicators.average_docs_per_year.copy()
-            / global_indicators.OCC.copy()
+            global_indicators.average_docs_per_year.copy() / global_indicators.OCC.copy()
         )
     )
 

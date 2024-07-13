@@ -205,10 +205,10 @@ from ..helpers.append_occurrences_and_citations_to_axis import (
     append_occurrences_and_citations_to_axis,
 )
 from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.calculate_global_performance_metrics import (
+from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
 from ..science_mapping.documents_per_item import documents_per_item
 from .globals.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 from .globals.items_occurrences_by_year import items_occurrences_by_year

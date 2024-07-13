@@ -164,9 +164,7 @@ def __zones(
     cum_occ = indicators["OCC"].sum()
     indicators = indicators.reset_index(drop=True)
     indicators = indicators.assign(zone=3)
-    indicators.zone = indicators.zone.where(
-        indicators.cum_OCC >= int(cum_occ * 2 / 3), 2
-    )
+    indicators.zone = indicators.zone.where(indicators.cum_OCC >= int(cum_occ * 2 / 3), 2)
     indicators.zone = indicators.zone.where(indicators.cum_OCC >= int(cum_occ / 3), 1)
     indicators = indicators.set_index("abbr_source_title")
     indicators = indicators[["no", "OCC", "cum_OCC", "global_citations", "zone"]]
@@ -216,9 +214,7 @@ def __table(
         for a in sources["Acum Num Sources"]
     ]
 
-    sources["Tot Documents published"] = (
-        sources["Num Sources"] * sources["Documents published"]
-    )
+    sources["Tot Documents published"] = sources["Num Sources"] * sources["Documents published"]
     sources["Num Documents"] = sources["Tot Documents published"].cumsum()
     sources["Tot Documents"] = sources["Num Documents"].map(
         lambda w: str(round(w / sources["Num Documents"].max() * 100, 2)) + " %"

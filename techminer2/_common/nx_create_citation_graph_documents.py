@@ -95,12 +95,8 @@ def nx_create_citation_graph_documents(
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
     #
     nx_graph = nx_compute_node_size_from_item_citations(nx_graph, node_size_range)
-    nx_graph = nx_compute_textfont_size_from_item_citations(
-        nx_graph, textfont_size_range
-    )
-    nx_graph = nx_compute_textfont_opacity_from_item_citations(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_compute_textfont_size_from_item_citations(nx_graph, textfont_size_range)
+    nx_graph = nx_compute_textfont_opacity_from_item_citations(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
@@ -172,16 +168,14 @@ def __add_weighted_edges_from(
         key: value
         for key, value in zip(
             data_frame["article"].to_list(),
-            (
-                data_frame["article"] + data_frame["global_citations"].map(fmt.format)
-            ).to_list(),
+            (data_frame["article"] + data_frame["global_citations"].map(fmt.format)).to_list(),
         )
     }
     #
     data_frame_with_links["article"] = data_frame_with_links["article"].map(rename_dict)
-    data_frame_with_links["local_references"] = data_frame_with_links[
-        "local_references"
-    ].map(rename_dict)
+    data_frame_with_links["local_references"] = data_frame_with_links["local_references"].map(
+        rename_dict
+    )
 
     #
     # Removes documents without local citations in references

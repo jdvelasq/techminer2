@@ -95,9 +95,7 @@ def __table(
 
     indicator.loc[references_by_year.index, "Num References"] = references_by_year
     indicator = indicator.sort_index(axis=0, ascending=True)
-    indicator["Median"] = (
-        indicator["Num References"].rolling(window=5).median().fillna(0)
-    )
+    indicator["Median"] = indicator["Num References"].rolling(window=5).median().fillna(0)
 
     indicator["Median"] = indicator["Median"] - indicator["Num References"]
     return indicator
