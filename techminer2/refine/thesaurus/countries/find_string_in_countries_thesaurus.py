@@ -27,7 +27,7 @@ Finds a string in the terms of a thesaurus.
 --INFO-- The file example/thesauri/countries.the.txt has been reordered.
 
 """
-from .._find_string import _find_string
+from ....core.thesaurus.find_string_in_thesaurus import find_string_in_thesaurus
 
 THESAURUS_FILE = "thesauri/countries.the.txt"
 
@@ -47,7 +47,7 @@ def find_string_in_countries_thesaurus(
     :meta private:
     """
 
-    return _find_string(
+    return find_string_in_thesaurus(
         #
         # THESAURUS FILE:
         thesaurus_file=THESAURUS_FILE,

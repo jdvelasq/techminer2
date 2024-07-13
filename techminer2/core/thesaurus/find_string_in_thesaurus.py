@@ -29,10 +29,10 @@ import os.path
 
 import pandas as pd
 
-from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from .load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
-def _find_string(
+def find_string_in_thesaurus(
     #
     # THESAURUS FILE:
     thesaurus_file="thesauri/words.the.txt",

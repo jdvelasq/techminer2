@@ -13,8 +13,8 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.thesaurus.references import find_string
->>> find_string(
+>>> from techminer2.refine.thesaurus.references import find_string_in_references_thesaurus
+>>> find_string_in_references_thesaurus(
 ...     #
 ...     # SEARCH PARAMS:
 ...     contains='ARTIFICIAL_INTELLIGENCE',
@@ -28,12 +28,12 @@ Finds a string in the terms of a thesaurus.
 
 
 """
-from .._find_string import _find_string
+from ....core.thesaurus.find_string_in_thesaurus import find_string_in_thesaurus
 
 THESAURUS_FILE = "thesauri/references.the.txt"
 
 
-def find_string(
+def find_string_in_references_thesaurus(
     #
     # SEARCH PARAMS:
     contains=None,
@@ -48,7 +48,7 @@ def find_string(
     :meta private:
     """
 
-    return _find_string(
+    return find_string_in_thesaurus(
         #
         # THESAURUS FILE:
         thesaurus_file=THESAURUS_FILE,

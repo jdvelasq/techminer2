@@ -1,2 +1,2 @@
-from .apply_thesaurus import apply_thesaurus
-from .find_string import find_string
+from .apply_references_thesaurus import apply_references_thesaurus
+from .find_string_in_references_thesaurus import find_string_in_references_thesaurus

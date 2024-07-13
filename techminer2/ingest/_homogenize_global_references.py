@@ -23,7 +23,7 @@ import pathlib
 
 import pandas as pd
 
-from ..refine.thesaurus.references.apply_thesaurus import apply_thesaurus
+from ..refine.thesaurus.references.apply_references_thesaurus import apply_references_thesaurus
 from ._message import message
 
 
@@ -37,7 +37,7 @@ def homogenize_global_references(root_dir):
     result = __homogeneize_references(root_dir=root_dir)
 
     if result:
-        apply_thesaurus(root_dir=root_dir)
+        apply_references_thesaurus(root_dir=root_dir)
 
 
 def __homogeneize_references(root_dir):
@@ -55,18 +55,14 @@ def __homogeneize_references(root_dir):
     # Loads raw references from the main database
     data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
     raw_references = data["raw_global_references"].dropna()
-    raw_references = (
-        raw_references.str.split(";").explode().str.strip().drop_duplicates()
-    )
+    raw_references = raw_references.str.split(";").explode().str.strip().drop_duplicates()
     raw_references = ";".join(raw_references)
 
     #
     # Loads refernece info from the references database
     references = pd.read_csv(refs_file, encoding="utf-8", compression="zip")
     references = references[["article", "document_title", "authors", "year"]]
-    references["first_author"] = (
-        references["authors"].str.split(" ").map(lambda x: x[0].lower())
-    )
+    references["first_author"] = references["authors"].str.split(" ").map(lambda x: x[0].lower())
     references["document_title"] = references["document_title"].str.lower()
     references = references.dropna()
 
@@ -123,9 +119,7 @@ def __homogeneize_references(root_dir):
 
     #
     #
-    grouped_references = selected_references.groupby("article", as_index=False).agg(
-        list
-    )
+    grouped_references = selected_references.groupby("article", as_index=False).agg(list)
 
     file_path = pathlib.Path(root_dir) / "global_references.txt"
     with open(file_path, "w", encoding="utf-8") as file:

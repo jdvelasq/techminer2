@@ -9,11 +9,8 @@
 Apply References Thesaurus 
 ===============================================================================
 
-Cleans the 'global references' columns using the file references.txt, located 
-in the same directory as the documents.csv file.
-
->>> from techminer2.refine.thesaurus.references import apply_thesaurus
->>> apply_thesaurus(
+>>> from techminer2.refine.thesaurus.references import apply_references_thesaurus
+>>> apply_references_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -29,7 +26,7 @@ import pandas as pd
 from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 
-def apply_thesaurus(root_dir):
+def apply_references_thesaurus(root_dir):
     """:meta private:"""
     #
     # Apply the thesaurus to raw_global_references
