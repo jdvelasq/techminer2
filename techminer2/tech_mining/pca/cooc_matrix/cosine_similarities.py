@@ -48,7 +48,7 @@ FINANCIAL_TECHNOLOGY 04:0551  CROWDFUNDING 03:0335 (0.592); DIGITALIZATION 0...
 BUSINESS 03:0896              FUTURE_RESEARCH 02:0691 (0.768); FINANCIAL_SER...
 
 """
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

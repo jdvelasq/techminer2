@@ -47,7 +47,7 @@ FINANCIAL_INDUSTRY 17:3704    27.627180  5.953923  6.172145  3.950076  3.441536
 FINANCIAL_TECHNOLOGY 17:2225  31.796134 -2.831143 -4.256727 -5.413894 -4.614704
 
 """
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def embedding(

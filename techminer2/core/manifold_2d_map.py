@@ -8,7 +8,7 @@
 
 import plotly.graph_objects as go
 
-from ..core.network.nx_compute_textposition_from_x_and_y import (
+from .network.nx_compute_textposition_from_x_and_y import (
     nx_compute_textposition_from_x_and_y,
 )
 

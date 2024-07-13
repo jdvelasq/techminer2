@@ -58,7 +58,7 @@ FINANCIAL_TECHNOLOGY 17:2225  IMPACT 09:1495 (0.851); CHALLENGES 09:1473 (0....
 """
 from typing import Literal
 
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

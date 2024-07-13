@@ -62,7 +62,7 @@ BUSINESS 03:0896              FUTURE_RESEARCH 02:0691 (0.882); FINANCIAL_SER...
 """
 from typing import Literal
 
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

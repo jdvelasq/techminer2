@@ -61,7 +61,7 @@ BUSINESS 03:0896             -0.144818 -0.220816 -0.865907  0.967946 -0.375656
 """
 from typing import Literal
 
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def embedding(

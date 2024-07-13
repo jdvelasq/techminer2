@@ -50,7 +50,7 @@ To Brute Force Labels
 {'FINANCIAL_INCLUSION 03:0590': 0, 'CASE_STUDIES 03:0442': 0, 'BLOCKCHAIN 03:0369': 0, ...
 
 """
-from ....._common.factor_analysis import FactorAnalyzer
+from .....core.factor_analysis import FactorAnalyzer
 
 
 def to_brute_force_labels(

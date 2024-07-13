@@ -63,7 +63,7 @@ from dataclasses import dataclass
 import plotly.express as px
 
 from ...helpers.format_prompt_for_records import format_prompt_for_records
-from ..._common.format_report_for_records import format_report_for_records
+from ...helpers.format_report_for_records import format_report_for_records
 from ...core.read_filtered_database import read_filtered_database
 
 MARKER_COLOR = "#7793a5"

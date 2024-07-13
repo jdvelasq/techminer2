@@ -48,7 +48,7 @@ FINANCIAL_TECHNOLOGY 17:2225  FINTECH 40:6331 (0.973); IMPACT 09:1495 (0.967...
 
 
 """
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def cosine_similarities(

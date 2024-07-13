@@ -68,7 +68,7 @@ CL_5    3.559041 -1.037701  2.320191 -0.835742 -0.441154
 """
 from typing import Literal
 
-from ....._common.factor_analysis import FactorAnalyzer
+from .....core.factor_analysis import FactorAnalyzer
 
 
 def cluster_centers(

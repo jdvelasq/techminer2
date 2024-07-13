@@ -66,7 +66,7 @@ Concept Grid
 
 
 """
-from ....._common.factor_analysis import FactorAnalyzer
+from .....core.factor_analysis import FactorAnalyzer
 
 
 def concept_grid(

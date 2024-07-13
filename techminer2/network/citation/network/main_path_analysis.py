@@ -65,7 +65,7 @@ from dataclasses import dataclass
 import networkx as nx
 import numpy as np
 
-from ...._common.format_report_for_records import format_report_for_records
+from ....helpers.format_report_for_records import format_report_for_records
 from ....core.network.nx_compute_edge_width_from_edge_weight import (
     nx_compute_edge_width_from_edge_weight,
 )

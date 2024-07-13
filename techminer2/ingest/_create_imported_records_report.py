@@ -1,6 +1,6 @@
 """Create a text report with the imported records."""
 
-from .._common.format_report_for_records import format_report_for_records
+from ..helpers.format_report_for_records import format_report_for_records
 from ..core.read_filtered_database import read_filtered_database
 
 

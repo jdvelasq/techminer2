@@ -58,7 +58,7 @@ FINANCIAL_TECHNOLOGY 17:2225  2.928686 -0.611500 -0.996298 -1.400737 -1.266301
 """
 from typing import Literal
 
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def embedding(

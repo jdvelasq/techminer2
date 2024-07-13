@@ -48,7 +48,7 @@ FINANCIAL_TECHNOLOGY 04:0551  -1.757553  0.004457 -0.240998  2.185700  2.875050
 BUSINESS 03:0896              -1.011917 -0.697822 -1.959198  2.467934 -0.271449
 
 """
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 
 def embedding(

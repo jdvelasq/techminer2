@@ -67,7 +67,7 @@ Map 2D
 """
 from typing import Literal
 
-from ...._common.factor_analysis import FactorAnalyzer
+from ....core.factor_analysis import FactorAnalyzer
 
 UNIT_OF_ANALYSIS = "countries"
 

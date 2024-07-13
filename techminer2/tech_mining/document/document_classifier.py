@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering, KMeans
 
-from ..._common.format_report_for_records import format_report_for_records
+from ...helpers.format_report_for_records import format_report_for_records
 from ...helpers.make_report_dir import make_report_dir
 from ...core.read_filtered_database import read_filtered_database
 from ...metrics import tfidf

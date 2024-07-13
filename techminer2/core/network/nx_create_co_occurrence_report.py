@@ -24,7 +24,7 @@ from ..thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..read_filtered_database import read_filtered_database
 from ...search.concordances import concordances_from_records
 from ...helpers.format_prompt_for_records import format_prompt_for_records
-from ..._common.format_report_for_records import format_report_for_records
+from ...helpers.format_report_for_records import format_report_for_records
 from ...helpers.make_report_dir import make_report_dir
 from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
 

@@ -45,7 +45,7 @@ To Brute Force Labels
 {'FINANCIAL_TECHNOLOGY 04:0551': 0, 'DIGITALIZATION 03:0434': 0, 'BANKING 03:0375': 0, ...
 
 """
-from ....._common.factor_analysis import FactorAnalyzer
+from .....core.factor_analysis import FactorAnalyzer
 
 
 def to_brute_force_labels(

@@ -68,7 +68,7 @@ To Brute Force Labels
 """
 from typing import Literal
 
-from ....._common.factor_analysis import FactorAnalyzer
+from .....core.factor_analysis import FactorAnalyzer
 
 
 def to_brute_force_labels(

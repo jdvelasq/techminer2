@@ -587,9 +587,7 @@ class FactorAnalyzer:
         # Formats cluster name with prefix CL_ and zeros
         n_zeros = int(np.log10(self.n_clusters - 1)) + 1
         fmt = "CL_{:0" + str(n_zeros) + "d}"
-        cluster_names = {
-            i_cluster: fmt.format(i_cluster) for i_cluster in range(self.n_clusters)
-        }
+        cluster_names = {i_cluster: fmt.format(i_cluster) for i_cluster in range(self.n_clusters)}
 
         centers.index = centers.index.map(cluster_names)
         centers = centers.sort_index(axis=0)
