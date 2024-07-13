@@ -74,9 +74,7 @@ def extract_noun_phrases_from_record(text):
     #
     noun_phrases = [phrase for phrase in noun_phrases if not phrase.startswith("//")]
     noun_phrases = [phrase.replace("'", "") for phrase in noun_phrases]
-    noun_phrases = [
-        phrase for phrase in noun_phrases if not re.search(r"[^\w\s]", phrase)
-    ]
+    noun_phrases = [phrase for phrase in noun_phrases if not re.search(r"[^\w\s]", phrase)]
     noun_phrases = [phrase for phrase in noun_phrases if phrase not in ""]
     #
     #

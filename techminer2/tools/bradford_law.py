@@ -8,7 +8,7 @@
 Bradford's Law
 ===============================================================================
 
->>> from techminer2.analyze.contributors.sources import bradford_law
+>>> from techminer2.tools import bradford_law
 >>> bradford = bradford_law(
 ...     #
 ...     # DATABASE PARAMS:

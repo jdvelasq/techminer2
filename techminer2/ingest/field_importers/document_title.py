@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ...fields.process_field import _process_field
+from ...refine.fields.process_field import _process_field
 
 
 def run_document_title_importer(root_dir):

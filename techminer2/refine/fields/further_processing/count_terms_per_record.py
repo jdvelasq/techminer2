@@ -6,12 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Delete a Field
+Count Terms per Record
 ===============================================================================
 
->>> from techminer2.fields import delete_field
->>> delete_field(  # doctest: +SKIP 
-...     field="author_keywords_copy",
+>>> from techminer2.fields.further_processing import count_terms_per_record
+>>> count_terms_per_record(  # doctest: +SKIP 
+...     source="raw_author_keywords",
+...     dest="num_raw_author_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -23,31 +24,35 @@ import os.path
 
 import pandas as pd
 
-from .._dtypes import DTYPES
-from .protected_fields import PROTECTED_FIELDS
+from ...._dtypes import DTYPES
+from ..protected_fields import PROTECTED_FIELDS
 
 
-def delete_field(
-    field,
+def count_terms_per_record(
+    source,
+    dest,
     #
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """:meta private:"""
+    """
+    :meta private:
+    """
+    if dest in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{dest}` is protected")
 
-    if field in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{field}` is protected")
-
-    _delete_field(
-        field=field,
+    _count_terms_per_record(
+        source=source,
+        dest=dest,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
 
 
-def _delete_field(
-    field,
+def _count_terms_per_record(
+    source,
+    dest,
     #
     # DATABASE PARAMS:
     root_dir,
@@ -55,5 +60,7 @@ def _delete_field(
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        data = data.drop(field, axis=1)
+        if source in data.columns:
+            data[dest] = data[source].str.split("; ").map(len, na_action="ignore")
+            data[dest] = data[dest].fillna(0).astype(int)
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

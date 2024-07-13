@@ -33,7 +33,7 @@ import os.path
 
 import pandas as pd
 
-from ..._dtypes import DTYPES
+from ...._dtypes import DTYPES
 from ..protected_fields import PROTECTED_FIELDS
 
 

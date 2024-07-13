@@ -8,7 +8,7 @@
 
 import re
 
-from ...fields.process_field import _process_field
+from ...refine.fields.process_field import _process_field
 
 
 def run_authors_and_index_keywords_importer(root_dir):
@@ -22,9 +22,7 @@ def run_authors_and_index_keywords_importer(root_dir):
             func=lambda x: x.str.upper()
             # -----------------------------------------------------------------------------
             # remove all non-ascii characters
-            .str.normalize("NFKD")
-            .str.encode("ascii", errors="ignore")
-            .str.decode("utf-8")
+            .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
             # -----------------------------------------------------------------------------
             # remove all html tags
             .str.replace("<.*?>", "", regex=True)
@@ -43,9 +41,7 @@ def run_authors_and_index_keywords_importer(root_dir):
                 na_action="ignore",
             )
             .map(
-                lambda x: [
-                    z[1:-1] if z.startswith("'") and z.endswith("'") else z for z in x
-                ],
+                lambda x: [z[1:-1] if z.startswith("'") and z.endswith("'") else z for z in x],
                 na_action="ignore",
             )
             .str.join("; ")
@@ -57,9 +53,7 @@ def run_authors_and_index_keywords_importer(root_dir):
                 na_action="ignore",
             )
             .map(
-                lambda x: [
-                    z[1:-1] if z.startswith('"') and z.endswith('"') else z for z in x
-                ],
+                lambda x: [z[1:-1] if z.startswith('"') and z.endswith('"') else z for z in x],
                 na_action="ignore",
             )
             .str.join("; ")
@@ -71,9 +65,7 @@ def run_authors_and_index_keywords_importer(root_dir):
                 na_action="ignore",
             )
             .map(
-                lambda x: [
-                    z[1:] if z.startswith("'") and "'" not in z[1:] else z for z in x
-                ],
+                lambda x: [z[1:] if z.startswith("'") and "'" not in z[1:] else z for z in x],
                 na_action="ignore",
             )
             .str.join("; ")
@@ -85,9 +77,7 @@ def run_authors_and_index_keywords_importer(root_dir):
                 na_action="ignore",
             )
             .map(
-                lambda x: [
-                    z[1:] if z.startswith('"') and '"' not in z[1:] else z for z in x
-                ],
+                lambda x: [z[1:] if z.startswith('"') and '"' not in z[1:] else z for z in x],
                 na_action="ignore",
             )
             .str.join("; ")

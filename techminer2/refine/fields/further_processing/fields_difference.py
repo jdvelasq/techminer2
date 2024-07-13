@@ -6,18 +6,19 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Fields Intersection
+Fields Difference
 ===============================================================================
 
->>> from techminer2.fields.further_processing import fields_intersection
->>> fields_intersection(  # doctest: +SKIP
+>>> from techminer2.fields.further_processing import fields_difference
+>>> fields_difference( # doctest: +SKIP 
 ...     first_field="author_keywords",
 ...     second_field="index_keywords",
-...     dest="intersection",
+...     dest="difference",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
 ... )
+
 
 """
 import glob
@@ -25,12 +26,12 @@ import os.path
 
 import pandas as pd
 
-from ..._dtypes import DTYPES
+from ...._dtypes import DTYPES
 from ..merge_fields import merge_fields
 from ..protected_fields import PROTECTED_FIELDS
 
 
-def fields_intersection(
+def fields_difference(
     compare_field,
     to_field,
     output_field,
@@ -44,7 +45,7 @@ def fields_intersection(
     if output_field in PROTECTED_FIELDS:
         raise ValueError(f"Field `{output_field}` is protected")
 
-    _fields_intersection(
+    _fields_difference(
         compare_field=compare_field,
         to_field=to_field,
         output_field=output_field,
@@ -54,7 +55,7 @@ def fields_intersection(
     )
 
 
-def _fields_intersection(
+def _fields_difference(
     compare_field,
     to_field,
     output_field,
@@ -102,7 +103,7 @@ def _fields_intersection(
             .tolist()
         )
 
-        common_terms = list(set(first_terms).intersection(set(second_terms)))
+        common_terms = list(set(first_terms).difference(set(second_terms)))
 
         #
         # Update columns
@@ -110,10 +111,9 @@ def _fields_intersection(
             data[output_field]
             .str.split("; ")
             .map(lambda x: [z for z in x if z in common_terms], na_action="ignore")
-            .map(lambda x: sorted(set(x)), na_action="ignore")
-            .map(
-                lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore"
-            )
+        )
+        data[output_field] = data[output_field].map(
+            lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore"
         )
 
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

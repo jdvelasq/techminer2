@@ -37,9 +37,9 @@ from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
 # -------------------------------------------------------------------------------------
 # Field basic operations
 # -------------------------------------------------------------------------------------
-from ..fields.further_processing.count_terms_per_record import _count_terms_per_record
-from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
-from ..fields.merge_fields import _merge_fields
+from ..refine.fields.further_processing.count_terms_per_record import _count_terms_per_record
+from ..refine.fields.further_processing.extract_noun_phrases import _extract_noun_phrases
+from ..refine.fields.merge_fields import _merge_fields
 
 #
 # Thesaurus

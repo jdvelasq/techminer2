@@ -21,7 +21,7 @@ import pandas as pd
 from textblob import TextBlob  # type: ignore
 from tqdm import tqdm
 
-from ..fields.merge_fields import _merge_fields
+from ..refine.fields.merge_fields import _merge_fields
 
 
 def experimental(
@@ -155,9 +155,7 @@ def _extract_noun_phrases(text):
     #
     noun_phrases = [phrase for phrase in noun_phrases if not phrase.startswith("//")]
     # noun_phrases = [phrase.replace("'", "") for phrase in noun_phrases]
-    noun_phrases = [
-        phrase for phrase in noun_phrases if not re.search(r"[^\w\s]", phrase)
-    ]
+    noun_phrases = [phrase for phrase in noun_phrases if not re.search(r"[^\w\s]", phrase)]
     noun_phrases = [phrase for phrase in noun_phrases if phrase not in ""]
 
     #
@@ -169,9 +167,7 @@ def _extract_noun_phrases(text):
     #
     # transform noun phrases to upper cases and replace space with underscore
     if len(noun_phrases) > 0:
-        regex = "|".join(
-            [re.escape(phrase.replace("_", " ")) for phrase in noun_phrases]
-        )
+        regex = "|".join([re.escape(phrase.replace("_", " ")) for phrase in noun_phrases])
         regex = re.compile(r"\b(" + regex + r")\b")
         text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
 
@@ -187,9 +183,7 @@ def _mark_keywords(
     tqdm.pandas()
 
     keywords = _collect_keywords(root_dir=root_dir, column=column)
-    regex = "|".join(
-        [re.escape(keyword.lower().replace("_", " ")) for keyword in keywords]
-    )
+    regex = "|".join([re.escape(keyword.lower().replace("_", " ")) for keyword in keywords])
     regex = re.compile(r"\b(" + regex + r")\b")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
@@ -203,9 +197,7 @@ def _mark_keywords(
             data[source]
             .str.lower()
             .str.replace("_", " ")
-            .str.replace(
-                regex, lambda z: z.group().upper().replace(" ", "_"), regex=True
-            )
+            .str.replace(regex, lambda z: z.group().upper().replace(" ", "_"), regex=True)
         )
         #
         #
@@ -232,12 +224,7 @@ def _collect_keywords(
 
     keywords = pd.concat(keywords)
     keywords = (
-        keywords.str.split(";")
-        .explode()
-        .str.strip()
-        .str.lower()
-        .dropna()
-        .drop_duplicates()
+        keywords.str.split(";").explode().str.strip().str.lower().dropna().drop_duplicates()
     )
     keywords = keywords[~keywords.str.contains(r"[^\w\s]", regex=True)]
     keywords = keywords.to_list()

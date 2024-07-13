@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Copy a Field
+Fill NA
 ===============================================================================
 
->>> from techminer2.fields import copy_field
->>> copy_field(  # doctest: +SKIP 
-...     source="author_keywords",
-...     dest="author_keywords_copy",
+>>> from techminer2.fields import fillna_field
+>>> fillna_field(  # doctest: +SKIP 
+...     fill_field="author_keywords",
+...     with_field="index_keywords",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -24,13 +24,13 @@ import os.path
 
 import pandas as pd
 
-from .._dtypes import DTYPES
+from ..._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
-def copy_field(
-    source,
-    dest,
+def fillna_field(
+    fill_field,
+    with_field,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -38,30 +38,28 @@ def copy_field(
     """
     :meta private:
     """
-    if dest in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dest}` is protected")
+    if fill_field in PROTECTED_FIELDS:
+        raise ValueError(f"Field `{fill_field}` is protected")
 
-    _copy_field(
-        source=source,
-        dest=dest,
+    _fillna_field(
+        fill_field=fill_field,
+        with_field=with_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
 
 
-def _copy_field(
-    source,
-    dest,
+def _fillna_field(
+    fill_field,
+    with_field,
     #
     # DATABASE PARAMS:
     root_dir,
 ):
-    """:meta private:"""
-
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        if source in data.columns:
-            data[dest] = data[source].copy()
+        if fill_field in data.columns:
+            data[fill_field].mask(data[fill_field].isnull(), data[with_field])
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
