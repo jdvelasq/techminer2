@@ -23,7 +23,7 @@ import pathlib
 
 import pandas as pd
 
-from ..refine.thesaurus.references.apply_references_thesaurus import apply_references_thesaurus
+from ..thesaurus.thesaurus.references.apply_references_thesaurus import apply_references_thesaurus
 from ._message import message
 
 

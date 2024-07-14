@@ -43,13 +43,13 @@ from ..fields.merge_fields import _merge_fields
 
 #
 # Thesaurus
-from ..refine.thesaurus.countries.apply_countries_thesaurus import (
+from ..thesaurus.thesaurus.countries.apply_countries_thesaurus import (
     apply_countries_thesaurus as apply_countries_thesaurus,
 )
-from ..refine.thesaurus.descriptors.apply_thesaurus import (
+from ..thesaurus.thesaurus.descriptors.apply_thesaurus import (
     apply_thesaurus as apply_descriptors_thesaurus,
 )
-from ..refine.thesaurus.organizations.apply_organizations_thesaurus import (
+from ..thesaurus.thesaurus.organizations.apply_organizations_thesaurus import (
     apply_organizations_thesaurus as apply_organizations_thesaurus,
 )
 from ._adds_countries_and_regions_to_stopwords import (
