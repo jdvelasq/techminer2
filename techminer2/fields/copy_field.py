@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Rename a Field
+Copy a Field
 ===============================================================================
 
->>> from techminer2.fields import rename_field
->>> rename_field(  # doctest: +SKIP
+>>> from techminer2.fields import copy_field
+>>> copy_field(  # doctest: +SKIP 
 ...     source="author_keywords",
-...     dest="author_keywords_new",
+...     dest="author_keywords_copy",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -24,24 +24,23 @@ import os.path
 
 import pandas as pd
 
-from ..._dtypes import DTYPES
+from .._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
-def rename_field(
+def copy_field(
     source,
     dest,
     #
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
+
     if dest in PROTECTED_FIELDS:
         raise ValueError(f"Field `{dest}` is protected")
 
-    _rename_field(
+    _copy_field(
         source=source,
         dest=dest,
         #
@@ -50,17 +49,18 @@ def rename_field(
     )
 
 
-def _rename_field(
+def _copy_field(
     source,
     dest,
     #
     # DATABASE PARAMS:
     root_dir,
 ):
-    rename = {source: dest}
+    """:meta private:"""
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        data = data.rename(columns=rename)
+        if source in data.columns:
+            data[dest] = data[source].copy()
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

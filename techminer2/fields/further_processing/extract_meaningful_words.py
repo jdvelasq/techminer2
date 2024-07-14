@@ -15,7 +15,7 @@ from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ....core.stopwords.load_package_stopwords import load_package_stopwords
+from ...core.stopwords.load_package_stopwords import load_package_stopwords
 from ..protected_fields import PROTECTED_FIELDS
 
 #

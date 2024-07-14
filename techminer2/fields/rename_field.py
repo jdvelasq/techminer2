@@ -6,14 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Process a Field
+Rename a Field
 ===============================================================================
 
->>> from techminer2.fields import process_field
->>> process_field(  # doctest: +SKIP
+>>> from techminer2.fields import rename_field
+>>> rename_field(  # doctest: +SKIP
 ...     source="author_keywords",
-...     dest="author_keywords_copy",
-...     func=lambda x: x.str.lower(),
+...     dest="author_keywords_new",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example",
@@ -25,14 +24,13 @@ import os.path
 
 import pandas as pd
 
-from ..._dtypes import DTYPES
+from .._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS
 
 
-def process_field(
+def rename_field(
     source,
     dest,
-    func,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -43,28 +41,26 @@ def process_field(
     if dest in PROTECTED_FIELDS:
         raise ValueError(f"Field `{dest}` is protected")
 
-    _process_field(
+    _rename_field(
         source=source,
         dest=dest,
-        func=func,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
 
 
-def _process_field(
+def _rename_field(
     source,
     dest,
-    func,
     #
     # DATABASE PARAMS:
-    root_dir="./",
+    root_dir,
 ):
+    rename = {source: dest}
+
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if source in data.columns:
-            if data[source].dropna().shape[0] > 0:
-                data[dest] = func(data[source])
+        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
+        data = data.rename(columns=rename)
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

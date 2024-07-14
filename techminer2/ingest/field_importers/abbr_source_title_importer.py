@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ...refine.fields.fillna_field import _fillna_field
+from ...fields.fillna_field import _fillna_field
 
 
 def run_abbr_source_title_importer(root_dir):

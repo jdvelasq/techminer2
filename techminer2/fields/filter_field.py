@@ -36,8 +36,8 @@ import os.path
 
 import pandas as pd
 
-from ..._dtypes import DTYPES
-from ...metrics import performance_metrics
+from .._dtypes import DTYPES
+from ..metrics import performance_metrics
 from .protected_fields import PROTECTED_FIELDS
 
 

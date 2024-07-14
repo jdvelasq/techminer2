@@ -9,7 +9,7 @@
 
 import pandas as pd
 
-from ...refine.fields.process_field import _process_field
+from ...fields.process_field import _process_field
 
 
 def run_authors_id_importer(root_dir):

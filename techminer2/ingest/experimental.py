@@ -21,7 +21,7 @@ import pandas as pd
 from textblob import TextBlob  # type: ignore
 from tqdm import tqdm
 
-from ..refine.fields.merge_fields import _merge_fields
+from ..fields.merge_fields import _merge_fields
 
 
 def experimental(
