@@ -15,7 +15,7 @@ import pandas as pd
 import plotly.express as px
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ...tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -124,9 +124,7 @@ def cosine_similarities_graph(
     y_label = "Cosine similarity with " + item[0] if y_label is None else y_label
 
     field_label = (
-        columns.replace("_", " ").upper() + " RANKING"
-        if field_label is None
-        else field_label
+        columns.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
     )
 
     fig = px.line(

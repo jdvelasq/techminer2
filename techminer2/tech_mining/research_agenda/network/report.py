@@ -44,8 +44,12 @@ Report
 
 
 """
-from ....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ....core.network.nx_create_co_occurrence_report import nx_create_co_occurrences_report
+from ....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
+    create_graph_from_co_occurrence_network,
+)
+from ....core.network.co_occurrence_network.nx_create_co_occurrence_report import (
+    nx_create_co_occurrences_report,
+)
 from ....metrics.performance_metrics import performance_metrics
 
 
@@ -130,7 +134,7 @@ def report(
     # Obtains emergent items
     custom_items = metrics.index.tolist()
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = create_graph_from_co_occurrence_network(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

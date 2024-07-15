@@ -114,7 +114,7 @@ Word Network
 
     
 """
-from ...tech_mining.co_occurrence.matrix_viewer import matrix_viewer
+from ...co_occurrence.matrix_viewer import matrix_viewer
 from .item_associations import item_associations
 
 

@@ -57,7 +57,9 @@ Network Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
+    create_graph_from_co_occurrence_network,
+)
 from ....core.network.nx_visualize_graph import nx_visualize_graph
 from ....metrics.performance_metrics import performance_metrics
 
@@ -140,7 +142,7 @@ def network_visualization(
     # Obtains emergent items
     custom_items = metrics.index.tolist()
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = create_graph_from_co_occurrence_network(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

@@ -55,7 +55,9 @@ Item Density Visualization
 
 
 """
-from ...core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
+    create_graph_from_co_occurrence_network,
+)
 from ...core.network.nx_visualize_item_density import nx_visualize_item_density
 
 
@@ -113,7 +115,7 @@ def item_density_visualization(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = create_graph_from_co_occurrence_network(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

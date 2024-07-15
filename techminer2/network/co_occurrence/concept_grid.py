@@ -44,7 +44,9 @@ Concept Grid
 
 """
 from ...core.network.nx_concept_grid import nx_concept_grid
-from ...core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
+    create_graph_from_co_occurrence_network,
+)
 
 
 def concept_grid(
@@ -95,7 +97,7 @@ def concept_grid(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = create_graph_from_co_occurrence_network(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

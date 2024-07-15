@@ -40,7 +40,9 @@ Columbia Graduate Sch. of Bus. (USA) 1:390       2  ...  0.067114
 
 """
 from .....core.network.nx_compute_metrics import nx_compute_metrics
-from .....core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
+    create_graph_from_co_occurrence_network,
+)
 
 FIELD = "organizations"
 
@@ -85,7 +87,7 @@ def metrics(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = create_graph_from_co_occurrence_network(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,

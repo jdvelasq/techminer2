@@ -74,7 +74,7 @@ from dataclasses import dataclass
 import plotly.express as px
 
 from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...tech_mining.co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...co_occurrence.co_occurrence_matrix import co_occurrence_matrix
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -319,9 +319,7 @@ def __chart(
     metric_label = "OCC" if metric_label is None else metric_label
 
     field_label = (
-        rows.replace("_", " ").upper() + " RANKING"
-        if field_label is None
-        else field_label
+        rows.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
     )
 
     table = data_frame.copy()

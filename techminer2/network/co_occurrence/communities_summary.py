@@ -47,7 +47,9 @@ Communities Summary
 
 """
 from ...core.network.nx_communities_summary import nx_communities_summary
-from ...core.network.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
+    create_graph_from_co_occurrence_network,
+)
 
 
 def communities_summary(
@@ -96,7 +98,7 @@ def communities_summary(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = create_graph_from_co_occurrence_network(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
