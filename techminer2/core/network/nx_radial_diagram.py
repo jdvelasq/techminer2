@@ -78,19 +78,13 @@ identifying the most relevant terms associated with a given term.
 import networkx as nx
 
 from ...tools.associations.item_associations import item_associations
-from .nx_compute_edge_width_from_edge_weight import (
-    nx_compute_edge_width_from_edge_weight,
-)
-from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_occ import (
-    nx_compute_textfont_opacity_from_item_occ,
-)
-from .nx_compute_textfont_size_from_item_occ import (
-    nx_compute_textfont_size_from_item_occ,
-)
-from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from .assign_opacity_to_text_based_on_frequency import assign_opacity_to_text_based_on_frequency
+from .assign_sizes_to_nodes_based_on_occurrences import assign_sizes_to_nodes_based_on_occurrences
+from .assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from .assign_textfont_sizes_to_nodes_based_on_occurrences import assign_textfont_sizes_to_nodes_based_on_occurrences
+from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from .assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
+from .compute_spring_layout_positions import compute_spring_layout_positions
 from .nx_visualize_graph import nx_visualize_graph
 
 
@@ -187,24 +181,30 @@ def nx_radial_diagram(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_spring_layout(nx_graph, nx_k, nx_iterations, nx_random_state)
+    nx_graph = compute_spring_layout_positions(
+        nx_graph, nx_k, nx_iterations, nx_random_state
+    )
 
     #
     # Sets the node attributes
     # nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_min, node_size_max)
-    nx_graph = nx_compute_textfont_size_from_item_occ(
+    nx_graph = assign_sizes_to_nodes_based_on_occurrences(
+        nx_graph, node_size_min, node_size_max
+    )
+    nx_graph = assign_textfont_sizes_to_nodes_based_on_occurrences(
         nx_graph, textfont_size_min, textfont_size_max
     )
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(
+    nx_graph = assign_opacity_to_text_based_on_frequency(
         nx_graph, textfont_opacity_min, textfont_opacity_max
     )
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
-    nx_graph = nx_compute_textposition_from_graph(nx_graph)
-    nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
+    nx_graph = assign_widths_to_edges_based_on_weight(
+        nx_graph, edge_width_min, edge_width_max
+    )
+    nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = assign_uniform_color_to_edges(nx_graph, edge_color)
 
     return nx_visualize_graph(
         #

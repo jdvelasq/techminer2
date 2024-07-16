@@ -6,11 +6,6 @@
             "source.organizeImports": "explicit"
         },
     },
-    "isort.args": [
-        "--profile",
-        "black",
-        "--line-length 98"
-    ],
     "python.testing.pytestArgs": [
         ".",
         "--doctest-glob=*.py",
@@ -62,4 +57,7 @@
     "python.analysis.enablePytestExtra": true,
     "testExplorer.codeLens": false,
     "testExplorer.useNativeTesting": true,
+    "black-formatter.path": [
+        "pyproject.toml"
+    ],
 }

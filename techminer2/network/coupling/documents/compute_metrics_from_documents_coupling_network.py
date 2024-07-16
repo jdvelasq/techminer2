@@ -38,7 +38,7 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
 
 
 """
-from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.compute_network_metrics import compute_network_metrics
 from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
     nx_create_bibliographic_coupling_graph_for_documents,
 )
@@ -113,7 +113,7 @@ def compute_metrics_from_documents_coupling_network(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

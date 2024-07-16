@@ -1,21 +1,46 @@
 Techminer 2+
 ################################################################################
 
+
 .. toctree::
     :hidden:
+    :caption: Ingest
     :maxdepth: 1
 
     ingest/__index__ 
+
+
+.. toctree::
+    :hidden:
+    :caption: Refine
+    :maxdepth: 1
+
     fields/__index__
-    refine/__index__ 
     search/__index__ 
+    thesaurus/__index__
+
+
+.. toctree::
+    :hidden:
+    :caption: Analyze    
+    :maxdepth: 1
+    
     metrics/__index__ 
-    science_mapping/__index__
+    co_occurrence/__index__
+    correlation/__index__
+    network/__index__
+    doucument_clustering/__index__
     tech_mining/__index__
     tools/__index__
-    report/__index__
+    
     
 
+.. toctree::
+    :hidden:
+    :caption: Report
+    :maxdepth: 1    
+
+    report/__index__
 
 **Author**:
 

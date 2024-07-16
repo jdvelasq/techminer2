@@ -55,7 +55,9 @@ Your task is ...
 
 """
 from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ....core.network.nx_create_degree_plot import nx_create_degree_plot
+from ....core.network.generate_node_degree_distribution_chart import (
+    generate_node_degree_distribution_chart,
+)
 
 UNIT_OF_ANALYSIS = "cited_authors"
 
@@ -138,7 +140,7 @@ def plot_node_degree_from_cited_authors_network(
         **filters,
     )
 
-    return nx_create_degree_plot(
+    return generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

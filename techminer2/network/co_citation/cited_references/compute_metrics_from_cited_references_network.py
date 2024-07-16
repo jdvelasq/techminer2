@@ -37,7 +37,7 @@ Belleflamme P., 2014, J BUS VENTURING 1:3           11  ...  0.037319
 [5 rows x 4 columns]
 
 """
-from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.compute_network_metrics import compute_network_metrics
 from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_references"
@@ -114,7 +114,7 @@ def compute_metrics_from_cited_references_network(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

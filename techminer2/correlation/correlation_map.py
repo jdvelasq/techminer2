@@ -8,18 +8,18 @@
 
 import networkx as nx
 
-from ..core.network.nx_compute_node_size_from_item_occ import (
-    nx_compute_node_size_from_item_occ,
+from ..core.network.assign_sizes_to_nodes_based_on_occurrences import (
+    assign_sizes_to_nodes_based_on_occurrences,
 )
-from ..core.network.nx_compute_spring_layout import nx_compute_spring_layout
-from ..core.network.nx_compute_textfont_opacity_from_item_occ import (
-    nx_compute_textfont_opacity_from_item_occ,
+from ..core.network.compute_spring_layout_positions import compute_spring_layout_positions
+from ..core.network.assign_opacity_to_text_based_on_frequency import (
+    assign_opacity_to_text_based_on_frequency,
 )
-from ..core.network.nx_compute_textfont_size_from_item_occ import (
-    nx_compute_textfont_size_from_item_occ,
+from ..core.network.assign_textfont_sizes_to_nodes_based_on_occurrences import (
+    assign_textfont_sizes_to_nodes_based_on_occurrences,
 )
-from ..core.network.nx_compute_textposition_from_graph import (
-    nx_compute_textposition_from_graph,
+from ..core.network.assign_text_positions_to_nodes_by_quadrants import (
+    assign_text_positions_to_nodes_by_quadrants,
 )
 from ..core.network.nx_visualize_graph import nx_visualize_graph
 
@@ -57,13 +57,13 @@ def correlation_map(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_spring_layout(nx_graph, nx_k, nx_iterations, nx_random_state)
+    nx_graph = compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
 
     #
     # Sets the layout
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
-    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
+    nx_graph = assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_range)
+    nx_graph = assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_range)
+    nx_graph = assign_opacity_to_text_based_on_frequency(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
@@ -71,7 +71,7 @@ def correlation_map(
 
     #
     #
-    nx_graph = nx_compute_textposition_from_graph(nx_graph)
+    nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
 
     return nx_visualize_graph(
         #

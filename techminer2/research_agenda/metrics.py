@@ -42,7 +42,7 @@ BLOCKCHAIN 03:0369                 5     0.013645   0.575758  0.045465
 
 
 """
-from ..core.network.nx_compute_metrics import nx_compute_metrics
+from ..core.network.compute_network_metrics import compute_network_metrics
 from ..core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
     create_graph_from_co_occurrence_network,
 )
@@ -162,7 +162,7 @@ def metrics(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

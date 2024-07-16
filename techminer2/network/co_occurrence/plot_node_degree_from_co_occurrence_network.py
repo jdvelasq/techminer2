@@ -63,7 +63,9 @@ Your task is ...
 from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
     create_graph_from_co_occurrence_network,
 )
-from ...core.network.nx_create_degree_plot import nx_create_degree_plot
+from ...core.network.generate_node_degree_distribution_chart import (
+    generate_node_degree_distribution_chart,
+)
 
 
 def plot_node_degree_from_co_occurrence_network(
@@ -151,7 +153,7 @@ def plot_node_degree_from_co_occurrence_network(
         **filters,
     )
 
-    return nx_create_degree_plot(
+    return generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

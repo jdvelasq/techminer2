@@ -41,9 +41,9 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from ...core.network.nx_compute_metrics import nx_compute_metrics
-from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
+from ...core.network.compute_network_metrics import compute_network_metrics
+from ...core.network.co_occurrence_network.create_co_occurrence_networkx_graph import (
+    create_co_occurrence_networkx_graph,
 )
 
 
@@ -59,7 +59,6 @@ def compute_metrics_from_co_occurrence_network(
     custom_items=None,
     #
     # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
     association_index="association",
     #
     # DATABASE PARAMS:
@@ -69,9 +68,7 @@ def compute_metrics_from_co_occurrence_network(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #
@@ -82,15 +79,11 @@ def compute_metrics_from_co_occurrence_network(
     #
     # EDGES:
     edge_width_range = (0.8, 3.0)
-    #
-    # LAYOUT:
-    nx_k = None
-    nx_iterations = 10
-    nx_random_state = 0
+
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_networkx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -102,13 +95,12 @@ def compute_metrics_from_co_occurrence_network(
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
         association_index=association_index,
         #
         # LAYOUT:
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        nx_random_state=nx_random_state,
+        # nx_k=nx_k,
+        # nx_iterations=nx_iterations,
+        # nx_random_state=nx_random_state,
         #
         # NODES:
         node_size_range=node_size_range,
@@ -125,7 +117,7 @@ def compute_metrics_from_co_occurrence_network(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

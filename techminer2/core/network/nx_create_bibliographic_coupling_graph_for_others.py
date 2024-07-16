@@ -15,20 +15,24 @@ from ...helpers.append_occurrences_and_citations_to_axis import (
 from ..read_filtered_database import read_filtered_database
 from ...metrics.performance_metrics import performance_metrics
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
-from .nx_compute_edge_width_from_edge_weight import (
-    nx_compute_edge_width_from_edge_weight,
+from .assign_widths_to_edges_based_on_weight import (
+    assign_widths_to_edges_based_on_weight,
 )
-from .nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from .nx_compute_spring_layout import nx_compute_spring_layout
-from .nx_compute_textfont_opacity_from_item_occ import (
-    nx_compute_textfont_opacity_from_item_occ,
+from .assign_sizes_to_nodes_based_on_occurrences import (
+    assign_sizes_to_nodes_based_on_occurrences,
 )
-from .nx_compute_textfont_size_from_item_occ import (
-    nx_compute_textfont_size_from_item_occ,
+from .compute_spring_layout_positions import compute_spring_layout_positions
+from .assign_opacity_to_text_based_on_frequency import (
+    assign_opacity_to_text_based_on_frequency,
 )
-from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
+from .assign_textfont_sizes_to_nodes_based_on_occurrences import (
+    assign_textfont_sizes_to_nodes_based_on_occurrences,
+)
+from .assign_text_positions_to_nodes_by_quadrants import (
+    assign_text_positions_to_nodes_by_quadrants,
+)
+from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from .assign_colors_to_nodes_by_group_attribute import assign_colors_to_nodes_by_group_attribute
 
 
 def nx_create_bibliographic_coupling_graph_for_others(
@@ -99,11 +103,11 @@ def nx_create_bibliographic_coupling_graph_for_others(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_spring_layout(nx_graph, nx_k, nx_iterations, nx_random_state)
+    nx_graph = compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
 
     #
     # Sets the node attributes
-    nx_graph = nx_set_node_color_from_group_attr(nx_graph)
+    nx_graph = assign_colors_to_nodes_by_group_attribute(nx_graph)
 
     # nx_graph = nx_compute_node_degree(nx_graph)
     # nx_graph = nx_compute_node_size_from_node_degree(nx_graph, node_size_range)
@@ -111,15 +115,15 @@ def nx_create_bibliographic_coupling_graph_for_others(
     # nx_graph = nx_compute_textfont_opacity_from_node_degree(
     #     nx_graph, textfont_opacity_range
     # )
-    nx_graph = nx_compute_node_size_from_item_occ(nx_graph, node_size_range)
-    nx_graph = nx_compute_textfont_size_from_item_occ(nx_graph, textfont_size_range)
-    nx_graph = nx_compute_textfont_opacity_from_item_occ(nx_graph, textfont_opacity_range)
+    nx_graph = assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_range)
+    nx_graph = assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_range)
+    nx_graph = assign_opacity_to_text_based_on_frequency(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
-    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_range)
-    nx_graph = nx_compute_textposition_from_graph(nx_graph)
-    nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
+    nx_graph = assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = assign_uniform_color_to_edges(nx_graph, edge_color)
 
     return nx_graph
 

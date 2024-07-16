@@ -37,7 +37,7 @@ United Kingdom 03:0636       8     0.020370        0.9  0.063285
 
 
 """
-from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.compute_network_metrics import compute_network_metrics
 from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
     nx_create_bibliographic_coupling_graph_for_others,
 )
@@ -120,7 +120,7 @@ def compute_metrics_from_countries_coupling_network(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

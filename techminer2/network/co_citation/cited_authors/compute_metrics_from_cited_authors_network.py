@@ -36,7 +36,7 @@ Duarte J. 1:06         14     0.037626   0.630435  0.044547
 
 
 """
-from ....core.network.nx_compute_metrics import nx_compute_metrics
+from ....core.network.compute_network_metrics import compute_network_metrics
 from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_authors"
@@ -113,7 +113,7 @@ def compute_metrics_from_cited_authors_network(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

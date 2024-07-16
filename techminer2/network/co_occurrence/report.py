@@ -69,9 +69,7 @@ def report(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

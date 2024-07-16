@@ -9,8 +9,8 @@
 Network Visualization
 ===============================================================================
 
->>> from techminer2.science_mapping.co_occurrence import network_visualization
->>> network_visualization(
+>>> from techminer2.network.co_occurrence import plot_co_occurrence_network
+>>> plot_co_occurrence_network(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -49,17 +49,27 @@ Network Visualization
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/co_occurrence/network/network_visualization.html")
+... ).write_html("sphinx/_static/network/co_occurrence/plot_co_occurrence_network.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/co_occurrence/network/network_visualization.html" 
+    <iframe src="../_static/network/co_occurrence/network/plot_co_occurrence_network.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
+from ...core.network.assign_colors_to_edges_based_on_weight import assign_colors_to_edges_based_on_weight
+from ...core.network.assign_colors_to_nodes_by_group_attribute import assign_colors_to_nodes_by_group_attribute
+from ...core.network.assign_opacity_to_text_based_on_frequency import assign_opacity_to_text_based_on_frequency
+from ...core.network.assign_sizes_to_nodes_based_on_occurrences import assign_sizes_to_nodes_based_on_occurrences
+from ...core.network.assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from ...core.network.assign_textfont_sizes_to_nodes_based_on_occurrences import \
+    assign_textfont_sizes_to_nodes_based_on_occurrences
+from ...core.network.assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from ...core.network.assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
+from ...core.network.cluster_networkx_graph import cluster_networkx_graph
+from ...core.network.co_occurrence_network.create_co_occurrence_networkx_graph import \
+    create_co_occurrence_networkx_graph
+from ...core.network.compute_spring_layout_positions import compute_spring_layout_positions
 from ...core.network.nx_visualize_graph import nx_visualize_graph
 
 
@@ -104,10 +114,9 @@ def plot_co_occurrence_network(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
-    nx_graph = create_graph_from_co_occurrence_network(
+    """:meta private:"""
+
+    nx_graph = create_co_occurrence_networkx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -118,23 +127,8 @@ def plot_co_occurrence_network(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK CLUSTERING:
+        # NETWORK PARAMS:
         association_index=association_index,
-        algorithm_or_dict=algorithm_or_dict,
-        #
-        # LAYOUT:
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        nx_random_state=nx_random_state,
-        #
-        # NODES:
-        node_size_range=node_size_range,
-        textfont_size_range=textfont_size_range,
-        textfont_opacity_range=textfont_opacity_range,
-        #
-        # EDGES:
-        edge_color=edge_color,
-        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -143,6 +137,36 @@ def plot_co_occurrence_network(
         cited_by_filter=cited_by_filter,
         **filters,
     )
+
+    nx_graph = cluster_networkx_graph(
+        #
+        # FUNCTION PARAMS:
+        nx_graph=nx_graph,
+        #
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
+    )
+
+    nx_graph = compute_spring_layout_positions(
+        nx_graph=nx_graph,
+        k=nx_k,
+        iterations=nx_iterations,
+        seed=nx_random_state,
+    )
+
+    #
+    # Sets the node attributes
+    nx_graph = assign_colors_to_nodes_by_group_attribute(nx_graph)
+    nx_graph = assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_range)
+    nx_graph = assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_range)
+    nx_graph = assign_opacity_to_text_based_on_frequency(nx_graph, textfont_opacity_range)
+
+    #
+    # Sets the edge attributes
+    nx_graph = assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = assign_uniform_color_to_edges(nx_graph, edge_color)
+    nx_graph = assign_colors_to_edges_based_on_weight(nx_graph)
 
     return nx_visualize_graph(
         #
