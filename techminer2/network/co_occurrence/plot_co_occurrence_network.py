@@ -51,36 +51,12 @@ Network Visualization
 ...     cited_by_filter=(None, None),
 ... ).write_html("sphinx/_static/network/co_occurrence/plot_co_occurrence_network.html")
 
-- con 1
-
-.. raw:: html
-
-    <iframe src="../_static/network/co_occurrence/plot_co_occurrence_network.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
-
-- con 2
-
 .. raw:: html
 
     <iframe src="../../_static/network/co_occurrence/plot_co_occurrence_network.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
-- con 3
-
-.. raw:: html
-
-    <iframe src="../../../_static/network/co_occurrence/plot_co_occurrence_network.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
-
-- con 4
-
-.. raw:: html
-
-    <iframe src="../../../../_static/network/co_occurrence/plot_co_occurrence_network.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
