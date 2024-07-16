@@ -71,7 +71,7 @@ from typing import Literal
 from ...core.factor_analysis import FactorAnalyzer
 
 
-def treemap(
+def plot_hierarchical_treemap_from_tfidf_svd_embedding(
     #
     # PARAMS:
     field,
