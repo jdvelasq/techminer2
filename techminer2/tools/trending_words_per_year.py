@@ -79,7 +79,7 @@ from ..core.metrics.sort_records_by_metric import sort_records_by_metric
 from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
 
 
@@ -138,7 +138,7 @@ def trending_words_per_year(
 
         indicators = sort_records_by_metric(indicators, metric="OCC")
 
-        custom_items = extract_top_n_items_by_metric(
+        custom_items = extract_top_n_terms_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=None,

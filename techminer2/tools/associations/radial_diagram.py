@@ -81,7 +81,7 @@ from ...core.network.nx_compute_textposition_from_graph import (
 )
 from ...core.network.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from ...core.network.nx_visualize_graph import nx_visualize_graph
-from ...co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 
 def radial_diagram(
@@ -150,7 +150,7 @@ def radial_diagram(
     #
     # MAIN CODE:
     #
-    associations = co_occurrence_matrix(
+    associations = compute_co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=columns,

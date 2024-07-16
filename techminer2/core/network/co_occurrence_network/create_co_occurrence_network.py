@@ -11,7 +11,7 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 """
 import networkx as nx
-from ....co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ....co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
 from ....co_occurrence.normalize_co_occurrence_matrix import (
     normalize_co_occurrence_matrix,
 )
@@ -41,7 +41,7 @@ def create_co_occurrence_network(
     **filters,
 ):
 
-    cooc_matrix = co_occurrence_matrix(
+    cooc_matrix = compute_co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=rows_and_columns,

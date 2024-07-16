@@ -57,7 +57,7 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 from ..helpers.append_occurrences_and_citations_to_axis import (
     append_occurrences_and_citations_to_axis,
 )
-from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
@@ -105,7 +105,7 @@ def tfidf(
     )
 
     if custom_items is None:
-        custom_items = extract_top_n_items_by_metric(
+        custom_items = extract_top_n_terms_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=top_n,

@@ -15,7 +15,7 @@ import pandas as pd
 import plotly.express as px
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ...co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ...co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -75,7 +75,7 @@ def cosine_similarities_graph(
     #
     # MAIN CODE:
     #
-    cooc_matrix = co_occurrence_matrix(
+    cooc_matrix = compute_co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=columns,

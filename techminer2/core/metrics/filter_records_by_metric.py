@@ -4,7 +4,7 @@
 This function filters a dataframe of performance metrics by an specific metric.
 
 """
-from .extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from .extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from .sort_records_by_metric import sort_records_by_metric
 
 
@@ -29,7 +29,7 @@ def filter_records_by_metric(
             # In this case not is possibe to use trend_analysis
             #
             # Selects the top_n items by OCC
-            custom_items_occ = extract_top_n_items_by_metric(
+            custom_items_occ = extract_top_n_terms_by_metric(
                 indicators=records,
                 metric="OCC",
                 top_n=top_n,
@@ -39,7 +39,7 @@ def filter_records_by_metric(
 
             #
             # Selects the top_n items by GCS
-            custom_items_gc = extract_top_n_items_by_metric(
+            custom_items_gc = extract_top_n_terms_by_metric(
                 indicators=records,
                 metric="global_citations",
                 top_n=top_n,
@@ -53,7 +53,7 @@ def filter_records_by_metric(
         else:
             #
             # Default custom items selection
-            custom_items = extract_top_n_items_by_metric(
+            custom_items = extract_top_n_terms_by_metric(
                 indicators=records,
                 metric=metric,
                 top_n=top_n,

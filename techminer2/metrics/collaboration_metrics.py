@@ -51,7 +51,7 @@ import numpy as np
 import plotly.express as px
 
 from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from ..core.read_filtered_database import read_filtered_database
 
 
@@ -168,7 +168,7 @@ def collaboration_metrics(
         #
         #  Filter the metrics
         if custom_items is None:
-            custom_items = extract_top_n_items_by_metric(
+            custom_items = extract_top_n_terms_by_metric(
                 indicators=metrics,
                 metric="OCC",
                 top_n=top_n,

@@ -135,11 +135,11 @@ from ..core.stopwords.load_user_stopwords import load_user_stopwords
 from ..core.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..core.metrics.extract_top_n_items_by_metric import extract_top_n_items_by_metric
+from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from ..core.read_filtered_database import read_filtered_database
 
 
-def co_occurrence_matrix(
+def compute_co_occurrence_matrix(
     #
     # FUNCTION PARAMS:
     columns,
@@ -278,7 +278,7 @@ def ___matrix(
 
             indicators = sort_records_by_metric(indicators, "OCC")
 
-            custom_items = extract_top_n_items_by_metric(
+            custom_items = extract_top_n_terms_by_metric(
                 indicators=indicators,
                 metric="OCC",
                 top_n=top_n,

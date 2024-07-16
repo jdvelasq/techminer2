@@ -49,7 +49,7 @@ Butterfly Chart
 """
 import plotly.graph_objects as go
 
-from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 
 def butterfly_chart(
@@ -99,7 +99,7 @@ def butterfly_chart(
     #
     # MAIN CODE:
     #
-    matrix = co_occurrence_matrix(
+    matrix = compute_co_occurrence_matrix(
         #
         # COLUMN PARAMS:
         columns=columns,

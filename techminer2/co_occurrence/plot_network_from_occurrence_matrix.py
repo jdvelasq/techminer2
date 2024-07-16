@@ -130,10 +130,10 @@ from ..core.network.nx_compute_textposition_from_graph import (
     nx_compute_textposition_from_graph,
 )
 from ..core.network.nx_visualize_graph import nx_visualize_graph
-from .co_occurrence_matrix import co_occurrence_matrix
+from .compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 
-def words_viewer(
+def plot_network_from_occurrence_matrix(
     #
     # FUNCTION PARAMS:
     columns,
@@ -184,7 +184,7 @@ def words_viewer(
     :meta private:
     """
 
-    cooc_matrix = co_occurrence_matrix(
+    cooc_matrix = compute_co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=columns,

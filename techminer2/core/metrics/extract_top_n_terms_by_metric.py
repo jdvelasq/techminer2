@@ -4,7 +4,7 @@ Extracts the top n items (row names) by a metric.
 """
 
 
-def extract_top_n_items_by_metric(
+def extract_top_n_terms_by_metric(
     indicators,
     metric,
     top_n,

@@ -19,7 +19,7 @@ from sklearn.manifold import MDS, TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 
 from ..metrics.tfidf import tfidf as _tfidf
-from ..co_occurrence.co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
 from ..co_occurrence.normalize_co_occurrence_matrix import (
     normalize_co_occurrence_matrix,
 )
@@ -122,7 +122,7 @@ class FactorAnalyzer:
         cited_by_filter=(None, None),
         **filters,
     ):
-        matrix = co_occurrence_matrix(
+        matrix = compute_co_occurrence_matrix(
             #
             # FUNCTION PARAMS:
             columns=self.field,

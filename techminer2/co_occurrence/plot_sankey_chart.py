@@ -41,10 +41,10 @@ Sankey Chart
 """
 import plotly.graph_objects as go
 
-from .co_occurrence_matrix import co_occurrence_matrix
+from .compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 
-def sankey_chart(
+def plot_sankey_chart(
     #
     # PARAMS:
     fields,
@@ -79,7 +79,7 @@ def sankey_chart(
             if row == fields[0]:
                 # it is the first matrix
 
-                coc_matrix = co_occurrence_matrix(
+                coc_matrix = compute_co_occurrence_matrix(
                     columns=col,
                     rows=row,
                     # Column item filters:
@@ -103,7 +103,7 @@ def sankey_chart(
                 curr_custom_items = matrices[-1].df_.columns.to_list()
                 curr_custom_items = [" ".join(item.split(" ")[:-1]) for item in curr_custom_items]
 
-                coc_matrix = co_occurrence_matrix(
+                coc_matrix = compute_co_occurrence_matrix(
                     columns=col,
                     rows=row,
                     # Columns item filters:
