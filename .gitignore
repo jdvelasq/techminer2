@@ -1,6 +1,5 @@
 .DS_Store
 
-**/*.html
 
 example/raw-data/main/scopus.csv
 debug.ipynb
