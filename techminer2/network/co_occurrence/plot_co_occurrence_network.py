@@ -53,7 +53,7 @@ Network Visualization
 
 .. raw:: html
 
-    <iframe src="../_static/network/co_occurrence/network/plot_co_occurrence_network.html" 
+    <iframe src="../../_static/network/co_occurrence/network/plot_co_occurrence_network.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

@@ -1,10 +1,7 @@
 .DS_Store
 
-
 example/raw-data/main/scopus.csv
 debug.ipynb
-
-
 
 sphinx/_static/**/*
 sphinx/_build/
