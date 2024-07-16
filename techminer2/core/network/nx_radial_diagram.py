@@ -85,7 +85,7 @@ from .assign_textfont_sizes_to_nodes_based_on_occurrences import assign_textfont
 from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
 from .assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
 from .compute_spring_layout_positions import compute_spring_layout_positions
-from .nx_visualize_graph import nx_visualize_graph
+from .plot_networkx_graph import plot_networkx_graph
 
 
 def nx_radial_diagram(
@@ -181,32 +181,22 @@ def nx_radial_diagram(
 
     #
     # Sets the layout
-    nx_graph = compute_spring_layout_positions(
-        nx_graph, nx_k, nx_iterations, nx_random_state
-    )
+    nx_graph = compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
 
     #
     # Sets the node attributes
     # nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-    nx_graph = assign_sizes_to_nodes_based_on_occurrences(
-        nx_graph, node_size_min, node_size_max
-    )
-    nx_graph = assign_textfont_sizes_to_nodes_based_on_occurrences(
-        nx_graph, textfont_size_min, textfont_size_max
-    )
-    nx_graph = assign_opacity_to_text_based_on_frequency(
-        nx_graph, textfont_opacity_min, textfont_opacity_max
-    )
+    nx_graph = assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_min, node_size_max)
+    nx_graph = assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_min, textfont_size_max)
+    nx_graph = assign_opacity_to_text_based_on_frequency(nx_graph, textfont_opacity_min, textfont_opacity_max)
 
     #
     # Sets the edge attributes
-    nx_graph = assign_widths_to_edges_based_on_weight(
-        nx_graph, edge_width_min, edge_width_max
-    )
+    nx_graph = assign_widths_to_edges_based_on_weight(nx_graph, edge_width_min, edge_width_max)
     nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
     nx_graph = assign_uniform_color_to_edges(nx_graph, edge_color)
 
-    return nx_visualize_graph(
+    return plot_networkx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

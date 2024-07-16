@@ -52,8 +52,8 @@ Network Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ....core.network.nx_visualize_graph import nx_visualize_graph
+from ....core.network.create_co_citation_graph import create_co_citation_graph
+from ....core.network.plot_networkx_graph import plot_networkx_graph
 
 UNIT_OF_ANALYSIS = "cited_sources"
 
@@ -97,7 +97,7 @@ def plot_cited_sources_network(
     """
     :meta private:
     """
-    nx_graph = nx_create_co_citation_graph(
+    nx_graph = create_co_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -132,7 +132,7 @@ def plot_cited_sources_network(
         **filters,
     )
 
-    return nx_visualize_graph(
+    return plot_networkx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

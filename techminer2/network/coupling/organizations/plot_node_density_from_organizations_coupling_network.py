@@ -51,10 +51,8 @@ Item Density Visualization
 
                                              
 """
-from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
-    nx_create_bibliographic_coupling_graph_for_others,
-)
-from ....core.network.nx_visualize_item_density import nx_visualize_item_density
+from ....core.network.nx_create_bibliographic_coupling_graph_for_others import nx_create_bibliographic_coupling_graph_for_others
+from ....core.network.plot_networkx_node_density import plot_networkx_node_density
 
 UNIT_OF_ANALYSIS = "organizations"
 
@@ -147,7 +145,7 @@ def plot_node_density_from_organizations_coupling_network(
         **filters,
     )
 
-    return nx_visualize_item_density(
+    return plot_networkx_node_density(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

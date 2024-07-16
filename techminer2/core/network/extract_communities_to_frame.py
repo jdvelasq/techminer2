@@ -9,13 +9,16 @@
 
 import pandas as pd
 
-from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
+from .extract_communities_to_dict import extract_communities_to_dict
 
 
-def nx_extract_communities_as_data_frame(nx_graph, conserve_counters):
+def extract_communities_to_frame(
+    nx_graph,
+    conserve_counters,
+):
     """Gets communities from a networkx graph as a data frame."""
 
-    communities = nx_extract_communities_as_dict(nx_graph, conserve_counters)
+    communities = extract_communities_to_dict(nx_graph, conserve_counters)
     communities = pd.DataFrame.from_dict(communities, orient="index").T
     communities = communities.fillna("")
     communities = communities.sort_index(axis=1)

@@ -41,9 +41,7 @@ Buchak G. 1:0390           2     0.000000   0.105263  0.052219
 
 """
 from ....core.network.compute_network_metrics import compute_network_metrics
-from ....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
+from ....core.network.create_co_occurrence_graph import create_co_occurrence_graph
 
 FIELD = "authors"
 
@@ -88,7 +86,7 @@ def compute_metrics_from_authors_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,

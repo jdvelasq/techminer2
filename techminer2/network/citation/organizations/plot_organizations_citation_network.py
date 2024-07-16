@@ -56,7 +56,7 @@ Network Visualization
 
 """
 from ....core.network.nx_create_citation_graph_others import nx_create_citation_graph_others
-from ....core.network.nx_visualize_graph import nx_visualize_graph
+from ....core.network.plot_networkx_graph import plot_networkx_graph
 
 UNIT_OF_ANALYSIS = "organizations"
 
@@ -137,7 +137,7 @@ def plot_organizations_citation_network(
         **filters,
     )
 
-    return nx_visualize_graph(
+    return plot_networkx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

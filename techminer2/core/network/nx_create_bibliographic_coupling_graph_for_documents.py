@@ -9,35 +9,21 @@
 import networkx as nx
 import numpy as np
 
-from ..read_filtered_database import read_filtered_database
 from ...metrics.performance_metrics import performance_metrics
-from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
-from .assign_widths_to_edges_based_on_weight import (
-    assign_widths_to_edges_based_on_weight,
-)
-from .nx_compute_node_degree import nx_compute_node_degree
-from .assign_sizes_to_nodes_based_on_citations import (
-    assign_sizes_to_nodes_based_on_citations,
-)
-from .assign_sizes_to_nodes_based_on_degree import assign_sizes_to_nodes_based_on_degree
-from .compute_spring_layout_positions import compute_spring_layout_positions
-from .assign_opacity_to_text_based_on_citations import (
-    assign_opacity_to_text_based_on_citations,
-)
-from .assign_opacity_to_text_based_on_degree import (
-    assign_opacity_to_text_based_on_degree,
-)
-from .assign_textfont_sizes_to_nodes_based_on_citations import (
-    assign_textfont_sizes_to_nodes_based_on_citations,
-)
-from .assign_textfont_sizes_to_nodes_based_on_degree import (
-    assign_textfont_sizes_to_nodes_based_on_degree,
-)
-from .assign_text_positions_to_nodes_by_quadrants import (
-    assign_text_positions_to_nodes_by_quadrants,
-)
-from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from ..read_filtered_database import read_filtered_database
 from .assign_colors_to_nodes_by_group_attribute import assign_colors_to_nodes_by_group_attribute
+from .assign_degree_to_nodes import assign_degree_to_nodes
+from .assign_opacity_to_text_based_on_citations import assign_opacity_to_text_based_on_citations
+from .assign_opacity_to_text_based_on_degree import assign_opacity_to_text_based_on_degree
+from .assign_sizes_to_nodes_based_on_citations import assign_sizes_to_nodes_based_on_citations
+from .assign_sizes_to_nodes_based_on_degree import assign_sizes_to_nodes_based_on_degree
+from .assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from .assign_textfont_sizes_to_nodes_based_on_citations import assign_textfont_sizes_to_nodes_based_on_citations
+from .assign_textfont_sizes_to_nodes_based_on_degree import assign_textfont_sizes_to_nodes_based_on_degree
+from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from .assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
+from .compute_spring_layout_positions import compute_spring_layout_positions
+from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 
 
 def nx_create_bibliographic_coupling_graph_for_documents(
@@ -163,12 +149,8 @@ def __add_weighted_edges_from(
 
     data_frame = records[["article", "global_references"]]
     data_frame = data_frame.dropna()
-    data_frame["article"] = (
-        data_frame["article"].str.split("; ").map(lambda x: [y.strip() for y in x])
-    )
-    data_frame["global_references"] = (
-        data_frame["global_references"].str.split(";").map(lambda x: [y.strip() for y in x])
-    )
+    data_frame["article"] = data_frame["article"].str.split("; ").map(lambda x: [y.strip() for y in x])
+    data_frame["global_references"] = data_frame["global_references"].str.split(";").map(lambda x: [y.strip() for y in x])
 
     data_frame = data_frame.explode("article")
     data_frame = data_frame.explode("global_references")
@@ -185,18 +167,10 @@ def __add_weighted_edges_from(
 
     #
     # Formats only articles
-    data_frame["row"] = (
-        data_frame["row"]
-        .str.split(", ")
-        .map(lambda x: x[:2] + [x[2] + " " + x[-1].split(" ")[-1]])
-        .str.join(", ")
-    )
+    data_frame["row"] = data_frame["row"].str.split(", ").map(lambda x: x[:2] + [x[2] + " " + x[-1].split(" ")[-1]]).str.join(", ")
     #
     data_frame["column"] = (
-        data_frame["column"]
-        .str.split(", ")
-        .map(lambda x: x[:2] + [x[2] + " " + x[-1].split(" ")[-1]])
-        .str.join(", ")
+        data_frame["column"].str.split(", ").map(lambda x: x[:2] + [x[2] + " " + x[-1].split(" ")[-1]]).str.join(", ")
     )
 
     #

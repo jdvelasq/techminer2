@@ -11,13 +11,12 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 """
 import networkx as nx
-from ....co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
-from ....co_occurrence.normalize_co_occurrence_matrix import (
-    normalize_co_occurrence_matrix,
-)
+
+from ...co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ...co_occurrence.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 
 
-def create_co_occurrence_networkx_graph(
+def create_co_occurrence_graph(
     #
     # FUNCTION PARAMS:
     rows_and_columns,

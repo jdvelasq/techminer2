@@ -41,12 +41,8 @@ Communities
 
 
 """
-from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
-    nx_create_bibliographic_coupling_graph_for_documents,
-)
-from ....core.network.nx_extract_communities_as_data_frame import (
-    nx_extract_communities_as_data_frame,
-)
+from ....core.network.extract_communities_to_frame import extract_communities_to_frame
+from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import nx_create_bibliographic_coupling_graph_for_documents
 
 
 def generate_communities_from_documents_coupling_network(
@@ -118,7 +114,7 @@ def generate_communities_from_documents_coupling_network(
         **filters,
     )
 
-    return nx_extract_communities_as_data_frame(
+    return extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

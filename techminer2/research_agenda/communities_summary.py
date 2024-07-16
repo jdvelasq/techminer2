@@ -41,10 +41,8 @@ Communities Summary
 
 
 """
-from ..core.network.nx_communities_summary import nx_communities_summary
-from ..core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
+from ..core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ..core.network.summarize_networkx_communities import summarize_networkx_communities
 from ..metrics.performance_metrics import performance_metrics
 
 
@@ -126,7 +124,7 @@ def communities_summary(
     # Obtains emergent items
     custom_items = metrics.index.tolist()
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -161,7 +159,7 @@ def communities_summary(
         **filters,
     )
 
-    return nx_communities_summary(
+    return summarize_networkx_communities(
         #
         # SUMMARY PARAMS:
         nx_graph=nx_graph,

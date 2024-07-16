@@ -57,7 +57,4 @@
     "python.analysis.enablePytestExtra": true,
     "testExplorer.codeLens": false,
     "testExplorer.useNativeTesting": true,
-    "black-formatter.path": [
-        "pyproject.toml"
-    ],
 }

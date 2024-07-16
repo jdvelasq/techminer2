@@ -10,7 +10,7 @@
 import plotly.graph_objects as go
 
 
-def nx_visualize_graph(
+def plot_networkx_graph(
     nx_graph,
     #
     # AXES:

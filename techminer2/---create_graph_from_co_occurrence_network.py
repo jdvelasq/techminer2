@@ -6,31 +6,22 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from ..assign_colors_to_edges_based_on_weight import assign_colors_to_edges_based_on_weight
+from ..assign_colors_to_nodes_by_group_attribute import assign_colors_to_nodes_by_group_attribute
+from ..assign_opacity_to_text_based_on_frequency import assign_opacity_to_text_based_on_frequency
+from ..assign_sizes_to_nodes_based_on_occurrences import assign_sizes_to_nodes_based_on_occurrences
+from ..assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from ..assign_textfont_sizes_to_nodes_based_on_occurrences import assign_textfont_sizes_to_nodes_based_on_occurrences
+from ..assign_uniform_color_to_edges import assign_uniform_color_to_edges
+
 #
 # Creates a co-occurrence networkx graph from a co-occurrence matrix.
 #
-from ..assign_widths_to_edges_based_on_weight import (
-    assign_widths_to_edges_based_on_weight,
-)
-from ..assign_sizes_to_nodes_based_on_occurrences import (
-    assign_sizes_to_nodes_based_on_occurrences,
-)
+from ..assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
 from ..compute_spring_layout_positions import compute_spring_layout_positions
-from ..assign_opacity_to_text_based_on_frequency import (
-    assign_opacity_to_text_based_on_frequency,
-)
-from ..assign_textfont_sizes_to_nodes_based_on_occurrences import (
-    assign_textfont_sizes_to_nodes_based_on_occurrences,
-)
-from ..assign_text_positions_to_nodes_by_quadrants import (
-    assign_text_positions_to_nodes_by_quadrants,
-)
-from ..assign_colors_to_edges_based_on_weight import assign_colors_to_edges_based_on_weight
-from ..assign_uniform_color_to_edges import assign_uniform_color_to_edges
-from ..assign_colors_to_nodes_by_group_attribute import assign_colors_to_nodes_by_group_attribute
 
 
-def create_graph_from_co_occurrence_network(
+def create_co_occurrence_networkx_graph(
     #
     # NETWORK:
     nx_graph,

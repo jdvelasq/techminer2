@@ -1,6 +1,5 @@
 """
 Matrix Normalization
-===============================================================================
 
 Association index is used to measure the similarity between two terms in a
 co-occurrence matrix. The association index is a normalized version of the
@@ -10,8 +9,6 @@ co-occurrence matrix.
 
 """
 import numpy as np
-
-# from . import CoocMatrix
 
 
 def normalize_co_occurrence_matrix(cooc_matrix, association_index):
@@ -134,9 +131,9 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
         "association": association,
     }[association_index]
 
-    matrix = cooc_matrix.df_.copy()
+    matrix = cooc_matrix.df_.copy()    
     matrix = matrix.map(float)
-    normalized_matrix = cooc_matrix.df_.copy()
+    normalized_matrix = cooc_matrix.df_.copy().map(float)
     normalized_matrix = fnc(matrix, normalized_matrix)
 
     for index in range(len(normalized_matrix)):

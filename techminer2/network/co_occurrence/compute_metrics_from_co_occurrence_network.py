@@ -10,8 +10,8 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.science_mapping.co_occurrence import metrics
->>> metrics(
+>>> from techminer2.network.co_occurrence import compute_metrics_from_co_occurrence_network
+>>> compute_metrics_from_co_occurrence_network(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -23,7 +23,6 @@ Metrics
 ...     custom_items=None,
 ...     #
 ...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
 ...     association_index="association",
 ...     #
 ...     # DATABASE PARAMS:
@@ -42,9 +41,7 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 """
 from ...core.network.compute_network_metrics import compute_network_metrics
-from ...core.network.co_occurrence_network.create_co_occurrence_networkx_graph import (
-    create_co_occurrence_networkx_graph,
-)
+from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
 
 
 def compute_metrics_from_co_occurrence_network(
@@ -69,21 +66,8 @@ def compute_metrics_from_co_occurrence_network(
     **filters,
 ):
     """:meta private:"""
-    # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    #
-    # NODES:
-    node_size_range = (30, 70)
-    textfont_size_range = (10, 20)
-    #
-    # EDGES:
-    edge_width_range = (0.8, 3.0)
 
-    #
-    # --------------------------------------------------------------------------
-
-    nx_graph = create_co_occurrence_networkx_graph(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -94,20 +78,8 @@ def compute_metrics_from_co_occurrence_network(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK CLUSTERING:
+        # NETWORK PARAMS:
         association_index=association_index,
-        #
-        # LAYOUT:
-        # nx_k=nx_k,
-        # nx_iterations=nx_iterations,
-        # nx_random_state=nx_random_state,
-        #
-        # NODES:
-        node_size_range=node_size_range,
-        textfont_size_range=textfont_size_range,
-        #
-        # EDGES:
-        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

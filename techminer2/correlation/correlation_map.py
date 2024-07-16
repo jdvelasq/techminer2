@@ -8,20 +8,12 @@
 
 import networkx as nx
 
-from ..core.network.assign_sizes_to_nodes_based_on_occurrences import (
-    assign_sizes_to_nodes_based_on_occurrences,
-)
+from ..core.network.assign_opacity_to_text_based_on_frequency import assign_opacity_to_text_based_on_frequency
+from ..core.network.assign_sizes_to_nodes_based_on_occurrences import assign_sizes_to_nodes_based_on_occurrences
+from ..core.network.assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from ..core.network.assign_textfont_sizes_to_nodes_based_on_occurrences import assign_textfont_sizes_to_nodes_based_on_occurrences
 from ..core.network.compute_spring_layout_positions import compute_spring_layout_positions
-from ..core.network.assign_opacity_to_text_based_on_frequency import (
-    assign_opacity_to_text_based_on_frequency,
-)
-from ..core.network.assign_textfont_sizes_to_nodes_based_on_occurrences import (
-    assign_textfont_sizes_to_nodes_based_on_occurrences,
-)
-from ..core.network.assign_text_positions_to_nodes_by_quadrants import (
-    assign_text_positions_to_nodes_by_quadrants,
-)
-from ..core.network.nx_visualize_graph import nx_visualize_graph
+from ..core.network.plot_networkx_graph import plot_networkx_graph
 
 
 def correlation_map(
@@ -73,7 +65,7 @@ def correlation_map(
     #
     nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
 
-    return nx_visualize_graph(
+    return plot_networkx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

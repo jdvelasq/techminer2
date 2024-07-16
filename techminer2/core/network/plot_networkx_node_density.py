@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 from sklearn.neighbors import KernelDensity
 
 
-def nx_visualize_item_density(
+def plot_networkx_node_density(
     #
     # FUNCTION PARAMS:
     nx_graph,
@@ -21,10 +21,10 @@ def nx_visualize_item_density(
     bandwidth="silverman",
     colorscale="Aggrnyl",
     opacity=0.5,
-    n_labels=None,
-    xaxes_range=None,
-    yaxes_range=None,
-    show_axes=False,
+    # n_labels=None,
+    # xaxes_range=None,
+    # yaxes_range=None,
+    # show_axes=False,
 ):
     #
     # Network node positions

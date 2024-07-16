@@ -55,10 +55,8 @@ Network Visualization
 
 
 """
-from ....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
-from ....core.network.nx_visualize_graph import nx_visualize_graph
+from ....core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ....core.network.plot_networkx_graph import plot_networkx_graph
 
 FIELD = "countries"
 
@@ -104,7 +102,7 @@ def plot_countries_co_occurrence_network(
     """
     :meta private:
     """
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -141,7 +139,7 @@ def plot_countries_co_occurrence_network(
         **filters,
     )
 
-    return nx_visualize_graph(
+    return plot_networkx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

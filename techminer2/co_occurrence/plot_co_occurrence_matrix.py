@@ -106,24 +106,14 @@ Matrix Viewer
 """
 import networkx as nx
 
-from ..core.network.assign_widths_to_edges_based_on_weight import (
-    assign_widths_to_edges_based_on_weight,
-)
-from ..core.network.assign_sizes_to_nodes_based_on_occurrences import (
-    assign_sizes_to_nodes_based_on_occurrences,
-)
-from ..core.network.compute_spring_layout_positions import compute_spring_layout_positions
-from ..core.network.assign_opacity_to_text_based_on_frequency import (
-    assign_opacity_to_text_based_on_frequency,
-)
-from ..core.network.assign_textfont_sizes_to_nodes_based_on_occurrences import (
-    assign_textfont_sizes_to_nodes_based_on_occurrences,
-)
-from ..core.network.assign_text_positions_to_nodes_by_quadrants import (
-    assign_text_positions_to_nodes_by_quadrants,
-)
+from ..core.network.assign_opacity_to_text_based_on_frequency import assign_opacity_to_text_based_on_frequency
+from ..core.network.assign_sizes_to_nodes_based_on_occurrences import assign_sizes_to_nodes_based_on_occurrences
+from ..core.network.assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from ..core.network.assign_textfont_sizes_to_nodes_based_on_occurrences import assign_textfont_sizes_to_nodes_based_on_occurrences
 from ..core.network.assign_uniform_color_to_edges import assign_uniform_color_to_edges
-from ..core.network.nx_visualize_graph import nx_visualize_graph
+from ..core.network.assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
+from ..core.network.compute_spring_layout_positions import compute_spring_layout_positions
+from ..core.network.plot_networkx_graph import plot_networkx_graph
 from .compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 
@@ -219,7 +209,7 @@ def plot_co_occurrence_matrix(
 
     nx_graph = assign_uniform_color_to_edges(nx_graph, edge_color)
 
-    return nx_visualize_graph(
+    return plot_networkx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

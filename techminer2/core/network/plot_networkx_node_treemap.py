@@ -27,10 +27,10 @@ Treemap
 """
 import plotly.graph_objs as go
 
-from .nx_extract_communities_as_dict import nx_extract_communities_as_dict
+from .extract_communities_to_dict import extract_communities_to_dict
 
 
-def nx_visualize_treemap(
+def plot_networkx_node_treemap(
     #
     # NETWORKX GRAPH:
     nx_graph,
@@ -48,7 +48,7 @@ def nx_visualize_treemap(
     node_text = []
     parents = []
 
-    clusters = nx_extract_communities_as_dict(nx_graph, conserve_counters=True)
+    clusters = extract_communities_to_dict(nx_graph, conserve_counters=True)
     cluster_occ = {key: 0 for key in clusters}
     for key, names in clusters.items():
         for name in names:

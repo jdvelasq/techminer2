@@ -20,13 +20,13 @@ from collections import defaultdict
 
 import pandas as pd
 
-from ...thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
-from ...read_filtered_database import read_filtered_database
-from ....search.concordances import concordances_from_records
-from ....helpers.format_prompt_for_records import format_prompt_for_records
-from ....helpers.format_report_for_records import format_report_for_records
-from ....helpers.make_report_dir import make_report_dir
-from ..nx_extract_communities_as_dict import nx_extract_communities_as_dict
+from ...helpers.format_prompt_for_records import format_prompt_for_records
+from ...helpers.format_report_for_records import format_report_for_records
+from ...helpers.make_report_dir import make_report_dir
+from ...search.concordances import concordances_from_records
+from ..read_filtered_database import read_filtered_database
+from ..thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from .extract_communities_to_dict import extract_communities_to_dict
 
 TEXTWRAP_WIDTH = 73
 
@@ -50,7 +50,7 @@ def nx_create_co_occurrences_report(
 
     make_report_dir(root_dir, report_dir)
 
-    communities = nx_extract_communities_as_dict(nx_graph, conserve_counters=False)
+    communities = extract_communities_to_dict(nx_graph, conserve_counters=False)
 
     records_per_cluster = __extract_records_per_cluster(
         communities=communities,
@@ -199,18 +199,11 @@ def __extract_records_per_cluster(
     records_main["_CLUSTERS_"] = records_main["RAW_CLUSTERS"]
     records_main = records_main.dropna(subset=["_CLUSTERS_"])
     records_main["_CLUSTERS_"] = (
-        records_main["_CLUSTERS_"]
-        .str.split("; ")
-        .map(lambda x: [z.strip() for z in x])
-        .map(set)
-        .str.join("; ")
+        records_main["_CLUSTERS_"].str.split("; ").map(lambda x: [z.strip() for z in x]).map(set).str.join("; ")
     )
 
     records_main["ASSIGNED_CLUSTER"] = (
-        records_main["RAW_CLUSTERS"]
-        .str.split("; ")
-        .map(lambda x: [z.strip() for z in x])
-        .map(compute_cluster)
+        records_main["RAW_CLUSTERS"].str.split("; ").map(lambda x: [z.strip() for z in x]).map(compute_cluster)
     )
 
     clusters = records_main["ASSIGNED_CLUSTER"].dropna().drop_duplicates().to_list()
@@ -319,9 +312,7 @@ def __generate_terms_relationships_prompt(
 
         #
         # Secondary text:
-        text = (
-            "Improve and make more clear the explanation of the relationships among the keywords:"
-        )
+        text = "Improve and make more clear the explanation of the relationships among the keywords:"
         text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
         secondary_text = text + "\n\n"
 
@@ -348,14 +339,10 @@ def __generate_terms_relationships_prompt(
 
         # -------------------------------------------------------------------------------------
         records = records_per_cluster[cluster]
-        records = records.sort_values(
-            ["global_citations", "local_citations", "year"], ascending=False
-        )
+        records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
 
         file_name = f"{cluster}_abstracts_prompt.txt"
-        prompt = format_prompt_for_records(
-            main_text, secondary_text, records, weight="global_citations"
-        )
+        prompt = format_prompt_for_records(main_text, secondary_text, records, weight="global_citations")
 
         file_name = f"{cluster}_relationships_prompt.txt"
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)
@@ -376,9 +363,7 @@ def __generate_records_report(
 
     for cluster in sorted(communities.keys()):
         records = records_per_cluster[cluster]
-        records = records.sort_values(
-            ["global_citations", "local_citations", "year"], ascending=False
-        )
+        records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
         file_name = f"{cluster}_abstracts_report.txt"
         format_report_for_records(
             root_dir=root_dir,
@@ -443,13 +428,9 @@ def __generate_conclusions_prompt(
 
         # -------------------------------------------------------------------------------------
         records = records_per_cluster[cluster]
-        records = records.sort_values(
-            ["global_citations", "local_citations", "year"], ascending=False
-        )
+        records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
 
-        prompt = format_prompt_for_records(
-            main_text, secondary_text, records, weight="global_citations"
-        )
+        prompt = format_prompt_for_records(main_text, secondary_text, records, weight="global_citations")
 
         file_name = f"{cluster}_conclusions_prompt.txt"
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)

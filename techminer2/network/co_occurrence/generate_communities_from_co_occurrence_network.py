@@ -10,8 +10,8 @@ Communities
 ===============================================================================
 
 
->>> from techminer2.science_mapping.co_occurrence import communities
->>> communities(
+>>> from techminer2.network.co_occurrence import generate_communities_from_co_occurrence_network
+>>> generate_communities_from_co_occurrence_network(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -46,12 +46,9 @@ Communities
 
 
 """
-from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
-from ...core.network.nx_extract_communities_as_data_frame import (
-    nx_extract_communities_as_data_frame,
-)
+from ...core.network.cluster_networkx_graph import cluster_networkx_graph
+from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ...core.network.extract_communities_to_frame import extract_communities_to_frame
 
 
 def generate_communities_from_co_occurrence_network(
@@ -76,28 +73,9 @@ def generate_communities_from_co_occurrence_network(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
-    # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    #
-    # NODES:
-    node_size_range = (30, 70)
-    textfont_size_range = (10, 20)
-    #
-    # EDGES:
-    edge_width_range = (0.8, 3.0)
-    #
-    # LAYOUT:
-    nx_k = None
-    nx_iterations = 10
-    nx_random_state = 0
-    #
-    # --------------------------------------------------------------------------
+    """:meta private:"""
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -108,21 +86,8 @@ def generate_communities_from_co_occurrence_network(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
+        # NETWORK PARAMS:
         association_index=association_index,
-        #
-        # LAYOUT:
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        nx_random_state=nx_random_state,
-        #
-        # NODES:
-        node_size_range=node_size_range,
-        textfont_size_range=textfont_size_range,
-        #
-        # EDGES:
-        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -132,7 +97,16 @@ def generate_communities_from_co_occurrence_network(
         **filters,
     )
 
-    return nx_extract_communities_as_data_frame(
+    nx_graph = cluster_networkx_graph(
+        #
+        # FUNCTION PARAMS:
+        nx_graph=nx_graph,
+        #
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
+    )
+
+    return extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

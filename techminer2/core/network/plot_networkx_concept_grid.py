@@ -8,26 +8,24 @@
 
 import graphviz
 
-from .nx_communities_summary import nx_communities_summary
-from .nx_extract_communities_as_data_frame import (
-    nx_extract_communities_as_data_frame,
-)
+from .extract_communities_to_frame import extract_communities_to_frame
+from .summarize_networkx_communities import summarize_networkx_communities
 
 
-def nx_concept_grid(
+def plot_networkx_concept_grid(
     nx_graph,
     conserve_counters,
     n_head,
     fontsize,
 ):
-    summary = nx_communities_summary(
+    summary = summarize_networkx_communities(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
         conserve_counters=True,
     )
 
-    data_frame = nx_extract_communities_as_data_frame(
+    data_frame = extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

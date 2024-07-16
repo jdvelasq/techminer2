@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-To Brute Force Labels
+Map Nodes to Clusters
 ===============================================================================
 
 
->>> from techminer2.science_mapping.co_occurrence import to_brute_force_labels
->>> brute_force_labels = to_brute_force_labels(
+>>> from techminer2.network.co_occurrence import map_nodes_to_clusters_from_co_occurrence_network
+>>> user_clusters = map_nodes_to_clusters_from_co_occurrence_network(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -33,7 +33,7 @@ To Brute Force Labels
 ...     cited_by_filter=(None, None),
 ... )
 >>> from pprint import pprint
->>> pprint(brute_force_labels)
+>>> pprint(user_clusters)
 {'ARTIFICIAL_INTELLIGENCE 02:0327': 3,
  'BANKING 02:0291': 1,
  'BLOCKCHAIN 02:0305': 0,
@@ -57,48 +57,10 @@ To Brute Force Labels
 
 
 
->>> from techminer2.science_mapping.co_occurrence import communities
->>> print(communities(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict=brute_force_labels,
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).to_markdown())
-|    | CL_0                        | CL_1                         | CL_2                         | CL_3                            |
-|---:|:----------------------------|:-----------------------------|:-----------------------------|:--------------------------------|
-|  0 | FINTECH 31:5168             | INNOVATION 07:0911           | MARKETPLACE_LENDING 03:0317  | ARTIFICIAL_INTELLIGENCE 02:0327 |
-|  1 | FINANCIAL_INCLUSION 03:0590 | FINANCIAL_SERVICES 04:0667   | LENDINGCLUB 02:0253          | FINANCE 02:0309                 |
-|  2 | CROWDFUNDING 03:0335        | FINANCIAL_TECHNOLOGY 03:0461 | PEER_TO_PEER_LENDING 02:0253 | ROBOTS 02:0289                  |
-|  3 | BUSINESS_MODELS 02:0759     | TECHNOLOGY 02:0310           | SHADOW_BANKING 02:0253       |                                 |
-|  4 | CYBER_SECURITY 02:0342      | BANKING 02:0291              |                              |                                 |
-|  5 | CASE_STUDY 02:0340          |                              |                              |                                 |
-|  6 | BLOCKCHAIN 02:0305          |                              |                              |                                 |
-|  7 | REGTECH 02:0266             |                              |                              |                                 |
-
-
-
 """
-from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
-from ...core.network.nx_extract_communities_as_data_frame import (
-    nx_extract_communities_as_data_frame,
-)
+from ...core.network.cluster_networkx_graph import cluster_networkx_graph
+from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ...core.network.extract_communities_to_frame import extract_communities_to_frame
 
 
 def map_nodes_to_clusters_from_co_occurrence_network(
@@ -124,25 +86,8 @@ def map_nodes_to_clusters_from_co_occurrence_network(
     **filters,
 ):
     """:meta private:"""
-    # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    #
-    # NODES:
-    node_size_range = (30, 70)
-    textfont_size_range = (10, 20)
-    #
-    # EDGES:
-    edge_width_range = (0.8, 3.0)
-    #
-    # LAYOUT:
-    nx_k = None
-    nx_iterations = 10
-    nx_random_state = 0
-    #
-    # --------------------------------------------------------------------------
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -153,21 +98,8 @@ def map_nodes_to_clusters_from_co_occurrence_network(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
+        # NETWORK PARAMS:
         association_index=association_index,
-        #
-        # LAYOUT:
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        nx_random_state=nx_random_state,
-        #
-        # NODES:
-        node_size_range=node_size_range,
-        textfont_size_range=textfont_size_range,
-        #
-        # EDGES:
-        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -177,7 +109,16 @@ def map_nodes_to_clusters_from_co_occurrence_network(
         **filters,
     )
 
-    data_frame = nx_extract_communities_as_data_frame(
+    nx_graph = cluster_networkx_graph(
+        #
+        # FUNCTION PARAMS:
+        nx_graph=nx_graph,
+        #
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
+    )
+
+    data_frame = extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

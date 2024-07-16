@@ -40,9 +40,7 @@ Denmark 02:0330             4     0.050682   0.355789  0.074453
 
 """
 from ....core.network.compute_network_metrics import compute_network_metrics
-from ....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
+from ....core.network.create_co_occurrence_graph import create_co_occurrence_graph
 
 FIELD = "countries"
 
@@ -84,7 +82,7 @@ def compute_metrics_from_countries_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,

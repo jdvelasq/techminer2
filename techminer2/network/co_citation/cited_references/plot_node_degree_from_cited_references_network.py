@@ -55,10 +55,8 @@ Your task is ...
 
 
 """
-from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ....core.network.generate_node_degree_distribution_chart import (
-    generate_node_degree_distribution_chart,
-)
+from ....core.network.create_co_citation_graph import create_co_citation_graph
+from ....core.network.generate_node_degree_distribution_chart import generate_node_degree_distribution_chart
 
 UNIT_OF_ANALYSIS = "cited_references"
 
@@ -106,7 +104,7 @@ def plot_node_degree_from_cited_references_network(
     nx_random_state = 0
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_citation_graph(
+    nx_graph = create_co_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,

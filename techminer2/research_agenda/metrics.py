@@ -43,9 +43,7 @@ BLOCKCHAIN 03:0369                 5     0.013645   0.575758  0.045465
 
 """
 from ..core.network.compute_network_metrics import compute_network_metrics
-from ..core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
+from ..core.network.create_co_occurrence_graph import create_co_occurrence_graph
 from ..metrics.performance_metrics import performance_metrics
 
 
@@ -127,7 +125,7 @@ def metrics(
     # Obtains emergent items
     custom_items = metrics.index.tolist()
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

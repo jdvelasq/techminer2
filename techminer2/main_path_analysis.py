@@ -65,27 +65,17 @@ from dataclasses import dataclass
 import networkx as nx
 import numpy as np
 
-from .helpers.format_report_for_records import format_report_for_records
-from .core.network.assign_widths_to_edges_based_on_weight import (
-    assign_widths_to_edges_based_on_weight,
-)
-from .core.network.assign_sizes_to_nodes_based_on_citations import (
-    assign_sizes_to_nodes_based_on_citations,
-)
-from .core.network.compute_spring_layout_positions import compute_spring_layout_positions
-from .core.network.assign_opacity_to_text_based_on_citations import (
-    assign_opacity_to_text_based_on_citations,
-)
-from .core.network.assign_textfont_sizes_to_nodes_based_on_citations import (
-    assign_textfont_sizes_to_nodes_based_on_citations,
-)
-from .core.network.assign_text_positions_to_nodes_by_quadrants import (
-    assign_text_positions_to_nodes_by_quadrants,
-)
-from .core.network.assign_uniform_color_to_edges import assign_uniform_color_to_edges
 from .core.network.assign_constant_color_to_nodes import assign_constant_color_to_nodes
-from .core.network.nx_visualize_graph import nx_visualize_graph
+from .core.network.assign_opacity_to_text_based_on_citations import assign_opacity_to_text_based_on_citations
+from .core.network.assign_sizes_to_nodes_based_on_citations import assign_sizes_to_nodes_based_on_citations
+from .core.network.assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from .core.network.assign_textfont_sizes_to_nodes_based_on_citations import assign_textfont_sizes_to_nodes_based_on_citations
+from .core.network.assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from .core.network.assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
+from .core.network.compute_spring_layout_positions import compute_spring_layout_positions
+from .core.network.plot_networkx_graph import plot_networkx_graph
 from .core.read_filtered_database import read_filtered_database
+from .helpers.format_report_for_records import format_report_for_records
 
 
 def main_path_analysis(
@@ -140,8 +130,7 @@ def main_path_analysis(
     #
     # Filters the table
     data_frame = data_frame[
-        (data_frame.citing_article.isin(articles_in_main_path))
-        & (data_frame.cited_article.isin(articles_in_main_path))
+        (data_frame.citing_article.isin(articles_in_main_path)) & (data_frame.cited_article.isin(articles_in_main_path))
     ]
 
     #
@@ -186,7 +175,7 @@ def main_path_analysis(
 
     @dataclass
     class Results:
-        fig_ = nx_visualize_graph(
+        fig_ = plot_networkx_graph(
             #
             # FUNCTION PARAMS:
             nx_graph=nx_graph,
@@ -247,9 +236,7 @@ def ___compute_main_path(data_frame):
     # Computes the start nodes in the citation network
     def compute_start_nodes(data_frame):
         data_frame = data_frame.copy()
-        return set(data_frame.citing_article.drop_duplicates().tolist()) - set(
-            data_frame.cited_article.drop_duplicates().tolist()
-        )
+        return set(data_frame.citing_article.drop_duplicates().tolist()) - set(data_frame.cited_article.drop_duplicates().tolist())
 
     start_nodes = compute_start_nodes(data_frame)
 
@@ -257,9 +244,7 @@ def ___compute_main_path(data_frame):
     # Computes the end nodes in the citation network
     def compute_end_nodes(data_frame):
         data_frame = data_frame.copy()
-        return set(data_frame.cited_article.drop_duplicates().tolist()) - set(
-            data_frame.citing_article.drop_duplicates().tolist()
-        )
+        return set(data_frame.cited_article.drop_duplicates().tolist()) - set(data_frame.citing_article.drop_duplicates().tolist())
 
     end_nodes = compute_end_nodes(data_frame)
 
@@ -292,9 +277,7 @@ def ___compute_main_path(data_frame):
                     new_paths.append(new_path)
 
             if len(new_paths) > 0:
-                found_paths, new_paths = expand_network_paths(
-                    data_frame, end_nodes, found_paths, new_paths
-                )
+                found_paths, new_paths = expand_network_paths(data_frame, end_nodes, found_paths, new_paths)
 
             return found_paths, new_paths
 
@@ -302,9 +285,7 @@ def ___compute_main_path(data_frame):
         # Main code:
         data_frame = data_frame.copy()
         current_paths = [[[node], 0] for node in start_nodes]
-        found_paths, current_paths = expand_network_paths(
-            data_frame, end_nodes, [], current_paths
-        )
+        found_paths, current_paths = expand_network_paths(data_frame, end_nodes, [], current_paths)
         return found_paths
 
     paths = compute_all_network_paths(data_frame, start_nodes, end_nodes)
@@ -316,8 +297,7 @@ def ___compute_main_path(data_frame):
         for path in paths:
             for link in zip(path[0], path[0][1:]):
                 data_frame.loc[
-                    (data_frame.citing_article == link[0])
-                    & (data_frame.cited_article == link[1]),
+                    (data_frame.citing_article == link[0]) & (data_frame.cited_article == link[1]),
                     "points",
                 ] += 1
         return data_frame
@@ -336,8 +316,7 @@ def ___compute_main_path(data_frame):
             for link in zip(path[0], path[0][1:]):
                 path[1] += sum(
                     data_frame.loc[
-                        (data_frame.citing_article == link[0])
-                        & (data_frame.cited_article == link[1]),
+                        (data_frame.citing_article == link[0]) & (data_frame.cited_article == link[1]),
                         "points",
                     ]
                 )
@@ -413,9 +392,7 @@ def ___create_citations_table(
     data_frame = data_frame.explode("local_references")
     data_frame["local_references"] = data_frame["local_references"].str.strip()
 
-    data_frame = data_frame[
-        data_frame["local_references"].map(lambda x: x in data_frame.article.to_list())
-    ]
+    data_frame = data_frame[data_frame["local_references"].map(lambda x: x in data_frame.article.to_list())]
 
     #
     # Adds citations to the article

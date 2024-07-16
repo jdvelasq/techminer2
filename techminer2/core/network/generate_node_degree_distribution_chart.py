@@ -104,7 +104,7 @@ import pandas as pd
 import plotly.express as px
 
 from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from .nx_compute_node_degree import nx_compute_node_degree
+from .assign_degree_to_nodes import assign_degree_to_nodes
 
 
 def generate_node_degree_distribution_chart(
@@ -208,7 +208,7 @@ def generate_node_degree_distribution_chart(
     #
     #
 
-    nx_graph = nx_compute_node_degree(nx_graph)
+    nx_graph = assign_degree_to_nodes(nx_graph)
     degrees = collect_degrees(nx_graph)
     dataframe = to_dataframe(degrees)
     dataframe = dataframe[["Node", "Name", "Degree"]]

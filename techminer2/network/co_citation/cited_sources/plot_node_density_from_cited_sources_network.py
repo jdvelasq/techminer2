@@ -53,8 +53,8 @@ Item Density Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....core.network.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ....core.network.nx_visualize_item_density import nx_visualize_item_density
+from ....core.network.create_co_citation_graph import create_co_citation_graph
+from ....core.network.plot_networkx_node_density import plot_networkx_node_density
 
 UNIT_OF_ANALYSIS = "cited_sources"
 
@@ -107,7 +107,7 @@ def plot_node_density_from_cited_sources_network(
     edge_width_range = (0.8, 3.0)
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_citation_graph(
+    nx_graph = create_co_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -142,7 +142,7 @@ def plot_node_density_from_cited_sources_network(
         **filters,
     )
 
-    return nx_visualize_item_density(
+    return plot_networkx_node_density(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

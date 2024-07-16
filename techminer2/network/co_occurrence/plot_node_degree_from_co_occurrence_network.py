@@ -10,8 +10,8 @@ Degree Plot
 ===============================================================================
 
 
->>> from techminer2.science_mapping.co_occurrence import degree_plot
->>> plot = degree_plot(
+>>> from techminer2.network.co_occurrence import plot_node_degree_from_co_occurrence_network
+>>> plot = plot_node_degree_from_co_occurrence_network(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -39,11 +39,11 @@ Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/analyze/co_occurrence/network/degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/network/co_occurrence/plot_node_degree_from_co_occurrence_network.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/co_occurrence/network/degree_plot.html" 
+    <iframe src="../../_static/network/co_occurrence/plot_node_degree_from_co_occurrence_network.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
@@ -60,12 +60,9 @@ Your task is ...
 
 
 """
-from ...core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
-from ...core.network.generate_node_degree_distribution_chart import (
-    generate_node_degree_distribution_chart,
-)
+from ...core.network.assign_degree_to_nodes import assign_degree_to_nodes
+from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ...core.network.generate_node_degree_distribution_chart import generate_node_degree_distribution_chart
 
 
 def plot_node_degree_from_co_occurrence_network(
@@ -80,7 +77,6 @@ def plot_node_degree_from_co_occurrence_network(
     custom_items=None,
     #
     # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
     association_index="association",
     #
     # DEGREE PLOT:
@@ -97,28 +93,9 @@ def plot_node_degree_from_co_occurrence_network(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
-    # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    #
-    # LAYOUT:
-    nx_k = None
-    nx_iterations = 10
-    nx_random_state = 0
-    #
-    # NODES:
-    node_size_range = (30, 70)
-    textfont_size_range = (10, 20)
-    #
-    # EDGES:
-    edge_width_range = (0.8, 3.0)
-    #
-    # --------------------------------------------------------------------------
+    """:meta private:"""
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -129,21 +106,8 @@ def plot_node_degree_from_co_occurrence_network(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
+        # NETWORK PARAMS:
         association_index=association_index,
-        #
-        # LAYOUT:
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        nx_random_state=nx_random_state,
-        #
-        # NODES:
-        node_size_range=node_size_range,
-        textfont_size_range=textfont_size_range,
-        #
-        # EDGES:
-        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -152,6 +116,8 @@ def plot_node_degree_from_co_occurrence_network(
         cited_by_filter=cited_by_filter,
         **filters,
     )
+
+    nx_graph = assign_degree_to_nodes(nx_graph)
 
     return generate_node_degree_distribution_chart(
         #

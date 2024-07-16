@@ -10,28 +10,18 @@ import networkx as nx
 import numpy as np
 
 from ..read_filtered_database import read_filtered_database
-from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
-from .assign_widths_to_edges_based_on_weight import (
-    assign_widths_to_edges_based_on_weight,
-)
-from .assign_sizes_to_nodes_based_on_citations import (
-    assign_sizes_to_nodes_based_on_citations,
-)
-from .compute_spring_layout_positions import compute_spring_layout_positions
-from .assign_opacity_to_text_based_on_citations import (
-    assign_opacity_to_text_based_on_citations,
-)
-from .assign_textfont_sizes_to_nodes_based_on_citations import (
-    assign_textfont_sizes_to_nodes_based_on_citations,
-)
-from .assign_text_positions_to_nodes_by_quadrants import (
-    assign_text_positions_to_nodes_by_quadrants,
-)
-from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
 from .assign_colors_to_nodes_by_group_attribute import assign_colors_to_nodes_by_group_attribute
+from .assign_opacity_to_text_based_on_citations import assign_opacity_to_text_based_on_citations
+from .assign_sizes_to_nodes_based_on_citations import assign_sizes_to_nodes_based_on_citations
+from .assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
+from .assign_textfont_sizes_to_nodes_based_on_citations import assign_textfont_sizes_to_nodes_based_on_citations
+from .assign_uniform_color_to_edges import assign_uniform_color_to_edges
+from .assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
+from .compute_spring_layout_positions import compute_spring_layout_positions
+from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 
 
-def nx_create_co_citation_graph(
+def create_co_citation_graph(
     #
     # FUNCTION PARAMS:
     unit_of_analysis,
@@ -178,12 +168,8 @@ def __add_weighted_edges_from(
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[2])
         matrix_list["column"] = matrix_list["column"].str.split(", ").map(lambda x: x[2])
     elif unit_of_analysis == "cited_references":
-        matrix_list["row"] = (
-            matrix_list["row"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
-        )
-        matrix_list["column"] = (
-            matrix_list["column"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
-        )
+        matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
+        matrix_list["column"] = matrix_list["column"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
     else:
         raise ValueError("Bad unit_of_analysis")
 

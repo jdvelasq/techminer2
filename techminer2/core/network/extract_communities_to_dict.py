@@ -9,7 +9,10 @@
 import numpy as np
 
 
-def nx_extract_communities_as_dict(nx_graph, conserve_counters):
+def extract_communities_to_dict(
+    nx_graph,
+    conserve_counters,
+):
     """Gets communities from a networkx graph as a dictionary."""
 
     communities = {}

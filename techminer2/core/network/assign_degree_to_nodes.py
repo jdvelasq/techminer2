@@ -8,7 +8,7 @@
 # pylint: disable=import-outside-toplevel
 
 
-def nx_compute_node_degree(nx_graph):
+def assign_degree_to_nodes(nx_graph):
     """Computes the degree of each node in a networkx graph."""
 
     for node, adjacencies in nx_graph.adjacency():

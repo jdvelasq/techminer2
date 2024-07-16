@@ -38,10 +38,8 @@ Treemap
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....core.network.co_occurrence_network.create_graph_from_co_occurrence_network import (
-    create_graph_from_co_occurrence_network,
-)
-from ....core.network.nx_visualize_treemap import nx_visualize_treemap
+from ....core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ....core.network.plot_networkx_node_treemap import plot_networkx_node_treemap
 
 FIELD = "authors"
 
@@ -89,7 +87,7 @@ def plot_treemap_from_authors_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_graph_from_co_occurrence_network(
+    nx_graph = create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -124,7 +122,7 @@ def plot_treemap_from_authors_co_occurrence_network(
         **filters,
     )
 
-    return nx_visualize_treemap(
+    return plot_networkx_node_treemap(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
