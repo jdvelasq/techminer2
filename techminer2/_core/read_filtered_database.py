@@ -16,6 +16,7 @@ def read_filtered_database(
     database: str,
     year_filter: tuple,
     cited_by_filter: tuple,
+    sort_by: str,
     **filters,
 ):
     """loads and filter records of main database text files."""
@@ -61,14 +62,10 @@ def read_filtered_database(
             return records
 
         if not isinstance(cited_by_filter, tuple):
-            raise TypeError(
-                "The cited_by_range parameter must be a tuple of two values."
-            )
+            raise TypeError("The cited_by_range parameter must be a tuple of two values.")
 
         if len(cited_by_filter) != 2:
-            raise ValueError(
-                "The cited_by_range parameter must be a tuple of two values."
-            )
+            raise ValueError("The cited_by_range parameter must be a tuple of two values.")
 
         cited_by_min, cited_by_max = cited_by_filter
 
@@ -99,9 +96,48 @@ def read_filtered_database(
 
         return records
 
+    def apply_sort_by(records, sort_by):
+        #
+        # sort_by: - date_newest
+        #          - date_oldest
+        #          - cited_by_highest
+        #          - cited_by_lowest
+        #          - first_author_a_to_z
+        #          - first_author_z_to_a
+        #          - source_title_a_to_z
+        #          - source_title_z_to_a
+
+        if sort_by is None:
+            return records
+
+        if sort_by == "date_newest":
+            return records.sort_values(["year", "cited_by"], ascending=[False, True])
+
+        if sort_by == "date_oldest":
+            return records.sort_values(["year", "cited_by"], ascending=[True, True])
+
+        if sort_by == "cited_by_highest":
+            return records.sort_values(["cited_by", "year"], ascending=[False, False])
+
+        if sort_by == "cited_by_lowest":
+            return records.sort_values(["cited_by", "year"], ascending=[True, False])
+
+        if sort_by == "first_author_a_to_z":
+            return records.sort_values(["authors", "cited_by"], ascending=[True, False])
+
+        if sort_by == "first_author_z_to_a":
+            return records.sort_values(["authors", "cited_by"], ascending=[False, False])
+
+        if sort_by == "source_title_a_to_z":
+            return records.sort_values(["source_title", "cited_by"], ascending=[True, False])
+
+        if sort_by == "source_title_z_to_a":
+            return records.sort_values(["source_title", "cited_by"], ascending=[False, False])
+
     records = get_records_from_file(root_dir, database)
     records = filter_records_by_year(records, year_filter)
     records = filter_records_by_citations(records, cited_by_filter)
     records = apply_filters_to_records(records, **filters)
+    records = apply_sort_by(records, sort_by)
 
     return records

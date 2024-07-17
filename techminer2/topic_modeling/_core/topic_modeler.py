@@ -11,10 +11,10 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
-from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_format_report_for_records import helper_format_report_for_records
-from ..helpers.helper_make_report_dir import helper_make_report_dir
-from ..metrics import tfidf
+from ..._core.read_filtered_database import read_filtered_database
+from ...helpers.helper_format_report_for_records import helper_format_report_for_records
+from ...helpers.helper_make_report_dir import helper_make_report_dir
+from ...metrics import tfidf
 
 
 class TopicModeler:

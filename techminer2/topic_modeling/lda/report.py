@@ -57,7 +57,7 @@ Report
 
 """
 
-from ..topic_modeler import TopicModeler
+from .._core.topic_modeler import TopicModeler
 
 
 def report(

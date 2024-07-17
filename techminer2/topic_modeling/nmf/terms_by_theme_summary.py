@@ -62,7 +62,7 @@ Terms by Theme Summary
 
 """
 
-from ..topic_modeler import TopicModeler
+from .._core.topic_modeler import TopicModeler
 
 
 def terms_by_theme_summary(
