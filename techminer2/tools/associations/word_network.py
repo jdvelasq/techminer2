@@ -114,7 +114,7 @@ Word Network
 
     
 """
-from ...co_occurrence.plot_co_occurrence_matrix import plot_co_occurrence_matrix
+from ...co_occurrence_matrix.plot_network_from_co_occurrence_matrix import plot_network_from_co_occurrence_matrix
 from .item_associations import item_associations
 
 
@@ -215,7 +215,7 @@ def word_network(
 
     #
     # Returb the network
-    return plot_co_occurrence_matrix(
+    return plot_network_from_co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=columns,

@@ -63,7 +63,7 @@ Radial Diagram
 """
 import networkx as nx
 
-from ...co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ...co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
 from ...core.nx.nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
 from ...core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences
 from ...core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants

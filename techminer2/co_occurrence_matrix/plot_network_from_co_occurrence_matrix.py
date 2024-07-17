@@ -117,7 +117,7 @@ from ..core.nx.nx_plot_graph import nx_plot_graph
 from .compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 
-def plot_co_occurrence_matrix(
+def plot_network_from_co_occurrence_matrix(
     #
     # COLUMN PARAMS:
     columns,
