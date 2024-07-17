@@ -116,12 +116,12 @@ import networkx as nx
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ..core.nx.nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
-from ..core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences
-from ..core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from ..core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import nx_assign_textfont_sizes_to_nodes_based_on_occurrences
-from ..core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from ..core.nx.nx_plot_graph import nx_plot_graph
+from .._core.nx.nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
+from .._core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences
+from .._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
+from .._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import nx_assign_textfont_sizes_to_nodes_based_on_occurrences
+from .._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from .._core.nx.nx_plot_graph import nx_plot_graph
 from .compute_co_occurrence_matrix import compute_co_occurrence_matrix
 
 

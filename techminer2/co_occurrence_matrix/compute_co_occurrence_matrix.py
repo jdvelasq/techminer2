@@ -125,11 +125,11 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
-from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..core.metrics.sort_records_by_metric import sort_records_by_metric
-from ..core.read_filtered_database import read_filtered_database
-from ..core.stopwords.load_user_stopwords import load_user_stopwords
+from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
+from .._core.metrics.sort_records_by_metric import sort_records_by_metric
+from .._core.read_filtered_database import read_filtered_database
+from .._core.stopwords.load_user_stopwords import load_user_stopwords
 from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from ..helpers.helper_sort_matrix_axis import helper_sort_matrix_axis

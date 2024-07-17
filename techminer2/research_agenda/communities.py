@@ -51,8 +51,8 @@ Communities
 
 
 """
-from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ..core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
+from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .._core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 from ..metrics.performance_metrics import performance_metrics
 
 

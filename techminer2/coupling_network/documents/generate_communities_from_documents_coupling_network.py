@@ -41,8 +41,8 @@ Communities
 
 
 """
-from ...core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
-from ...core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
+from ..._core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
+from ..._core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 
 def generate_communities_from_documents_coupling_network(

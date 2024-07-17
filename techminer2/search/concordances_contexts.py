@@ -23,7 +23,7 @@ Abstract concordances exploration tool.
 """
 import pandas as pd
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from .concordances_lib import get_context_phrases_from_records
 
 
@@ -48,9 +48,7 @@ def concordances_contexts(
         """Extracts the contexts table."""
 
         regex = r"\b" + search_for + r"\b"
-        contexts = context_phrases.str.extract(
-            r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)"
-        )
+        contexts = context_phrases.str.extract(r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)")
 
         contexts["left_context"] = contexts["left_context"].fillna("")
         contexts["left_context"] = contexts["left_context"].str.strip()
@@ -58,10 +56,7 @@ def concordances_contexts(
         contexts["right_context"] = contexts["right_context"].fillna("")
         contexts["right_context"] = contexts["right_context"].str.strip()
 
-        contexts = contexts[
-            contexts["left_context"].map(lambda x: x != "")
-            | contexts["right_context"].map(lambda x: x != "")
-        ]
+        contexts = contexts[contexts["left_context"].map(lambda x: x != "") | contexts["right_context"].map(lambda x: x != "")]
 
         return contexts
 
@@ -76,12 +71,8 @@ def concordances_contexts(
 
         contexts = contexts.sort_values(["left_r", "right_context"])
 
-        contexts["left_context"] = contexts["left_context"].map(
-            lambda x: "<<< " + x[-56:] if len(x) > 60 else x
-        )
-        contexts["right_context"] = contexts["right_context"].map(
-            lambda x: x[:56] + " >>>" if len(x) > 60 else x
-        )
+        contexts["left_context"] = contexts["left_context"].map(lambda x: "<<< " + x[-56:] if len(x) > 60 else x)
+        contexts["right_context"] = contexts["right_context"].map(lambda x: x[:56] + " >>>" if len(x) > 60 else x)
 
         texts = []
         for _, row in contexts.iterrows():
@@ -98,9 +89,7 @@ def concordances_contexts(
         **filters,
     )
 
-    context_phrases = get_context_phrases_from_records(
-        search_for=search_for, records=records, top_n=top_n
-    )
+    context_phrases = get_context_phrases_from_records(search_for=search_for, records=records, top_n=top_n)
     context_table = create_contexts_table(context_phrases)
     contexts = transform_context_table_to_contexts(context_table)
 

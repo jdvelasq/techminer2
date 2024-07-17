@@ -78,7 +78,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
 
 TEXTWRAP_WIDTH = 73

@@ -38,8 +38,8 @@ Baylor Univ. (USA) 2:395                                 1  ...  0.165421
 [5 rows x 4 columns]
 
 """
-from ..core.nx.nx_compute_metrics import nx_compute_metrics
-from ..core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from .._core.nx.nx_compute_metrics import nx_compute_metrics
+from .._core.nx.nx_create_coupling_graph import nx_create_coupling_graph
 
 UNIT_OF_ANALYSIS = "organizations"
 

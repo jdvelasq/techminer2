@@ -74,7 +74,7 @@ from nltk.stem import PorterStemmer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 TEXTWRAP_WIDTH = 73

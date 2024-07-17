@@ -29,7 +29,7 @@ nan
 
 
 """
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def records_with_no_abstract_available(

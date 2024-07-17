@@ -1,10 +1,8 @@
 """Metrics menu options"""
 
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
+from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.items_occurrences_by_year import items_occurrences_by_year
 from .general_metrics import general_metrics
-from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
 from .growth_metrics import growth_metrics
 from .performance_metrics import performance_metrics
 from .terms_by_year import terms_by_year

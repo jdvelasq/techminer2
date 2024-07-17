@@ -75,12 +75,10 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ..core.metrics.sort_records_by_metric import sort_records_by_metric
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
-from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
+from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
+from .._core.metrics.items_occurrences_by_year import items_occurrences_by_year
+from .._core.metrics.sort_records_by_metric import sort_records_by_metric
 
 
 def trending_words_per_year(
@@ -170,15 +168,11 @@ def trending_words_per_year(
     words_by_year["year_med"] = year_med
     words_by_year["year_q3"] = year_q3
 
-    words_by_year = words_by_year.assign(
-        OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1)
-    )
+    words_by_year = words_by_year.assign(OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1))
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = calculate_global_performance_metrics(
-        field, root_dir=root_dir
-    ).global_citations
+    global_citations = calculate_global_performance_metrics(field, root_dir=root_dir).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
     words_by_year = words_by_year.assign(global_citations=words_by_year.index.map(word2citation))
@@ -188,24 +182,20 @@ def trending_words_per_year(
         ascending=[True, False, False],
     )
 
-    words_by_year = words_by_year.assign(
-        rn=words_by_year.groupby(["year_med"]).cumcount()
-    ).sort_values(["year_med", "rn"], ascending=[True, True])
+    words_by_year = words_by_year.assign(rn=words_by_year.groupby(["year_med"]).cumcount()).sort_values(
+        ["year_med", "rn"], ascending=[True, True]
+    )
 
     words_by_year = words_by_year.query(f"rn < {n_words_per_year}")
 
     min_occ = words_by_year.OCC.min()
     max_occ = words_by_year.OCC.max()
-    words_by_year = words_by_year.assign(
-        height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
-    )
+    words_by_year = words_by_year.assign(height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ))
     words_by_year = words_by_year.assign(width=words_by_year.year_q3 - words_by_year.year_q1 + 1)
 
     # -----------------------------------------------------------------------------------
     # Reordeer the terms with the aim of improving the visualization
-    words_by_year = words_by_year.sort_values(
-        ["year_q1", "width", "height"], ascending=[True, True, True]
-    )
+    words_by_year = words_by_year.sort_values(["year_q1", "width", "height"], ascending=[True, True, True])
     #
     # -----------------------------------------------------------------------------------
 

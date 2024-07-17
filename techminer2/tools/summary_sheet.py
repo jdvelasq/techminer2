@@ -28,7 +28,7 @@ SummarySheet
 """
 import pandas as pd
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def summary_sheet(
@@ -62,8 +62,6 @@ def summary_sheet(
 
     report["number of terms"] = [n_documents - records[col].isnull().sum() for col in columns]
 
-    report["coverage (%)"] = [
-        f"{(n_documents - records[col].isnull().sum()) / n_documents:5.2}%" for col in columns
-    ]
+    report["coverage (%)"] = [f"{(n_documents - records[col].isnull().sum()) / n_documents:5.2}%" for col in columns]
 
     return report

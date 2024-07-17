@@ -59,8 +59,8 @@ Your task is ...
 
 
 """
-from ...core.nx.nx_create_coupling_graph import nx_create_coupling_graph
-from ...core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
+from ..._core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from ..._core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 
 UNIT_OF_ANALYSIS = "countries"
 

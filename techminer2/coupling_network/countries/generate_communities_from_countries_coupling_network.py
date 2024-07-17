@@ -38,8 +38,8 @@ Communities
 
 
 """
-from ...core.nx.nx_create_coupling_graph import nx_create_coupling_graph
-from ...core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
+from ..._core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from ..._core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 UNIT_OF_ANALYSIS = "countries"
 

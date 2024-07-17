@@ -88,7 +88,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 

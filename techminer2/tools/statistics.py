@@ -32,7 +32,7 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...             0.0  0.0  
 
 
 """
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def statistics(

@@ -54,8 +54,8 @@ Network Visualization
 
                                              
 """
-from ...core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
-from ...core.nx.nx_plot_graph import nx_plot_graph
+from ..._core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
+from ..._core.nx.nx_plot_graph import nx_plot_graph
 
 
 def plots_documents_coupling_network(

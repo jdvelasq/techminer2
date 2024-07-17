@@ -38,8 +38,8 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
 
 
 """
-from ...core.nx.nx_compute_metrics import nx_compute_metrics
-from ...core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
+from ..._core.nx.nx_compute_metrics import nx_compute_metrics
+from ..._core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
 
 
 def compute_metrics_from_documents_coupling_network(

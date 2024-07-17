@@ -87,7 +87,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def bradford_law(
@@ -209,23 +209,16 @@ def __table(
 
     sources = sources.sort_values(["Documents published"], ascending=False)
     sources["Acum Num Sources"] = sources["Num Sources"].cumsum()
-    sources["% Acum"] = [
-        str(round(100 * a / sum(sources["Num Sources"]), 2)) + " %"
-        for a in sources["Acum Num Sources"]
-    ]
+    sources["% Acum"] = [str(round(100 * a / sum(sources["Num Sources"]), 2)) + " %" for a in sources["Acum Num Sources"]]
 
     sources["Tot Documents published"] = sources["Num Sources"] * sources["Documents published"]
     sources["Num Documents"] = sources["Tot Documents published"].cumsum()
-    sources["Tot Documents"] = sources["Num Documents"].map(
-        lambda w: str(round(w / sources["Num Documents"].max() * 100, 2)) + " %"
-    )
+    sources["Tot Documents"] = sources["Num Documents"].map(lambda w: str(round(w / sources["Num Documents"].max() * 100, 2)) + " %")
 
     bradford1 = int(len(records) / 3)
     bradford2 = 2 * bradford1
 
-    sources["Bradford's Group"] = sources["Num Documents"].map(
-        lambda w: 3 if w > bradford2 else (2 if w > bradford1 else 1)
-    )
+    sources["Bradford's Group"] = sources["Num Documents"].map(lambda w: 3 if w > bradford2 else (2 if w > bradford1 else 1))
 
     sources = sources[
         [

@@ -40,7 +40,7 @@ from dataclasses import dataclass
 
 from textblob import TextBlob
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
 from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 

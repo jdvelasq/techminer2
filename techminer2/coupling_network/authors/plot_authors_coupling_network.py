@@ -55,8 +55,8 @@ Network Visualization
 
                                              
 """
-from ...core.nx.nx_create_coupling_graph import nx_create_coupling_graph
-from ...core.nx.nx_plot_graph import nx_plot_graph
+from ..._core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from ..._core.nx.nx_plot_graph import nx_plot_graph
 
 UNIT_OF_ANALYSIS = "authors"
 

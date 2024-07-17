@@ -40,7 +40,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from .core.read_filtered_database import read_filtered_database
+from ._core.read_filtered_database import read_filtered_database
 
 
 def rpys(

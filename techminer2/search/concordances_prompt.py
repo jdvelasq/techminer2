@@ -20,7 +20,7 @@ Concordances Prompt
 
 
 """
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from .concordances_prompt_from_records import concordances_prompt_from_records
 
 

@@ -41,8 +41,8 @@ Treemap
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ..core.nx.nx_plot_node_treemap import nx_plot_node_treemap
+from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .._core.nx.nx_plot_node_treemap import nx_plot_node_treemap
 from ..metrics.performance_metrics import performance_metrics
 
 

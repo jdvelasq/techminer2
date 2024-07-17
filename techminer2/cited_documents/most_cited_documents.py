@@ -62,7 +62,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_format_prompt_for_records import helper_format_prompt_for_records
 from ..helpers.helper_format_report_for_records import helper_format_report_for_records
 
@@ -124,9 +124,7 @@ def most_cited_documents(
         #
         # Global citations per year
         data_frame["global_citations"] = data_frame.global_citations.astype(int)
-        data_frame = data_frame.assign(
-            global_citations_per_year=data_frame.global_citations.astype(float) / (max_year - data_frame.year + 1)
-        )
+        data_frame = data_frame.assign(global_citations_per_year=data_frame.global_citations.astype(float) / (max_year - data_frame.year + 1))
         data_frame = data_frame.assign(global_citations_per_year=data_frame.global_citations_per_year.round(3))
 
         #
@@ -148,9 +146,7 @@ def most_cited_documents(
         #
         # Local citations per year
         data_frame["local_citations"] = data_frame.local_citations.astype(int)
-        data_frame = data_frame.assign(
-            local_citations_per_year=data_frame.local_citations.astype(float) / (max_year - data_frame.year + 1)
-        )
+        data_frame = data_frame.assign(local_citations_per_year=data_frame.local_citations.astype(float) / (max_year - data_frame.year + 1))
         data_frame = data_frame.assign(local_citations_per_year=data_frame.local_citations_per_year.round(3))
 
         #

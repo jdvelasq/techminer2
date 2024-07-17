@@ -132,9 +132,7 @@ def __core_authors_table(
     cited_by_filter,
     **filters,
 ):
-    from ..core.metrics.calculate_global_performance_metrics import (
-        calculate_global_performance_metrics,
-    )
+    from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 
     #
     # Part 1: Computes the number of written documents per number of authors.
@@ -163,22 +161,14 @@ def __core_authors_table(
     indicators = indicators.sort_values(by="Documents Written", ascending=True)
     indicators = indicators.reset_index(drop=True)
     indicators = indicators[["Documents Written", "Num Authors"]]
-    indicators["Proportion of Authors"] = (
-        indicators["Num Authors"].map(lambda x: x / indicators["Num Authors"].sum()).round(3)
-    )
+    indicators["Proportion of Authors"] = indicators["Num Authors"].map(lambda x: x / indicators["Num Authors"].sum()).round(3)
 
     #
     # Part 2: Computes the theoretical number of authors
     #
     total_authors = indicators["Num Authors"].max()
-    indicators["Theoretical Num Authors"] = (
-        indicators["Documents Written"].map(lambda x: total_authors / float(x * x)).round(3)
-    )
+    indicators["Theoretical Num Authors"] = indicators["Documents Written"].map(lambda x: total_authors / float(x * x)).round(3)
     total_theoretical_num_authors = indicators["Theoretical Num Authors"].sum()
-    indicators["Prop Theoretical Authors"] = (
-        indicators["Theoretical Num Authors"]
-        .map(lambda x: x / total_theoretical_num_authors)
-        .round(3)
-    )
+    indicators["Prop Theoretical Authors"] = indicators["Theoretical Num Authors"].map(lambda x: x / total_theoretical_num_authors).round(3)
 
     return indicators

@@ -42,8 +42,8 @@ BLOCKCHAIN 03:0369                 5     0.013645   0.575758  0.045465
 
 
 """
-from ..core.nx.nx_compute_metrics import nx_compute_metrics
-from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .._core.nx.nx_compute_metrics import nx_compute_metrics
+from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from ..metrics.performance_metrics import performance_metrics
 
 

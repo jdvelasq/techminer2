@@ -10,7 +10,7 @@ This module implements
 """
 import numpy as np
 
-from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 
 
 def helper_compute_occurrences_and_citations(

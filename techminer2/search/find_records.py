@@ -73,7 +73,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
 """
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_format_report_for_records import helper_format_report_for_records
 
 

@@ -50,8 +50,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.express as px
 
-from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..core.read_filtered_database import read_filtered_database
+from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 

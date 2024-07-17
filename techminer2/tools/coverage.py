@@ -34,8 +34,8 @@ Coverage
 
 
 """
-from ..core.stopwords.load_user_stopwords import load_user_stopwords
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
+from .._core.stopwords.load_user_stopwords import load_user_stopwords
 
 
 def coverage(
@@ -83,22 +83,16 @@ def coverage(
 
     documents = documents.reset_index()
 
-    documents = documents.groupby(by="num_documents", as_index=False).agg(
-        {"article": list, field: list}
-    )
+    documents = documents.groupby(by="num_documents", as_index=False).agg({"article": list, field: list})
 
     documents = documents.sort_values(by=["num_documents"], ascending=False)
-    documents["article"] = documents.article.map(
-        lambda x: [term for sublist in x for term in sublist]
-    )
+    documents["article"] = documents.article.map(lambda x: [term for sublist in x for term in sublist])
 
     documents = documents.assign(cum_sum_documents=documents.article.cumsum())
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(set))
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
-    documents = documents.assign(
-        coverage=documents.cum_sum_documents.map(lambda x: f"{100 * x / n_documents:5.2f} %")
-    )
+    documents = documents.assign(coverage=documents.cum_sum_documents.map(lambda x: f"{100 * x / n_documents:5.2f} %"))
 
     documents = documents.assign(cum_sum_items=documents[field].cumsum())
     documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))

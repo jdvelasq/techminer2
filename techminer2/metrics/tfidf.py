@@ -54,9 +54,9 @@ from typing import Literal
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
-from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..core.read_filtered_database import read_filtered_database
+from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
+from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 
 

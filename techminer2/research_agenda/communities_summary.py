@@ -41,8 +41,8 @@ Communities Summary
 
 
 """
-from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ..core.nx.nx_summarize_communities import nx_summarize_communities
+from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .._core.nx.nx_summarize_communities import nx_summarize_communities
 from ..metrics.performance_metrics import performance_metrics
 
 

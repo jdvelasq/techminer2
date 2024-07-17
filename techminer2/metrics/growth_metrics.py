@@ -86,10 +86,10 @@ import os
 #
 from dataclasses import dataclass
 
-from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
-from ..core.metrics.filter_records_by_metric import filter_records_by_metric
-from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
-from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
+from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.filter_records_by_metric import filter_records_by_metric
+from .._core.metrics.items_occurrences_by_year import items_occurrences_by_year
+from .._core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 

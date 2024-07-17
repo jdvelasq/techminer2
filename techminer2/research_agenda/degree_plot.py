@@ -60,8 +60,8 @@ Your task is ...
 
 
 """
-from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ..core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
+from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from .._core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 from ..metrics.performance_metrics import performance_metrics
 
 

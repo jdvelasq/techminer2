@@ -15,7 +15,7 @@ from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ...core.stopwords.load_package_stopwords import load_package_stopwords
+from ..._core.stopwords.load_package_stopwords import load_package_stopwords
 from ..protected_fields import PROTECTED_FIELDS
 
 #
@@ -84,28 +84,21 @@ def _extract_meaningful_words(
 
         data[dest] = data[source].copy()
         data[dest] = data[dest].str.lower()
-        data[dest] = data[dest].map(
-            lambda paragraph: TextBlob(paragraph).sentences, na_action="ignore"
-        )
+        data[dest] = data[dest].map(lambda paragraph: TextBlob(paragraph).sentences, na_action="ignore")
         data[dest] = data[dest].map(
             lambda sentences: [sentence.tags for sentence in sentences],
             na_action="ignore",
         )
         data[dest] = data[dest].map(
             lambda tagged_sentences: [
-                tag
-                for tagged_sentence in tagged_sentences
-                for tag in tagged_sentence
-                if tag[1][:2] in ["NN", "VB", "RB", "JJ"]
+                tag for tagged_sentence in tagged_sentences for tag in tagged_sentence if tag[1][:2] in ["NN", "VB", "RB", "JJ"]
             ]
         )
         data[dest] = data[dest].map(
             lambda tagged_words: [to_lemma(tag) for tag in tagged_words],
             na_action="ignore",
         )
-        data[dest] = data[dest].map(
-            lambda tagged_words: [tag[0] for tag in tagged_words], na_action="ignore"
-        )
+        data[dest] = data[dest].map(lambda tagged_words: [tag[0] for tag in tagged_words], na_action="ignore")
         data[dest] = data[dest].map(
             lambda phrases: [phrase for phrase in phrases if not phrase.startswith("//")],
             na_action="ignore",

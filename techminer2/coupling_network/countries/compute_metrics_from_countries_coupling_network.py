@@ -37,8 +37,8 @@ United Kingdom 03:0636       8     0.020370        0.9  0.063285
 
 
 """
-from ...core.nx.nx_compute_metrics import nx_compute_metrics
-from ...core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from ..._core.nx.nx_compute_metrics import nx_compute_metrics
+from ..._core.nx.nx_create_coupling_graph import nx_create_coupling_graph
 
 UNIT_OF_ANALYSIS = "countries"
 

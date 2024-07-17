@@ -24,7 +24,7 @@ Update Abstract
 """
 import os
 
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def update_abstract(
@@ -52,9 +52,7 @@ def update_abstract(
     if len(current_abstract) > 1:
         raise ValueError(f"Key '{article}' match multiple records.")
 
-    if not (
-        current_abstract.iloc[0] == "[no abstract available]" or current_abstract.isna().iloc[0]
-    ):
+    if not (current_abstract.iloc[0] == "[no abstract available]" or current_abstract.isna().iloc[0]):
         raise ValueError(f"Article '{article}' has already an abstract.")
 
     print("Current abstract:")

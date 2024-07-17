@@ -65,16 +65,16 @@ from dataclasses import dataclass
 import networkx as nx
 import numpy as np
 
-from .core.nx.nx_assign_constant_color_to_nodes import nx_assign_constant_color_to_nodes
-from .core.nx.nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
-from .core.nx.nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
-from .core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from .core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
-from .core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
-from .core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
-from .core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from .core.nx.nx_plot_graph import nx_plot_graph
-from .core.read_filtered_database import read_filtered_database
+from ._core.nx.nx_assign_constant_color_to_nodes import nx_assign_constant_color_to_nodes
+from ._core.nx.nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
+from ._core.nx.nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
+from ._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
+from ._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
+from ._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
+from ._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
+from ._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from ._core.nx.nx_plot_graph import nx_plot_graph
+from ._core.read_filtered_database import read_filtered_database
 from .helpers.helper_format_report_for_records import helper_format_report_for_records
 
 
@@ -129,9 +129,7 @@ def main_path_analysis(
 
     #
     # Filters the table
-    data_frame = data_frame[
-        (data_frame.citing_article.isin(articles_in_main_path)) & (data_frame.cited_article.isin(articles_in_main_path))
-    ]
+    data_frame = data_frame[(data_frame.citing_article.isin(articles_in_main_path)) & (data_frame.cited_article.isin(articles_in_main_path))]
 
     #
     # Create the networkx graph

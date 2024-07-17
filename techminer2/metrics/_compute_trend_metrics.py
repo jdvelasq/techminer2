@@ -47,7 +47,7 @@
 
 
 """
-from ..core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def compute_trend_metrics(
@@ -94,17 +94,13 @@ def compute_trend_metrics(
     if "global_citations" in records.columns:
         records = records.assign(mean_global_citations=records.global_citations / records.OCC)
         records = records.assign(cum_global_citations=records.global_citations.cumsum())
-        records = records.assign(
-            mean_global_citations_per_year=records.mean_global_citations / records.citable_years
-        )
+        records = records.assign(mean_global_citations_per_year=records.mean_global_citations / records.citable_years)
         records.mean_global_citations_per_year = records.mean_global_citations_per_year.round(2)
 
     if "local_citations" in records.columns:
         records = records.assign(mean_local_citations=records.local_citations / records.OCC)
         records = records.assign(cum_local_citations=records.local_citations.cumsum())
-        records = records.assign(
-            mean_local_citations_per_year=records.mean_local_citations / records.citable_years
-        )
+        records = records.assign(mean_local_citations_per_year=records.mean_local_citations / records.citable_years)
         records.mean_local_citations_per_year = records.mean_local_citations_per_year.round(2)
 
     return records
