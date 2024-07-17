@@ -73,13 +73,9 @@ Factor Map
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ...correlation.correlation_map import correlation_map
-from .compute_pcd_cluster_centers_from_co_occurrence_pca_embedding import (
-    compute_pcd_cluster_centers_from_co_occurrence_pca_embedding,
-)
-from .generate_pcd_communities_from_co_occurrence_pca_embedding import (
-    generate_pcd_communities_from_co_occurrence_pca_embedding,
-)
+from ...correlation_matrix._correlation_map import correlation_map
+from .compute_pcd_cluster_centers_from_co_occurrence_pca_embedding import compute_pcd_cluster_centers_from_co_occurrence_pca_embedding
+from .generate_pcd_communities_from_co_occurrence_pca_embedding import generate_pcd_communities_from_co_occurrence_pca_embedding
 
 
 def plot_pcd_factor_map_from_co_occurrence_pca_embedding(

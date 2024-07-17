@@ -83,7 +83,7 @@ from typing import Literal
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ...correlation.correlation_map import correlation_map
+from ...correlation_matrix._correlation_map import correlation_map
 from .compute_hierarchical_cluster_centers_from_co_occurrence_svd_embedding import (
     compute_hierarchical_cluster_centers_from_co_occurrence_svd_embedding,
 )

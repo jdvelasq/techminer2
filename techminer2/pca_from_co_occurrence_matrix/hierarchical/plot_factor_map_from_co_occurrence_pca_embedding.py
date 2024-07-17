@@ -82,13 +82,11 @@ Factor Map
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ...correlation.correlation_map import correlation_map
+from ...correlation_matrix._correlation_map import correlation_map
 from .compute_hierachical_cluster_centers_from_co_occurrence_pca_embedding import (
     compute_hierachical_cluster_centers_from_co_occurrence_pca_embedding,
 )
-from .generate_hierachical_communities_from_co_occurrence_pca_embedding import (
-    generate_hierachical_communities_from_co_occurrence_pca_embedding,
-)
+from .generate_hierachical_communities_from_co_occurrence_pca_embedding import generate_hierachical_communities_from_co_occurrence_pca_embedding
 
 
 def plot_factor_map_from_co_occurrence_pca_embedding(

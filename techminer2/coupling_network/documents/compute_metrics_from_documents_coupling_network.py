@@ -6,24 +6,19 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _co_authorshop_authors_metrics:
-
 Metrics
 ===============================================================================
 
 
->>> from techminer2.science_mapping.co_authorship.network.authors import metrics
+>>> from techminer2.science_mapping.bibliographic_coupling.documents import metrics
 >>> metrics(
 ...     #
-...     # COLUMN PARAMS:
+...     # ARTICLE PARAMS:
 ...     top_n=20, 
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_items=None,
+...     citations_threshold=0,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
-...     association_index="association",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -31,32 +26,30 @@ Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                      Degree  Betweenness  Closeness  PageRank
-Gomber P. 2:1065           5     0.035088   0.263158  0.083753
-Kauffman R.J. 1:0576       3     0.000000   0.187970  0.050930
-Parker C. 1:0576           3     0.000000   0.187970  0.050930
-Weber B.W. 1:0576          3     0.000000   0.187970  0.050930
-Buchak G. 1:0390           2     0.000000   0.105263  0.052219
+                                            Degree  ...  PageRank
+Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.108354
+Gomber P., 2017, J BUS ECON 1:489                7  ...  0.172423
+Gomber P., 2018, J MANAGE INF SYST 1:576         5  ...  0.102747
+Hu Z., 2019, SYMMETRY 1:176                      4  ...  0.101092
+Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
+<BLANKLINE>
+[5 rows x 4 columns]
+
 
 
 """
-from ....core.nx.nx_compute_metrics import nx_compute_metrics
-from ....core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-
-FIELD = "authors"
+from ...core.nx.nx_compute_metrics import nx_compute_metrics
+from ...core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
 
 
-def compute_metrics_from_authors_co_occurrence_network(
+def compute_metrics_from_documents_coupling_network(
     #
-    # COLUMN PARAMS:
+    # ARTICLE PARAMS:
     top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
+    citations_threshold=0,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
-    association_index="association",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -65,16 +58,19 @@ def compute_metrics_from_authors_co_occurrence_network(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """:meta private:"""
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
-    #
     #
     # NODES:
     node_size_range = (30, 70)
     textfont_size_range = (10, 20)
+    textfont_opacity_range = (0.35, 1.00)
     #
     # EDGES:
+    edge_color = "#7793a5"
     edge_width_range = (0.8, 3.0)
     #
     # LAYOUT:
@@ -84,20 +80,14 @@ def compute_metrics_from_authors_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_occurrence_graph(
-        #
-        # FUNCTION PARAMS:
-        rows_and_columns=FIELD,
+    nx_graph = nx_create_coupling_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
+        citations_threshold=citations_threshold,
         #
         # NETWORK CLUSTERING:
         algorithm_or_dict=algorithm_or_dict,
-        association_index=association_index,
         #
         # LAYOUT:
         nx_k=nx_k,
@@ -107,8 +97,10 @@ def compute_metrics_from_authors_co_occurrence_network(
         # NODES:
         node_size_range=node_size_range,
         textfont_size_range=textfont_size_range,
+        textfont_opacity_range=textfont_opacity_range,
         #
         # EDGES:
+        edge_color=edge_color,
         edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
