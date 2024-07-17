@@ -24,8 +24,8 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
-from ...core.thesaurus.load_thesaurus_as_frame import load_thesaurus_as_frame
+from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+from .._core.load_thesaurus_as_frame import load_thesaurus_as_frame
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 

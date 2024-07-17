@@ -46,7 +46,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..protected_fields import PROTECTED_FIELDS
 
 
@@ -86,20 +86,12 @@ def _extract_country(
             data[dest] = data[dest].replace(np.nan, pd.NA)
             data[dest] = data[dest].str.split("; ")
             data[dest] = data[dest].map(
-                lambda x: [
-                    thesaurus[name][0] if name in y.lower() else pd.NA
-                    for y in x
-                    for name in names
-                ],
+                lambda x: [thesaurus[name][0] if name in y.lower() else pd.NA for y in x for name in names],
                 na_action="ignore",
             )
-            data[dest] = data[dest].map(
-                lambda x: [y for y in x if y is not pd.NA], na_action="ignore"
-            )
+            data[dest] = data[dest].map(lambda x: [y for y in x if y is not pd.NA], na_action="ignore")
             data[dest] = data[dest].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
-            data[dest] = data[dest].map(
-                lambda x: pd.NA if x is pd.NA else list(set(x)), na_action="ignore"
-            )
+            data[dest] = data[dest].map(lambda x: pd.NA if x is pd.NA else list(set(x)), na_action="ignore")
             data[dest] = data[dest].str.join("; ")
             data[dest] = data[dest].map(lambda x: pd.NA if x == "" else x, na_action="ignore")
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

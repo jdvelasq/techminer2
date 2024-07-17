@@ -24,8 +24,8 @@ from ...helpers.helper_format_prompt_for_records import helper_format_prompt_for
 from ...helpers.helper_format_report_for_records import helper_format_report_for_records
 from ...helpers.helper_make_report_dir import helper_make_report_dir
 from ...search.concordances import concordances_from_records
+from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..read_filtered_database import read_filtered_database
-from ..thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 from .nx_extract_communities_to_dict import nx_extract_communities_to_dict
 
 TEXTWRAP_WIDTH = 73
@@ -183,13 +183,9 @@ def __extract_records_per_cluster(
     records_main.loc[records_main.index, "RAW_CLUSTERS"] = selected_records["clusters"]
     records_main["_CLUSTERS_"] = records_main["RAW_CLUSTERS"]
     records_main = records_main.dropna(subset=["_CLUSTERS_"])
-    records_main["_CLUSTERS_"] = (
-        records_main["_CLUSTERS_"].str.split("; ").map(lambda x: [z.strip() for z in x]).map(set).str.join("; ")
-    )
+    records_main["_CLUSTERS_"] = records_main["_CLUSTERS_"].str.split("; ").map(lambda x: [z.strip() for z in x]).map(set).str.join("; ")
 
-    records_main["ASSIGNED_CLUSTER"] = (
-        records_main["RAW_CLUSTERS"].str.split("; ").map(lambda x: [z.strip() for z in x]).map(compute_cluster)
-    )
+    records_main["ASSIGNED_CLUSTER"] = records_main["RAW_CLUSTERS"].str.split("; ").map(lambda x: [z.strip() for z in x]).map(compute_cluster)
 
     clusters = records_main["ASSIGNED_CLUSTER"].dropna().drop_duplicates().to_list()
 

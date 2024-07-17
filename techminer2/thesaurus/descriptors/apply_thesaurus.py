@@ -26,7 +26,7 @@ import os.path
 
 import pandas as pd
 
-from ...core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -59,9 +59,7 @@ def apply_thesaurus(
         ]:
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split("; ")
-                data[column] = data[column].map(
-                    lambda x: ([thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x)
-                )
+                data[column] = data[column].map(lambda x: ([thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x))
                 data[column] = data[column].map(lambda x: sorted(set(x)) if isinstance(x, list) else x)
                 data[column] = data[column].str.join("; ")
         #

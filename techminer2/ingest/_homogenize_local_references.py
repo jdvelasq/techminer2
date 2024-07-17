@@ -24,7 +24,7 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ..core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from ._message import message
 
 
@@ -59,15 +59,9 @@ def __apply_thesaururs(root_dir):
     #
     # Replace raw_global_references
     data["local_references"] = data["raw_global_references"].str.split("; ")
-    data["local_references"] = data["local_references"].map(
-        lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
-    )
-    data["local_references"] = data["local_references"].map(
-        lambda x: pd.NA if x == [] else x, na_action="ignore"
-    )
-    data["local_references"] = data["local_references"].map(
-        lambda x: ";".join(sorted(x)) if isinstance(x, list) else x
-    )
+    data["local_references"] = data["local_references"].map(lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore")
+    data["local_references"] = data["local_references"].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
+    data["local_references"] = data["local_references"].map(lambda x: ";".join(sorted(x)) if isinstance(x, list) else x)
 
     data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")
 
@@ -95,9 +89,7 @@ def load_raw_global_references_from_main_zip(main_file):
     # Loads raw references from the main database
     data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
     raw_references = data["raw_global_references"].dropna()
-    raw_references = (
-        raw_references.str.split(";").explode().str.strip().drop_duplicates().to_list()
-    )
+    raw_references = raw_references.str.split(";").explode().str.strip().drop_duplicates().to_list()
     raw_references = pd.DataFrame({"text": raw_references})
     raw_references["key"] = process(raw_references["text"])
     return raw_references
@@ -106,9 +98,7 @@ def load_raw_global_references_from_main_zip(main_file):
 def load_dataframe_from_main_zip(main_file):
     data_frame = pd.read_csv(main_file, encoding="utf-8", compression="zip")
     data_frame = data_frame[["article", "document_title", "authors", "year"]]
-    data_frame["first_author"] = (
-        data_frame["authors"].astype(str).str.split(" ").map(lambda x: x[0].lower())
-    )
+    data_frame["first_author"] = data_frame["authors"].astype(str).str.split(" ").map(lambda x: x[0].lower())
     data_frame["document_title"] = data_frame["document_title"].astype(str).str.lower()
     data_frame = data_frame.dropna()
 

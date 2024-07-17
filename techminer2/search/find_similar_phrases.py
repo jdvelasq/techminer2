@@ -67,8 +67,8 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from ..core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from ..core.read_filtered_database import read_filtered_database
+from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 73
@@ -171,9 +171,7 @@ def _extract_keywords(records, root_dir):
     # -----------------------------------------------------------------------------------------
 
     abstracts = records[["article", "document_title", "abstract"]].dropna()
-    abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda paragraph: TextBlob(paragraph).sentences
-    )
+    abstracts["abstract"] = abstracts["abstract"].apply(lambda paragraph: TextBlob(paragraph).sentences)
     abstracts = abstracts.explode("abstract")
     abstracts["phrase"] = abstracts["abstract"]
     abstracts["phrase"] = abstracts["phrase"].map(str)
@@ -182,16 +180,10 @@ def _extract_keywords(records, root_dir):
     # -----------------------------------------------------------------------------------------
     #
     abstracts["abstract"] = abstracts["abstract"].str.lower().str.replace("_", " ")
+    abstracts["abstract"] = abstracts["abstract"].apply(lambda sentence: re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), sentence))
+    abstracts["abstract"] = abstracts["abstract"].apply(lambda text: sorted(set(str(t) for t in TextBlob(text).words)))
     abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda sentence: re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), sentence)
-    )
-    abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda text: sorted(set(str(t) for t in TextBlob(text).words))
-    )
-    abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda descriptors: [
-            t for t in descriptors if t == t.upper() and t[0] not in "0123456789"
-        ]
+        lambda descriptors: [t for t in descriptors if t == t.upper() and t[0] not in "0123456789"]
     )
     #
     # -----------------------------------------------------------------------------------------

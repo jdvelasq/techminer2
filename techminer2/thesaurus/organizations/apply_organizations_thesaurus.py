@@ -27,7 +27,7 @@ import os.path
 
 import pandas as pd
 
-from ...core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 
 def apply_organizations_thesaurus(
@@ -50,9 +50,7 @@ def apply_organizations_thesaurus(
         #
         records = records.assign(organizations=records.affiliations.str.split("; "))
         records = records.assign(
-            organizations=records.organizations.map(
-                lambda x: ([thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x)
-            )
+            organizations=records.organizations.map(lambda x: ([thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x))
         )
         #
         records["organization_1st_author"] = records.organizations.str[0]

@@ -27,7 +27,7 @@ import pandas as pd
 import pkg_resources
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 

@@ -33,8 +33,8 @@ import sys
 import pandas as pd
 import pkg_resources
 
-from ...core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
-from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
 def apply_countries_thesaurus(

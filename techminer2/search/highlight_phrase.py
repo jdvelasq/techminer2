@@ -48,7 +48,7 @@ import os.path
 import re
 import textwrap
 
-from ..core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "thesauri/words.the.txt"

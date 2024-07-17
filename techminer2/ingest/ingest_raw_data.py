@@ -32,14 +32,13 @@ import time
 import pandas as pd
 from tqdm import tqdm
 
-from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
-
 # -------------------------------------------------------------------------------------
 # Field basic operations
 # -------------------------------------------------------------------------------------
 from ..fields.further_processing.count_terms_per_record import _count_terms_per_record
 from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
 from ..fields.merge_fields import _merge_fields
+from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 #
 # Thesaurus
@@ -296,16 +295,7 @@ def ingest_raw_data(
 
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
-    words = (
-        data_frame["raw_descriptors"]
-        .dropna()
-        .str.split("; ", expand=False)
-        .explode()
-        .str.strip()
-        .drop_duplicates()
-        .sort_values()
-        .to_list()
-    )
+    words = data_frame["raw_descriptors"].dropna().str.split("; ", expand=False).explode().str.strip().drop_duplicates().sort_values().to_list()
 
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
     with open(thesaurus_file, "w", encoding="utf-8") as f:
