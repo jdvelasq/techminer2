@@ -27,7 +27,7 @@ import pandas as pd
 import pkg_resources
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -128,9 +128,7 @@ def text_clumping(
             "^AN ",
             "^AN_",
         ]:
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                word, "", regex=True
-            )
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(word, "", regex=True)
 
         return data_frame
 
@@ -143,9 +141,7 @@ def text_clumping(
         def load_br2am_dict():
             #
             br2am = {}
-            file_path = pkg_resources.resource_filename(
-                "techminer2", "thesauri_data/british2american.the.txt"
-            )
+            file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/british2american.the.txt")
             with open(file_path, "r", encoding="utf-8") as file:
                 for line in file.readlines():
                     if not line.startswith(" "):
@@ -166,12 +162,8 @@ def text_clumping(
         # Replaces "_" by " "
         data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_", " ", regex=False)
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [z.strip() for z in x]
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [br2am.get(z, z) for z in x]
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [br2am.get(z, z) for z in x])
         data_frame["fingerprint"] = data_frame["fingerprint"].str.join("_")
 
         return data_frame
@@ -222,12 +214,8 @@ def text_clumping(
             )
 
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [z.strip() for z in x]
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [stemmer.stem(z) for z in x]
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [stemmer.stem(z) for z in x])
         data_frame["fingerprint"] = data_frame["fingerprint"].map(sorted)
         data_frame["fingerprint"] = data_frame["fingerprint"].str.join(" ")
 
@@ -240,9 +228,7 @@ def text_clumping(
         data_frame = data_frame.copy()
 
         data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
-        data_frame = data_frame.sort_values(
-            ["len_fingerprint", "fingerprint"], ascending=[False, True]
-        )
+        data_frame = data_frame.sort_values(["len_fingerprint", "fingerprint"], ascending=[False, True])
 
         return data_frame
 
@@ -281,9 +267,7 @@ def text_clumping(
 
         data_frame["found"] = True
         for word in words:
-            data_frame["found"] = data_frame["found"] & data_frame["fingerprint"].str.contains(
-                r"\b" + word + r"\b", case=True
-            )
+            data_frame["found"] = data_frame["found"] & data_frame["fingerprint"].str.contains(r"\b" + word + r"\b", case=True)
 
         data_frame = data_frame.loc[data_frame.found, :]
 

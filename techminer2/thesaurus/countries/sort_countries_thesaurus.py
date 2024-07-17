@@ -20,7 +20,7 @@ Sort Countries Thesaurus
 --INFO-- The file example/thesauri/countries.the.txt has been sorted.
 
 """
-from ....core.thesaurus.sort_thesaurus import sort_thesaurus
+from ...core.thesaurus.sort_thesaurus import sort_thesaurus
 
 THESAURUS_FILE = "thesauri/countries.the.txt"
 

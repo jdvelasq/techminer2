@@ -20,7 +20,7 @@ Sort Organizations Thesaurus
 --INFO-- The file example/thesauri/organizations.the.txt has been sorted.
 
 """
-from ....core.thesaurus.sort_thesaurus import sort_thesaurus as core_sort_thesaurus
+from ...core.thesaurus.sort_thesaurus import sort_thesaurus as core_sort_thesaurus
 
 THESAURUS_FILE = "thesauri/organizations.the.txt"
 

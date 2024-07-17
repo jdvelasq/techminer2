@@ -24,7 +24,7 @@ from os.path import isfile, join
 from spellchecker import SpellChecker
 from textblob import TextBlob
 
-from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 

@@ -28,7 +28,7 @@ Finds a string in the terms of a thesaurus.
 
 
 """
-from ....core.thesaurus.find_string_in_thesaurus import find_string_in_thesaurus
+from ...core.thesaurus.find_string_in_thesaurus import find_string_in_thesaurus
 
 THESAURUS_FILE = "thesauri/references.the.txt"
 

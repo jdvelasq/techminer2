@@ -23,7 +23,7 @@ import pathlib
 
 import pandas as pd
 
-from ..thesaurus.thesaurus.references.apply_references_thesaurus import apply_references_thesaurus
+from ..thesaurus.references.apply_references_thesaurus import apply_references_thesaurus
 from ._message import message
 
 
@@ -91,12 +91,8 @@ def __homogeneize_references(root_dir):
     # Cross-product
     references["raw"] = references["raw"].str.split(";")
     #
-    references["raw"] = references.apply(
-        lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1
-    )
-    references["raw"] = references.apply(
-        lambda row: [t for t in row.raw if row.year in t.lower()], axis=1
-    )
+    references["raw"] = references.apply(lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1)
+    references["raw"] = references.apply(lambda row: [t for t in row.raw if row.year in t.lower()], axis=1)
     references["raw"] = references["raw"].map(lambda x: pd.NA if x == [] else x)
     references = references.dropna()
     #
@@ -109,9 +105,7 @@ def __homogeneize_references(root_dir):
     # Reference matching
     selected_references = references.loc[
         references.apply(
-            lambda row: row.year in row.text
-            and row.first_author in row.text
-            and row.document_title[:50] in row.text,
+            lambda row: row.year in row.text and row.first_author in row.text and row.document_title[:50] in row.text,
             axis=1,
         ),
         :,
@@ -129,9 +123,7 @@ def __homogeneize_references(root_dir):
                 for ref in sorted(row.raw):
                     file.write("    " + ref + "\n")
 
-    print(
-        f"     ---> {grouped_references.article.drop_duplicates().shape[0]} global references homogenized"
-    )
+    print(f"     ---> {grouped_references.article.drop_duplicates().shape[0]} global references homogenized")
 
     #
     # Check not recognized references

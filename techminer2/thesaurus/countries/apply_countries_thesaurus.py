@@ -33,8 +33,8 @@ import sys
 import pandas as pd
 import pkg_resources
 
-from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
-from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ...core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
 def apply_countries_thesaurus(
@@ -57,12 +57,7 @@ def apply_countries_thesaurus(
         records["countries"] = (
             records.astype(str)
             .affiliations.str.split(";")
-            .map(
-                lambda affiliations: [
-                    thesaurus.get(affiliation.strip(), affiliation.strip())
-                    for affiliation in affiliations
-                ]
-            )
+            .map(lambda affiliations: [thesaurus.get(affiliation.strip(), affiliation.strip()) for affiliation in affiliations])
         )
         #
         records["country_1st_author"] = records.countries.str[0]
@@ -73,15 +68,11 @@ def apply_countries_thesaurus(
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
-    sys.stdout.write(
-        f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
-    )
+    sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n")
 
     # ---------------------------------------------------------------------------------
     # regions thesaurus preparation
-    thesaurus_file = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/country-to-region.the.txt"
-    )
+    thesaurus_file = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-region.the.txt")
 
     # thesaurus_file = os.path.join(root_dir, "thesauri/country-to-region.the.txt")
     thesaurus = load_thesaurus_as_dict(thesaurus_file)
@@ -95,11 +86,7 @@ def apply_countries_thesaurus(
         records["regions"] = (
             records.astype(str)
             .countries.str.split(";")
-            .map(
-                lambda countries: [
-                    thesaurus.get(country.strip(), country.strip()) for country in countries
-                ]
-            )
+            .map(lambda countries: [thesaurus.get(country.strip(), country.strip()) for country in countries])
         )
         #
         records["regions"] = records["regions"].map(set, na_action="ignore")
@@ -108,15 +95,11 @@ def apply_countries_thesaurus(
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
-    sys.stdout.write(
-        f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
-    )
+    sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n")
 
     # ---------------------------------------------------------------------------------
     # regions thesaurus preparation
-    thesaurus_file = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/country-to-subregion.the.txt"
-    )
+    thesaurus_file = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-subregion.the.txt")
     # thesaurus_file = os.path.join(root_dir, "thesauri/country-to-subregion.the.txt")
     thesaurus = load_thesaurus_as_dict(thesaurus_file)
     thesaurus = {k: v[0] for k, v in thesaurus.items()}
@@ -129,11 +112,7 @@ def apply_countries_thesaurus(
         records["subregions"] = (
             records.astype(str)
             .countries.str.split(";")
-            .map(
-                lambda countries: [
-                    thesaurus.get(country.strip(), country.strip()) for country in countries
-                ]
-            )
+            .map(lambda countries: [thesaurus.get(country.strip(), country.strip()) for country in countries])
         )
         #
         records["subregions"] = records["subregions"].map(set, na_action="ignore")
@@ -142,6 +121,4 @@ def apply_countries_thesaurus(
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
-    sys.stdout.write(
-        f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
-    )
+    sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n")

@@ -26,7 +26,7 @@ import os.path
 
 import pandas as pd
 
-from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ...core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -39,9 +39,7 @@ def apply_thesaurus(
     """:meta private:"""
 
     # pylint: disable=line-too-long
-    print(
-        "--INFO-- Applying `descriptors.the.txt` thesaurus to author/index keywords and abstract/title words"
-    )
+    print("--INFO-- Applying `descriptors.the.txt` thesaurus to author/index keywords and abstract/title words")
 
     thesaurus_file = os.path.join(root_dir, THESAURUS_FILE)
     thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
@@ -62,15 +60,9 @@ def apply_thesaurus(
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split("; ")
                 data[column] = data[column].map(
-                    lambda x: (
-                        [thesaurus.get(y.strip(), y.strip()) for y in x]
-                        if isinstance(x, list)
-                        else x
-                    )
+                    lambda x: ([thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x)
                 )
-                data[column] = data[column].map(
-                    lambda x: sorted(set(x)) if isinstance(x, list) else x
-                )
+                data[column] = data[column].map(lambda x: sorted(set(x)) if isinstance(x, list) else x)
                 data[column] = data[column].str.join("; ")
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

@@ -26,7 +26,7 @@ import os.path
 
 import pandas as pd
 
-from ....core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ...core.thesaurus.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -52,9 +52,7 @@ def check_integrity(
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
     raw_descriptors = data.raw_descriptors.copy()
-    raw_descriptors = (
-        raw_descriptors.dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
-    )
+    raw_descriptors = raw_descriptors.dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
 
     #
     # Computes the set union between terms and descriptors

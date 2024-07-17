@@ -25,7 +25,7 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 DESCRIPTORS_FILE = "thesauri/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
@@ -80,33 +80,15 @@ def apply_abbreviations_thesaurus(
         #
         # Replace abbreviations in descriptor keys
         for value in values:
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("^" + abbr + "$"), value, regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("^" + abbr + "_"), value + "_", regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("^" + abbr + " "), value + " ", regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("_" + abbr + "$"), "_" + value, regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile(" " + abbr + "$"), " " + value, regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("_" + abbr + "_"), "_" + value + "_", regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile(" " + abbr + "_"), " " + value + "_", regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("_" + abbr + " "), "_" + value + " ", regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile(" " + abbr + " "), " " + value + " ", regex=True
-            )
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + "$"), value, regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + "_"), value + "_", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + " "), value + " ", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + "$"), "_" + value, regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + "$"), " " + value, regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + "_"), "_" + value + "_", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + "_"), " " + value + "_", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + " "), "_" + value + " ", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + " "), " " + value + " ", regex=True)
 
     # -------------------------------------------------------------------------------------------
     data_frame = data_frame.sort_values(by="key")

@@ -64,7 +64,7 @@ Concept Grid
 from ...core.factor_analysis import FactorAnalyzer
 
 
-def plot_concept_grid_from_kmeans_cooc_pca(
+def plot_kmeans_concept_grid_from_kmeans_co_occurrence_pca_embedding(
     #
     # PARAMS:
     field,

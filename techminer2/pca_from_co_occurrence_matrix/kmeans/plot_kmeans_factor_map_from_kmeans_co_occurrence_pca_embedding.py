@@ -85,12 +85,10 @@ from ...correlation.correlation_map import correlation_map
 from .compute_kmeans_cluster_centers_from_co_occurrence_pca_embedding import (
     compute_kmeans_cluster_centers_from_co_occurrence_pca_embedding,
 )
-from .generate_kmeans_communities_from_co_occurrence_pca_embedding import (
-    generate_kmeans_communities_from_co_occurrence_pca_embedding,
-)
+from .generate_kmeans_communities_from_co_occurrence_pca_embedding import generate_kmeans_communities_from_co_occurrence_pca_embedding
 
 
-def plot_factor_map_from_kmeans_cooc_pca(
+def plot_kmeans_factor_map_from_kmeans_co_occurrence_pca_embedding(
     #
     # PARAMS:
     field,

@@ -43,41 +43,23 @@ from ..fields.merge_fields import _merge_fields
 
 #
 # Thesaurus
-from ..thesaurus.thesaurus.countries.apply_countries_thesaurus import (
-    apply_countries_thesaurus as apply_countries_thesaurus,
-)
-from ..thesaurus.thesaurus.descriptors.apply_thesaurus import (
-    apply_thesaurus as apply_descriptors_thesaurus,
-)
-from ..thesaurus.thesaurus.organizations.apply_organizations_thesaurus import (
-    apply_organizations_thesaurus as apply_organizations_thesaurus,
-)
-from ._adds_countries_and_regions_to_stopwords import (
-    _adds_countries_and_regions_to_stopwords,
-)
+from ..thesaurus.countries.apply_countries_thesaurus import apply_countries_thesaurus as apply_countries_thesaurus
+from ..thesaurus.descriptors.apply_thesaurus import apply_thesaurus as apply_descriptors_thesaurus
+from ..thesaurus.organizations.apply_organizations_thesaurus import apply_organizations_thesaurus as apply_organizations_thesaurus
+from ._adds_countries_and_regions_to_stopwords import _adds_countries_and_regions_to_stopwords
 
 # -------------------------------------------------------------------------------------
 # Auxuliary functions
 # -------------------------------------------------------------------------------------
-from ._compress_csv_files_in_raw_data_subdirectories import (
-    compress_csv_files_in_raw_data_subdirectories,
-)
+from ._compress_csv_files_in_raw_data_subdirectories import compress_csv_files_in_raw_data_subdirectories
 from ._create_art_no_column import create_art_no_column
 from ._create_article_column import create_article_column
 from ._create_database_files import create_database_files
 from ._create_imported_records_report import create_imported_records_report
-from ._create_local_citations_column_in_cited_by_database import (
-    create_local_citations_column_in_cited_by_database,
-)
-from ._create_local_citations_column_in_documents_database import (
-    create_local_citations_column_in_documents_database,
-)
-from ._create_local_citations_column_in_references_database import (
-    create_local_citations_column_in_references_database,
-)
-from ._create_working_subdirectories_and_files import (
-    create_working_subdirectories_and_files,
-)
+from ._create_local_citations_column_in_cited_by_database import create_local_citations_column_in_cited_by_database
+from ._create_local_citations_column_in_documents_database import create_local_citations_column_in_documents_database
+from ._create_local_citations_column_in_references_database import create_local_citations_column_in_references_database
+from ._create_working_subdirectories_and_files import create_working_subdirectories_and_files
 from ._disambiguate_author_names import disambiguate_author_names
 from ._drop_empty_columns_in_databases import drop_empty_columns_in_databases
 
@@ -101,9 +83,7 @@ from ._transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title import 
 # -------------------------------------------------------------------------------------
 from .field_importers.abbr_source_title_importer import run_abbr_source_title_importer
 from .field_importers.abstract_importer import run_abstract_importer
-from .field_importers.authors_and_index_keywords_importer import (
-    run_authors_and_index_keywords_importer,
-)
+from .field_importers.authors_and_index_keywords_importer import run_authors_and_index_keywords_importer
 from .field_importers.authors_id_importer import run_authors_id_importer
 from .field_importers.authors_importer import run_authors_importer
 from .field_importers.document_title import run_document_title_importer

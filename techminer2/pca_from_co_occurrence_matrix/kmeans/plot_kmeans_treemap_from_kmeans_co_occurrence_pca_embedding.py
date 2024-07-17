@@ -60,7 +60,7 @@ Treemap
 from ...core.factor_analysis import FactorAnalyzer
 
 
-def plot_treemap_from_kmeans_cooc_pca(
+def plot_kmeans_treemap_from_kmeans_co_occurrence_pca_embedding(
     #
     # PARAMS:
     field,

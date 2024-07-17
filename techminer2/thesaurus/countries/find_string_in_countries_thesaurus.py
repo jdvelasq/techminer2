@@ -27,7 +27,7 @@ Finds a string in the terms of a thesaurus.
 --INFO-- The file example/thesauri/countries.the.txt has been reordered.
 
 """
-from ....core.thesaurus.find_string_in_thesaurus import find_string_in_thesaurus
+from ...core.thesaurus.find_string_in_thesaurus import find_string_in_thesaurus
 
 THESAURUS_FILE = "thesauri/countries.the.txt"
 

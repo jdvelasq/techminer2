@@ -25,7 +25,7 @@ PRESSES (MACHINE_TOOLS)
 """
 import os.path
 
-from ....core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
+from ...core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
