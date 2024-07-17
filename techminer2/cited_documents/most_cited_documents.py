@@ -62,9 +62,9 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..helpers.format_prompt_for_records import format_prompt_for_records
-from ..helpers.format_report_for_records import format_report_for_records
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_prompt_for_records import helper_format_prompt_for_records
+from ..helpers.helper_format_report_for_records import helper_format_report_for_records
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -125,12 +125,9 @@ def most_cited_documents(
         # Global citations per year
         data_frame["global_citations"] = data_frame.global_citations.astype(int)
         data_frame = data_frame.assign(
-            global_citations_per_year=data_frame.global_citations.astype(float)
-            / (max_year - data_frame.year + 1)
+            global_citations_per_year=data_frame.global_citations.astype(float) / (max_year - data_frame.year + 1)
         )
-        data_frame = data_frame.assign(
-            global_citations_per_year=data_frame.global_citations_per_year.round(3)
-        )
+        data_frame = data_frame.assign(global_citations_per_year=data_frame.global_citations_per_year.round(3))
 
         #
         # Global citation score rank
@@ -152,12 +149,9 @@ def most_cited_documents(
         # Local citations per year
         data_frame["local_citations"] = data_frame.local_citations.astype(int)
         data_frame = data_frame.assign(
-            local_citations_per_year=data_frame.local_citations.astype(float)
-            / (max_year - data_frame.year + 1)
+            local_citations_per_year=data_frame.local_citations.astype(float) / (max_year - data_frame.year + 1)
         )
-        data_frame = data_frame.assign(
-            local_citations_per_year=data_frame.local_citations_per_year.round(3)
-        )
+        data_frame = data_frame.assign(local_citations_per_year=data_frame.local_citations_per_year.round(3))
 
         #
         # Set the index to the article identifier
@@ -189,9 +183,7 @@ def most_cited_documents(
 
         metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
-        field_label = (
-            metric.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
-        )
+        field_label = metric.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
 
         data_frame["Rank"] = list(range(1, len(data_frame) + 1))
 
@@ -261,7 +253,7 @@ def most_cited_documents(
         if database == "references":
             report_filename += "references__abstracts.txt"
 
-        format_report_for_records(
+        helper_format_report_for_records(
             root_dir=root_dir,
             target_dir="",
             records=data_frame,
@@ -294,7 +286,7 @@ def most_cited_documents(
 
         data_frame = data_frame.copy()
         data_frame["article"] = data_frame.index
-        text = format_prompt_for_records(
+        text = helper_format_prompt_for_records(
             main_text,
             main_text,
             data_frame,

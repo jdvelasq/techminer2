@@ -73,8 +73,8 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ...co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -190,7 +190,7 @@ def __prompt(data_frame, columns, item):
         "to provide a concise summary of your findings."
     )
     table_text = data_frame.to_markdown()
-    return format_prompt_for_dataframes(main_text, table_text)
+    return helper_format_prompt_for_dataframes(main_text, table_text)
 
 
 def __table(
@@ -278,9 +278,7 @@ def __table(
     frame["OCC"] = [text.split(" ")[-1].split(":")[0] for text in frame.index]
     frame["GC"] = [text.split(" ")[-1].split(":")[-1] for text in frame.index]
     frame["NAME"] = [" ".join(text.split(" ")[:-1]) for text in frame.index]
-    frame = frame.sort_values(
-        by=[name, "OCC", "GC", "NAME"], ascending=[False, False, False, True]
-    )
+    frame = frame.sort_values(by=[name, "OCC", "GC", "NAME"], ascending=[False, False, False, True])
     series = frame[[name]]
 
     return series
@@ -318,9 +316,7 @@ def __chart(
 
     metric_label = "OCC" if metric_label is None else metric_label
 
-    field_label = (
-        rows.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
-    )
+    field_label = rows.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
 
     table = data_frame.copy()
     table["Rank"] = list(range(1, len(table) + 1))

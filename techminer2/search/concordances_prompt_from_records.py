@@ -8,11 +8,8 @@
 
 import pandas as pd
 
-from ..helpers.format_prompt_for_paragraphs import format_prompt_for_paragraphs
-from .concordances_lib import (
-    get_context_phrases_from_records,
-    transform_context_phrases_to_contexts_paragraphs,
-)
+from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
+from .concordances_lib import get_context_phrases_from_records, transform_context_phrases_to_contexts_paragraphs
 
 
 def concordances_prompt_from_records(
@@ -27,12 +24,8 @@ def concordances_prompt_from_records(
     #
     # MAIN CODE:
     #
-    context_phrases = get_context_phrases_from_records(
-        search_for=search_for, records=records, top_n=top_n
-    )
-    context_paragraphs = transform_context_phrases_to_contexts_paragraphs(
-        context_phrases
-    )
+    context_phrases = get_context_phrases_from_records(search_for=search_for, records=records, top_n=top_n)
+    context_paragraphs = transform_context_phrases_to_contexts_paragraphs(context_phrases)
 
     main_text = (
         "Your task is to generate a short summary of a term for a research "
@@ -43,4 +36,4 @@ def concordances_prompt_from_records(
 
     paragraphs_list = context_paragraphs.to_list()
 
-    return format_prompt_for_paragraphs(main_text, paragraphs_list)
+    return helper_format_prompt_for_paragraphs(main_text, paragraphs_list)

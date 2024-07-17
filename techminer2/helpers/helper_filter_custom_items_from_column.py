@@ -12,14 +12,9 @@ Functions for item selection.
 """
 
 
-def filter_custom_items_from_axis(dataframe, custom_items, axis):
-    """Filters custom items from a dataframe axis."""
+def helper_filter_custom_items_from_column(dataframe, col_name, custom_items):
+    """Filters custom items from a dataframe column."""
 
-    if axis == 0:
-        topics_list = dataframe.index.tolist()
-    else:
-        topics_list = dataframe.column.tolist()
-
-    custom_items = [topic for topic in custom_items if topic in topics_list]
+    custom_items = [item for item in custom_items if item in dataframe[col_name].drop_duplicates().tolist()]
 
     return custom_items

@@ -78,8 +78,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from ..helpers.format_prompt_for_paragraphs import format_prompt_for_paragraphs
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
 
 TEXTWRAP_WIDTH = 73
 
@@ -147,9 +147,7 @@ def concordances_from_records(
             ascending=[False, False, True],
         )
 
-        records["_found_"] = (
-            records["abstract"].astype(str).str.contains(r"\b" + search_for + r"\b", regex=True)
-        )
+        records["_found_"] = records["abstract"].astype(str).str.contains(r"\b" + search_for + r"\b", regex=True)
         records = records[records["_found_"]].head(top_n)
 
         abstracts = records["abstract"]
@@ -162,9 +160,7 @@ def concordances_from_records(
         """Extracts the contexts table."""
 
         regex = r"\b" + search_for + r"\b"
-        contexts = phrases.str.extract(
-            r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)"
-        )
+        contexts = phrases.str.extract(r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)")
 
         contexts["left_context"] = contexts["left_context"].fillna("")
         contexts["left_context"] = contexts["left_context"].str.strip()
@@ -172,10 +168,7 @@ def concordances_from_records(
         contexts["right_context"] = contexts["right_context"].fillna("")
         contexts["right_context"] = contexts["right_context"].str.strip()
 
-        contexts = contexts[
-            contexts["left_context"].map(lambda x: x != "")
-            | contexts["right_context"].map(lambda x: x != "")
-        ]
+        contexts = contexts[contexts["left_context"].map(lambda x: x != "") | contexts["right_context"].map(lambda x: x != "")]
 
         return contexts
 
@@ -188,12 +181,8 @@ def concordances_from_records(
 
         contexts = contexts.sort_values(["left_r", "right_context"])
 
-        contexts["left_context"] = contexts["left_context"].map(
-            lambda x: "<<< " + x[-56:] if len(x) > 60 else x
-        )
-        contexts["right_context"] = contexts["right_context"].map(
-            lambda x: x[:56] + " >>>" if len(x) > 60 else x
-        )
+        contexts["left_context"] = contexts["left_context"].map(lambda x: "<<< " + x[-56:] if len(x) > 60 else x)
+        contexts["right_context"] = contexts["right_context"].map(lambda x: x[:56] + " >>>" if len(x) > 60 else x)
 
         texts = []
         for _, row in contexts.iterrows():
@@ -246,10 +235,7 @@ def concordances_from_records(
 
         #
         # Secondary text:
-        text = (
-            "Improve and make more clear the explanation of definition and "
-            "characterisitcs of the term: "
-        )
+        text = "Improve and make more clear the explanation of definition and " "characterisitcs of the term: "
         secondary_text = textwrap.fill(text, width=TEXTWRAP_WIDTH)
 
         #
@@ -263,15 +249,9 @@ def concordances_from_records(
         )
         secondary_text += textwrap.fill(text, width=TEXTWRAP_WIDTH)
 
-        secondary_text += (
-            "\n\nHere are text to improve and make more clear: "
-            "\n\n<<<\n\n>>>\n\n\n"
-            "Here are the records:\n\n"
-        )
+        secondary_text += "\n\nHere are text to improve and make more clear: " "\n\n<<<\n\n>>>\n\n\n" "Here are the records:\n\n"
 
-        return format_prompt_for_paragraphs(
-            main_text=main_text, secondary_text=secondary_text, paragraphs=phrases
-        )
+        return helper_format_prompt_for_paragraphs(main_text=main_text, secondary_text=secondary_text, paragraphs=phrases)
 
     def fill(text):
         if isinstance(text, str):

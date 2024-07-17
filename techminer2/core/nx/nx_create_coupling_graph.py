@@ -9,7 +9,7 @@
 import networkx as nx
 import numpy as np
 
-from ...helpers.append_occurrences_and_citations_to_axis import append_occurrences_and_citations_to_axis
+from ...helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 from ...metrics.performance_metrics import performance_metrics
 from ..read_filtered_database import read_filtered_database
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
@@ -191,7 +191,7 @@ def __add_weighted_edges_from(
     #
     # Adds the counters to the data frame:
     data_frame.index = data_frame.row.values
-    data_frame = append_occurrences_and_citations_to_axis(
+    data_frame = helper_append_occurrences_and_citations_to_axis(
         dataframe=data_frame,
         axis=0,
         field=unit_of_analysis,
@@ -208,7 +208,7 @@ def __add_weighted_edges_from(
     #
     # Adds the counters to the data frame:
     data_frame.index = data_frame.column.values
-    data_frame = append_occurrences_and_citations_to_axis(
+    data_frame = helper_append_occurrences_and_citations_to_axis(
         dataframe=data_frame,
         axis=0,
         field=unit_of_analysis,

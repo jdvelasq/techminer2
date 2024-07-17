@@ -10,9 +10,9 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering, KMeans
 
-from ..helpers.format_report_for_records import format_report_for_records
-from ..helpers.make_report_dir import make_report_dir
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_report_for_records import helper_format_report_for_records
+from ..helpers.helper_make_report_dir import helper_make_report_dir
 from ..metrics import tfidf
 
 
@@ -148,18 +148,16 @@ class DocumentClassifier:
         #
         # Creates the report directory
         target_dir = f"document_clustering/{self.method}"
-        make_report_dir(self.root_dir, target_dir)
+        helper_make_report_dir(self.root_dir, target_dir)
 
         #
         #
         for theme in range(self.n_themes):
             records = self.records.loc[self.records.theme == theme, :]
-            records = records.sort_values(
-                ["global_citations", "local_citations", "year"], ascending=False
-            )
+            records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
 
             file_name = f"theme_{theme:03d}_abstracts_report.txt"
-            format_report_for_records(
+            helper_format_report_for_records(
                 root_dir=self.root_dir,
                 target_dir=target_dir,
                 records=records,

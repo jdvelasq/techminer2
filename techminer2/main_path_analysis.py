@@ -75,7 +75,7 @@ from .core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_
 from .core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
 from .core.nx.nx_plot_graph import nx_plot_graph
 from .core.read_filtered_database import read_filtered_database
-from .helpers.format_report_for_records import format_report_for_records
+from .helpers.helper_format_report_for_records import helper_format_report_for_records
 
 
 def main_path_analysis(
@@ -218,7 +218,7 @@ def ___generate_report(
     )
     records = records[records.article.isin(articles)]
 
-    format_report_for_records(
+    helper_format_report_for_records(
         root_dir=root_dir,
         target_dir="",
         records=records,

@@ -10,7 +10,7 @@ import textwrap
 TEXTWRAP_WIDTH = 73
 
 
-def format_prompt_for_records(main_text, secondary_text, records, weight=None):
+def helper_format_prompt_for_records(main_text, secondary_text, records, weight=None):
     """Generate prompt for records."""
 
     if "abstract" not in records.columns:

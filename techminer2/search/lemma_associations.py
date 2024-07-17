@@ -40,9 +40,9 @@ from dataclasses import dataclass
 
 from textblob import TextBlob
 
-from ..helpers.format_prompt_for_paragraphs import format_prompt_for_paragraphs
-from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..core.read_filtered_database import read_filtered_database
+from ..core.thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
 
 
 def lemma_associations(
@@ -181,14 +181,12 @@ def __generate_prompt(sentences, lemma_a, lemma_b):
 
     paragraphs = sentences.sentence.copy()
 
-    return format_prompt_for_paragraphs(main_text, main_text, paragraphs)
+    return helper_format_prompt_for_paragraphs(main_text, main_text, paragraphs)
 
 
 def __generate_contexts(sentences):
     sentences = sentences.copy()
-    sentences["sentence"] = (
-        sentences["sentence"].map(lambda w: textwrap.wrap(w, width=80)).str.join("\n")
-    )
+    sentences["sentence"] = sentences["sentence"].map(lambda w: textwrap.wrap(w, width=80)).str.join("\n")
 
     text = ""
     for index, row in sentences.iterrows():

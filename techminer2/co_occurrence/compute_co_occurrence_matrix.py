@@ -125,18 +125,14 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-from ..helpers.append_occurrences_and_citations_to_axis import (
-    append_occurrences_and_citations_to_axis,
-)
-from ..core.metrics.sort_records_by_metric import sort_records_by_metric
-from ..helpers.sort_matrix_axis import sort_matrix_axis
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.stopwords.load_user_stopwords import load_user_stopwords
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
+from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
+from ..core.metrics.sort_records_by_metric import sort_records_by_metric
 from ..core.read_filtered_database import read_filtered_database
+from ..core.stopwords.load_user_stopwords import load_user_stopwords
+from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
+from ..helpers.helper_sort_matrix_axis import helper_sort_matrix_axis
 
 
 def compute_co_occurrence_matrix(
@@ -348,7 +344,7 @@ def ___matrix(
     matrix = pivot(filtered_matrix_list)
 
     # sort the rows and columns of the matrix
-    matrix = sort_matrix_axis(
+    matrix = helper_sort_matrix_axis(
         matrix,
         axis=0,
         field=rows,
@@ -361,7 +357,7 @@ def ___matrix(
         **filters,
     )
 
-    matrix = sort_matrix_axis(
+    matrix = helper_sort_matrix_axis(
         matrix,
         axis=1,
         field=columns,
@@ -377,7 +373,7 @@ def ___matrix(
     row_custom_items = matrix.index.tolist()
     col_custom_items = matrix.columns.tolist()
 
-    matrix = append_occurrences_and_citations_to_axis(
+    matrix = helper_append_occurrences_and_citations_to_axis(
         dataframe=matrix,
         axis=0,
         field=rows,
@@ -390,7 +386,7 @@ def ___matrix(
         **filters,
     )
 
-    matrix = append_occurrences_and_citations_to_axis(
+    matrix = helper_append_occurrences_and_citations_to_axis(
         dataframe=matrix,
         axis=1,
         field=columns,
@@ -434,7 +430,7 @@ def __prompt(matrix, columns, rows):
             "than 150 words."
         )
 
-    return format_prompt_for_dataframes(main_text, matrix.to_markdown())
+    return helper_format_prompt_for_dataframes(main_text, matrix.to_markdown())
 
 
 def global_co_occurrence_matrix_list(

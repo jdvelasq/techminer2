@@ -9,7 +9,7 @@
 import numpy as np
 
 
-def compute_textposition_from_x_and_y(node_x, node_y):
+def helper_compute_textposition_from_x_and_y(node_x, node_y):
     #
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)

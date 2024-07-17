@@ -12,7 +12,7 @@ Sorts matrix axis.
 """
 
 
-def sort_matrix_axis(
+def helper_sort_matrix_axis(
     matrix,
     axis,
     field,
@@ -26,10 +26,7 @@ def sort_matrix_axis(
 ):
     """Sorts the axis of the matrix by 'OCC', 'global_citations', and 'local_citations'."""
 
-    from ..core.metrics.calculate_global_performance_metrics import (
-        calculate_global_performance_metrics,
-    )
-
+    from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
     from ..core.metrics.sort_records_by_metric import sort_records_by_metric
 
     matrix = matrix.copy()
@@ -50,18 +47,10 @@ def sort_matrix_axis(
     )
 
     if axis == 0:
-        topics = [
-            topic
-            for topic in indicators_by_topic.index.tolist()
-            if topic in matrix.index.tolist()
-        ]
+        topics = [topic for topic in indicators_by_topic.index.tolist() if topic in matrix.index.tolist()]
         matrix = matrix.loc[topics, :]
     else:
-        topics = [
-            topic
-            for topic in indicators_by_topic.index.tolist()
-            if topic in matrix.columns.tolist()
-        ]
+        topics = [topic for topic in indicators_by_topic.index.tolist() if topic in matrix.columns.tolist()]
         matrix = matrix.loc[:, topics]
 
     return matrix

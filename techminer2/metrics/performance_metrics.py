@@ -46,12 +46,10 @@ Your task is ...
 import os
 from dataclasses import dataclass
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
+from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from ..core.metrics.filter_records_by_metric import filter_records_by_metric
 from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -138,4 +136,4 @@ def generate_prompt(field, metric, indicators):
         "implications for the research field. Be sure to provide a concise summary "
         "of your findings in no more than 150 words. "
     )
-    return format_prompt_for_dataframes(main_text, indicators.to_markdown())
+    return helper_format_prompt_for_dataframes(main_text, indicators.to_markdown())

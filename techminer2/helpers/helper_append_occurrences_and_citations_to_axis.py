@@ -9,10 +9,10 @@ in the values or axis of a dataframe.
 
 
 """
-from .compute_occurrences_and_citations import compute_occurrences_and_citations
+from .helper_compute_occurrences_and_citations import helper_compute_occurrences_and_citations
 
 
-def append_occurrences_and_citations_to_axis(
+def helper_append_occurrences_and_citations_to_axis(
     dataframe,
     axis,
     field,
@@ -28,7 +28,7 @@ def append_occurrences_and_citations_to_axis(
 
     dataframe = dataframe.copy()
 
-    new_column_names = compute_occurrences_and_citations(
+    new_column_names = helper_compute_occurrences_and_citations(
         criterion=field,
         #
         # DATABASE PARAMS

@@ -86,13 +86,11 @@ import os
 #
 from dataclasses import dataclass
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
+from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from ..core.metrics.filter_records_by_metric import filter_records_by_metric
-from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
 from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
+from ..core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
 def growth_metrics(
@@ -163,17 +161,13 @@ def growth_metrics(
     global_indicators.loc[before_occ.index, before] = before_occ
 
     global_indicators = global_indicators.assign(
-        growth_percentage=(
-            100 * global_indicators[between].copy() / global_indicators["OCC"].copy()
-        ).round(2)
+        growth_percentage=(100 * global_indicators[between].copy() / global_indicators["OCC"].copy()).round(2)
     )
 
     #
     # sort the columns
     columns = ["OCC", before, between, "growth_percentage"] + [
-        col
-        for col in global_indicators.columns
-        if col not in ["OCC", before, between, "growth_percentage"]
+        col for col in global_indicators.columns if col not in ["OCC", before, between, "growth_percentage"]
     ]
     global_indicators = global_indicators[columns]
 
@@ -193,9 +187,7 @@ def growth_metrics(
 
     # pdly: percentage of documents in last year
     global_indicators = global_indicators.assign(
-        percentage_docs_last_year=(
-            global_indicators.average_docs_per_year.copy() / global_indicators.OCC.copy()
-        )
+        percentage_docs_last_year=(global_indicators.average_docs_per_year.copy() / global_indicators.OCC.copy())
     )
 
     filtered_indicators = filter_records_by_metric(
@@ -240,4 +232,4 @@ def generate_prompt(field, metric, indicators):
         "implications for the research field. Be sure to provide a concise summary "
         "of your findings in no more than 150 words. "
     )
-    return format_prompt_for_dataframes(main_text, indicators.to_markdown())
+    return helper_format_prompt_for_dataframes(main_text, indicators.to_markdown())

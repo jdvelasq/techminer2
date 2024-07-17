@@ -10,7 +10,7 @@ import textwrap
 TEXTWRAP_WIDTH = 73
 
 
-def format_prompt_for_paragraphs(main_text, secondary_text, paragraphs):
+def helper_format_prompt_for_paragraphs(main_text, secondary_text, paragraphs):
     """Generate prompt for table analysis."""
 
     text = ""

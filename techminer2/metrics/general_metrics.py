@@ -88,8 +88,8 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
 def general_metrics(
@@ -394,8 +394,7 @@ class MainInformation:
         """Computes the average number of citations per document per year"""
         if "global_citations" in self.records.columns:
             return round(
-                self.records.global_citations.mean()
-                / (self.records.year.max() - self.records.year.min() + 1),
+                self.records.global_citations.mean() / (self.records.year.max() - self.records.year.min() + 1),
                 2,
             )
         return pd.NA
@@ -746,4 +745,4 @@ def main_metrics_prompt(
 
     table_text = data_frame.dropna().to_markdown()
 
-    return format_prompt_for_dataframes(main_text, table_text)
+    return helper_format_prompt_for_dataframes(main_text, table_text)

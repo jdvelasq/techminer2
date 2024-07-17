@@ -9,7 +9,7 @@ import os.path
 import textwrap
 
 
-def format_report_for_records(root_dir, target_dir, records, report_filename):
+def helper_format_report_for_records(root_dir, target_dir, records, report_filename):
     """Builds a report file with a given records subset."""
 
     def get_reported_columns(records):

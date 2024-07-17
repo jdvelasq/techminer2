@@ -60,8 +60,8 @@ Analyze the ...
 """
 from dataclasses import dataclass
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..co_occurrence.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from .compute_corr_matrix import compute_corr_matrix
 
 
@@ -165,4 +165,4 @@ def __prompt(corr_matrix, rows_and_columns, cross_with):
         "150 words."
     )
 
-    return format_prompt_for_dataframes(main_text, corr_matrix.round(3).to_markdown())
+    return helper_format_prompt_for_dataframes(main_text, corr_matrix.round(3).to_markdown())

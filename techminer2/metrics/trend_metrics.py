@@ -76,7 +76,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from ._compute_trend_metrics import compute_trend_metrics
 from ._plot_trend_metrics import plot_trend_metrics
 
@@ -126,9 +126,7 @@ def trend_metrics(
     if selected_columns is None:
         selected_columns = data_frame.columns.copy()
     else:
-        selected_columns = [
-            col for col in selected_columns if col in data_frame.columns
-        ]
+        selected_columns = [col for col in selected_columns if col in data_frame.columns]
     data_frame = data_frame[selected_columns]
 
     #
@@ -185,7 +183,9 @@ def generate_prompt(data_frame: pd.DataFrame) -> str:
         if col == "cum_global_citations":
             main_text += "the cummulative number of citations per document for each year (cum_global_citations); "
         if col == "mean_global_citations_per_year":
-            main_text += "the average number of citations per document divided by the age of the documents (mean_global_citations_per_year); "
+            main_text += (
+                "the average number of citations per document divided by the age of the documents (mean_global_citations_per_year); "
+            )
         if col == "mean_local_citations":
             main_text += "the average number of local citations per document for each year (mean_local_citations); "
         if col == "cum_local_citations":
@@ -203,4 +203,4 @@ def generate_prompt(data_frame: pd.DataFrame) -> str:
 
     table_text = data_frame.to_markdown()
 
-    return format_prompt_for_dataframes(main_text, table_text)
+    return helper_format_prompt_for_dataframes(main_text, table_text)

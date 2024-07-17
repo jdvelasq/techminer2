@@ -201,17 +201,13 @@ from dataclasses import dataclass
 
 import plotly.express as px  # type: ignore
 
-from ..helpers.append_occurrences_and_citations_to_axis import (
-    append_occurrences_and_citations_to_axis,
-)
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
+from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..documents_per_item import documents_per_item
 from ..core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 from ..core.metrics.items_occurrences_by_year import items_occurrences_by_year
+from ..documents_per_item import documents_per_item
+from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 COLOR = "#465c6b"
 TEXTLEN = 40
@@ -275,7 +271,7 @@ def terms_by_year(
 
         data_frame = data_frame[data_frame.index.isin(custom_items)]
         data_frame = data_frame.loc[custom_items, :]
-        data_frame = append_occurrences_and_citations_to_axis(
+        data_frame = helper_append_occurrences_and_citations_to_axis(
             data_frame,
             axis=0,
             field=field,
@@ -304,7 +300,7 @@ def terms_by_year(
             "150 words."
         )
 
-        return format_prompt_for_dataframes(main_text, data_frame.to_markdown())
+        return helper_format_prompt_for_dataframes(main_text, data_frame.to_markdown())
 
     # --------------------------------------------------------------------------------------------
     def create_gantt_diagram(data_frame):

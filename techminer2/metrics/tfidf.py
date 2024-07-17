@@ -54,14 +54,10 @@ from typing import Literal
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from ..helpers.append_occurrences_and_citations_to_axis import (
-    append_occurrences_and_citations_to_axis,
-)
+from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 
 
 def tfidf(
@@ -144,7 +140,7 @@ def tfidf(
     else:
         result = result.astype(int)
 
-    result = append_occurrences_and_citations_to_axis(
+    result = helper_append_occurrences_and_citations_to_axis(
         dataframe=result,
         axis=1,
         field=field,

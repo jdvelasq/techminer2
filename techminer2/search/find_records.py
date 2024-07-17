@@ -73,8 +73,8 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
 """
-from ..helpers.format_report_for_records import format_report_for_records
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_report_for_records import helper_format_report_for_records
 
 
 def find_records(
@@ -120,9 +120,7 @@ def find_records(
         """Filter records by the specified criteria."""
 
         records = records.copy()
-        contains = records[criterion].str.contains(
-            search_for, case=case, flags=flags, regex=regex
-        )
+        contains = records[criterion].str.contains(search_for, case=case, flags=flags, regex=regex)
         contains = contains.dropna()
         contains = contains[contains]
         records = records.loc[contains.index, :]
@@ -139,7 +137,7 @@ def find_records(
 
     records = filter_records(field, search_for, case, flags, regex, records)
 
-    format_report_for_records(
+    helper_format_report_for_records(
         root_dir=root_dir,
         target_dir="",
         records=records,

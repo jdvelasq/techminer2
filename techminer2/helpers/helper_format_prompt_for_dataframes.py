@@ -10,7 +10,7 @@ import textwrap
 TEXTWRAP_WIDTH = 73
 
 
-def format_prompt_for_dataframes(
+def helper_format_prompt_for_dataframes(
     main_text: str,
     df_text: str,
 ):

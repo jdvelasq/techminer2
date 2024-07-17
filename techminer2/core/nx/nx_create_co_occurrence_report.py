@@ -20,9 +20,9 @@ from collections import defaultdict
 
 import pandas as pd
 
-from ...helpers.format_prompt_for_records import format_prompt_for_records
-from ...helpers.format_report_for_records import format_report_for_records
-from ...helpers.make_report_dir import make_report_dir
+from ...helpers.helper_format_prompt_for_records import helper_format_prompt_for_records
+from ...helpers.helper_format_report_for_records import helper_format_report_for_records
+from ...helpers.helper_make_report_dir import helper_make_report_dir
 from ...search.concordances import concordances_from_records
 from ..read_filtered_database import read_filtered_database
 from ..thesaurus.load_thesaurus_as_dict import load_thesaurus_as_dict
@@ -48,7 +48,7 @@ def nx_create_co_occurrences_report(
 ):
     """Generes"""
 
-    make_report_dir(root_dir, report_dir)
+    helper_make_report_dir(root_dir, report_dir)
 
     communities = nx_extract_communities_to_dict(nx_graph, conserve_counters=False)
 
@@ -327,7 +327,7 @@ def __generate_terms_relationships_prompt(
         records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
 
         file_name = f"{cluster}_abstracts_prompt.txt"
-        prompt = format_prompt_for_records(main_text, secondary_text, records, weight="global_citations")
+        prompt = helper_format_prompt_for_records(main_text, secondary_text, records, weight="global_citations")
 
         file_name = f"{cluster}_relationships_prompt.txt"
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)
@@ -350,7 +350,7 @@ def __generate_records_report(
         records = records_per_cluster[cluster]
         records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
         file_name = f"{cluster}_abstracts_report.txt"
-        format_report_for_records(
+        helper_format_report_for_records(
             root_dir=root_dir,
             target_dir=report_dir,
             records=records,
@@ -415,7 +415,7 @@ def __generate_conclusions_prompt(
         records = records_per_cluster[cluster]
         records = records.sort_values(["global_citations", "local_citations", "year"], ascending=False)
 
-        prompt = format_prompt_for_records(main_text, secondary_text, records, weight="global_citations")
+        prompt = helper_format_prompt_for_records(main_text, secondary_text, records, weight="global_citations")
 
         file_name = f"{cluster}_conclusions_prompt.txt"
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)

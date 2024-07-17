@@ -10,7 +10,7 @@ This module implements
 """
 
 
-def remove_occurrences_and_citations_from_axis(
+def helper_remove_occurrences_and_citations_from_axis(
     dataframe,
     axis,
 ):

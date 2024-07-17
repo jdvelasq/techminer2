@@ -10,13 +10,10 @@ This module implements
 """
 import numpy as np
 
-
-from ..core.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
+from ..core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 
 
-def compute_occurrences_and_citations(
+def helper_compute_occurrences_and_citations(
     criterion,
     #
     # DATABASE PARAMS
@@ -50,6 +47,4 @@ def compute_occurrences_and_citations(
     fmt_cited_by = "{:0" + str(n_zeros_cited_by) + "d}"
     fmt = "{} " + f"{fmt_occ}:{fmt_cited_by}"
 
-    return {
-        name: fmt.format(name, int(nd), int(tc)) for name, nd, tc in zip(names, occ, cited_by)
-    }
+    return {name: fmt.format(name, int(nd), int(tc)) for name, nd, tc in zip(names, occ, cited_by)}

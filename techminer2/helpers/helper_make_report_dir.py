@@ -4,7 +4,7 @@ import os
 import os.path
 
 
-def make_report_dir(root_dir, report_dir):
+def helper_make_report_dir(root_dir, report_dir):
     """Make report directory."""
 
     report_path = os.path.join(root_dir, "reports", report_dir)

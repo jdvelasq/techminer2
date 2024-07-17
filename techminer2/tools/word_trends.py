@@ -67,7 +67,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from ..metrics.growth_metrics import growth_metrics
 
 
@@ -122,9 +122,7 @@ def word_trends(
     ).df_
 
     metric_label = "OCC" if metric_label is None else metric_label
-    field_label = (
-        field.replace("_", " ").upper() if field_label is None else field_label
-    )
+    field_label = field.replace("_", " ").upper() if field_label is None else field_label
 
     # extracts the name of column starting with 'between'
     between = [_ for _ in data_frame.columns if _.startswith("between")][0]
@@ -185,7 +183,7 @@ def word_trends(
         "implications for the research field. Be sure to provide a concise summary "
         "of your findings in no more than 150 words. "
     )
-    prompt = format_prompt_for_dataframes(main_text, data_frame.to_markdown())
+    prompt = helper_format_prompt_for_dataframes(main_text, data_frame.to_markdown())
 
     @dataclass
     class Results:

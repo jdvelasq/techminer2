@@ -8,10 +8,10 @@ This module implements
 
 
 """
-from .compute_occurrences_and_citations import compute_occurrences_and_citations
+from .helper_compute_occurrences_and_citations import helper_compute_occurrences_and_citations
 
 
-def append_occurrences_and_citations_to_column_names(
+def helper_append_occurrences_and_citations_to_column_names(
     criterion,
     table,
     name,
@@ -24,7 +24,7 @@ def append_occurrences_and_citations_to_column_names(
     **filters,
 ):
     """:meta private:"""
-    new_column_names = compute_occurrences_and_citations(
+    new_column_names = helper_compute_occurrences_and_citations(
         criterion=criterion,
         #
         # DATABASE PARAMS

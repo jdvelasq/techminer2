@@ -50,9 +50,9 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.express as px
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
 from ..core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from ..core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
 def collaboration_metrics(
@@ -112,12 +112,8 @@ def collaboration_metrics(
 
         #
         # Add columns to represent single and multiple publications for a document
-        records["single_publication"] = records[field].map(
-            lambda x: 1 if isinstance(x, str) and len(x.split(";")) == 1 else 0
-        )
-        records["multiple_publication"] = records[field].map(
-            lambda x: 1 if isinstance(x, str) and len(x.split(";")) > 1 else 0
-        )
+        records["single_publication"] = records[field].map(lambda x: 1 if isinstance(x, str) and len(x.split(";")) == 1 else 0)
+        records["multiple_publication"] = records[field].map(lambda x: 1 if isinstance(x, str) and len(x.split(";")) > 1 else 0)
 
         #
         # Split multi-topic documents into individual documents with one topic each
@@ -201,7 +197,7 @@ def collaboration_metrics(
             "patterns you observe, and identify any outliers or anomalies in the data. Limit your "
             "description to one paragraph with no more than 250 words."
         )
-        return format_prompt_for_dataframes(main_text, metrics.to_markdown())
+        return helper_format_prompt_for_dataframes(main_text, metrics.to_markdown())
 
     #
     # Figure

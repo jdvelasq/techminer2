@@ -59,7 +59,7 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-from ..helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from ..metrics.tfidf import tfidf
 from .compute_corr_matrix import compute_corr_matrix
 
@@ -163,4 +163,4 @@ def __prompt(corr_matrix, rows_and_columns):
         "your findings, in at most 50 words."
     )
 
-    return format_prompt_for_dataframes(main_text, corr_matrix.round(3).to_markdown())
+    return helper_format_prompt_for_dataframes(main_text, corr_matrix.round(3).to_markdown())

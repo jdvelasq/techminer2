@@ -103,7 +103,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.express as px
 
-from ...helpers.format_prompt_for_dataframes import format_prompt_for_dataframes
+from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from .nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
 
 
@@ -200,7 +200,7 @@ def nx_generate_node_degree_distribution_chart(
             "discuss their implications in the network."
         )
 
-        return format_prompt_for_dataframes(main_text, table.to_markdown())
+        return helper_format_prompt_for_dataframes(main_text, table.to_markdown())
 
     #
     #
