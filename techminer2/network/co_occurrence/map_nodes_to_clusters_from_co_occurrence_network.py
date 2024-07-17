@@ -58,9 +58,9 @@ Map Nodes to Clusters
 
 
 """
-from ...core.network.cluster_networkx_graph import cluster_networkx_graph
-from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ...core.network.extract_communities_to_frame import extract_communities_to_frame
+from ...core.nx.nx_cluster_graph import nx_cluster_graph
+from ...core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 
 def map_nodes_to_clusters_from_co_occurrence_network(
@@ -87,7 +87,7 @@ def map_nodes_to_clusters_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -109,7 +109,7 @@ def map_nodes_to_clusters_from_co_occurrence_network(
         **filters,
     )
 
-    nx_graph = cluster_networkx_graph(
+    nx_graph = nx_cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -118,7 +118,7 @@ def map_nodes_to_clusters_from_co_occurrence_network(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    data_frame = extract_communities_to_frame(
+    data_frame = nx_extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

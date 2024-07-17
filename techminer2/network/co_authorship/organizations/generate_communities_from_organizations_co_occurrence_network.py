@@ -39,8 +39,8 @@ Communities
 
 
 """
-from ....core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ....core.network.extract_communities_to_frame import extract_communities_to_frame
+from ....core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 FIELD = "organizations"
 
@@ -85,7 +85,7 @@ def generate_communities_from_organizations_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -120,7 +120,7 @@ def generate_communities_from_organizations_co_occurrence_network(
         **filters,
     )
 
-    return extract_communities_to_frame(
+    return nx_extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

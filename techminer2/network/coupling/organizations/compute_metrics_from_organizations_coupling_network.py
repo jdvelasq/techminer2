@@ -38,10 +38,8 @@ Baylor Univ. (USA) 2:395                                 1  ...  0.165421
 [5 rows x 4 columns]
 
 """
-from ....core.network.compute_network_metrics import compute_network_metrics
-from ....core.network.nx_create_bibliographic_coupling_graph_for_others import (
-    nx_create_bibliographic_coupling_graph_for_others,
-)
+from ....core.nx.nx_compute_metrics import nx_compute_metrics
+from ....core.nx.nx_create_coupling_graph import nx_create_coupling_graph
 
 UNIT_OF_ANALYSIS = "organizations"
 
@@ -85,7 +83,7 @@ def compute_metrics_from_organizations_coupling_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
+    nx_graph = nx_create_coupling_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -121,7 +119,7 @@ def compute_metrics_from_organizations_coupling_network(
         **filters,
     )
 
-    return compute_network_metrics(
+    return nx_compute_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -55,12 +55,8 @@ Your task is ...
 
 
 """
-from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
-    nx_create_bibliographic_coupling_graph_for_documents,
-)
-from ....core.network.generate_node_degree_distribution_chart import (
-    generate_node_degree_distribution_chart,
-)
+from ....core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
+from ....core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 
 
 def plot_node_degree_from_documents_coupling_network(
@@ -113,7 +109,7 @@ def plot_node_degree_from_documents_coupling_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph_for_documents(
+    nx_graph = nx_create_coupling_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -144,7 +140,7 @@ def plot_node_degree_from_documents_coupling_network(
         **filters,
     )
 
-    return generate_node_degree_distribution_chart(
+    return nx_generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

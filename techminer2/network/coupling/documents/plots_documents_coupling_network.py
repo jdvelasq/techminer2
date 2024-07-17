@@ -54,8 +54,8 @@ Network Visualization
 
                                              
 """
-from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import nx_create_bibliographic_coupling_graph_for_documents
-from ....core.network.plot_networkx_graph import plot_networkx_graph
+from ....core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
+from ....core.nx.nx_plot_graph import nx_plot_graph
 
 
 def plots_documents_coupling_network(
@@ -97,7 +97,7 @@ def plots_documents_coupling_network(
     :meta private:
     """
 
-    nx_graph = nx_create_bibliographic_coupling_graph_for_documents(
+    nx_graph = nx_create_coupling_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -128,7 +128,7 @@ def plots_documents_coupling_network(
         **filters,
     )
 
-    return plot_networkx_graph(
+    return nx_plot_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

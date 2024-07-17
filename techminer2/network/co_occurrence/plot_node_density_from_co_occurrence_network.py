@@ -55,9 +55,9 @@ Item Density Visualization
 
 
 """
-from ...core.network.cluster_networkx_graph import cluster_networkx_graph
-from ...core.network.compute_spring_layout_positions import compute_spring_layout_positions
-from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ...core.nx.nx_cluster_graph import nx_cluster_graph
+from ...core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from ...core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 
 def plot_node_density_from_co_occurrence_network(
@@ -99,7 +99,7 @@ def plot_node_density_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -121,7 +121,7 @@ def plot_node_density_from_co_occurrence_network(
         **filters,
     )
 
-    nx_graph = cluster_networkx_graph(
+    nx_graph = nx_cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -130,7 +130,7 @@ def plot_node_density_from_co_occurrence_network(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    nx_graph = compute_spring_layout_positions(
+    nx_graph = nx_compute_spring_layout_positions(
         nx_graph=nx_graph,
         k=nx_k,
         iterations=nx_iterations,

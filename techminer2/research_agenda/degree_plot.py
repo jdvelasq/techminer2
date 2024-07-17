@@ -60,8 +60,8 @@ Your task is ...
 
 
 """
-from ..core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ..core.network.generate_node_degree_distribution_chart import generate_node_degree_distribution_chart
+from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ..core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 from ..metrics.performance_metrics import performance_metrics
 
 
@@ -150,7 +150,7 @@ def degree_plot(
     # Obtains emergent items
     custom_items = metrics.index.tolist()
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -185,7 +185,7 @@ def degree_plot(
         **filters,
     )
 
-    return generate_node_degree_distribution_chart(
+    return nx_generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

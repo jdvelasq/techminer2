@@ -36,8 +36,8 @@ MANAGE SCI 1:33                     25     0.018472   0.903226  0.042645
 
 
 """
-from ....core.network.compute_network_metrics import compute_network_metrics
-from ....core.network.create_co_citation_graph import create_co_citation_graph
+from ....core.nx.nx_compute_metrics import nx_compute_metrics
+from ....core.nx.nx_create_co_citation_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_sources"
 
@@ -78,7 +78,7 @@ def compute_metrics_from_cited_sources_network(
     nx_random_state = 0
     # --------------------------------------------------------------------------
 
-    nx_graph = create_co_citation_graph(
+    nx_graph = nx_create_co_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -113,7 +113,7 @@ def compute_metrics_from_cited_sources_network(
         **filters,
     )
 
-    return compute_network_metrics(
+    return nx_compute_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

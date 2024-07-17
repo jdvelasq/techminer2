@@ -38,8 +38,8 @@ Communities
 
 
 """
-from ....core.network.extract_communities_to_frame import extract_communities_to_frame
-from ....core.network.nx_create_bibliographic_coupling_graph_for_others import nx_create_bibliographic_coupling_graph_for_others
+from ....core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from ....core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 UNIT_OF_ANALYSIS = "countries"
 
@@ -82,7 +82,7 @@ def generate_communities_from_countries_coupling_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
+    nx_graph = nx_create_coupling_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -118,7 +118,7 @@ def generate_communities_from_countries_coupling_network(
         **filters,
     )
 
-    return extract_communities_to_frame(
+    return nx_extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

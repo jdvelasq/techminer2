@@ -55,8 +55,8 @@ Item Density Visualization
 
 
 """
-from ..core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ..core.network.plot_networkx_node_density import plot_networkx_node_density
+from ..core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ..core.nx.nx_plot_node_density import nx_plot_node_density
 from ..metrics.performance_metrics import performance_metrics
 
 
@@ -147,7 +147,7 @@ def item_density_visualization(
     # Obtains emergent items
     custom_items = metrics.index.tolist()
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -182,7 +182,7 @@ def item_density_visualization(
         **filters,
     )
 
-    return plot_networkx_node_density(
+    return nx_plot_node_density(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

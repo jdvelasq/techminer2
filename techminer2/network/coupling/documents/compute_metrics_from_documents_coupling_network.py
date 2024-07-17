@@ -38,10 +38,8 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
 
 
 """
-from ....core.network.compute_network_metrics import compute_network_metrics
-from ....core.network.nx_create_bibliographic_coupling_graph_for_documents import (
-    nx_create_bibliographic_coupling_graph_for_documents,
-)
+from ....core.nx.nx_compute_metrics import nx_compute_metrics
+from ....core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
 
 
 def compute_metrics_from_documents_coupling_network(
@@ -82,7 +80,7 @@ def compute_metrics_from_documents_coupling_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_bibliographic_coupling_graph_for_documents(
+    nx_graph = nx_create_coupling_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -113,7 +111,7 @@ def compute_metrics_from_documents_coupling_network(
         **filters,
     )
 
-    return compute_network_metrics(
+    return nx_compute_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

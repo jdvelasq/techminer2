@@ -55,8 +55,8 @@ Item Density Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....core.network.nx_create_citation_graph_others import nx_create_citation_graph_others
-from ....core.network.plot_networkx_node_density import plot_networkx_node_density
+from ....core.nx.nx_create_citation_graph import nx_create_citation_graph
+from ....core.nx.nx_plot_node_density import nx_plot_node_density
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -114,7 +114,7 @@ def plot_node_density_from_authors_citation_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph_others(
+    nx_graph = nx_create_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -150,7 +150,7 @@ def plot_node_density_from_authors_citation_network(
         **filters,
     )
 
-    return plot_networkx_node_density(
+    return nx_plot_node_density(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -46,9 +46,9 @@ Communities Summary
 
 
 """
-from ...core.network.cluster_networkx_graph import cluster_networkx_graph
-from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ...core.network.summarize_networkx_communities import summarize_networkx_communities
+from ...core.nx.nx_cluster_graph import nx_cluster_graph
+from ...core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.nx.nx_summarize_communities import nx_summarize_communities
 
 
 def summarize_communities_from_co_occurrence_network(
@@ -78,7 +78,7 @@ def summarize_communities_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -100,7 +100,7 @@ def summarize_communities_from_co_occurrence_network(
         **filters,
     )
 
-    nx_graph = cluster_networkx_graph(
+    nx_graph = nx_cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -109,7 +109,7 @@ def summarize_communities_from_co_occurrence_network(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    return summarize_networkx_communities(
+    return nx_summarize_communities(
         #
         # SUMMARY PARAMS:
         nx_graph=nx_graph,

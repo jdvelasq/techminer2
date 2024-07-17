@@ -55,8 +55,8 @@ Network Visualization
 
                                              
 """
-from ....core.network.nx_create_bibliographic_coupling_graph_for_others import nx_create_bibliographic_coupling_graph_for_others
-from ....core.network.plot_networkx_graph import plot_networkx_graph
+from ....core.nx.nx_create_coupling_graph import nx_create_coupling_graph
+from ....core.nx.nx_plot_graph import nx_plot_graph
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -102,7 +102,7 @@ def plot_authors_coupling_network(
     :meta private:
     """
 
-    nx_graph = nx_create_bibliographic_coupling_graph_for_others(
+    nx_graph = nx_create_coupling_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -138,7 +138,7 @@ def plot_authors_coupling_network(
         **filters,
     )
 
-    return plot_networkx_graph(
+    return nx_plot_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

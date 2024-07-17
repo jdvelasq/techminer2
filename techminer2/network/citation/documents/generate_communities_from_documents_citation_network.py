@@ -38,8 +38,8 @@ Communities
 
 
 """
-from ....core.network.extract_communities_to_frame import extract_communities_to_frame
-from ....core.network.nx_create_citation_graph_documents import nx_create_citation_graph_documents
+from ....core.nx.nx_create_citation_graph_from_documents import nx_create_citation_graph_from_documents
+from ....core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 
 def generate_communities_from_documents_citation_network(
@@ -78,7 +78,7 @@ def generate_communities_from_documents_citation_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph_documents(
+    nx_graph = nx_create_citation_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -109,7 +109,7 @@ def generate_communities_from_documents_citation_network(
         **filters,
     )
 
-    return extract_communities_to_frame(
+    return nx_extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

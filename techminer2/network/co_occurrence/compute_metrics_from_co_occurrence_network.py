@@ -40,8 +40,8 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from ...core.network.compute_network_metrics import compute_network_metrics
-from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
+from ...core.nx.nx_compute_metrics import nx_compute_metrics
+from ...core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
 
 def compute_metrics_from_co_occurrence_network(
@@ -67,7 +67,7 @@ def compute_metrics_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -89,7 +89,7 @@ def compute_metrics_from_co_occurrence_network(
         **filters,
     )
 
-    return compute_network_metrics(
+    return nx_compute_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -38,8 +38,8 @@ Communities
 [5 rows x 4 columns]
 
 """
-from ....core.network.extract_communities_to_frame import extract_communities_to_frame
-from ....core.network.nx_create_citation_graph_others import nx_create_citation_graph_others
+from ....core.nx.nx_create_citation_graph import nx_create_citation_graph
+from ....core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 UNIT_OF_ANALYSIS = "authors"
 
@@ -82,7 +82,7 @@ def generate_communities_from_authors_citation_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph_others(
+    nx_graph = nx_create_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -118,7 +118,7 @@ def generate_communities_from_authors_citation_network(
         **filters,
     )
 
-    return extract_communities_to_frame(
+    return nx_extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

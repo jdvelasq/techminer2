@@ -40,8 +40,8 @@ Communities
 
 
 """
-from ....core.network.create_co_citation_graph import create_co_citation_graph
-from ....core.network.extract_communities_to_frame import extract_communities_to_frame
+from ....core.nx.nx_create_co_citation_graph import nx_create_co_citation_graph
+from ....core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
 
 UNIT_OF_ANALYSIS = "cited_authors"
 
@@ -82,7 +82,7 @@ def generate_communities_from_cited_authors_network(
     nx_random_state = 0
     # --------------------------------------------------------------------------
 
-    nx_graph = create_co_citation_graph(
+    nx_graph = nx_create_co_citation_graph(
         #
         # FUNCTION PARAMS:
         unit_of_analysis=UNIT_OF_ANALYSIS,
@@ -117,7 +117,7 @@ def generate_communities_from_cited_authors_network(
         **filters,
     )
 
-    return extract_communities_to_frame(
+    return nx_extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

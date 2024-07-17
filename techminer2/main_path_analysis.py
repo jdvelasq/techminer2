@@ -65,15 +65,15 @@ from dataclasses import dataclass
 import networkx as nx
 import numpy as np
 
-from .core.network.assign_constant_color_to_nodes import assign_constant_color_to_nodes
-from .core.network.assign_opacity_to_text_based_on_citations import assign_opacity_to_text_based_on_citations
-from .core.network.assign_sizes_to_nodes_based_on_citations import assign_sizes_to_nodes_based_on_citations
-from .core.network.assign_text_positions_to_nodes_by_quadrants import assign_text_positions_to_nodes_by_quadrants
-from .core.network.assign_textfont_sizes_to_nodes_based_on_citations import assign_textfont_sizes_to_nodes_based_on_citations
-from .core.network.assign_uniform_color_to_edges import assign_uniform_color_to_edges
-from .core.network.assign_widths_to_edges_based_on_weight import assign_widths_to_edges_based_on_weight
-from .core.network.compute_spring_layout_positions import compute_spring_layout_positions
-from .core.network.plot_networkx_graph import plot_networkx_graph
+from .core.nx.nx_assign_constant_color_to_nodes import nx_assign_constant_color_to_nodes
+from .core.nx.nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
+from .core.nx.nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
+from .core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
+from .core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
+from .core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
+from .core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
+from .core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from .core.nx.nx_plot_graph import nx_plot_graph
 from .core.read_filtered_database import read_filtered_database
 from .helpers.format_report_for_records import format_report_for_records
 
@@ -158,24 +158,24 @@ def main_path_analysis(
 
     #
     # Sets the layout
-    nx_graph = assign_constant_color_to_nodes(nx_graph, "#7793a5")
-    nx_graph = compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
-    nx_graph = assign_sizes_to_nodes_based_on_citations(nx_graph, node_size_range)
-    nx_graph = assign_textfont_sizes_to_nodes_based_on_citations(nx_graph, textfont_size_range)
-    nx_graph = assign_opacity_to_text_based_on_citations(nx_graph, textfont_opacity_range)
+    nx_graph = nx_assign_constant_color_to_nodes(nx_graph, "#7793a5")
+    nx_graph = nx_compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
+    nx_graph = nx_assign_sizes_to_nodes_based_on_citations(nx_graph, node_size_range)
+    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_citations(nx_graph, textfont_size_range)
+    nx_graph = nx_assign_opacity_to_text_based_on_citations(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
-    nx_graph = assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
-    nx_graph = assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = assign_uniform_color_to_edges(nx_graph, edge_color)
+    nx_graph = nx_assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
 
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = node
 
     @dataclass
     class Results:
-        fig_ = plot_networkx_graph(
+        fig_ = nx_plot_graph(
             #
             # FUNCTION PARAMS:
             nx_graph=nx_graph,

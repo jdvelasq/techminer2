@@ -55,12 +55,8 @@ Your task is ...
 
 
 """
-from ....core.network.nx_create_citation_graph_documents import (
-    nx_create_citation_graph_documents,
-)
-from ....core.network.generate_node_degree_distribution_chart import (
-    generate_node_degree_distribution_chart,
-)
+from ....core.nx.nx_create_citation_graph_from_documents import nx_create_citation_graph_from_documents
+from ....core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 
 UNIT_OF_ANALYSIS = "article"
 
@@ -110,7 +106,7 @@ def plot_node_degree_from_documents_citation_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph_documents(
+    nx_graph = nx_create_citation_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -141,7 +137,7 @@ def plot_node_degree_from_documents_citation_network(
         **filters,
     )
 
-    return generate_node_degree_distribution_chart(
+    return nx_generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

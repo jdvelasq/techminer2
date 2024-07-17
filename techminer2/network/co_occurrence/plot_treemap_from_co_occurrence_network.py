@@ -41,8 +41,8 @@ Treemap
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ...core.network.plot_networkx_node_treemap import plot_networkx_node_treemap
+from ...core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.nx.nx_plot_node_treemap import nx_plot_node_treemap
 
 
 def plot_treemap_from_co_occurrence_network(
@@ -91,7 +91,7 @@ def plot_treemap_from_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -126,7 +126,7 @@ def plot_treemap_from_co_occurrence_network(
         **filters,
     )
 
-    return plot_networkx_node_treemap(
+    return nx_plot_node_treemap(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

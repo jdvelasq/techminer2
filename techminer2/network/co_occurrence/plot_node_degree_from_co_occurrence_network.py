@@ -60,9 +60,9 @@ Your task is ...
 
 
 """
-from ...core.network.assign_degree_to_nodes import assign_degree_to_nodes
-from ...core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ...core.network.generate_node_degree_distribution_chart import generate_node_degree_distribution_chart
+from ...core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
+from ...core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 
 
 def plot_node_degree_from_co_occurrence_network(
@@ -95,7 +95,7 @@ def plot_node_degree_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
@@ -117,9 +117,9 @@ def plot_node_degree_from_co_occurrence_network(
         **filters,
     )
 
-    nx_graph = assign_degree_to_nodes(nx_graph)
+    nx_graph = nx_assign_degree_to_nodes(nx_graph)
 
-    return generate_node_degree_distribution_chart(
+    return nx_generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -53,8 +53,8 @@ Network Visualization
 
 
 """
-from ....core.network.nx_create_citation_graph_documents import nx_create_citation_graph_documents
-from ....core.network.plot_networkx_graph import plot_networkx_graph
+from ....core.nx.nx_create_citation_graph_from_documents import nx_create_citation_graph_from_documents
+from ....core.nx.nx_plot_graph import nx_plot_graph
 
 UNIT_OF_ANALYSIS = "article"
 
@@ -96,7 +96,7 @@ def plot_documents_citation_network(
 ):
     """:meta private:"""
 
-    nx_graph = nx_create_citation_graph_documents(
+    nx_graph = nx_create_citation_graph_from_documents(
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -127,7 +127,7 @@ def plot_documents_citation_network(
         **filters,
     )
 
-    return plot_networkx_graph(
+    return nx_plot_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

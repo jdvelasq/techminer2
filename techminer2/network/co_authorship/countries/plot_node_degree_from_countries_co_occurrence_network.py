@@ -56,8 +56,8 @@ Your task is ...
 
 
 """
-from ....core.network.create_co_occurrence_graph import create_co_occurrence_graph
-from ....core.network.generate_node_degree_distribution_chart import generate_node_degree_distribution_chart
+from ....core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
 
 FIELD = "countries"
 
@@ -109,7 +109,7 @@ def plot_node_degree_from_countries_co_occurrence_network(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = create_co_occurrence_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -144,7 +144,7 @@ def plot_node_degree_from_countries_co_occurrence_network(
         **filters,
     )
 
-    return generate_node_degree_distribution_chart(
+    return nx_generate_node_degree_distribution_chart(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
