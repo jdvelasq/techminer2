@@ -13,6 +13,7 @@ TFIDF
 >>> tfidf(
 ...     #
 ...     # TF PARAMS:
+...     retain_counters=True,
 ...     field='author_keywords',
 ...     is_binary=False,
 ...     cooc_within= 1,
@@ -64,6 +65,7 @@ def tfidf(
     #
     # TF PARAMS:
     field: str,
+    retain_counters=True,
     is_binary: bool = False,
     cooc_within: int = 1,
     #
@@ -138,7 +140,6 @@ def tfidf(
             smooth_idf=smooth_idf,
             sublinear_tf=sublinear_tf,
         )
-
         result = transformer.fit_transform(result)
     else:
         result = result.astype(int)
@@ -156,6 +157,9 @@ def tfidf(
 
     result = _remove_rows_of_zeros(result)
     result = _sort_columns(result)
+
+    if retain_counters is False:
+        result.columns = [" ".join(x.split()[:-1]) for x in result.columns]
 
     return result
 
