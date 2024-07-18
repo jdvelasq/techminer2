@@ -94,6 +94,8 @@ Clusters to Terms Map
      'SUSTAINABILITY 03:0227']}
 
 """
+from typing import Dict, List
+
 from .term_occurrence_by_cluster import term_occurrence_by_cluster
 
 
@@ -152,7 +154,7 @@ def clusters_to_terms_mapping(
 
     themes = contingency_table.idxmax(axis=1)
 
-    mapping = {}
+    mapping: Dict[int, List[str]] = {}
     for word, theme in zip(themes.index, themes):
         if theme not in mapping:
             mapping[theme] = []
