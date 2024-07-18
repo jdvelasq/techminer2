@@ -78,6 +78,7 @@ def terms_by_cluster_summary(
     sort_by=None,
     **filters,
 ):
+    """:meta private:"""
 
     mapping = clusters_to_terms_mapping(
         #

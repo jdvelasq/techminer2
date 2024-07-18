@@ -95,6 +95,7 @@ def term_occurrence_by_cluster(
     sort_by=None,
     **filters,
 ):
+    """:meta private:"""
 
     tf_matrix = tfidf(
         #

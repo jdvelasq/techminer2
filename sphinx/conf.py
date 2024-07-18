@@ -36,6 +36,7 @@ toggleprompt_offset_right = 25
 copybutton_prompt_text = r">>> |\.\.\. "
 copybutton_prompt_is_regexp = True
 
+modindex_common_prefix = ["techminer2."]
 
 nbsphinx_allow_errors = True
 nbsphinx_execute = "never"
@@ -44,9 +45,9 @@ nbsphinx_execute = "never"
 templates_path = ["_templates"]
 
 autosectionlabel_maxdepth = 10
-html_theme_options = {
-    # "navigation_depth": 10,
-}
+# html_theme_options = {
+#     "navigation_depth": 10,
+# }
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 source_suffix = [".rst", ".md"]
@@ -190,13 +191,13 @@ html_static_path = ["_static"]
 # html_additional_pages = {}
 
 # If false, no module index is generated.
-html_domain_indices = True
+# html_domain_indices = True
 
 # If false, no index is generated.
 # html_use_index = True
 
 # If true, the index is split into individual pages for each letter.
-# html_split_index = False
+html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
 # html_show_sourcelink = True

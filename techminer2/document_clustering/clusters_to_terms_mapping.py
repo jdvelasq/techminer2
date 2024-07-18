@@ -122,6 +122,7 @@ def clusters_to_terms_mapping(
     sort_by=None,
     **filters,
 ):
+    """:meta private:"""
 
     contingency_table = term_occurrence_by_cluster(
         #
