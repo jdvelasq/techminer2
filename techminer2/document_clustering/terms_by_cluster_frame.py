@@ -14,6 +14,7 @@ Terms by Cluster Dataframe
 ...     #
 ...     # TERMS:
 ...     field='descriptors',
+...     retain_counters=True,
 ...     #
 ...     # FILTER PARAMS:
 ...     top_n=50,
@@ -39,7 +40,7 @@ Terms by Cluster Dataframe
 ...     cited_by_filter=(None, None),
 ...     sort_by=None,
 ... ).head(10)
-                            CL_0  ...                             CL_3
+                               0  ...                                3
 0     FINANCIAL_INDUSTRY 09:2006  ...  SUSTAINABLE_DEVELOPMENT 04:0306
 1        BUSINESS_MODELS 04:1441  ...             ELSEVIER_LTD 03:0474
 2    INFORMATION_SYSTEMS 04:0830  ...           SUSTAINABILITY 03:0227
@@ -64,6 +65,7 @@ def terms_by_cluster_frame(
     #
     # TF PARAMS:
     field,
+    retain_counters: bool = True,
     is_binary: bool = False,
     cooc_within: int = 1,
     #
@@ -90,6 +92,7 @@ def terms_by_cluster_frame(
         #
         # TF PARAMS:
         field=field,
+        retain_counters=retain_counters,
         is_binary=is_binary,
         cooc_within=cooc_within,
         #

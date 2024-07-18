@@ -14,6 +14,7 @@ Terms by Cluster Summary
 ...     #
 ...     # TERMS:
 ...     field='descriptors',
+...     retain_counters=True,
 ...     #
 ...     # FILTER PARAMS:
 ...     top_n=50,
@@ -39,11 +40,11 @@ Terms by Cluster Summary
 ...     cited_by_filter=(None, None),
 ...     sort_by=None,
 ... )
-  Cluster  ...                                              Terms
-0    CL_0  ...  FINANCIAL_INDUSTRY 09:2006; BUSINESS_MODELS 04...
-1    CL_1  ...  FINANCIAL_SERVICE 04:1036; COMMERCE 03:0846; C...
-2    CL_2  ...  FINTECH 32:5393; FINANCIAL_TECHNOLOGY 18:2519;...
-3    CL_3  ...  SUSTAINABLE_DEVELOPMENT 04:0306; ELSEVIER_LTD ...
+   Cluster  ...                                              Terms
+0        0  ...  FINANCIAL_INDUSTRY 09:2006; BUSINESS_MODELS 04...
+1        1  ...  FINANCIAL_SERVICE 04:1036; COMMERCE 03:0846; C...
+2        2  ...  FINTECH 32:5393; FINANCIAL_TECHNOLOGY 18:2519;...
+3        3  ...  SUSTAINABLE_DEVELOPMENT 04:0306; ELSEVIER_LTD ...
 <BLANKLINE>
 [4 rows x 4 columns]
 
@@ -58,6 +59,7 @@ def terms_by_cluster_summary(
     #
     # TF PARAMS:
     field,
+    retain_counters=True,
     is_binary: bool = False,
     cooc_within: int = 1,
     #
@@ -84,6 +86,7 @@ def terms_by_cluster_summary(
         #
         # TF PARAMS:
         field=field,
+        retain_counters=retain_counters,
         is_binary=is_binary,
         cooc_within=cooc_within,
         #

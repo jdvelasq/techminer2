@@ -15,6 +15,7 @@ Clusters to Terms Map
 ...     #
 ...     # TERMS:
 ...     field='descriptors',
+...     retain_counters=True,
 ...     #
 ...     # FILTER PARAMS:
 ...     top_n=50,
@@ -41,60 +42,58 @@ Clusters to Terms Map
 ...     sort_by=None,
 ... )
 >>> pprint.pprint(mapping)
-{'CL_0': ['FINANCIAL_INDUSTRY 09:2006',
-          'BUSINESS_MODELS 04:1441',
-          'INFORMATION_SYSTEMS 04:0830',
-          'SURVEYS 03:0484',
-          'CROWDFUNDING 03:0335',
-          'STUDY_AIMS 03:0283',
-          'NEW_TECHNOLOGIES 02:0773',
-          'DISRUPTIVE_INNOVATION 02:0759',
-          'ACADEMIC_RESEARCH 02:0691',
-          'CURRENT_STATE 02:0691'],
- 'CL_1': ['FINANCIAL_SERVICE 04:1036',
-          'COMMERCE 03:0846',
-          'COPYRIGHT_TAYLOR 02:0696',
-          'FINANCIAL_SERVICES_INDUSTRIES 02:0696'],
- 'CL_2': ['FINTECH 32:5393',
-          'FINANCIAL_TECHNOLOGY 18:2519',
-          'FINANCIAL_SERVICES 12:1929',
-          'FINANCE 11:1950',
-          'INNOVATION 08:0990',
-          'FINTECH_STARTUPS 07:1793',
-          'FINANCIAL_SECTOR 07:1562',
-          'INFORMATION_TECHNOLOGY 07:1383',
-          'FINANCIAL_SERVICES_INDUSTRY 06:1370',
-          'FRANCIS_GROUP 05:1227',
-          'FINTECH_COMPANIES 05:1072',
-          'FINANCIAL_INNOVATION 05:0401',
-          'FINANCIAL_INSTITUTIONS 04:0722',
-          'FINANCIAL_SYSTEM 04:0688',
-          'ARTIFICIAL_INTELLIGENCE 04:0495',
-          'FINTECH_SERVICES 04:0468',
-          'BIG_DATA 04:0467',
-          'BLOCKCHAIN 03:0881',
-          'FINANCIAL_MARKETS 03:0835',
-          'FINTECH_REVOLUTION 03:0731',
-          'DIGITAL_TECHNOLOGIES 03:0631',
-          'FINANCIAL_INCLUSION 03:0590',
-          'PRACTICAL_IMPLICATIONS 03:0531',
-          'FINANCIAL_INSTITUTION 03:0488',
-          'FINANCIAL_REGULATION 03:0461',
-          'TECHNOLOGY_ACCEPTANCE_MODEL 03:0405',
-          'BANKING 03:0370',
-          'MARKET_PARTICIPANTS 03:0350',
-          'FINANCIAL_STABILITY 03:0342',
-          'MARKETPLACE_LENDING 03:0317',
-          'ELECTRONIC_MONEY 03:0305',
-          'FINTECH_MARKET 03:0297',
-          'MOBILE_PAYMENT 03:0284'],
- 'CL_3': ['SUSTAINABLE_DEVELOPMENT 04:0306',
-          'ELSEVIER_LTD 03:0474',
-          'SUSTAINABILITY 03:0227']}
+{0: ['FINANCIAL_INDUSTRY 09:2006',
+     'BUSINESS_MODELS 04:1441',
+     'INFORMATION_SYSTEMS 04:0830',
+     'SURVEYS 03:0484',
+     'CROWDFUNDING 03:0335',
+     'STUDY_AIMS 03:0283',
+     'NEW_TECHNOLOGIES 02:0773',
+     'DISRUPTIVE_INNOVATION 02:0759',
+     'ACADEMIC_RESEARCH 02:0691',
+     'CURRENT_STATE 02:0691'],
+ 1: ['FINANCIAL_SERVICE 04:1036',
+     'COMMERCE 03:0846',
+     'COPYRIGHT_TAYLOR 02:0696',
+     'FINANCIAL_SERVICES_INDUSTRIES 02:0696'],
+ 2: ['FINTECH 32:5393',
+     'FINANCIAL_TECHNOLOGY 18:2519',
+     'FINANCIAL_SERVICES 12:1929',
+     'FINANCE 11:1950',
+     'INNOVATION 08:0990',
+     'FINTECH_STARTUPS 07:1793',
+     'FINANCIAL_SECTOR 07:1562',
+     'INFORMATION_TECHNOLOGY 07:1383',
+     'FINANCIAL_SERVICES_INDUSTRY 06:1370',
+     'FRANCIS_GROUP 05:1227',
+     'FINTECH_COMPANIES 05:1072',
+     'FINANCIAL_INNOVATION 05:0401',
+     'FINANCIAL_INSTITUTIONS 04:0722',
+     'FINANCIAL_SYSTEM 04:0688',
+     'ARTIFICIAL_INTELLIGENCE 04:0495',
+     'FINTECH_SERVICES 04:0468',
+     'BIG_DATA 04:0467',
+     'BLOCKCHAIN 03:0881',
+     'FINANCIAL_MARKETS 03:0835',
+     'FINTECH_REVOLUTION 03:0731',
+     'DIGITAL_TECHNOLOGIES 03:0631',
+     'FINANCIAL_INCLUSION 03:0590',
+     'PRACTICAL_IMPLICATIONS 03:0531',
+     'FINANCIAL_INSTITUTION 03:0488',
+     'FINANCIAL_REGULATION 03:0461',
+     'TECHNOLOGY_ACCEPTANCE_MODEL 03:0405',
+     'BANKING 03:0370',
+     'MARKET_PARTICIPANTS 03:0350',
+     'FINANCIAL_STABILITY 03:0342',
+     'MARKETPLACE_LENDING 03:0317',
+     'ELECTRONIC_MONEY 03:0305',
+     'FINTECH_MARKET 03:0297',
+     'MOBILE_PAYMENT 03:0284'],
+ 3: ['SUSTAINABLE_DEVELOPMENT 04:0306',
+     'ELSEVIER_LTD 03:0474',
+     'SUSTAINABILITY 03:0227']}
 
 """
-import pandas as pd
-
 from .term_occurrence_by_cluster import term_occurrence_by_cluster
 
 
@@ -102,6 +101,7 @@ def clusters_to_terms_mapping(
     #
     # TF PARAMS:
     field,
+    retain_counters=True,
     is_binary: bool = False,
     cooc_within: int = 1,
     #
@@ -128,6 +128,7 @@ def clusters_to_terms_mapping(
         #
         # TF PARAMS:
         field=field,
+        retain_counters=retain_counters,
         is_binary=is_binary,
         cooc_within=cooc_within,
         #
@@ -158,8 +159,3 @@ def clusters_to_terms_mapping(
         mapping[theme].append(word)
 
     return mapping
-
-    communities = pd.DataFrame.from_dict(mapping, orient="index").T
-    communities = communities.fillna("")
-    communities = communities.sort_index(axis=1)
-    return communities
