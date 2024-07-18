@@ -100,8 +100,10 @@ def read_filtered_database(
         #
         # sort_by: - date_newest
         #          - date_oldest
-        #          - cited_by_highest
-        #          - cited_by_lowest
+        #          - global_cited_by_highest
+        #          - global_cited_by_lowest
+        #          - local_cited_by_highest
+        #          - local_cited_by_lowest
         #          - first_author_a_to_z
         #          - first_author_z_to_a
         #          - source_title_a_to_z
@@ -111,28 +113,34 @@ def read_filtered_database(
             return records
 
         if sort_by == "date_newest":
-            return records.sort_values(["year", "global_citations"], ascending=[False, True])
+            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[False, True, True])
 
         if sort_by == "date_oldest":
-            return records.sort_values(["year", "global_citations"], ascending=[True, True])
+            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[True, True, True])
 
-        if sort_by == "cited_by_highest":
-            return records.sort_values(["global_citations", "year"], ascending=[False, False])
+        if sort_by == "global_cited_by_highest":
+            return records.sort_values(["global_citations", "year", "local_citations"], ascending=[False, False, False])
 
-        if sort_by == "cited_by_lowest":
-            return records.sort_values(["global_citations", "year"], ascending=[True, False])
+        if sort_by == "global_cited_by_lowest":
+            return records.sort_values(["global_citations", "year", "local_citations"], ascending=[True, False, False])
+
+        if sort_by == "local_cited_by_highest":
+            return records.sort_values(["local_citations", "year", "global_citations"], ascending=[False, False, False])
+
+        if sort_by == "local_cited_by_lowest":
+            return records.sort_values(["local_citations", "year", "global_citations"], ascending=[True, False, False])
 
         if sort_by == "first_author_a_to_z":
-            return records.sort_values(["authors", "global_citations"], ascending=[True, False])
+            return records.sort_values(["authors", "global_citations", "local_citations"], ascending=[True, False, False])
 
         if sort_by == "first_author_z_to_a":
-            return records.sort_values(["authors", "global_citations"], ascending=[False, False])
+            return records.sort_values(["authors", "global_citations", "local_citations"], ascending=[False, False, False])
 
         if sort_by == "source_title_a_to_z":
-            return records.sort_values(["source_title", "global_citations"], ascending=[True, False])
+            return records.sort_values(["source_title", "global_citations", "local_citations"], ascending=[True, False, False])
 
         if sort_by == "source_title_z_to_a":
-            return records.sort_values(["source_title", "global_citations"], ascending=[False, False])
+            return records.sort_values(["source_title", "global_citations", "local_citations"], ascending=[False, False, False])
 
     records = get_records_from_file(root_dir, database)
     records = filter_records_by_year(records, year_filter)
