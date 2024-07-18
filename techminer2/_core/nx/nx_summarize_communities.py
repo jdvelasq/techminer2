@@ -9,7 +9,7 @@
 
 import pandas as pd
 
-from .nx_extract_communities_to_dict import nx_extract_communities_to_dict
+from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 
 
 def nx_summarize_communities(
@@ -18,7 +18,7 @@ def nx_summarize_communities(
 ):
     """Gets communities from a networkx graph as a data frame."""
 
-    communities_dict = nx_extract_communities_to_dict(nx_graph, conserve_counters=conserve_counters)
+    communities_dict = nx_clusters_to_terms_mapping(nx_graph, retain_counters=conserve_counters)
     communities_len = {}
     communities_perc = {}
 

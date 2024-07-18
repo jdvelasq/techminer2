@@ -27,7 +27,7 @@ Treemap
 """
 import plotly.graph_objs as go
 
-from .nx_extract_communities_to_dict import nx_extract_communities_to_dict
+from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 
 
 def nx_plot_node_treemap(
@@ -48,7 +48,7 @@ def nx_plot_node_treemap(
     node_text = []
     parents = []
 
-    clusters = nx_extract_communities_to_dict(nx_graph, conserve_counters=True)
+    clusters = nx_clusters_to_terms_mapping(nx_graph, retain_counters=True)
     cluster_occ = {key: 0 for key in clusters}
     for key, names in clusters.items():
         for name in names:

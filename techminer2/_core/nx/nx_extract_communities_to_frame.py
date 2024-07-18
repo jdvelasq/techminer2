@@ -9,7 +9,7 @@
 
 import pandas as pd
 
-from .nx_extract_communities_to_dict import nx_extract_communities_to_dict
+from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 
 
 def nx_extract_communities_to_frame(
@@ -18,7 +18,7 @@ def nx_extract_communities_to_frame(
 ):
     """Gets communities from a networkx graph as a data frame."""
 
-    communities = nx_extract_communities_to_dict(nx_graph, conserve_counters)
+    communities = nx_clusters_to_terms_mapping(nx_graph, conserve_counters)
     communities = pd.DataFrame.from_dict(communities, orient="index").T
     communities = communities.fillna("")
     communities = communities.sort_index(axis=1)

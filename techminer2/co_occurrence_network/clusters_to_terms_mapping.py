@@ -6,11 +6,16 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Treemap
+Clusters to Terms Mapping
 ===============================================================================
 
->>> from techminer2.science_mapping.co_authorship.network.organizations import treemap
->>> treemap(
+
+>>> from techminer2.co_occurrence_network import clusters_to_terms_mapping
+>>> mapping = clusters_to_terms_mapping(
+...     #
+...     # PARAMS:
+...     field='author_keywords',
+...     retain_counters=True,
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=20,
@@ -22,29 +27,46 @@ Treemap
 ...     algorithm_or_dict="louvain",
 ...     association_index="association",
 ...     #
-...     # CHART PARAMS:
-...     title=None,
-...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/co_authorship/network/organizations/treemap.html")
+...     sort_by=None,
+... )
+>>> from pprint import pprint
+>>> pprint(mapping)
+{0: ['FINTECH 31:5168',
+     'FINANCIAL_INCLUSION 03:0590',
+     'CROWDFUNDING 03:0335',
+     'BUSINESS_MODELS 02:0759',
+     'CYBER_SECURITY 02:0342',
+     'CASE_STUDY 02:0340',
+     'BLOCKCHAIN 02:0305',
+     'REGTECH 02:0266'],
+ 1: ['INNOVATION 07:0911',
+     'FINANCIAL_SERVICES 04:0667',
+     'FINANCIAL_TECHNOLOGY 03:0461',
+     'TECHNOLOGY 02:0310',
+     'BANKING 02:0291'],
+ 2: ['MARKETPLACE_LENDING 03:0317',
+     'LENDINGCLUB 02:0253',
+     'PEER_TO_PEER_LENDING 02:0253',
+     'SHADOW_BANKING 02:0253'],
+ 3: ['ARTIFICIAL_INTELLIGENCE 02:0327', 'FINANCE 02:0309', 'ROBOTS 02:0289']}
 
-.. raw:: html
-
-    <iframe src="../../../../../../_static/analyze/co_authorship/network/organizations/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ..._core.nx.nx_plot_node_treemap import nx_plot_node_treemap
+from .._core.nx.nx_cluster_graph import nx_cluster_graph
+from .._core.nx.nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
+from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 
-FIELD = "organizations"
 
-
-def plot_treemap_from_organizations_co_occurrence_network(
+def clusters_to_terms_mapping(
+    #
+    # PARAMS:
+    field,
+    retain_counters=True,
     #
     # COLUMN PARAMS:
     top_n=None,
@@ -56,41 +78,20 @@ def plot_treemap_from_organizations_co_occurrence_network(
     algorithm_or_dict="louvain",
     association_index="association",
     #
-    # DEGREE PLOT:
-    title=None,
-    #
     # DATABASE PARAMS:
     root_dir="./",
     database="main",
     year_filter=(None, None),
     cited_by_filter=(None, None),
+    sort_by=None,
     **filters,
 ):
-    """
-    :meta private:
-    """
-    # --------------------------------------------------------------------------
-    # TODO: REMOVE DEPENDENCES:
-    #
-    #
-    # LAYOUT:
-    nx_k = None
-    nx_iterations = 10
-    nx_random_state = 0
-    #
-    # NODES:
-    node_size_range = (30, 70)
-    textfont_size_range = (10, 20)
-    #
-    # EDGES:
-    edge_width_range = (0.8, 3.0)
-    #
-    # --------------------------------------------------------------------------
+    """:meta private:"""
 
     nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
-        rows_and_columns=FIELD,
+        rows_and_columns=field,
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -98,35 +99,32 @@ def plot_treemap_from_organizations_co_occurrence_network(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
+        # NETWORK PARAMS:
         association_index=association_index,
-        #
-        # LAYOUT:
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        nx_random_state=nx_random_state,
-        #
-        # NODES:
-        node_size_range=node_size_range,
-        textfont_size_range=textfont_size_range,
-        #
-        # EDGES:
-        edge_width_range=edge_width_range,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
         **filters,
     )
 
-    return nx_plot_node_treemap(
+    nx_graph = nx_cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
         #
-        # CHART PARAMS:
-        title=title,
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
     )
+
+    mapping = nx_clusters_to_terms_mapping(
+        #
+        # FUNCTION PARAMS:
+        nx_graph=nx_graph,
+        retain_counters=retain_counters,
+    )
+
+    return mapping

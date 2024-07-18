@@ -26,7 +26,7 @@ from ...helpers.helper_make_report_dir import helper_make_report_dir
 from ...search.concordances import concordances_from_records
 from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..read_filtered_database import read_filtered_database
-from .nx_extract_communities_to_dict import nx_extract_communities_to_dict
+from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 
 TEXTWRAP_WIDTH = 73
 
@@ -50,7 +50,7 @@ def nx_create_co_occurrences_report(
 
     helper_make_report_dir(root_dir, report_dir)
 
-    communities = nx_extract_communities_to_dict(nx_graph, conserve_counters=False)
+    communities = nx_clusters_to_terms_mapping(nx_graph, retain_counters=False)
 
     records_per_cluster = __extract_records_per_cluster(
         communities=communities,
