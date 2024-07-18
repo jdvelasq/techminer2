@@ -54,7 +54,8 @@ from ._compress_csv_files_in_raw_data_subdirectories import compress_csv_files_i
 from ._create_art_no_column import create_art_no_column
 from ._create_article_column import create_article_column
 from ._create_database_files import create_database_files
-from ._create_imported_records_report import create_imported_records_report
+
+# from ._create_imported_records_report import create_imported_records_report
 from ._create_local_citations_column_in_cited_by_database import create_local_citations_column_in_cited_by_database
 from ._create_local_citations_column_in_documents_database import create_local_citations_column_in_documents_database
 from ._create_local_citations_column_in_references_database import create_local_citations_column_in_references_database
@@ -330,7 +331,7 @@ def ingest_raw_data(
     _adds_countries_and_regions_to_stopwords(root_dir)
 
     report_imported_records_per_file(root_dir)
-    create_imported_records_report(root_dir)
+    # Removed: create_imported_records_report(root_dir)
 
     message("Process finished!!!")
 

@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Most Cited Documents
+View 
 ===============================================================================
 
 

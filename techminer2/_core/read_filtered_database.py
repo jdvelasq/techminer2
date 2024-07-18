@@ -111,28 +111,28 @@ def read_filtered_database(
             return records
 
         if sort_by == "date_newest":
-            return records.sort_values(["year", "cited_by"], ascending=[False, True])
+            return records.sort_values(["year", "global_citations"], ascending=[False, True])
 
         if sort_by == "date_oldest":
-            return records.sort_values(["year", "cited_by"], ascending=[True, True])
+            return records.sort_values(["year", "global_citations"], ascending=[True, True])
 
         if sort_by == "cited_by_highest":
-            return records.sort_values(["cited_by", "year"], ascending=[False, False])
+            return records.sort_values(["global_citations", "year"], ascending=[False, False])
 
         if sort_by == "cited_by_lowest":
-            return records.sort_values(["cited_by", "year"], ascending=[True, False])
+            return records.sort_values(["global_citations", "year"], ascending=[True, False])
 
         if sort_by == "first_author_a_to_z":
-            return records.sort_values(["authors", "cited_by"], ascending=[True, False])
+            return records.sort_values(["authors", "global_citations"], ascending=[True, False])
 
         if sort_by == "first_author_z_to_a":
-            return records.sort_values(["authors", "cited_by"], ascending=[False, False])
+            return records.sort_values(["authors", "global_citations"], ascending=[False, False])
 
         if sort_by == "source_title_a_to_z":
-            return records.sort_values(["source_title", "cited_by"], ascending=[True, False])
+            return records.sort_values(["source_title", "global_citations"], ascending=[True, False])
 
         if sort_by == "source_title_z_to_a":
-            return records.sort_values(["source_title", "cited_by"], ascending=[False, False])
+            return records.sort_values(["source_title", "global_citations"], ascending=[False, False])
 
     records = get_records_from_file(root_dir, database)
     records = filter_records_by_year(records, year_filter)
