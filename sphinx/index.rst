@@ -24,7 +24,18 @@ Techminer 2+
     :hidden:
     :caption: Analyze    
     :maxdepth: 1
+
+    documents/__index__ 
     
+
+
+
+.. toctree::
+    :hidden:
+    :caption: TO CHECK
+    :maxdepth: 1
+
+
     metrics/__index__ 
     co_occurrence/__index__
     correlation/__index__

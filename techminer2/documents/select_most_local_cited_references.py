@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Most Local Cited References
+Most Local Cited References (Example)
 ===============================================================================
 
 >>> from techminer2.documents import select_documents
