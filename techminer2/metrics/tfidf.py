@@ -84,6 +84,7 @@ def tfidf(
     database="main",
     year_filter=(None, None),
     cited_by_filter=(None, None),
+    sort_by=None,
     **filters,
 ):
     """Computes TF Matrix.
@@ -97,6 +98,7 @@ def tfidf(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
         **filters,
     )
 
@@ -122,6 +124,7 @@ def tfidf(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
         **filters,
     )
 
@@ -190,6 +193,7 @@ def _create_tf_matrix(
     database,
     year_filter,
     cited_by_filter,
+    sort_by,
     **filters,
 ):
     records = read_filtered_database(
@@ -197,6 +201,7 @@ def _create_tf_matrix(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
         **filters,
     )
 

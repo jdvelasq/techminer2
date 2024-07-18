@@ -9,10 +9,16 @@ Techminer 2+
 
     ingest/__index__ 
 
-
 .. toctree::
     :hidden:
     :caption: Refine
+    :maxdepth: 1
+
+
+
+.. toctree::
+    :hidden:
+    :caption: Refine (to check)
     :maxdepth: 1
 
     fields/__index__
@@ -26,13 +32,15 @@ Techminer 2+
     :maxdepth: 1
 
     documents/__index__ 
+    document_clustering/__index__
+
     
 
 
 
 .. toctree::
     :hidden:
-    :caption: TO CHECK
+    :caption: Analyze (TO CHECK)
     :maxdepth: 1
 
 
@@ -40,15 +48,21 @@ Techminer 2+
     co_occurrence/__index__
     correlation/__index__
     network/__index__
-    doucument_clustering/__index__
     tech_mining/__index__
     tools/__index__
-    
     
 
 .. toctree::
     :hidden:
     :caption: Report
+    :maxdepth: 1    
+
+    report/__index__
+
+
+.. toctree::
+    :hidden:
+    :caption: Report (to check)
     :maxdepth: 1    
 
     report/__index__
