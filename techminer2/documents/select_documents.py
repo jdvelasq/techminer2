@@ -9,8 +9,8 @@
 Select Documents
 =======================================================================================
 
->>> from techminer2.documents import record_display
->>> documents = record_display(
+>>> from techminer2.documents import select_documents
+>>> documents = select_documents(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -20,7 +20,7 @@ Select Documents
 ...     sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
 ...                            # global_cited_by_lowest, local_cited_by_highest, 
 ...                            # local_cited_by_lowest, first_author_a_to_z, 
-..                             # first_author_z_to_a, source_title_a_to_z, 
+...                            # first_author_z_to_a, source_title_a_to_z, 
 ...                            # source_title_z_to_a
 ... )
 >>> len(documents)
@@ -51,7 +51,8 @@ def select_documents(
     database: str = "main",
     year_filter: tuple = (None, None),
     cited_by_filter: tuple = (None, None),
-    sort_by: str = "date_newest" ** filters,
+    sort_by: str = "date_newest",
+    **filters,
 ):
     """:meta private:"""
 
