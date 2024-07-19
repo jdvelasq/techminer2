@@ -44,7 +44,7 @@ Bubble Chart
 """
 import plotly.express as px
 
-from ..co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def bubble_chart(
@@ -78,21 +78,21 @@ def bubble_chart(
     :meta private:
     """
 
-    matrix = compute_co_occurrence_matrix(
+    matrix = co_occurrence_matrix(
         #
         # COLUMN PARAMS:
         columns=columns,
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
+        col_custom_terms=col_custom_items,
         #
         # ROW PARAMS:
         rows=rows,
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
+        row_custom_terms=row_custom_items,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

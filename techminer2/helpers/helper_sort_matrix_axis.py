@@ -33,7 +33,8 @@ def helper_sort_matrix_axis(
 
     indicators_by_topic = calculate_global_performance_metrics(
         field=field,
-        # Database params:
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

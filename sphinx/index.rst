@@ -31,6 +31,7 @@ Techminer 2+
     :caption: Analyze    
     :maxdepth: 1
 
+    co_occurrence_matrix/__index__
     documents/__index__ 
     document_clustering/__index__
 
@@ -45,7 +46,7 @@ Techminer 2+
 
 
     metrics/__index__ 
-    co_occurrence/__index__
+    
     correlation/__index__
     network/__index__
     tech_mining/__index__

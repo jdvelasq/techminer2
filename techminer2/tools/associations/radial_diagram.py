@@ -71,7 +71,7 @@ from ..._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color
 from ..._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
 from ..._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
 from ..._core.nx.nx_plot_graph import nx_plot_graph
-from ...co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def radial_diagram(
@@ -140,7 +140,7 @@ def radial_diagram(
     #
     # MAIN CODE:
     #
-    associations = compute_co_occurrence_matrix(
+    associations = co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=columns,
@@ -150,13 +150,13 @@ def radial_diagram(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
+        col_custom_terms=col_custom_items,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
+        row_custom_terms=row_custom_items,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

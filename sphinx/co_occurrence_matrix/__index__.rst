@@ -6,9 +6,10 @@ Co-occurrence
     :maxdepth: 1
     :hidden:
     
+    co_occurrence_heatmap
+    co_occurrence_map
+    co_occurrence_matrix_network
     co_occurrence_matrix
-    matrix_viewer
+    co_occurrence_table
     sankey_chart
-    words_viewer
-
 

@@ -60,7 +60,7 @@ Analyze the ...
 """
 from dataclasses import dataclass
 
-from ..co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from ._compute_corr_matrix import compute_corr_matrix
 
@@ -92,7 +92,7 @@ def compute_cross_correlation_matrix(
     #
     # Main:
     #
-    data_matrix = compute_co_occurrence_matrix(
+    data_matrix = co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=rows_and_columns,
@@ -102,7 +102,7 @@ def compute_cross_correlation_matrix(
         col_top_n=top_n,
         col_occ_range=occ_range,
         col_gc_range=gc_range,
-        col_custom_items=custom_items,
+        col_custom_terms=custom_items,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -73,7 +73,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ...co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 MARKER_COLOR = "#7793a5"
@@ -246,7 +246,7 @@ def __table(
     # MAIN CODE:
     #
     #
-    cooc_matrix = compute_co_occurrence_matrix(
+    cooc_matrix = co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=columns,
@@ -256,13 +256,13 @@ def __table(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
+        col_custom_terms=col_custom_items,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
+        row_custom_terms=row_custom_items,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

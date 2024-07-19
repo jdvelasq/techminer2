@@ -14,12 +14,13 @@ Sankey Chart
 ...     # PARAMS:
 ...     fields=["authors", "countries", "author_keywords"],
 ...     max_n=20,
+...     retain_counters=True,
 ...     #
 ...     # ITEM FILTERS:
 ...     top_n=10,
 ...     occ_range=None,
 ...     gc_range=None,
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # PARAMS:
 ...     font_size=8,
@@ -31,30 +32,31 @@ Sankey Chart
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,
-... ).write_html("sphinx/_static/analyze/co_occurrence/sankey_chat.html")
+... ).write_html("sphinx/_static/co_occurrence_matrix/sankey_chat.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/co_occurrence/sankey_chat.html" 
+    <iframe src="../_static/co_occurrence_matrix/sankey_chat.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
 
-from .compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from .co_occurrence_matrix import co_occurrence_matrix
 
 
-def plot_sankey_chart(
+def sankey_chart(
     #
     # PARAMS:
     fields,
     max_n=50,
+    retain_counters=True,
     #
     # ITEM FILTERS:
     top_n=None,
     occ_range=None,
     gc_range=None,
-    custom_items=None,
+    custom_terms=None,
     #
     # PARAMS:
     font_size=8,
@@ -68,9 +70,7 @@ def plot_sankey_chart(
     cited_by_filter=None,
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     def build_matrices():
         matrices = []
@@ -79,17 +79,23 @@ def plot_sankey_chart(
             if row == fields[0]:
                 # it is the first matrix
 
-                coc_matrix = compute_co_occurrence_matrix(
+                coc_matrix = co_occurrence_matrix(
+                    #
+                    # FUNCTION PARAMS:
                     columns=col,
                     rows=row,
-                    # Column item filters:
+                    retain_counters=retain_counters,
+                    #
+                    # COLUMN PARAMS:
                     col_top_n=max_n,
-                    # Row item filters:
+                    #
+                    # ROW PARAMS:
                     row_top_n=top_n,
                     row_occ_range=occ_range,
                     row_gc_range=gc_range,
-                    row_custom_items=custom_items,
-                    # Database params:
+                    row_custom_terms=custom_terms,
+                    #
+                    # DATABASE PARAMS:
                     root_dir=root_dir,
                     database=database,
                     year_filter=year_filter,
@@ -100,17 +106,21 @@ def plot_sankey_chart(
                 matrices.append(coc_matrix)
 
             else:
-                curr_custom_items = matrices[-1].df_.columns.to_list()
+                curr_custom_items = matrices[-1].columns.to_list()
                 curr_custom_items = [" ".join(item.split(" ")[:-1]) for item in curr_custom_items]
 
-                coc_matrix = compute_co_occurrence_matrix(
+                coc_matrix = co_occurrence_matrix(
                     columns=col,
                     rows=row,
-                    # Columns item filters:
+                    retain_counters=retain_counters,
+                    #
+                    # COLUMN PARAMS:
                     col_top_n=max_n,
-                    # Rows item filters:
-                    row_custom_items=curr_custom_items,
-                    # Database params:
+                    #
+                    # ROW PARAMS:
+                    row_custom_terms=curr_custom_items,
+                    #
+                    # DATABASE PARAMS:
                     root_dir=root_dir,
                     database=database,
                     year_filter=year_filter,
@@ -128,9 +138,9 @@ def plot_sankey_chart(
         node_names = []
         for i_matrix, matrix in enumerate(matrices):
             if i_matrix == 0:
-                node_names.extend(matrix.df_.index.to_list())
+                node_names.extend(matrix.index.to_list())
 
-            node_names.extend(matrix.df_.columns.to_list())
+            node_names.extend(matrix.columns.to_list())
 
         return node_names
 
@@ -146,7 +156,7 @@ def plot_sankey_chart(
         value = []
 
         for coc_matrix in matrices:
-            matrix = coc_matrix.df_.copy()
+            matrix = coc_matrix.copy()
 
             for row in matrix.index:
                 for col in matrix.columns:

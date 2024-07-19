@@ -12,7 +12,7 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 """
 import networkx as nx
 
-from ..co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 
 
@@ -39,7 +39,7 @@ def _create_co_occurrence_nx_graph(
     **filters,
 ):
 
-    cooc_matrix = compute_co_occurrence_matrix(
+    cooc_matrix = co_occurrence_matrix(
         #
         # FUNCTION PARAMS:
         columns=rows_and_columns,
@@ -48,7 +48,7 @@ def _create_co_occurrence_nx_graph(
         col_top_n=top_n,
         col_occ_range=occ_range,
         col_gc_range=gc_range,
-        col_custom_items=custom_items,
+        col_custom_terms=custom_items,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

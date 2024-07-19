@@ -18,7 +18,7 @@ from sklearn.decomposition import PCA, KernelPCA, TruncatedSVD
 from sklearn.manifold import MDS, TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 
-from ..co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 from ..metrics.tfidf import tfidf as _tfidf
 from .manifold_2d_map import manifold_2d_map
@@ -120,7 +120,7 @@ class FactorAnalyzer:
         cited_by_filter=(None, None),
         **filters,
     ):
-        matrix = compute_co_occurrence_matrix(
+        matrix = co_occurrence_matrix(
             #
             # FUNCTION PARAMS:
             columns=self.field,
@@ -129,7 +129,7 @@ class FactorAnalyzer:
             col_top_n=top_n,
             col_occ_range=occ_range,
             col_gc_range=gc_range,
-            col_custom_items=custom_items,
+            col_custom_terms=custom_items,
             #
             # DATABASE PARAMS:
             root_dir=root_dir,
