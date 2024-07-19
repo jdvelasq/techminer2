@@ -11,12 +11,11 @@ Prepare Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.descriptors import prepare_thesaurus
+>>> from techminer2.thesaurus.descriptors import prepare_thesaurus
 >>> prepare_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
-...     # root_dir="example/", 
-...     root_dir="/Volumes/GitHub/tm2_digital_twins_in_sustainable_energy",
+...     root_dir="example/", 
 ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been prepared.
 
@@ -73,9 +72,7 @@ def prepare_thesaurus(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            remove_parenthesis_from_text
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_parenthesis_from_text)
 
         return data_frame
 
@@ -151,14 +148,10 @@ def prepare_thesaurus(
         # Replaces sinonimous terms
 
         module_path = os.path.dirname(__file__)
-        file_path = os.path.join(
-            module_path, "../../../word_lists/descriptor_replacements.csv"
-        )
+        file_path = os.path.join(module_path, "../../../word_lists/descriptor_replacements.csv")
         pdf = pd.read_csv(file_path, encoding="utf-8")
 
-        for _, row in tqdm(
-            pdf.iterrows(), total=pdf.shape[0], desc="Processing sinonimous terms"
-        ):
+        for _, row in tqdm(pdf.iterrows(), total=pdf.shape[0], desc="Processing sinonimous terms"):
             #
             pattern = row.to_replace
             repl = row.value
@@ -215,17 +208,13 @@ def prepare_thesaurus(
         #
 
         module_path = os.path.dirname(__file__)
-        file_path = os.path.join(
-            module_path, "../../../word_lists/common_starting_words.txt"
-        )
+        file_path = os.path.join(module_path, "../../../word_lists/common_starting_words.txt")
         with open(file_path, "r", encoding="utf-8") as file:
             words = file.read().split("\n")
         words = [word.strip() for word in words]
 
         for word in tqdm(words, desc="Removing common starting words"):
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                "^" + word + "_", "", regex=True
-            )
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("^" + word + "_", "", regex=True)
 
         return data_frame
 
@@ -235,17 +224,13 @@ def prepare_thesaurus(
     def remove_common_ending_words(data_frame):
         #
         module_path = os.path.dirname(__file__)
-        file_path = os.path.join(
-            module_path, "../../../word_lists/common_ending_words.txt"
-        )
+        file_path = os.path.join(module_path, "../../../word_lists/common_ending_words.txt")
         with open(file_path, "r", encoding="utf-8") as file:
             words = file.read().split("\n")
         words = [word.strip() for word in words]
 
         for word in tqdm(words, desc="Removing common ending words"):
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                "_" + word + "$", "", regex=True
-            )
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_" + word + "$", "", regex=True)
 
         return data_frame
 

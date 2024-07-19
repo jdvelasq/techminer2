@@ -42,9 +42,9 @@ from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 #
 # Thesaurus
-from ..thesaurus.countries.apply_countries_thesaurus import apply_countries_thesaurus as apply_countries_thesaurus
+from ..thesaurus.countries.apply_thesaurus import apply_thesaurus as apply_thesaurus
 from ..thesaurus.descriptors.apply_thesaurus import apply_thesaurus as apply_descriptors_thesaurus
-from ..thesaurus.organizations.apply_organizations_thesaurus import apply_organizations_thesaurus as apply_organizations_thesaurus
+from ..thesaurus.organizations.apply_thesaurus import apply_thesaurus as apply_thesaurus
 from ._adds_countries_and_regions_to_stopwords import _adds_countries_and_regions_to_stopwords
 
 # -------------------------------------------------------------------------------------
@@ -286,10 +286,10 @@ def ingest_raw_data(
     #
 
     list_cleanup_countries(root_dir)
-    apply_countries_thesaurus(root_dir)
+    apply_thesaurus(root_dir)
 
     list_cleanup_organizations(root_dir)
-    apply_organizations_thesaurus(root_dir)
+    apply_thesaurus(root_dir)
 
     ## ------------------------------------------------------------------------------------------
     ## Ignore thesaurus creation for testing new cleaning process

@@ -10,7 +10,7 @@
 Merge Terms
 ===============================================================================
 
-# >>> from techminer2.refine.thesaurus.descriptors import join_thesaurus_keys
+# >>> from techminer2.thesaurus.descriptors import join_thesaurus_keys
 # >>> join_thesaurus_keys(
 # ...     contains=("ARTIFICIAL_INTELLIGENCE", "AI"),
 # ...     #

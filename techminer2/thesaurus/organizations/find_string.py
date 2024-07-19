@@ -7,33 +7,32 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Find String 
+Find String
 ===============================================================================
 
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.thesaurus.references import find_string_in_references_thesaurus
->>> find_string_in_references_thesaurus(
+>>> from techminer2.thesaurus.organizations import find_string
+>>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
-...     contains='ARTIFICIAL_INTELLIGENCE',
+...     contains='ABES',
 ...     startswith=None,
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-
-
+--INFO-- The file example/thesauri/organizations.the.txt has been reordered.
 
 """
 from .._core.find_string_in_thesaurus import find_string_in_thesaurus
 
-THESAURUS_FILE = "thesauri/references.the.txt"
+THESAURUS_FILE = "thesauri/organizations.the.txt"
 
 
-def find_string_in_references_thesaurus(
+def find_string(
     #
     # SEARCH PARAMS:
     contains=None,

@@ -6,17 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Thesaurus 
+Check Integrity
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.descriptors import apply_thesaurus
->>> apply_thesaurus(
+>>> from techminer2.thesaurus.descriptors import check_integrity
+>>> check_integrity(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Checking `descriptors.the.txt` integrity.
 
 """
 

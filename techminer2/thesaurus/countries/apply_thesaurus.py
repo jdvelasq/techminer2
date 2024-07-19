@@ -6,22 +6,19 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Countries Thesaurus 
+Apply Thesaurus 
 ===============================================================================
 
-Cleans the country columns using the file countries.txt, located in
-the same directory as the documents.csv file.
-
-
->>> from techminer2.refine.thesaurus.countries import apply_countries_thesaurus
->>> apply_countries_thesaurus(
+>>> from techminer2.thesaurus.countries import apply_thesaurus
+>>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     )
 --INFO-- The example/thesauri/countries.the.txt thesaurus file was applied to affiliations in all databases
---INFO-- The example/thesauri/country-to-region.the.txt thesaurus file was applied to affiliations in all databases
---INFO-- The example/thesauri/country-to-subregion.the.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The /Volumes/GitHub/techminer2/techminer2/thesauri_data/country-to-region.the.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The /Volumes/GitHub/techminer2/techminer2/thesauri_data/country-to-subregion.the.txt thesaurus file was applied to affiliations in all databases
+
 
 
 """
@@ -37,7 +34,7 @@ from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_d
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
-def apply_countries_thesaurus(
+def apply_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",

@@ -11,23 +11,24 @@ Words Frequency
 
 Suggest thesurus words to analyze based on frequency.
 
->>> from techminer2.refine.thesaurus.descriptors import words_frequency
+>>> from techminer2.thesaurus.descriptors import words_frequency
 >>> words_frequency(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... ).head(10)
-FINANCIAL     146
-FINTECH       145
-TECHNOLOGY     70
-SERVICES       59
-INNOVATION     51
+words
+FINANCIAL     147
+FINTECH       134
+TECHNOLOGY     57
+SERVICES       51
+INNOVATION     45
 NEW            38
-INDUSTRY       37
-RESEARCH       36
-MOBILE         33
-MARKET         32
-Name: words, dtype: int64
+MOBILE         34
+MARKET         30
+INDUSTRY       29
+PAYMENT        28
+Name: count, dtype: int64
 
 """
 import os

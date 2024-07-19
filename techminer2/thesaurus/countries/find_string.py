@@ -7,32 +7,29 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Find String in Organizations Thesaurus
+Find String
 ===============================================================================
 
-Finds a string in the terms of a thesaurus.
-
-
->>> from techminer2.refine.thesaurus.organizations import find_string_in_organizations_thesaurus
->>> find_string_in_organizations_thesaurus(
+>>> from techminer2.thesaurus.countries import find_string
+>>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
-...     contains='ABES',
+...     contains='Colombia',
 ...     startswith=None,
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/organizations.the.txt has been reordered.
+--INFO-- The file example/thesauri/countries.the.txt has been reordered.
 
 """
 from .._core.find_string_in_thesaurus import find_string_in_thesaurus
 
-THESAURUS_FILE = "thesauri/organizations.the.txt"
+THESAURUS_FILE = "thesauri/countries.the.txt"
 
 
-def find_string_in_organizations_thesaurus(
+def find_string(
     #
     # SEARCH PARAMS:
     contains=None,

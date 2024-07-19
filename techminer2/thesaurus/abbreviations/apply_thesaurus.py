@@ -10,8 +10,8 @@
 Apply Abbreviations Thesaurus
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.abbreviations import apply_abbreviations_thesaurus
->>> apply_abbreviations_thesaurus(  
+>>> from techminer2.thesaurus.abbreviations import apply_thesaurus
+>>> apply_thesaurus(  
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -31,7 +31,7 @@ DESCRIPTORS_FILE = "thesauri/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
 
 
-def apply_abbreviations_thesaurus(
+def apply_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",

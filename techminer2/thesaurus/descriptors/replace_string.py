@@ -10,24 +10,21 @@
 Replace String 
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.descriptors import replace_string
+>>> from techminer2.thesaurus.descriptors import replace_string
 >>> replace_string(  
 ...     #
 ...     # SEARCH PARAMS:
-...     # contains='ARTIFICIAL_INTELLIGENCE',
-...     contains='AHP',
+...     contains='ARTIFICIAL_INTELLIGENCE',
 ...     startswith=None,
 ...     endswith=None,
 ...     #
 ...     # REPLACE PARAMS:
-...     # replace_by='AI',
-...     replace_by='ANALYTIC_HIERARCHY_PROCESS',
+...     replace_by='AI',
 ...     #
 ...     # DATABASE PARAMS:
-...     # root_dir="example/", 
-...     root_dir="/Volumes/GitHub/tm2_fintech_test/",
+...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/words.the.txt has been reordered.
+--INFO-- The file example/thesauri/descriptors.the.txt has been processed.
 
 """
 import os.path
@@ -90,7 +87,9 @@ def _replace_string(
     """:meta private:"""
 
     th_file = os.path.join(root_dir, THESAURUS_FILE)
-    th_dict = load_thesaurus_as_dict()
+    th_dict = load_thesaurus_as_dict(
+        file_path=th_file,
+    )
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(th_dict):

@@ -10,18 +10,16 @@
 List Cleanup
 ===============================================================================
 
-
->>> from techminer2.refine.thesaurus.descriptors import list_cleanup
+>>> from techminer2.thesaurus.descriptors import list_cleanup
 >>> list_cleanup(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/keywords.the.txt has been grouped.
+--INFO-- The keys in file example/thesauri/descriptors.the.txt has been grouped.
 
 """
 import os.path
-import re
 
 import pandas as pd
 import pkg_resources
@@ -71,16 +69,11 @@ def list_cleanup(
             if "(" in text:
                 text_to_remove = text[text.find("(") + 1 : text.find(")")]
                 meaning = text[: text.find("(")].strip()
-                if (
-                    len(meaning) < len(text_to_remove)
-                    and len(text_to_remove.strip()) > 1
-                ):
+                if len(meaning) < len(text_to_remove) and len(text_to_remove.strip()) > 1:
                     text = text_to_remove + " (" + meaning + ")"
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            invert_parenthesis_in_text
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(invert_parenthesis_in_text)
 
         return data_frame
 
@@ -102,9 +95,7 @@ def list_cleanup(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            remove_brackets_from_text
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_brackets_from_text)
 
         return data_frame
 
@@ -127,9 +118,7 @@ def list_cleanup(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            remove_parenthesis_from_text
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_parenthesis_from_text)
 
         return data_frame
 
@@ -161,9 +150,7 @@ def list_cleanup(
             "^AN_",
             "_S_",
         ]:
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                word, "", regex=True
-            )
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(word, "", regex=True)
 
         return data_frame
 
@@ -177,9 +164,7 @@ def list_cleanup(
             #
             br2am = {}
 
-            file_path = pkg_resources.resource_filename(
-                "techminer2", "thesauri_data/british2american.the.txt"
-            )
+            file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/british2american.the.txt")
             with open(file_path, "r", encoding="utf-8") as file:
                 for line in file.readlines():
                     if not line.startswith(" "):
@@ -198,16 +183,10 @@ def list_cleanup(
 
         #
         # Replaces "_" by " "
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-            "_", " ", regex=False
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_", " ", regex=False)
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [z.strip() for z in x]
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [br2am.get(z, z) for z in x]
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [br2am.get(z, z) for z in x])
         data_frame["fingerprint"] = data_frame["fingerprint"].str.join("_")
 
         return data_frame
@@ -251,12 +230,8 @@ def list_cleanup(
             )
 
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split("_")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [z.strip() for z in x]
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [stemmer.stem(z) for z in x]
-        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [stemmer.stem(z) for z in x])
         data_frame["fingerprint"] = data_frame["fingerprint"].map(sorted)
         data_frame["fingerprint"] = data_frame["fingerprint"].str.join("_")
 
@@ -268,12 +243,8 @@ def list_cleanup(
     def compute_terms_by_key(data_frame):
         #
         data_frame = data_frame.copy()
-        data_frame["n_terms"] = data_frame.groupby(["fingerprint", "key"]).transform(
-            "count"
-        )
-        data_frame = data_frame.sort_values(
-            ["fingerprint", "n_terms", "key"], ascending=True
-        )
+        data_frame["n_terms"] = data_frame.groupby(["fingerprint", "key"]).transform("count")
+        data_frame = data_frame.sort_values(["fingerprint", "n_terms", "key"], ascending=True)
         return data_frame
 
     data_frame = compute_terms_by_key(data_frame)
@@ -309,3 +280,4 @@ def list_cleanup(
                     file.write("    " + value + "\n")
 
     save_thesaurus(data_frame, th_file)
+    print(f"--INFO-- The keys in file {th_file} has been grouped.")

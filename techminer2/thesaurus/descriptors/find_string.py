@@ -10,10 +10,7 @@
 Find String 
 ===============================================================================
 
-Finds a string in the terms of a thesaurus.
-
-
->>> from techminer2.refine.thesaurus.descriptors import find_string
+>>> from techminer2.thesaurus.descriptors import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
@@ -23,10 +20,9 @@ Finds a string in the terms of a thesaurus.
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
-...     # root_dir="example/", 
-...     root_dir="/Volumes/GitHub/tn2_experimental/",
+...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/keywords.the.txt has been reordered.
+--INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
 
 """
 import os.path

@@ -9,14 +9,13 @@
 Apply Thesaurus 
 ===============================================================================
 
-
->>> from techminer2.refine.thesaurus.descriptors import apply_thesaurus
+>>> from techminer2.thesaurus.descriptors import apply_thesaurus
 >>> apply_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Applying `descriptors.the.txt` thesaurus to author/index keywords and abstract/title words
 
 """
 

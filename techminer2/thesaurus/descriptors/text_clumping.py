@@ -11,14 +11,14 @@ Text Clumping
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.descriptors import text_clumping
+>>> from techminer2.thesaurus.descriptors import text_clumping
 >>> text_clumping(
 ...     text="FINTECH",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The thesaurus `descriptors.the.txt` was rewritten.
+--INFO-- The thesaurus example/thesauri/descriptors.the.txt was rewritten.
 
 """
 import os.path
@@ -303,4 +303,4 @@ def text_clumping(
                         file.write(f"    {value}\n")
 
     save_thesaurus(data_frame, th_dict, th_file)
-    print("--INFO-- The thesaurus `words.the.txt` was rewritten.")
+    print(f"--INFO-- The thesaurus {th_file} was rewritten.")

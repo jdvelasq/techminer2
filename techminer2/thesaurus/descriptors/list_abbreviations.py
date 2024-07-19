@@ -9,7 +9,7 @@
 List Abbreviations 
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.descriptors import list_abbreviations
+>>> from techminer2.thesaurus.descriptors import list_abbreviations
 >>> list_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:

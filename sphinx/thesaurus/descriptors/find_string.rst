@@ -1,4 +1,4 @@
-.. automodule:: techminer2.refine.thesaurus.descriptors.find_string
+.. automodule:: techminer2.thesaurus.descriptors.find_string
     :members:
     :undoc-members:
     :show-inheritance:

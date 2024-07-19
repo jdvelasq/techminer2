@@ -10,7 +10,7 @@
 Replace Abbreviations 
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.descriptors import replace_abbreviations
+>>> from techminer2.thesaurus.descriptors import replace_abbreviations
 >>> replace_string(  
 ...     #
 ...     # DATABASE PARAMS:

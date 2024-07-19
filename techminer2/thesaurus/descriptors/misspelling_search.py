@@ -9,7 +9,7 @@
 Misspelling Search
 ===============================================================================
 
->>> from techminer2.refine.thesaurus.descriptors import misspelling_search
+>>> from techminer2.thesaurus.descriptors import misspelling_search
 >>> misspelling_search(
 ...     #
 ...     # DATABASE PARAMS:

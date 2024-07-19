@@ -7,32 +7,33 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Find String in Countries Thesaurus
+Find String 
 ===============================================================================
 
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.refine.thesaurus.countries import find_string_in_countries_thesaurus
->>> find_string_in_countries_thesaurus(
+>>> from techminer2.thesaurus.references import find_string
+>>> find_string(
 ...     #
 ...     # SEARCH PARAMS:
-...     contains='Colombia',
+...     contains='ARTIFICIAL_INTELLIGENCE',
 ...     startswith=None,
 ...     endswith=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/countries.the.txt has been reordered.
+
+
 
 """
 from .._core.find_string_in_thesaurus import find_string_in_thesaurus
 
-THESAURUS_FILE = "thesauri/countries.the.txt"
+THESAURUS_FILE = "thesauri/references.the.txt"
 
 
-def find_string_in_countries_thesaurus(
+def find_string(
     #
     # SEARCH PARAMS:
     contains=None,
@@ -42,10 +43,7 @@ def find_string_in_countries_thesaurus(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Find the specified keyword and reorder the thesaurus file.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     return find_string_in_thesaurus(
         #

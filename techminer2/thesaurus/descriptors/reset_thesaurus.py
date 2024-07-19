@@ -11,13 +11,13 @@ Reset Thesaurus
 ===============================================================================
 
 
->>> from techminer2.refine.thesaurus.descriptors import reset_thesaurus
+>>> from techminer2.thesaurus.descriptors import reset_thesaurus
 >>> reset_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
---INFO-- The file example/thesauri/words.the.txt has been reseted.
+--INFO-- The thesaurus example/thesauri/descriptors.the.txt has been reseted.
 
 """
 import os
@@ -45,3 +45,5 @@ def reset_thesaurus(
         for term in sorted(terms):
             file.write(term + "\n")
             file.write("    " + term + "\n")
+
+    print(f"--INFO-- The thesaurus {thesaurus_path} has been reseted.")
