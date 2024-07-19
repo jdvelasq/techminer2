@@ -37,11 +37,11 @@ Trend Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/analyze/overview/trend_metrics.html")
+>>> metrics.fig_.write_html("sphinx/_static/metrics/trend_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/overview/trend_metrics.html"  
+    <iframe src="../_static/metrics/trend_metrics.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -183,15 +183,15 @@ def generate_prompt(data_frame: pd.DataFrame) -> str:
         if col == "cum_global_citations":
             main_text += "the cummulative number of citations per document for each year (cum_global_citations); "
         if col == "mean_global_citations_per_year":
-            main_text += (
-                "the average number of citations per document divided by the age of the documents (mean_global_citations_per_year); "
-            )
+            main_text += "the average number of citations per document divided by the age of the documents (mean_global_citations_per_year); "
         if col == "mean_local_citations":
             main_text += "the average number of local citations per document for each year (mean_local_citations); "
         if col == "cum_local_citations":
             main_text += "the cummulative number of local citations per document for each year (cum_local_citations); "
         if col == "mean_local_citations_per_year":
-            main_text += "the average number of local citations per document divided by the age of the documents (mean_local_citations_per_year); "
+            main_text += (
+                "the average number of local citations per document divided by the age of the documents (mean_local_citations_per_year); "
+            )
 
     main_text += (
         " Use the the information in the table "

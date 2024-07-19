@@ -95,7 +95,7 @@ def performance_metrics(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_items=custom_terms,
     )
 
     selected_records = select_record_columns_by_metric(

@@ -104,7 +104,7 @@ def tfidf(
         **filters,
     )
 
-    if custom_items is None:
+    if custom_terms is None:
         custom_items = extract_top_n_terms_by_metric(
             indicators=indicators,
             metric="OCC",

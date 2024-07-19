@@ -9,7 +9,7 @@
 Collaboration Metrics
 ===============================================================================
 
->>> from techminer2.analyze.collaboration_metrics import collaboration_metrics
+>>> from techminer2.metrics.collaboration_metrics import collaboration_metrics
 >>> metrics = collaboration_metrics(
 ...     #
 ...     # PARAMS:
@@ -27,11 +27,11 @@ Collaboration Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> metrics.fig_.write_html("sphinx/_static/analyze/collaboration_metrics.html")
+>>> metrics.fig_.write_html("sphinx/_static/metrics/collaboration_metrics.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/analyze/collaboration_metrics.html" 
+    <iframe src="../_static/metrics/collaboration_metrics.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -64,7 +64,7 @@ def collaboration_metrics(
     top_n,
     occ_range,
     gc_range,
-    custom_items,
+    custom_terms,
     #
     # DATABASE PARAMS:
     root_dir,
@@ -85,7 +85,7 @@ def collaboration_metrics(
         #
         # PARAMS:
         field,
-        custom_items,
+        custom_terms,
         #
         # DATABASE PARAMS:
         root_dir,
@@ -103,6 +103,7 @@ def collaboration_metrics(
             database=database,
             year_filter=year_filter,
             cited_by_filter=cited_by_filter,
+            sort_by=None,
             **filters,
         )
 
@@ -163,8 +164,8 @@ def collaboration_metrics(
 
         #
         #  Filter the metrics
-        if custom_items is None:
-            custom_items = extract_top_n_terms_by_metric(
+        if custom_terms is None:
+            custom_terms = extract_top_n_terms_by_metric(
                 indicators=metrics,
                 metric="OCC",
                 top_n=top_n,
@@ -172,7 +173,7 @@ def collaboration_metrics(
                 gc_range=gc_range,
             )
 
-        metrics = metrics[metrics.index.isin(custom_items)]
+        metrics = metrics[metrics.index.isin(custom_terms)]
 
         return metrics
 
@@ -250,7 +251,7 @@ def collaboration_metrics(
         #
         # PARAMS:
         field=field,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -9,7 +9,7 @@ Global Indicators by Field per Year
 ===============================================================================
 
 
->>> from techminer2.indicators import global_metrics_by_field_per_year 
+>>> from techminer2._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year 
 >>> global_metrics_by_field_per_year(
 ...     field='authors',
 ...     as_index=True,
@@ -72,6 +72,7 @@ def global_metrics_by_field_per_year(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
     indicators = indicators.assign(OCC=1)
@@ -82,11 +83,7 @@ def global_metrics_by_field_per_year(
     indicators = indicators[[field, "OCC", "global_citations", "local_citations", "year"]].copy()
     indicators = indicators.dropna()
     max_pub_year = indicators.year.max()
-    indicators = (
-        indicators.groupby([field, "year"], as_index=False)
-        .sum()
-        .sort_values(by=["year", field], ascending=True)
-    )
+    indicators = indicators.groupby([field, "year"], as_index=False).sum().sort_values(by=["year", field], ascending=True)
     indicators = indicators.sort_values([field, "year"], ascending=True)
 
     indicators["cum_OCC"] = indicators.groupby([field]).OCC.cumsum()
@@ -95,13 +92,9 @@ def global_metrics_by_field_per_year(
 
     indicators["age"] = max_pub_year - indicators.year + 1
 
-    indicators = indicators.assign(
-        global_citations_per_year=indicators.global_citations / indicators.age
-    )
+    indicators = indicators.assign(global_citations_per_year=indicators.global_citations / indicators.age)
 
-    indicators = indicators.assign(
-        local_citations_per_year=indicators.local_citations / indicators.age
-    )
+    indicators = indicators.assign(local_citations_per_year=indicators.local_citations / indicators.age)
 
     indicators["global_citations_per_year"] = indicators["global_citations_per_year"].round(3)
     indicators["local_citations_per_year"] = indicators["local_citations_per_year"].round(3)

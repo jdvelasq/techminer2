@@ -88,8 +88,8 @@ from dataclasses import dataclass
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.filter_records_by_metric import filter_records_by_metric
-from .._core.metrics.items_occurrences_by_year import items_occurrences_by_year
 from .._core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
+from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
@@ -126,7 +126,7 @@ def growth_metrics(
     )
     #
     # Computes item occurrences by year
-    items_by_year = items_occurrences_by_year(
+    items_by_year = term_occurrences_by_year(
         #
         # FUNCTION PARAMS:
         field=field,
@@ -196,7 +196,7 @@ def growth_metrics(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_items=custom_terms,
     )
     selected_indicators = select_record_columns_by_metric(filtered_indicators, "OCC")
 

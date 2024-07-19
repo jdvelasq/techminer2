@@ -204,7 +204,7 @@ import plotly.express as px  # type: ignore
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from .._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
-from .._core.metrics.items_occurrences_by_year import items_occurrences_by_year
+from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 from ..documents_per_item import documents_per_item
 from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
@@ -237,7 +237,7 @@ def terms_by_year(
     # --------------------------------------------------------------------------------------------
     def compute_terms_by_year(custom_items):
         #
-        data_frame = items_occurrences_by_year(
+        data_frame = term_occurrences_by_year(
             field=field,
             cumulative=cumulative,
             #
@@ -422,7 +422,7 @@ def terms_by_year(
         return documents
 
     # --------------------------------------------------------------------------------------------
-    data_frame = compute_terms_by_year(custom_items)
+    data_frame = compute_terms_by_year(custom_terms)
 
     @dataclass
     class Results:

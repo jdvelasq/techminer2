@@ -13,7 +13,7 @@ Cross-correlation Map
 Creates an Cross-correlation Map.
 
 >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
->>> from techminer2.tech_mining.correlation import cross_correlation_map
+>>> from techminer2.correlation_matrix import cross_correlation_map
 >>> cross_correlation_map(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -54,11 +54,11 @@ Creates an Cross-correlation Map.
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/correlation/cross_correlation_map.html")
+... ).write_html("sphinx/_static/correlation_matrix/cross_correlation_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/correlation/cross_correlation_map.html"
+    <iframe src="../_static/correlation_matrix/cross_correlation_map.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -66,10 +66,10 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 from ._correlation_map import correlation_map
-from .compute_cross_correlation_matrix import compute_cross_correlation_matrix
+from .cross_correlation_matrix import cross_correlation_matrix
 
 
-def plot_map_from_cross_correlation_matrix(
+def cross_correlation_map(
     #
     # FUNCTION PARAMS:
     rows_and_columns,
@@ -111,12 +111,9 @@ def plot_map_from_cross_correlation_matrix(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Correlation map.
+    """:meta private:"""
 
-    :meta private:
-    """
-
-    corr_matrix = compute_cross_correlation_matrix(
+    corr_matrix = cross_correlation_matrix(
         #
         # FUNCTION PARAMS:
         rows_and_columns=rows_and_columns,
@@ -127,7 +124,7 @@ def plot_map_from_cross_correlation_matrix(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -135,7 +132,7 @@ def plot_map_from_cross_correlation_matrix(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     similarity = pd.DataFrame(
         cosine_similarity(corr_matrix),

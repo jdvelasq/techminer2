@@ -43,9 +43,9 @@ PURPOSE                   7             2  ...    91.293118           0.769302
 """
 import numpy as np
 
+from ..metrics import term_occurrences_by_year
 from ..metrics._compute_trend_metrics import compute_trend_metrics
 from ..metrics.general_metrics import general_metrics
-from ..metrics import items_occurrences_by_year
 
 
 def emergent_topics(
@@ -70,7 +70,7 @@ def emergent_topics(
 ):
     """:meta private:"""
 
-    occurrences_by_year = items_occurrences_by_year(
+    occurrences_by_year = term_occurrences_by_year(
         field=field,
         cumulative=False,
         #
@@ -109,30 +109,24 @@ def emergent_topics(
     #
     # Threshold: The term  appear in 15% or less of the base period records
     #
-    data_frame["selected"] = data_frame["selected"] & (
-        data_frame["OCC_baseline"] / records_by_base_period <= novelty_threshold
-    )
+    data_frame["selected"] = data_frame["selected"] & (data_frame["OCC_baseline"] / records_by_base_period <= novelty_threshold)
 
     #
     # Threshold: The term appears in at least 'total_records_threshold' records
     #
-    data_frame["selected"] = data_frame["selected"] & (
-        data_frame["OCC"] >= total_records_threshold
-    )
+    data_frame["selected"] = data_frame["selected"] & (data_frame["OCC"] >= total_records_threshold)
 
     #
     # Threshold: The term appears in at leat 'periods_with_at_least_one_record' periods
     #
-    data_frame["selected"] = data_frame["selected"] & (
-        data_frame["nonzero_years"] >= periods_with_at_least_one_record
-    )
+    data_frame["selected"] = data_frame["selected"] & (data_frame["nonzero_years"] >= periods_with_at_least_one_record)
 
     #
     # Threshold: The growth reate of the terms must be 'ratio_threshold' times
     # of the growth rate of the dataset
     #
 
-    cum_occurrences_by_year = items_occurrences_by_year(
+    cum_occurrences_by_year = term_occurrences_by_year(
         field=field,
         cumulative=True,
         #
@@ -145,15 +139,11 @@ def emergent_topics(
     )
     n_columns = cum_occurrences_by_year.columns.max()
 
-    data_frame["po"] = cum_occurrences_by_year.where(cum_occurrences_by_year > 0, np.inf).min(
-        axis=1
-    )
+    data_frame["po"] = cum_occurrences_by_year.where(cum_occurrences_by_year > 0, np.inf).min(axis=1)
 
     data_frame["pf"] = cum_occurrences_by_year.max(axis=1)
 
-    data_frame["np"] = n_columns - cum_occurrences_by_year.where(
-        cum_occurrences_by_year > 0, np.inf
-    ).idxmin(axis=1)
+    data_frame["np"] = n_columns - cum_occurrences_by_year.where(cum_occurrences_by_year > 0, np.inf).idxmin(axis=1)
 
     data_frame["growth_rate"] = 100.0 * (
         np.power(
@@ -173,13 +163,9 @@ def emergent_topics(
         **filters,
     ).df_.loc[("GENERAL", "Annual growth rate %"), "Value"]
 
-    data_frame["growth_rate_ratio"] = data_frame["growth_rate"].map(
-        lambda x: x / global_growth_rate
-    )
+    data_frame["growth_rate_ratio"] = data_frame["growth_rate"].map(lambda x: x / global_growth_rate)
 
-    data_frame["selected"] = data_frame["selected"] & (
-        data_frame["growth_rate_ratio"] >= ratio_threshold
-    )
+    data_frame["selected"] = data_frame["selected"] & (data_frame["growth_rate_ratio"] >= ratio_threshold)
 
     # n_years = max(self.records.year) - min(self.records.year) + 1
     # po_ = len(self.records.year[self.records.year == min(self.records.year)])

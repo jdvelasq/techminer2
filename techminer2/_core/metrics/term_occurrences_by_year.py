@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Items Occurrence by Year 
+Term Occurrences by Year 
 ===============================================================================
 
 Computes the annual occurrence matrix for the items in a given field.
 
->>> from techminer2.indicators import items_occurrences_by_year
->>> items_occurrences_by_year(
+>>> from techminer2._core.metrics.term_occurrences_by_year import term_occurrences_by_year
+>>> term_occurrences_by_year(
 ...     field='authors',  
 ...     cumulative=False,
 ...     #
@@ -37,13 +37,13 @@ Buchak G.              0     0     0     1     0
 
 
 """
-from ..stopwords.load_user_stopwords import load_user_stopwords
 from ..read_filtered_database import read_filtered_database
+from ..stopwords.load_user_stopwords import load_user_stopwords
 from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
 
 # pylint: disable=too-many-arguments
-def items_occurrences_by_year(
+def term_occurrences_by_year(
     field,
     cumulative,
     #
@@ -52,6 +52,7 @@ def items_occurrences_by_year(
     database: str = "main",
     year_filter: tuple = (None, None),
     cited_by_filter: tuple = (None, None),
+    sort_by=None,
     **filters,
 ):
     """:meta private:"""
@@ -68,9 +69,7 @@ def items_occurrences_by_year(
         **filters,
     )
 
-    indicators_by_year = indicators_by_year.assign(
-        year=indicators_by_year.index.get_level_values("year")
-    )
+    indicators_by_year = indicators_by_year.assign(year=indicators_by_year.index.get_level_values("year"))
     indicators_by_year.index = indicators_by_year.index.get_level_values(0)
 
     indicators_by_year = indicators_by_year[["year", "OCC"]]
@@ -89,6 +88,7 @@ def items_occurrences_by_year(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

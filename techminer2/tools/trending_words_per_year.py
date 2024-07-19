@@ -77,8 +77,8 @@ import plotly.graph_objects as go
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from .._core.metrics.items_occurrences_by_year import items_occurrences_by_year
 from .._core.metrics.sort_records_by_metric import sort_records_by_metric
+from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 
 
 def trending_words_per_year(
@@ -106,7 +106,7 @@ def trending_words_per_year(
 
     #
     # Compute occurrences for all words
-    words_by_year = items_occurrences_by_year(
+    words_by_year = term_occurrences_by_year(
         #
         # FUNCTION PARAMS:
         field=field,
