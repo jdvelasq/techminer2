@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.science_mapping.citation.network.countries.item_density_visualization
+.. automodule:: techminer2.citation_network.countries.item_density_visualization
     :members:
     :undoc-members:
     :show-inheritance:

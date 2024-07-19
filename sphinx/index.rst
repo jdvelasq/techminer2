@@ -14,13 +14,6 @@ Techminer 2+
     :caption: Refine
     :maxdepth: 1
 
-
-
-.. toctree::
-    :hidden:
-    :caption: Refine (to check)
-    :maxdepth: 1
-
     fields/__index__
     search/__index__ 
     thesaurus/__index__
@@ -31,26 +24,22 @@ Techminer 2+
     :caption: Analyze    
     :maxdepth: 1
 
+    citation_network/__index__
+    co_citation_network/__index__    
     co_occurrence_matrix/__index__
     co_occurrence_network/__index__
     correlation_matrix/__index__
+    coupling_network/__index__
     document_clustering/__index__
     documents/__index__ 
+    emergence/__index__ 
     metrics/__index__ 
+    topic_modeling/__index__
     
 
-
-
-.. toctree::
-    :hidden:
-    :caption: Analyze (TO CHECK)
-    :maxdepth: 1
-
-    
-    network/__index__
-    tech_mining/__index__
     tools/__index__
-    
+
+  
 
 .. toctree::
     :hidden:
@@ -59,13 +48,6 @@ Techminer 2+
 
     report/__index__
 
-
-.. toctree::
-    :hidden:
-    :caption: Report (to check)
-    :maxdepth: 1    
-
-    report/__index__
 
 **Author**:
 
