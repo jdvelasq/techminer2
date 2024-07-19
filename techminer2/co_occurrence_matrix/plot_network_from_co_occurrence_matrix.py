@@ -10,7 +10,7 @@ Matrix Viewer
 ===============================================================================
 
 
->>> from techminer2.tech_mining.co_occurrence import matrix_viewer
+>>> from techminer2.co_occurrence_matrix import matrix_viewer
 >>> matrix_viewer(
 ...     #
 ...     # COLUMN PARAMS:

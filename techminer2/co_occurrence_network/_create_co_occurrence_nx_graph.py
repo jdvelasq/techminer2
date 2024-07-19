@@ -12,11 +12,11 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 """
 import networkx as nx
 
-from ...co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
-from ...co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+from ..co_occurrence_matrix.compute_co_occurrence_matrix import compute_co_occurrence_matrix
+from ..co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 
 
-def nx_create_co_occurrence_graph(
+def _create_co_occurrence_nx_graph(
     #
     # FUNCTION PARAMS:
     rows_and_columns,
@@ -35,6 +35,7 @@ def nx_create_co_occurrence_graph(
     database="main",
     year_filter=(None, None),
     cited_by_filter=(None, None),
+    sort_by=None,
     **filters,
 ):
 

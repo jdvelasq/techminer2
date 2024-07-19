@@ -11,7 +11,6 @@ import numpy as np
 
 from ...metrics.performance_metrics import performance_metrics
 from ..read_filtered_database import read_filtered_database
-from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_assign_colors_to_nodes_by_group_attribute import nx_assign_colors_to_nodes_by_group_attribute
 from .nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
 from .nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences
@@ -19,6 +18,7 @@ from .nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_posit
 from .nx_assign_textfont_sizes_to_nodes_based_on_occurrences import nx_assign_textfont_sizes_to_nodes_based_on_occurrences
 from .nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
 from .nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
+from .nx_cluster_graph import nx_cluster_graph
 from .nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
 
 
@@ -85,7 +85,7 @@ def nx_create_citation_graph(
     #
     # Cluster the networkx graph
     if isinstance(algorithm_or_dict, str):
-        nx_graph = nx_apply_cdlib_algorithm(nx_graph, algorithm_or_dict)
+        nx_graph = nx_cluster_graph(nx_graph, algorithm_or_dict)
     if isinstance(algorithm_or_dict, dict):
         nx_graph = __assign_group_from_dict(nx_graph, algorithm_or_dict)
 
@@ -200,9 +200,7 @@ def __add_weighted_edges_from(
         key: value
         for key, value in zip(
             metrics.index.to_list(),
-            (
-                metrics.index + " " + metrics["OCC"].map(fmt_occ.format) + ":" + metrics["global_citations"].map(fmt_citations.format)
-            ).to_list(),
+            (metrics.index + " " + metrics["OCC"].map(fmt_occ.format) + ":" + metrics["global_citations"].map(fmt_citations.format)).to_list(),
         )
     }
 

@@ -10,7 +10,7 @@ Words Viewer
 ===============================================================================
 
 
->>> from techminer2.tech_mining.co_occurrence import words_viewer
+>>> from techminer2.co_occurrence_matrix import words_viewer
 >>> words_viewer(
 ...     #
 ...     # FUNCTION PARAMS:

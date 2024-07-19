@@ -10,8 +10,8 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence import compute_metrics_from_co_occurrence_network
->>> compute_metrics_from_co_occurrence_network(
+>>> from techminer2.co_occurrence_network import network_metrics
+>>> network_metrics(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -41,10 +41,10 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 """
 from .._core.nx.nx_compute_metrics import nx_compute_metrics
-from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
-def compute_metrics_from_co_occurrence_network(
+def network_metrics(
     #
     # PARAMS:
     field,
@@ -67,7 +67,7 @@ def compute_metrics_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = _create_co_occurrence_nx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

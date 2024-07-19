@@ -9,7 +9,7 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> from techminer2.tech_mining.co_occurrence import co_occurrence_matrix
+>>> from techminer2.co_occurrence_matrix import co_occurrence_matrix
 >>> matrix = co_occurrence_matrix(
 ...     #
 ...     # FUNCTION PARAMS:

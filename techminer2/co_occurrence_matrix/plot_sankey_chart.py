@@ -8,7 +8,7 @@
 Sankey Chart
 ===============================================================================
 
->>> from techminer2.tech_mining.co_occurrence import sankey_chart
+>>> from techminer2.co_occurrence_matrix import sankey_chart
 >>> sankey_chart(
 ...     #
 ...     # PARAMS:

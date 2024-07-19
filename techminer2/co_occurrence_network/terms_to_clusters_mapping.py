@@ -61,8 +61,8 @@ Terms to Cluster Mapping
 
 """
 from .._core.nx.nx_cluster_graph import nx_cluster_graph
-from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from .._core.nx.nx_terms_to_clusters_mapping import nx_terms_to_clusters_mapping
+from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def terms_to_clusters_mapping(
@@ -91,7 +91,7 @@ def terms_to_clusters_mapping(
 ):
     """:meta private:"""
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = _create_co_occurrence_nx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

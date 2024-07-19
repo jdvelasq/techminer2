@@ -10,7 +10,7 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 
 """
-from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
+from cdlib import algorithms
 
 
 def nx_cluster_graph(
@@ -23,7 +23,7 @@ def nx_cluster_graph(
 ):
 
     if isinstance(algorithm_or_dict, str):
-        return nx_apply_cdlib_algorithm(nx_graph, algorithm_or_dict)
+        return _apply_cdlib_algorithm(nx_graph, algorithm_or_dict)
 
     if isinstance(algorithm_or_dict, dict):
         #
@@ -32,5 +32,34 @@ def nx_cluster_graph(
         # analysis are conducted, for example, factor analysis.
         for node, group in algorithm_or_dict.items():
             nx_graph.nodes[node]["group"] = group
+
+    return nx_graph
+
+
+def _apply_cdlib_algorithm(
+    nx_graph,
+    algorithm,
+):
+    """Network community detection."""
+
+    cdlib_algorithm = {
+        "label_propagation": algorithms.label_propagation,
+        "leiden": algorithms.leiden,
+        "louvain": algorithms.louvain,
+        "walktrap": algorithms.walktrap,
+    }[algorithm]
+
+    if algorithm == "label_propagation":
+        communities = cdlib_algorithm(nx_graph).communities
+    elif algorithm == "leiden":
+        communities = cdlib_algorithm(nx_graph).communities
+    elif algorithm == "louvain":
+        communities = cdlib_algorithm(nx_graph, randomize=False).communities
+    elif algorithm == "walktrap":
+        communities = cdlib_algorithm(nx_graph).communities
+
+    for i_community, community in enumerate(communities):
+        for node in community:
+            nx_graph.nodes[node]["group"] = i_community
 
     return nx_graph

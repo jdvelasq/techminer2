@@ -10,7 +10,7 @@ Degree Plot
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence import plot_node_degree_from_co_occurrence_network
+>>> from techminer2.co_occurrence_network import plot_node_degree_from_co_occurrence_network
 >>> plot = plot_node_degree_from_co_occurrence_network(
 ...     #
 ...     # PARAMS:
@@ -61,8 +61,8 @@ Your task is ...
 
 """
 from .._core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
-from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from .._core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
+from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def plot_node_degree_from_co_occurrence_network(
@@ -95,7 +95,7 @@ def plot_node_degree_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = _create_co_occurrence_nx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

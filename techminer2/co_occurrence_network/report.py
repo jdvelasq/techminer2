@@ -35,8 +35,8 @@ Report
 
 
 """
-from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from .._core.nx.nx_create_co_occurrence_report import nx_create_co_occurrences_report
+from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def report(
@@ -84,7 +84,7 @@ def report(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = _create_co_occurrence_nx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,

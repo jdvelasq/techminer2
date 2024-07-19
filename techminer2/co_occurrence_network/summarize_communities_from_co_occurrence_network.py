@@ -10,7 +10,7 @@ Communities Summary
 ===============================================================================
 
 
->>> from techminer2.network.co_occurrence import summarize_communities_from_co_occurrence_network
+>>> from techminer2.co_occurrence_network import summarize_communities_from_co_occurrence_network
 >>> summarize_communities_from_co_occurrence_network(
 ...     #
 ...     # PARAMS:
@@ -47,8 +47,8 @@ Communities Summary
 
 """
 from .._core.nx.nx_cluster_graph import nx_cluster_graph
-from .._core.nx.nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from .._core.nx.nx_summarize_communities import nx_summarize_communities
+from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def summarize_communities_from_co_occurrence_network(
@@ -78,7 +78,7 @@ def summarize_communities_from_co_occurrence_network(
 ):
     """:meta private:"""
 
-    nx_graph = nx_create_co_occurrence_graph(
+    nx_graph = _create_co_occurrence_nx_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=field,
