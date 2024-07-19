@@ -20,7 +20,7 @@ Terms by Cluster Summary
 ...     top_n=50,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # ESTIMATOR:
 ...     sklearn_estimator=KMeans(
@@ -67,7 +67,7 @@ def terms_by_cluster_summary(
     top_n=20,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # ESIIMATOR:
     sklearn_estimator=None,

@@ -30,7 +30,7 @@ Treemap
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # FIGURE PARAMS:
 ...     title=None,
@@ -98,7 +98,7 @@ def plot_user_treemap_from_tfidf_svd_embedding(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # SVD PARAMS:
     n_components=None,

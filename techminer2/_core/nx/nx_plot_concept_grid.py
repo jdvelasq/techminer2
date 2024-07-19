@@ -46,9 +46,9 @@ def nx_plot_concept_grid(
             text = [" ".join(str(t).split(" ")[:-1]) for t in text]
         text = [t if t != "" else "." for t in text]
         text = "\\r".join(text) + "\\r"
-        cluster_name = col + " (" + str(summary.loc[i_cluster, "Percentage"]) + " %)"
+        cluster_name = str(col) + " (" + str(summary.loc[i_cluster, "Percentage"]) + " %)"
         graph.node(
-            col,
+            str(col),
             label=r"{" + cluster_name + "|" + text + r"}",
             fontsize=fontsize,
         )

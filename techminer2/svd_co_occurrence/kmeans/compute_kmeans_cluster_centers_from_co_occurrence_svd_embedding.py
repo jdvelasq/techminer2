@@ -21,7 +21,7 @@ Cluster Centers
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # SVD PARAMS:
 ...     n_components=5,
@@ -73,7 +73,7 @@ def compute_kmeans_cluster_centers_from_co_occurrence_svd_embedding(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # SVD PARAMS:
     n_components=None,

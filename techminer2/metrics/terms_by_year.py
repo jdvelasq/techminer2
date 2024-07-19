@@ -19,7 +19,7 @@ Terms by Year
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -63,7 +63,7 @@ SHADOW_BANKING 02:0253              0     0     0     1     1
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -90,7 +90,7 @@ SHADOW_BANKING 02:0253              0     0     0     1     1
 ...         top_n=20,
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
-...         custom_items=None,
+...         custom_terms=None,
 ...         #
 ...         # DATABASE PARAMS:
 ...         root_dir="example/", 
@@ -115,7 +115,7 @@ Your task is ...
 ...         top_n=20,
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
-...         custom_items=None,
+...         custom_terms=None,
 ...         #
 ...         # DATABASE PARAMS:
 ...         root_dir="example/", 
@@ -162,7 +162,7 @@ Your task is ...
 ...         top_n=20,
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
-...         custom_items=None,
+...         custom_terms=None,
 ...         #
 ...         # DATABASE PARAMS:
 ...         root_dir="example/", 
@@ -223,7 +223,7 @@ def terms_by_year(
     top_n=20,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir: str = "./",

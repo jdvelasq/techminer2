@@ -21,7 +21,7 @@ Clusters to Terms Map
 ...     top_n=50,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # ESTIMATOR:
 ...     sklearn_estimator=KMeans(
@@ -111,7 +111,7 @@ def clusters_to_terms_mapping(
     top_n=20,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # ESIIMATOR:
     sklearn_estimator=None,

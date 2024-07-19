@@ -16,7 +16,7 @@ Cluster Records
 ...     top_n=50,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -49,7 +49,7 @@ def cluster_records(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -99,16 +99,12 @@ def cluster_records(
     # for each row in the dataframe, determines the first column with
     # a value greater than zero
     for idx in tfidf_matrix.index:
-        tfidf_matrix.loc[idx, "ITEM_"] = tfidf_matrix.loc[
-            idx, tfidf_matrix.loc[idx, :] > 0
-        ].index[0]
+        tfidf_matrix.loc[idx, "ITEM_"] = tfidf_matrix.loc[idx, tfidf_matrix.loc[idx, :] > 0].index[0]
 
     mds_matrix = mds_matrix.assign(group=tfidf_matrix.ITEM_)
 
     # compute density
-    kde = KernelDensity(bandwidth="silverman", kernel="gaussian").fit(
-        mds_matrix[["x", "y"]]
-    )
+    kde = KernelDensity(bandwidth="silverman", kernel="gaussian").fit(mds_matrix[["x", "y"]])
 
     # matrix
     x_range = mds_matrix["x"].max() - mds_matrix["x"].min()

@@ -25,7 +25,7 @@ def _create_co_occurrence_nx_graph(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK PARAMS:
     association_index="association",
@@ -48,7 +48,7 @@ def _create_co_occurrence_nx_graph(
         col_top_n=top_n,
         col_occ_range=occ_range,
         col_gc_range=gc_range,
-        col_custom_terms=custom_items,
+        col_custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

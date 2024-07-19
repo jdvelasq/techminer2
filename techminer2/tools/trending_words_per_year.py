@@ -14,7 +14,7 @@ Trending Words per Year
 ...     # PARAMS:
 ...     field="author_keywords",
 ...     n_words_per_year=5,
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -90,7 +90,7 @@ def trending_words_per_year(
     n_words_per_year=5,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",

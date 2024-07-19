@@ -23,7 +23,7 @@ Factor Map
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # SVD PARAMS:
 ...     n_components=5,
@@ -102,7 +102,7 @@ def plot_hierarchical_factor_map_from_co_occurrence_svd_embedding(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # SVD PARAMS:
     n_components=None,

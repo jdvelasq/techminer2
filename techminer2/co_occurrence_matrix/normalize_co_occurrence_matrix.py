@@ -8,6 +8,7 @@ co-occurrence matrix.
 
 
 """
+
 import numpy as np
 
 
@@ -34,9 +35,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
 
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = matrix.at[row, col] / (
-                    matrix.loc[row, row] + matrix.at[col, col] - matrix.at[row, col]
-                )
+                normalized_matrix.at[row, col] = matrix.at[row, col] / (matrix.loc[row, row] + matrix.at[col, col] - matrix.at[row, col])
 
         return matrix
 
@@ -45,9 +44,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
 
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = matrix.at[row, col] / (
-                    matrix.loc[row, row] + matrix.at[col, col]
-                )
+                normalized_matrix.at[row, col] = matrix.at[row, col] / (matrix.loc[row, row] + matrix.at[col, col])
 
         return matrix
 
@@ -56,9 +53,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
 
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = matrix.at[row, col] / np.sqrt(
-                    matrix.loc[row, row] * matrix.at[col, col]
-                )
+                normalized_matrix.at[row, col] = matrix.at[row, col] / np.sqrt(matrix.loc[row, row] * matrix.at[col, col])
 
         return matrix
 
@@ -67,9 +62,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
 
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = matrix.at[row, col] ** 2 / (
-                    matrix.loc[row, row] * matrix.at[col, col]
-                )
+                normalized_matrix.at[row, col] = matrix.at[row, col] ** 2 / (matrix.loc[row, row] * matrix.at[col, col])
 
         return matrix
 
@@ -78,9 +71,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
 
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = matrix.at[row, col] / min(
-                    matrix.loc[row, row], matrix.at[col, col]
-                )
+                normalized_matrix.at[row, col] = matrix.at[row, col] / min(matrix.loc[row, row], matrix.at[col, col])
 
         return matrix
 
@@ -90,10 +81,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
         n_columns = len(matrix.columns)
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = np.log(
-                    matrix.at[row, col]
-                    / (n_columns * matrix.loc[row, row] * matrix.at[col, col])
-                )
+                normalized_matrix.at[row, col] = np.log(matrix.at[row, col] / (n_columns * matrix.loc[row, row] * matrix.at[col, col]))
 
         return matrix
 
@@ -102,9 +90,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
 
         for col in matrix.columns:
             for row in matrix.index:
-                normalized_matrix.at[row, col] = matrix.at[row, col] / (
-                    matrix.loc[row, row] * matrix.at[col, col]
-                )
+                normalized_matrix.at[row, col] = matrix.at[row, col] / (matrix.loc[row, row] * matrix.at[col, col])
 
         return matrix
 
@@ -131,9 +117,9 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
         "association": association,
     }[association_index]
 
-    matrix = cooc_matrix.df_.copy()    
+    matrix = cooc_matrix.copy()
     matrix = matrix.map(float)
-    normalized_matrix = cooc_matrix.df_.copy().map(float)
+    normalized_matrix = cooc_matrix.copy().map(float)
     normalized_matrix = fnc(matrix, normalized_matrix)
 
     for index in range(len(normalized_matrix)):

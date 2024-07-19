@@ -17,7 +17,7 @@ Ranking Chart
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     metric="OCC",
 ...     #
@@ -72,7 +72,7 @@ def ranking_chart(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     metric="OCC",
     #
@@ -121,9 +121,7 @@ def ranking_chart(
 
     metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
-    field_label = (
-        field.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
-    )
+    field_label = field.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
 
     data_frame = items.df_.copy()
     table = data_frame.copy()

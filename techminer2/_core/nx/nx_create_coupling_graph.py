@@ -32,7 +32,7 @@ def nx_create_coupling_graph(
     top_n=None,
     citations_threshold=0,
     occurrence_threshold=2,
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK CLUSTERING:
     algorithm_or_dict="louvain",
@@ -124,7 +124,7 @@ def __add_weighted_edges_from(
     top_n=None,
     citations_threshold=0,
     occurrence_threshold=2,
-    custom_items=None,
+    custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",

@@ -24,7 +24,7 @@ Creates an Auto-correlation Map.
 ...     top_n=None,
 ...     occ_range=(2, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # LAYOUT:
 ...     nx_k=None,
@@ -78,7 +78,7 @@ def plot_map_from_auto_correlation_matrix(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # LAYOUT:
     nx_k=None,

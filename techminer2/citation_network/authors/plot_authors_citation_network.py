@@ -16,7 +16,7 @@ Network Visualization
 ...     top_n=30,
 ...     citations_threshold=0,
 ...     occurrence_threshold=2,
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # NETWORK CLUSTERING:
 ...     algorithm_or_dict="louvain",
@@ -65,7 +65,7 @@ def plot_authors_citation_network(
     top_n=None,
     citations_threshold=None,
     occurrence_threshold=None,
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK CLUSTERING:
     algorithm_or_dict="louvain",

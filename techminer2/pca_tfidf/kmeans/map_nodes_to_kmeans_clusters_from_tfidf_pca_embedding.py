@@ -30,7 +30,7 @@ To Brute Force Labels
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # PCA PARAMS:
 ...     n_components=5,
@@ -85,7 +85,7 @@ def map_nodes_to_kmeans_clusters_from_tfidf_pca_embedding(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # PCA PARAMS:
     n_components=None,

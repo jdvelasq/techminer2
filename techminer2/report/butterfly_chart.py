@@ -252,7 +252,7 @@ def butterfly_chart(
 #     top_n=None,
 #     occ_range=None,
 #     gc_range=None,
-#     custom_items=None,
+#     custom_terms=None,
 #     # Database params:
 #     root_dir="./",
 #     database="main",

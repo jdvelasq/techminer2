@@ -16,7 +16,7 @@ Communities
 ...     # COLUMN PARAMS:
 ...     top_n=None, 
 ...     citations_threshold=None,
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
@@ -51,7 +51,7 @@ def generate_communities_from_cited_authors_network(
     # COLUMN PARAMS:
     top_n=None,
     citations_threshold=None,
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",

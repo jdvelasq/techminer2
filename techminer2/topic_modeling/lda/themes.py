@@ -23,7 +23,7 @@ Themes
 ...     top_n=None,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # LDA PARAMS:
 ...     n_components=10,
@@ -72,7 +72,7 @@ def themes(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # LDA PARAMS:
     n_components=10,

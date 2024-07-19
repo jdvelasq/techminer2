@@ -1,27 +1,27 @@
 """Network Analysis."""
 
 from .clusters_to_terms_mapping import clusters_to_terms_mapping
-from .generate_communities_from_co_occurrence_network import generate_communities_from_co_occurrence_network
+from .co_occurrence_network_plot import co_occurrence_network_plot
+from .concept_grid_plot import concept_grid_plot
 from .network_metrics import network_metrics
-from .plot_co_occurrence_network import plot_co_occurrence_network
-from .plot_concept_grid_from_co_occurrence_network import plot_concept_grid_from_co_occurrence_network
-from .plot_node_degree_from_co_occurrence_network import plot_node_degree_from_co_occurrence_network
-from .plot_node_density_from_co_occurrence_network import plot_node_density_from_co_occurrence_network
-from .plot_treemap_from_co_occurrence_network import plot_treemap_from_co_occurrence_network
+from .node_degree_plot import node_degree_plot
+from .node_density_plot import node_density_plot
 from .report import report
-from .summarize_communities_from_co_occurrence_network import summarize_communities_from_co_occurrence_network
+from .terms_by_cluster_frame import terms_by_cluster_frame
+from .terms_by_cluster_summary import terms_by_cluster_summary
 from .terms_to_clusters_mapping import terms_to_clusters_mapping
+from .treemap import treemap
 
 __all__ = [
-    "generate_communities_from_co_occurrence_network",
-    "summarize_communities_from_co_occurrence_network",
-    "plot_concept_grid_from_co_occurrence_network",
-    "plot_node_degree_from_co_occurrence_network",
-    "plot_node_density_from_co_occurrence_network",
+    "terms_by_cluster_frame",
+    "terms_by_cluster_summary",
+    "concept_grid_plot",
+    "node_degree_plot",
+    "node_density_plot",
     "network_metrics",
-    "plot_co_occurrence_network",
+    "co_occurrence_network_plot",
     "report",
     "terms_to_clusters_mapping",
-    "plot_treemap_from_co_occurrence_network",
+    "treemap",
     "clusters_to_terms_mapping",
 ]

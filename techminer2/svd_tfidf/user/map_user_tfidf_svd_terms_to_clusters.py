@@ -30,7 +30,7 @@ To Brute Force Labels
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # SVD PARAMS:
 ...     n_components=5,
@@ -90,7 +90,7 @@ def map_tfidf_svd_terms_to_user_clusters(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # SVD PARAMS:
     n_components=None,

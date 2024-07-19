@@ -16,7 +16,7 @@ Item Density Visualization
 ...     # COLUMN PARAMS:
 ...     top_n=30, 
 ...     citations_min=None,
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
@@ -64,7 +64,7 @@ def plot_node_density_from_cited_authors_network(
     # COLUMN PARAMS:
     top_n=None,
     citations_min=None,
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",

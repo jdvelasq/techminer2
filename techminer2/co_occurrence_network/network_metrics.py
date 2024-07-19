@@ -20,7 +20,7 @@ Metrics
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # NETWORK PARAMS:
 ...     association_index="association",
@@ -53,7 +53,7 @@ def network_metrics(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK PARAMS:
     association_index="association",
@@ -76,7 +76,7 @@ def network_metrics(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # NETWORK PARAMS:
         association_index=association_index,

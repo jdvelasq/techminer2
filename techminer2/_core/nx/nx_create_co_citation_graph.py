@@ -29,7 +29,7 @@ def nx_create_co_citation_graph(
     # COLUMN PARAMS:
     top_n=None,
     citations_threshold=None,
-    custom_items=None,
+    custom_terms=None,
     #
     # NETWORK CLUSTERING:
     algorithm_or_dict="louvain",
@@ -133,7 +133,7 @@ def __add_weighted_edges_from(
     # COLUMN PARAMS:
     top_n=None,
     citations_threshold=None,
-    custom_items=None,
+    custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",

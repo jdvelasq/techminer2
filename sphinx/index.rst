@@ -32,6 +32,7 @@ Techminer 2+
     :maxdepth: 1
 
     co_occurrence_matrix/__index__
+    co_occurrence_network/__index__
     documents/__index__ 
     document_clustering/__index__
 

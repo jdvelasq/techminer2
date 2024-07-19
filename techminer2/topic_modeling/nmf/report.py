@@ -21,7 +21,7 @@ Report
 ...     top_n=None,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # NMF PARAMS:
 ...     n_components=10,
@@ -69,7 +69,7 @@ def report(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # NMF PARAMS:
     n_components=10,

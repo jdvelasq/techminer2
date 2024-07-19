@@ -21,7 +21,7 @@ Communities
 ...     top_n=20,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # PCA PARAMS:
 ...     n_components=5,
@@ -65,7 +65,7 @@ def generate_pcd_communities_from_co_occurrence_pca_embedding(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # PCA PARAMS:
     n_components=None,

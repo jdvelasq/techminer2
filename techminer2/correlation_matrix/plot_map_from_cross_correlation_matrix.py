@@ -47,7 +47,7 @@ Creates an Cross-correlation Map.
 ...     top_n=10,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -102,7 +102,7 @@ def plot_map_from_cross_correlation_matrix(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",

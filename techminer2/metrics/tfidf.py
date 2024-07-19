@@ -22,7 +22,7 @@ TFIDF
 ...     top_n=50,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # TF-IDF parameters:
 ...     norm= None,
@@ -73,7 +73,7 @@ def tfidf(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # TF-IDF parameters:
     norm: Literal["l1", "l2", None] = None,

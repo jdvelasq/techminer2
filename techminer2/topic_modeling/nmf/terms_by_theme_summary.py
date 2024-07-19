@@ -23,7 +23,7 @@ Terms by Theme Summary
 ...     top_n=None,
 ...     occ_range=(None, None),
 ...     gc_range=(None, None),
-...     custom_items=None,
+...     custom_terms=None,
 ...     #
 ...     # NMF PARAMS:
 ...     n_components=10,
@@ -78,7 +78,7 @@ def terms_by_theme_summary(
     top_n=None,
     occ_range=(None, None),
     gc_range=(None, None),
-    custom_items=None,
+    custom_terms=None,
     #
     # NMF PARAMS:
     n_components=10,

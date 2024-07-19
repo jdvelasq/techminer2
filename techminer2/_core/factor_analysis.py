@@ -111,7 +111,7 @@ class FactorAnalyzer:
         top_n=None,
         occ_range=(None, None),
         gc_range=(None, None),
-        custom_items=None,
+        custom_terms=None,
         #
         # DATABASE PARAMS:
         root_dir="./",
@@ -158,7 +158,7 @@ class FactorAnalyzer:
         top_n=None,
         occ_range=(None, None),
         gc_range=(None, None),
-        custom_items=None,
+        custom_terms=None,
         #
         # DATABASE PARAMS:
         root_dir="./",
