@@ -9,7 +9,7 @@ General Metrics
 ===============================================================================
 
 >>> from techminer2.metrics import general_metrics
->>> info = general_metrics(
+>>> general_metrics(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -17,7 +17,6 @@ General Metrics
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> info.df_
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2015:2019
@@ -66,159 +65,18 @@ DESCRIPTORS    Raw descriptors                               1114
 
 
 
->>> # info.fig_.write_html("sphinx/_static/analyze/overview/general_metrics.html")
-
-.. raw:: html
-
-    <iframe src="../_static/analyze/overview/general_metrics.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
->>> print(info.prompt_) # doctest: +ELLIPSIS
-Your task is ...
-
-    
-
 
 """
 import datetime
-from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
-
-
-def general_metrics(
-    #
-    # DATABASE PARAMS:
-    root_dir: str = "./",
-    database: str = "main",
-    year_filter: tuple = (None, None),
-    cited_by_filter: tuple = (None, None),
-    **filters,
-):
-    """
-    :meta private:
-    """
-
-    @dataclass
-    class Result:
-        df_: pd.DataFrame
-        fig_: go.Figure
-        prompt_: str
-
-    data_frame = main_metrics_table(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    prompt = main_metrics_prompt(data_frame)
-    fig = general_metrics_dashboard(data_frame)
-
-    return Result(
-        df_=data_frame,
-        prompt_=prompt,
-        fig_=fig,
-    )
-
-
-def general_metrics_dashboard(
-    data_frame,
-):
-    """
-    :meta private:
-    """
-
-    def add_text_trace(fig, category, caption, row, col):
-        text = (
-            f'<span style="font-size: 8px;">{caption}</span><br>'
-            f'<br><span style="font-size: 20px;">'
-            f"{data_frame.loc[(category, caption)].values[0]}</span>"
-        )
-
-        fig.add_trace(
-            go.Scatter(
-                x=[0.5],
-                y=[0.5],
-                text=[text],
-                mode="text",
-            ),
-            row=row,
-            col=col,
-        )
-        fig.update_xaxes(visible=False, row=row, col=col)
-        fig.update_yaxes(visible=False, row=row, col=col)
-
-    fig = make_subplots(rows=7, cols=3)
-
-    add_text_trace(fig, "GENERAL", "Timespan", 1, 1)
-    add_text_trace(fig, "GENERAL", "Sources", 1, 2)
-    add_text_trace(fig, "GENERAL", "Documents", 1, 3)
-
-    add_text_trace(fig, "GENERAL", "Annual growth rate %", 2, 1)
-    add_text_trace(fig, "AUTHORS", "Authors", 2, 2)
-    add_text_trace(fig, "AUTHORS", "Authors of single-authored documents", 2, 3)
-
-    add_text_trace(fig, "AUTHORS", "International co-authorship %", 3, 1)
-    add_text_trace(fig, "AUTHORS", "Co-authors per document", 3, 2)
-    add_text_trace(fig, "GENERAL", "References", 3, 3)
-
-    add_text_trace(fig, "KEYWORDS", "Raw author keywords", 4, 1)
-    add_text_trace(fig, "KEYWORDS", "Cleaned author keywords", 4, 2)
-    add_text_trace(fig, "KEYWORDS", "Raw index keywords", 4, 3)
-
-    add_text_trace(fig, "KEYWORDS", "Raw keywords", 5, 1)
-    add_text_trace(fig, "KEYWORDS", "Cleaned keywords", 5, 2)
-    add_text_trace(fig, "NLP PHRASES", "Raw NLP phrases", 5, 3)
-
-    add_text_trace(
-        fig,
-        "NLP PHRASES",
-        "Cleaned NLP phrases",
-        6,
-        1,
-    )
-
-    add_text_trace(
-        fig,
-        "DESCRIPTORS",
-        "Raw descriptors",
-        6,
-        2,
-    )
-
-    add_text_trace(
-        fig,
-        "DESCRIPTORS",
-        "Cleaned descriptors",
-        6,
-        3,
-    )
-
-    add_text_trace(fig, "GENERAL", "Document average age", 7, 1)
-    add_text_trace(fig, "GENERAL", "Average citations per document", 7, 2)
-
-    fig.update_layout(showlegend=False)
-    fig.update_layout(title="General Metrics")
-    fig.update_layout(height=800)
-
-    return fig
 
 
 class MainInformation:
-    """Main information about the dataset.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     def __init__(self, records):
         """Constructor"""
@@ -703,7 +561,7 @@ class MainInformation:
         )
 
 
-def main_metrics_table(
+def general_metrics(
     #
     # DATABASE PARAMS:
     root_dir: str = "./",
@@ -712,37 +570,15 @@ def main_metrics_table(
     cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     records = read_filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 
     return MainInformation(records).frame
-
-
-def main_metrics_prompt(
-    data_frame,
-):
-    """
-    :meta private:
-    """
-    main_text = (
-        "Your task is to generate a short summary for a research paper of a "
-        "table with record and field statistics for a dataset of scientific "
-        "publications. The table below, delimited by triple backticks, "
-        "provides data on the main characteristics of the records and fields "
-        "of the bibliographic dataset. Use the the information in the table "
-        "to draw conclusions. Limit your description to one paragraph in at "
-        "most 100 words. "
-    )
-
-    table_text = data_frame.dropna().to_markdown()
-
-    return helper_format_prompt_for_dataframes(main_text, table_text)
