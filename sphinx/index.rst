@@ -33,6 +33,7 @@ Techminer 2+
     document_clustering/__index__
     documents/__index__ 
     emergence/__index__ 
+    factor_analysis/__index__
     metrics/__index__ 
     topic_modeling/__index__
     

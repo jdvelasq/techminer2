@@ -6,11 +6,11 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Co-occurrence Network Plot
+Network Plot
 ===============================================================================
 
->>> from techminer2.co_occurrence_network import co_occurrence_network_plot
->>> co_occurrence_network_plot(
+>>> from techminer2.co_occurrence_network import network_plot
+>>> network_plot(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -74,7 +74,7 @@ from .._core.nx.nx_plot_graph import nx_plot_graph
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
-def co_occurrence_network_plot(
+def network_plot(
     #
     # PARAMS:
     field,

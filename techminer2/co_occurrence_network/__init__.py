@@ -1,9 +1,9 @@
 """Network Analysis."""
 
 from .clusters_to_terms_mapping import clusters_to_terms_mapping
-from .co_occurrence_network_plot import co_occurrence_network_plot
 from .concept_grid_plot import concept_grid_plot
 from .network_metrics import network_metrics
+from .network_plot import network_plot
 from .node_degree_plot import node_degree_plot
 from .node_density_plot import node_density_plot
 from .report import report
@@ -19,7 +19,7 @@ __all__ = [
     "node_degree_plot",
     "node_density_plot",
     "network_metrics",
-    "co_occurrence_network_plot",
+    "network_plot",
     "report",
     "terms_to_clusters_mapping",
     "treemap",
