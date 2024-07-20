@@ -9,20 +9,11 @@
 import networkx as nx
 import numpy as np
 
+from ..._core.read_filtered_database import read_filtered_database
 from ...metrics.performance_metrics import performance_metrics
-from ..read_filtered_database import read_filtered_database
-from .nx_assign_colors_to_nodes_by_group_attribute import nx_assign_colors_to_nodes_by_group_attribute
-from .nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
-from .nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences
-from .nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from .nx_assign_textfont_sizes_to_nodes_based_on_occurrences import nx_assign_textfont_sizes_to_nodes_based_on_occurrences
-from .nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
-from .nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
-from .nx_cluster_graph import nx_cluster_graph
-from .nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
 
 
-def nx_create_citation_graph(
+def _create_citation_nx_graph_from_others(
     #
     # FUNCTION PARAMS:
     unit_of_analysis,
@@ -32,23 +23,6 @@ def nx_create_citation_graph(
     citations_threshold=(None, None),
     occurrence_threshold=(None, None),
     custom_terms=None,
-    #
-    # NETWORK CLUSTERING:
-    algorithm_or_dict="louvain",
-    #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
-    #
-    # NODES:
-    node_size_range=(30, 70),
-    textfont_size_range=(10, 20),
-    textfont_opacity_range=(0.35, 1.00),
-    #
-    # EDGES:
-    edge_color="#7793a5",
-    edge_width_range=(0.8, 3.0),
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -69,7 +43,7 @@ def nx_create_citation_graph(
         top_n=top_n,
         citations_threshold=citations_threshold,
         occurrence_threshold=occurrence_threshold,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -81,31 +55,6 @@ def nx_create_citation_graph(
 
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
-
-    #
-    # Cluster the networkx graph
-    if isinstance(algorithm_or_dict, str):
-        nx_graph = nx_cluster_graph(nx_graph, algorithm_or_dict)
-    if isinstance(algorithm_or_dict, dict):
-        nx_graph = __assign_group_from_dict(nx_graph, algorithm_or_dict)
-
-    #
-    # Sets the layout
-    nx_graph = nx_compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
-
-    #
-    # Sets the node attributes
-    nx_graph = nx_assign_colors_to_nodes_by_group_attribute(nx_graph)
-    #
-    nx_graph = nx_assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_range)
-    nx_graph = nx_assign_opacity_to_text_based_on_frequency(nx_graph, textfont_opacity_range)
-
-    #
-    # Sets the edge attributes
-    nx_graph = nx_assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
-    nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
 
     return nx_graph
 
@@ -134,6 +83,7 @@ def __add_weighted_edges_from(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 
@@ -174,7 +124,7 @@ def __add_weighted_edges_from(
         top_n=top_n,
         occ_range=(occurrence_threshold, None),
         gc_range=(citations_threshold, None),
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

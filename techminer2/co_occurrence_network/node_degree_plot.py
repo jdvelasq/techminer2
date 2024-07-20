@@ -6,9 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Degree Plot
+Node Degree Plot
 ===============================================================================
-
 
 >>> from techminer2.co_occurrence_network import node_degree_plot
 >>> plot = node_degree_plot(

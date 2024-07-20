@@ -79,13 +79,11 @@ def node_density_plot(
     nx_iterations=30,
     nx_random_state=0,
     #
-    # NODES:
-    textfont_size_range=(10, 20),
-    #
     # DENSITY VISUALIZATION:
     bandwidth="silverman",
     colorscale="Aggrnyl",
     opacity=0.6,
+    textfont_size_range=(10, 20),
     #
     # AXES:
     # xaxes_range=None,

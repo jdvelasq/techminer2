@@ -100,7 +100,7 @@ def terms_by_cluster_frame(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # ESIIMATOR:
         sklearn_estimator=sklearn_estimator,

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tech_mining.emergence.emergence_indicators
+.. automodule:: techminer2.emergence.emergent_topics
     :members:
     :undoc-members:
     :show-inheritance:

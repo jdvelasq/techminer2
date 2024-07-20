@@ -9,40 +9,14 @@
 import networkx as nx
 import numpy as np
 
-from ..read_filtered_database import read_filtered_database
-from .nx_assign_colors_to_nodes_by_group_attribute import nx_assign_colors_to_nodes_by_group_attribute
-from .nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
-from .nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
-from .nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from .nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
-from .nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
-from .nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
-from .nx_cluster_graph import nx_cluster_graph
-from .nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from ..._core.read_filtered_database import read_filtered_database
 
 
-def nx_create_citation_graph_from_documents(
+def _create_citation_nx_graph_from_documents(
     #
     # COLUMN PARAMS:
     top_n=None,
     citations_threshold=0,
-    #
-    # NETWORK CLUSTERING:
-    algorithm_or_dict="louvain",
-    #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
-    #
-    # NODES:
-    node_size_range=(30, 70),
-    textfont_size_range=(10, 20),
-    textfont_opacity_range=(0.35, 1.00),
-    #
-    # EDGES:
-    edge_color="#7793a5",
-    edge_width_range=(0.8, 3.0),
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -71,31 +45,6 @@ def nx_create_citation_graph_from_documents(
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
 
-    #
-    # Cluster the networkx graph
-    if isinstance(algorithm_or_dict, str):
-        nx_graph = nx_cluster_graph(nx_graph, algorithm_or_dict)
-    if isinstance(algorithm_or_dict, dict):
-        nx_graph = __assign_group_from_dict(nx_graph, algorithm_or_dict)
-
-    #
-    # Sets the layout
-    nx_graph = nx_compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
-
-    #
-    # Sets the node attributes
-    nx_graph = nx_assign_colors_to_nodes_by_group_attribute(nx_graph)
-    #
-    nx_graph = nx_assign_sizes_to_nodes_based_on_citations(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_citations(nx_graph, textfont_size_range)
-    nx_graph = nx_assign_opacity_to_text_based_on_citations(nx_graph, textfont_opacity_range)
-
-    #
-    # Sets the edge attributes
-    nx_graph = nx_assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
-    nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
-
     return nx_graph
 
 
@@ -118,6 +67,7 @@ def __add_weighted_edges_from(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

@@ -9,7 +9,7 @@ Emergent Topics
 ===============================================================================
 
 
->>> from techminer2.tech_mining.emergence import emergent_topics
+>>> from techminer2.emergence import emergent_topics
 >>> emergent_topics(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -28,16 +28,14 @@ Emergent Topics
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).head(5)
+... ).head()
                         OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
 descriptors                                ...                                
-AUTHOR                    9             2  ...   108.008382           0.910157
-DATA                      8             2  ...   100.000000           0.842673
-IMPACT                    7             2  ...    87.082869           0.733824
+FINTECH_STARTUPS          7             1  ...   164.575131           1.386830
 INFORMATION_TECHNOLOGY    7             2  ...    91.293118           0.769302
-PURPOSE                   7             2  ...    91.293118           0.769302
 <BLANKLINE>
-[5 rows x 10 columns]
+[2 rows x 10 columns]
+
 
 
 """
@@ -161,7 +159,7 @@ def emergent_topics(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_.loc[("GENERAL", "Annual growth rate %"), "Value"]
+    ).loc[("GENERAL", "Annual growth rate %"), "Value"]
 
     data_frame["growth_rate_ratio"] = data_frame["growth_rate"].map(lambda x: x / global_growth_rate)
 
