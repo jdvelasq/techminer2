@@ -49,7 +49,7 @@ Network Plot
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/citation_network/documents_network_plot.html" 
+    <iframe src="../_static/citation_network/documents_network_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

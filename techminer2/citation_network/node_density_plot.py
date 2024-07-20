@@ -40,7 +40,7 @@ Node Density Plot
 
 .. raw:: html
 
-    <iframe src="../_static/citation_network/others_node_density_plot.html" 
+    <iframe src="../_static/citation_network/documents_node_density_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> from techminer2.citation_network import node_density_plot

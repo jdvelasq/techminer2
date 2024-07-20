@@ -35,7 +35,7 @@ Node Degree Plot
 
 .. raw:: html
 
-    <iframe src=".../_static/citation_network/article_degree_plot.html" 
+    <iframe src="../_static/citation_network/article_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
