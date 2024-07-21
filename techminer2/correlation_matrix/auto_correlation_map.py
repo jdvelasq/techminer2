@@ -109,10 +109,7 @@ def auto_correlation_map(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Auto-correlation Map.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     corr_matrix = auto_correlation_matrix(
         #

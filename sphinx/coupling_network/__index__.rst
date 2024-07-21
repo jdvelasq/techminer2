@@ -5,9 +5,8 @@ Coupling Network
    :maxdepth: 1
    :hidden:
    
-   authors/__index__   
-   countries/__index__      
-   documents/__index__
-   organizations/__index__      
-   sources/__index__
-
+   network_metrics
+   network_plot
+   node_degree_plot
+   node_density_plot
+   terms_by_cluster_frame
