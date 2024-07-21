@@ -50,7 +50,7 @@ Item Density Visualization
                                              
 """
 from ..._core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
-from ..._core.nx.nx_plot_node_density import nx_plot_node_density
+from ..._core.nx.nx_density_plot import nx_density_plot
 
 
 def plot_node_density_from_documents_coupling_network(
@@ -134,7 +134,7 @@ def plot_node_density_from_documents_coupling_network(
         **filters,
     )
 
-    return nx_plot_node_density(
+    return nx_density_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

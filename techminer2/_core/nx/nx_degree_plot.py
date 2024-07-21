@@ -107,7 +107,7 @@ from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_
 from .nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
 
 
-def nx_generate_node_degree_distribution_chart(
+def nx_degree_plot(
     #
     # NX GRAPH:
     nx_graph,

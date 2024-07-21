@@ -20,7 +20,7 @@ from ..._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color
 from ..._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
 from ..._core.nx.nx_cluster_graph import nx_cluster_graph
 from ..._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from ..._core.nx.nx_plot_graph import nx_plot_graph
+from ..._core.nx.nx_network_plot import nx_network_plot
 from ._create_citation_nx_graph_from_documents import _create_citation_nx_graph_from_documents
 
 
@@ -105,7 +105,7 @@ def _network_plot_from_documents(
     nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
     nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
 
-    return nx_plot_graph(
+    return nx_network_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

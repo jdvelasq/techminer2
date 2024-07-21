@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 from sklearn.neighbors import KernelDensity
 
 
-def nx_plot_node_density(
+def nx_density_plot(
     #
     # FUNCTION PARAMS:
     nx_graph,

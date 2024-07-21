@@ -12,7 +12,7 @@ Node Degree Plot
 
 """
 from ..._core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
-from ..._core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
+from ..._core.nx.nx_degree_plot import nx_degree_plot
 from ._create_citation_nx_graph_from_others import _create_citation_nx_graph_from_others
 
 
@@ -64,7 +64,7 @@ def _node_degree_plot_from_others(
 
     nx_graph = nx_assign_degree_to_nodes(nx_graph)
 
-    return nx_generate_node_degree_distribution_chart(
+    return nx_degree_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -73,7 +73,7 @@ from ._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_as
 from ._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
 from ._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
 from ._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from ._core.nx.nx_plot_graph import nx_plot_graph
+from ._core.nx.nx_network_plot import nx_network_plot
 from ._core.read_filtered_database import read_filtered_database
 from .helpers.helper_format_report_for_records import helper_format_report_for_records
 
@@ -173,7 +173,7 @@ def main_path_analysis(
 
     @dataclass
     class Results:
-        fig_ = nx_plot_graph(
+        fig_ = nx_network_plot(
             #
             # FUNCTION PARAMS:
             nx_graph=nx_graph,

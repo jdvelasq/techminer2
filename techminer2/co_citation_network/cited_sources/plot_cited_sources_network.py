@@ -53,7 +53,7 @@ Network Visualization
 
 """
 from ..._core.nx.nx_create_co_citation_graph import nx_create_co_citation_graph
-from ..._core.nx.nx_plot_graph import nx_plot_graph
+from ..._core.nx.nx_network_plot import nx_network_plot
 
 UNIT_OF_ANALYSIS = "cited_sources"
 
@@ -132,7 +132,7 @@ def plot_cited_sources_network(
         **filters,
     )
 
-    return nx_plot_graph(
+    return nx_network_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

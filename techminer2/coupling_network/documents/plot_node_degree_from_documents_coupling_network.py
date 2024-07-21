@@ -56,7 +56,7 @@ Your task is ...
 
 """
 from ..._core.nx.nx_create_coupling_graph_from_documents import nx_create_coupling_graph_from_documents
-from ..._core.nx.nx_generate_node_degree_distribution_chart import nx_generate_node_degree_distribution_chart
+from ..._core.nx.nx_degree_plot import nx_degree_plot
 
 
 def plot_node_degree_from_documents_coupling_network(
@@ -140,7 +140,7 @@ def plot_node_degree_from_documents_coupling_network(
         **filters,
     )
 
-    return nx_generate_node_degree_distribution_chart(
+    return nx_degree_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

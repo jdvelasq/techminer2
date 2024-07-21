@@ -55,7 +55,7 @@ Node Density Plot
 from .._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import nx_assign_textfont_sizes_to_nodes_based_on_occurrences
 from .._core.nx.nx_cluster_graph import nx_cluster_graph
 from .._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from .._core.nx.nx_plot_node_density import nx_plot_node_density
+from .._core.nx.nx_density_plot import nx_density_plot
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
@@ -139,7 +139,7 @@ def node_density_plot(
 
     nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_range)
 
-    return nx_plot_node_density(
+    return nx_density_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
