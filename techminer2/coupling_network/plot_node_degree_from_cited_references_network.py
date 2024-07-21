@@ -55,8 +55,8 @@ Your task is ...
 
 
 """
-from .._core.nx.nx_create_co_citation_graph import nx_create_co_citation_graph
 from .._core.nx.nx_degree_plot import nx_degree_plot
+from ..co_citation_network._create_co_citation_nx_graph import nx_create_co_citation_graph
 
 UNIT_OF_ANALYSIS = "cited_references"
 

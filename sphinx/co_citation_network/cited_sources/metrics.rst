@@ -1,5 +1,0 @@
-
-.. automodule:: techminer2.science_mapping.co_citation.cited_sources.metrics
-    :members:
-    :undoc-members:
-    :show-inheritance:

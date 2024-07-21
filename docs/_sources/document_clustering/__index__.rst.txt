@@ -1,10 +1,11 @@
-Document Classification
+Document Clustering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 1
     :hidden:
 
-    hierarchical/__index__
-    kmeans/__index__
-    
+    clusters_to_terms_mapping
+    term_occurrence_by_cluster
+    terms_by_cluster_frame
+    terms_by_cluster_summary
