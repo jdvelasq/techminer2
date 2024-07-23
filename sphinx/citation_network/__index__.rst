@@ -9,3 +9,4 @@ Citation Network
    node_degree_plot
    node_density_plot
    terms_by_cluster_frame
+   rpys

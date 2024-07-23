@@ -20,7 +20,7 @@ RPYS (Reference Publication Year Spectroscopy)
 
 .. raw:: html
 
-    <iframe src="../_static/analyze/citation/rpys_chart.html" 
+    <iframe src="../_static/citation_network/rpys_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -48,10 +48,7 @@ def rpys(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Reference Publication Year Spectroscopy.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     data_frame = __table(root_dir=root_dir)
     fig = __fig(data_frame)
