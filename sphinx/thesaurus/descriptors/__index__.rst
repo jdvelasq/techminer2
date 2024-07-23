@@ -14,6 +14,7 @@ Descriptors
     misspelling_search
     replace_string
     reset_thesaurus
+    search_editorials
     sort_thesaurus
     text_clumping
     words_frequency
