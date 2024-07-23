@@ -30,32 +30,31 @@ Find Similar Phrases
 ----------------------------------------------------------------------------------------------------
 SIMILARITY: 1.0
 AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+TI: FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
 <BLANKLINE>
 whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY,
-PRUDENTIAL_SAFETY and SOUNDNESS, CONSUMER_PROTECTION and
+PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and
 MARKET_INTEGRITY, and MARKET_COMPETITION and DEVELOPMENT) remain, their
-MEANS of APPLICATION are increasingly inadequate.
+means of application are increasingly inadequate.
 <BLANKLINE>
 ----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.252
-AR: Hu Z., 2019, SYMMETRY, V11
-TI: ADOPTION_INTENTION of FINTECH_SERVICES for BANK_USERS: an EMPIRICAL_EXAMINATION with an extended TECHNOLOGY_ACCEPTANCE_MODEL
-<BLANKLINE>
-along with the DEVELOPMENT of FINTECH, many SCHOLARS have studied how
-INFORMATION_TECHNOLOGY is applied to FINANCIAL_SERVICES with a FOCUS on
-extended METHODS for APPLICATION.
-<BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.252
+SIMILARITY: 0.471
 AR: Jagtiani J., 2018, J ECON BUS, V100, P1
-TI: FINTECH: the IMPACT on CONSUMERS and REGULATORY_RESPONSES
+TI: FINTECH: the impact on CONSUMERS and REGULATORY_RESPONSES
 <BLANKLINE>
-REGULATORS around the GLOBE are working diligently and thoughtfully to
+regulators around the globe are working diligently and thoughtfully to
 provide CONSUMER_PROTECTION and to maintain FINANCIAL_STABILITY while at
-the same TIME to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS.
+the same time to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS.
 <BLANKLINE>
-
+----------------------------------------------------------------------------------------------------
+SIMILARITY: 0.236
+AR: Dorfleitner G., 2017, FINTECH IN GER, P1
+TI: FINTECH in GERMANY
+<BLANKLINE>
+by making FINANCIAL_TRANSACTIONS more user_friendly and transparent,
+these firms potentially contribute to FINANCIAL_STABILITY and
+ECONOMIC_GROWTH.
+<BLANKLINE>
 
 """
 import os
@@ -72,7 +71,7 @@ from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thes
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "thesauri/words.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def find_similar_phrases(
@@ -86,9 +85,7 @@ def find_similar_phrases(
     cited_by_filter=None,
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     if text.strip() == "":
         return
@@ -155,9 +152,6 @@ def _build_tf_matrix(records):
 
 
 def _extract_keywords(records, root_dir):
-    """
-    :meta private:
-    """
 
     # -----------------------------------------------------------------------------------------
     # Obtains a regex for descriptors

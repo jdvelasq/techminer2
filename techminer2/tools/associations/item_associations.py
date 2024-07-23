@@ -9,7 +9,7 @@ Item Associations
 ===============================================================================
 
 
->>> from techminer2.analyze.associations import item_associations
+>>> from techminer2.tools.associations import item_associations
 >>> associations = item_associations(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -23,13 +23,13 @@ Item Associations
 ...     col_top_n=20,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # CHART PARAMS:
 ...     title=None,
@@ -47,20 +47,20 @@ Item Associations
 ...     cited_by_filter=(None, None),
 ... )
 >>> associations.df_.head()
-                             FINTECH 31:5168
-author_keywords                             
-INNOVATION 07:0911                         5
-FINANCIAL_SERVICES 04:0667                 3
-BUSINESS 03:0896                           3
-SHADOW_BANKING 03:0643                     3
-FINANCIAL_INCLUSION 03:0590                3
+                              FINTECH 31:5168
+rows                                         
+INNOVATION 07:0911                          5
+FINANCIAL_SERVICES 04:0667                  3
+FINANCIAL_INCLUSION 03:0590                 3
+MARKETPLACE_LENDING 03:0317                 3
+FINANCIAL_TECHNOLOGY 03:0461                2
 
 
->>> associations.fig_.write_html("sphinx/_static/analyze/associations/item_associations_chart.html")
+>>> associations.fig_.write_html("sphinx/_static/tools/associations/item_associations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/associations/item_associations_chart.html" 
+    <iframe src="../../_static/tools/associations/item_associations_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -134,13 +134,13 @@ def item_associations(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_terms,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_terms,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -206,13 +206,13 @@ def __table(
     col_top_n,
     col_occ_range,
     col_gc_range,
-    col_custom_items,
+    col_custom_terms,
     #
     # ROW PARAMS:
     row_top_n,
     row_occ_range,
     row_gc_range,
-    row_custom_items,
+    row_custom_terms,
     #
     # DATABASE PARAMS:
     root_dir,
@@ -234,11 +234,11 @@ def __table(
         return pos, name
 
     def extract_item_column_from_coc_matrix(obj, pos, name):
-        matrix = obj.df_.copy()
+        matrix = obj.copy()
         series = matrix.iloc[:, pos]
         series = series.drop(labels=[name], axis=0, errors="ignore")
         # series = series[series > 0]
-        series.index.name = obj.df_.index.name
+        series.index.name = obj.index.name
         return series
 
     #
@@ -256,13 +256,13 @@ def __table(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -272,7 +272,7 @@ def __table(
         **filters,
     )
 
-    pos, name = extract_item_position_and_name(cooc_matrix.df_.columns, item)
+    pos, name = extract_item_position_and_name(cooc_matrix.columns, item)
     series = extract_item_column_from_coc_matrix(cooc_matrix, pos, name)
     frame = series.to_frame()
     frame["OCC"] = [text.split(" ")[-1].split(":")[0] for text in frame.index]

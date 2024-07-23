@@ -8,7 +8,7 @@
 Cluster Records
 ===============================================================================
 
->>> from techminer2.tech_mining import cluster_records 
+>>> from techminer2.tools import cluster_records 
 >>> cluster_records(
 ...     field='author_keywords',
 ...     #
@@ -23,11 +23,11 @@ Cluster Records
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/cluster_records.html")
+... ).write_html("sphinx/_static/tools/cluster_records.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/analyze/cluster_records.html" 
+    <iframe src="../_static/tools/cluster_records.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -71,7 +71,7 @@ def cluster_records(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # TF-IDF parameters:
         norm=None,

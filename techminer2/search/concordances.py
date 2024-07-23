@@ -25,10 +25,10 @@ Concordances
 ...     cited_by_filter=(None, None),
 ... )
 >>> print(results.contexts_)
-                                                             REGTECH to DATE has focused on the DIGITIZATION of manual REPORT >>>
-<<< LD, SETS the FOUNDATION for a PRACTICAL_UNDERSTANDING of REGTECH , and proposes sequenced REFORMS that could BENEFIT REGU >>>
-                                   however, the POTENTIAL of REGTECH is far greater  IT has the POTENTIAL to enable a nearly  >>>
-<<< L_SYSTEMS requires increasing the USE of and RELIANCE on REGTECH 
+                                                             REGTECH to date has focused on the DIGITIZATION of manual report >>>
+<<< LD, sets the foundation for a PRACTICAL_UNDERSTANDING of REGTECH , and proposes sequenced reforms that could benefit regu >>>
+                                   however, the potential of REGTECH is far greater  IT has the potential to enable a nearly  >>>
+<<< L_SYSTEMS requires increasing the use of and reliance on REGTECH 
 
 
 >>> print(results.prompt_)                        
@@ -49,27 +49,26 @@ Here are the records:
 --
 <BLANKLINE>
 Record-No: 1
-Artile: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373 / FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+Artile: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373 / FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
 Text:```
-at the JUNCTURE of these PHENOMENA lies REGULATORY_TECHNOLOGY or
+at the juncture of these phenomena lies REGULATORY_TECHNOLOGY or
 REGTECHTHE_USE of TECHNOLOGY, particularly INFORMATION_TECHNOLOGY, in the
-CONTEXT of regulatory MONITORING, REPORTING, and COMPLIANCE.  regulating
-rapidly TRANSFORMING FINANCIAL_SYSTEMS requires increasing the USE of and
-RELIANCE on REGTECH.  REGTECH_DEVELOPMENTS are leading TOWARDS a PARADIGM
-SHIFT necessitating the RECONCEPTUALIZATION of FINANCIAL_REGULATION.
-REGTECH to DATE has focused on the DIGITIZATION of manual REPORTING and
-COMPLIANCE_PROCESSES.  however, the POTENTIAL of REGTECH is far greater
-IT has the POTENTIAL to enable a nearly real_time and
-PROPORTIONATE_REGULATORY_REGIME that IDENTIFIES and ADDRESSES_RISK while
-facilitating more EFFICIENT_REGULATORY_COMPLIANCE.  this PAPER seeks to
-expose the INADEQUACY of digitizing ANALOGUE_PROCESSES in a digital
-FINANCIAL_WORLD, SETS the FOUNDATION for a PRACTICAL_UNDERSTANDING of
-REGTECH, and proposes sequenced REFORMS that could BENEFIT REGULATORS,
-INDUSTRY, and ENTREPRENEURS in the FINANCIAL_SECTOR and other INDUSTRIES
+CONTEXT of regulatory MONITORING, reporting, and compliance.  regulating
+rapidly transforming FINANCIAL_SYSTEMS requires increasing the use of and
+reliance on REGTECH.  REGTECH_DEVELOPMENTS are leading towards a paradigm
+shift necessitating the reconceptualization of FINANCIAL_REGULATION.
+REGTECH to date has focused on the DIGITIZATION of manual reporting and
+COMPLIANCE_PROCESSES.  however, the potential of REGTECH is far greater
+IT has the potential to enable a nearly real_time and
+PROPORTIONATE_REGULATORY_REGIME that identifies and ADDRESSES_RISK while
+facilitating more EFFICIENT_REGULATORY_COMPLIANCE.  this paper seeks to
+expose the inadequacy of digitizing ANALOGUE_PROCESSES in a digital
+FINANCIAL_WORLD, sets the foundation for a PRACTICAL_UNDERSTANDING of
+REGTECH, and proposes sequenced reforms that could benefit regulators,
+INDUSTRY, and ENTREPRENEURS in the FINANCIAL_SECTOR and other industries
 ```
 <BLANKLINE>
 <BLANKLINE>
-
 
 """
 import os.path
@@ -106,6 +105,7 @@ def concordances(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

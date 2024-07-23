@@ -10,7 +10,7 @@ Word Network
 ===============================================================================
 
 
->>> from techminer2.analyze.associations import word_network
+>>> from techminer2.tools.associations import word_network
 >>> word_network(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -22,13 +22,13 @@ Word Network
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     row_top_n=10,    
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # LAYOUT:
 ...     nx_k=None,
@@ -54,11 +54,11 @@ Word Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/associations/word_network_0.html")
+... ).write_html("sphinx/_static/tools/associations/word_network_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/associations/word_network_0.html" 
+    <iframe src="../../_static/tools/associations/word_network_0.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -73,13 +73,13 @@ Word Network
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     row_top_n=None,    
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # LAYOUT:
 ...     nx_k=None,
@@ -105,11 +105,11 @@ Word Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/associations/word_network_1.html")
+... ).write_html("sphinx/_static/tools/associations/word_network_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/associations/word_network_1.html" 
+    <iframe src="../../_static/tools/associations/word_network_1.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -129,13 +129,13 @@ def word_network(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # LAYOUT:
     nx_k=None,
@@ -163,10 +163,7 @@ def word_network(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Makes network map from a co-ocurrence matrix.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     associations = item_associations(
         #
@@ -181,13 +178,13 @@ def word_network(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # CHART PARAMS:
         title=None,
@@ -208,10 +205,10 @@ def word_network(
 
     #
     # Build a list of associated terms
-    items = associations.df_[associations.df_.iloc[:, 0] > 0].index.tolist()
-    items = items + associations.df_.columns.tolist()
-    items = list(set(items))
-    items = [" ".join(item.split(" ")[:-1]) for item in items]
+    terms = associations.df_[associations.df_.iloc[:, 0] > 0].index.tolist()
+    terms = terms + associations.df_.columns.tolist()
+    terms = list(set(terms))
+    terms = [" ".join(item.split(" ")[:-1]) for item in terms]
 
     #
     # Returb the network
@@ -225,13 +222,13 @@ def word_network(
         col_top_n=None,
         col_occ_range=(None, None),
         col_gc_range=(None, None),
-        col_custom_items=items,
+        col_custom_terms=terms,
         #
         # ROW PARAMS:
         row_top_n=None,
         row_occ_range=(None, None),
         row_gc_range=(None, None),
-        row_custom_items=items,
+        row_custom_terms=terms,
         #
         # LAYOUT:
         nx_k=nx_k,

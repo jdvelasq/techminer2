@@ -29,9 +29,9 @@ Collaboration WorldMap
 
 
 """
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
-from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence_matrix.co_occurrence_table import co_occurrence_table
 
 
 def collaboration_world_map(
@@ -45,7 +45,7 @@ def collaboration_world_map(
 ):
     """:meta private:"""
 
-    matrix = co_occurrence_matrix(
+    collaboration = co_occurrence_table(
         columns="countries",
         #
         # DATABASE PARAMS:
@@ -55,11 +55,10 @@ def collaboration_world_map(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-    collaboration = matrix.list_cells_.head()
 
-    collaboration = collaboration[collaboration.row != collaboration.column]
-    collaboration["row"] = collaboration["row"].map(lambda x: " ".join(x.split()[:-1]))
-    collaboration["column"] = collaboration["column"].map(lambda x: " ".join(x.split()[:-1]))
+    collaboration = collaboration[collaboration.rows != collaboration.columns]
+    collaboration["row"] = collaboration["rows"].map(lambda x: " ".join(x.split()[:-1]))
+    collaboration["column"] = collaboration["columns"].map(lambda x: " ".join(x.split()[:-1]))
 
     collaboration["pair"] = list(zip(collaboration.row, collaboration.column))
     collaboration["line"] = list(range(len(collaboration)))

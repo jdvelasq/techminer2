@@ -59,10 +59,7 @@ def lemma_associations(
     cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """Checks the occurrence contexts of a given text in the abstract's phrases.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     word_groups = __load_word_groups(root_dir)
     lemma_a_word_group = __pick_word_group(lemma_a, word_groups)
@@ -98,7 +95,7 @@ def lemma_associations(
 def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
-    thesaurus_file = os.path.join(root_dir, "thesauri/words.the.txt")
+    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
     thesaurus = load_thesaurus_as_dict(thesaurus_file)
     return list(thesaurus.values())
 
@@ -124,6 +121,7 @@ def __get_abstract_sentences(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

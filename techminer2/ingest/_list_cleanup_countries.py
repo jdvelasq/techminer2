@@ -26,7 +26,7 @@ def list_cleanup_countries(root_dir):
     affiliations = copy_affiliations_to_contry_column(affiliations)
     affiliations = extract_country_component(affiliations)
     affiliations = homogenize_country_names(affiliations)
-    affiliations = check_country_names(affiliations, root_dir)
+    affiliations = check_country_names(affiliations)
     # affiliations = format_country_names(affiliations)
     save_countries_thesaurus(affiliations, root_dir)
     print(f"--INFO-- The {pathlib.Path(root_dir) / 'thesauri/countries.the.txt'} thesaurus file was created")
@@ -90,12 +90,11 @@ def homogenize_country_names(affiliations):
     return affiliations
 
 
-def check_country_names(affiliations, root_dir):
+def check_country_names(affiliations):
     """Extract the country based on a regex."""
 
     #
     # Loads country names from thesaurus
-    # file_path = os.path.join(root_dir, "thesauri/alpha3-to-country.the.txt")
     file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/alpha3-to-country.the.txt")
     countries = []
     with open(file_path, "r", encoding="utf-8") as file:

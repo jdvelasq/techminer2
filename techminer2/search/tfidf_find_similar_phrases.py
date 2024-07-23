@@ -30,7 +30,7 @@ Find Similar Records
 ----------------------------------------------------------------------------------------------------
 SIMILARITY: 1.0
 AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+TI: FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
 <BLANKLINE>
 whilst the principal regulatory objectives (e.g., financial stability,
 prudential safety and soundness, consumer protection and market
@@ -40,7 +40,7 @@ application are increasingly inadequate.
 ----------------------------------------------------------------------------------------------------
 SIMILARITY: 0.302
 AR: Anagnostopoulos I., 2018, J ECON BUS, V100, P7
-TI: FINTECH and REGTECH: IMPACT on REGULATORS and BANKS
+TI: FINTECH and REGTECH: impact on regulators and BANKS
 <BLANKLINE>
 these should be of interest to regulatory standard setters, investors,
 international organisations and other academics who are researching
@@ -50,14 +50,12 @@ financial and social contexts.
 ----------------------------------------------------------------------------------------------------
 SIMILARITY: 0.277
 AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: FINTECH, REGTECH, and the RECONCEPTUALIZATION of FINANCIAL_REGULATION
+TI: FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
 <BLANKLINE>
 regulatory change and technological developments following the 2008
 global financial crisis are changing the nature of financial markets,
 services, and institutions.
 <BLANKLINE>
-
-
 
 
 
@@ -78,7 +76,7 @@ from .._core.read_filtered_database import read_filtered_database
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "thesauri/words.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def tfidf_find_similar_phrases(
@@ -92,9 +90,7 @@ def tfidf_find_similar_phrases(
     cited_by_filter=None,
     **filters,
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     if text.strip() == "":
         return
@@ -107,6 +103,7 @@ def tfidf_find_similar_phrases(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

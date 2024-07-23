@@ -29,18 +29,18 @@ Highlight phrase
 ...     root_dir="example/", 
 ... )
 they highlight the limited ADOPTION of REGULATORY_TECHNOLOGY (REGTECH)
-and electronic signatures in palestine'S BANKING sector, proposing the
+and electronic signatures in palestine's banking sector, proposing the
 establishment of an independent electronic transactions unit as a
-solution. they emphasize the NEED for REGTECH in achieving regulatory
-COMPLIANCE, RISK_MANAGEMENT, and reporting in the face of changing
-regulations and digital dynamics. additionally, the papers delve into
-ethical concerns surrounding the APPLICATION of ARTIFICIAL_INTELLIGENCE
-(AI) in FINANCE and suggest that REGTECH, combined with islamic FINANCE
-principles, can mitigate these ethical issues. overall, the papers
-underscore the transformative POTENTIAL of REGTECH while discussing its
-BENEFITS, CHALLENGES, and IMPLICATIONS for diverse sectors, ultimately
-aiming to improve COMPLIANCE, EFFICIENCY, and ethical practices in the
-FINANCIAL_INDUSTRY.
+solution. they emphasize the need for REGTECH in achieving
+REGULATORY_COMPLIANCE, RISK_MANAGEMENT, and reporting in the face of
+changing regulations and digital dynamics. additionally, the papers delve
+into ethical concerns surrounding the application of
+ARTIFICIAL_INTELLIGENCE (AI) in FINANCE and suggest that REGTECH,
+combined with islamic FINANCE principles, can mitigate these ethical
+issues. overall, the papers underscore the transformative potential of
+REGTECH while discussing its benefits, challenges, and implications for
+diverse sectors, ultimately aiming to improve compliance, efficiency, and
+ethical practices in the FINANCIAL_INDUSTRY.
 
 """
 import os
@@ -51,7 +51,7 @@ import textwrap
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "thesauri/words.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def highlight_phrase(

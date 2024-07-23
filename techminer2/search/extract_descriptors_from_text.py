@@ -28,7 +28,7 @@ Extract Descriptors from Text
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... ) # doctest: +ELLIPSIS
-["'S", 'ADOPTION', 'AI', 'APPLICATION', 'ARTIFICIAL_INTELLIGENCE', ...
+['ADOPTION', 'AI', 'ARTIFICIAL_INTELLIGENCE', ...
 
 """
 import os
@@ -40,7 +40,7 @@ from textblob import TextBlob
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "thesauri/words.the.txt"
+THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
 def extract_descriptors_from_text(

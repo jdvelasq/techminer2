@@ -40,9 +40,9 @@ World Map
 
 >>> chart.df_.head()
                rank_occ  OCC
-countries                   
+country                     
 United States         1   16
-[UNKNWON]             2    8
+China                 2    8
 Germany               3    7
 South Korea           4    6
 Australia             5    5
@@ -88,7 +88,7 @@ def world_map(
 
         worldmap_data = load_worldmap_data()
 
-        dataframe = data_frame.copy()
+        dataframe = data_frame.df_
         dataframe.index = dataframe.index.rename("country")
         dataframe = dataframe.sort_index()
 
@@ -101,7 +101,7 @@ def world_map(
             color=metric,
             hover_name="country",
             hover_data=[col for col in dataframe.columns if col not in ["country", "iso_alpha"]],
-            range_color=(1, data_frame[metric].max()),
+            range_color=(1, data_frame.df_[metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},
             scope="world",
@@ -168,7 +168,7 @@ def world_map(
         **filters,
     )
 
-    data_frame = items.copy()
+    data_frame = items
     items.fig_ = create_plot()
 
     return items

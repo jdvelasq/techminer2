@@ -37,11 +37,11 @@ Word Trends
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/analyze/words/word_trends.html")
+>>> chart.fig_.write_html("sphinx/_static/tools/word_trends.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/words/word_trends.html" 
+    <iframe src="../_static/tools/word_trends.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -111,7 +111,7 @@ def word_trends(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

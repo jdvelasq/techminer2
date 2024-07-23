@@ -91,7 +91,7 @@ CHE
 CHL
     Chile
 CHN
-    china
+    China
 CIV
     Côte D'ivoire
     Cote D'ivoire

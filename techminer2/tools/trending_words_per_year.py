@@ -22,7 +22,7 @@ Trending Words per Year
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> words.fig_.write_html("sphinx/tools/trending_words_per_year.html")
+>>> # words.fig_.write_html("sphinx/tools/trending_words_per_year.html")
 
 .. raw:: html
 
@@ -32,16 +32,15 @@ Trending Words per Year
 >>> words.df_.head()
 year              OCC  year_q1  year_med  ...  rn    height  width
 author_keywords                           ...                     
-RESEARCHERS         1     2016      2016  ...   4  0.150000      1
 CONTENT_ANALYSIS    2     2016      2016  ...   2  0.177333      1
-POPULAR_PRESS       2     2016      2016  ...   3  0.177333      1
-DIGITALIZATION      3     2016      2016  ...   0  0.204667      1
-TECHNOLOGIES        2     2016      2016  ...   1  0.177333      2
+DIGITALIZATION      2     2016      2016  ...   3  0.177333      1
+POPULAR_PRESS       2     2016      2016  ...   4  0.177333      1
+TECHNOLOGY          2     2016      2016  ...   0  0.177333      2
+BANKING             2     2016      2016  ...   1  0.177333      2
 <BLANKLINE>
 [5 rows x 8 columns]
 
-
->>> from techminer2.analyze.words import trending_words_per_year
+>>> from techminer2.tools import trending_words_per_year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
@@ -60,20 +59,19 @@ TECHNOLOGIES        2     2016      2016  ...   1  0.177333      2
 ...     cited_by_filter=None,
 ... )    
 >>> words.df_
-year                     OCC  year_q1  year_med  ...  rn    height  width
-author_keywords                                  ...                     
-FINTECH                   31     2017      2018  ...   0  0.970000      2
-BLOCKCHAIN                 3     2018      2019  ...   0  0.178276      2
-ARTIFICIAL_INTELLIGENCE    2     2019      2019  ...   1  0.150000      1
+year                     OCC  year_q1  year_med  ...  rn  height  width
+author_keywords                                  ...                   
+FINTECH                   31     2017      2018  ...   0    0.97      2
+BLOCKCHAIN                 2     2018      2018  ...   1    0.15      2
+ARTIFICIAL_INTELLIGENCE    2     2019      2019  ...   0    0.15      1
 <BLANKLINE>
 [3 rows x 8 columns]
-
 
 """
 from dataclasses import dataclass
 
 import numpy as np
-import plotly.graph_objects as go
+import plotly.graph_objects as go  # type: ignore
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric

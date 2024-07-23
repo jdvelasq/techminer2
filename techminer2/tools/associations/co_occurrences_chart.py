@@ -39,16 +39,16 @@ Co-occurrences Chart
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/associations/co_occurrences.html")
+... ).write_html("sphinx/_static/tools/associations/co_occurrences.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/associations/co_occurrences.html"
+    <iframe src="../../_static/tools/associations/co_occurrences.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 from .item_associations import item_associations
 

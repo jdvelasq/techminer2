@@ -9,7 +9,7 @@ Radial Diagram
 ===============================================================================
 
 
->>> from techminer2.analyze.associations import radial_diagram
+>>> from techminer2.tools.associations import radial_diagram
 >>> radial_diagram(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -40,24 +40,24 @@ Radial Diagram
 ...     col_top_n=20,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/associations/radial_diagram.html")
+... ).write_html("sphinx/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/associations/radial_diagram.html" 
+    <iframe src="../../_static/tools/associations/radial_diagram.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -107,13 +107,13 @@ def radial_diagram(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -150,13 +150,13 @@ def radial_diagram(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -164,7 +164,7 @@ def radial_diagram(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     #
     # Extracts name and position for item_a and item_b
