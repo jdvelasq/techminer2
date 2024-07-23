@@ -1,10 +1,9 @@
-Factor Analysis
+NMF
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
-
-    co_occurrence/__index__
-    tfidf/__index__
-
-
+    
+    report
+    terms_by_theme_summary
+    themes

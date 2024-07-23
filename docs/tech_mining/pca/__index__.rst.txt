@@ -1,10 +1,10 @@
-Factor Analysis
+PCA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :hidden:
-
-    co_occurrence/__index__
-    tfidf/__index__
-
+   :maxdepth: 1
+   :hidden:
+   
+   cooc_matrix/__index__
+   tfidf_matrix/__index__
 

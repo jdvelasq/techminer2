@@ -1,10 +1,10 @@
-Factor Analysis
+Refine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
+    
 
-    co_occurrence/__index__
-    tfidf/__index__
-
-
+    thesaurus/__index__
+    my_keywords
+    stopwords

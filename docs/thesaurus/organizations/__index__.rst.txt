@@ -1,10 +1,10 @@
-Factor Analysis
+Organizations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :hidden:
+   :hidden:
 
-    co_occurrence/__index__
-    tfidf/__index__
-
+   apply_thesaurus
+   find_string
+   sort_thesaurus
 

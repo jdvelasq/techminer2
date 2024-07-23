@@ -1,10 +1,10 @@
-Factor Analysis
+SVD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
+    :maxdepth: 1
     :hidden:
 
-    co_occurrence/__index__
-    tfidf/__index__
-
+    cooc_matrix/__index__
+    tfidf_matrix/__index__
 

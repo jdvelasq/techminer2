@@ -1,10 +1,11 @@
-Factor Analysis
+Ingest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :hidden:
 
-    co_occurrence/__index__
-    tfidf/__index__
+.. toctree::
+    :hidden: 
+    
+    ingest_raw_data
+
 
 

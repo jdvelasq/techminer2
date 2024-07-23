@@ -1,10 +1,12 @@
-Factor Analysis
+PCD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
 
-    co_occurrence/__index__
-    tfidf/__index__
-
-
+    cluster_centers
+    communities
+    treemap
+    factor_map
+    concept_grid
+    to_brute_force_labels
