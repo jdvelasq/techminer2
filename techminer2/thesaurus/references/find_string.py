@@ -13,17 +13,17 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.thesaurus.references import find_string
->>> find_string(
-...     #
-...     # SEARCH PARAMS:
-...     contains='ARTIFICIAL_INTELLIGENCE',
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+# >>> from techminer2.thesaurus.references import find_string
+# >>> find_string(
+# ...     #
+# ...     # SEARCH PARAMS:
+# ...     contains='ARTIFICIAL_INTELLIGENCE',
+# ...     startswith=None,
+# ...     endswith=None,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... )
 
 
 

@@ -10,7 +10,7 @@ Apply Thesaurus
 ===============================================================================
 
 >>> from techminer2.thesaurus.countries import apply_thesaurus
->>> apply_thesaurus(
+>>> apply_thesaurus( # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 

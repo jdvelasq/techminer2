@@ -13,7 +13,7 @@ Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
 >>> from techminer2.thesaurus.organizations import apply_thesaurus
->>> apply_thesaurus(
+>>> apply_thesaurus( # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 

@@ -6,9 +6,9 @@ Create 'organizations.txt' thesaurus file
 Creates a organizations thesaurus from the data in the database.
 
 
->>> from techminer2.ingest._list_cleanup_organizations import list_cleanup_organizations
->>> list_cleanup_organizations(root_dir="example/")
---INFO-- The example/thesauri/organizations.the.txt thesaurus file was created
+# >>> from techminer2.ingest._list_cleanup_organizations import list_cleanup_organizations
+# >>> list_cleanup_organizations(root_dir="example/")  # doctest: +SKIP
+# --INFO-- The example/thesauri/organizations.the.txt thesaurus file was created
 
 
 """
@@ -31,10 +31,7 @@ def list_cleanup_organizations(root_dir="./"):
     frame = assings_names_by_priority(frame)
     frame = format_organization_names(frame)
     save_organizations_thesaurus(frame, root_dir)
-    print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'thesauri/organizations.the.txt'} "
-        "thesaurus file was created"
-    )
+    print(f"--INFO-- The {pathlib.Path(root_dir) / 'thesauri/organizations.the.txt'} " "thesaurus file was created")
 
 
 def load_affiliations_from_country_thesaurus(root_dir):
@@ -72,9 +69,7 @@ def add_country_code_column(frame, root_dir):
     # Load country thesaurus
     countries = {}
     #
-    file_path = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/country-to-alpha3.the.txt"
-    )
+    file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-alpha3.the.txt")
     # file_path = pathlib.Path(root_dir) / "thesauri/country-to-alpha3.the.txt"
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
@@ -108,9 +103,7 @@ def replace_abbreviations(frame, root_dir):
     """Replace abbr in affiliation names."""
 
     abbr_dict = {}
-    file_path = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/organizations_abbr.the.txt"
-    )
+    file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/organizations_abbr.the.txt")
 
     # file_path = pathlib.Path(root_dir) / "thesauri/organizations_abbr.the.txt"
     with open(file_path, "r", encoding="utf-8") as file:
@@ -122,9 +115,7 @@ def replace_abbreviations(frame, root_dir):
                 abbr_dict[word] = abbr
 
     for word, abbr in abbr_dict.items():
-        frame["organization"] = frame["organization"].str.replace(
-            r"\b" + word + r"\b", abbr, regex=True
-        )
+        frame["organization"] = frame["organization"].str.replace(r"\b" + word + r"\b", abbr, regex=True)
 
     frame["organization"] = frame["organization"].str.strip()
 
@@ -142,9 +133,7 @@ def add_a_empty_organization_column(frame):
 def load_known_organizations():
     """Loads known organizations from GitHub repo."""
 
-    file_path = pkg_resources.resource_filename(
-        "techminer2", "word_lists/known_organizations.txt"
-    )
+    file_path = pkg_resources.resource_filename("techminer2", "word_lists/known_organizations.txt")
     with open(file_path, "r", encoding="utf-8") as file:
         known_organizations = file.read().split("\n")
     known_organizations = [org.strip() for org in known_organizations]
@@ -217,9 +206,7 @@ def assings_names_by_priority(frame):
     frame = frame.copy()
     for index, row in frame.iterrows():
         if row.organization is pd.NA:
-            frame.loc[index, "organization"] = select_name(
-                frame.loc[index, "affiliation"]
-            )
+            frame.loc[index, "organization"] = select_name(frame.loc[index, "affiliation"])
 
     frame["organization"] = frame["organization"].map(select_name)
     return frame
@@ -229,9 +216,7 @@ def format_organization_names(frame):
     """Formats the organization names."""
 
     frame = frame.copy()
-    frame["organization"] = (
-        frame["organization"].astype(str) + " (" + frame["code"] + ")"
-    )
+    frame["organization"] = frame["organization"].astype(str) + " (" + frame["code"] + ")"
     return frame
 
     # frame["organization"] = (

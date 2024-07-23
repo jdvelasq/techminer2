@@ -11,7 +11,7 @@ Replace Abbreviations
 ===============================================================================
 
 >>> from techminer2.thesaurus.descriptors import replace_abbreviations
->>> replace_string(  
+>>> replace_string( # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 

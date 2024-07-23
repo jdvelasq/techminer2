@@ -104,8 +104,8 @@ def find_abbreviations(
 
         #
         # Print abbreviations
-        for _, row in frame.iterrows():
-            print(f"{row.abbreviation}\t{row.value}")
+        # for _, row in frame.iterrows():
+        #    print(f"{row.abbreviation}\t{row.value}")
 
     list_abbreviations_as_tuples(frame)
 

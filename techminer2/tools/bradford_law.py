@@ -72,11 +72,11 @@ Bradford's Law
 | Foresight                           |   41 |     1 |        50 |                 65 |      3 |
 
 
->>> bradford.fig_.write_html("sphinx/_static/analyze/contributors/sources/bradford_law.html")
+>>> bradford.fig_.write_html("sphinx/_static/tools/bradford_law.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/contributors/sources/bradford_law.html")
+    <iframe src="../_static/tools/bradford_law.html")
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -150,6 +150,7 @@ def __zones(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 
@@ -186,6 +187,7 @@ def __table(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

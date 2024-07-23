@@ -1,5 +1,6 @@
 """Tools Menu."""
 
+from .bradford_law import bradford_law
 from .coverage import coverage
 from .lotka_law import lotka_law
 from .query import query

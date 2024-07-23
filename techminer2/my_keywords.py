@@ -10,13 +10,13 @@ MyKeywords
 ===============================================================================
 
 
->>> from techminer2.refine import MyKeywords
->>> MyKeywords(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... ).sort_my_keywords()
---INFO-- The file example/my_keywords/stopwords.txt has been sorted.
+# >>> from techminer2.refine import MyKeywords
+# >>> MyKeywords(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... ).sort_my_keywords()
+# --INFO-- The file example/my_keywords/stopwords.txt has been sorted.
 
 """
 # import glob

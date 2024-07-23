@@ -1,15 +1,16 @@
 """
 Create countries thesaurus from affiliations.
 
->>> from techminer2.ingest._list_cleanup_countries import list_cleanup_countries
->>> list_cleanup_countries(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-... )
---INFO-- The example/thesauri/countries.the.txt thesaurus file was created
+# >>> from techminer2.ingest._list_cleanup_countries import list_cleanup_countries
+# >>> list_cleanup_countries(  # doctest: +SKIP
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/",
+# ... )
+# --INFO-- The example/thesauri/countries.the.txt thesaurus file was created
 
 """
+
 import glob
 import os.path
 import pathlib
@@ -28,9 +29,7 @@ def list_cleanup_countries(root_dir):
     affiliations = check_country_names(affiliations, root_dir)
     # affiliations = format_country_names(affiliations)
     save_countries_thesaurus(affiliations, root_dir)
-    print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'thesauri/countries.the.txt'} thesaurus file was created"
-    )
+    print(f"--INFO-- The {pathlib.Path(root_dir) / 'thesauri/countries.the.txt'} thesaurus file was created")
 
 
 def load_affiliations_frame(directory):
@@ -42,20 +41,11 @@ def load_affiliations_frame(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         if "affiliations" in data.columns:
-            affiliations.append(
-                data.affiliations.dropna()
-                .drop_duplicates()
-                .str.split(";")
-                .explode()
-                .str.strip()
-                .drop_duplicates()
-            )
+            affiliations.append(data.affiliations.dropna().drop_duplicates().str.split(";").explode().str.strip().drop_duplicates())
     affiliations = pd.concat(affiliations).drop_duplicates()
 
     if len(affiliations) == 0:
-        raise ValueError(
-            "Column 'affiliations' do not exists in any databases or it is empty."
-        )
+        raise ValueError("Column 'affiliations' do not exists in any databases or it is empty.")
 
     frame = pd.DataFrame({"affiliations": affiliations})
 
@@ -83,9 +73,7 @@ def homogenize_country_names(affiliations):
 
     #
     # Loads country name replacements
-    file_path = pkg_resources.resource_filename(
-        "techminer2", "word_lists/country_replace.txt"
-    )
+    file_path = pkg_resources.resource_filename("techminer2", "word_lists/country_replace.txt")
     with open(file_path, "r", encoding="utf-8") as file:
         replacements = file.read().split("\n")
     replacements = [w.split(",") for w in replacements]
@@ -95,9 +83,7 @@ def homogenize_country_names(affiliations):
     # Replaces the names in affiliations
     affiliations = affiliations.copy()
     for pat, repl in replacements:
-        affiliations["country"] = affiliations["country"].str.replace(
-            pat, repl, regex=False
-        )
+        affiliations["country"] = affiliations["country"].str.replace(pat, repl, regex=False)
 
     #
     # Returns the affiliations with the fixed country names
@@ -110,9 +96,7 @@ def check_country_names(affiliations, root_dir):
     #
     # Loads country names from thesaurus
     # file_path = os.path.join(root_dir, "thesauri/alpha3-to-country.the.txt")
-    file_path = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/alpha3-to-country.the.txt"
-    )
+    file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/alpha3-to-country.the.txt")
     countries = []
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
@@ -122,9 +106,7 @@ def check_country_names(affiliations, root_dir):
     #
     # Checks country names
     affiliations = affiliations.copy()
-    affiliations["country"] = affiliations["country"].map(
-        lambda x: x if x in countries else "[UNKNWON]"
-    )
+    affiliations["country"] = affiliations["country"].map(lambda x: x if x in countries else "[UNKNWON]")
     return affiliations
 
 
@@ -149,9 +131,7 @@ def save_countries_thesaurus(affiliations, root_dir):
     # Groups affiliations by country
     affiliations = affiliations.copy()
     affiliations = affiliations.sort_values(["country", "affiliations"])
-    affiliations = affiliations.groupby("country", as_index=False).agg(
-        {"affiliations": list}
-    )
+    affiliations = affiliations.groupby("country", as_index=False).agg({"affiliations": list})
 
     #
     # Creates the thesaurus

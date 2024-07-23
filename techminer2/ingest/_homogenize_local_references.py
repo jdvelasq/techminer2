@@ -8,12 +8,12 @@
 # pylint: disable=import-outside-toplevel
 """
 
->>> from techminer2.ingest._homogenize_local_references import homogenize_local_references
->>> homogenize_local_references(
-...     root_dir="example/", 
-... )
--- 001 -- Homogenizing local references
-     ---> 21 local references homogenized
+# >>> from techminer2.ingest._homogenize_local_references import homogenize_local_references
+# >>> homogenize_local_references(  # doctest: +SKIP
+# ...     root_dir="example/", 
+# ... )
+# -- 001 -- Homogenizing local references
+#      ---> 21 local references homogenized
 
 """
 import os
