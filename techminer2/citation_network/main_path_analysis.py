@@ -9,7 +9,7 @@
 Main Path Analysis
 ===============================================================================
 
->>> from techminer2.science_mapping.citation.network import main_path_analysis
+>>> from techminer2.citation_network import main_path_analysis
 >>> results = main_path_analysis(
 ...     #
 ...     # COLUMN PARAMS:
@@ -39,12 +39,11 @@ Main Path Analysis
 --INFO-- Paths computed
 --INFO-- Points per link computed
 --INFO-- Points per path computed
---INFO-- The file 'example/reports/main_path_analysis.txt' was created.
->>> results.fig_.write_html("sphinx/_static/analyze/citation/network/main_path_analysis.html")
+>>> results.fig_.write_html("sphinx/_static/citation_network/main_path_analysis.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/citation/network/main_path_analysis.html" 
+    <iframe src="../_static/citation_network/main_path_analysis.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> results.df_.head()
@@ -65,17 +64,17 @@ from dataclasses import dataclass
 import networkx as nx
 import numpy as np
 
-from ._core.nx.nx_assign_constant_color_to_nodes import nx_assign_constant_color_to_nodes
-from ._core.nx.nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
-from ._core.nx.nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
-from ._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from ._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
-from ._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
-from ._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
-from ._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from ._core.nx.nx_network_plot import nx_network_plot
-from ._core.read_filtered_database import read_filtered_database
-from .helpers.helper_format_report_for_records import helper_format_report_for_records
+from .._core.nx.nx_assign_constant_color_to_nodes import nx_assign_constant_color_to_nodes
+from .._core.nx.nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
+from .._core.nx.nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
+from .._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
+from .._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
+from .._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
+from .._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
+from .._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from .._core.nx.nx_network_plot import nx_network_plot
+from .._core.read_filtered_database import read_filtered_database
+from ..helpers.helper_format_report_for_records import helper_format_report_for_records
 
 
 def main_path_analysis(
@@ -212,16 +211,17 @@ def ___generate_report(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
     records = records[records.article.isin(articles)]
 
-    helper_format_report_for_records(
-        root_dir=root_dir,
-        target_dir="",
-        records=records,
-        report_filename="main_path_analysis.txt",
-    )
+    # helper_format_report_for_records(
+    #     root_dir=root_dir,
+    #     target_dir="",
+    #     records=records,
+    #     report_filename="main_path_analysis.txt",
+    # )
 
 
 def ___compute_main_path(data_frame):
@@ -369,6 +369,7 @@ def ___create_citations_table(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 
