@@ -10,17 +10,17 @@ RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
->>> from techminer2.science_mapping.citation import rpys
+>>> from techminer2.citation_network import rpys
 >>> chart = rpys(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
->>> chart.fig_.write_html("sphinx/_static/analyze/citation/rpys_chart.html")
+>>> chart.fig_.write_html("sphinx/_static/citation_network/rpys_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/citation/rpys_chart.html" 
+    <iframe src="../_static/analyze/citation/rpys_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -40,7 +40,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ._core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def rpys(
@@ -76,6 +76,7 @@ def __table(
         database="references",
         year_filter=(None, None),
         cited_by_filter=(None, None),
+        sort_by=None,
     )
 
     references = references[["year"]]
