@@ -19,8 +19,8 @@ MyKeywords
 --INFO-- The file example/my_keywords/stopwords.txt has been sorted.
 
 """
-import glob
-import os
+# import glob
+# import os
 
 # from .._parameters import RootDirMixin
 

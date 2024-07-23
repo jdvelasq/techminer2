@@ -38,9 +38,9 @@ Concept Grid Plot
 >>> chart.render("sphinx/images/co_occurrence_network/concept_grid_plot", format="png")
 
 
-.. image:: /images/co_occurrence_network/concept_grid_plot.png
-    :width: 900px
-    :align: center
+# .. image:: /images/co_occurrence_network/concept_grid_plot.png
+#     :width: 900px
+#     :align: center
 
 """
 from .._core.nx.nx_cluster_graph import nx_cluster_graph

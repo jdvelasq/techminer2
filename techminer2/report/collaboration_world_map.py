@@ -30,7 +30,7 @@ Collaboration WorldMap
 """
 import plotly.express as px
 
-from .co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
+from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def collaboration_world_map(

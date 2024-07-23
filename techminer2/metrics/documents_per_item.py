@@ -1,6 +1,6 @@
 """documents by each item in a column"""
 
-from ._core.read_filtered_database import read_filtered_database
+from .._core.read_filtered_database import read_filtered_database
 
 
 def documents_per_item(

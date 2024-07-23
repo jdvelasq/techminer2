@@ -4,17 +4,16 @@ Descriptors
 .. toctree::
     :hidden:
 
-    reset_thesaurus
-    sort_thesaurus
-    find_abbreviations
-    list_abbreviations
+
+    apply_thesaurus
+    check_integrity
     find_string
     fuzzy_search
+    list_abbreviations
+    list_cleanup
     misspelling_search
     replace_string
-    list_cleanup
+    reset_thesaurus
+    sort_thesaurus
     text_clumping
-    apply_thesaurus
     words_frequency
-    check_integrity
-

@@ -12,38 +12,6 @@ TODO: Thematic Document Classification
 4. Obtain the table of units by clusters
 
 
->>> import techminer2plus
->>> root_dir = "data/regtech/"
->>> # 1. Define the clustering method and number of clusters
->>> from sklearn.cluster import AgglomerativeClustering
->>> estimator = AgglomerativeClustering(
-...     n_clusters=5,
-... ) 
->>> # 2. Compute the TF-IDF matrix
->>> tf_matrix = techminer2plus.analyze.tfidf.tf_matrix(
-...     field='author_keywords',
-...     top_n=50,
-...     root_dir=root_dir,
-... )
->>> tf_idf_matrix = techminer2plus.analyze.tfidf.tf_idf_matrix(tf_matrix)
-
-
->>> # 3. Cluster the documents 
->>> analysis = techminer2plus.analyze.thematic_analysis.document_thematic_analysis(
-...     tf_idf_matrix=tf_idf_matrix,
-...     estimator=estimator,
-...     report_dir="document_thematic_analysis",
-...     root_dir=root_dir,
-... )
---INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_00_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_01_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_02_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_03_abstracts_report.txt' was created.
---INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_04_abstracts_report.txt' was created.
-
-
->>> analysis.themes_.head()
-
 
 
 """
@@ -55,60 +23,60 @@ TODO: Thematic Document Classification
 # from ..matrix import co_occurrence_matrix
 
 
-def thematic_document_classification(
-    tf_idf_matrix,
-    estimator,
-    report_dir,
-    root_dir="./",
-):
-    """Document Thematic Analysis."""
+# def thematic_document_classification(
+#     tf_idf_matrix,
+#     estimator,
+#     report_dir,
+#     root_dir="./",
+# ):
+#     """Document Thematic Analysis."""
 
-    def extract_records_per_cluster(dt_matrix):
-        """Creates a dict of records per cluster."""
+#     def extract_records_per_cluster(dt_matrix):
+#         """Creates a dict of records per cluster."""
 
-        clusters = dt_matrix["CLUSTER"].drop_duplicates().to_list()
+#         clusters = dt_matrix["CLUSTER"].drop_duplicates().to_list()
 
-        records_main = read_records(
-            root_dir=root_dir,
-        )
+#         records_main = read_records(
+#             root_dir=root_dir,
+#         )
 
-        records_per_cluster = {}
+#         records_per_cluster = {}
 
-        for cluster in clusters:
-            articles_in_cluster = dt_matrix[dt_matrix.CLUSTER == cluster].index.to_list()
-            clustered_records = records_main[records_main.article.isin(articles_in_cluster)].copy()
-            clustered_records = clustered_records.sort_values(
-                ["global_citations", "local_citations"],
-                ascending=[False, False],
-            )
+#         for cluster in clusters:
+#             articles_in_cluster = dt_matrix[dt_matrix.CLUSTER == cluster].index.to_list()
+#             clustered_records = records_main[records_main.article.isin(articles_in_cluster)].copy()
+#             clustered_records = clustered_records.sort_values(
+#                 ["global_citations", "local_citations"],
+#                 ascending=[False, False],
+#             )
 
-            records_per_cluster[cluster] = clustered_records.copy()
+#             records_per_cluster[cluster] = clustered_records.copy()
 
-        return records_per_cluster
+#         return records_per_cluster
 
-    def create_report(records_per_cluster):
-        """Creates the report."""
+#     def create_report(records_per_cluster):
+#         """Creates the report."""
 
-        for cluster in sorted(records_per_cluster.keys()):
-            records = records_per_cluster[cluster]
-            report_filename = f"{cluster}_abstracts_report.txt"
-            create_records_report(
-                root_dir=root_dir,
-                target_dir=report_dir,
-                records=records,
-                report_filename=report_filename,
-            )
+#         for cluster in sorted(records_per_cluster.keys()):
+#             records = records_per_cluster[cluster]
+#             report_filename = f"{cluster}_abstracts_report.txt"
+#             create_records_report(
+#                 root_dir=root_dir,
+#                 target_dir=report_dir,
+#                 records=records,
+#                 report_filename=report_filename,
+#             )
 
-    dt_matrix = tf_idf_matrix.table_.copy()
-    estimator.fit(dt_matrix)
-    dt_matrix["CLUSTER"] = [f"CL_{label:>02d}" for label in estimator.labels_]
+#     dt_matrix = tf_idf_matrix.table_.copy()
+#     estimator.fit(dt_matrix)
+#     dt_matrix["CLUSTER"] = [f"CL_{label:>02d}" for label in estimator.labels_]
 
-    make_report_dir(root_dir, report_dir)
+#     make_report_dir(root_dir, report_dir)
 
-    records_per_cluster = extract_records_per_cluster(dt_matrix)
-    create_report(records_per_cluster)
+#     records_per_cluster = extract_records_per_cluster(dt_matrix)
+#     create_report(records_per_cluster)
 
-    cooc_matrix = co_occurrence_matrix()
+#     cooc_matrix = co_occurrence_matrix()
 
 
 # class _ThematicAnalysis:

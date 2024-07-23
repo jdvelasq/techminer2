@@ -204,9 +204,9 @@ from .._core.metrics.calculate_global_performance_metrics import calculate_globa
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from .._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
 from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
-from ..documents_per_item import documents_per_item
 from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
+from .documents_per_item import documents_per_item
 
 COLOR = "#465c6b"
 TEXTLEN = 40
