@@ -5,4 +5,5 @@ Abbreviations
     :hidden:
 
     apply_thesaurus
+    find_abbreviations
 

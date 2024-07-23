@@ -262,6 +262,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../thesaurus/__index__.html">Thesaurus</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Thesaurus</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../thesaurus/abbreviations/__index__.html">Abbreviations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Abbreviations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/abbreviations/apply_thesaurus.html">Apply Abbreviations Thesaurus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/abbreviations/find_abbreviations.html">Find Abbreviations</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../thesaurus/countries/__index__.html">Countries</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Countries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -271,18 +272,18 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../thesaurus/descriptors/__index__.html">Descriptors</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Descriptors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/reset_thesaurus.html">Reset Thesaurus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/sort_thesaurus.html">Sort Thesaurus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/list_abbreviations.html">List Abbreviations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/apply_thesaurus.html">Apply Thesaurus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/check_integrity.html">Check Integrity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/find_string.html">Find String</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/fuzzy_search.html">Fuzzy Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/list_abbreviations.html">List Abbreviations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/list_cleanup.html">List Cleanup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/misspelling_search.html">Misspelling Search</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/replace_string.html">Replace String</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/list_cleanup.html">List Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/reset_thesaurus.html">Reset Thesaurus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/sort_thesaurus.html">Sort Thesaurus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/text_clumping.html">Text Clumping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/apply_thesaurus.html">Apply Thesaurus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/words_frequency.html">Words Frequency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../thesaurus/descriptors/check_integrity.html">Check Integrity</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../thesaurus/organizations/__index__.html">Organizations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Organizations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -500,35 +501,35 @@
         <article role="main" id="furo-main-content">
           <section id="concept-grid-plot">
 <span id="module-techminer2.co_occurrence_network.concept_grid_plot"></span><h1>Concept Grid Plot<a class="headerlink" href="#concept-grid-plot" title="Link to this heading">¶</a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.co_occurrence_network</span> <span class="kn">import</span> <span class="n">concept_grid_plot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span> <span class="o">=</span> <span class="n">concept_grid_plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># PARAMS:</span>
-<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># SUMMARY PARAMS:</span>
-<span class="gp">... </span>    <span class="n">conserve_counters</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># FILTER PARAMS:</span>
-<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">custom_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># NETWORK PARAMS:</span>
-<span class="gp">... </span>    <span class="n">algorithm_or_dict</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">association_index</span><span class="o">=</span><span class="s2">&quot;association&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="c1"># DATABASE PARAMS:</span>
-<span class="gp">... </span>    <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chart</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;sphinx/images/co_occurrence_network/concept_grid_plot&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="images/co_occurrence_network/concept_grid_plot.png"><img alt="images/co_occurrence_network/concept_grid_plot.png" class="align-center" src="images/co_occurrence_network/concept_grid_plot.png" style="width: 900px;" /></a>
+<p># &gt;&gt;&gt; from techminer2.co_occurrence_network import concept_grid_plot
+# &gt;&gt;&gt; chart = concept_grid_plot(
+# …     #
+# …     # PARAMS:
+# …     field=’author_keywords’,
+# …     #
+# …     # SUMMARY PARAMS:
+# …     conserve_counters=False,
+# …     #
+# …     # FILTER PARAMS:
+# …     top_n=20,
+# …     occ_range=(None, None),
+# …     gc_range=(None, None),
+# …     custom_terms=None,
+# …     #
+# …     # NETWORK PARAMS:
+# …     algorithm_or_dict=”louvain”,
+# …     association_index=”association”,
+# …     #
+# …     # DATABASE PARAMS:
+# …     root_dir=”example/”,
+# …     database=”main”,
+# …     year_filter=(None, None),
+# …     cited_by_filter=(None, None),
+# … )
+# &gt;&gt;&gt; chart.render(“sphinx/images/co_occurrence_network/concept_grid_plot”, format=”png”)</p>
+<p># .. image:: /images/co_occurrence_network/concept_grid_plot.png
+#     :width: 900px
+#     :align: center</p>
 </section>
 
         </article>

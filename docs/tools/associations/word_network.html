@@ -262,6 +262,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../thesaurus/__index__.html">Thesaurus</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Thesaurus</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../thesaurus/abbreviations/__index__.html">Abbreviations</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Abbreviations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/abbreviations/apply_thesaurus.html">Apply Abbreviations Thesaurus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/abbreviations/find_abbreviations.html">Find Abbreviations</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../thesaurus/countries/__index__.html">Countries</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Countries</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -271,18 +272,18 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../thesaurus/descriptors/__index__.html">Descriptors</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Descriptors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/reset_thesaurus.html">Reset Thesaurus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/sort_thesaurus.html">Sort Thesaurus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/list_abbreviations.html">List Abbreviations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/apply_thesaurus.html">Apply Thesaurus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/check_integrity.html">Check Integrity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/find_string.html">Find String</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/fuzzy_search.html">Fuzzy Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/list_abbreviations.html">List Abbreviations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/list_cleanup.html">List Cleanup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/misspelling_search.html">Misspelling Search</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/replace_string.html">Replace String</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/list_cleanup.html">List Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/reset_thesaurus.html">Reset Thesaurus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/sort_thesaurus.html">Sort Thesaurus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/text_clumping.html">Text Clumping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/apply_thesaurus.html">Apply Thesaurus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/words_frequency.html">Words Frequency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../thesaurus/descriptors/check_integrity.html">Check Integrity</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../thesaurus/organizations/__index__.html">Organizations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of Organizations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -500,7 +501,7 @@
         <article role="main" id="furo-main-content">
           <section id="word-network">
 <span id="module-techminer2.tools.associations.word_network"></span><h1>Word Network<a class="headerlink" href="#word-network" title="Link to this heading">¶</a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.analyze.associations</span> <span class="kn">import</span> <span class="n">word_network</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.tools.associations</span> <span class="kn">import</span> <span class="n">word_network</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">word_network</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FUNCTION PARAMS:</span>
@@ -512,13 +513,13 @@
 <span class="gp">... </span>    <span class="n">col_top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">col_occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">col_gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">col_custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">col_custom_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># ROW PARAMS:</span>
 <span class="gp">... </span>    <span class="n">row_top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">row_occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">row_gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">row_custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">row_custom_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># LAYOUT:</span>
 <span class="gp">... </span>    <span class="n">nx_k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -544,10 +545,10 @@
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/associations/word_network_0.html&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/tools/associations/word_network_0.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<iframe src="../../../../_static/analyze/associations/word_network_0.html"
+<iframe src="../../_static/tools/associations/word_network_0.html"
 height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word_network</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FUNCTION PARAMS:</span>
@@ -559,13 +560,13 @@ height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlig
 <span class="gp">... </span>    <span class="n">col_top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">col_occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">col_gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">col_custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">col_custom_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># ROW PARAMS:</span>
 <span class="gp">... </span>    <span class="n">row_top_n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">row_occ_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">row_gc_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">row_custom_items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">row_custom_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># LAYOUT:</span>
 <span class="gp">... </span>    <span class="n">nx_k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -591,10 +592,10 @@ height="600px" width="100%" frameBorder="0"></iframe><div class="doctest highlig
 <span class="gp">... </span>    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">year_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">cited_by_filter</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/analyze/associations/word_network_1.html&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;sphinx/_static/tools/associations/word_network_1.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<iframe src="../../../../_static/analyze/associations/word_network_1.html"
+<iframe src="../../_static/tools/associations/word_network_1.html"
 height="600px" width="100%" frameBorder="0"></iframe></section>
 
         </article>
