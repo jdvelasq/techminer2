@@ -8,9 +8,9 @@
 # pylint: disable=import-outside-toplevel
 """
 
->>> from techminer2.ingest._list_cleanup_words import list_cleanup_words
->>> list_cleanup_words(root_dir="example/")
---INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
+# >>> from techminer2.ingest._list_cleanup_words import list_cleanup_words
+# >>> list_cleanup_words(root_dir="example/")
+# --INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases
 
 """
 import os
@@ -30,9 +30,8 @@ def list_cleanup_words(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
+
     print("--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases")
 
     #

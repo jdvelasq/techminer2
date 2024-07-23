@@ -8,13 +8,13 @@
 # pylint: disable=import-outside-toplevel
 """
 
->>> from techminer2.ingest._homogenize_global_references import homogenize_global_references
->>> homogenize_global_references(
-...     root_dir="example/", 
-... )
--- 001 -- Homogenizing global references
-     ---> 1093 global references homogenized
---INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
+# >>> from techminer2.ingest._homogenize_global_references import homogenize_global_references
+# >>> homogenize_global_references(
+# ...     root_dir="example/", 
+# ... )
+# -- 001 -- Homogenizing global references
+#      ---> 1093 global references homogenized
+# --INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
 
 """
 import os

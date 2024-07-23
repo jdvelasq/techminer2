@@ -13,7 +13,7 @@ Extract Country
 >>> extract_country(
 ...     source="affiliations",
 ...     dest="countries_from_affiliations",
-...     root_dir="example",
+...     root_dir="example/",
 ... )
 
 >>> # TEST:  
@@ -23,7 +23,10 @@ Extract Country
 ...     metric='OCC',
 ...     top_n=10,
 ...     root_dir="example/", 
-... ).df_['OCC'].head()
+... )
+
+
+['OCC'].head()
 countries_from_affiliations
 United Kingdom    7
 Australia         7

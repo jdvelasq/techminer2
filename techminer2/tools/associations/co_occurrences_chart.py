@@ -9,7 +9,7 @@ Co-occurrences Chart
 ===============================================================================
 
 
->>> from techminer2.analyze.associations import co_occurrences_chart
+>>> from techminer2.tools.associations import co_occurrences_chart
 >>> co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -23,13 +23,13 @@ Co-occurrences Chart
 ...     col_top_n=20,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # CHART:
 ...     title=None,
@@ -69,13 +69,13 @@ def co_occurrences_chart(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # CHART PARAMS:
     title=None,
@@ -109,13 +109,13 @@ def co_occurrences_chart(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -133,15 +133,11 @@ def co_occurrences_chart(
     associations["gc"] = associations["occ"].str[1]
     associations["occ"] = associations["occ"].str[0]
 
-    associations["percentage"] = (
-        associations.iloc[:, 0] / associations["occ"].astype(float) * 100
-    )
+    associations["percentage"] = associations.iloc[:, 0] / associations["occ"].astype(float) * 100
     associations["percentage"] = associations["percentage"].round(2)
     associations["name"] = associations.index.copy()
 
-    associations = associations.sort_values(
-        by=["percentage", "occ", "gc", "name"], ascending=[False, False, False, True]
-    )
+    associations = associations.sort_values(by=["percentage", "occ", "gc", "name"], ascending=[False, False, False, True])
 
     #
     # Graph

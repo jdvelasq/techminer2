@@ -94,7 +94,7 @@ def column_chart(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         metric=metric,
         #
         # DATABASE PARAMS:

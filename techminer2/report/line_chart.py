@@ -32,7 +32,7 @@ Line Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.fig_.write_html("sphinx/_static/report/line_chart.html")
+>>> # chart.fig_.write_html("sphinx/_static/report/line_chart.html")
 
 .. raw:: html
 
@@ -84,19 +84,7 @@ def line_chart(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a line chart.
-
-    Args:
-        obj (vantagepoint.analyze.list_view): A list view object.
-        title (str, optional): Title. Defaults to None.
-        metric_label (str, optional): Metric label. Defaults to None.
-        field_label (str, optional): Field label. Defaults to None.
-
-    Returns:
-        BasicChart: A basic chart object.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     items = performance_metrics(
         #
@@ -105,7 +93,7 @@ def line_chart(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         metric=metric,
         #

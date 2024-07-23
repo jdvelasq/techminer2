@@ -22,14 +22,14 @@ Butterfly Chart
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     rows=None,
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # CHART PARAMS:
 ...     title=None,
@@ -39,7 +39,8 @@ Butterfly Chart
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/report/butterfly_chart.html")
+... )
+>>> # chart.write_html("sphinx/_static/report/butterfly_chart.html")
 
 .. raw:: html
 
@@ -62,14 +63,14 @@ def butterfly_chart(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     rows=None,
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # CHART PARAMS:
     title=None,
@@ -81,10 +82,7 @@ def butterfly_chart(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Makes a butterfly chart.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     def extract_item_position_and_name(candidate_items, item):
         """Obtains the positions of topics in a list."""
@@ -106,14 +104,14 @@ def butterfly_chart(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         rows=rows,
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -121,7 +119,7 @@ def butterfly_chart(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     pos_a, name_a = extract_item_position_and_name(matrix.columns.tolist(), item_a)
     pos_b, name_b = extract_item_position_and_name(matrix.columns.tolist(), item_b)

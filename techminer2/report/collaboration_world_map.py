@@ -10,19 +10,20 @@ Collaboration WorldMap
 ===============================================================================
 
 
->>> from techminer2.science_mapping.co_authorship import collaboration_world_map
->>> collaboration_world_map(
+>>> from techminer2.report import collaboration_world_map
+>>> chart = collaboration_world_map(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/analyze/co_authorship/collaboration_world_map.html")
+... )
+>>> chart.write_html("sphinx/_static/report/collaboration_world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/co_authorship//collaboration_world_map.html" 
+    <iframe src="../_static/report/collaboration_world_map.html" 
     height="410px" width="100%" frameBorder="0"></iframe>
 
 
@@ -42,10 +43,7 @@ def collaboration_world_map(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Collaboration World Map
-
-    :meta private:
-    """
+    """:meta private:"""
 
     matrix = co_occurrence_matrix(
         columns="countries",

@@ -181,13 +181,13 @@ def word_network(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
+        col_custom_terms=col_custom_items,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
+        row_custom_terms=row_custom_items,
         #
         # CHART PARAMS:
         title=None,

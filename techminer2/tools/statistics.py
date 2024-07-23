@@ -54,6 +54,7 @@ def statistics(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
     records = records.dropna(subset=[field])

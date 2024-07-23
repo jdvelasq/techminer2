@@ -12,7 +12,7 @@ Pie Chart
 >>> from techminer2.report import pie_chart
 >>> chart = pie_chart(
 ...     #
-...     # ITEMS PARAMS:
+...     # TERM PARAMS:
 ...     field='author_keywords',
 ...     top_n=20,
 ...     occ_range=(None, None),
@@ -78,18 +78,7 @@ def pie_chart(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a pie chart.
-
-    Args:
-        obj (vantagepoint.analyze.list_view): A list view object.
-        title (str, optional): Title. Defaults to None.
-        hole (float, optional): Hole size. Defaults to 0.4.
-
-    Returns:
-        BasicChart: A BasicChart object.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     items = performance_metrics(
         #
@@ -101,7 +90,7 @@ def pie_chart(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

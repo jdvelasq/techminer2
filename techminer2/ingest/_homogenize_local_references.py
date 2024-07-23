@@ -13,7 +13,7 @@
 ...     root_dir="example/", 
 ... )
 -- 001 -- Homogenizing local references
-     ---> 22 local references homogenized
+     ---> 21 local references homogenized
 
 """
 import os

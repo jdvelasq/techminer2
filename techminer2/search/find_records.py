@@ -94,27 +94,7 @@ def find_records(
     cited_by_filter=None,
     **filters,
 ):
-    """Record display the documents matching the specied sarch criteria.
-
-    Args:
-        field (str): column to be used to generate the terms.
-        search_for (str): Text string to be searched.
-        case (bool, optional): If True, the search is case sensitive. Defaults to False.
-        flags (int, optional): Flags to be used in the search. Defaults to 0.
-        regex (bool, optional): If True, the search is performed using regular expressions. Defaults to True.
-        report_filename (str, optional): Name of the report file. Defaults to "record_display.txt".
-        root_dir (str, optional): Root directory. Defaults to "./".
-        database (str, optional): Database to be used. Defaults to "documents".
-        year_filter (tuple, optional): Year database filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
-
-
-    Returns:
-        None
-
-    :meta private:
-    """
+    """:meta private:"""
 
     def filter_records(criterion, search_for, case, flags, regex, records):
         """Filter records by the specified criteria."""
@@ -132,6 +112,7 @@ def find_records(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

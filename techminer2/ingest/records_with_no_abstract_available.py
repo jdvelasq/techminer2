@@ -37,15 +37,14 @@ def records_with_no_abstract_available(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     records = read_filtered_database(
         root_dir=root_dir,
         database="main",
         year_filter=(None, None),
         cited_by_filter=(None, None),
+        sort_by=None,
     )
 
     records = records[records.abstract.isna() | (records.abstract == "[no abstract available]")]

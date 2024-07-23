@@ -30,11 +30,6 @@
 ...     colorscale="Aggrnyl",
 ...     opacity=0.6,
 ...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",

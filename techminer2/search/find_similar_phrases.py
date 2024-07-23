@@ -101,6 +101,7 @@ def find_similar_phrases(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
+        sort_by=None,
         **filters,
     )
 

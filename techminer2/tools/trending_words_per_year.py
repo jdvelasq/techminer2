@@ -8,7 +8,7 @@
 Trending Words per Year
 ===============================================================================
 
->>> from techminer2.tools.words import trending_words_per_year
+>>> from techminer2.tools import trending_words_per_year
 >>> words = trending_words_per_year(
 ...     #
 ...     # PARAMS:
@@ -22,11 +22,11 @@ Trending Words per Year
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> words.fig_.write_html("sphinx/_static/analyze/words/trending_words_per_year.html")
+>>> words.fig_.write_html("sphinx/tools/trending_words_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/words/trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/tools/trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 
 >>> words.df_.head()
@@ -47,7 +47,7 @@ TECHNOLOGIES        2     2016      2016  ...   1  0.177333      2
 ...     # PARAMS:
 ...     field="author_keywords",
 ...     n_words_per_year=5,
-...     custom_items=[
+...     custom_terms=[
 ...         "FINTECH",
 ...         "BLOCKCHAIN",
 ...         "ARTIFICIAL_INTELLIGENCE",
@@ -122,7 +122,7 @@ def trending_words_per_year(
 
     #
     # Apply filters
-    if custom_items is None:
+    if custom_terms is None:
         indicators = calculate_global_performance_metrics(
             field=field,
             #
@@ -136,7 +136,7 @@ def trending_words_per_year(
 
         indicators = sort_records_by_metric(indicators, metric="OCC")
 
-        custom_items = extract_top_n_terms_by_metric(
+        custom_terms = extract_top_n_terms_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=None,
@@ -146,7 +146,7 @@ def trending_words_per_year(
 
     #
     # Select custom items
-    words_by_year = words_by_year.loc[custom_items, :]
+    words_by_year = words_by_year.loc[custom_terms, :]
 
     #
     # Compute percentiles

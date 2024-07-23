@@ -23,13 +23,13 @@ Heat Map
 ...     col_top_n=None,
 ...     col_occ_range=(4, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -37,7 +37,7 @@ Heat Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.write_html("sphinx/_static/report/heat_map.html")
+>>> # chart.write_html("sphinx/_static/report/heat_map.html")
 
 .. raw:: html
 
@@ -63,13 +63,13 @@ def heat_map(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -95,13 +95,13 @@ def heat_map(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -109,7 +109,7 @@ def heat_map(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     fig = px.imshow(
         data_frame,

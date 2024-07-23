@@ -6,8 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-.. _performance.plots.cleveland_dot_chart:
-
 Cleveland Dot Chart
 ===============================================================================
 
@@ -99,7 +97,7 @@ def cleveland_dot_chart(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

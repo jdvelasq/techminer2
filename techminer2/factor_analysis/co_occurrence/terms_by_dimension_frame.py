@@ -41,7 +41,7 @@ Terms by Dimension Frame
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                      0         1         2         3         4
+dim                                   0         1         2         3         4
 rows                                                                           
 FINTECH 31:5168               28.659528 -0.524730 -0.513789 -0.042977  0.238539
 INNOVATION 07:0911             2.377465  5.757771  2.713115 -1.188306 -0.116040

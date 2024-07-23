@@ -81,10 +81,7 @@ def world_map(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a world map.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     def create_plot():
         """Creates a plotly figure."""
@@ -161,7 +158,7 @@ def world_map(
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
-        custom_items=custom_items,
+        custom_terms=custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -171,7 +168,7 @@ def world_map(
         **filters,
     )
 
-    data_frame = items.df_.copy()
+    data_frame = items.copy()
     items.fig_ = create_plot()
 
     return items

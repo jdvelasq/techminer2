@@ -3,6 +3,7 @@ from .bubble_chart import bubble_chart
 from .butterfly_chart import butterfly_chart
 from .cleveland_dot_chart import cleveland_dot_chart
 from .cluster_map import cluster_map
+from .collaboration_world_map import collaboration_world_map
 from .column_chart import column_chart
 from .heat_map import heat_map
 from .line_chart import line_chart

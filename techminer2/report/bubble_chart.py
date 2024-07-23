@@ -16,14 +16,14 @@ Bubble Chart
 ...     col_top_n=10,
 ...     col_occ_range=(None, None),
 ...     col_gc_range=(None, None),
-...     col_custom_items=None,
+...     col_custom_terms=None,
 ...     #
 ...     # ROW PARAMS:
 ...     rows=None,
 ...     row_top_n=None,
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
-...     row_custom_items=None,
+...     row_custom_terms=None,
 ...     #
 ...     # CHART PARAMS:
 ...     title=None,
@@ -34,7 +34,7 @@ Bubble Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.write_html("sphinx/_static/report/bubble_chart.html")
+>>> # chart.write_html("sphinx/_static/report/bubble_chart.html")
 
 .. raw:: html
 
@@ -54,14 +54,14 @@ def bubble_chart(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     rows=None,
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # CHART PARAMS:
     title=None,
@@ -85,14 +85,14 @@ def bubble_chart(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_items,
+        col_custom_terms=col_custom_terms,
         #
         # ROW PARAMS:
         rows=rows,
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_items,
+        row_custom_terms=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -100,7 +100,7 @@ def bubble_chart(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     matrix = matrix.melt(value_name="VALUE", var_name="column", ignore_index=False)
     matrix = matrix.reset_index()

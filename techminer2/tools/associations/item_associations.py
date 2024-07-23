@@ -93,13 +93,13 @@ def item_associations(
     col_top_n=None,
     col_occ_range=(None, None),
     col_gc_range=(None, None),
-    col_custom_items=None,
+    col_custom_terms=None,
     #
     # ROW PARAMS:
     row_top_n=None,
     row_occ_range=(None, None),
     row_gc_range=(None, None),
-    row_custom_items=None,
+    row_custom_terms=None,
     #
     # CHART PARAMS:
     title=None,
@@ -134,13 +134,13 @@ def item_associations(
         col_top_n=col_top_n,
         col_occ_range=col_occ_range,
         col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
+        col_custom_items=col_custom_terms,
         #
         # ROW PARAMS:
         row_top_n=row_top_n,
         row_occ_range=row_occ_range,
         row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
+        row_custom_items=row_custom_terms,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

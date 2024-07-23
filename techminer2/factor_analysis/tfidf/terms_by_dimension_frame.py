@@ -50,7 +50,7 @@ Terms by Dimension Frane
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                     0         1         2         3         4
+dim                                  0         1         2         3         4
 author_keywords                                                               
 FINTECH 31:5168               4.959197 -0.131331 -0.127054 -0.021353  0.127476
 INNOVATION 07:0911            0.316050  1.870215  1.111843 -0.552452 -0.021560
