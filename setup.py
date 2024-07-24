@@ -58,120 +58,49 @@ setup(
         "wordcloud",
     ],
     packages=[
-        #
-        "techminer2.core",
-        "techminer2.core.network",
-        "techminer2.core.stopwords",
-        "techminer2.core.thesaurus",
-        #
-        "techminer2.helpers",
-        #
-        "techminer2._common",
-        #
+        "techminer2._core.metrics",
+        "techminer2._core.nx",
+        "techminer2._core.stopwords",
+        "techminer2._core",
         "techminer2._files",
-        #
+        "techminer2.citation_network._core",
+        "techminer2.citation_network",
+        "techminer2.co_citation_network",
+        "techminer2.co_occurrence_matrix",
+        "techminer2.co_occurrence_network",
+        "techminer2.correlation_matrix",
+        "techminer2.coupling_network._core.docs",
+        "techminer2.coupling_network._core.others",
+        "techminer2.coupling_network._core",
+        "techminer2.coupling_network",
+        "techminer2.document_clustering",
+        "techminer2.documents",
+        "techminer2.emergence",
+        "techminer2.factor_analysis._core",
+        "techminer2.factor_analysis.co_occurrence",
+        "techminer2.factor_analysis.tfidf",
+        "techminer2.factor_analysis",
         "techminer2.fields.further_processing",
-        "techminer2.fields.tests",
         "techminer2.fields",
-        #
+        "techminer2.helpers",
         "techminer2.ingest.field_importers",
         "techminer2.ingest",
-        #
-        "techminer2.metrics.globals",
         "techminer2.metrics",
-        #
         "techminer2.raw",
-        #
-        "techminer2.refine.thesaurus.countries",
-        "techminer2.refine.thesaurus.organizations",
-        "techminer2.refine.thesaurus.references",
-        "techminer2.refine.thesaurus.descriptors",
-        "techminer2.refine.thesaurus",
-        "techminer2.refine",
-        #
         "techminer2.report",
-        #
-        "techminer2.science_mapping.bibliographic_coupling.authors",
-        "techminer2.science_mapping.bibliographic_coupling.countries",
-        "techminer2.science_mapping.bibliographic_coupling.documents",
-        "techminer2.science_mapping.bibliographic_coupling.organizations",
-        "techminer2.science_mapping.bibliographic_coupling.sources",
-        "techminer2.science_mapping.bibliographic_coupling",
-        #
-        "techminer2.science_mapping.citation.publications",
-        "techminer2.science_mapping.citation.network.authors",
-        "techminer2.science_mapping.citation.network.countries",
-        "techminer2.science_mapping.citation.network.documents",
-        "techminer2.science_mapping.citation.network.organizations",
-        "techminer2.science_mapping.citation.network.sources",
-        "techminer2.science_mapping.citation.network",
-        "techminer2.science_mapping.citation",
-        #
-        "techminer2.science_mapping.co_authorship.network.authors",
-        "techminer2.science_mapping.co_authorship.network.countries",
-        "techminer2.science_mapping.co_authorship.network.organizations",
-        "techminer2.science_mapping.co_authorship.network",
-        "techminer2.science_mapping.co_authorship",
-        #
-        "techminer2.science_mapping.co_citation.cited_authors",
-        "techminer2.science_mapping.co_citation.cited_references",
-        "techminer2.science_mapping.co_citation.cited_sources",
-        "techminer2.science_mapping.co_citation",
-        #
-        "techminer2.science_mapping.co_occurrence",
-        #
-        "techminer2.science_mapping.topic_modeling.berttopic",
-        "techminer2.science_mapping.topic_modeling.lda",
-        "techminer2.science_mapping.topic_modeling.nmf",
-        "techminer2.science_mapping.topic_modeling",
-        #
-        "techminer2.science_mapping",
-        #
         "techminer2.search",
-        #
-        "techminer2.tech_mining.co_occurrence",
-        "techminer2.tech_mining.correlation",
-        "techminer2.tech_mining.document",
-        "techminer2.tech_mining.emergence",
-        #
-        "techminer2.tech_mining.pca.cooc_matrix.brute_force",
-        "techminer2.tech_mining.pca.cooc_matrix.hierarchical",
-        "techminer2.tech_mining.pca.cooc_matrix.kmeans",
-        "techminer2.tech_mining.pca.cooc_matrix.pcd",
-        "techminer2.tech_mining.pca.cooc_matrix",
-        #
-        "techminer2.tech_mining.pca.tfidf_matrix.brute_force",
-        "techminer2.tech_mining.pca.tfidf_matrix.hierarchical",
-        "techminer2.tech_mining.pca.tfidf_matrix.kmeans",
-        "techminer2.tech_mining.pca.tfidf_matrix.pcd",
-        "techminer2.tech_mining.pca.tfidf_matrix",
-        #
-        "techminer2.tech_mining.pca",
-        #
-        "techminer2.tech_mining.research_agenda.network",
-        "techminer2.tech_mining.research_agenda",
-        #
-        "techminer2.tech_mining.svd.cooc_matrix.brute_force",
-        "techminer2.tech_mining.svd.cooc_matrix.hierarchical",
-        "techminer2.tech_mining.svd.cooc_matrix.kmeans",
-        "techminer2.tech_mining.svd.cooc_matrix",
-        #
-        "techminer2.tech_mining.svd.tfidf_matrix.brute_force",
-        "techminer2.tech_mining.svd.tfidf_matrix.hierarchical",
-        "techminer2.tech_mining.svd.tfidf_matrix.kmeans",
-        "techminer2.tech_mining.svd.tfidf_matrix",
-        #
-        "techminer2.tech_mining.svd",
-        #
-        "techminer2.tech_mining",
-        #
         "techminer2.thesauri_data",
-        #
+        "techminer2.thesaurus._core",
+        "techminer2.thesaurus.abbreviations",
+        "techminer2.thesaurus.countries",
+        "techminer2.thesaurus.descriptors",
+        "techminer2.thesaurus.organizations",
+        "techminer2.thesaurus.references",
+        "techminer2.thesaurus",
         "techminer2.tools.associations",
         "techminer2.tools",
-        #
+        "techminer2.topic_modeling",
         "techminer2.word_lists",
-        #
         "techminer2",
     ],
     package_dir={"techminer2": "techminer2"},
