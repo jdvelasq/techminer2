@@ -1,5 +1,6 @@
 black
 cdlib
+contractions
 docutils
 duckdb
 fuzzywuzzy
@@ -14,7 +15,6 @@ nbsphinx
 networkx
 nltk
 pandas
-pandas-stubs
 plotly
 pygments
 pyspellchecker
@@ -31,8 +31,6 @@ sphinx-toggleprompt
 sumy
 tabulate
 textblob
-types-setuptools
-types-tqdm
 urllib3==1.26.6
 wordcloud
-networkx-stubs
+
