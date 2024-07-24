@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Search Editorials
+Find Editorials
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import search_editorials
->>> search_editorials(
+>>> from techminer2.thesaurus.descriptors import find_editorials
+>>> find_editorials(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -55,7 +55,7 @@ EDITORIALS = [
 ]
 
 
-def search_editorials(
+def find_editorials(
     #
     # DATABASE PARAMS:
     root_dir="./",

@@ -8,7 +8,7 @@ from .merge_terms import merge_terms
 from .misspelling_search import misspelling_search
 from .replace_string import replace_string
 from .reset_thesaurus import reset_thesaurus
-from .search_editorials import search_editorials
+from .find_editorials import find_editorials
 from .sort_thesaurus import sort_thesaurus
 from .text_clumping import text_clumping
 from .words_frequency import words_frequency
