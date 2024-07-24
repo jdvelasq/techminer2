@@ -145,6 +145,9 @@ def ingest_raw_data(
         run_abstract_importer(root_dir)
         run_document_title_importer(root_dir)
 
+
+        
+
         _count_terms_per_record(
             source="authors",
             dest="num_authors",
