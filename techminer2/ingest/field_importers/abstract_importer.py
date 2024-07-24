@@ -21,7 +21,6 @@ def run_abstract_importer(root_dir):
         func=lambda x: x.map(
             lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
         )
-        # .str.replace("-", "_", regex=False)
         # -----------------------------------------------------------------------------
         # 
         .str.lower()
@@ -55,10 +54,14 @@ def run_abstract_importer(root_dir):
         # 
         .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True)          # 's
         .str.replace(r"(\w+)'(\s)", r"\1\2", regex=True)           # s
+        #
+        .str.replace("-", "_", regex=False)
+        #
         # remove all non-ascii characters
         .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
         # -----------------------------------------------------------------------------
-        .str.replace(r"\s+", r" ", regex=True),                  # multiple spaces
+        .str.replace(r"\s+", r" ", regex=True)                      # multiple spaces
+        .str.strip(),                  
         # -----------------------------------------------------------------------------
         root_dir=root_dir,
     )
