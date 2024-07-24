@@ -16,20 +16,40 @@ def run_document_title_importer(root_dir):
         source="raw_document_title",
         dest="document_title",
         func=lambda x: x.str.replace(r"\[.*", "", regex=True)
-        .str.strip()
-        .str.replace(r"\s+", " ", regex=True)
-        # -----------------------------------------------------------------------------
-        # remove all non-ascii characters
-        .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
         # -----------------------------------------------------------------------------
         # remove all html tags
         .str.replace("<.*?>", "", regex=True)
-        # -----------------------------------------------------------------------------
-        # remove appostrophes
-        .str.replace("ʿ", "'", regex=False)
+        # -----------------------------------------------------------------------------        
         .str.replace("’", "'", regex=False)
-        .str.replace("'", "'", regex=False)
+        .str.replace(";", ".", regex=False)
+        #
+        .str.replace(r"(", r" ( ", regex=False)                    # (
+        .str.replace(r")", r" ) ", regex=False)                    # )
+        .str.replace(r"$", r" $ ", regex=False)                    # $
+        .str.replace(r"/", r" / ", regex=False)                    # /
+        .str.replace(r"?", r" ? ", regex=False)                    # ?
+        .str.replace(r"¿", r" ¿ ", regex=False)                    # ?
+        .str.replace(r"!", r" ! ", regex=False)                    # !
+        .str.replace(r"¡", r" ¡ ", regex=False)                    # ¡
+        .str.replace(r"=", r" = ", regex=False)                    # =
+        .str.replace(r'"', r' " ', regex=False)                    # "
+        .str.replace(r":", r" : ", regex=False)                    # :
+        .str.replace(r"%", r" % ", regex=False)                    # %
+        #
+        .str.replace(r"(\w+)(,\s)", r"\1 \2", regex=True)          # ,
+        .str.replace(r"(\')(,\s)", r"\1 \2", regex=True)           # ,
+        .str.replace(r"(\w+)(\.\s)", r"\1 \2", regex=True)         # . 
+        .str.replace(r"(\w+)\.$", r"\1 .", regex=True)             # .         
+        # 
+        .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True)          # 's
+        .str.replace(r"(\w+)'(\s)", r"\1\2", regex=True)           # s
+        #
+        .str.replace("-", "_", regex=False)
+        #
+        # remove all non-ascii characters
+        .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
         # -----------------------------------------------------------------------------
-        .str.lower(),
+        .str.replace(r"\s+", r" ", regex=True)                      # multiple spaces
+        .str.strip(),                  
         root_dir=root_dir,
     )
