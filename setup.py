@@ -90,6 +90,7 @@ setup(
         "techminer2.metrics",
         "techminer2.raw",
         "techminer2.report",
+        "techminer2.rpys",
         "techminer2.search",
         "techminer2.thesauri_data",
         "techminer2.thesaurus._core",
