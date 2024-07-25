@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 

@@ -52,8 +52,8 @@ Chen L., 2016, CHINA ECON J, V9, P225                         1  ...            
 """
 from typing import Literal
 
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
+import pandas as pd  #  type: ignore
+from sklearn.feature_extraction.text import TfidfTransformer
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric

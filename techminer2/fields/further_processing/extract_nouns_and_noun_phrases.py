@@ -10,9 +10,9 @@ import glob
 import os.path
 import re
 
-import pandas as pd
-from textblob import TextBlob
-from tqdm import tqdm
+import pandas as pd  # type: ignore
+from textblob import TextBlob  # type: ignore
+from tqdm import tqdm  # type: ignore
 
 from ..protected_fields import PROTECTED_FIELDS
 

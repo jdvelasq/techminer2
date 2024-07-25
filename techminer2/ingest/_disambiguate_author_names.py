@@ -1,10 +1,9 @@
 """Disambiguate author names using Scopus Author(s) ID."""
 
-
 import glob
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._message import message
 
@@ -15,12 +14,7 @@ def disambiguate_author_names(root_dir):
     #
     def load_authors_names():
         files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-        data = [
-            pd.read_csv(file, encoding="utf-8", compression="zip")[
-                ["authors", "authors_id"]
-            ]
-            for file in files
-        ]
+        data = [pd.read_csv(file, encoding="utf-8", compression="zip")[["authors", "authors_id"]] for file in files]
         data = pd.concat(data)
         data = data.dropna()
 
@@ -31,16 +25,10 @@ def disambiguate_author_names(root_dir):
         data = data.copy()
         data = data.assign(authors_and_ids=data.authors + "#" + data.authors_id)
         data.authors_and_ids = data.authors_and_ids.str.split("#")
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: (x[0].split(";"), x[1].split(";"))
-        )
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: list(zip(x[0], x[1]))
-        )
+        data.authors_and_ids = data.authors_and_ids.apply(lambda x: (x[0].split(";"), x[1].split(";")))
+        data.authors_and_ids = data.authors_and_ids.apply(lambda x: list(zip(x[0], x[1])))
         data = data.explode("authors_and_ids")
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: (x[0].strip(), x[1].strip())
-        )
+        data.authors_and_ids = data.authors_and_ids.apply(lambda x: (x[0].strip(), x[1].strip()))
         data = data.reset_index(drop=True)
         data = data[["authors_and_ids"]]
         data["author"] = data.authors_and_ids.apply(lambda x: x[0])

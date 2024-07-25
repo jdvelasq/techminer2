@@ -21,8 +21,8 @@ Find Abbreviations
 import os.path
 import re
 
-import pandas as pd
-from tqdm import tqdm
+import pandas as pd  # type: ignore
+from tqdm import tqdm  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from .._core.load_thesaurus_as_frame import load_thesaurus_as_frame

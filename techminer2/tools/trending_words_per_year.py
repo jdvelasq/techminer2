@@ -71,7 +71,7 @@ ARTIFICIAL_INTELLIGENCE    2     2019      2019  ...   0    0.15      1
 from dataclasses import dataclass
 
 import numpy as np
-import plotly.graph_objects as go  # type: ignore
+import plotly.graph_objects as go
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric

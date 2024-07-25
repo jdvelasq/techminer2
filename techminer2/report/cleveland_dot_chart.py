@@ -41,7 +41,7 @@ Cleveland Dot Chart
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 from ..metrics.performance_metrics import performance_metrics
 

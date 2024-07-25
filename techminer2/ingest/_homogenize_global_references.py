@@ -21,7 +21,7 @@ import os
 import os.path
 import pathlib
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ..thesaurus.references.apply_thesaurus import apply_thesaurus
 from ._message import message

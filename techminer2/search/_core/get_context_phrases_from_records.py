@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 
-import pandas as pd  # type: ignore
+import pandas as pd  #  type: ignore
 
 
 def _get_context_phrases_from_records(

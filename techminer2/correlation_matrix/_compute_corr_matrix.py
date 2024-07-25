@@ -1,6 +1,6 @@
 """Computes the correlation matrix for a given data matrix."""
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 
 def compute_corr_matrix(

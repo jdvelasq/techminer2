@@ -63,7 +63,7 @@ term                                          ...
 
 
 """
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .cluster_to_terms_mapping import cluster_to_terms_mapping
 

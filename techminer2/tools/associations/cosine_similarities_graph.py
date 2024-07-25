@@ -11,9 +11,9 @@ Cosine Similarities Graph
 
 
 """
-import pandas as pd
-import plotly.express as px
-from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd  # type: ignore
+import plotly.express as px  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 

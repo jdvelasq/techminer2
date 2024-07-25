@@ -23,8 +23,8 @@ Stemming Field with AND
 import glob
 import os.path
 
-import pandas as pd
-from textblob import TextBlob
+import pandas as pd  # type: ignore
+from textblob import TextBlob  # type: ignore
 
 from ..._dtypes import DTYPES
 from ..protected_fields import PROTECTED_FIELDS
@@ -97,10 +97,7 @@ def _stemming_field_with_and(
     #
     # Checks if all stemmed words are in the list of stemmed words
     items["keys"] = items["keys"].map(
-        lambda words: any(
-            all(stemmed_word in words for stemmed_word in stemmed_term)
-            for stemmed_term in stemmed_terms
-        )
+        lambda words: any(all(stemmed_word in words for stemmed_word in stemmed_term) for stemmed_term in stemmed_terms)
     )
 
     #

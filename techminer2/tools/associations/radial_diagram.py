@@ -61,7 +61,7 @@ Radial Diagram
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import networkx as nx
+import networkx as nx  # type: ignore
 
 from ..._core.nx.nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
 from ..._core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences

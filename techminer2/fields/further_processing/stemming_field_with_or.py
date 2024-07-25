@@ -23,7 +23,7 @@ Stemming Field with OR
 import glob
 import os.path
 
-import pandas as pd
+import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from ..._dtypes import DTYPES
@@ -97,10 +97,7 @@ def _stemming_field_with_or(
     #
     # Checks if all stemmed words are in the list of stemmed words
     items["keys"] = items["keys"].map(
-        lambda words: any(
-            any(stemmed_word in words for stemmed_word in stemmed_term)
-            for stemmed_term in stemmed_terms
-        )
+        lambda words: any(any(stemmed_word in words for stemmed_word in stemmed_term) for stemmed_term in stemmed_terms)
     )
 
     #

@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 
 def _transform_context_phrases_to_contexts_paragraphs(

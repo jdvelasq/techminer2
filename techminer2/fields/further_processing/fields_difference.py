@@ -24,7 +24,7 @@ Fields Difference
 import glob
 import os.path
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ..._dtypes import DTYPES
 from ..merge_fields import merge_fields
@@ -83,37 +83,15 @@ def _fields_difference(
 
         #
         # Compute terms in both columns
-        first_terms = (
-            data[compare_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
+        first_terms = data[compare_field].dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
 
-        second_terms = (
-            data[to_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
+        second_terms = data[to_field].dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
 
         common_terms = list(set(first_terms).difference(set(second_terms)))
 
         #
         # Update columns
-        data[output_field] = (
-            data[output_field]
-            .str.split("; ")
-            .map(lambda x: [z for z in x if z in common_terms], na_action="ignore")
-        )
-        data[output_field] = data[output_field].map(
-            lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore"
-        )
+        data[output_field] = data[output_field].str.split("; ").map(lambda x: [z for z in x if z in common_terms], na_action="ignore")
+        data[output_field] = data[output_field].map(lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore")
 
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

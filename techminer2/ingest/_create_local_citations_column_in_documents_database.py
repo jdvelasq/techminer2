@@ -1,9 +1,8 @@
 """Create local citations column in documents database."""
 
-
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._message import message
 

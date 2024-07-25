@@ -47,7 +47,7 @@ Demertzis M.       2018    1  ...                     0.000
 
 
 """
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ..read_filtered_database import read_filtered_database
 

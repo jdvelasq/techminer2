@@ -34,7 +34,7 @@ Filter a Field
 import glob
 import os.path
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .._dtypes import DTYPES
 from ..metrics import performance_metrics
@@ -122,12 +122,8 @@ def filter_field(
 
         idx = data_filtered.index.copy()
         data_full.loc[idx, dest] = data_full.loc[idx, source].copy()
-        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
-            lambda w: w.split("; "), na_action="ignore"
-        )
-        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
-            lambda ws: [w for w in ws if w in valid_items], na_action="ignore"
-        )
+        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(lambda w: w.split("; "), na_action="ignore")
+        data_full.loc[idx, dest] = data_full.loc[idx, dest].map(lambda ws: [w for w in ws if w in valid_items], na_action="ignore")
         data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
             lambda ws: "; ".join(ws) if isinstance(ws, list) else ws,
             na_action="ignore",

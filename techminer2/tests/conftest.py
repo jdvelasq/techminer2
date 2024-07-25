@@ -2,7 +2,7 @@
 
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 import pytest
 
 from ..constansts import DATABASE_NAMES_TO_FILE_NAMES, TEST_DIR

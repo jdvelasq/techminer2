@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 
 import numpy as np
-import pandas as pd
+import pandas as pd  #  type: ignore
 import plotly.graph_objects as go
 from sklearn.neighbors import KernelDensity
 

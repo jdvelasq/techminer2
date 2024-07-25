@@ -33,8 +33,8 @@ Cluster Records
 """
 
 import numpy as np
-import pandas as pd
-import plotly.express as px
+import pandas as pd  # type: ignore
+import plotly.express as px  # type: ignore
 import plotly.graph_objects as go
 from sklearn.manifold import MDS
 from sklearn.neighbors import KernelDensity

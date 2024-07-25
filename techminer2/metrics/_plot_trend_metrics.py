@@ -6,7 +6,7 @@
 # pylint: disable=invalid-name
 """Trend Metrics Chart"""
 
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -30,11 +30,7 @@ def plot_trend_metrics(
 ):
     """Makes a time line plot for indicators."""
 
-    column_names = {
-        column: column.replace("_", " ").title()
-        for column in data_frame.columns
-        if column not in ["OCC", "cum_OCC"]
-    }
+    column_names = {column: column.replace("_", " ").title() for column in data_frame.columns if column not in ["OCC", "cum_OCC"]}
     column_names["OCC"] = "OCC"
     column_names["cum_OCC"] = "cum OCC"
     data_frame = data_frame.rename(columns=column_names)

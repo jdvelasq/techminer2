@@ -4,7 +4,7 @@ This module implement generic thesaurus functions.
 
 """
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 
 def load_thesaurus_as_frame(file_path):

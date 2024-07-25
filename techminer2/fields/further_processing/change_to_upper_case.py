@@ -23,7 +23,7 @@ Remove Multiple Spaces
 import glob
 import os.path
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ..protected_fields import PROTECTED_FIELDS
 

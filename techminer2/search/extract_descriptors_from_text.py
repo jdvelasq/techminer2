@@ -35,7 +35,7 @@ import os
 import os.path
 import re
 
-from textblob import TextBlob
+from textblob import TextBlob  # type: ignore
 
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 

@@ -21,7 +21,7 @@ Apply References Thesaurus
 import os.path
 import pathlib
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 

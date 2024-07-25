@@ -1,13 +1,12 @@
 """Tranform keywords to uppercase in abstract and title"""
 
-
 import glob
 import os
 import pathlib
 import re
 
-import pandas as pd
-from tqdm import tqdm
+import pandas as pd  # type: ignore
+from tqdm import tqdm  # type: ignore
 
 from ._message import message
 
@@ -24,11 +23,7 @@ def _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
         documents_path = pathlib.Path(root_dir) / "databases/_main.csv.zip"
         documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
         #
-        documents["document_title"] = (
-            documents["document_title"]
-            .astype(str)
-            .apply(lambda x: x.translate(str.maketrans("-", " ")))
-        )
+        documents["document_title"] = documents["document_title"].astype(str).apply(lambda x: x.translate(str.maketrans("-", " ")))
         #
         documents.to_csv(documents_path, index=False, compression="zip")
 
@@ -42,11 +37,7 @@ def _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
         documents_path = pathlib.Path(root_dir) / "databases/_main.csv.zip"
         documents = pd.read_csv(documents_path, encoding="utf-8", compression="zip")
         #
-        documents["abstract"] = (
-            documents["abstract"]
-            .astype(str)
-            .apply(lambda x: x.translate(str.maketrans("-", " ")))
-        )
+        documents["abstract"] = documents["abstract"].astype(str).apply(lambda x: x.translate(str.maketrans("-", " ")))
         #
         documents.to_csv(documents_path, index=False, compression="zip")
 
@@ -88,16 +79,11 @@ def _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
             descriptors = [
                 d
                 for d in terms
-                if (
-                    isinstance(row["document_title"], str)
-                    and d in row["document_title"]
-                )
+                if (isinstance(row["document_title"], str) and d in row["document_title"])
                 or (isinstance(row["abstract"], str) and d in row["abstract"])
             ]
 
-            descriptors = sorted(
-                descriptors, key=lambda x: len(x.split(" ")), reverse=True
-            )
+            descriptors = sorted(descriptors, key=lambda x: len(x.split(" ")), reverse=True)
 
             descriptors = [re.escape(d) for d in descriptors]
             descriptors += [d + r"(?:'s)" for d in descriptors]  # apostrophe

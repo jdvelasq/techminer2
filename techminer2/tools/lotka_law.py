@@ -37,7 +37,7 @@ Lotka's Law
 """
 from dataclasses import dataclass
 
-import plotly.graph_objects as go  # type: ignore
+import plotly.graph_objects as go
 
 
 def lotka_law(

@@ -26,7 +26,7 @@ SummarySheet
 4                art_no               50         1.0%
 
 """
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 

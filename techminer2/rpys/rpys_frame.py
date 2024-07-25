@@ -24,7 +24,7 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 1961               0     0.0
 
 """
-import pandas as pd  # type: ignore
+import pandas as pd  #  type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 

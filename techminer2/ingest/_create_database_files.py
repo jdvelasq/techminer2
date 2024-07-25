@@ -1,4 +1,5 @@
 """Create database files."""
+
 # Create databse files by:
 # 1. Concatenating raw ZIP files in the specified directory
 # 2. Saving the concatenated file in the database directory
@@ -6,7 +7,7 @@
 
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._get_subdirectories import get_subdirectories
 from ._message import message
@@ -22,9 +23,7 @@ def create_database_files(root_dir):
 
     folders = get_subdirectories(raw_dir)
     for folder in folders:
-        data = concat_zip_files_in_raw_data_subdirectories(
-            os.path.join(raw_dir, folder)
-        )
+        data = concat_zip_files_in_raw_data_subdirectories(os.path.join(raw_dir, folder))
         #
         if len(data) < 500:
             os.environ["TQDM_DISABLE"] = "True"
@@ -33,9 +32,7 @@ def create_database_files(root_dir):
         #
         file_name = f"_{folder}.csv.zip"
         file_path = os.path.join(processed_dir, file_name)
-        data.to_csv(
-            file_path, sep=",", encoding="utf-8", index=False, compression="zip"
-        )
+        data.to_csv(file_path, sep=",", encoding="utf-8", index=False, compression="zip")
 
     file_path = os.path.join(root_dir, "databases/_DO_NOT_TOUCH_.txt")
     with open(file_path, "w", encoding="utf-8"):

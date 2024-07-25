@@ -47,7 +47,7 @@ import glob
 import os
 
 import numpy as np
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..protected_fields import PROTECTED_FIELDS

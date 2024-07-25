@@ -62,7 +62,7 @@ import os.path
 import re
 import textwrap
 
-import pandas as pd
+import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 

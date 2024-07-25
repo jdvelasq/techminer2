@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import networkx as nx
+import networkx as nx  # type: ignore
 
 
 def nx_compute_spring_layout_positions(

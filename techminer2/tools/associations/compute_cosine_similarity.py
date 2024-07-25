@@ -7,8 +7,8 @@
 # pylint: disable=too-many-statements
 
 
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 
 def compute_cosine_similarity(matrix):

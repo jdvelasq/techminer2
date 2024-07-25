@@ -27,8 +27,8 @@ import os
 import os.path
 import sys
 
-import pandas as pd
-import pkg_resources
+import pandas as pd  # type: ignore
+import pkg_resources  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict

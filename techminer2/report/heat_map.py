@@ -47,7 +47,7 @@ Heat Map
 
 """
 import numpy as np
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 
 def heat_map(

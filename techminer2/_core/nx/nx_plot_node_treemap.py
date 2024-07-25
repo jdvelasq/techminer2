@@ -25,7 +25,7 @@ Treemap
 #     <iframe src="../_static/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.graph_objs as go
+import plotly.graph_objs as go  # type: ignore
 
 from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 

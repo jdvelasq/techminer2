@@ -84,8 +84,8 @@ Bradford's Law
 from dataclasses import dataclass
 
 import numpy as np
-import pandas as pd
-import plotly.express as px
+import pandas as pd  # type: ignore
+import plotly.express as px  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 

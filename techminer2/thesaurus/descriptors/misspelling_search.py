@@ -22,7 +22,7 @@ import sys
 from os.path import isfile, join
 
 from spellchecker import SpellChecker
-from textblob import TextBlob
+from textblob import TextBlob  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 

@@ -15,7 +15,7 @@ TODO: Thematic Document Classification
 
 
 """
-# import pandas as pd
+# import pandas as pd  # type: ignore
 
 # from ... import vantagepoint
 # from ...make_report_dir import make_report_dir

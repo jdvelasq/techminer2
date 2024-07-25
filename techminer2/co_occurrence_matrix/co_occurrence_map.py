@@ -128,9 +128,9 @@ Co-occurrence Map
 
     
 """
-import networkx as nx
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
+import networkx as nx  # type: ignore
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from .._core.nx.nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
 from .._core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences

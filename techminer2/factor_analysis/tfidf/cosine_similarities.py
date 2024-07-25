@@ -59,8 +59,8 @@ FINANCIAL_INCLUSION 03:0590   CASE_STUDY 02:0340 (0.971); BLOCKCHAIN 02:0305...
 FINANCIAL_TECHNOLOGY 03:0461  FINANCIAL_SERVICES 04:0667 (0.885); BUSINESS_M...
     
 """
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity as sklearn_cosine_similarity
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore as sklearn_cosine_similarity
 
 from .terms_by_dimension_frame import terms_by_dimension_frame
 

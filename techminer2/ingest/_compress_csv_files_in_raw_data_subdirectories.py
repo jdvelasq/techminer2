@@ -2,7 +2,7 @@
 
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._get_subdirectories import get_subdirectories
 from ._message import message

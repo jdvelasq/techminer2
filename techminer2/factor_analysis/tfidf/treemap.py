@@ -69,8 +69,8 @@ Treemap
 
     
 """
-import plotly.express as px
-import plotly.graph_objs as go
+import plotly.express as px  # type: ignore
+import plotly.graph_objs as go  # type: ignore
 
 from .terms_to_cluster_mapping import terms_to_cluster_mapping
 

@@ -1,9 +1,8 @@
 """Chnage Scopus default column names to TechMiner2 default column names."""
 
-
 import pathlib
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._message import message
 
@@ -69,8 +68,6 @@ def rename_columns_in_database_files(root_dir):
         data.rename(columns=SCOPUS_2_TECHMINER_TAGS, inplace=True)
         #
         # Other columns names not in the standard Scopus format
-        data.columns = [
-            name.lower().replace(".", "").replace(" ", "_") for name in data.columns
-        ]
+        data.columns = [name.lower().replace(".", "").replace(" ", "_") for name in data.columns]
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

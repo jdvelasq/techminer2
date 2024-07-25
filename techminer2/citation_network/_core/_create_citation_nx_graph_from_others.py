@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import networkx as nx
+import networkx as nx  # type: ignore
 import numpy as np
 
 from ..._core.read_filtered_database import read_filtered_database

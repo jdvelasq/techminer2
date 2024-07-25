@@ -60,8 +60,8 @@ Treemap
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.express as px
-import plotly.graph_objs as go
+import plotly.express as px  # type: ignore
+import plotly.graph_objs as go  # type: ignore
 
 from .terms_to_cluster_mapping import terms_to_cluster_mapping
 

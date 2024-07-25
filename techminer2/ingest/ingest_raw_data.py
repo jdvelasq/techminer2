@@ -30,8 +30,8 @@ python3 -m pip install types-tqdm
 import os
 import time
 
-import pandas as pd
-from tqdm import tqdm
+import pandas as pd  # type: ignore
+from tqdm import tqdm  # type: ignore
 
 # -------------------------------------------------------------------------------------
 # Field basic operations
@@ -144,9 +144,6 @@ def ingest_raw_data(
         run_abbr_source_title_importer(root_dir)
         run_abstract_importer(root_dir)
         run_document_title_importer(root_dir)
-
-
-        
 
         _count_terms_per_record(
             source="authors",

@@ -2,7 +2,7 @@
 
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 
 def create_local_citations_column_in_cited_by_database(root_dir):

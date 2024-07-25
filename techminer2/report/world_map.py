@@ -40,8 +40,8 @@ World Map
 
 
 """
-import pandas as pd
-import plotly.express as px
+import pandas as pd  # type: ignore
+import plotly.express as px  # type: ignore
 
 from ..metrics.performance_metrics import performance_metrics
 

@@ -18,7 +18,7 @@ import os.path
 import textwrap
 from collections import defaultdict
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ...helpers.helper_format_prompt_for_records import helper_format_prompt_for_records
 from ...helpers.helper_format_report_for_records import helper_format_report_for_records

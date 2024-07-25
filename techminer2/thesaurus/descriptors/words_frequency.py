@@ -34,7 +34,7 @@ Name: count, dtype: int64
 import os
 import os.path
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 
 def words_frequency(

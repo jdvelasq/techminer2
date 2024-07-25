@@ -71,7 +71,7 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes

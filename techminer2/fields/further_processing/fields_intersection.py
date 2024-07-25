@@ -23,7 +23,7 @@ Fields Intersection
 import glob
 import os.path
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ..._dtypes import DTYPES
 from ..merge_fields import merge_fields
@@ -82,25 +82,9 @@ def _fields_intersection(
 
         #
         # Compute terms in both columns
-        first_terms = (
-            data[compare_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
+        first_terms = data[compare_field].dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
 
-        second_terms = (
-            data[to_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
+        second_terms = data[to_field].dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
 
         common_terms = list(set(first_terms).intersection(set(second_terms)))
 

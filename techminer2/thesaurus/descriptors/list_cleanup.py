@@ -21,8 +21,8 @@ List Cleanup
 """
 import os.path
 
-import pandas as pd
-import pkg_resources
+import pandas as pd  # type: ignore
+import pkg_resources  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"

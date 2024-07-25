@@ -10,10 +10,10 @@ import glob
 import os.path
 import re
 
-import pandas as pd
-from nltk.stem import WordNetLemmatizer
-from textblob import TextBlob
-from tqdm import tqdm
+import pandas as pd  # type: ignore
+from nltk.stem import WordNetLemmatizer  # type: ignore
+from textblob import TextBlob  # type: ignore
+from tqdm import tqdm  # type: ignore
 
 from ..._core.stopwords.load_package_stopwords import load_package_stopwords
 from ..protected_fields import PROTECTED_FIELDS

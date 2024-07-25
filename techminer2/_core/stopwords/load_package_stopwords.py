@@ -3,7 +3,7 @@ Loads package stopwords.
 
 """
 
-import pkg_resources
+import pkg_resources  # type: ignore
 
 
 def load_package_stopwords():

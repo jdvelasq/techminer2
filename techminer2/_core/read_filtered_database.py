@@ -6,7 +6,7 @@ Read bibliometric records from a database.
 
 import os.path
 
-import pandas as pd
+import pandas as pd  # type: ignore
 
 
 def read_filtered_database(

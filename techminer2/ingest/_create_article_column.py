@@ -1,11 +1,10 @@
 """Create WoS style article column in databases."""
 
-
 import glob
 import os
 
 import numpy as np
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._message import message
 
@@ -24,9 +23,7 @@ def create_article_column(root_dir):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
         #
-        wos_ref = data.authors.map(
-            lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]"
-        )
+        wos_ref = data.authors.map(lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]")
         #
         #
         abbr_source_title = data.abbr_source_title.copy()
@@ -61,26 +58,14 @@ def create_article_column(root_dir):
             abbr_source_title,
         )
         #
-        wos_ref += data.volume.map(
-            lambda x: ", V" + str(x).replace(".0", "") if not pd.isna(x) else ""
-        )
-        wos_ref += data.page_start.map(
-            lambda x: ", P" + str(x).replace(".0", "") if not pd.isna(x) else ""
-        )
+        wos_ref += data.volume.map(lambda x: ", V" + str(x).replace(".0", "") if not pd.isna(x) else "")
+        wos_ref += data.page_start.map(lambda x: ", P" + str(x).replace(".0", "") if not pd.isna(x) else "")
         #
         index = wos_ref[wos_ref.duplicated()].index
         if len(index) > 0:
-            wos_ref.loc[index] += ", " + data.document_title.loc[index].str[
-                :29
-            ].str.upper().str.replace(".", "").str.replace(" - ", " ").str.replace(
-                ",", ""
-            ).str.replace(
-                ":", ""
-            ).str.replace(
-                "-", ""
-            ).str.replace(
-                "'", ""
-            )
+            wos_ref.loc[index] += ", " + data.document_title.loc[index].str[:29].str.upper().str.replace(".", "").str.replace(
+                " - ", " "
+            ).str.replace(",", "").str.replace(":", "").str.replace("-", "").str.replace("'", "")
 
         #
         data["article"] = wos_ref.copy()

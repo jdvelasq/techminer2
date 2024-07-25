@@ -23,8 +23,8 @@ Text Clumping
 """
 import os.path
 
-import pandas as pd
-import pkg_resources
+import pandas as pd  # type: ignore
+import pkg_resources  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict

@@ -1,12 +1,11 @@
 """Filter NLP phrases"""
 
-
 import os
 import pathlib
 
-import pandas as pd
+import pandas as pd  # type: ignore
 import requests
-from nltk.stem import PorterStemmer
+from nltk.stem import PorterStemmer  # type: ignore
 
 from ._message import message
 
@@ -32,9 +31,7 @@ def filter_nlp_phrases(root_dir):
                 if column not in data.columns:
                     continue
                 file_nlp_phrases = data[column].dropna()
-                file_nlp_phrases = (
-                    file_nlp_phrases.dropna().str.split(";").explode().str.strip()
-                )
+                file_nlp_phrases = file_nlp_phrases.dropna().str.split(";").explode().str.strip()
                 nlp_phrases = pd.concat([nlp_phrases, file_nlp_phrases])
 
         return nlp_phrases
@@ -53,9 +50,7 @@ def filter_nlp_phrases(root_dir):
             if column not in data.columns:
                 continue
             file_nlp_phrases = data[column].dropna()
-            file_nlp_phrases = (
-                file_nlp_phrases.dropna().str.split(";").explode().str.strip()
-            )
+            file_nlp_phrases = file_nlp_phrases.dropna().str.split(";").explode().str.strip()
             nlp_phrases = pd.concat([nlp_phrases, file_nlp_phrases])
 
         return nlp_phrases.drop_duplicates().to_list()
@@ -71,15 +66,11 @@ def filter_nlp_phrases(root_dir):
         # Computes the fingerprint key
         stemmer = PorterStemmer()
 
-        nlp_phrases["fingerprint"] = nlp_phrases["nlp_phrase"].str.translate(
-            str.maketrans("-", " ")
-        )
+        nlp_phrases["fingerprint"] = nlp_phrases["nlp_phrase"].str.translate(str.maketrans("-", " "))
         nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].str.split(" ")
         #
         # ***
-        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(
-            lambda x: [stemmer.stem(w) for w in x]
-        )
+        nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].map(lambda x: [stemmer.stem(w) for w in x])
         # nlp_phrases["fingerprint"] = nlp_phrases["fingerprint"].swifter.apply(
         #     lambda x: [stemmer.stem(w) for w in x]
         # )
@@ -92,13 +83,9 @@ def filter_nlp_phrases(root_dir):
 
         #
         # Computes the occurrences and select terms with occ > 1
-        nlp_phrases["appareances"] = nlp_phrases.groupby("fingerprint")[
-            "OCC"
-        ].transform("sum")
+        nlp_phrases["appareances"] = nlp_phrases.groupby("fingerprint")["OCC"].transform("sum")
         stopword_nlp_phrases = nlp_phrases.loc[nlp_phrases["appareances"] < 2, :]
-        stopword_nlp_phrases = (
-            stopword_nlp_phrases.nlp_phrase.drop_duplicates().to_list()
-        )
+        stopword_nlp_phrases = stopword_nlp_phrases.nlp_phrase.drop_duplicates().to_list()
 
         return stopword_nlp_phrases
 

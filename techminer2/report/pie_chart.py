@@ -40,7 +40,7 @@ Pie Chart
     
 
 """
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 from ..metrics.performance_metrics import performance_metrics
 

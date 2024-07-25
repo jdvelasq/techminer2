@@ -19,8 +19,8 @@ import pathlib
 import re
 from os.path import dirname
 
-import pandas as pd
-from nltk.stem import PorterStemmer
+import pandas as pd  # type: ignore
+from nltk.stem import PorterStemmer  # type: ignore
 
 from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 

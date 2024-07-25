@@ -67,10 +67,10 @@ import os.path
 import re
 import textwrap
 
-import pandas as pd
-from nltk.stem import PorterStemmer
-from sklearn.metrics.pairwise import cosine_similarity
-from textblob import TextBlob
+import pandas as pd  # type: ignore
+from nltk.stem import PorterStemmer  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
+from textblob import TextBlob  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
@@ -175,7 +175,7 @@ def prepare_text(root_dir, text):
     descriptors = sorted(descriptors, key=lambda x: len(x.split(" ")), reverse=True)
     descriptors = [re.escape(d) for d in descriptors]
     descriptors = "|".join(descriptors)
-    regex = re.compile(r"\b(" + descriptors + r")\b")
+    # regex = re.compile(r"\b(" + descriptors + r")\b")
 
     #
     # Highlight the text with the descriptors

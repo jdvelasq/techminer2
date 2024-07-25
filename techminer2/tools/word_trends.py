@@ -65,7 +65,7 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from ..metrics.growth_metrics import growth_metrics

@@ -50,7 +50,7 @@ Terms by Cluster Summary
 
 
 """
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .clusters_to_terms_mapping import clusters_to_terms_mapping
 

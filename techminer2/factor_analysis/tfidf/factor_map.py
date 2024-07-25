@@ -93,8 +93,8 @@ Factor Map
 
 
 """
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from ...correlation_matrix._correlation_map import correlation_map
 from .cluster_centers_frame import cluster_centers_frame

@@ -51,7 +51,7 @@ FINANCIAL_TECHNOLOGY 03:0461  -1.487691  0.959672 -0.271058  0.837526 -0.690393
 
     
 """
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ...co_occurrence_matrix import co_occurrence_matrix
 from ...co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix

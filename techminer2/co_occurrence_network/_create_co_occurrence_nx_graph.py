@@ -10,7 +10,7 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 
 """
-import networkx as nx
+import networkx as nx  # type: ignore
 
 from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix

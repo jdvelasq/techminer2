@@ -1,9 +1,6 @@
 """Creates the project subdirectories and files."""
 
 import os
-import shutil
-
-import pkg_resources
 
 from ._message import message
 

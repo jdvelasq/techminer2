@@ -61,8 +61,8 @@ Creates an Auto-correlation Map.
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from ._correlation_map import correlation_map
 from .auto_correlation_matrix import auto_correlation_matrix

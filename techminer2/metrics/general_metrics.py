@@ -70,7 +70,7 @@ DESCRIPTORS    Raw descriptors                               1114
 import datetime
 
 import numpy as np
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 

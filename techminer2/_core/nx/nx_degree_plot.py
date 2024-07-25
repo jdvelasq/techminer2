@@ -100,8 +100,8 @@ Network Deegre Plot
 """
 from dataclasses import dataclass
 
-import pandas as pd
-import plotly.express as px
+import pandas as pd  # type: ignore
+import plotly.express as px  # type: ignore
 
 from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 from .nx_assign_degree_to_nodes import nx_assign_degree_to_nodes

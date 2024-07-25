@@ -10,8 +10,8 @@
 import glob
 import os
 
-import pandas as pd
-import pkg_resources
+import pandas as pd  # type: ignore
+import pkg_resources  # type: ignore
 
 
 def _adds_countries_and_regions_to_stopwords(
@@ -29,9 +29,7 @@ def _adds_countries_and_regions_to_stopwords(
     # Adds countries and regions to stopwords
     countries_and_regions = []
 
-    country2regions_file_path = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/country-to-region.the.txt"
-    )
+    country2regions_file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-region.the.txt")
 
     # country2regions_file_path = os.path.join(
     #     root_dir, "thesauri/country-to-region.the.txt"
@@ -44,9 +42,7 @@ def _adds_countries_and_regions_to_stopwords(
 
     #
     # Adds countries and sub-regions to stopwords
-    country2regions_file_path = pkg_resources.resource_filename(
-        "techminer2", "thesauri_data/country-to-subregion.the.txt"
-    )
+    country2regions_file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-subregion.the.txt")
 
     # country2regions_file_path = os.path.join(
     #     root_dir, "thesauri/country-to-subregion.the.txt"
@@ -66,16 +62,7 @@ def _adds_countries_and_regions_to_stopwords(
             data = pd.read_csv(file, encoding="utf-8", compression="zip")
             if col in data.columns:
                 if data[col].dropna().shape[0] > 0:
-                    keywords = (
-                        data[col]
-                        .dropna()
-                        .str.upper()
-                        .str.split("; ")
-                        .explode()
-                        .str.strip()
-                        .drop_duplicates()
-                        .tolist()
-                    )
+                    keywords = data[col].dropna().str.upper().str.split("; ").explode().str.strip().drop_duplicates().tolist()
                     keywords = [w for w in keywords if w not in countries_and_regions]
                     if len(keywords) > 0:
                         stopwords.extend(keywords)

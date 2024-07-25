@@ -51,8 +51,8 @@ FINANCIAL_TECHNOLOGY 03:0461  BANKING 02:0291 (0.814); BUSINESS_MODELS 02:07...
 
     
 """
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity as sklearn_cosine_similarity
+import pandas as pd  # type: ignore
+from sklearn.metrics.pairwise import cosine_similarity as sklearn_cosine_similarity  # type: ignore
 
 from .terms_by_dimension_frame import terms_by_dimension_frame
 

@@ -73,7 +73,7 @@ Your task is ...
 """
 from dataclasses import dataclass
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 import plotly.graph_objects as go
 
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes

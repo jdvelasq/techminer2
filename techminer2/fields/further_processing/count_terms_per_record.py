@@ -22,7 +22,7 @@ Count Terms per Record
 import glob
 import os.path
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ..._dtypes import DTYPES
 from ..protected_fields import PROTECTED_FIELDS

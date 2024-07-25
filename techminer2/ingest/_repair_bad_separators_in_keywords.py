@@ -2,7 +2,7 @@
 
 import pathlib
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._message import message
 
@@ -25,10 +25,6 @@ def repair_bad_separators_in_keywords(root_dir):
         for column in ["raw_index_keywords", "raw_authors_keywords"]:
             if column in data.columns:
                 data[column] = data[column].map(
-                    lambda x: x.replace(",", ";")
-                    if isinstance(x, str)
-                    and ";" not in x
-                    and len(x) > KEYWORDS_MAX_LENGTH
-                    else x
+                    lambda x: x.replace(",", ";") if isinstance(x, str) and ";" not in x and len(x) > KEYWORDS_MAX_LENGTH else x
                 )
         data.to_csv(file, index=False, encoding="utf-8", compression="zip")

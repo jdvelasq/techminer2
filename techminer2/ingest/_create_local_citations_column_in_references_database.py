@@ -1,9 +1,8 @@
 """Creates `local_citations` column in references database."""
 
-
 import os
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from ._message import message
 

@@ -10,9 +10,9 @@ import glob
 import os.path
 import re
 
-import pandas as pd
+import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
-from tqdm import tqdm
+from tqdm import tqdm  # type: ignore
 
 from ..protected_fields import PROTECTED_FIELDS
 
@@ -87,10 +87,7 @@ def extract_noun_phrases_from_record(text):
         regex = re.compile(r"\b(" + regex + r")\b")
         text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
 
-    noun_phrases = [
-        phrase.replace("_", "").strip().replace("  ", " ").upper().replace(" ", "_")
-        for phrase in noun_phrases
-    ]
+    noun_phrases = [phrase.replace("_", "").strip().replace("  ", " ").upper().replace(" ", "_") for phrase in noun_phrases]
     noun_phrases = "; ".join(noun_phrases)
     noun_phrases = noun_phrases.upper()
 

@@ -43,7 +43,7 @@ Merge Terms
 import re
 from os.path import isfile, join
 
-import pandas as pd
+import pandas as pd  #  type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 

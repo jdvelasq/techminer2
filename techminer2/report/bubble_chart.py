@@ -42,7 +42,7 @@ Bubble Chart
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.express as px
+import plotly.express as px  # type: ignore
 
 from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 

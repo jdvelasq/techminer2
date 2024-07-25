@@ -11,8 +11,8 @@
 # Compute network metrics
 #
 
-import networkx as nx
-import pandas as pd
+import networkx as nx  # type: ignore
+import pandas as pd  # type: ignore
 
 
 def nx_compute_metrics(
