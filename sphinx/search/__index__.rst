@@ -4,7 +4,8 @@ Search
 .. toctree::
     :hidden:
     
-    concordances
+    concordance_contexts
+    concordance_documents
     lemma_associations
     find_records
     find_similar_records

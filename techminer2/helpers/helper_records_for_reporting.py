@@ -23,7 +23,7 @@ def helper_records_for_reporting(
         reported_columns = [
             "art_no",
             "article",
-            "raw_docuemnt_title",
+            "raw_document_title",
             "authors",
             "global_citations",
             "source_title",

@@ -36,9 +36,8 @@ Techminer 2+
     factor_analysis/__index__
     main_path_analysis/__index__
     metrics/__index__ 
+    rpys/__index__ 
     topic_modeling/__index__
-    
-
     tools/__index__
 
   

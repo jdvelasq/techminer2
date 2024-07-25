@@ -120,10 +120,10 @@ def read_filtered_database(
             return records
 
         if sort_by == "date_newest":
-            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[False, True, True])
+            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[False, False, False])
 
         if sort_by == "date_oldest":
-            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[True, True, True])
+            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[True, False, False])
 
         if sort_by == "global_cited_by_highest":
             return records.sort_values(["global_citations", "year", "local_citations"], ascending=[False, False, False])
@@ -148,6 +148,8 @@ def read_filtered_database(
 
         if sort_by == "source_title_z_to_a":
             return records.sort_values(["source_title", "global_citations", "local_citations"], ascending=[False, False, False])
+
+        return records
 
     records = get_records_from_file(root_dir, database)
     records = filter_records_by_year(records, year_filter)

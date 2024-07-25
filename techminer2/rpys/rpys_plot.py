@@ -25,7 +25,7 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 
     
 """
-import plotly.graph_objects as go
+import plotly.graph_objects as go  # type: ignore
 
 from .rpys_frame import rpys_frame
 

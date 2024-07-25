@@ -1,4 +1,5 @@
-from .concordances import concordances
+from .concordance_contexts import concordance_contexts
+from .concordance_documents import concordance_documents
 from .extract_descriptors_from_text import extract_descriptors_from_text
 from .find_records import find_records
 from .find_similar_phrases import find_similar_phrases
