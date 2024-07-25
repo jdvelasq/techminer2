@@ -32,26 +32,13 @@ Column Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.fig_.write_html("sphinx/_static/report/column_chart.html")
+>>> # chart.write_html("sphinx/_static/report/column_chart.html")
 
 .. raw:: html
 
     <iframe src="../_static/report/column_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
-    
-    
->>> chart.df_.head()
-                      rank_occ  OCC
-author_keywords                    
-FINTECH                      1   31
-INNOVATION                   2    7
-FINANCIAL_SERVICES           3    4
-FINANCIAL_INCLUSION          4    3
-FINANCIAL_TECHNOLOGY         5    3
 
->>> print(chart.prompt_) # doctest: +ELLIPSIS
-Your task is ...
-    
 
 """
 import plotly.express as px
@@ -144,6 +131,4 @@ def column_chart(
         title_text=metric_label,
     )
 
-    items.fig_ = fig
-
-    return items
+    return fig

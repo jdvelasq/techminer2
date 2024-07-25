@@ -78,10 +78,7 @@ def heat_map(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Make a heat map.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 

@@ -32,13 +32,11 @@ Word Cloud
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.fig_.save("sphinx/images/report/word_cloud.png")
+>>> # chart.save("sphinx/images/report/word_cloud.png")
 
 .. image:: /images/report/word_cloud.png
     :width: 900px
     :align: center
-
-    
 
 """
 
@@ -72,10 +70,7 @@ def word_cloud(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a word cloud.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     items = performance_metrics(
         #
@@ -122,4 +117,4 @@ def word_cloud(
 
     items.fig_ = wordcloud.to_image()
 
-    return items
+    return items.fig_

@@ -33,7 +33,7 @@ Cleveland Dot Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.fig_.write_html("sphinx/_static/report/cleveland_dot_chart.html")
+>>> # chart.write_html("sphinx/_static/report/cleveland_dot_chart.html")
 
 .. raw:: html
 
@@ -150,4 +150,4 @@ def cleveland_dot_chart(
 
     items.fig_ = fig
 
-    return items
+    return fig

@@ -31,25 +31,12 @@ World Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.fig_.write_html("sphinx/_static/report/world_map.html")
+>>> # chart.write_html("sphinx/_static/report/world_map.html")
 
 .. raw:: html
 
     <iframe src="../_static/report/world_map.html" 
     height="400px" width="100%" frameBorder="0"></iframe>
-
->>> chart.df_.head()
-               rank_occ  OCC
-country                     
-United States         1   16
-China                 2    8
-Germany               3    7
-South Korea           4    6
-Australia             5    5
-
->>> print(chart.prompt_) # doctest: +ELLIPSIS
-Your task is ...
-
 
 
 """
@@ -171,4 +158,4 @@ def world_map(
     data_frame = items
     items.fig_ = create_plot()
 
-    return items
+    return items.fig_

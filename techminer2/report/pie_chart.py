@@ -30,7 +30,7 @@ Pie Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.fig_.write_html("sphinx/_static/report/pie_chart.html")
+>>> # chart.write_html("sphinx/_static/report/pie_chart.html")
 
 .. raw:: html
 
@@ -38,18 +38,6 @@ Pie Chart
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> chart.df_.head()
-                      rank_occ  OCC
-author_keywords                    
-FINTECH                      1   31
-INNOVATION                   2    7
-FINANCIAL_SERVICES           3    4
-FINANCIAL_INCLUSION          4    3
-FINANCIAL_TECHNOLOGY         5    3
-
->>> print(chart.prompt_) # doctest: +ELLIPSIS
-Your task is ...
-
 
 """
 import plotly.express as px
@@ -115,4 +103,4 @@ def pie_chart(
 
     items.fig_ = fig
 
-    return items
+    return fig
