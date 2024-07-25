@@ -3,13 +3,12 @@
 example/raw-data/main/scopus.csv
 debug.ipynb
 
-sphinx/_static/**/*
+# Sphinx documentation
+sphinx/_build/
+# sphinx/_static/**/*
 sphinx/_build/
 example/
 tmp/*
-
-
-sphinx/_build/
 
 debug/
 trash/
@@ -84,9 +83,6 @@ instance/
 
 # Scrapy stuff:
 .scrapy
-
-# Sphinx documentation
-sphinx/_build/
 
 # PyBuilder
 target/
