@@ -6,47 +6,25 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Main Path Analysis
+Network Edges Frame
 ===============================================================================
 
->>> from techminer2.citation_network import main_path_analysis
->>> results = main_path_analysis(
+>>> from techminer2.main_path_analysis import network_edges_frame
+>>> network_edges_frame(
 ...     #
 ...     # COLUMN PARAMS:
 ...     top_n=None,
 ...     citations_threshold=0,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/",
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
---INFO-- Paths computed
---INFO-- Points per link computed
---INFO-- Points per path computed
->>> results.fig_.write_html("sphinx/_static/citation_network/main_path_analysis.html")
-
-.. raw:: html
-
-    <iframe src="../_static/citation_network/main_path_analysis.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
->>> results.df_.head()
+... ).head()
+--INFO-- Paths computed.
+--INFO-- Points per link computed.
+--INFO-- Points per path computed.
                                       citing_article  ... points
 0  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...      3
 1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...      3
@@ -57,45 +35,15 @@ Main Path Analysis
 [5 rows x 3 columns]
 
 """
-
 import copy
-from dataclasses import dataclass
-
-import networkx as nx
 import numpy as np
-
-from .._core.nx.nx_assign_constant_color_to_nodes import nx_assign_constant_color_to_nodes
-from .._core.nx.nx_assign_opacity_to_text_based_on_citations import nx_assign_opacity_to_text_based_on_citations
-from .._core.nx.nx_assign_sizes_to_nodes_based_on_citations import nx_assign_sizes_to_nodes_based_on_citations
-from .._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from .._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import nx_assign_textfont_sizes_to_nodes_based_on_citations
-from .._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
-from .._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
-from .._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
-from .._core.nx.nx_network_plot import nx_network_plot
 from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_format_report_for_records import helper_format_report_for_records
 
-
-def main_path_analysis(
+def network_edges_frame(
     #
     # COLUMN PARAMS:
     top_n=None,
     citations_threshold=0,
-    #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
-    #
-    # NODES:
-    node_size_range=(30, 70),
-    textfont_size_range=(10, 20),
-    textfont_opacity_range=(0.35, 1.00),
-    #
-    # EDGES:
-    edge_color="#7793a5",
-    edge_width_range=(0.8, 3.0),
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -124,109 +72,21 @@ def main_path_analysis(
 
     #
     # Extracts the articles in the main path(s)
-    articles_in_main_path, data_frame = ___compute_main_path(data_frame)
+    articles_in_main_path, data_frame = _compute_main_path(data_frame)
 
     #
     # Filters the table
     data_frame = data_frame[(data_frame.citing_article.isin(articles_in_main_path)) & (data_frame.cited_article.isin(articles_in_main_path))]
 
-    #
-    # Create the networkx graph
-    nx_graph = nx.Graph()
+    data_frame = data_frame.reset_index(drop=True)
 
-    ___generate_report(
-        articles=articles_in_main_path,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    #
-    # Adds the links to the network:
-    for _, row in data_frame.iterrows():
-        nx_graph.add_weighted_edges_from(
-            ebunch_to_add=[(row.citing_article, row.cited_article, row.points)],
-            dash="solid",
-        )
-
-    #
-    # Sets the layout
-    nx_graph = nx_assign_constant_color_to_nodes(nx_graph, "#7793a5")
-    nx_graph = nx_compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
-    nx_graph = nx_assign_sizes_to_nodes_based_on_citations(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_citations(nx_graph, textfont_size_range)
-    nx_graph = nx_assign_opacity_to_text_based_on_citations(nx_graph, textfont_opacity_range)
-
-    #
-    # Sets the edge attributes
-    nx_graph = nx_assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
-    nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
-
-    for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = node
-
-    @dataclass
-    class Results:
-        fig_ = nx_network_plot(
-            #
-            # FUNCTION PARAMS:
-            nx_graph=nx_graph,
-            #
-            # NETWORK PARAMS:
-            xaxes_range=None,
-            yaxes_range=None,
-            show_axes=False,
-            #
-            # ARROWS:
-            draw_arrows=True,
-        )
-        df_ = data_frame.reset_index(drop=True)
-
-    return Results()
+    return data_frame
 
 
-def ___generate_report(
-    articles,
-    #
-    # DATABASE PARAMS:
-    root_dir,
-    database,
-    year_filter,
-    cited_by_filter,
-    **filters,
-):
-    articles = [" ".join(article.split(" ")[:-1]) for article in articles]
-
-    #
-    # Extracts the records using the specified parameters
-    records = read_filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=None,
-        **filters,
-    )
-    records = records[records.article.isin(articles)]
-
-    # helper_format_report_for_records(
-    #     root_dir=root_dir,
-    #     target_dir="",
-    #     records=records,
-    #     report_filename="main_path_analysis.txt",
-    # )
 
 
-def ___compute_main_path(data_frame):
-    """Implments the main path algorithm."""
-
+def _compute_main_path(data_frame):
+    
     # Creates the links of the citation network
     data_frame = data_frame.copy()
 
@@ -287,7 +147,7 @@ def ___compute_main_path(data_frame):
         return found_paths
 
     paths = compute_all_network_paths(data_frame, start_nodes, end_nodes)
-    print("--INFO-- Paths computed")
+    print("--INFO-- Paths computed.")
 
     #
     # Computes the points per link in each path
@@ -302,7 +162,7 @@ def ___compute_main_path(data_frame):
 
     data_frame = data_frame.assign(points=0)
     data_frame = compute_points_per_link(data_frame, paths)
-    print("--INFO-- Points per link computed")
+    print("--INFO-- Points per link computed.")
 
     #
     # Computes the points per path as the sum of points per link
@@ -321,7 +181,7 @@ def ___compute_main_path(data_frame):
         return paths
 
     paths = compute_points_per_path(data_frame, paths)
-    print("--INFO-- Points per path computed")
+    print("--INFO-- Points per path computed.")
 
     #
     # Sort paths by points (descending)
@@ -337,14 +197,6 @@ def ___compute_main_path(data_frame):
     article_in_main_path = set(article for path in best_paths for article in path[0])
 
     return article_in_main_path, data_frame
-
-
-def _create_prompts(documents):
-    prompts = []
-    for _, row in documents.iterrows():
-        prompt = f"Summarize the following text in 30 words or less:\n\n{row.abstract}\n\n"
-        prompts.append(prompt)
-    return prompts
 
 
 def ___create_citations_table(

@@ -1,4 +1,3 @@
-from .main_path_analysis import main_path_analysis
 from .network_plot import network_plot
 from .node_degree_plot import node_degree_plot
 from .node_density_plot import node_density_plot

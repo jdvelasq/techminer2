@@ -34,6 +34,7 @@ Techminer 2+
     documents/__index__ 
     emergence/__index__ 
     factor_analysis/__index__
+    main_path_analysis/__index__
     metrics/__index__ 
     topic_modeling/__index__
     
