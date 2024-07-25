@@ -3,6 +3,7 @@ cdlib
 contractions
 docutils
 duckdb
+furo
 fuzzywuzzy
 graphviz
 igraph
@@ -33,4 +34,3 @@ tabulate
 textblob
 urllib3==1.26.6
 wordcloud
-
