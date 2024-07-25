@@ -80,19 +80,26 @@ def read_filtered_database(
     def apply_filters_to_records(records, **filters):
 
         for filter_name, filter_value in filters.items():
-            # Split the filter value into a list of strings
-            database = records[["article", filter_name]]
-            database[filter_name] = database[filter_name].str.split(";")
 
-            # Explode the list of strings into multiple rows
-            database = database.explode(filter_name)
+            if filter_name == "article":
 
-            # Remove leading and trailing whitespace from the strings
-            database[filter_name] = database[filter_name].str.strip()
+                records = records[records["article"].isin(filter_value)]
 
-            # Keep only records that match the filter value
-            database = database[database[filter_name].isin(filter_value)]
-            records = records[records["article"].isin(database["article"])]
+            else:
+
+                # Split the filter value into a list of strings
+                database = records[["article", filter_name]]
+                database[filter_name] = database[filter_name].str.split(";")
+
+                # Explode the list of strings into multiple rows
+                database = database.explode(filter_name)
+
+                # Remove leading and trailing whitespace from the strings
+                database[filter_name] = database[filter_name].str.strip()
+
+                # Keep only records that match the filter value
+                database = database[database[filter_name].isin(filter_value)]
+                records = records[records["article"].isin(database["article"])]
 
         return records
 

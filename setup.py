@@ -85,6 +85,7 @@ setup(
         "techminer2.helpers",
         "techminer2.ingest.field_importers",
         "techminer2.ingest",
+        "techminer2.main_path_analysis._core",
         "techminer2.main_path_analysis",
         "techminer2.metrics",
         "techminer2.raw",
