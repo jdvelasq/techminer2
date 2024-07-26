@@ -28,11 +28,12 @@ Select Documents
 >>> print(documents[0])
 Record-No: 37
 AR Mackenzie A., 2015, LONDON BUS SCH REV, V26, P50
+TI THE FINTECH REVOLUTION
 AU Mackenzie A.
 TC 76
 SO London Business School Review
 PY 2015
-AB how innovators are using TECHNOLOGY to take on the world of FINANCE.  2015
+AB how innovators are using TECHNOLOGY to take on the world of FINANCE . 2015
    LONDON_BUSINESS_SCHOOL
 ** FINTECH_REVOLUTION; LONDON_BUSINESS_SCHOOL
 <BLANKLINE>

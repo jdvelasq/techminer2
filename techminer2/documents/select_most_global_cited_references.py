@@ -22,6 +22,7 @@ Most Global Cited References (Example)
 >>> print(documents[0])
 Record-No: 1
 AR Landis J.R., 1977, BIOMETRICS, V33, P159
+TI The measurement of observer agreement for categorical data
 AU Landis J.R.; Koch G.G.
 TC 54055
 SO Biometrics
@@ -29,6 +30,7 @@ PY 1977
 ID MULTIVARIATE_ANALYSIS; OBSERVER; STATISTICS
 ** CATEGORICAL_DATA; OBSERVER_AGREEMENT
 <BLANKLINE>
+
 
 
 """

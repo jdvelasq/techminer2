@@ -33,27 +33,15 @@ Node Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
+>>> plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/co_citation_network/node_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
->>> plot.df_.head()
-   Node                            Name  Degree
-0     0      ELECT COMMER RES APPL 1:32      26
-1     1          J MANAGE INF SYST 1:31      26
-2     2  MIS QUART MANAGE INF SYST 1:47      26
-3     3                 MANAGE SCI 1:33      25
-4     4               INF SYST RES 1:18      25
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS
-Your task is ...
-
-
 """
-from .._core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
+
 from .._core.nx.nx_degree_plot import nx_degree_plot
 from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
 
@@ -99,8 +87,6 @@ def node_degree_plot(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    nx_graph = nx_assign_degree_to_nodes(nx_graph)
 
     return nx_degree_plot(
         #

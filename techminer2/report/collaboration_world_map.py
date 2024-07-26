@@ -56,7 +56,7 @@ def collaboration_world_map(
         **filters,
     )
 
-    collaboration = collaboration[collaboration.rows != collaboration.columns]
+    collaboration = collaboration[collaboration.rows != collaboration["columns"]]
     collaboration["row"] = collaboration["rows"].map(lambda x: " ".join(x.split()[:-1]))
     collaboration["column"] = collaboration["columns"].map(lambda x: " ".join(x.split()[:-1]))
 

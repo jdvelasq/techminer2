@@ -31,25 +31,12 @@ Node Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/citation_network/article_degree_plot.html")
+>>> plot.write_html("sphinx/_static/citation_network/article_degree_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/citation_network/article_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
-
->>> plot.df_.head()
-   Node                                               Name  Degree
-0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
-1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
-2     2  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
-3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
-4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       2
-
-
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS
-Your task is ...
 
 >>> # abbr_source_title, authors, organizations, countries:
 >>> from techminer2.citation_network import node_degree_plot
@@ -75,7 +62,7 @@ Your task is ...
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/citation_network/others_degree_plot.html")
+>>> plot.write_html("sphinx/_static/citation_network/others_degree_plot.html")
 
 .. raw:: html
 
@@ -83,25 +70,11 @@ Your task is ...
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> plot.df_.head()
-   Node                       Name  Degree
-0     0    J Manage Inf Syst 2:696       3
-1     1        J. Econ. Bus. 3:422       3
-2     2      Electron. Mark. 2:287       1
-3     3      Financ. Manage. 2:161       1
-4     4  Ind Manage Data Sys 2:386       1
-
-
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS
-Your task is ...
-
-
 
 
 """
-from ._core._node_degree_plot_from_documents import _node_degree_plot_from_documents
-from ._core._node_degree_plot_from_others import _node_degree_plot_from_others
+from ._core.docs.node_degree_plot import _node_degree_plot as _node_degree_plot_from_docs
+from ._core.others.node_degree_plot import _node_degree_plot as _node_degree_plot_from_others
 
 
 def node_degree_plot(
@@ -129,7 +102,7 @@ def node_degree_plot(
 
     if unit_of_analysis == "article":
 
-        return _node_degree_plot_from_documents(
+        return _node_degree_plot_from_docs(
             #
             # COLUMN PARAMS:
             top_n=top_n,

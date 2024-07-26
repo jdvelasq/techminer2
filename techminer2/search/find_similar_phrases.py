@@ -8,11 +8,8 @@
 Find Similar Phrases
 ===============================================================================
 
-
-
-
 >>> from techminer2.search import find_similar_phrases
->>> find_similar_phrases(
+>>> documents = find_similar_phrases(
 ...     text=(
 ...         "whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, "
 ...         "PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, "
@@ -27,33 +24,28 @@ Find Similar Phrases
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 1.0
-AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
+>>> for i in range(3):
+...     print(documents[i])
+100.0%
+AR Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+TI FinTech, regTech, and the reconceptualization of financial regulation
+AB whilst the PRINCIPAL_REGULATORY_OBJECTIVES ( e.g., FINANCIAL_STABILITY ,
+   PRUDENTIAL_SAFETY and soundness , CONSUMER_PROTECTION and MARKET_INTEGRITY ,
+   and MARKET_COMPETITION and DEVELOPMENT ) remain , their means of application
+   are increasingly inadequate .
 <BLANKLINE>
-whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY,
-PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and
-MARKET_INTEGRITY, and MARKET_COMPETITION and DEVELOPMENT) remain, their
-means of application are increasingly inadequate.
+47.1%
+AR Jagtiani J., 2018, J ECON BUS, V100, P1
+TI Fintech: The Impact on Consumers and Regulatory Responses
+AB regulators around the globe are working diligently and thoughtfully to provide
+   CONSUMER_PROTECTION and to maintain FINANCIAL_STABILITY while at the same
+   time to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS .
 <BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.471
-AR: Jagtiani J., 2018, J ECON BUS, V100, P1
-TI: FINTECH: the impact on CONSUMERS and REGULATORY_RESPONSES
-<BLANKLINE>
-regulators around the globe are working diligently and thoughtfully to
-provide CONSUMER_PROTECTION and to maintain FINANCIAL_STABILITY while at
-the same time to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS.
-<BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.236
-AR: Dorfleitner G., 2017, FINTECH IN GER, P1
-TI: FINTECH in GERMANY
-<BLANKLINE>
-by making FINANCIAL_TRANSACTIONS more user_friendly and transparent,
-these firms potentially contribute to FINANCIAL_STABILITY and
-ECONOMIC_GROWTH.
+23.6%
+AR Dorfleitner G., 2017, FINTECH IN GER, P1
+TI FinTech in Germany
+AB by making FINANCIAL_TRANSACTIONS more user_friendly and transparent , these
+   firms potentially contribute to FINANCIAL_STABILITY and ECONOMIC_GROWTH .
 <BLANKLINE>
 
 """
@@ -70,7 +62,7 @@ from .._core.read_filtered_database import read_filtered_database
 from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
-TEXTWRAP_WIDTH = 73
+TEXTWRAP_WIDTH = 79
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
@@ -122,14 +114,22 @@ def find_similar_phrases(
     records = records.sort_values(by="similarity", ascending=False)
     records = records[records["similarity"] > 0.0]
 
-    for _, row in records.head(top_n).iterrows():
-        print("-" * 100)
-        print("SIMILARITY: " + str(round(row.similarity, 3)))
-        print("AR: " + row.article)
-        print("TI: " + row.document_title)
-        print()
-        print(textwrap.fill(str(row.phrase), width=TEXTWRAP_WIDTH))
-        print()
+    documents = []
+    for _, row in records.iterrows():
+        text = str(round(100 * row.similarity, 1)) + "%\n"
+        text += "AR " + row.article + "\n"
+        text += "TI " + row.raw_document_title + "\n"
+        text += "AB " + textwrap.fill(
+            str(row.phrase),
+            width=TEXTWRAP_WIDTH,
+            initial_indent="",
+            subsequent_indent=" " * 3,
+            fix_sentence_endings=True,
+        )
+        text += "\n"
+        documents.append(text)
+
+    return documents
 
 
 def _load_thesaurus(root_dir):
@@ -141,9 +141,6 @@ def _load_thesaurus(root_dir):
 
 
 def _build_tf_matrix(records):
-    """
-    :meta private:
-    """
     records = records.copy()
     records["OCC"] = 1
     records = records.pivot(index="phrase_no", columns="keyword", values="OCC")
@@ -165,7 +162,7 @@ def _extract_keywords(records, root_dir):
     regex = re.compile(r"\b(" + descriptors + r")\b")
     # -----------------------------------------------------------------------------------------
 
-    abstracts = records[["article", "document_title", "abstract"]].dropna()
+    abstracts = records[["article", "raw_document_title", "abstract"]].dropna()
     abstracts["abstract"] = abstracts["abstract"].apply(lambda paragraph: TextBlob(paragraph).sentences)
     abstracts = abstracts.explode("abstract")
     abstracts["phrase"] = abstracts["abstract"]

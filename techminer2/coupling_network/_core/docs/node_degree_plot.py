@@ -27,29 +27,16 @@
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/coupling_network/_core/docs/node_degree_plot.html")
+>>> plot.write_html("sphinx/_static/coupling_network/_core/docs/node_degree_plot.html")
 
 .. raw:: html
 
     <iframe src="../../_static/coupling_network/_core/docs/node_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
-    
->>> plot.df_.head()
-   Node                                        Name  Degree
-0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
-1     1           Gomber P., 2017, J BUS ECON 1:489       7
-2     2    Gomber P., 2018, J MANAGE INF SYST 1:576       5
-3     3                 Hu Z., 2019, SYMMETRY 1:176       4
-4     4  Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4
-
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS                                        
-Your task is ...
 
 
 """
-from ...._core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
 from ...._core.nx.nx_degree_plot import nx_degree_plot
 from ._create_coupling_nx_graph import _create_coupling_nx_graph
 
@@ -88,8 +75,6 @@ def _node_degree_plot(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    nx_graph = nx_assign_degree_to_nodes(nx_graph)
 
     return nx_degree_plot(
         #

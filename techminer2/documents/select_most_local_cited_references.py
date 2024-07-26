@@ -22,6 +22,7 @@ Most Local Cited References (Example)
 >>> print(documents[0])
 Record-No: 282
 AR Gomber P., 2017, J BUS ECON, V87, P537
+TI Digital Finance and FinTech: current research and future research directions
 AU Gomber P.; Koch J.-A.; Siering M.
 TC 489
 SO Journal of Business Economics

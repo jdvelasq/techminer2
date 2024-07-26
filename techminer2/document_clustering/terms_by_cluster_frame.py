@@ -40,23 +40,23 @@ Terms by Cluster Dataframe
 ...     cited_by_filter=(None, None),
 ...     sort_by=None,
 ... ).head(10)
-                               0  ...                                3
-0     FINANCIAL_INDUSTRY 09:2006  ...  SUSTAINABLE_DEVELOPMENT 04:0306
-1        BUSINESS_MODELS 04:1441  ...             ELSEVIER_LTD 03:0474
-2    INFORMATION_SYSTEMS 04:0830  ...           SUSTAINABILITY 03:0227
-3                SURVEYS 03:0484  ...                                 
-4           CROWDFUNDING 03:0335  ...                                 
-5             STUDY_AIMS 03:0283  ...                                 
-6       NEW_TECHNOLOGIES 02:0773  ...                                 
-7  DISRUPTIVE_INNOVATION 02:0759  ...                                 
-8      ACADEMIC_RESEARCH 02:0691  ...                                 
-9          CURRENT_STATE 02:0691  ...                                 
+                                     0  ...                               3
+0                   INNOVATION 08:0990  ...                 FINTECH 32:5393
+1  FINANCIAL_SERVICES_INDUSTRY 06:1370  ...    FINANCIAL_TECHNOLOGY 18:2519
+2              BUSINESS_MODELS 04:1441  ...      FINANCIAL_SERVICES 12:1929
+3          INFORMATION_SYSTEMS 04:0830  ...                 FINANCE 11:1950
+4                   BLOCKCHAIN 03:0881  ...      FINANCIAL_INDUSTRY 09:2006
+5           FINTECH_REVOLUTION 03:0731  ...        FINTECH_STARTUPS 08:1913
+6                      BANKING 03:0370  ...        FINANCIAL_SECTOR 07:1562
+7                   STUDY_AIMS 03:0283  ...  INFORMATION_TECHNOLOGY 07:1383
+8            ACADEMIC_RESEARCH 02:0691  ...           FRANCIS_GROUP 05:1227
+9                CURRENT_STATE 02:0691  ...       FINTECH_COMPANIES 05:1072
 <BLANKLINE>
 [10 rows x 4 columns]
 
 
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .clusters_to_terms_mapping import clusters_to_terms_mapping
 

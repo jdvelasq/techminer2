@@ -17,11 +17,11 @@ Records with No Abstract Available
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-FINTECH
+Fintech
 Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
 nan
 <BLANKLINE>
-FINTECH and the TRANSFORMATION of the FINANCIAL_INDUSTRY
+FinTech and the TRANSFORMATION of the FINANCIAL_INDUSTRY
 Alt R., 2018, ELECTRON MARK, V28, P235
 nan
 <BLANKLINE>

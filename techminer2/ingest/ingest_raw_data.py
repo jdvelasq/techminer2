@@ -24,7 +24,6 @@ Ingest Raw Data
 -- 004 -- Creating database files
 ...
 
-python3 -m pip install types-tqdm
 
 """
 import os

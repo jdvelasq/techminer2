@@ -31,10 +31,11 @@ Emergent Topics
 ... ).head()
                         OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
 descriptors                                ...                                
-FINTECH_STARTUPS          7             1  ...   164.575131           1.386830
+FINTECH_STARTUPS          8             1  ...   182.842712           1.540766
 INFORMATION_TECHNOLOGY    7             2  ...    91.293118           0.769302
 <BLANKLINE>
 [2 rows x 10 columns]
+
 
 
 
@@ -43,7 +44,7 @@ import numpy as np
 
 from ..metrics import term_occurrences_by_year
 from ..metrics._compute_trend_metrics import compute_trend_metrics
-from ..metrics.general_metrics import general_metrics
+from ..metrics.general_metrics_frame import general_metrics_frame
 
 
 def emergent_topics(
@@ -151,7 +152,7 @@ def emergent_topics(
         - 1
     )
 
-    global_growth_rate = general_metrics(
+    global_growth_rate = general_metrics_frame(
         #
         # DATABASE PARAMS
         root_dir=root_dir,

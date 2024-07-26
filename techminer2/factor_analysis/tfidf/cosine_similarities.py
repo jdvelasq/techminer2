@@ -60,7 +60,7 @@ FINANCIAL_TECHNOLOGY 03:0461  FINANCIAL_SERVICES 04:0667 (0.885); BUSINESS_M...
     
 """
 import pandas as pd  # type: ignore
-from sklearn.metrics.pairwise import cosine_similarity  # type: ignore as sklearn_cosine_similarity
+from sklearn.metrics.pairwise import cosine_similarity as sklearn_cosine_similarity  # type: ignore
 
 from .terms_by_dimension_frame import terms_by_dimension_frame
 

@@ -24,10 +24,10 @@
 ...     cited_by_filter=(None, None),
 ... ).head()
                     Degree  Betweenness  Closeness  PageRank
-Gomber P. 2:1065         3          0.0   0.333333  0.075911
-Hornuf L. 2:0358         3          0.0   0.333333  0.065572
-Jagtiani J. 3:0317       3          0.0   0.333333  0.129258
-Lemieux C. 2:0253        3          0.0   0.333333  0.129258
+Gomber P. 2:1065         3          0.0   0.333333  0.085695
+Hornuf L. 2:0358         3          0.0   0.333333  0.073543
+Jagtiani J. 3:0317       3          0.0   0.333333  0.120381
+Lemieux C. 2:0253        3          0.0   0.333333  0.120381
 Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 

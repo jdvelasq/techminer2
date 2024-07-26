@@ -22,31 +22,33 @@ Most Global Cited Documents (Example)
 >>> print(documents[0])
 Record-No: 49
 AR Gomber P., 2018, J MANAGE INF SYST, V35, P220
+TI On the Fintech Revolution: Interpreting the Forces of Innovation,
+   Disruption, and Transformation in Financial Services
 AU Gomber P.; Kauffman R.J.; Parker C.; Weber B.W.
 TC 576
 SO Journal of Management Information Systems
 PY 2018
 AB the FINANCIAL_SERVICES_INDUSTRY has been experiencing the RECENT_EMERGENCE
-   of NEW_TECHNOLOGY_INNOVATIONS and PROCESS_DISRUPTIONS. the INDUSTRY_OVERALL,
-   and many FINTECH start_ups are looking for NEW_PATHWAYS to
-   SUCCESSFUL_BUSINESS_MODELS, the creation of enhanced CUSTOMER_EXPERIENCE,
-   and approaches that result in SERVICES_TRANSFORMATION. INDUSTRY and
+   of NEW_TECHNOLOGY_INNOVATIONS and PROCESS_DISRUPTIONS . the INDUSTRY_OVERALL
+   , and many FINTECH start_ups are looking for NEW_PATHWAYS to
+   SUCCESSFUL_BUSINESS_MODELS , the creation of enhanced CUSTOMER_EXPERIENCE ,
+   and approaches that result in SERVICES_TRANSFORMATION . INDUSTRY and
    ACADEMIC_OBSERVERS believe this to be more of a revolution than a SET of
-   less INFLUENTIAL_CHANGES, with FINANCIAL_SERVICES as a whole due for
-   MAJOR_IMPROVEMENTS in EFFICIENCY, CUSTOMER_CENTRICITY, and informedness.
+   less INFLUENTIAL_CHANGES , with FINANCIAL_SERVICES as a whole due for
+   MAJOR_IMPROVEMENTS in EFFICIENCY , CUSTOMER_CENTRICITY , and informedness .
    the long_standing dominance of leading firms that are not able to figure out
-   how to effectively hook up with the FINTECH_REVOLUTION is at stake.  we
+   how to effectively hook up with the FINTECH_REVOLUTION is at stake . we
    present a NEW_FINTECH_INNOVATION MAPPING approach that enables the
    assessment of the extent to which there are changes and transformations in
-   four areas of FINANCIAL_SERVICES. we discuss: OPERATIONS_MANAGEMENT in
-   FINANCIAL_SERVICES and the changes occurring; TECHNOLOGY_INNOVATIONS that
+   four areas of FINANCIAL_SERVICES . we discuss : OPERATIONS_MANAGEMENT in
+   FINANCIAL_SERVICES and the changes occurring . TECHNOLOGY_INNOVATIONS that
    have begun to leverage the execution and STAKEHOLDER_VALUE associated with
-   PAYMENTS, CRYPTOCURRENCIES, BLOCKCHAIN, and cross_border PAYMENTS;
-   MULTIPLE_INNOVATIONS that have affected LENDING and DEPOSIT_SERVICES,
-   peer_to_peer (P2P) LENDING, and SOCIAL_MEDIA_USE; issues with respect to
-   INVESTMENTS, FINANCIAL_MARKETS, TRADING, RISK_MANAGEMENT, robo_advisory and
-   SERVICES influenced by BLOCKCHAIN and FINTECH_INNOVATIONS. copyright  taylor
-   & FRANCIS_GROUP, llc.
+   PAYMENTS , CRYPTOCURRENCIES , BLOCKCHAIN , and cross_border PAYMENTS .
+   MULTIPLE_INNOVATIONS that have affected LENDING and DEPOSIT_SERVICES ,
+   peer_to_peer ( P2P ) LENDING , and SOCIAL_MEDIA_USE . issues with respect to
+   INVESTMENTS , FINANCIAL_MARKETS , TRADING , RISK_MANAGEMENT , robo_advisory
+   and SERVICES influenced by BLOCKCHAIN and FINTECH_INNOVATIONS .
+   COPYRIGHT_TAYLOR & FRANCIS_GROUP , llc .
 ID BLOCKCHAIN; COMMERCE; RISK_MANAGEMENT; BUSINESS_MODELS; CUSTOMER_EXPERIENCE;
    FINANCIAL_SERVICE; FINANCIAL_SERVICES_INDUSTRIES; NEW_TECHNOLOGIES;
    OPERATIONS_MANAGEMENT; STAKEHOLDER_VALUES; TECHNOLOGY_INNOVATION; FINANCE
@@ -61,5 +63,6 @@ ID BLOCKCHAIN; COMMERCE; RISK_MANAGEMENT; BUSINESS_MODELS; CUSTOMER_EXPERIENCE;
    SOCIAL_MEDIA_USE; STAKEHOLDER_VALUE; SUCCESSFUL_BUSINESS_MODELS;
    TECHNOLOGY_INNOVATIONS
 <BLANKLINE>
+
 
 """

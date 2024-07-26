@@ -31,11 +31,11 @@ Terms by Cluster Frame
 ...     cited_by_filter=(None, None),
 ... ).head()
                                 0  ...                                     9
-0          J MANAGE INF SYST 1:31  ...           AGROINDUSTRIES FOR DEV 1:01
-1  MIS QUART MANAGE INF SYST 1:47  ...                  DEV LEARN ORGAN 1:01
-2                 INF MANAGE 1:06  ...  EURASIA J MATH SCI TECHNOL EDUC 1:01
-3        INT REV FINANC ANAL 1:04  ...                   FINTECH IN GER 1:01
-4                 J SERV RES 1:06  ...      INT FOOD AGRIBUS MANAGE REV 1:01
+0  MIS QUART MANAGE INF SYST 1:47  ...           AGROINDUSTRIES FOR DEV 1:01
+1               INF SYST RES 1:18  ...                  DEV LEARN ORGAN 1:01
+2         INT J ELECT COMMER 1:09  ...  EURASIA J MATH SCI TECHNOL EDUC 1:01
+3                 INF MANAGE 1:06  ...                   FINTECH IN GER 1:01
+4           COMPUT HUM BEHAV 1:09  ...      INT FOOD AGRIBUS MANAGE REV 1:01
 <BLANKLINE>
 [5 rows x 10 columns]
 

@@ -37,28 +37,17 @@ Node Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/co_occurrence_network/node_degree_plot.html")
+>>> plot.write_html("sphinx/_static/co_occurrence_network/node_degree_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/co_occurrence_network/node_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
->>> plot.df_.head()
-   Node                        Name  Degree
-0     0             FINTECH 31:5168      18
-1     1  FINANCIAL_SERVICES 04:0667       7
-2     2          INNOVATION 07:0911       6
-3     3          TECHNOLOGY 02:0310       5
-4     4             FINANCE 02:0309       5
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS
-Your task is ...
 
 
 
 """
-from .._core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
 from .._core.nx.nx_degree_plot import nx_degree_plot
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
@@ -114,8 +103,6 @@ def node_degree_plot(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    nx_graph = nx_assign_degree_to_nodes(nx_graph)
 
     return nx_degree_plot(
         #

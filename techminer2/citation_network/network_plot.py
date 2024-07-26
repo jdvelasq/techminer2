@@ -102,8 +102,8 @@ Network Plot
 
 
 """
-from ._core._network_plot_from_documents import _network_plot_from_documents
-from ._core._network_plot_from_others import _network_plot_from_others
+from ._core.docs.network_plot import _network_plot as _network_plot_from_docs
+from ._core.others.network_plot import _network_plot as _network_plot_from_others
 
 
 def network_plot(
@@ -150,7 +150,7 @@ def network_plot(
 
     if unit_of_analysis == "article":
 
-        return _network_plot_from_documents(
+        return _network_plot_from_docs(
             #
             # COLUMN PARAMS:
             top_n=top_n,

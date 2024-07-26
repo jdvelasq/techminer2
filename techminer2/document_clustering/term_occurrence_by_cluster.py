@@ -42,27 +42,26 @@ Term Occurrence by Cluster
 ... ).head(20)
 cluster                              0   1  2  3  4  5  6  7
 descriptors                                                 
-FINTECH 32:5393                      1  21  0  1  0  2  5  2
-FINANCIAL_TECHNOLOGY 18:2519         4   6  0  1  3  0  1  3
-FINANCIAL_SERVICES 12:1929           1   3  1  1  3  0  2  1
-FINANCE 11:1950                      4   0  1  0  0  2  2  2
+FINTECH 32:5393                      3  21  0  1  0  2  5  0
+FINANCIAL_TECHNOLOGY 18:2519         5   6  1  1  4  0  1  0
+FINANCIAL_SERVICES 12:1929           0   3  1  1  4  0  2  1
+FINANCE 11:1950                      5   0  1  0  0  2  2  1
 FINANCIAL_INDUSTRY 09:2006           0   2  0  0  2  2  3  0
+FINTECH_STARTUPS 08:1913             0   3  1  0  0  0  3  1
 INNOVATION 08:0990                   0   2  0  0  2  0  4  0
-FINTECH_STARTUPS 07:1793             0   3  1  0  0  0  3  0
 FINANCIAL_SECTOR 07:1562             2   2  0  0  3  0  0  0
-INFORMATION_TECHNOLOGY 07:1383       0   2  0  0  2  0  2  1
-FINANCIAL_SERVICES_INDUSTRY 06:1370  0   2  1  1  2  0  0  0
-FRANCIS_GROUP 05:1227                1   2  1  0  1  0  0  0
+INFORMATION_TECHNOLOGY 07:1383       1   2  0  0  2  0  2  0
+FINANCIAL_SERVICES_INDUSTRY 06:1370  0   2  0  1  2  0  0  1
+FRANCIS_GROUP 05:1227                0   2  1  0  1  0  0  1
 FINTECH_COMPANIES 05:1072            0   5  0  0  0  0  0  0
-FINANCIAL_INNOVATION 05:0401         0   2  0  0  1  0  1  1
-BUSINESS_MODELS 04:1441              0   0  1  1  0  0  2  0
-FINANCIAL_SERVICE 04:1036            1   0  1  0  0  1  1  0
+FINANCIAL_INNOVATION 05:0401         0   2  0  0  2  0  1  0
+BUSINESS_MODELS 04:1441              0   0  0  1  0  0  2  1
+FINANCIAL_SERVICE 04:1036            0   0  1  0  0  1  1  1
 INFORMATION_SYSTEMS 04:0830          0   3  0  0  0  0  1  0
 FINANCIAL_INSTITUTIONS 04:0722       1   2  0  1  0  0  0  0
 FINANCIAL_SYSTEM 04:0688             0   1  0  1  2  0  0  0
-ARTIFICIAL_INTELLIGENCE 04:0495      0   1  0  0  1  0  0  2
-FINTECH_SERVICES 04:0468             0   1  0  0  2  0  0  1
-
+ARTIFICIAL_INTELLIGENCE 04:0495      1   1  0  0  2  0  0  0
+FINTECH_SERVICES 04:0468             1   1  0  0  2  0  0  0
 
 """
 from ..metrics import tfidf

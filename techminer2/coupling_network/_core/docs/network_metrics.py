@@ -21,11 +21,11 @@
 ...     cited_by_filter=(None, None),
 ... ).head()
                                             Degree  ...  PageRank
-Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.108354
-Gomber P., 2017, J BUS ECON 1:489                7  ...  0.172423
-Gomber P., 2018, J MANAGE INF SYST 1:576         5  ...  0.102747
-Hu Z., 2019, SYMMETRY 1:176                      4  ...  0.101092
-Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.089072
+Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
+Gomber P., 2017, J BUS ECON 1:489                6  ...  0.164851
+Gomber P., 2018, J MANAGE INF SYST 1:576         5  ...  0.108659
+Hu Z., 2019, SYMMETRY 1:176                      4  ...  0.116249
+Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
 <BLANKLINE>
 [5 rows x 4 columns]
 

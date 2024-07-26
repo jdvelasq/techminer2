@@ -82,8 +82,8 @@ Node Density Plot
 
 
 """
-from ._core._node_density_plot_from_documents import _node_density_plot_from_documents
-from ._core._node_density_plot_from_others import _node_density_plot_from_others
+from ._core.docs.node_density_plot import _node_density_plot as _node_density_plot_from_docs
+from ._core.others.node_density_plot import _node_density_plot
 
 
 def node_density_plot(
@@ -120,7 +120,7 @@ def node_density_plot(
 
     if unit_of_analysis == "article":
 
-        return _node_density_plot_from_documents(
+        return _node_density_plot_from_docs(
             #
             # COLUMN PARAMS:
             top_n=top_n,
@@ -148,7 +148,7 @@ def node_density_plot(
             **filters,
         )
 
-    return _node_density_plot_from_others(
+    return _node_density_plot(
         unit_of_analysis=unit_of_analysis,
         #
         # COLUMN PARAMS:

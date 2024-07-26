@@ -38,26 +38,12 @@ Network Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/coupling_network/others_node_degree_plot.html")
+>>> plot.write_html("sphinx/_static/coupling_network/others_node_degree_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/coupling_network/others_node_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
-
-
-    
->>> plot.df_.head()
-   Node                Name  Degree
-0     0    Gomber P. 2:1065       3
-1     1    Hornuf L. 2:0358       3
-2     2  Jagtiani J. 3:0317       3
-3     3   Lemieux C. 2:0253       3
-4     4    Dolata M. 2:0181       2
-
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS                                        
-Your task is ...
 
 
 >>> # article:
@@ -90,26 +76,13 @@ Your task is ...
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/coupling_network/docs_node_degree_plot.html")
+>>> plot.write_html("sphinx/_static/coupling_network/docs_node_degree_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/coupling_network/docs_node_degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
-
-    
->>> plot.df_.head()
-   Node                                        Name  Degree
-0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
-1     1           Gomber P., 2017, J BUS ECON 1:489       7
-2     2    Gomber P., 2018, J MANAGE INF SYST 1:576       5
-3     3                 Hu Z., 2019, SYMMETRY 1:176       4
-4     4  Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4
-
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS                                        
-Your task is ...
 
 
 

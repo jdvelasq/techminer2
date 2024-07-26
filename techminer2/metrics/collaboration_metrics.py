@@ -41,7 +41,7 @@ Collaboration Metrics
 | United States |    16 |               3189 |                 8 |                    8 |                      8 |       0.5  |
 | China         |     8 |               1085 |                 4 |                    3 |                      5 |       0.62 |
 | Germany       |     7 |               1814 |                11 |                    4 |                      3 |       0.43 |
-| South Korea   |     6 |               1192 |                 7 |                    4 |                      2 |       0.33 |
+| South Korea   |     6 |               1192 |                 4 |                    4 |                      2 |       0.33 |
 | Australia     |     5 |                783 |                 3 |                    1 |                      4 |       0.8  |
 
     

@@ -67,18 +67,16 @@ Terms by Cluster Frame
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-                                        0  ...                                           3
-0     Jagtiani J., 2018, J ECON BUS 1:156  ...           Alt R., 2018, ELECTRON MARK 1:150
-1      Jakšič M., 2019, RISK MANAGE 1:102  ...    Gomber P., 2018, J MANAGE INF SYST 1:576
-2    Cai C.W., 2018, ACCOUNT FINANC 1:145  ...    Gozman D., 2018, J MANAGE INF SYST 1:120
-3       Gomber P., 2017, J BUS ECON 1:489  ...  Iman N., 2018, ELECT COMMER RES APPL 1:102
-4   Haddad C., 2019, SMALL BUS ECON 1:258  ...                                            
-5           Lee I., 2018, BUS HORIZ 1:557  ...                                            
-6  Chen M.A., 2019, REV FINANC STUD 1:235  ...                                            
-7  Leong C., 2017, INT J INF MANAGE 1:180  ...                                            
+                                                0  ...                                           3
+0    Gracia D.B., 2019, IND MANAGE DATA SYS 1:225  ...           Alt R., 2018, ELECTRON MARK 1:150
+1                     Hu Z., 2019, SYMMETRY 1:176  ...    Gomber P., 2018, J MANAGE INF SYST 1:576
+2       Gai K., 2018, J NETWORK COMPUT APPL 1:238  ...    Gozman D., 2018, J MANAGE INF SYST 1:120
+3      Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161  ...  Iman N., 2018, ELECT COMMER RES APPL 1:102
+4          Kim Y., 2016, INT J APPL ENG RES 1:125  ...                                            
+5  Lim S.H., 2019, INT J HUMCOMPUT INTERACT 1:121  ...                                            
+6     Stewart H., 2018, INF COMPUT SECURITY 1:104  ...                                            
 <BLANKLINE>
-[8 rows x 4 columns]
-
+[7 rows x 4 columns]
 
 
 """

@@ -28,11 +28,11 @@ Performance Metrics
 >>> print(metrics.df_.head().to_markdown())
 | author_keywords      |   rank_occ |   rank_gcs |   rank_lcs |   OCC |   global_citations |   local_citations |   h_index |   g_index |   m_index |
 |:---------------------|-----------:|-----------:|-----------:|------:|-------------------:|------------------:|----------:|----------:|----------:|
-| FINTECH              |          1 |          1 |          1 |    31 |               5168 |                26 |        31 |        12 |      7.75 |
+| FINTECH              |          1 |          1 |          1 |    31 |               5168 |                25 |        31 |        12 |      7.75 |
 | INNOVATION           |          2 |          2 |          2 |     7 |                911 |                 5 |         7 |         7 |      1.75 |
-| FINANCIAL_SERVICES   |          3 |          4 |         40 |     4 |                667 |                 1 |         4 |         4 |      1    |
+| FINANCIAL_SERVICES   |          3 |          4 |         36 |     4 |                667 |                 1 |         4 |         4 |      1    |
 | FINANCIAL_INCLUSION  |          4 |          5 |          3 |     3 |                590 |                 5 |         3 |         3 |      0.75 |
-| FINANCIAL_TECHNOLOGY |          5 |         15 |         41 |     3 |                461 |                 1 |         3 |         3 |      1    |
+| FINANCIAL_TECHNOLOGY |          5 |         15 |         37 |     3 |                461 |                 1 |         3 |         3 |      1    |
 
 
 

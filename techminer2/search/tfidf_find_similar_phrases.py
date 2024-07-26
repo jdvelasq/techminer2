@@ -8,18 +8,16 @@
 Find Similar Records
 ===============================================================================
 
-
-
-
 >>> from techminer2.search import tfidf_find_similar_phrases
->>> tfidf_find_similar_phrases(
+>>> documents = tfidf_find_similar_phrases(
+...     #
+...     # SEARCH PARAMS:
 ...     text=(
 ...         "whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, "
 ...         "PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, "
 ...         "and MARKET_COMPETITION and DEVELOPMENT) remain, their means of application "
 ...         "are increasingly inadequate."
 ...     ),
-...     top_n=3,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -27,39 +25,31 @@ Find Similar Records
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 1.0
-AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
+>>> for i in range(3):
+...     print(documents[i])
+100.0%
+AR Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+TI FinTech, regTech, and the reconceptualization of financial regulation
+AB whilst the principal regulatory objectives ( e.g., financial stability ,
+   prudential safety and soundness , consumer protection and market
+   integrity , and market competition and development ) remain , their
+   means of application are increasingly inadequate .
 <BLANKLINE>
-whilst the principal regulatory objectives (e.g., financial stability,
-prudential safety and soundness, consumer protection and market
-integrity, and market competition and development) remain, their means of
-application are increasingly inadequate.
+30.2%
+AR Anagnostopoulos I., 2018, J ECON BUS, V100, P7
+TI Fintech and regtech: Impact on regulators and banks
+AB these should be of interest to regulatory standard setters , investors ,
+   international organisations and other academics who are researching
+   regulatory and competition issues , and their manifestation within the
+   financial and social contexts .
 <BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.302
-AR: Anagnostopoulos I., 2018, J ECON BUS, V100, P7
-TI: FINTECH and REGTECH: impact on regulators and BANKS
+27.7%
+AR Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+TI FinTech, regTech, and the reconceptualization of financial regulation
+AB regulatory change and technological developments following the 2008
+   global financial crisis are changing the nature of financial markets ,
+   services , and institutions .
 <BLANKLINE>
-these should be of interest to regulatory standard setters, investors,
-international organisations and other academics who are researching
-regulatory and competition issues, and their manifestation within the
-financial and social contexts.
-<BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.277
-AR: Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-TI: FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION
-<BLANKLINE>
-regulatory change and technological developments following the 2008
-global financial crisis are changing the nature of financial markets,
-services, and institutions.
-<BLANKLINE>
-
-
-
-
 
 """
 import os
@@ -81,7 +71,6 @@ THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 def tfidf_find_similar_phrases(
     text,
-    top_n=5,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -134,14 +123,22 @@ def tfidf_find_similar_phrases(
     records = records.sort_values(by="similarity", ascending=False)
     records = records[records["similarity"] > 0.0]
 
-    for _, row in records.head(top_n).iterrows():
-        print("-" * 100)
-        print("SIMILARITY: " + str(round(row.similarity, 3)))
-        print("AR: " + row.article)
-        print("TI: " + row.document_title)
-        print()
-        print(textwrap.fill(str(row.phrase), width=TEXTWRAP_WIDTH))
-        print()
+    documents = []
+    for _, row in records.iterrows():
+        text = str(round(100 * row.similarity, 1)) + "%\n"
+        text += "AR " + row.article + "\n"
+        text += "TI " + row.raw_document_title + "\n"
+        text += "AB " + textwrap.fill(
+            str(row.phrase),
+            width=TEXTWRAP_WIDTH,
+            initial_indent="",
+            subsequent_indent=" " * 3,
+            fix_sentence_endings=True,
+        )
+        text += "\n"
+        documents.append(text)
+
+    return documents
 
 
 def apply_thesaurus_to_text(root_dir, words):
@@ -275,7 +272,7 @@ def extract_sentences(records):
     """
     :meta private:
     """
-    abstracts = records[["article", "document_title", "abstract"]].dropna()
+    abstracts = records[["article", "raw_document_title", "abstract"]].dropna()
 
     #
     #

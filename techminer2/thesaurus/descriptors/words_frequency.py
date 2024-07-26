@@ -27,14 +27,14 @@ NEW            38
 MOBILE         34
 MARKET         30
 INDUSTRY       29
-PAYMENT        28
+SERVICE        28
 Name: count, dtype: int64
 
 """
 import os
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 
 def words_frequency(

@@ -29,14 +29,14 @@ Terms by Cluster Frame
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... ).head()
-                                                   0  ...                                                  4
-0       Gomber P., 2017, J BUS ECON, V87, P537 1:489  ...  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...
-1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...     Zavolokina L., 2016, FINANCIAL INNOV, V2 1:106
-2  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...  ...                                                   
-3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150  ...                                                   
-4            Lee I., 2018, BUS HORIZ, V61, P35 1:557  ...                                                   
+                                                   0  ...                                                  3
+0  Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P5...  ...  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...
+1  Gracia D.B., 2019, IND MANAGE DATA SYS, V119, ...  ...     Zavolokina L., 2016, FINANCIAL INNOV, V2 1:106
+2                   Hu Z., 2019, SYMMETRY, V11 1:176  ...                                                   
+3    Gabor D., 2017, NEW POLIT ECON, V22, P423 1:314  ...                                                   
+4  Gai K., 2018, J NETWORK COMPUT APPL, V103, P26...  ...                                                   
 <BLANKLINE>
-[5 rows x 5 columns]
+[5 rows x 4 columns]
 
 
 >>> # abbr_source_title, authors, organizations, countries:
@@ -70,8 +70,8 @@ Terms by Cluster Frame
 
 
 """
-from ._core._terms_by_cluster_frame_from_documents import _terms_by_cluster_frame_from_documents
-from ._core._terms_by_cluster_frame_from_others import _terms_by_cluster_frame_from_others
+from ._core.docs.terms_by_cluster_frame import _terms_by_cluster_frame as _terms_by_cluster_frame_from_docs
+from ._core.others.terms_by_cluster_frame import _terms_by_cluster_frame
 
 
 def terms_by_cluster_frame(
@@ -99,7 +99,7 @@ def terms_by_cluster_frame(
 
     if unit_of_analysis == "article":
 
-        return _terms_by_cluster_frame_from_documents(
+        return _terms_by_cluster_frame_from_docs(
             #
             # COLUMN PARAMS:
             top_n=top_n,
@@ -116,7 +116,7 @@ def terms_by_cluster_frame(
             **filters,
         )
 
-    return _terms_by_cluster_frame_from_others(
+    return _terms_by_cluster_frame(
         unit_of_analysis=unit_of_analysis,
         #
         # COLUMN PARAMS:

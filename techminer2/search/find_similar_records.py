@@ -10,9 +10,10 @@ Find Similar Records
 
 
 >>> from techminer2.search import find_similar_records
->>> find_similar_records(
+>>> documents = find_similar_records(
+...     #
+...     # SEARCH PARAMS:
 ...     record_no=1,
-...     top_n=3,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -20,88 +21,80 @@ Find Similar Records
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
-----------------------------------------------------------------------------------------------------
+>>> for i in range(2):
+...    print(documents[i])
 SIMILARITY: 1.0
-No: 1
-AR: Goldstein I., 2019, REV FINANC STUD, V32, P1647
-TI: to FINTECH and beyond
+Record-No: 1
+AR Goldstein I., 2019, REV FINANC STUD, V32, P1647
+TI To FinTech and beyond
+AU Goldstein I.; Jiang W./1; Karolyi G.A.
+TC 197
+SO Review of Financial Studies
+PY 2019
+AB FINTECH is about the introduction of NEW_TECHNOLOGIES into the
+   FINANCIAL_SECTOR , and IT is now revolutionizing the FINANCIAL_INDUSTRY . in
+   2017 , when the academic FINANCE COMMUNITY was not actively researching
+   FINTECH , the EDITORIAL_TEAM of the REVIEW of FINANCIAL_STUDIES launched a
+   COMPETITION to develop RESEARCH_PROPOSALS focused on this topic . this
+   SPECIAL_ISSUE is the result . in this INTRODUCTORY_ARTICLE , we describe the
+   RECENT_FINTECH_PHENOMENON and the NOVEL_EDITORIAL_PROTOCOL employed for this
+   SPECIAL_ISSUE following the registered reports format.we discuss what we
+   learned from the submitted proposals about the field of FINTECH and which
+   ones we selected to be completed and ultimately come out in this
+   SPECIAL_ISSUE . we also provide several observations to help guide
+   FUTURE_RESEARCH in the emerging area of FINTECH . ( JEL_G00 , G21 , g23 ,
+   G28 , l51 , o31 ) . the author ( s ) 2019 .
+** EDITORIAL_TEAM; FINANCIAL_INDUSTRY; FINANCIAL_SECTOR; FINANCIAL_STUDIES;
+   FUTURE_RESEARCH; INTRODUCTORY_ARTICLE; JEL_G00; NEW_TECHNOLOGIES;
+   NOVEL_EDITORIAL_PROTOCOL; RECENT_FINTECH_PHENOMENON; RESEARCH_PROPOSALS;
+   SPECIAL_ISSUE
 <BLANKLINE>
-FINTECH is about the introduction of NEW_TECHNOLOGIES into the
-FINANCIAL_SECTOR, and IT is now revolutionizing the FINANCIAL_INDUSTRY.
-in 2017, when the academic FINANCE COMMUNITY was not actively researching
-FINTECH, the EDITORIAL_TEAM of the REVIEW of FINANCIAL_STUDIES launched a
-COMPETITION to develop RESEARCH_PROPOSALS focused on this topic. this
-SPECIAL_ISSUE is the result. in this INTRODUCTORY_ARTICLE, we describe
-the RECENT_FINTECH_PHENOMENON and the NOVEL_EDITORIAL_PROTOCOL employed
-for this SPECIAL_ISSUE following the registered reports format.we discuss
-what we learned from the submitted proposals about the field of FINTECH
-and which ones we selected to be completed and ultimately come out in
-this SPECIAL_ISSUE. we also provide several observations to help guide
-FUTURE_RESEARCH in the emerging area of FINTECH. (JEL_G00, G21, g23, G28,
-l51, o31).  the author(s) 2019.
-<BLANKLINE>
-----------------------------------------------------------------------------------------------------
 SIMILARITY: 0.217
-No: 32
-AR: Zavolokina L., 2016, INT CONF INF SYST ICIS
-TI: FINTECH   what's in a name?
-<BLANKLINE>
-FINTECH, the word which originates from marriage of "FINANCE" and
-"TECHNOLOGY", designates currently a novel, innovative and emerging field
-which ATTRACTS_ATTENTION from the publicity. at the moment there is no
-UNIVERSAL_UNDERSTANDING and DEFINITION of FINTECH in the RESEARCH,
-however, the topic is widely addressed by the english_ and
-german_speaking press. in this study we aim to make insights into how the
-press and other POPULAR_MEDIA understand and FRAME_FINTECH, discussing
-definitions that represents the meaning of IT for the press, and deliver
-the CONCEPTUAL_FRAMEWORK to be used in RESEARCH and
-SCIENTIFIC_LITERATURE. in doing so, we also IDENTIFY_DRIVERS of FINTECH
-and put them in the CONTEXT of financial and DIGITAL_INNOVATION_RESEARCH.
-thereby, we provide OBJECTIVE_UNDERSTANDING of FINTECH, how IT is
-reflected in the POPULAR_MEDIA.
-<BLANKLINE>
-----------------------------------------------------------------------------------------------------
-SIMILARITY: 0.217
-No: 3
-AR: Zavolokina L., 2016, FINANCIAL INNOV, V2
-TI: the FINTECH_PHENOMENON: antecedents of FINANCIAL_INNOVATION perceived by the POPULAR_PRESS
-<BLANKLINE>
-the FINANCIAL_INDUSTRY has been strongly influenced by DIGITALIZATION in
-the past few years reflected by the emergence of FINTECH, which
-represents the marriage of FINANCE and INFORMATION_TECHNOLOGY. FINTECH
-provides OPPORTUNITIES for the creation of NEW_SERVICES and
-BUSINESS_MODELS and poses challenges to
-TRADITIONAL_FINANCIAL_SERVICE_PROVIDERS. therefore, FINTECH has become a
-subject of debate among practitioners, investors, and researchers and is
-highly visible in the POPULAR_MEDIA. in this study, we unveil the DRIVERS
-motivating the FINTECH_PHENOMENON perceived by the english and german
-POPULAR_PRESS including the subjects discussed in the CONTEXT of FINTECH.
-this study is the first one to reflect the MEDIA_PERSPECTIVE on the
-FINTECH_PHENOMENON in the RESEARCH. in doing so, we extend the growing
-KNOWLEDGE on FINTECH and contribute to a COMMON_UNDERSTANDING in the
-financial and DIGITAL_INNOVATION_LITERATURE. these STUDY_CONTRIBUTES to
-RESEARCH in the areas of INFORMATION_SYSTEMS, FINANCE and
-interdisciplinary SOCIAL_SCIENCES. moreover, IT brings VALUE to
-practitioners (ENTREPRENEURS, investors, regulators, etc.), who explore
-the field of FINTECH.  2016, the author(s).
+Record-No: 32
+AR Zavolokina L., 2016, INT CONF INF SYST ICIS
+TI FinTech - What's in a name?
+AU Zavolokina L.; Dolata M.; Schwabe G.
+TC 75
+SO 2016 International Conference on Information Systems, ICIS 2016
+PY 2016
+AB FINTECH , the word which originates from marriage of " FINANCE " and "
+   TECHNOLOGY " , designates currently a novel , innovative and emerging field
+   which ATTRACTS_ATTENTION from the publicity . at the moment there is no
+   UNIVERSAL_UNDERSTANDING and DEFINITION of FINTECH in the RESEARCH , however
+   , the topic is widely addressed by the english_ and german_speaking press .
+   in this study we aim to make insights into how the press and other
+   POPULAR_MEDIA understand and FRAME_FINTECH , discussing definitions that
+   represents the meaning of IT for the press , and deliver the
+   CONCEPTUAL_FRAMEWORK to be used in RESEARCH and SCIENTIFIC_LITERATURE . in
+   doing so , we also IDENTIFY_DRIVERS of FINTECH and put them in the CONTEXT
+   of financial and DIGITAL_INNOVATION_RESEARCH . thereby , we provide
+   OBJECTIVE_UNDERSTANDING of FINTECH , how IT is reflected in the
+   POPULAR_MEDIA .
+DE CONTENT_ANALYSIS; DIGITALIZATION; FINTECH; INNOVATION; POPULAR_PRESS
+ID INFORMATION_SYSTEMS; INNOVATION; CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS;
+   DIGITAL_INNOVATIONS; DIGITALIZATION; FINTECH; SCIENTIFIC_LITERATURE; PRESSES
+   (MACHINE_TOOLS)
+** ATTRACTS_ATTENTION; CONCEPTUAL_FRAMEWORK; DIGITAL_INNOVATION_RESEARCH;
+   FINTECH; FRAME_FINTECH; IDENTIFY_DRIVERS; OBJECTIVE_UNDERSTANDING;
+   POPULAR_MEDIA; SCIENTIFIC_LITERATURE; UNIVERSAL_UNDERSTANDING
 <BLANKLINE>
 
 
 """
-import textwrap
-
 from nltk.stem import WordNetLemmatizer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
+from ..documents.select_documents import select_documents
 
 TEXTWRAP_WIDTH = 73
 
 
 def find_similar_records(
+    #
+    # SEARCH PARAMS:
     record_no,
-    top_n=5,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -135,29 +128,36 @@ def find_similar_records(
 
     #
     #
-    records = paragraph_to_meaningful_words(records)
-    tf_matrix = build_tf_matrix(records)
-    similarity = cosine_similarity(tf_matrix, tf_matrix.loc[record_no:record_no, :])
+    records = _paragraph_to_meaningful_words(records)
+    tf_matrix = _build_tf_matrix(records)
+    similarity = cosine_similarity(tf_matrix, [tf_matrix.loc[record_no, :].values])
     records["similarity"] = similarity
     records = records.sort_values(by="similarity", ascending=False)
     records = records[records["similarity"] > 0.0]
-    records = records.head(top_n)
 
-    for _, row in records.head(top_n).iterrows():
-        print("-" * 100)
-        print("SIMILARITY: " + str(round(row.similarity, 3)))
-        print("No: " + str(row.art_no))
-        print("AR: " + row.article)
-        print("TI: " + row.document_title)
-        print()
-        print(textwrap.fill(str(row.abstract), width=TEXTWRAP_WIDTH))
-        print()
+    documents = select_documents(
+        #
+        # DATABASE PARAMS
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=None,
+        **{"article": records.article.tolist()},
+        **filters,
+    )
+
+    sorted_documents = []
+    for _, record in records.iterrows():
+        doc = [doc for doc in documents if record.article in doc]
+        assert len(doc) == 1
+        doc = "SIMILARITY: " + str(round(record.similarity, 3)) + "\n" + doc[0]
+        sorted_documents.append(doc)
+
+    return sorted_documents
 
 
-def paragraph_to_meaningful_words(records):
-    """
-    :meta private:
-    """
+def _paragraph_to_meaningful_words(records):
 
     lemmatizer = WordNetLemmatizer()
 
@@ -173,6 +173,8 @@ def paragraph_to_meaningful_words(records):
 
         if tag[1][:2] == "JJ":
             return (lemmatizer.lemmatize(tag[0], pos="a"), tag[1])
+
+        return lemmatizer.lemmatize(tag[0]), tag[1]
 
     records = records.copy()
     records = records[["art_no", "article", "document_title", "abstract", "paragraph"]].dropna()
@@ -199,10 +201,8 @@ def paragraph_to_meaningful_words(records):
     return records
 
 
-def build_tf_matrix(records):
-    """
-    :meta private:
-    """
+def _build_tf_matrix(records):
+
     records = records.copy()
     records = records.explode("paragraph")
     records["OCC"] = 1

@@ -28,12 +28,11 @@ Network Metrics
 ...     cited_by_filter=(None, None),
 ... ).head()
                                 Degree  Betweenness  Closeness  PageRank
-ELECT COMMER RES APPL 1:32          26     0.055089   0.933333  0.045030
-J MANAGE INF SYST 1:31              26     0.015935   0.933333  0.043009
-MIS QUART MANAGE INF SYST 1:47      26     0.015935   0.933333  0.043009
-INF SYST RES 1:18                   25     0.013700   0.903226  0.041529
-MANAGE SCI 1:33                     25     0.015093   0.903226  0.041559
-
+ELECT COMMER RES APPL 1:32          27     0.077741   0.935484  0.047163
+J MANAGE INF SYST 1:27              26     0.017028   0.906250  0.042947
+MIS QUART MANAGE INF SYST 1:47      26     0.017028   0.906250  0.042947
+COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
+MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
 from .._core.nx.nx_compute_metrics import nx_compute_metrics
