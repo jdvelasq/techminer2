@@ -9,7 +9,7 @@ Cluster Records
 ===============================================================================
 
 >>> from techminer2.tools import cluster_records 
->>> cluster_records(
+>>> plot = cluster_records(
 ...     field='author_keywords',
 ...     #
 ...     # ITEM FILTERS:
@@ -23,7 +23,8 @@ Cluster Records
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/tools/cluster_records.html")
+... )
+>>> # plot.write_html("sphinx/_static/tools/cluster_records.html")
 
 .. raw:: html
 

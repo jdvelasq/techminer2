@@ -10,7 +10,7 @@ Heat Map
 ===============================================================================
 
 >>> from techminer2.report import heat_map
->>> chart = heat_map(
+>>> plot = heat_map(
 ...     #
 ...     # CO-OCC PARAMS:
 ...     columns='author_keywords',
@@ -37,7 +37,7 @@ Heat Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/heat_map.html")
+>>> # plot.write_html("sphinx/_static/report/heat_map.html")
 
 .. raw:: html
 

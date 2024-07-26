@@ -10,7 +10,7 @@ Co-occurrences Chart
 
 
 >>> from techminer2.tools.associations import co_occurrences_chart
->>> co_occurrences_chart(
+>>> plot = co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     item='FINTECH',
@@ -39,7 +39,8 @@ Co-occurrences Chart
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/tools/associations/co_occurrences.html")
+... )
+>>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
 
 .. raw:: html
 

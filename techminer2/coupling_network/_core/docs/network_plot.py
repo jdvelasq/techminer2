@@ -8,7 +8,7 @@
 """
 
 >>> from techminer2.coupling_network._core.docs.network_plot import _network_plot
->>> _network_plot(
+>>> plot = _network_plot(
 ...     #
 ...     # ARTICLE PARAMS:
 ...     top_n=20, 
@@ -42,7 +42,8 @@
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/coupling_network/_core/docs/network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/network_plot.html")
 
 .. raw:: html
 

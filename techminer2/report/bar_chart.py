@@ -10,7 +10,7 @@ Bar Chart
 
 
 >>> from techminer2.report import bar_chart
->>> chart = bar_chart(
+>>> plot = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -33,7 +33,7 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/bar_chart.html")
+>>> # plot.write_html("sphinx/_static/report/bar_chart.html")
 
 .. raw:: html
 

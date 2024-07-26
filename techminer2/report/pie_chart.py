@@ -10,7 +10,7 @@ Pie Chart
 ===============================================================================
 
 >>> from techminer2.report import pie_chart
->>> chart = pie_chart(
+>>> plot = pie_chart(
 ...     #
 ...     # TERM PARAMS:
 ...     field='author_keywords',
@@ -30,7 +30,7 @@ Pie Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/pie_chart.html")
+>>> # plot.write_html("sphinx/_static/report/pie_chart.html")
 
 .. raw:: html
 

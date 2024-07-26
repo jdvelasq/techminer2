@@ -10,7 +10,7 @@ Line Chart
 ===============================================================================
 
 >>> from techminer2.report import line_chart
->>> chart = line_chart(
+>>> plot = line_chart(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -32,7 +32,7 @@ Line Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/line_chart.html")
+>>> # plot.write_html("sphinx/_static/report/line_chart.html")
 
 .. raw:: html
 

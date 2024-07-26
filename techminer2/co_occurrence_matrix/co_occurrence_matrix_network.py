@@ -11,7 +11,7 @@ Co-occurrence Matrix Network
 
 
 >>> from techminer2.co_occurrence_matrix import co_occurrence_matrix_network
->>> co_occurrence_matrix_network(
+>>> plot = co_occurrence_matrix_network(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     columns='author_keywords',
@@ -52,7 +52,8 @@ Co-occurrence Matrix Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_matrix_network_0.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_matrix_network_0.html")
 
 .. raw:: html
 
@@ -60,7 +61,7 @@ Co-occurrence Matrix Network
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> co_occurrence_matrix_network(
+>>> plot = co_occurrence_matrix_network(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     columns='author_keywords',
@@ -101,7 +102,8 @@ Co-occurrence Matrix Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_matrix_network_1.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_matrix_network_1.html")
 
 .. raw:: html
 

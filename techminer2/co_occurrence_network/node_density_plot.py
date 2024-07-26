@@ -11,7 +11,7 @@ Node Density Plot
 
 
 >>> from techminer2.co_occurrence_network import node_density_plot
->>> node_density_plot(
+>>> plot = node_density_plot(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -43,7 +43,8 @@ Node Density Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_network/node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_occurrence_network/node_density_plot.html")
 
 .. raw:: html
 

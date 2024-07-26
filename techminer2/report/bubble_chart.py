@@ -9,7 +9,7 @@ Bubble Chart
 ===============================================================================
 
 >>> from techminer2.report import bubble_chart
->>> chart = bubble_chart(
+>>> plot = bubble_chart(
 ...     #
 ...     # COLUMN PARAMS:
 ...     columns='author_keywords',
@@ -34,7 +34,7 @@ Bubble Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/bubble_chart.html")
+>>> # plot.write_html("sphinx/_static/report/bubble_chart.html")
 
 .. raw:: html
 

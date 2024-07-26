@@ -10,7 +10,7 @@ Node Density Plot
 ===============================================================================
 
 >>> from techminer2.citation_network import node_density_plot
->>> node_density_plot(
+>>> plot = node_density_plot(
 ...     unit_of_analysis="article",
 ...     #
 ...     # COLUMN PARAMS:
@@ -36,7 +36,8 @@ Node Density Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/citation_network/documents_node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/citation_network/documents_node_density_plot.html")
 
 .. raw:: html
 
@@ -44,7 +45,7 @@ Node Density Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> from techminer2.citation_network import node_density_plot
->>> node_density_plot(
+>>> plot = node_density_plot(
 ...     unit_of_analysis="abbr_source_title",
 ...     #
 ...     # COLUMN PARAMS:
@@ -72,7 +73,8 @@ Node Density Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/citation_network/others_node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/citation_network/others_node_density_plot.html")
 
 .. raw:: html
 

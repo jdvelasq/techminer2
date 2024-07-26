@@ -12,7 +12,7 @@ Manifold Terms by Dimensions Map
 >>> from sklearn.decomposition import PCA
 >>> from sklearn.manifold import TSNE
 >>> from techminer2.factor_analysis.tfidf import manifold_terms_by_dimension_map
->>> manifold_terms_by_dimension_map(
+>>> plot = manifold_terms_by_dimension_map(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
@@ -76,7 +76,8 @@ Manifold Terms by Dimensions Map
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/factor_analysis/tfidf/manifold_terms_by_dimension_map.html")
+... )
+>>> # plot.write_html("sphinx/_static/factor_analysis/tfidf/manifold_terms_by_dimension_map.html")
 
 .. raw:: html
 

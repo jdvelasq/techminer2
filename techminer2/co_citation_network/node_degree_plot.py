@@ -33,7 +33,7 @@ Node Degree Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
+>>> # plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
 
 .. raw:: html
 

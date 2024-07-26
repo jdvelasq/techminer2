@@ -12,7 +12,7 @@ Factor Map
 >>> from sklearn.decomposition import PCA
 >>> from sklearn.cluster import KMeans
 >>> from techminer2.factor_analysis.tfidf import factor_map
->>> factor_map(
+>>> plot = factor_map(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
@@ -83,7 +83,8 @@ Factor Map
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/factor_analysis/tfidf/factor_map.html")
+... )
+>>> # plot.write_html("sphinx/_static/factor_analysis/tfidf/factor_map.html")
 
 .. raw:: html
 

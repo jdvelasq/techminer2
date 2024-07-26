@@ -10,7 +10,7 @@ Network Plot
 ===============================================================================
 
 >>> from techminer2.co_citation_network import network_plot
->>> network_plot(
+>>> plot = network_plot(
 ...     unit_of_analysis="cited_sources", # "cited_sources", 
 ...                                       # "cited_references",
 ...                                       # "cited_authors"
@@ -47,7 +47,8 @@ Network Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_citation_network/network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_citation_network/network_plot.html")
 
 .. raw:: html
 

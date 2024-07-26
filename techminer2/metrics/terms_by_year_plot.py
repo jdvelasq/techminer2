@@ -9,7 +9,7 @@ Terms by Year Plot
 ===============================================================================
 
 >>> from techminer2.metrics import terms_by_year_plot
->>> terms_by_year_plot(
+>>> plot = terms_by_year_plot(
 ...     field="author_keywords",
 ...     #
 ...     # FILTER PARAMS:
@@ -24,7 +24,8 @@ Terms by Year Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/metrics/terms_by_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/metrics/terms_by_plot.html")
 
 .. raw:: html
 

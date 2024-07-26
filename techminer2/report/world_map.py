@@ -10,7 +10,7 @@ World Map
 ===============================================================================
 
 >>> from techminer2.report import world_map
->>> chart = world_map(
+>>> plot = world_map(
 ...     #
 ...     # ITEMS PARAMS:
 ...     metric="OCC",
@@ -31,7 +31,7 @@ World Map
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/world_map.html")
+>>> # plot.write_html("sphinx/_static/report/world_map.html")
 
 .. raw:: html
 

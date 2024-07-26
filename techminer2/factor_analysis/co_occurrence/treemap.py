@@ -12,7 +12,7 @@ Treemap
 >>> from sklearn.decomposition import PCA
 >>> from sklearn.cluster import KMeans
 >>> from techminer2.factor_analysis.co_occurrence import treemap
->>> treemap(
+>>> plot = treemap(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
@@ -52,7 +52,8 @@ Treemap
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/factor_analysis/co_occurrence/treemap.html")
+... )
+>>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/treemap.html")
 
 .. raw:: html
 

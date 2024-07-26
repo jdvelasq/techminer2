@@ -72,7 +72,7 @@ Bradford's Law
 | Foresight                           |   41 |     1 |        50 |                 65 |      3 |
 
 
->>> bradford.fig_.write_html("sphinx/_static/tools/bradford_law.html")
+>>> # bradford.fig_.write_html("sphinx/_static/tools/bradford_law.html")
 
 .. raw:: html
 

@@ -9,7 +9,7 @@ Sankey Chart
 ===============================================================================
 
 >>> from techminer2.co_occurrence_matrix import sankey_chart
->>> sankey_chart(
+>>> plot = sankey_chart(
 ...     #
 ...     # PARAMS:
 ...     fields=["authors", "countries", "author_keywords"],
@@ -32,7 +32,8 @@ Sankey Chart
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,
-... ).write_html("sphinx/_static/co_occurrence_matrix/sankey_chat.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_occurrence_matrix/sankey_chat.html")
 
 .. raw:: html
 
@@ -40,7 +41,7 @@ Sankey Chart
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.graph_objects as go
+import plotly.graph_objects as go  # type: ignore
 
 from .co_occurrence_matrix import co_occurrence_matrix
 

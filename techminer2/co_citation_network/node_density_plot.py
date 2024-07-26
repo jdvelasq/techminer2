@@ -11,7 +11,7 @@ Node Density Plot
 
 
 >>> from techminer2.co_citation_network import node_density_plot
->>> node_density_plot(
+>>> plot = node_density_plot(
 ...     unit_of_analysis="cited_sources", # "cited_sources", 
 ...                                       # "cited_references",
 ...                                       # "cited_authors"
@@ -40,7 +40,8 @@ Node Density Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_citation_network/node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_citation_network/node_density_plot.html")
 
 .. raw:: html
 

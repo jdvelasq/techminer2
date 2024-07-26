@@ -8,7 +8,7 @@
 """
 
 >>> from techminer2.coupling_network._core.docs.node_density_plot import _node_density_plot
->>> _node_density_plot(
+>>> plot = _node_density_plot(
 ...     #
 ...     # ARTICLE PARAMS:
 ...     top_n=20, 
@@ -37,7 +37,8 @@
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/coupling_network/_core/docs/node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/node_density_plot.html")
 
 .. raw:: html
 

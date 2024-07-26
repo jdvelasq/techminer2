@@ -10,7 +10,7 @@ Network Density Plot
 ===============================================================================
 
 >>> from techminer2.coupling_network import node_density_plot
->>> node_density_plot(
+>>> plot = node_density_plot(
 ...     unit_of_analysis='authors', # article
 ...                                 # authors 
 ...                                 # countries
@@ -48,7 +48,8 @@ Network Density Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/coupling_network/others_node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/coupling_network/others_node_density_plot.html")
 
 .. raw:: html
 
@@ -58,7 +59,7 @@ Network Density Plot
     
 >>> # article:    
 >>> from techminer2.coupling_network import node_density_plot
->>> node_density_plot(
+>>> plot = node_density_plot(
 ...     unit_of_analysis='article', # article
 ...                                 # authors 
 ...                                 # countries, 
@@ -96,7 +97,8 @@ Network Density Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/coupling_network/docs_node_density_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/coupling_network/docs_node_density_plot.html")
 
 .. raw:: html
 

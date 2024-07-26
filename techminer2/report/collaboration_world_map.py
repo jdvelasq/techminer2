@@ -11,7 +11,7 @@ Collaboration WorldMap
 
 
 >>> from techminer2.report import collaboration_world_map
->>> chart = collaboration_world_map(
+>>> plot = collaboration_world_map(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -19,7 +19,7 @@ Collaboration WorldMap
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.write_html("sphinx/_static/report/collaboration_world_map.html")
+>>> # plot.write_html("sphinx/_static/report/collaboration_world_map.html")
 
 .. raw:: html
 

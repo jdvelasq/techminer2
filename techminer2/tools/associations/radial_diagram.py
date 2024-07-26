@@ -10,7 +10,7 @@ Radial Diagram
 
 
 >>> from techminer2.tools.associations import radial_diagram
->>> radial_diagram(
+>>> plot = radial_diagram(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     items=["FINTECH", "INNOVATION"],
@@ -53,7 +53,8 @@ Radial Diagram
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/tools/associations/radial_diagram.html")
+... )
+>>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 

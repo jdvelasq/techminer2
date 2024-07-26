@@ -27,7 +27,7 @@
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.write_html("sphinx/_static/coupling_network/_core/docs/node_degree_plot.html")
+>>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/node_degree_plot.html")
 
 .. raw:: html
 

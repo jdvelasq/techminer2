@@ -12,7 +12,7 @@ Network Plot
 
 >>> # authors, countries, organizations, sources:
 >>> from techminer2.coupling_network import network_plot
->>> network_plot(
+>>> plot = network_plot(
 ...     unit_of_analysis='authors', # article
 ...                                 # authors 
 ...                                 # countries
@@ -54,7 +54,8 @@ Network Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/coupling_network/others_network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/coupling_network/others_network_plot.html")
 
 .. raw:: html
 
@@ -64,7 +65,7 @@ Network Plot
     
 >>> # article:
 >>> from techminer2.coupling_network import network_plot
->>> network_plot(
+>>> plot = network_plot(
 ...     unit_of_analysis='article', # article
 ...                                 # authors 
 ...                                 # countries, 
@@ -107,7 +108,8 @@ Network Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/coupling_network/docs_network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/coupling_network/docs_network_plot.html")
 
 .. raw:: html
 

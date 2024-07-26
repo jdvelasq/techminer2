@@ -12,7 +12,7 @@ Word Trends
 
 
 >>> from techminer2.tools import word_trends
->>> chart = word_trends(
+>>> plot = word_trends(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -37,7 +37,7 @@ Word Trends
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> chart.fig_.write_html("sphinx/_static/tools/word_trends.html")
+>>> # plot.fig_.write_html("sphinx/_static/tools/word_trends.html")
 
 .. raw:: html
 
@@ -45,7 +45,7 @@ Word Trends
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> chart.df_.head()
+>>> plot.df_.head()
                       rank_occ  OCC  ...  average_growth_rate  average_docs_per_year
 author_keywords                      ...                                            
 FINTECH                      1   31  ...                 -1.0                    9.0
@@ -57,7 +57,7 @@ FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                   
 [5 rows x 7 columns]
 
 
->>> print(chart.prompt_) # doctest: +ELLIPSIS
+>>> print(plot.prompt_) # doctest: +ELLIPSIS
 Your task is ...
 
 

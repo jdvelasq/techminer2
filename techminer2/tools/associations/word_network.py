@@ -11,7 +11,7 @@ Word Network
 
 
 >>> from techminer2.tools.associations import word_network
->>> word_network(
+>>> plot = word_network(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     item='INNOVATION',
@@ -54,7 +54,8 @@ Word Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/tools/associations/word_network_0.html")
+... )
+>>> # plot.write_html("sphinx/_static/tools/associations/word_network_0.html")
 
 .. raw:: html
 
@@ -62,7 +63,7 @@ Word Network
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> word_network(
+>>> plot = word_network(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     item='FINANCIAL_SERVICES',
@@ -105,7 +106,8 @@ Word Network
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/tools/associations/word_network_1.html")
+... )
+>>> # plot.write_html("sphinx/_static/tools/associations/word_network_1.html")
 
 .. raw:: html
 

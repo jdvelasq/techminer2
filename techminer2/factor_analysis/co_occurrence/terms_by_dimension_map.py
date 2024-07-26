@@ -11,7 +11,7 @@ Terms by Dimensions Map
 
 >>> from sklearn.decomposition import PCA
 >>> from techminer2.factor_analysis.co_occurrence import terms_by_dimension_map
->>> terms_by_dimension_map(
+>>> plot = terms_by_dimension_map(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
@@ -50,7 +50,8 @@ Terms by Dimensions Map
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
+... )
+>>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
 
 .. raw:: html
 

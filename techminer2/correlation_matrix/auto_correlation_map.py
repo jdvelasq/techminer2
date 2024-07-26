@@ -14,7 +14,7 @@ Creates an Auto-correlation Map.
 
 >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
 >>> from techminer2.correlation_matrix import auto_correlation_map
->>> auto_correlation_map(
+>>> plot = auto_correlation_map(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     rows_and_columns='authors',
@@ -53,7 +53,8 @@ Creates an Auto-correlation Map.
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/correlation_matrix/auto_correlation_map.html")
+... )
+>>> # plot.write_html("sphinx/_static/correlation_matrix/auto_correlation_map.html")
 
 .. raw:: html
 

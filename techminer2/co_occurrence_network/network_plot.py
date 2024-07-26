@@ -10,7 +10,7 @@ Network Plot
 ===============================================================================
 
 >>> from techminer2.co_occurrence_network import network_plot
->>> network_plot(
+>>> plot = network_plot(
 ...     #
 ...     # PARAMS:
 ...     field='author_keywords',
@@ -49,7 +49,8 @@ Network Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
 
 .. raw:: html
 

@@ -11,7 +11,7 @@ Network Plot
 
 >>> # article:
 >>> from techminer2.citation_network import network_plot
->>> network_plot(
+>>> plot = network_plot(
 ...     #
 ...     # COLUMN PARAMS:
 ...     unit_of_analysis='article',
@@ -45,7 +45,8 @@ Network Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/citation_network/documents_network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/citation_network/documents_network_plot.html")
 
 .. raw:: html
 
@@ -55,7 +56,7 @@ Network Plot
     
 >>> # abbr_source_title, authors, organizations, countries:
 >>> from techminer2.citation_network import network_plot
->>> network_plot(
+>>> plot = network_plot(
 ...     #
 ...     # COLUMN PARAMS:
 ...     unit_of_analysis='abbr_source_title',
@@ -93,7 +94,8 @@ Network Plot
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... ).write_html("sphinx/_static/citation_network/others_network_plot.html")
+... )
+>>> # plot.write_html("sphinx/_static/citation_network/others_network_plot.html")
 
 .. raw:: html
 

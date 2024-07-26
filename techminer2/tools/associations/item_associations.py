@@ -56,7 +56,7 @@ MARKETPLACE_LENDING 03:0317                 3
 FINANCIAL_TECHNOLOGY 03:0461                2
 
 
->>> associations.fig_.write_html("sphinx/_static/tools/associations/item_associations_chart.html")
+>>> # associations.fig_.write_html("sphinx/_static/tools/associations/item_associations_chart.html")
 
 .. raw:: html
 

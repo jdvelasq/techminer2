@@ -11,12 +11,12 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 
 
 >>> from techminer2.rpys import rpys_plot
->>> chart = rpys_plot(
+>>> plot = rpys_plot(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
->>> chart.write_html("sphinx/_static/rpys/rpys_chart.html")
+>>> # plot.write_html("sphinx/_static/rpys/rpys_chart.html")
 
 .. raw:: html
 

@@ -10,7 +10,7 @@ Ranking Chart
 ===============================================================================
 
 >>> from techminer2.report import ranking_chart
->>> chart = ranking_chart(
+>>> plot = ranking_chart(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -36,7 +36,7 @@ Ranking Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/ranking_chart.html")
+>>> # plot.write_html("sphinx/_static/report/ranking_chart.html")
 
 .. raw:: html
 
