@@ -10,7 +10,7 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 
 """
-from cdlib import algorithms
+from cdlib import algorithms  # type: ignore
 
 
 def nx_cluster_graph(

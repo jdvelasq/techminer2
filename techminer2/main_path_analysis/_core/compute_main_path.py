@@ -215,7 +215,7 @@ def _create_citations_table(
     # Builds a dataframe with citing and cited articles
     data_frame = records[["article", "local_references", "global_citations"]]
 
-    data_frame["local_references"] = data_frame.local_references.str.split(";")
+    data_frame.loc[:, "local_references"] = data_frame.local_references.str.split(";")
     data_frame = data_frame.explode("local_references")
     data_frame["local_references"] = data_frame["local_references"].str.strip()
 

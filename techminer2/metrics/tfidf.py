@@ -52,7 +52,7 @@ Chen L., 2016, CHINA ECON J, V9, P225                         1  ...            
 """
 from typing import Literal
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
@@ -131,7 +131,7 @@ def tfidf(
     )
 
     if is_binary is True:
-        result = result.applymap(lambda w: 1 if w > 0 else 0)
+        result = result.map(lambda w: 1 if w > 0 else 0)
 
     if norm is not None or use_idf or smooth_idf or sublinear_tf:
         transformer = TfidfTransformer(

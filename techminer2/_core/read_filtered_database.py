@@ -1,4 +1,5 @@
 # pylint: disable=too-few-public-methods
+# pylint: disable=line-too-long
 """
 Read bibliometric records from a database.
 
@@ -89,7 +90,7 @@ def read_filtered_database(
 
                 # Split the filter value into a list of strings
                 database = records[["article", filter_name]]
-                database[filter_name] = database[filter_name].str.split(";")
+                database.loc[:, filter_name] = database[filter_name].str.split(";")
 
                 # Explode the list of strings into multiple rows
                 database = database.explode(filter_name)

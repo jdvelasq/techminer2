@@ -42,10 +42,7 @@ def compute_trend_metrics(
     cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """Computes global database indicators per year.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     records = read_filtered_database(
         root_dir=root_dir,

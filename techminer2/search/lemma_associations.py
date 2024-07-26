@@ -154,7 +154,7 @@ def __select_sentences(
         sentences.loc[sentences["abstract"].str.contains(word), "selected"] = True
     sentences = sentences[sentences["selected"]]
 
-    sentences["selected"] = False
+    sentences.loc[:, "selected"] = False
     for word in lemma_b_word_group:
         sentences.loc[sentences["abstract"].str.contains(word), "selected"] = True
     sentences = sentences[sentences["selected"]]

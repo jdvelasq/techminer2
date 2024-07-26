@@ -83,7 +83,6 @@ Bradford's Law
 """
 from dataclasses import dataclass
 
-import numpy as np
 import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
 
@@ -195,7 +194,7 @@ def __table(
 
     sources = records.groupby("source_title", as_index=True).agg(
         {
-            "num_documents": np.sum,
+            "num_documents": "sum",
         }
     )
     sources = sources[["num_documents"]]
@@ -210,7 +209,7 @@ def __table(
     )
 
     sources = sources.sort_values(["Documents published"], ascending=False)
-    sources["Acum Num Sources"] = sources["Num Sources"].cumsum()
+    sources.loc[:, "Acum Num Sources"] = sources["Num Sources"].cumsum()
     sources["% Acum"] = [str(round(100 * a / sum(sources["Num Sources"]), 2)) + " %" for a in sources["Acum Num Sources"]]
 
     sources["Tot Documents published"] = sources["Num Sources"] * sources["Documents published"]

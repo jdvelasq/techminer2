@@ -90,7 +90,7 @@ def __add_weighted_edges_from(
 
     #
     # Continues the processing
-    data_frame["local_references"] = data_frame.local_references.str.split(";")
+    data_frame.loc[:, "local_references"] = data_frame.local_references.str.split(";")
     data_frame = data_frame.explode("local_references")
     data_frame["local_references"] = data_frame["local_references"].str.strip()
 
@@ -112,8 +112,8 @@ def __add_weighted_edges_from(
         )
     }
     #
-    data_frame_with_links["article"] = data_frame_with_links["article"].map(rename_dict)
-    data_frame_with_links["local_references"] = data_frame_with_links["local_references"].map(rename_dict)
+    data_frame_with_links.loc[:, "article"] = data_frame_with_links["article"].map(rename_dict)
+    data_frame_with_links.loc[:, "local_references"] = data_frame_with_links["local_references"].map(rename_dict)
 
     #
     # Removes documents without local citations in references

@@ -48,7 +48,6 @@ Collaboration Metrics
 """
 from dataclasses import dataclass
 
-import numpy as np
 import plotly.express as px  # type: ignore
 
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
@@ -136,11 +135,11 @@ def collaboration_metrics(
         # Compute collaboration indicators for each topic
         metrics = exploded.groupby(field, as_index=False).agg(
             {
-                "OCC": np.sum,
-                "global_citations": np.sum,
-                "local_citations": np.sum,
-                "single_publication": np.sum,
-                "multiple_publication": np.sum,
+                "OCC": "sum",
+                "global_citations": "sum",
+                "local_citations": "sum",
+                "single_publication": "sum",
+                "multiple_publication": "sum",
             }
         )
 

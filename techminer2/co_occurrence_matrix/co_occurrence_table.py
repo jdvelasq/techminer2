@@ -200,7 +200,7 @@ def co_occurrence_table(
             cited_by_filter=cited_by_filter,
             **filters,
         )
-        filtered_matrix_list["row"] = filtered_matrix_list["row"].map(rows_map)
+        filtered_matrix_list.loc[:, "row"] = filtered_matrix_list["row"].map(rows_map)
 
         columns_map = helper_compute_occurrences_and_citations(
             criterion=columns,
@@ -212,7 +212,7 @@ def co_occurrence_table(
             cited_by_filter=cited_by_filter,
             **filters,
         )
-        filtered_matrix_list["column"] = filtered_matrix_list["column"].map(columns_map)
+        filtered_matrix_list.loc[:, "column"] = filtered_matrix_list["column"].map(columns_map)
 
     filtered_matrix_list = filtered_matrix_list.reset_index(drop=True)
     # filtered_matrix_list = filtered_matrix_list.rename(columns={"row": rows, "column": columns})
