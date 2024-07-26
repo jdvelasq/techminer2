@@ -17,7 +17,7 @@ Extract Country
 ... )
 
 >>> # TEST:  
->>> from techminer2.metrics import performance_metrics
+>>> from techminer2.metrics import performance_metrics_frame
 >>> performance_metrics( # doctest: +SKIP 
 ...     field='countries_from_affiliations',
 ...     metric='OCC',
@@ -25,15 +25,6 @@ Extract Country
 ...     root_dir="example/", 
 ... )
 
-
-['OCC'].head()
-countries_from_affiliations
-United Kingdom    7
-Australia         7
-United States     6
-Ireland           5
-China             5
-Name: OCC, dtype: int64
 
 >>> from techminer2.fields import delete_field
 >>> delete_field( # doctest: +SKIP 
@@ -47,7 +38,7 @@ import glob
 import os
 
 import numpy as np
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..protected_fields import PROTECTED_FIELDS

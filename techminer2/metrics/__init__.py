@@ -4,7 +4,7 @@ from .._core.metrics.calculate_global_performance_metrics import calculate_globa
 from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 from .general_metrics_frame import general_metrics_frame
 from .growth_metrics import growth_metrics
-from .performance_metrics import performance_metrics
+from .performance_metrics_frame import performance_metrics_frame
 from .terms_by_year_frame import terms_by_year_frame
 from .terms_by_year_plot import terms_by_year_plot
 from .tfidf import tfidf
@@ -15,7 +15,7 @@ __all__ = [
     "calculate_global_performance_metrics",
     "growth_metrics",
     "term_occurrences_by_year",
-    "performance_metrics",
+    "performance_metrics_frame",
     "terms_by_year_frame",
     "terms_by_year_plot",
     "tfidf",

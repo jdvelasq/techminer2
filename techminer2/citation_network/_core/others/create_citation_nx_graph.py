@@ -10,7 +10,7 @@ import networkx as nx  # type: ignore
 import numpy as np
 
 from ...._core.read_filtered_database import read_filtered_database
-from ....metrics.performance_metrics import performance_metrics
+from ....metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def _create_citation_nx_graph(
@@ -114,7 +114,7 @@ def __add_weighted_edges_from(
 
     #
     # Compute citations and occurrences
-    metrics = performance_metrics(
+    metrics = performance_metrics_frame(
         #
         # ITEMS PARAMS:
         field=unit_of_analysis,
@@ -132,7 +132,7 @@ def __add_weighted_edges_from(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
     data_frame = data_frame.loc[data_frame.citing_unit.isin(metrics.index.to_list()), :]
     data_frame = data_frame.loc[data_frame.cited_unit.isin(metrics.index.to_list()), :]
 

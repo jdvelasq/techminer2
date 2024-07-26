@@ -43,7 +43,7 @@ World Map
 import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
 
-from ..metrics.performance_metrics import performance_metrics
+from ..metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def world_map(
@@ -70,12 +70,12 @@ def world_map(
 ):
     """:meta private:"""
 
-    def create_plot():
+    def create_plot(dataframe):
         """Creates a plotly figure."""
 
         worldmap_data = load_worldmap_data()
 
-        dataframe = data_frame.df_
+        # dataframe = data_frame.df_
         dataframe.index = dataframe.index.rename("country")
         dataframe = dataframe.sort_index()
 
@@ -88,7 +88,7 @@ def world_map(
             color=metric,
             hover_name="country",
             hover_data=[col for col in dataframe.columns if col not in ["country", "iso_alpha"]],
-            range_color=(1, data_frame.df_[metric].max()),
+            range_color=(1, data_frame[metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},
             scope="world",
@@ -135,7 +135,7 @@ def world_map(
     #
     # Main code
     #
-    items = performance_metrics(
+    items = performance_metrics_frame(
         #
         # ITEMS PARAMS:
         field="countries",
@@ -156,6 +156,6 @@ def world_map(
     )
 
     data_frame = items
-    items.fig_ = create_plot()
+    items.fig_ = create_plot(data_frame)
 
     return items.fig_

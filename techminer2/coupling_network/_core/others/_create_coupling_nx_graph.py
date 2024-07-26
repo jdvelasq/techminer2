@@ -11,7 +11,7 @@ import numpy as np
 
 from ...._core.read_filtered_database import read_filtered_database
 from ....helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
-from ....metrics.performance_metrics import performance_metrics
+from ....metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def _create_coupling_nx_graph(
@@ -110,7 +110,7 @@ def __add_weighted_edges_from(
     #
     # Filter the data
 
-    metrics = performance_metrics(
+    metrics = performance_metrics_frame(
         #
         # ITEMS PARAMS:
         field=unit_of_analysis,
@@ -128,7 +128,7 @@ def __add_weighted_edges_from(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     data_frame = data_frame.loc[data_frame.row.isin(metrics.index), :]
     data_frame = data_frame.loc[data_frame.column.isin(metrics.index), :]

@@ -44,7 +44,7 @@ Word Cloud
 import numpy as np
 from wordcloud import WordCloud
 
-from ..metrics.performance_metrics import performance_metrics
+from ..metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def word_cloud(
@@ -72,7 +72,7 @@ def word_cloud(
 ):
     """:meta private:"""
 
-    items = performance_metrics(
+    items = performance_metrics_frame(
         #
         # ITEMS PARAMS:
         field=field,
@@ -92,7 +92,7 @@ def word_cloud(
         **filters,
     )
 
-    data_frame = items.df_.copy()
+    data_frame = items.copy()
 
     x_mask, y_mask = np.ogrid[:300, :300]
     mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2

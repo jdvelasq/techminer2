@@ -43,7 +43,7 @@ Line Chart
 """
 import plotly.express as px  # type: ignore
 
-from ..metrics.performance_metrics import performance_metrics
+from ..metrics.performance_metrics_frame import performance_metrics_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -74,7 +74,7 @@ def line_chart(
 ):
     """:meta private:"""
 
-    items = performance_metrics(
+    items = performance_metrics_frame(
         #
         # ITEMS PARAMS:
         field=field,
@@ -97,7 +97,7 @@ def line_chart(
 
     field_label = field.replace("_", " ").upper() if field_label is None else field_label
 
-    data_frame = items.df_.copy()
+    data_frame = items.copy()
 
     fig = px.line(
         data_frame,

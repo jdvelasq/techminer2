@@ -34,10 +34,10 @@ Filter a Field
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._dtypes import DTYPES
-from ..metrics import performance_metrics
+from ..metrics import performance_metrics_frame
 from .protected_fields import PROTECTED_FIELDS
 
 
@@ -71,7 +71,7 @@ def filter_field(
         else:
             raise ValueError(f"Internal error: unknown database {file}")
 
-        data_frame = performance_metrics(
+        data_frame = performance_metrics_frame(
             field=source,
             filter_params=filter_params,
             database_params=database_params,

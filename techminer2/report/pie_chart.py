@@ -42,7 +42,7 @@ Pie Chart
 """
 import plotly.express as px  # type: ignore
 
-from ..metrics.performance_metrics import performance_metrics
+from ..metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def pie_chart(
@@ -68,7 +68,7 @@ def pie_chart(
 ):
     """:meta private:"""
 
-    items = performance_metrics(
+    items = performance_metrics_frame(
         #
         # ITEMS PARAMS:
         field=field,
@@ -88,7 +88,7 @@ def pie_chart(
         **filters,
     )
 
-    data_frame = items.df_.copy()
+    data_frame = items.copy()
 
     fig = px.pie(
         data_frame,
