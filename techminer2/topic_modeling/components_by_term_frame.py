@@ -71,9 +71,9 @@ component                   ...
 
 
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
-from ..metrics import tfidf
+from ..metrics import tfidf_frame
 
 
 def components_by_term_frame(
@@ -110,7 +110,7 @@ def components_by_term_frame(
 ):
     """:meta private:"""
 
-    tf_matrix = tfidf(
+    tf_matrix = tfidf_frame(
         #
         # TF PARAMS:
         field=field,

@@ -5,12 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-TFIDF
+TFIDF Frame
 ===============================================================================
 
 
->>> from techminer2.metrics import tfidf
->>> tfidf(
+>>> from techminer2.metrics import tfidf_frame
+>>> tfidf_frame(
 ...     #
 ...     # TF PARAMS:
 ...     retain_counters=True,
@@ -53,7 +53,7 @@ Chen L., 2016, CHINA ECON J, V9, P225                         1  ...            
 from typing import Literal
 
 import pandas as pd  # type: ignore
-from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
@@ -61,7 +61,7 @@ from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
 
 
-def tfidf(
+def tfidf_frame(
     #
     # TF PARAMS:
     field: str,
@@ -89,10 +89,7 @@ def tfidf(
     sort_by=None,
     **filters,
 ):
-    """Computes TF Matrix.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     indicators = calculate_global_performance_metrics(
         field=field,

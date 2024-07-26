@@ -32,7 +32,6 @@ Terms to Cluster Mapping
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-...     sort_by=None,
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
@@ -86,7 +85,6 @@ def terms_to_clusters_mapping(
     database="main",
     year_filter=(None, None),
     cited_by_filter=(None, None),
-    sort_by=None,
     **filters,
 ):
     """:meta private:"""
@@ -110,7 +108,6 @@ def terms_to_clusters_mapping(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
         **filters,
     )
 

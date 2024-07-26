@@ -56,10 +56,7 @@ def cosine_similarities_graph(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Makes a butterfly chart.
-
-    :meta private:
-    """
+    """:meta private:"""
 
     def extract_item_position_and_name(candidate_items, item):
         """Obtains the positions of topics in a list."""
@@ -99,7 +96,7 @@ def cosine_similarities_graph(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     similarities = pd.DataFrame(
         cosine_similarity(cooc_matrix),

@@ -46,7 +46,7 @@ Zavolokina L. 2:0181                0.00  ...                   1.0
 
 """
 from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
-from ..metrics.tfidf import tfidf
+from ..metrics.tfidf_frame import tfidf_frame
 from ._compute_corr_matrix import compute_corr_matrix
 
 
@@ -71,7 +71,7 @@ def auto_correlation_matrix(
 ):
     """:meta private:"""
 
-    data_matrix = tfidf(
+    data_matrix = tfidf_frame(
         #
         # TF PARAMS:
         field=rows_and_columns,

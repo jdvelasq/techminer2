@@ -75,7 +75,6 @@ def world_map(
 
         worldmap_data = load_worldmap_data()
 
-        # dataframe = data_frame.df_
         dataframe.index = dataframe.index.rename("country")
         dataframe = dataframe.sort_index()
 
@@ -88,7 +87,7 @@ def world_map(
             color=metric,
             hover_name="country",
             hover_data=[col for col in dataframe.columns if col not in ["country", "iso_alpha"]],
-            range_color=(1, data_frame[metric].max()),
+            range_color=(1, dataframe[metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},
             scope="world",
@@ -155,7 +154,6 @@ def world_map(
         **filters,
     )
 
-    data_frame = items
-    items.fig_ = create_plot(data_frame)
+    fig = create_plot(items)
 
-    return items.fig_
+    return fig

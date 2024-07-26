@@ -1,23 +1,14 @@
-"""Tools Menu."""
-
-from .bradford_law import bradford_law
+from .bradford_law_frame import bradford_law_frame
+from .bradford_law_plot import bradford_law_plot
+from .bradford_law_zones_frame import bradford_law_zones_frame
 from .cluster_records import cluster_records
 from .coverage import coverage
-from .lotka_law import lotka_law
+from .lotka_law_frame import lotka_law_frame
+from .lotka_law_plot import lotka_law_plot
 from .query import query
 from .statistics import statistics
 from .summary_sheet import summary_sheet
-from .trending_words_per_year import trending_words_per_year
-from .word_trends import word_trends
-
-__all__ = [
-    "coverage",
-    "lotka_law",
-    "query",
-    "statistics",
-    "summary_sheet",
-    "trending_words_per_year",
-    "word_trends",
-    "bradford_law",
-    "cluster_records",
-]
+from .trending_words_frame import trending_words_frame
+from .trending_words_per_year_frame import trending_words_per_year_frame
+from .trending_words_per_year_plot import trending_words_per_year_plot
+from .trending_words_plot import trending_words_plot

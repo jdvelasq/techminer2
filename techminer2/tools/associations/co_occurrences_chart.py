@@ -31,9 +31,6 @@ Co-occurrences Chart
 ...     row_gc_range=(None, None),
 ...     row_custom_terms=None,
 ...     #
-...     # CHART:
-...     title=None,
-...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
@@ -51,7 +48,7 @@ Co-occurrences Chart
 """
 import plotly.express as px  # type: ignore
 
-from .item_associations import item_associations
+from .term_associations_frame import term_associations_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -79,7 +76,6 @@ def co_occurrences_chart(
     row_custom_terms=None,
     #
     # CHART PARAMS:
-    title=None,
     field_label=None,
     y_label=None,
     textfont_size=10,
@@ -94,10 +90,9 @@ def co_occurrences_chart(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """
-    :meta private:
-    """
-    associations = item_associations(
+    """:meta private:"""
+
+    associations = term_associations_frame(
         #
         # FUNCTION PARAMS:
         item=item,
@@ -126,7 +121,7 @@ def co_occurrences_chart(
         **filters,
     )
 
-    associations = associations.df_.copy()
+    associations = associations.copy()
     associations["occ"] = associations.index.copy()
     associations["occ"] = associations["occ"].str.split(" ")
     associations["occ"] = associations["occ"].str[-1]
@@ -146,8 +141,7 @@ def co_occurrences_chart(
 
     y_label = r"% of Co-occurrence with " + item if y_label is None else y_label
 
-    if title is None:
-        title = f"(%) Co-occurrences with '{item}'"
+    title = f"(%) Co-occurrences with '{item}'"
 
     if field_label is None:
         field_label = columns.replace("_", " ").upper() + " RANKING"

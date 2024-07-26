@@ -9,8 +9,8 @@
 Collaboration Metrics
 ===============================================================================
 
->>> from techminer2.metrics.collaboration_metrics import collaboration_metrics
->>> metrics = collaboration_metrics(
+>>> from techminer2.metrics import collaboration_metrics_frame
+>>> collaboration_metrics_frame(
 ...     #
 ...     # PARAMS:
 ...     field="countries",
@@ -26,36 +26,23 @@ Collaboration Metrics
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-... )
->>> metrics.fig_.write_html("sphinx/_static/metrics/collaboration_metrics.html")
-
-.. raw:: html
-
-    <iframe src="../_static/metrics/collaboration_metrics.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
-
->>> print(metrics.df_.head().to_markdown())
-| countries     |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
-|:--------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
-| United States |    16 |               3189 |                 8 |                    8 |                      8 |       0.5  |
-| China         |     8 |               1085 |                 4 |                    3 |                      5 |       0.62 |
-| Germany       |     7 |               1814 |                11 |                    4 |                      3 |       0.43 |
-| South Korea   |     6 |               1192 |                 4 |                    4 |                      2 |       0.33 |
-| Australia     |     5 |                783 |                 3 |                    1 |                      4 |       0.8  |
-
+... ).head()
+               OCC  global_citations  ...  multiple_publication  mp_ratio
+countries                             ...                                
+United States   16              3189  ...                     8      0.50
+China            8              1085  ...                     5      0.62
+Germany          7              1814  ...                     3      0.43
+South Korea      6              1192  ...                     2      0.33
+Australia        5               783  ...                     4      0.80
+<BLANKLINE>
+[5 rows x 6 columns]
     
 """
-from dataclasses import dataclass
-
-import plotly.express as px  # type: ignore
-
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
-def collaboration_metrics(
+def collaboration_metrics_frame(
     #
     # PARAMS:
     field,
@@ -176,73 +163,6 @@ def collaboration_metrics(
         return metrics
 
     #
-    # Chat GPT prompt
-    #
-    def create_prompt(
-        field,
-        metrics,
-    ):
-        main_text = (
-            f"Your task is to generate an analysis about the collaboration between {field} "
-            "according to the data in a scientific bibliography database. Summarize the table "
-            "below, delimited by triple backticks, where the column 'single publication' is the "
-            f"number of documents in which all the authors belongs to the same {field}, and the  "
-            "column 'multiple publication' is the number of documents in which the authors are "
-            f"from different {field}. The column 'mcp ratio' is the ratio between the columns "
-            "'multiple publication' and 'OCC'. The higher the ratio, the higher "
-            f"the collaboration between {field}. Use the information in the table to draw "
-            f"conclusions about the level of collaboration between {field} in the dataset. In "
-            "your analysis, be sure to describe in a clear and concise way, any findings or any "
-            "patterns you observe, and identify any outliers or anomalies in the data. Limit your "
-            "description to one paragraph with no more than 250 words."
-        )
-        return helper_format_prompt_for_dataframes(main_text, metrics.to_markdown())
-
-    #
-    # Figure
-    #
-    def create_fig(field, metrics):
-        #
-        metrics = metrics.copy()
-        metrics = metrics.reset_index()
-
-        metrics = metrics.melt(
-            id_vars=field,
-            value_vars=["single_publication", "multiple_publication"],
-        )
-        metrics = metrics.rename(columns={"variable": "publication", "value": "Num Documents"})
-        metrics.publication = metrics.publication.map(lambda x: x.replace("_", " ").title())
-        metrics[field] = metrics[field].map(lambda x: x.title())
-
-        fig = px.bar(
-            metrics,
-            x="Num Documents",
-            y=field,
-            color="publication",
-            title="Corresponding Author's " + field.title(),
-            hover_data=["Num Documents"],
-            orientation="h",
-            color_discrete_map={
-                "Single Publication": "#7793a5",
-                "Multiple Publication": "#465c6b",
-            },
-        )
-        fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-        fig.update_yaxes(
-            linecolor="gray",
-            linewidth=2,
-            autorange="reversed",
-        )
-        fig.update_xaxes(
-            linecolor="gray",
-            linewidth=2,
-            gridcolor="gray",
-            griddash="dot",
-        )
-
-        return fig
-
-    #
     # MAIN CODE:
     #
     metrics = compute_collaboration_metrics(
@@ -258,16 +178,5 @@ def collaboration_metrics(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-    prompt = create_prompt(
-        field=field,
-        metrics=metrics,
-    )
-    fig = create_fig(field, metrics)
 
-    @dataclass
-    class Results:
-        df_ = metrics
-        prompt_ = prompt
-        fig_ = fig
-
-    return Results()
+    return metrics

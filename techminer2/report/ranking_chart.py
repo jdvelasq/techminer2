@@ -164,6 +164,4 @@ def ranking_chart(
             yshift=yshift,
         )
 
-    items.fig_ = fig
-
     return fig

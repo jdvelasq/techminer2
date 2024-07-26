@@ -115,6 +115,6 @@ def word_cloud(
     wordcloud.generate_from_frequencies(text)
     wordcloud.recolor(color_func=lambda word, **kwargs: "black")
 
-    items.fig_ = wordcloud.to_image()
+    fig = wordcloud.to_image()
 
-    return items.fig_
+    return fig

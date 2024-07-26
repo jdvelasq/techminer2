@@ -65,9 +65,9 @@ Chen L., 2016, CHINA ECON J, V9, P225           0.025005  ...  0.774979
 
 
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
-from ..metrics import tfidf
+from ..metrics import tfidf_frame
 
 
 def documents_by_theme_frame(
@@ -104,7 +104,7 @@ def documents_by_theme_frame(
 ):
     """:meta private:"""
 
-    tf_matrix = tfidf(
+    tf_matrix = tfidf_frame(
         #
         # TF PARAMS:
         field=field,

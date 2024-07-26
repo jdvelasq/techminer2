@@ -5,12 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Item Associations
+Term Associations Plot
 ===============================================================================
 
 
->>> from techminer2.tools.associations import item_associations
->>> associations = item_associations(
+>>> from techminer2.tools.associations import term_associations_plot
+>>> plot = term_associations_plot(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     item='FINTECH',
@@ -32,7 +32,6 @@ Item Associations
 ...     row_custom_terms=None,
 ...     #
 ...     # CHART PARAMS:
-...     title=None,
 ...     field_label=None,
 ...     metric_label=None,
 ...     textfont_size=10,
@@ -46,26 +45,12 @@ Item Associations
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> associations.df_.head()
-                              FINTECH 31:5168
-rows                                         
-INNOVATION 07:0911                          5
-FINANCIAL_SERVICES 04:0667                  3
-FINANCIAL_INCLUSION 03:0590                 3
-MARKETPLACE_LENDING 03:0317                 3
-FINANCIAL_TECHNOLOGY 03:0461                2
-
-
->>> # associations.fig_.write_html("sphinx/_static/tools/associations/item_associations_chart.html")
+>>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/tools/associations/item_associations_chart.html" 
+    <iframe src="../../_static/tools/associations/term_associations_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
-
-    
->>> print(associations.prompt_) # doctest: +ELLIPSIS
-Your task is ...
 
 
 """
@@ -75,12 +60,13 @@ import plotly.express as px  # type: ignore
 
 from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
+from .term_associations_frame import term_associations_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
-def item_associations(
+def term_associations_plot(
     #
     # FUNCTION PARAMS:
     item,
@@ -102,7 +88,6 @@ def item_associations(
     row_custom_terms=None,
     #
     # CHART PARAMS:
-    title=None,
     field_label=None,
     metric_label=None,
     textfont_size=10,
@@ -117,11 +102,9 @@ def item_associations(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """association plot
+    """:meta private:"""
 
-    :meta private:
-    """
-    data_frame = __table(
+    data_frame = term_associations_frame(
         #
         # FUNCTION PARAMS:
         item=item,
@@ -150,9 +133,7 @@ def item_associations(
         **filters,
     )
 
-    prompt = __prompt(data_frame, columns, item)
-
-    chart = __chart(
+    fig = _make_fig(
         data_frame,
         #
         # CO-OCC PARAMS:
@@ -160,7 +141,6 @@ def item_associations(
         rows=rows,
         #
         # CHART PARAMS:
-        title=title,
         field_label=field_label,
         metric_label=metric_label,
         textfont_size=textfont_size,
@@ -169,122 +149,10 @@ def item_associations(
         yshift=yshift,
     )
 
-    @dataclass
-    class Results:
-        df_ = data_frame
-        prompt_ = prompt
-        fig_ = chart
-
-    return Results()
+    return fig
 
 
-def __prompt(data_frame, columns, item):
-    main_text = (
-        "Your task is to generate a short analysis of a table for a "
-        "research paper. Summarize the table below, delimited by triple "
-        "backticks, in one unique paragraph with at most 30 words. The "
-        "table contains the values of co-occurrence (OCC) of the "
-        f"'{item}' with the '{columns}' field in a bibliographic dataset. "
-        "Identify any notable patterns, trends, or outliers in the data, "
-        "and discuss their implications for the research field. Be sure "
-        "to provide a concise summary of your findings."
-    )
-    table_text = data_frame.to_markdown()
-    return helper_format_prompt_for_dataframes(main_text, table_text)
-
-
-def __table(
-    #
-    # FUNCTION PARAMS:
-    item,
-    #
-    # CO-OCC PARAMS:
-    columns,
-    rows,
-    #
-    # COLUMN PARAMS:
-    col_top_n,
-    col_occ_range,
-    col_gc_range,
-    col_custom_terms,
-    #
-    # ROW PARAMS:
-    row_top_n,
-    row_occ_range,
-    row_gc_range,
-    row_custom_terms,
-    #
-    # DATABASE PARAMS:
-    root_dir,
-    database,
-    year_filter,
-    cited_by_filter,
-    **filters,
-):
-    """Computes the associations of a item in a co-occurrence matrix."""
-
-    def extract_item_position_and_name(candidate_items, item):
-        """Obtains the positions of topics in a list."""
-
-        org_candidate_items = candidate_items[:]
-        candidate_items = [col.split(" ")[:-1] for col in candidate_items]
-        candidate_items = [" ".join(col) for col in candidate_items]
-        pos = candidate_items.index(item)
-        name = org_candidate_items[pos]
-        return pos, name
-
-    def extract_item_column_from_coc_matrix(obj, pos, name):
-        matrix = obj.copy()
-        series = matrix.iloc[:, pos]
-        series = series.drop(labels=[name], axis=0, errors="ignore")
-        # series = series[series > 0]
-        series.index.name = obj.index.name
-        return series
-
-    #
-    #
-    # MAIN CODE:
-    #
-    #
-    cooc_matrix = co_occurrence_matrix(
-        #
-        # FUNCTION PARAMS:
-        columns=columns,
-        rows=rows,
-        #
-        # COLUMN PARAMS:
-        col_top_n=col_top_n,
-        col_occ_range=col_occ_range,
-        col_gc_range=col_gc_range,
-        col_custom_terms=col_custom_terms,
-        #
-        # ROW PARAMS:
-        row_top_n=row_top_n,
-        row_occ_range=row_occ_range,
-        row_gc_range=row_gc_range,
-        row_custom_terms=row_custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    pos, name = extract_item_position_and_name(cooc_matrix.columns, item)
-    series = extract_item_column_from_coc_matrix(cooc_matrix, pos, name)
-    frame = series.to_frame()
-    frame["OCC"] = [text.split(" ")[-1].split(":")[0] for text in frame.index]
-    frame["GC"] = [text.split(" ")[-1].split(":")[-1] for text in frame.index]
-    frame["NAME"] = [" ".join(text.split(" ")[:-1]) for text in frame.index]
-    frame = frame.sort_values(by=[name, "OCC", "GC", "NAME"], ascending=[False, False, False, True])
-    series = frame[[name]]
-
-    return series
-
-
-def __chart(
+def _make_fig(
     data_frame,
     #
     # CO-OCC PARAMS:
@@ -292,7 +160,6 @@ def __chart(
     rows=None,
     #
     # CHART PARAMS:
-    title=None,
     field_label=None,
     metric_label=None,
     textfont_size=10,
@@ -302,11 +169,10 @@ def __chart(
 ):
     """association plot"""
 
-    if title is None:
-        item_name = data_frame.iloc[:, 0].name
-        item_name = " ".join(item_name.split(" ")[:-1])
-        series_name = data_frame.iloc[:, 0].index.name
-        title = f"Co-occurrence with of '{item_name}' with '{series_name}'"
+    item_name = data_frame.iloc[:, 0].name
+    item_name = " ".join(item_name.split(" ")[:-1])
+    series_name = data_frame.iloc[:, 0].index.name
+    title = f"Co-occurrence of '{item_name}' with '{series_name}'"
 
     data_frame = data_frame.copy()
     data_frame.columns = ["OCC"]

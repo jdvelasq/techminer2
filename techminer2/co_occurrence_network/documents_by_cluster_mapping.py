@@ -121,7 +121,6 @@ def documents_by_cluster_mapping(
         database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
         **filters,
     )
 

@@ -1,23 +1,25 @@
 """Metrics menu options"""
 
-from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
-from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
+from .collaboration_metrics_frame import collaboration_metrics_frame
+from .collaboration_metrics_plot import collaboration_metrics_plot
 from .general_metrics_frame import general_metrics_frame
-from .growth_metrics import growth_metrics
+from .growth_metrics_frame import growth_metrics_frame
 from .performance_metrics_frame import performance_metrics_frame
 from .terms_by_year_frame import terms_by_year_frame
 from .terms_by_year_plot import terms_by_year_plot
-from .tfidf import tfidf
-from .trend_metrics import trend_metrics
+from .tfidf_frame import tfidf_frame
+from .trend_metrics_frame import trend_metrics_frame
+from .trend_metrics_plot import trend_metrics_plot
 
 __all__ = [
+    "collaboration_metrics_frame",
+    "collaboration_metrics_plot",
     "general_metrics_frame",
-    "calculate_global_performance_metrics",
-    "growth_metrics",
-    "term_occurrences_by_year",
+    "growth_metrics_frame",
     "performance_metrics_frame",
     "terms_by_year_frame",
     "terms_by_year_plot",
-    "tfidf",
-    "trend_metrics",
+    "tfidf_frame",
+    "trend_metrics_frame",
+    "trend_metrics_plot",
 ]

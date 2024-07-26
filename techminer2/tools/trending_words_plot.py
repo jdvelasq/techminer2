@@ -7,12 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-Word Trends
+Trending Words Plot
 ===============================================================================
 
 
->>> from techminer2.tools import word_trends
->>> plot = word_trends(
+>>> from techminer2.tools import trending_words_plot
+>>> plot = trending_words_plot(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -21,7 +21,6 @@ Word Trends
 ...     time_window=2,
 ...     #
 ...     # CHART PARAMS:
-...     title="Total Number of Documents, with Percentage of Documents Published in the Last Years",
 ...     metric_label=None,
 ...     field_label=None,
 ...     #
@@ -37,41 +36,22 @@ Word Trends
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # plot.fig_.write_html("sphinx/_static/tools/word_trends.html")
+>>> plot.write_html("sphinx/tools/trending_words_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/tools/word_trends.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
-
->>> plot.df_.head()
-                      rank_occ  OCC  ...  average_growth_rate  average_docs_per_year
-author_keywords                      ...                                            
-FINTECH                      1   31  ...                 -1.0                    9.0
-INNOVATION                   2    7  ...                 -1.5                    0.5
-FINANCIAL_SERVICES           3    4  ...                  0.0                    1.5
-FINANCIAL_INCLUSION          4    3  ...                 -1.0                    0.0
-FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                    1.0
-<BLANKLINE>
-[5 rows x 7 columns]
-
-
->>> print(plot.prompt_) # doctest: +ELLIPSIS
-Your task is ...
+    <iframe src="../_static/tools/trending_words_plot.html" 
+    height="900px" width="100%" frameBorder="0"></iframe>
 
 
 
 """
-from dataclasses import dataclass
-
 import plotly.express as px  # type: ignore
 
-from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
-from ..metrics.growth_metrics import growth_metrics
+from .trending_words_frame import trending_words_frame
 
 
-def word_trends(
+def trending_words_plot(
     #
     # ITEM PARAMS:
     field,
@@ -80,7 +60,6 @@ def word_trends(
     time_window=2,
     #
     # CHART PARAMS:
-    title=None,
     metric_label=None,
     field_label=None,
     #
@@ -101,10 +80,12 @@ def word_trends(
 
     #
     # Extracs only the performance metrics data frame
-    data_frame = growth_metrics(
+    data_frame = trending_words_frame(
         #
         # ITEMS PARAMS:
         field=field,
+        #
+        # TREND ANALYSIS:
         time_window=time_window,
         #
         # ITEM FILTERS:
@@ -119,7 +100,7 @@ def word_trends(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     metric_label = "OCC" if metric_label is None else metric_label
     field_label = field.replace("_", " ").upper() if field_label is None else field_label
@@ -150,7 +131,6 @@ def word_trends(
         x="Num Documents",
         y=field.replace("_", " ").title(),
         color="Period",
-        title=title,
         orientation="h",
         color_discrete_map={
             before: "#7793a5",
@@ -174,21 +154,4 @@ def word_trends(
         griddash="dot",
     )
 
-    main_text = (
-        "Your task is to generate an analysis about the bibliometric indicators of the "
-        f"'{field}' field in a scientific bibliography database. Summarize the table below, "
-        f"containing the number of documents {before} and {between}, "
-        "and sorted by the total number of documents, and delimited by triple backticks. Identify "
-        "any notable patterns, trends, or outliers in the data, and discuss their "
-        "implications for the research field. Be sure to provide a concise summary "
-        "of your findings in no more than 150 words. "
-    )
-    prompt = helper_format_prompt_for_dataframes(main_text, data_frame.to_markdown())
-
-    @dataclass
-    class Results:
-        df_ = data_frame
-        prompt_ = prompt
-        fig_ = fig
-
-    return Results()
+    return fig

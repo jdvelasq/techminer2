@@ -76,7 +76,7 @@ def filter_field(
             filter_params=filter_params,
             database_params=database_params,
         )
-        valid_items = data_frame.df_.index.tolist()
+        valid_items = data_frame.index.tolist()
 
         #
         # Filter by year

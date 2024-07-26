@@ -40,7 +40,7 @@ import plotly.graph_objects as go
 from sklearn.manifold import MDS
 from sklearn.neighbors import KernelDensity
 
-from ..metrics.tfidf import tfidf
+from ..metrics.tfidf_frame import tfidf_frame
 
 
 def cluster_records(
@@ -63,7 +63,7 @@ def cluster_records(
 
     :meta private:
     """
-    tfidf_matrix = tfidf(
+    tfidf_matrix = tfidf_frame(
         field=field,
         is_binary=False,
         cooc_within=1,

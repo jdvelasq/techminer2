@@ -101,6 +101,4 @@ def pie_chart(
     fig.update_traces(textinfo="percent+value")
     fig.update_layout(legend={"y": 0.5})
 
-    items.fig_ = fig
-
     return fig

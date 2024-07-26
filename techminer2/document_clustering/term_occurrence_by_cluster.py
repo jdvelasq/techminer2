@@ -64,7 +64,7 @@ ARTIFICIAL_INTELLIGENCE 04:0495      1   1  0  0  2  0  0  0
 FINTECH_SERVICES 04:0468             1   1  0  0  2  0  0  0
 
 """
-from ..metrics import tfidf
+from ..metrics import tfidf_frame
 
 
 def term_occurrence_by_cluster(
@@ -94,7 +94,7 @@ def term_occurrence_by_cluster(
 ):
     """:meta private:"""
 
-    tf_matrix = tfidf(
+    tf_matrix = tfidf_frame(
         #
         # TF PARAMS:
         field=field,

@@ -148,6 +148,4 @@ def cleveland_dot_chart(
         title_text=field_label,
     )
 
-    items.fig_ = fig
-
     return fig

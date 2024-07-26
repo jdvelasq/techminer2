@@ -35,7 +35,6 @@ def _create_co_occurrence_nx_graph(
     database="main",
     year_filter=(None, None),
     cited_by_filter=(None, None),
-    sort_by=None,
     **filters,
 ):
 
@@ -74,7 +73,7 @@ def _add_nodes_from(
     nx_graph,
     cooc_matrix,
 ):
-    matrix = cooc_matrix.df_.copy()
+    matrix = cooc_matrix.copy()
     nodes = matrix.columns.tolist()
     nx_graph.add_nodes_from(nodes, group=0)
 
@@ -92,10 +91,10 @@ def _add_weighted_edges_from(
     nx_graph,
     cooc_matrix,
 ):
-    matrix = cooc_matrix.df_.copy()
+    matrix = cooc_matrix.copy()
 
-    for i_row, row in enumerate(cooc_matrix.df_.index.tolist()):
-        for i_col, col in enumerate(cooc_matrix.df_.columns.tolist()):
+    for i_row, row in enumerate(cooc_matrix.index.tolist()):
+        for i_col, col in enumerate(cooc_matrix.columns.tolist()):
             #
             # Unicamente toma valores por encima de la diagonal principal
             if i_col <= i_row:

@@ -117,7 +117,7 @@ Word Network
     
 """
 from ...co_occurrence_matrix.co_occurrence_matrix_network import co_occurrence_matrix_network
-from .item_associations import item_associations
+from .term_associations_frame import term_associations_frame
 
 
 def word_network(
@@ -167,7 +167,7 @@ def word_network(
 ):
     """:meta private:"""
 
-    associations = item_associations(
+    associations = term_associations_frame(
         #
         # FUNCTION PARAMS:
         item=item,
@@ -188,15 +188,6 @@ def word_network(
         row_gc_range=row_gc_range,
         row_custom_terms=row_custom_terms,
         #
-        # CHART PARAMS:
-        title=None,
-        field_label=None,
-        metric_label=None,
-        textfont_size=10,
-        marker_size=7,
-        line_width=1.5,
-        yshift=4,
-        #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
@@ -207,8 +198,8 @@ def word_network(
 
     #
     # Build a list of associated terms
-    terms = associations.df_[associations.df_.iloc[:, 0] > 0].index.tolist()
-    terms = terms + associations.df_.columns.tolist()
+    terms = associations[associations.iloc[:, 0] > 0].index.tolist()
+    terms = terms + associations.columns.tolist()
     terms = list(set(terms))
     terms = [" ".join(item.split(" ")[:-1]) for item in terms]
 

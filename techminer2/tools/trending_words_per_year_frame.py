@@ -5,11 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Trending Words per Year
+Trending Words per Year Frame
 ===============================================================================
 
->>> from techminer2.tools import trending_words_per_year
->>> words = trending_words_per_year(
+>>> from techminer2.tools import trending_words_per_year_frame
+>>> trending_words_per_year_frame(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
@@ -21,15 +21,7 @@ Trending Words per Year
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,
-... )
->>> # words.fig_.write_html("sphinx/tools/trending_words_per_year.html")
-
-.. raw:: html
-
-    <iframe src="../_static/tools/trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
-
-
->>> words.df_.head()
+... ).head()
 year              OCC  year_q1  year_med  ...  rn    height  width
 author_keywords                           ...                     
 CONTENT_ANALYSIS    2     2016      2016  ...   2  0.177333      1
@@ -40,8 +32,8 @@ BANKING             2     2016      2016  ...   1  0.177333      2
 <BLANKLINE>
 [5 rows x 8 columns]
 
->>> from techminer2.tools import trending_words_per_year
->>> words = trending_words_per_year(
+>>> from techminer2.tools import trending_words_per_year_frame
+>>> trending_words_per_year_frame(
 ...     #
 ...     # PARAMS:
 ...     field="author_keywords",
@@ -58,7 +50,6 @@ BANKING             2     2016      2016  ...   1  0.177333      2
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )    
->>> words.df_
 year                     OCC  year_q1  year_med  ...  rn  height  width
 author_keywords                                  ...                   
 FINTECH                   31     2017      2018  ...   0    0.97      2
@@ -68,10 +59,7 @@ ARTIFICIAL_INTELLIGENCE    2     2019      2019  ...   0    0.15      1
 [3 rows x 8 columns]
 
 """
-from dataclasses import dataclass
-
 import numpy as np
-import plotly.graph_objects as go
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
@@ -79,7 +67,7 @@ from .._core.metrics.sort_records_by_metric import sort_records_by_metric
 from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 
 
-def trending_words_per_year(
+def trending_words_per_year_frame(
     #
     # PARAMS:
     field,
@@ -97,10 +85,7 @@ def trending_words_per_year(
     cited_by_filter=None,
     **filters,
 ):
-    """Trend topics
-
-    :meta private:
-    """
+    """:meta private:"""
 
     #
     # Compute occurrences for all words
@@ -196,6 +181,8 @@ def trending_words_per_year(
     words_by_year = words_by_year.sort_values(["year_q1", "width", "height"], ascending=[True, True, True])
     #
     # -----------------------------------------------------------------------------------
+
+    return words_by_year
 
     fig = go.Figure(
         go.Bar(

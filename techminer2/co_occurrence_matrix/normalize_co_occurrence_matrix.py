@@ -125,5 +125,4 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
     for index in range(len(normalized_matrix)):
         normalized_matrix.iloc[index, index] = 0.0
 
-    cooc_matrix.df_ = normalized_matrix
-    return cooc_matrix
+    return normalized_matrix

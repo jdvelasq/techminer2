@@ -5,11 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Growth Metrics
+Growth Metrics Frame
 ===============================================================================
 
->>> from techminer2.metrics import growth_metrics
->>> metrics = growth_metrics(
+>>> from techminer2.metrics import growth_metrics_frame
+>>> growth_metrics_frame(
 ...     field='author_keywords',
 ...     time_window=2,
 ...     #
@@ -24,28 +24,21 @@ Growth Metrics
 ...     database="main",
 ...     year_filter=None,
 ...     cited_by_filter=None,
-... )
->>> print(metrics.df_.head().to_markdown())
-| author_keywords      |   rank_occ |   OCC |   between_2018_2019 |   before_2018 |   growth_percentage |   average_growth_rate |   average_docs_per_year |
-|:---------------------|-----------:|------:|--------------------:|--------------:|--------------------:|----------------------:|------------------------:|
-| FINTECH              |          1 |    31 |                  18 |            13 |               58.06 |                  -1   |                     9   |
-| INNOVATION           |          2 |     7 |                   1 |             6 |               14.29 |                  -1.5 |                     0.5 |
-| FINANCIAL_SERVICES   |          3 |     4 |                   3 |             1 |               75    |                   0   |                     1.5 |
-| FINANCIAL_INCLUSION  |          4 |     3 |                   0 |             3 |                0    |                  -1   |                     0   |
-| FINANCIAL_TECHNOLOGY |          5 |     3 |                   2 |             1 |               66.67 |                   0   |                     1   |
-
-
-
-
->>> print(metrics.prompt_) # doctest: +ELLIPSIS
-Your task is ...
+... ).head()
+                      rank_occ  OCC  ...  average_growth_rate  average_docs_per_year
+author_keywords                      ...                                            
+FINTECH                      1   31  ...                 -1.0                    9.0
+INNOVATION                   2    7  ...                 -1.5                    0.5
+FINANCIAL_SERVICES           3    4  ...                  0.0                    1.5
+FINANCIAL_INCLUSION          4    3  ...                 -1.0                    0.0
+FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                    1.0
+<BLANKLINE>
+[5 rows x 7 columns]
 
 
 
 
 """
-import os
-
 #
 # TechMiner2+ computes three growth indicators for each item in a field (usually
 # keywords or noun phrases):
@@ -84,16 +77,14 @@ import os
 #
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
-from dataclasses import dataclass
 
 from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
 from .._core.metrics.filter_records_by_metric import filter_records_by_metric
 from .._core.metrics.select_record_columns_by_metric import select_record_columns_by_metric
 from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
-from ..helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
-def growth_metrics(
+def growth_metrics_frame(
     field,
     time_window=2,
     #
@@ -200,36 +191,9 @@ def growth_metrics(
     )
     selected_indicators = select_record_columns_by_metric(filtered_indicators, "OCC")
 
-    prompt = generate_prompt(
-        field=field,
-        metric="OCC",
-        indicators=selected_indicators.head(200),
-    )
-
     #
     # Save results to disk as csv tab-delimited file for papers
-    file_path = os.path.join(root_dir, "reports", field + ".csv")
-    selected_indicators.to_csv(file_path, sep="\t", header=True, index=True)
+    # file_path = os.path.join(root_dir, "reports", field + ".csv")
+    # selected_indicators.to_csv(file_path, sep="\t", header=True, index=True)
 
-    @dataclass
-    class Results:
-        """:meta private:"""
-
-        df_ = selected_indicators
-        prompt_ = prompt
-
-    return Results()
-
-
-def generate_prompt(field, metric, indicators):
-    """:meta private:"""
-
-    main_text = (
-        "Your task is to generate an analysis about the bibliometric indicators of the "
-        f"'{field}' field in a scientific bibliography database. Summarize the table below, "
-        f"sorted by the '{metric}' metric, and delimited by triple backticks, identify "
-        "any notable patterns, trends, or outliers in the data, and discuss their "
-        "implications for the research field. Be sure to provide a concise summary "
-        "of your findings in no more than 150 words. "
-    )
-    return helper_format_prompt_for_dataframes(main_text, indicators.to_markdown())
+    return selected_indicators
