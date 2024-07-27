@@ -17,7 +17,7 @@ Bradford's Law Plot
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.write_html("sphinx/_static/tools/bradford_law_plot.html")
+>>> # plot.write_html("sphinx/_static/tools/bradford_law_plot.html")
 
 .. raw:: html
 
