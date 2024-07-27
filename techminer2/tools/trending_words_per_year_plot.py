@@ -22,7 +22,7 @@ Trending Words per Year Plot
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> plot.write_html("sphinx/tools/trending_words_per_year_plot.html")
+>>> # plot.write_html("sphinx/tools/trending_words_per_year_plot.html")
 
 .. raw:: html
 
