@@ -19,7 +19,7 @@ Lotka's Law Plot
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> plot.write_html("sphinx/_static/tools/lotka_law_plot.html")
+>>> # plot.write_html("sphinx/_static/tools/lotka_law_plot.html")
 
 .. raw:: html
 
