@@ -5,13 +5,14 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+# mypy: ignore-errors
 """
-Check Integrity
+Check Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import check_integrity
->>> check_integrity(
+>>> from techminer2.thesaurus.descriptors import check_thesaurus
+>>> check_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -19,19 +20,17 @@ Check Integrity
 --INFO-- Checking `descriptors.the.txt` integrity.
 
 """
-
-import glob
 import os
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 
-def check_integrity(
+def check_thesaurus(
     #
     # DATABASE PARAMS:
     root_dir="./",

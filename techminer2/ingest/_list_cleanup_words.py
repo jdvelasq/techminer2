@@ -81,9 +81,7 @@ def list_cleanup_words(
 
 
 def modified_concept_clumping(data_frame):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     data_frame = data_frame.copy()
 
@@ -357,14 +355,14 @@ def process_fingerprint_key(data_frame):
     """
     data_frame = data_frame.copy()
 
-    data_frame["fingerprint"] = process_error_terms(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = process_error_terms(data_frame["fingerprint"])
     data_frame["fingerprint"] = process_hypened_words(data_frame["fingerprint"])
-    data_frame["fingerprint"] = invert_parenthesis(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_brackets(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
-    data_frame["fingerprint"] = remove_initial_articles(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = invert_parenthesis(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = remove_brackets(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = remove_parenthesis(data_frame["fingerprint"])
+    ### data_frame["fingerprint"] = remove_initial_articles(data_frame["fingerprint"])
     data_frame["fingerprint"] = replace_sinonimous(data_frame["fingerprint"])
     # data_frame["fingerprint"] = remove_starting_terms(data_frame["fingerprint"])
     # data_frame["fingerprint"] = remove_ending_terms(data_frame["fingerprint"])
@@ -380,51 +378,49 @@ def process_fingerprint_key(data_frame):
     return data_frame
 
 
-def process_error_terms(column):
-    """
-    :meta private:
-    """
-    terms = [
-        "ABSOLUTE-PERCENTAGE-ERROR",
-        "ABSOLUTE-RELATIVE-ERROR",
-        "ABSOLUTE-AVERAGE-DEVIATION",
-        "AVERAGE-ABSOLUTE-PERCENTAGE-ERROR",
-        "AVERAGE-MAXIMUM-RELATIVE-ERROR",
-        "AVERAGE-PERCENT-ERROR",
-        "AVERAGE-QUADRATIC-ERROR",
-        "AVERAGE-RELATIVE-ERROR",
-        "MAXIMUM-ABSOLUTE-ERROR",
-        "MAXIMUM-ABSOLUTE-PERCENTAGE-ERROR",
-        "MAXIMUM-ERROR-PERCENTAGE",
-        "MAXIMUM-PERCENTAGE-ERROR",
-        "MEAN-ABSOLUTE-ERROR",
-        "MEAN-ABSOLUTE-DEVIATION",
-        "MEAN-RELATIVE-ERROR",
-        "MEAN-SQUARE-ERROR",
-        "MEAN-SQUARED-ERROR",
-        "RELATIVE-ABSOLUTE-ERROR",
-        "RELATIVE-PERCENTAGE-ERROR",
-        "ROOT-MEAN-SQUARE-ERROR",
-        "ROOT-MEAN-SQUARED-ERROR",
-        "RMSE-ERROR-VALUE",
-        "RMSE-ERROR",
-        "STANDARD-DEVIATION-ERROR",
-        "SUM-OF-SQUARE-ERROR",
-        "SUM-OF-SQUARED-ERROR",
-        "SUM-SQUARE-ERROR",
-    ]
-    terms = [term.replace("-", " ") for term in terms]
+# def process_error_terms(column):
+#     """
+#     :meta private:
+#     """
+#     terms = [
+#         "ABSOLUTE-PERCENTAGE-ERROR",
+#         "ABSOLUTE-RELATIVE-ERROR",
+#         "ABSOLUTE-AVERAGE-DEVIATION",
+#         "AVERAGE-ABSOLUTE-PERCENTAGE-ERROR",
+#         "AVERAGE-MAXIMUM-RELATIVE-ERROR",
+#         "AVERAGE-PERCENT-ERROR",
+#         "AVERAGE-QUADRATIC-ERROR",
+#         "AVERAGE-RELATIVE-ERROR",
+#         "MAXIMUM-ABSOLUTE-ERROR",
+#         "MAXIMUM-ABSOLUTE-PERCENTAGE-ERROR",
+#         "MAXIMUM-ERROR-PERCENTAGE",
+#         "MAXIMUM-PERCENTAGE-ERROR",
+#         "MEAN-ABSOLUTE-ERROR",
+#         "MEAN-ABSOLUTE-DEVIATION",
+#         "MEAN-RELATIVE-ERROR",
+#         "MEAN-SQUARE-ERROR",
+#         "MEAN-SQUARED-ERROR",
+#         "RELATIVE-ABSOLUTE-ERROR",
+#         "RELATIVE-PERCENTAGE-ERROR",
+#         "ROOT-MEAN-SQUARE-ERROR",
+#         "ROOT-MEAN-SQUARED-ERROR",
+#         "RMSE-ERROR-VALUE",
+#         "RMSE-ERROR",
+#         "STANDARD-DEVIATION-ERROR",
+#         "SUM-OF-SQUARE-ERROR",
+#         "SUM-OF-SQUARED-ERROR",
+#         "SUM-SQUARE-ERROR",
+#     ]
+#     terms = [term.replace("-", " ") for term in terms]
 
-    for term in terms:
-        column = column.map(lambda x: "ERROR METRICS" if term in x else x)
+#     for term in terms:
+#         column = column.map(lambda x: "ERROR METRICS" if term in x else x)
 
-    return column
+#     return column
 
 
 def create_thesuarus(data_frame):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     data_frame = data_frame.copy()
 
@@ -536,93 +532,93 @@ def load_existent_thesaurus(root_dir):
     return existent_thesaurus
 
 
-def process_hypened_words(column):
-    """
-    Converts "CO-EVOLUTION" ---> "COEVOLUTION"
-    """
+# def process_hypened_words(column):
+#     """
+#     Converts "CO-EVOLUTION" ---> "COEVOLUTION"
+#     """
 
-    module_path = dirname(__file__)
-    file_path = os.path.join(module_path, "../word_lists/hypened_words.txt")
-    with open(file_path, "r", encoding="utf-8") as file:
-        hypened_words = file.read().split("\n")
+#     module_path = dirname(__file__)
+#     file_path = os.path.join(module_path, "../word_lists/hypened_words.txt")
+#     with open(file_path, "r", encoding="utf-8") as file:
+#         hypened_words = file.read().split("\n")
 
-    regex = [word.replace("-", "_") for word in hypened_words]
-    regex = "|".join(regex)
-    regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
+#     regex = [word.replace("-", "_") for word in hypened_words]
+#     regex = "|".join(regex)
+#     regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
 
-    column = column.astype(str).str.replace(regex, lambda z: z.group().replace("_", ""), regex=True)
+#     column = column.astype(str).str.replace(regex, lambda z: z.group().replace("_", ""), regex=True)
 
-    return column
-
-
-def invert_parenthesis(column):
-    """Transforms `word (meaning)` into `meaning (word)`.
-
-    "regtech (regulatory technology)" -> "regulatory technology (regtech)"
-
-    """
-
-    def invert_parenthesis_in_text(text):
-        if "(" in text:
-            text_to_remove = text[text.find("(") + 1 : text.find(")")]
-            meaning = text[: text.find("(")].strip()
-            if len(meaning) < len(text_to_remove) and len(text_to_remove.strip()) > 1:
-                text = text_to_remove + " (" + meaning + ")"
-        return text
-
-    column = column.astype(str).map(invert_parenthesis_in_text)
-    return column
+#     return column
 
 
-def remove_brackets(column):
-    """Removes brackets from the word.
+# def invert_parenthesis(column):
+#     """Transforms `word (meaning)` into `meaning (word)`.
 
-    "regtech [regulatory technology]" -> "regtech"
+#     "regtech (regulatory technology)" -> "regulatory technology (regtech)"
 
-    """
+#     """
 
-    def remove_brackets_from_text(text):
-        if "[" in text:
-            text_to_remove = text[text.find("[") : text.find("]") + 1]
-            text = text.replace(text_to_remove, "")
-            text = " ".join([w.strip() for w in text.split()])
-        return text
+#     def invert_parenthesis_in_text(text):
+#         if "(" in text:
+#             text_to_remove = text[text.find("(") + 1 : text.find(")")]
+#             meaning = text[: text.find("(")].strip()
+#             if len(meaning) < len(text_to_remove) and len(text_to_remove.strip()) > 1:
+#                 text = text_to_remove + " (" + meaning + ")"
+#         return text
 
-    column = column.astype(str).map(remove_brackets_from_text)
-    return column
-
-
-def remove_parenthesis(column):
-    """Removes parenthesis from the column.
-
-    "regtech (regulatory technology)" -> "regtech"
-
-    """
-
-    def remove_parenthesis_from_text(text):
-        if "(" in text:
-            text_to_remove = text[text.find("(") : text.find(")") + 1]
-            text = text.replace(text_to_remove, "")
-            text = " ".join([w.strip() for w in text.split()])
-        return text
-
-    column = column.astype(str).map(remove_parenthesis_from_text)
-    return column
+#     column = column.astype(str).map(invert_parenthesis_in_text)
+#     return column
 
 
-def remove_initial_articles(series):
-    """Removes initial terms from the keywords list.
+# def remove_brackets(column):
+#     """Removes brackets from the word.
 
-    "and regtech" -> "regtech"
-    "the regtech" -> "regtech"
-    "a regtech" -> "regtech"
-    "an regtech" -> "regtech"
+#     "regtech [regulatory technology]" -> "regtech"
 
-    """
-    series = series.copy()
-    for word in ["^AND ", "^THE ", "^A ", "^AN "]:
-        series = series.str.replace(word, "", regex=True)
-    return series
+#     """
+
+#     def remove_brackets_from_text(text):
+#         if "[" in text:
+#             text_to_remove = text[text.find("[") : text.find("]") + 1]
+#             text = text.replace(text_to_remove, "")
+#             text = " ".join([w.strip() for w in text.split()])
+#         return text
+
+#     column = column.astype(str).map(remove_brackets_from_text)
+#     return column
+
+
+# def remove_parenthesis(column):
+#     """Removes parenthesis from the column.
+
+#     "regtech (regulatory technology)" -> "regtech"
+
+#     """
+
+#     def remove_parenthesis_from_text(text):
+#         if "(" in text:
+#             text_to_remove = text[text.find("(") : text.find(")") + 1]
+#             text = text.replace(text_to_remove, "")
+#             text = " ".join([w.strip() for w in text.split()])
+#         return text
+
+#     column = column.astype(str).map(remove_parenthesis_from_text)
+#     return column
+
+
+# def remove_initial_articles(series):
+#     """Removes initial terms from the keywords list.
+
+#     "and regtech" -> "regtech"
+#     "the regtech" -> "regtech"
+#     "a regtech" -> "regtech"
+#     "an regtech" -> "regtech"
+
+#     """
+#     series = series.copy()
+#     for word in ["^AND ", "^THE ", "^A ", "^AN "]:
+#         series = series.str.replace(word, "", regex=True)
+#     return series
 
 
 def replace_sinonimous(series):
@@ -643,58 +639,58 @@ def replace_sinonimous(series):
     return series
 
 
-def remove_ending_terms(series):
-    """Removes ending terms from the keywords list."""
-    series = series.copy()
-    replacements = [
-        "ALGORITHM",
-        "ALGORITHMS",
-        "APPROACH",
-        "APPROACHES",
-        "FRAMEWORK",
-        "METAHEURISTIC",
-        "METHOD",
-        "METHODOLOGIES",
-        "METHODOLOGY",
-        "METHODS",
-        "MODEL",
-        "MODELS",
-        "STRATEGIES",
-        "STRATEGY",
-        "TECHNIQUE",
-        "TECHNIQUES",
-    ]
-    for to_replace in replacements:
-        series = series.str.replace(" " + to_replace + "$", "", regex=True)
-    return series
+# def remove_ending_terms(series):
+#     """Removes ending terms from the keywords list."""
+#     series = series.copy()
+#     replacements = [
+#         "ALGORITHM",
+#         "ALGORITHMS",
+#         "APPROACH",
+#         "APPROACHES",
+#         "FRAMEWORK",
+#         "METAHEURISTIC",
+#         "METHOD",
+#         "METHODOLOGIES",
+#         "METHODOLOGY",
+#         "METHODS",
+#         "MODEL",
+#         "MODELS",
+#         "STRATEGIES",
+#         "STRATEGY",
+#         "TECHNIQUE",
+#         "TECHNIQUES",
+#     ]
+#     for to_replace in replacements:
+#         series = series.str.replace(" " + to_replace + "$", "", regex=True)
+#     return series
 
 
-def remove_starting_terms(series):
-    """Removes ending terms from the keywords list."""
-    series = series.copy()
-    replacements = [
-        "ADAPTIVE",
-        "ADDITIONAL",
-        "AUGMENTED",
-        "ADVANCED",
-        "CLASSICAL",
-        "DISCRETE",
-        "INDIVIDUAL",
-        "CONVENTIONAL",
-        "ENHANCED",
-        "HYBRID",
-        "IMPROVED",
-        "NEW",
-        "NOVEL",
-        "STANDARD",
-        "TRADITIONAL",
-        "POPULAR",
-        "VARIOUS",
-        "SIMPLE",
-    ]
-    for to_replace in replacements:
-        series = series.str.replace("^" + to_replace + " ", "", regex=True)
-    return series
+# def remove_starting_terms(series):
+#     """Removes ending terms from the keywords list."""
+#     series = series.copy()
+#     replacements = [
+#         "ADAPTIVE",
+#         "ADDITIONAL",
+#         "AUGMENTED",
+#         "ADVANCED",
+#         "CLASSICAL",
+#         "DISCRETE",
+#         "INDIVIDUAL",
+#         "CONVENTIONAL",
+#         "ENHANCED",
+#         "HYBRID",
+#         "IMPROVED",
+#         "NEW",
+#         "NOVEL",
+#         "STANDARD",
+#         "TRADITIONAL",
+#         "POPULAR",
+#         "VARIOUS",
+#         "SIMPLE",
+#     ]
+#     for to_replace in replacements:
+#         series = series.str.replace("^" + to_replace + " ", "", regex=True)
+#     return series
 
 
 def british_to_american_spelling(series):

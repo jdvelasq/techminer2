@@ -48,6 +48,8 @@ AUTHORS        Authors                                        115
                Organizations (1st author)                      43
                Countries                                       24
                Countries (1st author)                          18
+               Regions                                          5
+               Subregions                                       9
 KEYWORDS       Raw author keywords                            148
                Cleaned author keywords                        148
                Raw index keywords                             179
@@ -393,6 +395,18 @@ class MainInformation:
             "AUTHORS",
             "Countries (1st author)",
             self.count_unique_items("country_1st_author"),
+        )
+
+        self.insert_stats(
+            "AUTHORS",
+            "Regions",
+            self.count_unique_items("regions"),
+        )
+
+        self.insert_stats(
+            "AUTHORS",
+            "Subregions",
+            self.count_unique_items("subregions"),
         )
 
     def authors_of_single_authored_documents(self):

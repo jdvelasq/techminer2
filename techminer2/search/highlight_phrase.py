@@ -38,7 +38,7 @@ into ethical concerns surrounding the application of
 ARTIFICIAL_INTELLIGENCE (AI) in FINANCE and suggest that REGTECH,
 combined with islamic FINANCE principles, can mitigate these ethical
 issues. overall, the papers underscore the transformative potential of
-REGTECH while discussing its benefits, challenges, and implications for
+REGTECH while discussing its benefits, challenges, and IMPLICATIONS for
 diverse sectors, ultimately aiming to improve compliance, efficiency, and
 ethical practices in the FINANCIAL_INDUSTRY.
 

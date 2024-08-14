@@ -40,6 +40,7 @@ setup(
     provides=["techminer2"],
     install_requires=[
         "cdlib",
+        "contractions",
         "duckdb",
         "fuzzywuzzy",
         "igraph",
@@ -92,8 +93,8 @@ setup(
         "techminer2.report",
         "techminer2.rpys",
         "techminer2.search",
-        "techminer2.thesauri_data",
         "techminer2.thesaurus._core",
+        "techminer2.thesaurus._data",
         "techminer2.thesaurus.abbreviations",
         "techminer2.thesaurus.countries",
         "techminer2.thesaurus.descriptors",

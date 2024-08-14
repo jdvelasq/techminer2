@@ -34,18 +34,18 @@ AB whilst the PRINCIPAL_REGULATORY_OBJECTIVES ( e.g., FINANCIAL_STABILITY ,
    and MARKET_COMPETITION and DEVELOPMENT ) remain , their means of application
    are increasingly inadequate .
 <BLANKLINE>
-47.1%
+37.8%
 AR Jagtiani J., 2018, J ECON BUS, V100, P1
 TI Fintech: The Impact on Consumers and Regulatory Responses
 AB regulators around the globe are working diligently and thoughtfully to provide
    CONSUMER_PROTECTION and to maintain FINANCIAL_STABILITY while at the same
    time to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS .
 <BLANKLINE>
-23.6%
-AR Dorfleitner G., 2017, FINTECH IN GER, P1
-TI FinTech in Germany
-AB by making FINANCIAL_TRANSACTIONS more user_friendly and transparent , these
-   firms potentially contribute to FINANCIAL_STABILITY and ECONOMIC_GROWTH .
+26.7%
+AR Saksonova S., 2017, EUR RES STUD, V20, P961
+TI Fintech as financial innovation - The possibilities and problems of implementation
+AB this PAPER_AIMS to evaluate FINTECH_LEVEL of DEVELOPMENT in latvia compared to
+   EUROPE .
 <BLANKLINE>
 
 """

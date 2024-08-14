@@ -13,61 +13,63 @@ import os
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
+from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+
 
 def _adds_countries_and_regions_to_stopwords(
     #
     # DATABASE PARAMS:
     root_dir,
 ):
-    #
-    # Loads stopwords
-    stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
-    with open(stopwords_file_path, "r", encoding="utf-8") as file:
-        stopwords = [line.strip() for line in file.readlines()]
+    def build_list_of_countries_regions_and_subregions():
 
-    #
-    # Adds countries and regions to stopwords
-    countries_and_regions = []
+        files = [
+            "thesaurus/_data/country-to-region.the.txt",
+            "thesaurus/_data/country-to-subregion.the.txt",
+        ]
 
-    country2regions_file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-region.the.txt")
-
-    # country2regions_file_path = os.path.join(
-    #     root_dir, "thesauri/country-to-region.the.txt"
-    # )
-    with open(country2regions_file_path, "r", encoding="utf-8") as file:
-        for name in file.readlines():
-            name = name.strip()
-            if name != "":
-                countries_and_regions.append(name)
-
-    #
-    # Adds countries and sub-regions to stopwords
-    country2regions_file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/country-to-subregion.the.txt")
-
-    # country2regions_file_path = os.path.join(
-    #     root_dir, "thesauri/country-to-subregion.the.txt"
-    # )
-    with open(country2regions_file_path, "r", encoding="utf-8") as file:
-        for name in file.readlines():
-            name = name.strip()
-            if name != "":
-                countries_and_regions.append(name)
-
-    countries_and_regions = list(set(countries_and_regions))
-    countries_and_regions = [w.upper() for w in countries_and_regions]
-
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for col in ["raw_index_keywords", "raw_author_keywords"]:
+        candidates = []
         for file in files:
-            data = pd.read_csv(file, encoding="utf-8", compression="zip")
-            if col in data.columns:
-                if data[col].dropna().shape[0] > 0:
-                    keywords = data[col].dropna().str.upper().str.split("; ").explode().str.strip().drop_duplicates().tolist()
-                    keywords = [w for w in keywords if w not in countries_and_regions]
-                    if len(keywords) > 0:
-                        stopwords.extend(keywords)
+            thesaurus = load_thesaurus_as_dict(pkg_resources.resource_filename("techminer2", file))
+            for key, values in thesaurus.items():
+                candidates.append(key.upper())
+                values = [w.upper() for w in values]
+                candidates += values
 
+        return list(set(candidates))
+
+    def load_stopwords(stopwords_file_path):
+        with open(stopwords_file_path, "r", encoding="utf-8") as file:
+            stopwords = [line.strip() for line in file.readlines()]
+        return stopwords
+
+    def save_stopwords(stopwords_file_path, stopwords):
+        with open(stopwords_file_path, "w", encoding="utf-8") as file:
+            print("\n".join(stopwords), file=file)
+
+    def load_descriptors():
+        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
+        complete_descriptors = []
+        for file in files:
+            df = pd.read_csv(file, encoding="utf-8", compression="zip")
+            descriptors = df.descriptors.copy()
+            descriptors = descriptors.dropna()
+            descriptors = descriptors.str.split("; ").explode()
+            descriptors = descriptors.str.strip()
+            descriptors = descriptors.drop_duplicates()
+            complete_descriptors += descriptors.tolist()
+        return complete_descriptors
+
+    #
+    #
+    # Main code
+    #
+    #
+    candidates = build_list_of_countries_regions_and_subregions()
+    stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
+    stopwords = load_stopwords(stopwords_file_path)
+    descriptors = load_descriptors()
+    selected_candiates = [w for w in candidates if w not in stopwords and w in descriptors]
+    stopwords += selected_candiates
     stopwords = sorted(set(stopwords))
-    with open(country2regions_file_path, "w", encoding="utf-8") as file:
-        for word in stopwords:
-            file.write(word + "\n")
+    save_stopwords(stopwords_file_path, stopwords)

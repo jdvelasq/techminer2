@@ -44,8 +44,8 @@ from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 # Thesaurus
 from ..thesaurus.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
 from ..thesaurus.descriptors.apply_thesaurus import apply_thesaurus as apply_descriptors_thesaurus
+from ..thesaurus.descriptors.reset_thesaurus import reset_thesaurus as reset_descriptors_thesaurus
 from ..thesaurus.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
-from ._adds_countries_and_regions_to_stopwords import _adds_countries_and_regions_to_stopwords
 
 # -------------------------------------------------------------------------------------
 # Auxuliary functions
@@ -90,6 +90,8 @@ from .field_importers.doi_importer import run_doi_importer
 from .field_importers.global_citations_importer import run_global_citations_importer
 from .field_importers.issb_isbn_eissn_importer import run_issb_isbn_eissn_importer
 from .field_importers.source_title_importer import run_source_title_importer
+
+# from ._adds_countries_and_regions_to_stopwords import _adds_countries_and_regions_to_stopwords
 
 
 def ingest_raw_data(
@@ -289,13 +291,16 @@ def ingest_raw_data(
     list_cleanup_organizations(root_dir)
     apply_organizations_thesaurus(root_dir)
 
-    ## ------------------------------------------------------------------------------------------
-    ## Ignore thesaurus creation for testing new cleaning process
-
+    #
+    # Generate a list of raw entries for the descriptors thesaurus.
+    #
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
     words = data_frame["raw_descriptors"].dropna().str.split("; ", expand=False).explode().str.strip().drop_duplicates().sort_values().to_list()
 
+    #
+    # Creates a thesaurus with an entry for each differnt descriptor
+    #
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
     with open(thesaurus_file, "w", encoding="utf-8") as f:
         for word in words:
@@ -324,9 +329,10 @@ def ingest_raw_data(
                 f.write(row.value[1] + "\n")
                 f.write("    " + row.value[0] + "\n")
 
+    reset_descriptors_thesaurus(root_dir)
     ## ------------------------------------------------------------------------------------------
 
-    _adds_countries_and_regions_to_stopwords(root_dir)
+    # Removed: _adds_countries_and_regions_to_stopwords(root_dir)
 
     report_imported_records_per_file(root_dir)
     # Removed: create_imported_records_report(root_dir)

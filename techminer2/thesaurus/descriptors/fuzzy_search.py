@@ -22,7 +22,7 @@ Fuzzy Search
 ...     root_dir="example/", 
 ... )
 ARTIFICIAL_INTELLIGENCE
-INTELLIGENT_ALGORITHMS
+INTELLIGENT
 INTELLIGENT_ROBOTS
 
 
@@ -32,8 +32,8 @@ INTELLIGENT_ROBOTS
 """
 import os.path
 
-import pandas as pd  #  type: ignore
-from fuzzywuzzy import process
+import pandas as pd  # type: ignore
+from fuzzywuzzy import process  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 

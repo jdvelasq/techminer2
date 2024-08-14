@@ -28,9 +28,7 @@ def run_authors_and_index_keywords_importer(root_dir):
             .str.replace("<.*?>", "", regex=True)
             # -----------------------------------------------------------------------------
             # remove appostrophes
-            .str.replace("ʿ", "'", regex=False)
-            .str.replace("’", "'", regex=False)
-            .str.replace("'", "'", regex=False)
+            .str.replace("ʿ", "'", regex=False).str.replace("’", "'", regex=False).str.replace("'", "'", regex=False)
             # -----------------------------------------------------------------------------
             .str.replace("/", "_", regex=False).str.replace("\\", "_", regex=False)
             # -----------------------------------------------------------------------------
@@ -81,6 +79,9 @@ def run_authors_and_index_keywords_importer(root_dir):
                 na_action="ignore",
             )
             .str.join("; ")
+            # -----------------------------------------------------------------------------
+            # replace posesives: e.g., "costumer's adoption" -> "costumer adoption"
+            .str.replace("'S ", " ", regex=False)
             # -----------------------------------------------------------------------------
             # replace posesives: e.g., "costumers' adoption" -> "costumers adoption"
             .str.replace("' ", " ", regex=False)
