@@ -26,7 +26,7 @@ Concordance Documents
 ...                            # source_title_z_to_a
 ... )
 >>> print(len(docs))
-50
+37
 >>> print(docs[0])
 Record-No: 6
 AR Haddad C., 2019, SMALL BUS ECON, V53, P81
@@ -85,7 +85,7 @@ AB we provide large_scale EVIDENCE on the occurrence and VALUE of
     
 """
 from .._core.read_filtered_database import read_filtered_database
-from ..documents.select_documents import select_documents
+from ..helpers.helper_records_for_reporting import helper_records_for_reporting
 from ._core.filter_records_by_concordance import _filter_records_by_concordance
 
 
@@ -118,15 +118,14 @@ def concordance_documents(
         records=records,
     )
 
-    documents = select_documents(
-        #
-        # DATABASE PARAMS
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+    #
+    # extract phrases.
+    records["abstract"] = records["abstract"].str.split(" . ")
+    records["abstract"] = records["abstract"].map(lambda x: [y for y in x if search_for in y])
+    records["abstract"] = records["abstract"].map(" . ".join)
+
+    formated_records = helper_records_for_reporting(
+        records=records,
     )
 
-    return documents
+    return formated_records
