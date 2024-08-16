@@ -46,7 +46,7 @@ Concordance Contexts
 <<<  learned from the submitted proposals about the field of FINTECH and which ones we selected to be completed and ultimatel >>>
 
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 from ._core.get_context_phrases_from_records import _get_context_phrases_from_records
