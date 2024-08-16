@@ -401,6 +401,14 @@ def reset_thesaurus(
 
     _save_thesaurus(data_frame, th_file)
 
+    
+    #
+    new_th_file = os.path.join(root_dir, "thesauri/_descriptors_.the.txt")
+    with open(th_file, "r", encoding="utf-8") as file:
+        with open(new_th_file, "w", encoding="utf-8") as new_file:
+            new_file.write(file.read())
+    #
+
     end_time = time.time()
     total_time = end_time - start_time
     hours, remainder = divmod(total_time, 3600)
