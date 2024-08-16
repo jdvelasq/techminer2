@@ -19,25 +19,39 @@ def sort_thesaurus(
     #
     # THESAURURS FILE:
     thesaurus_file,
+    order="alphabetical",
     #
     # DATABASE PARAMS:
     root_dir="./",
 ):
     """:meta private:"""
 
-    #
-    # Loads the thesaurus file as a dict
     th_file = os.path.join(root_dir, thesaurus_file)
+    th_dict = _load_thesaurus(th_file)
+    sorted_keys = _sort_keys(th_dict, order)
+    _save_thesaurus(th_file, th_dict, sorted_keys)
+
+    print(f"--INFO-- The file {th_file} has been sorted.")
+
+
+def _save_thesaurus(th_file, th_dict, sorted_keys):
+    with open(th_file, "w", encoding="utf-8") as file:
+        for key in sorted_keys:
+            file.write(key + "\n")
+            for item in sorted(set(th_dict[key])):
+                file.write("    " + item + "\n")
+
+
+def _load_thesaurus(th_file):
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
     th_dict = load_thesaurus_as_dict(th_file)
+    return th_dict
 
-    #
-    # Saves the sorted thesaurus to the file
-    with open(th_file, "w", encoding="utf-8") as file:
-        for key in sorted(th_dict.keys()):
-            file.write(key + "\n")
-            for item in sorted(th_dict[key]):
-                file.write("    " + item + "\n")
 
-    print(f"--INFO-- The file {th_file} has been sorted.")
+def _sort_keys(th_dict, order):
+    if order == "alphabetical":
+        return sorted(th_dict.keys())
+    if order == "by-key-length":
+        return sorted(th_dict.keys(), key=lambda x: (len(x), x))
+    return th_dict.keys()
