@@ -25,7 +25,7 @@ import glob
 import os
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
