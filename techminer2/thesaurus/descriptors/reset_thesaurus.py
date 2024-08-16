@@ -18,15 +18,16 @@ Reset Thesaurus
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-- 1/9 - Inverting terms in parenthesis.
-- 2/9 - Removing text in brackets.
-- 3/9 - Removing text in parenthesis.
-- 4/9 - Transforming hypened words.
-- 5/9 - Removing common starting words.
-- 6/9 - Removing common ending words.
-- 7/9 - Applying the default.the.txt thesaurus.
-- 8/9 - Transforming british to american spelling.
-- 9/9 - Applying Porter stemmer.
+.  1/10 . Reemplacing abbreviations.
+.  2/10 . Inverting terms in parenthesis.
+.  3/10 . Removing text in brackets.
+.  4/10 . Removing text in parenthesis.
+.  5/10 . Transforming hypened words.
+.  6/10 . Removing common starting words.
+.  7/10 . Removing common ending words.
+:  8/10 . Applying the default.the.txt thesaurus.
+.  9/10 . Transforming british to american spelling.
+. 10/10 . Applying Porter stemmer.
 --INFO-- The thesaurus example/thesauri/descriptors.the.txt has been reseted.
 --INFO-- Total time consumed by the execution: 00:00:31.7
 
@@ -41,6 +42,7 @@ import pkg_resources  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..abbreviations.apply_thesaurus import apply_thesaurus as apply_abbreviations_thesaurus
 from .clean_thesaurus import _apply_porter_stemmer, _compute_terms_by_key, _replace_fingerprint, _save_thesaurus
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
@@ -294,6 +296,7 @@ def _apply_default_thesaurus_files(data_frame):
         "thesaurus/_data/_*.the.txt",
     )
 
+    th_dict = {}
     for file_path in glob.glob(file_paths):
         if not os.path.isfile(file_path):
             raise FileNotFoundError(f"The file {file_path} does not exist.")
@@ -360,33 +363,36 @@ def reset_thesaurus(
 
     data_frame = _create_data_frame_from_thesaurus(th_file)
 
-    print("- 1/9 - Inverting terms in parenthesis.")
+    print(".  1/10 . Reemplacing abbreviations.")
+    apply_abbreviations_thesaurus(root_dir=root_dir)
+
+    print(".  2/10 . Inverting terms in parenthesis.")
     data_frame = _invert_terms_in_parenthesis(data_frame)
 
-    print("- 2/9 - Removing text in brackets.")
+    print(".  3/10 . Removing text in brackets.")
     data_frame = _remove_brackets(data_frame)
 
-    print("- 3/9 - Removing text in parenthesis.")
+    print(".  4/10 . Removing text in parenthesis.")
     data_frame = _remove_parenthesis(data_frame)
     data_frame = _remove_initial_articles(data_frame)
 
-    print("- 4/9 - Transforming hypened words.")
+    print(".  5/10 . Transforming hypened words.")
     data_frame = _transform_hypened_words(data_frame)
     data_frame = _transform_non_hypened_words(data_frame)
 
-    print("- 5/9 - Removing common starting words.")
+    print(".  6/10 . Removing common starting words.")
     data_frame = _remove_common_starting_words(data_frame)
 
-    print("- 6/9 - Removing common ending words.")
+    print(".  7/10 . Removing common ending words.")
     data_frame = _remove_common_ending_words(data_frame)
 
-    print("- 7/9 - Applying the default.the.txt thesaurus.")
+    print(".  8/10 . Applying the default.the.txt thesaurus.")
     data_frame = _apply_default_thesaurus_files(data_frame)
 
-    print("- 8/9 - Transforming british to american spelling.")
+    print(".  9/10 . Transforming british to american spelling.")
     data_frame = _british_to_american_spelling(data_frame)
 
-    print("- 9/9 - Applying Porter stemmer.")
+    print(". 10/10 . Applying Porter stemmer.")
     data_frame["fingerprint"] = data_frame["key"].copy()
 
     data_frame = _apply_porter_stemmer(data_frame)
