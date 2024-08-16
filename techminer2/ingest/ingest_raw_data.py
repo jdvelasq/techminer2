@@ -44,7 +44,8 @@ from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 # Thesaurus
 from ..thesaurus.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
 from ..thesaurus.descriptors.apply_thesaurus import apply_thesaurus as apply_descriptors_thesaurus
-from ..thesaurus.descriptors.reset_thesaurus import reset_thesaurus as reset_descriptors_thesaurus
+
+# from ..thesaurus.descriptors.reset_thesaurus import reset_thesaurus as reset_descriptors_thesaurus
 from ..thesaurus.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
 
 # -------------------------------------------------------------------------------------
@@ -329,7 +330,8 @@ def ingest_raw_data(
                 f.write(row.value[1] + "\n")
                 f.write("    " + row.value[0] + "\n")
 
-    reset_descriptors_thesaurus(root_dir)
+    ## reset_descriptors_thesaurus(root_dir)
+
     ## ------------------------------------------------------------------------------------------
 
     # Removed: _adds_countries_and_regions_to_stopwords(root_dir)
