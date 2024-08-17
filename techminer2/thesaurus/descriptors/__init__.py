@@ -7,6 +7,7 @@ from .fuzzy_search import fuzzy_search
 from .misspelling_search import misspelling_search
 from .replace_string import replace_string
 from .reset_thesaurus import reset_thesaurus
+from .show_differences import show_differences
 from .sort_thesaurus import sort_thesaurus
 from .text_clumping import text_clumping
 from .words_frequency import words_frequency
