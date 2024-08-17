@@ -42,10 +42,11 @@ import pkg_resources  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
-from ..abbreviations.apply_thesaurus import apply_thesaurus as apply_abbreviations_thesaurus
+from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from .clean_thesaurus import _apply_porter_stemmer, _compute_terms_by_key, _replace_fingerprint, _save_thesaurus
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
+ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
 
 tqdm.pandas()
 
@@ -69,6 +70,53 @@ def _create_data_frame_from_thesaurus(th_file):
     )
 
     return data
+
+
+def _load_abbreviations_th_as_dict(abbreviations_file):
+    if not os.path.isfile(abbreviations_file):
+        raise FileNotFoundError(f"The file {abbreviations_file} does not exist.")
+    abbreviations_dict = load_thesaurus_as_dict(abbreviations_file)
+    return abbreviations_dict
+
+
+def _apply_abbreviations_thesaurus(data_frame, abbreviations_dict):
+
+    for abbr, values in tqdm(abbreviations_dict.items(), desc="Remmplacing abbreviations"):
+        #
+        # Replace abbreviations in descriptor keys
+        for value in values:
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + "$"), value, regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + "_"), value + "_", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + " "), value + " ", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + "$"), "_" + value, regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + "$"), " " + value, regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + "_"), "_" + value + "_", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + "_"), " " + value + "_", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + " "), "_" + value + " ", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + " "), " " + value + " ", regex=True)
+
+    # -------------------------------------------------------------------------------------------
+    # data_frame = data_frame.sort_values(by="key")
+    # data_frame = data_frame.groupby("key", as_index=False).agg({"value": list})
+    return data_frame
+
+
+def _check_terms_in_parenthesis(data_frame):
+    #
+    # Transforms:
+    #
+    # "REGTECH (REGULATORY_TECHNOLOGY)" -> "REGULATORY_TECHNOLOGY (REGTECH)"
+    #
+    def check_parenthesis_in_text(text):
+
+        if text[0] == "(" and text[-1] == ")":
+            return text[1:-1]
+
+        return text
+
+    data_frame["key"] = data_frame["key"].progress_apply(check_parenthesis_in_text)
+
+    return data_frame
 
 
 def _invert_terms_in_parenthesis(data_frame):
@@ -358,15 +406,21 @@ def reset_thesaurus(
 
     start_time = time.time()
 
-    # Thesausus path
-    th_file = os.path.join(root_dir, THESAURUS_FILE)
+    # Thesaurus paths
+    th_descriptors_file = os.path.join(root_dir, THESAURUS_FILE)
+    th_abbreviations_file = os.path.join(root_dir, ABBREVIATIONS_FILE)
 
-    data_frame = _create_data_frame_from_thesaurus(th_file)
+    abbreviations_th = _load_abbreviations_th_as_dict(th_abbreviations_file)
 
+    # loads the dataframe for nornal processing
+    data_frame = _create_data_frame_from_thesaurus(th_descriptors_file)
+
+    # Replace abbreviations directly in the thesaurus file
     print(".  1/10 . Reemplacing abbreviations.")
-    apply_abbreviations_thesaurus(root_dir=root_dir)
+    data_frame = _apply_abbreviations_thesaurus(data_frame, abbreviations_th)
 
     print(".  2/10 . Inverting terms in parenthesis.")
+    data_frame = _check_terms_in_parenthesis(data_frame)
     data_frame = _invert_terms_in_parenthesis(data_frame)
 
     print(".  3/10 . Removing text in brackets.")
@@ -399,12 +453,11 @@ def reset_thesaurus(
     data_frame = _compute_terms_by_key(data_frame)
     data_frame = _replace_fingerprint(data_frame)
 
-    _save_thesaurus(data_frame, th_file)
+    _save_thesaurus(data_frame, th_descriptors_file)
 
-    
     #
     new_th_file = os.path.join(root_dir, "thesauri/_descriptors_.the.txt")
-    with open(th_file, "r", encoding="utf-8") as file:
+    with open(th_descriptors_file, "r", encoding="utf-8") as file:
         with open(new_th_file, "w", encoding="utf-8") as new_file:
             new_file.write(file.read())
     #
@@ -414,5 +467,5 @@ def reset_thesaurus(
     hours, remainder = divmod(total_time, 3600)
     minutes, seconds = divmod(remainder, 60)
 
-    print(f"--INFO-- The thesaurus {th_file} has been reseted.")
+    print(f"--INFO-- The thesaurus {th_descriptors_file} has been reseted.")
     print(f"--INFO-- Total time consumed by the execution: {int(hours):02}:{int(minutes):02}:{seconds:04.1f}")
