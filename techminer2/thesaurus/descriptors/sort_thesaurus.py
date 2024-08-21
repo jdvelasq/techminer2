@@ -13,6 +13,9 @@ Sort Thesaurus
 
 >>> from techminer2.thesaurus.descriptors import sort_thesaurus
 >>> sort_thesaurus(
+...     # 
+...     # SORT OPTIONS:
+...     order="alphabetical",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -27,6 +30,9 @@ THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
 def sort_thesaurus(
     #
+    # SORT OPTIONS:
+    order="alphabetical",
+    #
     # DATABASE PARAMS:
     root_dir="./",
 ):
@@ -34,9 +40,10 @@ def sort_thesaurus(
 
     core_sort_thesaurus(
         #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        #
         # FILE PARAMS:
         thesaurus_file=THESAURUS_FILE,
+        order=order,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
     )

@@ -36,50 +36,16 @@ AU Haddad C.; Hornuf L.
 TC 258
 SO Small Business Economics
 PY 2019
-AB we investigate the economic and TECHNOLOGICAL_DETERMINANTS inducing
-   ENTREPRENEURS to establish ventures with the purpose of reinventing
-   FINANCIAL_TECHNOLOGY ( FINTECH ) . we find that countries witness more
-   FINTECH_STARTUP_FORMATIONS when the economy is well_developed and
-   VENTURE_CAPITAL is readily available . furthermore , the number of secure
-   INTERNET_SERVERS , MOBILE_TELEPHONE_SUBSCRIPTIONS , and the
-   AVAILABLE_LABOR_FORCE has a POSITIVE_IMPACT on the DEVELOPMENT of this
-   NEW_MARKET_SEGMENT . finally , the more difficult IT is for companies to
-   ACCESS_LOANS , the higher is the number of FINTECH_STARTUPS in a country .
-   overall , the EVIDENCE_SUGGESTS that FINTECH_STARTUP_FORMATION_NEED not be
-   left to chance , but ACTIVE_POLICIES can INFLUENCE the emergence of this
-   NEW_SECTOR . 2018 , the author ( s ) .
+AB FINTECH . . we find that countries witness more FINTECH_STARTUP_FORMATIONS
+   when the economy is well_developed and VENTURE_CAPITAL is readily available
+   . the higher is the number of FINTECH_STARTUPS in . the EVIDENCE_SUGGESTS
+   that FINTECH_STARTUP_FORMATION_NEED not be left to chance
 DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 ** ACCESS_LOANS; ACTIVE_POLICIES; AVAILABLE_LABOR_FORCE; EVIDENCE_SUGGESTS;
    FINANCIAL_TECHNOLOGY; FINTECH_STARTUPS; FINTECH_STARTUP_FORMATIONS;
    FINTECH_STARTUP_FORMATION_NEED; GLOBAL_FINTECH_MARKET; INTERNET_SERVERS;
    MOBILE_TELEPHONE_SUBSCRIPTIONS; NEW_MARKET_SEGMENT; NEW_SECTOR;
    POSITIVE_IMPACT; TECHNOLOGICAL_DETERMINANTS; VENTURE_CAPITAL
-<BLANKLINE>
->>> print(docs[1])
-Record-No: 42
-AR Chen M.A., 2019, REV FINANC STUD, V32, P2062
-TI How Valuable Is FinTech Innovation?
-AU Chen M.A.; Wu Q.; Yang B.
-TC 235
-SO Review of Financial Studies
-PY 2019
-AB we provide large_scale EVIDENCE on the occurrence and VALUE of
-   FINTECH_INNOVATION . using DATA on PATENT_FILINGS from 2003 to 2017 , we
-   apply MACHINE_LEARNING to identify and CLASSIFY_INNOVATIONS by their
-   underlying technologies . we find that most FINTECH_INNOVATIONS_YIELD
-   SUBSTANTIAL_VALUE to innovators , with BLOCKCHAIN being particularly
-   valuable . for the overall FINANCIAL_SECTOR , INTERNET_OF_THINGS ( IOT ) ,
-   robo_advising , and BLOCKCHAIN are the most VALUABLE_INNOVATION_TYPES .
-   INNOVATIONS affect FINANCIAL_INDUSTRIES more negatively when they involve
-   DISRUPTIVE_TECHNOLOGIES from NONFINANCIAL_STARTUPS , but MARKET_LEADERS that
-   invest heavily in their OWN_INNOVATION can avoid much of the
-   NEGATIVE_VALUE_EFFECT . ( JEL_G14 , G20 , G29 , g39 ) . the author ( s )
-   2019 .
-** CLASSIFY_INNOVATIONS; DISRUPTIVE_TECHNOLOGIES; FINANCIAL_INDUSTRIES;
-   FINANCIAL_SECTOR; FINTECH_INNOVATION; FINTECH_INNOVATIONS_YIELD; JEL_G14;
-   LARGESCALE_EVIDENCE; MACHINE_LEARNING; MARKET_LEADERS;
-   NEGATIVE_VALUE_EFFECT; NONFINANCIAL_STARTUPS; OWN_INNOVATION;
-   PATENT_FILINGS; SUBSTANTIAL_VALUE; VALUABLE_INNOVATION_TYPES
 <BLANKLINE>
 
     

@@ -10,7 +10,7 @@
 Reset Thesaurus
 ===============================================================================
 
-# doctest: +SKIP
+
 
 >>> from techminer2.thesaurus.descriptors import reset_thesaurus
 >>> reset_thesaurus(  # doctest: +SKIP
@@ -25,11 +25,11 @@ Reset Thesaurus
 .  5/10 . Transforming hypened words.
 .  6/10 . Removing common starting words.
 .  7/10 . Removing common ending words.
-:  8/10 . Applying the default.the.txt thesaurus.
+.  8/10 . Applying the default.the.txt thesaurus.
 .  9/10 . Transforming british to american spelling.
 . 10/10 . Applying Porter stemmer.
 --INFO-- The thesaurus example/thesauri/descriptors.the.txt has been reseted.
---INFO-- Total time consumed by the execution: 00:00:31.7
+--INFO-- Total time consumed by the execution: 00:00:33.2
 
 """
 import glob
@@ -109,7 +109,7 @@ def _check_terms_in_parenthesis(data_frame):
     #
     def check_parenthesis_in_text(text):
 
-        if text[0] == "(" and text[-1] == ")":
+        if len(text) > 0 and text[0] == "(" and text[-1] == ")":
             return text[1:-1]
 
         return text
@@ -433,6 +433,7 @@ def reset_thesaurus(
     print(".  5/10 . Transforming hypened words.")
     data_frame = _transform_hypened_words(data_frame)
     data_frame = _transform_non_hypened_words(data_frame)
+    data_frame = _apply_abbreviations_thesaurus(data_frame, abbreviations_th)
 
     print(".  6/10 . Removing common starting words.")
     data_frame = _remove_common_starting_words(data_frame)

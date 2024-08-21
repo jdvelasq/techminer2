@@ -28,17 +28,17 @@ Highlight phrase
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... )
-they highlight the limited ADOPTION of REGULATORY_TECHNOLOGY (REGTECH)
-and electronic signatures in palestine's banking sector, proposing the
+they highlight the limited ADOPTION of REGULATORY_TECHNOLOGY (regtech)
+and electronic signatures in palestine's banking SECTOR, proposing the
 establishment of an independent electronic transactions unit as a
-solution. they emphasize the need for REGTECH in achieving
+solution. they emphasize the need for regtech in achieving
 REGULATORY_COMPLIANCE, RISK_MANAGEMENT, and reporting in the face of
 changing regulations and digital dynamics. additionally, the papers delve
 into ethical concerns surrounding the application of
-ARTIFICIAL_INTELLIGENCE (AI) in FINANCE and suggest that REGTECH,
+ARTIFICIAL_INTELLIGENCE (ai) in FINANCE and suggest that regtech,
 combined with islamic FINANCE principles, can mitigate these ethical
 issues. overall, the papers underscore the transformative potential of
-REGTECH while discussing its benefits, challenges, and IMPLICATIONS for
+regtech while discussing its benefits, challenges, and implications for
 diverse sectors, ultimately aiming to improve compliance, efficiency, and
 ethical practices in the FINANCIAL_INDUSTRY.
 

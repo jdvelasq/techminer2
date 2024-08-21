@@ -28,7 +28,7 @@ Extract Descriptors from Text
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ... ) # doctest: +ELLIPSIS
-['ADOPTION', 'AI', 'ARTIFICIAL_INTELLIGENCE', ...
+['ADOPTION', 'ARTIFICIAL_INTELLIGENCE', 'FINANCE', ...
 
 """
 import os

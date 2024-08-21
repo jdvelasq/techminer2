@@ -54,4 +54,6 @@ def _sort_keys(th_dict, order):
         return sorted(th_dict.keys())
     if order == "by-key-length":
         return sorted(th_dict.keys(), key=lambda x: (len(x), x))
+    if order == "by-word-length":
+        return sorted(th_dict.keys(), key=lambda x: (max(len(y) for y in x.split("_")), x))
     return th_dict.keys()

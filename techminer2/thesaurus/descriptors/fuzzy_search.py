@@ -22,6 +22,8 @@ Fuzzy Search
 ...     root_dir="example/", 
 ... )
 ARTIFICIAL_INTELLIGENCE
+     AI
+     ARTIFICIAL_INTELLIGENCE
 INTELLIGENT
 INTELLIGENT_ROBOTS
 

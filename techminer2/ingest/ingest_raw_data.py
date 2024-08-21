@@ -38,20 +38,18 @@ from tqdm import tqdm  # type: ignore
 from ..fields.further_processing.count_terms_per_record import _count_terms_per_record
 from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
 from ..fields.merge_fields import _merge_fields
-from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 #
 # Thesaurus
 from ..thesaurus.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
 from ..thesaurus.descriptors.apply_thesaurus import apply_thesaurus as apply_descriptors_thesaurus
-
-# from ..thesaurus.descriptors.reset_thesaurus import reset_thesaurus as reset_descriptors_thesaurus
 from ..thesaurus.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
 
 # -------------------------------------------------------------------------------------
 # Auxuliary functions
 # -------------------------------------------------------------------------------------
 from ._compress_csv_files_in_raw_data_subdirectories import compress_csv_files_in_raw_data_subdirectories
+from ._create_abbreviations_thesaurus import _create_abbreviations_thesaurus
 from ._create_art_no_column import create_art_no_column
 from ._create_article_column import create_article_column
 from ._create_database_files import create_database_files
@@ -309,28 +307,8 @@ def ingest_raw_data(
             f.write("    " + word + "\n")
 
     apply_descriptors_thesaurus(root_dir)
-    ## ------------------------------------------------------------------------------------------
-    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    frame = load_thesaurus_as_frame(thesaurus_file)
-    frame = frame.loc[frame.value.str.contains("(", regex=False), :]
-    frame = frame.loc[frame.value.str.endswith(")"), :]
-    frame = frame[["value"]].drop_duplicates()
-    frame["value"] = frame["value"].str[:-1]
-    frame["value"] = frame["value"].str.split(" (", regex=False)
 
-    frame = frame[frame.value.map(len) == 2]
-    frame["abbr"] = frame.value.map(lambda x: x[1])
-
-    frame = frame.sort_values(by="abbr")
-
-    thesaurus_file = os.path.join(root_dir, "thesauri/abbreviations.the.txt")
-    with open(thesaurus_file, "w", encoding="utf-8") as f:
-        for _, row in frame.iterrows():
-            if len(row.value) == 2:
-                f.write(row.value[1] + "\n")
-                f.write("    " + row.value[0] + "\n")
-
-    ## reset_descriptors_thesaurus(root_dir)
+    _create_abbreviations_thesaurus(root_dir)
 
     ## ------------------------------------------------------------------------------------------
 

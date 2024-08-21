@@ -41,7 +41,7 @@ AB regulators around the globe are working diligently and thoughtfully to provid
    CONSUMER_PROTECTION and to maintain FINANCIAL_STABILITY while at the same
    time to create an ENVIRONMENT for SAFE_FINTECH_INNOVATIONS .
 <BLANKLINE>
-26.7%
+37.8%
 AR Saksonova S., 2017, EUR RES STUD, V20, P961
 TI Fintech as financial innovation - The possibilities and problems of implementation
 AB this PAPER_AIMS to evaluate FINTECH_LEVEL of DEVELOPMENT in latvia compared to

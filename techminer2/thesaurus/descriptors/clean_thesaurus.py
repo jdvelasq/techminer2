@@ -72,6 +72,7 @@ def _apply_porter_stemmer(data_frame):
 
     PARTICLES = [
         "_AIDED_",
+        "_ASSISTED_",
         "_AND_",
         "_AND_THE_",
         "_APPLIED_TO_",
@@ -85,6 +86,7 @@ def _apply_porter_stemmer(data_frame):
         "_OF_USING_",
         "_ON_",
         "_S_",
+        "_SIZED_",
         "_TO_",
         "_UNDER_",
         "_USING_",
