@@ -10,6 +10,8 @@
 
 import os
 
+import pandas as pd  # type: ignore
+
 from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 predefined_abbreviations_mapping = {
@@ -66,6 +68,7 @@ predefined_abbreviations_mapping = {
     "E_CLASSROOM": "ELECTRONIC_CLASSROOM",
     "E_COLLABORATION": "ELECTRONIC_COLLABORATION",
     "E_COMMERCE": "ELECTRONIC_COMMERCE",
+    "E_COMMERCES": "ELECTRONIC_COMMERCES",
     "E_COMMUNICATION": "ELECTRONIC_COMMUNICATION",
     "E_COMMUNICATIONS": "ELECTRONIC_COMMUNICATIONS",
     "E_COURSE": "ELECTRONIC_COURSE",
@@ -77,11 +80,11 @@ predefined_abbreviations_mapping = {
     "E_EXAMINATIONS": "ELECTRONIC_EXAMINATIONS",
     "E_EXAMS": "ELECTRONIC_EXAMS",
     "E_FINANCE": "ELECTRONIC_FINANCE",
-    "E_GOVERMENT": "ELECTRONIC_GOVERNMENT",
-    "E_GOVERMENTS": "ELECTRONIC_GOVERNMENTS",
+    "E_GOVERMENT": "ELECTRONIC_GOVERMENT",
+    "E_GOVERMENTS": "ELECTRONIC_GOVERMENTS",
     "E_GOVERNANCE": "ELECTRONIC_GOVERNANCE",
-    "E_GOVERNMENT": "ELECTRONIC_GOVERNMENT",
-    "E_GOVERNMENTS": "ELECTRONIC_GOVERNMENTS",
+    "E_GOVERNMENT": "ELECTRONIC_GOVERMENT",
+    "E_GOVERNMENTS": "ELECTRONIC_GOVERMENTS",
     "E_GROCERIES": "ELECTRONIC_GROCERIES",
     "E_GROCERY": "ELECTRONIC_GROCERY",
     "E_GUIDANCE": "ELECTRONIC_GUIDANCE",
@@ -173,7 +176,7 @@ predefined_abbreviations_mapping = {
     "GDPR": "GENERAL_DATA_PROTECTION_REGULATION",
     "GOVERNMENT": "GOVERMENT",
     "GOVERNMENTS": "GOVERMENTS",
-    "GOVTECH": "GOVERNMENT_TECHNOLOGY",
+    "GOVTECH": "GOVERMENT_TECHNOLOGY",
     "GPT": "GENERATIVE_PRE_TRAINED_TRANSFORMER",
     "HCI": "HUMAN_COMPUTER_INTERACTION",
     "HCM": "HUMAN_CAPITAL_MANAGEMENT",
@@ -202,8 +205,8 @@ predefined_abbreviations_mapping = {
     "LEGALTECH": "LEGAL_TECHNOLOGY",
     "LSTM": "LONG_SHORT_TERM_MEMORY",
     "M_BANKING": "MOBILE_BANKING",
-    "M_GOVERMENT": "MOBILE_GOVERNMENT",
-    "M_GOVERNMENT": "MOBILE_GOVERNMENT",
+    "M_GOVERMENT": "MOBILE_GOVERMENT",
+    "M_GOVERNMENT": "MOBILE_GOVERMENT",
     "M_HEALTH": "MOBILE_HEALTH",
     "M_HEALTHCARE": "MOBILE_HEALTHCARE",
     "M_LEARNING": "MOBILE_LEARNING",
@@ -249,6 +252,9 @@ predefined_abbreviations_mapping = {
     "WEALTHTECH": "WEALTH_TECHNOLOGY",
     "WOM": "WORD_OF_MOUTH",
     "XAI": "EXPLAINABLE_ARTIFICIAL_INTELLIGENCE",
+    "E_SECURITY": "ELECTRONIC_SECURITY",
+    "E_SECURITIES": "ELECTRONIC_SECURITIES",
+    "UTAUT": "UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY",
 }
 
 
@@ -257,19 +263,40 @@ def _create_abbreviations_thesaurus(root_dir):
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
 
     raw_frame = load_thesaurus_as_frame(thesaurus_file)
-    mapping = _extracts_abbreviations_from_definitions(raw_frame)
-    mapping = _add_knowns_abbreviations(mapping, raw_frame)
+    mod_frame = _extracts_abbreviations_from_definitions(raw_frame)
+    mod_frame = _remove_bad_abbreviations(mod_frame)
+    mod_frame = _add_knowns_abbreviations(mod_frame, raw_frame)
+    mod_frame = mod_frame[["abbr", "value"]].drop_duplicates()
+    mod_frame = mod_frame.sort_values(["abbr", "value"]).reset_index(drop=True)
 
-    _save_abbreviations_thesaurus(root_dir, mapping)
+    _save_abbreviations_thesaurus(root_dir, mod_frame)
 
 
-def _add_knowns_abbreviations(mapping, raw_frame):
+def _remove_bad_abbreviations(frame):
+
+    bad_abbreviations = [
+        "ONLINE",
+        "CLASSIFICATION",
+    ]
+
+    for abbr in bad_abbreviations:
+        frame = frame[frame.abbr != abbr]
+
+    return frame
+
+
+def _add_knowns_abbreviations(mod_frame, raw_feame):
 
     for abbr, meaning in predefined_abbreviations_mapping.items():
-        if raw_frame[raw_frame.value.str.contains(abbr, regex=False)].shape[0] == 0:
+
+        frame = raw_feame.copy()
+        frame = frame[frame.value == abbr]
+        if frame.shape[0] == 0:
             continue
-        mapping[abbr] = meaning
-    return mapping
+        new_frame = pd.DataFrame({"value": [meaning], "abbr": [abbr]})
+        mod_frame = pd.concat([mod_frame, new_frame], ignore_index=True)
+
+    return mod_frame
 
 
 def _extracts_abbreviations_from_definitions(frame):
@@ -286,17 +313,14 @@ def _extracts_abbreviations_from_definitions(frame):
     frame["value"] = frame.value.map(lambda x: x[0])
     frame = frame[frame.abbr.str.len() < frame.value.str.len()]
 
-    mapping = {}
-    for _, row in frame.iterrows():
-        mapping[row.abbr] = row.value
-
-    return mapping
+    return frame
 
 
-def _save_abbreviations_thesaurus(root_dir, mapping):
+def _save_abbreviations_thesaurus(root_dir, mod_frame):
 
     thesaurus_file = os.path.join(root_dir, "thesauri/abbreviations.the.txt")
     with open(thesaurus_file, "w", encoding="utf-8") as f:
-        for key in sorted(mapping.keys()):
-            f.write(key + "\n")
-            f.write("    " + mapping[key] + "\n")
+
+        for _, row in mod_frame.iterrows():
+            f.write(row["abbr"] + "\n")
+            f.write("    " + row["value"] + "\n")
