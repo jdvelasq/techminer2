@@ -100,6 +100,7 @@ def document_metrics(
             "raw_document_title",
             "authors",
             "art_no",
+            "document_type",
             "rank_gcs",
             "global_citations",
             "rank_lcs",
