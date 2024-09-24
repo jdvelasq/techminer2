@@ -51,9 +51,9 @@ def _load_thesaurus(th_file):
 
 def _sort_keys(th_dict, order):
     if order == "alphabetical":
-        return sorted(th_dict.keys())
+        return sorted(th_dict.keys(), reverse=False)
     if order == "by-key-length":
-        return sorted(th_dict.keys(), key=lambda x: (len(x), x))
+        return sorted(th_dict.keys(), key=lambda x: (len(x), x), reverse=False)
     if order == "by-word-length":
-        return sorted(th_dict.keys(), key=lambda x: (max(len(y) for y in x.split("_")), x))
+        return sorted(th_dict.keys(), key=lambda x: (max(len(y) for y in x.split("_")), x), reverse=True)
     return th_dict.keys()
