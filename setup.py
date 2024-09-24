@@ -93,6 +93,8 @@ setup(
         "techminer2.report",
         "techminer2.rpys",
         "techminer2.search",
+        "techminer2.subject_areas",
+        "techminer2.subject_areas._data",
         "techminer2.thesaurus._core",
         "techminer2.thesaurus._data",
         "techminer2.thesaurus.abbreviations",
