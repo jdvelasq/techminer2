@@ -50,6 +50,10 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
     
 """
+import re
+
+from textblob import TextBlob  # type: ignore
+
 from .._core.read_filtered_database import read_filtered_database
 from ..helpers.helper_records_for_reporting import helper_records_for_reporting
 from ._core.filter_records_by_concordance import _filter_records_by_concordance
@@ -86,9 +90,15 @@ def concordance_documents(
 
     #
     # extract phrases.
-    records["abstract"] = records["abstract"].str.split(" . ")
-    records["abstract"] = records["abstract"].map(lambda x: [y for y in x if search_for in y])
+    records["abstract"] = records["abstract"].map(lambda x: TextBlob(x).sentences)
+    records["abstract"] = records["abstract"].map(lambda x: [str(y) for y in x])
+    records["abstract"] = records["abstract"].map(lambda x: [y[:-2] if y[-2:] == " ." else y for y in x])
+    #
+    regex = r"\b" + search_for + r"\b"
+    #
+    records["abstract"] = records["abstract"].map(lambda x: [y for y in x if re.search(regex, y)])
     records["abstract"] = records["abstract"].map(" . ".join)
+    # records["abstract"] = records["abstract"] + records["raw_abstract"]
 
     formated_records = helper_records_for_reporting(
         records=records,
