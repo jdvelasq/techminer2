@@ -9,14 +9,15 @@
 """
 Ingest Raw Data
 ===============================================================================
-
+# doctest: +SKIP 
 
 
 >>> from techminer2.ingest import ingest_raw_data
->>> ingest_raw_data(  # doctest: +SKIP
+>>> ingest_raw_data( 
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="example/", 
+...     # root_dir="example/",
+...     root_dir="/Users/jdvelasq/Library/Mobile Documents/com~apple~CloudDocs/__tm2__/06_blended_learning/", 
 ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files
 -- 002 -- Creating working directories
@@ -37,7 +38,10 @@ from tqdm import tqdm  # type: ignore
 # -------------------------------------------------------------------------------------
 from ..fields.further_processing.count_terms_per_record import _count_terms_per_record
 from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
+from ..fields.further_processing.replace_keywords import replace_keywords
+from ..fields.further_processing.replace_noun_phrases import _replace_noun_phrases
 from ..fields.merge_fields import _merge_fields
+from ..helpers.helper_abstracts_and_titles_to_lower_case import helper_abstracts_and_titles_to_lower_case
 
 #
 # Thesaurus
@@ -69,11 +73,9 @@ from ._list_cleanup_organizations import list_cleanup_organizations
 from ._message import message
 from ._rename_columns_in_database_files import rename_columns_in_database_files
 from ._repair_bad_separators_in_keywords import repair_bad_separators_in_keywords
+from ._replace_descriptors import _replace_descriptors
 from ._replace_journal_name_in_references import replace_journal_name_in_references
 from ._report_imported_records_per_file import report_imported_records_per_file
-from ._transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title import (
-    _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title,
-)
 
 # -------------------------------------------------------------------------------------
 # Importers
@@ -83,7 +85,7 @@ from .field_importers.abstract_importer import run_abstract_importer
 from .field_importers.authors_and_index_keywords_importer import run_authors_and_index_keywords_importer
 from .field_importers.authors_id_importer import run_authors_id_importer
 from .field_importers.authors_importer import run_authors_importer
-from .field_importers.document_title import run_document_title_importer
+from .field_importers.document_title_importer import run_document_title_importer
 from .field_importers.document_type_importer import run_document_type_importer
 from .field_importers.doi_importer import run_doi_importer
 from .field_importers.global_citations_importer import run_global_citations_importer
@@ -119,13 +121,12 @@ def ingest_raw_data(
     # PHASE 1: Preparing database files and folders
     # =================================================================================
     #
-    if True:
-        compress_csv_files_in_raw_data_subdirectories(root_dir)
-        create_working_subdirectories_and_files(root_dir)
-        create_database_files(root_dir)
-        rename_columns_in_database_files(root_dir)
-        repair_bad_separators_in_keywords(root_dir)
-        drop_empty_columns_in_databases(root_dir)
+    compress_csv_files_in_raw_data_subdirectories(root_dir)
+    create_working_subdirectories_and_files(root_dir)
+    create_database_files(root_dir)
+    rename_columns_in_database_files(root_dir)
+    repair_bad_separators_in_keywords(root_dir)
+    drop_empty_columns_in_databases(root_dir)
 
     #
     #
@@ -133,34 +134,33 @@ def ingest_raw_data(
     # =================================================================================
     #
     #
-    if True:
-        run_authors_importer(root_dir)
-        run_document_type_importer(root_dir)
-        run_authors_id_importer(root_dir)
-        run_issb_isbn_eissn_importer(root_dir)
-        run_global_citations_importer(root_dir)
-        run_doi_importer(root_dir)
-        run_source_title_importer(root_dir)
-        run_abbr_source_title_importer(root_dir)
-        run_abstract_importer(root_dir)
-        run_document_title_importer(root_dir)
+    run_authors_importer(root_dir)
+    run_document_type_importer(root_dir)
+    run_authors_id_importer(root_dir)
+    run_issb_isbn_eissn_importer(root_dir)
+    run_global_citations_importer(root_dir)
+    run_doi_importer(root_dir)
+    run_source_title_importer(root_dir)
+    run_abbr_source_title_importer(root_dir)
+    run_abstract_importer(root_dir)
+    run_document_title_importer(root_dir)
 
-        _count_terms_per_record(
-            source="authors",
-            dest="num_authors",
-            root_dir=root_dir,
-        )
+    _count_terms_per_record(
+        source="authors",
+        dest="num_authors",
+        root_dir=root_dir,
+    )
 
-        _count_terms_per_record(
-            source="global_references",
-            dest="num_global_references",
-            root_dir=root_dir,
-        )
+    _count_terms_per_record(
+        source="global_references",
+        dest="num_global_references",
+        root_dir=root_dir,
+    )
 
-        disambiguate_author_names(root_dir)
-        replace_journal_name_in_references(root_dir)
-        create_article_column(root_dir)
-        create_art_no_column(root_dir)
+    disambiguate_author_names(root_dir)
+    replace_journal_name_in_references(root_dir)
+    create_article_column(root_dir)
+    create_art_no_column(root_dir)
 
     #
     #
@@ -197,14 +197,13 @@ def ingest_raw_data(
     # To upper() and replace spaces with underscores
     # Merge author/index keywords into a single column
     #
-    if True:
-        run_authors_and_index_keywords_importer(root_dir)
+    run_authors_and_index_keywords_importer(root_dir)
 
-        _merge_fields(
-            sources=["raw_author_keywords", "raw_index_keywords"],
-            dest="raw_keywords",
-            root_dir=root_dir,
-        )
+    _merge_fields(
+        sources=["raw_author_keywords", "raw_index_keywords"],
+        dest="raw_keywords",
+        root_dir=root_dir,
+    )
 
     #
     # Prepare title:
@@ -222,45 +221,62 @@ def ingest_raw_data(
     #
 
     #
-    # Step 1: Create a candidate list of title noun phrases
+    # Step 1: Create a candidate list of abstract noun phrases
     #
-    if True:
-        _extract_noun_phrases(
-            source="document_title",
-            dest="raw_title_nlp_phrases",
-            root_dir=root_dir,
-        )
 
     #
-    # Step 2: Create a candidate list of abstract noun phrases
+    # In textblob, text in upper case is recognized as noun:
+    # >>> TextBlob("Face-to-face".upper())
+    # [('FACE-TO-FACE', 'NN')]
+    replace_keywords(
+        root_dir=root_dir,
+    )
+
+    _extract_noun_phrases(
+        source="abstract",
+        dest="raw_abstract_nlp_phrases",
+        root_dir=root_dir,
+    )
+
+    helper_abstracts_and_titles_to_lower_case(root_dir=root_dir)
+
     #
-    if True:
-        _extract_noun_phrases(
-            source="abstract",
-            dest="raw_abstract_nlp_phrases",
-            root_dir=root_dir,
-        )
+    # Step 2: Create a candidate list of title noun phrases
+    #
+    _extract_noun_phrases(
+        source="document_title",
+        dest="raw_title_nlp_phrases",
+        root_dir=root_dir,
+    )
+
+    # _replace_noun_phrases(
+    #     column_to_process="document_title",
+    #     noun_phrases_column="raw_title_nlp_phrases",
+    #     root_dir=root_dir,
+    # )
 
     #
     # Step 3: Merge fields
     #
-    if True:
-        _merge_fields(
-            sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
-            dest="raw_nlp_phrases",
-            root_dir=root_dir,
-        )
-        _merge_fields(
-            sources=["raw_nlp_phrases", "raw_keywords"],
-            dest="raw_descriptors",
-            root_dir=root_dir,
-        )
+    _merge_fields(
+        sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
+        dest="raw_nlp_phrases",
+        root_dir=root_dir,
+    )
+
+    _merge_fields(
+        sources=["raw_nlp_phrases", "raw_keywords"],
+        dest="raw_descriptors",
+        root_dir=root_dir,
+    )
 
     #
     # Highlight author and index keywords
     #
-    if True:
-        _transform_keywords_ant_phrases_to_uppercase_in_abstract_and_title(root_dir)
+    _replace_descriptors(root_dir)
+    # replace_keywords(
+    #     root_dir=root_dir,
+    # )
 
     #
     #
