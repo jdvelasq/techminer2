@@ -69,7 +69,12 @@ def extract_noun_phrases_from_record(text):
     if not isinstance(text, str):
         return pd.NA
 
-    noun_phrases = [str(phrase) for phrase in TextBlob(text.lower()).noun_phrases]
+    # New
+    text = text.lower()
+    text = text.replace("_", " ")
+    text = text.replace(" / ", " ")
+    #
+    noun_phrases = [str(phrase) for phrase in TextBlob(text).noun_phrases]
     #
     #
     noun_phrases = [phrase for phrase in noun_phrases if not phrase.startswith("//")]
