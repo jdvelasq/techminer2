@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 
 import contractions
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from ...fields.process_field import _process_field
 
@@ -21,7 +21,7 @@ def run_abstract_importer(root_dir):
         func=lambda x: x.map(lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore")
         # -----------------------------------------------------------------------------
         #
-        .str.lower().map(lambda text: contractions.fix(text), na_action="ignore")
+        .str.lower().map(contractions.fix, na_action="ignore")
         # -----------------------------------------------------------------------------
         # remove all html tags
         .str.replace("<.*?>", "", regex=True)
@@ -48,7 +48,7 @@ def run_abstract_importer(root_dir):
         #
         .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True).str.replace(r"(\w+)'(\s)", r"\1\2", regex=True)  # 's  # s
         #
-        .str.replace("-", "_", regex=False)
+        .str.replace("—", "-", regex=False).str.replace("-", " ", regex=False)
         #
         # remove all non-ascii characters
         .str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
