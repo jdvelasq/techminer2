@@ -16,8 +16,7 @@ Ingest Raw Data
 >>> ingest_raw_data( 
 ...     #
 ...     # DATABASE PARAMS:
-...     # root_dir="example/",
-...     root_dir="/Users/jdvelasq/Library/Mobile Documents/com~apple~CloudDocs/__tm2__/06_blended_learning/", 
+...     root_dir="example/",
 ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files
 -- 002 -- Creating working directories
