@@ -4,14 +4,14 @@ Techminer 2+
 
 .. toctree::
     :hidden:
-    :caption: Ingest
+    :caption: INGEST
     :maxdepth: 1
 
     ingest/__index__ 
 
 .. toctree::
     :hidden:
-    :caption: Refine
+    :caption: PREPARE
     :maxdepth: 1
 
     fields/__index__
@@ -21,7 +21,7 @@ Techminer 2+
 
 .. toctree::
     :hidden:
-    :caption: Analyze    
+    :caption: ANALYZE    
     :maxdepth: 1
 
     citation_network/__index__
@@ -44,10 +44,10 @@ Techminer 2+
 
 .. toctree::
     :hidden:
-    :caption: Report
+    :caption: VISUALIZE
     :maxdepth: 1    
 
-    report/__index__
+    charts/__index__
 
 
 **Author**:
