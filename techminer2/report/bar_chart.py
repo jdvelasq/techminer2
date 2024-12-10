@@ -33,7 +33,7 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.write_html("sphinx/_generated/report/bar_chart.html")
+>>> # plot.write_html("sphinx/_generated/report/bar_chart.html")
 
 .. raw:: html
 
