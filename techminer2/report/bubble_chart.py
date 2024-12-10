@@ -34,11 +34,11 @@ Bubble Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # plot.write_html("sphinx/_static/report/bubble_chart.html")
+>>> plot.write_html("sphinx/_generated/report/bubble_chart.html")
 
 .. raw:: html
 
-    <iframe src="../_static/report/bubble_chart.html" 
+    <iframe src="../_generated/report/bubble_chart.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
