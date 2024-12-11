@@ -67,8 +67,8 @@ Techminer 2+
     :caption: VISUALIZE
     :maxdepth: 1    
 
-    visualize/basic_charts/__index__
     visualize/advanced_charts/__index__
+    visualize/basic_charts/__index__
     visualize/specialized_charts/__index__
 
 
