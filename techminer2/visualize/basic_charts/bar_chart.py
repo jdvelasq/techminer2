@@ -9,7 +9,7 @@ Bar Chart
 ===============================================================================
 
 
->>> from techminer2.report import bar_chart
+>>> from techminer2.visualize.basic_charts.bar_chart import bar_chart
 >>> plot = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:
@@ -33,11 +33,11 @@ Bar Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # plot.write_html("sphinx/_generated/report/bar_chart.html")
+>>> # plot.write_html("sphinx/_generated/visualize/basic_charts/bar_chart.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/report/bar_chart.html" 
+    <iframe src="../../_generated/visualize/basic_charts/bar_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
