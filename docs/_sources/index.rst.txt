@@ -4,50 +4,72 @@ Techminer 2+
 
 .. toctree::
     :hidden:
-    :caption: Ingest
+    :caption: INGEST
     :maxdepth: 1
 
     ingest/__index__ 
 
 .. toctree::
     :hidden:
-    :caption: Refine
+    :caption: PREPARE
     :maxdepth: 1
 
-    fields/__index__
-    search/__index__ 
-    thesaurus/__index__
+    prepare/fields/__index__
+    prepare/thesaurus/__index__
+    prepare/transform/__index__
 
 
 .. toctree::
     :hidden:
-    :caption: Analyze    
+    :caption: SEARCH
     :maxdepth: 1
 
-    citation_network/__index__
-    co_citation_network/__index__    
-    co_occurrence_matrix/__index__
-    co_occurrence_network/__index__
-    correlation_matrix/__index__
-    coupling_network/__index__
-    document_clustering/__index__
-    documents/__index__ 
-    emergence/__index__ 
-    factor_analysis/__index__
-    main_path_analysis/__index__
-    metrics/__index__ 
-    rpys/__index__ 
-    topic_modeling/__index__
+    search/records/__index__
+    search/terms/__index__
+    search/text/__index__
+
+
+.. toctree::
+    :hidden:
+    :caption: DATABASE
+    :maxdepth: 1    
+
+    database/coverage
+    database/query
+    database/statistics
+    database/summary_sheet
+
+.. toctree::
+    :hidden:
+    :caption: ANALYZE    
+    :maxdepth: 1
+
+    analyze/citation_network/__index__
+    analyze/co_citation_network/__index__    
+    analyze/co_occurrence_matrix/__index__
+    analyze/co_occurrence_network/__index__
+    analyze/correlation_matrix/__index__
+    analyze/coupling_network/__index__
+    analyze/document_clustering/__index__
+    analyze/documents/__index__ 
+    analyze/emergence/__index__ 
+    analyze/factor_analysis/__index__
+    analyze/main_path_analysis/__index__
+    analyze/metrics/__index__ 
+    analyze/rpys/__index__ 
+    analyze/topic_modeling/__index__
     tools/__index__
 
   
 
 .. toctree::
     :hidden:
-    :caption: Report
+    :caption: VISUALIZE
     :maxdepth: 1    
 
-    report/__index__
+    visualize/advanced_charts/__index__
+    visualize/basic_charts/__index__
+    visualize/specialized_charts/__index__
 
 
 **Author**:
