@@ -32,7 +32,7 @@ Column Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # chart.write_html("sphinx/_static/report/column_chart.html")
+>>> # chart.write_html("sphinx/_generated/visualize/basic_charts/column_chart.html")
 
 .. raw:: html
 
@@ -43,10 +43,24 @@ Column Chart
 """
 import plotly.express as px  # type: ignore
 
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...metrics.performance_metrics_frame import performance_metrics_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
+
+class ColumnChart(
+    ItemParamsMixin,
+    DatabaseParamsMixin,
+):
+    """Column chart."""
+
+    def __init__(self):
+        self.database_params = DatabaseParams()
+        self.item_params = ItemParams()
+
+    def build(self, metric: str = "OCC"):
 
 
 def column_chart(

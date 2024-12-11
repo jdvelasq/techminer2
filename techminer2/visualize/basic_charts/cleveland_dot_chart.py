@@ -9,143 +9,129 @@
 Cleveland Dot Chart
 ===============================================================================
 
->>> from techminer2.report import cleveland_dot_chart
->>> chart = cleveland_dot_chart(
-...     #
-...     # ITEMS PARAMS:
-...     field='author_keywords',
-...     metric="OCC",
-...     #
-...     # CHART PARAMS:
-...     title="Most Frequent Author Keywords",
-...     metric_label=None,
-...     field_label=None,
-...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+>>> from techminer2.visualize.basic_charts.cleveland_dot_chart import ClevelandDotChart
+>>> chart = (
+...     ClevelandDotChart()
+...     .set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
+...     ).set_chart_params(
+...         title_text="Most Frequent Author Keywords",
+...         metric_label=None,
+...         field_label=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build(metric="OCC")
 ... )
->>> # chart.write_html("sphinx/_static/report/cleveland_dot_chart.html")
+>>> # chart.write_html("sphinx/_generated/visualize/basic_charts//cleveland_dot_chart.html")
 
 .. raw:: html
 
-    <iframe src="../_static/report/cleveland_dot_chart.html" 
+    <iframe src="../../_generated/visualize/basic_charts//cleveland_dot_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from dataclasses import dataclass
+from typing import Optional
+
 import plotly.express as px  # type: ignore
 
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...metrics.performance_metrics_frame import performance_metrics_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
-def cleveland_dot_chart(
-    #
-    # ITEMS PARAMS:
-    field,
-    metric="OCC",
-    #
-    # CHART PARAMS:
-    title=None,
-    metric_label=None,
-    field_label=None,
-    #
-    # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+@dataclass
+class ChartParams:
+    """:meta private:"""
+
+    title_text: Optional[str] = None
+    metric_label: Optional[str] = None
+    field_label: Optional[str] = None
+
+
+class ClevelandDotChart(
+    ItemParamsMixin,
+    DatabaseParamsMixin,
 ):
-    """Creates a cleveland doc chart.
+    """:meta private:"""
 
-    Args:
-        obj (vantagepoint.analyze.list_view): A list view object.
-        title (str, optional): Title. Defaults to None.
-        metric_label (str, optional): Metric label. Defaults to None.
-        field_label (str, optional): Field label. Defaults to None.
+    def __init__(self):
+        self.chart_params = ChartParams()
+        self.database_params = DatabaseParams()
+        self.item_params = ItemParams()
 
-    Returns:
-        BasicChart: A basic chart object.
+    def set_chart_params(self, **kwars):
+        for key, value in kwars.items():
+            if hasattr(self.chart_params, key):
+                setattr(self.chart_params, key, value)
+            else:
+                raise ValueError(f"Invalid parameter for ChartParams: {key}")
+        return self
 
-    :meta private:
-    """
+    def build(self, metric: str = "OCC"):
 
-    items = performance_metrics_frame(
-        #
-        # ITEMS PARAMS:
-        field=field,
-        metric=metric,
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+        metric_label = self.chart_params.metric_label
+        field_label = self.chart_params.field_label
+        title_text = self.chart_params.title_text
 
-    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
+        data_frame = performance_metrics_frame(
+            metric=metric,
+            **self.item_params.__dict__,
+            **self.database_params.__dict__,
+        )
 
-    field_label = field.replace("_", " ").upper() if field_label is None else field_label
+        if metric_label is None:
+            metric_label = metric.replace("_", " ").upper()
 
-    data_frame = items.copy()
+        if field_label is None:
+            field_label = self.item_params.field.replace("_", " ").upper()
 
-    fig = px.scatter(
-        data_frame,
-        x=metric,
-        y=None,
-        hover_data=data_frame.columns.to_list(),
-        size=metric,
-    )
-    fig.update_layout(
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        title_text=title if title is not None else "",
-    )
-    fig.update_traces(
-        marker=dict(
-            size=12,
-            line=dict(color=MARKER_LINE_COLOR, width=2),
-        ),
-        marker_color=MARKER_COLOR,
-    )
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-        title_text=metric_label,
-    )
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        autorange="reversed",
-        gridcolor="gray",
-        griddash="solid",
-        title_text=field_label,
-    )
+        if title_text is None:
+            title_text = ""
 
-    return fig
+        fig = px.scatter(
+            data_frame,
+            x=metric,
+            y=None,
+            hover_data=data_frame.columns.to_list(),
+            size=metric,
+        )
+        fig.update_layout(
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            title_text=title_text,
+        )
+        fig.update_traces(
+            marker=dict(
+                size=12,
+                line={"color": MARKER_LINE_COLOR, "width": 2},
+            ),
+            marker_color=MARKER_COLOR,
+        )
+        fig.update_xaxes(
+            linecolor="gray",
+            linewidth=2,
+            gridcolor="lightgray",
+            griddash="dot",
+            title_text=metric_label,
+        )
+        fig.update_yaxes(
+            linecolor="gray",
+            linewidth=2,
+            autorange="reversed",
+            gridcolor="gray",
+            griddash="solid",
+            title_text=field_label,
+        )
+
+        return fig

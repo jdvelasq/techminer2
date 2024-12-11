@@ -30,7 +30,7 @@ Pie Chart
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> # plot.write_html("sphinx/_static/report/pie_chart.html")
+>>> # plot.write_html("sphinx/_generated/visualize/basic_charts/pie_chart.html")
 
 .. raw:: html
 
@@ -42,7 +42,23 @@ Pie Chart
 """
 import plotly.express as px  # type: ignore
 
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...metrics.performance_metrics_frame import performance_metrics_frame
+
+
+
+class PieChart(
+    ItemParamsMixin,
+    DatabaseParamsMixin,
+):
+    """Pie Chart."""
+
+    def __init__(self):
+        self.database_params = DatabaseParams()
+        self.item_params = ItemParams()
+
+    def build(self, metric: str = "OCC"):
 
 
 def pie_chart(

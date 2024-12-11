@@ -42,9 +42,24 @@ Word Cloud
 
 
 import numpy as np
-from wordcloud import WordCloud
+from wordcloud import WordCloud as WordCloudExternal
 
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...metrics.performance_metrics_frame import performance_metrics_frame
+
+
+class WordCloud(
+    ItemParamsMixin,
+    DatabaseParamsMixin,
+):
+    """Bar Chart."""
+
+    def __init__(self):
+        self.database_params = DatabaseParams()
+        self.item_params = ItemParams()
+
+    def build(self, metric: str = "OCC"):
 
 
 def word_cloud(
