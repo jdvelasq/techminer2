@@ -69,6 +69,7 @@ Techminer 2+
 
     visualize/basic_charts/__index__
     visualize/advanced_charts/__index__
+    visualize/specialized_charts/__index__
 
 
 **Author**:
