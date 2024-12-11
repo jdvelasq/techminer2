@@ -9,127 +9,101 @@
 Word Cloud
 ===============================================================================
 
->>> from techminer2.report import word_cloud
->>> chart = word_cloud(
-...     #
-...     # PERFORMANCE PARAMS:
-...     field="title_nlp_phrases",
-...     metric="OCC",
-...     #
-...     # CHART PARAMS:
-...     width=400, 
-...     height=400,
-...     #
-...     # ITEM FILTERS:
-...     top_n=50,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+>>> from techminer2.visualize.basic_charts.word_cloud import WordCloud
+>>> plot = (
+...     WordCloud()
+...     .set_item_params(
+...         field="title_nlp_phrases",
+...         top_n=80,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
+...     ).set_chart_params(
+...         width=400, 
+...         height=400,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build(metric="OCC")
 ... )
->>> # chart.save("sphinx/images/report/word_cloud.png")
+>>> # plot.save("sphinx/images/visualize/basic_charts/word_cloud.png")
 
-.. image:: /images/report/word_cloud.png
+.. image:: /images/visualize/basic_charts/word_cloud.png
     :width: 900px
     :align: center
 
 """
-
+from dataclasses import dataclass
 
 import numpy as np
-from wordcloud import WordCloud as WordCloudExternal
+from wordcloud import WordCloud as WordCloudExternal  # type: ignore
 
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...metrics.performance_metrics_frame import performance_metrics_frame
 
 
+@dataclass
+class ChartParams:
+    """:meta private:"""
+
+    width: float = 400
+    height: float = 400
+
+
 class WordCloud(
     ItemParamsMixin,
     DatabaseParamsMixin,
 ):
-    """Bar Chart."""
+    """:meta private:"""
 
     def __init__(self):
+        self.chart_params = ChartParams()
         self.database_params = DatabaseParams()
         self.item_params = ItemParams()
 
+    def set_chart_params(self, **kwars):
+        for key, value in kwars.items():
+            if hasattr(self.chart_params, key):
+                setattr(self.chart_params, key, value)
+            else:
+                raise ValueError(f"Invalid parameter for ChartParams: {key}")
+        return self
+
     def build(self, metric: str = "OCC"):
 
+        width = self.chart_params.width
+        height = self.chart_params.height
 
-def word_cloud(
-    #
-    # ITEMS PARAMS:
-    field,
-    metric="OCC",
-    #
-    # CHART PARAMS:
-    width=400,
-    height=400,
-    #
-    # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """:meta private:"""
-
-    items = performance_metrics_frame(
-        #
-        # ITEMS PARAMS:
-        field=field,
-        metric=metric,
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    data_frame = items.copy()
-
-    x_mask, y_mask = np.ogrid[:300, :300]
-    mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2
-    mask = 255 * mask.astype(int)
-
-    wordcloud = WordCloud(
-        background_color="white",
-        repeat=True,
-        mask=mask,
-        width=width,
-        height=height,
-    )
-
-    text = dict(
-        zip(
-            data_frame.index,
-            data_frame[metric],
+        data_frame = performance_metrics_frame(
+            metric=metric,
+            **self.item_params.__dict__,
+            **self.database_params.__dict__,
         )
-    )
-    wordcloud.generate_from_frequencies(text)
-    wordcloud.recolor(color_func=lambda word, **kwargs: "black")
 
-    fig = wordcloud.to_image()
+        x_mask, y_mask = np.ogrid[:300, :300]
+        mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2  #  type: ignore
+        mask = 255 * mask.astype(int)  #  type: ignore
 
-    return fig
+        wordcloud = WordCloudExternal(
+            background_color="white",
+            repeat=True,
+            mask=mask,
+            width=width,
+            height=height,
+        )
+
+        text = dict(
+            zip(
+                data_frame.index,
+                data_frame[metric],
+            )
+        )
+        wordcloud.generate_from_frequencies(text)
+        wordcloud.recolor(color_func=lambda word, **kwargs: "black")
+
+        fig = wordcloud.to_image()
+
+        return fig

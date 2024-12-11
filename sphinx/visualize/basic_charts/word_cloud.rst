@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.word_cloud
+.. automodule:: techminer2.visualize.basic_charts.word_cloud
     :members:
 

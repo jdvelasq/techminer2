@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.line_chart
+.. automodule:: techminer2.visualize.basic_charts.line_chart
     :members:
 
