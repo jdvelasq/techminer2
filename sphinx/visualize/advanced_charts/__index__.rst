@@ -1,27 +1,19 @@
-Report
+Advanced Charts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
 
-    column_chart
-    bar_chart
-    pie_chart
-    line_chart    
-    word_cloud    
-    multi_donut
     bubble_chart    
     heat_map
+    multi_donut
     butterfly_chart
     scatter_plot
     cluster_map
     super_profile
-    world_map  
     plot_classifications
     plot_emergence
-    cleveland_dot_chart
-    ranking_chart
-
-
-
-
+    bradford_law
+    lotka_law
+    trending_words_per_year
+    word_trends

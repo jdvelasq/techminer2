@@ -1,11 +1,9 @@
-Load
+Terms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 .. toctree::
-    :hidden: 
+    :hidden:
     
-    ingest_raw_data
-
+    lemma_associations
 
 

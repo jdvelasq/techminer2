@@ -1,11 +1,10 @@
-Load
+Visualize
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 .. toctree::
-    :hidden: 
+    :hidden:
+
+    basic_charts/__index__
+    advanced_charts/__index__
+
     
-    ingest_raw_data
-
-
-

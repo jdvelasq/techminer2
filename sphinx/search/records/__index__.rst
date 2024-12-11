@@ -1,11 +1,9 @@
-Load
+Records
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 .. toctree::
-    :hidden: 
+    :hidden:
     
-    ingest_raw_data
-
-
-
+    find_records
+    find_similar_records
+    
