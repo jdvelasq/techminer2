@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.column_chart
+.. automodule:: techminer2.visualize.basic_charts.column_chart
     :members:
 
