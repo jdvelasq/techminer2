@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.bubble_chart
+.. automodule:: techminer2.visualize.advanced_charts.bubble_chart
     :members:
 

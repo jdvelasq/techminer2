@@ -21,7 +21,7 @@ class ItemParamsMixin:
     """:meta private:"""
 
     def set_item_params(self, **kwargs):
-        """Set database parameters."""
+        """:meta private:"""
         for key, value in kwargs.items():
             if hasattr(self.item_params, key):
                 setattr(self.item_params, key, value)
