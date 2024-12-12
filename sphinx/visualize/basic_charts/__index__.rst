@@ -10,8 +10,7 @@ Basic Charts
     line_chart    
     pie_chart
     ranking_chart
-    word_cloud    
-    world_map  
+    word_cloud      
 
 
     

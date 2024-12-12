@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tools.trending_words_per_year
+.. automodule:: techminer2.visualize.specialized_charts.trending_words_per_year
     :members:
     :undoc-members:
     :show-inheritance:

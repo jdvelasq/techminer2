@@ -34,7 +34,7 @@ Heat Map
 ...         cited_by_filter=(None, None),
 ...     ).build()
 ... )
->>> plot.write_html("sphinx/_generated/visualize/advanced_charts/heat_map.html")
+>>> # plot.write_html("sphinx/_generated/visualize/advanced_charts/heat_map.html")
 
 .. raw:: html
 

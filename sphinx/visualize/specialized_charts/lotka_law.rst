@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tools.lotka_law
+.. automodule:: techminer2.visualize.specialized_charts.lotka_law
     :members:
     :undoc-members:
     :show-inheritance:

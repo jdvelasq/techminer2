@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tools.word_trends
+.. automodule:: techminer2.visualize.specialized_charts.word_trends
     :members:
     :undoc-members:
     :show-inheritance:

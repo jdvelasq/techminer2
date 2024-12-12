@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.scatter_plot
+.. automodule:: techminer2.visualize.advanced_charts.scatter_plot
     :members:
 

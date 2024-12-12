@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.multi_donut
+.. automodule:: techminer2.visualize.advanced_charts.multi_donut
     :members:
 

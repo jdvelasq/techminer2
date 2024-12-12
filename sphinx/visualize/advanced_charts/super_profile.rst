@@ -1,3 +1,3 @@
-.. automodule:: techminer2.report.super_profile
+.. automodule:: techminer2.visualize.advanced_charts.super_profile
     :members:
 

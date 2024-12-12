@@ -24,7 +24,7 @@ Bubble Chart
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_chart_params(
+...     ).set_cbart_params(
 ...         title_text=None,
 ...     ).set_database_params(
 ...         root_dir="example/", 
@@ -33,7 +33,7 @@ Bubble Chart
 ...         cited_by_filter=(None, None),
 ...     ).build()
 ... )
->>> plot.write_html("sphinx/_generated/visualize/advanced_charts/bubble_chart.html")
+>>> # plot.write_html("sphinx/_generated/visualize/advanced_charts/bubble_chart.html")
 
 .. raw:: html
 
@@ -97,6 +97,7 @@ class BubbleChart(
             .set_column_params(**self.column_params.__dict__)
             .set_row_params(**self.row_params.__dict__)
             .set_format_params(**self.format_params.__dict__)
+            .set_database_params(**self.database_params.__dict__)
             .build()
         )
 
