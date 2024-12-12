@@ -14,6 +14,7 @@ class DatabaseParams:
     database: str = "main"
     year_filter: Tuple[Optional[int], Optional[int]] = (None, None)
     cited_by_filter: Tuple[Optional[int], Optional[int]] = (None, None)
+    sort_by: Optional[str] = None
 
 
 class DatabaseParamsMixin:

@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=too-few-public-methods
 """
 Bubble Chart
 ===============================================================================
@@ -45,7 +46,11 @@ from typing import Optional
 
 import plotly.express as px  # type: ignore
 
-from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
+from ...analyze.co_occurrence_matrix.co_occurrence_matrix import CoOccurrenceMatrix
+from ...analyze.co_occurrence_matrix.format_params import (
+    FormatParams,
+    FormatParamsMixin,
+)
 from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
@@ -58,9 +63,23 @@ class ChartParams:
     title_text: Optional[str] = None
 
 
+class ChartParamsMixin:
+    """:meta private:"""
+
+    def set_cbart_params(self, **kwars):
+        for key, value in kwars.items():
+            if hasattr(self.chart_params, key):
+                setattr(self.chart_params, key, value)
+            else:
+                raise ValueError(f"Invalid parameter for ChartParams: {key}")
+        return self
+
+
 class BubbleChart(
+    ChartParamsMixin,
     ColumnAndRowParamsMixin,
     DatabaseParamsMixin,
+    FormatParamsMixin,
 ):
     """:meta private:"""
 
@@ -69,41 +88,24 @@ class BubbleChart(
         self.column_params = ItemParams()
         self.database_params = DatabaseParams()
         self.row_params = ItemParams()
-
-    def set_chart_params(self, **kwars):
-        for key, value in kwars.items():
-            if hasattr(self.chart_params, key):
-                setattr(self.chart_params, key, value)
-            else:
-                raise ValueError(f"Invalid parameter for ChartParams: {key}")
-        return self
+        self.format_params = FormatParams()
 
     def build(self):
 
-        matrix = co_occurrence_matrix(
-            #
-            # COLUMN PARAMS:
-            columns=self.column_params.field,
-            col_top_n=self.column_params.top_n,
-            col_occ_range=self.column_params.occ_range,
-            col_gc_range=self.column_params.gc_range,
-            col_custom_terms=self.column_params.custom_terms,
-            #
-            # ROW PARAMS:
-            rows=self.row_params.field,
-            row_top_n=self.row_params.top_n,
-            row_occ_range=self.row_params.occ_range,
-            row_gc_range=self.row_params.gc_range,
-            row_custom_terms=self.row_params.custom_terms,
-            #
-            # DATABASE PARAMS:
-            **self.database_params.__dict__,
+        matrix = (
+            CoOccurrenceMatrix()
+            .set_column_params(**self.column_params.__dict__)
+            .set_row_params(**self.row_params.__dict__)
+            .set_format_params(**self.format_params.__dict__)
+            .build()
         )
 
         matrix = matrix.melt(value_name="VALUE", var_name="column", ignore_index=False)
         matrix = matrix.reset_index()
         matrix = matrix.rename(columns={matrix.columns[0]: "row"})
-        matrix = matrix.sort_values(by=["VALUE", "row", "column"], ascending=[False, True, True])
+        matrix = matrix.sort_values(
+            by=["VALUE", "row", "column"], ascending=[False, True, True]
+        )
         matrix = matrix.reset_index(drop=True)
 
         fig = px.scatter(

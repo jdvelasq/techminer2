@@ -116,7 +116,7 @@ Word Network
 
     
 """
-from ...co_occurrence_matrix.co_occurrence_matrix_network import co_occurrence_matrix_network
+from ...analyze.co_occurrence_matrix.co_occurrence_matrix_network import co_occurrence_matrix_network
 from .term_associations_frame import term_associations_frame
 
 

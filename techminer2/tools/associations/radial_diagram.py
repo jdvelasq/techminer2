@@ -72,7 +72,7 @@ from ..._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color
 from ..._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
 from ..._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
 from ..._core.nx.nx_network_plot import nx_network_plot
-from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
+from ...analyze.co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def radial_diagram(

@@ -31,7 +31,7 @@ Collaboration WorldMap
 """
 import plotly.express as px  # type: ignore
 
-from ...co_occurrence_matrix.co_occurrence_table import co_occurrence_table
+from ...analyze.co_occurrence_matrix.co_occurrence_frame import co_occurrence_frame
 
 
 def collaboration_world_map(
@@ -45,7 +45,7 @@ def collaboration_world_map(
 ):
     """:meta private:"""
 
-    collaboration = co_occurrence_table(
+    collaboration = co_occurrence_frame(
         columns="countries",
         #
         # DATABASE PARAMS:

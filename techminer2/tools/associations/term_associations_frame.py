@@ -48,7 +48,7 @@ FINANCIAL_TECHNOLOGY 03:0461                2
 
 
 """
-from ...co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
+from ...analyze.co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
 
 
