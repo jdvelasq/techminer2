@@ -4,7 +4,7 @@ Specialized Charts
 .. toctree::
     :hidden:
 
-    bradford_law
+    bradford_law/__index__
     lotka_law/__index__
     trending_words_per_year/__index__
     trending_words/__index__
