@@ -9,7 +9,7 @@
 Document Metrics
 =======================================================================================
 
->>> from techminer2.documents import document_metrics
+>>> from techminer2.analyze.documents import document_metrics
 >>> frame = document_metrics(
 ...     #
 ...     # DATABASE PARAMS:
@@ -31,11 +31,11 @@ Document Metrics
 3  Fintech, regulatory arbitrage, and the rise of...  ...  2018
 4  The digital revolution in financial inclusion:...  ...  2017
 <BLANKLINE>
-[5 rows x 8 columns]
+[5 rows x 9 columns]
 
 """
 
-from .._core.read_filtered_database import read_filtered_database
+from ..._core.read_filtered_database import read_filtered_database
 
 
 def document_metrics(
@@ -67,8 +67,13 @@ def document_metrics(
     #
     # Global citations per year
     data_frame["global_citations"] = data_frame.global_citations.astype(int)
-    data_frame = data_frame.assign(global_citations_per_year=data_frame.global_citations.astype(float) / (max_year - data_frame.year + 1))
-    data_frame = data_frame.assign(global_citations_per_year=data_frame.global_citations_per_year.round(3))
+    data_frame = data_frame.assign(
+        global_citations_per_year=data_frame.global_citations.astype(float)
+        / (max_year - data_frame.year + 1)
+    )
+    data_frame = data_frame.assign(
+        global_citations_per_year=data_frame.global_citations_per_year.round(3)
+    )
 
     #
     # Global citation score rank
@@ -89,8 +94,13 @@ def document_metrics(
     #
     # Local citations per year
     data_frame["local_citations"] = data_frame.local_citations.astype(int)
-    data_frame = data_frame.assign(local_citations_per_year=data_frame.local_citations.astype(float) / (max_year - data_frame.year + 1))
-    data_frame = data_frame.assign(local_citations_per_year=data_frame.local_citations_per_year.round(3))
+    data_frame = data_frame.assign(
+        local_citations_per_year=data_frame.local_citations.astype(float)
+        / (max_year - data_frame.year + 1)
+    )
+    data_frame = data_frame.assign(
+        local_citations_per_year=data_frame.local_citations_per_year.round(3)
+    )
 
     #
     # Order

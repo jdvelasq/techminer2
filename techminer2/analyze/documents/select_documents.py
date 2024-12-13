@@ -9,7 +9,7 @@
 Select Documents
 =======================================================================================
 
->>> from techminer2.documents import select_documents
+>>> from techminer2.analyze.documents import select_documents
 >>> documents = select_documents(
 ...     #
 ...     # DATABASE PARAMS:
@@ -41,8 +41,8 @@ AB how innovators are using TECHNOLOGY to take on the world of FINANCE . 2015
 
 """
 
-from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_records_for_reporting import helper_records_for_reporting
+from ..._core.read_filtered_database import read_filtered_database
+from ...helpers.helper_records_for_reporting import helper_records_for_reporting
 
 
 def select_documents(

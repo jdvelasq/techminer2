@@ -86,7 +86,7 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
-from ..documents.select_documents import select_documents
+from ..analyze.documents.select_documents import select_documents
 
 TEXTWRAP_WIDTH = 73
 
@@ -177,23 +177,38 @@ def _paragraph_to_meaningful_words(records):
         return lemmatizer.lemmatize(tag[0]), tag[1]
 
     records = records.copy()
-    records = records[["art_no", "article", "document_title", "abstract", "paragraph"]].dropna()
+    records = records[
+        ["art_no", "article", "document_title", "abstract", "paragraph"]
+    ].dropna()
 
     #
     # Split the  abstract in sentences
-    records["paragraph"] = records["paragraph"].apply(lambda paragraph: TextBlob(paragraph).sentences)
+    records["paragraph"] = records["paragraph"].apply(
+        lambda paragraph: TextBlob(paragraph).sentences
+    )
 
     #
     # Extracts the meaningful words from each sentence
-    records["paragraph"] = records["paragraph"].apply(lambda sentences: [sentence.tags for sentence in sentences])
-
     records["paragraph"] = records["paragraph"].apply(
-        lambda sentences: [tag for sentence in sentences for tag in sentence if tag[1][:2] in ["NN", "VB", "RB", "JJ"]]
+        lambda sentences: [sentence.tags for sentence in sentences]
     )
 
-    records["paragraph"] = records["paragraph"].apply(lambda tags: [to_lemma(tag) for tag in tags])
+    records["paragraph"] = records["paragraph"].apply(
+        lambda sentences: [
+            tag
+            for sentence in sentences
+            for tag in sentence
+            if tag[1][:2] in ["NN", "VB", "RB", "JJ"]
+        ]
+    )
 
-    records["paragraph"] = records["paragraph"].apply(lambda tags: [tag[0] for tag in tags])
+    records["paragraph"] = records["paragraph"].apply(
+        lambda tags: [to_lemma(tag) for tag in tags]
+    )
+
+    records["paragraph"] = records["paragraph"].apply(
+        lambda tags: [tag[0] for tag in tags]
+    )
 
     records["paragraph"] = records["paragraph"].apply(set)
     records["paragraph"] = records["paragraph"].apply(sorted)

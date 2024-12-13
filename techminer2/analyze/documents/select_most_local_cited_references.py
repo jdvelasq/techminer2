@@ -6,10 +6,10 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Most Global Cited References (Example)
+Most Local Cited References (Example)
 ===============================================================================
 
->>> from techminer2.documents import select_documents
+>>> from techminer2.analyze.documents import select_documents
 >>> documents = select_documents(
 ...     #
 ...     # DATABASE PARAMS:
@@ -17,20 +17,20 @@ Most Global Cited References (Example)
 ...     database="references",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
-...     sort_by="global_cited_by_highest",
+...     sort_by="local_cited_by_highest",
 ... )
 >>> print(documents[0])
-Record-No: 1
-AR Landis J.R., 1977, BIOMETRICS, V33, P159
-TI The measurement of observer agreement for categorical data
-AU Landis J.R.; Koch G.G.
-TC 54055
-SO Biometrics
-PY 1977
-ID MULTIVARIATE_ANALYSIS; OBSERVER; STATISTICS
-** CATEGORICAL_DATA; OBSERVER_AGREEMENT
+Record-No: 282
+AR Gomber P., 2017, J BUS ECON, V87, P537
+TI Digital Finance and FinTech: current research and future research directions
+AU Gomber P.; Koch J.-A.; Siering M.
+TC 489
+SO Journal of Business Economics
+PY 2017
+DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
+   LITERATURE_REVIEW; STATE_OF_THE_ART
+** CURRENT_RESEARCH; DIGITAL_FINANCE; FUTURE_RESEARCH_DIRECTIONS
 <BLANKLINE>
-
 
 
 """

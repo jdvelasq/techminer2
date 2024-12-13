@@ -84,7 +84,7 @@ DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
 
 
 """
-from ..documents.select_documents import select_documents
+from ..analyze.documents.select_documents import select_documents
 from ._core.compute_main_path import _compute_main_path
 
 
@@ -123,7 +123,9 @@ def main_path_documents(
     #
     # remove counters
     #
-    articles_in_main_path = [" ".join(article.split(" ")[:-1]) for article in articles_in_main_path]
+    articles_in_main_path = [
+        " ".join(article.split(" ")[:-1]) for article in articles_in_main_path
+    ]
 
     documents = select_documents(
         #
