@@ -51,7 +51,14 @@ def check_thesaurus(
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data = pd.read_csv(file, encoding="utf-8", compression="zip")
     raw_descriptors = data.raw_descriptors.copy()
-    raw_descriptors = raw_descriptors.dropna().str.split("; ").explode().str.strip().drop_duplicates().tolist()
+    raw_descriptors = (
+        raw_descriptors.dropna()
+        .str.split("; ")
+        .explode()
+        .str.strip()
+        .drop_duplicates()
+        .tolist()
+    )
 
     #
     # Computes the set union between terms and descriptors

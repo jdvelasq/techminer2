@@ -43,7 +43,12 @@ from tqdm import tqdm  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
-from .clean_thesaurus import _apply_porter_stemmer, _compute_terms_by_key, _replace_fingerprint, _save_thesaurus
+from .clean_thesaurus import (
+    _apply_porter_stemmer,
+    _compute_terms_by_key,
+    _replace_fingerprint,
+    _save_thesaurus,
+)
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
@@ -81,19 +86,39 @@ def _load_abbreviations_th_as_dict(abbreviations_file):
 
 def _apply_abbreviations_thesaurus(data_frame, abbreviations_dict):
 
-    for abbr, values in tqdm(abbreviations_dict.items(), desc="Remmplacing abbreviations"):
+    for abbr, values in tqdm(
+        abbreviations_dict.items(), desc="Remmplacing abbreviations"
+    ):
         #
         # Replace abbreviations in descriptor keys
         for value in values:
-            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + "$"), value, regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + "_"), value + "_", regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + abbr + " "), value + " ", regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + "$"), "_" + value, regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + "$"), " " + value, regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + "_"), "_" + value + "_", regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + "_"), " " + value + "_", regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + abbr + " "), "_" + value + " ", regex=True)
-            data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + abbr + " "), " " + value + " ", regex=True)
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("^" + abbr + "$"), value, regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("^" + abbr + "_"), value + "_", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("^" + abbr + " "), value + " ", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("_" + abbr + "$"), "_" + value, regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile(" " + abbr + "$"), " " + value, regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("_" + abbr + "_"), "_" + value + "_", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile(" " + abbr + "_"), " " + value + "_", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("_" + abbr + " "), "_" + value + " ", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile(" " + abbr + " "), " " + value + " ", regex=True
+            )
 
     # -------------------------------------------------------------------------------------------
     # data_frame = data_frame.sort_values(by="key")
@@ -233,7 +258,10 @@ def _transform_hypened_words(data_frame):
 
     data_frame["key"] = data_frame["key"].str.replace("_", " ", regex=False)
 
-    patterns = [(re.compile(r"\b" + word.replace("_", "") + r"\b"), word.replace("_", " ")) for word in regex]
+    patterns = [
+        (re.compile(r"\b" + word.replace("_", "") + r"\b"), word.replace("_", " "))
+        for word in regex
+    ]
 
     def replace_patterns(text):
         for pattern, replacement in patterns:
@@ -265,7 +293,10 @@ def _transform_non_hypened_words(data_frame):
     data_frame["key"] = data_frame["key"].str.replace("_", " ", regex=False)
 
     patterns = load_words()
-    patterns = [(re.compile(r"\b" + word.replace("_", " ") + r"\b"), word.replace("_", "")) for word in patterns]
+    patterns = [
+        (re.compile(r"\b" + word.replace("_", " ") + r"\b"), word.replace("_", ""))
+        for word in patterns
+    ]
 
     def replace_patterns(text):
         for pattern, replacement in patterns:
@@ -469,4 +500,6 @@ def reset_thesaurus(
     minutes, seconds = divmod(remainder, 60)
 
     print(f"--INFO-- The thesaurus {th_descriptors_file} has been reseted.")
-    print(f"--INFO-- Total time consumed by the execution: {int(hours):02}:{int(minutes):02}:{seconds:04.1f}")
+    print(
+        f"--INFO-- Total time consumed by the execution: {int(hours):02}:{int(minutes):02}:{seconds:04.1f}"
+    )

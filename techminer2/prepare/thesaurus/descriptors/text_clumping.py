@@ -45,7 +45,9 @@ def text_clumping(
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(th_dict):
-        reversed_th = {value: key for key, values in th_dict.items() for value in values}
+        reversed_th = {
+            value: key for key, values in th_dict.items() for value in values
+        }
         data_frame = pd.DataFrame(
             {
                 "term": reversed_th.keys(),
@@ -74,7 +76,9 @@ def text_clumping(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_brackets_from_text)
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            remove_brackets_from_text
+        )
 
         return data_frame
 
@@ -97,7 +101,9 @@ def text_clumping(
                 text = " ".join([w.strip() for w in text.split()])
             return text
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(remove_parenthesis_from_text)
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            remove_parenthesis_from_text
+        )
 
         return data_frame
 
@@ -128,7 +134,9 @@ def text_clumping(
             "^AN ",
             "^AN_",
         ]:
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(word, "", regex=True)
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+                word, "", regex=True
+            )
 
         return data_frame
 
@@ -141,7 +149,9 @@ def text_clumping(
         def load_br2am_dict():
             #
             br2am = {}
-            file_path = pkg_resources.resource_filename("techminer2", "thesauri_data/british2american.the.txt")
+            file_path = pkg_resources.resource_filename(
+                "techminer2", "thesauri_data/british2american.the.txt"
+            )
             with open(file_path, "r", encoding="utf-8") as file:
                 for line in file.readlines():
                     if not line.startswith(" "):
@@ -160,10 +170,16 @@ def text_clumping(
 
         #
         # Replaces "_" by " "
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_", " ", regex=False)
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+            "_", " ", regex=False
+        )
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [br2am.get(z, z) for z in x])
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: [z.strip() for z in x]
+        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: [br2am.get(z, z) for z in x]
+        )
         data_frame["fingerprint"] = data_frame["fingerprint"].str.join("_")
 
         return data_frame
@@ -174,7 +190,9 @@ def text_clumping(
     def remove_separators(data_frame):
         #
         data_frame = data_frame.copy()
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace("_", " ", regex=False)
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+            "_", " ", regex=False
+        )
         return data_frame
 
     data_frame = remove_separators(data_frame)
@@ -214,8 +232,12 @@ def text_clumping(
             )
 
         data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [stemmer.stem(z) for z in x])
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: [z.strip() for z in x]
+        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: [stemmer.stem(z) for z in x]
+        )
         data_frame["fingerprint"] = data_frame["fingerprint"].map(sorted)
         data_frame["fingerprint"] = data_frame["fingerprint"].str.join(" ")
 
@@ -227,8 +249,12 @@ def text_clumping(
     def compute_key_lengths(data_frame):
         data_frame = data_frame.copy()
 
-        data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
-        data_frame = data_frame.sort_values(["len_fingerprint", "fingerprint"], ascending=[False, True])
+        data_frame["len_fingerprint"] = (
+            data_frame["fingerprint"].str.split(" ").map(len)
+        )
+        data_frame = data_frame.sort_values(
+            ["len_fingerprint", "fingerprint"], ascending=[False, True]
+        )
 
         return data_frame
 
@@ -263,11 +289,15 @@ def text_clumping(
         #
         data_frame = data_frame.copy()
 
-        data_frame = data_frame.loc[data_frame.len_fingerprint.map(lambda x: x >= len(words)), :]
+        data_frame = data_frame.loc[
+            data_frame.len_fingerprint.map(lambda x: x >= len(words)), :
+        ]
 
         data_frame["found"] = True
         for word in words:
-            data_frame["found"] = data_frame["found"] & data_frame["fingerprint"].str.contains(r"\b" + word + r"\b", case=True)
+            data_frame["found"] = data_frame["found"] & data_frame[
+                "fingerprint"
+            ].str.contains(r"\b" + word + r"\b", case=True)
 
         data_frame = data_frame.loc[data_frame.found, :]
 

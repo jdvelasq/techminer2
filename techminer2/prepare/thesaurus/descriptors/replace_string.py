@@ -30,7 +30,7 @@ Replace String
 import os.path
 import re
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
@@ -93,7 +93,9 @@ def _replace_string(
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(th_dict):
-        reversed_th = {value: key for key, values in th_dict.items() for value in values}
+        reversed_th = {
+            value: key for key, values in th_dict.items() for value in values
+        }
         data_frame = pd.DataFrame(
             {
                 "value": reversed_th.keys(),
@@ -107,7 +109,12 @@ def _replace_string(
 
     # -------------------------------------------------------------------------------------------
     def check_parameters():
-        if exact is None and contains is None and startswith is None and endswith is None:
+        if (
+            exact is None
+            and contains is None
+            and startswith is None
+            and endswith is None
+        ):
             raise ValueError("No filter provided")
 
         n_params = 0
@@ -126,32 +133,64 @@ def _replace_string(
 
     # -------------------------------------------------------------------------------------------
     if exact is not None:
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + exact + "$"), replace_by, regex=True)
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + exact + "$"), replace_by, regex=True
+        )
 
     # -------------------------------------------------------------------------------------------
     if contains is not None:
         #
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + contains + "$"), replace_by, regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + contains + "_"), replace_by + "_", regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + contains + " "), replace_by + " ", regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + contains + "$"), "_" + replace_by, regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + contains + "$"), " " + replace_by, regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + contains + "_"), "_" + replace_by + "_", regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + contains + "_"), " " + replace_by + "_", regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + contains + " "), "_" + replace_by + " ", regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + contains + " "), " " + replace_by + " ", regex=True)
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + contains + "$"), replace_by, regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + contains + "_"), replace_by + "_", regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + contains + " "), replace_by + " ", regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + contains + "$"), "_" + replace_by, regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(" " + contains + "$"), " " + replace_by, regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + contains + "_"), "_" + replace_by + "_", regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(" " + contains + "_"), " " + replace_by + "_", regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + contains + " "), "_" + replace_by + " ", regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(" " + contains + " "), " " + replace_by + " ", regex=True
+        )
 
     if startswith is not None:
         #
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + startswith + "$"), replace_by, regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + startswith + "_"), replace_by + "_", regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + startswith + " "), replace_by + " ", regex=True)
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + startswith + "$"), replace_by, regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + startswith + "_"), replace_by + "_", regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + startswith + " "), replace_by + " ", regex=True
+        )
 
     if endswith is not None:
         #
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("^" + endswith + "$"), replace_by, regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile("_" + endswith + "$"), "_" + replace_by, regex=True)
-        data_frame["key"] = data_frame["key"].str.replace(re.compile(" " + endswith + "$"), " " + replace_by, regex=True)
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("^" + endswith + "$"), replace_by, regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile("_" + endswith + "$"), "_" + replace_by, regex=True
+        )
+        data_frame["key"] = data_frame["key"].str.replace(
+            re.compile(" " + endswith + "$"), " " + replace_by, regex=True
+        )
 
     data_frame = data_frame.sort_values(by="key")
     data_frame = data_frame.groupby("key", as_index=False).agg({"value": list})

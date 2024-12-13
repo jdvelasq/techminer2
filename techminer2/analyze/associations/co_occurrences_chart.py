@@ -5,12 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Term Associations Plot
+Co-occurrences Chart
 ===============================================================================
 
 
->>> from techminer2.tools.associations import term_associations_plot
->>> plot = term_associations_plot(
+>>> from techminer2.tools.associations import co_occurrences_chart
+>>> plot = co_occurrences_chart(
 ...     #
 ...     # FUNCTION PARAMS:
 ...     item='FINTECH',
@@ -31,44 +31,30 @@ Term Associations Plot
 ...     row_gc_range=(None, None),
 ...     row_custom_terms=None,
 ...     #
-...     # CHART PARAMS:
-...     field_label=None,
-...     metric_label=None,
-...     textfont_size=10,
-...     marker_size=7,
-...     line_width=1.5,
-...     yshift=4,
-...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
 ...     database="main",
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
+>>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/tools/associations/term_associations_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/tools/associations/co_occurrences.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from dataclasses import dataclass
-
 import plotly.express as px  # type: ignore
 
-from ...analyze.co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
-from ...internals.helpers.helper_format_prompt_for_dataframes import (
-    helper_format_prompt_for_dataframes,
-)
 from .term_associations_frame import term_associations_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
 
-def term_associations_plot(
+def co_occurrences_chart(
     #
     # FUNCTION PARAMS:
     item,
@@ -91,7 +77,7 @@ def term_associations_plot(
     #
     # CHART PARAMS:
     field_label=None,
-    metric_label=None,
+    y_label=None,
     textfont_size=10,
     marker_size=7,
     line_width=1.5,
@@ -106,7 +92,7 @@ def term_associations_plot(
 ):
     """:meta private:"""
 
-    data_frame = term_associations_frame(
+    associations = term_associations_frame(
         #
         # FUNCTION PARAMS:
         item=item,
@@ -135,68 +121,41 @@ def term_associations_plot(
         **filters,
     )
 
-    fig = _make_fig(
-        data_frame,
-        #
-        # CO-OCC PARAMS:
-        columns=columns,
-        rows=rows,
-        #
-        # CHART PARAMS:
-        field_label=field_label,
-        metric_label=metric_label,
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_width=line_width,
-        yshift=yshift,
+    associations = associations.copy()
+    associations["occ"] = associations.index.copy()
+    associations["occ"] = associations["occ"].str.split(" ")
+    associations["occ"] = associations["occ"].str[-1]
+    associations["occ"] = associations["occ"].str.split(":")
+    associations["gc"] = associations["occ"].str[1]
+    associations["occ"] = associations["occ"].str[0]
+
+    associations["percentage"] = (
+        associations.iloc[:, 0] / associations["occ"].astype(float) * 100
+    )
+    associations["percentage"] = associations["percentage"].round(2)
+    associations["name"] = associations.index.copy()
+
+    associations = associations.sort_values(
+        by=["percentage", "occ", "gc", "name"], ascending=[False, False, False, True]
     )
 
-    return fig
-
-
-def _make_fig(
-    data_frame,
     #
-    # CO-OCC PARAMS:
-    columns,
-    rows=None,
-    #
-    # CHART PARAMS:
-    field_label=None,
-    metric_label=None,
-    textfont_size=10,
-    marker_size=7,
-    line_width=1.5,
-    yshift=4,
-):
-    """association plot"""
+    # Graph
+    associations["Rank"] = list(range(1, len(associations) + 1))
 
-    item_name = data_frame.iloc[:, 0].name
-    item_name = " ".join(item_name.split(" ")[:-1])
-    series_name = data_frame.iloc[:, 0].index.name
-    title = f"Co-occurrence of '{item_name}' with '{series_name}'"
+    y_label = r"% of Co-occurrence with " + item if y_label is None else y_label
 
-    data_frame = data_frame.copy()
-    data_frame.columns = ["OCC"]
+    title = f"(%) Co-occurrences with '{item}'"
 
-    if rows is None:
-        rows = columns
+    if field_label is None:
+        field_label = columns.replace("_", " ").upper() + " RANKING"
 
-    metric_label = "OCC" if metric_label is None else metric_label
-
-    field_label = (
-        rows.replace("_", " ").upper() + " RANKING"
-        if field_label is None
-        else field_label
-    )
-
-    table = data_frame.copy()
-    table["Rank"] = list(range(1, len(table) + 1))
+    data_frame = associations.copy()
 
     fig = px.line(
-        table,
+        data_frame,
         x="Rank",
-        y="OCC",
+        y=data_frame.percentage,
         hover_data=data_frame.columns.to_list(),
         markers=True,
     )
@@ -219,7 +178,7 @@ def _make_fig(
         linewidth=1,
         gridcolor="lightgray",
         griddash="dot",
-        title=metric_label,
+        title=y_label,
     )
     fig.update_xaxes(
         linecolor="gray",
@@ -229,10 +188,10 @@ def _make_fig(
         title=field_label,
     )
 
-    for name, row in table.iterrows():
+    for name, row in data_frame.iterrows():
         fig.add_annotation(
             x=row["Rank"],
-            y=row["OCC"],
+            y=row.percentage,
             text=name,
             showarrow=False,
             textangle=-90,

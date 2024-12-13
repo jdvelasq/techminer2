@@ -28,7 +28,7 @@ Find String
 import os.path
 import re
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
@@ -78,7 +78,9 @@ def find_string(
                     re.compile("_" + word + r"\b"),
                     re.compile(r"\b" + word + r"\b"),
                 ]:
-                    result.append(pdf[pdf[column].str.contains(compiled_regex, regex=True)])
+                    result.append(
+                        pdf[pdf[column].str.contains(compiled_regex, regex=True)]
+                    )
 
     if startswith is not None:
         if isinstance(startswith, str):
@@ -89,7 +91,9 @@ def find_string(
                     re.compile("^" + word + "_"),
                     re.compile("^" + word + r"\b"),
                 ]:
-                    result.append(pdf[pdf[column].str.contains(compiled_regex, regex=True)])
+                    result.append(
+                        pdf[pdf[column].str.contains(compiled_regex, regex=True)]
+                    )
 
     if endswith is not None:
         if isinstance(endswith, str):
@@ -100,7 +104,9 @@ def find_string(
                     re.compile("_" + word + "$"),
                     re.compile(r"\b" + word + "$"),
                 ]:
-                    result.append(pdf[pdf[column].str.contains(compiled_regex, regex=True)])
+                    result.append(
+                        pdf[pdf[column].str.contains(compiled_regex, regex=True)]
+                    )
 
     pdf = pd.concat(result)
     keys = pdf.key.drop_duplicates()

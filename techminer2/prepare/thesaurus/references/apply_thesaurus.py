@@ -21,7 +21,7 @@ Apply References Thesaurus
 import os.path
 import pathlib
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 
@@ -45,10 +45,18 @@ def apply_thesaurus(root_dir):
     #
     # Replace raw_global_references
     data["global_references"] = data["raw_global_references"].str.split("; ")
-    data["global_references"] = data["global_references"].map(lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore")
-    data["global_references"] = data["global_references"].map(lambda x: pd.NA if x == [] else x, na_action="ignore")
-    data["global_references"] = data["global_references"].map(lambda x: ";".join(sorted(x)) if isinstance(x, list) else x)
+    data["global_references"] = data["global_references"].map(
+        lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
+    )
+    data["global_references"] = data["global_references"].map(
+        lambda x: pd.NA if x == [] else x, na_action="ignore"
+    )
+    data["global_references"] = data["global_references"].map(
+        lambda x: ";".join(sorted(x)) if isinstance(x, list) else x
+    )
 
     data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")
 
-    print(f"--INFO-- The {file_path} thesaurus file was applied to global_references in 'main' database")
+    print(
+        f"--INFO-- The {file_path} thesaurus file was applied to global_references in 'main' database"
+    )

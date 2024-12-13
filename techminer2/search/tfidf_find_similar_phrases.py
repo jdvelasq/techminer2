@@ -63,7 +63,9 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
-from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..prepare.thesaurus._core.load_inverted_thesaurus_as_dict import (
+    load_inverted_thesaurus_as_dict,
+)
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
@@ -112,7 +114,9 @@ def tfidf_find_similar_phrases(
     # words = apply_thesaurus_to_text(root_dir, words)
     words = [w for w in words if w in tf_matrix.columns]
 
-    df_text = pd.DataFrame(data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns)
+    df_text = pd.DataFrame(
+        data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns
+    )
     for word in words:
         df_text[word] = 1
 
@@ -206,7 +210,9 @@ def apply_thesaurus_to_abstract(root_dir, records):
     :meta private:
     """
     thesaurus = load_thesaurus(root_dir)
-    records["abstract"] = records["abstract"].apply(lambda words: [thesaurus[w] if w in thesaurus else w for w in words])
+    records["abstract"] = records["abstract"].apply(
+        lambda words: [thesaurus[w] if w in thesaurus else w for w in words]
+    )
     return records
 
 
@@ -215,7 +221,9 @@ def apply_porter_stemmer(records):
     :meta private:
     """
     stemmer = PorterStemmer()
-    records["abstract"] = records["abstract"].apply(lambda x: sorted(set(stemmer.stem(w) if w == w.lower() else w for w in x)))
+    records["abstract"] = records["abstract"].apply(
+        lambda x: sorted(set(stemmer.stem(w) if w == w.lower() else w for w in x))
+    )
     return records
 
 
@@ -257,13 +265,21 @@ def remove_stopwords(records):
     """
     stopwords = load_stopwords()
     stopwords = [word.lower() for word in stopwords]
-    records["abstract"] = records["abstract"].apply(lambda words: [w for w in words if w not in stopwords])
+    records["abstract"] = records["abstract"].apply(
+        lambda words: [w for w in words if w not in stopwords]
+    )
 
-    records["abstract"] = records["abstract"].apply(lambda words: [w for w in words if w[0] not in "0123456789"])
+    records["abstract"] = records["abstract"].apply(
+        lambda words: [w for w in words if w[0] not in "0123456789"]
+    )
 
-    records["abstract"] = records["abstract"].apply(lambda words: [w.replace("'", "") for w in words])
+    records["abstract"] = records["abstract"].apply(
+        lambda words: [w.replace("'", "") for w in words]
+    )
 
-    records["abstract"] = records["abstract"].apply(lambda words: [w for w in words if len(w) > 2])
+    records["abstract"] = records["abstract"].apply(
+        lambda words: [w for w in words if len(w) > 2]
+    )
 
     return records
 
@@ -282,7 +298,9 @@ def extract_sentences(records):
     #
     #
 
-    abstracts["abstract"] = abstracts["abstract"].apply(lambda paragraph: TextBlob(paragraph).sentences)
+    abstracts["abstract"] = abstracts["abstract"].apply(
+        lambda paragraph: TextBlob(paragraph).sentences
+    )
     abstracts = abstracts.explode("abstract")
     abstracts["phrase"] = abstracts["abstract"]
     abstracts["abstract"] = abstracts["abstract"].apply(lambda sentence: sentence.words)

@@ -54,7 +54,12 @@ def apply_thesaurus(
             records["countries"] = (
                 records.astype(str)
                 .affiliations.str.split(";")
-                .map(lambda affiliations: [thesaurus.get(affiliation.strip(), affiliation.strip()) for affiliation in affiliations])
+                .map(
+                    lambda affiliations: [
+                        thesaurus.get(affiliation.strip(), affiliation.strip())
+                        for affiliation in affiliations
+                    ]
+                )
             )
             #
             records["country_1st_author"] = records.countries.str[0]
@@ -63,16 +68,22 @@ def apply_thesaurus(
             records["countries"] = records["countries"].map(sorted, na_action="ignore")
             records["countries"] = records["countries"].str.join("; ")
             #
-            records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+            records.to_csv(
+                file, sep=",", encoding="utf-8", index=False, compression="zip"
+            )
 
-        sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n")
+        sys.stdout.write(
+            f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
+        )
 
     #
     #
     #
     def apply_country_to_region_thesaurus():
 
-        thesaurus_file = pkg_resources.resource_filename("techminer2", "thesaurus/_data/country-to-region.the.txt")
+        thesaurus_file = pkg_resources.resource_filename(
+            "techminer2", "thesaurus/_data/country-to-region.the.txt"
+        )
 
         thesaurus = load_thesaurus_as_dict(thesaurus_file)
         thesaurus = {k: v[0] for k, v in thesaurus.items()}
@@ -85,23 +96,34 @@ def apply_thesaurus(
             records["regions"] = (
                 records.astype(str)
                 .countries.str.split(";")
-                .map(lambda countries: [thesaurus.get(country.strip(), country.strip()) for country in countries])
+                .map(
+                    lambda countries: [
+                        thesaurus.get(country.strip(), country.strip())
+                        for country in countries
+                    ]
+                )
             )
             #
             records["regions"] = records["regions"].map(set, na_action="ignore")
             records["regions"] = records["regions"].map(sorted, na_action="ignore")
             records["regions"] = records["regions"].str.join("; ")
             #
-            records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+            records.to_csv(
+                file, sep=",", encoding="utf-8", index=False, compression="zip"
+            )
 
-        sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n")
+        sys.stdout.write(
+            f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
+        )
 
     #
     #
     #
     def apply_country_to_subregion_thesaurus():
 
-        thesaurus_file = pkg_resources.resource_filename("techminer2", "thesaurus/_data/country-to-subregion.the.txt")
+        thesaurus_file = pkg_resources.resource_filename(
+            "techminer2", "thesaurus/_data/country-to-subregion.the.txt"
+        )
         thesaurus = load_thesaurus_as_dict(thesaurus_file)
         thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
@@ -113,16 +135,27 @@ def apply_thesaurus(
             records["subregions"] = (
                 records.astype(str)
                 .countries.str.split(";")
-                .map(lambda countries: [thesaurus.get(country.strip(), country.strip()) for country in countries])
+                .map(
+                    lambda countries: [
+                        thesaurus.get(country.strip(), country.strip())
+                        for country in countries
+                    ]
+                )
             )
             #
             records["subregions"] = records["subregions"].map(set, na_action="ignore")
-            records["subregions"] = records["subregions"].map(sorted, na_action="ignore")
+            records["subregions"] = records["subregions"].map(
+                sorted, na_action="ignore"
+            )
             records["subregions"] = records["subregions"].str.join("; ")
             #
-            records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+            records.to_csv(
+                file, sep=",", encoding="utf-8", index=False, compression="zip"
+            )
 
-        sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n")
+        sys.stdout.write(
+            f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
+        )
 
     #
     #

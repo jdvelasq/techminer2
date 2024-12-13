@@ -117,10 +117,10 @@ Chart
 
     
 """
+from ....analyze.associations.term_associations_frame import term_associations_frame
 from ....analyze.co_occurrence_matrix.co_occurrence_matrix_network import (
     co_occurrence_matrix_network,
 )
-from ....tools.associations.term_associations_frame import term_associations_frame
 
 
 def chart(

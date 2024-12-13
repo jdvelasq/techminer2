@@ -22,7 +22,7 @@ from os.path import dirname
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
+from ..prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 
 def list_cleanup_words(
@@ -32,7 +32,9 @@ def list_cleanup_words(
 ):
     """:meta private:"""
 
-    print("--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases")
+    print(
+        "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title nlp phrases"
+    )
 
     #
     # Creates a dataframe with the raw keywords of the database and the raw
@@ -53,8 +55,14 @@ def list_cleanup_words(
                     value = line.strip().replace("_", " ")
                     thesaurus[value] = key
 
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: thesaurus.get(x, x), na_action="ignore")
-        thesaurus = {key: value for key, value in thesaurus.items() if key not in data_frame["fingerprint"].to_list()}
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: thesaurus.get(x, x), na_action="ignore"
+        )
+        thesaurus = {
+            key: value
+            for key, value in thesaurus.items()
+            if key not in data_frame["fingerprint"].to_list()
+        }
         new_frame = pd.DataFrame(
             {
                 "raw_term": list(thesaurus.keys()),
@@ -86,7 +94,9 @@ def modified_concept_clumping(data_frame):
     data_frame = data_frame.copy()
 
     data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
-    data_frame = data_frame.sort_values(["len_fingerprint", "fingerprint"], ascending=[False, True])
+    data_frame = data_frame.sort_values(
+        ["len_fingerprint", "fingerprint"], ascending=[False, True]
+    )
 
     #
     # Terms with 4 words
@@ -173,7 +183,9 @@ def concept_clumping(data_frame):
     data_frame = data_frame.copy()
 
     data_frame["len_fingerprint"] = data_frame["fingerprint"].str.split(" ").map(len)
-    data_frame = data_frame.sort_values(["len_fingerprint", "fingerprint"], ascending=[False, True])
+    data_frame = data_frame.sort_values(
+        ["len_fingerprint", "fingerprint"], ascending=[False, True]
+    )
 
     #
     # Terms with 4 words
@@ -285,7 +297,9 @@ def create_column_data_frame(root_dir, column):
         (data_frame["raw_term"].str[0] == "-") & data_frame["raw_term"].str.len() > 1,
         data_frame["raw_term"].str.replace("^-", "", regex=True),
     )
-    data_frame["raw_term"] = data_frame["raw_term"].map(lambda x: pd.NA if x in "%&/()[]^-.–,;. '´’" else x, na_action="ignore")
+    data_frame["raw_term"] = data_frame["raw_term"].map(
+        lambda x: pd.NA if x in "%&/()[]^-.–,;. '´’" else x, na_action="ignore"
+    )
     data_frame = data_frame.dropna()
     #
 
@@ -321,18 +335,26 @@ def create_data_frame(root_dir):
 
     #
     # Loads raw keywords
-    keywords_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_keywords")
+    keywords_data_frame = create_column_data_frame(
+        root_dir=root_dir, column="raw_keywords"
+    )
 
     #
     # Loads raw nlp phrases discarding existent keywords
-    nlp_data_frame = create_column_data_frame(root_dir=root_dir, column="raw_nlp_phrases")
-    nlp_data_frame = nlp_data_frame.loc[~nlp_data_frame["fingerprint"].isin(keywords_data_frame["fingerprint"]), :]
+    nlp_data_frame = create_column_data_frame(
+        root_dir=root_dir, column="raw_nlp_phrases"
+    )
+    nlp_data_frame = nlp_data_frame.loc[
+        ~nlp_data_frame["fingerprint"].isin(keywords_data_frame["fingerprint"]), :
+    ]
 
     #
     # Remove stopwords from nlp phrases
     stopwords = load_stopwords()
     regex = re.compile(r"\b(" + "|".join(stopwords) + r")\b")
-    nlp_data_frame["fingerprint"] = nlp_data_frame["fingerprint"].str.replace(regex, "", regex=True)
+    nlp_data_frame["fingerprint"] = nlp_data_frame["fingerprint"].str.replace(
+        regex, "", regex=True
+    )
     nlp_data_frame["fingerprint"] = nlp_data_frame["fingerprint"].str.strip()
 
     #
@@ -426,18 +448,28 @@ def create_thesuarus(data_frame):
 
     #
     # Creates key column
-    data_frame = data_frame.sort_values(["fingerprint", "OCC", "raw_term"], ascending=[True, False, True])
+    data_frame = data_frame.sort_values(
+        ["fingerprint", "OCC", "raw_term"], ascending=[True, False, True]
+    )
 
     #
     # Process raw terms
-    data_frame["raw_term"] = data_frame["raw_term"].str.replace("    ", "   ", regex=False)
-    data_frame["raw_term"] = data_frame["raw_term"].str.replace("   ", "  ", regex=False)
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(
+        "    ", "   ", regex=False
+    )
+    data_frame["raw_term"] = data_frame["raw_term"].str.replace(
+        "   ", "  ", regex=False
+    )
     data_frame["raw_term"] = data_frame["raw_term"].str.replace("  ", " ", regex=False)
     data_frame["raw_term"] = data_frame["raw_term"].str.replace(" ", "_", regex=False)
     data_frame["raw_term"] = data_frame["raw_term"].str.replace("_(", " (", regex=False)
     data_frame["raw_term"] = data_frame["raw_term"].str.replace(")_", ") ", regex=False)
 
-    thesaurus = data_frame[["fingerprint", "raw_term"]].groupby("fingerprint", as_index=True).agg({"raw_term": list})
+    thesaurus = (
+        data_frame[["fingerprint", "raw_term"]]
+        .groupby("fingerprint", as_index=True)
+        .agg({"raw_term": list})
+    )
     thesaurus["key"] = thesaurus["raw_term"].map(lambda x: x[0])
 
     #
@@ -459,9 +491,18 @@ def create_thesuarus(data_frame):
     regex = re.compile(r"\b(" + re.escape(regex) + r")\b")
 
     thesaurus["key"] = thesaurus["key"].str.replace("_", " ")
-    thesaurus["key"] = thesaurus["key"].astype(str).str.replace(regex, lambda z: z.group().replace(" ", ""), regex=True)
+    thesaurus["key"] = (
+        thesaurus["key"]
+        .astype(str)
+        .str.replace(regex, lambda z: z.group().replace(" ", ""), regex=True)
+    )
 
-    thesaurus["key"] = thesaurus["key"].str.replace(" ", "_").str.replace("_(", " (", regex=False).str.replace(")_", ") ", regex=False)
+    thesaurus["key"] = (
+        thesaurus["key"]
+        .str.replace(" ", "_")
+        .str.replace("_(", " (", regex=False)
+        .str.replace(")_", ") ", regex=False)
+    )
 
     # ---------------------------------------------------------------------------------------------------
 
@@ -488,9 +529,9 @@ def update_stopwords(data_frame, root_dir):
     #
     # Terms with an empty fingerprint
     phrases = data_frame.loc[data_frame.fingerprint.str.strip() == "", :].copy()
-    data_frame.loc[data_frame.fingerprint.str.strip() == "", "fingerprint"] = data_frame.loc[
-        data_frame.fingerprint.str.strip() == "", "raw_term"
-    ]
+    data_frame.loc[data_frame.fingerprint.str.strip() == "", "fingerprint"] = (
+        data_frame.loc[data_frame.fingerprint.str.strip() == "", "raw_term"]
+    )
 
     #
     # Process stopwords
@@ -524,10 +565,16 @@ def load_existent_thesaurus(root_dir):
         return None
 
     existent_thesaurus = load_thesaurus_as_frame(file_path)
-    existent_thesaurus = existent_thesaurus.rename(columns={"key": "key_phrase", "value": "value_phrase"})
+    existent_thesaurus = existent_thesaurus.rename(
+        columns={"key": "key_phrase", "value": "value_phrase"}
+    )
 
-    existent_thesaurus["key_phrase"] = existent_thesaurus["key_phrase"].str.replace("_", " ").str.upper()
-    existent_thesaurus["value_phrase"] = existent_thesaurus["value_phrase"].str.replace("_", " ").str.upper()
+    existent_thesaurus["key_phrase"] = (
+        existent_thesaurus["key_phrase"].str.replace("_", " ").str.upper()
+    )
+    existent_thesaurus["value_phrase"] = (
+        existent_thesaurus["value_phrase"].str.replace("_", " ").str.upper()
+    )
 
     return existent_thesaurus
 
@@ -631,7 +678,9 @@ def replace_sinonimous(series):
 
     series = series.copy()
     for _, row in replacements.iterrows():
-        series = series.str.replace(r"\b" + row.to_replace + r"\b", row.value, regex=True)
+        series = series.str.replace(
+            r"\b" + row.to_replace + r"\b", row.value, regex=True
+        )
 
     for _ in range(3):
         series = series.str.replace("  ", " ", regex=False)
@@ -739,7 +788,12 @@ def british_to_american_spelling(series):
     #
     br2am = load_br2am_dict()
     series = series.copy()
-    series = series.astype(str).str.split(" ").map(lambda x: [br2am.get(z, z) for z in x]).str.join(" ")
+    series = (
+        series.astype(str)
+        .str.split(" ")
+        .map(lambda x: [br2am.get(z, z) for z in x])
+        .str.join(" ")
+    )
     return series
 
 
@@ -748,5 +802,7 @@ def apply_porter_stemmer(series):
 
     series = series.copy()
     stemmer = PorterStemmer()
-    series = series.apply(lambda x: " ".join(sorted(stemmer.stem(word) for word in x.split())))
+    series = series.apply(
+        lambda x: " ".join(sorted(stemmer.stem(word) for word in x.split()))
+    )
     return series

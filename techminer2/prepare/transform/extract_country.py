@@ -40,8 +40,8 @@ import os
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..fields.protected_fields import PROTECTED_FIELDS
+from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
 def extract_country(

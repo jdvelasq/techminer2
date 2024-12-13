@@ -29,7 +29,7 @@ from ...internals.helpers.helper_format_report_for_records import (
 from ...internals.helpers.helper_make_report_dir import helper_make_report_dir
 
 # from ...search.concordances import concordances_from_records
-from ...thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ...prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..read_filtered_database import read_filtered_database
 from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 

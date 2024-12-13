@@ -37,7 +37,9 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..prepare.thesaurus._core.load_inverted_thesaurus_as_dict import (
+    load_inverted_thesaurus_as_dict,
+)
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
@@ -70,7 +72,9 @@ def extract_descriptors_from_text(
     text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
 
     descriptors = sorted(set(str(t) for t in TextBlob(text).words))
-    descriptors = [t for t in descriptors if t == t.upper() and t[0] not in "0123456789"]
+    descriptors = [
+        t for t in descriptors if t == t.upper() and t[0] not in "0123456789"
+    ]
     return descriptors
 
 

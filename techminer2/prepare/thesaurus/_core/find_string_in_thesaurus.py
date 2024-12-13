@@ -27,7 +27,7 @@
 """
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .load_thesaurus_as_dict import load_thesaurus_as_dict
 

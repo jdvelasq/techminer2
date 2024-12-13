@@ -12,7 +12,7 @@ import os
 
 import pandas as pd  # type: ignore
 
-from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
+from ..prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
 
 predefined_abbreviations_mapping = {
     "AAAS": "ANALYTICS_AS_A_SERVICE",

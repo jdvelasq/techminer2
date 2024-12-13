@@ -21,9 +21,9 @@ import os
 import os.path
 import pathlib
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
-from ..thesaurus.references.apply_thesaurus import apply_thesaurus
+from ..prepare.thesaurus.references.apply_thesaurus import apply_thesaurus
 from ._message import message
 
 
@@ -55,14 +55,18 @@ def __homogeneize_references(root_dir):
     # Loads raw references from the main database
     data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
     raw_references = data["raw_global_references"].dropna()
-    raw_references = raw_references.str.split(";").explode().str.strip().drop_duplicates()
+    raw_references = (
+        raw_references.str.split(";").explode().str.strip().drop_duplicates()
+    )
     raw_references = ";".join(raw_references)
 
     #
     # Loads refernece info from the references database
     references = pd.read_csv(refs_file, encoding="utf-8", compression="zip")
     references = references[["article", "document_title", "authors", "year"]]
-    references["first_author"] = references["authors"].str.split(" ").map(lambda x: x[0].lower())
+    references["first_author"] = (
+        references["authors"].str.split(" ").map(lambda x: x[0].lower())
+    )
     references["document_title"] = references["document_title"].str.lower()
     references = references.dropna()
 
@@ -91,8 +95,12 @@ def __homogeneize_references(root_dir):
     # Cross-product
     references["raw"] = references["raw"].str.split(";")
     #
-    references["raw"] = references.apply(lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1)
-    references["raw"] = references.apply(lambda row: [t for t in row.raw if row.year in t.lower()], axis=1)
+    references["raw"] = references.apply(
+        lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1
+    )
+    references["raw"] = references.apply(
+        lambda row: [t for t in row.raw if row.year in t.lower()], axis=1
+    )
     references["raw"] = references["raw"].map(lambda x: pd.NA if x == [] else x)
     references = references.dropna()
     #
@@ -105,7 +113,9 @@ def __homogeneize_references(root_dir):
     # Reference matching
     selected_references = references.loc[
         references.apply(
-            lambda row: row.year in row.text and row.first_author in row.text and row.document_title[:50] in row.text,
+            lambda row: row.year in row.text
+            and row.first_author in row.text
+            and row.document_title[:50] in row.text,
             axis=1,
         ),
         :,
@@ -113,7 +123,9 @@ def __homogeneize_references(root_dir):
 
     #
     #
-    grouped_references = selected_references.groupby("article", as_index=False).agg(list)
+    grouped_references = selected_references.groupby("article", as_index=False).agg(
+        list
+    )
 
     file_path = pathlib.Path(root_dir) / "global_references.txt"
     with open(file_path, "w", encoding="utf-8") as file:
@@ -123,7 +135,9 @@ def __homogeneize_references(root_dir):
                 for ref in sorted(row.raw):
                     file.write("    " + ref + "\n")
 
-    print(f"     ---> {grouped_references.article.drop_duplicates().shape[0]} global references homogenized")
+    print(
+        f"     ---> {grouped_references.article.drop_duplicates().shape[0]} global references homogenized"
+    )
 
     #
     # Check not recognized references

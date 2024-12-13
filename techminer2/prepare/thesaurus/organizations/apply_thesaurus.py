@@ -50,15 +50,27 @@ def apply_thesaurus(
         #
         records = records.assign(organizations=records.affiliations.str.split("; "))
         records = records.assign(
-            organizations=records.organizations.map(lambda x: ([thesaurus.get(y.strip(), y.strip()) for y in x] if isinstance(x, list) else x))
+            organizations=records.organizations.map(
+                lambda x: (
+                    [thesaurus.get(y.strip(), y.strip()) for y in x]
+                    if isinstance(x, list)
+                    else x
+                )
+            )
         )
         #
         records["organization_1st_author"] = records.organizations.str[0]
         #
-        records = records.assign(organizations=records.organizations.map(lambda x: sorted(set(x)) if isinstance(x, list) else x))
+        records = records.assign(
+            organizations=records.organizations.map(
+                lambda x: sorted(set(x)) if isinstance(x, list) else x
+            )
+        )
         records = records.assign(organizations=records.organizations.str.join("; "))
         #
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
 
-    print(f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases")
+    print(
+        f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases"
+    )

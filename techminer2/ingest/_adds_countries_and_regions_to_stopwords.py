@@ -13,7 +13,7 @@ import os
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
-from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ..prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
 def _adds_countries_and_regions_to_stopwords(
@@ -30,7 +30,9 @@ def _adds_countries_and_regions_to_stopwords(
 
         candidates = []
         for file in files:
-            thesaurus = load_thesaurus_as_dict(pkg_resources.resource_filename("techminer2", file))
+            thesaurus = load_thesaurus_as_dict(
+                pkg_resources.resource_filename("techminer2", file)
+            )
             for key, values in thesaurus.items():
                 candidates.append(key.upper())
                 values = [w.upper() for w in values]
@@ -69,7 +71,9 @@ def _adds_countries_and_regions_to_stopwords(
     stopwords_file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
     stopwords = load_stopwords(stopwords_file_path)
     descriptors = load_descriptors()
-    selected_candiates = [w for w in candidates if w not in stopwords and w in descriptors]
+    selected_candiates = [
+        w for w in candidates if w not in stopwords and w in descriptors
+    ]
     stopwords += selected_candiates
     stopwords = sorted(set(stopwords))
     save_stopwords(stopwords_file_path, stopwords)

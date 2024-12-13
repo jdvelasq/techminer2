@@ -70,31 +70,51 @@ def find_abbreviations(
         frame["value"] = frame["value"].str.replace(regex, "", regex=True)
         frame["value"] = frame["value"].str.strip()
         frame = frame.loc[frame.abbreviation != "", :]
-        frame = frame.loc[frame.value.map(lambda x: " " not in x, na_action="ignore"), :]
+        frame = frame.loc[
+            frame.value.map(lambda x: " " not in x, na_action="ignore"), :
+        ]
         frame = frame.sort_values(by="abbreviation")
 
         #
         # Check if there is replacements
         frame["valid"] = False
-        data_frame_org["value"] = data_frame_org["value"].str.replace(regex, "", regex=True)
+        data_frame_org["value"] = data_frame_org["value"].str.replace(
+            regex, "", regex=True
+        )
         for index, row in frame.iterrows():
             #
             data_frame = data_frame_org.copy()
             data_frame["valid"] = False
             #
             # contains:
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"_" + row.abbreviation + r"_", regex=False)
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"\b" + row.abbreviation + r"_", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"_" + row.abbreviation + r"\b", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"\b" + row.abbreviation + r"\b", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"_" + row.abbreviation + r"_", regex=False)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"\b" + row.abbreviation + r"_", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"_" + row.abbreviation + r"\b", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"\b" + row.abbreviation + r"\b", regex=True)
             #
             # ends with:
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"_" + row.abbreviation + r"$", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r" " + row.abbreviation + r"$", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"_" + row.abbreviation + r"$", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r" " + row.abbreviation + r"$", regex=True)
             #
             # starts with:
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"^" + row.abbreviation + r"_", regex=True)
-            data_frame["valid"] = data_frame["valid"] | data_frame["value"].str.contains(r"^" + row.abbreviation + r" ", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"^" + row.abbreviation + r"_", regex=True)
+            data_frame["valid"] = data_frame["valid"] | data_frame[
+                "value"
+            ].str.contains(r"^" + row.abbreviation + r" ", regex=True)
             #
             frame.loc[index, "valid"] = data_frame["valid"].any()
 
@@ -123,8 +143,12 @@ def find_abbreviations(
         abbr = re.escape(abbr)
         frame["found"] = False
         frame["found"] = frame["found"] | frame["value"].map(lambda x: x == abbr)
-        frame["found"] = frame["found"] | frame["value"].map(lambda x: "(" + abbr + ")" in x)
-        frame["found"] = frame["found"] | frame["value"].str.contains(r"\b" + abbr + r"\b", regex=True)
+        frame["found"] = frame["found"] | frame["value"].map(
+            lambda x: "(" + abbr + ")" in x
+        )
+        frame["found"] = frame["found"] | frame["value"].str.contains(
+            r"\b" + abbr + r"\b", regex=True
+        )
         frame.loc[frame["found"], "abbreviation"] = abbr
 
     frame = frame[~frame.abbreviation.isna()]

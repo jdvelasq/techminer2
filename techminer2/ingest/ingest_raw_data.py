@@ -37,6 +37,18 @@ from ..internals.helpers.helper_abstracts_and_titles_to_lower_case import (
 )
 from ..prepare.fields.merge_fields import _merge_fields
 
+#
+# Thesaurus
+from ..prepare.thesaurus.countries.apply_thesaurus import (
+    apply_thesaurus as apply_countries_thesaurus,
+)
+from ..prepare.thesaurus.descriptors.apply_thesaurus import (
+    apply_thesaurus as apply_descriptors_thesaurus,
+)
+from ..prepare.thesaurus.organizations.apply_thesaurus import (
+    apply_thesaurus as apply_organizations_thesaurus,
+)
+
 # -------------------------------------------------------------------------------------
 # Field basic operations
 # -------------------------------------------------------------------------------------
@@ -44,18 +56,6 @@ from ..prepare.transform.count_terms_per_record import _count_terms_per_record
 from ..prepare.transform.extract_noun_phrases import _extract_noun_phrases
 from ..prepare.transform.replace_keywords import replace_keywords
 from ..prepare.transform.replace_noun_phrases import _replace_noun_phrases
-
-#
-# Thesaurus
-from ..thesaurus.countries.apply_thesaurus import (
-    apply_thesaurus as apply_countries_thesaurus,
-)
-from ..thesaurus.descriptors.apply_thesaurus import (
-    apply_thesaurus as apply_descriptors_thesaurus,
-)
-from ..thesaurus.organizations.apply_thesaurus import (
-    apply_thesaurus as apply_organizations_thesaurus,
-)
 
 # -------------------------------------------------------------------------------------
 # Auxuliary functions

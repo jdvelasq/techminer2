@@ -48,10 +48,10 @@ FINANCIAL_TECHNOLOGY 03:0461                2
 
 
 """
-from ...analyze.co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from ...internals.helpers.helper_format_prompt_for_dataframes import (
     helper_format_prompt_for_dataframes,
 )
+from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def term_associations_frame(
