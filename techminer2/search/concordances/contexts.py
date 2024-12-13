@@ -5,23 +5,23 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Concordance Contexts
+Contexts (MIGRATED)
 =========================================================================================
 
->>> from techminer2.search import concordance_contexts
->>> contexts = concordance_contexts( 
-...     search_for='FINTECH',
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
+>>> from techminer2.search.concordances import Contexts
+>>> contexts = (
+...     Contexts() 
+...     .set_database_params(
+...         root_dir="example/",
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
+...                                # global_cited_by_lowest, local_cited_by_highest, 
+...                                # local_cited_by_lowest, first_author_a_to_z, 
+...                                # first_author_z_to_a, source_title_a_to_z, 
+...                                # source_title_z_to_a
+...     ).build(search_for='FINTECH')
 ... )
 >>> for t in contexts[:20]: print(t)
                              the INDUSTRY_OVERALL , and many FINTECH start_ups are looking for NEW_PATHWAYS to SUCCESSFUL_BUS >>>
@@ -48,8 +48,21 @@ Concordance Contexts
 """
 import pandas as pd  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
-from ._core.get_context_phrases_from_records import _get_context_phrases_from_records
+from ..._core.read_filtered_database import read_filtered_database
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from .._core.get_context_phrases_from_records import _get_context_phrases_from_records
+
+
+class Contexts(
+    DatabaseParamsMixin,
+):
+    """:meta private:"""
+
+    def __init__(self):
+        self.database_params = DatabaseParams()
+
+    def build(self, search_for: str):
+        return concordance_contexts(search_for, **self.database_params.__dict__)
 
 
 def concordance_contexts(
@@ -73,7 +86,9 @@ def concordance_contexts(
         """Extracts the contexts table."""
 
         regex = r"\b" + search_for + r"\b"
-        contexts = context_phrases.str.extract(r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)")
+        contexts = context_phrases.str.extract(
+            r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)"
+        )
 
         contexts["left_context"] = contexts["left_context"].fillna("")
         contexts["left_context"] = contexts["left_context"].str.strip()
@@ -81,7 +96,10 @@ def concordance_contexts(
         contexts["right_context"] = contexts["right_context"].fillna("")
         contexts["right_context"] = contexts["right_context"].str.strip()
 
-        contexts = contexts[contexts["left_context"].map(lambda x: x != "") | contexts["right_context"].map(lambda x: x != "")]
+        contexts = contexts[
+            contexts["left_context"].map(lambda x: x != "")
+            | contexts["right_context"].map(lambda x: x != "")
+        ]
 
         return contexts
 
@@ -96,12 +114,18 @@ def concordance_contexts(
 
         # contexts = contexts.sort_values(["left_r", "right_context"])
 
-        contexts["left_context"] = contexts["left_context"].map(lambda x: "<<< " + x[-56:] if len(x) > 60 else x)
-        contexts["right_context"] = contexts["right_context"].map(lambda x: x[:56] + " >>>" if len(x) > 60 else x)
+        contexts["left_context"] = contexts["left_context"].map(
+            lambda x: "<<< " + x[-56:] if len(x) > 60 else x
+        )
+        contexts["right_context"] = contexts["right_context"].map(
+            lambda x: x[:56] + " >>>" if len(x) > 60 else x
+        )
 
         texts = []
         for _, row in contexts.iterrows():
-            text = f"{row['left_context']:>60} {search_for.upper()} {row['right_context']}"
+            text = (
+                f"{row['left_context']:>60} {search_for.upper()} {row['right_context']}"
+            )
             texts.append(text)
 
         return texts

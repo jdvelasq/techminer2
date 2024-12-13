@@ -5,19 +5,19 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Statistics
+Statistics (MIGRATED)
 ===============================================================================
 
 
->>> from techminer2.tools import statistics
->>> statistics(
-...     field='authors',    
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+>>> from techminer2.database import Statistics
+>>> (
+...     Statistics()
+...     .set_database_params(
+...         root_dir="example/",
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build(field="authors")
 ... ).head()
                     year                              ... local_citations                    
                    count    mean std     min     25%  ...             min  25%  50%  75%  max
@@ -33,34 +33,24 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...             0.0  0.0  
 
 """
 from .._core.read_filtered_database import read_filtered_database
+from ..internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 
 
-def statistics(
-    field,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+class Statistics(
+    DatabaseParamsMixin,
 ):
     """:meta private:"""
 
-    records = read_filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=None,
-        **filters,
-    )
-    records = records.dropna(subset=[field])
-    records[field] = records[field].str.split("; ")
-    records = records.explode(field)
-    records[field] = records[field].str.strip()
-    summary = records.groupby(field).describe()
+    def __init__(self):
+        self.database_params = DatabaseParams()
 
-    return summary
+    def build(self, field):
+
+        records = read_filtered_database(**self.database_params.__dict__)
+        records = records.dropna(subset=[field])
+        records[field] = records[field].str.split("; ")
+        records = records.explode(field)
+        records[field] = records[field].str.strip()
+        summary = records.groupby(field).describe()
+
+        return summary

@@ -47,12 +47,16 @@ Co-occurrence Frame
 
 
 """
-from ..._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from ..._core.metrics.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 from ..._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from ..._core.metrics.sort_records_by_metric import sort_records_by_metric
 from ..._core.read_filtered_database import read_filtered_database
 from ..._core.stopwords.load_user_stopwords import load_user_stopwords
-from ...helpers.helper_compute_occurrences_and_citations import helper_compute_occurrences_and_citations
+from ...helpers.helper_compute_occurrences_and_citations import (
+    helper_compute_occurrences_and_citations,
+)
 from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
@@ -134,9 +138,13 @@ class CoOccurrenceFrame(
             raw_matrix_list = raw_matrix_list[~raw_matrix_list[name].isin(stopwords)]
 
         raw_matrix_list["OCC"] = 1
-        raw_matrix_list = raw_matrix_list.groupby(["row", "column"], as_index=False).aggregate("sum")
+        raw_matrix_list = raw_matrix_list.groupby(
+            ["row", "column"], as_index=False
+        ).aggregate("sum")
 
-        raw_matrix_list = raw_matrix_list.sort_values(["OCC", "row", "column"], ascending=[False, True, True])
+        raw_matrix_list = raw_matrix_list.sort_values(
+            ["OCC", "row", "column"], ascending=[False, True, True]
+        )
 
         # Filters the terms in the 'row' column of the matrix list
         raw_filterd_matrix_list = filter_terms(
@@ -161,17 +169,82 @@ class CoOccurrenceFrame(
                 criterion=self.row_params.field,
                 **self.database_params.__dict__,
             )
-            filtered_matrix_list.loc[:, "row"] = filtered_matrix_list["row"].map(rows_map)
+            filtered_matrix_list.loc[:, "row"] = filtered_matrix_list["row"].map(
+                rows_map
+            )
 
             columns_map = helper_compute_occurrences_and_citations(
                 criterion=self.column_params.field,
                 **self.database_params.__dict__,
             )
-            filtered_matrix_list.loc[:, "column"] = filtered_matrix_list["column"].map(columns_map)
+            filtered_matrix_list.loc[:, "column"] = filtered_matrix_list["column"].map(
+                columns_map
+            )
 
         filtered_matrix_list = filtered_matrix_list.reset_index(drop=True)
-        filtered_matrix_list = filtered_matrix_list.rename(columns={"row": "rows", "column": "columns"})
-        filtered_matrix_list = filtered_matrix_list.sort_values(["rows", "columns", "OCC"], ascending=[True, True, False])
+        filtered_matrix_list = filtered_matrix_list.rename(
+            columns={"row": "rows", "column": "columns"}
+        )
+        filtered_matrix_list = filtered_matrix_list.sort_values(
+            ["rows", "columns", "OCC"], ascending=[True, True, False]
+        )
         filtered_matrix_list = filtered_matrix_list.reset_index(drop=True)
 
         return filtered_matrix_list
+
+
+def co_occurrence_frame(
+    #
+    # FUNCTION PARAMS:
+    columns,
+    rows=None,
+    retain_counters=True,
+    #
+    # COLUMN PARAMS:
+    col_top_n=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
+    col_custom_terms=None,
+    #
+    # ROW PARAMS:
+    row_top_n=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
+    row_custom_terms=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
+):
+    """:meta private:"""
+
+    return (
+        CoOccurrenceFrame()
+        .set_column_params(
+            field=columns,
+            top_n=col_top_n,
+            occ_range=col_occ_range,
+            gc_range=col_gc_range,
+            custom_terms=col_custom_terms,
+        )
+        .set_row_params(
+            field=rows,
+            top_n=row_top_n,
+            occ_range=row_occ_range,
+            gc_range=row_gc_range,
+            custom_terms=row_custom_terms,
+        )
+        .set_format_params(
+            retain_counters=retain_counters,
+        )
+        .set_database_params(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+        )
+        .build()
+    )

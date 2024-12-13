@@ -24,6 +24,7 @@ Techminer 2+
     :caption: SEARCH
     :maxdepth: 1
 
+    search/concordances/__index__
     search/records/__index__
     search/terms/__index__
     search/text/__index__

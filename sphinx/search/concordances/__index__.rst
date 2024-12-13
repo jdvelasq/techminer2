@@ -1,9 +1,10 @@
-Text
+Concordances
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :hidden:
     
-    find_similar_phrases
-    highlight_phrase
+    contexts
+    documents
+    
 

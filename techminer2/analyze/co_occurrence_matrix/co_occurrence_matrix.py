@@ -151,3 +151,61 @@ class CoOccurrenceMatrix(
             matrix.index = matrix_rows
 
         return matrix
+
+
+# TODO: Remove
+def co_occurrence_matrix(
+    #
+    # FUNCTION PARAMS:
+    columns,
+    rows=None,
+    retain_counters=True,
+    #
+    # COLUMN PARAMS:
+    col_top_n=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
+    col_custom_terms=None,
+    #
+    # ROW PARAMS:
+    row_top_n=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
+    row_custom_terms=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
+):
+    """:meta private:"""
+    return (
+        CoOccurrenceMatrix()
+        .set_column_params(
+            field=columns,
+            top_n=col_top_n,
+            occ_range=col_occ_range,
+            gc_range=col_gc_range,
+            custom_terms=col_custom_terms,
+        )
+        .set_row_params(
+            field=rows,
+            top_n=row_top_n,
+            occ_range=row_occ_range,
+            gc_range=row_gc_range,
+            custom_terms=row_custom_terms,
+        )
+        .set_format_params(
+            retain_counters=retain_counters,
+        )
+        .set_database_params(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
+        .build()
+    )

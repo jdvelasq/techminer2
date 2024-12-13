@@ -5,28 +5,26 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Concordance Documents
+Documents (MIGRATED)
 =========================================================================================
 
->>> from techminer2.search import concordance_documents
->>> docs = concordance_documents( 
-...     #
-...     # FUNCTION PARAMS:
-...     search_for='FINTECH',
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
+>>> from techminer2.search.concordances import Documents
+>>> docs = (
+...     Documents()
+...     .set_database_params(
+...         root_dir="example/",
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
+...                                # global_cited_by_lowest, local_cited_by_highest, 
+...                                # local_cited_by_lowest, first_author_a_to_z, 
+...                                # first_author_z_to_a, source_title_a_to_z, 
+...                                # source_title_z_to_a
+...     ).build(search_for='FINTECH')
 ... )
 >>> print(len(docs))
-37
+38
 >>> print(docs[0])
 Record-No: 6
 AR Haddad C., 2019, SMALL BUS ECON, V53, P81
@@ -36,10 +34,9 @@ AU Haddad C.; Hornuf L.
 TC 258
 SO Small Business Economics
 PY 2019
-AB FINTECH . . we find that countries witness more FINTECH_STARTUP_FORMATIONS
-   when the economy is well_developed and VENTURE_CAPITAL is readily available
-   . the higher is the number of FINTECH_STARTUPS in . the EVIDENCE_SUGGESTS
-   that FINTECH_STARTUP_FORMATION_NEED not be left to chance
+AB we investigate the economic and TECHNOLOGICAL_DETERMINANTS inducing
+   ENTREPRENEURS to establish ventures with the purpose of reinventing
+   FINANCIAL_TECHNOLOGY ( FINTECH )
 DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 ** ACCESS_LOANS; ACTIVE_POLICIES; AVAILABLE_LABOR_FORCE; EVIDENCE_SUGGESTS;
    FINANCIAL_TECHNOLOGY; FINTECH_STARTUPS; FINTECH_STARTUP_FORMATIONS;
@@ -54,9 +51,22 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_records_for_reporting import helper_records_for_reporting
-from ._core.filter_records_by_concordance import _filter_records_by_concordance
+from ..._core.read_filtered_database import read_filtered_database
+from ...helpers.helper_records_for_reporting import helper_records_for_reporting
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from .._core.filter_records_by_concordance import _filter_records_by_concordance
+
+
+class Documents(
+    DatabaseParamsMixin,
+):
+    """:meta private:"""
+
+    def __init__(self):
+        self.database_params = DatabaseParams()
+
+    def build(self, search_for: str):
+        return concordance_documents(search_for, **self.database_params.__dict__)
 
 
 def concordance_documents(
@@ -92,11 +102,15 @@ def concordance_documents(
     # extract phrases.
     records["abstract"] = records["abstract"].map(lambda x: TextBlob(x).sentences)
     records["abstract"] = records["abstract"].map(lambda x: [str(y) for y in x])
-    records["abstract"] = records["abstract"].map(lambda x: [y[:-2] if y[-2:] == " ." else y for y in x])
+    records["abstract"] = records["abstract"].map(
+        lambda x: [y[:-2] if y[-2:] == " ." else y for y in x]
+    )
     #
     regex = r"\b" + search_for + r"\b"
     #
-    records["abstract"] = records["abstract"].map(lambda x: [y for y in x if re.search(regex, y)])
+    records["abstract"] = records["abstract"].map(
+        lambda x: [y for y in x if re.search(regex, y)]
+    )
     records["abstract"] = records["abstract"].map(" . ".join)
     # records["abstract"] = records["abstract"] + records["raw_abstract"]
 

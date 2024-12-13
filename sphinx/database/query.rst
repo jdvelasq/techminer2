@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tools.query
+.. automodule:: techminer2.database.query
     :members:
     :undoc-members:
     :show-inheritance:
