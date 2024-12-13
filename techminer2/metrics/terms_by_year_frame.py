@@ -75,10 +75,14 @@ CASE_STUDY 02:0340               0     0     1     1     2
 
 
 """
-from .._core.metrics.calculate_global_performance_metrics import calculate_global_performance_metrics
+from .._core.metrics.calculate_global_performance_metrics import (
+    calculate_global_performance_metrics,
+)
 from .._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
 from .._core.metrics.term_occurrences_by_year import term_occurrences_by_year
-from ..helpers.helper_append_occurrences_and_citations_to_axis import helper_append_occurrences_and_citations_to_axis
+from ..internals.helpers.helper_append_occurrences_and_citations_to_axis import (
+    helper_append_occurrences_and_citations_to_axis,
+)
 
 
 def terms_by_year_frame(

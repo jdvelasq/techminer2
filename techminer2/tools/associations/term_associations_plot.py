@@ -59,7 +59,9 @@ from dataclasses import dataclass
 import plotly.express as px  # type: ignore
 
 from ...analyze.co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
-from ...helpers.helper_format_prompt_for_dataframes import helper_format_prompt_for_dataframes
+from ...internals.helpers.helper_format_prompt_for_dataframes import (
+    helper_format_prompt_for_dataframes,
+)
 from .term_associations_frame import term_associations_frame
 
 MARKER_COLOR = "#7793a5"
@@ -182,7 +184,11 @@ def _make_fig(
 
     metric_label = "OCC" if metric_label is None else metric_label
 
-    field_label = rows.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
+    field_label = (
+        rows.replace("_", " ").upper() + " RANKING"
+        if field_label is None
+        else field_label
+    )
 
     table = data_frame.copy()
     table["Rank"] = list(range(1, len(table) + 1))

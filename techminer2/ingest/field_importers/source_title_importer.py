@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ...fields.process_field import _process_field
+from ...prepare.fields.process_field import _process_field
 
 
 def run_source_title_importer(root_dir):
@@ -21,6 +21,8 @@ def run_source_title_importer(root_dir):
     _process_field(
         source="raw_source_title",
         dest="source_title",
-        func=lambda w: w.str.replace("-", "_", regex=False).str.replace("<.*?>", "", regex=True),
+        func=lambda w: w.str.replace("-", "_", regex=False).str.replace(
+            "<.*?>", "", regex=True
+        ),
         root_dir=root_dir,
     )

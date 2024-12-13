@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ...fields.process_field import _process_field
+from ...prepare.fields.process_field import _process_field
 
 
 def run_document_title_importer(root_dir):
@@ -40,7 +40,9 @@ def run_document_title_importer(root_dir):
         .str.replace(r"(\w+)(\.\s)", r"\1 \2", regex=True)  # .
         .str.replace(r"(\w+)\.$", r"\1 .", regex=True)  # .
         #
-        .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True).str.replace(r"(\w+)'(\s)", r"\1\2", regex=True)  # 's  # s
+        .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True).str.replace(
+            r"(\w+)'(\s)", r"\1\2", regex=True
+        )  # 's  # s
         #
         .str.replace("—", "-", regex=False).str.replace("-", " ", regex=False)
         #

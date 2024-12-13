@@ -9,7 +9,7 @@
 import contractions
 import pandas as pd  # type: ignore
 
-from ...fields.process_field import _process_field
+from ...prepare.fields.process_field import _process_field
 
 
 def run_abstract_importer(root_dir):
@@ -18,7 +18,9 @@ def run_abstract_importer(root_dir):
     _process_field(
         source="raw_abstract",
         dest="abstract",
-        func=lambda x: x.map(lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore")
+        func=lambda x: x.map(
+            lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
+        )
         # -----------------------------------------------------------------------------
         #
         .str.lower().map(contractions.fix, na_action="ignore")
@@ -46,7 +48,9 @@ def run_abstract_importer(root_dir):
         .str.replace(r"(\w+)(\.\s)", r"\1 \2", regex=True)  # .
         .str.replace(r"(\w+)\.$", r"\1 .", regex=True)  # .
         #
-        .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True).str.replace(r"(\w+)'(\s)", r"\1\2", regex=True)  # 's  # s
+        .str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True).str.replace(
+            r"(\w+)'(\s)", r"\1\2", regex=True
+        )  # 's  # s
         #
         .str.replace("—", "-", regex=False).str.replace("-", " ", regex=False)
         #

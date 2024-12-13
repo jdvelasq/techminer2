@@ -54,7 +54,7 @@ from ..._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_b
 from ..._core.metrics.sort_records_by_metric import sort_records_by_metric
 from ..._core.read_filtered_database import read_filtered_database
 from ..._core.stopwords.load_user_stopwords import load_user_stopwords
-from ...helpers.helper_compute_occurrences_and_citations import (
+from ...internals.helpers.helper_compute_occurrences_and_citations import (
     helper_compute_occurrences_and_citations,
 )
 from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin

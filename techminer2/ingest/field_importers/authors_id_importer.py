@@ -7,9 +7,9 @@
 # pylint: disable=too-many-statements
 
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
-from ...fields.process_field import _process_field
+from ...prepare.fields.process_field import _process_field
 
 
 def run_authors_id_importer(root_dir):
@@ -26,6 +26,12 @@ def run_authors_id_importer(root_dir):
         dest="authors_id",
         func=lambda w: w.map(lambda x: pd.NA if isinstance(x, str) and x == "1" else x)
         .str.replace(";$", "", regex=True)
-        .map(lambda x: pd.NA if isinstance(x, str) and x.startswith("[") and x.endswith("]") else x),
+        .map(
+            lambda x: (
+                pd.NA
+                if isinstance(x, str) and x.startswith("[") and x.endswith("]")
+                else x
+            )
+        ),
         root_dir=root_dir,
     )

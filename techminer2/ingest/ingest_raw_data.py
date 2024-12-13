@@ -32,34 +32,53 @@ import time
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
+from ..internals.helpers.helper_abstracts_and_titles_to_lower_case import (
+    helper_abstracts_and_titles_to_lower_case,
+)
+from ..prepare.fields.merge_fields import _merge_fields
+
 # -------------------------------------------------------------------------------------
 # Field basic operations
 # -------------------------------------------------------------------------------------
-from ..fields.further_processing.count_terms_per_record import _count_terms_per_record
-from ..fields.further_processing.extract_noun_phrases import _extract_noun_phrases
-from ..fields.further_processing.replace_keywords import replace_keywords
-from ..fields.further_processing.replace_noun_phrases import _replace_noun_phrases
-from ..fields.merge_fields import _merge_fields
-from ..helpers.helper_abstracts_and_titles_to_lower_case import helper_abstracts_and_titles_to_lower_case
+from ..prepare.transform.count_terms_per_record import _count_terms_per_record
+from ..prepare.transform.extract_noun_phrases import _extract_noun_phrases
+from ..prepare.transform.replace_keywords import replace_keywords
+from ..prepare.transform.replace_noun_phrases import _replace_noun_phrases
 
 #
 # Thesaurus
-from ..thesaurus.countries.apply_thesaurus import apply_thesaurus as apply_countries_thesaurus
-from ..thesaurus.descriptors.apply_thesaurus import apply_thesaurus as apply_descriptors_thesaurus
-from ..thesaurus.organizations.apply_thesaurus import apply_thesaurus as apply_organizations_thesaurus
+from ..thesaurus.countries.apply_thesaurus import (
+    apply_thesaurus as apply_countries_thesaurus,
+)
+from ..thesaurus.descriptors.apply_thesaurus import (
+    apply_thesaurus as apply_descriptors_thesaurus,
+)
+from ..thesaurus.organizations.apply_thesaurus import (
+    apply_thesaurus as apply_organizations_thesaurus,
+)
 
 # -------------------------------------------------------------------------------------
 # Auxuliary functions
 # -------------------------------------------------------------------------------------
-from ._compress_csv_files_in_raw_data_subdirectories import compress_csv_files_in_raw_data_subdirectories
+from ._compress_csv_files_in_raw_data_subdirectories import (
+    compress_csv_files_in_raw_data_subdirectories,
+)
 from ._create_abbreviations_thesaurus import _create_abbreviations_thesaurus
 from ._create_art_no_column import create_art_no_column
 from ._create_article_column import create_article_column
 from ._create_database_files import create_database_files
-from ._create_local_citations_column_in_cited_by_database import create_local_citations_column_in_cited_by_database
-from ._create_local_citations_column_in_documents_database import create_local_citations_column_in_documents_database
-from ._create_local_citations_column_in_references_database import create_local_citations_column_in_references_database
-from ._create_working_subdirectories_and_files import create_working_subdirectories_and_files
+from ._create_local_citations_column_in_cited_by_database import (
+    create_local_citations_column_in_cited_by_database,
+)
+from ._create_local_citations_column_in_documents_database import (
+    create_local_citations_column_in_documents_database,
+)
+from ._create_local_citations_column_in_references_database import (
+    create_local_citations_column_in_references_database,
+)
+from ._create_working_subdirectories_and_files import (
+    create_working_subdirectories_and_files,
+)
 from ._disambiguate_author_names import disambiguate_author_names
 from ._drop_empty_columns_in_databases import drop_empty_columns_in_databases
 
@@ -81,7 +100,9 @@ from ._report_imported_records_per_file import report_imported_records_per_file
 # -------------------------------------------------------------------------------------
 from .field_importers.abbr_source_title_importer import run_abbr_source_title_importer
 from .field_importers.abstract_importer import run_abstract_importer
-from .field_importers.authors_and_index_keywords_importer import run_authors_and_index_keywords_importer
+from .field_importers.authors_and_index_keywords_importer import (
+    run_authors_and_index_keywords_importer,
+)
 from .field_importers.authors_id_importer import run_authors_id_importer
 from .field_importers.authors_importer import run_authors_importer
 from .field_importers.document_title_importer import run_document_title_importer
@@ -310,7 +331,16 @@ def ingest_raw_data(
     #
     file = os.path.join(root_dir, "databases/_main.csv.zip")
     data_frame = pd.read_csv(file, encoding="utf-8", compression="zip")
-    words = data_frame["raw_descriptors"].dropna().str.split("; ", expand=False).explode().str.strip().drop_duplicates().sort_values().to_list()
+    words = (
+        data_frame["raw_descriptors"]
+        .dropna()
+        .str.split("; ", expand=False)
+        .explode()
+        .str.strip()
+        .drop_duplicates()
+        .sort_values()
+        .to_list()
+    )
 
     #
     # Creates a thesaurus with an entry for each differnt descriptor

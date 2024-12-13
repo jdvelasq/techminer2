@@ -41,7 +41,9 @@ from dataclasses import dataclass
 from textblob import TextBlob  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
+from ..internals.helpers.helper_format_prompt_for_paragraphs import (
+    helper_format_prompt_for_paragraphs,
+)
 from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
@@ -184,7 +186,9 @@ def __generate_prompt(sentences, lemma_a, lemma_b):
 
 def __generate_contexts(sentences):
     sentences = sentences.copy()
-    sentences["sentence"] = sentences["sentence"].map(lambda w: textwrap.wrap(w, width=80)).str.join("\n")
+    sentences["sentence"] = (
+        sentences["sentence"].map(lambda w: textwrap.wrap(w, width=80)).str.join("\n")
+    )
 
     text = ""
     for index, row in sentences.iterrows():

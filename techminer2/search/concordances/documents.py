@@ -52,7 +52,9 @@ import re
 from textblob import TextBlob  # type: ignore
 
 from ..._core.read_filtered_database import read_filtered_database
-from ...helpers.helper_records_for_reporting import helper_records_for_reporting
+from ...internals.helpers.helper_records_for_reporting import (
+    helper_records_for_reporting,
+)
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from .._core.filter_records_by_concordance import _filter_records_by_concordance
 

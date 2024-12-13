@@ -42,7 +42,9 @@ AB how innovators are using TECHNOLOGY to take on the world of FINANCE . 2015
 """
 
 from ..._core.read_filtered_database import read_filtered_database
-from ...helpers.helper_records_for_reporting import helper_records_for_reporting
+from ...internals.helpers.helper_records_for_reporting import (
+    helper_records_for_reporting,
+)
 
 
 def select_documents(
