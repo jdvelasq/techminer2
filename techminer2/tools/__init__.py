@@ -4,5 +4,3 @@ from .bradford_law_zones_frame import bradford_law_zones_frame
 from .cluster_records import cluster_records
 from .lotka_law_frame import lotka_law_frame
 from .lotka_law_plot import lotka_law_plot
-from .trending_words_per_year_frame import trending_words_per_year_frame
-from .trending_words_per_year_plot import trending_words_per_year_plot
