@@ -73,6 +73,10 @@ Techminer 2+
     visualize/specialized_charts/__index__
 
 
+
+
+
+
 **Author**:
 
     | Prof. Juan David Velásquez-Henao, MSc, PhD

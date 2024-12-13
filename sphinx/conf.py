@@ -186,7 +186,14 @@ html_static_path = ["_static", "_generated"]
 # html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-# html_sidebars = {}
+html_sidebars = {
+    "**": [
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/navigation.html",
+        "sidebarlogo.html",
+    ]
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

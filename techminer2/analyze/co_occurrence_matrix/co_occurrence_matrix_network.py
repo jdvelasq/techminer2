@@ -114,15 +114,29 @@ Co-occurrence Matrix Network
 """
 import networkx as nx  # type: ignore
 
-from ..._core.nx.nx_assign_opacity_to_text_based_on_frequency import nx_assign_opacity_to_text_based_on_frequency
-from ..._core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import nx_assign_sizes_to_nodes_based_on_occurrences
-from ..._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import nx_assign_text_positions_to_nodes_by_quadrants
-from ..._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import nx_assign_textfont_sizes_to_nodes_based_on_occurrences
-from ..._core.nx.nx_assign_uniform_color_to_edges import nx_assign_uniform_color_to_edges
-from ..._core.nx.nx_assign_widths_to_edges_based_on_weight import nx_assign_widths_to_edges_based_on_weight
-from ..._core.nx.nx_compute_spring_layout_positions import nx_compute_spring_layout_positions
+from ..._core.nx.nx_assign_opacity_to_text_based_on_frequency import (
+    nx_assign_opacity_to_text_based_on_frequency,
+)
+from ..._core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import (
+    nx_assign_sizes_to_nodes_based_on_occurrences,
+)
+from ..._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
+    nx_assign_text_positions_to_nodes_by_quadrants,
+)
+from ..._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import (
+    nx_assign_textfont_sizes_to_nodes_based_on_occurrences,
+)
+from ..._core.nx.nx_assign_uniform_color_to_edges import (
+    nx_assign_uniform_color_to_edges,
+)
+from ..._core.nx.nx_assign_widths_to_edges_based_on_weight import (
+    nx_assign_widths_to_edges_based_on_weight,
+)
+from ..._core.nx.nx_compute_spring_layout_positions import (
+    nx_compute_spring_layout_positions,
+)
 from ..._core.nx.nx_network_plot import nx_network_plot
-from .co_occurrence_matrix import CoOccurrenceMatrix
+from .co_occurrence_matrix import co_occurrence_matrix
 
 
 def co_occurrence_matrix_network(
@@ -207,14 +221,20 @@ def co_occurrence_matrix_network(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_spring_layout_positions(nx_graph, nx_k, nx_iterations, nx_random_state)
+    nx_graph = nx_compute_spring_layout_positions(
+        nx_graph, nx_k, nx_iterations, nx_random_state
+    )
 
     #
     # Sets the node attributes
     nx_graph = nx_assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_occurrences(nx_graph, textfont_size_range)
+    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_occurrences(
+        nx_graph, textfont_size_range
+    )
 
-    nx_graph = nx_assign_opacity_to_text_based_on_frequency(nx_graph, textfont_opacity_range)
+    nx_graph = nx_assign_opacity_to_text_based_on_frequency(
+        nx_graph, textfont_opacity_range
+    )
     #
     # Sets the edge attributes
     nx_graph = nx_assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)

@@ -3,4 +3,3 @@ from .cosine_similarities_graph import cosine_similarities_graph
 from .radial_diagram import radial_diagram
 from .term_associations_frame import term_associations_frame
 from .term_associations_plot import term_associations_plot
-from .word_network import word_network
