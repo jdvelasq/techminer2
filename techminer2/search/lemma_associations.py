@@ -40,10 +40,10 @@ from dataclasses import dataclass
 
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
-from ..internals.helpers.helper_format_prompt_for_paragraphs import (
-    helper_format_prompt_for_paragraphs,
+from ..internals.helpers.utils_format_prompt_for_paragraphs import (
+    _utils_format_prompt_for_paragraphs,
 )
+from ..internals.read_filtered_database import read_filtered_database
 from ..prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
@@ -181,7 +181,7 @@ def __generate_prompt(sentences, lemma_a, lemma_b):
 
     paragraphs = sentences.sentence.copy()
 
-    return helper_format_prompt_for_paragraphs(main_text, main_text, paragraphs)
+    return _utils_format_prompt_for_paragraphs(main_text, main_text, paragraphs)
 
 
 def __generate_contexts(sentences):

@@ -43,7 +43,7 @@ World Map
 import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
 
-from ...metrics.performance_metrics_frame import performance_metrics_frame
+from ...analyze.metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def world_map(
@@ -86,7 +86,9 @@ def world_map(
             locations="iso_alpha",
             color=metric,
             hover_name="country",
-            hover_data=[col for col in dataframe.columns if col not in ["country", "iso_alpha"]],
+            hover_data=[
+                col for col in dataframe.columns if col not in ["country", "iso_alpha"]
+            ],
             range_color=(1, dataframe[metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},

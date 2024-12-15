@@ -49,14 +49,14 @@ Node Density Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import (
-    nx_assign_textfont_sizes_to_nodes_based_on_occurrences,
+from ...internals.nx.nx_assign_textfont_sizes_to_nodes_by_occurrences import (
+    _nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
-from ..._core.nx.nx_cluster_graph import nx_cluster_graph
-from ..._core.nx.nx_compute_spring_layout_positions import (
+from ...internals.nx.nx_cluster_graph import nx_cluster_graph
+from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
-from ..._core.nx.nx_density_plot import nx_density_plot
+from ...internals.nx.nx_density_plot import nx_density_plot
 from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 
@@ -130,7 +130,7 @@ def node_density_plot(
         seed=nx_random_state,
     )
 
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_occurrences(
+    nx_graph = _nx_assign_textfont_sizes_to_nodes_by_occurrences(
         nx_graph, textfont_size_range
     )
 

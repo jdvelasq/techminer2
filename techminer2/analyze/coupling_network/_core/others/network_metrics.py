@@ -32,7 +32,7 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 """
-from ....._core.nx.nx_compute_metrics import nx_compute_metrics
+from .....internals.nx.nx_compute_metrics import nx_compute_metrics
 from ._create_coupling_nx_graph import _create_coupling_nx_graph
 
 

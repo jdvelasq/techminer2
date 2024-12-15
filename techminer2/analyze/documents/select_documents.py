@@ -41,10 +41,10 @@ AB how innovators are using TECHNOLOGY to take on the world of FINANCE . 2015
 
 """
 
-from ..._core.read_filtered_database import read_filtered_database
-from ...internals.helpers.helper_records_for_reporting import (
-    helper_records_for_reporting,
+from ...internals.helpers.utils_records_for_reporting import (
+    _utils_records_for_reporting,
 )
+from ...internals.read_filtered_database import read_filtered_database
 
 
 def select_documents(
@@ -68,7 +68,7 @@ def select_documents(
         **filters,
     )
 
-    formated_records = helper_records_for_reporting(
+    formated_records = _utils_records_for_reporting(
         records=filtered_records,
     )
 

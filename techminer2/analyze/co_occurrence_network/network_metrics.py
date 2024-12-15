@@ -40,7 +40,7 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from ..._core.nx.nx_compute_metrics import nx_compute_metrics
+from ...internals.nx.nx_compute_metrics import nx_compute_metrics
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

@@ -42,9 +42,9 @@ INFORMATION_TECHNOLOGY    7             2  ...    91.293118           0.769302
 """
 import numpy as np
 
-from ..._core.metrics.term_occurrences_by_year import term_occurrences_by_year
-from ...metrics._compute_trend_metrics import compute_trend_metrics
-from ...metrics.general_metrics_frame import general_metrics_frame
+from ...internals.metrics.term_occurrences_by_year import term_occurrences_by_year
+from ..metrics._compute_trend_metrics import compute_trend_metrics
+from ..metrics.general_metrics_frame import general_metrics_frame
 
 
 def emergent_topics(

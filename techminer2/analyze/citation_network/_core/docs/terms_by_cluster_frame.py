@@ -9,8 +9,8 @@
 Builds a terms by cluster frame from documents.
 
 """
-from ....._core.nx.nx_cluster_graph import nx_cluster_graph
-from ....._core.nx.nx_extract_communities_to_frame import (
+from .....internals.nx.nx_cluster_graph import nx_cluster_graph
+from .....internals.nx.nx_extract_communities_to_frame import (
     nx_extract_communities_to_frame,
 )
 from .create_citation_nx_graph import _create_citation_nx_graph

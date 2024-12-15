@@ -8,8 +8,8 @@
 
 import plotly.graph_objects as go
 
-from ....internals.helpers.helper_compute_textposition_from_x_and_y import (
-    helper_compute_textposition_from_x_and_y,
+from ....internals.helpers.utils_compute_textposition_from_x_and_y import (
+    _utils_compute_textposition_from_x_and_y,
 )
 
 # from .._network_lib import (
@@ -38,7 +38,7 @@ def manifold_2d_map(
     if remove_occ_gc:
         node_text = [" ".join(text.split(" ")[:-1]) for text in node_text]
 
-    textpositions = helper_compute_textposition_from_x_and_y(node_x, node_y)
+    textpositions = _utils_compute_textposition_from_x_and_y(node_x, node_y)
 
     fig = go.Figure(
         layout=go.Layout(

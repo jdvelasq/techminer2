@@ -59,8 +59,8 @@ Terms to Cluster Mapping
 
 
 """
-from ..._core.nx.nx_cluster_graph import nx_cluster_graph
-from ..._core.nx.nx_terms_to_clusters_mapping import nx_terms_to_clusters_mapping
+from ...internals.nx.nx_cluster_graph import nx_cluster_graph
+from ...internals.nx.nx_terms_to_clusters_mapping import nx_terms_to_clusters_mapping
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

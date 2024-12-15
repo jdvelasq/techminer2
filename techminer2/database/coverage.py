@@ -34,9 +34,9 @@ Coverage (MIGRATED)
 
 
 """
-from .._core.read_filtered_database import read_filtered_database
-from .._core.stopwords.load_user_stopwords import load_user_stopwords
 from ..internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ..internals.read_filtered_database import read_filtered_database
+from ..internals.stopwords.load_user_stopwords import load_user_stopwords
 
 
 class Coverage(

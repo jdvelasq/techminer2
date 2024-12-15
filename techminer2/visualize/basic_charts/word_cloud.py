@@ -40,9 +40,9 @@ from dataclasses import dataclass
 import numpy as np
 from wordcloud import WordCloud as WordCloudExternal  # type: ignore
 
+from ...analyze.metrics.performance_metrics_frame import performance_metrics_frame
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
-from ...metrics.performance_metrics_frame import performance_metrics_frame
 
 
 @dataclass

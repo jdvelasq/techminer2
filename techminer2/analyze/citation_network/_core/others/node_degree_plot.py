@@ -11,8 +11,8 @@ Node Degree Plot
 
 
 """
-from ....._core.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
-from ....._core.nx.nx_degree_plot import nx_degree_plot
+from .....internals.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
+from .....internals.nx.nx_degree_plot import nx_degree_plot
 from .create_citation_nx_graph import _create_citation_nx_graph
 
 

@@ -85,8 +85,8 @@ from nltk.stem import WordNetLemmatizer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
 from ..analyze.documents.select_documents import select_documents
+from ..internals.read_filtered_database import read_filtered_database
 
 TEXTWRAP_WIDTH = 73
 

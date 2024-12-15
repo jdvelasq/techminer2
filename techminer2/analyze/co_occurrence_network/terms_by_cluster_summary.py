@@ -46,8 +46,8 @@ Terms by Cluster Summary
 
 
 """
-from ..._core.nx.nx_cluster_graph import nx_cluster_graph
-from ..._core.nx.nx_summarize_communities import nx_summarize_communities
+from ...internals.nx.nx_cluster_graph import nx_cluster_graph
+from ...internals.nx.nx_summarize_communities import nx_summarize_communities
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

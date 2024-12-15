@@ -47,19 +47,21 @@ Co-occurrence Frame
 
 
 """
-from ..._core.metrics.calculate_global_performance_metrics import (
+from ...internals.helpers.utils_compute_occurrences_and_citations import (
+    _utils_compute_occurrences_and_citations,
+)
+from ...internals.metrics.calculate_global_performance_metrics import (
     calculate_global_performance_metrics,
 )
-from ..._core.metrics.extract_top_n_terms_by_metric import extract_top_n_terms_by_metric
-from ..._core.metrics.sort_records_by_metric import sort_records_by_metric
-from ..._core.read_filtered_database import read_filtered_database
-from ..._core.stopwords.load_user_stopwords import load_user_stopwords
-from ...internals.helpers.helper_compute_occurrences_and_citations import (
-    helper_compute_occurrences_and_citations,
+from ...internals.metrics.extract_top_n_terms_by_metric import (
+    extract_top_n_terms_by_metric,
 )
+from ...internals.metrics.sort_records_by_metric import sort_records_by_metric
 from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
+from ...internals.read_filtered_database import read_filtered_database
+from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from .format_params import FormatParams, FormatParamsMixin
 
 
@@ -165,7 +167,7 @@ class CoOccurrenceFrame(
         # Assign counters to column 'row'
         if self.format_params.retain_counters:
 
-            rows_map = helper_compute_occurrences_and_citations(
+            rows_map = _utils_compute_occurrences_and_citations(
                 criterion=self.row_params.field,
                 **self.database_params.__dict__,
             )
@@ -173,7 +175,7 @@ class CoOccurrenceFrame(
                 rows_map
             )
 
-            columns_map = helper_compute_occurrences_and_citations(
+            columns_map = _utils_compute_occurrences_and_citations(
                 criterion=self.column_params.field,
                 **self.database_params.__dict__,
             )

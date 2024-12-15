@@ -9,11 +9,11 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ....._core.read_filtered_database import read_filtered_database
-from .....internals.helpers.helper_append_occurrences_and_citations_to_axis import (
-    helper_append_occurrences_and_citations_to_axis,
+from .....internals.helpers.utils_append_occurrences_and_citations_to_axis import (
+    _utils_append_occurrences_and_citations_to_axis,
 )
-from .....metrics.performance_metrics_frame import performance_metrics_frame
+from .....internals.read_filtered_database import read_filtered_database
+from ....metrics.performance_metrics_frame import performance_metrics_frame
 
 
 def _create_coupling_nx_graph(
@@ -148,7 +148,7 @@ def __add_weighted_edges_from(
     #
     # Adds the counters to the data frame:
     data_frame.index = data_frame.row.values
-    data_frame = helper_append_occurrences_and_citations_to_axis(
+    data_frame = _utils_append_occurrences_and_citations_to_axis(
         dataframe=data_frame,
         axis=0,
         field=unit_of_analysis,
@@ -165,7 +165,7 @@ def __add_weighted_edges_from(
     #
     # Adds the counters to the data frame:
     data_frame.index = data_frame.column.values
-    data_frame = helper_append_occurrences_and_citations_to_axis(
+    data_frame = _utils_append_occurrences_and_citations_to_axis(
         dataframe=data_frame,
         axis=0,
         field=unit_of_analysis,

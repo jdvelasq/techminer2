@@ -40,7 +40,7 @@ def dataframe(
 ):
     """:meta private:"""
 
-    from ...._core.metrics.calculate_global_performance_metrics import (
+    from ....internals.metrics.calculate_global_performance_metrics import (
         calculate_global_performance_metrics,
     )
 

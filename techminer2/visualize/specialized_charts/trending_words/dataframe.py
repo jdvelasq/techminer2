@@ -44,7 +44,7 @@ FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                   
 
 
 """
-from ....metrics.growth_metrics_frame import growth_metrics_frame
+from ....analyze.metrics.growth_metrics_frame import growth_metrics_frame
 
 
 def dataframe(

@@ -15,7 +15,7 @@ from nltk.stem import WordNetLemmatizer  # type: ignore
 from textblob import TextBlob  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..._core.stopwords.load_package_stopwords import load_package_stopwords
+from ...internals.stopwords.load_package_stopwords import load_package_stopwords
 from ..fields.protected_fields import PROTECTED_FIELDS
 
 #

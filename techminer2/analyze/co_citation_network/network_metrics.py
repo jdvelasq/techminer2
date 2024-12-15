@@ -35,7 +35,7 @@ COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
 MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
-from ..._core.nx.nx_compute_metrics import nx_compute_metrics
+from ...internals.nx.nx_compute_metrics import nx_compute_metrics
 from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 

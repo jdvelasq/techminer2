@@ -73,7 +73,7 @@ component                   ...
 """
 import pandas as pd  # type: ignore
 
-from ...metrics import tfidf_frame
+from ..metrics import tfidf_frame
 
 
 def components_by_term_frame(

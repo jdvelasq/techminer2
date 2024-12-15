@@ -43,8 +43,8 @@ Concept Grid Plot
 #     :align: center
 
 """
-from ..._core.nx.nx_cluster_graph import nx_cluster_graph
-from ..._core.nx.nx_plot_concept_grid import nx_plot_concept_grid
+from ...internals.nx.nx_cluster_graph import nx_cluster_graph
+from ...internals.nx.nx_plot_concept_grid import nx_plot_concept_grid
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

@@ -58,7 +58,7 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
+from ..internals.read_filtered_database import read_filtered_database
 from ..prepare.thesaurus._core.load_inverted_thesaurus_as_dict import (
     load_inverted_thesaurus_as_dict,
 )

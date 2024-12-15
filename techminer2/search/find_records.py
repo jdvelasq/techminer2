@@ -73,10 +73,10 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
 """
-from .._core.read_filtered_database import read_filtered_database
-from ..internals.helpers.helper_format_report_for_records import (
-    helper_format_report_for_records,
+from ..internals.helpers.utils_format_report_for_records import (
+    _utils_format_report_for_records,
 )
+from ..internals.read_filtered_database import read_filtered_database
 
 
 def find_records(
@@ -122,7 +122,7 @@ def find_records(
 
     records = filter_records(field, search_for, case, flags, regex, records)
 
-    helper_format_report_for_records(
+    _utils_format_report_for_records(
         root_dir=root_dir,
         target_dir="",
         records=records,

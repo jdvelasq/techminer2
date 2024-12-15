@@ -41,11 +41,11 @@ Treemap
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..._core.nx.nx_assign_colors_to_nodes_by_group_attribute import (
+from ...internals.nx.nx_assign_colors_to_nodes_by_group_attribute import (
     nx_assign_colors_to_nodes_by_group_attribute,
 )
-from ..._core.nx.nx_cluster_graph import nx_cluster_graph
-from ..._core.nx.nx_plot_node_treemap import nx_plot_node_treemap
+from ...internals.nx.nx_cluster_graph import nx_cluster_graph
+from ...internals.nx.nx_plot_node_treemap import nx_plot_node_treemap
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

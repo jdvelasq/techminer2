@@ -48,7 +48,7 @@ Node Degree Plot
 
 
 """
-from ..._core.nx.nx_degree_plot import nx_degree_plot
+from ...internals.nx.nx_degree_plot import nx_degree_plot
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

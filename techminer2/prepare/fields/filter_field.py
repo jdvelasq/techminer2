@@ -37,7 +37,7 @@ import os.path
 import pandas as pd  # type: ignore
 
 from ..._dtypes import DTYPES
-from ...metrics import performance_metrics_frame
+from ...analyze.metrics import performance_metrics_frame
 from .protected_fields import PROTECTED_FIELDS
 
 

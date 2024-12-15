@@ -29,8 +29,8 @@ Summary Sheet (MIGRATED)
 """
 import pandas as pd  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
 from ..internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ..internals.read_filtered_database import read_filtered_database
 
 
 class SummarySheet(

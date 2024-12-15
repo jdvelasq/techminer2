@@ -42,9 +42,9 @@ from typing import Optional
 
 import plotly.express as px  # type: ignore
 
+from ...analyze.metrics.performance_metrics_frame import performance_metrics_frame
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
-from ...metrics.performance_metrics_frame import performance_metrics_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

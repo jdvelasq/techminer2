@@ -32,7 +32,7 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
 
 
 """
-from ....._core.nx.nx_compute_metrics import nx_compute_metrics
+from .....internals.nx.nx_compute_metrics import nx_compute_metrics
 from ._create_coupling_nx_graph import _create_coupling_nx_graph
 
 

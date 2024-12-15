@@ -50,31 +50,31 @@ Network Plot
 """
 import networkx as nx  # type: ignore
 
-from ..._core.nx.nx_assign_constant_color_to_nodes import (
+from ...internals.nx.nx_assign_constant_color_to_nodes import (
     nx_assign_constant_color_to_nodes,
 )
-from ..._core.nx.nx_assign_opacity_to_text_based_on_citations import (
-    nx_assign_opacity_to_text_based_on_citations,
+from ...internals.nx.nx_assign_opacity_to_text_by_citations import (
+    _nx_assign_opacity_to_text_by_citations,
 )
-from ..._core.nx.nx_assign_sizes_to_nodes_based_on_citations import (
-    nx_assign_sizes_to_nodes_based_on_citations,
+from ...internals.nx.nx_assign_sizes_to_nodes_by_citations import (
+    _nx_assign_sizes_to_nodes_by_citations,
 )
-from ..._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
+from ...internals.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
     nx_assign_text_positions_to_nodes_by_quadrants,
 )
-from ..._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_citations import (
-    nx_assign_textfont_sizes_to_nodes_based_on_citations,
+from ...internals.nx.nx_assign_textfont_sizes_to_nodes_by_citations import (
+    _nx_assign_textfont_sizes_to_nodes_by_citations,
 )
-from ..._core.nx.nx_assign_uniform_color_to_edges import (
+from ...internals.nx.nx_assign_uniform_color_to_edges import (
     nx_assign_uniform_color_to_edges,
 )
-from ..._core.nx.nx_assign_widths_to_edges_based_on_weight import (
-    nx_assign_widths_to_edges_based_on_weight,
+from ...internals.nx.nx_assign_widths_to_edges_by_weight import (
+    _nx_assign_widths_to_edges_by_weight,
 )
-from ..._core.nx.nx_compute_spring_layout_positions import (
+from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
-from ..._core.nx.nx_network_plot import nx_network_plot
+from ...internals.nx.nx_network_plot import nx_network_plot
 from .network_edges_frame import network_edges_frame
 
 
@@ -141,17 +141,15 @@ def network_plot(
     nx_graph = nx_compute_spring_layout_positions(
         nx_graph, nx_k, nx_iterations, nx_random_state
     )
-    nx_graph = nx_assign_sizes_to_nodes_based_on_citations(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_citations(
+    nx_graph = _nx_assign_sizes_to_nodes_by_citations(nx_graph, node_size_range)
+    nx_graph = _nx_assign_textfont_sizes_to_nodes_by_citations(
         nx_graph, textfont_size_range
     )
-    nx_graph = nx_assign_opacity_to_text_based_on_citations(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = _nx_assign_opacity_to_text_by_citations(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
-    nx_graph = nx_assign_widths_to_edges_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = _nx_assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
     nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
     nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
 

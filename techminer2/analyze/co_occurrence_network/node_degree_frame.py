@@ -39,7 +39,7 @@ Node Degree Frame
 
 
 """
-from ..._core.nx.nx_degree_frame import nx_degree_frame
+from ...internals.nx.nx_degree_frame import nx_degree_frame
 from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 

@@ -48,8 +48,8 @@ FINANCIAL_TECHNOLOGY 03:0461                2
 
 
 """
-from ...internals.helpers.helper_format_prompt_for_dataframes import (
-    helper_format_prompt_for_dataframes,
+from ...internals.helpers.utils_format_prompt_for_dataframes import (
+    _utils_format_prompt_for_dataframes,
 )
 from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 

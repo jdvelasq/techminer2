@@ -26,7 +26,7 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 """
 import pandas as pd  # type: ignore
 
-from ..._core.read_filtered_database import read_filtered_database
+from ...internals.read_filtered_database import read_filtered_database
 
 
 def rpys_frame(

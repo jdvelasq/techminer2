@@ -58,8 +58,8 @@ from dataclasses import dataclass
 
 import plotly.express as px  # type: ignore
 
-from ...internals.helpers.helper_format_prompt_for_dataframes import (
-    helper_format_prompt_for_dataframes,
+from ...internals.helpers.utils_format_prompt_for_dataframes import (
+    _utils_format_prompt_for_dataframes,
 )
 from ..co_occurrence_matrix.co_occurrence_matrix import co_occurrence_matrix
 from .term_associations_frame import term_associations_frame

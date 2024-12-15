@@ -35,7 +35,7 @@ Document Metrics
 
 """
 
-from ..._core.read_filtered_database import read_filtered_database
+from ...internals.read_filtered_database import read_filtered_database
 
 
 def document_metrics(

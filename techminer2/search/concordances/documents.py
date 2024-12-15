@@ -51,11 +51,11 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from ..._core.read_filtered_database import read_filtered_database
-from ...internals.helpers.helper_records_for_reporting import (
-    helper_records_for_reporting,
+from ...internals.helpers.utils_records_for_reporting import (
+    _utils_records_for_reporting,
 )
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.read_filtered_database import read_filtered_database
 from .._core.filter_records_by_concordance import _filter_records_by_concordance
 
 
@@ -116,7 +116,7 @@ def concordance_documents(
     records["abstract"] = records["abstract"].map(" . ".join)
     # records["abstract"] = records["abstract"] + records["raw_abstract"]
 
-    formated_records = helper_records_for_reporting(
+    formated_records = _utils_records_for_reporting(
         records=records,
     )
 

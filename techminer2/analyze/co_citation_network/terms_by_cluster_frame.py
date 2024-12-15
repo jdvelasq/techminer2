@@ -41,8 +41,10 @@ Terms by Cluster Frame
 
 
 """
-from ..._core.nx.nx_cluster_graph import nx_cluster_graph
-from ..._core.nx.nx_extract_communities_to_frame import nx_extract_communities_to_frame
+from ...internals.nx.nx_cluster_graph import nx_cluster_graph
+from ...internals.nx.nx_extract_communities_to_frame import (
+    nx_extract_communities_to_frame,
+)
 from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 

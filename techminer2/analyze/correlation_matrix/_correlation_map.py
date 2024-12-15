@@ -8,22 +8,22 @@
 
 import networkx as nx  # type: ignore
 
-from ..._core.nx.nx_assign_opacity_to_text_based_on_frequency import (
-    nx_assign_opacity_to_text_based_on_frequency,
+from ...internals.nx.nx_assign_opacity_to_text_by_frequency import (
+    nx_assign_opacity_to_text_by_frequency,
 )
-from ..._core.nx.nx_assign_sizes_to_nodes_based_on_occurrences import (
-    nx_assign_sizes_to_nodes_based_on_occurrences,
+from ...internals.nx.nx_assign_sizes_to_nodes_by_occurrences import (
+    _nx_assign_sizes_to_nodes_by_occurrences,
 )
-from ..._core.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
+from ...internals.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
     nx_assign_text_positions_to_nodes_by_quadrants,
 )
-from ..._core.nx.nx_assign_textfont_sizes_to_nodes_based_on_occurrences import (
-    nx_assign_textfont_sizes_to_nodes_based_on_occurrences,
+from ...internals.nx.nx_assign_textfont_sizes_to_nodes_by_occurrences import (
+    _nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
-from ..._core.nx.nx_compute_spring_layout_positions import (
+from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
-from ..._core.nx.nx_network_plot import nx_network_plot
+from ...internals.nx.nx_network_plot import nx_network_plot
 
 
 def correlation_map(
@@ -67,13 +67,11 @@ def correlation_map(
 
     #
     # Sets the layout
-    nx_graph = nx_assign_sizes_to_nodes_based_on_occurrences(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_based_on_occurrences(
+    nx_graph = _nx_assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
+    nx_graph = _nx_assign_textfont_sizes_to_nodes_by_occurrences(
         nx_graph, textfont_size_range
     )
-    nx_graph = nx_assign_opacity_to_text_based_on_frequency(
-        nx_graph, textfont_opacity_range
-    )
+    nx_graph = nx_assign_opacity_to_text_by_frequency(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes

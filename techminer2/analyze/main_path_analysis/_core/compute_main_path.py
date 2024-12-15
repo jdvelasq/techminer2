@@ -14,7 +14,7 @@ import copy
 
 import numpy as np
 
-from ...._core.read_filtered_database import read_filtered_database
+from ....internals.read_filtered_database import read_filtered_database
 
 
 def _compute_main_path(
