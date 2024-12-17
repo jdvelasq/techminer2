@@ -42,7 +42,7 @@ INFORMATION_TECHNOLOGY    7             2  ...    91.293118           0.769302
 """
 import numpy as np
 
-from ...internals.metrics.term_occurrences_by_year import term_occurrences_by_year
+from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 from ..metrics._compute_trend_metrics import compute_trend_metrics
 from ..metrics.general_metrics_frame import general_metrics_frame
 
@@ -69,7 +69,7 @@ def emergent_topics(
 ):
     """:meta private:"""
 
-    occurrences_by_year = term_occurrences_by_year(
+    occurrences_by_year = _mt_term_occurrences_by_year(
         field=field,
         cumulative=False,
         #
@@ -133,7 +133,7 @@ def emergent_topics(
     # of the growth rate of the dataset
     #
 
-    cum_occurrences_by_year = term_occurrences_by_year(
+    cum_occurrences_by_year = _mt_term_occurrences_by_year(
         field=field,
         cumulative=True,
         #

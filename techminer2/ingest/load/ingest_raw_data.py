@@ -32,13 +32,9 @@ import time
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ...internals.helpers.utils_abstracts_and_titles_to_lower_case import (
+from ...internals.utils.utils_abstracts_and_titles_to_lower_case import (
     _utils_abstracts_and_titles_to_lower_case,
 )
-from ...prepare.fields.merge_fields import _merge_fields
-
-#
-# Thesaurus
 from ...prepare.thesaurus.countries.apply_thesaurus import (
     apply_thesaurus as apply_countries_thesaurus,
 )
@@ -48,69 +44,106 @@ from ...prepare.thesaurus.descriptors.apply_thesaurus import (
 from ...prepare.thesaurus.organizations.apply_thesaurus import (
     apply_thesaurus as apply_organizations_thesaurus,
 )
+from ...prepare.transformations.replace_keywords import replace_keywords
+from ._create_abbreviations_thesaurus import _create_abbreviations_thesaurus
+from ._list_cleanup_countries import list_cleanup_countries
+from ._list_cleanup_organizations import list_cleanup_organizations
+from ._message import message
+from ._replace_descriptors import _replace_descriptors
+from ._report_imported_records_per_file import report_imported_records_per_file
+from .internals.database.database__compress_raw_files import (
+    database__compress_raw_files,
+)
+from .internals.database.database__create_project_structure import (
+    database__create_project_structure,
+)
+from .internals.database.database__drop_empty_columns import (
+    database__drop_empty_columns,
+)
+from .internals.database.database__load_raw_files import database__load_raw_files
+from .internals.database.database__rename_columns import database__rename_columns
+from .internals.preprocessing._create_local_citations_column_in_cited_by_database import (
+    create_local_citations_column_in_cited_by_database,
+)
+from .internals.preprocessing._create_local_citations_column_in_documents_database import (
+    create_local_citations_column_in_documents_database,
+)
+from .internals.preprocessing._create_local_citations_column_in_references_database import (
+    create_local_citations_column_in_references_database,
+)
+from .internals.preprocessing.preprocessing__abbr_source_title import (
+    preprocessing__abbr_source_title,
+)
+from .internals.preprocessing.preprocessing__abstract import preprocessing__abstract
+from .internals.preprocessing.preprocessing__author_keywords import (
+    preprocessing__author_keywords,
+)
+from .internals.preprocessing.preprocessing__author_names import (
+    preprocessing__author_names,
+)
+from .internals.preprocessing.preprocessing__authors import preprocessing__authors
+from .internals.preprocessing.preprocessing__authors_id import preprocessing__authors_id
+from .internals.preprocessing.preprocessing__document_title import (
+    preprocessing__document_title,
+)
+from .internals.preprocessing.preprocessing__document_type import (
+    preprocessing__document_type,
+)
+from .internals.preprocessing.preprocessing__doi import preprocessing__doi
+from .internals.preprocessing.preprocessing__eissn import preprocessing__eissn
+from .internals.preprocessing.preprocessing__global_citations import (
+    preprocessing__global_citations,
+)
+
+#
+#
+from .internals.preprocessing.preprocessing__global_references import (
+    preprocessing__global_references,
+)
+from .internals.preprocessing.preprocessing__index_keywords import (
+    preprocessing__index_keywords,
+)
+from .internals.preprocessing.preprocessing__local_references import (
+    preprocessing__local_references,
+)
+from .internals.preprocessing.preprocessing__num_authors import (
+    preprocessing__num_authors,
+)
+from .internals.preprocessing.preprocessing__num_global_references import (
+    preprocessing__num_global_references,
+)
+from .internals.preprocessing.preprocessing__raw_abstract_nlp_phrases import (
+    preprocessing__raw_abstract_nlp_phrases,
+)
+from .internals.preprocessing.preprocessing__raw_author_keywords import (
+    preprocessing__raw_author_keywords,
+)
+from .internals.preprocessing.preprocessing__raw_descriptors import (
+    preprocessing__raw_descriptors,
+)
+from .internals.preprocessing.preprocessing__raw_index_keywords import (
+    preprocessing__raw_index_keywords,
+)
+from .internals.preprocessing.preprocessing__raw_keywords import (
+    preprocessing__raw_keywords,
+)
+from .internals.preprocessing.preprocessing__raw_nlp_phrases import (
+    preprocessing__raw_nlp_phrases,
+)
+from .internals.preprocessing.preprocessing__raw_title_nlp_phrases import (
+    preprocessing__raw_title_nlp_phrases,
+)
+from .internals.preprocessing.preprocessing__record_id import preprocessing__record_id
+from .internals.preprocessing.preprocessing__record_no import preprocessing__record_no
+from .internals.preprocessing.preprocessing__source_title import (
+    preprocessing__source_title,
+)
+from .internals.preprocessing.proprocessing__references import preprocessing__references
 
 # -------------------------------------------------------------------------------------
 # Field basic operations
 # -------------------------------------------------------------------------------------
-from ...prepare.transform.count_terms_per_record import _count_terms_per_record
-from ...prepare.transform.extract_noun_phrases import _extract_noun_phrases
-from ...prepare.transform.replace_keywords import replace_keywords
-from ...prepare.transform.replace_noun_phrases import _replace_noun_phrases
 
-# -------------------------------------------------------------------------------------
-# Auxuliary functions
-# -------------------------------------------------------------------------------------
-from ._compress_csv_files_in_raw_data_subdirectories import (
-    compress_csv_files_in_raw_data_subdirectories,
-)
-from ._create_abbreviations_thesaurus import _create_abbreviations_thesaurus
-from ._create_art_no_column import create_art_no_column
-from ._create_article_column import create_article_column
-from ._create_database_files import create_database_files
-from ._create_local_citations_column_in_cited_by_database import (
-    create_local_citations_column_in_cited_by_database,
-)
-from ._create_local_citations_column_in_documents_database import (
-    create_local_citations_column_in_documents_database,
-)
-from ._create_local_citations_column_in_references_database import (
-    create_local_citations_column_in_references_database,
-)
-from ._create_working_subdirectories_and_files import (
-    create_working_subdirectories_and_files,
-)
-from ._disambiguate_author_names import disambiguate_author_names
-from ._drop_empty_columns_in_databases import drop_empty_columns_in_databases
-
-#
-#
-from ._homogenize_global_references import homogenize_global_references
-from ._homogenize_local_references import homogenize_local_references
-from ._list_cleanup_countries import list_cleanup_countries
-from ._list_cleanup_organizations import list_cleanup_organizations
-from ._message import message
-from ._rename_columns_in_database_files import rename_columns_in_database_files
-from ._repair_bad_separators_in_keywords import repair_bad_separators_in_keywords
-from ._replace_descriptors import _replace_descriptors
-from ._replace_journal_name_in_references import replace_journal_name_in_references
-from ._report_imported_records_per_file import report_imported_records_per_file
-
-# -------------------------------------------------------------------------------------
-# Importers
-# -------------------------------------------------------------------------------------
-from .field_importers.abbr_source_title_importer import run_abbr_source_title_importer
-from .field_importers.abstract_importer import run_abstract_importer
-from .field_importers.authors_and_index_keywords_importer import (
-    run_authors_and_index_keywords_importer,
-)
-from .field_importers.authors_id_importer import run_authors_id_importer
-from .field_importers.authors_importer import run_authors_importer
-from .field_importers.document_title_importer import run_document_title_importer
-from .field_importers.document_type_importer import run_document_type_importer
-from .field_importers.doi_importer import run_doi_importer
-from .field_importers.global_citations_importer import run_global_citations_importer
-from .field_importers.issb_isbn_eissn_importer import run_issb_isbn_eissn_importer
-from .field_importers.source_title_importer import run_source_title_importer
 
 # from ._adds_countries_and_regions_to_stopwords import _adds_countries_and_regions_to_stopwords
 
@@ -141,12 +174,11 @@ def ingest_raw_data(
     # PHASE 1: Preparing database files and folders
     # =================================================================================
     #
-    compress_csv_files_in_raw_data_subdirectories(root_dir)
-    create_working_subdirectories_and_files(root_dir)
-    create_database_files(root_dir)
-    rename_columns_in_database_files(root_dir)
-    repair_bad_separators_in_keywords(root_dir)
-    drop_empty_columns_in_databases(root_dir)
+    database__compress_raw_files(root_dir)
+    database__create_project_structure(root_dir)
+    database__load_raw_files(root_dir)
+    database__rename_columns(root_dir)
+    database__drop_empty_columns(root_dir)
 
     #
     #
@@ -154,33 +186,25 @@ def ingest_raw_data(
     # =================================================================================
     #
     #
-    run_authors_importer(root_dir)
-    run_document_type_importer(root_dir)
-    run_authors_id_importer(root_dir)
-    run_issb_isbn_eissn_importer(root_dir)
-    run_global_citations_importer(root_dir)
-    run_doi_importer(root_dir)
-    run_source_title_importer(root_dir)
-    run_abbr_source_title_importer(root_dir)
-    run_abstract_importer(root_dir)
-    run_document_title_importer(root_dir)
+    preprocessing__raw_author_keywords(root_dir)
+    preprocessing__raw_index_keywords(root_dir)
+    preprocessing__abbr_source_title(root_dir)
+    preprocessing__abstract(root_dir)
+    preprocessing__author_names(root_dir)
+    preprocessing__authors_id(root_dir)
+    preprocessing__authors(root_dir)
+    preprocessing__document_title(root_dir)
+    preprocessing__document_type(root_dir)
+    preprocessing__doi(root_dir)
+    preprocessing__eissn(root_dir)
+    preprocessing__global_citations(root_dir)
+    preprocessing__source_title(root_dir)
+    preprocessing__num_authors(root_dir)
+    preprocessing__num_global_references(root_dir)
 
-    _count_terms_per_record(
-        source="authors",
-        dest="num_authors",
-        root_dir=root_dir,
-    )
-
-    _count_terms_per_record(
-        source="global_references",
-        dest="num_global_references",
-        root_dir=root_dir,
-    )
-
-    disambiguate_author_names(root_dir)
-    replace_journal_name_in_references(root_dir)
-    create_article_column(root_dir)
-    create_art_no_column(root_dir)
+    preprocessing__references(root_dir)
+    preprocessing__record_id(root_dir)
+    preprocessing__record_no(root_dir)
 
     #
     #
@@ -217,13 +241,9 @@ def ingest_raw_data(
     # To upper() and replace spaces with underscores
     # Merge author/index keywords into a single column
     #
-    run_authors_and_index_keywords_importer(root_dir)
-
-    _merge_fields(
-        sources=["raw_author_keywords", "raw_index_keywords"],
-        dest="raw_keywords",
-        root_dir=root_dir,
-    )
+    preprocessing__index_keywords(root_dir)
+    preprocessing__author_keywords(root_dir)
+    preprocessing__raw_keywords(root_dir)
 
     #
     # Prepare title:
@@ -252,22 +272,14 @@ def ingest_raw_data(
         root_dir=root_dir,
     )
 
-    _extract_noun_phrases(
-        source="abstract",
-        dest="raw_abstract_nlp_phrases",
-        root_dir=root_dir,
-    )
+    preprocessing__raw_abstract_nlp_phrases(root_dir)
+    preprocessing__raw_title_nlp_phrases(root_dir)
 
     _utils_abstracts_and_titles_to_lower_case(root_dir=root_dir)
 
     #
     # Step 2: Create a candidate list of title noun phrases
     #
-    _extract_noun_phrases(
-        source="document_title",
-        dest="raw_title_nlp_phrases",
-        root_dir=root_dir,
-    )
 
     # _replace_noun_phrases(
     #     column_to_process="document_title",
@@ -278,17 +290,8 @@ def ingest_raw_data(
     #
     # Step 3: Merge fields
     #
-    _merge_fields(
-        sources=["raw_title_nlp_phrases", "raw_abstract_nlp_phrases"],
-        dest="raw_nlp_phrases",
-        root_dir=root_dir,
-    )
-
-    _merge_fields(
-        sources=["raw_nlp_phrases", "raw_keywords"],
-        dest="raw_descriptors",
-        root_dir=root_dir,
-    )
+    preprocessing__raw_nlp_phrases(root_dir)
+    preprocessing__raw_descriptors(root_dir)
 
     #
     # Highlight author and index keywords
@@ -305,8 +308,8 @@ def ingest_raw_data(
     #
     #
 
-    homogenize_local_references(root_dir)
-    homogenize_global_references(root_dir)
+    preprocessing__local_references(root_dir)
+    preprocessing__global_references(root_dir)
 
     #
     create_local_citations_column_in_documents_database(root_dir)
@@ -360,7 +363,6 @@ def ingest_raw_data(
     # Removed: _adds_countries_and_regions_to_stopwords(root_dir)
 
     report_imported_records_per_file(root_dir)
-    # Removed: create_imported_records_report(root_dir)
 
     message("Process finished!!!")
 

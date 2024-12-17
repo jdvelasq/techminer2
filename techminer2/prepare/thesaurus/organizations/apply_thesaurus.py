@@ -27,7 +27,9 @@ import os.path
 
 import pandas as pd  # type: ignore
 
-from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
 
 
 def apply_thesaurus(
@@ -39,7 +41,7 @@ def apply_thesaurus(
 
     # Read the thesaurus
     thesaurus_file = os.path.join(root_dir, "thesauri/organizations.the.txt")
-    thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
+    thesaurus = thesaurus__read_reversed_as_dict(thesaurus_file)
 
     # Apply thesaurus
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))

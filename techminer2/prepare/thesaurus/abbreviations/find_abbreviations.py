@@ -24,8 +24,8 @@ import re
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
-from .._core.load_thesaurus_as_frame import load_thesaurus_as_frame
+from ..internals.thesaurus__read_as_dataframe import thesaurus__read_as_dataframe
+from ..internals.thesaurus__read_as_dict import thesaurus__read_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -40,7 +40,7 @@ def find_abbreviations(
     #
     # Load thesaurus as a data frame
     file_path = os.path.join(root_dir, THESAURUS_FILE)
-    frame = load_thesaurus_as_frame(file_path)
+    frame = thesaurus__read_as_dataframe(file_path)
 
     #
     # Find abbreviations
@@ -157,7 +157,7 @@ def find_abbreviations(
     #
     # Reorder thesaurus
     keys_with_abbr = frame.key.drop_duplicates().to_list()
-    thesaurus = load_thesaurus_as_dict(file_path)
+    thesaurus = thesaurus__read_as_dict(file_path)
 
     with open(file_path, "w", encoding="utf-8") as file:
         for key in keys_with_abbr:

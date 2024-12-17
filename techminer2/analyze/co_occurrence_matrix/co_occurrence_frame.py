@@ -47,21 +47,21 @@ Co-occurrence Frame
 
 
 """
-from ...internals.helpers.utils_compute_occurrences_and_citations import (
-    _utils_compute_occurrences_and_citations,
+from ...internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
 )
-from ...internals.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
+from ...internals.mt.mt_extract_top_n_terms_by_metric import (
+    _mt_extract_top_n_terms_by_metric,
 )
-from ...internals.metrics.extract_top_n_terms_by_metric import (
-    extract_top_n_terms_by_metric,
-)
-from ...internals.metrics.sort_records_by_metric import sort_records_by_metric
+from ...internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
 from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from ...internals.read_filtered_database import read_filtered_database
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
+from ...internals.utils.utils_compute_occurrences_and_citations import (
+    _utils_compute_occurrences_and_citations,
+)
 from .format_params import FormatParams, FormatParamsMixin
 
 
@@ -95,14 +95,14 @@ class CoOccurrenceFrame(
             custom_terms,
         ):
             if custom_terms is None:
-                indicators = calculate_global_performance_metrics(
+                indicators = _mt_calculate_global_performance_metrics(
                     field=field,
                     **self.database_params.__dict__,
                 )
 
-                indicators = sort_records_by_metric(indicators, "OCC")
+                indicators = _mt_sort_records_by_metric(indicators, "OCC")
 
-                custom_terms = extract_top_n_terms_by_metric(
+                custom_terms = _mt_extract_top_n_terms_by_metric(
                     indicators=indicators,
                     metric="OCC",
                     top_n=top_n,

@@ -59,8 +59,8 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from ..internals.read_filtered_database import read_filtered_database
-from ..prepare.thesaurus._core.load_inverted_thesaurus_as_dict import (
-    load_inverted_thesaurus_as_dict,
+from ..prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
 )
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
@@ -140,7 +140,7 @@ def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_inverted_thesaurus_as_dict(th_file)
+    thesaurus = thesaurus__read_reversed_as_dict(th_file)
     return thesaurus
 
 

@@ -40,11 +40,13 @@ from dataclasses import dataclass
 
 from textblob import TextBlob  # type: ignore
 
-from ..internals.helpers.utils_format_prompt_for_paragraphs import (
+from ..internals.read_filtered_database import read_filtered_database
+from ..internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from ..internals.read_filtered_database import read_filtered_database
-from ..prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ..prepare.thesaurus.internals.thesaurus__read_as_dict import (
+    thesaurus__read_as_dict,
+)
 
 
 def lemma_associations(
@@ -98,7 +100,7 @@ def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    thesaurus = load_thesaurus_as_dict(thesaurus_file)
+    thesaurus = thesaurus__read_as_dict(thesaurus_file)
     return list(thesaurus.values())
 
 

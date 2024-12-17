@@ -78,14 +78,14 @@ FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                   
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
 
-from ...internals.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
+from ...internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
 )
-from ...internals.metrics.filter_records_by_metric import filter_records_by_metric
-from ...internals.metrics.select_record_columns_by_metric import (
-    select_record_columns_by_metric,
+from ...internals.mt.mt_filter_records_by_metric import _mt_filter_records_by_metric
+from ...internals.mt.mt_select_record_columns_by_metric import (
+    _mt_select_record_columns_by_metric,
 )
-from ...internals.metrics.term_occurrences_by_year import term_occurrences_by_year
+from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 
 
 def growth_metrics_frame(
@@ -109,7 +109,7 @@ def growth_metrics_frame(
 
     #
     # Compute global performance metrics
-    global_indicators = calculate_global_performance_metrics(
+    global_indicators = _mt_calculate_global_performance_metrics(
         field=field,
         #
         # DATABASE PARAMS:
@@ -121,7 +121,7 @@ def growth_metrics_frame(
     )
     #
     # Computes item occurrences by year
-    items_by_year = term_occurrences_by_year(
+    items_by_year = _mt_term_occurrences_by_year(
         #
         # FUNCTION PARAMS:
         field=field,
@@ -194,7 +194,7 @@ def growth_metrics_frame(
         )
     )
 
-    filtered_indicators = filter_records_by_metric(
+    filtered_indicators = _mt_filter_records_by_metric(
         records=global_indicators,
         metric="OCC",
         top_n=top_n,
@@ -202,7 +202,9 @@ def growth_metrics_frame(
         gc_range=gc_range,
         custom_items=custom_terms,
     )
-    selected_indicators = select_record_columns_by_metric(filtered_indicators, "OCC")
+    selected_indicators = _mt_select_record_columns_by_metric(
+        filtered_indicators, "OCC"
+    )
 
     #
     # Save results to disk as csv tab-delimited file for papers

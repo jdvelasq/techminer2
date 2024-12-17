@@ -19,7 +19,7 @@ Find Editorials
 --INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
 
 """
-from .find_string import find_string
+from .sort_thesaurus_by_match import sort_thesaurus_by_match
 
 EDITORIALS = [
     "CONFERENCE",
@@ -62,7 +62,7 @@ def find_editorials(
 ):
     """:meta private:"""
 
-    find_string(
+    sort_thesaurus_by_match(
         #
         # SEARCH PARAMS:
         contains=EDITORIALS,

@@ -23,7 +23,9 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
 
 
 def apply_thesaurus(root_dir):
@@ -35,7 +37,7 @@ def apply_thesaurus(root_dir):
     #
     # Loads the thesaurus
     file_path = pathlib.Path(root_dir) / "global_references.txt"
-    th = load_inverted_thesaurus_as_dict(file_path=file_path)
+    th = thesaurus__read_reversed_as_dict(file_path=file_path)
 
     #
     # Loadas the main database

@@ -38,8 +38,8 @@ Australia        5               783  ...                     4      0.80
 [5 rows x 6 columns]
     
 """
-from ...internals.metrics.extract_top_n_terms_by_metric import (
-    extract_top_n_terms_by_metric,
+from ...internals.mt.mt_extract_top_n_terms_by_metric import (
+    _mt_extract_top_n_terms_by_metric,
 )
 from ...internals.read_filtered_database import read_filtered_database
 
@@ -156,7 +156,7 @@ def collaboration_metrics_frame(
         #
         #  Filter the metrics
         if custom_terms is None:
-            custom_terms = extract_top_n_terms_by_metric(
+            custom_terms = _mt_extract_top_n_terms_by_metric(
                 indicators=metrics,
                 metric="OCC",
                 top_n=top_n,

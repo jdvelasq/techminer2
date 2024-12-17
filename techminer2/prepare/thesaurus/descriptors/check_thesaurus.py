@@ -25,7 +25,9 @@ import os.path
 
 import pandas as pd  # type: ignore
 
-from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -43,7 +45,7 @@ def check_thesaurus(
     #
     # Loads the terms to check
     thesaurus_file = os.path.join(root_dir, THESAURUS_FILE)
-    thesaurus = load_inverted_thesaurus_as_dict(thesaurus_file)
+    thesaurus = thesaurus__read_reversed_as_dict(thesaurus_file)
     terms = list(thesaurus.keys())
 
     #

@@ -75,16 +75,16 @@ CASE_STUDY 02:0340               0     0     1     1     2
 
 
 """
-from ...internals.helpers.utils_append_occurrences_and_citations_to_axis import (
+from ...internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
+)
+from ...internals.mt.mt_extract_top_n_terms_by_metric import (
+    _mt_extract_top_n_terms_by_metric,
+)
+from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
+from ...internals.utils.utils_append_occurrences_and_citations_to_axis import (
     _utils_append_occurrences_and_citations_to_axis,
 )
-from ...internals.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
-from ...internals.metrics.extract_top_n_terms_by_metric import (
-    extract_top_n_terms_by_metric,
-)
-from ...internals.metrics.term_occurrences_by_year import term_occurrences_by_year
 
 
 def terms_by_year_frame(
@@ -107,7 +107,7 @@ def terms_by_year_frame(
 ):
     """:meta private:"""
 
-    data_frame = term_occurrences_by_year(
+    data_frame = _mt_term_occurrences_by_year(
         field=field,
         cumulative=cumulative,
         #
@@ -120,7 +120,7 @@ def terms_by_year_frame(
     )
 
     if custom_terms is None:
-        indicators = calculate_global_performance_metrics(
+        indicators = _mt_calculate_global_performance_metrics(
             field=field,
             #
             # DATABASE PARAMS
@@ -131,7 +131,7 @@ def terms_by_year_frame(
             **filters,
         )
 
-        custom_terms = extract_top_n_terms_by_metric(
+        custom_terms = _mt_extract_top_n_terms_by_metric(
             indicators,
             metric=metric,
             top_n=top_n,

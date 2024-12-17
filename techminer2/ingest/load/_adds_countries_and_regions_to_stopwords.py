@@ -13,7 +13,9 @@ import os
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
-from ...prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
+    thesaurus__read_as_dict,
+)
 
 
 def _adds_countries_and_regions_to_stopwords(
@@ -30,7 +32,7 @@ def _adds_countries_and_regions_to_stopwords(
 
         candidates = []
         for file in files:
-            thesaurus = load_thesaurus_as_dict(
+            thesaurus = thesaurus__read_as_dict(
                 pkg_resources.resource_filename("techminer2", file)
             )
             for key, values in thesaurus.items():

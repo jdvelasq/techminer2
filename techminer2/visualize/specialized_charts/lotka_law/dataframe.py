@@ -40,8 +40,8 @@ def dataframe(
 ):
     """:meta private:"""
 
-    from ....internals.metrics.calculate_global_performance_metrics import (
-        calculate_global_performance_metrics,
+    from ....internals.mt.mt_calculate_global_performance_metrics import (
+        _mt_calculate_global_performance_metrics,
     )
 
     #
@@ -56,7 +56,7 @@ def dataframe(
     # 4                  6            1
     # 5                  7            1
     #
-    indicators = calculate_global_performance_metrics(
+    indicators = _mt_calculate_global_performance_metrics(
         field="authors",
         root_dir=root_dir,
         database=database,

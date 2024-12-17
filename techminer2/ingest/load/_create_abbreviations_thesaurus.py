@@ -12,7 +12,9 @@ import os
 
 import pandas as pd  # type: ignore
 
-from ...prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
+from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
+    thesaurus__read_as_dataframe,
+)
 
 predefined_abbreviations_mapping = {
     "AAAS": "ANALYTICS_AS_A_SERVICE",
@@ -262,7 +264,7 @@ def _create_abbreviations_thesaurus(root_dir):
 
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
 
-    raw_frame = load_thesaurus_as_frame(thesaurus_file)
+    raw_frame = thesaurus__read_as_dataframe(thesaurus_file)
     mod_frame = _extracts_abbreviations_from_definitions(raw_frame)
     mod_frame = _remove_bad_abbreviations(mod_frame)
     mod_frame = _add_knowns_abbreviations(mod_frame, raw_frame)

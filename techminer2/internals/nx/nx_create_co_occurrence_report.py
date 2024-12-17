@@ -21,11 +21,13 @@ from collections import defaultdict
 import pandas as pd  # type: ignore
 
 # from ...search.concordances import concordances_from_records
-from ...prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
-from ..helpers.utils_format_prompt_for_records import _utils_format_prompt_for_records
-from ..helpers.utils_format_report_for_records import _utils_format_report_for_records
-from ..helpers.utils_make_report_dir import _utils_make_report_dir
+from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
+    thesaurus__read_as_dict,
+)
 from ..read_filtered_database import read_filtered_database
+from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
+from ..utils.utils_format_report_for_records import _utils_format_report_for_records
+from ..utils.utils_make_report_dir import _utils_make_report_dir
 from .nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
 
 TEXTWRAP_WIDTH = 73
@@ -260,7 +262,7 @@ def __generate_terms_relationships_prompt(
     """ChatGPT prompt."""
 
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    thesaurus = load_thesaurus_as_dict(thesaurus_file)
+    thesaurus = thesaurus__read_as_dict(thesaurus_file)
 
     for cluster in sorted(communities.keys()):
         # -------------------------------------------------------------------------------------

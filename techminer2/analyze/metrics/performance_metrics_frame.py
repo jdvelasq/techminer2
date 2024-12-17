@@ -37,12 +37,12 @@ FINANCIAL_TECHNOLOGY         5        15        37  ...        3        3     1.
 
 
 """
-from ...internals.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
+from ...internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
 )
-from ...internals.metrics.filter_records_by_metric import filter_records_by_metric
-from ...internals.metrics.select_record_columns_by_metric import (
-    select_record_columns_by_metric,
+from ...internals.mt.mt_filter_records_by_metric import _mt_filter_records_by_metric
+from ...internals.mt.mt_select_record_columns_by_metric import (
+    _mt_select_record_columns_by_metric,
 )
 
 
@@ -67,7 +67,7 @@ def performance_metrics_frame(
 ):
     """:meta private:"""
 
-    records = calculate_global_performance_metrics(
+    records = _mt_calculate_global_performance_metrics(
         #
         # ITEMS PARAMS:
         field=field,
@@ -80,7 +80,7 @@ def performance_metrics_frame(
         **filters,
     )
 
-    filtered_records = filter_records_by_metric(
+    filtered_records = _mt_filter_records_by_metric(
         records=records,
         metric=metric,
         top_n=top_n,
@@ -89,7 +89,7 @@ def performance_metrics_frame(
         custom_items=custom_terms,
     )
 
-    selected_records = select_record_columns_by_metric(
+    selected_records = _mt_select_record_columns_by_metric(
         filtered_records,
         metric,
     )

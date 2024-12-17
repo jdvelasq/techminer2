@@ -45,7 +45,7 @@ Zavolokina L. 2:0181                0.00  ...                   1.0
 
 
 """
-from ...internals.helpers.utils_format_prompt_for_dataframes import (
+from ...internals.utils.utils_format_prompt_for_dataframes import (
     _utils_format_prompt_for_dataframes,
 )
 from ..metrics.tfidf_frame import tfidf_frame

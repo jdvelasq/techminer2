@@ -55,16 +55,16 @@ from typing import Literal
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from ...internals.helpers.utils_append_occurrences_and_citations_to_axis import (
-    _utils_append_occurrences_and_citations_to_axis,
+from ...internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
 )
-from ...internals.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
-)
-from ...internals.metrics.extract_top_n_terms_by_metric import (
-    extract_top_n_terms_by_metric,
+from ...internals.mt.mt_extract_top_n_terms_by_metric import (
+    _mt_extract_top_n_terms_by_metric,
 )
 from ...internals.read_filtered_database import read_filtered_database
+from ...internals.utils.utils_append_occurrences_and_citations_to_axis import (
+    _utils_append_occurrences_and_citations_to_axis,
+)
 
 
 def tfidf_frame(
@@ -97,7 +97,7 @@ def tfidf_frame(
 ):
     """:meta private:"""
 
-    indicators = calculate_global_performance_metrics(
+    indicators = _mt_calculate_global_performance_metrics(
         field=field,
         root_dir=root_dir,
         database=database,
@@ -108,7 +108,7 @@ def tfidf_frame(
     )
 
     if custom_terms is None:
-        custom_items = extract_top_n_terms_by_metric(
+        custom_items = _mt_extract_top_n_terms_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=top_n,

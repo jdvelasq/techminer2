@@ -22,7 +22,9 @@ from os.path import dirname
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ...prepare.thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_frame
+from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
+    thesaurus__read_as_dataframe,
+)
 
 
 def list_cleanup_words(
@@ -564,7 +566,7 @@ def load_existent_thesaurus(root_dir):
     if not file_path.exists():
         return None
 
-    existent_thesaurus = load_thesaurus_as_frame(file_path)
+    existent_thesaurus = thesaurus__read_as_dataframe(file_path)
     existent_thesaurus = existent_thesaurus.rename(
         columns={"key": "key_phrase", "value": "value_phrase"}
     )

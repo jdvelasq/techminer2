@@ -8,7 +8,7 @@
 
 import plotly.graph_objects as go
 
-from ....internals.helpers.utils_compute_textposition_from_x_and_y import (
+from ....internals.utils.utils_compute_textposition_from_x_and_y import (
     _utils_compute_textposition_from_x_and_y,
 )
 

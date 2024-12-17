@@ -61,14 +61,14 @@ ARTIFICIAL_INTELLIGENCE    2     2019      2019  ...   0    0.15      1
 """
 import numpy as np
 
-from ....internals.metrics.calculate_global_performance_metrics import (
-    calculate_global_performance_metrics,
+from ....internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
 )
-from ....internals.metrics.extract_top_n_terms_by_metric import (
-    extract_top_n_terms_by_metric,
+from ....internals.mt.mt_extract_top_n_terms_by_metric import (
+    _mt_extract_top_n_terms_by_metric,
 )
-from ....internals.metrics.sort_records_by_metric import sort_records_by_metric
-from ....internals.metrics.term_occurrences_by_year import term_occurrences_by_year
+from ....internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
+from ....internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 
 
 def dataframe(
@@ -93,7 +93,7 @@ def dataframe(
 
     #
     # Compute occurrences for all words
-    words_by_year = term_occurrences_by_year(
+    words_by_year = _mt_term_occurrences_by_year(
         #
         # FUNCTION PARAMS:
         field=field,
@@ -110,7 +110,7 @@ def dataframe(
     #
     # Apply filters
     if custom_terms is None:
-        indicators = calculate_global_performance_metrics(
+        indicators = _mt_calculate_global_performance_metrics(
             field=field,
             #
             # DATABASE PARAMS:
@@ -121,9 +121,9 @@ def dataframe(
             **filters,
         )
 
-        indicators = sort_records_by_metric(indicators, metric="OCC")
+        indicators = _mt_sort_records_by_metric(indicators, metric="OCC")
 
-        custom_terms = extract_top_n_terms_by_metric(
+        custom_terms = _mt_extract_top_n_terms_by_metric(
             indicators=indicators,
             metric="OCC",
             top_n=None,
@@ -161,7 +161,7 @@ def dataframe(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = calculate_global_performance_metrics(
+    global_citations = _mt_calculate_global_performance_metrics(
         field, root_dir=root_dir
     ).global_citations
 

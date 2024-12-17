@@ -24,8 +24,10 @@ import os
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
-from .._core.load_thesaurus_as_frame import load_thesaurus_as_frame
+from ..internals.thesaurus__read_as_dataframe import thesaurus__read_as_dataframe
+from ..internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
 
 USER_THESAURUS_FILE = "thesauri/descriptors.the.txt"
 RAW_THESAURUS_FILE = "thesauri/_descriptors_.the.txt"
@@ -46,10 +48,10 @@ def show_differences(
     """:meta private:"""
 
     user_th_file = os.path.join(root_dir, USER_THESAURUS_FILE)
-    user_data_frame = load_thesaurus_as_frame(user_th_file)
+    user_data_frame = thesaurus__read_as_dataframe(user_th_file)
 
     raw_th_file = os.path.join(root_dir, RAW_THESAURUS_FILE)
-    raw_th = load_inverted_thesaurus_as_dict(raw_th_file)
+    raw_th = thesaurus__read_reversed_as_dict(raw_th_file)
 
     user_data_frame["same"] = True
 
