@@ -45,13 +45,12 @@ def extract_my_keywords(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
+
     if dest in PROTECTED_FIELDS:
         raise ValueError(f"Field `{dest}` is protected")
 
-    _extract_my_keywords(
+    transformations__extract_my_keywords(
         source=source,
         dest=dest,
         file_name=file_name,
@@ -59,41 +58,3 @@ def extract_my_keywords(
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
-
-
-def _extract_my_keywords(
-    source,
-    dest,
-    file_name,
-    #
-    # DATABASE PARAMS:
-    root_dir,
-):
-    #
-    # Reads my keywords from file
-    file_path = os.path.join(root_dir, "my_keywords", file_name)
-    with open(file_path, "r", encoding="utf-8") as file:
-        my_keywords = [line.strip() for line in file.readlines()]
-        my_keywords = [keyword for keyword in my_keywords if keyword != ""]
-
-    #
-    # Computes the intersection per database
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        #
-        # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-
-        #
-        #
-        data[dest] = data[source].copy()
-        data[dest] = (
-            data[dest]
-            .str.split("; ")
-            .map(lambda x: [z for z in x if z in my_keywords], na_action="ignore")
-            .map(set, na_action="ignore")
-            .map(sorted, na_action="ignore")
-            .str.join("; ")
-        )
-
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

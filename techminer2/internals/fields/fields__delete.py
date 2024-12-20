@@ -6,8 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import glob
-import os.path
+import pathlib
 
 import pandas as pd  # type: ignore
 
@@ -20,8 +19,22 @@ def fields__delete(
     # DATABASE PARAMS:
     root_dir,
 ):
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        data = data.drop(field, axis=1)
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    """:meta private:"""
+
+    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+    )
+
+    dataframe = dataframe.drop(field, axis=1)
+
+    dataframe.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )

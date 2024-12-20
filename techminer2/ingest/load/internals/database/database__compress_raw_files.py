@@ -1,18 +1,16 @@
+# flake8: noqa
 """Compress all CSV files in the root_dir/raw_data/ subdirectories."""
 
 import os
 
 import pandas as pd  # type: ignore
 
-from ..._get_subdirectories import get_subdirectories
-from ..._message import message
+from .....internals.get_subdirectories import get_subdirectories
+from ..message import message
 
 
 def database__compress_raw_files(root_dir):
-    """Converts the original data files downloaded from Scopus to *.csv.zip files.
-
-    All the functions of the package operate with *.csv.zip files.
-    """
+    """:meta private:"""
 
     message("Compressing raw data files")
     raw_dir = os.path.join(root_dir, "raw-data")

@@ -8,150 +8,179 @@
 # pylint: disable=import-outside-toplevel
 """
 
-# >>> from techminer2.ingest._homogenize_global_references import homogenize_global_references
-# >>> homogenize_global_references(
+# >>> from techminer2.ingest._homogenize_local_references import homogenize_local_references
+# >>> homogenize_local_references(  # doctest: +SKIP
 # ...     root_dir="example/", 
 # ... )
-# -- 001 -- Homogenizing global references
-#      ---> 1093 global references homogenized
-# --INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
+# -- 001 -- Homogenizing local references
+#      ---> 21 local references homogenized
 
 """
-import os
-import os.path
+
 import pathlib
+import re
 
 import pandas as pd  # type: ignore
+from tqdm import tqdm  # type: ignore
 
-from .....prepare.thesaurus.references.apply_thesaurus import apply_thesaurus
-from ..._message import message
+from .....prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
+from ..message import message
 
 
 def preprocessing__global_references(root_dir):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     message("Homogenizing global references")
 
-    result = __homogeneize_references(root_dir=root_dir)
+    documents = _create_documents_dataframe(root_dir)
+    references = _create_references_dataframe(root_dir)
+    thesaurus = _create_thesaurus(documents, references)
+    _save_thesaurus(root_dir, thesaurus)
+    _apply_thesaurus(root_dir)
 
-    if result:
-        apply_thesaurus(root_dir=root_dir)
 
-
-def __homogeneize_references(root_dir):
-    #
-    # Crates the thesaurus file
-    #
-
-    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
-    refs_file = os.path.join(root_dir, "databases/_references.csv.zip")
-
-    if not os.path.exists(refs_file):
-        return False
-
-    #
-    # Loads raw references from the main database
-    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
-    raw_references = data["raw_global_references"].dropna()
-    raw_references = (
-        raw_references.str.split(";").explode().str.strip().drop_duplicates()
+def _clean_text(text):
+    text = (
+        text.str.lower()
+        .str.replace(".", "", regex=False)
+        .str.replace(",", "", regex=False)
+        .str.replace(":", "", regex=False)
+        .str.replace("-", " ", regex=False)
+        .str.replace("_", " ", regex=False)
+        .str.replace("'", "", regex=False)
+        .str.replace("(", "", regex=False)
+        .str.replace(")", "", regex=False)
+        .str.replace("  ", " ", regex=False)
     )
-    raw_references = ";".join(raw_references)
+    return text
 
-    #
-    # Loads refernece info from the references database
-    references = pd.read_csv(refs_file, encoding="utf-8", compression="zip")
-    references = references[["article", "document_title", "authors", "year"]]
-    references["first_author"] = (
-        references["authors"].str.split(" ").map(lambda x: x[0].lower())
+
+def _create_documents_dataframe(root_dir):
+
+    # loads the dataframe
+    dataframe = pd.read_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        encoding="utf-8",
+        compression="zip",
     )
-    references["document_title"] = references["document_title"].str.lower()
-    references = references.dropna()
+    dataframe = dataframe[dataframe.global_citations > 0]
+    dataframe = dataframe[["record_id", "document_title", "authors", "year"]]
+    dataframe = dataframe.dropna()
 
-    references["raw"] = raw_references
-
-    #
-    # Prepare the reference info for the search
-    def process(x):
-        x = (
-            x.str.lower()
-            .str.replace(".", "")
-            .str.replace(",", "")
-            .str.replace(":", "")
-            .str.replace("-", " ")
-            .str.replace("_", " ")
-            .str.replace("'", "")
-            .str.replace("  ", " ")
-        )
-        return x
-
-    references["document_title"] = process(references["document_title"])
-    references["authors"] = process(references["authors"])
-    references["year"] = references["year"].astype(str)
-
-    #
-    # Cross-product
-    references["raw"] = references["raw"].str.split(";")
-    #
-    references["raw"] = references.apply(
-        lambda row: [t for t in row.raw if row.first_author in t.lower()], axis=1
-    )
-    references["raw"] = references.apply(
-        lambda row: [t for t in row.raw if row.year in t.lower()], axis=1
-    )
-    references["raw"] = references["raw"].map(lambda x: pd.NA if x == [] else x)
-    references = references.dropna()
-    #
-    references = references.explode("raw")
-    references["raw"] = references["raw"].str.strip()
-    references["text"] = references["raw"]
-    references["text"] = process(references["text"])
-
-    #
-    # Reference matching
-    selected_references = references.loc[
-        references.apply(
-            lambda row: row.year in row.text
-            and row.first_author in row.text
-            and row.document_title[:50] in row.text,
-            axis=1,
-        ),
-        :,
-    ]
-
-    #
-    #
-    grouped_references = selected_references.groupby("article", as_index=False).agg(
-        list
+    # extracts the first author surname
+    dataframe["first_author"] = (
+        dataframe["authors"].astype(str).str.split(" ").map(lambda x: x[0].lower())
     )
 
-    file_path = pathlib.Path(root_dir) / "global_references.txt"
+    # formats the document title field
+    dataframe["document_title"] = dataframe["document_title"].astype(str).str.lower()
+    dataframe["document_title"] = _clean_text(dataframe["document_title"])
+
+    # formats the authors field
+    dataframe["authors"] = _clean_text(dataframe["authors"])
+
+    # formats the year field
+    dataframe["year"] = dataframe["year"].astype(str)
+
+    # sorts the dataframe
+    dataframe = dataframe.sort_values(by=["record_id"])
+
+    return dataframe.copy()
+
+
+def _create_references_dataframe(root_dir):
+
+    # loads the dataframe
+    dataframe = pd.read_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        encoding="utf-8",
+        compression="zip",
+    )
+    dataframe = dataframe[["raw_global_references"]].dropna()
+    dataframe = dataframe.rename({"raw_global_references": "text"}, axis=1)
+
+    dataframe["text"] = dataframe["text"].str.split(";")
+    dataframe = dataframe.explode("text")
+    dataframe["text"] = dataframe["text"].str.strip()
+    dataframe = dataframe.drop_duplicates()
+    dataframe = dataframe.reset_index(drop=True)
+
+    dataframe["key"] = _clean_text(dataframe["text"])
+
+    return dataframe
+
+
+def _create_thesaurus(main_documents, references):
+
+    thesaurus = {}
+    for _, row in tqdm(main_documents.iterrows(), total=main_documents.shape[0]):
+
+        refs = references.copy()
+
+        # filters by first author
+        refs = refs.loc[refs.key.str.lower().str.contains(row.first_author.lower()), :]
+
+        # filters by year
+        refs = refs.loc[refs.key.str.lower().str.contains(row.year), :]
+
+        # filters by document title
+        refs = refs.loc[
+            refs.key.str.lower().str.contains(
+                re.escape(row.document_title[:50].lower())
+            ),
+            :,
+        ]
+
+        if len(refs) > 0:
+            thesaurus[row.record_id] = sorted(refs.text.tolist())
+            references = references.drop(refs.index)
+
+    return thesaurus
+
+
+def _save_thesaurus(root_dir, thesaurus):
+
+    file_path = pathlib.Path(root_dir) / "thesauri/global_references.the.txt"
     with open(file_path, "w", encoding="utf-8") as file:
-        for _, row in grouped_references.iterrows():
-            if row.raw[0] != "":
-                file.write(row.article + "\n")
-                for ref in sorted(row.raw):
-                    file.write("    " + ref + "\n")
+        for key in sorted(thesaurus.keys()):
+            values = thesaurus[key]
+            file.write(key + "\n")
+            for value in sorted(values):
+                file.write("    " + value + "\n")
 
-    print(
-        f"     ---> {grouped_references.article.drop_duplicates().shape[0]} global references homogenized"
+
+def _apply_thesaurus(root_dir):
+    # Apply the thesaurus to raw_global_references
+
+    file_path = pathlib.Path(root_dir) / "thesauri/global_references.the.txt"
+    th = thesaurus__read_reversed_as_dict(file_path=file_path)
+
+    dataframe = pd.read_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        encoding="utf-8",
+        compression="zip",
     )
 
-    #
-    # Check not recognized references
-    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
-    raw_references = data["raw_global_references"].dropna()
-    raw_references = raw_references.str.split(";").explode().str.strip()
+    # creates a list of references
+    dataframe["global_references"] = dataframe["raw_global_references"].str.split("; ")
 
-    not_recognized = raw_references[~raw_references.isin(selected_references.raw)]
-    not_recognized = not_recognized.value_counts()
+    # replace the oriignal references by the record_id
+    dataframe["global_references"] = dataframe["global_references"].map(
+        lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
+    )
+    dataframe["global_references"] = dataframe["global_references"].map(
+        lambda x: pd.NA if x == [] else x, na_action="ignore"
+    )
+    dataframe["global_references"] = dataframe["global_references"].map(
+        lambda x: "; ".join(sorted(x)) if isinstance(x, list) else x
+    )
 
-    file_path = pathlib.Path(root_dir) / "not_recognized_references.txt"
-    with open(file_path, "w", encoding="utf-8") as file:
-        for ref, value in zip(not_recognized.index, not_recognized.values):
-            file.write(str(value) + "\n")
-            file.write("    " + ref + "\n")
-
-    return True
+    dataframe.to_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )

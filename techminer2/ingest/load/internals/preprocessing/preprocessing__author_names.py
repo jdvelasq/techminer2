@@ -1,76 +1,104 @@
+# flake8: noqa
 """Disambiguate author names using Scopus Author(s) ID."""
 
 import glob
 import os
+import pathlib
 
 import pandas as pd  # type: ignore
 
-from ..._message import message
+from ..message import message
+
+
+def _load_authors_data(root_dir):
+
+    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    dataframe = pd.read_csv(database_file, encoding="utf-8", compression="zip")
+    authors_data = dataframe[["authors", "authors_id"]]
+    authors_data = authors_data.dropna()
+    return authors_data
+
+
+def _generate_author_and_author_id_dataframe(authors_data):
+
+    authors_data = authors_data.copy()
+
+    # Combine authors and authors_id into a single column
+    authors_data = authors_data.assign(
+        authors_and_ids=authors_data.authors + "#" + authors_data.authors_id
+    )
+    authors_data = authors_data[["authors_and_ids"]]
+
+    # Split the combined column into separate author and author_id pairs
+    authors_data.authors_and_ids = authors_data.authors_and_ids.str.split("#")
+    authors_data.authors_and_ids = authors_data.authors_and_ids.apply(
+        lambda x: (x[0].split(";"), x[1].split(";"))
+    )
+    authors_data.authors_and_ids = authors_data.authors_and_ids.apply(
+        lambda x: list(zip(x[0], x[1]))
+    )
+
+    # Explode the list of tuples into separate rows
+    authors_data = authors_data.explode("authors_and_ids")
+
+    # Strip whitespace from author and author_id
+    authors_data.authors_and_ids = authors_data.authors_and_ids.apply(
+        lambda x: (x[0].strip(), x[1].strip())
+    )
+
+    # Reset index and split the tuples into separate columns
+    authors_data = authors_data.reset_index(drop=True)
+    authors_data["author"] = authors_data.authors_and_ids.apply(lambda x: x[0])
+    authors_data["author_id"] = authors_data.authors_and_ids.apply(lambda x: x[1])
+
+    # Drop the combined column and remove duplicates
+    authors_data = authors_data.drop(columns=["authors_and_ids"])
+    authors_data = authors_data.drop_duplicates()
+
+    return authors_data
+
+
+def _build_dict_names(dataframe):
+
+    dataframe = dataframe.sort_values(by=["author"])
+    dataframe = dataframe.assign(counter=dataframe.groupby(["author"]).cumcount())
+    dataframe = dataframe.assign(
+        author=dataframe.author + "/" + dataframe.counter.astype(str)
+    )
+    dataframe.author = dataframe.author.str.replace("/0", "")
+    author_id2name = dict(zip(dataframe.author_id, dataframe.author))
+
+    return author_id2name
+
+
+def _repair_names(root_dir, author_id2name):
+
+    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+    )
+
+    dataframe = dataframe.assign(authors=dataframe.authors_id.copy())
+    dataframe["authors"] = dataframe["authors"].str.split(";")
+    dataframe["authors"] = dataframe["authors"].map(
+        lambda x: [author_id2name[id.strip()] for id in x],
+        na_action="ignore",
+    )
+    dataframe["authors"] = dataframe["authors"].str.join("; ")
+
+    dataframe.to_csv(
+        database_file, sep=",", encoding="utf-8", index=False, compression="zip"
+    )
 
 
 def preprocessing__author_names(root_dir):
     """Disambiguate author names using Scopus Author(s) ID."""
 
-    #
-    def load_authors_names():
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-        data = [
-            pd.read_csv(file, encoding="utf-8", compression="zip")[
-                ["authors", "authors_id"]
-            ]
-            for file in files
-        ]
-        data = pd.concat(data)
-        data = data.dropna()
-
-        return data
-
-    #
-    def build_dict_names(data):
-        data = data.copy()
-        data = data.assign(authors_and_ids=data.authors + "#" + data.authors_id)
-        data.authors_and_ids = data.authors_and_ids.str.split("#")
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: (x[0].split(";"), x[1].split(";"))
-        )
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: list(zip(x[0], x[1]))
-        )
-        data = data.explode("authors_and_ids")
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: (x[0].strip(), x[1].strip())
-        )
-        data = data.reset_index(drop=True)
-        data = data[["authors_and_ids"]]
-        data["author"] = data.authors_and_ids.apply(lambda x: x[0])
-        data["author_id"] = data.authors_and_ids.apply(lambda x: x[1])
-
-        # assert data.author_id.map(lambda x: "7401744122" in x).sum() > 0
-
-        data = data.drop(columns=["authors_and_ids"])
-        data = data.drop_duplicates()
-        data = data.sort_values(by=["author"])
-        data = data.assign(counter=data.groupby(["author"]).cumcount())
-        data = data.assign(author=data.author + "/" + data.counter.astype(str))
-        data.author = data.author.str.replace("/0", "")
-        author_id2name = dict(zip(data.author_id, data.author))
-        return author_id2name
-
-    def repair_names(author_id2name):
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-        for file in files:
-            data = pd.read_csv(file, encoding="utf-8", compression="zip")
-            data = data.assign(authors=data.authors_id.copy())
-            data["authors"] = data["authors"].str.split(";")
-            data["authors"] = data["authors"].map(
-                lambda x: [author_id2name[id.strip()] for id in x],
-                na_action="ignore",
-            )
-            data["authors"] = data["authors"].str.join("; ")
-            data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
-
-    #
     message("Disambiguating `authors` column")
-    data = load_authors_names()
-    author_id2name = build_dict_names(data)
-    repair_names(author_id2name)
+    authors_data = _load_authors_data(root_dir)
+    dataframe = _generate_author_and_author_id_dataframe(authors_data)
+    author_id2name = _build_dict_names(dataframe)
+    _repair_names(root_dir, author_id2name)

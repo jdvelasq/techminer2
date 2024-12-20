@@ -6,8 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import glob
-import os.path
+import pathlib
 
 import pandas as pd  # type: ignore
 
@@ -21,31 +20,40 @@ def fields__merge(
     # DATABASE PARAMS:
     root_dir,
 ):
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        #
-        # Load data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
+    """:meta private:"""
 
-        #
-        # Merge fields
-        new_field = None
-        for field in sources:
-            if field in data.columns:
-                if new_field is None:
-                    new_field = data[field].astype(str).str.split("; ")
-                else:
-                    new_field = new_field + data[field].astype(str).str.split("; ")
+    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 
-        #
-        # Remove duplicates and sort
-        new_field = new_field.map(lambda x: [z for z in x if z != "nan"])
-        new_field = new_field.map(lambda x: sorted(set(x)), na_action="ignore")
-        new_field = new_field.map("; ".join, na_action="ignore")
-        new_field = new_field.map(lambda x: x if x != "" else pd.NA)
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+    )
 
-        #
-        # Create the new field
-        data[dest] = new_field
+    new_field = None
 
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    for field in sources:
+        if field in dataframe.columns:
+            if new_field is None:
+                new_field = dataframe[field].astype(str).str.split("; ")
+            else:
+                new_field = new_field + dataframe[field].astype(str).str.split("; ")
+
+    #
+    # Remove duplicates and sort
+    new_field = new_field.map(lambda x: [z for z in x if z != "nan"])
+    new_field = new_field.map(lambda x: sorted(set(x)), na_action="ignore")
+    new_field = new_field.map("; ".join, na_action="ignore")
+    new_field = new_field.map(lambda x: x if x != "" else pd.NA)
+
+    #
+    # Create the new field
+    dataframe[dest] = new_field
+
+    dataframe.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )

@@ -1,11 +1,17 @@
-# pylint: disable=too-few-public-methods
+# flake8: noqa
+# pylint: disable=import-outside-toplevel
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-few-public-methods
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Read bibliometric records from a database.
 
 """
-
-import os.path
+import pathlib
 
 import pandas as pd  # type: ignore
 
@@ -22,19 +28,25 @@ def read_filtered_database(
 ):
     """loads and filter records of main database text files."""
 
-    def get_records_from_file(directory, database):
+    def get_records_from_file(root_dir, database):
 
-        file_name = {
-            "main": "_main.csv.zip",
-            "references": "_references.csv.zip",
-            "cited_by": "_cited_by.csv.zip",
+        database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+
+        dataframe = pd.read_csv(
+            database_file,
+            encoding="utf-8",
+            compression="zip",
+        )
+
+        criteria = {
+            "main": "db_main",
+            "references": "db_references",
+            "cited_by": "db_cited_by",
         }[database]
 
-        file_path = os.path.join(directory, "databases", file_name)
-        records = pd.read_csv(file_path, sep=",", encoding="utf-8", compression="zip")
-        records = records.drop_duplicates()
+        dataframe = dataframe[dataframe[criteria]]
 
-        return records
+        return dataframe
 
     def filter_records_by_year(records, year_filter):
 
@@ -63,10 +75,14 @@ def read_filtered_database(
             return records
 
         if not isinstance(cited_by_filter, tuple):
-            raise TypeError("The cited_by_range parameter must be a tuple of two values.")
+            raise TypeError(
+                "The cited_by_range parameter must be a tuple of two values."
+            )
 
         if len(cited_by_filter) != 2:
-            raise ValueError("The cited_by_range parameter must be a tuple of two values.")
+            raise ValueError(
+                "The cited_by_range parameter must be a tuple of two values."
+            )
 
         cited_by_min, cited_by_max = cited_by_filter
 
@@ -121,34 +137,64 @@ def read_filtered_database(
             return records
 
         if sort_by == "date_newest":
-            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[False, False, False])
+            return records.sort_values(
+                ["year", "global_citations", "local_citations"],
+                ascending=[False, False, False],
+            )
 
         if sort_by == "date_oldest":
-            return records.sort_values(["year", "global_citations", "local_citations"], ascending=[True, False, False])
+            return records.sort_values(
+                ["year", "global_citations", "local_citations"],
+                ascending=[True, False, False],
+            )
 
         if sort_by == "global_cited_by_highest":
-            return records.sort_values(["global_citations", "year", "local_citations"], ascending=[False, False, False])
+            return records.sort_values(
+                ["global_citations", "year", "local_citations"],
+                ascending=[False, False, False],
+            )
 
         if sort_by == "global_cited_by_lowest":
-            return records.sort_values(["global_citations", "year", "local_citations"], ascending=[True, False, False])
+            return records.sort_values(
+                ["global_citations", "year", "local_citations"],
+                ascending=[True, False, False],
+            )
 
         if sort_by == "local_cited_by_highest":
-            return records.sort_values(["local_citations", "year", "global_citations"], ascending=[False, False, False])
+            return records.sort_values(
+                ["local_citations", "year", "global_citations"],
+                ascending=[False, False, False],
+            )
 
         if sort_by == "local_cited_by_lowest":
-            return records.sort_values(["local_citations", "year", "global_citations"], ascending=[True, False, False])
+            return records.sort_values(
+                ["local_citations", "year", "global_citations"],
+                ascending=[True, False, False],
+            )
 
         if sort_by == "first_author_a_to_z":
-            return records.sort_values(["authors", "global_citations", "local_citations"], ascending=[True, False, False])
+            return records.sort_values(
+                ["authors", "global_citations", "local_citations"],
+                ascending=[True, False, False],
+            )
 
         if sort_by == "first_author_z_to_a":
-            return records.sort_values(["authors", "global_citations", "local_citations"], ascending=[False, False, False])
+            return records.sort_values(
+                ["authors", "global_citations", "local_citations"],
+                ascending=[False, False, False],
+            )
 
         if sort_by == "source_title_a_to_z":
-            return records.sort_values(["source_title", "global_citations", "local_citations"], ascending=[True, False, False])
+            return records.sort_values(
+                ["source_title", "global_citations", "local_citations"],
+                ascending=[True, False, False],
+            )
 
         if sort_by == "source_title_z_to_a":
-            return records.sort_values(["source_title", "global_citations", "local_citations"], ascending=[False, False, False])
+            return records.sort_values(
+                ["source_title", "global_citations", "local_citations"],
+                ascending=[False, False, False],
+            )
 
         return records
 

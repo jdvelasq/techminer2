@@ -39,13 +39,12 @@ def fields_difference(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
+
     if output_field in PROTECTED_FIELDS:
         raise ValueError(f"Field `{output_field}` is protected")
 
-    _fields_difference(
+    transformations__fields_difference(
         compare_field=compare_field,
         to_field=to_field,
         output_field=output_field,
@@ -53,67 +52,3 @@ def fields_difference(
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
-
-
-def _fields_difference(
-    compare_field,
-    to_field,
-    output_field,
-    #
-    # DATABASE PARAMS:
-    root_dir,
-):
-    #
-    # Merge the two fields
-    merge_database_fields(
-        sources=[compare_field, to_field],
-        dest=output_field,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
-
-    #
-    # Computes the intersection per database
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        #
-        # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-
-        #
-        # Compute terms in both columns
-        first_terms = (
-            data[compare_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
-
-        second_terms = (
-            data[to_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
-
-        common_terms = list(set(first_terms).difference(set(second_terms)))
-
-        #
-        # Update columns
-        data[output_field] = (
-            data[output_field]
-            .str.split("; ")
-            .map(lambda x: [z for z in x if z in common_terms], na_action="ignore")
-        )
-        data[output_field] = data[output_field].map(
-            lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore"
-        )
-
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

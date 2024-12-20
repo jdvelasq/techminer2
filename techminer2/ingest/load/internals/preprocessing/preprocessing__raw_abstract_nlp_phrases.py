@@ -6,12 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from .....prepare.transformations.extract_noun_phrases import _extract_noun_phrases
+from .....internals.transformations.transformations__extract_noun_phrases import (
+    transformations__extract_noun_phrases,
+)
 
 
 def preprocessing__raw_abstract_nlp_phrases(root_dir):
 
-    _extract_noun_phrases(
+    transformations__extract_noun_phrases(
         source="abstract",
         dest="raw_abstract_nlp_phrases",
         root_dir=root_dir,

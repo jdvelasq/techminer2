@@ -6,13 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from .....prepare.transformations.count_terms_per_record import _count_terms_per_record
+from .....internals.transformations.transformations__count_terms_per_record import (
+    transformations__count_terms_per_record,
+)
 
 
 def preprocessing__num_authors(root_dir):
     """Run importer."""
 
-    _count_terms_per_record(
+    transformations__count_terms_per_record(
         source="authors",
         dest="num_authors",
         root_dir=root_dir,

@@ -6,12 +6,9 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import glob
-import os.path
+import pathlib
 
 import pandas as pd  # type: ignore
-
-from ..._dtypes import DTYPES
 
 
 def fields__fillna(
@@ -21,9 +18,25 @@ def fields__fillna(
     # DATABASE PARAMS:
     root_dir,
 ):
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        if fill_field in data.columns:
-            data[fill_field].mask(data[fill_field].isnull(), data[with_field])
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+    )
+
+    if fill_field in dataframe.columns:
+
+        dataframe[fill_field].mask(
+            dataframe[fill_field].isnull(),
+            dataframe[with_field],
+        )
+
+        dataframe.to_csv(
+            database_file,
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
+        )

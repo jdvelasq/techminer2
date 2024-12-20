@@ -10,7 +10,7 @@ from .....prepare.operations.process_database_field import fields__process
 
 
 def preprocessing__document_type(root_dir):
-    """Run authors importer."""
+    """:meta private:"""
 
     fields__process(
         source="raw_document_type",

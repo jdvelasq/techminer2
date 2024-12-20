@@ -12,26 +12,29 @@ import pandas as pd  # type: ignore
 from .....prepare.operations.process_database_field import fields__process
 
 
-def preprocessing__authors_id(root_dir):
-    """Run Authors ID importer."""
-
+def _local_processing_func(text):
     #
     #                                                 1
     # 10040007900; 56255739500; 48361045500; 6506221360
     #                          [No author id available]
     #  58065524100;58065658300;57190620397;55567227600;
     #
+    text = text.map(lambda x: pd.NA if isinstance(x, str) and x == "1" else x)
+    text = text.map(
+        lambda x: (
+            pd.NA if isinstance(x, str) and x.startswith("[") and x.endswith("]") else x
+        )
+    )
+    text = text.str.replace(";$", "", regex=True)
+    return text
+
+
+def preprocessing__authors_id(root_dir):
+    """:meta private:"""
+
     fields__process(
         source="raw_authors_id",
         dest="authors_id",
-        func=lambda w: w.map(lambda x: pd.NA if isinstance(x, str) and x == "1" else x)
-        .str.replace(";$", "", regex=True)
-        .map(
-            lambda x: (
-                pd.NA
-                if isinstance(x, str) and x.startswith("[") and x.endswith("]")
-                else x
-            )
-        ),
+        func=_local_processing_func,
         root_dir=root_dir,
     )

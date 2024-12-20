@@ -12,7 +12,10 @@ from .....prepare.operations.merge_database_fields import fields__merge
 def preprocessing__raw_keywords(root_dir):
 
     fields__merge(
-        sources=["raw_author_keywords", "raw_index_keywords"],
+        sources=[
+            "raw_author_keywords",
+            "raw_index_keywords",
+        ],
         dest="raw_keywords",
         root_dir=root_dir,
     )

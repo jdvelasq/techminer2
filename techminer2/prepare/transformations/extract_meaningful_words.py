@@ -48,94 +48,15 @@ def extract_meaningful_words(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     if dest in PROTECTED_FIELDS:
         raise ValueError(f"Field `{dest}` is protected")
 
-    _extract_meaningful_words(
+    transformations__extract_meaningful_words(
         source=source,
         dest=dest,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
-
-
-def _extract_meaningful_words(
-    source,
-    dest,
-    #
-    # DATABASE PARAMS:
-    root_dir,
-):
-    # Register tqdm pandas progress bar
-    tqdm.pandas()
-
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        #
-        #
-        if source not in data.columns:
-            continue
-
-        data[dest] = data[source].copy()
-        data[dest] = data[dest].str.lower()
-        data[dest] = data[dest].map(
-            lambda paragraph: TextBlob(paragraph).sentences, na_action="ignore"
-        )
-        data[dest] = data[dest].map(
-            lambda sentences: [sentence.tags for sentence in sentences],
-            na_action="ignore",
-        )
-        data[dest] = data[dest].map(
-            lambda tagged_sentences: [
-                tag
-                for tagged_sentence in tagged_sentences
-                for tag in tagged_sentence
-                if tag[1][:2] in ["NN", "VB", "RB", "JJ"]
-            ]
-        )
-        data[dest] = data[dest].map(
-            lambda tagged_words: [to_lemma(tag) for tag in tagged_words],
-            na_action="ignore",
-        )
-        data[dest] = data[dest].map(
-            lambda tagged_words: [tag[0] for tag in tagged_words], na_action="ignore"
-        )
-        data[dest] = data[dest].map(
-            lambda phrases: [
-                phrase for phrase in phrases if not phrase.startswith("//")
-            ],
-            na_action="ignore",
-        )
-        data[dest] = data[dest].map(
-            lambda phrases: [phrase.replace("'", "") for phrase in phrases],
-            na_action="ignore",
-        )
-        data[dest] = data[dest].map(
-            lambda phrases: [
-                phrase for phrase in phrases if not re.search(r"[^\w\s]", phrase)
-            ],
-            na_action="ignore",
-        )
-        data[dest] = data[dest].map(
-            lambda phrases: [phrase for phrase in phrases if phrase != ""],
-            na_action="ignore",
-        )
-        #
-        #
-        data[dest] = data[dest].map(set, na_action="ignore")
-        data[dest] = data[dest].map(sorted, na_action="ignore")
-        stopwords = [word.lower() for word in load_package_stopwords()]
-        data[dest] = data[dest].map(
-            lambda terms: [term for term in terms if term.lower() not in stopwords],
-            na_action="ignore",
-        )
-        data[dest] = data[dest].str.join("; ")
-        #
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")

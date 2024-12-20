@@ -1,24 +1,35 @@
+# flake8: noqa
 """Drop empty columns in databases."""
 
-import glob
-import os
+import pathlib
 
 import pandas as pd  # type: ignore
 
-from ..._message import message
+from ..message import message
 
 
 def database__drop_empty_columns(root_dir):
     """Drop NA columns in database/ directory"""
 
-    message("Dropping NA columns in database files")
+    message("Dropping NA columns in database file")
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        original_cols = data.columns.copy()
-        data = data.dropna(axis=1, how="all")
-        if len(data.columns) != len(original_cols):
-            removed_cols = set(original_cols) - set(data.columns)
-            print(f"     ---> Removed columns: {removed_cols}")
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    dataframe = pd.read_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        encoding="utf-8",
+        compression="zip",
+    )
+
+    original_cols = dataframe.columns.copy()
+    dataframe = dataframe.dropna(axis=1, how="all")
+
+    dataframe.to_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )
+
+    if len(dataframe.columns) != len(original_cols):
+        removed_cols = set(original_cols) - set(dataframe.columns)
+        print(f"     ---> Removed columns: {removed_cols}")

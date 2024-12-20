@@ -12,9 +12,7 @@ import pandas as pd  # type: ignore
 from .....prepare.operations.process_database_field import fields__process
 
 
-def preprocessing__authors(root_dir):
-    """Run authors importer."""
-
+def _local_processing(text):
     #
     # Chang V.; Chen Y.; (Justin) Zhang Z.; Xu Q.A.; Baudier P.; Liu B.S.C.
     #                 Guo Y., (1); Klink A., (2); Bartolo P., (1); Guo W.G.
@@ -25,27 +23,38 @@ def preprocessing__authors(root_dir):
     #                                                             Anonymous
     #                                                                  Anon
     #
+    text = text.str.replace(r", \(\d\)", "", regex=True)
+
+    text = text.str.replace(", Jr.", " Jr.", regex=False)
+    text = text.str.replace("; ", ";", regex=False)
+    text = text.str.replace(";", "; ", regex=False)
+    #
+    # some old database records uses ',' as separator
+    text = text.str.replace(", ", ",", regex=False).str.replace(",", "; ", regex=False)
+
+    text = text.str.title()
+    text = text.fillna(pd.NA)
+    text = text.map(
+        lambda x: (
+            pd.NA if isinstance(x, str) and x.startswith("[") and x.endswith("]") else x
+        )
+    )
+    text = text.map(
+        lambda x: pd.NA if isinstance(x, str) and x.lower() == "anonymous" else x
+    )
+    text = text.map(
+        lambda x: pd.NA if isinstance(x, str) and x.lower() == "anon" else x
+    )
+
+    return text
+
+
+def preprocessing__authors(root_dir):
+    """Run authors importer."""
+
     fields__process(
         source="raw_authors",
         dest="authors",
-        func=lambda x: x.str.replace(r", \(\d\)", "", regex=True)
-        .str.replace(", Jr.", " Jr.", regex=False)
-        .str.replace("; ", ";", regex=False)
-        .str.replace(";", "; ", regex=False)
-        #
-        # some old database records uses ',' as separator
-        .str.replace(", ", ",", regex=False).str.replace(",", "; ", regex=False)
-        #
-        .str.title()
-        .fillna(pd.NA)
-        .map(
-            lambda x: (
-                pd.NA
-                if isinstance(x, str) and x.startswith("[") and x.endswith("]")
-                else x
-            )
-        )
-        .map(lambda x: pd.NA if isinstance(x, str) and x.lower() == "anonymous" else x)
-        .map(lambda x: pd.NA if isinstance(x, str) and x.lower() == "anon" else x),
+        func=_local_processing,
         root_dir=root_dir,
     )

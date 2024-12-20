@@ -1,10 +1,11 @@
+# flake8: noqa
 """Chnage Scopus default column names to TechMiner2 default column names."""
 
 import pathlib
 
 import pandas as pd  # type: ignore
 
-from ..._message import message
+from ..message import message
 
 SCOPUS_2_TECHMINER_TAGS = {
     "Abbreviated Source Title": "abbr_source_title",
@@ -61,15 +62,19 @@ def database__rename_columns(root_dir):
 
     message("Applying Scopus tags to database files")
 
-    processed_dir = pathlib.Path(root_dir) / "databases"
-    files = list(processed_dir.glob("_*.zip"))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        data.rename(columns=SCOPUS_2_TECHMINER_TAGS, inplace=True)
-        #
+    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+
+    dataframe = pd.read_csv(database_file, encoding="utf-8", compression="zip")
+    dataframe.rename(columns=SCOPUS_2_TECHMINER_TAGS, inplace=True)
+    dataframe.columns = [
         # Other columns names not in the standard Scopus format
-        data.columns = [
-            name.lower().replace(".", "").replace(" ", "_") for name in data.columns
-        ]
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+        name.lower().replace(".", "").replace(" ", "_")
+        for name in dataframe.columns
+    ]
+    dataframe.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )

@@ -12,10 +12,9 @@ from .....prepare.operations.process_database_field import fields__process
 def preprocessing__isbn(root_dir):
     """Run authors importer."""
 
-    for field in ["isbn", "issn", "eissn"]:
-        fields__process(
-            source=field,
-            dest=field,
-            func=lambda x: x,
-            root_dir=root_dir,
-        )
+    fields__process(
+        source="isbn",
+        dest="isbn",
+        func=lambda x: x,
+        root_dir=root_dir,
+    )

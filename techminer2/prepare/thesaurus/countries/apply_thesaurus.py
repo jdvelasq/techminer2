@@ -25,6 +25,7 @@ Apply Thesaurus
 import glob
 import os
 import os.path
+import pathlib
 import sys
 
 import pandas as pd  # type: ignore
@@ -49,30 +50,37 @@ def apply_thesaurus(
         thesaurus = thesaurus__read_reversed_as_dict(thesaurus_file)
 
         # apply countries thesaurus
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-        for file in files:
-            records = pd.read_csv(file, encoding="utf-8", compression="zip")
-            #
-            records["countries"] = (
-                records.astype(str)
-                .affiliations.str.split(";")
-                .map(
-                    lambda affiliations: [
-                        thesaurus.get(affiliation.strip(), affiliation.strip())
-                        for affiliation in affiliations
-                    ]
-                )
-            )
-            #
-            records["country_1st_author"] = records.countries.str[0]
-            #
-            records["countries"] = records["countries"].map(set, na_action="ignore")
-            records["countries"] = records["countries"].map(sorted, na_action="ignore")
-            records["countries"] = records["countries"].str.join("; ")
-            #
-            records.to_csv(
-                file, sep=",", encoding="utf-8", index=False, compression="zip"
-            )
+        dataframe = pd.read_csv(
+            pathlib.Path(root_dir) / "databases/database.csv.zip",
+            encoding="utf-8",
+            compression="zip",
+        )
+
+        #
+        dataframe["countries"] = dataframe.astype(str).affiliations
+        dataframe["countries"] = dataframe["countries"].str.split(";")
+        dataframe["countries"] = dataframe["countries"].map(
+            lambda affiliations: [
+                thesaurus.get(affiliation.strip(), affiliation.strip())
+                for affiliation in affiliations
+            ]
+        )
+
+        #
+        dataframe["country_1st_author"] = dataframe.countries.str[0]
+
+        dataframe["countries"] = dataframe["countries"].map(set, na_action="ignore")
+        dataframe["countries"] = dataframe["countries"].map(sorted, na_action="ignore")
+        dataframe["countries"] = dataframe["countries"].str.join("; ")
+        #
+
+        dataframe.to_csv(
+            pathlib.Path(root_dir) / "databases/database.csv.zip",
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
+        )
 
         sys.stdout.write(
             f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
@@ -84,36 +92,40 @@ def apply_thesaurus(
     def apply_country_to_region_thesaurus():
 
         thesaurus_file = pkg_resources.resource_filename(
-            "techminer2", "thesaurus/_data/country-to-region.the.txt"
+            "techminer2", "package_data/thesaurus/geography/country-to-region.the.txt"
         )
 
         thesaurus = thesaurus__read_as_dict(thesaurus_file)
         thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
         # apply countries thesaurus
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-        for file in files:
-            records = pd.read_csv(file, encoding="utf-8", compression="zip")
-            #
-            records["regions"] = (
-                records.astype(str)
-                .countries.str.split(";")
-                .map(
-                    lambda countries: [
-                        thesaurus.get(country.strip(), country.strip())
-                        for country in countries
-                    ]
-                )
-            )
-            #
-            records["regions"] = records["regions"].map(set, na_action="ignore")
-            records["regions"] = records["regions"].map(sorted, na_action="ignore")
-            records["regions"] = records["regions"].str.join("; ")
-            #
-            records.to_csv(
-                file, sep=",", encoding="utf-8", index=False, compression="zip"
-            )
+        dataframe = pd.read_csv(
+            pathlib.Path(root_dir) / "databases/database.csv.zip",
+            encoding="utf-8",
+            compression="zip",
+        )
 
+        dataframe["regions"] = dataframe["countries"]
+        dataframe["regions"] = dataframe["regions"].str.split("; ")
+        dataframe["regions"] = dataframe["regions"].map(
+            lambda countries: [
+                thesaurus.get(country.strip(), country.strip()) for country in countries
+            ],
+            na_action="ignore",
+        )
+
+        #
+        dataframe["regions"] = dataframe["regions"].map(set, na_action="ignore")
+        dataframe["regions"] = dataframe["regions"].map(sorted, na_action="ignore")
+        dataframe["regions"] = dataframe["regions"].str.join("; ")
+
+        dataframe.to_csv(
+            pathlib.Path(root_dir) / "databases/database.csv.zip",
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
+        )
         sys.stdout.write(
             f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
         )
@@ -124,36 +136,41 @@ def apply_thesaurus(
     def apply_country_to_subregion_thesaurus():
 
         thesaurus_file = pkg_resources.resource_filename(
-            "techminer2", "thesaurus/_data/country-to-subregion.the.txt"
+            "techminer2",
+            "package_data/thesaurus/geography/country-to-subregion.the.txt",
         )
         thesaurus = thesaurus__read_as_dict(thesaurus_file)
         thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
-        # apply countries thesaurus
-        files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-        for file in files:
-            records = pd.read_csv(file, encoding="utf-8", compression="zip")
-            #
-            records["subregions"] = (
-                records.astype(str)
-                .countries.str.split(";")
-                .map(
-                    lambda countries: [
-                        thesaurus.get(country.strip(), country.strip())
-                        for country in countries
-                    ]
-                )
-            )
-            #
-            records["subregions"] = records["subregions"].map(set, na_action="ignore")
-            records["subregions"] = records["subregions"].map(
-                sorted, na_action="ignore"
-            )
-            records["subregions"] = records["subregions"].str.join("; ")
-            #
-            records.to_csv(
-                file, sep=",", encoding="utf-8", index=False, compression="zip"
-            )
+        dataframe = pd.read_csv(
+            pathlib.Path(root_dir) / "databases/database.csv.zip",
+            encoding="utf-8",
+            compression="zip",
+        )
+
+        dataframe["subregions"] = dataframe["countries"]
+        dataframe["subregions"] = dataframe["subregions"].str.split("; ")
+        dataframe["subregions"] = dataframe["subregions"].map(
+            lambda countries: [
+                thesaurus.get(country.strip(), country.strip()) for country in countries
+            ],
+            na_action="ignore",
+        )
+
+        #
+        dataframe["subregions"] = dataframe["subregions"].map(set, na_action="ignore")
+        dataframe["subregions"] = dataframe["subregions"].map(
+            sorted, na_action="ignore"
+        )
+        dataframe["subregions"] = dataframe["subregions"].str.join("; ")
+
+        dataframe.to_csv(
+            pathlib.Path(root_dir) / "databases/database.csv.zip",
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
+        )
 
         sys.stdout.write(
             f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"

@@ -9,20 +9,24 @@
 from .....prepare.operations.process_database_field import fields__process
 
 
-def preprocessing__source_title(root_dir):
-    """Run importer."""
-
+def _local_processing_func(text):
     #
     #              DYNA (Colombia)
     # Sustainability (Switzerland)
     #              npj Clean Water
     # Automotive Engineer (London)
     #
+    text = text.str.replace("-", "_", regex=False)
+    text = text.str.replace("<.*?>", "", regex=True)
+    return text
+
+
+def preprocessing__source_title(root_dir):
+    """:meta private:"""
+
     fields__process(
         source="raw_source_title",
         dest="source_title",
-        func=lambda w: w.str.replace("-", "_", regex=False).str.replace(
-            "<.*?>", "", regex=True
-        ),
+        func=_local_processing_func,
         root_dir=root_dir,
     )

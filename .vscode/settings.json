@@ -3,5 +3,8 @@
     "notebook.defaultFormatter": "ms-python.black-formatter",
     "editor.codeActionsOnSave": {
         "source.organizeImports": "always"
-    }
+    },
+    "flake8.args": [
+        "--config=pyproject.toml"
+    ]
 }

@@ -2,14 +2,27 @@
 
 import os
 
-from ..._message import message
+from ..message import message
 
-PROJECT_WORKING_DIRECTORIES = [
+PROJECT_DIRECTORIES = [
     "databases",
-    "reports",
     "my_keywords",
+    "reports",
     "thesauri",
 ]
+
+
+def create_directory(path):
+    """Create a directory if it does not exist."""
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+def create_file(path):
+    """Create a file if it does not exist."""
+    if not os.path.exists(path):
+        with open(path, "w", encoding="utf-8"):
+            pass
 
 
 def database__create_project_structure(root_dir):
@@ -28,44 +41,14 @@ def database__create_project_structure(root_dir):
 
     """
 
-    #
     # Create working directories
     message("Creating working directories")
-    for directory in PROJECT_WORKING_DIRECTORIES:
-        directory_path = os.path.join(root_dir, directory)
-        if not os.path.exists(directory_path):
-            os.makedirs(directory_path)
+    for directory in PROJECT_DIRECTORIES:
+        create_directory(os.path.join(root_dir, directory))
 
-    #
     # Create stopwords.txt file
     message("Creating stopwords.txt file")
-    file_path = os.path.join(root_dir, "my_keywords/stopwords.txt")
-    if not os.path.exists(file_path):
-        with open(file_path, "w", encoding="utf-8"):
-            pass
+    create_file(os.path.join(root_dir, "my_keywords/stopwords.txt"))
 
-    #
-    # Copy thesauri files
-    # src_dir = pkg_resources.resource_filename("techminer2", "thesauri_data/")
-    # dst_dir = os.path.join(root_dir, "thesauri/")
-    # for filename in os.listdir(src_dir):
-    #     src_file_path = os.path.join(src_dir, filename)
-    #     dst_file_path = os.path.join(dst_dir, filename)
-    #     if not os.path.exists(dst_file_path):
-    #         shutil.copy2(src_file_path, dst_file_path)
-
-    #
-    # Create replacements.the.txt file
-    # message("Creating abbreviations.the.txt file")
-    # file_path = os.path.join(root_dir, "thesauri/abbreviations.the.txt")
-    # if not os.path.exists(file_path):
-    #     with open(file_path, "w", encoding="utf-8"):
-    #         pass
-
-    #
-    # Create replacements.the.txt file
-    # message("Creating replacements.the.txt file")
-    # file_path = os.path.join(root_dir, "thesauri/replacements.the.txt")
-    # if not os.path.exists(file_path):
-    #     with open(file_path, "w", encoding="utf-8"):
-    #         pass
+    # Create _DO_NOT_TOUCH_.txt file
+    create_file(os.path.join(root_dir, "databases/_DO_NOT_TOUCH_.txt"))

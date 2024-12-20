@@ -8,150 +8,54 @@
 # pylint: disable=import-outside-toplevel
 """
 
-# >>> from techminer2.ingest._homogenize_local_references import homogenize_local_references
-# >>> homogenize_local_references(  # doctest: +SKIP
+# >>> from techminer2.ingest._homogenize_global_references import homogenize_global_references
+# >>> homogenize_global_references(
 # ...     root_dir="example/", 
 # ... )
-# -- 001 -- Homogenizing local references
-#      ---> 21 local references homogenized
+# -- 001 -- Homogenizing global references
+#      ---> 1093 global references homogenized
+# --INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
 
 """
-import os
-import os.path
 import pathlib
-import re
 
 import pandas as pd  # type: ignore
-from tqdm import tqdm  # type: ignore
 
-from .....prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
-    thesaurus__read_reversed_as_dict,
-)
-from ..._message import message
+from ..message import message
 
 
 def preprocessing__local_references(root_dir):
-    """
-    :meta private:
-    """
+    """:meta private:"""
 
     message("Homogenizing local references")
 
-    result = ___homogeneize_references(root_dir=root_dir)
-
-    if result:
-        __apply_thesaururs(root_dir=root_dir)
-
-
-def __apply_thesaururs(root_dir):
-    #
-    # Apply the thesaurus to raw_global_references
-    #
-
-    #
-    # Loads the thesaurus
-    file_path = pathlib.Path(root_dir) / "reports/local_references.txt"
-    th = thesaurus__read_reversed_as_dict(file_path=file_path)
-
-    #
-    # Loadas the main database
-    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
-    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
-
-    #
-    # Replace raw_global_references
-    data["local_references"] = data["raw_global_references"].str.split("; ")
-    data["local_references"] = data["local_references"].map(
-        lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
-    )
-    data["local_references"] = data["local_references"].map(
-        lambda x: pd.NA if x == [] else x, na_action="ignore"
-    )
-    data["local_references"] = data["local_references"].map(
-        lambda x: ";".join(sorted(x)) if isinstance(x, list) else x
+    dataframe = pd.read_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        encoding="utf-8",
+        compression="zip",
     )
 
-    data.to_csv(main_file, index=False, encoding="utf-8", compression="zip")
+    main_records_id = dataframe[dataframe.db_main].record_id.to_list()
 
+    dataframe["local_references"] = pd.NA
+    dataframe["local_references"] = dataframe["global_references"]
 
-#
-# Prepare the reference info for the search
-def process(x):
-    x = (
-        x.str.lower()
-        .str.replace(".", "", regex=False)
-        .str.replace(",", "", regex=False)
-        .str.replace(":", "", regex=False)
-        .str.replace("-", " ", regex=False)
-        .str.replace("_", " ", regex=False)
-        .str.replace("'", "", regex=False)
-        .str.replace("(", "", regex=False)
-        .str.replace(")", "", regex=False)
-        .str.replace("  ", " ", regex=False)
+    # dataframe.loc[dataframe.db_main, "local_references"] = dataframe.loc[
+    #     dataframe.db_main, "global_references"
+    # ]
+    dataframe["local_references"] = dataframe["local_references"].str.split("; ")
+    dataframe["local_references"] = dataframe["local_references"].map(
+        lambda x: [y for y in x if y in main_records_id], na_action="ignore"
     )
-    return x
-
-
-def load_raw_global_references_from_main_zip(main_file):
-    #
-    # Loads raw references from the main database
-    data = pd.read_csv(main_file, encoding="utf-8", compression="zip")
-    raw_references = data["raw_global_references"].dropna()
-    raw_references = (
-        raw_references.str.split(";").explode().str.strip().drop_duplicates().to_list()
+    dataframe["local_references"] = dataframe["local_references"].map(
+        lambda x: pd.NA if len(x) == 0 else x, na_action="ignore"
     )
-    raw_references = pd.DataFrame({"text": raw_references})
-    raw_references["key"] = process(raw_references["text"])
-    return raw_references
+    dataframe["local_references"] = dataframe["local_references"].str.join("; ")
 
-
-def load_dataframe_from_main_zip(main_file):
-    data_frame = pd.read_csv(main_file, encoding="utf-8", compression="zip")
-    data_frame = data_frame[["article", "document_title", "authors", "year"]]
-    data_frame["first_author"] = (
-        data_frame["authors"].astype(str).str.split(" ").map(lambda x: x[0].lower())
+    dataframe.to_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
     )
-    data_frame["document_title"] = data_frame["document_title"].astype(str).str.lower()
-    data_frame = data_frame.dropna()
-
-    data_frame["document_title"] = process(data_frame["document_title"])
-    data_frame["authors"] = process(data_frame["authors"])
-    data_frame["year"] = data_frame["year"].astype(str)
-    data_frame = data_frame.sort_values(by=["article"])
-
-    return data_frame.copy()
-
-
-def ___homogeneize_references(root_dir):
-    #
-    main_file = os.path.join(root_dir, "databases/_main.csv.zip")
-    raw_references = load_raw_global_references_from_main_zip(main_file)
-    data_frame = load_dataframe_from_main_zip(main_file)
-
-    thesaurus = {}
-    for _, row in tqdm(data_frame.iterrows(), total=data_frame.shape[0]):
-        refs = raw_references.copy()
-        refs = refs.loc[refs.key.str.lower().str.contains(row.first_author.lower()), :]
-        refs = refs.loc[refs.key.str.lower().str.contains(row.year), :]
-        refs = refs.loc[
-            refs.key.str.lower().str.contains(
-                re.escape(row.document_title[:50].lower())
-            ),
-            :,
-        ]
-
-        refs = refs.text.tolist()
-        if refs != []:
-            thesaurus[row.article] = sorted(refs)
-
-    file_path = pathlib.Path(root_dir) / "reports/local_references.txt"
-    with open(file_path, "w", encoding="utf-8") as file:
-        for key in sorted(thesaurus.keys()):
-            values = thesaurus[key]
-            file.write(key + "\n")
-            for value in sorted(values):
-                file.write("    " + value + "\n")
-
-    print(f"     ---> {len(thesaurus.keys())} local references homogenized")
-
-    return True

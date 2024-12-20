@@ -10,7 +10,7 @@ from .....prepare.operations.fillna_database_field import fields__fillna
 
 
 def preprocessing__abbr_source_title(root_dir):
-    """Run authors importer."""
+    """:meta private:"""
 
     fields__fillna(
         fill_field="abbr_source_title",

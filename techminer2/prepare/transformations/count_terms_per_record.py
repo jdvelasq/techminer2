@@ -19,10 +19,6 @@ Count Terms per Record
 ... )
 
 """
-import glob
-import os.path
-
-import pandas as pd  # type: ignore
 
 from ..._dtypes import DTYPES
 from ..operations.protected_database_fields import PROTECTED_FIELDS
@@ -35,32 +31,15 @@ def count_terms_per_record(
     # DATABASE PARAMS:
     root_dir="./",
 ):
-    """
-    :meta private:
-    """
+    """:meta private:"""
+
     if dest in PROTECTED_FIELDS:
         raise ValueError(f"Field `{dest}` is protected")
 
-    _count_terms_per_record(
+    transformations__count_terms_per_record(
         source=source,
         dest=dest,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
     )
-
-
-def _count_terms_per_record(
-    source,
-    dest,
-    #
-    # DATABASE PARAMS:
-    root_dir,
-):
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        if source in data.columns:
-            data[dest] = data[source].str.split("; ").map(len, na_action="ignore")
-            data[dest] = data[dest].fillna(0).astype(int)
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
