@@ -11,51 +11,47 @@ Network Plot
 
 
 >>> # authors, countries, organizations, sources:
->>> from techminer2.coupling_network import network_plot
->>> plot = network_plot(
-...     unit_of_analysis='authors', # article
-...                                 # authors 
-...                                 # countries
-...                                 # organizations 
-...                                 # sources
+>>> from techminer2.analyze.coupling_network import NetworkPlot
+>>> plot = (
+...     NetworkPlot()
+...     .set_analysis_params(
+...         unit_of_analysis='authors', # article
+...                                     # authors 
+...                                     # countries
+...                                     # organizations 
+...                                     # sources
+...         top_n=20, 
+...         citations_threshold=0,
+...         occurrence_threshold=2,
+...         custom_terms=None,
+...         algorithm_or_dict="louvain",
 ...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
+...     .set_layout_params(
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_color="#7793a5",
+...         edge_width_range=(0.8, 3.0),
 ...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/coupling_network/others_network_plot.html")
+>>> plot.write_html("sphinx/_static/coupling_network/others_network_plot.html")
 
 .. raw:: html
 
@@ -64,8 +60,9 @@ Network Plot
 
     
 >>> # article:
->>> from techminer2.coupling_network import network_plot
->>> plot = network_plot(
+>>> from techminer2.analyze.coupling_network import NetworkPlot
+>>> plot = (
+...     NetworkPlot()
 ...     unit_of_analysis='article', # article
 ...                                 # authors 
 ...                                 # countries, 
@@ -82,32 +79,26 @@ Network Plot
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
+...     ).set_layout_params(
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_color="#7793a5",
+...         edge_width_range=(0.8, 3.0),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/coupling_network/docs_network_plot.html")
 
@@ -119,8 +110,8 @@ Network Plot
     
                                              
 """
-from ._core.docs.network_plot import _network_plot as docs_network_plot
-from ._core.others.network_plot import _network_plot as others_network_plot
+from .docs.network_plot import _network_plot as docs_network_plot
+from .others.network_plot import _network_plot as others_network_plot
 
 
 def network_plot(

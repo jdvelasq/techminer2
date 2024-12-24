@@ -9,31 +9,33 @@
 Node Degree Plot
 ===============================================================================
 
->>> from techminer2.co_citation_network import node_degree_plot
->>> plot = node_degree_plot(
-...     unit_of_analysis="cited_sources", # "cited_sources", 
-...                                       # "cited_references",
-...                                       # "cited_authors"
+>>> from techminer2.analyze.co_citation_network import NodeDegreePlot
+>>> plot = (
+...     NodeDegreePlot()
+...     .set_analysis_params(
+...         unit_of_analysis="cited_sources", # "cited_sources", 
+...                                           # "cited_references",
+...                                           # "cited_authors"
+...         top_n=30, 
+...         citations_threshold=None,
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=None,
-...     custom_terms=None,
+...     ).set_layout_params(
+...         textfont_size=10,
+...         marker_size=7,
+...         line_color="black",
+...         line_width=1.5,
+...         yshift=4,
 ...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
+>>> plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
 
 .. raw:: html
 
@@ -43,7 +45,7 @@ Node Degree Plot
 """
 
 from ...internals.nx.nx_degree_plot import nx_degree_plot
-from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
+from .internals.create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 
 def node_degree_plot(

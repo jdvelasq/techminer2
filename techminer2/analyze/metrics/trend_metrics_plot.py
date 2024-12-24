@@ -9,7 +9,7 @@ Trend Metrics Plot
 ===============================================================================
 
 
->>> from techminer2.metrics import trend_metrics_plot
+>>> from techminer2.analyze.metrics import trend_metrics_plot
 >>> plot = trend_metrics_plot(
 ...     #
 ...     # TABLE PARAMS:
@@ -19,23 +19,24 @@ Trend Metrics Plot
 ...         "mean_global_citations",
 ...         "mean_global_citations_per_year",
 ...     ],
+...     ).set_layout_params(
+...         metric_to_plot="OCC",
+...         auxiliary_metric_to_plot=None,
+...         title="Annual Scientific Production",
+...         year_label=None,
+...         metric_label=None,
+...         textfont_size=10,
+...         marker_size=7,
+...         line_width=1.5,
+...         yshift=4,
 ...     #
-...     # CHART PARAMS:
-...     metric_to_plot="OCC",
-...     auxiliary_metric_to_plot=None,
-...     title="Annual Scientific Production",
-...     year_label=None,
-...     metric_label=None,
-...     textfont_size=10,
-...     marker_size=7,
-...     line_width=1.5,
-...     yshift=4,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/metrics/trend_metrics.html")
 
@@ -47,8 +48,8 @@ Trend Metrics Plot
 
 
 """
-from ._plot_trend_metrics import plot_trend_metrics
-from .trend_metrics_frame import trend_metrics_frame
+from .internals._plot_trend_metrics import plot_trend_metrics
+from .trend_metrics_dataframe import trend_metrics_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

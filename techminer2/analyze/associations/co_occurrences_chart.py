@@ -30,12 +30,12 @@ Co-occurrences Chart
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
 ...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
 
@@ -48,7 +48,7 @@ Co-occurrences Chart
 """
 import plotly.express as px  # type: ignore
 
-from .term_associations_frame import term_associations_frame
+from .term_associations.dataframe import term_associations_frame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

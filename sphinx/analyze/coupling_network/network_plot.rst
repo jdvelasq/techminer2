@@ -1,4 +1,4 @@
-.. automodule:: techminer2.coupling_network.network_plot
+.. automodule:: techminer2.analyze.coupling_network.network_plot
     :members:
     :undoc-members:
     :show-inheritance:

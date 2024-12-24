@@ -18,19 +18,23 @@ Co-occurrence Matrix
 ...         occ_range=(2, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_row_params(
+...     #
+...     ).set_rows_params(
 ...         field="authors",
 ...         top_n=None,
 ...         occ_range=(2, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
+...     #
 ...     ).set_format_params(
 ...         retain_counters=True,
+...     #
 ...     ).set_database_params(
 ...         root_dir="example/", 
 ...         database="main",
 ...         year_filter=(None, None),
 ...         cited_by_filter=(None, None),
+...     #
 ...     ).build()
 ... )
 columns               FINTECH 31:5168  ...  CYBER_SECURITY 02:0342
@@ -57,7 +61,7 @@ Zavolokina L. 2:0181                2  ...                       0
 ...         occ_range=(2, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_row_params(
+...     ).set_rows_params(
 ...         field=None,
 ...         top_n=None,
 ...         occ_range=(None, None),
@@ -94,8 +98,8 @@ CASE_STUDY 02:0340                          2  ...                   2
 from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
-from .co_occurrence_frame import CoOccurrenceFrame
-from .format_params import FormatParams, FormatParamsMixin
+from .co_occurrence_dataframe import CoOccurrenceDataFrame
+from .internals.format_params import FormatParams, FormatParamsMixin
 
 
 class CoOccurrenceMatrix(
@@ -125,7 +129,7 @@ class CoOccurrenceMatrix(
             return matrix
 
         matrix_list = (
-            CoOccurrenceFrame()
+            CoOccurrenceDataFrame()
             .set_column_params(**self.column_params.__dict__)
             .set_row_params(**self.row_params.__dict__)
             .set_format_params(**self.format_params.__dict__)

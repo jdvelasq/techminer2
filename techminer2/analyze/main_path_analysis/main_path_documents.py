@@ -9,23 +9,25 @@
 Main Path Documents
 ===============================================================================
 
->>> from techminer2.main_path_analysis import main_path_documents
->>> documents = main_path_documents(
+>>> from techminer2.analyze.main_path_analysis import MainPathDocuments
+>>> documents = (
+...     MainPathDocuments()
+...     .set_analysis_params(
+...         top_n=None,
+...         citations_threshold=0,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=None,
-...     citations_threshold=0,
-...     #
-...     # DATABASE PARAMS:
+...     ).set_database_params(
 ...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...         sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
+...                                # global_cited_by_lowest, local_cited_by_highest, 
+...                                # local_cited_by_lowest, first_author_a_to_z, 
+...                                # first_author_z_to_a, source_title_a_to_z, 
+...                                # source_title_z_to_a
+...     #
+...     ).build()
 ... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
@@ -85,7 +87,7 @@ DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
 
 """
 from ..documents.select_documents import select_documents
-from ._core.compute_main_path import _compute_main_path
+from .internals.compute_main_path import _compute_main_path
 
 
 def main_path_documents(

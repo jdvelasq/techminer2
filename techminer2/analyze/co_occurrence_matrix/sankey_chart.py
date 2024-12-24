@@ -8,36 +8,38 @@
 Sankey Chart
 ===============================================================================
 
->>> from techminer2.co_occurrence_matrix import sankey_chart
->>> plot = sankey_chart(
+>>> from techminer2.analyze.co_occurrence_matrix import SankeyChart
+>>> plot = (
+...     sankey_chart()
+...     .set_params(
+...         fields=["authors", "countries", "author_keywords"],
+...         top_n=10,
+...         occ_range=None,
+...         gc_range=None,
+...         custom_terms=None,
+...         max_n=20,
 ...     #
-...     # PARAMS:
-...     fields=["authors", "countries", "author_keywords"],
-...     max_n=20,
-...     retain_counters=True,
+...     ).set_layout_params(
+...         font_size=8,
+...         title=None,
+...         color=None,
 ...     #
-...     # ITEM FILTERS:
-...     top_n=10,
-...     occ_range=None,
-...     gc_range=None,
-...     custom_terms=None,
+...     ).set_format_params(
+...         retain_counters=True,
 ...     #
-...     # PARAMS:
-...     font_size=8,
-...     title=None,
-...     color=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_matrix/sankey_chat.html")
+>>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/sankey_chat.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_matrix/sankey_chat.html" 
+    <iframe src="../../_generated/analyze/co_occurrence_matrix/sankey_chat.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -108,7 +110,9 @@ def sankey_chart(
 
             else:
                 curr_custom_items = matrices[-1].columns.to_list()
-                curr_custom_items = [" ".join(item.split(" ")[:-1]) for item in curr_custom_items]
+                curr_custom_items = [
+                    " ".join(item.split(" ")[:-1]) for item in curr_custom_items
+                ]
 
                 coc_matrix = co_occurrence_matrix(
                     columns=col,

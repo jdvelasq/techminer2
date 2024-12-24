@@ -14,6 +14,7 @@ Techminer 2+
     :caption: PREPARE
     :maxdepth: 1
 
+    prepare/database/__index__
     prepare/fields/__index__
     prepare/thesaurus/__index__
     prepare/transform/__index__

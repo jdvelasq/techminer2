@@ -9,8 +9,10 @@
 Network Density Plot
 ===============================================================================
 
->>> from techminer2.coupling_network import node_density_plot
->>> plot = node_density_plot(
+>>> from techminer2.analyze.coupling_network import NodeDensityPlot
+>>> plot = (
+...     NodeDensityPlot()
+...     .set_analysis_params(
 ...     unit_of_analysis='authors', # article
 ...                                 # authors 
 ...                                 # countries
@@ -27,27 +29,23 @@ Network Density Plot
 ...     #
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
 ...     # DENSITY VISUALIZATION:
 ...     bandwidth=0.1,
 ...     colorscale="Aggrnyl",
 ...     opacity=0.6,
 ...     #
-...     # AXES:
-...     # xaxes_range=None,
-...     # yaxes_range=None,
-...     # show_axes=False,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/coupling_network/others_node_density_plot.html")
 
@@ -58,7 +56,7 @@ Network Density Plot
 
     
 >>> # article:    
->>> from techminer2.coupling_network import node_density_plot
+>>> from techminer2.analyze.coupling_network import node_density_plot
 >>> plot = node_density_plot(
 ...     unit_of_analysis='article', # article
 ...                                 # authors 
@@ -77,26 +75,22 @@ Network Density Plot
 ...     # NETWORK PARAMS:
 ...     algorithm_or_dict="louvain",
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
+...     ).set_layout_params(
+...         bandwidth=0.1,
+...         colorscale="Aggrnyl",
+...         opacity=0.6,
 ...     #
-...     # AXES:
-...     # xaxes_range=None,
-...     # yaxes_range=None,
-...     # show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/coupling_network/docs_node_density_plot.html")
 
@@ -107,10 +101,8 @@ Network Density Plot
 
                                                  
 """
-from ._core.docs.node_density_plot import _node_density_plot as docs_node_density_plot
-from ._core.others.node_density_plot import (
-    _node_density_plot as others_node_density_plot,
-)
+from .docs.node_density_plot import _node_density_plot as docs_node_density_plot
+from .others.node_density_plot import _node_density_plot as others_node_density_plot
 
 
 def node_density_plot(

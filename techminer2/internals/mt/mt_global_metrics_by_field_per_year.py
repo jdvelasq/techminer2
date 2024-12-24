@@ -14,11 +14,12 @@ Global Indicators by Field per Year
 ...     field='authors',
 ...     as_index=True,
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... ).head(20)
                          OCC  ...  local_citations_per_year
 authors            year       ...                          

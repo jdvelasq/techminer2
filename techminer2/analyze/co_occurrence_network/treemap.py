@@ -9,31 +9,29 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.co_occurrence_network import treemap
+>>> from techminer2.analyze.co_occurrence_network import treemap
 >>> plot = treemap(
+...     .set_analysis_params(
+...         association_index="association",
+...     .set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # PARAMS:
-...     field='author_keywords',
+...     ).set_layout_params(
+...         title=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # NETWORK PARAMS:
-...     association_index="association",
-...     #
-...     # CHART PARAMS:
-...     title=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
+>>> plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
 
 .. raw:: html
 
@@ -46,7 +44,7 @@ from ...internals.nx.nx_assign_colors_to_nodes_by_group_attribute import (
 )
 from ...internals.nx.nx_cluster_graph import nx_cluster_graph
 from ...internals.nx.nx_plot_node_treemap import nx_plot_node_treemap
-from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
+from .internals.create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def treemap(

@@ -10,39 +10,37 @@ Node Density Plot
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import node_density_plot
->>> plot = node_density_plot(
+>>> from techminer2.analyze.co_occurrence_network import NodeDensityPlot
+>>> plot = (
+...     NodeDensityPlot()
+...     .set_analysis_params(
+...         association_index="association",
 ...     #
-...     # PARAMS:
-...     field='author_keywords',
+...     ).set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # NETWORK PARAMS:
-...     association_index="association",
+...     ).set_layout_params(
+...         textfont_size_range=(10, 20),
+...         bandwidth=0.1,
+...         colorscale="Aggrnyl",
+...         opacity=0.6,
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # NODES:
-...     textfont_size_range=(10, 20),
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/co_occurrence_network/node_density_plot.html")
 
@@ -61,7 +59,7 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
 from ...internals.nx.nx_density_plot import nx_density_plot
-from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
+from .internals.create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def node_density_plot(

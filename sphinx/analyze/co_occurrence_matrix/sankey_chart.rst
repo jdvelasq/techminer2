@@ -1,3 +1,3 @@
-.. automodule:: techminer2.co_occurrence_matrix.sankey_chart
+.. automodule:: techminer2.analyze.co_occurrence_matrix.sankey_chart
     :members:
 

@@ -10,36 +10,36 @@ Node Density Plot
 ===============================================================================
 
 
->>> from techminer2.co_citation_network import node_density_plot
->>> plot = node_density_plot(
-...     unit_of_analysis="cited_sources", # "cited_sources", 
-...                                       # "cited_references",
-...                                       # "cited_authors"
+>>> from techminer2.analyze.co_citation_network import NodeDensityPlot
+>>> plot = (
+...     NodeDensityPlot()
+...     .set_analysis_params(
+...         unit_of_analysis="cited_sources", # "cited_sources", 
+...                                           # "cited_references",
+...                                           # "cited_authors"
+...         top_n=30, 
+...         citations_threshold=None,
+...         custom_terms=None,
+...         algorithm_or_dict="louvain",
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=None,
-...     custom_terms=None,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
+...     ).set_layout_params(
+...         bandwidth=0.1,
+...         colorscale="Aggrnyl",
+...         opacity=0.6,
+...         textfont_size_range=(8, 12),
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     textfont_size_range=(8, 12),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/co_citation_network/node_density_plot.html")
 
@@ -57,7 +57,7 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
 from ...internals.nx.nx_density_plot import nx_density_plot
-from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
+from .internals.create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 
 def node_density_plot(

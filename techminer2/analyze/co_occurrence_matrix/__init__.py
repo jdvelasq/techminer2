@@ -4,7 +4,7 @@ including heatmaps, maps, matrices, network visualizations, tables, and
 Sankey charts.
 """
 
-from .co_occurrence_frame import CoOccurrenceFrame, co_occurrence_frame
+from .co_occurrence_dataframe import CoOccurrenceDataFrame, co_occurrence_frame
 from .co_occurrence_heatmap import CoOccurrenceHeatmap
 from .co_occurrence_map import co_occurrence_map
 from .co_occurrence_matrix import CoOccurrenceMatrix, co_occurrence_matrix
@@ -16,6 +16,6 @@ __all__ = [
     "co_occurrence_map",
     "CoOccurrenceMatrix",
     "co_occurrence_matrix_network",
-    "CoOccurrenceFrame",
+    "CoOccurrenceDataFrame",
     "sankey_chart",
 ]

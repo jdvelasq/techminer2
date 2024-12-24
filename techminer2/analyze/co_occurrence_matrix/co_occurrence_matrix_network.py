@@ -10,105 +10,104 @@ Co-occurrence Matrix Network
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import co_occurrence_matrix_network
->>> plot = co_occurrence_matrix_network(
+>>> from techminer2.analyze.co_occurrence_matrix import CoOccurrenceMatrixNetwork
+>>> plot = (
+...     CoOccurrenceMatrixNetwork()
+...     .set_column_params(
+...         field="author_keywords",
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='authors',
-...     retain_counters=True,
+...     ).set_rows_params(
+...         field="authors",
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # ROW PARAMS:
-...     row_top_n=10,    
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
+...     ).set_format_params(
+...         retain_counters=True,
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_layout_params(
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_color="#b8c6d0",
+...         edge_width_range=(0.8, 4.0),
 ...     #
-...     # NODES AND EDGES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     edge_color="#b8c6d0",
-...     edge_width_range=(0.8, 4.0),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_matrix_network_0.html")
+...     ).build()
+>>> )
+>>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_0.html")
 
 .. raw:: html
-
-    <iframe src="../_static/co_occurrence_matrix/co_occurrence_matrix_network_0.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
     
->>> plot = co_occurrence_matrix_network(
-...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     retain_counters=True,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,    
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES AND EDGES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     edge_color="#b8c6d0",
-...     edge_width_range=(0.8, 4.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_matrix_network_1.html")
+    <iframe src="../../_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_0.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+>>> from techminer2.analyze.co_occurrence_matrix import CoOccurrenceMatrixNetwork
+>>> plot = (
+...     CoOccurrenceMatrixNetwork()
+...     .set_column_params(
+...         field="author_keywords",
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
+...     ).set_rows_params(
+...         field=None,
+...         top_n=None,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
+...     ).set_format_params(
+...         retain_counters=True,
+...     ).set_layout_params(
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_color="#b8c6d0",
+...         edge_width_range=(0.8, 4.0),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
+>>> )
+>>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_1.html")
 
 .. raw:: html
-
-    <iframe src="../../../../_static/co_occurrence_matrix/co_occurrence_matrix_network_1.html" 
+    
+    <iframe src="../../_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_1.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
+
 
     
 """
@@ -137,6 +136,9 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
 )
 from ...internals.nx.nx_network_plot import nx_network_plot
 from .co_occurrence_matrix import co_occurrence_matrix
+
+class CoOccurrenceMatrixNetwork():
+
 
 
 def co_occurrence_matrix_network(

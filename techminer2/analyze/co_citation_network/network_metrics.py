@@ -10,22 +10,24 @@ Network Metrics
 ===============================================================================
 
 
->>> from techminer2.co_citation_network import network_metrics
->>> network_metrics(
-...     unit_of_analysis="cited_sources", # "cited_sources", 
-...                                       # "cited_references",
-...                                       # "cited_authors"
+>>> from techminer2.analyze.co_citation_network import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     .set_analysis_params(
+...         unit_of_analysis="cited_sources", # "cited_sources", 
+...                                           # "cited_references",
+...                                           # "cited_authors"
+...         top_n=30, 
+...         citations_threshold=None,
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=None,
-...     custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... ).head()
                                 Degree  Betweenness  Closeness  PageRank
 ELECT COMMER RES APPL 1:32          27     0.077741   0.935484  0.047163
@@ -36,7 +38,7 @@ MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
 from ...internals.nx.nx_compute_metrics import nx_compute_metrics
-from ._create_co_citation_nx_graph import _create_co_citation_nx_graph
+from .internals.create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 
 def network_metrics(

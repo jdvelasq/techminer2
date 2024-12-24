@@ -7,10 +7,10 @@
 # pylint: disable=too-many-statements
 # pylint: disable=unused-variable
 """
-Query (MIGRATED)
+Query
 ===============================================================================
 
->>> from techminer2.database import Query
+>>> from techminer2.prepare.database import Query
 >>> (
 ...     Query()
 ...     .set_database_params(
@@ -20,12 +20,13 @@ Query (MIGRATED)
 ...         cited_by_filter=(None, None),
 ...     ).build(expr="SELECT source_title FROM database LIMIT 5;")
 ... )
-                                      source_title
-0                      Review of Financial Studies
-1  International Journal of Information Management
-2                             Financial Innovation
-3                           China Economic Journal
-4                Journal of Economics and Business
+                                        source_title
+0  International Journal of Applied Engineering R...
+1                          Telecommunications Policy
+2                             China Economic Journal
+3  Contemporary Studies in Economic and Financial...
+4                              New Political Economy
+
 
 
 

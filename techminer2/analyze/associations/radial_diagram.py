@@ -14,13 +14,13 @@ Radial Diagram
 ...     #
 ...     # FUNCTION PARAMS:
 ...     items=["FINTECH", "INNOVATION"],
-...     columns='author_keywords',
-...     rows=None,
+
+
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
 ...     # NODES:
 ...     node_size_range=(30, 70),
@@ -30,29 +30,31 @@ Radial Diagram
 ...     # EDGES:
 ...     edge_color="#7793a5",
 ...     edge_width_range=(0.8, 3.0),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
+...     ).set_columns_params(
+...         field='author_keywords',
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     col_top_n=20,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
+...     ).set_rows_params(
+...         field=None,
+...         top_n=None,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
 

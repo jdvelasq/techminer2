@@ -10,7 +10,7 @@ Concept Grid Plot
 ===============================================================================
 
 
-# >>> from techminer2.co_occurrence_network import concept_grid_plot
+# >>> from techminer2.analyze.co_occurrence_network import concept_grid_plot
 # >>> chart = concept_grid_plot(
 # ...     #
 # ...     # PARAMS:
@@ -45,7 +45,7 @@ Concept Grid Plot
 """
 from ...internals.nx.nx_cluster_graph import nx_cluster_graph
 from ...internals.nx.nx_plot_concept_grid import nx_plot_concept_grid
-from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
+from .internals.create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def concept_grid_plot(

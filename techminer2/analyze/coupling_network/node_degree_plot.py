@@ -9,8 +9,10 @@
 Network Degree Plot
 ===============================================================================
 
->>> from techminer2.coupling_network import node_degree_plot
->>> plot = node_degree_plot(
+>>> from techminer2.analyze.coupling_network import NodeDegreePlot
+>>> plot = (
+...     NodeDegreePlot()
+...     .set_analysis_params(
 ...     unit_of_analysis='authors', # article
 ...                                 # authors 
 ...                                 # countries
@@ -24,19 +26,20 @@ Network Degree Plot
 ...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
 ...     occurrence_threshold=2,
 ...     custom_terms=None,
+...     ).set_layout_params(
+...         textfont_size=10,
+...         marker_size=7,
+...         line_color="black",
+...         line_width=1.5,
+...         yshift=4,
 ...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/coupling_network/others_node_degree_plot.html")
 
@@ -47,7 +50,7 @@ Network Degree Plot
 
 
 >>> # article:
->>> from techminer2.coupling_network import node_degree_plot
+>>> from techminer2.analyze.coupling_network import node_degree_plot
 >>> plot = node_degree_plot(
 ...     unit_of_analysis='article', # article
 ...                                 # authors 
@@ -62,19 +65,18 @@ Network Degree Plot
 ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
 ...     occurrence_threshold=2,
 ...     custom_terms=None,
-...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_layout_params(
+...         textfont_size=10,
+...         marker_size=7,
+...         line_color="black",
+...         line_width=1.5,
+...         yshift=4,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/coupling_network/docs_node_degree_plot.html")
 
@@ -87,8 +89,8 @@ Network Degree Plot
 
 
 """
-from ._core.docs.node_degree_plot import _node_degree_plot as docs_node_degree_plot
-from ._core.others.node_degree_plot import _node_degree_plot as others_node_degree_plot
+from .docs.node_degree_plot import _node_degree_plot as docs_node_degree_plot
+from .others.node_degree_plot import _node_degree_plot as others_node_degree_plot
 
 
 def node_degree_plot(

@@ -10,19 +10,21 @@ Node Degree Frame
 ===============================================================================
 
 >>> # article:
->>> from techminer2.citation_network import node_degree_frame
->>> node_degree_frame(
-...     unit_of_analysis="article",
+>>> from techminer2.analyze.citation_network  import NodeDegreeDataFrame
+>>> (
+...     NodeDegreeDataFrame()
+...     .set_analysis_params(
+...         unit_of_analysis="article",
+...         top_n=30, 
+...         citations_threshold=0,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=0,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... ).head()
    Node                                               Name  Degree
 0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
@@ -34,21 +36,22 @@ Node Degree Frame
 
 
 >>> # abbr_source_title, authors, organizations, countries:
->>> from techminer2.citation_network import node_degree_frame
+>>> from techminer2.analyze.citation_network  import NodeDegreeDataFrame
 >>> node_degree_frame(
-...     unit_of_analysis="abbr_source_title",
+...     .set_analysis_params(
+...         unit_of_analysis="abbr_source_title",
+...         top_n=30,
+...         citations_threshold=0,
+...         occurrence_threshold=2,
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=30,
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... ).head()
    Node                       Name  Degree
 0     0    J Manage Inf Syst 2:696       3
@@ -60,10 +63,10 @@ Node Degree Frame
 
 
 """
-from ._core.docs.node_degree_frame import (
+from .docs.node_degree_dataframe import (
     _node_degree_frame as _node_degree_frame_from_docs,
 )
-from ._core.others.node_degree_frame import (
+from .others.node_degree_dataframe import (
     _node_degree_frame as _node_degree_frame_from_others,
 )
 

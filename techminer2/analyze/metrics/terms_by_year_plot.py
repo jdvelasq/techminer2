@@ -8,22 +8,26 @@
 Terms by Year Plot
 ===============================================================================
 
->>> from techminer2.metrics import terms_by_year_plot
+>>> from techminer2.analyze.metrics import terms_by_year_plot
 >>> plot = terms_by_year_plot(
-...     field="author_keywords",
+
 ...     #
 ...     # FILTER PARAMS:
 ...     metric='OCC',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     .set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     #
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/metrics/terms_by_plot.html")
 
@@ -37,7 +41,7 @@ Terms by Year Plot
 """
 import plotly.express as px  # type: ignore
 
-from .terms_by_year_frame import terms_by_year_frame
+from .terms_by_year_dataframe import terms_by_year_frame
 
 COLOR = "#465c6b"
 TEXTLEN = 40

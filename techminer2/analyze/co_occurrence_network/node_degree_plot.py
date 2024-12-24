@@ -9,33 +9,33 @@
 Node Degree Plot
 ===============================================================================
 
->>> from techminer2.co_occurrence_network import node_degree_plot
->>> plot = node_degree_plot(
+>>> from techminer2.analyze.co_occurrence_network import NodeDegreePlot
+>>> plot = (
+...     NodeDegreePlot()
+...     .set_analysis_params(
+...         association_index="association",
 ...     #
-...     # PARAMS:
-...     field='author_keywords',
+...     ).set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_layout_params(
+...         textfont_size=10,
+...         marker_size=7,
+...         line_color="black",
+...         line_width=1.5,
+...         yshift=4,
 ...     #
-...     # NETWORK PARAMS:
-...     association_index="association",
-...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     #   
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/co_occurrence_network/node_degree_plot.html")
 
@@ -49,7 +49,7 @@ Node Degree Plot
 
 """
 from ...internals.nx.nx_degree_plot import nx_degree_plot
-from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
+from .internals.create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def node_degree_plot(

@@ -18,7 +18,7 @@ Line Chart
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_chart_params(
+...     ).set_layout_params(
 ...         title_text="Most Frequent Author Keywords",
 ...         metric_label=None,
 ...         field_label=None,
@@ -43,7 +43,7 @@ from typing import Optional
 
 import plotly.express as px  # type: ignore
 
-from ...analyze.metrics.performance_metrics_frame import performance_metrics_frame
+from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 
@@ -71,7 +71,7 @@ class LineChart(
         self.database_params = DatabaseParams()
         self.item_params = ItemParams()
 
-    def set_chart_params(self, **kwars):
+    def set_layout_params(self, **kwars):
         for key, value in kwars.items():
             if hasattr(self.chart_params, key):
                 setattr(self.chart_params, key, value)

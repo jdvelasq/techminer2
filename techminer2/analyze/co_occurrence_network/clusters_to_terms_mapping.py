@@ -10,28 +10,30 @@ Clusters to Terms Mapping
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import clusters_to_terms_mapping
->>> mapping = clusters_to_terms_mapping(
+>>> from techminer2.analyze.co_occurrence_network import ClustersToTermsMapping
+>>> mapping = (
+...     ClustersToTermsMapping()
+...     .set_analysis_params(
+...         algorithm_or_dict="louvain",
+...         association_index="association",
 ...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     retain_counters=True,
+...     .set_format_params(
+...         retain_counters=True,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     .set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     association_index="association",
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
@@ -58,7 +60,7 @@ Clusters to Terms Mapping
 """
 from ...internals.nx.nx_cluster_graph import nx_cluster_graph
 from ...internals.nx.nx_clusters_to_terms_mapping import nx_clusters_to_terms_mapping
-from ._create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
+from .internals.create_co_occurrence_nx_graph import _create_co_occurrence_nx_graph
 
 
 def clusters_to_terms_mapping(

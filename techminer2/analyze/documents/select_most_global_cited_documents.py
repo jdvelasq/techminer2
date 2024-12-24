@@ -13,11 +13,12 @@ Most Global Cited Documents (Example)
 >>> documents = select_documents(
 ...     #
 ...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="global_cited_by_highest",
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> print(documents[0])
 Record-No: 49

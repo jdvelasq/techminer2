@@ -1,3 +1,3 @@
-.. automodule:: techminer2.metrics.collaboration_metrics
+.. automodule:: techminer2.analyze.metrics.collaboration_metrics
     :members:
 

@@ -1,3 +1,3 @@
-.. automodule:: techminer2.metrics.growth_metrics
+.. automodule:: techminer2.analyze.metrics.growth_metrics
     :members:
 

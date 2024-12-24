@@ -5,12 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Summary Sheet (MIGRATED)
+Summary Sheet
 ===============================================================================
 
 
->>> from techminer2.tools import SummarySheet
->>> (
+>>> from techminer2.prepare.database import SummarySheet
+>>> result = (
 ...     SummarySheet()
 ...     .set_database_params(
 ...         root_dir="example/",
@@ -18,13 +18,16 @@ Summary Sheet (MIGRATED)
 ...         year_filter=(None, None),
 ...         cited_by_filter=(None, None),
 ...     ).build()
-... ).head()
+... )
+>>> result.head()
                  column  number of terms coverage (%)
 0     abbr_source_title               50         1.0%
 1              abstract               48        0.96%
 2  abstract_nlp_phrases               48        0.96%
 3          affiliations               49        0.98%
-4                art_no               50         1.0%
+4                art_no                6        0.12%
+
+
 
 """
 import pandas as pd  # type: ignore

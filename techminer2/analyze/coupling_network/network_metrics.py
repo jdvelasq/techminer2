@@ -10,27 +10,27 @@ Network Metrics
 ===============================================================================
 
 >>> # authors, countries, organizations, sources:
->>> from techminer2.coupling_network import network_metrics
->>> network_metrics(
-...     unit_of_analysis='authors', # article
-...                                 # authors 
-...                                 # countries
-...                                 # organizations 
-...                                 # sources
+>>> from techminer2.analyze.coupling_network import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     .set_analysis_params(
+...         unit_of_analysis='authors', # article
+...                                     # authors 
+...                                     # countries
+...                                     # organizations 
+...                                     # sources
+...         top_n=20, 
+...         citations_threshold=0,
+...         occurrence_threshold=2,
+...         custom_terms=None,
 ...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... ).head()
                     Degree  Betweenness  Closeness  PageRank
 Gomber P. 2:1065         3          0.0   0.333333  0.085695
@@ -41,8 +41,9 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 >>> # article:
->>> from techminer2.coupling_network import network_metrics
->>> network_metrics(
+>>> from techminer2.analyze.coupling_network import NetworkMetrics
+>>> (
+...     NetworkMetrics()
 ...     unit_of_analysis='article', # article
 ...                                 # authors 
 ...                                 # countries, 
@@ -56,12 +57,12 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
 ...     occurrence_threshold=2,
 ...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... ).head()
                                             Degree  ...  PageRank
 Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
@@ -74,8 +75,8 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
 
 
 """
-from ._core.docs.network_metrics import _network_metrics as docs_network_metrics
-from ._core.others.network_metrics import _network_metrics as others_network_metrics
+from .docs.network_metrics import _network_metrics as docs_network_metrics
+from .others.network_metrics import _network_metrics as others_network_metrics
 
 
 def network_metrics(

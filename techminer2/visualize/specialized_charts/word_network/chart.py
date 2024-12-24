@@ -29,11 +29,10 @@ Chart
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
 ...     row_custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
 ...     # NODES:
 ...     node_size_range=(30, 70),
@@ -43,11 +42,10 @@ Chart
 ...     # EDGES
 ...     edge_color="#b8c6d0",
 ...     edge_width_range=(0.8, 4.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -82,11 +80,10 @@ Chart
 ...     row_occ_range=(None, None),
 ...     row_gc_range=(None, None),
 ...     row_custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
 ...     # NODES:
 ...     node_size_range=(30, 70),
@@ -96,11 +93,10 @@ Chart
 ...     # EDGES
 ...     edge_color="#b8c6d0",
 ...     edge_width_range=(0.8, 4.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 
@@ -117,7 +113,7 @@ Chart
 
     
 """
-from ....analyze.associations.term_associations_frame import term_associations_frame
+from ....analyze.associations.term_associations.dataframe import term_associations_frame
 from ....analyze.co_occurrence_matrix.co_occurrence_matrix_network import (
     co_occurrence_matrix_network,
 )

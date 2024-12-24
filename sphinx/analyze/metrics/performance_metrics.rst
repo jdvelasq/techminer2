@@ -1,3 +1,3 @@
-.. automodule:: techminer2.metrics.performance_metrics
+.. automodule:: techminer2.analyze.metrics.performance_metrics
     :members:
 

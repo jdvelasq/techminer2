@@ -10,123 +10,121 @@ Co-occurrence Map
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import co_occurrence_map
->>> plot = co_occurrence_map(
+>>> from techminer2.co_occurrence_matrix import CoOccurrenceMap
+>>> plot = (
+...     CoOccurrenceMap()
+...     .set_column_params(
+...         field="author_keywords",
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='authors',
+...     ).set_rows_params(
+...         field="authors",
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
+...     ).set_format_params(
+...         retain_counters=True,
 ...     #
-...     # ROW PARAMS:
-...     row_top_n=10,    
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_layout_params(
+...          node_colors=(
+...              "#7793a5", 
+...              "#465c6b",
+...          ),
+...          edge_colors=(
+...              "#7793a5", 
+...              "#7793a5", 
+...              "#7793a5", 
+...              "#7793a5",
+...          ),
+...          node_size_range=(30, 70),
+...          textfont_size_range=(10, 20),
+...          textfont_opacity_range=(0.35, 1.00),
 ...     #
-...     # NODES:
-...     node_colors=(
-...         "#7793a5", 
-...         "#465c6b",
-...     ),
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
-...     # EDGES
-...     edge_colors=(
-...         "#7793a5", 
-...         "#7793a5", 
-...         "#7793a5", 
-...         "#7793a5",
-...     ),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_map_0.html")
+>>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_map_0.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_matrix/co_occurrence_map_0.html" 
+    <iframe src="../../_generated/analyze/co_occurrence_matrix/co_occurrence_map_0.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> plot = co_occurrence_map(
-...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,    
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_colors=(
-...         "#7793a5", 
-...         "#465c6b",
-...     ),
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES
-...     edge_colors=(
-...         "#7793a5", 
-...         "#7793a5", 
-...         "#7793a5", 
-...         "#7793a5",
-...     ),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+>>> from techminer2.co_occurrence_matrix import CoOccurrenceMap   
+>>> plot = (
+...     CoOccurrenceMap()
+...     .set_column_params(
+...         field="author_keywords",
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
+...     ).set_rows_params(
+...         field=None,
+...         top_n=None,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
+...     ).set_format_params(
+...         retain_counters=True,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
+...     ).set_layout_params(
+...          node_colors=(
+...              "#7793a5", 
+...              "#465c6b",
+...          ),
+...          edge_colors=(
+...              "#7793a5", 
+...              "#7793a5", 
+...              "#7793a5", 
+...              "#7793a5",
+...          ),
+...          node_size_range=(30, 70),
+...          textfont_size_range=(10, 20),
+...          textfont_opacity_range=(0.35, 1.00),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_matrix/co_occurrence_map_1.html")
+>>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_map_1.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_matrix/co_occurrence_map_1.html" 
+    <iframe src="../../_generated/analyze/co_occurrence_matrix/co_occurrence_map_1.html"
     height="600px" width="100%" frameBorder="0"></iframe>
+
+
 
     
 """
@@ -150,7 +148,36 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
 from ...internals.nx.nx_network_plot import nx_network_plot
-from .co_occurrence_matrix import CoOccurrenceMatrix
+from ...internals.params.axes_params import AxesParams, AxesParamsMixin
+from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
+from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.params.item_params import ItemParams
+from ...internals.params.nx_params import NxParams, NxParamsMixin
+from .co_occurrence_matrix import co_occurrence_matrix
+from .internals.format_params import FormatParams, FormatParamsMixin
+
+
+class CoOccurrenceMap(
+    ColumnAndRowParamsMixin,
+    DatabaseParamsMixin,
+    FormatParamsMixin,
+    NxParamsMixin,
+    AxesParamsMixin,
+):
+    """:meta private:"""
+
+    def __init__(self):
+
+        self.column_params = ItemParams()
+        self.database_params = DatabaseParams()
+        self.row_params = ItemParams()
+        self.format_params = FormatParams()
+        self.nx_params = NxParams()
+        self.axes_params = AxesParams()
+
+    def build(self):
+
+        return co_occurrence_map()
 
 
 def co_occurrence_map(

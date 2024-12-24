@@ -11,47 +11,45 @@ Terms to Cluster Mapping
 
 >>> from sklearn.decomposition import PCA
 >>> from sklearn.cluster import KMeans
->>> from techminer2.factor_analysis.co_occurrence import terms_to_cluster_mapping
->>> mapping = terms_to_cluster_mapping(
+>>> from techminer2.analyze.factor_analysis.co_occurrence import terms_to_cluster_mapping
+>>> mapping = (
+...     TermsToClusterMapping()
+...     .set_analysis_params(
+...         association_index=None,
+...         decomposition_estimator = PCA(
+...             n_components=5,
+...             whiten=False,
+...             svd_solver="auto",
+...             tol=0.0,
+...             iterated_power="auto",
+...             n_oversamples=10,
+...             power_iteration_normalizer="auto",
+...             random_state=0, 
+...         ),
+...         clustering_estimator_or_dict = KMeans(
+...             n_clusters=6,
+...             init="k-means++",
+...             n_init=10,
+...             max_iter=300,
+...             tol=0.0001,
+...             algorithm="elkan",
+...             random_state=0,
+...         ),
 ...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     association_index=None,
+...     ).set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # ITEM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DESOMPOSITION:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # CLUSTERING:
-...     clustering_estimator_or_dict = KMeans(
-...         n_clusters=6,
-...         init="k-means++",
-...         n_init=10,
-...         max_iter=300,
-...         tol=0.0001,
-...         algorithm="elkan",
-...         random_state=0,
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
@@ -78,8 +76,8 @@ Terms to Cluster Mapping
 
 
 """
-from .._core.terms_to_cluster_mapping import _terms_to_cluster_mapping
-from .terms_by_dimension_frame import terms_by_dimension_frame
+from ..internals.terms_to_cluster_mapping import _terms_to_cluster_mapping
+from .terms_by_dimension_dataframe import terms_by_dimension_frame
 
 
 def terms_to_cluster_mapping(

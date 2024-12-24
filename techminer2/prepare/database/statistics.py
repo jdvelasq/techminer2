@@ -5,11 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Statistics (MIGRATED)
+Statistics
 ===============================================================================
 
 
->>> from techminer2.database import Statistics
+>>> from techminer2.prepare.database import Statistics
 >>> (
 ...     Statistics()
 ...     .set_database_params(
@@ -26,9 +26,10 @@ Almunawar M.N.       1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  
 Alt R.               1.0  2018.0 NaN  2018.0  2018.0  ...             1.0  1.0  1.0  1.0  1.0
 Anagnostopoulos I.   1.0  2018.0 NaN  2018.0  2018.0  ...             1.0  1.0  1.0  1.0  1.0
 Anshari M.           1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
-Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...             0.0  0.0  0.0  0.0  0.0
+Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...             1.0  1.0  1.0  1.0  1.0
 <BLANKLINE>
-[5 rows x 72 columns]
+[5 rows x 56 columns]
+
 
 
 """

@@ -18,7 +18,7 @@ Word Cloud
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_chart_params(
+...     ).set_layout_params(
 ...         width=400, 
 ...         height=400,
 ...     ).set_database_params(
@@ -40,7 +40,7 @@ from dataclasses import dataclass
 import numpy as np
 from wordcloud import WordCloud as WordCloudExternal  # type: ignore
 
-from ...analyze.metrics.performance_metrics_frame import performance_metrics_frame
+from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 
@@ -64,7 +64,7 @@ class WordCloud(
         self.database_params = DatabaseParams()
         self.item_params = ItemParams()
 
-    def set_chart_params(self, **kwars):
+    def set_layout_params(self, **kwars):
         for key, value in kwars.items():
             if hasattr(self.chart_params, key):
                 setattr(self.chart_params, key, value)

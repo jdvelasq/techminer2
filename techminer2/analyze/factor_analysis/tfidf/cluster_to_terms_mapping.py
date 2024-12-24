@@ -11,56 +11,54 @@ Cluster to Terms Mapping
 
 >>> from sklearn.decomposition import PCA
 >>> from sklearn.cluster import KMeans
->>> from techminer2.factor_analysis.tfidf import cluster_to_terms_mapping
->>> mapping = cluster_to_terms_mapping(
+>>> from techminer2.analyze.factor_analysis.tfidf import cluster_to_terms_mapping
+>>> mapping = (
+...     ClusterToTermsMapping()
+...     .set_analysis_params(
+...         decomposition_estimator = PCA(
+...             n_components=5,
+...             whiten=False,
+...             svd_solver="auto",
+...             tol=0.0,
+...             iterated_power="auto",
+...             n_oversamples=10,
+...             power_iteration_normalizer="auto",
+...             random_state=0, 
+...         ),
+...         clustering_estimator_or_dict = KMeans(
+...             n_clusters=6,
+...             init="k-means++",
+...             n_init=10,
+...             max_iter=300,
+...             tol=0.0001,
+...             algorithm="elkan",
+...             random_state=0,
+...         ),
 ...     #
-...     # PARAMS:
-...     field="author_keywords",
+...     ).set_tf_params(
+...         is_binary=True,
+...         cooc_within=1,
 ...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=1,
+...     ).set_tfidf_params(
+...         norm=None,
+...         use_idf=False,
+...         smooth_idf=False,
+...         sublinear_tf=False,
 ...     #
-...     # TF-IDF PARAMS:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
+...     ).set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # TERM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DESOMPOSITION PARAMS:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # CLUSTERING:
-...     clustering_estimator_or_dict = KMeans(
-...         n_clusters=6,
-...         init="k-means++",
-...         n_init=10,
-...         max_iter=300,
-...         tol=0.0001,
-...         algorithm="elkan",
-...         random_state=0,
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)

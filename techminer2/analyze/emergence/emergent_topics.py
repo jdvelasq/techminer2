@@ -10,24 +10,24 @@ Emergent Topics
 
 
 >>> from techminer2.emergence import emergent_topics
->>> emergent_topics(
+>>> (
+...     EmergentTopics()
+...     .set_analysis_params(
+...         field='descriptors',
+...         baseline_periods=3,
+...         recent_periods=3,
+...         novelty_threshold=0.15,
+...         total_records_threshold=7,
+...         periods_with_at_least_one_record=3,
+...         ratio_threshold=0.5,
 ...     #
-...     # FUNCTION PARAMS:
-...     field='descriptors',
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # EMERGENCE:
-...     baseline_periods=3,
-...     recent_periods=3,
-...     novelty_threshold=0.15,
-...     total_records_threshold=7,
-...     periods_with_at_least_one_record=3,
-...     ratio_threshold=0.5,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... ).head()
                         OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
 descriptors                                ...                                
@@ -43,8 +43,8 @@ INFORMATION_TECHNOLOGY    7             2  ...    91.293118           0.769302
 import numpy as np
 
 from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
-from ..metrics._compute_trend_metrics import compute_trend_metrics
-from ..metrics.general_metrics_frame import general_metrics_frame
+from ..metrics.general_metrics_dataframe import general_metrics_frame
+from ..metrics.internals._compute_trend_metrics import compute_trend_metrics
 
 
 def emergent_topics(

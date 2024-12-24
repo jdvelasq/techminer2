@@ -114,26 +114,26 @@ def ingest_raw_data(
     #
     preprocessing__abstract(root_dir)
     preprocessing__document_title(root_dir)
-
+    #
     preprocessing__eissn(root_dir)
     preprocessing__issn(root_dir)
     preprocessing__isbn(root_dir)
     preprocessing__document_type(root_dir)
-
+    #
     preprocessing__doi(root_dir)
     preprocessing__source_title(root_dir)
     preprocessing__abbr_source_title(root_dir)
     preprocessing__global_citations(root_dir)
-
+    #
     preprocessing__authors_id(root_dir)
     preprocessing__authors(root_dir)
     preprocessing__author_names(root_dir)
-
+    #
     preprocessing__num_authors(root_dir)
     preprocessing__num_global_references(root_dir)
-
+    #
     preprocessing__references(root_dir)
-
+    #
     preprocessing__record_id(root_dir)
     preprocessing__record_no(root_dir)
 

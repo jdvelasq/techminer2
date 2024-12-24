@@ -9,23 +9,22 @@
 Collaboration Metrics Plot
 ===============================================================================
 
->>> from techminer2.metrics import collaboration_metrics_plot
+>>> from techminer2.analyze.metrics import collaboration_metrics_plot
 >>> plot = collaboration_metrics_plot(
+...     .set_item_params(
+...         field="countries",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # PARAMS:
-...     field="countries",
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/metrics/collaboration_metrics.html")
 
@@ -38,7 +37,7 @@ Collaboration Metrics Plot
 """
 import plotly.express as px  # type: ignore
 
-from .collaboration_metrics_frame import collaboration_metrics_frame
+from .collaboration_metrics_dataframe import collaboration_metrics_frame
 
 
 def collaboration_metrics_plot(

@@ -38,6 +38,7 @@ def preprocessing__local_citations(root_dir):
     dataframe["local_citations"] = dataframe.record_id
     dataframe["local_citations"] = dataframe["local_citations"].map(values_dict)
     dataframe["local_citations"] = dataframe["local_citations"].fillna(0)
+    dataframe["local_citations"] = dataframe["local_citations"].astype(int)
 
     # finish
     dataframe.to_csv(

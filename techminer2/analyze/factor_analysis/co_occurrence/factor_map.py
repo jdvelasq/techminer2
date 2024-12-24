@@ -11,69 +11,67 @@ Factor Map
 
 >>> from sklearn.decomposition import PCA
 >>> from sklearn.cluster import KMeans
->>> from techminer2.factor_analysis.co_occurrence import factor_map
->>> plot = factor_map(
+>>> from techminer2.analyze.factor_analysis.co_occurrence import factor_map
+>>> plot = (
+...     FactorMap()
+...     .set_analysis_params(
+...         association_index=None,
+...         decomposition_estimator = PCA(
+...             n_components=5,
+...             whiten=False,
+...             svd_solver="auto",
+...             tol=0.0,
+...             iterated_power="auto",
+...             n_oversamples=10,
+...             power_iteration_normalizer="auto",
+...             random_state=0, 
+...         ),
+...         #
+...         # CLUSTERING:
+...         clustering_estimator_or_dict = KMeans(
+...             n_clusters=6,
+...             init="k-means++",
+...             n_init=10,
+...             max_iter=300,
+...             tol=0.0001,
+...             algorithm="elkan",
+...             random_state=0,
+...         ),
 ...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     association_index=None,
+...     ).set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # ITEM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # DESOMPOSITION:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
+...     ).set_layout_params(
+...         node_color="#7793a5",
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_top_n=None,
+...         edge_similarity_min=None,
+...         edge_widths=(2, 2, 4, 6),
+...         edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
 ...     #
-...     # CLUSTERING:
-...     clustering_estimator_or_dict = KMeans(
-...         n_clusters=6,
-...         init="k-means++",
-...         n_init=10,
-...         max_iter=300,
-...         tol=0.0001,
-...         algorithm="elkan",
-...         random_state=0,
-...     ),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # NODES:
-...     node_color="#7793a5",
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_top_n=None,
-...     edge_similarity_min=None,
-...     edge_widths=(2, 2, 4, 6),
-...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/factor_map.html")
 
@@ -88,8 +86,8 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from ...correlation_matrix._correlation_map import correlation_map
-from .cluster_centers_frame import cluster_centers_frame
+from ...correlation_matrix.internals.correlation_map import correlation_map
+from .cluster_centers_dataframe import cluster_centers_frame
 from .cluster_to_terms_mapping import cluster_to_terms_mapping
 
 

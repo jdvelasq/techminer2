@@ -10,46 +10,46 @@ Terms by Dimensions Map
 ===============================================================================
 
 >>> from sklearn.decomposition import PCA
->>> from techminer2.factor_analysis.co_occurrence import terms_by_dimension_map
->>> plot = terms_by_dimension_map(
+>>> from techminer2.analyze.factor_analysis.co_occurrence import terms_by_dimension_map
+>>> plot = (
+...     TermsByDimensionMap(
+...     .set_analysis_params(
+...         association_index=None,
+...         decomposition_estimator = PCA(
+...             n_components=5,
+...             whiten=False,
+...             svd_solver="auto",
+...             tol=0.0,
+...             iterated_power="auto",
+...             n_oversamples=10,
+...             power_iteration_normalizer="auto",
+...             random_state=0, 
+...         ),
 ...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     association_index=None,
+...     ).set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # ITEM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_layout_params(
+...         dim_x=0,
+...         dim_y=1,
+...         node_color="#465c6b",
+...         node_size=10,
+...         textfont_size=8,
+...         textfont_color="#465c6b",
+...         xaxes_range=None,
+...         yaxes_range=None,
 ...     #
-...     # DESOMPOSITION PARAMS:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # MAP PARAMS:
-...     dim_x=0,
-...     dim_y=1,
-...     node_color="#465c6b",
-...     node_size=10,
-...     textfont_size=8,
-...     textfont_color="#465c6b",
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
 
@@ -59,8 +59,8 @@ Terms by Dimensions Map
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .._core.manifold_2d_map import manifold_2d_map
-from .terms_by_dimension_frame import terms_by_dimension_frame
+from ..internals.manifold_2d_map import manifold_2d_map
+from .terms_by_dimension_dataframe import terms_by_dimension_frame
 
 
 def terms_by_dimension_map(

@@ -7,10 +7,10 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-Coverage (MIGRATED)
+Coverage
 ===============================================================================
 
->>> from techminer2.database import Coverage
+>>> from techminer2.prepare.database import Coverage
 >>> (
 ...     Coverage()
 ...     .set_database_params(
@@ -54,7 +54,7 @@ class Coverage(
         documents = read_filtered_database(**self.database_params.__dict__)
 
         documents = documents.reset_index()
-        documents = documents[[field, "article"]]
+        documents = documents[[field, "record_id"]]
 
         n_documents = len(documents)
         print(f"--INFO-- Number of documents : {n_documents}")
@@ -72,22 +72,22 @@ class Coverage(
         documents = documents[~documents[field].isin(stopwords)]
 
         documents = documents.groupby(by=[field]).agg(
-            {"num_documents": "count", "article": list}
+            {"num_documents": "count", "record_id": list}
         )
         documents = documents.sort_values(by=["num_documents"], ascending=False)
 
         documents = documents.reset_index()
 
         documents = documents.groupby(by="num_documents", as_index=False).agg(
-            {"article": list, field: list}
+            {"record_id": list, field: list}
         )
 
         documents = documents.sort_values(by=["num_documents"], ascending=False)
-        documents["article"] = documents.article.map(
+        documents["record_id"] = documents.record_id.map(
             lambda x: [term for sublist in x for term in sublist]
         )
 
-        documents = documents.assign(cum_sum_documents=documents.article.cumsum())
+        documents = documents.assign(cum_sum_documents=documents.record_id.cumsum())
         documents = documents.assign(
             cum_sum_documents=documents.cum_sum_documents.map(set)
         )
@@ -105,7 +105,7 @@ class Coverage(
         documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))
         documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(len))
 
-        documents.drop("article", axis=1, inplace=True)
+        documents.drop("record_id", axis=1, inplace=True)
         documents.drop(field, axis=1, inplace=True)
         documents = documents.reset_index(drop=True)
 

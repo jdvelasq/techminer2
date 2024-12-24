@@ -18,19 +18,23 @@ Co-occurrence Heatmap
 ...         occ_range=(2, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_row_params(
+...     #
+...     ).set_rows_params(
 ...         field="authors",
 ...         top_n=None,
 ...         occ_range=(2, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
+...     #
 ...     ).set_format_params(
 ...         retain_counters=True,
+...     #
 ...     ).set_database_params(
 ...         root_dir="example/", 
 ...         database="main",
 ...         year_filter=(None, None),
 ...         cited_by_filter=(None, None),
+...     #
 ...     ).build()
 ... ) # doctest: +ELLIPSIS
 <pandas.io.formats.style.Styler ...
@@ -41,7 +45,7 @@ from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from .co_occurrence_matrix import CoOccurrenceMatrix
-from .format_params import FormatParams, FormatParamsMixin
+from .internals.format_params import FormatParams, FormatParamsMixin
 
 
 class CoOccurrenceHeatmap(

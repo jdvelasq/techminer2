@@ -10,43 +10,41 @@ Network Plot
 ===============================================================================
 
 >>> # article:
->>> from techminer2.citation_network import network_plot
->>> plot = network_plot(
+>>> from techminer2.analyze.citation_network import NetworkPlot
+>>> plot = (
+...     NetworkPlot()
+...     .set_analysis_params(
+...         unit_of_analysis='article',
+...         top_n=30, 
+...         citations_threshold=0,
+...         algorithm_or_dict="louvain",
 ...     #
-...     # COLUMN PARAMS:
-...     unit_of_analysis='article',
-...     top_n=30, 
-...     citations_threshold=0,
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
 ...     #
-...     # NETWORK CLUSTERING:
-...     algorithm_or_dict="louvain",
+...     ).set_layout_params(
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_color="#7793a5",
+...         edge_width_range=(0.8, 3.0),
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
 ...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/citation_network/documents_network_plot.html")
+>>> plot.write_html("sphinx/_static/citation_network/documents_network_plot.html")
 
 .. raw:: html
 
@@ -55,45 +53,39 @@ Network Plot
 
     
 >>> # abbr_source_title, authors, organizations, countries:
->>> from techminer2.citation_network import network_plot
->>> plot = network_plot(
-...     #
-...     # COLUMN PARAMS:
-...     unit_of_analysis='abbr_source_title',
-...     top_n=30,
-...     citations_threshold=0,
-...     #
-...     # ONLY FOR OTHERS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
+>>> from techminer2.analyze.citation_network import NetworkPlot
+>>> plot = (
+...     NetworkPlot()
+...     .set_analysis_params(
+...         unit_of_analysis='abbr_source_title',
+...         top_n=30,
+...         citations_threshold=0,
+...         occurrence_threshold=2,
+...         custom_terms=None,
 ...     #
 ...     # NETWORK CLUSTERING:
 ...     algorithm_or_dict="louvain",
 ...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).set_nx_params(
+...         nx_k=None,
+...         nx_iterations=30,
+...         nx_random_state=0,
+...     ).set_layout_params(
+...         node_size_range=(30, 70),
+...         textfont_size_range=(10, 20),
+...         textfont_opacity_range=(0.35, 1.00),
+...         edge_color="#7793a5",
+...         edge_width_range=(0.8, 3.0),
+...     ).set_axes_params(
+...         xaxes_range=None,
+...         yaxes_range=None,
+...         show_axes=False,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> # plot.write_html("sphinx/_static/citation_network/others_network_plot.html")
 
@@ -104,8 +96,8 @@ Network Plot
 
 
 """
-from ._core.docs.network_plot import _network_plot as _network_plot_from_docs
-from ._core.others.network_plot import _network_plot as _network_plot_from_others
+from .docs.network_plot import _network_plot as _network_plot_from_docs
+from .others.network_plot import _network_plot as _network_plot_from_others
 
 
 def network_plot(

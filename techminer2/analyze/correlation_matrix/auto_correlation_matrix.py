@@ -10,24 +10,26 @@ Auto-correlation Matrix
 
 Returns an auto-correlation matrix.
 
->>> from techminer2.correlation_matrix import auto_correlation_matrix
->>> auto_correlation_matrix(
+>>> from techminer2.analyze.correlation_matrix import auto_correlation_matrix
+>>> (
+...     auto_correlation_matrix()
+...     .set_analysis_params(
+...         method="pearson",
 ...     #
-...     # FUNCTION PARAMS:
-...     rows_and_columns='authors',
-...     method="pearson",
+...     ).set_item_params(
+...         field='authors',
+...         top_n=10,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...         custom_terms=None,
 ...     #
-...     # ITEM PARAMS:
-...     top_n=10,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
 ...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
+...     ).build()
 ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                  1.00  ...                   0.0
@@ -48,8 +50,8 @@ Zavolokina L. 2:0181                0.00  ...                   1.0
 from ...internals.utils.utils_format_prompt_for_dataframes import (
     _utils_format_prompt_for_dataframes,
 )
-from ..metrics.tfidf_frame import tfidf_frame
-from ._compute_corr_matrix import compute_corr_matrix
+from ..metrics.tfidf_dataframe import tfidf_frame
+from .internals.compute_corr_matrix import compute_corr_matrix
 
 
 def auto_correlation_matrix(

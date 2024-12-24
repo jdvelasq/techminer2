@@ -18,7 +18,7 @@ Bubble Chart
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_row_params(
+...     ).set_rows_params(
 ...         field=None,
 ...         top_n=None,
 ...         occ_range=(None, None),
@@ -47,7 +47,7 @@ from typing import Optional
 import plotly.express as px  # type: ignore
 
 from ...analyze.co_occurrence_matrix.co_occurrence_matrix import CoOccurrenceMatrix
-from ...analyze.co_occurrence_matrix.format_params import (
+from ...analyze.co_occurrence_matrix.internals.format_params import (
     FormatParams,
     FormatParamsMixin,
 )

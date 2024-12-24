@@ -10,32 +10,31 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import documents_by_cluster_mapping
->>> documents_by_cluster = documents_by_cluster_mapping(
+>>> from techminer2.analyze.co_occurrence_network import DocumentsByClusterMapping
+>>> documents_by_cluster = (
+...     DocumentsByClusterMapping()
+...     .set_analysis_params(
+...         algorithm_or_dict="louvain",
+...         association_index="association",
 ...     #
-...     # PARAMS:
-...     field='author_keywords',
+...     .set_item_params(
+...         field="author_keywords",
+...         top_n=20,
+...         occ_range=(None, None),
+...         gc_range=(None, None),
+...        custom_terms=None,
 ...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
+...                                # global_cited_by_lowest, local_cited_by_highest, 
+...                                # local_cited_by_lowest, first_author_a_to_z, 
+...                                # first_author_z_to_a, source_title_a_to_z, 
+...                                # source_title_z_to_a
+...     ).build()
 ... )
 >>> print(len(documents_by_cluster))
 4

@@ -42,8 +42,11 @@ def write_thesaurus_file(descriptors, thesaurus_file):
 
 def preprocessing__descriptors(root_dir):
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
-    dataframe = pd.read_csv(database_file, encoding="utf-8", compression="zip")
+    dataframe = pd.read_csv(
+        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        encoding="utf-8",
+        compression="zip",
+    )
 
     descriptors = generate_descriptors_list(dataframe)
 

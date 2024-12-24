@@ -17,7 +17,7 @@ Extract Country
 ... )
 
 >>> # TEST:  
->>> from techminer2.metrics import performance_metrics_frame
+>>> from techminer2.analyze.metrics import performance_metrics_frame
 >>> performance_metrics( # doctest: +SKIP 
 ...     field='countries_from_affiliations',
 ...     metric='OCC',
