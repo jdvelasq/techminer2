@@ -72,7 +72,7 @@ from .docs.terms_by_cluster_dataframe import (
 from .others.terms_by_cluster_dataframe import _terms_by_cluster_frame
 
 
-def terms_by_cluster_frame(
+def terms_by_cluster_dataframe(
     unit_of_analysis,
     #
     # COLUMN PARAMS:

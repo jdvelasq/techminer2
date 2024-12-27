@@ -95,26 +95,26 @@ CASE_STUDY 02:0340                          2  ...                   2
 
 
 """
-from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
+from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from .co_occurrence_dataframe import CoOccurrenceDataFrame
-from .internals.format_params import FormatParams, FormatParamsMixin
+from .internals.output_params import OutputParams, OutputParamsMixin
 
 
 class CoOccurrenceMatrix(
-    ColumnAndRowParamsMixin,
+    ColumnsAndRowsParamsMixin,
     DatabaseParamsMixin,
-    FormatParamsMixin,
+    OutputParamsMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
 
-        self.column_params = ItemParams()
+        self.columns_params = ItemParams()
         self.database_params = DatabaseParams()
-        self.row_params = ItemParams()
-        self.format_params = FormatParams()
+        self.output_params = OutputParams()
+        self.rows_params = ItemParams()
 
     def build(self):
 
@@ -130,9 +130,9 @@ class CoOccurrenceMatrix(
 
         matrix_list = (
             CoOccurrenceDataFrame()
-            .set_column_params(**self.column_params.__dict__)
-            .set_row_params(**self.row_params.__dict__)
-            .set_format_params(**self.format_params.__dict__)
+            .set_columns_params(**self.columns_params.__dict__)
+            .set_rows_params(**self.rows_params.__dict__)
+            .set_format_params(**self.output_params.__dict__)
             .set_database_params(**self.database_params.__dict__)
             .build()
         )
@@ -148,7 +148,7 @@ class CoOccurrenceMatrix(
         matrix = matrix[matrix_cols]
         matrix = matrix.loc[matrix_rows]
 
-        if self.format_params.retain_counters is False:
+        if self.output_params.retain_counters is False:
             matrix_cols = [" ".join(col.split()[:-1]) for col in matrix_cols]
             matrix_rows = [" ".join(row.split()[:-1]) for row in matrix_rows]
             matrix.columns = matrix_cols
@@ -187,14 +187,14 @@ def co_occurrence_matrix(
     """:meta private:"""
     return (
         CoOccurrenceMatrix()
-        .set_column_params(
+        .set_columns_params(
             field=columns,
             top_n=col_top_n,
             occ_range=col_occ_range,
             gc_range=col_gc_range,
             custom_terms=col_custom_terms,
         )
-        .set_row_params(
+        .set_rows_params(
             field=rows,
             top_n=row_top_n,
             occ_range=row_occ_range,

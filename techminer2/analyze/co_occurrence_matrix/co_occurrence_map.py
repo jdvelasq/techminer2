@@ -13,7 +13,7 @@ Co-occurrence Map
 >>> from techminer2.co_occurrence_matrix import CoOccurrenceMap
 >>> plot = (
 ...     CoOccurrenceMap()
-...     .set_column_params(
+...     .set_columns_params(
 ...         field="author_keywords",
 ...         top_n=10,
 ...         occ_range=(None, None),
@@ -149,18 +149,18 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
 )
 from ...internals.nx.nx_network_plot import nx_network_plot
 from ...internals.params.axes_params import AxesParams, AxesParamsMixin
-from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
+from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from ...internals.params.nx_params import NxParams, NxParamsMixin
 from .co_occurrence_matrix import co_occurrence_matrix
-from .internals.format_params import FormatParams, FormatParamsMixin
+from .internals.output_params import OutputParams, OutputParamsMixin
 
 
 class CoOccurrenceMap(
-    ColumnAndRowParamsMixin,
+    ColumnsAndRowsParamsMixin,
     DatabaseParamsMixin,
-    FormatParamsMixin,
+    OutputParamsMixin,
     NxParamsMixin,
     AxesParamsMixin,
 ):
@@ -171,7 +171,7 @@ class CoOccurrenceMap(
         self.column_params = ItemParams()
         self.database_params = DatabaseParams()
         self.row_params = ItemParams()
-        self.format_params = FormatParams()
+        self.format_params = OutputParams()
         self.nx_params = NxParams()
         self.axes_params = AxesParams()
 

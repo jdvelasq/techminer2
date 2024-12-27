@@ -1,5 +1,5 @@
 from .co_occurrences_chart import co_occurrences_chart
 from .cosine_similarities_graph import cosine_similarities_graph
 from .radial_diagram import radial_diagram
-from .term_associations.chart import term_associations_plot
 from .term_associations.dataframe import term_associations_frame
+from .term_associations.ranking_plot import term_associations_plot

@@ -58,7 +58,7 @@ from ...internals.mt.mt_extract_top_n_terms_by_metric import (
     _mt_extract_top_n_terms_by_metric,
 )
 from ...internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
-from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
+from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from ...internals.read_filtered_database import read_filtered_database
@@ -66,13 +66,13 @@ from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ...internals.utils.utils_compute_occurrences_and_citations import (
     _utils_compute_occurrences_and_citations,
 )
-from .internals.format_params import FormatParams, FormatParamsMixin
+from .internals.output_params import OutputParams, OutputParamsMixin
 
 
 class CoOccurrenceDataFrame(
-    ColumnAndRowParamsMixin,
+    ColumnsAndRowsParamsMixin,
     DatabaseParamsMixin,
-    FormatParamsMixin,
+    OutputParamsMixin,
 ):
     """:meta private:"""
 
@@ -81,7 +81,7 @@ class CoOccurrenceDataFrame(
         self.column_params = ItemParams()
         self.database_params = DatabaseParams()
         self.row_params = ItemParams()
-        self.format_params = FormatParams()
+        self.format_params = OutputParams()
 
     def build(self):
 
@@ -229,14 +229,14 @@ def co_occurrence_frame(
 
     return (
         CoOccurrenceDataFrame()
-        .set_column_params(
+        .set_columns_params(
             field=columns,
             top_n=col_top_n,
             occ_range=col_occ_range,
             gc_range=col_gc_range,
             custom_terms=col_custom_terms,
         )
-        .set_row_params(
+        .set_rows_params(
             field=rows,
             top_n=row_top_n,
             occ_range=row_occ_range,

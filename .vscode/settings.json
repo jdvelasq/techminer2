@@ -6,5 +6,6 @@
     },
     "flake8.args": [
         "--config=pyproject.toml"
-    ]
+    ],
+    "livePreview.defaultPreviewPath": "/sphinx/_generated/visualize/basic_plots/column_plot.html"
 }

@@ -41,17 +41,17 @@ Co-occurrence Heatmap
 
 
 """
-from ...internals.params.column_and_row_params import ColumnAndRowParamsMixin
+from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from .co_occurrence_matrix import CoOccurrenceMatrix
-from .internals.format_params import FormatParams, FormatParamsMixin
+from .internals.output_params import OutputParams, OutputParamsMixin
 
 
 class CoOccurrenceHeatmap(
-    ColumnAndRowParamsMixin,
+    ColumnsAndRowsParamsMixin,
     DatabaseParamsMixin,
-    FormatParamsMixin,
+    OutputParamsMixin,
 ):
     """:meta private:"""
 
@@ -60,7 +60,7 @@ class CoOccurrenceHeatmap(
         self.column_params = ItemParams()
         self.database_params = DatabaseParams()
         self.row_params = ItemParams()
-        self.format_params = FormatParams()
+        self.format_params = OutputParams()
 
     def build(self):
 
@@ -75,8 +75,8 @@ class CoOccurrenceHeatmap(
 
         matrix = (
             CoOccurrenceMatrix()
-            .set_column_params(**self.column_params.__dict__)
-            .set_row_params(**self.row_params.__dict__)
+            .set_columns_params(**self.column_params.__dict__)
+            .set_rows_params(**self.row_params.__dict__)
             .set_format_params(**self.format_params.__dict__)
             .set_database_params(**self.database_params.__dict__)
             .build()

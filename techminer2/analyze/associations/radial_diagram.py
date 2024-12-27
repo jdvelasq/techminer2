@@ -10,26 +10,11 @@ Radial Diagram
 
 
 >>> from techminer2.tools.associations import radial_diagram
->>> plot = radial_diagram(
+>>> plot = (
+...     RadialDiagram()
+...     .set_analysis_params(
+...         items=["FINTECH", "INNOVATION"],
 ...     #
-...     # FUNCTION PARAMS:
-...     items=["FINTECH", "INNOVATION"],
-
-
-...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
 ...     ).set_axes_params(
 ...         xaxes_range=None,
 ...         yaxes_range=None,
@@ -42,21 +27,34 @@ Radial Diagram
 ...         gc_range=(None, None),
 ...         custom_terms=None,
 ...     #
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     )
+...     #
+...     ).set_layout_params(
+...         edge_color="#7793a5",
+...         edge_width_range=(0.8, 3.0),
+...         node_size_range=(30, 70),
+...         textfont_opacity_range=(0.35, 1.00),
+...         textfont_size_range=(10, 20),
+...     #
+...     ).set_nx_params(
+...         nx_iterations=30,
+...         nx_k=None,
+...         nx_random_state=0,
+...     #
 ...     ).set_rows_params(
 ...         field=None,
 ...         top_n=None,
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
 ...     ).build()
 ... )
->>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
+>>> plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 

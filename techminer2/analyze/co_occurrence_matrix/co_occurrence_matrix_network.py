@@ -137,8 +137,9 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
 from ...internals.nx.nx_network_plot import nx_network_plot
 from .co_occurrence_matrix import co_occurrence_matrix
 
-class CoOccurrenceMatrixNetwork():
 
+class CoOccurrenceMatrixNetwork:
+    pass
 
 
 def co_occurrence_matrix_network(
