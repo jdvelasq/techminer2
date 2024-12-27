@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Bar Plot
+Bar Plot (MIGRATED)
 ===============================================================================
 
 >>> from techminer2.visualize.basic_plots.bar_plot import BarPlot
@@ -66,7 +66,7 @@ class BarPlot(
         self.database_params = DatabaseParams()
         self.item_params = ItemParams()
 
-    def build(self, metric: str = "OCC"):
+    def build(self):
 
         dataframe = performance_metrics_frame(
             metric=self.analysis_params.metric,

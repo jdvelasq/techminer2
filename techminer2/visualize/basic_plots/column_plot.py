@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Column Chart
+Column Plot (MIGRATED)
 ===============================================================================
 
 >>> from techminer2.visualize.basic_plots.column_plot import ColumnPlot
@@ -64,9 +64,9 @@ class ColumnPlot(
 
     def __init__(self):
         self.analysis_params = AnalysisParams()
-        self.plot_params = ColumnPlotParams()
         self.database_params = DatabaseParams()
         self.item_params = ItemParams()
+        self.plot_params = ColumnPlotParams()
 
     def build(self):
 

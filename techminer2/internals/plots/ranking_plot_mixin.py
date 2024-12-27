@@ -23,8 +23,8 @@ class RankingPlotParams:
     marker_size: float = 7
     textfont_size: float = 10
     title_text: Optional[str] = None
-    xaxes_label: Optional[str] = None
-    yaxes_label: Optional[str] = None
+    xaxes_title_text: Optional[str] = None
+    yaxes_title_text: Optional[str] = None
     yshift: float = 4
 
 
@@ -44,15 +44,9 @@ class RankingPlotMixin:
         marker_size = self.plot_params.marker_size
         textfont_size = self.plot_params.textfont_size
         title_text = self.plot_params.title_text
-        xaxes_label = self.plot_params.xaxes_label
-        yaxes_label = self.plot_params.yaxes_label
+        xaxes_title_text = self.plot_params.xaxes_title_text
+        yaxes_title_text = self.plot_params.yaxes_title_text
         yshift = self.plot_params.yshift
-
-        dataframe = dataframe.copy()
-        dataframe["Rank"] = list(range(1, len(dataframe) + 1))
-
-        if title_text is None:
-            title_text = ""
 
         fig = px.line(
             dataframe,
@@ -80,14 +74,14 @@ class RankingPlotMixin:
             linewidth=1,
             gridcolor="lightgray",
             griddash="dot",
-            title=yaxes_label,
+            title=yaxes_title_text,
         )
         fig.update_xaxes(
             linecolor="gray",
             linewidth=1,
             gridcolor="lightgray",
             griddash="dot",
-            title=xaxes_label,
+            title=xaxes_title_text,
         )
 
         for name, row in dataframe.iterrows():

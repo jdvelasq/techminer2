@@ -40,9 +40,6 @@ class ColumnPlotMixin:
         xaxes_title_text = self.plot_params.xaxes_title_text
         yaxes_title_text = self.plot_params.yaxes_title_text
 
-        if title_text is None:
-            title_text = ""
-
         fig = px.bar(
             dataframe,
             x=None,

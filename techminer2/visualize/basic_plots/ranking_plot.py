@@ -7,7 +7,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Ranking Plot
+Ranking Plot (MIGRATED)
 ===============================================================================
 
 >>> from techminer2.visualize.basic_plots.ranking_plot import RankingPlot
@@ -28,8 +28,8 @@ Ranking Plot
 ...         marker_size=7,
 ...         textfont_size=10,
 ...         title_text="Ranking Plot",
-...         xaxes_label="Author Keywords",
-...         yaxes_label="OCC",
+...         xaxes_title_text="Author Keywords",
+...         yaxes_title_text="OCC",
 ...         yshift=4,
 ...     #
 ...     ).set_database_params(
@@ -49,17 +49,17 @@ Ranking Plot
 
 
 """
-
-
 from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...internals.plots.ranking_plot_mixin import RankingPlotMixin, RankingPlotParams
 from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
+from .internals.basic_plot import BasicPlotMixin
 
 
 class RankingPlot(
     AnalysisParamsMixin,
+    BasicPlotMixin,
     DatabaseParamsMixin,
     ItemParamsMixin,
     RankingPlotMixin,
@@ -72,28 +72,22 @@ class RankingPlot(
         self.item_params = ItemParams()
         self.plot_params = RankingPlotParams()
 
-    def _set_default_labels(self):
-
-        self.plot_params.xaxes_label = (
-            self.item_params.field.title().replace("_", " ")
-            if self.plot_params.xaxes_label is None
-            else self.plot_params.xaxes_label
-        )
-
-        self.plot_params.yaxes_label = (
-            self.analysis_params.metric.replace("_", " ")
-            if self.plot_params.yaxes_label is None
-            else self.plot_params.yaxes_label
-        )
-
     def build(self):
-
-        self._set_default_labels()
 
         dataframe = performance_metrics_frame(
             metric=self.analysis_params.metric,
             **self.item_params.__dict__,
             **self.database_params.__dict__,
+        )
+
+        dataframe["Rank"] = range(1, len(dataframe) + 1)
+
+        self.set_default_title_texts(
+            default_title_text="",
+            default_xaxes_title_text=self.item_params.field.replace("_", " ").upper(),
+            default_yaxes_title_text=self.analysis_params.metric.replace(
+                "_", " "
+            ).upper(),
         )
 
         fig = self.build_ranking_plot(

@@ -4,7 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-"""Cleveland Dot Plot Mixin."""
+"""Line Plot Mixin."""
 
 from dataclasses import dataclass
 from typing import Optional
@@ -20,8 +20,8 @@ class LinePlotParams:
     """:meta private:"""
 
     title_text: Optional[str] = None
-    xaxes_label: Optional[str] = None
-    yaxes_label: Optional[str] = None
+    xaxes_title_text: Optional[str] = None
+    yaxes_title_text: Optional[str] = None
 
 
 class LinePlotMixin:
@@ -36,30 +36,15 @@ class LinePlotMixin:
 
     def build_line_plot(self, dataframe, y_col):
 
-        metric_label = self.chart_params.metric_label
-        field_label = self.chart_params.field_label
-        title_text = self.chart_params.title_text
-
-        data_frame = performance_metrics_frame(
-            metric=metric,
-            **self.item_params.__dict__,
-            **self.database_params.__dict__,
-        )
-
-        if metric_label is None:
-            metric_label = metric.replace("_", " ").upper()
-
-        if field_label is None:
-            field_label = self.item_params.field.replace("_", " ").upper()
-
-        if title_text is None:
-            title_text = ""
+        title_text = self.plot_params.title_text
+        xaxes_title_text = self.plot_params.xaxes_title_text
+        yaxes_title_text = self.plot_params.yaxes_title_text
 
         fig = px.line(
-            data_frame,
+            dataframe,
             x=None,
-            y=metric,
-            hover_data=data_frame.columns.to_list(),
+            y=y_col,
+            hover_data=dataframe.columns.to_list(),
             markers=True,
         )
 
@@ -69,7 +54,7 @@ class LinePlotMixin:
             title_text=title_text,
         )
         fig.update_traces(
-            marker=dict(size=9, line={"color": "#465c6b", "width": 2}),
+            marker={"size": 9, "line": {"color": "#465c6b", "width": 2}},
             marker_color=MARKER_COLOR,
             line={"color": MARKER_LINE_COLOR},
         )
@@ -79,14 +64,14 @@ class LinePlotMixin:
             gridcolor="lightgray",
             griddash="dot",
             tickangle=270,
-            title_text=field_label,
+            title_text=xaxes_title_text,
         )
         fig.update_yaxes(
             linecolor="gray",
             linewidth=2,
             gridcolor="lightgray",
             griddash="dot",
-            title_text=metric_label,
+            title_text=yaxes_title_text,
         )
 
         return fig

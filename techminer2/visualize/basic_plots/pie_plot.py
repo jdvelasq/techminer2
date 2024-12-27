@@ -6,96 +6,78 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Pie Chart
+Pie Plot (MIGRATED)
 ===============================================================================
 
 
->>> from techminer2.visualize.basic_charts.pie_chart import PieChart
+>>> from techminer2.visualize.basic_plots.pie_plot import PiePlot
 >>> plot = (
-...     PieChart()
-...     .set_item_params(
+...     PiePlot()
+...     .set_analysis_params(
+...         metric="OCC",
+...     #
+...     ).set_item_params(
 ...         field="author_keywords",
 ...         top_n=20,
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_layout_params(
+...     #
+...     ).set_plot_params(
 ...         title_text="Most Frequent Author Keywords",
 ...         hole=0.4,
+...     #
 ...     ).set_database_params(
 ...         root_dir="example/", 
 ...         database="main",
 ...         year_filter=(None, None),
 ...         cited_by_filter=(None, None),
-...     ).build(metric="OCC")
+...     #
+...     ).build()
 ... )
->>> plot.write_html("sphinx/_generated/visualize/basic_charts/pie_chart.html")
+>>> plot.write_html("sphinx/_generated/visualize/basic_plots/pie_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/visualize/basic_charts/pie_chart.html" 
+    <iframe src="../../_generated/visualize/basic_plots/pie_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
-
 """
-from dataclasses import dataclass
-from typing import Optional
-
-import plotly.express as px  # type: ignore
-
 from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
+from ...internals.plots.pie_plot_mixin import PiePlotMixin, PiePlotParams
+from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
+from .internals.basic_plot import BasicPlotMixin
 
 
-@dataclass
-class ChartParams:
-    """:meta private:"""
-
-    title_text: Optional[str] = None
-    hole: Optional[float] = 0.4
-
-
-class PieChart(
-    ItemParamsMixin,
+class PiePlot(
+    AnalysisParamsMixin,
+    BasicPlotMixin,
+    PiePlotMixin,
     DatabaseParamsMixin,
+    ItemParamsMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
-        self.chart_params = ChartParams()
+        self.analysis_params = AnalysisParams()
         self.database_params = DatabaseParams()
         self.item_params = ItemParams()
+        self.plot_params = PiePlotParams()
 
-    def set_layout_params(self, **kwars):
-        for key, value in kwars.items():
-            if hasattr(self.chart_params, key):
-                setattr(self.chart_params, key, value)
-            else:
-                raise ValueError(f"Invalid parameter for ChartParams: {key}")
-        return self
+    def build(self):
 
-    def build(self, metric: str = "OCC"):
-
-        title_text = self.chart_params.title_text
-        hole = self.chart_params.hole
-
-        data_frame = performance_metrics_frame(
-            metric=metric,
+        dataframe = performance_metrics_frame(
+            metric=self.analysis_params.metric,
             **self.item_params.__dict__,
             **self.database_params.__dict__,
         )
 
-        fig = px.pie(
-            data_frame,
-            values=metric,
-            names=data_frame.index.to_list(),
-            hole=hole,
-            hover_data=data_frame.columns.to_list(),
-            title=title_text,
+        fig = self.build_pie_plot(
+            dataframe,
+            values_col=self.analysis_params.metric,
         )
-        fig.update_traces(textinfo="percent+value")
-        fig.update_layout(legend={"y": 0.5})
 
         return fig
