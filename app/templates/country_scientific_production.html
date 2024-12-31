@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row px-0">
+    <div class="col bg-secondary text-white  vw-50">
+
+        <img src='data:image/png;base64,{{ worldmap_plot }}'
+            class="img-fluid" />
+
+    </div>
+    <div class="col bg-light vw-50">
+
+
+
+        {% for table in tables %}
+
+        {{ table|safe }}
+        {% endfor %}
+
+
+    </div>
+</div>
+
+{% endblock %}
