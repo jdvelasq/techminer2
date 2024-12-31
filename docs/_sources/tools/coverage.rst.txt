@@ -1,0 +1,6 @@
+.. automodule:: techminer2.tools.coverage
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
