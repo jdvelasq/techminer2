@@ -1,0 +1,161 @@
+ingest/
+    scopus
+
+REFINE/
+
+
+
+ANALYZE/
+
+
+
+REPORT/
+
+
+
+
+
+fields/
+    copy 
+    delete
+    fillna
+    mergefields
+    rename
+    further/
+        removespaces
+        countterms
+        extractcountry
+        extractmykeywords
+        fields difference
+        fields intersection
+        stemming and
+        stemming or
+
+stopwords/
+    sort
+
+mykeywords/
+    sort
+
+
+thesaurus/
+    
+    countries/
+        apply
+        find
+        sort
+    
+    organizations/
+        apply
+        find
+        sort
+    
+    descriptors/
+        apply
+        find
+        sort
+
+        reset
+        
+        list abbr
+        fuzzy
+        misspelling
+        replace
+        list cleanup
+        words frequency
+        
+
+
+
+search/
+    concordances
+    associactions
+    simrecords
+    simphrases
+
+metrics/
+    general
+    trend
+    performance
+    collaboration
+    growth
+    termsbyyear
+    tfidf
+
+
+science mapping/
+    co-authorship/
+        network/
+        collaboration worldmap
+
+    co_ocurrence/
+        network/
+
+    citation/
+        network/
+        documents/
+           most cited
+
+        rpys
+
+    bibliographic coupling/ -> network
+        documents/
+        sources/
+        authors/
+        organizations/
+        countries/
+
+    co-citaton/
+        cited references/ -> network
+        cited sources/ -> network
+        cited authors/
+
+    topic modeling/
+
+tech-mining/
+    co-occurrence/
+        matrix
+        matrix viewer
+        sankey chart
+        words viewer
+
+    correlation/
+        auto-correlation matrix
+        auto-correlation map
+        cross-correlation matrix
+        cross-correlation map
+
+    document classification/
+
+    cluster records
+
+tools/
+    coverage
+    query
+    statistics
+    summary
+
+
+
+plots/
+    columnchart
+    barchart
+    piechart
+    linechart
+    wordcloud
+    bubblechart
+    heatmap
+    butterflychart
+    scatterplot
+    clustermap
+    worldmap
+    clevelanddot
+    ranking
+    wordtrends
+    bradford
+    lotka
+
+
+
+
+
