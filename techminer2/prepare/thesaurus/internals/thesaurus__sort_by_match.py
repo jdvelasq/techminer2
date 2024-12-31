@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 """
 
->>> from techminer2.thesaurus._core.find_string_in_thesaurus import find_string_in_thesaurus
+>>> from techminer2.prepare.thesaurus._core.find_string_in_thesaurus import find_string_in_thesaurus
 >>> find_string_in_thesaurus(
 ...     #
 ...     # THESAURUS FILE:

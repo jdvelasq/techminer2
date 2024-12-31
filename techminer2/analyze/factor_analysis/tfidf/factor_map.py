@@ -57,7 +57,7 @@ Factor Map
 ...         nx_iterations=30,
 ...         nx_random_state=0,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         node_color="#7793a5",
 ...         node_size_range=(30, 70),
 ...         textfont_size_range=(10, 20),
@@ -92,7 +92,7 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from ...correlation_matrix.internals.correlation_map import correlation_map
+from ...correlation.internals.correlation_map import correlation_map
 from .cluster_centers_dataframe import cluster_centers_frame
 from .cluster_to_terms_mapping import cluster_to_terms_mapping
 

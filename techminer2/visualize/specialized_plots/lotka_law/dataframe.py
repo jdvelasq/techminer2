@@ -10,15 +10,15 @@ Dataframe
 ===============================================================================
 
 
->>> from techminer2.visualize.specialized_charts.lotka_law import dataframe
->>> dataframe(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
+# >>> from techminer2.visualize.specialized_plots.lotka_law import dataframe
+# >>> dataframe(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=None,
+# ...     cited_by_filter=None,
+# ... )
    Documents Written  ...  Prop Theoretical Authors
 0                  1  ...                     0.735
 1                  2  ...                     0.184

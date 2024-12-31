@@ -26,7 +26,7 @@ Network Plot
 ...         nx_iterations=30,
 ...         nx_random_state=0,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         node_size_range=(9, 20),
 ...         textfont_size_range=(8, 12),
 ...         textfont_opacity_range=(0.35, 1.00),
@@ -73,7 +73,7 @@ from ...internals.nx.nx_assign_uniform_color_to_edges import (
     nx_assign_uniform_color_to_edges,
 )
 from ...internals.nx.nx_assign_widths_to_edges_by_weight import (
-    _nx_assign_widths_to_edges_by_weight,
+    nx_assign_widths_to_edges_by_weight,
 )
 from ...internals.nx.nx_cluster_graph import nx_cluster_graph
 from ...internals.nx.nx_compute_spring_layout_positions import (
@@ -171,7 +171,7 @@ def network_plot(
 
     #
     # Sets the edge attributes
-    nx_graph = _nx_assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
+    nx_graph = nx_assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
     nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
     nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
 

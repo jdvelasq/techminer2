@@ -26,7 +26,7 @@ Network Degree Plot
 ...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
 ...     occurrence_threshold=2,
 ...     custom_terms=None,
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         textfont_size=10,
 ...         marker_size=7,
 ...         line_color="black",
@@ -65,7 +65,7 @@ Network Degree Plot
 ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
 ...     occurrence_threshold=2,
 ...     custom_terms=None,
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         textfont_size=10,
 ...         marker_size=7,
 ...         line_color="black",

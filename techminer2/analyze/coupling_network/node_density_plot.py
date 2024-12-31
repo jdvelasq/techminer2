@@ -80,7 +80,7 @@ Network Density Plot
 ...         nx_iterations=30,
 ...         nx_random_state=0,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         bandwidth=0.1,
 ...         colorscale="Aggrnyl",
 ...         opacity=0.6,

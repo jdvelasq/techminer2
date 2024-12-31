@@ -59,19 +59,19 @@ from ....internals.nx.nx_assign_opacity_to_text_by_frequency import (
     nx_assign_opacity_to_text_by_frequency,
 )
 from ....internals.nx.nx_assign_sizes_to_nodes_by_occurrences import (
-    _nx_assign_sizes_to_nodes_by_occurrences,
+    nx_assign_sizes_to_nodes_by_occurrences,
 )
 from ....internals.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
     nx_assign_text_positions_to_nodes_by_quadrants,
 )
 from ....internals.nx.nx_assign_textfont_sizes_to_nodes_by_occurrences import (
-    _nx_assign_textfont_sizes_to_nodes_by_occurrences,
+    nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
 from ....internals.nx.nx_assign_uniform_color_to_edges import (
     nx_assign_uniform_color_to_edges,
 )
 from ....internals.nx.nx_assign_widths_to_edges_by_weight import (
-    _nx_assign_widths_to_edges_by_weight,
+    nx_assign_widths_to_edges_by_weight,
 )
 from ....internals.nx.nx_cluster_graph import nx_cluster_graph
 from ....internals.nx.nx_compute_spring_layout_positions import (
@@ -160,15 +160,15 @@ def _network_plot(
     #
     # Sets the node attributes
     nx_graph = nx_assign_colors_to_nodes_by_group_attribute(nx_graph)
-    nx_graph = _nx_assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
-    nx_graph = _nx_assign_textfont_sizes_to_nodes_by_occurrences(
+    nx_graph = nx_assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
+    nx_graph = nx_assign_textfont_sizes_to_nodes_by_occurrences(
         nx_graph, textfont_size_range
     )
     nx_graph = nx_assign_opacity_to_text_by_frequency(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes
-    nx_graph = _nx_assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
+    nx_graph = nx_assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
     nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
     nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
 

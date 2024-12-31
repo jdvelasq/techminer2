@@ -10,7 +10,7 @@
 Clean Thesaurus
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import clean_thesaurus
+>>> from techminer2.prepare.thesaurus.descriptors import clean_thesaurus
 >>> clean_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:
@@ -104,8 +104,12 @@ def _apply_porter_stemmer(data_frame):
         )
 
     data_frame["fingerprint"] = data_frame["fingerprint"].str.split("_")
-    data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [z.strip() for z in x])
-    data_frame["fingerprint"] = data_frame["fingerprint"].map(lambda x: [cached_stem(z) for z in x])
+    data_frame["fingerprint"] = data_frame["fingerprint"].map(
+        lambda x: [z.strip() for z in x]
+    )
+    data_frame["fingerprint"] = data_frame["fingerprint"].map(
+        lambda x: [cached_stem(z) for z in x]
+    )
     data_frame["fingerprint"] = data_frame["fingerprint"].map(sorted)
     data_frame["fingerprint"] = data_frame["fingerprint"].str.join("_")
 
@@ -115,8 +119,12 @@ def _apply_porter_stemmer(data_frame):
 def _compute_terms_by_key(data_frame):
     #
     data_frame = data_frame.copy()
-    data_frame["n_terms"] = data_frame.groupby(["fingerprint", "key"]).transform("count")
-    data_frame = data_frame.sort_values(["fingerprint", "n_terms", "key"], ascending=True)
+    data_frame["n_terms"] = data_frame.groupby(["fingerprint", "key"]).transform(
+        "count"
+    )
+    data_frame = data_frame.sort_values(
+        ["fingerprint", "n_terms", "key"], ascending=True
+    )
     return data_frame
 
 

@@ -10,7 +10,7 @@
 Show Differences
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import show_differences
+>>> from techminer2.prepare.thesaurus.descriptors import show_differences
 >>> show_differences(  
 ...     #
 ...     # DATABASE PARAMS:

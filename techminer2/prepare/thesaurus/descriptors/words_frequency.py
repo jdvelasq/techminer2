@@ -11,7 +11,7 @@ Words Frequency
 
 Suggest thesurus words to analyze based on frequency.
 
->>> from techminer2.thesaurus.descriptors import words_frequency
+>>> from techminer2.prepare.thesaurus.descriptors import words_frequency
 >>> words_frequency(
 ...     #
 ...     # DATABASE PARAMS:

@@ -52,7 +52,7 @@ Manifold Terms by Dimensions Map
 ...         gc_range=(None, None),
 ...         custom_terms=None,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         node_color="#465c6b",
 ...         node_size=10,
 ...         textfont_size=8,

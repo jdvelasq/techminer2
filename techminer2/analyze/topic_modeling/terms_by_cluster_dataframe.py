@@ -37,7 +37,7 @@ Terms by Cluster Frame
 ...         smooth_idf=False,
 ...         sublinear_tf=False,
 ...     #
-...     .set_item_params(
+...     ).set_item_params(
 ...         field="author_keywords",
 ...         top_n=None,
 ...         occ_range=(None, None),

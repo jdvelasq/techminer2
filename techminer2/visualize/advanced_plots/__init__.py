@@ -1,9 +1,9 @@
 """Advanced charts."""
 
+from ...analyze.cross_co_occurrence.heatmap import CoOccurrenceHeatmap
 from .bubble_plot import BubblePlot
-from .heatmap import Heatmap
 
 __all__ = [
     "BubblePlot",
-    "Heatmap",
+    "CoOccurrenceHeatmap",
 ]

@@ -9,20 +9,20 @@ Find Similar Records
 ===============================================================================
 
 
->>> from techminer2.search import find_similar_records
->>> documents = find_similar_records(
-...     #
-...     # SEARCH PARAMS:
-...     record_no=1,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> for i in range(2):
-...    print(documents[i])
+# >>> from techminer2.search import find_similar_records
+# >>> documents = find_similar_records(
+# ...     #
+# ...     # SEARCH PARAMS:
+# ...     record_no=1,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=(None, None),
+# ...     cited_by_filter=(None, None),
+# ... )
+# >>> for i in range(2):
+# ...    print(documents[i])
 SIMILARITY: 1.0
 Record-No: 1
 AR Goldstein I., 2019, REV FINANC STUD, V32, P1647
@@ -143,13 +143,13 @@ def find_similar_records(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         sort_by=None,
-        **{"article": records.article.tolist()},
+        **{"record_id": records.record_id.tolist()},
         **filters,
     )
 
     sorted_documents = []
     for _, record in records.iterrows():
-        doc = [doc for doc in documents if record.article in doc]
+        doc = [doc for doc in documents if record.record_id in doc]
         assert len(doc) == 1
         doc = "SIMILARITY: " + str(round(record.similarity, 3)) + "\n" + doc[0]
         sorted_documents.append(doc)
@@ -178,7 +178,7 @@ def _paragraph_to_meaningful_words(records):
 
     records = records.copy()
     records = records[
-        ["art_no", "article", "document_title", "abstract", "paragraph"]
+        ["art_no", "record_id", "document_title", "abstract", "paragraph"]
     ].dropna()
 
     #

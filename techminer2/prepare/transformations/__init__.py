@@ -1,1 +1,5 @@
+from .count_terms_per_record import count_terms_per_record
 from .extract_country import extract_country
+from .extract_my_keywords import extract_my_keywords
+from .fields_difference import fields_difference
+from .fields_intersection import fields_intersection

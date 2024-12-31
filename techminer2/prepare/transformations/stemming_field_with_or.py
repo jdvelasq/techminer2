@@ -9,15 +9,15 @@
 Stemming Field with OR
 ===============================================================================
 
->>> from techminer2.fields.further_processing import stemming_field_with_or
->>> stemming_field_with_or(  # doctest: +SKIP
-...     items="FINANCIAL_TECHNOLOGY",
-...     source="keywords",
-...     dest="stemming",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+# >>> from techminer2.fields.further_processing import stemming_field_with_or
+# >>> stemming_field_with_or(  # doctest: +SKIP
+# ...     items="FINANCIAL_TECHNOLOGY",
+# ...     source="keywords",
+# ...     dest="stemming",
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example",
+# ... )
 
 """
 

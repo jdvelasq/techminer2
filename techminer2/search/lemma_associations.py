@@ -134,7 +134,7 @@ def __get_abstract_sentences(
         ascending=[False, False, True, True],
     )
 
-    records = records[["article", "abstract"]].copy()
+    records = records[["record_id", "abstract"]].copy()
     records = records.dropna()
     records["abstract"] = records["abstract"].map(
         lambda x: [str(sentence) for sentence in TextBlob(x).sentences],
@@ -165,7 +165,7 @@ def __select_sentences(
 
     sentences = sentences.drop(columns=["selected"])
 
-    sentences = sentences.groupby("article").agg({"abstract": list})
+    sentences = sentences.groupby("record_id").agg({"abstract": list})
     sentences["abstract"] = sentences["abstract"].str.join(". ")
     sentences = sentences.rename(columns={"abstract": "sentence"})
 

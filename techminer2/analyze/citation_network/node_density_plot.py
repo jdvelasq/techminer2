@@ -59,7 +59,7 @@ Node Density Plot
 ...         nx_iterations=30,
 ...         nx_random_state=0,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         bandwidth=0.1,
 ...         colorscale="Aggrnyl",
 ...         opacity=0.6,
@@ -82,7 +82,9 @@ Node Density Plot
 
 
 """
-from .docs.node_density_plot import _node_density_plot as _node_density_plot_from_docs
+from .articles.node_density_plot import (
+    _node_density_plot as _node_density_plot_from_docs,
+)
 from .others.node_density_plot import _node_density_plot
 
 

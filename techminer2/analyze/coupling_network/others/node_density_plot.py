@@ -45,7 +45,7 @@
                                              
 """
 from ....internals.nx.nx_assign_textfont_sizes_to_nodes_by_occurrences import (
-    _nx_assign_textfont_sizes_to_nodes_by_occurrences,
+    nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
 from ....internals.nx.nx_cluster_graph import nx_cluster_graph
 from ....internals.nx.nx_compute_spring_layout_positions import (
@@ -121,7 +121,7 @@ def _node_density_plot(
         seed=nx_random_state,
     )
 
-    nx_graph = _nx_assign_textfont_sizes_to_nodes_by_occurrences(
+    nx_graph = nx_assign_textfont_sizes_to_nodes_by_occurrences(
         nx_graph, textfont_size_range
     )
 

@@ -42,7 +42,7 @@ Terms by Dimensions Map
 ...         gc_range=(None, None),
 ...         custom_terms=None,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         dim_x=0,
 ...         dim_y=1,
 ...         node_color="#465c6b",

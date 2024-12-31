@@ -10,7 +10,7 @@
 Apply Abbreviations Thesaurus
 ===============================================================================
 
->>> from techminer2.thesaurus.abbreviations import apply_thesaurus
+>>> from techminer2.prepare.thesaurus.abbreviations import apply_thesaurus
 >>> apply_thesaurus( # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:

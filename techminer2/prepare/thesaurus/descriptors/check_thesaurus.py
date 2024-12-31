@@ -11,7 +11,7 @@ Check Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import check_thesaurus
+>>> from techminer2.prepare.thesaurus.descriptors import check_thesaurus
 >>> check_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:

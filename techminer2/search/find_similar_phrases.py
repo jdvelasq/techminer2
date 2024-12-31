@@ -121,7 +121,7 @@ def find_similar_phrases(
     documents = []
     for _, row in records.iterrows():
         text = str(round(100 * row.similarity, 1)) + "%\n"
-        text += "AR " + row.article + "\n"
+        text += "AR " + row.record_id + "\n"
         text += "TI " + row.raw_document_title + "\n"
         text += "AB " + textwrap.fill(
             str(row.phrase),
@@ -166,7 +166,7 @@ def _extract_keywords(records, root_dir):
     regex = re.compile(r"\b(" + descriptors + r")\b")
     # -----------------------------------------------------------------------------------------
 
-    abstracts = records[["article", "raw_document_title", "abstract"]].dropna()
+    abstracts = records[["record_id", "raw_document_title", "abstract"]].dropna()
     abstracts["abstract"] = abstracts["abstract"].apply(
         lambda paragraph: TextBlob(paragraph).sentences
     )

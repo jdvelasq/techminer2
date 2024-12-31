@@ -9,17 +9,17 @@ class ColumnsAndRowsParamsMixin:
     def set_columns_params(self, **kwargs):
         """:meta private:"""
         for key, value in kwargs.items():
-            if hasattr(self.column_params, key):
-                setattr(self.column_params, key, value)
+            if hasattr(self.columns_params, key):
+                setattr(self.columns_params, key, value)
             else:
-                raise ValueError(f"Invalid parameter for ColumnParams: {key}")
+                raise ValueError(f"Invalid parameter for ColumnsParams: {key}")
         return self
 
     def set_rows_params(self, **kwargs):
         """:meta private:"""
         for key, value in kwargs.items():
-            if hasattr(self.row_params, key):
-                setattr(self.row_params, key, value)
+            if hasattr(self.rows_params, key):
+                setattr(self.rows_params, key, value)
             else:
-                raise ValueError(f"Invalid parameter for RowParams: {key}")
+                raise ValueError(f"Invalid parameter for RowsParams: {key}")
         return self

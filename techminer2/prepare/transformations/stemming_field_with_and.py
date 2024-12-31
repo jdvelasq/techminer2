@@ -9,15 +9,15 @@
 Stemming Field with AND
 ===============================================================================
 
->>> from techminer2.fields.further_processing import stemming_field_with_and
->>> stemming_field_with_and(  # doctest: +SKIP
-...     items="ARTIFICIAL_INTELLIGENCE",
-...     source="author_keywords",
-...     dest="stemming",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+# >>> from techminer2.fields.further_processing import stemming_field_with_and
+# >>> stemming_field_with_and(  # doctest: +SKIP
+# ...     items="ARTIFICIAL_INTELLIGENCE",
+# ...     source="author_keywords",
+# ...     dest="stemming",
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example",
+# ... )
 
 """
 

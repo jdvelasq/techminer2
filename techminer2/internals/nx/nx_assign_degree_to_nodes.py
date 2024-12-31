@@ -5,14 +5,9 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-# pylint: disable=import-outside-toplevel
 
 
-def nx_assign_degree_to_nodes(
-    nx_graph,
-):
-    """Computes the degree of each node in a networkx graph."""
-
+def nx_assign_degree_to_nodes(nx_graph):
     for node, adjacencies in nx_graph.adjacency():
         nx_graph.nodes[node]["degree"] = len(adjacencies)
 

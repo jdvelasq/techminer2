@@ -11,20 +11,20 @@ Records with No Abstract Available
 
 
 
->>> from techminer2.ingest import records_with_no_abstract_available
->>> records_with_no_abstract_available(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
-Fintech
-Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
-nan
-<BLANKLINE>
-FinTech and the TRANSFORMATION of the FINANCIAL_INDUSTRY
-Alt R., 2018, ELECTRON MARK, V28, P235
-nan
-<BLANKLINE>
+# >>> from techminer2.ingest import records_with_no_abstract_available
+# >>> records_with_no_abstract_available(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... )
+# Fintech
+# Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
+# nan
+# <BLANKLINE>
+# FinTech and the TRANSFORMATION of the FINANCIAL_INDUSTRY
+# Alt R., 2018, ELECTRON MARK, V28, P235
+# nan
+# <BLANKLINE>
 
 
 

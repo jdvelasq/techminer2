@@ -9,7 +9,7 @@
 Extract Country
 ===============================================================================
 
->>> from techminer2.fields.further_processing import extract_country
+>>> from techminer2.prepare.transformations import extract_country
 >>> extract_country( # doctest: +SKIP 
 ...     source="affiliations",
 ...     dest="countries_from_affiliations",
@@ -17,7 +17,7 @@ Extract Country
 ... )
 
 >>> # TEST:  
->>> from techminer2.analyze.metrics import performance_metrics_frame
+>>> from techminer2.prepare.transformations import extract_country
 >>> performance_metrics( # doctest: +SKIP 
 ...     field='countries_from_affiliations',
 ...     metric='OCC',
@@ -26,8 +26,8 @@ Extract Country
 ... )
 
 
->>> from techminer2.fields import delete_field
->>> delete_field( # doctest: +SKIP 
+>>> from techminer2.prepare.operations import delete_database_field
+>>> delete_database_field( # doctest: +SKIP 
 ...     field="countries_from_affiliations",
 ...     root_dir="example",
 ... )

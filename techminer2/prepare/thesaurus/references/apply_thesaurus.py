@@ -9,7 +9,7 @@
 Apply References Thesaurus 
 ===============================================================================
 
->>> from techminer2.thesaurus.references import apply_thesaurus
+>>> from techminer2.prepare.thesaurus.references import apply_thesaurus
 >>> apply_thesaurus( # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:

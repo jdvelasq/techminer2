@@ -10,7 +10,7 @@
 Replace String 
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import replace_string
+>>> from techminer2.prepare.thesaurus.descriptors import replace_string
 >>> replace_string( # doctest: +SKIP
 ...     #
 ...     # SEARCH PARAMS:

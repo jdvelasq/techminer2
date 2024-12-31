@@ -83,7 +83,7 @@ Network Plot
 ...         nx_k=None,
 ...         nx_iterations=30,
 ...         nx_random_state=0,
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         node_size_range=(30, 70),
 ...         textfont_size_range=(10, 20),
 ...         textfont_opacity_range=(0.35, 1.00),

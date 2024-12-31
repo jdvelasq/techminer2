@@ -48,7 +48,7 @@ Co-occurrences Chart
 """
 import plotly.express as px  # type: ignore
 
-from .term_associations.dataframe import term_associations_frame
+from .dataframe import DataFrame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

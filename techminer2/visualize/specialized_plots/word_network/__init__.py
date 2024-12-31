@@ -1,7 +1,7 @@
 """Word network."""
 
-from .chart import chart
+# from .chart import chart
 
-__all__ = [
-    "chart",
-]
+# __all__ = [
+#     "chart",
+# ]

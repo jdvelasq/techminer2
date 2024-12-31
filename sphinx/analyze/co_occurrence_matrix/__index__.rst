@@ -6,10 +6,10 @@ Co-occurrence Matrix
     :maxdepth: 1
     :hidden:
     
-    co_occurrence_heatmap
-    co_occurrence_map
+    heatmap
+    network_map
     co_occurrence_matrix_network
-    co_occurrence_matrix
+    dataframe
     co_occurrence_table
-    sankey_chart
+    sankey_plot
 

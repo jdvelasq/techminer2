@@ -12,7 +12,7 @@ Reset Thesaurus
 
 
 
->>> from techminer2.thesaurus.descriptors import reset_thesaurus
+>>> from techminer2.prepare.thesaurus.descriptors import reset_thesaurus
 >>> reset_thesaurus(  # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:

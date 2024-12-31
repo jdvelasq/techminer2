@@ -9,7 +9,7 @@
 Fields Difference
 ===============================================================================
 
->>> from techminer2.fields.further_processing import fields_difference
+>>> from techminer2.prepare.transformations import fields_difference
 >>> fields_difference( # doctest: +SKIP 
 ...     first_field="author_keywords",
 ...     second_field="index_keywords",

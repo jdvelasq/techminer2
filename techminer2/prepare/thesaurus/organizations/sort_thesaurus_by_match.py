@@ -13,7 +13,7 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.thesaurus.organizations import find_string
+>>> from techminer2.prepare.thesaurus.organizations import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:

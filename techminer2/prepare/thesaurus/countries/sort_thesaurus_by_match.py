@@ -10,7 +10,7 @@
 Find String
 ===============================================================================
 
->>> from techminer2.thesaurus.countries import find_string
+>>> from techminer2.prepare.thesaurus.countries import find_string
 >>> find_string(
 ...     #
 ...     # SEARCH PARAMS:

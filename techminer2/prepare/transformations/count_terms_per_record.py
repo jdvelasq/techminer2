@@ -9,7 +9,7 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.fields.further_processing import count_terms_per_record
+>>> from techminer2.prepare.transformations import count_terms_per_record
 >>> count_terms_per_record(  # doctest: +SKIP 
 ...     source="raw_author_keywords",
 ...     dest="num_raw_author_keywords",

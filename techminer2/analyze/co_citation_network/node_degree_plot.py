@@ -20,7 +20,7 @@ Node Degree Plot
 ...         citations_threshold=None,
 ...         custom_terms=None,
 ...     #
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         textfont_size=10,
 ...         marker_size=7,
 ...         line_color="black",
@@ -44,7 +44,7 @@ Node Degree Plot
 
 """
 
-from ...internals.nx.nx_degree_plot import nx_degree_plot
+from ...internals.nx_mixin.nx_degree import nx_degree_plot
 from .internals.create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 

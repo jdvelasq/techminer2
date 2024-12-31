@@ -37,7 +37,7 @@
 
 
 """
-from ....internals.nx.nx_degree_plot import nx_degree_plot
+from ....internals.nx_mixin.nx_degree import nx_degree_plot
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 

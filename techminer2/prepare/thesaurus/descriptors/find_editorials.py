@@ -10,7 +10,7 @@ Find Editorials
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import find_editorials
+>>> from techminer2.prepare.thesaurus.descriptors import find_editorials
 >>> find_editorials(
 ...     #
 ...     # DATABASE PARAMS:

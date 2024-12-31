@@ -6,7 +6,39 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Node Degre Frame
+Node Degree Frame
+===============================================================================
+
+
+
+
+>>> # abbr_source_title, authors, organizations, countries:
+>>> from techminer2.analyze.citation_network  import NodeDegreeDataFrame
+>>> node_degree_frame(
+...     .set_analysis_params(
+...         # unit_of_analysis="abbr_source_title",
+...         top_n=30,
+...         citations_threshold=0,
+...         occurrence_threshold=2,
+...         custom_terms=None,
+...     #
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     #
+...     ).build()
+... ).head()
+   Node                       Name  Degree
+0     0    J Manage Inf Syst 2:696       3
+1     1        J. Econ. Bus. 3:422       3
+2     2      Electron. Mark. 2:287       1
+3     3      Financ. Manage. 2:161       1
+4     4  Ind Manage Data Sys 2:386       1
+
+
+
 
 
 

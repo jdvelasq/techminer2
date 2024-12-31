@@ -11,7 +11,7 @@ Sort Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.organizations import sort_thesaurus
+>>> from techminer2.prepare.thesaurus.organizations import sort_thesaurus
 >>> sort_thesaurus(
 ...     #
 ...     # DATABASE PARAMS:

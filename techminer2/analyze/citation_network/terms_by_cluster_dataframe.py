@@ -66,7 +66,7 @@ Terms by Cluster Frame
 
 
 """
-from .docs.terms_by_cluster_dataframe import (
+from .articles.terms_by_cluster_dataframe import (
     _terms_by_cluster_frame as _terms_by_cluster_frame_from_docs,
 )
 from .others.terms_by_cluster_dataframe import _terms_by_cluster_frame

@@ -17,8 +17,15 @@ def nx_compute_spring_layout_positions(
 ):
     """Computes the layout of a networkx graph."""
 
-    pos = nx.spring_layout(nx_graph, k=k, iterations=iterations, seed=seed)
+    pos = nx.spring_layout(
+        nx_graph,
+        k=k,
+        iterations=iterations,
+        seed=seed,
+    )
+
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["x"] = pos[node][0]
         nx_graph.nodes[node]["y"] = pos[node][1]
+
     return nx_graph

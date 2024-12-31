@@ -8,15 +8,15 @@
 Dataframe
 ===============================================================================
 
->>> from techminer2.visualize.specialized_charts.bradford_law import dataframe
->>> dataframe(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+# >>> from techminer2.visualize.specialized_plots.bradford_law import dataframe
+# >>> dataframe(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=(None, None),
+# ...     cited_by_filter=(None, None),
+# ... )
    Num Sources        %  ...  Tot Documents Bradford's Group
 0            1   2.44 %  ...          6.0 %                1
 1            7  17.07 %  ...         34.0 %                2

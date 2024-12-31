@@ -9,10 +9,10 @@
 Bubble Chart
 ===============================================================================
 
->>> from techminer2.visualize.advanced_charts.bubble_plot import BubblePlot
+>>> from techminer2.visualize.advanced_plots.bubble_plot import BubblePlot
 >>> plot = (
-...     BubbleChart()
-...     .set_column_params(
+...     BubblePlot()
+...     .set_columns_params(
 ...         field="author_keywords",
 ...         top_n=10,
 ...         occ_range=(None, None),
@@ -24,7 +24,7 @@ Bubble Chart
 ...         occ_range=(None, None),
 ...         gc_range=(None, None),
 ...         custom_terms=None,
-...     ).set_layout_params(
+...     ).set_plot_params(
 ...         title_text=None,
 ...     ).set_database_params(
 ...         root_dir="example/", 
@@ -33,7 +33,7 @@ Bubble Chart
 ...         cited_by_filter=(None, None),
 ...     ).build()
 ... )
->>> plot.write_html("sphinx/_generated/visualize/advanced_charts/bubble_plot.html")
+>>> plot.write_html("sphinx/_generated/visualize/advanced_plots/bubble_plot.html")
 
 .. raw:: html
 
@@ -46,37 +46,37 @@ from typing import Optional
 
 import plotly.express as px  # type: ignore
 
-from ...analyze.co_occurrence_matrix.co_occurrence_matrix import CoOccurrenceMatrix
-from ...analyze.co_occurrence_matrix.internals.output_params import (
+from ...analyze.cross_co_occurrence.internals.output_params import (
     OutputParams,
     OutputParamsMixin,
 )
+from ...analyze.cross_co_occurrence.matrix import CrossCoOccurrenceMatrix
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 
 
 @dataclass
-class LayoutParams:
+class PlotParams:
     """:meta private:"""
 
     title_text: Optional[str] = None
 
 
-class LayoutParamsMixin:
+class PlotParamsMixin:
     """:meta private:"""
 
-    def set_layout_params(self, **kwars):
+    def set_plot_params(self, **kwars):
         for key, value in kwars.items():
-            if hasattr(self.chart_params, key):
-                setattr(self.chart_params, key, value)
+            if hasattr(self.plot_params, key):
+                setattr(self.plot_params, key, value)
             else:
-                raise ValueError(f"Invalid parameter for ChartParams: {key}")
+                raise ValueError(f"Invalid parameter for PlotParams: {key}")
         return self
 
 
 class BubblePlot(
-    LayoutParamsMixin,
+    PlotParamsMixin,
     ColumnsAndRowsParamsMixin,
     DatabaseParamsMixin,
     OutputParamsMixin,
@@ -86,17 +86,17 @@ class BubblePlot(
     def __init__(self):
         self.columns_params = ItemParams()
         self.database_params = DatabaseParams()
-        self.layout_params = LayoutParams()
+        self.plot_params = PlotParams()
         self.output_params = OutputParams()
         self.rows_params = ItemParams()
 
     def build(self):
 
         matrix = (
-            CoOccurrenceMatrix()
+            CrossCoOccurrenceMatrix()
             .set_columns_params(**self.columns_params.__dict__)
             .set_database_params(**self.database_params.__dict__)
-            .set_format_params(**self.output_params.__dict__)
+            .set_output_params(**self.output_params.__dict__)
             .set_rows_params(**self.rows_params.__dict__)
             .build()
         )
@@ -115,7 +115,7 @@ class BubblePlot(
             y="column",
             size="VALUE",
             hover_data=matrix.columns.to_list(),
-            title=self.layout_params.title_text,
+            title=self.plot_params.title_text,
         )
         fig.update_layout(
             paper_bgcolor="white",

@@ -9,7 +9,7 @@
 import numpy as np
 
 
-def _nx_assign_widths_to_edges_by_weight(
+def nx_assign_widths_to_edges_by_weight(
     nx_graph,
     edge_width_range,
 ):

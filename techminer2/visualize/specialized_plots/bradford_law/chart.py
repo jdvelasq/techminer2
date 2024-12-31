@@ -8,16 +8,16 @@
 Chart
 ===============================================================================
 
->>> from techminer2.visualize.specialized_charts.bradford_law import chart
->>> plot = chart(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> plot.write_html("sphinx/_generated/visualize/specialized_charts/bradford_law/chart.html")
+# >>> from techminer2.visualize.specialized_plots.bradford_law import chart
+# >>> plot = chart(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=(None, None),
+# ...     cited_by_filter=(None, None),
+# ... )
+# >>> plot.write_html("sphinx/_generated/visualize/specialized_charts/bradford_law/chart.html")
 
 .. raw:: html
 

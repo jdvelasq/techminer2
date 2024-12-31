@@ -8,28 +8,28 @@
 Cluster Records
 ===============================================================================
 
->>> from techminer2.visualize.specialized_charts import cluster_records 
->>> plot = cluster_records(
-...     field='author_keywords',
-...     #
-...     # ITEM FILTERS:
-...     top_n=50,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_generated/visualize/specialized_charts/cluster_records.html")
+# >>> from techminer2.visualize.specialized_charts import cluster_records 
+# >>> plot = cluster_records(
+# ...     field='author_keywords',
+# ...     #
+# ...     # ITEM FILTERS:
+# ...     top_n=50,
+# ...     occ_range=(None, None),
+# ...     gc_range=(None, None),
+# ...     custom_terms=None,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=(None, None),
+# ...     cited_by_filter=(None, None),
+# ... )
+# >>> # plot.write_html("sphinx/_generated/visualize/specialized_charts/cluster_records.html")
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../../_generated/visualize/specialized_charts/cluster_records.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../_generated/visualize/specialized_charts/cluster_records.html" 
+#     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """

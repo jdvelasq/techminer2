@@ -11,7 +11,7 @@ Fuzzy Search
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import fuzzy_search
+>>> from techminer2.prepare.thesaurus.descriptors import fuzzy_search
 >>> fuzzy_search(
 ...     #
 ...     # SEARCH PARAMS:

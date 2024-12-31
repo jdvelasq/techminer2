@@ -9,7 +9,7 @@
 Find Abbreviations 
 ===============================================================================
 
->>> from techminer2.thesaurus.abbreviations import find_abbreviations
+>>> from techminer2.prepare.thesaurus.abbreviations import find_abbreviations
 >>> find_abbreviations(
 ...     #
 ...     # DATABASE PARAMS:

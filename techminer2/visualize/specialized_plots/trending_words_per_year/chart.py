@@ -8,21 +8,21 @@
 Chart
 ===============================================================================
 
->>> from techminer2.visualize.specialized_charts.trending_words_per_year import chart
->>> plot = chart(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     n_words_per_year=5,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
->>> plot.write_html("sphinx/_generated/visualize/specialized_charts/trending_words_per_year/chart.html")
+# >>> from techminer2.visualize.specialized_plots.trending_words_per_year import chart
+# >>> plot = chart(
+# ...     #
+# ...     # PARAMS:
+# ...     field="author_keywords",
+# ...     n_words_per_year=5,
+# ...     custom_terms=None,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=None,
+# ...     cited_by_filter=None,
+# ... )
+# >>> plot.write_html("sphinx/_generated/visualize/specialized_charts/trending_words_per_year/chart.html")
 
 .. raw:: html
 
