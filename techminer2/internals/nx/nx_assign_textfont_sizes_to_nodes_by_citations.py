@@ -12,7 +12,7 @@
 import numpy as np
 
 
-def _nx_assign_textfont_sizes_to_nodes_by_citations(
+def nx_assign_textfont_sizes_to_nodes_by_citations(
     nx_graph,
     textfont_size_range,
 ):

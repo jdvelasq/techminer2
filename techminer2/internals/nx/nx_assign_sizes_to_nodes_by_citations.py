@@ -12,7 +12,7 @@
 import numpy as np
 
 
-def _nx_assign_sizes_to_nodes_by_citations(
+def nx_assign_sizes_to_nodes_by_citations(
     nx_graph,
     node_size_range,
 ):

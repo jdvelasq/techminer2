@@ -12,7 +12,7 @@
 import numpy as np
 
 
-def _nx_assign_opacity_to_text_by_citations(
+def nx_assign_opacity_to_text_by_citations(
     nx_graph,
     textfont_opacity_range,
 ):

@@ -59,16 +59,16 @@ from ....internals.nx.nx_assign_colors_to_nodes_by_group_attribute import (
     nx_assign_colors_to_nodes_by_group_attribute,
 )
 from ....internals.nx.nx_assign_opacity_to_text_by_citations import (
-    _nx_assign_opacity_to_text_by_citations,
+    nx_assign_opacity_to_text_by_citations,
 )
 from ....internals.nx.nx_assign_sizes_to_nodes_by_citations import (
-    _nx_assign_sizes_to_nodes_by_citations,
+    nx_assign_sizes_to_nodes_by_citations,
 )
 from ....internals.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
     nx_assign_text_positions_to_nodes_by_quadrants,
 )
 from ....internals.nx.nx_assign_textfont_sizes_to_nodes_by_citations import (
-    _nx_assign_textfont_sizes_to_nodes_by_citations,
+    nx_assign_textfont_sizes_to_nodes_by_citations,
 )
 from ....internals.nx.nx_assign_uniform_color_to_edges import (
     nx_assign_uniform_color_to_edges,
@@ -155,11 +155,11 @@ def _network_plot(
     # Sets the node attributes
     nx_graph = nx_assign_colors_to_nodes_by_group_attribute(nx_graph)
     #
-    nx_graph = _nx_assign_sizes_to_nodes_by_citations(nx_graph, node_size_range)
-    nx_graph = _nx_assign_textfont_sizes_to_nodes_by_citations(
+    nx_graph = nx_assign_sizes_to_nodes_by_citations(nx_graph, node_size_range)
+    nx_graph = nx_assign_textfont_sizes_to_nodes_by_citations(
         nx_graph, textfont_size_range
     )
-    nx_graph = _nx_assign_opacity_to_text_by_citations(nx_graph, textfont_opacity_range)
+    nx_graph = nx_assign_opacity_to_text_by_citations(nx_graph, textfont_opacity_range)
 
     #
     # Sets the edge attributes

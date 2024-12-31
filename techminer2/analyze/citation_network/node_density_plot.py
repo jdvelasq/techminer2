@@ -23,11 +23,6 @@ Node Density Plot
 ...         nx_iterations=30,
 ...         nx_random_state=0,
 ...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
 ...     ).set_database_params(
 ...         root_dir="example/", 
 ...         database="main",
