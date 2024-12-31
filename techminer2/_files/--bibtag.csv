@@ -1,0 +1,41 @@
+TAG,SCOPUS,ISI,GENERIC,DIMENSIONS
+AU,author,author,author,Authors
+TI,title,title,title,Title
+SO,journal,journal,journal,Source title
+JI,abbrev_source_title,journal-iso,abbrev_source_title,NA
+AB,abstract,abstract,abstract,Abstract
+DE,author_keywords,keywords,author_keywords,MeSH terms
+ID,keywords,keywords-plus,keywords,NA
+LA,language,language,language,NA
+DT,document_type,type,document_type,Publication Type
+DT2,manuscript,manuscript,manuscript,NA
+TC,note,times-cited,note,Times cited
+CR,references,cited-references,references,NA
+C1,affiliation,affiliation,affiliation,Authors Affiliations
+DI,doi,doi,doi,DOI
+PA,address,address,address,NA
+AR,art_number,article-number,art_number,NA
+RP,correspondence_address1,NA,correspondence_address1,NA
+BE,editor,editor,editor,NA
+FU,funding_details,funding-acknowledgement,funding_details,NA
+FX,funding_text,funding-text,funding_text,NA
+BN,isbn,isbn,isbn,NA
+SN,issn,issn,issn,NA
+PN,number,number,number,Issue
+PP,pages,pages,pages,NA
+PU,publisher,publisher,publisher,NA
+PM,pubmed_id,pubmed_id,pmid,NA
+DB,source,NA,source,NA
+VL,volume,volume,volume,Volume
+PY,year,year,year,PubYear
+UT,NA,unique-id,NA,Publication ID
+NR,NA,number-of-cited-references,NA,NA
+SC,NA,research-areas,NA,FOR (ANZSRC) Categories
+U1,NA,usage-count-(last-180-days),NA,NA
+U2,NA,usage-count-since-2013,NA,NA
+WC,NA,web-of-science-categories,NA,NA
+EM,NA,author-email,NA,NA
+SE,NA,series,NA,NA
+GA,NA,doc-delivery-number,NA,NA
+BO,booktitle,booktitle,NA,Anthology title
+AU_CO,NA,NA,NA,Authors Affiliations Country of Research organization
