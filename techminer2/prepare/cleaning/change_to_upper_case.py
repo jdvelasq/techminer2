@@ -9,14 +9,14 @@
 Remove Multiple Spaces
 ===============================================================================
 
->>> from techminer2.fields.further_processing import change_to_upper_case
->>> change_to_upper_case(  # doctest: +SKIP  
-...     source="abstract",
-...     dest="abstract",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields.further_processing import change_to_upper_case
+## >>> change_to_upper_case(  # doctest: +SKIP  
+## ...     source="abstract",
+## ...     dest="abstract",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 
 """

@@ -9,32 +9,32 @@
 Word Cloud (MIGRATED)
 ===============================================================================
 
->>> from techminer2.visualize.basic_plots.word_cloud import WordCloud
->>> plot = (
-...     WordCloud()
-...     .set_analysis_params(
-...         metric="OCC",
-...     #
-...     ).set_item_params(
-...         field="title_nlp_phrases",
-...         top_n=80,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         width=400, 
-...         height=400,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.save("sphinx/images/visualize/basic_plots/word_cloud.png")
+## >>> from techminer2.visualize.basic_plots.word_cloud import WordCloud
+## >>> plot = (
+## ...     WordCloud()
+## ...     .set_analysis_params(
+## ...         metric="OCC",
+## ...     #
+## ...     ).set_item_params(
+## ...         field="title_nlp_phrases",
+## ...         top_n=80,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         width=400, 
+## ...         height=400,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.save("sphinx/images/visualize/basic_plots/word_cloud.png")
 
 .. image:: /images/visualize/basic_plots/word_cloud.png
     :width: 900px

@@ -10,32 +10,32 @@ Pie Plot (MIGRATED)
 ===============================================================================
 
 
->>> from techminer2.visualize.basic_plots.pie_plot import PiePlot
->>> plot = (
-...     PiePlot()
-...     .set_analysis_params(
-...         metric="OCC",
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         title_text="Most Frequent Author Keywords",
-...         hole=0.4,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_generated/visualize/basic_plots/pie_plot.html")
+## >>> from techminer2.visualize.basic_plots.pie_plot import PiePlot
+## >>> plot = (
+## ...     PiePlot()
+## ...     .set_analysis_params(
+## ...         metric="OCC",
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         title_text="Most Frequent Author Keywords",
+## ...         hole=0.4,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_generated/visualize/basic_plots/pie_plot.html")
 
 .. raw:: html
 

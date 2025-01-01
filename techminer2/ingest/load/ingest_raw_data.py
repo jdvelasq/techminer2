@@ -12,12 +12,12 @@ Ingest Raw Data
 # doctest: +SKIP 
 
 
->>> from techminer2.ingest.load import ingest_raw_data
->>> ingest_raw_data( 
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-... ) # doctest: +ELLIPSIS +SKIP
+## >>> from techminer2.ingest.load import ingest_raw_data
+## >>> ingest_raw_data( 
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/",
+## ... ) # doctest: +ELLIPSIS +SKIP
 -- 001 -- Compressing raw data files
 -- 002 -- Creating working directories
 -- 003 -- Creating stopwords.txt file

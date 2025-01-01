@@ -9,33 +9,33 @@
 Line Plot (MIGRATED)
 ===============================================================================
 
->>> from techminer2.visualize.basic_plots.line_plot import LinePlot
->>> plot = (
-...     LinePlot()
-...     .set_analysis_params(
-...         metric="OCC",
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         title_text="Most Frequent Author Keywords",
-...         xaxes_title_text=None,
-...         yaxes_title_text=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_generated/visualize/basic_plots/line_plot.html")
+## >>> from techminer2.visualize.basic_plots.line_plot import LinePlot
+## >>> plot = (
+## ...     LinePlot()
+## ...     .set_analysis_params(
+## ...         metric="OCC",
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         title_text="Most Frequent Author Keywords",
+## ...         xaxes_title_text=None,
+## ...         yaxes_title_text=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_generated/visualize/basic_plots/line_plot.html")
 
 .. raw:: html
 

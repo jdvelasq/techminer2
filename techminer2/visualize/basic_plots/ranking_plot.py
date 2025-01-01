@@ -10,37 +10,37 @@
 Ranking Plot (MIGRATED)
 ===============================================================================
 
->>> from techminer2.visualize.basic_plots.ranking_plot import RankingPlot
->>> plot = (
-...     RankingPlot()
-...     .set_analysis_params(
-...         metric="OCC",
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         line_width=1.5,
-...         marker_size=7,
-...         textfont_size=10,
-...         title_text="Ranking Plot",
-...         xaxes_title_text="Author Keywords",
-...         yaxes_title_text="OCC",
-...         yshift=4,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_generated/visualize/basic_plots/ranking_plot.html")
+## >>> from techminer2.visualize.basic_plots.ranking_plot import RankingPlot
+## >>> plot = (
+## ...     RankingPlot()
+## ...     .set_analysis_params(
+## ...         metric="OCC",
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         line_width=1.5,
+## ...         marker_size=7,
+## ...         textfont_size=10,
+## ...         title_text="Ranking Plot",
+## ...         xaxes_title_text="Author Keywords",
+## ...         yaxes_title_text="OCC",
+## ...         yshift=4,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_generated/visualize/basic_plots/ranking_plot.html")
 
 .. raw:: html
 
