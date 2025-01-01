@@ -72,7 +72,6 @@ from ._list_cleanup_countries import list_cleanup_countries
 from ._list_cleanup_organizations import list_cleanup_organizations
 from ._message import message
 from ._rename_columns_in_database_files import rename_columns_in_database_files
-from ._repair_bad_separators_in_keywords import repair_bad_separators_in_keywords
 from ._replace_descriptors import _replace_descriptors
 from ._replace_journal_name_in_references import replace_journal_name_in_references
 from ._report_imported_records_per_file import report_imported_records_per_file
@@ -91,6 +90,7 @@ from .field_importers.doi_importer import run_doi_importer
 from .field_importers.global_citations_importer import run_global_citations_importer
 from .field_importers.issb_isbn_eissn_importer import run_issb_isbn_eissn_importer
 from .field_importers.source_title_importer import run_source_title_importer
+from .load.deprecated.repair_bad_separators_in_keywords import repair_bad_separators_in_keywords
 
 # from ._adds_countries_and_regions_to_stopwords import _adds_countries_and_regions_to_stopwords
 

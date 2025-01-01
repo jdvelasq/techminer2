@@ -29,28 +29,28 @@ nan
 
 
 """
-from .._core.read_filtered_database import read_filtered_database
+# from ...._core.read_filtered_database import read_filtered_database
 
 
-def records_with_no_abstract_available(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-):
-    """:meta private:"""
+# def records_with_no_abstract_available(
+#     #
+#     # DATABASE PARAMS:
+#     root_dir="./",
+# ):
+#     """:meta private:"""
 
-    records = read_filtered_database(
-        root_dir=root_dir,
-        database="main",
-        year_filter=(None, None),
-        cited_by_filter=(None, None),
-        sort_by=None,
-    )
+#     records = read_filtered_database(
+#         root_dir=root_dir,
+#         database="main",
+#         year_filter=(None, None),
+#         cited_by_filter=(None, None),
+#         sort_by=None,
+#     )
 
-    records = records[records.abstract.isna() | (records.abstract == "[no abstract available]")]
+#     records = records[records.abstract.isna() | (records.abstract == "[no abstract available]")]
 
-    for _, record in records.iterrows():
-        print(record.document_title)
-        print(record.article)
-        print(record.abstract)
-        print()
+#     for _, record in records.iterrows():
+#         print(record.document_title)
+#         print(record.article)
+#         print(record.abstract)
+#         print()
