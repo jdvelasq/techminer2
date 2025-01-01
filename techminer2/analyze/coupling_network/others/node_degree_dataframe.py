@@ -35,7 +35,7 @@
 
 
 """
-from ....internals.nx.nx_degree_frame import nx_degree_frame
+# from ....internals.nx.nx_degree_frame import nx_degree_frame
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 

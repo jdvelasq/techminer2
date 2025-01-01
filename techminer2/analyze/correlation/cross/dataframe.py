@@ -47,7 +47,7 @@ Zavolokina L. 2:0181               0.000  ...                   1.0
     
 
 """
-from ...cross_co_occurrence.matrix import co_occurrence_matrix
+# from ...cross_co_occurrence.matrix import co_occurrence_matrix
 from ..internals.compute_corr_matrix import compute_corr_matrix
 
 

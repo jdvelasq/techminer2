@@ -82,28 +82,28 @@ def sankey_chart(
             if row == fields[0]:
                 # it is the first matrix
 
-                coc_matrix = (
-                    CrossCoOccurrenceMatrix()
-                    #
-                    # FUNCTION PARAMS:
-                    columns=col,
+                # coc_matrix = (
+                #     CrossCoOccurrenceMatrix()
+                #     #
+                #     # FUNCTION PARAMS:
+                #     columns=col,
 
-                    #
-                    # COLUMN PARAMS:
-                    col_top_n=max_n,
-                    #
-                    # ROW PARAMS:
-                    ).set_rows_params(
-                        field=row,
-                        top_n=top_n,
-                        occ_range=occ_range,
-                        gc_range=gc_range,
-                        custom_terms=custom_terms,
-                    )                    
-                    .set_output_params(**self.output_params.__dict__)
-                    .set_database_params(**self.database_params.__dict__)
-                    .build()
-                )
+                #     #
+                #     # COLUMN PARAMS:
+                #     col_top_n=max_n,
+                #     #
+                #     # ROW PARAMS:
+                #     ).set_rows_params(
+                #         field=row,
+                #         top_n=top_n,
+                #         occ_range=occ_range,
+                #         gc_range=gc_range,
+                #         custom_terms=custom_terms,
+                #     )
+                #     .set_output_params(**self.output_params.__dict__)
+                #     .set_database_params(**self.database_params.__dict__)
+                #     .build()
+                # )
 
                 matrices.append(coc_matrix)
 

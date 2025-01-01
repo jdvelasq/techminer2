@@ -157,7 +157,8 @@ from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixi
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
 from .internals.output_params import OutputParams, OutputParamsMixin
-from .matrix import co_occurrence_matrix
+
+# from .matrix import co_occurrence_matrix
 
 
 class CoOccurrenceNetworkMap(

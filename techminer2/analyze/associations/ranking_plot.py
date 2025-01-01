@@ -62,7 +62,8 @@ import plotly.express as px  # type: ignore
 from ...internals.utils.utils_format_prompt_for_dataframes import (
     _utils_format_prompt_for_dataframes,
 )
-from ..cross_co_occurrence.matrix import co_occurrence_matrix
+
+# from ..cross_co_occurrence.matrix import co_occurrence_matrix
 from .dataframe import DataFrame
 
 MARKER_COLOR = "#7793a5"

@@ -31,7 +31,7 @@ Collaboration WorldMap
 """
 import plotly.express as px  # type: ignore
 
-from ..cross_co_occurrence.dataframe import co_occurrence_frame
+# from ..cross_co_occurrence.dataframe import co_occurrence_frame
 
 
 def collaboration_world_map(

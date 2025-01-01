@@ -44,7 +44,7 @@ Node Degree Plot
 
 """
 
-from ...internals.nx_mixin.nx_degree import nx_degree_plot
+# from ...internals.nx_mixin.nx_degree import nx_degree_plot
 from .internals.create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 

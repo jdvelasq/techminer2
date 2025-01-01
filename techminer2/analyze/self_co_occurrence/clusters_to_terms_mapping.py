@@ -35,8 +35,8 @@ Clusters to Terms Mapping
 ## ...     #
 ## ...     ).build()
 ## ... )
->>> from pprint import pprint
->>> pprint(mapping)
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 {0: ['FINTECH 31:5168',
      'FINANCIAL_INCLUSION 03:0590',
      'CROWDFUNDING 03:0335',

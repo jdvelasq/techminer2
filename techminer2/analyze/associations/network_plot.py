@@ -86,7 +86,8 @@ from ...internals.nx.nx_compute_spring_layout_positions import (
     nx_compute_spring_layout_positions,
 )
 from ...internals.nx.nx_network_plot import nx_network_plot
-from ..cross_co_occurrence.matrix import co_occurrence_matrix
+
+# from ..cross_co_occurrence.matrix import co_occurrence_matrix
 
 
 def radial_diagram(

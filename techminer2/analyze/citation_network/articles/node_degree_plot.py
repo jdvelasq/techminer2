@@ -43,7 +43,8 @@ Node Degree Plot
 
 """
 from ....internals.nx.nx_assign_degree_to_nodes import nx_assign_degree_to_nodes
-from ....internals.nx_mixin.nx_degree import nx_degree_plot
+
+# from ....internals.nx_mixin.nx_degree import nx_degree_plot
 from .internals.create_citation_nx_graph import _create_citation_nx_graph
 
 UNIT_OF_ANALYSIS = "article"

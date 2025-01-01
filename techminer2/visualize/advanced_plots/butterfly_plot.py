@@ -50,7 +50,7 @@ Butterfly Chart
 """
 import plotly.graph_objects as go
 
-from ...analyze.cross_co_occurrence.matrix import co_occurrence_matrix
+# from ...analyze.cross_co_occurrence.matrix import co_occurrence_matrix
 
 
 def butterfly_chart(
