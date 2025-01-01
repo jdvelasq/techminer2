@@ -9,31 +9,31 @@
 Node Degree Plot
 ===============================================================================
 
->>> # article:
->>> from techminer2.analyze.citation_network import NodeDegreePlot
->>> plot = (
-...     NodeDegreePlot()
-...     .set_analysis_params(
-...         unit_of_analysis="article",
-...         top_n=30, 
-...         citations_threshold=0,
-...     #
-...     ).set_plot_params(
-...         textfont_size=10,
-...         marker_size=7,
-...         line_color="black",
-...         line_width=1.5,
-...         yshift=4,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_static/citation_network/article_degree_plot.html")
+## >>> # article:
+## >>> from techminer2.analyze.citation_network import NodeDegreePlot
+## >>> plot = (
+## ...     NodeDegreePlot()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="article",
+## ...         top_n=30, 
+## ...         citations_threshold=0,
+## ...     #
+## ...     ).set_plot_params(
+## ...         textfont_size=10,
+## ...         marker_size=7,
+## ...         line_color="black",
+## ...         line_width=1.5,
+## ...         yshift=4,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_static/citation_network/article_degree_plot.html")
 
 .. raw:: html
 

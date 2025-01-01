@@ -7,32 +7,32 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.docs.node_density_plot import _node_density_plot
->>> plot = _node_density_plot(
-...     #
-...     # ARTICLE PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/node_density_plot.html")
+## >>> from techminer2.coupling_network._core.docs.node_density_plot import _node_density_plot
+## >>> plot = _node_density_plot(
+## ...     #
+## ...     # ARTICLE PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     # DENSITY VISUALIZATION:
+## ...     bandwidth=0.1,
+## ...     colorscale="Aggrnyl",
+## ...     opacity=0.6,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/node_density_plot.html")
 
 .. raw:: html
 

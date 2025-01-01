@@ -9,25 +9,25 @@
 Node Degree Frame
 ===============================================================================
 
->>> from techminer2.analyze.co_citation_network import NodeDegreeDataFrame
->>> (
-...     NodeDegreeDataFrame()
-...     .set_analysis_params(
-...         unit_of_analysis="cited_sources", # "cited_sources", 
-...                                           # "cited_references",
-...                                           # "cited_authors"
-...         top_n=30, 
-...         citations_threshold=None,
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.co_citation_network import NodeDegreeDataFrame
+## >>> (
+## ...     NodeDegreeDataFrame()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="cited_sources", # "cited_sources", 
+## ...                                           # "cited_references",
+## ...                                           # "cited_authors"
+## ...         top_n=30, 
+## ...         citations_threshold=None,
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
    Node                            Name  Degree
 0     0      ELECT COMMER RES APPL 1:32      27
 1     1          J MANAGE INF SYST 1:27      26

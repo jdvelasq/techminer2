@@ -7,22 +7,22 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.others.node_degree_frame import _node_degree_frame
->>> _node_degree_frame(
-...     unit_of_analysis='authors', # authors, countries, organizations, sources
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... ).head()
+## >>> from techminer2.coupling_network._core.others.node_degree_frame import _node_degree_frame
+## >>> _node_degree_frame(
+## ...     unit_of_analysis='authors', # authors, countries, organizations, sources
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... ).head()
    Node                Name  Degree
 0     0    Gomber P. 2:1065       3
 1     1    Hornuf L. 2:0358       3

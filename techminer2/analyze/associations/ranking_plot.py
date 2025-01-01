@@ -9,44 +9,44 @@ Term Associations Plot
 ===============================================================================
 
 
->>> from techminer2.analyze.associations import RankingPlot
->>> plot = (
-...     RankingPlot()
-...     .set_analysis_params(
-...         item='FINTECH',
-...         plot_type="occ",     # "occ", "percentage", "similarity"
-...     #
-...     ).set_columns_params(
-...         field='author_keywords',
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_rows_params(
-...         field=None,
-...         top_n=None,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         field_label=None,
-...         line_width=1.5,
-...         marker_size=7,
-...         metric_label=None,
-...         textfont_size=10,
-...         title_text="Ranking Plot",
-...         yshift=4,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
+## >>> from techminer2.analyze.associations import RankingPlot
+## >>> plot = (
+## ...     RankingPlot()
+## ...     .set_analysis_params(
+## ...         item='FINTECH',
+## ...         plot_type="occ",     # "occ", "percentage", "similarity"
+## ...     #
+## ...     ).set_columns_params(
+## ...         field='author_keywords',
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_rows_params(
+## ...         field=None,
+## ...         top_n=None,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         field_label=None,
+## ...         line_width=1.5,
+## ...         marker_size=7,
+## ...         metric_label=None,
+## ...         textfont_size=10,
+## ...         title_text="Ranking Plot",
+## ...         yshift=4,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
 
 .. raw:: html
 

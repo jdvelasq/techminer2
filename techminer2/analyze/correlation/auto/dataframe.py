@@ -10,27 +10,27 @@ Auto-correlation Matrix
 
 Returns an auto-correlation matrix.
 
->>> from techminer2.analyze.correlation_matrix import auto_correlation_matrix
->>> (
-...     auto_correlation_matrix()
-...     .set_analysis_params(
-...         method="pearson",
-...     #
-...     ).set_item_params(
-...         field='authors',
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).round(3)
+## >>> from techminer2.analyze.correlation_matrix import auto_correlation_matrix
+## >>> (
+## ...     auto_correlation_matrix()
+## ...     .set_analysis_params(
+## ...         method="pearson",
+## ...     #
+## ...     ).set_item_params(
+## ...         field='authors',
+## ...         top_n=10,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                  1.00  ...                   0.0
 Gomber P. 2:1065                    0.00  ...                   0.0

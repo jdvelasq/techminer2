@@ -10,16 +10,16 @@ Collaboration WorldMap
 ===============================================================================
 
 
-# >>> from techminer2.report import collaboration_world_map
-# >>> plot = collaboration_world_map(
-# ...     #
-# ...     # DATABASE PARAMS:
-# ...     root_dir="example/", 
-# ...     database="main",
-# ...     year_filter=(None, None),
-# ...     cited_by_filter=(None, None),
-# ... )
-# >>> # plot.write_html("sphinx/_static/report/collaboration_world_map.html")
+## >>> from techminer2.report import collaboration_world_map
+## >>> plot = collaboration_world_map(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/collaboration_world_map.html")
 
 .. raw:: html
 

@@ -9,29 +9,29 @@
 World Map
 ===============================================================================
 
-# >>> from techminer2.report import world_map
-# >>> plot = world_map(
-# ...     #
-# ...     # ITEMS PARAMS:
-# ...     metric="OCC",
-# ...     #
-# ...     # CHART PARAMS:
-# ...     title="Countries' Scientific Production",
-# ...     colormap="Blues",
-# ...     #
-# ...     # ITEM FILTERS:
-# ...     top_n=20,
-# ...     occ_range=(None, None),
-# ...     gc_range=(None, None),
-# ...     custom_terms=None,
-# ...     #
-# ...     # DATABASE PARAMS:
-# ...     root_dir="example/", 
-# ...     database="main",
-# ...     year_filter=(None, None),
-# ...     cited_by_filter=(None, None),
-# ... )
-# >>> # plot.write_html("sphinx/_static/report/world_map.html")
+## >>> from techminer2.report import world_map
+## >>> plot = world_map(
+## ...     #
+## ...     # ITEMS PARAMS:
+## ...     metric="OCC",
+## ...     #
+## ...     # CHART PARAMS:
+## ...     title="Countries' Scientific Production",
+## ...     colormap="Blues",
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/world_map.html")
 
 .. raw:: html
 

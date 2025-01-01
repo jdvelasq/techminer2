@@ -9,45 +9,45 @@
 Network Density Plot
 ===============================================================================
 
->>> from techminer2.analyze.coupling_network import NodeDensityPlot
->>> plot = (
-...     NodeDensityPlot()
-...     .set_analysis_params(
-...     unit_of_analysis='authors', # article
-...                                 # authors 
-...                                 # countries
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/others_node_density_plot.html")
+## >>> from techminer2.analyze.coupling_network import NodeDensityPlot
+## >>> plot = (
+## ...     NodeDensityPlot()
+## ...     .set_analysis_params(
+## ...     unit_of_analysis='authors', # article
+## ...                                 # authors 
+## ...                                 # countries
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     # DENSITY VISUALIZATION:
+## ...     bandwidth=0.1,
+## ...     colorscale="Aggrnyl",
+## ...     opacity=0.6,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/others_node_density_plot.html")
 
 .. raw:: html
 
@@ -55,44 +55,44 @@ Network Density Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> # article:    
->>> from techminer2.analyze.coupling_network import node_density_plot
->>> plot = node_density_plot(
-...     unit_of_analysis='article', # article
-...                                 # authors 
-...                                 # countries, 
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     ).set_plot_params(
-...         bandwidth=0.1,
-...         colorscale="Aggrnyl",
-...         opacity=0.6,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/docs_node_density_plot.html")
+## >>> # article:    
+## >>> from techminer2.analyze.coupling_network import node_density_plot
+## >>> plot = node_density_plot(
+## ...     unit_of_analysis='article', # article
+## ...                                 # authors 
+## ...                                 # countries, 
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     ).set_plot_params(
+## ...         bandwidth=0.1,
+## ...         colorscale="Aggrnyl",
+## ...         opacity=0.6,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/docs_node_density_plot.html")
 
 .. raw:: html
 

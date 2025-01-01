@@ -9,31 +9,31 @@
 Network Degree Frame
 ===============================================================================
 
->>> from techminer2.analyze.coupling_network import NodeDegreeDataFrame
->>> (
-...     NodeDegreeDataFrame()
-...     .set_analysis_params(
-...     unit_of_analysis='authors', # article
-...                                 # authors 
-...                                 # countries
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.coupling_network import NodeDegreeDataFrame
+## >>> (
+## ...     NodeDegreeDataFrame()
+## ...     .set_analysis_params(
+## ...     unit_of_analysis='authors', # article
+## ...                                 # authors 
+## ...                                 # countries
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
    Node                Name  Degree
 0     0    Gomber P. 2:1065       3
 1     1    Hornuf L. 2:0358       3
@@ -43,29 +43,29 @@ Network Degree Frame
 
 
 
->>> # article:
->>> from techminer2.analyze.coupling_network import node_degree_frame
->>> node_degree_frame(
-...     unit_of_analysis='article', # article
-...                                 # authors 
-...                                 # countries, 
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> # article:
+## >>> from techminer2.analyze.coupling_network import node_degree_frame
+## >>> node_degree_frame(
+## ...     unit_of_analysis='article', # article
+## ...                                 # authors 
+## ...                                 # countries, 
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
    Node                                        Name  Degree
 0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
 1     1           Gomber P., 2017, J BUS ECON 1:489       6

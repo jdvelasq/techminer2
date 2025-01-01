@@ -8,28 +8,28 @@
 Cross-correlation Matrix
 ===============================================================================
 
->>> from techminer2.analyze.correlation_matrix import cross_correlation_matrix
->>> (
-...     cross_correlation_matrix()
-...     .set_analysis_params(
-...         cross_with='countries',
-...         method="pearson",
-...     #
-...     set_item_params(
-...         field='authors', 
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).round(3)
+## >>> from techminer2.analyze.correlation_matrix import cross_correlation_matrix
+## >>> (
+## ...     cross_correlation_matrix()
+## ...     .set_analysis_params(
+## ...         cross_with='countries',
+## ...         method="pearson",
+## ...     #
+## ...     set_item_params(
+## ...         field='authors', 
+## ...         top_n=10,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                 1.000  ...                   0.0
 Gomber P. 2:1065                   0.200  ...                   0.0

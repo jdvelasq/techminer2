@@ -9,21 +9,21 @@
 Document Metrics
 =======================================================================================
 
->>> from techminer2.analyze.documents import document_metrics
->>> frame = document_metrics(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="global_cited_by_highest", # date_newest, date_oldest, global_cited_by_highest, 
-...                                        # global_cited_by_lowest, local_cited_by_highest, 
-...                                        # local_cited_by_lowest, first_author_a_to_z, 
-...                                        # first_author_z_to_a, source_title_a_to_z, 
-...                                        # source_title_z_to_a
-... )
->>> frame.head()
+## >>> from techminer2.analyze.documents import document_metrics
+## >>> frame = document_metrics(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by="global_cited_by_highest", # date_newest, date_oldest, global_cited_by_highest, 
+## ...                                        # global_cited_by_lowest, local_cited_by_highest, 
+## ...                                        # local_cited_by_lowest, first_author_a_to_z, 
+## ...                                        # first_author_z_to_a, source_title_a_to_z, 
+## ...                                        # source_title_z_to_a
+## ... )
+## >>> frame.head()
                                   raw_document_title  ...  year
 0  On the Fintech Revolution: Interpreting the Fo...  ...  2018
 1  Fintech: Ecosystem, business models, investmen...  ...  2018

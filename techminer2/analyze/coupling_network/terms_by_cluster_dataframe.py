@@ -9,29 +9,29 @@
 Terms by Cluster Frame
 ===============================================================================
 
->>> from techminer2.analyze.coupling_network import terms_by_cluster_frame
->>> terms_by_cluster_frame(
-
-...         algorithm_or_dict="louvain",
-...         unit_of_analysis='authors', # article
-...                                     # authors 
-...                                     # countries
-...                                     # organizations 
-...                                     # sources
-...         top_n=20, 
-...         citations_threshold=0,
-...         #
-...         # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...         occurrence_threshold=2,
-...         custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> from techminer2.analyze.coupling_network import terms_by_cluster_frame
+## >>> terms_by_cluster_frame(
+## 
+## ...         algorithm_or_dict="louvain",
+## ...         unit_of_analysis='authors', # article
+## ...                                     # authors 
+## ...                                     # countries
+## ...                                     # organizations 
+## ...                                     # sources
+## ...         top_n=20, 
+## ...         citations_threshold=0,
+## ...         #
+## ...         # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...         occurrence_threshold=2,
+## ...         custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
                     0                     1                2
 0    Gomber P. 2:1065      Dolata M. 2:0181    Gai K. 2:0323
 1    Hornuf L. 2:0358     Schwabe G. 2:0181    Qiu M. 2:0323
@@ -39,30 +39,30 @@ Terms by Cluster Frame
 3   Lemieux C. 2:0253                                       
 
 
->>> # article:
->>> from techminer2.analyze.coupling_network import terms_by_cluster_frame
->>> terms_by_cluster_frame(
-...     .set_analysis_params(
-...         algorithm_or_dict="louvain",
-...         unit_of_analysis='article', # article
-...                                     # authors 
-...                                     # countries, 
-...                                     # organizations 
-...                                     # sources
-...         top_n=30, 
-...         citations_threshold=0,
-...     #
-...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> # article:
+## >>> from techminer2.analyze.coupling_network import terms_by_cluster_frame
+## >>> terms_by_cluster_frame(
+## ...     .set_analysis_params(
+## ...         algorithm_or_dict="louvain",
+## ...         unit_of_analysis='article', # article
+## ...                                     # authors 
+## ...                                     # countries, 
+## ...                                     # organizations 
+## ...                                     # sources
+## ...         top_n=30, 
+## ...         citations_threshold=0,
+## ...     #
+## ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
                                                 0  ...                                           3
 0    Gracia D.B., 2019, IND MANAGE DATA SYS 1:225  ...           Alt R., 2018, ELECTRON MARK 1:150
 1                     Hu Z., 2019, SYMMETRY 1:176  ...    Gomber P., 2018, J MANAGE INF SYST 1:576

@@ -9,32 +9,32 @@
 Node Degree Plot
 ===============================================================================
 
->>> # abbr_source_title, authors, organizations, countries:
->>> from techminer2.analyze.citation_network  import NodeDegreePlot
->>> plot = (
-...     NodeDegreePlot()
-...     .set_analysis_params(
-...         unit_of_analysis="abbr_source_title",
-...         citations_threshold=0,
-...         occurrence_threshold=2,
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         textfont_size=10,
-...         marker_size=7,
-...         line_color="black",
-...         line_width=1.5,
-...         yshift=4,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_static/citation_network/others_degree_plot.html")
+## >>> # abbr_source_title, authors, organizations, countries:
+## >>> from techminer2.analyze.citation_network  import NodeDegreePlot
+## >>> plot = (
+## ...     NodeDegreePlot()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="abbr_source_title",
+## ...         citations_threshold=0,
+## ...         occurrence_threshold=2,
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         textfont_size=10,
+## ...         marker_size=7,
+## ...         line_color="black",
+## ...         line_width=1.5,
+## ...         yshift=4,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_static/citation_network/others_degree_plot.html")
 
 .. raw:: html
 

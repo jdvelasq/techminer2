@@ -9,34 +9,34 @@ Cross co-occurrence DataFrame
 ===============================================================================
 
 
->>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceDataFrame
->>> (
-...     CrossCoOccurrenceDataFrame()
-...     .set_columns_params(
-...         field="author_keywords",
-...         top_n=10,
-...         occ_range=(2, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_rows_params(
-...         field="authors",
-...         top_n=None,
-...         occ_range=(2, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_output_params(
-...         retain_counters=True,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head(10)
+## >>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceDataFrame
+## >>> (
+## ...     CrossCoOccurrenceDataFrame()
+## ...     .set_columns_params(
+## ...         field="author_keywords",
+## ...         top_n=10,
+## ...         occ_range=(2, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_rows_params(
+## ...         field="authors",
+## ...         top_n=None,
+## ...         occ_range=(2, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_output_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head(10)
                  rows                      columns  OCC
 0    Dolata M. 2:0181              FINTECH 31:5168    2
 1    Dolata M. 2:0181           INNOVATION 07:0911    2

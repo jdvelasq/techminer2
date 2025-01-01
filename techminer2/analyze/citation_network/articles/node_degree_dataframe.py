@@ -9,22 +9,22 @@
 Node Degree Dataframe
 ===============================================================================
 
->>> from techminer2.analyze.citation_network.articles  import NodeDegreeDataFrame
->>> (
-...     NodeDegreeDataFrame()
-...     .set_analysis_params(
-...         #cunit_of_analysis="article",
-...         top_n=30, 
-...         citations_threshold=0,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.citation_network.articles  import NodeDegreeDataFrame
+## >>> (
+## ...     NodeDegreeDataFrame()
+## ...     .set_analysis_params(
+## ...         #cunit_of_analysis="article",
+## ...         top_n=30, 
+## ...         citations_threshold=0,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
    Node                                               Name  Degree
 0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
 1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4

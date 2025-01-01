@@ -10,17 +10,17 @@
 # Check imported data
 """
 
->>> from techminer2.prepare.database import Query
+## >>> from techminer2.prepare.database import Query
 
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT record_id, raw_abstract_nlp_phrases FROM database LIMIT 5;")
-... )
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT record_id, raw_abstract_nlp_phrases FROM database LIMIT 5;")
+## ... )
                                            record_id                           raw_abstract_nlp_phrases
 0       Kim Y., 2016, INT J APPL ENG RES, V11, P1058  ACCEPTANCE; PAYMENT_TYPE_FINTECH_SERVICES; ELA...
 1        Shim Y., 2016, TELECOMMUN POLICY, V40, P168  RAPID_DEVELOPMENT; INFORMATION_AND_COMMUNICATI...
@@ -29,15 +29,15 @@
 4          Gabor D., 2017, NEW POLIT ECON, V22, P423  PAPER_EXAMINES; FINANCIAL_INCLUSION; DEVELOPME...
 
 
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT record_id, raw_title_nlp_phrases FROM database LIMIT 5;")
-... )
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT record_id, raw_title_nlp_phrases FROM database LIMIT 5;")
+## ... )
                                            record_id                              raw_title_nlp_phrases
 0       Kim Y., 2016, INT J APPL ENG RES, V11, P1058         ADOPTION; MOBILE_PAYMENT_SERVICES; FINTECH
 1        Shim Y., 2016, TELECOMMUN POLICY, V40, P168       CHINA_FINTECH_INDUSTRY; ACTOR_NETWORK_THEORY
@@ -46,15 +46,15 @@
 4          Gabor D., 2017, NEW POLIT ECON, V22, P423  DIGITAL_REVOLUTION; FINANCIAL_INCLUSION; INTER...
 
 
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT record_id, local_citations FROM database LIMIT 5;")
-... )
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT record_id, local_citations FROM database LIMIT 5;")
+## ... )
                                            record_id  local_citations
 0       Kim Y., 2016, INT J APPL ENG RES, V11, P1058                0
 1        Shim Y., 2016, TELECOMMUN POLICY, V40, P168                0
@@ -63,15 +63,15 @@
 4          Gabor D., 2017, NEW POLIT ECON, V22, P423                4
 
 
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT record_id, global_citations FROM database LIMIT 5;")
-... )
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT record_id, global_citations FROM database LIMIT 5;")
+## ... )
                                            record_id  global_citations
 0       Kim Y., 2016, INT J APPL ENG RES, V11, P1058               125
 1        Shim Y., 2016, TELECOMMUN POLICY, V40, P168               146
@@ -80,15 +80,15 @@
 4          Gabor D., 2017, NEW POLIT ECON, V22, P423               314
 
 
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT record_id, global_references FROM database LIMIT 5;")
-... )
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT record_id, global_references FROM database LIMIT 5;")
+## ... )
                                            record_id                                  global_references
 0       Kim Y., 2016, INT J APPL ENG RES, V11, P1058  Angst C.M., 2009, MIS QUART MANAGE INF SYST, V...
 1        Shim Y., 2016, TELECOMMUN POLICY, V40, P168  Cresswell K.M., 2010, BMC MED INFORMATICS DECI...
@@ -97,15 +97,15 @@
 4          Gabor D., 2017, NEW POLIT ECON, V22, P423  Agrawal R., 1993, SIGMOD REC, V22, P207; Aitke...
 
 
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT record_id, local_references FROM database ORDER BY local_references LIMIT 5;")
-... )
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT record_id, local_references FROM database ORDER BY local_references LIMIT 5;")
+## ... )
                                            record_id                                   local_references
 0                         Hu Z., 2019, SYMMETRY, V11  Alt R., 2018, ELECTRON MARK, V28, P235; Gabor ...
 1            Jagtiani J., 2018, J ECON BUS, V100, P1  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...

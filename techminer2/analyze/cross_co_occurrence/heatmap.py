@@ -9,36 +9,36 @@
 Heatmap (MIGRATED)
 ===============================================================================
 
->>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceHeatmap
->>> plot = (
-...     CrossCoOccurrenceHeatmap()
-...     .set_columns_params(
-...         field="author_keywords",
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_rows_params(
-...         field=None,
-...         top_n=None,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         title_text=None,
-...         colormap="Blues",
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_generated/analyze/cross_co_occurrence/heatmap.html")
+## >>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceHeatmap
+## >>> plot = (
+## ...     CrossCoOccurrenceHeatmap()
+## ...     .set_columns_params(
+## ...         field="author_keywords",
+## ...         top_n=10,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_rows_params(
+## ...         field=None,
+## ...         top_n=None,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         title_text=None,
+## ...         colormap="Blues",
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_generated/analyze/cross_co_occurrence/heatmap.html")
 
 .. raw:: html
 

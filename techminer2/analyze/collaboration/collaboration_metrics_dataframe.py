@@ -9,22 +9,22 @@
 Collaboration Metrics
 ===============================================================================
 
->>> from techminer2.analyze.metrics import collaboration_metrics_frame
->>> collaboration_metrics_frame(
-...     .set_item_params(
-...         field="countries",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.metrics import collaboration_metrics_frame
+## >>> collaboration_metrics_frame(
+## ...     .set_item_params(
+## ...         field="countries",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
                OCC  global_citations  ...  multiple_publication  mp_ratio
 countries                             ...                                
 United States   16              3189  ...                     8      0.50

@@ -7,22 +7,22 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.others.network_metrics import _network_metrics
->>> _network_metrics(
-...     unit_of_analysis='authors', # authors, countries, organizations, sources
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... ).head()
+## >>> from techminer2.coupling_network._core.others.network_metrics import _network_metrics
+## >>> _network_metrics(
+## ...     unit_of_analysis='authors', # authors, countries, organizations, sources
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... ).head()
                     Degree  Betweenness  Closeness  PageRank
 Gomber P. 2:1065         3          0.0   0.333333  0.085695
 Hornuf L. 2:0358         3          0.0   0.333333  0.073543

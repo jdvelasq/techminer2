@@ -9,18 +9,18 @@
 Most Global Cited Documents (Example)
 ===============================================================================
 
->>> from techminer2.analyze.documents import select_documents
->>> documents = select_documents(
-...     #
-...     # DATABASE PARAMS:
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> print(documents[0])
+## >>> from techminer2.analyze.documents import select_documents
+## >>> documents = select_documents(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> print(documents[0])
 Record-No: 49
 AR Gomber P., 2018, J MANAGE INF SYST, V35, P220
 TI On the Fintech Revolution: Interpreting the Forces of Innovation,

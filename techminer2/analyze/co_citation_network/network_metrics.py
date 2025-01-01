@@ -10,25 +10,25 @@ Network Metrics
 ===============================================================================
 
 
->>> from techminer2.analyze.co_citation_network import NetworkMetrics
->>> (
-...     NetworkMetrics()
-...     .set_analysis_params(
-...         unit_of_analysis="cited_sources", # "cited_sources", 
-...                                           # "cited_references",
-...                                           # "cited_authors"
-...         top_n=30, 
-...         citations_threshold=None,
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.co_citation_network import NetworkMetrics
+## >>> (
+## ...     NetworkMetrics()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="cited_sources", # "cited_sources", 
+## ...                                           # "cited_references",
+## ...                                           # "cited_authors"
+## ...         top_n=30, 
+## ...         citations_threshold=None,
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
                                 Degree  Betweenness  Closeness  PageRank
 ELECT COMMER RES APPL 1:32          27     0.077741   0.935484  0.047163
 J MANAGE INF SYST 1:27              26     0.017028   0.906250  0.042947

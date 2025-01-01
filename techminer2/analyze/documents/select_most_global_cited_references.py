@@ -9,17 +9,17 @@
 Most Global Cited References (Example)
 ===============================================================================
 
->>> from techminer2.analyze.documents import select_documents
->>> documents = select_documents(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="references",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="global_cited_by_highest",
-... )
->>> print(documents[0])
+## >>> from techminer2.analyze.documents import select_documents
+## >>> documents = select_documents(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="references",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by="global_cited_by_highest",
+## ... )
+## >>> print(documents[0])
 Record-No: 1
 AR Landis J.R., 1977, BIOMETRICS, V33, P159
 TI The measurement of observer agreement for categorical data

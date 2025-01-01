@@ -10,52 +10,52 @@ Co-occurrence Matrix Network
 ===============================================================================
 
 
->>> from techminer2.analyze.co_occurrence_matrix import CoOccurrenceMatrixNetwork
->>> plot = (
-...     CoOccurrenceMatrixNetwork()
-...     .set_column_params(
-...         field="author_keywords",
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_rows_params(
-...         field="authors",
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     ).set_format_params(
-...         retain_counters=True,
-...     #
-...     ).set_plot_params(
-...         node_size_range=(30, 70),
-...         textfont_size_range=(10, 20),
-...         textfont_opacity_range=(0.35, 1.00),
-...         edge_color="#b8c6d0",
-...         edge_width_range=(0.8, 4.0),
-...     #
-...     ).set_axes_params(
-...         xaxes_range=None,
-...         yaxes_range=None,
-...         show_axes=False,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
->>> )
->>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_0.html")
+## >>> from techminer2.analyze.co_occurrence_matrix import CoOccurrenceMatrixNetwork
+## >>> plot = (
+## ...     CoOccurrenceMatrixNetwork()
+## ...     .set_column_params(
+## ...         field="author_keywords",
+## ...         top_n=10,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_rows_params(
+## ...         field="authors",
+## ...         top_n=10,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     ).set_format_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_plot_params(
+## ...         node_size_range=(30, 70),
+## ...         textfont_size_range=(10, 20),
+## ...         textfont_opacity_range=(0.35, 1.00),
+## ...         edge_color="#b8c6d0",
+## ...         edge_width_range=(0.8, 4.0),
+## ...     #
+## ...     ).set_axes_params(
+## ...         xaxes_range=None,
+## ...         yaxes_range=None,
+## ...         show_axes=False,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## >>> )
+## >>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_0.html")
 
 .. raw:: html
     
@@ -63,45 +63,45 @@ Co-occurrence Matrix Network
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> from techminer2.analyze.co_occurrence_matrix import CoOccurrenceMatrixNetwork
->>> plot = (
-...     CoOccurrenceMatrixNetwork()
-...     .set_column_params(
-...         field="author_keywords",
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     ).set_rows_params(
-...         field=None,
-...         top_n=None,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     ).set_output_params(
-...         retain_counters=True,
-...     ).set_plot_params(
-...         node_size_range=(30, 70),
-...         textfont_size_range=(10, 20),
-...         textfont_opacity_range=(0.35, 1.00),
-...         edge_color="#b8c6d0",
-...         edge_width_range=(0.8, 4.0),
-...     ).set_axes_params(
-...         xaxes_range=None,
-...         yaxes_range=None,
-...         show_axes=False,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
->>> )
->>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_1.html")
+## >>> from techminer2.analyze.co_occurrence_matrix import CoOccurrenceMatrixNetwork
+## >>> plot = (
+## ...     CoOccurrenceMatrixNetwork()
+## ...     .set_column_params(
+## ...         field="author_keywords",
+## ...         top_n=10,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     ).set_rows_params(
+## ...         field=None,
+## ...         top_n=None,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     ).set_output_params(
+## ...         retain_counters=True,
+## ...     ).set_plot_params(
+## ...         node_size_range=(30, 70),
+## ...         textfont_size_range=(10, 20),
+## ...         textfont_opacity_range=(0.35, 1.00),
+## ...         edge_color="#b8c6d0",
+## ...         edge_width_range=(0.8, 4.0),
+## ...     ).set_axes_params(
+## ...         xaxes_range=None,
+## ...         yaxes_range=None,
+## ...         show_axes=False,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## >>> )
+## >>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/co_occurrence_matrix_network_1.html")
 
 .. raw:: html
     

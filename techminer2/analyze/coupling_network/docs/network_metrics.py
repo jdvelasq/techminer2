@@ -7,19 +7,19 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.docs.network_metrics import _network_metrics
->>> _network_metrics(
-...     #
-...     # ARTICLE PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... ).head()
+## >>> from techminer2.coupling_network._core.docs.network_metrics import _network_metrics
+## >>> _network_metrics(
+## ...     #
+## ...     # ARTICLE PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... ).head()
                                             Degree  ...  PageRank
 Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
 Gomber P., 2017, J BUS ECON 1:489                6  ...  0.164851

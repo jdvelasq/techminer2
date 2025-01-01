@@ -8,41 +8,41 @@
 Clusters to Terms Map
 ===============================================================================
 
->>> import pprint
->>> from sklearn.cluster import KMeans
->>> from techminer2.analyze.document_clustering import ClustersToTermsMapping
->>> mapping = (
-...     ClustersToTermsMapping()
-...     .set_analysis_params(
-...         sklearn_estimator=KMeans(
-...             n_clusters=4,
-...             init="k-means++",
-...             n_init=10,
-...             max_iter=300,
-...             tol=0.0001,
-...             algorithm="lloyd",
-...             random_state=0,
-...         ),
-...     #
-...     .set_output_params(
-...         retain_counters=True,
-...     #
-...     ).set_item_params(
-...         field='descriptors',
-...         top_n=50,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> pprint.pprint(mapping)
+## >>> import pprint
+## >>> from sklearn.cluster import KMeans
+## >>> from techminer2.analyze.document_clustering import ClustersToTermsMapping
+## >>> mapping = (
+## ...     ClustersToTermsMapping()
+## ...     .set_analysis_params(
+## ...         sklearn_estimator=KMeans(
+## ...             n_clusters=4,
+## ...             init="k-means++",
+## ...             n_init=10,
+## ...             max_iter=300,
+## ...             tol=0.0001,
+## ...             algorithm="lloyd",
+## ...             random_state=0,
+## ...         ),
+## ...     #
+## ...     .set_output_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_item_params(
+## ...         field='descriptors',
+## ...         top_n=50,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> pprint.pprint(mapping)
 {0: ['INNOVATION 08:0990',
      'FINANCIAL_SERVICES_INDUSTRY 06:1370',
      'BUSINESS_MODELS 04:1441',

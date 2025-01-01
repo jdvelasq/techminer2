@@ -7,30 +7,30 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.others.node_degree_plot import _node_degree_plot
->>> plot = _node_degree_plot(
-...     unit_of_analysis='authors', # authors, countries, organizations, sources
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/_core/others/node_degree_plot.html")
+## >>> from techminer2.coupling_network._core.others.node_degree_plot import _node_degree_plot
+## >>> plot = _node_degree_plot(
+## ...     unit_of_analysis='authors', # authors, countries, organizations, sources
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DEGREE PLOT:
+## ...     textfont_size=10,
+## ...     marker_size=7,
+## ...     line_color="black",
+## ...     line_width=1.5,
+## ...     yshift=4,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/_core/others/node_degree_plot.html")
 
 .. raw:: html
 

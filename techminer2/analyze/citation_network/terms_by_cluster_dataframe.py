@@ -10,23 +10,23 @@ Terms by Cluster Frame
 ===============================================================================
 
 
->>> from techminer2.analyze.citation_network  import TermsByClusterDataFrame
->>> (
-...     TermsByClusterDataFrame()
-...     .set_analysis_params(
-...         unit_of_analysis="article",
-...         top_n=30, 
-...         citations_threshold=0,
-...         algorithm_or_dict="louvain",
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.citation_network  import TermsByClusterDataFrame
+## >>> (
+## ...     TermsByClusterDataFrame()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="article",
+## ...         top_n=30, 
+## ...         citations_threshold=0,
+## ...         algorithm_or_dict="louvain",
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
                                                    0  ...                                                  3
 0  Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P5...  ...  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...
 1  Gracia D.B., 2019, IND MANAGE DATA SYS, V119, ...  ...     Zavolokina L., 2016, FINANCIAL INNOV, V2 1:106
@@ -37,26 +37,26 @@ Terms by Cluster Frame
 [5 rows x 4 columns]
 
 
->>> # abbr_source_title, authors, organizations, countries:
->>> from techminer2.analyze.citation_network  import TermsByClusterDataFrame
->>> (
-...     TermsByClusterDataFrame()
-...     .set_analysis_params(
-...         unit_of_analysis="abbr_source_title",
-...         top_n=30, 
-...         citations_threshold=0,
-...         occurrence_threshold=2,
-...         custom_terms=None,
-...        algorithm_or_dict="louvain",
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> # abbr_source_title, authors, organizations, countries:
+## >>> from techminer2.analyze.citation_network  import TermsByClusterDataFrame
+## >>> (
+## ...     TermsByClusterDataFrame()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="abbr_source_title",
+## ...         top_n=30, 
+## ...         citations_threshold=0,
+## ...         occurrence_threshold=2,
+## ...         custom_terms=None,
+## ...        algorithm_or_dict="louvain",
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
                          0                       1                          2
 0    Electron. Mark. 2:287   Financ. Manage. 2:161  Ind Manage Data Sys 2:386
 1  J Manage Inf Syst 2:696     J. Econ. Bus. 3:422                           

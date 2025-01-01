@@ -9,45 +9,45 @@
 Network Plot
 ===============================================================================
 
->>> from techminer2.analyze.co_occurrence_network import network_plot
->>> plot = network_plot(
-...     .set_analysis_params(
-...         association_index="association",
-...         algorithm_or_dict="louvain",
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     ).set_plot_params(
-...         node_size_range=(30, 70),
-...         textfont_size_range=(10, 20),
-...         textfont_opacity_range=(0.35, 1.00),
-...         edge_color="#7793a5",
-...         edge_width_range=(0.8, 3.0),
-...     #
-...     ).set_axes_params(
-...         xaxes_range=None,
-...         yaxes_range=None,
-...         show_axes=False,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
+## >>> from techminer2.analyze.co_occurrence_network import network_plot
+## >>> plot = network_plot(
+## ...     .set_analysis_params(
+## ...         association_index="association",
+## ...         algorithm_or_dict="louvain",
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     ).set_plot_params(
+## ...         node_size_range=(30, 70),
+## ...         textfont_size_range=(10, 20),
+## ...         textfont_opacity_range=(0.35, 1.00),
+## ...         edge_color="#7793a5",
+## ...         edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     ).set_axes_params(
+## ...         xaxes_range=None,
+## ...         yaxes_range=None,
+## ...         show_axes=False,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
 
 .. raw:: html
 

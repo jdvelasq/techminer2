@@ -9,65 +9,65 @@
 Node Density Plot
 ===============================================================================
 
->>> from techminer2.analyze.citation_network  import NodeDensityPlot
->>> plot = (
-...     NodeDensityPlot()
-...     .set_analysis_params(
-...         unit_of_analysis="article",
-...         top_n=30, 
-...         citations_threshold=0,
-...         algorithm_or_dict="louvain",
-...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_static/citation_network/documents_node_density_plot.html")
+## >>> from techminer2.analyze.citation_network  import NodeDensityPlot
+## >>> plot = (
+## ...     NodeDensityPlot()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="article",
+## ...         top_n=30, 
+## ...         citations_threshold=0,
+## ...         algorithm_or_dict="louvain",
+## ...     #
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_static/citation_network/documents_node_density_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/citation_network/documents_node_density_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
->>> from techminer2.analyze.citation_network  import node_density_plot
->>> plot = (
-...     NodeDensityPlot()
-...     .set_analysis_params(
-...         unit_of_analysis="abbr_source_title",
-...         top_n=30,
-...         citations_threshold=0,
-...         occurrence_threshold=2,
-...         custom_terms=None,
-...         algorithm_or_dict="louvain",
-...     #
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     ).set_plot_params(
-...         bandwidth=0.1,
-...         colorscale="Aggrnyl",
-...         opacity=0.6,
-...         textfont_size_range=(10, 20),
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> plot.write_html("sphinx/_static/citation_network/others_node_density_plot.html")
+## >>> from techminer2.analyze.citation_network  import node_density_plot
+## >>> plot = (
+## ...     NodeDensityPlot()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="abbr_source_title",
+## ...         top_n=30,
+## ...         citations_threshold=0,
+## ...         occurrence_threshold=2,
+## ...         custom_terms=None,
+## ...         algorithm_or_dict="louvain",
+## ...     #
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     ).set_plot_params(
+## ...         bandwidth=0.1,
+## ...         colorscale="Aggrnyl",
+## ...         opacity=0.6,
+## ...         textfont_size_range=(10, 20),
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_static/citation_network/others_node_density_plot.html")
 
 .. raw:: html
 

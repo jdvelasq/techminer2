@@ -10,31 +10,31 @@ Clusters to Terms Mapping
 ===============================================================================
 
 
->>> from techminer2.analyze.co_occurrence_network import ClustersToTermsMapping
->>> mapping = (
-...     ClustersToTermsMapping()
-...     .set_analysis_params(
-...         algorithm_or_dict="louvain",
-...         association_index="association",
-...     #
-...     .set_format_params(
-...         retain_counters=True,
-...     #
-...     .set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> from techminer2.analyze.co_occurrence_network import ClustersToTermsMapping
+## >>> mapping = (
+## ...     ClustersToTermsMapping()
+## ...     .set_analysis_params(
+## ...         algorithm_or_dict="louvain",
+## ...         association_index="association",
+## ...     #
+## ...     .set_format_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     .set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
 {0: ['FINTECH 31:5168',

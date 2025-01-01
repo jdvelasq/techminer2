@@ -9,29 +9,29 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.analyze.co_occurrence_network import treemap
->>> plot = treemap(
-...     .set_analysis_params(
-...         association_index="association",
-...     .set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         title=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
+## >>> from techminer2.analyze.co_occurrence_network import treemap
+## >>> plot = treemap(
+## ...     .set_analysis_params(
+## ...         association_index="association",
+## ...     .set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         title=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
 
 .. raw:: html
 

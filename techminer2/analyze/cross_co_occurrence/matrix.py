@@ -9,34 +9,34 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceMatrix
->>> (
-...     CrossCoOccurrenceMatrix()
-...     .set_columns_params(
-...         field="author_keywords",
-...         top_n=10,
-...         occ_range=(2, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_rows_params(
-...         field="authors",
-...         top_n=None,
-...         occ_range=(2, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_output_params(
-...         retain_counters=True,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceMatrix
+## >>> (
+## ...     CrossCoOccurrenceMatrix()
+## ...     .set_columns_params(
+## ...         field="author_keywords",
+## ...         top_n=10,
+## ...         occ_range=(2, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_rows_params(
+## ...         field="authors",
+## ...         top_n=None,
+## ...         occ_range=(2, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_output_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
 columns               FINTECH 31:5168  ...  CYBER_SECURITY 02:0342
 rows                                   ...                        
 Jagtiani J. 3:0317                  3  ...                       0
@@ -52,34 +52,34 @@ Zavolokina L. 2:0181                2  ...                       0
 <BLANKLINE>
 [10 rows x 5 columns]
 
->>> from techminer2.analyze.co_occurrence import CrossCoOccurrenceMatrix
->>> (
-...     CrossCoOccurrenceMatrix()
-...     .set_columns_params(
-...         field="author_keywords",
-...         top_n=10,
-...         occ_range=(2, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_rows_params(
-...         field=None,
-...         top_n=None,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_output_params(
-...         retain_counters=True,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> from techminer2.analyze.co_occurrence import CrossCoOccurrenceMatrix
+## >>> (
+## ...     CrossCoOccurrenceMatrix()
+## ...     .set_columns_params(
+## ...         field="author_keywords",
+## ...         top_n=10,
+## ...         occ_range=(2, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_rows_params(
+## ...         field=None,
+## ...         top_n=None,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_output_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
 columns                       FINTECH 31:5168  ...  CASE_STUDY 02:0340
 rows                                           ...                    
 FINTECH 31:5168                            31  ...                   2

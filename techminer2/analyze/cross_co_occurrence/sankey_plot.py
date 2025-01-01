@@ -8,34 +8,34 @@
 Sankey Chart
 ===============================================================================
 
->>> from techminer2.analyze.co_occurrence_matrix import SankeyPlot
->>> plot = (
-...     SankeyPlot()
-...     .set_analysis_params(
-...         fields=["authors", "countries", "author_keywords"],
-...         top_n=10,
-...         occ_range=None,
-...         gc_range=None,
-...         custom_terms=None,
-...         max_n=20,
-...     #
-...     ).set_plot_params(
-...         font_size=8,
-...         title=None,
-...         color=None,
-...     #
-...     ).set_output_params(
-...         retain_counters=True,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/sankey_plot.html")
+## >>> from techminer2.analyze.co_occurrence_matrix import SankeyPlot
+## >>> plot = (
+## ...     SankeyPlot()
+## ...     .set_analysis_params(
+## ...         fields=["authors", "countries", "author_keywords"],
+## ...         top_n=10,
+## ...         occ_range=None,
+## ...         gc_range=None,
+## ...         custom_terms=None,
+## ...         max_n=20,
+## ...     #
+## ...     ).set_plot_params(
+## ...         font_size=8,
+## ...         title=None,
+## ...         color=None,
+## ...     #
+## ...     ).set_output_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/sankey_plot.html")
 
 .. raw:: html
 

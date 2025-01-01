@@ -9,23 +9,23 @@
 Select Documents
 =======================================================================================
 
->>> from techminer2.analyze.documents import select_documents
->>> documents = select_documents(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
-... )
->>> len(documents)
-50
->>> print(documents[0])
+## >>> from techminer2.analyze.documents import select_documents
+## >>> documents = select_documents(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
+## ...                            # global_cited_by_lowest, local_cited_by_highest, 
+## ...                            # local_cited_by_lowest, first_author_a_to_z, 
+## ...                            # first_author_z_to_a, source_title_a_to_z, 
+## ...                            # source_title_z_to_a
+## ... )
+## >>> len(documents)
+## 50
+## >>> print(documents[0])
 Record-No: 37
 AR Mackenzie A., 2015, LONDON BUS SCH REV, V26, P50
 TI THE FINTECH REVOLUTION

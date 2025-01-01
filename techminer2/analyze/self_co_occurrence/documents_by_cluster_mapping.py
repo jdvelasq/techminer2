@@ -10,35 +10,35 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
->>> from techminer2.analyze.co_occurrence_network import DocumentsByClusterMapping
->>> documents_by_cluster = (
-...     DocumentsByClusterMapping()
-...     .set_analysis_params(
-...         algorithm_or_dict="louvain",
-...         association_index="association",
-...     #
-...     .set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...        custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-...                                # global_cited_by_lowest, local_cited_by_highest, 
-...                                # local_cited_by_lowest, first_author_a_to_z, 
-...                                # first_author_z_to_a, source_title_a_to_z, 
-...                                # source_title_z_to_a
-...     ).build()
-... )
->>> print(len(documents_by_cluster))
-4
->>> print(documents_by_cluster[0][0])
+## >>> from techminer2.analyze.co_occurrence_network import DocumentsByClusterMapping
+## >>> documents_by_cluster = (
+## ...     DocumentsByClusterMapping()
+## ...     .set_analysis_params(
+## ...         algorithm_or_dict="louvain",
+## ...         association_index="association",
+## ...     #
+## ...     .set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...        custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
+## ...                                # global_cited_by_lowest, local_cited_by_highest, 
+## ...                                # local_cited_by_lowest, first_author_a_to_z, 
+## ...                                # first_author_z_to_a, source_title_a_to_z, 
+## ...                                # source_title_z_to_a
+## ...     ).build()
+## ... )
+## >>> print(len(documents_by_cluster))
+## 4
+## >>> print(documents_by_cluster[0][0])
 Record-No: 6
 AR Haddad C., 2019, SMALL BUS ECON, V53, P81
 TI The emergence of the global fintech market: economic and technological

@@ -7,41 +7,41 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.docs.network_plot import _network_plot
->>> plot = _network_plot(
-...     #
-...     # ARTICLE PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     ).set_nx_params(
-...         nx_k=None,
-...         nx_iterations=30,
-...         nx_random_state=0,
-...     #
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     ).set_axes_params(
-...         xaxes_range=None,
-...         yaxes_range=None,
-...         show_axes=False,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/network_plot.html")
+## >>> from techminer2.coupling_network._core.docs.network_plot import _network_plot
+## >>> plot = _network_plot(
+## ...     #
+## ...     # ARTICLE PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     ).set_nx_params(
+## ...         nx_k=None,
+## ...         nx_iterations=30,
+## ...         nx_random_state=0,
+## ...     #
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     ).set_axes_params(
+## ...         xaxes_range=None,
+## ...         yaxes_range=None,
+## ...         show_axes=False,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/_core/docs/network_plot.html")
 
 .. raw:: html
 
