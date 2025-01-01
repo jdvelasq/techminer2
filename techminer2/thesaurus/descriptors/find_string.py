@@ -10,25 +10,25 @@
 Find String 
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import find_string
->>> find_string(
-...     #
-...     # SEARCH PARAMS:
-...     # contains='ARTIFICIAL_INTELLIGENCE',
-...     contains=["SOLAR_CELLS", "PHOTO_VOLTAIC_CELLS"],
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.descriptors import find_string
+## >>> find_string(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     # contains='ARTIFICIAL_INTELLIGENCE',
+## ...     contains=["SOLAR_CELLS", "PHOTO_VOLTAIC_CELLS"],
+## ...     startswith=None,
+## ...     endswith=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
 
 """
 import os.path
 import re
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 

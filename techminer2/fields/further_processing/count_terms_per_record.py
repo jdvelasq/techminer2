@@ -9,20 +9,20 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.fields.further_processing import count_terms_per_record
->>> count_terms_per_record(  # doctest: +SKIP 
-...     source="raw_author_keywords",
-...     dest="num_raw_author_keywords",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields.further_processing import count_terms_per_record
+## >>> count_terms_per_record(  # doctest: +SKIP 
+## ...     source="raw_author_keywords",
+## ...     dest="num_raw_author_keywords",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from ..._dtypes import DTYPES
 from ..protected_fields import PROTECTED_FIELDS

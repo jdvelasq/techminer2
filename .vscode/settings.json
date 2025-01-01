@@ -9,9 +9,9 @@
     ],
     "python.testing.pytestArgs": [
         ".",
-        "--doctest-modules",
-        "--doctest-glob=*.py"
+        "--doctest-modules"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "makefile.configureOnOpen": false
 }

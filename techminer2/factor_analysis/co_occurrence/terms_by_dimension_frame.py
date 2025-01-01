@@ -9,38 +9,38 @@
 Terms by Dimension Frame
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from techminer2.factor_analysis.co_occurrence import terms_by_dimension_frame
->>> terms_by_dimension_frame(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     association_index=None,
-...     #
-...     # ITEM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DESOMPOSITION PARAMS:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from sklearn.decomposition import PCA
+## >>> from techminer2.factor_analysis.co_occurrence import terms_by_dimension_frame
+## >>> terms_by_dimension_frame(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     association_index=None,
+## ...     #
+## ...     # ITEM PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DESOMPOSITION PARAMS:
+## ...     decomposition_estimator = PCA(
+## ...         n_components=5,
+## ...         whiten=False,
+## ...         svd_solver="auto",
+## ...         tol=0.0,
+## ...         iterated_power="auto",
+## ...         n_oversamples=10,
+## ...         power_iteration_normalizer="auto",
+## ...         random_state=0, 
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
 dim                                   0         1         2         3         4
 rows                                                                           
 FINTECH 31:5168               28.659528 -0.524730 -0.513789 -0.042977  0.238539
@@ -51,7 +51,7 @@ FINANCIAL_TECHNOLOGY 03:0461  -1.487691  0.959672 -0.271058  0.837526 -0.690393
 
     
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from ...co_occurrence_matrix import co_occurrence_matrix
 from ...co_occurrence_matrix.normalize_co_occurrence_matrix import normalize_co_occurrence_matrix

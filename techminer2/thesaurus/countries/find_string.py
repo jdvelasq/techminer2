@@ -10,17 +10,17 @@
 Find String
 ===============================================================================
 
->>> from techminer2.thesaurus.countries import find_string
->>> find_string(
-...     #
-...     # SEARCH PARAMS:
-...     contains='Colombia',
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.countries import find_string
+## >>> find_string(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     contains='Colombia',
+## ...     startswith=None,
+## ...     endswith=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/countries.the.txt has been reordered.
 
 """

@@ -8,22 +8,22 @@
 Concordance Contexts
 =========================================================================================
 
->>> from techminer2.search import concordance_contexts
->>> contexts = concordance_contexts( 
-...     search_for='FINTECH',
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
-... )
->>> for t in contexts[:20]: print(t)
+## >>> from techminer2.search import concordance_contexts
+## >>> contexts = concordance_contexts( 
+## ...     search_for='FINTECH',
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/",
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
+## ...                            # global_cited_by_lowest, local_cited_by_highest, 
+## ...                            # local_cited_by_lowest, first_author_a_to_z, 
+## ...                            # first_author_z_to_a, source_title_a_to_z, 
+## ...                            # source_title_z_to_a
+## ... )
+## >>> for t in contexts[:20]: print(t)
                              the INDUSTRY_OVERALL , and many FINTECH start_ups are looking for NEW_PATHWAYS to SUCCESSFUL_BUS >>>
                                                              FINTECH brings about a NEW_PARADIGM in which INFORMATION_TECHNOL >>>
                                                              FINTECH is touted as a GAME changing , DISRUPTIVE_INNOVATION cap >>>

@@ -9,31 +9,31 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import co_occurrence_matrix
->>> co_occurrence_matrix(
-...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='authors',
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=None,
-...     col_occ_range=(2, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(2, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> co_occurrence_matrix(
+## >>> from techminer2.co_occurrence_matrix import co_occurrence_matrix
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     columns='author_keywords',
+## ...     rows='authors',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=None,
+## ...     col_occ_range=(2, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(2, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
 columns               FINTECH 31:5168  ...  P2P_LENDING 02:0161
 rows                                   ...                     
 Jagtiani J. 3:0317                  3  ...                    2
@@ -50,30 +50,30 @@ Zavolokina L. 2:0181                2  ...                    0
 [10 rows x 12 columns]
 
 
->>> co_occurrence_matrix(
-...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=None,
-...     col_occ_range=(2, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> co_occurrence_matrix(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     columns='author_keywords',
+## ...     rows='author_keywords',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=None,
+## ...     col_occ_range=(2, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
 columns                       FINTECH 31:5168  ...  P2P_LENDING 02:0161
 rows                                           ...                     
 FINTECH 31:5168                            31  ...                    2

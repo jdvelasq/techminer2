@@ -10,26 +10,26 @@ Terms by Cluster Frame
 ===============================================================================
 
 
->>> from techminer2.co_citation_network import terms_by_cluster_frame
->>> terms_by_cluster_frame(
-...     unit_of_analysis="cited_sources", # "cited_sources", 
-...                                       # "cited_references",
-...                                       # "cited_authors"
-...     #
-...     # COLUMN PARAMS:
-...     top_n=None, 
-...     citations_threshold=None,
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.co_citation_network import terms_by_cluster_frame
+## >>> terms_by_cluster_frame(
+## ...     unit_of_analysis="cited_sources", # "cited_sources", 
+## ...                                       # "cited_references",
+## ...                                       # "cited_authors"
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=None, 
+## ...     citations_threshold=None,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                                 0  ...                                     9
 0  MIS QUART MANAGE INF SYST 1:47  ...           AGROINDUSTRIES FOR DEV 1:01
 1               INF SYST RES 1:18  ...                  DEV LEARN ORGAN 1:01

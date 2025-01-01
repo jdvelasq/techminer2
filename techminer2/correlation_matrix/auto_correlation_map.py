@@ -12,49 +12,49 @@ Auto-correlation Map
 
 Creates an Auto-correlation Map.
 
->>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
->>> from techminer2.correlation_matrix import auto_correlation_map
->>> plot = auto_correlation_map(
-...     #
-...     # FUNCTION PARAMS:
-...     rows_and_columns='authors',
-...     method="pearson",
-...     #
-...     # ITEM PARAMS:
-...     top_n=None,
-...     occ_range=(2, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_color="#7793a5",
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_top_n=None,
-...     edge_similarity_min=None,
-...     edge_widths=(2, 2, 4, 6),
-...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/correlation_matrix/auto_correlation_map.html")
+## >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
+## >>> from techminer2.correlation_matrix import auto_correlation_map
+## >>> plot = auto_correlation_map(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     rows_and_columns='authors',
+## ...     method="pearson",
+## ...     #
+## ...     # ITEM PARAMS:
+## ...     top_n=None,
+## ...     occ_range=(2, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_color="#7793a5",
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_top_n=None,
+## ...     edge_similarity_min=None,
+## ...     edge_widths=(2, 2, 4, 6),
+## ...     edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/correlation_matrix/auto_correlation_map.html")
 
 .. raw:: html
 

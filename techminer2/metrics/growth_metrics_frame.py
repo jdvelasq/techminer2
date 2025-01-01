@@ -8,23 +8,23 @@
 Growth Metrics Frame
 ===============================================================================
 
->>> from techminer2.metrics import growth_metrics_frame
->>> growth_metrics_frame(
-...     field='author_keywords',
-...     time_window=2,
-...     #
-...     # FILTER PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... ).head()
+## >>> from techminer2.metrics import growth_metrics_frame
+## >>> growth_metrics_frame(
+## ...     field='author_keywords',
+## ...     time_window=2,
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... ).head()
                       rank_occ  OCC  ...  average_growth_rate  average_docs_per_year
 author_keywords                      ...                                            
 FINTECH                      1   31  ...                 -1.0                    9.0

@@ -9,20 +9,20 @@
 Rename a Field
 ===============================================================================
 
->>> from techminer2.fields import rename_field
->>> rename_field(  # doctest: +SKIP
-...     source="author_keywords",
-...     dest="author_keywords_new",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import rename_field
+## >>> rename_field(  # doctest: +SKIP
+## ...     source="author_keywords",
+## ...     dest="author_keywords_new",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS

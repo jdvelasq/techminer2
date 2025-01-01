@@ -9,58 +9,58 @@
 Terms by Dimensions Map
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from techminer2.factor_analysis.tfidf import terms_by_dimension_map
->>> plot = terms_by_dimension_map(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=1,
-...     #
-...     # TF-IDF PARAMS:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
-...     #
-...     # TERM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DESOMPOSITION PARAMS:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # MAP PARAMS:
-...     dim_x=0,
-...     dim_y=1,
-...     node_color="#465c6b",
-...     node_size=10,
-...     textfont_size=8,
-...     textfont_color="#465c6b",
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/factor_analysis/tfidf/terms_by_dimension_map.html")
+## >>> from sklearn.decomposition import PCA
+## >>> from techminer2.factor_analysis.tfidf import terms_by_dimension_map
+## >>> plot = terms_by_dimension_map(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     #
+## ...     # TF PARAMS:
+## ...     is_binary=True,
+## ...     cooc_within=1,
+## ...     #
+## ...     # TF-IDF PARAMS:
+## ...     norm=None,
+## ...     use_idf=False,
+## ...     smooth_idf=False,
+## ...     sublinear_tf=False,
+## ...     #
+## ...     # TERM PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DESOMPOSITION PARAMS:
+## ...     decomposition_estimator = PCA(
+## ...         n_components=5,
+## ...         whiten=False,
+## ...         svd_solver="auto",
+## ...         tol=0.0,
+## ...         iterated_power="auto",
+## ...         n_oversamples=10,
+## ...         power_iteration_normalizer="auto",
+## ...         random_state=0, 
+## ...     ),
+## ...     #
+## ...     # MAP PARAMS:
+## ...     dim_x=0,
+## ...     dim_y=1,
+## ...     node_color="#465c6b",
+## ...     node_size=10,
+## ...     textfont_size=8,
+## ...     textfont_color="#465c6b",
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/factor_analysis/tfidf/terms_by_dimension_map.html")
 
 .. raw:: html
 

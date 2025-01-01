@@ -9,33 +9,33 @@ TFIDF Frame
 ===============================================================================
 
 
->>> from techminer2.metrics import tfidf_frame
->>> tfidf_frame(
-...     #
-...     # TF PARAMS:
-...     retain_counters=True,
-...     field='author_keywords',
-...     is_binary=False,
-...     cooc_within= 1,
-...     #
-...     # ITEM FILTERS:
-...     top_n=50,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # TF-IDF parameters:
-...     norm= None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.metrics import tfidf_frame
+## >>> tfidf_frame(
+## ...     #
+## ...     # TF PARAMS:
+## ...     retain_counters=True,
+## ...     field='author_keywords',
+## ...     is_binary=False,
+## ...     cooc_within= 1,
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=50,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # TF-IDF parameters:
+## ...     norm= None,
+## ...     use_idf=False,
+## ...     smooth_idf=False,
+## ...     sublinear_tf=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
 author_keywords                                 FINTECH 31:5168  ...  BIG_DATA 01:0238
 article                                                          ...                  
 Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                 0

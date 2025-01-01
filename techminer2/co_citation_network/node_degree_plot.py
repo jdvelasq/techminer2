@@ -9,31 +9,31 @@
 Node Degree Plot
 ===============================================================================
 
->>> from techminer2.co_citation_network import node_degree_plot
->>> plot = node_degree_plot(
-...     unit_of_analysis="cited_sources", # "cited_sources", 
-...                                       # "cited_references",
-...                                       # "cited_authors"
-...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=None,
-...     custom_terms=None,
-...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
+## >>> from techminer2.co_citation_network import node_degree_plot
+## >>> plot = node_degree_plot(
+## ...     unit_of_analysis="cited_sources", # "cited_sources", 
+## ...                                       # "cited_references",
+## ...                                       # "cited_authors"
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=30, 
+## ...     citations_threshold=None,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DEGREE PLOT:
+## ...     textfont_size=10,
+## ...     marker_size=7,
+## ...     line_color="black",
+## ...     line_width=1.5,
+## ...     yshift=4,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
 
 .. raw:: html
 

@@ -7,19 +7,19 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.docs.node_degree_frame import _node_degree_frame
->>> _node_degree_frame(
-...     #
-...     # ARTICLE PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.coupling_network._core.docs.node_degree_frame import _node_degree_frame
+## >>> _node_degree_frame(
+## ...     #
+## ...     # ARTICLE PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
    Node                                        Name  Degree
 0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
 1     1           Gomber P., 2017, J BUS ECON 1:489       6

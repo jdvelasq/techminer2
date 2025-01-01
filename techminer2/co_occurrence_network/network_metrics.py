@@ -10,27 +10,27 @@ Metrics
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import network_metrics
->>> network_metrics(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.co_occurrence_network import network_metrics
+## >>> network_metrics(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     association_index="association",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                             Degree  Betweenness  Closeness  PageRank
 FINTECH 31:5168                 18     0.761793   0.950000  0.240341
 FINANCIAL_SERVICES 04:0667       7     0.056725   0.612903  0.065863

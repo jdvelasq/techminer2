@@ -8,26 +8,26 @@
 Cross-correlation Matrix
 ===============================================================================
 
->>> from techminer2.correlation_matrix import cross_correlation_matrix
->>> cross_correlation_matrix(
-...     #
-...     # FUNCTION PARAMS:
-...     rows_and_columns='authors', 
-...     cross_with='countries',
-...     method="pearson",
-...     #
-...     # ITEM PARAMS:
-...     top_n=10,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).round(3)
+## >>> from techminer2.correlation_matrix import cross_correlation_matrix
+## >>> cross_correlation_matrix(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     rows_and_columns='authors', 
+## ...     cross_with='countries',
+## ...     method="pearson",
+## ...     #
+## ...     # ITEM PARAMS:
+## ...     top_n=10,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                 1.000  ...                   0.0
 Gomber P. 2:1065                   0.200  ...                   0.0

@@ -16,60 +16,60 @@ the parameter ``search_for`` in the column specified by the parameter
 searching. The report is saved to the file ``reports/find_records.txt``.
 
 
->>> from techminer2.search import find_records
->>> root_dir = "data/regtech/"
->>> find_records(
-...     #
-...     # SEARCH PARAMS:
-...     field='author_keywords',
-...     search_for='REGTECH',
-...     case=False,
-...     flags=0,
-...     regex=True,
-...     report_filename="find_records.txt",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
+## >>> from techminer2.search import find_records
+## >>> root_dir = "data/regtech/"
+## >>> find_records(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     field='author_keywords',
+## ...     search_for='REGTECH',
+## ...     case=False,
+## ...     flags=0,
+## ...     regex=True,
+## ...     report_filename="find_records.txt",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
->>> find_records(
-...     #
-...     # SEARCH PARAMS:
-...     field='abstract',
-...     search_for='five-year',
-...     case=False,
-...     flags=0,
-...     regex=True,
-...     report_filename="find_records.txt",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
+## >>> find_records(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     field='abstract',
+## ...     search_for='five-year',
+## ...     case=False,
+## ...     flags=0,
+## ...     regex=True,
+## ...     report_filename="find_records.txt",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
->>> find_records(
-...     #
-...     # SEARCH PARAMS:
-...     field='abstract',
-...     search_for='anti',
-...     case=False,
-...     flags=0,
-...     regex=True,
-...     report_filename="find_records.txt",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
+## >>> find_records(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     field='abstract',
+## ...     search_for='anti',
+## ...     case=False,
+## ...     flags=0,
+## ...     regex=True,
+## ...     report_filename="find_records.txt",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
 """

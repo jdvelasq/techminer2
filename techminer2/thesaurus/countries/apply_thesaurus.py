@@ -9,12 +9,12 @@
 Apply Thesaurus 
 ===============================================================================
 
->>> from techminer2.thesaurus.countries import apply_thesaurus
->>> apply_thesaurus( # doctest: +SKIP
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     )
+## >>> from techminer2.thesaurus.countries import apply_thesaurus
+## >>> apply_thesaurus( # doctest: +SKIP
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     )
 --INFO-- The example/thesauri/countries.the.txt thesaurus file was applied to affiliations in all databases
 --INFO-- The /Volumes/GitHub/techminer2/techminer2/thesauri_data/country-to-region.the.txt thesaurus file was applied to affiliations in all databases
 --INFO-- The /Volumes/GitHub/techminer2/techminer2/thesauri_data/country-to-subregion.the.txt thesaurus file was applied to affiliations in all databases

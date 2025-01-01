@@ -9,44 +9,44 @@
 Network Plot
 ===============================================================================
 
->>> # article:
->>> from techminer2.citation_network import network_plot
->>> plot = network_plot(
-...     #
-...     # COLUMN PARAMS:
-...     unit_of_analysis='article',
-...     top_n=30, 
-...     citations_threshold=0,
-...     #
-...     # NETWORK CLUSTERING:
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/citation_network/documents_network_plot.html")
+## >>> # article:
+## >>> from techminer2.citation_network import network_plot
+## >>> plot = network_plot(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     unit_of_analysis='article',
+## ...     top_n=30, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NETWORK CLUSTERING:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/citation_network/documents_network_plot.html")
 
 .. raw:: html
 
@@ -54,48 +54,48 @@ Network Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> # abbr_source_title, authors, organizations, countries:
->>> from techminer2.citation_network import network_plot
->>> plot = network_plot(
-...     #
-...     # COLUMN PARAMS:
-...     unit_of_analysis='abbr_source_title',
-...     top_n=30,
-...     citations_threshold=0,
-...     #
-...     # ONLY FOR OTHERS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # NETWORK CLUSTERING:
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/citation_network/others_network_plot.html")
+## >>> # abbr_source_title, authors, organizations, countries:
+## >>> from techminer2.citation_network import network_plot
+## >>> plot = network_plot(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     unit_of_analysis='abbr_source_title',
+## ...     top_n=30,
+## ...     citations_threshold=0,
+## ...     #
+## ...     # ONLY FOR OTHERS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK CLUSTERING:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/citation_network/others_network_plot.html")
 
 .. raw:: html
 

@@ -10,17 +10,17 @@
 Query
 ===============================================================================
 
->>> from techminer2.tools import query
->>> query(  
-...     expr="SELECT source_title FROM database LIMIT 5;",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by=None,
-... )
+## >>> from techminer2.tools import query
+## >>> query(  
+## ...     expr="SELECT source_title FROM database LIMIT 5;",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by=None,
+## ... )
                                       source_title
 0                      Review of Financial Studies
 1  International Journal of Information Management

@@ -9,26 +9,26 @@ Emergent Topics
 ===============================================================================
 
 
->>> from techminer2.emergence import emergent_topics
->>> emergent_topics(
-...     #
-...     # FUNCTION PARAMS:
-...     field='descriptors',
-...     #
-...     # EMERGENCE:
-...     baseline_periods=3,
-...     recent_periods=3,
-...     novelty_threshold=0.15,
-...     total_records_threshold=7,
-...     periods_with_at_least_one_record=3,
-...     ratio_threshold=0.5,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.emergence import emergent_topics
+## >>> emergent_topics(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     field='descriptors',
+## ...     #
+## ...     # EMERGENCE:
+## ...     baseline_periods=3,
+## ...     recent_periods=3,
+## ...     novelty_threshold=0.15,
+## ...     total_records_threshold=7,
+## ...     periods_with_at_least_one_record=3,
+## ...     ratio_threshold=0.5,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                         OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
 descriptors                                ...                                
 FINTECH_STARTUPS          8             1  ...   182.842712           1.540766

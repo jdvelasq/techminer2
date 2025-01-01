@@ -9,72 +9,72 @@
 Node Density Plot
 ===============================================================================
 
->>> from techminer2.citation_network import node_density_plot
->>> plot = node_density_plot(
-...     unit_of_analysis="article",
-...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=0,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     textfont_size_range=(10, 20),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/citation_network/documents_node_density_plot.html")
+## >>> from techminer2.citation_network import node_density_plot
+## >>> plot = node_density_plot(
+## ...     unit_of_analysis="article",
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=30, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # DENSITY VISUALIZATION:
+## ...     bandwidth=0.1,
+## ...     colorscale="Aggrnyl",
+## ...     opacity=0.6,
+## ...     textfont_size_range=(10, 20),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/citation_network/documents_node_density_plot.html")
 
 .. raw:: html
 
     <iframe src="../_static/citation_network/documents_node_density_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
->>> from techminer2.citation_network import node_density_plot
->>> plot = node_density_plot(
-...     unit_of_analysis="abbr_source_title",
-...     #
-...     # COLUMN PARAMS:
-...     top_n=30,
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     textfont_size_range=(10, 20),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/citation_network/others_node_density_plot.html")
+## >>> from techminer2.citation_network import node_density_plot
+## >>> plot = node_density_plot(
+## ...     unit_of_analysis="abbr_source_title",
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=30,
+## ...     citations_threshold=0,
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # DENSITY VISUALIZATION:
+## ...     bandwidth=0.1,
+## ...     colorscale="Aggrnyl",
+## ...     opacity=0.6,
+## ...     textfont_size_range=(10, 20),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/citation_network/others_node_density_plot.html")
 
 .. raw:: html
 

@@ -8,24 +8,24 @@
 Terms by Year Frame
 ===============================================================================
 
->>> from techminer2.metrics import terms_by_year_frame
->>> terms_by_year_frame(
-...     field="author_keywords",
-...     cumulative=False,
-...     #
-...     # FILTER PARAMS:
-...     metric='OCC',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head(10)
+## >>> from techminer2.metrics import terms_by_year_frame
+## >>> terms_by_year_frame(
+## ...     field="author_keywords",
+## ...     cumulative=False,
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     metric='OCC',
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head(10)
 year                          2015  2016  2017  2018  2019
 author_keywords                                           
 FINTECH 31:5168                  0     5     8    12     6
@@ -41,24 +41,24 @@ CASE_STUDY 02:0340               0     0     1     0     1
 
 
 
->>> from techminer2.metrics import terms_by_year_frame
->>> terms_by_year_frame(
-...     field="author_keywords",
-...     cumulative=True,
-...     #
-...     # FILTER PARAMS:
-...     metric='OCC',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head(10)
+## >>> from techminer2.metrics import terms_by_year_frame
+## >>> terms_by_year_frame(
+## ...     field="author_keywords",
+## ...     cumulative=True,
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     metric='OCC',
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head(10)
 year                          2015  2016  2017  2018  2019
 author_keywords                                           
 FINTECH 31:5168                  0     5    13    25    31

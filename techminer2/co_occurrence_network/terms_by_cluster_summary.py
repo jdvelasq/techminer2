@@ -10,31 +10,31 @@ Terms by Cluster Summary
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import terms_by_cluster_summary
->>> terms_by_cluster_summary(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # SUMMARY PARAMS:
-...     conserve_counters=False,
-...     #
-...     # FILTER PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.co_occurrence_network import terms_by_cluster_summary
+## >>> terms_by_cluster_summary(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # SUMMARY PARAMS:
+## ...     conserve_counters=False,
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     association_index="association",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
    Cluster  ...                                              Terms
 0        0  ...  FINTECH; FINANCIAL_INCLUSION; CROWDFUNDING; BU...
 1        1  ...  INNOVATION; FINANCIAL_SERVICES; FINANCIAL_TECH...

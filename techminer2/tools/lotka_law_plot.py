@@ -10,17 +10,17 @@ Lotka's Law Plot
 ===============================================================================
 
 
->>> from techminer2.tools import lotka_law_plot
->>> plot = lotka_law_plot(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
->>> # plot.write_html("sphinx/_static/tools/lotka_law_plot.html")
-
+## >>> from techminer2.tools import lotka_law_plot
+## >>> plot = lotka_law_plot(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
+## >>> # plot.write_html("sphinx/_static/tools/lotka_law_plot.html")
+## 
 .. raw:: html
 
     <iframe src="../_static/tools/lotka_law_plot.html" 

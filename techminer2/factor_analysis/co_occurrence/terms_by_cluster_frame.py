@@ -9,50 +9,50 @@
 Terms by Cluster Frame
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from sklearn.cluster import KMeans
->>> from techminer2.factor_analysis.co_occurrence import terms_by_cluster_frame
->>> terms_by_cluster_frame(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     association_index=None,
-...     #
-...     # ITEM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DESOMPOSITION PARAMS:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # CLUSTERING:
-...     clustering_estimator_or_dict = KMeans(
-...         n_clusters=6,
-...         init="k-means++",
-...         n_init=10,
-...         max_iter=300,
-...         tol=0.0001,
-...         algorithm="elkan",
-...         random_state=0,
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from sklearn.decomposition import PCA
+## >>> from sklearn.cluster import KMeans
+## >>> from techminer2.factor_analysis.co_occurrence import terms_by_cluster_frame
+## >>> terms_by_cluster_frame(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     association_index=None,
+## ...     #
+## ...     # ITEM PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DESOMPOSITION PARAMS:
+## ...     decomposition_estimator = PCA(
+## ...         n_components=5,
+## ...         whiten=False,
+## ...         svd_solver="auto",
+## ...         tol=0.0,
+## ...         iterated_power="auto",
+## ...         n_oversamples=10,
+## ...         power_iteration_normalizer="auto",
+## ...         random_state=0, 
+## ...     ),
+## ...     #
+## ...     # CLUSTERING:
+## ...     clustering_estimator_or_dict = KMeans(
+## ...         n_clusters=6,
+## ...         init="k-means++",
+## ...         n_init=10,
+## ...         max_iter=300,
+## ...         tol=0.0001,
+## ...         algorithm="elkan",
+## ...         random_state=0,
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                                  0  ...                   5
 0          BUSINESS_MODELS 02:0759  ...  INNOVATION 07:0911
 1  ARTIFICIAL_INTELLIGENCE 02:0327  ...                    
@@ -63,7 +63,7 @@ Terms by Cluster Frame
 [5 rows x 6 columns]
     
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .cluster_to_terms_mapping import cluster_to_terms_mapping
 

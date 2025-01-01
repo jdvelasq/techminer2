@@ -9,47 +9,47 @@
 Cosine Similarities
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from techminer2.factor_analysis.tfidf import cosine_similarities
->>> cosine_similarities(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=1,
-...     #
-...     # TF-IDF PARAMS:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
-...     #
-...     # TERM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DESOMPOSITION PARAMS:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from sklearn.decomposition import PCA
+## >>> from techminer2.factor_analysis.tfidf import cosine_similarities
+## >>> cosine_similarities(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     #
+## ...     # TF PARAMS:
+## ...     is_binary=True,
+## ...     cooc_within=1,
+## ...     #
+## ...     # TF-IDF PARAMS:
+## ...     norm=None,
+## ...     use_idf=False,
+## ...     smooth_idf=False,
+## ...     sublinear_tf=False,
+## ...     #
+## ...     # TERM PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DESOMPOSITION PARAMS:
+## ...     decomposition_estimator = PCA(
+## ...         n_components=5,
+## ...         whiten=False,
+## ...         svd_solver="auto",
+## ...         tol=0.0,
+## ...         iterated_power="auto",
+## ...         n_oversamples=10,
+## ...         power_iteration_normalizer="auto",
+## ...         random_state=0, 
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                                                             cosine_similariries
 author_keywords                                                                
 FINTECH 31:5168                                      INNOVATION 07:0911 (0.106)

@@ -10,52 +10,52 @@ Word Network
 ===============================================================================
 
 
->>> from techminer2.tools.associations import word_network
->>> plot = word_network(
-...     #
-...     # FUNCTION PARAMS:
-...     item='INNOVATION',
-...     columns='author_keywords',
-...     rows='authors',
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=10,    
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES
-...     edge_color="#b8c6d0",
-...     edge_width_range=(0.8, 4.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/tools/associations/word_network_0.html")
+## >>> from techminer2.tools.associations import word_network
+## >>> plot = word_network(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     item='INNOVATION',
+## ...     columns='author_keywords',
+## ...     rows='authors',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=10,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=10,    
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES
+## ...     edge_color="#b8c6d0",
+## ...     edge_width_range=(0.8, 4.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/tools/associations/word_network_0.html")
 
 .. raw:: html
 
@@ -63,51 +63,51 @@ Word Network
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> plot = word_network(
-...     #
-...     # FUNCTION PARAMS:
-...     item='FINANCIAL_SERVICES',
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,    
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES
-...     edge_color="#b8c6d0",
-...     edge_width_range=(0.8, 4.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/tools/associations/word_network_1.html")
+## >>> plot = word_network(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     item='FINANCIAL_SERVICES',
+## ...     columns='author_keywords',
+## ...     rows=None,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=10,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,    
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES
+## ...     edge_color="#b8c6d0",
+## ...     edge_width_range=(0.8, 4.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/tools/associations/word_network_1.html")
 
 .. raw:: html
 

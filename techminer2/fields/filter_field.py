@@ -10,24 +10,24 @@
 Filter a Field
 ===============================================================================
 
->>> from techminer2.fields import filter_field
->>> filter_field(  # doctest: +SKIP 
-...     source="author_keywords",
-...     dest="author_keywords_filtered",
-...     filter_params = {
-...         "metric": 'OCCGC',
-...         "top_n": 10,
-...         "occ_range": (None, None),
-...         "gc_range": (None, None),
-...         "custom_items": None,
-...     },
-...     database_params = {
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     }
-... )
+## >>> from techminer2.fields import filter_field
+## >>> filter_field(  # doctest: +SKIP 
+## ...     source="author_keywords",
+## ...     dest="author_keywords_filtered",
+## ...     filter_params = {
+## ...         "metric": 'OCCGC',
+## ...         "top_n": 10,
+## ...         "occ_range": (None, None),
+## ...         "gc_range": (None, None),
+## ...         "custom_items": None,
+## ...     },
+## ...     database_params = {
+## ...         "root_dir": "example/",
+## ...         "database": "main",
+## ...         "year_filter": (None, None),
+## ...         "cited_by_filter": (None, None),
+## ...     }
+## ... )
 
 
 """

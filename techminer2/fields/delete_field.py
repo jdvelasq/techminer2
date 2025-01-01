@@ -9,19 +9,19 @@
 Delete a Field
 ===============================================================================
 
->>> from techminer2.fields import delete_field
->>> delete_field(  # doctest: +SKIP 
-...     field="author_keywords_copy",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import delete_field
+## >>> delete_field(  # doctest: +SKIP 
+## ...     field="author_keywords_copy",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS

@@ -9,35 +9,35 @@ Term Associations Frame
 ===============================================================================
 
 
->>> from techminer2.tools.associations import term_associations_frame
->>> associations = term_associations_frame(
-...     #
-...     # FUNCTION PARAMS:
-...     item='FINTECH',
-...     #
-...     # CO-OCC PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=20,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> associations.head()
+## >>> from techminer2.tools.associations import term_associations_frame
+## >>> associations = term_associations_frame(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     item='FINTECH',
+## ...     #
+## ...     # CO-OCC PARAMS:
+## ...     columns='author_keywords',
+## ...     rows=None,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=20,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> associations.head()
                               FINTECH 31:5168
 rows                                         
 INNOVATION 07:0911                          5

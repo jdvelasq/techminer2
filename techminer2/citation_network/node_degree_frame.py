@@ -9,21 +9,21 @@
 Node Degree Frame
 ===============================================================================
 
->>> # article:
->>> from techminer2.citation_network import node_degree_frame
->>> node_degree_frame(
-...     unit_of_analysis="article",
-...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=0,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> # article:
+## >>> from techminer2.citation_network import node_degree_frame
+## >>> node_degree_frame(
+## ...     unit_of_analysis="article",
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=30, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
    Node                                               Name  Degree
 0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
 1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
@@ -33,23 +33,23 @@ Node Degree Frame
 
 
 
->>> # abbr_source_title, authors, organizations, countries:
->>> from techminer2.citation_network import node_degree_frame
->>> node_degree_frame(
-...     unit_of_analysis="abbr_source_title",
-...     #
-...     # COLUMN PARAMS:
-...     top_n=30,
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> # abbr_source_title, authors, organizations, countries:
+## >>> from techminer2.citation_network import node_degree_frame
+## >>> node_degree_frame(
+## ...     unit_of_analysis="abbr_source_title",
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=30,
+## ...     citations_threshold=0,
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
    Node                       Name  Degree
 0     0    J Manage Inf Syst 2:696       3
 1     1        J. Econ. Bus. 3:422       3

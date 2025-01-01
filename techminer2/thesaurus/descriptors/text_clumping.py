@@ -11,8 +11,8 @@ Text Clumping
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import text_clumping
->>> text_clumping( # doctest: +SKIP
+## >>> from techminer2.thesaurus.descriptors import text_clumping
+## >>> text_clumping( # doctest: +SKIP
 ...     text="FINTECH",
 ...     #
 ...     # DATABASE PARAMS:

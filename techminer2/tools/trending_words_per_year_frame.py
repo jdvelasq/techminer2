@@ -8,20 +8,20 @@
 Trending Words per Year Frame
 ===============================================================================
 
->>> from techminer2.tools import trending_words_per_year_frame
->>> trending_words_per_year_frame(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     n_words_per_year=5,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... ).head()
+## >>> from techminer2.tools import trending_words_per_year_frame
+## >>> trending_words_per_year_frame(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     n_words_per_year=5,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... ).head()
 year              OCC  year_q1  year_med  ...  rn    height  width
 author_keywords                           ...                     
 CONTENT_ANALYSIS    2     2016      2016  ...   2  0.177333      1
@@ -32,24 +32,24 @@ BANKING             2     2016      2016  ...   1  0.177333      2
 <BLANKLINE>
 [5 rows x 8 columns]
 
->>> from techminer2.tools import trending_words_per_year_frame
->>> trending_words_per_year_frame(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     n_words_per_year=5,
-...     custom_terms=[
-...         "FINTECH",
-...         "BLOCKCHAIN",
-...         "ARTIFICIAL_INTELLIGENCE",
-...     ], 
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )    
+## >>> from techminer2.tools import trending_words_per_year_frame
+## >>> trending_words_per_year_frame(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     n_words_per_year=5,
+## ...     custom_terms=[
+## ...         "FINTECH",
+## ...         "BLOCKCHAIN",
+## ...         "ARTIFICIAL_INTELLIGENCE",
+## ...     ], 
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )    
 year                     OCC  year_q1  year_med  ...  rn  height  width
 author_keywords                                  ...                   
 FINTECH                   31     2017      2018  ...   0    0.97      2

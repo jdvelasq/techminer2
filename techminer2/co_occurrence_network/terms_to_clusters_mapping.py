@@ -10,31 +10,31 @@ Terms to Cluster Mapping
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import terms_to_clusters_mapping
->>> mapping = terms_to_clusters_mapping(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     retain_counters=True,
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> from pprint import pprint
->>> pprint(mapping)
+## >>> from techminer2.co_occurrence_network import terms_to_clusters_mapping
+## >>> mapping = terms_to_clusters_mapping(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     retain_counters=True,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     association_index="association",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 {'ARTIFICIAL_INTELLIGENCE 02:0327': 3,
  'BANKING 02:0291': 1,
  'BLOCKCHAIN 02:0305': 0,

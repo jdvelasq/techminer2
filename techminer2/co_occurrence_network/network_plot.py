@@ -9,48 +9,48 @@
 Network Plot
 ===============================================================================
 
->>> from techminer2.co_occurrence_network import network_plot
->>> plot = network_plot(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK CLUSTERING:
-...     association_index="association",
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
+## >>> from techminer2.co_occurrence_network import network_plot
+## >>> plot = network_plot(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK CLUSTERING:
+## ...     association_index="association",
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
 
 .. raw:: html
 

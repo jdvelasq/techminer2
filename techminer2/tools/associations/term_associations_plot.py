@@ -9,43 +9,43 @@ Term Associations Plot
 ===============================================================================
 
 
->>> from techminer2.tools.associations import term_associations_plot
->>> plot = term_associations_plot(
-...     #
-...     # FUNCTION PARAMS:
-...     item='FINTECH',
-...     #
-...     # CO-OCC PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=20,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # CHART PARAMS:
-...     field_label=None,
-...     metric_label=None,
-...     textfont_size=10,
-...     marker_size=7,
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
+## >>> from techminer2.tools.associations import term_associations_plot
+## >>> plot = term_associations_plot(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     item='FINTECH',
+## ...     #
+## ...     # CO-OCC PARAMS:
+## ...     columns='author_keywords',
+## ...     rows=None,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=20,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # CHART PARAMS:
+## ...     field_label=None,
+## ...     metric_label=None,
+## ...     textfont_size=10,
+## ...     marker_size=7,
+## ...     line_width=1.5,
+## ...     yshift=4,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
 
 .. raw:: html
 

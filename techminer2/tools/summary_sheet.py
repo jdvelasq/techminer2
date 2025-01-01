@@ -9,15 +9,15 @@ SummarySheet
 ===============================================================================
 
 
->>> from techminer2.tools import summary_sheet
->>> summary_sheet(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.tools import summary_sheet
+## >>> summary_sheet(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                  column  number of terms coverage (%)
 0     abbr_source_title               50         1.0%
 1              abstract               48        0.96%
@@ -26,7 +26,7 @@ SummarySheet
 4                art_no               50         1.0%
 
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.read_filtered_database import read_filtered_database
 

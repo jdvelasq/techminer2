@@ -9,52 +9,52 @@ Radial Diagram
 ===============================================================================
 
 
->>> from techminer2.tools.associations import radial_diagram
->>> plot = radial_diagram(
-...     #
-...     # FUNCTION PARAMS:
-...     items=["FINTECH", "INNOVATION"],
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=20,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
+## >>> from techminer2.tools.associations import radial_diagram
+## >>> plot = radial_diagram(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     items=["FINTECH", "INNOVATION"],
+## ...     columns='author_keywords',
+## ...     rows=None,
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=20,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 

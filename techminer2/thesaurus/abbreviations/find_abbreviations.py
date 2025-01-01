@@ -9,12 +9,12 @@
 Find Abbreviations 
 ===============================================================================
 
->>> from techminer2.thesaurus.abbreviations import find_abbreviations
->>> find_abbreviations(
-...     #
-...     # DATABASE PARAMS:
-...    root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.abbreviations import find_abbreviations
+## >>> find_abbreviations(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...    root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
 
 """

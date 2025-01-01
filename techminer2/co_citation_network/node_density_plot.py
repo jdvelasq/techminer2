@@ -10,38 +10,38 @@ Node Density Plot
 ===============================================================================
 
 
->>> from techminer2.co_citation_network import node_density_plot
->>> plot = node_density_plot(
-...     unit_of_analysis="cited_sources", # "cited_sources", 
-...                                       # "cited_references",
-...                                       # "cited_authors"
-...     #
-...     # COLUMN PARAMS:
-...     top_n=30, 
-...     citations_threshold=None,
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     textfont_size_range=(8, 12),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/co_citation_network/node_density_plot.html")
+## >>> from techminer2.co_citation_network import node_density_plot
+## >>> plot = node_density_plot(
+## ...     unit_of_analysis="cited_sources", # "cited_sources", 
+## ...                                       # "cited_references",
+## ...                                       # "cited_authors"
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=30, 
+## ...     citations_threshold=None,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # DENSITY VISUALIZATION:
+## ...     bandwidth=0.1,
+## ...     colorscale="Aggrnyl",
+## ...     opacity=0.6,
+## ...     textfont_size_range=(8, 12),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/co_citation_network/node_density_plot.html")
 
 .. raw:: html
 

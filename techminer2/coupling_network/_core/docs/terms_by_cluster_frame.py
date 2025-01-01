@@ -7,22 +7,22 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.docs.terms_by_cluster_frame import _terms_by_cluster_frame
->>> _terms_by_cluster_frame(
-...     #
-...     # ARTICLE PARAMS:
-...     top_n=30, 
-...     citations_threshold=0,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.coupling_network._core.docs.terms_by_cluster_frame import _terms_by_cluster_frame
+## >>> _terms_by_cluster_frame(
+## ...     #
+## ...     # ARTICLE PARAMS:
+## ...     top_n=30, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
                                                 0  ...                                           3
 0    Gracia D.B., 2019, IND MANAGE DATA SYS 1:225  ...           Alt R., 2018, ELECTRON MARK 1:150
 1                     Hu Z., 2019, SYMMETRY 1:176  ...    Gomber P., 2018, J MANAGE INF SYST 1:576

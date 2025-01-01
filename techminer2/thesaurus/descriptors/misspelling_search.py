@@ -9,12 +9,12 @@
 Misspelling Search
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import misspelling_search
->>> misspelling_search( # doctest: +SKIP
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.descriptors import misspelling_search
+## >>> misspelling_search( # doctest: +SKIP
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/reports/misspelled.txt has been generated.
 
 """

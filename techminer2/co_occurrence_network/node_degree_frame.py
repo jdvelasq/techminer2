@@ -9,27 +9,27 @@
 Node Degree Frame
 ===============================================================================
 
->>> from techminer2.co_occurrence_network import node_degree_frame
->>> node_degree_frame(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.co_occurrence_network import node_degree_frame
+## >>> node_degree_frame(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     association_index="association",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
    Node                        Name  Degree
 0     0             FINTECH 31:5168      18
 1     1  FINANCIAL_SERVICES 04:0667       7

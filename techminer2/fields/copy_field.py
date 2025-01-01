@@ -9,20 +9,20 @@
 Copy a Field
 ===============================================================================
 
->>> from techminer2.fields import copy_field
->>> copy_field(  # doctest: +SKIP 
-...     source="author_keywords",
-...     dest="author_keywords_copy",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import copy_field
+## >>> copy_field(  # doctest: +SKIP 
+## ...     source="author_keywords",
+## ...     dest="author_keywords_copy",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS

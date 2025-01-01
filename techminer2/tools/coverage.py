@@ -10,16 +10,16 @@
 Coverage
 ===============================================================================
 
->>> from techminer2.tools import coverage
->>> coverage(
-...     field="author_keywords",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.tools import coverage
+## >>> coverage(
+## ...     field="author_keywords",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
 --INFO-- Number of documents : 50
 --INFO--   Documents with NA : 12
 --INFO--  Efective documents : 38

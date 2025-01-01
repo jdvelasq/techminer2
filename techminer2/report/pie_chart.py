@@ -9,28 +9,28 @@
 Pie Chart
 ===============================================================================
 
->>> from techminer2.report import pie_chart
->>> plot = pie_chart(
-...     #
-...     # TERM PARAMS:
-...     field='author_keywords',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     metric="OCC",
-...     #
-...     # CHART PARAMS:
-...     title="Most Frequent Author Keywords",
-...     hole=0.4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/report/pie_chart.html")
+## >>> from techminer2.report import pie_chart
+## >>> plot = pie_chart(
+## ...     #
+## ...     # TERM PARAMS:
+## ...     field='author_keywords',
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     metric="OCC",
+## ...     #
+## ...     # CHART PARAMS:
+## ...     title="Most Frequent Author Keywords",
+## ...     hole=0.4,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/pie_chart.html")
 
 .. raw:: html
 

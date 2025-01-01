@@ -10,31 +10,31 @@ Clusters to Terms Mapping
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import clusters_to_terms_mapping
->>> mapping = clusters_to_terms_mapping(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     retain_counters=True,
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> from pprint import pprint
->>> pprint(mapping)
+## >>> from techminer2.co_occurrence_network import clusters_to_terms_mapping
+## >>> mapping = clusters_to_terms_mapping(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     retain_counters=True,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     association_index="association",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 {0: ['FINTECH 31:5168',
      'FINANCIAL_INCLUSION 03:0590',
      'CROWDFUNDING 03:0335',

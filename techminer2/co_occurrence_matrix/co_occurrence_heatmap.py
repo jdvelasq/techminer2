@@ -9,32 +9,32 @@ Co-occurrence Heatmap
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import co_occurrence_heatmap
->>> co_occurrence_heatmap(
-...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='authors',
-...     retain_counters=True,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=None,
-...     col_occ_range=(2, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(2, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ) # doctest: +ELLIPSIS
+## >>> from techminer2.co_occurrence_matrix import co_occurrence_heatmap
+## >>> co_occurrence_heatmap(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     columns='author_keywords',
+## ...     rows='authors',
+## ...     retain_counters=True,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=None,
+## ...     col_occ_range=(2, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(2, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ) # doctest: +ELLIPSIS
 <pandas.io.formats.style.Styler ...
 
 

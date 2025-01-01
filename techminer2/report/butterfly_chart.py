@@ -11,36 +11,36 @@ Butterfly Chart
 
 
 
->>> from techminer2.report import butterfly_chart
->>> chart = butterfly_chart(
-...     #
-...     # COLUMN PARAMS:
-...     item_a="FINTECH",
-...     item_b="INNOVATION",
-...     #
-...     columns='author_keywords',
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     rows=None,
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # CHART PARAMS:
-...     title=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # chart.write_html("sphinx/_static/report/butterfly_chart.html")
+## >>> from techminer2.report import butterfly_chart
+## >>> chart = butterfly_chart(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     item_a="FINTECH",
+## ...     item_b="INNOVATION",
+## ...     #
+## ...     columns='author_keywords',
+## ...     col_top_n=10,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     rows=None,
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # CHART PARAMS:
+## ...     title=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # chart.write_html("sphinx/_static/report/butterfly_chart.html")
 
 .. raw:: html
 

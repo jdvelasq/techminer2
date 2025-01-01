@@ -12,8 +12,8 @@ Reset Thesaurus
 
 
 
->>> from techminer2.thesaurus.descriptors import reset_thesaurus
->>> reset_thesaurus(  # doctest: +SKIP
+## >>> from techminer2.thesaurus.descriptors import reset_thesaurus
+## >>> reset_thesaurus(  # doctest: +SKIP
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="example/", 

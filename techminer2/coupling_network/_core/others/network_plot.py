@@ -7,45 +7,45 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.coupling_network._core.others.network_plot import _network_plot
->>> plot = _network_plot(
-...     unit_of_analysis='authors', # authors, countries, organizations, sources
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # AXES:
-...     xaxes_range=None,
-...     yaxes_range=None,
-...     show_axes=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/_core/others/network_plot.html")
+## >>> from techminer2.coupling_network._core.others.network_plot import _network_plot
+## >>> plot = _network_plot(
+## ...     unit_of_analysis='authors', # authors, countries, organizations, sources
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     # AXES:
+## ...     xaxes_range=None,
+## ...     yaxes_range=None,
+## ...     show_axes=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/_core/others/network_plot.html")
 
 .. raw:: html
 

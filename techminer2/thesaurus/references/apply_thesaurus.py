@@ -9,19 +9,19 @@
 Apply References Thesaurus 
 ===============================================================================
 
->>> from techminer2.thesaurus.references import apply_thesaurus
->>> apply_thesaurus( # doctest: +SKIP
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.references import apply_thesaurus
+## >>> apply_thesaurus( # doctest: +SKIP
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
 
 """
 import os.path
 import pathlib
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
 

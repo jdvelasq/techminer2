@@ -9,30 +9,30 @@
 Word Cloud
 ===============================================================================
 
->>> from techminer2.report import word_cloud
->>> chart = word_cloud(
-...     #
-...     # PERFORMANCE PARAMS:
-...     field="title_nlp_phrases",
-...     metric="OCC",
-...     #
-...     # CHART PARAMS:
-...     width=400, 
-...     height=400,
-...     #
-...     # ITEM FILTERS:
-...     top_n=50,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # chart.save("sphinx/images/report/word_cloud.png")
+## >>> from techminer2.report import word_cloud
+## >>> chart = word_cloud(
+## ...     #
+## ...     # PERFORMANCE PARAMS:
+## ...     field="title_nlp_phrases",
+## ...     metric="OCC",
+## ...     #
+## ...     # CHART PARAMS:
+## ...     width=400, 
+## ...     height=400,
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=50,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # chart.save("sphinx/images/report/word_cloud.png")
 
 .. image:: /images/report/word_cloud.png
     :width: 900px

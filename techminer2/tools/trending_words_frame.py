@@ -11,27 +11,27 @@ Trending Words Frame
 ===============================================================================
 
 
->>> from techminer2.tools import trending_words_frame
->>> trending_words_frame(
-...     #
-...     # ITEMS PARAMS:
-...     field='author_keywords',
-...     #
-...     # TREND ANALYSIS:
-...     time_window=2,
-...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.tools import trending_words_frame
+## >>> trending_words_frame(
+## ...     #
+## ...     # ITEMS PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # TREND ANALYSIS:
+## ...     time_window=2,
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                       rank_occ  OCC  ...  average_growth_rate  average_docs_per_year
 author_keywords                      ...                                            
 FINTECH                      1   31  ...                 -1.0                    9.0

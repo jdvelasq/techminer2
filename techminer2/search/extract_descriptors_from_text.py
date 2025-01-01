@@ -9,25 +9,25 @@ Extract Descriptors from Text
 ===============================================================================
 
 
->>> from techminer2.search import extract_descriptors_from_text
->>> extract_descriptors_from_text(
-...    text = (
-...        "They highlight the limited adoption of Regulatory Technology (RegTech) and "
-...        "Electronic Signatures in Palestine's banking sector, proposing the establishment "
-...        "of an independent Electronic Transactions Unit as a solution. They emphasize the "
-...        "need for RegTech in achieving regulatory compliance, risk management, and reporting "
-...        "in the face of changing regulations and digital dynamics. Additionally, the papers "
-...        "delve into ethical concerns surrounding the application of Artificial Intelligence (AI) "
-...        "in finance and suggest that RegTech, combined with Islamic finance principles, can "
-...        "mitigate these ethical issues. Overall, the papers underscore the transformative "
-...        "potential of RegTech while discussing its benefits, challenges, and implications "
-...        "for diverse sectors, ultimately aiming to improve compliance, efficiency, and ethical "
-...        "practices in the financial industry."
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... ) # doctest: +ELLIPSIS
+## >>> from techminer2.search import extract_descriptors_from_text
+## >>> extract_descriptors_from_text(
+## ...    text = (
+## ...        "They highlight the limited adoption of Regulatory Technology (RegTech) and "
+## ...        "Electronic Signatures in Palestine's banking sector, proposing the establishment "
+## ...        "of an independent Electronic Transactions Unit as a solution. They emphasize the "
+## ...        "need for RegTech in achieving regulatory compliance, risk management, and reporting "
+## ...        "in the face of changing regulations and digital dynamics. Additionally, the papers "
+## ...        "delve into ethical concerns surrounding the application of Artificial Intelligence (AI) "
+## ...        "in finance and suggest that RegTech, combined with Islamic finance principles, can "
+## ...        "mitigate these ethical issues. Overall, the papers underscore the transformative "
+## ...        "potential of RegTech while discussing its benefits, challenges, and implications "
+## ...        "for diverse sectors, ultimately aiming to improve compliance, efficiency, and ethical "
+## ...        "practices in the financial industry."
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... ) # doctest: +ELLIPSIS
 ['ADOPTION', 'ARTIFICIAL_INTELLIGENCE', 'FINANCE', ...
 
 """

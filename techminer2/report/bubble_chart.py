@@ -8,33 +8,33 @@
 Bubble Chart
 ===============================================================================
 
->>> from techminer2.report import bubble_chart
->>> plot = bubble_chart(
-...     #
-...     # COLUMN PARAMS:
-...     columns='author_keywords',
-...     col_top_n=10,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     rows=None,
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # CHART PARAMS:
-...     title=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/report/bubble_chart.html")
+## >>> from techminer2.report import bubble_chart
+## >>> plot = bubble_chart(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     columns='author_keywords',
+## ...     col_top_n=10,
+## ...     col_occ_range=(None, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     rows=None,
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # CHART PARAMS:
+## ...     title=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/bubble_chart.html")
 
 .. raw:: html
 

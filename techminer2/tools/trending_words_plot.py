@@ -11,32 +11,32 @@ Trending Words Plot
 ===============================================================================
 
 
->>> from techminer2.tools import trending_words_plot
->>> plot = trending_words_plot(
-...     #
-...     # ITEMS PARAMS:
-...     field='author_keywords',
-...     #
-...     # TREND ANALYSIS:
-...     time_window=2,
-...     #
-...     # CHART PARAMS:
-...     metric_label=None,
-...     field_label=None,
-...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/tools/trending_words_plot.html")
+## >>> from techminer2.tools import trending_words_plot
+## >>> plot = trending_words_plot(
+## ...     #
+## ...     # ITEMS PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # TREND ANALYSIS:
+## ...     time_window=2,
+## ...     #
+## ...     # CHART PARAMS:
+## ...     metric_label=None,
+## ...     field_label=None,
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/tools/trending_words_plot.html")
 
 .. raw:: html
 

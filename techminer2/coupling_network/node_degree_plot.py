@@ -9,36 +9,36 @@
 Network Degree Plot
 ===============================================================================
 
->>> from techminer2.coupling_network import node_degree_plot
->>> plot = node_degree_plot(
-...     unit_of_analysis='authors', # article
-...                                 # authors 
-...                                 # countries
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/others_node_degree_plot.html")
+## >>> from techminer2.coupling_network import node_degree_plot
+## >>> plot = node_degree_plot(
+## ...     unit_of_analysis='authors', # article
+## ...                                 # authors 
+## ...                                 # countries
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DEGREE PLOT:
+## ...     textfont_size=10,
+## ...     marker_size=7,
+## ...     line_color="black",
+## ...     line_width=1.5,
+## ...     yshift=4,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/others_node_degree_plot.html")
 
 .. raw:: html
 
@@ -46,37 +46,37 @@ Network Degree Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> # article:
->>> from techminer2.coupling_network import node_degree_plot
->>> plot = node_degree_plot(
-...     unit_of_analysis='article', # article
-...                                 # authors 
-...                                 # countries, 
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DEGREE PLOT:
-...     textfont_size=10,
-...     marker_size=7,
-...     line_color="black",
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/coupling_network/docs_node_degree_plot.html")
+## >>> # article:
+## >>> from techminer2.coupling_network import node_degree_plot
+## >>> plot = node_degree_plot(
+## ...     unit_of_analysis='article', # article
+## ...                                 # authors 
+## ...                                 # countries, 
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DEGREE PLOT:
+## ...     textfont_size=10,
+## ...     marker_size=7,
+## ...     line_color="black",
+## ...     line_width=1.5,
+## ...     yshift=4,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/coupling_network/docs_node_degree_plot.html")
 
 .. raw:: html
 

@@ -10,41 +10,41 @@ Node Density Plot
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import node_density_plot
->>> plot = node_density_plot(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     association_index="association",
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     textfont_size_range=(10, 20),
-...     #
-...     # DENSITY VISUALIZATION:
-...     bandwidth=0.1,
-...     colorscale="Aggrnyl",
-...     opacity=0.6,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/node_density_plot.html")
+## >>> from techminer2.co_occurrence_network import node_density_plot
+## >>> plot = node_density_plot(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     association_index="association",
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     textfont_size_range=(10, 20),
+## ...     #
+## ...     # DENSITY VISUALIZATION:
+## ...     bandwidth=0.1,
+## ...     colorscale="Aggrnyl",
+## ...     opacity=0.6,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/co_occurrence_network/node_density_plot.html")
 
 .. raw:: html
 

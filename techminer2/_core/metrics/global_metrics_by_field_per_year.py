@@ -9,17 +9,17 @@ Global Indicators by Field per Year
 ===============================================================================
 
 
->>> from techminer2._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year 
->>> global_metrics_by_field_per_year(
-...     field='authors',
-...     as_index=True,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head(20)
+## >>> from techminer2._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year 
+## >>> global_metrics_by_field_per_year(
+## ...     field='authors',
+## ...     as_index=True,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head(20)
                          OCC  ...  local_citations_per_year
 authors            year       ...                          
 Almunawar M.N.     2019    1  ...                     0.000
@@ -47,7 +47,7 @@ Demertzis M.       2018    1  ...                     0.000
 
 
 """
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from ..read_filtered_database import read_filtered_database
 

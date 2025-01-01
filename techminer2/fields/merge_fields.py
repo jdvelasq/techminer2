@@ -9,20 +9,20 @@
 Merge Fields
 ===============================================================================
 
->>> from techminer2.fields import merge_fields
->>> merge_fields(  # doctest: +SKIP
-...     fields_to_merge=["author_keywords", "index_keywords"],
-...     dest="merged_keywords",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import merge_fields
+## >>> merge_fields(  # doctest: +SKIP
+## ...     fields_to_merge=["author_keywords", "index_keywords"],
+## ...     dest="merged_keywords",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._dtypes import DTYPES
 from .protected_fields import PROTECTED_FIELDS

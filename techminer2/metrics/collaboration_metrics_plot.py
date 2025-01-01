@@ -9,25 +9,25 @@
 Collaboration Metrics Plot
 ===============================================================================
 
->>> from techminer2.metrics import collaboration_metrics_plot
->>> plot = collaboration_metrics_plot(
-...     #
-...     # PARAMS:
-...     field="countries",
-...     #
-...     # ITEM FILTERS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/metrics/collaboration_metrics.html")
+## >>> from techminer2.metrics import collaboration_metrics_plot
+## >>> plot = collaboration_metrics_plot(
+## ...     #
+## ...     # PARAMS:
+## ...     field="countries",
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/metrics/collaboration_metrics.html")
 
 .. raw:: html
 

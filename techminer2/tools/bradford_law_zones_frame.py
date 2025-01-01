@@ -8,15 +8,15 @@
 Bradford's Law Zones Frame
 ===============================================================================
 
->>> from techminer2.tools import bradford_law_zones_frame
->>> bradford_law_zones_frame(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.tools import bradford_law_zones_frame
+## >>> bradford_law_zones_frame(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                      no  OCC  cum_OCC  global_citations  zone
 abbr_source_title                                            
 J. Econ. Bus.         1    3        3               422     1

@@ -9,32 +9,32 @@ Co-occurrence Table
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import co_occurrence_table
->>> co_occurrence_table(
-...     #
-...     # FUNCTION PARAMS:
-...     columns='author_keywords',
-...     rows='authors',
-...     retain_counters=True,
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=None,
-...     col_occ_range=(2, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(2, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head(10)
+## >>> from techminer2.co_occurrence_matrix import co_occurrence_table
+## >>> co_occurrence_table(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     columns='author_keywords',
+## ...     rows='authors',
+## ...     retain_counters=True,
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=None,
+## ...     col_occ_range=(2, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(2, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head(10)
                  rows                      columns  OCC
 0  Jagtiani J. 3:0317              FINTECH 31:5168    3
 1  Jagtiani J. 3:0317  MARKETPLACE_LENDING 03:0317    3

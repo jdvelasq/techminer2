@@ -10,28 +10,28 @@ Terms by Cluster Frame
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_network import terms_by_cluster_frame
->>> terms_by_cluster_frame(
-...     #
-...     # PARAMS:
-...     field='author_keywords',
-...     #
-...     # COLUMN PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # NETWORK PARAMS:
-...     algorithm_or_dict="louvain",
-...     association_index="association",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.co_occurrence_network import terms_by_cluster_frame
+## >>> terms_by_cluster_frame(
+## ...     #
+## ...     # PARAMS:
+## ...     field='author_keywords',
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # NETWORK PARAMS:
+## ...     algorithm_or_dict="louvain",
+## ...     association_index="association",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
                              0  ...                                3
 0              FINTECH 31:5168  ...  ARTIFICIAL_INTELLIGENCE 02:0327
 1  FINANCIAL_INCLUSION 03:0590  ...                  FINANCE 02:0309

@@ -9,30 +9,30 @@
 Column Chart
 ===============================================================================
 
->>> from techminer2.report import column_chart
->>> chart = column_chart(
-...     #
-...     # ITEMS PARAMS:
-...     field='author_keywords',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     metric="OCC",
-...     #
-...     # CHART PARAMS:
-...     title="Most Frequent Author Keywords",
-...     metric_label=None,
-...     field_label=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # chart.write_html("sphinx/_static/report/column_chart.html")
+## >>> from techminer2.report import column_chart
+## >>> chart = column_chart(
+## ...     #
+## ...     # ITEMS PARAMS:
+## ...     field='author_keywords',
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     metric="OCC",
+## ...     #
+## ...     # CHART PARAMS:
+## ...     title="Most Frequent Author Keywords",
+## ...     metric_label=None,
+## ...     field_label=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # chart.write_html("sphinx/_static/report/column_chart.html")
 
 .. raw:: html
 

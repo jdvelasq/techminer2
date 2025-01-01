@@ -12,13 +12,13 @@ Ingest Raw Data
 # doctest: +SKIP 
 
 
->>> from techminer2.ingest import ingest_raw_data
->>> ingest_raw_data( 
-...     #
-...     # DATABASE PARAMS:
-...     # root_dir="example/",
-...     root_dir="/Users/jdvelasq/Library/Mobile Documents/com~apple~CloudDocs/__tm2__/06_blended_learning/", 
-... ) # doctest: +ELLIPSIS
+## >>> from techminer2.ingest import ingest_raw_data
+## >>> ingest_raw_data( 
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     # root_dir="example/",
+## ...     root_dir="/Users/jdvelasq/Library/Mobile Documents/com~apple~CloudDocs/__tm2__/06_blended_learning/", 
+## ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files
 -- 002 -- Creating working directories
 -- 003 -- Creating stopwords.txt file

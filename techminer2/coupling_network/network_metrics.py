@@ -9,29 +9,29 @@
 Network Metrics
 ===============================================================================
 
->>> # authors, countries, organizations, sources:
->>> from techminer2.coupling_network import network_metrics
->>> network_metrics(
-...     unit_of_analysis='authors', # article
-...                                 # authors 
-...                                 # countries
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> # authors, countries, organizations, sources:
+## >>> from techminer2.coupling_network import network_metrics
+## >>> network_metrics(
+## ...     unit_of_analysis='authors', # article
+## ...                                 # authors 
+## ...                                 # countries
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # FILTERS NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                     Degree  Betweenness  Closeness  PageRank
 Gomber P. 2:1065         3          0.0   0.333333  0.085695
 Hornuf L. 2:0358         3          0.0   0.333333  0.073543
@@ -40,29 +40,29 @@ Lemieux C. 2:0253        3          0.0   0.333333  0.120381
 Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
->>> # article:
->>> from techminer2.coupling_network import network_metrics
->>> network_metrics(
-...     unit_of_analysis='article', # article
-...                                 # authors 
-...                                 # countries, 
-...                                 # organizations 
-...                                 # sources
-...     #
-...     # FILTERS:
-...     top_n=20, 
-...     citations_threshold=0,
-...     #
-...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
-...     occurrence_threshold=2,
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> # article:
+## >>> from techminer2.coupling_network import network_metrics
+## >>> network_metrics(
+## ...     unit_of_analysis='article', # article
+## ...                                 # authors 
+## ...                                 # countries, 
+## ...                                 # organizations 
+## ...                                 # sources
+## ...     #
+## ...     # FILTERS:
+## ...     top_n=20, 
+## ...     citations_threshold=0,
+## ...     #
+## ...     # NOT VALID FOR 'article' UNIT OF ANALYSIS:
+## ...     occurrence_threshold=2,
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                                             Degree  ...  PageRank
 Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
 Gomber P., 2017, J BUS ECON 1:489                6  ...  0.164851

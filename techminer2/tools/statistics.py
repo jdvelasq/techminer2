@@ -9,16 +9,16 @@ Statistics
 ===============================================================================
 
 
->>> from techminer2.tools import statistics
->>> statistics(
-...     field='authors',    
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.tools import statistics
+## >>> statistics(
+## ...     field='authors',    
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
                     year                              ... local_citations                    
                    count    mean std     min     25%  ...             min  25%  50%  75%  max
 authors                                               ...                                    

@@ -10,27 +10,27 @@
 Replace String 
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import replace_string
->>> replace_string( # doctest: +SKIP
-...     #
-...     # SEARCH PARAMS:
-...     contains='ARTIFICIAL_INTELLIGENCE',
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # REPLACE PARAMS:
-...     replace_by='AI',
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.descriptors import replace_string
+## >>> replace_string( # doctest: +SKIP
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     contains='ARTIFICIAL_INTELLIGENCE',
+## ...     startswith=None,
+## ...     endswith=None,
+## ...     #
+## ...     # REPLACE PARAMS:
+## ...     replace_by='AI',
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been processed.
 
 """
 import os.path
 import re
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from .._core.load_thesaurus_as_dict import load_thesaurus_as_dict
 

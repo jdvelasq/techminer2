@@ -9,37 +9,37 @@
 Network Plot
 ===============================================================================
 
->>> from techminer2.main_path_analysis import network_plot
->>> chart = network_plot(
-...     #
-...     # COLUMN PARAMS:
-...     top_n=None,
-...     citations_threshold=0,
-...     #
-...     # LAYOUT:
-...     nx_k=None,
-...     nx_iterations=30,
-...     nx_random_state=0,
-...     #
-...     # NODES:
-...     node_size_range=(30, 70),
-...     textfont_size_range=(10, 20),
-...     textfont_opacity_range=(0.35, 1.00),
-...     #
-...     # EDGES:
-...     edge_color="#7793a5",
-...     edge_width_range=(0.8, 3.0),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.main_path_analysis import network_plot
+## >>> chart = network_plot(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=None,
+## ...     citations_threshold=0,
+## ...     #
+## ...     # LAYOUT:
+## ...     nx_k=None,
+## ...     nx_iterations=30,
+## ...     nx_random_state=0,
+## ...     #
+## ...     # NODES:
+## ...     node_size_range=(30, 70),
+## ...     textfont_size_range=(10, 20),
+## ...     textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # EDGES:
+## ...     edge_color="#7793a5",
+## ...     edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/",
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
 --INFO-- Points per path computed.
->>> # chart.write_html("sphinx/_static/main_path_analysis/network_plot.html")
+## >>> # chart.write_html("sphinx/_static/main_path_analysis/network_plot.html")
 
 .. raw:: html
 

@@ -8,22 +8,22 @@
 Cluster Records
 ===============================================================================
 
->>> from techminer2.tools import cluster_records 
->>> plot = cluster_records(
-...     field='author_keywords',
-...     #
-...     # ITEM FILTERS:
-...     top_n=50,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.tools import cluster_records 
+## >>> plot = cluster_records(
+## ...     field='author_keywords',
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=50,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
 >>> # plot.write_html("sphinx/_static/tools/cluster_records.html")
 
 .. raw:: html

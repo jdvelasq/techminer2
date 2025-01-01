@@ -9,35 +9,35 @@
 Heat Map
 ===============================================================================
 
->>> from techminer2.report import heat_map
->>> plot = heat_map(
-...     #
-...     # CO-OCC PARAMS:
-...     columns='author_keywords',
-...     rows=None,
-...     #
-...     # FIG PARAMS:
-...     colormap="Blues",
-...     #
-...     # COLUMN PARAMS:
-...     col_top_n=None,
-...     col_occ_range=(4, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/report/heat_map.html")
+## >>> from techminer2.report import heat_map
+## >>> plot = heat_map(
+## ...     #
+## ...     # CO-OCC PARAMS:
+## ...     columns='author_keywords',
+## ...     rows=None,
+## ...     #
+## ...     # FIG PARAMS:
+## ...     colormap="Blues",
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     col_top_n=None,
+## ...     col_occ_range=(4, None),
+## ...     col_gc_range=(None, None),
+## ...     col_custom_terms=None,
+## ...     #
+## ...     # ROW PARAMS:
+## ...     row_top_n=None,
+## ...     row_occ_range=(None, None),
+## ...     row_gc_range=(None, None),
+## ...     row_custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/heat_map.html")
 
 .. raw:: html
 

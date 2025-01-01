@@ -8,23 +8,23 @@
 Performance Metrics Frame
 ===============================================================================
 
->>> from techminer2.metrics import performance_metrics_frame
->>> performance_metrics_frame(
-...     field='author_keywords',
-...     #
-...     # FILTER PARAMS:
-...     metric='OCCGC',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... ).head()
+## >>> from techminer2.metrics import performance_metrics_frame
+## >>> performance_metrics_frame(
+## ...     field='author_keywords',
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     metric='OCCGC',
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... ).head()
                       rank_occ  rank_gcs  rank_lcs  ...  h_index  g_index  m_index
 author_keywords                                     ...                           
 FINTECH                      1         1         1  ...       31       12     7.75

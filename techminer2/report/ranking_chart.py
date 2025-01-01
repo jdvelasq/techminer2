@@ -9,34 +9,34 @@
 Ranking Chart
 ===============================================================================
 
->>> from techminer2.report import ranking_chart
->>> plot = ranking_chart(
-...     #
-...     # ITEMS PARAMS:
-...     field='author_keywords',
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     metric="OCC",
-...     #
-...     # CHART PARAMS:
-...     title="Most Frequent Author Keywords",
-...     field_label=None,
-...     metric_label=None,
-...     textfont_size=10,
-...     marker_size=7,
-...     line_width=1.5,
-...     yshift=4,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/report/ranking_chart.html")
+## >>> from techminer2.report import ranking_chart
+## >>> plot = ranking_chart(
+## ...     #
+## ...     # ITEMS PARAMS:
+## ...     field='author_keywords',
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     metric="OCC",
+## ...     #
+## ...     # CHART PARAMS:
+## ...     title="Most Frequent Author Keywords",
+## ...     field_label=None,
+## ...     metric_label=None,
+## ...     textfont_size=10,
+## ...     marker_size=7,
+## ...     line_width=1.5,
+## ...     yshift=4,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/ranking_chart.html")
 
 .. raw:: html
 

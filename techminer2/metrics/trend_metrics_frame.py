@@ -9,23 +9,23 @@ Trend Metrics Frame
 ===============================================================================
 
 
->>> from techminer2.metrics import trend_metrics_frame
->>> trend_metrics_frame(
-...     #
-...     # TABLE PARAMS:
-...     selected_columns=[
-...         "OCC",
-...         "global_citations",
-...         "mean_global_citations",
-...         "mean_global_citations_per_year",
-...     ],
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.metrics import trend_metrics_frame
+## >>> trend_metrics_frame(
+## ...     #
+## ...     # TABLE PARAMS:
+## ...     selected_columns=[
+## ...         "OCC",
+## ...         "global_citations",
+## ...         "mean_global_citations",
+## ...         "mean_global_citations_per_year",
+## ...     ],
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
       OCC  ...  mean_global_citations_per_year
 year       ...                                
 2015    1  ...                           15.20

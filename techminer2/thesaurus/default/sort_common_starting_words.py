@@ -11,8 +11,8 @@ Sort Common Starting Words
 ===============================================================================
 
 
->>> from techminer2.thesaurus.default import sort_common_starting_words
->>> sort_common_starting_words()
+## >>> from techminer2.thesaurus.default import sort_common_starting_words
+## >>> sort_common_starting_words()
 --INFO-- The common_starting_words.txt thesaurus has been sorted.
 
 """

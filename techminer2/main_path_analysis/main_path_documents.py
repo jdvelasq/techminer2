@@ -9,30 +9,30 @@
 Main Path Documents
 ===============================================================================
 
->>> from techminer2.main_path_analysis import main_path_documents
->>> documents = main_path_documents(
-...     #
-...     # COLUMN PARAMS:
-...     top_n=None,
-...     citations_threshold=0,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
-...                            # global_cited_by_lowest, local_cited_by_highest, 
-...                            # local_cited_by_lowest, first_author_a_to_z, 
-...                            # first_author_z_to_a, source_title_a_to_z, 
-...                            # source_title_z_to_a
-... )
+## >>> from techminer2.main_path_analysis import main_path_documents
+## >>> documents = main_path_documents(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=None,
+## ...     citations_threshold=0,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/",
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
+## ...                            # global_cited_by_lowest, local_cited_by_highest, 
+## ...                            # local_cited_by_lowest, first_author_a_to_z, 
+## ...                            # first_author_z_to_a, source_title_a_to_z, 
+## ...                            # source_title_z_to_a
+## ... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
 --INFO-- Points per path computed.
->>> len(documents)
+## >>> len(documents)
 5
->>> print(documents[0])
+## >>> print(documents[0])
 Record-No: 12
 AR Gomber P., 2017, J BUS ECON, V87, P537
 TI Digital Finance and FinTech: current research and future research directions

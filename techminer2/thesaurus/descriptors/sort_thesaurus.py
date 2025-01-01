@@ -11,8 +11,8 @@ Sort Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import sort_thesaurus
->>> sort_thesaurus(
+## >>> from techminer2.thesaurus.descriptors import sort_thesaurus
+## >>> sort_thesaurus(
 ...     # 
 ...     # SORT OPTIONS:
 ...     order="alphabetical",

@@ -9,19 +9,19 @@
 Network Edges Frame
 ===============================================================================
 
->>> from techminer2.main_path_analysis import network_edges_frame
->>> network_edges_frame(
-...     #
-...     # COLUMN PARAMS:
-...     top_n=None,
-...     citations_threshold=0,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/",
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.main_path_analysis import network_edges_frame
+## >>> network_edges_frame(
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     top_n=None,
+## ...     citations_threshold=0,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/",
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
 --INFO-- Points per path computed.

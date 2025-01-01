@@ -9,17 +9,17 @@
 Most Local Cited References (Example)
 ===============================================================================
 
->>> from techminer2.documents import select_documents
->>> documents = select_documents(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="references",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by="local_cited_by_highest",
-... )
->>> print(documents[0])
+## >>> from techminer2.documents import select_documents
+## >>> documents = select_documents(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="references",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by="local_cited_by_highest",
+## ... )
+## >>> print(documents[0])
 Record-No: 282
 AR Gomber P., 2017, J BUS ECON, V87, P537
 TI Digital Finance and FinTech: current research and future research directions

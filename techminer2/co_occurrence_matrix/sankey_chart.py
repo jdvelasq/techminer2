@@ -8,32 +8,32 @@
 Sankey Chart
 ===============================================================================
 
->>> from techminer2.co_occurrence_matrix import sankey_chart
->>> plot = sankey_chart(
-...     #
-...     # PARAMS:
-...     fields=["authors", "countries", "author_keywords"],
-...     max_n=20,
-...     retain_counters=True,
-...     #
-...     # ITEM FILTERS:
-...     top_n=10,
-...     occ_range=None,
-...     gc_range=None,
-...     custom_terms=None,
-...     #
-...     # PARAMS:
-...     font_size=8,
-...     title=None,
-...     color=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
->>> # plot.write_html("sphinx/_static/co_occurrence_matrix/sankey_chat.html")
+## >>> from techminer2.co_occurrence_matrix import sankey_chart
+## >>> plot = sankey_chart(
+## ...     #
+## ...     # PARAMS:
+## ...     fields=["authors", "countries", "author_keywords"],
+## ...     max_n=20,
+## ...     retain_counters=True,
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=10,
+## ...     occ_range=None,
+## ...     gc_range=None,
+## ...     custom_terms=None,
+## ...     #
+## ...     # PARAMS:
+## ...     font_size=8,
+## ...     title=None,
+## ...     color=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
+## >>> # plot.write_html("sphinx/_static/co_occurrence_matrix/sankey_chat.html")
 
 .. raw:: html
 

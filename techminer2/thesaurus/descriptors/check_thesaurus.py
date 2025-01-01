@@ -11,12 +11,12 @@ Check Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import check_thesaurus
->>> check_thesaurus(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.thesaurus.descriptors import check_thesaurus
+## >>> check_thesaurus(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- Checking `descriptors.the.txt` integrity.
 
 """

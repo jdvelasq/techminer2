@@ -11,17 +11,17 @@ Term Occurrences by Year
 
 Computes the annual occurrence matrix for the items in a given field.
 
->>> from techminer2._core.metrics.term_occurrences_by_year import term_occurrences_by_year
->>> term_occurrences_by_year(
-...     field='authors',  
-...     cumulative=False,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head(10)
+## >>> from techminer2._core.metrics.term_occurrences_by_year import term_occurrences_by_year
+## >>> term_occurrences_by_year(
+## ...     field='authors',  
+## ...     cumulative=False,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head(10)
 year                2015  2016  2017  2018  2019
 authors                                         
 Almunawar M.N.         0     0     0     0     1

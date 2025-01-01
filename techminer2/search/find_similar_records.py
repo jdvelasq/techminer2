@@ -9,20 +9,20 @@ Find Similar Records
 ===============================================================================
 
 
->>> from techminer2.search import find_similar_records
->>> documents = find_similar_records(
-...     #
-...     # SEARCH PARAMS:
-...     record_no=1,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> for i in range(2):
-...    print(documents[i])
+## >>> from techminer2.search import find_similar_records
+## >>> documents = find_similar_records(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     record_no=1,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> for i in range(2):
+## ...    print(documents[i])
 SIMILARITY: 1.0
 Record-No: 1
 AR Goldstein I., 2019, REV FINANC STUD, V32, P1647

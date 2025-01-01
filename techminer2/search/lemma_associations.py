@@ -10,25 +10,25 @@ Lemma Associations
 =========================================================================================
 
 
->>> from techminer2.search import lemma_associations
->>> lemmas = lemma_associations(
-...     #
-...     # FUNCTION PARAMS:
-...     lemma_a='INNOVATION',
-...     lemma_b='FINTECH',
-...     top_n=10,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> print(lemmas.contexts_) # doctest: +ELLIPSIS 
+## >>> from techminer2.search import lemma_associations
+## >>> lemmas = lemma_associations(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     lemma_a='INNOVATION',
+## ...     lemma_b='FINTECH',
+## ...     top_n=10,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> print(lemmas.contexts_) # doctest: +ELLIPSIS 
 ---...
 
 
->>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
+## >>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
 Your task is ...
 
 

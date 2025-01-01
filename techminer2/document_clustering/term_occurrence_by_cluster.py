@@ -8,38 +8,38 @@
 Term Occurrence by Cluster
 ===============================================================================
 
->>> from sklearn.cluster import KMeans
->>> from techminer2.document_clustering import term_occurrence_by_cluster
->>> term_occurrence_by_cluster(
-...     #
-...     # TERMS:
-...     field='descriptors',
-...     retain_counters=True,
-...     #
-...     # FILTER PARAMS:
-...     top_n=50,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # ESTIMATOR:
-...     sklearn_estimator=KMeans(
-...         n_clusters=8,
-...         init="k-means++",
-...         n_init=10,
-...         max_iter=300,
-...         tol=0.0001,
-...         algorithm="lloyd",
-...         random_state=0,
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-...     sort_by=None,
-... ).head(20)
+## >>> from sklearn.cluster import KMeans
+## >>> from techminer2.document_clustering import term_occurrence_by_cluster
+## >>> term_occurrence_by_cluster(
+## ...     #
+## ...     # TERMS:
+## ...     field='descriptors',
+## ...     retain_counters=True,
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     top_n=50,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # ESTIMATOR:
+## ...     sklearn_estimator=KMeans(
+## ...         n_clusters=8,
+## ...         init="k-means++",
+## ...         n_init=10,
+## ...         max_iter=300,
+## ...         tol=0.0001,
+## ...         algorithm="lloyd",
+## ...         random_state=0,
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ...     sort_by=None,
+## ... ).head(20)
 cluster                              0   1  2  3  4  5  6  7
 descriptors                                                 
 FINTECH 32:5393                      3  21  0  1  0  2  5  0

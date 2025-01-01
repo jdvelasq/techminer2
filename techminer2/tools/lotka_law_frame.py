@@ -10,15 +10,15 @@ Lotka's Law Frame
 ===============================================================================
 
 
->>> from techminer2.tools import lotka_law_frame
->>> lotka_law_frame(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
+## >>> from techminer2.tools import lotka_law_frame
+## >>> lotka_law_frame(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
    Documents Written  ...  Prop Theoretical Authors
 0                  1  ...                     0.735
 1                  2  ...                     0.184

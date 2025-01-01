@@ -9,22 +9,22 @@
 Fields Difference
 ===============================================================================
 
->>> from techminer2.fields.further_processing import fields_difference
->>> fields_difference( # doctest: +SKIP 
-...     first_field="author_keywords",
-...     second_field="index_keywords",
-...     dest="difference",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields.further_processing import fields_difference
+## >>> fields_difference( # doctest: +SKIP 
+## ...     first_field="author_keywords",
+## ...     second_field="index_keywords",
+## ...     dest="difference",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 
 """
 import glob
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 from ..._dtypes import DTYPES
 from ..merge_fields import merge_fields

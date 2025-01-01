@@ -8,16 +8,16 @@
 Bradford's Law Plot
 ===============================================================================
 
->>> from techminer2.tools import bradford_law_plot
->>> plot = bradford_law_plot(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> # plot.write_html("sphinx/_static/tools/bradford_law_plot.html")
+## >>> from techminer2.tools import bradford_law_plot
+## >>> plot = bradford_law_plot(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> # plot.write_html("sphinx/_static/tools/bradford_law_plot.html")
 
 .. raw:: html
 

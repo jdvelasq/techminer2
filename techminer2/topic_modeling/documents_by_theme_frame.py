@@ -9,50 +9,50 @@ Documents by Theme Frame
 ===============================================================================
 
 
->>> from techminer2.topic_modeling import documents_by_theme_frame
->>> from sklearn.decomposition import LatentDirichletAllocation
->>> documents_by_theme_frame(
-...     field="author_keywords",
-...     #
-...     # TF PARAMS:
-...     is_binary=True,
-...     cooc_within=2,
-...     #
-...     # TF-IDF PARAMS:
-...     norm=None,
-...     use_idf=False,
-...     smooth_idf=False,
-...     sublinear_tf=False,
-...     #
-...     # TOP TERMS:
-...     n_top_terms=5,
-...     #
-...     # ITEM FILTERS:
-...     top_n=None,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # ESTIMATOR:
-...     sklearn_estimator=LatentDirichletAllocation(
-...         n_components=10,
-...         learning_decay=0.7,
-...         learning_offset=50.0,
-...         max_iter=10,
-...         batch_size=128,
-...         evaluate_every=-1,
-...         perp_tol=0.1,
-...         mean_change_tol=0.001,
-...         max_doc_update_iter=100,
-...         random_state=0,
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... ).head()
+## >>> from techminer2.topic_modeling import documents_by_theme_frame
+## >>> from sklearn.decomposition import LatentDirichletAllocation
+## >>> documents_by_theme_frame(
+## ...     field="author_keywords",
+## ...     #
+## ...     # TF PARAMS:
+## ...     is_binary=True,
+## ...     cooc_within=2,
+## ...     #
+## ...     # TF-IDF PARAMS:
+## ...     norm=None,
+## ...     use_idf=False,
+## ...     smooth_idf=False,
+## ...     sublinear_tf=False,
+## ...     #
+## ...     # TOP TERMS:
+## ...     n_top_terms=5,
+## ...     #
+## ...     # ITEM FILTERS:
+## ...     top_n=None,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # ESTIMATOR:
+## ...     sklearn_estimator=LatentDirichletAllocation(
+## ...         n_components=10,
+## ...         learning_decay=0.7,
+## ...         learning_offset=50.0,
+## ...         max_iter=10,
+## ...         batch_size=128,
+## ...         evaluate_every=-1,
+## ...         perp_tol=0.1,
+## ...         mean_change_tol=0.001,
+## ...         max_doc_update_iter=100,
+## ...         random_state=0,
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... ).head()
 cluster                                                0  ...         9
 article                                                   ...          
 Anagnostopoulos I., 2018, J ECON BUS, V100, P7  0.871422  ...  0.014286

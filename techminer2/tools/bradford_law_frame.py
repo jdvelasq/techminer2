@@ -8,15 +8,15 @@
 Bradford's Law Frame
 ===============================================================================
 
->>> from techminer2.tools import bradford_law_frame
->>> bradford_law_frame(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
+## >>> from techminer2.tools import bradford_law_frame
+## >>> bradford_law_frame(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
    Num Sources        %  ...  Tot Documents Bradford's Group
 0            1   2.44 %  ...          6.0 %                1
 1            7  17.07 %  ...         34.0 %                2

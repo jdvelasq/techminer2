@@ -9,52 +9,52 @@
 Cluster to Terms Mapping
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from sklearn.cluster import KMeans
->>> from techminer2.factor_analysis.co_occurrence import cluster_to_terms_mapping
->>> mapping = cluster_to_terms_mapping(
-...     #
-...     # PARAMS:
-...     field="author_keywords",
-...     association_index=None,
-...     #
-...     # ITEM PARAMS:
-...     top_n=20,
-...     occ_range=(None, None),
-...     gc_range=(None, None),
-...     custom_terms=None,
-...     #
-...     # DESOMPOSITION:
-...     decomposition_estimator = PCA(
-...         n_components=5,
-...         whiten=False,
-...         svd_solver="auto",
-...         tol=0.0,
-...         iterated_power="auto",
-...         n_oversamples=10,
-...         power_iteration_normalizer="auto",
-...         random_state=0, 
-...     ),
-...     #
-...     # CLUSTERING:
-...     clustering_estimator_or_dict = KMeans(
-...         n_clusters=6,
-...         init="k-means++",
-...         n_init=10,
-...         max_iter=300,
-...         tol=0.0001,
-...         algorithm="elkan",
-...         random_state=0,
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> from pprint import pprint
->>> pprint(mapping)
+## >>> from sklearn.decomposition import PCA
+## >>> from sklearn.cluster import KMeans
+## >>> from techminer2.factor_analysis.co_occurrence import cluster_to_terms_mapping
+## >>> mapping = cluster_to_terms_mapping(
+## ...     #
+## ...     # PARAMS:
+## ...     field="author_keywords",
+## ...     association_index=None,
+## ...     #
+## ...     # ITEM PARAMS:
+## ...     top_n=20,
+## ...     occ_range=(None, None),
+## ...     gc_range=(None, None),
+## ...     custom_terms=None,
+## ...     #
+## ...     # DESOMPOSITION:
+## ...     decomposition_estimator = PCA(
+## ...         n_components=5,
+## ...         whiten=False,
+## ...         svd_solver="auto",
+## ...         tol=0.0,
+## ...         iterated_power="auto",
+## ...         n_oversamples=10,
+## ...         power_iteration_normalizer="auto",
+## ...         random_state=0, 
+## ...     ),
+## ...     #
+## ...     # CLUSTERING:
+## ...     clustering_estimator_or_dict = KMeans(
+## ...         n_clusters=6,
+## ...         init="k-means++",
+## ...         n_init=10,
+## ...         max_iter=300,
+## ...         tol=0.0001,
+## ...         algorithm="elkan",
+## ...         random_state=0,
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> from pprint import pprint
+## >>> pprint(mapping)
 {0: ['BUSINESS_MODELS 02:0759',
      'ARTIFICIAL_INTELLIGENCE 02:0327',
      'FINANCE 02:0309',
