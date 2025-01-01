@@ -9,15 +9,15 @@
 Fields Intersection
 ===============================================================================
 
->>> from techminer2.prepare.transformations import fields_intersection
->>> fields_intersection(  # doctest: +SKIP
-...     first_field="author_keywords",
-...     second_field="index_keywords",
-...     dest="intersection",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.prepare.transformations import fields_intersection
+## >>> fields_intersection(  # doctest: +SKIP
+## ...     first_field="author_keywords",
+## ...     second_field="index_keywords",
+## ...     dest="intersection",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 import glob

@@ -9,14 +9,14 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.prepare.transformations import count_terms_per_record
->>> count_terms_per_record(  # doctest: +SKIP 
-...     source="raw_author_keywords",
-...     dest="num_raw_author_keywords",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.prepare.transformations import count_terms_per_record
+## >>> count_terms_per_record(  # doctest: +SKIP 
+## ...     source="raw_author_keywords",
+## ...     dest="num_raw_author_keywords",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 

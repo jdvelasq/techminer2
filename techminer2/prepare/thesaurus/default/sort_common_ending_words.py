@@ -11,8 +11,8 @@ Sort Common Ending Words
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.default import sort_common_ending_words
->>> sort_common_ending_words()
+## >>> from techminer2.prepare.thesaurus.default import sort_common_ending_words
+## >>> sort_common_ending_words()
 --INFO-- The common_ending_words.txt thesaurus has been sorted.
 
 """

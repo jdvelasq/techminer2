@@ -9,36 +9,36 @@ TFIDF Frame
 ===============================================================================
 
 
->>> from techminer2.analyze.metrics import tfidf_frame
->>> (
-...     TfIdfDataFrame()
-...     .set_output_params(
-...         retain_counters=True,
-...     #
-...     ).set_tf_params(
-...         is_binary=False,
-...         cooc_within= 1,
-...     #
-...     ).set_tfidf_params(
-...         norm= None,
-...         use_idf=False,
-...         smooth_idf=False,
-...         sublinear_tf=False,
-...     #
-...     .set_item_params(
-...         field='author_keywords',
-...         top_n=50,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.metrics import tfidf_frame
+## >>> (
+## ...     TfIdfDataFrame()
+## ...     .set_output_params(
+## ...         retain_counters=True,
+## ...     #
+## ...     ).set_tf_params(
+## ...         is_binary=False,
+## ...         cooc_within= 1,
+## ...     #
+## ...     ).set_tfidf_params(
+## ...         norm= None,
+## ...         use_idf=False,
+## ...         smooth_idf=False,
+## ...         sublinear_tf=False,
+## ...     #
+## ...     .set_item_params(
+## ...         field='author_keywords',
+## ...         top_n=50,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
 author_keywords                                 FINTECH 31:5168  ...  BIG_DATA 01:0238
 article                                                          ...                  
 Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                 0

@@ -11,16 +11,16 @@ Fuzzy Search
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.descriptors import fuzzy_search
->>> fuzzy_search(
-...     #
-...     # SEARCH PARAMS:
-...     patterns='INTELIGEN',
-...     threshold=70,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import fuzzy_search
+## >>> fuzzy_search(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     patterns='INTELIGEN',
+## ...     threshold=70,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 ARTIFICIAL_INTELLIGENCE
      AI
      ARTIFICIAL_INTELLIGENCE

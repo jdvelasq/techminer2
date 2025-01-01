@@ -9,14 +9,14 @@
 Rename a Field
 ===============================================================================
 
->>> from techminer2.fields import rename_field
->>> rename_field(  # doctest: +SKIP
-...     source="author_keywords",
-...     dest="author_keywords_new",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import rename_field
+## >>> rename_field(  # doctest: +SKIP
+## ...     source="author_keywords",
+## ...     dest="author_keywords_new",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 from ...internals.fields.fields__rename import fields__rename

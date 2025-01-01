@@ -10,16 +10,16 @@
 Coverage
 ===============================================================================
 
->>> from techminer2.prepare.database import Coverage
->>> (
-...     Coverage()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(field="author_keywords")
-... )
+## >>> from techminer2.prepare.database import Coverage
+## >>> (
+## ...     Coverage()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(field="author_keywords")
+## ... )
 --INFO-- Number of documents : 50
 --INFO--   Documents with NA : 12
 --INFO--  Efective documents : 38

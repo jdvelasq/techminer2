@@ -11,8 +11,8 @@ Sort Hypened Words
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.default import sort_hypened_words
->>> sort_hypened_words()
+## >>> from techminer2.prepare.thesaurus.default import sort_hypened_words
+## >>> sort_hypened_words()
 --INFO-- The hypened_words.txt thesaurus has been sorted.
 
 """

@@ -9,18 +9,18 @@ Global Indicators by Field per Year
 ===============================================================================
 
 
->>> from techminer2._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year 
->>> global_metrics_by_field_per_year(
-...     field='authors',
-...     as_index=True,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... ).head(20)
+## >>> from techminer2._core.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year 
+## >>> global_metrics_by_field_per_year(
+## ...     field='authors',
+## ...     as_index=True,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... ).head(20)
                          OCC  ...  local_citations_per_year
 authors            year       ...                          
 Almunawar M.N.     2019    1  ...                     0.000

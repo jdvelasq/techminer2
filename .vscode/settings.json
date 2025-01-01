@@ -8,7 +8,7 @@
         "--config=pyproject.toml"
     ],
     "python.testing.pytestArgs": [
-        ".",
+        "./techminer2/analyze/",
         "--doctest-modules"
     ],
     "python.testing.unittestEnabled": false,

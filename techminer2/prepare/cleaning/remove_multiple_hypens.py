@@ -9,14 +9,14 @@
 Remove Multiple Hypens
 ===============================================================================
 
->>> from techminer2.fields.further_processing import remove_multiple_hypens
->>> remove_multiple_hypens(  # doctest: +SKIP  
-...     source="abstract",
-...     dest="abstract",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields.further_processing import remove_multiple_hypens
+## >>> remove_multiple_hypens(  # doctest: +SKIP  
+## ...     source="abstract",
+## ...     dest="abstract",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 
 """

@@ -54,22 +54,22 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 ## ... )
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
->>> find_records(
-...     #
-...     # SEARCH PARAMS:
-...     field='abstract',
-...     search_for='anti',
-...     case=False,
-...     flags=0,
-...     regex=True,
-...     report_filename="find_records.txt",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=None,
-...     cited_by_filter=None,
-... )
+## >>> find_records(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     field='abstract',
+## ...     search_for='anti',
+## ...     case=False,
+## ...     flags=0,
+## ...     regex=True,
+## ...     report_filename="find_records.txt",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=None,
+## ...     cited_by_filter=None,
+## ... )
 --INFO-- The file 'example/reports/find_records.txt' was created.
 
 """

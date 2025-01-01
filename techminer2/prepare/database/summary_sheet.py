@@ -9,17 +9,17 @@ Summary Sheet
 ===============================================================================
 
 
->>> from techminer2.prepare.database import SummarySheet
->>> result = (
-...     SummarySheet()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> result.head()
+## >>> from techminer2.prepare.database import SummarySheet
+## >>> result = (
+## ...     SummarySheet()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build()
+## ... )
+## >>> result.head()
                  column  number of terms coverage (%)
 0     abbr_source_title               50         1.0%
 1              abstract               48        0.96%

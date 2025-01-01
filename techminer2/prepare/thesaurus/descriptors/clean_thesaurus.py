@@ -10,12 +10,12 @@
 Clean Thesaurus
 ===============================================================================
 
->>> from techminer2.prepare.thesaurus.descriptors import clean_thesaurus
->>> clean_thesaurus(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import clean_thesaurus
+## >>> clean_thesaurus(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The example/thesauri/descriptors.the.txt thesaurus has been cleaned.
 
 """

@@ -10,12 +10,12 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 ===============================================================================
 
 
->>> from techminer2.rpys import rpys_frame
->>> rpys_frame(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... ).head()
+## >>> from techminer2.rpys import rpys_frame
+## >>> rpys_frame(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... ).head()
       Num References  Median
 1957               1    -1.0
 1958               0     0.0

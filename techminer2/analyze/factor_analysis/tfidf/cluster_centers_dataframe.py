@@ -9,56 +9,56 @@
 Cluster Centers Frame
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from sklearn.cluster import KMeans
->>> from techminer2.analyze.factor_analysis.tfidf import cluster_centers_frame
->>> (
-...     ClusterCentersDataFrame()
-...     .set_analysis_params(
-...         decomposition_estimator = PCA(
-...             n_components=5,
-...             whiten=False,
-...             svd_solver="auto",
-...             tol=0.0,
-...             iterated_power="auto",
-...             n_oversamples=10,
-...             power_iteration_normalizer="auto",
-...             random_state=0, 
-...         ),
-...         clustering_estimator_or_dict = KMeans(
-...             n_clusters=6,
-...             init="k-means++",
-...             n_init=10,
-...             max_iter=300,
-...             tol=0.0001,
-...             algorithm="elkan",
-...             random_state=0,
-...         ),
-...     ).set_tf_params(
-...         is_binary=True,
-...         cooc_within=1,
-...     #
-...     ).set_tfidf_params(
-...         norm=None,
-...         use_idf=False,
-...         smooth_idf=False,
-...         sublinear_tf=False,
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> from sklearn.decomposition import PCA
+## >>> from sklearn.cluster import KMeans
+## >>> from techminer2.analyze.factor_analysis.tfidf import cluster_centers_frame
+## >>> (
+## ...     ClusterCentersDataFrame()
+## ...     .set_analysis_params(
+## ...         decomposition_estimator = PCA(
+## ...             n_components=5,
+## ...             whiten=False,
+## ...             svd_solver="auto",
+## ...             tol=0.0,
+## ...             iterated_power="auto",
+## ...             n_oversamples=10,
+## ...             power_iteration_normalizer="auto",
+## ...             random_state=0, 
+## ...         ),
+## ...         clustering_estimator_or_dict = KMeans(
+## ...             n_clusters=6,
+## ...             init="k-means++",
+## ...             n_init=10,
+## ...             max_iter=300,
+## ...             tol=0.0001,
+## ...             algorithm="elkan",
+## ...             random_state=0,
+## ...         ),
+## ...     ).set_tf_params(
+## ...         is_binary=True,
+## ...         cooc_within=1,
+## ...     #
+## ...     ).set_tfidf_params(
+## ...         norm=None,
+## ...         use_idf=False,
+## ...         smooth_idf=False,
+## ...         sublinear_tf=False,
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
 dim             0         1         2         3         4
 cluster                                                  
 0       -0.201359 -0.145628 -0.537202 -0.307006 -0.472928

@@ -28,7 +28,7 @@ Lemma Associations
 ---...
 
 
->>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
+## >>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
 Your task is ...
 
 

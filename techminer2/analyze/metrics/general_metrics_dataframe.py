@@ -8,16 +8,16 @@
 General Metrics
 ===============================================================================
 
->>> from techminer2.analyze.metrics import general_metrics_frame
->>> general_metrics_frame(
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
+## >>> from techminer2.analyze.metrics import general_metrics_frame
+## >>> general_metrics_frame(
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2015:2019

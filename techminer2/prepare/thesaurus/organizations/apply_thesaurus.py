@@ -12,12 +12,12 @@ Apply Thesaurus
 Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
->>> from techminer2.prepare.thesaurus.organizations import apply_thesaurus
->>> apply_thesaurus( # doctest: +SKIP
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.organizations import apply_thesaurus
+## >>> apply_thesaurus( # doctest: +SKIP
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The example/thesauri/organizations.the.txt thesaurus file was applied to affiliations in all databases
 
 """

@@ -9,14 +9,14 @@
 Copy a Field
 ===============================================================================
 
->>> from techminer2.fields import copy_field
->>> copy_field(  # doctest: +SKIP 
-...     source="author_keywords",
-...     dest="author_keywords_copy",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import copy_field
+## >>> copy_field(  # doctest: +SKIP 
+## ...     source="author_keywords",
+## ...     dest="author_keywords_copy",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 from ...internals.fields.fields__copy import fields__copy

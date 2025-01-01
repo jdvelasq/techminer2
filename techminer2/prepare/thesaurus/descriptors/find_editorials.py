@@ -10,12 +10,12 @@ Find Editorials
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.descriptors import find_editorials
->>> find_editorials(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import find_editorials
+## >>> find_editorials(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
 
 """

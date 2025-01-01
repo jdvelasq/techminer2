@@ -10,12 +10,12 @@
 Apply Thesaurus 
 ===============================================================================
 
->>> from techminer2.prepare.thesaurus.descriptors import apply_thesaurus
->>> apply_thesaurus( # doctest: +SKIP 
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import apply_thesaurus
+## >>> apply_thesaurus( # doctest: +SKIP 
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- Applying `descriptors.the.txt` thesaurus to author/index keywords and abstract/title words
 
 """

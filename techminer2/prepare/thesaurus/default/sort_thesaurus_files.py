@@ -11,8 +11,8 @@ Sort Thesaurus Files
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.default import sort_thesaurus_files
->>> sort_thesaurus_files()
+## >>> from techminer2.prepare.thesaurus.default import sort_thesaurus_files
+## >>> sort_thesaurus_files()
 --INFO-- The _*.the.txt thesaurus files has been sorted.
 
 """

@@ -9,51 +9,51 @@ Cluster to Terms Mapping
 ===============================================================================
 
 
->>> from techminer2.analyze.topic_modeling import cluster_to_terms_mapping
->>> from sklearn.decomposition import LatentDirichletAllocation
->>> mapping = (
-...     ClusterToTermsMapping()
-...     .set_analysis_params(
-...         sklearn_estimator=LatentDirichletAllocation(
-...             n_components=10,
-...             learning_decay=0.7,
-...             learning_offset=50.0,
-...             max_iter=10,
-...             batch_size=128,
-...             evaluate_every=-1,
-...             perp_tol=0.1,
-...             mean_change_tol=0.001,
-...             max_doc_update_iter=100,
-...             random_state=0,
-...         ),
-...         n_top_terms=5,
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=None,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_tf_params()
-...         is_binary=True,
-...         cooc_within=2,
-...     #
-...     ).set_tfidf_params(
-...         norm=None,
-...         use_idf=False,
-...         smooth_idf=False,
-...         sublinear_tf=False,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> import pprint
->>> pprint.pprint(mapping)
+## >>> from techminer2.analyze.topic_modeling import cluster_to_terms_mapping
+## >>> from sklearn.decomposition import LatentDirichletAllocation
+## >>> mapping = (
+## ...     ClusterToTermsMapping()
+## ...     .set_analysis_params(
+## ...         sklearn_estimator=LatentDirichletAllocation(
+## ...             n_components=10,
+## ...             learning_decay=0.7,
+## ...             learning_offset=50.0,
+## ...             max_iter=10,
+## ...             batch_size=128,
+## ...             evaluate_every=-1,
+## ...             perp_tol=0.1,
+## ...             mean_change_tol=0.001,
+## ...             max_doc_update_iter=100,
+## ...             random_state=0,
+## ...         ),
+## ...         n_top_terms=5,
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=None,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_tf_params()
+## ...         is_binary=True,
+## ...         cooc_within=2,
+## ...     #
+## ...     ).set_tfidf_params(
+## ...         norm=None,
+## ...         use_idf=False,
+## ...         smooth_idf=False,
+## ...         sublinear_tf=False,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> import pprint
+## >>> pprint.pprint(mapping)
 {0: ['FINTECH 31:5168',
      'FINANCIAL_SERVICES 04:0667',
      'FINANCIAL_TECHNOLOGY 03:0461',

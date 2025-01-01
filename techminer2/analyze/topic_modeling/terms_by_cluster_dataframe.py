@@ -9,49 +9,49 @@ Terms by Cluster Frame
 ===============================================================================
 
 
->>> from techminer2.analyze.topic_modeling import terms_by_cluster_frame
->>> from sklearn.decomposition import LatentDirichletAllocation
->>> (
-...     TermsByClusterDataFrame()
-...     .set_analysis_params(
-...         sklearn_estimator=LatentDirichletAllocation(
-...             n_components=10,
-...             learning_decay=0.7,
-...             learning_offset=50.0,
-...             max_iter=10,
-...             batch_size=128,
-...             evaluate_every=-1,
-...             perp_tol=0.1,
-...             mean_change_tol=0.001,
-...             max_doc_update_iter=100,
-...             random_state=0,
-...         ),
-...     #
-...     ).set_tf_params(
-...         is_binary=True,
-...         cooc_within=3,
-...     #
-...     ).set_tfidf_params(
-...         norm=None,
-...         use_idf=False,
-...         smooth_idf=False,
-...         sublinear_tf=False,
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=None,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from techminer2.analyze.topic_modeling import terms_by_cluster_frame
+## >>> from sklearn.decomposition import LatentDirichletAllocation
+## >>> (
+## ...     TermsByClusterDataFrame()
+## ...     .set_analysis_params(
+## ...         sklearn_estimator=LatentDirichletAllocation(
+## ...             n_components=10,
+## ...             learning_decay=0.7,
+## ...             learning_offset=50.0,
+## ...             max_iter=10,
+## ...             batch_size=128,
+## ...             evaluate_every=-1,
+## ...             perp_tol=0.1,
+## ...             mean_change_tol=0.001,
+## ...             max_doc_update_iter=100,
+## ...             random_state=0,
+## ...         ),
+## ...     #
+## ...     ).set_tf_params(
+## ...         is_binary=True,
+## ...         cooc_within=3,
+## ...     #
+## ...     ).set_tfidf_params(
+## ...         norm=None,
+## ...         use_idf=False,
+## ...         smooth_idf=False,
+## ...         sublinear_tf=False,
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=None,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
 cluster                                    0  ...                            9
 term                                          ...                             
 0                            FINTECH 31:5168  ...              FINTECH 31:5168

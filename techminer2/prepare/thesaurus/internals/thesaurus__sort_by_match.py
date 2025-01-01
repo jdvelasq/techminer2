@@ -8,20 +8,20 @@
 # pylint: disable=too-many-branches
 """
 
->>> from techminer2.prepare.thesaurus._core.find_string_in_thesaurus import find_string_in_thesaurus
->>> find_string_in_thesaurus(
-...     #
-...     # THESAURUS FILE:
-...     thesaurus_file="thesauri/descriptors.the.txt",
-...     #
-...     # SEARCH PARAMS:
-...     contains='ARTIFICIAL_INTELLIGENCE',
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus._core.find_string_in_thesaurus import find_string_in_thesaurus
+## >>> find_string_in_thesaurus(
+## ...     #
+## ...     # THESAURUS FILE:
+## ...     thesaurus_file="thesauri/descriptors.the.txt",
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     contains='ARTIFICIAL_INTELLIGENCE',
+## ...     startswith=None,
+## ...     endswith=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
 
 """

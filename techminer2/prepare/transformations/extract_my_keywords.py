@@ -9,22 +9,22 @@
 Extract My Keywords
 ===============================================================================
 
->>> from techminer2.prepare.transformations import extract_my_keywords
->>> with open("example/my_keywords/keywords.txt", "w", encoding="utf-8") as file: # doctest: +SKIP 
-...    print("REGTECH", file=file)
-...    print("FINTECH", file=file)
-...    print("REGULATORY_COMPLIANCE", file=file)
-...    print("REGULATORY_TECHNOLOGY", file=file)
-...    print("ANTI_MONEY_LAUNDERING", file=file)
+## >>> from techminer2.prepare.transformations import extract_my_keywords
+## >>> with open("example/my_keywords/keywords.txt", "w", encoding="utf-8") as file: # doctest: +SKIP 
+## ...    print("REGTECH", file=file)
+## ...    print("FINTECH", file=file)
+## ...    print("REGULATORY_COMPLIANCE", file=file)
+## ...    print("REGULATORY_TECHNOLOGY", file=file)
+## ...    print("ANTI_MONEY_LAUNDERING", file=file)
 
->>> extract_my_keywords(   # doctest: +SKIP 
-...     source="author_keywords",
-...     dest="my_keywords",
-...     file_name="keywords.txt",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> extract_my_keywords(   # doctest: +SKIP 
+## ...     source="author_keywords",
+## ...     dest="my_keywords",
+## ...     file_name="keywords.txt",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 
 """

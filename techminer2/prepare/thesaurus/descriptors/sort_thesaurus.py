@@ -11,15 +11,15 @@ Sort Thesaurus
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.descriptors import sort_thesaurus
->>> sort_thesaurus(
-...     # 
-...     # SORT OPTIONS:
-...     order="alphabetical",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import sort_thesaurus
+## >>> sort_thesaurus(
+## ...     # 
+## ...     # SORT OPTIONS:
+## ...     order="alphabetical",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been sorted.
 
 """

@@ -13,17 +13,17 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.prepare.thesaurus.organizations import find_string
->>> find_string(
-...     #
-...     # SEARCH PARAMS:
-...     contains='ABES',
-...     startswith=None,
-...     endswith=None,
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.organizations import find_string
+## >>> find_string(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     contains='ABES',
+## ...     startswith=None,
+## ...     endswith=None,
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/organizations.the.txt has been reordered.
 
 """

@@ -9,12 +9,12 @@
 Apply References Thesaurus 
 ===============================================================================
 
->>> from techminer2.prepare.thesaurus.references import apply_thesaurus
->>> apply_thesaurus( # doctest: +SKIP
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.references import apply_thesaurus
+## >>> apply_thesaurus( # doctest: +SKIP
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
 
 """

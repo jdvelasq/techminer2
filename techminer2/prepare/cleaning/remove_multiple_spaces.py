@@ -9,14 +9,14 @@
 Remove Multiple Spaces
 ===============================================================================
 
->>> from techminer2.fields.further_processing import remove_multiple_spaces
->>> remove_multiple_spaces(  # doctest: +SKIP  
-...     source="abstract",
-...     dest="abstract",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields.further_processing import remove_multiple_spaces
+## >>> remove_multiple_spaces(  # doctest: +SKIP  
+## ...     source="abstract",
+## ...     dest="abstract",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 
 """

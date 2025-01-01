@@ -11,13 +11,13 @@ Text Clumping
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.descriptors import text_clumping
->>> text_clumping( # doctest: +SKIP
-...     text="FINTECH",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import text_clumping
+## >>> text_clumping( # doctest: +SKIP
+## ...     text="FINTECH",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The thesaurus example/thesauri/descriptors.the.txt was rewritten.
 
 """

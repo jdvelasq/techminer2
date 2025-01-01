@@ -9,66 +9,66 @@
 Manifold Terms by Dimensions Map
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from sklearn.manifold import TSNE
->>> from techminer2.analyze.factor_analysis.co_occurrence import manifold_terms_by_dimension_map
->>> plot = (
-...     ManifoldTermsByDimensionMap()
-...     .set_analysis_params(
-...         association_index=None,
-...         decomposition_estimator = PCA(
-...             n_components=5,
-...             whiten=False,
-...             svd_solver="auto",
-...             tol=0.0,
-...             iterated_power="auto",
-...             n_oversamples=10,
-...             power_iteration_normalizer="auto",
-...             random_state=0, 
-...         ),
-...         #
-...         # MANIFOLD PARAMS:
-...         manifold_estimator=TSNE(
-...             perplexity=10.0,
-...             early_exaggeration=12.0,
-...             learning_rate="auto",
-...             max_iter=1000,
-...             n_iter_without_progress=300,
-...             min_grad_norm=1e-07,
-...             metric="euclidean",
-...             metric_params=None,
-...             init="pca",
-...             verbose=0,
-...             random_state=0,
-...             method="barnes_hut",
-...             angle=0.5,
-...             n_jobs=None,
-...         ),
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
-...         node_color="#465c6b",
-...         node_size=10,
-...         textfont_size=8,
-...         textfont_color="#465c6b",
-...         xaxes_range=None,
-...         yaxes_range=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html")
+## >>> from sklearn.decomposition import PCA
+## >>> from sklearn.manifold import TSNE
+## >>> from techminer2.analyze.factor_analysis.co_occurrence import manifold_terms_by_dimension_map
+## >>> plot = (
+## ...     ManifoldTermsByDimensionMap()
+## ...     .set_analysis_params(
+## ...         association_index=None,
+## ...         decomposition_estimator = PCA(
+## ...             n_components=5,
+## ...             whiten=False,
+## ...             svd_solver="auto",
+## ...             tol=0.0,
+## ...             iterated_power="auto",
+## ...             n_oversamples=10,
+## ...             power_iteration_normalizer="auto",
+## ...             random_state=0, 
+## ...         ),
+## ...         #
+## ...         # MANIFOLD PARAMS:
+## ...         manifold_estimator=TSNE(
+## ...             perplexity=10.0,
+## ...             early_exaggeration=12.0,
+## ...             learning_rate="auto",
+## ...             max_iter=1000,
+## ...             n_iter_without_progress=300,
+## ...             min_grad_norm=1e-07,
+## ...             metric="euclidean",
+## ...             metric_params=None,
+## ...             init="pca",
+## ...             verbose=0,
+## ...             random_state=0,
+## ...             method="barnes_hut",
+## ...             angle=0.5,
+## ...             n_jobs=None,
+## ...         ),
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
+## ...         node_color="#465c6b",
+## ...         node_size=10,
+## ...         textfont_size=8,
+## ...         textfont_color="#465c6b",
+## ...         xaxes_range=None,
+## ...         yaxes_range=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/manifold_terms_by_dimension_map.html")
 
 .. raw:: html
 

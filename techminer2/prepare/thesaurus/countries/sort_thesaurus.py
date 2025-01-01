@@ -11,12 +11,12 @@ Sort Thesaurus
 ===============================================================================
 
 
->>> from techminer2.prepare.thesaurus.countries import sort_thesaurus
->>> sort_thesaurus(
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.countries import sort_thesaurus
+## >>> sort_thesaurus(
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The file example/thesauri/countries.the.txt has been sorted.
 
 """

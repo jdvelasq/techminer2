@@ -8,24 +8,24 @@
 Documents (MIGRATED)
 =========================================================================================
 
->>> from techminer2.search.concordances import Documents
->>> docs = (
-...     Documents()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-...                                # global_cited_by_lowest, local_cited_by_highest, 
-...                                # local_cited_by_lowest, first_author_a_to_z, 
-...                                # first_author_z_to_a, source_title_a_to_z, 
-...                                # source_title_z_to_a
-...     ).build(search_for='FINTECH')
-... )
->>> print(len(docs))
-38
->>> print(docs[0])
+## >>> from techminer2.search.concordances import Documents
+## >>> docs = (
+## ...     Documents()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
+## ...                                # global_cited_by_lowest, local_cited_by_highest, 
+## ...                                # local_cited_by_lowest, first_author_a_to_z, 
+## ...                                # first_author_z_to_a, source_title_a_to_z, 
+## ...                                # source_title_z_to_a
+## ...     ).build(search_for='FINTECH')
+## ... )
+## >>> print(len(docs))
+## 38
+## >>> print(docs[0])
 Record-No: 6
 AR Haddad C., 2019, SMALL BUS ECON, V53, P81
 TI The emergence of the global fintech market: economic and technological

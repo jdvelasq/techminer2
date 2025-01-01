@@ -9,14 +9,14 @@
 Fill NA
 ===============================================================================
 
->>> from techminer2.fields import fillna_field
->>> fillna_field(  # doctest: +SKIP 
-...     fill_field="author_keywords",
-...     with_field="index_keywords",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import fillna_field
+## >>> fillna_field(  # doctest: +SKIP 
+## ...     fill_field="author_keywords",
+## ...     with_field="index_keywords",
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 from ...internals.fields.fields__fillna import fields__fillna

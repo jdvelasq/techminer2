@@ -12,12 +12,12 @@ Reset Thesaurus
 
 
 
->>> from techminer2.prepare.thesaurus.descriptors import reset_thesaurus
->>> reset_thesaurus(  # doctest: +SKIP
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import reset_thesaurus
+## >>> reset_thesaurus(  # doctest: +SKIP
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 .  1/10 . Reemplacing abbreviations.
 .  2/10 . Inverting terms in parenthesis.
 .  3/10 . Removing text in brackets.

@@ -9,38 +9,38 @@
 Cosine Similarities
 ===============================================================================
 
->>> from sklearn.decomposition import PCA
->>> from techminer2.analyze.factor_analysis.co_occurrence import cosine_similarities
->>> (
-...     CosineSimilarities()
-...     .set_analysis_params(
-...         association_index=None,
-...         decomposition_estimator = PCA(
-...             n_components=5,
-...             whiten=False,
-...             svd_solver="auto",
-...             tol=0.0,
-...             iterated_power="auto",
-...             n_oversamples=10,
-...             power_iteration_normalizer="auto",
-...             random_state=0, 
-...         ),
-...     #
-...     ).set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... ).head()
+## >>> from sklearn.decomposition import PCA
+## >>> from techminer2.analyze.factor_analysis.co_occurrence import cosine_similarities
+## >>> (
+## ...     CosineSimilarities()
+## ...     .set_analysis_params(
+## ...         association_index=None,
+## ...         decomposition_estimator = PCA(
+## ...             n_components=5,
+## ...             whiten=False,
+## ...             svd_solver="auto",
+## ...             tol=0.0,
+## ...             iterated_power="auto",
+## ...             n_oversamples=10,
+## ...             power_iteration_normalizer="auto",
+## ...             random_state=0, 
+## ...         ),
+## ...     #
+## ...     ).set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... ).head()
                                                             cosine_similariries
 rows                                                                           
 FINTECH 31:5168                                      INNOVATION 07:0911 (0.322)

@@ -10,16 +10,16 @@
 Query
 ===============================================================================
 
->>> from techminer2.prepare.database import Query
->>> (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build(expr="SELECT source_title FROM database LIMIT 5;")
-... )
+## >>> from techminer2.prepare.database import Query
+## >>> (
+## ...     Query()
+## ...     .set_database_params(
+## ...         root_dir="example/",
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     ).build(expr="SELECT source_title FROM database LIMIT 5;")
+## ... )
                                         source_title
 0  International Journal of Applied Engineering R...
 1                          Telecommunications Policy

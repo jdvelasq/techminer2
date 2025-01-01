@@ -9,28 +9,28 @@
 Extract Country
 ===============================================================================
 
->>> from techminer2.prepare.transformations import extract_country
->>> extract_country( # doctest: +SKIP 
-...     source="affiliations",
-...     dest="countries_from_affiliations",
-...     root_dir="example/",
-... )
+## >>> from techminer2.prepare.transformations import extract_country
+## >>> extract_country( # doctest: +SKIP 
+## ...     source="affiliations",
+## ...     dest="countries_from_affiliations",
+## ...     root_dir="example/",
+## ... )
 
->>> # TEST:  
->>> from techminer2.prepare.transformations import extract_country
->>> performance_metrics( # doctest: +SKIP 
-...     field='countries_from_affiliations',
-...     metric='OCC',
-...     top_n=10,
-...     root_dir="example/", 
-... )
+## >>> # TEST:  
+## >>> from techminer2.prepare.transformations import extract_country
+## >>> performance_metrics( # doctest: +SKIP 
+## ...     field='countries_from_affiliations',
+## ...     metric='OCC',
+## ...     top_n=10,
+## ...     root_dir="example/", 
+## ... )
 
 
->>> from techminer2.prepare.operations import delete_database_field
->>> delete_database_field( # doctest: +SKIP 
-...     field="countries_from_affiliations",
-...     root_dir="example",
-... )
+## >>> from techminer2.prepare.operations import delete_database_field
+## >>> delete_database_field( # doctest: +SKIP 
+## ...     field="countries_from_affiliations",
+## ...     root_dir="example",
+## ... )
 
 
 """

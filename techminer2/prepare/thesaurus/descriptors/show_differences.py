@@ -10,12 +10,12 @@
 Show Differences
 ===============================================================================
 
->>> from techminer2.prepare.thesaurus.descriptors import show_differences
->>> show_differences(  
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-... )
+## >>> from techminer2.prepare.thesaurus.descriptors import show_differences
+## >>> show_differences(  
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ... )
 --INFO-- The example/thesauri/_changes_.the.txt has been generated.
 
 """

@@ -8,28 +8,28 @@
 Terms by Year Plot
 ===============================================================================
 
->>> from techminer2.analyze.metrics import terms_by_year_plot
->>> plot = terms_by_year_plot(
-
-...     #
-...     # FILTER PARAMS:
-...     metric='OCC',
-...     .set_item_params(
-...         field="author_keywords",
-...         top_n=20,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/metrics/terms_by_plot.html")
+## >>> from techminer2.analyze.metrics import terms_by_year_plot
+## >>> plot = terms_by_year_plot(
+## 
+## ...     #
+## ...     # FILTER PARAMS:
+## ...     metric='OCC',
+## ...     .set_item_params(
+## ...         field="author_keywords",
+## ...         top_n=20,
+## ...         occ_range=(None, None),
+## ...         gc_range=(None, None),
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_database_params(
+## ...         root_dir="example/", 
+## ...         database="main",
+## ...         year_filter=(None, None),
+## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     ).build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/metrics/terms_by_plot.html")
 
 .. raw:: html
 

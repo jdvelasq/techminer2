@@ -7,16 +7,16 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.metrics._compute_trend_metrics import compute_trend_metrics
->>> metrics = compute_trend_metrics(
-...     #
-...     # DATABASE PARAMS
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),    
-... )    
->>> print(metrics.to_markdown())
+## >>> from techminer2.metrics._compute_trend_metrics import compute_trend_metrics
+## >>> metrics = compute_trend_metrics(
+## ...     #
+## ...     # DATABASE PARAMS
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),    
+## ... )    
+## >>> print(metrics.to_markdown())
 |   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
 |-------:|------:|----------:|------------------:|-------------------:|----------------:|------------------------:|-----------------------:|---------------------------------:|-----------------------:|----------------------:|--------------------------------:|
 |   2015 |     1 |         1 |                 4 |                 76 |               5 |                  76     |                     76 |                            15.2  |              4         |                     4 |                            0.8  |

@@ -9,15 +9,15 @@
 Process a Field
 ===============================================================================
 
->>> from techminer2.fields import process_field
->>> process_field(  # doctest: +SKIP
-...     source="author_keywords",
-...     dest="author_keywords_copy",
-...     func=lambda x: x.str.lower(),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
-... )
+## >>> from techminer2.fields import process_field
+## >>> process_field(  # doctest: +SKIP
+## ...     source="author_keywords",
+## ...     dest="author_keywords_copy",
+## ...     func=lambda x: x.str.lower(),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example",
+## ... )
 
 """
 from ...internals.fields.fields__process import fields__process
