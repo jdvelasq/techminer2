@@ -9,20 +9,20 @@ Find Similar Records
 ===============================================================================
 
 
-## >>> from techminer2.search import find_similar_records
-## >>> documents = find_similar_records(
-## ...     #
-## ...     # SEARCH PARAMS:
-## ...     record_no=1,
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ...     database="main",
-## ...     year_filter=(None, None),
-## ...     cited_by_filter=(None, None),
-## ... )
-## >>> for i in range(2):
-## ...    print(documents[i])
+# >>> from techminer2.search import find_similar_records
+# >>> documents = find_similar_records(
+# ...     #
+# ...     # SEARCH PARAMS:
+# ...     record_no=1,
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ...     database="main",
+# ...     year_filter=(None, None),
+# ...     cited_by_filter=(None, None),
+# ... )
+# >>> for i in range(2):
+# ...    print(documents[i])
 SIMILARITY: 1.0
 Record-No: 1
 AR Goldstein I., 2019, REV FINANC STUD, V32, P1647
@@ -85,8 +85,8 @@ from nltk.stem import WordNetLemmatizer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
-from ..documents.select_documents import select_documents
+from ..analyze.documents.select_documents import select_documents
+from ..internals.read_filtered_database import read_filtered_database
 
 TEXTWRAP_WIDTH = 73
 
@@ -143,13 +143,13 @@ def find_similar_records(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         sort_by=None,
-        **{"article": records.article.tolist()},
+        **{"record_id": records.record_id.tolist()},
         **filters,
     )
 
     sorted_documents = []
     for _, record in records.iterrows():
-        doc = [doc for doc in documents if record.article in doc]
+        doc = [doc for doc in documents if record.record_id in doc]
         assert len(doc) == 1
         doc = "SIMILARITY: " + str(round(record.similarity, 3)) + "\n" + doc[0]
         sorted_documents.append(doc)
@@ -177,23 +177,38 @@ def _paragraph_to_meaningful_words(records):
         return lemmatizer.lemmatize(tag[0]), tag[1]
 
     records = records.copy()
-    records = records[["art_no", "article", "document_title", "abstract", "paragraph"]].dropna()
+    records = records[
+        ["art_no", "record_id", "document_title", "abstract", "paragraph"]
+    ].dropna()
 
     #
     # Split the  abstract in sentences
-    records["paragraph"] = records["paragraph"].apply(lambda paragraph: TextBlob(paragraph).sentences)
+    records["paragraph"] = records["paragraph"].apply(
+        lambda paragraph: TextBlob(paragraph).sentences
+    )
 
     #
     # Extracts the meaningful words from each sentence
-    records["paragraph"] = records["paragraph"].apply(lambda sentences: [sentence.tags for sentence in sentences])
-
     records["paragraph"] = records["paragraph"].apply(
-        lambda sentences: [tag for sentence in sentences for tag in sentence if tag[1][:2] in ["NN", "VB", "RB", "JJ"]]
+        lambda sentences: [sentence.tags for sentence in sentences]
     )
 
-    records["paragraph"] = records["paragraph"].apply(lambda tags: [to_lemma(tag) for tag in tags])
+    records["paragraph"] = records["paragraph"].apply(
+        lambda sentences: [
+            tag
+            for sentence in sentences
+            for tag in sentence
+            if tag[1][:2] in ["NN", "VB", "RB", "JJ"]
+        ]
+    )
 
-    records["paragraph"] = records["paragraph"].apply(lambda tags: [tag[0] for tag in tags])
+    records["paragraph"] = records["paragraph"].apply(
+        lambda tags: [to_lemma(tag) for tag in tags]
+    )
+
+    records["paragraph"] = records["paragraph"].apply(
+        lambda tags: [tag[0] for tag in tags]
+    )
 
     records["paragraph"] = records["paragraph"].apply(set)
     records["paragraph"] = records["paragraph"].apply(sorted)

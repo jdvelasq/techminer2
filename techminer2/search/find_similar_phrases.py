@@ -8,24 +8,24 @@
 Find Similar Phrases
 ===============================================================================
 
-## >>> from techminer2.search import find_similar_phrases
-## >>> documents = find_similar_phrases(
-## ...     text=(
-## ...         "whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, "
-## ...         "PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, "
-## ...         "and MARKET_COMPETITION and DEVELOPMENT) remain, their means of application "
-## ...         "are increasingly inadequate."
-## ...     ),
-## ...     top_n=3,
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ...     database="main",
-## ...     year_filter=(None, None),
-## ...     cited_by_filter=(None, None),
-## ... )
-## >>> for i in range(3):
-## ...     print(documents[i])
+>>> from techminer2.search import find_similar_phrases
+>>> documents = find_similar_phrases(
+...     text=(
+...         "whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, "
+...         "PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, "
+...         "and MARKET_COMPETITION and DEVELOPMENT) remain, their means of application "
+...         "are increasingly inadequate."
+...     ),
+...     top_n=3,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+>>> for i in range(3):
+...     print(documents[i])
 100.0%
 AR Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
 TI FinTech, regTech, and the reconceptualization of financial regulation
@@ -58,8 +58,10 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
-from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..internals.read_filtered_database import read_filtered_database
+from ..prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
 from .extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 79
@@ -103,7 +105,9 @@ def find_similar_phrases(
     # Prepare text
     words = extract_descriptors_from_text(text, root_dir)
 
-    df_text = pd.DataFrame(data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns)
+    df_text = pd.DataFrame(
+        data=[[0] * len(tf_matrix.columns)], columns=tf_matrix.columns
+    )
     for word in words:
         df_text[word] = 1
 
@@ -117,7 +121,7 @@ def find_similar_phrases(
     documents = []
     for _, row in records.iterrows():
         text = str(round(100 * row.similarity, 1)) + "%\n"
-        text += "AR " + row.article + "\n"
+        text += "AR " + row.record_id + "\n"
         text += "TI " + row.raw_document_title + "\n"
         text += "AB " + textwrap.fill(
             str(row.phrase),
@@ -136,7 +140,7 @@ def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_inverted_thesaurus_as_dict(th_file)
+    thesaurus = thesaurus__read_reversed_as_dict(th_file)
     return thesaurus
 
 
@@ -162,8 +166,10 @@ def _extract_keywords(records, root_dir):
     regex = re.compile(r"\b(" + descriptors + r")\b")
     # -----------------------------------------------------------------------------------------
 
-    abstracts = records[["article", "raw_document_title", "abstract"]].dropna()
-    abstracts["abstract"] = abstracts["abstract"].apply(lambda paragraph: TextBlob(paragraph).sentences)
+    abstracts = records[["record_id", "raw_document_title", "abstract"]].dropna()
+    abstracts["abstract"] = abstracts["abstract"].apply(
+        lambda paragraph: TextBlob(paragraph).sentences
+    )
     abstracts = abstracts.explode("abstract")
     abstracts["phrase"] = abstracts["abstract"]
     abstracts["phrase"] = abstracts["phrase"].map(str)
@@ -172,14 +178,24 @@ def _extract_keywords(records, root_dir):
     # -----------------------------------------------------------------------------------------
     #
     abstracts["abstract"] = abstracts["abstract"].str.lower().str.replace("_", " ")
-    abstracts["abstract"] = abstracts["abstract"].apply(lambda sentence: re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), sentence))
-    abstracts["abstract"] = abstracts["abstract"].apply(lambda text: sorted(set(str(t) for t in TextBlob(text).words)))
     abstracts["abstract"] = abstracts["abstract"].apply(
-        lambda descriptors: [t for t in descriptors if t == t.upper() and t[0] not in "0123456789"]
+        lambda sentence: re.sub(
+            regex, lambda z: z.group().upper().replace(" ", "_"), sentence
+        )
+    )
+    abstracts["abstract"] = abstracts["abstract"].apply(
+        lambda text: sorted(set(str(t) for t in TextBlob(text).words))
+    )
+    abstracts["abstract"] = abstracts["abstract"].apply(
+        lambda descriptors: [
+            t for t in descriptors if t == t.upper() and t[0] not in "0123456789"
+        ]
     )
     #
     # -----------------------------------------------------------------------------------------
-    abstracts["abstract"] = abstracts["abstract"].apply(lambda x: pd.NA if x == [] else x)
+    abstracts["abstract"] = abstracts["abstract"].apply(
+        lambda x: pd.NA if x == [] else x
+    )
     abstracts = abstracts.dropna()
     abstracts = abstracts.rename(columns={"abstract": "keyword"})
     return abstracts

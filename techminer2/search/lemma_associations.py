@@ -10,25 +10,25 @@ Lemma Associations
 =========================================================================================
 
 
-## >>> from techminer2.search import lemma_associations
-## >>> lemmas = lemma_associations(
-## ...     #
-## ...     # FUNCTION PARAMS:
-## ...     lemma_a='INNOVATION',
-## ...     lemma_b='FINTECH',
-## ...     top_n=10,
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ...     database="main",
-## ...     year_filter=(None, None),
-## ...     cited_by_filter=(None, None),
-## ... )
-## >>> print(lemmas.contexts_) # doctest: +ELLIPSIS 
+>>> from techminer2.search import lemma_associations
+>>> lemmas = lemma_associations(
+...     #
+...     # FUNCTION PARAMS:
+...     lemma_a='INNOVATION',
+...     lemma_b='FINTECH',
+...     top_n=10,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+>>> print(lemmas.contexts_) # doctest: +ELLIPSIS 
 ---...
 
 
-## >>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
+>>> print(lemmas.prompt_)  # doctest: +ELLIPSIS
 Your task is ...
 
 
@@ -40,9 +40,13 @@ from dataclasses import dataclass
 
 from textblob import TextBlob  # type: ignore
 
-from .._core.read_filtered_database import read_filtered_database
-from ..helpers.helper_format_prompt_for_paragraphs import helper_format_prompt_for_paragraphs
-from ..thesaurus._core.load_thesaurus_as_dict import load_thesaurus_as_dict
+from ..internals.read_filtered_database import read_filtered_database
+from ..internals.utils.utils_format_prompt_for_paragraphs import (
+    _utils_format_prompt_for_paragraphs,
+)
+from ..prepare.thesaurus.internals.thesaurus__read_as_dict import (
+    thesaurus__read_as_dict,
+)
 
 
 def lemma_associations(
@@ -96,7 +100,7 @@ def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    thesaurus = load_thesaurus_as_dict(thesaurus_file)
+    thesaurus = thesaurus__read_as_dict(thesaurus_file)
     return list(thesaurus.values())
 
 
@@ -130,7 +134,7 @@ def __get_abstract_sentences(
         ascending=[False, False, True, True],
     )
 
-    records = records[["article", "abstract"]].copy()
+    records = records[["record_id", "abstract"]].copy()
     records = records.dropna()
     records["abstract"] = records["abstract"].map(
         lambda x: [str(sentence) for sentence in TextBlob(x).sentences],
@@ -161,7 +165,7 @@ def __select_sentences(
 
     sentences = sentences.drop(columns=["selected"])
 
-    sentences = sentences.groupby("article").agg({"abstract": list})
+    sentences = sentences.groupby("record_id").agg({"abstract": list})
     sentences["abstract"] = sentences["abstract"].str.join(". ")
     sentences = sentences.rename(columns={"abstract": "sentence"})
 
@@ -179,12 +183,14 @@ def __generate_prompt(sentences, lemma_a, lemma_b):
 
     paragraphs = sentences.sentence.copy()
 
-    return helper_format_prompt_for_paragraphs(main_text, main_text, paragraphs)
+    return _utils_format_prompt_for_paragraphs(main_text, main_text, paragraphs)
 
 
 def __generate_contexts(sentences):
     sentences = sentences.copy()
-    sentences["sentence"] = sentences["sentence"].map(lambda w: textwrap.wrap(w, width=80)).str.join("\n")
+    sentences["sentence"] = (
+        sentences["sentence"].map(lambda w: textwrap.wrap(w, width=80)).str.join("\n")
+    )
 
     text = ""
     for index, row in sentences.iterrows():

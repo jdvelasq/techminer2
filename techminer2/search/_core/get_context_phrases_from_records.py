@@ -15,12 +15,18 @@ def _get_context_phrases_from_records(
     #
     # Returns the abstract phrases containing the searched text
     #
-    records = records.set_index(pd.Index(records.article + " / " + records.raw_document_title))
+    records = records.set_index(
+        pd.Index(records.record_id + " / " + records.raw_document_title)
+    )
     sorted_records = records.sort_values(
         ["global_citations", "local_citations", "year"],
         ascending=[False, False, True],
     )
-    sorted_records["_found_"] = sorted_records["abstract"].astype(str).str.contains(r"\b" + search_for + r"\b", regex=True)
+    sorted_records["_found_"] = (
+        sorted_records["abstract"]
+        .astype(str)
+        .str.contains(r"\b" + search_for + r"\b", regex=True)
+    )
     sorted_records = sorted_records[sorted_records["_found_"]]
     abstracts = sorted_records["abstract"]
     phrases = abstracts.str.replace(";", ".").str.split(".").explode().str.strip()

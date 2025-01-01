@@ -8,6 +8,8 @@ import os
 import sys
 from typing import Dict
 
+from sphinx.util.fileutil import copy_asset
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -168,7 +170,7 @@ html_title = """TechMiner 2+<br>
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+html_static_path = ["_static", "_generated"]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -184,7 +186,14 @@ html_static_path = ["_static"]
 # html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-# html_sidebars = {}
+html_sidebars = {
+    "**": [
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/navigation.html",
+        "sidebarlogo.html",
+    ]
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -383,3 +392,15 @@ epub_exclude_files = ["search.html"]
 
 # If false, no index is generated.
 # epub_use_index = True
+
+
+def setup(app):
+    app.connect("build-finished", copy_generated_html_files)
+
+
+def copy_generated_html_files(app, exception):
+    """Copy pre-generated HTML files to the _build/html directory."""
+    # if exception is None:  # Build succeeded
+    src_dir = os.path.abspath("./_generated")
+    dest_dir = os.path.join(app.outdir, "_generated")
+    copy_asset(src_dir, dest_dir)

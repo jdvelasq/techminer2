@@ -9,25 +9,25 @@ Highlight phrase
 ===============================================================================
 
 
-## >>> from techminer2.search import highlight_phrase
-## >>> highlight_phrase(
-## ...    text = (
-## ...        "They highlight the limited adoption of Regulatory Technology (RegTech) and "
-## ...        "Electronic Signatures in Palestine's banking sector, proposing the establishment "
-## ...        "of an independent Electronic Transactions Unit as a solution. They emphasize the "
-## ...        "need for RegTech in achieving regulatory compliance, risk management, and reporting "
-## ...        "in the face of changing regulations and digital dynamics. Additionally, the papers "
-## ...        "delve into ethical concerns surrounding the application of Artificial Intelligence (AI) "
-## ...        "in finance and suggest that RegTech, combined with Islamic finance principles, can "
-## ...        "mitigate these ethical issues. Overall, the papers underscore the transformative "
-## ...        "potential of RegTech while discussing its benefits, challenges, and implications "
-## ...        "for diverse sectors, ultimately aiming to improve compliance, efficiency, and ethical "
-## ...        "practices in the financial industry."
-## ...     ),
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
+>>> from techminer2.search import highlight_phrase
+>>> highlight_phrase(
+...    text = (
+...        "They highlight the limited adoption of Regulatory Technology (RegTech) and "
+...        "Electronic Signatures in Palestine's banking sector, proposing the establishment "
+...        "of an independent Electronic Transactions Unit as a solution. They emphasize the "
+...        "need for RegTech in achieving regulatory compliance, risk management, and reporting "
+...        "in the face of changing regulations and digital dynamics. Additionally, the papers "
+...        "delve into ethical concerns surrounding the application of Artificial Intelligence (AI) "
+...        "in finance and suggest that RegTech, combined with Islamic finance principles, can "
+...        "mitigate these ethical issues. Overall, the papers underscore the transformative "
+...        "potential of RegTech while discussing its benefits, challenges, and implications "
+...        "for diverse sectors, ultimately aiming to improve compliance, efficiency, and ethical "
+...        "practices in the financial industry."
+...     ),
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="example/", 
+... )
 they highlight the limited ADOPTION of REGULATORY_TECHNOLOGY (regtech)
 and electronic signatures in palestine's banking SECTOR, proposing the
 establishment of an independent electronic transactions unit as a
@@ -48,7 +48,9 @@ import os.path
 import re
 import textwrap
 
-from ..thesaurus._core.load_inverted_thesaurus_as_dict import load_inverted_thesaurus_as_dict
+from ..prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
+    thesaurus__read_reversed_as_dict,
+)
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
@@ -85,5 +87,5 @@ def _load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = load_inverted_thesaurus_as_dict(th_file)
+    thesaurus = thesaurus__read_reversed_as_dict(th_file)
     return thesaurus

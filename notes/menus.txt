@@ -185,3 +185,192 @@ TLAB
    +- Concordances and Word Trees                                                           
       +- Concordances                                                                     
                              
+
+TECHMINER2
+|
++- INGEST
+|  +- ingest
+|     +- ingest raw data
+|
++- REFINE
+|  +- Fields
+|  |  +- Copy a Field
+|  |  +- Delete a Field
+|  |  +- Fill NA
+|  |  +- Further processing
+|  |  |  +- Remove multiple spaces
+|  |  |  +- Count terms per Records
+|  |  |  +- Extract country
+|  |  |  +- Extract my keywords
+|  |  |  +- Fields Difference
+|  |  |  +- Fields intersection
+|  |  |  +- Stemming fields with AND
+|  |  |  +- Stemming fields with OR
+|  |  +- Merge fields
+|  |  +- Process a field
+|  |  +- Rename a field
+|  |
+|  +- Search
+|  |  +- Concordance Contexts
+|  |  +- Concordance Documents
+|  |  +- Lemma ssociations
+|  |  +- Find Records
+|  |  +- Find similar Records
+|  |  +- Find similar phrases
+|  |  +- Highlight phrase
+|  |
+|  +- Thesaurus   
+|     +- Abbbreviations
+|     |  +- apply Thesaurus
+|     |  +- find abbreviations
+|     +- Countries
+|     |  +- apply Thesaurus
+|     |  +- find string
+|     |  +- sort thesaurus
+|     +- descriptors
+|     |  +- apply Thesaurus
+|     |  +- find string
+|     |  +- sort thesaurus
+|     +- organizations
+|        +- apply Thesaurus
+|        +- find string
+|        +- sort thesaurus
+|   
++- ANALYZE
+|  +- Citation network
+|  |  +- Network plot
+|  |  +- Node degree plot
+|  |  +- Node degree frame
+|  |  +- Node density plot
+|  |  +- terms by cluster frame
+|  |
+|  +- Co-citation network
+|  |  +- network metrics
+|  |  +- network plot
+|  |  +- network degree plot
+|  |  +- node density plot
+|  |  +- terms by cluster frame
+|  |
+|  +- co-occurrence Matrix
+|  |  +- co-occurrence Heatmap
+|  |  +- co-occurrence map
+|  |  +- co-occurrence matrix network
+|  |  +- co-occurrence matrix
+|  |  +- co-occurrence table
+|  |  +- sankey chart
+|  |
+|  +- co-occurrence network
+|  |  +- clusters to terms mapping
+|  |  +- concept grid plot
+|  |  +- metrics
+|  |  +- network plot
+|  |  +- node degree plot
+|  |  +- node density plot
+|  |  +- terms by cluster frame
+|  |  +- terms by cluster summary
+|  |  +- terms by cluster mapping
+|  |  +- treemap
+|  |
+|  +- correlation matrix
+|  |  +- auto-correlation map
+|  |  +- auto-correlation matrix
+|  |  +- cross-correlation map
+|  |  +- cross-correlation matrix
+|  |
+|  +- coupling network
+|  |  +- network metrics
+|  |  +- network plot
+|  |  +- network degree plot
+|  |  +- node density plot
+|  |  +- terms by cluster frame
+|  |
+|  +- document clustering
+|  |  +- clusters to terms map
+|  |  +- terms occurrence by cluster
+|  |  +- terms by cluster frame
+|  |  +- terms by cluster summary
+|  |
+|  +- documents
+|  |  +- select documents
+|  |  +- most global cited documents
+|  |  +- most global cited References
+|  |  +- most local cited documents
+|  |  +- most local cited References
+|  |
+|  +- Emergence
+|  |  +- emergent topics
+|  |
+|  +- Factorial analysis
+|  |  +- co-occurrence matrix   
+|  |  |  +- cluster centers frame
+|  |  |  +- cluster to terms mapping
+|  |  |  +- cosine similitudes
+|  |  |  +- factor map
+|  |  |  +- mnifold terms by dimmensions map
+|  |  |  +- terms by cluster frame
+|  |  |  +- terms by dimension frame
+|  |  |  +- terms by dimension map
+|  |  |  +- terms to cluster mapping
+|  |  |  +- treemap
+|  |  +- tf-idf matrix
+|  |     +- cluster centers frame
+|  |     +- cluster to terms mapping
+|  |     +- cosine similitudes
+|  |     +- factor map
+|  |     +- mnifold terms by dimmensions map
+|  |     +- terms by cluster frame
+|  |     +- terms by dimension frame
+|  |     +- terms by dimension map
+|  |     +- terms to cluster mapping
+|  |     +- treemap
+|  |
+|  +- main path analysis
+|  |  +- main path documents
+|  |  +- network edges frame
+|  |  +- network plot
+|  |
+|  +- metrics
+|  |  +- general metrics
+|  |  +- terms by year frame
+|  |  +- terms by year plot
+|  |
+|  +- rpys
+|  |  +- rpys frame
+|  |  +- rpys plot
+|  |
+|  +- topic modeling
+|  |  +- cluster to terms mapping
+|  |  +- components by term frame
+|  |  +- documents by theme frame
+|  |  +- terms by cluster frame
+|  |  +- theme to documents mapping
+|  |
+|  +- tools
+|     +- associations
+|     |  +- co-occurrence chart
+|     |  +- cosine similarities graph
+|     |  +- radial Diagram
+|     |  +- word network
+|     +- coverage
+|     +- query
+|     +- statistics
+|     +- summary sheet
+|
++- REPORT
+   +- report
+      +- column chart
+      +- bar chart
+      +- pie chart
+      +- line chart
+      +- word Cloud
+      +- heat map
+      +- butterfly chart
+      +- world map
+      +- cleveland dot chart
+      +- ranking chart
+
+
+
+
+
+

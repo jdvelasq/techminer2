@@ -1,7 +1,0 @@
-digraph "graph" {
-	node [shape=record]
-	0 [label="{0 (40.0 %)|FINTECH\rFINANCIAL_INCLUSION\rCROWDFUNDING\rBUSINESS_MODELS\rCYBER_SECURITY\rCASE_STUDY\rBLOCKCHAIN\rREGTECH\r}" fontsize=9]
-	1 [label="{1 (25.0 %)|INNOVATION\rFINANCIAL_SERVICES\rFINANCIAL_TECHNOLOGY\rTECHNOLOGY\rBANKING\r.\r.\r.\r}" fontsize=9]
-	2 [label="{2 (20.0 %)|MARKETPLACE_LENDING\rLENDINGCLUB\rPEER_TO_PEER_LENDING\rSHADOW_BANKING\r.\r.\r.\r.\r}" fontsize=9]
-	3 [label="{3 (15.0 %)|ARTIFICIAL_INTELLIGENCE\rFINANCE\rROBOTS\r.\r.\r.\r.\r.\r}" fontsize=9]
-}

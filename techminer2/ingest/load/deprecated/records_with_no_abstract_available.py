@@ -11,34 +11,34 @@ Records with No Abstract Available
 
 
 
-## >>> from techminer2.ingest import records_with_no_abstract_available
-## >>> records_with_no_abstract_available(
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
-Fintech
-Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
-nan
-<BLANKLINE>
-FinTech and the TRANSFORMATION of the FINANCIAL_INDUSTRY
-Alt R., 2018, ELECTRON MARK, V28, P235
-nan
-<BLANKLINE>
+# >>> from techminer2.ingest import records_with_no_abstract_available
+# >>> records_with_no_abstract_available(
+# ...     #
+# ...     # DATABASE PARAMS:
+# ...     root_dir="example/", 
+# ... )
+# Fintech
+# Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
+# nan
+# <BLANKLINE>
+# FinTech and the TRANSFORMATION of the FINANCIAL_INDUSTRY
+# Alt R., 2018, ELECTRON MARK, V28, P235
+# nan
+# <BLANKLINE>
 
 
 
 """
-# from ...._core.read_filtered_database import read_filtered_database
-
-
+# from ....internals.read_filtered_database import read_filtered_database
+#
+#
 # def records_with_no_abstract_available(
 #     #
 #     # DATABASE PARAMS:
 #     root_dir="./",
 # ):
 #     """:meta private:"""
-
+#
 #     records = read_filtered_database(
 #         root_dir=root_dir,
 #         database="main",
@@ -46,11 +46,14 @@ nan
 #         cited_by_filter=(None, None),
 #         sort_by=None,
 #     )
-
-#     records = records[records.abstract.isna() | (records.abstract == "[no abstract available]")]
-
+#
+#     records = records[
+#         records.abstract.isna() | (records.abstract == "[no abstract available]")
+#     ]
+#
 #     for _, record in records.iterrows():
 #         print(record.document_title)
 #         print(record.article)
 #         print(record.abstract)
 #         print()
+#
