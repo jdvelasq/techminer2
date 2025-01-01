@@ -8,25 +8,25 @@
 Find Similar Records
 ===============================================================================
 
->>> from techminer2.search import tfidf_find_similar_phrases
->>> documents = tfidf_find_similar_phrases(
-...     #
-...     # SEARCH PARAMS:
-...     text=(
-...         "whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, "
-...         "PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, "
-...         "and MARKET_COMPETITION and DEVELOPMENT) remain, their means of application "
-...         "are increasingly inadequate."
-...     ),
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example/", 
-...     database="main",
-...     year_filter=(None, None),
-...     cited_by_filter=(None, None),
-... )
->>> for i in range(3):
-...     print(documents[i])
+## >>> from techminer2.search import tfidf_find_similar_phrases
+## >>> documents = tfidf_find_similar_phrases(
+## ...     #
+## ...     # SEARCH PARAMS:
+## ...     text=(
+## ...         "whilst the PRINCIPAL_REGULATORY_OBJECTIVES (e.g., FINANCIAL_STABILITY, "
+## ...         "PRUDENTIAL_SAFETY and soundness, CONSUMER_PROTECTION and MARKET_INTEGRITY, "
+## ...         "and MARKET_COMPETITION and DEVELOPMENT) remain, their means of application "
+## ...         "are increasingly inadequate."
+## ...     ),
+## ...     #
+## ...     # DATABASE PARAMS:
+## ...     root_dir="example/", 
+## ...     database="main",
+## ...     year_filter=(None, None),
+## ...     cited_by_filter=(None, None),
+## ... )
+## >>> for i in range(3):
+## ...     print(documents[i])
 100.0%
 AR Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
 TI FinTech, regTech, and the reconceptualization of financial regulation
