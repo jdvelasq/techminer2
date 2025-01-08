@@ -55,7 +55,7 @@ def apply_thesaurus(
         ("raw_author_keywords", "author_keywords"),
         ("raw_index_keywords", "index_keywords"),
         ("raw_keywords", "keywords"),
-        ("raw_title_nlp_phrases", "title_nlp_phrases"),
+        ("raw_document_title_nlp_phrases", "document_title_nlp_phrases"),
         ("raw_abstract_nlp_phrases", "abstract_nlp_phrases"),
         ("raw_nlp_phrases", "nlp_phrases"),
         ("raw_descriptors", "descriptors"),

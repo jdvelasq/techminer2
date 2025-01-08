@@ -12,7 +12,7 @@ import os.path
 import pandas as pd  # type: ignore
 
 from ..._dtypes import DTYPES
-from ...prepare.operations.merge_database_fields import merge_database_fields
+from ...database.operations.operations__merge_fields import operations__merge_fields
 
 
 def transformations__fields_intersection(
@@ -25,7 +25,7 @@ def transformations__fields_intersection(
 ):
     #
     # Merge the two fields
-    merge_database_fields(
+    operations__merge_fields(
         sources=[compare_field, to_field],
         dest=output_field,
         #

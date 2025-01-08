@@ -531,13 +531,13 @@ class MainInformation:
 
         self.insert_stats(
             "NLP PHRASES",
-            "Raw title NLP phrases",
-            self.count_unique_items("raw_title_nlp_phrases"),
+            "Raw document title NLP phrases",
+            self.count_unique_items("raw_document_title_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
-            "Cleaned title NLP phrases",
-            self.count_unique_items("title_nlp_phrases"),
+            "Cleaned document_title NLP phrases",
+            self.count_unique_items("document_title_nlp_phrases"),
         )
         self.insert_stats(
             "NLP PHRASES",
