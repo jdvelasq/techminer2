@@ -36,10 +36,10 @@ Australia        5               783  ...                     4      0.80
 [5 rows x 6 columns]
     
 """
+from ...database.load.load__filtered_database import load__filtered_database
 from ...internals.mt.mt_extract_top_n_terms_by_metric import (
     _mt_extract_top_n_terms_by_metric,
 )
-from ...internals.read_filtered_database import read_filtered_database
 
 
 def collaboration_metrics_frame(
@@ -81,7 +81,7 @@ def collaboration_metrics_frame(
     ):
         #
         # Read documents from the database
-        records = read_filtered_database(
+        records = load__filtered_database(
             #
             # DATABASE PARAMS:
             root_dir=root_dir,

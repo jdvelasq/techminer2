@@ -51,6 +51,7 @@ Cross co-occurrence DataFrame
 
 
 """
+from ...database.load.load__filtered_database import load__filtered_database
 from ...internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,
 )
@@ -61,7 +62,6 @@ from ...internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
-from ...internals.read_filtered_database import read_filtered_database
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ...internals.utils.utils_compute_occurrences_and_citations import (
     _utils_compute_occurrences_and_citations,
@@ -125,7 +125,7 @@ class CrossCoOccurrenceDataFrame(
             for key, value in self.columns_params.__dict__.items():
                 setattr(self.rows_params, key, value)
 
-        records = read_filtered_database(**self.database_params.__dict__)
+        records = load__filtered_database(**self.database_params.__dict__)
 
         columns = self.columns_params.field
         rows = self.rows_params.field

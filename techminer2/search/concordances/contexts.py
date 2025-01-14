@@ -48,8 +48,8 @@ Contexts (MIGRATED)
 """
 import pandas as pd  # type: ignore
 
+from ...database.load.load__filtered_database import load__filtered_database
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
-from ...internals.read_filtered_database import read_filtered_database
 from .._core.get_context_phrases_from_records import _get_context_phrases_from_records
 
 
@@ -130,7 +130,7 @@ def concordance_contexts(
 
         return texts
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

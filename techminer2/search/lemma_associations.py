@@ -40,7 +40,7 @@ from dataclasses import dataclass
 
 from textblob import TextBlob  # type: ignore
 
-from ..internals.read_filtered_database import read_filtered_database
+from ..database.load.load__filtered_database import load__filtered_database
 from ..internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
@@ -120,7 +120,7 @@ def __get_abstract_sentences(
     cited_by_filter,
     **filters,
 ):
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

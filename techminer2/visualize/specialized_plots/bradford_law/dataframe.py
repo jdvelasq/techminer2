@@ -27,7 +27,7 @@ Dataframe
 """
 import pandas as pd  # type: ignore
 
-from ....internals.read_filtered_database import read_filtered_database
+from ....database.load.load__filtered_database import load__filtered_database
 
 
 def dataframe(
@@ -41,7 +41,7 @@ def dataframe(
 ):
     """:meta private:"""
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

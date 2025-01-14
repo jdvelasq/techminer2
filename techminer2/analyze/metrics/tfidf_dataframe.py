@@ -58,13 +58,13 @@ from typing import Literal
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
+from ...database.load.load__filtered_database import load__filtered_database
 from ...internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,
 )
 from ...internals.mt.mt_extract_top_n_terms_by_metric import (
     _mt_extract_top_n_terms_by_metric,
 )
-from ...internals.read_filtered_database import read_filtered_database
 from ...internals.utils.utils_append_occurrences_and_citations_to_axis import (
     _utils_append_occurrences_and_citations_to_axis,
 )
@@ -208,7 +208,7 @@ def _create_tf_matrix(
     sort_by,
     **filters,
 ):
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

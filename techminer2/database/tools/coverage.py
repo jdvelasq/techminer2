@@ -38,8 +38,8 @@ Coverage
 
 """
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
-from ...internals.read_filtered_database import read_filtered_database
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
+from ..load.load__filtered_database import load__filtered_database
 from .internals.analysis_params_mixin import AnalysisParams, AnalysisParamsMixin
 
 
@@ -59,7 +59,7 @@ class Coverage(
 
         stopwords = load_user_stopwords(self.database_params.root_dir)
 
-        documents = read_filtered_database(**self.database_params.__dict__)
+        documents = load__filtered_database(**self.database_params.__dict__)
 
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]

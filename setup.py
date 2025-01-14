@@ -1,29 +1,8 @@
 """Setup module for TechMiner2+"""
 
-# import nltk
-from setuptools import setup
+from setuptools import find_packages, setup
 
-# from setuptools.command.build_py import build_py
-
-# class BuildPyCommand(build_py):
-#     def run(self):
-#         #
-#         import nltk
-
-#         nltk.download("punkt")
-#         nltk.download("brown")
-#         # nltk.download("stopwords")
-#         # nltk.download("averaged_perceptron_tagger")
-#         #
-#         build_py.run(self)
-
-
-# def _post_install():
-#     nltk.download("punkt")
-#     nltk.download("brown")
-#     nltk.download("stopwords")
-#     nltk.download("averaged_perceptron_tagger")
-
+from post_install import PostInstallCommand
 
 setup(
     # cmdclass={"build_py": BuildPyCommand},
@@ -43,6 +22,7 @@ setup(
         "contractions",
         "duckdb",
         "fuzzywuzzy",
+        "graphviz",
         "igraph",
         "leidenalg",
         "networkx",
@@ -53,62 +33,17 @@ setup(
         "python-Levenshtein",
         "PyYAML",
         "scikit-learn",
+        "spacy",
         "sumy",
         "tabulate",
         "textblob",
+        "urllib3==1.26.6",
         "wordcloud",
     ],
-    packages=[
-        "techminer2._core.metrics",
-        "techminer2._core.nx",
-        "techminer2._core.stopwords",
-        "techminer2._core",
-        "techminer2._files",
-        "techminer2.citation_network._core",
-        "techminer2.citation_network",
-        "techminer2.co_citation_network",
-        "techminer2.co_occurrence_matrix",
-        "techminer2.co_occurrence_network",
-        "techminer2.correlation_matrix",
-        "techminer2.coupling_network._core.docs",
-        "techminer2.coupling_network._core.others",
-        "techminer2.coupling_network._core",
-        "techminer2.coupling_network",
-        "techminer2.document_clustering",
-        "techminer2.documents",
-        "techminer2.emergence",
-        "techminer2.factor_analysis._core",
-        "techminer2.factor_analysis.co_occurrence",
-        "techminer2.factor_analysis.tfidf",
-        "techminer2.factor_analysis",
-        "techminer2.fields.further_processing",
-        "techminer2.fields",
-        "techminer2.helpers",
-        "techminer2.ingest.field_importers",
-        "techminer2.ingest",
-        "techminer2.main_path_analysis._core",
-        "techminer2.main_path_analysis",
-        "techminer2.metrics",
-        "techminer2.raw",
-        "techminer2.report",
-        "techminer2.rpys",
-        "techminer2.search",
-        "techminer2.subject_areas",
-        "techminer2.subject_areas._data",
-        "techminer2.thesaurus._core",
-        "techminer2.thesaurus._data",
-        "techminer2.thesaurus.abbreviations",
-        "techminer2.thesaurus.countries",
-        "techminer2.thesaurus.descriptors",
-        "techminer2.thesaurus.organizations",
-        "techminer2.thesaurus.references",
-        "techminer2.thesaurus",
-        "techminer2.tools.associations",
-        "techminer2.tools",
-        "techminer2.topic_modeling",
-        "techminer2.word_lists",
-        "techminer2",
-    ],
+    packages=find_packages(),
+    cmdclass={
+        "install": PostInstallCommand,
+    },
     package_dir={"techminer2": "techminer2"},
     include_package_data=True,
     classifiers=[
@@ -124,5 +59,3 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
 )
-
-# _post_install()

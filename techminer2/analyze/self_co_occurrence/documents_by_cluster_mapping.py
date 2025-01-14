@@ -70,7 +70,7 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
 
 """
-from ..documents import select_documents
+# from ..documents import select_documents
 from .clusters_to_terms_mapping import clusters_to_terms_mapping
 
 

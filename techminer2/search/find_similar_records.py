@@ -85,8 +85,8 @@ from nltk.stem import WordNetLemmatizer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from ..analyze.documents.select_documents import select_documents
-from ..internals.read_filtered_database import read_filtered_database
+from ..database.load.load__filtered_database import load__filtered_database
+from ..database.tools.record_view import select_documents
 
 TEXTWRAP_WIDTH = 73
 
@@ -107,7 +107,7 @@ def find_similar_records(
 
     #
     # Load the abstracts
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

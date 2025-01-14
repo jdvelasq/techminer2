@@ -1,0 +1,14 @@
+black
+docutils
+furo
+isort
+ipykernel
+nbsphinx
+pytest
+pygments
+sphinx
+sphinx_copybutton 
+sphinx_rtd_theme 
+sphinx-autodoc-typehints 
+sphinx-intl 
+sphinx-toggleprompt

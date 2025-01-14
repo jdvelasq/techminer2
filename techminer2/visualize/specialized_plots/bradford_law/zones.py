@@ -26,7 +26,7 @@ Ind Manage Data Sys   4    2        9               386     1
 Electron. Mark.       5    2       11               287     1
 
 """
-from ....internals.read_filtered_database import read_filtered_database
+from ....database.load.load__filtered_database import load__filtered_database
 
 
 def zones(
@@ -40,7 +40,7 @@ def zones(
 ):
     """:meta private:"""
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

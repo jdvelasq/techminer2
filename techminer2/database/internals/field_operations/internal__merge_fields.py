@@ -10,11 +10,9 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...._dtypes import DTYPES
-
 
 def internal__merge_fields(
-    sources,
+    source,
     dest,
     #
     # DATABASE PARAMS:
@@ -32,7 +30,7 @@ def internal__merge_fields(
 
     new_field = None
 
-    for field in sources:
+    for field in source:
         if field in dataframe.columns:
             if new_field is None:
                 new_field = dataframe[field].astype(str).str.split("; ")

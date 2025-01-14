@@ -62,7 +62,7 @@ from nltk.stem import PorterStemmer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from ..internals.read_filtered_database import read_filtered_database
+from ..database.load.load__filtered_database import load__filtered_database
 from ..prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
     thesaurus__read_reversed_as_dict,
 )
@@ -89,7 +89,7 @@ def tfidf_find_similar_phrases(
     #
     # Prepare abstracts
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

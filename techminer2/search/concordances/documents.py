@@ -51,8 +51,8 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
+from ...database.load.load__filtered_database import load__filtered_database
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
-from ...internals.read_filtered_database import read_filtered_database
 from ...internals.utils.utils_records_for_reporting import _utils_records_for_reporting
 from .._core.filter_records_by_concordance import _filter_records_by_concordance
 
@@ -84,7 +84,7 @@ def concordance_documents(
 ):
     """:meta private:"""
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

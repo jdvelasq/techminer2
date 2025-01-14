@@ -9,7 +9,7 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from .....internals.read_filtered_database import read_filtered_database
+from .....database.load.load__filtered_database import load__filtered_database
 
 
 def _create_citation_nx_graph(
@@ -60,7 +60,7 @@ def __add_weighted_edges_from(
     cited_by_filter=(None, None),
     **filters,
 ):
-    records = read_filtered_database(
+    records = load__filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

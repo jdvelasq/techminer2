@@ -9,37 +9,41 @@
 Rename a Field
 ===============================================================================
 
-## >>> from techminer2.fields import rename_field
-## >>> rename_field(  # doctest: +SKIP
-## ...     source="author_keywords",
-## ...     dest="author_keywords_new",
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example",
-## ... )
+>>> from techminer2.database.operations import RenameFieldOperator
+>>> (
+...     RenameFieldOperator()  # doctest: +SKIP 
+...     .set_params(
+...         source="author_keywords",
+...         dest="author_keywords_copy",
+...         root_dir="example",
+...     ).build()
+... )
+
 
 """
 from ..internals.field_operations.internal__rename_field import internal__rename_field
+from .internals.set_params_mixin import SetParamsMixin
+from .internals.source_dest_params import SourceDestParams
 from .operations__protected_fields import PROTECTED_FIELDS
 
 
-def operations__rename_field(
-    source,
-    dest,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class RenameFieldOperator(
+    SetParamsMixin,
 ):
-    """
-    :meta private:
-    """
-    if dest in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dest}` is protected")
+    """:meta private:"""
 
-    internal__rename_field(
-        source=source,
-        dest=dest,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+    def __init__(self):
+        self.params = SourceDestParams()
+
+    def build(self):
+
+        if self.params.dest in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest}` is protected")
+
+        internal__rename_field(
+            source=self.params.source,
+            dest=self.params.dest,
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+        )

@@ -37,7 +37,7 @@ Buchak G.              0     0     0     1     0
 
 
 """
-from ..read_filtered_database import read_filtered_database
+from ...database.load.load__filtered_database import load__filtered_database
 from ..stopwords.load_user_stopwords import load_user_stopwords
 from .mt_global_metrics_by_field_per_year import _mt_global_metrics_by_field_per_year
 
@@ -83,7 +83,7 @@ def _mt_term_occurrences_by_year(
     stopwords = load_user_stopwords(root_dir=root_dir)
     indicators_by_year = indicators_by_year.drop(stopwords, axis=0, errors="ignore")
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         #
         # DATABASE PARAMS
         root_dir=root_dir,

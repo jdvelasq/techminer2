@@ -14,7 +14,7 @@ import copy
 
 import numpy as np
 
-from ....internals.read_filtered_database import read_filtered_database
+from ....database.load.load__filtered_database import load__filtered_database
 
 
 def _compute_main_path(
@@ -203,7 +203,7 @@ def _create_citations_table(
 ):
     #
     # Extracts the records using the specified parameters
-    records = read_filtered_database(
+    records = load__filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

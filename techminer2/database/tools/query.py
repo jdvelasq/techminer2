@@ -41,7 +41,7 @@ from typing import Optional
 import duckdb
 
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
-from ...internals.read_filtered_database import read_filtered_database
+from ..load.load__filtered_database import load__filtered_database
 
 
 @dataclass
@@ -74,5 +74,5 @@ class Query(
         self.database_params = DatabaseParams()
 
     def build(self):
-        database = read_filtered_database(**self.database_params.__dict__)
+        database = load__filtered_database(**self.database_params.__dict__)
         return duckdb.query(self.analysis_params.expr).df()

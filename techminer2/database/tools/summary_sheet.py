@@ -36,7 +36,7 @@ Summary Sheet
 import pandas as pd  # type: ignore
 
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
-from ...internals.read_filtered_database import read_filtered_database
+from ..load.load__filtered_database import load__filtered_database
 
 
 class SummarySheet(
@@ -49,7 +49,7 @@ class SummarySheet(
 
     def build(self):
 
-        records = read_filtered_database(**self.database_params.__dict__)
+        records = load__filtered_database(**self.database_params.__dict__)
 
         #
         # Compute stats per column

@@ -12,7 +12,7 @@ from ...operations.operations__merge_fields import internal__merge_fields
 def internal__preprocess_raw_keywords(root_dir):
 
     internal__merge_fields(
-        sources=[
+        source=[
             "raw_author_keywords",
             "raw_index_keywords",
         ],

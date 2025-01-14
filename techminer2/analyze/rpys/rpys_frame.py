@@ -26,7 +26,7 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 """
 import pandas as pd  # type: ignore
 
-from ...internals.read_filtered_database import read_filtered_database
+from ...database.load.load__filtered_database import load__filtered_database
 
 
 def rpys_frame(
@@ -36,7 +36,7 @@ def rpys_frame(
 ):
     """:meta private:"""
 
-    references = read_filtered_database(
+    references = load__filtered_database(
         root_dir=root_dir,
         database="references",
         year_filter=(None, None),

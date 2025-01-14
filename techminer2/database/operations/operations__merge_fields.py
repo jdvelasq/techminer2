@@ -9,36 +9,42 @@
 Merge Fields
 ===============================================================================
 
-## >>> from techminer2.fields import merge_fields
-## >>> merge_fields(  # doctest: +SKIP
-## ...     fields_to_merge=["author_keywords", "index_keywords"],
-## ...     dest="merged_keywords",
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example",
-## ... )
+>>> from techminer2.database.operations import MergeFieldsOperator
+>>> (
+...     MergeFieldsOperator()  # doctest: +SKIP
+...     .set_params(
+...         source=["author_keywords", "index_keywords"],
+...         dest="merged_keywords",
+...         #
+...         # DATABASE PARAMS:
+...         root_dir="example",
+...     ).build()
+... )
 
 """
 from ..internals.field_operations.internal__merge_fields import internal__merge_fields
+from .internals.set_params_mixin import SetParamsMixin
+from .internals.source_dest_params import SourceDestParams
 from .operations__protected_fields import PROTECTED_FIELDS
 
 
-def operations__merge_fields(
-    sources,
-    dest,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class MergeFieldsOperator(
+    SetParamsMixin,
 ):
     """:meta private:"""
 
-    if dest in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dest}` is protected")
+    def __init__(self):
+        self.params = SourceDestParams()
 
-    internal__merge_fields(
-        sources=sources,
-        dest=dest,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+    def build(self):
+
+        if self.params.dest in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest}` is protected")
+
+        internal__merge_fields(
+            source=self.params.source,
+            dest=self.params.dest,
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+        )

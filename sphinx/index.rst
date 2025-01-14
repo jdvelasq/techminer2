@@ -4,10 +4,20 @@ Techminer 2+
 
 .. toctree::
     :hidden:
-    :caption: INGEST
+    :caption: DATA
     :maxdepth: 1
 
-    ingest/__index__ 
+    database/__index__ 
+
+
+.. toctree::
+    :hidden:
+    :caption: PACKAGES
+    :maxdepth: 1
+
+    database/__index__
+
+
 
 .. toctree::
     :hidden:

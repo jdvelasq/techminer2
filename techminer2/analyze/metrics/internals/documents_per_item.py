@@ -1,6 +1,6 @@
 """documents by each item in a column"""
 
-from ....internals.read_filtered_database import read_filtered_database
+from ....database.load.load__filtered_database import load__filtered_database
 
 
 def documents_per_item(
@@ -15,7 +15,7 @@ def documents_per_item(
 ):
     """Documents"""
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

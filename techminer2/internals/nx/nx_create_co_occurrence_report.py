@@ -20,11 +20,12 @@ from collections import defaultdict
 
 import pandas as pd  # type: ignore
 
+from ...database.load.load__filtered_database import load__filtered_database
+
 # from ...search.concordances import concordances_from_records
 from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
     thesaurus__read_as_dict,
 )
-from ..read_filtered_database import read_filtered_database
 from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
 from ..utils.utils_format_report_for_records import _utils_format_report_for_records
 from ..utils.utils_make_report_dir import _utils_make_report_dir
@@ -156,7 +157,7 @@ def __extract_records_per_cluster(
     # Main code:
     #
 
-    records_main = read_filtered_database(
+    records_main = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -170,7 +171,7 @@ def __extract_records_per_cluster(
     selected_records = select_valid_records(exploded_records, communities)
     selected_records = create_raw_cluster_field(selected_records, field, items2cluster)
 
-    records_main = read_filtered_database(
+    records_main = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

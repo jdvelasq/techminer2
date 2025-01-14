@@ -35,7 +35,7 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...              3.0  3.0 
 
 """
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
-from ...internals.read_filtered_database import read_filtered_database
+from ..load.load__filtered_database import load__filtered_database
 from .internals.analysis_params_mixin import AnalysisParams, AnalysisParamsMixin
 
 
@@ -52,7 +52,7 @@ class Statistics(
     def build(self):
 
         field = self.analysis_params.field
-        records = read_filtered_database(**self.database_params.__dict__)
+        records = load__filtered_database(**self.database_params.__dict__)
         records = records.dropna(subset=[field])
         records[field] = records[field].str.split("; ")
         records = records.explode(field)

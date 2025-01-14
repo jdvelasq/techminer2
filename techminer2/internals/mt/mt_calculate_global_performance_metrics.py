@@ -10,7 +10,7 @@ This function computes global performance (bibliometric) metrics for a given fie
 
 
 """
-from ..read_filtered_database import read_filtered_database
+from ...database.load.load__filtered_database import load__filtered_database
 from ..stopwords.load_user_stopwords import load_user_stopwords
 from .mt_sort_records_by_metric import _mt_sort_records_by_metric
 
@@ -30,7 +30,7 @@ def _mt_calculate_global_performance_metrics(
 ):
     """:meta private:"""
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         #
         # DATABASE PARAMS
         root_dir=root_dir,

@@ -12,7 +12,7 @@ from ...operations.operations__merge_fields import internal__merge_fields
 def internal__preprocess_raw_descriptors(root_dir):
 
     internal__merge_fields(
-        sources=["raw_nlp_phrases", "raw_keywords"],
+        source=["raw_nlp_phrases", "raw_keywords"],
         dest="raw_descriptors",
         root_dir=root_dir,
     )

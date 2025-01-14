@@ -74,7 +74,7 @@ import datetime
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ...internals.read_filtered_database import read_filtered_database
+from ...database.load.load__filtered_database import load__filtered_database
 
 
 class MainInformation:
@@ -591,7 +591,7 @@ def general_metrics_frame(
 ):
     """:meta private:"""
 
-    records = read_filtered_database(
+    records = load__filtered_database(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

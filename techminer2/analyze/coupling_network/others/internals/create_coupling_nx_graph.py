@@ -9,7 +9,7 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from .....internals.read_filtered_database import read_filtered_database
+from .....database.load.load__filtered_database import load__filtered_database
 from .....internals.utils.utils_append_occurrences_and_citations_to_axis import (
     _utils_append_occurrences_and_citations_to_axis,
 )
@@ -79,7 +79,7 @@ def __add_weighted_edges_from(
     cited_by_filter=(None, None),
     **filters,
 ):
-    records = read_filtered_database(
+    records = load__filtered_database(
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
