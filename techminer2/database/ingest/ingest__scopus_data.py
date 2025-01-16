@@ -29,7 +29,7 @@ Scopus Data Importer
 
 import time
 
-from tqdm import tqdm  # type: ignore
+from tqdm import tqdm
 
 from ..internals.database import (
     internal__compress_raw_files,
@@ -41,8 +41,7 @@ from ..internals.database import (
 from ..internals.database.internal__report_imported_records import (
     internal__report_imported_records,
 )
-from ..internals.message import message
-from ..internals.preprocessing import (
+from ..internals.field_preprocessors import (  # type: ignore
     internal__preprocess_abbr_source_title,
     internal__preprocess_abbreviations,
     internal__preprocess_abstract,
@@ -79,6 +78,7 @@ from ..internals.preprocessing import (
     internal__preprocess_source_title,
     internal__preprocess_subject_areas,
 )
+from ..internals.message import message
 
 
 class ScopusDataImporter:

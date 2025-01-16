@@ -40,22 +40,22 @@ Coverage
 from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ..load.load__filtered_database import load__filtered_database
-from .internals.analysis_params_mixin import AnalysisParams, AnalysisParamsMixin
+from .internals.set_field_param_mixin import SetFieldParamMixin
 
 
 class Coverage(
-    AnalysisParamsMixin,
     DatabaseParamsMixin,
+    SetFieldParamMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
         self.database_params = DatabaseParams()
-        self.analysis_params = AnalysisParams()
+        self.field = None
 
     def build(self):
 
-        field = self.analysis_params.field
+        field = self.field
 
         stopwords = load_user_stopwords(self.database_params.root_dir)
 

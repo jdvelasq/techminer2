@@ -27,8 +27,8 @@ import os.path
 import pandas as pd  # type: ignore
 
 from ...._dtypes import DTYPES
-from ...operations.operations__merge_fields import operations__merge_fields
-from ...operations.operations__protected_fields import PROTECTED_FIELDS
+from ...field_operators.operators__merge_fields import operations__merge_fields
+from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
 
 
 def fields_difference(

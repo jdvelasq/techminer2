@@ -35,7 +35,7 @@ Extract Country
 
 """
 
-from ...operations.operations__protected_fields import PROTECTED_FIELDS
+from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
 
 
 def extract_country(

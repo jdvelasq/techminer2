@@ -25,7 +25,7 @@ import os.path
 
 import pandas as pd  # type: ignore
 
-from ...operations.operations__protected_fields import PROTECTED_FIELDS
+from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
 
 
 def remove_multiple_spaces(

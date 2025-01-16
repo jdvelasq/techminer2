@@ -25,7 +25,7 @@ import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from ...._dtypes import DTYPES
-from ...operations.operations__protected_fields import PROTECTED_FIELDS
+from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
 
 
 def stemming_field_with_and(

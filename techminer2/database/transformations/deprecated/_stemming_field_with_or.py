@@ -22,7 +22,7 @@ Stemming Field with OR
 """
 
 from ...._dtypes import DTYPES
-from ...operations.operations__protected_fields import PROTECTED_FIELDS
+from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
 
 
 def stemming_field_with_or(
