@@ -11,11 +11,11 @@ import os.path
 
 import pandas as pd  # type: ignore
 
-from ..._dtypes import DTYPES
-from ..field_operators.operators__merge_fields import operations__merge_fields
+from ...._dtypes import DTYPES
+from ...field_operators.operators__merge_fields import operations__merge_fields
 
 
-def transformations__fields_intersection(
+def internal__fields_intersection(
     compare_field,
     to_field,
     output_field,

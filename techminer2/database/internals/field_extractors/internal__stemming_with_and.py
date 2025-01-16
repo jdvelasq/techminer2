@@ -30,33 +30,9 @@ def internal__stemming_with_and(
     #
     # Checks if all stemmed words are in the list of stemmed words
     df = stemming_with_and(df, stemmed_terms)
-
-    #
-    # Extracts the selected terms
-    df = sorted(set(df.loc[df["keys"], source].to_list()))
-
-    #
-    # Updates the databases
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        #
-        # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
-        #
-        data[dest] = data[source].copy()
-        #
-        data[dest] = data[dest].map(lambda x: x.split("; "), na_action="ignore")
-        data[dest] = data[dest].map(
-            lambda x: [y for y in x if y in df], na_action="ignore"
-        )
-        data[dest] = data[dest].map(
-            lambda x: pd.NA if x == [] else x, na_action="ignore"
-        )
-        data[dest] = data[dest].map(
-            lambda x: "; ".join(x) if isinstance(x, list) else x
-        )
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    df = df[df.selected]
+    terms = df.terms.to_list()
+    return terms
 
 
 def stemming_with_and(df, stemmed_terms):

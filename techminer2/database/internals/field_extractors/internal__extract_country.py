@@ -12,12 +12,12 @@ import os
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
+from ....prepare.thesaurus.internals.thesaurus__read_as_dict import (
     thesaurus__read_as_dict,
 )
 
 
-def transformations__extract_country(
+def internal__extract_country(
     source,
     dest,
     root_dir,

@@ -13,7 +13,7 @@ import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 
-def transformations__stemming_with_or(
+def internal__stemming_with_or(
     items,
     source,
     dest,

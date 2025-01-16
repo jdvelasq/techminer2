@@ -42,9 +42,9 @@ from typing import Optional, Tuple
 
 import pandas as pd  # type: ignore
 
-from ..._dtypes import DTYPES
-from ...analyze.metrics import performance_metrics_frame
-from .operators__protected_fields import PROTECTED_FIELDS
+from ...._dtypes import DTYPES
+from ....analyze.metrics import performance_metrics_frame
+from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
 
 
 @dataclass
