@@ -21,11 +21,11 @@ Highlight Nouns and Noun Phrases
 
 
 """
+from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
+from ...internals.set_params_mixin.set_source_dest_params import SourceDestParams
 from ..internals.field_operators.internal__highlight_nouns_and_phrases import (
     internal__highlight_nouns_and_phrases,
 )
-from .internals.set_params_mixin import SetParamsMixin
-from .internals.source_dest_params import SourceDestParams
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

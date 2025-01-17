@@ -7,25 +7,22 @@ from typing import Optional, Tuple
 
 
 @dataclass
-class DatabaseParams:
+class DatabaseFilters:
     """:meta private:"""
 
-    root_dir: str = "./"
     database: str = "main"
     year_filter: Tuple[Optional[int], Optional[int]] = (None, None)
     cited_by_filter: Tuple[Optional[int], Optional[int]] = (None, None)
     sort_by: Optional[str] = None
 
 
-class DatabaseParamsMixin:
+class SetDatabaseFiltersMixin:
     """:meta private:"""
 
-    def set_database_params(self, **kwargs):
+    def set_database_filters(self, **kwargs):
         """Set database parameters."""
+
         for key, value in kwargs.items():
-            # if hasattr(self.database_params, key):
-            #     setattr(self.database_params, key, value)
-            # else:
-            #     raise ValueError(f"Invalid parameter for DatabaseParams: {key}")
             setattr(self.database_params, key, value)
+
         return self

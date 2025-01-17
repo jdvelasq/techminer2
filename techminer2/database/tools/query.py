@@ -40,7 +40,10 @@ from typing import Optional
 
 import duckdb
 
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ..load.load__filtered_database import load__filtered_database
 
 
@@ -65,13 +68,13 @@ class AnalysisParamsMixin:
 
 class Query(
     AnalysisParamsMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
         self.analysis_params = AnalysisParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
 
     def build(self):
         database = load__filtered_database(**self.database_params.__dict__)

@@ -154,8 +154,11 @@ from ...internals.nx_mixin.nx_spring_layout_params import (
 )
 from ...internals.params.axes_params import AxesParams, AxesParamsMixin
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from .internals.output_params import OutputParams, OutputParamsMixin
 
 # from .matrix import co_occurrence_matrix
@@ -163,7 +166,7 @@ from .internals.output_params import OutputParams, OutputParamsMixin
 
 class CoOccurrenceNetworkMap(
     ColumnsAndRowsParamsMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     OutputParamsMixin,
     NxSpringLayoutParamsMixin,
     AxesParamsMixin,
@@ -173,7 +176,7 @@ class CoOccurrenceNetworkMap(
     def __init__(self):
 
         self.column_params = ItemParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.row_params = ItemParams()
         self.format_params = OutputParams()
         self.nx_params = NxSpringLayoutParams()

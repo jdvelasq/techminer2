@@ -44,9 +44,12 @@ Bar Plot (MIGRATED)
 
 """
 from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...internals.plots.bar_plot_mixin import BarPlotMixin, BarPlotParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
 from .internals.basic_plot import BasicPlotMixin
 
@@ -55,7 +58,7 @@ class BarPlot(
     AnalysisParamsMixin,
     BarPlotMixin,
     BasicPlotMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     ItemParamsMixin,
 ):
     """:meta private:"""
@@ -63,7 +66,7 @@ class BarPlot(
     def __init__(self):
         self.analysis_params = AnalysisParams()
         self.plot_params = BarPlotParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.item_params = ItemParams()
 
     def build(self):

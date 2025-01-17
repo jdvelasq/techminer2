@@ -6,41 +6,84 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import glob
-import os.path
-import pathlib
-
-import pandas as pd
 from textblob import TextBlob  # type: ignore
 
+from .internal__get_field_values_from_database import (
+    internal__get_field_values_from_database,
+)
 
-def internal__stemming_with_and(
-    df,
-    field,
+
+def internal__stemming_and(
+    custom_items,
+    source_field,
+    root_dir,
+):
+    """:meta private:"""
+
+    return stemming(
+        custom_items=custom_items,
+        source_field=source_field,
+        stemming_fn=apply_stemming_and_operator,
+        root_dir=root_dir,
+    )
+
+
+def internal__stemming_or(
+    custom_items,
+    source_field,
     #
     # DATABASE PARAMS:
     root_dir,
 ):
     """:meta private:"""
 
-    stemmed_terms = get_stemmed_items(df)
-    df = get_field_values_from_database(root_dir, field)
+    return stemming(
+        custom_items=custom_items,
+        source_field=source_field,
+        stemming_fn=apply_stemming_or_operator,
+        root_dir=root_dir,
+    )
+
+
+def stemming(
+    custom_items,
+    source_field,
+    stemming_fn,
+    root_dir,
+):
+    """:meta private:"""
+
+    stemmed_terms = get_stemmed_items(custom_items)
+    df = internal__get_field_values_from_database(root_dir, source_field)
     df = create_keys_column(df)
 
     #
     # Checks if all stemmed words are in the list of stemmed words
-    df = stemming_with_and(df, stemmed_terms)
+    df = stemming_fn(df, stemmed_terms)
     df = df[df.selected]
-    terms = df.terms.to_list()
+    terms = df.term.to_list()
     return terms
 
 
-def stemming_with_and(df, stemmed_terms):
+def apply_stemming_and_operator(df, stemmed_terms):
     """Checks if all stemmed terms are in the list of stemmed words."""
 
     df["selected"] = df["keys"].map(
         lambda words: any(
             all(stemmed_word in words for stemmed_word in stemmed_term)
+            for stemmed_term in stemmed_terms
+        )
+    )
+
+    return df
+
+
+def apply_stemming_or_operator(df, stemmed_terms):
+    """Checks if all stemmed terms are in the list of stemmed words."""
+
+    df["selected"] = df["keys"].map(
+        lambda words: any(
+            any(stemmed_word in words for stemmed_word in stemmed_term)
             for stemmed_term in stemmed_terms
         )
     )
@@ -70,26 +113,3 @@ def get_stemmed_items(items):
     ]
 
     return stemmed_terms
-
-
-def get_field_values_from_database(root_dir, field):
-    """Returns a DataFrame with the content of the field in all databases."""
-
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
-
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-    )
-
-    df = dataframe[[field]].dropna()
-
-    df[field] = df[field].str.split("; ")
-    df = df.explode(field)
-    df[field] = df[field].str.strip()
-    df = df.drop_duplicates()
-    df = df.reset_index(drop=True)
-    df = df.rename(columns={field: "term"})
-
-    return df

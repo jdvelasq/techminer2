@@ -37,20 +37,23 @@ Coverage
 
 
 """
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ..load.load__filtered_database import load__filtered_database
 from .internals.set_field_param_mixin import SetFieldParamMixin
 
 
 class Coverage(
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     SetFieldParamMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.field = None
 
     def build(self):

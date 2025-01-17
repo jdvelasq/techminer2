@@ -45,9 +45,12 @@ Line Plot (MIGRATED)
 
 """
 from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...internals.plots.line_plot_mixin import LinePlotMixin, LinePlotParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
 from .internals.basic_plot import BasicPlotMixin
 
@@ -56,7 +59,7 @@ class LinePlot(
     AnalysisParamsMixin,
     BasicPlotMixin,
     LinePlotMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     ItemParamsMixin,
 ):
     """:meta private:"""
@@ -64,7 +67,7 @@ class LinePlot(
     def __init__(self):
         self.analysis_params = AnalysisParams()
         self.plot_params = LinePlotParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.item_params = ItemParams()
 
     def build(self):

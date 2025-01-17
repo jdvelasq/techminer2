@@ -60,8 +60,11 @@ from ...internals.mt.mt_extract_top_n_terms_by_metric import (
 )
 from ...internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ...internals.utils.utils_compute_occurrences_and_citations import (
     _utils_compute_occurrences_and_citations,
@@ -71,7 +74,7 @@ from .internals.output_params import OutputParams, OutputParamsMixin
 
 class CrossCoOccurrenceDataFrame(
     ColumnsAndRowsParamsMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     OutputParamsMixin,
 ):
     """:meta private:"""
@@ -79,7 +82,7 @@ class CrossCoOccurrenceDataFrame(
     def __init__(self):
 
         self.columns_params = ItemParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.rows_params = ItemParams()
         self.output_params = OutputParams()
 

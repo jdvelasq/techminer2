@@ -20,9 +20,9 @@ Copy a Field
 ... )
 
 """
+from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
+from ...internals.set_params_mixin.set_source_dest_params import SourceDestParams
 from ..internals.field_operators.internal__copy_field import internal__copy_field
-from .internals.set_params_mixin import SetParamsMixin
-from .internals.source_dest_params import SourceDestParams
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

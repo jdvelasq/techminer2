@@ -6,74 +6,26 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import glob
-import os.path
 
-import pandas as pd  # type: ignore
-
-from ...._dtypes import DTYPES
-from ...field_operators.operators__merge_fields import operations__merge_fields
+from .internal__get_field_values_from_database import (
+    internal__get_field_values_from_database,
+)
 
 
 def internal__fields_difference(
     compare_field,
     to_field,
-    output_field,
-    #
-    # DATABASE PARAMS:
     root_dir,
 ):
-    #
-    # Merge the two fields
-    operations__merge_fields(
-        sources=[compare_field, to_field],
-        dest=output_field,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
 
-    #
-    # Computes the intersection per database
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
-    for file in files:
-        #
-        # Loads data
-        data = pd.read_csv(file, encoding="utf-8", compression="zip", dtype=DTYPES)
+    set_a = internal__get_field_values_from_database(root_dir, compare_field)
+    set_a = set_a.term.tolist()
+    set_a = set(set_a)
 
-        #
-        # Compute terms in both columns
-        first_terms = (
-            data[compare_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
+    set_b = internal__get_field_values_from_database(root_dir, to_field)
+    set_b = set_b.term.tolist()
+    set_b = set(set_b)
 
-        second_terms = (
-            data[to_field]
-            .dropna()
-            .str.split("; ")
-            .explode()
-            .str.strip()
-            .drop_duplicates()
-            .tolist()
-        )
+    common_terms = set_a.difference(set_b)
 
-        common_terms = list(set(first_terms).difference(set(second_terms)))
-
-        #
-        # Update columns
-        data[output_field] = (
-            data[output_field]
-            .str.split("; ")
-            .map(lambda x: [z for z in x if z in common_terms], na_action="ignore")
-        )
-        data[output_field] = data[output_field].map(
-            lambda x: "; ".join(x) if isinstance(x, list) else x, na_action="ignore"
-        )
-
-        data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
+    return list(sorted(common_terms))

@@ -35,17 +35,20 @@ Summary Sheet
 """
 import pandas as pd  # type: ignore
 
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ..load.load__filtered_database import load__filtered_database
 
 
 class SummarySheet(
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
 
     def build(self):
 

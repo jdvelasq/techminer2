@@ -49,17 +49,20 @@ Contexts (MIGRATED)
 import pandas as pd  # type: ignore
 
 from ...database.load.load__filtered_database import load__filtered_database
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from .._core.get_context_phrases_from_records import _get_context_phrases_from_records
 
 
 class Contexts(
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
 
     def build(self, search_for: str):
         return concordance_contexts(search_for, **self.database_params.__dict__)

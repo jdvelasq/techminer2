@@ -34,20 +34,23 @@ Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...              3.0  3.0 
 
 
 """
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ..load.load__filtered_database import load__filtered_database
 from .internals.set_field_param_mixin import SetFieldParamMixin
 
 
 class Statistics(
     SetFieldParamMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
         self.field = None
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
 
     def build(self):
 

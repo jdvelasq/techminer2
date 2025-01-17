@@ -100,15 +100,18 @@ CASE_STUDY 02:0340                          2  ...                   2
 
 """
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from .dataframe import CrossCoOccurrenceDataFrame
 from .internals.output_params import OutputParams, OutputParamsMixin
 
 
 class CrossCoOccurrenceMatrix(
     ColumnsAndRowsParamsMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     OutputParamsMixin,
 ):
     """:meta private:"""
@@ -116,7 +119,7 @@ class CrossCoOccurrenceMatrix(
     def __init__(self):
 
         self.columns_params = ItemParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.output_params = OutputParams()
         self.rows_params = ItemParams()
 

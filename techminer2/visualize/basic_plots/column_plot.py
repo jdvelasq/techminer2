@@ -46,9 +46,12 @@ Column Plot (MIGRATED)
 
 """
 from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...internals.plots.column_plot_mixin import ColumnPlotMixin, ColumnPlotParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
 from .internals.basic_plot import BasicPlotMixin
 
@@ -57,14 +60,14 @@ class ColumnPlot(
     AnalysisParamsMixin,
     BasicPlotMixin,
     ColumnPlotMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     ItemParamsMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
         self.analysis_params = AnalysisParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.item_params = ItemParams()
         self.plot_params = ColumnPlotParams()
 

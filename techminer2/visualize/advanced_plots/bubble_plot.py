@@ -52,8 +52,11 @@ from ...analyze.cross_co_occurrence.internals.output_params import (
 )
 from ...analyze.cross_co_occurrence.matrix import CrossCoOccurrenceMatrix
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 
 
 @dataclass
@@ -78,14 +81,14 @@ class PlotParamsMixin:
 class BubblePlot(
     PlotParamsMixin,
     ColumnsAndRowsParamsMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
     OutputParamsMixin,
 ):
     """:meta private:"""
 
     def __init__(self):
         self.columns_params = ItemParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.plot_params = PlotParams()
         self.output_params = OutputParams()
         self.rows_params = ItemParams()

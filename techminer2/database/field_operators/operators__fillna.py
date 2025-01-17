@@ -25,8 +25,8 @@ Fill NA
 """
 from dataclasses import dataclass
 
+from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
 from ..internals.field_operators.internal__fillna import internal__fillna
-from .internals.set_params_mixin import SetParamsMixin
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

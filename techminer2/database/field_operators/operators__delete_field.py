@@ -25,8 +25,8 @@ Delete a Field
 
 from dataclasses import dataclass
 
+from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
 from ..internals.field_operators.internal__delete_field import internal__delete_field
-from .internals.set_params_mixin import SetParamsMixin
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

@@ -49,8 +49,11 @@ FINANCIAL_TECHNOLOGY 03:0461                2
 
 """
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.database_params import DatabaseParams, DatabaseParamsMixin
 from ...internals.params.item_params import ItemParams
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ..cross_co_occurrence.matrix import CrossCoOccurrenceMatrix
 from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
 
@@ -58,7 +61,7 @@ from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
 class DataFrame(
     AnalysisParamsMixin,
     ColumnsAndRowsParamsMixin,
-    DatabaseParamsMixin,
+    SetDatabaseFiltersMixin,
 ):
     """:meta private:"""
 
@@ -66,7 +69,7 @@ class DataFrame(
 
         self.analysis_params = AnalysisParams()
         self.columns_params = ItemParams()
-        self.database_params = DatabaseParams()
+        self.database_params = DatabaseFilters()
         self.rows_params = ItemParams()
 
     def build(self):

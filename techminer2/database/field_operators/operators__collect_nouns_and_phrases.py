@@ -20,11 +20,11 @@ Collect Nouns and Phrases
 ... )
 
 """
+from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
+from ...internals.set_params_mixin.set_source_dest_params import SourceDestParams
 from ..internals.field_operators.internal__collect_nouns_and_phrases import (
     internal__collect_nouns_and_phrases,
 )
-from .internals.set_params_mixin import SetParamsMixin
-from .internals.source_dest_params import SourceDestParams
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
