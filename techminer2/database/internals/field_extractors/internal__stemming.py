@@ -16,7 +16,14 @@ from .internal__get_field_values_from_database import (
 def internal__stemming_and(
     custom_items,
     source_field,
+    #
+    # DATABASE PARAMS:
     root_dir,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
     """:meta private:"""
 
@@ -24,7 +31,14 @@ def internal__stemming_and(
         custom_items=custom_items,
         source_field=source_field,
         stemming_fn=apply_stemming_and_operator,
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
+        **filters,
     )
 
 
@@ -34,6 +48,11 @@ def internal__stemming_or(
     #
     # DATABASE PARAMS:
     root_dir,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
     """:meta private:"""
 
@@ -41,7 +60,14 @@ def internal__stemming_or(
         custom_items=custom_items,
         source_field=source_field,
         stemming_fn=apply_stemming_or_operator,
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
+        **filters,
     )
 
 
@@ -49,18 +75,36 @@ def stemming(
     custom_items,
     source_field,
     stemming_fn,
-    root_dir,
+    #
+    # DATABASE PARAMS:
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
     """:meta private:"""
 
     stemmed_terms = get_stemmed_items(custom_items)
-    df = internal__get_field_values_from_database(root_dir, source_field)
+    df = internal__get_field_values_from_database(
+        field=source_field,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
+        **filters,
+    )
     df = create_keys_column(df)
 
     #
     # Checks if all stemmed words are in the list of stemmed words
     df = stemming_fn(df, stemmed_terms)
     df = df[df.selected]
+    df = df.sort_values("term", ascending=True)
     terms = df.term.to_list()
     return terms
 

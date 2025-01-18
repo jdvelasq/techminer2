@@ -23,6 +23,11 @@ def internal__extract_meaningful_words(
     #
     # DATABASE PARAMS:
     root_dir,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
     # Register tqdm pandas progress bar
     tqdm.pandas()

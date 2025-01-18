@@ -15,25 +15,32 @@ Fields difference
 ...     .set_compare_field("author_keywords") 
 ...     .set_to_field("index_keywords")
 ...     .set_root_dir("example/")
-...     .build()
+...     .set_database_filters(
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['3G_CELLULAR_COMMUNICATIONS',
- '4TH_GENERATION_MOBILE',
- '5G',
- 'ABILITY_FACTOR',
- 'ABUSE_OF_PUBLIC_OFFICE',
- 'ACCEPTANCE_OF_TECHNOLOGY',
- 'ACCESS_CONTROL_MODEL',
- 'ACCESS_TO_FINANCE',
- 'ACCOUNTING_EQUATION',
- 'ACCOUNT_VALUATION']
+['ADOPTION',
+ 'AI',
+ 'ALTERNATIVE_DATA',
+ 'BANKING_COMPETITION',
+ 'BANKING_INNOVATIONS',
+ 'BANKS',
+ 'BANK_FINTECH_PARTNERSHIP',
+ 'BEHAVIOURAL_ECONOMICS',
+ 'BLOCKCHAINS',
+ 'BUSINESS_MODEL']
 
 """
 
-
 from ...internals.set_params_mixin.set_compare_field_mixin import SetCompareFieldMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.set_params_mixin.set_root_dir_mixin import SetRootDirMixin
 from ...internals.set_params_mixin.set_to_field_mixin import SetToFieldMixin
 from ..internals.field_extractors.internal__fields_difference import (
@@ -43,6 +50,7 @@ from ..internals.field_extractors.internal__fields_difference import (
 
 class FieldsDifferenceExtractor(
     SetCompareFieldMixin,
+    SetDatabaseFiltersMixin,
     SetRootDirMixin,
     SetToFieldMixin,
 ):
@@ -53,11 +61,15 @@ class FieldsDifferenceExtractor(
         self.compare_field = None
         self.root_dir = "./"
         self.to_field = None
+        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__fields_difference(
             compare_field=self.compare_field,
             to_field=self.to_field,
+            #
+            # DATABASE PARAMS:
             root_dir=self.root_dir,
+            **self.database_filters.__dict__,
         )

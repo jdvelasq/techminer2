@@ -13,14 +13,30 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__ends_with(
-    pattern,
-    field,
-    root_dir,
+    pattern: str,
+    field: str,
+    #
+    # DATABASE PARAMS:
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
 
-    dataframe = internal__get_field_values_from_database(root_dir, field)
+    dataframe = internal__get_field_values_from_database(
+        field=field,
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
+        **filters,
+    )
     dataframe = dataframe[dataframe.term.str.endswith(pattern)]
     dataframe = dataframe.dropna()
+    dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()
 
     return terms

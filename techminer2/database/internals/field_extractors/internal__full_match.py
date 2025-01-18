@@ -13,14 +13,32 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__full_match(
-    pattern,
+    pattern: str,
     case,
-    flags,
-    field,
-    root_dir,
+    flags: int,
+    field: str,
+    #
+    # DATABASE PARAMS:
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
 
-    dataframe = internal__get_field_values_from_database(root_dir, field)
+    dataframe = internal__get_field_values_from_database(
+        field=field,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
+        **filters,
+    )
+
     dataframe = dataframe[
         dataframe.term.str.fullmatch(
             pat=pattern,
@@ -28,7 +46,9 @@ def internal__full_match(
             flags=flags,
         )
     ]
+
     dataframe = dataframe.dropna()
+    dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()
 
     return terms

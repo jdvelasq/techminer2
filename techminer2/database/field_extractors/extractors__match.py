@@ -17,25 +17,23 @@ Match
 ...     .set_flags(0)
 ...     .set_field("author_keywords") 
 ...     .set_root_dir("example/")
-...     .build()
+...     .set_database_filters(
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['LONDON_BIG_BANG',
- 'LEGITIMACY',
- 'LEGITIMATION_PROCESS',
- 'LISREL',
- 'LONGITUDINAL_RESEARCH',
- 'LOYALTY',
- 'LITERATURE',
- 'LEARNING',
- 'LINUX',
- 'LENDER_OF_LAST_RESORT']
+['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
 
 """
 
-
 from ...internals.set_params_mixin.set_case_mixin import SetCaseMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.set_params_mixin.set_field_mixin import SetFieldMixin
 from ...internals.set_params_mixin.set_flags_mixin import SetFlagsMixin
 from ...internals.set_params_mixin.set_pattern_mixin import SetPatternMixin
@@ -44,11 +42,12 @@ from ..internals.field_extractors.internal__match import internal__match
 
 
 class MatchExtractor(
-    SetFieldMixin,
     SetCaseMixin,
+    SetDatabaseFiltersMixin,
+    SetFieldMixin,
     SetFlagsMixin,
-    SetRootDirMixin,
     SetPatternMixin,
+    SetRootDirMixin,
 ):
     """:meta private:"""
 
@@ -59,6 +58,7 @@ class MatchExtractor(
         self.flags = 0
         self.pattern = None
         self.root_dir = "./"
+        self.database_filters = DatabaseFilters()
 
     def build(self):
 
@@ -67,5 +67,8 @@ class MatchExtractor(
             pattern=self.pattern,
             flags=self.flags,
             field=self.field,
+            #
+            # DATABASE PARAMS:
             root_dir=self.root_dir,
+            **self.database_filters.__dict__,
         )

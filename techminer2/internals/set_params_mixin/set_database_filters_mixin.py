@@ -23,6 +23,6 @@ class SetDatabaseFiltersMixin:
         """Set database parameters."""
 
         for key, value in kwargs.items():
-            setattr(self.database_params, key, value)
+            setattr(self.database_filters, key, value)
 
         return self

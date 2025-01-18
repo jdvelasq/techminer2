@@ -6,20 +6,29 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import pathlib
-
-import pandas as pd  # type: ignore
+from ...load import load__filtered_database
 
 
-def internal__get_field_values_from_database(root_dir, field):
+def internal__get_field_values_from_database(
+    field: str,
+    #
+    # DATABASE PARAMS:
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
+):
     """Returns a DataFrame with the content of the field in all databases."""
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
-
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
+    dataframe = load__filtered_database(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        sort_by=sort_by,
+        **filters,
     )
 
     df = dataframe[[field]].dropna()

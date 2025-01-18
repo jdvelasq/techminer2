@@ -20,7 +20,14 @@ from ....prepare.thesaurus.internals.thesaurus__read_as_dict import (
 def internal__extract_country(
     source,
     dest,
+    #
+    # DATABASE PARAMS:
     root_dir,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
+    sort_by: str,
+    **filters,
 ):
     #
     # Loads the thesaurus

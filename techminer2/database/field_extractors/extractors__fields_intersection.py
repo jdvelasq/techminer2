@@ -15,25 +15,32 @@ Fields Intersection
 ...     .set_compare_field("author_keywords") 
 ...     .set_to_field("index_keywords")
 ...     .set_root_dir("example/")
-...     .build()
+...     .set_database_filters(
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['ABAC',
- 'ABNORMAL_RETURNS',
- 'ACCEPTANCE',
- 'ACCESS',
- 'ACCESS_CONTROL',
- 'ACTIVE_PARTICIPATION',
- 'ACTIVITY_RECOGNITION',
- 'ACTOR_NETWORK',
- 'ACTOR_NETWORK_THEORY',
- 'ACTUALIZATION']
+['ACTOR_NETWORK_THEORY',
+ 'ACTUALIZATION',
+ 'AGRICULTURE',
+ 'AGROPAY',
+ 'ARTIFICIAL_INTELLIGENCE',
+ 'BANKING',
+ 'BIG_DATA',
+ 'BLOCKCHAIN',
+ 'BUSINESS_MODELS',
+ 'CASE_STUDY_METHODS']
 
 """
 
-
 from ...internals.set_params_mixin.set_compare_field_mixin import SetCompareFieldMixin
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.set_params_mixin.set_root_dir_mixin import SetRootDirMixin
 from ...internals.set_params_mixin.set_to_field_mixin import SetToFieldMixin
 from ..internals.field_extractors.internal__fields_intersection import (
@@ -43,6 +50,7 @@ from ..internals.field_extractors.internal__fields_intersection import (
 
 class FieldsIntersectionExtractor(
     SetCompareFieldMixin,
+    SetDatabaseFiltersMixin,
     SetRootDirMixin,
     SetToFieldMixin,
 ):
@@ -53,11 +61,15 @@ class FieldsIntersectionExtractor(
         self.compare_field = None
         self.root_dir = "./"
         self.to_field = None
+        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__fields_intersection(
             compare_field=self.compare_field,
             to_field=self.to_field,
+            #
+            # DATABASE PARAMS:
             root_dir=self.root_dir,
+            **self.database_filters.__dict__,
         )

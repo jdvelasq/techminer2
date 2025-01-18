@@ -12,27 +12,35 @@ Ends With
 >>> from techminer2.database.field_extractors import EndsWithExtractor
 >>> terms = (
 ...     EndsWithExtractor() 
-...     .set_pattern("NING")
+...     .set_pattern("ING")
 ...     .set_field("author_keywords") 
 ...     .set_root_dir("example/")
-...     .build()
+...     .set_database_filters(
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['RULE_LEARNING',
- 'ORGANIZATIONAL_LEARNING',
- 'COST_SENSITIVE_LEARNING',
+['BANKING',
+ 'CLOUD_COMPUTING',
+ 'CROWDFUNDING',
  'DATA_MINING',
- 'MACHINE_LEARNING',
- 'METALEARNING',
- 'ENTERPRISE_RESOURCE_PLANNING',
- 'BOUNDARY_SPANNING',
- 'LEARNING',
- 'PROJECT_PLANNING']
-
+ 'DIGITAL_BANKING',
+ 'ECONOMIC_FORECASTING',
+ 'FINANCIAL_COMPUTING',
+ 'FUTURE_OF_BANKING',
+ 'LENDING',
+ 'MARKETPLACE_LENDING']
+ 
 """
 
 
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.set_params_mixin.set_field_mixin import SetFieldMixin
 from ...internals.set_params_mixin.set_pattern_mixin import SetPatternMixin
 from ...internals.set_params_mixin.set_root_dir_mixin import SetRootDirMixin
@@ -40,9 +48,10 @@ from ..internals.field_extractors.internal__ends_with import internal__ends_with
 
 
 class EndsWithExtractor(
+    SetDatabaseFiltersMixin,
     SetFieldMixin,
-    SetRootDirMixin,
     SetPatternMixin,
+    SetRootDirMixin,
 ):
     """:meta private:"""
 
@@ -51,11 +60,15 @@ class EndsWithExtractor(
         self.field = None
         self.pattern = None
         self.root_dir = "./"
+        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__ends_with(
             field=self.field,
             pattern=self.pattern,
+            #
+            # DATABASE PARAMS:
             root_dir=self.root_dir,
+            **self.database_filters.__dict__,
         )

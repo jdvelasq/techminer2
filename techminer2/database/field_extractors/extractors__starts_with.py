@@ -15,24 +15,32 @@ Starts With
 ...     .set_pattern("FINAN")
 ...     .set_field("author_keywords") 
 ...     .set_root_dir("example/")
-...     .build()
+...     .set_database_filters(
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['FINANCIAL_DEVELOPMENT',
- 'FINANCIAL_MARKETS',
- 'FINANCIAL_SERVICES',
- 'FINANCIAL_SERVICES_NETWORK_EXTERNALITIES',
- 'FINANCIAL_ECONOMICS',
- 'FINANCIAL_SERVICES_INDUSTRY',
- 'FINANCIAL_CRISES',
+['FINANCE',
+ 'FINANCE_TECHNOLOGY',
+ 'FINANCIALISATION',
+ 'FINANCIAL_COMPUTING',
+ 'FINANCIAL_INCLUSION',
+ 'FINANCIAL_INSTITUTION',
+ 'FINANCIAL_INSTITUTIONS',
  'FINANCIAL_INTERMEDIATION',
- 'FINANCIAL_RISK_MANAGEMENT',
- 'FINANCE']
+ 'FINANCIAL_MANAGEMENT',
+ 'FINANCIAL_SCENARIZATION']
 
+ 
 """
 
-
+from ...internals.set_params_mixin.set_database_filters_mixin import (
+    DatabaseFilters,
+    SetDatabaseFiltersMixin,
+)
 from ...internals.set_params_mixin.set_field_mixin import SetFieldMixin
 from ...internals.set_params_mixin.set_pattern_mixin import SetPatternMixin
 from ...internals.set_params_mixin.set_root_dir_mixin import SetRootDirMixin
@@ -40,9 +48,10 @@ from ..internals.field_extractors.internal__starts_with import internal__starts_
 
 
 class StartsWithExtractor(
+    SetDatabaseFiltersMixin,
     SetFieldMixin,
-    SetRootDirMixin,
     SetPatternMixin,
+    SetRootDirMixin,
 ):
     """:meta private:"""
 
@@ -51,11 +60,15 @@ class StartsWithExtractor(
         self.field = None
         self.pattern = None
         self.root_dir = "./"
+        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__starts_with(
             field=self.field,
             pattern=self.pattern,
+            #
+            # DATABASE PARAMS:
             root_dir=self.root_dir,
+            **self.database_filters.__dict__,
         )
