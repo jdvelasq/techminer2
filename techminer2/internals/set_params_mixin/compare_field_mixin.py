@@ -4,11 +4,11 @@
 # pylint: disable=too-few-public-methods
 
 
-class SetPatternMixin:
+class CompareFieldMixin:
     """:meta private:"""
 
-    def set_pattern(self, pattern):
+    def compare_field(self, field):
         """:meta private:"""
 
-        self.pattern = pattern
+        self.compare_field = field
         return self

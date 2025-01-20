@@ -4,11 +4,11 @@
 # pylint: disable=too-few-public-methods
 
 
-class SetRootDirMixin:
+class UsingDatabase:
     """:meta private:"""
 
-    def set_root_dir(self, root_dir):
+    def using_database(self, database):
         """:meta private:"""
 
-        self.root_dir = root_dir
+        self.database = database
         return self

@@ -4,11 +4,11 @@
 # pylint: disable=too-few-public-methods
 
 
-class SetCompareFieldMixin:
+class ToFieldMixin:
     """:meta private:"""
 
-    def set_compare_field(self, field):
+    def to_field(self, field):
         """:meta private:"""
 
-        self.compare_field = field
+        self.to_field = field
         return self

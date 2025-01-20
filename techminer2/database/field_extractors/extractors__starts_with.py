@@ -12,14 +12,16 @@ Starts With
 >>> from techminer2.database.field_extractors import StartsWithExtractor
 >>> terms = (
 ...     StartsWithExtractor() 
-...     .set_pattern("FINAN")
-...     .set_field("author_keywords") 
-...     .set_root_dir("example/")
-...     .set_database_filters(
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
+...     .for_field(
+...         with_name="author_keywords", 
+...         with_terms_having_pattern="FINAN",
+...     ).for_data(
+...         in_root_dir="example/",
+...         where_database="main",
+...         where_record_years_between=(None, None),
+...         where_record_citations_between=(None, None),
 ...     ).build()
+... )
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -37,13 +39,13 @@ Starts With
  
 """
 
+from ...internals.set_params_mixin.in_root_dir_mixin import SetRootDirMixin
 from ...internals.set_params_mixin.set_database_filters_mixin import (
     DatabaseFilters,
     SetDatabaseFiltersMixin,
 )
 from ...internals.set_params_mixin.set_field_mixin import SetFieldMixin
-from ...internals.set_params_mixin.set_pattern_mixin import SetPatternMixin
-from ...internals.set_params_mixin.set_root_dir_mixin import SetRootDirMixin
+from ...internals.set_params_mixin.with_pattern_mixin import SetPatternMixin
 from ..internals.field_extractors.internal__starts_with import internal__starts_with
 
 

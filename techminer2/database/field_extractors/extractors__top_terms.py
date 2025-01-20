@@ -10,26 +10,21 @@
 Filter a Field
 ===============================================================================
 
->>> from techminer2.database.operators import FilterOperator
+>>> from techminer2.database.operators import TopTermsExtractor
 >>> (
-...     FilterOperator()  # doctest: +SKIP 
-...     .set_field_params(
-...         source="author_keywords",
-...         dest="author_keywords_filtered",
-...     #
-...     ).set_filter_params(
-...         metric='OCCGC',
-...         top_n=10,
-...         occ_range=(None, None),
-...         gc_range=(None, None),
-...         custom_items=None,
-...     #
-...     .set_database_params(
-...         "root_dir": "example/",
-...         "database": "main",
-...         "year_filter": (None, None),
-...         "cited_by_filter": (None, None),
-...     #
+...     TopTermsExtractor()
+...     .for_field(
+...         with_name="author_keywords", 
+...         select_top_terms=10,
+...         order_terms_by="OCC",
+...         having_term_occurrences_between=(None, None),
+...         having_term_citations_between=(None, None),
+...         having_terms_in=None,
+...     ).for_data(
+...         in_root_dir="example/",
+...         using_database="main",
+...         where_record_years_between=(None, None),
+...         where_record_citations_between=(None, None),
 ...     ).build()
 ... )
 

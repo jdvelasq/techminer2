@@ -9,13 +9,14 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.database.transformations import transformations__count_terms_per_record
->>> transformations__count_terms_per_record(  
-...     source="authors",
-...     dest="test_num_authors",
-...     #
-...     # DATABASE PARAMS:
-...     root_dir="example",
+>>> from techminer2.database.transformations import CountTermsPerRecordOperator
+>>> (
+...     CountTermsPerRecordOperator()
+...     .for_fields(
+...         with_name="authors",
+...         to_name="test_num_authors",
+...     ).for_data(
+...         in_root_dir="example",
 ... )
 
 >>> from techminer2.database.tools import Query

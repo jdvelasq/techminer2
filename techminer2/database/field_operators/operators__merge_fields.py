@@ -12,12 +12,11 @@ Merge Fields
 >>> from techminer2.database.operations import MergeFieldsOperator
 >>> (
 ...     MergeFieldsOperator()  # doctest: +SKIP
-...     .set_params(
-...         source=["author_keywords", "index_keywords"],
-...         dest="merged_keywords",
-...         #
-...         # DATABASE PARAMS:
-...         root_dir="example",
+...     .for_fields(
+...         with_name=["author_keywords", "index_keywords"],
+...         to_name="merged_keywords",
+...     ).for_data(
+...         in_root_dir="example",
 ...     ).build()
 ... )
 

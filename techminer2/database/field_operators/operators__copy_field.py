@@ -12,10 +12,11 @@ Copy a Field
 >>> from techminer2.database.operations import CopyFieldOperator
 >>> (
 ...     CopyFieldOperator()  # doctest: +SKIP
-...     .set_params(
-...         source="author_keywords",
-...         dest="author_keywords_copy",
-...         root_dir="example",
+...     .for_fields(
+...         with_name="author_keywords",
+...         to_name="author_keywords_copy",
+...     ).for_data(
+...         in_root_dir="example",
 ...     ).build()
 ... )
 

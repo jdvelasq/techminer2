@@ -13,12 +13,11 @@ Fill NA
 >>> from techminer2.database.operations import FillNAOperator
 >>> (
 ...     FillNAOperator()  # doctest: +SKIP 
-...     .set_params(
-...         fill_field="author_keywords",
-...         with_field="index_keywords",
-...         #
-...         # DATABASE PARAMS:
-...         root_dir="example",
+...     .for_field(
+...         with_name="author_keywords",
+...         using_values_from="index_keywords",
+...     ).for_data(
+...         in_root_dir="example",
 ...     ).build()
 ... )
 

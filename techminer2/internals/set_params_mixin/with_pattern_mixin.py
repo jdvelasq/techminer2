@@ -4,11 +4,11 @@
 # pylint: disable=too-few-public-methods
 
 
-class SetToFieldMixin:
+class WithPatternMixin:
     """:meta private:"""
 
-    def set_to_field(self, field):
+    def with_pattern(self, pattern):
         """:meta private:"""
 
-        self.to_field = field
+        self.pattern = pattern
         return self

@@ -10,34 +10,34 @@ Co-occurrences Chart
 
 
 ## >>> from techminer2.tools.associations import co_occurrences_chart
-## >>> plot = co_occurrences_chart(
-## ...     #
-## ...     # FUNCTION PARAMS:
-## ...     item='FINTECH',
-## ...     #
-## ...     # CO-OCC PARAMS:
-## ...     columns='author_keywords',
-## ...     rows=None,
-## ...     #
-## ...     # COLUMN PARAMS:
-## ...     col_top_n=20,
-## ...     col_occ_range=(None, None),
-## ...     col_gc_range=(None, None),
-## ...     col_custom_terms=None,
-## ...     #
-## ...     # ROW PARAMS:
-## ...     row_top_n=None,
-## ...     row_occ_range=(None, None),
-## ...     row_gc_range=(None, None),
-## ...     row_custom_terms=None,
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
-## ... )
-## >>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
+>>> plot = co_occurrences_chart(
+...     #
+...     # FUNCTION PARAMS:
+...     item='FINTECH',
+...     #
+...     # CO-OCC PARAMS:
+...     #
+...     # COLUMN PARAMS:
+...     columns='author_keywords',
+...     col_top_n=20,
+...     col_occ_range=(None, None),
+...     col_gc_range=(None, None),
+...     col_custom_terms=None,
+...     #
+...     # ROW PARAMS:
+...     rows=None,
+...     row_top_n=None,
+...     row_occ_range=(None, None),
+...     row_gc_range=(None, None),
+...     row_custom_terms=None,
+...     ).set_database_params(
+...         root_dir="example/", 
+...         database="main",
+...         year_filter=(None, None),
+...         cited_by_filter=(None, None),
+...     ).build()
+... )
+>>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
 
 .. raw:: html
 

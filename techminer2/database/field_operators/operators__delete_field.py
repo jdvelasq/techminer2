@@ -13,11 +13,10 @@ Delete a Field
 >>> from techminer2.database.operations import DeleteFieldOperator
 >>> (
 ...     DeleteFieldOperator()  # doctest: +SKIP 
-...     .set_params(
-...         field="author_keywords_copy",
-...         #
-...         # DATABASE PARAMS:
-...         root_dir="example",
+...     .for_field(
+...         with_name="author_keywords_copy",
+...     ).for_data(
+...         in_root_dir="example",
 ...     ).build()
 ... )
 

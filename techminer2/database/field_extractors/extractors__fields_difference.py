@@ -12,13 +12,14 @@ Fields difference
 >>> from techminer2.database.field_extractors import FieldsDifferenceExtractor
 >>> terms = (
 ...     FieldsDifferenceExtractor() 
-...     .set_compare_field("author_keywords") 
-...     .set_to_field("index_keywords")
-...     .set_root_dir("example/")
-...     .set_database_filters(
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
+...     .compare( 
+...         field="author_keywords",
+...         to_field="index_keywords",
+...     ).for_data(
+...         in_root_dir="example/",
+...         where_database="main",
+...         where_record_years_between=(None, None),
+...         where_record_citations_between=(None, None),
 ...     ).build()
 ... )
 >>> from pprint import pprint
@@ -36,13 +37,13 @@ Fields difference
 
 """
 
-from ...internals.set_params_mixin.set_compare_field_mixin import SetCompareFieldMixin
+from ...internals.set_params_mixin.compare_field_mixin import SetCompareFieldMixin
+from ...internals.set_params_mixin.in_root_dir_mixin import SetRootDirMixin
 from ...internals.set_params_mixin.set_database_filters_mixin import (
     DatabaseFilters,
     SetDatabaseFiltersMixin,
 )
-from ...internals.set_params_mixin.set_root_dir_mixin import SetRootDirMixin
-from ...internals.set_params_mixin.set_to_field_mixin import SetToFieldMixin
+from ...internals.set_params_mixin.to_field_mixin import SetToFieldMixin
 from ..internals.field_extractors.internal__fields_difference import (
     internal__fields_difference,
 )

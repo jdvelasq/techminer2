@@ -13,13 +13,12 @@ Process a Field
 >>> from techminer2.database.operations import ProcessFieldOperator
 >>> (
 ...     ProcessFieldOperator()  # doctest: +SKIP 
-...     .set_params(
-...         source="author_keywords",
-...         dest="author_keywords_copy",
-...         func=lambda x: x.str.lower(),
-...         #
-...         # DATABASE PARAMS:
-...         root_dir="example",
+...     .for_fields(
+...         with_name="author_keywords",
+...         to_name="author_keywords_copy",
+...         using_func=lambda x: x.str.lower(),
+...     ).for_data(
+...         in_root_dir="example",
 ...     ).build()
 ... )
 
