@@ -10,46 +10,30 @@
 Fill NA
 ===============================================================================
 
->>> from techminer2.database.operations import FillNAOperator
+>>> from techminer2.database.field_operators import FillNAOperator
 >>> (
 ...     FillNAOperator()  # doctest: +SKIP 
-...     .for_field(
-...         with_name="author_keywords",
-...         using_values_from="index_keywords",
-...     ).for_data(
-...         in_root_dir="example",
-...     ).build()
+...     .fill_na_in_field("author_keywords")
+...     .using_values_from_field("index_keywords")
+...     .where_directory_is("example/")
+...     .build()
 ... )
 
 """
-from dataclasses import dataclass
-
-from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_operators.internal__fillna import internal__fillna
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
-@dataclass
-class Params:
-    """:meta private:"""
-
-    fill_field: str = ""
-    with_field: str = ""
-    root_dir: str = "./"
-
-
 class FillNAOperator(
-    SetParamsMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.params = Params()
-
     def build(self):
 
-        if self.params.fill_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.fill_field}` is protected")
+        if self.params.dest_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__fillna(
             fill_field=self.params.fill_field,

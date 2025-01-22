@@ -12,12 +12,11 @@ Summary Sheet
 >>> from techminer2.database.tools import SummarySheet
 >>> result = (
 ...     SummarySheet()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .build()
 ... )
 >>> result.head(10)
                       column  number of records coverage (%)
@@ -35,24 +34,27 @@ Summary Sheet
 """
 import pandas as pd  # type: ignore
 
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
+from ...internals.mixins import InputFunctionsMixin
 from ..load.load__filtered_database import load__filtered_database
 
 
 class SummarySheet(
-    SetDatabaseFiltersMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.database_params = DatabaseFilters()
-
     def build(self):
 
-        records = load__filtered_database(**self.database_params.__dict__)
+        records = load__filtered_database(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=self.params.records_order_by,
+            records_match=self.params.records_match,
+        )
 
         #
         # Compute stats per column

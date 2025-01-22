@@ -12,15 +12,16 @@ Ends With
 >>> from techminer2.database.field_extractors import EndsWithExtractor
 >>> terms = (
 ...     EndsWithExtractor() 
-...     .for_field(
-...         with_name="author_keywords", 
-...         with_terms_having_pattern="ING",
-...     ).for_data(
-...         in_root_dir="example/",
-...         where_database="main",
-...         where_record_years_between=(None, None),
-...         where_record_citations_between=(None, None),
-...     ).build()
+...     #
+...     .with_source_field("author_keywords")
+...     .with_terms_having_pattern("ING")
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -36,40 +37,26 @@ Ends With
  'MARKETPLACE_LENDING']
  
 """
-
-
-from ...internals.set_params_mixin.in_root_dir_mixin import SetRootDirMixin
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
-from ...internals.set_params_mixin.set_field_mixin import SetFieldMixin
-from ...internals.set_params_mixin.with_pattern_mixin import SetPatternMixin
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_extractors.internal__ends_with import internal__ends_with
 
 
 class EndsWithExtractor(
-    SetDatabaseFiltersMixin,
-    SetFieldMixin,
-    SetPatternMixin,
-    SetRootDirMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
-
-    def __init__(self):
-
-        self.field = None
-        self.pattern = None
-        self.root_dir = "./"
-        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__ends_with(
-            field=self.field,
-            pattern=self.pattern,
+            source_field=self.params.source_field,
+            term_pattern=self.params.term_pattern,
             #
             # DATABASE PARAMS:
-            root_dir=self.root_dir,
-            **self.database_filters.__dict__,
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=None,
+            records_match=self.params.records_match,
         )

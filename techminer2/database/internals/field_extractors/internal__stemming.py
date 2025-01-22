@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from typing import Dict, List, Optional, Tuple
+
 from textblob import TextBlob  # type: ignore
 
 from .internal__get_field_values_from_database import (
@@ -18,12 +20,12 @@ def internal__stemming_and(
     source_field,
     #
     # DATABASE PARAMS:
-    root_dir,
+    root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
     """:meta private:"""
 
@@ -35,39 +37,39 @@ def internal__stemming_and(
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
 
 
 def internal__stemming_or(
-    custom_items,
+    selected_terms,
     source_field,
     #
     # DATABASE PARAMS:
     root_dir,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
     """:meta private:"""
 
     return stemming(
-        custom_items=custom_items,
+        custom_items=selected_terms,
         source_field=source_field,
         stemming_fn=apply_stemming_or_operator,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
 
 
@@ -79,24 +81,24 @@ def stemming(
     # DATABASE PARAMS:
     root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
     """:meta private:"""
 
     stemmed_terms = get_stemmed_items(custom_items)
     df = internal__get_field_values_from_database(
-        field=source_field,
+        source_field=source_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
     df = create_keys_column(df)
 

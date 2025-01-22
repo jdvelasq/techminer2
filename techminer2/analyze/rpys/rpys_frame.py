@@ -39,9 +39,9 @@ def rpys_frame(
     references = load__filtered_database(
         root_dir=root_dir,
         database="references",
-        year_filter=(None, None),
-        cited_by_filter=(None, None),
-        sort_by=None,
+        record_years_range=(None, None),
+        record_citations_range=(None, None),
+        records_order_by=None,
     )
 
     references = references[["year"]]

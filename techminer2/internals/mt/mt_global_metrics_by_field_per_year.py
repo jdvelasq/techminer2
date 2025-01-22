@@ -71,9 +71,9 @@ def _mt_global_metrics_by_field_per_year(
         # DATABASE PARAMS
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=None,
+        record_years_range=year_filter,
+        record_citations_range=cited_by_filter,
+        records_order_by=None,
         **filters,
     )
     indicators = indicators.assign(OCC=1)

@@ -19,16 +19,23 @@ Load Filtered Database
 ...     # DATABASE PARAMS:
 ...     root_dir="example/",
 ...     database="main",
-...     year_filter=(None, None),    
-...     cited_by_filter=(None, None),   
-...     sort_by=None,
-... ) # doctest: +ELLIPSIS
-
-...
-
+...     record_years_range=(None, None),    
+...     record_citations_range=(None, None),   
+...     records_order_by=None,
+...     records_match=None,
+... ).head() # doctest: +ELLIPSIS
+                                                   link  ...                                        descriptors
+934   https://www.scopus.com/inward/record.uri?eid=2...  ...  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
+935   https://www.scopus.com/inward/record.uri?eid=2...  ...  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; CONVERG...
+1031  https://www.scopus.com/inward/record.uri?eid=2...  ...  FINANCIAL_INCLUSION; FINANCIAL_SCENARIZATION; ...
+1059  https://www.scopus.com/inward/record.uri?eid=2...  ...                BANKING_INNOVATIONS; FINTECH; RISKS
+1075  https://www.scopus.com/inward/record.uri?eid=2...  ...  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; E...
+<BLANKLINE>
+[5 rows x 69 columns]
 
 """
 import pathlib
+from typing import Dict, List, Optional, Tuple
 
 import pandas as pd  # type: ignore
 
@@ -38,10 +45,10 @@ def load__filtered_database(
     # DATABASE PARAMS
     root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
     """:meta private:"""
 
@@ -111,7 +118,10 @@ def load__filtered_database(
 
         return records
 
-    def apply_filters_to_records(records, **filters):
+    def apply_filters_to_records(records, filters):
+
+        if filters is None:
+            return records
 
         for filter_name, filter_value in filters.items():
 
@@ -154,61 +164,61 @@ def load__filtered_database(
             return records
 
         if sort_by == "date_newest":
-            return records.sort_values(
+            records = records.sort_values(
                 ["year", "global_citations", "local_citations"],
                 ascending=[False, False, False],
             )
 
         if sort_by == "date_oldest":
-            return records.sort_values(
+            records = records.sort_values(
                 ["year", "global_citations", "local_citations"],
                 ascending=[True, False, False],
             )
 
         if sort_by == "global_cited_by_highest":
-            return records.sort_values(
+            records = records.sort_values(
                 ["global_citations", "year", "local_citations"],
                 ascending=[False, False, False],
             )
 
         if sort_by == "global_cited_by_lowest":
-            return records.sort_values(
+            records = records.sort_values(
                 ["global_citations", "year", "local_citations"],
                 ascending=[True, False, False],
             )
 
         if sort_by == "local_cited_by_highest":
-            return records.sort_values(
+            records = records.sort_values(
                 ["local_citations", "year", "global_citations"],
                 ascending=[False, False, False],
             )
 
         if sort_by == "local_cited_by_lowest":
-            return records.sort_values(
+            records = records.sort_values(
                 ["local_citations", "year", "global_citations"],
                 ascending=[True, False, False],
             )
 
         if sort_by == "first_author_a_to_z":
-            return records.sort_values(
+            records = records.sort_values(
                 ["authors", "global_citations", "local_citations"],
                 ascending=[True, False, False],
             )
 
         if sort_by == "first_author_z_to_a":
-            return records.sort_values(
+            records = records.sort_values(
                 ["authors", "global_citations", "local_citations"],
                 ascending=[False, False, False],
             )
 
         if sort_by == "source_title_a_to_z":
-            return records.sort_values(
+            records = records.sort_values(
                 ["source_title", "global_citations", "local_citations"],
                 ascending=[True, False, False],
             )
 
         if sort_by == "source_title_z_to_a":
-            return records.sort_values(
+            records = records.sort_values(
                 ["source_title", "global_citations", "local_citations"],
                 ascending=[False, False, False],
             )
@@ -216,9 +226,9 @@ def load__filtered_database(
         return records
 
     records = get_records_from_file(root_dir, database)
-    records = filter_records_by_year(records, year_filter)
-    records = filter_records_by_citations(records, cited_by_filter)
-    records = apply_filters_to_records(records, **filters)
-    records = apply_sort_by(records, sort_by)
+    records = filter_records_by_year(records, record_years_range)
+    records = filter_records_by_citations(records, record_citations_range)
+    records = apply_filters_to_records(records, records_match)
+    records = apply_sort_by(records, records_order_by)
 
     return records

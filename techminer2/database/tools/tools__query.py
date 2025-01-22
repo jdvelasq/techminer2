@@ -14,15 +14,12 @@ Query
 >>> from techminer2.database.tools import Query
 >>> (
 ...     Query()
-...     .set_analysis_params(
-...         expr="SELECT source_title FROM database LIMIT 5;",
-...     #
-...     ).set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
+...     .with_query_expression("SELECT source_title FROM database LIMIT 5;")
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .build()
 ... )
                                         source_title
 0  International Journal of Applied Engineering R...
@@ -35,47 +32,26 @@ Query
 
 
 """
-from dataclasses import dataclass
-from typing import Optional
-
 import duckdb
 
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
+from ...internals.mixins import InputFunctionsMixin
 from ..load.load__filtered_database import load__filtered_database
 
 
-@dataclass
-class AnalysisParams:
-    """:meta private:"""
-
-    expr: Optional[str] = None
-
-
-class AnalysisParamsMixin:
-    """:meta private:"""
-
-    def set_analysis_params(self, **kwars):
-        for key, value in kwars.items():
-            if hasattr(self.analysis_params, key):
-                setattr(self.analysis_params, key, value)
-            else:
-                raise ValueError(f"Invalid parameter for AnalysisParams: {key}")
-        return self
-
-
 class Query(
-    AnalysisParamsMixin,
-    SetDatabaseFiltersMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.analysis_params = AnalysisParams()
-        self.database_params = DatabaseFilters()
-
     def build(self):
-        database = load__filtered_database(**self.database_params.__dict__)
-        return duckdb.query(self.analysis_params.expr).df()
+        database = load__filtered_database(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=self.params.records_order_by,
+            records_match=self.params.records_match,
+        )
+        return duckdb.query(self.params.query_expr).df()

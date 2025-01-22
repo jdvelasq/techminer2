@@ -9,40 +9,34 @@
 Merge Fields
 ===============================================================================
 
->>> from techminer2.database.operations import MergeFieldsOperator
+>>> from techminer2.database.field_operators import MergeFieldsOperator
 >>> (
 ...     MergeFieldsOperator()  # doctest: +SKIP
-...     .for_fields(
-...         with_name=["author_keywords", "index_keywords"],
-...         to_name="merged_keywords",
-...     ).for_data(
-...         in_root_dir="example",
-...     ).build()
+...     .from_field(["author_keywords", "index_keywords"])
+...     .as_field("merged_keywords")
+...     .where_directory_is("example/")
+...     .build()
 ... )
 
 """
-from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
-from ...internals.set_params_mixin.set_source_dest_params import SourceDestParams
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_operators.internal__merge_fields import internal__merge_fields
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
 class MergeFieldsOperator(
-    SetParamsMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.params = SourceDestParams()
-
     def build(self):
 
-        if self.params.dest in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.dest}` is protected")
+        if self.params.dest_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__merge_fields(
-            source=self.params.source,
-            dest=self.params.dest,
+            source=self.params.source_field,
+            dest=self.params.dest_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

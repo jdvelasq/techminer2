@@ -11,7 +11,7 @@ import pathlib
 import pandas as pd  # type: ignore
 
 
-def internal__process_field(
+def internal__transform_field(
     source,
     dest,
     func,

@@ -7,64 +7,66 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-few-public-methods
 
+from typing import Dict, List, Optional, Tuple
+
 from ...load import load__filtered_database
 
 
 def internal__top_terms(
-    field: str,
-    metric: str,
-    top_n: int,
-    occ_range: tuple,
-    gc_range: tuple,
-    custom_terms: list,
+    source_field: str,
+    terms_order_criteria: str,
+    top_n_terms: int,
+    term_occurrences_range: tuple,
+    term_citations_range: tuple,
+    terms_in: list,
     #
     # DATABASE PARAMS:
     root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
-    def build_records_df(
+    def build_terms_df(
         root_dir: str,
         database: str,
-        year_filter: tuple,
-        cited_by_filter: tuple,
-        sort_by: str,
-        **filters,
+        record_years_range: Tuple[Optional[int], Optional[int]],
+        record_citations_range: Tuple[Optional[int], Optional[int]],
+        records_order_by: Optional[str],
+        records_match: Optional[Dict[str, List[str]]],
     ):
         records = load__filtered_database(
             root_dir=root_dir,
             database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            sort_by=sort_by,
-            **filters,
+            record_years_range=record_years_range,
+            record_citations_range=record_citations_range,
+            records_order_by=records_order_by,
+            records_match=records_match,
         )
 
-        records = records[[field, "global_citations", "local_citations"]].copy()
+        records = records[[source_field, "global_citations", "local_citations"]].copy()
         records["OCC"] = 1
-        records[field] = records[field].str.split("; ")
-        records = records.explode(field)
+        records[source_field] = records[source_field].str.split("; ")
+        terms = records.explode(source_field)
 
-        records = (
-            records.gruupby([field], as_index=False)
+        terms = (
+            terms.groupby([source_field])
             .agg({"OCC": "sum", "global_citations": "sum", "local_citations": "sum"})
             .reset_index()
         )
 
-        return records
+        return terms
 
-    def sort_records_by_metric(records, metric):
+    def sort_terms_by_metric(records, metric):
         if metric == "OCC":
             records = records.sort_values(
-                ["OCC", "global_citations", "local_citations", field],
+                ["OCC", "global_citations", "local_citations", source_field],
                 ascending=[False, False, False, True],
             )
         elif metric == "global_citations":
             records = records.sort_values(
-                ["global_citations", "OCC", "local_citations", field],
+                ["global_citations", "OCC", "local_citations", source_field],
                 ascending=[False, False, False, True],
             )
         else:
@@ -77,7 +79,7 @@ def internal__top_terms(
             records = records.head(top_n)
         return records
 
-    def filter_by_occ_range(records, occ_range):
+    def filter_terms_by_occ_range(records, occ_range):
         if occ_range is not None:
             if occ_range[0] is not None:
                 records = records[records["OCC"] >= occ_range[0]]
@@ -85,7 +87,7 @@ def internal__top_terms(
                 records = records[records["OCC"] <= occ_range[1]]
         return records
 
-    def filter_by_gc_range(records, gc_range):
+    def filter_terms_by_gc_range(records, gc_range):
         if gc_range is not None:
             if gc_range[0] is not None:
                 records = records[records["global_citations"] >= gc_range[0]]
@@ -93,27 +95,29 @@ def internal__top_terms(
                 records = records[records["global_citations"] <= gc_range[1]]
         return records
 
-    def filter_by_custom_terms(records, custom_terms):
-        if custom_terms is not None:
-            records = records[records[field].isin(custom_terms)]
+    def filter_by_custom_terms(records, records_match):
+        if records_match is not None:
+            records = records[records[source_field].isin(records_match)]
         return records
 
     #
     # MAIN CODE
     #
-    records = build_records_df(
+    terms = build_terms_df(
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
 
-    records = filter_by_gc_range(records, gc_range)
-    records = filter_by_occ_range(records, occ_range)
-    records = sort_records_by_metric(records, metric)
-    records = filter_by_custom_terms(records, custom_terms)
-    records = filter_by_top_n(records, top_n)
+    terms = filter_terms_by_gc_range(terms, term_citations_range)
+    terms = filter_terms_by_occ_range(terms, term_occurrences_range)
+    terms = sort_terms_by_metric(terms, terms_order_criteria)
+    terms = filter_by_custom_terms(terms, terms_in)
+    terms = filter_by_top_n(terms, top_n_terms)
 
-    return records
+    terms = terms[source_field].tolist()
+
+    return terms

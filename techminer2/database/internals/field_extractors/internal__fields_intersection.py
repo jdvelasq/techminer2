@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from typing import Dict, List, Optional, Tuple
 
 from .internal__get_field_values_from_database import (
     internal__get_field_values_from_database,
@@ -19,36 +20,36 @@ def internal__fields_intersection(
     # DATABASE PARAMS:
     root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
 
     set_a = internal__get_field_values_from_database(
-        field=compare_field,
+        source_field=compare_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
     set_a = set_a.term.tolist()
     set_a = set(set_a)
 
     set_b = internal__get_field_values_from_database(
-        field=to_field,
+        source_field=to_field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
     set_b = set_b.term.tolist()
     set_b = set(set_b)

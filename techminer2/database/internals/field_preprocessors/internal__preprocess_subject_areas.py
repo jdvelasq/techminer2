@@ -13,6 +13,9 @@ import pathlib
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
+from ....package_data.database.internal__load_subject_areas import (
+    internal__load_subject_areas,
+)
 from ..message import message
 
 
@@ -32,7 +35,7 @@ def internal__preprocess_subject_areas(
         compression="zip",
     )
 
-    subject_areas_df = load_subject_areas_dataframe()
+    subject_areas_df = internal__load_subject_areas()
     subject_areas_by_issn_mapping = build_subject_areas_by_issn_mapping(
         subject_areas_df
     )
@@ -60,18 +63,6 @@ def internal__preprocess_subject_areas(
         index=False,
         compression="zip",
     )
-
-
-def load_subject_areas_dataframe():
-
-    file_path = pkg_resources.resource_filename(
-        "techminer2",
-        "database/subpackage_data/subject_areas.csv",
-    )
-    if not os.path.isfile(file_path):
-        raise FileNotFoundError(f"The file {file_path} does not exist.")
-
-    return pd.read_csv(file_path, encoding="utf-8")
 
 
 def build_subject_areas_by_issn_mapping(subject_areas_df):

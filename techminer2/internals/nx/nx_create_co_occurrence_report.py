@@ -160,8 +160,8 @@ def __extract_records_per_cluster(
     records_main = load__filtered_database(
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
+        record_years_range=year_filter,
+        record_citations_range=cited_by_filter,
         **filters,
     )
     records_main.index = pd.Index(records_main.article)
@@ -174,8 +174,8 @@ def __extract_records_per_cluster(
     records_main = load__filtered_database(
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
+        record_years_range=year_filter,
+        record_citations_range=cited_by_filter,
         **filters,
     )
 

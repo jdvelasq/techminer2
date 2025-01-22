@@ -9,6 +9,7 @@ from .extractors__match import MatchExtractor
 from .extractors__starts_with import StartsWithExtractor
 from .extractors__stemming_and import StemmingAndExtractor
 from .extractors__stemming_or import StemmingOrExtractor
+from .extractors__top_terms import TopTermsExtractor
 
 __all__ = [
     "ContainsExtractor",
@@ -20,4 +21,5 @@ __all__ = [
     "StartsWithExtractor",
     "StemmingAndExtractor",
     "StemmingOrExtractor",
+    "TopTermsExtractor",
 ]

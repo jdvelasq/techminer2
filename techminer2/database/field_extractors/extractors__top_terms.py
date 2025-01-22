@@ -10,217 +10,62 @@
 Filter a Field
 ===============================================================================
 
->>> from techminer2.database.operators import TopTermsExtractor
->>> (
+>>> from techminer2.database.field_extractors import TopTermsExtractor
+>>> terms = (
 ...     TopTermsExtractor()
-...     .for_field(
-...         with_name="author_keywords", 
-...         select_top_terms=10,
-...         order_terms_by="OCC",
-...         having_term_occurrences_between=(None, None),
-...         having_term_citations_between=(None, None),
-...         having_terms_in=None,
-...     ).for_data(
-...         in_root_dir="example/",
-...         using_database="main",
-...         where_record_years_between=(None, None),
-...         where_record_citations_between=(None, None),
-...     ).build()
+...     #
+...     .with_source_field("author_keywords")
+...     .select_top_n_terms(10)
+...     .order_terms_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
 ... )
-
+>>> from pprint import pprint
+>>> pprint(terms[:10])
+['FINTECH',
+ 'INNOVATION',
+ 'FINANCIAL_SERVICES',
+ 'FINANCIAL_INCLUSION',
+ 'FINANCIAL_TECHNOLOGY',
+ 'CROWDFUNDING',
+ 'MARKETPLACE_LENDING',
+ 'BUSINESS_MODELS',
+ 'CYBER_SECURITY',
+ 'CASE_STUDY']
 
 """
-import glob
-import os.path
-from dataclasses import dataclass
-from typing import Optional, Tuple
-
-import pandas as pd  # type: ignore
-
-from ...._dtypes import DTYPES
-from ....analyze.metrics import performance_metrics_frame
-from ...field_operators.operators__protected_fields import PROTECTED_FIELDS
+from ...internals.mixins import InputFunctionsMixin
+from ..internals.field_extractors.internal__top_terms import internal__top_terms
 
 
-@dataclass
-class FieldParams:
-    """:meta private:"""
-
-    source: Optional[str] = None
-    dest: Optional[str] = None
-
-
-class SetFieldParamsMixin:
-    """:meta private:"""
-
-    def set_field_params(self, **kwargs):
-        """:meta private:"""
-
-        for key, value in kwargs.items():
-            if hasattr(self.params, key):
-                setattr(self.params, key, value)
-            else:
-                raise ValueError(f"Invalid parameter for field params: {key}")
-        return self
-
-
-@dataclass
-class FilterParams:
-    """:meta private:"""
-
-    metric: str = "OCCGC"
-    top_n: int = 10
-    occ_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    gc_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    custom_items = None
-
-
-class SetFilterParamsMixin:
-    """:meta private:"""
-
-    def set_filter_params(self, **kwargs):
-        """:meta private:"""
-
-        for key, value in kwargs.items():
-            if hasattr(self.params, key):
-                setattr(self.params, key, value)
-            else:
-                raise ValueError(f"Invalid parameter for filter params: {key}")
-        return self
-
-
-@dataclass
-class DatabaseParams:
-    """:meta private:"""
-
-    root_dir: str = "./"
-    database: str = "main"
-    year_filter: Tuple[Optional[int], Optional[int]] = (None, None)
-    cited_by_filter: Tuple[Optional[int], Optional[int]] = (None, None)
-    sort_by: Optional[str] = None
-
-
-class SetDatabaseParamsMixin:
-    """:meta private:"""
-
-    def set_database_params(self, **kwargs):
-        """Set database parameters."""
-
-        for key, value in kwargs.items():
-            setattr(self.database_params, key, value)
-        return self
-
-
-class FilterOperator(
-    SetFieldParamsMixin,
-    SetFilterParamsMixin,
-    SetDatabaseParamsMixin,
+class TopTermsExtractor(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.field_params = FieldParams()
-        self.filter_params = FilterParams()
-        self.database_params = DatabaseParams()
-
     def build(self):
 
-        if self.field_params.dest in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.field_params.dest}` is protected")
-
-        files = list(
-            glob.glob(os.path.join(database_params["root_dir"], "databases/_*.zip"))
+        return internal__top_terms(
+            source_field=self.params.source_field,
+            terms_order_criteria=self.params.terms_order_by,
+            top_n_terms=self.params.top_n_terms,
+            term_occurrences_range=self.params.term_occurrences_range,
+            term_citations_range=self.params.term_citations_range,
+            terms_in=self.params.terms_in,
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=self.params.records_order_by,
+            records_match=self.params.records_match,
         )
-        for file in files:
-            #
-            # If src_field is not in the database, continue with the next database
-            data_full = pd.read_csv(
-                file, encoding="utf-8", compression="zip", dtype=DTYPES
-            )
-            if source not in data_full.columns:
-                continue
-
-            #
-            # Extracts valid values for the field
-            if file.endswith("_cited_by.csv.zip"):
-                database = "cited_by"
-            elif file.endswith("_main.csv.zip"):
-                database = "main"
-            elif file.endswith("_references.csv.zip"):
-                database = "references"
-            else:
-                raise ValueError(f"Internal error: unknown database {file}")
-
-            data_frame = performance_metrics_frame(
-                field=source,
-                filter_params=filter_params,
-                database_params=database_params,
-            )
-            valid_items = data_frame.index.tolist()
-
-            #
-            # Filter by year
-            data_filtered = data_full.copy()
-            if database_params["year_filter"] is not None:
-                start_year, end_year = database_params["year_filter"]
-                if start_year is not None:
-                    data_filtered = data_filtered[data_filtered.year >= start_year]
-                if end_year is not None:
-                    data_filtered = data_filtered[data_filtered.year <= end_year]
-
-            #
-            # Filter by citations
-            if database_params["cited_by_filter"] is not None:
-                cited_by_min, cited_by_max = database_params["cited_by_filter"]
-                if cited_by_min is not None:
-                    data_filtered = data_filtered[
-                        data_filtered.global_citations >= cited_by_min
-                    ]
-                if cited_by_max is not None:
-                    data_filtered = data_filtered[
-                        data_filtered.global_citations <= cited_by_max
-                    ]
-
-            #
-            # Filter by other fields
-            filters = database_params["filters"]
-            if len(filters.items()):
-                for filter_name, filter_value in filters.items():
-                    # Split the filter value into a list of strings
-                    database = data_filtered[["article", filter_name]]
-                    database[filter_name] = database[filter_name].str.split(";")
-
-                    # Explode the list of strings into multiple rows
-                    database = database.explode(filter_name)
-
-                    # Remove leading and trailing whitespace from the strings
-                    database[filter_name] = database[filter_name].str.strip()
-
-                    # Keep only records that match the filter value
-                    database = database[database[filter_name].isin(filter_value)]
-                    data_filtered = data_filtered[
-                        data_filtered["article"].isin(database["article"])
-                    ]
-
-            #
-            # Extracts valida values for the new field
-            data_full[dest] = pd.NA
-
-            idx = data_filtered.index.copy()
-            data_full.loc[idx, dest] = data_full.loc[idx, source].copy()
-            data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
-                lambda w: w.split("; "), na_action="ignore"
-            )
-            data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
-                lambda ws: [w for w in ws if w in valid_items], na_action="ignore"
-            )
-            data_full.loc[idx, dest] = data_full.loc[idx, dest].map(
-                lambda ws: "; ".join(ws) if isinstance(ws, list) else ws,
-                na_action="ignore",
-            )
-
-            #
-            # Saves the database with the new field
-            data_full.to_csv(
-                file, sep=",", encoding="utf-8", index=False, compression="zip"
-            )

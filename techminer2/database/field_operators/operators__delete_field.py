@@ -10,48 +10,33 @@
 Delete a Field
 ===============================================================================
 
->>> from techminer2.database.operations import DeleteFieldOperator
+>>> from techminer2.database.field_operators import DeleteFieldOperator
 >>> (
 ...     DeleteFieldOperator()  # doctest: +SKIP 
-...     .for_field(
-...         with_name="author_keywords_copy",
-...     ).for_data(
-...         in_root_dir="example",
-...     ).build()
+...     .select_field("author_keywords_copy")
+...     .where_directory_is("example/")
+...     .build()
 ... )
 
 """
 
-from dataclasses import dataclass
-
-from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_operators.internal__delete_field import internal__delete_field
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
-@dataclass
-class Params:
-    """:meta private:"""
-
-    field: str = ""
-    root_dir: str = "./"
-
-
 class DeleteFieldOperator(
-    SetParamsMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.params = Params()
-
     def build(self):
 
-        if self.params.field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.field}` is protected")
+        if self.params.dest_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__delete_field(
-            field=self.params.field,
+            field=self.params.source_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

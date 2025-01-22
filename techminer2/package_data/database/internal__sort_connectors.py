@@ -8,7 +8,7 @@
 # pylint: disable=too-many-statements
 """Sorts connectors.
 
->>> from techminer2.database.internals.internal__sort_connectors import (
+>>> from techminer2.package_data.database.internal__sort_connectors import (
 ...     internal__sort_connectors,
 ... )
 >>> internal__sort_connectors()
@@ -23,7 +23,7 @@ def internal__sort_connectors():
 
     file_path = pkg_resources.resource_filename(
         "techminer2",
-        "database/subpackage_data/connectors.txt",
+        "package_data/database/data/connectors.txt",
     )
 
     with open(file_path, "r", encoding="utf-8") as file:

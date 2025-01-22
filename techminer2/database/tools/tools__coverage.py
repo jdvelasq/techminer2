@@ -13,15 +13,13 @@ Coverage
 >>> from techminer2.database.tools import Coverage
 >>> (
 ...     Coverage()
-...     .set_analysis_params(
-...         field="author_keywords",
+...     .with_source_field("author_keywords")
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
 ...     #
-...     ).set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
+...     .build()
 ... )
 --INFO-- Number of documents : 50
 --INFO--   Documents with NA : 12
@@ -37,32 +35,32 @@ Coverage
 
 
 """
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
+from ...internals.mixins import InputFunctionsMixin
 from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ..load.load__filtered_database import load__filtered_database
-from .internals.set_field_param_mixin import SetFieldParamMixin
 
 
 class Coverage(
-    SetDatabaseFiltersMixin,
-    SetFieldParamMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.database_params = DatabaseFilters()
-        self.field = None
-
     def build(self):
 
-        field = self.field
+        field = self.params.source_field
 
-        stopwords = load_user_stopwords(self.database_params.root_dir)
+        stopwords = load_user_stopwords(self.params.root_dir)
 
-        documents = load__filtered_database(**self.database_params.__dict__)
+        documents = load__filtered_database(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=self.params.records_order_by,
+            records_match=self.params.records_match,
+        )
 
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]

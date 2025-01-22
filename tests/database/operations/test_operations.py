@@ -13,7 +13,7 @@
 
 >>> from techminer2.database.tools import Query
 
->>> from techminer2.database.operations import operations__clean_text
+>>> from techminer2.database.field_operators import operations__clean_text
 >>> operations__clean_text(  
 ...     source="raw_abstract",
 ...     dest="raw_abstract_copy",
@@ -53,7 +53,7 @@ institutional aspect . research india publications .
 
 
 
->>> from techminer2.database.operations import operations__highlight_nouns_and_phrases
+>>> from techminer2.database.field_operators import operations__highlight_nouns_and_phrases
 >>> operations__highlight_nouns_and_phrases(
 ...     source="raw_abstract_copy",
 ...     dest="raw_abstract_copy",
@@ -111,7 +111,7 @@ FINANCIAL_INNOVATIONS , and for the DEVELOPMENT of INCLUSIVE_FINANCE .
 
 
 
->>> from techminer2.database.operations import operations__collect_nouns_and_phrases
+>>> from techminer2.database.field_operators import operations__collect_nouns_and_phrases
 >>> operations__collect_nouns_and_phrases(
 ...     source="raw_abstract_copy",
 ...     dest="noun_and_phrases",
@@ -127,7 +127,7 @@ FINANCIAL_INNOVATIONS , and for the DEVELOPMENT of INCLUSIVE_FINANCE .
 
 
 
->>> from techminer2.database.operations import operations__delete_field
+>>> from techminer2.database.field_operators import operations__delete_field
 >>> operations__delete_field(  
 ...     field="raw_abstract_copy",
 ...     root_dir="example",

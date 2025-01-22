@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from typing import Dict, List, Optional, Tuple
 
 from .internal__get_field_values_from_database import (
     internal__get_field_values_from_database,
@@ -13,28 +14,30 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__contains(
-    pattern: str,
-    field: str,
+    term_pattern: str,
+    source_field: str,
     #
     # DATABASE PARAMS:
     root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
 
     dataframe = internal__get_field_values_from_database(
-        field=field,
+        source_field=source_field,
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
-        **filters,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
     )
-    dataframe = dataframe[dataframe.term.str.contains(pattern)]
+    dataframe = dataframe[dataframe.term.str.contains(term_pattern)]
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()

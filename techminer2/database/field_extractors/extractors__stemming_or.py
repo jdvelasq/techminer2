@@ -12,21 +12,21 @@ Stemming Field with OR
 >>> from techminer2.database.field_extractors import StemmingOrExtractor
 >>> terms = (
 ...     StemmingOrExtractor() 
-...     .for_field(
-...         with_name="author_keywords", 
-...         matching_terms_with(
+...     #
+...     .with_source_field("author_keywords")
+...     .matching_terms_with(
 ...             [
 ...                 "financial technology", 
 ...                 "artificial intelligence",
 ...             ],
-...         ), 
-...     ).for_data(
-...         in_root_dir="example/",
-...         where_database="main",
-...         where_record_years_between=(None, None),
-...         where_record_citations_between=(None, None),
-...     ).build()
-... )
+...         )
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -43,38 +43,26 @@ Stemming Field with OR
 
 """
 
-from ...internals.set_params_mixin.in_root_dir_mixin import SetRootDirMixin
-from ...internals.set_params_mixin.set_custom_items_mixin import SetCustomItemsMixin
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
-from ...internals.set_params_mixin.set_source_field_mixin import SetSourceFieldMixin
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_extractors.internal__stemming import internal__stemming_or
 
 
 class StemmingOrExtractor(
-    SetCustomItemsMixin,
-    SetDatabaseFiltersMixin,
-    SetRootDirMixin,
-    SetSourceFieldMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
-
-    def __init__(self):
-
-        self.custom_items = None
-        self.root_dir = "./"
-        self.source_field = None
-        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__stemming_or(
-            custom_items=self.custom_items,
-            source_field=self.source_field,
+            selected_terms=self.params.selected_terms,
+            source_field=self.params.source_field,
             #
             # DATABASE PARAMS:
-            root_dir=self.root_dir,
-            **self.database_filters.__dict__,
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=None,
+            records_match=self.params.records_match,
         )

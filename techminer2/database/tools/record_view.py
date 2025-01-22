@@ -6,10 +6,27 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Record View
+Retrieve records
 =======================================================================================
 
 >>> from techminer2.database.tools import document_view
+
+
+>>> (
+...     RecordRetriever()
+...     .with_data_in("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .sort_records_by("date_oldest") # date_newest, date_oldest, global_cited_by_highest, 
+...                                     # global_cited_by_lowest, local_cited_by_highest, 
+...                                     # local_cited_by_lowest, first_author_a_to_z, 
+...                                     # first_author_z_to_a, source_title_a_to_z, 
+...                                     # source_title_z_to_a
+...     .build()
+... )
+
+
 >>> documents = document_view(
 ...     #
 ...     # DATABASE PARAMS:
@@ -60,9 +77,9 @@ def select_documents(
     filtered_records = load__filtered_database(
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        sort_by=sort_by,
+        record_years_range=year_filter,
+        record_citations_range=cited_by_filter,
+        records_order_by=sort_by,
         **filters,
     )
 

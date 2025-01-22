@@ -9,40 +9,34 @@
 Copy a Field
 ===============================================================================
 
->>> from techminer2.database.operations import CopyFieldOperator
+>>> from techminer2.database.field_operators import CopyFieldOperator
 >>> (
 ...     CopyFieldOperator()  # doctest: +SKIP
-...     .for_fields(
-...         with_name="author_keywords",
-...         to_name="author_keywords_copy",
-...     ).for_data(
-...         in_root_dir="example",
-...     ).build()
+...     .select_field("author_keywords")
+...     .as_field("author_keywords_copy")
+...     .where_directory_is("example/")
+...     .build()
 ... )
 
 """
-from ...internals.set_params_mixin.set_params_mixin import SetParamsMixin
-from ...internals.set_params_mixin.set_source_dest_params import SourceDestParams
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_operators.internal__copy_field import internal__copy_field
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
 class CopyFieldOperator(
-    SetParamsMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.params = SourceDestParams()
-
     def build(self):
 
-        if self.params.dest in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.dest}` is protected")
+        if self.params.dest_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__copy_field(
-            source=self.params.source,
-            dest=self.params.dest,
+            source=self.params.source_field,
+            dest=self.params.dest_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

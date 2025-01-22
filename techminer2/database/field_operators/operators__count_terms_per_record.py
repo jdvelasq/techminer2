@@ -9,28 +9,27 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.database.transformations import CountTermsPerRecordOperator
+>>> from techminer2.database.field_operators import CountTermsPerRecordOperator
 >>> (
 ...     CountTermsPerRecordOperator()
-...     .for_fields(
-...         with_name="authors",
-...         to_name="test_num_authors",
-...     ).for_data(
-...         in_root_dir="example",
+...     .with_source_field("authors")
+...     .as_field("test_num_authors")
+...     .where_directory_is("example/")
+...     .build()
 ... )
 
->>> from techminer2.database.tools import Query
->>> (
-...     Query()
-...     .set_analysis_params(
-...         expr="SELECT authors, test_num_authors FROM database LIMIT 5;",
-...     ).set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
+# >>> from techminer2.database.tools import Query
+# >>> (
+# ...     Query()
+# ...     .set_analysis_params(
+# ...         expr="SELECT authors, test_num_authors FROM database LIMIT 5;",
+# ...     ).set_database_params(
+# ...         root_dir="example/",
+# ...         database="main",
+# ...         year_filter=(None, None),
+# ...         cited_by_filter=(None, None),
+# ...     ).build()
+# ... )
                                 authors  test_num_authors
 0  Kim Y.; Choi J.; Park Y.-J.; Yeon J.                 4
 1                   Shim Y.; Shin D.-H.                 2
@@ -39,29 +38,27 @@ Count Terms per Record
 4                   Gabor D.; Brooks S.                 2
 
 """
-
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_operators.internal__count_terms_per_record import (
     internal__count_terms_per_record,
 )
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
-def transformations__count_terms_per_record(
-    source,
-    dest,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class CountTermsPerRecordOperator(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    if dest in PROTECTED_FIELDS:
-        raise ValueError(f"Field `{dest}` is protected")
+    def build(self):
 
-    internal__count_terms_per_record(
-        source=source,
-        dest=dest,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+        if self.params.dest_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.dest_field}` is protected")
+
+        internal__count_terms_per_record(
+            source=self.params.source_field,
+            dest=self.params.dest_field,
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+        )

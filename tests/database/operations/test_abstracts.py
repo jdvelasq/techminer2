@@ -11,14 +11,16 @@
 """
 >>> import textwrap
 >>> import pandas as pd
->>> from techminer2.database.operations import operations__highlight_nouns_and_phrases
+>>> from techminer2.database.field_operators import operations__highlight_nouns_and_phrases
 >>> from techminer2.database.tools import Query
 
->>> from techminer2.database.operations import operations__clean_text
->>> operations__clean_text(  
-...     source="raw_abstract",
-...     dest="raw_abstract_copy",
-...     root_dir="example",
+>>> from techminer2.database.field_operators import CleanTextOperator
+>>> (
+...     CleanTextOperator() 
+...     .select_field("raw_abstract")
+...     .as_field("raw_abstract_copy")
+...     .with_data_in("example/")
+...     .build()
 ... )
 
 >>> query = (

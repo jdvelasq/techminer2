@@ -12,50 +12,49 @@ Statistics
 >>> from techminer2.database.tools import Statistics
 >>> (
 ...     Statistics()
-...     .set_analysis_params(
-...         field="authors",
-...     ).set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
+...     .with_source_field("author_keywords")
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .build()
 ... ).head()
-                    year                              ... test_num_authors                    
-                   count    mean std     min     25%  ...              min  25%  50%  75%  max
-authors                                               ...                                     
-Almunawar M.N.       1.0  2019.0 NaN  2019.0  2019.0  ...              4.0  4.0  4.0  4.0  4.0
-Alt R.               1.0  2018.0 NaN  2018.0  2018.0  ...              3.0  3.0  3.0  3.0  3.0
-Anagnostopoulos I.   1.0  2018.0 NaN  2018.0  2018.0  ...              1.0  1.0  1.0  1.0  1.0
-Anshari M.           1.0  2019.0 NaN  2019.0  2019.0  ...              4.0  4.0  4.0  4.0  4.0
-Arner D.W.           1.0  2017.0 NaN  2017.0  2017.0  ...              3.0  3.0  3.0  3.0  3.0
+                      year                              ... local_citations                    
+                     count    mean std     min     25%  ...             min  25%  50%  75%  max
+author_keywords                                         ...                                    
+ACTOR_NETWORK_THEORY   1.0  2016.0 NaN  2016.0  2016.0  ...             0.0  0.0  0.0  0.0  0.0
+ACTUALIZATION          1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
+ADOPTION               1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
+AGRICULTURE            1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
+AGROPAY                1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
 <BLANKLINE>
-[5 rows x 64 columns]
-
+[5 rows x 56 columns]
 
 """
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
+from ...internals.mixins import InputFunctionsMixin
 from ..load.load__filtered_database import load__filtered_database
-from .internals.set_field_param_mixin import SetFieldParamMixin
 
 
 class Statistics(
-    SetFieldParamMixin,
-    SetDatabaseFiltersMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.field = None
-        self.database_params = DatabaseFilters()
-
     def build(self):
 
-        field = self.field
-        records = load__filtered_database(**self.database_params.__dict__)
+        field = self.params.source_field
+
+        records = load__filtered_database(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=self.params.records_order_by,
+            records_match=self.params.records_match,
+        )
+
         records = records.dropna(subset=[field])
         records[field] = records[field].str.split("; ")
         records = records.explode(field)

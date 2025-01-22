@@ -11,6 +11,24 @@ Bar Plot (MIGRATED)
 ## >>> from techminer2.visualize.basic_plots.bar_plot import BarPlot
 ## >>> plot = (
 ## ...     BarPlot()
+## ...     .with_source_field("author_keywords")
+## ...     .select_top_n_terms(10)
+## ...     .order_terms_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     .using_bar_color("blue")
+## ...     #
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     #
+## ...     ).build()
+
+
+
 ## ...     .set_analysis_params(
 ## ...         metric="OCC",
 ## ...     #

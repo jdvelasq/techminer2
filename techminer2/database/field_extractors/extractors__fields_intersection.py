@@ -12,16 +12,16 @@ Fields Intersection
 >>> from techminer2.database.field_extractors import FieldsIntersectionExtractor
 >>> terms = (
 ...     FieldsIntersectionExtractor() 
-...     .compare( 
-...         field="author_keywords",
-...         to_field="index_keywords",
-...     ).for_data(
-...         in_root_dir="example/",
-...         where_database="main",
-...         where_record_years_between=(None, None),
-...         where_record_citations_between=(None, None),
-...     ).build()
-... )
+...     #
+...     .compare_field("author_keywords")
+...     .to_field("index_keywords")
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -38,40 +38,28 @@ Fields Intersection
 
 """
 
-from ...internals.set_params_mixin.compare_field_mixin import SetCompareFieldMixin
-from ...internals.set_params_mixin.in_root_dir_mixin import SetRootDirMixin
-from ...internals.set_params_mixin.set_database_filters_mixin import (
-    DatabaseFilters,
-    SetDatabaseFiltersMixin,
-)
-from ...internals.set_params_mixin.to_field_mixin import SetToFieldMixin
+from ...internals.mixins import InputFunctionsMixin
 from ..internals.field_extractors.internal__fields_intersection import (
     internal__fields_intersection,
 )
 
 
 class FieldsIntersectionExtractor(
-    SetCompareFieldMixin,
-    SetDatabaseFiltersMixin,
-    SetRootDirMixin,
-    SetToFieldMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
-
-    def __init__(self):
-
-        self.compare_field = None
-        self.root_dir = "./"
-        self.to_field = None
-        self.database_filters = DatabaseFilters()
 
     def build(self):
 
         return internal__fields_intersection(
-            compare_field=self.compare_field,
-            to_field=self.to_field,
+            compare_field=self.params.source_field,
+            to_field=self.params.dest_field,
             #
             # DATABASE PARAMS:
-            root_dir=self.root_dir,
-            **self.database_filters.__dict__,
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=None,
+            records_match=self.params.records_match,
         )

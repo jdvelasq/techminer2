@@ -9,7 +9,7 @@
 
 import pandas as pd  # type: ignore
 
-from ...field_operators.operators__process_field import internal__process_field
+from ...field_operators.operators__transform_field import internal__transform_field
 
 
 def _local_processing_func(text):
@@ -32,7 +32,7 @@ def _local_processing_func(text):
 def internal__preprocess_authors_id(root_dir):
     """:meta private:"""
 
-    internal__process_field(
+    internal__transform_field(
         source="raw_authors_id",
         dest="authors_id",
         func=_local_processing_func,

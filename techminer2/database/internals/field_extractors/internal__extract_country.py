@@ -8,6 +8,7 @@
 
 import glob
 import os
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd  # type: ignore
@@ -18,16 +19,16 @@ from ....prepare.thesaurus.internals.thesaurus__read_as_dict import (
 
 
 def internal__extract_country(
-    source,
-    dest,
+    source_field,
+    dest_field,
     #
     # DATABASE PARAMS:
-    root_dir,
+    root_dir: str,
     database: str,
-    year_filter: tuple,
-    cited_by_filter: tuple,
-    sort_by: str,
-    **filters,
+    record_years_range: Tuple[Optional[int], Optional[int]],
+    record_citations_range: Tuple[Optional[int], Optional[int]],
+    records_order_by: Optional[str],
+    records_match: Optional[Dict[str, List[str]]],
 ):
     #
     # Loads the thesaurus
@@ -38,11 +39,11 @@ def internal__extract_country(
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8", compression="zip")
-        if source in data.columns:
-            data[dest] = data[source].copy()
-            data[dest] = data[dest].replace(np.nan, pd.NA)
-            data[dest] = data[dest].str.split("; ")
-            data[dest] = data[dest].map(
+        if source_field in data.columns:
+            data[dest_field] = data[source_field].copy()
+            data[dest_field] = data[dest_field].replace(np.nan, pd.NA)
+            data[dest_field] = data[dest_field].str.split("; ")
+            data[dest_field] = data[dest_field].map(
                 lambda x: [
                     thesaurus[name][0] if name in y.lower() else pd.NA
                     for y in x
@@ -50,17 +51,17 @@ def internal__extract_country(
                 ],
                 na_action="ignore",
             )
-            data[dest] = data[dest].map(
+            data[dest_field] = data[dest_field].map(
                 lambda x: [y for y in x if y is not pd.NA], na_action="ignore"
             )
-            data[dest] = data[dest].map(
+            data[dest_field] = data[dest_field].map(
                 lambda x: pd.NA if x == [] else x, na_action="ignore"
             )
-            data[dest] = data[dest].map(
+            data[dest_field] = data[dest_field].map(
                 lambda x: pd.NA if x is pd.NA else list(set(x)), na_action="ignore"
             )
-            data[dest] = data[dest].str.join("; ")
-            data[dest] = data[dest].map(
+            data[dest_field] = data[dest_field].str.join("; ")
+            data[dest_field] = data[dest_field].map(
                 lambda x: pd.NA if x == "" else x, na_action="ignore"
             )
         data.to_csv(file, sep=",", encoding="utf-8", index=False, compression="zip")
