@@ -12,7 +12,7 @@ Highlight Nouns and Noun Phrases
 >>> from techminer2.database.field_operators import HighlightNounAndPhrasesOperator
 >>> (
 ...     HighlightNounAndPhrasesOperator()  # doctest: +SKIP 
-...     .select_field("author_keywords")
+...     .with_source_field("author_keywords")
 ...     .as_field("author_keywords_copy")
 ...     .where_directory_is("example/")
 ...     .build()

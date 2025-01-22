@@ -15,7 +15,7 @@ Techminer 2+
     :caption: PACKAGES
     :maxdepth: 1
 
-    database/__index__
+
 
 
 

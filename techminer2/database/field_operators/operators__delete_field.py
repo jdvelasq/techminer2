@@ -32,8 +32,8 @@ class DeleteFieldOperator(
 
     def build(self):
 
-        if self.params.dest_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.dest_field}` is protected")
+        if self.params.source_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.source_field}` is protected")
 
         internal__delete_field(
             field=self.params.source_field,

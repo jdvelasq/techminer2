@@ -7,9 +7,10 @@ Database
     
     ingest/__index__
     load/__index__
-    operations/__index__
+    field_operators/__index__
+    field_extractors/__index__
     tools/__index__
-    transformations/__index__
+    
 
 
 

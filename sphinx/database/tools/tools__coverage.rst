@@ -1,4 +1,4 @@
-.. automodule:: techminer2.database.tools.summary_sheet
+.. automodule:: techminer2.database.tools.tools__coverage
     :members:
     :undoc-members:
     :show-inheritance:

@@ -5,9 +5,9 @@ Tools
 .. toctree::
     :hidden: 
     
-    coverage
-    query
-    statistics
-    summary_sheet
+    tools__coverage
+    tools__query
+    tools__statistics
+    tools__summary_sheet
 
 

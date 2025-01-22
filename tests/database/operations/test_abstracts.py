@@ -11,48 +11,61 @@
 """
 >>> import textwrap
 >>> import pandas as pd
->>> from techminer2.database.field_operators import operations__highlight_nouns_and_phrases
+>>> from techminer2.database.field_operators import CleanTextOperator
+>>> from techminer2.database.field_operators import DeleteFieldOperator
+>>> from techminer2.database.field_operators import HighlightNounAndPhrasesOperator
 >>> from techminer2.database.tools import Query
 
->>> from techminer2.database.field_operators import CleanTextOperator
 >>> (
 ...     CleanTextOperator() 
-...     .select_field("raw_abstract")
+...     .with_source_field("raw_abstract")
 ...     .as_field("raw_abstract_copy")
-...     .with_data_in("example/")
+...     .where_directory_is("example/")
 ...     .build()
 ... )
 
->>> query = (
-...     Query()
-...     .set_database_params(
-...         root_dir="example/",
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     )
-... )
-
-
-
-
-
->>> operations__highlight_nouns_and_phrases(
-...     source="raw_abstract_copy",
-...     dest="raw_abstract_copy",
-...     root_dir="example",
+>>> (
+...     HighlightNounAndPhrasesOperator()  
+...     .with_source_field("raw_abstract_copy")
+...     .as_field("raw_abstract_copy")
+...     .where_directory_is("example/")
+...     .build()
 ... )
 -- 001 -- Highlighting tokens in 'raw_abstract_copy' field.
->>> text = (
-...     query
-...     .set_analysis_params(
-...         expr="SELECT raw_abstract_copy FROM database LIMIT 50;",
-...     ).build()
+
+>>> df = (
+...     Query()
+...     .with_query_expression("SELECT raw_abstract_copy FROM database LIMIT 50;")
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .build()
 ... )
 
+>>> print(textwrap.fill(df.values[35][0], width=80))
+background : THIS_STUDY aims to_clarify THE_ROLE of
+FINTECH_DIGITAL_BANKING_START_UPS in THE_FINANCIAL_INDUSTRY . we examine
+THE_IMPACT of THE_FUNDING of SUCH_START_UPS on THE_STOCK_RETURNS of 47 INCUMBENT
+us RETAIL_BANKS for 2010 to 2016 . METHODS : to capture THE_IMPORTANCE of
+FINTECH_START_UPS , we use DATA on BOTH_THE_DOLLAR_VOLUME of FUNDING and NUMBER
+of DEALS . we relate these to THE_STOCK_RETURNS with
+PANEL_DATA_REGRESSION_METHODS . results : OUR_RESULTS indicate
+A_POSITIVE_RELATIONSHIP exists between THE_GROWTH in FINTECH_FUNDING or DEALS
+and THE_CONTEMPORANEOUS_STOCK_RETURNS of INCUMBENT_RETAIL_BANKS . conclusions :
+although THESE_RESULTS suggest COMPLEMENTARITY between FINTECH and
+TRADITIONAL_BANKING , we NOTE that OUR_RESULTS at THE_BANKING_INDUSTRY_LEVEL are
+not statistically significant , and THAT_THE_COEFFICIENT_SIGNS for about one
+third of THE_BANKS are negative , but not statistically significant . since
+THE_FINTECH_INDUSTRY is young and our SAMPLE_PERIOD short , we cannot rule out
+that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
 
->>> print(textwrap.fill(text.values[35][0], width=80))
-
+>>> (
+...     DeleteFieldOperator()
+...     .with_source_field("raw_abstract_copy")
+...     .where_directory_is("example/")
+...     .build()
+... )
 
 
 """

@@ -15,7 +15,7 @@ Scopus Data Importer
 >>> from techminer2.database.ingest import ScopusDataImporter
 >>> (
 ...     ScopusDataImporter() 
-...     .set_root_dir("example/")
+...     .where_directory_is("example/")
 ...     .build()
 ... ) # doctest: +ELLIPSIS
 -- 001 -- Compressing raw data files
@@ -87,7 +87,7 @@ class ScopusDataImporter:
     def __init__(self):
         self.root_dir = None
 
-    def set_root_dir(self, root_dir):
+    def where_directory_is(self, root_dir):
         self.root_dir = root_dir
         return self
 
