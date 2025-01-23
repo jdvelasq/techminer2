@@ -38,7 +38,7 @@ Ends With
  
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__ends_with import internal__ends_with
+from .internals.internal__ends_with import internal__ends_with
 
 
 class EndsWithExtractor(

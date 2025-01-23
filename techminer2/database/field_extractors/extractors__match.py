@@ -32,7 +32,7 @@ Match
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__match import internal__match
+from .internals.internal__match import internal__match
 
 
 class MatchExtractor(

@@ -10,7 +10,9 @@ import networkx as nx  # type: ignore
 import numpy as np
 
 from .....database.load.load__filtered_database import load__filtered_database
-from ....metrics.performance_metrics_dataframe import performance_metrics_frame
+from .....database.metrics.performance_metrics.dataframe import (
+    performance_metrics_frame,
+)
 
 
 def _create_citation_nx_graph(

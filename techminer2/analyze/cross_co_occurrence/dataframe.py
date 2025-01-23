@@ -52,6 +52,7 @@ Cross co-occurrence DataFrame
 
 """
 from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__user_stopwords import load__user_stopwords
 from ...internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,
 )
@@ -65,7 +66,6 @@ from ...internals.set_params_mixin.set_database_filters_mixin import (
     DatabaseFilters,
     SetDatabaseFiltersMixin,
 )
-from ...internals.stopwords.load_user_stopwords import load_user_stopwords
 from ...internals.utils.utils_compute_occurrences_and_citations import (
     _utils_compute_occurrences_and_citations,
 )
@@ -138,7 +138,7 @@ class CrossCoOccurrenceDataFrame(
         raw_matrix_list = raw_matrix_list.rename(columns={columns: "column"})
         raw_matrix_list = raw_matrix_list.assign(row=records[[rows]])
 
-        stopwords = load_user_stopwords(root_dir=root_dir)
+        stopwords = load__user_stopwords(root_dir=root_dir)
 
         for name in ["column", "row"]:
             raw_matrix_list[name] = raw_matrix_list[name].str.split(";")

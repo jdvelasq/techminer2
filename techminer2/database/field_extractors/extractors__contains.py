@@ -35,7 +35,7 @@ Contains
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__contains import internal__contains
+from .internals.internal__contains import internal__contains
 
 
 class ContainsExtractor(

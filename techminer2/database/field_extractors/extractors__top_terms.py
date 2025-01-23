@@ -43,7 +43,26 @@ Filter a Field
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__top_terms import internal__top_terms
+from ..load import load__filtered_database
+from ..metrics.performance_metrics.internals.internal__add_rank_field_by_metrics import (
+    internal__add_rank_field_by_metrics,
+)
+from ..metrics.performance_metrics.internals.internal__check_field_types import (
+    internal__check_field_types,
+)
+from ..metrics.performance_metrics.internals.internal__compute_basic_metrics_per_term_fields import (
+    internal__compute_basic_metrics_per_term_fields,
+)
+from ..metrics.performance_metrics.internals.internal__explode_terms_in_field import (
+    internal__explode_terms_in_field,
+)
+from ..metrics.performance_metrics.internals.internal__remove_stopwords_from_axis import (
+    internal__remove_stopwords_from_axis,
+)
+from ..metrics.performance_metrics.internals.internal__select_fields import (
+    internal__select_fields,
+)
+from .internals.internal__top_terms import internal__top_terms
 
 
 class TopTermsExtractor(
@@ -52,6 +71,44 @@ class TopTermsExtractor(
     """:meta private:"""
 
     def build(self):
+
+        records = load__filtered_database(
+            root_dir=self.params.root_dir,
+            database=self.params.database,
+            record_years_range=self.params.record_years_range,
+            record_citations_range=self.params.record_citations_range,
+            records_order_by=self.params.records_order_by,
+            records_match=self.params.records_match,
+        )
+
+        records = internal__select_fields(
+            records=records,
+            field=self.params.source_field,
+        )
+
+        records = internal__explode_terms_in_field(
+            records=records,
+            field=self.params.source_field,
+        )
+
+        records = internal__compute_basic_metrics_per_term_fields(
+            records=records,
+            field=self.params.source_field,
+        )
+
+        records = internal__remove_stopwords_from_axis(
+            dataframe=records,
+            root_dir=self.params.root_dir,
+            axis=0,
+        )
+
+        records = internal__add_rank_field_by_metrics(
+            records=records,
+        )
+
+        records = internal__check_field_types(
+            records=records,
+        )
 
         return internal__top_terms(
             source_field=self.params.source_field,

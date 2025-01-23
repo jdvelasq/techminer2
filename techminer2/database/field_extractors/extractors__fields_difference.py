@@ -39,9 +39,7 @@ Fields difference
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__fields_difference import (
-    internal__fields_difference,
-)
+from .internals.internal__fields_difference import internal__fields_difference
 
 
 class FieldsDifferenceExtractor(

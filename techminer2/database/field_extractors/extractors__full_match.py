@@ -30,7 +30,7 @@ Full Match
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__full_match import internal__full_match
+from .internals.internal__full_match import internal__full_match
 
 
 class FullMatchExtractor(

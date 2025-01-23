@@ -41,7 +41,7 @@ Starts With
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__starts_with import internal__starts_with
+from .internals.internal__starts_with import internal__starts_with
 
 
 class StartsWithExtractor(

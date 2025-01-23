@@ -20,7 +20,7 @@ Collect Nouns and Phrases
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_operators.internal__collect_nouns_and_phrases import (
+from ..ingest.internals.operators.internal__collect_nouns_and_phrases import (
     internal__collect_nouns_and_phrases,
 )
 from .operators__protected_fields import PROTECTED_FIELDS

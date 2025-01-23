@@ -54,10 +54,10 @@ def load__filtered_database(
 
     def get_records_from_file(root_dir, database):
 
-        database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+        file_path = pathlib.Path(root_dir) / "databases/database.csv.zip"
 
         dataframe = pd.read_csv(
-            database_file,
+            file_path,
             encoding="utf-8",
             compression="zip",
         )

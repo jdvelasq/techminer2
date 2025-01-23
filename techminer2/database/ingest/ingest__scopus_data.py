@@ -31,17 +31,17 @@ import time
 
 from tqdm import tqdm
 
-from ..internals.database import (
+from .internals.db import (
     internal__compress_raw_files,
     internal__create_project_structure,
     internal__drop_empty_columns,
     internal__load_raw_files,
     internal__rename_columns,
 )
-from ..internals.database.internal__report_imported_records import (
+from .internals.db.internal__report_imported_records import (
     internal__report_imported_records,
 )
-from ..internals.field_preprocessors import (  # type: ignore
+from .internals.preprocessors import (  # type: ignore
     internal__preprocess_abbr_source_title,
     internal__preprocess_abbreviations,
     internal__preprocess_abstract,
@@ -78,7 +78,7 @@ from ..internals.field_preprocessors import (  # type: ignore
     internal__preprocess_source_title,
     internal__preprocess_subject_areas,
 )
-from ..internals.message import message
+from .message import message
 
 
 class ScopusDataImporter:

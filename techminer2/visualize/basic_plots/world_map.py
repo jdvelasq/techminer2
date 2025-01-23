@@ -43,7 +43,7 @@ World Map
 import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
 
-from ...analyze.metrics.performance_metrics_dataframe import performance_metrics_frame
+from ...database.metrics.performance_metrics.dataframe import performance_metrics_frame
 
 
 def world_map(

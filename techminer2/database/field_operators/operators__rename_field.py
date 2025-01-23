@@ -21,7 +21,7 @@ Rename a Field
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_operators.internal__rename_field import internal__rename_field
+from ..ingest.internals.operators.internal__rename_field import internal__rename_field
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

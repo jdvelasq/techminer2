@@ -20,7 +20,7 @@ Merge Fields
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_operators.internal__merge_fields import internal__merge_fields
+from ..ingest.internals.operators.internal__merge_fields import internal__merge_fields
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

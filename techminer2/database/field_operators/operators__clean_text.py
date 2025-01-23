@@ -20,7 +20,7 @@ Clean text
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_operators.internal__clean_text import internal__clean_text
+from ..ingest.internals.operators.internal__clean_text import internal__clean_text
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

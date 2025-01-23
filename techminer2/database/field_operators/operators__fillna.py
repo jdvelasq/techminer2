@@ -21,7 +21,7 @@ Fill NA
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_operators.internal__fillna import internal__fillna
+from ..ingest.internals.operators.internal__fillna import internal__fillna
 from .operators__protected_fields import PROTECTED_FIELDS
 
 

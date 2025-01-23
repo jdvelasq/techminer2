@@ -1,5 +1,7 @@
-# pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-instance-attributes
 """Define a mixin class for input functions."""
 
 from dataclasses import dataclass
@@ -11,6 +13,7 @@ class Params:
 
     #
     # FIELD SELECTORS:
+    #
     dest_field: Optional[str] = None
     fill_field: Optional[str] = None
     from_field: Optional[str] = None
@@ -19,6 +22,7 @@ class Params:
 
     #
     # TERM FILTERS:
+    #
     case_sensitive: bool = False
     regex_flags: int = 0
     selected_terms: Optional[list] = None
@@ -35,6 +39,7 @@ class Params:
 
     #
     # DATABASE PARAMS:
+    #
     database: str = "main"
     root_dir: str = "./"
     record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
@@ -42,6 +47,13 @@ class Params:
     record_filters: Optional[dict] = None
     records_order_by: Optional[str] = None
     records_match: Optional[Dict[str, List[str]]] = None
+
+    #
+    # PLOTS:
+    #
+    title_text: Optional[str] = None
+    xaxes_title_text: Optional[str] = None
+    yaxes_title_text: Optional[str] = None
 
 
 class InputFunctionsMixin:
@@ -158,4 +170,19 @@ class InputFunctionsMixin:
 
     def where_records_match(self, records_match):
         self.params.records_match = records_match
+        return self
+
+    #
+    # PLOTS:
+    #
+    def using_title_text(self, text):
+        self.params.title_text = text
+        return self
+
+    def using_xaxes_title_text(self, text):
+        self.params.xaxes_title_text = text
+        return self
+
+    def using_yaxes_title_text(self, text):
+        self.params.yaxes_title_text = text
         return self

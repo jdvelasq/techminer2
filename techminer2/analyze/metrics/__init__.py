@@ -1,10 +1,10 @@
 """Metrics menu options"""
 
+from ...database.metrics.performance_metrics.dataframe import performance_metrics_frame
 from ..collaboration.collaboration_metrics_dataframe import collaboration_metrics_frame
 from ..collaboration.collaboration_metrics_plot import collaboration_metrics_plot
 from .general_metrics_dataframe import general_metrics_frame
 from .growth_metrics_dataframe import growth_metrics_frame
-from .performance_metrics_dataframe import performance_metrics_frame
 from .terms_by_year.dataframe import terms_by_year_frame
 from .terms_by_year.ranking_plot import terms_by_year_plot
 from .tfidf_dataframe import tfidf_frame

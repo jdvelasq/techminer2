@@ -39,9 +39,7 @@ Fields Intersection
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_extractors.internal__fields_intersection import (
-    internal__fields_intersection,
-)
+from .internals.internal__fields_intersection import internal__fields_intersection
 
 
 class FieldsIntersectionExtractor(

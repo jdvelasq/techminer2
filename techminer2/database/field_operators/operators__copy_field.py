@@ -20,7 +20,7 @@ Copy a Field
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..internals.field_operators.internal__copy_field import internal__copy_field
+from ..ingest.internals.operators.internal__copy_field import internal__copy_field
 from .operators__protected_fields import PROTECTED_FIELDS
 
 
