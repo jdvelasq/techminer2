@@ -58,7 +58,7 @@ from typing import Literal
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 from ...internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,
 )

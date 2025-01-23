@@ -74,7 +74,7 @@ import datetime
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 
 
 class MainInformation:

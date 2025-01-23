@@ -9,7 +9,7 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from ...load import load__filtered_database
+from ...load import load__database
 
 
 def internal__top_terms(
@@ -36,7 +36,7 @@ def internal__top_terms(
         records_order_by: Optional[str],
         records_match: Optional[Dict[str, List[str]]],
     ):
-        records = load__filtered_database(
+        records = load__database(
             root_dir=root_dir,
             database=database,
             record_years_range=record_years_range,

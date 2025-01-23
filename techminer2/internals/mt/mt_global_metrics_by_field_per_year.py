@@ -50,7 +50,7 @@ Demertzis M.       2018    1  ...                     0.000
 """
 import pandas as pd  # type: ignore
 
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 
 
 def _mt_global_metrics_by_field_per_year(

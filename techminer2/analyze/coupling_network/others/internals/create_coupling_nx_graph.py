@@ -9,8 +9,8 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from .....database.load.load__filtered_database import load__filtered_database
-from .....database.metrics.performance_metrics.dataframe import (
+from .....database.load.load__database import load__filtered_database
+from .....database.metrics.performance_metrics.data_frame import (
     performance_metrics_frame,
 )
 from .....internals.utils.utils_append_occurrences_and_citations_to_axis import (

@@ -35,7 +35,7 @@ Summary Sheet
 import pandas as pd  # type: ignore
 
 from ...internals.mixins import InputFunctionsMixin
-from ..load.load__filtered_database import load__filtered_database
+from ..load import DatabaseLoader
 
 
 class SummarySheet(
@@ -45,16 +45,7 @@ class SummarySheet(
 
     def build(self):
 
-        records = load__filtered_database(
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_dir,
-            database=self.params.database,
-            record_years_range=self.params.record_years_range,
-            record_citations_range=self.params.record_citations_range,
-            records_order_by=self.params.records_order_by,
-            records_match=self.params.records_match,
-        )
+        records = DatabaseLoader().update_params(**self.params.__dict__).build()
 
         #
         # Compute stats per column

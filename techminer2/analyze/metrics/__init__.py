@@ -1,6 +1,6 @@
 """Metrics menu options"""
 
-from ...database.metrics.performance_metrics.dataframe import performance_metrics_frame
+from ...database.metrics.performance_metrics.data_frame import performance_metrics_frame
 from ..collaboration.collaboration_metrics_dataframe import collaboration_metrics_frame
 from ..collaboration.collaboration_metrics_plot import collaboration_metrics_plot
 from .general_metrics_dataframe import general_metrics_frame

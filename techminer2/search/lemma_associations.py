@@ -40,7 +40,7 @@ from dataclasses import dataclass
 
 from textblob import TextBlob  # type: ignore
 
-from ..database.load.load__filtered_database import load__filtered_database
+from ..database.load.load__database import load__filtered_database
 from ..internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )

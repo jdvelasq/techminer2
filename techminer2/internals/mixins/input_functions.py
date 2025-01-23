@@ -11,9 +11,20 @@ from typing import Dict, List, Optional, Tuple
 @dataclass
 class Params:
 
-    #
+    # -------------------------------------------------------------------------
+    # DATABASE PARAMS:
+    # -------------------------------------------------------------------------
+    database: str = "main"
+    root_dir: str = "./"
+    record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    record_filters: Optional[dict] = None
+    records_order_by: Optional[str] = None
+    records_match: Optional[Dict[str, List[str]]] = None
+
+    # -------------------------------------------------------------------------
     # FIELD SELECTORS:
-    #
+    # -------------------------------------------------------------------------
     dest_field: Optional[str] = None
     fill_field: Optional[str] = None
     from_field: Optional[str] = None
@@ -38,28 +49,28 @@ class Params:
     query_expr: Optional[str] = None
 
     #
-    # DATABASE PARAMS:
-    #
-    database: str = "main"
-    root_dir: str = "./"
-    record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    record_filters: Optional[dict] = None
-    records_order_by: Optional[str] = None
-    records_match: Optional[Dict[str, List[str]]] = None
-
-    #
     # PLOTS:
     #
     title_text: Optional[str] = None
     xaxes_title_text: Optional[str] = None
     yaxes_title_text: Optional[str] = None
+    #
+    line_width: float = 1.5
+    marker_size: float = 7
+    textfont_size: float = 10
+    yshift: float = 4
+    #
 
 
 class InputFunctionsMixin:
 
     def __init__(self):
         self.params = Params()
+
+    def update_params(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self.params, key, value)
+        return self
 
     #
     # FIELD SELECTORS:
@@ -175,6 +186,18 @@ class InputFunctionsMixin:
     #
     # PLOTS:
     #
+    def using_line_width(self, width):
+        self.params.line_width = width
+        return self
+
+    def using_marker_size(self, size):
+        self.params.marker_size = size
+        return self
+
+    def using_textfont_size(self, size):
+        self.params.textfont_size = size
+        return self
+
     def using_title_text(self, text):
         self.params.title_text = text
         return self
@@ -185,4 +208,8 @@ class InputFunctionsMixin:
 
     def using_yaxes_title_text(self, text):
         self.params.yaxes_title_text = text
+        return self
+
+    def using_yshift(self, yshift):
+        self.params.yshift = yshift
         return self

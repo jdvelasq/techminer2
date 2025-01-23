@@ -43,7 +43,7 @@ Filter a Field
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..load import load__filtered_database
+from ..load import load__database
 from ..metrics.performance_metrics.internals.internal__add_rank_field_by_metrics import (
     internal__add_rank_field_by_metrics,
 )
@@ -72,7 +72,7 @@ class TopTermsExtractor(
 
     def build(self):
 
-        records = load__filtered_database(
+        records = load__database(
             root_dir=self.params.root_dir,
             database=self.params.database,
             record_years_range=self.params.record_years_range,

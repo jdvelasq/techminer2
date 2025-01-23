@@ -37,7 +37,7 @@ Buchak G.              0     0     0     1     0
 
 
 """
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 from ...database.load.load__user_stopwords import load__user_stopwords
 from .mt_global_metrics_by_field_per_year import _mt_global_metrics_by_field_per_year
 

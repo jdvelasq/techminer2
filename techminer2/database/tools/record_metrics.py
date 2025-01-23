@@ -35,7 +35,7 @@ Document Metrics
 
 """
 
-from ..load.load__filtered_database import load__filtered_database
+from ..load.load__database import load__filtered_database
 
 
 def document_metrics(

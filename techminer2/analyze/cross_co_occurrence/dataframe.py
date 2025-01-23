@@ -51,7 +51,7 @@ Cross co-occurrence DataFrame
 
 
 """
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 from ...database.load.load__user_stopwords import load__user_stopwords
 from ...internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,

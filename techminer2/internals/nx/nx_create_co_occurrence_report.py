@@ -20,7 +20,7 @@ from collections import defaultdict
 
 import pandas as pd  # type: ignore
 
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 
 # from ...search.concordances import concordances_from_records
 from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (

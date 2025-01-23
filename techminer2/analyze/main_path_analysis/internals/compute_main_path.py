@@ -14,7 +14,7 @@ import copy
 
 import numpy as np
 
-from ....database.load.load__filtered_database import load__filtered_database
+from ....database.load.load__database import load__filtered_database
 
 
 def _compute_main_path(

@@ -51,7 +51,7 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 from ...internals.set_params_mixin.set_database_filters_mixin import (
     DatabaseFilters,
     SetDatabaseFiltersMixin,

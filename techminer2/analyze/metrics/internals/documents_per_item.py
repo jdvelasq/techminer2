@@ -1,6 +1,6 @@
 """documents by each item in a column"""
 
-from ....database.load.load__filtered_database import load__filtered_database
+from ....database.load.load__database import load__filtered_database
 
 
 def documents_per_item(

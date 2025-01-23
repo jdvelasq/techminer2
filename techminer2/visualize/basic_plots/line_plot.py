@@ -44,7 +44,7 @@ Line Plot (MIGRATED)
 
 
 """
-from ...database.metrics.performance_metrics.dataframe import performance_metrics_frame
+from ...database.metrics.performance_metrics.data_frame import performance_metrics_frame
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...internals.plots.line_plot_mixin import LinePlotMixin, LinePlotParams
 from ...internals.set_params_mixin.set_database_filters_mixin import (

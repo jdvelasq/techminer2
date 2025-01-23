@@ -36,7 +36,7 @@ Australia        5               783  ...                     4      0.80
 [5 rows x 6 columns]
     
 """
-from ...database.load.load__filtered_database import load__filtered_database
+from ...database.load.load__database import load__filtered_database
 from ...internals.mt.mt_extract_top_n_terms_by_metric import (
     _mt_extract_top_n_terms_by_metric,
 )

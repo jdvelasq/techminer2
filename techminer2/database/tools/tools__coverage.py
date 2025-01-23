@@ -36,7 +36,7 @@ Coverage
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..load.load__filtered_database import load__filtered_database
+from ..load.load__database import DatabaseLoader
 from ..load.load__user_stopwords import load__user_stopwords
 
 
@@ -51,17 +51,7 @@ class Coverage(
 
         stopwords = load__user_stopwords(self.params.root_dir)
 
-        documents = load__filtered_database(
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_dir,
-            database=self.params.database,
-            record_years_range=self.params.record_years_range,
-            record_citations_range=self.params.record_citations_range,
-            records_order_by=self.params.records_order_by,
-            records_match=self.params.records_match,
-        )
-
+        documents = DatabaseLoader().update_params(**self.params.__dict__).build()
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]
 

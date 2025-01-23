@@ -43,7 +43,7 @@ Cleveland Dot Plot (MIGRATED)
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...database.metrics.performance_metrics.dataframe import performance_metrics_frame
+from ...database.metrics.performance_metrics.data_frame import performance_metrics_frame
 from ...internals.params.item_params import ItemParams, ItemParamsMixin
 from ...internals.plots.cleveland_dot_plot_mixin import (
     ClevelandDotPlotMixin,

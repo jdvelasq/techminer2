@@ -9,7 +9,7 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ....database.load.load__filtered_database import load__filtered_database
+from ....database.load.load__database import load__filtered_database
 
 
 def _create_co_citation_nx_graph(
