@@ -13,6 +13,7 @@ Coverage
 >>> from techminer2.database.tools import Coverage
 >>> (
 ...     Coverage()
+...     #
 ...     .with_source_field("author_keywords")
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")

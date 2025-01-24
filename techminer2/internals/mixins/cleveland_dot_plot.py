@@ -1,5 +1,11 @@
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-class-docstring
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-few-public-methods
+"""Cleveland Dot Plot Mixin."""
 
 import plotly.express as px  # type: ignore
 
@@ -9,17 +15,20 @@ MARKER_LINE_COLOR = "#465c6b"
 
 class ClevelandDotPlotMixin:
 
-    def build_cleveland_dot_plot(self, dataframe, x_col):
+    def build_cleveland_dot_plot(self, data_frame):
 
-        title_text = self.plot_params.title_text
-        xaxes_title_text = self.plot_params.xaxes_title_text
-        yaxes_title_text = self.plot_params.yaxes_title_text
+        x_col = self.params.terms_order_by
+
+        hover_data = data_frame.columns.to_list()
+        title_text = self.params.title_text
+        xaxes_title_text = self.params.xaxes_title_text
+        yaxes_title_text = self.params.yaxes_title_text
 
         fig = px.scatter(
-            dataframe,
+            data_frame,
             x=x_col,
             y=None,
-            hover_data=dataframe.columns.to_list(),
+            hover_data=hover_data,
             size=x_col,
         )
         fig.update_layout(
@@ -28,10 +37,13 @@ class ClevelandDotPlotMixin:
             title_text=title_text,
         )
         fig.update_traces(
-            marker=dict(
-                size=12,
-                line={"color": MARKER_LINE_COLOR, "width": 2},
-            ),
+            marker={
+                "size": 12,
+                "line": {
+                    "color": MARKER_LINE_COLOR,
+                    "width": 2,
+                },
+            },
             marker_color=MARKER_COLOR,
         )
         fig.update_xaxes(

@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Performance Metrics DataFrame
+Data Frame
 ===============================================================================
 
 >>> from techminer2.database.metrics.performance_metrics import DataFrame
@@ -73,6 +73,8 @@ SELECTED_COLUMNS = {
 class DataFrame(
     InputFunctionsMixin,
 ):
+    """:meta private:"""
+
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
         return DatabaseLoader().update_params(**self.params.__dict__).build()

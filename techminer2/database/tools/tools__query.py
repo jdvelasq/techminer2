@@ -14,11 +14,13 @@ Query
 >>> from techminer2.database.tools import Query
 >>> (
 ...     Query()
+...     #
 ...     .with_query_expression("SELECT source_title FROM database LIMIT 5;")
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     #
 ...     .build()
 ... )
                                         source_title
