@@ -31,15 +31,19 @@ class Params:
     source_field: Optional[str] = None
     with_field: Optional[str] = None
 
-    #
-    # TERM FILTERS:
-    #
+    # -------------------------------------------------------------------------
+    # TERM SEARCH:
+    # -------------------------------------------------------------------------
     case_sensitive: bool = False
     regex_flags: int = 0
+    term_pattern: Optional[str] = None
+
+    # -------------------------------------------------------------------------
+    # TERM SEARCH:
+    # -------------------------------------------------------------------------
     selected_terms: Optional[list] = None
     term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    term_pattern: Optional[str] = None
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
     top_n_terms: Optional[int] = None
@@ -48,18 +52,27 @@ class Params:
     func = None
     query_expr: Optional[str] = None
 
-    #
-    # PLOTS:
-    #
+    # -------------------------------------------------------------------------
+    # PLOT TITLES:
+    # -------------------------------------------------------------------------
     title_text: Optional[str] = None
     xaxes_title_text: Optional[str] = None
     yaxes_title_text: Optional[str] = None
-    #
+
+    # -------------------------------------------------------------------------
+    # PLOT PROPERTIES:
+    # -------------------------------------------------------------------------
     line_width: float = 1.5
     marker_size: float = 7
     textfont_size: float = 10
     yshift: float = 4
     #
+    width: float = 400
+    height: float = 400
+    #
+    colormap: str = "Blues"
+    #
+    pie_hole: float = 0.4
 
 
 class InputFunctionsMixin:
@@ -186,12 +199,28 @@ class InputFunctionsMixin:
     #
     # PLOTS:
     #
+    def using_colormap(self, colormap):
+        self.params.colormap = colormap
+        return self
+
     def using_line_width(self, width):
         self.params.line_width = width
         return self
 
     def using_marker_size(self, size):
         self.params.marker_size = size
+        return self
+
+    def using_pie_hole(self, pie_hole):
+        self.params.pie_hole = pie_hole
+        return self
+
+    def using_plot_width(self, width):
+        self.params.width = width
+        return self
+
+    def using_plot_height(self, height):
+        self.params.height = height
         return self
 
     def using_textfont_size(self, size):
