@@ -44,7 +44,7 @@ from .internal__preprocess_raw_index_keywords import (
     internal__preprocess_raw_index_keywords,
 )
 from .internal__preprocess_raw_keywords import internal__preprocess_raw_keywords
-from .internal__preprocess_raw_noun_and_phrases import (
+from .internal__preprocess_raw_nouns_and_phrases import (
     internal__preprocess_raw_noun_and_phrases,
 )
 from .internal__preprocess_record_id import internal__preprocess_record_id

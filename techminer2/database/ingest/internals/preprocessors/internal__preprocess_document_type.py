@@ -15,6 +15,6 @@ def internal__preprocess_document_type(root_dir):
     internal__transform_field(
         source="raw_document_type",
         dest="document_type",
-        func=lambda x: x,
+        func=lambda x: x.str.capitalize(),
         root_dir=root_dir,
     )

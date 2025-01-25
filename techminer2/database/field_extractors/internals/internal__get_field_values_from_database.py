@@ -8,7 +8,7 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from ...load import load__database
+from ...load import DatabaseLoader
 
 
 def internal__get_field_values_from_database(
@@ -24,18 +24,24 @@ def internal__get_field_values_from_database(
 ):
     """Returns a DataFrame with the content of the field in all databases."""
 
-    dataframe = load__database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
+    data_frame = (
+        DatabaseLoader()
+        .where_directory_is(root_dir)
+        .where_database_is(database)
+        .where_record_years_between(
+            record_years_range[0],
+            record_years_range[1],
+        )
+        .where_record_citations_between(
+            record_citations_range[0],
+            record_citations_range[1],
+        )
+        .order_records_by(records_order_by)
+        .where_records_match(records_match)
+        .build()
     )
 
-    df = dataframe[[source_field]].dropna()
+    df = data_frame[[source_field]].dropna()
 
     df[source_field] = df[source_field].str.split("; ")
     df = df.explode(source_field)

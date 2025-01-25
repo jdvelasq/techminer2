@@ -1,9 +1,9 @@
 """Metrics menu options"""
 
+from ...database.metrics.general_metrics.data_frame import general_metrics_frame
 from ...database.metrics.performance_metrics.data_frame import performance_metrics_frame
 from ..collaboration.collaboration_metrics_dataframe import collaboration_metrics_frame
 from ..collaboration.collaboration_metrics_plot import collaboration_metrics_plot
-from .general_metrics_dataframe import general_metrics_frame
 from .growth_metrics_dataframe import growth_metrics_frame
 from .terms_by_year.dataframe import terms_by_year_frame
 from .terms_by_year.ranking_plot import terms_by_year_plot

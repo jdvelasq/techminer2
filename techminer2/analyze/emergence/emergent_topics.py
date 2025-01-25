@@ -42,8 +42,8 @@ INFORMATION_TECHNOLOGY    7             2  ...    91.293118           0.769302
 """
 import numpy as np
 
+from ...database.metrics.general_metrics.data_frame import general_metrics_frame
 from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
-from ..metrics.general_metrics_dataframe import general_metrics_frame
 from ..metrics.trend_metrics._compute_trend_metrics import compute_trend_metrics
 
 
