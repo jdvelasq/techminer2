@@ -19,7 +19,7 @@ Data Frame
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .with_time_window(2),
+...     .with_time_window(2)
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -28,16 +28,15 @@ Data Frame
 ...     #
 ...     .build()
 ... ).head()
-                      rank_occ  OCC  ...  average_growth_rate  average_docs_per_year
-author_keywords                      ...                                            
-FINTECH                      1   31  ...                 -1.0                    9.0
-INNOVATION                   2    7  ...                 -1.5                    0.5
-FINANCIAL_SERVICES           3    4  ...                  0.0                    1.5
-FINANCIAL_INCLUSION          4    3  ...                 -1.0                    0.0
-FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                    1.0
+                      rank_occ  ...  average_docs_per_year
+author_keywords                 ...                       
+FINTECH                      1  ...                    9.0
+INNOVATION                   2  ...                    0.5
+FINANCIAL_SERVICES           3  ...                    1.5
+FINANCIAL_INCLUSION          4  ...                    0.0
+FINANCIAL_TECHNOLOGY         5  ...                    1.0
 <BLANKLINE>
-[5 rows x 7 columns]
-
+[5 rows x 21 columns]
 
 
 
@@ -82,153 +81,181 @@ FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                   
 #
 
 from ....internals.mixins import InputFunctionsMixin
-from ....internals.mt.mt_calculate_global_performance_metrics import (
-    _mt_calculate_global_performance_metrics,
-)
-from ....internals.mt.mt_filter_records_by_metric import _mt_filter_records_by_metric
-from ....internals.mt.mt_select_record_columns_by_metric import (
-    _mt_select_record_columns_by_metric,
-)
-from ....internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
-from ...load import DatabaseLoader
 from ..performance_metrics import DataFrame as PerformanceMetricsDataFrame
+from ..terms_by_year import DataFrame as TermsByYearDataFrame
+
 
 class DataFrame(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
+    # ----------------------------------------------------------------------------------------------------
     def _step_1_compute_performance_metrics(self):
-        return PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
+        return (
+            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
+        )
 
+    # ----------------------------------------------------------------------------------------------------
     def _step_2_compute_terms_by_year(self):
-        
+        df = TermsByYearDataFrame()
+        df = df.update_params(**self.params.__dict__)
+        df = df.using_counters_in_axes(False)
+        df = df.build()
+        return df
 
+    # ----------------------------------------------------------------------------------------------------
+    def _step_3_compute_years_by_period(self, terms_by_year):
 
-def growth_metrics_frame(
-    field,
-    time_window=2,
-    #
-    # FILTER PARAMS:
-    top_n=20,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """:meta private:"""
+        time_window = self.params.time_window
+        year_start = terms_by_year.columns.min()
+        year_end = terms_by_year.columns.max()
 
+        if year_end - year_start + 1 <= time_window:
+            raise ValueError(
+                "Time window must be less than the number of years in the database"
+            )
 
+        first_period_years = list(range(year_start, year_end - time_window + 1))
+        last_period_years = list(range(year_end - time_window + 1, year_end + 1))
 
+        return first_period_years, last_period_years
 
-    #
-    # Compute global performance metrics
-    performance_metrics_data_frame = _mt_calculate_global_performance_metrics(
-        field=field,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-    #
-    # Computes item occurrences by year
-    items_by_year = _mt_term_occurrences_by_year(
-        #
-        # FUNCTION PARAMS:
-        field=field,
-        cumulative=False,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    # ----------------------------------------------------------------------------------------------------
+    def _step_4_generate_first_period_occ(
+        self,
+        terms_by_year,
+        first_period_years,
+        performance_metrics_data_frame,
+    ):
 
-    #
-    # Computes the range of years in the time window
-    year_end = items_by_year.columns.max()
-    year_start = year_end - time_window + 1
-    year_columns = list(range(year_start, year_end + 1))
+        mapping = terms_by_year.loc[:, first_period_years].sum(axis=1)
+        mapping = dict(zip(mapping.index, mapping))
 
-    #
-    # Check the time window
-    if items_by_year.columns.max() - items_by_year.columns.min() <= time_window:
-        raise ValueError(
-            "Time window must be less than the number of years in the database"
+        performance_metrics_data_frame = performance_metrics_data_frame.assign(
+            before=performance_metrics_data_frame.index.map(mapping)
+        )
+        return performance_metrics_data_frame
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_5_generate_last_period_occ(
+        self,
+        terms_by_year,
+        last_period_years,
+        performance_metrics_data_frame,
+    ):
+        mapping = terms_by_year.loc[:, last_period_years].sum(axis=1)
+        mapping = dict(zip(mapping.index, mapping))
+
+        performance_metrics_data_frame = performance_metrics_data_frame.assign(
+            between=performance_metrics_data_frame.index.map(mapping)
         )
 
-    #
-    # Computes the number of documents per period by item
-    between = f"between_{year_start}_{year_end}"
-    before = f"before_{year_start}"
-    between_occ = items_by_year.loc[:, year_columns].sum(axis=1)
-    before_occ = items_by_year.sum(axis=1) - between_occ
-    performance_metrics_data_frame.loc[between_occ.index, between] = between_occ
-    performance_metrics_data_frame.loc[before_occ.index, before] = before_occ
+        return performance_metrics_data_frame
 
-    performance_metrics_data_frame = performance_metrics_data_frame.assign(
-        growth_percentage=(
-            100 * performance_metrics_data_frame[between].copy() / performance_metrics_data_frame["OCC"].copy()
-        ).round(2)
-    )
-
-    #
-    # sort the columns
-    columns = ["OCC", before, between, "growth_percentage"] + [
-        col
-        for col in performance_metrics_data_frame.columns
-        if col not in ["OCC", before, between, "growth_percentage"]
-    ]
-    performance_metrics_data_frame = performance_metrics_data_frame[columns]
-
-    #
-    # selects the columns of interest
-    items_by_year = items_by_year.loc[:, [year_columns[0] - 1] + year_columns]
-
-    # agr: average growth rate
-    agr = items_by_year.diff(axis=1)
-    agr = agr.loc[:, year_columns]
-    agr = agr.sum(axis=1) / time_window
-    performance_metrics_data_frame.loc[agr.index, "average_growth_rate"] = agr
-
-    # ady: average documents per year
-    ady = items_by_year.loc[:, year_columns].sum(axis=1) / time_window
-    performance_metrics_data_frame.loc[ady.index, "average_docs_per_year"] = ady
-
-    # pdly: percentage of documents in last year
-    performance_metrics_data_frame = performance_metrics_data_frame.assign(
-        percentage_docs_last_year=(
-            performance_metrics_data_frame.average_docs_per_year.copy()
-            / performance_metrics_data_frame.OCC.copy()
+    # ----------------------------------------------------------------------------------------------------
+    def _step_6_compute_growth_percentage(
+        self,
+        performance_metrics_data_frame,
+    ):
+        performance_metrics_data_frame = performance_metrics_data_frame.assign(
+            growth_percentage=(
+                (
+                    100
+                    * performance_metrics_data_frame["between"]
+                    / (
+                        performance_metrics_data_frame["between"]
+                        + performance_metrics_data_frame["before"]
+                    )
+                ).round(2)
+            )
         )
-    )
 
-    filtered_indicators = _mt_filter_records_by_metric(
-        records=performance_metrics_data_frame,
-        metric="OCC",
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_terms,
-    )
-    selected_indicators = _mt_select_record_columns_by_metric(
-        filtered_indicators, "OCC"
-    )
+        return performance_metrics_data_frame
 
-    #
-    # Save results to disk as csv tab-delimited file for papers
-    # file_path = os.path.join(root_dir, "reports", field + ".csv")
-    # selected_indicators.to_csv(file_path, sep="\t", header=True, index=True)
+    # ----------------------------------------------------------------------------------------------------
+    def _step_7_compute_average_growth_rate(
+        self,
+        performance_metrics_data_frame,
+        terms_by_year,
+        last_period_years,
+    ):
+        time_window = self.params.time_window
 
-    return selected_indicators
+        terms_by_year = terms_by_year.copy()
+        diff_terms_by_year = terms_by_year.diff(axis=1)
+        diff_terms_by_year = diff_terms_by_year.loc[:, last_period_years]
+        diff_terms_by_year = diff_terms_by_year.sum(axis=1) / time_window
+
+        mapping = dict(zip(diff_terms_by_year.index, diff_terms_by_year))
+
+        performance_metrics_data_frame = performance_metrics_data_frame.assign(
+            average_growth_rate=(
+                (performance_metrics_data_frame.index.map(mapping)).round(2)
+            )
+        )
+
+        return performance_metrics_data_frame
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_8_compute_average_docs_per_year(
+        self,
+        performance_metrics_data_frame,
+        terms_by_year,
+        last_period_years,
+    ):
+        time_window = self.params.time_window
+
+        terms_by_year = terms_by_year.copy()
+        terms_by_year = terms_by_year.loc[:, last_period_years]
+        terms_by_year = terms_by_year.sum(axis=1) / time_window
+
+        mapping = dict(zip(terms_by_year.index, terms_by_year))
+
+        performance_metrics_data_frame = performance_metrics_data_frame.assign(
+            average_docs_per_year=(
+                (performance_metrics_data_frame.index.map(mapping)).round(2)
+            )
+        )
+
+        return performance_metrics_data_frame
+
+    def build(self):
+
+        performance_metrics_data_frame = self._step_1_compute_performance_metrics()
+
+        terms_by_year = self._step_2_compute_terms_by_year()
+
+        first_period_years, last_period_years = self._step_3_compute_years_by_period(
+            terms_by_year,
+        )
+
+        performance_metrics_data_frame = self._step_4_generate_first_period_occ(
+            terms_by_year,
+            first_period_years,
+            performance_metrics_data_frame,
+        )
+
+        performance_metrics_data_frame = self._step_5_generate_last_period_occ(
+            terms_by_year,
+            last_period_years,
+            performance_metrics_data_frame,
+        )
+
+        performance_metrics_data_frame = self._step_6_compute_growth_percentage(
+            performance_metrics_data_frame,
+        )
+
+        performance_metrics_data_frame = self._step_7_compute_average_growth_rate(
+            performance_metrics_data_frame,
+            terms_by_year,
+            last_period_years,
+        )
+
+        performance_metrics_data_frame = self._step_8_compute_average_docs_per_year(
+            performance_metrics_data_frame,
+            terms_by_year,
+            last_period_years,
+        )
+
+        return performance_metrics_data_frame

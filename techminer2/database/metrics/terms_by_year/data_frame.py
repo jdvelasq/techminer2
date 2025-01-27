@@ -19,6 +19,7 @@ Data Frame
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     .using_counters_in_axes(True)
 ...     .with_cumulative_sum(False)
 ...     #
 ...     .where_directory_is("example/")
@@ -42,6 +43,39 @@ CYBER_SECURITY 02:0342           0     0     0     2     0
 CASE_STUDY 02:0340               0     0     1     0     1
 
 
+>>> from techminer2.database.metrics.terms_by_year import DataFrame
+>>> (
+...     DataFrame()
+...     #
+...     .with_source_field("author_keywords")
+...     .select_top_n_terms(20)
+...     .order_terms_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     .using_counters_in_axes(False)
+...     .with_cumulative_sum(False)
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
+... ).head(10)
+year                  2015  2016  2017  2018  2019
+author_keywords                                   
+FINTECH                  0     5     8    12     6
+INNOVATION               0     3     3     1     0
+FINANCIAL_SERVICES       0     1     0     3     0
+FINANCIAL_INCLUSION      0     1     2     0     0
+FINANCIAL_TECHNOLOGY     0     0     1     1     1
+CROWDFUNDING             0     0     1     1     1
+MARKETPLACE_LENDING      0     0     0     2     1
+BUSINESS_MODELS          0     0     0     2     0
+CYBER_SECURITY           0     0     0     2     0
+CASE_STUDY               0     0     1     0     1
 
 >>> from techminer2.database.metrics.terms_by_year import DataFrame
 >>> (
@@ -54,8 +88,10 @@ CASE_STUDY 02:0340               0     0     1     0     1
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     .using_counters_in_axes(True)
 ...     .with_cumulative_sum(True)
 ...     #
+...     .using_counters_in_axes(True)
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
@@ -191,6 +227,11 @@ class DataFrame(
     def _step_8_sort_index(self, data_frame):
         return self.sort_index(data_frame)
 
+    def _step_9_remove_counter_from_axis(self, data_frame):
+        if self.params.counters_in_axes is False:
+            data_frame.index = data_frame.index.str.split().str[0]
+        return data_frame
+
     # ----------------------------------------------------------------------------------------------------
     def build(self):
         data_frame = self._step_1_load_the_database()
@@ -201,4 +242,5 @@ class DataFrame(
         terms_by_year = self._step_6_filter_terms(terms_by_year)
         terms_by_year = self._step_7_append_counters_to_axis(terms_by_year, mapping)
         terms_by_year = self._step_8_sort_index(terms_by_year)
+        terms_by_year = self._step_9_remove_counter_from_axis(terms_by_year)
         return terms_by_year
