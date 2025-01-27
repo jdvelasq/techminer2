@@ -47,10 +47,10 @@ Zavolokina L. 2:0181                0.00  ...                   1.0
 
 
 """
+from ....database.metrics.tfidf.data_frame import tfidf_frame
 from ....internals.utils.utils_format_prompt_for_dataframes import (
     _utils_format_prompt_for_dataframes,
 )
-from ...metrics.tfidf_dataframe import tfidf_frame
 from ..internals.compute_corr_matrix import compute_corr_matrix
 
 

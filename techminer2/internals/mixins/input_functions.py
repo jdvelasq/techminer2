@@ -48,9 +48,29 @@ class Params:
     terms_order_by: Optional[str] = None
     top_n_terms: Optional[int] = None
 
-    #
+    # -------------------------------------------------------------------------
+    # FIELD TRANSFORM:
+    # -------------------------------------------------------------------------
     func = None
+
+    # -------------------------------------------------------------------------
+    # QUERY:
+    # -------------------------------------------------------------------------
     query_expr: Optional[str] = None
+
+    # -------------------------------------------------------------------------
+    # TFIDF MATRIX:
+    # -------------------------------------------------------------------------
+    binary_term_frequencies: bool = False
+    row_normalization: Optional[str] = None
+    use_idf: bool = False  # using_idf_reweighting
+    smooth_idf_weights: bool = False
+    sublinear_tf_scaling: bool = False  # sublinear_tf
+
+    # -------------------------------------------------------------------------
+    # COUNTERS IN AXES:
+    # -------------------------------------------------------------------------
+    counters_in_axes: bool = True
 
     # -------------------------------------------------------------------------
     # PLOT TITLES:
@@ -85,9 +105,16 @@ class InputFunctionsMixin:
             setattr(self.params, key, value)
         return self
 
-    #
+    # -------------------------------------------------------------------------
+    # COUNTERS IN AXES::
+    # -------------------------------------------------------------------------
+    def using_counters_in_axes(self, counters_in_axes):
+        self.params.counters_in_axes = counters_in_axes
+        return self
+
+    # -------------------------------------------------------------------------
     # FIELD SELECTORS:
-    #
+    # -------------------------------------------------------------------------
     def as_field(self, field):
         self.params.dest_field = field
         return self
@@ -116,16 +143,16 @@ class InputFunctionsMixin:
         self.params.with_field = field
         return self
 
-    #
-    # TRANSFORM
-    #
+    # -------------------------------------------------------------------------
+    # FIELD TRANSFORM:
+    # -------------------------------------------------------------------------
     def transform_with(self, func):
         self.params.func = func
         return self
 
-    #
+    # -------------------------------------------------------------------------
     # TERM EXTRACTORS:
-    #
+    # -------------------------------------------------------------------------
     def having_terms_in(self, term_list):
         self.params.terms_in = term_list
         return self
@@ -162,16 +189,16 @@ class InputFunctionsMixin:
         self.params.term_occurrences_range = (start, end)
         return self
 
-    #
+    # -------------------------------------------------------------------------
     # QUERY:
-    #
+    # -------------------------------------------------------------------------
     def with_query_expression(self, expr):
         self.params.query_expr = expr
         return self
 
-    #
+    # -------------------------------------------------------------------------
     # DATABASE PARAMS:
-    #
+    # -------------------------------------------------------------------------
     def where_directory_is(self, directory):
         self.params.root_dir = directory
         return self
@@ -196,9 +223,9 @@ class InputFunctionsMixin:
         self.params.records_match = records_match
         return self
 
-    #
+    # -------------------------------------------------------------------------
     # PLOTS:
-    #
+    # -------------------------------------------------------------------------
     def using_colormap(self, colormap):
         self.params.colormap = colormap
         return self
@@ -241,4 +268,27 @@ class InputFunctionsMixin:
 
     def using_yshift(self, yshift):
         self.params.yshift = yshift
+        return self
+
+    # -------------------------------------------------------------------------
+    # TFIDF MATRIX:
+    # -------------------------------------------------------------------------
+    def using_binary_term_frequencies(self, binary):
+        self.params.binary_term_frequencies = binary
+        return self
+
+    def using_row_normalization(self, normalization):  # nowm: L1, L2, None
+        self.params.row_normalization = normalization
+        return self
+
+    def using_idf_reweighting(self, smooth):  # use_idf
+        self.params.use_idf = smooth
+        return self
+
+    def using_idf_weights_smoothing(self, smooth):  # smooth_idf
+        self.params.smooth_idf_weights = smooth
+        return self
+
+    def using_sublinear_tf_scaling(self, scaling):  # sublinear_tf
+        self.params.sublinear_tf_scaling = scaling
         return self

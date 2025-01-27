@@ -82,14 +82,14 @@ FINANCIAL_TECHNOLOGY         5    3  ...                  0.0                   
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
 
-from ...internals.mt.mt_calculate_global_performance_metrics import (
+from ....internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,
 )
-from ...internals.mt.mt_filter_records_by_metric import _mt_filter_records_by_metric
-from ...internals.mt.mt_select_record_columns_by_metric import (
+from ....internals.mt.mt_filter_records_by_metric import _mt_filter_records_by_metric
+from ....internals.mt.mt_select_record_columns_by_metric import (
     _mt_select_record_columns_by_metric,
 )
-from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
+from ....internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 
 
 def growth_metrics_frame(

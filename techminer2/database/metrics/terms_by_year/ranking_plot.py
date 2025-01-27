@@ -41,7 +41,7 @@ Terms by Year Plot
 """
 import plotly.express as px  # type: ignore
 
-from .dataframe import terms_by_year_frame
+from .data_frame import terms_by_year_frame
 
 COLOR = "#465c6b"
 TEXTLEN = 40
