@@ -1,9 +1,7 @@
 """Metrics menu options"""
 
 from ...database.metrics.general_metrics.data_frame import general_metrics_frame
-from ...database.metrics.growth_metrics.growth_metrics_dataframe import (
-    growth_metrics_frame,
-)
+from ...database.metrics.growth_metrics.data_frame import growth_metrics_frame
 from ...database.metrics.performance_metrics.data_frame import performance_metrics_frame
 from ...database.metrics.terms_by_year.data_frame import terms_by_year_frame
 from ...database.metrics.terms_by_year.ranking_plot import terms_by_year_plot

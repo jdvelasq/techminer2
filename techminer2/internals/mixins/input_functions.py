@@ -32,6 +32,11 @@ class Params:
     with_field: Optional[str] = None
 
     # -------------------------------------------------------------------------
+    # GROWTH METRICS:
+    # -------------------------------------------------------------------------
+    time_window: int = 2
+
+    # -------------------------------------------------------------------------
     # TERM SEARCH:
     # -------------------------------------------------------------------------
     case_sensitive: bool = False
@@ -47,6 +52,11 @@ class Params:
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
     top_n_terms: Optional[int] = None
+
+    # -------------------------------------------------------------------------
+    # TERMS BY YEAR:
+    # -------------------------------------------------------------------------
+    cumulative_sum: bool = False
 
     # -------------------------------------------------------------------------
     # FIELD TRANSFORM:
@@ -151,6 +161,13 @@ class InputFunctionsMixin:
         return self
 
     # -------------------------------------------------------------------------
+    # GROWTH METRICS:
+    # -------------------------------------------------------------------------
+    def with_time_window(self, time_window):
+        self.params.time_window = time_window
+        return self
+
+    # -------------------------------------------------------------------------
     # TERM EXTRACTORS:
     # -------------------------------------------------------------------------
     def having_terms_in(self, term_list):
@@ -187,6 +204,13 @@ class InputFunctionsMixin:
 
     def having_term_occurrences_between(self, start, end):
         self.params.term_occurrences_range = (start, end)
+        return self
+
+    # -------------------------------------------------------------------------
+    # TERMS BY YEAR:
+    # -------------------------------------------------------------------------
+    def with_cumulative_sum(self, cumulative_sum):
+        self.params.cumulative_sum = cumulative_sum
         return self
 
     # -------------------------------------------------------------------------

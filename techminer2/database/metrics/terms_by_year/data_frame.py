@@ -5,30 +5,29 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Terms by Year Frame
+Data Frame
 ===============================================================================
 
-## >>> from techminer2.analyze.metrics import terms_by_year_frame
-## >>> terms_by_year_frame(
-## ...     cumulative=False,
-## ...     metric='OCC',
-## ...     #
-## ...     # FILTER PARAMS:
-## ...     .set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
-## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     #
-## ...     ).build()
-## ... ).head(10)
+>>> from techminer2.database.metrics.terms_by_year import DataFrame
+>>> (
+...     DataFrame()
+...     #
+...     .with_source_field("author_keywords")
+...     .select_top_n_terms(20)
+...     .order_terms_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     .with_cumulative_sum(False)
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
+... ).head(10)
 year                          2015  2016  2017  2018  2019
 author_keywords                                           
 FINTECH 31:5168                  0     5     8    12     6
@@ -44,24 +43,26 @@ CASE_STUDY 02:0340               0     0     1     0     1
 
 
 
-## >>> from techminer2.analyze.metrics import terms_by_year_frame
-## >>> terms_by_year_frame(
-## ...     field="author_keywords",
-## ...     cumulative=True,
-## ...     #
-## ...     # FILTER PARAMS:
-## ...     metric='OCC',
-## ...     top_n=20,
-## ...     occ_range=(None, None),
-## ...     gc_range=(None, None),
-## ...     custom_terms=None,
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ...     database="main",
-## ...     year_filter=(None, None),
-## ...     cited_by_filter=(None, None),
-## ... ).head(10)
+>>> from techminer2.database.metrics.terms_by_year import DataFrame
+>>> (
+...     DataFrame()
+...     #
+...     .with_source_field("author_keywords")
+...     .select_top_n_terms(20)
+...     .order_terms_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     .with_cumulative_sum(True)
+...     #
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     #
+...     .build()
+... ).head(10)
 year                          2015  2016  2017  2018  2019
 author_keywords                                           
 FINTECH 31:5168                  0     5    13    25    31
@@ -78,83 +79,126 @@ CASE_STUDY 02:0340               0     0     1     1     2
 
 
 """
-from ....internals.mt.mt_calculate_global_performance_metrics import (
-    _mt_calculate_global_performance_metrics,
-)
-from ....internals.mt.mt_extract_top_n_terms_by_metric import (
-    _mt_extract_top_n_terms_by_metric,
-)
-from ....internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
-from ....internals.utils.utils_append_occurrences_and_citations_to_axis import (
-    _utils_append_occurrences_and_citations_to_axis,
-)
+
+from ....internals.mixins import InputFunctionsMixin, SortAxesMixin
+from ...load import DatabaseLoader
+from ..performance_metrics.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 
-def terms_by_year_frame(
-    field,
-    cumulative,
-    #
-    # FILTER PARAMS:
-    metric="OCC",
-    top_n=20,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir: str = "./",
-    database: str = "main",
-    year_filter: tuple = (None, None),
-    cited_by_filter: tuple = (None, None),
-    **filters,
+class DataFrame(
+    InputFunctionsMixin,
+    SortAxesMixin,
 ):
     """:meta private:"""
 
-    data_frame = _mt_term_occurrences_by_year(
-        field=field,
-        cumulative=cumulative,
-        #
-        # DATABASE PARAMS
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    # ----------------------------------------------------------------------------------------------------
+    def _step_1_load_the_database(self):
+        return DatabaseLoader().update_params(**self.params.__dict__).build()
 
-    if custom_terms is None:
-        indicators = _mt_calculate_global_performance_metrics(
-            field=field,
-            #
-            # DATABASE PARAMS
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
+    def _step_2_get_years_range(self, data_frame):
+        return data_frame.year.min(), data_frame.year.max()
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_3_compute_term_occurrences_by_year(self, data_frame):
+
+        field = self.params.source_field
+
+        # select the columns field and year
+        data_frame = data_frame.reset_index()
+        data_frame = data_frame[[field, "year"]].copy()
+        data_frame = data_frame.dropna()
+
+        # explode the field column
+        data_frame[field] = data_frame[field].str.split(";")
+        data_frame = data_frame.explode(field)
+        data_frame[field] = data_frame[field].str.strip()
+
+        # create the matrix of term occurrences by year
+        data_frame["OCC"] = 1
+        data_frame = data_frame.groupby([field, "year"], as_index=False).agg(
+            {"OCC": "sum"}
+        )
+        data_frame = data_frame.set_index(field)
+        data_frame = data_frame.pivot(columns="year")
+        data_frame.columns = data_frame.columns.droplevel(0)
+        data_frame = data_frame.fillna(0)
+        data_frame = data_frame.astype(int)
+
+        if self.params.cumulative_sum is True:
+            data_frame = data_frame.cumsum(axis=1)
+
+        return data_frame
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_4_check_years(self, data_frame, years_range):
+        year_min = years_range[0]
+        year_max = years_range[1]
+        for year in range(year_min, year_max + 1):
+            if year not in data_frame.columns:
+                data_frame[year] = 0
+        data_frame = data_frame.sort_index(axis=1)
+        return data_frame
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_5_get_terms_mapping(self, data_frame):
+
+        field = self.params.source_field
+
+        data_frame = data_frame[[field, "global_citations"]].copy()
+        data_frame = data_frame.dropna()
+        data_frame[field] = data_frame[field].str.split(";")
+        data_frame = data_frame.explode(field)
+        data_frame[field] = data_frame[field].str.strip()
+
+        data_frame["OCC"] = 1
+        data_frame = data_frame.groupby(field).agg(
+            {"OCC": "sum", "global_citations": "sum"}
         )
 
-        custom_terms = _mt_extract_top_n_terms_by_metric(
-            indicators,
-            metric=metric,
-            top_n=top_n,
-            occ_range=occ_range,
-            gc_range=gc_range,
+        data_frame["counters"] = data_frame.index.astype(str)
+
+        n_zeros = len(str(data_frame["OCC"].max()))
+        data_frame["counters"] += " " + data_frame["OCC"].map(
+            lambda x: f"{x:0{n_zeros}d}"
         )
 
-    data_frame = data_frame[data_frame.index.isin(custom_terms)]
-    data_frame = data_frame.loc[custom_terms, :]
-    data_frame = _utils_append_occurrences_and_citations_to_axis(
-        data_frame,
-        axis=0,
-        field=field,
-        #
-        # DATABASE PARAMS
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+        n_zeros = len(str(data_frame["global_citations"].max()))
+        data_frame["counters"] += ":" + data_frame["global_citations"].map(
+            lambda x: f"{x:0{n_zeros}d}"
+        )
 
-    return data_frame
+        mapping = data_frame["counters"].to_dict()
+
+        return mapping
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_6_filter_terms(self, terms_by_year):
+        terms_in = (
+            PerformanceMetricsDataFrame()
+            .update_params(**self.params.__dict__)
+            .build()
+            .index
+        )
+        terms_by_year = terms_by_year[terms_by_year.index.isin(terms_in)]
+        return terms_by_year
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_7_append_counters_to_axis(self, data_frame, mapping):
+        data_frame.index = data_frame.index.map(mapping)
+        return data_frame
+
+    # ----------------------------------------------------------------------------------------------------
+    def _step_8_sort_index(self, data_frame):
+        return self.sort_index(data_frame)
+
+    # ----------------------------------------------------------------------------------------------------
+    def build(self):
+        data_frame = self._step_1_load_the_database()
+        years_range = self._step_2_get_years_range(data_frame)
+        terms_by_year = self._step_3_compute_term_occurrences_by_year(data_frame)
+        terms_by_year = self._step_4_check_years(terms_by_year, years_range)
+        mapping = self._step_5_get_terms_mapping(data_frame)
+        terms_by_year = self._step_6_filter_terms(terms_by_year)
+        terms_by_year = self._step_7_append_counters_to_axis(terms_by_year, mapping)
+        terms_by_year = self._step_8_sort_index(terms_by_year)
+        return terms_by_year
