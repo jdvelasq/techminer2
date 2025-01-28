@@ -82,50 +82,25 @@ ID BLOCKCHAIN; COMMERCE; RISK_MANAGEMENT; BUSINESS_MODELS; CUSTOMER_EXPERIENCE;
 
 
 """
-import textwrap
 
-from ...internals.mixins import InputFunctionsMixin
-from .record_mapping import RecordMapping
+from ...internals.mixins import (
+    InputFunctionsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
+)
+from ..load.load__database import DatabaseLoader
 
 
 class RecordViewer(
     InputFunctionsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        field_order = [
-            "UT",
-            "AR",
-            "TI",
-            "AU",
-            "TC",
-            "SO",
-            "PY",
-            "AB",
-            "DE",
-            "ID",
-        ]
-
-        formated_records = []
-
-        record_mapping = RecordMapping().update_params(**self.params.__dict__).build()
-
-        for record in record_mapping:
-            text = ""
-            for field in field_order:
-                if record[field] is not None and str(record[field]) != "nan":
-                    text += field + " "
-                    text += textwrap.fill(
-                        str(record[field]),
-                        width=79,
-                        initial_indent=" " * 3,
-                        subsequent_indent=" " * 3,
-                        fix_sentence_endings=True,
-                    )[3:]
-                    text += "\n"
-
-            formated_records += [text]
-
-        return formated_records
+        records = DatabaseLoader().update_params(**self.params.__dict__).build()
+        mapping = self.build_record_mapping(records)
+        documents = self.build_record_viewer(mapping)
+        return documents

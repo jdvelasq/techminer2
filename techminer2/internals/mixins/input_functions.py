@@ -42,9 +42,10 @@ class Params:
     case_sensitive: bool = False
     regex_flags: int = 0
     term_pattern: Optional[str] = None
+    abstract_pattern: Optional[str] = None
 
     # -------------------------------------------------------------------------
-    # TERM SEARCH:
+    # TERM FILTERING:
     # -------------------------------------------------------------------------
     selected_terms: Optional[list] = None
     term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
@@ -315,4 +316,8 @@ class InputFunctionsMixin:
 
     def using_sublinear_tf_scaling(self, scaling):  # sublinear_tf
         self.params.sublinear_tf_scaling = scaling
+        return self
+
+    def with_abstract_having_pattern(self, pattern):
+        self.params.abstract_pattern = pattern
         return self

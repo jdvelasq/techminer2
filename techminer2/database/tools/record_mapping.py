@@ -69,72 +69,23 @@ Record Mapping
 
 """
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import (
+    InputFunctionsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
+)
 from ..load.load__database import DatabaseLoader
 
 
 class RecordMapping(
     InputFunctionsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
 ):
     """:meta private:"""
 
-    def _step_01_load_filtered_records(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
-
-    def _step_02_list_columns_to_report(self, records, candiate_columns):
-        columns_to_report = []
-        for criterion in candiate_columns:
-            if criterion in records.columns:
-                columns_to_report.append(criterion)
-        return columns_to_report
-
-    def _step_03_filter_record_columns(self, records, selected_columns):
-        records = records[selected_columns]
-        return records
-
-    def _step_04_rename_columns(self, records, names_mapping):
-        records = records.rename(columns=names_mapping)
-        return records
-
-    def _step_05_build_record_mapping(self, records):
-        return records.to_dict(orient="records")
-
     def build(self):
 
-        names_mapping = {
-            "record_no": "UT",
-            "record_id": "AR",
-            "raw_document_title": "TI",
-            "authors": "AU",
-            "global_citations": "TC",
-            "source_title": "SO",
-            "year": "PY",
-            "abstract": "AB",
-            "raw_author_keywords": "DE",
-            "raw_index_keywords": "ID",
-        }
-
-        candiate_columns = names_mapping.keys()
-
-        filtered_records = self._step_01_load_filtered_records()
-
-        columns_to_report = self._step_02_list_columns_to_report(
-            filtered_records,
-            candiate_columns,
-        )
-
-        filtered_records = self._step_03_filter_record_columns(
-            filtered_records,
-            columns_to_report,
-        )
-
-        filtered_records = self._step_04_rename_columns(
-            filtered_records,
-            names_mapping,
-        )
-
-        mapping = self._step_05_build_record_mapping(
-            filtered_records,
-        )
-
+        records = DatabaseLoader().update_params(**self.params.__dict__).build()
+        mapping = self.build_record_mapping(records)
         return mapping
