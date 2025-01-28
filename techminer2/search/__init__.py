@@ -1,7 +1,0 @@
-from .deprecated.extract_descriptors_from_text import extract_descriptors_from_text
-from .deprecated.highlight_phrase import highlight_phrase
-from .find_records import find_records
-from .find_similar_phrases import find_similar_phrases
-from .find_similar_records import find_similar_records
-from .lemma_associations import lemma_associations
-from .tfidf_find_similar_phrases import tfidf_find_similar_phrases

@@ -43,6 +43,8 @@ class Params:
     regex_flags: int = 0
     term_pattern: Optional[str] = None
     abstract_pattern: Optional[str] = None
+    regex_search: bool = False
+    field_pattern: Optional[str] = None
 
     # -------------------------------------------------------------------------
     # TERM FILTERING:
@@ -121,6 +123,14 @@ class InputFunctionsMixin:
     # -------------------------------------------------------------------------
     def using_counters_in_axes(self, counters_in_axes):
         self.params.counters_in_axes = counters_in_axes
+        return self
+
+    def with_regex_search(self, regex_search):
+        self.params.regex_search = regex_search
+        return self
+
+    def with_field_pattern(self, field_pattern):
+        self.params.field_pattern = field_pattern
         return self
 
     # -------------------------------------------------------------------------
