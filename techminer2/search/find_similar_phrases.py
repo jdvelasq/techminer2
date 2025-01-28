@@ -62,7 +62,7 @@ from ..database.load.load__database import load__filtered_database
 from ..prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
     thesaurus__read_reversed_as_dict,
 )
-from .extract_descriptors_from_text import extract_descriptors_from_text
+from .deprecated.extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 79
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
