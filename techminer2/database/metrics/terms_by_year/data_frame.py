@@ -118,7 +118,7 @@ CASE_STUDY 02:0340               0     0     1     1     2
 
 from ....internals.mixins import InputFunctionsMixin, SortAxesMixin
 from ...load import DatabaseLoader
-from ..performance_metrics.data_frame import DataFrame as PerformanceMetricsDataFrame
+from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 
 class DataFrame(

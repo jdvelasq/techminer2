@@ -53,7 +53,7 @@ from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from ....internals.mixins import InputFunctionsMixin, SortAxesMixin
 from ...load import DatabaseLoader
-from ..performance_metrics.data_frame import DataFrame as PerformanceMetricsDataFrame
+from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 
 class DataFrame(

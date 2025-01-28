@@ -43,7 +43,7 @@ Filter a Field
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..metrics.performance_metrics import DataFrame
+from ..metrics.performance import DataFrame
 
 
 class TopTermsExtractor(
