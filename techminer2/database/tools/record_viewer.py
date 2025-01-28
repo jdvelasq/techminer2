@@ -14,6 +14,22 @@ Record Viewer
 >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
 >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
 >>> # 
+>>> # For most global cited documents use: 
+>>> #    .where_database_is("main")
+>>> #    .order_records_by("global_cited_by_highest")
+>>> #
+>>> # For most local cited documents use: 
+>>> #    .where_database_is("main")
+>>> #    .order_records_by("local_cited_by_highest")
+>>> #
+>>> # For most global cited references use:
+>>> #    .where_database_is("references")
+>>> #    .order_records_by("global_cited_by_highest")
+>>> #
+>>> # For most local cited references use: 
+>>> #    .where_database_is("references")
+>>> #    .order_records_by("local_cited_by_highest")
+>>> #
 >>> from techminer2.database.tools import RecordViewer
 >>> documents = (
 ...     RecordViewer()
@@ -63,6 +79,7 @@ ID BLOCKCHAIN; COMMERCE; RISK_MANAGEMENT; BUSINESS_MODELS; CUSTOMER_EXPERIENCE;
    FINANCIAL_SERVICE; FINANCIAL_SERVICES_INDUSTRIES; NEW_TECHNOLOGIES;
    OPERATIONS_MANAGEMENT; STAKEHOLDER_VALUES; TECHNOLOGY_INNOVATION; FINANCE
 <BLANKLINE>
+
 
 """
 import textwrap
