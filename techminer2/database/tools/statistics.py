@@ -13,7 +13,8 @@ Statistics
 >>> (
 ...     Statistics()
 ...     #
-...     .with_source_field("author_keywords")
+...     .with_field("author_keywords")
+...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
@@ -44,7 +45,7 @@ class Statistics(
 
     def build(self):
 
-        field = self.params.source_field
+        field = self.params.field
 
         records = DatabaseLoader().update_params(**self.params.__dict__).build()
 

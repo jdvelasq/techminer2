@@ -18,16 +18,16 @@
 
 >>> (
 ...     CleanTextOperator() 
-...     .with_source_field("raw_abstract")
-...     .as_field("raw_abstract_copy")
+...     .with_field("raw_abstract")
+...     .with_target_field("raw_abstract_copy")
 ...     .where_directory_is("example/")
 ...     .build()
 ... )
 
 >>> (
 ...     HighlightNounAndPhrasesOperator()  
-...     .with_source_field("raw_abstract_copy")
-...     .as_field("raw_abstract_copy")
+...     .with_field("raw_abstract_copy")
+...     .with_target_field("raw_abstract_copy")
 ...     .where_directory_is("example/")
 ...     .build()
 ... )
@@ -62,7 +62,7 @@ that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
 
 >>> (
 ...     DeleteFieldOperator()
-...     .with_source_field("raw_abstract_copy")
+...     .with_field("raw_abstract_copy")
 ...     .where_directory_is("example/")
 ...     .build()
 ... )

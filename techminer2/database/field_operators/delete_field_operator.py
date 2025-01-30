@@ -13,8 +13,11 @@ Delete a Field
 >>> from techminer2.database.field_operators import DeleteFieldOperator
 >>> (
 ...     DeleteFieldOperator()  # doctest: +SKIP 
-...     .select_field("author_keywords_copy")
+...     #
+...     .with_field("author_keywords_copy")
+...     #
 ...     .where_directory_is("example/")
+...     #
 ...     .build()
 ... )
 
@@ -22,7 +25,7 @@ Delete a Field
 
 from ...internals.mixins import InputFunctionsMixin
 from ..ingest.internals.operators.internal__delete_field import internal__delete_field
-from .operators__protected_fields import PROTECTED_FIELDS
+from .protected_fields import PROTECTED_FIELDS
 
 
 class DeleteFieldOperator(
@@ -32,11 +35,11 @@ class DeleteFieldOperator(
 
     def build(self):
 
-        if self.params.source_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.source_field}` is protected")
+        if self.params.field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.field}` is protected")
 
         internal__delete_field(
-            field=self.params.source_field,
+            field=self.params.field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

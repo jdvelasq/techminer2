@@ -12,9 +12,9 @@ import pandas as pd  # type: ignore
 
 
 def internal__transform_field(
-    source,
-    dest,
-    func,
+    field,
+    other_field,
+    function,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -29,8 +29,8 @@ def internal__transform_field(
         compression="zip",
     )
 
-    if source in dataframe.columns and not dataframe[source].dropna().empty:
-        dataframe[dest] = func(dataframe[source])
+    if field in dataframe.columns and not dataframe[field].dropna().empty:
+        dataframe[other_field] = function(dataframe[field])
 
     dataframe.to_csv(
         database_file,

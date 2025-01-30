@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def _local_processing_func(text):
@@ -25,8 +25,8 @@ def internal__preprocess_source_title(root_dir):
     """:meta private:"""
 
     internal__transform_field(
-        source="raw_source_title",
-        dest="source_title",
-        func=_local_processing_func,
+        field="raw_source_title",
+        other_field="source_title",
+        function=_local_processing_func,
         root_dir=root_dir,
     )

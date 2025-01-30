@@ -12,9 +12,12 @@ Count Terms per Record
 >>> from techminer2.database.field_operators import CountTermsPerRecordOperator
 >>> (
 ...     CountTermsPerRecordOperator()
-...     .with_source_field("authors")
-...     .as_field("test_num_authors")
+...     #
+...     .with_field("authors")
+...     .with_target_field("test_num_authors")
+...     #
 ...     .where_directory_is("example/")
+...     #
 ...     .build()
 ... )
 
@@ -42,7 +45,7 @@ from ...internals.mixins import InputFunctionsMixin
 from ..ingest.internals.operators.internal__count_terms_per_record import (
     internal__count_terms_per_record,
 )
-from .operators__protected_fields import PROTECTED_FIELDS
+from .protected_fields import PROTECTED_FIELDS
 
 
 class CountTermsPerRecordOperator(
@@ -52,12 +55,12 @@ class CountTermsPerRecordOperator(
 
     def build(self):
 
-        if self.params.dest_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.dest_field}` is protected")
+        if self.params.other_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.other_field}` is protected")
 
         internal__count_terms_per_record(
-            source=self.params.source_field,
-            dest=self.params.dest_field,
+            source=self.params.field,
+            dest=self.params.other_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

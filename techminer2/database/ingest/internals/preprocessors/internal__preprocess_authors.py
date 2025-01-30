@@ -9,7 +9,7 @@
 
 import pandas as pd  # type: ignore
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def _local_processing(text):
@@ -53,8 +53,8 @@ def internal__preprocess_authors(root_dir):
     """Run authors importer."""
 
     internal__transform_field(
-        source="raw_authors",
-        dest="authors",
-        func=_local_processing,
+        field="raw_authors",
+        other_field="authors",
+        function=_local_processing,
         root_dir=root_dir,
     )

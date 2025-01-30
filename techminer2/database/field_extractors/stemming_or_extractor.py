@@ -6,15 +6,20 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Fields difference
+Stemming Field with OR
 ===============================================================================
 
->>> from techminer2.database.field_extractors import FieldsDifferenceExtractor
+>>> from techminer2.database.field_extractors import StemmingOrExtractor
 >>> terms = (
-...     FieldsDifferenceExtractor() 
+...     StemmingOrExtractor() 
 ...     #
-...     .compare_field("author_keywords")
-...     .to_field("index_keywords")
+...     .with_field("author_keywords")
+...     .with_terms_having_stem_match(
+...             [
+...                 "financial technology", 
+...                 "artificial intelligence",
+...             ],
+...         )
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -25,39 +30,43 @@ Fields difference
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['ADOPTION',
- 'AI',
- 'ALTERNATIVE_DATA',
- 'BANKING_COMPETITION',
- 'BANKING_INNOVATIONS',
- 'BANKS',
- 'BANK_FINTECH_PARTNERSHIP',
- 'BEHAVIOURAL_ECONOMICS',
- 'BLOCKCHAINS',
- 'BUSINESS_MODEL']
+['ARTIFICIAL_INTELLIGENCE',
+ 'DIGITAL_TECHNOLOGIES',
+ 'FINANCE_TECHNOLOGY',
+ 'FINANCIAL_COMPUTING',
+ 'FINANCIAL_INCLUSION',
+ 'FINANCIAL_INSTITUTION',
+ 'FINANCIAL_INSTITUTIONS',
+ 'FINANCIAL_INTERMEDIATION',
+ 'FINANCIAL_MANAGEMENT',
+ 'FINANCIAL_SCENARIZATION']
 
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__fields_difference import internal__fields_difference
+from .internals.internal__stemming import internal__stemming_or
 
 
-class FieldsDifferenceExtractor(
+class StemmingOrExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__fields_difference(
-            compare_field=self.params.source_field,
-            to_field=self.params.dest_field,
+        return internal__stemming_or(
             #
-            # DATABASE PARAMS:
+            # FIELD:
+            field=self.params.field,
+            #
+            # SEARCH:
+            term_pattern=self.params.pattern,
+            #
+            # DATABASE:
             root_dir=self.params.root_dir,
             database=self.params.database,
             record_years_range=self.params.record_years_range,
             record_citations_range=self.params.record_citations_range,
-            records_order_by=self.params.records_order_by,
+            records_order_by=None,
             records_match=self.params.records_match,
         )

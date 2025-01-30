@@ -6,15 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Fields Intersection
+Match
 ===============================================================================
 
->>> from techminer2.database.field_extractors import FieldsIntersectionExtractor
+>>> from techminer2.database.field_extractors import MatchExtractor
 >>> terms = (
-...     FieldsIntersectionExtractor() 
+...     MatchExtractor() 
 ...     #
-...     .compare_field("author_keywords")
-...     .to_field("index_keywords")
+...     .with_field("author_keywords")
+...     .with_terms_having_pattern("L.+")
+...     .with_case_sensitive(False)
+...     .with_regex_flags(0)
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -25,33 +27,30 @@ Fields Intersection
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['ACTOR_NETWORK_THEORY',
- 'ACTUALIZATION',
- 'AGRICULTURE',
- 'AGROPAY',
- 'ARTIFICIAL_INTELLIGENCE',
- 'BANKING',
- 'BIG_DATA',
- 'BLOCKCHAIN',
- 'BUSINESS_MODELS',
- 'CASE_STUDY_METHODS']
+['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
 
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__fields_intersection import internal__fields_intersection
+from .internals.internal__match import internal__match
 
 
-class FieldsIntersectionExtractor(
+class MatchExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__fields_intersection(
-            compare_field=self.params.source_field,
-            to_field=self.params.dest_field,
+        return internal__match(
+            #
+            # FIELD:
+            field=self.params.field,
+            #
+            # SEARCH:
+            case_sensitive=self.params.case_sensitive,
+            term_pattern=self.params.pattern,
+            regex_flags=self.params.regex_flags,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

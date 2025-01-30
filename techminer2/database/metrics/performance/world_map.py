@@ -13,8 +13,10 @@ World Map
 >>> plot = (
 ...     WorldMap()
 ...     #
-...     .with_source_field("countries")
-...     .order_terms_by("OCC")
+...     .with_field("countries")
+...     #
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)

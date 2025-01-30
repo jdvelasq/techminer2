@@ -13,9 +13,10 @@ Word Cloud
 >>> plot = (
 ...     WordCloud()
 ...     #
-...     .with_source_field("raw_document_title_nouns_and_phrases")
-...     .select_top_n_terms(80)
-...     .order_terms_by("OCC")
+...     .with_field("raw_document_title_nouns_and_phrases")
+...     .with_top_n_terms(80)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)

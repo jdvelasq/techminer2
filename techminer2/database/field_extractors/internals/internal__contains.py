@@ -14,10 +14,17 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__contains(
-    term_pattern: str,
-    source_field: str,
     #
-    # DATABASE PARAMS:
+    # SOURCE:
+    field: str,
+    #
+    # SEARCH:
+    term_pattern: str,
+    case_sensitive: bool,
+    regex_flags: int,
+    regex_search: bool,
+    #
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -27,9 +34,11 @@ def internal__contains(
 ):
 
     dataframe = internal__get_field_values_from_database(
-        source_field=source_field,
         #
-        # DATABASE PARAMS:
+        # SOURCE:
+        field=field,
+        #
+        # DATABASE:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,
@@ -37,7 +46,14 @@ def internal__contains(
         records_order_by=records_order_by,
         records_match=records_match,
     )
-    dataframe = dataframe[dataframe.term.str.contains(term_pattern)]
+    dataframe = dataframe[
+        dataframe.term.str.contains(
+            pat=term_pattern,
+            case=case_sensitive,
+            flags=regex_flags,
+            regex=regex_search,
+        )
+    ]
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()

@@ -24,7 +24,7 @@ Concordant Contexts
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
 ...     .where_records_match(None)
-...     .order_records_by("date_newest")   
+...     .where_records_ordered_by("date_newest")   
 ...     #
 ...     .build()
 ... )
@@ -60,7 +60,7 @@ class ConcordantContexts(
     # -------------------------------------------------------------------------
     def _step_2_extract_context_phrases(self, records):
 
-        search_for = self.params.abstract_pattern
+        search_for = self.params.pattern
 
         records = records.set_index(
             pd.Index(records.record_id + " / " + records.raw_document_title)
@@ -87,7 +87,7 @@ class ConcordantContexts(
     # -------------------------------------------------------------------------
     def _step_3_create_contexts_dataframe(self, context_phrases):
 
-        search_for = self.params.abstract_pattern
+        search_for = self.params.pattern
 
         regex = r"\b" + search_for + r"\b"
         contexts = context_phrases.str.extract(
@@ -110,7 +110,7 @@ class ConcordantContexts(
     # -------------------------------------------------------------------------
     def _step_4_transform_context_dataframe_to_texts(self, contexts):
 
-        search_for = self.params.abstract_pattern
+        search_for = self.params.pattern
         contexts = contexts.copy()
         contexts["left_r"] = contexts["left_context"].str[::-1]
 

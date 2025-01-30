@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Contains
+Ends With
 ===============================================================================
 
->>> from techminer2.database.field_extractors import ContainsExtractor
+>>> from techminer2.database.field_extractors import EndsWithExtractor
 >>> terms = (
-...     ContainsExtractor() 
+...     EndsWithExtractor() 
 ...     #
-...     .with_source_field("author_keywords")
-...     .with_terms_having_pattern("FINTECH")
+...     .with_field("author_keywords")
+...     .with_terms_having_pattern("ING")
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -25,29 +25,36 @@ Contains
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['BANK_FINTECH_PARTNERSHIP',
- 'FINANCIAL_TECHNOLOGY (FINTECH)',
- 'FINTECH',
- 'FINTECH_DISRUPTION',
- 'FINTECH_INDUSTRY',
- 'FINTECH_SERVICES']
-
-
+['BANKING',
+ 'CLOUD_COMPUTING',
+ 'CROWDFUNDING',
+ 'DATA_MINING',
+ 'DIGITAL_BANKING',
+ 'ECONOMIC_FORECASTING',
+ 'FINANCIAL_COMPUTING',
+ 'FUTURE_OF_BANKING',
+ 'LENDING',
+ 'MARKETPLACE_LENDING']
+ 
 """
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__contains import internal__contains
+from .internals.internal__ends_with import internal__ends_with
 
 
-class ContainsExtractor(
+class EndsWithExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__contains(
-            term_pattern=self.params.term_pattern,
-            source_field=self.params.source_field,
+        return internal__ends_with(
+            #
+            # FIELD:
+            field=self.params.field,
+            #
+            # SEARCH:
+            term_pattern=self.params.pattern,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,
@@ -55,5 +62,5 @@ class ContainsExtractor(
             record_years_range=self.params.record_years_range,
             record_citations_range=self.params.record_citations_range,
             records_order_by=None,
-            records_match=self.params.record_filters,
+            records_match=self.params.records_match,
         )

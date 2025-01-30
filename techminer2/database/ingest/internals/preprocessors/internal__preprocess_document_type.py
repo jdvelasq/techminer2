@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def internal__preprocess_document_type(root_dir):
     """:meta private:"""
 
     internal__transform_field(
-        source="raw_document_type",
-        dest="document_type",
-        func=lambda x: x.str.capitalize(),
+        field="raw_document_type",
+        other_field="document_type",
+        function=lambda x: x.str.capitalize(),
         root_dir=root_dir,
     )

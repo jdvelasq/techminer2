@@ -14,9 +14,10 @@ Filter a Field
 >>> terms = (
 ...     TopTermsExtractor()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(10)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(10)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)

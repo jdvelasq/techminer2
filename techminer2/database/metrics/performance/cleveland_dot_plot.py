@@ -13,9 +13,10 @@ Cleveland Dot Plot
 >>> plot = (
 ...     ClevelandDotPlot()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(10)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(10)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -64,9 +65,7 @@ class ClevelandDotPlot(
             )
 
         if self.params.yaxes_title_text is None:
-            self.using_yaxes_title_text(
-                self.params.source_field.replace("_", " ").upper()
-            )
+            self.using_yaxes_title_text(self.params.field.replace("_", " ").upper())
 
         fig = self.build_cleveland_dot_plot(data_frame=data_frame)
 

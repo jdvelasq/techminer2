@@ -6,17 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Match
+Fields Intersection
 ===============================================================================
 
->>> from techminer2.database.field_extractors import MatchExtractor
+>>> from techminer2.database.field_extractors import FieldsIntersectionExtractor
 >>> terms = (
-...     MatchExtractor() 
+...     FieldsIntersectionExtractor() 
 ...     #
-...     .with_source_field("author_keywords")
-...     .with_terms_having_pattern("L.+")
-...     .with_case_sensitive(False)
-...     .with_regex_flags(0)
+...     .with_field("author_keywords")
+...     .with_comparison_field("index_keywords")
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -27,28 +25,37 @@ Match
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
+['ACTOR_NETWORK_THEORY',
+ 'ACTUALIZATION',
+ 'ADOPTION',
+ 'AGRICULTURE',
+ 'AGROPAY',
+ 'AI',
+ 'ALTERNATIVE_DATA',
+ 'ARTIFICIAL_INTELLIGENCE',
+ 'BANKING',
+ 'BANKING_COMPETITION']
 
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__match import internal__match
+from .internals.internal__fields_intersection import internal__fields_intersection
 
 
-class MatchExtractor(
+class FieldsIntersectionExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__match(
-            case_sensitive=self.params.case_sensitive,
-            term_pattern=self.params.term_pattern,
-            regex_flags=self.params.regex_flags,
-            source_field=self.params.source_field,
+        return internal__fields_intersection(
             #
-            # DATABASE PARAMS:
+            # FIELDS:
+            field=self.params.field,
+            other_field=self.params.field,
+            #
+            # DATABASE:
             root_dir=self.params.root_dir,
             database=self.params.database,
             record_years_range=self.params.record_years_range,

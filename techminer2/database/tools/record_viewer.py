@@ -16,19 +16,19 @@ Record Viewer
 >>> # 
 >>> # For most global cited documents use: 
 >>> #    .where_database_is("main")
->>> #    .order_records_by("global_cited_by_highest")
+>>> #    .where_records_ordered_by("global_cited_by_highest")
 >>> #
 >>> # For most local cited documents use: 
 >>> #    .where_database_is("main")
->>> #    .order_records_by("local_cited_by_highest")
+>>> #    .where_records_ordered_by("local_cited_by_highest")
 >>> #
 >>> # For most global cited references use:
 >>> #    .where_database_is("references")
->>> #    .order_records_by("global_cited_by_highest")
+>>> #    .where_records_ordered_by("global_cited_by_highest")
 >>> #
 >>> # For most local cited references use: 
 >>> #    .where_database_is("references")
->>> #    .order_records_by("local_cited_by_highest")
+>>> #    .where_records_ordered_by("local_cited_by_highest")
 >>> #
 >>> from techminer2.database.tools import RecordViewer
 >>> documents = (
@@ -39,7 +39,7 @@ Record Viewer
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
 ...     .where_records_match(None)
-...     .order_records_by("global_cited_by_highest")  
+...     .where_records_ordered_by("global_cited_by_highest")  
 ...     #
 ...     .build()
 ... )

@@ -1,15 +1,15 @@
 """Objects for data extraction from fields."""
 
-from .extractors__contains import ContainsExtractor
-from .extractors__ends_with import EndsWithExtractor
-from .extractors__fields_difference import FieldsDifferenceExtractor
-from .extractors__fields_intersection import FieldsIntersectionExtractor
-from .extractors__full_match import FullMatchExtractor
-from .extractors__match import MatchExtractor
-from .extractors__starts_with import StartsWithExtractor
-from .extractors__stemming_and import StemmingAndExtractor
-from .extractors__stemming_or import StemmingOrExtractor
-from .extractors__top_terms import TopTermsExtractor
+from .contains_extractor import ContainsExtractor
+from .ends_with_extractor import EndsWithExtractor
+from .fields_difference_extractor import FieldsDifferenceExtractor
+from .fields_intersection_extractor import FieldsIntersectionExtractor
+from .full_match_extractor import FullMatchExtractor
+from .match_extractor import MatchExtractor
+from .starts_with_extractor import StartsWithExtractor
+from .stemming_and_extractor import StemmingAndExtractor
+from .stemming_or_extractor import StemmingOrExtractor
+from .top_terms_extractor import TopTermsExtractor
 
 __all__ = [
     "ContainsExtractor",

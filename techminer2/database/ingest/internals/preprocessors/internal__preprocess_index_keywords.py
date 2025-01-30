@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def internal__preprocess_index_keywords(root_dir):
     """Run authors importer."""
 
     internal__transform_field(
-        source="raw_index_keywords",
-        dest="index_keywords",
-        func=lambda x: x,
+        field="raw_index_keywords",
+        other_field="index_keywords",
+        function=lambda x: x,
         root_dir=root_dir,
     )

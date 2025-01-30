@@ -6,15 +6,20 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Starts With
+Stemming Field with AND
 ===============================================================================
 
->>> from techminer2.database.field_extractors import StartsWithExtractor
+>>> from techminer2.database.field_extractors import StemmingAndExtractor
 >>> terms = (
-...     StartsWithExtractor() 
+...     StemmingAndExtractor() 
 ...     #
-...     .with_source_field("author_keywords")
-...     .with_terms_having_pattern("FINAN")
+...     .with_field("author_keywords")
+...     .with_terms_having_stem_match(
+...             [
+...                 "financial technology", 
+...                 "artificial intelligence",
+...             ],
+...         ) 
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -25,41 +30,36 @@ Starts With
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['FINANCE',
- 'FINANCE_TECHNOLOGY',
- 'FINANCIALISATION',
- 'FINANCIAL_COMPUTING',
- 'FINANCIAL_INCLUSION',
- 'FINANCIAL_INSTITUTION',
- 'FINANCIAL_INSTITUTIONS',
- 'FINANCIAL_INTERMEDIATION',
- 'FINANCIAL_MANAGEMENT',
- 'FINANCIAL_SCENARIZATION']
+['ARTIFICIAL_INTELLIGENCE',
+ 'FINANCIAL_TECHNOLOGY',
+ 'FINANCIAL_TECHNOLOGY (FINTECH)']
 
- 
- 
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__starts_with import internal__starts_with
+from .internals.internal__stemming import internal__stemming_and
 
 
-class StartsWithExtractor(
+class StemmingAndExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__starts_with(
-            source_field=self.params.source_field,
-            term_pattern=self.params.term_pattern,
+        return internal__stemming_and(
             #
-            # DATABASE PARAMS:
+            # FIELD:
+            field=self.params.field,
+            #
+            # SEARCH:
+            term_pattern=self.params.pattern,
+            #
+            # DATABASE:
             root_dir=self.params.root_dir,
             database=self.params.database,
             record_years_range=self.params.record_years_range,
             record_citations_range=self.params.record_citations_range,
-            records_order_by=self.params.records_order_by,
+            records_order_by=None,
             records_match=self.params.records_match,
         )

@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def _process_text(text):
@@ -26,8 +26,8 @@ def internal__preprocess_doi(root_dir):
     """Run authors importer."""
 
     internal__transform_field(
-        source="doi",
-        dest="doi",
-        func=_process_text,
+        field="doi",
+        other_field="doi",
+        function=_process_text,
         root_dir=root_dir,
     )

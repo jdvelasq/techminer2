@@ -13,8 +13,9 @@ Bar Plot
 >>> plot = (
 ...     BarPlot()
 ...     #
-...     .with_source_field("countries")
-...     .select_top_n_terms(10)
+...     .with_field("countries")
+...     .with_top_n_terms(10)
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -57,7 +58,7 @@ class BarPlot(
 
     def build_collaboration_bar_plot(self, metrics):
 
-        field = self.params.source_field
+        field = self.params.field
         title_text = self.params.title_text
         xaxes_title_text = self.params.xaxes_title_text
         yaxes_title_text = self.params.yaxes_title_text

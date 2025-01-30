@@ -13,8 +13,8 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_source_field("countries")
-...     .select_top_n_terms(20)
+...     .with_field("countries")
+...     .with_top_n_terms(20)
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -54,7 +54,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_2_compute_collaboration_metrics(self, data_frame):
 
-        field = self.params.source_field
+        field = self.params.field
 
         #
         # Add a column to represent the number of occurrences of a document

@@ -14,10 +14,12 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__fields_intersection(
-    compare_field: str,
-    to_field: str,
     #
-    # DATABASE PARAMS:
+    # FIELDS:
+    field: str,
+    other_field: str,
+    #
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -27,9 +29,11 @@ def internal__fields_intersection(
 ):
 
     set_a = internal__get_field_values_from_database(
-        source_field=compare_field,
         #
-        # DATABASE PARAMS:
+        # FIELD:
+        field=field,
+        #
+        # DATABASE:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,
@@ -41,9 +45,11 @@ def internal__fields_intersection(
     set_a = set(set_a)
 
     set_b = internal__get_field_values_from_database(
-        source_field=to_field,
         #
-        # DATABASE PARAMS:
+        # FIELD:
+        field=other_field,
+        #
+        # DATABASE:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,

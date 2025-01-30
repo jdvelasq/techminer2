@@ -12,16 +12,19 @@ Copy a Field
 >>> from techminer2.database.field_operators import CopyFieldOperator
 >>> (
 ...     CopyFieldOperator()  # doctest: +SKIP
-...     .select_field("author_keywords")
-...     .as_field("author_keywords_copy")
+...     #
+...     .with_field("author_keywords")
+...     .with_target_field("author_keywords_copy")
+...     #
 ...     .where_directory_is("example/")
+...     #
 ...     .build()
 ... )
 
 """
 from ...internals.mixins import InputFunctionsMixin
 from ..ingest.internals.operators.internal__copy_field import internal__copy_field
-from .operators__protected_fields import PROTECTED_FIELDS
+from .protected_fields import PROTECTED_FIELDS
 
 
 class CopyFieldOperator(
@@ -35,7 +38,7 @@ class CopyFieldOperator(
             raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__copy_field(
-            source=self.params.source_field,
+            source=self.params.field,
             dest=self.params.dest_field,
             #
             # DATABASE PARAMS:

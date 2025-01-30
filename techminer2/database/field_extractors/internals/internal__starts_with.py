@@ -14,10 +14,14 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__starts_with(
-    term_pattern,
-    source_field,
     #
-    # DATABASE PARAMS:
+    # FIELD:
+    field,
+    #
+    # SEARCH:
+    term_pattern,
+    #
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -27,9 +31,11 @@ def internal__starts_with(
 ):
 
     dataframe = internal__get_field_values_from_database(
-        source_field=source_field,
         #
-        # DATABASE PARAMS:
+        # FIELD
+        field=field,
+        #
+        # DATABASE:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,

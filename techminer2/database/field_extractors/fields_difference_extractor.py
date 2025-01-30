@@ -6,19 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Stemming Field with AND
+Fields difference
 ===============================================================================
 
->>> from techminer2.database.field_extractors import StemmingAndExtractor
+>>> from techminer2.database.field_extractors import FieldsDifferenceExtractor
 >>> terms = (
-...     StemmingAndExtractor() 
-...     .with_source_field("author_keywords")
-...     .matching_terms_with(
-...             [
-...                 "financial technology", 
-...                 "artificial intelligence",
-...             ],
-...         ) 
+...     FieldsDifferenceExtractor() 
+...     #
+...     .with_field("author_keywords")
+...     .with_comparison_field("index_keywords")
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -29,32 +25,41 @@ Stemming Field with AND
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['ARTIFICIAL_INTELLIGENCE',
- 'FINANCIAL_TECHNOLOGY',
- 'FINANCIAL_TECHNOLOGY (FINTECH)']
+['ADOPTION',
+ 'AI',
+ 'ALTERNATIVE_DATA',
+ 'BANKING_COMPETITION',
+ 'BANKING_INNOVATIONS',
+ 'BANKS',
+ 'BANK_FINTECH_PARTNERSHIP',
+ 'BEHAVIOURAL_ECONOMICS',
+ 'BLOCKCHAINS',
+ 'BUSINESS_MODEL']
 
 """
 
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__stemming import internal__stemming_and
+from .internals.internal__fields_difference import internal__fields_difference
 
 
-class StemmingAndExtractor(
+class FieldsDifferenceExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__stemming_and(
-            custom_items=self.params.selected_terms,
-            source_field=self.params.source_field,
+        return internal__fields_difference(
             #
-            # DATABASE PARAMS:
+            # FIELDS:
+            field=self.params.field,
+            other_field=self.params.other_field,
+            #
+            # DATABASE:
             root_dir=self.params.root_dir,
             database=self.params.database,
             record_years_range=self.params.record_years_range,
             record_citations_range=self.params.record_citations_range,
-            records_order_by=None,
+            records_order_by=self.params.records_order_by,
             records_match=self.params.records_match,
         )

@@ -12,9 +12,10 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(10)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(10)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -84,7 +85,7 @@ class DataFrame(
         return (
             data_frame[
                 [
-                    self.params.source_field,
+                    self.params.field,
                     "global_citations",
                     "local_citations",
                     "year",
@@ -99,20 +100,18 @@ class DataFrame(
 
         # Explode terms in field
         data_frame = data_frame.copy()
-        data_frame[self.params.source_field] = data_frame[
-            self.params.source_field
-        ].str.split("; ")
-        data_frame = data_frame.explode(self.params.source_field)
+        data_frame[self.params.field] = data_frame[self.params.field].str.split("; ")
+        data_frame = data_frame.explode(self.params.field)
 
         # Add calculated columns to compute impact metrics
         # Sorts the data frame
         data_frame = data_frame.sort_values(
-            [self.params.source_field, "global_citations", "local_citations"],
+            [self.params.field, "global_citations", "local_citations"],
             ascending=[True, False, False],
         )
 
         data_frame = data_frame.assign(
-            position=data_frame.groupby(self.params.source_field).cumcount() + 1
+            position=data_frame.groupby(self.params.field).cumcount() + 1
         )
 
         data_frame = data_frame.assign(
@@ -126,7 +125,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_4_compute_initial_performance_metrics(self, data_frame):
         data_frame["OCC"] = 1
-        grouped = data_frame.groupby(self.params.source_field).agg(
+        grouped = data_frame.groupby(self.params.field).agg(
             {
                 "OCC": "sum",
                 "global_citations": "sum",
@@ -162,7 +161,7 @@ class DataFrame(
 
         # H-index
         h_indexes = data_frame.query("global_citations >= position")
-        h_indexes = h_indexes.groupby(self.params.source_field, as_index=True).agg(
+        h_indexes = h_indexes.groupby(self.params.field, as_index=True).agg(
             {"position": "max"}
         )
         h_indexes = h_indexes.rename(columns={"position": "h_index"})
@@ -171,7 +170,7 @@ class DataFrame(
 
         # G-index
         g_indexes = data_frame.query("global_citations >= position2")
-        g_indexes = g_indexes.groupby(self.params.source_field, as_index=True).agg(
+        g_indexes = g_indexes.groupby(self.params.field, as_index=True).agg(
             {"position": "max"}
         )
         g_indexes = g_indexes.rename(columns={"position": "g_index"})
@@ -256,9 +255,7 @@ class DataFrame(
             return grouped
 
         if self.params.terms_in is not None:
-            grouped = grouped[
-                grouped[self.params.source_field].isin(self.params.terms_in)
-            ]
+            grouped = grouped[grouped[self.params.field].isin(self.params.terms_in)]
 
         return grouped
 

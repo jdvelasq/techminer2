@@ -23,7 +23,7 @@ Data Frame
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
 ...     .where_records_match(None)
-...     .order_records_by("global_cited_by_highest")  
+...     .where_records_ordered_by("global_cited_by_highest")  
 ...     #
 ...     .build()
 ... ).head()

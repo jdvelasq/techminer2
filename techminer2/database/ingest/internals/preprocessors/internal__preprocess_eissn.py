@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def internal__preprocess_eissn(root_dir):
     """Run authors importer."""
 
     internal__transform_field(
-        source="eissn",
-        dest="eissn",
-        func=lambda x: x,
+        field="eissn",
+        other_field="eissn",
+        function=lambda x: x,
         root_dir=root_dir,
     )

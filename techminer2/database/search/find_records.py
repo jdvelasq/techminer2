@@ -14,7 +14,10 @@ Find records
 >>> docs = (
 ...     FindRecords() 
 ...     #
-...     .with_source_field("author_keywords")
+...     # FIELD:
+...     .with_field("author_keywords")
+...     #
+...     # SEARCH:
 ...     .with_field_pattern('REGTECH')
 ...     .with_regex_search(False)
 ...     .with_case_sensitive(False)
@@ -25,7 +28,7 @@ Find records
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
 ...     .where_records_match(None)
-...     .order_records_by("date_newest")   
+...     .where_records_ordered_by("date_newest")   
 ...     #
 ...     .build()
 ... )
@@ -81,10 +84,10 @@ class FindRecords(
     def _step_02_filter_the_records(self, records):
 
         records = records.copy()
-        records = records.dropna(subset=[self.params.source_field])
+        records = records.dropna(subset=[self.params.field])
 
-        contains = records[self.params.source_field].str.contains(
-            self.params.field_pattern,
+        contains = records[self.params.field].str.contains(
+            pat=self.params.pattern,
             case=self.params.case_sensitive,
             flags=self.params.regex_flags,
             regex=self.params.regex_search,

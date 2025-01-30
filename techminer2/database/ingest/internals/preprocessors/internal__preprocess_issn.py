@@ -6,15 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__transform_field import internal__transform_field
+from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def internal__preprocess_issn(root_dir):
     """:meta private:"""
 
     internal__transform_field(
-        source="issn",
-        dest="issn",
-        func=lambda x: x,
+        field="issn",
+        other_field="issn",
+        function=lambda x: x,
         root_dir=root_dir,
     )

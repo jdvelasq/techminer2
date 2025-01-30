@@ -12,8 +12,10 @@ Collect Nouns and Phrases
 >>> from techminer2.database.field_operators import CollectNounAndPhrasesOperator
 >>> (
 ...     CollectNounAndPhrasesOperator()  # doctest: +SKIP 
-...     .select_field("author_keywords")
-...     .as_field("author_keywords_copy")
+....    #
+...     .with_field("author_keywords")
+...     .with_target_field("author_keywords_copy")
+....    #
 ...     .where_directory_is("example/")
 ...     .build()
 ... )
@@ -23,7 +25,7 @@ from ...internals.mixins import InputFunctionsMixin
 from ..ingest.internals.operators.internal__collect_nouns_and_phrases import (
     internal__collect_nouns_and_phrases,
 )
-from .operators__protected_fields import PROTECTED_FIELDS
+from .protected_fields import PROTECTED_FIELDS
 
 
 class CollectNounAndPhrasesOperator(
@@ -37,7 +39,7 @@ class CollectNounAndPhrasesOperator(
             raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__collect_nouns_and_phrases(
-            source=self.params.source_field,
+            source=self.params.field,
             dest=self.params.dest_field,
             #
             # DATABASE PARAMS:

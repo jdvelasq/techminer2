@@ -5,27 +5,31 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+# pylint: disable=too-few-public-methods
 """
-Rename a Field
+Fill NA
 ===============================================================================
 
->>> from techminer2.database.field_operators import RenameFieldOperator
+>>> from techminer2.database.field_operators import FillNAOperator
 >>> (
-...     RenameFieldOperator()  # doctest: +SKIP 
-...     .select_field("author_keywords")
-...     .as_field("author_keywords_copy")
+...     FillNAOperator()  # doctest: +SKIP 
+...     #
+...     .with_field("author_keywords")
+...     .with_values_from_field("index_keywords")
+...     .with_target_field("author_keywords")
+...     #
 ...     .where_directory_is("example/")
+...     #
 ...     .build()
 ... )
 
-
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..ingest.internals.operators.internal__rename_field import internal__rename_field
-from .operators__protected_fields import PROTECTED_FIELDS
+from ..ingest.internals.operators.internal__fillna import internal__fillna
+from .protected_fields import PROTECTED_FIELDS
 
 
-class RenameFieldOperator(
+class FillNAOperator(
     InputFunctionsMixin,
 ):
     """:meta private:"""
@@ -35,9 +39,9 @@ class RenameFieldOperator(
         if self.params.dest_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
-        internal__rename_field(
-            source=self.params.source_field,
-            dest=self.params.dest_field,
+        internal__fillna(
+            fill_field=self.params.fill_field,
+            with_field=self.params.with_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....field_operators.operators__merge_fields import internal__merge_fields
+from ....field_operators.merge_fields_operator import internal__merge_fields
 
 
 def internal__preprocess_raw_descriptors(root_dir):

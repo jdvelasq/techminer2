@@ -12,9 +12,11 @@ from ...load import DatabaseLoader
 
 
 def internal__get_field_values_from_database(
-    source_field: str,
     #
-    # DATABASE PARAMS:
+    # FIELD:
+    field: str,
+    #
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -36,18 +38,18 @@ def internal__get_field_values_from_database(
             record_citations_range[0],
             record_citations_range[1],
         )
-        .order_records_by(records_order_by)
+        .where_records_ordered_by(records_order_by)
         .where_records_match(records_match)
         .build()
     )
 
-    df = data_frame[[source_field]].dropna()
+    df = data_frame[[field]].dropna()
 
-    df[source_field] = df[source_field].str.split("; ")
-    df = df.explode(source_field)
-    df[source_field] = df[source_field].str.strip()
+    df[field] = df[field].str.split("; ")
+    df = df.explode(field)
+    df[field] = df[field].str.strip()
     df = df.drop_duplicates()
     df = df.reset_index(drop=True)
-    df = df.rename(columns={source_field: "term"})
+    df = df.rename(columns={field: "term"})
 
     return df

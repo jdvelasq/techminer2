@@ -14,9 +14,10 @@ Ranking Plot
 >>> plot = (
 ...     RankingPlot()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(10)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(10)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -68,7 +69,7 @@ class RankingPlot(
 
         if self.params.xaxes_title_text is None:
             self.using_xaxes_title_text(
-                self.params.source_field.replace("_", " ").upper() + " RANK"
+                self.params.field.replace("_", " ").upper() + " RANK"
             )
 
         if self.params.yaxes_title_text is None:

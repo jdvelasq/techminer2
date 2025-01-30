@@ -12,16 +12,19 @@ Merge Fields
 >>> from techminer2.database.field_operators import MergeFieldsOperator
 >>> (
 ...     MergeFieldsOperator()  # doctest: +SKIP
-...     .from_field(["author_keywords", "index_keywords"])
-...     .as_field("merged_keywords")
+...     #
+...     .with_field["author_keywords", "index_keywords"])
+...     .with_target_field("merged_keywords")
+...     #
 ...     .where_directory_is("example/")
+...     #
 ...     .build()
 ... )
 
 """
 from ...internals.mixins import InputFunctionsMixin
 from ..ingest.internals.operators.internal__merge_fields import internal__merge_fields
-from .operators__protected_fields import PROTECTED_FIELDS
+from .protected_fields import PROTECTED_FIELDS
 
 
 class MergeFieldsOperator(
@@ -35,7 +38,7 @@ class MergeFieldsOperator(
             raise ValueError(f"Field `{self.params.dest_field}` is protected")
 
         internal__merge_fields(
-            source=self.params.source_field,
+            source=self.params.field,
             dest=self.params.dest_field,
             #
             # DATABASE PARAMS:

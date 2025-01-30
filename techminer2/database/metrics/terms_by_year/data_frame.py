@@ -12,9 +12,10 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(20)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(20)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -47,9 +48,10 @@ CASE_STUDY 02:0340               0     0     1     0     1
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(20)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(20)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -81,9 +83,10 @@ CASE_STUDY               0     0     1     0     1
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(20)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     .with_top_n_terms(20)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -92,6 +95,7 @@ CASE_STUDY               0     0     1     0     1
 ...     .with_cumulative_sum(True)
 ...     #
 ...     .using_counters_in_axes(True)
+...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
@@ -137,7 +141,7 @@ class DataFrame(
     # ----------------------------------------------------------------------------------------------------
     def _step_3_compute_term_occurrences_by_year(self, data_frame):
 
-        field = self.params.source_field
+        field = self.params.field
 
         # select the columns field and year
         data_frame = data_frame.reset_index()
@@ -178,7 +182,7 @@ class DataFrame(
     # ----------------------------------------------------------------------------------------------------
     def _step_5_get_terms_mapping(self, data_frame):
 
-        field = self.params.source_field
+        field = self.params.field
 
         data_frame = data_frame[[field, "global_citations"]].copy()
         data_frame = data_frame.dropna()

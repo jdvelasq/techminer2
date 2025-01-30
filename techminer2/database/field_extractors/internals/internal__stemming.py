@@ -16,8 +16,12 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__stemming_and(
-    custom_items,
-    source_field,
+    #
+    # FIELD:
+    field,
+    #
+    # SEARCH:
+    term_pattern,
     #
     # DATABASE PARAMS:
     root_dir: str,
@@ -30,8 +34,14 @@ def internal__stemming_and(
     """:meta private:"""
 
     return stemming(
-        custom_items=custom_items,
-        source_field=source_field,
+        #
+        # FIELD:
+        field=field,
+        #
+        # SEARCH:
+        term_pattern=term_pattern,
+        #
+        # STEMMING FUNCTION:
         stemming_fn=apply_stemming_and_operator,
         #
         # DATABASE PARAMS:
@@ -45,10 +55,14 @@ def internal__stemming_and(
 
 
 def internal__stemming_or(
-    selected_terms,
-    source_field,
     #
-    # DATABASE PARAMS:
+    # FIELD:
+    field,
+    #
+    # SEARCH:
+    term_pattern,
+    #
+    # DATABASES:
     root_dir,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -59,8 +73,14 @@ def internal__stemming_or(
     """:meta private:"""
 
     return stemming(
-        custom_items=selected_terms,
-        source_field=source_field,
+        #
+        # FIELD:
+        field=field,
+        #
+        # SEARCH:
+        term_pattern=term_pattern,
+        #
+        # STEMMING FUNCTION:
         stemming_fn=apply_stemming_or_operator,
         #
         # DATABASE PARAMS:
@@ -74,11 +94,17 @@ def internal__stemming_or(
 
 
 def stemming(
-    custom_items,
-    source_field,
+    #
+    # FIELD:
+    field,
+    #
+    # SEARCH:
+    term_pattern,
+    #
+    # STEMMING FUNCTION:
     stemming_fn,
     #
-    # DATABASE PARAMS:
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -88,9 +114,9 @@ def stemming(
 ):
     """:meta private:"""
 
-    stemmed_terms = get_stemmed_items(custom_items)
+    stemmed_terms = get_stemmed_items(term_pattern)
     df = internal__get_field_values_from_database(
-        source_field=source_field,
+        field=field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,
@@ -111,7 +137,10 @@ def stemming(
     return terms
 
 
-def apply_stemming_and_operator(df, stemmed_terms):
+def apply_stemming_and_operator(
+    df,
+    stemmed_terms,
+):
     """Checks if all stemmed terms are in the list of stemmed words."""
 
     df["selected"] = df["keys"].map(
@@ -124,7 +153,10 @@ def apply_stemming_and_operator(df, stemmed_terms):
     return df
 
 
-def apply_stemming_or_operator(df, stemmed_terms):
+def apply_stemming_or_operator(
+    df,
+    stemmed_terms,
+):
     """Checks if all stemmed terms are in the list of stemmed words."""
 
     df["selected"] = df["keys"].map(

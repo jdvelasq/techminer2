@@ -24,7 +24,7 @@ Concordant Mapping
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
 ...     .where_records_match(None)
-...     .order_records_by("date_newest")   
+...     .where_records_ordered_by("date_newest")   
 ...     #
 ...     .build()
 ... )
@@ -71,7 +71,7 @@ class ConcordantMapping(
 
     # -------------------------------------------------------------------------
     def _step_02__filter_by_concordance(self, records):
-        search_for = self.params.abstract_pattern
+        search_for = self.params.pattern
         found = (
             records["abstract"]
             .astype(str)
@@ -82,7 +82,7 @@ class ConcordantMapping(
 
     # -------------------------------------------------------------------------
     def _step_03_process_abstracts(self, records):
-        search_for = self.params.abstract_pattern
+        search_for = self.params.pattern
         #
         # extract phrases.
         records["abstract"] = records["abstract"].map(lambda x: TextBlob(x).sentences)

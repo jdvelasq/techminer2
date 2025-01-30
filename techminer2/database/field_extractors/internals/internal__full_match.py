@@ -14,12 +14,16 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__full_match(
+    #
+    # SOURCE:
+    field: str,
+    #
+    # SEARCH:
     term_pattern: str,
     case_sensitive: bool,
     regex_flags: int,
-    source_field: str,
     #
-    # DATABASE PARAMS:
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -29,7 +33,7 @@ def internal__full_match(
 ):
 
     dataframe = internal__get_field_values_from_database(
-        source_field=source_field,
+        field=field,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

@@ -6,51 +6,64 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Full Match
+Starts With
 ===============================================================================
 
->>> from techminer2.database.field_extractors import FullMatchExtractor
+>>> from techminer2.database.field_extractors import StartsWithExtractor
 >>> terms = (
-...     FullMatchExtractor() 
+...     StartsWithExtractor() 
 ...     #
-...     .with_source_field("author_keywords")
-...     .with_terms_having_pattern("L.+")
-...     .with_case_sensitive(False)
-...     .with_regex_flags(0)
+...     .with_field("author_keywords")
+...     .with_terms_having_pattern("FINAN")
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     #
 ...     .build()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
-['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
+['FINANCE',
+ 'FINANCE_TECHNOLOGY',
+ 'FINANCIALISATION',
+ 'FINANCIAL_COMPUTING',
+ 'FINANCIAL_INCLUSION',
+ 'FINANCIAL_INSTITUTION',
+ 'FINANCIAL_INSTITUTIONS',
+ 'FINANCIAL_INTERMEDIATION',
+ 'FINANCIAL_MANAGEMENT',
+ 'FINANCIAL_SCENARIZATION']
 
+ 
+ 
 """
+
 from ...internals.mixins import InputFunctionsMixin
-from .internals.internal__full_match import internal__full_match
+from .internals.internal__starts_with import internal__starts_with
 
 
-class FullMatchExtractor(
+class StartsWithExtractor(
     InputFunctionsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        return internal__full_match(
-            case_sensitive=self.params.case_sensitive,
-            term_pattern=self.params.term_pattern,
-            regex_flags=self.params.regex_flags,
-            source_field=self.params.source_field,
+        return internal__starts_with(
             #
-            # DATABASE PARAMS:
+            # FIELD:
+            field=self.params.field,
+            #
+            # SEARCH:
+            term_pattern=self.params.pattern,
+            #
+            # DATABASE:
             root_dir=self.params.root_dir,
             database=self.params.database,
             record_years_range=self.params.record_years_range,
             record_citations_range=self.params.record_citations_range,
-            records_order_by=None,
+            records_order_by=self.params.records_order_by,
             records_match=self.params.records_match,
         )

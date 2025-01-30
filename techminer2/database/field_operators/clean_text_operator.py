@@ -12,16 +12,19 @@ Clean text
 >>> from techminer2.database.field_operators import CleanTextOperator
 >>> (
 ...     CleanTextOperator()  # doctest: +SKIP 
-...     .with_source_field("author_keywords")
-...     .as_field("author_keywords_copy")
+....    #
+...     .with_field("author_keywords")
+...     .with_target_field("author_keywords_copy")
+....    #
 ...     .where_directory_is("example/")
+....    #
 ...     .build()
 ... )
 
 """
 from ...internals.mixins import InputFunctionsMixin
 from ..ingest.internals.operators.internal__clean_text import internal__clean_text
-from .operators__protected_fields import PROTECTED_FIELDS
+from .protected_fields import PROTECTED_FIELDS
 
 
 class CleanTextOperator(
@@ -31,12 +34,12 @@ class CleanTextOperator(
 
     def build(self):
 
-        if self.params.dest_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.dest_field}` is protected")
+        if self.params.other_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.other_field}` is protected")
 
         internal__clean_text(
-            source=self.params.source_field,
-            dest=self.params.dest_field,
+            source=self.params.field,
+            dest=self.params.other_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

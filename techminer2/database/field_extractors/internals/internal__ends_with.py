@@ -14,8 +14,12 @@ from .internal__get_field_values_from_database import (
 
 
 def internal__ends_with(
+    #
+    # FIELD:
+    field: str,
+    #
+    # SEARCH:
     term_pattern: str,
-    source_field: str,
     #
     # DATABASE PARAMS:
     root_dir: str,
@@ -27,9 +31,11 @@ def internal__ends_with(
 ):
 
     dataframe = internal__get_field_values_from_database(
-        source_field=source_field,
         #
-        # DATABASE PARAMS:
+        # FIELD:
+        field=field,
+        #
+        # DATABASE:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,

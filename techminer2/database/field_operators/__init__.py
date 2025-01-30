@@ -2,16 +2,16 @@
 # pylint: disable=line-too-long
 """User-faced functions for database operations."""
 
-from .operators__clean_text import CleanTextOperator
-from .operators__collect_nouns_and_phrases import CollectNounAndPhrasesOperator
-from .operators__copy_field import CopyFieldOperator
-from .operators__count_terms_per_record import CountTermsPerRecordOperator
-from .operators__delete_field import DeleteFieldOperator
-from .operators__fillna import FillNAOperator
-from .operators__highlight_nouns_and_phrases import HighlightNounAndPhrasesOperator
-from .operators__merge_fields import MergeFieldsOperator
-from .operators__rename_field import RenameFieldOperator
-from .operators__transform_field import TransformFieldOperator
+from .clean_text_operator import CleanTextOperator
+from .collect_nouns_and_phrases_operator import CollectNounAndPhrasesOperator
+from .copy_field_operator import CopyFieldOperator
+from .count_terms_per_record_operator import CountTermsPerRecordOperator
+from .delete_field_operator import DeleteFieldOperator
+from .fillna_operator import FillNAOperator
+from .highlight_nouns_and_phrases_operator import HighlightNounAndPhrasesOperator
+from .merge_fields_operator import MergeFieldsOperator
+from .rename_field_operator import RenameFieldOperator
+from .transform_field_operator import TransformFieldOperator
 
 __all__ = [
     "CleanTextOperator",

@@ -13,9 +13,11 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_source_field("author_keywords")
-...     .select_top_n_terms(10)
-...     .order_terms_by("OCC")
+...     .with_field("author_keywords")
+...     #
+...     .with_top_n_terms(10)
+...     .with_terms_ordered_by("OCC")
+...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
@@ -67,7 +69,7 @@ class DataFrame(
 
     def step_2_explode_data_frame(self, data_frame):
 
-        field = self.params.source_field
+        field = self.params.field
 
         data_frame = data_frame.reset_index()
         data_frame = data_frame[[field, "record_id", "global_citations"]].copy()
@@ -81,7 +83,7 @@ class DataFrame(
 
     def step_3_get_terms_mapping(self, data_frame):
 
-        field = self.params.source_field
+        field = self.params.field
 
         data_frame = data_frame[[field, "global_citations", "OCC"]].copy()
         data_frame = data_frame.groupby(field).agg(
@@ -100,7 +102,7 @@ class DataFrame(
 
     def step_4_create_df_matrix(self, data_frame):
 
-        field = self.params.source_field
+        field = self.params.field
 
         data_frame = data_frame[[field, "record_id", "OCC"]].copy()
         data_frame = data_frame.dropna()
