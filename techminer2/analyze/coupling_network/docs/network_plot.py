@@ -50,32 +50,32 @@
 
                                              
 """
-from ....internals.nx.nx_assign_colors_to_nodes_by_group_attribute import (
-    nx_assign_colors_to_nodes_by_group_attribute,
+from ....internals.nx.internal__assign_colors_to_nodes_by_group_attribute import (
+    internal__assign_colors_to_nodes_by_group_attribute,
 )
-from ....internals.nx.nx_assign_opacity_to_text_by_citations import (
-    nx_assign_opacity_to_text_by_citations,
+from ....internals.nx.internal__assign_opacity_to_text_by_citations import (
+    internal__assign_opacity_to_text_by_citations,
 )
-from ....internals.nx.nx_assign_sizes_to_nodes_by_citations import (
-    nx_assign_sizes_to_nodes_by_citations,
+from ....internals.nx.internal__assign_sizes_to_nodes_by_citations import (
+    internal__assign_sizes_to_nodes_by_citations,
 )
-from ....internals.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
-    nx_assign_text_positions_to_nodes_by_quadrants,
+from ....internals.nx.internal__assign_text_positions_to_nodes_by_quadrants import (
+    internal__assign_text_positions_to_nodes_by_quadrants,
 )
-from ....internals.nx.nx_assign_textfont_sizes_to_nodes_by_citations import (
-    nx_assign_textfont_sizes_to_nodes_by_citations,
+from ....internals.nx.internal__assign_textfont_sizes_to_nodes_by_citations import (
+    internal__assign_textfont_sizes_to_nodes_by_citations,
 )
-from ....internals.nx.nx_assign_uniform_color_to_edges import (
-    nx_assign_uniform_color_to_edges,
+from ....internals.nx.internal__assign_uniform_color_to_edges import (
+    internal__assign_uniform_color_to_edges,
 )
-from ....internals.nx.nx_assign_widths_to_edges_by_weight import (
-    nx_assign_widths_to_edges_by_weight,
+from ....internals.nx.internal__assign_widths_to_edges_by_weight import (
+    internal__assign_widths_to_edges_by_weight,
 )
-from ....internals.nx.nx_cluster_graph import nx_cluster_graph
-from ....internals.nx.nx_compute_spring_layout_positions import (
-    nx_compute_spring_layout_positions,
+from ....internals.nx.internal__cluster_graph import internal__cluster_graph
+from ....internals.nx.internal__compute_spring_layout_positions import (
+    internal__compute_spring_layout_positions,
 )
-from ....internals.nx.nx_network_plot import nx_network_plot
+from ....internals.nx.internal__create_network_plot import internal__create_network_plot
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 
@@ -129,7 +129,7 @@ def _network_plot(
         **filters,
     )
 
-    nx_graph = nx_cluster_graph(
+    nx_graph = internal__cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -140,26 +140,28 @@ def _network_plot(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_spring_layout_positions(
+    nx_graph = internal__compute_spring_layout_positions(
         nx_graph, nx_k, nx_iterations, nx_random_state
     )
 
     #
     # Sets the node attributes
-    nx_graph = nx_assign_colors_to_nodes_by_group_attribute(nx_graph)
-    nx_graph = nx_assign_sizes_to_nodes_by_citations(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_by_citations(
+    nx_graph = internal__assign_colors_to_nodes_by_group_attribute(nx_graph)
+    nx_graph = internal__assign_sizes_to_nodes_by_citations(nx_graph, node_size_range)
+    nx_graph = internal__assign_textfont_sizes_to_nodes_by_citations(
         nx_graph, textfont_size_range
     )
-    nx_graph = nx_assign_opacity_to_text_by_citations(nx_graph, textfont_opacity_range)
+    nx_graph = internal__assign_opacity_to_text_by_citations(
+        nx_graph, textfont_opacity_range
+    )
 
     #
     # Sets the edge attributes
-    nx_graph = nx_assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
-    nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = nx_assign_uniform_color_to_edges(nx_graph, edge_color)
+    nx_graph = internal__assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
+    nx_graph = internal__assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = internal__assign_uniform_color_to_edges(nx_graph, edge_color)
 
-    return nx_network_plot(
+    return internal__create_network_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -51,14 +51,16 @@ Node Density Plot
 
 
 """
-from ...internals.nx.nx_assign_textfont_sizes_to_nodes_by_occurrences import (
+from ...internals.nx.internal__assign_textfont_sizes_to_nodes_by_occurrences import (
     nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
-from ...internals.nx.nx_cluster_graph import nx_cluster_graph
-from ...internals.nx.nx_compute_spring_layout_positions import (
-    nx_compute_spring_layout_positions,
+from ...internals.nx.internal__cluster_graph import internal__cluster_graph
+from ...internals.nx.internal__compute_spring_layout_positions import (
+    internal__compute_spring_layout_positions,
 )
-from ...internals.nx.nx_density_plot import nx_density_plot
+from ...internals.nx.internal__create_network_density_plot import (
+    internal__create_network_density_plot,
+)
 from ..cross_co_occurrence.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )
@@ -126,7 +128,7 @@ def node_density_plot(
         **filters,
     )
 
-    nx_graph = nx_cluster_graph(
+    nx_graph = internal__cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -135,7 +137,7 @@ def node_density_plot(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    nx_graph = nx_compute_spring_layout_positions(
+    nx_graph = internal__compute_spring_layout_positions(
         nx_graph=nx_graph,
         k=nx_k,
         iterations=nx_iterations,
@@ -146,7 +148,7 @@ def node_density_plot(
         nx_graph, textfont_size_range
     )
 
-    return nx_density_plot(
+    return internal__create_network_density_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

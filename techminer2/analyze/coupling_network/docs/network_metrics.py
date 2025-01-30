@@ -32,7 +32,9 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
 
 
 """
-from ....internals.nx.nx_compute_metrics import nx_compute_metrics
+from ....internals.nx.internal__compute_network_metrics import (
+    internal__compute_network_metrics,
+)
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 
@@ -64,7 +66,7 @@ def _network_metrics(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return internal__compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

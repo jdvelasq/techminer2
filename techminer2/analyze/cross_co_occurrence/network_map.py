@@ -132,22 +132,22 @@ import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from ...internals.nx.nx_assign_opacity_to_text_by_frequency import (
-    nx_assign_opacity_to_text_by_frequency,
+from ...internals.nx.internal__assign_opacity_to_text_by_frequency import (
+    internal__assign_opacity_to_text_by_frequency,
 )
-from ...internals.nx.nx_assign_sizes_to_nodes_by_occurrences import (
-    nx_assign_sizes_to_nodes_by_occurrences,
+from ...internals.nx.internal__assign_sizes_to_nodes_by_occurrences import (
+    internal__assign_sizes_to_nodes_by_occurrences,
 )
-from ...internals.nx.nx_assign_text_positions_to_nodes_by_quadrants import (
-    nx_assign_text_positions_to_nodes_by_quadrants,
+from ...internals.nx.internal__assign_text_positions_to_nodes_by_quadrants import (
+    internal__assign_text_positions_to_nodes_by_quadrants,
 )
-from ...internals.nx.nx_assign_textfont_sizes_to_nodes_by_occurrences import (
+from ...internals.nx.internal__assign_textfont_sizes_to_nodes_by_occurrences import (
     nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
-from ...internals.nx.nx_compute_spring_layout_positions import (
-    nx_compute_spring_layout_positions,
+from ...internals.nx.internal__compute_spring_layout_positions import (
+    internal__compute_spring_layout_positions,
 )
-from ...internals.nx.nx_network_plot import nx_network_plot
+from ...internals.nx.internal__create_network_plot import internal__create_network_plot
 from ...internals.nx_mixin.nx_spring_layout_params import (
     NxSpringLayoutParams,
     NxSpringLayoutParamsMixin,
@@ -285,24 +285,26 @@ def co_occurrence_map(
 
     #
     # Sets the layout
-    nx_graph = nx_compute_spring_layout_positions(
+    nx_graph = internal__compute_spring_layout_positions(
         nx_graph, nx_k, nx_iterations, nx_random_state
     )
 
     #
     # Sets the node attributes
-    nx_graph = nx_assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
+    nx_graph = internal__assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
     nx_graph = nx_assign_textfont_sizes_to_nodes_by_occurrences(
         nx_graph, textfont_size_range
     )
 
-    nx_graph = nx_assign_opacity_to_text_by_frequency(nx_graph, textfont_opacity_range)
+    nx_graph = internal__assign_opacity_to_text_by_frequency(
+        nx_graph, textfont_opacity_range
+    )
     #
     # Sets the edge attributes
     nx_graph = __set_edge_properties(nx_graph, edge_colors)
-    nx_graph = nx_assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = internal__assign_text_positions_to_nodes_by_quadrants(nx_graph)
 
-    return nx_network_plot(
+    return internal__create_network_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -37,7 +37,9 @@ COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
 MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
-from ...internals.nx.nx_compute_metrics import nx_compute_metrics
+from ...internals.nx.internal__compute_network_metrics import (
+    internal__compute_network_metrics,
+)
 from .internals.create_co_citation_nx_graph import _create_co_citation_nx_graph
 
 
@@ -76,7 +78,7 @@ def network_metrics(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return internal__compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

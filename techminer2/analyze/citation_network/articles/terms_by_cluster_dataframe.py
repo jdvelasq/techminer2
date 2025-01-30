@@ -9,9 +9,9 @@
 Builds a terms by cluster frame from documents.
 
 """
-from ....internals.nx.nx_cluster_graph import nx_cluster_graph
-from ....internals.nx.nx_extract_communities_to_frame import (
-    nx_extract_communities_to_frame,
+from ....internals.nx.internal__cluster_graph import internal__cluster_graph
+from ....internals.nx.internal__extract_communities_to_frame import (
+    internal__extract_communities_to_frame,
 )
 from .internals.create_citation_nx_graph import _create_citation_nx_graph
 
@@ -48,7 +48,7 @@ def _terms_by_cluster_frame(
         **filters,
     )
 
-    nx_graph = nx_cluster_graph(
+    nx_graph = internal__cluster_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -57,7 +57,7 @@ def _terms_by_cluster_frame(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    return nx_extract_communities_to_frame(
+    return internal__extract_communities_to_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

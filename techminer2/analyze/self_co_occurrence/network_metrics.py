@@ -40,7 +40,9 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from ...internals.nx.nx_compute_metrics import nx_compute_metrics
+from ...internals.nx.internal__compute_network_metrics import (
+    internal__compute_network_metrics,
+)
 from ..cross_co_occurrence.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )
@@ -91,7 +93,7 @@ def network_metrics(
         **filters,
     )
 
-    return nx_compute_metrics(
+    return internal__compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
