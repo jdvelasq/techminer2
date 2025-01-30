@@ -42,14 +42,13 @@ Column Plot
 
 
 """
-from ....internals.mixins.column_plot import ColumnPlotMixin
 from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.plots.internal__column_plot import internal__column_plot
 from .data_frame import DataFrame
 
 
 class ColumnPlot(
     InputFunctionsMixin,
-    ColumnPlotMixin,
 ):
     """:meta private:"""
 
@@ -70,6 +69,6 @@ class ColumnPlot(
                 self.params.terms_order_by.replace("_", " ").upper()
             )
 
-        fig = self.build_column_plot(data_frame)
+        fig = internal__column_plot(params=self.params, data_frame=data_frame)
 
         return fig

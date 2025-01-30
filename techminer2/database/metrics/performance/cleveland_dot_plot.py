@@ -41,14 +41,15 @@ Cleveland Dot Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.mixins.cleveland_dot_plot import ClevelandDotPlotMixin
 from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.plots.internal__cleveland_dot_plot import (
+    internal__cleveland_dot_plot,
+)
 from .data_frame import DataFrame
 
 
 class ClevelandDotPlot(
     InputFunctionsMixin,
-    ClevelandDotPlotMixin,
 ):
     """:meta private:"""
 
@@ -67,6 +68,6 @@ class ClevelandDotPlot(
         if self.params.yaxes_title_text is None:
             self.using_yaxes_title_text(self.params.field.replace("_", " ").upper())
 
-        fig = self.build_cleveland_dot_plot(data_frame=data_frame)
+        fig = internal__cleveland_dot_plot(params=self.params, data_frame=data_frame)
 
         return fig

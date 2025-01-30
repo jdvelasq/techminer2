@@ -41,13 +41,12 @@ World Map
 
 """
 from ....internals.mixins.input_functions import InputFunctionsMixin
-from ....internals.mixins.world_map import WorldMapMixin
+from ....internals.plots.internal__world_map import internal__world_map
 from .data_frame import DataFrame
 
 
 class WorldMap(
     InputFunctionsMixin,
-    WorldMapMixin,
 ):
     """:meta private:"""
 
@@ -58,6 +57,6 @@ class WorldMap(
         if self.params.title_text is None:
             self.using_title_text("World Map")
 
-        fig = self.build_world_map(data_frame=data_frame)
+        fig = internal__world_map(params=self.params, data_frame=data_frame)
 
         return fig

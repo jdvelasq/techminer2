@@ -40,19 +40,18 @@ Word Cloud
 """
 
 from ....internals.mixins.input_functions import InputFunctionsMixin
-from ....internals.mixins.word_cloud import WordCloudMixin
+from ....internals.plots.internal__word_cloud import internal__word_cloud
 from .data_frame import DataFrame
 
 
 class WordCloud(
     InputFunctionsMixin,
-    WordCloudMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
         data_frame = DataFrame().update_params(**self.params.__dict__).build()
-        fig = self.build_word_cloud(data_frame)
+        fig = internal__word_cloud(params=self.params, data_frame=data_frame)
 
         return fig

@@ -42,13 +42,12 @@ Line Plot
 
 """
 from ....internals.mixins.input_functions import InputFunctionsMixin
-from ....internals.mixins.line_plot import LinePlotMixin
+from ....internals.plots.internal__line_plot import internal__line_plot
 from .data_frame import DataFrame
 
 
 class LinePlot(
     InputFunctionsMixin,
-    LinePlotMixin,
 ):
     """:meta private:"""
 
@@ -69,6 +68,6 @@ class LinePlot(
                 self.params.terms_order_by.replace("_", " ").upper()
             )
 
-        fig = self.build_line_plot(data_frame)
+        fig = internal__line_plot(params=self.params, data_frame=data_frame)
 
         return fig

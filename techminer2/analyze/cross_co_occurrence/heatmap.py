@@ -50,7 +50,7 @@ Heatmap (MIGRATED)
 """
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.item_params import ItemParams
-from ...internals.plots.heatmap_mixin import HeatmapMixin, HeatmapParams
+from ...internals.plots.internal__heatmap import HeatmapMixin, HeatmapParams
 from ...internals.set_params_mixin.set_database_filters_mixin import (
     DatabaseFilters,
     SetDatabaseFiltersMixin,

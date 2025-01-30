@@ -39,13 +39,12 @@ Bar Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.mixins.bar_plot import BarPlotMixin
 from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.plots.internal__bar_plot import internal__bar_plot
 from .data_frame import DataFrame
 
 
 class BarPlot(
-    BarPlotMixin,
     InputFunctionsMixin,
 ):
     """:meta private:"""
@@ -65,6 +64,6 @@ class BarPlot(
         if self.params.yaxes_title_text is None:
             self.using_yaxes_title_text(self.params.field.replace("_", " ").upper())
 
-        fig = self.build_bar_plot(data_frame)
+        fig = internal__bar_plot(params=self.params, data_frame=data_frame)
 
         return fig

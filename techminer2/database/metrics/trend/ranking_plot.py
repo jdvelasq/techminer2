@@ -40,13 +40,12 @@ Ranking Plot
 
 """
 from ....internals.mixins.input_functions import InputFunctionsMixin
-from ....internals.mixins.ranking_plot import RankingPlotMixin
+from ....internals.plots.internal__ranking_plot import internal__ranking_plot
 from .data_frame import DataFrame
 
 
 class RankingPlot(
     InputFunctionsMixin,
-    RankingPlotMixin,
 ):
     """:meta private:"""
 
@@ -69,6 +68,6 @@ class RankingPlot(
                 self.params.terms_order_by.replace("_", " ").upper()
             )
 
-        fig = self.build_ranking_plot(data_frame=data_frame)
+        fig = internal__ranking_plot(params=self.params, data_frame=data_frame)
 
         return fig

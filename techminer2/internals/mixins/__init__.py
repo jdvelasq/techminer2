@@ -1,8 +1,8 @@
 """Mixins."""
 
 from .input_functions import InputFunctionsMixin, Params
-from .record_report import RecordMappingMixin, RecordViewerMixin
-from .sort_axes import SortAxesMixin
+from .internal__record_report import RecordMappingMixin, RecordViewerMixin
+from .internal__sort_axes import SortAxesMixin
 
 __all__ = [
     "InputFunctionsMixin",

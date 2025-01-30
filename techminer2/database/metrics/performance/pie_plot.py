@@ -42,13 +42,12 @@ Pie Plot
 
 """
 from ....internals.mixins.input_functions import InputFunctionsMixin
-from ....internals.mixins.pie_plot import PiePlotMixin
+from ....internals.plots.internal__pie_plot import internal__pie_plot
 from .data_frame import DataFrame
 
 
 class PiePlot(
     InputFunctionsMixin,
-    PiePlotMixin,
 ):
     """:meta private:"""
 
@@ -59,6 +58,6 @@ class PiePlot(
         if self.params.title_text is None:
             self.using_title_text("Pie Plot")
 
-        fig = self.build_pie_plot(data_frame=data_frame)
+        fig = internal__pie_plot(params=self.params, data_frame=data_frame)
 
         return fig
