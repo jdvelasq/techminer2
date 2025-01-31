@@ -12,7 +12,22 @@ Clusters to Terms Map
 ## >>> from sklearn.cluster import KMeans
 ## >>> from techminer2.analyze.document_clustering import ClustersToTermsMapping
 ## >>> mapping = (
+
 ## ...     ClustersToTermsMapping()
+## ...     #
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+
+
+
 ## ...     .set_analysis_params(
 ## ...         sklearn_estimator=KMeans(
 ## ...             n_clusters=4,
@@ -23,24 +38,16 @@ Clusters to Terms Map
 ## ...             algorithm="lloyd",
 ## ...             random_state=0,
 ## ...         ),
+
 ## ...     #
-## ...     .set_output_params(
-## ...         retain_counters=True,
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).set_item_params(
-## ...         field='descriptors',
-## ...         top_n=50,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
-## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... )
 ## >>> pprint.pprint(mapping)
 {0: ['INNOVATION 08:0990',

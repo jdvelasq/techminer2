@@ -22,13 +22,14 @@ Node Degree Frame
 ## ...         occurrence_threshold=2,
 ## ...         custom_terms=None,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... ).head()
    Node                       Name  Degree
 0     0    J Manage Inf Syst 2:696       3

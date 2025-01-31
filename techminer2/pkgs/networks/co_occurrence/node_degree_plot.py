@@ -15,12 +15,13 @@ Node Degree Plot
 ## ...     .set_analysis_params(
 ## ...         association_index="association",
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(20)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         textfont_size=10,
@@ -29,13 +30,14 @@ Node Degree Plot
 ## ...         line_width=1.5,
 ## ...         yshift=4,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     #   
-## ...     ).build()
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> # plot.write_html("sphinx/_static/co_occurrence_network/node_degree_plot.html")
 

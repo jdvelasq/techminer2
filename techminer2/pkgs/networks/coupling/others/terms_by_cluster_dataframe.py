@@ -17,11 +17,14 @@
 ## ...     occurrence_threshold=2,
 ## ...     custom_terms=None,
 ## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ...     database="main",
-## ...     year_filter=(None, None),
-## ...     cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ##                     0                     1                2
 ## 0    Gomber P. 2:1065      Dolata M. 2:0181    Gai K. 2:0323

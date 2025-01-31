@@ -14,26 +14,28 @@ Data Frame
 ...     DataFrame()
 ...     #
 ...     .with_field("author_keywords")
-...     #
-...     .with_top_n_terms(10)
-...     .with_terms_ordered_by("OCC")
-...     #
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     # COUNTERS:
 ...     .using_term_counters(True)
 ...     #
+...     # TFIDF:
 ...     .using_binary_term_frequencies(False)
 ...     .using_row_normalization(None)
 ...     .using_idf_reweighting(False)
 ...     .using_idf_weights_smoothing(False)
 ...     .using_sublinear_tf_scaling(False)
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
 ...     #
 ...     .build()
 ... ).head()

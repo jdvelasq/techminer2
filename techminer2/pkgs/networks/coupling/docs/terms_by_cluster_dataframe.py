@@ -16,12 +16,15 @@
 ## ...     #
 ## ...     # NETWORK PARAMS:
 ## ...     algorithm_or_dict="louvain",
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
                                                 0  ...                                           3
 0    Gracia D.B., 2019, IND MANAGE DATA SYS 1:225  ...           Alt R., 2018, ELECTRON MARK 1:150

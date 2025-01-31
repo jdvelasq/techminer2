@@ -12,8 +12,11 @@ Emergent Topics
 ## >>> from techminer2.emergence import emergent_topics
 ## >>> (
 ## ...     EmergentTopics()
-## ...     .set_analysis_params(
-## ...         field='descriptors',
+## ...     #
+## ...     # FIELD:
+
+
+## ...     .with_field("descriptors")
 ## ...         baseline_periods=3,
 ## ...         recent_periods=3,
 ## ...         novelty_threshold=0.15,
@@ -21,13 +24,14 @@ Emergent Topics
 ## ...         periods_with_at_least_one_record=3,
 ## ...         ratio_threshold=0.5,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... ).head()
                         OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
 descriptors                                ...                                

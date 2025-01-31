@@ -20,14 +20,15 @@ Network Metrics
 ...         top_n=30, 
 ...         citations_threshold=None,
 ...         custom_terms=None,
-...     #
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     #
-...     ).build()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ... ).head()
                                 Degree  Betweenness  Closeness  PageRank
 ELECT COMMER RES APPL 1:32          27     0.077741   0.935484  0.047163

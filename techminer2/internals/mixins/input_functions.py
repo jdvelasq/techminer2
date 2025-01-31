@@ -353,10 +353,6 @@ class InputFunctionsMixin:
         self.params.correlation_method = method
         return self
 
-    def with_cross_field(self, field):
-        self.params.other_field = field
-        return self
-
     def with_cumulative_sum(self, cumulative_sum):
         self.params.cumulative_sum = cumulative_sum
         return self
@@ -369,8 +365,8 @@ class InputFunctionsMixin:
         self.params.pattern = pattern
         return self
 
-    def with_na_filled_in_field(self, field):
-        self.params.field = field
+    def with_other_field(self, field):
+        self.params.other_field = field
         return self
 
     def with_query_expression(self, expr):

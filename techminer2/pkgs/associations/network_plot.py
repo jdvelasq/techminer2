@@ -15,36 +15,31 @@ Radial Diagram
 ## ...     .set_analysis_params(
 ## ...         items=["FINTECH", "INNOVATION"],
 ## ...     #
-## ...     ).set_axes_params(
-## ...         xaxes_range=None,
-## ...         yaxes_range=None,
-## ...         show_axes=False,
-## ...     #
-## ...     ).set_columns_params(
-## ...         field='author_keywords',
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
-## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     )
+## ...     # COLUMNS:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         edge_color="#7793a5",
 ## ...         edge_width_range=(0.8, 3.0),
-## ...         node_size_range=(30, 70),
-## ...         textfont_opacity_range=(0.35, 1.00),
-## ...         textfont_size_range=(10, 20),
+
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
+## ...     .using_textfont_size_range(10, 20)
 ## ...     #
-## ...     ).set_nx_params(
-## ...         nx_iterations=30,
-## ...         nx_k=None,
-## ...         nx_random_state=0,
+## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+## ...     #
+## ...     .using_xaxes_range=(None, None)
+## ...     .using_yaxes_range=(None, None)
+## ...     .using_axes_visible(False)
+
 ## ...     #
 ## ...     ).set_rows_params(
 ## ...         field=None,
@@ -52,7 +47,14 @@ Radial Diagram
 ## ...         occ_range=(None, None),
 ## ...         gc_range=(None, None),
 ## ...         custom_terms=None,
-## ...     ).build()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
 

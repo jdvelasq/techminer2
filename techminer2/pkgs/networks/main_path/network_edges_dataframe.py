@@ -16,13 +16,15 @@ Network Edges Frame
 ## ...         top_n=None,
 ## ...         citations_threshold=0,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
 ## ...     #
-## ...     ).build()
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.

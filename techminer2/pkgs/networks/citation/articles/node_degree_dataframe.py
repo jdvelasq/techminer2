@@ -17,13 +17,14 @@ Node Degree Dataframe
 ## ...         top_n=30, 
 ## ...         citations_threshold=0,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... ).head()
    Node                                               Name  Degree
 0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7

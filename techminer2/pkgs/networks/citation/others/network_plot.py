@@ -23,26 +23,33 @@ Network Plot
 ## ...     # NETWORK CLUSTERING:
 ## ...     algorithm_or_dict="louvain",
 ## ...     #
-## ...     ).set_nx_params(
-## ...         nx_k=None,
-## ...         nx_iterations=30,
-## ...         nx_random_state=0,
-## ...     ).set_plot_params(
-## ...         node_size_range=(30, 70),
-## ...         textfont_size_range=(10, 20),
-## ...         textfont_opacity_range=(0.35, 1.00),
+## ...     #
+## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+## ...     #
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_size_range(10, 20)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
+
 ## ...         edge_color="#7793a5",
 ## ...         edge_width_range=(0.8, 3.0),
-## ...     ).set_axes_params(
-## ...         xaxes_range=None,
-## ...         yaxes_range=None,
-## ...         show_axes=False,
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
+
+## ...     #
+## ...     .using_xaxes_range=(None, None)
+## ...     .using_yaxes_range=(None, None)
+## ...     .using_axes_visible(False)
+
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> # plot.write_html("sphinx/_static/citation_network/others_network_plot.html")
 

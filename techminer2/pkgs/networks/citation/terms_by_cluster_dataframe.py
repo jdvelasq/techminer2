@@ -19,13 +19,14 @@ Terms by Cluster Frame
 ## ...         citations_threshold=0,
 ## ...         algorithm_or_dict="louvain",
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... ).head()
                                                    0  ...                                                  3
 0  Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P5...  ...  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...
@@ -49,13 +50,14 @@ Terms by Cluster Frame
 ## ...         custom_terms=None,
 ## ...        algorithm_or_dict="louvain",
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... ).head()
                          0                       1                          2
 0    Electron. Mark. 2:287   Financ. Manage. 2:161  Ind Manage Data Sys 2:386

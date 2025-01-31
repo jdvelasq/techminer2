@@ -8,27 +8,31 @@
 Cross-correlation Matrix
 ===============================================================================
 
->>> from techminer2.analyze.correlation_matrix import cross_correlation_matrix
->>> (
-...     DataFrame()
-...     #
-...     .with_field("authors")
-...     .with_cross_field('countries'),
-...     .with_top_n_terms(10)
-...     #
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     .with_correlation_method("pearson")
-...     #
-...     .where_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
-...     #
-...     .build()
-... ).round(3)
+## >>> from techminer2.analyze.correlation_matrix import cross_correlation_matrix
+## >>> (
+## ...     DataFrame()
+## ...     #
+## ...     # FIELD:
+## ...     .with_field("authors")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # CROSS WITH:
+## ...     .with_other_field('countries'),
+## ...     #
+## ...     .with_correlation_method("pearson")
+## ...     #
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
+## ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                 1.000  ...                   0.0
 Gomber P. 2:1065                   0.200  ...                   0.0

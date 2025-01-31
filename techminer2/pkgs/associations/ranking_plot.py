@@ -16,35 +16,39 @@ Term Associations Plot
 ## ...         item='FINTECH',
 ## ...         plot_type="occ",     # "occ", "percentage", "similarity"
 ## ...     #
-## ...     ).set_columns_params(
-## ...         field='author_keywords',
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
 ## ...     #
-## ...     ).set_rows_params(
-## ...         field=None,
-## ...         top_n=None,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # COLUMNS:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(20)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # ROWS:
+## ...     .wiht_other_field(None)
+## ...     .having_other_terms_in_top(None)
+## ...     .having_other_terms_ordered_by(None)
+## ...     .having_other_term_occurrences_between(None, None)
+## ...     .having_other_term_citations_between(None, None)
+## ...     .having_other_terms_in(None)
 ## ...     #
 ## ...     ).set_plot_params(
-## ...         field_label=None,
-## ...         line_width=1.5,
-## ...         marker_size=7,
-## ...         metric_label=None,
-## ...         textfont_size=10,
-## ...         title_text="Ranking Plot",
-## ...         yshift=4,
+## ...     .using_xaxes_title_text("Author Keywords")
+## ...     .using_yaxes_title_text("OCC")
+## ...     .using_line_width(1.5)
+## ...     .using_marker_size(7)
+## ...     .using_textfont_size(10)
+## ...     .using_title_text("Ranking Plot")
+## ...     .using_yshift(4)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> plot.write_html("sphinx/_static/tools/associations/term_associations_plot.html")
 
@@ -64,7 +68,7 @@ from ...internals.utils.utils_format_prompt_for_dataframes import (
 )
 
 # from ..cross_co_occurrence.matrix import co_occurrence_matrix
-from .dataframe import DataFrame
+from .data_frame import DataFrame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

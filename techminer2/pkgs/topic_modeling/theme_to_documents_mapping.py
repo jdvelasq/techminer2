@@ -45,13 +45,14 @@ Theme to Documents Mapping
 ## ...         gc_range=(None, None),
 ## ...         custom_terms=None,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... )
 ## >>> import pprint
 ## >>> pprint.pprint(mapping)

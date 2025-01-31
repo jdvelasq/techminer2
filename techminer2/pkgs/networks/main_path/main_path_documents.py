@@ -17,10 +17,15 @@ Main Path Documents
 ## ...         citations_threshold=0,
 ## ...     #
 ## ...     ).set_database_params(
-## ...     root_dir="example/",
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ...         sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
 ## ...                                # global_cited_by_lowest, local_cited_by_highest, 
 ## ...                                # local_cited_by_lowest, first_author_a_to_z, 

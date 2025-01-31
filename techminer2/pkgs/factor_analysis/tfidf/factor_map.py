@@ -45,23 +45,28 @@ Factor Map
 ## ...         smooth_idf=False,
 ## ...         sublinear_tf=False,
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
 ## ...     #
-## ...     ).set_nx_params(
-## ...         nx_k=None,
-## ...         nx_iterations=30,
-## ...         nx_random_state=0,
+## ...     # FIELD:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+
+## ...     #
+## ...     .using_xaxes_range=(None, None)
+## ...     .using_yaxes_range=(None, None)
+## ...     .using_axes_visible(False)
+
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         node_color="#7793a5",
-## ...         node_size_range=(30, 70),
-## ...         textfont_size_range=(10, 20),
-## ...         textfont_opacity_range=(0.35, 1.00),
+
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_size_range(10, 20)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
+
 ## ...         edge_top_n=None,
 ## ...         edge_similarity_min=None,
 ## ...         edge_widths=(2, 2, 4, 6),

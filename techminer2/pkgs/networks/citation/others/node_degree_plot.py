@@ -20,19 +20,20 @@ Node Degree Plot
 ## ...         custom_terms=None,
 ## ...     #
 ## ...     ).set_plot_params(
-## ...         textfont_size=10,
-## ...         marker_size=7,
+## ...     .using_textfont_size(10)
+## ...     .using_marker_size(7)
 ## ...         line_color="black",
-## ...         line_width=1.5,
-## ...         yshift=4,
+## ...     .using_line_width(1.5)
+## ...     .using_yshift(4)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... )
 ## >>> plot.write_html("sphinx/_static/citation_network/others_degree_plot.html")
 

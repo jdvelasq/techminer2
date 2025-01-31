@@ -13,12 +13,15 @@
 ## ...     # ARTICLE PARAMS:
 ## ...     top_n=20, 
 ## ...     citations_threshold=0,
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... ).head()
                                             Degree  ...  PageRank
 Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121

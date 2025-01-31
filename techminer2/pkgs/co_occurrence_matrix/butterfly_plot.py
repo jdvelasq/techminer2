@@ -10,37 +10,43 @@ Butterfly Chart
 ===============================================================================
 
 
-
-# >>> from techminer2.report import butterfly_chart
-# >>> chart = butterfly_chart(
-# ...     #
-# ...     # COLUMN PARAMS:
-# ...     item_a="FINTECH",
-# ...     item_b="INNOVATION",
-# ...     #
-# ...     columns='author_keywords',
-# ...     col_top_n=10,
-# ...     col_occ_range=(None, None),
-# ...     col_gc_range=(None, None),
-# ...     col_custom_terms=None,
-# ...     #
-# ...     # ROW PARAMS:
-# ...     rows=None,
-# ...     row_top_n=None,
-# ...     row_occ_range=(None, None),
-# ...     row_gc_range=(None, None),
-# ...     row_custom_terms=None,
-# ...     #
-# ...     # CHART PARAMS:
-# ...     title=None,
-# ...     #
-# ...     # DATABASE PARAMS:
-# ...     root_dir="example/", 
-# ...     database="main",
-# ...     year_filter=(None, None),
-# ...     cited_by_filter=(None, None),
-# ... )
-# >>> # chart.write_html("sphinx/_static/report/butterfly_chart.html")
+## >>> from techminer2.report import ButterflyPlot
+## >>> plot = (
+## ...     ButterflyPlot()
+## ...     #
+## ...     # COLUMN PARAMS:
+## ...     item_a="FINTECH",
+## ...     item_b="INNOVATION",
+## ...     #
+## ...     # COLUMNS:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # ROWWS:
+## ...     .wiht_other_field(None)
+## ...     .having_other_terms_in_top(None)
+## ...     .having_other_terms_ordered_by(None)
+## ...     .having_other_term_occurrences_between(None, None)
+## ...     .having_other_term_citations_between(None, None)
+## ...     .having_other_terms_in(None)
+## ...     #
+## ...     # CHART PARAMS:
+## ...     .using_title_text("Bar Plot")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/report/butterfly_chart.html")
 
 .. raw:: html
 

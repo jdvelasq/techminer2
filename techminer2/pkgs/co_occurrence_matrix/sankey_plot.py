@@ -21,19 +21,21 @@ Sankey Chart
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         font_size=8,
-## ...         title=None,
+## ...     .using_title_text("Bar Plot")
 ## ...         color=None,
 ## ...     #
-## ...     ).set_output_params(
-## ...         retain_counters=True,
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
 ## ...     #
-## ...     ).build()
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> plot.write_html("sphinx/_generated/analyze/co_occurrence_matrix/sankey_plot.html")
 

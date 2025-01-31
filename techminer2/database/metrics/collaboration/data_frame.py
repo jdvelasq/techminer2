@@ -13,16 +13,19 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
+...     # FIELD:
 ...     .with_field("countries")
-...     .with_top_n_terms(20)
+...     .having_terms_in_top(20)
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
 ...     #
 ...     .build()
 ... ).head()

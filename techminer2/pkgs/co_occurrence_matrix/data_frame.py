@@ -10,38 +10,36 @@ Cross co-occurrence DataFrame
 
 
 >>> from techminer2.co_occurrence_matrix import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # COLUMNS:
-...     .wiht_field("author_keywords")
-...     #
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(2, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # ROWS:
-...     .wiht_other_field("None")
-...     #
-...     .having_other_terms_in_top(10)
-...     .having_other_terms_ordered_by("OCC")
-...     .having_other_term_occurrences_between(2, None)
-...     .having_other_term_citations_between(None, None)
-...     .having_other_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
-...     .where_records_match(None)
-...     #
-...     .build()
+## >>> (
+## ...     DataFrame()
+## ...     #
+## ...     # COLUMNS:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # ROWS:
+## ...     .wiht_other_field(None)
+## ...     .having_other_terms_in_top(None)
+## ...     .having_other_terms_ordered_by(None)
+## ...     .having_other_term_occurrences_between(None, None)
+## ...     .having_other_term_citations_between(None, None)
+## ...     .having_other_terms_in(None)
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ... ).head(10)
                  rows                      columns  OCC
 0    Dolata M. 2:0181              FINTECH 31:5168    2

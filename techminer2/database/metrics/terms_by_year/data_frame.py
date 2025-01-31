@@ -12,21 +12,26 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_top_n_terms(20)
-...     .with_terms_ordered_by("OCC")
-...     #
+...     .having_terms_in_top(20)
+...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .using_term_counters(True)
+...     # PARAMS:
 ...     .with_cumulative_sum(False)
 ...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
 ...     #
 ...     .build()
 ... ).head(10)
@@ -48,21 +53,26 @@ CASE_STUDY 02:0340               0     0     1     0     1
 >>> (
 ...     DataFrame()
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_top_n_terms(20)
-...     .with_terms_ordered_by("OCC")
-...     #
+...     .having_terms_in_top(20)
+...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .using_term_counters(False)
+...     # PARAMS:
 ...     .with_cumulative_sum(False)
 ...     #
+...     # COUNTERS:
+...     .using_term_counters(False)
+...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
 ...     #
 ...     .build()
 ... ).head(10)
@@ -83,22 +93,27 @@ CASE_STUDY               0     0     1     0     1
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_field("author_keywords")
-...     .with_top_n_terms(20)
-...     .with_terms_ordered_by("OCC")
 ...     #
+...     # FIELD:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(20)
+...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     # PARAMS:
 ...     .with_cumulative_sum(True)
 ...     #
+...     # COUNTERS:
 ...     .using_term_counters(True)
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
 ...     #
 ...     .build()
 ... ).head(10)

@@ -10,67 +10,65 @@ Network Map
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import NetworkMap
->>> plot = (
-...     CoOccurrenceNetworkMap()
-...     #
-...     # COLUMNS:
-...     .wiht_field("author_keywords")
-...     #
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(2, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # ROWWS:
-...     .wiht_other_field("authors")
-...     #
-...     .having_other_terms_in_top(10)
-...     .having_other_terms_ordered_by("OCC")
-...     .having_other_term_occurrences_between(2, None)
-...     .having_other_term_citations_between(None, None)
-...     .having_other_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-...     #
-...     .using_node_colors(
-...         (
-...              "#7793a5", 
-...              "#465c6b",
-...         )
-...     )
-...     .using_edge_colors(
-...          (
-...              "#7793a5", 
-...              "#7793a5", 
-...              "#7793a5", 
-...              "#7793a5",
-...          )
-...     )
-...     .using_node_size_range(30, 70)
-...     .using_textfont_size_range(10, 20)
-...     .using_textfont_opacity_range(0.35, 1.00)
-...     .using_xaxes_range=(None, None)
-...     .using_yaxes_range=(None, None)
-...     .using_axes_visible(False)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
-...     .where_records_match(None)
-...     #
-...     .build()
-... )
->>> plot.write_html("sphinx/_generated/co_occurrence_matrix/network_map_0.html")
+## >>> from techminer2.co_occurrence_matrix import NetworkMap
+## >>> plot = (
+## ...     CoOccurrenceNetworkMap()
+## ...     #
+## ...     # FIELD:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # OTHER FIELD:
+## ...     .wiht_other_field("authors")
+## ...     .having_other_terms_in_top(10)
+## ...     .having_other_terms_ordered_by("OCC")
+## ...     .having_other_term_occurrences_between(2, None)
+## ...     .having_other_term_citations_between(None, None)
+## ...     .having_other_terms_in(None)
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+## ...     #
+## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+## ...     #
+## ...     .using_node_colors(
+## ...         (
+## ...              "#7793a5", 
+## ...              "#465c6b",
+## ...         )
+## ...     )
+## ...     .using_edge_colors(
+## ...          (
+## ...              "#7793a5", 
+## ...              "#7793a5", 
+## ...              "#7793a5", 
+## ...              "#7793a5",
+## ...          )
+## ...     )
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_size_range(10, 20)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
+## ...     .using_xaxes_range=(None, None)
+## ...     .using_yaxes_range=(None, None)
+## ...     .using_axes_visible(False)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
+## ... )
+## >>> plot.write_html("sphinx/_generated/co_occurrence_matrix/network_map_0.html")
 
 .. raw:: html
 
@@ -80,61 +78,59 @@ Network Map
     
 >>> from techminer2.co_occurrence_matrix import CoOccurrenceNetworkMap   
 >>> plot = (
-...     CoOccurrenceNetworkMap()
-...     #
-...     # COLUMNS:
-...     .wiht_field("author_keywords")
-...     #
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(2, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # ROWWS:
-...     .wiht_other_field("None")
-...     #
-...     .having_other_terms_in_top(10)
-...     .having_other_terms_ordered_by("OCC")
-...     .having_other_term_occurrences_between(2, None)
-...     .having_other_term_citations_between(None, None)
-...     .having_other_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-
-...     ).set_plot_params(
-...          node_colors=(
-...              "#7793a5", 
-...              "#465c6b",
-...          ),
-...          edge_colors=(
-...              "#7793a5", 
-...              "#7793a5", 
-...              "#7793a5", 
-...              "#7793a5",
-...          ),
-...     .using_node_size_range(30, 70)
-...     .using_textfont_size_range(10, 20)
-...     .using_textfont_opacity_range(0.35, 1.00)
-...     .using_xaxes_range=(None, None)
-...     .using_yaxes_range=(None, None)
-...     .using_axes_visible(False)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
-...     .where_records_match(None)
-...     #
-...     .build()
+## ...     CoOccurrenceNetworkMap()
+## ...     #
+## ...     # COLUMNS:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # ROWWS:
+## ...     .wiht_other_field(None)
+## ...     .having_other_terms_in_top(None)
+## ...     .having_other_terms_ordered_by(None)
+## ...     .having_other_term_occurrences_between(None, None)
+## ...     .having_other_term_citations_between(None, None)
+## ...     .having_other_terms_in(None)
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+## 
+## ...     #
+## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+## 
+## ...     ).set_plot_params(
+## ...          node_colors=(
+## ...              "#7793a5", 
+## ...              "#465c6b",
+## ...          ),
+## ...          edge_colors=(
+## ...              "#7793a5", 
+## ...              "#7793a5", 
+## ...              "#7793a5", 
+## ...              "#7793a5",
+## ...          ),
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_size_range(10, 20)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
+## ...     .using_xaxes_range=(None, None)
+## ...     .using_yaxes_range=(None, None)
+## ...     .using_axes_visible(False)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ... )
 >>> plot.write_html("sphinx/_generated/co_occurrence_matrix/network_map_1.html")
 

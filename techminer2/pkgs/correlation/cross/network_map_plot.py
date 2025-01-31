@@ -16,27 +16,36 @@ Creates an Cross-correlation Map.
 ## >>> from techminer2.analyze.correlation_matrix import cross_correlation_map
 ## >>> plot = (
 ## ...     cross_correlation_map()
-## ...     .set_analysis_params(
-## ...         cross_with='countries',
-## ...         method="pearson",
 ## ...     #
-## ...     ).set_item_params(
-## ...         field='authors', 
-## ...         top_n=10,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("authors")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_nx_params(
-## ...         nx_k=None,
-## ...         nx_iterations=30,
-## ...         nx_random_state=0,
+## ...     # CROSS WITH:
+## ...     .with_other_field('countries'),
+## ...     #
+## ...     .with_correlation_method("pearson")
+## ...     #
+
+
+## ...     #
+## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         node_color="#7793a5",
-## ...         node_size_range=(30, 70),
-## ...         textfont_size_range=(10, 20),
-## ...         textfont_opacity_range=(0.35, 1.00),
+
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_size_range(10, 20)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
+
 ## ...         edge_top_n=None,
 ## ...         edge_similarity_min=None,
 ## ...         edge_widths=(2, 2, 4, 6),
@@ -47,17 +56,19 @@ Creates an Cross-correlation Map.
 ## ...             "#7793a5",
 ## ...         ),
 ## ...     #
-## ...     ).set_axes_params(
-## ...         xaxes_range=None,
-## ...         yaxes_range=None,
-## ...         show_axes=False,
+## ...     .using_xaxes_range=(None, None)
+## ...     .using_yaxes_range=(None, None)
+## ...     .using_axes_visible(False)
+
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> # plot.write_html("sphinx/_static/correlation_matrix/cross_correlation_map.html")
 

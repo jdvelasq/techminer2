@@ -9,29 +9,28 @@ Data Frame
 ===============================================================================
 
 
->>> from techminer2.correlation.auto import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # Field:
-...     .with_field("authors")
-...     #
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     .with_correlation_method("pearson")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
-...     #
-...     .build()
-... ).round(3)
+## >>> from techminer2.correlation.auto import DataFrame
+## >>> (
+## ...     DataFrame()
+## ...     #
+## ...     # FIELD:
+## ...     .with_field("authors")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     .with_correlation_method("pearson")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     #
+## ...     .build()
+## ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                  1.00  ...                   0.0
 Gomber P. 2:1065                    0.00  ...                   0.0

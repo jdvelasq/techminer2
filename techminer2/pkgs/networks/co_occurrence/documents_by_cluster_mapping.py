@@ -17,24 +17,29 @@ Terms to Cluster Mapping
 ## ...         algorithm_or_dict="louvain",
 ## ...         association_index="association",
 ## ...     #
-## ...     .set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...        custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+
 ## ...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
 ## ...                                # global_cited_by_lowest, local_cited_by_highest, 
 ## ...                                # local_cited_by_lowest, first_author_a_to_z, 
 ## ...                                # first_author_z_to_a, source_title_a_to_z, 
 ## ...                                # source_title_z_to_a
-## ...     ).build()
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> print(len(documents_by_cluster))
 ## 4

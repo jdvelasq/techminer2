@@ -22,24 +22,26 @@ Node Density Plot
 ## ...         custom_terms=None,
 ## ...         algorithm_or_dict="louvain",
 ## ...     #
-## ...     ).set_nx_params(
-## ...         nx_k=None,
-## ...         nx_iterations=30,
-## ...         nx_random_state=0,
+## ...     # NETWORK:
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         bandwidth=0.1,
 ## ...         colorscale="Aggrnyl",
 ## ...         opacity=0.6,
-## ...         textfont_size_range=(8, 12),
+## ...     .using_textfont_size_range(8, 12)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... )
 ## >>> # plot.write_html("sphinx/_static/co_citation_network/node_density_plot.html")
 

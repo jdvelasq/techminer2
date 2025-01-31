@@ -10,34 +10,38 @@ Co-occurrences Chart
 
 
 ## >>> from techminer2.tools.associations import co_occurrences_chart
->>> plot = co_occurrences_chart(
-...     #
-...     # FUNCTION PARAMS:
-...     item='FINTECH',
-...     #
-...     # CO-OCC PARAMS:
-...     #
-...     # COLUMN PARAMS:
-...     columns='author_keywords',
-...     col_top_n=20,
-...     col_occ_range=(None, None),
-...     col_gc_range=(None, None),
-...     col_custom_terms=None,
-...     #
-...     # ROW PARAMS:
-...     rows=None,
-...     row_top_n=None,
-...     row_occ_range=(None, None),
-...     row_gc_range=(None, None),
-...     row_custom_terms=None,
-...     ).set_database_params(
-...         root_dir="example/", 
-...         database="main",
-...         year_filter=(None, None),
-...         cited_by_filter=(None, None),
-...     ).build()
-... )
->>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
+## >>> plot = co_occurrences_chart(
+## ...     #
+## ...     # FUNCTION PARAMS:
+## ...     item='FINTECH',
+## ...     #
+
+## ...     #
+## ...     # COLUMNS:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(10)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # ROWS:
+## ...     .wiht_other_field("None")
+## ...     .having_other_terms_in_top(10)
+## ...     .having_other_terms_ordered_by("OCC")
+## ...     .having_other_term_occurrences_between(2, None)
+## ...     .having_other_term_citations_between(None, None)
+## ...     .having_other_terms_in(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     #
+## ...     .build()
+## ... )
+## >>> # plot.write_html("sphinx/_static/tools/associations/co_occurrences.html")
 
 .. raw:: html
 
@@ -48,7 +52,7 @@ Co-occurrences Chart
 """
 import plotly.express as px  # type: ignore
 
-from .dataframe import DataFrame
+from .data_frame import DataFrame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

@@ -15,7 +15,6 @@ Co-occurrence Matrix
 ...     #
 ...     # COLUMNS:
 ...     .wiht_field("author_keywords")
-...     #
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -23,8 +22,7 @@ Co-occurrence Matrix
 ...     .having_terms_in(None)
 ...     #
 ...     # ROWWS:
-...     .wiht_other_field("authors")
-...     #
+...     .with_other_field("authors")
 ...     .having_other_terms_in_top(None)
 ...     .having_other_terms_ordered_by("OCC")
 ...     .having_other_term_occurrences_between(2, None)

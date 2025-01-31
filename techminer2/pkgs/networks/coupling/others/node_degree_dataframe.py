@@ -16,12 +16,15 @@
 ## ...     citations_threshold=0,
 ## ...     occurrence_threshold=2,
 ## ...     custom_terms=None,
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     ).build()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... ).head()
    Node                Name  Degree
 0     0    Gomber P. 2:1065       3
