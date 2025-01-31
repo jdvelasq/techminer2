@@ -13,13 +13,16 @@ Contains
 >>> terms = (
 ...     ContainsExtractor() 
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
 ...     #
-...     .with_terms_having_pattern("FINTECH")
-...     .with_case_sensitive(False)
-...     .with_regex_flags(0)
-...     .with_regex_search(False)
+...     # SEARCH:
+...     .having_terms_like("FINTECH")
+...     .having_case_sensitive(False)
+...     .having_regex_flags(0)
+...     .having_regex_search(False)
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

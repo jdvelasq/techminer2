@@ -59,7 +59,7 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from ..database.load.load__database import load__filtered_database
-from ..prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
+from ..thesaurus.internals.thesaurus__read_reversed_as_dict import (
     thesaurus__read_reversed_as_dict,
 )
 from .deprecated.extract_descriptors_from_text import extract_descriptors_from_text

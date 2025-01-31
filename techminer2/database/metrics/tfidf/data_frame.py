@@ -22,7 +22,8 @@ Data Frame
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .using_counters_in_axes(True)
+...     .using_term_counters(True)
+...     #
 ...     .using_binary_term_frequencies(False)
 ...     .using_row_normalization(None)
 ...     .using_idf_reweighting(False)
@@ -165,7 +166,7 @@ class DataFrame(
         return self.sort_columns(data_frame)
 
     def step_10_remove_counters_from_axes(self, data_frame):
-        if self.params.counters_in_axes is False:
+        if self.params.term_counters is False:
             data_frame.columns = [" ".join(x.split()[:-1]) for x in data_frame.columns]
         return data_frame
 

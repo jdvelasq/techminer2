@@ -48,7 +48,7 @@ import os.path
 import re
 import textwrap
 
-from ...prepare.thesaurus.internals.thesaurus__read_reversed_as_dict import (
+from ...thesaurus.internals.thesaurus__read_reversed_as_dict import (
     thesaurus__read_reversed_as_dict,
 )
 

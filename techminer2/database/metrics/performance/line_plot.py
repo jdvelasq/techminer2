@@ -13,18 +13,22 @@ Line Plot
 >>> plot = (
 ...     LinePlot()
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_top_n_terms(10)
-...     .with_terms_ordered_by("OCC")
 ...     #
+...     # TERMS:
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     # PLOT:
 ...     .using_title_text("Line Plot")
 ...     .using_xaxes_title_text("Author Keywords")
 ...     .using_yaxes_title_text("OCC")
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

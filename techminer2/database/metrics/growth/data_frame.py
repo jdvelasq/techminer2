@@ -101,7 +101,7 @@ class DataFrame(
     def _step_2_compute_terms_by_year(self):
         df = TermsByYearDataFrame()
         df = df.update_params(**self.params.__dict__)
-        df = df.using_counters_in_axes(False)
+        df = df.using_term_counters(False)
         df = df.build()
         return df
 

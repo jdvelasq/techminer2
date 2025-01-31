@@ -1,3 +1,4 @@
+# flake8: noqa
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-function-docstring
 # pylint: disable=too-many-public-methods
@@ -12,6 +13,11 @@ from typing import Dict, List, Optional, Tuple
 class Params:
 
     #
+    # A
+    #
+    axes_visible: bool = False
+
+    #
     # B
     #
     binary_term_frequencies: bool = False
@@ -20,14 +26,20 @@ class Params:
     # C
     #
     case_sensitive: bool = False
-    counters_in_axes: bool = True
+    term_counters: bool = True
     colormap: str = "Blues"
+    correlation_method: str = "pearson"
     cumulative_sum: bool = False
 
     #
     # D
     #
     database: str = "main"  # where_database_is
+
+    #
+    # E
+    #
+    edge_colors: Optional[List] = None
 
     #
     # F
@@ -46,9 +58,19 @@ class Params:
     marker_size: float = 7
 
     #
+    # N
+    #
+    node_colors: Optional[List] = None
+    node_size_range: Tuple[int, int] = (5, 20)
+
+    #
     # O
     #
     other_field: Optional[str] = None
+    other_term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    other_term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    other_terms_in: Optional[list] = None
+    other_terms_order_by: Optional[str] = None
 
     #
     # P
@@ -78,6 +100,9 @@ class Params:
     # S
     #
     smooth_idf_weights: bool = False
+    spring_layout_iterations: int = 50
+    spring_layout_k: float = 0.1
+    spring_layout_seed: int = 42
     sublinear_tf_scaling: bool = False  # sublinear_tf
 
     #
@@ -87,10 +112,12 @@ class Params:
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
+    textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_size: float = 10
+    textfont_size_range: Tuple[int, int] = (8, 16)
     time_window: int = 2
     title_text: Optional[str] = None
-    top_n_terms: Optional[int] = None
+    top_n: Optional[int] = None
 
     #
     # U
@@ -100,11 +127,13 @@ class Params:
     #
     # X
     #
+    xaxes_range: Optional[Tuple[float, float]] = None
     xaxes_title_text: Optional[str] = None
 
     #
     # Y
     #
+    yaxes_range: Optional[Tuple[float, float]] = None
     yaxes_title_text: Optional[str] = None
     yshift: float = 4
 
@@ -138,6 +167,18 @@ class InputFunctionsMixin:
     #
     # H
     #
+    def having_case_sensitive(self, case_sensitive):
+        self.params.case_sensitive = case_sensitive
+        return self
+
+    def having_regex_flags(self, flags):
+        self.params.regex_flags = flags
+        return self
+
+    def having_regex_search(self, regex_search):
+        self.params.regex_search = regex_search
+        return self
+
     def having_term_citations_between(self, start, end):
         self.params.term_citations_range = (start, end)
         return self
@@ -150,9 +191,25 @@ class InputFunctionsMixin:
         self.params.terms_in = term_list
         return self
 
+    def having_terms_in_top(self, n):
+        self.params.top_n = n
+        return self
+
+    def having_terms_like(self, pattern):
+        self.params.pattern = pattern
+        return self
+
+    def having_terms_ordered_by(self, criteria):
+        self.params.terms_order_by = criteria
+        return self
+
     #
     # U
     #
+    def using_axes_visible(self, visible):
+        self.params.axes_visible = visible
+        return self
+
     def using_binary_term_frequencies(self, binary):
         self.params.binary_term_frequencies = binary
         return self
@@ -161,8 +218,8 @@ class InputFunctionsMixin:
         self.params.colormap = colormap
         return self
 
-    def using_counters_in_axes(self, counters_in_axes):
-        self.params.counters_in_axes = counters_in_axes
+    def using_edge_colors(self, colors):
+        self.params.edge_colors = colors
         return self
 
     def using_idf_reweighting(self, smooth):  # use_idf
@@ -181,6 +238,14 @@ class InputFunctionsMixin:
         self.params.marker_size = size
         return self
 
+    def using_node_colors(self, colors):
+        self.params.node_colors = colors
+        return self
+
+    def using_node_size_range(self, min_size, max_size):
+        self.params.node_size_range = (min_size, max_size)
+        return self
+
     def using_pie_hole(self, pie_hole):
         self.params.pie_hole = pie_hole
         return self
@@ -197,17 +262,49 @@ class InputFunctionsMixin:
         self.params.row_normalization = normalization
         return self
 
+    def using_spring_layout_iterations(self, iterations):
+        self.params.spring_layout_iterations = iterations
+        return self
+
+    def using_spring_layout_k(self, k):
+        self.params.spring_layout_k = k
+        return self
+
+    def using_spring_layout_seed(self, seed):
+        self.params.spring_layout_seed = seed
+        return self
+
+    def using_term_counters(self, counters):
+        self.params.term_counters = counters
+        return self
+
+    def using_textfont_opacity_range(self, min_opacity, max_opacity):
+        self.params.textfont_opacity_range = (min_opacity, max_opacity)
+        return self
+
     def using_textfont_size(self, size):
         self.params.textfont_size = size
+        return self
+
+    def using_textfont_size_range(self, min_size, max_size):
+        self.params.textfont_size_range = (min_size, max_size)
         return self
 
     def using_title_text(self, text):
         self.params.title_text = text
         return self
 
+    def using_xaxes_range(self, x_range):
+        self.params.xaxes_range = x_range
+        return self
+
     def using_xaxes_title_text(self, text):
         self.params.xaxes_title_text = text
         return self
+
+    def using_yaxes_range(self, y_range):
+        self.params.yaxes_range = y_range
+        return
 
     def using_yaxes_title_text(self, text):
         self.params.yaxes_title_text = text
@@ -252,11 +349,11 @@ class InputFunctionsMixin:
         self.params.pattern = pattern
         return self
 
-    def with_case_sensitive(self, case_sensitive):
-        self.params.case_sensitive = case_sensitive
+    def with_correlation_method(self, method):
+        self.params.correlation_method = method
         return self
 
-    def with_comparison_field(self, field):
+    def with_cross_field(self, field):
         self.params.other_field = field
         return self
 
@@ -264,8 +361,8 @@ class InputFunctionsMixin:
         self.params.cumulative_sum = cumulative_sum
         return self
 
-    def with_target_field(self, field):
-        self.params.other_field = field
+    def with_field(self, field):
+        self.params.field = field
         return self
 
     def with_field_pattern(self, pattern):
@@ -276,28 +373,8 @@ class InputFunctionsMixin:
         self.params.field = field
         return self
 
-    def with_regex_flags(self, flags):
-        self.params.regex_flags = flags
-        return self
-
-    def with_regex_search(self, regex_search):
-        self.params.regex_search = regex_search
-        return self
-
     def with_query_expression(self, expr):
         self.params.query_expr = expr
-        return self
-
-    def with_field(self, field):
-        self.params.field = field
-        return self
-
-    def with_terms_ordered_by(self, criteria):
-        self.params.terms_order_by = criteria
-        return self
-
-    def with_terms_having_pattern(self, pattern):
-        self.params.pattern = pattern
         return self
 
     def with_terms_having_stem_match(self, stem):
@@ -308,14 +385,6 @@ class InputFunctionsMixin:
         self.params.time_window = time_window
         return self
 
-    def with_top_n_terms(self, n):
-        self.params.top_n_terms = n
-        return self
-
     def with_transformation(self, function):
         self.params.function = function
-        return self
-
-    def with_values_from_field(self, field):
-        self.params.other_field = field
         return self

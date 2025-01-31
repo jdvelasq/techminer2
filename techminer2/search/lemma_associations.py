@@ -44,9 +44,7 @@ from ..database.load.load__database import load__filtered_database
 from ..internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from ..prepare.thesaurus.internals.thesaurus__read_as_dict import (
-    thesaurus__read_as_dict,
-)
+from ..thesaurus.internals.thesaurus__read_as_dict import thesaurus__read_as_dict
 
 
 def lemma_associations(

@@ -19,9 +19,9 @@ Find records
 ...     #
 ...     # SEARCH:
 ...     .with_field_pattern('REGTECH')
-...     .with_regex_search(False)
-...     .with_case_sensitive(False)
-...     .with_regex_flags(0)
+...     .having_regex_search(False)
+...     .having_case_sensitive(False)
+...     .having_regex_flags(0)
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")

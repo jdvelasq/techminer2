@@ -12,12 +12,14 @@ Clean text
 >>> from techminer2.database.field_operators import CleanTextOperator
 >>> (
 ...     CleanTextOperator()  # doctest: +SKIP 
-....    #
+...     #
+...     # FIELDS:
 ...     .with_field("author_keywords")
-...     .with_target_field("author_keywords_copy")
+...     .with_other_field("author_keywords_copy")
 ....    #
+...     # DATABASE:
 ...     .where_directory_is("example/")
-....    #
+...     #
 ...     .build()
 ... )
 

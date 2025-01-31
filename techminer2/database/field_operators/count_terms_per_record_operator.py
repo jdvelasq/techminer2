@@ -13,9 +13,11 @@ Count Terms per Record
 >>> (
 ...     CountTermsPerRecordOperator()
 ...     #
+...     # FIELDS:
 ...     .with_field("authors")
-...     .with_target_field("test_num_authors")
+...     .with_other_field("test_num_authors")
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     #
 ...     .build()

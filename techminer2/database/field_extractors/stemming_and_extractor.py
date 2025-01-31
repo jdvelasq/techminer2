@@ -13,14 +13,18 @@ Stemming Field with AND
 >>> terms = (
 ...     StemmingAndExtractor() 
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_terms_having_stem_match(
-...             [
-...                 "financial technology", 
-...                 "artificial intelligence",
-...             ],
-...         ) 
 ...     #
+...     # SEARCH:
+...     .having_terms_like(
+...         [
+...             "financial technology", 
+...             "artificial intelligence",
+...         ],
+...     ) 
+...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

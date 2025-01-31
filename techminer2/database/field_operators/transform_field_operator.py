@@ -14,11 +14,16 @@ Process a Field
 >>> (
 ...     TransformFieldOperator()  # doctest: +SKIP 
 ...     #
+...     # FIELDS:
 ...     .with_field("author_keywords")
-...     .with_target_field("author_keywords_copy")
+...     .with_other_field("author_keywords_copy")
+...     #
+...     # TRANSFORMATION:
 ...     .with_transformation(lambda x: x.str.lower())
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
+...     #
 ...     .build()
 ... )
 

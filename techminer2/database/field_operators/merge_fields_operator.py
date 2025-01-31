@@ -13,9 +13,11 @@ Merge Fields
 >>> (
 ...     MergeFieldsOperator()  # doctest: +SKIP
 ...     #
+...     # FIELDS:
 ...     .with_field["author_keywords", "index_keywords"])
-...     .with_target_field("merged_keywords")
+...     .with_other_field("merged_keywords")
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     #
 ...     .build()

@@ -13,8 +13,12 @@ from dataclasses import dataclass
 from typing import Optional
 
 import networkx as nx  # type: ignore
-import pandas as pd
+import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
+
+
+def internal__create_node_degree_plot():
+    pass
 
 
 @dataclass

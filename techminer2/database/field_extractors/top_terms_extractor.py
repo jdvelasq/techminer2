@@ -14,14 +14,17 @@ Filter a Field
 >>> terms = (
 ...     TopTermsExtractor()
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_top_n_terms(10)
-...     .with_terms_ordered_by("OCC")
 ...     #
+...     # SEARCH:
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

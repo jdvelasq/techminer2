@@ -13,17 +13,22 @@ Word Cloud
 >>> plot = (
 ...     WordCloud()
 ...     #
+...     # FIELD:
 ...     .with_field("raw_document_title_nouns_and_phrases")
-...     .with_top_n_terms(80)
-...     .with_terms_ordered_by("OCC")
+...     #
+...     # TERMS:
+...     .having_terms_in_top(80)
+...     .having_terms_ordered_by("OCC")
 ...     #
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
+...     # PLOT:
 ...     .using_plot_width(400)
 ...     .using_plot_height(400)
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

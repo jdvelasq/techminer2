@@ -13,9 +13,13 @@ Ends With
 >>> terms = (
 ...     EndsWithExtractor() 
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_terms_having_pattern("ING")
 ...     #
+...     # SEARCH:
+...     .having_terms_like("ING")
+...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

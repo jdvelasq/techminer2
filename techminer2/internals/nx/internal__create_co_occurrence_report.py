@@ -23,9 +23,7 @@ import pandas as pd  # type: ignore
 from ...database.load.load__database import load__filtered_database
 
 # from ...search.concordances import concordances_from_records
-from ...prepare.thesaurus.internals.thesaurus__read_as_dict import (
-    thesaurus__read_as_dict,
-)
+from ...thesaurus.internals.thesaurus__read_as_dict import thesaurus__read_as_dict
 from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
 from ..utils.utils_format_report_for_records import _utils_format_report_for_records
 from ..utils.utils_make_report_dir import _utils_make_report_dir

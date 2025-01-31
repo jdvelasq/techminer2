@@ -14,10 +14,11 @@ Fill NA
 >>> (
 ...     FillNAOperator()  # doctest: +SKIP 
 ...     #
+...     # FIELDS:
 ...     .with_field("author_keywords")
-...     .with_values_from_field("index_keywords")
-...     .with_target_field("author_keywords")
+...     .with_other_field("index_keywords")
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     #
 ...     .build()
@@ -36,12 +37,12 @@ class FillNAOperator(
 
     def build(self):
 
-        if self.params.dest_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.dest_field}` is protected")
+        if self.params.other_field in PROTECTED_FIELDS:
+            raise ValueError(f"Field `{self.params.other_field}` is protected")
 
         internal__fillna(
-            fill_field=self.params.fill_field,
-            with_field=self.params.with_field,
+            fill_field=self.params.field,
+            with_field=self.params.other_field,
             #
             # DATABASE PARAMS:
             root_dir=self.params.root_dir,

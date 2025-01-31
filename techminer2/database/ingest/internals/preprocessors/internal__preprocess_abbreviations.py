@@ -13,7 +13,7 @@ import os
 import pandas as pd  # type: ignore
 
 # TODO: remove dependency
-from .....prepare.thesaurus.internals.thesaurus__read_as_dict import (
+from .....thesaurus.internals.thesaurus__read_as_dict import (
     thesaurus__read_as_dataframe,
 )
 

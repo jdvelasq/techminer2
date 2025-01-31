@@ -20,7 +20,7 @@ Data Frame
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .using_counters_in_axes(True)
+...     .using_term_counters(True)
 ...     .with_cumulative_sum(False)
 ...     #
 ...     .where_directory_is("example/")
@@ -56,7 +56,7 @@ CASE_STUDY 02:0340               0     0     1     0     1
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .using_counters_in_axes(False)
+...     .using_term_counters(False)
 ...     .with_cumulative_sum(False)
 ...     #
 ...     .where_directory_is("example/")
@@ -91,10 +91,9 @@ CASE_STUDY               0     0     1     0     1
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     .using_counters_in_axes(True)
 ...     .with_cumulative_sum(True)
 ...     #
-...     .using_counters_in_axes(True)
+...     .using_term_counters(True)
 ...     #
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
@@ -232,7 +231,7 @@ class DataFrame(
         return self.sort_index(data_frame)
 
     def _step_9_remove_counter_from_axis(self, data_frame):
-        if self.params.counters_in_axes is False:
+        if self.params.term_counters is False:
             data_frame.index = data_frame.index.str.split().str[0]
         return data_frame
 

@@ -13,9 +13,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ....prepare.thesaurus.internals.thesaurus__read_as_dict import (
-    thesaurus__read_as_dict,
-)
+from ....thesaurus.internals.thesaurus__read_as_dict import thesaurus__read_as_dict
 
 
 def internal__extract_country(

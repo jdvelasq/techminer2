@@ -14,8 +14,10 @@ Delete a Field
 >>> (
 ...     DeleteFieldOperator()  # doctest: +SKIP 
 ...     #
+...     # FIELDS:
 ...     .with_field("author_keywords_copy")
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     #
 ...     .build()

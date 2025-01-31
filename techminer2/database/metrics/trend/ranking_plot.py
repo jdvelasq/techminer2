@@ -55,7 +55,7 @@ class RankingPlot(
         data_frame = data_frame.build()
         data_frame["Rank"] = range(1, len(data_frame) + 1)
 
-        self.with_terms_ordered_by("OCC")
+        self.having_terms_ordered_by("OCC")
 
         if self.params.title_text is None:
             self.using_title_text("Trend Metrics")

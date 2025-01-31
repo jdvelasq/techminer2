@@ -13,11 +13,15 @@ Match
 >>> terms = (
 ...     MatchExtractor() 
 ...     #
+...     # FIELD:
 ...     .with_field("author_keywords")
-...     .with_terms_having_pattern("L.+")
-...     .with_case_sensitive(False)
-...     .with_regex_flags(0)
 ...     #
+...     # SEARCH:
+...     .having_terms_like("L.+")
+...     .having_case_sensitive(False)
+...     .having_regex_flags(0)
+...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)

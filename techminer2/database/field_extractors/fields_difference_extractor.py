@@ -13,9 +13,11 @@ Fields difference
 >>> terms = (
 ...     FieldsDifferenceExtractor() 
 ...     #
+...     # FIELDS:
 ...     .with_field("author_keywords")
-...     .with_comparison_field("index_keywords")
+...     .with_other_field("index_keywords")
 ...     #
+...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
