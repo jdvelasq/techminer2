@@ -4,12 +4,8 @@ including heatmaps, maps, matrices, network visualizations, tables, and
 Sankey charts.
 """
 
-from .data_frame import CrossCoOccurrenceDataFrame
-from .heatmap import CrossCoOccurrenceHeatmap
-from .matrix_data_frame import CrossCoOccurrenceMatrix
+from .data_frame import DataFrame
 
 __all__ = [
-    "CrossCoOccurrenceDataFrame",
-    "CrossCoOccurrenceHeatmap",
-    "CrossCoOccurrenceMatrix",
+    "DataFrame",
 ]

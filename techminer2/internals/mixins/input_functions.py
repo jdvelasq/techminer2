@@ -71,6 +71,7 @@ class Params:
     other_term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_terms_in: Optional[list] = None
     other_terms_order_by: Optional[str] = None
+    other_top_n: Optional[int] = None
 
     #
     # P
@@ -179,6 +180,26 @@ class InputFunctionsMixin:
         self.params.regex_search = regex_search
         return self
 
+    def having_other_term_citations_between(self, start, end):
+        self.params.other_term_citations_range = (start, end)
+        return self
+
+    def having_other_term_occurrences_between(self, start, end):
+        self.params.other_term_occurrences_range = (start, end)
+        return self
+
+    def having_other_terms_in(self, term_list):
+        self.params.other_terms_in = term_list
+        return self
+
+    def having_other_terms_in_top(self, n):
+        self.params.other_top_n = n
+        return self
+
+    def having_other_terms_ordered_by(self, criteria):
+        self.params.other_terms_order_by = criteria
+        return self
+
     def having_term_citations_between(self, start, end):
         self.params.term_citations_range = (start, end)
         return self
@@ -254,7 +275,7 @@ class InputFunctionsMixin:
         self.params.height = height
         return self
 
-    def using_plot_width(self, width):
+    def using_plot_width(self, widtah):
         self.params.width = width
         return self
 

@@ -36,7 +36,7 @@ Line Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/database/metrics/performance/line_plot.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/performance/line_plot.html")
 
 .. raw:: html
 

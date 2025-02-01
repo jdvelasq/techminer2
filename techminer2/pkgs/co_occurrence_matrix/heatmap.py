@@ -22,7 +22,7 @@ Heatmap
 ...     .having_terms_in(None)
 ...     #
 ...     # ROWWS:
-...     .wiht_other_field("None")
+...     .with_other_field("None")
 ...     .having_other_terms_in_top(10)
 ...     .having_other_terms_ordered_by("OCC")
 ...     .having_other_term_occurrences_between(2, None)

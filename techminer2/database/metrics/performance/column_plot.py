@@ -36,7 +36,7 @@ Column Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/database/metrics/performance/column_plot.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/performance/column_plot.html")
 
 .. raw:: html
 

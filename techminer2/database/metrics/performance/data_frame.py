@@ -14,8 +14,6 @@ Data Frame
 ...     #
 ...     # FIELD:
 ...     .with_field("author_keywords")
-...     #
-...     # TERMS:
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)

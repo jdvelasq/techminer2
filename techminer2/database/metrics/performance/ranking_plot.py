@@ -41,7 +41,7 @@ Ranking Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/database/metrics/performance/ranking_plot.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/performance/ranking_plot.html")
 
 .. raw:: html
 

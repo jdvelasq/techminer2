@@ -36,7 +36,7 @@ Pie Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/database/metrics/performance/pie_plot.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/performance/pie_plot.html")
 
 .. raw:: html
 

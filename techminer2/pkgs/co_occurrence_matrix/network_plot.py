@@ -24,7 +24,7 @@ NetworkPlot
 ## ...     .having_terms_in(None)
 ## ...     #
 ## ...     # ROWWS:
-## ...     .wiht_other_field("authors")
+## ...     .with_other_field("authors")
 ## ...     #
 ## ...     .having_other_terms_in_top(10)
 ## ...     .having_other_terms_ordered_by("OCC")
@@ -81,7 +81,7 @@ NetworkPlot
 ## ...     .having_terms_in(None)
 ## ...     #
 ## ...     # ROWWS:
-## ...     .wiht_other_field(None)
+## ...     .with_other_field(None)
 ## ...     #
 ## ...     .having_other_terms_in_top(None)
 ## ...     .having_other_terms_ordered_by(None)

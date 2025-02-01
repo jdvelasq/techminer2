@@ -9,195 +9,244 @@ Cross co-occurrence DataFrame
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import DataFrame
-## >>> (
-## ...     DataFrame()
-## ...     #
-## ...     # COLUMNS:
-## ...     .with_field("author_keywords")
-## ...     .having_terms_in_top(10)
-## ...     .having_terms_ordered_by("OCC")
-## ...     .having_term_occurrences_between(2, None)
-## ...     .having_term_citations_between(None, None)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # ROWS:
-## ...     .wiht_other_field(None)
-## ...     .having_other_terms_in_top(None)
-## ...     .having_other_terms_ordered_by(None)
-## ...     .having_other_term_occurrences_between(None, None)
-## ...     .having_other_term_citations_between(None, None)
-## ...     .having_other_terms_in(None)
-## ...     #
-## ...     # COUNTERS:
-## ...     .using_term_counters(True)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
+>>> from techminer2.pkgs.co_occurrence_matrix import DataFrame
+>>> (
+...     DataFrame()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(2, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # ROWS:
+...     .with_other_field("authors")
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(2, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
 ... ).head(10)
-                 rows                      columns  OCC
-0    Dolata M. 2:0181              FINTECH 31:5168    2
-1    Dolata M. 2:0181           INNOVATION 07:0911    2
-2       Gai K. 2:0323       CYBER_SECURITY 02:0342    1
-3       Gai K. 2:0323              FINTECH 31:5168    2
-4    Gomber P. 2:1065              FINTECH 31:5168    1
-5    Hornuf L. 2:0358         CROWDFUNDING 03:0335    1
-6    Hornuf L. 2:0358              FINTECH 31:5168    2
-7  Jagtiani J. 3:0317              FINTECH 31:5168    3
-8  Jagtiani J. 3:0317  MARKETPLACE_LENDING 03:0317    3
-9   Lemieux C. 2:0253              FINTECH 31:5168    2
+                 row                     column  OCC
+0  Jagtiani J. 3:317            FINTECH 31:5168    3
+1  Jagtiani J. 3:317  MARKETPLACE_LENDING 3:317    3
+2    Dolata M. 2:181            FINTECH 31:5168    2
+3    Dolata M. 2:181           INNOVATION 7:911    2
+4       Gai K. 2:323            FINTECH 31:5168    2
+5    Hornuf L. 2:358            FINTECH 31:5168    2
+6   Lemieux C. 2:253            FINTECH 31:5168    2
+7   Lemieux C. 2:253  MARKETPLACE_LENDING 3:317    2
+8       Qiu M. 2:323            FINTECH 31:5168    2
+9   Schwabe G. 2:181            FINTECH 31:5168    2
+
+
+>>> from techminer2.pkgs.co_occurrence_matrix import DataFrame
+>>> (
+...     DataFrame()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(2, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # ROWS:
+...     .with_other_field(None)
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(None, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head(10)
+                          row                      column  OCC
+0             FINTECH 31:5168             FINTECH 31:5168   31
+1            INNOVATION 7:911            INNOVATION 7:911    7
+2             FINTECH 31:5168            INNOVATION 7:911    5
+3            INNOVATION 7:911             FINTECH 31:5168    5
+4    FINANCIAL_SERVICES 4:667    FINANCIAL_SERVICES 4:667    4
+5          CROWDFUNDING 3:335          CROWDFUNDING 3:335    3
+6   FINANCIAL_INCLUSION 3:590   FINANCIAL_INCLUSION 3:590    3
+7   FINANCIAL_INCLUSION 3:590             FINTECH 31:5168    3
+8    FINANCIAL_SERVICES 4:667             FINTECH 31:5168    3
+9  FINANCIAL_TECHNOLOGY 3:461  FINANCIAL_TECHNOLOGY 3:461    3
+
 
 
 """
-from ...database.load.load__database import load__filtered_database
-from ...database.load.load__user_stopwords import load__user_stopwords
-from ...internals import DatabaseFilters, SetDatabaseFiltersMixin
-from ...internals.mt.mt_calculate_global_performance_metrics import (
-    _mt_calculate_global_performance_metrics,
-)
-from ...internals.mt.mt_extract_top_n_terms_by_metric import (
-    _mt_extract_top_n_terms_by_metric,
-)
-from ...internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
-from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.item_params import ItemParams
-from ...internals.utils.utils_compute_occurrences_and_citations import (
-    _utils_compute_occurrences_and_citations,
-)
-from .internals.output_params import OutputParams, OutputParamsMixin
+from ...database.load import DatabaseLoader
+from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
+from ...internals.mixins import InputFunctionsMixin
 
 
-class CrossCoOccurrenceDataFrame(
-    ColumnsAndRowsParamsMixin,
-    SetDatabaseFiltersMixin,
-    OutputParamsMixin,
+class DataFrame(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
+    # -------------------------------------------------------------------------
+    def _step_1_check_row_params(self):
+        if self.params.other_field is None:
+            self.with_other_field(
+                self.params.field,
+            )
+            self.having_other_terms_in_top(
+                self.params.top_n,
+            )
+            self.having_other_terms_ordered_by(
+                self.params.terms_order_by,
+            )
+            self.having_other_term_occurrences_between(
+                self.params.term_occurrences_range[0],
+                self.params.term_occurrences_range[1],
+            )
+            self.having_other_term_citations_between(
+                self.params.term_citations_range[0],
+                self.params.term_citations_range[1],
+            )
+            self.having_other_terms_in(
+                self.params.terms_in,
+            )
 
-        self.columns_params = ItemParams()
-        self.database_params = DatabaseFilters()
-        self.rows_params = ItemParams()
-        self.output_params = OutputParams()
+    # -------------------------------------------------------------------------
+    def _step_2_compute_column_peformance_metrics(self):
+        return (
+            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
+        )
 
-    def build(self):
+    # -------------------------------------------------------------------------
+    def _step_3_compute_row_peformance_metrics(self):
+        metrics = (
+            PerformanceMetricsDataFrame()
+            .update_params(**self.params.__dict__)
+            .with_field(self.params.other_field)
+            .having_terms_in_top(self.params.other_top_n)
+            .having_terms_ordered_by(self.params.other_terms_order_by)
+            .having_term_occurrences_between(
+                self.params.term_occurrences_range[0],
+                self.params.term_occurrences_range[1],
+            )
+            .having_term_citations_between(
+                self.params.term_citations_range[0],
+                self.params.term_citations_range[1],
+            )
+            .having_terms_in(self.params.terms_in)
+            .build()
+        )
+        return metrics
 
-        def filter_terms(
-            #
-            # MATRIX PARAMS:
-            raw_matrix_list,
-            name,
-            #
-            # TERM PARAMS:
-            field,
-            top_n,
-            occ_range,
-            gc_range,
-            custom_terms,
-        ):
-            if custom_terms is None:
-                indicators = _mt_calculate_global_performance_metrics(
-                    field=field,
-                    **self.database_params.__dict__,
-                )
+    # -------------------------------------------------------------------------
+    def _step_3_load_the_database(self):
+        return DatabaseLoader().update_params(**self.params.__dict__).build()
 
-                indicators = _mt_sort_records_by_metric(indicators, "OCC")
-
-                custom_terms = _mt_extract_top_n_terms_by_metric(
-                    indicators=indicators,
-                    metric="OCC",
-                    top_n=top_n,
-                    occ_range=occ_range,
-                    gc_range=gc_range,
-                )
-
-            raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(custom_terms)]
-
-            return raw_matrix_list
-
+    # -------------------------------------------------------------------------
+    def _step_4_create_raw_matrix_list(self, records):
         #
-        # MAIN CODE:
+        columns = self.params.field
+        rows = self.params.other_field
         #
-        if self.rows_params.field is None:
-            for key, value in self.columns_params.__dict__.items():
-                setattr(self.rows_params, key, value)
-
-        records = load__filtered_database(**self.database_params.__dict__)
-
-        columns = self.columns_params.field
-        rows = self.rows_params.field
-        root_dir = self.database_params.root_dir
-
         raw_matrix_list = records[[columns]].copy()
         raw_matrix_list = raw_matrix_list.rename(columns={columns: "column"})
         raw_matrix_list = raw_matrix_list.assign(row=records[[rows]])
+        #
+        return raw_matrix_list
 
-        stopwords = load__user_stopwords(root_dir=root_dir)
+    # -------------------------------------------------------------------------
+    def _step_5_explode_matrix_list(self, raw_matrix_list, name, selected_terms):
+        #
+        raw_matrix_list[name] = raw_matrix_list[name].str.split(";")
+        raw_matrix_list = raw_matrix_list.explode(name)
+        raw_matrix_list[name] = raw_matrix_list[name].str.strip()
+        raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(selected_terms)]
+        #
+        return raw_matrix_list
 
-        for name in ["column", "row"]:
-            raw_matrix_list[name] = raw_matrix_list[name].str.split(";")
-            raw_matrix_list = raw_matrix_list.explode(name)
-            raw_matrix_list[name] = raw_matrix_list[name].str.strip()
-            raw_matrix_list = raw_matrix_list[~raw_matrix_list[name].isin(stopwords)]
-
+    # -------------------------------------------------------------------------
+    def _step_6_compute_occurrences(self, raw_matrix_list):
+        #
         raw_matrix_list["OCC"] = 1
         raw_matrix_list = raw_matrix_list.groupby(
             ["row", "column"], as_index=False
         ).aggregate("sum")
-
+        #
         raw_matrix_list = raw_matrix_list.sort_values(
             ["OCC", "row", "column"], ascending=[False, True, True]
         )
+        raw_matrix_list = raw_matrix_list.reset_index(drop=True)
+        #
+        return raw_matrix_list
 
-        # Filters the terms in the 'row' column of the matrix list
-        raw_filterd_matrix_list = filter_terms(
-            raw_matrix_list=raw_matrix_list,
-            name="row",
-            **self.rows_params.__dict__,
+    # -------------------------------------------------------------------------
+    def _step_7_build_mapping(self, data_frame):
+        #
+        data_frame["counters"] = (
+            data_frame.index.astype(str)
+            + " "
+            + data_frame["OCC"].astype(str)
+            + ":"
+            + data_frame["global_citations"].astype(str)
         )
+        mapping = data_frame["counters"].to_dict()
+        #
+        return mapping
 
-        # Filters the terms in the 'column' column of the matrix list
-        filtered_matrix_list = filter_terms(
-            raw_matrix_list=raw_filterd_matrix_list,
-            name="column",
-            #
-            # COL PARAMS:
-            **self.columns_params.__dict__,
+    # -------------------------------------------------------------------------
+    def _step_8_rename_terms(self, raw_matrix_list, row_mapping, column_mapping):
+        #
+        raw_matrix_list["row"] = raw_matrix_list["row"].map(row_mapping)
+        raw_matrix_list["column"] = raw_matrix_list["column"].map(column_mapping)
+        #
+        return raw_matrix_list
+
+    # -------------------------------------------------------------------------
+    def build(self):
+        self._step_1_check_row_params()
+        column_metrics = self._step_2_compute_column_peformance_metrics()
+        row_metrics = self._step_3_compute_row_peformance_metrics()
+        records = self._step_3_load_the_database()
+        raw_matrix_list = self._step_4_create_raw_matrix_list(records)
+        raw_matrix_list = self._step_5_explode_matrix_list(
+            raw_matrix_list,
+            "column",
+            column_metrics.index.tolist(),
         )
-
-        # Assign counters to column 'row'
-        if self.output_params.retain_counters:
-
-            rows_map = _utils_compute_occurrences_and_citations(
-                criterion=self.rows_params.field,
-                **self.database_params.__dict__,
-            )
-            filtered_matrix_list.loc[:, "row"] = filtered_matrix_list["row"].map(
-                rows_map
-            )
-
-            columns_map = _utils_compute_occurrences_and_citations(
-                criterion=self.columns_params.field,
-                **self.database_params.__dict__,
-            )
-            filtered_matrix_list.loc[:, "column"] = filtered_matrix_list["column"].map(
-                columns_map
-            )
-
-        filtered_matrix_list = filtered_matrix_list.reset_index(drop=True)
-        filtered_matrix_list = filtered_matrix_list.rename(
-            columns={"row": "rows", "column": "columns"}
+        raw_matrix_list = self._step_5_explode_matrix_list(
+            raw_matrix_list,
+            "row",
+            row_metrics.index.tolist(),
         )
-        filtered_matrix_list = filtered_matrix_list.sort_values(
-            ["rows", "columns", "OCC"], ascending=[True, True, False]
-        )
-        filtered_matrix_list = filtered_matrix_list.reset_index(drop=True)
-
-        return filtered_matrix_list
+        raw_matrix_list = self._step_6_compute_occurrences(raw_matrix_list)
+        row_mapping = self._step_7_build_mapping(row_metrics)
+        column_mapping = self._step_7_build_mapping(column_metrics)
+        if self.params.term_counters:
+            raw_matrix_list = self._step_8_rename_terms(
+                raw_matrix_list, row_mapping, column_mapping
+            )
+        return raw_matrix_list

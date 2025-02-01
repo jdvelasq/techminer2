@@ -22,7 +22,7 @@ Bubble Chart
 ## ...     .having_terms_in(None)
 ## ...     #
 ## ...     # ROWS:
-## ...     .wiht_other_field(None)
+## ...     .with_other_field(None)
 ## ...     .having_other_terms_in_top(None)
 ## ...     .having_other_terms_ordered_by(None)
 ## ...     .having_other_term_occurrences_between(None, None)
