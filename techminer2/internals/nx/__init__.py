@@ -1,118 +1,106 @@
 # flake8: noqa
 """Networkx utilities."""
 
-from .internal__assign_colors_to_edges_by_weight import (
-    internal__assign_colors_to_edges_by_weight,
-)
-from .internal__assign_colors_to_nodes_by_group_attribute import (
-    internal__assign_colors_to_nodes_by_group_attribute,
-)
-from .internal__assign_constant_color_to_nodes import (
-    internal__assign_constant_color_to_nodes,
-)
-from .internal__assign_constant_opacity_to_text import (
-    internal__assign_constant_opacity_to_text,
-)
-from .internal__assign_constant_size_to_nodes import (
-    internal__assign_constant_size_to_nodes,
-)
-from .internal__assign_constant_textfont_size_to_nodes import (
+from .assign_constant_to_edge_colors import internal__assign_constant_to_edge_colors
+from .assign_constant_to_node_colors import internal__assign_constant_to_node_colors
+from .assign_constant_to_node_sizes import internal__assign_constant_to_node_sizes
+from .assign_constant_to_text_opacity import internal__assign_constant_to_text_opacity
+from .assign_constant_to_textfont_sizes import (
     internal__assign_constant_textfont_size_to_nodes,
 )
-from .internal__assign_degree_to_nodes import internal__assign_degree_to_nodes
-from .internal__assign_opacity_to_text_by_citations import (
-    internal__assign_opacity_to_text_by_citations,
+from .assign_degree_to_nodes import internal__assign_degree_to_nodes
+from .assign_edge_colors_based_on_weight import (
+    internal__assign_edge_colors_based_on_weight,
 )
-from .internal__assign_opacity_to_text_by_degree import (
-    internal__assign_opacity_to_text_by_degree,
+from .assign_edge_widths_based_on_weight import (
+    internal__assign_edge_widths_based_on_weight,
 )
-from .internal__assign_opacity_to_text_by_frequency import (
-    internal__assign_opacity_to_text_by_frequency,
+from .assign_node_colors_based_on_group_attribute import (
+    internal__assign_node_colors_based_on_group_attribute,
 )
-from .internal__assign_sizes_to_nodes_by_citations import (
-    internal__assign_sizes_to_nodes_by_citations,
+from .assign_node_sizes_based_on_citations import (
+    internal__assign_node_sizes_based_on_citations,
 )
-from .internal__assign_sizes_to_nodes_by_degree import (
-    internal__assign_sizes_to_nodes_by_degree,
+from .assign_node_sizes_based_on_degree import (
+    internal__assign_node_sizes_based_on_degree,
 )
-from .internal__assign_sizes_to_nodes_by_occurrences import (
-    internal__assign_sizes_to_nodes_by_occurrences,
+from .assign_node_sizes_based_on_occurrences import (
+    internal__assign_node_sizes_based_on_occurrences,
 )
-from .internal__assign_text_positions_to_nodes_by_quadrants import (
-    internal__assign_text_positions_to_nodes_by_quadrants,
+from .assign_text_positions_based_on_quadrants import (
+    internal__assign_text_positions_based_on_quadrants,
 )
-from .internal__assign_textfont_sizes_to_nodes_by_citations import (
-    internal__assign_textfont_sizes_to_nodes_by_citations,
+from .assign_textfont_opacity_based_on_citations import (
+    internal__assign_textfont_opacity_based_on_citations,
 )
-from .internal__assign_textfont_sizes_to_nodes_by_degree import (
-    internal__assign_textfont_sizes_to_nodes_by_degree,
+from .assign_textfont_opacity_based_on_degree import (
+    internal__assign_textfont_opacity_based_on_degree,
 )
-from .internal__assign_textfont_sizes_to_nodes_by_occurrences import (
-    internal__assign_textfont_sizes_to_nodes_by_occurrences,
+from .assign_textfont_opacity_based_on_occurrences import (
+    internal__assign_textfont_opacity_based_on_occurrences,
 )
-from .internal__assign_uniform_color_to_edges import (
-    internal__assign_uniform_color_to_edges,
+from .assign_textfont_sizes_based_on_citations import (
+    internal__assign_textfont_sizes_based_on_citations,
 )
-from .internal__assign_widths_to_edges_by_weight import (
-    internal__assign_widths_to_edges_by_weight,
+from .assign_textfont_sizes_based_on_degree import (
+    internal__assign_textfont_sizes_based_on_degree,
 )
-from .internal__cluster_graph import internal__cluster_graph
-from .internal__clusters_to_terms_mapping import internal__clusters_to_terms_mapping
-from .internal__collect_node_degrees import internal__collect_node_degrees
-from .internal__compute_circular_layout_positions import (
+from .assign_textfont_sizes_based_on_occurrences import (
+    internal__assign_textfont_sizes_based_on_occurrences,
+)
+from .cluster_graph import internal__cluster_graph
+from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
+from .collect_node_degrees import internal__collect_node_degrees
+from .compute_circular_layout_positions import (
     internal__compute_circular_layout_positions,
 )
-from .internal__compute_network_metrics import internal__compute_network_metrics
-from .internal__compute_spring_layout_positions import (
-    internal__compute_spring_layout_positions,
-)
-from .internal__create_co_occurrence_report import internal__create_co_occurrence_report
-from .internal__create_network_density_plot import internal__create_network_density_plot
-from .internal__create_network_plot import internal__create_network_plot
-from .internal__create_node_degree_plot import internal__create_node_degree_plot
-from .internal__extract_communities_to_frame import (
-    internal__extract_communities_to_frame,
-)
-from .internal__node_degrees_to_dataframe import internal__node_degrees_to_dataframe
-from .internal__plot_concept_grid import internal__plot_concept_grid
-from .internal__plot_node_treemap import internal__plot_node_treemap
-from .internal__summarize_communities import internal__summarize_communities
-from .internal__terms_to_clusters_mapping import internal__terms_to_clusters_mapping
+from .compute_network_metrics import internal__compute_network_metrics
+from .compute_spring_layout_positions import internal__compute_spring_layout_positions
+from .create_co_occurrence_report import internal__create_co_occurrence_report
+from .create_network_density_plot import internal__create_network_density_plot
+from .create_network_plot import internal__create_network_plot
+from .create_node_degree_plot import internal__create_node_degree_plot
+from .extract_communities_to_frame import internal__extract_communities_to_frame
+from .node_degrees_to_dataframe import internal__node_degrees_to_dataframe
+from .plot_concept_grid import internal__plot_concept_grid
+from .plot_node_treemap import internal__plot_node_treemap
+from .summarize_communities import internal__summarize_communities
+from .terms_to_clusters_mapping import internal__terms_to_clusters_mapping
 
 __all__ = [
-    "internal__assign_colors_to_edges_by_weight",
-    "internal__assign_colors_to_nodes_by_group_attribute",
-    "internal__assign_constant_color_to_nodes",
-    "internal__assign_constant_opacity_to_text",
-    "internal__assign_constant_size_to_nodes",
-    "internal__assign_constant_textfont_size_to_nodes",
-    "internal__assign_degree_to_nodes",
-    "internal__assign_opacity_to_text_by_citations",
-    "internal__assign_opacity_to_text_by_degree",
-    "internal__assign_opacity_to_text_by_frequency",
-    "internal__assign_sizes_to_nodes_by_citations",
-    "internal__assign_sizes_to_nodes_by_degree",
-    "internal__assign_sizes_to_nodes_by_occurrences",
-    "internal__assign_text_positions_to_nodes_by_quadrants",
-    "internal__assign_textfont_sizes_to_nodes_by_citations",
-    "internal__assign_textfont_sizes_to_nodes_by_degree",
-    "internal__assign_textfont_sizes_to_nodes_by_occurrences",
-    "internal__assign_uniform_color_to_edges",
-    "internal__assign_widths_to_edges_by_weight",
-    "internal__cluster_graph",
-    "internal__clusters_to_terms_mapping",
-    "internal__collect_node_degrees",
-    "internal__compute_circular_layout_positions",
-    "internal__compute_network_metrics",
-    "internal__compute_spring_layout_positions",
-    "internal__create_co_occurrence_report",
-    "internal__create_network_density_plot",
-    "internal__create_network_plot",
-    "internal__create_node_degree_plot",
-    "internal__extract_communities_to_frame",
-    "internal__node_degrees_to_dataframe",
-    "internal__plot_concept_grid",
-    "internal__plot_node_treemap",
-    "internal__summarize_communities",
-    "internal__terms_to_clusters_mapping",
+    "assign_edge_colors_based_on_weight",
+    "assign_node_colors_based_on_group_attribute",
+    "assign_constant_to_node_colors",
+    "assign_constant_to_text_opacity",
+    "assign_constant_to_node_sizes",
+    "assign_constant_to_textfont_sizes",
+    "assign_degree_to_nodes",
+    "assign_textfont_opacity_based_on_citations",
+    "assign_textfont_opacity_based_on_degree",
+    "assign_textfont_opacity_based_on_occurrences",
+    "assign_node_sizes_based_on_citations",
+    "assign_node_sizes_based_on_degree",
+    "assign_node_sizes_based_on_occurrences",
+    "assign_text_positions_based_on_quadrants",
+    "assign_textfont_sizes_based_on_citations",
+    "assign_textfont_sizes_based_on_degree",
+    "assign_textfont_sizes_based_on_occurrences",
+    "assign_constant_to_edge_colors",
+    "assign_edge_widths_based_on_weight",
+    "cluster_graph",
+    "clusters_to_terms_mapping",
+    "collect_node_degrees",
+    "compute_circular_layout_positions",
+    "compute_network_metrics",
+    "compute_spring_layout_positions",
+    "create_co_occurrence_report",
+    "create_network_density_plot",
+    "create_network_plot",
+    "create_node_degree_plot",
+    "extract_communities_to_frame",
+    "node_degrees_to_dataframe",
+    "plot_concept_grid",
+    "plot_node_treemap",
+    "summarize_communities",
+    "terms_to_clusters_mapping",
 ]

@@ -54,14 +54,14 @@ Node Density Plot
 
 
 """
-from ....internals.nx.internal__assign_textfont_sizes_to_nodes_by_occurrences import (
-    nx_assign_textfont_sizes_to_nodes_by_occurrences,
+from ....internals.nx.assign_textfont_sizes_based_on_occurrences import (
+    internal__assign_textfont_sizes_based_on_occurrences,
 )
-from ....internals.nx.internal__cluster_graph import internal__cluster_graph
-from ....internals.nx.internal__compute_spring_layout_positions import (
+from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from ....internals.nx.internal__create_network_density_plot import (
+from ....internals.nx.create_network_density_plot import (
     internal__create_network_density_plot,
 )
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
@@ -147,7 +147,7 @@ def node_density_plot(
         seed=nx_random_state,
     )
 
-    nx_graph = nx_assign_textfont_sizes_to_nodes_by_occurrences(
+    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
         nx_graph, textfont_size_range
     )
 

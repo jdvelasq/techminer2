@@ -62,7 +62,7 @@ FINANCIAL_TECHNOLOGY 03:0461 -0.228786  0.327462 -0.051164  0.419388 -0.291788
 """
 import pandas as pd  # type: ignore
 
-from ....database.metrics.tfidf.data_frame import tfidf_frame
+from ....database.metrics.tfidf.data_frame import DataFrame as TfIdfDataFrame
 
 
 def terms_by_dimension_frame(
@@ -98,7 +98,7 @@ def terms_by_dimension_frame(
 ):
     """:meta private:"""
 
-    matrix_values = tfidf_frame(
+    matrix_values = TfIdfDataFrame(
         #
         # TF PARAMS:
         field=field,

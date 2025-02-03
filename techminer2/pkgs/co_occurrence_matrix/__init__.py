@@ -4,10 +4,12 @@ from .bubble_plot import BubblePlot
 from .data_frame import DataFrame
 from .heatmap import Heatmap
 from .matrix_data_frame import MatrixDataFrame
+from .matrix_plot import MatrixPlot
 
 __all__ = [
     "BubblePlot",
     "DataFrame",
     "Heatmap",
     "MatrixDataFrame",
+    "MatrixPlot",
 ]

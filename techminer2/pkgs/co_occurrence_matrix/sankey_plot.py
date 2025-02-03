@@ -47,7 +47,7 @@ Sankey Chart
 """
 import plotly.graph_objects as go  # type: ignore
 
-from .matrix_data_frame import CrossCoOccurrenceMatrix as CrossCoOccurrenceMatrix
+# from .matrix_data_frame import CrossCoOccurrenceMatrix as CrossCoOccurrenceMatrix
 
 
 def sankey_chart(

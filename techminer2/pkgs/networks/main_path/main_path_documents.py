@@ -91,7 +91,7 @@ DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
 
 
 """
-from ....database.tools.record_viewer import select_documents
+# from ....database.tools.record_viewer import select_documents
 from .internals.compute_main_path import _compute_main_path
 
 

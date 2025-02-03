@@ -34,12 +34,14 @@ class Params:
     #
     # D
     #
-    database: str = "main"  # where_database_is
+    database: str = "main"
+    draw_arrows: bool = False
 
     #
     # E
     #
     edge_colors: Optional[List] = None
+    edge_width_range: Tuple[float, float] = (0.5, 0.8)
 
     #
     # F
@@ -227,6 +229,10 @@ class InputFunctionsMixin:
     #
     # U
     #
+    def using_draw_arrows(self, draw):
+        self.params.draw_arrows = draw
+        return self
+
     def using_axes_visible(self, visible):
         self.params.axes_visible = visible
         return self
@@ -241,6 +247,10 @@ class InputFunctionsMixin:
 
     def using_edge_colors(self, colors):
         self.params.edge_colors = colors
+        return self
+
+    def using_edge_width_range(self, min_width, max_width):
+        self.params.edge_width_range = (min_width, max_width)
         return self
 
     def using_idf_reweighting(self, smooth):  # use_idf
@@ -315,17 +325,17 @@ class InputFunctionsMixin:
         self.params.title_text = text
         return self
 
-    def using_xaxes_range(self, x_range):
-        self.params.xaxes_range = x_range
+    def using_xaxes_range(self, x_min, x_max):
+        self.params.xaxes_range = (x_min, x_max)
         return self
 
     def using_xaxes_title_text(self, text):
         self.params.xaxes_title_text = text
         return self
 
-    def using_yaxes_range(self, y_range):
-        self.params.yaxes_range = y_range
-        return
+    def using_yaxes_range(self, y_min, y_max):
+        self.params.yaxes_range = (y_min, y_max)
+        return self
 
     def using_yaxes_title_text(self, text):
         self.params.yaxes_title_text = text

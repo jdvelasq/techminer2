@@ -55,34 +55,32 @@
 
                                              
 """
-from .....internals.nx.internal__assign_colors_to_nodes_by_group_attribute import (
-    internal__assign_colors_to_nodes_by_group_attribute,
+from .....internals.nx.assign_constant_to_edge_colors import (
+    internal__assign_constant_to_edge_colors,
 )
-from .....internals.nx.internal__assign_opacity_to_text_by_frequency import (
-    internal__assign_opacity_to_text_by_frequency,
+from .....internals.nx.assign_edge_widths_based_on_weight import (
+    internal__assign_edge_widths_based_on_weight,
 )
-from .....internals.nx.internal__assign_sizes_to_nodes_by_occurrences import (
-    internal__assign_sizes_to_nodes_by_occurrences,
+from .....internals.nx.assign_node_colors_based_on_group_attribute import (
+    internal__assign_node_colors_based_on_group_attribute,
 )
-from .....internals.nx.internal__assign_text_positions_to_nodes_by_quadrants import (
-    internal__assign_text_positions_to_nodes_by_quadrants,
+from .....internals.nx.assign_node_sizes_based_on_occurrences import (
+    internal__assign_node_sizes_based_on_occurrences,
 )
-from .....internals.nx.internal__assign_textfont_sizes_to_nodes_by_occurrences import (
-    nx_assign_textfont_sizes_to_nodes_by_occurrences,
+from .....internals.nx.assign_text_positions_based_on_quadrants import (
+    internal__assign_text_positions_based_on_quadrants,
 )
-from .....internals.nx.internal__assign_uniform_color_to_edges import (
-    internal__assign_uniform_color_to_edges,
+from .....internals.nx.assign_textfont_opacity_based_on_occurrences import (
+    internal__assign_textfont_opacity_based_on_occurrences,
 )
-from .....internals.nx.internal__assign_widths_to_edges_by_weight import (
-    internal__assign_widths_to_edges_by_weight,
+from .....internals.nx.assign_textfont_sizes_based_on_occurrences import (
+    internal__assign_textfont_sizes_based_on_occurrences,
 )
-from .....internals.nx.internal__cluster_graph import internal__cluster_graph
-from .....internals.nx.internal__compute_spring_layout_positions import (
+from .....internals.nx.cluster_graph import internal__cluster_graph
+from .....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from .....internals.nx.internal__create_network_plot import (
-    internal__create_network_plot,
-)
+from .....internals.nx.create_network_plot import internal__create_network_plot
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 
@@ -164,20 +162,22 @@ def _network_plot(
 
     #
     # Sets the node attributes
-    nx_graph = internal__assign_colors_to_nodes_by_group_attribute(nx_graph)
-    nx_graph = internal__assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_by_occurrences(
+    nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
+    nx_graph = internal__assign_node_sizes_based_on_occurrences(
+        nx_graph, node_size_range
+    )
+    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
         nx_graph, textfont_size_range
     )
-    nx_graph = internal__assign_opacity_to_text_by_frequency(
+    nx_graph = internal__assign_textfont_opacity_based_on_occurrences(
         nx_graph, textfont_opacity_range
     )
 
     #
     # Sets the edge attributes
-    nx_graph = internal__assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
-    nx_graph = internal__assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = internal__assign_uniform_color_to_edges(nx_graph, edge_color)
+    nx_graph = internal__assign_edge_widths_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
+    nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
 
     return internal__create_network_plot(
         #

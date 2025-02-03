@@ -48,10 +48,8 @@ Terms by Cluster Summary
 
 
 """
-from ....internals.nx.internal__cluster_graph import internal__cluster_graph
-from ....internals.nx.internal__summarize_communities import (
-    internal__summarize_communities,
-)
+from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.summarize_communities import internal__summarize_communities
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )

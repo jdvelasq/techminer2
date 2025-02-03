@@ -62,7 +62,7 @@ from nltk.stem import PorterStemmer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from ..database.load.load__database import load__filtered_database
+# from ..database.load.load__database import load__filtered_database
 from ..thesaurus.internals.thesaurus__read_reversed_as_dict import (
     thesaurus__read_reversed_as_dict,
 )

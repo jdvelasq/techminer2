@@ -43,9 +43,7 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from ....internals.nx.internal__compute_network_metrics import (
-    internal__compute_network_metrics,
-)
+from ....internals.nx.compute_network_metrics import internal__compute_network_metrics
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )

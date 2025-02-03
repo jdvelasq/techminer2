@@ -51,17 +51,15 @@ FINANCIAL_TECHNOLOGY 03:0461                2
 
 
 """
-from ...internals import DatabaseFilters, SetDatabaseFiltersMixin
+
 from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
 from ...internals.params.item_params import ItemParams
-from ..co_occurrence_matrix.matrix_data_frame import CrossCoOccurrenceMatrix
 from .internals.analysis_params import AnalysisParams, AnalysisParamsMixin
 
 
 class DataFrame(
     AnalysisParamsMixin,
     ColumnsAndRowsParamsMixin,
-    SetDatabaseFiltersMixin,
 ):
     """:meta private:"""
 

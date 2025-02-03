@@ -68,7 +68,7 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from ..internals.internal__correlation_map import internal__correlation_map
-from .data_frame import auto_correlation_matrix
+from .data_frame import DataFrame
 
 
 def auto_correlation_map(

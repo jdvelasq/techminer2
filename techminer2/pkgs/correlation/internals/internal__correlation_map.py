@@ -9,12 +9,12 @@
 import networkx as nx  # type: ignore
 
 from ....internals.nx import (
-    internal__assign_opacity_to_text_by_frequency,
-    internal__assign_sizes_to_nodes_by_occurrences,
-    internal__assign_text_positions_to_nodes_by_quadrants,
+    internal__assign_node_sizes_based_on_occurrences,
+    internal__assign_text_positions_based_on_quadrants,
+    internal__assign_textfont_opacity_based_on_occurrences,
+    internal__assign_textfont_sizes_based_on_occurrences,
     internal__compute_spring_layout_positions,
     internal__create_network_plot,
-    nx_assign_textfont_sizes_to_nodes_by_occurrences,
 )
 
 
@@ -59,11 +59,13 @@ def internal__correlation_map(
 
     #
     # Sets the layout
-    nx_graph = internal__assign_sizes_to_nodes_by_occurrences(nx_graph, node_size_range)
-    nx_graph = nx_assign_textfont_sizes_to_nodes_by_occurrences(
+    nx_graph = internal__assign_node_sizes_based_on_occurrences(
+        nx_graph, node_size_range
+    )
+    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
         nx_graph, textfont_size_range
     )
-    nx_graph = internal__assign_opacity_to_text_by_frequency(
+    nx_graph = internal__assign_textfont_opacity_based_on_occurrences(
         nx_graph, textfont_opacity_range
     )
 
@@ -73,7 +75,7 @@ def internal__correlation_map(
 
     #
     #
-    nx_graph = internal__assign_text_positions_to_nodes_by_quadrants(nx_graph)
+    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
 
     return internal__create_network_plot(
         #

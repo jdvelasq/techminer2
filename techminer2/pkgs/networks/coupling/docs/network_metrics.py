@@ -35,9 +35,7 @@ Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
 
 
 """
-from .....internals.nx.internal__compute_network_metrics import (
-    internal__compute_network_metrics,
-)
+from .....internals.nx.compute_network_metrics import internal__compute_network_metrics
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 

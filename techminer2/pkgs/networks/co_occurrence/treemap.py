@@ -40,11 +40,11 @@ Treemap
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.nx.internal__assign_colors_to_nodes_by_group_attribute import (
-    internal__assign_colors_to_nodes_by_group_attribute,
+from ....internals.nx.assign_node_colors_based_on_group_attribute import (
+    internal__assign_node_colors_based_on_group_attribute,
 )
-from ....internals.nx.internal__cluster_graph import internal__cluster_graph
-from ....internals.nx.internal__plot_node_treemap import internal__plot_node_treemap
+from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.plot_node_treemap import internal__plot_node_treemap
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )
@@ -108,7 +108,7 @@ def treemap(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    nx_graph = internal__assign_colors_to_nodes_by_group_attribute(nx_graph)
+    nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
 
     return internal__plot_node_treemap(
         #

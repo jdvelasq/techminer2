@@ -9,14 +9,14 @@
 Node density plot for articles.
 
 """
-from .....internals.nx.internal__assign_textfont_sizes_to_nodes_by_citations import (
-    internal__assign_textfont_sizes_to_nodes_by_citations,
+from .....internals.nx.assign_textfont_sizes_based_on_citations import (
+    internal__assign_textfont_sizes_based_on_citations,
 )
-from .....internals.nx.internal__cluster_graph import internal__cluster_graph
-from .....internals.nx.internal__compute_spring_layout_positions import (
+from .....internals.nx.cluster_graph import internal__cluster_graph
+from .....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from .....internals.nx.internal__create_network_density_plot import (
+from .....internals.nx.create_network_density_plot import (
     internal__create_network_density_plot,
 )
 from .internals.create_citation_nx_graph import _create_citation_nx_graph
@@ -81,7 +81,7 @@ def _node_density_plot(
         seed=nx_random_state,
     )
 
-    nx_graph = internal__assign_textfont_sizes_to_nodes_by_citations(
+    nx_graph = internal__assign_textfont_sizes_based_on_citations(
         nx_graph, textfont_size_range
     )
 

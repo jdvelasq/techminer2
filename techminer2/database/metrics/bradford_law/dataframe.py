@@ -27,7 +27,7 @@ Dataframe
 """
 import pandas as pd  # type: ignore
 
-from ...load.load__database import load__filtered_database
+# from ...load.load__database import load__filtered_database
 
 
 def dataframe(

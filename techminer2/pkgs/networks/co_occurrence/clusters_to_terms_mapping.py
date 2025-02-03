@@ -61,8 +61,8 @@ Clusters to Terms Mapping
 
 
 """
-from ....internals.nx.internal__cluster_graph import internal__cluster_graph
-from ....internals.nx.internal__clusters_to_terms_mapping import (
+from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.clusters_to_terms_mapping import (
     internal__clusters_to_terms_mapping,
 )
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (

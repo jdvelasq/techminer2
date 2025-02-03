@@ -21,7 +21,7 @@ Co-occurrence Matrix
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     # ROWWS:
+...     # ROWS:
 ...     .with_other_field("authors")
 ...     .having_other_terms_in_top(None)
 ...     .having_other_terms_ordered_by("OCC")

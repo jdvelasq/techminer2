@@ -48,8 +48,8 @@ Concept Grid Plot
 #     :align: center
 
 """
-from ....internals.nx.internal__cluster_graph import internal__cluster_graph
-from ....internals.nx.internal__plot_concept_grid import internal__plot_concept_grid
+from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.plot_concept_grid import internal__plot_concept_grid
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )

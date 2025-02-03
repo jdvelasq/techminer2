@@ -49,31 +49,31 @@ Network Plot
 """
 import networkx as nx  # type: ignore
 
-from ....internals.nx.internal__assign_constant_color_to_nodes import (
-    internal__assign_constant_color_to_nodes,
+from ....internals.nx.assign_constant_to_edge_colors import (
+    internal__assign_constant_to_edge_colors,
 )
-from ....internals.nx.internal__assign_opacity_to_text_by_citations import (
-    internal__assign_opacity_to_text_by_citations,
+from ....internals.nx.assign_constant_to_node_colors import (
+    internal__assign_constant_to_node_colors,
 )
-from ....internals.nx.internal__assign_sizes_to_nodes_by_citations import (
-    internal__assign_sizes_to_nodes_by_citations,
+from ....internals.nx.assign_edge_widths_based_on_weight import (
+    internal__assign_edge_widths_based_on_weight,
 )
-from ....internals.nx.internal__assign_text_positions_to_nodes_by_quadrants import (
-    internal__assign_text_positions_to_nodes_by_quadrants,
+from ....internals.nx.assign_node_sizes_based_on_citations import (
+    internal__assign_node_sizes_based_on_citations,
 )
-from ....internals.nx.internal__assign_textfont_sizes_to_nodes_by_citations import (
-    internal__assign_textfont_sizes_to_nodes_by_citations,
+from ....internals.nx.assign_text_positions_based_on_quadrants import (
+    internal__assign_text_positions_based_on_quadrants,
 )
-from ....internals.nx.internal__assign_uniform_color_to_edges import (
-    internal__assign_uniform_color_to_edges,
+from ....internals.nx.assign_textfont_opacity_based_on_citations import (
+    internal__assign_textfont_opacity_based_on_citations,
 )
-from ....internals.nx.internal__assign_widths_to_edges_by_weight import (
-    internal__assign_widths_to_edges_by_weight,
+from ....internals.nx.assign_textfont_sizes_based_on_citations import (
+    internal__assign_textfont_sizes_based_on_citations,
 )
-from ....internals.nx.internal__compute_spring_layout_positions import (
+from ....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from ....internals.nx.internal__create_network_plot import internal__create_network_plot
+from ....internals.nx.create_network_plot import internal__create_network_plot
 from .network_edges_dataframe import network_edges_frame
 
 
@@ -136,25 +136,25 @@ def network_plot(
 
     #
     # Sets the layout
-    nx_graph = internal__assign_constant_color_to_nodes(nx_graph, "#7793a5")
+    nx_graph = internal__assign_constant_to_node_colors(nx_graph, "#7793a5")
 
     nx_graph = internal__compute_spring_layout_positions(
         nx_graph, nx_k, nx_iterations, nx_random_state
     )
 
-    nx_graph = internal__assign_sizes_to_nodes_by_citations(nx_graph, node_size_range)
-    nx_graph = internal__assign_textfont_sizes_to_nodes_by_citations(
+    nx_graph = internal__assign_node_sizes_based_on_citations(nx_graph, node_size_range)
+    nx_graph = internal__assign_textfont_sizes_based_on_citations(
         nx_graph, textfont_size_range
     )
-    nx_graph = internal__assign_opacity_to_text_by_citations(
+    nx_graph = internal__assign_textfont_opacity_based_on_citations(
         nx_graph, textfont_opacity_range
     )
 
     #
     # Sets the edge attributes
-    nx_graph = internal__assign_widths_to_edges_by_weight(nx_graph, edge_width_range)
-    nx_graph = internal__assign_text_positions_to_nodes_by_quadrants(nx_graph)
-    nx_graph = internal__assign_uniform_color_to_edges(nx_graph, edge_color)
+    nx_graph = internal__assign_edge_widths_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
+    nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
 
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = node
