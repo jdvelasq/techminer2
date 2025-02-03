@@ -9,156 +9,70 @@
 Bubble Chart
 ===============================================================================
 
-## >>> from techminer2.visualize.advanced_plots.bubble_plot import BubblePlot
-## >>> plot = (
-## ...     BubblePlot()
-## ...     #
-## ...     # COLUMNS:
-## ...     .with_field("author_keywords")
-## ...     .having_terms_in_top(10)
-## ...     .having_terms_ordered_by("OCC")
-## ...     .having_term_occurrences_between(2, None)
-## ...     .having_term_citations_between(None, None)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # ROWS:
-## ...     .with_other_field(None)
-## ...     .having_other_terms_in_top(None)
-## ...     .having_other_terms_ordered_by(None)
-## ...     .having_other_term_occurrences_between(None, None)
-## ...     .having_other_term_citations_between(None, None)
-## ...     .having_other_terms_in(None)
-## ...     #
-## ...     # COUNTERS:
-## ...     .using_term_counters(True)
-## ...     #
-## ...     # PLOT:
-## ...     .using_title_text("Ranking Plot")
-## ...     .using_xaxes_title_text("Author Keywords")
-## ...     .using_yaxes_title_text("OCC")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> plot.write_html("sphinx/_generated/visualize/advanced_plots/bubble_plot.html")
+>>> from techminer2.pkgs.co_occurrence_matrix import BubblePlot
+>>> plot = (
+...     BubblePlot()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(2, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # ROWS:
+...     .with_other_field(None)
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(None, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # PLOT:
+...     .using_title_text(None)
+...     .using_colormap("Blues")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/bubble_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/visualize/advanced_charts/bubble_plot.html" 
+    <iframe src="../../_generated/pkgs/co_occurrence_matrix/bubble_plot.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-from dataclasses import dataclass
-from typing import Optional
-
-import plotly.express as px  # type: ignore
-
-from ...internals import DatabaseFilters, SetDatabaseFiltersMixin
-from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.item_params import ItemParams
-from .internals.output_params import OutputParams, OutputParamsMixin
-from .matrix_data_frame import CrossCoOccurrenceMatrix
-
-
-@dataclass
-class PlotParams:
-    """:meta private:"""
-
-    title_text: Optional[str] = None
-
-
-class PlotParamsMixin:
-    """:meta private:"""
-
-    def set_plot_params(self, **kwars):
-        for key, value in kwars.items():
-            if hasattr(self.plot_params, key):
-                setattr(self.plot_params, key, value)
-            else:
-                raise ValueError(f"Invalid parameter for PlotParams: {key}")
-        return self
+from ...internals.mixins import InputFunctionsMixin
+from ...internals.plots.internal__bubble_plot import internal__bubble_plot
+from .matrix_data_frame import DataFrame
 
 
 class BubblePlot(
-    PlotParamsMixin,
-    ColumnsAndRowsParamsMixin,
-    SetDatabaseFiltersMixin,
-    OutputParamsMixin,
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.columns_params = ItemParams()
-        self.database_params = DatabaseFilters()
-        self.plot_params = PlotParams()
-        self.output_params = OutputParams()
-        self.rows_params = ItemParams()
-
     def build(self):
 
-        matrix = (
-            CrossCoOccurrenceMatrix()
-            .set_columns_params(**self.columns_params.__dict__)
-            .set_database_params(**self.database_params.__dict__)
-            .set_output_params(**self.output_params.__dict__)
-            .set_rows_params(**self.rows_params.__dict__)
-            .build()
-        )
+        data_frame = DataFrame().update_params(**self.params.__dict__).build()
 
-        matrix = matrix.melt(value_name="VALUE", var_name="column", ignore_index=False)
-        matrix = matrix.reset_index()
-        matrix = matrix.rename(columns={matrix.columns[0]: "row"})
-        matrix = matrix.sort_values(
-            by=["VALUE", "row", "column"], ascending=[False, True, True]
-        )
-        matrix = matrix.reset_index(drop=True)
-
-        fig = px.scatter(
-            matrix,
-            x="row",
-            y="column",
-            size="VALUE",
-            hover_data=matrix.columns.to_list(),
-            title=self.plot_params.title_text,
-        )
-        fig.update_layout(
-            paper_bgcolor="white",
-            plot_bgcolor="white",
-            showlegend=False,
-            yaxis_title=None,
-            xaxis_title=None,
-            margin=dict(l=1, r=1, t=1, b=1),
-        )
-        fig.update_traces(
-            marker=dict(
-                line=dict(
-                    color="black",
-                    width=2,
-                ),
-            ),
-            marker_color="darkslategray",
-            mode="markers",
-        )
-        fig.update_xaxes(
-            side="top",
-            linecolor="white",
-            linewidth=1,
-            gridcolor="gray",
-            griddash="dot",
-            tickangle=270,
-            dtick=1.0,
-        )
-        fig.update_yaxes(
-            linecolor="white",
-            linewidth=1,
-            gridcolor="gray",
-            griddash="dot",
-            autorange="reversed",
+        fig = internal__bubble_plot(
+            self.params,
+            x_name="rows",
+            y_name="columns",
+            size_col="OCC",
+            data_frame=data_frame,
         )
 
         return fig
