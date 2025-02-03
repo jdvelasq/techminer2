@@ -15,7 +15,7 @@ NetworkPlot
 ## ...     NetworkPlot()
 ## ...     #
 ## ...     # COLUMNS:
-## ...     .wiht_field("author_keywords")
+## ...     .with_field("author_keywords")
 ## ...     #
 ## ...     .having_terms_in_top(10)
 ## ...     .having_terms_ordered_by("OCC")
@@ -72,7 +72,7 @@ NetworkPlot
 ## ...     NetworkPlot()
 ## ...     #
 ## ...     # COLUMNS:
-## ...     .wiht_field("author_keywords")
+## ...     .with_field("author_keywords")
 ## ...     #
 ## ...     .having_terms_in_top(10)
 ## ...     .having_terms_ordered_by("OCC")

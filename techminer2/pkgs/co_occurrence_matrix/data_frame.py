@@ -41,17 +41,17 @@ Cross co-occurrence DataFrame
 ...     #
 ...     .build()
 ... ).head(10)
-                 row                     column  OCC
-0  Jagtiani J. 3:317            FINTECH 31:5168    3
-1  Jagtiani J. 3:317  MARKETPLACE_LENDING 3:317    3
-2    Dolata M. 2:181            FINTECH 31:5168    2
-3    Dolata M. 2:181           INNOVATION 7:911    2
-4       Gai K. 2:323            FINTECH 31:5168    2
-5    Hornuf L. 2:358            FINTECH 31:5168    2
-6   Lemieux C. 2:253            FINTECH 31:5168    2
-7   Lemieux C. 2:253  MARKETPLACE_LENDING 3:317    2
-8       Qiu M. 2:323            FINTECH 31:5168    2
-9   Schwabe G. 2:181            FINTECH 31:5168    2
+                 rows                      columns  OCC
+0  Jagtiani J. 3:0317              FINTECH 31:5168    3
+1  Jagtiani J. 3:0317  MARKETPLACE_LENDING 03:0317    3
+2    Dolata M. 2:0181              FINTECH 31:5168    2
+3    Dolata M. 2:0181           INNOVATION 07:0911    2
+4       Gai K. 2:0323              FINTECH 31:5168    2
+5    Hornuf L. 2:0358              FINTECH 31:5168    2
+6   Lemieux C. 2:0253              FINTECH 31:5168    2
+7   Lemieux C. 2:0253  MARKETPLACE_LENDING 03:0317    2
+8       Qiu M. 2:0323              FINTECH 31:5168    2
+9   Schwabe G. 2:0181              FINTECH 31:5168    2
 
 
 >>> from techminer2.pkgs.co_occurrence_matrix import DataFrame
@@ -86,18 +86,17 @@ Cross co-occurrence DataFrame
 ...     #
 ...     .build()
 ... ).head(10)
-                          row                      column  OCC
-0             FINTECH 31:5168             FINTECH 31:5168   31
-1            INNOVATION 7:911            INNOVATION 7:911    7
-2             FINTECH 31:5168            INNOVATION 7:911    5
-3            INNOVATION 7:911             FINTECH 31:5168    5
-4    FINANCIAL_SERVICES 4:667    FINANCIAL_SERVICES 4:667    4
-5          CROWDFUNDING 3:335          CROWDFUNDING 3:335    3
-6   FINANCIAL_INCLUSION 3:590   FINANCIAL_INCLUSION 3:590    3
-7   FINANCIAL_INCLUSION 3:590             FINTECH 31:5168    3
-8    FINANCIAL_SERVICES 4:667             FINTECH 31:5168    3
-9  FINANCIAL_TECHNOLOGY 3:461  FINANCIAL_TECHNOLOGY 3:461    3
-
+                           rows                       columns  OCC
+0               FINTECH 31:5168               FINTECH 31:5168   31
+1            INNOVATION 07:0911            INNOVATION 07:0911    7
+2               FINTECH 31:5168            INNOVATION 07:0911    5
+3            INNOVATION 07:0911               FINTECH 31:5168    5
+4    FINANCIAL_SERVICES 04:0667    FINANCIAL_SERVICES 04:0667    4
+5          CROWDFUNDING 03:0335          CROWDFUNDING 03:0335    3
+6   FINANCIAL_INCLUSION 03:0590   FINANCIAL_INCLUSION 03:0590    3
+7   FINANCIAL_INCLUSION 03:0590               FINTECH 31:5168    3
+8    FINANCIAL_SERVICES 04:0667               FINTECH 31:5168    3
+9  FINANCIAL_TECHNOLOGY 03:0461  FINANCIAL_TECHNOLOGY 03:0461    3
 
 
 """
@@ -173,8 +172,8 @@ class DataFrame(
         rows = self.params.other_field
         #
         raw_matrix_list = records[[columns]].copy()
-        raw_matrix_list = raw_matrix_list.rename(columns={columns: "column"})
-        raw_matrix_list = raw_matrix_list.assign(row=records[[rows]])
+        raw_matrix_list = raw_matrix_list.rename(columns={columns: "columns"})
+        raw_matrix_list = raw_matrix_list.assign(rows=records[[rows]])
         #
         return raw_matrix_list
 
@@ -193,11 +192,11 @@ class DataFrame(
         #
         raw_matrix_list["OCC"] = 1
         raw_matrix_list = raw_matrix_list.groupby(
-            ["row", "column"], as_index=False
+            ["rows", "columns"], as_index=False
         ).aggregate("sum")
         #
         raw_matrix_list = raw_matrix_list.sort_values(
-            ["OCC", "row", "column"], ascending=[False, True, True]
+            ["OCC", "rows", "columns"], ascending=[False, True, True]
         )
         raw_matrix_list = raw_matrix_list.reset_index(drop=True)
         #
@@ -206,13 +205,18 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_7_build_mapping(self, data_frame):
         #
-        data_frame["counters"] = (
-            data_frame.index.astype(str)
-            + " "
-            + data_frame["OCC"].astype(str)
-            + ":"
-            + data_frame["global_citations"].astype(str)
+        data_frame["counters"] = data_frame.index.astype(str)
+
+        n_zeros = len(str(data_frame["OCC"].max()))
+        data_frame["counters"] += " " + data_frame["OCC"].map(
+            lambda x: f"{x:0{n_zeros}d}"
         )
+
+        n_zeros = len(str(data_frame["global_citations"].max()))
+        data_frame["counters"] += ":" + data_frame["global_citations"].map(
+            lambda x: f"{x:0{n_zeros}d}"
+        )
+
         mapping = data_frame["counters"].to_dict()
         #
         return mapping
@@ -220,8 +224,8 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_8_rename_terms(self, raw_matrix_list, row_mapping, column_mapping):
         #
-        raw_matrix_list["row"] = raw_matrix_list["row"].map(row_mapping)
-        raw_matrix_list["column"] = raw_matrix_list["column"].map(column_mapping)
+        raw_matrix_list["rows"] = raw_matrix_list["rows"].map(row_mapping)
+        raw_matrix_list["columns"] = raw_matrix_list["columns"].map(column_mapping)
         #
         return raw_matrix_list
 
@@ -234,12 +238,12 @@ class DataFrame(
         raw_matrix_list = self._step_4_create_raw_matrix_list(records)
         raw_matrix_list = self._step_5_explode_matrix_list(
             raw_matrix_list,
-            "column",
+            "columns",
             column_metrics.index.tolist(),
         )
         raw_matrix_list = self._step_5_explode_matrix_list(
             raw_matrix_list,
-            "row",
+            "rows",
             row_metrics.index.tolist(),
         )
         raw_matrix_list = self._step_6_compute_occurrences(raw_matrix_list)

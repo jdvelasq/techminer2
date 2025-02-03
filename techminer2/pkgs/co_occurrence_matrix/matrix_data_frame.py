@@ -9,12 +9,12 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> from techminer2.co_occurrence_matrix import MatrixDataFrame
+>>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
 >>> (
 ...     MatrixDataFrame()
 ...     #
 ...     # COLUMNS:
-...     .wiht_field("author_keywords")
+...     .with_field("author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -41,49 +41,53 @@ Co-occurrence Matrix
 ...     #
 ...     .build()
 ... ).head(10)
-columns               FINTECH 31:5168  ...  CYBER_SECURITY 02:0342
-rows                                   ...                        
-Jagtiani J. 3:0317                  3  ...                       0
-Gomber P. 2:1065                    1  ...                       0
-Hornuf L. 2:0358                    2  ...                       0
-Gai K. 2:0323                       2  ...                       1
-Qiu M. 2:0323                       2  ...                       1
-Sun X./3 2:0323                     2  ...                       1
-Lemieux C. 2:0253                   2  ...                       0
-Dolata M. 2:0181                    2  ...                       0
-Schwabe G. 2:0181                   2  ...                       0
-Zavolokina L. 2:0181                2  ...                       0
+columns               FINTECH 31:5168  ...  CASE_STUDY 02:0340
+rows                                   ...                    
+Jagtiani J. 3:0317                  3  ...                   0
+Gomber P. 2:1065                    1  ...                   0
+Hornuf L. 2:0358                    2  ...                   0
+Gai K. 2:0323                       2  ...                   0
+Qiu M. 2:0323                       2  ...                   0
+Sun X. 2:0323                       2  ...                   0
+Lemieux C. 2:0253                   2  ...                   0
+Dolata M. 2:0181                    2  ...                   0
+Schwabe G. 2:0181                   2  ...                   0
+Zavolokina L. 2:0181                2  ...                   0
 <BLANKLINE>
-[10 rows x 5 columns]
+[10 rows x 10 columns]
 
-## >>> from techminer2.analyze.co_occurrence import CrossCoOccurrenceMatrix
-## >>> (
-## ...     CrossCoOccurrenceMatrix()
-## ...     .set_columns_params(
-## ...         field="author_keywords",
-## ...         top_n=10,
-## ...         occ_range=(2, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
-## ...     #
-## ...     ).set_rows_params(
-## ...         field=None,
-## ...         top_n=None,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
-## ...     #
-## ...     ).set_output_params(
-## ...         retain_counters=True,
-## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     #
-## ...     ).build()
-## ... )
+>>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
+>>> (
+...     MatrixDataFrame()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(2, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # ROWS:
+...     .with_other_field(None)
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(None, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head(10)
 columns                       FINTECH 31:5168  ...  CASE_STUDY 02:0340
 rows                                           ...                    
 FINTECH 31:5168                            31  ...                   2
@@ -103,63 +107,60 @@ CASE_STUDY 02:0340                          2  ...                   2
 
 
 """
-from ...internals import DatabaseFilters, SetDatabaseFiltersMixin
-from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.item_params import ItemParams
-from .data_frame import CrossCoOccurrenceDataFrame
-from .internals.output_params import OutputParams, OutputParamsMixin
+from ...internals.mixins import InputFunctionsMixin
+from .data_frame import DataFrame
 
 
-class CrossCoOccurrenceMatrix(
-    ColumnsAndRowsParamsMixin,
-    SetDatabaseFiltersMixin,
-    OutputParamsMixin,
+class MatrixDataFrame(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-
-        self.columns_params = ItemParams()
-        self.database_params = DatabaseFilters()
-        self.output_params = OutputParams()
-        self.rows_params = ItemParams()
-
-    def build(self):
-
-        def pivot(matrix_list):
-            matrix = matrix_list.pivot(
-                index=matrix_list.columns[0],
-                columns=matrix_list.columns[1],
-                values=matrix_list.columns[2],
-            )
-            matrix = matrix.fillna(0)
-            matrix = matrix.astype(int)
-            return matrix
-
-        matrix_list = (
-            CrossCoOccurrenceDataFrame()
-            .set_columns_params(**self.columns_params.__dict__)
-            .set_database_params(**self.database_params.__dict__)
-            .set_output_params(**self.output_params.__dict__)
-            .set_rows_params(**self.rows_params.__dict__)
+    # -------------------------------------------------------------------------
+    def _step_1_create_matrix_list(self):
+        return (
+            DataFrame()
+            .update_params(**self.params.__dict__)
+            .using_term_counters(True)
             .build()
         )
 
-        matrix = pivot(matrix_list)
+    # -------------------------------------------------------------------------
+    def _step_2_pivot_matrix_list(self, matrix_list):
+        matrix = matrix_list.pivot(
+            index=matrix_list.columns[0],
+            columns=matrix_list.columns[1],
+            values=matrix_list.columns[2],
+        )
+        matrix = matrix.fillna(0)
         matrix = matrix.astype(int)
+        return matrix
 
-        # sort the rows and columns of the matrix
+    # -------------------------------------------------------------------------
+    def _step_3_sort_matrix_axis(self, matrix):
         matrix_cols = matrix.columns.tolist()
         matrix_rows = matrix.index.tolist()
         matrix_cols = sorted(matrix_cols, key=lambda x: x.split()[-1], reverse=True)
         matrix_rows = sorted(matrix_rows, key=lambda x: x.split()[-1], reverse=True)
         matrix = matrix[matrix_cols]
         matrix = matrix.loc[matrix_rows]
+        return matrix
 
-        if self.output_params.retain_counters is False:
-            matrix_cols = [" ".join(col.split()[:-1]) for col in matrix_cols]
-            matrix_rows = [" ".join(row.split()[:-1]) for row in matrix_rows]
+    # -------------------------------------------------------------------------
+    def _step_4_remove_counters(self, matrix):
+        if self.params.term_counters is False:
+            matrix_cols = [" ".join(col.split()[:-1]) for col in matrix.columns]
+            matrix_rows = [" ".join(row.split()[:-1]) for row in matrix.index]
             matrix.columns = matrix_cols
             matrix.index = matrix_rows
+        return matrix
+
+    # -------------------------------------------------------------------------
+    def build(self):
+
+        matrix_list = self._step_1_create_matrix_list()
+        matrix = self._step_2_pivot_matrix_list(matrix_list)
+        matrix = self._step_3_sort_matrix_axis(matrix)
+        matrix = self._step_4_remove_counters(matrix)
 
         return matrix

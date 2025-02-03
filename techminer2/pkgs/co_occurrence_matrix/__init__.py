@@ -1,11 +1,11 @@
-"""
-This module provides various functions for co-occurrence matrix analysis, 
-including heatmaps, maps, matrices, network visualizations, tables, and 
-Sankey charts.
-"""
+"""Co-occurrence matrix."""
 
 from .data_frame import DataFrame
+from .heatmap import Heatmap
+from .matrix_data_frame import MatrixDataFrame
 
 __all__ = [
     "DataFrame",
+    "Heatmap",
+    "MatrixDataFrame",
 ]

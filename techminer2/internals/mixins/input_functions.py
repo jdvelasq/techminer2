@@ -275,7 +275,7 @@ class InputFunctionsMixin:
         self.params.height = height
         return self
 
-    def using_plot_width(self, widtah):
+    def using_plot_width(self, width):
         self.params.width = width
         return self
 

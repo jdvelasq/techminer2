@@ -9,23 +9,23 @@
 Heatmap
 ===============================================================================
 
->>> from techminer2.analyze.cross_co_occurrence import CrossCoOccurrenceHeatmap
+>>> from techminer2.pkgs.co_occurrence_matrix import Heatmap
 >>> plot = (
 ...     Heatmap()
 ...     #
 ...     # COLUMNS:
-...     .wiht_field("author_keywords")
+...     .with_field("author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(2, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
-...     # ROWWS:
-...     .with_other_field("None")
-...     .having_other_terms_in_top(10)
-...     .having_other_terms_ordered_by("OCC")
-...     .having_other_term_occurrences_between(2, None)
+...     # ROWS:
+...     .with_other_field(None)
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(None, None)
 ...     .having_other_term_citations_between(None, None)
 ...     .having_other_terms_in(None)
 ...     #
@@ -45,50 +45,27 @@ Heatmap
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/co_occurrence_matrix//heatmap.html")
+>>> plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/heatmap.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/co_occurrence_matrix/heatmap.html" 
+    <iframe src="../../_generated/pkkgs/co_occurrence_matrix/heatmap.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
 """
-from ...internals import DatabaseFilters, SetDatabaseFiltersMixin
-from ...internals.params.columns_and_rows_params import ColumnsAndRowsParamsMixin
-from ...internals.params.item_params import ItemParams
-from ...internals.plots.internal__heatmap import HeatmapMixin, HeatmapParams
-from .internals.output_params import OutputParams, OutputParamsMixin
-from .matrix_data_frame import CrossCoOccurrenceMatrix
+from ...internals.mixins import InputFunctionsMixin
+from ...internals.plots.internal__heatmap import internal__heatmap
+from .matrix_data_frame import MatrixDataFrame
 
 
-class CrossCoOccurrenceHeatmap(
-    ColumnsAndRowsParamsMixin,
-    SetDatabaseFiltersMixin,
-    HeatmapMixin,
-    OutputParamsMixin,
+class Heatmap(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    def __init__(self):
-        self.plot_params = HeatmapParams()
-        self.columns_params = ItemParams()
-        self.database_params = DatabaseFilters()
-        self.rows_params = ItemParams()
-        self.output_params = OutputParams()
-
     def build(self):
-
-        dataframe = (
-            CrossCoOccurrenceMatrix()
-            .set_columns_params(**self.columns_params.__dict__)
-            .set_rows_params(**self.rows_params.__dict__)
-            .set_output_params(**self.output_params.__dict__)
-            .set_database_params(**self.database_params.__dict__)
-            .build()
-        )
-
-        fig = self.build_heatmap(dataframe)
-
+        data_frame = MatrixDataFrame().update_params(**self.params.__dict__).build()
+        fig = internal__heatmap(self.params, data_frame)
         return fig

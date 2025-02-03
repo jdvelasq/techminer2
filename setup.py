@@ -27,6 +27,7 @@ setup(
         "leidenalg",
         "networkx",
         "nltk",
+        "kaleido",
         "pandas",
         "plotly",
         "pyspellchecker",
