@@ -26,12 +26,10 @@ class Params:
     # C
     #
     case_sensitive: bool = False
-    col_terms: Optional[List[str]] = None
     color: Optional[str] = None
     colormap: str = "Blues"
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
-    term_counters: bool = True
 
     #
     # D
@@ -114,12 +112,13 @@ class Params:
     # T
     #
     term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    term_counters: bool = True
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
-    textfont_size: float = 10
     textfont_size_range: Tuple[int, int] = (8, 16)
+    textfont_size: float = 10
     time_window: int = 2
     title_text: Optional[str] = None
     top_n: Optional[int] = None
@@ -176,18 +175,6 @@ class InputFunctionsMixin:
         self.params.case_sensitive = case_sensitive
         return self
 
-    def having_col_terms_in(self, col_terms):
-        self.params.col_terms = col_terms
-        return self
-
-    def having_regex_flags(self, flags):
-        self.params.regex_flags = flags
-        return self
-
-    def having_regex_search(self, regex_search):
-        self.params.regex_search = regex_search
-        return self
-
     def having_other_term_citations_between(self, start, end):
         self.params.other_term_citations_range = (start, end)
         return self
@@ -208,12 +195,24 @@ class InputFunctionsMixin:
         self.params.other_terms_order_by = criteria
         return self
 
+    def having_regex_flags(self, flags):
+        self.params.regex_flags = flags
+        return self
+
+    def having_regex_search(self, regex_search):
+        self.params.regex_search = regex_search
+        return self
+
     def having_term_citations_between(self, start, end):
         self.params.term_citations_range = (start, end)
         return self
 
     def having_term_occurrences_between(self, start, end):
         self.params.term_occurrences_range = (start, end)
+        return self
+
+    def having_terms_associated_with(self, terms):
+        self.params.terms_associated_with = terms
         return self
 
     def having_terms_in(self, term_list):

@@ -131,14 +131,14 @@ class DatabaseLoader(
 
         for filter_name, filter_value in filters.items():
 
-            if filter_name == "article":
+            if filter_name == "record_id":
 
-                data_frame = data_frame[data_frame["article"].isin(filter_value)]
+                data_frame = data_frame[data_frame["record_id"].isin(filter_value)]
 
             else:
 
                 # Split the filter value into a list of strings
-                database = data_frame[["article", filter_name]]
+                database = data_frame[["record_id", filter_name]]
                 database.loc[:, filter_name] = database[filter_name].str.split(";")
 
                 # Explode the list of strings into multiple rows
@@ -149,7 +149,9 @@ class DatabaseLoader(
 
                 # Keep only records that match the filter value
                 database = database[database[filter_name].isin(filter_value)]
-                data_frame = data_frame[data_frame["article"].isin(database["article"])]
+                data_frame = data_frame[
+                    data_frame["record_id"].isin(database["record_id"])
+                ]
 
         return data_frame
 

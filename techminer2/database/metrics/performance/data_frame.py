@@ -256,7 +256,7 @@ class DataFrame(
             return grouped
 
         if self.params.terms_in is not None:
-            grouped = grouped[grouped[self.params.field].isin(self.params.terms_in)]
+            grouped = grouped.loc[self.params.terms_in, :]
 
         return grouped
 

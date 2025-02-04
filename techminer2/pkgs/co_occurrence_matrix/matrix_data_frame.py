@@ -64,7 +64,7 @@ Zavolokina L. 2:0181                2  ...                   0
 ...     .with_field("author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(2, None)
+...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
 ...     .having_terms_in(None)
 ...     #
@@ -103,6 +103,109 @@ CASE_STUDY 02:0340                          2  ...                   2
 <BLANKLINE>
 [10 rows x 10 columns]
 
+
+>>> # Submatrix of associated terms to FINTECH, INNOVATION, and FINANCIAL_SERVICES
+>>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
+>>> (
+...     MatrixDataFrame()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # ROWS:
+...     .with_other_field("authors")
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by("OCC")
+...     .having_other_term_occurrences_between(2, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(
+...         {
+...             "author_keywords": ["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"],
+...         },
+...     )
+...     #
+...     .build()
+... )
+columns              FINTECH 31:5168  ...  TECHNOLOGY 02:0310
+rows                                  ...                    
+Jagtiani J. 3:317                  3  ...                   0
+Hornuf L. 2:358                    2  ...                   0
+Gai K. 2:323                       2  ...                   0
+Qiu M. 2:323                       2  ...                   0
+Sun X. 2:323                       2  ...                   0
+Lemieux C. 2:253                   2  ...                   0
+Dolata M. 2:181                    2  ...                   0
+Schwabe G. 2:181                   2  ...                   0
+Zavolokina L. 2:181                2  ...                   0
+<BLANKLINE>
+[9 rows x 10 columns]
+
+>>> # Submatrix of associated terms to FINTECH, INNOVATION, and FINANCIAL_SERVICES
+>>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
+>>> (
+...     MatrixDataFrame()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # ROWS:
+...     .with_other_field(None)
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(None, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(
+...         {
+...             "author_keywords": ["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"],
+...         },
+...     )
+...     #
+...     .build()
+... )
+columns                       FINTECH 31:5168  ...  TECHNOLOGY 02:0310
+rows                                           ...                    
+FINTECH 31:5168                            31  ...                   1
+INNOVATION 07:0911                          5  ...                   2
+FINANCIAL_SERVICES 04:0667                  3  ...                   1
+FINANCIAL_INCLUSION 03:0590                 3  ...                   0
+MARKETPLACE_LENDING 03:0317                 3  ...                   0
+BUSINESS_MODELS 02:0759                     2  ...                   0
+FINANCIAL_TECHNOLOGY 02:0390                2  ...                   0
+CYBER_SECURITY 02:0342                      2  ...                   0
+CASE_STUDY 02:0340                          2  ...                   0
+TECHNOLOGY 02:0310                          1  ...                   2
+<BLANKLINE>
+[10 rows x 10 columns]
 
 
 
