@@ -40,8 +40,8 @@ Network Plot
 ## ...         edge_width_range=(0.8, 3.0),
 ## ...     #
 ## ...     #
-## ...     .using_xaxes_range=(None, None)
-## ...     .using_yaxes_range=(None, None)
+## ...     .using_xaxes_range(None, None)
+## ...     .using_yaxes_range(None, None)
 ## ...     .using_axes_visible(False)
 ## ...     #
 ## ...     # DATABASE:

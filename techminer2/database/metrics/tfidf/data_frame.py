@@ -92,13 +92,19 @@ class DataFrame(
         data_frame = data_frame.groupby(field).agg(
             {"OCC": "sum", "global_citations": "sum"}
         )
-        data_frame["counters"] = (
-            data_frame.index.astype(str)
-            + " "
-            + data_frame["OCC"].astype(str)
-            + ":"
-            + data_frame["global_citations"].astype(str)
+
+        data_frame["counters"] = data_frame.index.astype(str)
+
+        n_zeros = len(str(data_frame["OCC"].max()))
+        data_frame["counters"] += " " + data_frame["OCC"].map(
+            lambda x: f"{x:0{n_zeros}d}"
         )
+
+        n_zeros = len(str(data_frame["global_citations"].max()))
+        data_frame["counters"] += ":" + data_frame["global_citations"].map(
+            lambda x: f"{x:0{n_zeros}d}"
+        )
+
         mapping = data_frame["counters"].to_dict()
 
         return mapping

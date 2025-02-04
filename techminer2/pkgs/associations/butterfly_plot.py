@@ -44,7 +44,7 @@ Butterfly Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/associations/butterfly_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/associations/butterfly_plot.html")
 
 .. raw:: html
 

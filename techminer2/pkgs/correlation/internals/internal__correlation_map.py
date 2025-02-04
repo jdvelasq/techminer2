@@ -7,6 +7,7 @@
 # pylint: disable=too-many-statements
 
 import networkx as nx  # type: ignore
+import numpy as np
 
 from ....internals.nx import (
     internal__assign_node_sizes_based_on_occurrences,
@@ -18,119 +19,59 @@ from ....internals.nx import (
 )
 
 
-def internal__correlation_map(
-    similarity,
-    #
-    # LAYOUT:
-    nx_k,
-    nx_iterations,
-    nx_random_state,
-    #
-    # NODES:
-    node_color,
-    node_size_range,
-    textfont_size_range,
-    textfont_opacity_range,
-    #
-    # EDGES:
-    edge_top_n,
-    edge_similarity_min,
-    edge_widths,
-    edge_colors,
-    #
-    # AXES:
-    xaxes_range,
-    yaxes_range,
-    show_axes,
-):
-    #
-    # Create a empty networkx graph
-    nx_graph = nx.Graph()
-    nx_graph = __add_nodes_from(nx_graph, similarity, node_color)
-    nx_graph = __add_weighted_edges_from(
-        nx_graph, similarity, edge_similarity_min, edge_top_n
-    )
-
-    #
-    # Sets the layout
-    nx_graph = internal__compute_spring_layout_positions(
-        nx_graph, nx_k, nx_iterations, nx_random_state
-    )
-
-    #
-    # Sets the layout
-    nx_graph = internal__assign_node_sizes_based_on_occurrences(
-        nx_graph, node_size_range
-    )
-    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
-        nx_graph, textfont_size_range
-    )
-    nx_graph = internal__assign_textfont_opacity_based_on_occurrences(
-        nx_graph, textfont_opacity_range
-    )
-
-    #
-    # Sets the edge attributes
-    nx_graph = __set_edge_properties(nx_graph, edge_colors, edge_widths)
-
-    #
-    #
-    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
-
-    return internal__plot_network_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK PARAMS:
-        xaxes_range=xaxes_range,
-        yaxes_range=yaxes_range,
-        show_axes=show_axes,
-    )
-
-
-#
-#
-#
-def __add_nodes_from(
-    nx_graph,
-    similarity,
-    node_color,
-):
-    matrix = similarity.copy()
-    nodes = matrix.columns.tolist()
-    nx_graph.add_nodes_from(nodes, group=0, node_color=node_color)
-
-    for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = node
-
+def add_nodes_from(params, nx_graph, data_frame):
+    nodes = data_frame.columns.tolist()
+    nx_graph.add_nodes_from(nodes, group=0, node_color=params.node_colors[0])
     return nx_graph
 
 
-def __add_weighted_edges_from(
-    nx_graph,
-    similarity,
-    edge_similarity_min,
-    edge_top_n,
-):
-    matrix = similarity.copy()
+def assign_node_texts(nx_graph):
+    for node in nx_graph.nodes():
+        nx_graph.nodes[node]["text"] = node
+    return nx_graph
 
-    stacked_matrix = matrix.stack().reset_index()
+
+def add_weighted_edges_from(
+    params,
+    nx_graph,
+    data_frame,
+):
+    data_frame = data_frame.copy()
+
+    # make values below lower diagonal equal to zero
+    for i_col, col in enumerate(data_frame.columns):
+        for i_row, row in enumerate(data_frame.index):
+            if i_row >= i_col:
+                data_frame.loc[row, col] = 0
+
+    # Create a stacked matrix with the weights
+    stacked_matrix = data_frame.stack().reset_index()
     stacked_matrix.columns = ["row", "col", "weight"]
 
-    row_index_dict = {row: i for i, row in enumerate(matrix.index.tolist())}
-    col_index_dict = {col: i for i, col in enumerate(matrix.columns.tolist())}
-    stacked_matrix["i_row"] = stacked_matrix["row"].map(row_index_dict)
-    stacked_matrix["i_col"] = stacked_matrix["col"].map(col_index_dict)
-    stacked_matrix = stacked_matrix[stacked_matrix["i_col"] > stacked_matrix["i_row"]]
+    # Sort the stacked matrix by values, occurences, citations and names
+    stacked_matrix["s_row"] = stacked_matrix["row"].apply(
+        lambda x: x.split(" ")[-1] + " " + x.split(" ")[0]
+    )
+    stacked_matrix["s_col"] = stacked_matrix["col"].apply(
+        lambda x: x.split(" ")[-1] + " " + x.split(" ")[0]
+    )
+    stacked_matrix = stacked_matrix.sort_values(
+        by=["weight", "s_row", "s_col"],
+        ascending=[False, False, False],
+    )
+    stacked_matrix = stacked_matrix.drop(columns=["s_row", "s_col"])
+
+    # Filter similarity values
     stacked_matrix = stacked_matrix[stacked_matrix.weight > 0]
-    if edge_similarity_min is not None:
-        stacked_matrix = stacked_matrix[stacked_matrix.weight >= edge_similarity_min]
-    stacked_matrix = stacked_matrix.sort_values(by="weight", ascending=False)
+    stacked_matrix = stacked_matrix[
+        stacked_matrix.weight >= params.edge_similarity_threshold
+    ]
 
-    if edge_top_n is not None:
-        stacked_matrix = stacked_matrix.head(edge_top_n)
+    # Extracts the top N values
+    if params.edge_top_n is not None:
+        stacked_matrix = stacked_matrix.head(params.edge_top_n)
 
+    # Add the edges to the graph
     for _, row in stacked_matrix.iterrows():
         nx_graph.add_weighted_edges_from(
             ebunch_to_add=[(row["row"], row["col"], row["weight"])],
@@ -139,28 +80,52 @@ def __add_weighted_edges_from(
     return nx_graph
 
 
-def __set_edge_properties(nx_graph, edge_colors, edge_widths):
+def set_edge_properties(params, nx_graph):
+
     for edge in nx_graph.edges():
+
         weight = nx_graph.edges[edge]["weight"]
 
         if weight < 0.25:
-            width, dash = edge_widths[0], "dot"
-            edge_color = edge_colors[0]
+            width, dash = params.edge_widths[0], "dot"
+            edge_color = params.edge_colors[0]
 
         elif weight < 0.5:
-            width, dash = edge_widths[1], "dash"
-            edge_color = edge_colors[1]
+            width, dash = params.edge_widths[1], "dash"
+            edge_color = params.edge_colors[1]
 
         elif weight < 0.75:
-            width, dash = edge_widths[2], "solid"
-            edge_color = edge_colors[2]
+            width, dash = params.edge_widths[2], "solid"
+            edge_color = params.edge_colors[2]
 
         else:
-            width, dash = edge_widths[3], "solid"
-            edge_color = edge_colors[3]
+            width, dash = params.edge_widths[3], "solid"
+            edge_color = params.edge_colors[3]
 
         nx_graph.edges[edge]["width"] = width
         nx_graph.edges[edge]["dash"] = dash
         nx_graph.edges[edge]["color"] = edge_color
 
     return nx_graph
+
+
+def internal__correlation_map(
+    params,
+    data_frame,
+):
+
+    nx_graph = nx.Graph()
+
+    nx_graph = add_nodes_from(params, nx_graph, data_frame)
+    nx_graph = assign_node_texts(nx_graph)
+    nx_graph = add_weighted_edges_from(params, nx_graph, data_frame)
+
+    nx_graph = internal__compute_spring_layout_positions(params, nx_graph)
+    nx_graph = internal__assign_node_sizes_based_on_occurrences(params, nx_graph)
+    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(params, nx_graph)
+    nx_graph = internal__assign_textfont_opacity_based_on_occurrences(params, nx_graph)
+    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
+
+    nx_graph = set_edge_properties(params, nx_graph)
+
+    return internal__plot_network_graph(params=params, nx_graph=nx_graph)

@@ -66,8 +66,8 @@ Factor Map
 ## ...         edge_widths=(2, 2, 4, 6),
 ## ...         edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
 ## ...     #
-## ...     .using_xaxes_range=(None, None)
-## ...     .using_yaxes_range=(None, None)
+## ...     .using_xaxes_range(None, None)
+## ...     .using_yaxes_range(None, None)
 ## ...     .using_axes_visible(False)
 
 ## ...     #
@@ -209,7 +209,7 @@ def factor_map(
     )
 
     return internal__correlation_map(
-        similarity=similarity,
+        data_frame=similarity,
         #
         # LAYOUT:
         nx_k=nx_k,

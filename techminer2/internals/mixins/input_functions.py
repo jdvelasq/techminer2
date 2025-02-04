@@ -41,7 +41,10 @@ class Params:
     # E
     #
     edge_colors: Optional[List] = None
+    edge_top_n: Optional[int] = None
     edge_width_range: Tuple[float, float] = (0.5, 0.8)
+    edge_widths: Tuple[float, float, float, float] = (0.5, 0.8, 1.0, 1.2)
+    edge_similarity_threshold: float = 0.0
 
     #
     # F
@@ -258,8 +261,20 @@ class InputFunctionsMixin:
         self.params.edge_colors = colors
         return self
 
+    def using_edge_similarity_threshold(self, threshold):
+        self.params.edge_similarity_threshold = threshold
+        return self
+
+    def using_edge_top_n(self, top_n):
+        self.params.edge_top_n = top_n
+        return self
+
     def using_edge_width_range(self, min_width, max_width):
         self.params.edge_width_range = (min_width, max_width)
+        return self
+
+    def using_edge_widths(self, widths):
+        self.params.edge_widths = widths
         return self
 
     def using_idf_reweighting(self, smooth):  # use_idf

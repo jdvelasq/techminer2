@@ -15,8 +15,8 @@ Network Plot
 ## ...     .set_analysis_params(
 ## ...         top_n=None,
 ## ...         citations_threshold=0,
-## ...     .using_xaxes_range=(None, None)
-## ...     .using_yaxes_range=(None, None)
+## ...     .using_xaxes_range(None, None)
+## ...     .using_yaxes_range(None, None)
 ## ...     .using_axes_visible(False)
 
 ## ...     #
