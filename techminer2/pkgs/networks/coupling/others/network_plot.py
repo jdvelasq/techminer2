@@ -76,11 +76,11 @@ from .....internals.nx.assign_textfont_opacity_based_on_occurrences import (
 from .....internals.nx.assign_textfont_sizes_based_on_occurrences import (
     internal__assign_textfont_sizes_based_on_occurrences,
 )
-from .....internals.nx.cluster_graph import internal__cluster_graph
+from .....internals.nx.cluster_network_graph import internal__cluster_network_graph
 from .....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from .....internals.nx.create_network_plot import internal__create_network_plot
+from .....internals.nx.plot_network_graph import internal__plot_network_graph
 from .internals.create_coupling_nx_graph import _create_coupling_nx_graph
 
 
@@ -142,7 +142,7 @@ def _network_plot(
         **filters,
     )
 
-    nx_graph = internal__cluster_graph(
+    nx_graph = internal__cluster_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -179,7 +179,7 @@ def _network_plot(
     nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
     nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
 
-    return internal__create_network_plot(
+    return internal__plot_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -27,6 +27,7 @@ class Params:
     #
     case_sensitive: bool = False
     term_counters: bool = True
+    color: Optional[str] = None
     colormap: str = "Blues"
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
@@ -239,6 +240,10 @@ class InputFunctionsMixin:
 
     def using_binary_term_frequencies(self, binary):
         self.params.binary_term_frequencies = binary
+        return self
+
+    def using_color(self, color):
+        self.params.color = color
         return self
 
     def using_colormap(self, colormap):

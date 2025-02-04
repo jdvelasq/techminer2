@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Cross co-occurrence DataFrame 
+Co-occurrence DataFrame 
 ===============================================================================
 
 
@@ -100,9 +100,8 @@ Cross co-occurrence DataFrame
 
 
 """
-from ...database.load import DatabaseLoader
-from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
 from ...internals.mixins import InputFunctionsMixin
+from .matrix_data_frame import MatrixDataFrame
 
 
 class DataFrame(
@@ -111,146 +110,34 @@ class DataFrame(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_1_check_row_params(self):
-        if self.params.other_field is None:
-            self.with_other_field(
-                self.params.field,
-            )
-            self.having_other_terms_in_top(
-                self.params.top_n,
-            )
-            self.having_other_terms_ordered_by(
-                self.params.terms_order_by,
-            )
-            self.having_other_term_occurrences_between(
-                self.params.term_occurrences_range[0],
-                self.params.term_occurrences_range[1],
-            )
-            self.having_other_term_citations_between(
-                self.params.term_citations_range[0],
-                self.params.term_citations_range[1],
-            )
-            self.having_other_terms_in(
-                self.params.terms_in,
-            )
-
-    # -------------------------------------------------------------------------
-    def _step_2_compute_column_peformance_metrics(self):
+    def _step_01_compute_co_occurence_matrix(self):
         return (
-            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
-        )
-
-    # -------------------------------------------------------------------------
-    def _step_3_compute_row_peformance_metrics(self):
-        metrics = (
-            PerformanceMetricsDataFrame()
+            MatrixDataFrame()
             .update_params(**self.params.__dict__)
-            .with_field(self.params.other_field)
-            .having_terms_in_top(self.params.other_top_n)
-            .having_terms_ordered_by(self.params.other_terms_order_by)
-            .having_term_occurrences_between(
-                self.params.term_occurrences_range[0],
-                self.params.term_occurrences_range[1],
-            )
-            .having_term_citations_between(
-                self.params.term_citations_range[0],
-                self.params.term_citations_range[1],
-            )
-            .having_terms_in(self.params.terms_in)
+            .using_term_counters(True)
             .build()
         )
-        return metrics
 
     # -------------------------------------------------------------------------
-    def _step_3_load_the_database(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
-
-    # -------------------------------------------------------------------------
-    def _step_4_create_raw_matrix_list(self, records):
-        #
-        columns = self.params.field
-        rows = self.params.other_field
-        #
-        raw_matrix_list = records[[columns]].copy()
-        raw_matrix_list = raw_matrix_list.rename(columns={columns: "columns"})
-        raw_matrix_list = raw_matrix_list.assign(rows=records[[rows]])
-        #
-        return raw_matrix_list
-
-    # -------------------------------------------------------------------------
-    def _step_5_explode_matrix_list(self, raw_matrix_list, name, selected_terms):
-        #
-        raw_matrix_list[name] = raw_matrix_list[name].str.split(";")
-        raw_matrix_list = raw_matrix_list.explode(name)
-        raw_matrix_list[name] = raw_matrix_list[name].str.strip()
-        raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(selected_terms)]
-        #
-        return raw_matrix_list
-
-    # -------------------------------------------------------------------------
-    def _step_6_compute_occurrences(self, raw_matrix_list):
-        #
-        raw_matrix_list["OCC"] = 1
-        raw_matrix_list = raw_matrix_list.groupby(
-            ["rows", "columns"], as_index=False
-        ).aggregate("sum")
-        #
-        raw_matrix_list = raw_matrix_list.sort_values(
-            ["OCC", "rows", "columns"], ascending=[False, True, True]
+    def _step_02_melt_matrix(self, matrix):
+        matrix = matrix.reset_index(drop=False)
+        matrix_list = matrix.melt(
+            id_vars=["rows"],
+            value_vars=matrix.columns,
+            var_name="columns",
         )
-        raw_matrix_list = raw_matrix_list.reset_index(drop=True)
-        #
-        return raw_matrix_list
-
-    # -------------------------------------------------------------------------
-    def _step_7_build_mapping(self, data_frame):
-        #
-        data_frame["counters"] = data_frame.index.astype(str)
-
-        n_zeros = len(str(data_frame["OCC"].max()))
-        data_frame["counters"] += " " + data_frame["OCC"].map(
-            lambda x: f"{x:0{n_zeros}d}"
+        matrix_list = matrix_list.rename(columns={"value": "OCC"})
+        matrix_list = matrix_list.sort_values(
+            by=["OCC", "rows", "columns"],
+            ascending=[False, True, True],
         )
-
-        n_zeros = len(str(data_frame["global_citations"].max()))
-        data_frame["counters"] += ":" + data_frame["global_citations"].map(
-            lambda x: f"{x:0{n_zeros}d}"
-        )
-
-        mapping = data_frame["counters"].to_dict()
-        #
-        return mapping
-
-    # -------------------------------------------------------------------------
-    def _step_8_rename_terms(self, raw_matrix_list, row_mapping, column_mapping):
-        #
-        raw_matrix_list["rows"] = raw_matrix_list["rows"].map(row_mapping)
-        raw_matrix_list["columns"] = raw_matrix_list["columns"].map(column_mapping)
-        #
-        return raw_matrix_list
+        matrix_list = matrix_list.reset_index(drop=True)
+        return matrix_list
 
     # -------------------------------------------------------------------------
     def build(self):
-        self._step_1_check_row_params()
-        column_metrics = self._step_2_compute_column_peformance_metrics()
-        row_metrics = self._step_3_compute_row_peformance_metrics()
-        records = self._step_3_load_the_database()
-        raw_matrix_list = self._step_4_create_raw_matrix_list(records)
-        raw_matrix_list = self._step_5_explode_matrix_list(
-            raw_matrix_list,
-            "columns",
-            column_metrics.index.tolist(),
-        )
-        raw_matrix_list = self._step_5_explode_matrix_list(
-            raw_matrix_list,
-            "rows",
-            row_metrics.index.tolist(),
-        )
-        raw_matrix_list = self._step_6_compute_occurrences(raw_matrix_list)
-        row_mapping = self._step_7_build_mapping(row_metrics)
-        column_mapping = self._step_7_build_mapping(column_metrics)
-        if self.params.term_counters:
-            raw_matrix_list = self._step_8_rename_terms(
-                raw_matrix_list, row_mapping, column_mapping
-            )
-        return raw_matrix_list
+
+        matrix = self._step_01_compute_co_occurence_matrix()
+        matrix_list = self._step_02_melt_matrix(matrix)
+
+        return matrix_list

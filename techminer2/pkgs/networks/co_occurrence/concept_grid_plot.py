@@ -48,7 +48,7 @@ Concept Grid Plot
 #     :align: center
 
 """
-from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
 from ....internals.nx.plot_concept_grid import internal__plot_concept_grid
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
@@ -106,7 +106,7 @@ def concept_grid_plot(
         **filters,
     )
 
-    nx_graph = internal__cluster_graph(
+    nx_graph = internal__cluster_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

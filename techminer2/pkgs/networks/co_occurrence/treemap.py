@@ -43,7 +43,7 @@ Treemap
 from ....internals.nx.assign_node_colors_based_on_group_attribute import (
     internal__assign_node_colors_based_on_group_attribute,
 )
-from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
 from ....internals.nx.plot_node_treemap import internal__plot_node_treemap
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
@@ -99,7 +99,7 @@ def treemap(
         **filters,
     )
 
-    nx_graph = internal__cluster_graph(
+    nx_graph = internal__cluster_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

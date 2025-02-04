@@ -48,7 +48,7 @@ from .assign_textfont_sizes_based_on_degree import (
 from .assign_textfont_sizes_based_on_occurrences import (
     internal__assign_textfont_sizes_based_on_occurrences,
 )
-from .cluster_graph import internal__cluster_graph
+from .cluster_network_graph import internal__cluster_network_graph
 from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
 from .collect_node_degrees import internal__collect_node_degrees
 from .compute_circular_layout_positions import (
@@ -58,11 +58,11 @@ from .compute_network_metrics import internal__compute_network_metrics
 from .compute_spring_layout_positions import internal__compute_spring_layout_positions
 from .create_co_occurrence_report import internal__create_co_occurrence_report
 from .create_network_density_plot import internal__create_network_density_plot
-from .create_network_plot import internal__create_network_plot
 from .create_node_degree_plot import internal__create_node_degree_plot
 from .extract_communities_to_frame import internal__extract_communities_to_frame
 from .node_degrees_to_dataframe import internal__node_degrees_to_dataframe
 from .plot_concept_grid import internal__plot_concept_grid
+from .plot_network_graph import internal__plot_network_graph
 from .plot_node_treemap import internal__plot_node_treemap
 from .summarize_communities import internal__summarize_communities
 from .terms_to_clusters_mapping import internal__terms_to_clusters_mapping
@@ -87,7 +87,7 @@ __all__ = [
     "assign_textfont_sizes_based_on_occurrences",
     "assign_constant_to_edge_colors",
     "assign_edge_widths_based_on_weight",
-    "cluster_graph",
+    "cluster_network_graph",
     "clusters_to_terms_mapping",
     "collect_node_degrees",
     "compute_circular_layout_positions",
@@ -95,7 +95,7 @@ __all__ = [
     "compute_spring_layout_positions",
     "create_co_occurrence_report",
     "create_network_density_plot",
-    "create_network_plot",
+    "plot_network_graph",
     "create_node_degree_plot",
     "extract_communities_to_frame",
     "node_degrees_to_dataframe",

@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-few-public-methods
 """
-Bubble Chart
+Bubble Plot
 ===============================================================================
 
 >>> from techminer2.pkgs.co_occurrence_matrix import BubblePlot
@@ -55,7 +55,7 @@ Bubble Chart
 """
 from ...internals.mixins import InputFunctionsMixin
 from ...internals.plots.internal__bubble_plot import internal__bubble_plot
-from .matrix_data_frame import DataFrame
+from .data_frame import DataFrame
 
 
 class BubblePlot(

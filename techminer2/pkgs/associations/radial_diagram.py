@@ -87,7 +87,7 @@ from ...internals.nx.assign_textfont_sizes_based_on_occurrences import (
 from ...internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from ...internals.nx.create_network_plot import internal__create_network_plot
+from ...internals.nx.plot_network_graph import internal__plot_network_graph
 
 # from ..cross_co_occurrence.matrix import co_occurrence_matrix
 
@@ -239,7 +239,7 @@ def radial_diagram(
     nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
     nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
 
-    return internal__create_network_plot(
+    return internal__plot_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

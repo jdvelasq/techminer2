@@ -14,7 +14,7 @@ from ....internals.nx import (
     internal__assign_textfont_opacity_based_on_occurrences,
     internal__assign_textfont_sizes_based_on_occurrences,
     internal__compute_spring_layout_positions,
-    internal__create_network_plot,
+    internal__plot_network_graph,
 )
 
 
@@ -77,7 +77,7 @@ def internal__correlation_map(
     #
     nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
 
-    return internal__create_network_plot(
+    return internal__plot_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

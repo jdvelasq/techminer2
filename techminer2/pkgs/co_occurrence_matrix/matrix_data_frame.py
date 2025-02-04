@@ -107,8 +107,9 @@ CASE_STUDY 02:0340                          2  ...                   2
 
 
 """
+from ...database.load import DatabaseLoader
+from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
 from ...internals.mixins import InputFunctionsMixin
-from .data_frame import DataFrame
 
 
 class MatrixDataFrame(
@@ -117,16 +118,126 @@ class MatrixDataFrame(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_1_create_matrix_list(self):
+    def _step_01_check_row_params(self):
+        if self.params.other_field is None:
+            self.with_other_field(
+                self.params.field,
+            )
+            self.having_other_terms_in_top(
+                self.params.top_n,
+            )
+            self.having_other_terms_ordered_by(
+                self.params.terms_order_by,
+            )
+            self.having_other_term_occurrences_between(
+                self.params.term_occurrences_range[0],
+                self.params.term_occurrences_range[1],
+            )
+            self.having_other_term_citations_between(
+                self.params.term_citations_range[0],
+                self.params.term_citations_range[1],
+            )
+            self.having_other_terms_in(
+                self.params.terms_in,
+            )
+
+    # -------------------------------------------------------------------------
+    def _step_02_compute_column_peformance_metrics(self):
         return (
-            DataFrame()
-            .update_params(**self.params.__dict__)
-            .using_term_counters(True)
-            .build()
+            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
         )
 
     # -------------------------------------------------------------------------
-    def _step_2_pivot_matrix_list(self, matrix_list):
+    def _step_03_compute_row_peformance_metrics(self):
+        metrics = (
+            PerformanceMetricsDataFrame()
+            .update_params(**self.params.__dict__)
+            .with_field(self.params.other_field)
+            .having_terms_in_top(self.params.other_top_n)
+            .having_terms_ordered_by(self.params.other_terms_order_by)
+            .having_term_occurrences_between(
+                self.params.other_term_occurrences_range[0],
+                self.params.other_term_occurrences_range[1],
+            )
+            .having_term_citations_between(
+                self.params.other_term_citations_range[0],
+                self.params.other_term_citations_range[1],
+            )
+            .having_terms_in(self.params.other_terms_in)
+            .build()
+        )
+        return metrics
+
+    # -------------------------------------------------------------------------
+    def _step_04_load_the_database(self):
+        return DatabaseLoader().update_params(**self.params.__dict__).build()
+
+    # -------------------------------------------------------------------------
+    def _step_05_create_raw_matrix_list(self, records):
+        #
+        columns = self.params.field
+        rows = self.params.other_field
+        #
+        raw_matrix_list = records[[columns]].copy()
+        raw_matrix_list = raw_matrix_list.rename(columns={columns: "columns"})
+        raw_matrix_list = raw_matrix_list.assign(rows=records[[rows]])
+        #
+        return raw_matrix_list
+
+    # -------------------------------------------------------------------------
+    def _step_06_explode_matrix_list(self, raw_matrix_list, name, selected_terms):
+        #
+        raw_matrix_list[name] = raw_matrix_list[name].str.split(";")
+        raw_matrix_list = raw_matrix_list.explode(name)
+        raw_matrix_list[name] = raw_matrix_list[name].str.strip()
+        raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(selected_terms)]
+        #
+        return raw_matrix_list
+
+    # -------------------------------------------------------------------------
+    def _step_07_compute_occurrences(self, raw_matrix_list):
+        #
+        raw_matrix_list["OCC"] = 1
+        raw_matrix_list = raw_matrix_list.groupby(
+            ["rows", "columns"], as_index=False
+        ).aggregate("sum")
+        #
+        raw_matrix_list = raw_matrix_list.sort_values(
+            ["OCC", "rows", "columns"], ascending=[False, True, True]
+        )
+        raw_matrix_list = raw_matrix_list.reset_index(drop=True)
+        #
+        return raw_matrix_list
+
+    # -------------------------------------------------------------------------
+    def _step_08_build_mapping(self, data_frame):
+        #
+        data_frame["counters"] = data_frame.index.astype(str)
+
+        n_zeros = len(str(data_frame["OCC"].max()))
+        data_frame["counters"] += " " + data_frame["OCC"].map(
+            lambda x: f"{x:0{n_zeros}d}"
+        )
+
+        n_zeros = len(str(data_frame["global_citations"].max()))
+        data_frame["counters"] += ":" + data_frame["global_citations"].map(
+            lambda x: f"{x:0{n_zeros}d}"
+        )
+
+        mapping = data_frame["counters"].to_dict()
+        #
+        return mapping
+
+    # -------------------------------------------------------------------------
+    def _step_09_rename_terms(self, raw_matrix_list, row_mapping, column_mapping):
+        #
+        raw_matrix_list["rows"] = raw_matrix_list["rows"].map(row_mapping)
+        raw_matrix_list["columns"] = raw_matrix_list["columns"].map(column_mapping)
+        #
+        return raw_matrix_list
+
+    # -------------------------------------------------------------------------
+    def _step_10_pivot_matrix_list(self, matrix_list):
         matrix = matrix_list.pivot(
             index=matrix_list.columns[0],
             columns=matrix_list.columns[1],
@@ -137,7 +248,20 @@ class MatrixDataFrame(
         return matrix
 
     # -------------------------------------------------------------------------
-    def _step_3_sort_matrix_axis(self, matrix):
+    def _step_11_check_terms(self, matrix, row_mapping, col_mapping):
+
+        for _, value in row_mapping.items():
+            if value not in matrix.index:
+                matrix.loc[value] = 0
+
+        for _, value in col_mapping.items():
+            if value not in matrix.columns:
+                matrix[value] = 0
+
+        return matrix
+
+    # -------------------------------------------------------------------------
+    def _step_12_sort_matrix_axis(self, matrix):
         matrix_cols = matrix.columns.tolist()
         matrix_rows = matrix.index.tolist()
         matrix_cols = sorted(matrix_cols, key=lambda x: x.split()[-1], reverse=True)
@@ -147,7 +271,7 @@ class MatrixDataFrame(
         return matrix
 
     # -------------------------------------------------------------------------
-    def _step_4_remove_counters(self, matrix):
+    def _step_13_remove_counters(self, matrix):
         if self.params.term_counters is False:
             matrix_cols = [" ".join(col.split()[:-1]) for col in matrix.columns]
             matrix_rows = [" ".join(row.split()[:-1]) for row in matrix.index]
@@ -158,9 +282,36 @@ class MatrixDataFrame(
     # -------------------------------------------------------------------------
     def build(self):
 
-        matrix_list = self._step_1_create_matrix_list()
-        matrix = self._step_2_pivot_matrix_list(matrix_list)
-        matrix = self._step_3_sort_matrix_axis(matrix)
-        matrix = self._step_4_remove_counters(matrix)
+        self._step_01_check_row_params()
+
+        col_metrics = self._step_02_compute_column_peformance_metrics()
+        row_metrics = self._step_03_compute_row_peformance_metrics()
+
+        records = self._step_04_load_the_database()
+
+        matrix_list = self._step_05_create_raw_matrix_list(records)
+
+        matrix_list = self._step_06_explode_matrix_list(
+            matrix_list,
+            "columns",
+            col_metrics.index.tolist(),
+        )
+        matrix_list = self._step_06_explode_matrix_list(
+            matrix_list,
+            "rows",
+            row_metrics.index.tolist(),
+        )
+
+        matrix_list = self._step_07_compute_occurrences(matrix_list)
+
+        row_mapping = self._step_08_build_mapping(row_metrics)
+        col_mapping = self._step_08_build_mapping(col_metrics)
+
+        matrix_list = self._step_09_rename_terms(matrix_list, row_mapping, col_mapping)
+
+        matrix = self._step_10_pivot_matrix_list(matrix_list)
+        matrix = self._step_11_check_terms(matrix, row_mapping, col_mapping)
+        matrix = self._step_12_sort_matrix_axis(matrix)
+        matrix = self._step_13_remove_counters(matrix)
 
         return matrix

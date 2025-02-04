@@ -50,7 +50,7 @@
 from .....internals.nx.assign_textfont_sizes_based_on_occurrences import (
     internal__assign_textfont_sizes_based_on_occurrences,
 )
-from .....internals.nx.cluster_graph import internal__cluster_graph
+from .....internals.nx.cluster_network_graph import internal__cluster_network_graph
 from .....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
@@ -110,7 +110,7 @@ def _node_density_plot(
         **filters,
     )
 
-    nx_graph = internal__cluster_graph(
+    nx_graph = internal__cluster_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

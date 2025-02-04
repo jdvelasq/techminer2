@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-NetworkPlot
+Matrix Plot
 ===============================================================================
 
 
@@ -59,7 +59,7 @@ NetworkPlot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/matrix_plot_0.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/matrix_plot_0.html")
 
 .. raw:: html
     
@@ -96,11 +96,11 @@ NetworkPlot
 ...     .using_spring_layout_seed(0)
 ...     #
 ...     .using_node_size_range(30, 70)
-...     .using_node_colors(("#7793a5", "#465c6b"))
+...     .using_node_colors(["#7793a5", "#465c6b"])
 ...     .using_textfont_size_range(10, 20)
 ...     .using_textfont_opacity_range(0.35, 1.00)
 ...     #
-...     .using_edge_colors(("#b8c6d0",))
+...     .using_edge_colors(["#b8c6d0"])
 ...     .using_edge_width_range(0.8, 4.0)
 ...     #
 ...     .using_xaxes_range(None, None)
@@ -116,7 +116,7 @@ NetworkPlot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/matrix_plot_1.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/matrix_plot_1.html")
 
 .. raw:: html
     
@@ -138,7 +138,7 @@ from ...internals.nx import (
     internal__assign_textfont_opacity_based_on_occurrences,
     internal__assign_textfont_sizes_based_on_occurrences,
     internal__compute_spring_layout_positions,
-    internal__create_network_plot,
+    internal__plot_network_graph,
 )
 from .matrix_data_frame import MatrixDataFrame
 
@@ -284,7 +284,7 @@ class MatrixPlot(
         nx_graph = self._step_10_assign_edge_widths_based_on_weight(nx_graph)
         nx_graph = self._step_11_assign_text_positions_based_on_quadrants(nx_graph)
 
-        return internal__create_network_plot(
+        return internal__plot_network_graph(
             params=self.params,
             nx_graph=nx_graph,
         )

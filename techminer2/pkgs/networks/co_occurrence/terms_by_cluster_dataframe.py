@@ -49,7 +49,7 @@ Terms by Cluster Frame
 
 
 """
-from ....internals.nx.cluster_graph import internal__cluster_graph
+from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
 from ....internals.nx.extract_communities_to_frame import (
     internal__extract_communities_to_frame,
 )
@@ -104,7 +104,7 @@ def terms_by_cluster_frame(
         **filters,
     )
 
-    nx_graph = internal__cluster_graph(
+    nx_graph = internal__cluster_network_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

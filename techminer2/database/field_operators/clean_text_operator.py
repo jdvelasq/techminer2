@@ -16,7 +16,7 @@ Clean text
 ...     # FIELDS:
 ...     .with_field("author_keywords")
 ...     .with_other_field("author_keywords_copy")
-....    #
+...     #
 ...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     #

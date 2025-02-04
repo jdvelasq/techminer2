@@ -5,6 +5,7 @@ from .data_frame import DataFrame
 from .heatmap import Heatmap
 from .matrix_data_frame import MatrixDataFrame
 from .matrix_plot import MatrixPlot
+from .sankey_plot import SankeyPlot
 
 __all__ = [
     "BubblePlot",
@@ -12,4 +13,5 @@ __all__ = [
     "Heatmap",
     "MatrixDataFrame",
     "MatrixPlot",
+    "SankeyPlot",
 ]
