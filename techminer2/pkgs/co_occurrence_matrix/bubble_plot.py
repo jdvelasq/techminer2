@@ -45,7 +45,7 @@ Bubble Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/bubble_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/bubble_plot.html")
 
 .. raw:: html
 

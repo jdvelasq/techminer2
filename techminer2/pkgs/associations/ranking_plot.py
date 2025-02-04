@@ -68,7 +68,7 @@ from ...internals.utils.utils_format_prompt_for_dataframes import (
 )
 
 # from ..cross_co_occurrence.matrix import co_occurrence_matrix
-from .data_frame import DataFrame
+from .sub_matrix_data_frame import DataFrame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

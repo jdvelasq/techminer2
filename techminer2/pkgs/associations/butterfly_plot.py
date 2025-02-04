@@ -6,52 +6,53 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Butterfly Chart
+Butterfly Plot
 ===============================================================================
 
 
-## >>> from techminer2.report import ButterflyPlot
-## >>> plot = (
-## ...     ButterflyPlot()
-## ...     #
-## ...     # COLUMN PARAMS:
-## ...     item_a="FINTECH",
-## ...     item_b="INNOVATION",
-## ...     #
-## ...     # COLUMNS:
-## ...     .with_field("author_keywords")
-## ...     .having_terms_in_top(10)
-## ...     .having_terms_ordered_by("OCC")
-## ...     .having_term_occurrences_between(None, None)
-## ...     .having_term_citations_between(None, None)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # ROWS:
-## ...     .with_other_field(None)
-## ...     .having_other_terms_in_top(None)
-## ...     .having_other_terms_ordered_by(None)
-## ...     .having_other_term_occurrences_between(None, None)
-## ...     .having_other_term_citations_between(None, None)
-## ...     .having_other_terms_in(None)
-## ...     #
-## ...     # CHART PARAMS:
-## ...     .using_title_text("Bar Plot")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> # plot.write_html("sphinx/_static/report/butterfly_chart.html")
+>>> from from techminer2.pkgs.associations import ButterflyPlot
+>>> plot = (
+...     ButterflyPlot()
+...     #
+...     # COLUMNS:
+...     .with_field("author_keywords")
+...     .having_terms_in_top(10)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # TERMS:
+...     item_a="FINTECH",
+...     item_b="INNOVATION",
+...     #
+...     # ROWS:
+...     .with_other_field(None)
+...     .having_other_terms_in_top(None)
+...     .having_other_terms_ordered_by(None)
+...     .having_other_term_occurrences_between(None, None)
+...     .having_other_term_citations_between(None, None)
+...     .having_other_terms_in(None)
+...     #
+...     # CHART PARAMS:
+...     .using_title_text("Butterfly Plot")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> plot.write_html("sphinx/_generated/pkgs/associations/butterfly_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/report/butterfly_chart.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/associations/butterfly_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 
 """
 import plotly.graph_objects as go

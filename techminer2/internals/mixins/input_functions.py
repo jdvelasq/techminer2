@@ -26,11 +26,12 @@ class Params:
     # C
     #
     case_sensitive: bool = False
-    term_counters: bool = True
+    col_terms: Optional[List[str]] = None
     color: Optional[str] = None
     colormap: str = "Blues"
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
+    term_counters: bool = True
 
     #
     # D
@@ -173,6 +174,10 @@ class InputFunctionsMixin:
     #
     def having_case_sensitive(self, case_sensitive):
         self.params.case_sensitive = case_sensitive
+        return self
+
+    def having_col_terms_in(self, col_terms):
+        self.params.col_terms = col_terms
         return self
 
     def having_regex_flags(self, flags):
