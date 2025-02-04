@@ -52,7 +52,7 @@ Co-occurrences Chart
 """
 import plotly.express as px  # type: ignore
 
-from .sub_matrix_data_frame import DataFrame
+from .sub_matrix_data_frame import SubMatrixDataFrame
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
