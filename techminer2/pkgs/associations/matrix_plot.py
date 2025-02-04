@@ -58,7 +58,7 @@ Matrix Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/associations/matrix_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/associations/matrix_plot.html")
 
 .. raw:: html
     

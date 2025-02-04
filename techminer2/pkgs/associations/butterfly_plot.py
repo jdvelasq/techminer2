@@ -14,21 +14,17 @@ Butterfly Plot
 >>> plot = (
 ...     ButterflyPlot()
 ...     #
-...     # COLUMNS:
+...     # FIELD:
 ...     .with_field("author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # TERMS:
-...     .having_col_terms_in(["FINTECH", "INNOVATION"])
+...     .having_terms_in(["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"])
 ...     #
 ...     # ROWS:
-...     .with_other_field(None)
-...     .having_other_terms_in_top(None)
-...     .having_other_terms_ordered_by(None)
+...     .having_other_terms_in_top(10)
+...     .having_other_terms_ordered_by("OCC")
 ...     .having_other_term_occurrences_between(None, None)
 ...     .having_other_term_citations_between(None, None)
 ...     .having_other_terms_in(None)
@@ -48,7 +44,7 @@ Butterfly Plot
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/associations/butterfly_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/associations/butterfly_plot.html")
 
 .. raw:: html
 
@@ -60,8 +56,7 @@ Butterfly Plot
 import plotly.graph_objects as go  # type: ignore
 
 from ...internals.mixins import InputFunctionsMixin
-
-# from .associated_matrix_data_frame import SubMatrixDataFrame
+from .data_frame import DataFrame
 
 
 class ButterflyPlot(
@@ -70,35 +65,18 @@ class ButterflyPlot(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_01_compute_co_occurrence_matrix(self):
-        return (
-            SubMatrixDataFrame()
-            .update_params(**self.params.__dict__)
-            .using_term_counters(True)
-            .build()
-        )
+    def _step_01_create_data_frame(self):
+        return DataFrame().update_params(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
-    def _step_02_search_col_terms(self, matrix):
-        terms = []
-        for col_name in matrix.columns.to_list():
-            name = col_name.split(" ")[0]
-            if name in self.params.col_terms:
-                terms.append(col_name)
-        return terms
+    def _step_02_remove_col_terms_from_index(self, matrix):
+        return matrix.drop(index=matrix.columns)
 
     # -------------------------------------------------------------------------
-    def _step_03_delete_col_terms_from_index(self, matrix):
-        for col in matrix.columns:
-            if col in matrix.index.to_list():
-                matrix = matrix.drop(index=col)
-        return matrix
+    def _step_03_build_butterfly_plot(self, matrix):
 
-    # -------------------------------------------------------------------------
-    def _step_04_make_plot(self, matrix, col_terms):
-
-        name_a = col_terms[0]
-        name_b = col_terms[1]
+        name_a = matrix.columns[0]
+        name_b = matrix.columns[1]
 
         x_max_value = matrix.max().max()
 
@@ -127,28 +105,6 @@ class ButterflyPlot(
                 marker={"color": "#465c6b"},
             )
         )
-
-        # puts yaxis at x = 0
-        # fig.update_layout(
-        #     xaxis={
-        #         "zeroline": False,
-        #         "zerolinecolor": "gray",
-        #         "zerolinewidth": 2,
-        #     }
-        # )
-
-        # draw a vertical line at x=0
-        # fig.add_shape(
-        #     type="line",
-        #     x0=0,
-        #     y0=matrix.index[0],
-        #     x1=0,
-        #     y1=matrix.index[-1],
-        #     line=dict(
-        #         color="gray",
-        #         width=1,
-        #     ),
-        # )
 
         fig.update_layout(barmode="overlay")
 
@@ -202,7 +158,6 @@ class ButterflyPlot(
 
     # -------------------------------------------------------------------------
     def build(self):
-        matrix = self._step_01_compute_co_occurrence_matrix()
-        col_terms = self._step_02_search_col_terms(matrix)
-        matrix = self._step_03_delete_col_terms_from_index(matrix)
-        return self._step_04_make_plot(matrix, col_terms)
+        matrix = self._step_01_create_data_frame()
+        col_terms = self._step_02_remove_col_terms_from_index(matrix)
+        return self._step_03_build_butterfly_plot(matrix)
