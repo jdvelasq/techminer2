@@ -29,7 +29,7 @@ Ranking Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/database/metrics/trend/trend_metrics_plot.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/trend/trend_metrics_plot.html")
 
 .. raw:: html
 
