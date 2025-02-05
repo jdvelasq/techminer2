@@ -153,7 +153,7 @@ def __create_network_fig(
 
     layout = go.Layout(
         title="",
-        titlefont={"size": 16},
+        font={"size": 16},
         showlegend=False,
         hovermode="closest",
         margin={"b": 0, "l": 0, "r": 0, "t": 0},
