@@ -20,6 +20,7 @@ class Params:
     #
     # B
     #
+    baseline_periods: int = 3
     binary_term_frequencies: bool = False
 
     #
@@ -69,6 +70,7 @@ class Params:
     #
     node_colors: Optional[List] = None
     node_size_range: Tuple[int, int] = (5, 20)
+    novelty_threshold: float = 0.15
 
     #
     # O
@@ -84,6 +86,7 @@ class Params:
     # P
     #
     pattern: Optional[str] = None
+    periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
 
     #
@@ -94,6 +97,8 @@ class Params:
     #
     # R
     #
+    ratio_threshold: float = 0.5
+    recent_periods: int = 3
     record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     record_filters: Optional[dict] = None
     record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
@@ -127,6 +132,7 @@ class Params:
     time_window: int = 2
     title_text: Optional[str] = None
     top_n: Optional[int] = None
+    total_records_threshold: int = 7
 
     #
     # U
@@ -255,6 +261,10 @@ class InputFunctionsMixin:
         self.params.axes_visible = visible
         return self
 
+    def using_baseline_periods(self, periods):
+        self.params.baseline_periods = periods
+        return self
+
     def using_binary_term_frequencies(self, binary):
         self.params.binary_term_frequencies = binary
         return self
@@ -311,6 +321,14 @@ class InputFunctionsMixin:
         self.params.node_size_range = (min_size, max_size)
         return self
 
+    def using_novelty_threshold(self, threshold):
+        self.params.novelty_threshold = threshold
+        return self
+
+    def using_periods_with_at_least_one_record(self, periods):
+        self.params.periods_with_at_least_one_record = periods
+        return self
+
     def using_pie_hole(self, pie_hole):
         self.params.pie_hole = pie_hole
         return self
@@ -321,6 +339,14 @@ class InputFunctionsMixin:
 
     def using_plot_width(self, width):
         self.params.width = width
+        return self
+
+    def using_ratio_threshold(self, threshold):
+        self.params.ratio_threshold = threshold
+        return self
+
+    def using_recent_periods(self, periods):
+        self.params.recent_periods = periods
         return self
 
     def using_row_normalization(self, normalization):  # nowm: L1, L2, None
@@ -357,6 +383,10 @@ class InputFunctionsMixin:
 
     def using_title_text(self, text):
         self.params.title_text = text
+        return self
+
+    def using_total_records_threshold(self, threshold):
+        self.params.total_records_threshold = threshold
         return self
 
     def using_xaxes_range(self, x_min, x_max):
