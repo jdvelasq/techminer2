@@ -17,7 +17,7 @@ Scopus Data Importer
 ...     ScopusDataImporter() 
 ...     .where_directory_is("example/")
 ...     .build()
-... ) # doctest: +ELLIPSIS  +SKIP
+... ) # doctest: +ELLIPSIS  +SKIP 
 -- 001 -- Compressing raw data files
 -- 002 -- Creating working directories
 -- 003 -- Creating stopwords.txt file
