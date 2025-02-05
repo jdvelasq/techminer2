@@ -52,7 +52,7 @@ Record Mapping
        'LENDING , and SOCIAL_MEDIA_USE . ISSUES with_respect_to INVESTMENTS , '
        'FINANCIAL_MARKETS , TRADING , RISK_MANAGEMENT , ROBO_ADVISORY and '
        'SERVICES influenced by BLOCKCHAIN_AND_FINTECH_INNOVATIONS . '
-       'COPYRIGHT_TAYLOR and FRANCIS_GROUP , llc .',
+       'COPYRIGHT_TAYLOR_AND_FRANCIS_GROUP , llc .',
  'AR': 'Gomber P., 2018, J MANAGE INF SYST, V35, P220',
  'AU': 'Gomber P.; Kauffman R.J.; Parker C.; Weber B.W.',
  'DE': nan,
