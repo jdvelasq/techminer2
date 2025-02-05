@@ -38,7 +38,7 @@ Sankey Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/sankey_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/sankey_plot.html")
 
 .. raw:: html
 
