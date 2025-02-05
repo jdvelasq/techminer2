@@ -15,7 +15,7 @@ Term Occurrence by Cluster
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("descriptors")
-## ...     .having_terms_in_top(50)
+## ...     .having_terms_in_top(100)
 ## ...     .having_terms_ordered_by("OCC")
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
@@ -23,6 +23,13 @@ Term Occurrence by Cluster
 ## ...     #
 ## ...     # COUNTERS:
 ## ...     .using_term_counters(True)
+## ...     #
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 
 
 ## ...     .set_analysis_params(
