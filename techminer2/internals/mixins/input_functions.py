@@ -26,6 +26,7 @@ class Params:
     # C
     #
     case_sensitive: bool = False
+    clustering_estimator_or_dict = None
     color: Optional[str] = None
     colormap: str = "Blues"
     correlation_method: str = "pearson"
@@ -36,6 +37,7 @@ class Params:
     #
     database: str = "main"
     draw_arrows: bool = False
+    decomposition_estimator = None
 
     #
     # E
@@ -237,6 +239,14 @@ class InputFunctionsMixin:
     #
     # U
     #
+    def using_clustering_estimator_or_dict(self, clustering_estimator_or_dict):
+        self.params.clustering_estimator_or_dict = clustering_estimator_or_dict
+        return self
+
+    def using_decomposition_estimator(self, decomposition_estimator):
+        self.params.decomposition_estimator = decomposition_estimator
+        return self
+
     def using_draw_arrows(self, draw):
         self.params.draw_arrows = draw
         return self

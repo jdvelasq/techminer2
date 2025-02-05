@@ -3,14 +3,14 @@ This module contains functions to analyze the clusters obtained from the TF-IDF 
 
 """
 
-from .clusters_to_terms_mapping import clusters_to_terms_mapping
-from .term_occurrence_by_cluster import term_occurrence_by_cluster
-from .terms_by_cluster_dataframe import terms_by_cluster_frame
-from .terms_by_cluster_summary import terms_by_cluster_summary
+from .clusters_to_terms_mapping import ClustersToTermsMapping
+from .term_occurrence_by_cluster import TermOccurrenceByCluster
+from .terms_by_cluster_dataframe import TermsByClusterDataFrame
+from .terms_by_cluster_summary import TermsByClusterSummary
 
 __all__ = [
-    "clusters_to_terms_mapping",
-    "term_occurrence_by_cluster",
-    "terms_by_cluster_dataframe",
-    "terms_by_cluster_summary",
+    "ClustersToTermsMapping",
+    "TermOccurrenceByCluster",
+    "TermsByClusterDataFrame",
+    "TermsByClusterSummary",
 ]
