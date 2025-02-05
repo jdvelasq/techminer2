@@ -59,7 +59,7 @@ Creates an Cross-correlation Map.
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/correlation/cross//network_map_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/correlation/cross//network_map_plot.html")
 
 .. raw:: html
 
