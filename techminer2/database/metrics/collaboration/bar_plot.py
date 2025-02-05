@@ -34,7 +34,7 @@ Bar Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/database/metrics/collaboration/bar_plot.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/collaboration/bar_plot.html")
 
 .. raw:: html
 
