@@ -1,15 +1,18 @@
 .DS_Store
 
-example/raw-data/main/scopus.csv
+example/databases/
+example/my_keywords/
+example/reports/
+example/thesauri/
+
 debug.ipynb
 
 # Sphinx documentation
 sphinx/_build/
 # sphinx/_static/**/*
 sphinx/_build/
-example/
-tmp/*
 
+tmp/*
 debug/
 trash/
 
