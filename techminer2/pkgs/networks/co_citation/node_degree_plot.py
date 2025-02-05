@@ -9,21 +9,21 @@
 Node Degree Plot
 ===============================================================================
 
->>> from techminer2.analyze.co_citation_network import NodeDegreePlot
->>> plot = (
-...     NodeDegreePlot()
-...     .set_analysis_params(
-...         unit_of_analysis="cited_sources", # "cited_sources", 
-...                                           # "cited_references",
-...                                           # "cited_authors"
-...         top_n=30, 
-...         citations_threshold=None,
-...         custom_terms=None,
-...     #
-...     ).set_plot_params(
+## >>> from techminer2.analyze.co_citation_network import NodeDegreePlot
+## >>> plot = (
+## ...     NodeDegreePlot()
+## ...     .set_analysis_params(
+## ...         unit_of_analysis="cited_sources", # "cited_sources", 
+## ...                                           # "cited_references",
+## ...                                           # "cited_authors"
+## ...         top_n=30, 
+## ...         citations_threshold=None,
+## ...         custom_terms=None,
+## ...     #
+## ...     ).set_plot_params(
 ## ...     .using_textfont_size(10)
 ## ...     .using_marker_size(7)
-...         line_color="black",
+## ...         line_color="black",
 ## ...     .using_line_width(1.5)
 ## ...     .using_yshift(4)
 ## ...     #
@@ -35,8 +35,8 @@ Node Degree Plot
 ## ...     .where_records_match(None)
 ## ...     #
 ## ...     .build()
-... )
->>> plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
+## ... )
+## >>> plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
 
 .. raw:: html
 
