@@ -39,13 +39,13 @@ Data Frame
 ...     #
 ...     .build()
 ... ).head()
-author_keywords                                 FINTECH 31:5168  ...  CASE_STUDY 2:340
-record_id                                                        ...                  
-Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                 0
-Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                 0
-Buchak G., 2018, J FINANC ECON, V130, P453                    1  ...                 0
-Cai C.W., 2018, ACCOUNT FINANC, V58, P965                     1  ...                 0
-Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...                 0
+author_keywords                                 FINTECH 31:5168  ...  CASE_STUDY 02:0340
+record_id                                                        ...                    
+Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                   0
+Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                   0
+Buchak G., 2018, J FINANC ECON, V130, P453                    1  ...                   0
+Cai C.W., 2018, ACCOUNT FINANC, V58, P965                     1  ...                   0
+Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...                   0
 <BLANKLINE>
 [5 rows x 10 columns]
 
@@ -53,6 +53,7 @@ Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...            
 
 
 """
+
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
