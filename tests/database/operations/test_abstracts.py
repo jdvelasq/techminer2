@@ -19,7 +19,7 @@
 >>> (
 ...     CleanTextOperator() 
 ...     .with_field("raw_abstract")
-...     .with_target_field("raw_abstract_copy")
+...     .with_other_field("raw_abstract_copy")
 ...     .where_directory_is("example/")
 ...     .build()
 ... )
@@ -27,7 +27,7 @@
 >>> (
 ...     HighlightNounAndPhrasesOperator()  
 ...     .with_field("raw_abstract_copy")
-...     .with_target_field("raw_abstract_copy")
+...     .with_other_field("raw_abstract_copy")
 ...     .where_directory_is("example/")
 ...     .build()
 ... )
