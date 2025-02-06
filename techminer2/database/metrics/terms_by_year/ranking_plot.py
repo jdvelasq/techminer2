@@ -8,7 +8,7 @@
 Terms by Year Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.metrics import terms_by_year_plot
+## >>> from techminer2.pkgs.metrics import terms_by_year_plot
 ## >>> plot = terms_by_year_plot(
 ## 
 ## ...     #

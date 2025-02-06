@@ -9,7 +9,7 @@
 Network Degree Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.coupling_network import NodeDegreePlot
+## >>> from techminer2.pkgs.coupling_network import NodeDegreePlot
 ## >>> plot = (
 ## ...     NodeDegreePlot()
 ## ...     .set_analysis_params(
@@ -51,7 +51,7 @@ Network Degree Plot
 
 
 ## >>> # article:
-## >>> from techminer2.analyze.coupling_network import node_degree_plot
+## >>> from techminer2.pkgs.coupling_network import node_degree_plot
 ## >>> plot = node_degree_plot(
 ## ...     unit_of_analysis='article', # article
 ## ...                                 # authors 

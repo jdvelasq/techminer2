@@ -10,15 +10,9 @@ Terms by Cluster Summary
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_occurrence_network import terms_by_cluster_summary
+## >>> from techminer2.pkgs.co_occurrence_network import terms_by_cluster_summary
 ## >>> (
 ## ...     terms_by_cluster_summary(
-## ...     .set_analysis_params(
-## ...         algorithm_or_dict="louvain",
-## ...         association_index="association",
-## ...     #
-## ...     # COUNTERS:
-## ...     .using_term_counters(True)
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -27,6 +21,13 @@ Terms by Cluster Summary
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+## ...     #
+## ...     # NETWORK:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     .using_association_index("association")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

@@ -16,6 +16,7 @@ class Params:
     # A
     #
     axes_visible: bool = False
+    association_index: Optional[str] = None
 
     #
     # B
@@ -27,7 +28,7 @@ class Params:
     # C
     #
     case_sensitive: bool = False
-    clustering_estimator_or_dict = None
+    clustering_algorithm_or_dict = None
     color: Optional[str] = None
     colormap: str = "Blues"
     correlation_method: str = "pearson"
@@ -38,7 +39,7 @@ class Params:
     #
     database: str = "main"
     draw_arrows: bool = False
-    decomposition_estimator = None
+    decomposition_algorithm = None
 
     #
     # E
@@ -58,17 +59,20 @@ class Params:
     #
     # L
     #
+    line_color: str = "black"
     line_width: float = 1.5
 
     #
     # M
     #
+    manifold_algorithm = None
     marker_size: float = 7
 
     #
     # N
     #
     node_colors: Optional[List] = None
+    node_size: int = 10
     node_size_range: Tuple[int, int] = (5, 20)
     novelty_threshold: float = 0.15
 
@@ -88,6 +92,7 @@ class Params:
     pattern: Optional[str] = None
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
+    plot_dimensions: Tuple[int, int] = (0, 1)
 
     #
     # Q
@@ -126,12 +131,14 @@ class Params:
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
+    textfont_color: str = "#465c6b"
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_size_range: Tuple[int, int] = (8, 16)
     textfont_size: float = 10
     time_window: int = 2
     title_text: Optional[str] = None
     top_n: Optional[int] = None
+    top_terms_by_theme: int = 5
     total_records_threshold: int = 7
 
     #
@@ -245,12 +252,16 @@ class InputFunctionsMixin:
     #
     # U
     #
-    def using_clustering_estimator_or_dict(self, clustering_estimator_or_dict):
-        self.params.clustering_estimator_or_dict = clustering_estimator_or_dict
+    def using_association_index(self, association_index):
+        self.params.association_index = association_index
         return self
 
-    def using_decomposition_estimator(self, decomposition_estimator):
-        self.params.decomposition_estimator = decomposition_estimator
+    def using_clustering_algorithm_or_dict(self, clustering_algorithm_or_dict):
+        self.params.clustering_algorithm_or_dict = clustering_algorithm_or_dict
+        return self
+
+    def using_decomposition_algorithm(self, algorithm):
+        self.params.decomposition_algorithm = algorithm
         return self
 
     def using_draw_arrows(self, draw):
@@ -305,8 +316,16 @@ class InputFunctionsMixin:
         self.params.smooth_idf_weights = smooth
         return self
 
+    def using_line_color(self, color):
+        self.params.line_color = color
+        return self
+
     def using_line_width(self, width):
         self.params.line_width = width
+        return self
+
+    def using_manifold_algorithm(self, algorithm):
+        self.params.manifold_algorithm = algorithm
         return self
 
     def using_marker_size(self, size):
@@ -315,6 +334,10 @@ class InputFunctionsMixin:
 
     def using_node_colors(self, colors):
         self.params.node_colors = colors
+        return self
+
+    def using_node_size(self, size):
+        self.params.node_size = size
         return self
 
     def using_node_size_range(self, min_size, max_size):
@@ -331,6 +354,10 @@ class InputFunctionsMixin:
 
     def using_pie_hole(self, pie_hole):
         self.params.pie_hole = pie_hole
+        return self
+
+    def using_plot_dimensions(self, dim_x, dim_y):
+        self.params.plot_dimensions = (dim_x, dim_y)
         return self
 
     def using_plot_height(self, height):
@@ -369,6 +396,10 @@ class InputFunctionsMixin:
         self.params.term_counters = counters
         return self
 
+    def using_textfont_color(self, color):
+        self.params.textfont_color = color
+        return self
+
     def using_textfont_opacity_range(self, min_opacity, max_opacity):
         self.params.textfont_opacity_range = (min_opacity, max_opacity)
         return self
@@ -383,6 +414,10 @@ class InputFunctionsMixin:
 
     def using_title_text(self, text):
         self.params.title_text = text
+        return self
+
+    def using_top_terms_by_theme(self, n):
+        self.params.top_terms_by_theme = n
         return self
 
     def using_total_records_threshold(self, threshold):

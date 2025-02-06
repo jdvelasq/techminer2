@@ -9,7 +9,7 @@
 Network Density Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.coupling_network import NodeDensityPlot
+## >>> from techminer2.pkgs.coupling_network import NodeDensityPlot
 ## >>> plot = (
 ## ...     NodeDensityPlot()
 ## ...     .set_analysis_params(
@@ -29,10 +29,11 @@ Network Density Plot
 ## ...     #
 ## ...     # NETWORK PARAMS:
 ## ...     algorithm_or_dict="louvain",
-## ...     ).set_nx_params(
-## ...         nx_k=None,
-## ...         nx_iterations=30,
-## ...         nx_random_state=0,
+
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+
 ## ...     #
 ## ...     # DENSITY VISUALIZATION:
 ## ...     bandwidth=0.1,
@@ -57,7 +58,7 @@ Network Density Plot
 
     
 ## >>> # article:    
-## >>> from techminer2.analyze.coupling_network import node_density_plot
+## >>> from techminer2.pkgs.coupling_network import node_density_plot
 ## >>> plot = node_density_plot(
 ## ...     unit_of_analysis='article', # article
 ## ...                                 # authors 

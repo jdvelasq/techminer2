@@ -9,40 +9,41 @@ Cluster to Terms Mapping
 ===============================================================================
 
 
-## >>> from techminer2.analyze.topic_modeling import cluster_to_terms_mapping
 ## >>> from sklearn.decomposition import LatentDirichletAllocation
+## >>> lda = LatentDirichletAllocation(
+## ...     n_components=10,
+## ...     learning_decay=0.7,
+## ...     learning_offset=50.0,
+## ...     max_iter=10,
+## ...     batch_size=128,
+## ...     evaluate_every=-1,
+## ...     perp_tol=0.1,
+## ...     mean_change_tol=0.001,
+## ...     max_doc_update_iter=100,
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.topic_modeling import cluster_to_terms_mapping
 ## >>> mapping = (
 ## ...     ClusterToTermsMapping()
-## ...     .set_analysis_params(
-## ...         sklearn_estimator=LatentDirichletAllocation(
-## ...             n_components=10,
-## ...             learning_decay=0.7,
-## ...             learning_offset=50.0,
-## ...             max_iter=10,
-## ...             batch_size=128,
-## ...             evaluate_every=-1,
-## ...             perp_tol=0.1,
-## ...             mean_change_tol=0.001,
-## ...             max_doc_update_iter=100,
-## ...             random_state=0,
-## ...         ),
-## ...         n_top_terms=5,
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=None,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
 ## ...     #
-## ...     ).set_tf_params()
-## ...         is_binary=True,
-## ...         cooc_within=2,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_tfidf_params(
-## ...         norm=None,
-## ...         use_idf=False,
-## ...         smooth_idf=False,
-## ...         sublinear_tf=False,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(lda)
+## ...     .using_top_terms_by_theme(5)
+## ...     #
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -55,56 +56,8 @@ Cluster to Terms Mapping
 ## ... )
 ## >>> import pprint
 ## >>> pprint.pprint(mapping)
-{0: ['FINTECH 31:5168',
-     'FINANCIAL_SERVICES 04:0667',
-     'FINANCIAL_TECHNOLOGY 03:0461',
-     'INNOVATION 07:0911',
-     'SERVICE_INNOVATION_STRATEGY 01:0079'],
- 1: ['FINTECH 31:5168',
-     'MARKETPLACE_LENDING 03:0317',
-     'TECHNOLOGY 02:0310',
-     'P2P_LENDING 02:0161',
-     'BANKS 01:0084'],
- 2: ['FINTECH 31:5168',
-     'REGTECH 02:0266',
-     'CYBER_SECURITY 02:0342',
-     'PAYMENTS 01:0064',
-     'BLOCKCHAINS 01:0064'],
- 3: ['FINTECH 31:5168',
-     'INNOVATION 07:0911',
-     'CONTENT_ANALYSIS 02:0181',
-     'POPULAR_PRESS 02:0181',
-     'DIGITALIZATION 02:0181'],
- 4: ['FINTECH 31:5168',
-     'INNOVATION 07:0911',
-     'INNOVATION_IN_FINANCIAL_SERVICES 01:0067',
-     'COMPETITION 01:0067',
-     'MOBILE_PAYMENT 02:0184'],
- 5: ['MOBILE_PAYMENT_SERVICE 01:0125',
-     'ELABORATION_LIKELIHOOD_MODEL 01:0125',
-     'K_PAY 01:0125',
-     'FINTECH 31:5168',
-     'INNOVATION 07:0911'],
- 6: ['FINTECH 31:5168',
-     'FINANCIAL_INCLUSION 03:0590',
-     'GOVERNMENTALITY 01:0314',
-     'FINANCIALISATION 01:0314',
-     'DIGITAL_TECHNOLOGIES 01:0314'],
- 7: ['ARTIFICIAL_INTELLIGENCE 02:0327',
-     'FINANCE 02:0309',
-     'ROBOTS 02:0289',
-     'TECHNOLOGY_ADOPTION 01:0225',
-     'ROBO_ADVISORS 01:0225'],
- 8: ['FINTECH 31:5168',
-     'CROWDFUNDING 03:0335',
-     'FINANCIAL_TECHNOLOGY 03:0461',
-     'SUSTAINABLE_DEVELOPMENT 01:0071',
-     'PEER_TO_PEER 01:0071'],
- 9: ['FINTECH 31:5168',
-     'INNOVATION 07:0911',
-     'FINANCIAL_INCLUSION 03:0590',
-     'MOBILE_PAYMENT 02:0184',
-     'CASE_STUDY 02:0340']}
+
+
 
 
 

@@ -9,7 +9,7 @@
 Node Degree Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.co_citation_network import NodeDegreePlot
+## >>> from techminer2.pkgs.co_citation_network import NodeDegreePlot
 ## >>> plot = (
 ## ...     NodeDegreePlot()
 ## ...     .set_analysis_params(

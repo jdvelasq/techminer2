@@ -10,14 +10,14 @@ Terms by Cluster Frame
 ===============================================================================
 
 
-## >>> from techminer2.analyze.citation_network  import TermsByClusterDataFrame
+## >>> from techminer2.pkgs.citation_network  import TermsByClusterDataFrame
 ## >>> (
 ## ...     TermsByClusterDataFrame()
 ## ...     .set_analysis_params(
 ## ...         unit_of_analysis="article",
 ## ...         top_n=30, 
 ## ...         citations_threshold=0,
-## ...         algorithm_or_dict="louvain",
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -39,7 +39,7 @@ Terms by Cluster Frame
 
 
 ## >>> # abbr_source_title, authors, organizations, countries:
-## >>> from techminer2.analyze.citation_network  import TermsByClusterDataFrame
+## >>> from techminer2.pkgs.citation_network  import TermsByClusterDataFrame
 ## >>> (
 ## ...     TermsByClusterDataFrame()
 ## ...     .set_analysis_params(

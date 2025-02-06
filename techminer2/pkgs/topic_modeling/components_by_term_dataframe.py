@@ -9,41 +9,41 @@ Components by Term Frame
 ===============================================================================
 
 
-## >>> from techminer2.analyze.topic_modeling import components_by_term_frame
 ## >>> from sklearn.decomposition import LatentDirichletAllocation
+## >>> lda = LatentDirichletAllocation(
+## ...     n_components=10,
+## ...     learning_decay=0.7,
+## ...     learning_offset=50.0,
+## ...     max_iter=10,
+## ...     batch_size=128,
+## ...     evaluate_every=-1,
+## ...     perp_tol=0.1,
+## ...     mean_change_tol=0.001,
+## ...     max_doc_update_iter=100,
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.topic_modeling import components_by_term_frame
 ## >>> (
-## ...     ComponentsByTermDataFrame(
-## ...     .set_analysis_params(
-## ...         sklearn_estimator=LatentDirichletAllocation(
-## ...             n_components=10,
-## ...             learning_decay=0.7,
-## ...             learning_offset=50.0,
-## ...             max_iter=10,
-## ...             batch_size=128,
-## ...             evaluate_every=-1,
-## ...             perp_tol=0.1,
-## ...             mean_change_tol=0.001,
-## ...             max_doc_update_iter=100,
-## ...             random_state=0,
-## ...         ),
-## ...         n_top_terms=5,
+## ...     ComponentsByTermDataFrame()
 ## ...     #
-## ...     .set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=None,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_tf_params(
-## ...         is_binary=True,
-## ...         cooc_within=2,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(lda)
+## ...     .using_top_terms_by_theme(5)
 ## ...     #
-## ...    ).set_tfidf_params(
-## ...     norm=None,
-## ...     use_idf=False,
-## ...     smooth_idf=False,
-## ...     sublinear_tf=False,
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -54,20 +54,6 @@ Components by Term Frame
 ## ...     #
 ## ...     .build()
 ## ... )
-term       FINTECH 31:5168  ...  TRADING 01:0064
-component                   ...                 
-0                10.099987  ...              0.1
-1                 4.100046  ...              0.1
-2                 3.100012  ...              1.1
-3                 4.100041  ...              0.1
-4                 0.100000  ...              0.1
-5                 1.099938  ...              0.1
-6                 2.100033  ...              0.1
-7                 0.100000  ...              0.1
-8                 3.099955  ...              0.1
-9                 4.099988  ...              0.1
-<BLANKLINE>
-[10 rows x 148 columns]
 
 
 

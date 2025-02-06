@@ -9,14 +9,14 @@
 Node Density Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.citation_network  import NodeDensityPlot
+## >>> from techminer2.pkgs.citation_network  import NodeDensityPlot
 ## >>> plot = (
 ## ...     NodeDensityPlot()
 ## ...     .set_analysis_params(
 ## ...         unit_of_analysis="article",
 ## ...         top_n=30, 
 ## ...         citations_threshold=0,
-## ...         algorithm_or_dict="louvain",
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # NETWORK:
 ## ...     .using_spring_layout_k(None)
@@ -39,7 +39,7 @@ Node Density Plot
     <iframe src="../_static/citation_network/documents_node_density_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
-## >>> from techminer2.analyze.citation_network  import node_density_plot
+## >>> from techminer2.pkgs.citation_network  import node_density_plot
 ## >>> plot = (
 ## ...     NodeDensityPlot()
 ## ...     .set_analysis_params(

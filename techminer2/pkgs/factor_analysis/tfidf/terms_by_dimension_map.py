@@ -10,55 +10,57 @@ Terms by Dimensions Map
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
-## >>> from techminer2.analyze.factor_analysis.tfidf import terms_by_dimension_map
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.tfidf import terms_by_dimension_map
 ## >>> plot = (
 ## ...     TermsByDimensionMap()
-## ...     .set_analysis_params(
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
 ## ...     #
-## ...     ).set_tf_params(
-## ...         is_binary=True,
-## ...         cooc_within=1,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_tfidf_params(
-## ...         norm=None,
-## ...         use_idf=False,
-## ...         smooth_idf=False,
-## ...         sublinear_tf=False,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
-## ...     ).set_plot_params(
-## ...         dim_x=0,
-## ...         dim_y=1,
-## ...         node_color="#465c6b",
-## ...         node_size=10,
-## ...         textfont_size=8,
-## ...         textfont_color="#465c6b",
-## ...         xaxes_range=None,
-## ...         yaxes_range=None,
+## ...     # MAP:
+## ...     .using_plot_dimensions(0, 1)
+## ...     .using_node_colors(["#465c6b"])
+## ...     .using_node_size(10)
+## ...     .using_textfont_size(8)
+## ...     .using_textfont_color("#465c6b")
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     .using_xaxes_range(None, None)
+## ...     .using_yaxes_range(None, None)
+## ...     .using_axes_visible(False)
 ## ...     #
-## ...     ).build()
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> # plot.write_html("sphinx/_static/factor_analysis/tfidf/terms_by_dimension_map.html")
 

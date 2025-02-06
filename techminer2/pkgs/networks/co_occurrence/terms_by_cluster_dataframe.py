@@ -10,12 +10,9 @@ Terms by Cluster Frame
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_occurrence_network import terms_by_cluster_frame
+## >>> from techminer2.pkgs.co_occurrence_network import terms_by_cluster_frame
 ## >>> (
 ## ...     terms_by_cluster_frame()
-## ...     .set_analysis_params(
-## ...         algorithm_or_dict="louvain",
-## ...         association_index="association",
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -24,6 +21,10 @@ Terms by Cluster Frame
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
+## ...     #
+## ...     # NETWORK:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     .using_association_index("association")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

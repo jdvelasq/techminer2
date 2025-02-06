@@ -10,7 +10,7 @@ Network Plot
 ===============================================================================
 
 ## >>> # article:
-## >>> from techminer2.analyze.citation_network.articles import NetworkPlot
+## >>> from techminer2.pkgs.citation_network.articles import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
 ## ...     .set_analysis_params(

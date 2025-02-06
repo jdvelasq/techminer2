@@ -13,7 +13,7 @@ Node Degree Frame
 
 
 ## >>> # abbr_source_title, authors, organizations, countries:
-## >>> from techminer2.analyze.citation_network  import NodeDegreeDataFrame
+## >>> from techminer2.pkgs.citation_network  import NodeDegreeDataFrame
 ## >>> node_degree_frame(
 ## ...     .set_analysis_params(
 ## ...         # unit_of_analysis="abbr_source_title",

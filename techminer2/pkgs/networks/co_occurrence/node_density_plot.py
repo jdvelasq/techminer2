@@ -10,11 +10,9 @@ Node Density Plot
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_occurrence_network import NodeDensityPlot
+## >>> from techminer2.pkgs.co_occurrence_network import NodeDensityPlot
 ## >>> plot = (
 ## ...     NodeDensityPlot()
-## ...     .set_analysis_params(
-## ...         association_index="association",
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -24,16 +22,17 @@ Node Density Plot
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
 ## ...     #
+## ...     # NETWORK:
+## ...     .using_association_index("association")
+## ...     #
 ## ...     #
 ## ...     .using_spring_layout_k(None)
 ## ...     .using_spring_layout_iterations(30)
 ## ...     .using_spring_layout_seed(0)
-
 ## ...     #
-## ...     ).set_plot_params(
-## ...         textfont_size_range=(10, 20),
+## ...     .using_textfont_size_range(10, 20)
 ## ...         bandwidth=0.1,
-## ...         colorscale="Aggrnyl",
+## ...     .using_colormap("Aggrnyl")
 ## ...         opacity=0.6,
 ## ...     #
 ## ...     # DATABASE:

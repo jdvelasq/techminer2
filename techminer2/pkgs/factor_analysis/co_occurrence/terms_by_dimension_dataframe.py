@@ -10,44 +10,44 @@ Terms by Dimension Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
-## >>> from techminer2.analyze.factor_analysis.co_occurrence import terms_by_dimension_frame
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.co_occurrence import terms_by_dimension_frame
 ## >>> (
 ## ...     TermsByDimensionDataFrame()
-## ...     .set_analysis_params(
-## ...         association_index=None,
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).build()
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... ).head()
-dim                                   0         1         2         3         4
-rows                                                                           
-FINTECH 31:5168               28.659528 -0.524730 -0.513789 -0.042977  0.238539
-INNOVATION 07:0911             2.377465  5.757771  2.713115 -1.188306 -0.116040
-FINANCIAL_SERVICES 04:0667    -0.090716  2.761290  0.416833  2.583089 -0.502611
-FINANCIAL_INCLUSION 03:0590   -0.631683 -0.611095 -1.728676 -0.825425 -0.947171
-FINANCIAL_TECHNOLOGY 03:0461  -1.487691  0.959672 -0.271058  0.837526 -0.690393
+
 
     
 """

@@ -10,7 +10,7 @@ Concept Grid Plot
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_occurrence_network import concept_grid_plot
+## >>> from techminer2.pkgs.co_occurrence_network import concept_grid_plot
 ## >>> chart = concept_grid_plot(
 ## ...     #
 ## ...     # FIELD:
@@ -20,16 +20,13 @@ Concept Grid Plot
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
-
-
-
 ## ...     #
 ## ...     # COUNTERS:
 ## ...     .using_term_counters(True)
 ## ...     #
-## ...     # NETWORK PARAMS:
-## ...     algorithm_or_dict="louvain",
-## ...     association_index="association",
+## ...     # NETWORK:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     .using_association_index("association")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

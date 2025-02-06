@@ -11,7 +11,7 @@ Network Plot
 
 
 ## >>> # authors, countries, organizations, sources:
-## >>> from techminer2.analyze.coupling_network import NetworkPlot
+## >>> from techminer2.pkgs.coupling_network import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
 ## ...     .set_analysis_params(
@@ -24,12 +24,12 @@ Network Plot
 ## ...         citations_threshold=0,
 ## ...         occurrence_threshold=2,
 ## ...         custom_terms=None,
-## ...         algorithm_or_dict="louvain",
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
-## ...     ).set_nx_params(
-## ...         nx_k=None,
-## ...         nx_iterations=30,
-## ...         nx_random_state=0,
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
+
 ## ...     #
 ## ...     .using_node_size_range(30, 70)
 ## ...     .using_textfont_size_range(10, 20)
@@ -60,7 +60,7 @@ Network Plot
 
     
 ## >>> # article:
-## >>> from techminer2.analyze.coupling_network import NetworkPlot
+## >>> from techminer2.pkgs.coupling_network import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
 ## ...     unit_of_analysis='article', # article

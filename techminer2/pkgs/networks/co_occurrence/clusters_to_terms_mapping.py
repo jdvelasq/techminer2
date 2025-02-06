@@ -10,15 +10,9 @@ Clusters to Terms Mapping
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_occurrence_network import ClustersToTermsMapping
+## >>> from techminer2.pkgs.co_occurrence_network import ClustersToTermsMapping
 ## >>> mapping = (
 ## ...     ClustersToTermsMapping()
-## ...     .set_analysis_params(
-## ...         algorithm_or_dict="louvain",
-## ...         association_index="association",
-## ...     #
-## ...     # COUNTERS:
-## ...     .using_term_counters(True)
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -27,7 +21,13 @@ Clusters to Terms Mapping
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
-
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+## ...     #
+## ...     # NETWORK:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     .using_association_index("association")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

@@ -10,51 +10,52 @@ Cosine Similarities
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
-## >>> from techminer2.analyze.factor_analysis.co_occurrence import cosine_similarities
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.co_occurrence import cosine_similarities
 ## >>> (
 ## ...     CosineSimilarities()
-## ...     .set_analysis_params(
-## ...         association_index=None,
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).build()
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... ).head()
-                                                            cosine_similariries
-rows                                                                           
-FINTECH 31:5168                                      INNOVATION 07:0911 (0.322)
-INNOVATION 07:0911            FINANCIAL_SERVICES 04:0667 (0.521); TECHNOLOGY...
-FINANCIAL_SERVICES 04:0667    FINANCIAL_TECHNOLOGY 03:0461 (0.645); INNOVATI...
-FINANCIAL_INCLUSION 03:0590   CASE_STUDY 02:0340 (0.923); BLOCKCHAIN 02:0305...
-FINANCIAL_TECHNOLOGY 03:0461  BANKING 02:0291 (0.814); BUSINESS_MODELS 02:07...
+
+
 
     
 """
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import (
-    cosine_similarity as sklearn_cosine_similarity,
-)  # type: ignore
+    cosine_similarity as sklearn_cosine_similarity,  # type: ignore
+)
 
 from .terms_by_dimension_dataframe import terms_by_dimension_frame
 

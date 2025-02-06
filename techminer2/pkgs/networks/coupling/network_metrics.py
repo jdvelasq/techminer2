@@ -10,7 +10,7 @@ Network Metrics
 ===============================================================================
 
 ## >>> # authors, countries, organizations, sources:
-## >>> from techminer2.analyze.coupling_network import NetworkMetrics
+## >>> from techminer2.pkgs.coupling_network import NetworkMetrics
 ## >>> (
 ## ...     NetworkMetrics()
 ## ...     .set_analysis_params(
@@ -43,7 +43,7 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 ## >>> # article:
-## >>> from techminer2.analyze.coupling_network import NetworkMetrics
+## >>> from techminer2.pkgs.coupling_network import NetworkMetrics
 ## >>> (
 ## ...     NetworkMetrics()
 ## ...     unit_of_analysis='article', # article

@@ -9,7 +9,7 @@
 Main Path Documents
 ===============================================================================
 
-## >>> from techminer2.analyze.main_path_analysis import MainPathDocuments
+## >>> from techminer2.pkgs.main_path_analysis import MainPathDocuments
 ## >>> documents = (
 ## ...     MainPathDocuments()
 ## ...     .set_analysis_params(

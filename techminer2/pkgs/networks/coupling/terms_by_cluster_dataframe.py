@@ -9,7 +9,7 @@
 Terms by Cluster Frame
 ===============================================================================
 
-## >>> from techminer2.analyze.coupling_network import terms_by_cluster_frame
+## >>> from techminer2.pkgs.coupling_network import terms_by_cluster_frame
 ## >>> terms_by_cluster_frame(
 ## 
 ## ...         algorithm_or_dict="louvain",
@@ -42,7 +42,7 @@ Terms by Cluster Frame
 
 
 ## >>> # article:
-## >>> from techminer2.analyze.coupling_network import terms_by_cluster_frame
+## >>> from techminer2.pkgs.coupling_network import terms_by_cluster_frame
 ## >>> terms_by_cluster_frame(
 ## ...     .set_analysis_params(
 ## ...         algorithm_or_dict="louvain",

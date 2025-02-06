@@ -9,11 +9,8 @@
 Network Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.co_occurrence_network import network_plot
+## >>> from techminer2.pkgs.co_occurrence_network import network_plot
 ## >>> plot = network_plot(
-## ...     .set_analysis_params(
-## ...         association_index="association",
-## ...         algorithm_or_dict="louvain",
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -22,23 +19,24 @@ Network Plot
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
-
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
 ## ...     #
 ## ...     # NETWORK:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     .using_association_index("association"
+## ...     #
+## ...     # PLOT:
 ## ...     .using_spring_layout_k(None)
 ## ...     .using_spring_layout_iterations(30)
 ## ...     .using_spring_layout_seed(0)
-## 
 ## ...     #
-## ...     ).set_plot_params(
-
 ## ...     .using_node_size_range(30, 70)
 ## ...     .using_textfont_size_range(10, 20)
 ## ...     .using_textfont_opacity_range(0.35, 1.00)
-
-## ...         edge_color="#7793a5",
-## ...         edge_width_range=(0.8, 3.0),
-## ...     #
+## ...     .using_edge_colors(["#7793a5"])
+## ...     .using_edge_width_range(0.8, 3.0)
 ## ...     #
 ## ...     .using_xaxes_range(None, None)
 ## ...     .using_yaxes_range(None, None)

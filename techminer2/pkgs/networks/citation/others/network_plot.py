@@ -10,7 +10,7 @@ Network Plot
 ===============================================================================
 
 ## >>> # abbr_source_title, authors, organizations, countries:
-## >>> from techminer2.analyze.citation_network import NetworkPlot
+## >>> from techminer2.pkgs.citation_network import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
 ## ...     .set_analysis_params(

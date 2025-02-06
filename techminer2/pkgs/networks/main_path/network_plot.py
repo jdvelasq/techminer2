@@ -9,22 +9,29 @@
 Network Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.main_path_analysis import NetworkPlot
+## >>> from techminer2.pkgs.main_path_analysis import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
 ## ...     .set_analysis_params(
 ## ...         top_n=None,
 ## ...         citations_threshold=0,
-## ...     .using_xaxes_range(None, None)
-## ...     .using_yaxes_range(None, None)
-## ...     .using_axes_visible(False)
+
+
+## ...     .using_spring_layout_k(None)
+## ...     .using_spring_layout_iterations(30)
+## ...     .using_spring_layout_seed(0)
 
 ## ...     #
 ## ...     .using_node_size_range(30, 70)
 ## ...     .using_textfont_size_range(10, 20)
 ## ...     .using_textfont_opacity_range(0.35, 1.00)
-## ...         edge_color="#7793a5",
+## ...     .using_edge_colors(["#7793a5"])
 ## ...         edge_width_range=(0.8, 3.0),
+## ...     #
+## ...     .using_xaxes_range(None, None)
+## ...     .using_yaxes_range(None, None)
+## ...     .using_axes_visible(False)
+## ...     #
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

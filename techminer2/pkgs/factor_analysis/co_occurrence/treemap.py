@@ -10,52 +10,63 @@ Treemap
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
-## >>> from sklearn.cluster import KMeans
-## >>> from techminer2.analyze.factor_analysis.co_occurrence import treemap
-## >>> plot = treemap(
-## ...     .set_analysis_params(
-## ...         association_index=None,
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
-## ...         clustering_estimator_or_dict = KMeans(
-## ...             n_clusters=6,
-## ...             init="k-means++",
-## ...             n_init=10,
-## ...             max_iter=300,
-## ...             tol=0.0001,
-## ...             algorithm="elkan",
-## ...             random_state=0,
-## ...         ),
-## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
-## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     #
-## ...     ).build()
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
 ## ... )
-## >>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/treemap.html")
+## >>> from sklearn.cluster import KMeans
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.co_occurrence import treemap
+## >>> plot = (
+## ...     Treemap()
+## ...     #
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
+## ...     #
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
+## ...     #
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
+## ... )
+## >>> # plot.write_html("sphinx/_generated/pkgs/factor_analysis/co_occurrence/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/factor_analysis/co_occurrence/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/factor_analysis/co_occurrence/treemap.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 
 """
 import plotly.express as px  # type: ignore

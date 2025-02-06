@@ -10,53 +10,49 @@ Terms by Dimension Frane
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
-## >>> from techminer2.analyze.factor_analysis.tfidf import terms_by_dimension_frame
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.tfidf import terms_by_dimension_frame
 ## >>> (
-## ...     TermsByDimensionDataFrame(
-## ...     .set_analysis_params(
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
+## ...     TermsByDimensionDataFrame()
 ## ...     #
-## ...     ).set_tf_params(
-## ...         is_binary=True,
-## ...         cooc_within=1,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_tfidf_params(
-## ...         norm=None,
-## ...         use_idf=False,
-## ...         smooth_idf=False,
-## ...         sublinear_tf=False,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
+## ...     .build()
 ## ...     ).build()
 ## ... ).head()
-dim                                  0         1         2         3         4
-author_keywords                                                               
-FINTECH 31:5168               4.959197 -0.131331 -0.127054 -0.021353  0.127476
-INNOVATION 07:0911            0.316050  1.870215  1.111843 -0.552452 -0.021560
-FINANCIAL_SERVICES 04:0667   -0.082353  0.895051  0.128205  1.239682 -0.242869
-FINANCIAL_INCLUSION 03:0590  -0.039071 -0.170843 -0.618483 -0.383141 -0.474122
-FINANCIAL_TECHNOLOGY 03:0461 -0.228786  0.327462 -0.051164  0.419388 -0.291788
+
 
     
 """

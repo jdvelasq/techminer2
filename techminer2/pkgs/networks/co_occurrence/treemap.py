@@ -9,19 +9,22 @@
 Treemap
 ===============================================================================
 
-## >>> from techminer2.analyze.co_occurrence_network import treemap
+## >>> from techminer2.pkgs.co_occurrence_network import treemap
 ## >>> plot = treemap(
-## ...     .set_analysis_params(
-## ...         association_index="association",
-## ...     .set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
 ## ...     #
-## ...     ).set_plot_params(
-## ...         title=None,
+## ...     # FIELD:
+## ...     .with_field("author_keywords")
+## ...     .having_terms_in_top(20)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # NETWORK:
+## ...     .using_association_index("association")
+## ...     #
+## ...     # PLOT:
+## ...     .using_title_text(None)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

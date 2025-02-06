@@ -25,6 +25,7 @@ Ranking Plot
 ...     .having_terms_in(None)
 ...     #
 ...     # PLOT:
+...     .using_line_color("black")
 ...     .using_line_width(1.5)
 ...     .using_marker_size(7)
 ...     .using_textfont_size(10)

@@ -9,7 +9,7 @@
 Node Degree Frame
 ===============================================================================
 
-## >>> from techminer2.analyze.co_citation_network import NodeDegreeDataFrame
+## >>> from techminer2.pkgs.co_citation_network import NodeDegreeDataFrame
 ## >>> (
 ## ...     NodeDegreeDataFrame()
 ## ...     .set_analysis_params(

@@ -10,77 +10,63 @@ Terms to Cluster Mapping
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
 ## >>> from sklearn.cluster import KMeans
-## >>> from techminer2.analyze.factor_analysis.tfidf import terms_to_cluster_mapping
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.tfidf import terms_to_cluster_mapping
 ## >>> mapping = (
 ## ...     TermsToClusterMapping()
-## ...     .set_analysis_params(
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
-## ...         clustering_estimator_or_dict = KMeans(
-## ...             n_clusters=6,
-## ...             init="k-means++",
-## ...             n_init=10,
-## ...             max_iter=300,
-## ...             tol=0.0001,
-## ...             algorithm="elkan",
-## ...             random_state=0,
-## ...         ),
-## ...     ).set_tf_params(
-## ...         is_binary=True,
-## ...         cooc_within=1,
 ## ...     #
-## ...     ).set_tfidf_params(
-## ...         norm=None,
-## ...         use_idf=False,
-## ...         smooth_idf=False,
-## ...         sublinear_tf=False,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
 ## ...     #
-## ...     ).build()
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
 ## >>> from pprint import pprint
 ## >>> pprint(mapping)
-{'ARTIFICIAL_INTELLIGENCE 02:0327': 4,
- 'BANKING 02:0291': 3,
- 'BLOCKCHAIN 02:0305': 0,
- 'BUSINESS_MODELS 02:0759': 2,
- 'CASE_STUDY 02:0340': 0,
- 'CROWDFUNDING 03:0335': 0,
- 'CYBER_SECURITY 02:0342': 0,
- 'FINANCE 02:0309': 4,
- 'FINANCIAL_INCLUSION 03:0590': 0,
- 'FINANCIAL_SERVICES 04:0667': 2,
- 'FINANCIAL_TECHNOLOGY 03:0461': 2,
- 'FINTECH 31:5168': 5,
- 'INNOVATION 07:0911': 3,
- 'LENDINGCLUB 02:0253': 1,
- 'MARKETPLACE_LENDING 03:0317': 1,
- 'PEER_TO_PEER_LENDING 02:0253': 1,
- 'REGTECH 02:0266': 2,
- 'ROBOTS 02:0289': 4,
- 'SHADOW_BANKING 02:0253': 1,
- 'TECHNOLOGY 02:0310': 3}
+
 
 """
 from ..internals.terms_to_cluster_mapping import _terms_to_cluster_mapping

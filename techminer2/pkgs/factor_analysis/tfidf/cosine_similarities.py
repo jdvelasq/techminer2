@@ -10,60 +10,54 @@ Cosine Similarities
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
-## >>> from techminer2.analyze.factor_analysis.tfidf import cosine_similarities
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.tfidf import cosine_similarities
 ## >>> (
 ## ...     CosineSimilarities()
-## ...     .set_analysis_params(
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
 ## ...     #
-## ...     ).set_tf_params(
-## ...         is_binary=True,
-## ...         cooc_within=1,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_tfidf_params(
-## ...         norm=None,
-## ...         use_idf=False,
-## ...         smooth_idf=False,
-## ...         sublinear_tf=False,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
-## ...     #
-## ...     ).build()
+## ...     .build()
 ## ... ).head()
-                                                            cosine_similariries
-author_keywords                                                                
-FINTECH 31:5168                                      INNOVATION 07:0911 (0.106)
-INNOVATION 07:0911            TECHNOLOGY 02:0310 (0.771); BANKING 02:0291 (0...
-FINANCIAL_SERVICES 04:0667    FINANCIAL_TECHNOLOGY 03:0461 (0.885); BUSINESS...
-FINANCIAL_INCLUSION 03:0590   CASE_STUDY 02:0340 (0.971); BLOCKCHAIN 02:0305...
-FINANCIAL_TECHNOLOGY 03:0461  FINANCIAL_SERVICES 04:0667 (0.885); BUSINESS_M...
+
     
 """
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import (
-    cosine_similarity as sklearn_cosine_similarity,
-)  # type: ignore
+    cosine_similarity as sklearn_cosine_similarity,  # type: ignore
+)
 
 from .terms_by_dimension_dataframe import terms_by_dimension_frame
 

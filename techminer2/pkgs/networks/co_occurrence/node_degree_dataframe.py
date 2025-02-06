@@ -9,11 +9,9 @@
 Node Degree Frame
 ===============================================================================
 
-## >>> from techminer2.analyze.co_occurrence_network import NodeDegreeDataFrame
+## >>> from techminer2.pkgs.co_occurrence_network import NodeDegreeDataFrame
 ## >>> (
 ## ...     NodeDegreeDataFrame()
-## ...     .set_analysis_params(
-## ...        association_index="association",
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -22,6 +20,12 @@ Node Degree Frame
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
+## ...     #
+## ...     # COUNTERS:
+## ...     .using_term_counters(True)
+## ...     #
+## ...     # NETWORK:
+## ...     .using_association_index("association")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

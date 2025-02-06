@@ -10,58 +10,59 @@ Terms by Cluster Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
 ## >>> from sklearn.cluster import KMeans
-## >>> from techminer2.analyze.factor_analysis.co_occurrence import terms_by_cluster_frame
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.co_occurrence import terms_by_cluster_frame
 ## >>> (
 ## ...     TermsByClusterDataFrame()
-## ...     .set_analysis_params(
-## ...         association_index=None,
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
-## ...         #
-## ...         # CLUSTERING:
-## ...         clustering_estimator_or_dict = KMeans(
-## ...             n_clusters=6,
-## ...             init="k-means++",
-## ...             n_init=10,
-## ...             max_iter=300,
-## ...             tol=0.0001,
-## ...             algorithm="elkan",
-## ...             random_state=0,
-## ...         ),
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).build()
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
+## ...     #
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... ).head()
-                                 0  ...                   5
-0          BUSINESS_MODELS 02:0759  ...  INNOVATION 07:0911
-1  ARTIFICIAL_INTELLIGENCE 02:0327  ...                    
-2                  FINANCE 02:0309  ...                    
-3                   ROBOTS 02:0289  ...                    
-4                  REGTECH 02:0266  ...                    
-<BLANKLINE>
-[5 rows x 6 columns]
-    
+
+
+
 """
 import pandas as pd  # type: ignore
 

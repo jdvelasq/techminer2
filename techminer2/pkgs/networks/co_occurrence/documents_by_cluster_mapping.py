@@ -9,13 +9,14 @@
 Terms to Cluster Mapping
 ===============================================================================
 
-
-## >>> from techminer2.analyze.co_occurrence_network import DocumentsByClusterMapping
+## >>> # where_records_ordered_by: date_newest, date_oldest, global_cited_by_highest, 
+## >>> #                           global_cited_by_lowest, local_cited_by_highest, 
+## >>> #                           local_cited_by_lowest, first_author_a_to_z, 
+## >>> #                           first_author_z_to_a, source_title_a_to_z, 
+## >>> #                           source_title_z_to_a
+## >>> from techminer2.pkgs.co_occurrence_network import DocumentsByClusterMapping
 ## >>> documents_by_cluster = (
 ## ...     DocumentsByClusterMapping()
-## ...     .set_analysis_params(
-## ...         algorithm_or_dict="louvain",
-## ...         association_index="association",
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -24,7 +25,10 @@ Terms to Cluster Mapping
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
-
+## ...     #
+## ...     # NETWORK:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     .using_association_index("association")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -32,12 +36,7 @@ Terms to Cluster Mapping
 ## ...     .where_record_years_between(None, None)
 ## ...     .where_record_citations_between(None, None)
 ## ...     .where_records_match(None)
-
-## ...         sort_by="date_newest", # date_newest, date_oldest, global_cited_by_highest, 
-## ...                                # global_cited_by_lowest, local_cited_by_highest, 
-## ...                                # local_cited_by_lowest, first_author_a_to_z, 
-## ...                                # first_author_z_to_a, source_title_a_to_z, 
-## ...                                # source_title_z_to_a
+## ...     .where_records_ordered_by("date_newest")
 ## ...     #
 ## ...     .build()
 ## ... )

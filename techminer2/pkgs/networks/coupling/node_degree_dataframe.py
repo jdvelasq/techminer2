@@ -9,7 +9,7 @@
 Network Degree Frame
 ===============================================================================
 
-## >>> from techminer2.analyze.coupling_network import NodeDegreeDataFrame
+## >>> from techminer2.pkgs.coupling_network import NodeDegreeDataFrame
 ## >>> (
 ## ...     NodeDegreeDataFrame()
 ## ...     .set_analysis_params(
@@ -46,7 +46,7 @@ Network Degree Frame
 
 
 ## >>> # article:
-## >>> from techminer2.analyze.coupling_network import node_degree_frame
+## >>> from techminer2.pkgs.coupling_network import node_degree_frame
 ## >>> node_degree_frame(
 ## ...     unit_of_analysis='article', # article
 ## ...                                 # authors 

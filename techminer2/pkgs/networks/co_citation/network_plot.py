@@ -9,7 +9,7 @@
 Network Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.co_citation_network import NetworkPlot
+## >>> from techminer2.pkgs.co_citation_network import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
 ## ...     .set_analysis_params(
@@ -19,7 +19,7 @@ Network Plot
 ## ...         top_n=30, 
 ## ...         citations_threshold=None,
 ## ...         custom_terms=None,
-## ...         algorithm_or_dict="louvain",
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     #
 ## ...     # NETWORK:

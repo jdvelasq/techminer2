@@ -9,39 +9,41 @@ Documents by Theme Frame
 ===============================================================================
 
 
-## >>> from techminer2.analyze.topic_modeling import documents_by_theme_frame
 ## >>> from sklearn.decomposition import LatentDirichletAllocation
+## >>> lda = LatentDirichletAllocation(
+## ...     n_components=10,
+## ...     learning_decay=0.7,
+## ...     learning_offset=50.0,
+## ...     max_iter=10,
+## ...     batch_size=128,
+## ...     evaluate_every=-1,
+## ...     perp_tol=0.1,
+## ...     mean_change_tol=0.001,
+## ...     max_doc_update_iter=100,
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.topic_modeling import documents_by_theme_frame
 ## >>> (
-## ...     DocumentsByThemeDataFrame(
-## ...         sklearn_estimator=LatentDirichletAllocation(
-## ...             n_components=10,
-## ...             learning_decay=0.7,
-## ...             learning_offset=50.0,
-## ...             max_iter=10,
-## ...             batch_size=128,
-## ...             evaluate_every=-1,
-## ...             perp_tol=0.1,
-## ...             mean_change_tol=0.001,
-## ...             max_doc_update_iter=100,
-## ...             random_state=0,
-## ...         ),
-## ...         n_top_terms=5,
-## ...     .set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=None,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     DocumentsByThemeDataFrame()
 ## ...     #
-## ...     ).set_tf_params(
-## ...         is_binary=True,
-## ...         cooc_within=2,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_tfidf_params(
-## ...         norm=None,
-## ...         use_idf=False,
-## ...         smooth_idf=False,
-## ...         sublinear_tf=False,
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(lda)
+## ...     .using_top_terms_by_theme(5)
+## ...     #
+## ...     # TFIDF:
+## ...     .using_binary_term_frequencies(False)
+## ...     .using_row_normalization(None)
+## ...     .using_idf_reweighting(False)
+## ...     .using_idf_weights_smoothing(False)
+## ...     .using_sublinear_tf_scaling(False)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -54,15 +56,6 @@ Documents by Theme Frame
 ## ...     #
 ## ...     ).build()
 ## ... ).head()
-cluster                                                0  ...         9
-article                                                   ...          
-Anagnostopoulos I., 2018, J ECON BUS, V100, P7  0.871422  ...  0.014286
-Anshari M., 2019, ENERGY PROCEDIA, V156, P234   0.014286  ...  0.014286
-Buchak G., 2018, J FINANC ECON, V130, P453      0.014287  ...  0.014287
-Cai C.W., 2018, ACCOUNT FINANC, V58, P965       0.020003  ...  0.020001
-Chen L., 2016, CHINA ECON J, V9, P225           0.025005  ...  0.774979
-<BLANKLINE>
-[5 rows x 10 columns]
 
 
 """

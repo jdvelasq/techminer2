@@ -10,55 +10,59 @@ Cluster Centers Frame
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
 ## >>> from sklearn.cluster import KMeans
-## >>> from techminer2.analyze.factor_analysis.co_occurrence import cluster_centers_frame
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.co_occurrence import cluster_centers_frame
 ## >>> (
 ## ...     ClusterCentersDataFrame()
-## ...     .set_analysis_params(
-## ...         association_index=None,
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
-## ...         clustering_estimator_or_dict = KMeans(
-## ...             n_clusters=6,
-## ...             init="k-means++",
-## ...             n_init=10,
-## ...             max_iter=300,
-## ...             tol=0.0001,
-## ...             algorithm="elkan",
-## ...             random_state=0,
-## ...         ),
 ## ...     #
-## ...     ).set_item_params(
-## ...         field="author_keywords",
-## ...         top_n=20,
-## ...         occ_range=(None, None),
-## ...         gc_range=(None, None),
-## ...         custom_terms=None,
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
+## ...     .having_terms_ordered_by("OCC")
+## ...     .having_term_occurrences_between(None, None)
+## ...     .having_term_citations_between(None, None)
+## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_database_params(
-## ...         root_dir="example/", 
-## ...         database="main",
-## ...         year_filter=(None, None),
-## ...         cited_by_filter=(None, None),
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
 ## ...     #
-## ...     ).build()
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
+## ...     #
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
 ## ... )
-dim              0         1         2         3         4
-cluster                                                   
-0        -2.295491  0.081013 -1.030189  0.325448  1.224114
-1        -1.497389 -0.514843 -1.479097 -0.659790 -0.908773
-2        -1.169941 -2.758694  2.169137  0.055023 -0.042967
-3        -1.848206  1.992721  0.417640  0.670726 -0.381834
-4        28.659528 -0.524730 -0.513789 -0.042977  0.238539
-5         2.377465  5.757771  2.713115 -1.188306 -0.116040
+
+
+
 
 """
 from .terms_by_dimension_dataframe import terms_by_dimension_frame

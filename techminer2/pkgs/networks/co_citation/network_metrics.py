@@ -10,7 +10,7 @@ Network Metrics
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_citation_network import NetworkMetrics
+## >>> from techminer2.pkgs.co_citation_network import NetworkMetrics
 ## >>> (
 ## ...     NetworkMetrics()
 ## ...     .set_analysis_params(

@@ -10,66 +10,65 @@ Factor Map
 ===============================================================================
 
 ## >>> from sklearn.decomposition import PCA
+## >>> pca = PCA(
+## ...     n_components=5,
+## ...     whiten=False,
+## ...     svd_solver="auto",
+## ...     tol=0.0,
+## ...     iterated_power="auto",
+## ...     n_oversamples=10,
+## ...     power_iteration_normalizer="auto",
+## ...     random_state=0, 
+## ... )
 ## >>> from sklearn.cluster import KMeans
-## >>> from techminer2.analyze.factor_analysis.co_occurrence import factor_map
+## >>> kmeans = KMeans(
+## ...     n_clusters=6,
+## ...     init="k-means++",
+## ...     n_init=10,
+## ...     max_iter=300,
+## ...     tol=0.0001,
+## ...     algorithm="elkan",
+## ...     random_state=0,
+## ... )
+## >>> from techminer2.pkgs.factor_analysis.co_occurrence import factor_map
 ## >>> plot = (
 ## ...     FactorMap()
-## ...     .set_analysis_params(
-## ...         association_index=None,
-## ...         decomposition_estimator = PCA(
-## ...             n_components=5,
-## ...             whiten=False,
-## ...             svd_solver="auto",
-## ...             tol=0.0,
-## ...             iterated_power="auto",
-## ...             n_oversamples=10,
-## ...             power_iteration_normalizer="auto",
-## ...             random_state=0, 
-## ...         ),
-## ...         #
-## ...         # CLUSTERING:
-## ...         clustering_estimator_or_dict = KMeans(
-## ...             n_clusters=6,
-## ...             init="k-means++",
-## ...             n_init=10,
-## ...             max_iter=300,
-## ...             tol=0.0001,
-## ...             algorithm="elkan",
-## ...             random_state=0,
-## ...         ),
-
 ## ...     #
-## ...     # COLUMNS:
-## ...     .with_field("author_keywords")
-## ...     .having_terms_in_top(20)
+## ...     # FIELD:
+## ...     .with_field("descriptors")
+## ...     .having_terms_in_top(50)
 ## ...     .having_terms_ordered_by("OCC")
-## ...     .having_term_occurrences_between(2, None)
+## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
-
+## ...     #
+## ...     # DECOMPOSITION:
+## ...     .using_decomposition_estimator(pca)
+## ...     #
+## ...     # CLUSTERING:
+## ...     .using_clustering_estimator_or_dict(kmeans)
+## ...     #
+## ...     # ASSOCIATION INDEX:
+## ...     .using_association_index(None)
 ## ...     #
 ## ...     # NETWORK:
 ## ...     .using_spring_layout_k(None)
 ## ...     .using_spring_layout_iterations(30)
 ## ...     .using_spring_layout_seed(0)
-
 ## ...     #
-## ...     ).set_plot_params(
-## ...         node_color="#7793a5",
-
+## ...     .using_node_colors(["#7793a5"])
 ## ...     .using_node_size_range(30, 70)
 ## ...     .using_textfont_size_range(10, 20)
 ## ...     .using_textfont_opacity_range(0.35, 1.00)
-
-## ...         edge_top_n=None,
-## ...         edge_similarity_min=None,
-## ...         edge_widths=(2, 2, 4, 6),
-## ...         edge_colors=("#7793a5", "#7793a5", "#7793a5", "#7793a5"),
+## ...     #
+## ...     .using_edge_colors(["#7793a5", "#7793a5", "#7793a5", "#7793a5"])
+## ...     .using_edge_similarity_threshold(0)
+## ...     .using_edge_top_n(None)
+## ...     .using_edge_widths([2, 2, 4, 6])
 ## ...     #
 ## ...     .using_xaxes_range(None, None)
 ## ...     .using_yaxes_range(None, None)
 ## ...     .using_axes_visible(False)
-
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -80,12 +79,12 @@ Factor Map
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> # plot.write_html("sphinx/_static/factor_analysis/co_occurrence/factor_map.html")
+## >>> # plot.write_html("sphinx/_generated/pkgs/factor_analysis/co_occurrence/factor_map_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/factor_analysis/co_occurrence/factor_map.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/factor_analysis/co_occurrence/factor_map_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 

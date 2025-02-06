@@ -10,7 +10,7 @@ Node Density Plot
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_citation_network import NodeDensityPlot
+## >>> from techminer2.pkgs.co_citation_network import NodeDensityPlot
 ## >>> plot = (
 ## ...     NodeDensityPlot()
 ## ...     .set_analysis_params(
@@ -20,7 +20,7 @@ Node Density Plot
 ## ...         top_n=30, 
 ## ...         citations_threshold=None,
 ## ...         custom_terms=None,
-## ...         algorithm_or_dict="louvain",
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # NETWORK:
 ## ...     .using_spring_layout_k(None)

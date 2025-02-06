@@ -10,7 +10,7 @@ Terms by Cluster Frame
 ===============================================================================
 
 
-## >>> from techminer2.analyze.co_citation_network import terms_by_cluster_frame
+## >>> from techminer2.pkgs.co_citation_network import terms_by_cluster_frame
 ## >>> terms_by_cluster_frame(
 ## ...     .set_analysis_params(
 ## ...         unit_of_analysis="cited_sources", # "cited_sources", 
@@ -19,7 +19,7 @@ Terms by Cluster Frame
 ## ...         top_n=30, 
 ## ...         citations_threshold=None,
 ## ...         custom_terms=None,
-## ...         algorithm_or_dict="louvain",
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

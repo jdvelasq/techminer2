@@ -9,11 +9,9 @@
 Node Degree Plot
 ===============================================================================
 
-## >>> from techminer2.analyze.co_occurrence_network import NodeDegreePlot
+## >>> from techminer2.pkgs.co_occurrence_network import NodeDegreePlot
 ## >>> plot = (
 ## ...     NodeDegreePlot()
-## ...     .set_analysis_params(
-## ...         association_index="association",
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
@@ -23,12 +21,15 @@ Node Degree Plot
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
 ## ...     #
-## ...     ).set_plot_params(
-## ...         textfont_size=10,
-## ...         marker_size=7,
-## ...         line_color="black",
-## ...         line_width=1.5,
-## ...         yshift=4,
+## ...     # NETWORK:
+## ...     .using_association_index("association")
+## ...     #
+## ...     # PLOT:
+## ...     .using_line_color("black")
+## ...     .using_line_width(1.5)
+## ...     .using_marker_size(7)
+## ...     .using_textfont_size(10)
+## ...     .using_yshift(4)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")

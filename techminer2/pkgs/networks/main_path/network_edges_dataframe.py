@@ -9,7 +9,7 @@
 Network Edges Frame
 ===============================================================================
 
-## >>> from techminer2.analyze.main_path_analysis import network_edges_frame
+## >>> from techminer2.pkgs.main_path_analysis import network_edges_frame
 ## >>> (
 ## ...     NetworkEdgesDataFrame()
 ## ...     .set_analysis_params(
