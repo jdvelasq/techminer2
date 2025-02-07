@@ -63,32 +63,18 @@ Network Plot
 
 """
 from ......internals.mixins import InputFunctionsMixin
-from ......internals.nx.assign_constant_to_edge_colors import (
+from ......internals.nx import (
     internal__assign_constant_to_edge_colors,
-)
-from ......internals.nx.assign_edge_widths_based_on_weight import (
     internal__assign_edge_widths_based_on_weight,
-)
-from ......internals.nx.assign_node_colors_based_on_group_attribute import (
     internal__assign_node_colors_based_on_group_attribute,
-)
-from ......internals.nx.assign_node_sizes_based_on_occurrences import (
     internal__assign_node_sizes_based_on_occurrences,
-)
-from ......internals.nx.assign_text_positions_based_on_quadrants import (
     internal__assign_text_positions_based_on_quadrants,
-)
-from ......internals.nx.assign_textfont_opacity_based_on_occurrences import (
     internal__assign_textfont_opacity_based_on_occurrences,
-)
-from ......internals.nx.assign_textfont_sizes_based_on_occurrences import (
     internal__assign_textfont_sizes_based_on_occurrences,
-)
-from ......internals.nx.cluster_network_graph import internal__cluster_network_graph
-from ......internals.nx.compute_spring_layout_positions import (
+    internal__cluster_network_graph,
     internal__compute_spring_layout_positions,
+    internal__plot_network_graph,
 )
-from ......internals.nx.plot_network_graph import internal__plot_network_graph
 from .create_nx_graph import internal__create_nx_graph
 
 UNIT_OF_ANALYSIS = "abbr_source_title"

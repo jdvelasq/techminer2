@@ -13,8 +13,8 @@ import numpy as np
 
 
 def internal__assign_textfont_opacity_based_on_citations(
+    params,
     nx_graph,
-    textfont_opacity_range,
 ):
     #
     # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
@@ -26,17 +26,19 @@ def internal__assign_textfont_opacity_based_on_citations(
     #
     # Set the lower value of the node size to node_size_min
     min_citations = min(citations)
-    textfont_opacities = citations - min_citations + textfont_opacity_range[0]
+    textfont_opacities = citations - min_citations + params.textfont_opacity_range[0]
 
     #
     # Checks if node_sizes.max() > node_size_max and, if so, rescales
-    if textfont_opacities.max() > textfont_opacity_range[1]:
+    if textfont_opacities.max() > params.textfont_opacity_range[1]:
         #
         # Scales the node size to the range [node_size_min, node_size_max]
-        textfont_opacities -= textfont_opacity_range[0]
+        textfont_opacities -= params.textfont_opacity_range[0]
         textfont_opacities /= textfont_opacities.max()
-        textfont_opacities *= textfont_opacity_range[1] - textfont_opacity_range[0]
-        textfont_opacities += textfont_opacity_range[0]
+        textfont_opacities *= (
+            params.textfont_opacity_range[1] - params.textfont_opacity_range[0]
+        )
+        textfont_opacities += params.textfont_opacity_range[0]
 
     #
     # Sets the value of node_size

@@ -14,13 +14,11 @@ from cdlib import algorithms  # type: ignore
 
 
 def internal__cluster_network_graph(
-    #
-    # FUNCTION PARAMS:
+    params,
     nx_graph,
-    #
-    # NETWORK CLUSTERING:
-    algorithm_or_dict="louvain",
 ):
+
+    algorithm_or_dict = params.clustering_algorithm_or_dict
 
     if isinstance(algorithm_or_dict, str):
         return _apply_cdlib_algorithm(nx_graph, algorithm_or_dict)

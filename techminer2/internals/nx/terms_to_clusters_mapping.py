@@ -8,10 +8,12 @@
 
 
 def internal__terms_to_clusters_mapping(
+    params,
     nx_graph,
-    retain_counters,
 ):
     """Creates a dictionary with terms as keys and clusters as values."""
+
+    retain_counters = params.term_counters
 
     mapping = {}
 

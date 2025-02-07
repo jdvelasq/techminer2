@@ -17,7 +17,6 @@ Network Edges Frame
 ## ...     .having_terms_in_top(None)
 ## ...     .having_citation_threshold(0)
 ## ...     #
-## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
 ## ...     .where_database_is("main")

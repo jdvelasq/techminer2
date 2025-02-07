@@ -140,6 +140,7 @@ class Params:
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
     textfont_color: str = "#465c6b"
+    textfont_opacity: float = 1.0
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_size_range: Tuple[int, int] = (8, 16)
     textfont_size: float = 10
@@ -428,6 +429,10 @@ class InputFunctionsMixin:
     def using_textfont_color(self, color):
         self.params.textfont_color = color
         return self
+
+    def using_textfont_opacity(self, opacity):
+        self.params.textfont_opacity = opacity
+        return
 
     def using_textfont_opacity_range(self, min_opacity, max_opacity):
         self.params.textfont_opacity_range = (min_opacity, max_opacity)

@@ -13,10 +13,12 @@ from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
 
 
 def internal__extract_communities_to_frame(
+    params,
     nx_graph,
-    conserve_counters,
 ):
     """Gets communities from a networkx graph as a data frame."""
+
+    conserve_counters = params.term_counters
 
     communities = internal__clusters_to_terms_mapping(nx_graph, conserve_counters)
     communities = pd.DataFrame.from_dict(communities, orient="index").T

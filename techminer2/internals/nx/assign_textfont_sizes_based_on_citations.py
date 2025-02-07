@@ -13,9 +13,11 @@ import numpy as np
 
 
 def internal__assign_textfont_sizes_based_on_citations(
+    params,
     nx_graph,
-    textfont_size_range,
 ):
+    textfont_size_range = params.textfont_size_range
+
     #
     # Extracs occurrences from node names. Example: 'regtech 10:100' -> 10
     citations = list(nx_graph.nodes())

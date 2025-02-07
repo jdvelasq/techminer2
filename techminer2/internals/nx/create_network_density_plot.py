@@ -13,19 +13,13 @@ from sklearn.neighbors import KernelDensity
 
 
 def internal__create_network_density_plot(
-    #
-    # FUNCTION PARAMS:
+    params,
     nx_graph,
-    #
-    # NETWORK PARAMS:
-    bandwidth="silverman",
-    colorscale="Aggrnyl",
-    opacity=0.5,
-    # n_labels=None,
-    # xaxes_range=None,
-    # yaxes_range=None,
-    # show_axes=False,
 ):
+    bandwidth = params.kernel_bandwidth
+    colorscale = params.colormap
+    opacity = params.contour_opacity
+
     #
     # Network node positions
     node_x = [data["x"] for _, data in nx_graph.nodes(data=True)]

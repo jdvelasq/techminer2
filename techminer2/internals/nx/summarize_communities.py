@@ -13,10 +13,12 @@ from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
 
 
 def internal__summarize_communities(
+    params,
     nx_graph,
-    conserve_counters,
 ):
     """Gets communities from a networkx graph as a data frame."""
+
+    conserve_counters = params.term_counters
 
     communities_dict = internal__clusters_to_terms_mapping(
         nx_graph, retain_counters=conserve_counters

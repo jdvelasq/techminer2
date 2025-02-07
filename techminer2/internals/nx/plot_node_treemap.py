@@ -31,17 +31,15 @@ from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
 
 
 def internal__plot_node_treemap(
-    #
-    # NETWORKX GRAPH:
+    params,
     nx_graph,
-    #
-    # CHART PARAMS:
-    title=None,
 ):
     """Creates a treemap.
 
     :meta private:
     """
+
+    title = params.title_text
 
     node_occ = []
     node_color = []

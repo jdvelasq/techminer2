@@ -7,10 +7,10 @@
 # pylint: disable=too-many-statements
 
 
-def internal__assign_constant_to_text_opacity(
+def internal__assign_constant_to_textfont_opacity(
+    params,
     nx_graph,
-    opacity,
 ):
     for node in nx_graph.nodes():
-        nx_graph.nodes[node]["textfont_opacity"] = opacity
+        nx_graph.nodes[node]["textfont_opacity"] = params.textfont_opacity
     return nx_graph

@@ -4,7 +4,9 @@
 from .assign_constant_to_edge_colors import internal__assign_constant_to_edge_colors
 from .assign_constant_to_node_colors import internal__assign_constant_to_node_colors
 from .assign_constant_to_node_sizes import internal__assign_constant_to_node_sizes
-from .assign_constant_to_text_opacity import internal__assign_constant_to_text_opacity
+from .assign_constant_to_textfont_opacity import (
+    internal__assign_constant_to_textfont_opacity,
+)
 from .assign_constant_to_textfont_sizes import (
     internal__assign_constant_textfont_size_to_nodes,
 )
@@ -71,7 +73,7 @@ __all__ = [
     "assign_edge_colors_based_on_weight",
     "assign_node_colors_based_on_group_attribute",
     "assign_constant_to_node_colors",
-    "assign_constant_to_text_opacity",
+    "assign_constant_to_textfont_opacity",
     "assign_constant_to_node_sizes",
     "assign_constant_to_textfont_sizes",
     "assign_degree_to_nodes",

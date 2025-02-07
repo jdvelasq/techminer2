@@ -13,8 +13,8 @@ import numpy as np
 
 
 def internal__assign_node_sizes_based_on_degree(
+    params,
     nx_graph,
-    node_size_range,
 ):
     #
     # Compute node degree
@@ -26,17 +26,17 @@ def internal__assign_node_sizes_based_on_degree(
     #
     # Set the lower value of the node size to node_size_min
     min_degree = min(degrees)
-    node_sizes = degrees - min_degree + node_size_range[0]
+    node_sizes = degrees - min_degree + params.node_size_range[0]
 
     #
     # Checks if node_sizes.max() > node_size_max and, if so, rescales
-    if node_sizes.max() > node_size_range[1]:
+    if node_sizes.max() > params.node_size_range[1]:
         #
         # Scales the node size to the range [node_size_range[0], node_size_range[1]]
-        node_sizes -= node_size_range[0]
-        node_sizes /= node_sizes.max() - node_size_range[0]
-        node_sizes *= node_size_range[1] - node_size_range[0]
-        node_sizes += node_size_range[0]
+        node_sizes -= params.node_size_range[0]
+        node_sizes /= node_sizes.max() - params.node_size_range[0]
+        node_sizes *= params.node_size_range[1] - params.node_size_range[0]
+        node_sizes += params.node_size_range[0]
 
     #
     # Sets the value of node_size

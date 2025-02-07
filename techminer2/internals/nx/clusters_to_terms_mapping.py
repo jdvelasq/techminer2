@@ -8,10 +8,12 @@
 
 
 def internal__clusters_to_terms_mapping(
+    params,
     nx_graph,
-    retain_counters,
 ):
     """Gets communities from a networkx graph as a dictionary."""
+
+    retain_counters = params.term_counters
 
     mapping = {}
 

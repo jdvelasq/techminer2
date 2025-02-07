@@ -8,9 +8,9 @@
 
 
 def internal__assign_constant_textfont_size_to_nodes(
+    params,
     nx_graph,
-    textfont_size,
 ):
     for node in nx_graph.nodes():
-        nx_graph.nodes[node]["textfont_size"] = textfont_size
+        nx_graph.nodes[node]["textfont_size"] = params.textfont_size
     return nx_graph

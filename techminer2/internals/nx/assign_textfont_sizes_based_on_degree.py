@@ -13,9 +13,11 @@ import numpy as np
 
 
 def internal__assign_textfont_sizes_based_on_degree(
+    params,
     nx_graph,
-    textfont_size_range,
 ):
+    textfont_size_range = params.textfont_size_range
+
     #
     # Compute node degree
     degrees = []
