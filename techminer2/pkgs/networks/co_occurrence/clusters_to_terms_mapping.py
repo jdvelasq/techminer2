@@ -61,7 +61,7 @@ Clusters to Terms Mapping
 
 
 """
-from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
+from ....internals.nx.cluster_nx_graph import internal__cluster_nx_graph
 from ....internals.nx.create_clusters_to_terms_mapping import (
     internal__create_clusters_to_terms_mapping,
 )
@@ -117,7 +117,7 @@ def clusters_to_terms_mapping(
         **filters,
     )
 
-    nx_graph = internal__cluster_network_graph(
+    nx_graph = internal__cluster_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

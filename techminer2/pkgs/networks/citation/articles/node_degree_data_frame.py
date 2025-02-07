@@ -9,31 +9,39 @@
 Node Degree Dataframe
 ===============================================================================
 
-## >>> from techminer2.pkgs.citation_network.articles  import NodeDegreeDataFrame
-## >>> (
-## ...     NodeDegreeDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
+>>> from techminer2.pkgs.networks.citation.articles  import NodeDegreeDataFrame
+>>> (
+...     NodeDegreeDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+   Node                                               Name  Degree
+0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
+1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
+2     2  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
+3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
+4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       2
 
 
 
 """
 from .....internals.mixins import InputFunctionsMixin
-
-# from ....internals.nx.nx_degree_frame import nx_degree_frame
+from .....internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degrees_data_frame,
+)
 from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
 
@@ -45,9 +53,8 @@ class NodeDegreeDataFrame(
     def build(self):
 
         nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
 
-        return nx_degree_frame(
-            #
-            # FUNCTION PARAMS:
-            nx_graph=nx_graph,
-        )
+        return data_frame

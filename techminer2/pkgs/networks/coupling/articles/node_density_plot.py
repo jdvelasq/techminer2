@@ -52,7 +52,7 @@ Network Density Plot
 from .....internals.mixins import InputFunctionsMixin
 from .....internals.nx import (
     internal__assign_textfont_sizes_based_on_citations,
-    internal__cluster_network_graph,
+    internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
     internal__create_network_density_plot,
 )
@@ -110,7 +110,7 @@ def _node_density_plot(
         **filters,
     )
 
-    nx_graph = internal__cluster_network_graph(
+    nx_graph = internal__cluster_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

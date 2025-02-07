@@ -9,38 +9,36 @@
 Node Degree Plot
 ===============================================================================
 
-## >>> # article:
-## >>> from techminer2.pkgs.citation_network import NodeDegreePlot
-## >>> plot = (
-## ...     NodeDegreePlot()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     ).set_plot_params(
-## ...         textfont_size=10,
-## ...         marker_size=7,
-## ...         line_color="black",
-## ...         line_width=1.5,
-## ...         yshift=4,
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> plot.write_html("sphinx/_static/citation_network/article_degree_plot.html")
+>>> from techminer2.pkgs.networks.citation.articles import NodeDegreePlot
+>>> plot = (
+...     NodeDegreePlot()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     #
+...     # PLOT:
+...     .using_textfont_size(10)
+...     .using_marker_size(7)
+...     .using_line_color("black")
+...     .using_line_width(1.5)
+...     .using_yshift(4)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/node_degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/citation_network/article_degree_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../_generated/pkgs/networks/citation/articles/node_degree_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 from .....internals.mixins import InputFunctionsMixin
@@ -64,6 +62,6 @@ class NodeDegreePlot(
         nx_graph = internal__assign_degree_to_nodes(nx_graph)
         node_degrees = internal__collect_node_degrees(nx_graph)
         data_frame = internal__create_node_degrees_data_frame(node_degrees)
-        plot = internal__create_node_degree_plot(data_frame)
+        plot = internal__create_node_degree_plot(self.params, data_frame)
 
         return plot

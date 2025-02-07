@@ -21,19 +21,19 @@ def _step_01_load_records(params):
 def _step_02_sort_and_filter_records(params, records):
 
     records = records.sort_values(
-        ["global_citations", "local_citations", "year", "article"],
+        ["global_citations", "local_citations", "year", "record_id"],
         ascending=[False, False, False, True],
     )
 
     # Note: Same order of selection of VOSviewer
-    if params.citations_threshold is not None:
-        records = records.loc[records.global_citations >= params.citations_threshold, :]
+    if params.citation_threshold is not None:
+        records = records.loc[records.global_citations >= params.citation_threshold, :]
     if params.top_n is not None:
         records = records.head(params.top_n)
 
     #
     # data_frame contains the citing and cited articles.
-    records = records[["article", "local_references", "global_citations"]]
+    records = records[["record_id", "local_references", "global_citations"]]
 
     return records
 
@@ -50,7 +50,9 @@ def _step_03_explode_local_references(data_frame):
 def _step_04_get_dataframe_with_links(data_frame):
     # Local references must be in article column
     data_frame_with_links = data_frame[
-        data_frame["local_references"].map(lambda x: x in data_frame.article.to_list())
+        data_frame["local_references"].map(
+            lambda x: x in data_frame.record_id.to_list()
+        )
     ]
     return data_frame_with_links
 
@@ -65,14 +67,14 @@ def _step_05_adds_citations_to_the_article(records, data_frame, data_frame_with_
     rename_dict = {
         key: value
         for key, value in zip(
-            data_frame["article"].to_list(),
+            data_frame["record_id"].to_list(),
             (
-                data_frame["article"] + data_frame["global_citations"].map(fmt.format)
+                data_frame["record_id"] + data_frame["global_citations"].map(fmt.format)
             ).to_list(),
         )
     }
     #
-    data_frame_with_links.loc[:, "article"] = data_frame_with_links["article"].map(
+    data_frame_with_links.loc[:, "record_id"] = data_frame_with_links["record_id"].map(
         rename_dict
     )
     data_frame_with_links.loc[:, "local_references"] = data_frame_with_links[
@@ -91,7 +93,7 @@ def _step_06_adds_links_to_the_network(data_frame_with_links, nx_graph):
     # Adds the links to the network:
     for _, row in data_frame_with_links.iterrows():
         nx_graph.add_weighted_edges_from(
-            ebunch_to_add=[(row.local_references, row.article, 1)],
+            ebunch_to_add=[(row.local_references, row.record_id, 1)],
             dash="solid",
         )
 

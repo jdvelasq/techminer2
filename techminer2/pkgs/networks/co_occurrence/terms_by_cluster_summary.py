@@ -49,7 +49,7 @@ Terms by Cluster Summary
 
 
 """
-from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
+from ....internals.nx.cluster_nx_graph import internal__cluster_nx_graph
 from ....internals.nx.summarize_communities import internal__summarize_communities
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
@@ -105,7 +105,7 @@ def terms_by_cluster_summary(
         **filters,
     )
 
-    nx_graph = internal__cluster_network_graph(
+    nx_graph = internal__cluster_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

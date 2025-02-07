@@ -9,42 +9,42 @@
 Network Plot
 ===============================================================================
 
-## >>> from techminer2.pkgs.citation_network.articles import NetworkPlot
-## >>> plot = (
-## ...     NetworkPlot()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
-## ...     #
-## ...     # NETWORK:
-## ...     .using_spring_layout_k(None)
-## ...     .using_spring_layout_iterations(30)
-## ...     .using_spring_layout_seed(0)
-## ...     #
-## ...     .using_edge_colors(["#7793a5"])
-## ...     .using_edge_width_range(0.8, 3.0)
-## ...     .using_node_size_range(30, 70)
-## ...     .using_textfont_opacity_range(0.35, 1.00)
-## ...     .using_textfont_size_range(10, 20)
-## ...     #
-## ...     .using_xaxes_range(None, None)
-## ...     .using_yaxes_range(None, None)
-## ...     .using_axes_visible(False)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/network_plot.html")
+>>> from techminer2.pkgs.networks.citation.articles import NetworkPlot
+>>> plot = (
+...     NetworkPlot()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # NETWORK:
+...     .using_spring_layout_k(None)
+...     .using_spring_layout_iterations(30)
+...     .using_spring_layout_seed(0)
+...     #
+...     .using_edge_colors(["#7793a5"])
+...     .using_edge_width_range(0.8, 3.0)
+...     .using_node_size_range(30, 70)
+...     .using_textfont_opacity_range(0.35, 1.00)
+...     .using_textfont_size_range(10, 20)
+...     #
+...     .using_xaxes_range(None, None)
+...     .using_yaxes_range(None, None)
+...     .using_axes_visible(False)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/network_plot.html")
 
 .. raw:: html
 
@@ -65,7 +65,7 @@ from .....internals.nx import (
     internal__assign_text_positions_based_on_quadrants,
     internal__assign_textfont_opacity_based_on_citations,
     internal__assign_textfont_sizes_based_on_citations,
-    internal__cluster_network_graph,
+    internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
@@ -80,7 +80,7 @@ class NetworkPlot(
     def build(self):
 
         nx_graph = internal__create_nx_graph(self.params)
-        nx_graph = internal__cluster_network_graph(self.params, nx_graph)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
         nx_graph = internal__compute_spring_layout_positions(self.params, nx_graph)
         nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
         nx_graph = internal__assign_node_sizes_based_on_citations(self.params, nx_graph)

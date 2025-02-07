@@ -65,7 +65,7 @@ from .....internals.nx import (
     internal__assign_text_positions_based_on_quadrants,
     internal__assign_textfont_opacity_based_on_citations,
     internal__assign_textfont_sizes_based_on_citations,
-    internal__cluster_network_graph,
+    internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
@@ -81,7 +81,7 @@ class NetworkPlot(
 
         nx_graph = internal__create_nx_graph(self.params)
 
-        nx_graph = internal__cluster_network_graph(
+        nx_graph = internal__cluster_nx_graph(
             #
             # FUNCTION PARAMS:
             nx_graph=nx_graph,

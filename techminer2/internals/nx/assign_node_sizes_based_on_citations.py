@@ -34,7 +34,7 @@ def internal__assign_node_sizes_based_on_citations(
         #
         # Scales the node size to the range [node_size_min, node_size_max]
         node_sizes -= params.node_size_range[0]
-        node_sizes /= params.node_sizes.max()
+        node_sizes /= node_sizes.max()
         node_sizes *= params.node_size_range[1]
         node_sizes += params.node_size_range[0]
 

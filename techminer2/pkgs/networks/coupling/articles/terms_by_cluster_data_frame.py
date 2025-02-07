@@ -36,7 +36,7 @@ Terms by Cluster Frame
 """
 from .....internals.mixins import InputFunctionsMixin
 from .....internals.nx import (
-    internal__cluster_network_graph,
+    internal__cluster_nx_graph,
     internal__extract_communities_to_frame,
 )
 from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
@@ -82,7 +82,7 @@ def _terms_by_cluster_frame(
         **filters,
     )
 
-    nx_graph = internal__cluster_network_graph(
+    nx_graph = internal__cluster_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

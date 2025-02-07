@@ -50,7 +50,7 @@ from .assign_textfont_sizes_based_on_degree import (
 from .assign_textfont_sizes_based_on_occurrences import (
     internal__assign_textfont_sizes_based_on_occurrences,
 )
-from .cluster_network_graph import internal__cluster_network_graph
+from .cluster_nx_graph import internal__cluster_nx_graph
 from .collect_node_degrees import internal__collect_node_degrees
 from .compute_circular_layout_positions import (
     internal__compute_circular_layout_positions,
@@ -89,7 +89,7 @@ __all__ = [
     "assign_textfont_sizes_based_on_citations",
     "assign_textfont_sizes_based_on_degree",
     "assign_textfont_sizes_based_on_occurrences",
-    "cluster_network_graph",
+    "cluster_nx_graph",
     "collect_node_degrees",
     "compute_circular_layout_positions",
     "compute_network_metrics",
