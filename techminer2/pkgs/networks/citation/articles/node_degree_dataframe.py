@@ -12,10 +12,10 @@ Node Degree Dataframe
 ## >>> from techminer2.pkgs.citation_network.articles  import NodeDegreeDataFrame
 ## >>> (
 ## ...     NodeDegreeDataFrame()
-## ...     .set_analysis_params(
-## ...         #cunit_of_analysis="article",
-## ...         top_n=30, 
-## ...         citations_threshold=0,
+## ...     #
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(30)
+## ...     .having_citation_threshold(0)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -26,17 +26,13 @@ Node Degree Dataframe
 ## ...     #
 ## ...     .build()
 ## ... ).head()
-   Node                                               Name  Degree
-0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
-1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
-2     2  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
-3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
-4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       2
+
+
 
 
 """
 # from ....internals.nx.nx_degree_frame import nx_degree_frame
-from .internals.create_citation_nx_graph import _create_citation_nx_graph
+from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
 UNIT_OF_ANALYSIS = "article"
 
@@ -56,7 +52,7 @@ def _node_degree_frame(
 ):
     """:meta private:"""
 
-    nx_graph = _create_citation_nx_graph(
+    nx_graph = internal__create_nx_graph(
         #
         # COLUMN PARAMS:
         top_n=top_n,

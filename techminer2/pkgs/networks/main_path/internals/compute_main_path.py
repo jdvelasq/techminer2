@@ -17,18 +17,8 @@ import numpy as np
 # from .....database.load.load__database import load__filtered_database
 
 
-def _compute_main_path(
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+def internal__compute_main_path(
+    params,
 ):
     """:meta private:"""
 

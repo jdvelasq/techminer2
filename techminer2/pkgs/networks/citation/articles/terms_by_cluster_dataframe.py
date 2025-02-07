@@ -6,14 +6,39 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Builds a terms by cluster frame from documents.
+Terms by Cluster Frame
+===============================================================================
+
+## >>> from techminer2.pkgs.networks.citations.articles import TermsByClusterDataFrame
+## >>> (
+## ...     TermsByClusterDataFrame()
+## ...     #
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(30)
+## ...     .having_citation_threshold(0)
+## ...     #
+## ...     # CLUSTERING:
+## ...     .using_clustering_algorithm_or_dict("louvain")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
+## ... ).head()
+
+
+
 
 """
 from .....internals.nx.cluster_network_graph import internal__cluster_network_graph
 from .....internals.nx.extract_communities_to_frame import (
     internal__extract_communities_to_frame,
 )
-from .internals.create_citation_nx_graph import _create_citation_nx_graph
+from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
 
 def _terms_by_cluster_frame(
@@ -34,7 +59,7 @@ def _terms_by_cluster_frame(
 ):
     """:meta private:"""
 
-    nx_graph = _create_citation_nx_graph(
+    nx_graph = internal__create_nx_graph(
         #
         # COLUMN PARAMS:
         top_n=top_n,

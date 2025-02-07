@@ -9,29 +9,28 @@
 Network Plot
 ===============================================================================
 
-## >>> from techminer2.pkgs.main_path_analysis import NetworkPlot
+## >>> from techminer2.pkgs.network.main_path import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
-## ...     .set_analysis_params(
-## ...         top_n=None,
-## ...         citations_threshold=0,
-
-
+## ...     #
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(None)
+## ...     .having_citation_threshold(0)
+## ...     #
+## ...     # NETWORK:
 ## ...     .using_spring_layout_k(None)
 ## ...     .using_spring_layout_iterations(30)
 ## ...     .using_spring_layout_seed(0)
-
 ## ...     #
 ## ...     .using_node_size_range(30, 70)
 ## ...     .using_textfont_size_range(10, 20)
 ## ...     .using_textfont_opacity_range(0.35, 1.00)
 ## ...     .using_edge_colors(["#7793a5"])
-## ...         edge_width_range=(0.8, 3.0),
+## ...     .using_edge_width_range(0.8, 3.0)
 ## ...     #
 ## ...     .using_xaxes_range(None, None)
 ## ...     .using_yaxes_range(None, None)
 ## ...     .using_axes_visible(False)
-## ...     #
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -42,9 +41,9 @@ Network Plot
 ## ...     #
 ## ...     .build()
 ## ... )
---INFO-- Paths computed.
---INFO-- Points per link computed.
---INFO-- Points per path computed.
+## --INFO-- Paths computed.
+## --INFO-- Points per link computed.
+## --INFO-- Points per path computed.
 ## >>> # chart.write_html("sphinx/_static/main_path_analysis/network_plot.html")
 
 .. raw:: html
@@ -56,32 +55,18 @@ Network Plot
 """
 import networkx as nx  # type: ignore
 
-from ....internals.nx.assign_constant_to_edge_colors import (
+from ....internals.nx import (
     internal__assign_constant_to_edge_colors,
-)
-from ....internals.nx.assign_constant_to_node_colors import (
     internal__assign_constant_to_node_colors,
-)
-from ....internals.nx.assign_edge_widths_based_on_weight import (
     internal__assign_edge_widths_based_on_weight,
-)
-from ....internals.nx.assign_node_sizes_based_on_citations import (
     internal__assign_node_sizes_based_on_citations,
-)
-from ....internals.nx.assign_text_positions_based_on_quadrants import (
     internal__assign_text_positions_based_on_quadrants,
-)
-from ....internals.nx.assign_textfont_opacity_based_on_citations import (
     internal__assign_textfont_opacity_based_on_citations,
-)
-from ....internals.nx.assign_textfont_sizes_based_on_citations import (
     internal__assign_textfont_sizes_based_on_citations,
-)
-from ....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
+    internal__plot_network_graph,
 )
-from ....internals.nx.plot_network_graph import internal__plot_network_graph
-from .network_edges_dataframe import network_edges_frame
+from .network_edges_data_frame import network_edges_frame
 
 
 def network_plot(

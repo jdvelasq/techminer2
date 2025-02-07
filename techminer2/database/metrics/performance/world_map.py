@@ -34,7 +34,7 @@ World Map
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_generated/database/metrics/performance/world_map.html")
+>>> # plot.write_html("sphinx/_generated/database/metrics/performance/world_map.html")
 
 .. raw:: html
 

@@ -13,10 +13,10 @@ Node Degree Plot
 ## >>> from techminer2.pkgs.citation_network import NodeDegreePlot
 ## >>> plot = (
 ## ...     NodeDegreePlot()
-## ...     .set_analysis_params(
-## ...         unit_of_analysis="article",
-## ...         top_n=30, 
-## ...         citations_threshold=0,
+## ...     #
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(30)
+## ...     .having_citation_threshold(0)
 ## ...     #
 ## ...     ).set_plot_params(
 ## ...         textfont_size=10,
@@ -46,7 +46,7 @@ Node Degree Plot
 from .....internals.nx.assign_degree_to_nodes import internal__assign_degree_to_nodes
 
 # from ....internals.nx_mixin.nx_degree import nx_degree_plot
-from .internals.create_citation_nx_graph import _create_citation_nx_graph
+from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
 UNIT_OF_ANALYSIS = "article"
 
@@ -73,7 +73,7 @@ def _node_degree_plot(
 ):
     """:meta private:"""
 
-    nx_graph = _create_citation_nx_graph(
+    nx_graph = internal__create_nx_graph(
         #
         # COLUMN PARAMS:
         top_n=top_n,

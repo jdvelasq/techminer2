@@ -1,0 +1,58 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+"""
+Network Degree Frame
+===============================================================================
+
+## >>> from techminer2.pkgs.networks.coupling.countries  import NodeDegreeDataFrame
+## >>> (
+## ...     NodeDegreeDataFrame()
+## ...     #
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(20)
+## ...     .having_citation_threshold(0)
+## ...     .having_occurrence_threshold(2)
+## ...     .having_terms_in(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     .where_database_is("main")
+## ...     .where_record_years_between(None, None)
+## ...     .where_record_citations_between(None, None)
+## ...     .where_records_match(None)
+## ...     #
+## ...     .build()
+## ... ).head()
+   Node                Name  Degree
+0     0    Gomber P. 2:1065       3
+1     1    Hornuf L. 2:0358       3
+2     2  Jagtiani J. 3:0317       3
+3     3   Lemieux C. 2:0253       3
+4     4    Dolata M. 2:0181       2
+
+
+
+
+
+"""
+from .....internals.mixins import InputFunctionsMixin
+from ..internals.from_others.node_degree_data_frame import InternalNodeDegreeDataFrame
+
+
+class NodeDegreeDataFrame(
+    InputFunctionsMixin,
+):
+    """:meta private:"""
+
+    def build(self):
+        return (
+            InternalNodeDegreeDataFrame()
+            .update_params(**self.params.__dict__)
+            .unit_of_analysis("countries")
+            .build()
+        )

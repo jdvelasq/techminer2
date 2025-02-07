@@ -13,29 +13,28 @@ Network Plot
 ## >>> from techminer2.pkgs.citation_network.articles import NetworkPlot
 ## >>> plot = (
 ## ...     NetworkPlot()
-## ...     .set_analysis_params(
-## ...         # unit_of_analysis='article',
-## ...         top_n=30, 
-## ...         citations_threshold=0,
-## ...         algorithm_or_dict="louvain",
+## ...     #
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(30)
+## ...     .having_citation_threshold(0)
+## ...     #
+## ...     # CLUSTERING:
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # NETWORK:
 ## ...     .using_spring_layout_k(None)
 ## ...     .using_spring_layout_iterations(30)
 ## ...     .using_spring_layout_seed(0)
-
 ## ...     #
+## ...     .using_edge_colors(["#7793a5"])
+## ...     .using_edge_width_range(0.8, 3.0)
 ## ...     .using_node_size_range(30, 70)
-## ...     .using_textfont_size_range(10, 20)
 ## ...     .using_textfont_opacity_range(0.35, 1.00)
-
-## ...         edge_color="#7793a5",
-## ...         edge_width_range=(0.8, 3.0),
+## ...     .using_textfont_size_range(10, 20)
 ## ...     #
 ## ...     .using_xaxes_range(None, None)
 ## ...     .using_yaxes_range(None, None)
 ## ...     .using_axes_visible(False)
-
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -46,44 +45,31 @@ Network Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_generated/citation_network/articles/network_plot.html")
+## >>> plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_generated/citation_network/articles/network_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/networks/citation/articles/network_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
+
 
 
 
 
 """
-from .....internals.nx.assign_constant_to_edge_colors import (
+from .....internals.nx import (
     internal__assign_constant_to_edge_colors,
-)
-from .....internals.nx.assign_edge_widths_based_on_weight import (
     internal__assign_edge_widths_based_on_weight,
-)
-from .....internals.nx.assign_node_colors_based_on_group_attribute import (
     internal__assign_node_colors_based_on_group_attribute,
-)
-from .....internals.nx.assign_node_sizes_based_on_citations import (
     internal__assign_node_sizes_based_on_citations,
-)
-from .....internals.nx.assign_text_positions_based_on_quadrants import (
     internal__assign_text_positions_based_on_quadrants,
-)
-from .....internals.nx.assign_textfont_opacity_based_on_citations import (
     internal__assign_textfont_opacity_based_on_citations,
-)
-from .....internals.nx.assign_textfont_sizes_based_on_citations import (
     internal__assign_textfont_sizes_based_on_citations,
-)
-from .....internals.nx.cluster_network_graph import internal__cluster_network_graph
-from .....internals.nx.compute_spring_layout_positions import (
+    internal__cluster_network_graph,
     internal__compute_spring_layout_positions,
+    internal__plot_network_graph,
 )
-from .....internals.nx.plot_network_graph import internal__plot_network_graph
-from .internals.create_citation_nx_graph import _create_citation_nx_graph
+from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
 
 def _network_plot(
@@ -123,7 +109,7 @@ def _network_plot(
 ):
     """:meta private:"""
 
-    nx_graph = _create_citation_nx_graph(
+    nx_graph = internal__create_nx_graph(
         #
         # COLUMN PARAMS:
         top_n=top_n,

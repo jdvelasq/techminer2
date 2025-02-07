@@ -9,14 +9,13 @@
 Main Path Documents
 ===============================================================================
 
-## >>> from techminer2.pkgs.main_path_analysis import MainPathDocuments
+## >>> from techminer2.pkgs.network.main_path import MainPathDocuments
 ## >>> documents = (
 ## ...     MainPathDocuments()
-## ...     .set_analysis_params(
-## ...         top_n=None,
-## ...         citations_threshold=0,
 ## ...     #
-## ...     ).set_database_params(
+## ...     # UNIT OF ANALYSIS:
+## ...     .having_terms_in_top(None)
+## ...     .having_citation_threshold(0)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -92,7 +91,7 @@ DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
 
 """
 # from ....database.tools.record_viewer import select_documents
-from .internals.compute_main_path import _compute_main_path
+from .internals.compute_main_path import internal__compute_main_path
 
 
 def main_path_documents(
@@ -113,7 +112,7 @@ def main_path_documents(
 
     #
     # Creates a table with citing and cited articles
-    articles_in_main_path, _ = _compute_main_path(
+    articles_in_main_path, _ = internal__compute_main_path(
         #
         # NETWORK PARAMS:
         top_n=top_n,

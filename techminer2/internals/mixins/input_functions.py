@@ -28,11 +28,13 @@ class Params:
     # C
     #
     case_sensitive: bool = False
+    citation_threshold: int = 0
     clustering_algorithm_or_dict = None
     color: Optional[str] = None
     colormap: str = "Blues"
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
+    contour_opacity: float = 0.6
 
     #
     # D
@@ -57,6 +59,11 @@ class Params:
     function = None
 
     #
+    # K
+    #
+    kernel_bandwidth: float = 0.1
+
+    #
     # L
     #
     line_color: str = "black"
@@ -79,6 +86,7 @@ class Params:
     #
     # O
     #
+    occurrence_threshold: int = 2
     other_field: Optional[str] = None
     other_term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
@@ -144,6 +152,7 @@ class Params:
     #
     # U
     #
+    unit_of_analysis: Optional[str] = None
     use_idf: bool = False  # using_idf_reweighting
 
     #
@@ -191,6 +200,14 @@ class InputFunctionsMixin:
     #
     def having_case_sensitive(self, case_sensitive):
         self.params.case_sensitive = case_sensitive
+        return self
+
+    def having_citation_threshold(self, threshold):
+        self.params.citation_threshold = threshold
+        return self
+
+    def having_occurrence_threshold(self, threshold):
+        self.params.occurrence_threshold = threshold
         return self
 
     def having_other_term_citations_between(self, start, end):
@@ -252,6 +269,10 @@ class InputFunctionsMixin:
     #
     # U
     #
+    def unit_of_analysis(self, unit_of_analysis):
+        self.params.unit_of_analysis = unit_of_analysis
+        return self
+
     def using_association_index(self, association_index):
         self.params.association_index = association_index
         return self
@@ -288,6 +309,10 @@ class InputFunctionsMixin:
         self.params.colormap = colormap
         return self
 
+    def using_contour_opacity(self, opacity):
+        self.params.contour_opacity = opacity
+        return self
+
     def using_edge_colors(self, colors):
         self.params.edge_colors = colors
         return self
@@ -314,6 +339,10 @@ class InputFunctionsMixin:
 
     def using_idf_weights_smoothing(self, smooth):  # smooth_idf
         self.params.smooth_idf_weights = smooth
+        return self
+
+    def using_kernel_bandwidth(self, bandwidth):
+        self.params.kernel_bandwidth = bandwidth
         return self
 
     def using_line_color(self, color):

@@ -57,7 +57,7 @@ from sklearn.metrics.pairwise import (
     cosine_similarity as sklearn_cosine_similarity,  # type: ignore
 )
 
-from .terms_by_dimension_dataframe import terms_by_dimension_frame
+from .terms_by_dimension_data_frame import terms_by_dimension_frame
 
 
 def cosine_similarities(

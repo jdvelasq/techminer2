@@ -67,7 +67,7 @@ Terms to Cluster Mapping
 
 """
 from ..internals.terms_to_cluster_mapping import _terms_to_cluster_mapping
-from .terms_by_dimension_dataframe import terms_by_dimension_frame
+from .terms_by_dimension_data_frame import terms_by_dimension_frame
 
 
 def terms_to_cluster_mapping(
