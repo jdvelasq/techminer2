@@ -33,7 +33,7 @@ Node Degree Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/node_degree_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/node_degree_plot.html")
 
 .. raw:: html
 

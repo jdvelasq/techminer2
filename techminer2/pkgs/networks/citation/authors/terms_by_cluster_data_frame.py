@@ -9,30 +9,34 @@
 Terms by Cluster Frame
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.citations.authors import TermsByClusterDataFrame
-## >>> (
-## ...     TermsByClusterDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
-
+>>> from techminer2.pkgs.networks.citation.authors import TermsByClusterDataFrame
+>>> (
+...     TermsByClusterDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                      0                    1                   2
+0      Gomber P. 2:1065     Haddad C. 1:0258  Jagtiani J. 3:0317
+1     Koch J.-A. 1:0489  Puschmann T. 1:0253   Lemieux C. 2:0253
+2     Siering M. 1:0489     Hornuf L. 2:0358                    
+3  Kauffman R.J. 1:0576                                         
+4      Parker C. 1:0576                                         
 
 
 """

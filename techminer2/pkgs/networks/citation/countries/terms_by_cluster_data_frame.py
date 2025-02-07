@@ -9,29 +9,36 @@
 Terms by Cluster Frame
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.citations.countries import TermsByClusterDataFrame
-## >>> (
-## ...     TermsByClusterDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
+>>> from techminer2.pkgs.networks.citation.countries import TermsByClusterDataFrame
+>>> (
+...     TermsByClusterDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                     0  ...                          3
+0        China 08:1085  ...            Germany 07:1814
+1      Denmark 02:0330  ...  Brunei Darussalam 01:0090
+2       France 01:0258  ...                           
+3  South Korea 06:1192  ...                           
+4  Switzerland 04:0660  ...                           
+<BLANKLINE>
+[5 rows x 4 columns]
 
 
 

@@ -9,8 +9,10 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-# from ......database.load.load__database import load__filtered_database
-# from ......database.metrics.performance.data_frame import performance_metrics_frame
+from ......database.load import DatabaseLoader
+from ......database.metrics.performance.data_frame import (
+    DataFrame as PerformanceMetricsDataFrame,
+)
 
 
 def internal__create_nx_graph(params):
@@ -18,23 +20,7 @@ def internal__create_nx_graph(params):
     # Create the networkx graph
     nx_graph = nx.Graph()
 
-    nx_graph = __add_weighted_edges_from(
-        nx_graph=nx_graph,
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        occurrence_threshold=occurrence_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    nx_graph = __add_weighted_edges_from(params=params, nx_graph=nx_graph)
 
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
@@ -43,47 +29,27 @@ def internal__create_nx_graph(params):
 
 
 def __add_weighted_edges_from(
+    params,
     nx_graph,
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=(None, None),
-    occurrence_threshold=(None, None),
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
 ):
-    records = load__filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=year_filter,
-        record_citations_range=cited_by_filter,
-        records_order_by=None,
-        **filters,
-    )
+    unit_of_analysis = params.unit_of_analysis
+
+    records = DatabaseLoader().update_params(**params.__dict__).build()
 
     #
     # data_frame contains the citing and cited articles.
-    data_frame = records[["article", "local_references"]]
+    data_frame = records[["record_id", "local_references"]]
     data_frame = data_frame.dropna()
     data_frame["local_references"] = data_frame.local_references.str.split(";")
     data_frame = data_frame.explode("local_references")
     data_frame["local_references"] = data_frame["local_references"].str.strip()
     data_frame.columns = ["citing_unit", "cited_unit"]
 
-    records.index = records.article.copy()
+    records.index = records.record_id.copy()
 
     article2unit = {
-        row.article: row[unit_of_analysis]
-        for _, row in records[["article", unit_of_analysis]].iterrows()
+        row.record_id: row[unit_of_analysis]
+        for _, row in records[["record_id", unit_of_analysis]].iterrows()
     }
     data_frame["citing_unit"] = data_frame["citing_unit"].map(article2unit)
     data_frame["cited_unit"] = data_frame["cited_unit"].map(article2unit)
@@ -100,25 +66,13 @@ def __add_weighted_edges_from(
 
     #
     # Compute citations and occurrences
-    metrics = performance_metrics_frame(
-        #
-        # ITEMS PARAMS:
-        field=unit_of_analysis,
-        metric="OCCGC",
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=(occurrence_threshold, None),
-        gc_range=(citations_threshold, None),
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+    metrics = (
+        PerformanceMetricsDataFrame()
+        .update_params(**params.__dict__)
+        .with_field(params.unit_of_analysis)
+        .build()
     )
+
     data_frame = data_frame.loc[data_frame.citing_unit.isin(metrics.index.to_list()), :]
     data_frame = data_frame.loc[data_frame.cited_unit.isin(metrics.index.to_list()), :]
 

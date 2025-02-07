@@ -10,33 +10,33 @@ Node Degree Plot
 ===============================================================================
 
 
-## >>> from techminer2.pkgs.networks.citation.countries import NodeDegreePlot
-## >>> plot = (
-## ...     NodeDegreePlot()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # PLOT:
-## ...     .using_line_color("black")
-## ...     .using_line_width(1.5)
-## ...     .using_marker_size(7)
-## ...     .using_textfont_size(10)
-## ...     .using_yshift(4)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/citation/countries/network_degree_plot.html")
+>>> from techminer2.pkgs.networks.citation.countries import NodeDegreePlot
+>>> plot = (
+...     NodeDegreePlot()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # PLOT:
+...     .using_line_color("black")
+...     .using_line_width(1.5)
+...     .using_marker_size(7)
+...     .using_textfont_size(10)
+...     .using_yshift(4)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/countries/network_degree_plot.html")
 
 .. raw:: html
 

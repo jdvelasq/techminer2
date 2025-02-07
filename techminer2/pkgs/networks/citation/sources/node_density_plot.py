@@ -9,41 +9,41 @@
 Node Density Plot
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.citation.source_titles  import node_density_plot
-## >>> plot = (
-## ...     NodeDensityPlot()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # NETWORK:
-## ...     .using_spring_layout_k(None)
-## ...     .using_spring_layout_iterations(30)
-## ...     .using_spring_layout_seed(0)
-## ...     #
-## ...     # DENSITY:
-## ...     .using_kernel_bandwidth(0.1)
-## ...     .using_colormap("Aggrnyl")
-## ...     .using_contour_opacity(0.6)
-## ...     .using_textfont_size_range(10, 20)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/citation/source_titles/node_density_plot.html")
+>>> from techminer2.pkgs.networks.citation.sources  import node_density_plot
+>>> plot = (
+...     NodeDensityPlot()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # NETWORK:
+...     .using_spring_layout_k(None)
+...     .using_spring_layout_iterations(30)
+...     .using_spring_layout_seed(0)
+...     #
+...     # DENSITY:
+...     .using_kernel_bandwidth(0.1)
+...     .using_colormap("Aggrnyl")
+...     .using_contour_opacity(0.6)
+...     .using_textfont_size_range(10, 20)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/sources/node_density_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/citation/source_titles/node_density_plot.html" 
+    <iframe src="../../_generated/pkgs/networks/citation/sources/node_density_plot.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

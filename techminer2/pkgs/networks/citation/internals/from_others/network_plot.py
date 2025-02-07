@@ -86,113 +86,25 @@ class NetworkPlot(
     """:meta private:"""
 
     def build(self):
-        pass
 
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        nx_graph = internal__compute_spring_layout_positions(self.params, nx_graph)
+        nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
+        nx_graph = internal__assign_node_sizes_based_on_occurrences(
+            self.params, nx_graph
+        )
+        nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
+            self.params, nx_graph
+        )
+        nx_graph = internal__assign_textfont_opacity_based_on_occurrences(
+            self.params, nx_graph
+        )
 
-def _network_plot(
-    #
-    # FIELD PARAMS:
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=None,
-    occurrence_threshold=None,
-    custom_terms=None,
-    #
-    # NETWORK CLUSTERING:
-    algorithm_or_dict="louvain",
-    #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
-    #
-    # NODES:
-    node_size_range=(20, 70),
-    textfont_size_range=(9, 12),
-    textfont_opacity_range=(0.35, 1.00),
-    #
-    # EDGES:
-    edge_color="#7793a5",
-    edge_width_range=(0.8, 3.0),
-    #
-    # AXES:
-    xaxes_range=None,
-    yaxes_range=None,
-    show_axes=False,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """:meta private:"""
-
-    nx_graph = internal__create_nx_graph(
         #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        occurrence_threshold=occurrence_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+        # Sets the edge attributes
+        nx_graph = internal__assign_edge_widths_based_on_weight(self.params, nx_graph)
+        nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
+        nx_graph = internal__assign_constant_to_edge_colors(self.params, nx_graph)
 
-    nx_graph = internal__cluster_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
-    )
-
-    nx_graph = internal__compute_spring_layout_positions(
-        nx_graph=nx_graph,
-        k=nx_k,
-        iterations=nx_iterations,
-        seed=nx_random_state,
-    )
-
-    #
-    # Sets the node attributes
-    nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
-    #
-    nx_graph = internal__assign_node_sizes_based_on_occurrences(
-        nx_graph, node_size_range
-    )
-    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
-        nx_graph, textfont_size_range
-    )
-    nx_graph = internal__assign_textfont_opacity_based_on_occurrences(
-        nx_graph, textfont_opacity_range
-    )
-
-    #
-    # Sets the edge attributes
-    nx_graph = internal__assign_edge_widths_based_on_weight(nx_graph, edge_width_range)
-    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
-    nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
-
-    return internal__plot_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK PARAMS:
-        xaxes_range=xaxes_range,
-        yaxes_range=yaxes_range,
-        show_axes=show_axes,
-    )
+        return internal__plot_nx_graph(self.params, nx_graph)
