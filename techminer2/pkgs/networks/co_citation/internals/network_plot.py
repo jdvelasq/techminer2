@@ -48,7 +48,7 @@ Network Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_static/co_citation_network/network_plot.html")
+## >>> # plot.write_html("sphinx/_static/co_citation_network/network_plot.html")
 
 .. raw:: html
 
@@ -80,51 +80,18 @@ class NetworkPlot(
     def build(self):
 
         nx_graph = internal__create_nx_graph(self.params)
-
-        nx_graph = internal__cluster_nx_graph(
-            #
-            # FUNCTION PARAMS:
-            nx_graph=nx_graph,
-            #
-            # NETWORK CLUSTERING:
-            algorithm_or_dict=algorithm_or_dict,
-        )
-
-        nx_graph = internal__compute_spring_layout_positions(
-            nx_graph=nx_graph,
-            k=nx_k,
-            iterations=nx_iterations,
-            seed=nx_random_state,
-        )
-
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        nx_graph = internal__compute_spring_layout_positions(self.params, nx_graph)
         nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
-
-        nx_graph = internal__assign_node_sizes_based_on_citations(
-            nx_graph,
-            node_size_range,
-        )
+        nx_graph = internal__assign_node_sizes_based_on_citations(self.params, nx_graph)
         nx_graph = internal__assign_textfont_sizes_based_on_citations(
-            nx_graph, textfont_size_range
+            self.params, nx_graph
         )
         nx_graph = internal__assign_textfont_opacity_based_on_citations(
-            nx_graph, textfont_opacity_range
+            self.params, nx_graph
         )
-
-        #
-        # Sets the edge attributes
-        nx_graph = internal__assign_edge_widths_based_on_weight(
-            nx_graph, edge_width_range
-        )
+        nx_graph = internal__assign_edge_widths_based_on_weight(self.params, nx_graph)
         nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
-        nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
+        nx_graph = internal__assign_constant_to_edge_colors(self.params, nx_graph)
 
-        return internal__plot_nx_graph(
-            #
-            # FUNCTION PARAMS:
-            nx_graph=nx_graph,
-            #
-            # NETWORK PARAMS:
-            xaxes_range=xaxes_range,
-            yaxes_range=yaxes_range,
-            show_axes=show_axes,
-        )
+        return internal__plot_nx_graph(self.params, nx_graph)

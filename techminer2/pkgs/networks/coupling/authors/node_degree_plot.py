@@ -33,7 +33,7 @@
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/coupling/authors/node_degree_plot.html")
+## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/authors/node_degree_plot.html")
 
 .. raw:: html
 

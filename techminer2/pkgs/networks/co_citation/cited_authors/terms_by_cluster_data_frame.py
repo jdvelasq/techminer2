@@ -10,28 +10,33 @@ Terms by Cluster Frame
 ===============================================================================
 
 
-## >>> from techminer2.pkgs.networks.co_citation.cited_authors import TermsByClusterDataFrame
-## >>> (
-## ...     TermsByClusterDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
+>>> from techminer2.pkgs.networks.co_citation.cited_authors import TermsByClusterDataFrame
+>>> (
+...     TermsByClusterDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_terms_in(None)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                   0                 1                    2
+0  Elnagdy S.A. 1:04    Burtch G. 1:14    Clemons E.K. 1:09
+1        Gai K. 1:22       Lin M. 1:09   Kauffman R.J. 1:09
+2      Kim D.J. 1:04   Agarwal S. 1:06  Adomavicius G. 1:06
+3  Venkatesh V. 1:12  Boot A.W.A. 1:03       Gomber P. 1:08
+4    Davis F.D. 1:07    Duarte J. 1:06         Au Y.A. 1:03
 
 
 """

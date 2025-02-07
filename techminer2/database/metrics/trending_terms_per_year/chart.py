@@ -22,7 +22,7 @@ Chart
 # ...     year_filter=None,
 # ...     cited_by_filter=None,
 # ... )
-# >>> plot.write_html("sphinx/_generated/visualize/specialized_charts/trending_words_per_year/chart.html")
+# >>> # plot.write_html("sphinx/_generated/visualize/specialized_charts/trending_words_per_year/chart.html")
 
 .. raw:: html
 

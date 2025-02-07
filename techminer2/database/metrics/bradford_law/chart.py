@@ -17,7 +17,7 @@ Chart
 # ...     year_filter=(None, None),
 # ...     cited_by_filter=(None, None),
 # ... )
-# >>> plot.write_html("sphinx/_generated/visualize/specialized_charts/bradford_law/chart.html")
+# >>> # plot.write_html("sphinx/_generated/visualize/specialized_charts/bradford_law/chart.html")
 
 .. raw:: html
 

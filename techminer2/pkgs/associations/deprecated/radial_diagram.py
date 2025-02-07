@@ -56,7 +56,7 @@ Radial Diagram
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
+## >>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 

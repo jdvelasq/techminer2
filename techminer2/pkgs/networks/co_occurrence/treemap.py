@@ -35,7 +35,7 @@ Treemap
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
+## >>> # plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
 
 .. raw:: html
 

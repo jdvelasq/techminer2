@@ -10,24 +10,30 @@ Network Metrics
 ===============================================================================
 
 
-## >>> from techminer2.pkgs.networks.co_citation.cited_sources import NetworkMetrics
-## >>> (
-## ...     NetworkMetrics()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
+>>> from techminer2.pkgs.networks.co_citation.cited_sources import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_terms_in(None)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                                Degree  Betweenness  Closeness  PageRank
+ELECT COMMER RES APPL 1:32          27     0.074517   0.935484  0.046446
+MIS QUART MANAGE INF SYST 1:47      26     0.014924   0.906250  0.042254
+COMMUN ACM 1:12                     25     0.068477   0.878788  0.043568
+INF SYST RES 1:18                   25     0.012996   0.878788  0.040796
+MANAGE SCI 1:30                     25     0.014031   0.878788  0.040817
 
 
 

@@ -10,67 +10,16 @@ import networkx as nx  # type: ignore
 import numpy as np
 
 # from .....database.load.load__database import load__filtered_database
+from .....database.load import DatabaseLoader
 
 
-def internal__create_nx_graph(params):
-    #
-    # Create the networkx graph
-    nx_graph = nx.Graph()
-
-    nx_graph = __add_weighted_edges_from(
-        nx_graph=nx_graph,
-        unit_of_analysis=params.unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=params.top_n,
-        citations_threshold=params.citations_threshold,
-        custom_terms=params.terms_in,
-        #
-        # DATABASE PARAMS:
-        root_dir=params.root_dir,
-        database=params.database,
-        year_filter=params.year_filter,
-        cited_by_filter=params.cited_by_filter,
-        sort_by=None,
-        **params.records_match,
-    )
-
-    if params.unit_of_analysis == "cited_references":
-        for node in nx_graph.nodes():
-            nx_graph.nodes[node]["text"] = ", ".join(node.split(", ")[:2])
-
-    else:
-        for node in nx_graph.nodes():
-            nx_graph.nodes[node]["text"] = node
-
-    return nx_graph
+# -------------------------------------------------------------------------
+def _step_01_load_records(params):
+    return DatabaseLoader().update_params(**params.__dict__).build()
 
 
-def __add_weighted_edges_from(
-    nx_graph,
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=None,
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    records = load__filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=year_filter,
-        record_citations_range=cited_by_filter,
-        **filters,
-    )
+# -------------------------------------------------------------------------
+def _step_02_compute_co_occurrences_between_references(params, records):
 
     matrix_list = records[["global_references"]].dropna().copy()
     matrix_list = matrix_list.rename(columns={"global_references": "column"})
@@ -81,17 +30,17 @@ def __add_weighted_edges_from(
         matrix_list = matrix_list.explode(name)
         matrix_list[name] = matrix_list[name].str.strip()
 
-    if unit_of_analysis == "cited_authors":
+    if params.unit_of_analysis == "cited_authors":
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[0])
         matrix_list["column"] = (
             matrix_list["column"].str.split(", ").map(lambda x: x[0])
         )
-    elif unit_of_analysis == "cited_sources":
+    elif params.unit_of_analysis == "cited_sources":
         matrix_list["row"] = matrix_list["row"].str.split(", ").map(lambda x: x[2])
         matrix_list["column"] = (
             matrix_list["column"].str.split(", ").map(lambda x: x[2])
         )
-    elif unit_of_analysis == "cited_references":
+    elif params.unit_of_analysis == "cited_references":
         matrix_list["row"] = (
             matrix_list["row"].str.split(", ").map(lambda x: x[:3]).str.join(", ")
         )
@@ -113,64 +62,14 @@ def __add_weighted_edges_from(
     matrix_list = matrix_list.sort_values(
         ["OCC", "row", "column"], ascending=[False, True, True]
     )
-
-    #
-    # Computes valild items
-    valid_items = __compute_valid_terms(
-        unit_of_analysis=unit_of_analysis,
-        records=records,
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        custom_terms=custom_terms,
-    )
-
-    #
-    # Filter data
-    matrix_list = matrix_list.loc[
-        matrix_list.row.isin(valid_items["index"].to_list()), :
-    ]
-    matrix_list = matrix_list.loc[
-        matrix_list.column.isin(valid_items["index"].to_list()), :
-    ]
-
-    #
-    # Adds citations
-    max_citations = valid_items.citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt = " 1:{:0" + str(n_zeros) + "d}"
-
-    #
-    # Rename the items adding the citations
-    rename_dict = {
-        key: value
-        for key, value in zip(
-            valid_items["index"].to_list(),
-            (valid_items["index"] + valid_items["citations"].map(fmt.format)).to_list(),
-        )
-    }
-    matrix_list["row"] = matrix_list["row"].map(rename_dict)
-    matrix_list["column"] = matrix_list["column"].map(rename_dict)
-
-    #
-    # Adds the data to the network:
-    for _, x in matrix_list.iterrows():
-        nx_graph.add_weighted_edges_from(
-            ebunch_to_add=[(x.row, x.column, x.size)],
-            dash="solid",
-        )
-
-    return nx_graph
+    return matrix_list
 
 
-def __compute_valid_terms(
-    unit_of_analysis,
-    records,
-    top_n,
-    citations_threshold,
-    custom_terms,
-):
-    if custom_terms is not None:
-        return custom_terms
+# -------------------------------------------------------------------------
+def _step_03_compute_terms(params, records):
+
+    if params.terms_in is not None:
+        return params.terms_in
 
     #
     # Creates a list with global references
@@ -181,11 +80,11 @@ def __compute_valid_terms(
 
     #
     # Transforms each reference into the element of interest
-    if unit_of_analysis == "cited_authors":
+    if params.unit_of_analysis == "cited_authors":
         global_references = global_references.str.split(", ").map(lambda x: x[0])
-    elif unit_of_analysis == "cited_sources":
+    elif params.unit_of_analysis == "cited_sources":
         global_references = global_references.str.split(", ").map(lambda x: x[2])
-    elif unit_of_analysis == "cited_references":
+    elif params.unit_of_analysis == "cited_references":
         global_references = (
             global_references.str.split(", ").map(lambda x: x[:3]).str.join(", ")
         )
@@ -204,11 +103,85 @@ def __compute_valid_terms(
 
     #
     # Applies the filters
-    if top_n is not None:
-        valid_items = valid_items.head(top_n)
-    if citations_threshold is not None:
-        valid_items = valid_items.loc[valid_items.citations >= citations_threshold]
+    if params.top_n is not None:
+        valid_items = valid_items.head(params.top_n)
+    if params.citation_threshold is not None:
+        valid_items = valid_items.loc[
+            valid_items.citations >= params.citation_threshold
+        ]
 
     #
     # Returns the selected elements as a list
     return valid_items
+
+
+# -------------------------------------------------------------------------
+def _step_04_filter_matrix_list(matrix_list, valid_items):
+    matrix_list = matrix_list.loc[
+        matrix_list.row.isin(valid_items["index"].to_list()), :
+    ]
+    matrix_list = matrix_list.loc[
+        matrix_list.column.isin(valid_items["index"].to_list()), :
+    ]
+    return matrix_list
+
+
+# -------------------------------------------------------------------------
+def _step_05_adds_citations_to_terms(valid_items, matrix_list):
+
+    max_citations = valid_items.citations.max()
+    n_zeros = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros) + "d}"
+
+    #
+    # Rename the items adding the citations
+    rename_dict = {
+        key: value
+        for key, value in zip(
+            valid_items["index"].to_list(),
+            (valid_items["index"] + valid_items["citations"].map(fmt.format)).to_list(),
+        )
+    }
+    matrix_list["row"] = matrix_list["row"].map(rename_dict)
+    matrix_list["column"] = matrix_list["column"].map(rename_dict)
+
+    return matrix_list
+
+
+# -------------------------------------------------------------------------
+def _step_06_create_a_nx_graph(matrix_list):
+    nx_graph = nx.Graph()
+    for _, x in matrix_list.iterrows():
+        nx_graph.add_weighted_edges_from(
+            ebunch_to_add=[(x.row, x.column, x.size)],
+            dash="solid",
+        )
+    return nx_graph
+
+
+# -------------------------------------------------------------------------
+def _step_07_set_text_property_of_nodes(nx_graph, params):
+
+    if params.unit_of_analysis == "cited_references":
+        for node in nx_graph.nodes():
+            nx_graph.nodes[node]["text"] = ", ".join(node.split(", ")[:2])
+
+    else:
+        for node in nx_graph.nodes():
+            nx_graph.nodes[node]["text"] = node
+
+    return nx_graph
+
+
+# -------------------------------------------------------------------------
+def internal__create_nx_graph(params):
+
+    records = _step_01_load_records(params)
+    matrix_list = _step_02_compute_co_occurrences_between_references(params, records)
+    valid_terms = _step_03_compute_terms(params, records)
+    matrix_list = _step_04_filter_matrix_list(matrix_list, valid_terms)
+    matrix_list = _step_05_adds_citations_to_terms(valid_terms, matrix_list)
+    nx_graph = _step_06_create_a_nx_graph(matrix_list)
+    nx_graph = _step_07_set_text_property_of_nodes(nx_graph, params)
+
+    return nx_graph

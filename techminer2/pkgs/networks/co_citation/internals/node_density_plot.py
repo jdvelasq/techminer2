@@ -53,14 +53,10 @@ Node Density Plot
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from .....internals.nx.assign_textfont_sizes_based_on_occurrences import (
+from .....internals.nx import (
     internal__assign_textfont_sizes_based_on_occurrences,
-)
-from .....internals.nx.cluster_nx_graph import internal__cluster_nx_graph
-from .....internals.nx.compute_spring_layout_positions import (
+    internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
-)
-from .....internals.nx.create_network_density_plot import (
     internal__create_network_density_plot,
 )
 from .create_nx_graph import internal__create_nx_graph
@@ -72,93 +68,13 @@ class NodeDensityPlot(
     """:meta private:"""
 
     def build(self):
-        pass
+        """:meta private:"""
 
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        nx_graph = internal__compute_spring_layout_positions(self.params, nx_graph)
+        nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
+            self.params, nx_graph
+        )
 
-def node_density_plot(
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=None,
-    custom_terms=None,
-    #
-    # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
-    #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
-    #
-    # DENSITY VISUALIZATION:
-    bandwidth="silverman",
-    colorscale="Aggrnyl",
-    opacity=0.6,
-    textfont_size_range=(10, 20),
-    #
-    # AXES:
-    # xaxes_range=None,
-    # yaxes_range=None,
-    # show_axes=False,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """:meta private:"""
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    nx_graph = internal__cluster_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
-    )
-
-    nx_graph = internal__compute_spring_layout_positions(
-        nx_graph=nx_graph,
-        k=nx_k,
-        iterations=nx_iterations,
-        seed=nx_random_state,
-    )
-
-    nx_graph = internal__assign_textfont_sizes_based_on_occurrences(
-        nx_graph, textfont_size_range
-    )
-
-    return internal__create_network_density_plot(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK PARAMS:
-        bandwidth=bandwidth,
-        colorscale=colorscale,
-        opacity=opacity,
-        # xaxes_range=xaxes_range,
-        # yaxes_range=yaxes_range,
-        # show_axes=show_axes,
-    )
+        return internal__create_network_density_plot(self.params, nx_graph)

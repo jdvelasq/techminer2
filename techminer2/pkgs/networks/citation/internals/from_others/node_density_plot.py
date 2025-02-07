@@ -22,6 +22,7 @@ class NodeDensityPlot(
     """:meta private:"""
 
     def build(self):
+        """:meta private:"""
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)

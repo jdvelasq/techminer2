@@ -10,25 +10,30 @@ Network Metrics
 ===============================================================================
 
 
-## >>> from techminer2.pkgs.networks.co_citation.cited_authors import NetworkMetrics
-## >>> (
-## ...     NetworkMetrics()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
+>>> from techminer2.pkgs.networks.co_citation.cited_authors import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_terms_in(None)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                   Degree  Betweenness  Closeness  PageRank
+Burtch G. 1:14         19     0.079539   0.717949  0.056952
+Lin M. 1:09            19     0.079539   0.717949  0.056952
+Dahlberg T. 1:06       15     0.039062   0.651163  0.045606
+Mackenzie A. 1:04      15     0.176372   0.666667  0.050477
+Gomber P. 1:08         14     0.058402   0.595745  0.043989
 
 
 """

@@ -36,7 +36,7 @@ Node Degree Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
+## >>> # plot.write_html("sphinx/_static/co_citation_network/node_degree_plot.html")
 
 .. raw:: html
 
@@ -46,8 +46,12 @@ Node Degree Plot
 """
 
 from .....internals.mixins import InputFunctionsMixin
-
-# from ...internals.nx_mixin.nx_degree import nx_degree_plot
+from .....internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degree_plot,
+    internal__create_node_degrees_data_frame,
+)
 from .create_nx_graph import internal__create_nx_graph
 
 
@@ -57,60 +61,11 @@ class NodeDegreePlot(
     """:meta private:"""
 
     def build(self):
-        pass
 
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
+        plot = internal__create_node_degree_plot(self.params, data_frame)
 
-def node_degree_plot(
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=None,
-    custom_terms=None,
-    #
-    # DEGREE PLOT:
-    textfont_size=10,
-    marker_size=7,
-    line_color="black",
-    line_width=1.5,
-    yshift=4,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """:meta private:"""
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return nx_degree_plot(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # DEGREE PLOT PARAMS:
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_color=line_color,
-        line_width=line_width,
-        yshift=yshift,
-    )
+        return plot

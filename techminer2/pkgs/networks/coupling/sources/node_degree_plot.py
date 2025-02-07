@@ -35,7 +35,7 @@ Network Degree Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/coupling/sources/node_degree_plot.html")
+## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/sources/node_degree_plot.html")
 
 .. raw:: html
 

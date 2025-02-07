@@ -53,7 +53,7 @@ Network Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/citation/internals/others/network_map_plot.html")
+## >>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/internals/others/network_map_plot.html")
 
 .. raw:: html
 

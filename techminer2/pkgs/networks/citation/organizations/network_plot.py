@@ -46,7 +46,7 @@ Network Plot
 ...     #
 ...     .build()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/networks/citation/organizations/network_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/organizations/network_plot.html")
 
 .. raw:: html
 

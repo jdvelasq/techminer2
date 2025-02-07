@@ -40,7 +40,7 @@ Network Density Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> plot.write_html("sphinx/_generated/pkgs/networks/coupling/articles/node_density_plot.html")
+## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/articles/node_density_plot.html")
 
 .. raw:: html
 

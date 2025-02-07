@@ -5,43 +5,14 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""
-Node Degree Frame
-===============================================================================
+"""Node Degree Frame"""
 
-## >>> from techminer2.pkgs.co_citation_network import NodeDegreeDataFrame
-## >>> (
-## ...     NodeDegreeDataFrame()
-## ...     .set_analysis_params(
-## ...         unit_of_analysis="cited_sources", # "cited_sources", 
-## ...                                           # "cited_references",
-## ...                                           # "cited_authors"
-## ...     .having_terms_in_top(30)
-## ...     .having_citation_threshold(0)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-   Node                            Name  Degree
-0     0      ELECT COMMER RES APPL 1:32      27
-1     1          J MANAGE INF SYST 1:27      26
-2     2  MIS QUART MANAGE INF SYST 1:47      26
-3     3                 MANAGE SCI 1:30      25
-4     4                 COMMUN ACM 1:12      25
-
-
-
-"""
 from .....internals.mixins import InputFunctionsMixin
-
-# from ...internals.nx.nx_degree_frame import nx_degree_frame
+from .....internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degrees_data_frame,
+)
 from .create_nx_graph import internal__create_nx_graph
 
 
@@ -51,46 +22,11 @@ class NodeDegreeDataFrame(
     """:meta private:"""
 
     def build(self):
-        pass
+        """:meta private:"""
 
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
 
-def node_degree_frame(
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=None,
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """:meta private:"""
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return nx_degree_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-    )
+        return data_frame
