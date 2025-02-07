@@ -62,8 +62,8 @@ Clusters to Terms Mapping
 
 """
 from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
-from ....internals.nx.clusters_to_terms_mapping import (
-    internal__clusters_to_terms_mapping,
+from ....internals.nx.create_clusters_to_terms_mapping import (
+    internal__create_clusters_to_terms_mapping,
 )
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
@@ -126,7 +126,7 @@ def clusters_to_terms_mapping(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    mapping = internal__clusters_to_terms_mapping(
+    mapping = internal__create_clusters_to_terms_mapping(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

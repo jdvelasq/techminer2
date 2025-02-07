@@ -8,7 +8,7 @@
 import pandas as pd
 
 
-def internal__node_degrees_to_dataframe(node_degrees):
+def internal__create_node_degrees_data_frame(node_degrees):
     """Converts a list of degrees to a dataframe."""
 
     dataframe = pd.DataFrame(node_degrees, columns=["Name", "Degree"])

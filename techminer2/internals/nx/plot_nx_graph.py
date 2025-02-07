@@ -10,7 +10,7 @@
 import plotly.graph_objects as go
 
 
-def internal__plot_network_graph(
+def internal__plot_nx_graph(
     params,
     nx_graph,
 ):

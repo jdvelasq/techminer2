@@ -9,7 +9,7 @@
 
 import pandas as pd  # type: ignore
 
-from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
+from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
 
 
 def internal__extract_communities_to_frame(
@@ -20,7 +20,9 @@ def internal__extract_communities_to_frame(
 
     conserve_counters = params.term_counters
 
-    communities = internal__clusters_to_terms_mapping(nx_graph, conserve_counters)
+    communities = internal__create_clusters_to_terms_mapping(
+        nx_graph, conserve_counters
+    )
     communities = pd.DataFrame.from_dict(communities, orient="index").T
     communities = communities.fillna("")
     communities = communities.sort_index(axis=1)

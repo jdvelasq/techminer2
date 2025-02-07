@@ -12,7 +12,7 @@ from .extract_communities_to_frame import internal__extract_communities_to_frame
 from .summarize_communities import internal__summarize_communities
 
 
-def internal__plot_concept_grid(
+def internal__concept_grid_plot(
     nx_graph,
     conserve_counters,
     n_head,

@@ -43,59 +43,27 @@ Node Degree Plot
 
 
 """
-from .....internals.nx.assign_degree_to_nodes import internal__assign_degree_to_nodes
-
-# from ....internals.nx_mixin.nx_degree import nx_degree_plot
+from .....internals.mixins import InputFunctionsMixin
+from .....internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degree_plot,
+    internal__create_node_degrees_data_frame,
+)
 from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
-UNIT_OF_ANALYSIS = "article"
 
-
-def _node_degree_plot(
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DEGREE PLOT:
-    textfont_size=10,
-    marker_size=7,
-    line_color="black",
-    line_width=1.5,
-    yshift=4,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+class NodeDegreePlot(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    nx_graph = internal__create_nx_graph(
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    def build(self):
 
-    return nx_degree_plot(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # DEGREE PLOT PARAMS:
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_color=line_color,
-        line_width=line_width,
-        yshift=yshift,
-    )
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
+        plot = internal__create_node_degree_plot(data_frame)
+
+        return plot

@@ -64,7 +64,7 @@ from ....internals.nx import (
     internal__assign_textfont_opacity_based_on_citations,
     internal__assign_textfont_sizes_based_on_citations,
     internal__compute_spring_layout_positions,
-    internal__plot_network_graph,
+    internal__plot_nx_graph,
 )
 from .network_edges_data_frame import network_edges_frame
 
@@ -151,7 +151,7 @@ def network_plot(
     for node in nx_graph.nodes():
         nx_graph.nodes[node]["text"] = node
 
-    return internal__plot_network_graph(
+    return internal__plot_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

@@ -25,7 +25,7 @@ from ...thesaurus.internals.thesaurus__read_as_dict import thesaurus__read_as_di
 from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
 from ..utils.utils_format_report_for_records import _utils_format_report_for_records
 from ..utils.utils_make_report_dir import _utils_make_report_dir
-from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
+from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
 
 # from ...database.load.load__database import load__filtered_database
 
@@ -52,7 +52,9 @@ def internal__create_co_occurrence_report(
 
     _utils_make_report_dir(root_dir, report_dir)
 
-    communities = internal__clusters_to_terms_mapping(nx_graph, retain_counters=False)
+    communities = internal__create_clusters_to_terms_mapping(
+        nx_graph, retain_counters=False
+    )
 
     records_per_cluster = __extract_records_per_cluster(
         communities=communities,

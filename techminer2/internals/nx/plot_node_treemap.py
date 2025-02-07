@@ -27,7 +27,7 @@ Treemap
 """
 import plotly.graph_objs as go  # type: ignore
 
-from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
+from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
 
 
 def internal__plot_node_treemap(
@@ -46,7 +46,9 @@ def internal__plot_node_treemap(
     node_text = []
     parents = []
 
-    clusters = internal__clusters_to_terms_mapping(nx_graph, retain_counters=True)
+    clusters = internal__create_clusters_to_terms_mapping(
+        nx_graph, retain_counters=True
+    )
     cluster_occ = {key: 0 for key in clusters}
     for key, names in clusters.items():
         for name in names:

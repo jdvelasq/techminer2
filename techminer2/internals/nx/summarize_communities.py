@@ -9,7 +9,7 @@
 
 import pandas as pd  # type: ignore
 
-from .clusters_to_terms_mapping import internal__clusters_to_terms_mapping
+from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
 
 
 def internal__summarize_communities(
@@ -20,7 +20,7 @@ def internal__summarize_communities(
 
     conserve_counters = params.term_counters
 
-    communities_dict = internal__clusters_to_terms_mapping(
+    communities_dict = internal__create_clusters_to_terms_mapping(
         nx_graph, retain_counters=conserve_counters
     )
     communities_len = {}

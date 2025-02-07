@@ -46,7 +46,7 @@ Concept Grid Plot
 
 """
 from ....internals.nx.cluster_network_graph import internal__cluster_network_graph
-from ....internals.nx.plot_concept_grid import internal__plot_concept_grid
+from ....internals.nx.create_concept_grid_plot import internal__concept_grid_plot
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )
@@ -112,7 +112,7 @@ def concept_grid_plot(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    return internal__plot_concept_grid(
+    return internal__concept_grid_plot(
         nx_graph=nx_graph,
         conserve_counters=conserve_counters,
         n_head=n_head,

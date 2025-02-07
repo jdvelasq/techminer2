@@ -7,11 +7,11 @@
 # pylint: disable=too-many-statements
 
 
-def internal__clusters_to_terms_mapping(
+def internal__create_terms_to_clusters_mapping(
     params,
     nx_graph,
 ):
-    """Gets communities from a networkx graph as a dictionary."""
+    """Creates a dictionary with terms as keys and clusters as values."""
 
     retain_counters = params.term_counters
 
@@ -19,10 +19,8 @@ def internal__clusters_to_terms_mapping(
 
     for node, data in nx_graph.nodes(data=True):
         cluster = data["group"]
-        if cluster not in mapping:
-            mapping[cluster] = []
         if retain_counters is False:
             node = " ".join(node.split(" ")[:-1])
-        mapping[cluster].append(node)
+        mapping[node] = cluster
 
     return mapping

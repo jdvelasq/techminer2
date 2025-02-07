@@ -90,7 +90,7 @@ from ....internals.nx.cluster_network_graph import internal__cluster_network_gra
 from ....internals.nx.compute_spring_layout_positions import (
     internal__compute_spring_layout_positions,
 )
-from ....internals.nx.plot_network_graph import internal__plot_network_graph
+from ....internals.nx.plot_nx_graph import internal__plot_nx_graph
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )
@@ -197,7 +197,7 @@ def network_plot(
     nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
     nx_graph = internal__assign_edge_colors_based_on_weight(nx_graph)
 
-    return internal__plot_network_graph(
+    return internal__plot_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

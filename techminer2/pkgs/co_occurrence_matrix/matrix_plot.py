@@ -138,7 +138,7 @@ from ...internals.nx import (
     internal__assign_textfont_opacity_based_on_occurrences,
     internal__assign_textfont_sizes_based_on_occurrences,
     internal__compute_spring_layout_positions,
-    internal__plot_network_graph,
+    internal__plot_nx_graph,
 )
 from .matrix_data_frame import MatrixDataFrame
 
@@ -284,7 +284,7 @@ class MatrixPlot(
         nx_graph = self._step_10_assign_edge_widths_based_on_weight(nx_graph)
         nx_graph = self._step_11_assign_text_positions_based_on_quadrants(nx_graph)
 
-        return internal__plot_network_graph(
+        return internal__plot_nx_graph(
             params=self.params,
             nx_graph=nx_graph,
         )
