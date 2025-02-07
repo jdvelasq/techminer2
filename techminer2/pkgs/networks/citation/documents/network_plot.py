@@ -9,7 +9,7 @@
 Network Plot
 ===============================================================================
 
->>> from techminer2.pkgs.networks.citation.articles import NetworkPlot
+>>> from techminer2.pkgs.networks.citation.documents import NetworkPlot
 >>> plot = (
 ...     NetworkPlot()
 ...     #
@@ -44,11 +44,11 @@ Network Plot
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/articles/network_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/documents/network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/citation/articles/network_plot.html" 
+    <iframe src="../../_generated/pkgs/networks/citation/documents/network_plot.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
@@ -69,7 +69,7 @@ from .....internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
+from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
 class NetworkPlot(
