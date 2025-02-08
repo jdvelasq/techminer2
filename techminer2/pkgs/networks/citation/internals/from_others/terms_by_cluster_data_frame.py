@@ -11,6 +11,7 @@ Builds a terms by cluster frame from other fields.
 
 
 """
+
 from ......internals.mixins import InputFunctionsMixin
 from ......internals.nx import (
     internal__cluster_nx_graph,

@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Network Density Plot
+Network Plot
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.articles import NodeDensityPlot
+## >>> from techminer2.pkgs.networks.coupling.articles import NetworkPlot
 ## >>> plot = (
-## ...     NodeDensityPlot()
+## ...     NetworkPlot()
 ## ...     #
 ## ...     # UNIT OF ANALYSIS:
 ## ...     .having_terms_in_top(20)
@@ -25,10 +25,10 @@ Network Density Plot
 ## ...     .using_spring_layout_iterations(30)
 ## ...     .using_spring_layout_seed(0)
 ## ...     #
-## ...     # DENSITY:
-## ...     .using_kernel_bandwidth(0.1)
-## ...     .using_colormap("Aggrnyl")
-## ...     .using_contour_opacity(0.6)
+## ...     .using_edge_colors(["#7793a5"])
+## ...     .using_edge_width_range(0.8, 3.0)
+## ...     .using_node_size_range(30, 70)
+## ...     .using_textfont_opacity_range(0.35, 1.00)
 ## ...     .using_textfont_size_range(10, 20)
 ## ...     #
 ## ...     # DATABASE:
@@ -40,26 +40,32 @@ Network Density Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/articles/node_density_plot.html")
+## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/articles/network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/coupling/articles/node_density_plot.html" 
+    <iframe src="../../_generated/pkgs/networks/coupling/articles/network_plot.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
                                              
 """
 from .....internals.mixins import InputFunctionsMixin
 from .....internals.nx import (
+    internal__assign_constant_to_edge_colors,
+    internal__assign_edge_widths_based_on_weight,
+    internal__assign_node_colors_based_on_group_attribute,
+    internal__assign_node_sizes_based_on_citations,
+    internal__assign_text_positions_based_on_quadrants,
+    internal__assign_textfont_opacity_based_on_citations,
     internal__assign_textfont_sizes_based_on_citations,
     internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
-    internal__create_network_density_plot,
+    internal__plot_nx_graph,
 )
-from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
+from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
-class NodeDensityPlot(
+class NetworkPlot(
     InputFunctionsMixin,
 ):
     """:meta private:"""
@@ -68,7 +74,7 @@ class NodeDensityPlot(
         pass
 
 
-def _node_density_plot(
+def _network_plot(
     #
     # ARTICLE PARAMS:
     top_n=None,
@@ -82,11 +88,19 @@ def _node_density_plot(
     nx_iterations=30,
     nx_random_state=0,
     #
-    # DENSITY VISUALIZATION:
-    bandwidth="silverman",
-    colorscale="Aggrnyl",
-    opacity=0.6,
+    # NODES:
+    node_size_range=(30, 70),
     textfont_size_range=(10, 20),
+    textfont_opacity_range=(0.35, 1.00),
+    #
+    # EDGES:
+    edge_color="#7793a5",
+    edge_width_range=(0.8, 3.0),
+    #
+    # AXES:
+    xaxes_range=None,
+    yaxes_range=None,
+    show_axes=False,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -119,27 +133,36 @@ def _node_density_plot(
         algorithm_or_dict=algorithm_or_dict,
     )
 
+    #
+    # Sets the layout
     nx_graph = internal__compute_spring_layout_positions(
-        nx_graph=nx_graph,
-        k=nx_k,
-        iterations=nx_iterations,
-        seed=nx_random_state,
+        nx_graph, nx_k, nx_iterations, nx_random_state
     )
 
+    #
+    # Sets the node attributes
+    nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
+    nx_graph = internal__assign_node_sizes_based_on_citations(nx_graph, node_size_range)
     nx_graph = internal__assign_textfont_sizes_based_on_citations(
         nx_graph, textfont_size_range
     )
+    nx_graph = internal__assign_textfont_opacity_based_on_citations(
+        nx_graph, textfont_opacity_range
+    )
 
-    return internal__create_network_density_plot(
+    #
+    # Sets the edge attributes
+    nx_graph = internal__assign_edge_widths_based_on_weight(nx_graph, edge_width_range)
+    nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
+    nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
+
+    return internal__plot_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
         #
         # NETWORK PARAMS:
-        bandwidth=bandwidth,
-        colorscale=colorscale,
-        opacity=opacity,
-        # xaxes_range=xaxes_range,
-        # yaxes_range=yaxes_range,
-        # show_axes=show_axes,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
+        show_axes=show_axes,
     )

@@ -54,8 +54,8 @@ Terms by Dimension Frame
 import pandas as pd  # type: ignore
 
 # from ...cross_co_occurrence import co_occurrence_matrix
-from ...co_occurrence_matrix.internals.normalize_co_occurrence_matrix import (
-    normalize_co_occurrence_matrix,
+from ...co_occurrence_matrix.internals.normalize_matrix import (
+    internal__normalize_matrix,
 )
 
 
@@ -102,7 +102,7 @@ def terms_by_dimension_frame(
         **filters,
     )
 
-    matrix_values = normalize_co_occurrence_matrix(matrix_values, association_index)
+    matrix_values = internal__normalize_matrix(matrix_values, association_index)
     decomposition_estimator.fit(matrix_values)
     trans_matrix_values = decomposition_estimator.transform(matrix_values)
 

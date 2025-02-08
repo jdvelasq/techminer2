@@ -6,19 +6,16 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Terms by Cluster Frame
+Network Metrics
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.articles import TermsByClusterDataFrame
+## >>> from techminer2.pkgs.networks.coupling.articles import NetworkMetrics
 ## >>> (
-## ...     TermsByClusterDataFrame()
+## ...     NetworkMetrics()
 ## ...     #
 ## ...     # UNIT OF ANALYSIS:
 ## ...     .having_terms_in_top(20)
 ## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -28,21 +25,18 @@ Terms by Cluster Frame
 ## ...     .where_records_match(None)
 ## ...     #
 ## ...     .build()
-## ... )
+## ... ).head()
 
 
 
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from .....internals.nx import (
-    internal__cluster_nx_graph,
-    internal__extract_communities_to_frame,
-)
-from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
+from .....internals.nx import internal__compute_network_metrics
+from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
-class TermsByClusterDataFrame(
+class NetworkMetrics(
     InputFunctionsMixin,
 ):
     """:meta private:"""
@@ -51,14 +45,11 @@ class TermsByClusterDataFrame(
         pass
 
 
-def _terms_by_cluster_frame(
+def _network_metrics(
     #
     # ARTICLE PARAMS:
     top_n=None,
     citations_threshold=0,
-    #
-    # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -82,18 +73,8 @@ def _terms_by_cluster_frame(
         **filters,
     )
 
-    nx_graph = internal__cluster_nx_graph(
+    return internal__compute_network_metrics(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
-        #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
-    )
-
-    return internal__extract_communities_to_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        conserve_counters=True,
     )

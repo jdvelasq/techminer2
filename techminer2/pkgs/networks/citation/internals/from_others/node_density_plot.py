@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Node density plot."""
+
 from ......internals.mixins import InputFunctionsMixin
 from ......internals.nx import (
     internal__assign_textfont_sizes_based_on_occurrences,

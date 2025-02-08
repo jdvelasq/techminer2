@@ -33,7 +33,7 @@ Network Degree Frame
 from .....internals.mixins import InputFunctionsMixin
 
 # from ....internals.nx.nx_degree_frame import nx_degree_frame
-from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
+from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
 class NodeDegreeDataFrame(

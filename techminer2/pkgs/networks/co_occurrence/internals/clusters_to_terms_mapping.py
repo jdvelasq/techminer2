@@ -61,76 +61,24 @@ Clusters to Terms Mapping
 
 
 """
-from ....internals.nx.cluster_nx_graph import internal__cluster_nx_graph
-from ....internals.nx.create_clusters_to_terms_mapping import (
+from .....internals.mixins import InputFunctionsMixin
+from .....internals.nx import (
+    internal__cluster_nx_graph,
     internal__create_clusters_to_terms_mapping,
 )
-from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
-    _create_co_occurrence_nx_graph,
-)
+from .create_nx_graph import internal__create_nx_graph
 
 
-def clusters_to_terms_mapping(
-    #
-    # PARAMS:
-    field,
-    retain_counters=True,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_terms=None,
-    #
-    # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
-    association_index="association",
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+class InternalClustersToTermsMapping(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    nx_graph = _create_co_occurrence_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        rows_and_columns=field,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_terms=custom_terms,
-        #
-        # NETWORK PARAMS:
-        association_index=association_index,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    def build(self):
+        """:meta private:"""
 
-    nx_graph = internal__cluster_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
-    )
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        mapping = internal__create_clusters_to_terms_mapping(self.params, nx_graph)
 
-    mapping = internal__create_clusters_to_terms_mapping(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        retain_counters=retain_counters,
-    )
-
-    return mapping
+        return mapping

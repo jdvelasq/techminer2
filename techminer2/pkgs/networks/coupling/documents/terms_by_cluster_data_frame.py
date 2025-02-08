@@ -6,23 +6,19 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Network Degree Plot
+Terms by Cluster Frame
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.articles import NodeDegreePlot
-## >>> plot = (
-## ...     NodeDegreePlot()
+## >>> from techminer2.pkgs.networks.coupling.articles import TermsByClusterDataFrame
+## >>> (
+## ...     TermsByClusterDataFrame()
 ## ...     #
 ## ...     # UNIT OF ANALYSIS:
 ## ...     .having_terms_in_top(20)
 ## ...     .having_citation_threshold(0)
 ## ...     #
-## ...     # PLOT:
-## ...     .using_line_color("black")
-## ...     .using_line_width(1.5)
-## ...     .using_marker_size(7)
-## ...     .using_textfont_size(10)
-## ...     .using_yshift(4)
+## ...     # CLUSTERING:
+## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -33,24 +29,20 @@ Network Degree Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/articles/node_degree_plot.html")
-
-.. raw:: html
-
-    <iframe src="../../_generated/pkgs/networks/coupling/articles/node_degree_plot.html" 
-    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
 
 """
 from .....internals.mixins import InputFunctionsMixin
+from .....internals.nx import (
+    internal__cluster_nx_graph,
+    internal__extract_communities_to_frame,
+)
+from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
-# from ....internals.nx_mixin.nx_degree import nx_degree_plot
-from ..internals.from_articles.create_nx_graph import internal__create_nx_graph
 
-
-class NodeDegreePlot(
+class TermsByClusterDataFrame(
     InputFunctionsMixin,
 ):
     """:meta private:"""
@@ -59,18 +51,14 @@ class NodeDegreePlot(
         pass
 
 
-def _node_degree_plot(
+def _terms_by_cluster_frame(
     #
     # ARTICLE PARAMS:
     top_n=None,
     citations_threshold=0,
     #
-    # DEGREE PLOT:
-    textfont_size=10,
-    marker_size=7,
-    line_color="black",
-    line_width=1.5,
-    yshift=4,
+    # NETWORK PARAMS:
+    algorithm_or_dict="louvain",
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -94,15 +82,18 @@ def _node_degree_plot(
         **filters,
     )
 
-    return nx_degree_plot(
+    nx_graph = internal__cluster_nx_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
         #
-        # DEGREE PLOT PARAMS:
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_color=line_color,
-        line_width=line_width,
-        yshift=yshift,
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
+    )
+
+    return internal__extract_communities_to_frame(
+        #
+        # FUNCTION PARAMS:
+        nx_graph=nx_graph,
+        conserve_counters=True,
     )

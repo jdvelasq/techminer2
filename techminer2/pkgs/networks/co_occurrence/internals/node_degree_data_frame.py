@@ -45,59 +45,26 @@ Node Degree Frame
 
 
 """
-# from ...internals.nx.nx_degree_frame import nx_degree_frame
-from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
-    _create_co_occurrence_nx_graph,
+from .....internals.mixins import InputFunctionsMixin
+from .....internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degrees_data_frame,
 )
+from .create_nx_graph import internal__create_nx_graph
 
 
-def node_degree_frame(
-    #
-    # PARAMS:
-    field,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_terms=None,
-    #
-    # NETWORK PARAMS:
-    association_index="association",
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+class InternalNodeDegreeDataFrame(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    nx_graph = _create_co_occurrence_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        rows_and_columns=field,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_terms=custom_terms,
-        #
-        # NETWORK PARAMS:
-        association_index=association_index,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    def build(self):
+        """:meta private:"""
 
-    return nx_degree_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-    )
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
+
+        return data_frame

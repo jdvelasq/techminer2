@@ -6,27 +6,25 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Concept Grid Plot
+Treemap
 ===============================================================================
 
-
-## >>> from techminer2.pkgs.co_occurrence_network import concept_grid_plot
-## >>> chart = concept_grid_plot(
+## >>> from techminer2.pkgs.co_occurrence_network import treemap
+## >>> plot = treemap(
 ## ...     #
 ## ...     # FIELD:
 ## ...     .with_field("author_keywords")
-## ...     .having_terms_in_top(30)
+## ...     .having_terms_in_top(20)
 ## ...     .having_terms_ordered_by("OCC")
 ## ...     .having_term_occurrences_between(None, None)
 ## ...     .having_term_citations_between(None, None)
 ## ...     .having_terms_in(None)
 ## ...     #
-## ...     # COUNTERS:
-## ...     .using_term_counters(True)
-## ...     #
 ## ...     # NETWORK:
-## ...     .using_clustering_algorithm_or_dict("louvain")
 ## ...     .using_association_index("association")
+## ...     #
+## ...     # PLOT:
+## ...     .using_title_text(None)
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
@@ -37,30 +35,38 @@ Concept Grid Plot
 ## ...     #
 ## ...     .build()
 ## ... )
-## >>> chart.render("sphinx/images/co_occurrence_network/concept_grid_plot", format="png")
+## >>> # plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
 
+.. raw:: html
 
-# .. image:: /images/co_occurrence_network/concept_grid_plot.png
-#     :width: 900px
-#     :align: center
+    <iframe src="../_static/co_occurrence_network/treemap.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from .....internals.mixins import InputFunctionsMixin
+from ....internals.nx.assign_node_colors_based_on_group_attribute import (
+    internal__assign_node_colors_based_on_group_attribute,
+)
 from ....internals.nx.cluster_nx_graph import internal__cluster_nx_graph
-from ....internals.nx.create_concept_grid_plot import internal__concept_grid_plot
+from ....internals.nx.plot_node_treemap import internal__plot_node_treemap
 from ...co_occurrence_matrix.internals.create_co_occurrence_nx_graph import (
     _create_co_occurrence_nx_graph,
 )
 
 
-def concept_grid_plot(
+class InternalTreemap(
+    InputFunctionsMixin,
+):
+    """:meta private:"""
+
+    def build(self):
+        """:meta private:"""
+
+
+def treemap(
     #
     # PARAMS:
     field,
-    #
-    # CONCEPT GRID PARAMS:
-    conserve_counters=False,
-    n_head=None,
-    fontsize="9",
     #
     # COLUMN PARAMS:
     top_n=None,
@@ -71,6 +77,9 @@ def concept_grid_plot(
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
     association_index="association",
+    #
+    # DEGREE PLOT:
+    title=None,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -112,9 +121,13 @@ def concept_grid_plot(
         algorithm_or_dict=algorithm_or_dict,
     )
 
-    return internal__concept_grid_plot(
+    nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
+
+    return internal__plot_node_treemap(
+        #
+        # FUNCTION PARAMS:
         nx_graph=nx_graph,
-        conserve_counters=conserve_counters,
-        n_head=n_head,
-        fontsize=fontsize,
+        #
+        # CHART PARAMS:
+        title=title,
     )
