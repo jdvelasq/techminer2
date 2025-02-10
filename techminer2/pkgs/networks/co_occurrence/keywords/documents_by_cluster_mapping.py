@@ -1,0 +1,70 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+"""
+Terms to Cluster Mapping
+===============================================================================
+
+>>> # where_records_ordered_by: date_newest, date_oldest, global_cited_by_highest, 
+>>> #                           global_cited_by_lowest, local_cited_by_highest, 
+>>> #                           local_cited_by_lowest, first_author_a_to_z, 
+>>> #                           first_author_z_to_a, source_title_a_to_z, 
+>>> #                           source_title_z_to_a
+>>> from techminer2.pkgs.networks.co_occurrence.keywords import DocumentsByClusterMapping
+>>> documents_by_cluster = (
+...     DocumentsByClusterMapping()
+...     #
+...     # FIELD:
+...     .having_terms_in_top(20)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # NETWORK:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     .using_association_index("association")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     .where_records_ordered_by("date_newest")
+...     #
+...     .build()
+... )
+>>> print(len(documents_by_cluster))
+
+>>> print(documents_by_cluster[0][0])
+
+
+
+
+
+"""
+from .....internals.mixins import InputFunctionsMixin
+from ..user.documents_by_cluster_mapping import (
+    DocumentsByClusterMapping as UserDocumentsByClusterMapping,
+)
+
+
+class DocumentsByClusterMapping(
+    InputFunctionsMixin,
+):
+    """:meta private:"""
+
+    def build(self):
+        """:meta private:"""
+
+        return (
+            UserDocumentsByClusterMapping()
+            .update_params(**self.params.__dict__)
+            .with_field("keywords")
+            .build()
+        )

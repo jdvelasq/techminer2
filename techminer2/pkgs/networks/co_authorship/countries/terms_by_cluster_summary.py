@@ -1,0 +1,76 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+"""
+Terms by Cluster Summary
+===============================================================================
+
+
+>>> from techminer2.pkgs.networks.co_authorship.countries import TermsByClusterSummary
+>>> (
+...     TermsByClusterSummary()
+...     #
+...     # FIELD:
+...     .having_terms_in_top(20)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
+...     # NETWORK:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     .using_association_index("association")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+   Cluster  ...                                              Terms
+0        0  ...  United States 16:3189; China 08:1085; South Ko...
+1        1  ...  Germany 07:1814; Netherlands 03:0300; Denmark ...
+2        2  ...  Australia 05:0783; United Kingdom 03:0636; Hon...
+3        3  ...                                Switzerland 04:0660
+4        4  ...                                     Latvia 02:0163
+5        5  ...                                      Spain 01:0225
+6        6  ...                                  Indonesia 01:0102
+7        7  ...                                   Slovenia 01:0102
+8        8  ...                          Brunei Darussalam 01:0090
+<BLANKLINE>
+[9 rows x 4 columns]
+
+
+
+
+"""
+from .....internals.mixins import InputFunctionsMixin
+from ...co_occurrence.user.terms_by_cluster_summary import (
+    TermsByClusterSummary as UserTermsByClusterSummary,
+)
+
+
+class TermsByClusterSummary(
+    InputFunctionsMixin,
+):
+    """:meta private:"""
+
+    def build(self):
+        """:meta private:"""
+
+        return (
+            UserTermsByClusterSummary()
+            .update_params(**self.params.__dict__)
+            .with_field("countries")
+            .build()
+        )
