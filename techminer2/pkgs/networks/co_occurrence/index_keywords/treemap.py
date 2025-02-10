@@ -36,12 +36,12 @@ Treemap
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/treemap.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_occurrence/index_keywords/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_network/treemap.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/networks/co_occurrence/index_keywords/treemap.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 from .....internals.mixins import InputFunctionsMixin
@@ -59,6 +59,6 @@ class Treemap(
         return (
             UserTreemap()
             .update_params(**self.params.__dict__)
-            .with_field("author_keywords")
+            .with_field("index_keywords")
             .build()
         )
