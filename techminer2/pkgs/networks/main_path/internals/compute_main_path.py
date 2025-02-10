@@ -14,47 +14,76 @@ import copy
 
 import numpy as np
 
-# from .....database.load.load__database import load__filtered_database
+from .....database.load import DatabaseLoader
 
 
-def internal__compute_main_path(
-    params,
-):
-    """:meta private:"""
+# ------------------------------------------------------------------------------
+def step_01_create_citations_table(params):
 
     #
-    # Creates a table with citing and cited articles
-    data_frame = _create_citations_table(
-        #
-        # NETWORK PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+    # Extracts the records using the specified parameters
+    records = DatabaseLoader().update_params(**params.__dict__).build()
+
+    records = records.sort_values(
+        ["global_citations", "local_citations", "year", "record_id"],
+        ascending=[False, False, False, True],
     )
 
-    #
-    # Extracts the articles in the main path(s)
-    articles_in_main_path, data_frame = _get_main_path(data_frame)
+    if params.citation_threshold is not None:
+        records = records.loc[records.global_citations >= params.citation_threshold, :]
+    if params.top_n is not None:
+        records = records.head(params.top_n)
 
     #
-    # Filters the table
+    # Builds a dataframe with citing and cited articles
+    data_frame = records[["record_id", "local_references", "global_citations"]]
+
+    data_frame.loc[:, "local_references"] = data_frame.local_references.str.split(";")
+    data_frame = data_frame.explode("local_references")
+    data_frame["local_references"] = data_frame["local_references"].str.strip()
+
     data_frame = data_frame[
-        (data_frame.citing_article.isin(articles_in_main_path))
-        & (data_frame.cited_article.isin(articles_in_main_path))
+        data_frame["local_references"].map(
+            lambda x: x in data_frame.record_id.to_list()
+        )
     ]
 
-    data_frame = data_frame.reset_index(drop=True)
+    #
+    # Adds citations to the article
+    max_citations = records.global_citations.max()
+    n_zeros = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros) + "d}"
+    #
+    rename_dict = {
+        key: value
+        for key, value in zip(
+            records["record_id"].to_list(),
+            (
+                records["record_id"] + records["global_citations"].map(fmt.format)
+            ).to_list(),
+        )
+    }
+    #
+    data_frame["record_id"] = data_frame["record_id"].map(rename_dict)
+    data_frame["local_references"] = data_frame["local_references"].map(rename_dict)
 
-    return articles_in_main_path, data_frame
+    #
+    # Creates the citation network
+    data_frame = data_frame[["record_id", "local_references"]]
+    data_frame = data_frame.rename(
+        columns={
+            "record_id": "citing_article",
+            "local_references": "cited_article",
+        }
+    )
+
+    data_frame = data_frame.dropna()
+
+    return data_frame
 
 
-def _get_main_path(data_frame):
+# ------------------------------------------------------------------------------
+def step_02_extracts_main_path_documents(data_frame):
 
     # Creates the links of the citation network
     data_frame = data_frame.copy()
@@ -178,83 +207,23 @@ def _get_main_path(data_frame):
     return article_in_main_path, data_frame
 
 
-def _create_citations_table(
-    #
-    # NETWORK PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    #
-    # Extracts the records using the specified parameters
-    records = load__filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=year_filter,
-        record_citations_range=cited_by_filter,
-        records_order_by=None,
-        **filters,
-    )
-
-    records = records.sort_values(
-        ["global_citations", "local_citations", "year", "article"],
-        ascending=[False, False, False, True],
-    )
-
-    if citations_threshold is not None:
-        records = records.loc[records.global_citations >= citations_threshold, :]
-    if top_n is not None:
-        records = records.head(top_n)
-
-    #
-    # Builds a dataframe with citing and cited articles
-    data_frame = records[["article", "local_references", "global_citations"]]
-
-    data_frame.loc[:, "local_references"] = data_frame.local_references.str.split(";")
-    data_frame = data_frame.explode("local_references")
-    data_frame["local_references"] = data_frame["local_references"].str.strip()
-
+# ------------------------------------------------------------------------------
+def step_03_filter_data_frame(data_frame, articles_in_main_path):
     data_frame = data_frame[
-        data_frame["local_references"].map(lambda x: x in data_frame.article.to_list())
+        (data_frame.citing_article.isin(articles_in_main_path))
+        & (data_frame.cited_article.isin(articles_in_main_path))
     ]
-
-    #
-    # Adds citations to the article
-    max_citations = records.global_citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt = " 1:{:0" + str(n_zeros) + "d}"
-    #
-    rename_dict = {
-        key: value
-        for key, value in zip(
-            records["article"].to_list(),
-            (
-                records["article"] + records["global_citations"].map(fmt.format)
-            ).to_list(),
-        )
-    }
-    #
-    data_frame["article"] = data_frame["article"].map(rename_dict)
-    data_frame["local_references"] = data_frame["local_references"].map(rename_dict)
-
-    #
-    # Creates the citation network
-    data_frame = data_frame[["article", "local_references"]]
-    data_frame = data_frame.rename(
-        columns={
-            "article": "citing_article",
-            "local_references": "cited_article",
-        }
-    )
-
-    data_frame = data_frame.dropna()
-
+    data_frame = data_frame.reset_index(drop=True)
     return data_frame
+
+
+# ------------------------------------------------------------------------------
+def internal__compute_main_path(
+    params,
+):
+    """:meta private:"""
+    data_frame = step_01_create_citations_table(params)
+    articles_in_main_path, data_frame = step_02_extracts_main_path_documents(data_frame)
+    data_frame = step_03_filter_data_frame(data_frame, articles_in_main_path)
+
+    return articles_in_main_path, data_frame

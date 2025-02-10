@@ -9,142 +9,110 @@
 Main Path Documents
 ===============================================================================
 
-## >>> from techminer2.pkgs.network.main_path import MainPathDocuments
-## >>> documents = (
-## ...     MainPathDocuments()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(None)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ...         sort_by="date_oldest", # date_newest, date_oldest, global_cited_by_highest, 
-## ...                                # global_cited_by_lowest, local_cited_by_highest, 
-## ...                                # local_cited_by_lowest, first_author_a_to_z, 
-## ...                                # first_author_z_to_a, source_title_a_to_z, 
-## ...                                # source_title_z_to_a
-## ...     #
-## ...     ).build()
-## ... )
+
+>>> # where_records_ordered_by:
+>>> #     date_newest, date_oldest, global_cited_by_highest, 
+>>> #     global_cited_by_lowest, local_cited_by_highest, 
+>>> #     local_cited_by_lowest, first_author_a_to_z, 
+>>> #     first_author_z_to_a, source_title_a_to_z, 
+>>> #     source_title_z_to_a
+>>> from techminer2.pkgs.networks.main_path import MainPathDocuments
+>>> documents = (
+...     MainPathDocuments()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(None)
+...     .having_citation_threshold(0)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     .where_records_ordered_by("data_newest") 
+...     #
+...     .build()
+... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
 --INFO-- Points per path computed.
-## >>> len(documents)
+
+>>> len(documents)
 5
-## >>> print(documents[0])
-Record-No: 12
+>>> print(documents[0])
+UT 1178
 AR Gomber P., 2017, J BUS ECON, V87, P537
 TI Digital Finance and FinTech: current research and future research directions
 AU Gomber P.; Koch J.-A.; Siering M.
 TC 489
 SO Journal of Business Economics
 PY 2017
-AB since decades , the FINANCIAL_INDUSTRY has experienced a
-   CONTINUOUS_EVOLUTION in SERVICE_DELIVERY due to DIGITALIZATION . this
-   EVOLUTION is characterized by expanded connectivity and enhanced SPEED of
-   INFORMATION_PROCESSING both at the CUSTOMER_INTERFACE and in back_office
-   PROCESSES . recently , there has been a shift in the focus of DIGITALIZATION
-   from improving the DELIVERY of TRADITIONAL_TASKS to introducing
-   fundamentally NEW_BUSINESS_OPPORTUNITIES and MODELS for
-   FINANCIAL_SERVICE_COMPANIES . DIGITAL_FINANCE_ENCOMPASSES a magnitude of
-   NEW_FINANCIAL_PRODUCTS , FINANCIAL_BUSINESSES , finance_related SOFTWARE ,
-   and NOVEL_FORMS of CUSTOMER_COMMUNICATION and interactiondelivered by
-   FINTECH_COMPANIES and innovative FINANCIAL_SERVICE_PROVIDERS . against this
-   backdrop , the RESEARCH on FINANCE and INFORMATION_SYSTEMS has started to
-   analyze these changes and the impact of DIGITAL_PROGRESS on the
-   FINANCIAL_SECTOR . therefore , this ARTICLE_REVIEWS the CURRENT_STATE of
-   RESEARCH in DIGITAL_FINANCE that deals with these novel and
-   INNOVATIVE_BUSINESS_FUNCTIONS . moreover , IT gives an outlook on potential
-   FUTURE_RESEARCH_DIRECTIONS . as a CONCEPTUAL_BASIS for reviewing this field
-   , the DIGITAL_FINANCE_CUBE , which embraces three KEY_DIMENSIONS of
-   DIGITAL_FINANCE and FINTECH , i.e., the RESPECTIVE_BUSINESS_FUNCTIONS , the
-   technologies and TECHNOLOGICAL_CONCEPTS applied as well as the INSTITUTIONS
-   concerned , is introduced . this CONCEPTUALIZATION_SUPPORTS_RESEARCHERS and
-   practitioners when orientating in the field of DIGITAL_FINANCE , allows for
-   the arrangement of ACADEMIC_RESEARCH relatively to each other , and enables
-   for the revelation of the gaps in RESEARCH . 2017 , springer_verlag berlin
-   heidelberg .
+AB since DECADES , THE_FINANCIAL_INDUSTRY has experienced
+   A_CONTINUOUS_EVOLUTION in SERVICE_DELIVERY due_to DIGITALIZATION .
+   THIS_EVOLUTION is characterized by EXPANDED_CONNECTIVITY and ENHANCED_SPEED
+   of INFORMATION_PROCESSING both at THE_CUSTOMER_INTERFACE and in
+   BACK_OFFICE_PROCESSES . recently , there has been A_SHIFT in THE_FOCUS of
+   DIGITALIZATION from improving THE_DELIVERY of TRADITIONAL_TASKS to
+   introducing FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES and MODELS for
+   FINANCIAL_SERVICE_COMPANIES . DIGITAL_FINANCE_ENCOMPASSES A_MAGNITUDE of
+   NEW_FINANCIAL_PRODUCTS , FINANCIAL_BUSINESSES , FINANCE RELATED_SOFTWARE ,
+   and NOVEL_FORMS of CUSTOMER_COMMUNICATION and INTERACTION delivered by
+   FINTECH_COMPANIES and INNOVATIVE_FINANCIAL_SERVICE_PROVIDERS . against
+   THIS_BACKDROP , THE_RESEARCH on FINANCE and INFORMATION_SYSTEMS has started
+   to analyze THESE_CHANGES and THE_IMPACT of DIGITAL_PROGRESS on
+   THE_FINANCIAL_SECTOR . therefore , THIS_ARTICLE REVIEWS THE_CURRENT_STATE of
+   RESEARCH in DIGITAL_FINANCE that deals with
+   THESE_NOVEL_AND_INNOVATIVE_BUSINESS_FUNCTIONS . moreover , it gives
+   AN_OUTLOOK on POTENTIAL_FUTURE_RESEARCH_DIRECTIONS . as A_CONCEPTUAL_BASIS
+   for reviewing THIS_FIELD , the DIGITAL_FINANCE_CUBE , which embraces
+   THREE_KEY_DIMENSIONS of DIGITAL_FINANCE and FINTECH , i . e . ,
+   THE_RESPECTIVE_BUSINESS_FUNCTIONS , THE_TECHNOLOGIES and
+   TECHNOLOGICAL_CONCEPTS applied as_well_as THE_INSTITUTIONS concerned , is
+   introduced . THIS_CONCEPTUALIZATION supports RESEARCHERS and PRACTITIONERS
+   when orientating in THE_FIELD of DIGITAL_FINANCE , allows for
+   THE_ARRANGEMENT of ACADEMIC_RESEARCH relatively to each other , and enables
+   for THE_REVELATION of THE_GAPS in RESEARCH . 2017 ,
+   SPRINGER_VERLAG_BERLIN_HEIDELBERG .
 DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
    LITERATURE_REVIEW; STATE_OF_THE_ART
-** ACADEMIC_RESEARCH; ARTICLE_REVIEWS; BACKOFFICE_PROCESSES;
-   CONCEPTUALIZATION_SUPPORTS_RESEARCHERS; CONCEPTUAL_BASIS;
-   CONTINUOUS_EVOLUTION; CURRENT_RESEARCH; CURRENT_STATE;
-   CUSTOMER_COMMUNICATION; CUSTOMER_INTERFACE; DIGITAL_FINANCE;
-   DIGITAL_FINANCE_CUBE; DIGITAL_FINANCE_ENCOMPASSES; DIGITAL_PROGRESS;
-   FINANCIAL_BUSINESSES; FINANCIAL_INDUSTRY; FINANCIAL_SECTOR;
-   FINANCIAL_SERVICE_COMPANIES; FINANCIAL_SERVICE_PROVIDERS; FINTECH_COMPANIES;
-   FUTURE_RESEARCH_DIRECTIONS; INFORMATION_PROCESSING; INFORMATION_SYSTEMS;
-   INNOVATIVE_BUSINESS_FUNCTIONS; KEY_DIMENSIONS; NEW_BUSINESS_OPPORTUNITIES;
-   NEW_FINANCIAL_PRODUCTS; NOVEL_FORMS; RESPECTIVE_BUSINESS_FUNCTIONS;
-   SERVICE_DELIVERY; SPRINGERVERLAG_BERLIN_HEIDELBERG; TECHNOLOGICAL_CONCEPTS;
-   TRADITIONAL_TASKS
 <BLANKLINE>
 
 
 
 """
-# from ....database.tools.record_viewer import select_documents
+from ....database.tools import RecordViewer
+from ....internals.mixins import InputFunctionsMixin
 from .internals.compute_main_path import internal__compute_main_path
 
 
-def main_path_documents(
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    sort_by=None,
-    **filters,
+class MainPathDocuments(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    #
-    # Creates a table with citing and cited articles
-    articles_in_main_path, _ = internal__compute_main_path(
-        #
-        # NETWORK PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    def build(self):
+        """:meta private:"""
 
-    #
-    # remove counters
-    #
-    articles_in_main_path = [
-        " ".join(article.split(" ")[:-1]) for article in articles_in_main_path
-    ]
-
-    documents = select_documents(
         #
-        # FILTERS:
-        article=list(articles_in_main_path),
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=(None, None),
-        cited_by_filter=(None, None),
-        sort_by=sort_by,
-        **filters,
-    )
+        # Creates a table with citing and cited articles
+        articles_in_main_path, _ = internal__compute_main_path(params=self.params)
 
-    return documents
+        #
+        # remove counters
+        articles_in_main_path = [
+            " ".join(article.split(" ")[:-1]) for article in articles_in_main_path
+        ]
+
+        #
+        # build the filter
+        records_match = {"record_id": articles_in_main_path}
+
+        documents = (
+            RecordViewer()
+            .update_params(**self.params.__dict__)
+            .where_records_match(records_match)
+            .build()
+        )
+
+        return documents

@@ -9,23 +9,23 @@
 Network Edges Frame
 ===============================================================================
 
-## >>> from techminer2.pkgs.network.main_path import network_edges_frame
-## >>> (
-## ...     NetworkEdgesDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(None)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
+>>> from techminer2.pkgs.networks.main_path import NetworkEdgesDataFrame
+>>> (
+...     NetworkEdgesDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(None)
+...     .having_citation_threshold(0)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
 --INFO-- Points per path computed.
@@ -41,38 +41,19 @@ Network Edges Frame
 
 
 """
+from ....internals.mixins import InputFunctionsMixin
 from .internals.compute_main_path import internal__compute_main_path
 
 
-def network_edges_frame(
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+class NetworkEdgesDataFrame(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    #
-    # Creates a table with citing and cited articles
-    _, data_frame = internal__compute_main_path(
-        #
-        # NETWORK PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    def build(self):
+        """:meta private:"""
 
-    return data_frame
+        #
+        # Creates a table with citing and cited articles
+        _, data_frame = internal__compute_main_path(params=self.params)
+        return data_frame
