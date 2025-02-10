@@ -54,7 +54,7 @@ Node Density Plot
 """
 
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.node_density_plot import InternalNodeDensityPlot
+from ..user.node_density_plot import NodeDensityPlot as UserNodeDensityPlot
 
 
 class NodeDensityPlot(
@@ -66,7 +66,7 @@ class NodeDensityPlot(
         """:meta private:"""
 
         return (
-            InternalNodeDensityPlot()
+            UserNodeDensityPlot()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

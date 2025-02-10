@@ -45,7 +45,7 @@ Treemap
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.treemap import InternalTreemap
+from ..user.treemap import Treemap as UserTreemap
 
 
 class Treemap(
@@ -57,7 +57,7 @@ class Treemap(
         """:meta private:"""
 
         return (
-            InternalTreemap()
+            UserTreemap()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

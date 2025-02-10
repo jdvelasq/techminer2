@@ -74,10 +74,12 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.documents_by_cluster_mapping import InternalDocumentsByClusterMapping
+from ..user.documents_by_cluster_mapping import (
+    DocumentsByClusterMapping as UserDocumentsByClusterMapping,
+)
 
 
-class ClustersToTermsMapping(
+class DocumentsByClusterMapping(
     InputFunctionsMixin,
 ):
     """:meta private:"""
@@ -86,7 +88,7 @@ class ClustersToTermsMapping(
         """:meta private:"""
 
         return (
-            InternalDocumentsByClusterMapping()
+            UserDocumentsByClusterMapping()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

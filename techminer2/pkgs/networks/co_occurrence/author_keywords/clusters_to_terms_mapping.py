@@ -44,7 +44,9 @@ Clusters to Terms Mapping
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.clusters_to_terms_mapping import InternalClustersToTermsMapping
+from ..user.clusters_to_terms_mapping import (
+    ClustersToTermsMapping as UserClustersToTermsMapping,
+)
 
 
 class ClustersToTermsMapping(
@@ -56,7 +58,7 @@ class ClustersToTermsMapping(
         """:meta private:"""
 
         return (
-            InternalClustersToTermsMapping()
+            UserClustersToTermsMapping()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

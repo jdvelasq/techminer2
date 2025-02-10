@@ -46,7 +46,7 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.network_metrics import InternalNetworkMetrics
+from ..user.network_metrics import NetworkMetrics as UserNetworkMetrics
 
 
 class NetworkMetrics(
@@ -58,7 +58,7 @@ class NetworkMetrics(
         """:meta private:"""
 
         return (
-            InternalNetworkMetrics()
+            UserNetworkMetrics()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

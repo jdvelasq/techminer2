@@ -18,10 +18,8 @@ def internal__summarize_communities(
 ):
     """Gets communities from a networkx graph as a data frame."""
 
-    conserve_counters = params.term_counters
-
     communities_dict = internal__create_clusters_to_terms_mapping(
-        nx_graph, retain_counters=conserve_counters
+        params=params, nx_graph=nx_graph
     )
     communities_len = {}
     communities_perc = {}

@@ -49,7 +49,9 @@ Terms by Cluster Summary
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.terms_by_cluster_summary import InternalTermsByClusterSummary
+from ..user.terms_by_cluster_summary import (
+    TermsByClusterSummary as UserTermsByClusterSummary,
+)
 
 
 class TermsByClusterSummary(
@@ -61,7 +63,7 @@ class TermsByClusterSummary(
         """:meta private:"""
 
         return (
-            InternalTermsByClusterSummary()
+            UserTermsByClusterSummary()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

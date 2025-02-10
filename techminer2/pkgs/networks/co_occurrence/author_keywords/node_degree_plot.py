@@ -52,7 +52,7 @@ Node Degree Plot
 """
 """Node Degree Plot"""
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.node_degree_plot import InternalNodeDegreePlot
+from ..user.node_degree_plot import NodeDegreePlot as UserNodeDegreePlot
 
 
 class NodeDegreePlot(
@@ -64,7 +64,7 @@ class NodeDegreePlot(
         """:meta private:"""
 
         return (
-            InternalNodeDegreePlot()
+            UserNodeDegreePlot()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

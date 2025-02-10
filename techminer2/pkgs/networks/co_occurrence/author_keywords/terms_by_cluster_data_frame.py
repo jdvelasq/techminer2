@@ -50,7 +50,9 @@ Terms by Cluster Frame
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.terms_by_cluster_data_frame import InternalTermsByClusterDataFrame
+from ..user.terms_by_cluster_data_frame import (
+    TermsByClusterDataFrame as UserTermsByClusterDataFrame,
+)
 
 
 class TermsByClusterDataFrame(
@@ -62,7 +64,7 @@ class TermsByClusterDataFrame(
         """:meta private:"""
 
         return (
-            InternalTermsByClusterDataFrame()
+            UserTermsByClusterDataFrame()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

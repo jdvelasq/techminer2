@@ -46,7 +46,7 @@ Concept Grid Plot
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.concept_grid_plot import InternalConceptGridPlot
+from ..user.concept_grid_plot import ConceptGridPlot as UserConceptGridPlot
 
 
 class ConceptGridPlot(
@@ -58,7 +58,7 @@ class ConceptGridPlot(
         """:meta private:"""
 
         return (
-            InternalConceptGridPlot()
+            UserConceptGridPlot()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

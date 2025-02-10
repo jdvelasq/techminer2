@@ -63,7 +63,7 @@ Network Plot
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.network_plot import NetworkPlot
+from ..user.network_plot import NetworkPlot as UserNetworkPlot
 
 
 class NetworkPlot(
@@ -75,7 +75,7 @@ class NetworkPlot(
         """:meta private:"""
 
         return (
-            InternalNetworkPlot()
+            UserNetworkPlot()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

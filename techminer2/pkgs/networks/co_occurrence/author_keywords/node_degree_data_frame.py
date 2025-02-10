@@ -45,7 +45,7 @@ Node Degree Frame
 
 """
 from .....internals.mixins import InputFunctionsMixin
-from ..internals.node_degree_data_frame import InternalNodeDegreeDataFrame
+from ..user.node_degree_data_frame import NodeDegreeDataFrame as UserNodeDegreeDataFrame
 
 
 class NodeDegreeDataFrame(
@@ -57,7 +57,7 @@ class NodeDegreeDataFrame(
         """:meta private:"""
 
         return (
-            InternalNodeDegreeDataFrame()
+            UserNodeDegreeDataFrame()
             .update_params(**self.params.__dict__)
             .with_field("author_keywords")
             .build()

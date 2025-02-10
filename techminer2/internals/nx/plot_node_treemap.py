@@ -47,7 +47,7 @@ def internal__plot_node_treemap(
     parents = []
 
     clusters = internal__create_clusters_to_terms_mapping(
-        nx_graph, retain_counters=True
+        params=params, nx_graph=nx_graph
     )
     cluster_occ = {key: 0 for key in clusters}
     for key, names in clusters.items():
