@@ -10,61 +10,61 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 ===============================================================================
 
 
-## >>> from techminer2.rpys import rpys_frame
-## >>> rpys_frame(
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... ).head()
+>>> from techminer2.pkgs.rpys import RPYSDataFrame
+>>> (
+...     RPYSDataFrame()
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .build()
+... ).head()
       Num References  Median
-1957               1    -1.0
-1958               0     0.0
-1959               0     0.0
-1960               0     0.0
-1961               0     0.0
+2015               1    -1.0
+2016               7    -7.0
+2017              10   -10.0
+2018              17   -17.0
+2019              15    -5.0
+
+
 
 """
 import pandas as pd  # type: ignore
 
-# from ...database.load.load__database import load__filtered_database
+from ...database.load import DatabaseLoader
+from ...internals.mixins import InputFunctionsMixin
 
 
-def rpys_frame(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class RPYSDataFrame(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    references = load__filtered_database(
-        root_dir=root_dir,
-        database="references",
-        record_years_range=(None, None),
-        record_citations_range=(None, None),
-        records_order_by=None,
-    )
+    def build(self):
+        """:meta private:"""
 
-    references = references[["year"]]
-    references = references.dropna()
-    references_by_year = references["year"].value_counts()
+        references = DatabaseLoader().update_params(**self.params.__dict__).build()
 
-    year_min = references_by_year.index.min()
-    year_max = references_by_year.index.max()
-    years = list(range(year_min, year_max + 1))
+        references = references[["year"]]
+        references = references.dropna()
+        references_by_year = references["year"].value_counts()
 
-    indicator = pd.DataFrame(
-        {
-            "Num References": 0,
-        },
-        index=years,
-    )
+        year_min = references_by_year.index.min()
+        year_max = references_by_year.index.max()
+        years = list(range(year_min, year_max + 1))
 
-    indicator.loc[references_by_year.index, "Num References"] = references_by_year
-    indicator = indicator.sort_index(axis=0, ascending=True)
-    indicator["Median"] = (
-        indicator["Num References"].rolling(window=5).median().fillna(0)
-    )
+        indicator = pd.DataFrame(
+            {
+                "Num References": 0,
+            },
+            index=years,
+        )
 
-    indicator["Median"] = indicator["Median"] - indicator["Num References"]
+        indicator.loc[references_by_year.index, "Num References"] = references_by_year
+        indicator = indicator.sort_index(axis=0, ascending=True)
+        indicator["Median"] = (
+            indicator["Num References"].rolling(window=5).median().fillna(0)
+        )
 
-    return indicator
+        indicator["Median"] = indicator["Median"] - indicator["Num References"]
+
+        return indicator

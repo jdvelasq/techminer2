@@ -9,85 +9,84 @@
 RPYS (Reference Publication Year Spectroscopy) Plot
 ===============================================================================
 
-
-## >>> plot = rpys_plot(
-## >>> from techminer2.rpys import rpys_plot
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
-## >>> # plot.write_html("sphinx/_static/rpys/rpys_chart.html")
+>>> from techminer2.pkgs.rpys import RPYSPlot
+>>> plot = (
+...     RPYSPlot()
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .build()
+... )
+>>> plot.write_html("sphinx/_generated/pkgs/rpys/rpys_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/rpys/rpys_chart.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/rpys/rpys_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
     
 """
 import plotly.graph_objects as go
 
-from .rpys_frame import rpys_frame
+from ...internals.mixins import InputFunctionsMixin
+from .rpys_frame import RPYSDataFrame
 
 
-def rpys_plot(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class RPYSPlot(
+    InputFunctionsMixin,
 ):
     """:meta private:"""
 
-    data_frame = rpys_frame(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+    def build(self):
+        """:meta private:"""
 
-    fig = go.Figure()
-    fig.add_trace(
-        go.Scatter(
-            x=data_frame.index,
-            y=data_frame["Num References"],
-            fill="tozeroy",
-            name="Num References",
-            opacity=0.3,
-            marker_color="lightgrey",  # darkslategray
+        data_frame = RPYSDataFrame().update_params(**self.params.__dict__).build()
+
+        fig = go.Figure()
+        fig.add_trace(
+            go.Scatter(
+                x=data_frame.index,
+                y=data_frame["Num References"],
+                fill="tozeroy",
+                name="Num References",
+                opacity=0.3,
+                marker_color="lightgrey",  # darkslategray
+            )
         )
-    )
-    fig.add_trace(
-        go.Scatter(
-            x=data_frame.index,
-            y=data_frame["Median"],
-            fill="tozeroy",
-            name="Median",
-            opacity=0.8,
-            marker_color="darkslategray",
+        fig.add_trace(
+            go.Scatter(
+                x=data_frame.index,
+                y=data_frame["Median"],
+                fill="tozeroy",
+                name="Median",
+                opacity=0.8,
+                marker_color="darkslategray",
+            )
         )
-    )
-    fig.update_layout(
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        title="Reference Spectroscopy",
-    )
+        fig.update_layout(
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            title="Reference Spectroscopy",
+        )
 
-    fig.update_traces(
-        marker=dict(
-            size=6,
-            line=dict(color="darkslategray", width=2),
-        ),
-    )
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-    )
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-        title="Cited References",
-    )
+        fig.update_traces(
+            marker=dict(
+                size=6,
+                line=dict(color="darkslategray", width=2),
+            ),
+        )
+        fig.update_xaxes(
+            linecolor="gray",
+            linewidth=2,
+            gridcolor="lightgray",
+            griddash="dot",
+        )
+        fig.update_yaxes(
+            linecolor="gray",
+            linewidth=2,
+            gridcolor="lightgray",
+            griddash="dot",
+            title="Cited References",
+        )
 
-    return fig
+        return fig
