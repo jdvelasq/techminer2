@@ -34,7 +34,6 @@ Terms by Cluster Frame
 ...     #
 ...     .build()
 ... )
-
                              0  ...                                3
 0              FINTECH 31:5168  ...  ARTIFICIAL_INTELLIGENCE 02:0327
 1  FINANCIAL_INCLUSION 03:0590  ...                  FINANCE 02:0309

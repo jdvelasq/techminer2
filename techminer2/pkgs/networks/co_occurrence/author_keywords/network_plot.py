@@ -25,7 +25,7 @@ Network Plot
 ...     #
 ...     # NETWORK:
 ...     .using_clustering_algorithm_or_dict("louvain")
-...     .using_association_index("association"
+...     .using_association_index("association")
 ...     #
 ...     # PLOT:
 ...     .using_spring_layout_k(None)
@@ -51,13 +51,12 @@ Network Plot
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/co_occurrence_network_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_occurrence/author_keywords/network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_network/co_occurrence_network_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../_generated/pkgs/networks/co_occurrence/author_keywords/network_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 

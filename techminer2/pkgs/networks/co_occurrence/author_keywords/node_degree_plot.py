@@ -39,13 +39,12 @@ Node Degree Plot
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/node_degree_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_occurrence/author_keywords/node_degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_network/node_degree_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../_generated/pkgs/networks/co_occurrence/author_keywords/node_degree_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 

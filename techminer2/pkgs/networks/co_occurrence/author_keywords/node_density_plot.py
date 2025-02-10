@@ -30,9 +30,9 @@ Node Density Plot
 ...     .using_spring_layout_seed(0)
 ...     #
 ...     .using_textfont_size_range(10, 20)
-...         bandwidth=0.1,
+...     .using_kernel_bandwidth(0.1)
 ...     .using_colormap("Aggrnyl")
-...         opacity=0.6,
+...     .using_contour_opacity(0.6)
 ...     #
 ...     # DATABASE:
 ...     .where_directory_is("example/")
@@ -43,12 +43,12 @@ Node Density Plot
 ...     #
 ...     .build()
 ... )
->>> # plot.write_html("sphinx/_static/co_occurrence_network/node_density_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_occurrence/author_keywords/node_density_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_occurrence_network/node_density_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_generated/pkgs/networks/co_occurrence/author_keywords/node_density_plot.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """

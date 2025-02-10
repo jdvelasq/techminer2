@@ -14,12 +14,12 @@ Terms to Cluster Mapping
 >>> #                           local_cited_by_lowest, first_author_a_to_z, 
 >>> #                           first_author_z_to_a, source_title_a_to_z, 
 >>> #                           source_title_z_to_a
->>> from techminer2.pkgs.networks.co_occurrence.author_keywords DocumentsByClusterMapping
+>>> from techminer2.pkgs.networks.co_occurrence.author_keywords import DocumentsByClusterMapping
 >>> documents_by_cluster = (
 ...     DocumentsByClusterMapping()
 ...     #
 ...     # FIELD:
-...     .having_terms_in_top(10)
+...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
 ...     .having_term_citations_between(None, None)
@@ -42,7 +42,7 @@ Terms to Cluster Mapping
 >>> print(len(documents_by_cluster))
 4
 >>> print(documents_by_cluster[0][0])
-Record-No: 6
+UT 1251
 AR Haddad C., 2019, SMALL BUS ECON, V53, P81
 TI The emergence of the global fintech market: economic and technological
    determinants
@@ -50,25 +50,21 @@ AU Haddad C.; Hornuf L.
 TC 258
 SO Small Business Economics
 PY 2019
-AB we investigate the economic and TECHNOLOGICAL_DETERMINANTS inducing
-   ENTREPRENEURS to establish ventures with the purpose of reinventing
-   FINANCIAL_TECHNOLOGY ( FINTECH ) . we find that countries witness more
-   FINTECH_STARTUP_FORMATIONS when the economy is well_developed and
-   VENTURE_CAPITAL is readily available . furthermore , the number of secure
-   INTERNET_SERVERS , MOBILE_TELEPHONE_SUBSCRIPTIONS , and the
-   AVAILABLE_LABOR_FORCE has a POSITIVE_IMPACT on the DEVELOPMENT of this
-   NEW_MARKET_SEGMENT . finally , the more difficult IT is for companies to
-   ACCESS_LOANS , the higher is the number of FINTECH_STARTUPS in a country .
-   overall , the EVIDENCE_SUGGESTS that FINTECH_STARTUP_FORMATION_NEED not be
-   left to chance , but ACTIVE_POLICIES can INFLUENCE the emergence of this
-   NEW_SECTOR . 2018 , the author ( s ) .
+AB we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing
+   ENTREPRENEURS to establish VENTURES with THE_PURPOSE of reinventing
+   FINANCIAL_TECHNOLOGY ( FINTECH ) . we find that COUNTRIES witness
+   MORE_FINTECH startup FORMATIONS when THE_ECONOMY is
+   WELL_DEVELOPED_AND_VENTURE_CAPITAL is readily available . furthermore ,
+   THE_NUMBER of SECURE_INTERNET_SERVERS , MOBILE_TELEPHONE_SUBSCRIPTIONS , and
+   THE_AVAILABLE_LABOR_FORCE has A_POSITIVE_IMPACT on THE_DEVELOPMENT of
+   THIS_NEW_MARKET_SEGMENT . finally , the more difficult it is for COMPANIES
+   to ACCESS_LOANS , the higher is THE_NUMBER of FINTECH_STARTUPS in A_COUNTRY
+   . overall , THE_EVIDENCE suggests that FINTECH_STARTUP_FORMATION_NEED not be
+   left to CHANCE , but ACTIVE_POLICIES can INFLUENCE THE_EMERGENCE of
+   THIS_NEW_SECTOR . 2018 , the author ( s ) .
 DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
-** ACCESS_LOANS; ACTIVE_POLICIES; AVAILABLE_LABOR_FORCE; EVIDENCE_SUGGESTS;
-   FINANCIAL_TECHNOLOGY; FINTECH_STARTUPS; FINTECH_STARTUP_FORMATIONS;
-   FINTECH_STARTUP_FORMATION_NEED; GLOBAL_FINTECH_MARKET; INTERNET_SERVERS;
-   MOBILE_TELEPHONE_SUBSCRIPTIONS; NEW_MARKET_SEGMENT; NEW_SECTOR;
-   POSITIVE_IMPACT; TECHNOLOGICAL_DETERMINANTS; VENTURE_CAPITAL
 <BLANKLINE>
+
 
 
 

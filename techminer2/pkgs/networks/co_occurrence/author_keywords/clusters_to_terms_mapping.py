@@ -39,7 +39,16 @@ Clusters to Terms Mapping
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
-
+{0: ['FINTECH 31:5168',
+     'FINANCIAL_INCLUSION 03:0590',
+     'CROWDFUNDING 03:0335',
+     'MARKETPLACE_LENDING 03:0317',
+     'BUSINESS_MODELS 02:0759',
+     'CYBER_SECURITY 02:0342',
+     'CASE_STUDY 02:0340'],
+ 1: ['INNOVATION 07:0911',
+     'FINANCIAL_SERVICES 04:0667',
+     'FINANCIAL_TECHNOLOGY 03:0461']}
 
 
 """

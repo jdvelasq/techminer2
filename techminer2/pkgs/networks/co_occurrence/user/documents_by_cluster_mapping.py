@@ -97,6 +97,12 @@ class DocumentsByClusterMapping(
 
             params = {field: values}
 
+            records_match = self.params.records_match
+            if records_match is not None:
+                records_match = {**records_match, **params}
+            else:
+                records_match = params
+
             mapping[key] = (
                 RecordViewer()
                 .update_params(**self.params.__dict__)
