@@ -9,27 +9,35 @@
 Terms by Cluster Frame
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.articles import TermsByClusterDataFrame
-## >>> (
-## ...     TermsByClusterDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(20)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-
+>>> from techminer2.pkgs.networks.coupling.documents import TermsByClusterDataFrame
+>>> (
+...     TermsByClusterDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+                                          0  ...                                             2
+0  Gomber P., 2018, J MANAGE INF SYST 1:576  ...  Gracia D.B., 2019, IND MANAGE DATA SYS 1:225
+1       Jagtiani J., 2018, J ECON BUS 1:156  ...                   Hu Z., 2019, SYMMETRY 1:176
+2         Gomber P., 2017, J BUS ECON 1:489  ...     Gai K., 2018, J NETWORK COMPUT APPL 1:238
+3     Haddad C., 2019, SMALL BUS ECON 1:258  ...    Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161
+4             Lee I., 2018, BUS HORIZ 1:557  ...                                              
+5    Leong C., 2017, INT J INF MANAGE 1:180  ...                                              
+<BLANKLINE>
+[6 rows x 3 columns]
 
 
 
@@ -48,52 +56,9 @@ class TermsByClusterDataFrame(
     """:meta private:"""
 
     def build(self):
-        pass
 
-
-def _terms_by_cluster_frame(
-    #
-    # ARTICLE PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    nx_graph = internal__cluster_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
-    )
-
-    return internal__extract_communities_to_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        conserve_counters=True,
-    )
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(params=self.params, nx_graph=nx_graph)
+        return internal__extract_communities_to_frame(
+            params=self.params, nx_graph=nx_graph
+        )

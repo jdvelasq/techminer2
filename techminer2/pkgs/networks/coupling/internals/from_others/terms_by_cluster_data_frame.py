@@ -36,8 +36,8 @@
 
 """
 from ......internals.mixins import InputFunctionsMixin
-from ......internals.nx.cluster_nx_graph import internal__cluster_nx_graph
-from ......internals.nx.extract_communities_to_frame import (
+from ......internals.nx import (
+    internal__cluster_nx_graph,
     internal__extract_communities_to_frame,
 )
 from .create_nx_graph import internal__create_nx_graph
@@ -49,60 +49,7 @@ class InternalTermsByClusterDataFrame(
     """:meta private:"""
 
     def build(self):
-        pass
 
-
-def _terms_by_cluster_frame(
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    occurrence_threshold=2,
-    custom_terms=None,
-    #
-    # NETWORK PARAMS:
-    algorithm_or_dict="louvain",
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        occurrence_threshold=occurrence_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    nx_graph = internal__cluster_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        #
-        # NETWORK CLUSTERING:
-        algorithm_or_dict=algorithm_or_dict,
-    )
-
-    return internal__extract_communities_to_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-        conserve_counters=True,
-    )
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        return internal__extract_communities_to_frame(self.params, nx_graph)

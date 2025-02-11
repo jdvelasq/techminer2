@@ -9,24 +9,31 @@
 Network Metrics
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.articles import NetworkMetrics
-## >>> (
-## ...     NetworkMetrics()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(20)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
+>>> from techminer2.pkgs.networks.coupling.documents import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                                            Degree  ...  PageRank
+Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
+Gomber P., 2017, J BUS ECON 1:489                6  ...  0.164851
+Gomber P., 2018, J MANAGE INF SYST 1:576         5  ...  0.108659
+Hu Z., 2019, SYMMETRY 1:176                      4  ...  0.116249
+Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
+<BLANKLINE>
+[5 rows x 4 columns]
 
 
 
@@ -42,39 +49,6 @@ class NetworkMetrics(
     """:meta private:"""
 
     def build(self):
-        pass
 
-
-def _network_metrics(
-    #
-    # ARTICLE PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return internal__compute_network_metrics(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-    )
+        nx_graph = internal__create_nx_graph(params=self.params)
+        return internal__compute_network_metrics(nx_graph=nx_graph)

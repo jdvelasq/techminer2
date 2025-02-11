@@ -39,8 +39,11 @@
 
 """
 from ......internals.mixins import InputFunctionsMixin
-
-# from ....internals.nx.nx_degree_frame import nx_degree_frame
+from ......internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degrees_data_frame,
+)
 from .create_nx_graph import internal__create_nx_graph
 
 
@@ -50,47 +53,10 @@ class InternalNodeDegreeDataFrame(
     """:meta private:"""
 
     def build(self):
-        pass
 
+        nx_graph = internal__create_nx_graph(params=self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
 
-def _node_degree_frame(
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    occurrence_threshold=2,
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        occurrence_threshold=occurrence_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return nx_degree_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-    )
+        return data_frame

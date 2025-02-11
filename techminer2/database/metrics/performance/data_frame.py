@@ -289,6 +289,21 @@ class DataFrame(
         return grouped
 
     # -------------------------------------------------------------------------
+    def step_14_add_term_with_counters_column(self, grouped):
+
+        grouped["counters"] = grouped.index.astype(str)
+
+        n_zeros = len(str(grouped["OCC"].max()))
+        grouped["counters"] += " " + grouped["OCC"].map(lambda x: f"{x:0{n_zeros}d}")
+
+        n_zeros = len(str(grouped["global_citations"].max()))
+        grouped["counters"] += ":" + grouped["global_citations"].map(
+            lambda x: f"{x:0{n_zeros}d}"
+        )
+
+        return grouped
+
+    # -------------------------------------------------------------------------
     def build(self):
 
         data_frame = self._step_1_load_the_database()
@@ -304,6 +319,7 @@ class DataFrame(
         grouped = self._step_11_filter_by_terms_in(grouped)
         grouped = self._step_12_filter_by_top_n_terms(grouped)
         grouped = self._step_13_check_field_types(grouped)
+        grouped = self.step_14_add_term_with_counters_column(grouped)
 
         return grouped
 

@@ -46,47 +46,6 @@ class InternalNetworkMetrics(
     """:meta private:"""
 
     def build(self):
-        pass
 
-
-def _network_metrics(
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    occurrence_threshold=2,
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # FUNCTION PARAMS:
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        occurrence_threshold=occurrence_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return internal__compute_network_metrics(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-    )
+        nx_graph = internal__create_nx_graph(params=self.params)
+        return internal__compute_network_metrics(nx_graph=nx_graph)

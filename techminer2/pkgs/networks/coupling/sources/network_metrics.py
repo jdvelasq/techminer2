@@ -9,25 +9,33 @@
 Network Metrics
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.sources import NetworkMetrics
-## >>> (
-## ...     NetworkMetrics()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(20)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
+>>> from techminer2.pkgs.networks.coupling.sources import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                                                 Degree  ...  PageRank
+Journal of Business Economics 1:489                   9  ...  0.123764
+Journal of Economics and Business 3:422               9  ...  0.121718
+Journal of Management Information Systems 2:696       7  ...  0.116066
+Electronic Markets 2:287                              6  ...  0.068069
+Financial Management 2:161                            6  ...  0.095678
+<BLANKLINE>
+[5 rows x 4 columns]
 
 
 

@@ -9,72 +9,24 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-# from ......database.load.load__database import load__filtered_database
-# from ......database.metrics.performance.data_frame import performance_metrics_frame
-from ......internals.utils.utils_append_occurrences_and_citations_to_axis import (
-    _utils_append_occurrences_and_citations_to_axis,
+from ......database.load import DatabaseLoader
+from ......database.metrics.performance.data_frame import (
+    DataFrame as PerformanceMetricsDataFrame,
 )
 
 
-def internal__create_nx_graph(params):
-    #
-    # Create the networkx graph
-    nx_graph = nx.Graph()
-
-    nx_graph = __add_weighted_edges_from(
-        nx_graph=nx_graph,
-        unit_of_analysis=unit_of_analysis,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        occurrence_threshold=occurrence_threshold,
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = node
-
-    return nx_graph
+# ------------------------------------------------------------------------------
+def step_01_load_and_select_records(params):
+    records = DatabaseLoader().update_params(**params.__dict__).build()
+    return records
 
 
-def __add_weighted_edges_from(
-    nx_graph,
-    unit_of_analysis,
-    #
-    # COLUMN PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    occurrence_threshold=2,
-    custom_terms=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    records = load__filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=year_filter,
-        record_citations_range=cited_by_filter,
-        records_order_by=None,
-        **filters,
-    )
+# ------------------------------------------------------------------------------
+def step_02_create_data_frame(params, records):
 
-    #
-    data_frame = records[[unit_of_analysis, "global_references"]]
+    unit_of_analysis = params.unit_of_analysis
+
+    data_frame = records[[params.unit_of_analysis, "global_references"]]
     data_frame = data_frame.dropna()
     data_frame[unit_of_analysis] = (
         data_frame[unit_of_analysis]
@@ -102,72 +54,35 @@ def __add_weighted_edges_from(
     data_frame = data_frame.loc[data_frame.row != data_frame.column, :]
     data_frame = data_frame.groupby(["row", "column"], as_index=False).size()
 
-    #
-    # Filter the data
+    return data_frame
 
-    metrics = performance_metrics_frame(
-        #
-        # ITEMS PARAMS:
-        field=unit_of_analysis,
-        metric="OCC",
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=(occurrence_threshold, None),
-        gc_range=(citations_threshold, None),
-        custom_terms=custom_terms,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+
+# ------------------------------------------------------------------------------
+def step_03_filter_the_data_frame(params, data_frame):
+
+    metrics = (
+        PerformanceMetricsDataFrame()
+        .update_params(**params.__dict__)
+        .with_field(params.unit_of_analysis)
+        .build()
     )
 
     data_frame = data_frame.loc[data_frame.row.isin(metrics.index), :]
     data_frame = data_frame.loc[data_frame.column.isin(metrics.index), :]
 
-    #
-    # Adds the counters to the data frame:
-    data_frame.index = data_frame.row.values
-    data_frame = _utils_append_occurrences_and_citations_to_axis(
-        dataframe=data_frame,
-        axis=0,
-        field=unit_of_analysis,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-    data_frame["row"] = data_frame.index.values
+    mapping = metrics["counters"].to_dict()
 
-    #
-    # Adds the counters to the data frame:
-    data_frame.index = data_frame.column.values
-    data_frame = _utils_append_occurrences_and_citations_to_axis(
-        dataframe=data_frame,
-        axis=0,
-        field=unit_of_analysis,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-    data_frame["column"] = data_frame.index.values
+    data_frame["row"] = data_frame.row.map(mapping)
+    data_frame["column"] = data_frame.column.map(mapping)
 
-    #
-    #
     data_frame.index = np.arange(len(data_frame))
 
-    #
-    # Adds the data to the network:
+    return data_frame
+
+
+# ------------------------------------------------------------------------------
+def step_04_adds_weighted_edges_to_nx_graph_from(data_frame, nx_graph):
+
     for _, row in data_frame.iterrows():
         nx_graph.add_weighted_edges_from(
             ebunch_to_add=[(row.row, row.column, row["size"])],
@@ -177,11 +92,33 @@ def __add_weighted_edges_from(
     return nx_graph
 
 
-def __assign_group_from_dict(nx_graph, group_dict):
-    #
-    # The group is assigned using and external algorithm. It is designed
-    # to provide analysis capabilities to the system when other types of
-    # analysis are conducted, for example, factor analysis.
-    for node, group in group_dict.items():
-        nx_graph.nodes[node]["group"] = group
+# ------------------------------------------------------------------------------
+def step_05_set_node_text_attribute(nx_graph):
+    for node in nx_graph.nodes():
+        nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
     return nx_graph
+
+
+# ------------------------------------------------------------------------------
+def internal__create_nx_graph(params):
+    #
+    # Create the networkx graph
+    nx_graph = nx.Graph()
+
+    records = step_01_load_and_select_records(params)
+    data_frame = step_02_create_data_frame(params, records)
+    data_frame = step_03_filter_the_data_frame(params, data_frame)
+    nx_graph = step_04_adds_weighted_edges_to_nx_graph_from(data_frame, nx_graph)
+    nx_graph = step_05_set_node_text_attribute(nx_graph)
+
+    return nx_graph
+
+
+# def __assign_group_from_dict(nx_graph, group_dict):
+#     #
+#     # The group is assigned using and external algorithm. It is designed
+#     # to provide analysis capabilities to the system when other types of
+#     # analysis are conducted, for example, factor analysis.
+#     for node, group in group_dict.items():
+#         nx_graph.nodes[node]["group"] = group
+#     return nx_graph

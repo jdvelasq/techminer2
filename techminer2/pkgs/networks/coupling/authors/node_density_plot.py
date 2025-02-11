@@ -9,40 +9,40 @@
 Network Density Plot
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.authors import NodeDensityPlot
-## >>> plot = (
-## ...     NodeDensityPlot()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(20)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # CLUSTERING:
-## ...     .using_clustering_algorithm_or_dict("louvain")
-## ...     #
-## ...     # NETWORK:
-## ...     .using_spring_layout_k(None)
-## ...     .using_spring_layout_iterations(30)
-## ...     .using_spring_layout_seed(0)
-## ...     #
-## ...     # DENSITY:
-## ...     .using_kernel_bandwidth(0.1)
-## ...     .using_colormap("Aggrnyl")
-## ...     .using_contour_opacity(0.6)
-## ...     .using_textfont_size_range(10, 20)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... )
-## >>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/authors/node_density_plot.html")
+>>> from techminer2.pkgs.networks.coupling.authors import NodeDensityPlot
+>>> plot = (
+...     NodeDensityPlot()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # NETWORK:
+...     .using_spring_layout_k(None)
+...     .using_spring_layout_iterations(30)
+...     .using_spring_layout_seed(0)
+...     #
+...     # DENSITY:
+...     .using_kernel_bandwidth(0.1)
+...     .using_colormap("Aggrnyl")
+...     .using_contour_opacity(0.6)
+...     .using_textfont_size_range(10, 20)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... )
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/authors/node_density_plot.html")
 
 .. raw:: html
 

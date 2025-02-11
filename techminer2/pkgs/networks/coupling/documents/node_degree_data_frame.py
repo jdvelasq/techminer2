@@ -9,30 +9,38 @@
 Network Degree Frame
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.articles  import NodeDegreeDataFrame
-## >>> (
-## ...     NodeDegreeDataFrame()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(20)
-## ...     .having_citation_threshold(0)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
-
+>>> from techminer2.pkgs.networks.coupling.documents  import NodeDegreeDataFrame
+>>> (
+...     NodeDegreeDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+   Node                                        Name  Degree
+0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
+1     1           Gomber P., 2017, J BUS ECON 1:489       6
+2     2    Gomber P., 2018, J MANAGE INF SYST 1:576       5
+3     3                 Hu Z., 2019, SYMMETRY 1:176       4
+4     4  Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4
 
 
 """
 from .....internals.mixins import InputFunctionsMixin
-
-# from ....internals.nx.nx_degree_frame import nx_degree_frame
+from .....internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degrees_data_frame,
+)
 from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
@@ -42,39 +50,10 @@ class NodeDegreeDataFrame(
     """:meta private:"""
 
     def build(self):
-        pass
 
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__assign_degree_to_nodes(nx_graph)
+        node_degrees = internal__collect_node_degrees(nx_graph)
+        data_frame = internal__create_node_degrees_data_frame(node_degrees)
 
-def _node_degree_frame(
-    #
-    # ARTICLE PARAMS:
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-
-    nx_graph = internal__create_nx_graph(
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return nx_degree_frame(
-        #
-        # FUNCTION PARAMS:
-        nx_graph=nx_graph,
-    )
+        return data_frame

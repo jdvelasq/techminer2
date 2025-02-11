@@ -9,25 +9,31 @@
 Network Metrics
 ===============================================================================
 
-## >>> from techminer2.pkgs.networks.coupling.authors import NetworkMetrics
-## >>> (
-## ...     NetworkMetrics()
-## ...     #
-## ...     # UNIT OF ANALYSIS:
-## ...     .having_terms_in_top(20)
-## ...     .having_citation_threshold(0)
-## ...     .having_occurrence_threshold(2)
-## ...     .having_terms_in(None)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     .where_database_is("main")
-## ...     .where_record_years_between(None, None)
-## ...     .where_record_citations_between(None, None)
-## ...     .where_records_match(None)
-## ...     #
-## ...     .build()
-## ... ).head()
+>>> from techminer2.pkgs.networks.coupling.authors import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_between(None, None)
+...     .where_record_citations_between(None, None)
+...     .where_records_match(None)
+...     #
+...     .build()
+... ).head()
+                    Degree  Betweenness  Closeness  PageRank
+Gomber P. 2:1065        10      0.01462   0.526316  0.118738
+Hornuf L. 2:0358        10      0.01462   0.526316  0.027604
+Koch J.-A. 1:0489       10      0.01462   0.526316  0.065543
+Siering M. 1:0489       10      0.01462   0.526316  0.065543
+Jagtiani J. 3:0317       8      0.00000   0.438596  0.027560
 
 
 

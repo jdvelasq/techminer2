@@ -9,83 +9,46 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-# from ......database.load.load__database import load__filtered_database
+from ......database.load import DatabaseLoader
 
 
-def internal__create_nx_graph(params):
-    #
-    # Create the networkx graph
-    nx_graph = nx.Graph()
+# ------------------------------------------------------------------------------
+def step_01_load_and_select_records(params):
 
-    nx_graph = __add_weighted_edges_from(
-        nx_graph=nx_graph,
-        #
-        # COLUMN PARAMS:
-        top_n=top_n,
-        citations_threshold=citations_threshold,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    for node in nx_graph.nodes():
-        nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
-
-    return nx_graph
-
-
-def __add_weighted_edges_from(
-    nx_graph,
-    top_n=None,
-    citations_threshold=0,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    records = load__filtered_database(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=year_filter,
-        record_citations_range=cited_by_filter,
-        records_order_by=None,
-        **filters,
-    )
+    records = DatabaseLoader().update_params(**params.__dict__).build()
 
     records = records.sort_values(
-        ["global_citations", "local_citations", "year", "article"],
+        ["global_citations", "local_citations", "year", "record_id"],
         ascending=[False, False, False, True],
     )
     records = records.dropna(subset=["global_references"])
-    #
-    # Same order of selection of VOSviewer
-    if citations_threshold is not None:
-        records = records.loc[records.global_citations >= citations_threshold, :]
-    if top_n is not None:
-        records = records.head(top_n)
-    #
-    #
-    # Adds citations to the article id
+
+    if params.citation_threshold is not None:
+        records = records.loc[records.global_citations >= params.citation_threshold, :]
+    if params.top_n is not None:
+        records = records.head(params.top_n)
+
+    return records
+
+
+# ------------------------------------------------------------------------------
+def step_02_adds_citations_to_record_id(records):
     max_citations = records.global_citations.max()
     n_zeros = int(np.log10(max_citations - 1)) + 1
     fmt = " 1:{:0" + str(n_zeros) + "d}"
-    records["article"] = records["article"] + records["global_citations"].map(
+    records["record_id"] = records["record_id"] + records["global_citations"].map(
         fmt.format
     )
+    return records
 
-    data_frame = records[["article", "global_references"]]
+
+# ------------------------------------------------------------------------------
+def step_03_create_citations_table(records):
+
+    data_frame = records[["record_id", "global_references"]]
     data_frame = data_frame.dropna()
-    data_frame["article"] = (
-        data_frame["article"].str.split("; ").map(lambda x: [y.strip() for y in x])
+    data_frame["record_id"] = (
+        data_frame["record_id"].str.split("; ").map(lambda x: [y.strip() for y in x])
     )
     data_frame["global_references"] = (
         data_frame["global_references"]
@@ -93,11 +56,11 @@ def __add_weighted_edges_from(
         .map(lambda x: [y.strip() for y in x])
     )
 
-    data_frame = data_frame.explode("article")
+    data_frame = data_frame.explode("record_id")
     data_frame = data_frame.explode("global_references")
 
     data_frame = data_frame.groupby(["global_references"], as_index=True).agg(
-        {"article": list}
+        {"record_id": list}
     )
 
     data_frame.columns = ["row"]
@@ -124,8 +87,12 @@ def __add_weighted_edges_from(
         .str.join(", ")
     )
 
-    #
-    # Adds the data to the network:
+    return data_frame
+
+
+# ------------------------------------------------------------------------------
+def step_04_adds_weighted_edges_to_nx_graph_from(data_frame, nx_graph):
+
     for _, row in data_frame.iterrows():
         nx_graph.add_weighted_edges_from(
             ebunch_to_add=[(row.row, row.column, row["size"])],
@@ -135,11 +102,33 @@ def __add_weighted_edges_from(
     return nx_graph
 
 
-def __assign_group_from_dict(nx_graph, group_dict):
-    #
-    # The group is assigned using and external algorithm. It is designed
-    # to provide analysis capabilities to the system when other types of
-    # analysis are conducted, for example, factor analysis.
-    for node, group in group_dict.items():
-        nx_graph.nodes[node]["group"] = group
+# ------------------------------------------------------------------------------
+def step_05_set_node_text_attribute(nx_graph):
+    for node in nx_graph.nodes():
+        nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
     return nx_graph
+
+
+# ------------------------------------------------------------------------------
+def internal__create_nx_graph(params):
+
+    nx_graph = nx.Graph()
+
+    records = step_01_load_and_select_records(params)
+    records = step_02_adds_citations_to_record_id(records)
+    data_frame = step_03_create_citations_table(records)
+    nx_graph = step_04_adds_weighted_edges_to_nx_graph_from(data_frame, nx_graph)
+    nx_graph = step_05_set_node_text_attribute(nx_graph)
+
+    return nx_graph
+
+
+# ------------------------------------------------------------------------------
+# def __assign_group_from_dict(nx_graph, group_dict):
+#     #
+#     # The group is assigned using and external algorithm. It is designed
+#     # to provide analysis capabilities to the system when other types of
+#     # analysis are conducted, for example, factor analysis.
+#     for node, group in group_dict.items():
+#         nx_graph.nodes[node]["group"] = group
+#     return nx_graph
