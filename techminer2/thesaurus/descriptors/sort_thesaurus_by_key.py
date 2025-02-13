@@ -23,9 +23,7 @@ Sort Thesaurus
 --INFO-- The file example/thesauri/descriptors.the.txt has been sorted.
 
 """
-from ..internals.thesaurus__sort_on_disk import (
-    thesaurus__sort_on_disk as core_sort_thesaurus,
-)
+# from ..user.sort_thesaurus_by_key import thesaurus__sort_on_disk as core_sort_thesaurus
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 

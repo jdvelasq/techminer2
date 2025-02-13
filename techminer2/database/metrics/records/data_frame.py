@@ -39,7 +39,7 @@ Data Frame
 """
 
 from ....internals.mixins import InputFunctionsMixin
-from ...load import DatabaseLoader
+from ...io import FilteredDatabaseLoader
 
 
 class DataFrame(
@@ -49,7 +49,9 @@ class DataFrame(
 
     def build(self):
 
-        data_frame = DatabaseLoader().update_params(**self.params.__dict__).build()
+        data_frame = (
+            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        )
         data_frame = data_frame.assign(_order_=range(1, len(data_frame) + 1))
         data_frame = data_frame.reset_index(drop=True)
 

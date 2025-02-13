@@ -13,8 +13,8 @@ import os
 import pandas as pd  # type: ignore
 
 # TODO: remove dependency
-from .....thesaurus.internals.thesaurus__read_as_dict import (
-    thesaurus__read_as_dataframe,
+from .....thesaurus.internals.load_thesaurus_as_dict import (
+    internal__load_thesaurus_as_data_frame,
 )
 
 predefined_abbreviations_mapping = {
@@ -265,7 +265,7 @@ def internal__preprocess_abbreviations(root_dir):
 
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
 
-    raw_frame = thesaurus__read_as_dataframe(thesaurus_file)
+    raw_frame = internal__load_thesaurus_as_data_frame(thesaurus_file)
     mod_frame = _extracts_abbreviations_from_definitions(raw_frame)
     mod_frame = _remove_bad_abbreviations(mod_frame)
     mod_frame = _add_knowns_abbreviations(mod_frame, raw_frame)

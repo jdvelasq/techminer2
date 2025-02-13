@@ -88,7 +88,7 @@ from ...internals.mixins import (
     RecordMappingMixin,
     RecordViewerMixin,
 )
-from ..load.load__database import DatabaseLoader
+from ..io.filtered_database_loader import FilteredDatabaseLoader
 
 
 class RecordViewer(
@@ -100,7 +100,7 @@ class RecordViewer(
 
     def build(self):
 
-        records = DatabaseLoader().update_params(**self.params.__dict__).build()
+        records = FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
         mapping = self.build_record_mapping(records)
         documents = self.build_record_viewer(mapping)
         return documents

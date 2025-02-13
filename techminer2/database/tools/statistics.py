@@ -35,7 +35,7 @@ AGROPAY                1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0
 
 """
 from ...internals.mixins import InputFunctionsMixin
-from ..load import DatabaseLoader
+from ..io import FilteredDatabaseLoader
 
 
 class Statistics(
@@ -47,7 +47,7 @@ class Statistics(
 
         field = self.params.field
 
-        records = DatabaseLoader().update_params(**self.params.__dict__).build()
+        records = FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
 
         records = records.dropna(subset=[field])
         records[field] = records[field].str.split("; ")

@@ -9,13 +9,13 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ......database.load import DatabaseLoader
+from ......database.io import FilteredDatabaseLoader
 
 
 # ------------------------------------------------------------------------------
 def step_01_load_and_select_records(params):
 
-    records = DatabaseLoader().update_params(**params.__dict__).build()
+    records = FilteredDatabaseLoader().update_params(**params.__dict__).build()
 
     records = records.sort_values(
         ["global_citations", "local_citations", "year", "record_id"],

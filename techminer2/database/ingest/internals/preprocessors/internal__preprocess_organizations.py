@@ -26,7 +26,7 @@ import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
 # TODO: remove dependency
-from .....thesaurus.organizations.apply_thesaurus import (
+from .....thesaurus.organizations._apply_thesaurus import (
     apply_thesaurus as apply_organizations_thesaurus,
 )
 

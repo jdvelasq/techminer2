@@ -55,7 +55,7 @@ from ...internals.mixins import (
     RecordMappingMixin,
     RecordViewerMixin,
 )
-from ..load.load__database import DatabaseLoader
+from ..io.filtered_database_loader import FilteredDatabaseLoader
 
 
 class ConcordantMapping(
@@ -67,7 +67,7 @@ class ConcordantMapping(
 
     # -------------------------------------------------------------------------
     def _step_01_load_the_database(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
+        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
     def _step_02__filter_by_concordance(self, records):

@@ -45,8 +45,10 @@ CASE_STUDY                  10        22        10  ...        2        2     0.
 
 
 """
+from techminer2.database.io import FilteredDatabaseLoader
+
 from ....internals.mixins import InputFunctionsMixin
-from ...load import DatabaseLoader, load__user_stopwords
+from ...io import load__user_stopwords
 
 SELECTED_COLUMNS = {
     "OCC": [
@@ -79,7 +81,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
+        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
     def _step_2_select_metric_fields(self, data_frame):

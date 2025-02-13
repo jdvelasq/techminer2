@@ -24,8 +24,8 @@ import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 # TOOD: remove dependency
-from .....thesaurus.internals.thesaurus__read_reversed_as_dict import (
-    thesaurus__read_reversed_as_dict,
+from .....thesaurus.internals.load_reversed_thesaurus_as_dict import (
+    internal__load_reversed_thesaurus_as_dict,
 )
 from ...message import message
 
@@ -156,7 +156,7 @@ def _apply_thesaurus(root_dir):
     # Apply the thesaurus to raw_global_references
 
     file_path = pathlib.Path(root_dir) / "thesauri/global_references.the.txt"
-    th = thesaurus__read_reversed_as_dict(file_path=file_path)
+    th = internal__load_reversed_thesaurus_as_dict(file_path=file_path)
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",

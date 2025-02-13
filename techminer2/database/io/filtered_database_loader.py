@@ -8,12 +8,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Load Filtered Database
-===============================================================================
 
-
-
->>> from techminer2.database.load import DatabaseLoader
+>>> from techminer2.database.io import FilteredDatabaseLoader
 >>> (
 ...     DatabaseLoader()
 ...     .where_directory_is("example/")
@@ -41,7 +37,7 @@ import pandas as pd  # type: ignore
 from ...internals.mixins import InputFunctionsMixin
 
 
-class DatabaseLoader(
+class FilteredDatabaseLoader(
     InputFunctionsMixin,
 ):
     # -------------------------------------------------------------------------

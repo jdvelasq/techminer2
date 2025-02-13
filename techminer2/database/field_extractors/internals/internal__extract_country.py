@@ -13,7 +13,9 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ....thesaurus.internals.thesaurus__read_as_dict import thesaurus__read_as_dict
+from ....thesaurus.internals.load_thesaurus_as_dict import (
+    internal__load_thesaurus_as_dict,
+)
 
 
 def internal__extract_country(
@@ -31,7 +33,7 @@ def internal__extract_country(
     #
     # Loads the thesaurus
     thesaurus_path = os.path.join(root_dir, "thesauri/countries.the.txt")
-    thesaurus = thesaurus__read_as_dict(thesaurus_path)
+    thesaurus = internal__load_thesaurus_as_dict(thesaurus_path)
     names = list(thesaurus.keys())
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))

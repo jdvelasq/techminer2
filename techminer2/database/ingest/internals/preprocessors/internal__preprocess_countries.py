@@ -24,7 +24,7 @@ import pathlib
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
-from .....thesaurus.countries.apply_thesaurus import (
+from .....thesaurus.countries._apply_thesaurus import (
     apply_thesaurus as apply_countries_thesaurus,
 )
 

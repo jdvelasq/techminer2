@@ -41,7 +41,7 @@ Australia        5               783  ...                     4      0.80
     
 """
 from ....internals.mixins import InputFunctionsMixin
-from ...load import DatabaseLoader
+from ...io import FilteredDatabaseLoader
 from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 
@@ -52,7 +52,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
+        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
     def _step_2_compute_collaboration_metrics(self, data_frame):

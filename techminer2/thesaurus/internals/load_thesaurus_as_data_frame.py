@@ -1,22 +1,14 @@
-"""
-This module implement generic thesaurus functions.
+"""Thesaurus internal functions"""
+
+import pandas as pd  # type: ignore
 
 
-"""
-
-import os.path
-
-
-def thesaurus__read_reversed_as_dict(file_path):
+def internal__load_thesaurus_as_data_frame(file_path):
     """Load existence thesaurus as a dataframe."""
 
     value_phrases = []
     key_phrases = []
     key_phrase = None
-
-    if not os.path.isfile(file_path):
-        raise FileNotFoundError(f"The file {file_path} does not exist.")
-
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
             if not line.startswith(" "):
@@ -26,6 +18,11 @@ def thesaurus__read_reversed_as_dict(file_path):
                 value_phrases.append(value_phrase)
                 key_phrases.append(key_phrase)
 
-    reversed_dict = dict(zip(value_phrases, key_phrases))
+    frame = pd.DataFrame(
+        {
+            "key": key_phrases,
+            "value": value_phrases,
+        }
+    )
 
-    return reversed_dict
+    return frame

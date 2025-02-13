@@ -38,7 +38,7 @@ Query
 import duckdb
 
 from ...internals.mixins import InputFunctionsMixin
-from ..load import DatabaseLoader
+from ..io import FilteredDatabaseLoader
 
 
 class Query(
@@ -47,5 +47,7 @@ class Query(
     """:meta private:"""
 
     def build(self):
-        database = DatabaseLoader().update_params(**self.params.__dict__).build()
+        database = (
+            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        )
         return duckdb.query(self.params.query_expr).df()

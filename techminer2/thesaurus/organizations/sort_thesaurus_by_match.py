@@ -27,7 +27,7 @@ Finds a string in the terms of a thesaurus.
 --INFO-- The file example/thesauri/organizations.the.txt has been reordered.
 
 """
-from ..internals.thesaurus__sort_by_match import thesaurus__sort_by_match
+# from ..user.sort_thesaurus_by_match import thesaurus__sort_by_match
 
 THESAURUS_FILE = "thesauri/organizations.the.txt"
 

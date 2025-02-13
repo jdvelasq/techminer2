@@ -21,7 +21,7 @@ import os.path
 
 import pkg_resources  # type: ignore
 
-from ..internals.thesaurus__read_as_dict import thesaurus__read_as_dict
+from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
 
 
 def sort_thesaurus_files():
@@ -37,7 +37,7 @@ def sort_thesaurus_files():
         if not os.path.isfile(file_path):
             raise FileNotFoundError(f"The file {file_path} does not exist.")
 
-        th_dict = thesaurus__read_as_dict(file_path)
+        th_dict = internal__load_thesaurus_as_dict(file_path)
 
         #
         # Saves the sorted thesaurus to the file

@@ -45,7 +45,7 @@ Concordant Contexts
 import pandas as pd  # type: ignore
 
 from ...internals.mixins import InputFunctionsMixin
-from ..load import DatabaseLoader
+from ..io import FilteredDatabaseLoader
 
 
 class ConcordantContexts(
@@ -55,7 +55,7 @@ class ConcordantContexts(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
+        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
     def _step_2_extract_context_phrases(self, records):

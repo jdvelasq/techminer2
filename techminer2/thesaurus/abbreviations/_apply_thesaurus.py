@@ -25,7 +25,7 @@ import re
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..internals.thesaurus__read_as_dict import thesaurus__read_as_dict
+from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
 
 DESCRIPTORS_FILE = "thesauri/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
@@ -45,7 +45,7 @@ def apply_thesaurus(
     def load_descriptors_as_dict():
         if not os.path.isfile(descriptors_file):
             raise FileNotFoundError(f"The file {descriptors_file} does not exist.")
-        descriptors_dict = thesaurus__read_as_dict(descriptors_file)
+        descriptors_dict = internal__load_thesaurus_as_dict(descriptors_file)
         return descriptors_dict
 
     #
@@ -71,7 +71,7 @@ def apply_thesaurus(
     def load_abbreviations_as_dict():
         if not os.path.isfile(abbreviations_file):
             raise FileNotFoundError(f"The file {abbreviations_file} does not exist.")
-        abbreviations_dict = thesaurus__read_as_dict(abbreviations_file)
+        abbreviations_dict = internal__load_thesaurus_as_dict(abbreviations_file)
         return abbreviations_dict
 
     #

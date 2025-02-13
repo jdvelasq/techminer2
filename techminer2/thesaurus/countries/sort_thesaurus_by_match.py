@@ -24,7 +24,7 @@ Find String
 --INFO-- The file example/thesauri/countries.the.txt has been reordered.
 
 """
-from ..internals.thesaurus__sort_by_match import thesaurus__sort_by_match
+# from ..user.sort_thesaurus_by_match import thesaurus__sort_by_match
 
 THESAURUS_FILE = "thesauri/countries.the.txt"
 

@@ -30,7 +30,7 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 """
 import pandas as pd  # type: ignore
 
-from ...database.load import DatabaseLoader
+from ...database.io import FilteredDatabaseLoader
 from ...internals.mixins import InputFunctionsMixin
 
 
@@ -42,7 +42,9 @@ class RPYSDataFrame(
     def build(self):
         """:meta private:"""
 
-        references = DatabaseLoader().update_params(**self.params.__dict__).build()
+        references = (
+            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        )
 
         references = references[["year"]]
         references = references.dropna()

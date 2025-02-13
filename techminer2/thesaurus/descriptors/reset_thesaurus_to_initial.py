@@ -12,24 +12,19 @@ Reset Thesaurus
 
 
 
-## >>> from techminer2.prepare.thesaurus.descriptors import reset_thesaurus
-## >>> reset_thesaurus(  # doctest: +SKIP
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
-.  1/10 . Reemplacing abbreviations.
-.  2/10 . Inverting terms in parenthesis.
-.  3/10 . Removing text in brackets.
-.  4/10 . Removing text in parenthesis.
-.  5/10 . Transforming hypened words.
-.  6/10 . Removing common starting words.
-.  7/10 . Removing common ending words.
-.  8/10 . Applying the default.the.txt thesaurus.
-.  9/10 . Transforming british to american spelling.
-. 10/10 . Applying Porter stemmer.
---INFO-- The thesaurus example/thesauri/descriptors.the.txt has been reseted.
---INFO-- Total time consumed by the execution: 00:00:33.2
+>>> from techminer2.thesaurus.user import ResetThesaurusToInitial
+>>> (
+...     ResetThesaurusToInitial()  
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+
 
 """
 import glob
@@ -41,11 +36,11 @@ import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..internals.thesaurus__read_as_dict import thesaurus__read_as_dict
-from ..internals.thesaurus__read_reversed_as_dict import (
-    thesaurus__read_reversed_as_dict,
+from ..internals.load_reversed_thesaurus_as_dict import (
+    internal__load_reversed_thesaurus_as_dict,
 )
-from .clean_thesaurus import (
+from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from ._clean_thesaurus import (
     _apply_porter_stemmer,
     _compute_terms_by_key,
     _replace_fingerprint,
@@ -82,7 +77,7 @@ def _create_data_frame_from_thesaurus(th_file):
 def _load_abbreviations_th_as_dict(abbreviations_file):
     if not os.path.isfile(abbreviations_file):
         raise FileNotFoundError(f"The file {abbreviations_file} does not exist.")
-    abbreviations_dict = thesaurus__read_as_dict(abbreviations_file)
+    abbreviations_dict = internal__load_thesaurus_as_dict(abbreviations_file)
     return abbreviations_dict
 
 
@@ -381,7 +376,7 @@ def _apply_default_thesaurus_files(data_frame):
     for file_path in glob.glob(file_paths):
         if not os.path.isfile(file_path):
             raise FileNotFoundError(f"The file {file_path} does not exist.")
-        th_dict = thesaurus__read_reversed_as_dict(file_path)
+        th_dict = internal__load_reversed_thesaurus_as_dict(file_path)
         data_frame["key"] = data_frame["key"].apply(lambda x: th_dict.get(x, x))
 
     return data_frame

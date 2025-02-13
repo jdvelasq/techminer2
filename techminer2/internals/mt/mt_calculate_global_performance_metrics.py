@@ -11,7 +11,7 @@ This function computes global performance (bibliometric) metrics for a given fie
 
 """
 # from ...database.load.load__database import load__filtered_database
-from ...database.load.load__user_stopwords import load__user_stopwords
+from ...database.io.load__user_stopwords import load__user_stopwords
 from .mt_sort_records_by_metric import _mt_sort_records_by_metric
 
 

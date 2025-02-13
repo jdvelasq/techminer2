@@ -14,16 +14,12 @@ import spacy
 from textblob import TextBlob  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from .....package_data.database.internal__load_connectors import (
-    internal__load_connectors,
-)
-from .....package_data.database.internal__load_determiners import (
-    internal__load_determiners,
-)
-from .....package_data.database.internal__load_known_noun_phrases import (
+from .....package_data.database.load_connectors import internal__load_connectors
+from .....package_data.database.load_determiners import internal__load_determiners
+from .....package_data.database.load_known_noun_phrases import (
     internal__load_known_noun_phrases,
 )
-from .....package_data.database.internal__load_technical_stopwords import (
+from .....package_data.database.load_technical_stopwords import (
     internal__load_technical_stopwords,
 )
 from ...message import message

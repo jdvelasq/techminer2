@@ -62,6 +62,7 @@ class Params:
     # K
     #
     kernel_bandwidth: float = 0.1
+    keys_order_by: str = "alphabetical"
 
     #
     # L
@@ -74,6 +75,8 @@ class Params:
     #
     manifold_algorithm = None
     marker_size: float = 7
+    match_threshold: float = 80.0
+    maximum_occurrence: int = 10
 
     #
     # N
@@ -97,6 +100,8 @@ class Params:
     #
     # P
     #
+    pattern_endswith: Optional[str] = None
+    pattern_startswith: Optional[str] = None
     pattern: Optional[str] = None
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
@@ -140,10 +145,11 @@ class Params:
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
     textfont_color: str = "#465c6b"
-    textfont_opacity: float = 1.0
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
+    textfont_opacity: float = 1.0
     textfont_size_range: Tuple[int, int] = (8, 16)
     textfont_size: float = 10
+    thesaurus_file: str = "no_name.the.txt"
     time_window: int = 2
     title_text: Optional[str] = None
     top_n: Optional[int] = None
@@ -205,6 +211,30 @@ class InputFunctionsMixin:
 
     def having_citation_threshold(self, threshold):
         self.params.citation_threshold = threshold
+        return self
+
+    def having_keys_ending_with(self, pattern):
+        self.params.pattern_endswith = pattern
+        return self
+
+    def having_keys_like(self, pattern):
+        self.params.pattern = pattern
+        return self
+
+    def having_keys_starting_with(self, pattern):
+        self.params.pattern_startswith = pattern
+        return self
+
+    def having_keys_ordered_by(self, order):
+        self.params.keys_order_by = order
+        return self
+
+    def having_match_threshold(self, threshold):
+        self.params.match_threshold = threshold
+        return self
+
+    def having_maximum_occurrence(self, maximum_occurrence):
+        self.params.maximum_occurrence = maximum_occurrence
         return self
 
     def having_occurrence_threshold(self, threshold):
@@ -539,6 +569,10 @@ class InputFunctionsMixin:
 
     def with_terms_having_stem_match(self, stem):
         self.params.pattern = stem
+        return self
+
+    def with_thesaurus_file(self, thesaurus_file):
+        self.params.thesaurus_file = thesaurus_file
         return self
 
     def with_time_window(self, time_window):

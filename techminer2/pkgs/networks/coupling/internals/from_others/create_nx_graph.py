@@ -9,7 +9,7 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ......database.load import DatabaseLoader
+from ......database.io import FilteredDatabaseLoader
 from ......database.metrics.performance.data_frame import (
     DataFrame as PerformanceMetricsDataFrame,
 )
@@ -17,7 +17,7 @@ from ......database.metrics.performance.data_frame import (
 
 # ------------------------------------------------------------------------------
 def step_01_load_and_select_records(params):
-    records = DatabaseLoader().update_params(**params.__dict__).build()
+    records = FilteredDatabaseLoader().update_params(**params.__dict__).build()
     return records
 
 

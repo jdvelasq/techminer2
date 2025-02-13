@@ -4,12 +4,12 @@ This module implement generic thesaurus functions.
 
 """
 
-from .thesaurus__read_as_dataframe import thesaurus__read_as_dataframe
+from .load_thesaurus_as_data_frame import internal__load_thesaurus_as_data_frame
 
 
-def thesaurus__read_as_dict(file_path):
+def internal__load_thesaurus_as_dict(file_path):
     """Load existence thesaurus as a dataframe."""
 
-    frame = thesaurus__read_as_dataframe(file_path)
+    frame = internal__load_thesaurus_as_data_frame(file_path)
     frame = frame.groupby("key", as_index=False).agg(list)
     return dict(zip(frame.key, frame.value))

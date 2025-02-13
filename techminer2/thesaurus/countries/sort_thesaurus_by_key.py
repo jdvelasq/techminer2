@@ -20,9 +20,7 @@ Sort Thesaurus
 --INFO-- The file example/thesauri/countries.the.txt has been sorted.
 
 """
-from ..internals.thesaurus__sort_on_disk import (
-    thesaurus__sort_on_disk as _sort_thesaurus,
-)
+# from ..user.sort_thesaurus_by_key import thesaurus__sort_on_disk as _sort_thesaurus
 
 THESAURUS_FILE = "thesauri/countries.the.txt"
 

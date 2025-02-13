@@ -58,7 +58,7 @@ import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from ....internals.mixins import InputFunctionsMixin, SortAxesMixin
-from ...load import DatabaseLoader
+from ...io import FilteredDatabaseLoader
 from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 
@@ -69,7 +69,7 @@ class DataFrame(
     """:meta private:"""
 
     def _step_1_load_the_database(self):
-        return DatabaseLoader().update_params(**self.params.__dict__).build()
+        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
 
     def step_2_explode_data_frame(self, data_frame):
 

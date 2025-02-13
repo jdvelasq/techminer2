@@ -82,7 +82,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from ....internals.mixins import InputFunctionsMixin
-from ...load import DatabaseLoader
+from ...io import FilteredDatabaseLoader
 
 
 @dataclass
@@ -126,7 +126,9 @@ class DataFrame(
 
     def build(self):
 
-        data_frame = DatabaseLoader().update_params(**self.params.__dict__).build()
+        data_frame = (
+            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        )
 
         stats = Stats()
 

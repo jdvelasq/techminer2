@@ -30,7 +30,7 @@ import re
 
 import pandas as pd  # type: ignore
 
-from ..internals.thesaurus__read_as_dict import thesaurus__read_as_dict
+from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -51,7 +51,7 @@ def sort_thesaurus_by_match(
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    th_dict = thesaurus__read_as_dict(th_file)
+    th_dict = internal__load_thesaurus_as_dict(th_file)
 
     reversed_th = {value: key for key, values in th_dict.items() for value in values}
 

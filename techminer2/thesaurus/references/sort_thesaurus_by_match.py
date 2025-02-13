@@ -28,7 +28,7 @@ Finds a string in the terms of a thesaurus.
 
 
 """
-from ..internals.thesaurus__sort_by_match import thesaurus__sort_by_match
+# from ..user.sort_thesaurus_by_match import thesaurus__sort_by_match
 
 THESAURUS_FILE = "thesauri/references.the.txt"
 

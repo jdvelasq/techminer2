@@ -27,7 +27,7 @@ import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ..internals.thesaurus__read_as_dict import thesaurus__read_as_dict
+from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -41,7 +41,7 @@ def text_clumping(
     """:meta private:"""
 
     th_file = os.path.join(root_dir, THESAURUS_FILE)
-    th_dict = thesaurus__read_as_dict(th_file)
+    th_dict = internal__load_thesaurus_as_dict(th_file)
 
     # -------------------------------------------------------------------------------------------
     def dict_to_dataframe(th_dict):

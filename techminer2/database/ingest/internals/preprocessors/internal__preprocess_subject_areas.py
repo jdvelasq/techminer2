@@ -13,9 +13,7 @@ import pathlib
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
-from .....package_data.database.internal__load_subject_areas import (
-    internal__load_subject_areas,
-)
+from .....package_data.database.load_subject_areas import internal__load_subject_areas
 from ...message import message
 
 
