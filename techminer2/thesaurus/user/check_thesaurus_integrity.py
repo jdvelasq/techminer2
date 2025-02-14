@@ -31,7 +31,7 @@ import sys
 
 from ...database.internals.io import internal__load_filtered_database
 from ...internals.mixins import ParamsMixin
-from ..internals import (
+from .._internals import (
     internal__build_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_dict,
 )

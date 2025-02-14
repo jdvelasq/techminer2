@@ -24,7 +24,7 @@ import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 # TOOD: remove dependency
-from .....thesaurus.internals.load_reversed_thesaurus_as_dict import (
+from .....thesaurus._internals.load_reversed_thesaurus_as_dict import (
     internal__load_reversed_thesaurus_as_dict,
 )
 from ...message import message

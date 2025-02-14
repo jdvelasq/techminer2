@@ -36,10 +36,10 @@ import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..internals.load_reversed_thesaurus_as_dict import (
+from .._internals.load_reversed_thesaurus_as_dict import (
     internal__load_reversed_thesaurus_as_dict,
 )
-from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from .._internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
 from ._clean_thesaurus import (
     _apply_porter_stemmer,
     _compute_terms_by_key,

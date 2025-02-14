@@ -44,7 +44,7 @@ from textblob import TextBlob  # type: ignore
 from ..internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from ..thesaurus.internals.load_thesaurus_as_dict import (
+from ..thesaurus._internals.load_thesaurus_as_dict import (
     internal__load_thesaurus_as_dict,
 )
 

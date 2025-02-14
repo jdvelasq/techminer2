@@ -23,7 +23,7 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ..internals.load_reversed_thesaurus_as_dict import (
+from .._internals.load_reversed_thesaurus_as_dict import (
     internal__load_reversed_thesaurus_as_dict,
 )
 

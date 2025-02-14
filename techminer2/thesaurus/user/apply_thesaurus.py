@@ -31,7 +31,7 @@ Apply Thesaurus
 """
 from ...database.internals.io import internal__load_records, internal__write_records
 from ...internals.mixins import ParamsMixin
-from ..internals import (
+from .._internals import (
     internal__build_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_dict,
 )

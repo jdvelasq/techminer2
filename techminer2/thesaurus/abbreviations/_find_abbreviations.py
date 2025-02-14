@@ -24,10 +24,10 @@ import re
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..internals.load_thesaurus_as_data_frame import (
+from .._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
 )
-from ..internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from .._internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 

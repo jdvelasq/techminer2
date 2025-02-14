@@ -31,7 +31,7 @@ Sort Thesaurus by Key
 import sys
 
 from ...internals.mixins import ParamsMixin
-from ..internals import (
+from .._internals import (
     internal__build_thesaurus_file_path,
     internal__load_thesaurus_as_dict,
 )

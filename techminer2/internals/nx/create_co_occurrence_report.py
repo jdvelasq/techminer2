@@ -21,7 +21,7 @@ from collections import defaultdict
 import pandas as pd  # type: ignore
 
 # from ...search.concordances import concordances_from_records
-from ...thesaurus.internals.load_thesaurus_as_dict import (
+from ...thesaurus._internals.load_thesaurus_as_dict import (
     internal__load_thesaurus_as_dict,
 )
 from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
