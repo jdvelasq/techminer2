@@ -26,7 +26,7 @@ Highlight Nouns and Noun Phrases
 
 """
 from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.internal__highlight_nouns_and_phrases import (
+from ..ingest.internals.operators.highlight_nouns_and_phrases import (
     internal__highlight_nouns_and_phrases,
 )
 from .protected_fields import PROTECTED_FIELDS

@@ -26,7 +26,7 @@ Delete a Field
 """
 
 from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.internal__delete_field import internal__delete_field
+from ..ingest.internals.operators.delete_field import internal__delete_field
 from .protected_fields import PROTECTED_FIELDS
 
 

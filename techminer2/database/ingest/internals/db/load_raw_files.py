@@ -11,8 +11,8 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ....internals.files.get_subdirectories import internal__get_subdirectories
 from ...message import message
+from .get_subdirectories import internal__get_subdirectories
 
 
 def list_zip_filenames_in_raw_data(root_dir):

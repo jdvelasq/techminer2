@@ -44,7 +44,7 @@ Count Terms per Record
 
 """
 from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.internal__count_terms_per_record import (
+from ..ingest.internals.operators.count_terms_per_record import (
     internal__count_terms_per_record,
 )
 from .protected_fields import PROTECTED_FIELDS

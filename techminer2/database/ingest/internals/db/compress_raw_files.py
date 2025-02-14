@@ -5,8 +5,8 @@ import os
 
 import pandas as pd  # type: ignore
 
-from ....internals.files.get_subdirectories import internal__get_subdirectories
 from ...message import message
+from .get_subdirectories import internal__get_subdirectories
 
 
 def internal__compress_raw_files(root_dir):

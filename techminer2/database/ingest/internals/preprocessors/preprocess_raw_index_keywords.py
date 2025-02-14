@@ -6,15 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from ..operators.clean_raw_keywords import internal__clean_raw_keywords
 
-from ..operators.internal__clean_raw_keywords import internal__clean_raw_keywords
 
-
-def internal__preprocess_raw_author_keywords(root_dir):
+def internal__preprocess_raw_index_keywords(root_dir):
     """Run importer."""
 
     internal__clean_raw_keywords(
-        source="raw_author_keywords",
-        dest="raw_author_keywords",
+        source="raw_index_keywords",
+        dest="raw_index_keywords",
         root_dir=root_dir,
     )

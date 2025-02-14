@@ -11,7 +11,7 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ..operators.internal__copy_field import internal__copy_field
+from ..operators.copy_field import internal__copy_field
 
 
 def internal__preprocess_descriptors(root_dir):

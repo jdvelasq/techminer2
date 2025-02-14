@@ -6,16 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ..operators.internal__count_terms_per_record import (
-    internal__count_terms_per_record,
-)
+from ..operators.count_terms_per_record import internal__count_terms_per_record
 
 
-def internal__preprocess_num_authors(root_dir):
+def internal__preprocess_num_global_references(root_dir):
     """Run importer."""
 
     internal__count_terms_per_record(
-        source="authors",
-        dest="num_authors",
+        source="global_references",
+        dest="num_global_references",
         root_dir=root_dir,
     )

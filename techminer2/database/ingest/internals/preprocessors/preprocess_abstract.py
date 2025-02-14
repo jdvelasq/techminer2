@@ -6,14 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ..operators.internal__clean_text import internal__clean_text
+
+from ..operators.clean_text import internal__clean_text
 
 
-def internal__preprocess_document_title(root_dir):
+def internal__preprocess_abstract(root_dir):
     """:meta private:"""
 
     internal__clean_text(
-        source="raw_document_title",
-        dest="document_title",
+        source="raw_abstract",
+        dest="abstract",
         root_dir=root_dir,
     )

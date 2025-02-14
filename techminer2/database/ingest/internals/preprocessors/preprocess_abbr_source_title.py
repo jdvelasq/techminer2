@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ..operators.internal__fillna import internal__fillna
+from ..operators.fillna import internal__fillna
 
 
 def internal__preprocess_abbr_source_title(root_dir):
