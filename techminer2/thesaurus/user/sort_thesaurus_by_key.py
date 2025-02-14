@@ -30,7 +30,7 @@ Sort Thesaurus by Key
 """
 import sys
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..internals import (
     internal__build_thesaurus_file_path,
     internal__load_thesaurus_as_dict,
@@ -38,7 +38,7 @@ from ..internals import (
 
 
 class SortThesaurusByKey(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

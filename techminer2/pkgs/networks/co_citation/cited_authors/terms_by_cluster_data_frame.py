@@ -40,14 +40,14 @@ Terms by Cluster Frame
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.terms_by_cluster_data_frame import (
     TermsByClusterDataFrame as InternalTermsByClusterDataFrame,
 )
 
 
 class TermsByClusterDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

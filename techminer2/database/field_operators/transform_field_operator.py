@@ -28,7 +28,7 @@ Process a Field
 ... )
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..ingest.internals.operators.internal__transform_field import (
     internal__transform_field,
 )
@@ -36,7 +36,7 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 class TransformFieldOperator(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

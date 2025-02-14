@@ -44,12 +44,12 @@ Starts With
  
 """
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__starts_with import internal__starts_with
 
 
 class StartsWithExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

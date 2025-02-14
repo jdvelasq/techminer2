@@ -45,13 +45,13 @@ Concept Grid Plot
 #     :align: center
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .....internals.nx import internal__cluster_nx_graph, internal__concept_grid_plot
 from ..internals.create_nx_graph import internal__create_nx_graph
 
 
 class ConceptGridPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

@@ -1,16 +1,14 @@
-"""
-Loads user stopwords.
-
-"""
+"""Loads user stopwords."""
 
 import os
-import pathlib
+
+from .get_database_file_path import internal__get_database_file_path
 
 
-def load__user_stopwords(root_dir):
+def internal__load_user_stopwords(params):
     """:meta private:"""
 
-    file_path = pathlib.Path(root_dir) / "my_keywords/stopwords.txt"
+    file_path = internal__get_database_file_path(params)
 
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"The file '{file_path}' does not exist.")

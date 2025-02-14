@@ -41,12 +41,12 @@ Ends With
  'MARKETPLACE_LENDING']
  
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__ends_with import internal__ends_with
 
 
 class EndsWithExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

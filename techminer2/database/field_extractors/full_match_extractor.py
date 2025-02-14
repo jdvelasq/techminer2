@@ -34,12 +34,12 @@ Full Match
 ['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__full_match import internal__full_match
 
 
 class FullMatchExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

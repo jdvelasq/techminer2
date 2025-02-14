@@ -49,14 +49,14 @@ Node Degree Plot
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.from_others.node_degree_plot import (
     NodeDegreePlot as OtherNodeDegreePlot,
 )
 
 
 class NodeDegreePlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

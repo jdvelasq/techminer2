@@ -25,13 +25,13 @@ Delete a Field
 
 """
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..ingest.internals.operators.internal__delete_field import internal__delete_field
 from .protected_fields import PROTECTED_FIELDS
 
 
 class DeleteFieldOperator(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

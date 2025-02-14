@@ -100,12 +100,12 @@ Co-occurrence DataFrame
 
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .matrix_data_frame import MatrixDataFrame
 
 
 class DataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

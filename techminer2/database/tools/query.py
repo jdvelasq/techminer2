@@ -37,17 +37,19 @@ Query
 """
 import duckdb
 
-from ...internals.mixins import InputFunctionsMixin
-from ..io import FilteredDatabaseLoader
+from ...internals.mixins import ParamsMixin
+from ..internals.io import internal__load_filtered_database
 
 
 class Query(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
     def build(self):
         database = (
-            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
         )
         return duckdb.query(self.params.query_expr).df()

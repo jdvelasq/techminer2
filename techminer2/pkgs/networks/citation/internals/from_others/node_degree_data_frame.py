@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Node Degree Frame"""
-from ......internals.mixins import InputFunctionsMixin
+from ......internals.mixins import ParamsMixin
 from ......internals.nx import (
     internal__assign_degree_to_nodes,
     internal__collect_node_degrees,
@@ -16,7 +16,7 @@ from .create_nx_graph import internal__create_nx_graph
 
 
 class NodeDegreeDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

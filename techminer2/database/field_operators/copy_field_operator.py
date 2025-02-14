@@ -24,13 +24,13 @@ Copy a Field
 ... )
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..ingest.internals.operators.internal__copy_field import internal__copy_field
 from .protected_fields import PROTECTED_FIELDS
 
 
 class CopyFieldOperator(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

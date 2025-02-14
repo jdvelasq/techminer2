@@ -46,12 +46,12 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 <BLANKLINE>
     
 """
-from ...internals.mixins import InputFunctionsMixin, RecordViewerMixin
+from ...internals.mixins import ParamsMixin, RecordViewerMixin
 from .concordant_mapping import ConcordantMapping
 
 
 class ConcordantDocuments(
-    InputFunctionsMixin,
+    ParamsMixin,
     RecordViewerMixin,
 ):
     """:meta private:"""

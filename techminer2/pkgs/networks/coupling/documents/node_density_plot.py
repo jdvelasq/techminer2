@@ -49,7 +49,7 @@ Network Density Plot
 
                                              
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .....internals.nx import (
     internal__assign_textfont_sizes_based_on_citations,
     internal__cluster_nx_graph,
@@ -60,7 +60,7 @@ from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
 class NodeDensityPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

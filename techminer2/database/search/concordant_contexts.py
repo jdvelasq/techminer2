@@ -44,18 +44,22 @@ Concordant Contexts
 """
 import pandas as pd  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
-from ..io import FilteredDatabaseLoader
+from ...internals.mixins import ParamsMixin
+from ..internals.io import internal__load_filtered_database
 
 
 class ConcordantContexts(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        return (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
     # -------------------------------------------------------------------------
     def _step_2_extract_context_phrases(self, records):

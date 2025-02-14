@@ -25,13 +25,13 @@ Rename a Field
 
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..ingest.internals.operators.internal__rename_field import internal__rename_field
 from .protected_fields import PROTECTED_FIELDS
 
 
 class RenameFieldOperator(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

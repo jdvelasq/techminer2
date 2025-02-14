@@ -35,13 +35,13 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 """
-from ......internals.mixins import InputFunctionsMixin
+from ......internals.mixins import ParamsMixin
 from ......internals.nx import internal__compute_network_metrics
 from .create_nx_graph import internal__create_nx_graph
 
 
 class InternalNetworkMetrics(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

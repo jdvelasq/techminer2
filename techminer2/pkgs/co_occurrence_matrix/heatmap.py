@@ -55,13 +55,13 @@ Heatmap
 
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ...internals.plots.internal__heatmap import internal__heatmap
 from .matrix_data_frame import MatrixDataFrame
 
 
 class Heatmap(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

@@ -51,12 +51,12 @@ Node Density Plot
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.node_density_plot import NodeDensityPlot as InternalNodeDensityPlot
 
 
 class NodeDensityPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

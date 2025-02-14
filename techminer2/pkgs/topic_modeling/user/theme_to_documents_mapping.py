@@ -110,12 +110,12 @@ Theme to Documents Mapping
 
 
 """
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 from .documents_by_theme_data_frame import DocumentsByThemeDataFrame
 
 
 class ThemeToDocumentsMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

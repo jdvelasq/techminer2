@@ -32,7 +32,7 @@ import pandas as pd  # type: ignore
 from spellchecker import SpellChecker
 from textblob import TextBlob  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..internals import (
     internal__build_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_dict,
@@ -41,7 +41,7 @@ from ..internals import (
 
 
 class CheckThesaurusForMisspelledTerms(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

@@ -41,12 +41,12 @@ Contains
 
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__contains import internal__contains
 
 
 class ContainsExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

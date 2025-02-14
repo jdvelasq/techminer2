@@ -46,12 +46,12 @@ Filter a Field
  'MARKETPLACE_LENDING']
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..metrics.performance import DataFrame
 
 
 class TopTermsExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

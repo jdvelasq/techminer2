@@ -30,7 +30,7 @@ import pandas as pd  # type: ignore
 from spellchecker import SpellChecker
 from textblob import TextBlob, Word  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ...package_data.database import internal__load_technical_stopwords
 from ..internals import (
     internal__build_thesaurus_file_path,
@@ -39,7 +39,7 @@ from ..internals import (
 
 
 class CleanupThesaurus(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

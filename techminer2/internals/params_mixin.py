@@ -192,7 +192,7 @@ class Params:
     #
 
 
-class InputFunctionsMixin:
+class ParamsMixin:
 
     def __init__(self):
         self.params = Params()

@@ -51,13 +51,13 @@ Ranking Plot
 
 
 """
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__ranking_plot import internal__ranking_plot
 from .data_frame import DataFrame
 
 
 class RankingPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

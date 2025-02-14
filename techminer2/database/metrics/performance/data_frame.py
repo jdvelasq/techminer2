@@ -45,10 +45,10 @@ CASE_STUDY                  10        22        10  ...        2        2     0.
 
 
 """
-from techminer2.database.io import FilteredDatabaseLoader
+from techminer2.database.internals.io import internal__load_filtered_database
 
-from ....internals.mixins import InputFunctionsMixin
-from ...io import load__user_stopwords
+from ....internals.mixins import ParamsMixin
+from ...internals.io import internal__load_user_stopwords
 
 SELECTED_COLUMNS = {
     "OCC": [
@@ -75,13 +75,17 @@ SELECTED_COLUMNS = {
 
 
 class DataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        return (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
     # -------------------------------------------------------------------------
     def _step_2_select_metric_fields(self, data_frame):
@@ -217,7 +221,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_8_remove_stopwords(self, grouped):
 
-        stopwords = load__user_stopwords(root_dir=self.params.root_dir)
+        stopwords = internal__load_user_stopwords(root_dir=self.params.root_dir)
         grouped = grouped.drop(stopwords, axis=0, errors="ignore")
         return grouped
 

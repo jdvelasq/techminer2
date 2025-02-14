@@ -44,13 +44,13 @@ Word Cloud
 
 """
 
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__word_cloud import internal__word_cloud
 from .data_frame import DataFrame
 
 
 class WordCloud(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

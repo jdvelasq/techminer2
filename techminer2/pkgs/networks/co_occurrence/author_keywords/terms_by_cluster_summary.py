@@ -49,14 +49,14 @@ Terms by Cluster Summary
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..user.terms_by_cluster_summary import (
     TermsByClusterSummary as UserTermsByClusterSummary,
 )
 
 
 class TermsByClusterSummary(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

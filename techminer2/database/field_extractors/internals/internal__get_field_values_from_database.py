@@ -8,7 +8,7 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from ...io import FilteredDatabaseLoader
+from ...internals.io import internal__load_filtered_database
 
 
 def internal__get_field_values_from_database(
@@ -27,7 +27,7 @@ def internal__get_field_values_from_database(
     """Returns a DataFrame with the content of the field in all databases."""
 
     data_frame = (
-        FilteredDatabaseLoader()
+        internal__load_filtered_database()
         .where_directory_is(root_dir)
         .where_database_is(database)
         .where_record_years_between(

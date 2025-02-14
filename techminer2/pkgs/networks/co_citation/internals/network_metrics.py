@@ -39,13 +39,13 @@ COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
 MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .....internals.nx.compute_network_metrics import internal__compute_network_metrics
 from .create_nx_graph import internal__create_nx_graph
 
 
 class NetworkMetrics(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

@@ -36,18 +36,22 @@ Summary Sheet
 """
 import pandas as pd  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
-from ..io import FilteredDatabaseLoader
+from ...internals.mixins import ParamsMixin
+from ..internals.io import internal__load_filtered_database
 
 
 class SummarySheet(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        records = FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        records = (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
         #
         # Compute stats per column

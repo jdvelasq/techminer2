@@ -50,16 +50,12 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from ...internals.mixins import (
-    InputFunctionsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-)
-from ..io.filtered_database_loader import FilteredDatabaseLoader
+from ...internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
+from ..internals.io.load_filtered_database import internal__load_filtered_database
 
 
 class ConcordantMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
     RecordMappingMixin,
     RecordViewerMixin,
 ):
@@ -67,7 +63,11 @@ class ConcordantMapping(
 
     # -------------------------------------------------------------------------
     def _step_01_load_the_database(self):
-        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        return (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
     # -------------------------------------------------------------------------
     def _step_02__filter_by_concordance(self, records):

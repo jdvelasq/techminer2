@@ -32,7 +32,7 @@ import sys
 import pandas as pd  # type: ignore
 from fuzzywuzzy import process  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..internals import (
     internal__build_thesaurus_file_path,
     internal__load_thesaurus_as_dict,
@@ -40,7 +40,7 @@ from ..internals import (
 
 
 class SortThesaurusByFuzzyMatch(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

@@ -57,19 +57,23 @@ Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...            
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from ....internals.mixins import InputFunctionsMixin, SortAxesMixin
-from ...io import FilteredDatabaseLoader
+from ....internals.mixins import ParamsMixin, SortAxesMixin
+from ...internals.io import internal__load_filtered_database
 from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 
 class DataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
     SortAxesMixin,
 ):
     """:meta private:"""
 
     def _step_1_load_the_database(self):
-        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        return (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
     def step_2_explode_data_frame(self, data_frame):
 

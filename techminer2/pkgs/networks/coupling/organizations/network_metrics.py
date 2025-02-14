@@ -32,12 +32,12 @@ Network Metrics
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.from_others.network_metrics import InternalNetworkMetrics
 
 
 class NetworkMetrics(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

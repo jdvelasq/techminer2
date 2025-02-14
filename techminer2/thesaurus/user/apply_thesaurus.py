@@ -29,8 +29,8 @@ Apply Thesaurus
 --INFO-- The file example/thesauri/descriptors.the.txt has been modified.
 
 """
-from ...database.io import RecordsLoader, RecordsWriter
-from ...internals.mixins import InputFunctionsMixin
+from ...database.internals.io import internal__load_records, internal__write_records
+from ...internals.mixins import ParamsMixin
 from ..internals import (
     internal__build_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_dict,
@@ -38,7 +38,7 @@ from ..internals import (
 
 
 class ApplyThesaurus(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -65,8 +65,8 @@ class ApplyThesaurus(
 
         file_path = internal__build_thesaurus_file_path(params=self.params)
         mapping = internal__load_reversed_thesaurus_as_dict(file_path)
-        records = RecordsLoader().update_params(**self.params.__dict__).build()
+        records = internal__load_records().update_params(**self.params.__dict__).build()
         records = self.apply_thesaurus(records, mapping)
-        RecordsWriter().update_params(**self.params.__dict__).with_records(
+        internal__write_records().update_params(**self.params.__dict__).with_records(
             records
         ).build()

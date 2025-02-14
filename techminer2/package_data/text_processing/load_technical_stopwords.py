@@ -15,7 +15,7 @@ def internal__load_technical_stopwords():
 
     data_path = pkg_resources.resource_filename(
         "techminer2",
-        "package_data/database/data/technical_stopwords.txt",
+        "package_data/text_processing/data/technical_stopwords.txt",
     )
 
     with open(data_path, "r", encoding="utf-8") as file:

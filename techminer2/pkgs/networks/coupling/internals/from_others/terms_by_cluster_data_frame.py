@@ -35,7 +35,7 @@
 
 
 """
-from ......internals.mixins import InputFunctionsMixin
+from ......internals.mixins import ParamsMixin
 from ......internals.nx import (
     internal__cluster_nx_graph,
     internal__extract_communities_to_frame,
@@ -44,7 +44,7 @@ from .create_nx_graph import internal__create_nx_graph
 
 
 class InternalTermsByClusterDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

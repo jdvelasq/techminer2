@@ -29,8 +29,8 @@ Check Thesaurus Integrity
 """
 import sys
 
-from ...database.io import FilteredDatabaseLoader
-from ...internals.mixins import InputFunctionsMixin
+from ...database.internals.io import internal__load_filtered_database
+from ...internals.mixins import ParamsMixin
 from ..internals import (
     internal__build_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_dict,
@@ -38,7 +38,7 @@ from ..internals import (
 
 
 class CheckThesaurusIntegrity(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -51,7 +51,11 @@ class CheckThesaurusIntegrity(
 
     # -------------------------------------------------------------------------
     def load_terms_in_database(self):
-        records = FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        records = (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
         field = self.params.field
         terms = records[field].dropna()
         terms = terms.str.split("; ").explode().str.strip().drop_duplicates().tolist()

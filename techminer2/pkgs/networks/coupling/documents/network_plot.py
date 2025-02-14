@@ -49,7 +49,7 @@ Network Plot
 
                                              
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .....internals.nx import (
     internal__assign_constant_to_edge_colors,
     internal__assign_edge_widths_based_on_weight,
@@ -66,7 +66,7 @@ from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
 class NetworkPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

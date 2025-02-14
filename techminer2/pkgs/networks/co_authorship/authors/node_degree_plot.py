@@ -50,12 +50,12 @@ Node Degree Plot
 
 """
 """Node Degree Plot"""
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ...co_occurrence.user.node_degree_plot import NodeDegreePlot as UserNodeDegreePlot
 
 
 class NodeDegreePlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

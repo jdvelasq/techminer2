@@ -40,12 +40,12 @@ Fields difference
 
 """
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__fields_difference import internal__fields_difference
 
 
 class FieldsDifferenceExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

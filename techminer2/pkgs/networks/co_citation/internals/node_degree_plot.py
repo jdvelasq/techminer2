@@ -45,7 +45,7 @@ Node Degree Plot
 
 """
 
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .....internals.nx import (
     internal__assign_degree_to_nodes,
     internal__collect_node_degrees,
@@ -56,7 +56,7 @@ from .create_nx_graph import internal__create_nx_graph
 
 
 class NodeDegreePlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

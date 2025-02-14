@@ -8,25 +8,29 @@
 # pylint: disable=too-many-statements
 """Sorts connectors.
 
->>> from techminer2.package_data.database.internal__sort_connectors import (
-...     internal__sort_connectors,
+>>> from techminer2.package_data.text_processing import (
+...     internal__sort_lines_in_data_files,
 ... )
 >>> internal__sort_connectors()
 
 """
+import glob
 
 import pkg_resources  # type: ignore
 
 
-def internal__sort_connectors():
-    """:meta private:"""
-
-    file_path = pkg_resources.resource_filename(
+def get_file_names():
+    dir_path = pkg_resources.resource_filename(
         "techminer2",
-        "package_data/database/data/connectors.txt",
+        "package_data/database/data/*.txt",
     )
+    file_names = glob.glob(dir_path)
+    return file_names
 
-    with open(file_path, "r", encoding="utf-8") as file:
+
+def sort_file(file_name):
+
+    with open(file_name, "r", encoding="utf-8") as file:
         connectors = file.readlines()
 
     connectors = [
@@ -36,6 +40,14 @@ def internal__sort_connectors():
     connectors = [connector.strip() for connector in connectors]
     connectors = [connector for connector in connectors if len(connector.split()) > 1]
 
-    with open(file_path, "w", encoding="utf-8") as file:
+    with open(file_name, "w", encoding="utf-8") as file:
         for connector in connectors:
             file.write(connector + "\n")
+
+
+def internal__sort_lines_in_data_files():
+    """:meta private:"""
+
+    file_names = get_file_names()
+    for file_name in file_names:
+        sort_file(file_name)

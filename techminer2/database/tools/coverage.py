@@ -36,13 +36,13 @@ Coverage
 
 
 """
-from ...internals.mixins import InputFunctionsMixin
-from ..io.filtered_database_loader import FilteredDatabaseLoader
-from ..io.load__user_stopwords import load__user_stopwords
+from ...internals.mixins import ParamsMixin
+from ..internals.io.load_filtered_database import internal__load_filtered_database
+from ..internals.io.load_user_stopwords import internal__load_user_stopwords
 
 
 class Coverage(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -50,10 +50,12 @@ class Coverage(
 
         field = self.params.field
 
-        stopwords = load__user_stopwords(self.params.root_dir)
+        stopwords = internal__load_user_stopwords(self.params.root_dir)
 
         documents = (
-            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
         )
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]

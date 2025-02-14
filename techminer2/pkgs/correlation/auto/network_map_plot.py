@@ -70,13 +70,13 @@ Creates an Auto-correlation Map.
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 from ..internals.internal__correlation_map import internal__correlation_map
 from .matrix_data_frame import MatrixDataFrame
 
 
 class NetworkMapPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

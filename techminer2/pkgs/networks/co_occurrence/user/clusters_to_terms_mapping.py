@@ -62,7 +62,7 @@ Clusters to Terms Mapping
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .....internals.nx import (
     internal__cluster_nx_graph,
     internal__create_clusters_to_terms_mapping,
@@ -71,7 +71,7 @@ from ..internals.create_nx_graph import internal__create_nx_graph
 
 
 class ClustersToTermsMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

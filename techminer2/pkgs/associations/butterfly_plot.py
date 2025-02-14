@@ -55,12 +55,12 @@ Butterfly Plot
 """
 import plotly.graph_objects as go  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .data_frame import DataFrame
 
 
 class ButterflyPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

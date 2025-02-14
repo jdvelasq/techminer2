@@ -45,12 +45,12 @@ TECHNOLOGY 02:0310               5     0.028655   0.575758  0.042338
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..user.network_metrics import NetworkMetrics as UserNetworkMetrics
 
 
 class NetworkMetrics(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

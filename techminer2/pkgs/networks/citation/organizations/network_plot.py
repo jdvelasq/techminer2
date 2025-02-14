@@ -56,12 +56,12 @@ Network Plot
 
 """
 
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.from_others.network_plot import NetworkPlot as OtherNetworkPlot
 
 
 class NetworkPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

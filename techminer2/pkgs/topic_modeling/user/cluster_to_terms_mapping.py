@@ -65,12 +65,12 @@ Cluster to Terms Mapping
 
 
 """
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 from .components_by_term_data_frame import ComponentsByTermDataFrame
 
 
 class ClusterToTermsMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

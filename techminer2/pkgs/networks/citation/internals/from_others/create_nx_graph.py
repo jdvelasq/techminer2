@@ -9,7 +9,7 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ......database.io import FilteredDatabaseLoader
+from ......database.internals.io import internal__load_filtered_database
 from ......database.metrics.performance.data_frame import (
     DataFrame as PerformanceMetricsDataFrame,
 )
@@ -34,7 +34,9 @@ def __add_weighted_edges_from(
 ):
     unit_of_analysis = params.unit_of_analysis
 
-    records = FilteredDatabaseLoader().update_params(**params.__dict__).build()
+    records = (
+        internal__load_filtered_database().update_params(**params.__dict__).build()
+    )
 
     #
     # data_frame contains the citing and cited articles.

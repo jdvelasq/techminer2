@@ -45,13 +45,13 @@ Line Plot
 
 
 """
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__line_plot import internal__line_plot
 from .data_frame import DataFrame
 
 
 class LinePlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

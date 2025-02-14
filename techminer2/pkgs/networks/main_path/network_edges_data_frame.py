@@ -41,12 +41,12 @@ Network Edges Frame
 
 
 """
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 from .internals.compute_main_path import internal__compute_main_path
 
 
 class NetworkEdgesDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

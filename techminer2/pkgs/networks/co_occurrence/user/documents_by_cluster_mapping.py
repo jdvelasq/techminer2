@@ -71,12 +71,12 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
 """
 from .....database.tools import RecordViewer
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from .clusters_to_terms_mapping import ClustersToTermsMapping
 
 
 class DocumentsByClusterMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

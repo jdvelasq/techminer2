@@ -24,7 +24,7 @@ Collect Nouns and Phrases
 ... )
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..ingest.internals.operators.internal__collect_nouns_and_phrases import (
     internal__collect_nouns_and_phrases,
 )
@@ -32,7 +32,7 @@ from .protected_fields import PROTECTED_FIELDS
 
 
 class CollectNounAndPhrasesOperator(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

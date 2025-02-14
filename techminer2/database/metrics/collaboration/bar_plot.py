@@ -47,12 +47,12 @@ Bar Plot
 """
 import plotly.express as px  # type: ignore
 
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from .data_frame import DataFrame
 
 
 class BarPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

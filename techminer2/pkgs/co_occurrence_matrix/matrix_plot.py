@@ -129,7 +129,7 @@ Matrix Plot
 
 import networkx as nx  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ...internals.nx import (
     internal__assign_constant_to_edge_colors,
     internal__assign_edge_widths_based_on_weight,
@@ -144,7 +144,7 @@ from .matrix_data_frame import MatrixDataFrame
 
 
 class MatrixPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

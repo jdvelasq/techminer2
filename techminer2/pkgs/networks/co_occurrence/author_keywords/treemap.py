@@ -45,12 +45,12 @@ Treemap
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..user.treemap import Treemap as UserTreemap
 
 
 class Treemap(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

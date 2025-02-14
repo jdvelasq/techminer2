@@ -46,13 +46,13 @@ Column Plot
 
 
 """
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__column_plot import internal__column_plot
 from .data_frame import DataFrame
 
 
 class ColumnPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

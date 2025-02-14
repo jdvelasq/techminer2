@@ -38,19 +38,21 @@ Data Frame
 
 """
 
-from ....internals.mixins import InputFunctionsMixin
-from ...io import FilteredDatabaseLoader
+from ....internals.mixins import ParamsMixin
+from ...internals.io import internal__load_filtered_database
 
 
 class DataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
         data_frame = (
-            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
         )
         data_frame = data_frame.assign(_order_=range(1, len(data_frame) + 1))
         data_frame = data_frame.reset_index(drop=True)

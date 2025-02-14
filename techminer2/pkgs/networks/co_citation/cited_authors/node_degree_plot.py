@@ -43,12 +43,12 @@ Node Degree Plot
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.node_degree_plot import NodeDegreePlot as InternalNodeDegreePlot
 
 
 class NodeDegreePlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

@@ -45,7 +45,7 @@ Cleveland Dot Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__cleveland_dot_plot import (
     internal__cleveland_dot_plot,
 )
@@ -53,7 +53,7 @@ from .data_frame import DataFrame
 
 
 class ClevelandDotPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

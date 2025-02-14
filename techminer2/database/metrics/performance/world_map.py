@@ -43,13 +43,13 @@ World Map
 
 
 """
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__world_map import internal__world_map
 from .data_frame import DataFrame
 
 
 class WorldMap(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

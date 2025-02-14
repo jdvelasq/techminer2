@@ -74,11 +74,11 @@ component                   ...
 import pandas as pd  # type: ignore
 
 from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 
 
 class ComponentsByTermDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

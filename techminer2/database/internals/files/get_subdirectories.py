@@ -3,7 +3,7 @@
 import os
 
 
-def get_subdirectories(directory):
+def internal__get_subdirectories(directory):
     """:meta private:"""
 
     subdirectories = os.listdir(directory)

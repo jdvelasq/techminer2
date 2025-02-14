@@ -16,7 +16,7 @@ def internal__load_known_noun_phrases():
 
     data_path = pkg_resources.resource_filename(
         "techminer2",
-        "package_data/database/data/known_noun_phrases.txt",
+        "package_data/text_processing/data/known_noun_phrases.txt",
     )
 
     with open(data_path, "r", encoding="utf-8") as file:

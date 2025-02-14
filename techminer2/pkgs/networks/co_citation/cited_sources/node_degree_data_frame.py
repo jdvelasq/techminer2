@@ -38,14 +38,14 @@ Node Degree Frame
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..internals.node_degree_data_frame import (
     NodeDegreeDataFrame as InternalNodeDegreeDataFrame,
 )
 
 
 class NodeDegreeDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

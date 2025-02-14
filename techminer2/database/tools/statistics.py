@@ -34,12 +34,12 @@ AGROPAY                1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0
 [5 rows x 56 columns]
 
 """
-from ...internals.mixins import InputFunctionsMixin
-from ..io import FilteredDatabaseLoader
+from ...internals.mixins import ParamsMixin
+from ..internals.io import internal__load_filtered_database
 
 
 class Statistics(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -47,7 +47,11 @@ class Statistics(
 
         field = self.params.field
 
-        records = FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        records = (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
         records = records.dropna(subset=[field])
         records[field] = records[field].str.split("; ")

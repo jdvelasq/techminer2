@@ -210,13 +210,13 @@ TECHNOLOGY 02:0310                          1  ...                   2
 
 
 """
-from ...database.io import FilteredDatabaseLoader
+from ...database.internals.io import internal__load_filtered_database
 from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 
 
 class MatrixDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -273,7 +273,11 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_04_load_the_database(self):
-        return FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        return (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
 
     # -------------------------------------------------------------------------
     def _step_05_create_raw_matrix_list(self, records):

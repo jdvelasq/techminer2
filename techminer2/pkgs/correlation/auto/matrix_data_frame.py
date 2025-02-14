@@ -52,12 +52,12 @@ Zavolokina L. 2:0181                0.00  ...                   1.0
 
 """
 from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 from ..internals.internal__compute_corr_matrix import internal__compute_corr_matrix
 
 
 class MatrixDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

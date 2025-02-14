@@ -24,13 +24,13 @@ Merge Fields
 ... )
 
 """
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from ..ingest.internals.operators.internal__merge_fields import internal__merge_fields
 from .protected_fields import PROTECTED_FIELDS
 
 
 class MergeFieldsOperator(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

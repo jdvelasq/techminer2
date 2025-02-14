@@ -30,12 +30,12 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 """
 import pandas as pd  # type: ignore
 
-from ...database.io import FilteredDatabaseLoader
-from ...internals.mixins import InputFunctionsMixin
+from ...database.internals.io import internal__load_filtered_database
+from ...internals.mixins import ParamsMixin
 
 
 class RPYSDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -43,7 +43,9 @@ class RPYSDataFrame(
         """:meta private:"""
 
         references = (
-            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
         )
 
         references = references[["year"]]

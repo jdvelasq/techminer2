@@ -43,14 +43,14 @@ Clusters to Terms Mapping
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..user.clusters_to_terms_mapping import (
     ClustersToTermsMapping as UserClustersToTermsMapping,
 )
 
 
 class ClustersToTermsMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

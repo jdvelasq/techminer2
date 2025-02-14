@@ -16,7 +16,7 @@ def internal__load_connectors():
 
     data_path = pkg_resources.resource_filename(
         "techminer2",
-        "package_data/database/data/connectors.txt",
+        "package_data/text_processing/data/connectors.txt",
     )
 
     with open(data_path, "r", encoding="utf-8") as file:

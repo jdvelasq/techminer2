@@ -48,14 +48,14 @@ Terms to Cluster Mapping
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ..user.documents_by_cluster_mapping import (
     DocumentsByClusterMapping as UserDocumentsByClusterMapping,
 )
 
 
 class DocumentsByClusterMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

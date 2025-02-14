@@ -28,12 +28,12 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 """
 import plotly.graph_objects as go
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .rpys_frame import RPYSDataFrame
 
 
 class RPYSPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

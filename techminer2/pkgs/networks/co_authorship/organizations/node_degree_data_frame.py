@@ -39,14 +39,14 @@ Node Degree Frame
 
 
 """
-from .....internals.mixins import InputFunctionsMixin
+from .....internals.mixins import ParamsMixin
 from ...co_occurrence.user.node_degree_data_frame import (
     NodeDegreeDataFrame as UserNodeDegreeDataFrame,
 )
 
 
 class NodeDegreeDataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

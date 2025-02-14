@@ -56,7 +56,7 @@ Network Plot
 """
 import networkx as nx  # type: ignore
 
-from ....internals.mixins import InputFunctionsMixin
+from ....internals.mixins import ParamsMixin
 from ....internals.nx import (
     internal__assign_constant_to_edge_colors,
     internal__assign_constant_to_node_colors,
@@ -72,7 +72,7 @@ from .network_edges_data_frame import NetworkEdgesDataFrame
 
 
 class NetworkPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

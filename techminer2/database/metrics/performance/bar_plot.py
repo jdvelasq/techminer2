@@ -43,13 +43,13 @@ Bar Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.mixins.input_functions import InputFunctionsMixin
+from ....internals.params_mixin import ParamsMixin
 from ....internals.plots.internal__bar_plot import internal__bar_plot
 from .data_frame import DataFrame
 
 
 class BarPlot(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

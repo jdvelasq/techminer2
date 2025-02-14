@@ -34,16 +34,15 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...internals.mixins import InputFunctionsMixin
+from .get_database_file_path import internal__get_database_file_path
 
 
-class FilteredDatabaseLoader(
-    InputFunctionsMixin,
-):
+def internal__load_filtered_database(params):
+
     # -------------------------------------------------------------------------
-    def _get_records_from_file(self):
+    def step_01_get_records_from_file(params):
 
-        file_path = pathlib.Path(self.params.root_dir) / "databases/database.csv.zip"
+        file_path = internal__get_database_file_path(params)
 
         data_frame = pd.read_csv(
             file_path,
@@ -55,16 +54,16 @@ class FilteredDatabaseLoader(
             "main": "db_main",
             "references": "db_references",
             "cited_by": "db_cited_by",
-        }[self.params.database]
+        }[params.database]
 
         data_frame = data_frame[data_frame[criteria]]
 
         return data_frame
 
     # -------------------------------------------------------------------------
-    def _filter_records_by_year(self, data_frame):
+    def step_02_filter_records_by_year(params, data_frame):
 
-        years_range = self.params.record_years_range
+        years_range = params.record_years_range
 
         if years_range is None:
             return data_frame
@@ -90,9 +89,9 @@ class FilteredDatabaseLoader(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def _filter_records_by_citations(self, data_frame):
+    def step_03_filter_records_by_citations(params, data_frame):
 
-        citations_range = self.params.record_citations_range
+        citations_range = params.record_citations_range
 
         if citations_range is None:
             return data_frame
@@ -118,9 +117,9 @@ class FilteredDatabaseLoader(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def _apply_filters_to_records(self, data_frame):
+    def step_04_apply_filters_to_records(params, data_frame):
 
-        filters = self.params.records_match
+        filters = params.records_match
 
         if filters is None:
             return data_frame
@@ -152,7 +151,7 @@ class FilteredDatabaseLoader(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def _apply_sort_by(self, data_frame):
+    def step_05_apply_sort_by(params, data_frame):
         #
         # sort_by: - date_newest
         #          - date_oldest
@@ -165,7 +164,7 @@ class FilteredDatabaseLoader(
         #          - source_title_a_to_z
         #          - source_title_z_to_a
 
-        sort_by = self.params.records_order_by
+        sort_by = params.records_order_by
 
         if sort_by is None:
             return data_frame
@@ -233,12 +232,11 @@ class FilteredDatabaseLoader(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def build(self):
 
-        data_frame = self._get_records_from_file()
-        data_frame = self._filter_records_by_year(data_frame)
-        data_frame = self._filter_records_by_citations(data_frame)
-        data_frame = self._apply_filters_to_records(data_frame)
-        data_frame = self._apply_sort_by(data_frame)
+    data_frame = step_01_get_records_from_file(params)
+    data_frame = step_02_filter_records_by_year(params, data_frame)
+    data_frame = step_03_filter_records_by_citations(params, data_frame)
+    data_frame = step_04_apply_filters_to_records(data_frame)
+    data_frame = step_05_apply_sort_by(data_frame)
 
-        return data_frame
+    return data_frame

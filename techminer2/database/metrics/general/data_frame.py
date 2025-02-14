@@ -81,8 +81,8 @@ from dataclasses import dataclass, field
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ....internals.mixins import InputFunctionsMixin
-from ...io import FilteredDatabaseLoader
+from ....internals.mixins import ParamsMixin
+from ...internals.io import internal__load_filtered_database
 
 
 @dataclass
@@ -93,7 +93,7 @@ class Stats:
 
 
 class DataFrame(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 
@@ -127,7 +127,9 @@ class DataFrame(
     def build(self):
 
         data_frame = (
-            FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
         )
 
         stats = Stats()

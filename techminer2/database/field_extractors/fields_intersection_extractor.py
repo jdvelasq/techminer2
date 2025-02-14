@@ -40,12 +40,12 @@ Fields Intersection
 
 """
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__fields_intersection import internal__fields_intersection
 
 
 class FieldsIntersectionExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

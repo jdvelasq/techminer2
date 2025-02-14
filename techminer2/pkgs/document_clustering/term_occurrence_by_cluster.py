@@ -77,11 +77,11 @@ CONSUMERS 06:0804                         5  0  1  0  0  0  0  0
 
 """
 from ...database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 
 
 class TermOccurrenceByCluster(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

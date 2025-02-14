@@ -40,12 +40,12 @@ Stemming Field with AND
 
 """
 
-from ...internals.mixins import InputFunctionsMixin
+from ...internals.mixins import ParamsMixin
 from .internals.internal__stemming import internal__stemming_and
 
 
 class StemmingAndExtractor(
-    InputFunctionsMixin,
+    ParamsMixin,
 ):
     """:meta private:"""
 

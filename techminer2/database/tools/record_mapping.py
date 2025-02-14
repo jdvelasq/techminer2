@@ -69,16 +69,12 @@ Record Mapping
 
 """
 
-from ...internals.mixins import (
-    InputFunctionsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-)
-from ..io.filtered_database_loader import FilteredDatabaseLoader
+from ...internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
+from ..internals.io.load_filtered_database import internal__load_filtered_database
 
 
 class RecordMapping(
-    InputFunctionsMixin,
+    ParamsMixin,
     RecordMappingMixin,
     RecordViewerMixin,
 ):
@@ -86,6 +82,10 @@ class RecordMapping(
 
     def build(self):
 
-        records = FilteredDatabaseLoader().update_params(**self.params.__dict__).build()
+        records = (
+            internal__load_filtered_database()
+            .update_params(**self.params.__dict__)
+            .build()
+        )
         mapping = self.build_record_mapping(records)
         return mapping
