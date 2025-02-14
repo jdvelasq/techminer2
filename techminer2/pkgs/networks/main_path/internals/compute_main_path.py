@@ -22,9 +22,7 @@ def step_01_create_citations_table(params):
 
     #
     # Extracts the records using the specified parameters
-    records = (
-        internal__load_filtered_database().update_params(**params.__dict__).build()
-    )
+    records = internal__load_filtered_database(params=params)
 
     records = records.sort_values(
         ["global_citations", "local_citations", "year", "record_id"],

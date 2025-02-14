@@ -17,9 +17,7 @@ from ......database.metrics.performance.data_frame import (
 
 # ------------------------------------------------------------------------------
 def step_01_load_and_select_records(params):
-    records = (
-        internal__load_filtered_database().update_params(**params.__dict__).build()
-    )
+    records = internal__load_filtered_database(params=params)
     return records
 
 
@@ -64,7 +62,7 @@ def step_03_filter_the_data_frame(params, data_frame):
 
     metrics = (
         PerformanceMetricsDataFrame()
-        .update_params(**params.__dict__)
+        .update(**params.__dict__)
         .with_field(params.unit_of_analysis)
         .build()
     )

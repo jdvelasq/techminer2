@@ -80,7 +80,7 @@ class TermsByClusterDataFrame(
 
     def build(self):
 
-        mapping = ClustersToTermsMapping().update_params(**self.params.__dict__).build()
+        mapping = ClustersToTermsMapping().update(**self.params.__dict__).build()
         frame = pd.DataFrame.from_dict(mapping, orient="index").T
         frame = frame.fillna("")
         frame = frame.sort_index(axis=1)

@@ -66,6 +66,6 @@ class Heatmap(
     """:meta private:"""
 
     def build(self):
-        data_frame = MatrixDataFrame().update_params(**self.params.__dict__).build()
+        data_frame = MatrixDataFrame().update(**self.params.__dict__).build()
         fig = internal__heatmap(self.params, data_frame)
         return fig

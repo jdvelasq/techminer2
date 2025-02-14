@@ -32,8 +32,8 @@ import sys
 
 from ...internals.mixins import ParamsMixin
 from .._internals import (
-    internal__build_thesaurus_file_path,
-    internal__load_thesaurus_as_dict,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_thesaurus_as_mapping,
 )
 
 
@@ -72,8 +72,8 @@ class SortThesaurusByKey(
     def build(self):
         """:meta private:"""
 
-        file_path = internal__build_thesaurus_file_path(params=self.params)
-        th_dict = internal__load_thesaurus_as_dict(file_path)
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        th_dict = internal__load_thesaurus_as_mapping(file_path)
         sorted_keys = self.get_thesaurus_sorted_keys(th_dict)
         self.save_sorted_thesaurus_on_disk(file_path, th_dict, sorted_keys)
 

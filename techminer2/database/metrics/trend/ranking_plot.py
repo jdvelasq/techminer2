@@ -51,7 +51,7 @@ class RankingPlot(
 
     def build(self):
 
-        data_frame = DataFrame().update_params(**self.params.__dict__)
+        data_frame = DataFrame().update(**self.params.__dict__)
         data_frame = data_frame.build()
         data_frame["Rank"] = range(1, len(data_frame) + 1)
 

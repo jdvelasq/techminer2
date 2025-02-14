@@ -47,9 +47,5 @@ class Query(
     """:meta private:"""
 
     def build(self):
-        database = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        database = internal__load_filtered_database(params=self.params)
         return duckdb.query(self.params.query_expr).df()

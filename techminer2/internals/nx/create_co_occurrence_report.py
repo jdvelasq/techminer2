@@ -21,8 +21,8 @@ from collections import defaultdict
 import pandas as pd  # type: ignore
 
 # from ...search.concordances import concordances_from_records
-from ...thesaurus._internals.load_thesaurus_as_dict import (
-    internal__load_thesaurus_as_dict,
+from ...thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
 )
 from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
 from ..utils.utils_format_report_for_records import _utils_format_report_for_records
@@ -266,7 +266,7 @@ def __generate_terms_relationships_prompt(
     """ChatGPT prompt."""
 
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    thesaurus = internal__load_thesaurus_as_dict(thesaurus_file)
+    thesaurus = internal__load_thesaurus_as_mapping(thesaurus_file)
 
     for cluster in sorted(communities.keys()):
         # -------------------------------------------------------------------------------------

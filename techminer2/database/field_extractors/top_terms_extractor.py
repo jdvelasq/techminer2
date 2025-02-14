@@ -57,7 +57,7 @@ class TopTermsExtractor(
 
     def build(self):
 
-        data_frame = DataFrame().update_params(**self.params.__dict__).build()
+        data_frame = DataFrame().update(**self.params.__dict__).build()
         terms = data_frame.index.tolist()
         terms = sorted(terms)
 

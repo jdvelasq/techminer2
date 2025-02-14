@@ -134,6 +134,7 @@ class Params:
     spring_layout_iterations: int = 50
     spring_layout_k: float = 0.1
     spring_layout_seed: int = 42
+    stemming_fn = None
     sublinear_tf_scaling: bool = False  # sublinear_tf
 
     #
@@ -189,7 +190,16 @@ class Params:
     height: float = 400
     #
 
-    #
+    # -------------------------------------------------------------------------
+    def __init__(self, **kwargs):
+        self.update(**kwargs)
+
+    def update(self, **kwargs):
+        if key not in self.__annotations__:
+            raise ValueError(f"Unknown parameter: {key}")
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        return self
 
 
 class ParamsMixin:
@@ -197,7 +207,7 @@ class ParamsMixin:
     def __init__(self):
         self.params = Params()
 
-    def update_params(self, **kwargs):
+    def update(self, **kwargs):
         for key, value in kwargs.items():
             setattr(self.params, key, value)
         return self

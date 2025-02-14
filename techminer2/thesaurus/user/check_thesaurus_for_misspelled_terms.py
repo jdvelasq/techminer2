@@ -34,8 +34,8 @@ from textblob import TextBlob  # type: ignore
 
 from ...internals.mixins import ParamsMixin
 from .._internals import (
-    internal__build_thesaurus_file_path,
-    internal__load_reversed_thesaurus_as_dict,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_reversed_thesaurus_as_mapping,
     internal__load_thesaurus_as_data_frame,
 )
 
@@ -47,7 +47,7 @@ class CheckThesaurusForMisspelledTerms(
 
     # -------------------------------------------------------------------------
     def load_terms_in_thesaurus(self, file_path):
-        reversed_th_dict = internal__load_reversed_thesaurus_as_dict(file_path)
+        reversed_th_dict = internal__load_reversed_thesaurus_as_mapping(file_path)
         terms = list(reversed_th_dict.keys())
         return terms
 
@@ -68,7 +68,7 @@ class CheckThesaurusForMisspelledTerms(
 
     # -------------------------------------------------------------------------
     def sort_thesaurus_on_disk(self, misspelled_words):
-        file_path = internal__build_thesaurus_file_path(params=self.params)
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
         data_frame = internal__load_thesaurus_as_data_frame(file_path=file_path)
         data_frame["misspelled"] = 0
         for word in misspelled_words:
@@ -88,7 +88,7 @@ class CheckThesaurusForMisspelledTerms(
     def build(self):
         """:meta private:"""
 
-        file_path = internal__build_thesaurus_file_path(params=self.params)
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
         terms = self.load_terms_in_thesaurus(file_path)
         words = self.extract_and_filter_words_from_terms(terms)
         misspelled_words = self.extract_mispelled_words(words)

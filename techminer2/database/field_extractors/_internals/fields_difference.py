@@ -11,53 +11,21 @@ from typing import Dict, List, Optional, Tuple
 from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__fields_difference(
-    #
-    # FIELDS:
-    field,
-    other_field,
-    #
-    # DATABASE:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__fields_difference(params):
 
-    set_a = internal__get_field_values_from_database(
-        #
-        # FIELD:
-        field=field,
-        #
-        # DATABASE:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
-    )
+    # Build the set of terms of first field
+    set_a = internal__get_field_values_from_database(params)
     set_a = set_a.term.tolist()
     set_a = set(set_a)
 
+    # Build the set of terms of second field
     set_b = internal__get_field_values_from_database(
-        #
-        # FIELD:
-        field=other_field,
-        root_dir=root_dir,
-        #
-        # DATABASE:
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
+        params.update_params(field=params.other_field)
     )
     set_b = set_b.term.tolist()
     set_b = set(set_b)
 
+    # Get the difference between the two sets
     common_terms = set_a.difference(set_b)
     common_terms = list(sorted(common_terms))
 

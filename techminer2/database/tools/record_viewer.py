@@ -96,11 +96,7 @@ class RecordViewer(
 
     def build(self):
 
-        records = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        records = internal__load_filtered_database(params=self.params)
         mapping = self.build_record_mapping(records)
         documents = self.build_record_viewer(mapping)
         return documents

@@ -58,7 +58,7 @@ class TermsByClusterSummary(
 
         return (
             UserTermsByClusterSummary()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_field("keywords")
             .build()
         )

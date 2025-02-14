@@ -24,8 +24,8 @@ import os
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from .._internals.load_reversed_thesaurus_as_dict import (
-    internal__load_reversed_thesaurus_as_dict,
+from .._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
 )
 from .._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
@@ -53,7 +53,7 @@ def show_differences(
     user_data_frame = internal__load_thesaurus_as_data_frame(user_th_file)
 
     raw_th_file = os.path.join(root_dir, RAW_THESAURUS_FILE)
-    raw_th = internal__load_reversed_thesaurus_as_dict(raw_th_file)
+    raw_th = internal__load_reversed_thesaurus_as_mapping(raw_th_file)
 
     user_data_frame["same"] = True
 

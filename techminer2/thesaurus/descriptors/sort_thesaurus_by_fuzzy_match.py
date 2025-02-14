@@ -7,25 +7,22 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-bramcbes
 """
-Fuzzy Search 
+Sort Thesaurus by Fuzzy Match
 ===============================================================================
 
-
-## >>> from techminer2.prepare.thesaurus.descriptors import fuzzy_search
-## >>> fuzzy_search(
-## ...     #
-## ...     # SEARCH PARAMS:
-## ...     patterns='INTELIGEN',
-## ...     threshold=70,
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
-ARTIFICIAL_INTELLIGENCE
-     AI
-     ARTIFICIAL_INTELLIGENCE
-INTELLIGENT
-INTELLIGENT_ROBOTS
+>>> from techminer2.thesaurus.descriptors import SortThesaurusByFuzzyMatch
+>>> (
+...     SortThesaurusByFuzzyMatch()
+...     # 
+...     # THESAURUS:
+...     .having_keys_like("INTELIGEN")
+...     .having_match_threshold(70)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... ) 
 
 
 
@@ -37,7 +34,7 @@ import os.path
 import pandas as pd  # type: ignore
 from fuzzywuzzy import process  # type: ignore
 
-from .._internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -57,7 +54,7 @@ def fuzzy_search(
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    th_dict = internal__load_thesaurus_as_dict(th_file)
+    th_dict = internal__load_thesaurus_as_mapping(th_file)
 
     reversed_th = {value: key for key, values in th_dict.items() for value in values}
 

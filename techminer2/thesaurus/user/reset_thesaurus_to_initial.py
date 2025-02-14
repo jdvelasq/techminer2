@@ -31,8 +31,8 @@ import sys
 
 from ...internals.mixins import ParamsMixin
 from .._internals import (
-    internal__build_thesaurus_file_path,
-    internal__load_thesaurus_as_dict,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_thesaurus_as_mapping,
 )
 
 
@@ -62,8 +62,8 @@ class ResetThesaurusToInitial(
     def build(self):
         """:meta private:"""
 
-        file_path = internal__build_thesaurus_file_path(params=self.params)
-        th_dict = internal__load_thesaurus_as_dict(file_path)
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        th_dict = internal__load_thesaurus_as_mapping(file_path)
         new_th_dict = self.build_new_th_dict(th_dict)
         self.save_thesaurus(file_path, new_th_dict)
 

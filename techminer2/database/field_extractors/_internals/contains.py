@@ -11,45 +11,15 @@ from typing import Dict, List, Optional, Tuple
 from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__contains(
-    #
-    # SOURCE:
-    field: str,
-    #
-    # SEARCH:
-    term_pattern: str,
-    case_sensitive: bool,
-    regex_flags: int,
-    regex_search: bool,
-    #
-    # DATABASE:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__contains(params):
 
-    dataframe = internal__get_field_values_from_database(
-        #
-        # SOURCE:
-        field=field,
-        #
-        # DATABASE:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
-    )
+    dataframe = internal__get_field_values_from_database(params)
     dataframe = dataframe[
         dataframe.term.str.contains(
-            pat=term_pattern,
-            case=case_sensitive,
-            flags=regex_flags,
-            regex=regex_search,
+            pat=params.term_pattern,
+            case=params.case_sensitive,
+            flags=params.regex_flags,
+            regex=params.regex_search,
         )
     ]
     dataframe = dataframe.dropna()

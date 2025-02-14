@@ -13,27 +13,16 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ....thesaurus._internals.load_thesaurus_as_dict import (
-    internal__load_thesaurus_as_dict,
+from ....thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
 )
 
 
-def internal__extract_country(
-    source_field,
-    dest_field,
-    #
-    # DATABASE PARAMS:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__extract_country(params):
     #
     # Loads the thesaurus
     thesaurus_path = os.path.join(root_dir, "thesauri/countries.the.txt")
-    thesaurus = internal__load_thesaurus_as_dict(thesaurus_path)
+    thesaurus = internal__load_thesaurus_as_mapping(thesaurus_path)
     names = list(thesaurus.keys())
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.zip")))

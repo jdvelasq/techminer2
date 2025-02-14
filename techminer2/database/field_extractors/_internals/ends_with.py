@@ -11,37 +11,10 @@ from typing import Dict, List, Optional, Tuple
 from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__ends_with(
-    #
-    # FIELD:
-    field: str,
-    #
-    # SEARCH:
-    term_pattern: str,
-    #
-    # DATABASE PARAMS:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__ends_with(params):
 
-    dataframe = internal__get_field_values_from_database(
-        #
-        # FIELD:
-        field=field,
-        #
-        # DATABASE:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
-    )
-    dataframe = dataframe[dataframe.term.str.endswith(term_pattern)]
+    dataframe = internal__get_field_values_from_database(params)
+    dataframe = dataframe[dataframe.term.str.endswith(params.term_pattern)]
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()

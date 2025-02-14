@@ -52,7 +52,7 @@ class NodeDegreeDataFrame(
     def build(self):
         return (
             OtherNodeDegreeDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .unit_of_analysis("source_title")
             .build()
         )

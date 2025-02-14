@@ -46,21 +46,4 @@ class MatchExtractor(
 
     def build(self):
 
-        return internal__match(
-            #
-            # FIELD:
-            field=self.params.field,
-            #
-            # SEARCH:
-            case_sensitive=self.params.case_sensitive,
-            term_pattern=self.params.pattern,
-            regex_flags=self.params.regex_flags,
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_dir,
-            database=self.params.database,
-            record_years_range=self.params.record_years_range,
-            record_citations_range=self.params.record_citations_range,
-            records_order_by=None,
-            records_match=self.params.records_match,
-        )
+        return internal__match(self.params)

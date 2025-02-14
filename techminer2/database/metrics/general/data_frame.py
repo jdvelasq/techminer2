@@ -126,11 +126,7 @@ class DataFrame(
 
     def build(self):
 
-        data_frame = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        data_frame = internal__load_filtered_database(params=self.params)
 
         stats = Stats()
 

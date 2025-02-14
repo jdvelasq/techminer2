@@ -65,7 +65,7 @@ class MatrixDataFrame(
     def build(self):
 
         data_matrix = (
-            CoOccurrenceMatrixDataFrame().update_params(**self.params.__dict__).build()
+            CoOccurrenceMatrixDataFrame().update(**self.params.__dict__).build()
         )
 
         corr_matrix = internal__compute_corr_matrix(

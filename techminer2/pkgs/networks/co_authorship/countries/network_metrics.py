@@ -58,7 +58,7 @@ class NetworkMetrics(
 
         return (
             UserNetworkMetrics()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_field("countries")
             .build()
         )

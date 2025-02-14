@@ -67,7 +67,7 @@ class SankeyPlot(
 
             matrix = (
                 MatrixDataFrame()
-                .update_params(**self.params.__dict__)
+                .update(**self.params.__dict__)
                 #
                 # COLUMNS:
                 .with_field(

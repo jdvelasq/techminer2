@@ -58,19 +58,4 @@ class StemmingOrExtractor(
 
     def build(self):
 
-        return internal__stemming_or(
-            #
-            # FIELD:
-            field=self.params.field,
-            #
-            # SEARCH:
-            term_pattern=self.params.pattern,
-            #
-            # DATABASE:
-            root_dir=self.params.root_dir,
-            database=self.params.database,
-            record_years_range=self.params.record_years_range,
-            record_citations_range=self.params.record_citations_range,
-            records_order_by=None,
-            records_match=self.params.records_match,
-        )
+        return internal__stemming_or(self.params)

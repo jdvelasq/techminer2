@@ -63,7 +63,7 @@ class NodeDegreePlot(
     def build(self):
         return (
             OtherNodeDegreePlot()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .unit_of_analysis("source_title")
             .build()
         )

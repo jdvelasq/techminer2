@@ -113,7 +113,7 @@ class DataFrame(
     def _step_01_compute_co_occurence_matrix(self):
         return (
             MatrixDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .using_term_counters(True)
             .build()
         )

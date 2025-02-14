@@ -44,7 +44,7 @@ class NetworkMetrics(
     def build(self):
         return (
             InternalNetworkMetrics()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .unit_of_analysis("organizations")
             .build()
         )

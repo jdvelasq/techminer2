@@ -119,7 +119,7 @@ class ClustersToTermsMapping(
     def build(self):
 
         contingency_table = (
-            TermOccurrenceByCluster().update_params(**self.params.__dict__).build()
+            TermOccurrenceByCluster().update(**self.params.__dict__).build()
         )
 
         themes = contingency_table.idxmax(axis=1)

@@ -32,8 +32,8 @@ import sys
 from ...database.internals.io import internal__load_filtered_database
 from ...internals.mixins import ParamsMixin
 from .._internals import (
-    internal__build_thesaurus_file_path,
-    internal__load_reversed_thesaurus_as_dict,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_reversed_thesaurus_as_mapping,
 )
 
 
@@ -44,18 +44,14 @@ class CheckThesaurusIntegrity(
 
     # -------------------------------------------------------------------------
     def load_terms_in_thesaurus(self):
-        file_path = internal__build_thesaurus_file_path(params=self.params)
-        reversed_th_dict = internal__load_reversed_thesaurus_as_dict(file_path)
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        reversed_th_dict = internal__load_reversed_thesaurus_as_mapping(file_path)
         terms = list(reversed_th_dict.keys())
         return terms
 
     # -------------------------------------------------------------------------
     def load_terms_in_database(self):
-        records = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        records = internal__load_filtered_database(params=self.params)
         field = self.params.field
         terms = records[field].dropna()
         terms = terms.str.split("; ").explode().str.strip().drop_duplicates().tolist()

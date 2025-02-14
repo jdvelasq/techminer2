@@ -55,7 +55,7 @@ class BarPlot(
 
     def build(self):
 
-        data_frame = DataFrame().update_params(**self.params.__dict__).build()
+        data_frame = DataFrame().update(**self.params.__dict__).build()
 
         if self.params.title_text is None:
             self.using_title_text("Bar Plot")

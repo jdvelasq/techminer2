@@ -81,9 +81,7 @@ class NetworkPlot(
 
         #
         # Creates a table with citing and cited articles
-        data_frame = (
-            NetworkEdgesDataFrame().update_params(**self.params.__dict__).build()
-        )
+        data_frame = NetworkEdgesDataFrame().update(**self.params.__dict__).build()
 
         #
         # Create the networkx graph

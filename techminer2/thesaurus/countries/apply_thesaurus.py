@@ -31,10 +31,25 @@ import sys
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
-from .._internals.load_reversed_thesaurus_as_dict import (
-    internal__load_reversed_thesaurus_as_dict,
+from ...internals.mixins import ParamsMixin
+from .._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
 )
-from .._internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
+
+
+#
+#
+#
+class ApplyThesaurus(
+    ParamsMixin,
+):
+    """:meta private:"""
+
+
+#
+#
+#
 
 
 def apply_thesaurus(
@@ -47,7 +62,7 @@ def apply_thesaurus(
     def apply_countries_thesaurus():
 
         thesaurus_file = os.path.join(root_dir, "thesauri/countries.the.txt")
-        thesaurus = internal__load_reversed_thesaurus_as_dict(thesaurus_file)
+        thesaurus = internal__load_reversed_thesaurus_as_mapping(thesaurus_file)
 
         # apply countries thesaurus
         dataframe = pd.read_csv(
@@ -95,7 +110,7 @@ def apply_thesaurus(
             "techminer2", "package_data/thesaurus/geography/country-to-region.the.txt"
         )
 
-        thesaurus = internal__load_thesaurus_as_dict(thesaurus_file)
+        thesaurus = internal__load_thesaurus_as_mapping(thesaurus_file)
         thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
         # apply countries thesaurus
@@ -139,7 +154,7 @@ def apply_thesaurus(
             "techminer2",
             "package_data/thesaurus/geography/country-to-subregion.the.txt",
         )
-        thesaurus = internal__load_thesaurus_as_dict(thesaurus_file)
+        thesaurus = internal__load_thesaurus_as_mapping(thesaurus_file)
         thesaurus = {k: v[0] for k, v in thesaurus.items()}
 
         dataframe = pd.read_csv(

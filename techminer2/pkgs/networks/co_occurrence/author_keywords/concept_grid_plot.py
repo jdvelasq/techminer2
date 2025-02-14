@@ -59,7 +59,7 @@ class ConceptGridPlot(
 
         return (
             UserConceptGridPlot()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_field("author_keywords")
             .build()
         )

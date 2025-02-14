@@ -57,8 +57,5 @@ class Treemap(
         """:meta private:"""
 
         return (
-            UserTreemap()
-            .update_params(**self.params.__dict__)
-            .with_field("keywords")
-            .build()
+            UserTreemap().update(**self.params.__dict__).with_field("keywords").build()
         )

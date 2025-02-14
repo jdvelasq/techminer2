@@ -36,10 +36,10 @@ import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from .._internals.load_reversed_thesaurus_as_dict import (
-    internal__load_reversed_thesaurus_as_dict,
+from .._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
 )
-from .._internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 from ._clean_thesaurus import (
     _apply_porter_stemmer,
     _compute_terms_by_key,
@@ -77,7 +77,7 @@ def _create_data_frame_from_thesaurus(th_file):
 def _load_abbreviations_th_as_dict(abbreviations_file):
     if not os.path.isfile(abbreviations_file):
         raise FileNotFoundError(f"The file {abbreviations_file} does not exist.")
-    abbreviations_dict = internal__load_thesaurus_as_dict(abbreviations_file)
+    abbreviations_dict = internal__load_thesaurus_as_mapping(abbreviations_file)
     return abbreviations_dict
 
 
@@ -376,7 +376,7 @@ def _apply_default_thesaurus_files(data_frame):
     for file_path in glob.glob(file_paths):
         if not os.path.isfile(file_path):
             raise FileNotFoundError(f"The file {file_path} does not exist.")
-        th_dict = internal__load_reversed_thesaurus_as_dict(file_path)
+        th_dict = internal__load_reversed_thesaurus_as_mapping(file_path)
         data_frame["key"] = data_frame["key"].apply(lambda x: th_dict.get(x, x))
 
     return data_frame

@@ -163,6 +163,7 @@ def internal__load_filtered_database(params):
         #          - first_author_z_to_a
         #          - source_title_a_to_z
         #          - source_title_z_to_a
+        #
 
         sort_by = params.records_order_by
 

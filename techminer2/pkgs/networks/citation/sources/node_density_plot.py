@@ -63,7 +63,7 @@ class NodeDensityPlot(
     def build(self):
         return (
             OtherNodeDensityPlot()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .unit_of_analysis("source_title")
             .build()
         )

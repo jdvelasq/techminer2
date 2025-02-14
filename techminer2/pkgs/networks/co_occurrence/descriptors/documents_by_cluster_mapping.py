@@ -86,7 +86,7 @@ class DocumentsByClusterMapping(
 
         return (
             UserDocumentsByClusterMapping()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_field("descriptors")
             .build()
         )

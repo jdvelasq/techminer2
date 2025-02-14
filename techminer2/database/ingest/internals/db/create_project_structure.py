@@ -8,7 +8,7 @@ PROJECT_DIRECTORIES = [
     "databases",
     "my_keywords",
     "reports",
-    "thesauri",
+    "thesaurus",
 ]
 
 
@@ -37,7 +37,7 @@ def internal__create_project_structure(root_dir):
         +-- my_keywords/
         +-- my_keywords/stopwords.txt
         +-- reports/
-        +-- thesauri/
+        +-- thesaurus/
 
     """
 

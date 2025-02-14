@@ -129,7 +129,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_3_filter_terms(self, data_frame):
         terms_in = PerformanceMetricsDataFrame()
-        terms_in = terms_in.update_params(**self.params.__dict__)
+        terms_in = terms_in.update(**self.params.__dict__)
         terms_in = terms_in.build()
         terms_in = terms_in.index
         data_frame = data_frame[data_frame.index.isin(terms_in)]

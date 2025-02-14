@@ -57,7 +57,7 @@ class BarPlot(
     """:meta private:"""
 
     def get_collaboration_metrics(self):
-        return DataFrame().update_params(**self.params.__dict__).build()
+        return DataFrame().update(**self.params.__dict__).build()
 
     def build_collaboration_bar_plot(self, metrics):
 

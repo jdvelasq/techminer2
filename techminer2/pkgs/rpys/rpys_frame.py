@@ -42,11 +42,7 @@ class RPYSDataFrame(
     def build(self):
         """:meta private:"""
 
-        references = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        references = internal__load_filtered_database(params=self.params)
 
         references = references[["year"]]
         references = references.dropna()

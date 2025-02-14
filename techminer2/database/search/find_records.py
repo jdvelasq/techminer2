@@ -74,11 +74,7 @@ class FindRecords(
 
     # -------------------------------------------------------------------------
     def _step_01_load_the_database(self):
-        return (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        return internal__load_filtered_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_02_filter_the_records(self, records):

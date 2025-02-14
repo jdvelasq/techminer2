@@ -7,36 +7,39 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort Thesaurus
+Sort Thesaurus by Key
 ===============================================================================
 
 
-## >>> from techminer2.prepare.thesaurus.countries import sort_thesaurus
-## >>> sort_thesaurus(
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
---INFO-- The file example/thesauri/countries.the.txt has been sorted.
+>>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
+>>> from techminer2.thesaurus.countries import SortThesaurusByKey
+>>> (
+...     SortThesaurusByKey()
+...     # 
+...     # THESAURUS:
+...     .having_keys_ordered_by("alphabetical")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+--INFO-- The thesaurus file 'examples/thesaurus/countries.the.txt' has been ordered alphabetically.
 
 """
-# from ..user.sort_thesaurus_by_key import thesaurus__sort_on_disk as _sort_thesaurus
+from ...internals.mixins import ParamsMixin
+from ..user.sort_thesaurus_by_key import SortThesaurusByKey as SortUserThesaurusByKey
 
-THESAURUS_FILE = "thesauri/countries.the.txt"
 
-
-def sort_thesaurus(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class SortThesaurusByKey(
+    ParamsMixin,
 ):
     """:meta private:"""
 
-    _sort_thesaurus(
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        #
-        # FILE PARAMS:
-        thesaurus_file=THESAURUS_FILE,
-    )
+    def build(self):
+        return (
+            SortUserThesaurusByKey()
+            .update(**self.params.__dict__)
+            .with_thesaurus_file("countries.the.txt")
+            .build()
+        )

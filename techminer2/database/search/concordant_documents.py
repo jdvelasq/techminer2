@@ -58,6 +58,6 @@ class ConcordantDocuments(
 
     def build(self):
 
-        mapping = ConcordantMapping().update_params(**self.params.__dict__).build()
+        mapping = ConcordantMapping().update(**self.params.__dict__).build()
         documents = self.build_record_viewer(mapping)
         return documents

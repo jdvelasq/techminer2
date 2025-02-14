@@ -7,7 +7,7 @@ This module implement generic thesaurus functions.
 import os.path
 
 
-def internal__load_reversed_thesaurus_as_dict(file_path):
+def internal__load_reversed_thesaurus_as_mapping(file_path):
     """Load existence thesaurus as a dataframe."""
 
     value_phrases = []
@@ -26,6 +26,6 @@ def internal__load_reversed_thesaurus_as_dict(file_path):
                 value_phrases.append(value_phrase)
                 key_phrases.append(key_phrase)
 
-    reversed_dict = dict(zip(value_phrases, key_phrases))
+    mapping = dict(zip(value_phrases, key_phrases))
 
-    return reversed_dict
+    return mapping

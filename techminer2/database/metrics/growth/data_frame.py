@@ -96,14 +96,12 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_1_compute_performance_metrics(self):
-        return (
-            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
-        )
+        return PerformanceMetricsDataFrame().update(**self.params.__dict__).build()
 
     # ----------------------------------------------------------------------------------------------------
     def _step_2_compute_terms_by_year(self):
         df = TermsByYearDataFrame()
-        df = df.update_params(**self.params.__dict__)
+        df = df.update(**self.params.__dict__)
         df = df.using_term_counters(False)
         df = df.build()
         return df

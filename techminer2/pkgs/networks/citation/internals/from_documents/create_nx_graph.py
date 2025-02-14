@@ -14,7 +14,7 @@ from ......database.internals.io import internal__load_filtered_database
 
 # -------------------------------------------------------------------------
 def _step_01_load_records(params):
-    return internal__load_filtered_database().update_params(**params.__dict__).build()
+    return internal__load_filtered_database(params=params)
 
 
 # -------------------------------------------------------------------------

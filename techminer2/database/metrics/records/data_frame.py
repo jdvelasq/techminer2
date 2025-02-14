@@ -49,11 +49,7 @@ class DataFrame(
 
     def build(self):
 
-        data_frame = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        data_frame = internal__load_filtered_database(params=self.params)
         data_frame = data_frame.assign(_order_=range(1, len(data_frame) + 1))
         data_frame = data_frame.reset_index(drop=True)
 

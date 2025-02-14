@@ -10,7 +10,7 @@
 import pathlib
 
 
-def internal__build_thesaurus_file_path(params):
+def internal__generate_user_thesaurus_file_path(params):
     """:meta private:"""
 
     return pathlib.Path(params.root_dir) / "thesaurus" / params.thesaurus_file

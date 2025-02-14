@@ -44,8 +44,8 @@ from textblob import TextBlob  # type: ignore
 from ..internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from ..thesaurus._internals.load_thesaurus_as_dict import (
-    internal__load_thesaurus_as_dict,
+from ..thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
 )
 
 
@@ -100,7 +100,7 @@ def __load_word_groups(root_dir):
     #
     # Returns a list of lists with the raw words in each group
     thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
-    thesaurus = internal__load_thesaurus_as_dict(thesaurus_file)
+    thesaurus = internal__load_thesaurus_as_mapping(thesaurus_file)
     return list(thesaurus.values())
 
 

@@ -33,7 +33,7 @@ from textblob import TextBlob, Word  # type: ignore
 from ...internals.mixins import ParamsMixin
 from ...package_data.database import internal__load_technical_stopwords
 from .._internals import (
-    internal__build_thesaurus_file_path,
+    internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
 )
 
@@ -96,7 +96,7 @@ class CleanupThesaurus(
     def build(self):
         """:meta private:"""
 
-        file_path = internal__build_thesaurus_file_path(params=self.params)
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
         data_frame = internal__load_thesaurus_as_data_frame(file_path=file_path)
         data_frame = self.create_new_key_column(data_frame)
         data_frame = self.remove_technical_stopwords(data_frame)

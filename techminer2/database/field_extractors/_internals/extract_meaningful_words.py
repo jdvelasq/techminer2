@@ -18,18 +18,7 @@ from tqdm import tqdm  # type: ignore
 from ....internals import load_package_stopwords
 
 
-def internal__extract_meaningful_words(
-    source_field,
-    dest_field,
-    #
-    # DATABASE PARAMS:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__extract_meaningful_words(params):
     # Register tqdm pandas progress bar
     tqdm.pandas()
 

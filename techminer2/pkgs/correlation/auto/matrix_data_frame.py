@@ -64,7 +64,7 @@ class MatrixDataFrame(
     def build(self):
 
         tfidf = TfIdfDataFrame()
-        tfidf = tfidf.update_params(**self.params.__dict__)
+        tfidf = tfidf.update(**self.params.__dict__)
         # tfidf = tfidf.using_term_counters(False)
         data_matrix = tfidf.build()
 

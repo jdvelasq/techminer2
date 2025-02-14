@@ -7,54 +7,46 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Find String 
+Sort Thesaurus by Match
 ===============================================================================
 
 Finds a string in the terms of a thesaurus.
 
 
-## >>> from techminer2.prepare.thesaurus.references import find_string
-## >>> find_string(
-## ...     #
-## ...     # SEARCH PARAMS:
-## ...     contains='ARTIFICIAL_INTELLIGENCE',
-## ...     startswith=None,
-## ...     endswith=None,
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
+>>> from techminer2.thesaurus.references import SortThesaurusByMatch
+>>> (
+...     SortThesaurusByMatch()
+...     # 
+...     # THESAURUS:
+...     .having_keys_like("univ")
+...     .having_keys_starting_with(None)
+...     .having_keys_ending_with(None)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... ) 
+--INFO-- The thesaurus file 'example/thesaurus/references.the.txt' has been rerodered.
 
 
 
 """
-# from ..user.sort_thesaurus_by_match import thesaurus__sort_by_match
+from ...internals.mixins import ParamsMixin
+from ..user.sort_thesaurus_by_match import (
+    SortThesaurusByMatch as SortUserThesaurusByMatch,
+)
 
-THESAURUS_FILE = "thesauri/references.the.txt"
 
-
-def sort_thesaurus_by_match(
-    #
-    # SEARCH PARAMS:
-    contains=None,
-    startswith=None,
-    endswith=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class SortThesaurusByMatch(
+    ParamsMixin,
 ):
     """:meta private:"""
 
-    return thesaurus__sort_by_match(
-        #
-        # THESAURUS FILE:
-        thesaurus_file=THESAURUS_FILE,
-        #
-        # SEARCH PARAMS:
-        contains=contains,
-        startswith=startswith,
-        endswith=endswith,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+    def build(self):
+        return (
+            SortUserThesaurusByMatch()
+            .update(**self.params.__dict__)
+            .with_thesaurus_file("references.the.txt")
+            .build()
+        )

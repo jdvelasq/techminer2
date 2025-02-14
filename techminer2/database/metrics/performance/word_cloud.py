@@ -56,7 +56,7 @@ class WordCloud(
 
     def build(self):
 
-        data_frame = DataFrame().update_params(**self.params.__dict__).build()
+        data_frame = DataFrame().update(**self.params.__dict__).build()
         fig = internal__word_cloud(params=self.params, data_frame=data_frame)
 
         return fig

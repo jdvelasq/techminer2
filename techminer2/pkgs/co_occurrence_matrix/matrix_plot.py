@@ -150,7 +150,7 @@ class MatrixPlot(
 
     # -------------------------------------------------------------------------
     def _step_01_create_co_occurrence_matrix(self):
-        return MatrixDataFrame().update_params(**self.params.__dict__).build()
+        return MatrixDataFrame().update(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
     def _step_02_create_a_empty_networkx_graph(self):

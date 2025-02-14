@@ -74,7 +74,7 @@ class TermsByClusterSummary(
 
     def build(self):
 
-        mapping = ClustersToTermsMapping().update_params(**self.params.__dict__).build()
+        mapping = ClustersToTermsMapping().update(**self.params.__dict__).build()
         clusters = sorted(mapping.keys())
         n_terms = [len(mapping[label]) for label in clusters]
         terms = ["; ".join(mapping[label]) for label in clusters]

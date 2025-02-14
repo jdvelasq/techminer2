@@ -34,9 +34,7 @@ def __add_weighted_edges_from(
 ):
     unit_of_analysis = params.unit_of_analysis
 
-    records = (
-        internal__load_filtered_database().update_params(**params.__dict__).build()
-    )
+    records = internal__load_filtered_database(params)
 
     #
     # data_frame contains the citing and cited articles.
@@ -70,7 +68,7 @@ def __add_weighted_edges_from(
     # Compute citations and occurrences
     metrics = (
         PerformanceMetricsDataFrame()
-        .update_params(**params.__dict__)
+        .update(**params.__dict__)
         .with_field(params.unit_of_analysis)
         .build()
     )

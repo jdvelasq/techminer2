@@ -55,19 +55,4 @@ class StartsWithExtractor(
 
     def build(self):
 
-        return internal__starts_with(
-            #
-            # FIELD:
-            field=self.params.field,
-            #
-            # SEARCH:
-            term_pattern=self.params.pattern,
-            #
-            # DATABASE:
-            root_dir=self.params.root_dir,
-            database=self.params.database,
-            record_years_range=self.params.record_years_range,
-            record_citations_range=self.params.record_citations_range,
-            records_order_by=self.params.records_order_by,
-            records_match=self.params.records_match,
-        )
+        return internal__starts_with(self.params)

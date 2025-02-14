@@ -51,17 +51,4 @@ class FieldsIntersectionExtractor(
 
     def build(self):
 
-        return internal__fields_intersection(
-            #
-            # FIELDS:
-            field=self.params.field,
-            other_field=self.params.field,
-            #
-            # DATABASE:
-            root_dir=self.params.root_dir,
-            database=self.params.database,
-            record_years_range=self.params.record_years_range,
-            record_citations_range=self.params.record_citations_range,
-            records_order_by=None,
-            records_match=self.params.records_match,
-        )
+        return internal__fields_intersection(self.params)

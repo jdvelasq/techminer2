@@ -78,7 +78,7 @@ class ClusterToTermsMapping(
         """:meta private:"""
 
         theme_term_matrix = (
-            ComponentsByTermDataFrame().update_params(**self.params.__dict__).build()
+            ComponentsByTermDataFrame().update(**self.params.__dict__).build()
         )
 
         mapping = {}

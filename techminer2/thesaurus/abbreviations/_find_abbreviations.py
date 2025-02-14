@@ -27,7 +27,7 @@ from tqdm import tqdm  # type: ignore
 from .._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
 )
-from .._internals.load_thesaurus_as_dict import internal__load_thesaurus_as_dict
+from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
 THESAURUS_FILE = "thesauri/descriptors.the.txt"
 
@@ -159,7 +159,7 @@ def find_abbreviations(
     #
     # Reorder thesaurus
     keys_with_abbr = frame.key.drop_duplicates().to_list()
-    thesaurus = internal__load_thesaurus_as_dict(file_path)
+    thesaurus = internal__load_thesaurus_as_mapping(file_path)
 
     with open(file_path, "w", encoding="utf-8") as file:
         for key in keys_with_abbr:

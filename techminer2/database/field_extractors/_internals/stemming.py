@@ -13,169 +13,77 @@ from textblob import TextBlob  # type: ignore
 from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__stemming_and(
-    #
-    # FIELD:
-    field,
-    #
-    # SEARCH:
-    term_pattern,
-    #
-    # DATABASE PARAMS:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__stemming_and(params):
     """:meta private:"""
 
-    return stemming(
-        #
-        # FIELD:
-        field=field,
-        #
-        # SEARCH:
-        term_pattern=term_pattern,
-        #
-        # STEMMING FUNCTION:
-        stemming_fn=apply_stemming_and_operator,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
-    )
+    return stemming(params.update_params(steming_fn=apply_stemming_and_operator))
 
 
-def internal__stemming_or(
-    #
-    # FIELD:
-    field,
-    #
-    # SEARCH:
-    term_pattern,
-    #
-    # DATABASES:
-    root_dir,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def internal__stemming_or(params):
     """:meta private:"""
 
-    return stemming(
-        #
-        # FIELD:
-        field=field,
-        #
-        # SEARCH:
-        term_pattern=term_pattern,
-        #
-        # STEMMING FUNCTION:
-        stemming_fn=apply_stemming_or_operator,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
-    )
+    return stemming(params.update_params(steming_fn=apply_stemming_or_operator))
 
 
-def stemming(
-    #
-    # FIELD:
-    field,
-    #
-    # SEARCH:
-    term_pattern,
-    #
-    # STEMMING FUNCTION:
-    stemming_fn,
-    #
-    # DATABASE:
-    root_dir: str,
-    database: str,
-    record_years_range: Tuple[Optional[int], Optional[int]],
-    record_citations_range: Tuple[Optional[int], Optional[int]],
-    records_order_by: Optional[str],
-    records_match: Optional[Dict[str, List[str]]],
-):
+def stemming(params):
     """:meta private:"""
 
-    stemmed_terms = get_stemmed_items(term_pattern)
-    df = internal__get_field_values_from_database(
-        field=field,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        record_years_range=record_years_range,
-        record_citations_range=record_citations_range,
-        records_order_by=records_order_by,
-        records_match=records_match,
-    )
-    df = create_keys_column(df)
+    stemmed_terms = get_stemmed_items(params.term_pattern)
+    data_frame = internal__get_field_values_from_database(params)
+    data_frame = create_keys_column(data_frame)
 
     #
     # Checks if all stemmed words are in the list of stemmed words
-    df = stemming_fn(df, stemmed_terms)
-    df = df[df.selected]
-    df = df.sort_values("term", ascending=True)
-    terms = df.term.to_list()
+    data_frame = params.stemming_fn(data_frame, stemmed_terms)
+    data_frame = data_frame[data_frame.selected]
+    data_frame = data_frame.sort_values("term", ascending=True)
+    terms = data_frame.term.to_list()
     return terms
 
 
 def apply_stemming_and_operator(
-    df,
+    data_frame,
     stemmed_terms,
 ):
     """Checks if all stemmed terms are in the list of stemmed words."""
 
-    df["selected"] = df["keys"].map(
+    data_frame["selected"] = data_frame["keys"].map(
         lambda words: any(
             all(stemmed_word in words for stemmed_word in stemmed_term)
             for stemmed_term in stemmed_terms
         )
     )
 
-    return df
+    return data_frame
 
 
 def apply_stemming_or_operator(
-    df,
+    data_frame,
     stemmed_terms,
 ):
     """Checks if all stemmed terms are in the list of stemmed words."""
 
-    df["selected"] = df["keys"].map(
+    data_frame["selected"] = data_frame["keys"].map(
         lambda words: any(
             any(stemmed_word in words for stemmed_word in stemmed_term)
             for stemmed_term in stemmed_terms
         )
     )
 
-    return df
+    return data_frame
 
 
-def create_keys_column(df):
+def create_keys_column(data_frame):
     """Createa column with stemmed terms."""
 
-    df["keys"] = df["term"].copy()
-    df["keys"] = df["keys"].str.replace("_", " ")
-    df["keys"] = df["keys"].map(TextBlob)
-    df["keys"] = df["keys"].map(lambda x: [word.stem() for word in x.words])
+    data_frame["keys"] = data_frame["term"].copy()
+    data_frame["keys"] = data_frame["keys"].str.replace("_", " ")
+    data_frame["keys"] = data_frame["keys"].map(TextBlob)
+    data_frame["keys"] = data_frame["keys"].map(
+        lambda x: [word.stem() for word in x.words]
+    )
 
-    return df
+    return data_frame
 
 
 def get_stemmed_items(items):

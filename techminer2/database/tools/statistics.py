@@ -47,12 +47,7 @@ class Statistics(
 
         field = self.params.field
 
-        records = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
-
+        records = internal__load_filtered_database(params=self.params)
         records = records.dropna(subset=[field])
         records[field] = records[field].str.split("; ")
         records = records.explode(field)

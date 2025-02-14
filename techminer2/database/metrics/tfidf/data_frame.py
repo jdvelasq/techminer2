@@ -69,11 +69,7 @@ class DataFrame(
     """:meta private:"""
 
     def _step_1_load_the_database(self):
-        return (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        return internal__load_filtered_database(params=self.params)
 
     def step_2_explode_data_frame(self, data_frame):
 
@@ -140,7 +136,7 @@ class DataFrame(
 
     def step_5_filter_terms_in_df_matrix(self, matrix):
         performance_metrics = (
-            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
+            PerformanceMetricsDataFrame().update(**self.params.__dict__).build()
         )
         selected_terms = performance_metrics.index.tolist()
         matrix = matrix[selected_terms]

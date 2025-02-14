@@ -64,7 +64,7 @@ class DataFrame(
     def _step_1_compute_term_occurrences_by_year(self):
         return (
             TermsByYearDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_cumulative_sum(False)
             .build()
         )
@@ -92,7 +92,7 @@ class DataFrame(
         baseline_periods = self.params.baseline_periods
         return (
             TrendMetricsDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .build()
             .OCC[:baseline_periods]
             .sum()
@@ -137,7 +137,7 @@ class DataFrame(
 
         cum_occurrences_by_year = (
             TermsByYearDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_cumulative_sum(True)
             .build()
         )
@@ -164,7 +164,7 @@ class DataFrame(
 
         global_growth_rate = (
             GeneralMetricsDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .build()
             .loc[("GENERAL", "Annual growth rate %"), "Value"]
         )

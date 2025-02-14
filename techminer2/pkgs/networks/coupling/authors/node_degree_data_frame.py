@@ -51,7 +51,7 @@ class NodeDegreeDataFrame(
     def build(self):
         return (
             InternalNodeDegreeDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .unit_of_analysis("authors")
             .build()
         )

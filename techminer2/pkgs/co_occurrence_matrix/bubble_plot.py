@@ -65,7 +65,7 @@ class BubblePlot(
 
     def build(self):
 
-        data_frame = DataFrame().update_params(**self.params.__dict__).build()
+        data_frame = DataFrame().update(**self.params.__dict__).build()
 
         fig = internal__bubble_plot(
             self.params,

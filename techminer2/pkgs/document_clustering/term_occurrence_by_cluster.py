@@ -87,7 +87,7 @@ class TermOccurrenceByCluster(
 
     def build(self):
 
-        tf_matrix = TfIdfDataFrame().update_params(**self.params.__dict__).build()
+        tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).build()
         self.params.clustering_algorithm_or_dict.fit(tf_matrix)
         tf_matrix["cluster"] = list(self.params.clustering_algorithm_or_dict.labels_)
         data_frame = tf_matrix.groupby("cluster").sum()

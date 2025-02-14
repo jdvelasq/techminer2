@@ -85,7 +85,7 @@ class ComponentsByTermDataFrame(
     def build(self):
         """:meta private:"""
 
-        tf_matrix = TfIdfDataFrame().update_params(**self.params.__dict__).build()
+        tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).build()
 
         self.params.decomposition_algorithm.fit(tf_matrix)
 

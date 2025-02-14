@@ -122,9 +122,7 @@ class ThemeToDocumentsMapping(
     def build(self):
         """:meta private:"""
 
-        frame = (
-            DocumentsByThemeDataFrame().update_params(**self.params.__dict__).build()
-        )
+        frame = DocumentsByThemeDataFrame().update(**self.params.__dict__).build()
 
         assigned_topics_to_documents = frame.idxmax(axis=1)
 

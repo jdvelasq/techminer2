@@ -63,8 +63,8 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 # from ..database.load.load__database import load__filtered_database
-from ..thesaurus._internals.load_reversed_thesaurus_as_dict import (
-    internal__load_reversed_thesaurus_as_dict,
+from ..thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
 )
 
 TEXTWRAP_WIDTH = 73
@@ -158,7 +158,7 @@ def load_thesaurus(root_dir):
     th_file = os.path.join(root_dir, THESAURUS_FILE)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    thesaurus = internal__load_reversed_thesaurus_as_dict(th_file)
+    thesaurus = internal__load_reversed_thesaurus_as_mapping(th_file)
     return thesaurus
 
 

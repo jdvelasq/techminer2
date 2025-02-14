@@ -147,11 +147,7 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        return internal__load_filtered_database(params=self.params)
 
     def _step_2_get_years_range(self, data_frame):
         return data_frame.year.min(), data_frame.year.max()
@@ -232,10 +228,7 @@ class DataFrame(
     # ----------------------------------------------------------------------------------------------------
     def _step_6_filter_terms(self, terms_by_year):
         terms_in = (
-            PerformanceMetricsDataFrame()
-            .update_params(**self.params.__dict__)
-            .build()
-            .index
+            PerformanceMetricsDataFrame().update(**self.params.__dict__).build().index
         )
         terms_by_year = terms_by_year[terms_by_year.index.isin(terms_in)]
         return terms_by_year

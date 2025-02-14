@@ -55,11 +55,7 @@ class ConcordantContexts(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        return internal__load_filtered_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_2_extract_context_phrases(self, records):

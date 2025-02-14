@@ -85,7 +85,7 @@ class DocumentsByClusterMapping(
 
         c2t_mapping = (
             ClustersToTermsMapping()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .using_term_counters(False)
             .build()
         )
@@ -105,7 +105,7 @@ class DocumentsByClusterMapping(
 
             mapping[key] = (
                 RecordViewer()
-                .update_params(**self.params.__dict__)
+                .update(**self.params.__dict__)
                 .where_records_match(records_match)
                 .build()
             )

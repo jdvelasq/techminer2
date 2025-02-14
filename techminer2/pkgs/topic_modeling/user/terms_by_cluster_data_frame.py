@@ -80,7 +80,7 @@ class TermsByClusterDataFrame(
     def build(self):
         """:meta private:"""
 
-        mapping = ClusterToTermsMapping().update_params(**self.params.__dict__).build()
+        mapping = ClusterToTermsMapping().update(**self.params.__dict__).build()
 
         frame = pd.DataFrame.from_dict(mapping, orient="index").T
         frame = frame.fillna("")

@@ -246,15 +246,13 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_02_compute_column_peformance_metrics(self):
-        return (
-            PerformanceMetricsDataFrame().update_params(**self.params.__dict__).build()
-        )
+        return PerformanceMetricsDataFrame().update(**self.params.__dict__).build()
 
     # -------------------------------------------------------------------------
     def _step_03_compute_row_peformance_metrics(self):
         metrics = (
             PerformanceMetricsDataFrame()
-            .update_params(**self.params.__dict__)
+            .update(**self.params.__dict__)
             .with_field(self.params.other_field)
             .having_terms_in_top(self.params.other_top_n)
             .having_terms_ordered_by(self.params.other_terms_order_by)
@@ -273,11 +271,7 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_04_load_the_database(self):
-        return (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        return internal__load_filtered_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_05_create_raw_matrix_list(self, records):
