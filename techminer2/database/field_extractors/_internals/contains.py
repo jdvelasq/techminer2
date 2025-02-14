@@ -8,12 +8,10 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from .internal__get_field_values_from_database import (
-    internal__get_field_values_from_database,
-)
+from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__full_match(
+def internal__contains(
     #
     # SOURCE:
     field: str,
@@ -22,6 +20,7 @@ def internal__full_match(
     term_pattern: str,
     case_sensitive: bool,
     regex_flags: int,
+    regex_search: bool,
     #
     # DATABASE:
     root_dir: str,
@@ -33,9 +32,11 @@ def internal__full_match(
 ):
 
     dataframe = internal__get_field_values_from_database(
+        #
+        # SOURCE:
         field=field,
         #
-        # DATABASE PARAMS:
+        # DATABASE:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,
@@ -43,15 +44,14 @@ def internal__full_match(
         records_order_by=records_order_by,
         records_match=records_match,
     )
-
     dataframe = dataframe[
-        dataframe.term.str.fullmatch(
+        dataframe.term.str.contains(
             pat=term_pattern,
             case=case_sensitive,
             flags=regex_flags,
+            regex=regex_search,
         )
     ]
-
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()

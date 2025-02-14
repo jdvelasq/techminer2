@@ -45,7 +45,7 @@ Starts With
 """
 
 from ...internals.mixins import ParamsMixin
-from .internals.internal__starts_with import internal__starts_with
+from ._internals.starts_with import internal__starts_with
 
 
 class StartsWithExtractor(

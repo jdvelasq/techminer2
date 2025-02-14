@@ -36,7 +36,7 @@ Match
 """
 
 from ...internals.mixins import ParamsMixin
-from .internals.internal__match import internal__match
+from ._internals.match import internal__match
 
 
 class MatchExtractor(

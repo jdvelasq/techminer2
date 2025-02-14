@@ -8,9 +8,7 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from .internal__get_field_values_from_database import (
-    internal__get_field_values_from_database,
-)
+from .get_field_values_from_database import internal__get_field_values_from_database
 
 
 def internal__match(

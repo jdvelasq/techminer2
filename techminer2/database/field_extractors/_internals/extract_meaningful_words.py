@@ -15,7 +15,7 @@ import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ....internals.stopwords.load_package_stopwords import load_package_stopwords
+from ....internals import load_package_stopwords
 
 
 def internal__extract_meaningful_words(

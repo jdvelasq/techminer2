@@ -41,7 +41,7 @@ Fields difference
 """
 
 from ...internals.mixins import ParamsMixin
-from .internals.internal__fields_difference import internal__fields_difference
+from ._internals.fields_difference import internal__fields_difference
 
 
 class FieldsDifferenceExtractor(

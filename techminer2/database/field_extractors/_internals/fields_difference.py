@@ -8,20 +8,16 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from .internal__get_field_values_from_database import (
-    internal__get_field_values_from_database,
-)
+from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__ends_with(
+def internal__fields_difference(
     #
-    # FIELD:
-    field: str,
+    # FIELDS:
+    field,
+    other_field,
     #
-    # SEARCH:
-    term_pattern: str,
-    #
-    # DATABASE PARAMS:
+    # DATABASE:
     root_dir: str,
     database: str,
     record_years_range: Tuple[Optional[int], Optional[int]],
@@ -30,7 +26,7 @@ def internal__ends_with(
     records_match: Optional[Dict[str, List[str]]],
 ):
 
-    dataframe = internal__get_field_values_from_database(
+    set_a = internal__get_field_values_from_database(
         #
         # FIELD:
         field=field,
@@ -43,9 +39,26 @@ def internal__ends_with(
         records_order_by=records_order_by,
         records_match=records_match,
     )
-    dataframe = dataframe[dataframe.term.str.endswith(term_pattern)]
-    dataframe = dataframe.dropna()
-    dataframe = dataframe.sort_values("term", ascending=True)
-    terms = dataframe.term.tolist()
+    set_a = set_a.term.tolist()
+    set_a = set(set_a)
 
-    return terms
+    set_b = internal__get_field_values_from_database(
+        #
+        # FIELD:
+        field=other_field,
+        root_dir=root_dir,
+        #
+        # DATABASE:
+        database=database,
+        record_years_range=record_years_range,
+        record_citations_range=record_citations_range,
+        records_order_by=records_order_by,
+        records_match=records_match,
+    )
+    set_b = set_b.term.tolist()
+    set_b = set(set_b)
+
+    common_terms = set_a.difference(set_b)
+    common_terms = list(sorted(common_terms))
+
+    return common_terms

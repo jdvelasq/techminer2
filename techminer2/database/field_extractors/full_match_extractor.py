@@ -35,7 +35,7 @@ Full Match
 
 """
 from ...internals.mixins import ParamsMixin
-from .internals.internal__full_match import internal__full_match
+from ._internals.full_match import internal__full_match
 
 
 class FullMatchExtractor(

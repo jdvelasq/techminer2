@@ -48,7 +48,7 @@ Stemming Field with OR
 """
 
 from ...internals.mixins import ParamsMixin
-from .internals.internal__stemming import internal__stemming_or
+from ._internals.stemming import internal__stemming_or
 
 
 class StemmingOrExtractor(

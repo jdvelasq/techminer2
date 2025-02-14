@@ -42,7 +42,7 @@ Ends With
  
 """
 from ...internals.mixins import ParamsMixin
-from .internals.internal__ends_with import internal__ends_with
+from ._internals.ends_with import internal__ends_with
 
 
 class EndsWithExtractor(

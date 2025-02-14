@@ -8,21 +8,16 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from .internal__get_field_values_from_database import (
-    internal__get_field_values_from_database,
-)
+from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__contains(
+def internal__starts_with(
     #
-    # SOURCE:
-    field: str,
+    # FIELD:
+    field,
     #
     # SEARCH:
-    term_pattern: str,
-    case_sensitive: bool,
-    regex_flags: int,
-    regex_search: bool,
+    term_pattern,
     #
     # DATABASE:
     root_dir: str,
@@ -35,7 +30,7 @@ def internal__contains(
 
     dataframe = internal__get_field_values_from_database(
         #
-        # SOURCE:
+        # FIELD
         field=field,
         #
         # DATABASE:
@@ -46,14 +41,7 @@ def internal__contains(
         records_order_by=records_order_by,
         records_match=records_match,
     )
-    dataframe = dataframe[
-        dataframe.term.str.contains(
-            pat=term_pattern,
-            case=case_sensitive,
-            flags=regex_flags,
-            regex=regex_search,
-        )
-    ]
+    dataframe = dataframe[dataframe.term.str.startswith(term_pattern)]
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()

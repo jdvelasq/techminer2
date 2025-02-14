@@ -42,7 +42,7 @@ Contains
 
 """
 from ...internals.mixins import ParamsMixin
-from .internals.internal__contains import internal__contains
+from ._internals.contains import internal__contains
 
 
 class ContainsExtractor(

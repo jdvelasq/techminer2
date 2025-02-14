@@ -10,9 +10,7 @@ from typing import Dict, List, Optional, Tuple
 
 from textblob import TextBlob  # type: ignore
 
-from .internal__get_field_values_from_database import (
-    internal__get_field_values_from_database,
-)
+from .get_field_values_from_database import internal__get_field_values_from_database
 
 
 def internal__stemming_and(

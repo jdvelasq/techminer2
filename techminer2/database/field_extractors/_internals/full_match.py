@@ -8,18 +8,18 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from .internal__get_field_values_from_database import (
-    internal__get_field_values_from_database,
-)
+from .get_field_values_from_database import internal__get_field_values_from_database
 
 
-def internal__starts_with(
+def internal__full_match(
     #
-    # FIELD:
-    field,
+    # SOURCE:
+    field: str,
     #
     # SEARCH:
-    term_pattern,
+    term_pattern: str,
+    case_sensitive: bool,
+    regex_flags: int,
     #
     # DATABASE:
     root_dir: str,
@@ -31,11 +31,9 @@ def internal__starts_with(
 ):
 
     dataframe = internal__get_field_values_from_database(
-        #
-        # FIELD
         field=field,
         #
-        # DATABASE:
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         record_years_range=record_years_range,
@@ -43,7 +41,15 @@ def internal__starts_with(
         records_order_by=records_order_by,
         records_match=records_match,
     )
-    dataframe = dataframe[dataframe.term.str.startswith(term_pattern)]
+
+    dataframe = dataframe[
+        dataframe.term.str.fullmatch(
+            pat=term_pattern,
+            case=case_sensitive,
+            flags=regex_flags,
+        )
+    ]
+
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()
