@@ -8,7 +8,7 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from ...internals import Params
+from ....internals import Params
 from ...internals.io import internal__load_filtered_database
 
 

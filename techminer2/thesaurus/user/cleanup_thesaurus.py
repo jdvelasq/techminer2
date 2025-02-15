@@ -31,7 +31,7 @@ from spellchecker import SpellChecker
 from textblob import TextBlob, Word  # type: ignore
 
 from ...internals.mixins import ParamsMixin
-from ...package_data.database import internal__load_technical_stopwords
+from ...package_data.text_processing import internal__load_technical_stopwords
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,

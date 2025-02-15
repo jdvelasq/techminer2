@@ -9,8 +9,7 @@
 Apply Thesaurus 
 ===============================================================================
 
-
->>> from techminer2.thesaurus.coutries import ApplyThesaurus
+>>> from techminer2.thesaurus.organizations import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
 ...     #
@@ -19,7 +18,7 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
-
+--INFO-- The example/thesauri/organizations.the.txt thesaurus file was applied to affiliations in all databases
 
 """
 import sys
@@ -44,9 +43,9 @@ class ApplyThesaurus(
         # Affiliations to countries mmapping
         (
             ApplyUserThesaurus()
-            .with_thesaurus_file("countries.the.txt")
+            .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
-            .with_other_field("countries")
+            .with_other_field("organizations")
             .where_directory_is(self.params.root_dir)
             .build()
         )
@@ -55,28 +54,10 @@ class ApplyThesaurus(
         internal__transform_field(
             #
             # FIELD:
-            field="countries",
-            other_field="country_1st_author",
+            field="organizations",
+            other_field="organization_1st_author",
             function=lambda x: x.str.split("; ").str[0],
             root_dir=self.params.root_dir,
         )
 
-        # Country to region mapping
-        (
-            ApplySystemThesaurus()
-            .with_thesaurus_file("geography/country_to_region.the.txt")
-            .with_field("countries")
-            .with_other_field("regions")
-            .where_directory_is(self.params.root_dir)
-            .build()
-        )
-
-        # Country to subregion mapping
-        (
-            ApplySystemThesaurus()
-            .with_thesaurus_file("geography/country_to_subregion.the.txt")
-            .with_field("countries")
-            .with_other_field("subregions")
-            .where_directory_is(self.params.root_dir)
-            .build()
-        )
+        print(f"--INFO-- The thesaurus file 'organizations.the.txt' was applied.")

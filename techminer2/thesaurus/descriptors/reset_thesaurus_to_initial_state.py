@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Reset Thesaurus
+Reset Thesaurus to Initial State
 ===============================================================================
 
 
 
->>> from techminer2.thesaurus.user import ResetThesaurusToInitial
+>>> from techminer2.thesaurus.user import ResetThesaurusToInitialState
 >>> (
-...     ResetThesaurusToInitial()  
+...     ResetThesaurusToInitialState()  
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("descriptors.the.txt")

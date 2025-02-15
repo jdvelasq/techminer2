@@ -11,9 +11,9 @@ Reset Thesaurus to Initial
 ===============================================================================
 
 
->>> from techminer2.thesaurus.countries import ResetThesaurusToInitial
+>>> from techminer2.thesaurus.countries import ResetThesaurusToInitialState
 >>> (
-...     ResetThesaurusToInitial()
+...     ResetThesaurusToInitialState()
 ...     #
 ...     # DATABASE:
 ...     .where_directory_is("example/")
@@ -33,7 +33,7 @@ from ...database.internals.io import internal__load_records
 from ...internals.mixins import ParamsMixin
 
 
-class ResetThesaurusToInitial(
+class ResetThesaurusToInitialState(
     ParamsMixin,
 ):
     """:meta private:"""

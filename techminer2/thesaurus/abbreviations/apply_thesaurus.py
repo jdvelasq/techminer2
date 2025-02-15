@@ -7,15 +7,19 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Apply Abbreviations Thesaurus
+Apply Thesaurus
 ===============================================================================
 
-## >>> from techminer2.prepare.thesaurus.abbreviations import apply_thesaurus
-## >>> apply_thesaurus( # doctest: +SKIP
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
+
+>>> from techminer2.thesaurus.abbreviations import ApplyThesaurus
+>>> (
+...     ApplyThesaurus()
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
 --INFO-- The file example/thesauri/descriptors.the.txt has been modified.
 
 """

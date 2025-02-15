@@ -32,10 +32,10 @@ import pandas as pd  # type: ignore
 from ...internals.mixins import Params, ParamsMixin
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
+    internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
-    internal__system_user_thesaurus_file_path,
 )
 
 # names sorted by proirity
@@ -72,7 +72,7 @@ NAMES = [
 ]
 
 
-class ResetThesaurusToInitial(
+class ResetThesaurusToInitialState(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -94,7 +94,7 @@ class ResetThesaurusToInitial(
     # -------------------------------------------------------------------------
     def step_02_add_country_alpta3_code_column(self, data_frame):
 
-        file_path = internal__system_user_thesaurus_file_path(
+        file_path = internal__generate_system_thesaurus_file_path(
             "geography/country_to_alpha3.the.txt"
         )
         mapping = internal__load_thesaurus_as_data_frame(file_path)
@@ -116,7 +116,7 @@ class ResetThesaurusToInitial(
     def step_04_replace_abbr_names_in_organizations(self, data_frame):
 
         # loads the abbreviation thesaurus
-        file_path = internal__system_user_thesaurus_file_path(
+        file_path = internal__generate_system_thesaurus_file_path(
             "geography/country_to_alpha3.the.txt"
         )
         mapping = internal__load_thesaurus_as_mapping(file_path)
