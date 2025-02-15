@@ -15,7 +15,7 @@ Find Abbreviations
 ## ...     # DATABASE PARAMS:
 ## ...    root_dir="example/", 
 ## ... )
---INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
+--INFO-- The file example/thesaurus/descriptors.the.txt has been reordered.
 
 """
 import os.path
@@ -29,7 +29,7 @@ from .._internals.load_thesaurus_as_data_frame import (
 )
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurv/descriptors.the.txt"
 
 
 def find_abbreviations(

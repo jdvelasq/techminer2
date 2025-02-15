@@ -1,10 +1,11 @@
 """Report imported records per file"""
 
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
-from ...message import message
+from .....internals.log_info_message import log_info_message
 
 
 def internal__report_imported_records(root_dir):
@@ -21,7 +22,8 @@ def internal__report_imported_records(root_dir):
     cited_by_records = len(dataframe[dataframe.db_cited_by].index)
     references_records = len(dataframe[dataframe.db_references].index)
 
-    message(f"Total imported records: {total_records}")
-    message(f"          Main records:    {main_records}")
-    message(f"      Cited by records:    {cited_by_records}")
-    message(f"    References records:    {references_records}")
+    sys.stderr.write(f"        :   Total imported records: {total_records:6d}\n")
+    sys.stderr.write(f"        :             Main records: {main_records:6d}\n")
+    sys.stderr.write(f"        :         Cited by records: {cited_by_records:6d}\n")
+    sys.stderr.write(f"        :       References records: {references_records:6d}\n")
+    sys.stderr.flush()

@@ -17,7 +17,7 @@ Scopus Data Importer
 ...     ScopusDataImporter() 
 ...     .where_directory_is("example/")
 ...     .build()
-... ) # doctest: +ELLIPSIS  +SKIP 
+... ) # doctest: +ELLIPSIS  
 -- 001 -- Compressing raw data files
 -- 002 -- Creating working directories
 -- 003 -- Creating stopwords.txt file
@@ -27,10 +27,12 @@ Scopus Data Importer
 
 """
 
+import sys
 import time
 
 from tqdm import tqdm
 
+from ...internals.log_info_message import log_info_message
 from .internals.db import (
     internal__compress_raw_files,
     internal__create_project_structure,
@@ -76,7 +78,6 @@ from .internals.preprocessors import (  # type: ignore
     internal__preprocess_source_title,
     internal__preprocess_subject_areas,
 )
-from .message import message
 
 
 class ScopusDataImporter:
@@ -101,6 +102,10 @@ class ScopusDataImporter:
         tqdm.pandas()
 
         # Elapsed time report
+        sys.stderr.write(
+            "\n\n___________________________________ PROGRESS ___________________________________\n"
+        )
+        sys.stderr.flush()
         start_time = time.time()
 
         #
@@ -190,14 +195,14 @@ class ScopusDataImporter:
 
         ## ------------------------------------------------------------------------------------------
 
-        internal__report_imported_records(root_dir)
-
-        message("Process finished!!!")
-
         #
         # Elapsed time report
         end_time = time.time()
         elapsed_time = end_time - start_time
         hours, rem = divmod(elapsed_time, 3600)
         minutes, seconds = divmod(rem, 60)
+
+        log_info_message("Process finished.")
+        internal__report_imported_records(root_dir)
+
         print(f"Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}")

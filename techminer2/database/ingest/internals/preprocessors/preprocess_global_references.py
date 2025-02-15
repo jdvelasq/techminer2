@@ -23,17 +23,18 @@ import re
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
+from .....internals.log_info_message import log_info_message
+
 # TOOD: remove dependency
 from .....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
-from ...message import message
 
 
 def internal__preprocess_global_references(root_dir):
     """:meta private:"""
 
-    message("Homogenizing global references")
+    log_info_message("Homogenizing global references")
 
     documents = _create_documents_dataframe(root_dir)
     references = _create_references_dataframe(root_dir)
@@ -116,7 +117,9 @@ def _create_references_dataframe(root_dir):
 def _create_thesaurus(main_documents, references):
 
     thesaurus = {}
-    for _, row in tqdm(main_documents.iterrows(), total=main_documents.shape[0]):
+    for _, row in tqdm(
+        main_documents.iterrows(), total=main_documents.shape[0], desc="        "
+    ):
 
         refs = references.copy()
 
@@ -143,7 +146,7 @@ def _create_thesaurus(main_documents, references):
 
 def _save_thesaurus(root_dir, thesaurus):
 
-    file_path = pathlib.Path(root_dir) / "thesauri/global_references.the.txt"
+    file_path = pathlib.Path(root_dir) / "thesaurus/global_references.the.txt"
     with open(file_path, "w", encoding="utf-8") as file:
         for key in sorted(thesaurus.keys()):
             values = thesaurus[key]
@@ -155,7 +158,7 @@ def _save_thesaurus(root_dir, thesaurus):
 def _apply_thesaurus(root_dir):
     # Apply the thesaurus to raw_global_references
 
-    file_path = pathlib.Path(root_dir) / "thesauri/global_references.the.txt"
+    file_path = pathlib.Path(root_dir) / "thesaurus/global_references.the.txt"
     th = internal__load_reversed_thesaurus_as_mapping(file_path=file_path)
 
     dataframe = pd.read_csv(

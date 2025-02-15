@@ -14,11 +14,11 @@ from .....thesaurus.countries import ApplyThesaurus, ResetThesaurusToInitialStat
 
 
 # -------------------------------------------------------------------------
-def internal__preprocess_countries(params):
+def internal__preprocess_countries(root_dir):
     """:meta private:"""
 
-    ResetThesaurusToInitialState().update(**params).build()
-    ApplyThesaurus().update(**params).build()
+    ResetThesaurusToInitialState().update(root_dir=root_dir).build()
+    ApplyThesaurus().update(root_dir=root_dir).build()
 
 
 # =============================================================================

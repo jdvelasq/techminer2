@@ -29,7 +29,7 @@ from .._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 
 
 def check_thesaurus(

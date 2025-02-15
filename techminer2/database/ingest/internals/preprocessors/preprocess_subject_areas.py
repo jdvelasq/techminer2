@@ -13,8 +13,8 @@ import pathlib
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
+from .....internals.log_info_message import log_info_message
 from .....package_data.database.load_subject_areas import internal__load_subject_areas
-from ...message import message
 
 
 def internal__preprocess_subject_areas(
@@ -23,7 +23,7 @@ def internal__preprocess_subject_areas(
     root_dir="./",
 ):
 
-    message("Assign subject_areas to each record")
+    log_info_message("Assign subject_areas to each record")
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

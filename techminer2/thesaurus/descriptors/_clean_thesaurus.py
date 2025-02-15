@@ -16,7 +16,7 @@ Clean Thesaurus
 ## ...     # DATABASE PARAMS:
 ## ...     root_dir="example/", 
 ## ... )
---INFO-- The example/thesauri/descriptors.the.txt thesaurus has been cleaned.
+--INFO-- The example/thesaurus/descriptors.the.txt thesaurus has been cleaned.
 
 """
 import os.path
@@ -25,7 +25,7 @@ from functools import lru_cache  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 
 
 def _create_data_frame_from_thesaurus(th_file):

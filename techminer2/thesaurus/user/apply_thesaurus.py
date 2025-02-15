@@ -26,10 +26,12 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
---INFO-- The file example/thesauri/descriptors.the.txt has been modified.
+--INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
 
 """
 import sys
+
+import pandas as pd  # type: ignore
 
 from ...database.internals.io import internal__load_records, internal__write_records
 from ...internals.mixins import ParamsMixin
@@ -59,8 +61,8 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def step_03_apply_thesaurus_to_other_field(self, records, mapping):
-        records[self.params.other_field] = records[self.params.other_field].apply(
-            lambda x: [mapping.get(item, item) for item in x]
+        records[self.params.other_field] = records[self.params.other_field].map(
+            lambda x: [mapping.get(item, item) for item in x], na_action="ignore"
         )
         return records
 
@@ -75,7 +77,9 @@ class ApplyThesaurus(
                     terms.append(term)
             return terms
 
-        records[self.params.other_field] = records[self.params.other_field].apply(f)
+        records[self.params.other_field] = records[self.params.other_field].map(
+            f, na_action="ignore"
+        )
         return records
 
     # -------------------------------------------------------------------------

@@ -16,7 +16,7 @@ Show Differences
 ## ...     # DATABASE PARAMS:
 ## ...     root_dir="example/", 
 ## ... )
---INFO-- The example/thesauri/_changes_.the.txt has been generated.
+--INFO-- The example/thesaurus/_changes_.the.txt has been generated.
 
 """
 import os
@@ -31,8 +31,8 @@ from .._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
 )
 
-USER_THESAURUS_FILE = "thesauri/descriptors.the.txt"
-RAW_THESAURUS_FILE = "thesauri/_descriptors_.the.txt"
+USER_THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+RAW_THESAURUS_FILE = "thesaurus/_descriptors_.the.txt"
 
 tqdm.pandas()
 
@@ -67,7 +67,7 @@ def show_differences(
     user_data_frame = user_data_frame[user_data_frame["is_different"]]
     user_data_frame = user_data_frame.groupby("key").agg({"value": list}).reset_index()
 
-    file_path = os.path.join(root_dir, "thesauri/_changes_.the.txt")
+    file_path = os.path.join(root_dir, "thesaurus/_changes_.the.txt")
 
     with open(file_path, "w", encoding="utf-8") as file:
 

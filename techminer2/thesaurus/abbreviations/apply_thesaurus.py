@@ -20,7 +20,7 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
---INFO-- The file example/thesauri/descriptors.the.txt has been modified.
+--INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
 
 """
 import os.path
@@ -31,8 +31,8 @@ from tqdm import tqdm  # type: ignore
 
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
-DESCRIPTORS_FILE = "thesauri/descriptors.the.txt"
-ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
+DESCRIPTORS_FILE = "thesaurus/descriptors.the.txt"
+ABBREVIATIONS_FILE = "thesaurus/abbreviations.the.txt"
 
 
 def apply_thesaurus(
@@ -129,4 +129,4 @@ def apply_thesaurus(
                     file.write("    " + item + "\n")
 
     save_thesaurus()
-    print("--INFO-- The file example/thesauri/descriptors.the.txt has been modified.")
+    print("--INFO-- The file example/thesaurus/descriptors.the.txt has been modified.")

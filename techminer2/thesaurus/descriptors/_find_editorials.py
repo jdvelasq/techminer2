@@ -16,7 +16,7 @@ Find Editorials
 ## ...     # DATABASE PARAMS:
 ## ...     root_dir="example/", 
 ## ... )
---INFO-- The file example/thesauri/descriptors.the.txt has been reordered.
+--INFO-- The file example/thesaurus/descriptors.the.txt has been reordered.
 
 """
 from .sort_thesaurus_by_match import sort_thesaurus_by_match

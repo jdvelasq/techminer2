@@ -195,9 +195,9 @@ class Params:
         self.update(**kwargs)
 
     def update(self, **kwargs):
-        if key not in self.__annotations__:
-            raise ValueError(f"Unknown parameter: {key}")
         for key, value in kwargs.items():
+            if key not in self.__annotations__:
+                raise ValueError(f"Unknown parameter: {key}")
             setattr(self, key, value)
         return self
 

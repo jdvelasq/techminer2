@@ -29,7 +29,7 @@ Sort Thesaurus by Key
 """
 # from ..user.sort_thesaurus_by_key import thesaurus__sort_on_disk as core_sort_thesaurus
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 
 
 def sort_thesaurus(

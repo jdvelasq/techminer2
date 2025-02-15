@@ -47,8 +47,8 @@ from ._clean_thesaurus import (
     _save_thesaurus,
 )
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
-ABBREVIATIONS_FILE = "thesauri/abbreviations.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+ABBREVIATIONS_FILE = "thesaurus/abbreviations.the.txt"
 
 tqdm.pandas()
 
@@ -485,7 +485,7 @@ def reset_thesaurus(
     _save_thesaurus(data_frame, th_descriptors_file)
 
     #
-    new_th_file = os.path.join(root_dir, "thesauri/_descriptors_.the.txt")
+    new_th_file = os.path.join(root_dir, "thesaurus/_descriptors_.the.txt")
     with open(th_descriptors_file, "r", encoding="utf-8") as file:
         with open(new_th_file, "w", encoding="utf-8") as new_file:
             new_file.write(file.read())

@@ -65,7 +65,7 @@ from ..thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 from .deprecated.extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 79
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 
 
 def find_similar_phrases(

@@ -10,13 +10,13 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...message import message
+from .....internals.log_info_message import log_info_message
 
 
 def internal__preprocess_local_citations(root_dir):
     """:meta private:"""
 
-    message("Counting local citations")
+    log_info_message("Counting local citations")
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",

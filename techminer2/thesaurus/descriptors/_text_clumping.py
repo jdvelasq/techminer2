@@ -18,7 +18,7 @@ Text Clumping
 ## ...     # DATABASE PARAMS:
 ## ...     root_dir="example/", 
 ## ... )
---INFO-- The thesaurus example/thesauri/descriptors.the.txt was rewritten.
+--INFO-- The thesaurus example/thesaurus/descriptors.the.txt was rewritten.
 
 """
 import os.path
@@ -29,7 +29,7 @@ from nltk.stem import PorterStemmer  # type: ignore
 
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 
 
 def text_clumping(
@@ -150,7 +150,7 @@ def text_clumping(
             #
             br2am = {}
             file_path = pkg_resources.resource_filename(
-                "techminer2", "thesauri_data/british2american.the.txt"
+                "techminer2", "thesaurus_data/british2american.the.txt"
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 for line in file.readlines():

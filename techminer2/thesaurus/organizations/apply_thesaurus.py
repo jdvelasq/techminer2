@@ -18,7 +18,7 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
---INFO-- The example/thesauri/organizations.the.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The example/thesaurus/organizations.the.txt thesaurus file was applied to affiliations in all databases
 
 """
 import sys

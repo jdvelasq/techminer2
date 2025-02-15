@@ -11,7 +11,7 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...message import message
+from .....internals.log_info_message import log_info_message
 from .get_subdirectories import internal__get_subdirectories
 
 
@@ -73,7 +73,7 @@ def read_and_concatenate_files(files):
 def internal__load_raw_files(root_dir):
     """:meta private:"""
 
-    message("Creating database file")
+    log_info_message("Creating database file")
     files = list_zip_filenames_in_raw_data(root_dir)
     dataframe = read_and_concatenate_files(files)
 

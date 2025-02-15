@@ -13,6 +13,7 @@ import pkg_resources  # type: ignore
 
 
 def internal__generate_system_thesaurus_file_path(file_name):
-    internal_path_to_file = pathlib.Path("package_data/thesaurus/") / file_name
-    file_path = pkg_resources.resource_filename("techminer2", internal_path_to_file)
+    internal_file_path = pathlib.Path("package_data/thesaurus/") / file_name
+    internal_file_path = str(internal_file_path)
+    file_path = pkg_resources.resource_filename("techminer2", internal_file_path)
     return file_path

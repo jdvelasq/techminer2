@@ -26,7 +26,7 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
---INFO-- The file example/thesauri/descriptors.the.txt has been modified.
+--INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
 
 """
 import sys
@@ -59,8 +59,8 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def step_03_apply_thesaurus_to_other_field(self, records, mapping):
-        records[self.params.other_field] = records[self.params.other_field].apply(
-            lambda x: [mapping.get(item, item) for item in x]
+        records[self.params.other_field] = records[self.params.other_field].map(
+            lambda x: [mapping.get(item, item) for item in x], na_action="ignore"
         )
         return records
 
@@ -75,7 +75,9 @@ class ApplyThesaurus(
                     terms.append(term)
             return terms
 
-        records[self.params.other_field] = records[self.params.other_field].apply(f)
+        records[self.params.other_field] = records[self.params.other_field].map(
+            f, na_action="ignore"
+        )
         return records
 
     # -------------------------------------------------------------------------
@@ -91,7 +93,9 @@ class ApplyThesaurus(
     def build(self):
         """:meta private:"""
 
-        file_path = internal__generate_system_thesaurus_file_path(params=self.params)
+        file_path = internal__generate_system_thesaurus_file_path(
+            self.params.thesaurus_file
+        )
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
         records = internal__load_records(params=self.params)
         #

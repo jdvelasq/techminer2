@@ -49,7 +49,7 @@ def extract_raw_decriptors(root_dir):
 def write_thesaurus_file(root_dir, raw_descriptors):
     """Write the thesaurus file with the given descriptors."""
 
-    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
+    thesaurus_file = os.path.join(root_dir, "thesaurus/descriptors.the.txt")
 
     with open(thesaurus_file, "w", encoding="utf-8") as f:
         for word in raw_descriptors:

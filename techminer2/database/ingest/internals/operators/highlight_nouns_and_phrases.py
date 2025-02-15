@@ -14,13 +14,13 @@ import spacy
 from textblob import TextBlob  # type: ignore
 from tqdm import tqdm  # type: ignore
 
+from .....internals.log_info_message import log_info_message
 from .....package_data.text_processing import (
     internal__load_connectors,
     internal__load_determiners,
     internal__load_known_noun_phrases,
     internal__load_technical_stopwords,
 )
-from ...message import message
 
 
 def internal__highlight_nouns_and_phrases(
@@ -32,7 +32,7 @@ def internal__highlight_nouns_and_phrases(
 ):
     """:meta private:"""
 
-    message(f"Highlighting tokens in '{source}' field.")
+    log_info_message(f"Highlighting tokens in '{source}' field.")
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 
@@ -66,7 +66,7 @@ def internal__highlight_nouns_and_phrases(
     )
     determiners = re.compile(determiners)
 
-    for index, row in tqdm(dataframe.iterrows(), total=len(dataframe)):
+    for index, row in tqdm(dataframe.iterrows(), total=len(dataframe), desc="        "):
 
         if pd.isna(row[dest]):
             continue

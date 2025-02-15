@@ -4,13 +4,13 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...message import message
+from .....internals.log_info_message import log_info_message
 
 
 def internal__preprocess_record_no(root_dir):
     """Create art_no column in databases."""
     #
-    message("Assign record_no identifier to each record")
+    log_info_message("Assign record_no identifier to each record")
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

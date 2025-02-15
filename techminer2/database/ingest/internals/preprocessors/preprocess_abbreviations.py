@@ -6,7 +6,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""Search for abbreviations in thesauri."""
+"""Search for abbreviations in a thesaurus."""
 
 import os
 
@@ -263,7 +263,7 @@ predefined_abbreviations_mapping = {
 
 def internal__preprocess_abbreviations(root_dir):
 
-    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
+    thesaurus_file = os.path.join(root_dir, "thesaurus/descriptors.the.txt")
 
     raw_frame = internal__load_thesaurus_as_data_frame(thesaurus_file)
     mod_frame = _extracts_abbreviations_from_definitions(raw_frame)
@@ -321,7 +321,7 @@ def _extracts_abbreviations_from_definitions(frame):
 
 def _save_abbreviations_thesaurus(root_dir, mod_frame):
 
-    thesaurus_file = os.path.join(root_dir, "thesauri/abbreviations.the.txt")
+    thesaurus_file = os.path.join(root_dir, "thesaurus/abbreviations.the.txt")
     with open(thesaurus_file, "w", encoding="utf-8") as f:
 
         for _, row in mod_frame.iterrows():

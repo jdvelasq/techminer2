@@ -12,7 +12,7 @@ import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ....._dtypes import DTYPES
-from ...message import message
+from .....internals.log_info_message import log_info_message
 
 
 def _get_sources_info(root_dir):
@@ -35,7 +35,7 @@ def _get_sources_info(root_dir):
 def internal__preprocess_references(root_dir):
     """Replace journal name in references."""
 
-    message("Replacing journal name in references")
+    log_info_message("Replacing journal name in references")
 
     abbrs = _get_sources_info(root_dir)
 
@@ -49,7 +49,7 @@ def internal__preprocess_references(root_dir):
     )
 
     for source, abbr_source_title in tqdm(
-        zip(abbrs.source, abbrs.abbr_source_title), total=len(abbrs)
+        zip(abbrs.source, abbrs.abbr_source_title), total=len(abbrs), desc="        "
     ):
 
         dataframe["raw_global_references"] = dataframe[

@@ -124,7 +124,7 @@ class ResetThesaurusToInitialState(
         # replaces the abbreviations
         for word, abbr in mapping.items():
             data_frame["organization"] = data_frame["organization"].str.replace(
-                r"\b" + word + r"\b", abbr, regex=True
+                r"\b" + word + r"\b", abbr[0], regex=True
             )
 
         # remove leading and trailing spaces

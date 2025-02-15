@@ -11,10 +11,10 @@
 from .....thesaurus.organizations import ApplyThesaurus, ResetThesaurusToInitialState
 
 
-def internal__preprocess_organizations(params):
+def internal__preprocess_organizations(root_dir):
 
-    ResetThesaurusToInitialState().update(**params).build()
-    ApplyThesaurus().update(**params).build()
+    ResetThesaurusToInitialState().update(root_dir=root_dir).build()
+    ApplyThesaurus().update(root_dir=root_dir).build()
 
 
 # =============================================================================

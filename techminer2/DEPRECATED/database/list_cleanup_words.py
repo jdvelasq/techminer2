@@ -45,7 +45,7 @@
 #     #
 #     #
 #     # Loads the current thesaurus and updates the keys in the dataframe.
-#     file_path = pathlib.Path(root_dir) / "thesauri/words.the.txt"
+#     file_path = pathlib.Path(root_dir) / "thesaurus/words.the.txt"
 #     thesaurus = {}
 #     if file_path.exists():
 #         with open(file_path, "r", encoding="utf-8") as file:

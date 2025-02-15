@@ -17,6 +17,7 @@ def internal__load_text_processing_terms(file_name):
     """:meta private:"""
 
     data_path = pathlib.Path("package_data/text_processing/data/") / file_name
+    data_path = str(data_path)
     data_path = pkg_resources.resource_filename("techminer2", data_path)
 
     with open(data_path, "r", encoding="utf-8") as file:

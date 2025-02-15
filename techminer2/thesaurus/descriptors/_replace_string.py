@@ -24,7 +24,7 @@ Replace String
 ## ...     # DATABASE PARAMS:
 ## ...     root_dir="example/", 
 ## ... )
---INFO-- The file example/thesauri/descriptors.the.txt has been processed.
+--INFO-- The file example/thesaurus/descriptors.the.txt has been processed.
 
 """
 import os.path
@@ -34,7 +34,7 @@ import pandas as pd  # type: ignore
 
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
-THESAURUS_FILE = "thesauri/descriptors.the.txt"
+THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 
 
 def replace_string(

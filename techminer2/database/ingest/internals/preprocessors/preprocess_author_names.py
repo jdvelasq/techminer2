@@ -7,7 +7,7 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...message import message
+from .....internals.log_info_message import log_info_message
 
 
 def _load_authors_data(root_dir):
@@ -97,7 +97,7 @@ def _repair_names(root_dir, author_id2name):
 def internal__preprocess_author_names(root_dir):
     """Disambiguate author names using Scopus Author(s) ID."""
 
-    message("Disambiguating `authors` column")
+    log_info_message("Disambiguating `authors` column")
     authors_data = _load_authors_data(root_dir)
     dataframe = _generate_author_and_author_id_dataframe(authors_data)
     author_id2name = _build_dict_names(dataframe)

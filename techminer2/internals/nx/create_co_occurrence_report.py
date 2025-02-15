@@ -265,7 +265,7 @@ def __generate_terms_relationships_prompt(
 ):
     """ChatGPT prompt."""
 
-    thesaurus_file = os.path.join(root_dir, "thesauri/descriptors.the.txt")
+    thesaurus_file = os.path.join(root_dir, "thesaurus/descriptors.the.txt")
     thesaurus = internal__load_thesaurus_as_mapping(thesaurus_file)
 
     for cluster in sorted(communities.keys()):

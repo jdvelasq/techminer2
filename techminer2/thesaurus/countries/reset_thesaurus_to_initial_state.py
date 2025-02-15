@@ -115,7 +115,7 @@ class ResetThesaurusToInitialState(
         # Loads country names from thesaurus
         file_path = pkg_resources.resource_filename(
             "techminer2",
-            "package_data/thesaurus/geography/alpha3-to-country.the.txt",
+            "package_data/thesaurus/geography/alpha3_to_country.the.txt",
         )
         countries = []
         with open(file_path, "r", encoding="utf-8") as file:
@@ -169,7 +169,7 @@ class ResetThesaurusToInitialState(
         affiliations = self.step_07_group_affiliations_by_country(affiliations)
         #
         file_path = self.step_08_get_thesaurus_file_path()
-        self.step_09_create_thesaurus_file(affiliations)
+        self.step_09_create_thesaurus_file(affiliations, file_path)
 
         #
         sys.stdout.write(f"--INFO-- The thesaurus file '{file_path}' has been reseted.")
