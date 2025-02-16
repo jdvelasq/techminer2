@@ -30,6 +30,7 @@ Sort Thesaurus by Key
 """
 import sys
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -73,20 +74,29 @@ class SortThesaurusByKey(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        th_dict = internal__load_thesaurus_as_mapping(file_path)
-        sorted_keys = self.get_thesaurus_sorted_keys(th_dict)
-        self.save_sorted_thesaurus_on_disk(file_path, th_dict, sorted_keys)
 
-        msg = {
+        order_by = {
             "alphabetical": "alphabetically",
             "key_length": "by key length",
             "word_length": "by word length",
         }[self.params.keys_order_by]
 
-        sys.stdout.write(
-            f"--INFO-- The thesaurus file '{file_path}' has been ordered {msg}."
+        internal__log_message(
+            msgs=[
+                f"Sorting thesaurus {order_by}.",
+                f"      Thesaurus file: '{file_path}'",
+            ],
+            counter_flag=self.params.counter_flag,
         )
-        sys.stdout.flush()
+
+        th_dict = internal__load_thesaurus_as_mapping(file_path)
+        sorted_keys = self.get_thesaurus_sorted_keys(th_dict)
+        self.save_sorted_thesaurus_on_disk(file_path, th_dict, sorted_keys)
+
+        internal__log_message(
+            msgs="  Done.",
+            counter_flag=-1,
+        )
 
 
 # =============================================================================

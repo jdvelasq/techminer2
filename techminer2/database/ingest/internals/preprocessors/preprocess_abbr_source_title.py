@@ -6,11 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from .....internals.log_message import internal__log_message
 from ..operators.fillna import internal__fillna
 
 
 def internal__preprocess_abbr_source_title(root_dir):
     """:meta private:"""
+
+    internal__log_message(
+        msgs="Processing 'abbr_source_title' column.",
+        counter_flag=True,
+    )
 
     internal__fillna(
         fill_field="abbr_source_title",

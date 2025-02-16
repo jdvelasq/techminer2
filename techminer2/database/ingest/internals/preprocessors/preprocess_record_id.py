@@ -13,7 +13,7 @@ import pathlib
 import numpy as np
 import pandas as pd  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 
 def _get_author(dataframe):
@@ -70,7 +70,10 @@ def internal__preprocess_record_id(root_dir):
     # Create a WoS style reference column.
     # First Author, year, abbr_source_title, 'V'volumne, 'P'page_start, ' DOI ' doi
     #
-    log_info_message("Creating `record_id` column")
+    internal__log_message(
+        msgs="Creating 'record_id' column",
+        counter_flag=True,
+    )
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

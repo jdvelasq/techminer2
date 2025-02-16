@@ -30,6 +30,7 @@ import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
 from ...database.internals.io import internal__load_records
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 
 
@@ -39,7 +40,11 @@ class ResetThesaurusToInitialState(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def step_01_create_affiliations_data_frame(self, records):
+    def step_01_get_thesaurus_file_path(self):
+        return pathlib.Path(self.params.root_dir) / "thesaurus/countries.the.txt"
+
+    # -------------------------------------------------------------------------
+    def step_02_create_affiliations_data_frame(self, records):
 
         if "affiliations" not in records.columns:
             raise ValueError(
@@ -58,13 +63,13 @@ class ResetThesaurusToInitialState(
         return frame
 
     # -------------------------------------------------------------------------
-    def step_02_create_country_column_from_affiliations(self, affiliations):
+    def step_03_create_country_column_from_affiliations(self, affiliations):
         affiliations = affiliations.copy()
         affiliations = affiliations.assign(country=affiliations.affiliations)
         return affiliations
 
     # -------------------------------------------------------------------------
-    def step_03_extract_country_name_from_text(self, affiliations):
+    def step_04_extract_country_name_from_text(self, affiliations):
         """Extracts the country component from the 'country' column."""
 
         affiliations = affiliations.copy()
@@ -74,7 +79,7 @@ class ResetThesaurusToInitialState(
         return affiliations
 
     # -------------------------------------------------------------------------
-    def step_04_homogenize_country_names(self, affiliations):
+    def step_05_homogenize_country_names(self, affiliations):
         """Fix variations in country names."""
 
         replacements = [
@@ -141,11 +146,7 @@ class ResetThesaurusToInitialState(
         return affiliations
 
     # -------------------------------------------------------------------------
-    def step_08_get_thesaurus_file_path(self):
-        return pathlib.Path(self.params.root_dir) / "thesaurus/countries.the.txt"
-
-    # -------------------------------------------------------------------------
-    def step_09_create_thesaurus_file(self, affiliations, file_path):
+    def step_08_create_thesaurus_file(self, affiliations, file_path):
 
         with open(file_path, "w", encoding="utf-8") as file:
             for _, row in affiliations.iterrows():
@@ -157,23 +158,36 @@ class ResetThesaurusToInitialState(
     def build(self):
         """:meta private:"""
 
+        file_path = self.step_01_get_thesaurus_file_path()
+
+        # -------------------------------------------------------------------------
+        internal__log_message(
+            msgs=[
+                "Reseting thesaurus to initial state.",
+                f"  Thesaurus file: '{file_path}'.",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        # -------------------------------------------------------------------------
+
         records = internal__load_records(params=self.params)
         #
-        affiliations = self.step_01_create_affiliations_data_frame(records)
-        affiliations = self.step_02_create_country_column_from_affiliations(
+        affiliations = self.step_02_create_affiliations_data_frame(records)
+        affiliations = self.step_03_create_country_column_from_affiliations(
             affiliations
         )
-        affiliations = self.step_03_extract_country_name_from_text(affiliations)
-        affiliations = self.step_04_homogenize_country_names(affiliations)
+        affiliations = self.step_04_extract_country_name_from_text(affiliations)
+        affiliations = self.step_05_homogenize_country_names(affiliations)
         affiliations = self.step_06_check_country_names(affiliations)
         affiliations = self.step_07_group_affiliations_by_country(affiliations)
         #
-        file_path = self.step_08_get_thesaurus_file_path()
-        self.step_09_create_thesaurus_file(affiliations, file_path)
+        self.step_08_create_thesaurus_file(affiliations, file_path)
 
-        #
-        sys.stdout.write(f"--INFO-- The thesaurus file '{file_path}' has been reseted.")
-        sys.stdout.flush()
+        # -------------------------------------------------------------------------
+        internal__log_message(
+            msgs="  Done!",
+            counter_flag=-1,
+        )
 
 
 # =============================================================================

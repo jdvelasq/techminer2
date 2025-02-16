@@ -8,13 +8,21 @@
 # pylint: disable=too-many-branches
 
 
+from .....internals.log_message import internal__log_message
 from .....thesaurus.organizations import ApplyThesaurus, ResetThesaurusToInitialState
 
 
 def internal__preprocess_organizations(root_dir):
 
-    ResetThesaurusToInitialState().update(root_dir=root_dir).build()
-    ApplyThesaurus().update(root_dir=root_dir).build()
+    internal__log_message(
+        msgs="Processing 'organizations' column.",
+        counter_flag=True,
+    )
+
+    ResetThesaurusToInitialState().update(root_dir=root_dir).with_counter_flag(
+        -1
+    ).build()
+    ApplyThesaurus().update(root_dir=root_dir).with_counter_flag(-1).build()
 
 
 # =============================================================================

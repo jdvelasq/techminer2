@@ -26,9 +26,9 @@ Reset Thesaurus to Initial State
 --INFO-- The thesaurus file 'example/thesaurus/descriptors.the.txt' has been reseted.
 
 """
-import pathlib
 import sys
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -63,12 +63,25 @@ class ResetThesaurusToInitialState(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        # LOG:
+        internal__log_message(
+            msgs=[
+                "Reseting thesaurus to initial state.",
+                "  Thesaurus file: '{file_path}'.",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
         th_dict = internal__load_thesaurus_as_mapping(file_path)
         new_th_dict = self.build_new_th_dict(th_dict)
         self.save_thesaurus(file_path, new_th_dict)
-
-        sys.stdout.write(f"--INFO-- The thesaurus file '{file_path}' has been reseted.")
-        sys.stdout.flush()
+        #
+        # LOG:
+        internal__log_message(
+            msgs="  Done.",
+            counter_flag=-1,
+        )
 
 
 # =============================================================================

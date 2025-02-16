@@ -27,11 +27,10 @@ Sort Thesaurus by Fuzzy Match
 --INFO-- The thesaurus file 'example/thesaurus/descriptors.the.txt' has been rerodered.
 
 """
-import sys
-
 import pandas as pd  # type: ignore
 from fuzzywuzzy import process  # type: ignore
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -110,17 +109,28 @@ class SortThesaurusByFuzzyMatch(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        internal__log_message(
+            msgs=[
+                "Sorting thesaurus by fuzzy match.",
+                f"      Thesaurus file: '{file_path}'",
+                f"           Keys like: '{self.params.like}'",
+                f"     Match threshold: '{self.params.match_threshold}'",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
         th_dict = internal__load_thesaurus_as_mapping(file_path)
         reversed_th_dict = self.revert_th_dict(th_dict)
         data_frame = self.build_data_frame(reversed_th_dict)
         data_frame = self.filter_data_frame(data_frame)
         findings = self.extract_findings(th_dict, data_frame)
         self.save_sorted_thesaurus(file_path, th_dict, findings)
-
-        sys.stdout.write(
-            f"--INFO-- The thesaurus file '{file_path}' has been rerodered."
+        #
+        internal__log_message(
+            msgs=f"  Done.",
+            counter_flag=-1,
         )
-        sys.stdout.flush()
 
 
 # =============================================================================

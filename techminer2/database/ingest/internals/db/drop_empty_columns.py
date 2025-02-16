@@ -5,13 +5,16 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 
 def internal__drop_empty_columns(root_dir):
     """Drop NA columns in database/ directory"""
 
-    log_info_message("Dropping NA columns in database file")
+    internal__log_message(
+        msgs="Dropping NA columns in database file",
+        counter_flag=True,
+    )
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",
@@ -32,4 +35,7 @@ def internal__drop_empty_columns(root_dir):
 
     if len(dataframe.columns) != len(original_cols):
         removed_cols = set(original_cols) - set(dataframe.columns)
-        print(f"     ---> Removed columns: {removed_cols}")
+        internal__log_message(
+            msgs=removed_cols,
+            counter_flag=-1,
+        )

@@ -9,6 +9,7 @@
 
 import pandas as pd  # type: ignore
 
+from .....internals.log_message import internal__log_message
 from ....field_operators.transform_field_operator import internal__transform_field
 
 
@@ -51,6 +52,11 @@ def _local_processing(text):
 
 def internal__preprocess_authors(root_dir):
     """Run authors importer."""
+
+    internal__log_message(
+        msgs="Processing 'authors' column.",
+        counter_flag=True,
+    )
 
     internal__transform_field(
         field="raw_authors",

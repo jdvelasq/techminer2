@@ -6,11 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from .....internals.log_message import internal__log_message
 from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def internal__preprocess_global_citations(root_dir):
     """Run importer."""
+
+    internal__log_message(
+        msgs="Processing 'global_citations' column.",
+        counter_flag=True,
+    )
 
     internal__transform_field(
         field="global_citations",

@@ -30,6 +30,7 @@ import pandas as pd  # type: ignore
 from spellchecker import SpellChecker
 from textblob import TextBlob, Word  # type: ignore
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from ...package_data.text_processing import internal__load_technical_stopwords
 from .._internals import (
@@ -97,19 +98,29 @@ class CleanupThesaurus(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        # LOG:
+        internal__log_message(
+            msgs=[
+                "Cleaninig up thesaurus.",
+                "  Thesaurus file: '{file_path}'.",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
         data_frame = internal__load_thesaurus_as_data_frame(file_path=file_path)
         data_frame = self.create_new_key_column(data_frame)
         data_frame = self.remove_technical_stopwords(data_frame)
-        # data_frame = self.apply_word_correction(data_frame)
         data_frame = self.apply_stemming_to_new_key_column(data_frame)
         mapping = self.build_new_keys_mapping(data_frame)
         data_frame = self.build_cleaned_key(data_frame, mapping)
         self.save_thesaurus_on_disk(file_path, data_frame)
-
-        sys.stdout.write(
-            f"--INFO-- The thesaurus file '{file_path}' has been cleaned up."
+        #
+        # LOG:
+        internal__log_message(
+            msgs=f"  Done.",
+            counter_flag=self.params.counter_flag,
         )
-        sys.stdout.flush()
 
 
 # =============================================================================

@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from .....internals.log_message import internal__log_message
 from ....field_operators.transform_field_operator import internal__transform_field
 
 
@@ -23,6 +24,11 @@ def _local_processing_func(text):
 
 def internal__preprocess_source_title(root_dir):
     """:meta private:"""
+
+    internal__log_message(
+        msgs="Processing 'source_title' column.",
+        counter_flag=True,
+    )
 
     internal__transform_field(
         field="raw_source_title",

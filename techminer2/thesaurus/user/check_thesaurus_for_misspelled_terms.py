@@ -26,12 +26,11 @@ Check Thesaurus for Misspelled Terms
 
 """
 import sys
-from os.path import isfile, join
 
 import pandas as pd  # type: ignore
 from spellchecker import SpellChecker
-from textblob import TextBlob  # type: ignore
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -68,6 +67,7 @@ class CheckThesaurusForMisspelledTerms(
 
     # -------------------------------------------------------------------------
     def sort_thesaurus_on_disk(self, misspelled_words):
+        #
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
         data_frame = internal__load_thesaurus_as_data_frame(file_path=file_path)
         data_frame["misspelled"] = 0
@@ -89,15 +89,34 @@ class CheckThesaurusForMisspelledTerms(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        # LOG:
+        internal__log_message(
+            msgs=[
+                "Checking thesaurus mispelled keys.",
+                "  Thesaurus file: '{file_path}'.",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
         terms = self.load_terms_in_thesaurus(file_path)
         words = self.extract_and_filter_words_from_terms(terms)
         misspelled_words = self.extract_mispelled_words(words)
+        #
+        if len(misspelled_words) == 0:
+            internal__log_message(
+                msgs="  No misspelled words found.",
+                counter_flag=-1,
+            )
+            return
+        #
         self.sort_thesaurus_on_disk(misspelled_words)
-
-        sys.stdout.write(
-            f"--INFO-- The thesaurus file '{file_path}' has been processed."
-        )
-        sys.stdout.flush()
+        #
+        #
+        msgs = ["    " + word for word in misspelled_words[:10]]
+        if len(misspelled_words) > 10:
+            msgs.append("    ...")
+        internal__log_message(msgs=msgs, counter_flag=-1)
 
 
 # =============================================================================

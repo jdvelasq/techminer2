@@ -25,10 +25,10 @@ Reset Thesaurus to Initial
 """
 import pathlib
 import re
-import sys
 
 import pandas as pd  # type: ignore
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import Params, ParamsMixin
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
@@ -78,7 +78,16 @@ class ResetThesaurusToInitialState(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def step_01_generate_data_frame_from_country_thesaurus(self):
+    def step_01_generate_file_path(self):
+        params = Params().update(
+            thesaurus_file="countries.the.txt",
+            root_dir=self.params.root_dir,
+        )
+        file_path = internal__generate_user_thesaurus_file_path(params)
+        return file_path
+
+    # -------------------------------------------------------------------------
+    def step_02_generate_data_frame_from_country_thesaurus(self, file_path):
 
         params = Params().update(
             thesaurus_file="countries.the.txt",
@@ -92,7 +101,7 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_02_add_country_alpta3_code_column(self, data_frame):
+    def step_03_add_country_alpta3_code_column(self, data_frame):
 
         file_path = internal__generate_system_thesaurus_file_path(
             "geography/country_to_alpha3.the.txt"
@@ -107,13 +116,13 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_03_add_candidate_organization_column(self, data_frame):
+    def step_04_add_candidate_organization_column(self, data_frame):
         data_frame = data_frame.copy()
         data_frame["organization"] = data_frame.raw_affiliation
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_04_replace_abbr_names_in_organizations(self, data_frame):
+    def step_05_replace_abbr_names_in_organizations(self, data_frame):
 
         # loads the abbreviation thesaurus
         file_path = internal__generate_system_thesaurus_file_path(
@@ -133,7 +142,7 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_05_adds_a_empty_organizations_column(self, data_frame):
+    def step_06_adds_a_empty_organizations_column(self, data_frame):
         """Adds empty organizations."""
 
         data_frame = data_frame.copy()
@@ -141,11 +150,11 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_06_load_known_organizations(self):
+    def step_07_load_known_organizations(self):
         return internal__load_text_processing_terms("known_organizations.txt")
 
     # -------------------------------------------------------------------------
-    def step_07_assign_known_names_to_organizations(
+    def step_08_assign_known_names_to_organizations(
         self, data_frame, known_organizations
     ):
         for org in known_organizations:
@@ -156,7 +165,7 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_08_assign_names_by_priority(self, data_frame):
+    def step_09_assign_names_by_priority(self, data_frame):
 
         def select_name(affiliation):
             for name in NAMES:
@@ -183,7 +192,7 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_09_format_organization_names(self, data_frame):
+    def step_10_format_organization_names(self, data_frame):
         data_frame = data_frame.copy()
         data_frame["organization"] = (
             data_frame["organization"].astype(str) + " (" + data_frame["code"] + ")"
@@ -191,7 +200,7 @@ class ResetThesaurusToInitialState(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_10_save_data_frame_as_thesaurus(self, data_frame):
+    def step_11_save_data_frame_as_thesaurus(self, data_frame):
 
         data_frame = data_frame.sort_values(["organization", "raw_affiliation"])
         data_frame = data_frame.groupby("organization", as_index=False).agg(
@@ -212,24 +221,38 @@ class ResetThesaurusToInitialState(
     def build(self):
         """:meta private:"""
 
-        data_frame = self.step_01_generate_data_frame_from_country_thesaurus()
-        data_frame = self.step_02_add_country_alpta3_code_column(data_frame)
-        data_frame = self.step_03_add_candidate_organization_column(data_frame)
-        data_frame = self.step_04_replace_abbr_names_in_organizations(data_frame)
-        data_frame = self.step_05_adds_a_empty_organizations_column(data_frame)
-        known_organizations = self.step_06_load_known_organizations()
-        data_frame = self.step_07_assign_known_names_to_organizations(
+        file_path = self.step_01_generate_file_path()
+
+        # -------------------------------------------------------------------------
+        internal__log_message(
+            msgs=[
+                "Reseting thesaurus to initial state.",
+                f"  Thesaurus file: '{file_path}'.",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        # -------------------------------------------------------------------------
+
+        data_frame = self.step_02_generate_data_frame_from_country_thesaurus(file_path)
+        data_frame = self.step_03_add_country_alpta3_code_column(data_frame)
+        data_frame = self.step_04_add_candidate_organization_column(data_frame)
+        data_frame = self.step_05_replace_abbr_names_in_organizations(data_frame)
+        data_frame = self.step_06_adds_a_empty_organizations_column(data_frame)
+        known_organizations = self.step_07_load_known_organizations()
+        data_frame = self.step_08_assign_known_names_to_organizations(
             data_frame, known_organizations
         )
-        data_frame = self.step_08_assign_names_by_priority(data_frame)
-        data_frame = self.step_09_format_organization_names(data_frame)
-        self.step_10_save_data_frame_as_thesaurus(data_frame)
+        data_frame = self.step_09_assign_names_by_priority(data_frame)
+        data_frame = self.step_10_format_organization_names(data_frame)
+        self.step_11_save_data_frame_as_thesaurus(data_frame)
 
-        file_path = (
-            pathlib.Path(self.params.root_dir) / "thesaurus/organizations.the.txt"
+        # -------------------------------------------------------------------------
+        internal__log_message(
+            msgs=[
+                "  Done.",
+            ],
+            counter_flag=-1,
         )
-        sys.stdout.write(f"--INFO-- The thesaurus file '{file_path}' has been reseted.")
-        sys.stdout.flush()
 
 
 # =============================================================================

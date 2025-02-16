@@ -2,7 +2,7 @@
 
 import os
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 PROJECT_DIRECTORIES = [
     "databases",
@@ -42,12 +42,18 @@ def internal__create_project_structure(root_dir):
     """
 
     # Create working directories
-    log_info_message("Creating working directories")
+    internal__log_message(
+        msgs="Creating working directories",
+        counter_flag=True,
+    )
     for directory in PROJECT_DIRECTORIES:
         create_directory(os.path.join(root_dir, directory))
 
     # Create stopwords.txt file
-    log_info_message("Creating stopwords.txt file")
+    internal__log_message(
+        msgs="Creating stopwords.txt file",
+        counter_flag=True,
+    )
     create_file(os.path.join(root_dir, "my_keywords/stopwords.txt"))
 
     # Create _DO_NOT_TOUCH_.txt file

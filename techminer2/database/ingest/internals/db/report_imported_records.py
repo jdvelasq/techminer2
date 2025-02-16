@@ -5,7 +5,7 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 
 def internal__report_imported_records(root_dir):
@@ -22,8 +22,12 @@ def internal__report_imported_records(root_dir):
     cited_by_records = len(dataframe[dataframe.db_cited_by].index)
     references_records = len(dataframe[dataframe.db_references].index)
 
-    sys.stderr.write(f"        :   Total imported records: {total_records:6d}\n")
-    sys.stderr.write(f"        :             Main records: {main_records:6d}\n")
-    sys.stderr.write(f"        :         Cited by records: {cited_by_records:6d}\n")
-    sys.stderr.write(f"        :       References records: {references_records:6d}\n")
+    sys.stderr.write(f"         :   {total_records:6d} total imported records\n")
+    sys.stderr.write(f"         :   {main_records:6d} records in main database\n")
+    sys.stderr.write(
+        f"         :   {cited_by_records:6d} records in cited by database\n"
+    )
+    sys.stderr.write(
+        f"         :   {references_records:6d} records in references database\n"
+    )
     sys.stderr.flush()

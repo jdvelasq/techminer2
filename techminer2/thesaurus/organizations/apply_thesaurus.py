@@ -26,8 +26,8 @@ import sys
 from ...database.ingest.internals.operators.transform_field import (
     internal__transform_field,
 )
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
-from ..system import ApplyThesaurus as ApplySystemThesaurus
 from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
 
 
@@ -47,6 +47,7 @@ class ApplyThesaurus(
             .with_field("affiliations")
             .with_other_field("organizations")
             .where_directory_is(self.params.root_dir)
+            .with_counter_flag(self.params.counter_flag)
             .build()
         )
 
@@ -59,5 +60,3 @@ class ApplyThesaurus(
             function=lambda x: x.str.split("; ").str[0],
             root_dir=self.params.root_dir,
         )
-
-        print(f"--INFO-- The thesaurus file 'organizations.the.txt' was applied.")

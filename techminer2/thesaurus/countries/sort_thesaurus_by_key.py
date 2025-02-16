@@ -27,6 +27,7 @@ Sort Thesaurus by Key
 --INFO-- The thesaurus file 'examples/thesaurus/countries.the.txt' has been ordered alphabetically.
 
 """
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from ..user.sort_thesaurus_by_key import SortThesaurusByKey as SortUserThesaurusByKey
 

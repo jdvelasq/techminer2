@@ -5,14 +5,18 @@ import os
 
 import pandas as pd  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 from .get_subdirectories import internal__get_subdirectories
 
 
 def internal__compress_raw_files(root_dir):
     """:meta private:"""
 
-    log_info_message("Compressing raw data files")
+    internal__log_message(
+        msgs="Compressing raw data files.",
+        counter_flag=1,
+    )
+
     raw_dir = os.path.join(root_dir, "raw-data")
     folders = internal__get_subdirectories(raw_dir)
     for folder in folders:

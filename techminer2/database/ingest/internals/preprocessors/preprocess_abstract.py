@@ -7,11 +7,17 @@
 # pylint: disable=too-many-statements
 
 
+from .....internals.log_message import internal__log_message
 from ..operators.clean_text import internal__clean_text
 
 
 def internal__preprocess_abstract(root_dir):
     """:meta private:"""
+
+    internal__log_message(
+        msgs="Cleaning 'abstract' column.",
+        counter_flag=True,
+    )
 
     internal__clean_text(
         source="raw_abstract",

@@ -7,9 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 
-import pathlib
-import sys
-
+from .....internals.log_message import internal__log_message
 from .....thesaurus.countries import ApplyThesaurus, ResetThesaurusToInitialState
 
 
@@ -17,8 +15,20 @@ from .....thesaurus.countries import ApplyThesaurus, ResetThesaurusToInitialStat
 def internal__preprocess_countries(root_dir):
     """:meta private:"""
 
-    ResetThesaurusToInitialState().update(root_dir=root_dir).build()
-    ApplyThesaurus().update(root_dir=root_dir).build()
+    internal__log_message(
+        msgs="Processing 'countries' column.",
+        counter_flag=True,
+    )
+
+    th = ResetThesaurusToInitialState()
+    th.update(root_dir=root_dir)
+    th.with_counter_flag(-1)
+    th.build()
+
+    th = ApplyThesaurus()
+    th.update(root_dir=root_dir)
+    th.with_counter_flag(-1)
+    th.build()
 
 
 # =============================================================================

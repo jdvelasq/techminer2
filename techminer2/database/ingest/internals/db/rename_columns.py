@@ -5,7 +5,7 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 SCOPUS_2_TECHMINER_TAGS = {
     "Abbreviated Source Title": "abbr_source_title",
@@ -60,7 +60,10 @@ SCOPUS_2_TECHMINER_TAGS = {
 def internal__rename_columns(root_dir):
     """Change Scopus original names."""
 
-    log_info_message("Applying Scopus tags to database files")
+    internal__log_message(
+        msgs="Applying Scopus tags to database files.",
+        counter_flag=True,
+    )
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

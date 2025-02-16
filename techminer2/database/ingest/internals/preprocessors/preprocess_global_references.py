@@ -23,7 +23,7 @@ import re
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 # TOOD: remove dependency
 from .....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
@@ -34,7 +34,10 @@ from .....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 def internal__preprocess_global_references(root_dir):
     """:meta private:"""
 
-    log_info_message("Homogenizing global references")
+    internal__log_message(
+        msgs="Homogenizing global references",
+        counter_flag=True,
+    )
 
     documents = _create_documents_dataframe(root_dir)
     references = _create_references_dataframe(root_dir)
@@ -118,7 +121,7 @@ def _create_thesaurus(main_documents, references):
 
     thesaurus = {}
     for _, row in tqdm(
-        main_documents.iterrows(), total=main_documents.shape[0], desc="        "
+        main_documents.iterrows(), total=main_documents.shape[0], desc="         "
     ):
 
         refs = references.copy()

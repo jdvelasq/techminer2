@@ -32,6 +32,7 @@ import sys
 
 import pandas as pd  # type: ignore
 
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -111,6 +112,18 @@ class SortThesaurusByMatch(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        internal__log_message(
+            msgs=[
+                "Sorting thesaurus by match.",
+                f"      Thesaurus file: '{file_path}'",
+                f"           Keys like: '{self.params.like}'",
+                f"  Keys starting with: '{self.params.startswith}'",
+                f"    Keys ending with: '{self.params.endswith}'",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
         th_dict = internal__load_thesaurus_as_mapping(file_path)
         reversed_th_dict = self.revert_th_dict(th_dict)
         data_frame = self.build_data_frame(reversed_th_dict)
@@ -118,10 +131,10 @@ class SortThesaurusByMatch(
         findings = self.extract_findings(th_dict, data_frame)
         self.save_sorted_thesaurus(file_path, th_dict, findings)
 
-        sys.stdout.write(
-            f"--INFO-- The thesaurus file '{file_path}' has been rerodered."
+        internal__log_message(
+            msgs=f"  Done.",
+            counter_flag=-1,
         )
-        sys.stdout.flush()
 
 
 # =============================================================================

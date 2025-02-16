@@ -32,9 +32,10 @@ class Params:
     clustering_algorithm_or_dict = None
     color: Optional[str] = None
     colormap: str = "Blues"
-    correlation_method: str = "pearson"
-    cumulative_sum: bool = False
     contour_opacity: float = 0.6
+    correlation_method: str = "pearson"
+    counter_flag: Optional[int] = False
+    cumulative_sum: bool = False
 
     #
     # D
@@ -162,6 +163,10 @@ class Params:
     #
     unit_of_analysis: Optional[str] = None
     use_idf: bool = False  # using_idf_reweighting
+
+    #
+    # V
+    #
 
     #
     # X
@@ -555,6 +560,10 @@ class ParamsMixin:
 
     def with_correlation_method(self, method):
         self.params.correlation_method = method
+        return self
+
+    def with_counter_flag(self, flag):
+        self.params.counter_flag = flag
         return self
 
     def with_cumulative_sum(self, cumulative_sum):

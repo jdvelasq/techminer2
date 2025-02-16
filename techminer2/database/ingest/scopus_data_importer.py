@@ -18,11 +18,7 @@ Scopus Data Importer
 ...     .where_directory_is("example/")
 ...     .build()
 ... ) # doctest: +ELLIPSIS  
--- 001 -- Compressing raw data files
--- 002 -- Creating working directories
--- 003 -- Creating stopwords.txt file
--- 004 -- Creating database file
-...
+
 
 
 """
@@ -32,7 +28,7 @@ import time
 
 from tqdm import tqdm
 
-from ...internals.log_info_message import log_info_message
+from ...internals.log_message import internal__log_message
 from .internals.db import (
     internal__compress_raw_files,
     internal__create_project_structure,
@@ -202,7 +198,10 @@ class ScopusDataImporter:
         hours, rem = divmod(elapsed_time, 3600)
         minutes, seconds = divmod(rem, 60)
 
-        log_info_message("Process finished.")
+        internal__log_message(msgs="Process finished.", counter_flag=True)
         internal__report_imported_records(root_dir)
 
-        print(f"Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}")
+        internal__log_message(
+            msgs=f"Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}",
+            counter_flag=True,
+        )

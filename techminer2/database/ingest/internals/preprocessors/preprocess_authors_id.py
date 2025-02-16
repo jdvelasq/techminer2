@@ -9,6 +9,7 @@
 
 import pandas as pd  # type: ignore
 
+from .....internals.log_message import internal__log_message
 from ....field_operators.transform_field_operator import internal__transform_field
 
 
@@ -31,6 +32,11 @@ def _local_processing_func(text):
 
 def internal__preprocess_authors_id(root_dir):
     """:meta private:"""
+
+    internal__log_message(
+        msgs="Processing 'authors_id' column.",
+        counter_flag=True,
+    )
 
     internal__transform_field(
         field="raw_authors_id",

@@ -27,13 +27,12 @@ import sys
 from ...database.ingest.internals.operators.transform_field import (
     internal__transform_field,
 )
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from ..system import ApplyThesaurus as ApplySystemThesaurus
 from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
 
 
-#
-#
 class ApplyThesaurus(
     ParamsMixin,
 ):
@@ -48,6 +47,7 @@ class ApplyThesaurus(
             .with_field("affiliations")
             .with_other_field("countries")
             .where_directory_is(self.params.root_dir)
+            .with_counter_flag(self.params.counter_flag)
             .build()
         )
 
@@ -68,6 +68,7 @@ class ApplyThesaurus(
             .with_field("countries")
             .with_other_field("regions")
             .where_directory_is(self.params.root_dir)
+            .with_counter_flag(-1)
             .build()
         )
 
@@ -78,5 +79,6 @@ class ApplyThesaurus(
             .with_field("countries")
             .with_other_field("subregions")
             .where_directory_is(self.params.root_dir)
+            .with_counter_flag(-1)
             .build()
         )

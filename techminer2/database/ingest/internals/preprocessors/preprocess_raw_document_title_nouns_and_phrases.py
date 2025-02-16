@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+from .....internals.log_message import internal__log_message
 from ..operators.collect_nouns_and_phrases import internal__collect_nouns_and_phrases
 from ..operators.highlight_nouns_and_phrases import (
     internal__highlight_nouns_and_phrases,
@@ -14,10 +15,23 @@ from ..operators.highlight_nouns_and_phrases import (
 
 def internal__preprocess_raw_document_title_nouns_and_phrases(root_dir):
 
+    internal__log_message(
+        msgs=[
+            "Processing 'raw_document_title_nouns_and_phrases' column.",
+            "Highlighting noun and phrases.",
+        ],
+        counter_flag=True,
+    )
+
     internal__highlight_nouns_and_phrases(
         source="document_title",
         dest="document_title",
         root_dir=root_dir,
+    )
+
+    internal__log_message(
+        msgs="Collecting noun and phrases.",
+        counter_flag=-1,
     )
 
     internal__collect_nouns_and_phrases(

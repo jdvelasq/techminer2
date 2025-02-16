@@ -30,6 +30,7 @@ Check Thesaurus Integrity
 import sys
 
 from ...database.internals.io import internal__load_filtered_database
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -43,8 +44,7 @@ class CheckThesaurusIntegrity(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def load_terms_in_thesaurus(self):
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+    def load_terms_in_thesaurus(self, file_path):
         reversed_th_dict = internal__load_reversed_thesaurus_as_mapping(file_path)
         terms = list(reversed_th_dict.keys())
         return terms
@@ -60,25 +60,51 @@ class CheckThesaurusIntegrity(
     # -------------------------------------------------------------------------
     def compare_terms(self, terms_in_thesaurus, terms_in_database):
         union = set(terms_in_thesaurus).union(set(terms_in_database))
+
         if len(union) != len(terms_in_thesaurus) or len(union) != len(
             terms_in_database
         ):
             if len(terms_in_database) > len(terms_in_thesaurus):
-                print(set(terms_in_database) - set(terms_in_thesaurus))
+                terms = set(terms_in_database) - set(terms_in_thesaurus)
             else:
-                print(set(terms_in_thesaurus) - set(terms_in_database))
+                terms = set(terms_in_thesaurus) - set(terms_in_database)
 
-        assert len(union) == len(terms_in_database)
-        assert len(union) == len(terms_in_thesaurus)
+            #
+            # LOG:
+            msgs = ["    " + term for term in terms[:10]]
+            if len(terms) > 10:
+                msgs.append("    ...")
+            internal__log_message(
+                msgs=msgs,
+                counter_flag=-1,
+            )
+
+        else:
+            #
+            # LOG:
+            internal__log_message(
+                msgs=f"  Done.",
+                counter_flag=self.params.counter_flag,
+            )
 
     # -------------------------------------------------------------------------
     def build(self):
-        terms_in_thesaurus = self.load_terms_in_thesaurus()
+
+        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        # LOG:
+        internal__log_message(
+            msgs=[
+                "Checking thesaurus integrity.",
+                "  Thesaurus file: '{file_path}'.",
+                "           Field: '{self.params.field}'.",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
+        terms_in_thesaurus = self.load_terms_in_thesaurus(file_path)
         terms_in_database = self.load_terms_in_database()
         self.compare_terms(terms_in_thesaurus, terms_in_database)
-
-        sys.stdout.write(f"--INFO-- Checking {self.params.thesaurus_file} integrity.")
-        sys.stdout.flush()
 
 
 # =============================================================================

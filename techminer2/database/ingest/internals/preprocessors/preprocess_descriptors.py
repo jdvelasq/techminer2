@@ -11,10 +11,16 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
+from .....internals.log_message import internal__log_message
 from ..operators.copy_field import internal__copy_field
 
 
 def internal__preprocess_descriptors(root_dir):
+
+    internal__log_message(
+        msgs="Processing 'descriptors' column.",
+        counter_flag=True,
+    )
 
     internal__copy_field(
         source="raw_descriptors",

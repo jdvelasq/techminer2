@@ -31,9 +31,8 @@ Apply Thesaurus
 """
 import sys
 
-import pandas as pd  # type: ignore
-
 from ...database.internals.io import internal__load_records, internal__write_records
+from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
@@ -96,12 +95,28 @@ class ApplyThesaurus(
         """:meta private:"""
 
         file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+        #
+        # LOG:
+        internal__log_message(
+            msgs=[
+                "Applying thesaurus.",
+                f"  Thesaurus file: '{file_path}'",
+                f"    Source field: '{self.params.field}'",
+                f"    Target field: '{self.params.other_field}'",
+            ],
+            counter_flag=self.params.counter_flag,
+        )
+        #
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
         records = internal__load_records(params=self.params)
-        #
         records = self.apply_thesaurus(records, mapping)
-        #
         internal__write_records(params=self.params, records=records)
         #
-        sys.stdout.write(f"--INFO-- The thesaurus file '{file_path}' has been applied.")
-        sys.stdout.flush()
+        # LOG:
+        internal__log_message(
+            msgs="  Done!",
+            counter_flag=-1,
+        )
+
+
+# =============================================================================

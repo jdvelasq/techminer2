@@ -21,13 +21,16 @@ import pathlib
 
 import pandas as pd  # type: ignore
 
-from .....internals.log_info_message import log_info_message
+from .....internals.log_message import internal__log_message
 
 
 def internal__preprocess_local_references(root_dir):
     """:meta private:"""
 
-    log_info_message("Homogenizing local references")
+    internal__log_message(
+        msgs="Homogenizing local references.",
+        counter_flag=True,
+    )
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",
