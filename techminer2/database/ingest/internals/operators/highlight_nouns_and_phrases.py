@@ -129,6 +129,18 @@ def internal__highlight_nouns_and_phrases(
             regex = re.compile(r"\b(" + regex + r")\b")
             text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
 
+        #
+        #
+        # Step 5: Replace THE_AUTHOR in copyright phrase
+        #
+        # YYYY THE_AUTHOR ( s ) .
+        pattern = re.compile(r"\b\d{4} THE_AUTHOR \( s \) \.", re.IGNORECASE)
+        text = re.sub(pattern, lambda z: z.group().lower().replace("_", " "), text)
+        #
+        # THE_AUTHOR ( s ) YYYY.
+        pattern = re.compile(r"THE_AUTHOR \( s \) \d{4} \.", re.IGNORECASE)
+        text = re.sub(pattern, lambda z: z.group().lower().replace("_", " "), text)
+
         dataframe.loc[index, dest] = text
 
     dataframe.to_csv(

@@ -25,7 +25,39 @@ from functools import lru_cache  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
+from ...internals.mixins import ParamsMixin
+
 THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+
+
+class CleanupThesaurus(
+    ParamsMixin,
+):
+    """:meta private:"""
+
+    def build(self):
+        """:meta private:"""
+
+
+# -------------------------------------------------------------------------
+def clean_thesaurus(
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+):
+    """:meta private:"""
+
+    # Dictionary path
+    th_file = os.path.join(root_dir, THESAURUS_FILE)
+
+    data_frame = _create_data_frame_from_thesaurus(th_file)
+    data_frame = _apply_porter_stemmer(data_frame)
+    data_frame = _compute_terms_by_key(data_frame)
+    data_frame = _replace_fingerprint(data_frame)
+
+    _save_thesaurus(data_frame, th_file)
+
+    print(f"--INFO-- The {th_file} thesaurus has been cleaned.")
 
 
 def _create_data_frame_from_thesaurus(th_file):
@@ -157,23 +189,3 @@ def _save_thesaurus(data_frame, th_file):
 
             for value in row.text:
                 file.write("    " + value + "\n")
-
-
-def clean_thesaurus(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-):
-    """:meta private:"""
-
-    # Dictionary path
-    th_file = os.path.join(root_dir, THESAURUS_FILE)
-
-    data_frame = _create_data_frame_from_thesaurus(th_file)
-    data_frame = _apply_porter_stemmer(data_frame)
-    data_frame = _compute_terms_by_key(data_frame)
-    data_frame = _replace_fingerprint(data_frame)
-
-    _save_thesaurus(data_frame, th_file)
-
-    print(f"--INFO-- The {th_file} thesaurus has been cleaned.")

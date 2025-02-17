@@ -1,29 +1,31 @@
-all rights reserved
-business to consumer
-business to consumer model
-business to consumer models
-business to consumers
-business to consumers model
-business to consumers models
-by the authors
-chris brummer and yesha yadav
-copyright taylor and francis group
-current state of research
-current state of the art
-elsevier b . v
-emerald group publishing
-emerald publishing limited
-financial management association international
-head of swiss fintech innovation lab
-indiana university
-informa uk limited
-journal of innovation management
-kelley school of business
-london business school
-p2p
-research india publications
-springer international publishing ag
-springer verlag berlin heidelberg
-state of the art
-taylor and francis group
-vanderbilt law review
+ALL_RIGHTS_RESERVED
+BUSINESS_TO_CONSUMER
+BUSINESS_TO_CONSUMER_MODEL
+BUSINESS_TO_CONSUMER_MODELS
+BUSINESS_TO_CONSUMERS
+BUSINESS_TO_CONSUMERS_MODEL
+BUSINESS_TO_CONSUMERS_MODELS
+BY_THE_AUTHORS
+CHRIS_BRUMMER_AND_YESHA_YADAV
+COPYRIGHT_TAYLOR_AND_FRANCIS_GROUP
+CURRENT_STATE_OF_RESEARCH
+CURRENT_STATE_OF_THE_ART
+ELSEVIER_B_._V
+EMERALD_GROUP_PUBLISHING
+EMERALD_PUBLISHING_LIMITED
+FINANCIAL_MANAGEMENT_ASSOCIATION_INTERNATIONAL
+HEAD_OF_SWISS_FINTECH_INNOVATION_LAB
+HEALTH_INSURANCE_PORTABILITY_AND_ACCOUNTABILITY_ACT
+INDIANA_UNIVERSITY
+INFORMA_UK_LIMITED
+JOURNAL_OF_INNOVATION_MANAGEMENT
+KELLEY_SCHOOL_OF_BUSINESS
+LOCATION_BASED_MOBILE_COMMERCE
+LONDON_BUSINESS_SCHOOL
+P2P
+RESEARCH_INDIA_PUBLICATIONS
+SPRINGER_INTERNATIONAL_PUBLISHING_AG
+SPRINGER_VERLAG_BERLIN_HEIDELBERG
+STATE_OF_THE_ART
+TAYLOR_AND_FRANCIS_GROUP
+VANDERBILT_LAW_REVIEW

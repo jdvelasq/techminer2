@@ -22,4 +22,6 @@ def internal__load_known_noun_phrases():
     with open(data_path, "r", encoding="utf-8") as file:
         noun_phrases = file.readlines()
 
-    return [noun_phrase.strip() for noun_phrase in noun_phrases]
+    return [
+        noun_phrase.strip().lower().replace("_", " ") for noun_phrase in noun_phrases
+    ]

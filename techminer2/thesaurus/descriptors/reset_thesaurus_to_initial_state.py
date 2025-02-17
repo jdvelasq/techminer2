@@ -40,7 +40,7 @@ from .._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
-from ._clean_thesaurus import (
+from .cleanup_thesaurus import (
     _apply_porter_stemmer,
     _compute_terms_by_key,
     _replace_fingerprint,
