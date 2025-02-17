@@ -24,9 +24,19 @@ Apply Thesaurus
 
 """
 
-from ...internals.log_message import internal__log_message
+
 from ...internals.mixins import ParamsMixin
 from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+
+PAIRS = [
+    ("raw_author_keywords", "author_keywords"),
+    ("raw_index_keywords", "index_keywords"),
+    ("raw_keywords", "keywords"),
+    ("raw_document_title_nouns_and_phrases", "document_title_nouns_and_phrases"),
+    ("raw_abstract_nouns_and_phrases", "abstract_nouns_and_phrases"),
+    ("raw_nouns_and_phrases", "nouns_and_phrases"),
+    ("raw_descriptors", "descriptors"),
+]
 
 
 class ApplyThesaurus(
@@ -36,38 +46,7 @@ class ApplyThesaurus(
 
     def build(self):
 
-        for index, (raw_column, column) in enumerate(
-            [
-                (
-                    "raw_author_keywords",
-                    "author_keywords",
-                ),
-                (
-                    "raw_index_keywords",
-                    "index_keywords",
-                ),
-                (
-                    "raw_keywords",
-                    "keywords",
-                ),
-                (
-                    "raw_document_title_nouns_and_phrases",
-                    "document_title_nouns_and_phrases",
-                ),
-                (
-                    "raw_abstract_nouns_and_phrases",
-                    "abstract_nouns_and_phrases",
-                ),
-                (
-                    "raw_nouns_and_phrases",
-                    "nouns_and_phrases",
-                ),
-                (
-                    "raw_descriptors",
-                    "descriptors",
-                ),
-            ]
-        ):
+        for index, (raw_column, column) in enumerate(PAIRS):
             if index == 0:
                 counter_flag = self.params.counter_flag
             else:
