@@ -19,7 +19,7 @@ def internal__preprocess_descriptors(root_dir):
 
     internal__log_message(
         msgs="Processing 'descriptors' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__copy_field(

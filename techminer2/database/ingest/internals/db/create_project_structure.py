@@ -44,7 +44,7 @@ def internal__create_project_structure(root_dir):
     # Create working directories
     internal__log_message(
         msgs="Creating working directories",
-        counter_flag=True,
+        prompt_flag=True,
     )
     for directory in PROJECT_DIRECTORIES:
         create_directory(os.path.join(root_dir, directory))
@@ -52,7 +52,7 @@ def internal__create_project_structure(root_dir):
     # Create stopwords.txt file
     internal__log_message(
         msgs="Creating stopwords.txt file",
-        counter_flag=True,
+        prompt_flag=True,
     )
     create_file(os.path.join(root_dir, "my_keywords/stopwords.txt"))
 

@@ -10,19 +10,19 @@
 Sort Thesaurus by Fuzzy Match
 ===============================================================================
 
->>> from techminer2.thesaurus.organizations import SortThesaurusByFuzzyMatch
->>> (
-...     SortThesaurusByFuzzyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_keys_like("alphabetical")
-...     .having_match_threshold(70)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... ) 
+## >>> from techminer2.thesaurus.organizations import SortThesaurusByFuzzyMatch
+## >>> (
+## ...     SortThesaurusByFuzzyMatch()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .having_keys_like("alphabetical")
+## ...     .having_match_threshold(70)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... ) 
 --INFO-- The thesaurus file 'example/thesaurus/organizations.the.txt' has been rerodered.
 
 """

@@ -15,7 +15,7 @@ def internal__preprocess_num_global_references(root_dir):
 
     internal__log_message(
         msgs="Counting global references per document.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__count_terms_per_record(

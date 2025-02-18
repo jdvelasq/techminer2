@@ -14,7 +14,7 @@ def internal__preprocess_raw_noun_and_phrases(root_dir):
 
     internal__log_message(
         "Creating 'raw_nouns_and_phrases' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
     internal__merge_fields(
         source=[

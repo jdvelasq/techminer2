@@ -75,7 +75,7 @@ def internal__load_raw_files(root_dir):
 
     internal__log_message(
         msgs="Creating database file.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     files = list_zip_filenames_in_raw_data(root_dir)

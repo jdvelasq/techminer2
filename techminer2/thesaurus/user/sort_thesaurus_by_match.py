@@ -10,21 +10,21 @@
 Sort Thesaurus by Match
 ===============================================================================
 
->>> from techminer2.thesaurus.user import SortThesaurusByMatch
->>> (
-...     SortThesaurusByMatch()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     .having_keys_like("alphabetical")
-...     .having_keys_starting_with(None)
-...     .having_keys_ending_with(None)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... ) 
+## >>> from techminer2.thesaurus.user import SortThesaurusByMatch
+## >>> (
+## ...     SortThesaurusByMatch()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     .having_keys_like("alphabetical")
+## ...     .having_keys_starting_with(None)
+## ...     .having_keys_ending_with(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... ) 
 --INFO-- The thesaurus file 'example/thesaurus/descriptors.the.txt' has been rerodered.
 
 """
@@ -121,7 +121,7 @@ class SortThesaurusByMatch(
                 f"  Keys starting with: '{self.params.startswith}'",
                 f"    Keys ending with: '{self.params.endswith}'",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         #
         th_dict = internal__load_thesaurus_as_mapping(file_path)
@@ -133,7 +133,7 @@ class SortThesaurusByMatch(
 
         internal__log_message(
             msgs=f"  Done.",
-            counter_flag=-1,
+            prompt_flag=-1,
         )
 
 

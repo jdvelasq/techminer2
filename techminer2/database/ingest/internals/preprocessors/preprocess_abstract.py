@@ -16,7 +16,7 @@ def internal__preprocess_abstract(root_dir):
 
     internal__log_message(
         msgs="Cleaning 'abstract' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__clean_text(

@@ -10,19 +10,19 @@
 Sort Thesaurus by Fuzzy Match
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import SortThesaurusByFuzzyMatch
->>> (
-...     SortThesaurusByFuzzyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_keys_like("INTELIGEN")
-...     .having_match_threshold(70)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... ) 
+## >>> from techminer2.thesaurus.descriptors import SortThesaurusByFuzzyMatch
+## >>> (
+## ...     SortThesaurusByFuzzyMatch()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .having_keys_like("INTELIGEN")
+## ...     .having_match_threshold(70)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... ) 
 
 
 

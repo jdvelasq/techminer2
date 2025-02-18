@@ -11,15 +11,15 @@ Reset Thesaurus to Initial
 ===============================================================================
 
 
->>> from techminer2.thesaurus.organizations import ResetThesaurusToInitial
->>> (
-...     ResetThesaurusToInitial()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.organizations import ResetThesaurusToInitial
+## >>> (
+## ...     ResetThesaurusToInitial()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The thesaurus file 'example/thesaurus/organizations.the.txt' has been reseted.
 
 """
@@ -229,7 +229,7 @@ class ResetThesaurusToInitialState(
                 "Reseting thesaurus to initial state.",
                 f"  Thesaurus file: '{file_path}'.",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         # -------------------------------------------------------------------------
 
@@ -251,7 +251,7 @@ class ResetThesaurusToInitialState(
             msgs=[
                 "  Done.",
             ],
-            counter_flag=-1,
+            prompt_flag=-1,
         )
 
 

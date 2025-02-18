@@ -17,17 +17,17 @@ def internal__preprocess_countries(root_dir):
 
     internal__log_message(
         msgs="Processing 'countries' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     th = ResetThesaurusToInitialState()
     th.update(root_dir=root_dir)
-    th.with_counter_flag(-1)
+    th.with_prompt_flag(-1)
     th.build()
 
     th = ApplyThesaurus()
     th.update(root_dir=root_dir)
-    th.with_counter_flag(-1)
+    th.with_prompt_flag(-1)
     th.build()
 
 

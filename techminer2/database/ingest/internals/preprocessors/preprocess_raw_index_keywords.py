@@ -15,7 +15,7 @@ def internal__preprocess_raw_index_keywords(root_dir):
 
     internal__log_message(
         msgs="Cleaning 'raw_index_keywords' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__clean_raw_keywords(

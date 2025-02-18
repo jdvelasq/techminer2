@@ -9,15 +9,15 @@
 Apply Thesaurus 
 ===============================================================================
 
->>> from techminer2.thesaurus.organizations import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.organizations import ApplyThesaurus
+## >>> (
+## ...     ApplyThesaurus()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The example/thesaurus/organizations.the.txt thesaurus file was applied to affiliations in all databases
 
 """
@@ -47,7 +47,7 @@ class ApplyThesaurus(
             .with_field("affiliations")
             .with_other_field("organizations")
             .where_directory_is(self.params.root_dir)
-            .with_counter_flag(self.params.counter_flag)
+            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )
 

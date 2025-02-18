@@ -9,19 +9,19 @@
 Check Thesaurus for Misspelled Terms
 ===============================================================================
 
->>> from techminer2.thesaurus.user import CheckThesaurusForMisspelledTerms
->>> (
-...     CheckThesaurusForMisspelledTerms()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     .having_maximum_occurrence(3)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.user import CheckThesaurusForMisspelledTerms
+## >>> (
+## ...     CheckThesaurusForMisspelledTerms()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     .having_maximum_occurrence(3)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The thesaurus file 'example/thesaurus/descriptors.the.txt' has been processed.
 
 """
@@ -96,7 +96,7 @@ class CheckThesaurusForMisspelledTerms(
                 "Checking thesaurus mispelled keys.",
                 "  Thesaurus file: '{file_path}'.",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         #
         terms = self.load_terms_in_thesaurus(file_path)
@@ -106,7 +106,7 @@ class CheckThesaurusForMisspelledTerms(
         if len(misspelled_words) == 0:
             internal__log_message(
                 msgs="  No misspelled words found.",
-                counter_flag=-1,
+                prompt_flag=-1,
             )
             return
         #
@@ -116,7 +116,7 @@ class CheckThesaurusForMisspelledTerms(
         msgs = ["    " + word for word in misspelled_words[:10]]
         if len(misspelled_words) > 10:
             msgs.append("    ...")
-        internal__log_message(msgs=msgs, counter_flag=-1)
+        internal__log_message(msgs=msgs, prompt_flag=-1)
 
 
 # =============================================================================

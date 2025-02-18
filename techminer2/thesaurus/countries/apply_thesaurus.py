@@ -10,15 +10,15 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.coutries import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.coutries import ApplyThesaurus
+## >>> (
+## ...     ApplyThesaurus()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 
 
 """
@@ -47,7 +47,7 @@ class ApplyThesaurus(
             .with_field("affiliations")
             .with_other_field("countries")
             .where_directory_is(self.params.root_dir)
-            .with_counter_flag(self.params.counter_flag)
+            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )
 
@@ -68,7 +68,7 @@ class ApplyThesaurus(
             .with_field("countries")
             .with_other_field("regions")
             .where_directory_is(self.params.root_dir)
-            .with_counter_flag(-1)
+            .with_prompt_flag(-1)
             .build()
         )
 
@@ -79,6 +79,6 @@ class ApplyThesaurus(
             .with_field("countries")
             .with_other_field("subregions")
             .where_directory_is(self.params.root_dir)
-            .with_counter_flag(-1)
+            .with_prompt_flag(-1)
             .build()
         )

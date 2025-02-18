@@ -15,7 +15,7 @@ def internal__preprocess_isbn(root_dir):
 
     internal__log_message(
         msgs="Processing 'isbn' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__transform_field(

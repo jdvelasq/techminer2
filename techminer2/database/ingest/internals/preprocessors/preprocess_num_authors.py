@@ -15,7 +15,7 @@ def internal__preprocess_num_authors(root_dir):
 
     internal__log_message(
         "Counting authors per document.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__count_terms_per_record(

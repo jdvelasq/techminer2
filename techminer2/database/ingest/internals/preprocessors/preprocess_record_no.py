@@ -12,7 +12,7 @@ def internal__preprocess_record_no(root_dir):
     #
     internal__log_message(
         msgs="Assign 'record_no' identifier to each record",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"

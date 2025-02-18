@@ -11,15 +11,15 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.abbreviations import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.abbreviations import ApplyThesaurus
+## >>> (
+## ...     ApplyThesaurus()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
 
 """
@@ -83,7 +83,7 @@ def apply_thesaurus(
 
     # -------------------------------------------------------------------------------------------
     for abbr, values in tqdm(
-        abbreviations_dict.items(), desc="Remmplacing abbreviations"
+        abbreviations_dict.items(), desc="Reemplacing abbreviations"
     ):
         #
         # Replace abbreviations in descriptor keys

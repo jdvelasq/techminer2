@@ -10,20 +10,20 @@
 Sort Thesaurus by Match
 ===============================================================================
 
->>> from techminer2.thesaurus.countries import SortThesaurusByMatch
->>> (
-...     SortThesaurusByMatch()
-...     # 
-...     # THESAURUS:
-...     .having_keys_like("China")
-...     .having_keys_starting_with(None)
-...     .having_keys_ending_with(None)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... ) 
+## >>> from techminer2.thesaurus.countries import SortThesaurusByMatch
+## >>> (
+## ...     SortThesaurusByMatch()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .having_keys_like("China")
+## ...     .having_keys_starting_with(None)
+## ...     .having_keys_ending_with(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... ) 
 --INFO-- The thesaurus file 'example/thesaurus/countries.the.txt' has been rerodered.
 
 

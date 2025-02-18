@@ -15,7 +15,7 @@ def internal__preprocess_document_title(root_dir):
 
     internal__log_message(
         msgs="Cleaning 'document_title' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__clean_text(

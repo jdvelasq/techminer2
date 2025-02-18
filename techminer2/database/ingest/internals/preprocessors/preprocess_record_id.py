@@ -72,7 +72,7 @@ def internal__preprocess_record_id(root_dir):
     #
     internal__log_message(
         msgs="Creating 'record_id' column",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"

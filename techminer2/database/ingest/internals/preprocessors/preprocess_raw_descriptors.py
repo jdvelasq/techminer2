@@ -14,7 +14,7 @@ def internal__preprocess_raw_descriptors(root_dir):
 
     internal__log_message(
         msgs="Processing 'raw_descriptors' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__merge_fields(

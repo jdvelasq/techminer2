@@ -13,7 +13,7 @@ def internal__drop_empty_columns(root_dir):
 
     internal__log_message(
         msgs="Dropping NA columns in database file",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     dataframe = pd.read_csv(
@@ -37,5 +37,5 @@ def internal__drop_empty_columns(root_dir):
         removed_cols = set(original_cols) - set(dataframe.columns)
         internal__log_message(
             msgs=removed_cols,
-            counter_flag=-1,
+            prompt_flag=-1,
         )

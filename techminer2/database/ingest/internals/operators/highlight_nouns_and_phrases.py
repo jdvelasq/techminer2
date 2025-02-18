@@ -15,12 +15,7 @@ from textblob import TextBlob  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from .....internals.log_message import internal__log_message
-from .....package_data.text_processing import (
-    internal__load_connectors,
-    internal__load_determiners,
-    internal__load_known_noun_phrases,
-    internal__load_technical_stopwords,
-)
+from .....package_data.text_processing import internal__load_text_processing_terms
 
 
 def internal__highlight_nouns_and_phrases(
@@ -32,9 +27,7 @@ def internal__highlight_nouns_and_phrases(
 ):
     """:meta private:"""
 
-    internal__log_message(
-        f"Highlighting tokens in '{source}' field.", counter_flag=True
-    )
+    internal__log_message(f"Highlighting tokens in '{source}' field.", prompt_flag=True)
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 
@@ -56,13 +49,13 @@ def internal__highlight_nouns_and_phrases(
         author_and_index_keywords
     )
 
-    known_noun_phrases = internal__load_known_noun_phrases()
+    known_noun_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
 
     spacy_nlp = spacy.load("en_core_web_sm")
 
-    stopwords = internal__load_technical_stopwords()
-    connectors = internal__load_connectors()
-    determiners = internal__load_determiners()
+    stopwords = internal__load_text_processing_terms("technical_stopwords.txt")
+    connectors = internal__load_text_processing_terms("connectors.txt")
+    determiners = internal__load_text_processing_terms("determiners.txt")
     determiners = (
         "(" + "|".join(["^" + determiner + r"\s" for determiner in determiners]) + ")"
     )

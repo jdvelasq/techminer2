@@ -62,7 +62,7 @@ def internal__rename_columns(root_dir):
 
     internal__log_message(
         msgs="Applying Scopus tags to database files.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"

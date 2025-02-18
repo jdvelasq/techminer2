@@ -11,15 +11,15 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.descriptors import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.descriptors import ApplyThesaurus
+## >>> (
+## ...     ApplyThesaurus()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- Applying `descriptors.the.txt` thesaurus to author/index keywords and abstract/title words
 
 """
@@ -48,7 +48,7 @@ class ApplyThesaurus(
 
         for index, (raw_column, column) in enumerate(PAIRS):
             if index == 0:
-                counter_flag = self.params.counter_flag
+                counter_flag = self.params.prompt_flag
             else:
                 counter_flag = -1
 
@@ -58,6 +58,6 @@ class ApplyThesaurus(
                 .with_field(raw_column)
                 .with_other_field(column)
                 .where_directory_is(self.params.root_dir)
-                .with_counter_flag(counter_flag)
+                .with_prompt_flag(counter_flag)
                 .build()
             )

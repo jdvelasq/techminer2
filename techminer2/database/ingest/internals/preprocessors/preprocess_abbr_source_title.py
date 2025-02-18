@@ -15,7 +15,7 @@ def internal__preprocess_abbr_source_title(root_dir):
 
     internal__log_message(
         msgs="Processing 'abbr_source_title' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__fillna(

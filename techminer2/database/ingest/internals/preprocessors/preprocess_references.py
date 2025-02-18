@@ -36,7 +36,7 @@ def internal__preprocess_references(root_dir):
 
     internal__log_message(
         msgs="Processing 'references' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     abbrs = _get_sources_info(root_dir)

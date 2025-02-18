@@ -198,10 +198,10 @@ class ScopusDataImporter:
         hours, rem = divmod(elapsed_time, 3600)
         minutes, seconds = divmod(rem, 60)
 
-        internal__log_message(msgs="Process finished.", counter_flag=True)
+        internal__log_message(msgs="Process finished.", prompt_flag=True)
         internal__report_imported_records(root_dir)
 
         internal__log_message(
             msgs=f"Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}",
-            counter_flag=True,
+            prompt_flag=True,
         )

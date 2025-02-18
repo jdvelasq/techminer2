@@ -15,7 +15,7 @@ def internal__preprocess_global_citations(root_dir):
 
     internal__log_message(
         msgs="Processing 'global_citations' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__transform_field(

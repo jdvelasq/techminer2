@@ -9,9 +9,9 @@
 """Sorts connectors.
 
 >>> from techminer2.package_data.text_processing import (
-...     internal__sort_lines_in_data_files,
+...     internal__sort_text_processing_terms,
 ... )
->>> internal__sort_connectors()
+>>> internal__sort_text_processing_terms()
 
 """
 import glob
@@ -45,7 +45,7 @@ def sort_file(file_name):
             file.write(connector + "\n")
 
 
-def internal__sort_lines_in_data_files():
+def internal__sort_text_processing_terms():
     """:meta private:"""
 
     file_names = get_file_names()

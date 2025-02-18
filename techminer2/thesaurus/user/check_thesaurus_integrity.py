@@ -11,19 +11,19 @@ Check Thesaurus Integrity
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import CheckThesaurusIntegrity
->>> (
-...     CheckThesaurusIntegrity()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     .with_field("descriptors")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.user import CheckThesaurusIntegrity
+## >>> (
+## ...     CheckThesaurusIntegrity()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     .with_field("descriptors")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- Checking `descriptors.the.txt` integrity.
 
 """
@@ -76,7 +76,7 @@ class CheckThesaurusIntegrity(
                 msgs.append("    ...")
             internal__log_message(
                 msgs=msgs,
-                counter_flag=-1,
+                prompt_flag=-1,
             )
 
         else:
@@ -84,7 +84,7 @@ class CheckThesaurusIntegrity(
             # LOG:
             internal__log_message(
                 msgs=f"  Done.",
-                counter_flag=self.params.counter_flag,
+                prompt_flag=self.params.prompt_flag,
             )
 
     # -------------------------------------------------------------------------
@@ -99,7 +99,7 @@ class CheckThesaurusIntegrity(
                 "  Thesaurus file: '{file_path}'.",
                 "           Field: '{self.params.field}'.",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         #
         terms_in_thesaurus = self.load_terms_in_thesaurus(file_path)

@@ -29,7 +29,7 @@ def internal__preprocess_local_references(root_dir):
 
     internal__log_message(
         msgs="Homogenizing local references.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     dataframe = pd.read_csv(

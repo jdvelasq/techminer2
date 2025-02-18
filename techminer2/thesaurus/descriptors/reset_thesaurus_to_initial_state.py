@@ -12,18 +12,18 @@ Reset Thesaurus to Initial State
 
 
 
->>> from techminer2.thesaurus.user import ResetThesaurusToInitialState
->>> (
-...     ResetThesaurusToInitialState()  
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.user import ResetThesaurusToInitialState
+## >>> (
+## ...     ResetThesaurusToInitialState()  
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 
 
 """

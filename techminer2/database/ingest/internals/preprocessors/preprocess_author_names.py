@@ -99,7 +99,7 @@ def internal__preprocess_author_names(root_dir):
 
     internal__log_message(
         msgs="Disambiguating author names.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     authors_data = _load_authors_data(root_dir)

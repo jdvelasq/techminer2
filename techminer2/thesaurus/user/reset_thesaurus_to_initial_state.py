@@ -11,18 +11,18 @@ Reset Thesaurus to Initial State
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import ResetThesaurusToInitialState
->>> (
-...     ResetThesaurusToInitialState()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.user import ResetThesaurusToInitialState
+## >>> (
+## ...     ResetThesaurusToInitialState()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The thesaurus file 'example/thesaurus/descriptors.the.txt' has been reseted.
 
 """
@@ -70,7 +70,7 @@ class ResetThesaurusToInitialState(
                 "Reseting thesaurus to initial state.",
                 "  Thesaurus file: '{file_path}'.",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         #
         th_dict = internal__load_thesaurus_as_mapping(file_path)
@@ -80,7 +80,7 @@ class ResetThesaurusToInitialState(
         # LOG:
         internal__log_message(
             msgs="  Done.",
-            counter_flag=-1,
+            prompt_flag=-1,
         )
 
 

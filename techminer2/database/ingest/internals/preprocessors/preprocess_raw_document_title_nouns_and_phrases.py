@@ -20,7 +20,7 @@ def internal__preprocess_raw_document_title_nouns_and_phrases(root_dir):
             "Processing 'raw_document_title_nouns_and_phrases' column.",
             "Highlighting noun and phrases.",
         ],
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__highlight_nouns_and_phrases(
@@ -31,7 +31,7 @@ def internal__preprocess_raw_document_title_nouns_and_phrases(root_dir):
 
     internal__log_message(
         msgs="Collecting noun and phrases.",
-        counter_flag=-1,
+        prompt_flag=-1,
     )
 
     internal__collect_nouns_and_phrases(

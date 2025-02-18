@@ -11,19 +11,19 @@ Sort Thesaurus by Key
 ===============================================================================
 
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.descriptors import SortThesaurusByKey
->>> (
-...     SortThesaurusByKey()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("alphabetical")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
+## >>> from techminer2.thesaurus.descriptors import SortThesaurusByKey
+## >>> (
+## ...     SortThesaurusByKey()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .having_keys_ordered_by("alphabetical")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The thesaurus file 'examples/thesaurus/descriptors.the.txt' has been ordered alphabetically.
 
 """

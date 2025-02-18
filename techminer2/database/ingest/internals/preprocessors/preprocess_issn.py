@@ -15,7 +15,7 @@ def internal__preprocess_issn(root_dir):
 
     internal__log_message(
         msgs="Processing 'issn' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__transform_field(

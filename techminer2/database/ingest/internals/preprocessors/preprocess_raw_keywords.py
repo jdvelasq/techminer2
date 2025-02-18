@@ -14,7 +14,7 @@ def internal__preprocess_raw_keywords(root_dir):
 
     internal__log_message(
         msgs="Creating 'raw_keywords' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__merge_fields(

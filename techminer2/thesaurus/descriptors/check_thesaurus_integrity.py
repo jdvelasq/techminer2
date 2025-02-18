@@ -9,15 +9,15 @@
 Check Thesaurus Integrity
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import CheckThesaurusIntegrity
->>> (
-...     CheckThesaurusIntegrity()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.descriptors import CheckThesaurusIntegrity
+## >>> (
+## ...     CheckThesaurusIntegrity()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 
 
 
@@ -43,6 +43,6 @@ class CheckThesaurusIntegrity(
             .with_thesaurus_file("descriptors.the.txt")
             .with_field("descriptors")
             .where_directory_is(self.params.root_dir)
-            .with_counter_flag(self.params.counter_flag)
+            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )

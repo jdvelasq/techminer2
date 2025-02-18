@@ -10,22 +10,22 @@
 Apply Thesaurus
 ===============================================================================
 
->>> from techminer2.thesaurus.user import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     #
-...     # FIELDS:
-...     .with_field("descriptors")
-...     .with_other_field("descriptors")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.user import ApplyThesaurus
+## >>> (
+## ...     ApplyThesaurus()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     #
+## ...     # FIELDS:
+## ...     .with_field("descriptors")
+## ...     .with_other_field("descriptors")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
 
 """
@@ -104,7 +104,7 @@ class ApplyThesaurus(
                 f"    Source field: '{self.params.field}'",
                 f"    Target field: '{self.params.other_field}'",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         #
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
@@ -113,10 +113,7 @@ class ApplyThesaurus(
         internal__write_records(params=self.params, records=records)
         #
         # LOG:
-        internal__log_message(
-            msgs="  Done!",
-            counter_flag=-1,
-        )
+        internal__log_message(msgs="  Done.", prompt_flag=-1)
 
 
 # =============================================================================

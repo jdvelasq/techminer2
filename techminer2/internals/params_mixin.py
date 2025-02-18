@@ -34,7 +34,6 @@ class Params:
     colormap: str = "Blues"
     contour_opacity: float = 0.6
     correlation_method: str = "pearson"
-    counter_flag: Optional[int] = False
     cumulative_sum: bool = False
 
     #
@@ -82,6 +81,7 @@ class Params:
     #
     # N
     #
+    initial_newline: bool = False
     node_colors: Optional[List] = None
     node_size: int = 10
     node_size_range: Tuple[int, int] = (5, 20)
@@ -107,6 +107,7 @@ class Params:
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
     plot_dimensions: Tuple[int, int] = (0, 1)
+    prompt_flag: Optional[int] = False
 
     #
     # Q
@@ -562,10 +563,6 @@ class ParamsMixin:
         self.params.correlation_method = method
         return self
 
-    def with_counter_flag(self, flag):
-        self.params.counter_flag = flag
-        return self
-
     def with_cumulative_sum(self, cumulative_sum):
         self.params.cumulative_sum = cumulative_sum
         return self
@@ -578,8 +575,16 @@ class ParamsMixin:
         self.params.pattern = pattern
         return self
 
+    def with_initial_newline(self, initial_newline):
+        self.params.initial_newline = initial_newline
+        return self
+
     def with_other_field(self, field):
         self.params.other_field = field
+        return self
+
+    def with_prompt_flag(self, flag):
+        self.params.prompt_flag = flag
         return self
 
     def with_query_expression(self, expr):

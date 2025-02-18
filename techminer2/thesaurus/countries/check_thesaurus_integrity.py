@@ -6,41 +6,43 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Thesaurus 
+Check Thesaurus Integrity
 ===============================================================================
 
-## >>> from techminer2.thesaurus.references import ApplyThesaurus
+## >>> from techminer2.thesaurus.countries import CheckThesaurusIntegrity
 ## >>> (
-## ...     ApplyThesaurus()
+## ...     CheckThesaurusIntegrity()
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
 ## ...     #
 ## ...     .build()
 ## ... )
---INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
+
+
 
 """
 
 from ...internals.mixins import ParamsMixin
-from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user.check_thesaurus_integrity import (
+    CheckThesaurusIntegrity as CheckUserThesaurusIntegrity,
+)
 
 
 #
 #
-class ApplyThesaurus(
+class CheckThesaurusIntegrity(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def build(self):
 
-        # Affiliations to countries mmapping
         (
-            ApplyUserThesaurus()
-            .with_thesaurus_file("references.the.txt")
-            .with_field("raw_global_references")
-            .with_other_field("global_references")
+            CheckUserThesaurusIntegrity()
+            .with_thesaurus_file("countries.the.txt")
+            .with_field("affiliations")
             .where_directory_is(self.params.root_dir)
+            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )

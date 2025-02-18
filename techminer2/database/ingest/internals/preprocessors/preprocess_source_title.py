@@ -27,7 +27,7 @@ def internal__preprocess_source_title(root_dir):
 
     internal__log_message(
         msgs="Processing 'source_title' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__transform_field(

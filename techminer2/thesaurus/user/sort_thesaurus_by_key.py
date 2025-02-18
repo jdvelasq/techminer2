@@ -10,20 +10,20 @@
 Sort Thesaurus by Key
 ===============================================================================
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.user import SortThesaurusByKey
->>> (
-...     SortThesaurusByKey()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     .having_keys_ordered_by("alphabetical")
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
+## >>> from techminer2.thesaurus.user import SortThesaurusByKey
+## >>> (
+## ...     SortThesaurusByKey()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .with_thesaurus_file("descriptors.the.txt")
+## ...     .having_keys_ordered_by("alphabetical")
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The thesaurus file descriptors.the.txt has been ordered alphabetically.
 
 
@@ -86,7 +86,7 @@ class SortThesaurusByKey(
                 f"Sorting thesaurus {order_by}.",
                 f"      Thesaurus file: '{file_path}'",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
 
         th_dict = internal__load_thesaurus_as_mapping(file_path)
@@ -95,7 +95,7 @@ class SortThesaurusByKey(
 
         internal__log_message(
             msgs="  Done.",
-            counter_flag=-1,
+            prompt_flag=-1,
         )
 
 

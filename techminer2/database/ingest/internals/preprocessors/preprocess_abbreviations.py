@@ -157,7 +157,7 @@ def internal__preprocess_abbreviations(root_dir):
 
     internal__log_message(
         msgs="Extracting abbrevitions from descriptors and abstracts.",
-        counter_flag=True,
+        prompt_flag=True,
     )
     #
     #
@@ -172,5 +172,5 @@ def internal__preprocess_abbreviations(root_dir):
     #
     internal__log_message(
         msgs=f"  {len(mod_frame)} extracted abbrebiations.",
-        counter_flag=-1,
+        prompt_flag=-1,
     )

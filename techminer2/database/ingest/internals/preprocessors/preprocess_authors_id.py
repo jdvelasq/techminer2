@@ -35,7 +35,7 @@ def internal__preprocess_authors_id(root_dir):
 
     internal__log_message(
         msgs="Processing 'authors_id' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__transform_field(

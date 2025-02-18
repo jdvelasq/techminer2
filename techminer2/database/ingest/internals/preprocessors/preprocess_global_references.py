@@ -36,7 +36,7 @@ def internal__preprocess_global_references(root_dir):
 
     internal__log_message(
         msgs="Homogenizing global references",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     documents = _create_documents_dataframe(root_dir)

@@ -13,20 +13,20 @@ Sort Thesaurus by Match
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2.thesaurus.references import SortThesaurusByMatch
->>> (
-...     SortThesaurusByMatch()
-...     # 
-...     # THESAURUS:
-...     .having_keys_like("univ")
-...     .having_keys_starting_with(None)
-...     .having_keys_ending_with(None)
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... ) 
+## >>> from techminer2.thesaurus.references import SortThesaurusByMatch
+## >>> (
+## ...     SortThesaurusByMatch()
+## ...     # 
+## ...     # THESAURUS:
+## ...     .having_keys_like("univ")
+## ...     .having_keys_starting_with(None)
+## ...     .having_keys_ending_with(None)
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... ) 
 --INFO-- The thesaurus file 'example/thesaurus/references.the.txt' has been rerodered.
 
 

@@ -14,7 +14,7 @@ def internal__compress_raw_files(root_dir):
 
     internal__log_message(
         msgs="Compressing raw data files.",
-        counter_flag=1,
+        prompt_flag=1,
     )
 
     raw_dir = os.path.join(root_dir, "raw-data")

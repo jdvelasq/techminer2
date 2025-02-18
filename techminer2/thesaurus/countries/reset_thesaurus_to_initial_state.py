@@ -11,20 +11,19 @@ Reset Thesaurus to Initial
 ===============================================================================
 
 
->>> from techminer2.thesaurus.countries import ResetThesaurusToInitialState
->>> (
-...     ResetThesaurusToInitialState()
-...     #
-...     # DATABASE:
-...     .where_directory_is("example/")
-...     #
-...     .build()
-... )
+## >>> from techminer2.thesaurus.countries import ResetThesaurusToInitialState
+## >>> (
+## ...     ResetThesaurusToInitialState()
+## ...     #
+## ...     # DATABASE:
+## ...     .where_directory_is("example/")
+## ...     #
+## ...     .build()
+## ... )
 --INFO-- The thesaurus file 'example/thesaurus/countires.the.txt' has been reseted.
 
 """
 import pathlib
-import sys
 
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
@@ -32,6 +31,7 @@ import pkg_resources  # type: ignore
 from ...database.internals.io import internal__load_records
 from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
+from .apply_thesaurus import ApplyThesaurus as ApplyCountryThesaurus
 
 
 class ResetThesaurusToInitialState(
@@ -166,7 +166,7 @@ class ResetThesaurusToInitialState(
                 "Reseting thesaurus to initial state.",
                 f"  Thesaurus file: '{file_path}'.",
             ],
-            counter_flag=self.params.counter_flag,
+            prompt_flag=self.params.prompt_flag,
         )
         # -------------------------------------------------------------------------
 
@@ -184,10 +184,12 @@ class ResetThesaurusToInitialState(
         self.step_08_create_thesaurus_file(affiliations, file_path)
 
         # -------------------------------------------------------------------------
-        internal__log_message(
-            msgs="  Done!",
-            counter_flag=-1,
-        )
+        ApplyCountryThesaurus().update(**self.params.__dict__).with_prompt_flag(
+            -1
+        ).build()
+
+        # -------------------------------------------------------------------------
+        internal__log_message(msgs="  Done.", prompt_flag=-1)
 
 
 # =============================================================================

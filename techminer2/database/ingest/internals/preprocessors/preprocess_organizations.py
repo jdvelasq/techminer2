@@ -16,13 +16,13 @@ def internal__preprocess_organizations(root_dir):
 
     internal__log_message(
         msgs="Processing 'organizations' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
-    ResetThesaurusToInitialState().update(root_dir=root_dir).with_counter_flag(
+    ResetThesaurusToInitialState().update(root_dir=root_dir).with_prompt_flag(
         -1
     ).build()
-    ApplyThesaurus().update(root_dir=root_dir).with_counter_flag(-1).build()
+    ApplyThesaurus().update(root_dir=root_dir).with_prompt_flag(-1).build()
 
 
 # =============================================================================

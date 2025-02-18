@@ -7,40 +7,41 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort Thesaurus by Key
+Cleanup Thesaurus
 ===============================================================================
 
 
-## >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
-## >>> from techminer2.thesaurus.countries import SortThesaurusByKey
+## >>> from techminer2.thesaurus.countries import CleanupThesaurus
 ## >>> (
-## ...     SortThesaurusByKey()
-## ...     # 
-## ...     # THESAURUS:
-## ...     .having_keys_ordered_by("alphabetical")
+## ...     CleanupThesaurus()
 ## ...     #
 ## ...     # DATABASE:
 ## ...     .where_directory_is("example/")
 ## ...     #
 ## ...     .build()
 ## ... )
---INFO-- The thesaurus file 'examples/thesaurus/countries.the.txt' has been ordered alphabetically.
+
 
 """
 from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
-from ..user.sort_thesaurus_by_key import SortThesaurusByKey as SortUserThesaurusByKey
+from ..user.cleanup_thesaurus import CleanupThesaurus as CleanupUserThesaurus
+from .apply_thesaurus import ApplyThesaurus
 
 
-class SortThesaurusByKey(
+class CleanupThesaurus(
     ParamsMixin,
 ):
     """:meta private:"""
 
     def build(self):
-        return (
-            SortUserThesaurusByKey()
+
+        (
+            CleanupUserThesaurus()
             .update(**self.params.__dict__)
             .with_thesaurus_file("countries.the.txt")
+            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )
+
+        ApplyThesaurus().update(**self.params.__dict__).with_prompt_flag(-1).build()

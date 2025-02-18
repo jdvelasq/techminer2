@@ -16,7 +16,7 @@ def internal__preprocess_raw_author_keywords(root_dir):
 
     internal__log_message(
         msgs="Cleaning 'raw_author_keywords' column.",
-        counter_flag=True,
+        prompt_flag=True,
     )
 
     internal__clean_raw_keywords(
