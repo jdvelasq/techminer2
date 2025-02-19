@@ -25,8 +25,8 @@ Fill NA
 ... )
 
 """
-from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.fillna import internal__fillna
+from ..._internals.mixins import ParamsMixin
+from ..ingest._internals.operators.fillna import internal__fillna
 from .protected_fields import PROTECTED_FIELDS
 
 

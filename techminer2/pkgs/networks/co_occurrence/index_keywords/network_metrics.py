@@ -45,7 +45,7 @@ COMMERCE 03:0846                7     0.042885   0.612903  0.049157
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.network_metrics import NetworkMetrics as UserNetworkMetrics
 
 

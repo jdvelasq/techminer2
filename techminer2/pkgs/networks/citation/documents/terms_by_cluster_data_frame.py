@@ -42,12 +42,12 @@ Terms by Cluster Frame
 
 
 """
-from .....internals.mixins import ParamsMixin
-from .....internals.nx import (
+from ....._internals.mixins import ParamsMixin
+from ....._internals.nx import (
     internal__cluster_nx_graph,
     internal__extract_communities_to_frame,
 )
-from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
+from .._internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
 class TermsByClusterDataFrame(

@@ -1,6 +1,6 @@
 """"Thesaurus common functions."""
 
-from ...internals.log_message import internal__log_message
+from ..._internals.log_message import internal__log_message
 from . import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,

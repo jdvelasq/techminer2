@@ -84,7 +84,7 @@ FINANCIAL_TECHNOLOGY         5  ...                    1.0
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
 
-from ....internals.mixins import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from ..performance import DataFrame as PerformanceMetricsDataFrame
 from ..terms_by_year import DataFrame as TermsByYearDataFrame
 

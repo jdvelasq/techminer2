@@ -48,7 +48,7 @@ Terms to Cluster Mapping
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.documents_by_cluster_mapping import (
     DocumentsByClusterMapping as UserDocumentsByClusterMapping,
 )

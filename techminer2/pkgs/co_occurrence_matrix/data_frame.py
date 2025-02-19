@@ -100,7 +100,7 @@ Co-occurrence DataFrame
 
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from .matrix_data_frame import MatrixDataFrame
 
 

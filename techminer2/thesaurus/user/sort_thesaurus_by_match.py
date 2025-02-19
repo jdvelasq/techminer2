@@ -32,8 +32,8 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,

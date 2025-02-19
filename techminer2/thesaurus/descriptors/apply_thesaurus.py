@@ -25,7 +25,7 @@ Apply Thesaurus
 """
 
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
 
 PAIRS = [

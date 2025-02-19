@@ -28,8 +28,8 @@ Process a Field
 ... )
 
 """
-from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.transform_field import internal__transform_field
+from ..._internals.mixins import ParamsMixin
+from ..ingest._internals.operators.transform_field import internal__transform_field
 from .protected_fields import PROTECTED_FIELDS
 
 

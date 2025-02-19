@@ -61,8 +61,8 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
 
 """
-from ...internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
-from ..internals.io.load_filtered_database import internal__load_filtered_database
+from ..._internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
+from .._internals.io.load_filtered_database import internal__load_filtered_database
 
 
 class FindRecords(

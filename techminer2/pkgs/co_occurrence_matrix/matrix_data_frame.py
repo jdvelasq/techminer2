@@ -210,9 +210,9 @@ TECHNOLOGY 02:0310                          1  ...                   2
 
 
 """
-from ...database.internals.io import internal__load_filtered_database
+from ..._internals.mixins import ParamsMixin
+from ...database._internals.io import internal__load_filtered_database
 from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
-from ...internals.mixins import ParamsMixin
 
 
 class MatrixDataFrame(

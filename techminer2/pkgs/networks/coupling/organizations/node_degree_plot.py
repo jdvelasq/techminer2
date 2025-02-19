@@ -44,8 +44,8 @@ Network Degree Plot
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.from_others.node_degree_plot import InternalNodeDegreePlot
+from ....._internals.mixins import ParamsMixin
+from .._internals.from_others.node_degree_plot import InternalNodeDegreePlot
 
 
 class NodeDegreePlot(

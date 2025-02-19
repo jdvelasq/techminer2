@@ -91,7 +91,9 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from ...correlation.internals.internal__correlation_map import internal__correlation_map
+from ...correlation._internals.internal__correlation_map import (
+    internal__correlation_map,
+)
 from .cluster_centers_dataframe import cluster_centers_frame
 from .cluster_to_terms_mapping import cluster_to_terms_mapping
 

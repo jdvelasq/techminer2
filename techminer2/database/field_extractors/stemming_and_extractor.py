@@ -40,7 +40,7 @@ Stemming Field with AND
 
 """
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.stemming import internal__stemming_and
 
 

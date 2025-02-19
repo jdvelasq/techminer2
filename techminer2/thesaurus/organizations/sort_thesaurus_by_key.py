@@ -27,7 +27,7 @@ Sort Thesaurus by Key
 --INFO-- The thesaurus file 'examples/thesaurus/organizations.the.txt' has been ordered alphabetically.
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..user.sort_thesaurus_by_key import SortThesaurusByKey as SortUserThesaurusByKey
 
 

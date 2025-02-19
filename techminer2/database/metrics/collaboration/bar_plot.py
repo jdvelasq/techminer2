@@ -47,7 +47,7 @@ Bar Plot
 """
 import plotly.express as px  # type: ignore
 
-from ....internals.params_mixin import ParamsMixin
+from ...._internals.params_mixin import ParamsMixin
 from .data_frame import DataFrame
 
 

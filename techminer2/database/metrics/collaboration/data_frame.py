@@ -40,8 +40,8 @@ Australia        5               783  ...                     4      0.80
 [5 rows x 6 columns]
     
 """
-from ....internals.mixins import ParamsMixin
-from ...internals.io import internal__load_filtered_database
+from ...._internals.mixins import ParamsMixin
+from ..._internals.io import internal__load_filtered_database
 from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 

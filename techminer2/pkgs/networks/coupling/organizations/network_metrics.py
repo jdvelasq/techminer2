@@ -32,8 +32,8 @@ Network Metrics
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.from_others.network_metrics import InternalNetworkMetrics
+from ....._internals.mixins import ParamsMixin
+from .._internals.from_others.network_metrics import InternalNetworkMetrics
 
 
 class NetworkMetrics(

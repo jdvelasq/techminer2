@@ -23,7 +23,7 @@ Check Thesaurus Integrity
 
 """
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..user.check_thesaurus_integrity import (
     CheckThesaurusIntegrity as CheckUserThesaurusIntegrity,
 )

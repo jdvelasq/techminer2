@@ -45,7 +45,7 @@ Buchak G. 1:0390           2     0.000000   0.105263  0.052219
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ...co_occurrence.user.network_metrics import NetworkMetrics as UserNetworkMetrics
 
 

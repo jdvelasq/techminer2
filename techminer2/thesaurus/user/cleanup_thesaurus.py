@@ -29,8 +29,8 @@ from functools import lru_cache  # type: ignore
 
 from textblob import Word  # type: ignore
 
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
     internal__generate_user_thesaurus_file_path,

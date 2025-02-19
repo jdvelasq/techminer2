@@ -46,8 +46,8 @@ Column Plot
 
 
 """
-from ....internals.params_mixin import ParamsMixin
-from ....internals.plots.internal__column_plot import internal__column_plot
+from ...._internals.params_mixin import ParamsMixin
+from ...._internals.plots.internal__column_plot import internal__column_plot
 from .data_frame import DataFrame
 
 

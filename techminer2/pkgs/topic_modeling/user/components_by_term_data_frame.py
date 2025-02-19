@@ -73,8 +73,8 @@ component                   ...
 """
 import pandas as pd  # type: ignore
 
+from ...._internals.mixins import ParamsMixin
 from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from ....internals.mixins import ParamsMixin
 
 
 class ComponentsByTermDataFrame(

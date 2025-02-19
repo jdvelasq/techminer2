@@ -45,7 +45,7 @@ Treemap
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.treemap import Treemap as UserTreemap
 
 

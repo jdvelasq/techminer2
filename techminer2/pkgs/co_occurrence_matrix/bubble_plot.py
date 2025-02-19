@@ -53,8 +53,8 @@ Bubble Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...internals.mixins import ParamsMixin
-from ...internals.plots.internal__bubble_plot import internal__bubble_plot
+from ..._internals.mixins import ParamsMixin
+from ..._internals.plots.internal__bubble_plot import internal__bubble_plot
 from .data_frame import DataFrame
 
 

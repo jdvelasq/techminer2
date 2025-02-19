@@ -107,7 +107,7 @@ Clusters to Terms Mapping
 
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from .term_occurrence_by_cluster import TermOccurrenceByCluster
 
 

@@ -32,7 +32,7 @@ Finds a string in the terms of a thesaurus.
 
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..user.sort_thesaurus_by_match import (
     SortThesaurusByMatch as SortUserThesaurusByMatch,
 )

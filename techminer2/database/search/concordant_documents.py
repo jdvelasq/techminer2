@@ -46,7 +46,7 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 <BLANKLINE>
     
 """
-from ...internals.mixins import ParamsMixin, RecordViewerMixin
+from ..._internals.mixins import ParamsMixin, RecordViewerMixin
 from .concordant_mapping import ConcordantMapping
 
 

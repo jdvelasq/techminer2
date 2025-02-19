@@ -38,8 +38,8 @@ United Kingdom 03:0636      12     0.072246   0.750000  0.047458
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.from_others.network_metrics import InternalNetworkMetrics
+from ....._internals.mixins import ParamsMixin
+from .._internals.from_others.network_metrics import InternalNetworkMetrics
 
 
 class NetworkMetrics(

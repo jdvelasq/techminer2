@@ -52,9 +52,9 @@ import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ...database.internals.io import internal__load_records
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
+from ...database._internals.io import internal__load_records
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
     ThesaurusMixin,

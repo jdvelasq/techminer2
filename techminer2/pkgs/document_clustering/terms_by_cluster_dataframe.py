@@ -69,7 +69,7 @@ Terms by Cluster Dataframe
 """
 import pandas as pd  # type: ignore
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from .clusters_to_terms_mapping import ClustersToTermsMapping
 
 

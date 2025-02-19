@@ -39,8 +39,8 @@ Burtch G., 2014, MIS QUART MANAGE INF SYST 1:4      12  ...  0.038056
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
+from ....._internals.mixins import ParamsMixin
+from .._internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
 
 
 class NetworkMetrics(

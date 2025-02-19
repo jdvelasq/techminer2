@@ -41,7 +41,7 @@ Contains
 
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.contains import internal__contains
 
 

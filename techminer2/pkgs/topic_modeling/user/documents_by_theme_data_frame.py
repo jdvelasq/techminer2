@@ -68,8 +68,8 @@ Brummer C., 2019, GEORGET LAW J, V107, P235         0.012505  ...  0.012502
 """
 import pandas as pd  # type: ignore
 
+from ...._internals.mixins import ParamsMixin
 from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from ....internals.mixins import ParamsMixin
 
 
 class DocumentsByThemeDataFrame(

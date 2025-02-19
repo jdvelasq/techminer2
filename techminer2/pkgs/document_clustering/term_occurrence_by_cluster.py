@@ -76,8 +76,8 @@ THE_FIELD 06:1031                         4  0  0  2  0  0  0  0
 CONSUMERS 06:0804                         5  0  1  0  0  0  0  0
 
 """
+from ..._internals.mixins import ParamsMixin
 from ...database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from ...internals.mixins import ParamsMixin
 
 
 class TermOccurrenceByCluster(

@@ -28,16 +28,16 @@ import time
 
 from tqdm import tqdm
 
-from ...internals.log_message import internal__log_message
-from .internals.db import (
+from ..._internals.log_message import internal__log_message
+from ._internals.db import (
     internal__compress_raw_files,
     internal__create_project_structure,
     internal__drop_empty_columns,
     internal__load_raw_files,
     internal__rename_columns,
 )
-from .internals.db.report_imported_records import internal__report_imported_records
-from .internals.preprocessors import (  # type: ignore
+from ._internals.db.report_imported_records import internal__report_imported_records
+from ._internals.preprocessors import (  # type: ignore
     internal__preprocess_abbr_source_title,
     internal__preprocess_abbreviations,
     internal__preprocess_abstract,

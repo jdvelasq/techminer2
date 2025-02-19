@@ -8,8 +8,8 @@
 
 from typing import Dict, List, Optional, Tuple
 
-from ....internals import Params
-from ...internals.io import internal__load_filtered_database
+from ...._internals import Params
+from ..._internals.io import internal__load_filtered_database
 
 
 def internal__get_field_values_from_database(params):

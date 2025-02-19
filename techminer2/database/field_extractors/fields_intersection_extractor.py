@@ -40,7 +40,7 @@ Fields Intersection
 
 """
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.fields_intersection import internal__fields_intersection
 
 

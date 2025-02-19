@@ -45,13 +45,13 @@ Node Degree Frame
 
 
 """
-from .....internals.mixins import ParamsMixin
-from .....internals.nx import (
+from ....._internals.mixins import ParamsMixin
+from ....._internals.nx import (
     internal__assign_degree_to_nodes,
     internal__collect_node_degrees,
     internal__create_node_degrees_data_frame,
 )
-from ..internals.create_nx_graph import internal__create_nx_graph
+from .._internals.create_nx_graph import internal__create_nx_graph
 
 
 class NodeDegreeDataFrame(

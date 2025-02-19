@@ -35,7 +35,7 @@ Match
 
 """
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.match import internal__match
 
 

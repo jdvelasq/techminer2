@@ -26,7 +26,7 @@ Sort Thesaurus by Fuzzy Match
 --INFO-- The thesaurus file 'example/thesaurus/references.the.txt' has been rerodered.
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..user.sort_thesaurus_by_fuzzy_match import (
     SortThesaurusByFuzzyMatch as SortUserThesaurusByFuzzyMatch,
 )

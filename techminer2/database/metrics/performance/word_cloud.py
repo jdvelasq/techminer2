@@ -44,8 +44,8 @@ Word Cloud
 
 """
 
-from ....internals.params_mixin import ParamsMixin
-from ....internals.plots.internal__word_cloud import internal__word_cloud
+from ...._internals.params_mixin import ParamsMixin
+from ...._internals.plots.internal__word_cloud import internal__word_cloud
 from .data_frame import DataFrame
 
 

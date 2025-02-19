@@ -70,7 +70,7 @@ Terms by Dimensions Map
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..internals.manifold_2d_map import manifold_2d_map
+from .._internals.manifold_2d_map import manifold_2d_map
 from .terms_by_dimension_dataframe import terms_by_dimension_frame
 
 

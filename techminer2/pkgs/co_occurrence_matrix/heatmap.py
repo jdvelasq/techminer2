@@ -55,8 +55,8 @@ Heatmap
 
 
 """
-from ...internals.mixins import ParamsMixin
-from ...internals.plots.internal__heatmap import internal__heatmap
+from ..._internals.mixins import ParamsMixin
+from ..._internals.plots.internal__heatmap import internal__heatmap
 from .matrix_data_frame import MatrixDataFrame
 
 

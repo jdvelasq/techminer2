@@ -44,7 +44,7 @@ Treemap
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ...co_occurrence.user.treemap import Treemap as UserTreemap
 
 

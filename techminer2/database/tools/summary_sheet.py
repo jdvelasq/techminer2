@@ -36,8 +36,8 @@ Summary Sheet
 """
 import pandas as pd  # type: ignore
 
-from ...internals.mixins import ParamsMixin
-from ..internals.io import internal__load_filtered_database
+from ..._internals.mixins import ParamsMixin
+from .._internals.io import internal__load_filtered_database
 
 
 class SummarySheet(

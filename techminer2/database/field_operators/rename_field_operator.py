@@ -25,8 +25,8 @@ Rename a Field
 
 
 """
-from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.rename_field import internal__rename_field
+from ..._internals.mixins import ParamsMixin
+from ..ingest._internals.operators.rename_field import internal__rename_field
 from .protected_fields import PROTECTED_FIELDS
 
 

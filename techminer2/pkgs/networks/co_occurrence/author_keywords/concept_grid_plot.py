@@ -45,7 +45,7 @@ Concept Grid Plot
 #     :align: center
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.concept_grid_plot import ConceptGridPlot as UserConceptGridPlot
 
 

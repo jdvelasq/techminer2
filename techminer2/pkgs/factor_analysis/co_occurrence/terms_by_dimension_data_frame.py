@@ -54,7 +54,7 @@ Terms by Dimension Frame
 import pandas as pd  # type: ignore
 
 # from ...cross_co_occurrence import co_occurrence_matrix
-from ...co_occurrence_matrix.internals.normalize_matrix import (
+from ...co_occurrence_matrix._internals.normalize_matrix import (
     internal__normalize_matrix,
 )
 

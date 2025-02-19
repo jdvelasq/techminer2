@@ -54,7 +54,7 @@ CASE_STUDY 02:0340                          2  ...                           0
 
 """
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..co_occurrence_matrix import MatrixDataFrame
 
 

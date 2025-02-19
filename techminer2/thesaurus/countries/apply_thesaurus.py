@@ -24,11 +24,11 @@ Apply Thesaurus
 """
 import sys
 
-from ...database.ingest.internals.operators.transform_field import (
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
+from ...database.ingest._internals.operators.transform_field import (
     internal__transform_field,
 )
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
 from ..system import ApplyThesaurus as ApplySystemThesaurus
 from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
 

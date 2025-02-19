@@ -28,8 +28,8 @@ import re
 
 import pandas as pd  # type: ignore
 
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import Params, ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import Params, ParamsMixin
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
     internal__generate_system_thesaurus_file_path,

@@ -70,8 +70,8 @@ DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
 
 """
+from ....._internals.mixins import ParamsMixin
 from .....database.tools import RecordViewer
-from .....internals.mixins import ParamsMixin
 from .clusters_to_terms_mapping import ClustersToTermsMapping
 
 

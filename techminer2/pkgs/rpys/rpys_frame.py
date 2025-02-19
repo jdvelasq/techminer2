@@ -30,8 +30,8 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 """
 import pandas as pd  # type: ignore
 
-from ...database.internals.io import internal__load_filtered_database
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
+from ...database._internals.io import internal__load_filtered_database
 
 
 class RPYSDataFrame(

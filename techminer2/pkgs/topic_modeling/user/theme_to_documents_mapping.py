@@ -110,7 +110,7 @@ Theme to Documents Mapping
 
 
 """
-from ....internals.mixins import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from .documents_by_theme_data_frame import DocumentsByThemeDataFrame
 
 

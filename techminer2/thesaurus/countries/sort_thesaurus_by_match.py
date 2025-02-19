@@ -29,8 +29,8 @@ Sort Thesaurus by Match
 
 
 """
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
 from ..user.sort_thesaurus_by_match import (
     SortThesaurusByMatch as SortUserThesaurusByMatch,
 )

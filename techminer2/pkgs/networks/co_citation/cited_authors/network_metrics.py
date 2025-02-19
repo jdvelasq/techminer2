@@ -37,8 +37,8 @@ Gomber P. 1:08         14     0.058402   0.595745  0.043989
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
+from ....._internals.mixins import ParamsMixin
+from .._internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
 
 
 class NetworkMetrics(

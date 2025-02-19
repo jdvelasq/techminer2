@@ -36,9 +36,9 @@ Coverage
 
 
 """
-from ...internals.mixins import ParamsMixin
-from ..internals.io.load_filtered_database import internal__load_filtered_database
-from ..internals.io.load_user_stopwords import internal__load_user_stopwords
+from ..._internals.mixins import ParamsMixin
+from .._internals.io.load_filtered_database import internal__load_filtered_database
+from .._internals.io.load_user_stopwords import internal__load_user_stopwords
 
 
 class Coverage(

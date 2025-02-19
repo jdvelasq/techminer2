@@ -31,9 +31,9 @@ Apply Thesaurus
 """
 import sys
 
-from ...database.internals.io import internal__load_records, internal__write_records
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
+from ...database._internals.io import internal__load_records, internal__write_records
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_mapping,

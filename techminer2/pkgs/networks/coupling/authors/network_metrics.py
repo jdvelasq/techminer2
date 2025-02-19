@@ -38,8 +38,8 @@ Jagtiani J. 3:0317       8      0.00000   0.438596  0.027560
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.from_others.network_metrics import InternalNetworkMetrics
+from ....._internals.mixins import ParamsMixin
+from .._internals.from_others.network_metrics import InternalNetworkMetrics
 
 
 class NetworkMetrics(

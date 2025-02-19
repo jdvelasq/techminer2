@@ -43,8 +43,8 @@ World Map
 
 
 """
-from ....internals.params_mixin import ParamsMixin
-from ....internals.plots.internal__world_map import internal__world_map
+from ...._internals.params_mixin import ParamsMixin
+from ...._internals.plots.internal__world_map import internal__world_map
 from .data_frame import DataFrame
 
 

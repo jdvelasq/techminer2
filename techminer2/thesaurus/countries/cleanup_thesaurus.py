@@ -23,8 +23,8 @@ Cleanup Thesaurus
 
 
 """
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
 from ..user.cleanup_thesaurus import CleanupThesaurus as CleanupUserThesaurus
 from .apply_thesaurus import ApplyThesaurus
 

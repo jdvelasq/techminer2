@@ -44,13 +44,13 @@ DATA 07:1086    7             2           7  ...   2    87.082869           0.73
 """
 import numpy as np
 
+from ..._internals.mixins import ParamsMixin
+from ..._internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 from ...database.metrics.general import DataFrame as GeneralMetricsDataFrame
 from ...database.metrics.terms_by_year.data_frame import (
     DataFrame as TermsByYearDataFrame,
 )
 from ...database.metrics.trend.data_frame import DataFrame as TrendMetricsDataFrame
-from ...internals.mixins import ParamsMixin
-from ...internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 
 # from ..metrics.trend_metrics._compute_trend_metrics import compute_trend_metrics
 

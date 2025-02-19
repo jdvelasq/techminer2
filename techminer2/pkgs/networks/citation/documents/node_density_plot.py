@@ -45,14 +45,14 @@ Node Density Plot
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-from .....internals.mixins import ParamsMixin
-from .....internals.nx import (
+from ....._internals.mixins import ParamsMixin
+from ....._internals.nx import (
     internal__assign_textfont_sizes_based_on_citations,
     internal__cluster_nx_graph,
     internal__compute_spring_layout_positions,
     internal__create_network_density_plot,
 )
-from ..internals.from_documents.create_nx_graph import internal__create_nx_graph
+from .._internals.from_documents.create_nx_graph import internal__create_nx_graph
 
 
 class NodeDensityPlot(

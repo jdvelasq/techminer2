@@ -81,9 +81,9 @@ DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
 
 
 """
+from ...._internals.mixins import ParamsMixin
 from ....database.tools import RecordViewer
-from ....internals.mixins import ParamsMixin
-from .internals.compute_main_path import internal__compute_main_path
+from ._internals.compute_main_path import internal__compute_main_path
 
 
 class MainPathDocuments(

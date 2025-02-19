@@ -44,7 +44,7 @@ REGULATORS 08:0974      19     0.013932        1.0  0.046255
 TECHNOLOGY 13:1594      19     0.013932        1.0  0.059519
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.network_metrics import NetworkMetrics as UserNetworkMetrics
 
 

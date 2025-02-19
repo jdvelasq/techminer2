@@ -134,8 +134,8 @@ CASE_STUDY 02:0340               0     0     1     1     2
 
 """
 
-from ....internals.mixins import ParamsMixin, SortAxesMixin
-from ...internals.io import internal__load_filtered_database
+from ...._internals.mixins import ParamsMixin, SortAxesMixin
+from ..._internals.io import internal__load_filtered_database
 from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 

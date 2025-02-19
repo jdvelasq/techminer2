@@ -41,7 +41,7 @@ Ends With
  'MARKETPLACE_LENDING']
  
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.ends_with import internal__ends_with
 
 

@@ -38,8 +38,8 @@ MANAGE SCI 1:30                     25     0.014031   0.878788  0.040817
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
+from ....._internals.mixins import ParamsMixin
+from .._internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
 
 
 class NetworkMetrics(

@@ -65,7 +65,7 @@ Cluster to Terms Mapping
 
 
 """
-from ....internals.mixins import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from .components_by_term_data_frame import ComponentsByTermDataFrame
 
 

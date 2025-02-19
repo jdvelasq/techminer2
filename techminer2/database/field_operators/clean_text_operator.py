@@ -24,8 +24,8 @@ Clean text
 ... )
 
 """
-from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.clean_text import internal__clean_text
+from ..._internals.mixins import ParamsMixin
+from ..ingest._internals.operators.clean_text import internal__clean_text
 from .protected_fields import PROTECTED_FIELDS
 
 

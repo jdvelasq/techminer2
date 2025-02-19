@@ -51,8 +51,8 @@ Node Density Plot
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.node_density_plot import NodeDensityPlot as InternalNodeDensityPlot
+from ....._internals.mixins import ParamsMixin
+from .._internals.node_density_plot import NodeDensityPlot as InternalNodeDensityPlot
 
 
 class NodeDensityPlot(

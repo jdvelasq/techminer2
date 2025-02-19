@@ -49,8 +49,8 @@ Node Degree Plot
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.from_others.node_degree_plot import (
+from ....._internals.mixins import ParamsMixin
+from .._internals.from_others.node_degree_plot import (
     NodeDegreePlot as OtherNodeDegreePlot,
 )
 

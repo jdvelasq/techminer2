@@ -53,7 +53,7 @@ Node Density Plot
 
 """
 
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ...co_occurrence.user.node_density_plot import (
     NodeDensityPlot as UserNodeDensityPlot,
 )

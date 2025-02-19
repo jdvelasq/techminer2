@@ -24,8 +24,8 @@ Collect Nouns and Phrases
 ... )
 
 """
-from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.collect_nouns_and_phrases import (
+from ..._internals.mixins import ParamsMixin
+from ..ingest._internals.operators.collect_nouns_and_phrases import (
     internal__collect_nouns_and_phrases,
 )
 from .protected_fields import PROTECTED_FIELDS

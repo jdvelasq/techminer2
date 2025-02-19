@@ -54,8 +54,8 @@ Network Plot
 
 
 """
-from .....internals.mixins import ParamsMixin
-from ..internals.network_plot import NetworkPlot as InternalNetworkPlot
+from ....._internals.mixins import ParamsMixin
+from .._internals.network_plot import NetworkPlot as InternalNetworkPlot
 
 
 class NetworkPlot(

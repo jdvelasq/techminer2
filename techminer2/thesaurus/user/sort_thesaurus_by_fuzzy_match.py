@@ -48,8 +48,8 @@ Sort Thesaurus by Fuzzy Match
 import pandas as pd  # type: ignore
 from fuzzywuzzy import process  # type: ignore
 
-from ...internals.log_message import internal__log_message
-from ...internals.mixins import ParamsMixin
+from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
 from .._internals import (
     ThesaurusMixin,
     internal__generate_user_thesaurus_file_path,

@@ -55,7 +55,7 @@ Butterfly Plot
 """
 import plotly.graph_objects as go  # type: ignore
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from .data_frame import DataFrame
 
 

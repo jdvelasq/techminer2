@@ -24,8 +24,8 @@ Merge Fields
 ... )
 
 """
-from ...internals.mixins import ParamsMixin
-from ..ingest.internals.operators.merge_fields import internal__merge_fields
+from ..._internals.mixins import ParamsMixin
+from ..ingest._internals.operators.merge_fields import internal__merge_fields
 from .protected_fields import PROTECTED_FIELDS
 
 

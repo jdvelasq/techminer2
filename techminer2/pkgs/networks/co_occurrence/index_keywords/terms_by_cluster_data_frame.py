@@ -48,7 +48,7 @@ Terms by Cluster Frame
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.terms_by_cluster_data_frame import (
     TermsByClusterDataFrame as UserTermsByClusterDataFrame,
 )

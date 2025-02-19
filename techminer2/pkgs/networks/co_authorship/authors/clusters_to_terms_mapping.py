@@ -55,7 +55,7 @@ Clusters to Terms Mapping
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ...co_occurrence.user.clusters_to_terms_mapping import (
     ClustersToTermsMapping as UserClustersToTermsMapping,
 )

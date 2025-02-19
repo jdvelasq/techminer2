@@ -49,7 +49,7 @@ Terms by Cluster Summary
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ..user.terms_by_cluster_summary import (
     TermsByClusterSummary as UserTermsByClusterSummary,
 )

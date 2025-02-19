@@ -86,7 +86,7 @@ Manifold Terms by Dimensions Map
 
 
 """
-from ..internals.manifold_2d_map import manifold_2d_map
+from .._internals.manifold_2d_map import manifold_2d_map
 from .terms_by_dimension_data_frame import terms_by_dimension_frame
 
 

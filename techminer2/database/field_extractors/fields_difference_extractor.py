@@ -40,7 +40,7 @@ Fields difference
 
 """
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.fields_difference import internal__fields_difference
 
 

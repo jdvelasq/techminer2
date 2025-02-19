@@ -57,8 +57,8 @@ Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...            
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from ....internals.mixins import ParamsMixin, SortAxesMixin
-from ...internals.io import internal__load_filtered_database
+from ...._internals.mixins import ParamsMixin, SortAxesMixin
+from ..._internals.io import internal__load_filtered_database
 from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
 
 

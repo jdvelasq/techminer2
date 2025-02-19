@@ -43,8 +43,8 @@ Bar Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.params_mixin import ParamsMixin
-from ....internals.plots.internal__bar_plot import internal__bar_plot
+from ...._internals.params_mixin import ParamsMixin
+from ...._internals.plots.internal__bar_plot import internal__bar_plot
 from .data_frame import DataFrame
 
 

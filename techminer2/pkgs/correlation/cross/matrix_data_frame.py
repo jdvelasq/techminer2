@@ -52,9 +52,9 @@ Zavolokina L. 2:0181               0.000  ...                   1.0
     
 
 """
-from ....internals.mixins import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from ...co_occurrence_matrix import MatrixDataFrame as CoOccurrenceMatrixDataFrame
-from ..internals.internal__compute_corr_matrix import internal__compute_corr_matrix
+from .._internals.internal__compute_corr_matrix import internal__compute_corr_matrix
 
 
 class MatrixDataFrame(

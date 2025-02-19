@@ -61,14 +61,14 @@ Dataframe
 """
 import numpy as np
 
-from ....internals.mt.mt_calculate_global_performance_metrics import (
+from ...._internals.mt.mt_calculate_global_performance_metrics import (
     _mt_calculate_global_performance_metrics,
 )
-from ....internals.mt.mt_extract_top_n_terms_by_metric import (
+from ...._internals.mt.mt_extract_top_n_terms_by_metric import (
     _mt_extract_top_n_terms_by_metric,
 )
-from ....internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
-from ....internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
+from ...._internals.mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
+from ...._internals.mt.mt_term_occurrences_by_year import _mt_term_occurrences_by_year
 
 
 def dataframe(

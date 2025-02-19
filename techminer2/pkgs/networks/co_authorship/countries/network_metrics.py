@@ -44,7 +44,7 @@ China 08:1085               4     0.012671   0.386728  0.115357
 Denmark 02:0330             4     0.050682   0.355789  0.074453
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ...co_occurrence.user.network_metrics import NetworkMetrics as UserNetworkMetrics
 
 

@@ -25,7 +25,7 @@ from functools import lru_cache  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 
 THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 

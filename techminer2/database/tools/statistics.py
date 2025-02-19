@@ -34,8 +34,8 @@ AGROPAY                1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0
 [5 rows x 56 columns]
 
 """
-from ...internals.mixins import ParamsMixin
-from ..internals.io import internal__load_filtered_database
+from ..._internals.mixins import ParamsMixin
+from .._internals.io import internal__load_filtered_database
 
 
 class Statistics(

@@ -45,8 +45,8 @@ Cleveland Dot Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....internals.params_mixin import ParamsMixin
-from ....internals.plots.internal__cleveland_dot_plot import (
+from ...._internals.params_mixin import ParamsMixin
+from ...._internals.plots.internal__cleveland_dot_plot import (
     internal__cleveland_dot_plot,
 )
 from .data_frame import DataFrame

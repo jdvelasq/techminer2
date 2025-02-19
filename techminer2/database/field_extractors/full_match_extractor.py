@@ -34,7 +34,7 @@ Full Match
 ['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ._internals.full_match import internal__full_match
 
 

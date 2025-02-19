@@ -61,7 +61,7 @@ Network Plot
 
 
 """
-from .....internals.mixins import ParamsMixin
+from ....._internals.mixins import ParamsMixin
 from ...co_occurrence.user.network_plot import NetworkPlot as UserNetworkPlot
 
 

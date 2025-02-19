@@ -68,7 +68,7 @@ term                                   ...
 """
 import pandas as pd  # type: ignore
 
-from ....internals.mixins import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from .cluster_to_terms_mapping import ClusterToTermsMapping
 
 

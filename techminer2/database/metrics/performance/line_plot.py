@@ -45,8 +45,8 @@ Line Plot
 
 
 """
-from ....internals.params_mixin import ParamsMixin
-from ....internals.plots.internal__line_plot import internal__line_plot
+from ...._internals.params_mixin import ParamsMixin
+from ...._internals.plots.internal__line_plot import internal__line_plot
 from .data_frame import DataFrame
 
 

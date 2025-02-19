@@ -28,7 +28,7 @@ Sort Thesaurus by Fuzzy Match
 
 
 """
-from ...internals.mixins import ParamsMixin
+from ..._internals.mixins import ParamsMixin
 from ..user.sort_thesaurus_by_fuzzy_match import (
     SortThesaurusByFuzzyMatch as SortUserThesaurusByFuzzyMatch,
 )
