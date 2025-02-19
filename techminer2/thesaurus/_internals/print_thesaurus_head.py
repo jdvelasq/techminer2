@@ -8,7 +8,7 @@ from .load_thesaurus_as_data_frame import internal__load_thesaurus_as_data_frame
 
 def internal__print_thesaurus_head(
     params,
-    n=5,
+    n=8,
 ):
     """Print the head of the thesaurus."""
 

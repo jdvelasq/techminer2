@@ -10,29 +10,89 @@
 Sort Thesaurus by Key
 ===============================================================================
 
-## >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
-## >>> from techminer2.thesaurus.user import SortThesaurusByKey
-## >>> (
-## ...     SortThesaurusByKey()
-## ...     # 
-## ...     # THESAURUS:
-## ...     .with_thesaurus_file("descriptors.the.txt")
-## ...     .having_keys_ordered_by("alphabetical")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     #
-## ...     .build()
-## ... )
---INFO-- The thesaurus file descriptors.the.txt has been ordered alphabetically.
+>>> # TEST:
+>>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
+>>> from techminer2._internals import Params
+>>> params = Params().update(thesaurus_file="descriptors.the.txt", root_dir="example/")
 
 
+>>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
+>>> from techminer2.thesaurus.user import SortThesaurusByKey
+>>> (
+...     SortThesaurusByKey()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     .having_keys_ordered_by("alphabetical")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+>>> internal__print_thesaurus_head(params)
+-- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
+         :    'BEST_PRACTICE_ERP_PACKAGES : 'BEST_PRACTICE_ERP_PACKAGES                       
+         :                         'FRAUD : 'FRAUD                                            
+         :                  3D_NAVIGATION : 3D_NAVIGATION                                     
+         :                    3G_CELLULAR : 3G_CELLULAR                                       
+         :     3G_CELLULAR_COMMUNICATIONS : 3G_CELLULAR_COMMUNICATIONS                        
+         :                 3_D_TRAJECTORY : 3_D_TRAJECTORY                                    
+         :          4TH_GENERATION_MOBILE : 4TH_GENERATION_MOBILE                             
+         :                             5G : 5G                                                
+>>> from techminer2.thesaurus.user import SortThesaurusByKey
+>>> (
+...     SortThesaurusByKey()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     .having_keys_ordered_by("key_length")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+>>> internal__print_thesaurus_head(params)
+-- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
+         :                             5G : 5G                                                
+         :                             AI : AI                                                
+         :                             CO : CO                                                
+         :                             DR : DR                                                
+         :                             EU : EU                                                
+         :                              G : G                                                 
+         :                             IT : IT                                                
+         :                             OM : OM                                                
+>>> from techminer2.thesaurus.user import SortThesaurusByKey
+>>> (
+...     SortThesaurusByKey()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     .having_keys_ordered_by("word_length")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+>>> internal__print_thesaurus_head(params)
+-- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
+         : INFORMATION_TECHNOLOGY (IT ... : INFORMATION_TECHNOLOGY (IT) ACCEPTANCE            
+         : MANAGEMENT_INFORMATION_SYS ... : MANAGEMENT_INFORMATION_SYSTEM (MIS) IMPLEMENTATION
+         : NEAR_FIELD_COMMUNICATION ( ... : NEAR_FIELD_COMMUNICATION (NFC) TECHNOLOGY         
+         : POWER_MANAGEMENT (TELECOMM ... : POWER_MANAGEMENT (TELECOMMUNICATION)              
+         : RADIO_FREQUENCY_IDENTIFICA ... : RADIO_FREQUENCY_IDENTIFICATION (RFID) TECHNOLOGY  
+         :     REINFORCEMENT (PSYCHOLOGY) : REINFORCEMENT (PSYCHOLOGY)                        
+         : THEROLEOFSOCIALCAPITALINPEOPLE : THEROLEOFSOCIALCAPITALINPEOPLE                    
+         : THE_FINTECHPHILANTHROPYDEV ... : THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX        
+
+             
 """
-import sys
-
 from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
 from .._internals import (
+    ThesaurusMixin,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
 )
@@ -40,8 +100,24 @@ from .._internals import (
 
 class SortThesaurusByKey(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
+
+    # -------------------------------------------------------------------------
+    def step_01_get_thesaurus_path(self):
+        return internal__generate_user_thesaurus_file_path(params=self.params)
+
+    # -------------------------------------------------------------------------
+    def step_02_print_info_header(self, file_path, order_by):
+        internal__log_message(
+            msgs=[
+                f"Sorting thesaurus {order_by}.",
+                f"      Thesaurus file: '{file_path}'",
+            ],
+            prompt_flag=self.params.prompt_flag,
+            initial_newline=True,
+        )
 
     # -------------------------------------------------------------------------
     def get_thesaurus_sorted_keys(self, th_dict):
@@ -81,22 +157,12 @@ class SortThesaurusByKey(
             "word_length": "by word length",
         }[self.params.keys_order_by]
 
-        internal__log_message(
-            msgs=[
-                f"Sorting thesaurus {order_by}.",
-                f"      Thesaurus file: '{file_path}'",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
-
         th_dict = internal__load_thesaurus_as_mapping(file_path)
         sorted_keys = self.get_thesaurus_sorted_keys(th_dict)
         self.save_sorted_thesaurus_on_disk(file_path, th_dict, sorted_keys)
-
-        internal__log_message(
-            msgs="  Done.",
-            prompt_flag=-1,
-        )
+        #
+        self.print_thesaurus_head()
+        internal__log_message(msgs="  Done.", prompt_flag=-1)
 
 
 # =============================================================================

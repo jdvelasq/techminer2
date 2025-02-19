@@ -11,6 +11,12 @@ Create thesaurus
 ===============================================================================
 
 
+>>> # TEST:
+>>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
+>>> from techminer2._internals import Params
+>>> params = Params().update(thesaurus_file="demo.the.txt", root_dir="example/")
+
+
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> (
 ...     CreateThesaurus()
@@ -26,12 +32,7 @@ Create thesaurus
 ...     #
 ...     .build()
 ... )
-
->>> # TEST:
->>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
->>> from techminer2.internals import Params
->>> params = Params().update(thesaurus_file="demo.the.txt", root_dir="example/")
->>> internal__print_thesaurus_head(params, n=10)
+>>> internal__print_thesaurus_head(params)
 -- INFO -- Thesaurus head 'example/thesaurus/demo.the.txt'.
          :    'BEST_PRACTICE_ERP_PACKAGES : 'BEST_PRACTICE_ERP_PACKAGES                       
          :                         'FRAUD : 'FRAUD                                            
@@ -41,8 +42,6 @@ Create thesaurus
          :                 3_D_TRAJECTORY : 3_D_TRAJECTORY                                    
          :          4TH_GENERATION_MOBILE : 4TH_GENERATION_MOBILE                             
          :                             5G : 5G                                                
-         : 5G_MOBILE_COMMUNICATION_SY ... : 5G_MOBILE_COMMUNICATION_SYSTEMS                   
-         :                           ABAC : ABAC                                              
 
 
 """
@@ -73,11 +72,27 @@ class CreateThesaurus(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def step_01_load_records(self):
+    def step_01_get_thesaurus_path(self):
+        return internal__generate_user_thesaurus_file_path(params=self.params)
+
+    # -------------------------------------------------------------------------
+    def step_02_print_info_header(self, file_path):
+        internal__log_message(
+            msgs=[
+                "Creating thesaurus.",
+                f"            Thesaurus file: '{file_path}'",
+                f"              Source field: '{self.params.field}'",
+            ],
+            prompt_flag=self.params.prompt_flag,
+            initial_newline=True,
+        )
+
+    # -------------------------------------------------------------------------
+    def step_03_load_records(self):
         return internal__load_records(params=self.params)
 
     # -------------------------------------------------------------------------
-    def step_02_create_data_frame(self, records):
+    def step_04_create_data_frame(self, records):
         #
         keys = records[self.params.field].dropna()
         keys = keys.str.split("; ")
@@ -103,7 +118,7 @@ class CreateThesaurus(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_03_transform_british_to_american_spelling(self, data_frame):
+    def step_05_transform_british_to_american_spelling(self, data_frame):
         file_path = internal__generate_system_thesaurus_file_path(
             "language/british2american.the.txt"
         )
@@ -121,7 +136,7 @@ class CreateThesaurus(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_04_singularize_terms(self, data_frame):
+    def step_06_singularize_terms(self, data_frame):
         tqdm.pandas(desc="         :        Singularizing terms")
         data_frame["fingerprint"] = data_frame["fingerprint"].progress_apply(
             lambda x: " ".join(Word(w).singularize() for w in x.split())
@@ -130,7 +145,7 @@ class CreateThesaurus(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_05_remove_technical_stopwords(self, data_frame):
+    def step_07_remove_technical_stopwords(self, data_frame):
         tqdm.pandas(desc="         :         Removing stopwords")
         stopwords = internal__load_text_processing_terms("technical_stopwords.txt")
         data_frame["fingerprint"] = data_frame["fingerprint"].progress_apply(
@@ -140,7 +155,7 @@ class CreateThesaurus(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_06_transform_hypened_words(self, data_frame):
+    def step_08_transform_hypened_words(self, data_frame):
         #
         def f(x):
             for pattern, replacement in patterns:
@@ -162,14 +177,14 @@ class CreateThesaurus(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_07_sort_fingerprint_words(self, data_frame):
+    def step_09_sort_fingerprint_words(self, data_frame):
         data_frame["fingerprint"] = data_frame["fingerprint"].apply(
             lambda x: " ".join(sorted(x.split(" ")))
         )
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_08_generate_fingerprint2value_mapping(self, data_frame):
+    def step_10_generate_fingerprint2value_mapping(self, data_frame):
         data_frame = data_frame.sort_values(
             by=["fingerprint", "occ", "value"], ascending=[True, False, True]
         )
@@ -178,7 +193,7 @@ class CreateThesaurus(
         return mapping
 
     # -------------------------------------------------------------------------
-    def step_09_apply_mapping(self, data_frame, mapping):
+    def step_11_apply_mapping(self, data_frame, mapping):
         tqdm.pandas(desc="         :            Generating keys")
         data_frame["key"] = data_frame["fingerprint"].progress_apply(
             lambda x: mapping.get(x, x)
@@ -188,7 +203,7 @@ class CreateThesaurus(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def step_10_save_thesaurus(self, file_path, data_frame):
+    def step_12_save_thesaurus(self, file_path, data_frame):
         data_frame = data_frame.groupby("key").agg({"value": list})
         with open(file_path, "w", encoding="utf-8") as file:
             for _, row in data_frame.iterrows():
@@ -197,34 +212,24 @@ class CreateThesaurus(
                     file.write(f"  {value}\n")
 
     # -------------------------------------------------------------------------
+    def step_13_print_info_tail(self):
+        self.print_thesaurus_head()
+        internal__log_message(msgs="  Done.", prompt_flag=-1)
+
+    # -------------------------------------------------------------------------
     def build(self):
         """:meta private:"""
 
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        #
-        # LOG:
-        internal__log_message(
-            msgs=[
-                "Creating thesaurus.",
-                f"            Thesaurus file: '{file_path}'",
-                f"              Source field: '{self.params.field}'",
-            ],
-            prompt_flag=self.params.prompt_flag,
-            initial_newline=True,
-        )
-        #
-        #
-        records = self.step_01_load_records()
-        data_frame = self.step_02_create_data_frame(records)
-        data_frame = self.step_03_transform_british_to_american_spelling(data_frame)
-        data_frame = self.step_04_singularize_terms(data_frame)
-        data_frame = self.step_05_remove_technical_stopwords(data_frame)
-        data_frame = self.step_06_transform_hypened_words(data_frame)
-        data_frame = self.step_07_sort_fingerprint_words(data_frame)
-        mapping = self.step_08_generate_fingerprint2value_mapping(data_frame)
-        data_frame = self.step_09_apply_mapping(data_frame, mapping)
-        self.step_10_save_thesaurus(file_path, data_frame)
-        #
-        # LOG:
-        self.print_thesaurus_head(n=5)
-        internal__log_message(msgs="  Done.", prompt_flag=-1)
+        file_path = self.step_01_get_thesaurus_path()
+        self.step_02_print_info_header(file_path)
+        records = self.step_03_load_records()
+        data_frame = self.step_04_create_data_frame(records)
+        data_frame = self.step_05_transform_british_to_american_spelling(data_frame)
+        data_frame = self.step_06_singularize_terms(data_frame)
+        data_frame = self.step_07_remove_technical_stopwords(data_frame)
+        data_frame = self.step_08_transform_hypened_words(data_frame)
+        data_frame = self.step_09_sort_fingerprint_words(data_frame)
+        mapping = self.step_10_generate_fingerprint2value_mapping(data_frame)
+        data_frame = self.step_11_apply_mapping(data_frame, mapping)
+        self.step_12_save_thesaurus(file_path, data_frame)
+        self.step_13_print_info_tail()

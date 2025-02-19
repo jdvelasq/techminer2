@@ -10,6 +10,12 @@
 Sort Thesaurus by Fuzzy Match
 ===============================================================================
 
+>>> # TEST:
+>>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
+>>> from techminer2._internals import Params
+>>> params = Params().update(thesaurus_file="descriptors.the.txt", root_dir="example/")
+
+
 >>> from techminer2.thesaurus.user import SortThesaurusByFuzzyMatch
 >>> (
 ...     SortThesaurusByFuzzyMatch()
@@ -24,12 +30,6 @@ Sort Thesaurus by Fuzzy Match
 ...     #
 ...     .build()
 ... ) 
-
-
->>> # TEST:
->>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
->>> from techminer2.internals import Params
->>> params = Params().update(thesaurus_file="descriptors.the.txt", root_dir="example/")
 >>> internal__print_thesaurus_head(params, n=10)
 -- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
          :        ANALYTICAL_INTELLIGENCE : ANALYTICAL_INTELLIGENCE                           
@@ -151,7 +151,7 @@ class SortThesaurusByFuzzyMatch(
         internal__log_message(
             msgs=[f"          Founded: {len(findings)} keys."], prompt_flag=-1
         )
-        self.print_thesaurus_head(n=5)
+        self.print_thesaurus_head()
         internal__log_message(msgs=[f"  Done."], prompt_flag=-1)
 
 
