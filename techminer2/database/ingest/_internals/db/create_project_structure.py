@@ -1,6 +1,7 @@
 """Creates the project subdirectories and files."""
 
 import os
+import sys
 
 from ....._internals.log_message import internal__log_message
 
@@ -42,18 +43,14 @@ def internal__create_project_structure(root_dir):
     """
 
     # Create working directories
-    internal__log_message(
-        msgs="Creating working directories",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Creating working directories.")
+    sys.stderr.flush()
     for directory in PROJECT_DIRECTORIES:
         create_directory(os.path.join(root_dir, directory))
 
     # Create stopwords.txt file
-    internal__log_message(
-        msgs="Creating stopwords.txt file",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Creating stopwords.txt file")
+    sys.stderr.flush()
     create_file(os.path.join(root_dir, "my_keywords/stopwords.txt"))
 
     # Create _DO_NOT_TOUCH_.txt file

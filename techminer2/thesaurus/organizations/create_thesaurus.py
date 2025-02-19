@@ -25,6 +25,7 @@ Reset Thesaurus to Initial
 """
 import pathlib
 import re
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -72,7 +73,7 @@ NAMES = [
 ]
 
 
-class ResetThesaurusToInitialState(
+class CreateThesaurus(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -224,13 +225,11 @@ class ResetThesaurusToInitialState(
         file_path = self.step_01_generate_file_path()
 
         # -------------------------------------------------------------------------
-        internal__log_message(
-            msgs=[
-                "Reseting thesaurus to initial state.",
-                f"  Thesaurus file: '{file_path}'.",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
+        sys.stderr.write("\nINFO  Creating thesaurus file.")
+        sys.stderr.write(f"\n        Thesaurus file: {file_path}.")
+        sys.stderr.write("\n          Source field: affiliations.")
+        sys.stderr.flush()
+
         # -------------------------------------------------------------------------
 
         data_frame = self.step_02_generate_data_frame_from_country_thesaurus(file_path)
@@ -247,12 +246,6 @@ class ResetThesaurusToInitialState(
         self.step_11_save_data_frame_as_thesaurus(data_frame)
 
         # -------------------------------------------------------------------------
-        internal__log_message(
-            msgs=[
-                "  Done.",
-            ],
-            prompt_flag=-1,
-        )
 
 
 # =============================================================================

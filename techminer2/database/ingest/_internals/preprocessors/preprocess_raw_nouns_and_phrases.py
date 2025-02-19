@@ -6,16 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import sys
+
 from ....._internals.log_message import internal__log_message
 from ....field_operators.merge_fields_operator import internal__merge_fields
 
 
 def internal__preprocess_raw_noun_and_phrases(root_dir):
 
-    internal__log_message(
-        "Creating 'raw_nouns_and_phrases' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Creating 'raw_nouns_and_phrases' column.")
+    sys.stderr.flush()
+
     internal__merge_fields(
         source=[
             "raw_document_title_nouns_and_phrases",

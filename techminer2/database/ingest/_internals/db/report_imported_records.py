@@ -22,12 +22,11 @@ def internal__report_imported_records(root_dir):
     cited_by_records = len(dataframe[dataframe.db_cited_by].index)
     references_records = len(dataframe[dataframe.db_references].index)
 
-    sys.stderr.write(f"         :   {total_records:6d} total imported records\n")
-    sys.stderr.write(f"         :   {main_records:6d} records in main database\n")
+    sys.stderr.write(f"\nINFO  Report")
+    sys.stderr.write(f"\n                Total imported records: {total_records:6d}")
+    sys.stderr.write(f"\n              Records in main database: {main_records:6d}")
+    sys.stderr.write(f"\n          Records in cited by database: {cited_by_records:6d}")
     sys.stderr.write(
-        f"         :   {cited_by_records:6d} records in cited by database\n"
-    )
-    sys.stderr.write(
-        f"         :   {references_records:6d} records in references database\n"
+        f"\n        Records in references database: {references_records:6d}"
     )
     sys.stderr.flush()

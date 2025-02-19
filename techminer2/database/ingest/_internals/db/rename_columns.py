@@ -2,6 +2,7 @@
 """Chnage Scopus default column names to TechMiner2 default column names."""
 
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -60,10 +61,8 @@ SCOPUS_2_TECHMINER_TAGS = {
 def internal__rename_columns(root_dir):
     """Change Scopus original names."""
 
-    internal__log_message(
-        msgs="Applying Scopus tags to database files.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Applying Scopus tags to database files.")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

@@ -5,6 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+import sys
 
 from ....._internals.log_message import internal__log_message
 from ..operators.collect_nouns_and_phrases import internal__collect_nouns_and_phrases
@@ -15,13 +16,9 @@ from ..operators.highlight_nouns_and_phrases import (
 
 def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
 
-    internal__log_message(
-        msgs=[
-            "Processing 'raw_abstract_nouns_and_phrases' column.",
-            "Highlighting noun and phrases.",
-        ],
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'raw_abstract_nouns_and_phrases' column.")
+    # sys.stderr.write("\n")
+    sys.stderr.flush()
 
     internal__highlight_nouns_and_phrases(
         source="abstract",
@@ -29,10 +26,8 @@ def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
         root_dir=root_dir,
     )
 
-    internal__log_message(
-        msgs="Collecting noun and phrases.",
-        prompt_flag=-1,
-    )
+    sys.stderr.write("INFO  Collecting noun and phrases.")
+    sys.stderr.flush()
 
     internal__collect_nouns_and_phrases(
         source="abstract",

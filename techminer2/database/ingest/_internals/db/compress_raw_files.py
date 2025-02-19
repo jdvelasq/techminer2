@@ -2,20 +2,18 @@
 """Compress all CSV files in the root_dir/raw_data/ subdirectories."""
 
 import os
+import sys
 
 import pandas as pd  # type: ignore
 
-from ....._internals.log_message import internal__log_message
 from .get_subdirectories import internal__get_subdirectories
 
 
 def internal__compress_raw_files(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Compressing raw data files.",
-        prompt_flag=1,
-    )
+    sys.stderr.write("\nINFO  Compressing raw data files.")
+    sys.stderr.flush()
 
     raw_dir = os.path.join(root_dir, "raw-data")
     folders = internal__get_subdirectories(raw_dir)

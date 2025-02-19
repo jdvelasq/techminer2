@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -53,10 +54,8 @@ def _local_processing(text):
 def internal__preprocess_authors(root_dir):
     """Run authors importer."""
 
-    internal__log_message(
-        msgs="Processing 'authors' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'authors' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="raw_authors",

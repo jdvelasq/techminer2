@@ -8,6 +8,7 @@
 
 import os
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -17,11 +18,8 @@ from ..operators.copy_field import internal__copy_field
 
 def internal__preprocess_descriptors(root_dir):
 
-    internal__log_message(
-        msgs="Processing 'descriptors' column.",
-        prompt_flag=True,
-    )
-
+    sys.stderr.write("\nINFO  Processing 'descriptors' column.")
+    sys.stderr.flush()
     internal__copy_field(
         source="raw_descriptors",
         dest="descriptors",

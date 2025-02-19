@@ -8,6 +8,7 @@
 
 import os
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -73,10 +74,8 @@ def read_and_concatenate_files(files):
 def internal__load_raw_files(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Creating database file.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Creating database file.")
+    sys.stderr.flush()
 
     files = list_zip_filenames_in_raw_data(root_dir)
     dataframe = read_and_concatenate_files(files)

@@ -7,6 +7,8 @@
 # pylint: disable=too-many-statements
 
 
+import sys
+
 import pandas as pd  # type: ignore
 
 from ....._internals.log_message import internal__log_message
@@ -33,10 +35,8 @@ def _local_processing_func(text):
 def internal__preprocess_authors_id(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Processing 'authors_id' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'authors_id' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="raw_authors_id",

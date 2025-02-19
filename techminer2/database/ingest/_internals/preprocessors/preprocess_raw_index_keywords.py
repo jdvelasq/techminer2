@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import sys
+
 from ....._internals.log_message import internal__log_message
 from ..operators.clean_raw_keywords import internal__clean_raw_keywords
 
@@ -13,10 +15,8 @@ from ..operators.clean_raw_keywords import internal__clean_raw_keywords
 def internal__preprocess_raw_index_keywords(root_dir):
     """Run importer."""
 
-    internal__log_message(
-        msgs="Cleaning 'raw_index_keywords' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Cleaning 'raw_index_keywords' column.")
+    sys.stderr.flush()
 
     internal__clean_raw_keywords(
         source="raw_index_keywords",

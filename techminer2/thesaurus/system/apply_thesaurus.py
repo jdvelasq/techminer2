@@ -97,17 +97,15 @@ class ApplyThesaurus(
         file_path = internal__generate_system_thesaurus_file_path(
             self.params.thesaurus_file
         )
+
+        # -------------------------------------------------------------------------
+        sys.stderr.write("\nINFO  Applying system thesaurus.")
+        sys.stderr.write(f"\n        Thesaurus file: {file_path}.")
+        sys.stderr.write(f"\n          Source field: {self.params.field}.")
+        sys.stderr.write(f"\n          Target field: {self.params.other_field}.")
+        sys.stderr.flush()
         #
-        internal__log_message(
-            msgs=[
-                "Applying system thesaurus.",
-                f"  Thesaurus file: '{file_path}'",
-                f"    Source field: '{self.params.field}'",
-                f"    Target field: '{self.params.other_field}'",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
-        #
+
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
         records = internal__load_records(params=self.params)
         #
@@ -115,10 +113,6 @@ class ApplyThesaurus(
         #
         internal__write_records(params=self.params, records=records)
         #
-        internal__log_message(
-            msgs="  Done.",
-            prompt_flag=-1,
-        )
 
 
 # =============================================================================

@@ -1,18 +1,16 @@
 """Thesaurus internal functions"""
 
-from .generate_user_thesaurus_file_path import (
-    internal__generate_user_thesaurus_file_path,
-)
+import sys
+
 from .load_thesaurus_as_data_frame import internal__load_thesaurus_as_data_frame
 
 
 def internal__print_thesaurus_head(
-    params,
+    file_path,
     n=8,
 ):
     """Print the head of the thesaurus."""
 
-    file_path = internal__generate_user_thesaurus_file_path(params)
     data_frame = internal__load_thesaurus_as_data_frame(file_path)
     keys = data_frame.key
     keys = keys.drop_duplicates().head(n).tolist()
@@ -21,7 +19,7 @@ def internal__print_thesaurus_head(
     data_frame["value"] = data_frame["value"].str.join("; ")
 
     #
-    print(f"-- INFO -- Thesaurus head '{file_path}'.")
+    sys.stderr.write(f"\nINFO  Thesaurus head {file_path}.")
     for _, row in data_frame.iterrows():
         #
         key = row.key
@@ -34,4 +32,9 @@ def internal__print_thesaurus_head(
             value = row.value[:46] + " ..."
         value = f"{value:<50s}"
         #
-        print(f"         : {key} : {value}")
+        sys.stderr.write(f"\n        {key} : {value}")
+
+    sys.stderr.flush()
+
+
+# =============================================================================

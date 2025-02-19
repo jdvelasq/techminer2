@@ -5,6 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+import sys
 
 from ....._internals.log_message import internal__log_message
 from ..operators.clean_text import internal__clean_text
@@ -13,10 +14,8 @@ from ..operators.clean_text import internal__clean_text
 def internal__preprocess_document_title(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Cleaning 'document_title' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Cleaning 'document_title' column.")
+    sys.stderr.flush()
 
     internal__clean_text(
         source="raw_document_title",

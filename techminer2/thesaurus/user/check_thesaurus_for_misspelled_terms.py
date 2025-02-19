@@ -9,20 +9,20 @@
 Check Thesaurus for Misspelled Terms
 ===============================================================================
 
-## >>> from techminer2.thesaurus.user import CheckThesaurusForMisspelledTerms
-## >>> (
-## ...     CheckThesaurusForMisspelledTerms()
-## ...     # 
-## ...     # THESAURUS:
-## ...     .with_thesaurus_file("descriptors.the.txt")
-## ...     .having_maximum_occurrence(3)
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     #
-## ...     .build()
-## ... )
---INFO-- The thesaurus file 'example/thesaurus/descriptors.the.txt' has been processed.
+>>> from techminer2.thesaurus.user import CheckThesaurusForMisspelledTerms
+>>> (
+...     CheckThesaurusForMisspelledTerms()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     .having_maximum_occurrence(3)
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+
 
 """
 import sys
@@ -30,12 +30,12 @@ import sys
 import pandas as pd  # type: ignore
 from spellchecker import SpellChecker
 
-from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
-    internal__load_reversed_thesaurus_as_mapping,
     internal__load_thesaurus_as_data_frame,
+    internal__load_thesaurus_as_mapping,
+    internal__print_thesaurus_head,
 )
 
 
@@ -45,78 +45,115 @@ class CheckThesaurusForMisspelledTerms(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def load_terms_in_thesaurus(self, file_path):
-        reversed_th_dict = internal__load_reversed_thesaurus_as_mapping(file_path)
-        terms = list(reversed_th_dict.keys())
-        return terms
+    def step_01_get_thesaurus_file_path(self):
+        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
 
     # -------------------------------------------------------------------------
-    def extract_and_filter_words_from_terms(self, terms):
-        words = [word for term in terms for word in term.split("_")]
+    def step_02_print_info_header(self):
+
+        file_path = self.file_path
+
+        sys.stderr.write("\nINFO  Checking thesaurus mispelled keys.")
+        sys.stderr.write(f"\n        Thesaurus file: {file_path}")
+        sys.stderr.flush()
+
+    # -------------------------------------------------------------------------
+    def step_03_load_thesaurus_as_mapping(self):
+        self.mapping = internal__load_thesaurus_as_mapping(self.file_path)
+
+    # -------------------------------------------------------------------------
+    def step_04_extract_words_from_mapping(self):
+        terms = list(self.mapping.keys())
+        terms = [t.replace("_", " ") for t in terms]
+        words = [word for term in terms for word in term.split(" ")]
         words = pd.Series(words).value_counts()
         words = words[words <= self.params.maximum_occurrence]
         words = [word for word in words.index if word.isalpha()]
-        return words
+        self.words = words
 
     # -------------------------------------------------------------------------
-    def extract_mispelled_words(self, words):
+    def step_05_search_mispelled_words(self):
         spell = SpellChecker()
-        misspelled_words = spell.unknown(words)
+        misspelled_words = spell.unknown(self.words)
         misspelled_words = sorted(misspelled_words)
-        return misspelled_words
+        self.misspelled_words = misspelled_words
 
     # -------------------------------------------------------------------------
-    def sort_thesaurus_on_disk(self, misspelled_words):
-        #
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        data_frame = internal__load_thesaurus_as_data_frame(file_path=file_path)
+    def step_06_print_mispelled_words(self):
+        if len(self.misspelled_words) == 0:
+            sys.stderr.write("\n        No misspelled words found.")
+            sys.stderr.flush()
+            return
+
+        misspelled_words = self.misspelled_words[:10]
+        for i_word, word in enumerate(misspelled_words):
+            if i_word == 0:
+                sys.stderr.write(f"\n        Words: {word}")
+            else:
+                sys.stderr.write(f"\n               {word}")
+        if len(misspelled_words) == 10:
+            sys.stderr.write("\n               ...")
+        sys.stderr.flush()
+
+    # -------------------------------------------------------------------------
+    def step_07_sort_thesaurus_on_disk(self):
+
+        if len(self.misspelled_words) == 0:
+            return
+
+        # loads a new copy of the thesaurus
+        data_frame = internal__load_thesaurus_as_data_frame(file_path=self.file_path)
+
+        # search for misspelled words
         data_frame["misspelled"] = 0
-        for word in misspelled_words:
-            data_frame.loc[data_frame["key"].str.contains(word), "misspelled"] = 1
-        data_frame = data_frame.sort_values(
-            by=["misspelled", "key"], ascending=[False, True]
-        )
-        data_frame = data_frame.drop(columns=["misspelled"])
-        gropued = data_frame.groupby("key").agg({"value": list})
-        with open(file_path, "w", encoding="utf-8") as file:
-            for key, values in gropued.iterrows():
+        data_frame["fingerprint"] = data_frame["key"].str.lower().str.replace("_", " ")
+        for word in self.misspelled_words:
+            word = r"\b" + word + r"\b"
+            data_frame.loc[
+                data_frame["fingerprint"].str.contains(word, regex=True), "misspelled"
+            ] = 1
+        data_frame = data_frame.drop(columns=["fingerprint"])
+
+        misspelled_data_frame = data_frame[data_frame["misspelled"] == 1]
+        if len(misspelled_data_frame) == 0:
+            return
+        data_frame = data_frame[data_frame["misspelled"] == 0]
+
+        # writes the thesaurus to disk
+        with open(self.file_path, "w", encoding="utf-8") as file:
+
+            # writes the misspelled words
+            grouped = misspelled_data_frame.groupby("key").agg({"value": list})
+            for key, values in grouped.iterrows():
+                file.write(key + "\n")
+                for value in values["value"]:
+                    file.write("    " + value + "\n")
+
+            # writes the correct words
+            grouped = data_frame.groupby("key").agg({"value": list})
+            for key, values in grouped.iterrows():
                 file.write(key + "\n")
                 for value in values["value"]:
                     file.write("    " + value + "\n")
 
     # -------------------------------------------------------------------------
+    def step_08_print_info_tail(self):
+        sys.stderr.write("\n        Done.")
+        internal__print_thesaurus_head(file_path=self.file_path)
+        sys.stderr.flush()
+
+    # -------------------------------------------------------------------------
     def build(self):
         """:meta private:"""
 
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        #
-        # LOG:
-        internal__log_message(
-            msgs=[
-                "Checking thesaurus mispelled keys.",
-                "  Thesaurus file: '{file_path}'.",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
-        #
-        terms = self.load_terms_in_thesaurus(file_path)
-        words = self.extract_and_filter_words_from_terms(terms)
-        misspelled_words = self.extract_mispelled_words(words)
-        #
-        if len(misspelled_words) == 0:
-            internal__log_message(
-                msgs="  No misspelled words found.",
-                prompt_flag=-1,
-            )
-            return
-        #
-        self.sort_thesaurus_on_disk(misspelled_words)
-        #
-        #
-        msgs = ["    " + word for word in misspelled_words[:10]]
-        if len(misspelled_words) > 10:
-            msgs.append("    ...")
-        internal__log_message(msgs=msgs, prompt_flag=-1)
+        self.step_01_get_thesaurus_file_path()
+        self.step_02_print_info_header()
+        self.step_03_load_thesaurus_as_mapping()
+        self.step_04_extract_words_from_mapping()
+        self.step_05_search_mispelled_words()
+        self.step_06_print_mispelled_words()
+        self.step_07_sort_thesaurus_on_disk()
+        self.step_08_print_info_tail()
 
 
 # =============================================================================

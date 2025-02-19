@@ -7,6 +7,7 @@
 """Replace journal name in references. """
 
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
@@ -34,11 +35,6 @@ def _get_sources_info(root_dir):
 
 def internal__preprocess_references(root_dir):
 
-    internal__log_message(
-        msgs="Processing 'references' column.",
-        prompt_flag=True,
-    )
-
     abbrs = _get_sources_info(root_dir)
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
@@ -50,8 +46,13 @@ def internal__preprocess_references(root_dir):
         dtype=DTYPES,
     )
 
+    # sys.stderr.write("\n")
+    # sys.stderr.flush()
+
     for source, abbr_source_title in tqdm(
-        zip(abbrs.source, abbrs.abbr_source_title), total=len(abbrs), desc="         "
+        zip(abbrs.source, abbrs.abbr_source_title),
+        total=len(abbrs),
+        desc="INFO  Processing 'references' column",
     ):
 
         dataframe["raw_global_references"] = dataframe[

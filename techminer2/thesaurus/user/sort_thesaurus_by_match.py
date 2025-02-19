@@ -10,11 +10,6 @@
 Sort Thesaurus by Match
 ===============================================================================
 
->>> # TEST:
->>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
->>> from techminer2._internals import Params
->>> params = Params().update(thesaurus_file="descriptors.the.txt", root_dir="example/")
-
 
 >>> from techminer2.thesaurus.user import SortThesaurusByMatch
 >>> (
@@ -31,18 +26,7 @@ Sort Thesaurus by Match
 ...     #
 ...     .build()
 ... ) 
->>> internal__print_thesaurus_head(params, n=10)
--- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
-         :                   AGRIBUSINESS : AGRIBUSINESS                                      
-         :        AGRIBUSINESS_MANAGEMENT : AGRIBUSINESS_MANAGEMENT                           
-         : A_BUSINESS_STRATEGY_EVALUA ... : A_BUSINESS_STRATEGY_EVALUATION_MODEL              
-         :             A_SERVICE_BUSINESS : A_SERVICE_BUSINESS                                
-         :                       BUSINESS : BUSINESS                                          
-         :                     BUSINESSES : BUSINESSES                                        
-         :              BUSINESS_ANALYSIS : BUSINESS_ANALYSIS                                 
-         :         BUSINESS_AND_ECONOMICS : BUSINESS_AND_ECONOMICS                            
-         : BUSINESS_AND_INFORMATION_S ... : BUSINESS_AND_INFORMATION_SYSTEMS_RESEARCH         
-         :      BUSINESS_AND_IT_ALIGNMENT : BUSINESS_AND_IT_ALIGNMENT                         
+
 >>> (
 ...     SortThesaurusByMatch()
 ...     # 
@@ -57,18 +41,7 @@ Sort Thesaurus by Match
 ...     #
 ...     .build()
 ... ) 
->>> internal__print_thesaurus_head(params, n=10)
--- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
-         :                       BUSINESS : BUSINESS                                          
-         :                     BUSINESSES : BUSINESSES                                        
-         :              BUSINESS_ANALYSIS : BUSINESS_ANALYSIS                                 
-         :         BUSINESS_AND_ECONOMICS : BUSINESS_AND_ECONOMICS                            
-         : BUSINESS_AND_INFORMATION_S ... : BUSINESS_AND_INFORMATION_SYSTEMS_RESEARCH         
-         :      BUSINESS_AND_IT_ALIGNMENT : BUSINESS_AND_IT_ALIGNMENT                         
-         : BUSINESS_AND_MANAGEMENT_RE ... : BUSINESS_AND_MANAGEMENT_RESEARCH                  
-         : BUSINESS_APPLICATIONS_OF_C ... : BUSINESS_APPLICATIONS_OF_COMPUTERS                
-         :          BUSINESS_ARCHITECTURE : BUSINESS_ARCHITECTURE                             
-         :              BUSINESS_BENEFITS : BUSINESS_BENEFITS                                 
+
 >>> (
 ...     SortThesaurusByMatch()
 ...     # 
@@ -83,29 +56,19 @@ Sort Thesaurus by Match
 ...     #
 ...     .build()
 ... ) 
->>> internal__print_thesaurus_head(params, n=10)
--- INFO -- Thesaurus head 'example/thesaurus/descriptors.the.txt'.
-         :                   AGRIBUSINESS : AGRIBUSINESS                                      
-         :             A_SERVICE_BUSINESS : A_SERVICE_BUSINESS                                
-         :                       BUSINESS : BUSINESS                                          
-         :               DIGITAL_BUSINESS : DIGITAL_BUSINESS                                  
-         :                      EBUSINESS : EBUSINESS                                         
-         :            ELECTRONIC_BUSINESS : ELECTRONIC_BUSINESS                               
-         :                ETHICS_BUSINESS : ETHICS_BUSINESS                                   
-         :               EURASIA_BUSINESS : EURASIA_BUSINESS                                  
-         :                     E_BUSINESS : E_BUSINESS                                        
-         :                  GOOD_BUSINESS : GOOD_BUSINESS                                     
 
 
 """
+import sys
+
 import pandas as pd  # type: ignore
 
-from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
 from .._internals import (
     ThesaurusMixin,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
+    internal__print_thesaurus_head,
 )
 
 
@@ -116,42 +79,49 @@ class SortThesaurusByMatch(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def step_01_get_thesaurus_path(self):
-        return internal__generate_user_thesaurus_file_path(params=self.params)
+    def step_01_get_thesaurus_file_path(self):
+        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
 
     # -------------------------------------------------------------------------
-    def step_02_print_info_header(self, file_path):
-        internal__log_message(
-            msgs=[
-                "Sorting thesaurus by match.",
-                f"      Thesaurus file: '{file_path}'",
-                f"           Keys like: '{self.params.pattern}'",
-                f"  Keys starting with: '{self.params.pattern_startswith}'",
-                f"    Keys ending with: '{self.params.pattern_endswith}'",
-            ],
-            prompt_flag=self.params.prompt_flag,
-            initial_newline=True,
-        )
+    def step_02_print_info_header(self):
+
+        file_path = self.file_path
+        pattern = self.params.pattern
+        startswith = self.params.pattern_startswith
+        endswith = self.params.pattern_endswith
+
+        sys.stderr.write("\nINFO  Sorting thesaurus by match.")
+        sys.stderr.write(f"\n            Thesaurus file: {file_path}")
+        sys.stderr.write(f"\n                 Keys like: {pattern}")
+        sys.stderr.write(f"\n        Keys starting with: {startswith}")
+        sys.stderr.write(f"\n          Keys ending with: {endswith}")
+
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def revert_th_dict(self, th_dict):
+    def step_03_load_thesaurus_as_mapping(self):
+        self.th_dict = internal__load_thesaurus_as_mapping(self.file_path)
+
+    # -------------------------------------------------------------------------
+    def step_04_revert_th_dict(self):
         reversed_th_dict = {}
-        for key, values in th_dict.items():
+        for key, values in self.th_dict.items():
             for value in values:
                 reversed_th_dict[value] = key
-        return reversed_th_dict
+        self.reversed_th_dict = reversed_th_dict
 
     # -------------------------------------------------------------------------
-    def build_data_frame(self, reversed_th_dict):
-        return pd.DataFrame(
+    def step_05_build_data_frame(self):
+        self.data_frame = pd.DataFrame(
             {
-                "text": reversed_th_dict.keys(),
-                "key": reversed_th_dict.values(),
+                "text": self.reversed_th_dict.keys(),
+                "key": self.reversed_th_dict.values(),
             }
         )
 
     # -------------------------------------------------------------------------
-    def filter_data_frame(self, data_frame):
+    def step_06_filter_data_frame(self):
+        data_frame = self.data_frame
         result = []
         if self.params.pattern is not None:
             if isinstance(self.params.pattern, str):
@@ -170,47 +140,50 @@ class SortThesaurusByMatch(
                 result.append(data_frame[data_frame.text.str.endswith(word)])
         else:
             raise ValueError("No filter provided")
-        return pd.concat(result)
+        self.data_frame = pd.concat(result)
 
     # -------------------------------------------------------------------------
-    def extract_findings(self, th_dict, data_frame):
-        keys = data_frame.key.drop_duplicates()
-        findings = {key: th_dict[key] for key in sorted(keys)}
-        return findings
+    def step_07_extract_findings(self):
+        keys = self.data_frame.key.drop_duplicates()
+        findings = {key: self.th_dict[key] for key in sorted(keys)}
+        self.findings = findings
 
     # -------------------------------------------------------------------------
-    def save_sorted_thesaurus(self, file_path, th_dict, findings):
+    def step_08_save_sorted_thesaurus(self):
 
-        for key in findings.keys():
-            th_dict.pop(key)
+        for key in self.findings.keys():
+            self.th_dict.pop(key)
 
-        with open(file_path, "w", encoding="utf-8") as file:
-            for key in sorted(findings.keys()):
+        with open(self.file_path, "w", encoding="utf-8") as file:
+            for key in sorted(self.findings.keys()):
                 file.write(key + "\n")
-                for item in findings[key]:
+                for item in self.findings[key]:
                     file.write("    " + item + "\n")
 
-            for key in sorted(th_dict.keys()):
+            for key in sorted(self.th_dict.keys()):
                 file.write(key + "\n")
-                for item in th_dict[key]:
+                for item in self.th_dict[key]:
                     file.write("    " + item + "\n")
+
+    # -------------------------------------------------------------------------
+    def step_09_print_info_tail(self):
+        sys.stderr.write("\n        .")
+        internal__print_thesaurus_head(file_path=self.file_path)
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def build(self):
         """:meta private:"""
 
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        #
-        #
-        th_dict = internal__load_thesaurus_as_mapping(file_path)
-        reversed_th_dict = self.revert_th_dict(th_dict)
-        data_frame = self.build_data_frame(reversed_th_dict)
-        data_frame = self.filter_data_frame(data_frame)
-        findings = self.extract_findings(th_dict, data_frame)
-        self.save_sorted_thesaurus(file_path, th_dict, findings)
-        #
-        self.print_thesaurus_head()
-        internal__log_message(msgs=f"  Done.", prompt_flag=-1)
+        self.step_01_get_thesaurus_file_path()
+        self.step_02_print_info_header()
+        self.step_03_load_thesaurus_as_mapping()
+        self.step_04_revert_th_dict()
+        self.step_05_build_data_frame()
+        self.step_06_filter_data_frame()
+        self.step_07_extract_findings()
+        self.step_08_save_sorted_thesaurus()
+        self.step_09_print_info_tail()
 
 
 # =============================================================================

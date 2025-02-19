@@ -237,7 +237,7 @@ def internal__load_filtered_database(params):
     data_frame = step_01_get_records_from_file(params)
     data_frame = step_02_filter_records_by_year(params, data_frame)
     data_frame = step_03_filter_records_by_citations(params, data_frame)
-    data_frame = step_04_apply_filters_to_records(data_frame)
-    data_frame = step_05_apply_sort_by(data_frame)
+    data_frame = step_04_apply_filters_to_records(params, data_frame)
+    data_frame = step_05_apply_sort_by(params, data_frame)
 
     return data_frame

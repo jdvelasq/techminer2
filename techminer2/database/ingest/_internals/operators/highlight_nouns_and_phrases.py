@@ -8,6 +8,7 @@
 
 import pathlib
 import re
+import sys
 
 import pandas as pd  # type: ignore
 import spacy
@@ -27,7 +28,8 @@ def internal__highlight_nouns_and_phrases(
 ):
     """:meta private:"""
 
-    internal__log_message(f"Highlighting tokens in '{source}' field.", prompt_flag=True)
+    sys.stderr.write(f"\n        Highlighting tokens in '{source}' field.")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 
@@ -62,7 +64,9 @@ def internal__highlight_nouns_and_phrases(
     determiners = re.compile(determiners)
 
     for index, row in tqdm(
-        dataframe.iterrows(), total=len(dataframe), desc="         "
+        dataframe.iterrows(),
+        total=len(dataframe),
+        desc=f"INFO  Highlighting tokens in '{source}' field.",
     ):
 
         if pd.isna(row[dest]):

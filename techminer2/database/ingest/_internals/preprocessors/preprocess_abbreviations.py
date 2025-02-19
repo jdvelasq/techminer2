@@ -8,8 +8,8 @@
 # pylint: disable=too-many-statements
 """Search for abbreviations in a thesaurus."""
 
-
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 from textblob import TextBlob  # type: ignore
@@ -155,11 +155,8 @@ def step_07_save_abbreviations_thesaurus(root_dir, mod_frame):
 # -------------------------------------------------------------------------
 def internal__preprocess_abbreviations(root_dir):
 
-    internal__log_message(
-        msgs="Extracting abbrevitions from descriptors and abstracts.",
-        prompt_flag=True,
-    )
-    #
+    sys.stderr.write("\nINFO  Extracting abbrevitions from descriptors and abstracts.")
+    sys.stderr.flush()
     #
     raw_frame = step_01_load_descriptors_thesaurus(root_dir)
     mod_frame = step_02_extracts_abbreviations_from_definitions(raw_frame)
@@ -169,8 +166,5 @@ def internal__preprocess_abbreviations(root_dir):
     mod_frame = step_06_prepare_data_frame(mod_frame)
     step_07_save_abbreviations_thesaurus(root_dir, mod_frame)
     #
-    #
-    internal__log_message(
-        msgs=f"  {len(mod_frame)} extracted abbrebiations.",
-        prompt_flag=-1,
-    )
+    sys.stderr.write(f"\n      {len(mod_frame)} extracted abbreviations.")
+    sys.stderr.flush()

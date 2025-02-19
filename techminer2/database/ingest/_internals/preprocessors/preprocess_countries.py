@@ -7,20 +7,20 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 
+import sys
+
 from ....._internals.log_message import internal__log_message
-from .....thesaurus.countries import ApplyThesaurus, ResetThesaurusToInitialState
+from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
 
 
 # -------------------------------------------------------------------------
 def internal__preprocess_countries(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Processing 'countries' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'countries' column.")
+    sys.stderr.flush()
 
-    th = ResetThesaurusToInitialState()
+    th = CreateThesaurus()
     th.update(root_dir=root_dir)
     th.with_prompt_flag(-1)
     th.build()

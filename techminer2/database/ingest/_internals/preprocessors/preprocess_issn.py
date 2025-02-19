@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import sys
+
 from ....._internals.log_message import internal__log_message
 from ....field_operators.transform_field_operator import internal__transform_field
 
@@ -13,10 +15,8 @@ from ....field_operators.transform_field_operator import internal__transform_fie
 def internal__preprocess_issn(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Processing 'issn' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'issn' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="issn",

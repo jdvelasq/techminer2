@@ -10,23 +10,23 @@
 Apply Thesaurus
 ===============================================================================
 
-## >>> from techminer2.thesaurus.user import ApplyThesaurus
-## >>> (
-## ...     ApplyThesaurus()
-## ...     # 
-## ...     # THESAURUS:
-## ...     .with_thesaurus_file("descriptors.the.txt")
-## ...     #
-## ...     # FIELDS:
-## ...     .with_field("descriptors")
-## ...     .with_other_field("descriptors")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     #
-## ...     .build()
-## ... )
---INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
+>>> from techminer2.thesaurus.user import ApplyThesaurus
+>>> (
+...     ApplyThesaurus()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     #
+...     # FIELDS:
+...     .with_field("descriptors")
+...     .with_other_field("descriptors_cleaned")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+
 
 """
 import sys
@@ -46,27 +46,56 @@ class ApplyThesaurus(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def step_01_copy_field(self, records):
+    def step_01_get_thesaurus_file_path(self):
+        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+
+    # -------------------------------------------------------------------------
+    def step_02_print_info_header(self):
+
+        file_path = self.file_path
+        field = self.params.field
+        other_field = self.params.other_field
+
+        sys.stderr.write("\nINFO  Applying thesaurus to database.")
+        sys.stderr.write(f"\n        Thesaurus file: {file_path}")
+        sys.stderr.write(f"\n          Source field: {field}")
+        sys.stderr.write(f"\n          Target field: {other_field}")
+
+        sys.stderr.flush()
+
+    # -------------------------------------------------------------------------
+    def step_03_load_reversed_thesaurus_as_mapping(self):
+        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.file_path)
+
+    # -------------------------------------------------------------------------
+    def step_04_load_records(self):
+        self.records = internal__load_records(params=self.params)
+
+    # -------------------------------------------------------------------------
+    def step_05_copy_field(self):
         if self.params.field != self.params.other_field:
-            records[self.params.other_field] = records[self.params.field].copy()
-        return records
+            self.records[self.params.other_field] = self.records[
+                self.params.field
+            ].copy()
 
     # -------------------------------------------------------------------------
-    def step_02_split_other_field(self, records):
-        records[self.params.other_field] = records[self.params.other_field].str.split(
-            "; "
+    def step_06_split_other_field(self):
+        self.records[self.params.other_field] = self.records[
+            self.params.other_field
+        ].str.split("; ")
+
+    # -------------------------------------------------------------------------
+    def step_07_apply_thesaurus_to_other_field(self):
+
+        self.records[self.params.other_field] = self.records[
+            self.params.other_field
+        ].map(
+            lambda x: [self.mapping.get(item, item) for item in x],
+            na_action="ignore",
         )
-        return records
 
     # -------------------------------------------------------------------------
-    def step_03_apply_thesaurus_to_other_field(self, records, mapping):
-        records[self.params.other_field] = records[self.params.other_field].map(
-            lambda x: [mapping.get(item, item) for item in x], na_action="ignore"
-        )
-        return records
-
-    # -------------------------------------------------------------------------
-    def step_04_remove_duplicates_from_other_field(self, records):
+    def step_08_remove_duplicates_from_other_field(self):
         #
         def f(x):
             # remove duplicated terms preserving the order
@@ -76,44 +105,33 @@ class ApplyThesaurus(
                     terms.append(term)
             return terms
 
-        records[self.params.other_field] = records[self.params.other_field].map(
-            f, na_action="ignore"
-        )
-        return records
+        self.records[self.params.other_field] = self.records[
+            self.params.other_field
+        ].map(f, na_action="ignore")
 
     # -------------------------------------------------------------------------
-    def apply_thesaurus(self, records, mapping):
+    def step_09_write_records(self):
+        internal__write_records(params=self.params, records=self.records)
 
-        records = self.step_01_copy_field(records)
-        records = self.step_02_split_other_field(records)
-        records = self.step_03_apply_thesaurus_to_other_field(records, mapping)
-        records = self.step_04_remove_duplicates_from_other_field(records)
-        return records
+    # -------------------------------------------------------------------------
+    def step_10_print_info_tail(self):
+        sys.stderr.write("\n        Done.")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def build(self):
         """:meta private:"""
 
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        #
-        # LOG:
-        internal__log_message(
-            msgs=[
-                "Applying thesaurus.",
-                f"  Thesaurus file: '{file_path}'",
-                f"    Source field: '{self.params.field}'",
-                f"    Target field: '{self.params.other_field}'",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
-        #
-        mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
-        records = internal__load_records(params=self.params)
-        records = self.apply_thesaurus(records, mapping)
-        internal__write_records(params=self.params, records=records)
-        #
-        # LOG:
-        internal__log_message(msgs="  Done.", prompt_flag=-1)
+        self.step_01_get_thesaurus_file_path()
+        self.step_02_print_info_header()
+        self.step_03_load_reversed_thesaurus_as_mapping()
+        self.step_04_load_records()
+        self.step_05_copy_field()
+        self.step_06_split_other_field()
+        self.step_07_apply_thesaurus_to_other_field()
+        self.step_08_remove_duplicates_from_other_field()
+        self.step_09_write_records()
+        self.step_10_print_info_tail()
 
 
 # =============================================================================

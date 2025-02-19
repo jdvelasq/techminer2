@@ -1,9 +1,8 @@
 # flake8: noqa
 """Disambiguate author names using Scopus Author(s) ID."""
 
-import glob
-import os
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -97,10 +96,8 @@ def _repair_names(root_dir, author_id2name):
 def internal__preprocess_author_names(root_dir):
     """Disambiguate author names using Scopus Author(s) ID."""
 
-    internal__log_message(
-        msgs="Disambiguating author names.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Disambiguating author names.")
+    sys.stderr.flush()
 
     authors_data = _load_authors_data(root_dir)
     dataframe = _generate_author_and_author_id_dataframe(authors_data)

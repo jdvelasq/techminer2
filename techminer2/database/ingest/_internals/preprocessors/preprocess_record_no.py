@@ -1,6 +1,7 @@
 """Create art_no column in databses."""
 
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -10,10 +11,8 @@ from ....._internals.log_message import internal__log_message
 def internal__preprocess_record_no(root_dir):
     """Create art_no column in databases."""
     #
-    internal__log_message(
-        msgs="Assign 'record_no' identifier to each record",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Assign 'record_no' identifier to each record.")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

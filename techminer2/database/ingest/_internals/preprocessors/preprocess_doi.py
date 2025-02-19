@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import sys
+
 from ....._internals.log_message import internal__log_message
 from ....field_operators.transform_field_operator import internal__transform_field
 
@@ -26,10 +28,8 @@ def _process_text(text):
 def internal__preprocess_doi(root_dir):
     """Run authors importer."""
 
-    internal__log_message(
-        msgs="Processing 'doi' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'doi' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="doi",

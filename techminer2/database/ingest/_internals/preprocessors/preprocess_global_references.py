@@ -19,6 +19,7 @@
 
 import pathlib
 import re
+import sys
 
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
@@ -34,10 +35,9 @@ from .....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 def internal__preprocess_global_references(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Homogenizing global references",
-        prompt_flag=True,
-    )
+    # sys.stderr.write("\nINFO  Homogenizing global references.")
+    sys.stderr.write("\n")
+    sys.stderr.flush()
 
     documents = _create_documents_dataframe(root_dir)
     references = _create_references_dataframe(root_dir)
@@ -121,7 +121,9 @@ def _create_thesaurus(main_documents, references):
 
     thesaurus = {}
     for _, row in tqdm(
-        main_documents.iterrows(), total=main_documents.shape[0], desc="         "
+        main_documents.iterrows(),
+        total=main_documents.shape[0],
+        desc="INFO  Homogenizing global references",
     ):
 
         refs = references.copy()

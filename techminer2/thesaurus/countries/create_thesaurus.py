@@ -24,6 +24,7 @@ Reset Thesaurus to Initial
 
 """
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
@@ -34,7 +35,7 @@ from ...database._internals.io import internal__load_records
 from .apply_thesaurus import ApplyThesaurus as ApplyCountryThesaurus
 
 
-class ResetThesaurusToInitialState(
+class CreateThesaurus(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -161,13 +162,11 @@ class ResetThesaurusToInitialState(
         file_path = self.step_01_get_thesaurus_file_path()
 
         # -------------------------------------------------------------------------
-        internal__log_message(
-            msgs=[
-                "Reseting thesaurus to initial state.",
-                f"  Thesaurus file: '{file_path}'.",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
+        sys.stderr.write("\nINFO  Creating thesaurus file.")
+        sys.stderr.write(f"\n        Thesaurus file: {file_path}.")
+        sys.stderr.write("\n          Source field: 'affiliations'.")
+        sys.stderr.flush()
+
         # -------------------------------------------------------------------------
 
         records = internal__load_records(params=self.params)
@@ -189,7 +188,7 @@ class ResetThesaurusToInitialState(
         ).build()
 
         # -------------------------------------------------------------------------
-        internal__log_message(msgs="  Done.", prompt_flag=-1)
+        # internal__log_message(msgs="  Done.", prompt_flag=-1)
 
 
 # =============================================================================

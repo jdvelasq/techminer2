@@ -1,5 +1,6 @@
 """Thesaurus module."""
 
+from .apply_thesaurus import ApplyThesaurus
 from .check_thesaurus_for_misspelled_terms import CheckThesaurusForMisspelledTerms
 from .check_thesaurus_integrity import CheckThesaurusIntegrity
 from .cleanup_thesaurus import CleanupThesaurus
@@ -9,6 +10,7 @@ from .sort_thesaurus_by_key import SortThesaurusByKey
 from .sort_thesaurus_by_match import SortThesaurusByMatch
 
 __all__ = [
+    "ApplyThesaurus",
     "CheckThesaurusForMisspelledTerms",
     "CheckThesaurusIntegrity",
     "CleanupThesaurus",

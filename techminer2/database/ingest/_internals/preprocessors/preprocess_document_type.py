@@ -6,17 +6,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from ....._internals.log_message import internal__log_message
+
+import sys
+
 from ....field_operators.transform_field_operator import internal__transform_field
 
 
 def internal__preprocess_document_type(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Processing 'document_type' column.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Processing 'document_type' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="raw_document_type",

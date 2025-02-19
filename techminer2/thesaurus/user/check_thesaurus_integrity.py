@@ -11,20 +11,20 @@ Check Thesaurus Integrity
 ===============================================================================
 
 
-## >>> from techminer2.thesaurus.user import CheckThesaurusIntegrity
-## >>> (
-## ...     CheckThesaurusIntegrity()
-## ...     # 
-## ...     # THESAURUS:
-## ...     .with_thesaurus_file("descriptors.the.txt")
-## ...     .with_field("descriptors")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     #
-## ...     .build()
-## ... )
---INFO-- Checking `descriptors.the.txt` integrity.
+>>> from techminer2.thesaurus.user import CheckThesaurusIntegrity
+>>> (
+...     CheckThesaurusIntegrity()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("descriptors.the.txt")
+...     .with_field("raw_descriptors")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+
 
 """
 import sys
@@ -44,21 +44,35 @@ class CheckThesaurusIntegrity(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def load_terms_in_thesaurus(self, file_path):
-        reversed_th_dict = internal__load_reversed_thesaurus_as_mapping(file_path)
-        terms = list(reversed_th_dict.keys())
-        return terms
+    def step_01_get_thesaurus_file_path(self):
+        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
 
     # -------------------------------------------------------------------------
-    def load_terms_in_database(self):
+    def step_02_print_info_header(self):
+        file_path = self.file_path
+        sys.stderr.write("\nINFO  Checking thesaurus integrity.")
+        sys.stderr.write(f"\n        Thesaurus file: {file_path}")
+        sys.stderr.flush()
+
+    # -------------------------------------------------------------------------
+    def step_03_load_terms_in_thesaurus(self):
+        reversed_th_dict = internal__load_reversed_thesaurus_as_mapping(self.file_path)
+        self.terms_in_thesaurus = list(reversed_th_dict.keys())
+
+    # -------------------------------------------------------------------------
+    def step_04_load_terms_in_database(self):
         records = internal__load_filtered_database(params=self.params)
         field = self.params.field
         terms = records[field].dropna()
         terms = terms.str.split("; ").explode().str.strip().drop_duplicates().tolist()
-        return terms
+        self.terms_in_database = terms
 
     # -------------------------------------------------------------------------
-    def compare_terms(self, terms_in_thesaurus, terms_in_database):
+    def step_05_compare_terms(self):
+
+        terms_in_thesaurus = self.terms_in_thesaurus
+        terms_in_database = self.terms_in_database
+
         union = set(terms_in_thesaurus).union(set(terms_in_database))
 
         if len(union) != len(terms_in_thesaurus) or len(union) != len(
@@ -68,43 +82,38 @@ class CheckThesaurusIntegrity(
                 terms = set(terms_in_database) - set(terms_in_thesaurus)
             else:
                 terms = set(terms_in_thesaurus) - set(terms_in_database)
-
-            #
-            # LOG:
-            msgs = ["    " + term for term in terms[:10]]
-            if len(terms) > 10:
-                msgs.append("    ...")
-            internal__log_message(
-                msgs=msgs,
-                prompt_flag=-1,
-            )
-
+            terms = list(terms)
         else:
-            #
-            # LOG:
-            internal__log_message(
-                msgs=f"  Done.",
-                prompt_flag=self.params.prompt_flag,
-            )
+            terms = None
+
+        self.missing_terms = terms
+
+    # -------------------------------------------------------------------------
+    def step_06_print_missing_terms(self):
+
+        terms = self.missing_terms
+
+        if terms is not None:
+            terms = terms[:10]
+            for i_term, term in enumerate(terms):
+                if i_term == 0:
+                    sys.stderr.write(f"\n         Missing Terms: {term}")
+                else:
+                    sys.stderr.write(f"\n                        {term}")
+            if len(terms) == 10:
+                sys.stderr.write("\n                        ...")
+
+        sys.stderr.write("\n        Done.")
 
     # -------------------------------------------------------------------------
     def build(self):
 
-        file_path = internal__generate_user_thesaurus_file_path(params=self.params)
-        #
-        # LOG:
-        internal__log_message(
-            msgs=[
-                "Checking thesaurus integrity.",
-                "  Thesaurus file: '{file_path}'.",
-                "           Field: '{self.params.field}'.",
-            ],
-            prompt_flag=self.params.prompt_flag,
-        )
-        #
-        terms_in_thesaurus = self.load_terms_in_thesaurus(file_path)
-        terms_in_database = self.load_terms_in_database()
-        self.compare_terms(terms_in_thesaurus, terms_in_database)
+        self.step_01_get_thesaurus_file_path()
+        self.step_02_print_info_header()
+        self.step_03_load_terms_in_thesaurus()
+        self.step_04_load_terms_in_database()
+        self.step_05_compare_terms()
+        self.step_06_print_missing_terms()
 
 
 # =============================================================================

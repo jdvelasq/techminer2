@@ -9,6 +9,7 @@
 
 import os.path  # type: ignore
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
@@ -23,10 +24,8 @@ def internal__preprocess_subject_areas(
     root_dir="./",
 ):
 
-    internal__log_message(
-        msgs="Assign subject areas to each record.",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Assign subject areas to each record.")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

@@ -7,6 +7,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 import pathlib
+import sys
 
 import pandas as pd  # type: ignore
 
@@ -16,10 +17,8 @@ from ....._internals.log_message import internal__log_message
 def internal__preprocess_local_citations(root_dir):
     """:meta private:"""
 
-    internal__log_message(
-        msgs="Counting local citations",
-        prompt_flag=True,
-    )
+    sys.stderr.write("\nINFO  Counting local citations.")
+    sys.stderr.flush()
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",
