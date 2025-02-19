@@ -14,8 +14,10 @@ def internal__print_thesaurus_head(
 
     file_path = internal__generate_user_thesaurus_file_path(params)
     data_frame = internal__load_thesaurus_as_data_frame(file_path)
+    keys = data_frame.key
+    keys = keys.drop_duplicates().head(n).tolist()
     data_frame = data_frame.groupby("key", as_index=False).agg({"value": list})
-    data_frame = data_frame.head(n)
+    data_frame = data_frame.loc[data_frame.key.isin(keys), :]
     data_frame["value"] = data_frame["value"].str.join("; ")
 
     #

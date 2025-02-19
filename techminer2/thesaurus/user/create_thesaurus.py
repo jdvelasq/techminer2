@@ -27,6 +27,7 @@ Create thesaurus
 ...     .build()
 ... )
 
+>>> # TEST:
 >>> from techminer2.thesaurus._internals import internal__print_thesaurus_head
 >>> from techminer2.internals import Params
 >>> params = Params().update(thesaurus_file="demo.the.txt", root_dir="example/")
@@ -56,6 +57,7 @@ from ...internals.log_message import internal__log_message
 from ...internals.mixins import ParamsMixin
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
+    ThesaurusMixin,
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
@@ -66,6 +68,7 @@ tqdm.pandas()
 
 class CreateThesaurus(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
@@ -223,4 +226,5 @@ class CreateThesaurus(
         self.step_10_save_thesaurus(file_path, data_frame)
         #
         # LOG:
+        self.print_thesaurus_head(n=5)
         internal__log_message(msgs="  Done.", prompt_flag=-1)
