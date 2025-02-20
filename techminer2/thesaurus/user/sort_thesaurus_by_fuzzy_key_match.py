@@ -7,12 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort Thesaurus by Fuzzy Match
+Sort Thesaurus by Fuzzy Key Match
 ===============================================================================
 
->>> from techminer2.thesaurus.user import SortThesaurusByFuzzyMatch
+>>> from techminer2.thesaurus.user import SortThesaurusByFuzzyKeyMatch
 >>> (
-...     SortThesaurusByFuzzyMatch()
+...     SortThesaurusByFuzzyKeyMatch()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("descriptors.the.txt")
@@ -24,6 +24,30 @@ Sort Thesaurus by Fuzzy Match
 ...     #
 ...     .build()
 ... ) 
+Sorting thesaurus by fuzzy match
+  Thesaurus file: example/thesaurus/descriptors.the.txt
+       Keys like: INTELLIGE
+  Match thresold: 70
+  38 matching keys found
+Printing thesaurus header
+  Loading example/thesaurus/descriptors.the.txt thesaurus file
+  Header:
+    ANALYTICAL_INTELLIGENCE
+      ANALYTICAL_INTELLIGENCE
+    AN_INTELLIGENT_AGENT
+      AN_INTELLIGENT_AGENT
+    ARTIFICIAL_INTELLIGENCE
+      ARTIFICIAL_INTELLIGENCE
+    A_HYBRID_FUZZY_INTELLIGENT_AGENT_BASED_SYSTEM
+      A_HYBRID_FUZZY_INTELLIGENT_AGENT_BASED_SYSTEM
+    BUSINESS_INTELLIGENCE
+      BUSINESS_INTELLIGENCE
+    BUSINESS_INTELLIGENCE (BI)
+      BUSINESS_INTELLIGENCE (BI)
+    BUSINESS_INTELLIGENCE_FRAMEWORK
+      BUSINESS_INTELLIGENCE_FRAMEWORK
+    COLLECTIVE_INTELLIGENCES
+      COLLECTIVE_INTELLIGENCE; COLLECTIVE_INTELLIGENCES
 
 
 """
@@ -41,7 +65,7 @@ from .._internals import (
 )
 
 
-class SortThesaurusByFuzzyMatch(
+class SortThesaurusByFuzzyKeyMatch(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -54,16 +78,18 @@ class SortThesaurusByFuzzyMatch(
     # -------------------------------------------------------------------------
     def step_02_print_info_header(self):
 
-        file_path = self.file_path
-        pattern = self.params.pattern
-        threshold = self.params.match_threshold
+        if self.params.show_progress:
 
-        sys.stdout.write("\nINFO  Sorting thesaurus by fuzzy match.")
-        sys.stdout.write(f"\n        Thesaurus file: {file_path}")
-        sys.stdout.write(f"\n             Keys like: {pattern}")
-        sys.stdout.write(f"\n        Match thresold: {threshold}")
+            file_path = self.file_path
+            pattern = self.params.pattern
+            threshold = self.params.match_threshold
 
-        sys.stdout.flush()
+            sys.stdout.write("Sorting thesaurus by fuzzy match\n")
+            sys.stdout.write(f"  Thesaurus file: {file_path}\n")
+            sys.stdout.write(f"       Keys like: {pattern}\n")
+            sys.stdout.write(f"  Match thresold: {threshold}\n")
+
+            sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_thesaurus_as_mapping(self):
@@ -95,21 +121,39 @@ class SortThesaurusByFuzzyMatch(
                 self.params.pattern = [self.params.pattern]
 
             for pattern in self.params.pattern:
-                potential_matches = process.extract(
-                    pattern, data_frame.text, limit=None
-                )
+                potential_matches = process.extract(pattern, data_frame.key, limit=None)
                 for potential_match in potential_matches:
                     if potential_match[1] >= self.params.match_threshold:
                         result.append(
-                            data_frame[data_frame.text.str.contains(potential_match[0])]
+                            data_frame[
+                                data_frame.key.str.contains(
+                                    potential_match[0], regex=False
+                                )
+                            ]
                         )
         else:
             raise ValueError("No filter provided")
 
-        self.data_frame = pd.concat(result)
+        if result != []:
+            self.data_frame = pd.concat(result)
+            self.data_frame = self.data_frame.drop_duplicates()
+        else:
+            self.data_frame = None
+
+        if self.params.show_progress:
+            if self.data_frame is None:
+                sys.stdout.write("  No matching keys found\n")
+            else:
+                sys.stdout.write(
+                    f"  {len(self.data_frame.key.drop_duplicates())} matching keys found\n"
+                )
+                sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_07_extract_findings(self):
+        if self.data_frame is None:
+            self.findings = {}
+            return
         keys = self.data_frame.key.drop_duplicates()
         findings = {key: self.th_dict[key] for key in sorted(keys)}
         self.findings = findings
@@ -133,10 +177,8 @@ class SortThesaurusByFuzzyMatch(
 
     # -------------------------------------------------------------------------
     def step_09_print_info_tail(self):
-        sys.stdout.write(f"\n               Founded: {len(self.findings)} keys.")
-        sys.stdout.write("\n        .")
-        internal__print_thesaurus_head(file_path=self.file_path)
-        sys.stdout.flush()
+        if self.params.show_progress:
+            internal__print_thesaurus_head(file_path=self.file_path)
 
     # -------------------------------------------------------------------------
     def build(self):

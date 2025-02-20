@@ -223,7 +223,9 @@ class SortThesaurusByKeyMatch(
         self.data_frame = self.data_frame.drop_duplicates("key")
 
         if self.params.show_progress:
-            sys.stdout.write(f"  {len(self.data_frame)} matching keys found\n")
+            sys.stdout.write(
+                f"  {len(self.data_frame.key.drop_duplicates())} matching keys found\n"
+            )
             sys.stdout.flush()
 
     # -------------------------------------------------------------------------
