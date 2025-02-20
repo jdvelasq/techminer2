@@ -14,8 +14,8 @@ from ....field_operators.merge_fields_operator import internal__merge_fields
 
 def internal__preprocess_raw_keywords(root_dir):
 
-    sys.stderr.write("\nINFO  Creating 'raw_keywords' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Creating 'raw_keywords' column.")
+    sys.stdout.flush()
 
     internal__merge_fields(
         source=[

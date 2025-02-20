@@ -1,13 +1,24 @@
-# from ..user.check_thesaurus_for_misspelled_terms import misspelling_search
-# from ._apply_thesaurus import apply_thesaurus
-# from ._check_thesaurus import check_thesaurus
-# from ._clean_thesaurus import clean_thesaurus
-# from ._find_editorials import find_editorials
-# from ._replace_string import replace_string
-# from ._show_differences import show_differences
-# from ._text_clumping import text_clumping
-# from ._words_frequency import words_frequency
-# from .reset_thesaurus_to_initial import reset_thesaurus
-# from .sort_thesaurus_by_fuzzy_match import fuzzy_search
-# from .sort_thesaurus_by_key import sort_thesaurus
-# from .sort_thesaurus_by_match import sort_thesaurus_by_match
+"Thesaurus."
+
+
+from .__sort_thesaurus_by_fuzzy_match import SortThesaurusByFuzzyMatch
+from .sort_thesaurus_by_key_exact_match import SortThesaurusByKeyExactMatch
+from .sort_thesaurus_by_key_match import SortThesaurusByKeyMatch
+from .sort_thesaurus_by_key_order import SortThesaurusByKeyOrder
+
+# from .apply_thesaurus import ApplyThesaurus
+# from .check_thesaurus_integrity import CheckThesaurusIntegrity
+# from .cleanup_thesaurus import CleanupThesaurus
+# from .create_thesaurus import CreateThesaurus
+
+__all__ = [
+    "ApplyThesaurus",
+    "CheckThesaurusForMisspelledTerms",
+    "CheckThesaurusIntegrity",
+    "CleanupThesaurus",
+    "CreateThesaurus",
+    "SortThesaurusByFuzzyMatch",
+    "SortThesaurusByKeyExactMatch",
+    "SortThesaurusByKeyMatch",
+    "SortThesaurusByKeyOrder",
+]

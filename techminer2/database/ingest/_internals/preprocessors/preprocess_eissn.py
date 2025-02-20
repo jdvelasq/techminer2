@@ -15,8 +15,8 @@ from ....field_operators.transform_field_operator import internal__transform_fie
 def internal__preprocess_eissn(root_dir):
     """Run authors importer."""
 
-    sys.stderr.write("\nINFO  Processing 'eissn' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Processing 'eissn' column.")
+    sys.stdout.flush()
 
     internal__transform_field(
         field="eissn",

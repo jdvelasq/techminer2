@@ -16,9 +16,9 @@ from ..operators.highlight_nouns_and_phrases import (
 
 def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
 
-    sys.stderr.write("\nINFO  Processing 'raw_abstract_nouns_and_phrases' column.")
-    # sys.stderr.write("\n")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Processing 'raw_abstract_nouns_and_phrases' column.")
+    # sys.stdout.write("\n")
+    sys.stdout.flush()
 
     internal__highlight_nouns_and_phrases(
         source="abstract",
@@ -26,8 +26,8 @@ def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
         root_dir=root_dir,
     )
 
-    sys.stderr.write("INFO  Collecting noun and phrases.")
-    sys.stderr.flush()
+    sys.stdout.write("INFO  Collecting noun and phrases.")
+    sys.stdout.flush()
 
     internal__collect_nouns_and_phrases(
         source="abstract",

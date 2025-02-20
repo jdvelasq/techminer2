@@ -15,8 +15,8 @@ from ....field_operators.transform_field_operator import internal__transform_fie
 def internal__preprocess_document_type(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("\nINFO  Processing 'document_type' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Processing 'document_type' column.")
+    sys.stdout.flush()
 
     internal__transform_field(
         field="raw_document_type",

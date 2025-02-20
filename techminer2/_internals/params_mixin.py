@@ -107,7 +107,6 @@ class Params:
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
     plot_dimensions: Tuple[int, int] = (0, 1)
-    prompt_flag: Optional[int] = False
 
     #
     # Q
@@ -132,6 +131,7 @@ class Params:
     #
     # S
     #
+    show_progress: bool = True
     smooth_idf_weights: bool = False
     spring_layout_iterations: int = 50
     spring_layout_k: float = 0.1
@@ -311,6 +311,13 @@ class ParamsMixin:
 
     def having_terms_ordered_by(self, criteria):
         self.params.terms_order_by = criteria
+        return self
+
+    #
+    # S
+    #
+    def showing_progress(self, progress):
+        self.params.show_progress = progress
         return self
 
     #
@@ -581,10 +588,6 @@ class ParamsMixin:
 
     def with_other_field(self, field):
         self.params.other_field = field
-        return self
-
-    def with_prompt_flag(self, flag):
-        self.params.prompt_flag = flag
         return self
 
     def with_query_expression(self, expr):

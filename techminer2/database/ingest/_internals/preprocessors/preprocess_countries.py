@@ -9,16 +9,15 @@
 
 import sys
 
-from ....._internals.log_message import internal__log_message
-from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
-
 
 # -------------------------------------------------------------------------
 def internal__preprocess_countries(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("\nINFO  Processing 'countries' column.")
-    sys.stderr.flush()
+    from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
+
+    sys.stdout.write("\nINFO  Processing 'countries' column.")
+    sys.stdout.flush()
 
     th = CreateThesaurus()
     th.update(root_dir=root_dir)

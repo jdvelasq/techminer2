@@ -16,25 +16,24 @@ def internal__print_thesaurus_head(
     keys = keys.drop_duplicates().head(n).tolist()
     data_frame = data_frame.groupby("key", as_index=False).agg({"value": list})
     data_frame = data_frame.loc[data_frame.key.isin(keys), :]
+    data_frame = data_frame.set_index("key").loc[keys, :].reset_index()
+
+    data_frame["key"] = data_frame["key"].map(
+        lambda x: x[:50] + "..." if len(x) > 50 else x
+    )
     data_frame["value"] = data_frame["value"].str.join("; ")
+    data_frame["value"] = data_frame["value"].map(
+        lambda x: x[:70] + "..." if len(x) > 70 else x
+    )
 
-    #
-    sys.stderr.write(f"\nINFO  Thesaurus head {file_path}.")
+    sys.stdout.write(f"Printing thesaurus header\n")
+    sys.stdout.write(f"  Loading {file_path} thesaurus file\n")
+    sys.stdout.write(f"  Header:\n")
+
     for _, row in data_frame.iterrows():
-        #
-        key = row.key
-        if len(key) > 30:
-            key = key[:26] + " ..."
-        key = f"{key:>30s}"
-        #
-        value = row.value
-        if len(value) > 50:
-            value = row.value[:46] + " ..."
-        value = f"{value:<50s}"
-        #
-        sys.stderr.write(f"\n        {key} : {value}")
-
-    sys.stderr.flush()
+        sys.stdout.write(f"    {row.key}\n")
+        sys.stdout.write(f"      {row.value}\n")
+    sys.stdout.flush()
 
 
 # =============================================================================

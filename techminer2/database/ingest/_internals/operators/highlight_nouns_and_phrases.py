@@ -28,8 +28,8 @@ def internal__highlight_nouns_and_phrases(
 ):
     """:meta private:"""
 
-    sys.stderr.write(f"\n        Highlighting tokens in '{source}' field.")
-    sys.stderr.flush()
+    sys.stdout.write(f"\n        Highlighting tokens in '{source}' field.")
+    sys.stdout.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

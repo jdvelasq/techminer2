@@ -74,8 +74,8 @@ def read_and_concatenate_files(files):
 def internal__load_raw_files(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("\nINFO  Creating database file.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Creating database file.")
+    sys.stdout.flush()
 
     files = list_zip_filenames_in_raw_data(root_dir)
     dataframe = read_and_concatenate_files(files)

@@ -1,15 +1,15 @@
 """Organization thesaurus."""
 
-from .apply_thesaurus import ApplyThesaurus
-from .create_thesaurus import CreateThesaurus
-from .sort_thesaurus_by_fuzzy_match import SortThesaurusByFuzzyMatch
-from .sort_thesaurus_by_key import SortThesaurusByKey
-from .sort_thesaurus_by_match import SortThesaurusByMatch
+# from .__apply_thesaurus import ApplyThesaurus
+# from .__create_thesaurus import CreateThesaurus
+# from .__sort_thesaurus_by_fuzzy_match import SortThesaurusByFuzzyMatch
+from .sort_thesaurus_by_key_match import SortThesaurusByKeyMatch
+from .sort_thesaurus_by_key_order import SortThesaurusByKeyOrder
 
 __all__ = [
     "ApplyThesaurus",
     "CreateThesaurus",
     "SortThesaurusByFuzzyMatch",
-    "SortThesaurusByKey",
-    "SortThesaurusByMatch",
+    "SortThesaurusByKeyOrder",
+    "SortThesaurusByKeyMatch",
 ]
