@@ -24,30 +24,8 @@ Sort Thesaurus by Fuzzy Key Match
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus by fuzzy match
-  Thesaurus file: example/thesaurus/descriptors.the.txt
-       Keys like: INTELLIGE
-  Match thresold: 70
-  38 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    ANALYTICAL_INTELLIGENCE
-      ANALYTICAL_INTELLIGENCE
-    AN_INTELLIGENT_AGENT
-      AN_INTELLIGENT_AGENT
-    ARTIFICIAL_INTELLIGENCE
-      ARTIFICIAL_INTELLIGENCE
-    A_HYBRID_FUZZY_INTELLIGENT_AGENT_BASED_SYSTEM
-      A_HYBRID_FUZZY_INTELLIGENT_AGENT_BASED_SYSTEM
-    BUSINESS_INTELLIGENCE
-      BUSINESS_INTELLIGENCE
-    BUSINESS_INTELLIGENCE (BI)
-      BUSINESS_INTELLIGENCE (BI)
-    BUSINESS_INTELLIGENCE_FRAMEWORK
-      BUSINESS_INTELLIGENCE_FRAMEWORK
-    COLLECTIVE_INTELLIGENCES
-      COLLECTIVE_INTELLIGENCE; COLLECTIVE_INTELLIGENCES
+<BLANKLINE>
+Thesaurus sorting by fuzzy key match completed successfully: ...riptors.the.txt
 
 
 """
@@ -61,7 +39,7 @@ from .._internals import (
     ThesaurusMixin,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_head,
+    internal__print_thesaurus_header,
 )
 
 
@@ -78,18 +56,16 @@ class SortThesaurusByFuzzyKeyMatch(
     # -------------------------------------------------------------------------
     def step_02_print_info_header(self):
 
-        if self.params.show_progress:
+        file_path = self.file_path
+        pattern = self.params.pattern
+        threshold = self.params.match_threshold
 
-            file_path = self.file_path
-            pattern = self.params.pattern
-            threshold = self.params.match_threshold
+        sys.stderr.write("\nSorting thesaurus by fuzzy match")
+        sys.stderr.write(f"\n                 File : {file_path}")
+        sys.stderr.write(f"\n            Keys like : {pattern}")
+        sys.stderr.write(f"\n       Match thresold : {threshold}")
 
-            sys.stdout.write("Sorting thesaurus by fuzzy match\n")
-            sys.stdout.write(f"  Thesaurus file: {file_path}\n")
-            sys.stdout.write(f"       Keys like: {pattern}\n")
-            sys.stdout.write(f"  Match thresold: {threshold}\n")
-
-            sys.stdout.flush()
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_thesaurus_as_mapping(self):
@@ -140,14 +116,14 @@ class SortThesaurusByFuzzyKeyMatch(
         else:
             self.data_frame = None
 
-        if self.params.show_progress:
-            if self.data_frame is None:
-                sys.stdout.write("  No matching keys found\n")
-            else:
-                sys.stdout.write(
-                    f"  {len(self.data_frame.key.drop_duplicates())} matching keys found\n"
-                )
-                sys.stdout.flush()
+        if self.data_frame is None:
+            sys.stderr.write("\n  Matching keys found : 0")
+        else:
+            sys.stderr.write(
+                f"\n  Matching keys found : {len(self.data_frame.key.drop_duplicates())}"
+            )
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_07_extract_findings(self):
@@ -177,8 +153,15 @@ class SortThesaurusByFuzzyKeyMatch(
 
     # -------------------------------------------------------------------------
     def step_09_print_info_tail(self):
-        if self.params.show_progress:
-            internal__print_thesaurus_head(file_path=self.file_path)
+        internal__print_thesaurus_header(file_path=self.file_path)
+        ##
+        truncated_file_path = str(self.file_path)
+        if len(truncated_file_path) > 20:
+            truncated_file_path = "..." + truncated_file_path[-15:]
+        sys.stdout.write(
+            f"\nThesaurus sorting by fuzzy key match completed successfully: {truncated_file_path}"
+        )
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def build(self):

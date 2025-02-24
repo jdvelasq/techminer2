@@ -5,7 +5,7 @@ import sys
 from .load_thesaurus_as_data_frame import internal__load_thesaurus_as_data_frame
 
 
-def internal__print_thesaurus_head(
+def internal__print_thesaurus_header(
     file_path,
     n=8,
 ):
@@ -19,21 +19,19 @@ def internal__print_thesaurus_head(
     data_frame = data_frame.set_index("key").loc[keys, :].reset_index()
 
     data_frame["key"] = data_frame["key"].map(
-        lambda x: x[:50] + "..." if len(x) > 50 else x
+        lambda x: x[:75] + "..." if len(x) > 75 else x
     )
     data_frame["value"] = data_frame["value"].str.join("; ")
     data_frame["value"] = data_frame["value"].map(
-        lambda x: x[:70] + "..." if len(x) > 70 else x
+        lambda x: x[:71] + "..." if len(x) > 74 else x
     )
 
-    sys.stdout.write(f"Printing thesaurus header\n")
-    sys.stdout.write(f"  Loading {file_path} thesaurus file\n")
-    sys.stdout.write(f"  Header:\n")
-
+    sys.stderr.write(f"\nPrinting thesaurus header\n  File : {file_path}\n")
     for _, row in data_frame.iterrows():
-        sys.stdout.write(f"    {row.key}\n")
-        sys.stdout.write(f"      {row.value}\n")
-    sys.stdout.flush()
+        sys.stderr.write(f"\n    {row.key}")
+        sys.stderr.write(f"\n      {row.value}")
+    sys.stderr.write(f"\n")
+    sys.stderr.flush()
 
 
 # =============================================================================

@@ -16,17 +16,15 @@ def internal__preprocess_countries(root_dir):
 
     from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
 
-    sys.stdout.write("\nINFO  Processing 'countries' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Processing 'countries' column.")
+    sys.stderr.flush()
 
     th = CreateThesaurus()
     th.update(root_dir=root_dir)
-    th.with_prompt_flag(-1)
     th.build()
 
     th = ApplyThesaurus()
     th.update(root_dir=root_dir)
-    th.with_prompt_flag(-1)
     th.build()
 
 

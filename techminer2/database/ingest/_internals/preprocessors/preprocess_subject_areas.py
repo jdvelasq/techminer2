@@ -24,8 +24,8 @@ def internal__preprocess_subject_areas(
     root_dir="./",
 ):
 
-    sys.stdout.write("\nINFO  Assign subject areas to each record.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Assign subject areas to each record.")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

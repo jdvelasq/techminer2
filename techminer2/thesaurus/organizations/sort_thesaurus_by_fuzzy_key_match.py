@@ -23,30 +23,8 @@ Sort Thesaurus by Fuzzy Match
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus by fuzzy match
-  Thesaurus file: example/thesaurus/organizations.the.txt
-       Keys like: universidad
-  Match thresold: 70
-  15 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/organizations.the.txt thesaurus file
-  Header:
-    Department of Business Finance, Universitat de Val...
-      Department of Business Finance, Universitat de València, València, Spa...
-    Department of Marketing, Universitat de València-I...
-      Department of Marketing, Universitat de València-Ivie, València, Spain
-    Facultad de Ingeniería, Universidad de Talca, CHL ...
-      Facultad de Ingeniería, Universidad de Talca, Chile
-    Faculty of Administration Sciences, Universidad de...
-      Faculty of Administration Sciences, Universidad del Valle, Cali, Colom...
-    School of Business, Universidad Adolfo Ibanez, San...
-      School of Business, Universidad Adolfo Ibanez, Santiago, Chile
-    Universidad de Carabobo, VEN (unknown)
-      Universidad de Carabobo, Venezuela
-    Universidad de Talca, CHL (unknown)
-      Universidad de Talca, Chile
-    Universidade Católica Portuguesa, Rua Diogo Botelh...
-      Universidade Católica Portuguesa, Rua Diogo Botelho 1327, 4069-005 Por...
+<BLANKLINE>
+Thesaurus sorting by fuzzy key match completed successfully: ...zations.the.txt
 
 
 """

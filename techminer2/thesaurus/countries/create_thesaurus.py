@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Reset Thesaurus to Initial
+Create Thesaurus
 ===============================================================================
 
 
@@ -20,7 +20,8 @@ Reset Thesaurus to Initial
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus creation completed successfully for file: ...saurus/countries.the.txt
 
 """
 import pathlib
@@ -29,10 +30,9 @@ import sys
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore
 
-from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_records
-from .__apply_thesaurus import ApplyThesaurus as ApplyCountryThesaurus
+from ...database._internals.io import internal__load_filtered_database
+from .apply_thesaurus import ApplyThesaurus as ApplyCountryThesaurus
 
 
 class CreateThesaurus(
@@ -162,14 +162,23 @@ class CreateThesaurus(
         file_path = self.step_01_get_thesaurus_file_path()
 
         # -------------------------------------------------------------------------
-        sys.stdout.write("\nINFO  Creating thesaurus file.")
-        sys.stdout.write(f"\n        Thesaurus file: {file_path}.")
-        sys.stdout.write("\n          Source field: 'affiliations'.")
+        sys.stderr.write("\nCreating thesaurus file")
+        sys.stderr.write(f"\n          File : {file_path}")
+        sys.stderr.write("\n  Source field : affiliations")
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+        ##
+        truncated_file_path = str(file_path)
+        if len(truncated_file_path) > 30:
+            truncated_file_path = "..." + truncated_file_path[-26:]
+        sys.stdout.write(
+            f"\nThesaurus creation completed successfully for file: {truncated_file_path}"
+        )
         sys.stdout.flush()
 
         # -------------------------------------------------------------------------
 
-        records = internal__load_records(params=self.params)
+        records = internal__load_filtered_database(params=self.params)
         #
         affiliations = self.step_02_create_affiliations_data_frame(records)
         affiliations = self.step_03_create_country_column_from_affiliations(
@@ -181,11 +190,6 @@ class CreateThesaurus(
         affiliations = self.step_07_group_affiliations_by_country(affiliations)
         #
         self.step_08_create_thesaurus_file(affiliations, file_path)
-
-        # -------------------------------------------------------------------------
-        ApplyCountryThesaurus().update(**self.params.__dict__).with_prompt_flag(
-            -1
-        ).build()
 
         # -------------------------------------------------------------------------
         # internal__log_message(msgs="  Done.", prompt_flag=-1)

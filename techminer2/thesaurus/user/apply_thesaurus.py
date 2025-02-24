@@ -26,7 +26,8 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
 
 """
 import sys
@@ -52,16 +53,18 @@ class ApplyThesaurus(
     # -------------------------------------------------------------------------
     def step_02_print_info_header(self):
 
-        file_path = self.file_path
+        file_path = str(self.file_path)
         field = self.params.field
         other_field = self.params.other_field
 
-        sys.stdout.write("\nINFO  Applying thesaurus to database.")
-        sys.stdout.write(f"\n        Thesaurus file: {file_path}")
-        sys.stdout.write(f"\n          Source field: {field}")
-        sys.stdout.write(f"\n          Target field: {other_field}")
+        if len(file_path) > 64:
+            file_path = "..." + file_path[-60:]
 
-        sys.stdout.flush()
+        sys.stderr.write("\nApplying thesaurus to database")
+        sys.stderr.write(f"\n          File : {file_path}")
+        sys.stderr.write(f"\n  Source field : {field}")
+        sys.stderr.write(f"\n  Target field : {other_field}")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_reversed_thesaurus_as_mapping(self):
@@ -115,7 +118,15 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def step_10_print_info_tail(self):
-        sys.stdout.write("\n        Done.")
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+        #
+        truncated_file_path = str(self.file_path)
+        if len(truncated_file_path) > 25:
+            truncated_file_path = "..." + truncated_file_path[-21:]
+        sys.stdout.write(
+            f"\nThesaurus application completed successfully for file: {truncated_file_path}"
+        )
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------

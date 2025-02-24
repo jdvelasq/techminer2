@@ -20,14 +20,21 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Thesaurus application completed successfully for file: ...s/descriptors.the.txt
 
 
 """
 
 
 from ..._internals.mixins import ParamsMixin
-from ..user.__apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
 
 PAIRS = [
     ("raw_author_keywords", "author_keywords"),
@@ -48,10 +55,6 @@ class ApplyThesaurus(
     def build(self):
 
         for index, (raw_column, column) in enumerate(PAIRS):
-            if index == 0:
-                counter_flag = self.params.prompt_flag
-            else:
-                counter_flag = -1
 
             (
                 ApplyUserThesaurus()
@@ -59,6 +62,5 @@ class ApplyThesaurus(
                 .with_field(raw_column)
                 .with_other_field(column)
                 .where_directory_is(self.params.root_dir)
-                .with_prompt_flag(counter_flag)
                 .build()
             )

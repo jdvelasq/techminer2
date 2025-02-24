@@ -98,10 +98,10 @@ class ScopusDataImporter:
         tqdm.pandas()
 
         # Elapsed time report
-        sys.stdout.write(
+        sys.stderr.write(
             "\n\n___________________________________ PROGRESS ___________________________________\n"
         )
-        sys.stdout.flush()
+        sys.stderr.flush()
         start_time = time.time()
 
         #
@@ -200,8 +200,8 @@ class ScopusDataImporter:
 
         internal__report_imported_records(root_dir)
 
-        sys.stdout.write(
+        sys.stderr.write(
             f"\nINFO  Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}\n"
         )
 
-        sys.stdout.flush()
+        sys.stderr.flush()

@@ -22,6 +22,8 @@ Check Thesaurus for Misspelled Terms
 ...     #
 ...     .build()
 ... )
+<BLANKLINE>
+Thesaurus check completed successfully for file: ...esaurus/descriptors.the.txt
 
 
 """
@@ -35,7 +37,7 @@ from .._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_head,
+    internal__print_thesaurus_header,
 )
 
 
@@ -53,9 +55,9 @@ class CheckThesaurusForMisspelledTerms(
 
         file_path = self.file_path
 
-        sys.stdout.write("\nINFO  Checking thesaurus mispelled keys.")
-        sys.stdout.write(f"\n        Thesaurus file: {file_path}")
-        sys.stdout.flush()
+        sys.stderr.write("\nChecking thesaurus for mispelled keys.")
+        sys.stderr.write(f"\n  File : {file_path}")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_thesaurus_as_mapping(self):
@@ -81,19 +83,18 @@ class CheckThesaurusForMisspelledTerms(
     # -------------------------------------------------------------------------
     def step_06_print_mispelled_words(self):
         if len(self.misspelled_words) == 0:
-            sys.stdout.write("\n        No misspelled words found.")
-            sys.stdout.flush()
+            sys.stderr.write("\n  No misspelled words found.")
+            sys.stderr.flush()
             return
 
         misspelled_words = self.misspelled_words[:10]
         for i_word, word in enumerate(misspelled_words):
             if i_word == 0:
-                sys.stdout.write(f"\n        Words: {word}")
-            else:
-                sys.stdout.write(f"\n               {word}")
+                sys.stderr.write("\n  Potential misspelled words:")
+            sys.stderr.write(f"\n    - {word}")
         if len(misspelled_words) == 10:
-            sys.stdout.write("\n               ...")
-        sys.stdout.flush()
+            sys.stderr.write("\n     ...")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_07_sort_thesaurus_on_disk(self):
@@ -138,8 +139,15 @@ class CheckThesaurusForMisspelledTerms(
 
     # -------------------------------------------------------------------------
     def step_08_print_info_tail(self):
-        sys.stdout.write("\n        Done.")
-        internal__print_thesaurus_head(file_path=self.file_path)
+        # sys.stderr.write("\n        Done.")
+        # internal__print_thesaurus_header(file_path=self.file_path)
+        # sys.stderr.flush()
+        truncated_file_path = str(self.file_path)
+        if len(truncated_file_path) > 31:
+            truncated_file_path = "..." + truncated_file_path[-27:]
+        sys.stdout.write(
+            f"\nThesaurus check completed successfully for file: {truncated_file_path}"
+        )
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------

@@ -27,31 +27,8 @@ Finds a string in the terms of a thesaurus.
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/organizations.the.txt
-           Keys like: MIT
-  Keys starting with: None
-    Keys ending with: None
-  21 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/organizations.the.txt thesaurus file
-  Header:
-    Department of Economics, MIT, 50 Memorial Drive E5...
-      Department of Economics, MIT, 50 Memorial Drive E52-371, Cambridge, MA...
-    Graduate School of Business, RMIT University, Melb...
-      Graduate School of Business, RMIT University, Melbourne, Australia
-    MIT Center, USA (unknown)
-      MIT Center, United States
-    MIT Laboratory for Financial Engineering, USA (unk...
-      MIT Laboratory for Financial Engineering, United States
-    MIT Media Lab, 77 Massachusetts Avenue, Cambridge,...
-      MIT Media Lab, 77 Massachusetts Avenue, Cambridge, MA  02139, United S...
-    MIT Media Lab, Cambridge, MA 02139, USA (unknown)
-      MIT Media Lab, Cambridge, MA 02139, United States
-    MIT Media Lab, Cambridge, MA, USA (unknown)
-      MIT Media Lab, Cambridge, MA, United States
-    MIT Sloan School of Management and Department of E...
-      MIT Sloan School of Management and Department of Economics, Massachuse...
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...organizations.the.txt
 
 >>> from techminer2.thesaurus.organizations import SortThesaurusByKeyMatch
 >>> (
@@ -67,31 +44,8 @@ Printing thesaurus header
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/organizations.the.txt
-           Keys like: None
-  Keys starting with: National
-    Keys ending with: None
-  20 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/organizations.the.txt thesaurus file
-  Header:
-    National Agricultural Research Laboratories, Kampa...
-      National Agricultural Research Laboratories, Kampala, Uganda
-    National Bereau of Economics Research, Evanston, I...
-      National Bereau of Economics Research, Evanston, IL, United States
-    National Bureau for Economic Research, USA (unknow...
-      National Bureau for Economic Research, United States
-    National Bureau of Economic Researc, USA (unknown)
-      National Bureau of Economic Researc, United States
-    National Bureau of Economic Research, 1050 Massach...
-      National Bureau of Economic Research, 1050 Massachusetts Avenue, Cambr...
-    National Bureau of Economic Research, Ambridge, MA...
-      National Bureau of Economic Research, Ambridge, MA  02138, United Stat...
-    National Bureau of Economic Research, Cambridge, M...
-      National Bureau of Economic Research, Cambridge, MA  02138, United Sta...
-    National Bureau of Economic Research, Cambridge, M...
-      National Bureau of Economic Research, Cambridge, MA 02138, United Stat...
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...organizations.the.txt
 
 
 """

@@ -9,8 +9,7 @@
 Apply Thesaurus 
 ===============================================================================
 
-
->>> from techminer2.thesaurus.countries import ApplyThesaurus
+>>> from techminer2.thesaurus.organizations import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
 ...     #
@@ -19,19 +18,22 @@ Apply Thesaurus
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus application completed successfully for file: ...organizations.the.txt
 
 """
 import sys
 
+from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
 from ...database.ingest._internals.operators.transform_field import (
     internal__transform_field,
 )
-from ..system import ApplyThesaurus as ApplySystemThesaurus
-from ..user.__apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
 
 
+#
+#
 class ApplyThesaurus(
     ParamsMixin,
 ):
@@ -42,11 +44,10 @@ class ApplyThesaurus(
         # Affiliations to countries mmapping
         (
             ApplyUserThesaurus()
-            .with_thesaurus_file("countries.the.txt")
+            .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
-            .with_other_field("countries")
+            .with_other_field("organizations")
             .where_directory_is(self.params.root_dir)
-            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )
 
@@ -54,30 +55,8 @@ class ApplyThesaurus(
         internal__transform_field(
             #
             # FIELD:
-            field="countries",
-            other_field="country_1st_author",
+            field="organizations",
+            other_field="organization_1st_author",
             function=lambda x: x.str.split("; ").str[0],
             root_dir=self.params.root_dir,
-        )
-
-        # Country to region mapping
-        (
-            ApplySystemThesaurus()
-            .with_thesaurus_file("geography/country_to_region.the.txt")
-            .with_field("countries")
-            .with_other_field("regions")
-            .where_directory_is(self.params.root_dir)
-            .with_prompt_flag(-1)
-            .build()
-        )
-
-        # Country to subregion mapping
-        (
-            ApplySystemThesaurus()
-            .with_thesaurus_file("geography/country_to_subregion.the.txt")
-            .with_field("countries")
-            .with_other_field("subregions")
-            .where_directory_is(self.params.root_dir)
-            .with_prompt_flag(-1)
-            .build()
         )

@@ -14,8 +14,8 @@ from ....field_operators.merge_fields_operator import internal__merge_fields
 
 def internal__preprocess_raw_noun_and_phrases(root_dir):
 
-    sys.stdout.write("\nINFO  Creating 'raw_nouns_and_phrases' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Creating 'raw_nouns_and_phrases' column.")
+    sys.stderr.flush()
 
     internal__merge_fields(
         source=[

@@ -20,13 +20,18 @@ Cleanup Thesaurus
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus cleanup completed successfully for file: ...esaurus/countries.the.txt
+<BLANKLINE>
+Thesaurus application completed successfully for file: ...rus/countries.the.txt
+Thesaurus application completed successfully for file: ...try_to_region.the.txt
+Thesaurus application completed successfully for file: ..._to_subregion.the.txt
 
 """
 from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
-from ..user.__cleanup_thesaurus import CleanupThesaurus as CleanupUserThesaurus
-from .__apply_thesaurus import ApplyThesaurus
+from ..user.cleanup_thesaurus import CleanupThesaurus as CleanupUserThesaurus
+from .apply_thesaurus import ApplyThesaurus
 
 
 class CleanupThesaurus(
@@ -40,8 +45,7 @@ class CleanupThesaurus(
             CleanupUserThesaurus()
             .update(**self.params.__dict__)
             .with_thesaurus_file("countries.the.txt")
-            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )
 
-        ApplyThesaurus().update(**self.params.__dict__).with_prompt_flag(-1).build()
+        ApplyThesaurus().update(**self.params.__dict__).build()

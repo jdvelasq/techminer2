@@ -23,31 +23,8 @@ Sort Thesaurus by Fuzzy Key Match
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus by fuzzy match
-  Thesaurus file: example/thesaurus/descriptors.the.txt
-       Keys like: INTELIGENCIA
-  Match thresold: 70
-  17 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    ANALYTICAL_INTELLIGENCE
-      ANALYTICAL_INTELLIGENCE
-    ARTIFICIAL_INTELLIGENCE
-      ARTIFICIAL_INTELLIGENCE
-    BUSINESS_INTELLIGENCE
-      BUSINESS_INTELLIGENCE
-    BUSINESS_INTELLIGENCE (BI)
-      BUSINESS_INTELLIGENCE (BI)
-    BUSINESS_INTELLIGENCE_FRAMEWORK
-      BUSINESS_INTELLIGENCE_FRAMEWORK
-    COLLECTIVE_INTELLIGENCES
-      COLLECTIVE_INTELLIGENCE; COLLECTIVE_INTELLIGENCES
-    COMPETITIVE_INTELLIGENCE
-      COMPETITIVE_INTELLIGENCE
-    EMPATHETIC_INTELLIGENCE
-      EMPATHETIC_INTELLIGENCE
-
+<BLANKLINE>
+Thesaurus sorting by fuzzy key match completed successfully: ...riptors.the.txt
 
 
 

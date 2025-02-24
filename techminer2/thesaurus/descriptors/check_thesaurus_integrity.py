@@ -18,13 +18,14 @@ Check Thesaurus Integrity
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus integrity check completed successfully for file: ...scriptors.the.txt
 
 
 """
 
 from ..._internals.mixins import ParamsMixin
-from ..user.__check_thesaurus_integrity import (
+from ..user.check_thesaurus_integrity import (
     CheckThesaurusIntegrity as CheckUserThesaurusIntegrity,
 )
 
@@ -41,8 +42,7 @@ class CheckThesaurusIntegrity(
         (
             CheckUserThesaurusIntegrity()
             .with_thesaurus_file("descriptors.the.txt")
-            .with_field("descriptors")
+            .with_field("raw_descriptors")
             .where_directory_is(self.params.root_dir)
-            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )

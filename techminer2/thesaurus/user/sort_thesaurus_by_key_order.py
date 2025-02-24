@@ -24,8 +24,8 @@ Sort Thesaurus by Key Order
 ...     #
 ...     .build()
 ... )
-
-
+<BLANKLINE>
+Thesaurus sorting completed successfully for file: ...aurus/descriptors.the.txt
 
 >>> from techminer2.thesaurus.user import SortThesaurusByKeyOrder
 >>> (
@@ -40,7 +40,8 @@ Sort Thesaurus by Key Order
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus sorting completed successfully for file: ...aurus/descriptors.the.txt
 
 
 
@@ -57,8 +58,8 @@ Sort Thesaurus by Key Order
 ...     #
 ...     .build()
 ... )
-
-
+<BLANKLINE>
+Thesaurus sorting completed successfully for file: ...aurus/descriptors.the.txt
                    
 """
 import sys
@@ -67,7 +68,7 @@ from ..._internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_head,
+    internal__print_thesaurus_header,
 )
 
 
@@ -90,42 +91,32 @@ class SortThesaurusByKeyOrder(
 
     # -------------------------------------------------------------------------
     def step_03_print_info_header(self):
-        if self.params.show_progress:
-            order_by = self.order_by
-            sys.stdout.write(f"Sorting thesaurus {order_by}\n")
-            sys.stdout.flush()
+        order_by = self.order_by
+        sys.stderr.write(f"\nSorting thesaurus {order_by}")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_04_load_thesaurus_as_mapping(self):
         file_path = self.file_path
-        if self.params.show_progress:
-            sys.stdout.write(f"  Loading {file_path} thesaurus file as mapping\n")
-            sys.stdout.flush()
+
+        sys.stderr.write(f"\n  File : {file_path}")
+        sys.stderr.flush()
         self.th_dict = internal__load_thesaurus_as_mapping(self.file_path)
 
     # -------------------------------------------------------------------------
     def step_05_get_thesaurus_sorted_keys(self):
         #
         if self.params.keys_order_by == "alphabetical":
-            if self.params.show_progress:
-                sys.stdout.write("  Sorting keys alphabetically\n")
-                sys.stdout.flush()
             self.sorted_keys = sorted(self.th_dict.keys(), reverse=False)
             return
         #
         if self.params.keys_order_by == "key_length":
-            if self.params.show_progress:
-                sys.stdout.write("  Sorting keys by key length\n")
-                sys.stdout.flush()
             self.sorted_keys = sorted(
                 self.th_dict.keys(), key=lambda x: (len(x), x), reverse=False
             )
             return
         #
         if self.params.keys_order_by == "word_length":
-            if self.params.show_progress:
-                sys.stdout.write(f"  Sorting keys by word length\n")
-                sys.stdout.flush()
             self.sorted_keys = sorted(
                 self.th_dict.keys(),
                 key=lambda x: (max(len(y) for y in x.split("_")), x),
@@ -137,9 +128,6 @@ class SortThesaurusByKeyOrder(
 
     # -------------------------------------------------------------------------
     def step_06_save_sorted_thesaurus_on_disk(self):
-        if self.params.show_progress:
-            sys.stdout.write(f"  Writing thesaurus to disk.\n")
-            sys.stdout.flush()
         with open(self.file_path, "w", encoding="utf-8") as file:
             for key in self.sorted_keys:
                 file.write(key + "\n")
@@ -148,9 +136,17 @@ class SortThesaurusByKeyOrder(
 
     # -------------------------------------------------------------------------
     def step_07_print_info_tail(self):
-        if self.params.show_progress:
-            internal__print_thesaurus_head(file_path=self.file_path)
-            sys.stdout.flush()
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+        internal__print_thesaurus_header(file_path=self.file_path)
+
+        truncated_file_path = str(self.file_path)
+        if len(truncated_file_path) > 29:
+            truncated_file_path = "..." + truncated_file_path[-25:]
+        sys.stdout.write(
+            f"\nThesaurus sorting completed successfully for file: {truncated_file_path}\n"
+        )
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def build(self):

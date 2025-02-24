@@ -17,8 +17,8 @@ from ....._internals.log_message import internal__log_message
 def internal__preprocess_local_citations(root_dir):
     """:meta private:"""
 
-    sys.stdout.write("\nINFO  Counting local citations.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Counting local citations.")
+    sys.stderr.flush()
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",

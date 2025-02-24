@@ -131,7 +131,7 @@ class Params:
     #
     # S
     #
-    show_progress: bool = True
+    # show_progress: bool = True
     smooth_idf_weights: bool = False
     spring_layout_iterations: int = 50
     spring_layout_k: float = 0.1
@@ -316,9 +316,9 @@ class ParamsMixin:
     #
     # S
     #
-    def showing_progress(self, progress):
-        self.params.show_progress = progress
-        return self
+    ## def showing_progress(self, progress):
+    ##     self.params.show_progress = progress
+    ##     return self
 
     #
     # U

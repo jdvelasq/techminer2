@@ -23,30 +23,8 @@ Sort Thesaurus by Fuzzy Key Match
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus by fuzzy match
-  Thesaurus file: example/thesaurus/countries.the.txt
-       Keys like: china
-  Match thresold: 90
-  1 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/countries.the.txt thesaurus file
-  Header:
-    China
-      Anhui University of Technology, Maanshan, China; Antai College of Econ...
-    Argentina
-      Sorin Capital Management, Argentina
-    Australia
-      Accounting Discipline, Business School, The University of Sydney, Buil...
-    Austria
-      Agro-Industries Branch, UNIDO, Austria; Department of Business Adminis...
-    Belgium
-      Brussels, Belgium; CERMi (Centre for European Research in Microfinance...
-    Brazil
-      Brazilian School of Public and Business Administration, Getulio Vargas...
-    Brunei Darussalam
-      Centre for Lifelong Learning, Universiti Brunei Darussalam, Gadong, Br...
-    Bulgaria
-      International University College, 3 Bulgaria Str, 9300 Dobrich, Bulgar...
+<BLANKLINE>
+Thesaurus sorting by fuzzy key match completed successfully: ...untries.the.txt
 
 
 

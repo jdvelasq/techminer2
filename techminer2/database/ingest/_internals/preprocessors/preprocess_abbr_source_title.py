@@ -15,8 +15,8 @@ from ..operators.fillna import internal__fillna
 def internal__preprocess_abbr_source_title(root_dir):
     """:meta private:"""
 
-    sys.stdout.write("\nINFO  Processing 'abbr_source_title' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Processing 'abbr_source_title' column.")
+    sys.stderr.flush()
 
     internal__fillna(
         fill_field="abbr_source_title",

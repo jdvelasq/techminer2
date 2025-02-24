@@ -10,28 +10,28 @@
 Apply Thesaurus
 ===============================================================================
 
-## >>> from techminer2.thesaurus.system import ApplyThesaurus
-## >>> (
-## ...     ApplyThesaurus()
-## ...     # 
-## ...     # THESAURUS:
-## ...     .with_thesaurus_file("geography/country_to_region.the.txt")
-## ...     #
-## ...     # FIELDS:
-## ...     .with_field("countries")
-## ...     .with_other_field("regions")
-## ...     #
-## ...     # DATABASE:
-## ...     .where_directory_is("example/")
-## ...     #
-## ...     .build()
-## ... )
---INFO-- The file example/thesaurus/descriptors.the.txt has been modified.
+>>> from techminer2.thesaurus.system import ApplyThesaurus
+>>> (
+...     ApplyThesaurus()
+...     # 
+...     # THESAURUS:
+...     .with_thesaurus_file("geography/country_to_region.the.txt")
+...     #
+...     # FIELDS:
+...     .with_field("countries")
+...     .with_other_field("regions")
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+<BLANKLINE>
+Thesaurus application completed successfully for file: ...try_to_region.the.txt
 
 """
 import sys
 
-from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
 from ...database._internals.io import internal__load_records, internal__write_records
 from .._internals import (
@@ -98,13 +98,27 @@ class ApplyThesaurus(
             self.params.thesaurus_file
         )
 
+        if len(file_path) > 64:
+            truncated_file_path = "..." + file_path[-60:]
+        else:
+            truncated_file_path = file_path
+
         # -------------------------------------------------------------------------
-        sys.stdout.write("\nINFO  Applying system thesaurus.")
-        sys.stdout.write(f"\n        Thesaurus file: {file_path}.")
-        sys.stdout.write(f"\n          Source field: {self.params.field}.")
-        sys.stdout.write(f"\n          Target field: {self.params.other_field}.")
-        sys.stdout.flush()
+        sys.stderr.write("\nApplying system thesaurus")
+        sys.stderr.write(f"\n          File : {truncated_file_path}")
+        sys.stderr.write(f"\n  Source field : {self.params.field}")
+        sys.stderr.write(f"\n  Target field : {self.params.other_field}")
+        sys.stderr.write("\n")
+        sys.stderr.flush()
         #
+        truncated_file_path = str(file_path)
+        if len(file_path) > 25:
+            truncated_file_path = "..." + truncated_file_path[-21:]
+        sys.stdout.write(
+            f"\nThesaurus application completed successfully for file: {truncated_file_path}"
+        )
+        sys.stdout.flush()
+        # -------------------------------------------------------------------------
 
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
         records = internal__load_records(params=self.params)

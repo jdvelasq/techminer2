@@ -26,33 +26,8 @@ Sort Thesaurus by Key Match
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/descriptors.the.txt
-           Keys like: BUSINESS
-  Keys starting with: None
-    Keys ending with: None
-  104 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    AGRIBUSINESS
-      AGRIBUSINESS
-    AGRIBUSINESS_MANAGEMENT
-      AGRIBUSINESS_MANAGEMENT
-    A_BUSINESS_STRATEGY_EVALUATION_MODEL
-      A_BUSINESS_STRATEGY_EVALUATION_MODEL
-    A_SERVICE_BUSINESS
-      A_SERVICE_BUSINESS
-    BUSINESSES
-      BUSINESS; BUSINESSES
-    BUSINESS_ANALYSIS
-      BUSINESS_ANALYSIS
-    BUSINESS_AND_ECONOMICS
-      BUSINESS_AND_ECONOMICS
-    BUSINESS_AND_INFORMATION_SYSTEMS_RESEARCH
-      BUSINESS_AND_INFORMATION_SYSTEMS_RESEARCH
-
-
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 >>> (
 ...     SortThesaurusByKeyMatch()
@@ -68,33 +43,8 @@ Printing thesaurus header
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/descriptors.the.txt
-           Keys like: None
-  Keys starting with: BUSINESS
-    Keys ending with: None
-  49 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    BUSINESSES
-      BUSINESS; BUSINESSES
-    BUSINESS_ANALYSIS
-      BUSINESS_ANALYSIS
-    BUSINESS_AND_ECONOMICS
-      BUSINESS_AND_ECONOMICS
-    BUSINESS_AND_INFORMATION_SYSTEMS_RESEARCH
-      BUSINESS_AND_INFORMATION_SYSTEMS_RESEARCH
-    BUSINESS_AND_IT_ALIGNMENT
-      BUSINESS_AND_IT_ALIGNMENT
-    BUSINESS_AND_MANAGEMENT_RESEARCH
-      BUSINESS_AND_MANAGEMENT_RESEARCH
-    BUSINESS_APPLICATIONS_OF_COMPUTERS
-      BUSINESS_APPLICATIONS_OF_COMPUTERS
-    BUSINESS_ARCHITECTURE
-      BUSINESS_ARCHITECTURE
-
-
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 >>> (
 ...     SortThesaurusByKeyMatch()
@@ -110,32 +60,8 @@ Printing thesaurus header
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/descriptors.the.txt
-           Keys like: None
-  Keys starting with: None
-    Keys ending with: BUSINESS
-  16 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    AGRIBUSINESS
-      AGRIBUSINESS
-    A_SERVICE_BUSINESS
-      A_SERVICE_BUSINESS
-    DIGITAL_BUSINESS
-      DIGITAL_BUSINESS
-    EBUSINESS
-      EBUSINESS
-    ELECTRONIC_BUSINESS
-      ELECTRONIC_BUSINESS
-    ETHICS_BUSINESS
-      BUSINESS_ETHICS; ETHICS_BUSINESS
-    EURASIA_BUSINESS
-      EURASIA_BUSINESS
-    E_BUSINESS
-      E_BUSINESS
-
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 
 """
@@ -147,7 +73,7 @@ from ..._internals.mixins import ParamsMixin
 from .._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_head,
+    internal__print_thesaurus_header,
 )
 
 
@@ -163,20 +89,20 @@ class SortThesaurusByKeyMatch(
     # -------------------------------------------------------------------------
     def step_02_print_info_header(self):
 
-        if self.params.show_progress:
+        file_path = str(self.file_path)
+        pattern = self.params.pattern
+        startswith = self.params.pattern_startswith
+        endswith = self.params.pattern_endswith
 
-            file_path = self.file_path
-            pattern = self.params.pattern
-            startswith = self.params.pattern_startswith
-            endswith = self.params.pattern_endswith
+        if len(file_path) > 64:
+            file_path = "..." + file_path[-60:]
 
-            sys.stdout.write("Sorting thesaurus file by key match.\n")
-            sys.stdout.write(f"      Thesaurus file: {file_path}\n")
-            sys.stdout.write(f"           Keys like: {pattern}\n")
-            sys.stdout.write(f"  Keys starting with: {startswith}\n")
-            sys.stdout.write(f"    Keys ending with: {endswith}\n")
-
-            sys.stdout.flush()
+        sys.stderr.write("\nSorting thesaurus file by key match")
+        sys.stderr.write(f"\n       Thesaurus file : {file_path}")
+        sys.stderr.write(f"\n            Keys like : {pattern}")
+        sys.stderr.write(f"\n   Keys starting with : {startswith}")
+        sys.stderr.write(f"\n     Keys ending with : {endswith}")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_thesaurus_as_mapping(self):
@@ -222,11 +148,10 @@ class SortThesaurusByKeyMatch(
         self.data_frame = pd.concat(result)
         self.data_frame = self.data_frame.drop_duplicates("key")
 
-        if self.params.show_progress:
-            sys.stdout.write(
-                f"  {len(self.data_frame.key.drop_duplicates())} matching keys found\n"
-            )
-            sys.stdout.flush()
+        sys.stderr.write(
+            f"\n  Matching keys found : {len(self.data_frame.key.drop_duplicates())}"
+        )
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_06_extract_findings(self):
@@ -256,8 +181,20 @@ class SortThesaurusByKeyMatch(
 
     # -------------------------------------------------------------------------
     def step_08_print_info_tail(self):
-        if self.params.show_progress:
-            internal__print_thesaurus_head(file_path=self.file_path)
+
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+
+        internal__print_thesaurus_header(file_path=self.file_path)
+        ##
+        truncated_file_path = str(self.file_path)
+        if len(truncated_file_path) > 26:
+            truncated_file_path = "..." + truncated_file_path[-21:]
+        sys.stdout.write(
+            f"\nThesaurus sorting by key match completed successfully: {truncated_file_path}"
+        )
+        sys.stdout.flush()
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def build(self):

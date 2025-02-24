@@ -9,7 +9,7 @@
 Check Thesaurus Integrity
 ===============================================================================
 
->>> from techminer2.thesaurus.countries import CheckThesaurusIntegrity
+>>> from techminer2.thesaurus.references import CheckThesaurusIntegrity
 >>> (
 ...     CheckThesaurusIntegrity()
 ...     #
@@ -18,13 +18,14 @@ Check Thesaurus Integrity
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus integrity check completed successfully for file: ...eferences.the.txt
 
 
 """
 
 from ..._internals.mixins import ParamsMixin
-from ..user.__check_thesaurus_integrity import (
+from ..user.check_thesaurus_integrity import (
     CheckThesaurusIntegrity as CheckUserThesaurusIntegrity,
 )
 
@@ -40,9 +41,8 @@ class CheckThesaurusIntegrity(
 
         (
             CheckUserThesaurusIntegrity()
-            .with_thesaurus_file("countries.the.txt")
-            .with_field("affiliations")
+            .with_thesaurus_file("global_references.the.txt")
+            .with_field("global_references")
             .where_directory_is(self.params.root_dir)
-            .with_prompt_flag(self.params.prompt_flag)
             .build()
         )

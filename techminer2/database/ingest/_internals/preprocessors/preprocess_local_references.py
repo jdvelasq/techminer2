@@ -28,8 +28,8 @@ from ....._internals.log_message import internal__log_message
 def internal__preprocess_local_references(root_dir):
     """:meta private:"""
 
-    sys.stdout.write("INFO  Homogenizing local references.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Homogenizing local references.")
+    sys.stderr.flush()
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",

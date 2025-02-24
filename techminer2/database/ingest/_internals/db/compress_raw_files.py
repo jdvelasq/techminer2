@@ -12,8 +12,8 @@ from .get_subdirectories import internal__get_subdirectories
 def internal__compress_raw_files(root_dir):
     """:meta private:"""
 
-    sys.stdout.write("\nINFO  Compressing raw data files.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Compressing raw data files.")
+    sys.stderr.flush()
 
     raw_dir = os.path.join(root_dir, "raw-data")
     folders = internal__get_subdirectories(raw_dir)

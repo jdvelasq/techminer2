@@ -10,16 +10,22 @@ Find Editorials
 ===============================================================================
 
 
-## >>> from techminer2.prepare.thesaurus.descriptors import find_editorials
-## >>> find_editorials(
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
-## ... )
---INFO-- The file example/thesaurus/descriptors.the.txt has been reordered.
+>>> from techminer2.thesaurus.descriptors import FindEditorials
+>>> (
+...     FindEditorials()
+...     #
+...     # DATABASE:
+...     .where_directory_is("example/")
+...     #
+...     .build()
+... )
+<BLANKLINE>
+Thesaurus sorting by exact key match completed successfully: ...riptors.the.txt
+
 
 """
-from .sort_thesaurus_by_key_exact_match import sort_thesaurus_by_match
+from ..._internals.mixins import ParamsMixin
+from .sort_thesaurus_by_key_exact_match import SortThesaurusByKeyExactMatch
 
 EDITORIALS = [
     "CONFERENCE",
@@ -55,20 +61,20 @@ EDITORIALS = [
 ]
 
 
-def find_editorials(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
+class FindEditorials(
+    ParamsMixin,
 ):
     """:meta private:"""
 
-    sort_thesaurus_by_match(
-        #
-        # SEARCH PARAMS:
-        contains=EDITORIALS,
-        startswith=None,
-        endswith=None,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-    )
+    # -------------------------------------------------------------------------
+    def build(self):
+        """:meta private:"""
+
+        (
+            SortThesaurusByKeyExactMatch().update(**self.params.__dict__)
+            #
+            # THESAURUS:
+            .having_keys_like(EDITORIALS)
+            #
+            .build()
+        )

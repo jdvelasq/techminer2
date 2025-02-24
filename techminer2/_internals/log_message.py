@@ -11,7 +11,7 @@ def internal__log_message(
     prompt_flag=False,
     initial_newline=False,
 ):
-    """Prints a log message in the sys.stdout strem."""
+    """Prints a log message in the sys.stderr strem."""
 
     global COUNTER
 
@@ -36,12 +36,12 @@ def internal__log_message(
     for i_msg, msg in enumerate(msgs):
         if i_msg == 0:
             if initial_newline:
-                sys.stdout.write("\n")
-            sys.stdout.write(f"{prefix} {msg}\n")
+                sys.stderr.write("\n")
+            sys.stderr.write(f"{prefix} {msg}\n")
         else:
-            sys.stdout.write(f"         : {msg}\n")
+            sys.stderr.write(f"         : {msg}\n")
 
-    sys.stdout.flush()
+    sys.stderr.flush()
 
 
 # =============================================================================

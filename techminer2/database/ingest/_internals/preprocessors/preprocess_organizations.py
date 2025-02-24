@@ -10,17 +10,16 @@
 import sys
 
 from ....._internals.log_message import internal__log_message
-
-# from .....thesaurus.organizations import ApplyThesaurus, CreateThesaurus
+from .....thesaurus.organizations import ApplyThesaurus, CreateThesaurus
 
 
 def internal__preprocess_organizations(root_dir):
 
-    sys.stdout.write("\nINFO  Processing 'organizations' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Processing 'organizations' column.")
+    sys.stderr.flush()
 
-    CreateThesaurus().update(root_dir=root_dir).with_prompt_flag(-1).build()
-    ApplyThesaurus().update(root_dir=root_dir).with_prompt_flag(-1).build()
+    CreateThesaurus().update(root_dir=root_dir).build()
+    ApplyThesaurus().update(root_dir=root_dir).build()
 
 
 # =============================================================================

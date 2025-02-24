@@ -133,7 +133,7 @@ def internal__load_filtered_database(params):
             else:
 
                 # Split the filter value into a list of strings
-                database = data_frame[["record_id", filter_name]]
+                database = data_frame[["record_id", filter_name]].copy()
                 database.loc[:, filter_name] = database[filter_name].str.split(";")
 
                 # Explode the list of strings into multiple rows
@@ -144,6 +144,7 @@ def internal__load_filtered_database(params):
 
                 # Keep only records that match the filter value
                 database = database[database[filter_name].isin(filter_value)]
+
                 data_frame = data_frame[
                     data_frame["record_id"].isin(database["record_id"])
                 ]

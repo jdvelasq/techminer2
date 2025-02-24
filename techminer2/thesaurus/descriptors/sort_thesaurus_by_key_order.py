@@ -24,7 +24,8 @@ Sort Thesaurus by Key Order
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus sorting completed successfully for file: ...aurus/descriptors.the.txt
 
 
 """

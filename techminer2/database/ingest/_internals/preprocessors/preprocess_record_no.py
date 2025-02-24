@@ -11,8 +11,8 @@ from ....._internals.log_message import internal__log_message
 def internal__preprocess_record_no(root_dir):
     """Create art_no column in databases."""
     #
-    sys.stdout.write("\nINFO  Assign 'record_no' identifier to each record.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Assign 'record_no' identifier to each record.")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 

@@ -18,8 +18,8 @@ from ..operators.copy_field import internal__copy_field
 
 def internal__preprocess_descriptors(root_dir):
 
-    sys.stdout.write("\nINFO  Processing 'descriptors' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Processing 'descriptors' column.")
+    sys.stderr.flush()
     internal__copy_field(
         source="raw_descriptors",
         dest="descriptors",

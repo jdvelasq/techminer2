@@ -15,8 +15,8 @@ from ....field_operators.transform_field_operator import internal__transform_fie
 def internal__preprocess_global_citations(root_dir):
     """Run importer."""
 
-    sys.stdout.write("\nINFO  Processing 'global_citations' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Processing 'global_citations' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="global_citations",

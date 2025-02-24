@@ -28,8 +28,8 @@ def _process_text(text):
 def internal__preprocess_doi(root_dir):
     """Run authors importer."""
 
-    sys.stdout.write("\nINFO  Processing 'doi' column.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Processing 'doi' column.")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="doi",

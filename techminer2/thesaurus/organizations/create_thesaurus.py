@@ -7,19 +7,21 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Reset Thesaurus to Initial
+Create thesaurus
 ===============================================================================
 
 
->>> from techminer2.thesaurus.organizations import ResetThesaurusToInitial
+>>> from techminer2.thesaurus.organizations import CreateThesaurus
 >>> (
-...     ResetThesaurusToInitial()
+...     CreateThesaurus()
 ...     #
 ...     # DATABASE:
 ...     .where_directory_is("example/")
 ...     #
 ...     .build()
 ... )
+<BLANKLINE>
+Thesaurus creation completed successfully for file: ...nizations.the.txt
 
 
 """
@@ -29,7 +31,6 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import Params, ParamsMixin
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
@@ -225,10 +226,9 @@ class CreateThesaurus(
         file_path = self.step_01_generate_file_path()
 
         # -------------------------------------------------------------------------
-        sys.stdout.write("\nINFO  Creating thesaurus file.")
-        sys.stdout.write(f"\n        Thesaurus file: {file_path}.")
-        sys.stdout.write("\n          Source field: affiliations.")
-        sys.stdout.flush()
+        sys.stderr.write(f"\nCreating thesaurus file: {file_path}")
+        sys.stderr.write("\n  Source field: affiliations.")
+        sys.stderr.flush()
 
         # -------------------------------------------------------------------------
 
@@ -246,6 +246,16 @@ class CreateThesaurus(
         self.step_11_save_data_frame_as_thesaurus(data_frame)
 
         # -------------------------------------------------------------------------
+        file_path = (
+            pathlib.Path(self.params.root_dir) / "thesaurus/organizations.the.txt"
+        )
+        truncated_file_path = str(file_path)
+        if len(truncated_file_path) > 28:
+            truncated_file_path = "..." + truncated_file_path[-24:]
+        sys.stdout.write(
+            f"\nThesaurus creation completed successfully for file: {truncated_file_path}"
+        )
+        sys.stdout.flush()
 
 
 # =============================================================================

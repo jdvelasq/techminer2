@@ -27,31 +27,8 @@ Finds a string in the terms of a thesaurus.
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/descriptors.the.txt
-           Keys like: ARTIFICIAL_INTELLIGENCE
-  Keys starting with: None
-    Keys ending with: None
-  2 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    ARTIFICIAL_INTELLIGENCE
-      ARTIFICIAL_INTELLIGENCE
-    EXPERT_LEVEL_ARTIFICIAL_INTELLIGENCE
-      EXPERT_LEVEL_ARTIFICIAL_INTELLIGENCE
-    'BEST_PRACTICE_ERP_PACKAGES
-      'BEST_PRACTICE_ERP_PACKAGES
-    'FRAUD
-      'FRAUD
-    3D_NAVIGATION
-      3D_NAVIGATION
-    3G_CELLULAR
-      3G_CELLULAR
-    3G_CELLULAR_COMMUNICATIONS
-      3G_CELLULAR_COMMUNICATIONS
-    3_D_TRAJECTORY
-      3_D_TRAJECTORY
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 
 >>> (
@@ -67,33 +44,8 @@ Printing thesaurus header
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/descriptors.the.txt
-           Keys like: None
-  Keys starting with: ARTIFICIAL_INTELLIGENCE
-    Keys ending with: None
-  1 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    ARTIFICIAL_INTELLIGENCE
-      ARTIFICIAL_INTELLIGENCE
-    'BEST_PRACTICE_ERP_PACKAGES
-      'BEST_PRACTICE_ERP_PACKAGES
-    'FRAUD
-      'FRAUD
-    3D_NAVIGATION
-      3D_NAVIGATION
-    3G_CELLULAR
-      3G_CELLULAR
-    3G_CELLULAR_COMMUNICATIONS
-      3G_CELLULAR_COMMUNICATIONS
-    3_D_TRAJECTORY
-      3_D_TRAJECTORY
-    4TH_GENERATION_MOBILE
-      4TH_GENERATION_MOBILE
-
-
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 
 >>> (
@@ -109,32 +61,8 @@ Printing thesaurus header
 ...     #
 ...     .build()
 ... ) 
-Sorting thesaurus file by key match.
-      Thesaurus file: example/thesaurus/descriptors.the.txt
-           Keys like: None
-  Keys starting with: None
-    Keys ending with: ARTIFICIAL_INTELLIGENCE
-  2 matching keys found
-Printing thesaurus header
-  Loading example/thesaurus/descriptors.the.txt thesaurus file
-  Header:
-    ARTIFICIAL_INTELLIGENCE
-      ARTIFICIAL_INTELLIGENCE
-    EXPERT_LEVEL_ARTIFICIAL_INTELLIGENCE
-      EXPERT_LEVEL_ARTIFICIAL_INTELLIGENCE
-    'BEST_PRACTICE_ERP_PACKAGES
-      'BEST_PRACTICE_ERP_PACKAGES
-    'FRAUD
-      'FRAUD
-    3D_NAVIGATION
-      3D_NAVIGATION
-    3G_CELLULAR
-      3G_CELLULAR
-    3G_CELLULAR_COMMUNICATIONS
-      3G_CELLULAR_COMMUNICATIONS
-    3_D_TRAJECTORY
-      3_D_TRAJECTORY
-
+<BLANKLINE>
+Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin

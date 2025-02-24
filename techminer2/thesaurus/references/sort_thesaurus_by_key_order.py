@@ -24,6 +24,8 @@ Sort Thesaurus by Key Order
 ...     #
 ...     .build()
 ... )
+<BLANKLINE>
+Thesaurus sorting completed successfully for file: ...global_references.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin

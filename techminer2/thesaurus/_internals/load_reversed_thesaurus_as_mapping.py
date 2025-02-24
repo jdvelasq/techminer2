@@ -27,5 +27,6 @@ def internal__load_reversed_thesaurus_as_mapping(file_path):
                 key_phrases.append(key_phrase)
 
     mapping = dict(zip(value_phrases, key_phrases))
+    mapping = {k: v for k, v in mapping.items() if k != ""}
 
     return mapping

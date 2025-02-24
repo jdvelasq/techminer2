@@ -26,7 +26,8 @@ Create thesaurus
 ...     #
 ...     .build()
 ... )
-
+<BLANKLINE>
+Thesaurus creation completed successfully for file: ...e/thesaurus/demo.the.txt
 
 
 
@@ -39,14 +40,14 @@ from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_records
+from ...database._internals.io import internal__load_filtered_database
 from ...package_data.text_processing import internal__load_text_processing_terms
 from .._internals import (
     ThesaurusMixin,
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_head,
+    internal__print_thesaurus_header,
 )
 
 tqdm.pandas()
@@ -64,18 +65,16 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def step_02_print_info_header(self):
-
         file_path = self.file_path
         field = self.params.field
-        sys.stdout.write("\nINFO  Creating thesaurus from field.")
-        sys.stdout.write(f"\n                  Thesaurus file: {file_path}")
-        sys.stdout.write(f"\n                    Source field: {field}")
-        sys.stdout.write(f"\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"\nCreating thesaurus from '{field}' field")
+        sys.stderr.write(f"\n  File : {file_path}")
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_records(self):
-        self.records = internal__load_records(params=self.params)
+        self.records = internal__load_filtered_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def step_04_create_data_frame(self):
@@ -111,7 +110,8 @@ class CreateThesaurus(
         mapping = internal__load_thesaurus_as_mapping(file_path)
         mapping = {k: v[0] for k, v in mapping.items()}
         #
-        tqdm.pandas(desc="           Transforming spelling")
+        sys.stderr.write("\n")
+        tqdm.pandas(desc="  Transforming British to American spelling")
         #
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].progress_apply(
             lambda x: " ".join(mapping.get(w, w) for w in x.split(" "))
@@ -121,7 +121,7 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def step_06_singularize_terms(self):
-        tqdm.pandas(desc="             Singularizing terms")
+        tqdm.pandas(desc="                        Singularizing terms")
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].progress_apply(
             lambda x: " ".join(Word(w).singularize() for w in x.split())
         )
@@ -129,7 +129,7 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def step_07_remove_technical_stopwords(self):
-        tqdm.pandas(desc="              Removing stopwords")
+        tqdm.pandas(desc="                         Removing stopwords")
         stopwords = internal__load_text_processing_terms("technical_stopwords.txt")
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].progress_apply(
             lambda x: " ".join([word for word in x.split() if word not in stopwords])
@@ -152,7 +152,7 @@ class CreateThesaurus(
             for word in hypened_words
         ]
         #
-        tqdm.pandas(desc="        Processing hypened words")
+        tqdm.pandas(desc="                   Processing hypened words")
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].progress_apply(
             f
         )
@@ -176,7 +176,7 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def step_11_apply_mapping(self):
-        tqdm.pandas(desc="                 Generating keys")
+        tqdm.pandas(desc="              Generating new thesaurus keys")
         self.data_frame["key"] = self.data_frame["fingerprint"].progress_apply(
             lambda x: self.mapping.get(x, x)
         )
@@ -184,21 +184,24 @@ class CreateThesaurus(
         self.data_frame = self.data_frame[["key", "value"]]
 
     # -------------------------------------------------------------------------
-    def step_12_save_thesaurus(
-        self,
-    ):
+    def step_12_write_thesaurus_to_disk(self):
         self.data_frame = self.data_frame.groupby("key").agg({"value": list})
         with open(self.file_path, "w", encoding="utf-8") as file:
             for _, row in self.data_frame.iterrows():
                 file.write(row.name + "\n")
                 for value in row["value"]:
-                    file.write(f"  {value}\n")
+                    file.write(f"    {value}\n")
 
     # -------------------------------------------------------------------------
     def step_13_print_info_tail(self):
-        sys.stdout.write("\n        Done.")
-        internal__print_thesaurus_head(file_path=self.file_path)
+        truncated_file_path = str(self.file_path)
+        if len(truncated_file_path) > 28:
+            truncated_file_path = "..." + truncated_file_path[-24:]
+        sys.stdout.write(
+            f"\nThesaurus creation completed successfully for file: {truncated_file_path}"
+        )
         sys.stdout.flush()
+        internal__print_thesaurus_header(file_path=self.file_path)
 
     # -------------------------------------------------------------------------
     def build(self):
@@ -215,5 +218,5 @@ class CreateThesaurus(
         self.step_09_sort_fingerprint_words()
         self.step_10_generate_fingerprint2value_mapping()
         self.step_11_apply_mapping()
-        self.step_12_save_thesaurus()
+        self.step_12_write_thesaurus_to_disk()
         self.step_13_print_info_tail()

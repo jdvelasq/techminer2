@@ -15,8 +15,8 @@ from ..operators.count_terms_per_record import internal__count_terms_per_record
 def internal__preprocess_num_global_references(root_dir):
     """Run importer."""
 
-    sys.stdout.write("\nINFO  Counting global references per document.")
-    sys.stdout.flush()
+    sys.stderr.write("\nINFO  Counting global references per document.")
+    sys.stderr.flush()
 
     internal__count_terms_per_record(
         source="global_references",
