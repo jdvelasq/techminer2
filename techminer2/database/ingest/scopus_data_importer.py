@@ -15,7 +15,7 @@ Scopus Data Importer
 >>> from techminer2.database.ingest import ScopusDataImporter
 >>> (
 ...     ScopusDataImporter() 
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... ) # doctest: +ELLIPSIS  
 

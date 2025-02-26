@@ -27,7 +27,7 @@ Data Frame
 ...     .using_term_counters(True)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -68,7 +68,7 @@ CASE_STUDY 02:0340               0     0     1     0     1
 ...     .using_term_counters(False)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -109,7 +109,7 @@ CASE_STUDY               0     0     1     0     1
 ...     .using_term_counters(True)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)

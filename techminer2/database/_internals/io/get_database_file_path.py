@@ -6,4 +6,4 @@ import pathlib
 def internal__get_database_file_path(params):
     """:meta private:"""
 
-    return pathlib.Path(params.root_dir) / "databases/database.csv.zip"
+    return pathlib.Path(params.root_directory) / "databases/database.csv.zip"

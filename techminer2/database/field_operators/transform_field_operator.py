@@ -22,7 +22,7 @@ Process a Field
 ...     .with_transformation(lambda x: x.str.lower())
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -51,5 +51,5 @@ class TransformFieldOperator(
             function=self.params.function,
             #
             # DATABASE:
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )

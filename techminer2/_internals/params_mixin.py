@@ -101,8 +101,8 @@ class Params:
     #
     # P
     #
-    pattern_endswith: Optional[str] = None
-    pattern_startswith: Optional[str] = None
+    # pattern_endswith: Optional[str] = None
+    # pattern_startswith: Optional[str] = None
     pattern: Optional[str] = None
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
@@ -125,7 +125,8 @@ class Params:
     records_order_by: Optional[str] = None  # order_records_by
     regex_flags: int = 0  # with_regex_flags
     regex_search: bool = False
-    root_dir: str = "./"  # root_dir
+    replacement: Optional[str] = None
+    root_directory: str = "./"  # root_dir
     row_normalization: Optional[str] = None
 
     #
@@ -182,6 +183,11 @@ class Params:
     yaxes_title_text: Optional[str] = None
     yshift: float = 4
 
+    #
+    # W
+    #
+    word: Optional[str] = None
+
     ##########
     ##########
     ##########
@@ -210,8 +216,9 @@ class Params:
 
 class ParamsMixin:
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.params = Params()
+        self.update(**kwargs)
 
     def update(self, **kwargs):
         for key, value in kwargs.items():
@@ -229,17 +236,17 @@ class ParamsMixin:
         self.params.citation_threshold = threshold
         return self
 
-    def having_keys_ending_with(self, pattern):
-        self.params.pattern_endswith = pattern
-        return self
+    # def having_keys_ending_with(self, pattern):
+    #     self.params.pattern_endswith = pattern
+    #     return self
 
-    def having_keys_like(self, pattern):
-        self.params.pattern = pattern
-        return self
+    # def having_keys_like(self, pattern):
+    #     self.params.pattern = pattern
+    #     return self
 
-    def having_keys_starting_with(self, pattern):
-        self.params.pattern_startswith = pattern
-        return self
+    # def having_keys_starting_with(self, pattern):
+    #     self.params.pattern_startswith = pattern
+    #     return self
 
     def having_keys_ordered_by(self, order):
         self.params.keys_order_by = order
@@ -277,12 +284,20 @@ class ParamsMixin:
         self.params.other_terms_order_by = criteria
         return self
 
+    def having_pattern(self, pattern):
+        self.params.pattern = pattern
+        return self
+
     def having_regex_flags(self, flags):
         self.params.regex_flags = flags
         return self
 
     def having_regex_search(self, regex_search):
         self.params.regex_search = regex_search
+        return self
+
+    def having_replacement(self, replacement):
+        self.params.replacement = replacement
         return self
 
     def having_term_citations_between(self, start, end):
@@ -311,6 +326,10 @@ class ParamsMixin:
 
     def having_terms_ordered_by(self, criteria):
         self.params.terms_order_by = criteria
+        return self
+
+    def having_word(self, word):
+        self.params.word = word
         return self
 
     #
@@ -542,8 +561,8 @@ class ParamsMixin:
         self.params.database = database
         return self
 
-    def where_directory_is(self, directory):
-        self.params.root_dir = directory
+    def where_root_directory_is(self, directory):
+        self.params.root_directory = directory
         return self
 
     def where_record_citations_between(self, start, end):

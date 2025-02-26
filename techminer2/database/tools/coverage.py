@@ -15,7 +15,7 @@ Coverage
 ...     #
 ...     .with_field("author_keywords")
 ...     #
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -50,7 +50,7 @@ class Coverage(
 
         field = self.params.field
 
-        stopwords = internal__load_user_stopwords(self.params.root_dir)
+        stopwords = internal__load_user_stopwords(self.params.root_directory)
 
         documents = (
             internal__load_filtered_database()

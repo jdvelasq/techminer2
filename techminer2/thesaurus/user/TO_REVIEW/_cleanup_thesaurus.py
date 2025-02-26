@@ -18,7 +18,7 @@ Cleanup Thesaurus
 ...     .with_thesaurus_file("demo.the.txt")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -31,18 +31,14 @@ from functools import lru_cache  # type: ignore
 
 from textblob import Word  # type: ignore
 
-from ..._internals.log_message import internal__log_message
-from ..._internals.mixins import ParamsMixin
-from ...package_data.text_processing import internal__load_text_processing_terms
-from .._internals import (
+from ...._internals.log_message import internal__log_message
+from ...._internals.mixins import ParamsMixin
+from ....package_data.text_processing import internal__load_text_processing_terms
+from ..._internals import (
     internal__apply_porter_stemmer,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
 )
-
-# from spellchecker import SpellChecker
-# from textblob import TextBlob, Word  # type: ignore
-
 
 PARTICLES = [
     "aided",
@@ -78,7 +74,6 @@ class CleanupThesaurus(
 
     # -------------------------------------------------------------------------
     def step_02_print_info_header(self):
-
         file_path = str(self.file_path)
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]

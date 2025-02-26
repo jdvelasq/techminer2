@@ -20,7 +20,7 @@ Sort Thesaurus by Key Order
 ...     .having_keys_ordered_by("alphabetical")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -37,7 +37,7 @@ Thesaurus sorting completed successfully for file: ...esaurus/countries.the.txt
 ...     .having_keys_ordered_by("key_length")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )      
@@ -53,7 +53,7 @@ Thesaurus sorting completed successfully for file: ...esaurus/countries.the.txt
 ...     .having_keys_ordered_by("word_length")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -63,9 +63,7 @@ Thesaurus sorting completed successfully for file: ...esaurus/countries.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user.sort_thesaurus_by_key_order import (
-    SortThesaurusByKeyOrder as SortUserThesaurusByKeyOrder,
-)
+from ..user import KeyOrderSorter as SortUserThesaurusByKeyOrder
 
 
 class SortThesaurusByKeyOrder(

@@ -14,7 +14,7 @@ Check Thesaurus Integrity
 ...     CheckThesaurusIntegrity()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -25,9 +25,7 @@ Thesaurus integrity check completed successfully for file: ...scriptors.the.txt
 """
 
 from ..._internals.mixins import ParamsMixin
-from ..user.check_thesaurus_integrity import (
-    CheckThesaurusIntegrity as CheckUserThesaurusIntegrity,
-)
+from ..user import IntegrityChecker as CheckUserThesaurusIntegrity
 
 
 #
@@ -43,6 +41,6 @@ class CheckThesaurusIntegrity(
             CheckUserThesaurusIntegrity()
             .with_thesaurus_file("descriptors.the.txt")
             .with_field("raw_descriptors")
-            .where_directory_is(self.params.root_dir)
+            .where_root_directory_is(self.params.root_directory)
             .build()
         )

@@ -7,63 +7,74 @@
 # pylint: disable=too-many-statements
 # mypy: ignore-errors
 """
-Check Thesaurus Integrity
+Integrity Checker
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import CheckThesaurusIntegrity
+>>> from techminer2.thesaurus.user import IntegrityChecker
 >>> (
-...     CheckThesaurusIntegrity()
+...     IntegrityChecker()
 ...     # 
 ...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     .with_field("raw_descriptors")
+...     .with_thesaurus_file("demo.the.txt")
+...     .with_field("descriptors")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
 <BLANKLINE>
-Thesaurus integrity check completed successfully for file: ...scriptors.the.txt
+Integrity checking successfully for file: example/thesaurus/demo.the.txt
+
+
 
 """
 import sys
 
 from ..._internals.mixins import ParamsMixin
 from ...database._internals.io import internal__load_filtered_database
-from .._internals import (
-    internal__generate_user_thesaurus_file_path,
-    internal__load_reversed_thesaurus_as_mapping,
-)
+from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
-class CheckThesaurusIntegrity(
+class IntegrityChecker(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
+    #
+    # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def step_01_get_thesaurus_file_path(self):
-        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+    def internal__notify_process_start(self):
 
-    # -------------------------------------------------------------------------
-    def step_02_print_info_header(self):
-        file_path = str(self.file_path)
-        if len(file_path) > 64:
-            file_path = "..." + file_path[-60:]
-        sys.stderr.write(f"\nChecking thesaurus integrity")
+        file_path = self.thesaurus_path
+
+        sys.stderr.write("\nThesaurus integrity check")
         sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write(f"\n")
+        sys.stderr.write("\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def step_03_load_terms_in_thesaurus(self):
-        mapping = internal__load_reversed_thesaurus_as_mapping(self.file_path)
+    def internal__notify_process_end(self):
+
+        truncated_path = str(self.thesaurus_path)
+        if len(truncated_path) > 37:
+            truncated_path = "..." + truncated_path[-33:]
+        sys.stdout.write(
+            f"\nIntegrity checking successfully for file: {truncated_path}"
+        )
+        sys.stdout.flush()
+
+    #
+    # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__load_terms_in_thesaurus(self):
+        mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
         self.terms_in_thesaurus = list(mapping.keys())
 
     # -------------------------------------------------------------------------
-    def step_04_load_terms_in_database(self):
+    def internal__load_terms_in_database(self):
         records = internal__load_filtered_database(params=self.params)
         field = self.params.field
         terms = records[field].dropna()
@@ -71,7 +82,7 @@ class CheckThesaurusIntegrity(
         self.terms_in_database = terms
 
     # -------------------------------------------------------------------------
-    def step_05_compare_terms(self):
+    def internal__compare_terms(self):
 
         terms_in_thesaurus = self.terms_in_thesaurus
         terms_in_database = self.terms_in_database
@@ -94,20 +105,21 @@ class CheckThesaurusIntegrity(
                 self.missing_terms_in_database = terms
 
     # -------------------------------------------------------------------------
-    def step_06_print_missing_terms(self):
+    def internal__report_missing_terms(self):
 
-        ##
+        #
         terms = self.missing_terms_in_database
         if terms is not None:
             terms = terms[:10]
-            sys.stderr.write(f"\n  Missing Terms in databse:")
+            sys.stderr.write(f"\n  Missing Terms in database:")
             for term in terms:
                 sys.stderr.write(f"\n    - {term}")
             if len(terms) == 10:
                 sys.stderr.write("\n    ...")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
-        ##
+            sys.stderr.write("\n")
+            sys.stderr.flush()
+
+        #
         terms = self.missing_terms_in_thesaurus
         if terms is not None:
             terms = terms[:10]
@@ -116,27 +128,19 @@ class CheckThesaurusIntegrity(
                 sys.stderr.write(f"\n    - {term}")
             if len(terms) == 10:
                 sys.stderr.write("\n    ...")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
-
-        ##
-        truncated_file_path = str(self.file_path)
-        if len(truncated_file_path) > 21:
-            truncated_file_path = "..." + truncated_file_path[-17:]
-        sys.stdout.write(
-            f"\nThesaurus integrity check completed successfully for file: {truncated_file_path}"
-        )
-        sys.stdout.flush()
+            sys.stderr.write("\n")
+            sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def build(self):
 
-        self.step_01_get_thesaurus_file_path()
-        self.step_02_print_info_header()
-        self.step_03_load_terms_in_thesaurus()
-        self.step_04_load_terms_in_database()
-        self.step_05_compare_terms()
-        self.step_06_print_missing_terms()
+        self.internal__build_thesaurus_path()
+        self.internal__notify_process_start()
+        self.internal__load_terms_in_thesaurus()
+        self.internal__load_terms_in_database()
+        self.internal__compare_terms()
+        self.internal__report_missing_terms()
+        self.internal__notify_process_end()
 
 
 # =============================================================================

@@ -16,7 +16,7 @@ Create Thesaurus
 ...     CreateThesaurus()  
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -416,7 +416,7 @@ class CreateThesaurus(
             f"\nThesaurus creation completed successfully for file: {truncated_file_path}"
         )
         sys.stdout.flush()
-        internal__print_thesaurus_header(file_path=self.file_path)
+        internal__print_thesaurus_header(thesaurus_path=self.file_path)
 
     # -------------------------------------------------------------------------
     def build(self):

@@ -23,7 +23,7 @@ Finds a string in the terms of a thesaurus.
 ...     .having_keys_ending_with(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -39,7 +39,7 @@ Thesaurus sorting by key match completed successfully: ...al_references.the.txt
 ...     .having_keys_ending_with(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -48,9 +48,7 @@ Thesaurus sorting by key match completed successfully: ...al_references.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user.sort_thesaurus_by_key_match import (
-    SortThesaurusByKeyMatch as SortUserThesaurusByKeyMatch,
-)
+from ..user import KeyMatchSorter as SortUserThesaurusByKeyMatch
 
 
 class SortThesaurusByKeyMatch(

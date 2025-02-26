@@ -33,7 +33,7 @@ Co-occurrence Matrix
 ...     .using_term_counters(True)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -80,7 +80,7 @@ Zavolokina L. 2:0181                2  ...                   0
 ...     .using_term_counters(True)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -129,7 +129,7 @@ CASE_STUDY 02:0340                          2  ...                   2
 ...     .using_term_counters(True)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -180,7 +180,7 @@ Zavolokina L. 2:181                2  ...                   0
 ...     .using_term_counters(True)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)

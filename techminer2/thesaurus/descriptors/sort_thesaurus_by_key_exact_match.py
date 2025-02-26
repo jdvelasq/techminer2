@@ -20,7 +20,7 @@ Sort Thesaurus by Key Exact Match
 ...     .having_keys_ending_with(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -37,7 +37,7 @@ Thesaurus sorting by exact key match completed successfully: ...riptors.the.txt
 ...     .having_keys_ending_with(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -54,7 +54,7 @@ Thesaurus sorting by exact key match completed successfully: ...riptors.the.txt
 ...     .having_keys_ending_with("INTELLIGENCE")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -226,7 +226,7 @@ class SortThesaurusByKeyExactMatch(
 
         sys.stderr.write("\n")
         sys.stderr.flush()
-        internal__print_thesaurus_header(file_path=self.file_path)
+        internal__print_thesaurus_header(thesaurus_path=self.file_path)
         ##
 
         truncated_file_path = str(self.file_path)

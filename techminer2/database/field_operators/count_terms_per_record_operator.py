@@ -18,7 +18,7 @@ Count Terms per Record
 ...     .with_other_field("test_num_authors")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -65,5 +65,5 @@ class CountTermsPerRecordOperator(
             dest=self.params.other_field,
             #
             # DATABASE PARAMS:
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )

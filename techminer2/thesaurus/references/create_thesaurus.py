@@ -16,7 +16,7 @@ Create thesaurus
 ...     CreateThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -189,7 +189,7 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def step_07_print_info_tail(self):
-        internal__print_thesaurus_header(file_path=self.file_path)
+        internal__print_thesaurus_header(thesaurus_path=self.file_path)
         ##
         truncated_file_path = str(self.file_path)
         if len(truncated_file_path) > 28:

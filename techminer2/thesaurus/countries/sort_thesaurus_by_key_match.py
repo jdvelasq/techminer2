@@ -20,7 +20,7 @@ Sort Thesaurus by Key Match
 ...     .having_keys_ending_with(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -37,7 +37,7 @@ Thesaurus sorting by key match completed successfully: ...rus/countries.the.txt
 ...     .having_keys_ending_with(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -54,7 +54,7 @@ Thesaurus sorting by key match completed successfully: ...rus/countries.the.txt
 ...     .having_keys_ending_with("ia")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -63,9 +63,7 @@ Thesaurus sorting by key match completed successfully: ...rus/countries.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user.sort_thesaurus_by_key_match import (
-    SortThesaurusByKeyMatch as SortUserThesaurusByKeyMatch,
-)
+from ..user import KeyMatchSorter as SortUserThesaurusByKeyMatch
 
 
 class SortThesaurusByKeyMatch(

@@ -21,7 +21,7 @@ Data Frame
 ...     .having_terms_in(None)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -217,7 +217,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_8_remove_stopwords(self, grouped):
 
-        stopwords = internal__load_user_stopwords(root_dir=self.params.root_dir)
+        stopwords = internal__load_user_stopwords(root_dir=self.params.root_directory)
         grouped = grouped.drop(stopwords, axis=0, errors="ignore")
         return grouped
 

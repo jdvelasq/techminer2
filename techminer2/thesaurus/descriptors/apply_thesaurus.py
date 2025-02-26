@@ -16,7 +16,7 @@ Apply Thesaurus
 ...     ApplyThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -34,7 +34,7 @@ Thesaurus application completed successfully for file: ...s/descriptors.the.txt
 
 
 from ..._internals.mixins import ParamsMixin
-from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user import ApplyThesaurus as ApplyUserThesaurus
 
 PAIRS = [
     ("raw_author_keywords", "author_keywords"),
@@ -61,6 +61,6 @@ class ApplyThesaurus(
                 .with_thesaurus_file("descriptors.the.txt")
                 .with_field(raw_column)
                 .with_other_field(column)
-                .where_directory_is(self.params.root_dir)
+                .where_root_directory_is(self.params.root_directory)
                 .build()
             )

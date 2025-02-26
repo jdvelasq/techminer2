@@ -16,7 +16,7 @@ Create thesaurus
 ...     CreateThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -83,7 +83,7 @@ class CreateThesaurus(
     def step_01_generate_file_path(self):
         params = Params().update(
             thesaurus_file="countries.the.txt",
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )
         file_path = internal__generate_user_thesaurus_file_path(params)
         return file_path
@@ -93,7 +93,7 @@ class CreateThesaurus(
 
         params = Params().update(
             thesaurus_file="countries.the.txt",
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )
         file_path = internal__generate_user_thesaurus_file_path(params)
         data_frame = internal__load_thesaurus_as_data_frame(file_path)
@@ -210,7 +210,7 @@ class CreateThesaurus(
         )
 
         file_path = (
-            pathlib.Path(self.params.root_dir) / "thesaurus/organizations.the.txt"
+            pathlib.Path(self.params.root_directory) / "thesaurus/organizations.the.txt"
         )
 
         with open(file_path, "w", encoding="utf-8") as file:
@@ -247,7 +247,7 @@ class CreateThesaurus(
 
         # -------------------------------------------------------------------------
         file_path = (
-            pathlib.Path(self.params.root_dir) / "thesaurus/organizations.the.txt"
+            pathlib.Path(self.params.root_directory) / "thesaurus/organizations.the.txt"
         )
         truncated_file_path = str(file_path)
         if len(truncated_file_path) > 28:

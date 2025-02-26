@@ -15,7 +15,7 @@ Apply Thesaurus
 ...     ApplyThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -34,7 +34,7 @@ from ...database.ingest._internals.operators.transform_field import (
     internal__transform_field,
 )
 from ..system import ApplyThesaurus as ApplySystemThesaurus
-from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user import ApplyThesaurus as ApplyUserThesaurus
 
 
 class ApplyThesaurus(
@@ -50,7 +50,7 @@ class ApplyThesaurus(
             .with_thesaurus_file("countries.the.txt")
             .with_field("affiliations")
             .with_other_field("countries")
-            .where_directory_is(self.params.root_dir)
+            .where_root_directory_is(self.params.root_directory)
             .build()
         )
 
@@ -61,7 +61,7 @@ class ApplyThesaurus(
             field="countries",
             other_field="country_1st_author",
             function=lambda x: x.str.split("; ").str[0],
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )
 
         # Country to region mapping
@@ -70,7 +70,7 @@ class ApplyThesaurus(
             .with_thesaurus_file("geography/country_to_region.the.txt")
             .with_field("countries")
             .with_other_field("regions")
-            .where_directory_is(self.params.root_dir)
+            .where_root_directory_is(self.params.root_directory)
             .build()
         )
 
@@ -80,6 +80,6 @@ class ApplyThesaurus(
             .with_thesaurus_file("geography/country_to_subregion.the.txt")
             .with_field("countries")
             .with_other_field("subregions")
-            .where_directory_is(self.params.root_dir)
+            .where_root_directory_is(self.params.root_directory)
             .build()
         )

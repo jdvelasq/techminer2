@@ -16,7 +16,7 @@ Cleanup Thesaurus
 ...     CleanupThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -30,7 +30,7 @@ Thesaurus application completed successfully for file: ..._to_subregion.the.txt
 """
 from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
-from ..user.cleanup_thesaurus import CleanupThesaurus as CleanupUserThesaurus
+from ..user import CleanupThesaurus as CleanupUserThesaurus
 from .apply_thesaurus import ApplyThesaurus
 
 

@@ -12,7 +12,7 @@
 >>> from techminer2.database.internals.io import intenal__load_records
 >>> (
 ...     RecordsLoader()
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... ).head() # doctest: +ELLIPSIS
 

@@ -7,12 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Apply Thesaurus
+Thesaurus Applier
 ===============================================================================
 
->>> from techminer2.thesaurus.user import ApplyThesaurus
+>>> from techminer2.thesaurus.user import ThesaurusApplier
 >>> (
-...     ApplyThesaurus()
+...     ThesaurusApplier()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("descriptors.the.txt")
@@ -22,7 +22,7 @@ Apply Thesaurus
 ...     .with_other_field("descriptors_cleaned")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -32,28 +32,23 @@ Thesaurus application completed successfully for file: ...s/descriptors.the.txt
 """
 import sys
 
-from ..._internals.log_message import internal__log_message
 from ..._internals.mixins import ParamsMixin
 from ...database._internals.io import internal__load_records, internal__write_records
-from .._internals import (
-    internal__generate_user_thesaurus_file_path,
-    internal__load_reversed_thesaurus_as_mapping,
-)
+from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
-class ApplyThesaurus(
+class ThesaurusApplier(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
+    #
+    # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def step_01_get_thesaurus_file_path(self):
-        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+    def internal__notify_process_start(self):
 
-    # -------------------------------------------------------------------------
-    def step_02_print_info_header(self):
-
-        file_path = str(self.file_path)
+        file_path = str(self.thesaurus_path)
         field = self.params.field
         other_field = self.params.other_field
 
@@ -67,28 +62,44 @@ class ApplyThesaurus(
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def step_03_load_reversed_thesaurus_as_mapping(self):
-        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.file_path)
+    def internal__notify_process_end(self):
+
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+
+        truncated_file_path = str(self.thesaurus_path)
+        if len(truncated_file_path) > 25:
+            truncated_file_path = "..." + truncated_file_path[-21:]
+        sys.stdout.write(
+            f"\nThesaurus application completed successfully for file: {truncated_file_path}"
+        )
+        sys.stdout.flush()
+
+    #
+    # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__load_reversed_thesaurus_as_mapping(self):
+        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
 
     # -------------------------------------------------------------------------
-    def step_04_load_records(self):
+    def internal__load_records(self):
         self.records = internal__load_records(params=self.params)
 
     # -------------------------------------------------------------------------
-    def step_05_copy_field(self):
+    def internal__copy_field(self):
         if self.params.field != self.params.other_field:
             self.records[self.params.other_field] = self.records[
                 self.params.field
             ].copy()
 
     # -------------------------------------------------------------------------
-    def step_06_split_other_field(self):
+    def internal__split_other_field(self):
         self.records[self.params.other_field] = self.records[
             self.params.other_field
         ].str.split("; ")
 
     # -------------------------------------------------------------------------
-    def step_07_apply_thesaurus_to_other_field(self):
+    def internal__apply_thesaurus_to_other_field(self):
 
         self.records[self.params.other_field] = self.records[
             self.params.other_field
@@ -98,7 +109,7 @@ class ApplyThesaurus(
         )
 
     # -------------------------------------------------------------------------
-    def step_08_remove_duplicates_from_other_field(self):
+    def internal__remove_duplicates_from_other_field(self):
         #
         def f(x):
             # remove duplicated terms preserving the order
@@ -113,36 +124,23 @@ class ApplyThesaurus(
         ].map(f, na_action="ignore")
 
     # -------------------------------------------------------------------------
-    def step_09_write_records(self):
+    def internal__write_records(self):
         internal__write_records(params=self.params, records=self.records)
-
-    # -------------------------------------------------------------------------
-    def step_10_print_info_tail(self):
-        sys.stderr.write("\n")
-        sys.stderr.flush()
-        #
-        truncated_file_path = str(self.file_path)
-        if len(truncated_file_path) > 25:
-            truncated_file_path = "..." + truncated_file_path[-21:]
-        sys.stdout.write(
-            f"\nThesaurus application completed successfully for file: {truncated_file_path}"
-        )
-        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def build(self):
         """:meta private:"""
 
-        self.step_01_get_thesaurus_file_path()
-        self.step_02_print_info_header()
-        self.step_03_load_reversed_thesaurus_as_mapping()
-        self.step_04_load_records()
-        self.step_05_copy_field()
-        self.step_06_split_other_field()
-        self.step_07_apply_thesaurus_to_other_field()
-        self.step_08_remove_duplicates_from_other_field()
-        self.step_09_write_records()
-        self.step_10_print_info_tail()
+        self.internal__build_thesaurus_path()
+        self.internal__notify_process_start()
+        self.internal__load_reversed_thesaurus_as_mapping()
+        self.internal__load_records()
+        self.internal__copy_field()
+        self.internal__split_other_field()
+        self.internal__apply_thesaurus_to_other_field()
+        self.internal__remove_duplicates_from_other_field()
+        self.internal__write_records()
+        self.internal__notify_process_end()
 
 
 # =============================================================================

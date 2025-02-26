@@ -20,7 +20,7 @@
 ...     CleanTextOperator() 
 ...     .with_field("raw_abstract")
 ...     .with_other_field("raw_abstract_copy")
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... )
 
@@ -28,7 +28,7 @@
 ...     HighlightNounAndPhrasesOperator()  
 ...     .with_field("raw_abstract_copy")
 ...     .with_other_field("raw_abstract_copy")
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... )
 -- 001 -- Highlighting tokens in 'raw_abstract_copy' field.
@@ -36,7 +36,7 @@
 >>> df = (
 ...     Query()
 ...     .with_query_expression("SELECT raw_abstract_copy FROM database LIMIT 50;")
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_between(None, None)
 ...     .where_record_citations_between(None, None)
@@ -63,7 +63,7 @@ that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
 >>> (
 ...     DeleteFieldOperator()
 ...     .with_field("raw_abstract_copy")
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... )
 

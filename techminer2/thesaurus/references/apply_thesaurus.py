@@ -14,7 +14,7 @@ Apply Thesaurus
 ## ...     ApplyThesaurus()
 ## ...     #
 ## ...     # DATABASE:
-## ...     .where_directory_is("example/")
+## ...     .where_root_directory_is("example/")
 ## ...     #
 ## ...     .build()
 ## ... )
@@ -23,7 +23,7 @@ Apply Thesaurus
 """
 
 from ..._internals.mixins import ParamsMixin
-from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user import ApplyThesaurus as ApplyUserThesaurus
 
 
 #
@@ -41,7 +41,7 @@ class ApplyThesaurus(
             .with_thesaurus_file("references.the.txt")
             .with_field("raw_global_references")
             .with_other_field("global_references")
-            .where_directory_is(self.params.root_dir)
+            .where_root_directory_is(self.params.root_directory)
             .build()
         )
 

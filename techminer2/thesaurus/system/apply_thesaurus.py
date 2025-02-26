@@ -22,7 +22,7 @@ Apply Thesaurus
 ...     .with_other_field("regions")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )

@@ -19,7 +19,7 @@ Sort Thesaurus by Fuzzy Key Match
 ...     .having_match_threshold(70)
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
@@ -31,9 +31,7 @@ Thesaurus sorting by fuzzy key match completed successfully: ...riptors.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user.sort_thesaurus_by_fuzzy_key_match import (
-    SortThesaurusByFuzzyKeyMatch as SortUserThesaurusByFuzzyKeyMatch,
-)
+from ..user import FuzzyKeyMatchSorter as SortUserThesaurusByFuzzyKeyMatch
 
 
 class SortThesaurusByFuzzyKeyMatch(

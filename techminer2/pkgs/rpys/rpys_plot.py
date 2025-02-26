@@ -14,7 +14,7 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 ...     RPYSPlot()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... )
 >>> plot.write_html("sphinx/_generated/pkgs/rpys/rpys_plot.html")

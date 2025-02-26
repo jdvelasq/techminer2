@@ -15,7 +15,7 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 ...     RPYSDataFrame()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     .build()
 ... ).head()
       Num References  Median

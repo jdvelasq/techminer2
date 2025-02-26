@@ -16,7 +16,7 @@ Create Thesaurus
 ...     CreateThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -42,7 +42,7 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def step_01_get_thesaurus_file_path(self):
-        return pathlib.Path(self.params.root_dir) / "thesaurus/countries.the.txt"
+        return pathlib.Path(self.params.root_directory) / "thesaurus/countries.the.txt"
 
     # -------------------------------------------------------------------------
     def step_02_create_affiliations_data_frame(self, records):

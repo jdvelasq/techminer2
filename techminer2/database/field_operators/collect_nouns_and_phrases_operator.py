@@ -18,7 +18,7 @@ Collect Nouns and Phrases
 ...     .with_other_field("author_keywords_copy")
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -46,5 +46,5 @@ class CollectNounAndPhrasesOperator(
             dest=self.params.dest_field,
             #
             # DATABASE PARAMS:
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )

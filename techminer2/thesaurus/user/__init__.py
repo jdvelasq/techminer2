@@ -1,21 +1,24 @@
 """Thesaurus module."""
 
-from .apply_thesaurus import ApplyThesaurus
-from .check_thesaurus_for_misspelled_terms import CheckThesaurusForMisspelledTerms
-from .check_thesaurus_integrity import CheckThesaurusIntegrity
-from .cleanup_thesaurus import CleanupThesaurus
-from .create_thesaurus import CreateThesaurus
-from .sort_thesaurus_by_fuzzy_key_match import SortThesaurusByFuzzyKeyMatch
-from .sort_thesaurus_by_key_match import SortThesaurusByKeyMatch
-from .sort_thesaurus_by_key_order import SortThesaurusByKeyOrder
-
-__all__ = [
-    "ApplyThesaurus",
-    "CheckThesaurusForMisspelledTerms",
-    "CheckThesaurusIntegrity",
-    "CleanupThesaurus",
-    "CreateThesaurus",
-    "SortThesaurusByFuzzyKeyMatch",
-    "SortThesaurusByKeyOrder",
-    "SortThesaurusByKeyMatch",
-]
+from .american_to_british_translator import AmericanToBritishTranslator
+from .british_to_american_translator import BritishToAmericanTranslator
+from .contains_key_match_sorter import ContainsKeyMatchSorter
+from .contains_word_replacer import ContainsWordReplacer
+from .ends_with_key_match_sorter import EndsWithKeyMatchSorter
+from .ends_with_word_replacer import EndsWithWordReplacer
+from .fuzzy_key_match_sorter import FuzzyKeyMatchSorter
+from .integrity_checker import IntegrityChecker
+from .key_order_sorter import KeyOrderSorter
+from .key_reducer import KeyReducer
+from .spell_checker import SpellChecker
+from .starts_with_key_match_sorter import StartsWithKeyMatchSorter
+from .starts_with_word_replacer import StartsWithWordReplacer
+from .thesaurus_builder import ThesaurusBuilder
+from .TO_REVIEW.apply_thesaurus import ApplyThesaurus
+from .TO_REVIEW.cleanup_thesaurus import CleanupThesaurus
+from .TO_REVIEW.common_ending_words_remover import CommonEndingWordsRemover
+from .TO_REVIEW.common_starting_words_remover import CommonStartingWordsRemover
+from .TO_REVIEW.hyphenated_words_transformer import HyphenatedWordsTransformer
+from .TO_REVIEW.parentheses_remover import ParenthesesRemover
+from .TO_REVIEW.starting_determiners_remover import StartingDeterminersRemover
+from .TO_REVIEW.starting_stopwords_remover import StartingStopwordsRemover

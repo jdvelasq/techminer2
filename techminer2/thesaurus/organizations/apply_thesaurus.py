@@ -14,7 +14,7 @@ Apply Thesaurus
 ...     ApplyThesaurus()
 ...     #
 ...     # DATABASE:
-...     .where_directory_is("example/")
+...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
@@ -29,7 +29,7 @@ from ..._internals.mixins import ParamsMixin
 from ...database.ingest._internals.operators.transform_field import (
     internal__transform_field,
 )
-from ..user.apply_thesaurus import ApplyThesaurus as ApplyUserThesaurus
+from ..user import ApplyThesaurus as ApplyUserThesaurus
 
 
 #
@@ -47,7 +47,7 @@ class ApplyThesaurus(
             .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
             .with_other_field("organizations")
-            .where_directory_is(self.params.root_dir)
+            .where_root_directory_is(self.params.root_directory)
             .build()
         )
 
@@ -58,5 +58,5 @@ class ApplyThesaurus(
             field="organizations",
             other_field="organization_1st_author",
             function=lambda x: x.str.split("; ").str[0],
-            root_dir=self.params.root_dir,
+            root_dir=self.params.root_directory,
         )
