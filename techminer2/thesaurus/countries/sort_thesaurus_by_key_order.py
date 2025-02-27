@@ -63,7 +63,7 @@ Thesaurus sorting completed successfully for file: ...esaurus/countries.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import KeyOrderSorter as SortUserThesaurusByKeyOrder
+from ..user import SortByKeyOrder as SortUserThesaurusByKeyOrder
 
 
 class SortThesaurusByKeyOrder(

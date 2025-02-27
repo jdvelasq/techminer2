@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Contains Key Match Sorter
+Sort By Key Match
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import ContainsKeyMatchSorter
+>>> from techminer2.thesaurus.user import SortByKeyMatch
 >>> (
-...     ContainsKeyMatchSorter()
+...     SortByKeyMatch()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -25,7 +25,7 @@ Contains Key Match Sorter
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... ) 
 <BLANKLINE>
 Thesaurus sorting by key match completed successfully: ...hesaurus/demo.the.txt
@@ -42,7 +42,7 @@ from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
-class ContainsKeyMatchSorter(
+class SortByKeyMatch(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -121,7 +121,7 @@ class ContainsKeyMatchSorter(
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()

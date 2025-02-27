@@ -29,7 +29,7 @@ Thesaurus sorting by fuzzy key match completed successfully: ...erences.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import FuzzyKeyMatchSorter as SortUserThesaurusByFuzzyKeyMatch
+from ..user import SortByFuzzyKeyMatch as SortUserThesaurusByFuzzyKeyMatch
 
 
 class SortThesaurusByFuzzyKeyMatch(

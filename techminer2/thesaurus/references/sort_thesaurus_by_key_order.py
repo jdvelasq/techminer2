@@ -29,7 +29,7 @@ Thesaurus sorting completed successfully for file: ...global_references.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import KeyOrderSorter as SortUserThesaurusByKeyOrder
+from ..user import SortByKeyOrder as SortUserThesaurusByKeyOrder
 
 
 class SortThesaurusByKeyOrder(

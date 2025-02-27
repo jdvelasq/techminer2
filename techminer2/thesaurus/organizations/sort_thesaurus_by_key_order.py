@@ -30,7 +30,7 @@ Thesaurus sorting completed successfully for file: ...rus/organizations.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import KeyOrderSorter as SortUserThesaurusByKeyOrder
+from ..user import SortByKeyOrder as SortUserThesaurusByKeyOrder
 
 
 class SortThesaurusByKeyOrder(

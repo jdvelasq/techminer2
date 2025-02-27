@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Key Order Sorter
+Sort by Key Order
 ===============================================================================
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.user import KeyOrderSorter
+>>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
-...     KeyOrderSorter()
+...     SortByKeyOrder()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -22,14 +22,14 @@ Key Order Sorter
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 
->>> from techminer2.thesaurus.user import KeyOrderSorter
+>>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
-...     KeyOrderSorter()
+...     SortByKeyOrder()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -38,16 +38,16 @@ Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 
 
 
->>> from techminer2.thesaurus.user import KeyOrderSorter
+>>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
-...     KeyOrderSorter()
+...     SortByKeyOrder()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -56,7 +56,7 @@ Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
@@ -68,7 +68,7 @@ from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
-class KeyOrderSorter(
+class SortByKeyOrder(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -136,7 +136,7 @@ class KeyOrderSorter(
                     file.write("    " + item + "\n")
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()

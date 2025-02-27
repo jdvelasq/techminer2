@@ -7,32 +7,30 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Starts With Word Replacer
+Sort by Starts With Key Match
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import StartsWithWordReplacer
+>>> from techminer2.thesaurus.user import SortByStartsWithKeyMatch
 >>> (
-...     StartsWithWordReplacer()
+...     SortByStartsWithKeyMatch()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
-...     .having_word("BUSINESS")
-...     .having_replacement("business")
+...     .having_pattern("BUSINESS")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... ) 
 <BLANKLINE>
-Word replacing completed successfully: example/thesaurus/demo.the.txt
+Thesaurus sorting by key match completed successfully: ...hesaurus/demo.the.txt
 
 
 
 
 """
-import re
 import sys
 
 import pandas as pd  # type: ignore
@@ -41,7 +39,7 @@ from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
-class StartsWithWordReplacer(
+class SortByStartsWithKeyMatch(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -52,71 +50,69 @@ class StartsWithWordReplacer(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = str(self.thesaurus_path)
-        word = self.params.pattern
-        replacement = self.params.replacement
+        truncated_path = str(self.thesaurus_path)
+        pattern = self.params.pattern
 
-        if len(file_path) > 40:
-            file_path = "..." + file_path[-36:]
+        if len(truncated_path) > 64:
+            truncated_path = "..." + truncated_path[-60:]
 
-        sys.stderr.write("\nReplacing word in keys")
-        sys.stderr.write(f"\n         File : {file_path}")
-        sys.stderr.write(f"\n         Word : {word}")
-        sys.stderr.write(f"\n  Replacement : {replacement}")
+        sys.stderr.write("\nSorting thesaurus file by key match")
+        sys.stderr.write(f"\n                 File : {truncated_path}")
+        sys.stderr.write(f"\n              Pattern : {pattern}")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
         truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 40:
-            truncated_path = "..." + truncated_path[-36:]
+        if len(truncated_path) > 26:
+            truncated_path = "..." + truncated_path[-21:]
         sys.stderr.write("\n")
-        sys.stdout.write(f"\nWord replacing completed successfully: {truncated_path}")
+        sys.stdout.write(
+            f"\nThesaurus sorting by key match completed successfully: {truncated_path}"
+        )
         sys.stdout.flush()
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__replace_word(self):
+    def internal__filter_data_frame(self):
         #
         data_frame = self.data_frame
-        replacement = self.params.replacement
         #
         result = []
         #
-        if isinstance(self.params.word, str):
-            words = [self.params.word]
+        if isinstance(self.params.pattern, str):
+            self.params.pattern = [self.params.pattern]
+        for pat in self.params.pattern:
+            result.append(data_frame[data_frame.key.str.startswith(pat=pat)])
+        #
+        if result != []:
+            self.data_frame = pd.concat(result)
+            self.data_frame = self.data_frame.drop_duplicates("key")
         else:
-            words = self.params.word
+            self.data_frame = None
 
-        for word in words:
-
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("^" + word + "$"), replacement, regex=True
+        if self.data_frame is None:
+            sys.stderr.write("\n  Matching keys found : 0")
+        else:
+            sys.stderr.write(
+                f"\n  Matching keys found : {len(self.data_frame.key.drop_duplicates())}"
             )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("^" + word + "_"), replacement + "_", regex=True
-            )
-            data_frame["key"] = data_frame["key"].str.replace(
-                re.compile("^" + word + " "), replacement + " ", regex=True
-            )
-
-        self.data_frame = data_frame
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_thesaurus_mapping_to_data_frame()
-        self.internal__replace_word()
-        self.internal__reduce_keys()
-        self.internal__group_values_by_key()
-        self.internal__sort_data_frame_by_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__filter_data_frame()
+        self.internal__extract_findings()
+        self.internal__write_thesaurus_mapping_to_disk()
         self.internal__notify_process_end()
 
         internal__print_thesaurus_header(self.thesaurus_path)

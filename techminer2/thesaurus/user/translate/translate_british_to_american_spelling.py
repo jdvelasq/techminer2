@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-British to American Translator
+Translate British to American Spelling
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import BritishToAmericanTranslator
+>>> from techminer2.thesaurus.user import TranslateBritishToAmericanSpelling
 >>> (
-...     BritishToAmericanTranslator()
+...     TranslateBritishToAmericanSpelling()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -21,7 +21,7 @@ British to American Translator
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Translation completed successfully for file: example/thesaurus/demo.the.txt
@@ -47,7 +47,7 @@ from ..._internals import (
 tqdm.pandas()
 
 
-class BritishToAmericanTranslator(
+class TranslateBritishToAmericanSpelling(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -117,7 +117,7 @@ class BritishToAmericanTranslator(
         tqdm.pandas(desc=None)
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()
