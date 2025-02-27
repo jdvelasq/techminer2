@@ -36,8 +36,8 @@ import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import (
+from ...._internals.mixins import ParamsMixin
+from ..._internals import (
     ThesaurusMixin,
     internal__generate_system_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,

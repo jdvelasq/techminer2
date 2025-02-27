@@ -25,7 +25,7 @@ Thesaurus integrity check completed successfully for file: ...countries.the.txt
 """
 
 from ..._internals.mixins import ParamsMixin
-from ..user import IntegrityChecker as CheckUserThesaurusIntegrity
+from ..user import IntegrityCheck as CheckUserThesaurusIntegrity
 
 
 #

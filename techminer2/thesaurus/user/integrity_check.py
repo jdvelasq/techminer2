@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # mypy: ignore-errors
 """
-Integrity Checker
+Integrity Check
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import IntegrityChecker
+>>> from techminer2.thesaurus.user import IntegrityCheck
 >>> (
-...     IntegrityChecker()
+...     IntegrityCheck()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -22,7 +22,7 @@ Integrity Checker
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Integrity checking successfully for file: example/thesaurus/demo.the.txt
@@ -37,7 +37,7 @@ from ...database._internals.io import internal__load_filtered_database
 from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
-class IntegrityChecker(
+class IntegrityCheck(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -132,7 +132,7 @@ class IntegrityChecker(
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         self.internal__build_thesaurus_path()
         self.internal__notify_process_start()

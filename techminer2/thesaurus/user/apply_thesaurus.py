@@ -7,12 +7,12 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Thesaurus Applier
+Apply Thesaurus
 ===============================================================================
 
->>> from techminer2.thesaurus.user import ThesaurusApplier
+>>> from techminer2.thesaurus.user import ApplyThesaurus
 >>> (
-...     ThesaurusApplier()
+...     ApplyThesaurus()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("descriptors.the.txt")
@@ -24,7 +24,7 @@ Thesaurus Applier
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Thesaurus application completed successfully for file: ...s/descriptors.the.txt
@@ -37,7 +37,7 @@ from ...database._internals.io import internal__load_records, internal__write_re
 from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
-class ThesaurusApplier(
+class ApplyThesaurus(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -128,7 +128,7 @@ class ThesaurusApplier(
         internal__write_records(params=self.params, records=self.records)
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()

@@ -64,8 +64,8 @@ Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 """
 import sys
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ...._internals.mixins import ParamsMixin
+from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
 class KeyOrderSorter(

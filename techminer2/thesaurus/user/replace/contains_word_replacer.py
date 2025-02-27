@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Ends With Word Replacer
+Contains Word Replacer
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import EndsWithWordReplacer
+>>> from techminer2.thesaurus.user import ContainsWordReplacer
 >>> (
-...     EndsWithWordReplacer()
+...     ContainsWordReplacer()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -37,11 +37,11 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ...._internals.mixins import ParamsMixin
+from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
-class EndsWithWordReplacer(
+class ContainsWordReplacer(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -96,10 +96,28 @@ class EndsWithWordReplacer(
                 re.compile("^" + word + "$"), replacement, regex=True
             )
             data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("^" + word + "_"), replacement + "_", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("^" + word + " "), replacement + " ", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
                 re.compile("_" + word + "$"), "_" + replacement, regex=True
             )
             data_frame["key"] = data_frame["key"].str.replace(
                 re.compile(" " + word + "$"), " " + replacement, regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("_" + word + "_"), "_" + replacement + "_", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile(" " + word + "_"), " " + replacement + "_", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile("_" + word + " "), "_" + replacement + " ", regex=True
+            )
+            data_frame["key"] = data_frame["key"].str.replace(
+                re.compile(" " + word + " "), " " + replacement + " ", regex=True
             )
 
         self.data_frame = data_frame

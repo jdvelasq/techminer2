@@ -38,8 +38,8 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ...._internals.mixins import ParamsMixin
+from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
 class ContainsKeyMatchSorter(

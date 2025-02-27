@@ -6,12 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Spell Checker
+Spell Check
 ===============================================================================
 
->>> from techminer2.thesaurus.user import SpellChecker
+>>> from techminer2.thesaurus.user import SpellCheck
 >>> (
-...     SpellChecker()
+...     SpellCheck()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -20,17 +20,17 @@ Spell Checker
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 <BLANKLINE>
 Spell checking completed successfully for file: example/thesaurus/demo.the.txt
 
 
->>> SpellChecker(
+>>> SpellCheck(
 ...     thesaurus_file="demo.the.txt", 
 ...     maximum_occurrence=3,
 ...     root_directory="example/",
-... ).build()
+... ).run()
 <BLANKLINE>
 Spell checking completed successfully for file: example/thesaurus/demo.the.txt
 
@@ -48,7 +48,7 @@ from .._internals import (
 )
 
 
-class SpellChecker(
+class SpellCheck(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -147,7 +147,7 @@ class SpellChecker(
         self.findings = findings
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()
