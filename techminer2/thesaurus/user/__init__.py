@@ -1,9 +1,10 @@
 """Thesaurus module."""
 
-from .apply_thesaurus import ApplyThesaurus
-from .create_thesaurus import CreateThesaurus
-from .integrity_check import IntegrityCheck
-from .reduce_keys import ReduceKeys
+from .general.apply_thesaurus import ApplyThesaurus
+from .general.create_thesaurus import CreateThesaurus
+from .general.integrity_check import IntegrityCheck
+from .general.reduce_keys import ReduceKeys
+from .general.spell_check import SpellCheck
 from .replace.replace_ends_with_word import ReplaceEndsWithWord
 from .replace.replace_starts_with_word import ReplaceStartsWithWord
 from .replace.replace_word import ReplaceWord
@@ -12,7 +13,6 @@ from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
 from .sort.sort_by_key_match import SortByKeyMatch
 from .sort.sort_by_key_order import SortByKeyOrder
 from .sort.sort_by_starts_with_key_match import SortByStartsWithKeyMatch
-from .spell_check import SpellCheck
 from .TO_REVIEW._cleanup_thesaurus import CleanupThesaurus
 from .TO_REVIEW.common_ending_words_remover import CommonEndingWordsRemover
 from .TO_REVIEW.common_starting_words_remover import CommonStartingWordsRemover

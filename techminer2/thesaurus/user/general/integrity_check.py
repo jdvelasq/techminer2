@@ -32,9 +32,9 @@ Integrity checking successfully for file: example/thesaurus/demo.the.txt
 """
 import sys
 
-from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_filtered_database
-from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
+from ...._internals.mixins import ParamsMixin
+from ....database._internals.io import internal__load_filtered_database
+from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
 class IntegrityCheck(

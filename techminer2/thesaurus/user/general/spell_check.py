@@ -40,8 +40,8 @@ import sys
 import pandas as pd  # type: ignore
 from spellchecker import SpellChecker as ExternalSpellChecker
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import (
+from ...._internals.mixins import ParamsMixin
+from ..._internals import (
     ThesaurusMixin,
     internal__load_thesaurus_as_data_frame,
     internal__print_thesaurus_header,

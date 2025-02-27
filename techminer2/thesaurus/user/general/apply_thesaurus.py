@@ -32,9 +32,9 @@ Thesaurus application completed successfully for file: ...s/descriptors.the.txt
 """
 import sys
 
-from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_records, internal__write_records
-from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
+from ...._internals.mixins import ParamsMixin
+from ....database._internals.io import internal__load_records, internal__write_records
+from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
 class ApplyThesaurus(
