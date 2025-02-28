@@ -54,8 +54,8 @@ def _local_processing(text):
 def internal__preprocess_authors(root_dir):
     """Run authors importer."""
 
-    sys.stderr.write("\nINFO  Processing 'authors' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Processing 'authors' column.")
+    sys.stdout.flush()
 
     internal__transform_field(
         field="raw_authors",

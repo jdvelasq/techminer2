@@ -7,16 +7,18 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort by Starts With Key Match
+Sort by Word Match
 ===============================================================================
+
 
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
 ...     root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.user import SortByStartsWithKeyMatch
+
+>>> from techminer2.thesaurus.user import SortByWordMatch
 >>> (
-...     SortByStartsWithKeyMatch()
+...     SortByWordMatch()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -27,17 +29,15 @@ Sort by Starts With Key Match
 ...     #
 ...     .run()
 ... ) 
-Sorting thesaurus file by key match
-     File : example/thesaurus/demo.the.txt
-  Pattern : BUSINESS
-  7 matching keys found
-Thesaurus sorting by key match completed successfully
+Sorting thesaurus file by word match
+  File : example/thesaurus/demo.the.txt
+  Word : BUSINESS
+  18 matching keys found
+  Thesaurus sorting by word match completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/demo.the.txt
 <BLANKLINE>
-    BUSINESS
-      BUSINESS; BUSINESSES
     BUSINESS_DEVELOPMENT
       BUSINESS_DEVELOPMENT
     BUSINESS_GERMANY
@@ -50,23 +50,23 @@ Printing thesaurus header
       BUSINESS_OPPORTUNITIES
     BUSINESS_PROCESS
       BUSINESS_PROCESS
-    A_A_)_THEORY
-      A_A_)_THEORY
+    FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+      FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+    LONDON_BUSINESS_SCHOOL
+      LONDON_BUSINESS_SCHOOL
 <BLANKLINE>
 
 
 
-
 """
+import re
 import sys
-
-import pandas as pd  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
-class SortByStartsWithKeyMatch(
+class SortByWordMatch(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -77,21 +77,21 @@ class SortByStartsWithKeyMatch(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        truncated_path = str(self.thesaurus_path)
+        file_path = str(self.thesaurus_path)
         pattern = self.params.pattern
 
-        if len(truncated_path) > 64:
-            truncated_path = "..." + truncated_path[-60:]
+        if len(file_path) > 64:
+            file_path = "..." + file_path[-60:]
 
-        sys.stdout.write("Sorting thesaurus file by key match\n")
-        sys.stdout.write(f"     File : {truncated_path}\n")
-        sys.stdout.write(f"  Pattern : {pattern}\n")
+        sys.stdout.write("Sorting thesaurus file by word match\n")
+        sys.stdout.write(f"  File : {file_path}\n")
+        sys.stdout.write(f"  Word : {pattern}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("Thesaurus sorting by key match completed successfully\n\n")
+        sys.stdout.write("  Thesaurus sorting by word match completed successfully\n\n")
         sys.stdout.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
@@ -100,20 +100,30 @@ class SortByStartsWithKeyMatch(
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__select_data_frame_rows(self):
-        #
+
         self.data_frame["__row_selected__"] = False
-        #
 
-        #
-        if isinstance(self.params.pattern, str):
-            self.params.pattern = [self.params.pattern]
+        patterns = self.params.pattern
 
-        for pat in self.params.pattern:
+        if isinstance(patterns, str):
+            patterns = [patterns]
 
-            self.data_frame.loc[
-                self.data_frame.key.str.startswith(pat=pat),
-                "__row_selected__",
-            ] = True
+        for pattern in patterns:
+            #
+            for compiled_regex in [
+                re.compile("^" + pattern + "_"),
+                re.compile("^" + pattern + " "),
+                re.compile("_" + pattern + "$"),
+                re.compile(r" " + pattern + "$"),
+                re.compile("_" + pattern + "_"),
+                re.compile(r" " + pattern + "_"),
+                re.compile("_" + pattern + r" "),
+                re.compile(r" " + pattern + r" "),
+            ]:
+                self.data_frame.loc[
+                    self.data_frame.key.str.contains(compiled_regex, regex=True),
+                    "__row_selected__",
+                ] = True
 
         n_matches = self.data_frame.__row_selected__.sum()
 
@@ -132,6 +142,3 @@ class SortByStartsWithKeyMatch(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
-
-
-# =============================================================================

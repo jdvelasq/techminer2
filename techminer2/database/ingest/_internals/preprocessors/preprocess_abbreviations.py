@@ -155,8 +155,8 @@ def step_07_save_abbreviations_thesaurus(root_dir, mod_frame):
 # -------------------------------------------------------------------------
 def internal__preprocess_abbreviations(root_dir):
 
-    sys.stderr.write("\nINFO  Extracting abbrevitions from descriptors and abstracts.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Extracting abbrevitions from descriptors and abstracts.")
+    sys.stdout.flush()
     #
     raw_frame = step_01_load_descriptors_thesaurus(root_dir)
     mod_frame = step_02_extracts_abbreviations_from_definitions(raw_frame)
@@ -166,5 +166,5 @@ def internal__preprocess_abbreviations(root_dir):
     mod_frame = step_06_prepare_data_frame(mod_frame)
     step_07_save_abbreviations_thesaurus(root_dir, mod_frame)
     #
-    sys.stderr.write(f"\n      {len(mod_frame)} extracted abbreviations.")
-    sys.stderr.flush()
+    sys.stdout.write(f"\n      {len(mod_frame)} extracted abbreviations.")
+    sys.stdout.flush()

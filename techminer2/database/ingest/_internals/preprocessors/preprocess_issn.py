@@ -15,8 +15,8 @@ from ....field_operators.transform_field_operator import internal__transform_fie
 def internal__preprocess_issn(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("\nINFO  Processing 'issn' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Processing 'issn' column.")
+    sys.stdout.flush()
 
     internal__transform_field(
         field="issn",

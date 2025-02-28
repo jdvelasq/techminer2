@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Starting Stopwords Remover
+Starting Determiners Remover 
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import StartingStopwordsRemover
+>>> from techminer2.thesaurus.user import StartingDeterminersRemover
 >>> (
-...     StartingStopwordsRemover()
+...     StartingDeterminersRemover()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -24,7 +24,7 @@ Starting Stopwords Remover
 ...     .build()
 ... )
 <BLANKLINE>
-Removing stopwords completed successfully for file: ...e/thesaurus/demo.the.txt
+Removing determiners completed successfully for file: ...thesaurus/demo.the.txt
 
 
 
@@ -32,6 +32,7 @@ Removing stopwords completed successfully for file: ...e/thesaurus/demo.the.txt
 import re
 import sys
 
+import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
@@ -42,7 +43,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class StartingStopwordsRemover(
+class StartingDeterminersRemover(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -55,30 +56,27 @@ class StartingStopwordsRemover(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("\nRemoving starting stopwords from thesaurus keys")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nRemoving initial determines from thesaurus keys")
+        sys.stdout.write(f"\n  File : {file_path}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def notify__process_end(self):
         truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 31:
-            truncated_file_path = "..." + truncated_file_path[-27:]
+        if len(truncated_file_path) > 28:
+            truncated_file_path = "..." + truncated_file_path[-24:]
         sys.stdout.write(
-            f"\nRemoving stopwords completed successfully for file: {truncated_file_path}"
+            f"\nRemoving determiners completed successfully for file: {truncated_file_path}"
         )
         sys.stdout.flush()
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__remove_starting_stopwords_from_keys(self):
+    def internal__remove_starting_determiners_from_keys(self):
 
-        words = internal__load_text_processing_terms("technical_stopwords.txt")
-
-        words = [w for w in words if len(w) > 1]
-        words = [w for w in words if "'" not in w]
+        words = internal__load_text_processing_terms("determiners.txt")
 
         # create regular expressions
         patterns = []
@@ -103,9 +101,9 @@ class StartingStopwordsRemover(
         self.internal__build_thesaurus_path()
         self.notify__process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
-        self.internal__remove_starting_stopwords_from_keys()
-        self.internal__group_values_by_key()
+        self.internal__transform_mapping_to_data_frame()
+        self.internal__remove_starting_determiners_from_keys()
+        self.internal__explode_and_group_values_by_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.notify__process_end()
 

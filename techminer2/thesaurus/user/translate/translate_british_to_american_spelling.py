@@ -61,10 +61,10 @@ class TranslateBritishToAmericanSpelling(
         truncated_path = str(self.thesaurus_path)
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
-        sys.stderr.write("\nTranslating British to American English")
-        sys.stderr.write(f"\n  File : {truncated_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nTranslating British to American English")
+        sys.stdout.write(f"\n  File : {truncated_path}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
@@ -112,7 +112,7 @@ class TranslateBritishToAmericanSpelling(
             return x
 
         tqdm.pandas(desc="  Translating")
-        sys.stderr.write("\n")
+        sys.stdout.write("\n")
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
 
@@ -123,11 +123,11 @@ class TranslateBritishToAmericanSpelling(
         self.internal__build_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
+        self.internal__transform_mapping_to_data_frame()
         self.internal__translate_words_on_keys()
         self.internal__reduce_keys()
-        self.internal__group_values_by_key()
-        self.internal__sort_data_frame_by_key()
+        self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
 

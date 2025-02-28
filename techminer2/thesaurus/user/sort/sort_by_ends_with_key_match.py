@@ -11,6 +11,11 @@ Sort By Ends With Key Match
 ===============================================================================
 
 
+>>> from techminer2.thesaurus.user import CreateThesaurus
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+...     root_directory="example/", quiet=True).run()
+
+
 >>> from techminer2.thesaurus.user import SortByEndsWithKeyMatch
 >>> (
 ...     SortByEndsWithKeyMatch()
@@ -24,8 +29,32 @@ Sort By Ends With Key Match
 ...     #
 ...     .run()
 ... ) 
+Sorting thesaurus file by key match
+     File : example/thesaurus/demo.the.txt
+  Pattern : BUSINESS
+  3 matching keys found
+  Thesaurus sorting by key match completed successfully
 <BLANKLINE>
-Thesaurus sorting by key match completed successfully: ...hesaurus/demo.the.txt
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    AGRIBUSINESS
+      AGRIBUSINESS
+    BUSINESS
+      BUSINESS; BUSINESSES
+    THE_BANKING_BUSINESS
+      THE_BANKING_BUSINESS
+    A_A_)_THEORY
+      A_A_)_THEORY
+    A_A_THEORY
+      A_A_THEORY
+    A_BASIC_RANDOM_SAMPLING_STRATEGY
+      A_BASIC_RANDOM_SAMPLING_STRATEGY
+    A_BEHAVIOURAL_PERSPECTIVE
+      A_BEHAVIOURAL_PERSPECTIVE
+    A_BETTER_UNDERSTANDING
+      A_BETTER_UNDERSTANDING
+<BLANKLINE>
 
 
 
@@ -48,7 +77,7 @@ class SortByEndsWithKeyMatch(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = str(self.thesaurus_path)
         pattern = self.params.pattern
@@ -56,66 +85,53 @@ class SortByEndsWithKeyMatch(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stderr.write("\nSorting thesaurus file by key match")
-        sys.stderr.write(f"\n                 File : {file_path}")
-        sys.stderr.write(f"\n              Pattern : {pattern}")
-        sys.stderr.flush()
+        sys.stdout.write("Sorting thesaurus file by key match\n")
+        sys.stdout.write(f"     File : {file_path}\n")
+        sys.stdout.write(f"  Pattern : {pattern}\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
+    def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 26:
-            truncated_path = "..." + truncated_path[-21:]
-        sys.stderr.write("\n")
-        sys.stdout.write(
-            f"\nThesaurus sorting by key match completed successfully: {truncated_path}"
-        )
+        sys.stdout.write("  Thesaurus sorting by key match completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__filter_data_frame(self):
-        #
-        data_frame = self.data_frame
-        #
-        result = []
-        #
+    def internal__select_data_frame_rows(self):
+
+        self.data_frame["__row_selected__"] = False
+
         if isinstance(self.params.pattern, str):
             self.params.pattern = [self.params.pattern]
-        for pat in self.params.pattern:
-            result.append(data_frame[data_frame.key.str.endswith(pat=pat)])
-        #
-        if result != []:
-            self.data_frame = pd.concat(result)
-            self.data_frame = self.data_frame.drop_duplicates("key")
-        else:
-            self.data_frame = None
 
-        if self.data_frame is None:
-            sys.stderr.write("\n  Matching keys found : 0")
-        else:
-            sys.stderr.write(
-                f"\n  Matching keys found : {len(self.data_frame.key.drop_duplicates())}"
-            )
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        for pat in self.params.pattern:
+
+            self.data_frame.loc[
+                self.data_frame.key.str.endswith(pat=pat),
+                "__row_selected__",
+            ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} matching keys found\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
-        self.internal__filter_data_frame()
-        self.internal__extract_findings()
-        self.internal__write_thesaurus_mapping_to_disk()
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__transform_mapping_to_data_frame()
+        self.internal__select_data_frame_rows()
+        self.internal__sort_data_frame_by_rows_and_key()
+        self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__notify_process_end()
 
 
 # =============================================================================

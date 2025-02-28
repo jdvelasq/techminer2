@@ -226,9 +226,9 @@ class CreateThesaurus(
         file_path = self.step_01_generate_file_path()
 
         # -------------------------------------------------------------------------
-        sys.stderr.write(f"\nCreating thesaurus file: {file_path}")
-        sys.stderr.write("\n  Source field: affiliations.")
-        sys.stderr.flush()
+        sys.stdout.write(f"\nCreating thesaurus file: {file_path}")
+        sys.stdout.write("\n  Source field: affiliations.")
+        sys.stdout.flush()
 
         # -------------------------------------------------------------------------
 

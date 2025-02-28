@@ -30,8 +30,8 @@ Thesaurus sorting by fuzzy key match completed successfully: ...riptors.the.txt
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from ..user import SortByFuzzyKeyMatch as SortUserThesaurusByFuzzyKeyMatch
+from ...._internals.mixins import ParamsMixin
+from ...user import SortByFuzzyKeyMatch as SortUserThesaurusByFuzzyKeyMatch
 
 
 class SortThesaurusByFuzzyKeyMatch(

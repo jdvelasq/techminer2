@@ -26,10 +26,31 @@ Create Thesaurus
 ...     #
 ...     .run()
 ... )
+Creating thesaurus from 'descriptors' field
+  File : example/thesaurus/demo.the.txt
+  1796 keys found
+  Thesaurus creation completed successfully
 <BLANKLINE>
-Thesaurus creation completed successfully for file: ...e/thesaurus/demo.the.txt
-
-
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    A_A_)_THEORY
+      A_A_)_THEORY
+    A_A_THEORY
+      A_A_THEORY
+    A_BASIC_RANDOM_SAMPLING_STRATEGY
+      A_BASIC_RANDOM_SAMPLING_STRATEGY
+    A_BEHAVIOURAL_PERSPECTIVE
+      A_BEHAVIOURAL_PERSPECTIVE
+    A_BETTER_UNDERSTANDING
+      A_BETTER_UNDERSTANDING
+    A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+      A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+    A_CASE_STUDY
+      A_CASE_STUDY
+    A_CHALLENGE
+      A_CHALLENGE
+<BLANKLINE>
 
 """
 import sys
@@ -55,26 +76,24 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        field = self.params.field
+        if not self.params.quiet:
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 72:
-            truncated_path = "..." + truncated_path[-68:]
-        sys.stderr.write(f"\nCreating thesaurus from '{field}' field")
-        sys.stderr.write(f"\n  File : {truncated_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+            field = self.params.field
+            truncated_path = str(self.thesaurus_path)
+            if len(truncated_path) > 72:
+                truncated_path = "..." + truncated_path[-68:]
+            sys.stdout.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stdout.write(f"  File : {truncated_path}\n")
+            sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 28:
-            truncated_path = "..." + truncated_path[-24:]
-        sys.stdout.write(
-            f"\nThesaurus creation completed successfully for file: {truncated_path}"
-        )
-        sys.stdout.flush()
+        if not self.params.quiet:
+
+            sys.stdout.write(f"  {len(self.data_frame)} keys found\n")
+            sys.stdout.write("  Thesaurus creation completed successfully\n\n")
+            sys.stdout.flush()
 
     #
     # ALGORITHM:
@@ -87,9 +106,10 @@ class CreateThesaurus(
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
         self.internal__reduce_keys()
-        self.internal__group_values_by_key()
-        self.internal__sort_data_frame_by_key()
+        self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        if not self.params.quiet:
+            internal__print_thesaurus_header(self.thesaurus_path)

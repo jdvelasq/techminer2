@@ -55,17 +55,17 @@ class ApplyThesaurus(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stderr.write("\nApplying thesaurus to database")
-        sys.stderr.write(f"\n          File : {file_path}")
-        sys.stderr.write(f"\n  Source field : {field}")
-        sys.stderr.write(f"\n  Target field : {other_field}")
-        sys.stderr.flush()
+        sys.stdout.write("\nApplying thesaurus to database")
+        sys.stdout.write(f"\n          File : {file_path}")
+        sys.stdout.write(f"\n  Source field : {field}")
+        sys.stdout.write(f"\n  Target field : {other_field}")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
         truncated_file_path = str(self.thesaurus_path)
         if len(truncated_file_path) > 25:

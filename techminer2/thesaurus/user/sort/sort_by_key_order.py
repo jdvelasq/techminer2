@@ -10,6 +10,10 @@
 Sort by Key Order
 ===============================================================================
 
+>>> from techminer2.thesaurus.user import CreateThesaurus
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+...     root_directory="example/", quiet=True).run()
+
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
 >>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
@@ -24,8 +28,31 @@ Sort by Key Order
 ...     #
 ...     .run()
 ... )
+Sorting thesaurus alphabetically
+  File : example/thesaurus/demo.the.txt
+Thesaurus sorting completed successfully
 <BLANKLINE>
-Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    ACADEMIA
+      ACADEMIA
+    ACADEMICS
+      ACADEMICS
+    ACADEMIC_OBSERVERS
+      ACADEMIC_OBSERVERS
+    ACADEMIC_RESEARCH
+      ACADEMIC_RESEARCH
+    ACCELERATE_ACCESS
+      ACCELERATE_ACCESS
+    ACCEPTANCE
+      ACCEPTANCE
+    ACCEPTANCE_MODELS
+      ACCEPTANCE_MODELS
+    ACCESS
+      ACCESS
+<BLANKLINE>
+
 
 >>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
@@ -40,9 +67,30 @@ Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 ...     #
 ...     .run()
 ... )
+Sorting thesaurus by key length
+  File : example/thesaurus/demo.the.txt
+Thesaurus sorting completed successfully
 <BLANKLINE>
-Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
-
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+      A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+    THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+      THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+    THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
+      THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
+    FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+      FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+    UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+      UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+    THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
+      THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
+    ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
+      ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
+    FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+      FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+<BLANKLINE>
 
 
 >>> from techminer2.thesaurus.user import SortByKeyOrder
@@ -58,9 +106,32 @@ Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
 ...     #
 ...     .run()
 ... )
+Sorting thesaurus by word length
+  File : example/thesaurus/demo.the.txt
+Thesaurus sorting completed successfully
 <BLANKLINE>
-Thesaurus sorting successfully for file: example/thesaurus/demo.the.txt
-                   
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+      THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+    COMPETITION (ECONOMICS)
+      COMPETITION (ECONOMICS)
+    FINANCIAL_TECHNOLOGY (FINTECH)
+      FINANCIAL_TECHNOLOGY (FINTECH)
+    A_WIDE_RANGING_RECONCEPTUALIZATION
+      A_WIDE_RANGING_RECONCEPTUALIZATION
+    NETWORKS (CIRCUITS)
+      NETWORKS (CIRCUITS)
+    THE_RECONCEPTUALIZATION
+      THE_RECONCEPTUALIZATION
+    CLASSIFICATION (OF_INFORMATION)
+      CLASSIFICATION (OF_INFORMATION)
+    EXPLORE_INTERRELATIONSHIPS
+      EXPLORE_INTERRELATIONSHIPS
+<BLANKLINE>
+
+
 """
 import sys
 
@@ -77,7 +148,7 @@ class SortByKeyOrder(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = self.thesaurus_path
 
@@ -88,67 +159,61 @@ class SortByKeyOrder(
         }[self.params.keys_order_by]
         order_by = self.order_by
 
-        sys.stderr.write(f"\nSorting thesaurus {order_by}")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"Sorting thesaurus {order_by}\n")
+        sys.stdout.write(f"  File : {file_path}\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
+    def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 55:
-            truncated_path = "..." + truncated_path[-51:]
-        sys.stdout.write(f"\nThesaurus sorting successfully for file: {truncated_path}")
+        sys.stdout.write("Thesaurus sorting completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__sort_keys(self):
-        #
-        if self.params.keys_order_by == "alphabetical":
-            self.sorted_keys = sorted(self.mapping.keys(), reverse=False)
-            return
-        #
-        if self.params.keys_order_by == "key_length":
-            self.sorted_keys = sorted(
-                self.mapping.keys(), key=lambda x: (len(x), x), reverse=False
-            )
-            return
-        #
-        if self.params.keys_order_by == "word_length":
-            self.sorted_keys = sorted(
-                self.mapping.keys(),
-                key=lambda x: (max(len(y) for y in x.split("_")), x),
-                reverse=True,
-            )
-            return
-        #
-        self.sorted_keys = self.mapping.keys()
 
-    # -------------------------------------------------------------------------
-    def internal__write_thesaurus_to_disk(self):
-        with open(self.thesaurus_path, "w", encoding="utf-8") as file:
-            for key in self.sorted_keys:
-                file.write(key + "\n")
-                for item in sorted(set(self.mapping[key].split("; "))):
-                    file.write("    " + item + "\n")
+        if self.params.keys_order_by == "alphabetical":
+            self.data_frame = self.data_frame.sort_values("key")
+
+        if self.params.keys_order_by == "key_length":
+            self.data_frame["length"] = self.data_frame["key"].str.len()
+            self.data_frame = self.data_frame.sort_values(
+                ["length", "key"], ascending=[False, True]
+            )
+
+        if self.params.keys_order_by == "word_length":
+
+            n_spaces = len(self.data_frame[self.data_frame["key"].str.contains(" ")])
+            n_underscores = len(
+                self.data_frame[self.data_frame["key"].str.contains("_")]
+            )
+
+            if n_spaces > n_underscores:
+                self.data_frame["length"] = self.data_frame["key"].str.split(" ")
+            else:
+                self.data_frame["length"] = self.data_frame["key"].str.split("_")
+            self.data_frame["length"] = self.data_frame["length"].apply(
+                lambda x: max(len(i) for i in x)
+            )
+            self.data_frame = self.data_frame.sort_values(
+                ["length", "key"], ascending=[False, True]
+            )
 
     # -------------------------------------------------------------------------
     def run(self):
         """:meta private:"""
 
         self.internal__build_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
-        #
+        self.internal__transform_mapping_to_data_frame()
         self.internal__sort_keys()
-        self.internal__write_thesaurus_to_disk()
-        #
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__notify_process_end()
 
 
 # =============================================================================

@@ -24,8 +24,8 @@ Thesaurus integrity check completed successfully for file: ...scriptors.the.txt
 
 """
 
-from ..._internals.mixins import ParamsMixin
-from ..user import IntegrityCheck as CheckUserThesaurusIntegrity
+from ...._internals.mixins import ParamsMixin
+from ...user import IntegrityCheck as CheckUserThesaurusIntegrity
 
 
 #

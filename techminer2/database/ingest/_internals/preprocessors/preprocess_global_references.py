@@ -35,9 +35,9 @@ from .....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 def internal__preprocess_global_references(root_dir):
     """:meta private:"""
 
-    # sys.stderr.write("\nINFO  Homogenizing global references.")
-    sys.stderr.write("\n")
-    sys.stderr.flush()
+    # sys.stdout.write("\nINFO  Homogenizing global references.")
+    sys.stdout.write("\n")
+    sys.stdout.flush()
 
     documents = _create_documents_dataframe(root_dir)
     references = _create_references_dataframe(root_dir)

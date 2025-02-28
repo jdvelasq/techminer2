@@ -24,7 +24,7 @@ Thesaurus sorting by exact key match completed successfully: ...riptors.the.txt
 
 
 """
-from ..._internals.mixins import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from .sort_thesaurus_by_key_exact_match import SortThesaurusByKeyExactMatch
 
 EDITORIALS = [

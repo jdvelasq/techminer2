@@ -43,14 +43,14 @@ def internal__create_project_structure(root_dir):
     """
 
     # Create working directories
-    sys.stderr.write("\nINFO  Creating working directories.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Creating working directories.")
+    sys.stdout.flush()
     for directory in PROJECT_DIRECTORIES:
         create_directory(os.path.join(root_dir, directory))
 
     # Create stopwords.txt file
-    sys.stderr.write("\nINFO  Creating stopwords.txt file")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Creating stopwords.txt file")
+    sys.stdout.flush()
     create_file(os.path.join(root_dir, "my_keywords/stopwords.txt"))
 
     # Create _DO_NOT_TOUCH_.txt file

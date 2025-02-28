@@ -77,10 +77,10 @@ class CleanupThesaurus(
         file_path = str(self.file_path)
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
-        sys.stderr.write("\nCleaning up thesaurus")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nCleaning up thesaurus")
+        sys.stdout.write(f"\n  File : {file_path}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_thesaurus_as_data_frame(self):

@@ -65,8 +65,8 @@ Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 Thesaurus sorting by key match completed successfully: ...s/descriptors.the.txt
 
 """
-from ..._internals.mixins import ParamsMixin
-from ..user import KeyMatchSorter as SortUserThesaurusByKeyMatch
+from ...._internals.mixins import ParamsMixin
+from ...user import KeyMatchSorter as SortUserThesaurusByKeyMatch
 
 
 class SortThesaurusByKeyMatch(

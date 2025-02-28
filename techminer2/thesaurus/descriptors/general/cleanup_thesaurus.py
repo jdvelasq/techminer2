@@ -29,8 +29,8 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import (
+from ...._internals.mixins import ParamsMixin
+from ..._internals import (
     internal__apply_porter_stemmer,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
@@ -71,22 +71,22 @@ class CleanupThesaurus(
 
     # -------------------------------------------------------------------------
     def load_thesaurus_as_data_frame(self):
-        sys.stderr.write(f"  Loading {self.file_path} thesaurus file as data frame.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Loading {self.file_path} thesaurus file as data frame.\n")
+        sys.stdout.flush()
         self.data_frame = internal__load_thesaurus_as_data_frame(self.file_path)
 
     # -------------------------------------------------------------------------
     def create_fingerprint_column_in_data_frame(self):
-        sys.stderr.write(f"  Creating fingerprint column.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Creating fingerprint column.\n")
+        sys.stdout.flush()
         self.data_frame["fingerprint"] = (
             self.data_frame["key"].str.lower().str.replace("_", " ").str.strip()
         )
 
     # -------------------------------------------------------------------------
     def remove_particles_from_fingerprints(self):
-        sys.stderr.write(f"  Removing text particles from fingerprints.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Removing text particles from fingerprints.\n")
+        sys.stdout.flush()
         for particle in PARTICLES:
             particle = particle.replace("_", " ").lower()
             self.data_frame["fingerprint"] = self.data_frame["fingerprint"].str.replace(
@@ -97,8 +97,8 @@ class CleanupThesaurus(
 
     # -------------------------------------------------------------------------
     def apply_porter_stemmer_to_fingerprint(self):
-        sys.stderr.write(f"  Applying Porter stemmer to fingerprints.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Applying Porter stemmer to fingerprints.\n")
+        sys.stdout.flush()
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].str.split(" ")
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].map(
             lambda x: [internal__apply_porter_stemmer(z) for z in x]
@@ -108,8 +108,8 @@ class CleanupThesaurus(
 
     # -------------------------------------------------------------------------
     def compute_n_terms_by_key(self):
-        sys.stderr.write(f"  Counting terms by fingerprint.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Counting terms by fingerprint.\n")
+        sys.stdout.flush()
         self.data_frame["n_terms"] = self.data_frame.groupby(
             ["fingerprint", "key"]
         ).transform("count")
@@ -123,16 +123,16 @@ class CleanupThesaurus(
         # replace the fingerprint for the most frequent key (i.e., the key
         # with the highest number of terms)
         #
-        sys.stderr.write(f"  Generating new thesaurus keys.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Generating new thesaurus keys.\n")
+        sys.stdout.flush()
         repl = {row.fingerprint: row.key for _, row in self.data_frame.iterrows()}
         self.data_frame["fingerprint"] = self.data_frame["fingerprint"].map(repl)
 
     # -------------------------------------------------------------------------
     def save_thesaurus_to_disk(self):
 
-        sys.stderr.write(f"  Writing cleaned thesaurus to disk.\n")
-        sys.stderr.flush()
+        sys.stdout.write(f"  Writing cleaned thesaurus to disk.\n")
+        sys.stdout.flush()
 
         data_frame = self.data_frame[["fingerprint", "value"]]
         data_frame = data_frame.drop_duplicates()
@@ -149,8 +149,8 @@ class CleanupThesaurus(
     def build(self):
         """:meta private:"""
 
-        sys.stderr.write("Cleanup Descriptors Thesaurus.\n")
-        sys.stderr.flush()
+        sys.stdout.write("Cleanup Descriptors Thesaurus.\n")
+        sys.stdout.flush()
         self.params.update(thesaurus_file="descriptors.the.txt")
         self.generate_user_thesaurus_file_path()
         self.load_thesaurus_as_data_frame()

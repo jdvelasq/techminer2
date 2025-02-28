@@ -104,12 +104,12 @@ class ApplyThesaurus(
             truncated_file_path = file_path
 
         # -------------------------------------------------------------------------
-        sys.stderr.write("\nApplying system thesaurus")
-        sys.stderr.write(f"\n          File : {truncated_file_path}")
-        sys.stderr.write(f"\n  Source field : {self.params.field}")
-        sys.stderr.write(f"\n  Target field : {self.params.other_field}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nApplying system thesaurus")
+        sys.stdout.write(f"\n          File : {truncated_file_path}")
+        sys.stdout.write(f"\n  Source field : {self.params.field}")
+        sys.stdout.write(f"\n  Target field : {self.params.other_field}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
         #
         truncated_file_path = str(file_path)
         if len(file_path) > 25:

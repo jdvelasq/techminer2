@@ -32,10 +32,10 @@ import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_filtered_database
-from ...package_data.text_processing import internal__load_text_processing_terms
-from .._internals import (
+from ...._internals.mixins import ParamsMixin
+from ....database._internals.io import internal__load_filtered_database
+from ....package_data.text_processing import internal__load_text_processing_terms
+from ..._internals import (
     internal__apply_porter_stemmer,
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
@@ -43,10 +43,10 @@ from .._internals import (
     internal__load_thesaurus_as_mapping,
     internal__print_thesaurus_header,
 )
-from .._internals.load_reversed_thesaurus_as_mapping import (
+from ..._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
-from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
+from ..._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
 THESAURUS_FILE = "thesaurus/descriptors.the.txt"
 ABBREVIATIONS_FILE = "thesaurus/abbreviations.the.txt"
@@ -68,8 +68,8 @@ class CreateThesaurus(
     def step_02_print_info_header(self):
         file_path = self.file_path
         field = self.params.field
-        sys.stderr.write(f"\nCreating thesaurus from '{field}' field: {file_path}")
-        sys.stderr.flush()
+        sys.stdout.write(f"\nCreating thesaurus from '{field}' field: {file_path}")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_records(self):
@@ -79,8 +79,8 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def step_04_create_data_frame(self):
         #
-        sys.stderr.write("\n  Loading records")
-        sys.stderr.flush()
+        sys.stdout.write("\n  Loading records")
+        sys.stdout.flush()
         #
         values = self.records[self.params.field].dropna()
         values = values.str.split("; ")

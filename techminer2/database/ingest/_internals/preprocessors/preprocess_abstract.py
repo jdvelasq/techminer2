@@ -15,8 +15,8 @@ from ..operators.clean_text import internal__clean_text
 def internal__preprocess_abstract(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("\nINFO  Cleaning 'abstract' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Cleaning 'abstract' column.")
+    sys.stdout.flush()
 
     internal__clean_text(
         source="raw_abstract",

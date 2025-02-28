@@ -15,8 +15,8 @@ from ..operators.count_terms_per_record import internal__count_terms_per_record
 def internal__preprocess_num_authors(root_dir):
     """Run importer."""
 
-    sys.stderr.write("\nINFO  Counting authors per document.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Counting authors per document.")
+    sys.stdout.flush()
 
     internal__count_terms_per_record(
         source="authors",

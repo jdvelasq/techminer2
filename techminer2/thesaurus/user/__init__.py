@@ -13,16 +13,29 @@ from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
 from .sort.sort_by_key_match import SortByKeyMatch
 from .sort.sort_by_key_order import SortByKeyOrder
 from .sort.sort_by_starts_with_key_match import SortByStartsWithKeyMatch
-from .TO_REVIEW._cleanup_thesaurus import CleanupThesaurus
-from .TO_REVIEW.common_ending_words_remover import CommonEndingWordsRemover
-from .TO_REVIEW.common_starting_words_remover import CommonStartingWordsRemover
-from .TO_REVIEW.hyphenated_words_transformer import HyphenatedWordsTransformer
-from .TO_REVIEW.parentheses_remover import ParenthesesRemover
-from .TO_REVIEW.starting_determiners_remover import StartingDeterminersRemover
-from .TO_REVIEW.starting_stopwords_remover import StartingStopwordsRemover
+from .sort.sort_by_word_match import SortByWordMatch
 from .translate.translate_american_to_british_spelling import (
     TranslateAmericanToBritishSpelling,
 )
 from .translate.translate_british_to_american_spelling import (
     TranslateBritishToAmericanSpelling,
 )
+
+__all__ = [
+    "ApplyThesaurus",
+    "CreateThesaurus",
+    "IntegrityCheck",
+    "ReduceKeys",
+    "SpellCheck",
+    "ReplaceEndsWithWord",
+    "ReplaceStartsWithWord",
+    "ReplaceWord",
+    "SortByEndsWithKeyMatch",
+    "SortByWordMatch",
+    "SortByFuzzyKeyMatch",
+    "SortByKeyMatch",
+    "SortByKeyOrder",
+    "SortByStartsWithKeyMatch",
+    "TranslateAmericanToBritishSpelling",
+    "TranslateBritishToAmericanSpelling",
+]

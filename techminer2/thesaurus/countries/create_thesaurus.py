@@ -162,11 +162,11 @@ class CreateThesaurus(
         file_path = self.step_01_get_thesaurus_file_path()
 
         # -------------------------------------------------------------------------
-        sys.stderr.write("\nCreating thesaurus file")
-        sys.stderr.write(f"\n          File : {file_path}")
-        sys.stderr.write("\n  Source field : affiliations")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nCreating thesaurus file")
+        sys.stdout.write(f"\n          File : {file_path}")
+        sys.stdout.write("\n  Source field : affiliations")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
         ##
         truncated_file_path = str(file_path)
         if len(truncated_file_path) > 30:

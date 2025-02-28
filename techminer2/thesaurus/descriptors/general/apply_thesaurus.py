@@ -33,8 +33,8 @@ Thesaurus application completed successfully for file: ...s/descriptors.the.txt
 """
 
 
-from ..._internals.mixins import ParamsMixin
-from ..user import ApplyThesaurus as ApplyUserThesaurus
+from ...._internals.mixins import ParamsMixin
+from ...user import ApplyThesaurus as ApplyUserThesaurus
 
 PAIRS = [
     ("raw_author_keywords", "author_keywords"),

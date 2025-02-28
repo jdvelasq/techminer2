@@ -36,9 +36,9 @@ import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import internal__load_text_processing_terms
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ..._internals.mixins import ParamsMixin
+from ...package_data.text_processing import internal__load_text_processing_terms
+from .._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 
@@ -56,10 +56,10 @@ class HyphenatedWordsTransformer(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("\nTransforming hyphenated words in thesaurus keys")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nTransforming hyphenated words in thesaurus keys")
+        sys.stdout.write(f"\n  File : {file_path}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def notify__process_end(self):
@@ -161,7 +161,7 @@ class HyphenatedWordsTransformer(
             return x
 
         tqdm.pandas(desc="  Processing hyphenated words")
-        sys.stderr.write("\n")
+        sys.stdout.write("\n")
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
 
@@ -261,12 +261,12 @@ class HyphenatedWordsTransformer(
         self.internal__build_thesaurus_path()
         self.notify__process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
+        self.internal__transform_mapping_to_data_frame()
         #
         self.internal__transform_hyphenated_words_in_keys()
         self.internal__fix_bad_hyphenated_words_in_keys()
         #
-        self.internal__group_values_by_key()
+        self.internal__explode_and_group_values_by_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.notify__process_end()
 

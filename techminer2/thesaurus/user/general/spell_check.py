@@ -9,6 +9,12 @@
 Spell Check
 ===============================================================================
 
+
+>>> from techminer2.thesaurus.user import CreateThesaurus
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+...     root_directory="example/", quiet=True).run()
+
+
 >>> from techminer2.thesaurus.user import SpellCheck
 >>> (
 ...     SpellCheck()
@@ -22,8 +28,46 @@ Spell Check
 ...     #
 ...     .run()
 ... )
+Spell checking thesaurus keys
+  File : example/thesaurus/demo.the.txt
+  Potential misspelled words (77):
 <BLANKLINE>
-Spell checking completed successfully for file: example/thesaurus/demo.the.txt
+    - affordance
+    - agroindustry
+    - agropay
+    - analyse
+    - backoffice
+    - behavioural
+    - bitcoin
+    - brummer
+    - burdencapital
+    - cacioppo
+    ...
+<BLANKLINE>
+  Matching keys found : 91
+  Spell checking completed successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    A_BEHAVIOURAL_PERSPECTIVE
+      A_BEHAVIOURAL_PERSPECTIVE
+    A_MULTI_LEVEL_ANALYSIS
+      A_MULTI_LEVEL_ANALYSIS
+    A_WIDE_RANGING_RECONCEPTUALIZATION
+      A_WIDE_RANGING_RECONCEPTUALIZATION
+    A_YOUTH_MICROLOAN
+      A_YOUTH_MICROLOAN
+    AFFORDANCE_ACTUALIZATION
+      AFFORDANCE_ACTUALIZATION
+    AGROINDUSTRY
+      AGROINDUSTRY
+    AGROPAY
+      AGROPAY
+    ANALYSE
+      ANALYSE
+<BLANKLINE>
+
 
 
 >>> SpellCheck(
@@ -31,8 +75,46 @@ Spell checking completed successfully for file: example/thesaurus/demo.the.txt
 ...     maximum_occurrence=3,
 ...     root_directory="example/",
 ... ).run()
+Spell checking thesaurus keys
+  File : example/thesaurus/demo.the.txt
+  Potential misspelled words (77):
 <BLANKLINE>
-Spell checking completed successfully for file: example/thesaurus/demo.the.txt
+    - affordance
+    - agroindustry
+    - agropay
+    - analyse
+    - backoffice
+    - behavioural
+    - bitcoin
+    - brummer
+    - burdencapital
+    - cacioppo
+    ...
+<BLANKLINE>
+  Matching keys found : 91
+  Spell checking completed successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    A_BEHAVIOURAL_PERSPECTIVE
+      A_BEHAVIOURAL_PERSPECTIVE
+    A_MULTI_LEVEL_ANALYSIS
+      A_MULTI_LEVEL_ANALYSIS
+    A_WIDE_RANGING_RECONCEPTUALIZATION
+      A_WIDE_RANGING_RECONCEPTUALIZATION
+    A_YOUTH_MICROLOAN
+      A_YOUTH_MICROLOAN
+    AFFORDANCE_ACTUALIZATION
+      AFFORDANCE_ACTUALIZATION
+    AGROINDUSTRY
+      AGROINDUSTRY
+    AGROPAY
+      AGROPAY
+    ANALYSE
+      ANALYSE
+<BLANKLINE>
+
 
 """
 import sys
@@ -41,11 +123,7 @@ import pandas as pd  # type: ignore
 from spellchecker import SpellChecker as ExternalSpellChecker
 
 from ...._internals.mixins import ParamsMixin
-from ..._internals import (
-    ThesaurusMixin,
-    internal__load_thesaurus_as_data_frame,
-    internal__print_thesaurus_header,
-)
+from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
 class SpellCheck(
@@ -62,21 +140,17 @@ class SpellCheck(
         truncated_path = str(self.thesaurus_path)
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
-        sys.stderr.write("\nSpell checking thesaurus keys")
-        sys.stderr.write(f"\n  File : {truncated_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("Spell checking thesaurus keys\n")
+        sys.stdout.write(f"  File : {truncated_path}\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 31:
-            truncated_path = "..." + truncated_path[-27:]
-        sys.stdout.write(
-            f"\nSpell checking completed successfully for file: {truncated_path}"
-        )
+        sys.stdout.write("  Spell checking completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
@@ -100,51 +174,47 @@ class SpellCheck(
         self.misspelled_words = misspelled_words
 
     # -------------------------------------------------------------------------
-    def internal__print_mispelled_words_to_syserr(self):
+    def internal__print_mispelled_words_to_sysout(self):
 
         if len(self.misspelled_words) == 0:
-            sys.stderr.write("\n  No misspelled words found.")
-            sys.stderr.flush()
+            sys.stdout.write("  No misspelled words found\n")
+            sys.stdout.flush()
             return
 
         misspelled_words = self.misspelled_words[:10]
         for i_word, word in enumerate(misspelled_words):
             if i_word == 0:
-                sys.stderr.write("\n  Potential misspelled words:")
-            sys.stderr.write(f"\n    - {word}")
+                sys.stdout.write(
+                    f"  Potential misspelled words ({len(self.misspelled_words)}):\n\n"
+                )
+            sys.stdout.write(f"    - {word}\n")
         if len(misspelled_words) == 10:
-            sys.stderr.write("\n    ...\n")
-        sys.stderr.flush()
+            sys.stdout.write("    ...\n\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def internal__filter_data_frame(self):
+    def internal__select_data_frame_rows(self):
 
-        data_frame = self.data_frame
-        data_frame["fingerprint"] = (
-            data_frame["key"].str.lower().str.replace("_", " ").str.split(" ")
+        self.data_frame["__row_selected__"] = False
+
+        self.data_frame["fingerprint"] = self.data_frame["key"].copy()
+        self.data_frame["fingerprint"] = (
+            self.data_frame["fingerprint"]
+            .str.lower()
+            .str.replace("_", " ")
+            .str.split(" ")
         )
 
-        result = []
         for word in self.misspelled_words:
-            result.append(
-                data_frame[data_frame["fingerprint"].apply(lambda x: word in x)]
-            )
+            self.data_frame.loc[
+                self.data_frame.fingerprint.str.contains(word, regex=False),
+                "__row_selected__",
+            ] = True
 
-        if result != []:
-            self.result = pd.concat(result)
-            self.data_frame = self.result[["key", "value"]].drop_duplicates()
-        else:
-            self.data_frame = None
+        n_matches = self.data_frame.__row_selected__.sum()
 
-    # -------------------------------------------------------------------------
-    def internal__extract_findings(self):
-
-        if self.data_frame is None:
-            self.findings = {}
-            return
-        keys = self.data_frame.key.drop_duplicates()
-        findings = {key: self.mapping[key] for key in sorted(keys)}
-        self.findings = findings
+        sys.stdout.write(f"  Matching keys found : {n_matches}\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def run(self):
@@ -153,17 +223,14 @@ class SpellCheck(
         self.internal__build_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
-        #
+        self.internal__transform_mapping_to_data_frame()
         self.internal__extract_words_from_mapping()
         self.internal__search_mispelled_words()
-        self.internal__print_mispelled_words_to_syserr()
-        self.internal__filter_data_frame()
-        self.internal__extract_findings()
-        self.internal__write_thesaurus_mapping_to_disk()
+        self.internal__print_mispelled_words_to_sysout()
+        self.internal__select_data_frame_rows()
+        self.internal__sort_data_frame_by_rows_and_key()
+        self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
 
 
 # =============================================================================

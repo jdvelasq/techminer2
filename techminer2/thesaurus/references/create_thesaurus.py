@@ -78,14 +78,14 @@ class CreateThesaurus(
     def step_02_print_info_header(self):
         file_path = self.file_path
         field = self.params.field
-        sys.stderr.write(f"\nCreating thesaurus from '{field}' field: {file_path}")
-        sys.stderr.flush()
+        sys.stdout.write(f"\nCreating thesaurus from '{field}' field: {file_path}")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_03_create_main_documents_data_frame(self):
 
-        sys.stderr.write(f"\n  Creating main_documents data frame")
-        sys.stderr.flush()
+        sys.stdout.write(f"\n  Creating main_documents data frame")
+        sys.stdout.flush()
 
         # loads the dataframe
         main_documents = internal__load_filtered_database(self.params)
@@ -123,8 +123,8 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def step_04_create_references_data_frame(self):
 
-        sys.stderr.write(f"\n  Creating references data frame")
-        sys.stderr.flush()
+        sys.stdout.write(f"\n  Creating references data frame")
+        sys.stdout.flush()
 
         # loads the dataframe
         references = internal__load_records(self.params)
@@ -144,7 +144,7 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def step_05_create_thesaurus(self):
 
-        sys.stderr.write("\n")
+        sys.stdout.write("\n")
 
         thesaurus = {}
         for _, row in tqdm(

@@ -46,8 +46,8 @@ def internal__preprocess_references(root_dir):
         dtype=DTYPES,
     )
 
-    # sys.stderr.write("\n")
-    # sys.stderr.flush()
+    # sys.stdout.write("\n")
+    # sys.stdout.flush()
 
     for source, abbr_source_title in tqdm(
         zip(abbrs.source, abbrs.abbr_source_title),

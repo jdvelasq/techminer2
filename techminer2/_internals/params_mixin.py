@@ -112,6 +112,7 @@ class Params:
     # Q
     #
     query_expr: Optional[str] = None
+    quiet: bool = False
 
     #
     # R

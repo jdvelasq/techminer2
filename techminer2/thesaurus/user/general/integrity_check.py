@@ -11,6 +11,10 @@ Integrity Check
 ===============================================================================
 
 
+>>> from techminer2.thesaurus.user import CreateThesaurus
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+...     root_directory="example/", quiet=True).run()
+
 >>> from techminer2.thesaurus.user import IntegrityCheck
 >>> (
 ...     IntegrityCheck()
@@ -24,8 +28,11 @@ Integrity Check
 ...     #
 ...     .run()
 ... )
+Thesaurus integrity check
+  File : example/thesaurus/demo.the.txt
+  1865 terms checked
+  Integrity check completed successfully
 <BLANKLINE>
-Integrity checking successfully for file: example/thesaurus/demo.the.txt
 
 
 
@@ -50,20 +57,16 @@ class IntegrityCheck(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("\nThesaurus integrity check")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("Thesaurus integrity check\n")
+        sys.stdout.write(f"  File : {file_path}\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 37:
-            truncated_path = "..." + truncated_path[-33:]
-        sys.stdout.write(
-            f"\nIntegrity checking successfully for file: {truncated_path}"
-        )
+        n_terms = max(len(self.terms_in_thesaurus), len(self.terms_in_database))
+        sys.stdout.write(f"  {n_terms} terms checked\n")
+        sys.stdout.write(f"  Integrity check completed successfully\n\n")
         sys.stdout.flush()
 
     #
@@ -111,25 +114,25 @@ class IntegrityCheck(
         terms = self.missing_terms_in_database
         if terms is not None:
             terms = terms[:10]
-            sys.stderr.write(f"\n  Missing Terms in database:")
+            sys.stdout.write(f"  Missing Terms in database:\n")
             for term in terms:
-                sys.stderr.write(f"\n    - {term}")
+                sys.stdout.write(f"    - {term}\n")
             if len(terms) == 10:
-                sys.stderr.write("\n    ...")
-            sys.stderr.write("\n")
-            sys.stderr.flush()
+                sys.stdout.write("    ...\n")
+            sys.stdout.write("\n")
+            sys.stdout.flush()
 
         #
         terms = self.missing_terms_in_thesaurus
         if terms is not None:
             terms = terms[:10]
-            sys.stderr.write(f"\n  Missing Terms in thesaurus:")
+            sys.stdout.write(f"  Missing Terms in thesaurus:\n")
             for i_term, term in enumerate(terms):
-                sys.stderr.write(f"\n    - {term}")
+                sys.stdout.write(f"    - {term}\n")
             if len(terms) == 10:
-                sys.stderr.write("\n    ...")
-            sys.stderr.write("\n")
-            sys.stderr.flush()
+                sys.stdout.write("    ...\n")
+            sys.stdout.write("\n")
+            sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

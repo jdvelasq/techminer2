@@ -54,10 +54,10 @@ class ParenthesesRemover(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("\nRemoving parentheses from thesaurus keys")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nRemoving parentheses from thesaurus keys")
+        sys.stdout.write(f"\n  File : {file_path}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def notify__process_end(self):
@@ -139,7 +139,7 @@ class ParenthesesRemover(
         self.internal__build_thesaurus_path()
         self.notify__process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
+        self.internal__transform_mapping_to_data_frame()
 
         self.internal__remove_surrounding_chars("(", ")")
         self.internal__remove_surrounding_chars("[", "]")
@@ -152,7 +152,7 @@ class ParenthesesRemover(
 
         self.internal__repair_keys()
 
-        self.internal__group_values_by_key()
+        self.internal__explode_and_group_values_by_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.notify__process_end()
 

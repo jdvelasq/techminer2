@@ -67,8 +67,8 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals import (
+from ...._internals.mixins import ParamsMixin
+from ..._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__print_thesaurus_header,
@@ -105,12 +105,12 @@ class SortThesaurusByKeyExactMatch(
         startswith = format_pattern(startswith)
         endswith = format_pattern(endswith)
 
-        sys.stderr.write(f"\nSorting thesaurus by key exact match")
-        sys.stderr.write(f"\n                File : {file_path}")
-        sys.stderr.write(f"\n           Keys like : {pattern}")
-        sys.stderr.write(f"\n  Keys starting with : {startswith}")
-        sys.stderr.write(f"\n    Keys ending with : {endswith}")
-        sys.stderr.flush()
+        sys.stdout.write(f"\nSorting thesaurus by key exact match")
+        sys.stdout.write(f"\n                File : {file_path}")
+        sys.stdout.write(f"\n           Keys like : {pattern}")
+        sys.stdout.write(f"\n  Keys starting with : {startswith}")
+        sys.stdout.write(f"\n    Keys ending with : {endswith}")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_thesaurus_as_data_frame(self):
@@ -224,8 +224,8 @@ class SortThesaurusByKeyExactMatch(
     # -------------------------------------------------------------------------
     def step_06_print_info_tail(self):
 
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\n")
+        sys.stdout.flush()
         internal__print_thesaurus_header(thesaurus_path=self.file_path)
         ##
 

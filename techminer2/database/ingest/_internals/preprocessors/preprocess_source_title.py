@@ -26,8 +26,8 @@ def _local_processing_func(text):
 def internal__preprocess_source_title(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("\nINFO  Processing 'source_title' column.")
-    sys.stderr.flush()
+    sys.stdout.write("\nINFO  Processing 'source_title' column.")
+    sys.stdout.flush()
 
     internal__transform_field(
         field="raw_source_title",

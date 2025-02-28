@@ -10,6 +10,11 @@
 Sort By Fuzzy Key Match
 ===============================================================================
 
+>>> from techminer2.thesaurus.user import CreateThesaurus
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+...     root_directory="example/", quiet=True).run()
+
+
 >>> from techminer2.thesaurus.user import SortByFuzzyKeyMatch
 >>> (
 ...     SortByFuzzyKeyMatch()
@@ -24,8 +29,34 @@ Sort By Fuzzy Key Match
 ...     #
 ...     .run()
 ... ) 
+Sorting thesaurus by fuzzy match
+            File : example/thesaurus/demo.the.txt
+       Keys like : INTELL
+  Match thresold : 70
+  3 matching keys found
+  Thesaurus sorting completed successfully
 <BLANKLINE>
-Thesaurus sorting by fuzzy key match completed successfully: ...us/demo.the.txt
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    ARTIFICIAL_INTELLIGENCE
+      ARTIFICIAL_INTELLIGENCE
+    INTELLIGENT_ALGORITHMS
+      INTELLIGENT_ALGORITHMS
+    INTELLIGENT_ROBOTS
+      INTELLIGENT_ROBOTS
+    A_A_)_THEORY
+      A_A_)_THEORY
+    A_A_THEORY
+      A_A_THEORY
+    A_BASIC_RANDOM_SAMPLING_STRATEGY
+      A_BASIC_RANDOM_SAMPLING_STRATEGY
+    A_BEHAVIOURAL_PERSPECTIVE
+      A_BEHAVIOURAL_PERSPECTIVE
+    A_BETTER_UNDERSTANDING
+      A_BETTER_UNDERSTANDING
+<BLANKLINE>
+
 
 
 
@@ -54,65 +85,51 @@ class SortByFuzzyKeyMatch(
         pattern = self.params.pattern
         threshold = self.params.match_threshold
 
-        sys.stderr.write("\nSorting thesaurus by fuzzy match")
-        sys.stderr.write(f"\n                 File : {thesaurus_path}")
-        sys.stderr.write(f"\n            Keys like : {pattern}")
-        sys.stderr.write(f"\n       Match thresold : {threshold}")
-
-        sys.stderr.flush()
+        sys.stdout.write("Sorting thesaurus by fuzzy match\n")
+        sys.stdout.write(f"            File : {thesaurus_path}\n")
+        sys.stdout.write(f"       Keys like : {pattern}\n")
+        sys.stdout.write(f"  Match thresold : {threshold}\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 20:
-            truncated_path = "..." + truncated_path[-15:]
-        sys.stdout.write(
-            f"\nThesaurus sorting by fuzzy key match completed successfully: {truncated_path}"
-        )
+        sys.stdout.write("  Thesaurus sorting completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__filter_data_frame(self):
-        #
-        data_frame = self.data_frame
-        #
-        result = []
-        #
-        if self.params.pattern is not None:
-            if isinstance(self.params.pattern, str):
-                self.params.pattern = [self.params.pattern]
+    def internal__select_data_frame_rows(self):
 
-            for pattern in self.params.pattern:
-                potential_matches = process.extract(pattern, data_frame.key, limit=None)
-                for potential_match in potential_matches:
-                    if potential_match[1] >= self.params.match_threshold:
-                        result.append(
-                            data_frame[
-                                data_frame.key.str.contains(
-                                    potential_match[0], regex=False
-                                )
-                            ]
-                        )
-        else:
-            raise ValueError("No filter provided")
+        self.data_frame["__row_selected__"] = False
 
-        if result != []:
-            self.result = pd.concat(result)
-            self.data_frame = self.result.drop_duplicates("key")
-        else:
-            self.data_frame = None
+        if isinstance(self.params.pattern, str):
+            self.params.pattern = [self.params.pattern]
 
-        if self.data_frame is None:
-            sys.stderr.write("\n  Matching keys found : 0")
-        else:
-            sys.stderr.write(
-                f"\n  Matching keys found : {len(self.data_frame.key.drop_duplicates())}"
+        for pattern in self.params.pattern:
+
+            potential_matches = process.extract(
+                pattern, self.data_frame.key, limit=None
             )
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+
+            for potential_match in potential_matches:
+
+                if potential_match[1] >= self.params.match_threshold:
+
+                    self.data_frame.loc[
+                        self.data_frame.key.str.contains(
+                            potential_match[0], regex=False
+                        ),
+                        "__row_selected__",
+                    ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} matching keys found\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def run(self):
@@ -121,13 +138,11 @@ class SortByFuzzyKeyMatch(
         self.internal__build_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
-        self.internal__filter_data_frame()
-        self.internal__extract_findings()
-        self.internal__write_thesaurus_mapping_to_disk()
+        self.internal__transform_mapping_to_data_frame()
+        self.internal__select_data_frame_rows()
+        self.internal__sort_data_frame_by_rows_and_key()
+        self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
 
 
 # =============================================================================

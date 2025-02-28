@@ -7,13 +7,13 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Common Ending Words Remover
+Starting Stopwords Remover
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import CommonEndingWordsRemover
+>>> from techminer2.thesaurus.user import StartingStopwordsRemover
 >>> (
-...     CommonEndingWordsRemover()
+...     StartingStopwordsRemover()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -24,7 +24,7 @@ Common Ending Words Remover
 ...     .build()
 ... )
 <BLANKLINE>
-Removing common ending words successfully for file: ...e/thesaurus/demo.the.txt
+Removing stopwords completed successfully for file: ...e/thesaurus/demo.the.txt
 
 
 
@@ -32,18 +32,17 @@ Removing common ending words successfully for file: ...e/thesaurus/demo.the.txt
 import re
 import sys
 
-import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ...._internals import ParamsMixin
+from ...._internals.mixins import ParamsMixin
 from ....package_data.text_processing import internal__load_text_processing_terms
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 
 
-class CommonEndingWordsRemover(
+class StartingStopwordsRemover(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -56,36 +55,37 @@ class CommonEndingWordsRemover(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("\nRemoving common ending words from thesaurus keys")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.write("\n")
-        sys.stderr.flush()
+        sys.stdout.write("\nRemoving starting stopwords from thesaurus keys")
+        sys.stdout.write(f"\n  File : {file_path}")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def notify__process_end(self):
         truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 30:
-            truncated_file_path = "..." + truncated_file_path[-26:]
+        if len(truncated_file_path) > 31:
+            truncated_file_path = "..." + truncated_file_path[-27:]
         sys.stdout.write(
-            f"\nRemoving common ending words successfully for file: {truncated_file_path}"
+            f"\nRemoving stopwords completed successfully for file: {truncated_file_path}"
         )
         sys.stdout.flush()
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__remove_common_ending_words_from_keys(self):
+    def internal__remove_starting_stopwords_from_keys(self):
 
-        words = internal__load_text_processing_terms("common_ending_words.txt")
+        words = internal__load_text_processing_terms("technical_stopwords.txt")
+
+        words = [w for w in words if len(w) > 1]
+        words = [w for w in words if "'" not in w]
 
         # create regular expressions
         patterns = []
-
-        patterns += [re.compile(" " + w.lower() + "$") for w in words]
-        patterns += [re.compile(" " + w.upper() + "$") for w in words]
-        patterns += [re.compile("_" + w.upper() + "$") for w in words]
-        patterns += [re.compile(" " + w.capitalize() + "$") for w in words]
-        patterns += [re.compile(" " + w.title() + "$") for w in words]
+        patterns += [re.compile(r"^" + d.lower() + r" ") for d in words]
+        patterns += [re.compile(r"^" + d.upper() + r" ") for d in words]
+        patterns += [re.compile(r"^" + d.upper() + r"_") for d in words]
+        patterns += [re.compile(r"^" + d.title() + r" ") for d in words]
 
         def replace_patterns(text):
             for pattern in patterns:
@@ -93,7 +93,6 @@ class CommonEndingWordsRemover(
             return text
 
         tqdm.pandas(desc="  Progress")
-        sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
@@ -104,10 +103,9 @@ class CommonEndingWordsRemover(
         self.internal__build_thesaurus_path()
         self.notify__process_start()
         self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_thesaurus_mapping_to_data_frame()
-        self.internal__remove_common_ending_words_from_keys()
-        self.internal__group_values_by_key()
-        self.internal__sort_data_frame_by_key()
+        self.internal__transform_mapping_to_data_frame()
+        self.internal__remove_starting_stopwords_from_keys()
+        self.internal__explode_and_group_values_by_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.notify__process_end()
 

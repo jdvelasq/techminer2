@@ -29,8 +29,8 @@ Thesaurus sorting completed successfully for file: ...aurus/descriptors.the.txt
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from ..user import SortByKeyOrder as SortUserThesaurusByKeyOrder
+from ...._internals.mixins import ParamsMixin
+from ...user import SortByKeyOrder as SortUserThesaurusByKeyOrder
 
 
 class SortThesaurusByKeyOrder(

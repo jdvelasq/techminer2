@@ -29,8 +29,8 @@ import sys
 
 from tqdm import tqdm  # type: ignore
 
-from ..._internals.mixins import Params, ParamsMixin
-from .._internals import (
+from ...._internals.mixins import Params, ParamsMixin
+from ..._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
@@ -73,9 +73,9 @@ class ReplaceAbbreviations(
     def step_02_print_info_header(self):
         file_path = self.descriptors_file_path
         # field = self.params.field
-        sys.stderr.write(f"Reemplacing abbreviations")
-        sys.stderr.write(f"\n  File : {file_path}")
-        sys.stderr.flush()
+        sys.stdout.write(f"Reemplacing abbreviations")
+        sys.stdout.write(f"\n  File : {file_path}")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def step_03_load_descriptor_thesaurus_as_data_frame(self):
