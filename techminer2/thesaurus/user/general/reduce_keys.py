@@ -80,7 +80,7 @@ class ReduceKeys(
     def run(self):
         """:meta private:"""
 
-        self.internal__build_thesaurus_path()
+        self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()

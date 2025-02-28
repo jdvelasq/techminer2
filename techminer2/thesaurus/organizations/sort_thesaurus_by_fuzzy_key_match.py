@@ -29,7 +29,7 @@ Thesaurus sorting by fuzzy key match completed successfully: ...zations.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import SortByFuzzyKeyMatch as SortUserThesaurusByFuzzyKeyMatch
+from ..user import SortByFuzzyKeyMatch as UserSortByFuzzyKeyMatch
 
 
 class SortThesaurusByFuzzyKeyMatch(
@@ -39,7 +39,7 @@ class SortThesaurusByFuzzyKeyMatch(
 
     def build(self):
         return (
-            SortUserThesaurusByFuzzyKeyMatch()
+            UserSortByFuzzyKeyMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
             .build()

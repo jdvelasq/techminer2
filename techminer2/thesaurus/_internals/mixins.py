@@ -8,6 +8,7 @@ from tqdm import tqdm  # type: ignore
 
 from ...database._internals.io import internal__load_filtered_database
 from . import (
+    internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
 )
@@ -18,9 +19,16 @@ tqdm.pandas()
 class ThesaurusMixin:
 
     # -------------------------------------------------------------------------
-    def internal__build_thesaurus_path(self):
+    def internal__build_user_thesaurus_path(self):
 
         self.thesaurus_path = internal__generate_user_thesaurus_file_path(
+            params=self.params
+        )
+
+    # -------------------------------------------------------------------------
+    def internal__build_system_thesaurus_path(self):
+
+        self.thesaurus_path = internal__generate_system_thesaurus_file_path(
             params=self.params
         )
 

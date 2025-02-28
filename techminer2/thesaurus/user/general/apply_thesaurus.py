@@ -60,7 +60,7 @@ class ApplyThesaurus(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stdout.write("Applying thesaurus to database\n")
+        sys.stdout.write("Applying user thesaurus to database\n")
         sys.stdout.write(f"          File : {file_path}\n")
         sys.stdout.write(f"  Source field : {field}\n")
         sys.stdout.write(f"  Target field : {other_field}\n")
@@ -128,7 +128,7 @@ class ApplyThesaurus(
     def run(self):
         """:meta private:"""
 
-        self.internal__build_thesaurus_path()
+        self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_reversed_thesaurus_as_mapping()
         self.internal__load_records()

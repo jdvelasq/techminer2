@@ -50,7 +50,7 @@ Thesaurus sorting by key match completed successfully: ...organizations.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import KeyMatchSorter as SortUserThesaurusByKeyMatch
+from ..user import SortByKeyMatch as UserSortByKeyMatch
 
 
 class SortThesaurusByKeyMatch(
@@ -60,8 +60,8 @@ class SortThesaurusByKeyMatch(
 
     def build(self):
         return (
-            SortUserThesaurusByKeyMatch()
+            UserSortByKeyMatch()
             .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
-            .build()
+            .run()
         )

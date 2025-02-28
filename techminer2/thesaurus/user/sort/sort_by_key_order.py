@@ -108,7 +108,7 @@ Printing thesaurus header
 ... )
 Sorting thesaurus by word length
   File : example/thesaurus/demo.the.txt
-Thesaurus sorting completed successfully
+  Thesaurus sorting completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/demo.the.txt
@@ -166,7 +166,7 @@ class SortByKeyOrder(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("Thesaurus sorting completed successfully\n\n")
+        sys.stdout.write("  Thesaurus sorting completed successfully\n\n")
         sys.stdout.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
@@ -207,7 +207,7 @@ class SortByKeyOrder(
     def run(self):
         """:meta private:"""
 
-        self.internal__build_thesaurus_path()
+        self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()

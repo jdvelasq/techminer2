@@ -7,31 +7,28 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort Thesaurus by Fuzzy Key Match
+Sort By Ends With Key Match
 ===============================================================================
 
->>> from techminer2.thesaurus.countries import SortThesaurusByFuzzyKeyMatch
+>>> from techminer2.thesaurus.organizations import SortThesaurusByFuzzyKeyMatch
 >>> (
 ...     SortThesaurusByFuzzyKeyMatch()
 ...     # 
 ...     # THESAURUS:
-...     .having_keys_like("china")
-...     .having_match_threshold(90)
+...     .having_keys_like("universidad")
+...     .having_match_threshold(70)
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... ) 
-<BLANKLINE>
-Thesaurus sorting by fuzzy key match completed successfully: ...untries.the.txt
-
 
 
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import SortByFuzzyKeyMatch as SortUserThesaurusByFuzzyKeyMatch
+from ..user import SortByFuzzyKeyMatch as UserSortByFuzzyKeyMatch
 
 
 class SortThesaurusByFuzzyKeyMatch(
@@ -41,8 +38,8 @@ class SortThesaurusByFuzzyKeyMatch(
 
     def build(self):
         return (
-            SortUserThesaurusByFuzzyKeyMatch()
+            UserSortByFuzzyKeyMatch()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("countries.the.txt")
+            .with_thesaurus_file("organizations.the.txt")
             .build()
         )

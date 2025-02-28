@@ -9,6 +9,9 @@
 Apply Thesaurus 
 ===============================================================================
 
+>>> from techminer2.thesaurus.countries import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
 
 >>> from techminer2.thesaurus.countries import ApplyThesaurus
 >>> (
@@ -17,24 +20,37 @@ Apply Thesaurus
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
+Applying user thesaurus to database
+          File : example/thesaurus/countries.the.txt
+  Source field : affiliations
+  Target field : countries
+  Thesaurus application completed successfully
 <BLANKLINE>
-Thesaurus application completed successfully for file: ...rus/countries.the.txt
-Thesaurus application completed successfully for file: ...try_to_region.the.txt
-Thesaurus application completed successfully for file: ..._to_subregion.the.txt
-
+Applying system thesaurus to database
+          File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
+  Source field : countries
+  Target field : regions
+  Thesaurus application completed successfully
+<BLANKLINE>
+Applying system thesaurus to database
+          File : ...ackage_data/thesaurus/geography/country_to_subregion.the.txt
+  Source field : countries
+  Target field : subregions
+  Thesaurus application completed successfully
+<BLANKLINE>
 
 
 """
 import sys
 
-from ..._internals.mixins import ParamsMixin
-from ...database.ingest._internals.operators.transform_field import (
+from ...._internals.mixins import ParamsMixin
+from ....database.ingest._internals.operators.transform_field import (
     internal__transform_field,
 )
-from ..system import ApplyThesaurus as ApplySystemThesaurus
-from ..user import ApplyThesaurus as ApplyUserThesaurus
+from ...system import ApplyThesaurus as ApplySystemThesaurus
+from ...user import ApplyThesaurus as ApplyUserThesaurus
 
 
 class ApplyThesaurus(
@@ -42,7 +58,7 @@ class ApplyThesaurus(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         # Affiliations to countries mmapping
         (
@@ -51,7 +67,7 @@ class ApplyThesaurus(
             .with_field("affiliations")
             .with_other_field("countries")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )
 
         # Country of first author
@@ -71,7 +87,7 @@ class ApplyThesaurus(
             .with_field("countries")
             .with_other_field("regions")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )
 
         # Country to subregion mapping
@@ -81,5 +97,5 @@ class ApplyThesaurus(
             .with_field("countries")
             .with_other_field("subregions")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )

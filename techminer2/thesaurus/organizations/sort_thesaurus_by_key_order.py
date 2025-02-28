@@ -30,7 +30,7 @@ Thesaurus sorting completed successfully for file: ...rus/organizations.the.txt
 
 """
 from ..._internals.mixins import ParamsMixin
-from ..user import SortByKeyOrder as SortUserThesaurusByKeyOrder
+from ..user import SortByKeyOrder as UserSortByKeyOrder
 
 
 class SortThesaurusByKeyOrder(
@@ -40,7 +40,7 @@ class SortThesaurusByKeyOrder(
 
     def build(self):
         return (
-            SortUserThesaurusByKeyOrder()
+            UserSortByKeyOrder()
             .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
             .build()

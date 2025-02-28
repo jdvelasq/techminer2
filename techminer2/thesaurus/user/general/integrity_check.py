@@ -137,7 +137,7 @@ class IntegrityCheck(
     # -------------------------------------------------------------------------
     def run(self):
 
-        self.internal__build_thesaurus_path()
+        self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_terms_in_thesaurus()
         self.internal__load_terms_in_database()

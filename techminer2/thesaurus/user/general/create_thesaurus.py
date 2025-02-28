@@ -95,13 +95,15 @@ class CreateThesaurus(
             sys.stdout.write("  Thesaurus creation completed successfully\n\n")
             sys.stdout.flush()
 
+            internal__print_thesaurus_header(self.thesaurus_path)
+
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def run(self):
         """:meta private:"""
 
-        self.internal__build_thesaurus_path()
+        self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
@@ -110,6 +112,3 @@ class CreateThesaurus(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
-
-        if not self.params.quiet:
-            internal__print_thesaurus_header(self.thesaurus_path)
