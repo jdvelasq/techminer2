@@ -14,12 +14,8 @@ from .sort.sort_by_key_match import SortByKeyMatch
 from .sort.sort_by_key_order import SortByKeyOrder
 from .sort.sort_by_starts_with_key_match import SortByStartsWithKeyMatch
 from .sort.sort_by_word_match import SortByWordMatch
-from .translate.translate_american_to_british_spelling import (
-    TranslateAmericanToBritishSpelling,
-)
-from .translate.translate_british_to_american_spelling import (
-    TranslateBritishToAmericanSpelling,
-)
+from .translate.american_to_british_spelling import AmericanToBritishSpelling
+from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
     "ApplyThesaurus",
@@ -36,6 +32,6 @@ __all__ = [
     "SortByKeyMatch",
     "SortByKeyOrder",
     "SortByStartsWithKeyMatch",
-    "TranslateAmericanToBritishSpelling",
-    "TranslateBritishToAmericanSpelling",
+    "AmericanToBritishSpelling",
+    "BritishToAmericanSpelling",
 ]

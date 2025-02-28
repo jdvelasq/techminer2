@@ -7,13 +7,19 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Translate American to British Spelling
+British to American Spelling
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import TranslateAmericanToBritishSpelling
+>>> from techminer2.thesaurus.user import CreateThesaurus
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+...     root_directory="example/", quiet=True).run()
+
+
+
+>>> from techminer2.thesaurus.user import BritishToAmericanSpelling
 >>> (
-...     TranslateAmericanToBritishSpelling()
+...     BritishToAmericanSpelling()
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -23,8 +29,32 @@ Translate American to British Spelling
 ...     #
 ...     .run()
 ... )
+Converting British to American English
+  File : example/thesaurus/demo.the.txt
+  11 replacements made successfully
+Translation completed successfully
 <BLANKLINE>
-Translation completed successfully for file: example/thesaurus/demo.the.txt
+Printing thesaurus header
+  File : example/thesaurus/demo.the.txt
+<BLANKLINE>
+    ANALOG_PROCESSES
+      ANALOGUE_PROCESSES
+    ANALYZE
+      ANALYSE
+    BEHAVIORAL_ECONOMICS
+      BEHAVIOURAL_ECONOMICS
+    ENTREPRENEURIAL_ENDEAVORS
+      ENTREPRENEURIAL_ENDEAVOURS
+    FAVOR
+      FAVOUR
+    HARMONIZE_TECHNOLOGICAL_ADVANCEMENTS
+      HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
+    INSTILL_CULTURE_CHANGE
+      INSTIL_CULTURE_CHANGE
+    INTERNATIONAL_DEVELOPMENT_ORGANIZATIONS
+      INTERNATIONAL_DEVELOPMENT_ORGANISATIONS
+<BLANKLINE>
+
 
 
 
@@ -32,6 +62,8 @@ Translation completed successfully for file: example/thesaurus/demo.the.txt
 import re
 import sys
 
+import pandas as pd  # type: ignore
+from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
@@ -45,7 +77,7 @@ from ..._internals import (
 tqdm.pandas()
 
 
-class TranslateAmericanToBritishSpelling(
+class BritishToAmericanSpelling(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -59,32 +91,29 @@ class TranslateAmericanToBritishSpelling(
         truncated_path = str(self.thesaurus_path)
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
-        sys.stdout.write("\nTranslating American to British English")
-        sys.stdout.write(f"\n  File : {truncated_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Converting British to American English\n")
+        sys.stdout.write(f"  File : {truncated_path}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 34:
-            truncated_path = "..." + truncated_path[-30:]
-        sys.stdout.write(
-            f"\nTranslation completed successfully for file: {truncated_path}"
-        )
+        sys.stdout.write("Translation completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__translate_words_on_keys(self):
 
-        # replace the word by this hyphenated version
-        file_path = internal__generate_system_thesaurus_file_path(
-            "language/american2british.the.txt"
-        )
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
 
+        file_path = internal__generate_system_thesaurus_file_path(
+            "language/british2american.the.txt"
+        )
         mapping = internal__load_thesaurus_as_mapping(file_path)
         mapping = {k: v[0] for k, v in mapping.items()}
 
@@ -109,10 +138,23 @@ class TranslateAmericanToBritishSpelling(
                 x = pattern.sub(replacement, x)
             return x
 
-        tqdm.pandas(desc="  Translating")
-        sys.stdout.write("\n")
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+        tqdm.pandas(desc="  Progress")
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
+        sys.stderr.write("\n")
+        sys.stderr.flush()
+
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} replacements made successfully\n")
+        sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def run(self):
@@ -128,5 +170,3 @@ class TranslateAmericanToBritishSpelling(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)

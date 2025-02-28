@@ -26,8 +26,13 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
+Applying thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : descriptors
+  Target field : descriptors_cleaned
+  Thesaurus application completed successfully
 <BLANKLINE>
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+
 
 """
 import sys
@@ -55,24 +60,16 @@ class ApplyThesaurus(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stdout.write("\nApplying thesaurus to database")
-        sys.stdout.write(f"\n          File : {file_path}")
-        sys.stdout.write(f"\n  Source field : {field}")
-        sys.stdout.write(f"\n  Target field : {other_field}")
+        sys.stdout.write("Applying thesaurus to database\n")
+        sys.stdout.write(f"          File : {file_path}\n")
+        sys.stdout.write(f"  Source field : {field}\n")
+        sys.stdout.write(f"  Target field : {other_field}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("\n")
-        sys.stdout.flush()
-
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 25:
-            truncated_file_path = "..." + truncated_file_path[-21:]
-        sys.stdout.write(
-            f"\nThesaurus application completed successfully for file: {truncated_file_path}"
-        )
+        sys.stdout.write(f"  Thesaurus application completed successfully\n\n")
         sys.stdout.flush()
 
     #
