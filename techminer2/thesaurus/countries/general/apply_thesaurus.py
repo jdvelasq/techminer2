@@ -43,8 +43,6 @@ Applying system thesaurus to database
 
 
 """
-import sys
-
 from ...._internals.mixins import ParamsMixin
 from ....database.ingest._internals.operators.transform_field import (
     internal__transform_field,

@@ -16,20 +16,21 @@ Apply Thesaurus
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
+Applying user thesaurus to database
+          File : example/thesaurus/organizations.the.txt
+  Source field : affiliations
+  Target field : organizations
+  Thesaurus application completed successfully
 <BLANKLINE>
-Thesaurus application completed successfully for file: ...organizations.the.txt
 
 """
-import sys
-
-from ..._internals.log_message import internal__log_message
-from ..._internals.mixins import ParamsMixin
-from ...database.ingest._internals.operators.transform_field import (
+from ...._internals.mixins import ParamsMixin
+from ....database.ingest._internals.operators.transform_field import (
     internal__transform_field,
 )
-from ..user import ApplyThesaurus as ApplyUserThesaurus
+from ...user import ApplyThesaurus as ApplyUserThesaurus
 
 
 #
@@ -39,7 +40,7 @@ class ApplyThesaurus(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         # Affiliations to countries mmapping
         (
@@ -48,7 +49,7 @@ class ApplyThesaurus(
             .with_field("affiliations")
             .with_other_field("organizations")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )
 
         # Country of first author

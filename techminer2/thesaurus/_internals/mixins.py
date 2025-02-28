@@ -43,8 +43,8 @@ class ThesaurusMixin:
 
         data_frame = pd.DataFrame(
             {
-                "key": keys,
-                "value": keys,
+                "key": keys.to_list(),
+                "value": keys.to_list(),
             }
         )
 

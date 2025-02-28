@@ -61,6 +61,7 @@ Printing thesaurus header
 
 
 """
+import re
 import sys
 
 import pandas as pd  # type: ignore
@@ -111,9 +112,10 @@ class SortByFuzzyKeyMatch(
 
         for pattern in self.params.pattern:
 
-            potential_matches = process.extract(
-                pattern, self.data_frame.key, limit=None
-            )
+            # pattern = re.escape(pattern)
+            key = self.data_frame.key.map(lambda x: re.escape(x))
+            key = self.data_frame.key
+            potential_matches = process.extract(pattern, key, limit=None)
 
             for potential_match in potential_matches:
 

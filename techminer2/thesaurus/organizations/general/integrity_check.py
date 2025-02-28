@@ -9,38 +9,41 @@
 Check Thesaurus Integrity
 ===============================================================================
 
->>> from techminer2.thesaurus.organizations import CheckThesaurusIntegrity
+>>> from techminer2.thesaurus.organizations import IntegrityCheck
 >>> (
-...     CheckThesaurusIntegrity()
+...     IntegrityCheck()
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
+Thesaurus integrity check
+  File : example/thesaurus/organizations.the.txt
+  106 terms checked
+  Integrity check completed successfully
 <BLANKLINE>
-Thesaurus integrity check completed successfully for file: ...nizations.the.txt
 
 
 """
 
-from ..._internals.mixins import ParamsMixin
-from ..user import IntegrityCheck as UserIntegrityCheck
+from ...._internals.mixins import ParamsMixin
+from ...user import IntegrityCheck as UserIntegrityCheck
 
 
 #
 #
-class CheckThesaurusIntegrity(
+class IntegrityCheck(
     ParamsMixin,
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         (
             UserIntegrityCheck()
             .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )

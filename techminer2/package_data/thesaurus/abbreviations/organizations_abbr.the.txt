@@ -252,6 +252,12 @@ Universidade
     Univ.
 Universita
     Univ.
+Università
+    Univ.    
+Universitas
+    Univ.    
+Universität
+    Univ.    
 Universite
     Univ.
 Universiteit

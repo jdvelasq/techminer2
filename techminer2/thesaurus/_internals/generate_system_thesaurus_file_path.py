@@ -12,8 +12,8 @@ import pathlib
 import pkg_resources  # type: ignore
 
 
-def internal__generate_system_thesaurus_file_path(params):
-    internal_file_path = pathlib.Path("package_data/thesaurus/") / params.thesaurus_file
+def internal__generate_system_thesaurus_file_path(thesaurus_file):
+    internal_file_path = pathlib.Path("package_data/thesaurus/") / thesaurus_file
     internal_file_path = str(internal_file_path)
     file_path = pkg_resources.resource_filename("techminer2", internal_file_path)
     return file_path
