@@ -11,20 +11,39 @@ Common Ending Words Remover
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import CommonEndingWordsRemover
->>> (
-...     CommonEndingWordsRemover()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .build()
-... )
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> from techminer2.thesaurus.descriptors import RemoveCommonLastWords
+>>> RemoveCommonLastWords(root_directory="example/").run()
+Removing common last words from thesaurus keys
+  File : example/thesaurus/descriptors.the.txt
 <BLANKLINE>
-Removing common ending words successfully for file: ...e/thesaurus/demo.the.txt
+<BLANKLINE>
+  15 ending words removed successfully
+  Common last words removal completed successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    AGRICULTURE
+      AGRICULTURE; AGRICULTURE_PLAYS
+    CONTINUANCE_INTENTION
+      CONTINUANCE_INTENTION; CONTINUANCE_INTENTIONS; CONTINUANCE_INTENTION_DIFFERS
+    DIGITAL_FINANCE
+      DIGITAL_FINANCE; DIGITAL_FINANCE_ENCOMPASSES
+    ENTREPRENEURIAL
+      ENTREPRENEURIAL_ENDEAVOURS
+    FINTECHS
+      FINTECHS_SYNTHESIZE
+    FOUR_SPECIFIC
+      FOUR_SPECIFIC_INCREASES
+    INNOVATIONS
+      INNOVATIONS_EXACERBATE
+    LENDINGCLUB_LOANS
+      LENDINGCLUB_LOANS_INCREASES
+<BLANKLINE>
 
 
 
@@ -43,7 +62,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class CommonEndingWordsRemover(
+class RemoveCommonLastWords(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -52,35 +71,34 @@ class CommonEndingWordsRemover(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("\nRemoving common ending words from thesaurus keys")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Removing common last words from thesaurus keys\n")
+        sys.stdout.write(f"  File : {file_path}\n\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 30:
-            truncated_file_path = "..." + truncated_file_path[-26:]
-        sys.stdout.write(
-            f"\nRemoving common ending words successfully for file: {truncated_file_path}"
-        )
+    def internal__notify_process_end(self):
+
+        sys.stdout.write(f"  Common last words removal completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__remove_common_ending_words_from_keys(self):
 
-        words = internal__load_text_processing_terms("common_ending_words.txt")
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
+
+        words = internal__load_text_processing_terms("common_last_words.txt")
 
         # create regular expressions
         patterns = []
-
         patterns += [re.compile(" " + w.lower() + "$") for w in words]
         patterns += [re.compile(" " + w.upper() + "$") for w in words]
         patterns += [re.compile("_" + w.upper() + "$") for w in words]
@@ -97,18 +115,28 @@ class CommonEndingWordsRemover(
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} ending words removed successfully\n")
+        sys.stdout.flush()
+
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
+        self.with_thesaurus_file("descriptors.the.txt")
+
         self.internal__build_user_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         self.internal__remove_common_ending_words_from_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__notify_process_end()

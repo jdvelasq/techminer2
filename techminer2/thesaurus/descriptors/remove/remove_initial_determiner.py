@@ -7,24 +7,40 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Starting Determiners Remover 
+Initial Determiner Remover 
 ===============================================================================
 
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.user import StartingDeterminersRemover
->>> (
-...     StartingDeterminersRemover()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .build()
-... )
+
+>>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminer
+>>> RemoveInitialDeterminer(root_directory="example/").run()
+Removing initial determiner from thesaurus keys
+  File : example/thesaurus/descriptors.the.txt
+  636 initial determiners removed successfully
+  Initial determiner removal completed successfully
 <BLANKLINE>
-Removing determiners completed successfully for file: ...thesaurus/demo.the.txt
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    A_)_THEORY
+      A_A_)_THEORY
+    A_THEORY
+      A_A_THEORY
+    ACADEMIC_FINANCE_COMMUNITY
+      THE_ACADEMIC_FINANCE_COMMUNITY
+    ACADEMICS
+      ACADEMICS; BOTH_ACADEMICS
+    ACCEPTANCE
+      ACCEPTANCE; THE_ACCEPTANCE
+    ACTIVE_PARTICIPANT
+      AN_ACTIVE_PARTICIPANT
+    ACTORS
+      ACTORS; ALL_ACTORS
+    ADOPTION
+      ADOPTION; THE_ADOPTION
+<BLANKLINE>
 
 
 
@@ -32,8 +48,6 @@ Removing determiners completed successfully for file: ...thesaurus/demo.the.txt
 import re
 import sys
 
-import pandas as pd  # type: ignore
-from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
@@ -43,7 +57,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class StartingDeterminersRemover(
+class RemoveInitialDeterminer(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -52,29 +66,29 @@ class StartingDeterminersRemover(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("\nRemoving initial determines from thesaurus keys")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Removing initial determiner from thesaurus keys\n")
+        sys.stdout.write(f"  File : {file_path}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 28:
-            truncated_file_path = "..." + truncated_file_path[-24:]
-        sys.stdout.write(
-            f"\nRemoving determiners completed successfully for file: {truncated_file_path}"
-        )
+    def internal__notify_process_end(self):
+
+        sys.stdout.write("  Initial determiner removal completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__remove_starting_determiners_from_keys(self):
+
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         words = internal__load_text_processing_terms("determiners.txt")
 
@@ -94,17 +108,29 @@ class StartingDeterminersRemover(
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} initial determiners removed successfully\n")
+        sys.stdout.flush()
+
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
+        self.with_thesaurus_file("descriptors.the.txt")
+
         self.internal__build_user_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         self.internal__remove_starting_determiners_from_keys()
+        self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__notify_process_end()

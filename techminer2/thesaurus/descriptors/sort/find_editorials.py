@@ -9,6 +9,9 @@
 Find Editorials
 ===============================================================================
 
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
 
 >>> from techminer2.thesaurus.descriptors import FindEditorials
 >>> (
@@ -19,13 +22,37 @@ Find Editorials
 ...     #
 ...     .build()
 ... )
+Sorting thesaurus file by word match
+  File : example/thesaurus/descriptors.the.txt
+  Word : ['CONFERENCE', 'EDP_SCIENCES', 'ELSEVIER', 'EMERALD', 'FRANCIS', 'GMBH', 'IAEME_PUBLICATIONS', 'IEEE', 'IEOM_SOCIETY', 'INDERSCIENCE', 'INFORMA_UK', 'INTERNATIONAL_SOLAR_ENERGY_SOCIETY', 'IOS_PRESS', 'JOHN_WILEY', 'MDPI', 'NOVA_SCIENCE_PUBLISHERS', 'PROCEEDINGS', 'SCITEPRESS_SCIENCE', 'SONS_LTD', 'SPRINGER', 'SPRINGERVERLAG', 'VERLAG', 'WILEYVCH', 'WIT_PRESS', 'OXFORD_UNIVERSITY_PRESS', 'HENRY_STEWART_PUBLICATIONS', 'MACMILLAN', 'EXCLUSIVE_LICENSE', 'PRESS', 'PUBLISHERS']
+  18 matching keys found
+  Thesaurus sorting by word match completed successfully
 <BLANKLINE>
-Thesaurus sorting by exact key match completed successfully: ...riptors.the.txt
-
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    ELSEVIER_B
+      ELSEVIER_B
+    ELSEVIER_INC
+      ELSEVIER_INC
+    ELSEVIER_LTD
+      ELSEVIER_LTD
+    EMERALD_GROUP_PUBLISHING
+      EMERALD_GROUP_PUBLISHING
+    EMERALD_PUBLISHING
+      EMERALD_PUBLISHING
+    FRANCIS_GROUP
+      FRANCIS_GROUP
+    INFORMA_UK
+      INFORMA_UK
+    JOHN_WILEY
+      JOHN_WILEY
+<BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin
-from .sort_thesaurus_by_key_exact_match import SortThesaurusByKeyExactMatch
+from ..._internals import ThesaurusMixin
+from .sort_by_word_match import SortByWordMatch
 
 EDITORIALS = [
     "CONFERENCE",
@@ -63,6 +90,7 @@ EDITORIALS = [
 
 class FindEditorials(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
@@ -71,10 +99,10 @@ class FindEditorials(
         """:meta private:"""
 
         (
-            SortThesaurusByKeyExactMatch().update(**self.params.__dict__)
+            SortByWordMatch().update(**self.params.__dict__)
             #
             # THESAURUS:
-            .having_keys_like(EDITORIALS)
+            .having_pattern(EDITORIALS)
             #
-            .build()
+            .run()
         )

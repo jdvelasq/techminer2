@@ -6,20 +6,30 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Check Thesaurus Integrity
+Integrity Check
 ===============================================================================
 
->>> from techminer2.thesaurus.descriptors import CheckThesaurusIntegrity
+
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> from techminer2.thesaurus.descriptors import IntegrityCheck
 >>> (
-...     CheckThesaurusIntegrity()
+...     IntegrityCheck()
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
+Thesaurus integrity check
+  File : example/thesaurus/descriptors.the.txt
+  1865 terms checked
+  Integrity check completed successfully
 <BLANKLINE>
-Thesaurus integrity check completed successfully for file: ...scriptors.the.txt
+
+
 
 
 """
@@ -30,17 +40,17 @@ from ...user import IntegrityCheck as UserIntegrityCheck
 
 #
 #
-class CheckThesaurusIntegrity(
+class IntegrityCheck(
     ParamsMixin,
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         (
             UserIntegrityCheck()
             .with_thesaurus_file("descriptors.the.txt")
             .with_field("raw_descriptors")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )

@@ -11,20 +11,38 @@ Parentheses Remover
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import ParenthesesRemover
->>> (
-...     ParenthesesRemover()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .build()
-... )
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> from techminer2.thesaurus.descriptors import RemoveParentheses
+>>> RemoveParentheses(root_directory="example/").run()
+Removing parentheses from thesaurus keys
 <BLANKLINE>
-Removing parentheses successfully for file: example/thesaurus/demo.the.txt
+  File : example/thesaurus/descriptors.the.txt
+  7 removals made successfully
+  Parentheses removal completed successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    CACIOPPO
+      CACIOPPO_[1]
+    CLASSIFICATION
+      CLASSIFICATION (OF_INFORMATION)
+    COMPETITION
+      COMPETITION; COMPETITION (ECONOMICS)
+    FINANCIAL_TECHNOLOGY
+      FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGY (FINTECH)
+    INTERNET_OF_THING
+      INTERNET_OF_THING (IOT); INTERNET_OF_THINGS
+    NETWORKS
+      NETWORKS; NETWORKS (CIRCUITS)
+    PRESSES
+      PRESSES (MACHINE_TOOLS)
+    A_A_)_THEORY
+      A_A_)_THEORY
+<BLANKLINE>
 
 
 
@@ -41,7 +59,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class ParenthesesRemover(
+class RemoveParentheses(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -50,27 +68,28 @@ class ParenthesesRemover(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("\nRemoving parentheses from thesaurus keys")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Removing parentheses from thesaurus keys\n")
+        sys.stdout.write(f"\n  File : {file_path}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 55:
-            truncated_file_path = "..." + truncated_file_path[-51:]
-        sys.stdout.write(
-            f"\nRemoving parentheses successfully for file: {truncated_file_path}"
-        )
+    def internal__notify_process_end(self):
+        sys.stdout.write("  Parentheses removal completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__run_at_beining(self):
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
+
     # -------------------------------------------------------------------------
     def internal__remove_surrounding_chars(self, left_char, right_char):
         #
@@ -133,13 +152,28 @@ class ParenthesesRemover(
         self.data_frame["key"] = self.data_frame.key.apply(repair)
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def internal__run_at_ending(self):
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} removals made successfully\n")
+        sys.stdout.flush()
+
+    # -------------------------------------------------------------------------
+    def run(self):
         """:meta private:"""
 
+        self.with_thesaurus_file("descriptors.the.txt")
+
         self.internal__build_user_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
+        self.internal__run_at_beining()
 
         self.internal__remove_surrounding_chars("(", ")")
         self.internal__remove_surrounding_chars("[", "]")
@@ -150,10 +184,12 @@ class ParenthesesRemover(
         self.internal__remove_definitions("(", ")")
         self.internal__remove_definitions("[", "]")
 
+        self.internal__run_at_ending()
+
         self.internal__repair_keys()
 
+        self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__notify_process_end()

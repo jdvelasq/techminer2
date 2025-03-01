@@ -11,6 +11,9 @@ Apply Thesaurus
 ===============================================================================
 
 
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
 >>> from techminer2.thesaurus.descriptors import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
@@ -18,16 +21,52 @@ Apply Thesaurus
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_author_keywords
+  Target field : author_keywords
+  Thesaurus application completed successfully
 <BLANKLINE>
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
-Thesaurus application completed successfully for file: ...s/descriptors.the.txt
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_index_keywords
+  Target field : index_keywords
+  Thesaurus application completed successfully
+<BLANKLINE>
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_keywords
+  Target field : keywords
+  Thesaurus application completed successfully
+<BLANKLINE>
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_document_title_nouns_and_phrases
+  Target field : document_title_nouns_and_phrases
+  Thesaurus application completed successfully
+<BLANKLINE>
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_abstract_nouns_and_phrases
+  Target field : abstract_nouns_and_phrases
+  Thesaurus application completed successfully
+<BLANKLINE>
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_nouns_and_phrases
+  Target field : nouns_and_phrases
+  Thesaurus application completed successfully
+<BLANKLINE>
+Applying user thesaurus to database
+          File : example/thesaurus/descriptors.the.txt
+  Source field : raw_descriptors
+  Target field : descriptors
+  Thesaurus application completed successfully
+<BLANKLINE>
+
+
 
 
 """
@@ -52,7 +91,7 @@ class ApplyThesaurus(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         for index, (raw_column, column) in enumerate(PAIRS):
 
@@ -62,5 +101,5 @@ class ApplyThesaurus(
                 .with_field(raw_column)
                 .with_other_field(column)
                 .where_root_directory_is(self.params.root_directory)
-                .build()
+                .run()
             )

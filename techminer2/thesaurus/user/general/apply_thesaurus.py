@@ -26,7 +26,7 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
-Applying thesaurus to database
+Applying user thesaurus to database
           File : example/thesaurus/descriptors.the.txt
   Source field : descriptors
   Target field : descriptors_cleaned

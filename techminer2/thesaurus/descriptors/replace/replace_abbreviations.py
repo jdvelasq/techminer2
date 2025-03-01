@@ -20,8 +20,8 @@ Replace Abbreviations
 ...     #
 ...     .build()
 ... )
-<BLANKLINE>
-Abbreviations replacement completed successfully for file: ...scriptors.the.txt
+
+
 
 """
 import re

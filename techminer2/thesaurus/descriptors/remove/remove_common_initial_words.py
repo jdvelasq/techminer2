@@ -7,25 +7,41 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Common Starting Words Remover
+Common Initial Words Remover
 ===============================================================================
 
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.user import CommonStartingWordsRemover
->>> (
-...     CommonStartingWordsRemover()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .build()
-... )
+
+>>> from techminer2.thesaurus.descriptors import RemoveCommonInitialWords
+>>> RemoveCommonInitialWords(root_directory="example/").run()
+Removing common initial words from thesaurus keys
+  File : example/thesaurus/descriptors.the.txt
 <BLANKLINE>
-Removing common starting words successfully for file: ...thesaurus/demo.the.txt
-
+  196 common initial words removed successfully
+  Common initial words removal successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    ACADEMICS
+      ACADEMICS; OTHER_ACADEMICS
+    ACCESS
+      ACCELERATE_ACCESS; ACCESS
+    ACHIEVEMENTS
+      CONTEMPORARY_ACHIEVEMENTS
+    ACTION
+      LATE_ACTION
+    ACTORS
+      ACTORS; HETEROGENEOUS_ACTORS
+    AGRICULTURE_BUSINESS_PROCESS
+      TRANSFORM_AGRICULTURE_BUSINESS_PROCESS
+    AGRICULTURE_ECOSYSTEM
+      BROADER_AGRICULTURE_ECOSYSTEM
+    AI_ML_ALGORITHMS
+      COMPLEX_AI_ML_ALGORITHMS
+<BLANKLINE>
 
 
 """
@@ -43,7 +59,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class CommonStartingWordsRemover(
+class RemoveCommonInitialWords(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -56,27 +72,27 @@ class CommonStartingWordsRemover(
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("\nRemoving common starting words from thesaurus keys")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Removing common initial words from thesaurus keys\n")
+        sys.stdout.write(f"  File : {file_path}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 28:
-            truncated_file_path = "..." + truncated_file_path[-24:]
-        sys.stdout.write(
-            f"\nRemoving common starting words successfully for file: {truncated_file_path}"
-        )
+
+        sys.stdout.write(f"  Common initial words removal successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__remove_common_starting_words_from_keys(self):
+    def internal__remove_common_initial_words_from_keys(self):
 
-        words = internal__load_text_processing_terms("common_starting_words.txt")
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
+
+        words = internal__load_text_processing_terms("common_initial_words.txt")
 
         # create regular expressions
         patterns = []
@@ -97,18 +113,28 @@ class CommonStartingWordsRemover(
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} common initial words removed successfully\n")
+        sys.stdout.flush()
+
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
+
+        self.with_thesaurus_file("descriptors.the.txt")
 
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
-        self.internal__remove_common_starting_words_from_keys()
+        self.internal__remove_common_initial_words_from_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)

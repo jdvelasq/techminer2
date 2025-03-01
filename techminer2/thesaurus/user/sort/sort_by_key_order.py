@@ -30,7 +30,7 @@ Sort by Key Order
 ... )
 Sorting thesaurus alphabetically
   File : example/thesaurus/demo.the.txt
-Thesaurus sorting completed successfully
+  Thesaurus sorting completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/demo.the.txt
@@ -69,7 +69,7 @@ Printing thesaurus header
 ... )
 Sorting thesaurus by key length
   File : example/thesaurus/demo.the.txt
-Thesaurus sorting completed successfully
+  Thesaurus sorting completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/demo.the.txt

@@ -10,21 +10,36 @@
 Starting Stopwords Remover
 ===============================================================================
 
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.user import StartingStopwordsRemover
->>> (
-...     StartingStopwordsRemover()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .build()
-... )
+
+>>> from techminer2.thesaurus.descriptors import RemoveInitialStopwords
+>>> RemoveInitialStopwords(root_directory="example/").run()
+Removing starting stopwords from thesaurus keys  File : example/thesaurus/descriptors.the.txt
+  562 initial stopwords removed successfully
+  Starting stopwords removal completed successfully
 <BLANKLINE>
-Removing stopwords completed successfully for file: ...e/thesaurus/demo.the.txt
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    ACADEMIC_FINANCE_COMMUNITY
+      THE_ACADEMIC_FINANCE_COMMUNITY
+    ACADEMICS
+      ACADEMICS; BOTH_ACADEMICS; OTHER_ACADEMICS
+    ACCEPTANCE
+      ACCEPTANCE; THE_ACCEPTANCE
+    ACTION
+      OUR_ACTION
+    ACTIVE_PARTICIPANT
+      AN_ACTIVE_PARTICIPANT
+    ACTORS
+      ACTORS; ALL_ACTORS
+    ADOPTION
+      ADOPTION; THE_ADOPTION
+    ADVANCEMENT
+      THE_ADVANCEMENT
+<BLANKLINE>
 
 
 
@@ -42,7 +57,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class StartingStopwordsRemover(
+class RemoveInitialStopwords(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -51,29 +66,29 @@ class StartingStopwordsRemover(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("\nRemoving starting stopwords from thesaurus keys")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Removing starting stopwords from thesaurus keys")
+        sys.stdout.write(f"  File : {file_path}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 31:
-            truncated_file_path = "..." + truncated_file_path[-27:]
-        sys.stdout.write(
-            f"\nRemoving stopwords completed successfully for file: {truncated_file_path}"
-        )
+    def internal__notify_process_end(self):
+
+        sys.stdout.write("  Starting stopwords removal completed successfully\n\n")
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__remove_starting_stopwords_from_keys(self):
+
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         words = internal__load_text_processing_terms("technical_stopwords.txt")
 
@@ -96,17 +111,29 @@ class StartingStopwordsRemover(
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} initial stopwords removed successfully\n")
+        sys.stdout.flush()
+
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
+        self.with_thesaurus_file("descriptors.the.txt")
+
         self.internal__build_user_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         self.internal__remove_starting_stopwords_from_keys()
+        self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__notify_process_end()

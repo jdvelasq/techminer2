@@ -7,27 +7,38 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Create Thesaurus
+Sort by Starts With Key Match
 ===============================================================================
 
-
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> from techminer2.thesaurus.descriptors import SortByStartsWithKeyMatch
 >>> (
-...     CreateThesaurus()  
+...     SortByStartsWithKeyMatch()
+...     # 
+...     # THESAURUS:
+...     .having_pattern("COMM")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
-... )
-Creating thesaurus from 'raw_descriptors' field
-  File : example/thesaurus/descriptors.the.txt
-  1796 keys found
-  Thesaurus creation completed successfully
+... ) 
+Sorting thesaurus file by key match
+     File : example/thesaurus/descriptors.the.txt
+  Pattern : COMM
+  2 matching keys found
+  Thesaurus sorting by key match completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/descriptors.the.txt
 <BLANKLINE>
+    COMMERCE
+      COMMERCE
+    COMMERCIAL_BANKS
+      COMMERCIAL_BANKS
     A_A_)_THEORY
       A_A_)_THEORY
     A_A_THEORY
@@ -40,35 +51,28 @@ Printing thesaurus header
       A_BETTER_UNDERSTANDING
     A_BLOCKCHAIN_IMPLEMENTATION_STUDY
       A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-    A_CASE_STUDY
-      A_CASE_STUDY
-    A_CHALLENGE
-      A_CHALLENGE
 <BLANKLINE>
 
 
 
-
 """
-
 from ...._internals.mixins import ParamsMixin
-from ...user import CreateThesaurus as UserCreateThesaurus
+from ...user import SortByStartsWithKeyMatch as UserSortByStartsWithKeyMatch
 
 
-#
-#
-class CreateThesaurus(
+class SortByStartsWithKeyMatch(
     ParamsMixin,
 ):
     """:meta private:"""
 
+    # -------------------------------------------------------------------------
     def run(self):
-
-        (
-            UserCreateThesaurus(
-                field="raw_descriptors",
-                thesaurus_file="descriptors.the.txt",
-                root_directory=self.params.root_directory,
-                quiet=self.params.quiet,
-            ).run()
+        return (
+            UserSortByStartsWithKeyMatch()
+            .update(**self.params.__dict__)
+            .with_thesaurus_file("descriptors.the.txt")
+            .run()
         )
+
+
+# =============================================================================

@@ -31,7 +31,7 @@ Sorting thesaurus file by key match
      File : example/thesaurus/demo.the.txt
   Pattern : BUSINESS
   7 matching keys found
-Thesaurus sorting by key match completed successfully
+  Thesaurus sorting by key match completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/demo.the.txt

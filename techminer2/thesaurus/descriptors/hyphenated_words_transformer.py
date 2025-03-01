@@ -11,21 +11,45 @@ Hypenated Words Transformer
 ===============================================================================
 
 
->>> from techminer2.thesaurus.user import HyphenatedWordsTransformer
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> from techminer2.thesaurus.descriptors import HyphenatedWordsTransformer
 >>> (
 ...     HyphenatedWordsTransformer()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
+Transforming hyphenated words in thesaurus keys
+  File : example/thesaurus/descriptors.the.txt
 <BLANKLINE>
-Transforming hyphenated words completed successfully for file: .../demo.the.txt
-
+  51 hypenated words transformed successfully
+  Hyphenated words transformation completed successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    A_FINTECH_ECO_SYSTEM
+      A_FINTECH_ECOSYSTEM
+    A_WIDE_RANGING_RE_CONCEPTUALIZATION
+      A_WIDE_RANGING_RECONCEPTUALIZATION
+    AGRI_BUSINESS
+      AGRIBUSINESS
+    AGRO_INDUSTRY
+      AGROINDUSTRY
+    BACK_OFFICE_FUNCTIONS
+      BACKOFFICE_FUNCTIONS
+    BLOCK_CHAIN
+      BLOCKCHAIN; BLOCKCHAINS
+    BLOCK_CHAIN_AND_FINTECH_INNOVATIONS
+      BLOCKCHAIN_AND_FINTECH_INNOVATIONS
+    BLOCK_CHAIN_ENABLES
+      BLOCKCHAIN_ENABLES
+<BLANKLINE>
 
 
 """
@@ -52,29 +76,30 @@ class HyphenatedWordsTransformer(
     #
     # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def notify__process_start(self):
+    def internal__notify_process_start(self):
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("\nTransforming hyphenated words in thesaurus keys")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.write("\n")
+        sys.stdout.write("Transforming hyphenated words in thesaurus keys\n")
+        sys.stdout.write(f"  File : {file_path}\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def notify__process_end(self):
-        truncated_file_path = str(self.thesaurus_path)
-        if len(truncated_file_path) > 17:
-            truncated_file_path = "..." + truncated_file_path[-14:]
+    def internal__notify_process_end(self):
         sys.stdout.write(
-            f"\nTransforming hyphenated words completed successfully for file: {truncated_file_path}"
+            f"  Hyphenated words transformation completed successfully\n\n"
         )
         sys.stdout.flush()
+
+        internal__print_thesaurus_header(self.thesaurus_path)
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__transform_hyphenated_words_in_keys(self):
+
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         # replace the word by this hyphenated version
         words = internal__load_text_processing_terms("hyphenated_words.txt")
@@ -254,20 +279,32 @@ class HyphenatedWordsTransformer(
 
         self.data_frame["key"] = self.data_frame["key"].apply(f)
 
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
+
+        n_matches = self.data_frame.__row_selected__.sum()
+
+        sys.stdout.write(f"  {n_matches} hypenated words transformed successfully\n")
+        sys.stdout.flush()
+
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
+        self.with_thesaurus_file("descriptors.the.txt")
+
         self.internal__build_user_thesaurus_path()
-        self.notify__process_start()
+        self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         #
         self.internal__transform_hyphenated_words_in_keys()
         self.internal__fix_bad_hyphenated_words_in_keys()
         #
+        self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
-        self.notify__process_end()
-
-        internal__print_thesaurus_header(self.thesaurus_path)
+        self.internal__notify_process_end()

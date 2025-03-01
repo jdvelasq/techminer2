@@ -1,11 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 """
 Sort by Word Match
 ===============================================================================
@@ -32,12 +24,14 @@ Sort by Word Match
 Sorting thesaurus file by word match
   File : example/thesaurus/demo.the.txt
   Word : BUSINESS
-  18 matching keys found
+  19 matching keys found
   Thesaurus sorting by word match completed successfully
 <BLANKLINE>
 Printing thesaurus header
   File : example/thesaurus/demo.the.txt
 <BLANKLINE>
+    BUSINESS
+      BUSINESS; BUSINESSES
     BUSINESS_DEVELOPMENT
       BUSINESS_DEVELOPMENT
     BUSINESS_GERMANY
@@ -52,13 +46,13 @@ Printing thesaurus header
       BUSINESS_PROCESS
     FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
       FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
-    LONDON_BUSINESS_SCHOOL
-      LONDON_BUSINESS_SCHOOL
 <BLANKLINE>
 
 
 
+
 """
+
 import re
 import sys
 
