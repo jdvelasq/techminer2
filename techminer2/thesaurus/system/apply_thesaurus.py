@@ -38,7 +38,7 @@ import sys
 
 from ..._internals.mixins import ParamsMixin
 from ...database._internals.io import internal__load_records, internal__write_records
-from .._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
+from .._internals import ThesaurusMixin, internal__load_thesaurus_as_mapping
 
 
 class ApplyThesaurus(
@@ -74,8 +74,9 @@ class ApplyThesaurus(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__load_reversed_thesaurus_as_mapping(self):
-        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
+    def internal__load_thesaurus_as_mapping(self):
+        self.mapping = internal__load_thesaurus_as_mapping(self.thesaurus_path)
+        self.mapping = {k: v[0].strip() for k, v in self.mapping.items()}
 
     # -------------------------------------------------------------------------
     def internal__load_records(self):
@@ -120,6 +121,18 @@ class ApplyThesaurus(
         ].map(f, na_action="ignore")
 
     # -------------------------------------------------------------------------
+    def internal__split_other_field(self):
+        self.records[self.params.other_field] = self.records[
+            self.params.other_field
+        ].str.split("; ")
+
+    # -------------------------------------------------------------------------
+    def internal__join_record_values(self):
+        self.records[self.params.other_field] = self.records[
+            self.params.other_field
+        ].str.join("; ")
+
+    # -------------------------------------------------------------------------
     def internal__write_records(self):
         internal__write_records(params=self.params, records=self.records)
 
@@ -129,12 +142,13 @@ class ApplyThesaurus(
 
         self.internal__build_system_thesaurus_path()
         self.internal__notify_process_start()
-        self.internal__load_reversed_thesaurus_as_mapping()
+        self.internal__load_thesaurus_as_mapping()
         self.internal__load_records()
         self.internal__copy_field()
         self.internal__split_other_field()
         self.internal__apply_thesaurus_to_other_field()
         self.internal__remove_duplicates_from_other_field()
+        self.internal__join_record_values()
         self.internal__write_records()
         self.internal__notify_process_end()
 

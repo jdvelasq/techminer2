@@ -19,10 +19,10 @@ Query
 ...     #
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
+...     .where_record_years_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
                                         source_title
 0  International Journal of Applied Engineering R...
@@ -46,6 +46,6 @@ class Query(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         database = internal__load_filtered_database(params=self.params)
-        return duckdb.query(self.params.query_expr).df()
+        return duckdb.query(self.params.query_expression).df()

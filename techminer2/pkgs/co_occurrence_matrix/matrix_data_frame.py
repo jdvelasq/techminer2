@@ -35,8 +35,8 @@ Co-occurrence Matrix
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
+...     .where_record_years_range_is(None, None)
+...     .where_record_citattions_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
 ...     .build()
@@ -82,8 +82,8 @@ Zavolokina L. 2:0181                2  ...                   0
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
+...     .where_record_years_range_is(None, None)
+...     .where_record_citattions_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
 ...     .build()
@@ -131,8 +131,8 @@ CASE_STUDY 02:0340                          2  ...                   2
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
+...     .where_record_years_range_is(None, None)
+...     .where_record_citattions_range_is(None, None)
 ...     .where_records_match(
 ...         {
 ...             "author_keywords": ["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"],
@@ -182,8 +182,8 @@ Zavolokina L. 2:181                2  ...                   0
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
+...     .where_record_years_range_is(None, None)
+...     .where_record_citattions_range_is(None, None)
 ...     .where_records_match(
 ...         {
 ...             "author_keywords": ["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"],

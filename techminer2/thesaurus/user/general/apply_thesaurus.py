@@ -18,7 +18,7 @@ Apply Thesaurus
 ...     .with_thesaurus_file("descriptors.the.txt")
 ...     #
 ...     # FIELDS:
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     .with_other_field("descriptors_cleaned")
 ...     #
 ...     # DATABASE:
@@ -28,11 +28,26 @@ Apply Thesaurus
 ... )
 Applying user thesaurus to database
           File : example/thesaurus/descriptors.the.txt
-  Source field : descriptors
+  Source field : raw_descriptors
   Target field : descriptors_cleaned
   Thesaurus application completed successfully
 <BLANKLINE>
 
+
+>>> from techminer2.database.tools import Query
+>>> Query(
+...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
+...     root_directory="example/",
+...     database="main",
+...     record_years_range=(None, None),
+...     record_citations_range=(None, None),
+... ).run()
+                                 descriptors_cleaned
+0  AN_EFFECT; AN_INSTITUTIONAL_ASPECT; AN_MODERAT...
+1  ACTOR_NETWORK_THEORY; AN_UNPRECEDENTED_LEVEL; ...
+2  AN_INITIAL_TECHNOLOGY_ADVANTAGE; CHINA; FINANC...
+3  AGGREGATION; ALL_RIGHTS; ANALYSIS; ANY_FORM; A...
+4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
 
 """
 import sys
@@ -121,6 +136,12 @@ class ApplyThesaurus(
         ].map(f, na_action="ignore")
 
     # -------------------------------------------------------------------------
+    def internal__join_record_values(self):
+        self.records[self.params.other_field] = self.records[
+            self.params.other_field
+        ].str.join("; ")
+
+    # -------------------------------------------------------------------------
     def internal__write_records(self):
         internal__write_records(params=self.params, records=self.records)
 
@@ -136,6 +157,7 @@ class ApplyThesaurus(
         self.internal__split_other_field()
         self.internal__apply_thesaurus_to_other_field()
         self.internal__remove_duplicates_from_other_field()
+        self.internal__join_record_values()
         self.internal__write_records()
         self.internal__notify_process_end()
 

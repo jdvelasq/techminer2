@@ -111,7 +111,7 @@ class Params:
     #
     # Q
     #
-    query_expr: Optional[str] = None
+    query_expression: Optional[str] = None
     quiet: bool = False
 
     #
@@ -566,11 +566,11 @@ class ParamsMixin:
         self.params.root_directory = directory
         return self
 
-    def where_record_citations_between(self, start, end):
+    def where_record_citations_range_is(self, start, end):
         self.params.record_citations_range = (start, end)
         return self
 
-    def where_record_years_between(self, start, end):
+    def where_record_years_range_is(self, start, end):
         self.params.record_years_range = (start, end)
         return self
 
@@ -611,7 +611,7 @@ class ParamsMixin:
         return self
 
     def with_query_expression(self, expr):
-        self.params.query_expr = expr
+        self.params.query_expression = expr
         return self
 
     def with_terms_having_stem_match(self, stem):

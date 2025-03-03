@@ -11,7 +11,7 @@ Sort by Key Order
 ===============================================================================
 
 >>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"

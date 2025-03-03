@@ -10,6 +10,9 @@
 Replace Abbreviations
 ===============================================================================
 
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
 
 >>> from techminer2.thesaurus.descriptors import ReplaceAbbreviations
 >>> (
@@ -18,9 +21,10 @@ Replace Abbreviations
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
-
+<BLANKLINE>
+Abbreviations replacement completed successfully for file: ...scriptors.the.txt
 
 
 """
@@ -153,7 +157,7 @@ class ReplaceAbbreviations(
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
         self.step_01_get_descriptors_thesaurus_file_path()
         self.step_02_get_abbrevaviations_thesaurus_file_path()

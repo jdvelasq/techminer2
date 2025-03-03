@@ -7,17 +7,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Scopus Data Importer
+Import Scopus Data
 ===============================================================================
 # doctest: +SKIP 
 
 
->>> from techminer2.database.ingest import ScopusDataImporter
->>> (
-...     ScopusDataImporter() 
-...     .where_root_directory_is("example/")
-...     .build()
-... ) # doctest: +ELLIPSIS  
+>>> from techminer2.database.ingest import ImportScopusData
+>>> ImportScopusData(root_dir="example/").run() # doctest: +ELLIPSIS  
 
 
 
@@ -76,7 +72,7 @@ from ._internals.preprocessors import (  # type: ignore
 )
 
 
-class ScopusDataImporter:
+class ImportScopusData:
     """:meta private:"""
 
     def __init__(self):

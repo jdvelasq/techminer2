@@ -1,7 +1,7 @@
 """Ingestion data module."""
 
-from .scopus_data_importer import ScopusDataImporter
+from .import_scopus_data import ImportScopusData
 
 __all__ = [
-    "ScopusDataImporter",
+    "ImportScopusData",
 ]

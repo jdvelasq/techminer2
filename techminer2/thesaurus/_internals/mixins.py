@@ -29,7 +29,7 @@ class ThesaurusMixin:
     def internal__build_system_thesaurus_path(self):
 
         self.thesaurus_path = internal__generate_system_thesaurus_file_path(
-            params=self.params
+            thesaurus_file=self.params.thesaurus_file
         )
 
     # -------------------------------------------------------------------------

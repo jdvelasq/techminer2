@@ -12,7 +12,7 @@ Reduce Keys
 
 
 >>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
 
 

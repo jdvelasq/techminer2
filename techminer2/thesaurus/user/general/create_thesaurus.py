@@ -19,14 +19,14 @@ Create Thesaurus
 ...     .with_thesaurus_file("demo.the.txt")
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
 ... )
-Creating thesaurus from 'descriptors' field
+Creating thesaurus from 'raw_descriptors' field
   File : example/thesaurus/demo.the.txt
   1796 keys found
   Thesaurus creation completed successfully

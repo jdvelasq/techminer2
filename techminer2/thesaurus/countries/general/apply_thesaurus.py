@@ -42,6 +42,70 @@ Applying system thesaurus to database
 <BLANKLINE>
 
 
+>>> #
+>>> # TESTS:
+>>> #
+>>> from techminer2.database.tools import Query
+>>> Query(
+...     query_expression="SELECT countries FROM database LIMIT 10;",
+...     root_directory="example/",
+...     database="main",
+...     record_years_range=(None, None),
+...     record_citations_range=(None, None),
+... ).run()
+                   countries
+0                South Korea
+1                South Korea
+2                      China
+3                     Latvia
+4             United Kingdom
+5       United States; China
+6                Switzerland
+7  Australia; Denmark; China
+8                Switzerland
+9                    Germany
+>>> from techminer2.database.tools import Query
+>>> Query(
+...     query_expression="SELECT regions FROM database LIMIT 10;",
+...     root_directory="example/",
+...     database="main",
+...     record_years_range=(None, None),
+...     record_citations_range=(None, None),
+... ).run()
+                 regions
+0                   Asia
+1                   Asia
+2                   Asia
+3                 Europe
+4                 Europe
+5         Americas; Asia
+6                 Europe
+7  Oceania; Europe; Asia
+8                 Europe
+9                 Europe
+>>> from techminer2.database.tools import Query
+>>> Query(
+...     query_expression="SELECT subregions FROM database LIMIT 10;",
+...     root_directory="example/",
+...     database="main",
+...     record_years_range=(None, None),
+...     record_citations_range=(None, None),
+... ).run()
+                                          subregions
+0                                       Eastern Asia
+1                                       Eastern Asia
+2                                       Eastern Asia
+3                                    Northern Europe
+4                                    Northern Europe
+5                     Northern America; Eastern Asia
+6                                     Western Europe
+7  Australia and New Zealand; Northern Europe; Ea...
+8                                     Western Europe
+9                                     Western Europe
+
+
+
+
 """
 from ...._internals.mixins import ParamsMixin
 from ....database.ingest._internals.operators.transform_field import (
@@ -59,14 +123,12 @@ class ApplyThesaurus(
     def run(self):
 
         # Affiliations to countries mmapping
-        (
-            ApplyUserThesaurus()
-            .with_thesaurus_file("countries.the.txt")
-            .with_field("affiliations")
-            .with_other_field("countries")
-            .where_root_directory_is(self.params.root_directory)
-            .run()
-        )
+        ApplyUserThesaurus(
+            thesaurus_file="countries.the.txt",
+            field="affiliations",
+            other_field="countries",
+            root_directory=self.params.root_directory,
+        ).run()
 
         # Country of first author
         internal__transform_field(
@@ -79,21 +141,17 @@ class ApplyThesaurus(
         )
 
         # Country to region mapping
-        (
-            ApplySystemThesaurus()
-            .with_thesaurus_file("geography/country_to_region.the.txt")
-            .with_field("countries")
-            .with_other_field("regions")
-            .where_root_directory_is(self.params.root_directory)
-            .run()
-        )
+        ApplySystemThesaurus(
+            thesaurus_file="geography/country_to_region.the.txt",
+            field="countries",
+            other_field="regions",
+            root_directory=self.params.root_directory,
+        ).run()
 
         # Country to subregion mapping
-        (
-            ApplySystemThesaurus()
-            .with_thesaurus_file("geography/country_to_subregion.the.txt")
-            .with_field("countries")
-            .with_other_field("subregions")
-            .where_root_directory_is(self.params.root_directory)
-            .run()
-        )
+        ApplySystemThesaurus(
+            thesaurus_file="geography/country_to_subregion.the.txt",
+            field="countries",
+            other_field="subregions",
+            root_directory=self.params.root_directory,
+        ).run()

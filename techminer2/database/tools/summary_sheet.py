@@ -15,8 +15,8 @@ Summary Sheet
 ...     #
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
-...     .where_record_years_between(None, None)
-...     .where_record_citations_between(None, None)
+...     .where_record_years_range_is(None, None)
+...     .where_record_citattions_range_is(None, None)
 ...     #
 ...     .build()
 ... )

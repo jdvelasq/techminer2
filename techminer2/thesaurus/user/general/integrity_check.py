@@ -12,7 +12,7 @@ Integrity Check
 
 
 >>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="descriptors", 
+>>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
 
 >>> from techminer2.thesaurus.user import IntegrityCheck
@@ -21,7 +21,7 @@ Integrity Check
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
