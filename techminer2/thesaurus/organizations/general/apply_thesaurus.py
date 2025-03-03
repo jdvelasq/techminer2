@@ -9,6 +9,8 @@
 Apply Thesaurus 
 ===============================================================================
 
+
+
 >>> from techminer2.thesaurus.organizations import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()

@@ -72,14 +72,14 @@ class RemoveParentheses(
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("Removing parentheses from thesaurus keys\n")
-        sys.stdout.write(f"\n  File : {file_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Removing parentheses from thesaurus keys\n")
+        sys.stderr.write(f"\n  File : {file_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
-        sys.stdout.write("  Parentheses removal completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write("  Parentheses removal completed successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -160,8 +160,8 @@ class RemoveParentheses(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} removals made successfully\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} removals made successfully\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

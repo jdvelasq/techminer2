@@ -92,15 +92,15 @@ class ReplaceAbbreviations(
         if len(abbreviations_path) > 40:
             abbreviations_path = "..." + abbreviations_path[-36:]
 
-        sys.stdout.write("Replacing abbreviations in keys\n")
-        sys.stdout.write(f"      Thesaurus : {thesaurus_path}\n")
-        sys.stdout.write(f"  Abbreviations : {abbreviations_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Replacing abbreviations in keys\n")
+        sys.stderr.write(f"      Thesaurus : {thesaurus_path}\n")
+        sys.stderr.write(f"  Abbreviations : {abbreviations_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("  Abbreviations replacement completed successfully\n\n")
+        sys.stderr.write("  Abbreviations replacement completed successfully\n\n")
         internal__print_thesaurus_header(self.thesaurus_path)
 
     #
@@ -183,8 +183,8 @@ class ReplaceAbbreviations(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} replacements made successfully\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} replacements made successfully\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

@@ -140,15 +140,15 @@ class SpellCheck(
         truncated_path = str(self.thesaurus_path)
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
-        sys.stdout.write("Spell checking thesaurus keys\n")
-        sys.stdout.write(f"  File : {truncated_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Spell checking thesaurus keys\n")
+        sys.stderr.write(f"  File : {truncated_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("  Spell checking completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write("  Spell checking completed successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -177,20 +177,20 @@ class SpellCheck(
     def internal__print_mispelled_words_to_sysout(self):
 
         if len(self.misspelled_words) == 0:
-            sys.stdout.write("  No misspelled words found\n")
-            sys.stdout.flush()
+            sys.stderr.write("  No misspelled words found\n")
+            sys.stderr.flush()
             return
 
         misspelled_words = self.misspelled_words[:10]
         for i_word, word in enumerate(misspelled_words):
             if i_word == 0:
-                sys.stdout.write(
+                sys.stderr.write(
                     f"  Potential misspelled words ({len(self.misspelled_words)}):\n\n"
                 )
-            sys.stdout.write(f"    - {word}\n")
+            sys.stderr.write(f"    - {word}\n")
         if len(misspelled_words) == 10:
-            sys.stdout.write("    ...\n\n")
-        sys.stdout.flush()
+            sys.stderr.write("    ...\n\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__select_data_frame_rows(self):
@@ -213,8 +213,8 @@ class SpellCheck(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  Matching keys found : {n_matches}\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  Matching keys found : {n_matches}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

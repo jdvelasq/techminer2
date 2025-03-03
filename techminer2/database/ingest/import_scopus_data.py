@@ -13,7 +13,7 @@ Import Scopus Data
 
 
 >>> from techminer2.database.ingest import ImportScopusData
->>> ImportScopusData(root_dir="example/").run() # doctest: +ELLIPSIS  
+>>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS  
 
 
 
@@ -24,7 +24,7 @@ import time
 
 from tqdm import tqdm
 
-from ..._internals.log_message import internal__log_message
+from ..._internals.mixins import ParamsMixin
 from ._internals.db import (
     internal__compress_raw_files,
     internal__create_project_structure,
@@ -72,118 +72,114 @@ from ._internals.preprocessors import (  # type: ignore
 )
 
 
-class ImportScopusData:
+class ImportScopusData(
+    ParamsMixin,
+):
     """:meta private:"""
 
-    def __init__(self):
-        self.root_dir = None
+    # -------------------------------------------------------------------------
+    def run(self):
 
-    def where_directory_is(self, root_dir):
-        self.root_dir = root_dir
-        return self
-
-    def build(self):
-
-        root_dir = self.root_dir
+        root_directory = self.params.root_directory
         #
         # Preparation
-        # =================================================================================
+        # ---------------------------------------------------------------------------------
         #
 
         # Register tqdm pandas progress bar
         tqdm.pandas()
 
         # Elapsed time report
-        sys.stdout.write(
-            "\n\n___________________________________ PROGRESS ___________________________________\n"
+        sys.stderr.write(
+            "\n___________________________________ PROGRESS ___________________________________\n"
         )
-        sys.stdout.flush()
+        sys.stderr.flush()
         start_time = time.time()
 
         #
         # PHASE 1: Preparing database files and folders
-        # =================================================================================
+        # ---------------------------------------------------------------------------------
         #
-        internal__compress_raw_files(root_dir)
-        internal__create_project_structure(root_dir)
-        internal__load_raw_files(root_dir)
-        internal__rename_columns(root_dir)
-        internal__drop_empty_columns(root_dir)
+        internal__compress_raw_files(root_directory)
+        internal__create_project_structure(root_directory)
+        internal__load_raw_files(root_directory)
+        internal__rename_columns(root_directory)
+        internal__drop_empty_columns(root_directory)
 
         #
         #
         # PHASE 2: Process each column in isolation
-        # =================================================================================
+        # ---------------------------------------------------------------------------------
         #
         #
-        internal__preprocess_abstract(root_dir)
-        internal__preprocess_document_title(root_dir)
+        internal__preprocess_abstract(root_directory)
+        internal__preprocess_document_title(root_directory)
         #
-        internal__preprocess_eissn(root_dir)
-        internal__preprocess_issn(root_dir)
-        internal__preprocess_isbn(root_dir)
-        internal__preprocess_document_type(root_dir)
+        internal__preprocess_eissn(root_directory)
+        internal__preprocess_issn(root_directory)
+        internal__preprocess_isbn(root_directory)
+        internal__preprocess_document_type(root_directory)
         #
-        internal__preprocess_doi(root_dir)
-        internal__preprocess_source_title(root_dir)
-        internal__preprocess_abbr_source_title(root_dir)
-        internal__preprocess_global_citations(root_dir)
+        internal__preprocess_doi(root_directory)
+        internal__preprocess_source_title(root_directory)
+        internal__preprocess_abbr_source_title(root_directory)
+        internal__preprocess_global_citations(root_directory)
         #
-        internal__preprocess_authors_id(root_dir)
-        internal__preprocess_authors(root_dir)
-        internal__preprocess_author_names(root_dir)
+        internal__preprocess_authors_id(root_directory)
+        internal__preprocess_authors(root_directory)
+        internal__preprocess_author_names(root_directory)
         #
-        internal__preprocess_num_authors(root_dir)
-        internal__preprocess_num_global_references(root_dir)
+        internal__preprocess_num_authors(root_directory)
+        internal__preprocess_num_global_references(root_directory)
         #
-        internal__preprocess_references(root_dir)
+        internal__preprocess_references(root_directory)
         #
-        internal__preprocess_record_id(root_dir)
-        internal__preprocess_record_no(root_dir)
+        internal__preprocess_record_id(root_directory)
+        internal__preprocess_record_no(root_directory)
         #
-        internal__preprocess_subject_areas(root_dir)
+        internal__preprocess_subject_areas(root_directory)
 
         #
         #
         # PHASE 2: Keywords & noun phrases & abstracts
-        # =============================================================================================
+        # ---------------------------------------------------------------------------------
         #
         #
 
-        internal__preprocess_raw_index_keywords(root_dir)
-        internal__preprocess_index_keywords(root_dir)
-        internal__preprocess_raw_author_keywords(root_dir)
-        internal__preprocess_author_keywords(root_dir)
-        internal__preprocess_raw_keywords(root_dir)
+        internal__preprocess_raw_index_keywords(root_directory)
+        internal__preprocess_index_keywords(root_directory)
+        internal__preprocess_raw_author_keywords(root_directory)
+        internal__preprocess_author_keywords(root_directory)
+        internal__preprocess_raw_keywords(root_directory)
 
-        internal__preprocess_raw_abstract_nouns_and_phrases(root_dir)
-        internal__preprocess_raw_document_title_nouns_and_phrases(root_dir)
+        internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
+        internal__preprocess_raw_document_title_nouns_and_phrases(root_directory)
 
-        internal__preprocess_raw_noun_and_phrases(root_dir)
-        internal__preprocess_raw_descriptors(root_dir)
+        internal__preprocess_raw_noun_and_phrases(root_directory)
+        internal__preprocess_raw_descriptors(root_directory)
 
         #
         #
         # PHASE 4: References
-        # =============================================================================================
+        # ---------------------------------------------------------------------------------
         #
         #
 
-        internal__preprocess_global_references(root_dir)  # ok
-        internal__preprocess_local_references(root_dir)  # ok
-        internal__preprocess_local_citations(root_dir)  # ok
+        internal__preprocess_global_references(root_directory)  # ok
+        internal__preprocess_local_references(root_directory)  # ok
+        internal__preprocess_local_citations(root_directory)  # ok
 
         #
         #
         # PHASE 5: Thesaurus files
-        # =============================================================================================
+        # ---------------------------------------------------------------------------------
         #
         #
 
-        internal__preprocess_countries(root_dir)  # ok
-        internal__preprocess_organizations(root_dir)  # ok
-        internal__preprocess_descriptors(root_dir)  # ok
-        internal__preprocess_abbreviations(root_dir)  # ok
+        internal__preprocess_countries(root_directory)  # ok
+        internal__preprocess_organizations(root_directory)  # ok
+        internal__preprocess_descriptors(root_directory)  # ok
+        internal__preprocess_abbreviations(root_directory)  # ok
 
         ## ------------------------------------------------------------------------------------------
 
@@ -194,10 +190,10 @@ class ImportScopusData:
         hours, rem = divmod(elapsed_time, 3600)
         minutes, seconds = divmod(rem, 60)
 
-        internal__report_imported_records(root_dir)
+        internal__report_imported_records(root_directory)
 
-        sys.stdout.write(
-            f"\nINFO  Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}\n"
+        sys.stderr.write(
+            f"INFO  Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}\n"
         )
 
-        sys.stdout.flush()
+        sys.stderr.flush()

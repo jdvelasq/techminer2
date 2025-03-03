@@ -11,21 +11,16 @@ import sys
 
 
 # -------------------------------------------------------------------------
-def internal__preprocess_countries(root_dir):
+def internal__preprocess_countries(root_directory):
     """:meta private:"""
 
     from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
 
-    sys.stdout.write("\nINFO  Processing 'countries' column.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Creating 'countries' column\n")
+    sys.stderr.flush()
 
-    th = CreateThesaurus()
-    th.update(root_dir=root_dir)
-    th.build()
-
-    th = ApplyThesaurus()
-    th.update(root_dir=root_dir)
-    th.build()
+    CreateThesaurus(root_directory=root_directory).run()
+    ApplyThesaurus(root_directory=root_directory).run()
 
 
 # =============================================================================

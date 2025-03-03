@@ -37,7 +37,7 @@ class IntegrityCheck(
 
         (
             UserIntegrityCheck()
-            .with_thesaurus_file("global_references.the.txt")
+            .with_thesaurus_file("references.the.txt")
             .with_field("global_references")
             .where_root_directory_is(self.params.root_directory)
             .run()

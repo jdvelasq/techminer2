@@ -12,8 +12,8 @@ from ....._internals.log_message import internal__log_message
 def internal__drop_empty_columns(root_dir):
     """Drop NA columns in database/ directory"""
 
-    sys.stdout.write("\nINFO  Dropping NA columns in database file.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Dropping NA columns in database file\n")
+    sys.stderr.flush()
 
     dataframe = pd.read_csv(
         pathlib.Path(root_dir) / "databases/database.csv.zip",
@@ -34,10 +34,10 @@ def internal__drop_empty_columns(root_dir):
 
     if len(dataframe.columns) != len(original_cols):
         removed_cols = set(original_cols) - set(dataframe.columns)
+
         for i_col, col in enumerate(removed_cols):
             if i_col == 0:
-                sys.stdout.write(f"\n        Columns: {col}")
-            else:
-                sys.stdout.write(f"\n                 {col}")
+                sys.stderr.write("        Columns:\n")
+            sys.stderr.write(f"          - {col}\n")
 
-    sys.stdout.flush()
+    sys.stderr.flush()

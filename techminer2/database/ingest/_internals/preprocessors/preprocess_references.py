@@ -46,8 +46,8 @@ def internal__preprocess_references(root_dir):
         dtype=DTYPES,
     )
 
-    # sys.stdout.write("\n")
-    # sys.stdout.flush()
+    sys.stderr.write("INFO  Processing 'references' column\n")
+    sys.stderr.flush()
 
     for source, abbr_source_title in tqdm(
         zip(abbrs.source, abbrs.abbr_source_title),

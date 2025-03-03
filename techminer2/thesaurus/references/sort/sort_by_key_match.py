@@ -26,7 +26,7 @@ Finds a string in the terms of a thesaurus.
 ...     .run()
 ... ) 
 Sorting thesaurus file by key match
-            File : example/thesaurus/global_references.the.txt
+            File : example/thesaurus/references.the.txt
          Pattern : ECON
   Case sensitive : False
      Regex Flags : 0
@@ -35,7 +35,7 @@ Sorting thesaurus file by key match
 Thesaurus sorting by key match completed successfully
 <BLANKLINE>
 Printing thesaurus header
-  File : example/thesaurus/global_references.the.txt
+  File : example/thesaurus/references.the.txt
 <BLANKLINE>
     Anagnostopoulos I., 2018, J ECON BUS, V100, P7
       Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...
@@ -74,6 +74,6 @@ class SortByKeyMatch(
         return (
             UserSortByKeyMatch()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("global_references.the.txt")
+            .with_thesaurus_file("references.the.txt")
             .run()
         )

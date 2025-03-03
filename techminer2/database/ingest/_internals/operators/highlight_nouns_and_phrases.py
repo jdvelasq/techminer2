@@ -28,8 +28,8 @@ def internal__highlight_nouns_and_phrases(
 ):
     """:meta private:"""
 
-    sys.stdout.write(f"\n        Highlighting tokens in '{source}' field.")
-    sys.stdout.flush()
+    sys.stderr.write(f"Highlighting tokens in '{source}' field\n")
+    sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
 
@@ -66,7 +66,7 @@ def internal__highlight_nouns_and_phrases(
     for index, row in tqdm(
         dataframe.iterrows(),
         total=len(dataframe),
-        desc=f"INFO  Highlighting tokens in '{source}' field.",
+        desc=f"  Progres",
     ):
 
         if pd.isna(row[dest]):

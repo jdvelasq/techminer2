@@ -159,15 +159,15 @@ class SortByKeyOrder(
         }[self.params.keys_order_by]
         order_by = self.order_by
 
-        sys.stdout.write(f"Sorting thesaurus {order_by}\n")
-        sys.stdout.write(f"  File : {file_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"Sorting thesaurus {order_by}\n")
+        sys.stderr.write(f"  File : {file_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("  Thesaurus sorting completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write("  Thesaurus sorting completed successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 

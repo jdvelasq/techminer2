@@ -14,8 +14,8 @@ from ....field_operators.merge_fields_operator import internal__merge_fields
 
 def internal__preprocess_raw_descriptors(root_dir):
 
-    sys.stdout.write("\nINFO  Processing 'raw_descriptors' column.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Creating 'raw_descriptors' column\n")
+    sys.stderr.flush()
 
     internal__merge_fields(
         source=["raw_nouns_and_phrases", "raw_keywords"],

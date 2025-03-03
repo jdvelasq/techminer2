@@ -24,14 +24,14 @@ Sort by Fuzzy Match
 ...     .run()
 ... ) 
 Sorting thesaurus by fuzzy match
-            File : example/thesaurus/global_references.the.txt
+            File : example/thesaurus/references.the.txt
        Keys like : ACCOU
   Match thresold : 50
   2 matching keys found
   Thesaurus sorting completed successfully
 <BLANKLINE>
 Printing thesaurus header
-  File : example/thesaurus/global_references.the.txt
+  File : example/thesaurus/references.the.txt
 <BLANKLINE>
     Cai C.W., 2018, ACCOUNT FINANC, V58, P965
       Cai C.W., Disruption of financial intermediation by FinTech: A review on ...
@@ -68,6 +68,6 @@ class SortByFuzzyKeyMatch(
         return (
             UserSortByFuzzyKeyMatch()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("global_references.the.txt")
+            .with_thesaurus_file("references.the.txt")
             .run()
         )

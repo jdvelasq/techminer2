@@ -12,7 +12,7 @@ Apply Thesaurus
 >>> from techminer2.thesaurus.references import ApplyThesaurus
 >>> ApplyThesaurus(root_directory="example/").run()
 Applying user thesaurus to database
-          File : example/thesaurus/global_references.the.txt
+          File : example/thesaurus/references.the.txt
   Source field : raw_global_references
   Target field : global_references
   Thesaurus application completed successfully
@@ -39,7 +39,7 @@ class ApplyThesaurus(
     def run(self):
 
         ApplyUserThesaurus(
-            thesaurus_file="global_references.the.txt",
+            thesaurus_file="references.the.txt",
             field="raw_global_references",
             other_field="global_references",
             root_directory=self.params.root_directory,
@@ -49,7 +49,7 @@ class ApplyThesaurus(
 # def _apply_thesaurus(root_dir):
 #     # Apply the thesaurus to raw_global_references
 
-#     file_path = pathlib.Path(root_dir) / "thesaurus/global_references.the.txt"
+#     file_path = pathlib.Path(root_dir) / "thesaurus/references.the.txt"
 #     th = internal__load_reversed_thesaurus_as_mapping(file_path=file_path)
 
 #     dataframe = pd.read_csv(

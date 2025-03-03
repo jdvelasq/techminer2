@@ -17,11 +17,9 @@ from ..operators.highlight_nouns_and_phrases import (
 
 def internal__preprocess_raw_document_title_nouns_and_phrases(root_dir):
 
-    sys.stdout.write(
-        "\nINFO  Processing 'raw_document_title_nouns_and_phrases' column."
-    )
-    # sys.stdout.write("\n")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Creating 'raw_document_title_nouns_and_phrases' column\n")
+    # sys.stderr.write("\n")
+    sys.stderr.flush()
 
     internal__highlight_nouns_and_phrases(
         source="document_title",
@@ -29,8 +27,8 @@ def internal__preprocess_raw_document_title_nouns_and_phrases(root_dir):
         root_dir=root_dir,
     )
 
-    sys.stdout.write("INFO  Collecting noun and phrases.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Collecting noun and phrases\n")
+    sys.stderr.flush()
 
     internal__collect_nouns_and_phrases(
         source="document_title",

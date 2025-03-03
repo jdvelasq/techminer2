@@ -10,6 +10,11 @@
 Create Thesaurus
 ===============================================================================
 
+>>> # TEST:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> (
@@ -26,6 +31,11 @@ Create Thesaurus
 ...     #
 ...     .run()
 ... )
+
+>>> # TEST:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Creating thesaurus from 'raw_descriptors' field
   File : example/thesaurus/demo.the.txt
   1796 keys found
@@ -50,6 +60,7 @@ Printing thesaurus header
       A_CASE_STUDY
     A_CHALLENGE
       A_CHALLENGE
+<BLANKLINE>
 <BLANKLINE>
 
 """
@@ -82,18 +93,18 @@ class CreateThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stdout.write(f"Creating thesaurus from '{field}' field\n")
-            sys.stdout.write(f"  File : {truncated_path}\n")
-            sys.stdout.flush()
+            sys.stderr.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stderr.write(f"  File : {truncated_path}\n")
+            sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
         if not self.params.quiet:
 
-            sys.stdout.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stdout.write("  Thesaurus creation completed successfully\n\n")
-            sys.stdout.flush()
+            sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
+            sys.stderr.write("  Thesaurus creation completed successfully\n\n")
+            sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)
 

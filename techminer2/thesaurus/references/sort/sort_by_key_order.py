@@ -25,11 +25,11 @@ Sort by Key Order
 ...     .run()
 ... )
 Sorting thesaurus alphabetically
-  File : example/thesaurus/global_references.the.txt
+  File : example/thesaurus/references.the.txt
   Thesaurus sorting completed successfully
 <BLANKLINE>
 Printing thesaurus header
-  File : example/thesaurus/global_references.the.txt
+  File : example/thesaurus/references.the.txt
 <BLANKLINE>
     Alt R., 2018, ELECTRON MARK, V28, P235
       Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
@@ -65,6 +65,6 @@ class SortByKeyOrder(
         return (
             UserSortByKeyOrder()
             .update(**self.params.__dict__)
-            .with_thesaurus_file("global_references.the.txt")
+            .with_thesaurus_file("references.the.txt")
             .run()
         )

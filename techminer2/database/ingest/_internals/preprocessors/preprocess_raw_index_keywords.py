@@ -15,8 +15,8 @@ from ..operators.clean_raw_keywords import internal__clean_raw_keywords
 def internal__preprocess_raw_index_keywords(root_dir):
     """Run importer."""
 
-    sys.stdout.write("\nINFO  Cleaning 'raw_index_keywords' column.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Cleaning 'raw_index_keywords' column\n")
+    sys.stderr.flush()
 
     internal__clean_raw_keywords(
         source="raw_index_keywords",

@@ -86,17 +86,17 @@ class SortByFuzzyKeyMatch(
         pattern = self.params.pattern
         threshold = self.params.match_threshold
 
-        sys.stdout.write("Sorting thesaurus by fuzzy match\n")
-        sys.stdout.write(f"            File : {thesaurus_path}\n")
-        sys.stdout.write(f"       Keys like : {pattern}\n")
-        sys.stdout.write(f"  Match thresold : {threshold}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Sorting thesaurus by fuzzy match\n")
+        sys.stderr.write(f"            File : {thesaurus_path}\n")
+        sys.stderr.write(f"       Keys like : {pattern}\n")
+        sys.stderr.write(f"  Match thresold : {threshold}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("  Thesaurus sorting completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write("  Thesaurus sorting completed successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -130,8 +130,8 @@ class SortByFuzzyKeyMatch(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} matching keys found\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} matching keys found\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

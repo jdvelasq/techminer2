@@ -91,15 +91,15 @@ class BritishToAmericanSpelling(
         truncated_path = str(self.thesaurus_path)
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
-        sys.stdout.write("Converting British to American English\n")
-        sys.stdout.write(f"  File : {truncated_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Converting British to American English\n")
+        sys.stderr.write(f"  File : {truncated_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("Translation completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write("Translation completed successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -153,8 +153,8 @@ class BritishToAmericanSpelling(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} replacements made successfully\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} replacements made successfully\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

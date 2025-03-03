@@ -35,8 +35,8 @@ def _local_processing_func(text):
 def internal__preprocess_authors_id(root_dir):
     """:meta private:"""
 
-    sys.stdout.write("\nINFO  Processing 'authors_id' column.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Processing 'authors_id' column\n")
+    sys.stderr.flush()
 
     internal__transform_field(
         field="raw_authors_id",

@@ -14,7 +14,7 @@ Create thesaurus
 >>> from techminer2.thesaurus.references import CreateThesaurus
 >>> CreateThesaurus(root_directory = "example/").run()
 Creating thesaurus from 'global_references' field
-  File : example/thesaurus/global_references.the.txt
+  File : example/thesaurus/references.the.txt
   Creating main_documents data frame
 <BLANKLINE>
   Creating references data frame
@@ -22,7 +22,7 @@ Creating thesaurus from 'global_references' field
   Thesaurus creation completed successfully
 <BLANKLINE>
 Printing thesaurus header
-  File : example/thesaurus/global_references.the.txt
+  File : example/thesaurus/references.the.txt
 <BLANKLINE>
     Alt R., 2018, ELECTRON MARK, V28, P235
       Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
@@ -45,7 +45,6 @@ Printing thesaurus header
 
 
 """
-import pathlib
 import re
 import sys
 
@@ -58,14 +57,7 @@ from ....database._internals.io import (
     internal__load_filtered_database,
     internal__load_records,
 )
-from ....package_data.text_processing import internal__load_text_processing_terms
-from ..._internals import (
-    ThesaurusMixin,
-    internal__generate_system_thesaurus_file_path,
-    internal__generate_user_thesaurus_file_path,
-    internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
-)
+from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 
@@ -103,18 +95,18 @@ class CreateThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stdout.write(f"Creating thesaurus from '{field}' field\n")
-            sys.stdout.write(f"  File : {truncated_path}\n")
-            sys.stdout.flush()
+            sys.stderr.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stderr.write(f"  File : {truncated_path}\n")
+            sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
         if not self.params.quiet:
 
-            sys.stdout.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stdout.write("  Thesaurus creation completed successfully\n\n")
-            sys.stdout.flush()
+            sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
+            sys.stderr.write("  Thesaurus creation completed successfully\n\n")
+            sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -123,8 +115,8 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_main_documents_data_frame(self):
 
-        sys.stdout.write(f"  Creating main_documents data frame\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  Creating main_documents data frame\n")
+        sys.stderr.flush()
 
         # loads the dataframe
         main_documents = internal__load_filtered_database(self.params)
@@ -162,8 +154,8 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_references_data_frame(self):
 
-        sys.stdout.write(f"\n  Creating references data frame")
-        sys.stdout.flush()
+        sys.stderr.write(f"  Creating references data frame\n")
+        sys.stderr.flush()
 
         # loads the dataframe
         references = internal__load_records(self.params)
@@ -183,7 +175,7 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_thesaurus(self):
 
-        sys.stdout.write("\n")
+        sys.stderr.write("\n")
 
         thesaurus = {}
         for _, row in tqdm(
@@ -228,7 +220,7 @@ class CreateThesaurus(
         """:meta private:"""
 
         self.params.update(
-            thesaurus_file="global_references.the.txt",
+            thesaurus_file="references.the.txt",
             field="global_references",
         )
 

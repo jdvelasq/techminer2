@@ -14,8 +14,8 @@ from ..operators.clean_text import internal__clean_text
 def internal__preprocess_document_title(root_dir):
     """:meta private:"""
 
-    sys.stdout.write("\nINFO  Cleaning 'document_title' column.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Cleaning 'document_title' column\n")
+    sys.stderr.flush()
 
     internal__clean_text(
         source="raw_document_title",

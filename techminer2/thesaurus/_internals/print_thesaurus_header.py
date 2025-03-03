@@ -28,12 +28,12 @@ def internal__print_thesaurus_header(
         lambda x: x[:73] + "..." if len(x) > 76 else x
     )
 
-    sys.stdout.write(f"Printing thesaurus header\n  File : {thesaurus_path}\n\n")
+    sys.stderr.write(f"Printing thesaurus header\n  File : {thesaurus_path}\n\n")
     for _, row in data_frame.iterrows():
-        sys.stdout.write(f"    {row.key}\n")
-        sys.stdout.write(f"      {row.value}\n")
-    sys.stdout.write("\n")
-    sys.stdout.flush()
+        sys.stderr.write(f"    {row.key}\n")
+        sys.stderr.write(f"      {row.value}\n")
+    sys.stderr.write("\n")
+    sys.stderr.flush()
 
 
 # =============================================================================

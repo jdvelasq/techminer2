@@ -85,16 +85,16 @@ class SortByEndsWithKeyMatch(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stdout.write("Sorting thesaurus file by key match\n")
-        sys.stdout.write(f"     File : {file_path}\n")
-        sys.stdout.write(f"  Pattern : {pattern}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Sorting thesaurus file by key match\n")
+        sys.stderr.write(f"     File : {file_path}\n")
+        sys.stderr.write(f"  Pattern : {pattern}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("  Thesaurus sorting by key match completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write("  Thesaurus sorting by key match completed successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -117,8 +117,8 @@ class SortByEndsWithKeyMatch(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} matching keys found\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} matching keys found\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

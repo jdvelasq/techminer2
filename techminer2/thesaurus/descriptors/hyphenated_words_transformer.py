@@ -80,16 +80,16 @@ class HyphenatedWordsTransformer(
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("Transforming hyphenated words in thesaurus keys\n")
-        sys.stdout.write(f"  File : {file_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Transforming hyphenated words in thesaurus keys\n")
+        sys.stderr.write(f"  File : {file_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
-        sys.stdout.write(
+        sys.stderr.write(
             f"  Hyphenated words transformation completed successfully\n\n"
         )
-        sys.stdout.flush()
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -186,7 +186,7 @@ class HyphenatedWordsTransformer(
             return x
 
         tqdm.pandas(desc="  Processing hyphenated words")
-        sys.stdout.write("\n")
+        sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
 
@@ -286,8 +286,8 @@ class HyphenatedWordsTransformer(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} hypenated words transformed successfully\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} hypenated words transformed successfully\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

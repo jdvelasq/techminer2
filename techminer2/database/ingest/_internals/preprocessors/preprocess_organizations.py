@@ -10,15 +10,15 @@
 import sys
 
 
-def internal__preprocess_organizations(root_dir):
+def internal__preprocess_organizations(root_directory):
 
     from .....thesaurus.organizations import ApplyThesaurus, CreateThesaurus
 
-    sys.stdout.write("\nINFO  Processing 'organizations' column.")
-    sys.stdout.flush()
+    sys.stderr.write("INFO  Creating 'organizations' column\n")
+    sys.stderr.flush()
 
-    CreateThesaurus().update(root_dir=root_dir).build()
-    ApplyThesaurus().update(root_dir=root_dir).build()
+    CreateThesaurus(root_directory=root_directory).run()
+    ApplyThesaurus(root_directory=root_directory).run()
 
 
 # =============================================================================

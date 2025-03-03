@@ -87,16 +87,16 @@ class ReplaceEndsWithWord(
         if len(file_path) > 40:
             file_path = "..." + file_path[-36:]
 
-        sys.stdout.write("Replacing ending word in keys\n")
-        sys.stdout.write(f"         File : {file_path}\n")
-        sys.stdout.write(f"         Word : {word}\n")
-        sys.stdout.write(f"  Replacement : {replacement}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Replacing ending word in keys\n")
+        sys.stderr.write(f"         File : {file_path}\n")
+        sys.stderr.write(f"         Word : {word}\n")
+        sys.stderr.write(f"  Replacement : {replacement}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write("  Word replacing completed successfully\n\n")
+        sys.stderr.write("  Word replacing completed successfully\n\n")
         internal__print_thesaurus_header(self.thesaurus_path)
 
     #
@@ -132,8 +132,8 @@ class ReplaceEndsWithWord(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} replacements made successfully\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} replacements made successfully\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

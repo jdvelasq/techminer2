@@ -72,15 +72,15 @@ class RemoveCommonInitialWords(
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("Removing common initial words from thesaurus keys\n")
-        sys.stdout.write(f"  File : {file_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Removing common initial words from thesaurus keys\n")
+        sys.stderr.write(f"  File : {file_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write(f"  Common initial words removal successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  Common initial words removal successfully\n\n")
+        sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
 
@@ -109,7 +109,7 @@ class RemoveCommonInitialWords(
             return text
 
         tqdm.pandas(desc="  Progress")
-        sys.stdout.write("\n")
+        sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
@@ -120,8 +120,8 @@ class RemoveCommonInitialWords(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stdout.write(f"  {n_matches} common initial words removed successfully\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_matches} common initial words removed successfully\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

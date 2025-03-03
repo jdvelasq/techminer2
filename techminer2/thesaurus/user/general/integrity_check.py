@@ -57,17 +57,17 @@ class IntegrityCheck(
 
         file_path = self.thesaurus_path
 
-        sys.stdout.write("Thesaurus integrity check\n")
-        sys.stdout.write(f"  File : {file_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write("Thesaurus integrity check\n")
+        sys.stderr.write(f"  File : {file_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
         n_terms = max(len(self.terms_in_thesaurus), len(self.terms_in_database))
-        sys.stdout.write(f"  {n_terms} terms checked\n")
-        sys.stdout.write(f"  Integrity check completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  {n_terms} terms checked\n")
+        sys.stderr.write(f"  Integrity check completed successfully\n\n")
+        sys.stderr.flush()
 
     #
     # ALGORITHM:
@@ -114,25 +114,25 @@ class IntegrityCheck(
         terms = self.missing_terms_in_database
         if terms is not None:
             terms = terms[:10]
-            sys.stdout.write(f"  Missing Terms in database:\n")
+            sys.stderr.write(f"  Missing Terms in database:\n")
             for term in terms:
-                sys.stdout.write(f"    - {term}\n")
+                sys.stderr.write(f"    - {term}\n")
             if len(terms) == 10:
-                sys.stdout.write("    ...\n")
-            sys.stdout.write("\n")
-            sys.stdout.flush()
+                sys.stderr.write("    ...\n")
+            sys.stderr.write("\n")
+            sys.stderr.flush()
 
         #
         terms = self.missing_terms_in_thesaurus
         if terms is not None:
             terms = terms[:10]
-            sys.stdout.write(f"  Missing Terms in thesaurus:\n")
+            sys.stderr.write(f"  Missing Terms in thesaurus:\n")
             for i_term, term in enumerate(terms):
-                sys.stdout.write(f"    - {term}\n")
+                sys.stderr.write(f"    - {term}\n")
             if len(terms) == 10:
-                sys.stdout.write("    ...\n")
-            sys.stdout.write("\n")
-            sys.stdout.flush()
+                sys.stderr.write("    ...\n")
+            sys.stderr.write("\n")
+            sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):

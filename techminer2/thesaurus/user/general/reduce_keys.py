@@ -61,18 +61,18 @@ class ReduceKeys(
         truncated_path = str(self.thesaurus_path)
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
-        sys.stdout.write(f"Reducing thesaurus keys\n")
-        sys.stdout.write(f"  File : {truncated_path}\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"Reducing thesaurus keys\n")
+        sys.stderr.write(f"  File : {truncated_path}\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stdout.write(
+        sys.stderr.write(
             f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
         )
-        sys.stdout.write(f"  Keys reduction completed successfully\n\n")
-        sys.stdout.flush()
+        sys.stderr.write(f"  Keys reduction completed successfully\n\n")
+        sys.stderr.flush()
 
     #
     # ALGORITHM:
