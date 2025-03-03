@@ -25,7 +25,7 @@ Printing thesaurus header
     AI
       ARTIFICIAL_INTELLIGENCE; purpose : considering THE_INCREASING_IMPACT of A...
     ANT
-      THIS_STUDY applies THE_LENS of ACTOR_NETWORK_THEORY ( ant ) to conduct A_...
+      ACTOR_NETWORK_THEORY; THIS_STUDY applies THE_LENS of ACTOR_NETWORK_THEORY...
     DEMATEL
       A_SIX_DIMENSIONAL_MODEL comprising 20 SUB_CRITERIA is constructed and BOT...
     E_FINANCE
@@ -35,9 +35,8 @@ Printing thesaurus header
     EPAM
       we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPA...
     EU
-      yet , empirically , FINTECH remains very small , especially in THE_EUROPE...
+      EUROPEAN_UNION; yet , empirically , FINTECH remains very small , especial...
 <BLANKLINE>
-
 
 
 
@@ -210,6 +209,14 @@ class CreateThesaurus(
         self.data_frame["fingerprint"] = self.data_frame.key.copy()
 
     # -------------------------------------------------------------------------
+    def internal__sort_mapping_values(self):
+        self.data_frame["value"] = self.data_frame["value"].str.split("; ")
+        self.data_frame["value"] = self.data_frame["value"].map(
+            lambda x: sorted(x, key=len)
+        )
+        self.data_frame["value"] = self.data_frame["value"].str.join("; ")
+
+    # -------------------------------------------------------------------------
     def run(self):
 
         self.params.field = "raw_descriptors"
@@ -227,5 +234,6 @@ class CreateThesaurus(
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
+        self.internal__sort_mapping_values()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()

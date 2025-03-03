@@ -12,16 +12,36 @@ Create thesaurus
 
 
 >>> from techminer2.thesaurus.references import CreateThesaurus
->>> (
-...     CreateThesaurus()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .build()
-... )
+>>> CreateThesaurus(root_directory = "example/").run()
+Creating thesaurus from 'global_references' field
+  File : example/thesaurus/global_references.the.txt
+  Creating main_documents data frame
 <BLANKLINE>
-Thesaurus creation completed successfully for file: ...lobal_references.the.txt
+  Creating references data frame
+  62 keys found
+  Thesaurus creation completed successfully
+<BLANKLINE>
+Printing thesaurus header
+  File : example/thesaurus/global_references.the.txt
+<BLANKLINE>
+    Alt R., 2018, ELECTRON MARK, V28, P235
+      Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
+    Anagnostopoulos I., 2018, J ECON BUS, V100, P7
+      Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...
+    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+      Arner D.W., Barberis J., Buckley R.P., Fintech, regtech, and the reconcep...
+    Buchak G., 2018, J FINANC ECON, V130, P453
+      Buchak G., Matvos G., Piskorski T., Seru A., Fintech, regulatory arbitrag...
+    Cai C.W., 2018, ACCOUNT FINANC, V58, P965
+      Cai C.W., Disruption of financial intermediation by FinTech: A review on ...
+    Chen L./1, 2016, CHINA ECON J, V9, P225
+      Chen L., From Fintech to Finlife: The case of Fintech development in Chin...
+    Dorfleitner G., 2017, FINTECH IN GER, P1
+      Dorfleitner G., Hornuf L., Schmitt M., Weber M., FinTech in Germany, (2017)
+    Gabor D., 2017, NEW POLIT ECON, V22, P423
+      Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
+<BLANKLINE>
+
 
 
 """
@@ -33,13 +53,14 @@ import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import (
+from ...._internals.mixins import ParamsMixin
+from ....database._internals.io import (
     internal__load_filtered_database,
     internal__load_records,
 )
-from ...package_data.text_processing import internal__load_text_processing_terms
-from .._internals import (
+from ....package_data.text_processing import internal__load_text_processing_terms
+from ..._internals import (
+    ThesaurusMixin,
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
@@ -67,24 +88,42 @@ def clean_text(text):
 
 class CreateThesaurus(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
+    #
+    # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def step_01_get_thesaurus_file_path(self):
-        self.file_path = internal__generate_user_thesaurus_file_path(params=self.params)
+    def internal__notify_process_start(self):
+
+        if not self.params.quiet:
+
+            field = self.params.field
+            truncated_path = str(self.thesaurus_path)
+            if len(truncated_path) > 72:
+                truncated_path = "..." + truncated_path[-68:]
+            sys.stdout.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stdout.write(f"  File : {truncated_path}\n")
+            sys.stdout.flush()
 
     # -------------------------------------------------------------------------
-    def step_02_print_info_header(self):
-        file_path = self.file_path
-        field = self.params.field
-        sys.stdout.write(f"\nCreating thesaurus from '{field}' field: {file_path}")
-        sys.stdout.flush()
+    def internal__notify_process_end(self):
 
+        if not self.params.quiet:
+
+            sys.stdout.write(f"  {len(self.data_frame)} keys found\n")
+            sys.stdout.write("  Thesaurus creation completed successfully\n\n")
+            sys.stdout.flush()
+
+            internal__print_thesaurus_header(self.thesaurus_path)
+
+    #
+    # ALGORITHM:
     # -------------------------------------------------------------------------
-    def step_03_create_main_documents_data_frame(self):
+    def internal__create_main_documents_data_frame(self):
 
-        sys.stdout.write(f"\n  Creating main_documents data frame")
+        sys.stdout.write(f"  Creating main_documents data frame\n")
         sys.stdout.flush()
 
         # loads the dataframe
@@ -121,7 +160,7 @@ class CreateThesaurus(
         self.main_documents = main_documents
 
     # -------------------------------------------------------------------------
-    def step_04_create_references_data_frame(self):
+    def internal__create_references_data_frame(self):
 
         sys.stdout.write(f"\n  Creating references data frame")
         sys.stdout.flush()
@@ -142,7 +181,7 @@ class CreateThesaurus(
         self.references = references
 
     # -------------------------------------------------------------------------
-    def step_05_create_thesaurus(self):
+    def internal__create_thesaurus(self):
 
         sys.stdout.write("\n")
 
@@ -175,32 +214,17 @@ class CreateThesaurus(
                 thesaurus[row.record_id] = sorted(refs.text.tolist())
                 self.references = self.references.drop(refs.index)
 
-        self.thesaurus = thesaurus
-
-    # -------------------------------------------------------------------------
-    def step_06_write_thesaurus_to_disk(self):
-
-        with open(self.file_path, "w", encoding="utf-8") as file:
-            for key in sorted(self.thesaurus.keys()):
-                values = self.thesaurus[key]
-                file.write(key + "\n")
-                for value in sorted(values):
-                    file.write("    " + value + "\n")
-
-    # -------------------------------------------------------------------------
-    def step_07_print_info_tail(self):
-        internal__print_thesaurus_header(thesaurus_path=self.file_path)
-        ##
-        truncated_file_path = str(self.file_path)
-        if len(truncated_file_path) > 28:
-            truncated_file_path = "..." + truncated_file_path[-24:]
-        sys.stdout.write(
-            f"\nThesaurus creation completed successfully for file: {truncated_file_path}"
+        self.data_frame = pd.DataFrame(
+            {
+                "key": list(thesaurus.keys()),
+                "value": list(thesaurus.values()),
+            }
         )
-        sys.stdout.flush()
+
+        self.data_frame = self.data_frame.explode("value")
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         self.params.update(
@@ -208,45 +232,13 @@ class CreateThesaurus(
             field="global_references",
         )
 
-        self.step_01_get_thesaurus_file_path()
-        self.step_02_print_info_header()
-        self.step_03_create_main_documents_data_frame()
-        self.step_04_create_references_data_frame()
-        self.step_05_create_thesaurus()
-        self.step_06_write_thesaurus_to_disk()
-        self.step_07_print_info_tail()
+        self.internal__build_user_thesaurus_path()
+        self.internal__notify_process_start()
+        self.internal__create_main_documents_data_frame()
+        self.internal__create_references_data_frame()
+        self.internal__create_thesaurus()
+        self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__notify_process_end()
 
 
-# def _apply_thesaurus(root_dir):
-#     # Apply the thesaurus to raw_global_references
-
-#     file_path = pathlib.Path(root_dir) / "thesaurus/global_references.the.txt"
-#     th = internal__load_reversed_thesaurus_as_mapping(file_path=file_path)
-
-#     dataframe = pd.read_csv(
-#         pathlib.Path(root_dir) / "databases/database.csv.zip",
-#         encoding="utf-8",
-#         compression="zip",
-#     )
-
-#     # creates a list of references
-#     dataframe["global_references"] = dataframe["raw_global_references"].str.split("; ")
-
-#     # replace the oriignal references by the record_id
-#     dataframe["global_references"] = dataframe["global_references"].map(
-#         lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
-#     )
-#     dataframe["global_references"] = dataframe["global_references"].map(
-#         lambda x: pd.NA if x == [] else x, na_action="ignore"
-#     )
-#     dataframe["global_references"] = dataframe["global_references"].map(
-#         lambda x: "; ".join(sorted(x)) if isinstance(x, list) else x
-#     )
-
-#     dataframe.to_csv(
-#         pathlib.Path(root_dir) / "databases/database.csv.zip",
-#         sep=",",
-#         encoding="utf-8",
-#         index=False,
-#         compression="zip",
-#     )
+# =============================================================================

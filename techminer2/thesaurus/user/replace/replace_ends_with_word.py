@@ -30,7 +30,7 @@ Replace Ends With Word
 ... ) 
 Replacing ending word in keys
          File : example/thesaurus/demo.the.txt
-         Word : None
+         Word : BUSINESS
   Replacement : business
   2 replacements made successfully
   Word replacing completed successfully
@@ -81,7 +81,7 @@ class ReplaceEndsWithWord(
     def internal__notify_process_start(self):
 
         file_path = str(self.thesaurus_path)
-        word = self.params.pattern
+        word = self.params.word
         replacement = self.params.replacement
 
         if len(file_path) > 40:

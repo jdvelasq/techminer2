@@ -6,31 +6,29 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Check Thesaurus Integrity
+Integrity Check
 ===============================================================================
 
->>> from techminer2.thesaurus.references import CheckThesaurusIntegrity
+>>> from techminer2.thesaurus.references import IntegrityCheck
 >>> (
-...     CheckThesaurusIntegrity()
+...     IntegrityCheck()
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .build()
 ... )
-<BLANKLINE>
-Thesaurus integrity check completed successfully for file: ...eferences.the.txt
 
 
 """
 
-from ..._internals.mixins import ParamsMixin
-from ..user import IntegrityCheck as UserIntegrityCheck
+from ...._internals.mixins import ParamsMixin
+from ...user import IntegrityCheck as UserIntegrityCheck
 
 
 #
 #
-class CheckThesaurusIntegrity(
+class IntegrityCheck(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -42,5 +40,5 @@ class CheckThesaurusIntegrity(
             .with_thesaurus_file("global_references.the.txt")
             .with_field("global_references")
             .where_root_directory_is(self.params.root_directory)
-            .build()
+            .run()
         )

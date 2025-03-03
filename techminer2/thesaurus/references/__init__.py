@@ -1,23 +1,12 @@
 """Thesaurus module."""
 
-from .apply_thesaurus import ApplyThesaurus
-
-# from .__check_thesaurus_for_misspelled_terms import CheckThesaurusForMisspelledTerms
-from .check_thesaurus_integrity import CheckThesaurusIntegrity
+from .general.apply_thesaurus import ApplyThesaurus
 
 # from .__cleanup_thesaurus import CleanupThesaurus
-from .create_thesaurus import CreateThesaurus
-from .sort_thesaurus_by_fuzzy_key_match import SortThesaurusByFuzzyKeyMatch
-from .sort_thesaurus_by_key_match import SortThesaurusByKeyMatch
-from .sort_thesaurus_by_key_order import SortThesaurusByKeyOrder
+from .general.create_thesaurus import CreateThesaurus
 
-__all__ = [
-    "ApplyThesaurus",
-    "CheckThesaurusForMisspelledTerms",
-    "CheckThesaurusIntegrity",
-    "CleanupThesaurus",
-    "CreateThesaurus",
-    "SortThesaurusByFuzzyKeyMatch",
-    "SortThesaurusByKeyOrder",
-    "SortThesaurusByKeyMatch",
-]
+# from .__check_thesaurus_for_misspelled_terms import CheckThesaurusForMisspelledTerms
+from .general.integrity_check import IntegrityCheck
+from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
+from .sort.sort_by_key_match import SortByKeyMatch
+from .sort.sort_by_key_order import SortByKeyOrder

@@ -12,6 +12,9 @@ from .remove.remove_initial_determiner import RemoveInitialDeterminer
 from .remove.remove_initial_stopwords import RemoveInitialStopwords
 from .remove.remove_parentheses import RemoveParentheses
 from .replace.replace_abbreviations import ReplaceAbbreviations
+from .replace.replace_ends_with_word import ReplaceEndsWithWord
+from .replace.replace_starts_with_word import ReplaceStartsWithWord
+from .replace.replace_word import ReplaceWord
 from .sort.find_editorials import FindEditorials
 from .sort.sort_by_ends_with_key_match import SortByEndsWithKeyMatch
 from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch

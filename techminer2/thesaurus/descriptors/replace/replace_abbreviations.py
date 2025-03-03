@@ -10,6 +10,12 @@
 Replace Abbreviations
 ===============================================================================
 
+>>> #
+>>> # TEST:
+>>> #
+>>> import shutil
+>>> shutil.copy("example/abbreviations.the.txt", "example/thesaurus/abbreviations.the.txt")
+'example/thesaurus/abbreviations.the.txt'
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -23,8 +29,32 @@ Replace Abbreviations
 ...     #
 ...     .run()
 ... )
+Replacing abbreviations in keys
+      Thesaurus : example/thesaurus/descriptors.the.txt
+  Abbreviations : example/thesaurus/abbreviations.the.txt
+  122 replacements made successfully
+  Abbreviations replacement completed successfully
 <BLANKLINE>
-Abbreviations replacement completed successfully for file: ...scriptors.the.txt
+Printing thesaurus header
+  File : example/thesaurus/descriptors.the.txt
+<BLANKLINE>
+    A_EUROPEAN_OR_NATIONAL_FINANCIAL_TECHNOLOGY_MARKET
+      A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET
+    A_FINANCIAL_TECHNOLOGY_COMPANY
+      A_FINTECH_COMPANY
+    A_FINANCIAL_TECHNOLOGY_ECOSYSTEM
+      A_FINTECH_ECOSYSTEM
+    A_NEW_FINANCIAL_TECHNOLOGY_INNOVATION_MAPPING_APPROACH
+      A_NEW_FINTECH_INNOVATION_MAPPING_APPROACH
+    A_THEORETICAL_DATA_DRIVEN_FINANCIAL_TECHNOLOGY_FRAMEWORK
+      A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
+    ACTIVE_FINANCIAL_TECHNOLOGY_SOLUTIONS
+      ACTIVE_FINTECH_SOLUTIONS
+    ARTIFICIAL_INTELLIGENCE
+      AI; ARTIFICIAL_INTELLIGENCE
+    BANK_FINANCIAL_TECHNOLOGY_PARTNERSHIP
+      BANK_FINTECH_PARTNERSHIP
+<BLANKLINE>
 
 
 """
@@ -35,6 +65,7 @@ from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import Params, ParamsMixin
 from ..._internals import (
+    ThesaurusMixin,
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
@@ -44,11 +75,38 @@ from ..._internals import (
 
 class ReplaceAbbreviations(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
+    #
+    # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def step_01_get_descriptors_thesaurus_file_path(self):
+    def internal__notify_process_start(self):
+
+        thesaurus_path = str(self.thesaurus_path)
+        if len(thesaurus_path) > 40:
+            thesaurus_path = "..." + thesaurus_path[-36:]
+
+        abbreviations_path = str(self.abbreviations_path)
+        if len(abbreviations_path) > 40:
+            abbreviations_path = "..." + abbreviations_path[-36:]
+
+        sys.stdout.write("Replacing abbreviations in keys\n")
+        sys.stdout.write(f"      Thesaurus : {thesaurus_path}\n")
+        sys.stdout.write(f"  Abbreviations : {abbreviations_path}\n")
+        sys.stdout.flush()
+
+    # -------------------------------------------------------------------------
+    def internal__notify_process_end(self):
+
+        sys.stdout.write("  Abbreviations replacement completed successfully\n\n")
+        internal__print_thesaurus_header(self.thesaurus_path)
+
+    #
+    # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__get_descriptors_thesaurus_file_path(self):
 
         params = (
             Params()
@@ -56,12 +114,10 @@ class ReplaceAbbreviations(
             .update(thesaurus_file="descriptors.the.txt")
         )
 
-        self.descriptors_file_path = internal__generate_user_thesaurus_file_path(
-            params=params
-        )
+        self.thesaurus_path = internal__generate_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
-    def step_02_get_abbrevaviations_thesaurus_file_path(self):
+    def internal__get_abbrevaviations_thesaurus_file_path(self):
 
         params = (
             Params()
@@ -69,102 +125,78 @@ class ReplaceAbbreviations(
             .update(thesaurus_file="abbreviations.the.txt")
         )
 
-        self.abbreviations_file_path = internal__generate_user_thesaurus_file_path(
+        self.abbreviations_path = internal__generate_user_thesaurus_file_path(
             params=params
         )
 
     # -------------------------------------------------------------------------
-    def step_02_print_info_header(self):
-        file_path = self.descriptors_file_path
-        # field = self.params.field
-        sys.stdout.write(f"Reemplacing abbreviations")
-        sys.stdout.write(f"\n  File : {file_path}")
-        sys.stdout.flush()
+    def internal__load_descriptor_thesaurus_as_data_frame(self):
+        self.data_frame = internal__load_thesaurus_as_data_frame(self.thesaurus_path)
 
     # -------------------------------------------------------------------------
-    def step_03_load_descriptor_thesaurus_as_data_frame(self):
-        self.data_frame = internal__load_thesaurus_as_data_frame(
-            self.descriptors_file_path
-        )
+    def internal__load_abbreviations_thesaurus_as_mapping(self):
+        self.mapping = internal__load_thesaurus_as_mapping(self.abbreviations_path)
 
     # -------------------------------------------------------------------------
-    def step_04_load_abbreviations_thesaurus_as_mapping(self):
-        self.abbreviations_dict = internal__load_thesaurus_as_mapping(
-            self.abbreviations_file_path
-        )
+    def internal__replace_abbreviations(self):
 
-    # -------------------------------------------------------------------------
-    def step_05_replace_abbreviations(self):
+        self.data_frame["__row_selected__"] = False
+        self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        for abbr, values in tqdm(
-            self.abbreviations_dict.items(), desc="    Reemplacing abbreviations"
-        ):
+        for abbr, value in tqdm(self.mapping.items(), desc="  Progress"):
             #
             # Replace abbreviations in descriptor keys
-            for value in values:
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile("^" + abbr + "$"), value, regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile("^" + abbr + "_"), value + "_", regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile("^" + abbr + " "), value + " ", regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile("_" + abbr + "$"), "_" + value, regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile(" " + abbr + "$"), " " + value, regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile("_" + abbr + "_"), "_" + value + "_", regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile(" " + abbr + "_"), " " + value + "_", regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile("_" + abbr + " "), "_" + value + " ", regex=True
-                )
-                self.data_frame["key"] = self.data_frame["key"].str.replace(
-                    re.compile(" " + abbr + " "), " " + value + " ", regex=True
-                )
+            value = value[0]
 
-    # -------------------------------------------------------------------------
-    def step_06_aggregate_descriptors_by_key(self):
-        self.data_frame = self.data_frame.sort_values(by=["key", "value"])
-        self.data_frame = self.data_frame.groupby("key", as_index=False).agg(
-            {"value": list}
-        )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile("^" + abbr + "$"), value, regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile("^" + abbr + "_"), value + "_", regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile("^" + abbr + " "), value + " ", regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile("_" + abbr + "$"), "_" + value, regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile(" " + abbr + "$"), " " + value, regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile("_" + abbr + "_"), "_" + value + "_", regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile(" " + abbr + "_"), " " + value + "_", regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile("_" + abbr + " "), "_" + value + " ", regex=True
+            )
+            self.data_frame["key"] = self.data_frame["key"].str.replace(
+                re.compile(" " + abbr + " "), " " + value + " ", regex=True
+            )
 
-    # -------------------------------------------------------------------------
-    def step_07_save_thesaurus(self):
+        self.data_frame.loc[
+            self.data_frame.key != self.data_frame.org_key,
+            "__row_selected__",
+        ] = True
 
-        with open(self.descriptors_file_path, "w", encoding="utf-8") as file:
-            for _, row in self.data_frame.iterrows():
-                file.write(row.key + "\n")
-                for item in row.value:
-                    file.write("    " + item + "\n")
+        n_matches = self.data_frame.__row_selected__.sum()
 
-    # -------------------------------------------------------------------------
-    def step_print_info_tail(self):
-        truncated_file_path = str(self.descriptors_file_path)
-        if len(truncated_file_path) > 21:
-            truncated_file_path = "..." + truncated_file_path[-17:]
-        sys.stdout.write(
-            f"\nAbbreviations replacement completed successfully for file: {truncated_file_path}"
-        )
+        sys.stdout.write(f"  {n_matches} replacements made successfully\n")
         sys.stdout.flush()
 
     # -------------------------------------------------------------------------
     def run(self):
         """:meta private:"""
-        self.step_01_get_descriptors_thesaurus_file_path()
-        self.step_02_get_abbrevaviations_thesaurus_file_path()
-        self.step_03_load_descriptor_thesaurus_as_data_frame()
-        self.step_04_load_abbreviations_thesaurus_as_mapping()
-        self.step_05_replace_abbreviations()
-        self.step_06_aggregate_descriptors_by_key()
-        self.step_07_save_thesaurus()
-        self.step_print_info_tail()
-        return
+        self.internal__get_descriptors_thesaurus_file_path()
+        self.internal__get_abbrevaviations_thesaurus_file_path()
+        self.internal__notify_process_start()
+        self.internal__load_descriptor_thesaurus_as_data_frame()
+        self.internal__load_abbreviations_thesaurus_as_mapping()
+        self.internal__replace_abbreviations()
+        self.internal__reduce_keys()
+        self.internal__explode_and_group_values_by_key()
+        self.internal__sort_data_frame_by_rows_and_key()
+        self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__notify_process_end()

@@ -12,14 +12,7 @@ Create Thesaurus
 
 
 >>> from techminer2.thesaurus.countries import CreateThesaurus
->>> (
-...     CreateThesaurus()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+>>> CreateThesaurus(root_directory="example/").run()
 Creating thesaurus from 'affiliations' field
   File : example/thesaurus/countries.the.txt
   24 keys found

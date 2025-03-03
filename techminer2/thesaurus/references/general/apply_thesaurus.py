@@ -9,41 +9,41 @@
 Apply Thesaurus 
 ===============================================================================
 
-## >>> from techminer2.thesaurus.references import ApplyThesaurus
-## >>> (
-## ...     ApplyThesaurus()
-## ...     #
-## ...     # DATABASE:
-## ...     .where_root_directory_is("example/")
-## ...     #
-## ...     .build()
-## ... )
---INFO-- The example/global_references.txt thesaurus file was applied to global_references in 'main' database
+>>> from techminer2.thesaurus.references import ApplyThesaurus
+>>> ApplyThesaurus(root_directory="example/").run()
+Applying user thesaurus to database
+          File : example/thesaurus/global_references.the.txt
+  Source field : raw_global_references
+  Target field : global_references
+  Thesaurus application completed successfully
+<BLANKLINE>
+
+
+
 
 """
 
-from ..._internals.mixins import ParamsMixin
-from ..user import ApplyThesaurus as ApplyUserThesaurus
+from ...._internals.mixins import ParamsMixin
+from ..._internals import ThesaurusMixin
+from ...user import ApplyThesaurus as ApplyUserThesaurus
 
 
 #
 #
 class ApplyThesaurus(
     ParamsMixin,
+    ThesaurusMixin,
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
-        # Affiliations to countries mmapping
-        (
-            ApplyUserThesaurus()
-            .with_thesaurus_file("references.the.txt")
-            .with_field("raw_global_references")
-            .with_other_field("global_references")
-            .where_root_directory_is(self.params.root_directory)
-            .build()
-        )
+        ApplyUserThesaurus(
+            thesaurus_file="global_references.the.txt",
+            field="raw_global_references",
+            other_field="global_references",
+            root_directory=self.params.root_directory,
+        ).run()
 
 
 # def _apply_thesaurus(root_dir):
