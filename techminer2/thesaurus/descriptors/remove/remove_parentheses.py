@@ -11,12 +11,24 @@ Parentheses Remover
 ===============================================================================
 
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> from techminer2.thesaurus.descriptors import RemoveParentheses
 >>> RemoveParentheses(root_directory="example/").run()
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Removing parentheses from thesaurus keys
 <BLANKLINE>
   File : example/thesaurus/descriptors.the.txt
@@ -43,7 +55,7 @@ Printing thesaurus header
     A_A_)_THEORY
       A_A_)_THEORY
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

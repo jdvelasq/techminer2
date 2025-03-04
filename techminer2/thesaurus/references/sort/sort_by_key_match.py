@@ -12,7 +12,16 @@ Sort by Key Match
 
 Finds a string in the terms of a thesaurus.
 
-
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> from techminer2.thesaurus.references import SortByKeyMatch
 >>> (
 ...     SortByKeyMatch()
@@ -25,6 +34,12 @@ Finds a string in the terms of a thesaurus.
 ...     #
 ...     .run()
 ... ) 
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus file by key match
             File : example/thesaurus/references.the.txt
          Pattern : ECON
@@ -54,7 +69,7 @@ Printing thesaurus header
     Alt R., 2018, ELECTRON MARK, V28, P235
       Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

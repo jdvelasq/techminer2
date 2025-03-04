@@ -10,6 +10,12 @@
 Create thesaurus
 ===============================================================================
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 
 >>> from techminer2.thesaurus.organizations import CreateThesaurus
 >>> (
@@ -20,6 +26,12 @@ Create thesaurus
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Creating thesaurus from 'affiliations' field
   File : example/thesaurus/organizations.the.txt
   90 keys found
@@ -45,7 +57,7 @@ Printing thesaurus header
     CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
       CESifo, Poschingerstr. 5, Munich, 81679, Germany
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

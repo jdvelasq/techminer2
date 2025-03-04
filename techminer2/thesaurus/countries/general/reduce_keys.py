@@ -10,7 +10,12 @@
 Cleanup Thesaurus
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.countries import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -24,12 +29,19 @@ Cleanup Thesaurus
 ...     #
 ...     .run()
 ... )
+
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Reducing thesaurus keys
   File : example/thesaurus/countries.the.txt
   Keys reduced from 24 to 24
   Keys reduction completed successfully
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

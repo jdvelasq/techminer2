@@ -10,6 +10,12 @@
 Replace Word 
 ===============================================================================
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -27,6 +33,12 @@ Replace Word
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Replacing word in keys
          File : example/thesaurus/descriptors.the.txt
          Word : FINTECH
@@ -54,7 +66,7 @@ Printing thesaurus header
     BANKS_OFFERING_fintech_SERVICES_NEED
       BANKS_OFFERING_FINTECH_SERVICES_NEED
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

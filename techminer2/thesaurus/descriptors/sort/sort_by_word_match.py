@@ -10,6 +10,13 @@
 Sort by Word Match
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -26,6 +33,12 @@ Sort by Word Match
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus file by word match
   File : example/thesaurus/descriptors.the.txt
   Word : CREDIT
@@ -52,7 +65,7 @@ Printing thesaurus header
     A_BEHAVIOURAL_PERSPECTIVE
       A_BEHAVIOURAL_PERSPECTIVE
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

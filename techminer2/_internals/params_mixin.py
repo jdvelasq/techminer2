@@ -160,6 +160,7 @@ class Params:
     top_n: Optional[int] = None
     top_terms_by_theme: int = 5
     total_records_threshold: int = 7
+    tqdm_disable: bool = False
 
     #
     # U

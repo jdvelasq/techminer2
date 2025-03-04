@@ -10,6 +10,13 @@
 Sort by Key Order
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.countries import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -27,6 +34,13 @@ Sort by Key Order
 ...     #
 ...     .run()
 ... )
+
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus alphabetically
   File : example/thesaurus/countries.the.txt
   Thesaurus sorting completed successfully
@@ -51,8 +65,16 @@ Printing thesaurus header
     Ghana
       University of the Free State and University of Ghana Business School, Uni...
 <BLANKLINE>
+<BLANKLINE>
 
 
+
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> from techminer2.thesaurus.countries import CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
@@ -67,7 +89,14 @@ Printing thesaurus header
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
-... )      
+... )
+
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by key length
   File : example/thesaurus/countries.the.txt
   Thesaurus sorting completed successfully
@@ -92,8 +121,14 @@ Printing thesaurus header
     Australia
       Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
 <BLANKLINE>
+<BLANKLINE>
 
 
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
@@ -109,6 +144,13 @@ Printing thesaurus header
 ...     #
 ...     .run()
 ... )
+
+
+
+>>> # TEST RESULTS
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by word length
   File : example/thesaurus/countries.the.txt
   Thesaurus sorting completed successfully
@@ -133,7 +175,7 @@ Printing thesaurus header
     Slovenia
       Faculty of Economics, University of Ljubljana, Kardeljeva pl. 17, Ljublja...
 <BLANKLINE>
-
+<BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin

@@ -10,6 +10,13 @@
 Translate American to British Spelling
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
@@ -17,7 +24,7 @@ Translate American to British Spelling
 
 >>> from techminer2.thesaurus.user import AmericanToBritishSpelling
 >>> (
-...     AmericanToBritishSpelling()
+...     AmericanToBritishSpelling(tqdm_disable=True)
 ...     # 
 ...     # THESAURUS:
 ...     .with_thesaurus_file("demo.the.txt")
@@ -27,6 +34,12 @@ Translate American to British Spelling
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output) # doctest: +ELLIPSIS
 Converting American to British English
   File : example/thesaurus/demo.the.txt
   23 replacements made successfully
@@ -52,7 +65,7 @@ Printing thesaurus header
     EXCESSIVELY_RISKY_BEHAVIOUR
       EXCESSIVELY_RISKY_BEHAVIOR
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 
@@ -134,12 +147,10 @@ class AmericanToBritishSpelling(
                 x = pattern.sub(replacement, x)
             return x
 
-        sys.stderr.write("\n")
         sys.stderr.flush()
-        tqdm.pandas(desc="  Progress")
+        tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable)
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
-        sys.stderr.write("\n")
         sys.stderr.flush()
 
         self.data_frame.loc[

@@ -10,9 +10,17 @@
 Replace Ends With Word 
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
+
 
 >>> from techminer2.thesaurus.user import ReplaceEndsWithWord
 >>> (
@@ -28,6 +36,12 @@ Replace Ends With Word
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Replacing ending word in keys
          File : example/thesaurus/demo.the.txt
          Word : BUSINESS
@@ -55,7 +69,7 @@ Printing thesaurus header
     A_BLOCKCHAIN_IMPLEMENTATION_STUDY
       A_BLOCKCHAIN_IMPLEMENTATION_STUDY
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

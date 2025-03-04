@@ -10,6 +10,13 @@
 Sort by Key Order
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.organizations import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -27,6 +34,12 @@ Sort by Key Order
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus alphabetically
   File : example/thesaurus/organizations.the.txt
   Thesaurus sorting completed successfully
@@ -51,9 +64,13 @@ Printing thesaurus header
     Cent for Law, Markets & Regulation, UNSW Australia, Australia (AUS)
       Centre for Law, Markets & Regulation, UNSW Australia, Australia
 <BLANKLINE>
+<BLANKLINE>
 
 
 
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
 >>> from techminer2.thesaurus.organizations import SortByKeyOrder
@@ -67,7 +84,13 @@ Printing thesaurus header
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
-... )      
+... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by key length
   File : example/thesaurus/organizations.the.txt
   Thesaurus sorting completed successfully
@@ -92,9 +115,12 @@ Printing thesaurus header
     Max Planck Inst for Innovation and Competition (DEU)
       Max Planck Institute for Innovation and Competition, Marstallplatz 1, Mun...
 <BLANKLINE>
+<BLANKLINE>
 
 
-
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
 >>> from techminer2.thesaurus.organizations import SortByKeyOrder
@@ -109,6 +135,11 @@ Printing thesaurus header
 ...     #
 ...     .run()
 ... )
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by word length
   File : example/thesaurus/organizations.the.txt
   Thesaurus sorting completed successfully
@@ -133,7 +164,7 @@ Printing thesaurus header
     Sungkyunkwan Univ (KOR)
       Software College, Sungkyunkwan University, Suwon, South Korea; Sungkyunkw...
 <BLANKLINE>
-
+<BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin

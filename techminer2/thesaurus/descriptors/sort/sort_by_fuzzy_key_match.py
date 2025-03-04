@@ -10,6 +10,13 @@
 Sort by Fuzzy Key Match
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -27,6 +34,12 @@ Sort by Fuzzy Key Match
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by fuzzy match
             File : example/thesaurus/descriptors.the.txt
        Keys like : INFORM
@@ -53,6 +66,7 @@ Printing thesaurus header
       BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
     CLASSIFICATION (OF_INFORMATION)
       CLASSIFICATION (OF_INFORMATION)
+<BLANKLINE>
 <BLANKLINE>
 
 

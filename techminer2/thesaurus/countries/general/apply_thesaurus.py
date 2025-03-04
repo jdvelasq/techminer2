@@ -9,8 +9,15 @@
 Apply Thesaurus 
 ===============================================================================
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.countries import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
 
 
 >>> from techminer2.thesaurus.countries import ApplyThesaurus
@@ -22,6 +29,12 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Applying user thesaurus to database
           File : example/thesaurus/countries.the.txt
   Source field : affiliations
@@ -40,11 +53,7 @@ Applying system thesaurus to database
   Target field : subregions
   Thesaurus application completed successfully
 <BLANKLINE>
-
-
->>> #
->>> # TESTS:
->>> #
+<BLANKLINE>
 >>> from techminer2.database.tools import Query
 >>> Query(
 ...     query_expression="SELECT countries FROM database LIMIT 10;",

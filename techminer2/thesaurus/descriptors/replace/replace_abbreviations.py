@@ -10,25 +10,28 @@
 Replace Abbreviations
 ===============================================================================
 
->>> #
->>> # TEST:
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 >>> #
 >>> import shutil
 >>> shutil.copy("example/abbreviations.the.txt", "example/thesaurus/abbreviations.the.txt")
 'example/thesaurus/abbreviations.the.txt'
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> from techminer2.thesaurus.descriptors import ReplaceAbbreviations
->>> (
-...     ReplaceAbbreviations()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+>>> ReplaceAbbreviations(root_directory="example/", tqdm_disable=True).run()
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Replacing abbreviations in keys
       Thesaurus : example/thesaurus/descriptors.the.txt
   Abbreviations : example/thesaurus/abbreviations.the.txt
@@ -55,7 +58,7 @@ Printing thesaurus header
     BANK_FINANCIAL_TECHNOLOGY_PARTNERSHIP
       BANK_FINTECH_PARTNERSHIP
 <BLANKLINE>
-
+<BLANKLINE>
 
 """
 import re
@@ -143,7 +146,11 @@ class ReplaceAbbreviations(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        for abbr, value in tqdm(self.mapping.items(), desc="  Progress"):
+        for abbr, value in tqdm(
+            self.mapping.items(),
+            desc="  Progress ",
+            disable=self.params.tqdm_disable,
+        ):
             #
             # Replace abbreviations in descriptor keys
             value = value[0]

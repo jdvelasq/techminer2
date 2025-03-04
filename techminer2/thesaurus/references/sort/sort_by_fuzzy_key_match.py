@@ -10,6 +10,17 @@
 Sort by Fuzzy Match
 ===============================================================================
 
+
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> from techminer2.thesaurus.references import SortByFuzzyKeyMatch
 >>> (
 ...     SortByFuzzyKeyMatch()
@@ -23,6 +34,12 @@ Sort by Fuzzy Match
 ...     #
 ...     .run()
 ... ) 
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by fuzzy match
             File : example/thesaurus/references.the.txt
        Keys like : ACCOU
@@ -50,7 +67,7 @@ Printing thesaurus header
     Gabor D., 2017, NEW POLIT ECON, V22, P423
       Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

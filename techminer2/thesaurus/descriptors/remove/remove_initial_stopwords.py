@@ -10,12 +10,25 @@
 Starting Stopwords Remover
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> from techminer2.thesaurus.descriptors import RemoveInitialStopwords
->>> RemoveInitialStopwords(root_directory="example/").run()
+>>> RemoveInitialStopwords(root_directory="example/", tqdm_disable=True).run()
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Removing starting stopwords from thesaurus keys  File : example/thesaurus/descriptors.the.txt
   562 initial stopwords removed successfully
   Starting stopwords removal completed successfully
@@ -40,7 +53,7 @@ Printing thesaurus header
     ADVANCEMENT
       THE_ADVANCEMENT
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """
@@ -107,7 +120,7 @@ class RemoveInitialStopwords(
                 text = pattern.sub("", text)
             return text
 
-        tqdm.pandas(desc="  Progress")
+        tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable)
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 

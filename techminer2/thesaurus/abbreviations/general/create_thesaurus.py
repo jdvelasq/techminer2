@@ -10,9 +10,22 @@
 Create Thesaurus
 ===============================================================================
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+
+
 
 >>> from techminer2.thesaurus.abbreviations import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/").run()
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Creating thesaurus
   20 abbreviations found
   Thesaurus creation completed successfully

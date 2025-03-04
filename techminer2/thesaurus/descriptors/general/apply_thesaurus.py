@@ -10,7 +10,12 @@
 Apply Thesaurus 
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -23,6 +28,12 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Applying user thesaurus to database
           File : example/thesaurus/descriptors.the.txt
   Source field : raw_author_keywords
@@ -65,7 +76,7 @@ Applying user thesaurus to database
   Target field : descriptors
   Thesaurus application completed successfully
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

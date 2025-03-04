@@ -9,15 +9,32 @@
 Apply Thesaurus 
 ===============================================================================
 
+
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> from techminer2.thesaurus.references import ApplyThesaurus
 >>> ApplyThesaurus(root_directory="example/").run()
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Applying user thesaurus to database
           File : example/thesaurus/references.the.txt
   Source field : raw_global_references
   Target field : global_references
   Thesaurus application completed successfully
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

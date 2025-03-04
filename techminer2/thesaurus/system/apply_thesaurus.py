@@ -10,6 +10,16 @@
 Apply Thesaurus
 ===============================================================================
 
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> from techminer2.thesaurus.system import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
@@ -26,11 +36,18 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Applying system thesaurus to database
           File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
   Source field : countries
   Target field : regions
   Thesaurus application completed successfully
+<BLANKLINE>
 <BLANKLINE>
 
 """

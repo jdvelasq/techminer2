@@ -10,6 +10,13 @@
 Replace Starts With Word 
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
@@ -28,6 +35,12 @@ Replace Starts With Word
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Replacing starting word in keys
          File : example/thesaurus/demo.the.txt
          Word : BUSINESS
@@ -55,7 +68,7 @@ Printing thesaurus header
     A_A_)_THEORY
       A_A_)_THEORY
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

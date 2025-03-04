@@ -10,6 +10,13 @@
 Sort by Key Order
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
@@ -28,6 +35,12 @@ Sort by Key Order
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus alphabetically
   File : example/thesaurus/demo.the.txt
   Thesaurus sorting completed successfully
@@ -52,7 +65,12 @@ Printing thesaurus header
     ACCESS
       ACCESS
 <BLANKLINE>
+<BLANKLINE>
 
+
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
@@ -67,6 +85,12 @@ Printing thesaurus header
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by key length
   File : example/thesaurus/demo.the.txt
   Thesaurus sorting completed successfully
@@ -91,7 +115,12 @@ Printing thesaurus header
     FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
       FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
 <BLANKLINE>
+<BLANKLINE>
 
+
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> from techminer2.thesaurus.user import SortByKeyOrder
 >>> (
@@ -106,6 +135,12 @@ Printing thesaurus header
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by word length
   File : example/thesaurus/demo.the.txt
   Thesaurus sorting completed successfully
@@ -130,7 +165,7 @@ Printing thesaurus header
     EXPLORE_INTERRELATIONSHIPS
       EXPLORE_INTERRELATIONSHIPS
 <BLANKLINE>
-
+<BLANKLINE>
 
 """
 import sys

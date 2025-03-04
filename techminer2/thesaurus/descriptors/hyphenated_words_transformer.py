@@ -10,23 +10,33 @@
 Hypenated Words Transformer
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> from techminer2.thesaurus.descriptors import HyphenatedWordsTransformer
 >>> (
-...     HyphenatedWordsTransformer()
+...     HyphenatedWordsTransformer(tqdm_disable=True)
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Transforming hyphenated words in thesaurus keys
   File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
   51 hypenated words transformed successfully
   Hyphenated words transformation completed successfully
 <BLANKLINE>
@@ -50,7 +60,7 @@ Printing thesaurus header
     BLOCK_CHAIN_ENABLES
       BLOCKCHAIN_ENABLES
 <BLANKLINE>
-
+<BLANKLINE>
 
 """
 import re
@@ -185,8 +195,9 @@ class HyphenatedWordsTransformer(
                 x = pattern.sub(replacement, x)
             return x
 
-        tqdm.pandas(desc="  Processing hyphenated words")
-        sys.stderr.write("\n")
+        tqdm.pandas(
+            desc="  Processing hyphenated words ", disable=self.params.tqdm_disable
+        )
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
 

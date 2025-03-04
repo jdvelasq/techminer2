@@ -10,6 +10,12 @@ Spell Check
 ===============================================================================
 
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
@@ -28,6 +34,12 @@ Spell Check
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Spell checking thesaurus keys
   File : example/thesaurus/demo.the.txt
   Potential misspelled words (77):
@@ -67,14 +79,24 @@ Printing thesaurus header
     ANALYSE
       ANALYSE
 <BLANKLINE>
+<BLANKLINE>
 
 
+>>> # TEST PREPARATION:
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> SpellCheck(
 ...     thesaurus_file="demo.the.txt", 
 ...     maximum_occurrence=3,
 ...     root_directory="example/",
 ... ).run()
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Spell checking thesaurus keys
   File : example/thesaurus/demo.the.txt
   Potential misspelled words (77):
@@ -113,6 +135,7 @@ Printing thesaurus header
       AGROPAY
     ANALYSE
       ANALYSE
+<BLANKLINE>
 <BLANKLINE>
 
 

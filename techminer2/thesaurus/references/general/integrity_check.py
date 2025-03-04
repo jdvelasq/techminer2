@@ -9,6 +9,17 @@
 Integrity Check
 ===============================================================================
 
+
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> from techminer2.thesaurus.references import IntegrityCheck
 >>> (
 ...     IntegrityCheck()
@@ -18,6 +29,12 @@ Integrity Check
 ...     #
 ...     .build()
 ... )
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 
 
 """

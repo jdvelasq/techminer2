@@ -9,7 +9,12 @@
 Integrity Check
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -23,12 +28,18 @@ Integrity Check
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Thesaurus integrity check
   File : example/thesaurus/descriptors.the.txt
   1865 terms checked
   Integrity check completed successfully
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

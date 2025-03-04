@@ -10,6 +10,13 @@
 Sort By Ends With Key Match
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.organizations import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -25,7 +32,13 @@ Sort By Ends With Key Match
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
-... ) 
+... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output) 
 Sorting thesaurus file by key match
      File : example/thesaurus/organizations.the.txt
   Pattern : (AUS)
@@ -51,6 +64,7 @@ Printing thesaurus header
       Department of Information Security, Baewha Women’s University, Seoul, Sou...
     Baylor Univ (USA)
       Baylor University, United States; Hankamer School of Business, Baylor Uni...
+<BLANKLINE>
 <BLANKLINE>
 
 

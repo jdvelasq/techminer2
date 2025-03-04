@@ -10,13 +10,27 @@
 Create thesaurus
 ===============================================================================
 
-
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> from techminer2.thesaurus.references import CreateThesaurus
->>> CreateThesaurus(root_directory = "example/").run()
+>>> CreateThesaurus(root_directory = "example/", tqdm_disable=True).run()
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Creating thesaurus from 'global_references' field
   File : example/thesaurus/references.the.txt
   Creating main_documents data frame
-<BLANKLINE>
   Creating references data frame
   62 keys found
   Thesaurus creation completed successfully
@@ -41,7 +55,7 @@ Printing thesaurus header
     Gabor D., 2017, NEW POLIT ECON, V22, P423
       Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """
@@ -175,13 +189,12 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_thesaurus(self):
 
-        sys.stderr.write("\n")
-
         thesaurus = {}
         for _, row in tqdm(
             self.main_documents.iterrows(),
             total=self.main_documents.shape[0],
-            desc="  Homogenizing global references",
+            desc="  Homogenizing global references ",
+            disable=self.params.tqdm_disable,
         ):
 
             refs = self.references.copy()

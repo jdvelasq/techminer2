@@ -11,8 +11,21 @@ Create Thesaurus
 ===============================================================================
 
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+
+
 >>> from techminer2.thesaurus.countries import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/").run()
+
+
+>>> # TEST PREPARATION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Creating thesaurus from 'affiliations' field
   File : example/thesaurus/countries.the.txt
   24 keys found

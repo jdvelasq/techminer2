@@ -10,6 +10,13 @@
 Sort by Key Order
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -27,6 +34,12 @@ Sort by Key Order
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus alphabetically
   File : example/thesaurus/descriptors.the.txt
   Thesaurus sorting completed successfully
@@ -51,8 +64,14 @@ Printing thesaurus header
     ACCESS
       ACCESS
 <BLANKLINE>
+<BLANKLINE>
 
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
 >>> from techminer2.thesaurus.descriptors import SortByKeyOrder
@@ -66,7 +85,13 @@ Printing thesaurus header
 ...     .where_root_directory_is("example/")
 ...     #
 ...     .run()
-... )      
+... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by key length
   File : example/thesaurus/descriptors.the.txt
   Thesaurus sorting completed successfully
@@ -91,8 +116,15 @@ Printing thesaurus header
     FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
       FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
 <BLANKLINE>
+<BLANKLINE>
 
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
 
 
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
@@ -108,6 +140,12 @@ Printing thesaurus header
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus by word length
   File : example/thesaurus/descriptors.the.txt
   Thesaurus sorting completed successfully
@@ -132,7 +170,7 @@ Printing thesaurus header
     EXPLORE_INTERRELATIONSHIPS
       EXPLORE_INTERRELATIONSHIPS
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

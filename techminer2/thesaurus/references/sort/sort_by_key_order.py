@@ -10,7 +10,16 @@
 Sort by Key Order
 ===============================================================================
 
-
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
+>>> # CODE:
+>>> #
 >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
 >>> from techminer2.thesaurus.references import SortByKeyOrder
 >>> (
@@ -24,6 +33,12 @@ Sort by Key Order
 ...     #
 ...     .run()
 ... )
+>>> #
+>>> # TEST EXECUTION:
+>>> #
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus alphabetically
   File : example/thesaurus/references.the.txt
   Thesaurus sorting completed successfully
@@ -48,7 +63,7 @@ Printing thesaurus header
     Gabor D., 2017, NEW POLIT ECON, V22, P423
       Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

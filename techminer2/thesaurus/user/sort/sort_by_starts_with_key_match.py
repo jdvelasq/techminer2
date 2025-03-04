@@ -10,6 +10,13 @@
 Sort by Starts With Key Match
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.user import CreateThesaurus
 >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
 ...     root_directory="example/", quiet=True).run()
@@ -27,6 +34,12 @@ Sort by Starts With Key Match
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus file by key match
      File : example/thesaurus/demo.the.txt
   Pattern : BUSINESS
@@ -53,7 +66,7 @@ Printing thesaurus header
     A_A_)_THEORY
       A_A_)_THEORY
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

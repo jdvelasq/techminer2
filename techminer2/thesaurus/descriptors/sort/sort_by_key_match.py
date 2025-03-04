@@ -10,6 +10,13 @@
 Sort By Key Match
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -29,6 +36,12 @@ Sort By Key Match
 ...     #
 ...     .run()
 ... ) 
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Sorting thesaurus file by key match
             File : example/thesaurus/descriptors.the.txt
          Pattern : BLOCK
@@ -57,6 +70,7 @@ Printing thesaurus header
       A_A_)_THEORY
     A_A_THEORY
       A_A_THEORY
+<BLANKLINE>
 <BLANKLINE>
 
 

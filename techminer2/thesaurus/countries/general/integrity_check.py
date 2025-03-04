@@ -9,10 +9,15 @@
 Integrity Check
 ===============================================================================
 
+
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.countries import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
-
-
 
 
 >>> from techminer2.thesaurus.countries import IntegrityCheck
@@ -24,12 +29,18 @@ Integrity Check
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Thesaurus integrity check
   File : example/thesaurus/countries.the.txt
   106 terms checked
   Integrity check completed successfully
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """

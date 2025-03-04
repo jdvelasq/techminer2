@@ -10,7 +10,12 @@
 Reduce Keys
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
@@ -24,12 +29,18 @@ Reduce Keys
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Reducing thesaurus keys
   File : example/thesaurus/descriptors.the.txt
   Keys reduced from 1796 to 1796
   Keys reduction completed successfully
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 

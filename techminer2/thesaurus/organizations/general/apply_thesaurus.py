@@ -9,7 +9,12 @@
 Apply Thesaurus 
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 
 >>> from techminer2.thesaurus.organizations import ApplyThesaurus
 >>> (
@@ -20,12 +25,20 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Applying user thesaurus to database
           File : example/thesaurus/organizations.the.txt
   Source field : affiliations
   Target field : organizations
   Thesaurus application completed successfully
 <BLANKLINE>
+<BLANKLINE>
+
 
 """
 from ...._internals.mixins import ParamsMixin

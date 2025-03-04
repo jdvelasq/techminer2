@@ -10,13 +10,24 @@
 Common Ending Words Remover
 ===============================================================================
 
-
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+>>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
 >>> from techminer2.thesaurus.descriptors import RemoveCommonLastWords
->>> RemoveCommonLastWords(root_directory="example/").run()
+>>> RemoveCommonLastWords(root_directory="example/", tqdm_disable=True).run()
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Removing common last words from thesaurus keys
   File : example/thesaurus/descriptors.the.txt
 <BLANKLINE>
@@ -44,7 +55,7 @@ Printing thesaurus header
     LENDINGCLUB_LOANS
       LENDINGCLUB_LOANS_INCREASES
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 """
@@ -110,7 +121,7 @@ class RemoveCommonLastWords(
                 text = pattern.sub("", text)
             return text
 
-        tqdm.pandas(desc="  Progress")
+        tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable)
         sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)

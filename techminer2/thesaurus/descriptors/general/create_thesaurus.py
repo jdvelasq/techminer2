@@ -10,6 +10,12 @@
 Create Thesaurus
 ===============================================================================
 
+>>> # TEST PREPARATION:
+>>> import sys
+>>> from io import StringIO
+>>> old_stderr = sys.stderr
+>>> sys.stderr = StringIO()
+
 
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> (
@@ -20,6 +26,12 @@ Create Thesaurus
 ...     #
 ...     .run()
 ... )
+
+
+>>> # TEST EXECUTION:
+>>> output = sys.stderr.getvalue()
+>>> sys.stderr = old_stderr
+>>> print(output)
 Creating thesaurus from 'raw_descriptors' field
   File : example/thesaurus/descriptors.the.txt
   1796 keys found
@@ -45,7 +57,7 @@ Printing thesaurus header
     A_CHALLENGE
       A_CHALLENGE
 <BLANKLINE>
-
+<BLANKLINE>
 
 
 
