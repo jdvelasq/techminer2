@@ -32,9 +32,9 @@ Word Cloud
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.save("sphinx/images/database/metrics/performance/word_cloud.png")
 
@@ -54,9 +54,9 @@ class WordCloud(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).build()
+        data_frame = DataFrame().update(**self.params.__dict__).run()
         fig = internal__word_cloud(params=self.params, data_frame=data_frame)
 
         return fig

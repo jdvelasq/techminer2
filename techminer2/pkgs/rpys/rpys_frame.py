@@ -16,7 +16,7 @@ RPYS (Reference Publication Year Spectroscopy) Frame
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
-...     .build()
+...     .run()
 ... ).head()
       Num References  Median
 2015               1    -1.0
@@ -39,7 +39,7 @@ class RPYSDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         references = internal__load_filtered_database(params=self.params)

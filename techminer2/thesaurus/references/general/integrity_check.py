@@ -27,7 +27,7 @@ Integrity Check
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> #
 >>> # TEST EXECUTION:
@@ -50,7 +50,7 @@ class IntegrityCheck(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         (
             UserIntegrityCheck()

@@ -31,10 +31,10 @@ Node Degree Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/pkgs/networks/citation/authors/network_degree_plot.html")
 
@@ -60,10 +60,10 @@ class NodeDegreePlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             OtherNodeDegreePlot()
             .update(**self.params.__dict__)
             .unit_of_analysis("authors")
-            .build()
+            .run()
         )

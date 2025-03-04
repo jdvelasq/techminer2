@@ -9,12 +9,28 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.database.internals.io import intenal__load_records
+>>> from techminer2._internals.params_mixin import Params
+>>> from techminer2.database._internals.io import internal__load_records
 >>> (
-...     RecordsLoader()
-...     .where_root_directory_is("example/")
-...     .build()
-... ).head() # doctest: +ELLIPSIS
+...     internal__load_records(
+...         Params(
+...             database="main",
+...             record_years_range=(None, None),
+...             record_citations_range=(None, None),
+...             records_order_by=None,
+...             records_match=None,
+...             root_directory="example/",
+...         )
+...     ).head() # doctest: +ELLIPSIS
+... ) 
+                                                link  ... raw_abstract_copy
+0  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
+1  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
+2  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
+3  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
+4  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
+<BLANKLINE>
+[5 rows x 77 columns]
 
 
 

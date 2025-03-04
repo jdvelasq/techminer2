@@ -82,24 +82,28 @@ class ApplyThesaurus(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = str(self.thesaurus_path)
-        field = self.params.field
-        other_field = self.params.other_field
+        if not self.params.quiet:
 
-        if len(file_path) > 64:
-            file_path = "..." + file_path[-60:]
+            file_path = str(self.thesaurus_path)
+            field = self.params.field
+            other_field = self.params.other_field
 
-        sys.stderr.write("Applying user thesaurus to database\n")
-        sys.stderr.write(f"          File : {file_path}\n")
-        sys.stderr.write(f"  Source field : {field}\n")
-        sys.stderr.write(f"  Target field : {other_field}\n")
-        sys.stderr.flush()
+            if len(file_path) > 64:
+                file_path = "..." + file_path[-60:]
+
+            sys.stderr.write("Applying user thesaurus to database\n")
+            sys.stderr.write(f"          File : {file_path}\n")
+            sys.stderr.write(f"  Source field : {field}\n")
+            sys.stderr.write(f"  Target field : {other_field}\n")
+            sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(f"  Thesaurus application completed successfully\n\n")
-        sys.stderr.flush()
+        if not self.params.quiet:
+
+            sys.stderr.write(f"  Thesaurus application completed successfully\n\n")
+            sys.stderr.flush()
 
     #
     # ALGORITHM:

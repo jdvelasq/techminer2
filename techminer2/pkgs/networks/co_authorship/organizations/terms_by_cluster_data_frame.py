@@ -10,7 +10,7 @@ Terms by Cluster Frame
 ===============================================================================
 
 
->>> from techminer2.pkgs.networks.co_authorship.organizatios import TermsByClusterDataFrame
+>>> from techminer2.pkgs.networks.co_authorship.organizations import TermsByClusterDataFrame
 >>> (
 ...     TermsByClusterDataFrame()
 ...     #
@@ -29,12 +29,18 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
-
+                                         0  ...                            9
+0       Goethe Univ Frankfurt (DEU) 2:1065  ...  Univ of Latvia (LVA) 2:0163
+1     Pennsylvania State Univ (USA) 1:0576  ...                             
+2  Singapore Manag Univ (SMU) (SGP) 1:0576  ...                             
+3            Univ of Delaware (USA) 1:0576  ...                             
+<BLANKLINE>
+[4 rows x 10 columns]
 
 """
 from ....._internals.mixins import ParamsMixin
@@ -48,12 +54,12 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserTermsByClusterDataFrame()
             .update(**self.params.__dict__)
-            .with_field("organizatios")
-            .build()
+            .with_field("organizations")
+            .run()
         )

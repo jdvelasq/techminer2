@@ -14,29 +14,30 @@ Fields Intersection
 ...     FieldsIntersectionExtractor() 
 ...     #
 ...     # FIELDS:
-...     .with_field("author_keywords")
-...     .with_other_field("index_keywords")
+...     .with_field("raw_author_keywords")
+...     .with_other_field("raw_index_keywords")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
 ['ACTOR_NETWORK_THEORY',
  'ACTUALIZATION',
- 'ADOPTION',
  'AGRICULTURE',
  'AGROPAY',
- 'AI',
- 'ALTERNATIVE_DATA',
  'ARTIFICIAL_INTELLIGENCE',
  'BANKING',
- 'BANKING_COMPETITION']
+ 'BIG_DATA',
+ 'BLOCKCHAIN',
+ 'BUSINESS_MODELS',
+ 'CASE_STUDY_METHODS']
+
 
 """
 
@@ -49,6 +50,6 @@ class FieldsIntersectionExtractor(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         return internal__fields_intersection(self.params)

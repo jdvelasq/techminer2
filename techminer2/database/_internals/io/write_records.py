@@ -11,7 +11,7 @@
 Records Writer
 ===============================================================================
 
->>> from techminer2.database.internals.io import internal__write_records
+>>> from techminer2.database._internals.io import internal__write_records
 >>> internal__write_records(params, records) # doctest: +SKIP
 
 

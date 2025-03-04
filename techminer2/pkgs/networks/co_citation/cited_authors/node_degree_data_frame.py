@@ -22,17 +22,17 @@ Node Degree Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
-   Node               Name  Degree
-0     0     Burtch G. 1:14      19
-1     1        Lin M. 1:09      19
-2     2   Dahlberg T. 1:06      15
-3     3  Mackenzie A. 1:04      15
-4     4     Gomber P. 1:08      14
+   Node                Name  Degree
+0     0  Zavolokina L. 1:09      23
+1     1      Gomber P. 1:09      22
+2     2         Lin M. 1:11      21
+3     3      Burtch G. 1:16      20
+4     4      Dapp T.F. 1:06      19
 
 
 
@@ -49,10 +49,10 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             InternalNodeDegreeDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("cited_authors")
-            .build()
+            .run()
         )

@@ -23,7 +23,7 @@ Terms by Cluster Dataframe
 ...     TermsByClusterDataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -41,30 +41,32 @@ Terms by Cluster Dataframe
 ...     .using_sublinear_tf_scaling(False)
 ...     #
 ...     # CLUSTERING:
-...     .using_clustering_estimator_or_dict(kmeans)
+...     .using_clustering_algorithm_or_dict(kmeans)
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
-                                         0  ...                            3
-0                       THIS_PAPER 14:2240  ...         THE_RESEARCH 05:0839
-1                            BANKS 09:1133  ...  INFORMATION_SYSTEMS 04:0830
-2  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237  ...                             
-3                        CONSUMERS 06:0804  ...                             
-4                    ENTREPRENEURS 04:0744  ...                             
-5                       INVESTMENT 04:0581  ...                             
-6                    THE_POTENTIAL 04:0547  ...                             
-7                                           ...                             
-8                                           ...                             
-9                                           ...                             
+                                 0  ...                         3
+0           SUSTAINABILITY 03:0227  ...  CONTENT_ANALYSIS 02:0181
+1  SUSTAINABLE_DEVELOPMENT 03:0227  ...    DIGITALIZATION 02:0181
+2        LITERATURE_REVIEW 02:0560  ...     POPULAR_PRESS 02:0181
+3         FINANCIAL_SYSTEM 02:0385  ...                          
+4             DIGITIZATION 02:0319  ...                          
+5                    CHINA 02:0150  ...                          
+6                                   ...                          
+7                                   ...                          
+8                                   ...                          
+9                                   ...                          
 <BLANKLINE>
 [10 rows x 4 columns]
+
+
 
 """
 import pandas as pd  # type: ignore
@@ -78,9 +80,9 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
-        mapping = ClustersToTermsMapping().update(**self.params.__dict__).build()
+        mapping = ClustersToTermsMapping().update(**self.params.__dict__).run()
         frame = pd.DataFrame.from_dict(mapping, orient="index").T
         frame = frame.fillna("")
         frame = frame.sort_index(axis=1)

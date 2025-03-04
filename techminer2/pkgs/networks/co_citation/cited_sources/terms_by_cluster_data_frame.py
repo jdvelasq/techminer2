@@ -26,10 +26,10 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                               0  ...                                                  2
 0  J STRATEGIC INFORM SYST 1:14  ...                         ELECT COMMER RES APPL 1:32
@@ -54,10 +54,10 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             InternalTermsByClusterDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("cited_sources")
-            .build()
+            .run()
         )

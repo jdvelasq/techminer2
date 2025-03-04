@@ -31,17 +31,21 @@ Metrics
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
-                           Degree  Betweenness  Closeness  PageRank
-FINANCE 10:1866                17     0.329142   0.904762  0.157519
-FINTECH 10:1412                16     0.210721   0.826087  0.142697
-FINANCIAL_SERVICE 04:1036      11     0.056043   0.678571  0.073621
-CYBER_SECURITY 02:0342          8     0.015595   0.612903  0.046725
-COMMERCE 03:0846                7     0.042885   0.612903  0.049157
+                                                    Degree  ...  PageRank
+Columbia Grad Sch of Bus (USA) 1:0390                    3  ...  0.063492
+Goethe Univ Frankfurt (DEU) 2:1065                       3  ...  0.063492
+Pennsylvania State Univ (USA) 1:0576                     3  ...  0.063492
+Singapore Manag Univ (SMU) (SGP) 1:0576                  3  ...  0.063492
+Stanford GSB and the Hoover Institution, United...       3  ...  0.063492
+<BLANKLINE>
+[5 rows x 4 columns]
+
+
 
 
 """
@@ -54,12 +58,12 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserNetworkMetrics()
             .update(**self.params.__dict__)
             .with_field("organizations")
-            .build()
+            .run()
         )

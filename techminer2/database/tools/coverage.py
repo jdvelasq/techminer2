@@ -13,14 +13,14 @@ Coverage
 >>> (
 ...     Coverage()
 ...     #
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     #
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 --INFO-- Number of documents : 50
 --INFO--   Documents with NA : 12
@@ -46,17 +46,13 @@ class Coverage(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         field = self.params.field
 
-        stopwords = internal__load_user_stopwords(self.params.root_directory)
+        stopwords = internal__load_user_stopwords(params=self.params)
 
-        documents = (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        documents = internal__load_filtered_database(params=self.params)
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]
 

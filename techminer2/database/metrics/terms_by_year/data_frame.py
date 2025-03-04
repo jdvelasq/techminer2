@@ -13,7 +13,7 @@ Data Frame
 ...     DataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -30,13 +30,13 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
 year                          2015  2016  2017  2018  2019
-author_keywords                                           
+raw_author_keywords                                       
 FINTECH 31:5168                  0     5     8    12     6
 INNOVATION 07:0911               0     3     3     1     0
 FINANCIAL_SERVICES 04:0667       0     1     0     3     0
@@ -54,7 +54,7 @@ CASE_STUDY 02:0340               0     0     1     0     1
 ...     DataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -71,13 +71,13 @@ CASE_STUDY 02:0340               0     0     1     0     1
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
 year                  2015  2016  2017  2018  2019
-author_keywords                                   
+raw_author_keywords                               
 FINTECH                  0     5     8    12     6
 INNOVATION               0     3     3     1     0
 FINANCIAL_SERVICES       0     1     0     3     0
@@ -89,13 +89,15 @@ BUSINESS_MODELS          0     0     0     2     0
 CYBER_SECURITY           0     0     0     2     0
 CASE_STUDY               0     0     1     0     1
 
+
+
 >>> from techminer2.database.metrics.terms_by_year import DataFrame
 >>> (
 ...     DataFrame()
 ...     #
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -112,13 +114,13 @@ CASE_STUDY               0     0     1     0     1
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
 year                          2015  2016  2017  2018  2019
-author_keywords                                           
+raw_author_keywords                                       
 FINTECH 31:5168                  0     5    13    25    31
 INNOVATION 07:0911               0     3     6     7     7
 FINANCIAL_SERVICES 04:0667       0     1     1     4     4
@@ -228,7 +230,7 @@ class DataFrame(
     # ----------------------------------------------------------------------------------------------------
     def _step_6_filter_terms(self, terms_by_year):
         terms_in = (
-            PerformanceMetricsDataFrame().update(**self.params.__dict__).build().index
+            PerformanceMetricsDataFrame().update(**self.params.__dict__).run().index
         )
         terms_by_year = terms_by_year[terms_by_year.index.isin(terms_in)]
         return terms_by_year
@@ -248,7 +250,7 @@ class DataFrame(
         return data_frame
 
     # ----------------------------------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         data_frame = self._step_1_load_the_database()
         years_range = self._step_2_get_years_range(data_frame)
         terms_by_year = self._step_3_compute_term_occurrences_by_year(data_frame)

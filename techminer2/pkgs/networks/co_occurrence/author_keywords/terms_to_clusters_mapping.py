@@ -32,10 +32,10 @@ Terms to Cluster Mapping
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
@@ -74,12 +74,12 @@ class TermsToClustersMapping(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserTermsToClusterMapping()
             .update(**self.params.__dict__)
             .with_field("author_keywords")
-            .build()
+            .run()
         )

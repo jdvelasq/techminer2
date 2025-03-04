@@ -59,7 +59,7 @@ class ApplyThesaurus(
 
         # Affiliations to countries mmapping
         (
-            ApplyUserThesaurus()
+            ApplyUserThesaurus(quiet=self.params.quiet)
             .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
             .with_other_field("organizations")

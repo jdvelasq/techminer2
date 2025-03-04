@@ -14,16 +14,16 @@ Fields difference
 ...     FieldsDifferenceExtractor() 
 ...     #
 ...     # FIELDS:
-...     .with_field("author_keywords")
-...     .with_other_field("index_keywords")
+...     .with_field("raw_author_keywords")
+...     .with_other_field("raw_index_keywords")
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -38,6 +38,7 @@ Fields difference
  'BLOCKCHAINS',
  'BUSINESS_MODEL']
 
+
 """
 
 from ..._internals.mixins import ParamsMixin
@@ -49,6 +50,6 @@ class FieldsDifferenceExtractor(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         return internal__fields_difference(self.params)

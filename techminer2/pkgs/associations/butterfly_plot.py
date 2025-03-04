@@ -15,7 +15,7 @@ Butterfly Plot
 ...     ButterflyPlot()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -39,10 +39,10 @@ Butterfly Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/pkgs/associations/butterfly_plot.html")
 
@@ -157,7 +157,7 @@ class ButterflyPlot(
         return fig
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         matrix = self._step_01_create_data_frame()
         col_terms = self._step_02_remove_col_terms_from_index(matrix)
         return self._step_03_build_butterfly_plot(matrix)

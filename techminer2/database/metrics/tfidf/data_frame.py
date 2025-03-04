@@ -13,7 +13,7 @@ Data Frame
 >>> (
 ...     DataFrame()
 ...     #
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -34,12 +34,12 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
-author_keywords                                 FINTECH 31:5168  ...  CASE_STUDY 02:0340
+raw_author_keywords                             FINTECH 31:5168  ...  CASE_STUDY 02:0340
 record_id                                                        ...                    
 Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                   0
 Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                   0
@@ -136,7 +136,7 @@ class DataFrame(
 
     def step_5_filter_terms_in_df_matrix(self, matrix):
         performance_metrics = (
-            PerformanceMetricsDataFrame().update(**self.params.__dict__).build()
+            PerformanceMetricsDataFrame().update(**self.params.__dict__).run()
         )
         selected_terms = performance_metrics.index.tolist()
         matrix = matrix[selected_terms]
@@ -179,7 +179,7 @@ class DataFrame(
             data_frame.columns = [" ".join(x.split()[:-1]) for x in data_frame.columns]
         return data_frame
 
-    def build(self):
+    def run(self):
 
         data_frame = self._step_1_load_the_database()
         data_frame = self.step_2_explode_data_frame(data_frame)

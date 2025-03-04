@@ -138,7 +138,7 @@ class Params:
     spring_layout_iterations: int = 50
     spring_layout_k: float = 0.1
     spring_layout_seed: int = 42
-    stemming_fn = None
+    stemming_fn: Optional[callable] = None
     sublinear_tf_scaling: bool = False  # sublinear_tf
 
     #

@@ -23,7 +23,9 @@ import pkg_resources  # type: ignore
 def internal__sort_hypened_words_alphabetically():
     """:meta private:"""
 
-    data_path = pathlib.Path("package_data/text_processing/data/") / "hypened_words.txt"
+    data_path = (
+        pathlib.Path("package_data/text_processing/data/") / "hyphenated_words.txt"
+    )
     data_path = str(data_path)
     data_path = pkg_resources.resource_filename("techminer2", data_path)
 

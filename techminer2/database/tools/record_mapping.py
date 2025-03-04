@@ -21,11 +21,11 @@ Record Mapping
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("global_cited_by_highest")  
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping[0])
@@ -80,7 +80,7 @@ class RecordMapping(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         records = internal__load_filtered_database(params=self.params)
         mapping = self.build_record_mapping(records)

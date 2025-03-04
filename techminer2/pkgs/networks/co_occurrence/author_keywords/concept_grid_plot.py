@@ -32,10 +32,10 @@ Concept Grid Plot
 ## ...     .where_root_directory_is("example/")
 ## ...     .where_database_is("main")
 ## ...     .where_record_years_range_is(None, None)
-## ...     .where_record_citattions_range_is(None, None)
+## ...     .where_record_citations_range_is(None, None)
 ## ...     .where_records_match(None)
 ## ...     #
-## ...     .build()
+## ...     .run()
 ## ... )
 ## >>> # plot.render("sphinx/images/co_occurrence_network/concept_grid_plot", format="png")
 
@@ -54,12 +54,12 @@ class ConceptGridPlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserConceptGridPlot()
             .update(**self.params.__dict__)
             .with_field("author_keywords")
-            .build()
+            .run()
         )

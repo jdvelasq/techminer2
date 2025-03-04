@@ -14,7 +14,7 @@ Co-occurrence Matrix
 ...     MatrixDataFrame()
 ...     #
 ...     # COLUMNS:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -36,10 +36,10 @@ Co-occurrence Matrix
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
 columns               FINTECH 31:5168  ...  CASE_STUDY 02:0340
 rows                                   ...                    
@@ -56,12 +56,13 @@ Zavolokina L. 2:0181                2  ...                   0
 <BLANKLINE>
 [10 rows x 10 columns]
 
+
 >>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
 >>> (
 ...     MatrixDataFrame()
 ...     #
 ...     # COLUMNS:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -83,10 +84,10 @@ Zavolokina L. 2:0181                2  ...                   0
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
 columns                       FINTECH 31:5168  ...  CASE_STUDY 02:0340
 rows                                           ...                    
@@ -104,13 +105,14 @@ CASE_STUDY 02:0340                          2  ...                   2
 [10 rows x 10 columns]
 
 
+
 >>> # Submatrix of associated terms to FINTECH, INNOVATION, and FINANCIAL_SERVICES
 >>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
 >>> (
 ...     MatrixDataFrame()
 ...     #
 ...     # COLUMNS:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -132,14 +134,14 @@ CASE_STUDY 02:0340                          2  ...                   2
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(
 ...         {
 ...             "author_keywords": ["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"],
 ...         },
 ...     )
 ...     #
-...     .build()
+...     .run()
 ... )
 columns              FINTECH 31:5168  ...  TECHNOLOGY 02:0310
 rows                                  ...                    
@@ -155,13 +157,15 @@ Zavolokina L. 2:181                2  ...                   0
 <BLANKLINE>
 [9 rows x 10 columns]
 
+
+
 >>> # Submatrix of associated terms to FINTECH, INNOVATION, and FINANCIAL_SERVICES
 >>> from techminer2.pkgs.co_occurrence_matrix import MatrixDataFrame
 >>> (
 ...     MatrixDataFrame()
 ...     #
 ...     # COLUMNS:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -183,14 +187,14 @@ Zavolokina L. 2:181                2  ...                   0
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(
 ...         {
 ...             "author_keywords": ["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"],
 ...         },
 ...     )
 ...     #
-...     .build()
+...     .run()
 ... )
 columns                       FINTECH 31:5168  ...  TECHNOLOGY 02:0310
 rows                                           ...                    
@@ -246,7 +250,7 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_02_compute_column_peformance_metrics(self):
-        return PerformanceMetricsDataFrame().update(**self.params.__dict__).build()
+        return PerformanceMetricsDataFrame().update(**self.params.__dict__).run()
 
     # -------------------------------------------------------------------------
     def _step_03_compute_row_peformance_metrics(self):
@@ -265,7 +269,7 @@ class MatrixDataFrame(
                 self.params.other_term_citations_range[1],
             )
             .having_terms_in(self.params.other_terms_in)
-            .build()
+            .run()
         )
         return metrics
 
@@ -381,7 +385,7 @@ class MatrixDataFrame(
         return matrix
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         self._step_01_check_row_params()
 

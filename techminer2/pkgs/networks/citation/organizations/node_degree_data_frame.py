@@ -23,11 +23,17 @@ Node Degree Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
+   Node                                          Name  Degree
+0     0                   Univ of Zurich (CHE) 3:0434       5
+1     1            Goethe Univ Frankfurt (DEU) 2:1065       5
+2     2                   Univ of Sydney (AUS) 2:0300       4
+3     3       Fed Reserv Bank of Chicago (USA) 2:0253       2
+4     4  Fed Reserv Bank of Philadelphia (USA) 3:0317       2
 
 
 
@@ -44,10 +50,10 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             OtherNodeDegreeDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("organizations")
-            .build()
+            .run()
         )

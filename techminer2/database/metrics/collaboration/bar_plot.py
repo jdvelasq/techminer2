@@ -29,10 +29,10 @@ Bar Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/database/metrics/collaboration/bar_plot.html")
 
@@ -57,7 +57,7 @@ class BarPlot(
     """:meta private:"""
 
     def get_collaboration_metrics(self):
-        return DataFrame().update(**self.params.__dict__).build()
+        return DataFrame().update(**self.params.__dict__).run()
 
     def build_collaboration_bar_plot(self, metrics):
 
@@ -129,7 +129,7 @@ class BarPlot(
 
         return fig
 
-    def build(self):
+    def run(self):
 
         metrics = self.get_collaboration_metrics()
         fig = self.build_collaboration_bar_plot(metrics)

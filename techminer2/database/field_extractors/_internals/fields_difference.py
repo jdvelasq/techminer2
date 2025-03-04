@@ -20,7 +20,7 @@ def internal__fields_difference(params):
 
     # Build the set of terms of second field
     set_b = internal__get_field_values_from_database(
-        params.update_params(field=params.other_field)
+        params.update(field=params.other_field)
     )
     set_b = set_b.term.tolist()
     set_b = set(set_b)

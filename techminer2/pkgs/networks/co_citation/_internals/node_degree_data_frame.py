@@ -21,7 +21,7 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         nx_graph = internal__create_nx_graph(self.params)

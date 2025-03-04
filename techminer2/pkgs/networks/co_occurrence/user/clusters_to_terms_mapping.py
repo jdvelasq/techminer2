@@ -33,10 +33,10 @@ Clusters to Terms Mapping
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
@@ -75,7 +75,7 @@ class ClustersToTermsMapping(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         nx_graph = internal__create_nx_graph(self.params)

@@ -14,7 +14,7 @@ from .get_field_values_from_database import internal__get_field_values_from_data
 def internal__starts_with(params):
 
     dataframe = internal__get_field_values_from_database(params)
-    dataframe = dataframe[dataframe.term.str.startswith(params.term_pattern)]
+    dataframe = dataframe[dataframe.term.str.startswith(params.pattern)]
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()

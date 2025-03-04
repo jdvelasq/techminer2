@@ -21,10 +21,10 @@ Network Degree Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
    Node                                        Name  Degree
 0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
@@ -49,7 +49,7 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__assign_degree_to_nodes(nx_graph)

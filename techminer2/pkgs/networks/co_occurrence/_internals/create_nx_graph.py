@@ -20,7 +20,7 @@ from ....co_occurrence_matrix._internals.normalize_matrix import (
 
 # -------------------------------------------------------------------------
 def _step_01_create_co_occurrence_matrix(params):
-    return CoOccurrenceMatrix().update(**params.__dict__).build()
+    return CoOccurrenceMatrix().update(**params.__dict__).run()
 
 
 # -------------------------------------------------------------------------

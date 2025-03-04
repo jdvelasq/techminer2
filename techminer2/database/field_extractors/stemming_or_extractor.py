@@ -17,7 +17,7 @@ Stemming Field with OR
 ...     .with_field("author_keywords")
 ...     #
 ...     # SEARCH:
-...     .having_terms_like(
+...     .having_pattern(
 ...         [
 ...             "financial technology", 
 ...             "artificial intelligence",
@@ -28,9 +28,9 @@ Stemming Field with OR
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -40,10 +40,11 @@ Stemming Field with OR
  'FINANCIAL_COMPUTING',
  'FINANCIAL_INCLUSION',
  'FINANCIAL_INSTITUTION',
- 'FINANCIAL_INSTITUTIONS',
  'FINANCIAL_INTERMEDIATION',
  'FINANCIAL_MANAGEMENT',
- 'FINANCIAL_SCENARIZATION']
+ 'FINANCIAL_SCENARIZATION',
+ 'FINANCIAL_SERVICE']
+
 
 """
 
@@ -56,6 +57,6 @@ class StemmingOrExtractor(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         return internal__stemming_or(self.params)

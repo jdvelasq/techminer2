@@ -9,7 +9,7 @@
 Terms by Cluster Frame
 ===============================================================================
 
->>> from techminer2.pkgs.networks.citations.organizations import TermsByClusterDataFrame
+>>> from techminer2.pkgs.networks.citation.organizations import TermsByClusterDataFrame
 >>> (
 ...     TermsByClusterDataFrame()
 ...     #
@@ -26,11 +26,19 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
+                                                   0  ...                               3
+0  CESifo, Poschingerstr. 5, Munich, 81679, Germa...  ...   Univ of Zaragoza (ESP) 1:0225
+1                        Univ of Zurich (CHE) 3:0434  ...  Sungkyunkwan Univ (KOR) 2:0307
+2  Max Planck Inst for Innovation and Competition...  ...                                
+3                         SKEMA Bus Sch (FRA) 1:0258  ...                                
+4                        Univ of Bremen (DEU) 1:0258  ...                                
+<BLANKLINE>
+[5 rows x 4 columns]
 
 
 
@@ -47,10 +55,10 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             OtherTermsByClusterDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("organizations")
-            .build()
+            .run()
         )

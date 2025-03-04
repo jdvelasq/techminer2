@@ -54,10 +54,10 @@ Matrix Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/matrix_plot_0.html")
 
@@ -111,10 +111,10 @@ Matrix Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/matrix_plot_1.html")
 
@@ -150,7 +150,7 @@ class MatrixPlot(
 
     # -------------------------------------------------------------------------
     def _step_01_create_co_occurrence_matrix(self):
-        return MatrixDataFrame().update(**self.params.__dict__).build()
+        return MatrixDataFrame().update(**self.params.__dict__).run()
 
     # -------------------------------------------------------------------------
     def _step_02_create_a_empty_networkx_graph(self):
@@ -269,7 +269,7 @@ class MatrixPlot(
         return internal__assign_text_positions_based_on_quadrants(nx_graph)
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         cooc_matrix = self._step_01_create_co_occurrence_matrix()
 

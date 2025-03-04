@@ -17,7 +17,7 @@ def internal__full_match(params):
 
     dataframe = dataframe[
         dataframe.term.str.fullmatch(
-            pat=params.term_pattern,
+            pat=params.pattern,
             case=params.case_sensitive,
             flags=params.regex_flags,
         )

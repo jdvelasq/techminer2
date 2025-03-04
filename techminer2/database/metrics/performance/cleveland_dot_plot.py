@@ -32,9 +32,9 @@ Cleveland Dot Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/database/metrics/performance/cleveland_dot_plot.html")
 
@@ -57,9 +57,9 @@ class ClevelandDotPlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
-        data_frame = DataFrame().update(**self.params.__dict__).build()
+        data_frame = DataFrame().update(**self.params.__dict__).run()
 
         if self.params.title_text is None:
             self.using_title_text("Cleveland Dot Plot")

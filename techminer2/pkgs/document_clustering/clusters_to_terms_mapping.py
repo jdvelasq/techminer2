@@ -24,7 +24,7 @@ Clusters to Terms Mapping
 ...     ClustersToTermsMapping()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -42,68 +42,70 @@ Clusters to Terms Mapping
 ...     .using_sublinear_tf_scaling(False)
 ...     #
 ...     # CLUSTERING:
-...     .using_clustering_estimator_or_dict(kmeans)
+...     .using_clustering_algorithm_or_dict(kmeans)
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> import pprint
 >>> pprint.pprint(mapping)
-{0: ['THIS_PAPER 14:2240',
-     'BANKS 09:1133',
-     'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237',
-     'CONSUMERS 06:0804',
-     'ENTREPRENEURS 04:0744',
-     'INVESTMENT 04:0581',
-     'THE_POTENTIAL 04:0547'],
- 1: ['FINTECH 46:7183',
-     'FINANCE 21:3481',
-     'FINANCIAL_TECHNOLOGY 17:2359',
-     'THIS_STUDY 14:1737',
-     'INNOVATION 13:2394',
-     'TECHNOLOGY 13:1594',
-     'FINANCIAL_SERVICES 11:1862',
-     'THE_FINANCIAL_INDUSTRY 09:2006',
-     'SERVICES 09:1527',
-     'REGULATORS 08:0974',
-     'DATA 07:1086',
-     'THE_DEVELOPMENT 07:1073',
-     'BANKING 07:0851',
-     'THIS_ARTICLE 06:1360',
-     'THE_FIELD 06:1031',
-     'CHINA 06:0673',
-     'THE_FINANCIAL_SECTOR 05:1147',
-     'THE_IMPACT 05:0787',
-     'VALUE 05:0612',
-     'BUSINESS_MODELS 04:1441',
-     'BLOCKCHAIN 04:1116',
-     'TRADING 04:1050',
+{0: ['SUSTAINABILITY 03:0227',
+     'SUSTAINABLE_DEVELOPMENT 03:0227',
+     'LITERATURE_REVIEW 02:0560',
+     'FINANCIAL_SYSTEM 02:0385',
+     'DIGITIZATION 02:0319',
+     'CHINA 02:0150'],
+ 1: ['FINTECH 32:5393',
+     'FINANCE 11:1950',
+     'INNOVATION 08:0990',
+     'FINANCIAL_SERVICES 05:0746',
      'FINANCIAL_SERVICE 04:1036',
-     'INFORMATION_TECHNOLOGY 04:0995',
-     'THE_USE 04:0953',
-     'PRACTITIONERS 04:0832',
-     'FINTECH_COMPANIES 04:0758',
-     'THE_AUTHOR 04:0735',
-     'FINANCIAL_INSTITUTIONS 04:0722',
-     'ELSEVIER_B_._V 04:0718',
-     'USERS 04:0687',
-     'THE_EMERGENCE 04:0664',
-     'CUSTOMERS 04:0599',
-     'ALL_RIGHTS_RESERVED 04:0586',
-     'SURVEYS 04:0580',
-     'INNOVATIONS 04:0518'],
- 2: ['THE_PURPOSE 06:1046',
-     'DESIGN_METHODOLOGY_APPROACH 04:0555',
-     'EMERALD_PUBLISHING_LIMITED 04:0555',
-     'ORIGINALITY_VALUE 04:0555',
-     'THIS_RESEARCH 04:0540'],
- 3: ['THE_RESEARCH 05:0839', 'INFORMATION_SYSTEMS 04:0830']}
+     'BUSINESS_MODELS 03:1335',
+     'BLOCKCHAIN 03:0881',
+     'COMMERCE 03:0846',
+     'FINANCIAL_INCLUSION 03:0590',
+     'FINANCIAL_INSTITUTION 03:0488',
+     'SURVEYS 03:0484',
+     'FINANCIAL_TECHNOLOGY 03:0461',
+     'BANKING 03:0370',
+     'CROWDFUNDING 03:0335',
+     'ELECTRONIC_MONEY 03:0305',
+     'FINANCIAL_SERVICES_INDUSTRIES 02:0696',
+     'DIGITAL_TECHNOLOGIES 02:0494',
+     'PERCEIVED_USEFULNESS 02:0346',
+     'CYBER_SECURITY 02:0342',
+     'CASE_STUDY 02:0340',
+     'DESIGN_METHODOLOGY_APPROACH 02:0329',
+     'SALES 02:0329',
+     'ARTIFICIAL_INTELLIGENCE 02:0327',
+     'FINANCIAL_INDUSTRY 02:0323',
+     'SECURITY_AND_PRIVACY 02:0323',
+     'TECHNOLOGY 02:0310',
+     'ROBOTS 02:0289',
+     'TECHNOLOGY_ACCEPTANCE_MODEL 02:0280',
+     'REGTECH 02:0266',
+     'DEVELOPING_COUNTRIES 02:0248',
+     'INFORMATION_SYSTEMS 02:0235',
+     'THEORETICAL_FRAMEWORK 02:0206',
+     'MOBILE_TELECOMMUNICATION_SYSTEMS 02:0186',
+     'GLOBAL_SYSTEM_FOR_MOBILE_COMMUNICATIONS 02:0184',
+     'MOBILE_PAYMENT 02:0184',
+     'P2P_LENDING 02:0161',
+     'CUSTOMER_EXPERIENCE 01:0576'],
+ 2: ['MARKETPLACE_LENDING 03:0317',
+     'LENDINGCLUB 02:0253',
+     'PEER_TO_PEER_LENDING 02:0253',
+     'SHADOW_BANKING 02:0253'],
+ 3: ['CONTENT_ANALYSIS 02:0181',
+     'DIGITALIZATION 02:0181',
+     'POPULAR_PRESS 02:0181']}
+
 
 
 """
@@ -116,10 +118,10 @@ class ClustersToTermsMapping(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         contingency_table = (
-            TermOccurrenceByCluster().update(**self.params.__dict__).build()
+            TermOccurrenceByCluster().update(**self.params.__dict__).run()
         )
 
         themes = contingency_table.idxmax(axis=1)

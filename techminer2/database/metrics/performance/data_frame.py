@@ -13,7 +13,7 @@ Data Frame
 ...     DataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -24,24 +24,25 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
-                      rank_occ  rank_gcs  rank_lcs  ...  h_index  g_index  m_index
-author_keywords                                     ...                           
-FINTECH                      1         1         1  ...       31       12     7.75
-INNOVATION                   2         2         2  ...        7        7     1.75
-FINANCIAL_SERVICES           3         4        15  ...        4        4     1.00
-FINANCIAL_INCLUSION          4         5         3  ...        3        3     0.75
-FINANCIAL_TECHNOLOGY         5        15        45  ...        3        3     1.00
-CROWDFUNDING                 6        23        16  ...        3        3     1.00
-MARKETPLACE_LENDING          7        25        51  ...        3        3     1.50
-BUSINESS_MODELS              8         3        14  ...        2        2     1.00
-CYBER_SECURITY               9        21         9  ...        2        2     1.00
-CASE_STUDY                  10        22        10  ...        2        2     0.67
+                      rank_occ  rank_gcs  ...  m_index                      counters
+raw_author_keywords                       ...                                       
+FINTECH                      1         1  ...     7.75               FINTECH 31:5168
+INNOVATION                   2         2  ...     1.75            INNOVATION 07:0911
+FINANCIAL_SERVICES           3         4  ...     1.00    FINANCIAL_SERVICES 04:0667
+FINANCIAL_INCLUSION          4         5  ...     0.75   FINANCIAL_INCLUSION 03:0590
+FINANCIAL_TECHNOLOGY         5        15  ...     1.00  FINANCIAL_TECHNOLOGY 03:0461
+CROWDFUNDING                 6        23  ...     1.00          CROWDFUNDING 03:0335
+MARKETPLACE_LENDING          7        25  ...     1.50   MARKETPLACE_LENDING 03:0317
+BUSINESS_MODELS              8         3  ...     1.00       BUSINESS_MODELS 02:0759
+CYBER_SECURITY               9        21  ...     1.00        CYBER_SECURITY 02:0342
+CASE_STUDY                  10        22  ...     0.67            CASE_STUDY 02:0340
 <BLANKLINE>
-[10 rows x 16 columns]
+[10 rows x 17 columns]
+
 
 
 """
@@ -217,7 +218,7 @@ class DataFrame(
     # -------------------------------------------------------------------------
     def _step_8_remove_stopwords(self, grouped):
 
-        stopwords = internal__load_user_stopwords(root_dir=self.params.root_directory)
+        stopwords = internal__load_user_stopwords(params=self.params)
         grouped = grouped.drop(stopwords, axis=0, errors="ignore")
         return grouped
 
@@ -306,7 +307,7 @@ class DataFrame(
         return grouped
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         data_frame = self._step_1_load_the_database()
         data_frame = self._step_2_select_metric_fields(data_frame)

@@ -24,10 +24,10 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                OCC  global_citations  ...  multiple_publication  mp_ratio
 countries                             ...                                
@@ -52,11 +52,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return (
-            internal__load_filtered_database()
-            .update_params(**self.params.__dict__)
-            .build()
-        )
+        return internal__load_filtered_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_2_compute_collaboration_metrics(self, data_frame):
@@ -130,13 +126,13 @@ class DataFrame(
     def _step_3_filter_terms(self, data_frame):
         terms_in = PerformanceMetricsDataFrame()
         terms_in = terms_in.update(**self.params.__dict__)
-        terms_in = terms_in.build()
+        terms_in = terms_in.run()
         terms_in = terms_in.index
         data_frame = data_frame[data_frame.index.isin(terms_in)]
         return data_frame
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         database = self._step_1_load_the_database()
         data_frame = self._step_2_compute_collaboration_metrics(database)
         data_frame = self._step_3_filter_terms(data_frame)

@@ -27,7 +27,7 @@ Find Editorials
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... ) 
 
 
@@ -110,7 +110,7 @@ class FindEditorials(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         (

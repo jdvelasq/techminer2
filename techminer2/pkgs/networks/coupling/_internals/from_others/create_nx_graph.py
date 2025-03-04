@@ -64,7 +64,7 @@ def step_03_filter_the_data_frame(params, data_frame):
         PerformanceMetricsDataFrame()
         .update(**params.__dict__)
         .with_field(params.unit_of_analysis)
-        .build()
+        .run()
     )
 
     data_frame = data_frame.loc[data_frame.row.isin(metrics.index), :]

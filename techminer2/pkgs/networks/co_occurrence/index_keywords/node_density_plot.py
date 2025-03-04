@@ -38,10 +38,10 @@ Node Density Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> plot.write_html("sphinx/_generated/pkgs/networks/co_occurrence/index_keywords/node_density_plot.html")
 
@@ -62,12 +62,12 @@ class NodeDensityPlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserNodeDensityPlot()
             .update(**self.params.__dict__)
             .with_field("index_keywords")
-            .build()
+            .run()
         )

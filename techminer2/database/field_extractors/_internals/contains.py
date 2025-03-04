@@ -16,7 +16,7 @@ def internal__contains(params):
     dataframe = internal__get_field_values_from_database(params)
     dataframe = dataframe[
         dataframe.term.str.contains(
-            pat=params.term_pattern,
+            pat=params.pattern,
             case=params.case_sensitive,
             flags=params.regex_flags,
             regex=params.regex_search,

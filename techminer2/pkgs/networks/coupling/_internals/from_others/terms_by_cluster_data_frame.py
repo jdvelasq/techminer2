@@ -21,10 +21,10 @@
 ## ...     .where_root_directory_is("example/")
 ## ...     .where_database_is("main")
 ## ...     .where_record_years_range_is(None, None)
-## ...     .where_record_citattions_range_is(None, None)
+## ...     .where_record_citations_range_is(None, None)
 ## ...     .where_records_match(None)
 ## ...     #
-## ...     .build()
+## ...     .run()
 ## ... )
 ##                     0                     1                2
 ## 0    Gomber P. 2:1065      Dolata M. 2:0181    Gai K. 2:0323
@@ -48,7 +48,7 @@ class InternalTermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)

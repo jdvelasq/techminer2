@@ -23,7 +23,7 @@ Terms by Cluster Summary
 ...     TermsByClusterSummary()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -41,24 +41,26 @@ Terms by Cluster Summary
 ...     .using_sublinear_tf_scaling(False)
 ...     #
 ...     # CLUSTERING:
-...     .using_clustering_estimator_or_dict(kmeans)
+...     .using_clustering_algorithm_or_dict(kmeans)
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
    Cluster  ...                                              Terms
-0        0  ...  THIS_PAPER 14:2240; BANKS 09:1133; THE_FINANCI...
-1        1  ...  FINTECH 46:7183; FINANCE 21:3481; FINANCIAL_TE...
-2        2  ...  THE_PURPOSE 06:1046; DESIGN_METHODOLOGY_APPROA...
-3        3  ...  THE_RESEARCH 05:0839; INFORMATION_SYSTEMS 04:0830
+0        0  ...  SUSTAINABILITY 03:0227; SUSTAINABLE_DEVELOPMEN...
+1        1  ...  FINTECH 32:5393; FINANCE 11:1950; INNOVATION 0...
+2        2  ...  MARKETPLACE_LENDING 03:0317; LENDINGCLUB 02:02...
+3        3  ...  CONTENT_ANALYSIS 02:0181; DIGITALIZATION 02:01...
 <BLANKLINE>
 [4 rows x 4 columns]
+
+
 
 """
 import pandas as pd  # type: ignore
@@ -72,9 +74,9 @@ class TermsByClusterSummary(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
-        mapping = ClustersToTermsMapping().update(**self.params.__dict__).build()
+        mapping = ClustersToTermsMapping().update(**self.params.__dict__).run()
         clusters = sorted(mapping.keys())
         n_terms = [len(mapping[label]) for label in clusters]
         terms = ["; ".join(mapping[label]) for label in clusters]

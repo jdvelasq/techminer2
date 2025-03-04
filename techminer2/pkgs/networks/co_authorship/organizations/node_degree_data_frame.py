@@ -30,11 +30,17 @@ Node Degree Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
+   Node                                     Name  Degree
+0     0       Goethe Univ Frankfurt (DEU) 2:1065       3
+1     1     Pennsylvania State Univ (USA) 1:0576       3
+2     2  Singapore Manag Univ (SMU) (SGP) 1:0576       3
+3     3            Univ of Delaware (USA) 1:0576       3
+4     4    Columbia Grad Sch of Bus (USA) 1:0390       3
 
 
 
@@ -50,12 +56,12 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserNodeDegreeDataFrame()
             .update(**self.params.__dict__)
             .with_field("organizations")
-            .build()
+            .run()
         )

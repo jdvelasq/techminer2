@@ -26,10 +26,10 @@ Network Metrics
 ## ...     .where_root_directory_is("example/")
 ## ...     .where_database_is("main")
 ## ...     .where_record_years_range_is(None, None)
-## ...     .where_record_citattions_range_is(None, None)
+## ...     .where_record_citations_range_is(None, None)
 ## ...     .where_records_match(None)
 ## ...     #
-## ...     .build()
+## ...     .run()
 ## ... ).head()
                                 Degree  Betweenness  Closeness  PageRank
 ELECT COMMER RES APPL 1:32          27     0.077741   0.935484  0.047163
@@ -49,6 +49,6 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         nx_graph = internal__create_nx_graph(self.params)
         return internal__compute_network_metrics(nx_graph=nx_graph)

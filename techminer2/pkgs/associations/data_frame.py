@@ -14,7 +14,7 @@ Data Frame
 ...     DataFrame()
 ...     #
 ...     # COLUMNS:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(None)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -32,10 +32,10 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 columns                       FINTECH 31:5168  ...  FINANCIAL_SERVICES 04:0667
 rows                                           ...                            
@@ -70,7 +70,7 @@ class DataFrame(
             .update(**self.params.__dict__)
             .using_term_counters(True)
             .with_other_field(self.params.field)
-            .build()
+            .run()
         )
 
     # -------------------------------------------------------------------------
@@ -86,7 +86,7 @@ class DataFrame(
         return matrix
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         matrix = self._step_01_compute_co_occurence_matrix()
         matrix = self._step_02_remove_rows_with_only_zeros(matrix)

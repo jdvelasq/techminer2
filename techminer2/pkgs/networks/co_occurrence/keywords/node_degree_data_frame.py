@@ -30,10 +30,10 @@ Node Degree Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
 
 
@@ -48,12 +48,12 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserNodeDegreeDataFrame()
             .update(**self.params.__dict__)
             .with_field("keywords")
-            .build()
+            .run()
         )

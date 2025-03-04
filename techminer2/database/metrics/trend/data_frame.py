@@ -17,9 +17,9 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
       OCC  cum_OCC  ...  mean_local_citations  mean_local_citations_per_year
 year                ...                                                     
@@ -129,7 +129,7 @@ class DataFrame(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         data_frame = self._step_1_load_the_database()
         data_frame = self._step_2_select_columns(data_frame)

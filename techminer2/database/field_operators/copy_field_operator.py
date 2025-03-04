@@ -20,7 +20,7 @@ Copy a Field
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 
 """
@@ -34,7 +34,7 @@ class CopyFieldOperator(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         if self.params.dest_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.dest_field}` is protected")

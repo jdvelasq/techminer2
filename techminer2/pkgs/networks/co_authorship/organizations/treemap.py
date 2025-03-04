@@ -9,12 +9,12 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.pkgs.networks.co_authorship.organizatios import Treemap
+>>> from techminer2.pkgs.networks.co_authorship.organizations import Treemap
 >>> plot = (
 ...     Treemap()
 ...     #
 ...     # FIELD:
-...     .with_field("organizatios")
+...     .with_field("organizations")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -31,16 +31,16 @@ Treemap
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/networks/co_authorship/organizatios/treemap.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_authorship/organizations/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/co_authorship/organizatios/treemap.html" 
+    <iframe src="../../_generated/pkgs/networks/co_authorship/organizations/treemap.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -53,12 +53,12 @@ class Treemap(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserTreemap()
             .update(**self.params.__dict__)
-            .with_field("organizatios")
-            .build()
+            .with_field("organizations")
+            .run()
         )

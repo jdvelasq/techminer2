@@ -14,10 +14,10 @@ Stemming Field with AND
 ...     StemmingAndExtractor() 
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     #
 ...     # SEARCH:
-...     .having_terms_like(
+...     .having_pattern(
 ...         [
 ...             "financial technology", 
 ...             "artificial intelligence",
@@ -28,15 +28,16 @@ Stemming Field with AND
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
 ['ARTIFICIAL_INTELLIGENCE',
  'FINANCIAL_TECHNOLOGY',
  'FINANCIAL_TECHNOLOGY (FINTECH)']
+
 
 """
 
@@ -49,6 +50,6 @@ class StemmingAndExtractor(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         return internal__stemming_and(self.params)

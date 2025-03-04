@@ -17,7 +17,7 @@ Match
 ...     .with_field("author_keywords")
 ...     #
 ...     # SEARCH:
-...     .having_terms_like("L.+")
+...     .having_pattern("L.+")
 ...     .having_case_sensitive(False)
 ...     .having_regex_flags(0)
 ...     #
@@ -25,9 +25,9 @@ Match
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(terms[:10])
@@ -44,6 +44,6 @@ class MatchExtractor(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         return internal__match(self.params)

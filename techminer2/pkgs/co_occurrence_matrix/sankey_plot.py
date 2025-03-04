@@ -33,10 +33,10 @@ Sankey Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/sankey_plot.html")
 
@@ -106,7 +106,7 @@ class SankeyPlot(
                 .having_other_terms_in(
                     self.params.terms_in,
                 )
-                .build()
+                .run()
             )
 
             matrices.append(matrix)
@@ -168,7 +168,7 @@ class SankeyPlot(
         return fig
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         matrices = self._step_01_build_matrices()
         node_names = self._step_02_build_node_names(matrices)

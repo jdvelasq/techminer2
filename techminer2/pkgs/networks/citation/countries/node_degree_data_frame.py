@@ -23,10 +23,10 @@ Node Degree Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
    Node                   Name  Degree
 0     0        Germany 07:1814      13
@@ -49,10 +49,10 @@ class NodeDegreeDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             OtherNodeDegreeDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("countries")
-            .build()
+            .run()
         )

@@ -14,7 +14,7 @@ Co-occurrence DataFrame
 ...     DataFrame()
 ...     #
 ...     # COLUMNS:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(2, None)
@@ -36,10 +36,10 @@ Co-occurrence DataFrame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
                  rows                      columns  OCC
 0  Jagtiani J. 3:0317              FINTECH 31:5168    3
@@ -81,22 +81,23 @@ Co-occurrence DataFrame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(10)
-                           rows                       columns  OCC
-0               FINTECH 31:5168               FINTECH 31:5168   31
-1            INNOVATION 07:0911            INNOVATION 07:0911    7
-2               FINTECH 31:5168            INNOVATION 07:0911    5
-3            INNOVATION 07:0911               FINTECH 31:5168    5
-4    FINANCIAL_SERVICES 04:0667    FINANCIAL_SERVICES 04:0667    4
-5          CROWDFUNDING 03:0335          CROWDFUNDING 03:0335    3
-6   FINANCIAL_INCLUSION 03:0590   FINANCIAL_INCLUSION 03:0590    3
-7   FINANCIAL_INCLUSION 03:0590               FINTECH 31:5168    3
-8    FINANCIAL_SERVICES 04:0667               FINTECH 31:5168    3
-9  FINANCIAL_TECHNOLOGY 03:0461  FINANCIAL_TECHNOLOGY 03:0461    3
+                        rows                    columns  OCC
+0            FINTECH 31:5168            FINTECH 31:5168   31
+1         INNOVATION 07:0911         INNOVATION 07:0911    7
+2            FINTECH 31:5168         INNOVATION 07:0911    5
+3         INNOVATION 07:0911            FINTECH 31:5168    5
+4  FINANCIAL_SERVICE 04:0667  FINANCIAL_SERVICE 04:0667    4
+5         BLOCKCHAIN 03:0369         BLOCKCHAIN 03:0369    3
+6         BLOCKCHAIN 03:0369            FINTECH 31:5168    3
+7     BUSINESS_MODEL 03:0896     BUSINESS_MODEL 03:0896    3
+8     BUSINESS_MODEL 03:0896            FINTECH 31:5168    3
+9       CROWDFUNDING 03:0335       CROWDFUNDING 03:0335    3
+
 
 
 """
@@ -115,7 +116,7 @@ class DataFrame(
             MatrixDataFrame()
             .update(**self.params.__dict__)
             .using_term_counters(True)
-            .build()
+            .run()
         )
 
     # -------------------------------------------------------------------------
@@ -135,7 +136,7 @@ class DataFrame(
         return matrix_list
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         matrix = self._step_01_compute_co_occurence_matrix()
         matrix_list = self._step_02_melt_matrix(matrix)

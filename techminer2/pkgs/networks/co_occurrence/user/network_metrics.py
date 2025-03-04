@@ -32,10 +32,10 @@ Metrics
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                             Degree  Betweenness  Closeness  PageRank
 FINTECH 31:5168                 18     0.761793   0.950000  0.240341
@@ -56,7 +56,7 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         nx_graph = internal__create_nx_graph(self.params)

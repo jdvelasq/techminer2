@@ -23,10 +23,10 @@ Network Metrics
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                                 Degree  Betweenness  Closeness  PageRank
 ELECT COMMER RES APPL 1:32          27     0.074517   0.935484  0.046446
@@ -47,10 +47,10 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             InternalNetworkMetrics()
             .update(**self.params.__dict__)
             .unit_of_analysis("cited_sources")
-            .build()
+            .run()
         )

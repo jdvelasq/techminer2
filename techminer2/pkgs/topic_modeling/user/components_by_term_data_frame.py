@@ -49,10 +49,10 @@ Components by Term Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 term       FINTECH 46:7183  ...  INNOVATIONS 04:0518
 component                   ...                     
@@ -82,7 +82,7 @@ class ComponentsByTermDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).build()

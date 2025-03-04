@@ -26,19 +26,11 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
-                                                   0  ...                                                  4
-0  Adomavicius G., 2008, MIS QUART MANAGE INF SYS...  ...           Morse A., 2015, ANNU REV FINANC ECON 1:3
-1           Au Y.A., 2008, ELECT COMMER RES APPL 1:3  ...  Fichman R.G., 2014, MIS QUART MANAGE INF SYST 1:3
-2            Liu J., 2015, ELECT COMMER RES APPL 1:4  ...            Jun J., 2016, ASIAPAC J FINANC STUD 1:3
-3                  Burtch G., 2013, INF SYST RES 1:4  ...                                                   
-4       Dahlberg T., 2015, ELECT COMMER RES APPL 1:3  ...                                                   
-<BLANKLINE>
-[5 rows x 5 columns]
 
 
 
@@ -54,10 +46,10 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             InternalTermsByClusterDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("cited_references")
-            .build()
+            .run()
         )

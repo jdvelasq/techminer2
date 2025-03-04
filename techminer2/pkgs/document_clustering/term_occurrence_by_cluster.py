@@ -23,7 +23,7 @@ Term Occurrence by Cluster
 ...     TermOccurrenceByCluster()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(100)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -41,39 +41,42 @@ Term Occurrence by Cluster
 ...     .using_sublinear_tf_scaling(False)
 ...     #
 ...     # CLUSTERING:
-...     .using_clustering_estimator_or_dict(kmeans)
+...     .using_clustering_algorithm_or_dict(kmeans)
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head(20)
-cluster                                   0  1  2  3  4  5  6  7
-descriptors                                                     
-FINTECH 46:7183                          40  0  1  2  0  1  1  1
-FINANCE 21:3481                          16  0  0  2  1  1  0  1
-FINANCIAL_TECHNOLOGY 17:2359             14  0  1  0  0  1  0  1
-THIS_PAPER 14:2240                       10  1  1  0  0  1  1  0
-THIS_STUDY 14:1737                       11  0  1  1  0  1  0  0
-INNOVATION 13:2394                        9  1  0  1  1  1  0  0
-TECHNOLOGY 13:1594                        9  0  1  0  0  1  1  1
-FINANCIAL_SERVICES 11:1862                9  0  1  0  1  0  0  0
-THE_FINANCIAL_INDUSTRY 09:2006            7  0  0  2  0  0  0  0
-SERVICES 09:1527                          6  0  0  0  1  0  1  1
-BANKS 09:1133                             7  0  1  0  0  1  0  0
-REGULATORS 08:0974                        4  0  1  1  0  0  1  1
-DATA 07:1086                              6  0  0  0  0  0  1  0
-THE_DEVELOPMENT 07:1073                   4  1  1  0  0  0  0  1
-BANKING 07:0851                           5  1  1  0  0  0  0  0
-THIS_ARTICLE 06:1360                      5  0  0  1  0  0  0  0
-THE_FINANCIAL_SERVICES_INDUSTRY 06:1237   2  1  1  0  1  0  1  0
-THE_PURPOSE 06:1046                       4  0  1  0  0  1  0  0
-THE_FIELD 06:1031                         4  0  0  2  0  0  0  0
-CONSUMERS 06:0804                         5  0  1  0  0  0  0  0
+cluster                                0   1  2  3  4  5  6  7
+raw_keywords                                                  
+FINTECH 32:5393                        1  23  1  2  1  1  0  3
+FINANCE 11:1950                        4   3  0  1  1  1  1  0
+INNOVATION 08:0990                     0   4  0  4  0  0  0  0
+FINANCIAL_SERVICES 05:0746             0   2  0  3  0  0  0  0
+FINANCIAL_SERVICE 04:1036              1   0  0  1  0  1  1  0
+BUSINESS_MODELS 03:1335                0   2  0  0  0  0  1  0
+BLOCKCHAIN 03:0881                     0   2  0  0  0  0  1  0
+COMMERCE 03:0846                       1   1  0  0  0  0  1  0
+FINANCIAL_INCLUSION 03:0590            0   2  1  0  0  0  0  0
+FINANCIAL_INSTITUTION 03:0488          0   2  0  1  0  0  0  0
+SURVEYS 03:0484                        0   2  0  0  0  1  0  0
+FINANCIAL_TECHNOLOGY 03:0461           1   2  0  0  0  0  0  0
+BANKING 03:0370                        0   0  0  3  0  0  0  0
+CROWDFUNDING 03:0335                   1   2  0  0  0  0  0  0
+MARKETPLACE_LENDING 03:0317            0   0  0  0  0  0  0  3
+ELECTRONIC_MONEY 03:0305               1   1  0  1  0  0  0  0
+SUSTAINABILITY 03:0227                 3   0  0  0  0  0  0  0
+SUSTAINABLE_DEVELOPMENT 03:0227        3   0  0  0  0  0  0  0
+FINANCIAL_SERVICES_INDUSTRIES 02:0696  1   0  0  0  0  0  1  0
+LITERATURE_REVIEW 02:0560              1   1  0  0  0  0  0  0
+
+
+
 
 """
 from ..._internals.mixins import ParamsMixin
@@ -85,7 +88,7 @@ class TermOccurrenceByCluster(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).build()
         self.params.clustering_algorithm_or_dict.fit(tf_matrix)

@@ -21,7 +21,7 @@ Fill NA
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     #
-...     .build()
+...     .run()
 ... )
 
 """
@@ -35,7 +35,7 @@ class FillNAOperator(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         if self.params.other_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.other_field}` is protected")

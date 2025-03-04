@@ -70,7 +70,7 @@ def __add_weighted_edges_from(
         PerformanceMetricsDataFrame()
         .update(**params.__dict__)
         .with_field(params.unit_of_analysis)
-        .build()
+        .run()
     )
 
     data_frame = data_frame.loc[data_frame.citing_unit.isin(metrics.index.to_list()), :]

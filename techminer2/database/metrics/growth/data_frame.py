@@ -13,7 +13,7 @@ Data Frame
 ...     DataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -27,20 +27,20 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                       rank_occ  ...  average_docs_per_year
-author_keywords                 ...                       
+raw_author_keywords             ...                       
 FINTECH                      1  ...                    9.0
 INNOVATION                   2  ...                    0.5
 FINANCIAL_SERVICES           3  ...                    1.5
 FINANCIAL_INCLUSION          4  ...                    0.0
 FINANCIAL_TECHNOLOGY         5  ...                    1.0
 <BLANKLINE>
-[5 rows x 21 columns]
+[5 rows x 22 columns]
 
 
 
@@ -96,14 +96,14 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_1_compute_performance_metrics(self):
-        return PerformanceMetricsDataFrame().update(**self.params.__dict__).build()
+        return PerformanceMetricsDataFrame().update(**self.params.__dict__).run()
 
     # ----------------------------------------------------------------------------------------------------
     def _step_2_compute_terms_by_year(self):
         df = TermsByYearDataFrame()
         df = df.update(**self.params.__dict__)
         df = df.using_term_counters(False)
-        df = df.build()
+        df = df.run()
         return df
 
     # ----------------------------------------------------------------------------------------------------
@@ -222,7 +222,8 @@ class DataFrame(
 
         return performance_metrics_data_frame
 
-    def build(self):
+    # ----------------------------------------------------------------------------------------------------
+    def run(self):
 
         performance_metrics_data_frame = self._step_1_compute_performance_metrics()
 

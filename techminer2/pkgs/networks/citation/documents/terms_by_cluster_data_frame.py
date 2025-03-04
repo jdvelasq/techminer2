@@ -25,17 +25,17 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                                                    0  ...                                                  3
 0  Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P5...  ...  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...
 1  Gracia D.B., 2019, IND MANAGE DATA SYS, V119, ...  ...     Zavolokina L., 2016, FINANCIAL INNOV, V2 1:106
-2                   Hu Z., 2019, SYMMETRY, V11 1:176  ...                                                   
-3    Gabor D., 2017, NEW POLIT ECON, V22, P423 1:314  ...                                                   
-4  Gai K., 2018, J NETWORK COMPUT APPL, V103, P26...  ...                                                   
+2    Gabor D., 2017, NEW POLIT ECON, V22, P423 1:314  ...                                                   
+3                   Hu Z., 2019, SYMMETRY, V11 1:176  ...                                                   
+4   Leong C., 2017, INT J INF MANAGE, V37, P92 1:180  ...                                                   
 <BLANKLINE>
 [5 rows x 4 columns]
 
@@ -55,7 +55,7 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         nx_graph = internal__create_nx_graph(self.params)

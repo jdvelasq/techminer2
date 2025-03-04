@@ -32,10 +32,10 @@ Terms by Cluster Summary
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
    Cluster  ...                                              Terms
 0        0  ...  FINTECH 31:5168; FINANCIAL_INCLUSION 03:0590; ...
@@ -60,12 +60,12 @@ class TermsByClusterSummary(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserTermsByClusterSummary()
             .update(**self.params.__dict__)
             .with_field("author_keywords")
-            .build()
+            .run()
         )

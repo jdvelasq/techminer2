@@ -30,10 +30,10 @@ Cross-correlation Matrix
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                 1.000  ...                   0.0
@@ -62,11 +62,9 @@ class MatrixDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
-        data_matrix = (
-            CoOccurrenceMatrixDataFrame().update(**self.params.__dict__).build()
-        )
+        data_matrix = CoOccurrenceMatrixDataFrame().update(**self.params.__dict__).run()
 
         corr_matrix = internal__compute_corr_matrix(
             params=self.params,

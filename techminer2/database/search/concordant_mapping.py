@@ -22,11 +22,11 @@ Concordant Mapping
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("date_newest")   
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping[0])
@@ -97,7 +97,7 @@ class ConcordantMapping(
         return records
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         records = self._step_01_load_the_database()
         records = self._step_02__filter_by_concordance(records)

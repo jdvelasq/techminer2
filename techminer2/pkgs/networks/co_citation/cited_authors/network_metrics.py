@@ -23,17 +23,17 @@ Network Metrics
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
-                   Degree  Betweenness  Closeness  PageRank
-Burtch G. 1:14         19     0.079539   0.717949  0.056952
-Lin M. 1:09            19     0.079539   0.717949  0.056952
-Dahlberg T. 1:06       15     0.039062   0.651163  0.045606
-Mackenzie A. 1:04      15     0.176372   0.666667  0.050477
-Gomber P. 1:08         14     0.058402   0.595745  0.043989
+                    Degree  Betweenness  Closeness  PageRank
+Zavolokina L. 1:09      23     0.106147   0.828571  0.055935
+Gomber P. 1:09          22     0.049606   0.805556  0.052428
+Lin M. 1:11             21     0.075575   0.783784  0.052154
+Burtch G. 1:16          20     0.043628   0.763158  0.048395
+Dapp T.F. 1:06          19     0.036768   0.743590  0.046041
 
 
 """
@@ -46,10 +46,10 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             InternalNetworkMetrics()
             .update(**self.params.__dict__)
             .unit_of_analysis("cited_authors")
-            .build()
+            .run()
         )

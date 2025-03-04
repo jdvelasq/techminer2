@@ -24,10 +24,10 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
                                           0  ...                                             2
 0  Gomber P., 2018, J MANAGE INF SYST 1:576  ...  Gracia D.B., 2019, IND MANAGE DATA SYS 1:225
@@ -55,7 +55,7 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(params=self.params, nx_graph=nx_graph)

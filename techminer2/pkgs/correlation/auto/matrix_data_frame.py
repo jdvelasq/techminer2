@@ -31,9 +31,9 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     #
-...     .build()
+...     .run()
 ... ).round(3)
                       Jagtiani J. 3:0317  ...  Zavolokina L. 2:0181
 Jagtiani J. 3:0317                  1.00  ...                   0.0
@@ -61,7 +61,7 @@ class MatrixDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         tfidf = TfIdfDataFrame()
         tfidf = tfidf.update(**self.params.__dict__)

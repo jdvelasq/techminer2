@@ -10,7 +10,7 @@ Terms by Cluster Summary
 ===============================================================================
 
 
->>> from techminer2.pkgs.networks.co_authorship.organizatios import TermsByClusterSummary
+>>> from techminer2.pkgs.networks.co_authorship.organizations import TermsByClusterSummary
 >>> (
 ...     TermsByClusterSummary()
 ...     #
@@ -32,11 +32,24 @@ Terms by Cluster Summary
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
+   Cluster  ...                                              Terms
+0        0  ...  Goethe Univ Frankfurt (DEU) 2:1065; Pennsylvan...
+1        1  ...  Columbia Grad Sch of Bus (USA) 1:0390; Stanfor...
+2        2  ...  Baylor Univ (USA) 2:0395; Univ of New South Wa...
+3        3  ...  Fed Reserv Bank of Philadelphia (USA) 3:0317; ...
+4        4  ...  Hankyong Nac Univ (KOR) 1:0557; Western Illino...
+5        5  ...                        Univ of Zurich (CHE) 3:0434
+6        6  ...  Max Planck Inst for Innovation and Competition...
+7        7  ...                             Pace Univ (USA) 2:0323
+8        8  ...                     Sungkyunkwan Univ (KOR) 2:0307
+9        9  ...                        Univ of Latvia (LVA) 2:0163
+<BLANKLINE>
+[10 rows x 4 columns]
 
 
 
@@ -53,12 +66,12 @@ class TermsByClusterSummary(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserTermsByClusterSummary()
             .update(**self.params.__dict__)
-            .with_field("organizatios")
-            .build()
+            .with_field("organizations")
+            .run()
         )

@@ -26,18 +26,17 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
-                   0                 1                    2
-0  Elnagdy S.A. 1:04    Burtch G. 1:14    Clemons E.K. 1:09
-1        Gai K. 1:22       Lin M. 1:09   Kauffman R.J. 1:09
-2      Kim D.J. 1:04   Agarwal S. 1:06  Adomavicius G. 1:06
-3  Venkatesh V. 1:12  Boot A.W.A. 1:03       Gomber P. 1:08
-4    Davis F.D. 1:07    Duarte J. 1:06         Au Y.A. 1:03
-
+                   0                   1                  2
+0   Berger A.N. 1:06   Clemons E.K. 1:13        Gai K. 1:43
+1   Boot A.W.A. 1:08  Kauffman R.J. 1:13         Li Y. 1:08
+2        Lin M. 1:11      Hornuf L. 1:12       Shim Y. 1:09
+3    Agarwal S. 1:07       Klohn L. 1:06    Davis F.D. 1:10
+4  Philippon T. 1:09      Burtch G. 1:16  Venkatesh V. 1:13
 
 """
 from ....._internals.mixins import ParamsMixin
@@ -51,10 +50,10 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         return (
             InternalTermsByClusterDataFrame()
             .update(**self.params.__dict__)
             .unit_of_analysis("cited_authors")
-            .build()
+            .run()
         )

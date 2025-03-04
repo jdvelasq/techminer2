@@ -21,7 +21,7 @@
 ...     .with_field("raw_abstract")
 ...     .with_other_field("raw_abstract_copy")
 ...     .where_root_directory_is("example/")
-...     .build()
+...     .run()
 ... )
 
 >>> (
@@ -29,9 +29,9 @@
 ...     .with_field("raw_abstract_copy")
 ...     .with_other_field("raw_abstract_copy")
 ...     .where_root_directory_is("example/")
-...     .build()
+...     .run()
 ... )
--- 001 -- Highlighting tokens in 'raw_abstract_copy' field.
+
 
 >>> df = (
 ...     Query()
@@ -39,8 +39,8 @@
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
-...     .build()
+...     .where_record_citations_range_is(None, None)
+...     .run()
 ... )
 
 >>> print(textwrap.fill(df.values[35][0], width=80))
@@ -64,7 +64,7 @@ that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
 ...     DeleteFieldOperator()
 ...     .with_field("raw_abstract_copy")
 ...     .where_root_directory_is("example/")
-...     .build()
+...     .run()
 ... )
 
 

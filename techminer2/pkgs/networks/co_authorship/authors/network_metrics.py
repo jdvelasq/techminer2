@@ -31,10 +31,10 @@ Metrics
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                       Degree  Betweenness  Closeness  PageRank
 Gomber P. 2:1065           5     0.035088   0.263158  0.083753
@@ -54,12 +54,12 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserNetworkMetrics()
             .update(**self.params.__dict__)
             .with_field("authors")
-            .build()
+            .run()
         )

@@ -26,11 +26,11 @@ Find records
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("date_newest")   
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> print(docs[0])
 UT 1251
@@ -94,7 +94,7 @@ class FindRecords(
         return records
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         records = self._step_01_load_the_database()
         records = self._step_02_filter_the_records(records)

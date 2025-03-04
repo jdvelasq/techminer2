@@ -10,7 +10,7 @@ Node Density Plot
 ===============================================================================
 
 
->>> from techminer2.pkgs.networks.co_authorship.organizatios import NodeDensityPlot
+>>> from techminer2.pkgs.networks.co_authorship.organizations import NodeDensityPlot
 >>> plot = (
 ...     NodeDensityPlot()
 ...     #
@@ -38,16 +38,16 @@ Node Density Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/networks/co_authorship/keywords/node_density_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_authorship/organizations/node_density_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/co_authorship/keywords/node_density_plot.html" 
+    <iframe src="../../_generated/pkgs/networks/co_authorship/organizations/node_density_plot.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
@@ -64,12 +64,12 @@ class NodeDensityPlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserNodeDensityPlot()
             .update(**self.params.__dict__)
-            .with_field("organizatios")
-            .build()
+            .with_field("organizations")
+            .run()
         )

@@ -49,10 +49,10 @@ Theme to Documents Mapping
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> import pprint
 >>> pprint.pprint(mapping)
@@ -119,7 +119,7 @@ class ThemeToDocumentsMapping(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         frame = DocumentsByThemeDataFrame().update(**self.params.__dict__).build()

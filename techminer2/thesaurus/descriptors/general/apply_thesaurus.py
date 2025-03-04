@@ -107,7 +107,7 @@ class ApplyThesaurus(
         for index, (raw_column, column) in enumerate(PAIRS):
 
             (
-                ApplyUserThesaurus()
+                ApplyUserThesaurus(quiet=self.params.quiet)
                 .with_thesaurus_file("descriptors.the.txt")
                 .with_field(raw_column)
                 .with_other_field(column)

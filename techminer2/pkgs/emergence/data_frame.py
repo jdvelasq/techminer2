@@ -28,10 +28,10 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
               OCC  OCC_baseline  OCC_recent  ...  np  growth_rate  growth_rate_ratio
 descriptors                                  ...                                    
@@ -66,7 +66,7 @@ class DataFrame(
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
             .with_cumulative_sum(False)
-            .build()
+            .run()
         )
 
     # ----------------------------------------------------------------------------------------------------
@@ -93,13 +93,13 @@ class DataFrame(
         return (
             TrendMetricsDataFrame()
             .update(**self.params.__dict__)
-            .build()
+            .run()
             .OCC[:baseline_periods]
             .sum()
         )
 
     # ----------------------------------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         occurrences_by_year = self._step_1_compute_term_occurrences_by_year()
         data_frame = self._step_2_compute_base_indicators(occurrences_by_year)
@@ -139,7 +139,7 @@ class DataFrame(
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
             .with_cumulative_sum(True)
-            .build()
+            .run()
         )
 
         n_columns = cum_occurrences_by_year.columns.max()
@@ -165,7 +165,7 @@ class DataFrame(
         global_growth_rate = (
             GeneralMetricsDataFrame()
             .update(**self.params.__dict__)
-            .build()
+            .run()
             .loc[("GENERAL", "Annual growth rate %"), "Value"]
         )
 

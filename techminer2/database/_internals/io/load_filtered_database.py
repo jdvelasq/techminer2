@@ -9,17 +9,21 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2.database.io import FilteredDatabaseLoader
+
+>>> from techminer2._internals.params_mixin import Params
+>>> from techminer2.database._internals.io import internal__load_filtered_database
 >>> (
-...     DatabaseLoader()
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
-...     .where_records_ordered_by(None)
-...     .where_records_match(None)
-...     .build()
-... ).head() # doctest: +ELLIPSIS
+...     internal__load_filtered_database(
+...         Params(
+...             database="main",
+...             record_years_range=(None, None),
+...             record_citations_range=(None, None),
+...             records_order_by=None,
+...             records_match=None,
+...             root_directory="example/",
+...         )
+...     ).head()
+... ) # doctest: +ELLIPSIS
                                                    link  ...                                  raw_abstract_copy
 934   https://www.scopus.com/inward/record.uri?eid=2...  ...  THIS_PAPER examined THE_ACCEPTANCE of PAYMENT_...
 935   https://www.scopus.com/inward/record.uri?eid=2...  ...  THE_RAPID_DEVELOPMENT of INFORMATION_AND_COMMU...
@@ -27,11 +31,9 @@
 1059  https://www.scopus.com/inward/record.uri?eid=2...  ...  GLOBAL_ECONOMY , GROWING_IMPORTANCE of INNOVAT...
 1075  https://www.scopus.com/inward/record.uri?eid=2...  ...  THIS_PAPER examines THE_GROWING_IMPORTANCE of ...
 <BLANKLINE>
-[5 rows x 70 columns]
+[5 rows x 77 columns]
 
 """
-import pathlib
-
 import pandas as pd  # type: ignore
 
 from .get_database_file_path import internal__get_database_file_path

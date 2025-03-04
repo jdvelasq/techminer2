@@ -29,10 +29,10 @@ Terms by Cluster Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
                                           0                               1
 0                        THIS_PAPER 14:2240                 FINTECH 46:7183
@@ -60,12 +60,12 @@ class TermsByClusterDataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         return (
             UserTermsByClusterDataFrame()
             .update(**self.params.__dict__)
             .with_field("descriptors")
-            .build()
+            .run()
         )

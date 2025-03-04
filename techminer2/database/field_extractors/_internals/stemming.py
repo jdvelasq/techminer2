@@ -16,19 +16,19 @@ from .get_field_values_from_database import internal__get_field_values_from_data
 def internal__stemming_and(params):
     """:meta private:"""
 
-    return stemming(params.update_params(steming_fn=apply_stemming_and_operator))
+    return stemming(params.update(stemming_fn=apply_stemming_and_operator))
 
 
 def internal__stemming_or(params):
     """:meta private:"""
 
-    return stemming(params.update_params(steming_fn=apply_stemming_or_operator))
+    return stemming(params.update(stemming_fn=apply_stemming_or_operator))
 
 
 def stemming(params):
     """:meta private:"""
 
-    stemmed_terms = get_stemmed_items(params.term_pattern)
+    stemmed_terms = get_stemmed_items(params.pattern)
     data_frame = internal__get_field_values_from_database(params)
     data_frame = create_keys_column(data_frame)
 

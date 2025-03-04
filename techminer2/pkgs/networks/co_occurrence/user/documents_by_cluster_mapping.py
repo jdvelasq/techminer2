@@ -34,11 +34,11 @@ Terms to Cluster Mapping
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("date_newest")
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> print(len(documents_by_cluster))
 4
@@ -80,14 +80,14 @@ class DocumentsByClusterMapping(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         c2t_mapping = (
             ClustersToTermsMapping()
             .update(**self.params.__dict__)
             .using_term_counters(False)
-            .build()
+            .run()
         )
 
         mapping = {}
@@ -107,7 +107,7 @@ class DocumentsByClusterMapping(
                 RecordViewer()
                 .update(**self.params.__dict__)
                 .where_records_match(records_match)
-                .build()
+                .run()
             )
 
         return mapping

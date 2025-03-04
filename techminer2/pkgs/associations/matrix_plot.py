@@ -15,7 +15,7 @@ Matrix Plot
 ...     MatrixPlot()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     .having_terms_in_top(10)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -53,10 +53,10 @@ Matrix Plot
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> # plot.write_html("sphinx/_generated/pkgs/associations/matrix_plot.html")
 
@@ -184,7 +184,7 @@ class MatrixPlot(
         return internal__assign_text_positions_based_on_quadrants(nx_graph)
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         cooc_matrix = self._step_01_create_data_frame()
 

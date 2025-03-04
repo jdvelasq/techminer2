@@ -22,11 +22,11 @@ Concordant Contexts
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("date_newest")   
 ...     #
-...     .build()
+...     .run()
 ... )
 >>> for t in contexts[:10]: print(t)
 <<< S with THE_PURPOSE of reinventing FINANCIAL_TECHNOLOGY ( FINTECH )
@@ -131,7 +131,7 @@ class ConcordantContexts(
         return texts
 
     # -------------------------------------------------------------------------
-    def build(self):
+    def run(self):
 
         records = self._step_1_load_the_database()
         context_phrases = self._step_2_extract_context_phrases(records=records)

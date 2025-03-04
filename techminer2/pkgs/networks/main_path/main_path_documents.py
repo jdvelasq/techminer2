@@ -28,11 +28,11 @@ Main Path Documents
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("data_newest") 
 ...     #
-...     .build()
+...     .run()
 ... )
 --INFO-- Paths computed.
 --INFO-- Points per link computed.
@@ -91,7 +91,7 @@ class MainPathDocuments(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         #
@@ -112,7 +112,7 @@ class MainPathDocuments(
             RecordViewer()
             .update(**self.params.__dict__)
             .where_records_match(records_match)
-            .build()
+            .run()
         )
 
         return documents

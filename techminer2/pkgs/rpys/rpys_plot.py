@@ -15,7 +15,7 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 ...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
-...     .build()
+...     .run()
 ... )
 >>> plot.write_html("sphinx/_generated/pkgs/rpys/rpys_plot.html")
 
@@ -37,7 +37,7 @@ class RPYSPlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
         """:meta private:"""
 
         data_frame = RPYSDataFrame().update(**self.params.__dict__).build()

@@ -9,6 +9,26 @@
 General Metrics Data Frame
 ===============================================================================
 
+>>> #
+>>> # TEST PREPARATION:
+>>> #
+>>> # Countries:
+>>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+>>> #
+>>> # Organizations:
+>>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+>>> #
+>>> # Descriptors:
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+>>> #
+>>> # TEST EXECUTION:
+>>> #
 >>> from techminer2.database.metrics.general import DataFrame
 >>> (
 ...     DataFrame()
@@ -17,58 +37,58 @@ General Metrics Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... )
-                                                            Value
-Category       Item                                              
-GENERAL        Timespan                                 2015:2019
-               Documents                                       50
-               Annual growth rate %                        118.67
-               Document average age                          7.24
-               References                                    1198
-               Average citations per document               162.7
-               Average citations per document per year      32.54
-               Average references per document              24.45
-               Sources                                         41
-               Average documents per source                  1.22
-DOCUMENT TYPES Article                                         37
-               Book                                             1
-               Conference paper                                 4
-               Editorial                                        2
-               Review                                           6
-AUTHORS        Authors                                        115
-               Authors of single-authored documents            12
-               Single-authored documents                       12
-               Multi-authored documents                        38
-               Authors per document                          2.52
-               Co-authors per document                        3.0
-               International co-authorship %                30.61
-               Author appearances                             126
-               Documents per author                           0.4
-               Collaboration index                           3.32
-               Organizations                                   91
-               Organizations (1st author)                      43
-               Countries                                       24
-               Countries (1st author)                          18
-               Regions                                          5
-               Subregions                                       9
-KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        148
-               Raw index keywords                             179
-               Cleaned index keywords                         179
-               Raw keywords                                   279
-               Cleaned keywords                               279
-NLP PHRASES    Raw document title nouns and phrases           133
-               Cleaned title NLP phrases                       71
-               Raw abstract nouns and phrases                1630
-               Cleaned abstract NLP phrases                   866
-               Raw nouns and phrases                         1688
-               Cleaned NLP phrases                            895
-DESCRIPTORS    Raw descriptors                               1865
-               Cleaned descriptors                           1865
+                                                                  Value
+Category          Item                                                 
+GENERAL           Timespan                                    2015:2019
+                  Documents                                          50
+                  Annual growth rate %                           118.67
+                  Document average age                             7.24
+                  References                                       3209
+                  Average citations per document                  162.7
+                  Average citations per document per year         32.54
+                  Average references per document                 65.49
+                  Sources                                            41
+                  Average documents per source                     1.22
+DOCUMENT TYPES    Article                                            37
+                  Book                                                1
+                  Conference paper                                    4
+                  Editorial                                           2
+                  Review                                              6
+AUTHORS           Authors                                           115
+                  Authors of single-authored documents               12
+                  Single-authored documents                          12
+                  Multi-authored documents                           38
+                  Authors per document                             2.52
+                  Co-authors per document                           3.0
+                  International co-authorship %                   30.61
+                  Author appearances                                126
+                  Documents per author                              0.4
+                  Collaboration index                              3.32
+                  organizations                                      90
+                  Organizations (1st author)                         42
+                  Countries                                          24
+                  Countries (1st author)                             18
+                  Regions                                             5
+                  Subregions                                          9
+KEYWORDS          Author keywords (raw)                             148
+                  Author keywords (cleaned)                         145
+                  Index keywords (raw)                              179
+                  Index keywords (cleaned)                          177
+                  Keywords (raw)                                    279
+                  Keywords (cleaned)                                266
+NOUNS AND PHRASES Document title nouns and phrases (raw)            132
+                  Document title nouns and phrases (cleaned)        130
+                  Abstract nouns and phrases (raw)                 1630
+                  Abstract nouns and phrases (cleaned)             1594
+                  Nouns and phrases (raw)                          1688
+                  Nouns and phrases (cleaned)                      1648
+DESCRIPTORS       Descriptors (raw)                                1865
+                  Descriptors (cleaned)                            1796
 
 
 
@@ -124,7 +144,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
 
-    def build(self):
+    def run(self):
 
         data_frame = internal__load_filtered_database(params=self.params)
 
@@ -459,7 +479,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="AUTHORS",
-            item="Organizations",
+            item="organizations",
             value=self.count_unique_terms(
                 data_frame,
                 "organizations",
@@ -530,7 +550,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Raw author keywords",
+            item="Author keywords (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_author_keywords",
@@ -540,7 +560,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Cleaned author keywords",
+            item="Author keywords (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
                 "author_keywords",
@@ -550,7 +570,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Raw index keywords",
+            item="Index keywords (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_index_keywords",
@@ -560,7 +580,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Cleaned index keywords",
+            item="Index keywords (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
                 "index_keywords",
@@ -570,7 +590,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Raw keywords",
+            item="Keywords (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_keywords",
@@ -580,7 +600,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Cleaned keywords",
+            item="Keywords (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
                 "keywords",
@@ -595,8 +615,8 @@ class DataFrame(
 
         stats = self.insert_stats(
             stats,
-            category="NLP PHRASES",
-            item="Raw document title nouns and phrases",
+            category="NOUNS AND PHRASES",
+            item="Document title nouns and phrases (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_document_title_nouns_and_phrases",
@@ -605,18 +625,18 @@ class DataFrame(
 
         stats = self.insert_stats(
             stats,
-            category="NLP PHRASES",
-            item="Cleaned document_title NLP phrases",
+            category="NOUNS AND PHRASES",
+            item="Document title nouns and phrases (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
-                "document_title_nlp_phrases",
+                "document_title_nouns_and_phrases",
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NLP PHRASES",
-            item="Raw abstract nouns and phrases",
+            category="NOUNS AND PHRASES",
+            item="Abstract nouns and phrases (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_abstract_nouns_and_phrases",
@@ -625,18 +645,18 @@ class DataFrame(
 
         stats = self.insert_stats(
             stats,
-            category="NLP PHRASES",
-            item="Cleaned abstract NLP phrases",
+            category="NOUNS AND PHRASES",
+            item="Abstract nouns and phrases (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
-                "abstract_nlp_phrases",
+                "abstract_nouns_and_phrases",
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NLP PHRASES",
-            item="Raw nouns and phrases",
+            category="NOUNS AND PHRASES",
+            item="Nouns and phrases (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_nouns_and_phrases",
@@ -645,11 +665,11 @@ class DataFrame(
 
         stats = self.insert_stats(
             stats,
-            category="NLP PHRASES",
-            item="Cleaned NLP phrases",
+            category="NOUNS AND PHRASES",
+            item="Nouns and phrases (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
-                "nlp_phrases",
+                "nouns_and_phrases",
             ),
         )
 
@@ -662,7 +682,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="DESCRIPTORS",
-            item="Raw descriptors",
+            item="Descriptors (raw)",
             value=self.count_unique_terms(
                 data_frame,
                 "raw_descriptors",
@@ -672,7 +692,7 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="DESCRIPTORS",
-            item="Cleaned descriptors",
+            item="Descriptors (cleaned)",
             value=self.count_unique_terms(
                 data_frame,
                 "descriptors",

@@ -28,10 +28,10 @@
 ## ...     .where_root_directory_is("example/")
 ## ...     .where_database_is("main")
 ## ...     .where_record_years_range_is(None, None)
-## ...     .where_record_citattions_range_is(None, None)
+## ...     .where_record_citations_range_is(None, None)
 ## ...     .where_records_match(None)
 ## ...     #
-## ...     .build()
+## ...     .run()
 ## ... )
 ## >>> # plot.write_html("sphinx/_static/coupling_network/_core/others/node_degree_plot.html")
 
@@ -56,7 +56,7 @@ class InternalNodeDegreePlot(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__assign_degree_to_nodes(nx_graph)

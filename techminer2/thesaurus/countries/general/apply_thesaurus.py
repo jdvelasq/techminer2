@@ -137,6 +137,7 @@ class ApplyThesaurus(
             field="affiliations",
             other_field="countries",
             root_directory=self.params.root_directory,
+            quiet=self.params.quiet,
         ).run()
 
         # Country of first author
@@ -155,6 +156,7 @@ class ApplyThesaurus(
             field="countries",
             other_field="regions",
             root_directory=self.params.root_directory,
+            quiet=self.params.quiet,
         ).run()
 
         # Country to subregion mapping
@@ -163,4 +165,5 @@ class ApplyThesaurus(
             field="countries",
             other_field="subregions",
             root_directory=self.params.root_directory,
+            quiet=self.params.quiet,
         ).run()

@@ -21,11 +21,11 @@ Data Frame
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     .where_records_ordered_by("global_cited_by_highest")  
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                                   raw_document_title  ...  year
 0  On the Fintech Revolution: Interpreting the Fo...  ...  2018
@@ -47,7 +47,7 @@ class DataFrame(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         data_frame = internal__load_filtered_database(params=self.params)
         data_frame = data_frame.assign(_order_=range(1, len(data_frame) + 1))

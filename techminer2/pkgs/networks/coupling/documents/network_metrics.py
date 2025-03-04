@@ -21,10 +21,10 @@ Network Metrics
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
 ...     .where_record_years_range_is(None, None)
-...     .where_record_citattions_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
 ...     #
-...     .build()
+...     .run()
 ... ).head()
                                             Degree  ...  PageRank
 Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
@@ -48,7 +48,7 @@ class NetworkMetrics(
 ):
     """:meta private:"""
 
-    def build(self):
+    def run(self):
 
         nx_graph = internal__create_nx_graph(params=self.params)
         return internal__compute_network_metrics(nx_graph=nx_graph)
