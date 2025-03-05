@@ -46,10 +46,11 @@ CASE_STUDY                  10        22  ...     0.67            CASE_STUDY 02:
 
 
 """
-from techminer2.database._internals.io import internal__load_filtered_database
-
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_user_stopwords
+from ..._internals.io import (
+    internal__load_filtered_database,
+    internal__load_user_stopwords,
+)
 
 SELECTED_COLUMNS = {
     "OCC": [
