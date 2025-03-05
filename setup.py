@@ -45,7 +45,7 @@ setup(
     cmdclass={
         "install": PostInstallCommand,
     },
-    package_dir={"techminer2": "techminer2"},
+    package_dir={"techminer2": "src"},
     include_package_data=True,
     classifiers=[
         "Development Status :: 3 - Alpha",
