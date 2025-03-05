@@ -31,12 +31,13 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... ).head()
-                   0                   1                  2
-0   Berger A.N. 1:06   Clemons E.K. 1:13        Gai K. 1:43
-1   Boot A.W.A. 1:08  Kauffman R.J. 1:13         Li Y. 1:08
-2        Lin M. 1:11      Hornuf L. 1:12       Shim Y. 1:09
-3    Agarwal S. 1:07       Klohn L. 1:06    Davis F.D. 1:10
-4  Philippon T. 1:09      Burtch G. 1:16  Venkatesh V. 1:13
+                   0              1                       2
+0  Zavolokina L. 1:3  Gomber P. 1:7         Jagtiani J. 1:2
+1       Gabor D. 1:2     Lee I. 1:2  Anagnostopoulos I. 1:1
+2      Ryu H.-S. 1:2   Leong C. 1:2                        
+3         Alt R. 1:1  Chen L./1 1:1                        
+4         Gai K. 1:1  Gozman D. 1:1                        
+
 
 """
 from ....._internals.mixins import ParamsMixin

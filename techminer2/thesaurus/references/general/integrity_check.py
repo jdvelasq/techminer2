@@ -11,7 +11,7 @@ Integrity Check
 
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> import sys
 >>> from io import StringIO
@@ -30,7 +30,7 @@ Integrity Check
 ...     .run()
 ... )
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr

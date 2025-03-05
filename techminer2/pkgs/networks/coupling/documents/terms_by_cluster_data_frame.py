@@ -29,16 +29,15 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... )
-                                          0  ...                                             2
-0  Gomber P., 2018, J MANAGE INF SYST 1:576  ...  Gracia D.B., 2019, IND MANAGE DATA SYS 1:225
-1       Jagtiani J., 2018, J ECON BUS 1:156  ...                   Hu Z., 2019, SYMMETRY 1:176
-2         Gomber P., 2017, J BUS ECON 1:489  ...     Gai K., 2018, J NETWORK COMPUT APPL 1:238
-3     Haddad C., 2019, SMALL BUS ECON 1:258  ...    Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161
-4             Lee I., 2018, BUS HORIZ 1:557  ...                                              
-5    Leong C., 2017, INT J INF MANAGE 1:180  ...                                              
+                                            0  ...                                       3
+0    Gomber P., 2018, J MANAGE INF SYST 1:576  ...  Jagtiani J., 2019, FINANC MANAGE 1:097
+1  Anagnostopoulos I., 2018, J ECON BUS 1:202  ...     Jagtiani J., 2018, J ECON BUS 1:064
+2           Alt R., 2018, ELECTRON MARK 1:150  ...                                        
+3    Gozman D., 2018, J MANAGE INF SYST 1:120  ...                                        
+4  Iman N., 2018, ELECT COMMER RES APPL 1:102  ...                                        
+5         Zhao Q., 2019, SUSTAINABILITY 1:079  ...                                        
 <BLANKLINE>
-[6 rows x 3 columns]
-
+[6 rows x 4 columns]
 
 
 """

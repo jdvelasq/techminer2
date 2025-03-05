@@ -27,7 +27,7 @@ Documents by Theme Frame
 ...     DocumentsByThemeDataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -56,13 +56,15 @@ Documents by Theme Frame
 ... ).head()
 cluster                                                    0  ...         9
 article                                                       ...          
-Alt R., 2018, ELECTRON MARK, V28, P235              0.033341  ...  0.033344
-Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.005266  ...  0.005265
-Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.871413  ...  0.014293
-Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.007694  ...  0.007694
-Brummer C., 2019, GEORGET LAW J, V107, P235         0.012505  ...  0.012502
+Alt R., 2018, ELECTRON MARK, V28, P235              0.033337  ...  0.033336
+Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.949990  ...  0.005557
+Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.871405  ...  0.014288
+Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.007696  ...  0.007693
+Brummer C., 2019, GEORGET LAW J, V107, P235         0.014291  ...  0.014288
 <BLANKLINE>
 [5 rows x 10 columns]
+
+
 
 
 """
@@ -80,7 +82,7 @@ class DocumentsByThemeDataFrame(
     def run(self):
         """:meta private:"""
 
-        tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).build()
+        tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).run()
 
         self.params.decomposition_algorithm.fit(tf_matrix)
 

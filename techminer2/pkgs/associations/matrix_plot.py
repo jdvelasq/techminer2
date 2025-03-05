@@ -90,7 +90,7 @@ class MatrixPlot(
 
     # -------------------------------------------------------------------------
     def _step_01_create_data_frame(self):
-        return DataFrame().update(**self.params.__dict__).build()
+        return DataFrame().update(**self.params.__dict__).run()
 
     # -------------------------------------------------------------------------
     def _step_02_create_a_empty_networkx_graph(self):

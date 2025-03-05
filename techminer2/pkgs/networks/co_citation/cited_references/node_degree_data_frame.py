@@ -27,12 +27,12 @@ Node Degree Frame
 ...     #
 ...     .run()
 ... ).head()
-   Node                                        Name  Degree
-0     0         Burtch G., Ghose A., Wattal S. 1:13      15
-1     1  Lin M., Prabhala N.R., Viswanathan S. 1:08      15
-2     2   Zavolokina L., Dolata M., Schwabe G. 1:06      14
-3     3         Duarte J., Siegel S., Young L. 1:06      13
-4     4       Skan J., Dickerson J., Masood S. 1:05      13
+   Node                                      Name  Degree
+0     0      Leong C., 2017, INT J INF MANAGE 1:2       9
+1     1  Zavolokina L., 2016, FINANCIAL INNOV 1:3       8
+2     2        Gabor D., 2017, NEW POLIT ECON 1:2       6
+3     3  Ryu H.-S., 2018, IND MANAGE DATA SYS 1:2       6
+4     4           Alt R., 2018, ELECTRON MARK 1:1       6
 
 
 

@@ -9,6 +9,27 @@
 Record Mapping
 ===============================================================================
 
+
+>>> #
+>>> # TEST PREPARATION
+>>> #
+>>> # Countries:
+>>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+>>> #
+>>> # Organizations:
+>>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+>>> #
+>>> # Descriptors:
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+>>> #
+>>> # TEST EXECUTION
+>>> #
 >>> # order_records_by:
 >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
 >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
@@ -48,11 +69,11 @@ Record Mapping
        '. TECHNOLOGY_INNOVATIONS that have begun to leverage THE_EXECUTION and '
        'STAKEHOLDER_VALUE associated with PAYMENTS , CRYPTOCURRENCIES , '
        'BLOCKCHAIN , and CROSS_BORDER_PAYMENTS . MULTIPLE_INNOVATIONS that '
-       'have affected LENDING_AND_DEPOSIT_SERVICES , PEER_TO_PEER ( P2P ) '
+       'have affected LENDING_AND_DEPOSIT_SERVICES , PEER_TO_PEER ( p2p ) '
        'LENDING , and SOCIAL_MEDIA_USE . ISSUES with_respect_to INVESTMENTS , '
        'FINANCIAL_MARKETS , TRADING , RISK_MANAGEMENT , ROBO_ADVISORY and '
        'SERVICES influenced by BLOCKCHAIN_AND_FINTECH_INNOVATIONS . '
-       'COPYRIGHT_TAYLOR_AND_FRANCIS_GROUP , llc .',
+       'COPYRIGHT_TAYLOR and FRANCIS_GROUP , llc .',
  'AR': 'Gomber P., 2018, J MANAGE INF SYST, V35, P220',
  'AU': 'Gomber P.; Kauffman R.J.; Parker C.; Weber B.W.',
  'DE': nan,
@@ -66,6 +87,10 @@ Record Mapping
  'TI': 'On the Fintech Revolution: Interpreting the Forces of Innovation, '
        'Disruption, and Transformation in Financial Services',
  'UT': 1260}
+
+
+
+
 
 """
 

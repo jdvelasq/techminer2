@@ -82,7 +82,7 @@ class NetworkMapPlot(
 
     def run(self):
 
-        data_frame = MatrixDataFrame().update(**self.params.__dict__).build()
+        data_frame = MatrixDataFrame().update(**self.params.__dict__).run()
 
         data_frame = pd.DataFrame(
             cosine_similarity(data_frame),

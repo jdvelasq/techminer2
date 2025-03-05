@@ -52,7 +52,7 @@ def internal__preprocess_references(root_dir):
     for source, abbr_source_title in tqdm(
         zip(abbrs.source, abbrs.abbr_source_title),
         total=len(abbrs),
-        desc="INFO  Processing 'references' column",
+        desc="  Progress",
     ):
 
         dataframe["raw_global_references"] = dataframe[

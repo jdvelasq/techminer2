@@ -31,14 +31,12 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... ).head()
-                              0  ...                                                  2
-0  J STRATEGIC INFORM SYST 1:14  ...                         ELECT COMMER RES APPL 1:32
-1                 J FINANC 1:23  ...                      FUTURE GENER COMPUT SYST 1:10
-2               MANAGE SCI 1:30  ...  PROC IEEE INT CONF CYBER SECUR CLOUD COMPUT CS...
-3            J FINANC ECON 1:20  ...  PROC IEEE INT CONF BIG DATA SECUR CLOUD IEEE B...
-4            J BANK FINANC 1:13  ...                                    COMMUN ACM 1:12
-<BLANKLINE>
-[5 rows x 3 columns]
+                         0                      1
+0      FINANCIAL INNOV 1:4         J BUS ECON 1:4
+1  IND MANAGE DATA SYS 1:2  J MANAGE INF SYST 1:4
+2       NEW POLIT ECON 1:2          BUS HORIZ 1:2
+3        ELECTRON MARK 1:1   INT J INF MANAGE 1:2
+4  INF COMPUT SECURITY 1:1       CHINA ECON J 1:1
 
 
 

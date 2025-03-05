@@ -60,6 +60,55 @@ Terms to Cluster Mapping
  'United Kingdom 03:0636': 2,
  'United States 16:3189': 0}
 
+ 
+>>> mapping = (
+...     TermsToClustersMapping()
+...     #
+...     # FIELD:
+...     .having_terms_in_top(20)
+...     .having_terms_ordered_by("OCC")
+...     .having_term_occurrences_between(None, None)
+...     .having_term_citations_between(None, None)
+...     .having_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(False)
+...     #
+...     # NETWORK:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     .using_association_index("association")
+...     #
+...     # DATABASE:
+...     .where_root_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
+...     .where_records_match(None)
+...     #
+...     .run()
+... )
+>>> from pprint import pprint
+>>> pprint(mapping)
+{'Australia': 2,
+ 'Belgium': 0,
+ 'Brunei Darussalam': 8,
+ 'China': 0,
+ 'Denmark': 1,
+ 'France': 1,
+ 'Germany': 1,
+ 'Hong Kong': 2,
+ 'Indonesia': 6,
+ 'Kazakhstan': 0,
+ 'Latvia': 4,
+ 'Netherlands': 1,
+ 'Singapore': 1,
+ 'Slovenia': 7,
+ 'South Korea': 0,
+ 'Spain': 5,
+ 'Sweden': 0,
+ 'Switzerland': 3,
+ 'United Kingdom': 2,
+ 'United States': 0}
 
 
 """

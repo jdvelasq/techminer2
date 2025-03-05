@@ -31,15 +31,13 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... ).head()
-                                                 0  ...                                                  2
-0                          Business Horizons 1:557  ...       Industrial Management and Data Systems 2:386
-1              Journal of Business Economics 1:489  ...                                     Symmetry 1:176
-2                   Small Business Economics 1:258  ...  Journal of Network and Computer Applications 1...
-3                         Electronic Markets 2:287  ...                                                   
-4  Journal of Management Information Systems 2:696  ...                                                   
+                                                   0  ...                                               4
+0                           Electronic Markets 2:287  ...                      Financial Innovation 2:190
+1    Journal of Management Information Systems 2:696  ...  Journal of Strategic Information Systems 1:160
+2                 Sustainability (Switzerland) 2:150  ...                                                
+3  International Journal of Information Managemen...  ...                                                
 <BLANKLINE>
-[5 rows x 3 columns]
-                                     
+[4 rows x 5 columns]
 
 
 

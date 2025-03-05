@@ -14,7 +14,7 @@ Node Degree Frame
 ...     NodeDegreeDataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -37,11 +37,12 @@ Node Degree Frame
 ...     .run()
 ... ).head()
    Node                        Name  Degree
-0     0             FINTECH 31:5168      18
-1     1  FINANCIAL_SERVICES 04:0667       7
-2     2          INNOVATION 07:0911       6
-3     3          TECHNOLOGY 02:0310       5
-4     4             FINANCE 02:0309       5
+0     0             FINTECH 32:5393      16
+1     1             FINANCE 11:1950      15
+2     2            COMMERCE 03:0846      11
+3     3   FINANCIAL_SERVICE 04:1036      10
+4     4  FINANCIAL_SERVICES 05:0746       9
+
 
 
 """

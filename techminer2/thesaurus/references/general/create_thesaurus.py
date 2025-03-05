@@ -11,7 +11,7 @@ Create thesaurus
 ===============================================================================
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> import sys
 >>> from io import StringIO
@@ -23,7 +23,7 @@ Create thesaurus
 >>> from techminer2.thesaurus.references import CreateThesaurus
 >>> CreateThesaurus(root_directory = "example/", tqdm_disable=True).run()
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr

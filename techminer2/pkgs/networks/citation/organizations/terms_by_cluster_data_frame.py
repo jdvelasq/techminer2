@@ -30,17 +30,16 @@ Terms by Cluster Frame
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... ).head()
+... ).head(10)
                                                    0  ...                               3
-0  CESifo, Poschingerstr. 5, Munich, 81679, Germa...  ...   Univ of Zaragoza (ESP) 1:0225
-1                        Univ of Zurich (CHE) 3:0434  ...  Sungkyunkwan Univ (KOR) 2:0307
-2  Max Planck Inst for Innovation and Competition...  ...                                
+0                        Univ of Zurich (CHE) 3:0434  ...  Sungkyunkwan Univ (KOR) 2:0307
+1  Max Planck Inst for Innovation and Competition...  ...   Univ of Zaragoza (ESP) 1:0225
+2  CESifo, Poschingerstr. 5, Munich, 81679, Germa...  ...                                
 3                         SKEMA Bus Sch (FRA) 1:0258  ...                                
 4                        Univ of Bremen (DEU) 1:0258  ...                                
+5          Univ of Lille Nord de France (FRA) 1:0258  ...                                
 <BLANKLINE>
-[5 rows x 4 columns]
-
-
+[6 rows x 4 columns]
 
 
 """

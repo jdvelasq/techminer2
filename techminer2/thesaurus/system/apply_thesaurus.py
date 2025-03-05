@@ -11,7 +11,7 @@ Apply Thesaurus
 ===============================================================================
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> import sys
 >>> from io import StringIO
@@ -37,7 +37,7 @@ Apply Thesaurus
 ...     .run()
 ... )
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr

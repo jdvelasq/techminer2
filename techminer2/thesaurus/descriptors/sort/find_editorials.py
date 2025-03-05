@@ -10,7 +10,7 @@ Find Editorials
 ===============================================================================
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -31,7 +31,7 @@ Find Editorials
 ... ) 
 
 
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

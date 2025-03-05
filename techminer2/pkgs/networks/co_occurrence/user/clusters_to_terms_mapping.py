@@ -15,7 +15,7 @@ Clusters to Terms Mapping
 ...     ClustersToTermsMapping()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -40,24 +40,26 @@ Clusters to Terms Mapping
 ... )
 >>> from pprint import pprint
 >>> pprint(mapping)
-{0: ['FINTECH 31:5168',
+{0: ['FINTECH 32:5393',
+     'INNOVATION 08:0990',
+     'FINANCIAL_SERVICES 05:0746',
      'FINANCIAL_INCLUSION 03:0590',
+     'FINANCIAL_INSTITUTION 03:0488',
+     'SURVEYS 03:0484',
+     'BANKING 03:0370',
+     'MARKETPLACE_LENDING 03:0317',
+     'ELECTRONIC_MONEY 03:0305'],
+ 1: ['FINANCE 11:1950',
+     'FINANCIAL_SERVICE 04:1036',
+     'BUSINESS_MODELS 03:1335',
+     'BLOCKCHAIN 03:0881',
+     'COMMERCE 03:0846',
+     'FINANCIAL_SERVICES_INDUSTRIES 02:0696'],
+ 2: ['FINANCIAL_TECHNOLOGY 03:0461',
      'CROWDFUNDING 03:0335',
-     'BUSINESS_MODELS 02:0759',
-     'CYBER_SECURITY 02:0342',
-     'CASE_STUDY 02:0340',
-     'BLOCKCHAIN 02:0305',
-     'REGTECH 02:0266'],
- 1: ['INNOVATION 07:0911',
-     'FINANCIAL_SERVICES 04:0667',
-     'FINANCIAL_TECHNOLOGY 03:0461',
-     'TECHNOLOGY 02:0310',
-     'BANKING 02:0291'],
- 2: ['MARKETPLACE_LENDING 03:0317',
-     'LENDINGCLUB 02:0253',
-     'PEER_TO_PEER_LENDING 02:0253',
-     'SHADOW_BANKING 02:0253'],
- 3: ['ARTIFICIAL_INTELLIGENCE 02:0327', 'FINANCE 02:0309', 'ROBOTS 02:0289']}
+     'SUSTAINABILITY 03:0227',
+     'SUSTAINABLE_DEVELOPMENT 03:0227',
+     'LITERATURE_REVIEW 02:0560']}
 
 
 
@@ -78,8 +80,10 @@ class ClustersToTermsMapping(
     def run(self):
         """:meta private:"""
 
-        nx_graph = internal__create_nx_graph(self.params)
-        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
-        mapping = internal__create_clusters_to_terms_mapping(self.params, nx_graph)
+        nx_graph = internal__create_nx_graph(params=self.params)
+        nx_graph = internal__cluster_nx_graph(params=self.params, nx_graph=nx_graph)
+        mapping = internal__create_clusters_to_terms_mapping(
+            params=self.params, nx_graph=nx_graph
+        )
 
         return mapping

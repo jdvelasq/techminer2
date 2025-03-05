@@ -35,6 +35,12 @@ Node Degree Frame
 ...     #
 ...     .run()
 ... ).head()
+   Node                           Name  Degree
+0     0                FINTECH 32:5393      17
+1     1                FINANCE 11:1950      15
+2     2      FINANCIAL_SERVICE 08:1680      12
+3     3               COMMERCE 03:0846      12
+4     4  FINANCIAL_INSTITUTION 04:0746       9
 
 
 

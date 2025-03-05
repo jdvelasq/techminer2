@@ -11,7 +11,7 @@ Create Thesaurus
 ===============================================================================
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -22,7 +22,7 @@ Create Thesaurus
 >>> CreateThesaurus(root_directory="example/").run()
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

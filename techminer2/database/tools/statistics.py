@@ -13,7 +13,7 @@ Statistics
 >>> (
 ...     Statistics()
 ...     #
-...     .with_field("author_keywords")
+...     .with_field("raw_author_keywords")
 ...     #
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
@@ -22,16 +22,18 @@ Statistics
 ...     #
 ...     .run()
 ... ).head()
-                      year                              ... local_citations                    
-                     count    mean std     min     25%  ...             min  25%  50%  75%  max
-author_keywords                                         ...                                    
-ACTOR_NETWORK_THEORY   1.0  2016.0 NaN  2016.0  2016.0  ...             0.0  0.0  0.0  0.0  0.0
-ACTUALIZATION          1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
-ADOPTION               1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
-AGRICULTURE            1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
-AGROPAY                1.0  2019.0 NaN  2019.0  2019.0  ...             0.0  0.0  0.0  0.0  0.0
+                     conference_code                ...    year                
+                               count      mean std  ...     50%     75%     max
+raw_author_keywords                                 ...                        
+ACTOR_NETWORK_THEORY             0.0       NaN NaN  ...  2016.0  2016.0  2016.0
+ACTUALIZATION                    0.0       NaN NaN  ...  2019.0  2019.0  2019.0
+ADOPTION                         0.0       NaN NaN  ...  2019.0  2019.0  2019.0
+AGRICULTURE                      1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
+AGROPAY                          1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
 <BLANKLINE>
 [5 rows x 56 columns]
+
+
 
 """
 from ..._internals.mixins import ParamsMixin

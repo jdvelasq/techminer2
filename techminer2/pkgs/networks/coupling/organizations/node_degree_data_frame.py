@@ -19,6 +19,9 @@ Network Degree Frame
 ...     .having_occurrence_threshold(2)
 ...     .having_terms_in(None)
 ...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
@@ -27,14 +30,48 @@ Network Degree Frame
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... ).head()
-   Node                Name  Degree
-0     0    Gomber P. 2:1065       3
-1     1    Hornuf L. 2:0358       3
-2     2  Jagtiani J. 3:0317       3
-3     3   Lemieux C. 2:0253       3
-4     4    Dolata M. 2:0181       2
-
+... ).head(15)
+   Node                                               Name  Degree
+0     0                 Goethe Univ Frankfurt (DEU) 2:1065       4
+1     1                        Univ of Sydney (AUS) 2:0300       4
+2     2               Pennsylvania State Univ (USA) 1:0576       4
+3     3            Singapore Manag Univ (SMU) (SGP) 1:0576       4
+4     4                      Univ of Delaware (USA) 1:0576       4
+5     5       Fed Reserv Bank of Philadelphia (USA) 3:0317       1
+6     6  Max Planck Inst for Innovation and Competition...       1
+7     7                     Sungkyunkwan Univ (KOR) 2:0307       1
+8     8            Fed Reserv Bank of Chicago (USA) 2:0253       1
+>>> (
+...     NodeDegreeDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(False)
+...     #
+...     # DATABASE:
+...     .where_root_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
+...     .where_records_match(None)
+...     #
+...     .run()
+... ).head(15)
+       Node                                               Name  Degree
+    0     0                 Goethe Univ Frankfurt (DEU) 2:1065       4
+    1     1                        Univ of Sydney (AUS) 2:0300       4
+    2     2               Pennsylvania State Univ (USA) 1:0576       4
+    3     3            Singapore Manag Univ (SMU) (SGP) 1:0576       4
+    4     4                      Univ of Delaware (USA) 1:0576       4
+    5     5       Fed Reserv Bank of Philadelphia (USA) 3:0317       1
+    6     6  Max Planck Inst for Innovation and Competition...       1
+    7     7                     Sungkyunkwan Univ (KOR) 2:0307       1
+    8     8            Fed Reserv Bank of Chicago (USA) 2:0253       1
 
 
 

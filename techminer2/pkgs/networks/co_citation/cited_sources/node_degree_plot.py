@@ -34,7 +34,7 @@ Node Degree Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/networks/co_citation/cited_sources/node_degree_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_citation/cited_sources/node_degree_plot.html")
 
 .. raw:: html
     

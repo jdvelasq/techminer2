@@ -27,7 +27,7 @@ Components by Term Frame
 ...     ComponentsByTermDataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -54,18 +54,18 @@ Components by Term Frame
 ...     #
 ...     .run()
 ... )
-term       FINTECH 46:7183  ...  INNOVATIONS 04:0518
-component                   ...                     
-0                21.173598  ...             0.100015
-1                 3.333996  ...             1.099997
-2                 1.100075  ...             0.100000
-3                 1.196708  ...             2.099980
-4                 1.646014  ...             0.100000
-5                 1.272914  ...             1.100008
-6                 4.266043  ...             0.100000
-7                 3.281379  ...             0.100000
-8                 1.237609  ...             0.100000
-9                 8.491663  ...             0.100000
+term       FINTECH 46:7183  ...  THIS_RESEARCH 04:0540
+component                   ...                       
+0                15.596877  ...               1.218244
+1                 3.100182  ...               0.100000
+2                 1.752694  ...               0.100000
+3                 4.099965  ...               0.100007
+4                 0.100000  ...               0.100000
+5                 3.416013  ...               0.100000
+6                 9.622800  ...               0.100000
+7                 2.783190  ...               0.100000
+8                 1.100088  ...               0.100000
+9                 5.428192  ...               2.981749
 <BLANKLINE>
 [10 rows x 50 columns]
 
@@ -85,7 +85,7 @@ class ComponentsByTermDataFrame(
     def run(self):
         """:meta private:"""
 
-        tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).build()
+        tf_matrix = TfIdfDataFrame().update(**self.params.__dict__).run()
 
         self.params.decomposition_algorithm.fit(tf_matrix)
 

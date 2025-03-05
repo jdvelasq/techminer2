@@ -26,12 +26,12 @@ Network Metrics
 ...     #
 ...     .run()
 ... ).head()
-                                            Degree  ...  PageRank
-Anagnostopoulos I., 2018, J ECON BUS 1:202       7  ...  0.109121
-Gomber P., 2017, J BUS ECON 1:489                6  ...  0.164851
-Gomber P., 2018, J MANAGE INF SYST 1:576         5  ...  0.108659
-Hu Z., 2019, SYMMETRY 1:176                      4  ...  0.116249
-Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4  ...  0.100082
+                                              Degree  ...  PageRank
+Anagnostopoulos I., 2018, J ECON BUS 1:202         3  ...  0.135363
+Gomber P., 2018, J MANAGE INF SYST 1:576           3  ...  0.138986
+Alt R., 2018, ELECTRON MARK 1:150                  2  ...  0.092732
+Gracia D.B., 2019, IND MANAGE DATA SYS 1:225       2  ...  0.104621
+Hu Z., 2019, SYMMETRY 1:176                        2  ...  0.097816
 <BLANKLINE>
 [5 rows x 4 columns]
 
@@ -51,4 +51,4 @@ class NetworkMetrics(
     def run(self):
 
         nx_graph = internal__create_nx_graph(params=self.params)
-        return internal__compute_network_metrics(nx_graph=nx_graph)
+        return internal__compute_network_metrics(params=self.params, nx_graph=nx_graph)

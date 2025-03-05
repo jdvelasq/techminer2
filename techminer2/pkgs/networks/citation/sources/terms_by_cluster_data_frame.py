@@ -30,16 +30,16 @@ Terms by Cluster Frame
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... ).head()
+... ).head(10)
                                                    0  ...                                        3
-0                            Business Horizons 1:557  ...               Financial Management 2:161
-1                     Small Business Economics 1:258  ...  Journal of Economics and Business 3:422
-2  Business and Information Systems Engineering 1...  ...               Financial Innovation 2:190
-3                 Sustainability (Switzerland) 2:150  ...                                         
-4                       China Economic Journal 1:096  ...                                         
+0                 Sustainability (Switzerland) 2:150  ...  Journal of Economics and Business 3:422
+1                            Business Horizons 1:557  ...               Financial Innovation 2:190
+2                     Small Business Economics 1:258  ...               Financial Management 2:161
+3  Business and Information Systems Engineering 1...  ...                                         
+4  International Journal of Information Managemen...  ...                                         
+5                       China Economic Journal 1:096  ...                                         
 <BLANKLINE>
-[5 rows x 4 columns]
-
+[6 rows x 4 columns]
 
 
 """

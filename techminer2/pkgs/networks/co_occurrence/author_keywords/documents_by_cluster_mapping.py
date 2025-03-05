@@ -9,6 +9,19 @@
 Terms to Cluster Mapping
 ===============================================================================
 
+
+
+>>> #
+>>> # TEST PREPARATION
+>>> #
+>>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> #
+>>> # CODE TESTED
+>>> #
 >>> # where_records_ordered_by: date_newest, date_oldest, global_cited_by_highest, 
 >>> #                           global_cited_by_lowest, local_cited_by_highest, 
 >>> #                           local_cited_by_lowest, first_author_a_to_z, 

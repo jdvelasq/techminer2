@@ -15,7 +15,7 @@ Terms by Cluster Data Frame
 ...     TermsByClusterDataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -35,17 +35,21 @@ Terms by Cluster Data Frame
 ...     #
 ...     .run()
 ... )
-                             0  ...                                3
-0              FINTECH 31:5168  ...  ARTIFICIAL_INTELLIGENCE 02:0327
-1  FINANCIAL_INCLUSION 03:0590  ...                  FINANCE 02:0309
-2         CROWDFUNDING 03:0335  ...                   ROBOTS 02:0289
-3      BUSINESS_MODELS 02:0759  ...                                 
-4       CYBER_SECURITY 02:0342  ...                                 
-5           CASE_STUDY 02:0340  ...                                 
-6           BLOCKCHAIN 02:0305  ...                                 
-7              REGTECH 02:0266  ...                                 
+                               0  ...                                2
+0                FINTECH 32:5393  ...     FINANCIAL_TECHNOLOGY 03:0461
+1             INNOVATION 08:0990  ...             CROWDFUNDING 03:0335
+2     FINANCIAL_SERVICES 05:0746  ...           SUSTAINABILITY 03:0227
+3    FINANCIAL_INCLUSION 03:0590  ...  SUSTAINABLE_DEVELOPMENT 03:0227
+4  FINANCIAL_INSTITUTION 03:0488  ...        LITERATURE_REVIEW 02:0560
+5                SURVEYS 03:0484  ...                                 
+6                BANKING 03:0370  ...                                 
+7    MARKETPLACE_LENDING 03:0317  ...                                 
+8       ELECTRONIC_MONEY 03:0305  ...                                 
 <BLANKLINE>
-[8 rows x 4 columns]
+[9 rows x 3 columns]
+
+
+
 
 
 """

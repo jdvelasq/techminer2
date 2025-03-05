@@ -19,6 +19,9 @@ Network Metrics
 ...     .having_occurrence_threshold(2)
 ...     .having_terms_in(None)
 ...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
@@ -27,15 +30,53 @@ Network Metrics
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... ).head()
+... ).head(15)
                                                  Degree  ...  PageRank
-Journal of Business Economics 1:489                   9  ...  0.123764
-Journal of Economics and Business 3:422               9  ...  0.121718
-Journal of Management Information Systems 2:696       7  ...  0.116066
-Electronic Markets 2:287                              6  ...  0.068069
-Financial Management 2:161                            6  ...  0.095678
+Electronic Markets 2:287                              5  ...  0.231592
+Journal of Economics and Business 3:422               4  ...  0.177251
+Industrial Management and Data Systems 2:386          3  ...  0.111571
+Symmetry 1:176                                        3  ...  0.110623
+Journal of Management Information Systems 2:696       2  ...  0.135259
+Sustainability (Switzerland) 2:150                    2  ...  0.106338
+Journal of Innovation Management 1:226                2  ...  0.078484
+Financial Management 2:161                            1  ...  0.048882
 <BLANKLINE>
-[5 rows x 4 columns]
+[8 rows x 4 columns]
+
+
+
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(20)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(False)
+...     #
+...     # DATABASE:
+...     .where_root_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
+...     .where_records_match(None)
+...     #
+...     .run()
+... ).head(15)
+                                           Degree  ...  PageRank
+Electronic Markets                              5  ...  0.231592
+Journal of Economics and Business               4  ...  0.177251
+Industrial Management and Data Systems          3  ...  0.111571
+Symmetry                                        3  ...  0.110623
+Journal of Management Information Systems       2  ...  0.135259
+Sustainability (Switzerland)                    2  ...  0.106338
+Journal of Innovation Management                2  ...  0.078484
+Financial Management                            1  ...  0.048882
+<BLANKLINE>
+[8 rows x 4 columns]
 
 
 

@@ -11,7 +11,7 @@ Apply Thesaurus
 
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> import sys
 >>> from io import StringIO
@@ -23,7 +23,7 @@ Apply Thesaurus
 >>> from techminer2.thesaurus.references import ApplyThesaurus
 >>> ApplyThesaurus(root_directory="example/").run()
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
@@ -39,10 +39,13 @@ Applying user thesaurus to database
 
 
 """
+import pathlib
+
+import pandas as pd
 
 from ...._internals.mixins import ParamsMixin
-from ..._internals import ThesaurusMixin
-from ...user import ApplyThesaurus as ApplyUserThesaurus
+from ....database._internals.io import internal__load_records, internal__write_records
+from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
 #
@@ -55,44 +58,25 @@ class ApplyThesaurus(
 
     def run(self):
 
-        ApplyUserThesaurus(
-            thesaurus_file="references.the.txt",
-            field="raw_global_references",
-            other_field="global_references",
-            root_directory=self.params.root_directory,
-        ).run()
+        root_directory = self.params.root_directory
 
+        file_path = pathlib.Path(root_directory) / "thesaurus/references.the.txt"
+        th = internal__load_reversed_thesaurus_as_mapping(file_path=file_path)
 
-# def _apply_thesaurus(root_dir):
-#     # Apply the thesaurus to raw_global_references
+        records = internal__load_records(self.params)
 
-#     file_path = pathlib.Path(root_dir) / "thesaurus/references.the.txt"
-#     th = internal__load_reversed_thesaurus_as_mapping(file_path=file_path)
+        # creates a list of references
+        records["global_references"] = records["raw_global_references"].str.split("; ")
 
-#     dataframe = pd.read_csv(
-#         pathlib.Path(root_dir) / "databases/database.csv.zip",
-#         encoding="utf-8",
-#         compression="zip",
-#     )
+        # replace the oriignal references by the record_id
+        records["global_references"] = records["global_references"].map(
+            lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
+        )
+        records["global_references"] = records["global_references"].map(
+            lambda x: pd.NA if x == [] else x, na_action="ignore"
+        )
+        records["global_references"] = records["global_references"].map(
+            lambda x: "; ".join(sorted(x)) if isinstance(x, list) else x
+        )
 
-#     # creates a list of references
-#     dataframe["global_references"] = dataframe["raw_global_references"].str.split("; ")
-
-#     # replace the oriignal references by the record_id
-#     dataframe["global_references"] = dataframe["global_references"].map(
-#         lambda x: [th[t] for t in x if t in th.keys()], na_action="ignore"
-#     )
-#     dataframe["global_references"] = dataframe["global_references"].map(
-#         lambda x: pd.NA if x == [] else x, na_action="ignore"
-#     )
-#     dataframe["global_references"] = dataframe["global_references"].map(
-#         lambda x: "; ".join(sorted(x)) if isinstance(x, list) else x
-#     )
-
-#     dataframe.to_csv(
-#         pathlib.Path(root_dir) / "databases/database.csv.zip",
-#         sep=",",
-#         encoding="utf-8",
-#         index=False,
-#         compression="zip",
-#     )
+        internal__write_records(params=self.params, records=records)

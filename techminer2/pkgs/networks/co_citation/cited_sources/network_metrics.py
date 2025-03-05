@@ -19,6 +19,9 @@ Network Metrics
 ...     .having_citation_threshold(0)
 ...     .having_terms_in(None)
 ...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
 ...     # DATABASE:
 ...     .where_root_directory_is("example/")
 ...     .where_database_is("main")
@@ -27,13 +30,56 @@ Network Metrics
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... ).head()
-                                Degree  Betweenness  Closeness  PageRank
-ELECT COMMER RES APPL 1:32          27     0.074517   0.935484  0.046446
-MIS QUART MANAGE INF SYST 1:47      26     0.014924   0.906250  0.042254
-COMMUN ACM 1:12                     25     0.068477   0.878788  0.043568
-INF SYST RES 1:18                   25     0.012996   0.878788  0.040796
-MANAGE SCI 1:30                     25     0.014031   0.878788  0.040817
+... ).head(15)
+                           Degree  Betweenness  Closeness  PageRank
+INT J INF MANAGE 1:2            9     0.377778   0.909091  0.143755
+FINANCIAL INNOV 1:4             7     0.118519   0.769231  0.110731
+IND MANAGE DATA SYS 1:2         6     0.000000   0.714286  0.093828
+NEW POLIT ECON 1:2              6     0.000000   0.714286  0.093828
+ELECTRON MARK 1:1               6     0.000000   0.714286  0.093828
+INF COMPUT SECURITY 1:1         6     0.000000   0.714286  0.093828
+J NETWORK COMPUT APPL 1:1       6     0.000000   0.714286  0.093828
+J MANAGE INF SYST 1:4           4     0.018519   0.625000  0.077923
+BUS HORIZ 1:2                   4     0.018519   0.625000  0.077923
+J BUS ECON 1:4                  3     0.022222   0.588235  0.060200
+CHINA ECON J 1:1                3     0.000000   0.588235  0.060331
+
+
+
+>>> from techminer2.pkgs.networks.co_citation.cited_sources import NetworkMetrics
+>>> (
+...     NetworkMetrics()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(False)
+...     #
+...     # DATABASE:
+...     .where_root_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
+...     .where_records_match(None)
+...     #
+...     .run()
+... ).head(15)
+                       Degree  Betweenness  Closeness  PageRank
+INT J INF MANAGE            9     0.377778   0.909091  0.143755
+FINANCIAL INNOV             7     0.118519   0.769231  0.110731
+IND MANAGE DATA SYS         6     0.000000   0.714286  0.093828
+NEW POLIT ECON              6     0.000000   0.714286  0.093828
+ELECTRON MARK               6     0.000000   0.714286  0.093828
+INF COMPUT SECURITY         6     0.000000   0.714286  0.093828
+J NETWORK COMPUT APPL       6     0.000000   0.714286  0.093828
+J MANAGE INF SYST           4     0.018519   0.625000  0.077923
+BUS HORIZ                   4     0.018519   0.625000  0.077923
+J BUS ECON                  3     0.022222   0.588235  0.060200
+CHINA ECON J                3     0.000000   0.588235  0.060331
+
 
 
 

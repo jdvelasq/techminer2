@@ -26,12 +26,14 @@ Network Degree Frame
 ...     #
 ...     .run()
 ... ).head()
-   Node                                        Name  Degree
-0     0  Anagnostopoulos I., 2018, J ECON BUS 1:202       7
-1     1           Gomber P., 2017, J BUS ECON 1:489       6
-2     2    Gomber P., 2018, J MANAGE INF SYST 1:576       5
-3     3                 Hu Z., 2019, SYMMETRY 1:176       4
-4     4  Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       4
+   Node                                          Name  Degree
+0     0      Gomber P., 2018, J MANAGE INF SYST 1:576       3
+1     1    Anagnostopoulos I., 2018, J ECON BUS 1:202       3
+2     2  Gracia D.B., 2019, IND MANAGE DATA SYS 1:225       2
+3     3                   Hu Z., 2019, SYMMETRY 1:176       2
+4     4    Ryu H.-S., 2018, IND MANAGE DATA SYS 1:161       2
+
+
 
 
 """

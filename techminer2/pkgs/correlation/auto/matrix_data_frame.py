@@ -66,7 +66,7 @@ class MatrixDataFrame(
         tfidf = TfIdfDataFrame()
         tfidf = tfidf.update(**self.params.__dict__)
         # tfidf = tfidf.using_term_counters(False)
-        data_matrix = tfidf.build()
+        data_matrix = tfidf.run()
 
         corr_matrix = internal__compute_corr_matrix(
             params=self.params,

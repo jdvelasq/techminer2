@@ -13,7 +13,7 @@ Sort by Key Match
 Finds a string in the terms of a thesaurus.
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> import sys
 >>> from io import StringIO
@@ -35,7 +35,7 @@ Finds a string in the terms of a thesaurus.
 ...     .run()
 ... ) 
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr

@@ -30,7 +30,17 @@ Terms by Cluster Frame
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... ).head()
+... ).head(10)
+                                           0  ...                                         2
+0   Zavolokina L., 2016, FINANCIAL INNOV 1:3  ...         Jagtiani J., 2018, J ECON BUS 1:2
+1         Gabor D., 2017, NEW POLIT ECON 1:2  ...  Anagnostopoulos I., 2018, J ECON BUS 1:1
+2   Ryu H.-S., 2018, IND MANAGE DATA SYS 1:2  ...                                          
+3            Alt R., 2018, ELECTRON MARK 1:1  ...                                          
+4    Gai K., 2018, J NETWORK COMPUT APPL 1:1  ...                                          
+5         Li Y./1, 2017, FINANCIAL INNOV 1:1  ...                                          
+6  Stewart H., 2018, INF COMPUT SECURITY 1:1  ...                                          
+<BLANKLINE>
+[7 rows x 3 columns]
 
 
 

@@ -32,8 +32,8 @@ Node Degree Frame
 0     0                   Univ of Zurich (CHE) 3:0434       5
 1     1            Goethe Univ Frankfurt (DEU) 2:1065       5
 2     2                   Univ of Sydney (AUS) 2:0300       4
-3     3       Fed Reserv Bank of Chicago (USA) 2:0253       2
-4     4  Fed Reserv Bank of Philadelphia (USA) 3:0317       2
+3     3  Fed Reserv Bank of Philadelphia (USA) 3:0317       2
+4     4       Fed Reserv Bank of Chicago (USA) 2:0253       2
 
 
 

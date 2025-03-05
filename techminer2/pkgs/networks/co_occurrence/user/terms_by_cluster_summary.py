@@ -15,7 +15,7 @@ Terms by Cluster Summary
 ...     TermsByClusterSummary()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -39,19 +39,18 @@ Terms by Cluster Summary
 ...     .run()
 ... )
    Cluster  ...                                              Terms
-0        0  ...  FINTECH; FINANCIAL_INCLUSION; CROWDFUNDING; BU...
-1        1  ...  INNOVATION; FINANCIAL_SERVICES; FINANCIAL_TECH...
-2        2  ...  MARKETPLACE_LENDING; LENDINGCLUB; PEER_TO_PEER...
-3        3  ...           ARTIFICIAL_INTELLIGENCE; FINANCE; ROBOTS
+0        0  ...  FINTECH; INNOVATION; FINANCIAL_SERVICES; FINAN...
+1        1  ...  FINANCE; FINANCIAL_SERVICE; BUSINESS_MODELS; B...
+2        2  ...  FINANCIAL_TECHNOLOGY; CROWDFUNDING; SUSTAINABI...
 <BLANKLINE>
-[4 rows x 4 columns]
+[3 rows x 4 columns]
 
 >>> from techminer2.pkgs.networks.co_occurrence.user import TermsByClusterSummary
 >>> (
 ...     TermsByClusterSummary()
 ...     #
 ...     # FIELD:
-...     .with_field("author_keywords")
+...     .with_field("raw_keywords")
 ...     .having_terms_in_top(20)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -75,12 +74,12 @@ Terms by Cluster Summary
 ...     .run()
 ... )
    Cluster  ...                                              Terms
-0        0  ...  FINTECH 31:5168; FINANCIAL_INCLUSION 03:0590; ...
-1        1  ...  INNOVATION 07:0911; FINANCIAL_SERVICES 04:0667...
-2        2  ...  MARKETPLACE_LENDING 03:0317; LENDINGCLUB 02:02...
-3        3  ...  ARTIFICIAL_INTELLIGENCE 02:0327; FINANCE 02:03...
+0        0  ...  FINTECH 32:5393; INNOVATION 08:0990; FINANCIAL...
+1        1  ...  FINANCE 11:1950; FINANCIAL_SERVICE 04:1036; BU...
+2        2  ...  FINANCIAL_TECHNOLOGY 03:0461; CROWDFUNDING 03:...
 <BLANKLINE>
-[4 rows x 4 columns]
+[3 rows x 4 columns]
+
 
 
 """

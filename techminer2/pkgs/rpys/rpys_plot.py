@@ -40,7 +40,7 @@ class RPYSPlot(
     def run(self):
         """:meta private:"""
 
-        data_frame = RPYSDataFrame().update(**self.params.__dict__).build()
+        data_frame = RPYSDataFrame().update(**self.params.__dict__).run()
 
         fig = go.Figure()
         fig.add_trace(

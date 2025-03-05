@@ -1,5 +1,6 @@
 .DS_Store
 
+# Ignore results generated during development
 example/databases/
 example/my_keywords/
 example/reports/

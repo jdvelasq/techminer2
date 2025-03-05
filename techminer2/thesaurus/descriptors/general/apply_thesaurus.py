@@ -10,7 +10,10 @@
 Apply Thesaurus 
 ===============================================================================
 
->>> # TEST PREPARATION:
+
+>>> #
+>>> # TEST PREPARATION
+>>> #
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -18,7 +21,9 @@ Apply Thesaurus
 >>> #
 >>> from techminer2.thesaurus.descriptors import CreateThesaurus
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
-
+>>> #
+>>> # CODE TESTED
+>>> #
 >>> from techminer2.thesaurus.descriptors import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
@@ -28,9 +33,9 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
-
-
->>> # TEST EXECUTION:
+>>> #
+>>> # TEST EXECUTION
+>>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

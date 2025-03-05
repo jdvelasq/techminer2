@@ -10,7 +10,7 @@ General Metrics Data Frame
 ===============================================================================
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> # Countries:
 >>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
@@ -27,7 +27,7 @@ General Metrics Data Frame
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> from techminer2.database.metrics.general import DataFrame
 >>> (
@@ -48,10 +48,10 @@ GENERAL           Timespan                                    2015:2019
                   Documents                                          50
                   Annual growth rate %                           118.67
                   Document average age                             7.24
-                  References                                       3209
+                  References                                       3213
                   Average citations per document                  162.7
                   Average citations per document per year         32.54
-                  Average references per document                 65.49
+                  Average references per document                 64.26
                   Sources                                            41
                   Average documents per source                     1.22
 DOCUMENT TYPES    Article                                            37
@@ -201,8 +201,8 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def cited_references():
-            if "global_references" in data_frame.columns:
-                records = data_frame.global_references.copy()
+            if "raw_global_references" in data_frame.columns:
+                records = data_frame.raw_global_references.copy()
                 records = records.dropna()
                 records = records.str.split(";")
                 records = records.explode()
@@ -249,12 +249,12 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_references_per_document():
-            if "global_references" in data_frame.columns:
-                num_references = data_frame.global_references.copy()
+            if "raw_global_references" in data_frame.columns:
+                num_references = data_frame.raw_global_references.copy()
                 num_references = num_references.dropna()
                 num_references = num_references.str.split(";")
                 num_references = num_references.map(len)
-                return round(num_references.mean(), 2)
+                return round(num_references.sum() / len(data_frame), 2)
             return pd.NA
 
         stats = self.insert_stats(

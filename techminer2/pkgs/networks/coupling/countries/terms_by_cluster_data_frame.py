@@ -31,13 +31,13 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... ).head()
-                     0                      1                    2
-0      Denmark 02:0330      Australia 05:0783  South Korea 06:1192
-1       France 01:0258          China 08:1085   Kazakhstan 01:0121
-2      Germany 07:1814      Hong Kong 01:0178        Spain 01:0225
-3    Indonesia 01:0102         Sweden 01:0160                     
-4  Netherlands 03:0300  United States 16:3189                     
-                                 
+                   0                    1                    2
+0  Australia 05:0783      Denmark 02:0330  South Korea 06:1192
+1      China 08:1085      Germany 07:1814        Spain 01:0225
+2  Hong Kong 01:0178  Netherlands 03:0300   Kazakhstan 01:0121
+3     Latvia 02:0163    Singapore 01:0576                     
+4   Slovenia 01:0102  Switzerland 04:0660                     
+                               
 
 
 

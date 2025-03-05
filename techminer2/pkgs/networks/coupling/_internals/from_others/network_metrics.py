@@ -48,4 +48,4 @@ class InternalNetworkMetrics(
     def run(self):
 
         nx_graph = internal__create_nx_graph(params=self.params)
-        return internal__compute_network_metrics(nx_graph=nx_graph)
+        return internal__compute_network_metrics(params=self.params, nx_graph=nx_graph)

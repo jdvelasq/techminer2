@@ -19,6 +19,9 @@ Terms by Cluster Frame
 ...     .having_occurrence_threshold(2)
 ...     .having_terms_in(None)
 ...     #
+...     # COUNTERS:
+...     .using_term_counters(True)
+...     #
 ...     # CLUSTERING:
 ...     .using_clustering_algorithm_or_dict("louvain")
 ...     #
@@ -32,11 +35,45 @@ Terms by Cluster Frame
 ...     .run()
 ... ).head()
                       0                    1                   2
-0      Gomber P. 2:1065     Haddad C. 1:0258  Jagtiani J. 3:0317
-1     Koch J.-A. 1:0489  Puschmann T. 1:0253   Lemieux C. 2:0253
-2     Siering M. 1:0489     Hornuf L. 2:0358                    
-3  Kauffman R.J. 1:0576                                         
-4      Parker C. 1:0576                                         
+0      Gomber P. 2:1065     Hornuf L. 2:0358  Jagtiani J. 3:0317
+1  Kauffman R.J. 1:0576     Haddad C. 1:0258   Lemieux C. 2:0253
+2      Parker C. 1:0576  Puschmann T. 1:0253                    
+3     Weber B.W. 1:0576                                         
+4     Koch J.-A. 1:0489                                         
+
+
+>>> from techminer2.pkgs.networks.citation.authors import TermsByClusterDataFrame
+>>> (
+...     TermsByClusterDataFrame()
+...     #
+...     # UNIT OF ANALYSIS:
+...     .having_terms_in_top(30)
+...     .having_citation_threshold(0)
+...     .having_occurrence_threshold(2)
+...     .having_terms_in(None)
+...     #
+...     # COUNTERS:
+...     .using_term_counters(False)
+...     #
+...     # CLUSTERING:
+...     .using_clustering_algorithm_or_dict("louvain")
+...     #
+...     # DATABASE:
+...     .where_root_directory_is("example/")
+...     .where_database_is("main")
+...     .where_record_years_range_is(None, None)
+...     .where_record_citations_range_is(None, None)
+...     .where_records_match(None)
+...     #
+...     .run()
+... ).head()                                     
+               0             1            2
+0      Gomber P.     Hornuf L.  Jagtiani J.
+1  Kauffman R.J.     Haddad C.   Lemieux C.
+2      Parker C.  Puschmann T.             
+3     Weber B.W.                           
+4     Koch J.-A.                           
+                         
 
 
 """

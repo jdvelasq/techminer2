@@ -34,17 +34,16 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... )
-                                       0  ...                             2
+                                       0  ...                             3
 0                        FINANCE 10:1866  ...               SURVEYS 03:0484
-1              FINANCIAL_SERVICE 04:1036  ...        CYBER_SECURITY 02:0342
-2                       COMMERCE 03:0846  ...    FINANCIAL_INDUSTRY 02:0323
-3        SUSTAINABLE_DEVELOPMENT 03:0227  ...  SECURITY_AND_PRIVACY 02:0323
+1              FINANCIAL_SERVICE 05:1115  ...  FINANCIAL_INDUSTRIES 02:0323
+2                       COMMERCE 03:0846  ...  SECURITY_AND_PRIVACY 02:0323
+3        SUSTAINABLE_DEVELOPMENT 03:0227  ...                              
 4                     BLOCKCHAIN 02:0736  ...                              
 5  FINANCIAL_SERVICES_INDUSTRIES 02:0696  ...                              
-6               FINANCIAL_SYSTEM 02:0385  ...                              
-7           DEVELOPING_COUNTRIES 02:0248  ...                              
+6           DEVELOPING_COUNTRIES 02:0248  ...                              
 <BLANKLINE>
-[8 rows x 3 columns]
+[7 rows x 4 columns]
 
 
 """

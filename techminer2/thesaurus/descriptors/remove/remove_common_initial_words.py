@@ -11,7 +11,7 @@ Common Initial Words Remover
 ===============================================================================
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -25,7 +25,7 @@ Common Initial Words Remover
 >>> RemoveCommonInitialWords(root_directory="example/", tqdm_disable=True).run()
 
 
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

@@ -42,7 +42,7 @@ Node Density Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/networks/co_citation/cited_sources/node_density_plot.html")
+>>> plot.write_html("sphinx/_generated/pkgs/networks/co_citation/cited_sources/node_density_plot.html")
 
 .. raw:: html
     

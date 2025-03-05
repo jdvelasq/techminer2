@@ -29,7 +29,7 @@ class Params:
     #
     case_sensitive: bool = False
     citation_threshold: int = 0
-    clustering_algorithm_or_dict = None
+    clustering_algorithm_or_dict: Optional[str] = None
     color: Optional[str] = None
     colormap: str = "Blues"
     contour_opacity: float = 0.6

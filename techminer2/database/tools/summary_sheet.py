@@ -21,17 +21,19 @@ Summary Sheet
 ...     .run()
 ... )
 >>> result.head(10)
-                      column  number of records coverage (%)
-0          abbr_source_title                 50      100.00%
-1                   abstract                 48       96.00%
-2               affiliations                 49       98.00%
-3          author_full_names                 50      100.00%
-4            author_keywords                 38       76.00%
-5                    authors                 50      100.00%
-6                 authors_id                 50      100.00%
-7  authors_with_affiliations                 50      100.00%
-8                      coden                 12       24.00%
-9            conference_code                  3        6.00%
+                       column  number of records coverage (%)
+0           abbr_source_title                 50      100.00%
+1                    abstract                 48       96.00%
+2  abstract_nouns_and_phrases                 48       96.00%
+3                affiliations                 49       98.00%
+4           author_full_names                 50      100.00%
+5             author_keywords                 38       76.00%
+6                     authors                 50      100.00%
+7                  authors_id                 50      100.00%
+8   authors_with_affiliations                 50      100.00%
+9                       coden                 12       24.00%
+
+
 
 """
 import pandas as pd  # type: ignore

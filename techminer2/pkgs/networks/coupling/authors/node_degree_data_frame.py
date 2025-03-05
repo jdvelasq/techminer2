@@ -28,12 +28,12 @@ Network Degree Frame
 ...     #
 ...     .run()
 ... ).head()
-   Node                Name  Degree
-0     0    Gomber P. 2:1065      10
-1     1    Hornuf L. 2:0358      10
-2     2   Koch J.-A. 1:0489      10
-3     3   Siering M. 1:0489      10
-4     4  Jagtiani J. 3:0317       8
+   Node                  Name  Degree
+0     0      Gomber P. 2:1065       3
+1     1  Kauffman R.J. 1:0576       3
+2     2      Parker C. 1:0576       3
+3     3     Weber B.W. 1:0576       3
+4     4    Jagtiani J. 3:0317       1
 
 
 

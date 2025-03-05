@@ -13,24 +13,18 @@
 >>> from techminer2.database._internals.io import internal__load_records
 >>> (
 ...     internal__load_records(
-...         Params(
-...             database="main",
-...             record_years_range=(None, None),
-...             record_citations_range=(None, None),
-...             records_order_by=None,
-...             records_match=None,
-...             root_directory="example/",
-...         )
+...         Params(root_directory="example/")
 ...     ).head() # doctest: +ELLIPSIS
 ... ) 
-                                                link  ... raw_abstract_copy
-0  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
-1  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
-2  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
-3  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
-4  https://www.scopus.com/inward/record.uri?eid=2...  ...               NaN
+    abbr_source_title abstract  ... volume  year
+0          Econ. Soc.      NaN  ...     30  2001
+1       Psychometrika      NaN  ...     46  1981
+2  Strategic Manage J      NaN  ...     20  1999
+3         J. Classif.      NaN  ...      5  1988
+4         Theor Decis      NaN  ...      9  1978
 <BLANKLINE>
-[5 rows x 77 columns]
+[5 rows x 75 columns]
+
 
 
 
@@ -50,6 +44,9 @@ def internal__load_records(params):
         encoding="utf-8",
         compression="zip",
     )
+
+    columns = sorted(records.columns)
+    records = records[columns]
 
     return records
 

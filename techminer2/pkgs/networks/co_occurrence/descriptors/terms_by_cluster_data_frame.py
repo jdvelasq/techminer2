@@ -36,16 +36,18 @@ Terms by Cluster Frame
 ... )
                                           0                               1
 0                        THIS_PAPER 14:2240                 FINTECH 46:7183
-1                FINANCIAL_SERVICES 11:1862                 FINANCE 21:3481
-2                          SERVICES 09:1527    FINANCIAL_TECHNOLOGY 17:2359
-3                             BANKS 09:1133              THIS_STUDY 14:1737
-4                        REGULATORS 08:0974              INNOVATION 13:2394
-5                              DATA 07:1086              TECHNOLOGY 13:1594
-6                   THE_DEVELOPMENT 07:1073  THE_FINANCIAL_INDUSTRY 09:2006
+1                 FINANCIAL_SERVICE 12:2100                 FINANCE 21:3481
+2                          SERVICES 09:1527  FINANCIAL_TECHNOLOGIES 18:2455
+3                             BANKS 09:1133              INNOVATION 16:2845
+4                   THE_DEVELOPMENT 08:1173            TECHNOLOGIES 15:1810
+5                        REGULATORS 08:0974              THIS_STUDY 14:1737
+6                              DATA 07:1086  THE_FINANCIAL_INDUSTRY 09:2006
 7                           BANKING 07:0851            THIS_ARTICLE 06:1360
-8   THE_FINANCIAL_SERVICES_INDUSTRY 06:1237               THE_FIELD 06:1031
-9                       THE_PURPOSE 06:1046                                
-10                        CONSUMERS 06:0804                                
+8                        THE_AUTHOR 07:0828                                
+9                        INVESTMENT 06:1294                                
+10  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237                                
+11                      THE_PURPOSE 06:1046                                
+
 
 
 """

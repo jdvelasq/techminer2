@@ -12,7 +12,7 @@ Sort by Fuzzy Match
 
 
 >>> #
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> #
 >>> import sys
 >>> from io import StringIO
@@ -35,7 +35,7 @@ Sort by Fuzzy Match
 ...     .run()
 ... ) 
 >>> #
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr

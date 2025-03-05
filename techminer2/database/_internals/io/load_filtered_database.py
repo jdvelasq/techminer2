@@ -10,6 +10,27 @@
 """
 
 
+>>> #
+>>> # TEST PREPARATION
+>>> #
+>>> # Countries:
+>>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+
+>>> # Organizations:
+>>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+
+>>> # Descriptors:
+>>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+
+>>> #
+>>> # CODE TESTED
+>>> #
 >>> from techminer2._internals.params_mixin import Params
 >>> from techminer2.database._internals.io import internal__load_filtered_database
 >>> (
@@ -24,14 +45,16 @@
 ...         )
 ...     ).head()
 ... ) # doctest: +ELLIPSIS
-                                                   link  ...                                  raw_abstract_copy
-934   https://www.scopus.com/inward/record.uri?eid=2...  ...  THIS_PAPER examined THE_ACCEPTANCE of PAYMENT_...
-935   https://www.scopus.com/inward/record.uri?eid=2...  ...  THE_RAPID_DEVELOPMENT of INFORMATION_AND_COMMU...
-1031  https://www.scopus.com/inward/record.uri?eid=2...  ...  THE_PURPOSE of TECHNOLOGY is not to make FINAN...
-1059  https://www.scopus.com/inward/record.uri?eid=2...  ...  GLOBAL_ECONOMY , GROWING_IMPORTANCE of INNOVAT...
-1075  https://www.scopus.com/inward/record.uri?eid=2...  ...  THIS_PAPER examines THE_GROWING_IMPORTANCE of ...
+                       abbr_source_title  ...  year
+934              Int. J. Appl. Eng. Res.  ...  2016
+935                    Telecommun Policy  ...  2016
+1031                      China Econ. J.  ...  2016
+1059  Contemp. Stud. Econ. Financ. Anal.  ...  2016
+1075                    New Polit. Econ.  ...  2017
 <BLANKLINE>
-[5 rows x 77 columns]
+[5 rows x 75 columns]
+
+    
 
 """
 import pandas as pd  # type: ignore
@@ -232,6 +255,9 @@ def internal__load_filtered_database(params):
                 ["source_title", "global_citations", "local_citations"],
                 ascending=[False, False, False],
             )
+
+        columns = sorted(data_frame.columns)
+        data_frame = data_frame[columns]
 
         return data_frame
 

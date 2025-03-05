@@ -27,7 +27,7 @@ Terms by Cluster Frame
 ...     TermsByClusterDataFrame()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -56,13 +56,15 @@ Terms by Cluster Frame
 ... ).head()
 cluster                             0  ...                           9
 term                                   ...                            
-0                     FINTECH 46:7183  ...             FINTECH 46:7183
-1        FINANCIAL_TECHNOLOGY 17:2359  ...      ELSEVIER_B_._V 04:0718
-2                     FINANCE 21:3481  ...          THIS_PAPER 14:2240
-3                  TECHNOLOGY 13:1594  ...           CONSUMERS 06:0804
-4                  THIS_STUDY 14:1737  ...  FINANCIAL_SERVICES 11:1862
+0                     FINTECH 46:7183  ...          THIS_PAPER 14:2240
+1                  TECHNOLOGY 13:1594  ...             FINTECH 46:7183
+2        FINANCIAL_TECHNOLOGY 17:2359  ...               USERS 04:0687
+3                     FINANCE 21:3481  ...   ORIGINALITY_VALUE 04:0555
+4                  THIS_STUDY 14:1737  ...  EMERALD_PUBLISHING 04:0555
 <BLANKLINE>
 [5 rows x 10 columns]
+
+
 
 
 """
@@ -80,7 +82,7 @@ class TermsByClusterDataFrame(
     def run(self):
         """:meta private:"""
 
-        mapping = ClusterToTermsMapping().update(**self.params.__dict__).build()
+        mapping = ClusterToTermsMapping().update(**self.params.__dict__).run()
 
         frame = pd.DataFrame.from_dict(mapping, orient="index").T
         frame = frame.fillna("")

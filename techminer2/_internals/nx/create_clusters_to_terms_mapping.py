@@ -21,8 +21,8 @@ def internal__create_clusters_to_terms_mapping(
         cluster = data["group"]
         if cluster not in mapping:
             mapping[cluster] = []
-        # if term_counters is False:
-        #     node = " ".join(node.split(" ")[:-1])
+        if params.term_counters is False:
+            node = " ".join(node.split(" ")[:-1])
         mapping[cluster].append(node)
 
     return mapping

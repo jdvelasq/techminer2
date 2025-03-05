@@ -11,7 +11,7 @@ Starting Stopwords Remover
 ===============================================================================
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -25,7 +25,7 @@ Starting Stopwords Remover
 >>> RemoveInitialStopwords(root_directory="example/", tqdm_disable=True).run()
 
 
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

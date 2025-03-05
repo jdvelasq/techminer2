@@ -27,12 +27,12 @@ Node Degree Frame
 ...     #
 ...     .run()
 ... ).head()
-   Node                            Name  Degree
-0     0      ELECT COMMER RES APPL 1:32      27
-1     1  MIS QUART MANAGE INF SYST 1:47      26
-2     2               INF SYST RES 1:18      25
-3     3                 MANAGE SCI 1:30      25
-4     4                 COMMUN ACM 1:12      25
+   Node                     Name  Degree
+0     0     INT J INF MANAGE 1:2       9
+1     1      FINANCIAL INNOV 1:4       7
+2     2  IND MANAGE DATA SYS 1:2       6
+3     3       NEW POLIT ECON 1:2       6
+4     4        ELECTRON MARK 1:1       6
 
 
 

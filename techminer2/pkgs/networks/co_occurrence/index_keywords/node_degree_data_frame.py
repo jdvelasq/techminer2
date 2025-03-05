@@ -38,8 +38,8 @@ Node Degree Frame
    Node                       Name  Degree
 0     0            FINANCE 10:1866      17
 1     1            FINTECH 10:1412      16
-2     2  FINANCIAL_SERVICE 04:1036      11
-3     3     CYBER_SECURITY 02:0342       8
+2     2  FINANCIAL_SERVICE 05:1115      11
+3     3     CYBER_SECURITY 02:0342       9
 4     4           COMMERCE 03:0846       7
 
 

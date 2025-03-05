@@ -10,7 +10,7 @@ Spell Check
 ===============================================================================
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -36,7 +36,7 @@ Spell Check
 ... )
 
 
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)
@@ -82,7 +82,7 @@ Printing thesaurus header
 <BLANKLINE>
 
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> old_stderr = sys.stderr
 >>> sys.stderr = StringIO()
 
@@ -93,7 +93,7 @@ Printing thesaurus header
 ... ).run()
 
 
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

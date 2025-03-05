@@ -9,6 +9,18 @@
 Node Degree Plot
 ===============================================================================
 
+
+>>> #
+>>> # TEST PREPARATION
+>>> #
+>>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
+>>> CreateThesaurus(root_directory="example/", quiet=True).run()
+>>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+
+
+>>> #
+>>> # CODE TESTED
+>>> #
 >>> from techminer2.pkgs.networks.co_occurrence.author_keywords import NodeDegreePlot
 >>> plot = (
 ...     NodeDegreePlot()

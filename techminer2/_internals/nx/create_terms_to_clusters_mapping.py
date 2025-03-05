@@ -13,13 +13,10 @@ def internal__create_terms_to_clusters_mapping(
 ):
     """Creates a dictionary with terms as keys and clusters as values."""
 
-    retain_counters = params.term_counters
-
     mapping = {}
-
     for node, data in nx_graph.nodes(data=True):
         cluster = data["group"]
-        if retain_counters is False:
+        if params.term_counters is False:
             node = " ".join(node.split(" ")[:-1])
         mapping[node] = cluster
 

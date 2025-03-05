@@ -11,13 +11,16 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> # TEST PREPARATION:
+>>> # 
+>>> # TEST PREPARATION
+>>> # 
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
 >>> sys.stderr = StringIO()
-
-
+>>> # 
+>>> # CODE TESTED
+>>> #
 >>> from techminer2.thesaurus.user import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
@@ -34,9 +37,9 @@ Apply Thesaurus
 ...     #
 ...     .run()
 ... )
-
-
->>> # TEST EXECUTION:
+>>> #
+>>> # TEST EXECUTION
+>>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)
@@ -47,7 +50,6 @@ Applying user thesaurus to database
   Thesaurus application completed successfully
 <BLANKLINE>
 <BLANKLINE>
-
 >>> from techminer2.database.tools import Query
 >>> Query(
 ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
@@ -62,6 +64,9 @@ Applying user thesaurus to database
 2  AN_INITIAL_TECHNOLOGY_ADVANTAGE; CHINA; FINANC...
 3  AGGREGATION; ALL_RIGHTS; ANALYSIS; ANY_FORM; A...
 4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
+>>> from techminer2.database.field_operators import DeleteFieldOperator
+>>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="example/").run()  
+
 
 """
 import sys

@@ -33,12 +33,12 @@ Data Frame
 ...     #
 ...     .run()
 ... ).head()
-              OCC  OCC_baseline  OCC_recent  ...  np  growth_rate  growth_rate_ratio
-descriptors                                  ...                                    
-DATA 07:1086    7             2           7  ...   2    87.082869           0.733824
+                    OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
+descriptors                            ...                                
+DATA 07:1086          7             2  ...    87.082869           0.733824
+THE_AUTHOR 07:0828    7             2  ...    91.293118           0.769302
 <BLANKLINE>
-[1 rows x 10 columns]
-
+[2 rows x 10 columns]
 
 
 """

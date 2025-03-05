@@ -27,12 +27,12 @@ Node Degree Frame
 ...     #
 ...     .run()
 ... ).head()
-   Node                Name  Degree
-0     0  Zavolokina L. 1:09      23
-1     1      Gomber P. 1:09      22
-2     2         Lin M. 1:11      21
-3     3      Burtch G. 1:16      20
-4     4      Dapp T.F. 1:06      19
+   Node               Name  Degree
+0     0       Leong C. 1:2       9
+1     1  Zavolokina L. 1:3       8
+2     2       Gabor D. 1:2       6
+3     3      Ryu H.-S. 1:2       6
+4     4         Alt R. 1:1       6
 
 
 

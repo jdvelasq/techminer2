@@ -31,7 +31,14 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... ).head()
-                                     
+                                         0  ...                                                  2
+0       Goethe Univ Frankfurt (DEU) 2:1065  ...  Max Planck Inst for Innovation and Competition...
+1              Univ of Sydney (AUS) 2:0300  ...                     Sungkyunkwan Univ (KOR) 2:0307
+2     Pennsylvania State Univ (USA) 1:0576  ...                                                   
+3  Singapore Manag Univ (SMU) (SGP) 1:0576  ...                                                   
+4            Univ of Delaware (USA) 1:0576  ...                                                   
+<BLANKLINE>
+[5 rows x 3 columns]
 
 
 

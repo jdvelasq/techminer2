@@ -32,9 +32,10 @@ Node Degree Frame
 0     0                                   Symmetry 1:176       7
 1     1  Journal of Management Information Systems 2:696       5
 2     2               Sustainability (Switzerland) 2:150       5
-3     3                         Electronic Markets 2:287       4
-4     4          Journal of Economics and Business 3:422       4
+3     3          Journal of Economics and Business 3:422       4
+4     4                         Electronic Markets 2:287       4
 
+    
 
 """
 

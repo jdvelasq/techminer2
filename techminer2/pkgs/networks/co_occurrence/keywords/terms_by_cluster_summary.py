@@ -37,6 +37,12 @@ Terms by Cluster Summary
 ...     #
 ...     .run()
 ... )
+   Cluster  ...                                              Terms
+0        0  ...  FINTECH 32:5393; FINANCE 11:1950; FINANCIAL_SE...
+1        1  ...  FINANCIAL_TECHNOLOGIES 03:0461; CROWDFUNDING 0...
+2        2  ...  FINANCIAL_INSTITUTION 04:0746; COMMERCE 03:084...
+<BLANKLINE>
+[3 rows x 4 columns]
 
 
 

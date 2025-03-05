@@ -28,10 +28,10 @@ Node Degree Dataframe
 ... ).head()
    Node                                               Name  Degree
 0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
-1     1       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
-2     2  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
+1     1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
+2     2       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
 3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
-4     4  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...       2
+4     4  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...       2
 
 
 

@@ -20,7 +20,9 @@ from ....co_occurrence_matrix._internals.normalize_matrix import (
 
 # -------------------------------------------------------------------------
 def _step_01_create_co_occurrence_matrix(params):
-    return CoOccurrenceMatrix().update(**params.__dict__).run()
+    return (
+        CoOccurrenceMatrix().update(**params.__dict__).update(term_counters=True).run()
+    )
 
 
 # -------------------------------------------------------------------------
@@ -39,7 +41,7 @@ def _step_03_add_nodes_to_nx_graph_from(
 
     for node in nx_graph.nodes():
         #
-        # Remove metrics from the name
+        # Remove metrics from the text property of the node name
         nx_graph.nodes[node]["text"] = " ".join(node.split(" ")[:-1])
 
     return nx_graph

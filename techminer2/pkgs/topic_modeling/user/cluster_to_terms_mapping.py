@@ -27,7 +27,7 @@ Cluster to Terms Mapping
 ...     ClusterToTermsMapping()
 ...     #
 ...     # FIELD:
-...     .with_field("descriptors")
+...     .with_field("raw_descriptors")
 ...     .having_terms_in_top(50)
 ...     .having_terms_ordered_by("OCC")
 ...     .having_term_occurrences_between(None, None)
@@ -57,9 +57,12 @@ Cluster to Terms Mapping
 >>> import pprint
 >>> pprint.pprint(mapping) # doctest: +ELLIPSIS
 {0: ['FINTECH 46:7183',
+     'TECHNOLOGY 13:1594',
      'FINANCIAL_TECHNOLOGY 17:2359',
      'FINANCE 21:3481',
-     'TECHNOLOGY 13:1594',
+     'THIS_STUDY 14:1737',
+     'CHINA 06:0673',
+     'THE_DEVELOPMENT 07:1073',
 ...
 
 
@@ -78,7 +81,7 @@ class ClusterToTermsMapping(
         """:meta private:"""
 
         theme_term_matrix = (
-            ComponentsByTermDataFrame().update(**self.params.__dict__).build()
+            ComponentsByTermDataFrame().update(**self.params.__dict__).run()
         )
 
         mapping = {}

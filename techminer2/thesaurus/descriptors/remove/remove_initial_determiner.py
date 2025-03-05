@@ -10,7 +10,7 @@
 Initial Determiner Remover 
 ===============================================================================
 
->>> # TEST PREPARATION:
+>>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
@@ -24,7 +24,7 @@ Initial Determiner Remover
 >>> RemoveInitialDeterminer(root_directory="example/", tqdm_disable=True).run()
 
 
->>> # TEST EXECUTION:
+>>> # TEST EXECUTION
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

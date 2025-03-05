@@ -29,12 +29,11 @@ Network Degree Frame
 ...     .run()
 ... ).head()
    Node                    Name  Degree
-0     0   United States 16:3189      16
-1     1         Germany 07:1814      15
-2     2       Australia 05:0783      13
-3     3           China 08:1085      13
-4     4  United Kingdom 03:0636      12
-
+0     0         Germany 07:1814      11
+1     1  United Kingdom 03:0636       8
+2     2     Netherlands 03:0300       8
+3     3         Denmark 02:0330       8
+4     4           China 08:1085       7
 
 
 
