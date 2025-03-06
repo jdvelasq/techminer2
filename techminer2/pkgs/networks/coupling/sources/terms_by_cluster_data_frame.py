@@ -31,13 +31,12 @@ Terms by Cluster Frame
 ...     #
 ...     .run()
 ... ).head()
-                                                   0  ...                                               4
-0                           Electronic Markets 2:287  ...                      Financial Innovation 2:190
-1    Journal of Management Information Systems 2:696  ...  Journal of Strategic Information Systems 1:160
-2                 Sustainability (Switzerland) 2:150  ...                                                
-3  International Journal of Information Managemen...  ...                                                
-<BLANKLINE>
-[4 rows x 5 columns]
+                                              0                                                1
+0  Industrial Management and Data Systems 2:386          Journal of Economics and Business 3:422
+1                      Electronic Markets 2:287  Journal of Management Information Systems 2:696
+2            Sustainability (Switzerland) 2:150                       Financial Management 2:161
+3        Journal of Innovation Management 1:226
+4                                Symmetry 1:176
 
 
 

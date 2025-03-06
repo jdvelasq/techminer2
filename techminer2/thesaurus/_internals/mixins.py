@@ -1,4 +1,4 @@
-""""Thesaurus common functions."""
+""" "Thesaurus common functions."""
 
 import sys
 
@@ -10,6 +10,7 @@ from ...database._internals.io import internal__load_filtered_database
 from . import (
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
+    internal__load_reversed_thesaurus_as_mapping,
     internal__load_thesaurus_as_mapping,
 )
 
@@ -82,6 +83,10 @@ class ThesaurusMixin:
     def internal__load_filtered_records(self):
 
         self.filtered_records = internal__load_filtered_database(params=self.params)
+
+    # -------------------------------------------------------------------------
+    def internal__load_reversed_thesaurus_as_mapping(self):
+        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
 
     # -------------------------------------------------------------------------
     def internal__load_thesaurus_as_mapping(self):

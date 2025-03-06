@@ -11,20 +11,20 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> # 
+>>> #
 >>> # TEST PREPARATION
->>> # 
+>>> #
 >>> import sys
 >>> from io import StringIO
 >>> old_stderr = sys.stderr
 >>> sys.stderr = StringIO()
->>> # 
+>>> #
 >>> # CODE TESTED
 >>> #
 >>> from techminer2.thesaurus.user import ApplyThesaurus
 >>> (
 ...     ApplyThesaurus()
-...     # 
+...     #
 ...     # THESAURUS:
 ...     .with_thesaurus_file("descriptors.the.txt")
 ...     #
@@ -65,7 +65,7 @@ Applying user thesaurus to database
 3  AGGREGATION; ALL_RIGHTS; ANALYSIS; ANY_FORM; A...
 4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
 >>> from techminer2.database.field_operators import DeleteFieldOperator
->>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="example/").run()  
+>>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="example/").run()
 
 
 """
@@ -112,10 +112,6 @@ class ApplyThesaurus(
 
     #
     # ALGORITHM:
-    # -------------------------------------------------------------------------
-    def internal__load_reversed_thesaurus_as_mapping(self):
-        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
-
     # -------------------------------------------------------------------------
     def internal__load_records(self):
         self.records = internal__load_records(params=self.params)
