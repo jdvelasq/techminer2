@@ -1,0 +1,8 @@
+Topic modeling
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.topic_modeling.user

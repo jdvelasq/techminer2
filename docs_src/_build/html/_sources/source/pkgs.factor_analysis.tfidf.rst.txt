@@ -1,0 +1,17 @@
+Tfidf
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.factor_analysis.tfidf.cluster_centers_dataframe
+    pkgs.factor_analysis.tfidf.cluster_to_terms_mapping
+    pkgs.factor_analysis.tfidf.cosine_similarities
+    pkgs.factor_analysis.tfidf.factor_map
+    pkgs.factor_analysis.tfidf.manifold_terms_by_dimension_map
+    pkgs.factor_analysis.tfidf.terms_by_cluster_dataframe
+    pkgs.factor_analysis.tfidf.terms_by_dimension_dataframe
+    pkgs.factor_analysis.tfidf.terms_by_dimension_map
+    pkgs.factor_analysis.tfidf.terms_to_cluster_mapping
+    pkgs.factor_analysis.tfidf.treemap

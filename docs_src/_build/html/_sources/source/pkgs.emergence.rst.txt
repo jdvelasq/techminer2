@@ -1,0 +1,9 @@
+Emergence
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.emergence.data_frame
+    pkgs.emergence.plot_emergence

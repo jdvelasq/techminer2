@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.associations.butterfly_plot
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

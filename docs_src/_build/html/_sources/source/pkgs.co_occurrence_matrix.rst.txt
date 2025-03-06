@@ -1,0 +1,13 @@
+Co occurrence matrix
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.co_occurrence_matrix.bubble_plot
+    pkgs.co_occurrence_matrix.data_frame
+    pkgs.co_occurrence_matrix.heatmap
+    pkgs.co_occurrence_matrix.matrix_data_frame
+    pkgs.co_occurrence_matrix.matrix_plot
+    pkgs.co_occurrence_matrix.sankey_plot

@@ -1,0 +1,9 @@
+Correlation
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.correlation.auto
+    pkgs.correlation.cross

@@ -8,9 +8,9 @@
 Terms by Year Plot
 ===============================================================================
 
-## >>> from techminer2.pkgs.metrics import terms_by_year_plot
+## >>> from techminer2.packages.metrics import terms_by_year_plot
 ## >>> plot = terms_by_year_plot(
-## 
+##
 ## ...     #
 ## ...     # FILTER PARAMS:
 ## ...     metric='OCC',
@@ -22,7 +22,7 @@ Terms by Year Plot
 ## ...         custom_terms=None,
 ## ...     #
 ## ...     ).set_database_params(
-## ...         root_dir="example/", 
+## ...         root_dir="example/",
 ## ...         database="main",
 ## ...         year_filter=(None, None),
 ## ...         cited_by_filter=(None, None),
@@ -33,7 +33,7 @@ Terms by Year Plot
 
 .. raw:: html
 
-    <iframe src="../_static/metrics/terms_by_year_plot.html" 
+    <iframe src="../_static/metrics/terms_by_year_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

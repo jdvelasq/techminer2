@@ -1,0 +1,11 @@
+Associations
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.associations.butterfly_plot
+    pkgs.associations.data_frame
+    pkgs.associations.matrix_plot
+    pkgs.associations._deprecated

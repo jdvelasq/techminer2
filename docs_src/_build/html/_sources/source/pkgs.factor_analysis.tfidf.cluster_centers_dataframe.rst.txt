@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.factor_analysis.tfidf.cluster_centers_dataframe
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

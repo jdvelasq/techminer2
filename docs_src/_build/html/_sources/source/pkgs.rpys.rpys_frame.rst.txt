@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.rpys.rpys_frame
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

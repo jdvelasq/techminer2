@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.networks.citation.documents.network_plot
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

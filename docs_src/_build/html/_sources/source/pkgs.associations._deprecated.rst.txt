@@ -1,0 +1,10 @@
+ deprecated
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.associations._deprecated.co_occurrences_chart
+    pkgs.associations._deprecated.cosine_similarities_graph
+    pkgs.associations._deprecated.radial_diagram

@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.co_occurrence_matrix.sankey_plot
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

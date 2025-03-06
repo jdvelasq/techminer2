@@ -1,0 +1,5 @@
+.. automodule:: techminer2.thesaurus.descriptors.hyphenated_words_transformer
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

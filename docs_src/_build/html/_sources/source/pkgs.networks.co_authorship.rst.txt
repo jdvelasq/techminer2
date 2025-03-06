@@ -1,0 +1,10 @@
+Co authorship
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.networks.co_authorship.authors
+    pkgs.networks.co_authorship.countries
+    pkgs.networks.co_authorship.organizations

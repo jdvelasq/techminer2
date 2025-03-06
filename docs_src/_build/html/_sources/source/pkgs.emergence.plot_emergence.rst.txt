@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.emergence.plot_emergence
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

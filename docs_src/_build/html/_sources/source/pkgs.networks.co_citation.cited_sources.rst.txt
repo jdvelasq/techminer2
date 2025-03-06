@@ -1,0 +1,13 @@
+Cited sources
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.networks.co_citation.cited_sources.network_metrics
+    pkgs.networks.co_citation.cited_sources.network_plot
+    pkgs.networks.co_citation.cited_sources.node_degree_data_frame
+    pkgs.networks.co_citation.cited_sources.node_degree_plot
+    pkgs.networks.co_citation.cited_sources.node_density_plot
+    pkgs.networks.co_citation.cited_sources.terms_by_cluster_data_frame

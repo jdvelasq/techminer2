@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.networks.coupling.sources.network_plot
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.factor_analysis.tfidf.treemap
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

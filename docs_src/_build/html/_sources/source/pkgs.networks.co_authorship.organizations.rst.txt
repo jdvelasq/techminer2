@@ -1,0 +1,17 @@
+Organizations
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.networks.co_authorship.organizations.clusters_to_terms_mapping
+    pkgs.networks.co_authorship.organizations.network_metrics
+    pkgs.networks.co_authorship.organizations.network_plot
+    pkgs.networks.co_authorship.organizations.node_degree_data_frame
+    pkgs.networks.co_authorship.organizations.node_degree_plot
+    pkgs.networks.co_authorship.organizations.node_density_plot
+    pkgs.networks.co_authorship.organizations.terms_by_cluster_data_frame
+    pkgs.networks.co_authorship.organizations.terms_by_cluster_summary
+    pkgs.networks.co_authorship.organizations.terms_to_clusters_mapping
+    pkgs.networks.co_authorship.organizations.treemap

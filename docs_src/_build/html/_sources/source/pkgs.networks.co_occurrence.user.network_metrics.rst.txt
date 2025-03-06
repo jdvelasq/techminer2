@@ -1,0 +1,5 @@
+.. automodule:: techminer2.pkgs.networks.co_occurrence.user.network_metrics
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

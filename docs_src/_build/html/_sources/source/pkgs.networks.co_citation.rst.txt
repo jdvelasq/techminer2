@@ -1,0 +1,10 @@
+Co citation
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.networks.co_citation.cited_authors
+    pkgs.networks.co_citation.cited_references
+    pkgs.networks.co_citation.cited_sources

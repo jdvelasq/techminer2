@@ -1,0 +1,12 @@
+Coupling
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    pkgs.networks.coupling.authors
+    pkgs.networks.coupling.countries
+    pkgs.networks.coupling.documents
+    pkgs.networks.coupling.organizations
+    pkgs.networks.coupling.sources
