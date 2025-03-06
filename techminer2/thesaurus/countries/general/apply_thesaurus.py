@@ -6,115 +6,108 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Thesaurus 
+Apply Thesaurus
 ===============================================================================
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2.thesaurus.countries import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
->>> #
->>> # TEST EXECUTION
->>> #
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Applying user thesaurus to database
-          File : example/thesaurus/countries.the.txt
-  Source field : affiliations
-  Target field : countries
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying system thesaurus to database
-          File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
-  Source field : countries
-  Target field : regions
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying system thesaurus to database
-          File : ...ackage_data/thesaurus/geography/country_to_subregion.the.txt
-  Source field : countries
-  Target field : subregions
-  Thesaurus application completed successfully
-<BLANKLINE>
-<BLANKLINE>
->>> from techminer2.database.tools import Query
->>> Query(
-...     query_expression="SELECT countries FROM database LIMIT 10;",
-...     root_directory="example/",
-...     database="main",
-...     record_years_range=(None, None),
-...     record_citations_range=(None, None),
-... ).run()
-                   countries
-0                South Korea
-1                South Korea
-2                      China
-3                     Latvia
-4             United Kingdom
-5       United States; China
-6                Switzerland
-7  Australia; Denmark; China
-8                Switzerland
-9                    Germany
->>> from techminer2.database.tools import Query
->>> Query(
-...     query_expression="SELECT regions FROM database LIMIT 10;",
-...     root_directory="example/",
-...     database="main",
-...     record_years_range=(None, None),
-...     record_citations_range=(None, None),
-... ).run()
-                 regions
-0                   Asia
-1                   Asia
-2                   Asia
-3                 Europe
-4                 Europe
-5         Americas; Asia
-6                 Europe
-7  Oceania; Europe; Asia
-8                 Europe
-9                 Europe
->>> from techminer2.database.tools import Query
->>> Query(
-...     query_expression="SELECT subregions FROM database LIMIT 10;",
-...     root_directory="example/",
-...     database="main",
-...     record_years_range=(None, None),
-...     record_citations_range=(None, None),
-... ).run()
-                                          subregions
-0                                       Eastern Asia
-1                                       Eastern Asia
-2                                       Eastern Asia
-3                                    Northern Europe
-4                                    Northern Europe
-5                     Northern America; Eastern Asia
-6                                     Western Europe
-7  Australia and New Zealand; Northern Europe; Ea...
-8                                     Western Europe
-9                                     Western Europe
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import ApplyThesaurus, CreateThesaurus
+
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
 
+    >>> # Create and apply the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyThesaurus().where_root_directory_is("example/").run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Applying user thesaurus to database
+              File : example/thesaurus/countries.the.txt
+      Source field : affiliations
+      Target field : countries
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying system thesaurus to database
+              File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
+      Source field : countries
+      Target field : regions
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying system thesaurus to database
+              File : ...ackage_data/thesaurus/geography/country_to_subregion.the.txt
+      Source field : countries
+      Target field : subregions
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
+
+    >>> # Query the database to verify the results
+    >>> from techminer2.database.tools import Query
+    >>> result = Query(
+    ...     query_expression="SELECT countries FROM database LIMIT 10;",
+    ...     root_directory="example/",
+    ...     database="main",
+    ...     record_years_range=(None, None),
+    ...     record_citations_range=(None, None),
+    ... ).run()
+    >>> print(result)
+                       countries
+    0                South Korea
+    1                South Korea
+    2                      China
+    3                     Latvia
+    4             United Kingdom
+    5       United States; China
+    6                Switzerland
+    7  Australia; Denmark; China
+    8                Switzerland
+    9                    Germany
+
+    >>> result = Query(
+    ...     query_expression="SELECT regions FROM database LIMIT 10;",
+    ...     root_directory="example/",
+    ...     database="main",
+    ...     record_years_range=(None, None),
+    ...     record_citations_range=(None, None),
+    ... ).run()
+    >>> print(result)
+                     regions
+    0                   Asia
+    1                   Asia
+    2                   Asia
+    3                 Europe
+    4                 Europe
+    5         Americas; Asia
+    6                 Europe
+    7  Oceania; Europe; Asia
+    8                 Europe
+    9                 Europe
+
+    >>> result = Query(
+    ...     query_expression="SELECT subregions FROM database LIMIT 10;",
+    ...     root_directory="example/",
+    ...     database="main",
+    ...     record_years_range=(None, None),
+    ...     record_citations_range=(None, None),
+    ... ).run()
+    >>> print(result)
+                                              subregions
+    0                                       Eastern Asia
+    1                                       Eastern Asia
+    2                                       Eastern Asia
+    3                                    Northern Europe
+    4                                    Northern Europe
+    5                     Northern America; Eastern Asia
+    6                                     Western Europe
+    7  Australia and New Zealand; Northern Europe; Ea...
+    8                                     Western Europe
+    9                                     Western Europe
 
 
 """

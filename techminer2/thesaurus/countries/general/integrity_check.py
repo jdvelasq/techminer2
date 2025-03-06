@@ -9,38 +9,31 @@
 Integrity Check
 ===============================================================================
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import CreateThesaurus, IntegrityCheck
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.countries import IntegrityCheck
->>> (
-...     IntegrityCheck()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Run the integrity check
+    >>> IntegrityCheck().where_root_directory_is("example/").run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Thesaurus integrity check
-  File : example/thesaurus/countries.the.txt
-  106 terms checked
-  Integrity check completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Thesaurus integrity check
+      File : example/thesaurus/countries.the.txt
+      106 terms checked
+      Integrity check completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

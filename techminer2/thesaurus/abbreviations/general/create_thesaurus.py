@@ -13,16 +13,16 @@ Create Thesaurus
 >>> # TEST PREPARATION
 >>> import sys
 >>> from io import StringIO
+>>> from techminer2.thesaurus.abbreviations import CreateThesaurus
+
+>>> # Redirect stderr to capture output
 >>> old_stderr = sys.stderr
 >>> sys.stderr = StringIO()
 
-
-
->>> from techminer2.thesaurus.abbreviations import CreateThesaurus
+>>> # Create thesaurus
 >>> CreateThesaurus(root_directory="example/").run()
 
-
->>> # TEST EXECUTION
+>>> # Capture and print stderr output
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
 >>> print(output)

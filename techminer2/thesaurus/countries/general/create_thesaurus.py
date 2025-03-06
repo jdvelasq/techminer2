@@ -11,46 +11,47 @@ Create Thesaurus
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import CreateThesaurus
 
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/").run()
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/").run()
 
-
->>> # TEST PREPARATION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Creating thesaurus from 'affiliations' field
-  File : example/thesaurus/countries.the.txt
-  24 keys found
-  Thesaurus creation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-    Belgium
-      Brussels, Belgium
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    China
-      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-    Denmark
-      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-    France
-      SKEMA Business School, Lille, France; University of Lille Nord de France,...
-    Germany
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-    Ghana
-      University of the Free State and University of Ghana Business School, Uni...
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Creating thesaurus from 'affiliations' field
+      File : example/thesaurus/countries.the.txt
+      24 keys found
+      Thesaurus creation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+        Belgium
+          Brussels, Belgium
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        China
+          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+        Denmark
+          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+        France
+          SKEMA Business School, Lille, France; University of Lille Nord de France,...
+        Germany
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+        Ghana
+          University of the Free State and University of Ghana Business School, Uni...
+    <BLANKLINE>
 
 
 """

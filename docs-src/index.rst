@@ -1,18 +1,26 @@
-.. techminer2 documentation master file, created by
-   sphinx-quickstart on Wed Mar  5 22:31:26 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-techminer2 documentation
-========================
-
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+Techminer 2+
+###############################################################################
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :hidden:
+    :caption: DATA
+    :maxdepth: 1
 
-   source/techminer2.rst
+    source/database
+
+.. toctree::
+    :hidden:
+    :caption: PREPARE
+    :maxdepth: 1
+
+    source/thesaurus
+    source/search
+
+.. toctree::
+    :hidden:
+    :caption: ANALYZE
+    :maxdepth: 1
+
+    source/pkgs
+
