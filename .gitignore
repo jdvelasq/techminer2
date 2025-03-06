@@ -1,5 +1,9 @@
 .DS_Store
 
+# Files generated automatically
+docs-src/source/
+docs-src/_source/
+
 # Ignore results generated during development
 example/databases/
 example/my_keywords/
