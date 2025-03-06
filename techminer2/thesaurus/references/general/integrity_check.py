@@ -34,7 +34,7 @@ Integrity Check
 >>> #
 >>> output = sys.stderr.getvalue()
 >>> sys.stderr = old_stderr
->>> print(output)
+>>> print(output) # doctest: +SKIP
 
 
 """

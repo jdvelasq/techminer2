@@ -17,14 +17,14 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 ...     .where_root_directory_is("example/")
 ...     .run()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/rpys/rpys_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/rpys/rpys_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/rpys/rpys_plot.html" 
+    <iframe src="../../_generated/pkgs/rpys/rpys_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
-    
+
 """
 import plotly.graph_objects as go
 

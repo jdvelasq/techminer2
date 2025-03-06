@@ -9,9 +9,8 @@ example/thesaurus/
 debug.ipynb
 
 # Sphinx documentation
-sphinx/_build/
+docs-src/_build/
 # sphinx/_static/**/*
-sphinx/_build/
 
 tmp/*
 debug/

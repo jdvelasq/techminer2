@@ -35,11 +35,11 @@ Network Degree Plot
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("sphinx/_generated/pkgs/networks/coupling/sources/node_degree_plot.html")
+>>> # plot.write_html("sphinx/_generated/pkgs/networks/coupling/sources/node_degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/coupling/sources/node_degree_plot.html" 
+    <iframe src="../../_generated/pkgs/networks/coupling/sources/node_degree_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
