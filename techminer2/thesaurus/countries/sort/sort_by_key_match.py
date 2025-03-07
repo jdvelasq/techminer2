@@ -10,66 +10,70 @@
 Sort By Key Match
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByKeyMatch
+
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
->>> from techminer2.thesaurus.countries import SortByKeyMatch
->>> (
-...     SortByKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("china")
-...     .having_case_sensitive(False)
-...     .having_regex_flags(0)
-...     .having_regex_search(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Sorts thesaurus by key match
+    >>> (
+    ...     SortByKeyMatch()
+    ...     #
+    ...     # THESAURUS:
+    ...     .having_pattern("china")
+    ...     .having_case_sensitive(False)
+    ...     .having_regex_flags(0)
+    ...     .having_regex_search(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     #
+    ...     .run()
+    ... )
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-            File : example/thesaurus/countries.the.txt
-         Pattern : china
-  Case sensitive : False
-     Regex Flags : 0
-    Regex Search : False
-  1 matching keys found
-Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    China
-      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-    Belgium
-      Brussels, Belgium
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    Denmark
-      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-    France
-      SKEMA Business School, Lille, France; University of Lille Nord de France,...
-    Germany
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-    Ghana
-      University of the Free State and University of Ghana Business School, Uni...
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+                File : example/thesaurus/countries.the.txt
+             Pattern : china
+      Case sensitive : False
+         Regex Flags : 0
+        Regex Search : False
+      1 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        China
+          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+        Belgium
+          Brussels, Belgium
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        Denmark
+          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+        France
+          SKEMA Business School, Lille, France; University of Lille Nord de France,...
+        Germany
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+        Ghana
+          University of the Free State and University of Ghana Business School, Uni...
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 

@@ -9,59 +9,59 @@
 Find Editorials
 ===============================================================================
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, FindEditorials
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.descriptors import FindEditorials
->>> (
-...     FindEditorials()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Configure and run the finder
+    >>> finder = (
+    ...     FindEditorials()
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     #
+    ...     .run()
+    ... )
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by word match
-  File : example/thesaurus/descriptors.the.txt
-  Word : ['CONFERENCE', 'EDP_SCIENCES', 'ELSEVIER', 'EMERALD', 'FRANCIS', 'GMBH', 'IAEME_PUBLICATIONS', 'IEEE', 'IEOM_SOCIETY', 'INDERSCIENCE', 'INFORMA_UK', 'INTERNATIONAL_SOLAR_ENERGY_SOCIETY', 'IOS_PRESS', 'JOHN_WILEY', 'MDPI', 'NOVA_SCIENCE_PUBLISHERS', 'PROCEEDINGS', 'SCITEPRESS_SCIENCE', 'SONS_LTD', 'SPRINGER', 'SPRINGERVERLAG', 'VERLAG', 'WILEYVCH', 'WIT_PRESS', 'OXFORD_UNIVERSITY_PRESS', 'HENRY_STEWART_PUBLICATIONS', 'MACMILLAN', 'EXCLUSIVE_LICENSE', 'PRESS', 'PUBLISHERS']
-  18 matching keys found
-  Thesaurus sorting by word match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    ELSEVIER_B
-      ELSEVIER_B
-    ELSEVIER_INC
-      ELSEVIER_INC
-    ELSEVIER_LTD
-      ELSEVIER_LTD
-    EMERALD_GROUP_PUBLISHING
-      EMERALD_GROUP_PUBLISHING
-    EMERALD_PUBLISHING
-      EMERALD_PUBLISHING
-    FRANCIS_GROUP
-      FRANCIS_GROUP
-    INFORMA_UK
-      INFORMA_UK
-    JOHN_WILEY
-      JOHN_WILEY
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by word match
+      File : example/thesaurus/descriptors.the.txt
+      Word : ['CONFERENCE', 'EDP_SCIENCES', 'ELSEVIER', 'EMERALD', 'FRANCIS', 'GMBH', 'IAEME_PUBLICATIONS', 'IEEE', 'IEOM_SOCIETY', 'INDERSCIENCE', 'INFORMA_UK', 'INTERNATIONAL_SOLAR_ENERGY_SOCIETY', 'IOS_PRESS', 'JOHN_WILEY', 'MDPI', 'NOVA_SCIENCE_PUBLISHERS', 'PROCEEDINGS', 'SCITEPRESS_SCIENCE', 'SONS_LTD', 'SPRINGER', 'SPRINGERVERLAG', 'VERLAG', 'WILEYVCH', 'WIT_PRESS', 'OXFORD_UNIVERSITY_PRESS', 'HENRY_STEWART_PUBLICATIONS', 'MACMILLAN', 'EXCLUSIVE_LICENSE', 'PRESS', 'PUBLISHERS']
+      18 matching keys found
+      Thesaurus sorting by word match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        ELSEVIER_B
+          ELSEVIER_B
+        ELSEVIER_INC
+          ELSEVIER_INC
+        ELSEVIER_LTD
+          ELSEVIER_LTD
+        EMERALD_GROUP_PUBLISHING
+          EMERALD_GROUP_PUBLISHING
+        EMERALD_PUBLISHING
+          EMERALD_PUBLISHING
+        FRANCIS_GROUP
+          FRANCIS_GROUP
+        INFORMA_UK
+          INFORMA_UK
+        JOHN_WILEY
+          JOHN_WILEY
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

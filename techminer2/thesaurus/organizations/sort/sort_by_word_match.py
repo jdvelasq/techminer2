@@ -11,62 +11,63 @@ Sort by Word Match
 ===============================================================================
 
 
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus, SortByWordMatch
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.organizations import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
-
->>> from techminer2.thesaurus.organizations import SortByWordMatch
->>> (
-...     SortByWordMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("Bank")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by word match
-  File : example/thesaurus/organizations.the.txt
-  Word : Bank
-  2 matching keys found
-  Thesaurus sorting by word match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/organizations.the.txt
-<BLANKLINE>
-    Fed Reserv Bank of Chicago (USA)
-      Federal Reserve Bank of Chicago, Chicago, IL, United States; Federal Rese...
-    Fed Reserv Bank of Philadelphia (USA)
-      Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States; Fe...
-    Anhui Univ of Finan and Econ (CHN)
-      School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
-    Baekseok Univ (KOR)
-      Division of Tourism, Baekseok University, South Korea
-    Baewha Women’s Univ (KOR)
-      Department of Information Security, Baewha Women’s University, Seoul, Sou...
-    Baylor Univ (USA)
-      Baylor University, United States; Hankamer School of Business, Baylor Uni...
-    Beihang Univ (CHN)
-      School of Economics and Management, Beihang University, China
-    Brussels, Belgium (BEL)
-      Brussels, Belgium
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Create and run the sorter
+    >>> sorter = (
+    ...     SortByWordMatch()
+    ...     #
+    ...     # THESAURUS:
+    ...     .having_pattern("Bank")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by word match
+      File : example/thesaurus/organizations.the.txt
+      Word : Bank
+      2 matching keys found
+      Thesaurus sorting by word match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/organizations.the.txt
+    <BLANKLINE>
+        Fed Reserv Bank of Chicago (USA)
+          Federal Reserve Bank of Chicago, Chicago, IL, United States; Federal Rese...
+        Fed Reserv Bank of Philadelphia (USA)
+          Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States; Fe...
+        Anhui Univ of Finan and Econ (CHN)
+          School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
+        Baekseok Univ (KOR)
+          Division of Tourism, Baekseok University, South Korea
+        Baewha Women’s Univ (KOR)
+          Department of Information Security, Baewha Women’s University, Seoul, Sou...
+        Baylor Univ (USA)
+          Baylor University, United States; Hankamer School of Business, Baylor Uni...
+        Beihang Univ (CHN)
+          School of Economics and Management, Beihang University, China
+        Brussels, Belgium (BEL)
+          Brussels, Belgium
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

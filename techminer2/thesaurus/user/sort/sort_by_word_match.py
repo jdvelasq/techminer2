@@ -1,66 +1,71 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
 """
 Sort by Word Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByWordMatch
+
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
 
->>> from techminer2.thesaurus.user import SortByWordMatch
->>> (
-...     SortByWordMatch()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_pattern("BUSINESS")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Creates, configures, an run the sorter
+    >>> sorter = (
+    ...     SortByWordMatch()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_pattern("BUSINESS")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by word match
-  File : example/thesaurus/demo.the.txt
-  Word : BUSINESS
-  19 matching keys found
-  Thesaurus sorting by word match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    BUSINESS
-      BUSINESS; BUSINESSES
-    BUSINESS_DEVELOPMENT
-      BUSINESS_DEVELOPMENT
-    BUSINESS_GERMANY
-      BUSINESS_GERMANY
-    BUSINESS_INFRASTRUCTURE
-      BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-    BUSINESS_MODEL
-      BUSINESS_MODEL; BUSINESS_MODELS
-    BUSINESS_OPPORTUNITIES
-      BUSINESS_OPPORTUNITIES
-    BUSINESS_PROCESS
-      BUSINESS_PROCESS
-    FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
-      FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
-<BLANKLINE>
-<BLANKLINE>
-
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by word match
+      File : example/thesaurus/demo.the.txt
+      Word : BUSINESS
+      19 matching keys found
+      Thesaurus sorting by word match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        BUSINESS
+          BUSINESS; BUSINESSES
+        BUSINESS_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
+        BUSINESS_GERMANY
+          BUSINESS_GERMANY
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
+        BUSINESS_OPPORTUNITIES
+          BUSINESS_OPPORTUNITIES
+        BUSINESS_PROCESS
+          BUSINESS_PROCESS
+        FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+          FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

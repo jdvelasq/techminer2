@@ -6,38 +6,43 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Apply Thesaurus 
+Apply Thesaurus
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.organizations import ApplyThesaurus, CreateThesaurus
 
->>> from techminer2.thesaurus.organizations import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Applying user thesaurus to database
-          File : example/thesaurus/organizations.the.txt
-  Source field : affiliations
-  Target field : organizations
-  Thesaurus application completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> (
+    ...     ApplyThesaurus()
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     #
+    ...     .run()
+    ... )
+
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Applying user thesaurus to database
+              File : example/thesaurus/organizations.the.txt
+      Source field : affiliations
+      Target field : organizations
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

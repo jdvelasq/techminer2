@@ -11,41 +11,39 @@ Reduce Keys
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, ReduceKeys
+
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
 
->>> from techminer2.thesaurus.user import ReduceKeys
->>> (
-...     ReduceKeys()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
+    >>> # Creates, configures, an run the reducer
+    >>> reducer = (
+    ...     ReduceKeys()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> reducer.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Reducing thesaurus keys
-  File : example/thesaurus/demo.the.txt
-  Keys reduced from 1796 to 1796
-  Keys reduction completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1796 to 1796
+      Keys reduction completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

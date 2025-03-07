@@ -10,41 +10,41 @@
 Integrity Check
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.user import IntegrityCheck
->>> (
-...     IntegrityCheck()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .with_field("raw_descriptors")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, IntegrityCheck
 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+    >>> #
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Thesaurus integrity check
-  File : example/thesaurus/demo.the.txt
-  1865 terms checked
-  Integrity check completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
+
+    >>> # Creates, configures, an run the integrity checker
+    >>> checker = (
+    ...     IntegrityCheck()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> checker.run()
+
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Thesaurus integrity check
+      File : example/thesaurus/demo.the.txt
+      1865 terms checked
+      Integrity check completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

@@ -11,51 +11,52 @@ Common Initial Words Remover
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveCommonInitialWords
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import RemoveCommonInitialWords
->>> RemoveCommonInitialWords(root_directory="example/", tqdm_disable=True).run()
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Remove common initial words
+    >>> RemoveCommonInitialWords(root_directory="example/", tqdm_disable=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Removing common initial words from thesaurus keys
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-  196 common initial words removed successfully
-  Common initial words removal successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    ACADEMICS
-      ACADEMICS; OTHER_ACADEMICS
-    ACCESS
-      ACCELERATE_ACCESS; ACCESS
-    ACHIEVEMENTS
-      CONTEMPORARY_ACHIEVEMENTS
-    ACTION
-      LATE_ACTION
-    ACTORS
-      ACTORS; HETEROGENEOUS_ACTORS
-    AGRICULTURE_BUSINESS_PROCESS
-      TRANSFORM_AGRICULTURE_BUSINESS_PROCESS
-    AGRICULTURE_ECOSYSTEM
-      BROADER_AGRICULTURE_ECOSYSTEM
-    AI_ML_ALGORITHMS
-      COMPLEX_AI_ML_ALGORITHMS
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Removing common initial words from thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+      196 common initial words removed successfully
+      Common initial words removal successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        ACADEMICS
+          ACADEMICS; OTHER_ACADEMICS
+        ACCESS
+          ACCELERATE_ACCESS; ACCESS
+        ACHIEVEMENTS
+          CONTEMPORARY_ACHIEVEMENTS
+        ACTION
+          LATE_ACTION
+        ACTORS
+          ACTORS; HETEROGENEOUS_ACTORS
+        AGRICULTURE_BUSINESS_PROCESS
+          TRANSFORM_AGRICULTURE_BUSINESS_PROCESS
+        AGRICULTURE_ECOSYSTEM
+          BROADER_AGRICULTURE_ECOSYSTEM
+        AI_ML_ALGORITHMS
+          COMPLEX_AI_ML_ALGORITHMS
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import re

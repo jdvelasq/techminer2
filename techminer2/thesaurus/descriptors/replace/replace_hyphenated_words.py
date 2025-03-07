@@ -7,60 +7,58 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Hypenated Words Transformer
+Replace hyphenated words
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceHyphenatedWords
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import HyphenatedWordsTransformer
->>> (
-...     HyphenatedWordsTransformer(tqdm_disable=True)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the replacer
+    >>> replacer = (
+    ...     ReplaceHyphenatedWords(tqdm_disable=True)
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> replacer.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Transforming hyphenated words in thesaurus keys
-  File : example/thesaurus/descriptors.the.txt
-  51 hypenated words transformed successfully
-  Hyphenated words transformation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_FINTECH_ECO_SYSTEM
-      A_FINTECH_ECOSYSTEM
-    A_WIDE_RANGING_RE_CONCEPTUALIZATION
-      A_WIDE_RANGING_RECONCEPTUALIZATION
-    AGRI_BUSINESS
-      AGRIBUSINESS
-    AGRO_INDUSTRY
-      AGROINDUSTRY
-    BACK_OFFICE_FUNCTIONS
-      BACKOFFICE_FUNCTIONS
-    BLOCK_CHAIN
-      BLOCKCHAIN; BLOCKCHAINS
-    BLOCK_CHAIN_AND_FINTECH_INNOVATIONS
-      BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-    BLOCK_CHAIN_ENABLES
-      BLOCKCHAIN_ENABLES
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Transforming hyphenated words in thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      51 hypenated words transformed successfully
+      Hyphenated words transformation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_FINTECH_ECO_SYSTEM
+          A_FINTECH_ECOSYSTEM
+        A_WIDE_RANGING_RE_CONCEPTUALIZATION
+          A_WIDE_RANGING_RECONCEPTUALIZATION
+        AGRI_BUSINESS
+          AGRIBUSINESS
+        AGRO_INDUSTRY
+          AGROINDUSTRY
+        BACK_OFFICE_FUNCTIONS
+          BACKOFFICE_FUNCTIONS
+        BLOCK_CHAIN
+          BLOCKCHAIN; BLOCKCHAINS
+        BLOCK_CHAIN_AND_FINTECH_INNOVATIONS
+          BLOCKCHAIN_AND_FINTECH_INNOVATIONS
+        BLOCK_CHAIN_ENABLES
+          BLOCKCHAIN_ENABLES
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import re
@@ -70,14 +68,14 @@ import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from ...package_data.text_processing import internal__load_text_processing_terms
-from .._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ...._internals.mixins import ParamsMixin
+from ....package_data.text_processing import internal__load_text_processing_terms
+from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 
 
-class HyphenatedWordsTransformer(
+class ReplaceHyphenatedWords(
     ParamsMixin,
     ThesaurusMixin,
 ):

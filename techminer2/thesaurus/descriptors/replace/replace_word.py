@@ -7,66 +7,62 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Replace Word 
+Replace Word
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceWord
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import ReplaceWord
->>> (
-...     ReplaceWord()
-...     # 
-...     # THESAURUS:
-...     .having_word("FINTECH")
-...     .having_replacement("fintech")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the replacer
+    >>> replacer = (
+    ...     ReplaceWord()
+    ...     .having_word("FINTECH")
+    ...     .having_replacement("fintech")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> replacer.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Replacing word in keys
-         File : example/thesaurus/descriptors.the.txt
-         Word : FINTECH
-  Replacement : fintech
-  96 replacements made successfully
-  Word replacing completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_EUROPEAN_OR_NATIONAL_fintech_MARKET
-      A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET
-    A_fintech_COMPANY
-      A_FINTECH_COMPANY
-    A_fintech_ECOSYSTEM
-      A_FINTECH_ECOSYSTEM
-    A_NEW_fintech_INNOVATION_MAPPING_APPROACH
-      A_NEW_FINTECH_INNOVATION_MAPPING_APPROACH
-    A_THEORETICAL_DATA_DRIVEN_fintech_FRAMEWORK
-      A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
-    ACTIVE_fintech_SOLUTIONS
-      ACTIVE_FINTECH_SOLUTIONS
-    BANK_fintech_PARTNERSHIP
-      BANK_FINTECH_PARTNERSHIP
-    BANKS_OFFERING_fintech_SERVICES_NEED
-      BANKS_OFFERING_FINTECH_SERVICES_NEED
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Replacing word in keys
+             File : example/thesaurus/descriptors.the.txt
+             Word : FINTECH
+      Replacement : fintech
+      96 replacements made successfully
+      Word replacing completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_EUROPEAN_OR_NATIONAL_fintech_MARKET
+          A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET
+        A_fintech_COMPANY
+          A_FINTECH_COMPANY
+        A_fintech_ECOSYSTEM
+          A_FINTECH_ECOSYSTEM
+        A_NEW_fintech_INNOVATION_MAPPING_APPROACH
+          A_NEW_FINTECH_INNOVATION_MAPPING_APPROACH
+        A_THEORETICAL_DATA_DRIVEN_fintech_FRAMEWORK
+          A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
+        ACTIVE_fintech_SOLUTIONS
+          ACTIVE_FINTECH_SOLUTIONS
+        BANK_fintech_PARTNERSHIP
+          BANK_FINTECH_PARTNERSHIP
+        BANKS_OFFERING_fintech_SERVICES_NEED
+          BANKS_OFFERING_FINTECH_SERVICES_NEED
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

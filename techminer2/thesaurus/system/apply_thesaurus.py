@@ -10,45 +10,36 @@
 Apply Thesaurus
 ===============================================================================
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> # CODE:
->>> #
->>> from techminer2.thesaurus.system import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("geography/country_to_region.the.txt")
-...     #
-...     # FIELDS:
-...     .with_field("countries")
-...     .with_other_field("regions")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
->>> #
->>> # TEST EXECUTION
->>> #
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Applying system thesaurus to database
-          File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
-  Source field : countries
-  Target field : regions
-  Thesaurus application completed successfully
-<BLANKLINE>
-<BLANKLINE>
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.system import ApplyThesaurus
+
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> #  Creating, configuring, and running the system thesaurus
+    >>> applier = (
+    ...     ApplyThesaurus()
+    ...     .with_thesaurus_file("geography/country_to_region.the.txt")
+    ...     .with_field("countries")
+    ...     .with_other_field("regions")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> applier.run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Applying system thesaurus to database
+              File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
+      Source field : countries
+      Target field : regions
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import sys

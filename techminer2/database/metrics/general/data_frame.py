@@ -27,7 +27,7 @@ General Metrics Data Frame
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 >>> #
->>> # TEST EXECUTION
+>>> # Capture and print stderr output
 >>> #
 >>> from techminer2.database.metrics.general import DataFrame
 >>> (
@@ -41,9 +41,9 @@ General Metrics Data Frame
 ...     .where_records_match(None)
 ...     #
 ...     .run()
-... )
+... ) # doctest: +NORMALIZE_WHITESPACE
                                                                   Value
-Category          Item                                                 
+Category          Item
 GENERAL           Timespan                                    2015:2019
                   Documents                                          50
                   Annual growth rate %                           118.67

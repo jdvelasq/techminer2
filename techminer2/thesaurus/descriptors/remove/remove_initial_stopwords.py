@@ -11,49 +11,50 @@ Starting Stopwords Remover
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialStopwords
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import RemoveInitialStopwords
->>> RemoveInitialStopwords(root_directory="example/", tqdm_disable=True).run()
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Remove initial stopwords
+    >>> RemoveInitialStopwords(root_directory="example/", tqdm_disable=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Removing starting stopwords from thesaurus keys  File : example/thesaurus/descriptors.the.txt
-  562 initial stopwords removed successfully
-  Starting stopwords removal completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    ACADEMIC_FINANCE_COMMUNITY
-      THE_ACADEMIC_FINANCE_COMMUNITY
-    ACADEMICS
-      ACADEMICS; BOTH_ACADEMICS; OTHER_ACADEMICS
-    ACCEPTANCE
-      ACCEPTANCE; THE_ACCEPTANCE
-    ACTION
-      OUR_ACTION
-    ACTIVE_PARTICIPANT
-      AN_ACTIVE_PARTICIPANT
-    ACTORS
-      ACTORS; ALL_ACTORS
-    ADOPTION
-      ADOPTION; THE_ADOPTION
-    ADVANCEMENT
-      THE_ADVANCEMENT
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Removing starting stopwords from thesaurus keys  File : example/thesaurus/descriptors.the.txt
+      562 initial stopwords removed successfully
+      Starting stopwords removal completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        ACADEMIC_FINANCE_COMMUNITY
+          THE_ACADEMIC_FINANCE_COMMUNITY
+        ACADEMICS
+          ACADEMICS; BOTH_ACADEMICS; OTHER_ACADEMICS
+        ACCEPTANCE
+          ACCEPTANCE; THE_ACCEPTANCE
+        ACTION
+          OUR_ACTION
+        ACTIVE_PARTICIPANT
+          AN_ACTIVE_PARTICIPANT
+        ACTORS
+          ACTORS; ALL_ACTORS
+        ADOPTION
+          ADOPTION; THE_ADOPTION
+        ADVANCEMENT
+          THE_ADVANCEMENT
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

@@ -28,13 +28,13 @@ Record Mapping
 >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 >>> #
->>> # TEST EXECUTION
+>>> # Capture and print stderr output
 >>> #
 >>> # order_records_by:
 >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
 >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
 >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
->>> # 
+>>> #
 >>> from techminer2.database.tools import RecordMapping
 >>> mapping = (
 ...     RecordMapping()
@@ -44,7 +44,7 @@ Record Mapping
 ...     .where_record_years_range_is(None, None)
 ...     .where_record_citations_range_is(None, None)
 ...     .where_records_match(None)
-...     .where_records_ordered_by("global_cited_by_highest")  
+...     .where_records_ordered_by("global_cited_by_highest")
 ...     #
 ...     .run()
 ... )

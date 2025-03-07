@@ -11,61 +11,57 @@ Sort By Ends With Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByEndsWithKeyMatch
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import SortByEndsWithKeyMatch
->>> (
-...     SortByEndsWithKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("BANKS")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByEndsWithKeyMatch()
+    ...     .having_pattern("BANKS")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-     File : example/thesaurus/descriptors.the.txt
-  Pattern : BANKS
-  14 matching keys found
-  Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    BANKS
-      BANKS
-    CITY_COMMERCIAL_BANKS
-      CITY_COMMERCIAL_BANKS
-    COMMERCIAL_BANKS
-      COMMERCIAL_BANKS
-    ENABLE_BANKS
-      ENABLE_BANKS
-    FIVE_MAJOR_COMMERCIAL_BANKS
-      FIVE_MAJOR_COMMERCIAL_BANKS
-    INCUMBENT_RETAIL_BANKS
-      INCUMBENT_RETAIL_BANKS
-    LEADING_EUROPEAN_AND_US_BANKS
-      LEADING_EUROPEAN_AND_US_BANKS
-    MOST_BANKS
-      MOST_BANKS
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+         File : example/thesaurus/descriptors.the.txt
+      Pattern : BANKS
+      14 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        BANKS
+          BANKS
+        CITY_COMMERCIAL_BANKS
+          CITY_COMMERCIAL_BANKS
+        COMMERCIAL_BANKS
+          COMMERCIAL_BANKS
+        ENABLE_BANKS
+          ENABLE_BANKS
+        FIVE_MAJOR_COMMERCIAL_BANKS
+          FIVE_MAJOR_COMMERCIAL_BANKS
+        INCUMBENT_RETAIL_BANKS
+          INCUMBENT_RETAIL_BANKS
+        LEADING_EUROPEAN_AND_US_BANKS
+          LEADING_EUROPEAN_AND_US_BANKS
+        MOST_BANKS
+          MOST_BANKS
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

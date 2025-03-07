@@ -7,43 +7,41 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Cleanup Thesaurus
+Reduce Keys
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.organizations import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus, ReduceKeys
 
->>> from techminer2.thesaurus.organizations import ReduceKeys
->>> (
-...     ReduceKeys()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Reducing thesaurus keys
-  File : example/thesaurus/organizations.the.txt
-  Keys reduced from 90 to 90
-  Keys reduction completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Creates and run the reducer
+    >>> reducer = (
+    ...     ReduceKeys()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> reducer.run()
 
-
-
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
++
 """
 from ...._internals.mixins import ParamsMixin
 from ...user import ReduceKeys as UserReduceKeys

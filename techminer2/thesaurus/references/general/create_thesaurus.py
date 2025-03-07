@@ -10,52 +10,50 @@
 Create thesaurus
 ===============================================================================
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> # CODE:
->>> #
->>> from techminer2.thesaurus.references import CreateThesaurus
->>> CreateThesaurus(root_directory = "example/", tqdm_disable=True).run()
->>> #
->>> # TEST EXECUTION
->>> #
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Creating thesaurus from 'global_references' field
-  File : example/thesaurus/references.the.txt
-  Creating main_documents data frame
-  Creating references data frame
-  62 keys found
-  Thesaurus creation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/references.the.txt
-<BLANKLINE>
-    Alt R., 2018, ELECTRON MARK, V28, P235
-      Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
-    Anagnostopoulos I., 2018, J ECON BUS, V100, P7
-      Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...
-    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
-      Arner D.W., Barberis J., Buckley R.P., Fintech, regtech, and the reconcep...
-    Buchak G., 2018, J FINANC ECON, V130, P453
-      Buchak G., Matvos G., Piskorski T., Seru A., Fintech, regulatory arbitrag...
-    Cai C.W., 2018, ACCOUNT FINANC, V58, P965
-      Cai C.W., Disruption of financial intermediation by FinTech: A review on ...
-    Chen L./1, 2016, CHINA ECON J, V9, P225
-      Chen L., From Fintech to Finlife: The case of Fintech development in Chin...
-    Dorfleitner G., 2017, FINTECH IN GER, P1
-      Dorfleitner G., Hornuf L., Schmitt M., Weber M., FinTech in Germany, (2017)
-    Gabor D., 2017, NEW POLIT ECON, V22, P423
-      Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
-<BLANKLINE>
-<BLANKLINE>
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.references import CreateThesaurus
+
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory = "example/", tqdm_disable=True).run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Creating thesaurus from 'global_references' field
+      File : example/thesaurus/references.the.txt
+      Creating main_documents data frame
+      Creating references data frame
+      62 keys found
+      Thesaurus creation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/references.the.txt
+    <BLANKLINE>
+        Alt R., 2018, ELECTRON MARK, V28, P235
+          Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
+        Anagnostopoulos I., 2018, J ECON BUS, V100, P7
+          Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...
+        Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
+          Arner D.W., Barberis J., Buckley R.P., Fintech, regtech, and the reconcep...
+        Buchak G., 2018, J FINANC ECON, V130, P453
+          Buchak G., Matvos G., Piskorski T., Seru A., Fintech, regulatory arbitrag...
+        Cai C.W., 2018, ACCOUNT FINANC, V58, P965
+          Cai C.W., Disruption of financial intermediation by FinTech: A review on ...
+        Chen L./1, 2016, CHINA ECON J, V9, P225
+          Chen L., From Fintech to Finlife: The case of Fintech development in Chin...
+        Dorfleitner G., 2017, FINTECH IN GER, P1
+          Dorfleitner G., Hornuf L., Schmitt M., Weber M., FinTech in Germany, (2017)
+        Gabor D., 2017, NEW POLIT ECON, V22, P423
+          Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """
@@ -129,8 +127,9 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_main_documents_data_frame(self):
 
-        sys.stderr.write(f"  Creating main_documents data frame\n")
-        sys.stderr.flush()
+        if not self.params.quiet:
+            sys.stderr.write(f"  Creating main_documents data frame\n")
+            sys.stderr.flush()
 
         # loads the dataframe
         main_documents = internal__load_filtered_database(self.params)
@@ -168,8 +167,9 @@ class CreateThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_references_data_frame(self):
 
-        sys.stderr.write(f"  Creating references data frame\n")
-        sys.stderr.flush()
+        if not self.params.quiet:
+            sys.stderr.write(f"  Creating references data frame\n")
+            sys.stderr.flush()
 
         # loads the dataframe
         references = internal__load_records(self.params)

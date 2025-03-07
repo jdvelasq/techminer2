@@ -10,52 +10,54 @@
 Common Ending Words Remover
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveCommonLastWords
 
->>> from techminer2.thesaurus.descriptors import RemoveCommonLastWords
->>> RemoveCommonLastWords(root_directory="example/", tqdm_disable=True).run()
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Removing common last words from thesaurus keys
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-<BLANKLINE>
-  15 ending words removed successfully
-  Common last words removal completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    AGRICULTURE
-      AGRICULTURE; AGRICULTURE_PLAYS
-    CONTINUANCE_INTENTION
-      CONTINUANCE_INTENTION; CONTINUANCE_INTENTIONS; CONTINUANCE_INTENTION_DIFFERS
-    DIGITAL_FINANCE
-      DIGITAL_FINANCE; DIGITAL_FINANCE_ENCOMPASSES
-    ENTREPRENEURIAL
-      ENTREPRENEURIAL_ENDEAVOURS
-    FINTECHS
-      FINTECHS_SYNTHESIZE
-    FOUR_SPECIFIC
-      FOUR_SPECIFIC_INCREASES
-    INNOVATIONS
-      INNOVATIONS_EXACERBATE
-    LENDINGCLUB_LOANS
-      LENDINGCLUB_LOANS_INCREASES
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Remove common last words
+    >>> RemoveCommonLastWords(root_directory="example/", tqdm_disable=True).run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Removing common last words from thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+    <BLANKLINE>
+      15 ending words removed successfully
+      Common last words removal completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        AGRICULTURE
+          AGRICULTURE; AGRICULTURE_PLAYS
+        CONTINUANCE_INTENTION
+          CONTINUANCE_INTENTION; CONTINUANCE_INTENTIONS; CONTINUANCE_INTENTION_DIFFERS
+        DIGITAL_FINANCE
+          DIGITAL_FINANCE; DIGITAL_FINANCE_ENCOMPASSES
+        ENTREPRENEURIAL
+          ENTREPRENEURIAL_ENDEAVOURS
+        FINTECHS
+          FINTECHS_SYNTHESIZE
+        FOUR_SPECIFIC
+          FOUR_SPECIFIC_INCREASES
+        INNOVATIONS
+          INNOVATIONS_EXACERBATE
+        LENDINGCLUB_LOANS
+          LENDINGCLUB_LOANS_INCREASES
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

@@ -9,38 +9,36 @@
 Integrity Check
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, IntegrityCheck
 
->>> from techminer2.thesaurus.descriptors import IntegrityCheck
->>> (
-...     IntegrityCheck()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Thesaurus integrity check
-  File : example/thesaurus/descriptors.the.txt
-  1865 terms checked
-  Integrity check completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Run the integrity check
+    >>> checker = (
+    ...     IntegrityCheck()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> checker.run()
 
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Thesaurus integrity check
+      File : example/thesaurus/descriptors.the.txt
+      1865 terms checked
+      Integrity check completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

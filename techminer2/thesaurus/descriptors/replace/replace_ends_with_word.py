@@ -7,66 +7,62 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Replace Ends With Word 
+Replace Ends With Word
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceEndsWithWord
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import ReplaceEndsWithWord
->>> (
-...     ReplaceEndsWithWord()
-...     # 
-...     # THESAURUS:
-...     .having_word("FINTECH")
-...     .having_replacement("fintech")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the replacer
+    >>> replacer = (
+    ...     ReplaceEndsWithWord()
+    ...     .having_word("FINTECH")
+    ...     .having_replacement("fintech")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> replacer.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Replacing ending word in keys
-         File : example/thesaurus/descriptors.the.txt
-         Word : FINTECH
-  Replacement : fintech
-  10 replacements made successfully
-  Word replacing completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    CHARACTERIZE_fintech
-      CHARACTERIZE_FINTECH
-    EXPLORE_fintech
-      EXPLORE_FINTECH
-    fintech
-      FINTECH; FINTECHS
-    FRAME_fintech
-      FRAME_FINTECH
-    MORE_fintech
-      MORE_FINTECH
-    PROMPTPAY_fintech
-      PROMPTPAY_FINTECH
-    THAT_fintech
-      THAT_FINTECH
-    THE_TERM_fintech
-      THE_TERM_FINTECH
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Replacing ending word in keys
+             File : example/thesaurus/descriptors.the.txt
+             Word : FINTECH
+      Replacement : fintech
+      10 replacements made successfully
+      Word replacing completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        CHARACTERIZE_fintech
+          CHARACTERIZE_FINTECH
+        EXPLORE_fintech
+          EXPLORE_FINTECH
+        fintech
+          FINTECH; FINTECHS
+        FRAME_fintech
+          FRAME_FINTECH
+        MORE_fintech
+          MORE_FINTECH
+        PROMPTPAY_fintech
+          PROMPTPAY_FINTECH
+        THAT_fintech
+          THAT_FINTECH
+        THE_TERM_fintech
+          THE_TERM_FINTECH
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin

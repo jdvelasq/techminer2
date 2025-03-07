@@ -11,63 +11,60 @@ Sort By Ends With Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByEndsWithKeyMatch
 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.user import SortByEndsWithKeyMatch
->>> (
-...     SortByEndsWithKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_pattern("BUSINESS")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
+    >>> # Creates, configures, and runs the sorter
+    >>> sorter = (
+    ...     SortByEndsWithKeyMatch()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_pattern("BUSINESS")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-     File : example/thesaurus/demo.the.txt
-  Pattern : BUSINESS
-  3 matching keys found
-  Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    AGRIBUSINESS
-      AGRIBUSINESS
-    BUSINESS
-      BUSINESS; BUSINESSES
-    THE_BANKING_BUSINESS
-      THE_BANKING_BUSINESS
-    A_A_)_THEORY
-      A_A_)_THEORY
-    A_A_THEORY
-      A_A_THEORY
-    A_BASIC_RANDOM_SAMPLING_STRATEGY
-      A_BASIC_RANDOM_SAMPLING_STRATEGY
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-    A_BETTER_UNDERSTANDING
-      A_BETTER_UNDERSTANDING
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+         File : example/thesaurus/demo.the.txt
+      Pattern : BUSINESS
+      3 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        AGRIBUSINESS
+          AGRIBUSINESS
+        BUSINESS
+          BUSINESS; BUSINESSES
+        THE_BANKING_BUSINESS
+          THE_BANKING_BUSINESS
+        A_A_)_THEORY
+          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 

@@ -10,54 +10,55 @@
 Create thesaurus
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
 
->>> from techminer2.thesaurus.organizations import CreateThesaurus
->>> (
-...     CreateThesaurus()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus
+
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create and run the thesaurus creator
+    >>> creator = (
+    ...     CreateThesaurus()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> creator.run()
 
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Creating thesaurus from 'affiliations' field
-  File : example/thesaurus/organizations.the.txt
-  90 keys found
-  Thesaurus creation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/organizations.the.txt
-<BLANKLINE>
-    Anhui Univ of Finan and Econ (CHN)
-      School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
-    Baekseok Univ (KOR)
-      Division of Tourism, Baekseok University, South Korea
-    Baewha Women’s Univ (KOR)
-      Department of Information Security, Baewha Women’s University, Seoul, Sou...
-    Baylor Univ (USA)
-      Baylor University, United States; Hankamer School of Business, Baylor Uni...
-    Beihang Univ (CHN)
-      School of Economics and Management, Beihang University, China
-    Brussels, Belgium (BEL)
-      Brussels, Belgium
-    Cent for Law, Markets & Regulation, UNSW Australia, Australia (AUS)
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia
-    CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany
-<BLANKLINE>
-<BLANKLINE>
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Creating thesaurus from 'affiliations' field
+      File : example/thesaurus/organizations.the.txt
+      90 keys found
+      Thesaurus creation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/organizations.the.txt
+    <BLANKLINE>
+        Anhui Univ of Finan and Econ (CHN)
+          School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
+        Baekseok Univ (KOR)
+          Division of Tourism, Baekseok University, South Korea
+        Baewha Women’s Univ (KOR)
+          Department of Information Security, Baewha Women’s University, Seoul, Sou...
+        Baylor Univ (USA)
+          Baylor University, United States; Hankamer School of Business, Baylor Uni...
+        Beihang Univ (CHN)
+          School of Economics and Management, Beihang University, China
+        Brussels, Belgium (BEL)
+          Brussels, Belgium
+        Cent for Law, Markets & Regulation, UNSW Australia, Australia (AUS)
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia
+        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

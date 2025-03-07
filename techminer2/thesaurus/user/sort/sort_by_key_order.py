@@ -11,161 +11,137 @@ Sort by Key Order
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByKeyOrder
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.user import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_keys_ordered_by("alphabetical")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus alphabetically
-  File : example/thesaurus/demo.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    ACADEMIA
-      ACADEMIA
-    ACADEMICS
-      ACADEMICS
-    ACADEMIC_OBSERVERS
-      ACADEMIC_OBSERVERS
-    ACADEMIC_RESEARCH
-      ACADEMIC_RESEARCH
-    ACCELERATE_ACCESS
-      ACCELERATE_ACCESS
-    ACCEPTANCE
-      ACCEPTANCE
-    ACCEPTANCE_MODELS
-      ACCEPTANCE_MODELS
-    ACCESS
-      ACCESS
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Creates, configures, an run the sorter
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_keys_ordered_by("alphabetical")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
+
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = StringIO()
+    >>> print(output)
+    Sorting thesaurus alphabetically
+      File : example/thesaurus/demo.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        ACADEMIA
+          ACADEMIA
+        ACADEMICS
+          ACADEMICS
+        ACADEMIC_OBSERVERS
+          ACADEMIC_OBSERVERS
+        ACADEMIC_RESEARCH
+          ACADEMIC_RESEARCH
+        ACCELERATE_ACCESS
+          ACCELERATE_ACCESS
+        ACCEPTANCE
+          ACCEPTANCE
+        ACCEPTANCE_MODELS
+          ACCEPTANCE_MODELS
+        ACCESS
+          ACCESS
+    <BLANKLINE>
+    <BLANKLINE>
 
 
->>> # TEST PREPARATION
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_keys_ordered_by("key_length")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> from techminer2.thesaurus.user import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_keys_ordered_by("key_length")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = StringIO()
+    >>> print(output)
+    Sorting thesaurus by key length
+      File : example/thesaurus/demo.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+          A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+        THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+          THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+        THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
+          THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
+        FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+          FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+        UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+          UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+        THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
+          THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
+        ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
+          ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
+        FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+          FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+    <BLANKLINE>
+    <BLANKLINE>
 
+    >>> # Creates, configures, an run the sorter
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_keys_ordered_by("word_length")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by key length
-  File : example/thesaurus/demo.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
-      A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
-    THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
-      THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
-    THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
-      THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
-    FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-      FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-    UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-      UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-    THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
-      THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
-    ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
-      ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
-    FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
-      FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus by word length
+      File : example/thesaurus/demo.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+          THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+        COMPETITION (ECONOMICS)
+          COMPETITION (ECONOMICS)
+        FINANCIAL_TECHNOLOGY (FINTECH)
+          FINANCIAL_TECHNOLOGY (FINTECH)
+        A_WIDE_RANGING_RECONCEPTUALIZATION
+          A_WIDE_RANGING_RECONCEPTUALIZATION
+        NETWORKS (CIRCUITS)
+          NETWORKS (CIRCUITS)
+        THE_RECONCEPTUALIZATION
+          THE_RECONCEPTUALIZATION
+        CLASSIFICATION (OF_INFORMATION)
+          CLASSIFICATION (OF_INFORMATION)
+        EXPLORE_INTERRELATIONSHIPS
+          EXPLORE_INTERRELATIONSHIPS
+    <BLANKLINE>
+    <BLANKLINE>
 
-
->>> # TEST PREPARATION
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
-
->>> from techminer2.thesaurus.user import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_keys_ordered_by("word_length")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
-
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by word length
-  File : example/thesaurus/demo.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
-      THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
-    COMPETITION (ECONOMICS)
-      COMPETITION (ECONOMICS)
-    FINANCIAL_TECHNOLOGY (FINTECH)
-      FINANCIAL_TECHNOLOGY (FINTECH)
-    A_WIDE_RANGING_RECONCEPTUALIZATION
-      A_WIDE_RANGING_RECONCEPTUALIZATION
-    NETWORKS (CIRCUITS)
-      NETWORKS (CIRCUITS)
-    THE_RECONCEPTUALIZATION
-      THE_RECONCEPTUALIZATION
-    CLASSIFICATION (OF_INFORMATION)
-      CLASSIFICATION (OF_INFORMATION)
-    EXPLORE_INTERRELATIONSHIPS
-      EXPLORE_INTERRELATIONSHIPS
-<BLANKLINE>
-<BLANKLINE>
 
 """
 import sys

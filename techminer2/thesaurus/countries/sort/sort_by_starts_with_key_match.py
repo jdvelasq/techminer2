@@ -11,61 +11,55 @@ Sort by Starts With Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByStartsWithKeyMatch
 
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.countries import SortByStartsWithKeyMatch
->>> (
-...     SortByStartsWithKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("Germ")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> sorter = (
+    ...     SortByStartsWithKeyMatch()
+    ...     .having_pattern("Germ")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-     File : example/thesaurus/countries.the.txt
-  Pattern : Germ
-  1 matching keys found
-  Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    Germany
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-    Belgium
-      Brussels, Belgium
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    China
-      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-    Denmark
-      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-    France
-      SKEMA Business School, Lille, France; University of Lille Nord de France,...
-    Ghana
-      University of the Free State and University of Ghana Business School, Uni...
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+         File : example/thesaurus/countries.the.txt
+      Pattern : Germ
+      1 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        Germany
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+        Belgium
+          Brussels, Belgium
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        China
+          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+        Denmark
+          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+        France
+          SKEMA Business School, Lille, France; University of Lille Nord de France,...
+        Ghana
+          University of the Free State and University of Ghana Business School, Uni...
+    <BLANKLINE>
 
 
 """

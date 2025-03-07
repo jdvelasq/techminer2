@@ -11,70 +11,66 @@ Sort By Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByKeyMatch
+
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
 
->>> from techminer2.thesaurus.user import SortByKeyMatch
->>> (
-...     SortByKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_pattern("BUSINESS")
-...     .having_case_sensitive(False)
-...     .having_regex_flags(0)
-...     .having_regex_search(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Creates, configures, an run the sorter
+    >>> sorter = (
+    ...     SortByKeyMatch()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_pattern("BUSINESS")
+    ...     .having_case_sensitive(False)
+    ...     .having_regex_flags(0)
+    ...     .having_regex_search(False)
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-            File : example/thesaurus/demo.the.txt
-         Pattern : BUSINESS
-  Case sensitive : False
-     Regex Flags : 0
-    Regex Search : False
-  21 matching keys found
-Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    AGRIBUSINESS
-      AGRIBUSINESS
-    BUSINESS
-      BUSINESS; BUSINESSES
-    BUSINESS_DEVELOPMENT
-      BUSINESS_DEVELOPMENT
-    BUSINESS_GERMANY
-      BUSINESS_GERMANY
-    BUSINESS_INFRASTRUCTURE
-      BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-    BUSINESS_MODEL
-      BUSINESS_MODEL; BUSINESS_MODELS
-    BUSINESS_OPPORTUNITIES
-      BUSINESS_OPPORTUNITIES
-    BUSINESS_PROCESS
-      BUSINESS_PROCESS
-<BLANKLINE>
-<BLANKLINE>
-
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+                File : example/thesaurus/demo.the.txt
+             Pattern : BUSINESS
+      Case sensitive : False
+         Regex Flags : 0
+        Regex Search : False
+      21 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        AGRIBUSINESS
+          AGRIBUSINESS
+        BUSINESS
+          BUSINESS; BUSINESSES
+        BUSINESS_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
+        BUSINESS_GERMANY
+          BUSINESS_GERMANY
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
+        BUSINESS_OPPORTUNITIES
+          BUSINESS_OPPORTUNITIES
+        BUSINESS_PROCESS
+          BUSINESS_PROCESS
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """
@@ -117,7 +113,7 @@ class SortByKeyMatch(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("Thesaurus sorting by key match completed successfully\n\n")
+        sys.stderr.write("  Thesaurus sorting by key match completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

@@ -11,63 +11,59 @@ Sort by Starts With Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByStartsWithKeyMatch
 
->>> from techminer2.thesaurus.user import SortByStartsWithKeyMatch
->>> (
-...     SortByStartsWithKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_pattern("BUSINESS")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-     File : example/thesaurus/demo.the.txt
-  Pattern : BUSINESS
-  7 matching keys found
-  Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    BUSINESS
-      BUSINESS; BUSINESSES
-    BUSINESS_DEVELOPMENT
-      BUSINESS_DEVELOPMENT
-    BUSINESS_GERMANY
-      BUSINESS_GERMANY
-    BUSINESS_INFRASTRUCTURE
-      BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-    BUSINESS_MODEL
-      BUSINESS_MODEL; BUSINESS_MODELS
-    BUSINESS_OPPORTUNITIES
-      BUSINESS_OPPORTUNITIES
-    BUSINESS_PROCESS
-      BUSINESS_PROCESS
-    A_A_)_THEORY
-      A_A_)_THEORY
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Creates, configures, an run the sorter
+    >>> sorter = (
+    ...     SortByStartsWithKeyMatch()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_pattern("BUSINESS")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+         File : example/thesaurus/demo.the.txt
+      Pattern : BUSINESS
+      7 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        BUSINESS
+          BUSINESS; BUSINESSES
+        BUSINESS_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
+        BUSINESS_GERMANY
+          BUSINESS_GERMANY
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
+        BUSINESS_OPPORTUNITIES
+          BUSINESS_OPPORTUNITIES
+        BUSINESS_PROCESS
+          BUSINESS_PROCESS
+        A_A_)_THEORY
+          A_A_)_THEORY
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

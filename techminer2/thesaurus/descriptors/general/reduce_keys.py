@@ -10,38 +10,37 @@
 Reduce Keys
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReduceKeys
 
->>> from techminer2.thesaurus.descriptors import ReduceKeys
->>> (
-...     ReduceKeys()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Reducing thesaurus keys
-  File : example/thesaurus/descriptors.the.txt
-  Keys reduced from 1796 to 1796
-  Keys reduction completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Reduce thesaurus keys
+    >>> reducer = (
+    ...     ReduceKeys()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> reducer.run()
 
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1796 to 1796
+      Keys reduction completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

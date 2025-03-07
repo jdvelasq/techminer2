@@ -11,67 +11,63 @@ Sort By Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByKeyMatch
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import SortByKeyMatch
->>> (
-...     SortByKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("BLOCK")
-...     .having_case_sensitive(False)
-...     .having_regex_flags(0)
-...     .having_regex_search(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByKeyMatch()
+    ...     .having_pattern("BLOCK")
+    ...     .having_case_sensitive(False)
+    ...     .having_regex_flags(0)
+    ...     .having_regex_search(False)
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-            File : example/thesaurus/descriptors.the.txt
-         Pattern : BLOCK
-  Case sensitive : False
-     Regex Flags : 0
-    Regex Search : False
-  6 matching keys found
-Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-      A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-    BLOCKCHAIN
-      BLOCKCHAIN; BLOCKCHAINS
-    BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-      BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-    BLOCKCHAIN_ENABLES
-      BLOCKCHAIN_ENABLES
-    BLOCKCHAIN_IMPLEMENTATION
-      BLOCKCHAIN_IMPLEMENTATION
-    BLOCKCHAIN_USE_CASES
-      BLOCKCHAIN_USE_CASES
-    A_A_)_THEORY
-      A_A_)_THEORY
-    A_A_THEORY
-      A_A_THEORY
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+                File : example/thesaurus/descriptors.the.txt
+             Pattern : BLOCK
+      Case sensitive : False
+         Regex Flags : 0
+        Regex Search : False
+      6 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        BLOCKCHAIN
+          BLOCKCHAIN; BLOCKCHAINS
+        BLOCKCHAIN_AND_FINTECH_INNOVATIONS
+          BLOCKCHAIN_AND_FINTECH_INNOVATIONS
+        BLOCKCHAIN_ENABLES
+          BLOCKCHAIN_ENABLES
+        BLOCKCHAIN_IMPLEMENTATION
+          BLOCKCHAIN_IMPLEMENTATION
+        BLOCKCHAIN_USE_CASES
+          BLOCKCHAIN_USE_CASES
+        A_A_)_THEORY
+          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

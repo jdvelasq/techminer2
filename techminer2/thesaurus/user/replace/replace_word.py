@@ -7,68 +7,66 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Replace Starts With Word 
+Replace Starts With Word
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, ReplaceWord
 
->>> from techminer2.thesaurus.user import ReplaceWord
->>> (
-...     ReplaceWord()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_word("BUSINESS")
-...     .having_replacement("business")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Replacing word in keys
-         File : example/thesaurus/demo.the.txt
-         Word : BUSINESS
-  Replacement : business
-  19 replacements made successfully
-  Word replacing completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    business
-      BUSINESS; BUSINESSES
-    business_DEVELOPMENT
-      BUSINESS_DEVELOPMENT
-    business_GERMANY
-      BUSINESS_GERMANY
-    business_INFRASTRUCTURE
-      BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-    business_MODEL
-      BUSINESS_MODEL; BUSINESS_MODELS
-    business_OPPORTUNITIES
-      BUSINESS_OPPORTUNITIES
-    business_PROCESS
-      BUSINESS_PROCESS
-    FUNDAMENTALLY_NEW_business_OPPORTUNITIES
-      FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Creates, configures, an run the replacer
+    >>> replacer = (
+    ...     ReplaceWord()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_word("BUSINESS")
+    ...     .having_replacement("business")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> replacer.run()
+
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Replacing word in keys
+             File : example/thesaurus/demo.the.txt
+             Word : BUSINESS
+      Replacement : business
+      19 replacements made successfully
+      Word replacing completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        business
+          BUSINESS; BUSINESSES
+        business_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
+        business_GERMANY
+          BUSINESS_GERMANY
+        business_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        business_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
+        business_OPPORTUNITIES
+          BUSINESS_OPPORTUNITIES
+        business_PROCESS
+          BUSINESS_PROCESS
+        FUNDAMENTALLY_NEW_business_OPPORTUNITIES
+          FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import re

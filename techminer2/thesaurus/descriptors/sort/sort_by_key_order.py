@@ -11,166 +11,131 @@ Sort by Key Order
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByKeyOrder
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.descriptors import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("alphabetical")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .having_keys_ordered_by("alphabetical")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus alphabetically
-  File : example/thesaurus/descriptors.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    ACADEMIA
-      ACADEMIA
-    ACADEMICS
-      ACADEMICS
-    ACADEMIC_OBSERVERS
-      ACADEMIC_OBSERVERS
-    ACADEMIC_RESEARCH
-      ACADEMIC_RESEARCH
-    ACCELERATE_ACCESS
-      ACCELERATE_ACCESS
-    ACCEPTANCE
-      ACCEPTANCE
-    ACCEPTANCE_MODELS
-      ACCEPTANCE_MODELS
-    ACCESS
-      ACCESS
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = StringIO()
+    >>> print(output)
+    Sorting thesaurus alphabetically
+      File : example/thesaurus/descriptors.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        ACADEMIA
+          ACADEMIA
+        ACADEMICS
+          ACADEMICS
+        ACADEMIC_OBSERVERS
+          ACADEMIC_OBSERVERS
+        ACADEMIC_RESEARCH
+          ACADEMIC_RESEARCH
+        ACCELERATE_ACCESS
+          ACCELERATE_ACCESS
+        ACCEPTANCE
+          ACCEPTANCE
+        ACCEPTANCE_MODELS
+          ACCEPTANCE_MODELS
+        ACCESS
+          ACCESS
+    <BLANKLINE>
+    <BLANKLINE>
 
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .having_keys_ordered_by("key_length")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = StringIO()
+    >>> print(output)
+    Sorting thesaurus by key length
+      File : example/thesaurus/descriptors.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+          A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+        THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+          THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+        THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
+          THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
+        FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+          FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+        UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+          UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+        THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
+          THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
+        ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
+          ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
+        FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+          FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+    <BLANKLINE>
+    <BLANKLINE>
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.descriptors import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("key_length")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .having_keys_ordered_by("word_length")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by key length
-  File : example/thesaurus/descriptors.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
-      A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
-    THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
-      THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
-    THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
-      THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
-    FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-      FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-    UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-      UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-    THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
-      THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
-    ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
-      ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
-    FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
-      FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
-<BLANKLINE>
-<BLANKLINE>
-
-
-
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
-
-
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.descriptors import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("word_length")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
-
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by word length
-  File : example/thesaurus/descriptors.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
-      THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
-    COMPETITION (ECONOMICS)
-      COMPETITION (ECONOMICS)
-    FINANCIAL_TECHNOLOGY (FINTECH)
-      FINANCIAL_TECHNOLOGY (FINTECH)
-    A_WIDE_RANGING_RECONCEPTUALIZATION
-      A_WIDE_RANGING_RECONCEPTUALIZATION
-    NETWORKS (CIRCUITS)
-      NETWORKS (CIRCUITS)
-    THE_RECONCEPTUALIZATION
-      THE_RECONCEPTUALIZATION
-    CLASSIFICATION (OF_INFORMATION)
-      CLASSIFICATION (OF_INFORMATION)
-    EXPLORE_INTERRELATIONSHIPS
-      EXPLORE_INTERRELATIONSHIPS
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus by word length
+      File : example/thesaurus/descriptors.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+          THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+        COMPETITION (ECONOMICS)
+          COMPETITION (ECONOMICS)
+        FINANCIAL_TECHNOLOGY (FINTECH)
+          FINANCIAL_TECHNOLOGY (FINTECH)
+        A_WIDE_RANGING_RECONCEPTUALIZATION
+          A_WIDE_RANGING_RECONCEPTUALIZATION
+        NETWORKS (CIRCUITS)
+          NETWORKS (CIRCUITS)
+        THE_RECONCEPTUALIZATION
+          THE_RECONCEPTUALIZATION
+        CLASSIFICATION (OF_INFORMATION)
+          CLASSIFICATION (OF_INFORMATION)
+        EXPLORE_INTERRELATIONSHIPS
+          EXPLORE_INTERRELATIONSHIPS
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

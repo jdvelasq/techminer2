@@ -7,81 +7,74 @@
 # pylint: disable=too-many-statements
 # mypy: ignore-errors
 """
-Apply Thesaurus 
+Apply Thesaurus
 ===============================================================================
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2.thesaurus.descriptors import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
->>> #
->>> # TEST EXECUTION
->>> #
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_author_keywords
-  Target field : author_keywords
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_index_keywords
-  Target field : index_keywords
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_keywords
-  Target field : keywords
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_document_title_nouns_and_phrases
-  Target field : document_title_nouns_and_phrases
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_abstract_nouns_and_phrases
-  Target field : abstract_nouns_and_phrases
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_nouns_and_phrases
-  Target field : nouns_and_phrases
-  Thesaurus application completed successfully
-<BLANKLINE>
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_descriptors
-  Target field : descriptors
-  Thesaurus application completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+    >>> applier = (
+    ...     ApplyThesaurus()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> applier.run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_author_keywords
+      Target field : author_keywords
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_index_keywords
+      Target field : index_keywords
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_keywords
+      Target field : keywords
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_document_title_nouns_and_phrases
+      Target field : document_title_nouns_and_phrases
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_abstract_nouns_and_phrases
+      Target field : abstract_nouns_and_phrases
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_nouns_and_phrases
+      Target field : nouns_and_phrases
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_descriptors
+      Target field : descriptors
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 

@@ -10,55 +10,58 @@
 Replace Abbreviations
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> import shutil
->>> shutil.copy("example/abbreviations.the.txt", "example/thesaurus/abbreviations.the.txt")
-'example/thesaurus/abbreviations.the.txt'
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import shutil
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceAbbreviations
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import ReplaceAbbreviations
->>> ReplaceAbbreviations(root_directory="example/", tqdm_disable=True).run()
+    >>> # Copy the abbreviations file
+    >>> shutil.copy("example/abbreviations.the.txt", "example/thesaurus/abbreviations.the.txt")
+    'example/thesaurus/abbreviations.the.txt'
 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Replacing abbreviations in keys
-      Thesaurus : example/thesaurus/descriptors.the.txt
-  Abbreviations : example/thesaurus/abbreviations.the.txt
-  122 replacements made successfully
-  Abbreviations replacement completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_EUROPEAN_OR_NATIONAL_FINANCIAL_TECHNOLOGY_MARKET
-      A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET
-    A_FINANCIAL_TECHNOLOGY_COMPANY
-      A_FINTECH_COMPANY
-    A_FINANCIAL_TECHNOLOGY_ECOSYSTEM
-      A_FINTECH_ECOSYSTEM
-    A_NEW_FINANCIAL_TECHNOLOGY_INNOVATION_MAPPING_APPROACH
-      A_NEW_FINTECH_INNOVATION_MAPPING_APPROACH
-    A_THEORETICAL_DATA_DRIVEN_FINANCIAL_TECHNOLOGY_FRAMEWORK
-      A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
-    ACTIVE_FINANCIAL_TECHNOLOGY_SOLUTIONS
-      ACTIVE_FINTECH_SOLUTIONS
-    ARTIFICIAL_INTELLIGENCE
-      AI; ARTIFICIAL_INTELLIGENCE
-    BANK_FINANCIAL_TECHNOLOGY_PARTNERSHIP
-      BANK_FINTECH_PARTNERSHIP
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Configure and run the replacer
+    >>> replacer = ReplaceAbbreviations(root_directory="example/", tqdm_disable=True)
+    >>> replacer.run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Replacing abbreviations in keys
+          Thesaurus : example/thesaurus/descriptors.the.txt
+      Abbreviations : example/thesaurus/abbreviations.the.txt
+      122 replacements made successfully
+      Abbreviations replacement completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_EUROPEAN_OR_NATIONAL_FINANCIAL_TECHNOLOGY_MARKET
+          A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET
+        A_FINANCIAL_TECHNOLOGY_COMPANY
+          A_FINTECH_COMPANY
+        A_FINANCIAL_TECHNOLOGY_ECOSYSTEM
+          A_FINTECH_ECOSYSTEM
+        A_NEW_FINANCIAL_TECHNOLOGY_INNOVATION_MAPPING_APPROACH
+          A_NEW_FINTECH_INNOVATION_MAPPING_APPROACH
+        A_THEORETICAL_DATA_DRIVEN_FINANCIAL_TECHNOLOGY_FRAMEWORK
+          A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
+        ACTIVE_FINANCIAL_TECHNOLOGY_SOLUTIONS
+          ACTIVE_FINTECH_SOLUTIONS
+        ARTIFICIAL_INTELLIGENCE
+          AI; ARTIFICIAL_INTELLIGENCE
+        BANK_FINANCIAL_TECHNOLOGY_PARTNERSHIP
+          BANK_FINTECH_PARTNERSHIP
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import re

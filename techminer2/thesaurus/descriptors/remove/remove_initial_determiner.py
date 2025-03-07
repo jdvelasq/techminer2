@@ -7,53 +7,57 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Initial Determiner Remover 
+Initial Determiner Remover
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialDeterminer
+
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
->>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminer
->>> RemoveInitialDeterminer(root_directory="example/", tqdm_disable=True).run()
 
+    >>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminer
+    >>> RemoveInitialDeterminer(root_directory="example/", tqdm_disable=True).run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Removing initial determiner from thesaurus keys
-  File : example/thesaurus/descriptors.the.txt
-  636 initial determiners removed successfully
-  Initial determiner removal completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_)_THEORY
-      A_A_)_THEORY
-    A_THEORY
-      A_A_THEORY
-    ACADEMIC_FINANCE_COMMUNITY
-      THE_ACADEMIC_FINANCE_COMMUNITY
-    ACADEMICS
-      ACADEMICS; BOTH_ACADEMICS
-    ACCEPTANCE
-      ACCEPTANCE; THE_ACCEPTANCE
-    ACTIVE_PARTICIPANT
-      AN_ACTIVE_PARTICIPANT
-    ACTORS
-      ACTORS; ALL_ACTORS
-    ADOPTION
-      ADOPTION; THE_ADOPTION
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Removing initial determiner from thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      636 initial determiners removed successfully
+      Initial determiner removal completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_)_THEORY
+          A_A_)_THEORY
+        A_THEORY
+          A_A_THEORY
+        ACADEMIC_FINANCE_COMMUNITY
+          THE_ACADEMIC_FINANCE_COMMUNITY
+        ACADEMICS
+          ACADEMICS; BOTH_ACADEMICS
+        ACCEPTANCE
+          ACCEPTANCE; THE_ACCEPTANCE
+        ACTIVE_PARTICIPANT
+          AN_ACTIVE_PARTICIPANT
+        ACTORS
+          ACTORS; ALL_ACTORS
+        ADOPTION
+          ADOPTION; THE_ADOPTION
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

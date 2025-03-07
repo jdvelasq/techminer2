@@ -11,63 +11,57 @@ British to American Spelling
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import BritishToAmericanSpelling, CreateThesaurus
 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.user import BritishToAmericanSpelling
->>> (
-...     BritishToAmericanSpelling(tqdm_disable=True)
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Creates, configures, an run the translator
+    >>> translator = (
+    ...     BritishToAmericanSpelling(tqdm_disable=True)
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> translator.run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Converting British to American English
-  File : example/thesaurus/demo.the.txt
-  11 replacements made successfully
-Translation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    ANALOG_PROCESSES
-      ANALOGUE_PROCESSES
-    ANALYZE
-      ANALYSE
-    BEHAVIORAL_ECONOMICS
-      BEHAVIOURAL_ECONOMICS
-    ENTREPRENEURIAL_ENDEAVORS
-      ENTREPRENEURIAL_ENDEAVOURS
-    FAVOR
-      FAVOUR
-    HARMONIZE_TECHNOLOGICAL_ADVANCEMENTS
-      HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
-    INSTILL_CULTURE_CHANGE
-      INSTIL_CULTURE_CHANGE
-    INTERNATIONAL_DEVELOPMENT_ORGANIZATIONS
-      INTERNATIONAL_DEVELOPMENT_ORGANISATIONS
-<BLANKLINE>
-<BLANKLINE>
-
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Converting British to American English
+      File : example/thesaurus/demo.the.txt
+      11 replacements made successfully
+    Translation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        ANALOG_PROCESSES
+          ANALOGUE_PROCESSES
+        ANALYZE
+          ANALYSE
+        BEHAVIORAL_ECONOMICS
+          BEHAVIOURAL_ECONOMICS
+        ENTREPRENEURIAL_ENDEAVORS
+          ENTREPRENEURIAL_ENDEAVOURS
+        FAVOR
+          FAVOUR
+        HARMONIZE_TECHNOLOGICAL_ADVANCEMENTS
+          HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
+        INSTILL_CULTURE_CHANGE
+          INSTIL_CULTURE_CHANGE
+        INTERNATIONAL_DEVELOPMENT_ORGANIZATIONS
+          INTERNATIONAL_DEVELOPMENT_ORGANISATIONS
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

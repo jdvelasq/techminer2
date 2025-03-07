@@ -9,36 +9,35 @@
 Check Thesaurus Integrity
 ===============================================================================
 
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus, IntegrityCheck
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> from techminer2.thesaurus.organizations import IntegrityCheck
->>> (
-...     IntegrityCheck()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> checker = (
+    ...     IntegrityCheck()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> checker.run()
 
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Thesaurus integrity check
-  File : example/thesaurus/organizations.the.txt
-  106 terms checked
-  Integrity check completed successfully
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Thesaurus integrity check
+      File : example/thesaurus/organizations.the.txt
+      106 terms checked
+      Integrity check completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

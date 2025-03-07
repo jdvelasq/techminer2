@@ -9,32 +9,26 @@
 Integrity Check
 ===============================================================================
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.references import IntegrityCheck
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> # CODE:
->>> #
->>> from techminer2.thesaurus.references import IntegrityCheck
->>> (
-...     IntegrityCheck()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
->>> #
->>> # TEST EXECUTION
->>> #
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output) # doctest: +SKIP
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Configure and run the integrity check
+    >>> checker = (
+    ...     IntegrityCheck()
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> checker.run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output) # doctest: +SKIP
 
 
 """

@@ -11,63 +11,59 @@ Sort by Fuzzy Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByFuzzyKeyMatch
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import SortByFuzzyKeyMatch
->>> (
-...     SortByFuzzyKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("INFORM")
-...     .having_match_threshold(50)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByFuzzyKeyMatch()
+    ...     .having_pattern("INFORM")
+    ...     .having_match_threshold(50)
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by fuzzy match
-            File : example/thesaurus/descriptors.the.txt
-       Keys like : INFORM
-  Match thresold : 50
-  95 matching keys found
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    A_DISINTERMEDIATION_FORCE
-      A_DISINTERMEDIATION_FORCE
-    A_FIRM
-      A_FIRM
-    A_FORM
-      A_FORM
-    A_NEW_INTERMEDIARY
-      A_NEW_INTERMEDIARY
-    A_PLATFORM
-      A_PLATFORM
-    ANY_FORM
-      ANY_FORM
-    BUSINESS_INFRASTRUCTURE
-      BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-    CLASSIFICATION (OF_INFORMATION)
-      CLASSIFICATION (OF_INFORMATION)
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus by fuzzy match
+                File : example/thesaurus/descriptors.the.txt
+           Keys like : INFORM
+      Match thresold : 50
+      95 matching keys found
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        A_DISINTERMEDIATION_FORCE
+          A_DISINTERMEDIATION_FORCE
+        A_FIRM
+          A_FIRM
+        A_FORM
+          A_FORM
+        A_NEW_INTERMEDIARY
+          A_NEW_INTERMEDIARY
+        A_PLATFORM
+          A_PLATFORM
+        ANY_FORM
+          ANY_FORM
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        CLASSIFICATION (OF_INFORMATION)
+          CLASSIFICATION (OF_INFORMATION)
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

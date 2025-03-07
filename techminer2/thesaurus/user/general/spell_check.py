@@ -10,133 +10,130 @@ Spell Check
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SpellCheck
+
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
 
->>> from techminer2.thesaurus.user import SpellCheck
->>> (
-...     SpellCheck()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_maximum_occurrence(3)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Creates, configures, an run the spell checker
+    >>> checker = (
+    ...     SpellCheck()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_maximum_occurrence(3)
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> checker.run()
 
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Spell checking thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Potential misspelled words (77):
+    <BLANKLINE>
+        - affordance
+        - agroindustry
+        - agropay
+        - analyse
+        - backoffice
+        - behavioural
+        - bitcoin
+        - brummer
+        - burdencapital
+        - cacioppo
+        ...
+    <BLANKLINE>
+      Matching keys found : 91
+      Spell checking completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_MULTI_LEVEL_ANALYSIS
+          A_MULTI_LEVEL_ANALYSIS
+        A_WIDE_RANGING_RECONCEPTUALIZATION
+          A_WIDE_RANGING_RECONCEPTUALIZATION
+        A_YOUTH_MICROLOAN
+          A_YOUTH_MICROLOAN
+        AFFORDANCE_ACTUALIZATION
+          AFFORDANCE_ACTUALIZATION
+        AGROINDUSTRY
+          AGROINDUSTRY
+        AGROPAY
+          AGROPAY
+        ANALYSE
+          ANALYSE
+    <BLANKLINE>
+    <BLANKLINE>
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Spell checking thesaurus keys
-  File : example/thesaurus/demo.the.txt
-  Potential misspelled words (77):
-<BLANKLINE>
-    - affordance
-    - agroindustry
-    - agropay
-    - analyse
-    - backoffice
-    - behavioural
-    - bitcoin
-    - brummer
-    - burdencapital
-    - cacioppo
-    ...
-<BLANKLINE>
-  Matching keys found : 91
-  Spell checking completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-    A_MULTI_LEVEL_ANALYSIS
-      A_MULTI_LEVEL_ANALYSIS
-    A_WIDE_RANGING_RECONCEPTUALIZATION
-      A_WIDE_RANGING_RECONCEPTUALIZATION
-    A_YOUTH_MICROLOAN
-      A_YOUTH_MICROLOAN
-    AFFORDANCE_ACTUALIZATION
-      AFFORDANCE_ACTUALIZATION
-    AGROINDUSTRY
-      AGROINDUSTRY
-    AGROPAY
-      AGROPAY
-    ANALYSE
-      ANALYSE
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Restaring the stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Creates, configures, an run the spell checker
+    >>> SpellCheck(
+    ...     thesaurus_file="demo.the.txt",
+    ...     maximum_occurrence=3,
+    ...     root_directory="example/",
+    ... ).run()
 
->>> # TEST PREPARATION
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
-
->>> SpellCheck(
-...     thesaurus_file="demo.the.txt", 
-...     maximum_occurrence=3,
-...     root_directory="example/",
-... ).run()
-
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Spell checking thesaurus keys
-  File : example/thesaurus/demo.the.txt
-  Potential misspelled words (77):
-<BLANKLINE>
-    - affordance
-    - agroindustry
-    - agropay
-    - analyse
-    - backoffice
-    - behavioural
-    - bitcoin
-    - brummer
-    - burdencapital
-    - cacioppo
-    ...
-<BLANKLINE>
-  Matching keys found : 91
-  Spell checking completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-    A_MULTI_LEVEL_ANALYSIS
-      A_MULTI_LEVEL_ANALYSIS
-    A_WIDE_RANGING_RECONCEPTUALIZATION
-      A_WIDE_RANGING_RECONCEPTUALIZATION
-    A_YOUTH_MICROLOAN
-      A_YOUTH_MICROLOAN
-    AFFORDANCE_ACTUALIZATION
-      AFFORDANCE_ACTUALIZATION
-    AGROINDUSTRY
-      AGROINDUSTRY
-    AGROPAY
-      AGROPAY
-    ANALYSE
-      ANALYSE
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Spell checking thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Potential misspelled words (77):
+    <BLANKLINE>
+        - affordance
+        - agroindustry
+        - agropay
+        - analyse
+        - backoffice
+        - behavioural
+        - bitcoin
+        - brummer
+        - burdencapital
+        - cacioppo
+        ...
+    <BLANKLINE>
+      Matching keys found : 91
+      Spell checking completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_MULTI_LEVEL_ANALYSIS
+          A_MULTI_LEVEL_ANALYSIS
+        A_WIDE_RANGING_RECONCEPTUALIZATION
+          A_WIDE_RANGING_RECONCEPTUALIZATION
+        A_YOUTH_MICROLOAN
+          A_YOUTH_MICROLOAN
+        AFFORDANCE_ACTUALIZATION
+          AFFORDANCE_ACTUALIZATION
+        AGROINDUSTRY
+          AGROINDUSTRY
+        AGROPAY
+          AGROPAY
+        ANALYSE
+          ANALYSE
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

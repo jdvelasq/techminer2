@@ -11,67 +11,68 @@ Sort By Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.organizations import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus, SortByKeyMatch
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.organizations import SortByKeyMatch
->>> (
-...     SortByKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("Sch")
-...     .having_case_sensitive(False)
-...     .having_regex_flags(0)
-...     .having_regex_search(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Create and run the sorter
+    >>> sorter = (
+    ...     SortByKeyMatch()
+    ...     #
+    ...     # THESAURUS:
+    ...     .having_pattern("Sch")
+    ...     .having_case_sensitive(False)
+    ...     .having_regex_flags(0)
+    ...     .having_regex_search(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by key match
-            File : example/thesaurus/organizations.the.txt
-         Pattern : Sch
-  Case sensitive : False
-     Regex Flags : 0
-    Regex Search : False
-  13 matching keys found
-Thesaurus sorting by key match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/organizations.the.txt
-<BLANKLINE>
-    CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany
-    Columbia Grad Sch of Bus (USA)
-      Columbia Graduate School of Business, United States
-    Copenhagen Bus Sch (DNK)
-      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-    Harvard Law Sch (USA)
-      Harvard Law School, United States
-    Henley Bus Sch (GBR)
-      Henley Business School, United Kingdom
-    Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
-      Hochschule für Wirtschaft Fribourg, Switzerland
-    Kingston Bus Sch (GBR)
-      Kingston Business School, Department of Accounting, Finance and Informati...
-    London Sch of Econ (GBR)
-      London School of Economics, United Kingdom
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by key match
+                File : example/thesaurus/organizations.the.txt
+             Pattern : Sch
+      Case sensitive : False
+         Regex Flags : 0
+        Regex Search : False
+      13 matching keys found
+      Thesaurus sorting by key match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/organizations.the.txt
+    <BLANKLINE>
+        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany
+        Columbia Grad Sch of Bus (USA)
+          Columbia Graduate School of Business, United States
+        Copenhagen Bus Sch (DNK)
+          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+        Harvard Law Sch (USA)
+          Harvard Law School, United States
+        Henley Bus Sch (GBR)
+          Henley Business School, United Kingdom
+        Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
+          Hochschule für Wirtschaft Fribourg, Switzerland
+        Kingston Bus Sch (GBR)
+          Kingston Business School, Department of Accounting, Finance and Informati...
+        London Sch of Econ (GBR)
+          London School of Economics, United Kingdom
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

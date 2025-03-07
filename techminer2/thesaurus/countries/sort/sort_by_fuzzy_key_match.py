@@ -10,64 +10,59 @@
 Sort by Fuzzy Key Match
 ===============================================================================
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByFuzzyKeyMatch
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
-
->>> from techminer2.thesaurus.countries import SortByFuzzyKeyMatch
->>> (
-...     SortByFuzzyKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("china")
-...     .having_match_threshold(90)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create and apply the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
 
+    >>> # Sorts thesaurus by fuzzy key match
+    >>> (
+    ...     SortByFuzzyKeyMatch()
+    ...     .having_pattern("china")
+    ...     .having_match_threshold(90)
+    ...     .where_root_directory_is("example/")
+    ...     .run()
+    ... )
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by fuzzy match
-            File : example/thesaurus/countries.the.txt
-       Keys like : china
-  Match thresold : 90
-  1 matching keys found
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    China
-      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-    Belgium
-      Brussels, Belgium
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    Denmark
-      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-    France
-      SKEMA Business School, Lille, France; University of Lille Nord de France,...
-    Germany
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-    Ghana
-      University of the Free State and University of Ghana Business School, Uni...
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus by fuzzy match
+                File : example/thesaurus/countries.the.txt
+           Keys like : china
+      Match thresold : 90
+      1 matching keys found
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        China
+          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+        Belgium
+          Brussels, Belgium
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        Denmark
+          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+        France
+          SKEMA Business School, Lille, France; University of Lille Nord de France,...
+        Germany
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+        Ghana
+          University of the Free State and University of Ghana Business School, Uni...
+    <BLANKLINE>
 
 
 

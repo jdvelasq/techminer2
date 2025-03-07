@@ -11,66 +11,61 @@ Sort By Fuzzy Key Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByFuzzyKeyMatch
 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.user import SortByFuzzyKeyMatch
->>> (
-...     SortByFuzzyKeyMatch()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_pattern("INTELL")
-...     .having_match_threshold(70)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
+    >>> # Creates, configures, an run the sorter
+    >>> sorter = (
+    ...     SortByFuzzyKeyMatch()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_pattern("INTELL")
+    ...     .having_match_threshold(70)
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by fuzzy match
-            File : example/thesaurus/demo.the.txt
-       Keys like : INTELL
-  Match thresold : 70
-  3 matching keys found
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    ARTIFICIAL_INTELLIGENCE
-      ARTIFICIAL_INTELLIGENCE
-    INTELLIGENT_ALGORITHMS
-      INTELLIGENT_ALGORITHMS
-    INTELLIGENT_ROBOTS
-      INTELLIGENT_ROBOTS
-    A_A_)_THEORY
-      A_A_)_THEORY
-    A_A_THEORY
-      A_A_THEORY
-    A_BASIC_RANDOM_SAMPLING_STRATEGY
-      A_BASIC_RANDOM_SAMPLING_STRATEGY
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-    A_BETTER_UNDERSTANDING
-      A_BETTER_UNDERSTANDING
-<BLANKLINE>
-<BLANKLINE>
-
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus by fuzzy match
+                File : example/thesaurus/demo.the.txt
+           Keys like : INTELL
+      Match thresold : 70
+      3 matching keys found
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        ARTIFICIAL_INTELLIGENCE
+          ARTIFICIAL_INTELLIGENCE
+        INTELLIGENT_ALGORITHMS
+          INTELLIGENT_ALGORITHMS
+        INTELLIGENT_ROBOTS
+          INTELLIGENT_ROBOTS
+        A_A_)_THEORY
+          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

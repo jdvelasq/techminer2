@@ -7,70 +7,66 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Replace Ends With Word 
+Replace Ends With Word
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors", 
-...     root_directory="example/", quiet=True).run()
+Example:
+    >>> # TEST PREPARATION
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus, ReplaceEndsWithWord
 
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.user import ReplaceEndsWithWord
->>> (
-...     ReplaceEndsWithWord()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     .having_word("BUSINESS")
-...     .having_replacement("business")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
 
+    >>> # Creates, configures, and run the replacer
+    >>> replacer = (
+    ...     ReplaceEndsWithWord()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_word("BUSINESS")
+    ...     .having_replacement("business")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> replacer.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Replacing ending word in keys
-         File : example/thesaurus/demo.the.txt
-         Word : BUSINESS
-  Replacement : business
-  2 replacements made successfully
-  Word replacing completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    business
-      BUSINESS; BUSINESSES
-    THE_BANKING_business
-      THE_BANKING_BUSINESS
-    A_A_)_THEORY
-      A_A_)_THEORY
-    A_A_THEORY
-      A_A_THEORY
-    A_BASIC_RANDOM_SAMPLING_STRATEGY
-      A_BASIC_RANDOM_SAMPLING_STRATEGY
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-    A_BETTER_UNDERSTANDING
-      A_BETTER_UNDERSTANDING
-    A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-      A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-<BLANKLINE>
-<BLANKLINE>
-
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Replacing ending word in keys
+             File : example/thesaurus/demo.the.txt
+             Word : BUSINESS
+      Replacement : business
+      2 replacements made successfully
+      Word replacing completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        business
+          BUSINESS; BUSINESSES
+        THE_BANKING_business
+          THE_BANKING_BUSINESS
+        A_A_)_THEORY
+          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

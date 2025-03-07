@@ -11,61 +11,63 @@ Apply Thesaurus
 ===============================================================================
 
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2.thesaurus.user import ApplyThesaurus
->>> (
-...     ApplyThesaurus()
-...     #
-...     # THESAURUS:
-...     .with_thesaurus_file("descriptors.the.txt")
-...     #
-...     # FIELDS:
-...     .with_field("raw_descriptors")
-...     .with_other_field("descriptors_cleaned")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
->>> #
->>> # TEST EXECUTION
->>> #
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Applying user thesaurus to database
-          File : example/thesaurus/descriptors.the.txt
-  Source field : raw_descriptors
-  Target field : descriptors_cleaned
-  Thesaurus application completed successfully
-<BLANKLINE>
-<BLANKLINE>
->>> from techminer2.database.tools import Query
->>> Query(
-...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
-...     root_directory="example/",
-...     database="main",
-...     record_years_range=(None, None),
-...     record_citations_range=(None, None),
-... ).run()
-                                 descriptors_cleaned
-0  AN_EFFECT; AN_INSTITUTIONAL_ASPECT; AN_MODERAT...
-1  ACTOR_NETWORK_THEORY; AN_UNPRECEDENTED_LEVEL; ...
-2  AN_INITIAL_TECHNOLOGY_ADVANTAGE; CHINA; FINANC...
-3  AGGREGATION; ALL_RIGHTS; ANALYSIS; ANY_FORM; A...
-4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
->>> from techminer2.database.field_operators import DeleteFieldOperator
->>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="example/").run()
+Example:
+    >>> #
+    >>> # TEST PREPARATION
+    >>> #
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import ApplyThesaurus, CreateThesaurus
+
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Reset the thesaurus to initial state
+    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    ...     root_directory="example/", quiet=True).run()
+
+    >>> # Creates, configures, and runs the applier
+    >>> applier = (
+    ...     ApplyThesaurus()
+    ...     .with_thesaurus_file("descriptors.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .with_other_field("descriptors_cleaned")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> applier.run()
+
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Applying user thesaurus to database
+              File : example/thesaurus/descriptors.the.txt
+      Source field : raw_descriptors
+      Target field : descriptors_cleaned
+      Thesaurus application completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
+
+    >>> # Query the database to check the results
+    >>> from techminer2.database.tools import Query
+    >>> Query(
+    ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
+    ...     root_directory="example/",
+    ...     database="main",
+    ...     record_years_range=(None, None),
+    ...     record_citations_range=(None, None),
+    ... ).run()
+                                     descriptors_cleaned
+    0  AN_EFFECT; AN_INSTITUTIONAL_ASPECT; AN_MODERAT...
+    1  ACTOR_NETWORK_THEORY; AN_UNPRECEDENTED_LEVEL; ...
+    2  AN_INITIAL_TECHNOLOGY_ADVANTAGE; CHINA; FINANC...
+    3  AGGREGATION; ALL_RIGHTS; ANALYSIS; ANY_FORM; A...
+    4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
+
+    >>> # Deletes the created field in the database
+    >>> from techminer2.database.field_operators import DeleteFieldOperator
+    >>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="example/").run()
 
 
 """

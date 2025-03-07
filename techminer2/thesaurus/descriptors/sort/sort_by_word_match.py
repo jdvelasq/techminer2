@@ -11,61 +11,57 @@ Sort by Word Match
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByWordMatch
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import SortByWordMatch
->>> (
-...     SortByWordMatch()
-...     # 
-...     # THESAURUS:
-...     .having_pattern("CREDIT")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... ) 
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Configure and run the sorter
+    >>> sorter = (
+    ...     SortByWordMatch()
+    ...     .having_pattern("CREDIT")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus file by word match
-  File : example/thesaurus/descriptors.the.txt
-  Word : CREDIT
-  4 matching keys found
-  Thesaurus sorting by word match completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    ALTERNATIVE_CREDIT_SCORES
-      ALTERNATIVE_CREDIT_SCORES
-    CREDIT_ACCESS
-      CREDIT_ACCESS
-    CREDIT_COOPERATIVES
-      CREDIT_COOPERATIVES
-    LOWER_PRICED_CREDIT
-      LOWER_PRICED_CREDIT
-    A_A_)_THEORY
-      A_A_)_THEORY
-    A_A_THEORY
-      A_A_THEORY
-    A_BASIC_RANDOM_SAMPLING_STRATEGY
-      A_BASIC_RANDOM_SAMPLING_STRATEGY
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus file by word match
+      File : example/thesaurus/descriptors.the.txt
+      Word : CREDIT
+      4 matching keys found
+      Thesaurus sorting by word match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        ALTERNATIVE_CREDIT_SCORES
+          ALTERNATIVE_CREDIT_SCORES
+        CREDIT_ACCESS
+          CREDIT_ACCESS
+        CREDIT_COOPERATIVES
+          CREDIT_COOPERATIVES
+        LOWER_PRICED_CREDIT
+          LOWER_PRICED_CREDIT
+        A_A_)_THEORY
+          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 

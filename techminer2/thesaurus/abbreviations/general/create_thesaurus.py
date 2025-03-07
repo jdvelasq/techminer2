@@ -10,46 +10,48 @@
 Create Thesaurus
 ===============================================================================
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> from techminer2.thesaurus.abbreviations import CreateThesaurus
 
->>> # Redirect stderr to capture output
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
+Example:
 
->>> # Create thesaurus
->>> CreateThesaurus(root_directory="example/").run()
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.abbreviations import CreateThesaurus
 
->>> # Capture and print stderr output
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Creating thesaurus
-  20 abbreviations found
-  Thesaurus creation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/abbreviations.the.txt
-<BLANKLINE>
-    A_A_
-      using AFFORDANCE_ACTUALIZATION ( A_A_)_THEORY as THE_THEORETICAL_LENS , w...
-    AI
-      ARTIFICIAL_INTELLIGENCE; purpose : considering THE_INCREASING_IMPACT of A...
-    ANT
-      ACTOR_NETWORK_THEORY; THIS_STUDY applies THE_LENS of ACTOR_NETWORK_THEORY...
-    DEMATEL
-      A_SIX_DIMENSIONAL_MODEL comprising 20 SUB_CRITERIA is constructed and BOT...
-    E_FINANCE
-      ELECTRONIC_FINANCE
-    E_PAYMENT
-      ELECTRONIC_PAYMENT
-    EPAM
-      we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPA...
-    EU
-      EUROPEAN_UNION; yet , empirically , FINTECH remains very small , especial...
-<BLANKLINE>
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/").run()
+
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Creating thesaurus
+      20 abbreviations found
+      Thesaurus creation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/abbreviations.the.txt
+    <BLANKLINE>
+        A_A_
+          using AFFORDANCE_ACTUALIZATION ( A_A_)_THEORY as THE_THEORETICAL_LENS , w...
+        AI
+          ARTIFICIAL_INTELLIGENCE; purpose : considering THE_INCREASING_IMPACT of A...
+        ANT
+          ACTOR_NETWORK_THEORY; THIS_STUDY applies THE_LENS of ACTOR_NETWORK_THEORY...
+        DEMATEL
+          A_SIX_DIMENSIONAL_MODEL comprising 20 SUB_CRITERIA is constructed and BOT...
+        E_FINANCE
+          ELECTRONIC_FINANCE
+        E_PAYMENT
+          ELECTRONIC_PAYMENT
+        EPAM
+          we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPA...
+        EU
+          EUROPEAN_UNION; yet , empirically , FINTECH remains very small , especial...
+    <BLANKLINE>
 
 
 

@@ -10,172 +10,119 @@
 Sort by Key Order
 ===============================================================================
 
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByKeyOrder
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Redirect stderr to capture output
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
+    >>> # Create thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.countries import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("alphabetical")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+    >>> # Sort thesaurus by alphabetical order
+    >>> sorter = (
+    ...     SortByKeyOrder()
+    ...     .having_keys_ordered_by("alphabetical")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> sorter.run()
 
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> print(output)
+    Sorting thesaurus alphabetically
+      File : example/thesaurus/countries.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+        Belgium
+          Brussels, Belgium
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        China
+          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+        Denmark
+          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+        France
+          SKEMA Business School, Lille, France; University of Lille Nord de France,...
+        Germany
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+        Ghana
+          University of the Free State and University of Ghana Business School, Uni...
+    <BLANKLINE>
+    <BLANKLINE>
 
+    >>> # Sort the thesaurus by key length
+    >>> sys.stderr = StringIO()
+    >>> sorter.having_keys_ordered_by("key_length").run()
+    >>> output = sys.stderr.getvalue()
+    >>> print(output)
+    Sorting thesaurus by key length
+      File : example/thesaurus/countries.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        United Kingdom
+          Bristol Business School, University of the West of England, Bristol, Unit...
+        United States
+          Baylor University, United States; Columbia Graduate School of Business, U...
+        Netherlands
+          Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...
+        South Korea
+          College of Business Administration, Soongsil University, South Korea; Dep...
+        Switzerland
+          Department of Informatics, University of Zurich, Binzmuehlestrasse 14, Zu...
+        Kazakhstan
+          Department of Accounting and Finance, Bang College of Business, KIMEP Uni...
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+    <BLANKLINE>
+    <BLANKLINE>
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus alphabetically
-  File : example/thesaurus/countries.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-    Belgium
-      Brussels, Belgium
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    China
-      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-    Denmark
-      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-    France
-      SKEMA Business School, Lille, France; University of Lille Nord de France,...
-    Germany
-      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-    Ghana
-      University of the Free State and University of Ghana Business School, Uni...
-<BLANKLINE>
-<BLANKLINE>
-
-
-
->>> # TEST PREPARATION
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.countries import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
-
-
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.countries import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("key_length")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
-
-
-
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by key length
-  File : example/thesaurus/countries.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    United Kingdom
-      Bristol Business School, University of the West of England, Bristol, Unit...
-    United States
-      Baylor University, United States; Columbia Graduate School of Business, U...
-    Netherlands
-      Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...
-    South Korea
-      College of Business Administration, Soongsil University, South Korea; Dep...
-    Switzerland
-      Department of Informatics, University of Zurich, Binzmuehlestrasse 14, Zu...
-    Kazakhstan
-      Department of Accounting and Finance, Bang College of Business, KIMEP Uni...
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-<BLANKLINE>
-<BLANKLINE>
-
-
->>> # TEST PREPARATION
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Sort the thesaurus by word length
+    >>> sys.stderr = StringIO()
+    >>> sorter.having_keys_ordered_by("word_length").run()
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Sorting thesaurus by word length
+      File : example/thesaurus/countries.the.txt
+      Thesaurus sorting completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/countries.the.txt
+    <BLANKLINE>
+        Netherlands
+          Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...
+        Switzerland
+          Department of Informatics, University of Zurich, Binzmuehlestrasse 14, Zu...
+        Brunei Darussalam
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+        Kazakhstan
+          Department of Accounting and Finance, Bang College of Business, KIMEP Uni...
+        Australia
+          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+        Indonesia
+          Department of Management, Faculty of Economics and Business, Universitas ...
+        Singapore
+          School of Information Systems, Singapore Management University (SMU), Sin...
+        Slovenia
+          Faculty of Economics, University of Ljubljana, Kardeljeva pl. 17, Ljublja...
+    <BLANKLINE>
+    <BLANKLINE>
 
 
->>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
->>> from techminer2.thesaurus.countries import SortByKeyOrder
->>> (
-...     SortByKeyOrder()
-...     # 
-...     # THESAURUS:
-...     .having_keys_ordered_by("word_length")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
-
-
-
->>> # TEST RESULTS
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Sorting thesaurus by word length
-  File : example/thesaurus/countries.the.txt
-  Thesaurus sorting completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/countries.the.txt
-<BLANKLINE>
-    Netherlands
-      Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...
-    Switzerland
-      Department of Informatics, University of Zurich, Binzmuehlestrasse 14, Zu...
-    Brunei Darussalam
-      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-    Kazakhstan
-      Department of Accounting and Finance, Bang College of Business, KIMEP Uni...
-    Australia
-      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-    Indonesia
-      Department of Management, Faculty of Economics and Business, Universitas ...
-    Singapore
-      School of Information Systems, Singapore Management University (SMU), Sin...
-    Slovenia
-      Faculty of Economics, University of Ljubljana, Kardeljeva pl. 17, Ljublja...
-<BLANKLINE>
-<BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin

@@ -11,51 +11,52 @@ Parentheses Remover
 ===============================================================================
 
 
->>> # TEST PREPARATION
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
->>> #
->>> from techminer2.thesaurus.descriptors import CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
+Example:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveParentheses
 
+    >>> # Redirecting stderr to avoid messages
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.descriptors import RemoveParentheses
->>> RemoveParentheses(root_directory="example/").run()
+    >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
+    >>> # Remove parentheses
+    >>> RemoveParentheses(root_directory="example/").run()
 
->>> # TEST EXECUTION
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Removing parentheses from thesaurus keys
-<BLANKLINE>
-  File : example/thesaurus/descriptors.the.txt
-  7 removals made successfully
-  Parentheses removal completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/descriptors.the.txt
-<BLANKLINE>
-    CACIOPPO
-      CACIOPPO_[1]
-    CLASSIFICATION
-      CLASSIFICATION (OF_INFORMATION)
-    COMPETITION
-      COMPETITION; COMPETITION (ECONOMICS)
-    FINANCIAL_TECHNOLOGY
-      FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGY (FINTECH)
-    INTERNET_OF_THING
-      INTERNET_OF_THING (IOT); INTERNET_OF_THINGS
-    NETWORKS
-      NETWORKS; NETWORKS (CIRCUITS)
-    PRESSES
-      PRESSES (MACHINE_TOOLS)
-    A_A_)_THEORY
-      A_A_)_THEORY
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Capture and print stderr output
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Removing parentheses from thesaurus keys
+    <BLANKLINE>
+      File : example/thesaurus/descriptors.the.txt
+      7 removals made successfully
+      Parentheses removal completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        CACIOPPO
+          CACIOPPO_[1]
+        CLASSIFICATION
+          CLASSIFICATION (OF_INFORMATION)
+        COMPETITION
+          COMPETITION; COMPETITION (ECONOMICS)
+        FINANCIAL_TECHNOLOGY
+          FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGY (FINTECH)
+        INTERNET_OF_THING
+          INTERNET_OF_THING (IOT); INTERNET_OF_THINGS
+        NETWORKS
+          NETWORKS; NETWORKS (CIRCUITS)
+        PRESSES
+          PRESSES (MACHINE_TOOLS)
+        A_A_)_THEORY
+          A_A_)_THEORY
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

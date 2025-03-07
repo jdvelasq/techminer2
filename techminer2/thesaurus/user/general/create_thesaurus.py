@@ -10,58 +10,56 @@
 Create Thesaurus
 ===============================================================================
 
->>> # TEST:
->>> import sys
->>> from io import StringIO
->>> old_stderr = sys.stderr
->>> sys.stderr = StringIO()
 
->>> from techminer2.thesaurus.user import CreateThesaurus
->>> (
-...     CreateThesaurus()
-...     # 
-...     # THESAURUS:
-...     .with_thesaurus_file("demo.the.txt")
-...     #
-...     # FIELD:
-...     .with_field("raw_descriptors")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+Example:
+    >>> # TEST:
+    >>> import sys
+    >>> from io import StringIO
+    >>> from techminer2.thesaurus.user import CreateThesaurus
 
->>> # TEST:
->>> output = sys.stderr.getvalue()
->>> sys.stderr = old_stderr
->>> print(output)
-Creating thesaurus from 'raw_descriptors' field
-  File : example/thesaurus/demo.the.txt
-  1796 keys found
-  Thesaurus creation completed successfully
-<BLANKLINE>
-Printing thesaurus header
-  File : example/thesaurus/demo.the.txt
-<BLANKLINE>
-    A_A_)_THEORY
-      A_A_)_THEORY
-    A_A_THEORY
-      A_A_THEORY
-    A_BASIC_RANDOM_SAMPLING_STRATEGY
-      A_BASIC_RANDOM_SAMPLING_STRATEGY
-    A_BEHAVIOURAL_PERSPECTIVE
-      A_BEHAVIOURAL_PERSPECTIVE
-    A_BETTER_UNDERSTANDING
-      A_BETTER_UNDERSTANDING
-    A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-      A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-    A_CASE_STUDY
-      A_CASE_STUDY
-    A_CHALLENGE
-      A_CHALLENGE
-<BLANKLINE>
-<BLANKLINE>
+    >>> # Redirecting stderr to avoid messages during doctests
+    >>> old_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
+
+    >>> # Reset the thesaurus to initial state
+    >>> reseter = (
+    ...     CreateThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> reseter.run()
+
+    >>> # Capture and print stderr output to test the code using doctest
+    >>> output = sys.stderr.getvalue()
+    >>> sys.stderr = old_stderr
+    >>> print(output)
+    Creating thesaurus from 'raw_descriptors' field
+      File : example/thesaurus/demo.the.txt
+      1796 keys found
+      Thesaurus creation completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        A_A_)_THEORY
+          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import sys
