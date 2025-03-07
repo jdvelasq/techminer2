@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.thesaurus.countries import ApplyThesaurus, CreateThesaurus
 
     >>> # Redirect stderr to capture output
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
 
@@ -25,7 +25,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database
               File : example/thesaurus/countries.the.txt

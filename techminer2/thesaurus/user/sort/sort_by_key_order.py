@@ -18,7 +18,7 @@ Example:
     >>> from techminer2.thesaurus.user import CreateThesaurus, SortByKeyOrder
 
     >>> # Redirecting stderr to avoid messages during doctests
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
@@ -114,7 +114,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word length
       File : example/thesaurus/demo.the.txt

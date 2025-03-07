@@ -18,7 +18,7 @@ Example:
     >>> from techminer2.thesaurus.abbreviations import CreateThesaurus
 
     >>> # Redirect stderr to capture output
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
@@ -26,7 +26,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus
       20 abbreviations found
@@ -52,7 +52,6 @@ Example:
         EU
           EUROPEAN_UNION; yet , empirically , FINTECH remains very small , especial...
     <BLANKLINE>
-
 
 
 """

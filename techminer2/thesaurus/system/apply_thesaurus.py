@@ -16,7 +16,7 @@ Example:
     >>> from techminer2.thesaurus.system import ApplyThesaurus
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> #  Creating, configuring, and running the system thesaurus
@@ -31,7 +31,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Applying system thesaurus to database
               File : ...2/package_data/thesaurus/geography/country_to_region.the.txt

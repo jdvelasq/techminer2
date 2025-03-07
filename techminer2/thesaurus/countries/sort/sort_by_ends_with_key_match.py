@@ -16,7 +16,7 @@ Example:
     >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByEndsWithKeyMatch
 
     >>> # Redirect stderr to capture output
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
@@ -32,7 +32,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus file by key match
          File : example/thesaurus/countries.the.txt

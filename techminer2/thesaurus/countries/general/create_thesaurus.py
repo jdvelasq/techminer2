@@ -17,7 +17,7 @@ Example:
     >>> from techminer2.thesaurus.countries import CreateThesaurus
 
     >>> # Redirect stderr to capture output
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
@@ -25,7 +25,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus from 'affiliations' field
       File : example/thesaurus/countries.the.txt

@@ -18,7 +18,7 @@ Example:
     >>> from techminer2.thesaurus.organizations import CreateThesaurus, SortByEndsWithKeyMatch
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
@@ -34,7 +34,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus file by key match
          File : example/thesaurus/organizations.the.txt

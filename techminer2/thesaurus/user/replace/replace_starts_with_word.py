@@ -18,7 +18,7 @@ Example:
     >>> from techminer2.thesaurus.user import CreateThesaurus, ReplaceStartsWithWord
 
     >>> # Redirecting stderr to avoid messages during doctests
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
@@ -37,7 +37,7 @@ Example:
 
     >>> # Capture and print stderr output to test the algorithm using doctest
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing starting word in keys
              File : example/thesaurus/demo.the.txt

@@ -16,7 +16,7 @@ Example:
     >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByKeyOrder
 
     >>> # Redirect stderr to capture output
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
@@ -94,7 +94,7 @@ Example:
     >>> sys.stderr = StringIO()
     >>> sorter.having_keys_ordered_by("word_length").run()
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word length
       File : example/thesaurus/countries.the.txt

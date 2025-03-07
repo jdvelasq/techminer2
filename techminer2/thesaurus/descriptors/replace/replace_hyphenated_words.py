@@ -16,7 +16,7 @@ Example:
     >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceHyphenatedWords
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
@@ -31,7 +31,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Transforming hyphenated words in thesaurus keys
       File : example/thesaurus/descriptors.the.txt

@@ -17,7 +17,7 @@ Example:
     >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceAbbreviations
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Copy the abbreviations file
@@ -33,7 +33,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing abbreviations in keys
           Thesaurus : example/thesaurus/descriptors.the.txt

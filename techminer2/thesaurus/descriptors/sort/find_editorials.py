@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.thesaurus.descriptors import CreateThesaurus, FindEditorials
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
@@ -33,7 +33,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus file by word match
       File : example/thesaurus/descriptors.the.txt

@@ -20,7 +20,7 @@ Example:
     >>> from techminer2.thesaurus.user import ApplyThesaurus, CreateThesaurus
 
     >>> # Redirecting stderr to avoid messages during doctests
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
@@ -39,7 +39,7 @@ Example:
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database
               File : example/thesaurus/descriptors.the.txt

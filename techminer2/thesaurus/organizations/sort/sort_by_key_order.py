@@ -18,7 +18,7 @@ Example:
     >>> from techminer2.thesaurus.organizations import CreateThesaurus, SortByKeyOrder
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
@@ -38,7 +38,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus alphabetically
       File : example/thesaurus/organizations.the.txt
@@ -69,7 +69,7 @@ Example:
 
 
     >>> # Capture and print stderr output
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
@@ -89,7 +89,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by key length
       File : example/thesaurus/organizations.the.txt
@@ -119,7 +119,7 @@ Example:
 
 
     >>> # TEST PREPARATION
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # with_keys_order_by: "alphabetical", "key_length", "word_length"
@@ -138,7 +138,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word length
       File : example/thesaurus/organizations.the.txt

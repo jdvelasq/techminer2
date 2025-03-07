@@ -16,7 +16,7 @@ Example:
     >>> from techminer2.thesaurus.references import ApplyThesaurus
 
     >>> # Redirecting stderr to avoid messages
-    >>> old_stderr = sys.stderr
+    >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Applying thesaurus
@@ -24,7 +24,7 @@ Example:
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = old_stderr
+    >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database
               File : example/thesaurus/references.the.txt
