@@ -1,5 +1,0 @@
-.. automodule:: techminer2.pkgs.thematic_document_classification
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

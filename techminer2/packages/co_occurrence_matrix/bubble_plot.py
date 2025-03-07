@@ -45,11 +45,11 @@ Bubble Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/bubble_plot.html")
+>>> # plot.write_html("docs_src/_generated/packages.co_occurrence_matrix.bubble_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/co_occurrence_matrix/bubble_plot.html"
+    <iframe src="../_generated/packages.co_occurrence_matrix.bubble_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """

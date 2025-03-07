@@ -9,29 +9,34 @@
 Full Match
 ===============================================================================
 
->>> from techminer2.database.field_extractors import FullMatchExtractor
->>> terms = (
-...     FullMatchExtractor() 
-...     #
-...     # FIELD:
-...     .with_field("author_keywords")
-...     #
-...     # SEARCH:
-...     .having_pattern("L.+")
-...     .having_case_sensitive(False)
-...     .having_regex_flags(0)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     #
-...     .run()
-... )
->>> from pprint import pprint
->>> pprint(terms[:10])
-['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
+
+Example:
+    >>> from pprint import pprint
+    >>> from techminer2.database.field_extractors import FullMatchExtractor
+
+    >>> # Creates, configures, and runs the extractor
+    >>> extractor = (
+    ...     FullMatchExtractor()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("author_keywords")
+    ...     #
+    ...     # SEARCH:
+    ...     .having_pattern("L.+")
+    ...     .having_case_sensitive(False)
+    ...     .having_regex_flags(0)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ... )
+    >>> terms = extractor.run()
+
+    >>> # Print the first 10 extracted terms
+    >>> pprint(terms[:10])
+    ['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
 
 """
 from ..._internals.mixins import ParamsMixin

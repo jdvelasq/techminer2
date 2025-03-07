@@ -16,7 +16,7 @@ def read_directory_tree(path):
 def read_package_directories():
     directories = [
         "techminer2/database",
-        "techminer2/pkgs",
+        "techminer2/packages",
         "techminer2/search",
         "techminer2/thesaurus",
     ]
@@ -90,7 +90,7 @@ def generate_final_file(key, file):
         return
 
     file = file.replace(".py", "")
-    filename = "docs-src/source/" + key + "." + file + ".rst"
+    filename = "docs_src/source/" + key + "." + file + ".rst"
     automodule = "techminer2." + key + "." + file
 
     with open(filename, "w", encoding="utf-8") as f:
@@ -102,7 +102,7 @@ def generate_final_file(key, file):
 
 def generate_index_file(key, item):
 
-    filename = "docs-src/source/" + key + ".rst"
+    filename = "docs_src/source/" + key + ".rst"
 
     with open(filename, "w", encoding="utf-8") as f:
         title = key.split(".")[-1].replace("_", " ").capitalize()

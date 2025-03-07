@@ -14,16 +14,16 @@ Chart
 # >>> plot = chart(
 # ...     #
 # ...     # DATABASE PARAMS:
-# ...     root_dir="example/", 
+# ...     root_dir="example/",
 # ...     database="main",
 # ...     year_filter=None,
 # ...     cited_by_filter=None,
 # ... )
-# >>> # plot.write_html("sphinx/_generated/visualize/specialized_charts/lotka_law/chart.html")
+# >>> # plot.write_html("docs_src/_generated/visualize/specialized_charts/lotka_law/chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../_generated/visualize/specialized_charts/lotka_law/chart.html" 
+    <iframe src="../../../_generated/visualize/specialized_charts/lotka_law/chart.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

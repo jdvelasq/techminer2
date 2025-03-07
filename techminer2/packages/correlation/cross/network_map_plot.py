@@ -59,11 +59,11 @@ Creates an Cross-correlation Map.
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/correlation/cross//network_map_plot.html")
+>>> # plot.write_html("docs_src/_generated/packages/correlation/cross//network_map_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/correlation/cross//network_map_plot.html"
+    <iframe src="../../_generated/packages/correlation/cross//network_map_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """

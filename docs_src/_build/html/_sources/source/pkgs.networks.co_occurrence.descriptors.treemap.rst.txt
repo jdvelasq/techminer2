@@ -1,5 +1,0 @@
-.. automodule:: techminer2.pkgs.networks.co_occurrence.descriptors.treemap
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

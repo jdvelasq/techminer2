@@ -29,11 +29,11 @@ Ranking Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/database/metrics/trend/trend_metrics_plot.html")
+>>> # plot.write_html("docs_src/_generated/database/metrics/trend/trend_metrics_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../_generated/database/metrics/trend/trend_metrics_plot.html" 
+    <iframe src="../../../_generated/database/metrics/trend/trend_metrics_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

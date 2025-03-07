@@ -45,7 +45,7 @@ Heatmap
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/co_occurrence_matrix/heatmap.html")
+>>> # plot.write_html("docs_src/_generated/packages/co_occurrence_matrix/heatmap.html")
 
 .. raw:: html
 

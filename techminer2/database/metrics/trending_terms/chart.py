@@ -31,16 +31,16 @@ Chart
 # ...     custom_terms=None,
 # ...     #
 # ...     # DATABASE PARAMS:
-# ...     root_dir="example/", 
+# ...     root_dir="example/",
 # ...     database="main",
 # ...     year_filter=(None, None),
 # ...     cited_by_filter=(None, None),
 # ... )
-# >>> # plot.write_html("sphinx/_generated/visualize/specialized_charts/trending_words/chart.html")
+# >>> # plot.write_html("docs_src/_generated/visualize/specialized_charts/trending_words/chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../_generated/visualize/specialized_charts/trending_words/chart.html" 
+    <iframe src="../../../_generated/visualize/specialized_charts/trending_words/chart.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

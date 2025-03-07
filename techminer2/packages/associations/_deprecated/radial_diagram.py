@@ -56,11 +56,11 @@ Radial Diagram
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("sphinx/_static/tools/associations/radial_diagram.html")
+## >>> # plot.write_html("docs_src/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/tools/associations/radial_diagram.html" 
+    <iframe src="../../_static/tools/associations/radial_diagram.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

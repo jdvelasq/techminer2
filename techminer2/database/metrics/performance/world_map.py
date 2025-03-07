@@ -34,11 +34,11 @@ World Map
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/database/metrics/performance/world_map.html")
+>>> # plot.write_html("docs_src/_generated/database/metrics/performance/world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../_generated/database/metrics/performance/world_map.html" 
+    <iframe src="../../../_generated/database/metrics/performance/world_map.html"
     height="400px" width="100%" frameBorder="0"></iframe>
 
 

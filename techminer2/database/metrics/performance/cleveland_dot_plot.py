@@ -36,12 +36,12 @@ Cleveland Dot Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/database/metrics/performance/cleveland_dot_plot.html")
+>>> # plot.write_html("docs_src/_generated/database/metrics/performance/cleveland_dot_plot.html")
 
 
 .. raw:: html
 
-    <iframe src="../../../_generated/database/metrics/performance/cleveland_dot_plot.html" 
+    <iframe src="../../../_generated/database/metrics/performance/cleveland_dot_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

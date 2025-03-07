@@ -12,7 +12,7 @@
 ## ...     unit_of_analysis='authors', # authors, countries, organizations, sources
 ## ...     #
 ## ...     # COLUMN PARAMS:
-## ...     top_n=20, 
+## ...     top_n=20,
 ## ...     citations_threshold=0,
 ## ...     occurrence_threshold=2,
 ## ...     custom_terms=None,
@@ -38,14 +38,14 @@
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("sphinx/_static/coupling_network/_core/others/node_density_plot.html")
+## >>> # plot.write_html("docs_src/_static/coupling_network/_core/others/node_density_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/coupling_network/_core/others/node_density_plot.html" 
+    <iframe src="../../_static/coupling_network/_core/others/node_density_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
-                                             
+
 """
 from ......_internals.mixins import ParamsMixin
 from ......_internals.nx import (

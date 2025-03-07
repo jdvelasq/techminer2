@@ -79,11 +79,11 @@ Factor Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("sphinx/_generated/pkgs/factor_analysis/co_occurrence/factor_map_plot.html")
+## >>> # plot.write_html("docs_src/_generated/packages/factor_analysis/co_occurrence/factor_map_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/factor_analysis/co_occurrence/factor_map_plot.html"
+    <iframe src="../../_generated/packages/factor_analysis/co_occurrence/factor_map_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

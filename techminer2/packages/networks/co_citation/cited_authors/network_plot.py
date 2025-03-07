@@ -45,11 +45,11 @@ Network Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("sphinx/_generated/pkgs/networks/co_citation/cited_authors/network_plot.html")
+>>> # plot.write_html("docs_src/_generated/packages/networks/co_citation/cited_authors/network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkgs/networks/co_citation/cited_authors/network_plot.html"
+    <iframe src="../../_generated/packages/networks/co_citation/cited_authors/network_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

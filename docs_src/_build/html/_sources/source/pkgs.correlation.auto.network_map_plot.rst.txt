@@ -1,5 +1,0 @@
-.. automodule:: techminer2.pkgs.correlation.auto.network_map_plot
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

@@ -1,5 +1,0 @@
-.. automodule:: techminer2.pkgs.networks.co_authorship.authors.network_plot
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

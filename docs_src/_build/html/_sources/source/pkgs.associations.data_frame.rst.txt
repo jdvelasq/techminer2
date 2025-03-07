@@ -1,5 +1,0 @@
-.. automodule:: techminer2.pkgs.associations.data_frame
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

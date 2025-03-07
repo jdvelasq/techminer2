@@ -1,5 +1,0 @@
-.. automodule:: techminer2.pkgs.associations._deprecated.co_occurrences_chart
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

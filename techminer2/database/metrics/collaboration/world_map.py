@@ -14,16 +14,16 @@ World Map
 ## >>> plot = collaboration_world_map(
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ...     database="main",
 ## ...     year_filter=(None, None),
 ## ...     cited_by_filter=(None, None),
 ## ... )
-## >>> # plot.write_html("sphinx/_static/report/collaboration_world_map.html")
+## >>> # plot.write_html("docs_src/_static/report/collaboration_world_map.html")
 
 .. raw:: html
 
-    <iframe src="../_static/report/collaboration_world_map.html" 
+    <iframe src="../_static/report/collaboration_world_map.html"
     height="410px" width="100%" frameBorder="0"></iframe>
 
 
