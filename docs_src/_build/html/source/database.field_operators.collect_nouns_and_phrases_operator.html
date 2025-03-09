@@ -871,19 +871,110 @@
         <article role="main" id="furo-main-content">
           <section id="collect-nouns-and-phrases">
 <span id="module-techminer2.database.field_operators.collect_nouns_and_phrases_operator"></span><h1>Collect Nouns and Phrases<a class="headerlink" href="#collect-nouns-and-phrases" title="Link to this heading">¶</a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">CollectNounAndPhrasesOperator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">CollectNounAndPhrasesOperator</span><span class="p">()</span>  
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">CleanTextOperator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">CollectNounAndPhrasesOperator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">DeleteFieldOperator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">HighlightNounAndPhrasesOperator</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates, configure, and run the cleaner to prepare the field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cleaner</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">CleanTextOperator</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELDS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;author_keywords_copy&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;raw_abstract&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;cleaned_raw_abstract&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cleaner</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates, configure, and run the highlighter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">highlighter</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">HighlightNounAndPhrasesOperator</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># FIELDS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;cleaned_raw_abstract&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;highlighted_raw_abstract&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">highlighter</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Collect terms in upper case from the field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collector</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">CollectNounAndPhrasesOperator</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># FIELDS:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;highlighted_raw_abstract&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;extracted_nouns_and_phrases&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collector</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Query the database to test the cleaner</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Query</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_query_expression</span><span class="p">(</span><span class="s2">&quot;SELECT extracted_nouns_and_phrases FROM database LIMIT 10;&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_database_is</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mi">80</span><span class="p">))</span>
+<span class="go">THE_RAPID_DEVELOPMENT; INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY;</span>
+<span class="go">THE_ENTIRE_INDUSTRY_LANDSCAPE; A_NEW_ERA; CONVERGENCE_SERVICES;</span>
+<span class="go">THE_DEVELOPING_COUNTRIES; THE_FINANCIAL_SECTOR; CHINA; AN_UNPRECEDENTED_LEVEL;</span>
+<span class="go">CONVERGENCE; FINANCE; TECHNOLOGY; THIS_STUDY; THE_LENS; ACTOR_NETWORK_THEORY;</span>
+<span class="go">A_MULTI_LEVEL_ANALYSIS; THE_HISTORICAL_DEVELOPMENT; CHINA; FINANCIAL_TECHNOLOGY;</span>
+<span class="go">FINTECH; INDUSTRY; THE_PROCESS; BUILDING; A_VARIETY; NETWORKS;</span>
+<span class="go">HETEROGENEOUS_ACTORS; THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY; THIS_RESEARCH;</span>
+<span class="go">A_STEPPING_STONE; THE_INTERACTION; FINTECH; SOCIAL_AND_POLITICAL_CONTEXT;</span>
+<span class="go">DISCUSSES_POLICY_IMPLICATIONS; CHINA_FINTECH_INDUSTRY; THE_CHANGING_ROLE;</span>
+<span class="go">THE_STATE; THE_GROWTH; NATIONAL_INDUSTRY; CHINA; ELSEVIER_LTD</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Highlighted abstract:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   THE_RAPID_DEVELOPMENT of INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY is</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   transforming THE_ENTIRE_INDUSTRY_LANDSCAPE , heralding A_NEW_ERA of</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   CONVERGENCE_SERVICES . as one of THE_DEVELOPING_COUNTRIES in</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   THE_FINANCIAL_SECTOR , CHINA is experiencing AN_UNPRECEDENTED_LEVEL of</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   CONVERGENCE between FINANCE and TECHNOLOGY . THIS_STUDY applies THE_LENS of</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   ACTOR_NETWORK_THEORY ( ant ) to conduct A_MULTI_LEVEL_ANALYSIS of</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   THE_HISTORICAL_DEVELOPMENT of CHINA FINANCIAL_TECHNOLOGY ( FINTECH ) INDUSTRY .</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   it attempts to elucidate THE_PROCESS of BUILDING and disrupting A_VARIETY of</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   NETWORKS comprising HETEROGENEOUS_ACTORS involved in</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY . THIS_RESEARCH represents</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   unfolding SOCIAL_AND_POLITICAL_CONTEXT . it also DISCUSSES_POLICY_IMPLICATIONS</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   for CHINA_FINTECH_INDUSTRY , focusing_on THE_CHANGING_ROLE of THE_STATE in</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   fostering THE_GROWTH of NATIONAL_INDUSTRY within and outside_of CHINA . 2015</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#   ELSEVIER_LTD .</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deletes the fields</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">DeleteFieldOperator</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span><span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;cleaned_raw_abstract&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span><span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;highlighted_raw_abstract&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span><span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;extracted_nouns_and_phrases&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

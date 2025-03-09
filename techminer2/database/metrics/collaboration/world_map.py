@@ -19,7 +19,7 @@ World Map
 ## ...     year_filter=(None, None),
 ## ...     cited_by_filter=(None, None),
 ## ... )
-## >>> # plot.write_html("docs_src/_static/report/collaboration_world_map.html")
+## >>> plot.write_html("docs_src/_static/report/collaboration_world_map.html")
 
 .. raw:: html
 

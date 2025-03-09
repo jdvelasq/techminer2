@@ -9,45 +9,57 @@
 Count Terms per Record
 ===============================================================================
 
->>> from techminer2.database.field_operators import CountTermsPerRecordOperator
->>> (
-...     CountTermsPerRecordOperator()
-...     #
-...     # FIELDS:
-...     .with_field("authors")
-...     .with_other_field("test_num_authors")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
 
-# >>> from techminer2.database.tools import Query
-# >>> (
-# ...     Query()
-# ...     .set_analysis_params(
-# ...         expr="SELECT authors, test_num_authors FROM database LIMIT 5;",
-# ...     ).set_database_params(
-# ...         root_dir="example/",
-# ...         database="main",
-# ...         year_filter=(None, None),
-# ...         cited_by_filter=(None, None),
-# ...     ).build()
-# ... )
-                                authors  test_num_authors
-0  Kim Y.; Choi J.; Park Y.-J.; Yeon J.                 4
-1                   Shim Y.; Shin D.-H.                 2
-2                             Chen L./1                 1
-3              Romanova I.; Kudinska M.                 2
-4                   Gabor D.; Brooks S.                 2
+Example:
+    >>> from techminer2.database.field_operators import (
+    ...     CountTermsPerRecordOperator,
+    ...     DeleteFieldOperator,
+    ... )
+    >>> from techminer2.database.tools import Query
+
+    >>> # Creates, configure, and run the operator
+    >>> counter = (
+    ...     CountTermsPerRecordOperator()
+    ...     #
+    ...     # FIELDS:
+    ...     .with_field("authors")
+    ...     .with_other_field("num_authors_test")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> counter.run()
+
+    >>> # Query the database to test the operator
+    >>> query = (
+    ...     Query()
+    ...     .with_query_expression("SELECT authors, num_authors_test FROM database LIMIT 5;")
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ... )
+    >>> df = query.run()
+    >>> df
+                                    authors  num_authors_test
+    0  Kim Y.; Choi J.; Park Y.-J.; Yeon J.                 4
+    1                   Shim Y.; Shin D.-H.                 2
+    2                             Chen L./1                 1
+    3              Romanova I.; Kudinska M.                 2
+    4                   Gabor D.; Brooks S.                 2
+
+    >>> # Deletes the field
+    >>> DeleteFieldOperator(
+    ...     field="num_authors_test",
+    ...     root_directory="example/",
+    ... ).run()
 
 """
 from ..._internals.mixins import ParamsMixin
+from .._internals.protected_fields import PROTECTED_FIELDS
 from ..ingest._internals.operators.count_terms_per_record import (
     internal__count_terms_per_record,
 )
-from .protected_fields import PROTECTED_FIELDS
 
 
 class CountTermsPerRecordOperator(

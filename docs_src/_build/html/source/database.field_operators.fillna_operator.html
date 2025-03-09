@@ -871,19 +871,72 @@
         <article role="main" id="furo-main-content">
           <section id="fill-na">
 <span id="module-techminer2.database.field_operators.fillna_operator"></span><h1>Fill NA<a class="headerlink" href="#fill-na" title="Link to this heading">¶</a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">FillNAOperator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">FillNAOperator</span><span class="p">()</span>  
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">DeleteFieldOperator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">FillNAOperator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">TransformFieldOperator</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Copy the field to fill to avoid losing the original data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TransformFieldOperator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s2">&quot;raw_index_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">other_field</span><span class="o">=</span><span class="s2">&quot;na_field&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_directory</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">transformation_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Query the database to obtain the number of NA values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Query</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_query_expression</span><span class="p">(</span><span class="s2">&quot;SELECT na_field FROM database;&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_database_is</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">na_field</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="go">np.int64(50)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates, configures, and runs the operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fillna_operator</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">FillNAOperator</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELDS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;index_keywords&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;na_field&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;raw_index_keywords&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fillna_operator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Query the database to test the operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Query</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_query_expression</span><span class="p">(</span><span class="s2">&quot;SELECT na_field FROM database;&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_database_is</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">na_field</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="go">np.int64(31)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deletes the field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DeleteFieldOperator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">field</span><span class="o">=</span><span class="s2">&quot;na_field&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">root_directory</span><span class="o">=</span><span class="s2">&quot;example/&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

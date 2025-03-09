@@ -44,11 +44,11 @@ Node Density Plot
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("docs_src/_static/co_citation_network/node_density_plot.html")
+## >>> plot.write_html("docs_src/_static/co_citation_network.node_density_plot.html")
 
 .. raw:: html
 
-    <iframe src="../_static/co_citation_network/node_density_plot.html"
+    <iframe src="../_static/co_citation_network.node_density_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """

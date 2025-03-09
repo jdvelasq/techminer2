@@ -871,8 +871,15 @@
         <article role="main" id="furo-main-content">
           <section id="data-frame">
 <span id="module-techminer2.database.metrics.collaboration.data_frame"></span><h1>Data Frame<a class="headerlink" href="#data-frame" title="Link to this heading">¶</a></h1>
+<p>This module demonstrates how to create a collaboration metrics data frame using the
+DataFrame class. The process involves configuring the field, database parameters,
+and filtering terms.</p>
+<p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.metrics.collaboration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a collaboration metrics data frame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">DataFrame</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELD:</span>
@@ -888,9 +895,9 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">               OCC  global_citations  ...  multiple_publication  mp_ratio</span>
 <span class="go">countries                             ...</span>
 <span class="go">United States   16              3189  ...                     8      0.50</span>

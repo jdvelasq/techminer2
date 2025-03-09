@@ -871,19 +871,59 @@
         <article role="main" id="furo-main-content">
           <section id="merge-fields">
 <span id="module-techminer2.database.field_operators.merge_fields_operator"></span><h1>Merge Fields<a class="headerlink" href="#merge-fields" title="Link to this heading">¶</a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">MergeFieldsOperator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">MergeFieldsOperator</span><span class="p">()</span>  
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">DeleteFieldOperator</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">MergeFieldsOperator</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates, configure, and run the merger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merger</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">MergeFieldsOperator</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELDS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">[</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span> <span class="s2">&quot;index_keywords&quot;</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">([</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span> <span class="s2">&quot;index_keywords&quot;</span><span class="p">])</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;merged_keywords&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merger</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Query the database to test the merger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Query</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_query_expression</span><span class="p">(</span><span class="s2">&quot;SELECT merged_keywords FROM database LIMIT 10;&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_database_is</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">                                     merged_keywords</span>
+<span class="go">0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...</span>
+<span class="go">1  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; CONVERG...</span>
+<span class="go">2  FINANCIAL_INCLUSION; FINANCIAL_SCENARIZATION; ...</span>
+<span class="go">3                 BANKING_INNOVATIONS; FINTECH; RISK</span>
+<span class="go">4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; E...</span>
+<span class="go">5  DATA_MINING; DATA_PRIVACY; FINANCE; FINANCIAL_...</span>
+<span class="go">6  CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS; DIGIT...</span>
+<span class="go">7  CASE_STUDIES; COMMERCE; DIGITAL_TECHNOLOGIES; ...</span>
+<span class="go">8  DIGITIZATION; FINANCIAL_SERVICES_INDUSTRIES; F...</span>
+<span class="go">9  DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RE...</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deletes the fields</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">DeleteFieldOperator</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;merged_keywords&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

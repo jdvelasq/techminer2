@@ -60,11 +60,11 @@ Treemap
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("docs_src/_generated/packages/factor_analysis/co_occurrence/treemap.html")
+## >>> plot.write_html("docs_src/_generated/px.packages.factor_analysis/co_occurrence/treemap.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/packages/factor_analysis/co_occurrence/treemap.html"
+    <iframe src="../_generated/px.packages.factor_analysis/co_occurrence/treemap.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

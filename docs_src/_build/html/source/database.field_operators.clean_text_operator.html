@@ -871,19 +871,62 @@
         <article role="main" id="furo-main-content">
           <section id="clean-text">
 <span id="module-techminer2.database.field_operators.clean_text_operator"></span><h1>Clean text<a class="headerlink" href="#clean-text" title="Link to this heading">¶</a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">CleanTextOperator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">CleanTextOperator</span><span class="p">()</span>  
+<p>This module demonstrates how to clean text in a specified field using the CleanTextOperator
+class. The process involves configuring the fields and database parameters.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.field_operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">CleanTextOperator</span><span class="p">,</span> <span class="n">DeleteFieldOperator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">Query</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates, configure, and run the clean_operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clean_operator</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">CleanTextOperator</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELDS:</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;author_keywords_copy&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;raw_abstract&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_other_field</span><span class="p">(</span><span class="s2">&quot;cleaned_raw_abstract&quot;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># DATABASE:</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clean_operator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Query the database to test the clean_operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Query</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_query_expression</span><span class="p">(</span><span class="s2">&quot;SELECT cleaned_raw_abstract FROM database LIMIT 10;&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_database_is</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mi">80</span><span class="p">))</span>
+<span class="go">the rapid development of information and communications technology is</span>
+<span class="go">transforming the entire industry landscape , heralding a new era of convergence</span>
+<span class="go">services . as one of the developing countries in the financial sector , china is</span>
+<span class="go">experiencing an unprecedented level of convergence between finance and</span>
+<span class="go">technology . this study applies the lens of actor network theory ( ant ) to</span>
+<span class="go">conduct a multi level analysis of the historical development of china financial</span>
+<span class="go">technology ( fintech ) industry . it attempts to elucidate the process of</span>
+<span class="go">building and disrupting a variety of networks comprising heterogeneous actors</span>
+<span class="go">involved in the newly emerging convergence industry . this research represents a</span>
+<span class="go">stepping stone in exploring the interaction between fintech and its yet</span>
+<span class="go">unfolding social and political context . it also discusses policy implications</span>
+<span class="go">for china fintech industry , focusing on the changing role of the state in</span>
+<span class="go">fostering the growth of national industry within and outside of china . 2015</span>
+<span class="go">elsevier ltd .</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Deletes the field</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">DeleteFieldOperator</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">with_field</span><span class="p">(</span><span class="s2">&quot;cleaned_raw_abstract&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field_deleter</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>

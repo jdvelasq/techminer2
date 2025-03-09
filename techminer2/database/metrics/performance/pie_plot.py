@@ -36,11 +36,11 @@ Pie Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("docs_src/_generated/database/metrics/performance/pie_plot.html")
+>>> plot.write_html("docs_src/_generated/px.database.metrics.performance.pie_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../_generated/database/metrics/performance/pie_plot.html"
+    <iframe src="../_generated/px.database.metrics.performance.pie_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

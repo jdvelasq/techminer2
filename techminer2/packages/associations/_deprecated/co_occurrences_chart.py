@@ -41,7 +41,7 @@ Co-occurrences Chart
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("docs_src/_static/tools/associations/co_occurrences.html")
+## >>> plot.write_html("docs_src/_static/tools/associations/co_occurrences.html")
 
 .. raw:: html
 

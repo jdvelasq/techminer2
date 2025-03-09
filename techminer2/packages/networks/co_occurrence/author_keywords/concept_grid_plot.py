@@ -37,7 +37,7 @@ Concept Grid Plot
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.render("sphinx/images/co_occurrence_network/concept_grid_plot", format="png")
+## >>> plot.render("sphinx/images/co_occurrence_network/concept_grid_plot", format="png")
 
 
 # .. image:: /images/co_occurrence_network/concept_grid_plot.png

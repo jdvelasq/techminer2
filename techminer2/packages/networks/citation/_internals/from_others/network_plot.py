@@ -53,11 +53,11 @@ Network Plot
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("docs_src/_generated/packages/networks/citation/internals/others/network_map_plot.html")
+## >>> plot.write_html("docs_src/_generated/px.packages.networks.citation.internals/others/network_map_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/packages/correlation/auto/network_map_plot.html"
+    <iframe src="../_generated/px.packages.correlation.auto.network_map_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

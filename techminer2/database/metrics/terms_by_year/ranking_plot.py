@@ -29,7 +29,7 @@ Terms by Year Plot
 ## ...     #
 ## ...     ).build()
 ## ... )
-## >>> # plot.write_html("docs_src/_static/metrics/terms_by_plot.html")
+## >>> plot.write_html("docs_src/_static/metrics/terms_by_plot.html")
 
 .. raw:: html
 

@@ -10,24 +10,53 @@
 Delete a Field
 ===============================================================================
 
->>> from techminer2.database.field_operators import DeleteFieldOperator
->>> (
-...     DeleteFieldOperator()  # doctest: +SKIP 
-...     #
-...     # FIELDS:
-...     .with_field("author_keywords_copy")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+
+Example:
+    >>> from techminer2.database.field_operators import (
+    ...     CopyFieldOperator,
+    ...     DeleteFieldOperator,
+    ... )
+    >>> from techminer2.database.tools import Query
+
+    >>> # Creates, configures, and runs the copy operator
+    >>> copy_operator = (
+    ...     CopyFieldOperator()
+    ...     #
+    ...     # FIELDS:
+    ...     .with_field("author_keywords")
+    ...     .with_other_field("author_keywords_copy")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> copy_operator.run()
+
+    >>> # Deletes the field
+    >>> delete_operator = (
+    ...     DeleteFieldOperator()
+    ...     .with_field("author_keywords_copy")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> delete_operator.run()
+
+    >>> # Query the database to test the operator
+    >>> query = (
+    ...     Query()
+    ...     .with_query_expression("SELECT * FROM database LIMIT 5;")
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ... )
+    >>> df = query.run()
+    >>> print("author_keywords_copy" in df.columns)
+    False
 
 """
 
 from ..._internals.mixins import ParamsMixin
+from .._internals.protected_fields import PROTECTED_FIELDS
 from ..ingest._internals.operators.delete_field import internal__delete_field
-from .protected_fields import PROTECTED_FIELDS
 
 
 class DeleteFieldOperator(

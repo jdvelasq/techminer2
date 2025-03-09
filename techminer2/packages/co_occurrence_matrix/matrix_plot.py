@@ -59,11 +59,11 @@ Matrix Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("docs_src/_generated/packages/co_occurrence_matrix/matrix_plot_0.html")
+>>> plot.write_html("docs_src/_generated/px.packages.co_occurrence_matrix.matrix_plot_0.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/packages/co_occurrence_matrix/matrix_plot_0.html"
+    <iframe src="../_generated/px.packages.co_occurrence_matrix/matrix_plot_0.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -116,11 +116,11 @@ Matrix Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("docs_src/_generated/packages/co_occurrence_matrix/matrix_plot_1.html")
+>>> plot.write_html("docs_src/_generated/px.packages.co_occurrence_matrix.matrix_plot_1.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/packages/co_occurrence_matrix/matrix_plot_1.html"
+    <iframe src="../_generated/px.packages.co_occurrence_matrix/matrix_plot_1.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

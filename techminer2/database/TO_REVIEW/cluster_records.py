@@ -24,11 +24,11 @@ Cluster Records
 # ...     year_filter=(None, None),
 # ...     cited_by_filter=(None, None),
 # ... )
-# >>> # plot.write_html("docs_src/_generated/visualize/specialized_charts/cluster_records.html")
+# >>> plot.write_html("docs_src/_generated/px.visualize/specialized_charts/cluster_records.html")
 
 # .. raw:: html
 
-#     <iframe src="../../_generated/visualize/specialized_charts/cluster_records.html"
+#     <iframe src="../_generated/px.visualize/specialized_charts/cluster_records.html"
 #     height="600px" width="100%" frameBorder="0"></iframe>
 
 

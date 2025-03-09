@@ -28,9 +28,8 @@ Example:
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
-    ...     #
-    ...     .run()
     ... )
+    >>> terms = extractor.run()
 
     >>> # Print the first 10 extracted terms
     >>> pprint(terms[:10])

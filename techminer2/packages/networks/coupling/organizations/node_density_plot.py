@@ -42,11 +42,11 @@ Network Density Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("docs_src/_generated/packages/networks/coupling/organizations/node_density_plot.html")
+>>> plot.write_html("docs_src/_generated/px.packages.networks.coupling.organizations.node_density_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/packages/networks/coupling/organizations/node_density_plot.html"
+    <iframe src="../_generated/px.packages.networks.coupling.organizations.node_density_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

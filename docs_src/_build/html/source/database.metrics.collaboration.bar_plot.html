@@ -871,8 +871,14 @@
         <article role="main" id="furo-main-content">
           <section id="bar-plot">
 <span id="module-techminer2.database.metrics.collaboration.bar_plot"></span><h1>Bar Plot<a class="headerlink" href="#bar-plot" title="Link to this heading">¶</a></h1>
+<p>This module demonstrates how to create a collaboration bar plot using the BarPlot class.
+The process involves configuring the field, plot settings, and database parameters.</p>
+<p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.metrics.collaboration</span><span class="w"> </span><span class="kn">import</span> <span class="n">BarPlot</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="p">(</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creates, runs, and saves the plot to disk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plotter</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">BarPlot</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="c1">#</span>
 <span class="gp">... </span>    <span class="c1"># FIELD:</span>
@@ -893,13 +899,12 @@
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="c1">#</span>
-<span class="gp">... </span>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plot.write_html(&quot;docs_src/_generated/database/metrics/collaboration/bar_plot.html&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span> <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;docs_src/_generated/px.database.metrics.collaboration.bar_plot.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<iframe src="../../../_generated/database/metrics/collaboration/bar_plot.html"
+<iframe src="../_generated/px.database.metrics.collaboration.bar_plot.html"
 height="600px" width="100%" frameBorder="0"></iframe></section>
 
         </article>

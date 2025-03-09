@@ -9,24 +9,67 @@
 Clean text
 ===============================================================================
 
->>> from techminer2.database.field_operators import CleanTextOperator
->>> (
-...     CleanTextOperator()  # doctest: +SKIP 
-...     #
-...     # FIELDS:
-...     .with_field("author_keywords")
-...     .with_other_field("author_keywords_copy")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     #
-...     .run()
-... )
+This module demonstrates how to clean text in a specified field using the CleanTextOperator
+class. The process involves configuring the fields and database parameters.
+
+Example:
+    >>> import textwrap
+    >>> from techminer2.database.field_operators import CleanTextOperator, DeleteFieldOperator
+    >>> from techminer2.database.tools import Query
+
+    >>> # Creates, configure, and run the clean_operator
+    >>> clean_operator = (
+    ...     CleanTextOperator()
+    ...     #
+    ...     # FIELDS:
+    ...     .with_field("raw_abstract")
+    ...     .with_other_field("cleaned_raw_abstract")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> clean_operator.run()
+
+    >>> # Query the database to test the clean_operator
+    >>> query = (
+    ...     Query()
+    ...     .with_query_expression("SELECT cleaned_raw_abstract FROM database LIMIT 10;")
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ... )
+    >>> df = query.run()
+    >>> print(textwrap.fill(df.values[1][0], width=80))
+    the rapid development of information and communications technology is
+    transforming the entire industry landscape , heralding a new era of convergence
+    services . as one of the developing countries in the financial sector , china is
+    experiencing an unprecedented level of convergence between finance and
+    technology . this study applies the lens of actor network theory ( ant ) to
+    conduct a multi level analysis of the historical development of china financial
+    technology ( fintech ) industry . it attempts to elucidate the process of
+    building and disrupting a variety of networks comprising heterogeneous actors
+    involved in the newly emerging convergence industry . this research represents a
+    stepping stone in exploring the interaction between fintech and its yet
+    unfolding social and political context . it also discusses policy implications
+    for china fintech industry , focusing on the changing role of the state in
+    fostering the growth of national industry within and outside of china . 2015
+    elsevier ltd .
+
+
+    >>> # Deletes the field
+    >>> field_deleter = (
+    ...     DeleteFieldOperator()
+    ...     .with_field("cleaned_raw_abstract")
+    ...     .where_root_directory_is("example/")
+    ... )
+    >>> field_deleter.run()
+
 
 """
 from ..._internals.mixins import ParamsMixin
+from .._internals.protected_fields import PROTECTED_FIELDS
 from ..ingest._internals.operators.clean_text import internal__clean_text
-from .protected_fields import PROTECTED_FIELDS
 
 
 class CleanTextOperator(

@@ -18,7 +18,7 @@ Treemap
 # ...    root_dir=root_dir,
 # ... )
 # >>> plot = treemap(itemslist, title="Most Frequent Author Keywords")
-# >>> # plot.plot_.write_html(file_name)
+# >>> plot.plot_.write_html(file_name)
 
 # .. raw:: html
 

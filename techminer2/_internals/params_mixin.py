@@ -56,7 +56,7 @@ class Params:
     # F
     #
     field: Optional[str] = None  # with_selected_field
-    function = None
+    transformation_function = None
 
     #
     # K
@@ -627,6 +627,6 @@ class ParamsMixin:
         self.params.time_window = time_window
         return self
 
-    def with_transformation(self, function):
-        self.params.function = function
+    def with_transformation_function(self, transformation_function):
+        self.params.transformation_function = transformation_function
         return self

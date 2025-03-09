@@ -56,7 +56,7 @@ Radial Diagram
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("docs_src/_static/tools/associations/radial_diagram.html")
+## >>> plot.write_html("docs_src/_static/tools/associations/radial_diagram.html")
 
 .. raw:: html
 

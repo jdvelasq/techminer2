@@ -36,9 +36,9 @@ Word Cloud
 ...     #
 ...     .run()
 ... )
->>> # plot.save("sphinx/images/database/metrics/performance/word_cloud.png")
+>>> plot.save("docs_src/_generated/database.metrics.performance.word_cloud.png")
 
-.. image:: /images/database/metrics/performance/word_cloud.png
+.. image:: /_generarted/database.metrics.performance.word_cloud.png
     :width: 900px
     :align: center
 

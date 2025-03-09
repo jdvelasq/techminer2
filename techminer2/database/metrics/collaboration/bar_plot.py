@@ -9,37 +9,45 @@
 Bar Plot
 ===============================================================================
 
->>> from techminer2.database.metrics.collaboration import BarPlot
->>> plot = (
-...     BarPlot()
-...     #
-...     # FIELD:
-...     .with_field("countries")
-...     .having_terms_in_top(10)
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PLOT:
-...     .using_title_text("Collaboration Plot")
-...     .using_xaxes_title_text("Countries")
-...     .using_yaxes_title_text("OCC")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> # plot.write_html("docs_src/_generated/database/metrics/collaboration/bar_plot.html")
 
-.. raw:: html
 
-    <iframe src="../../../_generated/database/metrics/collaboration/bar_plot.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
+This module demonstrates how to create a collaboration bar plot using the BarPlot class.
+The process involves configuring the field, plot settings, and database parameters.
+
+
+Example:
+    >>> from techminer2.database.metrics.collaboration import BarPlot
+
+    >>> # Creates, runs, and saves the plot to disk
+    >>> plotter = (
+    ...     BarPlot()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("countries")
+    ...     .having_terms_in_top(10)
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PLOT:
+    ...     .using_title_text("Collaboration Plot")
+    ...     .using_xaxes_title_text("Countries")
+    ...     .using_yaxes_title_text("OCC")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> plot = plotter.run()
+    >>> plot.write_html("docs_src/_generated/px.database.metrics.collaboration.bar_plot.html")
+
+    .. raw:: html
+
+        <iframe src="../_generated/px.database.metrics.collaboration.bar_plot.html"
+        height="600px" width="100%" frameBorder="0"></iframe>
 
 
 

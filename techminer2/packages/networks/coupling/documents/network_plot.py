@@ -40,11 +40,11 @@ Network Plot
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("docs_src/_generated/packages/networks/coupling/documents/network_plot.html")
+>>> plot.write_html("docs_src/_generated/px.packages.networks.coupling.documents.network_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/packages/networks/coupling/documents/network_plot.html"
+    <iframe src="../_generated/px.packages.networks.coupling.documents.network_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

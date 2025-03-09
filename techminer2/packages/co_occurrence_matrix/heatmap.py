@@ -45,11 +45,11 @@ Heatmap
 ...     #
 ...     .run()
 ... )
->>> # plot.write_html("docs_src/_generated/packages/co_occurrence_matrix/heatmap.html")
+>>> plot.write_html("docs_src/_generated/px.packages.co_occurrence_matrix.heatmap.html")
 
 .. raw:: html
 
-    <iframe src="../../_generated/pkkgs/co_occurrence_matrix/heatmap.html"
+    <iframe src="../_generated/px.packages.co_occurrence_matrix.heatmap.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
 

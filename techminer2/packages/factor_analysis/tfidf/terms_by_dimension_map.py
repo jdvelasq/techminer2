@@ -62,7 +62,7 @@ Terms by Dimensions Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> # plot.write_html("docs_src/_static/factor_analysis/tfidf/terms_by_dimension_map.html")
+## >>> plot.write_html("docs_src/_static/factor_analysis/tfidf/terms_by_dimension_map.html")
 
 .. raw:: html
 

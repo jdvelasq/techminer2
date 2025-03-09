@@ -28,8 +28,8 @@ def internal__fillna(
 
     if fill_field in dataframe.columns:
 
-        dataframe[fill_field].mask(
-            dataframe[fill_field].isnull(),
+        dataframe[fill_field] = dataframe[fill_field].mask(
+            dataframe[fill_field].isna(),
             dataframe[with_field],
         )
 

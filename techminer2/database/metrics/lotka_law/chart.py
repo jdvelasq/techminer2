@@ -19,7 +19,7 @@ Chart
 # ...     year_filter=None,
 # ...     cited_by_filter=None,
 # ... )
-# >>> # plot.write_html("docs_src/_generated/visualize/specialized_charts/lotka_law/chart.html")
+# >>> plot.write_html("docs_src/_generated/px.visualize/specialized_charts/lotka_law/chart.html")
 
 .. raw:: html
 

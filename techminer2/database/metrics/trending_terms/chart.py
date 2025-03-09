@@ -36,7 +36,7 @@ Chart
 # ...     year_filter=(None, None),
 # ...     cited_by_filter=(None, None),
 # ... )
-# >>> # plot.write_html("docs_src/_generated/visualize/specialized_charts/trending_words/chart.html")
+# >>> plot.write_html("docs_src/_generated/px.visualize/specialized_charts/trending_words/chart.html")
 
 .. raw:: html
 

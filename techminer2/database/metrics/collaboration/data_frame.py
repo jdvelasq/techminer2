@@ -9,36 +9,43 @@
 Data Frame
 ===============================================================================
 
->>> from techminer2.database.metrics.collaboration import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # FIELD:
-...     .with_field("countries")
-...     .having_terms_in_top(20)
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-               OCC  global_citations  ...  multiple_publication  mp_ratio
-countries                             ...                                
-United States   16              3189  ...                     8      0.50
-China            8              1085  ...                     5      0.62
-Germany          7              1814  ...                     3      0.43
-South Korea      6              1192  ...                     2      0.33
-Australia        5               783  ...                     4      0.80
-<BLANKLINE>
-[5 rows x 6 columns]
-    
+This module demonstrates how to create a collaboration metrics data frame using the
+DataFrame class. The process involves configuring the field, database parameters,
+and filtering terms.
+
+Example:
+    >>> from techminer2.database.metrics.collaboration import DataFrame
+
+    >>> # Create a collaboration metrics data frame
+    >>> processor = (
+    ...     DataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("countries")
+    ...     .having_terms_in_top(20)
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = processor.run()
+    >>> df.head()
+                   OCC  global_citations  ...  multiple_publication  mp_ratio
+    countries                             ...
+    United States   16              3189  ...                     8      0.50
+    China            8              1085  ...                     5      0.62
+    Germany          7              1814  ...                     3      0.43
+    South Korea      6              1192  ...                     2      0.33
+    Australia        5               783  ...                     4      0.80
+    <BLANKLINE>
+    [5 rows x 6 columns]
+
 """
 from ...._internals.mixins import ParamsMixin
 from ..._internals.io import internal__load_filtered_database
