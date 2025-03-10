@@ -10,82 +10,98 @@ World Map
 ===============================================================================
 
 
-## >>> from techminer2.report import collaboration_world_map
-## >>> plot = collaboration_world_map(
-## ...     #
-## ...     # DATABASE PARAMS:
-## ...     root_dir="example/",
-## ...     database="main",
-## ...     year_filter=(None, None),
-## ...     cited_by_filter=(None, None),
-## ... )
-## >>> plot.write_html("docs_src/_static/report/collaboration_world_map.html")
+Example:
+    >>> from techminer2.database.metrics.collaboration import WorldMap
+
+    >>> # Creates, configure, and plots a world map.
+    >>> plotter = (
+    ...     WorldMap()
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> plot = plotter.run()
+    >>> plot.write_html("docs_src/_generated/px.database.metrics.collaboration.world_map.html")
 
 .. raw:: html
 
-    <iframe src="../_static/report/collaboration_world_map.html"
-    height="410px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_generated/px.database.metrics.collaboration.world_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
 """
 import plotly.express as px  # type: ignore
 
-# from ..cross_co_occurrence.dataframe import co_occurrence_frame
+from ...._internals.mixins import ParamsMixin
+from ....packages.co_occurrence_matrix import DataFrame as CoOccurrenceDataFrame
 
 
-def collaboration_world_map(
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
+class WorldMap(
+    ParamsMixin,
 ):
     """:meta private:"""
 
-    collaboration = co_occurrence_frame(
-        columns="countries",
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    # -------------------------------------------------------------------------
+    def internal__build_collaboration_data_frame(self):
 
-    collaboration = collaboration[collaboration.rows != collaboration["columns"]]
-    collaboration["row"] = collaboration["rows"].map(lambda x: " ".join(x.split()[:-1]))
-    collaboration["column"] = collaboration["columns"].map(
-        lambda x: " ".join(x.split()[:-1])
-    )
+        # Builds a collaboration data frame with columns "rows", "columns", and "OCC"
+        collaboration = (
+            CoOccurrenceDataFrame()
+            .update(**self.params.__dict__)
+            .with_field("countries")
+            .run()
+        )
 
-    collaboration["pair"] = list(zip(collaboration.row, collaboration.column))
-    collaboration["line"] = list(range(len(collaboration)))
-    collaboration = collaboration[["pair", "line"]]
-    collaboration = collaboration.explode("pair")
+        collaboration = collaboration[collaboration["rows"] != collaboration["columns"]]
+        collaboration["row"] = collaboration["rows"].map(
+            lambda x: " ".join(x.split()[:-1])
+        )
+        collaboration["column"] = collaboration["columns"].map(
+            lambda x: " ".join(x.split()[:-1])
+        )
 
-    fig = px.line_geo(
-        collaboration,
-        locations="pair",
-        locationmode="country names",
-        color="line",
-        color_discrete_sequence=["darkslategray"],
-    )
+        collaboration["pair"] = list(zip(collaboration.row, collaboration.column))
+        collaboration["line"] = list(range(len(collaboration)))
+        collaboration = collaboration[["pair", "line"]]
+        collaboration = collaboration.explode("pair")
 
-    fig.update_layout(
-        showlegend=False,
-        margin=dict(l=1, r=1, t=1, b=1),
-    )
+        self.collaboration = collaboration
 
-    fig.update_geos(
-        showcountries=True,
-        landcolor="lightgray",
-        countrycolor="Black",
-        lataxis_showgrid=False,
-        lonaxis_showgrid=False,
-    )
+    # -------------------------------------------------------------------------
+    def internal__plot_world_map(self):
 
-    return fig
+        fig = px.line_geo(
+            self.collaboration,
+            locations="pair",
+            locationmode="country names",
+            color="line",
+            color_discrete_sequence=["darkslategray"],
+        )
+
+        fig.update_layout(
+            showlegend=False,
+            margin=dict(l=1, r=1, t=1, b=1),
+        )
+
+        fig.update_geos(
+            showcountries=True,
+            landcolor="lightgray",
+            countrycolor="Black",
+            lataxis_showgrid=False,
+            lonaxis_showgrid=False,
+        )
+
+        self.fig = fig
+
+    # -------------------------------------------------------------------------
+    def run(self):
+
+        self.internal__build_collaboration_data_frame()
+        self.internal__plot_world_map()
+
+        return self.fig

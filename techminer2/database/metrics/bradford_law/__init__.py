@@ -1,11 +1,11 @@
 """Bradford Law visualization."""
 
-from .chart import chart
-from .dataframe import dataframe
-from .zones import zones
+from .data_frame import DataFrame
+from .line_plot import LinePlot
+from .zones import ZonesDataFrame
 
 __all__ = [
-    "chart",
-    "dataframe",
-    "zones",
+    "DataFrame",
+    "LinePlot",
+    "ZonesDataFrame",
 ]

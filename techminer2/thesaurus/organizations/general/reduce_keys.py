@@ -41,7 +41,7 @@ Example:
       Keys reduction completed successfully
     <BLANKLINE>
     <BLANKLINE>
-+
+
 """
 from ...._internals.mixins import ParamsMixin
 from ...user import ReduceKeys as UserReduceKeys

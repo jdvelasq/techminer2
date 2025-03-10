@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Collaboration" href="database.metrics.collaboration.html" /><link rel="prev" title="Dataframe" href="database.metrics.bradford_law.dataframe.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Collaboration" href="database.metrics.collaboration.html" /><link rel="prev" title="&lt;no title&gt;" href="database.metrics.bradford_law.dataframe.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
         <title>Zones - TechMiner 2+ Jul 22, 2024</title>
@@ -251,8 +251,6 @@
 </li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="database.metrics.html">Metrics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Metrics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3 current has-children"><a class="reference internal" href="database.metrics.bradford_law.html">Bradford law</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Bradford law</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="database.metrics.bradford_law.chart.html">Chart</a></li>
-<li class="toctree-l4"><a class="reference internal" href="database.metrics.bradford_law.dataframe.html">Dataframe</a></li>
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">Zones</a></li>
 </ul>
 </li>
@@ -871,24 +869,31 @@
         <article role="main" id="furo-main-content">
           <section id="zones">
 <span id="module-techminer2.database.metrics.bradford_law.zones"></span><h1>Zones<a class="headerlink" href="#zones" title="Link to this heading">¶</a></h1>
-<p># &gt;&gt;&gt; from techminer2.visualize.specialized_plots.bradford_law import zones
-# &gt;&gt;&gt; zones(
-# …     #
-# …     # DATABASE PARAMS:
-# …     root_dir=”example/”,
-# …     database=”main”,
-# …     year_filter=(None, None),
-# …     cited_by_filter=(None, None),
-# … ).head()</p>
-<blockquote>
-<div><p>no  OCC  cum_OCC  global_citations  zone</p>
-</div></blockquote>
-<p>abbr_source_title
-J. Econ. Bus.         1    3        3               422     1
-J Manage Inf Syst     2    2        5               696     1
-Rev. Financ. Stud.    3    2        7               432     1
-Ind Manage Data Sys   4    2        9               386     1
-Electron. Mark.       5    2       11               287     1</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">techminer2.database.metrics.bradford_law</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZonesDataFrame</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ZonesDataFrame</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="c1">#</span>
+<span class="gp">... </span>    <span class="c1"># DATABASE:</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_root_directory_is</span><span class="p">(</span><span class="s2">&quot;example/&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_database_is</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_years_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_record_citations_range_is</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">where_records_match</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> 
+<span class="go">                     no  OCC  cum_OCC  global_citations  zone</span>
+<span class="go">abbr_source_title</span>
+<span class="go">J. Econ. Bus.         1    3        3               422     1</span>
+<span class="go">J Manage Inf Syst     2    2        5               696     1</span>
+<span class="go">Rev. Financ. Stud.    3    2        7               432     1</span>
+<span class="go">Ind Manage Data Sys   4    2        9               386     1</span>
+<span class="go">Electron. Mark.       5    2       11               287     1</span>
+</pre></div>
+</div>
 </section>
 
         </article>
@@ -912,7 +917,7 @@ Electron. Mark.       5    2       11               287     1</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Dataframe</div>
+                <div class="title">&lt;no title&gt;</div>
                 
               </div>
             </a>

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Zones" href="database.metrics.bradford_law.zones.html" /><link rel="prev" title="Chart" href="database.metrics.bradford_law.chart.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Zones" href="database.metrics.bradford_law.zones.html" /><link rel="prev" title="&lt;no title&gt;" href="database.metrics.bradford_law.chart.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>Dataframe - TechMiner 2+ Jul 22, 2024</title>
+        <title>&lt;no title&gt; - TechMiner 2+ Jul 22, 2024</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -208,8 +208,8 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">CONTENT</span></p>
-<ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="database.html">Database</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Database</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="database.html">Database</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Database</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="database.TO_REVIEW.html">To review</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of To review</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="database.TO_REVIEW.cluster_records.html">Cluster Records</a></li>
 <li class="toctree-l3"><a class="reference internal" href="database.TO_REVIEW.documents_per_item.html"><code class="docutils literal notranslate"><span class="pre">documents_per_item()</span></code></a></li>
@@ -249,10 +249,8 @@
 <li class="toctree-l3"><a class="reference internal" href="database.ingest.import_scopus_data.html">Import Scopus Data</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current has-children"><a class="reference internal" href="database.metrics.html">Metrics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Metrics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l3 current has-children"><a class="reference internal" href="database.metrics.bradford_law.html">Bradford law</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Bradford law</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="database.metrics.bradford_law.chart.html">Chart</a></li>
-<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">Dataframe</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="database.metrics.html">Metrics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Metrics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="database.metrics.bradford_law.html">Bradford law</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Bradford law</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="database.metrics.bradford_law.zones.html">Zones</a></li>
 </ul>
 </li>
@@ -869,27 +867,7 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="dataframe">
-<span id="module-techminer2.database.metrics.bradford_law.dataframe"></span><h1>Dataframe<a class="headerlink" href="#dataframe" title="Link to this heading">¶</a></h1>
-<p># &gt;&gt;&gt; from techminer2.visualize.specialized_plots.bradford_law import dataframe
-# &gt;&gt;&gt; dataframe(
-# …     #
-# …     # DATABASE PARAMS:
-# …     root_dir=”example/”,
-# …     database=”main”,
-# …     year_filter=(None, None),
-# …     cited_by_filter=(None, None),
-# … )</p>
-<blockquote>
-<div><p>Num Sources        %  …  Tot Documents Bradford’s Group</p>
-</div></blockquote>
-<p>0            1   2.44 %  …          6.0 %                1
-1            7  17.07 %  …         34.0 %                2
-2           33  80.49 %  …        100.0 %                3
-&lt;BLANKLINE&gt;
-[3 rows x 9 columns]</p>
-</section>
-
+          
         </article>
       </div>
       <footer>
@@ -911,7 +889,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Chart</div>
+                <div class="title">&lt;no title&gt;</div>
                 
               </div>
             </a>
