@@ -13,7 +13,7 @@ example/thesaurus/
 debug.ipynb
 
 # Sphinx documentation
-docs_src/_build/
+docs_src/_build/**/*
 # sphinx/_static/**/*
 
 tmp/*
