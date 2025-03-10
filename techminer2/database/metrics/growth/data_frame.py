@@ -8,39 +8,42 @@
 Data Frame
 ===============================================================================
 
->>> from techminer2.database.metrics.growth import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # FIELD:
-...     .with_field("raw_author_keywords")
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PARAMS:
-...     .with_time_window(2)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-                      rank_occ  ...  average_docs_per_year
-raw_author_keywords             ...                       
-FINTECH                      1  ...                    9.0
-INNOVATION                   2  ...                    0.5
-FINANCIAL_SERVICES           3  ...                    1.5
-FINANCIAL_INCLUSION          4  ...                    0.0
-FINANCIAL_TECHNOLOGY         5  ...                    1.0
-<BLANKLINE>
-[5 rows x 22 columns]
+Example:
+    >>> from techminer2.database.metrics.growth import DataFrame
+
+    >>> # Create, configure, and run the DataFrame generator
+    >>> generator = (
+    ...     DataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_author_keywords")
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PARAMS:
+    ...     .with_time_window(2)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = generator.run()
+    >>> df.head()
+                          rank_occ  ...  average_docs_per_year
+    raw_author_keywords             ...
+    FINTECH                      1  ...                    9.0
+    INNOVATION                   2  ...                    0.5
+    FINANCIAL_SERVICES           3  ...                    1.5
+    FINANCIAL_INCLUSION          4  ...                    0.0
+    FINANCIAL_TECHNOLOGY         5  ...                    1.0
+    <BLANKLINE>
+    [5 rows x 22 columns]
 
 
 
