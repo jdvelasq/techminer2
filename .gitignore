@@ -1,8 +1,8 @@
 .DS_Store
 
 # Files generated automatically
-docs-src/source/
-docs-src/_source/
+docs_src/source/
+docs_src/_source/
 
 # Ignore results generated during development
 example/databases/
@@ -13,7 +13,7 @@ example/thesaurus/
 debug.ipynb
 
 # Sphinx documentation
-docs-src/_build/
+docs_src/_build/
 # sphinx/_static/**/*
 
 tmp/*
