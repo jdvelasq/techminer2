@@ -9,86 +9,89 @@
 General Metrics Data Frame
 ===============================================================================
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> # Countries:
->>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
->>> #
->>> # Organizations:
->>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
->>> #
->>> # Descriptors:
->>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
->>> #
->>> # Capture and print stderr output
->>> #
->>> from techminer2.database.metrics.general import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ) # doctest: +NORMALIZE_WHITESPACE
-                                                                  Value
-Category          Item
-GENERAL           Timespan                                    2015:2019
-                  Documents                                          50
-                  Annual growth rate %                           118.67
-                  Document average age                             7.24
-                  References                                       3213
-                  Average citations per document                  162.7
-                  Average citations per document per year         32.54
-                  Average references per document                 64.26
-                  Sources                                            41
-                  Average documents per source                     1.22
-DOCUMENT TYPES    Article                                            37
-                  Book                                                1
-                  Conference paper                                    4
-                  Editorial                                           2
-                  Review                                              6
-AUTHORS           Authors                                           115
-                  Authors of single-authored documents               12
-                  Single-authored documents                          12
-                  Multi-authored documents                           38
-                  Authors per document                             2.52
-                  Co-authors per document                           3.0
-                  International co-authorship %                   30.61
-                  Author appearances                                126
-                  Documents per author                              0.4
-                  Collaboration index                              3.32
-                  organizations                                      90
-                  Organizations (1st author)                         42
-                  Countries                                          24
-                  Countries (1st author)                             18
-                  Regions                                             5
-                  Subregions                                          9
-KEYWORDS          Author keywords (raw)                             148
-                  Author keywords (cleaned)                         145
-                  Index keywords (raw)                              179
-                  Index keywords (cleaned)                          177
-                  Keywords (raw)                                    279
-                  Keywords (cleaned)                                266
-NOUNS AND PHRASES Document title nouns and phrases (raw)            132
-                  Document title nouns and phrases (cleaned)        130
-                  Abstract nouns and phrases (raw)                 1630
-                  Abstract nouns and phrases (cleaned)             1594
-                  Nouns and phrases (raw)                          1688
-                  Nouns and phrases (cleaned)                      1648
-DESCRIPTORS       Descriptors (raw)                                1865
-                  Descriptors (cleaned)                            1796
+Example:
+    >>> from techminer2.thesaurus.countries import (
+    ...     CreateThesaurus as CreateCountryThesaurus,
+    ...     ApplyThesaurus as ApplyCountryThesaurus,
+    ... )
+    >>> from techminer2.thesaurus.organizations import (
+    ...     CreateThesaurus as CreateOrganizationsThesaurus,
+    ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
+    ... )
+    >>> from techminer2.thesaurus.descriptors import (
+    ...     CreateThesaurus as CreateDescriptorsThesaurus,
+    ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
+    ... )
+    >>> from techminer2.database.metrics.general import DataFrame
+
+    >>> # Create and appli thesauri
+    >>> CreateCountryThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyCountryThesaurus(root_directory="example/", quiet=True).run()
+    >>> CreateOrganizationsThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyOrganizationsThesaurus(root_directory="example/", quiet=True).run()
+    >>> CreateDescriptorsThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyDescriptorsThesaurus(root_directory="example/", quiet=True).run()
+
+    >>> # Create, configure, and run the DataFrame geneartor
+    >>> processor = (
+    ...     DataFrame()
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = processor.run()
+    >>> df # doctest: +NORMALIZE_WHITESPACE
+                                                                      Value
+    Category          Item
+    GENERAL           Timespan                                    2015:2019
+                      Documents                                          50
+                      Annual growth rate %                           118.67
+                      Document average age                             7.24
+                      References                                       3213
+                      Average citations per document                  162.7
+                      Average citations per document per year         32.54
+                      Average references per document                 64.26
+                      Sources                                            41
+                      Average documents per source                     1.22
+    DOCUMENT TYPES    Article                                            37
+                      Book                                                1
+                      Conference paper                                    4
+                      Editorial                                           2
+                      Review                                              6
+    AUTHORS           Authors                                           115
+                      Authors of single-authored documents               12
+                      Single-authored documents                          12
+                      Multi-authored documents                           38
+                      Authors per document                             2.52
+                      Co-authors per document                           3.0
+                      International co-authorship %                   30.61
+                      Author appearances                                126
+                      Documents per author                              0.4
+                      Collaboration index                              3.32
+                      organizations                                      90
+                      Organizations (1st author)                         42
+                      Countries                                          24
+                      Countries (1st author)                             18
+                      Regions                                             5
+                      Subregions                                          9
+    KEYWORDS          Author keywords (raw)                             148
+                      Author keywords (cleaned)                         145
+                      Index keywords (raw)                              179
+                      Index keywords (cleaned)                          177
+                      Keywords (raw)                                    279
+                      Keywords (cleaned)                                266
+    NOUNS AND PHRASES Document title nouns and phrases (raw)            132
+                      Document title nouns and phrases (cleaned)        130
+                      Abstract nouns and phrases (raw)                 1630
+                      Abstract nouns and phrases (cleaned)             1594
+                      Nouns and phrases (raw)                          1688
+                      Nouns and phrases (cleaned)                      1648
+    DESCRIPTORS       Descriptors (raw)                                1865
+                      Descriptors (cleaned)                            1796
 
 
 
