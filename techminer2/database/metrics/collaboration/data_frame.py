@@ -48,8 +48,8 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_database
-from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
+from ..._internals.io import internal__load_filtered_records_from_database
+from ..performance.data_frame import DataFrame as TermsByYearMetricsDataFrame
 
 
 class DataFrame(
@@ -59,7 +59,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return internal__load_filtered_database(params=self.params)
+        return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_2_compute_collaboration_metrics(self, data_frame):
@@ -131,7 +131,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_3_filter_terms(self, data_frame):
-        terms_in = PerformanceMetricsDataFrame()
+        terms_in = TermsByYearMetricsDataFrame()
         terms_in = terms_in.update(**self.params.__dict__)
         terms_in = terms_in.run()
         terms_in = terms_in.index

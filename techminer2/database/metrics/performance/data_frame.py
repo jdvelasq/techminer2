@@ -29,7 +29,7 @@ Data Frame
 ...     .run()
 ... )
                       rank_occ  rank_gcs  ...  m_index                      counters
-raw_author_keywords                       ...                                       
+raw_author_keywords                       ...
 FINTECH                      1         1  ...     7.75               FINTECH 31:5168
 INNOVATION                   2         2  ...     1.75            INNOVATION 07:0911
 FINANCIAL_SERVICES           3         4  ...     1.00    FINANCIAL_SERVICES 04:0667
@@ -48,7 +48,7 @@ CASE_STUDY                  10        22  ...     0.67            CASE_STUDY 02:
 """
 from ...._internals.mixins import ParamsMixin
 from ..._internals.io import (
-    internal__load_filtered_database,
+    internal__load_filtered_records_from_database,
     internal__load_user_stopwords,
 )
 
@@ -83,7 +83,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return internal__load_filtered_database(params=self.params)
+        return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_2_select_metric_fields(self, data_frame):

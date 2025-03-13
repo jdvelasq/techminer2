@@ -9,37 +9,40 @@
 Data Frame
 =======================================================================================
 
->>> # order_records_by:
->>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
->>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
->>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
->>> # 
->>> from techminer2.database.metrics.records import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     .where_records_ordered_by("global_cited_by_highest")  
-...     #
-...     .run()
-... ).head()
-                                  raw_document_title  ...  year
-0  On the Fintech Revolution: Interpreting the Fo...  ...  2018
-1  Fintech: Ecosystem, business models, investmen...  ...  2018
-2  Digital Finance and FinTech: current research ...  ...  2017
-3  Fintech, regulatory arbitrage, and the rise of...  ...  2018
-4  The digital revolution in financial inclusion:...  ...  2017
-<BLANKLINE>
-[5 rows x 9 columns]
+
+Example:
+    >>> from techminer2.database.metrics.records import DataFrame
+
+    >>> # Create, configure, and run the DataFrame generator.
+    >>> # The options for the "where_records_ordered_by" method are:
+    >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
+    >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
+    >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
+    >>> generator = (
+    ...     DataFrame()
+    ...     #
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     .where_records_ordered_by("global_cited_by_highest")
+    ... )
+    >>> df = generator.run()
+    >>> df.head()
+                                      raw_document_title  ...  year
+    0  On the Fintech Revolution: Interpreting the Fo...  ...  2018
+    1  Fintech: Ecosystem, business models, investmen...  ...  2018
+    2  Digital Finance and FinTech: current research ...  ...  2017
+    3  Fintech, regulatory arbitrage, and the rise of...  ...  2018
+    4  The digital revolution in financial inclusion:...  ...  2017
+    <BLANKLINE>
+    [5 rows x 9 columns]
 
 """
 
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_database
+from ..._internals.io import internal__load_filtered_records_from_database
 
 
 class DataFrame(
@@ -49,7 +52,7 @@ class DataFrame(
 
     def run(self):
 
-        data_frame = internal__load_filtered_database(params=self.params)
+        data_frame = internal__load_filtered_records_from_database(params=self.params)
         data_frame = data_frame.assign(_order_=range(1, len(data_frame) + 1))
         data_frame = data_frame.reset_index(drop=True)
 

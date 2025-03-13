@@ -9,45 +9,48 @@ Data Frame
 ===============================================================================
 
 
->>> from techminer2.database.metrics.tfidf import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     .with_field("raw_author_keywords")
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # TFIDF:
-...     .using_binary_term_frequencies(False)
-...     .using_row_normalization(None)
-...     .using_idf_reweighting(False)
-...     .using_idf_weights_smoothing(False)
-...     .using_sublinear_tf_scaling(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-raw_author_keywords                             FINTECH 31:5168  ...  CASE_STUDY 02:0340
-record_id                                                        ...                    
-Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                   0
-Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                   0
-Buchak G., 2018, J FINANC ECON, V130, P453                    1  ...                   0
-Cai C.W., 2018, ACCOUNT FINANC, V58, P965                     1  ...                   0
-Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...                   0
-<BLANKLINE>
-[5 rows x 10 columns]
+Example:
+    >>> from techminer2.database.metrics.tfidf import DataFrame
+
+    >>> # Create, configure, and run the data frame generator:
+    >>> generator = (
+    ...     DataFrame()
+    ...     #
+    ...     .with_field("raw_author_keywords")
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # TFIDF:
+    ...     .using_binary_term_frequencies(False)
+    ...     .using_row_normalization(None)
+    ...     .using_idf_reweighting(False)
+    ...     .using_idf_weights_smoothing(False)
+    ...     .using_sublinear_tf_scaling(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = generator.run()
+    >>> df.head()
+    raw_author_keywords                             FINTECH 31:5168  ...  CASE_STUDY 02:0340
+    record_id                                                        ...
+    Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                   0
+    Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                   0
+    Buchak G., 2018, J FINANC ECON, V130, P453                    1  ...                   0
+    Cai C.W., 2018, ACCOUNT FINANC, V58, P965                     1  ...                   0
+    Chen L./1, 2016, CHINA ECON J, V9, P225                       1  ...                   0
+    <BLANKLINE>
+    [5 rows x 10 columns]
 
 
 
@@ -58,8 +61,8 @@ import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
 from ...._internals.mixins import ParamsMixin, SortAxesMixin
-from ..._internals.io import internal__load_filtered_database
-from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
+from ..._internals.io import internal__load_filtered_records_from_database
+from ..performance.data_frame import DataFrame as TermsByYearMetricsDataFrame
 
 
 class DataFrame(
@@ -69,7 +72,7 @@ class DataFrame(
     """:meta private:"""
 
     def _step_1_load_the_database(self):
-        return internal__load_filtered_database(params=self.params)
+        return internal__load_filtered_records_from_database(params=self.params)
 
     def step_2_explode_data_frame(self, data_frame):
 
@@ -136,7 +139,7 @@ class DataFrame(
 
     def step_5_filter_terms_in_df_matrix(self, matrix):
         performance_metrics = (
-            PerformanceMetricsDataFrame().update(**self.params.__dict__).run()
+            TermsByYearMetricsDataFrame().update(**self.params.__dict__).run()
         )
         selected_terms = performance_metrics.index.tolist()
         matrix = matrix[selected_terms]

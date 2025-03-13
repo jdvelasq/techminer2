@@ -74,7 +74,10 @@ Example:
 import sys
 
 from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import internal__load_records, internal__write_records
+from ....database._internals.io import (
+    internal__load_all_records_from_database,
+    internal__write_records_to_database,
+)
 from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
@@ -116,7 +119,7 @@ class ApplyThesaurus(
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__load_records(self):
-        self.records = internal__load_records(params=self.params)
+        self.records = internal__load_all_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__copy_field(self):
@@ -164,7 +167,7 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def internal__write_records(self):
-        internal__write_records(params=self.params, records=self.records)
+        internal__write_records_to_database(params=self.params, records=self.records)
 
     # -------------------------------------------------------------------------
     def run(self):

@@ -9,35 +9,39 @@
 Coverage
 ===============================================================================
 
->>> from techminer2.database.tools import Coverage
->>> (
-...     Coverage()
-...     #
-...     .with_field("raw_author_keywords")
-...     #
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     #
-...     .run()
-... )
---INFO-- Number of documents : 50
---INFO--   Documents with NA : 12
---INFO--  Efective documents : 38
-   min_occ  cum_sum_documents  coverage  cum num items
-0       31                 31   81.58 %              1
-1        7                 33   86.84 %              2
-2        4                 33   86.84 %              3
-3        3                 35   92.11 %              7
-4        2                 36   94.74 %             25
-5        1                 38  100.00 %            148
+
+Example:
+    >>> from techminer2.database.tools import Coverage
+    >>> (
+    ...     Coverage()
+    ...     #
+    ...     .with_field("raw_author_keywords")
+    ...     #
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
+    ... )
+    --INFO-- Number of documents : 50
+    --INFO--   Documents with NA : 12
+    --INFO--  Efective documents : 38
+       min_occ  cum_sum_documents  coverage  cum num items
+    0       31                 31   81.58 %              1
+    1        7                 33   86.84 %              2
+    2        4                 33   86.84 %              3
+    3        3                 35   92.11 %              7
+    4        2                 36   94.74 %             25
+    5        1                 38  100.00 %            148
 
 
 
 """
 from ..._internals.mixins import ParamsMixin
-from .._internals.io.load_filtered_database import internal__load_filtered_database
+from .._internals.io.load_filtered_records_from_database import (
+    internal__load_filtered_records_from_database,
+)
 from .._internals.io.load_user_stopwords import internal__load_user_stopwords
 
 
@@ -52,7 +56,7 @@ class Coverage(
 
         stopwords = internal__load_user_stopwords(params=self.params)
 
-        documents = internal__load_filtered_database(params=self.params)
+        documents = internal__load_filtered_records_from_database(params=self.params)
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]
 

@@ -66,8 +66,8 @@ from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
 from ....database._internals.io import (
-    internal__load_filtered_database,
-    internal__load_records,
+    internal__load_all_records_from_database,
+    internal__load_filtered_records_from_database,
 )
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
@@ -132,7 +132,7 @@ class CreateThesaurus(
             sys.stderr.flush()
 
         # loads the dataframe
-        main_documents = internal__load_filtered_database(self.params)
+        main_documents = internal__load_filtered_records_from_database(self.params)
         main_documents = main_documents[main_documents.global_citations > 0]
         main_documents = main_documents[
             ["record_id", "document_title", "authors", "year"]
@@ -172,7 +172,7 @@ class CreateThesaurus(
             sys.stderr.flush()
 
         # loads the dataframe
-        references = internal__load_records(self.params)
+        references = internal__load_all_records_from_database(self.params)
         references = references[["raw_global_references"]].dropna()
         references = references.rename({"raw_global_references": "text"}, axis=1)
 

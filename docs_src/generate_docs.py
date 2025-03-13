@@ -100,6 +100,13 @@ def generate_final_file(key, file):
         f.write("     :show-inheritance:\n\n")
 
 
+def delete_existent_files_in_source():
+    files = read_directory_tree("docs_src/source")
+    for file in files:
+        if file.endswith(".rst"):
+            os.remove(file)
+
+
 def generate_index_file(key, item):
 
     filename = "docs_src/source/" + key + ".rst"
@@ -124,6 +131,7 @@ def run():
     files = clean_file_names(files)
     mapping = generate_index_mapping(files)
     mapping = complete_keys_in_mapping(mapping)
+    delete_existent_files_in_source()
     generate_files(mapping)
 
 

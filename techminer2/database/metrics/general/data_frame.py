@@ -105,7 +105,7 @@ import numpy as np
 import pandas as pd  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_database
+from ..._internals.io import internal__load_filtered_records_from_database
 
 
 @dataclass
@@ -149,7 +149,7 @@ class DataFrame(
 
     def run(self):
 
-        data_frame = internal__load_filtered_database(params=self.params)
+        data_frame = internal__load_filtered_records_from_database(params=self.params)
 
         stats = Stats()
 

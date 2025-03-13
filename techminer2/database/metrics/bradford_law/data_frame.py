@@ -38,7 +38,7 @@ Example:
 import pandas as pd  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_database
+from ..._internals.io import internal__load_filtered_records_from_database
 
 
 class DataFrame(
@@ -48,7 +48,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def internal__load_filtered_records(self):
-        self.records = internal__load_filtered_database(params=self.params)
+        self.records = internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__compute_num_docs_published_by_source(self):

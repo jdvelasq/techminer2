@@ -8,44 +8,47 @@
 Concordant Contexts
 =========================================================================================
 
->>> # order_records_by:
->>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
->>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
->>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
->>> # 
->>> from techminer2.database.search import ConcordantContexts
->>> contexts = (
-...     ConcordantContexts() 
-...     #
-...     .with_abstract_having_pattern("FINTECH")
-...     #
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     .where_records_ordered_by("date_newest")   
-...     #
-...     .run()
-... )
->>> for t in contexts[:10]: print(t)
-<<< S with THE_PURPOSE of reinventing FINANCIAL_TECHNOLOGY ( FINTECH )
-<<< ARTIFICIAL_INTELLIGENCE ( AI ) on FINANCIAL_TECHNOLOGY ( FINTECH ) , THE_PURPOSE of THIS_PAPER is to propose A_RESEARCH_F >>>
-<<< ONSUMERS_PERCEPTIONS regarding THE_INTRODUCTION of AI in FINTECH 
-                                                             FINTECH is about THE_INTRODUCTION of NEW_TECHNOLOGIES into THE_F >>>
-<<< _ACADEMIC_FINANCE_COMMUNITY was not actively researching FINTECH , THE_EDITORIAL_TEAM of THE_REVIEW of FINANCIAL_STUDIES  >>>
-<<<  learned from THE_SUBMITTED_PROPOSALS about THE_FIELD of FINTECH and WHICH_ONES we selected to be completed and ultimatel >>>
-<<< NS to help guide FUTURE_RESEARCH in THE_EMERGING_AREA of FINTECH 
-                               along_with THE_DEVELOPMENT of FINTECH , MANY_SCHOLARS have studied how INFORMATION_TECHNOLOGY  >>>
-<<< DERLYING_BITCOIN , is AN_EMERGING_FINANCIAL_TECHNOLOGY ( FINTECH ) that_is poised to have STRATEGIC_IMPACTS on ORGANIZATIONS
-                                      FINANCIAL_TECHNOLOGY ( FINTECH ) SERVICES using EMERGING_TECHNOLOGY such_as THE_INTERNE >>>
+Example:
+    >>> from techminer2.database.search import ConcordantContexts
+
+    >>> # Create, configure, and run the finder
+    >>> # order_records_by:
+    >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
+    >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
+    >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
+    >>> #
+    >>> finder = (
+    ...     ConcordantContexts()
+    ...     #
+    ...     # PATTERN:
+    ...     .with_abstract_having_pattern("FINTECH")
+    ...     #
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     .where_records_ordered_by("date_newest")
+    ... )
+    >>> contexts = finder.run()
+    >>> for t in contexts[:10]: print(t)
+    <<< S with THE_PURPOSE of reinventing FINANCIAL_TECHNOLOGY ( FINTECH )
+    <<< ARTIFICIAL_INTELLIGENCE ( AI ) on FINANCIAL_TECHNOLOGY ( FINTECH ) , THE_PURPOSE of THIS_PAPER is to propose A_RESEARCH_F >>>
+    <<< ONSUMERS_PERCEPTIONS regarding THE_INTRODUCTION of AI in FINTECH
+                                                                 FINTECH is about THE_INTRODUCTION of NEW_TECHNOLOGIES into THE_F >>>
+    <<< _ACADEMIC_FINANCE_COMMUNITY was not actively researching FINTECH , THE_EDITORIAL_TEAM of THE_REVIEW of FINANCIAL_STUDIES  >>>
+    <<<  learned from THE_SUBMITTED_PROPOSALS about THE_FIELD of FINTECH and WHICH_ONES we selected to be completed and ultimatel >>>
+    <<< NS to help guide FUTURE_RESEARCH in THE_EMERGING_AREA of FINTECH
+                                   along_with THE_DEVELOPMENT of FINTECH , MANY_SCHOLARS have studied how INFORMATION_TECHNOLOGY  >>>
+    <<< DERLYING_BITCOIN , is AN_EMERGING_FINANCIAL_TECHNOLOGY ( FINTECH ) that_is poised to have STRATEGIC_IMPACTS on ORGANIZATIONS
+                                          FINANCIAL_TECHNOLOGY ( FINTECH ) SERVICES using EMERGING_TECHNOLOGY such_as THE_INTERNE >>>
 
 
 """
 import pandas as pd  # type: ignore
 
 from ..._internals.mixins import ParamsMixin
-from .._internals.io import internal__load_filtered_database
+from .._internals.io import internal__load_filtered_records_from_database
 
 
 class ConcordantContexts(
@@ -55,7 +58,7 @@ class ConcordantContexts(
 
     # -------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return internal__load_filtered_database(params=self.params)
+        return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_2_extract_context_phrases(self, records):

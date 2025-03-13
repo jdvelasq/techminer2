@@ -6,7 +6,7 @@ import pandas as pd
 from textblob import Word
 from tqdm import tqdm  # type: ignore
 
-from ...database._internals.io import internal__load_filtered_database
+from ...database._internals.io import internal__load_filtered_records_from_database
 from . import (
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
@@ -82,7 +82,9 @@ class ThesaurusMixin:
     # -------------------------------------------------------------------------
     def internal__load_filtered_records(self):
 
-        self.filtered_records = internal__load_filtered_database(params=self.params)
+        self.filtered_records = internal__load_filtered_records_from_database(
+            params=self.params
+        )
 
     # -------------------------------------------------------------------------
     def internal__load_reversed_thesaurus_as_mapping(self):

@@ -14,7 +14,7 @@ import copy
 
 import numpy as np
 
-from .....database._internals.io import internal__load_filtered_database
+from .....database._internals.io import internal__load_filtered_records_from_database
 
 
 # ------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ def step_01_create_citations_table(params):
 
     #
     # Extracts the records using the specified parameters
-    records = internal__load_filtered_database(params=params)
+    records = internal__load_filtered_records_from_database(params=params)
 
     records = records.sort_values(
         ["global_citations", "local_citations", "year", "record_id"],

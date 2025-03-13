@@ -9,12 +9,12 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from .....database._internals.io import internal__load_filtered_database
+from .....database._internals.io import internal__load_filtered_records_from_database
 
 
 # -------------------------------------------------------------------------
 def _step_01_load_records(params):
-    return internal__load_filtered_database(params=params)
+    return internal__load_filtered_records_from_database(params=params)
 
 
 # -------------------------------------------------------------------------

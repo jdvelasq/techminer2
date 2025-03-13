@@ -149,6 +149,7 @@ class Params:
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
     terms_in: Optional[list] = None
     terms_order_by: Optional[str] = None
+    terms_per_year: int = 5
     textfont_color: str = "#465c6b"
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_opacity: float = 1.0
@@ -328,6 +329,10 @@ class ParamsMixin:
 
     def having_terms_ordered_by(self, criteria):
         self.params.terms_order_by = criteria
+        return self
+
+    def having_terms_per_year(self, n):
+        self.params.terms_per_year = n
         return self
 
     def having_word(self, word):

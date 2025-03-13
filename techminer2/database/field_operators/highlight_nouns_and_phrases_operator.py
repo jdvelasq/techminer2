@@ -105,5 +105,5 @@ class HighlightNounAndPhrasesOperator(
             dest=self.params.other_field,
             #
             # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
+            root_directory=self.params.root_directory,
         )

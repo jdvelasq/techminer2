@@ -23,10 +23,10 @@ Example:
     >>> plot = plotter.run()
     >>> plot.write_html("docs_src/_generated/px.database.metrics.bradford_law.line_plot.html")
 
-    .. raw:: html
+.. raw:: html
 
-        <iframe src="../_generated/px.database.metrics.bradford_law.line_plot.html"
-        height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_generated/px.database.metrics.bradford_law.line_plot.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """

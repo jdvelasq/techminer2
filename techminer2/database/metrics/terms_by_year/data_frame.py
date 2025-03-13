@@ -8,137 +8,137 @@
 Data Frame
 ===============================================================================
 
->>> from techminer2.database.metrics.terms_by_year import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # FIELD:
-...     .with_field("raw_author_keywords")
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PARAMS:
-...     .with_cumulative_sum(False)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head(10)
-year                          2015  2016  2017  2018  2019
-raw_author_keywords                                       
-FINTECH 31:5168                  0     5     8    12     6
-INNOVATION 07:0911               0     3     3     1     0
-FINANCIAL_SERVICES 04:0667       0     1     0     3     0
-FINANCIAL_INCLUSION 03:0590      0     1     2     0     0
-FINANCIAL_TECHNOLOGY 03:0461     0     0     1     1     1
-CROWDFUNDING 03:0335             0     0     1     1     1
-MARKETPLACE_LENDING 03:0317      0     0     0     2     1
-BUSINESS_MODELS 02:0759          0     0     0     2     0
-CYBER_SECURITY 02:0342           0     0     0     2     0
-CASE_STUDY 02:0340               0     0     1     0     1
+
+Example:
+    >>> from techminer2.database.metrics.terms_by_year import DataFrame
+
+    >>> # Create, configure, and run the DataFrame generator.
+    >>> generator = (
+    ...     DataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_author_keywords")
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PARAMS:
+    ...     .with_cumulative_sum(False)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = generator.run()
+    >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
+    year                          2015  2016  2017  2018  2019
+    raw_author_keywords
+    FINTECH 31:5168                  0     5     8    12     6
+    INNOVATION 07:0911               0     3     3     1     0
+    FINANCIAL_SERVICES 04:0667       0     1     0     3     0
+    FINANCIAL_INCLUSION 03:0590      0     1     2     0     0
+    FINANCIAL_TECHNOLOGY 03:0461     0     0     1     1     1
+    CROWDFUNDING 03:0335             0     0     1     1     1
+    MARKETPLACE_LENDING 03:0317      0     0     0     2     1
+    BUSINESS_MODELS 02:0759          0     0     0     2     0
+    CYBER_SECURITY 02:0342           0     0     0     2     0
+    CASE_STUDY 02:0340               0     0     1     0     1
 
 
->>> from techminer2.database.metrics.terms_by_year import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # FIELD:
-...     .with_field("raw_author_keywords")
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PARAMS:
-...     .with_cumulative_sum(False)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head(10)
-year                  2015  2016  2017  2018  2019
-raw_author_keywords                               
-FINTECH                  0     5     8    12     6
-INNOVATION               0     3     3     1     0
-FINANCIAL_SERVICES       0     1     0     3     0
-FINANCIAL_INCLUSION      0     1     2     0     0
-FINANCIAL_TECHNOLOGY     0     0     1     1     1
-CROWDFUNDING             0     0     1     1     1
-MARKETPLACE_LENDING      0     0     0     2     1
-BUSINESS_MODELS          0     0     0     2     0
-CYBER_SECURITY           0     0     0     2     0
-CASE_STUDY               0     0     1     0     1
+    >>> generator = (
+    ...     DataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_author_keywords")
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PARAMS:
+    ...     .with_cumulative_sum(False)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = generator.run()
+    >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
+    year                  2015  2016  2017  2018  2019
+    raw_author_keywords
+    FINTECH                  0     5     8    12     6
+    INNOVATION               0     3     3     1     0
+    FINANCIAL_SERVICES       0     1     0     3     0
+    FINANCIAL_INCLUSION      0     1     2     0     0
+    FINANCIAL_TECHNOLOGY     0     0     1     1     1
+    CROWDFUNDING             0     0     1     1     1
+    MARKETPLACE_LENDING      0     0     0     2     1
+    BUSINESS_MODELS          0     0     0     2     0
+    CYBER_SECURITY           0     0     0     2     0
+    CASE_STUDY               0     0     1     0     1
 
 
-
->>> from techminer2.database.metrics.terms_by_year import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     #
-...     # FIELD:
-...     .with_field("raw_author_keywords")
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PARAMS:
-...     .with_cumulative_sum(True)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head(10)
-year                          2015  2016  2017  2018  2019
-raw_author_keywords                                       
-FINTECH 31:5168                  0     5    13    25    31
-INNOVATION 07:0911               0     3     6     7     7
-FINANCIAL_SERVICES 04:0667       0     1     1     4     4
-FINANCIAL_INCLUSION 03:0590      0     1     3     3     3
-FINANCIAL_TECHNOLOGY 03:0461     0     0     1     2     3
-CROWDFUNDING 03:0335             0     0     1     2     3
-MARKETPLACE_LENDING 03:0317      0     0     0     2     3
-BUSINESS_MODELS 02:0759          0     0     0     2     2
-CYBER_SECURITY 02:0342           0     0     0     2     2
-CASE_STUDY 02:0340               0     0     1     1     2
+    >>> generator = (
+    ...     DataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_author_keywords")
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PARAMS:
+    ...     .with_cumulative_sum(True)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ... )
+    >>> df = generator.run()
+    >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
+    year                          2015  2016  2017  2018  2019
+    raw_author_keywords
+    FINTECH 31:5168                  0     5    13    25    31
+    INNOVATION 07:0911               0     3     6     7     7
+    FINANCIAL_SERVICES 04:0667       0     1     1     4     4
+    FINANCIAL_INCLUSION 03:0590      0     1     3     3     3
+    FINANCIAL_TECHNOLOGY 03:0461     0     0     1     2     3
+    CROWDFUNDING 03:0335             0     0     1     2     3
+    MARKETPLACE_LENDING 03:0317      0     0     0     2     3
+    BUSINESS_MODELS 02:0759          0     0     0     2     2
+    CYBER_SECURITY 02:0342           0     0     0     2     2
+    CASE_STUDY 02:0340               0     0     1     1     2
 
 
 
 """
 
 from ...._internals.mixins import ParamsMixin, SortAxesMixin
-from ..._internals.io import internal__load_filtered_database
-from ..performance.data_frame import DataFrame as PerformanceMetricsDataFrame
+from ..._internals.io import internal__load_filtered_records_from_database
+from ..performance.data_frame import DataFrame as PerformanceDataFrame
 
 
 class DataFrame(
@@ -149,7 +149,7 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return internal__load_filtered_database(params=self.params)
+        return internal__load_filtered_records_from_database(params=self.params)
 
     def _step_2_get_years_range(self, data_frame):
         return data_frame.year.min(), data_frame.year.max()
@@ -229,9 +229,7 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_6_filter_terms(self, terms_by_year):
-        terms_in = (
-            PerformanceMetricsDataFrame().update(**self.params.__dict__).run().index
-        )
+        terms_in = PerformanceDataFrame().update(**self.params.__dict__).run().index
         terms_by_year = terms_by_year[terms_by_year.index.isin(terms_in)]
         return terms_by_year
 

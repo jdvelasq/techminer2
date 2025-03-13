@@ -22,7 +22,7 @@ def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
     internal__highlight_nouns_and_phrases(
         source="abstract",
         dest="abstract",
-        root_dir=root_dir,
+        root_directory=root_dir,
     )
 
     sys.stderr.write("INFO  Collecting noun and phrases\n")

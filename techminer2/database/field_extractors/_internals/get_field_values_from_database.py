@@ -9,14 +9,14 @@
 from typing import Dict, List, Optional, Tuple
 
 from ...._internals import Params
-from ..._internals.io import internal__load_filtered_database
+from ..._internals.io import internal__load_filtered_records_from_database
 
 
 def internal__get_field_values_from_database(params):
     """Returns a DataFrame with the content of the field in all databases."""
 
     field = params.field
-    data_frame = internal__load_filtered_database(params)
+    data_frame = internal__load_filtered_records_from_database(params)
     data_frame = data_frame[[field]].dropna()
     data_frame[field] = data_frame[field].str.split("; ")
     data_frame = data_frame.explode(field)

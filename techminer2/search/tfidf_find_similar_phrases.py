@@ -20,7 +20,7 @@ Find Similar Records
 ## ...     ),
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ...     database="main",
 ## ...     year_filter=(None, None),
 ## ...     cited_by_filter=(None, None),

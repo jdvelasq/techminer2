@@ -1,0 +1,103 @@
+which permits unrestricted use , distribution , and reproduction in any medium
+icst institute for computer sciences , social informatics and telecommunications engineering
+italian association for traffic and transport engineering \( aiit \)
+international conference on information systems , logistics and supply chain
+\d{4} international institute for innovation , industrial engineering and entrepreneurship
+institute for transport studies in the european economic integration
+all rights of reproduction in any form reserved
+the institution of engineering and technology \d{4}
+international association of traffic and safety sciences
+aidi italian association of industrial operations professors
+this is an open access article
+the cc by nc nd license
+operations and supply chain management forum
+licensee mdpi , basel , switzerland
+international federation of operational research societies
+https : / creativecommons \. org
+faculty of transport and traffic engineering
+by the electric drive transportation association
+by nc nd 4 \. 0
+associacao portuguesa para o desenvolvimento regional
+\d{4} mehdi nourinejad and matthew j
+\d{4} chinese institute of industrial engineers
+\d{4} american society of civil engineers
+\d{4} , technical university of liberec
+the editor \( s \)
+the author \( s \)
+roduction and operations management society
+international transactions in operational research
+international federation for information processing
+iise annual conference and expo
+american society of civil engineers
+\d{4} vilnius gediminas technical university
+\d{4} institute of physics publishing
+\d{4} dime universita di genova
+(\b[a-za-z]+\b\s)*springer naature b \. v
+wydawnictwo ekonomia i srodowisko
+under exclusive license to
+under exclusive licence to
+national academy of sciences
+elsevier b \. v
+computers and industrial engineering
+\d{4} pontificia universidad javeriana
+\d{4} by the authors
+\d{4} by the author(s)?
+\d{4} , the author
+\d{4} , journal of(\s\b[a-za-z\+]+\b)+
+\( \d{4} \) (\b[a-za-z]+\b\s)+publishing
+\( \d{4} \) (\b[a-za-z]+\b\s)+publishers
+\( \d{4} \) (\b[a-za-z]+\b\s)+publications
+transportation research board
+networks published by
+informa uk limited
+ieom society international
+emerald (group )?publishing
+copyright : \d{4}(\s\b[a-za-z\+]+\b)*
+all rights reserved
+all right reserved
+\d{4} world conference(\s\b[a-za-z\+]+\b)*
+\d{4} weva page
+\d{4} the authors
+\d{4} the author
+\d{4} editorial office(\s\b[a-za-z\+]+\b)*
+\d{4} editora champagnat
+\d{4} , omniascience
+\d{4} , editorial(\s\b[a-za-z\+]+\b)+
+\d{4} , (\b[a-za-z]+\b\s)+publishing
+\d{4} , (\b[a-za-z]+\b\s)+publishers
+\d{4} , (\b[a-za-z]+\b\s)+publications
+\d{4} , (\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)*
+\d{4} , (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)*
+\d{4} , (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)+et al
+(\b[a-za-z]+\b\s)*taylor and francis(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)* \. v
+wiley periodicals
+series transport
+published with(\s\b[a-za-z\+]+\b)+
+published by(\s\b[a-za-z\+]+\b)+
+proceedings of(\s\b[a-za-z0-9\+]+\b)+
+kedge bs
+igi global
+excelingtech pub
+copyright \d{4}
+\d{4} spie
+\d{4} informs
+\d{4} ieee
+\d{4} asce
+\d{4} (\b[a-za-z]+\b\s)+publishing
+\d{4} (\b[a-za-z]+\b\s)+publishers
+\d{4} (\b[a-za-z]+\b\s)+publications
+\d{4} (\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z\+]+\b\s)+school
+\d{4} (\b[a-za-z\+]+\b\s)+journal
+licensee(\s\b[a-za-z\+]+\b)+
+(\b[a-za-z]+\b\s)+press
+(\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*journal(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*inderscience(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*gmbh(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*elsevier(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*conference(\s\b[a-za-z\+]+\b)*

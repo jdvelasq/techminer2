@@ -215,7 +215,7 @@ TECHNOLOGY 02:0310                          1  ...                   2
 
 """
 from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_filtered_database
+from ...database._internals.io import internal__load_filtered_records_from_database
 from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
 
 
@@ -275,7 +275,7 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_04_load_the_database(self):
-        return internal__load_filtered_database(params=self.params)
+        return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_05_create_raw_matrix_list(self, records):

@@ -9,15 +9,15 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ......database._internals.io import internal__load_filtered_database
+from ......database._internals.io import internal__load_filtered_records_from_database
 from ......database.metrics.performance.data_frame import (
-    DataFrame as PerformanceMetricsDataFrame,
+    DataFrame as TermsByYearMetricsDataFrame,
 )
 
 
 # ------------------------------------------------------------------------------
 def step_01_load_and_select_records(params):
-    records = internal__load_filtered_database(params=params)
+    records = internal__load_filtered_records_from_database(params=params)
     return records
 
 
@@ -61,7 +61,7 @@ def step_02_create_data_frame(params, records):
 def step_03_filter_the_data_frame(params, data_frame):
 
     metrics = (
-        PerformanceMetricsDataFrame()
+        TermsByYearMetricsDataFrame()
         .update(**params.__dict__)
         .with_field(params.unit_of_analysis)
         .run()

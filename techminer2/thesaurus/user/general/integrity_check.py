@@ -51,7 +51,7 @@ Example:
 import sys
 
 from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import internal__load_filtered_database
+from ....database._internals.io import internal__load_filtered_records_from_database
 from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 
@@ -89,7 +89,7 @@ class IntegrityCheck(
 
     # -------------------------------------------------------------------------
     def internal__load_terms_in_database(self):
-        records = internal__load_filtered_database(params=self.params)
+        records = internal__load_filtered_records_from_database(params=self.params)
         field = self.params.field
         terms = records[field].dropna()
         terms = terms.str.split("; ").explode().str.strip().drop_duplicates().tolist()

@@ -6,4 +6,4 @@ Terms by year
     :hidden:
 
     database.metrics.terms_by_year.data_frame
-    database.metrics.terms_by_year.ranking_plot
+    database.metrics.terms_by_year.gantt_plot

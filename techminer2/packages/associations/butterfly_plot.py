@@ -9,42 +9,42 @@
 Butterfly Plot
 ===============================================================================
 
-
->>> from techminer2.packages.associations import ButterflyPlot
->>> plot = (
-...     ButterflyPlot()
-...     #
-...     # FIELD:
-...     .with_field("raw_author_keywords")
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"])
-...     #
-...     # ROWS:
-...     .having_other_terms_in_top(10)
-...     .having_other_terms_ordered_by("OCC")
-...     .having_other_term_occurrences_between(None, None)
-...     .having_other_term_citations_between(None, None)
-...     .having_other_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # CHART PARAMS:
-...     .using_title_text("Butterfly Plot")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_src/_generated/px.packages.associations.butterfly_plot.html")
+Example:
+    >>> from techminer2.packages.associations import ButterflyPlot
+    >>> plot = (
+    ...     ButterflyPlot()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_author_keywords")
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(["FINTECH", "INNOVATION", "FINANCIAL_SERVICES"])
+    ...     #
+    ...     # ROWS:
+    ...     .having_other_terms_in_top(10)
+    ...     .having_other_terms_ordered_by("OCC")
+    ...     .having_other_term_occurrences_between(None, None)
+    ...     .having_other_term_citations_between(None, None)
+    ...     .having_other_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # CHART PARAMS:
+    ...     .using_title_text("Butterfly Plot")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_src/_generated/px.packages.associations.butterfly_plot.html")
 
 .. raw:: html
 

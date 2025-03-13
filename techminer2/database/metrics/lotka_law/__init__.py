@@ -1,9 +1,9 @@
 """Lotka's Law."""
 
-from .chart import chart
-from .dataframe import dataframe
+from .data_frame import DataFrame
+from .line_plot import LinePlot
 
 __all__ = [
-    "chart",
-    "dataframe",
+    "DataFrame",
+    "LinePlot",
 ]

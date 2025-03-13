@@ -9,35 +9,37 @@ Statistics
 ===============================================================================
 
 
->>> from techminer2.database.tools import Statistics
->>> (
-...     Statistics()
-...     #
-...     .with_field("raw_author_keywords")
-...     #
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     #
-...     .run()
-... ).head()
-                     conference_code                ...    year                
-                               count      mean std  ...     50%     75%     max
-raw_author_keywords                                 ...                        
-ACTOR_NETWORK_THEORY             0.0       NaN NaN  ...  2016.0  2016.0  2016.0
-ACTUALIZATION                    0.0       NaN NaN  ...  2019.0  2019.0  2019.0
-ADOPTION                         0.0       NaN NaN  ...  2019.0  2019.0  2019.0
-AGRICULTURE                      1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
-AGROPAY                          1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
-<BLANKLINE>
-[5 rows x 56 columns]
+Example:
+    >>> from techminer2.database.tools import Statistics
+
+    >>> (
+    ...     Statistics()
+    ...     #
+    ...     .with_field("raw_author_keywords")
+    ...     #
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
+    ... ).head()
+                         conference_code                ...    year
+                                   count      mean std  ...     50%     75%     max
+    raw_author_keywords                                 ...
+    ACTOR_NETWORK_THEORY             0.0       NaN NaN  ...  2016.0  2016.0  2016.0
+    ACTUALIZATION                    0.0       NaN NaN  ...  2019.0  2019.0  2019.0
+    ADOPTION                         0.0       NaN NaN  ...  2019.0  2019.0  2019.0
+    AGRICULTURE                      1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
+    AGROPAY                          1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
+    <BLANKLINE>
+    [5 rows x 56 columns]
 
 
 
 """
 from ..._internals.mixins import ParamsMixin
-from .._internals.io import internal__load_filtered_database
+from .._internals.io import internal__load_filtered_records_from_database
 
 
 class Statistics(
@@ -49,7 +51,7 @@ class Statistics(
 
         field = self.params.field
 
-        records = internal__load_filtered_database(params=self.params)
+        records = internal__load_filtered_records_from_database(params=self.params)
         records = records.dropna(subset=[field])
         records[field] = records[field].str.split("; ")
         records = records.explode(field)

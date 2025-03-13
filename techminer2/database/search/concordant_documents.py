@@ -8,43 +8,48 @@
 Concordant Documents
 =========================================================================================
 
->>> # order_records_by:
->>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
->>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
->>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
->>> # 
->>> from techminer2.database.search import ConcordantDocuments
->>> docs = (
-...     ConcordantDocuments() 
-...     #
-...     .with_abstract_having_pattern("FINTECH")
-...     #
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     .where_records_ordered_by("date_newest")   
-...     #
-...     .run()
-... )
->>> print(len(docs))
-35
->>> print(docs[0])
-UT 1251
-AR Haddad C., 2019, SMALL BUS ECON, V53, P81
-TI The emergence of the global fintech market: economic and technological
-   determinants
-AU Haddad C.; Hornuf L.
-TC 258
-SO Small Business Economics
-PY 2019
-AB we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing
-   ENTREPRENEURS to establish VENTURES with THE_PURPOSE of reinventing
-   FINANCIAL_TECHNOLOGY ( FINTECH )
-DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
-<BLANKLINE>
-    
+
+Example:
+    >>> from techminer2.database.search import ConcordantDocuments
+
+    >>> # Create, configure, and run the finder
+    >>> # order_records_by:
+    >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
+    >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
+    >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
+    >>> #
+    >>> finder = (
+    ...     ConcordantDocuments()
+    ...     #
+    ...     .with_abstract_having_pattern("FINTECH")
+    ...     #
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     .where_records_ordered_by("date_newest")
+    ... )
+    >>> docs = finder.run()
+
+    >>> print(len(docs))
+    35
+
+    >>> print(docs[0])
+    UT 1251
+    AR Haddad C., 2019, SMALL BUS ECON, V53, P81
+    TI The emergence of the global fintech market: economic and technological
+       determinants
+    AU Haddad C.; Hornuf L.
+    TC 258
+    SO Small Business Economics
+    PY 2019
+    AB we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing
+       ENTREPRENEURS to establish VENTURES with THE_PURPOSE of reinventing
+       FINANCIAL_TECHNOLOGY ( FINTECH )
+    DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
+    <BLANKLINE>
+
 """
 from ..._internals.mixins import ParamsMixin, RecordViewerMixin
 from .concordant_mapping import ConcordantMapping

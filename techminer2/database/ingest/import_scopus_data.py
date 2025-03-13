@@ -9,12 +9,14 @@
 """
 Import Scopus Data
 ===============================================================================
-# doctest: +SKIP 
+# doctest: +SKIP
 
 
 >>> from techminer2.database.ingest import ImportScopusData
->>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS 
 
+# >>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS
+
+>>> ImportScopusData(root_directory="../tm2_karla_marzo_2025/").run() # doctest: +ELLIPSIS
 
 
 """

@@ -140,14 +140,21 @@ class CreateThesaurus(
         records["key"] = records.key.str.upper().str.strip()
         records["value"] = records.abstract.str.replace(r"\([^)]+\)", "")
         records = records[["key", "value"]].drop_duplicates()
+        records = records.dropna(subset=["key"])
 
         # remove enumerations
         records = records[
-            records.key.map(lambda x: x not in ["I", "II", "III", "IV", "V"])
+            records.key.map(
+                lambda x: x not in ["I", "II", "III", "IV", "V"], na_action="ignore"
+            )
         ]
-        records = records[records.key.map(lambda x: x not in ["1", "2", "3", "4", "5"])]
-        records = records[records.key.map(lambda x: "," not in x)]
-        records = records[records.key.map(lambda x: " " not in x)]
+        records = records[
+            records.key.map(
+                lambda x: x not in ["1", "2", "3", "4", "5"], na_action="ignore"
+            )
+        ]
+        records = records[records.key.map(lambda x: "," not in x, na_action="ignore")]
+        records = records[records.key.map(lambda x: " " not in x, na_action="ignore")]
 
         # remove abbreviations of length 1
         records = records[records.key.str.len() > 1]
@@ -155,6 +162,11 @@ class CreateThesaurus(
         # remove enumerations already listed in the keywords
         existent_abbr = self.data_frame.key.drop_duplicates().tolist()
         records = records[records.key.map(lambda x: x not in existent_abbr)]
+
+        # remove abbreviations that are only digits
+        records = records[
+            records.key.map(lambda x: not x.isdigit(), na_action="ignore")
+        ]
 
         # concat data frames
         self.data_frame = pd.concat([self.data_frame, records], ignore_index=True)

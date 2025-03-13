@@ -35,7 +35,7 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_database
+from ..._internals.io import internal__load_filtered_records_from_database
 
 
 class ZonesDataFrame(
@@ -45,7 +45,7 @@ class ZonesDataFrame(
 
     # -------------------------------------------------------------------------
     def internal__load_filtered_records(self):
-        self.records = internal__load_filtered_database(params=self.params)
+        self.records = internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__compute_citations_and_occurrences_by_source(self):
