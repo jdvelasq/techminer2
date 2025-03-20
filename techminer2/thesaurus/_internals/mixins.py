@@ -136,6 +136,13 @@ class ThesaurusMixin:
         # case-insensitive matching
         data_frame["fingerprint"] = data_frame["fingerprint"].str.lower()
 
+        # accents removal
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.normalize("NFKD")
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.encode(
+            "ascii", errors="ignore"
+        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.decode("utf-8")
+
         # particles remotion
         for particle in particles:
             data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
