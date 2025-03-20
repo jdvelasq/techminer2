@@ -33,6 +33,7 @@ def internal__preprocess_subject_areas(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     subject_areas_df = internal__load_subject_areas()

@@ -26,6 +26,7 @@ def internal__copy_field(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     if source in dataframe.columns:

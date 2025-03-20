@@ -28,6 +28,7 @@ def internal__clean_text(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     if source in dataframe.columns and not dataframe[source].dropna().empty:

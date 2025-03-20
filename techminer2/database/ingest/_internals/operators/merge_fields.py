@@ -26,6 +26,7 @@ def internal__merge_fields(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     new_field = None

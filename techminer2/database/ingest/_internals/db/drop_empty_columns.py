@@ -19,6 +19,7 @@ def internal__drop_empty_columns(root_dir):
         pathlib.Path(root_dir) / "databases/database.csv.zip",
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     original_cols = dataframe.columns.copy()

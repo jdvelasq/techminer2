@@ -79,6 +79,7 @@ def internal__preprocess_record_id(root_dir):
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     wos_ref = (

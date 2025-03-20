@@ -26,6 +26,7 @@ def internal__rename_field(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     dataframe = dataframe.rename(columns={source: dest})

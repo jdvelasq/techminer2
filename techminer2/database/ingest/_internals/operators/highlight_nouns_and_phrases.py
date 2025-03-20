@@ -61,6 +61,7 @@ def collect_author_and_index_keywords(root_directory):
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     terms = []

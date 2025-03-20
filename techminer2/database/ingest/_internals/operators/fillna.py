@@ -24,6 +24,7 @@ def internal__fillna(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     if fill_field in dataframe.columns:

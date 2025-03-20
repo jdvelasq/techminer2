@@ -27,6 +27,7 @@ def internal__delete_field(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     dataframe = dataframe.drop(field, axis=1)

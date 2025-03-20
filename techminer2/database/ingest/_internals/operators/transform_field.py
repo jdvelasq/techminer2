@@ -27,6 +27,7 @@ def internal__transform_field(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     if field in dataframe.columns and not dataframe[field].dropna().empty:

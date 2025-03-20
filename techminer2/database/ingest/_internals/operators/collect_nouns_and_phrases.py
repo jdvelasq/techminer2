@@ -25,6 +25,7 @@ def internal__collect_nouns_and_phrases(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     if source not in dataframe.columns:

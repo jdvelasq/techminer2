@@ -4,7 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-"""Replace journal name in references. """
+"""Replace journal name in references."""
 
 import pathlib
 import sys
@@ -23,7 +23,7 @@ def _get_sources_info(root_dir):
         database_file,
         encoding="utf-8",
         compression="zip",
-        dtype=DTYPES,
+        low_memory=False,
     )
     sources_info = database[["source", "abbr_source_title"]]
     sources_info = sources_info.dropna()

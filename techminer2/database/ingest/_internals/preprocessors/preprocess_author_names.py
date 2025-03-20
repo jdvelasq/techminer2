@@ -12,7 +12,12 @@ from ....._internals.log_message import internal__log_message
 def _load_authors_data(root_dir):
 
     database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
-    dataframe = pd.read_csv(database_file, encoding="utf-8", compression="zip")
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+        low_memory=False,
+    )
     authors_data = dataframe[["authors", "authors_id"]]
     authors_data = authors_data.dropna()
     return authors_data
@@ -78,6 +83,7 @@ def _repair_names(root_dir, author_id2name):
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     dataframe = dataframe.assign(authors=dataframe.authors_id.copy())

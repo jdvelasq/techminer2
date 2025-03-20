@@ -20,6 +20,7 @@ def internal__preprocess_record_no(root_dir):
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     dataframe["record_no"] = range(1, len(dataframe) + 1)
