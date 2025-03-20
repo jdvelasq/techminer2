@@ -14,7 +14,7 @@ Initial Determiner Remover
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialDeterminer
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialDeterminers
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -25,8 +25,8 @@ Example:
 
 
 
-    >>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminer
-    >>> RemoveInitialDeterminer(root_directory="example/", tqdm_disable=True).run()
+    >>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminers
+    >>> RemoveInitialDeterminers(root_directory="example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -73,7 +73,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class RemoveInitialDeterminer(
+class RemoveInitialDeterminers(
     ParamsMixin,
     ThesaurusMixin,
 ):

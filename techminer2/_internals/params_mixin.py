@@ -86,6 +86,7 @@ class Params:
     node_size: int = 10
     node_size_range: Tuple[int, int] = (5, 20)
     novelty_threshold: float = 0.15
+    n_chars: int = 100
 
     #
     # O
@@ -101,8 +102,6 @@ class Params:
     #
     # P
     #
-    # pattern_endswith: Optional[str] = None
-    # pattern_startswith: Optional[str] = None
     pattern: Optional[str] = None
     periods_with_at_least_one_record: int = 3
     pie_hole: float = 0.4
@@ -239,18 +238,6 @@ class ParamsMixin:
         self.params.citation_threshold = threshold
         return self
 
-    # def having_keys_ending_with(self, pattern):
-    #     self.params.pattern_endswith = pattern
-    #     return self
-
-    # def having_keys_like(self, pattern):
-    #     self.params.pattern = pattern
-    #     return self
-
-    # def having_keys_starting_with(self, pattern):
-    #     self.params.pattern_startswith = pattern
-    #     return self
-
     def having_keys_ordered_by(self, order):
         self.params.keys_order_by = order
         return self
@@ -261,6 +248,10 @@ class ParamsMixin:
 
     def having_maximum_occurrence(self, maximum_occurrence):
         self.params.maximum_occurrence = maximum_occurrence
+        return self
+
+    def having_n_chars(self, n_chars):
+        self.params.n_chars = n_chars
         return self
 
     def having_occurrence_threshold(self, threshold):

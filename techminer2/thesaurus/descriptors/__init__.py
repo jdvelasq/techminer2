@@ -1,12 +1,13 @@
 "Thesaurus."
 
 from .general.apply_thesaurus import ApplyThesaurus
+from .general.cleanup_thesaurus import CleanupThesaurus
 from .general.create_thesaurus import CreateThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
 from .remove.remove_common_initial_words import RemoveCommonInitialWords
 from .remove.remove_common_last_words import RemoveCommonLastWords
-from .remove.remove_initial_determiner import RemoveInitialDeterminer
+from .remove.remove_initial_determiners import RemoveInitialDeterminers
 from .remove.remove_initial_stopwords import RemoveInitialStopwords
 from .remove.remove_parentheses import RemoveParentheses
 from .replace.replace_abbreviations import ReplaceAbbreviations
@@ -21,15 +22,21 @@ from .sort.sort_by_key_match import SortByKeyMatch
 from .sort.sort_by_key_order import SortByKeyOrder
 from .sort.sort_by_starts_with_key_match import SortByStartsWithKeyMatch
 from .sort.sort_by_word_match import SortByWordMatch
+from .translate.american_to_british_spelling import AmericanToBritishSpelling
+from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
+    "AmericanToBritishSpelling",
     "ApplyThesaurus",
+    "BritishToAmericanSpelling",
+    "CleanupThesaurus",
     "CreateThesaurus",
+    "FindEditorials",
     "IntegrityCheck",
     "ReduceKeys",
     "RemoveCommonInitialWords",
     "RemoveCommonLastWords",
-    "RemoveInitialDeterminer",
+    "RemoveInitialDeterminers",
     "RemoveInitialStopwords",
     "RemoveParentheses",
     "ReplaceAbbreviations",
@@ -37,7 +44,6 @@ __all__ = [
     "ReplaceHyphenatedWords",
     "ReplaceStartsWithWord",
     "ReplaceWord",
-    "FindEditorials",
     "SortByEndsWithKeyMatch",
     "SortByFuzzyKeyMatch",
     "SortByKeyMatch",

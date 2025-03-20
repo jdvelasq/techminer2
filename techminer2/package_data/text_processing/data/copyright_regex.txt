@@ -3,6 +3,7 @@ icst institute for computer sciences , social informatics and telecommunications
 italian association for traffic and transport engineering \( aiit \)
 international conference on information systems , logistics and supply chain
 \d{4} international institute for innovation , industrial engineering and entrepreneurship
+institute for transport studies within the european economic integration
 institute for transport studies in the european economic integration
 all rights of reproduction in any form reserved
 the institution of engineering and technology \d{4}
@@ -93,6 +94,9 @@ copyright \d{4}
 \d{4} (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z\+]+\b\s)+school
 \d{4} (\b[a-za-z\+]+\b\s)+journal
+(\b[a-za-z]+\b\s)*special issue(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*conference proceedings(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*conference proceeding(\s\b[a-za-z\+]+\b)*
 licensee(\s\b[a-za-z\+]+\b)+
 (\b[a-za-z]+\b\s)+press
 (\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)*

@@ -11,6 +11,7 @@ Compute the main path in a citation network.
 
 """
 import copy
+import sys
 
 import numpy as np
 
@@ -19,6 +20,9 @@ from .....database._internals.io import internal__load_filtered_records_from_dat
 
 # ------------------------------------------------------------------------------
 def step_01_create_citations_table(params):
+
+    sys.stderr.write("  Creating citations table\n")
+    sys.stderr.flush()
 
     #
     # Extracts the records using the specified parameters
@@ -96,6 +100,8 @@ def step_02_extracts_main_path_documents(data_frame):
             data_frame.cited_article.drop_duplicates().tolist()
         )
 
+    sys.stderr.write("  Computing starting nodes\n")
+    sys.stderr.flush()
     start_nodes = compute_start_nodes(data_frame)
 
     #
@@ -106,6 +112,8 @@ def step_02_extracts_main_path_documents(data_frame):
             data_frame.citing_article.drop_duplicates().tolist()
         )
 
+    sys.stderr.write("  Computing ending nodes\n")
+    sys.stderr.flush()
     end_nodes = compute_end_nodes(data_frame)
 
     #
@@ -132,9 +140,11 @@ def step_02_extracts_main_path_documents(data_frame):
                 valid_links = data_frame[data_frame.citing_article == last_node].copy()
 
                 for _, row in valid_links.iterrows():
-                    new_path = copy.deepcopy(current_path)
-                    new_path[0].append(row.cited_article)
-                    new_paths.append(new_path)
+
+                    if row.cited_article not in current_path[0]:
+                        new_path = copy.deepcopy(current_path)
+                        new_path[0].append(row.cited_article)
+                        new_paths.append(new_path)
 
             if len(new_paths) > 0:
                 found_paths, new_paths = expand_network_paths(
@@ -152,8 +162,9 @@ def step_02_extracts_main_path_documents(data_frame):
         )
         return found_paths
 
+    sys.stderr.write("  Computing all possible paths\n")
+    sys.stderr.flush()
     paths = compute_all_network_paths(data_frame, start_nodes, end_nodes)
-    print("--INFO-- Paths computed.")
 
     #
     # Computes the points per link in each path
@@ -167,9 +178,10 @@ def step_02_extracts_main_path_documents(data_frame):
                 ] += 1
         return data_frame
 
+    sys.stderr.write("  Computing points per link\n")
+    sys.stderr.flush()
     data_frame = data_frame.assign(points=0)
     data_frame = compute_points_per_link(data_frame, paths)
-    print("--INFO-- Points per link computed.")
 
     #
     # Computes the points per path as the sum of points per link
@@ -188,8 +200,9 @@ def step_02_extracts_main_path_documents(data_frame):
                 )
         return paths
 
+    sys.stderr.write("  Computing points per path\n")
+    sys.stderr.flush()
     paths = compute_points_per_path(data_frame, paths)
-    print("--INFO-- Points per path computed.")
 
     #
     # Sort paths by points (descending)
@@ -209,6 +222,9 @@ def step_02_extracts_main_path_documents(data_frame):
 
 # ------------------------------------------------------------------------------
 def step_03_filter_data_frame(data_frame, articles_in_main_path):
+
+    sys.stderr.write("  Filtering records\n")
+    sys.stderr.flush()
     data_frame = data_frame[
         (data_frame.citing_article.isin(articles_in_main_path))
         & (data_frame.cited_article.isin(articles_in_main_path))
@@ -217,13 +233,34 @@ def step_03_filter_data_frame(data_frame, articles_in_main_path):
     return data_frame
 
 
+#
+# NOTIFICATIONS:
+# -------------------------------------------------------------------------
+def internal__notify_process_start():
+
+    sys.stderr.write("Computing Main Path\n")
+    sys.stderr.flush()
+
+
+# -------------------------------------------------------------------------
+def internal__notify_process_end():
+
+    sys.stderr.write("  Main Path computed successfully\n")
+    sys.stderr.flush()
+
+
 # ------------------------------------------------------------------------------
 def internal__compute_main_path(
     params,
 ):
     """:meta private:"""
+
+    internal__notify_process_start()
+
     data_frame = step_01_create_citations_table(params)
     articles_in_main_path, data_frame = step_02_extracts_main_path_documents(data_frame)
     data_frame = step_03_filter_data_frame(data_frame, articles_in_main_path)
+
+    internal__notify_process_end()
 
     return articles_in_main_path, data_frame

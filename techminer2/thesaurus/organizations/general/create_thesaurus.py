@@ -93,6 +93,8 @@ ABBR = [
     "Université",
     "University",
     "Università",
+    "Universita",
+    "Universitity",
     #
     "Bank",
     "Banco",
@@ -102,6 +104,10 @@ ABBR = [
     "Conc",  # concilio, consejo
     "Com",  # comission, comision
     "Consortium",
+    #
+    "Centre",
+    "Center",
+    "Centro",
     #
     "Politecnico",
     "Polytechnic",
@@ -138,6 +144,7 @@ ABBR = [
     #
     "Sch",
     "School",
+    "Ecole",
     #
 ]
 

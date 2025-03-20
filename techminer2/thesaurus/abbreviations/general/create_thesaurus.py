@@ -155,6 +155,16 @@ class CreateThesaurus(
         ]
         records = records[records.key.map(lambda x: "," not in x, na_action="ignore")]
         records = records[records.key.map(lambda x: " " not in x, na_action="ignore")]
+        records = records[records.key.map(lambda x: x != "_S_", na_action="ignore")]
+
+        records = records[
+            records.key.map(
+                lambda x: not (
+                    x.startswith("_") and x[1:5].isdigit() and x.endswith("_")
+                ),
+                na_action="ignore",
+            )
+        ]
 
         # remove abbreviations of length 1
         records = records[records.key.str.len() > 1]
