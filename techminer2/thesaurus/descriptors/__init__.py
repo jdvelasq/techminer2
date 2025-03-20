@@ -17,6 +17,7 @@ from .replace.replace_starts_with_word import ReplaceStartsWithWord
 from .replace.replace_word import ReplaceWord
 from .sort.find_editorials import FindEditorials
 from .sort.sort_by_ends_with_key_match import SortByEndsWithKeyMatch
+from .sort.sort_by_exact_key_match import SortByExactKeyMatch
 from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
 from .sort.sort_by_key_match import SortByKeyMatch
 from .sort.sort_by_key_order import SortByKeyOrder
@@ -26,12 +27,9 @@ from .translate.american_to_british_spelling import AmericanToBritishSpelling
 from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
-    "AmericanToBritishSpelling",
     "ApplyThesaurus",
-    "BritishToAmericanSpelling",
     "CleanupThesaurus",
     "CreateThesaurus",
-    "FindEditorials",
     "IntegrityCheck",
     "ReduceKeys",
     "RemoveCommonInitialWords",
@@ -44,10 +42,14 @@ __all__ = [
     "ReplaceHyphenatedWords",
     "ReplaceStartsWithWord",
     "ReplaceWord",
+    "FindEditorials",
     "SortByEndsWithKeyMatch",
     "SortByFuzzyKeyMatch",
     "SortByKeyMatch",
     "SortByKeyOrder",
     "SortByStartsWithKeyMatch",
     "SortByWordKeyMatch",
+    "AmericanToBritishSpelling",
+    "BritishToAmericanSpelling",
+    "SortByExactKeyMatch",
 ]

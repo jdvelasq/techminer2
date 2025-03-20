@@ -9,6 +9,7 @@ from .replace.replace_ends_with_word import ReplaceEndsWithWord
 from .replace.replace_starts_with_word import ReplaceStartsWithWord
 from .replace.replace_word import ReplaceWord
 from .sort.sort_by_ends_with_key_match import SortByEndsWithKeyMatch
+from .sort.sort_by_exact_key_match import SortByExactKeyMatch
 from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
 from .sort.sort_by_key_match import SortByKeyMatch
 from .sort.sort_by_key_order import SortByKeyOrder
@@ -27,6 +28,7 @@ __all__ = [
     "ReplaceStartsWithWord",
     "ReplaceWord",
     "SortByEndsWithKeyMatch",
+    "SortByExactKeyMatch",
     "SortByWordKeyMatch",
     "SortByFuzzyKeyMatch",
     "SortByKeyMatch",
