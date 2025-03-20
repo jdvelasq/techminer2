@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort by Word Match
+Sort by Word Key Match
 ===============================================================================
 
 
@@ -15,7 +15,7 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.organizations import CreateThesaurus, SortByWordMatch
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus, SortByWordKeyMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -27,7 +27,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByWordMatch()
+    ...     SortByWordKeyMatch()
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Bank")
@@ -72,10 +72,10 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ...user import SortByWordMatch as UserSortByWordMatch
+from ...user import SortByWordKeyMatch as UserSortByWordMatch
 
 
-class SortByWordMatch(
+class SortByWordKeyMatch(
     ParamsMixin,
 ):
     """:meta private:"""

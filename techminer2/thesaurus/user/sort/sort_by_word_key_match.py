@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort by Word Match
+Sort by Word Key Match
 ===============================================================================
 
 
@@ -15,7 +15,7 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByWordMatch
+    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByWordKeyMatch
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
-    ...     SortByWordMatch()
+    ...     SortByWordKeyMatch()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern("BUSINESS")
     ...     .where_root_directory_is("example/")
@@ -75,9 +75,10 @@ import sys
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ..general.reduce_keys import ReduceKeys
 
 
-class SortByWordMatch(
+class SortByWordKeyMatch(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -85,6 +86,10 @@ class SortByWordMatch(
 
     #
     # NOTIFICATIONS:
+    # -------------------------------------------------------------------------
+    def internal__reduce_keys(self):
+        ReduceKeys().update(**self.params.__dict__).run()
+
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
@@ -146,6 +151,7 @@ class SortByWordMatch(
     def run(self):
         """:meta private:"""
 
+        self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()

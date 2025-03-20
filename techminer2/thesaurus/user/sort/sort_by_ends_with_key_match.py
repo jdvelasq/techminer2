@@ -38,6 +38,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1751 to 1751
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
          File : example/thesaurus/demo.the.txt
       Pattern : BUSINESS
@@ -53,8 +58,6 @@ Example:
           BUSINESS; BUSINESSES
         THE_BANKING_BUSINESS
           THE_BANKING_BUSINESS
-        A_A_)_THEORY
-          A_A_)_THEORY
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -63,8 +66,11 @@ Example:
           A_BEHAVIOURAL_PERSPECTIVE
         A_BETTER_UNDERSTANDING
           A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 
@@ -75,6 +81,7 @@ import pandas as pd  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ..general.reduce_keys import ReduceKeys
 
 
 class SortByEndsWithKeyMatch(
@@ -110,6 +117,10 @@ class SortByEndsWithKeyMatch(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
+    def internal__reduce_keys(self):
+        ReduceKeys().update(**self.params.__dict__).run()
+
+    # -------------------------------------------------------------------------
     def internal__select_data_frame_rows(self):
 
         self.data_frame["__row_selected__"] = False
@@ -133,6 +144,7 @@ class SortByEndsWithKeyMatch(
     def run(self):
         """:meta private:"""
 
+        self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()

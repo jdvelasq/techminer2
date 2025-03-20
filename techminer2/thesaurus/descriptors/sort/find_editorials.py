@@ -67,7 +67,7 @@ Example:
 """
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin
-from .sort_by_word_match import SortByWordMatch
+from .sort_by_word_key_match import SortByWordKeyMatch
 
 EDITORIALS = [
     "CONFERENCE",
@@ -114,7 +114,7 @@ class FindEditorials(
         """:meta private:"""
 
         (
-            SortByWordMatch().update(**self.params.__dict__)
+            SortByWordKeyMatch().update(**self.params.__dict__)
             #
             # THESAURUS:
             .having_pattern(EDITORIALS)

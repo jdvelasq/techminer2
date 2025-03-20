@@ -77,6 +77,7 @@ from fuzzywuzzy import process  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
+from ..general.reduce_keys import ReduceKeys
 
 
 class SortByFuzzyKeyMatch(
@@ -110,6 +111,10 @@ class SortByFuzzyKeyMatch(
 
     #
     # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__reduce_keys(self):
+        ReduceKeys().update(**self.params.__dict__).run()
+
     # -------------------------------------------------------------------------
     def internal__select_data_frame_rows(self):
 
@@ -145,6 +150,7 @@ class SortByFuzzyKeyMatch(
     def run(self):
         """:meta private:"""
 
+        self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
