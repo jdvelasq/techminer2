@@ -61,12 +61,12 @@ def read_and_concatenate_files(files):
     for folder, file_name in files:
         dataframe = pd.read_csv(file_name, encoding="utf-8", on_bad_lines="skip")
         data.append(dataframe)
-        links[folder] = dataframe.Link.to_list()
+        if folder not in links:
+            links[folder] = []
+        links[folder] += dataframe.Link.to_list()
 
     concatenated_data = pd.concat(data, ignore_index=True)
     concatenated_data = concatenated_data.groupby("Link").agg(custom_agg).reset_index()
-    # concatenated_data = concatenated_data.drop_duplicates(subset=["Link"])
-    # concatenated_data = concatenated_data.reset_index(drop=True)
     concatenated_data = add_db_source_columns(concatenated_data, links)
     return concatenated_data
 

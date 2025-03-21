@@ -195,6 +195,7 @@ class CreateThesaurus(
             total=self.main_documents.shape[0],
             desc="  Homogenizing global references ",
             disable=self.params.tqdm_disable,
+            ncols=80,
         ):
 
             refs = self.references.copy()

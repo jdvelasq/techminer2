@@ -122,7 +122,11 @@ class RemoveCommonInitialWords(
                 text = pattern.sub("", text)
             return text
 
-        tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable)
+        tqdm.pandas(
+            desc="  Progress ",
+            disable=self.params.tqdm_disable,
+            ncols=80,
+        )
         sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)

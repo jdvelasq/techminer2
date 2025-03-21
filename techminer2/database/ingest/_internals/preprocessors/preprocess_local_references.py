@@ -10,7 +10,7 @@
 
 # >>> from techminer2.ingest._homogenize_global_references import homogenize_global_references
 # >>> homogenize_global_references(
-# ...     root_dir="example/", 
+# ...     root_dir="example/",
 # ... )
 # -- 001 -- Homogenizing global references
 #      ---> 1093 global references homogenized
@@ -35,6 +35,7 @@ def internal__preprocess_local_references(root_dir):
         pathlib.Path(root_dir) / "databases/database.csv.zip",
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     main_records_id = dataframe[dataframe.db_main].record_id.to_list()

@@ -53,6 +53,7 @@ def internal__preprocess_references(root_dir):
         zip(abbrs.source, abbrs.abbr_source_title),
         total=len(abbrs),
         desc="  Progress",
+        ncols=80,
     ):
 
         dataframe["raw_global_references"] = dataframe[

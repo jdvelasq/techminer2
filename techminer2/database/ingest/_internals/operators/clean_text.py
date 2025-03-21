@@ -81,6 +81,7 @@ def clean_text(text):
     text = text.str.replace(r"(\')(,\s)", r"\1 \2", regex=True)  # ,
     text = text.str.replace(r"(\w+)(\.\s)", r"\1 \2", regex=True)  # .
     text = text.str.replace(r"(\w+)(\.\.\s)", r"\1 . . ", regex=True)  # ..
+    text = text.str.replace(r"(\w+)(\.\.)$", r"\1 . .", regex=True)  # ..
 
     text = text.str.replace(r"(\w+)(\.)(\w+)", r"\1 . \3", regex=True)  # b.v
     text = text.str.replace(r"(\w+)(,)(\w+)", r"\1 , \3", regex=True)  # b.v

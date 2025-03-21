@@ -194,7 +194,9 @@ class ReplaceHyphenatedWords(
             return x
 
         tqdm.pandas(
-            desc="  Processing hyphenated words ", disable=self.params.tqdm_disable
+            desc="  Processing hyphenated words ",
+            disable=self.params.tqdm_disable,
+            ncols=80,
         )
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)

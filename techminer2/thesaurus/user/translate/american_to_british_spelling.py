@@ -144,7 +144,7 @@ class AmericanToBritishSpelling(
             return x
 
         sys.stderr.flush()
-        tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable)
+        tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable, ncols=80)
         self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
         tqdm.pandas(desc=None)
         sys.stderr.flush()

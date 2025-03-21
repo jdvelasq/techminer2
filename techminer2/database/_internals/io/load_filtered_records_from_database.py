@@ -73,6 +73,7 @@ def internal__load_filtered_records_from_database(params):
             file_path,
             encoding="utf-8",
             compression="zip",
+            low_memory=False,
         )
 
         criteria = {

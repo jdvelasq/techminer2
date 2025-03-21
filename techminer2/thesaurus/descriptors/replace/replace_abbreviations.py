@@ -153,6 +153,7 @@ class ReplaceAbbreviations(
             self.mapping.items(),
             desc="  Progress ",
             disable=self.params.tqdm_disable,
+            ncols=80,
         ):
             #
             # Replace abbreviations in descriptor keys

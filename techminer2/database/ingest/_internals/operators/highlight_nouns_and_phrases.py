@@ -146,6 +146,7 @@ def internal__highlight_nouns_and_phrases(
         dataframe.iterrows(),
         total=len(dataframe),
         desc=f"  Progres",
+        ncols=80,
     ):
 
         if pd.isna(row[dest]):
@@ -215,6 +216,26 @@ def internal__highlight_nouns_and_phrases(
             key=lambda x: (len(x.split(" ")), x),
             reverse=True,
         )
+
+        #
+        # Step 7: Remove roman numbers
+        #
+        roman_numbers = [
+            "i",
+            "ii",
+            "iii",
+            "iv",
+            "v",
+            "vi",
+            "vii",
+            "viii",
+            "ix",
+            "x",
+        ]
+        for roman_number in roman_numbers:
+            regex = r"(" + f"\( {roman_number} \)" + r")"
+            regex = re.compile(regex, re.IGNORECASE)
+            text = re.sub(regex, lambda z: z.group().lower(), text)
 
         if len(key_terms) > 0:
             for term in key_terms:

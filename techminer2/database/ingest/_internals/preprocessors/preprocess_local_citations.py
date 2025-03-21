@@ -24,6 +24,7 @@ def internal__preprocess_local_citations(root_dir):
         pathlib.Path(root_dir) / "databases/database.csv.zip",
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     # counts the appareances of each document in the local references

@@ -13,7 +13,7 @@ Import Scopus Data
 
 
 >>> from techminer2.database.ingest import ImportScopusData
->>> ImportScopusData(root_directory="t../m2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
+>>> ImportScopusData(root_directory="../tm2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
 
 
 # >>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS

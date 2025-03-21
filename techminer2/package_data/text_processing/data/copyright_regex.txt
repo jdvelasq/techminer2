@@ -1,65 +1,130 @@
+this work granted the annual award of the national academy of sciences of cuba for the year
 which permits unrestricted use , distribution , and reproduction in any medium
+universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
 icst institute for computer sciences , social informatics and telecommunications engineering
 italian association for traffic and transport engineering \( aiit \)
 international conference on information systems , logistics and supply chain
+creative commons attribution noncom mercial no derivatives 4\.0 international license
+creative commons attribution noncom mercial no derivatives 4\.0 international licence
+creative commons attribution non commercial no derivatives 4\.0 international license
+creative commons attribution non commercial no derivatives 4\.0 international licence
+creative commons attribu tion noncommercial no derivatives 4\.0 international license
+creative commons attribu tion noncommercial no derivatives 4\.0 international licence
+creative commons attrib ution noncommercial no derivatives 4\.0 international license
+creative commons attrib ution noncommercial no derivatives 4\.0 international licence
+creative com mons attribution noncommercial no derivatives 4\.0 international licence
+creative com mons attribution noncommercial no derivatives 4.0 international license
 \d{4} international institute for innovation , industrial engineering and entrepreneurship
+reprodution right holder universidad distrital franiso jose de caldas
+reprodution right holder universidad distrital franciso jose de caldas
 institute for transport studies within the european economic integration
 institute for transport studies in the european economic integration
+creative commons attribution noncommercial no derivatives 4\.0 international license
+creative commons attribution noncommercial no derivatives 4\.0 international licence
+revista facultad de ingenieria , universidad de antioquia
 all rights of reproduction in any form reserved
 the institution of engineering and technology \d{4}
+revista cientifica de la facultad de veterinaria
 international association of traffic and safety sciences
 aidi italian association of industrial operations professors
+\( \d{4} \) , universidad del zulia
 this is an open access article
-the cc by nc nd license
+tecnologia y ciencias del agua \.$
+revista ingenieria e investigacion editorial board
 operations and supply chain management forum
 licensee mdpi , basel , switzerland
+latin american center for informatics studies
+iop publishing ltd and sissa medialab
 international federation of operational research societies
+instituto de ciencias aplicadas y tecnologia
+https : / doi \. org
 https : / creativecommons \. org
+http : / doi \. org
+http : / creativecommons \. org
 faculty of transport and traffic engineering
+derechos reservados \. maracaibo , venezuela
 by the electric drive transportation association
 by nc nd 4 \. 0
 associacao portuguesa para o desenvolvimento regional
+\d{4} sociedad mexicana de ingenieria biomedica
 \d{4} mehdi nourinejad and matthew j
 \d{4} chinese institute of industrial engineers
 \d{4} american society of civil engineers
 \d{4} , technical university of liberec
+\( \d{4} \) universidad del zulia
+this work is licensed under
+this work is licenced under
 the editor \( s \)
+the authors , \d{4} \.$
 the author \( s \)
 roduction and operations management society
 international transactions in operational research
 international federation for information processing
 iise annual conference and expo
+facultad de economia y negocios
+cc by nc nd license
+cc by nc nd licence
 american society of civil engineers
 \d{4} vilnius gediminas technical university
 \d{4} institute of physics publishing
 \d{4} dime universita di genova
+\d{4} , universidad del zulia
 (\b[a-za-z]+\b\s)*springer naature b \. v
 wydawnictwo ekonomia i srodowisko
+universidad nacional de colombia
+universidad de antioquia \.$
 under exclusive license to
 under exclusive licence to
+revista facultad de ingenieria
+revista de la construccion
 national academy of sciences
+licensee : revista ingenieria
+facultad de ciencias veterinarias
+escuela de construccion civil
 elsevier b \. v
+corporacion universitaria lasallista \.$
 computers and industrial engineering
+centro de informacion tecnologica
+by nc nd 4\.0
+acerca de luz web
 \d{4} pontificia universidad javeriana
 \d{4} by the authors
 \d{4} by the author(s)?
+\d{4} \. formacion universitaria
 \d{4} , the author
 \d{4} , journal of(\s\b[a-za-z\+]+\b)+
+\d{4} , formacion universitaria
+\. the authors \.
+\. the author \.
 \( \d{4} \) (\b[a-za-z]+\b\s)+publishing
 \( \d{4} \) (\b[a-za-z]+\b\s)+publishers
 \( \d{4} \) (\b[a-za-z]+\b\s)+publications
+universidad alberto hurtado
 transportation research board
 networks published by
+jurnal penelitian psikologi
 informa uk limited
 ieom society international
+estoa , \d{4}
 emerald (group )?publishing
+electron j biotechnol
 copyright : \d{4}(\s\b[a-za-z\+]+\b)*
+chinese optics letters
+authors \d{4} \.$
+all rigths reserved
+all rights reseved
 all rights reserved
 all right reserved
+some rigths reserved
+some rights reseved
+some rights reserved
+some right reserved
 \d{4} world conference(\s\b[a-za-z\+]+\b)*
 \d{4} weva page
 \d{4} the authors
 \d{4} the author
+\d{4} terra latinoamericana
+\d{4} formacion universitaria
 \d{4} editorial office(\s\b[a-za-z\+]+\b)*
 \d{4} editora champagnat
 \d{4} , omniascience
@@ -71,6 +136,8 @@ all right reserved
 \d{4} , (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)*
 \d{4} , (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)+et al
+\. authors \.
+\. author \.
 (\b[a-za-z]+\b\s)*taylor and francis(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)* \. v
 wiley periodicals
@@ -79,16 +146,22 @@ published with(\s\b[a-za-z\+]+\b)+
 published by(\s\b[a-za-z\+]+\b)+
 proceedings of(\s\b[a-za-z0-9\+]+\b)+
 kedge bs
+interciencia association
+interciencia \d{4}
 igi global
 excelingtech pub
+derechos reservados
 copyright \d{4}
 \d{4} spie
+\d{4} interciencia
 \d{4} informs
 \d{4} ieee
+\d{4} estrategia
 \d{4} asce
 \d{4} (\b[a-za-z]+\b\s)+publishing
 \d{4} (\b[a-za-z]+\b\s)+publishers
 \d{4} (\b[a-za-z]+\b\s)+publications
+\d{4} (\b[a-za-z]+\b\s)+publicaciones
 \d{4} (\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
@@ -98,10 +171,24 @@ copyright \d{4}
 (\b[a-za-z]+\b\s)*conference proceedings(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*conference proceeding(\s\b[a-za-z\+]+\b)*
 licensee(\s\b[a-za-z\+]+\b)+
+cerealella
 (\b[a-za-z]+\b\s)+press
 (\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*revista(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*journal(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*inderscience(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*gmbh(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*elsevier(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*conferencia(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*conference(\s\b[a-za-z\+]+\b)*
+\d{4} ALCONPAT_INTERNACIONAL
+\. MEDICAL_EDUCATION \.$
+CENTRO_DE_CIENCIAS_APLICADAS_Y_DESARROLLO_TECNOLOGICO
+\d{4} CIENCIA , TECNOLOGIA_Y_FUTURO \.$
+(\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
+(\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
+(\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
+facultad(\s\b[a-za-z\+]+\b)+ \.$ 
+by VIRAL_HEPATITIS_SOCIETY
+anales de INVESTIGACION en arquitectura
+PONTIFICIA_UNIVERSIDAD_JAVERIANA
