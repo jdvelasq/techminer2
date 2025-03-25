@@ -1,4 +1,5 @@
 this work granted the annual award of the national academy of sciences of cuba for the year
+this research granted the \d{4} award of the cuban national academy of sciences
 which permits unrestricted use , distribution , and reproduction in any medium
 universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
 icst institute for computer sciences , social informatics and telecommunications engineering
@@ -14,7 +15,10 @@ creative commons attrib ution noncommercial no derivatives 4\.0 international li
 creative commons attrib ution noncommercial no derivatives 4\.0 international licence
 creative com mons attribution noncommercial no derivatives 4\.0 international licence
 creative com mons attribution noncommercial no derivatives 4.0 international license
+associacao sul rio grandense de pesquisadores them historia da educacao
 \d{4} international institute for innovation , industrial engineering and entrepreneurship
+\d{4} , instituto de fisica de liquidos y sistemas biologicos
+the terms and conditions of the creative commons attribution
 reprodution right holder universidad distrital franiso jose de caldas
 reprodution right holder universidad distrital franciso jose de caldas
 institute for transport studies within the european economic integration
@@ -26,10 +30,15 @@ all rights of reproduction in any form reserved
 the institution of engineering and technology \d{4}
 revista cientifica de la facultad de veterinaria
 international association of traffic and safety sciences
+centro de ciencias aplicadas y desarrollo tecnologico$
+centro de ciencias aplicadas y desarrollo tecnologico
 aidi italian association of industrial operations professors
+\d{4} ciencia , tecnologia y futuro \.$
 \( \d{4} \) , universidad del zulia
+universidad distrital francisco jose de caldas
 this is an open access article
 tecnologia y ciencias del agua \.$
+submitted for possible open access publication
 revista ingenieria e investigacion editorial board
 operations and supply chain management forum
 licensee mdpi , basel , switzerland
@@ -44,10 +53,11 @@ http : / creativecommons \. org
 faculty of transport and traffic engineering
 derechos reservados \. maracaibo , venezuela
 by the electric drive transportation association
-by nc nd 4 \. 0
 associacao portuguesa para o desenvolvimento regional
 \d{4} sociedad mexicana de ingenieria biomedica
+\d{4} mexican society of soil science
 \d{4} mehdi nourinejad and matthew j
+\d{4} ecopetrol s \. a \.
 \d{4} chinese institute of industrial engineers
 \d{4} american society of civil engineers
 \d{4} , technical university of liberec
@@ -58,19 +68,29 @@ the editor \( s \)
 the authors , \d{4} \.$
 the author \( s \)
 roduction and operations management society
+japan association of mineralogical sciences$
 international transactions in operational research
 international federation for information processing
+instituto tecnologico de costa rica
 iise annual conference and expo
+https : doi \. org
+https : creativecommons \. org
+http : doi \. org
+http : creativecommons \. org
+formacion universitaria all rights reserved
 facultad de economia y negocios
 cc by nc nd license
 cc by nc nd licence
+anales de investigacion en arquitectura
 american society of civil engineers
+\d{4}mexican society of soil science
 \d{4} vilnius gediminas technical university
 \d{4} institute of physics publishing
 \d{4} dime universita di genova
 \d{4} , universidad del zulia
 (\b[a-za-z]+\b\s)*springer naature b \. v
 wydawnictwo ekonomia i srodowisko
+universidad ort uruguay \.
 universidad nacional de colombia
 universidad de antioquia \.$
 under exclusive license to
@@ -85,7 +105,10 @@ elsevier b \. v
 corporacion universitaria lasallista \.$
 computers and industrial engineering
 centro de informacion tecnologica
+cc by nc nd
+by viral hepatitis society
 by nc nd 4\.0
+alexandru borza botanic garden
 acerca de luz web
 \d{4} pontificia universidad javeriana
 \d{4} by the authors
@@ -94,39 +117,52 @@ acerca de luz web
 \d{4} , the author
 \d{4} , journal of(\s\b[a-za-z\+]+\b)+
 \d{4} , formacion universitaria
+\d{4} (\b[a-za-z]+\b\s)+ association \.
 \. the authors \.
 \. the author \.
+\. medical education \.$
 \( \d{4} \) (\b[a-za-z]+\b\s)+publishing
 \( \d{4} \) (\b[a-za-z]+\b\s)+publishers
 \( \d{4} \) (\b[a-za-z]+\b\s)+publications
+(\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
+(\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
+(\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
+vaginalis \. \d{4}$
 universidad alberto hurtado
 transportation research board
+some rigths reserved
+some rights reseved
+some rights reserved
+some right reserved
+reproduction right holder
+pontificia universidad javeriana
+orientalis \. \d{4}$
 networks published by
 jurnal penelitian psikologi
 informa uk limited
 ieom society international
 estoa , \d{4}
+escuela politecnica nacional
 emerald (group )?publishing
 electron j biotechnol
 copyright : \d{4}(\s\b[a-za-z\+]+\b)*
 chinese optics letters
+centro de ciencias$
 authors \d{4} \.$
 all rigths reserved
 all rights reseved
 all rights reserved
 all right reserved
-some rigths reserved
-some rights reseved
-some rights reserved
-some right reserved
 \d{4} world conference(\s\b[a-za-z\+]+\b)*
 \d{4} weva page
 \d{4} the authors
 \d{4} the author
 \d{4} terra latinoamericana
+\d{4} tec empresarial
 \d{4} formacion universitaria
 \d{4} editorial office(\s\b[a-za-z\+]+\b)*
 \d{4} editora champagnat
+\d{4} alconpat internacional
 \d{4} , omniascience
 \d{4} , editorial(\s\b[a-za-z\+]+\b)+
 \d{4} , (\b[a-za-z]+\b\s)+publishing
@@ -135,6 +171,7 @@ some right reserved
 \d{4} , (\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)*
 \d{4} , (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)*
 \d{4} , (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
+\d{4} , (\b[a-za-z]+\b\s)*corporacion(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)+et al
 \. authors \.
 \. author \.
@@ -146,10 +183,14 @@ published with(\s\b[a-za-z\+]+\b)+
 published by(\s\b[a-za-z\+]+\b)+
 proceedings of(\s\b[a-za-z0-9\+]+\b)+
 kedge bs
+ista dyna
 interciencia association
 interciencia \d{4}
 igi global
+facultad(\s\b[a-za-z\+]+\b)+ \.$
 excelingtech pub
+evista dyna
+elfos scientiae
 derechos reservados
 copyright \d{4}
 \d{4} spie
@@ -158,13 +199,18 @@ copyright \d{4}
 \d{4} ieee
 \d{4} estrategia
 \d{4} asce
+\d{4} (\b[a-za-z]+\b\s)+society(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)+publishing
 \d{4} (\b[a-za-z]+\b\s)+publishers
 \d{4} (\b[a-za-z]+\b\s)+publications
 \d{4} (\b[a-za-z]+\b\s)+publicaciones
 \d{4} (\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)*universitatii(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)*instituto(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)*institute(\s\b[a-za-z\+]+\b)*
+\d{4} (\b[a-za-z]+\b\s)*corporacion(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z\+]+\b\s)+school
 \d{4} (\b[a-za-z\+]+\b\s)+journal
 (\b[a-za-z]+\b\s)*special issue(\s\b[a-za-z\+]+\b)*
@@ -173,22 +219,19 @@ copyright \d{4}
 licensee(\s\b[a-za-z\+]+\b)+
 cerealella
 (\b[a-za-z]+\b\s)+press
+(\b[a-za-z]+\b\s)*universitas(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*revista(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*journal(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*instituto(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*institute(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*inderscience(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*gmbh(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*elsevier(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*conferencia(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*conference(\s\b[a-za-z\+]+\b)*
+(\b[a-za-z]+\b\s)*asociacion(\s\b[a-za-z\+]+\b)*
+\d{4} instituto de ALTOS_ESTUDIOS DE_SALUD_PUBLICA
+\d{4} , instituto de ALTOS_ESTUDIOS DE_SALUD_PUBLICA
+universidad del zulia
 \d{4} ALCONPAT_INTERNACIONAL
-\. MEDICAL_EDUCATION \.$
-CENTRO_DE_CIENCIAS_APLICADAS_Y_DESARROLLO_TECNOLOGICO
-\d{4} CIENCIA , TECNOLOGIA_Y_FUTURO \.$
-(\b[a-za-z]+\b\s)*university(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
-(\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
-(\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
-facultad(\s\b[a-za-z\+]+\b)+ \.$ 
-by VIRAL_HEPATITIS_SOCIETY
-anales de INVESTIGACION en arquitectura
-PONTIFICIA_UNIVERSIDAD_JAVERIANA
