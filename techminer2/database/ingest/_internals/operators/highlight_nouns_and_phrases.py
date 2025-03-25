@@ -93,13 +93,9 @@ def clean_author_and_index_keywords(terms):
     terms = terms.to_list()
     terms = [term for term in terms if len(term) > 2]
     terms = [term for term in terms if not any(char.isdigit() for char in term)]
-    ## terms = [term for term in terms if len(term.split(" ")) > 1]
     terms = sorted(terms, key=lambda x: (len(x.split(" ")), x), reverse=True)
     assert "it" not in terms
     return terms
-
-
-# ------------------------------------------------------------------------------
 
 
 # ------------------------------------------------------------------------------
@@ -145,7 +141,7 @@ def internal__highlight_nouns_and_phrases(
     for index, row in tqdm(
         dataframe.iterrows(),
         total=len(dataframe),
-        desc=f"  Progres",
+        desc=f"  Progress",
         ncols=80,
     ):
 
@@ -167,6 +163,14 @@ def internal__highlight_nouns_and_phrases(
         spacy_key_terms = [term for term in spacy_key_terms if "." not in term]
         spacy_key_terms = [term for term in spacy_key_terms if "(" not in term]
         spacy_key_terms = [term for term in spacy_key_terms if ")" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "[" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "]" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "%" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "&" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "!" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "'" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if '"' not in term]
+
         spacy_key_terms = [
             term
             for term in spacy_key_terms
@@ -243,28 +247,6 @@ def internal__highlight_nouns_and_phrases(
                 text = re.sub(
                     regex, lambda z: z.group().upper().replace(" ", "_"), text
                 )
-
-        #
-        # Step 7: Correct some errors:
-        #
-        # bad_highlights = [
-        #     ()
-
-        #
-        #
-        # Step 6: Replace THE_AUTHOR in copyright phrase
-        #
-        # YYYY THE_AUTHOR ( s ) .
-        # pattern = re.compile(r"\b\d{4} THE_AUTHOR \( s \) \.", re.IGNORECASE)
-        # text = re.sub(pattern, lambda z: z.group().lower().replace("_", " "), text)
-        # #
-        # # THE_AUTHOR ( s ) YYYY.
-        # pattern = re.compile(r"THE_AUTHOR \( s \) \d{4} \.", re.IGNORECASE)
-        # text = re.sub(pattern, lambda z: z.group().lower().replace("_", " "), text)
-        # #
-        # # YYYY BY_THE_AUTHORS
-        # pattern = re.compile(r"\d{4} BY_THE_AUTHORS", re.IGNORECASE)
-        # text = re.sub(pattern, lambda z: z.group().lower().replace("_", " "), text)
 
         dataframe.loc[index, dest] = text
 
