@@ -10,7 +10,7 @@ import sys
 
 def internal__preprocess_descriptors(root_directory):
 
-    from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
+    from .....thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
 
     sys.stderr.write("INFO  Creating 'descriptors' column\n")
     sys.stderr.flush()
