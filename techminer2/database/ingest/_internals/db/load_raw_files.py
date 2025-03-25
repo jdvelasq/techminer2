@@ -66,6 +66,7 @@ def read_and_concatenate_files(files):
         links[folder] += dataframe.Link.to_list()
 
     concatenated_data = pd.concat(data, ignore_index=True)
+    # concatenated_data = concatenated_data.drop_duplicates()
     concatenated_data = concatenated_data.groupby("Link").agg(custom_agg).reset_index()
     concatenated_data = add_db_source_columns(concatenated_data, links)
     return concatenated_data
