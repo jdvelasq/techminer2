@@ -43,7 +43,7 @@ def internal__clean_raw_keywords(
     )
 
 
-def remove_quotes(string_list):
+def remove_quotes_and_parentheses(string_list):
     """Remove quotes from text."""
     string_list = [
         z[1:-1] if z.startswith("'") and z.endswith("'") else z for z in string_list
@@ -52,12 +52,17 @@ def remove_quotes(string_list):
         z[1:-1] if z.startswith('"') and z.endswith('"') else z for z in string_list
     ]
     string_list = [
-        z[1:] if z.startswith('"') and '"' not in z[1:] else z for z in string_list
+        z[1:-1] if z.startswith("(") and z.endswith(")") else z for z in string_list
     ]
     string_list = [
-        z[1:] if z.startswith("'") and "'" not in z[1:] else z for z in string_list
+        z[1:-1] if z.startswith("[") and z.endswith("]") else z for z in string_list
     ]
+
+    ## string_list = [z.replace('"', "**").replace('"', "**") for z in string_list]
+    string_list = [z for z in string_list if not z.isdigit()]
+    string_list = [z for z in string_list if z != ""]
     string_list = [z.strip() for z in string_list]
+
     return string_list
 
 
@@ -95,12 +100,13 @@ def clean_raw_keywords(text):
     # Remove single and double quotes
     text = text.str.split("; ")
     text = text.map(lambda x: [z.strip() for z in x], na_action="ignore")
-    text = text.map(remove_quotes, na_action="ignore")
+    text = text.map(remove_quotes_and_parentheses, na_action="ignore")
     text = text.str.join("; ")
 
     # Replace possessives
     text = text.str.replace("'S ", " ", regex=False)
-    text = text.str.replace("' ", " ", regex=False)
+    text = text.str.replace("'", " ", regex=False)
+    text = text.str.replace("^\s+", "", regex=True)
 
     # Replace '&' with 'AND'
     text = text.str.replace("&", " AND ", regex=False)
@@ -131,5 +137,6 @@ def clean_raw_keywords(text):
     text = text.str.replace(")_", ") ", regex=False)
     text = text.str.replace("_[", " [", regex=False)
     text = text.str.replace("]_", "] ", regex=False)
+    text = text.str.replace("; _", "; ", regex=False)
 
     return text
