@@ -64,6 +64,10 @@ def clean_text(text):
     text = text.str.replace(";", ".", regex=False)
     text = text.str.replace(r"(", r" ( ", regex=False)  # (
     text = text.str.replace(r")", r" ) ", regex=False)  # )
+
+    text = text.str.replace(r"[", r" [ ", regex=False)  # (
+    text = text.str.replace(r"]", r" ] ", regex=False)  # )
+
     text = text.str.replace(r"$", r" $ ", regex=False)  # $
     text = text.str.replace(r"/", r" / ", regex=False)  # /
     text = text.str.replace(r"?", r" ? ", regex=False)  # ?
@@ -75,26 +79,48 @@ def clean_text(text):
     text = text.str.replace(r":", r" : ", regex=False)  # :
     text = text.str.replace(r"%", r" % ", regex=False)  # %
 
+    text = text.str.replace(r"<", r" < ", regex=False)  # <
+    text = text.str.replace(r">", r" > ", regex=False)  # >
+    text = text.str.replace(r"<=", r" <= ", regex=False)  # <=
+    text = text.str.replace(r">=", r" >= ", regex=False)  # >=
+    text = text.str.replace(r"==", r" == ", regex=False)  # ==
+    text = text.str.replace(r"!=", r" == ", regex=False)  # !=
+
     text = text.str.replace(r"&", r" and ", regex=False)  # and
 
     text = text.str.replace(r"(\w+)(,\s)", r"\1 \2", regex=True)  # ,
+    text = text.str.replace(r"(\w+)(,)(\w+)\s", r"\1 , \3", regex=True)  # ,
+    text = text.str.replace(r"\s,(\w+)\s", r" , \1", regex=True)  # ,
     text = text.str.replace(r"(\')(,\s)", r"\1 \2", regex=True)  # ,
     text = text.str.replace(r"(\w+)(\.\s)", r"\1 \2", regex=True)  # .
     text = text.str.replace(r"(\w+)(\.\.\s)", r"\1 . . ", regex=True)  # ..
     text = text.str.replace(r"(\w+)(\.\.)$", r"\1 . .", regex=True)  # ..
+    text = text.str.replace(r"(\w+)(,\.)$", r"\1 , .", regex=True)  # ..
+
+    text = text.str.replace(r"(\w+)('\s)", r"\1 \2", regex=True)  # '
+    text = text.str.replace(r"(\w+)(',)", r"\1 ' ,", regex=True)  # '
+    text = text.str.replace(r"(\w+)(,')", r"\1 , '", regex=True)  # '
+    text = text.str.replace(r"(\w+)(\.')", r"\1 . '", regex=True)  # '
+    text = text.str.replace(r"(\w+)('\.)", r"\1 ' .", regex=True)  # '
+    text = text.str.replace(r"''(\w+)", r"' ' \1", regex=True)  # '
+    text = text.str.replace(r"'(\w+)", r"' \1", regex=True)  # '
 
     text = text.str.replace(r"(\w+)(\.)(\w+)", r"\1 . \3", regex=True)  # b.v
     text = text.str.replace(r"(\w+)(,)(\w+)", r"\1 , \3", regex=True)  # b.v
+    text = text.str.replace(r" \.(\w+)", r" . \1", regex=True)  # b.v
     text = text.str.replace(r"(\w+)(\.)(,\s)", r"\1 . \3", regex=True)  # e. g.,
+    text = text.str.replace(r"(\w+)(,)(\w+)", r"\1 , \3", regex=True)  # b.v
 
     text = text.str.replace(r"(\w+)\.$", r"\1 .", regex=True)  # .
     text = text.str.replace(r"(\w+)'s(\b)", r"\1\2", regex=True)
     text = text.str.replace(r"(\w+)'(\s)", r"\1\2", regex=True)  # 's  # s
+    text = text.str.replace(r"' .'", r"' , '", regex=False)
     text = text.str.replace("—", "-", regex=False)
     text = text.str.replace("-", " ", regex=False)
 
     # digits
     text = text.str.replace(r"(\d+) (\.) (\d+)", r"\1.\3", regex=True)  # 1 . 2
+    text = text.str.replace(r"(\d+) (,) (\d+)", r"\1.\3", regex=True)  # 1 , 2
 
     # remove all non-ascii characters
     text = text.str.normalize("NFKD")
