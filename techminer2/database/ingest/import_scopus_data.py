@@ -34,6 +34,7 @@ from ._internals.db import (
     internal__create_project_structure,
     internal__drop_empty_columns,
     internal__load_raw_files,
+    internal__remove_non_english_abstracts,
     internal__rename_columns,
 )
 from ._internals.db.report_imported_records import internal__report_imported_records
@@ -104,6 +105,7 @@ class ImportScopusData(
         # PHASE 1: Preparing database files and folders
         # ---------------------------------------------------------------------------------
         #
+        internal__remove_non_english_abstracts(root_directory)
         internal__compress_raw_files(root_directory)
         internal__create_project_structure(root_directory)
         internal__load_raw_files(root_directory)
