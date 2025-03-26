@@ -237,7 +237,7 @@ def internal__highlight_nouns_and_phrases(
             "x",
         ]
         for roman_number in roman_numbers:
-            regex = r"(" + f"\( {roman_number} \)" + r")"
+            regex = r"(\( {roman_number} )\)"
             regex = re.compile(regex, re.IGNORECASE)
             text = re.sub(regex, lambda z: z.group().lower(), text)
 
