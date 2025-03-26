@@ -1,4 +1,5 @@
 this work granted the annual award of the national academy of sciences of cuba for the year
+\d{4} , centro de investigacion de la facultad de arquitectura y urbanismo , universidad de cuenca
 this research granted the \d{4} award of the cuban national academy of sciences
 which permits unrestricted use , distribution , and reproduction in any medium
 universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
@@ -25,8 +26,14 @@ institute for transport studies within the european economic integration
 institute for transport studies in the european economic integration
 creative commons attribution noncommercial no derivatives 4\.0 international license
 creative commons attribution noncommercial no derivatives 4\.0 international licence
+\d{4} , rev \. mex \. ing \. quimica
+\d{4} , instituto de altos estudios de salud publica
+\( \d{4} \) , \( universidad de antioquia \)
+\( \d{4} \) , \( corporacion universitaria lasallista \)
 revista facultad de ingenieria , universidad de antioquia
 all rights of reproduction in any form reserved
+\d{4} universidad nacional de nordeste ( unne )
+\d{4} instituto de altos estudios de salud publica
 the institution of engineering and technology \d{4}
 revista cientifica de la facultad de veterinaria
 international association of traffic and safety sciences
@@ -34,9 +41,11 @@ centro de ciencias aplicadas y desarrollo tecnologico$
 centro de ciencias aplicadas y desarrollo tecnologico
 aidi italian association of industrial operations professors
 \d{4} ciencia , tecnologia y futuro \.$
+\( cc by 4\.0 \) share adapt
 \( \d{4} \) , universidad del zulia
 universidad distrital francisco jose de caldas
 this is an open access article
+the national bureau of asian research
 tecnologia y ciencias del agua \.$
 submitted for possible open access publication
 revista ingenieria e investigacion editorial board
@@ -57,6 +66,7 @@ associacao portuguesa para o desenvolvimento regional
 \d{4} sociedad mexicana de ingenieria biomedica
 \d{4} mexican society of soil science
 \d{4} mehdi nourinejad and matthew j
+\d{4} indian drug manufacturers ' association
 \d{4} ecopetrol s \. a \.
 \d{4} chinese institute of industrial engineers
 \d{4} american society of civil engineers
@@ -68,6 +78,7 @@ the editor \( s \)
 the authors , \d{4} \.$
 the author \( s \)
 roduction and operations management society
+mexican society of soil science
 japan association of mineralogical sciences$
 international transactions in operational research
 international federation for information processing
@@ -79,6 +90,7 @@ http : doi \. org
 http : creativecommons \. org
 formacion universitaria all rights reserved
 facultad de economia y negocios
+electron \. j \. biotechnol
 cc by nc nd license
 cc by nc nd licence
 anales de investigacion en arquitectura
@@ -88,6 +100,9 @@ american society of civil engineers
 \d{4} institute of physics publishing
 \d{4} dime universita di genova
 \d{4} , universidad del zulia
+\d{4} , revistalasallista de investigacion
+\d{4} , revistafacultad de ingenieria
+\d{4} , revistade la construccion
 (\b[a-za-z]+\b\s)*springer naature b \. v
 wydawnictwo ekonomia i srodowisko
 universidad ort uruguay \.
@@ -95,6 +110,7 @@ universidad nacional de colombia
 universidad de antioquia \.$
 under exclusive license to
 under exclusive licence to
+the cotton foundation \d{4}
 revista facultad de ingenieria
 revista de la construccion
 national academy of sciences
@@ -110,7 +126,9 @@ by viral hepatitis society
 by nc nd 4\.0
 alexandru borza botanic garden
 acerca de luz web
+\d{4} produccion y limpia
 \d{4} pontificia universidad javeriana
+\d{4} jmir research protocols
 \d{4} by the authors
 \d{4} by the author(s)?
 \d{4} \. formacion universitaria
@@ -128,6 +146,7 @@ acerca de luz web
 (\b[a-za-z]+\b\s)*universitat(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
 (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)* , (\b[a-za-z]+\b\s) \.$
 vaginalis \. \d{4}$
+universidad del zulia
 universidad alberto hurtado
 transportation research board
 some rigths reserved
@@ -149,6 +168,7 @@ copyright : \d{4}(\s\b[a-za-z\+]+\b)*
 chinese optics letters
 centro de ciencias$
 authors \d{4} \.$
+attribution 4\.0 international
 all rigths reserved
 all rights reseved
 all rights reserved
@@ -159,11 +179,13 @@ all right reserved
 \d{4} the author
 \d{4} terra latinoamericana
 \d{4} tec empresarial
+\d{4} plos pathogens
 \d{4} formacion universitaria
 \d{4} editorial office(\s\b[a-za-z\+]+\b)*
 \d{4} editora champagnat
 \d{4} alconpat internacional
 \d{4} , omniascience
+\d{4} , formacionuniversitaria
 \d{4} , editorial(\s\b[a-za-z\+]+\b)+
 \d{4} , (\b[a-za-z]+\b\s)+publishing
 \d{4} , (\b[a-za-z]+\b\s)+publishers
@@ -173,6 +195,7 @@ all right reserved
 \d{4} , (\b[a-za-z]+\b\s)*universidad(\s\b[a-za-z\+]+\b)*
 \d{4} , (\b[a-za-z]+\b\s)*corporacion(\s\b[a-za-z\+]+\b)*
 \d{4} (\b[a-za-z]+\b\s)+et al
+\. sausages \.
 \. authors \.
 \. author \.
 (\b[a-za-z]+\b\s)*taylor and francis(\s\b[a-za-z\+]+\b)*
@@ -218,6 +241,7 @@ copyright \d{4}
 (\b[a-za-z]+\b\s)*conference proceeding(\s\b[a-za-z\+]+\b)*
 licensee(\s\b[a-za-z\+]+\b)+
 cerealella
+australis
 (\b[a-za-z]+\b\s)+press
 (\b[a-za-z]+\b\s)*universitas(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*springer(\s\b[a-za-z\+]+\b)*
@@ -231,7 +255,3 @@ cerealella
 (\b[a-za-z]+\b\s)*conferencia(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*conference(\s\b[a-za-z\+]+\b)*
 (\b[a-za-z]+\b\s)*asociacion(\s\b[a-za-z\+]+\b)*
-\d{4} instituto de ALTOS_ESTUDIOS DE_SALUD_PUBLICA
-\d{4} , instituto de ALTOS_ESTUDIOS DE_SALUD_PUBLICA
-universidad del zulia
-\d{4} ALCONPAT_INTERNACIONAL
