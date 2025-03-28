@@ -150,15 +150,25 @@ def internal__highlight_nouns_and_phrases(
 
         text = row[dest]
 
-        #
-        # Step 1: Collect noun phrases using different packages
-        #
         key_terms = []
 
-        # TextBlob
+        #
+        # Step 1: Extract all text between parentheses
+        #
+        abbreviations = re.findall(r"\((.*?)\)", text)
+        abbreviations = [t.strip().upper() for t in abbreviations]
+        abbreviations = [t for t in abbreviations if all(c.isalnum() for c in t)]
+        abbreviations = list(set(abbreviations))
+        key_terms += abbreviations
+
+        #
+        # Step 2: Collect noun phrases using TextBlob
+        #
         key_terms += [str(phrase) for phrase in TextBlob(text).noun_phrases]
 
-        # spaCy
+        #
+        # Step 3: Collect noun phrases using spaCy
+        #
         spacy_key_terms = [chunk.text for chunk in spacy_nlp(text).noun_chunks]
         spacy_key_terms = [term for term in spacy_key_terms if "." not in term]
         spacy_key_terms = [term for term in spacy_key_terms if "(" not in term]
@@ -179,7 +189,7 @@ def internal__highlight_nouns_and_phrases(
         key_terms += spacy_key_terms
 
         #
-        # Step 2: Remove stopwords and phrases with numbers
+        # Step 4: Remove stopwords and phrases with numbers
         #
         key_terms = list(set(key_terms))
         key_terms = [term for term in key_terms if term not in stopwords]
@@ -190,13 +200,13 @@ def internal__highlight_nouns_and_phrases(
         ]
 
         #
-        # Step 3: Adds author and index keywords / known noun phrases
+        # Step 5: Adds author and index keywords / known noun phrases
         #
         key_terms += [k for k in author_and_index_keywords if k in row[dest]]
         key_terms += [k for k in known_noun_phrases if k in row[dest]]
 
         #
-        # Step 4: Mark connectors
+        # Step 6: Mark connectors
         #
         current_connectors = [t for t in connectors if t in row[dest]]
         if len(current_connectors) > 0:
@@ -205,7 +215,7 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
 
         #
-        # Step 5: Mark copyright text
+        # Step 7: Mark copyright text
         #
         for regex in copyright_regex:
             regex = r"(" + regex + r")"
@@ -213,7 +223,7 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
 
         #
-        # Step 6: Replace noun phrases and authors and index keywords in the text
+        # Step 8: Replace noun phrases and authors and index keywords in the text
         #
         key_terms = sorted(
             key_terms,
@@ -222,7 +232,7 @@ def internal__highlight_nouns_and_phrases(
         )
 
         #
-        # Step 7: Remove roman numbers
+        # Step 9: Remove roman numbers
         #
         roman_numbers = [
             "i",
@@ -237,10 +247,13 @@ def internal__highlight_nouns_and_phrases(
             "x",
         ]
         for roman_number in roman_numbers:
-            regex = r"(\( {roman_number} )\)"
+            regex = r"(\( {roman_number.upper()} )\)"
             regex = re.compile(regex, re.IGNORECASE)
             text = re.sub(regex, lambda z: z.group().lower(), text)
 
+        #
+        # Step 10: Highlight key terms
+        #
         if len(key_terms) > 0:
             for term in key_terms:
                 regex = re.compile(r"\b" + re.escape(term) + r"\b")
