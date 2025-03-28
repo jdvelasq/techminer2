@@ -130,7 +130,10 @@ class ThesaurusMixin:
 
         # hyphen-insensitive matching
         data_frame["fingerprint"] = (
-            data_frame["fingerprint"].str.replace("_", " ").replace("-", " ")
+            data_frame["fingerprint"]
+            .str.replace("_", " ")
+            .str.replace("-", " ")
+            .str.replace(".", "")
         )
 
         # case-insensitive matching
@@ -236,26 +239,6 @@ class ThesaurusMixin:
                 file.write(row.key + "\n")
                 for value in row.value.split("; "):
                     file.write(f"    {value}\n")
-
-    # # -------------------------------------------------------------------------
-    # def internal__write_thesaurus_mapping_to_disk(self):
-
-    #     for key in self.findings.keys():
-    #         self.mapping.pop(key)
-
-    #     with open(self.thesaurus_path, "w", encoding="utf-8") as file:
-
-    #         # write the found keys
-    #         for key in sorted(self.findings.keys()):
-    #             file.write(key + "\n")
-    #             for item in self.findings[key].split("; "):
-    #                 file.write("    " + item + "\n")
-
-    #         # write the remaining keys
-    #         for key in sorted(self.mapping.keys()):
-    #             file.write(key + "\n")
-    #             for item in self.mapping[key].split("; "):
-    #                 file.write("    " + item + "\n")
 
 
 # =============================================================================

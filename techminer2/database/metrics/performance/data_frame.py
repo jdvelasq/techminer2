@@ -82,13 +82,15 @@ class DataFrame(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_1_load_the_database(self):
-        return internal__load_filtered_records_from_database(params=self.params)
+    def step_01_load_the_database(self):
+        self.data_frame = internal__load_filtered_records_from_database(
+            params=self.params
+        )
 
     # -------------------------------------------------------------------------
-    def _step_2_select_metric_fields(self, data_frame):
-        return (
-            data_frame[
+    def step_02_select_metric_fields(self):
+        self.data_frame = (
+            self.data_frame[
                 [
                     self.params.field,
                     "global_citations",
@@ -101,10 +103,10 @@ class DataFrame(
         )
 
     # -------------------------------------------------------------------------
-    def _step_3_explode(self, data_frame):
+    def step_03_explode_data_frame(self):
 
         # Explode terms in field
-        data_frame = data_frame.copy()
+        data_frame = self.data_frame.copy()
         data_frame[self.params.field] = data_frame[self.params.field].str.split("; ")
         data_frame = data_frame.explode(self.params.field)
 
@@ -125,12 +127,12 @@ class DataFrame(
 
         data_frame = data_frame.reset_index(drop=True)
 
-        return data_frame
+        self.data_frame = data_frame
 
     # -------------------------------------------------------------------------
-    def _step_4_compute_initial_performance_metrics(self, data_frame):
-        data_frame["OCC"] = 1
-        grouped = data_frame.groupby(self.params.field).agg(
+    def step_04_compute_initial_performance_metrics(self):
+        self.data_frame["OCC"] = 1
+        grouped = self.data_frame.groupby(self.params.field).agg(
             {
                 "OCC": "sum",
                 "global_citations": "sum",
@@ -139,12 +141,13 @@ class DataFrame(
             }
         )
         grouped = grouped.rename(columns={"year": "first_publication_year"})
-        grouped["last_year"] = data_frame.year.max()
-        return grouped
+        grouped["last_year"] = self.data_frame.year.max()
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_5_compute_derived_performance_metrics(self, grouped):
+    def step_05_compute_derived_performance_metrics(self):
 
+        grouped = self.grouped.copy()
         grouped["age"] = grouped["last_year"] - grouped["first_publication_year"] + 1
         grouped["global_citations_per_year"] = (
             grouped["global_citations"] / grouped["age"]
@@ -159,10 +162,13 @@ class DataFrame(
         grouped["local_citations_per_document"] = (
             grouped["local_citations"] / grouped["OCC"]
         )
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_6_compute_impact_metrics(self, data_frame, grouped):
+    def step_06_compute_impact_metrics(self):
+
+        data_frame = self.data_frame.copy()
+        grouped = self.grouped.copy()
 
         # H-index
         h_indexes = data_frame.query("global_citations >= position")
@@ -186,10 +192,10 @@ class DataFrame(
         grouped = grouped.assign(m_index=grouped.h_index / grouped.age)
         grouped["m_index"] = grouped.m_index.round(decimals=2)
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _sort_data_frame_by_metric(self, data_frame, metric):
+    def sort_data_frame_by_metric(self, data_frame, metric):
 
         data_frame = data_frame.copy()
         data_frame["_name_"] = data_frame.index.tolist()
@@ -203,28 +209,33 @@ class DataFrame(
         return data_frame
 
     # -------------------------------------------------------------------------
-    def _step_7_add_rank_columns(self, grouped):
+    def step_07_remove_stopwords(self):
 
-        grouped = self._sort_data_frame_by_metric(grouped, "local_citations")
-        grouped.insert(0, "rank_lcs", range(1, len(grouped) + 1))
-
-        grouped = self._sort_data_frame_by_metric(grouped, "global_citations")
-        grouped.insert(0, "rank_gcs", range(1, len(grouped) + 1))
-
-        grouped = self._sort_data_frame_by_metric(grouped, "OCC")
-        grouped.insert(0, "rank_occ", range(1, len(grouped) + 1))
-
-        return grouped
-
-    # -------------------------------------------------------------------------
-    def _step_8_remove_stopwords(self, grouped):
-
+        grouped = self.grouped.copy()
         stopwords = internal__load_user_stopwords(params=self.params)
         grouped = grouped.drop(stopwords, axis=0, errors="ignore")
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_9_filter_by_term_occurrences_range(self, grouped):
+    def step_08_add_rank_columns(self):
+
+        grouped = self.grouped.copy()
+
+        grouped = self.sort_data_frame_by_metric(grouped, "local_citations")
+        grouped.insert(0, "rank_lcs", range(1, len(grouped) + 1))
+
+        grouped = self.sort_data_frame_by_metric(grouped, "global_citations")
+        grouped.insert(0, "rank_gcs", range(1, len(grouped) + 1))
+
+        grouped = self.sort_data_frame_by_metric(grouped, "OCC")
+        grouped.insert(0, "rank_occ", range(1, len(grouped) + 1))
+
+        self.grouped = grouped
+
+    # -------------------------------------------------------------------------
+    def step_09_filter_by_term_occurrences_range(self):
+
+        grouped = self.grouped.copy()
 
         if self.params.term_occurrences_range is None:
             return grouped
@@ -236,10 +247,12 @@ class DataFrame(
         if max_value is not None:
             grouped = grouped[grouped["OCC"] <= max_value]
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_10_filter_by_term_citations_range(self, grouped):
+    def step_10_filter_by_term_citations_range(self):
+
+        grouped = self.grouped.copy()
 
         if self.params.term_citations_range is None:
             return grouped
@@ -251,10 +264,12 @@ class DataFrame(
         if max_value is not None:
             grouped = grouped[grouped["global_citations"] <= max_value]
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_11_filter_by_terms_in(self, grouped):
+    def step_11_filter_by_terms_in(self):
+
+        grouped = self.grouped.copy()
 
         if self.params.terms_in is None:
             return grouped
@@ -262,18 +277,25 @@ class DataFrame(
         if self.params.terms_in is not None:
             grouped = grouped.loc[self.params.terms_in, :]
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_12_filter_by_top_n_terms(self, grouped):
+    def step_12_filter_by_top_n_terms(self):
+
+        grouped = self.sort_data_frame_by_metric(
+            data_frame=self.grouped.copy(),
+            metric=self.params.terms_order_by,
+        )
 
         if self.params.top_n is not None:
             grouped = grouped.head(self.params.top_n)
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def _step_13_check_field_types(self, grouped):
+    def step_13_check_field_types(self):
+
+        grouped = self.grouped.copy()
 
         if "OCC" in grouped.columns:
             grouped["OCC"] = grouped["OCC"].astype(int)
@@ -290,11 +312,12 @@ class DataFrame(
         if "g_index" in grouped.columns:
             grouped["g_index"] = grouped["g_index"].astype(int)
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
-    def step_14_add_term_with_counters_column(self, grouped):
+    def step_14_add_term_with_counters_column(self):
 
+        grouped = self.grouped.copy()
         grouped["counters"] = grouped.index.astype(str)
 
         n_zeros = len(str(grouped["OCC"].max()))
@@ -305,78 +328,24 @@ class DataFrame(
             lambda x: f"{x:0{n_zeros}d}"
         )
 
-        return grouped
+        self.grouped = grouped
 
     # -------------------------------------------------------------------------
     def run(self):
 
-        data_frame = self._step_1_load_the_database()
-        data_frame = self._step_2_select_metric_fields(data_frame)
-        data_frame = self._step_3_explode(data_frame)
-        grouped = self._step_4_compute_initial_performance_metrics(data_frame)
-        grouped = self._step_5_compute_derived_performance_metrics(grouped)
-        grouped = self._step_6_compute_impact_metrics(data_frame, grouped)
-        grouped = self._step_7_add_rank_columns(grouped)
-        grouped = self._step_8_remove_stopwords(grouped)
-        grouped = self._step_9_filter_by_term_occurrences_range(grouped)
-        grouped = self._step_10_filter_by_term_citations_range(grouped)
-        grouped = self._step_11_filter_by_terms_in(grouped)
-        grouped = self._step_12_filter_by_top_n_terms(grouped)
-        grouped = self._step_13_check_field_types(grouped)
-        grouped = self.step_14_add_term_with_counters_column(grouped)
+        self.step_01_load_the_database()
+        self.step_02_select_metric_fields()
+        self.step_03_explode_data_frame()
+        self.step_04_compute_initial_performance_metrics()
+        self.step_05_compute_derived_performance_metrics()
+        self.step_06_compute_impact_metrics()
+        self.step_07_remove_stopwords()
+        self.step_08_add_rank_columns()
+        self.step_09_filter_by_term_occurrences_range()
+        self.step_10_filter_by_term_citations_range()
+        self.step_11_filter_by_terms_in()
+        self.step_12_filter_by_top_n_terms()
+        self.step_13_check_field_types()
+        self.step_14_add_term_with_counters_column()
 
-        return grouped
-
-
-# def performance_metrics_frame(
-#     #
-#     # ITEMS PARAMS:
-#     field,
-#     #
-#     # FILTER PARAMS:
-#     metric="OCCGC",
-#     top_n=20,
-#     occ_range=(None, None),
-#     gc_range=(None, None),
-#     custom_terms=None,
-#     #
-#     # DATABASE PARAMS:
-#     root_dir="./",
-#     database="main",
-#     year_filter=(None, None),
-#     cited_by_filter=(None, None),
-#     **filters,
-# ):
-#     """:meta private:"""
-
-#     records = _mt_calculate_global_performance_metrics(
-#         #
-#         # ITEMS PARAMS:
-#         field=field,
-#         #
-#         # DATABASE PARAMS:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
-
-#     filtered_records = _mt_filter_records_by_metric(
-#         records=records,
-#         metric=metric,
-#         top_n=top_n,
-#         occ_range=occ_range,
-#         gc_range=gc_range,
-#         custom_items=custom_terms,
-#     )
-
-#     selected_records = _mt_select_record_columns_by_metric(
-#         filtered_records,
-#         metric,
-#     )
-
-#     if metric == "OCCGC":
-#         metric = "OCC"
-
-#     return selected_records
+        return self.grouped

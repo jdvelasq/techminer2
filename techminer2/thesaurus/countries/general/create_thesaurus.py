@@ -115,8 +115,10 @@ class CreateThesaurus(
             ("Syrian Arab Republic", "Syria"),
             ("United States of America", "United States"),
             ("USA", "United States"),
+            ("Türkiye", "Turkey"),
             ("Viet-Nam", "Vietnam"),
             ("Viet Nam", "Vietnam"),
+            ("Perú", "Peru"),
         ]
 
         # extracts the country as the last position of the string

@@ -64,7 +64,12 @@ class MatrixDataFrame(
 
     def run(self):
 
-        data_matrix = CoOccurrenceMatrixDataFrame().update(**self.params.__dict__).run()
+        data_matrix = (
+            CoOccurrenceMatrixDataFrame()
+            .update(**self.params.__dict__)
+            .having_other_terms_ordered_by("OCC")
+            .run()
+        )
 
         corr_matrix = internal__compute_corr_matrix(
             params=self.params,

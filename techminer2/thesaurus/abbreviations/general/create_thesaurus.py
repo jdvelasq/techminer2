@@ -55,11 +55,9 @@ Example:
 
 
 """
-import pathlib
 import sys
 
 import pandas as pd  # type: ignore
-import pkg_resources  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from ...._internals.log_message import internal__log_message
@@ -102,6 +100,29 @@ class CreateThesaurus(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
+    def internal__create_valid_words(self):
+
+        data_frame = self.data_frame.copy()
+        data_frame = data_frame[["value"]]
+
+        data_frame["value"] = data_frame["value"].str.split("_")
+        data_frame = data_frame.explode("value")
+        data_frame["value"] = data_frame["value"].str.strip()
+
+        data_frame["value"] = data_frame["value"].str.split(" ")
+        data_frame = data_frame.explode("value")
+        data_frame["value"] = data_frame["value"].str.strip()
+
+        data_frame["value"] = data_frame["value"].map(
+            lambda x: x[1:-1] if x.startswith("(") and x.endswith(")") else x
+        )
+        data_frame["value"] = data_frame["value"].str.strip()
+
+        data_frame = data_frame[data_frame["value"].str.len() > 1]
+
+        self.words = data_frame["value"].drop_duplicates().tolist()
+
+    # -------------------------------------------------------------------------
     def internal__extracts_abbreviations_from_definitions(self):
 
         data_frame = self.data_frame.copy()
@@ -128,6 +149,9 @@ class CreateThesaurus(
         records["abstract"] = records.abstract.map(
             lambda x: [str(s) for s in TextBlob(x).sentences]
         )
+        records["abstract"] = records.abstract.map(
+            lambda x: [t for s in x for t in s.split(",")]
+        )
         records = records.explode("abstract")
         records["abstract"] = records.abstract.str.strip()
 
@@ -141,6 +165,15 @@ class CreateThesaurus(
         records["value"] = records.abstract.str.replace(r"\([^)]+\)", "")
         records = records[["key", "value"]].drop_duplicates()
         records = records.dropna(subset=["key"])
+
+        # remove text from the right of the abbreviation
+        records = records.reset_index(drop=True)
+        for index, row in records.iterrows():
+            records.loc[index, "value"] = row.value.split("( " + row.key + " )")[0]
+            records.loc[index, "value"] = row.value.split(
+                "( " + row.key.lower() + " )"
+            )[0]
+            records.loc[index, "value"] += "( " + row.key.upper() + " )"
 
         # remove enumerations
         records = records[
@@ -176,6 +209,11 @@ class CreateThesaurus(
         # remove abbreviations that are only digits
         records = records[
             records.key.map(lambda x: not x.isdigit(), na_action="ignore")
+        ]
+
+        # validate abbreviations
+        records = records[
+            records.key.map(lambda x: x in self.words, na_action="ignore")
         ]
 
         # concat data frames
@@ -262,6 +300,9 @@ class CreateThesaurus(
         self.internal__notify_process_start()
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
+
+        self.internal__create_valid_words()
+
         self.internal__extracts_abbreviations_from_definitions()
         self.internal__add_abbreviations_from_abstracts_to_data_frame()
         self.internal__remove_bad_abbreviations()

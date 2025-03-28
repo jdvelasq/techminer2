@@ -144,3 +144,9 @@
     MAIN_FINDINGS
     STATE
     MIXED
+    WHO
+    AIM
+    TOTAL
+    LOW
+    HIGH
+    MOST
