@@ -62,7 +62,6 @@ Example:
 
 
 """
-import pathlib
 import re
 import sys
 
@@ -75,7 +74,6 @@ from ..._internals import (
     internal__generate_system_thesaurus_file_path,
     internal__generate_user_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_mapping,
-    internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
     internal__print_thesaurus_header,
 )
@@ -87,23 +85,27 @@ ABBR = [
     "Univ.",
     "Universidad",
     "Universidade",
+    "Universita",
     "Universitas",
     "Universitat",
-    "Universität",
-    "Université",
-    "University",
-    "Università",
-    "Universita",
+    "Universite",
+    "Universiteit",
+    "Universiti",
     "Universitity",
+    "University",
     #
     "Bank",
     "Banco",
+    #
+    "Academia",
+    "Academy",
     #
     "AG",  # agency, agencia
     "Counc",  # council, concilio, consejo
     "Conc",  # concilio, consejo
     "Com",  # comission, comision
     "Consortium",
+    "Academia",
     #
     "Centre",
     "Center",
@@ -118,7 +120,12 @@ ABBR = [
     "Assn",
     "Association",
     "Associacao",
+    "Asociacion",
     "Asoc",  # asociacion
+    "Autoridad",
+    "Authority",
+    "Autorite",
+    "Fundacion",
     #
     "Soc",
     "Consor",
@@ -138,6 +145,9 @@ ABBR = [
     "Instituto",
     "Institut",
     #
+    "Hospital",
+    "Hosp",
+    #
     "Coll",
     "College",
     "Colegio",
@@ -145,6 +155,8 @@ ABBR = [
     "Sch",
     "School",
     "Ecole",
+    "Escuela",
+    "Escola",
     #
 ]
 
@@ -184,33 +196,49 @@ class CreateThesaurus(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__create_candidate_key_column(self):
-        self.data_frame["candidate_key"] = pd.NA
+    def internal__create_cleaned_value_column(self):
+        self.data_frame["key"] = pd.NA
+        self.data_frame["cleaned_value"] = self.data_frame["value"].copy()
+        self.data_frame["cleaned_value"] = self.data_frame.cleaned_value.str.lower()
+        self.data_frame["cleaned_value"] = self.data_frame.cleaned_value.str.normalize(
+            "NFKD"
+        )
+        self.data_frame["cleaned_value"] = self.data_frame.cleaned_value.str.encode(
+            "ascii", errors="ignore"
+        )
+        self.data_frame["cleaned_value"] = self.data_frame.cleaned_value.str.decode(
+            "utf-8"
+        )
 
     # -------------------------------------------------------------------------
     def internal__assign_names_for_known_organizations(self):
 
         known_names = internal__load_text_processing_terms("known_organizations.txt")
         for name in known_names:
+            # escaped_name = re.escape(name)
+            escaped_name = name
             self.data_frame.loc[
-                self.data_frame.value.astype(str)
-                .str.lower()
-                .str.contains(name.lower(), case=False),
-                "candidate_key",
+                self.data_frame.cleaned_value.str.contains(
+                    escaped_name.lower(),
+                    case=False,
+                    regex=False,
+                ),
+                "key",
             ] = name
 
     # -------------------------------------------------------------------------
     def internal__assign_names_by_priority(self):
 
-        def select_name(affiliation):
+        def select_name(cleaned_value, raw_value):
 
-            parts = affiliation.split(",")
+            cleaned_parts = cleaned_value.split(",")
+            raw_parts = raw_value.split(",")
 
             for abbr in ABBR:
                 regex = r"\b" + abbr + r"\b"
-                for part in parts:
-                    if re.search(regex, part, re.IGNORECASE):
-                        return part.strip()
+                for cleaned_part, raw_part in zip(cleaned_parts, raw_parts):
+                    if re.search(regex, cleaned_part, re.IGNORECASE):
+                        return raw_part.strip()
 
             return pd.NA
 
@@ -218,20 +246,25 @@ class CreateThesaurus(
         # Main code:
         #
         for index, row in self.data_frame.iterrows():
-            if not pd.isna(row.candidate_key):
+            if not pd.isna(row.key):
                 continue
-            self.data_frame.loc[index, "candidate_key"] = select_name(row.value)
+            self.data_frame.loc[index, "key"] = select_name(
+                row.cleaned_value,
+                row.value,
+            )
 
     # -------------------------------------------------------------------------
     def internal__assign_names_by_discard(self):
         for index, row in self.data_frame.iterrows():
-            if not pd.isna(row.candidate_key):
+            if not pd.isna(row.key):
                 continue
-            self.data_frame.loc[index, "candidate_key"] = row.key
+            self.data_frame.loc[index, "key"] = (
+                "[UKN] " + self.data_frame.loc[index, "value"]
+            )
 
     # -------------------------------------------------------------------------
-    def internal__assign_new_keys_from_candiate_keys(self):
-        self.data_frame["key"] = self.data_frame["candidate_key"]
+    # def internal__assign_new_keys_from_candiate_keys(self):
+    #     self.data_frame["key"] = self.data_frame["candidate_key"]
 
     # -------------------------------------------------------------------------
     def internal__create_country_column(self):
@@ -262,6 +295,13 @@ class CreateThesaurus(
         self.data_frame["country"] = self.data_frame["country"].apply(
             lambda x: mapping.get(x, ["UKN"])[0]
         )
+
+    # -------------------------------------------------------------------------
+    # def internal__repair_unknown_keys(self):
+
+    #     self.data_frame.loc[self.data_frame.key.isna(), "key"] = self.data_frame.loc[
+    #         self.data_frame.key.isna(), "value"
+    #     ]
 
     # -------------------------------------------------------------------------
     def internal__adds_alpha3_to_key(self):
@@ -300,11 +340,11 @@ class CreateThesaurus(
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
         #
-        self.internal__create_candidate_key_column()
+        self.internal__create_cleaned_value_column()
         self.internal__assign_names_for_known_organizations()
         self.internal__assign_names_by_priority()
         self.internal__assign_names_by_discard()
-        self.internal__assign_new_keys_from_candiate_keys()
+        # self.internal__repair_unknown_keys()
         #
         self.internal__create_country_column()
         self.internal__transforms_country_to_alpha3_code()
