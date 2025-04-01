@@ -58,6 +58,7 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
+from nltk.corpus import words
 from textblob import TextBlob  # type: ignore
 
 from ...._internals.log_message import internal__log_message
@@ -149,9 +150,9 @@ class CreateThesaurus(
         records["abstract"] = records.abstract.map(
             lambda x: [str(s) for s in TextBlob(x).sentences]
         )
-        records["abstract"] = records.abstract.map(
-            lambda x: [t for s in x for t in s.split(",")]
-        )
+        # records["abstract"] = records.abstract.map(
+        #     lambda x: [t for s in x for t in s.split(",")]
+        # )
         records = records.explode("abstract")
         records["abstract"] = records.abstract.str.strip()
 
@@ -280,6 +281,8 @@ class CreateThesaurus(
 
     # -------------------------------------------------------------------------
     def internal__prepare_fingerprints(self):
+        self.data_frame["key"] = self.data_frame["key"].str.strip()
+        self.data_frame = self.data_frame[self.data_frame.key != ""]
         self.data_frame["fingerprint"] = self.data_frame.key.copy()
 
     # -------------------------------------------------------------------------
@@ -289,6 +292,15 @@ class CreateThesaurus(
             lambda x: sorted(x, key=len)
         )
         self.data_frame["value"] = self.data_frame["value"].str.join("; ")
+
+    # -------------------------------------------------------------------------
+    def interval__validate_keys(self):
+        english_words = set(words.words())
+        self.data_frame = self.data_frame[
+            self.data_frame.key.map(
+                lambda x: x.lower() not in english_words, na_action="ignore"
+            )
+        ]
 
     # -------------------------------------------------------------------------
     def run(self):
@@ -312,5 +324,6 @@ class CreateThesaurus(
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__sort_mapping_values()
+        self.interval__validate_keys()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
