@@ -23,6 +23,6 @@ def internal__compress_raw_files(root_dir):
         for csv_file in csv_files:
             csv_file_path = os.path.join(raw_dir, folder, csv_file)
             zip_file_path = os.path.join(raw_dir, folder, csv_file + ".zip")
-            df = pd.read_csv(csv_file_path, encoding="utf-8")
+            df = pd.read_csv(csv_file_path, encoding="utf-8", low_memory=False)
             df.to_csv(zip_file_path, encoding="utf-8", index=False, compression="zip")
             os.remove(csv_file_path)
