@@ -23,7 +23,7 @@ def internal__remove_non_english_abstracts(root_dir):
         csv_files = [f for f in csv_files if f.endswith(".csv")]
         for csv_file in csv_files:
             csv_file_path = os.path.join(raw_dir, folder, csv_file)
-            df = pd.read_csv(csv_file_path, encoding="utf-8")
+            df = pd.read_csv(csv_file_path, encoding="utf-8", low_memory=False)
             n_records_before = len(df)
             df["abs_lang"] = df["Abstract"].map(lambda x: detect(x), na_action="ignore")
             df = df[df["abs_lang"] == "en"]
