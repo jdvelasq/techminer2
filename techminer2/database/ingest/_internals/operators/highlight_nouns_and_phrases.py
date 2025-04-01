@@ -180,6 +180,9 @@ def internal__highlight_nouns_and_phrases(
         spacy_key_terms = [term for term in spacy_key_terms if "!" not in term]
         spacy_key_terms = [term for term in spacy_key_terms if "'" not in term]
         spacy_key_terms = [term for term in spacy_key_terms if '"' not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "+" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "<" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if ">" not in term]
 
         spacy_key_terms = [
             term
@@ -260,6 +263,12 @@ def internal__highlight_nouns_and_phrases(
                 text = re.sub(
                     regex, lambda z: z.group().upper().replace(" ", "_"), text
                 )
+
+        #
+        # Step 11: Corrections
+        #
+        text = text.replace("_,_", "_")
+        text = text.replace("_._", "_")
 
         dataframe.loc[index, dest] = text
 
