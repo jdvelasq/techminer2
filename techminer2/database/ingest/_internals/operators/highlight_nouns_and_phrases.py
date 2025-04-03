@@ -153,10 +153,10 @@ def internal__highlight_nouns_and_phrases(
         key_terms = []
 
         #
-        # Step 1: Extract all text between parentheses
+        # Step 1: Extract all texts between parentheses and then, add them to the key_terms
         #
         abbreviations = re.findall(r"\((.*?)\)", text)
-        abbreviations = [t.strip().upper() for t in abbreviations]
+        abbreviations = [t.strip() for t in abbreviations]
         abbreviations = [t for t in abbreviations if all(c.isalnum() for c in t)]
         abbreviations = list(set(abbreviations))
         key_terms += abbreviations
@@ -192,7 +192,7 @@ def internal__highlight_nouns_and_phrases(
         key_terms += spacy_key_terms
 
         #
-        # Step 4: Remove stopwords and phrases with numbers
+        # Step 4: Remove stopwords and phrases with numbers from key_terms
         #
         key_terms = list(set(key_terms))
         key_terms = [term for term in key_terms if term not in stopwords]
@@ -209,54 +209,21 @@ def internal__highlight_nouns_and_phrases(
         key_terms += [k for k in known_noun_phrases if k in row[dest]]
 
         #
-        # Step 6: Mark connectors
-        #
-        current_connectors = [t for t in connectors if t in row[dest]]
-        if len(current_connectors) > 0:
-            regex = "|".join([re.escape(phrase) for phrase in current_connectors])
-            regex = re.compile(r"\b(" + regex + r")\b")
-            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
-
-        #
-        # Step 7: Mark copyright text
+        # Step 6: Mark copyright text
         #
         for regex in copyright_regex:
             regex = r"(" + regex + r")"
-            regex = re.compile(regex, re.IGNORECASE)
-            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+            regex = re.compile(regex)
+            text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
 
         #
-        # Step 8: Replace noun phrases and authors and index keywords in the text
+        # Step 7: Highlight key terms
         #
         key_terms = sorted(
             key_terms,
             key=lambda x: (len(x.split(" ")), x),
             reverse=True,
         )
-
-        #
-        # Step 9: Remove roman numbers
-        #
-        roman_numbers = [
-            "i",
-            "ii",
-            "iii",
-            "iv",
-            "v",
-            "vi",
-            "vii",
-            "viii",
-            "ix",
-            "x",
-        ]
-        for roman_number in roman_numbers:
-            regex = r"(\( {roman_number.upper()} )\)"
-            regex = re.compile(regex, re.IGNORECASE)
-            text = re.sub(regex, lambda z: z.group().lower(), text)
-
-        #
-        # Step 10: Highlight key terms
-        #
         if len(key_terms) > 0:
             for term in key_terms:
                 regex = re.compile(r"\b" + re.escape(term) + r"\b")
@@ -265,10 +232,46 @@ def internal__highlight_nouns_and_phrases(
                 )
 
         #
-        # Step 11: Corrections
+        # Step 7: Unmark lowercase text with "_"
         #
-        text = text.replace("_,_", "_")
-        text = text.replace("_._", "_")
+        regex = re.compile(r"\b([a-z_\(\)\d])+\b")
+        text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
+
+        #
+        # Step 6: Mark connectors
+        #
+        # current_connectors = [t for t in connectors if t in row[dest]]
+        # if len(current_connectors) > 0:
+        #     regex = "|".join([re.escape(phrase) for phrase in current_connectors])
+        #     regex = re.compile(r"\b(" + regex + r")\b")
+        #     text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+
+        #
+        # Step 9: Remove roman numbers
+        #
+        # roman_numbers = [
+        #     "i",
+        #     "ii",
+        #     "iii",
+        #     "iv",
+        #     "v",
+        #     "vi",
+        #     "vii",
+        #     "viii",
+        #     "ix",
+        #     "x",
+        # ]
+        # for roman_number in roman_numbers:
+        #     regex = r"(\( {roman_number.upper()} )\)"
+        #     regex = re.compile(regex, re.IGNORECASE)
+        #     text = re.sub(regex, lambda z: z.group().lower(), text)
+
+        #
+        # Step 10: Corrections
+        #
+
+        # text = text.replace("_,_", "_")
+        # text = text.replace("_._", "_")
 
         dataframe.loc[index, dest] = text
 
