@@ -32,7 +32,7 @@ def internal__sort_copyright_regex():
     with open(data_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
 
-    lines = [line.strip() for line in lines]
+    lines = [line.strip().lower() for line in lines]
     lines = [line.replace("_", " ").lower() for line in lines]
     lines = list(set(lines))
     lines = [(len(line.split(" ")), line) for line in lines]
