@@ -7,10 +7,11 @@ Alexander von Humboldt Foundation
 Almacenes Universales S.A.
 Aloe Technology S.A.S.
 Alpina Productos Alimenticios
-American College of Veterinary Internal Medicine
 American Association of Pediatric Dentistry
+American College of Veterinary Internal Medicine
 Arboriente S.A.
 Argonne National Laboratory
+Asheville Buncombe Technical Community College
 Biofab
 Biofenix S.A.S
 CENIDET
@@ -52,16 +53,20 @@ Corporacion, Universitaria Americana
 Defence Metallurgical Research Laboratory
 Departamento Nacional de Estadistica
 Departamento Nacional de Estadistica DANE
+Digital Media and Marketing Association
 EAFIT
 Ecopetrol
 Empresas Municipales de Cali
 Empresas Publicas de Medellin
+Energy Information Administration
 Esc. Sup. Politecnica del Chimborazo
 Escuela Superior Politecnica de Chimborazo
 Escuela Superior Politecnica del Chimborazo
 Escuela Superior Politecnica del Litoral
 Escuela de Ingenieria de Bilbao
 Escuela de Marketing y Negocios
+European Center for Medium Range Weather Prediction
+European Centre for Medium Range Weather Prediction
 Fraunhofer Chile Research
 Fundacao Getulio Vargas de Sao Paulo
 Fundacion Cardiovascular de Colombia
@@ -103,11 +108,13 @@ Instituto de Ciencias de la Educacion
 Instituto de Ciencias del Mar
 Instituto de Desarrollo Urbano de Bogota
 Intel Corporation
+International Business Information Management Association
 Istituto Zooprofilattico Sperimentale dellUmbria e delle Marche
 Ministry of Agriculture and Rural Affairs
 National Oceanic and Atmospheric Administration Environmental Modeling Center
 Nutrisolla
 Polytechnique Montreal
+Pontificia Universidad Catolica de Valparaiso
 Servicio Nacional de Aprendizaje
 Servicio Nacional de Aprendizaje (SENA)
 Sociedad Colombiana de Cardiologia y Cirugia Cardiovascular
@@ -116,6 +123,8 @@ Tecnologico de Antioquia
 Tecnologico de Costa Rica
 Tecnologico de Estudios Superiores de Ecatepec
 Tecnologico de Monterrey
+The Energy Information Administration
+The Food and Agriculture Organization
 UANL
 UBioBio
 UNIAGUSTINIANA
@@ -177,8 +186,10 @@ Universidad del Bio-Bio
 Universidad del Norte
 Universidad del Valle
 Universitei libre de Bruxelles
+University of Oviedo
 Univesidad de Los Andes
 Univresidad de Antioquia
 VABIOTECH
+Western Carolina University
 XM S.A E.S.P
 Xijing Hospital
