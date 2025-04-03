@@ -62,6 +62,7 @@ def clean_text(text):
     # process puntuation
     text = text.str.replace("’", "'", regex=False)
     text = text.str.replace(";", ".", regex=False)
+    text = text.str.replace(",.", ", .", regex=False)
     text = text.str.replace(r"(", r" ( ", regex=False)  # (
     text = text.str.replace(r")", r" ) ", regex=False)  # )
 
