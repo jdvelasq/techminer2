@@ -6,6 +6,8 @@ proceedings of the \d{2}rd pacific asia conference on information systems : secu
 \. the editor and contributors severally \d{4} , international bank for reconstruction and development the world bank \.
 this work granted the annual award of the national academy of sciences of cuba for the year
 this article also appears , with a number of url links , on the biopharm web site
+\. \d{4} , academy of sciences of the czech republic , institute of state and law \.
+under exclusive licence to european association for predictive , preventive and personalised medicine \( epma \)
 copying or distributing in print or electronic forms without written permission of igi global is prohibited
 \d{4} , centro de investigacion de la facultad de arquitectura y urbanismo , universidad de cuenca
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional license
@@ -34,6 +36,7 @@ which permits unrestricted use distribution and reproduction in any medium
 please visit https : creativecommons org licenses by nc 4\.0
 italian association for traffic and transport engineering \( aiit \)
 international conference on information systems , logistics and supply chain
+from the ministry of science and technology of taiwan \.
 creative commons attribution noncom mercial no derivatives 4\.0 international license
 creative commons attribution noncom mercial no derivatives 4\.0 international licence
 creative commons attribution non commercial no derivatives 4\.0 international license
@@ -44,6 +47,7 @@ creative commons attrib ution noncommercial no derivatives 4\.0 international li
 creative commons attrib ution noncommercial no derivatives 4\.0 international licence
 creative com mons attribution noncommercial no derivatives 4\.0 international licence
 creative com mons attribution noncommercial no derivatives 4.0 international license
+by world scientific publishing co \. pte \. ltd \.
 associacao sul rio grandense de pesquisadores them historia da educacao
 article s contents are provided on an attribution non commercial
 \d{4} taylor and francis group , london , uk \.
@@ -52,6 +56,7 @@ article s contents are provided on an attribution non commercial
 \d{4} copyright held by the owner author \( s \)
 \d{4} , instituto de fisica de liquidos y sistemas biologicos
 \. the institution of engineers \( india \) \d{4} \.
+\. risk management and insurance review published by wiley periodicals
 \. psychology and marketing published by wiley periodicals llc \.
 \. it must not be used for commercial purposes \.
 \. intelligent systems in accounting , finance and management published
@@ -61,9 +66,11 @@ article s contents are provided on an attribution non commercial
 \. \d{4} , srac societatea romana pentru asigurarea calitatii \.
 \. \d{4} , journalof industrial engineering and engineering management \.
 \. \d{4} , canadian center of science and education \.
+\. \d{4} , academic conferences and publishing international limited \.
 the terms and conditions of the creative commons attribution
 reprodution right holder universidad distrital franiso jose de caldas
 reprodution right holder universidad distrital franciso jose de caldas
+national university of singapore , faculty of law \.
 institute for transport studies within the european economic integration
 institute for transport studies in the european economic integration
 creative commons attribution noncommercial no derivatives 4\.0 international license
@@ -79,6 +86,9 @@ associacao portuguesa para o desenvolvimento regional \( apdr \)
 \. li censee mdpi , basel , switzerland \.
 \. korean distribution science association \( kodisa \) \.
 \. copyright the author \( s \) \d{4} \.
+\. \d{4} nejm catalyst innovations in care delivery \.
+\. \d{4} gesellschaft fur informatik \( gi \) \.
+\. \d{4} educational autonomous non profit organization nephrology \.
 \. \d{4} by the haworth press , inc \.
 \. \d{4} , american public health association inc \.
 \. 2024 , srac romanian society for quality \.
@@ -97,8 +107,14 @@ all rights of reproduction in any form reserved
 \d{4} australian human resources institute \( ahri \)
 \d{4} , central board of irrigation and power
 \. to see the complete license contents \.
+\. the editors and contributors severally \d{4} \.
+\. risk management and insurance review , \d{4}$
 \. \d{4} university of california , berkeley \.
+\. \d{4} the american risk and insurance association$
+\. \d{4} societe francaise de sante publique \.
 \. \d{4} selection and editorial matter , (\b[a-z]+\b\s)+\.
+\. \d{4} peter lang group ag , lausanne
+\. \d{4} nova science publishers , inc \.
 \. \d{4} international association for housing science \.
 \. \d{4} bharati vidyapeeth , new delhi \.
 \. \d{4} apple academic press , inc \.
@@ -129,16 +145,23 @@ aidi italian association of industrial operations professors
 \. grenze scientific society , \d{4} \.
 \. global knowledge academics , authors \.
 \. creative commons reconocimiento nocomercial sinobraderivada \.
+\. author \( s \) \d{4} \.
 \. \{4} , korean finance association \.
 \. \d{4} llc cpc business perspectives \.
 \. \d{4} lippincott williams and wilkins \.
 \. \d{4} international strategic management association \.
+\. \d{4} chinese academy of sciences \.
+\. \d{4} author \( s \) \.
 \. \d{4} association for computing machinery \.
 \. \d{4} \. polissia national university \.
+\. \d{4} , world health organization \.
+\. \d{4} , penerbit akademia baru \.
 \. \d{4} , marketing management association \.
 \. \d{4} , korean marketing association \.
 \. \d{4} , korean finance association \.
+\. \d{4} , iquz galaxy publisher \.
 \. \d{4} , curran associates inc \.
+\. \d{4} , asers publishing house \.
 \( cc by 4\.0 \) share adapt
 \( \d{4} \) , universidad del zulia
 www : biopharm mag com \.
@@ -182,17 +205,23 @@ architectural science association \( anzasca \)
 \d{4} american society of civil engineers
 \d{4} , technical university of liberec
 \d{4} , cad solutions , llc
+\. societa editrice il mulino \.
+\. iberamia and the authors \.
 \. gka ediciones , authors \.
+\. \d{4} world federation of orthodontists$
 \. \d{4} society for risk analysis$
 \. \d{4} seventh sense research group$
 \. \d{4} selection and editorial matter.*$
 \. \d{4} pakistan medical association \.
+\. \d{4} korean medical association \.
 \. \d{4} intellect ltd article \.
+\. \d{4} iise , incose \.
 \. \d{4} financial management association international$
 \. \d{4} american statistical association \.
 \. \d{4} \. asers publishing \.
 \. \d{4} , with intelligence \.
 \. \d{4} , paulus editora \.
+\. \d{4} , collegium basilea \.
 \. \d{4} , agricultural economics \.
 \. \d{4} , ((\b[a-z]+\b\s)*, )*((\b[a-z]+\b\s)*and )(\b[a-z]+\b\s)*\.$
 \( \d{4} \) universidad del zulia
@@ -243,6 +272,7 @@ american society of civil engineers
 \. the research publication \.
 \. the author \d{4} \.
 \. little lion scientific \.
+\. korean medical association \.
 \. copyright 2023 \[.*\] \.
 \. \d{4} society for (\b[a-z]+\b\s)+\.
 \. \d{4} plant archives \.
@@ -315,10 +345,13 @@ a creative commons attribution
 \. the authors \.
 \. the author \.
 \. medical education \.$
+\. limited liability company$
+\. korean medical association$
 \. icis \d{4} \.
 \. hicl \d{4} \.
 \. henry publications \.
 \. english language \.
+\. \d{4} karnov group$
 \. \d{4} , (\b[a-z]+\b\s)+\.$
 \. \d{4} (\b[a-z]+\b\s)*consortium(\s\b[a-z\+]+\b)* \.
 \. (\b[a-z]+\b\s)+, \d{4} \.$
