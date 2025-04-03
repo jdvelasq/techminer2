@@ -1,6 +1,8 @@
 francesco poletti , marco petrovich , yong chen , greg jasion , eric numkam fokoua , natalie wheeler , tom bradley , hesham sakr , john hayes , ian davidson \d{4} osa \.
 \. \d{4} by the you \. s \. chamber of commerce , except for chapter \d{1,2} , which is a work of the you \. s \.
 readers are allowed to copy , distribute and communicate article s contents , provided the author s and intangible capital s names are included
+series c \( applied statistics \) published by john wiley and sons ltd on behalf of the royal statistical society \.
+european management review published by john wiley and sons ltd on behalf of european academy of management \( euram \) \.
 proceedings of the \d{2}rd pacific asia conference on information systems : secure ict platform for the 4th industrial revolution
 \d{2}th european conference on information systems : beyond digitization facets of socio technical change , ecis \d{4} .
 \. the editor and contributors severally \d{4} , international bank for reconstruction and development the world bank \.
@@ -13,30 +15,45 @@ copying or distributing in print or electronic forms without written permission 
 \d{4} , centro de investigacion de la facultad de arquitectura y urbanismo , universidad de cuenca
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional license
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional licence
+the society for reliability engineering , quality and operations management \( sreqom \) , india
 peer review under responsibility of the scientific committee of the \d{1,2}th international symposium intelligent systems
 \. wydawnictwa uniwersytetu warszawskiego , sekcja wydawnicza wydziayou zarzadzania uniwersytetu warszawskiego , warszawa \d{4} \.
 \. wydawnictwa uniwersytetu warszawskiego , sekcja wydawnicza wydzialu zarzadzania uniwersytetu warszawskiego , warszawa \d{4} \.
 \. \d{4} the authors , faculty of law , masaryk university and ios press \.
+\. \d{4} , thomas a \. lyson center for civic agriculture and food systems \.
 published by brian towers \( britow \) and john wiley and sons ltd \.
 european , mediterranean and middle eastern conference on information systems , emcis \d{4} \.
+\. this is an open access article under the cc by 4\.0 license \.
 \. \d{4} the authors \. intelligent systems in accounting , finance and management published
+\. \d{4} proceedings of the european conference on management , leadership and governance \.
 \. \d{4} icst institute for computer science , social informatics and telecommunications engineering \.
 \. \d{4} f \. allen , x \. gu and j \. jagtiani \.$
+\. \d{4} brian towers \( britow \) and john wiley and sons ltd \.
+\. \d{4} antai college of economics and management , shanghai jiao tong university \.
 this research granted the \d{4} award of the cuban national academy of sciences
 \d{4} informs inst \. for operations res \. and the management sciences \.
+\\d{4} antai college of economics and management , shanghai jiao tong university .
+\. \d{4} xlri jamshedpur , school of business management and human resources \.
 \. \d{4} verein zur forderung des open access publizierens in den quantenwissenschaften \.
 \. \d{4} fundacao getulio vargas , escola de direito de sao paulo \.
 \. \d{4} copyright is held by the owner author \( s \) \.
 \. \d{4} anpad associacao nacional de pos graduacao e pesquisa them administracao \.
+\. \d{4} , university of zagreb , faculty of organization and informatics \.
 \. \d{4} , russian presidental academy of national economy and public administration \.
+\. \d{4} , cognitione foundation for the dissemination of knowledge and science \.
 which permits unrestricted use , distribution , and reproduction in any medium
+this is an open access article under the cc by sa license
 the youtube link of the full recorded interview can be accessed at
 institute for transport studies within the european economic integration \( istiee \)
+creative commons attribution non commercial no derivatives \( by nc nd \)
 \. \d{4} international conferences e society \d{4} and mobile learning \d{4} \.
+\. \d{4} , world academy of research in science and engineering \.
 \. \d{4} , national research university , higher school of econoimics \.
 \. \( \d{4} \) , \( science and information organization \) .
+\( regional inform \. center for sci \. and technol \. \)
 universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
 this is an open access article distributed under the terms of
+the division of operation and maintenance , lulea university of technology
 international convention on information and communication technology , electronics and microelectronics
 icst institute for computer sciences , social informatics and telecommunications engineering
 \. \d{4} publishing house of the higher school of economics \.
@@ -45,6 +62,7 @@ icst institute for computer sciences , social informatics and telecommunications
 \. \d{4} , wydawnictwo uniwersytetu marii curie sklodowskiej w lublinie \.
 \. \d{4} , university of cienfuegos , carlos rafael rodriguez \.
 \. \d{4} , universidad andina simon olivar , sede ecuador \.
+\. \d{4} , american scientific publishing group \( aspg \) \.
 \. \( \d{4} \) , \( kluwer law international \) \.
 which permits unrestricted use distribution and reproduction in any medium
 please visit https : creativecommons org licenses by nc 4\.0
@@ -82,6 +100,7 @@ article s contents are provided on an attribution non commercial
 \. \d{4} hisin \( history of information systems \) \.
 \. \d{4} association pour le traitement automatique des langues \.
 \. \d{4} , srac societatea romana pentru asigurarea calitatii \.
+\. \d{4} , periodicals of engineering and natural sciences \.
 \. \d{4} , journalof industrial engineering and engineering management \.
 \. \d{4} , canadian center of science and education \.
 \. \d{4} , academic conferences and publishing international limited \.
@@ -95,6 +114,8 @@ creative commons attribution noncommercial no derivatives 4\.0 international lic
 creative commons attribution noncommercial no derivatives 4\.0 international licence
 by scitepress science and technology publications , lda \.
 associacao portuguesa para o desenvolvimento regional \( apdr \)
+\d{4} m \. e \. sharpe , inc \.
+\d{4} asian research publishing network \( arpn \) \.
 \d{4} american society of civil engineers \( asce \)
 \d{4} , rev \. mex \. ing \. quimica
 \d{4} , instituto de altos estudios de salud publica
@@ -105,13 +126,18 @@ associacao portuguesa para o desenvolvimento regional \( apdr \)
 \. korean distribution science association \( kodisa \) \.
 \. copyright the author \( s \) \d{4} \.
 \. \d{4} vestnik sankt peterburgskogo universiteta \. pravo \.
+\. \d{4} tehran urban research and planning center \.
 \. \d{4} nejm catalyst innovations in care delivery \.
+\. \d{4} kelley school of business , indiana university$
+\. \d{4} john wiley and sons , inc \.
 \. \d{4} gesellschaft fur informatik \( gi \) \.
 \. \d{4} educational autonomous non profit organization nephrology \.
 \. \d{4} by the haworth press , inc \.
 \. \d{4} by nova science publishers , inc \.
 \. \d{4} biblioteca nacional de cuba jose marti \.
+\. \d{4} , srac romanian society for quality \.
 \. \d{4} , public administration school of catalonia \.
+\. \d{4} , oga osterreichische gesellschaft fur agrarokonomie \.
 \. \d{4} , american public health association inc \.
 \. 2024 , srac romanian society for quality \.
 \( \d{4} \) , \( universidad de antioquia \)
@@ -140,6 +166,7 @@ all rights of reproduction in any form reserved
 \. \d{4} peter lang group ag , lausanne
 \. \d{4} nova science publishers , inc \.
 \. \d{4} international association for housing science \.
+\. \d{4} institution of engineering and technology \.
 \. \d{4} bharati vidyapeeth , new delhi \.
 \. \d{4} apple academic press , inc \.
 \. \d{4} american public health association inc \.
@@ -147,6 +174,7 @@ all rights of reproduction in any form reserved
 \. \d{4} , pan american health organization \.
 \. \d{4} , consiglio nazionale delle ricerche \.
 \. \d{4} , centro universitario curitiba unicuritiba \.
+\. \d{4} , bulgarska akademiya na naukite \.
 \. \d{4} ((\b[a-z]+\b\s)*, )*published by de gruyter \.
 , wiesbaden \d{4} \. alle rechte vorbehalten \.
 world scientific and engineering academy and society
@@ -157,9 +185,13 @@ this book is an open access publication
 the institution of engineering and technology \d{4}
 revista cientifica de la facultad de veterinaria
 kluwer law international bv , the netherlands
+international conference on information systems , icis
 international association of traffic and safety sciences
+international association for computer information systems \.$
+este es un articulo en acceso abierto
 centro de ciencias aplicadas y desarrollo tecnologico$
 centro de ciencias aplicadas y desarrollo tecnologico
+by apple academic press , inc \.
 association for information technology trust \d{4} \.
 americas conference on information systems , amcis
 american society for engineering education , \d{4}
@@ -168,15 +200,19 @@ aidi italian association of industrial operations professors
 \d{4} ciencia , tecnologia y futuro \.$
 \d{4} academic conferences and publishing international limited
 \d{4} , el profesional de la informacion
+\. serials publications pvt . ltd \.
 \. publication rights licensed to acm \.
 \. individual contributors , their contributions \.
 \. individual contributors , their contribution \.
 \. individual chapters , the contributors \.
 \. grenze scientific society , \d{4} \.
 \. global knowledge academics , authors \.
+\. editors and contributors severally \d{4} \.
+\. defence research and development canada \.
 \. creative commons reconocimiento nocomercial sinobraderivada \.
 \. author \( s \) \d{4} \.
 \. \{4} , korean finance association \.
+\. \d{4} totem publisher , inc \.
 \. \d{4} llc cpc business perspectives \.
 \. \d{4} lippincott williams and wilkins \.
 \. \d{4} international strategic management association \.
@@ -184,15 +220,21 @@ aidi italian association of industrial operations professors
 \. \d{4} chinese academy of sciences \.
 \. \d{4} author \( s \) \.
 \. \d{4} association for computing machinery \.
+\. \d{4} ais icis administrative office \.
 \. \d{4} \. polissia national university \.
+\. \d{4} \( tojia cinque \) \.
 \. \d{4} , world health organization \.
+\. \d{4} , verlag barbara budrich \.
+\. \d{4} , politeknik negeri padang \.
 \. \d{4} , penerbit akademia baru \.
 \. \d{4} , marketing management association \.
 \. \d{4} , lexxion verlagsgesellschaft mbh \.
 \. \d{4} , korean marketing association \.
 \. \d{4} , korean finance association \.
 \. \d{4} , iquz galaxy publisher \.
+\. \d{4} , editoriale scientifica srl \.
 \. \d{4} , curran associates inc \.
+\. \d{4} , bentham books imprint \.
 \. \d{4} , asers publishing house \.
 \. \d{4} , academy of management \.
 \( cc by 4\.0 \) share adapt
@@ -215,12 +257,14 @@ latin american center for informatics studies
 journals \. permissions@oup \. com \.
 john wiley and sons , ltd
 iop publishing ltd and sissa medialab
+international information and engineering technology association
 international federation of operational research societies
 instituto de ciencias aplicadas y tecnologia
 https : / doi \. org
 https : / creativecommons \. org
 http : / doi \. org
 http : / creativecommons \. org
+fundacao escola de comercio alvares penteado
 faculty of transport and traffic engineering
 eurojournals publishing , inc \. \d{4}
 derechos reservados \. maracaibo , venezuela
@@ -238,10 +282,13 @@ architectural science association \( anzasca \)
 \d{4} american society of civil engineers
 \d{4} , technical university of liberec
 \d{4} , cad solutions , llc
+\. world scientific publishing company \.$
+\. the authors , \d{4} \.
 \. societa editrice il mulino \.
 \. iberamia and the authors \.
 \. gka ediciones , authors \.
 \. d{4} zeitschrift fur rechtssoziologie \.
+\. aos estratagia and inovacao \.
 \. \d{4} zeitschrift fur rechtssoziologie \.
 \. \d{4} world federation of orthodontists$
 \. \d{4} society for risk analysis$
@@ -251,13 +298,19 @@ architectural science association \( anzasca \)
 \. \d{4} korean medical association \.
 \. \d{4} intellect ltd article \.
 \. \d{4} iise , incose \.
+\. \d{4} growing science ltd \.
 \. \d{4} franco angeli edizioni \.
 \. \d{4} financial management association international$
 \. \d{4} american statistical association \.
+\. \d{4} academy of management \.
 \. \d{4} \. los autores \.
 \. \d{4} \. asers publishing \.
 \. \d{4} , with intelligence \.
+\. \d{4} , uts epress \.
+\. \d{4} , research trend \.
 \. \d{4} , paulus editora \.
+\. \d{4} , ismail saritas \.
+\. \d{4} , ebru bagci \.
 \. \d{4} , collegium basilea \.
 \. \d{4} , boom uitgevers \.
 \. \d{4} , boom uitgevers .
@@ -270,6 +323,7 @@ the editor \( s \)
 the creative commons attribution license
 the authors , \d{4} \.$
 the author \( s \)
+sas institute , inc \.
 roduction and operations management society
 published under license by (\b[a-z]+\b\s)*
 published under licence by (\b[a-z]+\b\s)*
@@ -282,6 +336,8 @@ japan association of mineralogical sciences$
 international transactions in operational research
 international federation for information processing
 international business information management association
+international association for food protection
+intelligent network and systems society
 instituto tecnologico de costa rica
 inorganic materials : applied research
 iise annual conference and expo
@@ -308,6 +364,7 @@ american society of civil engineers
 \d{4} , polska akademia nauk
 \d{4} , kauno technologijos universitetas
 \d{4} , american marketing association
+\. universidad del rosario \.$
 \. the research publication \.
 \. the author s \d{4}$
 \. the author \d{4} \.
@@ -319,6 +376,8 @@ american society of civil engineers
 \. \d{4} plant archives \.
 \. \d{4} nec mediaproducts \.
 \. \d{4} millennial ltd \.
+\. \d{4} ege universitesi \.
+\. \d{4} edp sciences \.
 \. \d{4} editions weblaw \.
 \. \d{4} ediciones clio \.
 \. \d{4} dechema e \.
@@ -327,6 +386,7 @@ american society of civil engineers
 \. \d{4} boeck universite \.
 \. \d{4} \. rigeo \.
 \. \d{4} , (\b[a-z]+\b\s)+society \.
+\. \d{4} , (\b[a-z]+\b\s)*ltd .
 \. \d{4} , ((\b[a-z]+\b\s)*, )*\.$
 \. (\b[a-z]+\b\s)+publications , \d{4} \.
 (\b[a-z]+\b\s)*springer naature b \. v
@@ -342,6 +402,7 @@ the cotton foundation \d{4}
 society of petroleum engineers
 sociedade brasileira de quimica
 selection and editorial matter
+science and information organization
 revista facultad de ingenieria
 revista de la construccion
 real estate economics published
@@ -349,6 +410,7 @@ published in (\b[a-z]+\b\s)*, \d{4}
 operational research society \d{4}
 national academy of sciences
 licensee : revista ingenieria
+gazi universitesi muhendislik mimarlik
 facultad de ciencias veterinarias
 eurojournals publishing inc \d{4}
 escuela de construccion civil
@@ -394,6 +456,7 @@ a creative commons attribution
 \. hicl \d{4} \.
 \. henry publications \.
 \. english language \.
+\. authors \d{4} \.
 \. \d{4} karnov group$
 \. \d{4} corien prins$
 \. \d{4} , (\b[a-z]+\b\s)+\.$
@@ -479,6 +542,7 @@ all right reserved
 \. author \.
 \. \d{4} (\b[a-z\+]+\b\s)+\.$
 , inc \.$
+, inc \.
 (\b[a-z]+\b\s)*taylor and francis(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*springer(\s\b[a-z\+]+\b)* \. v
 wiley periodicals
