@@ -3,22 +3,29 @@ francesco poletti , marco petrovich , yong chen , greg jasion , eric numkam foko
 readers are allowed to copy , distribute and communicate article s contents , provided the author s and intangible capital s names are included
 proceedings of the \d{2}rd pacific asia conference on information systems : secure ict platform for the 4th industrial revolution
 \d{2}th european conference on information systems : beyond digitization facets of socio technical change , ecis \d{4} .
+\. the editor and contributors severally \d{4} , international bank for reconstruction and development the world bank \.
 this work granted the annual award of the national academy of sciences of cuba for the year
 this article also appears , with a number of url links , on the biopharm web site
 copying or distributing in print or electronic forms without written permission of igi global is prohibited
 \d{4} , centro de investigacion de la facultad de arquitectura y urbanismo , universidad de cuenca
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional license
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional licence
+\. wydawnictwa uniwersytetu warszawskiego , sekcja wydawnicza wydziayou zarzadzania uniwersytetu warszawskiego , warszawa \d{4} \.
+\. wydawnictwa uniwersytetu warszawskiego , sekcja wydawnicza wydzialu zarzadzania uniwersytetu warszawskiego , warszawa \d{4} \.
 published by brian towers \( britow \) and john wiley and sons ltd \.
 european , mediterranean and middle eastern conference on information systems , emcis \d{4} \.
+\. \d{4} the authors \. intelligent systems in accounting , finance and management published
 \. \d{4} icst institute for computer science , social informatics and telecommunications engineering \.
+\. \d{4} f \. allen , x \. gu and j \. jagtiani \.$
 this research granted the \d{4} award of the cuban national academy of sciences
 \d{4} informs inst \. for operations res \. and the management sciences \.
 \. \d{4} verein zur forderung des open access publizierens in den quantenwissenschaften \.
 which permits unrestricted use , distribution , and reproduction in any medium
 the youtube link of the full recorded interview can be accessed at
+institute for transport studies within the european economic integration \( istiee \)
 universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
 this is an open access article distributed under the terms of
+international convention on information and communication technology , electronics and microelectronics
 icst institute for computer sciences , social informatics and telecommunications engineering
 \. \d{4} publishing house of the higher school of economics \.
 \. \d{4} international business information management association \( ibima \) \.
@@ -47,9 +54,12 @@ article s contents are provided on an attribution non commercial
 \. the institution of engineers \( india \) \d{4} \.
 \. psychology and marketing published by wiley periodicals llc \.
 \. it must not be used for commercial purposes \.
+\. intelligent systems in accounting , finance and management published
 \. \d{4} kelley school of business , indiana university \.
+\. \d{4} infopro digital risk \( ip \) limited \.
 \. \d{4} hisin \( history of information systems \) \.
 \. \d{4} , srac societatea romana pentru asigurarea calitatii \.
+\. \d{4} , journalof industrial engineering and engineering management \.
 \. \d{4} , canadian center of science and education \.
 the terms and conditions of the creative commons attribution
 reprodution right holder universidad distrital franiso jose de caldas
@@ -59,6 +69,7 @@ institute for transport studies in the european economic integration
 creative commons attribution noncommercial no derivatives 4\.0 international license
 creative commons attribution noncommercial no derivatives 4\.0 international licence
 by scitepress science and technology publications , lda \.
+associacao portuguesa para o desenvolvimento regional \( apdr \)
 \d{4} american society of civil engineers \( asce \)
 \d{4} , rev \. mex \. ing \. quimica
 \d{4} , instituto de altos estudios de salud publica
@@ -96,9 +107,11 @@ all rights of reproduction in any form reserved
 \. \d{4} ((\b[a-z]+\b\s)*, )*published by de gruyter \.
 , wiesbaden \d{4} \. alle rechte vorbehalten \.
 world scientific and engineering academy and society
+vilnius gediminas technical university \( vgtu \)
 this book is an open access publication
 the institution of engineering and technology \d{4}
 revista cientifica de la facultad de veterinaria
+kluwer law international bv , the netherlands
 international association of traffic and safety sciences
 centro de ciencias aplicadas y desarrollo tecnologico$
 centro de ciencias aplicadas y desarrollo tecnologico
@@ -109,6 +122,7 @@ aidi italian association of industrial operations professors
 \d{4} ciencia , tecnologia y futuro \.$
 \d{4} academic conferences and publishing international limited
 \d{4} , el profesional de la informacion
+\. publication rights licensed to acm \.
 \. individual contributors , their contributions \.
 \. individual contributors , their contribution \.
 \. individual chapters , the contributors \.
@@ -116,6 +130,7 @@ aidi italian association of industrial operations professors
 \. global knowledge academics , authors \.
 \. creative commons reconocimiento nocomercial sinobraderivada \.
 \. \{4} , korean finance association \.
+\. \d{4} llc cpc business perspectives \.
 \. \d{4} lippincott williams and wilkins \.
 \. \d{4} international strategic management association \.
 \. \d{4} association for computing machinery \.
@@ -138,6 +153,7 @@ tecnologia y ciencias del agua \.$
 submitted for possible open access publication
 revista ingenieria e investigacion editorial board
 operations and supply chain management forum
+networks published by wiley periodicals llc
 licensee mdpi , basel , switzerland
 latin american center for informatics studies
 journals \. permissions@oup \. com \.
@@ -154,6 +170,7 @@ eurojournals publishing , inc \. \d{4}
 derechos reservados \. maracaibo , venezuela
 by the electric drive transportation association
 associacao portuguesa para o desenvolvimento regional
+architectural science association \( anzasca \)
 \d{4} sociedad mexicana de ingenieria biomedica
 \d{4} mexican society of soil science
 \d{4} mehdi nourinejad and matthew j
@@ -171,6 +188,7 @@ associacao portuguesa para o desenvolvimento regional
 \. \d{4} selection and editorial matter.*$
 \. \d{4} pakistan medical association \.
 \. \d{4} intellect ltd article \.
+\. \d{4} financial management association international$
 \. \d{4} american statistical association \.
 \. \d{4} \. asers publishing \.
 \. \d{4} , with intelligence \.
@@ -224,11 +242,15 @@ american society of civil engineers
 \d{4} , american marketing association
 \. the research publication \.
 \. the author \d{4} \.
+\. little lion scientific \.
 \. copyright 2023 \[.*\] \.
 \. \d{4} society for (\b[a-z]+\b\s)+\.
 \. \d{4} plant archives \.
 \. \d{4} nec mediaproducts \.
+\. \d{4} millennial ltd \.
+\. \d{4} editions weblaw \.
 \. \d{4} ediciones clio \.
+\. \d{4} dechema e \.
 \. \d{4} ceur ws \.
 \. \d{4} bright publisher \.
 \. \d{4} , (\b[a-z]+\b\s)+society \.
@@ -298,6 +320,7 @@ a creative commons attribution
 \. henry publications \.
 \. english language \.
 \. \d{4} , (\b[a-z]+\b\s)+\.$
+\. \d{4} (\b[a-z]+\b\s)*consortium(\s\b[a-z\+]+\b)* \.
 \. (\b[a-z]+\b\s)+, \d{4} \.$
 \. ((\b[a-z]+\b\s)*, )*(\b[a-z]+\b\s)+\d{4} \.$
 \( \d{4} \) (\b[a-z]+\b\s)+publishing
@@ -428,6 +451,7 @@ copyright \d{4}
 \d{4} (\b[a-z\+]+\b\s)+school
 \d{4} (\b[a-z\+]+\b\s)+journal
 \. author$
+\. al$
 (\b[a-z]+\b\s)*special issue(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference proceedings(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference proceeding(\s\b[a-z\+]+\b)*
