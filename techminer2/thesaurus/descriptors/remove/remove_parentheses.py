@@ -160,6 +160,12 @@ class RemoveParentheses(
                 text = text[:-1]
             if text[0] == "_":
                 text = text[1:]
+            text = (
+                text.replace("  ", " ")
+                .replace("  ", " ")
+                .replace("  ", " ")
+                .replace(" ", "_")
+            )
             return text
 
         self.data_frame["key"] = self.data_frame.key.apply(repair)
