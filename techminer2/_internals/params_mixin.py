@@ -51,6 +51,7 @@ class Params:
     edge_width_range: Tuple[float, float] = (0.5, 0.8)
     edge_widths: Tuple[float, float, float, float] = (0.5, 0.8, 1.0, 1.2)
     edge_similarity_threshold: float = 0.0
+    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
 
     #
     # F
@@ -394,6 +395,10 @@ class ParamsMixin:
 
     def using_edge_top_n(self, top_n):
         self.params.edge_top_n = top_n
+        return self
+
+    def using_edge_opacity_range(self, min_opacity, max_opacity):
+        self.params.edge_opacity_range = (min_opacity, max_opacity)
         return self
 
     def using_edge_width_range(self, min_width, max_width):
