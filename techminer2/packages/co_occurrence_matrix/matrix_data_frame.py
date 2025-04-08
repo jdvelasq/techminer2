@@ -319,14 +319,19 @@ class MatrixDataFrame(
         #
         data_frame["counters"] = data_frame.index.astype(str)
 
-        n_zeros = len(str(data_frame["OCC"].max()))
-        data_frame["counters"] += " " + data_frame["OCC"].map(
-            lambda x: f"{x:0{n_zeros}d}"
-        )
+        # n_zeros = len(str(data_frame["OCC"].max()))
+        # data_frame["counters"] += " " + data_frame["OCC"].map(
+        #     lambda x: f"{x:0{n_zeros}d}"
+        # )
 
-        n_zeros = len(str(data_frame["global_citations"].max()))
+        data_frame["counters"] += " " + data_frame["OCC"].map(lambda x: f"{x:d}")
+
+        # n_zeros = len(str(data_frame["global_citations"].max()))
+        # data_frame["counters"] += ":" + data_frame["global_citations"].map(
+        #     lambda x: f"{x:0{n_zeros}d}"
+        # )
         data_frame["counters"] += ":" + data_frame["global_citations"].map(
-            lambda x: f"{x:0{n_zeros}d}"
+            lambda x: f"{x:d}"
         )
 
         mapping = data_frame["counters"].to_dict()
