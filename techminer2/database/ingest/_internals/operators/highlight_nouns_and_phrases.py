@@ -240,11 +240,11 @@ def internal__highlight_nouns_and_phrases(
         #
         # Step 6: Mark connectors
         #
-        # current_connectors = [t for t in connectors if t in row[dest]]
-        # if len(current_connectors) > 0:
-        #     regex = "|".join([re.escape(phrase) for phrase in current_connectors])
-        #     regex = re.compile(r"\b(" + regex + r")\b")
-        #     text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+        current_connectors = [t for t in connectors if t in row[dest]]
+        if len(current_connectors) > 0:
+            regex = "|".join([re.escape(phrase) for phrase in current_connectors])
+            regex = re.compile(r"\b(" + regex + r")\b")
+            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
 
         #
         # Step 9: Remove roman numbers
