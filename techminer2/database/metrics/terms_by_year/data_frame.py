@@ -213,14 +213,14 @@ class DataFrame(
 
         data_frame["counters"] = data_frame.index.astype(str)
 
-        n_zeros = len(str(data_frame["OCC"].max()))
+        n_zeros_occ = len(str(data_frame["OCC"].max()))
         data_frame["counters"] += " " + data_frame["OCC"].map(
-            lambda x: f"{x:0{n_zeros}d}"
+            lambda x: f"{x:0{n_zeros_occ}d}"
         )
 
-        n_zeros = len(str(data_frame["global_citations"].max()))
+        n_zeros_citations = len(str(data_frame["global_citations"].max()))
         data_frame["counters"] += ":" + data_frame["global_citations"].map(
-            lambda x: f"{x:0{n_zeros}d}"
+            lambda x: f"{x:0{n_zeros_citations}d}"
         )
 
         mapping = data_frame["counters"].to_dict()

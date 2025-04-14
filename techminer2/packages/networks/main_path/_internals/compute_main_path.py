@@ -55,8 +55,8 @@ def step_01_create_citations_table(params):
     #
     # Adds citations to the article
     max_citations = records.global_citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt = " 1:{:0" + str(n_zeros) + "d}"
+    n_zeros_citations = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros_citations) + "d}"
     #
     rename_dict = {
         key: value

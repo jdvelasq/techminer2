@@ -94,6 +94,6 @@ class NetworkMetrics(
         return (
             InternalNetworkMetrics()
             .update(**self.params.__dict__)
-            .unit_of_analysis("source_title")
+            .unit_of_analysis("abbr_source_title")
             .run()
         )

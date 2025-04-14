@@ -320,15 +320,17 @@ class DataFrame(
         grouped = self.grouped.copy()
         grouped["counters"] = grouped.index.astype(str)
 
-        # n_zeros = len(str(grouped["OCC"].max()))
-        # grouped["counters"] += " " + grouped["OCC"].map(lambda x: f"{x:0{n_zeros}d}")
-        grouped["counters"] += " " + grouped["OCC"].map(lambda x: f"{x:d}")
+        n_zeros_occ = len(str(grouped["OCC"].max()))
+        grouped["counters"] += " " + grouped["OCC"].map(
+            lambda x: f"{x:0{n_zeros_occ}d}"
+        )
+        # grouped["counters"] += " " + grouped["OCC"].map(lambda x: f"{x:d}")
 
-        # n_zeros = len(str(grouped["global_citations"].max()))
-        # grouped["counters"] += ":" + grouped["global_citations"].map(
-        #     lambda x: f"{x:0{n_zeros}d}"
-        # )
-        grouped["counters"] += ":" + grouped["global_citations"].map(lambda x: f"{x:d}")
+        n_zeros_citations = len(str(grouped["global_citations"].max()))
+        grouped["counters"] += ":" + grouped["global_citations"].map(
+            lambda x: f"{x:0{n_zeros_citations}d}"
+        )
+        # grouped["counters"] += ":" + grouped["global_citations"].map(lambda x: f"{x:d}")
 
         self.grouped = grouped
 

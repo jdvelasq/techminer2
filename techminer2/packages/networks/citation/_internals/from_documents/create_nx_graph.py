@@ -61,8 +61,9 @@ def _step_04_get_dataframe_with_links(data_frame):
 def _step_05_adds_citations_to_the_article(records, data_frame, data_frame_with_links):
 
     max_citations = records.global_citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt = " 1:{:0" + str(n_zeros) + "d}"
+
+    n_zeros_citations = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros_citations) + "d}"
     #
     rename_dict = {
         key: value

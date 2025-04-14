@@ -34,8 +34,8 @@ def step_01_load_and_select_records(params):
 # ------------------------------------------------------------------------------
 def step_02_adds_citations_to_record_id(records):
     max_citations = records.global_citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt = " 1:{:0" + str(n_zeros) + "d}"
+    n_zeros_citations = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros_citations) + "d}"
     records["record_id"] = records["record_id"] + records["global_citations"].map(
         fmt.format
     )

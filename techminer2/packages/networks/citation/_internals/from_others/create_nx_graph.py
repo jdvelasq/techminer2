@@ -79,12 +79,12 @@ def __add_weighted_edges_from(
     #
     # Adds citations and occurrences to items
     max_occ = metrics.OCC.max()
-    n_zeros = int(np.log10(max_occ - 1)) + 1
-    fmt_occ = "{:0" + str(n_zeros) + "d}"
+    n_zeros_occ = int(np.log10(max_occ - 1)) + 1
+    fmt_occ = "{:0" + str(n_zeros_occ) + "d}"
 
     max_citations = metrics.global_citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt_citations = "{:0" + str(n_zeros) + "d}"
+    n_zeros_citations = int(np.log10(max_citations - 1)) + 1
+    fmt_citations = "{:0" + str(n_zeros_citations) + "d}"
 
     rename_dict = {
         key: value

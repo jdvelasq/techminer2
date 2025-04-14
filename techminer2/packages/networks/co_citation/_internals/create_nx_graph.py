@@ -129,8 +129,8 @@ def _step_04_filter_matrix_list(matrix_list, valid_items):
 def _step_05_adds_citations_to_terms(valid_items, matrix_list):
 
     max_citations = valid_items.citations.max()
-    n_zeros = int(np.log10(max_citations - 1)) + 1
-    fmt = " 1:{:0" + str(n_zeros) + "d}"
+    n_zeros_citations = int(np.log10(max_citations - 1)) + 1
+    fmt = " 1:{:0" + str(n_zeros_citations) + "d}"
 
     #
     # Rename the items adding the citations
