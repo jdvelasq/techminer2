@@ -17,6 +17,7 @@ this article is distributed under the terms of the creative commons atribution 4
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional licence
 the society for reliability engineering , quality and operations management \( sreqom \) , india
 peer review under responsibility of the scientific committee of the \d{1,2}th international symposium intelligent systems
+nutrition bulletin published by john wiley and sons ltd on behalf of british nutrition foundation
 \. wydawnictwa uniwersytetu warszawskiego , sekcja wydawnicza wydziayou zarzadzania uniwersytetu warszawskiego , warszawa \d{4} \.
 \. wydawnictwa uniwersytetu warszawskiego , sekcja wydawnicza wydzialu zarzadzania uniwersytetu warszawskiego , warszawa \d{4} \.
 \. \d{4} the authors , faculty of law , masaryk university and ios press \.
@@ -68,6 +69,7 @@ which permits unrestricted use distribution and reproduction in any medium
 please visit https : creativecommons org licenses by nc 4\.0
 italian association for traffic and transport engineering \( aiit \)
 international conference on information systems , logistics and supply chain
+icis 2022 : " digitization for the next generation "
 from the ministry of science and technology of taiwan \.
 european conference on management , leadership and governance , ecmlg
 creative commons attribution noncom mercial no derivatives 4\.0 international license
@@ -200,6 +202,7 @@ aidi italian association of industrial operations professors
 \d{4} ciencia , tecnologia y futuro \.$
 \d{4} academic conferences and publishing international limited
 \d{4} , el profesional de la informacion
+\. the author \( \d{4} \) \.
 \. serials publications pvt . ltd \.
 \. publication rights licensed to acm \.
 \. individual contributors , their contributions \.
@@ -210,6 +213,7 @@ aidi italian association of industrial operations professors
 \. editors and contributors severally \d{4} \.
 \. defence research and development canada \.
 \. creative commons reconocimiento nocomercial sinobraderivada \.
+\. council of supply chain management professionals$
 \. author \( s \) \d{4} \.
 \. \{4} , korean finance association \.
 \. \d{4} totem publisher , inc \.
@@ -593,6 +597,7 @@ copyright \d{4}
 \d{4} (\b[a-z\+]+\b\s)+journal
 \. author$
 \. al$
+\. (\b[a-z]+\b\s)+society$
 (\b[a-z]+\b\s)*special issue(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference proceedings(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference proceeding(\s\b[a-z\+]+\b)*
@@ -600,6 +605,7 @@ licensee(\s\b[a-z\+]+\b)+
 cerealella
 australis
 (\b[a-z]+\b\s)+press
+(\b[a-z]+\b\s)*verlag(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*universitas(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*springer(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*revista(\s\b[a-z\+]+\b)*

@@ -183,6 +183,7 @@ def internal__highlight_nouns_and_phrases(
         spacy_key_terms = [term for term in spacy_key_terms if "+" not in term]
         spacy_key_terms = [term for term in spacy_key_terms if "<" not in term]
         spacy_key_terms = [term for term in spacy_key_terms if ">" not in term]
+        spacy_key_terms = [term for term in spacy_key_terms if "=" not in term]
 
         spacy_key_terms = [
             term
@@ -217,7 +218,44 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
 
         #
-        # Step 7: Highlight key terms
+        # Step 7: Mark template abstract compound markers
+        #
+        for regex in [
+            "? academic practical relevance :",
+            "? data visualization tools :",
+            "? design methodology approach :",
+            "? implications of the_study :",
+            "? managerial implications :",
+            "? methodological quality assessment tools include :",
+            "? methodology results :",
+            "? originality value :",
+            "? practical implications :",
+            "? problem definition :",
+            "? research limitations :",
+            "? research limitations implications :",
+            "? research methodology :",
+            ". academic practical relevance :",
+            ". data visualization tools :",
+            ". design methodology approach :",
+            ". implications of the study :",
+            ". managerial implications :",
+            ". methodological quality assessment tools include :",
+            ". methodology results :",
+            ". originality value :",
+            ". practical implications :",
+            ". problem definition :",
+            ". reporting quality assessment tool :",
+            ". research limitations :",
+            ". research limitations implications :",
+            ". research methodology :",
+        ]:
+            regex = re.escape(regex)
+            regex = r"(" + regex + r")"
+            regex = re.compile(regex)
+            text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
+
+        #
+        # Step 8: Highlight key terms
         #
         key_terms = sorted(
             key_terms,
@@ -232,13 +270,31 @@ def internal__highlight_nouns_and_phrases(
                 )
 
         #
-        # Step 7: Unmark lowercase text with "_"
+        # Step 9: Mark consequtive separate terms in uppercase
+        #
+        for n_terms in range(1, 5):
+
+            pattern = r"\b[A-Z][A-Z_]+" + " [A-Z][A-Z_]+" * n_terms
+            matches = re.findall(pattern, text)
+
+            if len(matches) > 0:
+                for match in matches:
+                    regex = re.compile(r"\b" + re.escape(match) + r"\b")
+                    text = re.sub(
+                        regex, lambda z: z.group().upper().replace(" ", "_"), text
+                    )
+
+        #
+        # Step 10: Unmark lowercase text with "_" including abstract markers
         #
         regex = re.compile(r"\b([a-z_\(\)\d])+\b")
         text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
 
+        regex = re.compile(r"\b\._([a-z_\(\)\d])+_:\b")
+        text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
+
         #
-        # Step 6: Mark connectors
+        # Step 11: Mark connectors
         #
         current_connectors = [t for t in connectors if t in row[dest]]
         if len(current_connectors) > 0:
@@ -247,29 +303,60 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
 
         #
-        # Step 9: Remove roman numbers
+        # Step 12: Remove roman numbers
         #
-        # roman_numbers = [
-        #     "i",
-        #     "ii",
-        #     "iii",
-        #     "iv",
-        #     "v",
-        #     "vi",
-        #     "vii",
-        #     "viii",
-        #     "ix",
-        #     "x",
-        # ]
-        # for roman_number in roman_numbers:
-        #     regex = r"(\( {roman_number.upper()} )\)"
-        #     regex = re.compile(regex, re.IGNORECASE)
-        #     text = re.sub(regex, lambda z: z.group().lower(), text)
+        roman_numbers = [
+            "i",
+            "ii",
+            "iii",
+            "iv",
+            "v",
+            "vi",
+            "vii",
+            "viii",
+            "ix",
+            "x",
+        ]
+        for roman_number in roman_numbers:
+            regex = r"(\( {roman_number.upper()} )\)"
+            regex = re.compile(regex, re.IGNORECASE)
+            text = re.sub(regex, lambda z: z.group().lower(), text)
 
         #
-        # Step 10: Corrections
+        # Step 13: Remove abstract marker words
         #
+        for regex in [
+            ". APPROACH :",
+            ". FINDINGS :",
+            ". LIMITATIONS :",
+            ". METHOD :",
+            ". METHODOLOGY :",
+            ". ORIGINALITY :",
+            ". RESULT :",
+            ". RESULTS :",
+            ". UNIQUENESS :",
+            "? APPROACH :",
+            "? FINDINGS :",
+            "? LIMITATIONS :",
+            "? METHOD :",
+            "? METHODOLOGY :",
+            "? ORIGINALITY :",
+            "? RESULT :",
+            "? RESULTS :",
+            "? UNIQUENESS :",
+        ]:
+            text = text.replace(regex, regex.lower())
 
+        if text.startswith("AIM :"):
+            text = text.replace("AIM :", "aim :")
+        if text.startswith("PURPOSE :"):
+            text = text.replace("PURPOSE :", "purpose :")
+        if text.startswith("PROBLEM_DEFINITION :"):
+            text = text.replace("PROBLEM_DEFINITION :", "problem definition :")
+
+        #
+        # Step 14: Corrections
+        #
         # text = text.replace("_,_", "_")
         # text = text.replace("_._", "_")
 
