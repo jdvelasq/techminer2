@@ -338,9 +338,9 @@ def make_final_corrections(text):
 
 
 # ------------------------------------------------------------------------------
-def report_undetected_keywords(all_keywords, all_noun_phrases, root_directory):
+def report_undetected_keywords(all_keywords, all_phrases, root_directory):
 
-    undetected_keywords = [word for word in all_keywords if word in all_noun_phrases]
+    undetected_keywords = [word for word in all_keywords if word not in all_phrases]
     undetected_keywords = sorted(set(undetected_keywords))
     undetected_keywords = [
         word for word in undetected_keywords if len(word.split()) > 2
@@ -350,8 +350,15 @@ def report_undetected_keywords(all_keywords, all_noun_phrases, root_directory):
     ]
 
     file_path = pathlib.Path(root_directory) / "my_Keywords/undetected_keywords.txt"
+
+    # if file exists, open and load the content as a list
+    if file_path.exists():
+        with open(file_path, "r", encoding="utf-8") as file:
+            existing_keywords = file.read().splitlines()
+        undetected_keywords = list(set(existing_keywords) | set(undetected_keywords))
+
     with open(file_path, "w", encoding="utf-8") as file:
-        for keyword in undetected_keywords:
+        for keyword in sorted(undetected_keywords):
             file.write(f"{keyword}\n")
 
 
@@ -392,7 +399,7 @@ def internal__highlight_nouns_and_phrases(
     )
     determiners = re.compile(determiners)
 
-    all_noun_phrases = []
+    text_noun_phrases = []
 
     for index, row in tqdm(
         dataframe.iterrows(),
@@ -413,7 +420,7 @@ def internal__highlight_nouns_and_phrases(
         #
         key_terms += collect_textblob_noun_phrases(text)
         key_terms += collect_spacy_noun_phrases(spacy_nlp, text)
-        all_noun_phrases += key_terms
+        text_noun_phrases += key_terms
 
         key_terms += extract_abbreviations_from_text(text)
         key_terms = clean_key_terms(stopwords, key_terms)
@@ -442,4 +449,8 @@ def internal__highlight_nouns_and_phrases(
 
     write_records_to_database(dataframe, root_directory)
 
-    report_undetected_keywords(all_keywords, all_noun_phrases, root_directory)
+    report_undetected_keywords(
+        all_keywords,
+        text_noun_phrases + known_noun_phrases,
+        root_directory,
+    )

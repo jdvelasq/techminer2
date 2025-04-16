@@ -136,6 +136,118 @@ the article unveils
 the article uses
 the article was
 the article will
+the author acknowledges
+the author addresses
+the author adds
+the author advances
+the author affirms
+the author aimed
+the author aims
+the author also addresses
+the author also illuminated
+the author also illuminates
+the author also includes
+the author also provided
+the author analyzes
+the author applies
+the author argues
+the author assesed
+the author assimilates
+the author attemps
+the author begins
+the author brings
+the author can be
+the author can be used
+the author centers
+the author collects
+the author compares
+the author comprehensively explores
+the author conceptualizes
+the author confirmed
+the author confirmes
+the author considered
+the author considers
+the author contributes
+the author couples
+the author deals
+the author delves
+the author demostrates
+the author describes
+the author designs
+the author develops
+the author digs
+the author discusses
+the author draws
+the author elaborates
+the author emphasizes
+the author employed
+the author employs
+the author enables
+the author establishes
+the author evaluates
+the author examined
+the author examines
+the author experimentally
+the author explores
+the author extends
+the author finds
+the author focus
+the author focuses
+the author gives
+the author has
+the author has employed
+the author helps
+the author highlights
+the author identifies
+the author implemented
+the author includes
+the author indicates
+the author integrates
+the author intends
+the author introduces
+the author investigates
+the author involves
+the author is a contribution to
+the author is an attemp to
+the author is applied
+the author is based on
+the author is organized
+the author is unique
+the author is utilized
+the author leverages
+the author majorly focuses
+the author makes
+the author offers
+the author opens
+the author postulates
+the author presents
+the author proposes
+the author provides
+the author puts forward
+the author quantifies
+the author reports
+the author represents
+the author responds
+the author reveals
+the author reviews
+the author seeks
+the author selects
+the author serves
+the author sheds light
+the author shows
+the author starts
+the author studied
+the author studies
+the author suggests
+the author summarizes
+the author takes
+the author tries
+the author underscores
+the author unfolds
+the author unveils
+the author uses
+the author was
+the author will
 the chapter acknowledges
 the chapter addresses
 the chapter adds
@@ -2034,115 +2146,3 @@ this work will
 to achieve this objective
 to the best of the authors
 with the help of
-the author acknowledges
-the author addresses
-the author adds
-the author advances
-the author affirms
-the author aimed
-the author aims
-the author also addresses
-the author also illuminated
-the author also illuminates
-the author also includes
-the author also provided
-the author analyzes
-the author applies
-the author argues
-the author assesed
-the author assimilates
-the author attemps
-the author begins
-the author brings
-the author can be
-the author can be used
-the author centers
-the author collects
-the author compares
-the author comprehensively explores
-the author conceptualizes
-the author confirmed
-the author confirmes
-the author considered
-the author considers
-the author contributes
-the author couples
-the author deals
-the author delves
-the author demostrates
-the author describes
-the author designs
-the author develops
-the author digs
-the author discusses
-the author draws
-the author elaborates
-the author emphasizes
-the author employed
-the author employs
-the author enables
-the author establishes
-the author evaluates
-the author examined
-the author examines
-the author experimentally
-the author explores
-the author extends
-the author finds
-the author focus
-the author focuses
-the author gives
-the author has
-the author has employed
-the author helps
-the author highlights
-the author identifies
-the author implemented
-the author includes
-the author indicates
-the author integrates
-the author intends
-the author introduces
-the author investigates
-the author involves
-the author is a contribution to
-the author is an attemp to
-the author is applied
-the author is based on
-the author is organized
-the author is unique
-the author is utilized
-the author leverages
-the author majorly focuses
-the author makes
-the author offers
-the author opens
-the author postulates
-the author presents
-the author proposes
-the author provides
-the author puts forward
-the author quantifies
-the author reports
-the author represents
-the author responds
-the author reveals
-the author reviews
-the author seeks
-the author selects
-the author serves
-the author sheds light
-the author shows
-the author starts
-the author studied
-the author studies
-the author suggests
-the author summarizes
-the author takes
-the author tries
-the author underscores
-the author unfolds
-the author unveils
-the author uses
-the author was
-the author will
