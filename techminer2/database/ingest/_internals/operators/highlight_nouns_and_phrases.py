@@ -128,9 +128,12 @@ def internal__highlight_nouns_and_phrases(
 
     spacy_nlp = spacy.load("en_core_web_sm")
 
-    stopwords = internal__load_text_processing_terms("technical_stopwords.txt")
     connectors = internal__load_text_processing_terms("connectors.txt")
     copyright_regex = internal__load_text_processing_terms("copyright_regex.txt")
+    stopwords = internal__load_text_processing_terms("technical_stopwords.txt")
+    discursive_patterns = internal__load_text_processing_terms(
+        "discursive_patterns.txt"
+    )
 
     determiners = internal__load_text_processing_terms("determiners.txt")
     determiners = (
@@ -255,7 +258,25 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
 
         #
-        # Step 8: Highlight key terms
+        # Step 8: Mark discursive patterns
+        #
+        pattern = [t for t in discursive_patterns if t in row[dest]]
+        if len(pattern) > 0:
+            regex = "|".join([re.escape(phrase) for phrase in pattern])
+            regex = re.compile(r"\b(" + regex + r")\b")
+            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+
+        #
+        # Step 9: Mark connectors
+        #
+        current_connectors = [t for t in connectors if t in row[dest]]
+        if len(current_connectors) > 0:
+            regex = "|".join([re.escape(phrase) for phrase in current_connectors])
+            regex = re.compile(r"\b(" + regex + r")\b")
+            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+
+        #
+        # Step 10: Highlight key terms
         #
         key_terms = sorted(
             key_terms,
@@ -270,7 +291,7 @@ def internal__highlight_nouns_and_phrases(
                 )
 
         #
-        # Step 9: Mark consequtive separate terms in uppercase
+        # Step 10: Mark consequtive separate terms in uppercase
         #
         for n_terms in range(1, 5):
 
@@ -285,7 +306,7 @@ def internal__highlight_nouns_and_phrases(
                     )
 
         #
-        # Step 10: Unmark lowercase text with "_" including abstract markers
+        # Step 11: Unmark lowercase text with "_" including abstract markers
         #
         regex = re.compile(r"\b([a-z_\(\)\d])+\b")
         text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
@@ -294,7 +315,7 @@ def internal__highlight_nouns_and_phrases(
         text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
 
         #
-        # Step 11: Mark connectors
+        # Step 12: Mark connectors
         #
         current_connectors = [t for t in connectors if t in row[dest]]
         if len(current_connectors) > 0:
@@ -303,7 +324,7 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
 
         #
-        # Step 12: Remove roman numbers
+        # Step 13: Remove roman numbers
         #
         roman_numbers = [
             "i",
@@ -323,7 +344,7 @@ def internal__highlight_nouns_and_phrases(
             text = re.sub(regex, lambda z: z.group().lower(), text)
 
         #
-        # Step 13: Remove abstract marker words
+        # Step 14: Remove abstract marker words
         #
         for regex in [
             ". APPROACH :",

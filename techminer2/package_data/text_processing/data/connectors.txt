@@ -124,6 +124,10 @@ for the time being
 for this purpose
 for this reason
 from now on
+from the above background
+from the other hand
+from the perspective of
+from the point of view of
 from time to time
 given that
 given these points
@@ -142,8 +146,11 @@ in a similar manner
 in a similar vein
 in a similar way
 in addition
+in addition to
+in an effort to
 in any case
 in any event
+in areas where
 in between
 in brief
 in case
@@ -178,6 +185,7 @@ in spite of
 in spite of the fact that
 in sum
 in summary
+in terms of
 in that
 in that case
 in that respect
@@ -289,6 +297,8 @@ since then
 so as to
 so long as
 so that
+some of the
+some of these
 sooner or later
 sooner than
 specifically speaking
@@ -306,6 +316,9 @@ that said
 the aim of
 the first thing to remember
 the next step
+the rapid development of
+the rapid growth of
+the rapid rise of
 the whole time
 then again
 this being the case
