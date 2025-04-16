@@ -54,7 +54,7 @@ def prepare_dest_field(dataframe, source, dest):
 
 
 # ------------------------------------------------------------------------------
-def collect_author_and_index_keywords(root_directory):
+def collect_all_keywords(root_directory):
 
     database_file = pathlib.Path(root_directory) / "databases/database.csv.zip"
     dataframe = pd.read_csv(
@@ -79,7 +79,7 @@ def collect_author_and_index_keywords(root_directory):
 
 
 # ------------------------------------------------------------------------------
-def clean_author_and_index_keywords(terms):
+def clean_all_keywords(terms):
 
     terms = terms.str.translate(str.maketrans("", "", "\"'#!"))
     terms = terms.str.replace(re.compile(r"\(.*\)"), "", regex=True)
@@ -96,6 +96,263 @@ def clean_author_and_index_keywords(terms):
     terms = sorted(terms, key=lambda x: (len(x.split(" ")), x), reverse=True)
     assert "it" not in terms
     return terms
+
+
+# ------------------------------------------------------------------------------
+def load_known_noun_phrases(root_directory):
+    phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
+    phrases = [phrase.lower().replace("_", " ") for phrase in phrases]
+    return phrases
+
+
+# ------------------------------------------------------------------------------
+def extract_abbreviations_from_text(text):
+    #
+    # Extract all texts between parentheses and then, add them to the key_terms
+    #
+    abbreviations = re.findall(r"\((.*?)\)", text)
+    abbreviations = [t.strip() for t in abbreviations]
+    abbreviations = [t for t in abbreviations if all(c.isalnum() for c in t)]
+    abbreviations = list(set(abbreviations))
+    return abbreviations
+
+
+# ------------------------------------------------------------------------------
+def collect_textblob_noun_phrases(text):
+    return [str(phrase) for phrase in TextBlob(text).noun_phrases]
+
+
+# ------------------------------------------------------------------------------
+def collect_spacy_noun_phrases(spacy_nlp, text):
+    phrases = [chunk.text for chunk in spacy_nlp(text).noun_chunks]
+    phrases = [term for term in phrases if "." not in term]
+    phrases = [term for term in phrases if "(" not in term]
+    phrases = [term for term in phrases if ")" not in term]
+    phrases = [term for term in phrases if "[" not in term]
+    phrases = [term for term in phrases if "]" not in term]
+    phrases = [term for term in phrases if "%" not in term]
+    phrases = [term for term in phrases if "&" not in term]
+    phrases = [term for term in phrases if "!" not in term]
+    phrases = [term for term in phrases if "'" not in term]
+    phrases = [term for term in phrases if '"' not in term]
+    phrases = [term for term in phrases if "+" not in term]
+    phrases = [term for term in phrases if "<" not in term]
+    phrases = [term for term in phrases if ">" not in term]
+    phrases = [term for term in phrases if "=" not in term]
+
+    phrases = [
+        term
+        for term in phrases
+        if "a" in term or "e" in term or "i" in term or "o" in term or "u" in term
+    ]
+    return phrases
+
+
+# ------------------------------------------------------------------------------
+def clean_key_terms(stopwords, key_terms):
+    key_terms = list(set(key_terms))
+    key_terms = [term for term in key_terms if term not in stopwords]
+    key_terms = [term for term in key_terms if "(" not in term]
+    key_terms = [term for term in key_terms if "," not in term]
+    key_terms = [term for term in key_terms if not any(char.isdigit() for char in term)]
+    return key_terms
+
+
+# ------------------------------------------------------------------------------
+def mark_copyright_text(copyright_regex, text):
+    for regex in copyright_regex:
+        regex = r"(" + regex + r")"
+        regex = re.compile(regex)
+        text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+def mark_template_abstract_compound_markers(text):
+    for regex in [
+        "? academic practical relevance :",
+        "? data visualization tools :",
+        "? design methodology approach :",
+        "? implications of the_study :",
+        "? managerial implications :",
+        "? methodological quality assessment tools include :",
+        "? methodology results :",
+        "? originality value :",
+        "? practical implications :",
+        "? problem definition :",
+        "? research limitations :",
+        "? research limitations implications :",
+        "? research methodology :",
+        ". academic practical relevance :",
+        ". data visualization tools :",
+        ". design methodology approach :",
+        ". implications of the study :",
+        ". managerial implications :",
+        ". methodological quality assessment tools include :",
+        ". methodology results :",
+        ". originality value :",
+        ". practical implications :",
+        ". problem definition :",
+        ". reporting quality assessment tool :",
+        ". research limitations :",
+        ". research limitations implications :",
+        ". research methodology :",
+    ]:
+        regex = re.escape(regex)
+        regex = r"(" + regex + r")"
+        regex = re.compile(regex)
+        text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+def mark_discursive_patterns(discursive_patterns, text):
+    pattern = [t for t in discursive_patterns if t in text]
+    if len(pattern) > 0:
+        regex = "|".join([re.escape(phrase) for phrase in pattern])
+        regex = re.compile(r"\b(" + regex + r")\b")
+        text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+def mark_connectors(connectors, text):
+    current_connectors = [t for t in connectors if t in text]
+    if len(current_connectors) > 0:
+        regex = "|".join([re.escape(phrase) for phrase in current_connectors])
+        regex = re.compile(r"\b(" + regex + r")\b")
+        text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+def join_consequtive_separate_terms_in_uppercase(text):
+    for n_terms in range(1, 5):
+        pattern = r"\b[A-Z][A-Z_]+" + " [A-Z][A-Z_]+" * n_terms
+        matches = re.findall(pattern, text)
+
+        if len(matches) > 0:
+            for match in matches:
+                regex = re.compile(r"\b" + re.escape(match) + r"\b")
+                text = re.sub(
+                    regex, lambda z: z.group().upper().replace(" ", "_"), text
+                )
+
+    pattern = r"\b([A-Z][A-Z_]+) \( ([A-Z][A-Z_]+) \) ([A-Z][A-Z_]+)\b"
+    matches = re.findall(pattern, text)
+    if len(matches) > 0:
+        for match in matches:
+            full_match = f"{match[0]} ( {match[1]} ) {match[2]}"
+            replacement = f"{match[0]}_{match[2]}"
+            regex = re.compile(r"\b" + re.escape(full_match) + r"\b")
+            text = re.sub(regex, replacement, text)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
+def highlight_key_terms(key_terms, text):
+    key_terms = sorted(
+        key_terms,
+        key=lambda x: (len(x.split(" ")), x),
+        reverse=True,
+    )
+    if len(key_terms) > 0:
+        for term in key_terms:
+            regex = re.compile(r"\b" + re.escape(term) + r"\b")
+            text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
+def unmark_lowercase_text(text):
+    regex = re.compile(r"\b([a-z_\(\)\d])+\b")
+    text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
+    regex = re.compile(r"\b\._([a-z_\(\)\d])+_:\b")
+    text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+def remove_roman_numbers(text):
+    roman_numbers = [
+        "i",
+        "ii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x",
+    ]
+    for roman_number in roman_numbers:
+        regex = r"(\( {roman_number.upper()} )\)"
+        regex = re.compile(regex, re.IGNORECASE)
+        text = re.sub(regex, lambda z: z.group().lower(), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+def remove_marker_words(text):
+    for regex in [
+        ". APPROACH :",
+        ". FINDINGS :",
+        ". LIMITATIONS :",
+        ". METHOD :",
+        ". METHODOLOGY :",
+        ". ORIGINALITY :",
+        ". RESULT :",
+        ". RESULTS :",
+        ". UNIQUENESS :",
+        "? APPROACH :",
+        "? FINDINGS :",
+        "? LIMITATIONS :",
+        "? METHOD :",
+        "? METHODOLOGY :",
+        "? ORIGINALITY :",
+        "? RESULT :",
+        "? RESULTS :",
+        "? UNIQUENESS :",
+    ]:
+        text = text.replace(regex, regex.lower())
+
+    if text.startswith("AIM :"):
+        text = text.replace("AIM :", "aim :")
+    if text.startswith("PURPOSE :"):
+        text = text.replace("PURPOSE :", "purpose :")
+    if text.startswith("PROBLEM_DEFINITION :"):
+        text = text.replace("PROBLEM_DEFINITION :", "problem definition :")
+    return text
+
+
+# ------------------------------------------------------------------------------
+def make_final_corrections(text):
+    text = text.replace("_,_", "_")
+    text = text.replace("_._", "_")
+    text = text.replace(" :_", " : ")
+    text = text.replace("_S_", "_")
+    return text
+
+
+# ------------------------------------------------------------------------------
+def report_undetected_keywords(all_keywords, all_noun_phrases, root_directory):
+
+    undetected_keywords = [word for word in all_keywords if word in all_noun_phrases]
+    undetected_keywords = sorted(set(undetected_keywords))
+    undetected_keywords = [
+        word for word in undetected_keywords if len(word.split()) > 2
+    ]
+    undetected_keywords = [
+        word.replace(" ", "_").upper() for word in undetected_keywords
+    ]
+
+    file_path = pathlib.Path(root_directory) / "my_Keywords/undetected_keywords.txt"
+    with open(file_path, "w", encoding="utf-8") as file:
+        for keyword in undetected_keywords:
+            file.write(f"{keyword}\n")
 
 
 # ------------------------------------------------------------------------------
@@ -116,15 +373,9 @@ def internal__highlight_nouns_and_phrases(
 
     dataframe = prepare_dest_field(dataframe, source, dest)
 
-    author_and_index_keywords = collect_author_and_index_keywords(root_directory)
-    author_and_index_keywords = clean_author_and_index_keywords(
-        author_and_index_keywords
-    )
-
-    known_noun_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
-    known_noun_phrases = [
-        phrase.lower().replace("_", " ") for phrase in known_noun_phrases
-    ]
+    all_keywords = collect_all_keywords(root_directory)
+    all_keywords = clean_all_keywords(all_keywords)
+    known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
 
     spacy_nlp = spacy.load("en_core_web_sm")
 
@@ -141,6 +392,8 @@ def internal__highlight_nouns_and_phrases(
     )
     determiners = re.compile(determiners)
 
+    all_noun_phrases = []
+
     for index, row in tqdm(
         dataframe.iterrows(),
         total=len(dataframe),
@@ -156,231 +409,37 @@ def internal__highlight_nouns_and_phrases(
         key_terms = []
 
         #
-        # Step 1: Extract all texts between parentheses and then, add them to the key_terms
+        # Algorithm:
         #
-        abbreviations = re.findall(r"\((.*?)\)", text)
-        abbreviations = [t.strip() for t in abbreviations]
-        abbreviations = [t for t in abbreviations if all(c.isalnum() for c in t)]
-        abbreviations = list(set(abbreviations))
-        key_terms += abbreviations
+        key_terms += collect_textblob_noun_phrases(text)
+        key_terms += collect_spacy_noun_phrases(spacy_nlp, text)
+        all_noun_phrases += key_terms
 
-        #
-        # Step 2: Collect noun phrases using TextBlob
-        #
-        key_terms += [str(phrase) for phrase in TextBlob(text).noun_phrases]
+        key_terms += extract_abbreviations_from_text(text)
+        key_terms = clean_key_terms(stopwords, key_terms)
 
-        #
-        # Step 3: Collect noun phrases using spaCy
-        #
-        spacy_key_terms = [chunk.text for chunk in spacy_nlp(text).noun_chunks]
-        spacy_key_terms = [term for term in spacy_key_terms if "." not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "(" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if ")" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "[" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "]" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "%" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "&" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "!" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "'" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if '"' not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "+" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "<" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if ">" not in term]
-        spacy_key_terms = [term for term in spacy_key_terms if "=" not in term]
-
-        spacy_key_terms = [
-            term
-            for term in spacy_key_terms
-            if "a" in term or "e" in term or "i" in term or "o" in term or "u" in term
-        ]
-        key_terms += spacy_key_terms
-
-        #
-        # Step 4: Remove stopwords and phrases with numbers from key_terms
-        #
-        key_terms = list(set(key_terms))
-        key_terms = [term for term in key_terms if term not in stopwords]
-        key_terms = [term for term in key_terms if "(" not in term]
-        key_terms = [term for term in key_terms if "," not in term]
-        key_terms = [
-            term for term in key_terms if not any(char.isdigit() for char in term)
-        ]
-
-        #
-        # Step 5: Adds author and index keywords / known noun phrases
-        #
-        key_terms += [k for k in author_and_index_keywords if k in row[dest]]
+        key_terms += [k for k in all_keywords if k in row[dest]]
         key_terms += [k for k in known_noun_phrases if k in row[dest]]
 
-        #
-        # Step 6: Mark copyright text
-        #
-        for regex in copyright_regex:
-            regex = r"(" + regex + r")"
-            regex = re.compile(regex)
-            text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
+        text = mark_copyright_text(copyright_regex, text)
+        text = mark_template_abstract_compound_markers(text)
+        text = mark_discursive_patterns(discursive_patterns, text)
+        text = mark_connectors(connectors, text)
+        text = highlight_key_terms(key_terms, text)
+        text = join_consequtive_separate_terms_in_uppercase(text)
+
+        text = unmark_lowercase_text(text)
+        text = mark_connectors(connectors, text)
+        text = remove_roman_numbers(text)
+        text = remove_marker_words(text)
 
         #
-        # Step 7: Mark template abstract compound markers
+        # Step 14: make_final_corrections
         #
-        for regex in [
-            "? academic practical relevance :",
-            "? data visualization tools :",
-            "? design methodology approach :",
-            "? implications of the_study :",
-            "? managerial implications :",
-            "? methodological quality assessment tools include :",
-            "? methodology results :",
-            "? originality value :",
-            "? practical implications :",
-            "? problem definition :",
-            "? research limitations :",
-            "? research limitations implications :",
-            "? research methodology :",
-            ". academic practical relevance :",
-            ". data visualization tools :",
-            ". design methodology approach :",
-            ". implications of the study :",
-            ". managerial implications :",
-            ". methodological quality assessment tools include :",
-            ". methodology results :",
-            ". originality value :",
-            ". practical implications :",
-            ". problem definition :",
-            ". reporting quality assessment tool :",
-            ". research limitations :",
-            ". research limitations implications :",
-            ". research methodology :",
-        ]:
-            regex = re.escape(regex)
-            regex = r"(" + regex + r")"
-            regex = re.compile(regex)
-            text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
-
-        #
-        # Step 8: Mark discursive patterns
-        #
-        pattern = [t for t in discursive_patterns if t in row[dest]]
-        if len(pattern) > 0:
-            regex = "|".join([re.escape(phrase) for phrase in pattern])
-            regex = re.compile(r"\b(" + regex + r")\b")
-            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
-
-        #
-        # Step 9: Mark connectors
-        #
-        current_connectors = [t for t in connectors if t in row[dest]]
-        if len(current_connectors) > 0:
-            regex = "|".join([re.escape(phrase) for phrase in current_connectors])
-            regex = re.compile(r"\b(" + regex + r")\b")
-            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
-
-        #
-        # Step 10: Highlight key terms
-        #
-        key_terms = sorted(
-            key_terms,
-            key=lambda x: (len(x.split(" ")), x),
-            reverse=True,
-        )
-        if len(key_terms) > 0:
-            for term in key_terms:
-                regex = re.compile(r"\b" + re.escape(term) + r"\b")
-                text = re.sub(
-                    regex, lambda z: z.group().upper().replace(" ", "_"), text
-                )
-
-        #
-        # Step 10: Mark consequtive separate terms in uppercase
-        #
-        for n_terms in range(1, 5):
-
-            pattern = r"\b[A-Z][A-Z_]+" + " [A-Z][A-Z_]+" * n_terms
-            matches = re.findall(pattern, text)
-
-            if len(matches) > 0:
-                for match in matches:
-                    regex = re.compile(r"\b" + re.escape(match) + r"\b")
-                    text = re.sub(
-                        regex, lambda z: z.group().upper().replace(" ", "_"), text
-                    )
-
-        #
-        # Step 11: Unmark lowercase text with "_" including abstract markers
-        #
-        regex = re.compile(r"\b([a-z_\(\)\d])+\b")
-        text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
-
-        regex = re.compile(r"\b\._([a-z_\(\)\d])+_:\b")
-        text = re.sub(regex, lambda z: z.group().replace("_", " "), text)
-
-        #
-        # Step 12: Mark connectors
-        #
-        current_connectors = [t for t in connectors if t in row[dest]]
-        if len(current_connectors) > 0:
-            regex = "|".join([re.escape(phrase) for phrase in current_connectors])
-            regex = re.compile(r"\b(" + regex + r")\b")
-            text = re.sub(regex, lambda z: z.group().lower().replace(" ", "_"), text)
-
-        #
-        # Step 13: Remove roman numbers
-        #
-        roman_numbers = [
-            "i",
-            "ii",
-            "iii",
-            "iv",
-            "v",
-            "vi",
-            "vii",
-            "viii",
-            "ix",
-            "x",
-        ]
-        for roman_number in roman_numbers:
-            regex = r"(\( {roman_number.upper()} )\)"
-            regex = re.compile(regex, re.IGNORECASE)
-            text = re.sub(regex, lambda z: z.group().lower(), text)
-
-        #
-        # Step 14: Remove abstract marker words
-        #
-        for regex in [
-            ". APPROACH :",
-            ". FINDINGS :",
-            ". LIMITATIONS :",
-            ". METHOD :",
-            ". METHODOLOGY :",
-            ". ORIGINALITY :",
-            ". RESULT :",
-            ". RESULTS :",
-            ". UNIQUENESS :",
-            "? APPROACH :",
-            "? FINDINGS :",
-            "? LIMITATIONS :",
-            "? METHOD :",
-            "? METHODOLOGY :",
-            "? ORIGINALITY :",
-            "? RESULT :",
-            "? RESULTS :",
-            "? UNIQUENESS :",
-        ]:
-            text = text.replace(regex, regex.lower())
-
-        if text.startswith("AIM :"):
-            text = text.replace("AIM :", "aim :")
-        if text.startswith("PURPOSE :"):
-            text = text.replace("PURPOSE :", "purpose :")
-        if text.startswith("PROBLEM_DEFINITION :"):
-            text = text.replace("PROBLEM_DEFINITION :", "problem definition :")
-
-        #
-        # Step 14: Corrections
-        #
-        # text = text.replace("_,_", "_")
-        # text = text.replace("_._", "_")
+        text = make_final_corrections(text)
 
         dataframe.loc[index, dest] = text
 
     write_records_to_database(dataframe, root_directory)
+
+    report_undetected_keywords(all_keywords, all_noun_phrases, root_directory)
