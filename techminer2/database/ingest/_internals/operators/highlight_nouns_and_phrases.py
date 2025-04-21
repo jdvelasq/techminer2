@@ -89,13 +89,18 @@ def clean_all_keywords(terms):
     terms = terms.str.split("; ")
     terms = terms.explode()
     terms = terms.str.strip()
+    terms = terms[terms.str.len() > 2]
+    terms = terms[~terms.str.contains(r"\d", regex=True)]
+    #
+    frequent_terms = terms.value_counts()
+    frequent_terms = frequent_terms[frequent_terms > 2]
+    frequent_terms = frequent_terms.index.to_list()
+    #
     terms = terms.drop_duplicates()
     terms = terms.to_list()
-    terms = [term for term in terms if len(term) > 2]
-    terms = [term for term in terms if not any(char.isdigit() for char in term)]
     terms = sorted(terms, key=lambda x: (len(x.split(" ")), x), reverse=True)
-    assert "it" not in terms
-    return terms
+
+    return frequent_terms, terms
 
 
 # ------------------------------------------------------------------------------
@@ -338,9 +343,11 @@ def make_final_corrections(text):
 
 
 # ------------------------------------------------------------------------------
-def report_undetected_keywords(all_keywords, all_phrases, root_directory):
+def report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
 
-    undetected_keywords = [word for word in all_keywords if word not in all_phrases]
+    undetected_keywords = [
+        word for word in frequent_keywords if word not in all_phrases
+    ]
     undetected_keywords = sorted(set(undetected_keywords))
     undetected_keywords = [
         word for word in undetected_keywords if len(word.split()) > 2
@@ -349,7 +356,9 @@ def report_undetected_keywords(all_keywords, all_phrases, root_directory):
         word.replace(" ", "_").upper() for word in undetected_keywords
     ]
 
-    file_path = pathlib.Path(root_directory) / "my_Keywords/undetected_keywords.txt"
+    undetected_keywords = [word for word in undetected_keywords if len(word) < 100]
+
+    file_path = pathlib.Path(root_directory) / "my_keywords/undetected_keywords.txt"
 
     # if file exists, open and load the content as a list
     if file_path.exists():
@@ -381,7 +390,7 @@ def internal__highlight_nouns_and_phrases(
     dataframe = prepare_dest_field(dataframe, source, dest)
 
     all_keywords = collect_all_keywords(root_directory)
-    all_keywords = clean_all_keywords(all_keywords)
+    frequent_keywords, all_keywords = clean_all_keywords(all_keywords)
     known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
 
     spacy_nlp = spacy.load("en_core_web_sm")
@@ -450,7 +459,7 @@ def internal__highlight_nouns_and_phrases(
     write_records_to_database(dataframe, root_directory)
 
     report_undetected_keywords(
-        all_keywords,
+        frequent_keywords,
         text_noun_phrases + known_noun_phrases,
         root_directory,
     )

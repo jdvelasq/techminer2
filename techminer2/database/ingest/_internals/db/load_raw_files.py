@@ -59,7 +59,12 @@ def read_and_concatenate_files(files):
     links = {}
 
     for folder, file_name in files:
-        dataframe = pd.read_csv(file_name, encoding="utf-8", on_bad_lines="skip")
+        dataframe = pd.read_csv(
+            file_name,
+            encoding="utf-8",
+            on_bad_lines="skip",
+            low_memory=False,
+        )
         data.append(dataframe)
         if folder not in links:
             links[folder] = []

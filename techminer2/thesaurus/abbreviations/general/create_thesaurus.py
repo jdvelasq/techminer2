@@ -174,6 +174,9 @@ class CreateThesaurus(
             records.loc[index, "value"] = row.value.split(
                 "( " + row.key.lower() + " )"
             )[0]
+            records.loc[index, "value"] = records.loc[index, "value"].map(
+                lambda x: x[-140:]
+            )
             records.loc[index, "value"] += "( " + row.key.upper() + " )"
 
         # remove enumerations

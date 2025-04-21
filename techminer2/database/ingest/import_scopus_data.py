@@ -21,7 +21,7 @@ Import Scopus Data
 
 
 """
-
+import pathlib
 import sys
 import time
 
@@ -100,6 +100,14 @@ class ImportScopusData(
         sys.stderr.flush()
         start_time = time.time()
 
+        #### delete file
+        file_path = (
+            pathlib.Path(self.params.root_directory)
+            / "my_keywords/undetected_keywords.txt"
+        )
+        if file_path.exists():
+            file_path.unlink()
+
         #
         # PHASE 1: Preparing database files and folders
         # ---------------------------------------------------------------------------------
@@ -137,7 +145,7 @@ class ImportScopusData(
         internal__preprocess_num_authors(root_directory)
         internal__preprocess_num_global_references(root_directory)
         #
-        internal__preprocess_references(root_directory)
+        ### internal__preprocess_references(root_directory)
         #
         internal__preprocess_record_id(root_directory)
         internal__preprocess_record_no(root_directory)
