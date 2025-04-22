@@ -174,8 +174,10 @@ class CreateThesaurus(
             records.loc[index, "value"] = row.value.split(
                 "( " + row.key.lower() + " )"
             )[0]
-            records.loc[index, "value"] = records.loc[index, "value"][-140:]
-            records.loc[index, "value"] += "( " + row.key.upper() + " )"
+            abbr = "( " + row.key.upper() + " )"
+            records.loc[index, "value"] += abbr
+            if len(records.loc[index, "value"]) > 100:
+                records.loc[index, "value"] = "... " + records.loc[index, "value"][-96:]
 
         # remove enumerations
         records = records[
