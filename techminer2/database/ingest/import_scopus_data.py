@@ -145,7 +145,7 @@ class ImportScopusData(
         internal__preprocess_num_authors(root_directory)
         internal__preprocess_num_global_references(root_directory)
         #
-        ### internal__preprocess_references(root_directory)
+        internal__preprocess_references(root_directory)
         #
         internal__preprocess_record_id(root_directory)
         internal__preprocess_record_no(root_directory)
