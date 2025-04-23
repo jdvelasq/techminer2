@@ -1,8 +1,10 @@
 francesco poletti , marco petrovich , yong chen , greg jasion , eric numkam fokoua , natalie wheeler , tom bradley , hesham sakr , john hayes , ian davidson \d{4} osa \.
 \. \d{4} by the you \. s \. chamber of commerce , except for chapter \d{1,2} , which is a work of the you \. s \.
+xiang t \. r \. kong , ray y \. zhong , gangyan xu and george q \. huang \. published by emerald publishing limited \.
 readers are allowed to copy , distribute and communicate article s contents , provided the author s and intangible capital s names are included
 series c \( applied statistics \) published by john wiley and sons ltd on behalf of the royal statistical society \.
 european management review published by john wiley and sons ltd on behalf of european academy of management \( euram \) \.
+muhammad ali memon , mohamed hedi karray , agnes letouzey and bernard archimede \. published by emerald publishing limited .
 proceedings of the \d{2}rd pacific asia conference on information systems : secure ict platform for the 4th industrial revolution
 \d{2}th european conference on information systems : beyond digitization facets of socio technical change , ecis \d{4} .
 \. the editor and contributors severally \d{4} , international bank for reconstruction and development the world bank \.
@@ -31,7 +33,9 @@ european , mediterranean and middle eastern conference on information systems , 
 \. \d{4} f \. allen , x \. gu and j \. jagtiani \.$
 \. \d{4} brian towers \( britow \) and john wiley and sons ltd \.
 \. \d{4} antai college of economics and management , shanghai jiao tong university \.
+under exclusive licence to german academic society for production engineering \( wgp \)
 this research granted the \d{4} award of the cuban national academy of sciences
+and reproduction in any medium , provided the original work is properly cited
 \d{4} informs inst \. for operations res \. and the management sciences \.
 \\d{4} antai college of economics and management , shanghai jiao tong university .
 \. \d{4} xlri jamshedpur , school of business management and human resources \.
@@ -53,10 +57,15 @@ creative commons attribution non commercial no derivatives \( by nc nd \)
 \. \( \d{4} \) , \( science and information organization \) .
 \( regional inform \. center for sci \. and technol \. \)
 universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
+under exclusive licence to sociedade brasileira de matematica aplicada e computacional
+this open access article is distributed under a creative commons attribution
 this is an open access article distributed under the terms of
 the division of operation and maintenance , lulea university of technology
+technical committee on control theory , chinese association of automation \.$
 international convention on information and communication technology , electronics and microelectronics
 icst institute for computer sciences , social informatics and telecommunications engineering
+harbor , maritime and multimodal logistics modeling and simulation , hms
+by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. \d{4} publishing house of the higher school of economics \.
 \. \d{4} international business information management association \( ibima \) \.
 \. \d{4} \. journal of content , community and communication \.
@@ -110,6 +119,7 @@ the terms and conditions of the creative commons attribution
 reprodution right holder universidad distrital franiso jose de caldas
 reprodution right holder universidad distrital franciso jose de caldas
 national university of singapore , faculty of law \.
+international association for management of technology conference , iamot
 institute for transport studies within the european economic integration
 institute for transport studies in the european economic integration
 creative commons attribution noncommercial no derivatives 4\.0 international license
@@ -149,6 +159,7 @@ revista facultad de ingenieria , universidad de antioquia
 provided the original author and source are credited
 lulea university of technology , sweden \d{4} .
 kluwer law international bv , the netherlands \.$
+international foundation for autonomous agents and multiagent systems
 international conference on information systems \d{4} , icis
 ifac \( international federation of automatic control \)
 all rights of reproduction in any form reserved
@@ -185,6 +196,7 @@ use permitted under creative commons license attribution
 university of cienfuegos , carlos rafael rodriguez
 this book is an open access publication
 the institution of engineering and technology \d{4}
+the authors , published by edp sciences
 revista cientifica de la facultad de veterinaria
 kluwer law international bv , the netherlands
 international conference on information systems , icis
@@ -272,6 +284,7 @@ fundacao escola de comercio alvares penteado
 faculty of transport and traffic engineering
 eurojournals publishing , inc \. \d{4}
 derechos reservados \. maracaibo , venezuela
+copyright by the paper authors \.$
 by the electric drive transportation association
 associacao portuguesa para o desenvolvimento regional
 architectural science association \( anzasca \)
@@ -327,6 +340,7 @@ the editor \( s \)
 the creative commons attribution license
 the authors , \d{4} \.$
 the author \( s \)
+taiwan academic network management committee
 sas institute , inc \.
 roduction and operations management society
 published under license by (\b[a-z]+\b\s)*
@@ -334,9 +348,12 @@ published under licence by (\b[a-z]+\b\s)*
 published under exclusive licence by
 pontificia universidad catolica de valparaiso
 pleiades publishing , ltd \.
+neural information processing systems foundation
 mexican society of soil science
+lecture notes in computer science
 john wiley and sons ltd
 japan association of mineralogical sciences$
+ios press and the authors
 international transactions in operational research
 international federation for information processing
 international business information management association
@@ -414,11 +431,13 @@ published in (\b[a-z]+\b\s)*, \d{4}
 operational research society \d{4}
 national academy of sciences
 licensee : revista ingenieria
+japan industrial management association
 gazi universitesi muhendislik mimarlik
 facultad de ciencias veterinarias
 eurojournals publishing inc \d{4}
 escuela de construccion civil
 elsevier b \. v
+dimeg university of calabria
 creative commons international license
 corporacion universitaria lasallista \.$
 computers and industrial engineering
@@ -484,6 +503,7 @@ some rigths reserved
 some rights reseved
 some rights reserved
 some right reserved
+scientia sinica informationis
 reproduction right holder
 published by(\s\b[a-z \+]+\b)+
 pontificia universidad javeriana
@@ -491,6 +511,7 @@ orientalis \. \d{4}$
 networks published by
 licensee : aosis
 jurnal penelitian psikologi
+institut za istrazivanja
 informa uk limited
 ieom society international
 henry stewart publications
@@ -565,6 +586,7 @@ facultad(\s\b[a-z\+]+\b)+ \.$
 excelingtech pub
 evista dyna
 elfos scientiae
+editura politechnica
 derechos reservados
 copyright \d{4}.*\.
 copyright \d{4}(\s\b[a-z\+]+\b)*
