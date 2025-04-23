@@ -1,3 +1,265 @@
+Educación
+    Educ.
+Económicas
+    Econ.
+Coordinación
+    Coord.
+Humanidades
+    Hum.
+Educação
+    Educ.
+Física
+    Fis.
+Engenharia
+    Eng.
+Ambiental
+    Ambient.
+Produçao
+    Produ.
+Produção
+    Produ.
+Civil
+    Civ.
+Directorate
+    Dir.
+Highways
+    Hwy.
+Actividad
+    Act.
+Administrativa
+    Adm.
+Privada
+    Priv.
+Privado
+    Priv.
+privada
+    Priv.
+Profesional
+    Prof.
+Independiente
+    Ind.
+Informática
+    Inform.
+Educativa
+    Educ.
+Administração
+    Adm.
+Faculdades
+    Fac.
+Integradas
+    Int.
+Experience
+    Exp.
+Incorporated
+    Inc.
+Consulting
+    Consult.
+Services
+    Serv.
+Affiliation
+    Affil.
+Managing
+    Manag.
+Director
+    Dir.
+Biotechnology
+    Biotech.
+Foundation
+    Found.    
+Construction
+    Const.
+Province
+    Prov.
+Economy
+    Econ.
+Agropecuária
+    Agropec.
+Agència
+    Ag.
+Qualitat
+    Qual.
+Avaluació
+    Avaluac.
+sanitàries
+    San.
+Sanitàries
+    San.
+Alliance
+    Alli.
+Revolution
+    Revol.
+Corporativo
+    Corp.
+Maestría
+    Mstr.
+Agropecuarias
+    Agropec.    
+Producción
+    Produ.
+Agrícola
+    Agric.
+Especialidad
+    Esp.
+Reproducción
+    Reprod.
+Animal
+    Anim. 
+Ciudad
+    Cdad.
+Universitaria
+    Univ.
+Soluciones
+    Sol.
+Breeding
+    Breed.
+Genetics
+    Genet.
+Laboratory
+    Lab.
+Antropología
+    Antrop.
+Social
+    Soc.
+Aplicaciones
+    Appl.
+Avanzadas
+    Avanz.
+Sistemas
+    Sist.
+Mecatrónicos
+    Mecatr.
+department
+    Dept.
+Public
+    Publ. 
+commission
+    Comm.   
+Química
+    Quim. 
+Calálisis
+    Cal.
+Aplicada
+    Appl.
+Técnico
+    Tech.
+Estructurales
+    Estruc.
+Biology
+    Biol.
+Reproduction
+    Reprod.
+Development
+    Dev.
+Biosystemtics
+    Biosys.
+Ecology
+    Ecolog.
+Natural
+    Nat.
+Resources
+    Res.
+Biotecnología
+    Biotec.
+Consultoría
+    Consul.
+Brazilian
+    Bra.
+Meteorological
+    Met.
+Development
+    Dev.
+Manager
+    Mgr.
+Campo
+    Campo
+Experimental
+    Exp.
+Campus
+    Camp.
+Universitario
+    Univ.
+Subdirección
+    Subdir.
+Alimentación
+    Alim.
+Biological
+    Biol.
+Products
+    Prod.
+Vaccines
+    Vacc.
+Tecnológico
+    Tec.
+Subgerencia
+    Subger.
+Geotecnia
+    Geotec.
+Materiales
+    Mat.
+Environmental
+    Env.
+Postgraduate 
+    Postg.
+Program
+    Prog.
+Institution
+    Inst.
+Cidade
+    Cdad.
+Universitária
+    Univ.
+Administrativas
+    Adm.
+Ingeniero
+    Ing.
+Comercial
+    Comm.
+Dirección
+    Dir.
+Empresas
+    Emp.
+Ambientales
+    Amb.
+Biológicas
+    Biol.
+Alimentos
+    Alim.
+Comportamiento
+    Comport.
+orientación
+    Orient.
+Nutrición
+    Nutri.
+Sostenible
+    Sosten.
+Agrícolas
+    Agric.
+Parasitología
+    Parasit.
+Ciências
+    Cienc.
+Econômicas
+    Econ.
+Veterinárias
+    Vet.
+Geological
+    Geol.
+Comisión
+    Com.
+Nacional
+    Nac.
+Electricidad
+    Elect.
+Consejo
+    Counc.
+Nacional
+    Nac.
+Investigaciones
+    Invest.
+Científicas
+    Cient.
+Técnicas
+    Tech.
 UNAM
     Univ. Natl Autonoma de Mexico,
 Academia
@@ -16,6 +278,8 @@ Aeronautica
     Aeronaut.
 Astronautics
     Astronaut.
+Ambiente
+    Amb.
 Atmospheric
     Atmos.
 Agencia
@@ -42,6 +306,10 @@ Banco
     Banco
 Bank
     Bank
+Biologicas
+    Biol.
+Biblioteca
+    Bibl.
 Business
     Bus.
 Bureau
@@ -56,8 +324,20 @@ Científico
     Cient.
 Científica
     Cient.
+Ciencias
+    Cienc.
+Ciencia
+    Cienc.
+Civiles
+    Civ.
 College
     Coll.
+Colombian
+    Colomb.
+Colombiano
+    Colomb.
+Colombiana
+    Colomb.
 Comision
     Com.
 Commission
@@ -72,6 +352,8 @@ Consorcio
     Consorc.
 Consortium
     Consort.
+Construcciones
+    Const.
 Corporacion
     Corp.
 Corporation
@@ -94,6 +376,8 @@ Computación
     Comput.
 Computational
     Comput.
+Control
+    Control
 Division
     Div.
 Department
@@ -104,7 +388,17 @@ División
     Div.
 Economic
     Econ.
+Desarrollo
+    Desarrol.
 Economics
+    Econ.
+Economía
+    Econ.
+Edificio
+    Edif.
+Ecología
+    Ecolog.
+Economiá
     Econ.
 Engineering
     Eng.
@@ -114,6 +408,8 @@ Escuela
     Esc.
 European
     Eur.
+Empresa
+    Emp.
 Europeo
     Eur.
 Europea
@@ -128,10 +424,18 @@ Federal
     Fed.
 Finance
     Finan.
+Financiera
+    Finan.
 Fundacion
     Fund.
 Fundation
     Found.
+Humanas
+    Human.
+Gestión
+    Gesti.
+General
+    Gen.
 Gobierno
     Gob.
 Goverment
@@ -144,8 +448,12 @@ Graduate
     Grad.
 Hospital
     Hosp.
+Iberoamericana
+    Iberoam.
 Industrial
     Ind.
+Información
+    Info.
 Institute
     Inst.
 Instituto
@@ -162,10 +470,16 @@ Investigación
     Investig.
 Ingeniería
     Ing.
+Ingenierías
+    Ing.
 International
     Int.
 Limited
     Ltd.
+Latioamericano
+    Lat.
+Latinoamericana
+    Lat.
 Management
     Manag.
 Medical
@@ -178,6 +492,8 @@ Nacional
     Nac.
 National
     Nac.
+Negocios
+    Neg.
 Office
     Off.
 Oficina
@@ -212,7 +528,11 @@ Simulation
     Simul.
 Simulación
     Simul.
+Sistemas
+    Sist.
 Sociedad
+    Soc.
+Sociales
     Soc.
 Society
     Soc.
@@ -244,6 +564,10 @@ The University of
     Univ. of
 Tecnologico
     Tecnol.
+Transporte
+    Transp.
+Territorio
+    Territ.
 U de
     Univ. de
 Universidad
