@@ -56,8 +56,10 @@ creative commons attribution non commercial no derivatives \( by nc nd \)
 \. \d{4} , national research university , higher school of econoimics \.
 \. \( \d{4} \) , \( science and information organization \) .
 \( regional inform \. center for sci \. and technol \. \)
+\( \d{4} \) , \( institut za arhitekturu i urbanizam srbije \)
 universidad del zulia \d{4} , derechos reservados . maracaibo , venezuela
 under exclusive licence to sociedade brasileira de matematica aplicada e computacional
+this work is distributed under the creative commons attribution 4\.0 license
 this open access article is distributed under a creative commons attribution
 this is an open access article distributed under the terms of
 the division of operation and maintenance , lulea university of technology
@@ -94,6 +96,7 @@ creative com mons attribution noncommercial no derivatives 4.0 international lic
 by world scientific publishing co \. pte \. ltd \.
 associacao sul rio grandense de pesquisadores them historia da educacao
 article s contents are provided on an attribution non commercial
+\d{4} turkish national committee for air pollution research and control$
 \d{4} taylor and francis group , london , uk \.
 \d{4} international institute for innovation , industrial engineering and entrepreneurship
 \d{4} instituto de investigaciones dr \. jose maria luis mora
@@ -127,6 +130,7 @@ creative commons attribution noncommercial no derivatives 4\.0 international lic
 by scitepress science and technology publications , lda \.
 associacao portuguesa para o desenvolvimento regional \( apdr \)
 \d{4} m \. e \. sharpe , inc \.
+\d{4} babatunde omoniyi odedairo , published by sciendo \.
 \d{4} asian research publishing network \( arpn \) \.
 \d{4} american society of civil engineers \( asce \)
 \d{4} , rev \. mex \. ing \. quimica
@@ -210,6 +214,8 @@ association for information technology trust \d{4} \.
 americas conference on information systems , amcis
 american society for engineering education , \d{4}
 aidi italian association of industrial operations professors
+\d{4} the american congress of rehabilitation medicine$
+\d{4} economic society of australia , queensland$
 \d{4} csic consejo superior de investigaciones cientificas
 \d{4} ciencia , tecnologia y futuro \.$
 \d{4} academic conferences and publishing international limited
@@ -457,8 +463,10 @@ a creative commons attribution
 \d{4} llc ecological help
 \d{4} little lion scientific
 \d{4} jmir research protocols
+\d{4} international energy initiative$
 \d{4} ieee computer society
 \d{4} fintech circle ltd
+\d{4} chinese medical association$
 \d{4} by the authors
 \d{4} by the author(s)?
 \d{4} \. formacion universitaria
