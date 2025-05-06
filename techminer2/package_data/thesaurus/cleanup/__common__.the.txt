@@ -150,3 +150,6 @@
     LOW
     HIGH
     MOST
+    CHALLENGE
+    ADVANTAGE
+    DATA
