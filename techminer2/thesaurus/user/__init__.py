@@ -1,6 +1,7 @@
 """Thesaurus module."""
 
 from .general.apply_thesaurus import ApplyThesaurus
+from .general.compress_thesaurus import CompressThesaurus
 from .general.create_thesaurus import CreateThesaurus
 from .general.explode_keys import ExplodeKeys
 from .general.integrity_check import IntegrityCheck
@@ -22,6 +23,7 @@ from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
     "ApplyThesaurus",
+    "CompressThesaurus",
     "CreateThesaurus",
     "ExplodeKeys",
     "IntegrityCheck",
