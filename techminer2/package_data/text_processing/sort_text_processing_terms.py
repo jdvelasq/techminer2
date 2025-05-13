@@ -122,6 +122,19 @@ def sort_discursive_patterns(file_name):
         file.write("\n".join(lines))
 
 
+def sort_technical_stopwords(file_name):
+
+    with open(file_name, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+    #
+    lines = [line.strip().lower() for line in lines]
+    lines = list(set(lines))
+    lines = sorted(lines)
+    #
+    with open(file_name, "w", encoding="utf-8") as file:
+        file.write("\n".join(lines))
+
+
 def internal__sort_text_processing_terms():
     """:meta private:"""
 
@@ -150,6 +163,10 @@ def internal__sort_text_processing_terms():
 
         if file_name.endswith("discursive_patterns.txt"):
             sort_discursive_patterns(file_name)
+            continue
+
+        if file_name.endswith("technical_stopwords.txt"):
+            sort_technical_stopwords(file_name)
             continue
 
 
