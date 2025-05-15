@@ -69,6 +69,8 @@ def remove_quotes_and_parentheses(string_list):
 def clean_raw_keywords(text):
     """Clean and preprocess author keywords."""
 
+    text = text.map(lambda x: pd.NA if isinstance(x, str) and x.strip() == "" else x)
+
     text = text.str.upper()
 
     # check bad separators
@@ -138,5 +140,10 @@ def clean_raw_keywords(text):
     text = text.str.replace("_[", " [", regex=False)
     text = text.str.replace("]_", "] ", regex=False)
     text = text.str.replace("; _", "; ", regex=False)
+
+    # Remove empty terms
+    text = text.str.split("; ")
+    text = text.map(lambda x: [z for z in x if z.strip() != ""], na_action="ignore")
+    text = text.str.join("; ")
 
     return text
