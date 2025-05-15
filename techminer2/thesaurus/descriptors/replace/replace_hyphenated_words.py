@@ -315,6 +315,7 @@ class ReplaceHyphenatedWords(
         self.internal__fix_bad_hyphenated_words_in_keys()
         #
         self.internal__reduce_keys()
+
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
