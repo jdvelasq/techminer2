@@ -47,6 +47,7 @@ Example:
 
 """
 
+import re
 import sys
 
 import pandas as pd
@@ -101,6 +102,20 @@ class CompressThesaurus(
         )
 
     # -------------------------------------------------------------------------
+    def internal__get_nlp_terms(self):
+        self.nlp_terms = (
+            DataFrame()
+            .with_field("raw_nouns_and_phrases")
+            .having_terms_ordered_by("OCC")
+            .where_root_directory_is(self.params.root_directory)
+            .where_database_is("main")
+        ).run()
+        self.nlp_terms["length"] = self.nlp_terms.index.str.split("_").str.len()
+        self.nlp_terms = self.nlp_terms.sort_values(
+            by=["length", "rank_occ"], ascending=[True, True]
+        )
+
+    # -------------------------------------------------------------------------
     def internal__mark_keywords(self):
         self.data_frame["is_keyword"] = False
         self.data_frame.loc[
@@ -108,17 +123,20 @@ class CompressThesaurus(
         ] = True
 
     # -------------------------------------------------------------------------
-    def internal__compress_keys(self):
+    def internal__compress_keywords(self):
 
-        self.n_initial_keys = len(self.data_frame.key.drop_duplicates())
-        self.data_frame["phrase"] = self.data_frame["key"].str.replace("_", " ")
+        for keyword, _ in tqdm(
+            self.keywords.iterrows(),
+            total=self.keywords.shape[0],
+            desc="   Compressing keywords",
+        ):
 
-        for keyword, _ in self.keywords.iterrows():
-            candidates = self.data_frame[self.data_frame.is_keyword == False]
             regex = keyword.replace("_", " ")
-            regex = regex.replace("(", "\\(")
-            regex = regex.replace(")", "\\)")
+            regex = re.escape(regex)
             regex = r"\b" + regex + r"\b"
+
+            candidates = self.data_frame.copy()
+            candidates = candidates[candidates.is_keyword == False].copy()
             candidates = candidates[
                 candidates["phrase"].str.contains(regex, regex=True)
             ]
@@ -127,8 +145,49 @@ class CompressThesaurus(
             self.data_frame.loc[candidates.index, "key"] = keyword
             self.data_frame.loc[candidates.index, "is_keyword"] = True
 
+    # -------------------------------------------------------------------------
+    def internal__compress_nlp_terms(self):
+
+        for nlp_term, row in tqdm(
+            self.nlp_terms.iterrows(),
+            total=self.nlp_terms.shape[0],
+            desc="  Compressing nlp terms",
+        ):
+            new_key = self.data_frame[self.data_frame.value == nlp_term]
+            if len(new_key) == 0:
+                continue
+            new_key = new_key.iloc[0].key
+
+            candidates = self.data_frame[self.data_frame.is_keyword == False]
+            regex = nlp_term.replace("_", " ")
+            regex = re.escape(regex)
+            regex = r"\b" + regex + r"\b"
+            candidates = candidates[
+                candidates["phrase"].str.contains(regex, regex=True)
+            ]
+            if len(candidates) == 0:
+                continue
+            self.data_frame.loc[candidates.index, "key"] = new_key
+            self.data_frame.loc[candidates.index, "is_keyword"] = True
+
+    # -------------------------------------------------------------------------
+    def internal__compress_keys(self):
+
+        self.n_initial_keys = len(self.data_frame.key.drop_duplicates())
+        self.data_frame["phrase"] = self.data_frame["key"].str.replace("_", " ")
+        self.internal__compress_keywords()
+        self.internal__compress_nlp_terms()
         self.data_frame.pop("phrase")
+        self.data_frame.pop("is_keyword")
         self.n_final_keys = len(self.data_frame.key.drop_duplicates())
+
+    # -------------------------------------------------------------------------
+    def internal__group_values_by_key(self):
+        self.data_frame = self.data_frame.groupby("key", as_index=False).agg(
+            {"value": lambda x: "; ".join(x)}
+        )
+        self.data_frame = self.data_frame.sort_values("key")
+        self.data_frame = self.data_frame.reset_index(drop=True)
 
     # -------------------------------------------------------------------------
     def run(self):
@@ -139,8 +198,12 @@ class CompressThesaurus(
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         self.internal__get_keywords()
+        self.internal__get_nlp_terms()
         self.internal__mark_keywords()
         self.internal__compress_keys()
+
+        ## self.internal__group_values_by_key()
+        self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
