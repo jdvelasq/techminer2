@@ -28,6 +28,7 @@ import time
 from tqdm import tqdm
 
 from ..._internals.mixins import ParamsMixin
+from ._internals.datatests.check_empty_terms import internal__check_empty_terms
 from ._internals.db import (
     internal__compress_raw_files,
     internal__create_project_structure,
@@ -160,16 +161,26 @@ class ImportScopusData(
         #
 
         internal__preprocess_raw_index_keywords(root_directory)
+        internal__check_empty_terms("raw_index_keywords")
         internal__preprocess_index_keywords(root_directory)
+        internal__check_empty_terms("index_keywords")
+
         internal__preprocess_raw_author_keywords(root_directory)
+        internal__check_empty_terms("raw_author_keywords")
         internal__preprocess_author_keywords(root_directory)
+        internal__check_empty_terms("author_keywords")
+
         internal__preprocess_raw_keywords(root_directory)
+        internal__check_empty_terms("raw_keywords")
 
         internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
+        internal__check_empty_terms("raw_abstract_nouns_and_phrases")
         internal__preprocess_raw_document_title_nouns_and_phrases(root_directory)
-
+        internal__check_empty_terms("raw_document_title_nouns_and_phrases")
         internal__preprocess_raw_noun_and_phrases(root_directory)
+        internal__check_empty_terms("raw_noun_and_phrases")
         internal__preprocess_raw_descriptors(root_directory)
+        internal__check_empty_terms("raw_descriptors")
 
         #
         #
