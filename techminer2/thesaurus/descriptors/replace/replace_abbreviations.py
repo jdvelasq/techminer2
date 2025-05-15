@@ -151,7 +151,7 @@ class ReplaceAbbreviations(
 
         for abbr, value in tqdm(
             self.mapping.items(),
-            desc="  Progress ",
+            desc="       Progress ",
             disable=self.params.tqdm_disable,
             ncols=80,
         ):
