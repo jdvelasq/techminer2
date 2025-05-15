@@ -223,6 +223,9 @@ class ThesaurusMixin:
             self.data_frame = self.data_frame.sort_values("lower_key")
 
         self.data_frame = self.data_frame.drop(columns=["lower_key"])
+        self.data_frame = self.data_frame[
+            self.data_frame.key.map(lambda x: x.strip() != "")
+        ]
 
     # -------------------------------------------------------------------------
     def internal__transform_mapping_to_data_frame(self):
