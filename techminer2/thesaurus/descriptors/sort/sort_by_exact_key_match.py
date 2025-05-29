@@ -93,4 +93,14 @@ class SortByExactKeyMatch(
         )
 
 
+# -----------------------------------------------------------------------------
+# SHORTCUTS
+# -----------------------------------------------------------------------------
+def exactmatch(pattern):
+
+    from techminer2.thesaurus.descriptors import SortByExactKeyMatch  # type: ignore
+
+    SortByExactKeyMatch(pattern=pattern, root_directory="../").run()
+
+
 # ===============================================================================
