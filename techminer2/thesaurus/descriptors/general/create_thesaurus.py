@@ -82,3 +82,17 @@ class CreateThesaurus(
                 quiet=self.params.quiet,
             ).run()
         )
+
+
+# -----------------------------------------------------------------------------
+# SHORTCUTS
+# -----------------------------------------------------------------------------
+def reset_thesaurus():
+
+    from techminer2.thesaurus.descriptors import (  # type: ignore
+        CreateThesaurus,
+        IntegrityCheck,
+    )
+
+    CreateThesaurus(root_directory="../").run()
+    IntegrityCheck().where_root_directory_is("../").run()
