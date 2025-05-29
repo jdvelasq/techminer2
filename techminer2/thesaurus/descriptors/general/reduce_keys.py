@@ -63,4 +63,14 @@ class ReduceKeys(
         )
 
 
+# -----------------------------------------------------------------------------
+# SHORTCUTS
+# -----------------------------------------------------------------------------
+def reduce_keys():
+
+    from techminer2.thesaurus.descriptors import ReduceKeys  # type: ignore
+
+    ReduceKeys(root_directory="../").run()
+
+
 # =============================================================================
