@@ -14,11 +14,11 @@ def internal__check_empty_terms(
     source,
     #
     # DATABASE PARAMS:
-    root_dir="./",
+    root_directory="./",
 ):
     """:meta private:"""
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_directory) / "databases/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,
