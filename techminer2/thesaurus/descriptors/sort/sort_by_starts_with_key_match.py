@@ -84,4 +84,20 @@ class SortByStartsWithKeyMatch(
         )
 
 
+# -----------------------------------------------------------------------------
+# SHORTCUTS
+# -----------------------------------------------------------------------------
+def startswith(pattern):
+
+    from techminer2.thesaurus.descriptors import (  # type: ignore
+        SortByStartsWithKeyMatch,
+    )
+
+    (
+        SortByStartsWithKeyMatch()
+        .having_pattern(pattern)
+        .where_root_directory_is("../")
+    ).run()
+
+
 # =============================================================================
