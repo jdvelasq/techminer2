@@ -77,6 +77,11 @@ Example:
     >>> len(documents)
     50
 
+    >>> with open("example/record_viewer.txt", "w", encoding="utf-8") as f:
+    ...     for doc in documents:
+    ...         print(doc, file=f)
+    ...         print(file=f)
+
     >>> print(documents[0])
     UT 1260
     AR Gomber P., 2018, J MANAGE INF SYST, V35, P220
@@ -111,7 +116,6 @@ Example:
        FINANCIAL_SERVICE; FINANCIAL_SERVICES_INDUSTRIES; NEW_TECHNOLOGIES;
        OPERATIONS_MANAGEMENT; STAKEHOLDER_VALUES; TECHNOLOGY_INNOVATION; FINANCE
     <BLANKLINE>
-
 
 
 
