@@ -330,6 +330,9 @@ def remove_marker_words(text):
         text = text.replace("PURPOSE :", "purpose :")
     if text.startswith("PROBLEM_DEFINITION :"):
         text = text.replace("PROBLEM_DEFINITION :", "problem definition :")
+    if text.startswith("GRAPHICAL_ABSTRACT :"):
+        text = text.replace("GRAPHICAL_ABSTRACT :", "graphical abstract :")
+
     return text
 
 
@@ -339,6 +342,7 @@ def make_final_corrections(text):
     text = text.replace("_._", "_")
     text = text.replace(" :_", " : ")
     text = text.replace("_S_", "_")
+    text = text.replace("_http", " http")
     return text
 
 
@@ -369,6 +373,33 @@ def report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
     with open(file_path, "w", encoding="utf-8") as file:
         for keyword in sorted(undetected_keywords):
             file.write(f"{keyword}\n")
+
+
+# ------------------------------------------------------------------------------
+def collect_urls(text):
+    url_pattern = r"(http[s]?://[^\s]+)"
+    urls = re.findall(url_pattern, text)
+    return urls
+
+
+# ------------------------------------------------------------------------------
+def replace_urls(text, matches):
+    if len(matches) == 0:
+        return text
+    for match in matches:
+        regex = re.compile(re.escape(match), re.IGNORECASE)
+        text = regex.sub(lambda z: z.group().lower(), text)
+    return text
+
+
+# ------------------------------------------------------------------------------
+EMAIL_REGEX = r"[a-za-z0-9. %+-]+@[a-za-z0-9.-]+\.[a-za-z]{2,}"
+
+
+def transform_email_addresses_to_lower_case(text):
+
+    email_pattern = re.compile(r"\b" + EMAIL_REGEX + r"\b", re.IGNORECASE)
+    return email_pattern.sub(lambda z: z.group().lower(), text)
 
 
 # ------------------------------------------------------------------------------
@@ -437,6 +468,8 @@ def internal__highlight_nouns_and_phrases(
         key_terms += [k for k in all_keywords if k in row[dest]]
         key_terms += [k for k in known_noun_phrases if k in row[dest]]
 
+        url_matches = collect_urls(text)
+
         text = mark_copyright_text(copyright_regex, text)
         text = mark_template_abstract_compound_markers(text)
         text = mark_discursive_patterns(discursive_patterns, text)
@@ -444,10 +477,14 @@ def internal__highlight_nouns_and_phrases(
         text = highlight_key_terms(key_terms, text)
         text = join_consequtive_separate_terms_in_uppercase(text)
 
+        text = replace_urls(text, url_matches)
+
         text = unmark_lowercase_text(text)
         text = mark_connectors(connectors, text)
         text = remove_roman_numbers(text)
         text = remove_marker_words(text)
+
+        text = transform_email_addresses_to_lower_case(text)
 
         #
         # Step 14: make_final_corrections
