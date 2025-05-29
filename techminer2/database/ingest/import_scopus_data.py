@@ -161,26 +161,34 @@ class ImportScopusData(
         #
 
         internal__preprocess_raw_index_keywords(root_directory)
-        internal__check_empty_terms("raw_index_keywords")
+        internal__check_empty_terms("raw_index_keywords", root_directory=root_directory)
         internal__preprocess_index_keywords(root_directory)
-        internal__check_empty_terms("index_keywords")
+        internal__check_empty_terms("index_keywords", root_directory=root_directory)
 
         internal__preprocess_raw_author_keywords(root_directory)
-        internal__check_empty_terms("raw_author_keywords")
+        internal__check_empty_terms(
+            "raw_author_keywords", root_directory=root_directory
+        )
         internal__preprocess_author_keywords(root_directory)
-        internal__check_empty_terms("author_keywords")
+        internal__check_empty_terms("author_keywords", root_directory=root_directory)
 
         internal__preprocess_raw_keywords(root_directory)
-        internal__check_empty_terms("raw_keywords")
+        internal__check_empty_terms("raw_keywords", root_directory=root_directory)
 
         internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
-        internal__check_empty_terms("raw_abstract_nouns_and_phrases")
+        internal__check_empty_terms(
+            "raw_abstract_nouns_and_phrases", root_directory=root_directory
+        )
         internal__preprocess_raw_document_title_nouns_and_phrases(root_directory)
-        internal__check_empty_terms("raw_document_title_nouns_and_phrases")
+        internal__check_empty_terms(
+            "raw_document_title_nouns_and_phrases", root_directory=root_directory
+        )
         internal__preprocess_raw_noun_and_phrases(root_directory)
-        internal__check_empty_terms("raw_noun_and_phrases")
+        internal__check_empty_terms(
+            "raw_noun_and_phrases", root_directory=root_directory
+        )
         internal__preprocess_raw_descriptors(root_directory)
-        internal__check_empty_terms("raw_descriptors")
+        internal__check_empty_terms("raw_descriptors", root_directory=root_directory)
 
         #
         #
