@@ -85,4 +85,22 @@ class ReplaceWord(
         )
 
 
+# -----------------------------------------------------------------------------
+# SHORTCUTS
+# -----------------------------------------------------------------------------
+def replace(replace, by):
+
+    from techminer2.thesaurus.descriptors import ReduceKeys  # type: ignore
+    from techminer2.thesaurus.descriptors import ReplaceWord  # type: ignore
+
+    (
+        ReplaceWord()
+        .having_word(replace)
+        .having_replacement(by)
+        .where_root_directory_is("../")
+    ).run()
+
+    ReduceKeys(root_directory="../").run()  #  type: ignore
+
+
 # ===============================================================================
