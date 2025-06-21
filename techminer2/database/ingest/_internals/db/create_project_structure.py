@@ -9,6 +9,7 @@ PROJECT_DIRECTORIES = [
     "databases",
     "my_keywords",
     "reports",
+    "rules",
     "thesaurus",
 ]
 
@@ -38,6 +39,7 @@ def internal__create_project_structure(root_dir):
         +-- my_keywords/
         +-- my_keywords/stopwords.txt
         +-- reports/
+        +-- rules/
         +-- thesaurus/
 
     """
@@ -47,6 +49,12 @@ def internal__create_project_structure(root_dir):
     sys.stderr.flush()
     for directory in PROJECT_DIRECTORIES:
         create_directory(os.path.join(root_dir, directory))
+
+    # Create cleaining thesaurus files
+    create_file(os.path.join(root_dir, "rules/countries.the.txt"))
+    create_file(os.path.join(root_dir, "rules/descriptors.the.txt"))
+    create_file(os.path.join(root_dir, "rules/organizations.the.txt"))
+    create_file(os.path.join(root_dir, "rules/references.the.txt"))
 
     # Create stopwords.txt file
     sys.stderr.write("INFO  Creating stopwords.txt file\n")
