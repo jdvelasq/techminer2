@@ -8,6 +8,7 @@ docs_src/_source/
 example/databases/
 example/my_keywords/
 example/reports/
+example/rules/
 example/thesaurus/
 
 debug.ipynb
