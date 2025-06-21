@@ -8,6 +8,7 @@ after all
 after some time
 after that
 after this
+age of
 all in all
 all of a sudden now
 all the same
@@ -260,6 +261,7 @@ must be remembered
 not that
 not to mention
 notwithstanding the fact that
+now a day
 now that
 of course
 on balance
@@ -369,6 +371,8 @@ under those circumstances
 until now
 up to the present time
 up until
+various well known
+well knwon
 what is more
 with attention to
 with regards to
@@ -384,7 +388,3 @@ with this purpose in mind
 without a doubt
 without delay
 worth mentioning
-now a day
-well knwon
-various well known
-age of
