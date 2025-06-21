@@ -16,6 +16,7 @@ xiang t \. r \. kong , ray y \. zhong , gangyan xu and george q \. huang \. publ
 \. julia thomas , antonia lucht , jacob segler , richard wundrack , marcel miche , roselind lieb , lars kuchinke , gunther meinlschmidt \.$
 readers are allowed to copy , distribute and communicate article s contents , provided the author s and intangible capital s names are included
 \. ye lin , y alicia hong , bradley henson , robert d stevenson , simon hong , tianchu lyu , chen liang \.
+\. \d{4} selection and editorial matter , hemachandran k \. , sayantan khanra , raul v \. rodriguez and juan r \. jaramillo \.
 \d{4} article author \( s \) \( or their employer \( s \) unless otherwise stated in the text of the article \)
 \. caroline strickland , nancy chi , laura ditz , luisa gomez , brittin wagner , stanley wang , daniel j lizotte \.$
 the views represented in the paper do not necessarily represent the views of the institutions or of all the co authors \.$
@@ -46,6 +47,8 @@ this work is written by us government employees and is in the public domain in t
 this work granted the annual award of the national academy of sciences of cuba for the year
 this article is categorized under : application areas > health care \. 2021 wiley periodicals llc \.
 this article also appears , with a number of url links , on the biopharm web site
+hemachandran k \. , raul v \. rodriguez , umashankar subramaniam , and valentina emilia balas \.
+european conference on information systems : beyond digitization facets of socio technical change , ecis \d{4} \.
 content from this work may be used under the terms of the creative commons attribution 3\.0 licence
 association for the advancement of artificial intelligence \( www \. aaai\.org \) \. all rights reserved \.$
 \d{2}th european conference on information systems : beyond digitization facets of socio technical change , ecis \d{4}\.
@@ -56,12 +59,17 @@ association for the advancement of artificial intelligence \( www \. aaai\.org \
 upon the material in any medium so long as the original work is properly cited \.
 under exclusive licence to european association for predictive , preventive and personalised medicine \( epma \)
 copying or distributing in print or electronic forms without written permission of igi global is prohibited
+\d{4} by the information systems and computing academic professionals , inc \. \( iscap \) \.
 \d{4} , centro de investigacion de la facultad de arquitectura y urbanismo , universidad de cuenca
 \. pin zhong chan , eric jin , miia jansson , han shi jocelyn chew \.$
 \. kathryn a riman , billie davis , jennifer b seaman , jeremy m kahn \.$
 \. arindam brahma , samir chatterjee , kala seal , ben fitzpatrick , youyou tao \.$
 \. \d{4} the author \( s \) \( or their employer \( s \) \) \.
+\. \d{4} hiba alsaidi and david crowther published under exclusive licence by emerald publishing limited \.
 \. \d{4} bremer , plaisance , walker , bonn , love , perrone and sarker \.$
+\. \d{4} , association for industry , engineering , and management systems \( aiems \) \.
+\. \( \d{4} \) by association for information systems \( ais \) all rights reserved \.
+this work is licensed under a creative commons attribution noncommercial noderivatives 4\.0 international license \.
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional license
 this article is distributed under the terms of the creative commons atribution 4\.0 internacional licence
 the society for reliability engineering , quality and operations management \( sreqom \) , india
@@ -75,7 +83,10 @@ learning health systems published by wiley periodicals llc on behalf of universi
 \. michal gaziel yablowitz , sabine dolle , david g schwartz , margitta worm \.$
 \. giulia pullano , lucila gisele alvarez zuzek , vittoria colizza , shweta bansal \.$
 \. \d{4} the authors , faculty of law , masaryk university and ios press \.
+\. \d{4} tanushri banerjee , arindam banerjee , dhaval maheta , and vivek gupta \.
 \. \d{4} , thomas a \. lyson center for civic agriculture and food systems \.
+\. \d{3} , no copyright protection is available for such works under us law \.
+\. \( \d{4} \) , \( iscap information systems and computing academic professionals \) \.
 under exclusive licence to international center for numerical methods in engineering \( cimne \)
 roceedings of the 17th international symposium on operational research in slovenia , sor \d{4}
 published by brian towers \( britow \) and john wiley and sons ltd \.
@@ -100,24 +111,30 @@ author \( s \) \( or their employer \( s \) \) \d{4} \.
 \. \d{4} brian towers \( britow \) and john wiley and sons ltd \.
 \. \d{4} author \( s \) \( or their employer \( s \) \.
 \. \d{4} antai college of economics and management , shanghai jiao tong university \.
+\. \d{4} , anpad associacao nacional de pos graduacao e pesquisa them administracao \.
 . csp cambridge , uk \. i and s florida , usa , \d{4}$
 under exclusive licence to german academic society for production engineering \( wgp \)
 this research granted the \d{4} award of the cuban national academy of sciences
 proceedings of world multi conference on systemics , cybernetics and informatics , wmsci
+international conference on sustainability , technology and education \d{4} , ste \d{4} \.
 and reproduction in any medium , provided the original work is properly cited
 \d{4} the association for computational linguistics and chinese language processing \( aclclp \)
+\d{4} journal of management practices , humanities and social sciences \( jmphss \)
 \d{4} informs inst \. for operations res \. and the management sciences \.
 \d{4} association of measurement and evaluation in education and psychology \( epodder \)
 \\d{4} antai college of economics and management , shanghai jiao tong university .
+\. wires data mining and knowledge discovery published by wiley periodicals llc \.$
 \. kazuya taira , misa shiomi , takayo nakabe , yuichi imanaka \.$
 \. \d{4} xlri jamshedpur , school of business management and human resources \.
 \. \d{4} verein zur forderung des open access publizierens in den quantenwissenschaften \.
 \. \d{4} khademi , delir haghighi , lewis , burstein and palmer \.$
 \. \d{4} fundacao getulio vargas , escola de direito de sao paulo \.
 \. \d{4} copyright is held by the owner author \( s \) \.
+\. \d{4} by dr \. umesh r \. hodeghatta and umesha nayak \.
 \. \d{4} anpad associacao nacional de pos graduacao e pesquisa them administracao \.
 \. \d{4} , university of zagreb , faculty of organization and informatics \.
 \. \d{4} , russian presidental academy of national economy and public administration \.
+\. \d{4} , facultad de informatica , universidad nacional de la plata \.
 \. \d{4} , cognitione foundation for the dissemination of knowledge and science \.
 2018 antai college of economics and management , shanghai jiao tong university \.$
 which permits unrestricted use , distribution , and reproduction in any medium
@@ -129,13 +146,17 @@ deutsches zentrum fur luft und raumfahrt e \. v \. \d{4} \.$
 creative commons attribution non commercial no derivatives \( by nc nd \)
 beijing paike culture commu \. co \. , ltd \. \d{4} \.$
 \d{4} , association for scientific computing electronics and engineering \( ascee \)
+\. the authors , publis ad by edp sciences , \d{4} \.
 \. joana m barros , jim duggan , dietrich rebholz schuhmann \.$
 \. \d{4} international conferences e society \d{4} and mobile learning \d{4} \.
+\. \d{4} int \. j \. manag \. bus \. res \.$
 \. \d{4} fan , wang , huang , liu and hooten \.$
 \. \d{4} asociacion cuadernos de economia . todos los derechos reservados \.$
 \. \d{4} , world academy of research in science and engineering \.
 \. \d{4} , national research university , higher school of econoimics \.
+\. \d{4} , associacao iberica de sistemas e tecnologias de informacao \.
 \. \( \d{4} \) , \( science and information organization \) .
+\. \( \d{4} \) , \( neutrosophic sets and systems \) \.
 \( regional inform \. center for sci \. and technol \. \)
 \( \d{4} \) , \( institut za arhitekturu i urbanizam srbije \)
 world multi conference on systemics , cybernetics and informatics , proceedings
@@ -161,11 +182,13 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. \d{4} publishing house of the higher school of economics \.
 \. \d{4} international business information management association \( ibima \) \.
 \. \d{4} de silva , burstein , jelinek , stranieri \.$
+\. \d{4} by the authors \. licensee esj , italy \.
 \. \d{4} academy of medical sciences of i\.r \. iran \.
 \. \d{4} \. journal of content , community and communication \.
 \. \d{4} , wydawnictwo uniwersytetu marii curie sklodowskiej w lublinie \.
 \. \d{4} , university of cienfuegos , carlos rafael rodriguez \.
 \. \d{4} , universidad andina simon olivar , sede ecuador \.
+\. \d{4} , innovative information science and technology research group \.
 \. \d{4} , american scientific publishing group \( aspg \) \.
 \. \( \d{4} \) , \( kluwer law international \) \.
 2019 , mary ann liebert , inc \. , publishers \.$
@@ -219,16 +242,22 @@ article s contents are provided on an attribution non commercial
 \. intelligent systems in accounting , finance and management published
 \. european language resources association \( elra \) , licensed
 \. \d{4} volkan , kose , cece and elmas \.$
+\. \d{4} university of wollongong , faculty of business \.
+\. \d{4} university of florida , fisher school of accounting$
+\. \d{4} system safety : human technical facility environment \.
 \. \d{4} pfohl , kim , coan and mitchell \.$
 \. \d{4} kelley school of business , indiana university \.
 \. \d{4} infopro digital risk \( ip \) limited \.
 \. \d{4} hisin \( history of information systems \) \.
+\. \d{4} by gert h \. n \. laursen \.
+\. \d{4} aubrey milunsky and jeff m \. milunsky \.
 \. \d{4} association pour le traitement automatique des langues \.
 \. \d{4} , srac societatea romana pentru asigurarea calitatii \.
 \. \d{4} , periodicals of engineering and natural sciences \.
 \. \d{4} , journalof industrial engineering and engineering management \.
 \. \d{4} , istituto zooprofilattico dell'abruzzo e del molise \.
 \. \d{4} , canadian center of science and education \.
+\. \d{4} , associacao brasileira de engenharia de producao \.
 \. \d{4} , annals of family medicine , inc \.
 \. \d{4} , academic conferences and publishing international limited \.
 \. \( \d{4} \) , \( insight society \) \.
@@ -240,10 +269,12 @@ reprodution right holder universidad distrital franiso jose de caldas
 reprodution right holder universidad distrital franciso jose de caldas
 publication rights licensed to association for computing machinery \.$
 national university of singapore , faculty of law \.
+journal of management practices , humanities and social sciences
 international workshop on computer science and engineering , wcse
 international association for management of technology conference , iamot
 institute for transport studies within the european economic integration
 institute for transport studies in the european economic integration
+european conference on information systems , ecis \d{4} \.
 creative commons attribution noncommercial no derivatives 4\.0 international license
 creative commons attribution noncommercial no derivatives 4\.0 international licence
 copyright the author \( s \) , \d{4} \.
@@ -264,6 +295,7 @@ american college of medical quality \( acmq \) \d{4}
 \d{4} , instituto de altos estudios de salud publica
 \d{4} , hisin \( history of information systems \)
 \d{4} , department for e governance and administration \.
+\. the editor and contributing authors severally \d{4} \.
 \. the authors , published by edp sciences \.
 \. society for industrial and organizational psychology \d{4} \.
 \. re use permitted under cc by nc \.
@@ -279,6 +311,7 @@ american college of medical quality \( acmq \) \d{4}
 \. \d{4} md . faisal faruque et al \.$
 \. \d{4} kelley school of business , indiana university$
 \. \d{4} john wiley and sons , inc \.
+\. \d{4} international association for computer information systems \.
 \. \d{4} gesellschaft fur informatik \( gi \) \.
 \. \d{4} educational autonomous non profit organization nephrology \.
 \. \d{4} by the haworth press , inc \.
@@ -287,6 +320,7 @@ american college of medical quality \( acmq \) \d{4}
 \. \d{4} , srac romanian society for quality \.
 \. \d{4} , public administration school of catalonia \.
 \. \d{4} , oga osterreichische gesellschaft fur agrarokonomie \.
+\. \d{4} , economic laboratory for transition research \.
 \. \d{4} , american public health association inc \.
 \( \d{4} \) , \( universidad de antioquia \)
 \( \d{4} \) , \( corporacion universitaria lasallista \)
@@ -337,16 +371,20 @@ advanced science published by wiley vch gmbh \.
 \. \d{4} nicholas rosso , philippe giabbanelli \.$
 \. \d{4} international association for housing science \.
 \. \d{4} institution of engineering and technology \.
+\. \d{4} digital transformation and innovation management \.
+\. \d{4} by thomas w \. dinsmore \.
 \. \d{4} bharati vidyapeeth , new delhi \.
 \. \d{4} apple academic press , inc \.
 \. \d{4} american public health association inc \.
 \. \d{4} , russian academy of sciences \.
 \. \d{4} , pan american health organization \.
+\. \d{4} , national environmental health association \.
 \. \d{4} , international association of engineers \.
 \. \d{4} , dr d \. pylarinos \.
 \. \d{4} , consiglio nazionale delle ricerche \.
 \. \d{4} , centro universitario curitiba unicuritiba \.
 \. \d{4} , bulgarska akademiya na naukite \.
+\. \d{4} , association for information systems \.
 \. \d{4} ((\b[a-z]+\b\s)*, )*published by de gruyter \.
 , wiesbaden \d{4} \. alle rechte vorbehalten \.
 world scientific and engineering academy and society
@@ -410,11 +448,16 @@ aidi italian association of industrial operations professors
 \. council of supply chain management professionals$
 \. author \( s \) \d{4} \.
 \. \{4} , korean finance association \.
+\. \d{4} walter de gruyter inc \.
+\. \d{4} universidade de sao paulo \.
 \. \d{4} totem publisher , inc \.
 \. \d{4} s. rasheed et al \.$
 \. \d{4} llc cpc business perspectives \.
 \. \d{4} lippincott williams and wilkins \.
+\. \d{4} issues in information systems \.
 \. \d{4} international strategic management association \.
+\. \d{4} human kinetics , inc \.$
+\. \d{4} estudios de economia aplicada \.
 \. \d{4} common ground research networks \.
 \. \d{4} chinese academy of sciences \.
 \. \d{4} author \( s \) \.
@@ -435,6 +478,7 @@ aidi italian association of industrial operations professors
 \. \d{4} , curran associates inc \.
 \. \d{4} , bentham books imprint \.
 \. \d{4} , asers publishing house \.
+\. \d{4} , allied business academies \.
 \. \d{4} , academy of management \.
 \( cc by 4\.0 \) share adapt
 \( \d{4} \) , universidad del zulia
@@ -492,6 +536,7 @@ a link to the original publication
 \d{4} , cad solutions , llc
 \d{4} , australasian language technology association
 \. world scientific publishing company \.$
+\. world scientific publishing co \.
 \. the authors , \d{4} \.
 \. societa editrice il mulino \.
 \. see rights and permissions \.
@@ -521,6 +566,7 @@ a link to the original publication
 \. \d{4} a. carbone editore \.
 \. \d{4} , with intelligence \.
 \. \d{4} , uts epress \.
+\. \d{4} , strojarski facultet \.
 \. \d{4} , research trend \.
 \. \d{4} , paulus editora \.
 \. \d{4} , ismail saritas \.
@@ -564,6 +610,7 @@ iise annual conference and expo
 formacion universitaria all rights reserved
 facultad de economia y negocios
 electron \. j \. biotechnol
+copyright \( \d{4} \) by
 congress of neurological surgeons \d{4}
 cc by nc nd license
 cc by nc nd licence
@@ -619,8 +666,10 @@ american society of civil engineers
 \. \d{4} edp sciences \.
 \. \d{4} editions weblaw \.
 \. \d{4} ediciones clio \.
+\. \d{4} dinabandhu bag \.
 \. \d{4} dechema e \.
 \. \d{4} ceur ws \.
+\. \d{4} business informatics \.
 \. \d{4} bright publisher \.
 \. \d{4} boeck universite \.
 \. \d{4} \. rigeo \.
@@ -677,6 +726,7 @@ academy of marketing science
 a creative commons attribution
 \d{4} zte communications \.
 \d{4} universidade catolica editora
+\d{4} taylor and francis
 \d{4} sichuan petroleum administration$
 \d{4} produccion y limpia
 \d{4} pontificia universidad javeriana
