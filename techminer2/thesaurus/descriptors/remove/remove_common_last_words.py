@@ -109,6 +109,7 @@ class RemoveCommonLastWords(
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         words = internal__load_text_processing_terms("common_last_words.txt")
+        known_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
 
         # create regular expressions
         patterns = []
@@ -119,8 +120,9 @@ class RemoveCommonLastWords(
         patterns += [re.compile(" " + w.title() + "$") for w in words]
 
         def replace_patterns(text):
-            for pattern in patterns:
-                text = pattern.sub("", text)
+            if text not in known_phrases:
+                for pattern in patterns:
+                    text = pattern.sub("", text)
             return text
 
         tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable, ncols=80)
