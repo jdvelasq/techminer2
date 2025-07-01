@@ -229,3 +229,8 @@ class ImportScopusData(
         )
 
         sys.stderr.flush()
+
+
+if __name__ == "__main__":
+
+    ImportScopusData(root_directory="../").run()
