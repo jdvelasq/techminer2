@@ -11,6 +11,8 @@ Import Scopus Data
 ===============================================================================
 # doctest: +SKIP
 
+>>> # Command line interface
+>>> # python3 -m techminer2.database.ingest.import_scopus_data
 
 >>> from techminer2.database.ingest import ImportScopusData
 >>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS
@@ -233,4 +235,4 @@ class ImportScopusData(
 
 if __name__ == "__main__":
 
-    ImportScopusData(root_directory="../").run()
+    ImportScopusData(root_directory="./").run()
