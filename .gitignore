@@ -1,5 +1,29 @@
 .DS_Store
 
+
+# Node.js dependencies
+vscode-extension/node_modules/
+
+# Build artifacts
+vscode-extension/dist/
+
+# TypeScript cache
+vscode-extension/*.tsbuildinfo
+
+# Logs
+vscode-extension/*.log
+
+
+# Temporary files
+vscode-extension/*.tmp
+vscode-extension/*.temp
+
+
+# Extension packaging files
+*.vsix
+vscode-extension/*.vsix
+
+
 # Files generated automatically
 docs_src/source/
 docs_src/_source/

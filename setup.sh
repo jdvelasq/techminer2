@@ -5,3 +5,5 @@ source .venv/bin/activate
 pip3 install --quiet --upgrade pip
 pip3 install --quiet -e .
 pip3 install --quiet -r requirements-dev.txt
+
+npm install -g yo generator-code
