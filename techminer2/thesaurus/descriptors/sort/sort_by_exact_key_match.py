@@ -12,6 +12,11 @@ Sort By Exact Key Match
 
 
 Example:
+    >>> # Command line interface
+    >>> # python3 -m techminer2.thesaurus.descriptors.sort.sort_by_exact_key_match BLOCKCHAIN BLOCK_CHAIN
+
+
+Example:
     >>> import sys
     >>> from io import StringIO
     >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByExactKeyMatch
@@ -74,6 +79,8 @@ Example:
 
 
 """
+import argparse
+
 from ...._internals.mixins import ParamsMixin
 from ...user import SortByExactKeyMatch as UserSortByExactKeyMatch
 
@@ -98,9 +105,43 @@ class SortByExactKeyMatch(
 # -----------------------------------------------------------------------------
 def exactmatch(pattern):
 
-    from techminer2.thesaurus.descriptors import SortByExactKeyMatch  # type: ignore
-
     SortByExactKeyMatch(pattern=pattern, root_directory="../").run()
+
+
+#
+#
+# COMMAND LINE INTERFACE:
+#
+#
+def create_argparser():
+
+    parser = argparse.ArgumentParser(
+        description="Sort thesaurus file by exact key match."
+    )
+    parser.add_argument(
+        "--root-directory",
+        type=str,
+        default=".",
+        help="The root directory of the project.",
+    )
+    parser.add_argument(
+        "pattern",
+        type=str,
+        help="The pattern to match exactly in the thesaurus keys.",
+    )
+    args = parser.parse_args()
+    return args
+
+
+if __name__ == "__main__":
+
+    args = create_argparser()
+
+    SortByExactKeyMatch(
+        pattern=args.pattern.split(" "),
+        root_directory=args.root_directory,
+        quiet=False,
+    ).run()
 
 
 # ===============================================================================
