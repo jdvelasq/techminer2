@@ -112,6 +112,7 @@ author \( s \) \( or their employer \( s \) \) \d{4} \.
 \. \d{4} author \( s \) \( or their employer \( s \) \.
 \. \d{4} antai college of economics and management , shanghai jiao tong university \.
 \. \d{4} , anpad associacao nacional de pos graduacao e pesquisa them administracao \.
+\. \( 2024 \) , \( halmstad university \) \. all rights reserved \.
 . csp cambridge , uk \. i and s florida , usa , \d{4}$
 under exclusive licence to german academic society for production engineering \( wgp \)
 this research granted the \d{4} award of the cuban national academy of sciences
@@ -183,6 +184,7 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. \d{4} international business information management association \( ibima \) \.
 \. \d{4} de silva , burstein , jelinek , stranieri \.$
 \. \d{4} by the authors \. licensee esj , italy \.
+\. \d{4} babita singla , kumar shalender and nripendra singh \.
 \. \d{4} academy of medical sciences of i\.r \. iran \.
 \. \d{4} \. journal of content , community and communication \.
 \. \d{4} , wydawnictwo uniwersytetu marii curie sklodowskiej w lublinie \.
@@ -190,6 +192,7 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. \d{4} , universidad andina simon olivar , sede ecuador \.
 \. \d{4} , innovative information science and technology research group \.
 \. \d{4} , american scientific publishing group \( aspg \) \.
+\. \d{4 babita singla , kumar shalender and nripendra singh \.$
 \. \( \d{4} \) , \( kluwer law international \) \.
 2019 , mary ann liebert , inc \. , publishers \.$
 which permits unrestricted use distribution and reproduction in any medium
@@ -198,6 +201,7 @@ on behalf of the institution of engineering and technology \.$
 liver international published by john wiley and sons ltd \.$
 italian association for traffic and transport engineering \( aiit \)
 international conference on information systems , logistics and supply chain
+instytut badan gospodarczych\/institute of economic research \( poland \) \.$
 icis 2022 : " digitization for the next generation "
 hydrological processes published by john wiley and sons ltd \.
 from the ministry of science and technology of taiwan \.
@@ -287,6 +291,7 @@ american college of medical quality \( acmq \) \d{4}
 \d{4} held by the owner/author \( s \) .
 \d{4} european federation for medical informatics \( efmi \)
 \d{4} editorial board , research of environmental sciences \.
+\d{4} copyright held by the owner\/author \( s \)$
 \d{4} babatunde omoniyi odedairo , published by sciendo \.
 \d{4} asian research publishing network \( arpn \) \.
 \d{4} american society of civil engineers \( asce \)
@@ -489,6 +494,7 @@ wolters kluwer health , inc \.
 universidad distrital francisco jose de caldas
 to see the complete license contents
 this is an open access article
+the online demo is available at
 the national bureau of asian research
 the creative commons cc by license
 tecnologia y ciencias del agua \.$
@@ -653,6 +659,7 @@ american society of civil engineers
 \. the author \d{4} \.
 \. little lion scientific \.
 \. korean medical association \.
+\. instytut badan gospodarczych \.$
 \. copyright nuova cultura \.
 \. copyright \d{4} \[.*\] \.
 \. by the authors \.$
