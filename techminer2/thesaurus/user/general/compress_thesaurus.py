@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the compressor
     >>> compressor = (
-    ...     CompressThesaurus()
+    ...     CompressThesaurus(tqdm_disable=True)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("example/")
     ... )
@@ -37,11 +37,9 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +ELLIPSIS
     Compressing thesaurus keys
-                       File : example/thesaurus/demo.the.txt
-    Compressing keywords : 100%|##########| 279/279 [00:00<00:00, 1332.87it/s]
-      Compressing words : 100%|##########| 279/279 [00:00<00:00, 1737.40it/s]
+                      File : example/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys compressing completed successfully
     <BLANKLINE>
@@ -76,7 +74,7 @@ class CompressThesaurus(
         if len(truncated_path) > 72:
             truncated_path = "..." + truncated_path[-68:]
         sys.stderr.write(f"Compressing thesaurus keys\n")
-        sys.stderr.write(f"                   File : {truncated_path}\n")
+        sys.stderr.write(f"                  File : {truncated_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -131,7 +129,8 @@ class CompressThesaurus(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="   Compressing keywords ",
+            desc="      Compressing keywords ",
+            disable=self.params.tqdm_disable,
         ):
 
             regex = keyword.replace("_", " ")
@@ -158,7 +157,8 @@ class CompressThesaurus(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="      Compressing words ",
+            desc="         Compressing words ",
+            disable=self.params.tqdm_disable,
         ):
 
             regex = keyword.replace("_", " ")

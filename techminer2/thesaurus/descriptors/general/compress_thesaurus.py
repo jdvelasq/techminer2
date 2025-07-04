@@ -22,7 +22,7 @@ Example:
 
     >>> # Create the thesaurus
     >>> compressor = (
-    ...     CompressThesaurus()
+    ...     CompressThesaurus(tqdm_disable=True)
     ...     .where_root_directory_is("example/")
     ... )
     >>> compressor.run()
@@ -31,11 +31,16 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-
-
-
+    Compressing thesaurus keys
+                      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1341 to 1341
+      Keys compressing completed successfully
     <BLANKLINE>
     <BLANKLINE>
+
+
+
+
 
 
 """
@@ -58,6 +63,7 @@ class CompressThesaurus(
                 field="raw_descriptors",
                 thesaurus_file="descriptors.the.txt",
                 root_directory=self.params.root_directory,
+                tqdm_disable=self.params.tqdm_disable,
                 quiet=self.params.quiet,
             ).run()
         )

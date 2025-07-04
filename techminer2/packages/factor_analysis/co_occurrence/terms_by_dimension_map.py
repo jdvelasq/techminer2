@@ -58,7 +58,7 @@ Terms by Dimensions Map
 ## ...     #
 ## ...     .run()
 ## ... )
->>> plot.write_html("docs_source/__static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
+## >>> plot.write_html("docs_source/__static/factor_analysis/co_occurrence/terms_by_dimension_map.html")
 
 .. raw:: html
 

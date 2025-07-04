@@ -17,7 +17,6 @@ Example:
     ...     # FIELDS:
     ...     .with_field("authors")
     ...     .having_terms_in_top(10)
-    ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
@@ -76,6 +75,9 @@ class SankeyPlot(
                 .with_field(
                     col_field,
                 )
+                .having_terms_ordered_by(
+                    "OCC",
+                )
                 .having_terms_in_top(
                     self.params.top_n,
                 )
@@ -94,6 +96,9 @@ class SankeyPlot(
                 # ROWS:
                 .with_other_field(
                     row_field,
+                )
+                .having_other_terms_ordered_by(
+                    "OCC",
                 )
                 .having_other_terms_in_top(
                     self.params.top_n,
