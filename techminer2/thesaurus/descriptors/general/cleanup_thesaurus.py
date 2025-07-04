@@ -31,8 +31,33 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
-
+    >>> print(output) # doctest: +NORMALIZE_WHITESPACE
+    Cleanup Thesaurus
+      File : example/thesaurus/descriptors.the.txt
+      21 replacements made successfully
+    Cleanup completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/descriptors.the.txt
+    <BLANKLINE>
+        *GEOGRAPHIC_REGIONS*
+          AUSTRALIA_AND_NEW_ZEALAND; BRAZIL; CHINA; EUROPE; GERMANY; INDONESIA; KEN...
+        *LITERATURE_REVIEW*
+          LITERATURE_REVIEW
+        *PUBLISHERS*
+          RESEARCH_INDIA_PUBLICATIONS
+        *STUDY*
+          CASE_STUDIES; CASE_STUDY
+        APPROACH
+          APPROACHES
+        CONSTRUCT
+          CONSTRUCTS
+        ORGANIZATION
+          BUSINESS; BUSINESSES; COMPANIES; FIRMS; INTERNATIONAL_ORGANIZATION; ORGAN...
+        RESEARCH
+          ACADEMIC_RESEARCH; RESEARCH
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

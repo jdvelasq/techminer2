@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-"""Command line interface for thesaurus descriptor operations."""
+"""Command line interface for the Thesaurus subsystem."""
 
 
 import cmd
@@ -19,9 +19,9 @@ from .descriptors.shell import DescriptorsCLI
 readline.parse_and_bind("bind ^I rl_complete")
 
 
-class MainShell(BaseCLI):
-    intro = "Welcome. Type help or ? to list commands.\n"
-    prompt = "tm2 > "
+class ThesaurusShell(BaseCLI):
+
+    prompt = "tm2 > Thesaurus > "
 
     # Main menu commands
     # def do_abbreviations(self, arg):
@@ -56,22 +56,6 @@ class MainShell(BaseCLI):
         """Exit the CLI."""
         return True
 
-    def do_help(self, arg):
-        """Help function."""
-        if arg:
-            try:
-                func = getattr(self, f"help_{arg}")
-                func()
-            except AttributeError:
-                print(f"No help available for '{arg}'")
-        else:
-
-            print("\nAvailable commands:\n")
-            for command in self.get_names():
-                if command.startswith("do_"):
-                    print(f"  {command[3:].ljust(15)} {getattr(self, command).__doc__}")
-            print()
-
 
 if __name__ == "__main__":
-    MainShell().cmdloop()
+    ThesaurusShell().cmdloop()

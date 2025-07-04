@@ -99,6 +99,7 @@ class TermsByClusterDataFrame(
         return (
             OtherTermsByClusterDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .unit_of_analysis("authors")
             .run()
         )

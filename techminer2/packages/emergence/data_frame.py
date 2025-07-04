@@ -8,37 +8,37 @@
 Data Frame
 ===============================================================================
 
-
->>> from techminer2.packages.emergence import DataFrame
->>> (
-...     DataFrame()
-...     #
-...     # FIELD:
-...     .with_field("descriptors")
-...     #
-...     # EMERGENCE:
-...     .using_baseline_periods(3)
-...     .using_recent_periods(3)
-...     .using_novelty_threshold(0.15)
-...     .using_total_records_threshold(7)
-...     .using_periods_with_at_least_one_record(3)
-...     .using_ratio_threshold(0.5)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-                    OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
-descriptors                            ...
-DATA 07:1086          7             2  ...    87.082869           0.733824
-THE_AUTHOR 07:0828    7             2  ...    91.293118           0.769302
-<BLANKLINE>
-[2 rows x 10 columns]
+Example:
+    >>> from techminer2.packages.emergence import DataFrame
+    >>> (
+    ...     DataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("descriptors")
+    ...     #
+    ...     # EMERGENCE:
+    ...     .using_baseline_periods(3)
+    ...     .using_recent_periods(3)
+    ...     .using_novelty_threshold(0.15)
+    ...     .using_total_records_threshold(7)
+    ...     .using_periods_with_at_least_one_record(3)
+    ...     .using_ratio_threshold(0.5)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+                       OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
+    descriptors                           ...
+    DATA 07:1086         7             2  ...    87.082869           0.733824
+    CONSUMERS 07:0925    7             1  ...   164.575131           1.386830
+    <BLANKLINE>
+    [2 rows x 10 columns]
 
 
 """
@@ -67,6 +67,7 @@ class DataFrame(
         return (
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .with_cumulative_sum(False)
             .run()
         )
@@ -140,6 +141,7 @@ class DataFrame(
         cum_occurrences_by_year = (
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .with_cumulative_sum(True)
             .run()
         )

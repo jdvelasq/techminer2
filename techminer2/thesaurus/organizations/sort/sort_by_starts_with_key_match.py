@@ -40,15 +40,22 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
          File : example/thesaurus/organizations.the.txt
       Pattern : Univ
-      25 matching keys found
+      26 matching keys found
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/organizations.the.txt
     <BLANKLINE>
+        Univ Brunei Darussalam (BRN)
+          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
         Univ di Padova (ITA)
           Università di Padova, Italy
         Univ Gadjah Mada (IDN)
@@ -63,10 +70,9 @@ Example:
           University of Chicago, United States
         Univ of Delaware (USA)
           Lerner College of Business and Economics, University of Delaware, United ...
-        Univ of Groningen (NLD)
-          Faculty of Economics and Business, University of Groningen, Nettelbosje 2...
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 from ...._internals.mixins import ParamsMixin

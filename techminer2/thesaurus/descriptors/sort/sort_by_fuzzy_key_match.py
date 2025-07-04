@@ -36,11 +36,16 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by fuzzy match
                 File : example/thesaurus/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
-      95 matching keys found
+      91 matching keys found
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -56,12 +61,12 @@ Example:
           A_NEW_INTERMEDIARY
         A_PLATFORM
           A_PLATFORM
-        ANY_FORM
-          ANY_FORM
         BUSINESS_INFRASTRUCTURE
           BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
         CLASSIFICATION (OF_INFORMATION)
           CLASSIFICATION (OF_INFORMATION)
+        COMPETITORS
+          COMPETITORS
     <BLANKLINE>
     <BLANKLINE>
 

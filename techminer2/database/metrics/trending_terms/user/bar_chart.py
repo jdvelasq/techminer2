@@ -41,7 +41,7 @@ Example:
     ...     .where_records_match(None)
     ... )
     >>> plot = plotter.run()
-    >>> plot.write_html("docs_src/_generated/px.database.metrics.trending_terms.user.html")
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.trending_terms.user.html")
 
 .. raw:: html
 

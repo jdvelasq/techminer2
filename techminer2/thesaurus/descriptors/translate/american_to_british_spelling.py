@@ -36,7 +36,7 @@ Example:
     >>> print(output) # doctest: +ELLIPSIS
     Converting American to British English
       File : example/thesaurus/descriptors.the.txt
-      23 replacements made successfully
+      21 replacements made successfully
     Translation completed successfully
     <BLANKLINE>
     Printing thesaurus header

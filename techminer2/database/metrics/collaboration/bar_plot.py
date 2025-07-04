@@ -27,6 +27,7 @@ Example:
     ...     .having_terms_in_top(10)
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
+    ...     .having_terms_ordered_by("OCC")
     ...     .having_terms_in(None)
     ...     #
     ...     # PLOT:
@@ -42,7 +43,7 @@ Example:
     ...     .where_records_match(None)
     ... )
     >>> plot = plotter.run()
-    >>> plot.write_html("docs_src/_generated/px.database.metrics.collaboration.bar_plot.html")
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.collaboration.bar_plot.html")
 
 .. raw:: html
 

@@ -90,7 +90,7 @@ def generate_final_file(key, file):
         return
 
     file = file.replace(".py", "")
-    filename = "docs_src/source/" + key + "." + file + ".rst"
+    filename = "docs_source/source/" + key + "." + file + ".rst"
     automodule = "techminer2." + key + "." + file
 
     with open(filename, "w", encoding="utf-8") as f:
@@ -101,7 +101,7 @@ def generate_final_file(key, file):
 
 
 def delete_existent_files_in_source():
-    files = read_directory_tree("docs_src/source")
+    files = read_directory_tree("docs_source/source")
     for file in files:
         if file.endswith(".rst"):
             os.remove(file)
@@ -109,7 +109,7 @@ def delete_existent_files_in_source():
 
 def generate_index_file(key, item):
 
-    filename = "docs_src/source/" + key + ".rst"
+    filename = "docs_source/source/" + key + ".rst"
 
     with open(filename, "w", encoding="utf-8") as f:
         title = key.split(".")[-1].replace("_", " ").capitalize()

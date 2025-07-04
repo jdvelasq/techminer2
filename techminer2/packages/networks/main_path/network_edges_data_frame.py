@@ -9,35 +9,34 @@
 Network Edges Frame
 ===============================================================================
 
->>> from techminer2.packages.networks.main_path import NetworkEdgesDataFrame
->>> (
-...     NetworkEdgesDataFrame()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(None)
-...     .having_citation_threshold(0)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
---INFO-- Paths computed.
---INFO-- Points per link computed.
---INFO-- Points per path computed.
-                                      citing_article  ... points
-0  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...      3
-1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...      3
-2                   Hu Z., 2019, SYMMETRY, V11 1:176  ...      4
-3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150  ...      1
-4       Alt R., 2018, ELECTRON MARK, V28, P235 1:150  ...      2
-5  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...  ...      3
-<BLANKLINE>
-[6 rows x 3 columns]
+
+Example:
+    >>> from techminer2.packages.networks.main_path import NetworkEdgesDataFrame
+    >>> (
+    ...     NetworkEdgesDataFrame()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(None)
+    ...     .having_citation_threshold(0)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+                                          citing_article  ... points
+    0  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...      3
+    1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...  ...      3
+    2                   Hu Z., 2019, SYMMETRY, V11 1:176  ...      4
+    3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150  ...      1
+    4       Alt R., 2018, ELECTRON MARK, V28, P235 1:150  ...      2
+    5  Gozman D., 2018, J MANAGE INF SYST, V35, P145 ...  ...      3
+    <BLANKLINE>
+    [6 rows x 3 columns]
 
 
 """

@@ -36,7 +36,7 @@ Line Plot
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.database.metrics.performance.line_plot.html")
+>>> plot.write_html("docs_source/_generated/px.database.metrics.performance.line_plot.html")
 
 .. raw:: html
 

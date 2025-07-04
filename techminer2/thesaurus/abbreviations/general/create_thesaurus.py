@@ -29,28 +29,29 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus
-      20 abbreviations found
+      12 abbreviations found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/abbreviations.the.txt
     <BLANKLINE>
-        A_A_
-          using AFFORDANCE_ACTUALIZATION ( A_A_)_THEORY as THE_THEORETICAL_LENS , w...
-        AI
-          ARTIFICIAL_INTELLIGENCE; purpose : considering THE_INCREASING_IMPACT of A...
-        ANT
-          ACTOR_NETWORK_THEORY; THIS_STUDY applies THE_LENS of ACTOR_NETWORK_THEORY...
         DEMATEL
-          A_SIX_DIMENSIONAL_MODEL comprising 20 SUB_CRITERIA is constructed and BOT...
+          ... CRITERIA is constructed and both the DECISION_MAKING_TRIAL_AND_EVALUA...
         E_FINANCE
           ELECTRONIC_FINANCE
         E_PAYMENT
           ELECTRONIC_PAYMENT
         EPAM
-          we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPA...
-        EU
-          EUROPEAN_UNION; yet , empirically , FINTECH remains very small , especial...
+          we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPAM )
+        FINTECH
+          FINANCIAL_TECHNOLOGY
+        IOT
+          INTERNET_OF_THING; INTERNET_OF_THINGS
+        ISED
+          THE_DIGITAL_REVOLUTION adds NEW_LAYERS to THE_MATERIAL_CULTURES of financ...
+        MCDM
+          MULTI_CRITERIA_DECISION_MAKING; ... _INNOVATION_THEORY , we propose A_NOV...
+    <BLANKLINE>
     <BLANKLINE>
 
 

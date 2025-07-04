@@ -38,6 +38,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus alphabetically
       File : example/thesaurus/demo.the.txt
       Thesaurus sorting completed successfully
@@ -55,12 +60,12 @@ Example:
           ACADEMIC_RESEARCH
         ACCELERATE_ACCESS
           ACCELERATE_ACCESS
-        ACCEPTANCE
-          ACCEPTANCE
         ACCEPTANCE_MODELS
           ACCEPTANCE_MODELS
         ACCESS
           ACCESS
+        ACCESS_LOANS
+          ACCESS_LOANS
     <BLANKLINE>
     <BLANKLINE>
 
@@ -77,6 +82,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by key length
       File : example/thesaurus/demo.the.txt
       Thesaurus sorting completed successfully
@@ -84,22 +94,22 @@ Example:
     Printing thesaurus header
       File : example/thesaurus/demo.the.txt
     <BLANKLINE>
+        CONTINUOUS_INTENTION_TO_USE_MOBILE_FINTECH_PAYMENT_SERVICES
+          CONTINUOUS_INTENTION_TO_USE_MOBILE_FINTECH_PAYMENT_SERVICES
+        UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY_MODEL
+          UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY_MODEL
         A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
           A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
         THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
           THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
+        INSTITUTIONS_OVERLOOKS_THE_CONCEPTUALLY_DISTINCT_RISKS
+          INSTITUTIONS_OVERLOOKS_THE_CONCEPTUALLY_DISTINCT_RISKS
         THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
           THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
         FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
           FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
         UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
           UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-        THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
-          THE_FINANCIAL_AND_DIGITAL_INNOVATION_LITERATURE
-        ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
-          ECONOMIC_SUSTAINABILITY_AND_COST_EFFECTIVENESS
-        FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
-          FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
     <BLANKLINE>
     <BLANKLINE>
 
@@ -116,6 +126,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by word length
       File : example/thesaurus/demo.the.txt
       Thesaurus sorting completed successfully
@@ -123,8 +138,8 @@ Example:
     Printing thesaurus header
       File : example/thesaurus/demo.the.txt
     <BLANKLINE>
-        THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
-          THE_FINTECHPHILANTHROPYDEVELOPMENT_COMPLEX
+        RESEARCH_LIMITATIONS/IMPLICATIONS
+          RESEARCH_LIMITATIONS/IMPLICATIONS
         COMPETITION (ECONOMICS)
           COMPETITION (ECONOMICS)
         FINANCIAL_TECHNOLOGY (FINTECH)

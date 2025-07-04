@@ -34,14 +34,12 @@ Example:
     >>> print(output)
     Removing initial determiner from thesaurus keys
       File : example/thesaurus/descriptors.the.txt
-      636 initial determiners removed successfully
+      593 initial determiners removed successfully
       Initial determiner removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        A_)_THEORY
-          A_A_)_THEORY
         A_THEORY
           A_A_THEORY
         ACADEMIC_FINANCE_COMMUNITY
@@ -49,13 +47,15 @@ Example:
         ACADEMICS
           ACADEMICS; BOTH_ACADEMICS
         ACCEPTANCE
-          ACCEPTANCE; THE_ACCEPTANCE
+          THE_ACCEPTANCE
         ACTIVE_PARTICIPANT
           AN_ACTIVE_PARTICIPANT
         ACTORS
           ACTORS; ALL_ACTORS
         ADOPTION
           ADOPTION; THE_ADOPTION
+        ADVANCEMENT
+          THE_ADVANCEMENT
     <BLANKLINE>
     <BLANKLINE>
 

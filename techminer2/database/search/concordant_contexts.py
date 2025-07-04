@@ -31,17 +31,17 @@ Example:
     ...     .where_records_ordered_by("date_newest")
     ... )
     >>> contexts = finder.run()
-    >>> for t in contexts[:10]: print(t)
+    >>> for t in contexts[:10]: print(t) # doctest: +NORMALIZE_WHITESPACE
     <<< S with THE_PURPOSE of reinventing FINANCIAL_TECHNOLOGY ( FINTECH )
-    <<< ARTIFICIAL_INTELLIGENCE ( AI ) on FINANCIAL_TECHNOLOGY ( FINTECH ) , THE_PURPOSE of THIS_PAPER is to propose A_RESEARCH_F >>>
-    <<< ONSUMERS_PERCEPTIONS regarding THE_INTRODUCTION of AI in FINTECH
+    <<< ARTIFICIAL_INTELLIGENCE ( AI ) on FINANCIAL_TECHNOLOGY ( FINTECH ) , the purpose of this paper is to propose A_RESEARCH_F >>>
                                                                  FINTECH is about THE_INTRODUCTION of NEW_TECHNOLOGIES into THE_F >>>
     <<< _ACADEMIC_FINANCE_COMMUNITY was not actively researching FINTECH , THE_EDITORIAL_TEAM of THE_REVIEW of FINANCIAL_STUDIES  >>>
-    <<<  learned from THE_SUBMITTED_PROPOSALS about THE_FIELD of FINTECH and WHICH_ONES we selected to be completed and ultimatel >>>
     <<< NS to help guide FUTURE_RESEARCH in THE_EMERGING_AREA of FINTECH
                                    along_with THE_DEVELOPMENT of FINTECH , MANY_SCHOLARS have studied how INFORMATION_TECHNOLOGY  >>>
     <<< DERLYING_BITCOIN , is AN_EMERGING_FINANCIAL_TECHNOLOGY ( FINTECH ) that_is poised to have STRATEGIC_IMPACTS on ORGANIZATIONS
-                                          FINANCIAL_TECHNOLOGY ( FINTECH ) SERVICES using EMERGING_TECHNOLOGY such_as THE_INTERNE >>>
+    <<< AN_INNOVATION of SERVICES such_as FINANCIAL_TECHNOLOGY ( FINTECH ) , and DIGITAL_MARKETPLACE
+                                        DIGITAL_MARKETPLACE with FINTECH enabled might TRANSFORM_AGRICULTURE_BUSINESS_PROCESS int >>>
+                                                                 FINTECH offers FARMERS_CONVENIENT_WAYS of getting SOURCES of FUN >>>
 
 
 """

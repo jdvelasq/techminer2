@@ -54,14 +54,16 @@ Example:
       Case sensitive : False
          Regex Flags : 0
         Regex Search : False
-      13 matching keys found
+      12 matching keys found
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/organizations.the.txt
     <BLANKLINE>
-        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
           CESifo, Poschingerstr. 5, Munich, 81679, Germany
+        [UKN] Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
+          Hochschule für Wirtschaft Fribourg, Switzerland
         Columbia Grad Sch of Bus (USA)
           Columbia Graduate School of Business, United States
         Copenhagen Bus Sch (DNK)
@@ -70,14 +72,13 @@ Example:
           Harvard Law School, United States
         Henley Bus Sch (GBR)
           Henley Business School, United Kingdom
-        Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
-          Hochschule für Wirtschaft Fribourg, Switzerland
         Kingston Bus Sch (GBR)
           Kingston Business School, Department of Accounting, Finance and Informati...
         London Sch of Econ (GBR)
           London School of Economics, United Kingdom
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 

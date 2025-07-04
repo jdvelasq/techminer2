@@ -29,7 +29,7 @@ Example:
     ...     .where_records_match(None)
     ... )
     >>> plot = plotter.run()
-    >>> plot.write_html("docs_src/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
 
 .. raw:: html
 
@@ -52,7 +52,12 @@ class BarChart(
     # ---------------------------------------------------------------------------
     def run(self):
 
-        words_by_year = DataFrame().update(**self.params.__dict__).run()
+        words_by_year = (
+            DataFrame()
+            .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
+            .run()
+        )
 
         fig = go.Figure(
             go.Bar(

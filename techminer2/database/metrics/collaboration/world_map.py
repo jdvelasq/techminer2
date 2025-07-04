@@ -25,7 +25,7 @@ Example:
     ...     .where_records_match(None)
     ... )
     >>> plot = plotter.run()
-    >>> plot.write_html("docs_src/_generated/px.database.metrics.collaboration.world_map.html")
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.collaboration.world_map.html")
 
 .. raw:: html
 
@@ -54,6 +54,7 @@ class WorldMap(
             CoOccurrenceDataFrame()
             .update(**self.params.__dict__)
             .with_field("countries")
+            .update(terms_order_by="OCC")
             .run()
         )
 

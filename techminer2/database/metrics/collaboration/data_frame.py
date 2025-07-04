@@ -25,6 +25,7 @@ Example:
     ...     .having_terms_in_top(20)
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
+    ...     .having_terms_ordered_by("OCC")
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:

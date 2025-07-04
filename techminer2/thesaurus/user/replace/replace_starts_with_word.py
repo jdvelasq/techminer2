@@ -43,7 +43,7 @@ Example:
              File : example/thesaurus/demo.the.txt
              Word : BUSINESS
       Replacement : business
-      7 replacements made successfully
+      8 replacements made successfully
       Word replacing completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -63,8 +63,8 @@ Example:
           BUSINESS_OPPORTUNITIES
         business_PROCESS
           BUSINESS_PROCESS
-        A_A_)_THEORY
-          A_A_)_THEORY
+        business_TO_CONSUMERS_MODELS
+          BUSINESS_TO_CONSUMERS_MODELS
     <BLANKLINE>
     <BLANKLINE>
 

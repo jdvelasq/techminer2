@@ -35,34 +35,38 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by word match
       File : example/thesaurus/descriptors.the.txt
       Word : ['CONFERENCE', 'EDP_SCIENCES', 'ELSEVIER', 'EMERALD', 'FRANCIS', 'GMBH', 'IAEME_PUBLICATIONS', 'IEEE', 'IEOM_SOCIETY', 'INDERSCIENCE', 'INFORMA_UK', 'INTERNATIONAL_SOLAR_ENERGY_SOCIETY', 'IOS_PRESS', 'JOHN_WILEY', 'MDPI', 'NOVA_SCIENCE_PUBLISHERS', 'PROCEEDINGS', 'SCITEPRESS_SCIENCE', 'SONS_LTD', 'SPRINGER', 'SPRINGERVERLAG', 'VERLAG', 'WILEYVCH', 'WIT_PRESS', 'OXFORD_UNIVERSITY_PRESS', 'HENRY_STEWART_PUBLICATIONS', 'MACMILLAN', 'EXCLUSIVE_LICENSE', 'PRESS', 'PUBLISHERS']
-      18 matching keys found
+      1 matching keys found
       Thesaurus sorting by word match completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        ELSEVIER_B
-          ELSEVIER_B
-        ELSEVIER_INC
-          ELSEVIER_INC
-        ELSEVIER_LTD
-          ELSEVIER_LTD
-        EMERALD_GROUP_PUBLISHING
-          EMERALD_GROUP_PUBLISHING
-        EMERALD_PUBLISHING
-          EMERALD_PUBLISHING
-        FRANCIS_GROUP
-          FRANCIS_GROUP
-        INFORMA_UK
-          INFORMA_UK
-        JOHN_WILEY
-          JOHN_WILEY
+        POPULAR_PRESS
+          POPULAR_PRESS
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 from ...._internals.mixins import ParamsMixin

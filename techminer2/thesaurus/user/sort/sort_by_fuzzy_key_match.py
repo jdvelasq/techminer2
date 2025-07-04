@@ -38,6 +38,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by fuzzy match
                 File : example/thesaurus/demo.the.txt
            Keys like : INTELL
@@ -54,8 +59,6 @@ Example:
           INTELLIGENT_ALGORITHMS
         INTELLIGENT_ROBOTS
           INTELLIGENT_ROBOTS
-        A_A_)_THEORY
-          A_A_)_THEORY
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -64,9 +67,10 @@ Example:
           A_BEHAVIOURAL_PERSPECTIVE
         A_BETTER_UNDERSTANDING
           A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 import re

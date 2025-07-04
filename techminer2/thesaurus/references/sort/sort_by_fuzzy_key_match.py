@@ -35,6 +35,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/references.the.txt
+      Keys reduced from 27 to 27
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by fuzzy match
                 File : example/thesaurus/references.the.txt
            Keys like : ACCOU
@@ -63,7 +68,6 @@ Example:
           Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

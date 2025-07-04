@@ -45,7 +45,7 @@ Bubble Plot
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.packages.co_occurrence_matrix.bubble_plot.html")
+>>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.bubble_plot.html")
 
 .. raw:: html
 

@@ -36,14 +36,12 @@ Example:
     >>> print(output)
     Creating thesaurus from 'raw_descriptors' field
       File : example/thesaurus/demo.the.txt
-      1796 keys found
+      1729 keys found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/demo.the.txt
     <BLANKLINE>
-        A_A_)_THEORY
-          A_A_)_THEORY
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -58,6 +56,8 @@ Example:
           A_CASE_STUDY
         A_CHALLENGE
           A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
     <BLANKLINE>
     <BLANKLINE>
 

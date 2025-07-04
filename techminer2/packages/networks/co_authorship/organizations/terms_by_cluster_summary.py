@@ -9,47 +9,47 @@
 Terms by Cluster Summary
 ===============================================================================
 
-
->>> from techminer2.packages.networks.co_authorship.organizations import TermsByClusterSummary
->>> (
-...     TermsByClusterSummary()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # NETWORK:
-...     .using_clustering_algorithm_or_dict("louvain")
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
-   Cluster  ...                                              Terms
-0        0  ...  Goethe Univ Frankfurt (DEU) 2:1065; Pennsylvan...
-1        1  ...  Columbia Grad Sch of Bus (USA) 1:0390; Stanfor...
-2        2  ...  Baylor Univ (USA) 2:0395; Univ of New South Wa...
-3        3  ...  Fed Reserv Bank of Philadelphia (USA) 3:0317; ...
-4        4  ...  Hankyong Nac Univ (KOR) 1:0557; Western Illino...
-5        5  ...                        Univ of Zurich (CHE) 3:0434
-6        6  ...  Max Planck Inst for Innovation and Competition...
-7        7  ...                             Pace Univ (USA) 2:0323
-8        8  ...                     Sungkyunkwan Univ (KOR) 2:0307
-9        9  ...                        Univ of Latvia (LVA) 2:0163
-<BLANKLINE>
-[10 rows x 4 columns]
+Example:
+    >>> from techminer2.packages.networks.co_authorship.organizations import TermsByClusterSummary
+    >>> (
+    ...     TermsByClusterSummary()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+       Cluster  ...                                              Terms
+    0        0  ...  Goethe Univ Frankfurt (DEU) 2:1065; Pennsylvan...
+    1        1  ...  Columbia Grad Sch of Bus (USA) 1:0390; Univ of...
+    2        2  ...  Baylor Univ (USA) 2:0395; Univ of New South Wa...
+    3        3  ...  Fed Reserv Bank of Philadelphia (USA) 3:0317; ...
+    4        4  ...  Hankyong Nac Univ (KOR) 1:0557; Western Illino...
+    5        5  ...                        Univ of Zurich (CHE) 3:0434
+    6        6  ...  Max Planck Inst for Innovation and Competition...
+    7        7  ...                             Pace Univ (USA) 2:0323
+    8        8  ...                     Sungkyunkwan Univ (KOR) 2:0307
+    9        9  ...                        Univ of Latvia (LVA) 2:0163
+    <BLANKLINE>
+    [10 rows x 4 columns]
 
 
 

@@ -33,7 +33,7 @@ Example:
     >>> docs = finder.run()
 
     >>> print(len(docs))
-    35
+    31
 
     >>> print(docs[0])
     UT 1251

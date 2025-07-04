@@ -40,7 +40,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/thesaurus/demo.the.txt
-      Keys reduced from 1736 to 1736
+      Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by occurrences
@@ -54,21 +54,20 @@ Example:
           FINTECH; FINTECHS
         FINANCE
           FINANCE
-        FINANCIAL_TECHNOLOGIES
-          FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY
         INNOVATION
           INNOVATION; INNOVATIONS
         TECHNOLOGIES
           TECHNOLOGIES; TECHNOLOGY
         FINANCIAL_SERVICE
           FINANCIAL_SERVICE; FINANCIAL_SERVICES
-        THIS_PAPER
-          THIS_PAPER
-        THIS_STUDY
-          THIS_STUDY
+        FINANCIAL_TECHNOLOGIES
+          FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY
+        BANKS
+          BANKS
+        THE_FINANCIAL_INDUSTRY
+          THE_FINANCIAL_INDUSTRY
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

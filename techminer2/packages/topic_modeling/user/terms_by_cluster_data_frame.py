@@ -8,61 +8,61 @@
 Terms by Cluster Frame
 ===============================================================================
 
-
->>> from sklearn.decomposition import LatentDirichletAllocation
->>> lda = LatentDirichletAllocation(
-...     n_components=10,
-...     learning_decay=0.7,
-...     learning_offset=50.0,
-...     max_iter=10,
-...     batch_size=128,
-...     evaluate_every=-1,
-...     perp_tol=0.1,
-...     mean_change_tol=0.001,
-...     max_doc_update_iter=100,
-...     random_state=0,
-... )
->>> from techminer2.packages.topic_modeling.user import TermsByClusterDataFrame
->>> (
-...     TermsByClusterDataFrame()
-...     #
-...     # FIELD:
-...     .with_field("raw_descriptors")
-...     .having_terms_in_top(50)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # DECOMPOSITION:
-...     .using_decomposition_algorithm(lda)
-...     .using_top_terms_by_theme(5)
-...     #
-...     # TFIDF:
-...     .using_binary_term_frequencies(False)
-...     .using_row_normalization(None)
-...     .using_idf_reweighting(False)
-...     .using_idf_weights_smoothing(False)
-...     .using_sublinear_tf_scaling(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-cluster                             0  ...                           9
-term                                   ...
-0                     FINTECH 46:7183  ...          THIS_PAPER 14:2240
-1                  TECHNOLOGY 13:1594  ...             FINTECH 46:7183
-2        FINANCIAL_TECHNOLOGY 17:2359  ...               USERS 04:0687
-3                     FINANCE 21:3481  ...   ORIGINALITY_VALUE 04:0555
-4                  THIS_STUDY 14:1737  ...  EMERALD_PUBLISHING 04:0555
-<BLANKLINE>
-[5 rows x 10 columns]
+Example:
+    >>> from sklearn.decomposition import LatentDirichletAllocation
+    >>> lda = LatentDirichletAllocation(
+    ...     n_components=10,
+    ...     learning_decay=0.7,
+    ...     learning_offset=50.0,
+    ...     max_iter=10,
+    ...     batch_size=128,
+    ...     evaluate_every=-1,
+    ...     perp_tol=0.1,
+    ...     mean_change_tol=0.001,
+    ...     max_doc_update_iter=100,
+    ...     random_state=0,
+    ... )
+    >>> from techminer2.packages.topic_modeling.user import TermsByClusterDataFrame
+    >>> (
+    ...     TermsByClusterDataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_descriptors")
+    ...     .having_terms_in_top(50)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # DECOMPOSITION:
+    ...     .using_decomposition_algorithm(lda)
+    ...     .using_top_terms_by_theme(5)
+    ...     #
+    ...     # TFIDF:
+    ...     .using_binary_term_frequencies(False)
+    ...     .using_row_normalization(None)
+    ...     .using_idf_reweighting(False)
+    ...     .using_idf_weights_smoothing(False)
+    ...     .using_sublinear_tf_scaling(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+    cluster                             0  ...                           9
+    term                                   ...
+    0                     FINTECH 44:6942  ...             FINANCE 21:3481
+    1        FINANCIAL_TECHNOLOGY 13:1909  ...             FINTECH 44:6942
+    2                  TECHNOLOGY 13:1594  ...               CHINA 06:0673
+    3                  REGULATORS 08:0974  ...          INNOVATION 12:2290
+    4             THE_DEVELOPMENT 07:1073  ...  FINANCIAL_SERVICES 11:1862
+    <BLANKLINE>
+    [5 rows x 10 columns]
 
 
 

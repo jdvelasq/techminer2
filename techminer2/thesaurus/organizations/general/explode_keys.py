@@ -29,7 +29,17 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
+    Exploding thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 106
+      Keys exploding completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin

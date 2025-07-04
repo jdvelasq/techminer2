@@ -10,38 +10,40 @@ Terms by Cluster Summary
 ===============================================================================
 
 
->>> from techminer2.packages.networks.co_occurrence.descriptors import TermsByClusterSummary
->>> (
-...     TermsByClusterSummary()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # NETWORK:
-...     .using_clustering_algorithm_or_dict("louvain")
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
-   Cluster  ...                                              Terms
-0        0  ...  THIS_PAPER 14:2240; FINANCIAL_SERVICE 12:2100;...
-1        1  ...  FINTECH 46:7183; FINANCE 21:3481; FINANCIAL_TE...
-<BLANKLINE>
-[2 rows x 4 columns]
+Example:
+    >>> from techminer2.packages.networks.co_occurrence.descriptors import TermsByClusterSummary
+    >>> (
+    ...     TermsByClusterSummary()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+       Cluster  ...                                              Terms
+    0        0  ...  FINTECH 44:6942; FINANCE 21:3481; INNOVATION 1...
+    1        1  ...  FINANCIAL_SERVICE 12:2100; SERVICES 07:1226; I...
+    2        2  ...     BANKS 09:1133; DATA 07:1086; CONSUMERS 07:0925
+    <BLANKLINE>
+    [3 rows x 4 columns]
 
 
 

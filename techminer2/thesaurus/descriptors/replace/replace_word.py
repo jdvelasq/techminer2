@@ -39,7 +39,7 @@ Example:
              File : example/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
-      96 replacements made successfully
+      104 replacements made successfully
       Word replacing completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -57,10 +57,10 @@ Example:
           A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
         ACTIVE_fintech_SOLUTIONS
           ACTIVE_FINTECH_SOLUTIONS
-        BANK_fintech_PARTNERSHIP
-          BANK_FINTECH_PARTNERSHIP
-        BANKS_OFFERING_fintech_SERVICES_NEED
-          BANKS_OFFERING_FINTECH_SERVICES_NEED
+        ADOPTION_OF_fintech
+          ADOPTION_OF_FINTECH
+        ADOPTION_OF_fintech_SERVICES
+          ADOPTION_OF_FINTECH_SERVICES
     <BLANKLINE>
     <BLANKLINE>
 

@@ -19,6 +19,7 @@ Example:
     ...     .having_terms_in_top(20)
     ...     .having_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
+    ...     .having_terms_ordered_by("OCC")
     ...     .having_terms_in(None)
     ...     #
     ...     # CLUSTERING:
@@ -37,13 +38,12 @@ Example:
 
     >>> # Display the resulting data frame
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
-                                                0                                                1
-    0  Industrial Management and Data Systems 2:386          Journal of Economics and Business 3:422
-    1                      Electronic Markets 2:287  Journal of Management Information Systems 2:696
-    2            Sustainability (Switzerland) 2:150                       Financial Management 2:161
-    3        Journal of Innovation Management 1:226
-    4                                Symmetry 1:176
-
+                               0                        1
+    0  Ind Manage Data Sys 2:386      J. Econ. Bus. 3:422
+    1      Electron. Mark. 2:287  J Manage Inf Syst 2:696
+    2       Sustainability 2:150    Financ. Manage. 2:161
+    3     J. Innov. Manag. 1:226
+    4             Symmetry 1:176
 
 
 """

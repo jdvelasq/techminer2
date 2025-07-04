@@ -60,7 +60,7 @@ Treemap
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_src/_generated/px.packages.factor_analysis/co_occurrence/treemap.html")
+## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/co_occurrence/treemap.html")
 
 .. raw:: html
 

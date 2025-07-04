@@ -27,8 +27,6 @@ Example:
     ... )
     >>> creator.run()
 
-
-
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
@@ -41,25 +39,24 @@ Example:
     Printing thesaurus header
       File : example/thesaurus/organizations.the.txt
     <BLANKLINE>
-        Anhui Univ of Finan and Econ (CHN)
-          School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
-        Baekseok Univ (KOR)
-          Division of Tourism, Baekseok University, South Korea
-        Baewha Women’s Univ (KOR)
-          Department of Information Security, Baewha Women’s University, Seoul, Sou...
-        Baylor Univ (USA)
-          Baylor University, United States; Hankamer School of Business, Baylor Uni...
-        Beihang Univ (CHN)
-          School of Economics and Management, Beihang University, China
-        Brussels, Belgium (BEL)
+        [UKN] Brussels, Belgium (BEL)
           Brussels, Belgium
-        Cent for Law, Markets & Regulation, UNSW Australia, Australia (AUS)
-          Centre for Law, Markets & Regulation, UNSW Australia, Australia
-        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
           CESifo, Poschingerstr. 5, Munich, 81679, Germany
+        [UKN] FinTech HK, Hong Kong (HKG)
+          FinTech HK, Hong Kong
+        [UKN] Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
+          Hochschule für Wirtschaft Fribourg, Switzerland
+        [UKN] Information Technol, Univeril, Germany (DEU)
+          Information Technology, Univeril, Germany
+        [UKN] Johns Hopkins SAIS, Washington, DC, United States (USA)
+          Johns Hopkins SAIS, Washington, DC, United States
+        [UKN] SK Telecom, Seoul, South Korea (KOR)
+          SK Telecom, Seoul, South Korea
+        [UKN] Stanford GSB and the Hoover Inst, United States (USA)
+          Stanford GSB and the Hoover Institution, United States
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 import re

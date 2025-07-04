@@ -39,7 +39,7 @@ Node Density Plot
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.packages.networks.citation.authors.node_density_plot.html")
+>>> plot.write_html("docs_source/_generated/px.packages.networks.citation.authors.node_density_plot.html")
 
 .. raw:: html
 
@@ -64,6 +64,7 @@ class NodeDensityPlot(
         return (
             OtherNodeDensityPlot()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .unit_of_analysis("authors")
             .run()
         )

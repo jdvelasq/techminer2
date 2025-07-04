@@ -9,34 +9,36 @@
 Terms by Cluster Frame
 ===============================================================================
 
->>> from techminer2.packages.networks.coupling.countries import TermsByClusterDataFrame
->>> (
-...     TermsByClusterDataFrame()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(20)
-...     .having_citation_threshold(0)
-...     .having_occurrence_threshold(2)
-...     .having_terms_in(None)
-...     #
-...     # CLUSTERING:
-...     .using_clustering_algorithm_or_dict("louvain")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-                       0                    1
-0  United States 16:3189        China 08:1085
-1        Germany 07:1814  Netherlands 03:0300
-2    South Korea 06:1192      Denmark 02:0330
-3      Australia 05:0783        Spain 01:0225
-4    Switzerland 04:0660    Indonesia 01:0102
+
+Example:
+    >>> from techminer2.packages.networks.coupling.countries import TermsByClusterDataFrame
+    >>> (
+    ...     TermsByClusterDataFrame()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(20)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+                           0                    1
+    0  United States 16:3189        China 08:1085
+    1        Germany 07:1814  Netherlands 03:0300
+    2    South Korea 06:1192      Denmark 02:0330
+    3      Australia 05:0783        Spain 01:0225
+    4    Switzerland 04:0660    Indonesia 01:0102
 
 
 
@@ -56,6 +58,7 @@ class TermsByClusterDataFrame(
         return (
             InternalTermsByClusterDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .unit_of_analysis("countries")
             .run()
         )

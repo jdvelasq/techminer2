@@ -41,7 +41,7 @@ Example:
     >>> print(output)
     Spell checking thesaurus keys
       File : example/thesaurus/demo.the.txt
-      Potential misspelled words (77):
+      Potential misspelled words (71):
     <BLANKLINE>
         - affordance
         - agroindustry
@@ -50,12 +50,12 @@ Example:
         - backoffice
         - behavioural
         - bitcoin
-        - brummer
         - burdencapital
         - cacioppo
+        - centricity
         ...
     <BLANKLINE>
-      Matching keys found : 91
+      Matching keys found : 86
       Spell checking completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -67,16 +67,16 @@ Example:
           A_MULTI_LEVEL_ANALYSIS
         A_WIDE_RANGING_RECONCEPTUALIZATION
           A_WIDE_RANGING_RECONCEPTUALIZATION
-        A_YOUTH_MICROLOAN
-          A_YOUTH_MICROLOAN
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
         AGROINDUSTRY
           AGROINDUSTRY
         AGROPAY
           AGROPAY
-        ANALYSE
-          ANALYSE
+        ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
 
@@ -96,7 +96,7 @@ Example:
     >>> print(output)
     Spell checking thesaurus keys
       File : example/thesaurus/demo.the.txt
-      Potential misspelled words (77):
+      Potential misspelled words (71):
     <BLANKLINE>
         - affordance
         - agroindustry
@@ -105,12 +105,12 @@ Example:
         - backoffice
         - behavioural
         - bitcoin
-        - brummer
         - burdencapital
         - cacioppo
+        - centricity
         ...
     <BLANKLINE>
-      Matching keys found : 91
+      Matching keys found : 86
       Spell checking completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -122,19 +122,18 @@ Example:
           A_MULTI_LEVEL_ANALYSIS
         A_WIDE_RANGING_RECONCEPTUALIZATION
           A_WIDE_RANGING_RECONCEPTUALIZATION
-        A_YOUTH_MICROLOAN
-          A_YOUTH_MICROLOAN
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
         AGROINDUSTRY
           AGROINDUSTRY
         AGROPAY
           AGROPAY
-        ANALYSE
-          ANALYSE
+        ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 import sys

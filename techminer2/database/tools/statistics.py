@@ -23,7 +23,7 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     #
     ...     .run()
-    ... ).head()
+    ... ).head() # doctest: +NORMALIZE_WHITESPACE
                          conference_code                ...    year
                                    count      mean std  ...     50%     75%     max
     raw_author_keywords                                 ...

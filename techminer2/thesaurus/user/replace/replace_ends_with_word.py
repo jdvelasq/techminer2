@@ -53,8 +53,6 @@ Example:
           BUSINESS; BUSINESSES
         THE_BANKING_business
           THE_BANKING_BUSINESS
-        A_A_)_THEORY
-          A_A_)_THEORY
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -65,6 +63,8 @@ Example:
           A_BETTER_UNDERSTANDING
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
     <BLANKLINE>
     <BLANKLINE>
 

@@ -35,10 +35,15 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
          File : example/thesaurus/descriptors.the.txt
       Pattern : COMM
-      2 matching keys found
+      3 matching keys found
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -48,8 +53,8 @@ Example:
           COMMERCE
         COMMERCIAL_BANKS
           COMMERCIAL_BANKS
-        A_A_)_THEORY
-          A_A_)_THEORY
+        COMMUNICATION_AND_INTERACTION
+          COMMUNICATION_AND_INTERACTION
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -62,7 +67,6 @@ Example:
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 from ...._internals.mixins import ParamsMixin

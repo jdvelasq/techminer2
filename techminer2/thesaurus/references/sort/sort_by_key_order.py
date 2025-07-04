@@ -36,6 +36,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/references.the.txt
+      Keys reduced from 27 to 27
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus alphabetically
       File : example/thesaurus/references.the.txt
       Thesaurus sorting completed successfully

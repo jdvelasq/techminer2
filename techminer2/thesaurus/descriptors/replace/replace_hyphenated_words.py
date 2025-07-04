@@ -35,7 +35,7 @@ Example:
     >>> print(output)
     Transforming hyphenated words in thesaurus keys
       File : example/thesaurus/descriptors.the.txt
-      51 hypenated words transformed successfully
+      49 hypenated words transformed successfully
       Hyphenated words transformation completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -55,10 +55,11 @@ Example:
           BLOCKCHAIN; BLOCKCHAINS
         BLOCK_CHAIN_AND_FINTECH_INNOVATIONS
           BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-        BLOCK_CHAIN_ENABLES
-          BLOCKCHAIN_ENABLES
+        BLOCK_CHAIN_ENABLES_BLOCK_CHAIN
+          BLOCKCHAIN_ENABLES_BLOCKCHAIN
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 import re

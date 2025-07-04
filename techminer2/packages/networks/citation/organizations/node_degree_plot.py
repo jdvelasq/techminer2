@@ -36,7 +36,7 @@ Node Degree Plot
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.packages.networks.citation.organizations.network_degree_plot.html")
+>>> plot.write_html("docs_source/_generated/px.packages.networks.citation.organizations.network_degree_plot.html")
 
 .. raw:: html
 
@@ -64,6 +64,7 @@ class NodeDegreePlot(
         return (
             OtherNodeDegreePlot()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .unit_of_analysis("organizations")
             .run()
         )

@@ -36,7 +36,7 @@ Node Degree Plot
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_src/_static/co_citation_network.node_degree_plot.html")
+## >>> plot.write_html("docs_source/__static/co_citation_network.node_degree_plot.html")
 
 .. raw:: html
 

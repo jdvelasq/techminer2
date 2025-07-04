@@ -39,7 +39,7 @@ Example:
              File : example/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
-      35 replacements made successfully
+      38 replacements made successfully
       Word replacing completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -47,8 +47,8 @@ Example:
     <BLANKLINE>
         fintech
           FINTECH; FINTECHS
-        fintech_AND_FINANCIAL_INNOVATIONS
-          FINTECH_AND_FINANCIAL_INNOVATIONS
+        fintech_AND_FINANCIAL_INNOVATIONS_THE_BANKS
+          FINTECH_AND_FINANCIAL_INNOVATIONS_THE_BANKS
         fintech_AND_REGTECH_:_IMPACT
           FINTECH_AND_REGTECH_:_IMPACT
         fintech_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
@@ -63,6 +63,8 @@ Example:
           FINTECH_CLUSTERS
     <BLANKLINE>
     <BLANKLINE>
+
+
 
 """
 from ...._internals.mixins import ParamsMixin

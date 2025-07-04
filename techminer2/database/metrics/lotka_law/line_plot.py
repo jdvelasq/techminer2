@@ -23,7 +23,7 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ... )
     >>> plot = plotter.run()
-    >>> plot.write_html("docs_src/_generated/px.database.metrics.lotka_law.line_plot.html")
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.lotka_law.line_plot.html")
 
 .. raw:: html
 

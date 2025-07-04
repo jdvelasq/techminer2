@@ -42,10 +42,8 @@ Network Plot
 ...     #
 ...     .run()
 ... )
---INFO-- Paths computed.
---INFO-- Points per link computed.
---INFO-- Points per path computed.
->>> plot.write_html("docs_src/_generated/px.packages.networks.main_path.network_plot.html")
+
+>>> plot.write_html("docs_source/_generated/px.packages.networks.main_path.network_plot.html")
 
 .. raw:: html
 

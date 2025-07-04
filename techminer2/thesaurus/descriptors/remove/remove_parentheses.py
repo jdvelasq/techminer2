@@ -33,14 +33,12 @@ Example:
     Removing parentheses from thesaurus keys
     <BLANKLINE>
       File : example/thesaurus/descriptors.the.txt
-      7 removals made successfully
+      6 removals made successfully
       Parentheses removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        CACIOPPO
-          CACIOPPO_[1]
         CLASSIFICATION
           CLASSIFICATION (OF_INFORMATION)
         COMPETITION
@@ -53,8 +51,10 @@ Example:
           NETWORKS; NETWORKS (CIRCUITS)
         PRESSES
           PRESSES (MACHINE_TOOLS)
-        A_A_)_THEORY
-          A_A_)_THEORY
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
     <BLANKLINE>
     <BLANKLINE>
 

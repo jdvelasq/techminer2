@@ -35,6 +35,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by word match
       File : example/thesaurus/descriptors.the.txt
       Word : CREDIT
@@ -52,14 +57,14 @@ Example:
           CREDIT_COOPERATIVES
         LOWER_PRICED_CREDIT
           LOWER_PRICED_CREDIT
-        A_A_)_THEORY
-          A_A_)_THEORY
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
           A_BASIC_RANDOM_SAMPLING_STRATEGY
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
     <BLANKLINE>
     <BLANKLINE>
 

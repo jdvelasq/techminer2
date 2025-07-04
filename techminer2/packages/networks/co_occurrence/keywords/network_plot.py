@@ -51,7 +51,7 @@ Network Plot
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.packages.networks.co_occurrence.keywords.network_plot.html")
+>>> plot.write_html("docs_source/_generated/px.packages.networks.co_occurrence.keywords.network_plot.html")
 
 .. raw:: html
 

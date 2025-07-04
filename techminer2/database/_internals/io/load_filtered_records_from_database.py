@@ -32,9 +32,9 @@
 >>> # CODE TESTED
 >>> #
 >>> from techminer2._internals.params_mixin import Params
->>> from techminer2.database._internals.io import internal__load_filtered_database
+>>> from techminer2.database._internals.io import internal__load_filtered_records_from_database
 >>> (
-...     internal__load_filtered_database(
+...     internal__load_filtered_records_from_database(
 ...         Params(
 ...             database="main",
 ...             record_years_range=(None, None),

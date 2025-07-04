@@ -6,11 +6,11 @@ from .general.compress_thesaurus import CompressThesaurus
 from .general.create_thesaurus import CreateThesaurus, reset_thesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys, reduce_keys
-from .remove.remove_common_initial_words import RemoveCommonInitialWords
 from .remove.remove_common_last_words import RemoveCommonLastWords
 from .remove.remove_initial_determiners import RemoveInitialDeterminers
 from .remove.remove_initial_stopwords import RemoveInitialStopwords
 from .remove.remove_parentheses import RemoveParentheses
+from .remove.remove_prefixes import RemovePrefixes
 from .replace.replace_abbreviations import ReplaceAbbreviations
 from .replace.replace_ends_with_word import ReplaceEndsWithWord
 from .replace.replace_hyphenated_words import ReplaceHyphenatedWords
@@ -35,7 +35,7 @@ __all__ = [
     "CreateThesaurus",
     "IntegrityCheck",
     "ReduceKeys",
-    "RemoveCommonInitialWords",
+    "RemovePrefixes",
     "RemoveCommonLastWords",
     "RemoveInitialDeterminers",
     "RemoveInitialStopwords",

@@ -79,7 +79,7 @@ Factor Map
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_src/_generated/px.packages.factor_analysis/tfidf/factor_map_plot.html")
+## >>> plot.write_html("docs_source/_generated/px.packages.factor_analysis/tfidf/factor_map_plot.html")
 
 .. raw:: html
 

@@ -33,6 +33,11 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/countries.the.txt
+      Keys reduced from 24 to 24
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus alphabetically
       File : example/thesaurus/countries.the.txt
       Thesaurus sorting completed successfully
@@ -64,6 +69,11 @@ Example:
     >>> sorter.having_keys_ordered_by("key_length").run()
     >>> output = sys.stderr.getvalue()
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/countries.the.txt
+      Keys reduced from 24 to 24
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by key length
       File : example/thesaurus/countries.the.txt
       Thesaurus sorting completed successfully
@@ -96,6 +106,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/countries.the.txt
+      Keys reduced from 24 to 24
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by word length
       File : example/thesaurus/countries.the.txt
       Thesaurus sorting completed successfully

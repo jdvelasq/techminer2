@@ -17,7 +17,7 @@ RPYS (Reference Publication Year Spectroscopy) Plot
 ...     .where_root_directory_is("example/")
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.packages.rpys.rpys_plot.html")
+>>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")
 
 .. raw:: html
 

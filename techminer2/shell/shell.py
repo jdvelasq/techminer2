@@ -13,8 +13,8 @@ import cmd
 import readline
 import rlcompleter  # type: ignore
 
-from ..basecli import BaseCLI
-from .descriptors.shell import DescriptorsCLI
+from .basecli import BaseCLI
+from .thesaurus.shell import ThesaurusShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 
@@ -34,9 +34,9 @@ class MainShell(BaseCLI):
     #     print("Entering countries menu...")
     #     CountriesCLI().cmdloop()
 
-    def do_descriptors(self, arg):
-        """Commands for manipulating descriptors.the.txt thesaurus file."""
-        DescriptorsCLI().cmdloop()
+    def do_thesaurus(self, arg):
+        """Enters to the Thesaurus subsystem."""
+        ThesaurusShell().cmdloop()
 
     # def do_organizations(self, arg):
     #     """Organizations-related commands."""
@@ -55,22 +55,6 @@ class MainShell(BaseCLI):
     def do_back(self, arg):
         """Exit the CLI."""
         return True
-
-    def do_help(self, arg):
-        """Help function."""
-        if arg:
-            try:
-                func = getattr(self, f"help_{arg}")
-                func()
-            except AttributeError:
-                print(f"No help available for '{arg}'")
-        else:
-
-            print("\nAvailable commands:\n")
-            for command in self.get_names():
-                if command.startswith("do_"):
-                    print(f"  {command[3:].ljust(15)} {getattr(self, command).__doc__}")
-            print()
 
 
 if __name__ == "__main__":

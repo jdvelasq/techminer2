@@ -37,10 +37,15 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
          File : example/thesaurus/demo.the.txt
       Pattern : BUSINESS
-      7 matching keys found
+      8 matching keys found
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -60,11 +65,10 @@ Example:
           BUSINESS_OPPORTUNITIES
         BUSINESS_PROCESS
           BUSINESS_PROCESS
-        A_A_)_THEORY
-          A_A_)_THEORY
+        BUSINESS_TO_CONSUMERS_MODELS
+          BUSINESS_TO_CONSUMERS_MODELS
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 import sys

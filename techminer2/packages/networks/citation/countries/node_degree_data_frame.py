@@ -9,31 +9,33 @@
 Node Degree Frame
 ===============================================================================
 
->>> from techminer2.packages.networks.citation.countries  import NodeDegreeDataFrame
->>> (
-...     NodeDegreeDataFrame()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(30)
-...     .having_citation_threshold(0)
-...     .having_occurrence_threshold(2)
-...     .having_terms_in(None)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-   Node                   Name  Degree
-0     0        Germany 07:1814      13
-1     1          China 08:1085      12
-2     2  United States 16:3189       9
-3     3      Singapore 01:0576       8
-4     4    South Korea 06:1192       7
+
+Example:
+    >>> from techminer2.packages.networks.citation.countries  import NodeDegreeDataFrame
+    >>> (
+    ...     NodeDegreeDataFrame()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+       Node                   Name  Degree
+    0     0        Germany 07:1814      13
+    1     1          China 08:1085      12
+    2     2  United States 16:3189       9
+    3     3      Singapore 01:0576       8
+    4     4    South Korea 06:1192       7
 
 
 """
@@ -53,6 +55,7 @@ class NodeDegreeDataFrame(
         return (
             OtherNodeDegreeDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .unit_of_analysis("countries")
             .run()
         )

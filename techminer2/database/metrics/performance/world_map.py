@@ -34,7 +34,7 @@ World Map
 ...     #
 ...     .run()
 ... )
->>> plot.write_html("docs_src/_generated/px.database.metrics.performance.world_map.html")
+>>> plot.write_html("docs_source/_generated/px.database.metrics.performance.world_map.html")
 
 .. raw:: html
 

@@ -39,11 +39,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Compressing thesaurus keys
-      File : example/thesaurus/demo.the.txt
-      Keys reduced from 1736 to 1385
+                       File : example/thesaurus/demo.the.txt
+    Compressing keywords : 100%|##########| 279/279 [00:00<00:00, 1332.87it/s]
+      Compressing words : 100%|##########| 279/279 [00:00<00:00, 1737.40it/s]
+      Keys reduced from 1729 to 1729
       Keys compressing completed successfully
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 

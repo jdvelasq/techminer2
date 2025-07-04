@@ -38,7 +38,7 @@ Example:
     Replacing abbreviations in keys
           Thesaurus : example/thesaurus/descriptors.the.txt
       Abbreviations : example/thesaurus/abbreviations.the.txt
-      122 replacements made successfully
+      131 replacements made successfully
       Abbreviations replacement completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -56,12 +56,13 @@ Example:
           A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK
         ACTIVE_FINANCIAL_TECHNOLOGY_SOLUTIONS
           ACTIVE_FINTECH_SOLUTIONS
-        ARTIFICIAL_INTELLIGENCE
-          AI; ARTIFICIAL_INTELLIGENCE
-        BANK_FINANCIAL_TECHNOLOGY_PARTNERSHIP
-          BANK_FINTECH_PARTNERSHIP
+        ACTOR_NETWORK_THEORY
+          ACTOR_NETWORK_THEORY; ANT
+        ADOPTION_OF_FINANCIAL_TECHNOLOGY
+          ADOPTION_OF_FINTECH
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 import re

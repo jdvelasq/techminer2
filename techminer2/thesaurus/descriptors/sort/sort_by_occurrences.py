@@ -42,36 +42,35 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
-      Keys reduced from 1736 to 1736
+      File : ../tm2_genai_en_analytics/thesaurus/descriptors.the.txt
+      Keys reduced from 8383 to 8383
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by occurrences
-      File : example/thesaurus/descriptors.the.txt
+      File : ../tm2_genai_en_analytics/thesaurus/descriptors.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : ../tm2_genai_en_analytics/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        FINTECH
-          FINTECH; FINTECHS
-        FINANCE
-          FINANCE
-        FINANCIAL_TECHNOLOGIES
-          FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY
-        INNOVATION
-          INNOVATION; INNOVATIONS
-        TECHNOLOGIES
-          TECHNOLOGIES; TECHNOLOGY
-        FINANCIAL_SERVICE
-          FINANCIAL_SERVICE; FINANCIAL_SERVICES
-        THIS_PAPER
-          THIS_PAPER
-        THIS_STUDY
-          THIS_STUDY
+        LARGE_LANGUAGE_MODELS
+          ADVANCED_LARGE_LANGUAGE_MODELS; ADVANCED_LLMS; ALL_LLMS; AN_ADVANCED_LANG...
+        NATURAL_LANGUAGE_PROCESSING
+          ADVANCED_NATURAL_LANGUAGE_PROCESSING_MODELS; ADVANCED_NATURAL_LANGUAGE_PR...
+        SENTIMENT_ANALYSIS
+          ABSA; ACCURATE_SENTIMENT_ANALYSIS; ADVANCED_SENTIMENT_ANALYSIS; ASPECT_BA...
+        MODELS
+          ADVANCED_MODELS; ALL_MODELS; ALTERNATIVE_MODELS; A_HYBRID_MODEL; A_MODEL;...
+        GENERATIVE_ADVERSARIAL_NETWORKS
+          ADVANCED_GENERATIVE_ADVERSARIAL_NETWORKS; ALL_THE_PROPOSED_GAN_MODELS; AN...
+        GENERATIVE_ARTIFICIAL_INTELLIGENCE
+          ANALYZE_GENERATIVE_ARTIFICIAL_INTELLIGENCE; A_GAI; GAI; GAI_DIFFERS; GENA...
+        ARTIFICIAL_INTELLIGENCE
+          ADVANCED_AI; ADVANCED_AI_TECHNIQUE; ADVANCED_AI_TECHNIQUES; ADVANCED_ARTI...
+        DATA
+          ADDITIONAL_DATA; ADDRESS_DATA; ALL_THE_DATA; ANALYSE_DATA; ANALYZE_THESE_...
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

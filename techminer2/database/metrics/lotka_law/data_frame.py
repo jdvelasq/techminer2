@@ -59,6 +59,7 @@ class DataFrame(
             PerformanceDataFrame()
             .update(**self.params.__dict__)
             .update(field="authors")
+            .update(terms_order_by="OCC")
             .run()
         )
 

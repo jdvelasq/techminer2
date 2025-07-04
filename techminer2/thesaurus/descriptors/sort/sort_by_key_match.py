@@ -38,6 +38,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
                 File : example/thesaurus/descriptors.the.txt
              Pattern : BLOCK
@@ -56,16 +61,16 @@ Example:
           BLOCKCHAIN; BLOCKCHAINS
         BLOCKCHAIN_AND_FINTECH_INNOVATIONS
           BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-        BLOCKCHAIN_ENABLES
-          BLOCKCHAIN_ENABLES
+        BLOCKCHAIN_ENABLES_BLOCKCHAIN
+          BLOCKCHAIN_ENABLES_BLOCKCHAIN
         BLOCKCHAIN_IMPLEMENTATION
           BLOCKCHAIN_IMPLEMENTATION
         BLOCKCHAIN_USE_CASES
           BLOCKCHAIN_USE_CASES
-        A_A_)_THEORY
-          A_A_)_THEORY
         A_A_THEORY
           A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
     <BLANKLINE>
     <BLANKLINE>
 

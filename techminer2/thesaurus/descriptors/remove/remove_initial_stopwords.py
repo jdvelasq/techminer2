@@ -30,8 +30,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Removing starting stopwords from thesaurus keys  File : example/thesaurus/descriptors.the.txt
-      562 initial stopwords removed successfully
+    Removing starting stopwords from thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      548 initial stopwords removed successfully
       Starting stopwords removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -42,20 +43,19 @@ Example:
         ACADEMICS
           ACADEMICS; BOTH_ACADEMICS; OTHER_ACADEMICS
         ACCEPTANCE
-          ACCEPTANCE; THE_ACCEPTANCE
+          THE_ACCEPTANCE
         ACTION
           OUR_ACTION
         ACTIVE_PARTICIPANT
           AN_ACTIVE_PARTICIPANT
         ACTORS
           ACTORS; ALL_ACTORS
+        ADDITIONAL_COMPONENTS
+          FIVE_ADDITIONAL_COMPONENTS
         ADOPTION
           ADOPTION; THE_ADOPTION
-        ADVANCEMENT
-          THE_ADVANCEMENT
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 import re
@@ -84,7 +84,7 @@ class RemoveInitialStopwords(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("Removing starting stopwords from thesaurus keys")
+        sys.stderr.write("Removing starting stopwords from thesaurus keys\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 

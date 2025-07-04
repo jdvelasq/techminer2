@@ -29,6 +29,17 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/countries.the.txt
+      Keys reduced from 24 to 24
+      Keys reduction completed successfully
+    <BLANKLINE>
+    Exploding thesaurus keys
+      File : example/thesaurus/countries.the.txt
+      Keys reduced from 24 to 106
+      Keys exploding completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """

@@ -41,7 +41,41 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-
+    Reducing thesaurus keys
+      File : example/thesaurus/demo.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
+    Sorting thesaurus file by match
+                File : example/thesaurus/demo.the.txt
+             Pattern : BUSINESS
+      Case sensitive : False
+         Regex Flags : 0
+        Regex Search : False
+      21 matching keys/values found
+      Thesaurus sorting by match completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : example/thesaurus/demo.the.txt
+    <BLANKLINE>
+        AGRIBUSINESS
+          AGRIBUSINESS
+        BUSINESS
+          BUSINESS; BUSINESSES
+        BUSINESS_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
+        BUSINESS_GERMANY
+          BUSINESS_GERMANY
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
+        BUSINESS_OPPORTUNITIES
+          BUSINESS_OPPORTUNITIES
+        BUSINESS_PROCESS
+          BUSINESS_PROCESS
+    <BLANKLINE>
+    <BLANKLINE>
 
 """
 import sys

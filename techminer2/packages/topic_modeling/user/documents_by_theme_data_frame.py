@@ -8,61 +8,61 @@
 Documents by Theme Frame
 ===============================================================================
 
-
->>> from sklearn.decomposition import LatentDirichletAllocation
->>> lda = LatentDirichletAllocation(
-...     n_components=10,
-...     learning_decay=0.7,
-...     learning_offset=50.0,
-...     max_iter=10,
-...     batch_size=128,
-...     evaluate_every=-1,
-...     perp_tol=0.1,
-...     mean_change_tol=0.001,
-...     max_doc_update_iter=100,
-...     random_state=0,
-... )
->>> from techminer2.packages.topic_modeling.user import DocumentsByThemeDataFrame
->>> (
-...     DocumentsByThemeDataFrame()
-...     #
-...     # FIELD:
-...     .with_field("raw_descriptors")
-...     .having_terms_in_top(50)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # DECOMPOSITION:
-...     .using_decomposition_algorithm(lda)
-...     .using_top_terms_by_theme(5)
-...     #
-...     # TFIDF:
-...     .using_binary_term_frequencies(False)
-...     .using_row_normalization(None)
-...     .using_idf_reweighting(False)
-...     .using_idf_weights_smoothing(False)
-...     .using_sublinear_tf_scaling(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-cluster                                                    0  ...         9
-article                                                       ...
-Alt R., 2018, ELECTRON MARK, V28, P235              0.033337  ...  0.033336
-Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.949990  ...  0.005557
-Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.871405  ...  0.014288
-Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.007696  ...  0.007693
-Brummer C., 2019, GEORGET LAW J, V107, P235         0.014291  ...  0.014288
-<BLANKLINE>
-[5 rows x 10 columns]
+Example:
+    >>> from sklearn.decomposition import LatentDirichletAllocation
+    >>> lda = LatentDirichletAllocation(
+    ...     n_components=10,
+    ...     learning_decay=0.7,
+    ...     learning_offset=50.0,
+    ...     max_iter=10,
+    ...     batch_size=128,
+    ...     evaluate_every=-1,
+    ...     perp_tol=0.1,
+    ...     mean_change_tol=0.001,
+    ...     max_doc_update_iter=100,
+    ...     random_state=0,
+    ... )
+    >>> from techminer2.packages.topic_modeling.user import DocumentsByThemeDataFrame
+    >>> (
+    ...     DocumentsByThemeDataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_descriptors")
+    ...     .having_terms_in_top(50)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # DECOMPOSITION:
+    ...     .using_decomposition_algorithm(lda)
+    ...     .using_top_terms_by_theme(5)
+    ...     #
+    ...     # TFIDF:
+    ...     .using_binary_term_frequencies(False)
+    ...     .using_row_normalization(None)
+    ...     .using_idf_reweighting(False)
+    ...     .using_idf_weights_smoothing(False)
+    ...     .using_sublinear_tf_scaling(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+    cluster                                                    0  ...         9
+    article                                                       ...
+    Alt R., 2018, ELECTRON MARK, V28, P235              0.033341  ...  0.033343
+    Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.939989  ...  0.006668
+    Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.012502  ...  0.012503
+    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.008336  ...  0.008335
+    Brummer C., 2019, GEORGET LAW J, V107, P235         0.012504  ...  0.012504
+    <BLANKLINE>
+    [5 rows x 10 columns]
 
 
 

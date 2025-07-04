@@ -36,7 +36,7 @@ Example:
     >>> print(output)
     Converting British to American English
       File : example/thesaurus/descriptors.the.txt
-      11 replacements made successfully
+      12 replacements made successfully
     Translation completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -44,8 +44,10 @@ Example:
     <BLANKLINE>
         ANALOG_PROCESSES
           ANALOGUE_PROCESSES
-        ANALYZE
-          ANALYSE
+        ANALYZE_THE_SYSTEMIC_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+        ANALYZE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
         BEHAVIORAL_ECONOMICS
           BEHAVIOURAL_ECONOMICS
         ENTREPRENEURIAL_ENDEAVORS
@@ -56,11 +58,8 @@ Example:
           HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
         INSTILL_CULTURE_CHANGE
           INSTIL_CULTURE_CHANGE
-        INTERNATIONAL_DEVELOPMENT_ORGANIZATIONS
-          INTERNATIONAL_DEVELOPMENT_ORGANISATIONS
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 from ...._internals.mixins import ParamsMixin

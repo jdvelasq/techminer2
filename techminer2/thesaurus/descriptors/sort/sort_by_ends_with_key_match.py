@@ -35,6 +35,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
          File : example/thesaurus/descriptors.the.txt
       Pattern : BANKS
@@ -52,14 +57,14 @@ Example:
           COMMERCIAL_BANKS
         ENABLE_BANKS
           ENABLE_BANKS
+        FINTECH_AND_FINANCIAL_INNOVATIONS_THE_BANKS
+          FINTECH_AND_FINANCIAL_INNOVATIONS_THE_BANKS
         FIVE_MAJOR_COMMERCIAL_BANKS
           FIVE_MAJOR_COMMERCIAL_BANKS
         INCUMBENT_RETAIL_BANKS
           INCUMBENT_RETAIL_BANKS
         LEADING_EUROPEAN_AND_US_BANKS
           LEADING_EUROPEAN_AND_US_BANKS
-        MOST_BANKS
-          MOST_BANKS
     <BLANKLINE>
     <BLANKLINE>
 

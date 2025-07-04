@@ -77,11 +77,11 @@ Example:
            '. TECHNOLOGY_INNOVATIONS that have begun to leverage THE_EXECUTION and '
            'STAKEHOLDER_VALUE associated with PAYMENTS , CRYPTOCURRENCIES , '
            'BLOCKCHAIN , and CROSS_BORDER_PAYMENTS . MULTIPLE_INNOVATIONS that '
-           'have affected LENDING_AND_DEPOSIT_SERVICES , PEER_TO_PEER ( p2p ) '
+           'have affected LENDING_AND_DEPOSIT_SERVICES , PEER_TO_PEER ( P2P ) '
            'LENDING , and SOCIAL_MEDIA_USE . ISSUES with_respect_to INVESTMENTS , '
            'FINANCIAL_MARKETS , TRADING , RISK_MANAGEMENT , ROBO_ADVISORY and '
-           'SERVICES influenced by BLOCKCHAIN_AND_FINTECH_INNOVATIONS . '
-           'COPYRIGHT_TAYLOR and FRANCIS_GROUP , llc .',
+           'SERVICES influenced by BLOCKCHAIN_AND_FINTECH_INNOVATIONS . copyright '
+           'taylor and francis group , llc .',
      'AR': 'Gomber P., 2018, J MANAGE INF SYST, V35, P220',
      'AU': 'Gomber P.; Kauffman R.J.; Parker C.; Weber B.W.',
      'DE': nan,
@@ -95,6 +95,7 @@ Example:
      'TI': 'On the Fintech Revolution: Interpreting the Forces of Innovation, '
            'Disruption, and Transformation in Financial Services',
      'UT': 1260}
+
 
 """
 

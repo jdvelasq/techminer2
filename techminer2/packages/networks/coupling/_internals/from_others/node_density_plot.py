@@ -38,7 +38,7 @@
 ## ...     #
 ## ...     .run()
 ## ... )
-## >>> plot.write_html("docs_src/_static/coupling_network/_core/others.node_density_plot.html")
+## >>> plot.write_html("docs_source/__static/coupling_network/_core/others.node_density_plot.html")
 
 .. raw:: html
 

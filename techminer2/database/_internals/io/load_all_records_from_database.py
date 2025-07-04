@@ -10,9 +10,9 @@
 """
 
 >>> from techminer2._internals.params_mixin import Params
->>> from techminer2.database._internals.io import internal__load_records
+>>> from techminer2.database._internals.io import internal__load_all_records_from_database
 >>> (
-...     internal__load_records(
+...     internal__load_all_records_from_database(
 ...         Params(root_directory="example/")
 ...     ).head() # doctest: +ELLIPSIS
 ... )

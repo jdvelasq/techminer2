@@ -34,6 +34,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/countries.the.txt
+      Keys reduced from 24 to 24
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
          File : example/thesaurus/countries.the.txt
       Pattern : Germ
@@ -60,7 +65,7 @@ Example:
         Ghana
           University of the Free State and University of Ghana Business School, Uni...
     <BLANKLINE>
-
+    <BLANKLINE>
 
 """
 from ...._internals.mixins import ParamsMixin

@@ -41,6 +41,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by word match
       File : example/thesaurus/organizations.the.txt
       Word : Bank
@@ -54,21 +59,20 @@ Example:
           Federal Reserve Bank of Chicago, Chicago, IL, United States; Federal Rese...
         Fed Reserv Bank of Philadelphia (USA)
           Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States; Fe...
-        Anhui Univ of Finan and Econ (CHN)
-          School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
-        Baekseok Univ (KOR)
-          Division of Tourism, Baekseok University, South Korea
-        Baewha Women’s Univ (KOR)
-          Department of Information Security, Baewha Women’s University, Seoul, Sou...
-        Baylor Univ (USA)
-          Baylor University, United States; Hankamer School of Business, Baylor Uni...
-        Beihang Univ (CHN)
-          School of Economics and Management, Beihang University, China
-        Brussels, Belgium (BEL)
+        [UKN] Brussels, Belgium (BEL)
           Brussels, Belgium
+        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany
+        [UKN] FinTech HK, Hong Kong (HKG)
+          FinTech HK, Hong Kong
+        [UKN] Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
+          Hochschule für Wirtschaft Fribourg, Switzerland
+        [UKN] Information Technol, Univeril, Germany (DEU)
+          Information Technology, Univeril, Germany
+        [UKN] Johns Hopkins SAIS, Washington, DC, United States (USA)
+          Johns Hopkins SAIS, Washington, DC, United States
     <BLANKLINE>
     <BLANKLINE>
-
 
 """
 from ...._internals.mixins import ParamsMixin

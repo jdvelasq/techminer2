@@ -36,7 +36,7 @@ Word Cloud
 ...     #
 ...     .run()
 ... )
->>> plot.save("docs_src/_generated/database.metrics.performance.word_cloud.png")
+>>> plot.save("docs_source/_generated/database.metrics.performance.word_cloud.png")
 
 .. image:: /_generarted/database.metrics.performance.word_cloud.png
     :width: 900px

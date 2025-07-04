@@ -8,37 +8,40 @@
 Sankey Plot
 ===============================================================================
 
->>> from techminer2.packages.co_occurrence_matrix import SankeyPlot
->>> plot = (
-...     SankeyPlot()
-...     #
-...     # FIELDS:
-...     .with_field("authors")
-...     .having_terms_in_top(10)
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     .with_other_field(["countries", "author_keywords"])
-...     #
-...     # PLOT:
-...     .using_color(None)
-...     .using_textfont_size(8)
-...     .using_title_text("Bar Plot")
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_src/_generated/px.packages.co_occurrence_matrix.sankey_plot.html")
+
+Example:
+    >>> from techminer2.packages.co_occurrence_matrix import SankeyPlot
+    >>> plot = (
+    ...     SankeyPlot()
+    ...     #
+    ...     # FIELDS:
+    ...     .with_field("authors")
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     .with_other_field(["countries", "author_keywords"])
+    ...     #
+    ...     # PLOT:
+    ...     .using_color(None)
+    ...     .using_textfont_size(8)
+    ...     .using_title_text("Bar Plot")
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.sankey_plot.html")
 
 .. raw:: html
 

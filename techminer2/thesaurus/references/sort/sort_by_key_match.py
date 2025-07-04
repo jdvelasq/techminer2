@@ -33,6 +33,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/references.the.txt
+      Keys reduced from 27 to 27
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus file by key match
                 File : example/thesaurus/references.the.txt
              Pattern : ECON
@@ -63,7 +68,6 @@ Example:
           Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 

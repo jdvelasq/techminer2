@@ -90,6 +90,7 @@ class DataFrame(
         self.terms_by_year = (
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .update(term_counters=True)
             .run()
         )

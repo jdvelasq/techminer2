@@ -40,6 +40,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus alphabetically
       File : example/thesaurus/organizations.the.txt
       Thesaurus sorting completed successfully
@@ -57,15 +62,14 @@ Example:
           Baylor University, United States; Hankamer School of Business, Baylor Uni...
         Beihang Univ (CHN)
           School of Economics and Management, Beihang University, China
-        Brussels, Belgium (BEL)
-          Brussels, Belgium
-        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany
-        Cent for Law, Markets & Regulation, UNSW Australia, Australia (AUS)
+        Cent for Law (AUS)
           Centre for Law, Markets & Regulation, UNSW Australia, Australia
+        Charles Sturt Univ Melbourne Study Group Cent (AUS)
+          Charles Sturt University Melbourne Study Group Centre, Melbourne, VIC, Au...
+        Chung-ang Univ (KOR)
+          School of Business, Chung-ang University, Seoul, South Korea
     <BLANKLINE>
     <BLANKLINE>
-
 
 
     >>> # Capture and print stderr output
@@ -91,6 +95,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by key length
       File : example/thesaurus/organizations.the.txt
       Thesaurus sorting completed successfully
@@ -100,23 +109,22 @@ Example:
     <BLANKLINE>
         The Res center of information technology & economic and social development of...
           The Research center of information technology & economic and social devel...
-        Cent for Law, Markets & Regulation, UNSW Australia, Australia (AUS)
-          Centre for Law, Markets & Regulation, UNSW Australia, Australia
-        Stanford GSB and the Hoover Institution, United States (USA)
-          Stanford GSB and the Hoover Institution, United States
-        Johns Hopkins SAIS, Washington, DC, United States (USA)
+        [UKN] Johns Hopkins SAIS, Washington, DC, United States (USA)
           Johns Hopkins SAIS, Washington, DC, United States
-        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
           CESifo, Poschingerstr. 5, Munich, 81679, Germany
+        [UKN] Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
+          Hochschule für Wirtschaft Fribourg, Switzerland
+        [UKN] Stanford GSB and the Hoover Inst, United States (USA)
+          Stanford GSB and the Hoover Institution, United States
         Univ of the Free State and Univ of Ghana Bus Sch (GHA)
           University of the Free State and University of Ghana Business School, Uni...
-        Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
-          Hochschule für Wirtschaft Fribourg, Switzerland
         Max Planck Inst for Innovation and Competition (DEU)
           Max Planck Institute for Innovation and Competition, Marstallplatz 1, Mun...
+        Charles Sturt Univ Melbourne Study Group Cent (AUS)
+          Charles Sturt University Melbourne Study Group Centre, Melbourne, VIC, Au...
     <BLANKLINE>
     <BLANKLINE>
-
 
     >>> # TEST PREPARATION
     >>> original_stderr = sys.stderr
@@ -140,6 +148,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Reducing thesaurus keys
+      File : example/thesaurus/organizations.the.txt
+      Keys reduced from 90 to 90
+      Keys reduction completed successfully
+    <BLANKLINE>
     Sorting thesaurus by word length
       File : example/thesaurus/organizations.the.txt
       Thesaurus sorting completed successfully
@@ -151,20 +164,21 @@ Example:
           Transport and Telecomunication Institute, Latvia
         Fraunhofer-Inst for Soft and Syst Eng ISST (DEU)
           Fraunhofer-Institute for Software and Systems Engineering ISST, Dortmund,...
-        CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany
         Univ Koblenz-Landau (DEU)
           Institute for Software Technology IST, Universität Koblenz-Landau, Koblen...
+        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
+          CESifo, Poschingerstr. 5, Munich, 81679, Germany
         Fed Reserv Bank of Philadelphia (USA)
           Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States; Fe...
         Pennsylvania State Univ (USA)
           Department of Supply Chain and Information Systems, Smeal College of Busi...
-        Stanford GSB and the Hoover Institution, United States (USA)
-          Stanford GSB and the Hoover Institution, United States
         Sungkyunkwan Univ (KOR)
           Software College, Sungkyunkwan University, Suwon, South Korea; Sungkyunkw...
+        Univ of Pennsylvania (USA)
+          University of Pennsylvania, United States
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 from ...._internals.mixins import ParamsMixin

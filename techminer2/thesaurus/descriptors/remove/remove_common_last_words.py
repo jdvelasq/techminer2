@@ -34,7 +34,7 @@ Example:
       File : example/thesaurus/descriptors.the.txt
     <BLANKLINE>
     <BLANKLINE>
-      15 ending words removed successfully
+      12 ending words removed successfully
       Common last words removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -44,18 +44,18 @@ Example:
           AGRICULTURE; AGRICULTURE_PLAYS
         CONTINUANCE_INTENTION
           CONTINUANCE_INTENTION; CONTINUANCE_INTENTIONS; CONTINUANCE_INTENTION_DIFFERS
-        DIGITAL_FINANCE
-          DIGITAL_FINANCE; DIGITAL_FINANCE_ENCOMPASSES
         ENTREPRENEURIAL
           ENTREPRENEURIAL_ENDEAVOURS
-        FINTECHS
-          FINTECHS_SYNTHESIZE
         FOUR_SPECIFIC
           FOUR_SPECIFIC_INCREASES
-        INNOVATIONS
-          INNOVATIONS_EXACERBATE
         LENDINGCLUB_LOANS
           LENDINGCLUB_LOANS_INCREASES
+        POSITIVE_RELATIONSHIP
+          POSITIVE_RELATIONSHIP_EXISTS
+        RESIDENTIAL_MORTGAGE
+          RESIDENTIAL_MORTGAGE_ORIGINATION
+        TAXONOMY
+          TAXONOMY; TAXONOMY_CONTRIBUTES
     <BLANKLINE>
     <BLANKLINE>
 

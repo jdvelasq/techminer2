@@ -50,11 +50,8 @@ Example:
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by exact key match
-                File : example/thesaurus/countries.the.txt
-             Pattern : China
-      Case sensitive : False
-         Regex Flags : 0
-        Regex Search : False
+         File : example/thesaurus/countries.the.txt
+      Pattern : China
       1 matching keys found
       Thesaurus sorting by exact key match completed successfully
     <BLANKLINE>

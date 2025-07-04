@@ -36,18 +36,15 @@ Example:
 
     >>> # Display the resulting data frame
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
-    Node                                             Name  Degree
-    0     0                         Electronic Markets 2:287       5
-    1     1          Journal of Economics and Business 3:422       4
-    2     2     Industrial Management and Data Systems 2:386       3
-    3     3                                   Symmetry 1:176       3
-    4     4  Journal of Management Information Systems 2:696       2
-    5     5               Sustainability (Switzerland) 2:150       2
-    6     6           Journal of Innovation Management 1:226       2
-    7     7                       Financial Management 2:161       1
-
-
-
+       Node                       Name  Degree
+    0     0      Electron. Mark. 2:287       5
+    1     1        J. Econ. Bus. 3:422       4
+    2     2  Ind Manage Data Sys 2:386       3
+    3     3             Symmetry 1:176       3
+    4     4    J Manage Inf Syst 2:696       2
+    5     5       Sustainability 2:150       2
+    6     6     J. Innov. Manag. 1:226       2
+    7     7      Financ. Manage. 2:161       1
 
     >>> df = (
     ...     NodeDegreeDataFrame()
@@ -73,6 +70,15 @@ Example:
 
     >>> # Display the resulting data frame
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
+       Node                       Name  Degree
+    0     0      Electron. Mark. 2:287       5
+    1     1        J. Econ. Bus. 3:422       4
+    2     2  Ind Manage Data Sys 2:386       3
+    3     3             Symmetry 1:176       3
+    4     4    J Manage Inf Syst 2:696       2
+    5     5       Sustainability 2:150       2
+    6     6     J. Innov. Manag. 1:226       2
+    7     7      Financ. Manage. 2:161       1
 
 
 
@@ -90,6 +96,7 @@ class NodeDegreeDataFrame(
         return (
             InternalNodeDegreeDataFrame()
             .update(**self.params.__dict__)
+            .update(terms_order_by="OCC")
             .unit_of_analysis("abbr_source_title")
             .run()
         )
