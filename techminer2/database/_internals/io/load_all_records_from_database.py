@@ -9,21 +9,22 @@
 # pylint: disable=too-many-statements
 """
 
->>> from techminer2._internals.params_mixin import Params
->>> from techminer2.database._internals.io import internal__load_all_records_from_database
->>> (
-...     internal__load_all_records_from_database(
-...         Params(root_directory="example/")
-...     ).head() # doctest: +ELLIPSIS
-... )
-    abbr_source_title abstract  ... volume  year
-0          Econ. Soc.      NaN  ...     30  2001
-1       Psychometrika      NaN  ...     46  1981
-2  Strategic Manage J      NaN  ...     20  1999
-3         J. Classif.      NaN  ...      5  1988
-4         Theor Decis      NaN  ...      9  1978
-<BLANKLINE>
-[5 rows x 75 columns]
+Example:
+    >>> from techminer2._internals.params_mixin import Params
+    >>> from techminer2.database._internals.io import internal__load_all_records_from_database
+    >>> (
+    ...     internal__load_all_records_from_database(
+    ...         Params(root_directory="example/")
+    ...     ).head() # doctest: +ELLIPSIS
+    ... )
+        abbr_source_title abstract  ... volume  year
+    0          Econ. Soc.      NaN  ...     30  2001
+    1       Psychometrika      NaN  ...     46  1981
+    2  Strategic Manage J      NaN  ...     20  1999
+    3         J. Classif.      NaN  ...      5  1988
+    4         Theor Decis      NaN  ...      9  1978
+    <BLANKLINE>
+    [5 rows x 75 columns]
 
 
 

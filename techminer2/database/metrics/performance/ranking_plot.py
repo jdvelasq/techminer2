@@ -10,39 +10,41 @@
 Ranking Plot
 ===============================================================================
 
->>> from techminer2.database.metrics.performance import RankingPlot
->>> plot = (
-...     RankingPlot()
-...     #
-...     # FIELD:
-...     .with_field("author_keywords")
-...     #
-...     # TERMS:
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PLOT:
-...     .using_line_color("black")
-...     .using_line_width(1.5)
-...     .using_marker_size(7)
-...     .using_textfont_size(10)
-...     .using_title_text("Ranking Plot")
-...     .using_xaxes_title_text("Author Keywords")
-...     .using_yaxes_title_text("OCC")
-...     .using_yshift(4)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.database.metrics.performance.ranking_plot.html")
+
+Example:
+    >>> from techminer2.database.metrics.performance import RankingPlot
+    >>> plot = (
+    ...     RankingPlot()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("author_keywords")
+    ...     #
+    ...     # TERMS:
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PLOT:
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_marker_size(7)
+    ...     .using_textfont_size(10)
+    ...     .using_title_text("Ranking Plot")
+    ...     .using_xaxes_title_text("Author Keywords")
+    ...     .using_yaxes_title_text("OCC")
+    ...     .using_yshift(4)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.performance.ranking_plot.html")
 
 .. raw:: html
 

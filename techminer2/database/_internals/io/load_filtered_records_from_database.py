@@ -9,50 +9,50 @@
 # pylint: disable=too-many-statements
 """
 
+Example:
+    >>> #
+    >>> # TEST PREPARATION
+    >>> #
+    >>> # Countries:
+    >>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> # Countries:
->>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Organizations:
+    >>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
->>> # Organizations:
->>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+    >>> # Descriptors:
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
->>> # Descriptors:
->>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
-
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2._internals.params_mixin import Params
->>> from techminer2.database._internals.io import internal__load_filtered_records_from_database
->>> (
-...     internal__load_filtered_records_from_database(
-...         Params(
-...             database="main",
-...             record_years_range=(None, None),
-...             record_citations_range=(None, None),
-...             records_order_by=None,
-...             records_match=None,
-...             root_directory="example/",
-...         )
-...     ).head()
-... ) # doctest: +ELLIPSIS
-                       abbr_source_title  ...  year
-934              Int. J. Appl. Eng. Res.  ...  2016
-935                    Telecommun Policy  ...  2016
-1031                      China Econ. J.  ...  2016
-1059  Contemp. Stud. Econ. Financ. Anal.  ...  2016
-1075                    New Polit. Econ.  ...  2017
-<BLANKLINE>
-[5 rows x 75 columns]
+    >>> #
+    >>> # CODE TESTED
+    >>> #
+    >>> from techminer2._internals.params_mixin import Params
+    >>> from techminer2.database._internals.io import internal__load_filtered_records_from_database
+    >>> (
+    ...     internal__load_filtered_records_from_database(
+    ...         Params(
+    ...             database="main",
+    ...             record_years_range=(None, None),
+    ...             record_citations_range=(None, None),
+    ...             records_order_by=None,
+    ...             records_match=None,
+    ...             root_directory="example/",
+    ...         )
+    ...     ).head()
+    ... ) # doctest: +ELLIPSIS
+                           abbr_source_title  ...  year
+    934              Int. J. Appl. Eng. Res.  ...  2016
+    935                    Telecommun Policy  ...  2016
+    1031                      China Econ. J.  ...  2016
+    1059  Contemp. Stud. Econ. Financ. Anal.  ...  2016
+    1075                    New Polit. Econ.  ...  2017
+    <BLANKLINE>
+    [5 rows x 75 columns]
 
 
 

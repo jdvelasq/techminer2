@@ -10,40 +10,41 @@ Terms by Cluster Summary
 ===============================================================================
 
 
->>> from techminer2.packages.networks.co_occurrence.index_keywords import TermsByClusterSummary
->>> (
-...     TermsByClusterSummary()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # NETWORK:
-...     .using_clustering_algorithm_or_dict("louvain")
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
-   Cluster  ...                                              Terms
-0        0  ...  FINANCE 10:1866; FINANCIAL_SERVICE 05:1115; CO...
-1        1  ...  INVESTMENT 02:0418; FINANCIAL_SYSTEM 02:0385; ...
-2        2  ...  FINTECH 10:1412; ELECTRONIC_MONEY 03:0305; FIN...
-3        3  ...  SURVEYS 03:0484; FINANCIAL_INDUSTRIES 02:0323;...
-<BLANKLINE>
-[4 rows x 4 columns]
+Example:
+    >>> from techminer2.packages.networks.co_occurrence.index_keywords import TermsByClusterSummary
+    >>> (
+    ...     TermsByClusterSummary()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+       Cluster  ...                                              Terms
+    0        0  ...  FINANCE 10:1866; FINANCIAL_SERVICE 05:1115; CO...
+    1        1  ...  INVESTMENT 02:0418; FINANCIAL_SYSTEM 02:0385; ...
+    2        2  ...  FINTECH 10:1412; ELECTRONIC_MONEY 03:0305; FIN...
+    3        3  ...  SURVEYS 03:0484; FINANCIAL_INDUSTRIES 02:0323;...
+    <BLANKLINE>
+    [4 rows x 4 columns]
 
 
 

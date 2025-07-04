@@ -9,6 +9,7 @@
 Network Density Plot
 ===============================================================================
 
+
 Example:
     >>> from techminer2.packages.networks.coupling.countries import NodeDensityPlot
     >>> plot = (

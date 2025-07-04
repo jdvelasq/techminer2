@@ -9,34 +9,36 @@
 Treemap
 ===============================================================================
 
->>> from techminer2.packages.networks.co_authorship.countries import Treemap
->>> plot = (
-...     Treemap()
-...     #
-...     # FIELD:
-...     .with_field("countries")
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # NETWORK:
-...     .using_association_index("association")
-...     #
-...     # PLOT:
-...     .using_title_text(None)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.networks.co_authorship.countries.treemap.html")
+
+Example:
+    >>> from techminer2.packages.networks.co_authorship.countries import Treemap
+    >>> plot = (
+    ...     Treemap()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("countries")
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index("association")
+    ...     #
+    ...     # PLOT:
+    ...     .using_title_text(None)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.networks.co_authorship.countries.treemap.html")
 
 .. raw:: html
 

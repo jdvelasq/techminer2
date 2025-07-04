@@ -9,21 +9,21 @@
 RPYS (Reference Publication Year Spectroscopy) Frame
 ===============================================================================
 
-
->>> from techminer2.packages.rpys import RPYSDataFrame
->>> (
-...     RPYSDataFrame()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .run()
-... ).head()
-      Num References  Median
-2015               1    -1.0
-2016               7    -7.0
-2017              10   -10.0
-2018              17   -17.0
-2019              15    -5.0
+Example:
+    >>> from techminer2.packages.rpys import RPYSDataFrame
+    >>> (
+    ...     RPYSDataFrame()
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .run()
+    ... ).head()
+          Num References  Median
+    2015               1    -1.0
+    2016               7    -7.0
+    2017              10   -10.0
+    2018              17   -17.0
+    2019              15    -5.0
 
 
 

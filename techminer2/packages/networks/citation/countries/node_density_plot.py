@@ -9,37 +9,39 @@
 Node Density Plot
 ===============================================================================
 
->>> from techminer2.packages.networks.citation.countries  import node_density_plot
->>> plot = (
-...     NodeDensityPlot()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(30)
-...     .having_citation_threshold(0)
-...     .having_occurrence_threshold(2)
-...     .having_terms_in(None)
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-...     #
-...     # DENSITY:
-...     .using_kernel_bandwidth(0.1)
-...     .using_colormap("Aggrnyl")
-...     .using_contour_opacity(0.6)
-...     .using_textfont_size_range(10, 20)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.networks.citation.countries.node_density_plot.html")
+
+Example:
+    >>> from techminer2.packages.networks.citation.countries  import node_density_plot
+    >>> plot = (
+    ...     NodeDensityPlot()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_occurrence_threshold(2)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     # DENSITY:
+    ...     .using_kernel_bandwidth(0.1)
+    ...     .using_colormap("Aggrnyl")
+    ...     .using_contour_opacity(0.6)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.networks.citation.countries.node_density_plot.html")
 
 .. raw:: html
 

@@ -10,33 +10,34 @@ Pie Plot
 ===============================================================================
 
 
->>> from techminer2.database.metrics.performance import PiePlot
->>> plot = (
-...     PiePlot()
-...     #
-...     # FIELD:
-...     .with_field("author_keywords")
-...     #
-...     # TERMS:
-...     .having_terms_in_top(15)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PLOT:
-...     .using_title_text("Most Frequent Author Keywords")
-...     .using_pie_hole(0.4)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.database.metrics.performance.pie_plot.html")
+Example:
+    >>> from techminer2.database.metrics.performance import PiePlot
+    >>> plot = (
+    ...     PiePlot()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("author_keywords")
+    ...     #
+    ...     # TERMS:
+    ...     .having_terms_in_top(15)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PLOT:
+    ...     .using_title_text("Most Frequent Author Keywords")
+    ...     .using_pie_hole(0.4)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.performance.pie_plot.html")
 
 .. raw:: html
 

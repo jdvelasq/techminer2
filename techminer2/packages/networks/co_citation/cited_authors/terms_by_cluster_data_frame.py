@@ -9,6 +9,7 @@
 Terms by Cluster Frame
 ===============================================================================
 
+
 Example:
     >>> from techminer2.packages.networks.co_citation.cited_authors import TermsByClusterDataFrame
 

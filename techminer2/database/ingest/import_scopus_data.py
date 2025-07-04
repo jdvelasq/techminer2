@@ -11,15 +11,16 @@ Import Scopus Data
 ===============================================================================
 # doctest: +SKIP
 
->>> # Command line interface
->>> # python3 -m techminer2.database.ingest.import_scopus_data
+Example:
+    >>> # Command line interface
+    >>> # python3 -m techminer2.database.ingest.import_scopus_data
 
->>> from techminer2.database.ingest import ImportScopusData
->>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS
+    >>> from techminer2.database.ingest import ImportScopusData
+    >>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS
 
 
-# >>> ImportScopusData(root_directory="../tm2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
-# >>> ImportScopusData(root_directory="../tm2_karla_marzo_2025/").run() # doctest: +ELLIPSIS
+    # >>> ImportScopusData(root_directory="../tm2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
+    # >>> ImportScopusData(root_directory="../tm2_karla_marzo_2025/").run() # doctest: +ELLIPSIS
 
 
 """

@@ -8,57 +8,59 @@
 Terms by Cluster Summary
 ===============================================================================
 
->>> from sklearn.cluster import KMeans
->>> kmeans = KMeans(
-...     n_clusters=4,
-...     init="k-means++",
-...     n_init=10,
-...     max_iter=300,
-...     tol=0.0001,
-...     algorithm="lloyd",
-...     random_state=0,
-... )
->>> from techminer2.packages.document_clustering import TermsByClusterSummary
->>> (
-...     TermsByClusterSummary()
-...     #
-...     # FIELD:
-...     .with_field("raw_keywords")
-...     .having_terms_in_top(50)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # TFIDF:
-...     .using_binary_term_frequencies(False)
-...     .using_row_normalization(None)
-...     .using_idf_reweighting(False)
-...     .using_idf_weights_smoothing(False)
-...     .using_sublinear_tf_scaling(False)
-...     #
-...     # CLUSTERING:
-...     .using_clustering_algorithm_or_dict(kmeans)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
-   Cluster  ...                                              Terms
-0        0  ...  SUSTAINABILITY 03:0227; SUSTAINABLE_DEVELOPMEN...
-1        1  ...  FINTECH 32:5393; FINANCE 11:1950; INNOVATION 0...
-2        2  ...  MARKETPLACE_LENDING 03:0317; LENDINGCLUB 02:02...
-3        3  ...  CONTENT_ANALYSIS 02:0181; DIGITALIZATION 02:01...
-<BLANKLINE>
-[4 rows x 4 columns]
+
+Example:
+    >>> from sklearn.cluster import KMeans
+    >>> kmeans = KMeans(
+    ...     n_clusters=4,
+    ...     init="k-means++",
+    ...     n_init=10,
+    ...     max_iter=300,
+    ...     tol=0.0001,
+    ...     algorithm="lloyd",
+    ...     random_state=0,
+    ... )
+    >>> from techminer2.packages.document_clustering import TermsByClusterSummary
+    >>> (
+    ...     TermsByClusterSummary()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("raw_keywords")
+    ...     .having_terms_in_top(50)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # TFIDF:
+    ...     .using_binary_term_frequencies(False)
+    ...     .using_row_normalization(None)
+    ...     .using_idf_reweighting(False)
+    ...     .using_idf_weights_smoothing(False)
+    ...     .using_sublinear_tf_scaling(False)
+    ...     #
+    ...     # CLUSTERING:
+    ...     .using_clustering_algorithm_or_dict(kmeans)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+       Cluster  ...                                              Terms
+    0        0  ...  SUSTAINABILITY 03:0227; SUSTAINABLE_DEVELOPMEN...
+    1        1  ...  FINTECH 32:5393; FINANCE 11:1950; INNOVATION 0...
+    2        2  ...  MARKETPLACE_LENDING 03:0317; LENDINGCLUB 02:02...
+    3        3  ...  CONTENT_ANALYSIS 02:0181; DIGITALIZATION 02:01...
+    <BLANKLINE>
+    [4 rows x 4 columns]
 
 
 

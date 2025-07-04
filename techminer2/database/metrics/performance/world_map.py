@@ -9,32 +9,34 @@
 World Map
 ===============================================================================
 
->>> from techminer2.database.metrics.performance import WorldMap
->>> plot = (
-...     WorldMap()
-...     #
-...     # FIELD:
-...     .with_field("countries")
-...     #
-...     # TERMS:
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # PLOT:
-...     .using_title_text("Countries' Scientific Production")
-...     .using_colormap("Blues")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.database.metrics.performance.world_map.html")
+
+Example:
+    >>> from techminer2.database.metrics.performance import WorldMap
+    >>> plot = (
+    ...     WorldMap()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("countries")
+    ...     #
+    ...     # TERMS:
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # PLOT:
+    ...     .using_title_text("Countries' Scientific Production")
+    ...     .using_colormap("Blues")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.database.metrics.performance.world_map.html")
 
 .. raw:: html
 

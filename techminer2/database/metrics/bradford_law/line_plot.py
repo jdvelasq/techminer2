@@ -8,6 +8,7 @@
 Line Plot
 ===============================================================================
 
+
 Example:
     >>> from techminer2.database.metrics.bradford_law import LinePlot
 

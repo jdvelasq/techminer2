@@ -9,6 +9,7 @@
 Clusters to Terms Mapping
 ===============================================================================
 
+
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import ClustersToTermsMapping
     >>> mapping = (

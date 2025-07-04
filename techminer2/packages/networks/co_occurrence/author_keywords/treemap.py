@@ -10,45 +10,47 @@ Treemap
 ===============================================================================
 
 
->>> #
->>> # TEST PREPARATION
->>> #
->>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
->>> CreateThesaurus(root_directory="example/", quiet=True).run()
->>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+
+Example:
+    >>> #
+    >>> # TEST PREPARATION
+    >>> #
+    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
 
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2.packages.networks.co_occurrence.author_keywords import Treemap
->>> plot = (
-...     Treemap()
-...     #
-...     # FIELD:
-...     .with_field("author_keywords")
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # NETWORK:
-...     .using_association_index("association")
-...     #
-...     # PLOT:
-...     .using_title_text(None)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.networks.co_occurrence.author_keywords.treemap.html")
+    >>> #
+    >>> # CODE TESTED
+    >>> #
+    >>> from techminer2.packages.networks.co_occurrence.author_keywords import Treemap
+    >>> plot = (
+    ...     Treemap()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("author_keywords")
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index("association")
+    ...     #
+    ...     # PLOT:
+    ...     .using_title_text(None)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.networks.co_occurrence.author_keywords.treemap.html")
 
 .. raw:: html
 

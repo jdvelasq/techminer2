@@ -9,30 +9,32 @@
 Node Degree Frame
 ===============================================================================
 
->>> from techminer2.packages.networks.co_citation.cited_sources import NodeDegreeDataFrame
->>> (
-...     NodeDegreeDataFrame()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(30)
-...     .having_citation_threshold(0)
-...     .having_terms_in(None)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-   Node                     Name  Degree
-0     0     INT J INF MANAGE 1:2       9
-1     1      FINANCIAL INNOV 1:4       7
-2     2  IND MANAGE DATA SYS 1:2       6
-3     3       NEW POLIT ECON 1:2       6
-4     4        ELECTRON MARK 1:1       6
+
+Example:
+    >>> from techminer2.packages.networks.co_citation.cited_sources import NodeDegreeDataFrame
+    >>> (
+    ...     NodeDegreeDataFrame()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+       Node                     Name  Degree
+    0     0     INT J INF MANAGE 1:2       9
+    1     1      FINANCIAL INNOV 1:4       7
+    2     2  IND MANAGE DATA SYS 1:2       6
+    3     3       NEW POLIT ECON 1:2       6
+    4     4        ELECTRON MARK 1:1       6
 
 
 

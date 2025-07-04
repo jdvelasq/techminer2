@@ -9,15 +9,17 @@
 RPYS (Reference Publication Year Spectroscopy) Plot
 ===============================================================================
 
->>> from techminer2.packages.rpys import RPYSPlot
->>> plot = (
-...     RPYSPlot()
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")
+
+Example:
+    >>> from techminer2.packages.rpys import RPYSPlot
+    >>> plot = (
+    ...     RPYSPlot()
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")
 
 .. raw:: html
 

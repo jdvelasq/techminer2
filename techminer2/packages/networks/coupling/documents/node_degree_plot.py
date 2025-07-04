@@ -9,31 +9,33 @@
 Network Degree Plot
 ===============================================================================
 
->>> from techminer2.packages.networks.coupling.documents import NodeDegreePlot
->>> plot = (
-...     NodeDegreePlot()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(20)
-...     .having_citation_threshold(0)
-...     #
-...     # PLOT:
-...     .using_line_color("black")
-...     .using_line_width(1.5)
-...     .using_marker_size(7)
-...     .using_textfont_size(10)
-...     .using_yshift(4)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.networks.coupling.documents.node_degree_plot.html")
+
+Example:
+    >>> from techminer2.packages.networks.coupling.documents import NodeDegreePlot
+    >>> plot = (
+    ...     NodeDegreePlot()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(20)
+    ...     .having_citation_threshold(0)
+    ...     #
+    ...     # PLOT:
+    ...     .using_line_color("black")
+    ...     .using_line_width(1.5)
+    ...     .using_marker_size(7)
+    ...     .using_textfont_size(10)
+    ...     .using_yshift(4)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.networks.coupling.documents.node_degree_plot.html")
 
 .. raw:: html
 

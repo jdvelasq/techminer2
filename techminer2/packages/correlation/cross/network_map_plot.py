@@ -12,54 +12,56 @@ Cross-correlation Map
 
 Creates an Cross-correlation Map.
 
->>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
->>> from techminer2.packages.correlation.cross import NetworkMapPlot
->>> plot = (
-...     NetworkMapPlot()
-...     #
-...     # FIELD:
-...     .with_field("authors")
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # CROSS WITH:
-...     .with_other_field('countries')
-...     #
-...     .with_correlation_method("pearson")
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-...     #
-...     .using_edge_colors(["#7793a5", "#7793a5", "#7793a5", "#7793a5"])
-...     .using_edge_similarity_threshold(0)
-...     .using_edge_top_n(None)
-...     .using_edge_widths([2, 2, 4, 6])
-...     #
-...     .using_node_colors(["#7793a5"])
-...     .using_node_size_range(30, 70)
-...     #
-...     .using_textfont_opacity_range(0.35, 1.00)
-...     .using_textfont_size_range(10, 20)
-...     #
-...     .using_xaxes_range(None, None)
-...     .using_yaxes_range(None, None)
-...     .using_axes_visible(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.correlation.cross.network_map_plot.html")
+
+Example:
+    >>> # grey colors: https://www.w3schools.com/colors/colors_shades.asp
+    >>> from techminer2.packages.correlation.cross import NetworkMapPlot
+    >>> plot = (
+    ...     NetworkMapPlot()
+    ...     #
+    ...     # FIELD:
+    ...     .with_field("authors")
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # CROSS WITH:
+    ...     .with_other_field('countries')
+    ...     #
+    ...     .with_correlation_method("pearson")
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     .using_edge_colors(["#7793a5", "#7793a5", "#7793a5", "#7793a5"])
+    ...     .using_edge_similarity_threshold(0)
+    ...     .using_edge_top_n(None)
+    ...     .using_edge_widths([2, 2, 4, 6])
+    ...     #
+    ...     .using_node_colors(["#7793a5"])
+    ...     .using_node_size_range(30, 70)
+    ...     #
+    ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.correlation.cross.network_map_plot.html")
 
 .. raw:: html
 

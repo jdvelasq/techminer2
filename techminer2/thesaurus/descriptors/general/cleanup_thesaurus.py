@@ -10,6 +10,7 @@
 Cleanup Thesaurus
 ===============================================================================
 
+
 Example:
     >>> import sys
     >>> from io import StringIO

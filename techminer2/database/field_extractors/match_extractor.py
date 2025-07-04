@@ -9,6 +9,7 @@
 Match
 ===============================================================================
 
+
 Example:
     >>> from pprint import pprint
     >>> from techminer2.database.field_extractors import MatchExtractor

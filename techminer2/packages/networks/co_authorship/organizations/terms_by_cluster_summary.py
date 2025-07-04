@@ -9,6 +9,7 @@
 Terms by Cluster Summary
 ===============================================================================
 
+
 Example:
     >>> from techminer2.packages.networks.co_authorship.organizations import TermsByClusterSummary
     >>> (

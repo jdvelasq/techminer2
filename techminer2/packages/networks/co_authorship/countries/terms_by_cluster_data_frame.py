@@ -10,39 +10,40 @@ Terms by Cluster Frame
 ===============================================================================
 
 
->>> from techminer2.packages.networks.co_authorship.countries import TermsByClusterDataFrame
->>> (
-...     TermsByClusterDataFrame()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # NETWORK:
-...     .using_clustering_algorithm_or_dict("louvain")
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
-                       0  ...                          8
-0  United States 16:3189  ...  Brunei Darussalam 01:0090
-1          China 08:1085  ...
-2    South Korea 06:1192  ...
-3         Sweden 01:0160  ...
-4     Kazakhstan 01:0121  ...
-5        Belgium 01:0101  ...
-<BLANKLINE>
-[6 rows x 9 columns]
+Example:
+    >>> from techminer2.packages.networks.co_authorship.countries import TermsByClusterDataFrame
+    >>> (
+    ...     TermsByClusterDataFrame()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+                           0  ...                          8
+    0  United States 16:3189  ...  Brunei Darussalam 01:0090
+    1          China 08:1085  ...
+    2    South Korea 06:1192  ...
+    3         Sweden 01:0160  ...
+    4     Kazakhstan 01:0121  ...
+    5        Belgium 01:0101  ...
+    <BLANKLINE>
+    [6 rows x 9 columns]
 
 
 """

@@ -10,56 +10,57 @@ Matrix Plot
 ===============================================================================
 
 
->>> from techminer2.packages.co_occurrence_matrix import MatrixPlot
->>> plot = (
-...     MatrixPlot()
-...     #
-...     # COLUMNS:
-...     .with_field("author_keywords")
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # ROWS:
-...     .with_other_field("authors")
-...     .having_other_terms_in_top(10)
-...     .having_other_terms_ordered_by("OCC")
-...     .having_other_term_occurrences_between(None, None)
-...     .having_other_term_citations_between(None, None)
-...     .having_other_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-...     #
-...     .using_node_size_range(30, 70)
-...     .using_node_colors(["#7793a5", "#465c6b"])
-...     .using_textfont_size_range(10, 20)
-...     .using_textfont_opacity_range(0.35, 1.00)
-...     #
-...     .using_edge_colors(["#b8c6d0"])
-...     .using_edge_width_range(0.8, 4.0)
-...     #
-...     .using_xaxes_range(None, None)
-...     .using_yaxes_range(None, None)
-...     .using_axes_visible(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.matrix_plot_0.html")
+Example:
+    >>> from techminer2.packages.co_occurrence_matrix import MatrixPlot
+    >>> plot = (
+    ...     MatrixPlot()
+    ...     #
+    ...     # COLUMNS:
+    ...     .with_field("author_keywords")
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # ROWS:
+    ...     .with_other_field("authors")
+    ...     .having_other_terms_in_top(10)
+    ...     .having_other_terms_ordered_by("OCC")
+    ...     .having_other_term_occurrences_between(None, None)
+    ...     .having_other_term_citations_between(None, None)
+    ...     .having_other_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     .using_node_size_range(30, 70)
+    ...     .using_node_colors(["#7793a5", "#465c6b"])
+    ...     .using_textfont_size_range(10, 20)
+    ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     #
+    ...     .using_edge_colors(["#b8c6d0"])
+    ...     .using_edge_width_range(0.8, 4.0)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.matrix_plot_0.html")
 
 .. raw:: html
 
@@ -67,56 +68,57 @@ Matrix Plot
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> from techminer2.packages.co_occurrence_matrix import MatrixPlot
->>> plot = (
-...     MatrixPlot()
-...     #
-...     # COLUMNS:
-...     .with_field("author_keywords")
-...     .having_terms_in_top(10)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(2, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # ROWS:
-...     .with_other_field(None)
-...     .having_other_terms_in_top(None)
-...     .having_other_terms_ordered_by(None)
-...     .having_other_term_occurrences_between(None, None)
-...     .having_other_term_citations_between(None, None)
-...     .having_other_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(True)
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-...     #
-...     .using_node_size_range(30, 70)
-...     .using_node_colors(["#7793a5", "#465c6b"])
-...     .using_textfont_size_range(10, 20)
-...     .using_textfont_opacity_range(0.35, 1.00)
-...     #
-...     .using_edge_colors(["#b8c6d0"])
-...     .using_edge_width_range(0.8, 4.0)
-...     #
-...     .using_xaxes_range(None, None)
-...     .using_yaxes_range(None, None)
-...     .using_axes_visible(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.matrix_plot_1.html")
+Example:
+    >>> from techminer2.packages.co_occurrence_matrix import MatrixPlot
+    >>> plot = (
+    ...     MatrixPlot()
+    ...     #
+    ...     # COLUMNS:
+    ...     .with_field("author_keywords")
+    ...     .having_terms_in_top(10)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(2, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # ROWS:
+    ...     .with_other_field(None)
+    ...     .having_other_terms_in_top(None)
+    ...     .having_other_terms_ordered_by(None)
+    ...     .having_other_term_occurrences_between(None, None)
+    ...     .having_other_term_citations_between(None, None)
+    ...     .having_other_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(True)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     .using_node_size_range(30, 70)
+    ...     .using_node_colors(["#7793a5", "#465c6b"])
+    ...     .using_textfont_size_range(10, 20)
+    ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     #
+    ...     .using_edge_colors(["#b8c6d0"])
+    ...     .using_edge_width_range(0.8, 4.0)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> plot.write_html("docs_source/_generated/px.packages.co_occurrence_matrix.matrix_plot_1.html")
 
 .. raw:: html
 

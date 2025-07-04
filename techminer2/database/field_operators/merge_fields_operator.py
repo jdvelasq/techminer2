@@ -9,6 +9,7 @@
 Merge Fields
 ===============================================================================
 
+
 Example:
     >>> from techminer2.database.field_operators import (
     ...     DeleteFieldOperator,

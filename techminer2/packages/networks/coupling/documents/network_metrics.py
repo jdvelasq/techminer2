@@ -9,31 +9,33 @@
 Network Metrics
 ===============================================================================
 
->>> from techminer2.packages.networks.coupling.documents import NetworkMetrics
->>> (
-...     NetworkMetrics()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(20)
-...     .having_citation_threshold(0)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-                                            Degree  ...  PageRank
-Anagnostopoulos I., 2018, J ECON BUS 1:202       5  ...  0.091922
-Hu Z., 2019, SYMMETRY 1:176                      5  ...  0.105354
-Alt R., 2018, ELECTRON MARK 1:150                5  ...  0.104977
-Gomber P., 2018, J MANAGE INF SYST 1:576         3  ...  0.055637
-Schueffel P., 2016, J INNOV MANAG 1:226          3  ...  0.062500
-<BLANKLINE>
-[5 rows x 4 columns]
+
+Example:
+    >>> from techminer2.packages.networks.coupling.documents import NetworkMetrics
+    >>> (
+    ...     NetworkMetrics()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(20)
+    ...     .having_citation_threshold(0)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+                                                Degree  ...  PageRank
+    Anagnostopoulos I., 2018, J ECON BUS 1:202       5  ...  0.091922
+    Hu Z., 2019, SYMMETRY 1:176                      5  ...  0.105354
+    Alt R., 2018, ELECTRON MARK 1:150                5  ...  0.104977
+    Gomber P., 2018, J MANAGE INF SYST 1:576         3  ...  0.055637
+    Schueffel P., 2016, J INNOV MANAG 1:226          3  ...  0.062500
+    <BLANKLINE>
+    [5 rows x 4 columns]
 
 
 

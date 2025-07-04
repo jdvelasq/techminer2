@@ -9,29 +9,31 @@
 Node Degree Dataframe
 ===============================================================================
 
->>> from techminer2.packages.networks.citation.documents  import NodeDegreeDataFrame
->>> (
-...     NodeDegreeDataFrame()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(30)
-...     .having_citation_threshold(0)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head()
-   Node                                               Name  Degree
-0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
-1     1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
-2     2       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
-3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
-4     4  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...       2
+
+Example:
+    >>> from techminer2.packages.networks.citation.documents  import NodeDegreeDataFrame
+    >>> (
+    ...     NodeDegreeDataFrame()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(30)
+    ...     .having_citation_threshold(0)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head()
+       Node                                               Name  Degree
+    0     0                   Hu Z., 2019, SYMMETRY, V11 1:176       7
+    1     1  Gomber P., 2018, J MANAGE INF SYST, V35, P220 ...       4
+    2     2       Gomber P., 2017, J BUS ECON, V87, P537 1:489       4
+    3     3       Alt R., 2018, ELECTRON MARK, V28, P235 1:150       4
+    4     4  Anagnostopoulos I., 2018, J ECON BUS, V100, P7...       2
 
 
 

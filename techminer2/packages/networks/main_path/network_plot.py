@@ -9,41 +9,42 @@
 Network Plot
 ===============================================================================
 
->>> from techminer2.packages.networks.main_path import NetworkPlot
->>> plot = (
-...     NetworkPlot()
-...     #
-...     # UNIT OF ANALYSIS:
-...     .having_terms_in_top(None)
-...     .having_citation_threshold(0)
-...     #
-...     # NETWORK:
-...     .using_spring_layout_k(None)
-...     .using_spring_layout_iterations(30)
-...     .using_spring_layout_seed(0)
-...     #
-...     .using_edge_colors(["#7793a5"])
-...     .using_edge_width_range(0.8, 3.0)
-...     .using_node_colors(["#7793a5"])
-...     .using_node_size_range(30, 70)
-...     .using_textfont_opacity_range(0.35, 1.00)
-...     .using_textfont_size_range(10, 20)
-...     #
-...     .using_xaxes_range(None, None)
-...     .using_yaxes_range(None, None)
-...     .using_axes_visible(False)
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("example/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
+Example:
+    >>> from techminer2.packages.networks.main_path import NetworkPlot
+    >>> plot = (
+    ...     NetworkPlot()
+    ...     #
+    ...     # UNIT OF ANALYSIS:
+    ...     .having_terms_in_top(None)
+    ...     .having_citation_threshold(0)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_iterations(30)
+    ...     .using_spring_layout_seed(0)
+    ...     #
+    ...     .using_edge_colors(["#7793a5"])
+    ...     .using_edge_width_range(0.8, 3.0)
+    ...     .using_node_colors(["#7793a5"])
+    ...     .using_node_size_range(30, 70)
+    ...     .using_textfont_opacity_range(0.35, 1.00)
+    ...     .using_textfont_size_range(10, 20)
+    ...     #
+    ...     .using_xaxes_range(None, None)
+    ...     .using_yaxes_range(None, None)
+    ...     .using_axes_visible(False)
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("example/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
 
->>> plot.write_html("docs_source/_generated/px.packages.networks.main_path.network_plot.html")
+    >>> plot.write_html("docs_source/_generated/px.packages.networks.main_path.network_plot.html")
 
 .. raw:: html
 
