@@ -88,6 +88,7 @@ class CreateThesaurus(
 # SHORTCUTS
 # -----------------------------------------------------------------------------
 def reset_thesaurus():
+    """:meta private:"""
 
     from techminer2.thesaurus.descriptors import (  # type: ignore
         CreateThesaurus,

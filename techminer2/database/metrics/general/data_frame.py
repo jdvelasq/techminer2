@@ -112,6 +112,8 @@ from ..._internals.io import internal__load_filtered_records_from_database
 
 @dataclass
 class Stats:
+    """:meta private:"""
+
     category: list = field(default_factory=list)
     item: list = field(default_factory=list)
     value: list = field(default_factory=list)

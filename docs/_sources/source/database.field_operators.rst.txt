@@ -13,6 +13,5 @@ Field operators
     database.field_operators.fillna_operator
     database.field_operators.highlight_nouns_and_phrases_operator
     database.field_operators.merge_fields_operator
-    database.field_operators.protected_fields
     database.field_operators.rename_field_operator
     database.field_operators.transform_field_operator

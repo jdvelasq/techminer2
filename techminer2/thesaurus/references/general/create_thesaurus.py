@@ -75,6 +75,7 @@ tqdm.pandas()
 
 
 def clean_text(text):
+    """:meta private:"""
     text = (
         text.str.lower()
         .str.replace(".", "", regex=False)

@@ -16,7 +16,7 @@ Find Similar Records
 ## ...     record_no=1,
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ...     database="main",
 ## ...     year_filter=(None, None),
 ## ...     cited_by_filter=(None, None),

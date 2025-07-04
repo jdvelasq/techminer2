@@ -7,5 +7,6 @@ General
 
     thesaurus.organizations.general.apply_thesaurus
     thesaurus.organizations.general.create_thesaurus
+    thesaurus.organizations.general.explode_keys
     thesaurus.organizations.general.integrity_check
     thesaurus.organizations.general.reduce_keys

@@ -5,5 +5,5 @@ Lotka law
     :maxdepth: 1
     :hidden:
 
-    database.metrics.lotka_law.chart
-    database.metrics.lotka_law.dataframe
+    database.metrics.lotka_law.data_frame
+    database.metrics.lotka_law.line_plot

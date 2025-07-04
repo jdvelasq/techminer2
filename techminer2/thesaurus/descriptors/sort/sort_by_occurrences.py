@@ -94,6 +94,7 @@ class SortByOccurrences(
 
 
 def sort_by_occurrences():
+    """:meta private:"""
     SortByOccurrences().where_root_directory_is("../").run()
 
 

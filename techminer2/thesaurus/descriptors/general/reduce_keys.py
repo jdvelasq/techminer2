@@ -67,6 +67,7 @@ class ReduceKeys(
 # SHORTCUTS
 # -----------------------------------------------------------------------------
 def reduce_keys():
+    """:meta private:"""
 
     from techminer2.thesaurus.descriptors import ReduceKeys  # type: ignore
 

@@ -13,3 +13,4 @@ Descriptors
     thesaurus.descriptors.remove
     thesaurus.descriptors.replace
     thesaurus.descriptors.sort
+    thesaurus.descriptors.translate

@@ -89,6 +89,7 @@ class ReplaceWord(
 # SHORTCUTS
 # -----------------------------------------------------------------------------
 def replace(replace, by):
+    """:meta private:"""
 
     from techminer2.thesaurus.descriptors import ReduceKeys  # type: ignore
     from techminer2.thesaurus.descriptors import ReplaceWord  # type: ignore

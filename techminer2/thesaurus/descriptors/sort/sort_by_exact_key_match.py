@@ -104,6 +104,7 @@ class SortByExactKeyMatch(
 # SHORTCUTS
 # -----------------------------------------------------------------------------
 def exactmatch(pattern):
+    """:meta private:"""
 
     SortByExactKeyMatch(pattern=pattern, root_directory="../").run()
 
@@ -114,6 +115,7 @@ def exactmatch(pattern):
 #
 #
 def create_argparser():
+    """:meta private:"""
 
     parser = argparse.ArgumentParser(
         description="Sort thesaurus file by exact key match."
