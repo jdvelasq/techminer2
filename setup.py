@@ -2,8 +2,6 @@
 
 from setuptools import find_packages, setup
 
-from post_install import PostInstallCommand
-
 setup(
     # cmdclass={"build_py": BuildPyCommand},
     name="techminer2",
@@ -43,9 +41,6 @@ setup(
         "wordcloud",
     ],
     packages=find_packages(),
-    cmdclass={
-        "install": PostInstallCommand,
-    },
     package_dir={"techminer2": "techminer2"},
     include_package_data=True,
     classifiers=[
