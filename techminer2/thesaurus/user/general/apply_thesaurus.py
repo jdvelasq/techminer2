@@ -42,7 +42,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database
-              File : example/thesaurus/descriptors.the.txt
+              File : example/data/thesaurus/descriptors.the.txt
       Source field : raw_descriptors
       Target field : descriptors_cleaned
       Thesaurus application completed successfully

@@ -35,18 +35,18 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-         File : example/thesaurus/countries.the.txt
+         File : example/data/thesaurus/countries.the.txt
       Pattern : Germ
       1 matching keys found
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Germany
           CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...

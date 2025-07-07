@@ -45,12 +45,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-                File : example/thesaurus/countries.the.txt
+                File : example/data/thesaurus/countries.the.txt
              Pattern : china
       Case sensitive : False
          Regex Flags : 0
@@ -59,7 +59,7 @@ Example:
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
     <BLANKLINE>
         China
           Cheung Kong Graduate School of Business, and Institute of Internet Financ...

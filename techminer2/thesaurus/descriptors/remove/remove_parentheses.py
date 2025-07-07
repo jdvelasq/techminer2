@@ -32,12 +32,12 @@ Example:
     >>> print(output)
     Removing parentheses from thesaurus keys
     <BLANKLINE>
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       6 removals made successfully
       Parentheses removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         CLASSIFICATION
           CLASSIFICATION (OF_INFORMATION)

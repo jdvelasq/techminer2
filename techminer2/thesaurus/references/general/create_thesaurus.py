@@ -27,14 +27,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus from 'global_references' field
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
       Creating main_documents data frame
       Creating references data frame
       62 keys found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
     <BLANKLINE>
         Alt R., 2018, ELECTRON MARK, V28, P235
           Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...

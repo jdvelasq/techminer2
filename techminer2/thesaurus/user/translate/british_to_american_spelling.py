@@ -37,12 +37,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Converting British to American English
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       12 replacements made successfully
     Translation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         ANALOG_PROCESSES
           ANALOGUE_PROCESSES

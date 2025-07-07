@@ -36,19 +36,19 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
       Keys reduced from 27 to 27
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by fuzzy match
-                File : example/thesaurus/references.the.txt
+                File : example/data/thesaurus/references.the.txt
            Keys like : ACCOU
       Match thresold : 50
       2 matching keys found
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
     <BLANKLINE>
         Cai C.W., 2018, ACCOUNT FINANC, V58, P965
           Cai C.W., Disruption of financial intermediation by FinTech: A review on ...

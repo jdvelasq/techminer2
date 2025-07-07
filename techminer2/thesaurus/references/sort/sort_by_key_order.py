@@ -37,16 +37,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
       Keys reduced from 27 to 27
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus alphabetically
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
     <BLANKLINE>
         Alt R., 2018, ELECTRON MARK, V28, P235
           Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...

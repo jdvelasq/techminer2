@@ -33,12 +33,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing initial determiner from thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       593 initial determiners removed successfully
       Initial determiner removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_THEORY
           A_A_THEORY

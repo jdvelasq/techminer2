@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Replace String 
+Replace String
 ===============================================================================
 
 ## >>> from techminer2.prepare.thesaurus.descriptors import replace_string
@@ -22,9 +22,9 @@ Replace String
 ## ...     replace_by='AI',
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ... )
---INFO-- The file example/thesaurus/descriptors.the.txt has been processed.
+--INFO-- The file example/data/thesaurus/descriptors.the.txt has been processed.
 
 """
 import os.path
@@ -34,7 +34,7 @@ import pandas as pd  # type: ignore
 
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
-THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 
 
 def replace_string(

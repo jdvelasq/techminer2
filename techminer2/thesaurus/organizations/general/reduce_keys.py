@@ -36,7 +36,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>

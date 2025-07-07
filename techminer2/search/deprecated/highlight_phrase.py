@@ -26,7 +26,7 @@ Highlight phrase
 ## ...     ),
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ... )
 they highlight the limited ADOPTION of REGULATORY_TECHNOLOGY (regtech)
 and electronic signatures in palestine's banking SECTOR, proposing the
@@ -53,7 +53,7 @@ from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 )
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 
 
 def highlight_phrase(

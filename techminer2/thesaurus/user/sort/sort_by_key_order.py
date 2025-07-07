@@ -39,16 +39,16 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus alphabetically
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         ACADEMIA
           ACADEMIA
@@ -83,16 +83,16 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by key length
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         CONTINUOUS_INTENTION_TO_USE_MOBILE_FINTECH_PAYMENT_SERVICES
           CONTINUOUS_INTENTION_TO_USE_MOBILE_FINTECH_PAYMENT_SERVICES
@@ -127,16 +127,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by word length
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         RESEARCH_LIMITATIONS/IMPLICATIONS
           RESEARCH_LIMITATIONS/IMPLICATIONS

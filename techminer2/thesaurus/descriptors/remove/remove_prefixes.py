@@ -31,13 +31,13 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing prefixes from thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
       189 prefixes removed successfully
       Prefix removal successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         ACADEMICS
           ACADEMICS; OTHER_ACADEMICS

@@ -21,7 +21,7 @@ from ....thesaurus._internals.load_thesaurus_as_mapping import (
 def internal__extract_country(params):
     #
     # Loads the thesaurus
-    thesaurus_path = os.path.join(root_dir, "thesaurus/countries.the.txt")
+    thesaurus_path = os.path.join(root_dir, "data/thesaurus/countries.the.txt")
     thesaurus = internal__load_thesaurus_as_mapping(thesaurus_path)
     names = list(thesaurus.keys())
 

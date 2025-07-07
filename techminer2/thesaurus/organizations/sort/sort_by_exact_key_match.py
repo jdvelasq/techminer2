@@ -44,12 +44,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-                File : example/thesaurus/organizations.the.txt
+                File : example/data/thesaurus/organizations.the.txt
              Pattern : Sch
       Case sensitive : False
          Regex Flags : 0
@@ -58,7 +58,7 @@ Example:
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
           CESifo, Poschingerstr. 5, Munich, 81679, Germany

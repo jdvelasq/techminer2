@@ -31,14 +31,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing common last words from thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
     <BLANKLINE>
       12 ending words removed successfully
       Common last words removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         AGRICULTURE
           AGRICULTURE; AGRICULTURE_PLAYS

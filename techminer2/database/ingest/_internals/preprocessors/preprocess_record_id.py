@@ -73,7 +73,7 @@ def internal__preprocess_record_id(root_dir):
     sys.stderr.write("INFO  Creating 'record_id' column\n")
     sys.stderr.flush()
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,

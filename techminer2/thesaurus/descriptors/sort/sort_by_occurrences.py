@@ -23,17 +23,10 @@ Example:
     >>> # Create the thesaurus
     >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
-    ## >>> # Configure and run the sorter
-    ## >>> sorter = (
-    ## ...     SortByOccurrences()
-    ## ...     .where_root_directory_is("example/")
-    ## ... )
-    ## >>> sorter.run()
-
     >>> # Configure and run the sorter
     >>> sorter = (
     ...     SortByOccurrences()
-    ...     .where_root_directory_is("../tm2_genai_en_analytics/")
+    ...     .where_root_directory_is("example/")
     ... )
     >>> sorter.run()
 
@@ -42,35 +35,36 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Reducing thesaurus keys
-      File : ../tm2_genai_en_analytics/thesaurus/descriptors.the.txt
-      Keys reduced from 8383 to 8383
+      File : example/data/thesaurus/descriptors.the.txt
+      Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by occurrences
-      File : ../tm2_genai_en_analytics/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : ../tm2_genai_en_analytics/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        LARGE_LANGUAGE_MODELS
-          ADVANCED_LARGE_LANGUAGE_MODELS; ADVANCED_LLMS; ALL_LLMS; AN_ADVANCED_LANG...
-        NATURAL_LANGUAGE_PROCESSING
-          ADVANCED_NATURAL_LANGUAGE_PROCESSING_MODELS; ADVANCED_NATURAL_LANGUAGE_PR...
-        SENTIMENT_ANALYSIS
-          ABSA; ACCURATE_SENTIMENT_ANALYSIS; ADVANCED_SENTIMENT_ANALYSIS; ASPECT_BA...
-        MODELS
-          ADVANCED_MODELS; ALL_MODELS; ALTERNATIVE_MODELS; A_HYBRID_MODEL; A_MODEL;...
-        GENERATIVE_ADVERSARIAL_NETWORKS
-          ADVANCED_GENERATIVE_ADVERSARIAL_NETWORKS; ALL_THE_PROPOSED_GAN_MODELS; AN...
-        GENERATIVE_ARTIFICIAL_INTELLIGENCE
-          ANALYZE_GENERATIVE_ARTIFICIAL_INTELLIGENCE; A_GAI; GAI; GAI_DIFFERS; GENA...
-        ARTIFICIAL_INTELLIGENCE
-          ADVANCED_AI; ADVANCED_AI_TECHNIQUE; ADVANCED_AI_TECHNIQUES; ADVANCED_ARTI...
-        DATA
-          ADDITIONAL_DATA; ADDRESS_DATA; ALL_THE_DATA; ANALYSE_DATA; ANALYZE_THESE_...
+        FINTECH
+          FINTECH; FINTECHS
+        FINANCE
+          FINANCE
+        INNOVATION
+          INNOVATION; INNOVATIONS
+        TECHNOLOGIES
+          TECHNOLOGIES; TECHNOLOGY
+        FINANCIAL_SERVICE
+          FINANCIAL_SERVICE; FINANCIAL_SERVICES
+        FINANCIAL_TECHNOLOGIES
+          FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY
+        BANKS
+          BANKS
+        THE_FINANCIAL_INDUSTRY
+          THE_FINANCIAL_INDUSTRY
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

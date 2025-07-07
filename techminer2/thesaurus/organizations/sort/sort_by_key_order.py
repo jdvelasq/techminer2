@@ -41,16 +41,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus alphabetically
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Anhui Univ of Finan and Econ (CHN)
           School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
@@ -96,16 +96,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by key length
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         The Res center of information technology & economic and social development of...
           The Research center of information technology & economic and social devel...
@@ -149,16 +149,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by word length
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Transport and Telecomunication Inst (LVA)
           Transport and Telecomunication Institute, Latvia

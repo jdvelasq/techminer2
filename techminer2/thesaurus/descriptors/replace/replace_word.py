@@ -36,14 +36,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing word in keys
-             File : example/thesaurus/descriptors.the.txt
+             File : ...e/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
       104 replacements made successfully
       Word replacing completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_EUROPEAN_OR_NATIONAL_fintech_MARKET
           A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET

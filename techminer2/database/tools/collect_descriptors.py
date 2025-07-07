@@ -12,9 +12,9 @@ Collect Descriptors
 
 Example:
     >>> from techminer2.database.tools import CollectDescriptors
-    >>> CollectDescriptors(root_directory="../tm2_health_analytics/").run()
+    >>> CollectDescriptors(root_directory="example/").run()
 
-    ## >>> CollectDescriptors(root_directory="example/").run()
+
 
 
 

@@ -37,7 +37,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database
-              File : example/thesaurus/organizations.the.txt
+              File : example/data/thesaurus/organizations.the.txt
       Source field : affiliations
       Target field : organizations
       Thesaurus application completed successfully

@@ -42,12 +42,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-                File : example/thesaurus/demo.the.txt
+                File : example/data/thesaurus/demo.the.txt
              Pattern : BUSINESS
       Case sensitive : False
          Regex Flags : 0
@@ -56,7 +56,7 @@ Example:
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         AGRIBUSINESS
           AGRIBUSINESS

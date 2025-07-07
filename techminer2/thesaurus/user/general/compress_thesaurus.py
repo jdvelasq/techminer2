@@ -39,7 +39,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
     Compressing thesaurus keys
-                      File : example/thesaurus/demo.the.txt
+                      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys compressing completed successfully
     <BLANKLINE>

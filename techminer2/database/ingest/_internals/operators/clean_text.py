@@ -23,7 +23,7 @@ def internal__clean_text(
 ):
     """:meta private:"""
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,

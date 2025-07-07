@@ -34,12 +34,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +NORMALIZE_WHITESPACE
     Cleanup Thesaurus
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       21 replacements made successfully
     Cleanup completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         *GEOGRAPHIC_REGIONS*
           AUSTRALIA_AND_NEW_ZEALAND; BRAZIL; CHINA; EUROPE; GERMANY; INDONESIA; KEN...

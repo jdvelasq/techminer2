@@ -42,18 +42,18 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by word match
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Word : Bank
       2 matching keys found
       Thesaurus sorting by word match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Fed Reserv Bank of Chicago (USA)
           Federal Reserve Bank of Chicago, Chicago, IL, United States; Federal Rese...

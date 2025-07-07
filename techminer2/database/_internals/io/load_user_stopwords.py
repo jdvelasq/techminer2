@@ -9,7 +9,7 @@ from .get_database_file_path import internal__get_database_file_path
 def internal__load_user_stopwords(params):
     """:meta private:"""
 
-    file_path = pathlib.Path(params.root_directory) / "my_keywords" / "stopwords.txt"
+    file_path = pathlib.Path(params.root_directory) / "data/my_keywords/stopwords.txt"
 
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"The file '{file_path}' does not exist.")

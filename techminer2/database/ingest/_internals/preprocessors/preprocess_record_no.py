@@ -14,7 +14,7 @@ def internal__preprocess_record_no(root_dir):
     sys.stderr.write("INFO  Assign 'record_no' identifier to each record\n")
     sys.stderr.flush()
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,

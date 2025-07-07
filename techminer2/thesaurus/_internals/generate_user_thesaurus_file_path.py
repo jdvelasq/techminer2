@@ -13,4 +13,6 @@ import pathlib
 def internal__generate_user_thesaurus_file_path(params):
     """:meta private:"""
 
-    return pathlib.Path(params.root_directory) / "thesaurus" / params.thesaurus_file
+    return (
+        pathlib.Path(params.root_directory) / "data/thesaurus" / params.thesaurus_file
+    )

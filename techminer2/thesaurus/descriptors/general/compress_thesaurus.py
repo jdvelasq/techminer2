@@ -32,8 +32,8 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Compressing thesaurus keys
-                      File : example/thesaurus/descriptors.the.txt
-      Keys reduced from 1341 to 1341
+                      File : example/data/thesaurus/descriptors.the.txt
+      Keys reduced from 1716 to 1716
       Keys compressing completed successfully
     <BLANKLINE>
     <BLANKLINE>

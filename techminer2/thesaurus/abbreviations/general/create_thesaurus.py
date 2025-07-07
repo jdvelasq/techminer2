@@ -33,7 +33,7 @@ Example:
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/abbreviations.the.txt
+      File : example/data/thesaurus/abbreviations.the.txt
     <BLANKLINE>
         DEMATEL
           ... CRITERIA is constructed and both the DECISION_MAKING_TRIAL_AND_EVALUA...

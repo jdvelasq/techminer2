@@ -16,9 +16,9 @@ Text Clumping
 ## ...     text="FINTECH",
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ... )
---INFO-- The thesaurus example/thesaurus/descriptors.the.txt was rewritten.
+--INFO-- The thesaurus example/data/thesaurus/descriptors.the.txt was rewritten.
 
 """
 import os.path
@@ -29,7 +29,7 @@ from nltk.stem import PorterStemmer  # type: ignore
 
 from .._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
-THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 
 
 def text_clumping(

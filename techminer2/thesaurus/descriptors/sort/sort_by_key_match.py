@@ -39,12 +39,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-                File : example/thesaurus/descriptors.the.txt
+                File : example/data/thesaurus/descriptors.the.txt
              Pattern : BLOCK
       Case sensitive : False
          Regex Flags : 0
@@ -53,7 +53,7 @@ Example:
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY

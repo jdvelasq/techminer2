@@ -21,7 +21,7 @@ def internal__preprocess_local_citations(root_dir):
     sys.stderr.flush()
 
     dataframe = pd.read_csv(
-        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        pathlib.Path(root_dir) / "data/processed/database.csv.zip",
         encoding="utf-8",
         compression="zip",
         low_memory=False,
@@ -45,7 +45,7 @@ def internal__preprocess_local_citations(root_dir):
 
     # finish
     dataframe.to_csv(
-        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        pathlib.Path(root_dir) / "data/processed/database.csv.zip",
         sep=",",
         encoding="utf-8",
         index=False,

@@ -18,7 +18,7 @@ from ....._internals.log_message import internal__log_message
 
 def _get_sources_info(root_dir):
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
     database = pd.read_csv(
         database_file,
         encoding="utf-8",
@@ -37,7 +37,7 @@ def internal__preprocess_references(root_dir):
 
     abbrs = _get_sources_info(root_dir)
 
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,

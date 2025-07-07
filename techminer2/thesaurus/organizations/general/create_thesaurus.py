@@ -32,12 +32,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus from 'affiliations' field
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       90 keys found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         [UKN] Brussels, Belgium (BEL)
           Brussels, Belgium

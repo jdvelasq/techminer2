@@ -35,12 +35,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
     Converting American to British English
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       21 replacements made successfully
     Translation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_COMPLETE_GENERALISATION
           A_COMPLETE_GENERALIZATION

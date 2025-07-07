@@ -28,12 +28,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus from 'affiliations' field
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       24 keys found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Australia
           Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...

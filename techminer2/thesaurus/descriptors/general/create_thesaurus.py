@@ -32,12 +32,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Creating thesaurus from 'raw_descriptors' field
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       1729 keys found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_A_THEORY
           A_A_THEORY

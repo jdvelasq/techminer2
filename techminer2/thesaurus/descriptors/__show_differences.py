@@ -11,10 +11,10 @@ Show Differences
 ===============================================================================
 
 ## >>> from techminer2.prepare.thesaurus.descriptors import show_differences
-## >>> show_differences(  
+## >>> show_differences(
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ... )
 --INFO-- The example/thesaurus/_changes_.the.txt has been generated.
 
@@ -31,7 +31,7 @@ from .._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
 )
 
-USER_THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+USER_THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 RAW_THESAURUS_FILE = "thesaurus/_descriptors_.the.txt"
 
 tqdm.pandas()

@@ -19,7 +19,7 @@ Find Similar Phrases
 ## ...     top_n=3,
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ...     database="main",
 ## ...     year_filter=(None, None),
 ## ...     cited_by_filter=(None, None),
@@ -65,7 +65,7 @@ from ..thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 from .deprecated.extract_descriptors_from_text import extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 79
-THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 
 
 def find_similar_phrases(

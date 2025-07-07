@@ -37,18 +37,18 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-         File : example/thesaurus/organizations.the.txt
+         File : example/data/thesaurus/organizations.the.txt
       Pattern : (AUS)
       4 matching keys found
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Cent for Law (AUS)
           Centre for Law, Markets & Regulation, UNSW Australia, Australia

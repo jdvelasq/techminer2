@@ -21,8 +21,8 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Copy the abbreviations file
-    >>> shutil.copy("example/abbreviations.the.txt", "example/thesaurus/abbreviations.the.txt")
-    'example/thesaurus/abbreviations.the.txt'
+    >>> shutil.copy("example/abbreviations.the.txt", "example/data/thesaurus/abbreviations.the.txt")
+    'example/data/thesaurus/abbreviations.the.txt'
 
     >>> # Create thesaurus
     >>> CreateThesaurus(root_directory="example/", quiet=True).run()
@@ -36,13 +36,13 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing abbreviations in keys
-          Thesaurus : example/thesaurus/descriptors.the.txt
-      Abbreviations : example/thesaurus/abbreviations.the.txt
+          Thesaurus : ...e/data/thesaurus/descriptors.the.txt
+      Abbreviations : ...data/thesaurus/abbreviations.the.txt
       131 replacements made successfully
       Abbreviations replacement completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_EUROPEAN_OR_NATIONAL_FINANCIAL_TECHNOLOGY_MARKET
           A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET

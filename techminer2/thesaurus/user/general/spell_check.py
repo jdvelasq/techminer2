@@ -40,7 +40,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Spell checking thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Potential misspelled words (71):
     <BLANKLINE>
         - affordance
@@ -59,7 +59,7 @@ Example:
       Spell checking completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
@@ -95,7 +95,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Spell checking thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Potential misspelled words (71):
     <BLANKLINE>
         - affordance
@@ -114,7 +114,7 @@ Example:
       Spell checking completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE

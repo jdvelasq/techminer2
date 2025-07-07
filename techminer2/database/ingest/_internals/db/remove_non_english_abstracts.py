@@ -16,7 +16,7 @@ def internal__remove_non_english_abstracts(root_dir):
     sys.stderr.write("INFO  Removing non-english abstracts\n")
     sys.stderr.flush()
 
-    raw_dir = os.path.join(root_dir, "raw-data")
+    raw_dir = os.path.join(root_dir, "data/raw/")
     folders = internal__get_subdirectories(raw_dir)
     for folder in folders:
         csv_files = os.listdir(os.path.join(raw_dir, folder))

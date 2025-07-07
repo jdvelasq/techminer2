@@ -40,14 +40,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing starting word in keys
-             File : example/thesaurus/demo.the.txt
+             File : example/data/thesaurus/demo.the.txt
              Word : BUSINESS
       Replacement : business
       8 replacements made successfully
       Word replacing completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         business
           BUSINESS; BUSINESSES

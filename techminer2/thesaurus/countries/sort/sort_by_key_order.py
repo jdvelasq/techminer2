@@ -35,16 +35,16 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus alphabetically
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Australia
           Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
@@ -71,16 +71,16 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by key length
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Brunei Darussalam
           Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
@@ -108,16 +108,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by word length
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/countries.the.txt
+      File : example/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Netherlands
           Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...

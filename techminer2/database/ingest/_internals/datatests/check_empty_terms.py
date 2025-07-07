@@ -18,7 +18,7 @@ def internal__check_empty_terms(
 ):
     """:meta private:"""
 
-    database_file = pathlib.Path(root_directory) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_directory) / "data/processed/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,

@@ -40,18 +40,18 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by word match
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Word : BUSINESS
       19 matching keys found
       Thesaurus sorting by word match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         BUSINESS
           BUSINESS; BUSINESSES

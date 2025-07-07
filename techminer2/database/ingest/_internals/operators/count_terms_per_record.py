@@ -19,7 +19,7 @@ def internal__count_terms_per_record(
     # DATABASE PARAMS:
     root_dir,
 ):
-    database_file = pathlib.Path(root_dir) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,

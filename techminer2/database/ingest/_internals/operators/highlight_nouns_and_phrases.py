@@ -56,7 +56,7 @@ def prepare_dest_field(dataframe, source, dest):
 # ------------------------------------------------------------------------------
 def collect_all_keywords(root_directory):
 
-    database_file = pathlib.Path(root_directory) / "databases/database.csv.zip"
+    database_file = pathlib.Path(root_directory) / "data/processed/database.csv.zip"
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",
@@ -362,7 +362,9 @@ def report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
 
     undetected_keywords = [word for word in undetected_keywords if len(word) < 100]
 
-    file_path = pathlib.Path(root_directory) / "my_keywords/undetected_keywords.txt"
+    file_path = (
+        pathlib.Path(root_directory) / "data/my_keywords/undetected_keywords.txt"
+    )
 
     # if file exists, open and load the content as a list
     if file_path.exists():

@@ -39,19 +39,19 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by fuzzy match
-                File : example/thesaurus/demo.the.txt
+                File : example/data/thesaurus/demo.the.txt
            Keys like : INTELL
       Match thresold : 70
       3 matching keys found
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/demo.the.txt
+      File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
         ARTIFICIAL_INTELLIGENCE
           ARTIFICIAL_INTELLIGENCE

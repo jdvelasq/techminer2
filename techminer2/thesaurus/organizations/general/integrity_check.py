@@ -33,7 +33,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Thesaurus integrity check
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       106 terms checked
       Integrity check completed successfully
     <BLANKLINE>

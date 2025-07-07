@@ -19,7 +19,7 @@ from .get_subdirectories import internal__get_subdirectories
 def list_zip_filenames_in_raw_data(root_dir):
     """:meta private:"""
 
-    raw_dir = os.path.join(root_dir, "raw-data")
+    raw_dir = os.path.join(root_dir, "data/raw/")
     folders = internal__get_subdirectories(raw_dir)
     files = []
 
@@ -89,7 +89,7 @@ def internal__load_raw_files(root_dir):
     os.environ["TQDM_DISABLE"] = "True" if len(dataframe) < 500 else "False"
 
     dataframe.to_csv(
-        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        pathlib.Path(root_dir) / "data/processed/database.csv.zip",
         sep=",",
         encoding="utf-8",
         index=False,

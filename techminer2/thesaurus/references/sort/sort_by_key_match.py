@@ -34,12 +34,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
       Keys reduced from 27 to 27
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus file by key match
-                File : example/thesaurus/references.the.txt
+                File : example/data/thesaurus/references.the.txt
              Pattern : ECON
       Case sensitive : False
          Regex Flags : 0
@@ -48,7 +48,7 @@ Example:
       Thesaurus sorting by key match completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/references.the.txt
+      File : example/data/thesaurus/references.the.txt
     <BLANKLINE>
         Anagnostopoulos I., 2018, J ECON BUS, V100, P7
           Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...

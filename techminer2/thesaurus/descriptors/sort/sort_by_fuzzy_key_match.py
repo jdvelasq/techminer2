@@ -37,19 +37,19 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       Keys reduced from 1729 to 1729
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by fuzzy match
-                File : example/thesaurus/descriptors.the.txt
+                File : example/data/thesaurus/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
       91 matching keys found
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_DISINTERMEDIATION_FORCE
           A_DISINTERMEDIATION_FORCE

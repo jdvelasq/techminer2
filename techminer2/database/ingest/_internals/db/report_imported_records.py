@@ -12,7 +12,7 @@ def internal__report_imported_records(root_dir):
     """:meta private:"""
 
     dataframe = pd.read_csv(
-        pathlib.Path(root_dir) / "databases/database.csv.zip",
+        pathlib.Path(root_dir) / "data/processed/database.csv.zip",
         encoding="utf-8",
         compression="zip",
         low_memory=False,

@@ -34,12 +34,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Transforming hyphenated words in thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       49 hypenated words transformed successfully
       Hyphenated words transformation completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_FINTECH_ECO_SYSTEM
           A_FINTECH_ECOSYSTEM

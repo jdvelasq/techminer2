@@ -31,12 +31,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing starting stopwords from thesaurus keys
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
       548 initial stopwords removed successfully
       Starting stopwords removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/descriptors.the.txt
+      File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         ACADEMIC_FINANCE_COMMUNITY
           THE_ACADEMIC_FINANCE_COMMUNITY

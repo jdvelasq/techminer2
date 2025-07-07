@@ -6,11 +6,9 @@ import sys
 from ....._internals.log_message import internal__log_message
 
 PROJECT_DIRECTORIES = [
-    "databases",
-    "my_keywords",
-    "reports",
-    "rules",
-    "thesaurus",
+    "data",
+    "outputs",
+    "src",
 ]
 
 
@@ -31,35 +29,49 @@ def internal__create_project_structure(root_dir):
     """Create project working subdirectories.
 
     +-- root_dir/
-        +-- raw-data/
-        |   +-- cited_by/
-        |   +-- main/
-        |   +-- references/
-        +-- databases/
-        +-- my_keywords/
-        +-- my_keywords/stopwords.txt
-        +-- reports/
-        +-- rules/
-        +-- thesaurus/
+        +-- data/
+        |   +-- scopus/
+        |   +-- raw/
+        |   |   +-- cited_by/
+        |   |   +-- main/
+        |   |   +-- references/
+        |   +-- processed/
+        |   +-- my_keywords/
+        |   +-- my_keywords/stopwords.txt
+        |   +-- thesaurus/
+        +-- outputs/
+        |   +-- tables/
+        |   +-- figures/
+        |   +-- texts/
+        +-- src/
 
     """
 
     # Create working directories
     sys.stderr.write("INFO  Creating working directories\n")
     sys.stderr.flush()
-    for directory in PROJECT_DIRECTORIES:
-        create_directory(os.path.join(root_dir, directory))
 
-    # Create cleaining thesaurus files
-    create_file(os.path.join(root_dir, "rules/countries.the.txt"))
-    create_file(os.path.join(root_dir, "rules/descriptors.the.txt"))
-    create_file(os.path.join(root_dir, "rules/organizations.the.txt"))
-    create_file(os.path.join(root_dir, "rules/references.the.txt"))
+    create_directory(os.path.join(root_dir, "data"))
 
-    # Create stopwords.txt file
-    sys.stderr.write("INFO  Creating stopwords.txt file\n")
+    create_directory(os.path.join(root_dir, "data/scopus"))
+    create_directory(os.path.join(root_dir, "data/raw"))
+    create_directory(os.path.join(root_dir, "data/raw/cited_by"))
+    create_directory(os.path.join(root_dir, "data/raw/main"))
+    create_directory(os.path.join(root_dir, "data/raw/references"))
+
+    create_directory(os.path.join(root_dir, "data/processed"))
+    create_file(os.path.join(root_dir, "data/processed/_do_not_touch_.txt"))
+    create_directory(os.path.join(root_dir, "data/my_keywords"))
+    create_file(os.path.join(root_dir, "data/my_keywords/stopwords.txt"))
+    create_directory(os.path.join(root_dir, "data/thesaurus"))
+
+    create_directory(os.path.join(root_dir, "outputs"))
+    create_directory(os.path.join(root_dir, "outputs/tables"))
+    create_directory(os.path.join(root_dir, "outputs/figures"))
+    create_directory(os.path.join(root_dir, "outputs/texts"))
+
+    create_directory(os.path.join(root_dir, "src"))
+
     sys.stderr.flush()
-    create_file(os.path.join(root_dir, "my_keywords/stopwords.txt"))
 
     # Create _DO_NOT_TOUCH_.txt file
-    create_file(os.path.join(root_dir, "databases/_DO_NOT_TOUCH_.txt"))

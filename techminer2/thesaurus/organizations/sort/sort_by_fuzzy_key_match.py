@@ -41,19 +41,19 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by fuzzy match
-                File : example/thesaurus/organizations.the.txt
+                File : example/data/thesaurus/organizations.the.txt
            Keys like : Texas
       Match thresold : 70
       3 matching keys found
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/thesaurus/organizations.the.txt
+      File : example/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Texas AandM Univ Sch of Law (USA)
           Texas AandM University School of Law, United States

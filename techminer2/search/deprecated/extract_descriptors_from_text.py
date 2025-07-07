@@ -26,7 +26,7 @@ Extract Descriptors from Text
 ## ...     ),
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ... ) # doctest: +ELLIPSIS
 ['ADOPTION', 'ARTIFICIAL_INTELLIGENCE', 'FINANCE', ...
 
@@ -42,7 +42,7 @@ from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import (
 )
 
 TEXTWRAP_WIDTH = 73
-THESAURUS_FILE = "thesaurus/descriptors.the.txt"
+THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"
 
 
 def extract_descriptors_from_text(
