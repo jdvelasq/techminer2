@@ -34,15 +34,15 @@ Example:
     ...     .run()
     ... ).head()
 
-
     >>> # Display the resulting data frame
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
-                    0              1                       2
+                       0              1                       2
     0  Zavolokina L. 1:3  Gomber P. 1:7         Jagtiani J. 1:2
     1       Gabor D. 1:2     Lee I. 1:2  Anagnostopoulos I. 1:1
     2      Ryu H.-S. 1:2   Leong C. 1:2
-    3         Alt R. 1:1  Chen L./1 1:1
+    3         Alt R. 1:1    Chen L. 1:1
     4         Gai K. 1:1  Gozman D. 1:1
+
 
 
 """
