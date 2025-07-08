@@ -58,18 +58,23 @@ Example:
     ... )
     >>> import pprint
     >>> pprint.pprint(mapping)  # doctest: +ELLIPSIS
-    {0: ['Anagnostopoulos I., 2018, J ECON BUS, V100, P7',
-         'Das S.R., 2019, FINANC MANAGE, V48, P981',
-         'Haddad C., 2019, SMALL BUS ECON, V53, P81',
-         'Lee I., 2018, BUS HORIZ, V61, P35',
+    {0: ['Alt R., 2018, ELECTRON MARK, V28, P235',
+         'Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373',
+         'Cai C.W., 2018, ACCOUNT FINANC, V58, P965',
+         'Chen L., 2016, CHINA ECON J, V9, P225',
+         'Deng X., 2019, SUSTAINABILITY, V11',
+         'Dorfleitner G., 2017, FINTECH IN GER, P1',
+         'Du W.D., 2019, J STRATEGIC INFORM SYST, V28, P50',
+         'Gai K., 2017, LECT NOTES COMPUT SCI, V10135 LNCS, P236',
+         'Gimpel H., 2018, ELECTRON MARK, V28, P245',
+         'Goldstein I., 2019, REV FINANC STUD, V32, P1647',
+         'Gomber P., 2017, J BUS ECON, V87, P537',
          'Leong C., 2017, INT J INF MANAGE, V37, P92',
          'Magnuson W., 2018, VANDERBILT LAW REV, V71, P1167',
-         'Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69'],
-     1: ['Anshari M., 2019, ENERGY PROCEDIA, V156, P234',
-         'Deng X., 2019, SUSTAINABILITY, V11, FINTECH AND SUSTAINABLE DEVEL',
-         'Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411',
-         'Jagtiani J., 2018, J ECON BUS, V100, P43',
-    ...
+         'Shim Y., 2016, TELECOMMUN POLICY, V40, P168'],
+     1: ['Belanche D., 2019, IND MANAGE DATA SYS, V119, P1411',
+     ...
+
 
 
 """
