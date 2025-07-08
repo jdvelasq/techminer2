@@ -32,7 +32,7 @@ Example:
     >>> print(output)
     Removing starting stopwords from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      548 initial stopwords removed successfully
+      551 initial stopwords removed successfully
       Starting stopwords removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
