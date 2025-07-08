@@ -46,7 +46,7 @@ Example:
      'TC': 258,
      'TI': 'The emergence of the global fintech market: economic and technological '
            'determinants',
-     'UT': 1251}
+     'UT': 26}
 
 
 """
