@@ -40,7 +40,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus alphabetically
@@ -84,7 +84,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by key length
@@ -128,7 +128,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by word length
@@ -138,6 +138,8 @@ Example:
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
     <BLANKLINE>
+        DESIGN/METHODOLOGY/APPROACH
+          DESIGN/METHODOLOGY/APPROACH
         RESEARCH_LIMITATIONS/IMPLICATIONS
           RESEARCH_LIMITATIONS/IMPLICATIONS
         COMPETITION (ECONOMICS)
@@ -152,8 +154,6 @@ Example:
           THE_RECONCEPTUALIZATION
         CLASSIFICATION (OF_INFORMATION)
           CLASSIFICATION (OF_INFORMATION)
-        EXPLORE_INTERRELATIONSHIPS
-          EXPLORE_INTERRELATIONSHIPS
     <BLANKLINE>
     <BLANKLINE>
 
