@@ -45,14 +45,15 @@ Example:
     ...         )
     ...     ).head()
     ... ) # doctest: +ELLIPSIS
-                           abbr_source_title  ...  year
-    934              Int. J. Appl. Eng. Res.  ...  2016
-    935                    Telecommun Policy  ...  2016
-    1031                      China Econ. J.  ...  2016
-    1059  Contemp. Stud. Econ. Financ. Anal.  ...  2016
-    1075                    New Polit. Econ.  ...  2017
+                        abbr_source_title  ...  year
+    0             Int. J. Appl. Eng. Res.  ...  2016
+    1                   Telecommun Policy  ...  2016
+    3                      China Econ. J.  ...  2016
+    4  Contemp. Stud. Econ. Financ. Anal.  ...  2016
+    5                    New Polit. Econ.  ...  2017
     <BLANKLINE>
-    [5 rows x 75 columns]
+    [5 rows x 79 columns]
+
 
 
 
