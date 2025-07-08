@@ -34,7 +34,7 @@ Example:
     >>> print(output)
     Removing initial determiner from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      593 initial determiners removed successfully
+      595 initial determiners removed successfully
       Initial determiner removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
