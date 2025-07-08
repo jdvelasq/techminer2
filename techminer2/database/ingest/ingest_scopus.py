@@ -7,7 +7,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Import Scopus Data
+Ingest Scopus
 ===============================================================================
 # doctest: +SKIP
 
@@ -15,12 +15,12 @@ Example:
     >>> # Command line interface
     >>> # python3 -m techminer2.database.ingest.import_scopus_data
 
-    >>> from techminer2.database.ingest import ImportScopusData
-    >>> ImportScopusData(root_directory="example/").run() # doctest: +ELLIPSIS
+    >>> from techminer2.database.ingest import IngestScopus
+    >>> IngestScopus(root_directory="example/").run() # doctest: +ELLIPSIS +SKIP
 
-
-    # >>> ImportScopusData(root_directory="../tm2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
-    # >>> ImportScopusData(root_directory="../tm2_karla_marzo_2025/").run() # doctest: +ELLIPSIS
+    >>> # Additional test cases
+    >>> # IngestScopus(root_directory="../tm2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
+    >>> # IngestScopus(root_directory="../tm2_karla_marzo_2025/").run() # doctest: +ELLIPSIS
 
 
 """
@@ -80,7 +80,7 @@ from ._internals.preprocessors import (  # type: ignore
 )
 
 
-class ImportScopusData(
+class IngestScopus(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -236,4 +236,4 @@ class ImportScopusData(
 
 if __name__ == "__main__":
 
-    ImportScopusData(root_directory="./").run()
+    IngestScopus(root_directory="./").run()
