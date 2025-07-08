@@ -36,7 +36,7 @@ Example:
     31
 
     >>> print(docs[0])
-    UT 1251
+    UT 26
     AR Haddad C., 2019, SMALL BUS ECON, V53, P81
     TI The emergence of the global fintech market: economic and technological
        determinants
@@ -49,6 +49,7 @@ Example:
        FINANCIAL_TECHNOLOGY ( FINTECH )
     DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
     <BLANKLINE>
+
 
 """
 from ..._internals.mixins import ParamsMixin, RecordViewerMixin
