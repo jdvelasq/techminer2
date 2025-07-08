@@ -44,9 +44,11 @@ Example:
                                     authors  num_authors_test
     0  Kim Y.; Choi J.; Park Y.-J.; Yeon J.                 4
     1                   Shim Y.; Shin D.-H.                 2
-    2                             Chen L./1                 1
+    2                               Chen L.                 1
     3              Romanova I.; Kudinska M.                 2
     4                   Gabor D.; Brooks S.                 2
+
+
 
     >>> # Deletes the field
     >>> DeleteFieldOperator(
