@@ -35,6 +35,8 @@ from .preprocess_raw_document_title_nouns_and_phrases import (
 from .preprocess_raw_index_keywords import internal__preprocess_raw_index_keywords
 from .preprocess_raw_keywords import internal__preprocess_raw_keywords
 from .preprocess_raw_nouns_and_phrases import internal__preprocess_raw_noun_and_phrases
+from .preprocess_raw_spacy_phrases import internal__preprocess_raw_spacy_phrases
+from .preprocess_raw_textblob_phrases import internal__preprocess_raw_textblob_phrases
 from .preprocess_record_id import internal__preprocess_record_id
 from .preprocess_record_no import internal__preprocess_record_no
 from .preprocess_references import internal__preprocess_references
@@ -47,8 +49,8 @@ __all__ = [
     "internal__preprocess_abstract",
     "internal__preprocess_author_keywords",
     "internal__preprocess_author_names",
-    "internal__preprocess_authors",
     "internal__preprocess_authors_id",
+    "internal__preprocess_authors",
     "internal__preprocess_countries",
     "internal__preprocess_descriptors",
     "internal__preprocess_document_title",
@@ -72,6 +74,8 @@ __all__ = [
     "internal__preprocess_raw_index_keywords",
     "internal__preprocess_raw_keywords",
     "internal__preprocess_raw_noun_and_phrases",
+    "internal__preprocess_raw_spacy_phrases",
+    "internal__preprocess_raw_textblob_phrases",
     "internal__preprocess_record_id",
     "internal__preprocess_record_no",
     "internal__preprocess_references",
