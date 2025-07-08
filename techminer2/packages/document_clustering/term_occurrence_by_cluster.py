@@ -60,28 +60,28 @@ Example:
 
     >>> # Display the resulting data frame
     >>> print(df)  # doctest: +NORMALIZE_WHITESPACE
-    cluster                                0   1  2  3  4  5  6  7
+    cluster                                 0  1  2  3  4  5  6  7
     raw_keywords
-    FINTECH 32:5393                        1  23  1  2  1  1  0  3
-    FINANCE 11:1950                        4   3  0  1  1  1  1  0
-    INNOVATION 08:0990                     0   4  0  4  0  0  0  0
-    FINANCIAL_SERVICES 05:0746             0   2  0  3  0  0  0  0
-    FINANCIAL_SERVICE 04:1036              1   0  0  1  0  1  1  0
-    BUSINESS_MODELS 03:1335                0   2  0  0  0  0  1  0
-    BLOCKCHAIN 03:0881                     0   2  0  0  0  0  1  0
-    COMMERCE 03:0846                       1   1  0  0  0  0  1  0
-    FINANCIAL_INCLUSION 03:0590            0   2  1  0  0  0  0  0
-    FINANCIAL_INSTITUTION 03:0488          0   2  0  1  0  0  0  0
-    SURVEYS 03:0484                        0   2  0  0  0  1  0  0
-    FINANCIAL_TECHNOLOGY 03:0461           1   2  0  0  0  0  0  0
-    BANKING 03:0370                        0   0  0  3  0  0  0  0
-    CROWDFUNDING 03:0335                   1   2  0  0  0  0  0  0
-    MARKETPLACE_LENDING 03:0317            0   0  0  0  0  0  0  3
-    ELECTRONIC_MONEY 03:0305               1   1  0  1  0  0  0  0
-    SUSTAINABILITY 03:0227                 3   0  0  0  0  0  0  0
-    SUSTAINABLE_DEVELOPMENT 03:0227        3   0  0  0  0  0  0  0
-    FINANCIAL_SERVICES_INDUSTRIES 02:0696  1   0  0  0  0  0  1  0
-    LITERATURE_REVIEW 02:0560              1   1  0  0  0  0  0  0
+    FINTECH 32:5393                        26  1  0  1  1  2  1  0
+    FINANCE 11:1950                         4  1  1  0  3  0  1  1
+    INNOVATION 08:0990                      5  0  0  0  1  2  0  0
+    FINANCIAL_SERVICES 05:0746              4  0  0  0  1  0  0  0
+    FINANCIAL_SERVICE 04:1036               0  1  0  0  2  0  0  1
+    BUSINESS_MODELS 03:1335                 2  0  0  0  0  0  0  1
+    BLOCKCHAIN 03:0881                      2  0  0  0  0  0  0  1
+    COMMERCE 03:0846                        1  0  1  0  0  0  0  1
+    FINANCIAL_INCLUSION 03:0590             2  0  0  1  0  0  0  0
+    FINANCIAL_INSTITUTION 03:0488           3  0  0  0  0  0  0  0
+    SURVEYS 03:0484                         2  1  0  0  0  0  0  0
+    FINANCIAL_TECHNOLOGY 03:0461            2  0  1  0  0  0  0  0
+    BANKING 03:0370                         3  0  0  0  0  0  0  0
+    CROWDFUNDING 03:0335                    2  0  1  0  0  0  0  0
+    MARKETPLACE_LENDING 03:0317             3  0  0  0  0  0  0  0
+    ELECTRONIC_MONEY 03:0305                2  0  0  0  1  0  0  0
+    SUSTAINABILITY 03:0227                  0  0  3  0  0  0  0  0
+    SUSTAINABLE_DEVELOPMENT 03:0227         0  0  3  0  0  0  0  0
+    FINANCIAL_SERVICES_INDUSTRIES 02:0696   0  0  0  0  1  0  0  1
+    LITERATURE_REVIEW 02:0560               1  0  1  0  0  0  0  0
 
 
 
