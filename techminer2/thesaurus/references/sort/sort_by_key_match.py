@@ -54,7 +54,7 @@ Example:
           Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...
         Buchak G., 2018, J FINANC ECON, V130, P453
           Buchak G., Matvos G., Piskorski T., Seru A., Fintech, regulatory arbitrag...
-        Chen L./1, 2016, CHINA ECON J, V9, P225
+        Chen L., 2016, CHINA ECON J, V9, P225
           Chen L., From Fintech to Finlife: The case of Fintech development in Chin...
         Gabor D., 2017, NEW POLIT ECON, V22, P423
           Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
@@ -68,6 +68,7 @@ Example:
           Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 
