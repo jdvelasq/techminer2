@@ -26,8 +26,7 @@ vscode-extension/*.vsix
 
 # Files generated automatically
 docs_source/source/
-docs_source/_source/
-docs_source/_generated/
+
 
 # Ignore results generated during development
 example/data/
@@ -174,4 +173,6 @@ dmypy.json
 
 
 
-/docs_source/_generated
+
+
+docs_source/_generated/px.packages.networks.coupling.authors.network_plot.html
