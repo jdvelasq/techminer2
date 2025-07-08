@@ -40,24 +40,25 @@ Example:
     ... )
     >>> from pprint import pprint
     >>> pprint(mapping)
-    {0: ['FINTECH 44:6942',
-         'FINANCE 21:3481',
-         'INNOVATION 15:2741',
-         'TECHNOLOGIES 15:1810',
-         'FINANCIAL_TECHNOLOGIES 14:2005',
-         'THE_FINANCIAL_INDUSTRY 09:2006',
-         'THE_DEVELOPMENT 08:1173',
+    {0: ['FINANCIAL_TECHNOLOGIES 14:2005',
+         'FINANCIAL_SERVICE 12:2100',
+         'THE_DEVELOPMENT 09:1293',
          'REGULATORS 08:0974',
-         'BANKING 07:0851',
-         'THE_IMPACT 06:0908',
-         'CHINA 06:0673'],
-     1: ['FINANCIAL_SERVICE 12:2100',
          'SERVICES 07:1226',
+         'BANKING 07:0851',
          'INVESTMENT 06:1294',
          'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237',
-         'BUSINESS_MODEL 05:1578',
-         'BLOCKCHAIN 05:1180'],
+         'PRACTITIONER 06:1194',
+         'BUSINESS_MODEL 05:1578'],
+     1: ['FINTECH 44:6942',
+         'FINANCE 21:3481',
+         'TECHNOLOGIES 17:1943',
+         'INNOVATION 15:2741',
+         'THE_FINANCIAL_INDUSTRY 09:2006',
+         'THE_IMPACT 06:0908',
+         'CHINA 06:0673'],
      2: ['BANKS 09:1133', 'DATA 07:1086', 'CONSUMERS 07:0925']}
+
 
 
 
