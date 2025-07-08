@@ -45,18 +45,17 @@ Example:
 
     >>> # Display the resulting data frame
     >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE
-                                     0                                        1                  2
-    0                  FINTECH 44:6942                FINANCIAL_SERVICE 12:2100      BANKS 09:1133
-    1                  FINANCE 21:3481                         SERVICES 07:1226       DATA 07:1086
-    2               INNOVATION 15:2741                       INVESTMENT 06:1294  CONSUMERS 07:0925
-    3             TECHNOLOGIES 15:1810  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237
-    4   FINANCIAL_TECHNOLOGIES 14:2005                   BUSINESS_MODEL 05:1578
-    5   THE_FINANCIAL_INDUSTRY 09:2006                       BLOCKCHAIN 05:1180
-    6          THE_DEVELOPMENT 08:1173
-    7               REGULATORS 08:0974
-    8                  BANKING 07:0851
-    9               THE_IMPACT 06:0908
-    10                   CHINA 06:0673
+                                             0                               1                  2
+    0           FINANCIAL_TECHNOLOGIES 14:2005                 FINTECH 44:6942      BANKS 09:1133
+    1                FINANCIAL_SERVICE 12:2100                 FINANCE 21:3481       DATA 07:1086
+    2                  THE_DEVELOPMENT 09:1293            TECHNOLOGIES 17:1943  CONSUMERS 07:0925
+    3                       REGULATORS 08:0974              INNOVATION 15:2741
+    4                         SERVICES 07:1226  THE_FINANCIAL_INDUSTRY 09:2006
+    5                          BANKING 07:0851              THE_IMPACT 06:0908
+    6                       INVESTMENT 06:1294                   CHINA 06:0673
+    7  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237
+    8                     PRACTITIONER 06:1194
+    9                   BUSINESS_MODEL 05:1578
 
 
 """
