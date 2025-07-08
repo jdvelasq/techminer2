@@ -1,4 +1,4 @@
-UT 1260
+UT 30
 AR Gomber P., 2018, J MANAGE INF SYST, V35, P220
 TI On the Fintech Revolution: Interpreting the Forces of Innovation,
    Disruption, and Transformation in Financial Services
@@ -32,7 +32,7 @@ ID BLOCKCHAIN; COMMERCE; RISK_MANAGEMENT; BUSINESS_MODELS; CUSTOMER_EXPERIENCE;
    OPERATIONS_MANAGEMENT; STAKEHOLDER_VALUES; TECHNOLOGY_INNOVATION; FINANCE
 
 
-UT 1206
+UT 16
 AR Lee I., 2018, BUS HORIZ, V61, P35
 TI Fintech: Ecosystem, business models, investment decisions, and challenges
 AU Lee I.; Shin Y.J.
@@ -53,7 +53,7 @@ DE BUSINESS_MODELS; DISRUPTIVE_INNOVATION; FINANCIAL_STARTUPS; FINTECH;
    ONLINE_BANKING; REAL_OPTIONS
 
 
-UT 1178
+UT 11
 AR Gomber P., 2017, J BUS ECON, V87, P537
 TI Digital Finance and FinTech: current research and future research directions
 AU Gomber P.; Koch J.-A.; Siering M.
@@ -90,7 +90,7 @@ DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
    LITERATURE_REVIEW; STATE_OF_THE_ART
 
 
-UT 1302
+UT 40
 AR Buchak G., 2018, J FINANC ECON, V130, P453
 TI Fintech, regulatory arbitrage, and the rise of shadow banks
 AU Buchak G.; Matvos G.; Piskorski T.; Seru A.
@@ -111,14 +111,14 @@ AB SHADOW_BANK_MARKET_SHARE in RESIDENTIAL_MORTGAGE_ORIGINATION nearly doubled
    FINTECH_LENDERS serve MORE_CREDITWORTHY_BORROWERS and are more active in
    THE_REFINANCING_MARKET . FINTECH_LENDERS_CHARGE_A_PREMIUM of 1416
    BASIS_POINTS and appear to provide CONVENIENCE rather_than COST_SAVINGS to
-   BORROWERS . they seem to use DIFFERENT_INFORMATION to SET_INTEREST_RATES
+   BORROWERS . they seem to use DIFFERENT_INFORMATION to set INTEREST_RATES
    relative to OTHER_LENDERS . A_QUANTITATIVE_MODEL of MORTGAGE_LENDING
    suggests that REGULATION_ACCOUNTS for roughly 60 % of SHADOW_BANK_GROWTH ,
    while TECHNOLOGY_ACCOUNTS for roughly 30 % . 2018 elsevier b . v .
 DE FHA; FINTECH; LENDING; MORTGAGES; REGULATORY_ARBITRAGE; SHADOW_BANKS
 
 
-UT 1076
+UT 6
 AR Gabor D., 2017, NEW POLIT ECON, V22, P423
 TI The digital revolution in financial inclusion: international development in
    the fintech era
@@ -137,7 +137,7 @@ AB this paper examines THE_GROWING_IMPORTANCE of
    to ACCELERATE_ACCESS to , and MONITOR_ENGAGEMENT with , FINANCE .
    THE_DIGITAL_REVOLUTION adds NEW_LAYERS to THE_MATERIAL_CULTURES of financial
    ( ISED ) inclusion , offering THE_STATE_NEW_WAYS of expanding THE_INCLUSION
-   of the legible ' , and GLOBAL_FINANCE_NEW_FORMS of PROFILING '
+   of the legible ' , and GLOBAL_FINANCE_NEW_FORMS of profiling '
    POOR_HOUSEHOLDS into GENERATORS of FINANCIAL_ASSETS . 2016 informa uk
    limited , trading as taylor and francis group .
 DE BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; FINANCIAL_INCLUSION;
@@ -147,7 +147,7 @@ ID ECONOMIC_DEVELOPMENT; FINANCIAL_SYSTEM; GLOBALIZATION; GOVERNMENT;
    MATERIAL_CULTURE
 
 
-UT 1251
+UT 26
 AR Haddad C., 2019, SMALL BUS ECON, V53, P81
 TI The emergence of the global fintech market: economic and technological
    determinants
@@ -165,12 +165,12 @@ AB we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing
    THIS_NEW_MARKET_SEGMENT . finally , the more difficult it is for COMPANIES
    to ACCESS_LOANS , the higher is THE_NUMBER of FINTECH_STARTUPS in A_COUNTRY
    . overall , THE_EVIDENCE suggests that FINTECH_STARTUP_FORMATION_NEED not be
-   left to CHANCE , but ACTIVE_POLICIES can INFLUENCE_THE_EMERGENCE of
+   left to CHANCE , but ACTIVE_POLICIES can influence THE_EMERGENCE of
    THIS_NEW_SECTOR . 2018 , the author ( s ) .
 DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
 
 
-UT 1125
+UT 10
 AR Puschmann T., 2017, BUSIN INFO SYS ENG, V59, P69
 TI Fintech
 AU Puschmann T.
@@ -181,7 +181,7 @@ DE DIGITIZATION; FINANCIAL_SERVICES_INDUSTRY; FINANCIAL_TECHNOLOGY; FINTECH;
    INNOVATION
 
 
-UT 1210
+UT 18
 AR Gai K., 2018, J NETWORK COMPUT APPL, V103, P262
 TI A survey on FinTech
 AU Gai K.; Qiu M.; Sun X.
@@ -208,7 +208,7 @@ ID CLOUD_COMPUTING; FINANCE; SURVEYS; CYBER_SECURITY; DATA_DRIVEN;
    SECURITY_AND_PRIVACY; TECHNICAL_ASPECTS; BIG_DATA
 
 
-UT 1338
+UT 62
 AR Chen M.A., 2019, REV FINANC STUD, V32, P2062
 TI How Valuable Is FinTech Innovation?
 AU Chen M.A.; Wu Q.; Yang B.
@@ -229,7 +229,7 @@ AB we provide LARGE_SCALE_EVIDENCE on THE_OCCURRENCE and VALUE of
    2019 .
 
 
-UT 1378
+UT 78
 AR Schueffel P., 2016, J INNOV MANAG, V4, P32
 TI Taming the beast: A scientific definition of fintech
 AU Schueffel P.
@@ -254,11 +254,11 @@ DE BANKING; FINANCIAL_INSTITUTION; FINANCIAL_SERVICES; INNOVATION; RESEARCH;
    TECHNOLOGY; TERMINOLOGY
 
 
-UT 1346
-AR Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411
+UT 65
+AR Belanche D., 2019, IND MANAGE DATA SYS, V119, P1411
 TI Artificial Intelligence in FinTech: understanding robo-advisors adoption
    among customers
-AU Gracia D.B.; Casaló-Ariño L.V.; Flavián C.
+AU Belanche D.; Casaló L.V.; Flavián C.
 TC 225
 SO Industrial Management and Data Systems
 PY 2019
@@ -268,7 +268,7 @@ AB purpose : considering THE_INCREASING_IMPACT of ARTIFICIAL_INTELLIGENCE ( AI
    A_WIDE_RANGE of POTENTIAL_CUSTOMERS . it also predicts that
    PERSONAL_AND_SOCIODEMOGRAPHIC_VARIABLES ( FAMILIARITY with ROBOTS , AGE ,
    GENDER and COUNTRY ) moderate THE_MAIN_RELATIONSHIPS .
-   DESIGN/METHODOLOGY/approach : DATA from A_WEB_SURVEY of 765 north american ,
+   DESIGN/methodology/approach : DATA from A_WEB_SURVEY of 765 north american ,
    british and PORTUGUESE_POTENTIAL_USERS of ROBO_ADVISOR_SERVICES confirm
    THE_VALIDITY of THE_MEASUREMENT_SCALES and provide THE_INPUT for
    STRUCTURAL_EQUATION_MODELING and MULTISAMPLE_ANALYSES of THE_HYPOTHESES .
@@ -281,7 +281,7 @@ AB purpose : considering THE_INCREASING_IMPACT of ARTIFICIAL_INTELLIGENCE ( AI
    ANGLO_SAXON_COUNTRIES . practical implications : BANKS and OTHER_FIRMS in
    THE_FINANCE_INDUSTRY should DESIGN_ROBO_ADVISORS to be used by
    A_WIDE_SPECTRUM of CONSUMERS . MARKETING_TACTICS applied should consider
-   THE_CUSTOMER_LEVEL of FAMILIARITY with ROBOTS . originality/VALUE : this
+   THE_CUSTOMER_LEVEL of FAMILIARITY with ROBOTS . originality/value : this
    research identifies THE_KEY_DRIVERS of ROBO_ADVISOR_ADOPTION and
    THE_MODERATING_EFFECT of PERSONAL_AND_SOCIODEMOGRAPHIC_VARIABLES . it
    contributes to UNDERSTANDING_CONSUMERS ' perceptions regarding
@@ -293,14 +293,14 @@ ID FINANCE; FINTECH; INTELLIGENT_ROBOTS; ROBOTS; SALES;
    STRUCTURAL_EQUATION_MODELING; TECHNOLOGY_ADOPTION; ARTIFICIAL_INTELLIGENCE
 
 
-UT 1290
+UT 37
 AR Anagnostopoulos I., 2018, J ECON BUS, V100, P7
 TI Fintech and regtech: Impact on regulators and banks
 AU Anagnostopoulos I.
 TC 202
 SO Journal of Economics and Business
 PY 2018
-AB the purpose of this paper is to develop AN_INSIGHT and REVIEW_THE_EFFECT of
+AB the purpose of this paper is to develop AN_INSIGHT and review THE_EFFECT of
    FINTECH_DEVELOPMENT against THE_BROADER_ENVIRONMENT in FINANCIAL_TECHNOLOGY
    . we further aim to offer VARIOUS_PERSPECTIVES in_order_to aid
    THE_UNDERSTANDING of THE_DISRUPTIVE_POTENTIAL of FINTECH , and
@@ -352,10 +352,10 @@ DE BUSINESS_MODELS; FINANCIAL_SERVICES; FINTECH; FUTURE_RESEARCH_DIRECTION;
    REGTECH; REGULATION
 
 
-UT 1334
+UT 60
 AR Goldstein I., 2019, REV FINANC STUD, V32, P1647
 TI To FinTech and beyond
-AU Goldstein I.; Jiang W./1; Karolyi G.A.
+AU Goldstein I.; Jiang W.; Karolyi G.A.
 TC 197
 SO Review of Financial Studies
 PY 2019
@@ -374,11 +374,11 @@ AB FINTECH is about THE_INTRODUCTION of NEW_TECHNOLOGIES into
    . the author ( s ) 2019 .
 
 
-UT 1123
+UT 9
 AR Leong C., 2017, INT J INF MANAGE, V37, P92
 TI Nurturing a FinTech ecosystem: The case of a youth microloan startup in
    China
-AU Leong C.; Tan B.; Xiao X.; Tan F.T.C.; Sun Y.
+AU Leong C.; Tan B.; Xiao X.; Tan F.T.C.; Sun Y./1
 TC 180
 SO International Journal of Information Management
 PY 2017
@@ -390,7 +390,7 @@ AB FINANCIAL_TECHNOLOGY , or FINTECH , involves THE_DESIGN and DELIVERY of
    THE_EMERGENCE of NON_TRADITIONAL_PAYMENT_SYSTEMS ,
    PEER_TO_PEER_MONEY_EXCHANGES and increased turbulence in CURRENCY_MARKETS .
    THIS_CASE_STUDY explores THE_DEVELOPMENT of A_FINTECH_COMPANY in CHINA that
-   offers MICROLOANS to COLLEGE_STUDENTS . five LESSONS_LEARNED are presented
+   offers MICROLOANS to COLLEGE_STUDENTS . FIVE_LESSONS learned are presented
    for ORGANIZATIONS to better manage THE_CHALLENGES and to leverage
    THE_OPPORTUNITIES amidst THE_DISRUPTION of FINANCIAL_SECTOR . OUR_FINDINGS
    also she would light on HOW_DIGITAL_TECHNOLOGY 1 ) offers
@@ -406,7 +406,7 @@ ID COMMERCE; ECOSYSTEMS; PEER_TO_PEER_NETWORKS; PRODUCT_DESIGN; STUDENTS;
    STRATEGIC_CAPABILITY; FINANCE
 
 
-UT 1192
+UT 13
 AR Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373
 TI FinTech, regTech, and the reconceptualization of financial regulation
 AU Arner D.W.; Barberis J.; Buckley R.P.
@@ -441,11 +441,11 @@ AB REGULATORY_CHANGE and TECHNOLOGICAL_DEVELOPMENTS following the 2008
    THE_FINANCIAL_SECTOR and OTHER_INDUSTRIES . 2017 . all rights reserved .
 
 
-UT 1349
+UT 67
 AR Hu Z., 2019, SYMMETRY, V11
 TI Adoption intention of fintech services for bank users: An empirical
    examination with an extended technology acceptance model
-AU Hu Z.; Ding S.; Li S./3; Chen L.; Yang S.
+AU Hu Z.; Ding S.; Li S.; Chen L./1; Yang S.
 TC 176
 SO Symmetry
 PY 2019
@@ -471,7 +471,7 @@ AB along_with THE_DEVELOPMENT of FINTECH , MANY_SCHOLARS have studied how
 DE ADOPTION; FINTECH_SERVICES; TECHNOLOGY_ACCEPTANCE_MODEL
 
 
-UT 1254
+UT 28
 AR Ryu H.-S., 2018, IND MANAGE DATA SYS, V118, P541
 TI What makes users willing or hesitant to use Fintech?: the moderating effect
    of user type
@@ -483,14 +483,14 @@ AB purpose : the purpose of this paper is to better understand why PEOPLE are
    willing or hesitant to use FINANCIAL_TECHNOLOGY ( FINTECH ) as_well_as to
    determine whether THE_EFFECT of PERCEIVED_BENEFITS and RISKS of
    CONTINUANCE_INTENTION_DIFFERS depending on USER_TYPES .
-   DESIGN/METHODOLOGY/approach : ORIGINAL_DATA were collected via A_SURVEY of
+   DESIGN/methodology/approach : ORIGINAL_DATA were collected via A_SURVEY of
    243 participants with FINTECH_USAGE_EXPERIENCE .
    THE_PARTIAL_LEAST_SQUARES_METHOD was used to test THE_PROPOSED_MODEL .
    findings : THE_RESULTS reveal that LEGAL_RISK had THE_MOST_NEGATIVE_EFFECT
    on THE_FINTECH_CONTINUANCE_INTENTION , while CONVENIENCE had
    THE_STRONGEST_POSITIVE_EFFECT . DIFFERENCES in
    SPECIFIC_BENEFIT_AND_RISK_IMPACTS are found between EARLY_AND_LATE_ADOPTERS
-   . originality/VALUE : THIS_EMPIRICAL_STUDY contributes to
+   . originality/value : THIS_EMPIRICAL_STUDY contributes to
    THE_NOVEL_UNDERSTANDING of THE_BENEFIT_AND_RISK_FACTORS affecting
    THE_FINTECH_CONTINUANCE_INTENTION . 2018 , emerald publishing limited .
 DE CONTINUANCE_INTENTION; FINTECH; NET_VALENCE_FRAMEWORK; PERCEIVED_BENEFIT;
@@ -500,7 +500,7 @@ ID SURVEYS; USABILITY_ENGINEERING; CONTINUANCE_INTENTIONS; FINTECH;
    LEAST_SQUARES_APPROXIMATIONS
 
 
-UT 1311
+UT 45
 AR Du W.D., 2019, J STRATEGIC INFORM SYST, V28, P50
 TI Affordances, experimentation and actualization of FinTech: A blockchain
    implementation study
@@ -514,7 +514,7 @@ AB BLOCKCHAIN , THE_TECHNOLOGY_UNDERLYING_BITCOIN , is
    are FEW_STUDIES on BLOCKCHAIN , and THOSE_STUDIES have focused mainly on
    THE_TECHNOLOGY_POTENTIAL_IMPACTS , whereas how to effectively implement it
    in AN_ORGANIZATION remains unknown . OUR_STUDY intends to fill THAT_GAP .
-   using AFFORDANCE_ACTUALIZATION ( a a ) THEORY as THE_THEORETICAL_LENS , we
+   using AFFORDANCE_ACTUALIZATION ( a a ) theory as THE_THEORETICAL_LENS , we
    conducted A_CASE_STUDY of BLOCKCHAIN_IMPLEMENTATION in AN_ORGANIZATION that
    has effectively implemented it . we identify THREE_AFFORDANCES of BLOCKCHAIN
    in THE_ORGANIZATION and A_PROCESS_MODEL whereby THESE_AFFORDANCES are
@@ -533,7 +533,7 @@ ID INFORMATION_SYSTEMS; ACTUALIZATION; AFFORDANCES; EXPERIMENTATION; FINTECH;
    STRATEGIC_IMPACTS; STRATEGIC_INFORMATION_SYSTEMS; BLOCKCHAIN
 
 
-UT 1267
+UT 33
 AR Jagtiani J., 2018, J ECON BUS, V100, P43
 TI Do fintech lenders penetrate areas that are underserved by traditional
    banks?
@@ -543,7 +543,7 @@ SO Journal of Economics and Business
 PY 2018
 AB FINTECH has been playing AN_INCREASING_ROLE in shaping
    FINANCIAL_AND_BANKING_LANDSCAPES . in this paper , we use ACCOUNT_LEVEL_DATA
-   from LENDINGCLUB and y 14m DATA reported by you.s . BANKS with ASSETS over $
+   from LENDINGCLUB and y 14m data reported by you.s . BANKS with ASSETS over $
    50 billion to examine whether THE_FINTECH_LENDING_PLATFORM could expand
    CREDIT_ACCESS to CONSUMERS . we find that
    LENDINGCLUB_CONSUMER_LENDING_ACTIVITIES have penetrated AREAS that may be
@@ -555,7 +555,7 @@ DE BANKING_COMPETITION; FINTECH; LENDINGCLUB; MARKETPLACE_LENDING;
    PEER_TO_PEER_LENDING; SHADOW_BANKING
 
 
-UT 1297
+UT 39
 AR Alt R., 2018, ELECTRON MARK, V28, P235
 TI FinTech and the transformation of the financial industry
 AU Alt R.; Beck R.; Smits M.T.
@@ -564,7 +564,7 @@ SO Electronic Markets
 PY 2018
 
 
-UT 936
+UT 2
 AR Shim Y., 2016, TELECOMMUN POLICY, V40, P168
 TI Analyzing China's Fintech Industry from the Perspective of Actor-Network
    Theory
@@ -578,9 +578,9 @@ AB THE_RAPID_DEVELOPMENT of INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY is
    THE_FINANCIAL_SECTOR , CHINA is experiencing AN_UNPRECEDENTED_LEVEL of
    CONVERGENCE between FINANCE and TECHNOLOGY . this study applies THE_LENS of
    ACTOR_NETWORK_THEORY ( ANT ) to conduct A_MULTI_LEVEL_ANALYSIS of
-   THE_HISTORICAL_DEVELOPMENT of CHINA_FINANCIAL_TECHNOLOGY_INDUSTRY . it
-   attempts to elucidate THE_PROCESS of BUILDING and disrupting A_VARIETY of
-   NETWORKS comprising HETEROGENEOUS_ACTORS involved in
+   THE_HISTORICAL_DEVELOPMENT of CHINA_FINANCIAL_TECHNOLOGY ( FINTECH )
+   industry . it attempts to elucidate THE_PROCESS of BUILDING and disrupting
+   A_VARIETY of NETWORKS comprising HETEROGENEOUS_ACTORS involved in
    THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY . this research represents
    A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet
    unfolding SOCIAL_AND_POLITICAL_CONTEXT . it also
@@ -596,7 +596,7 @@ ID DEVELOPING_COUNTRIES; FINANCE; INTERNET; PUBLIC_POLICY;
    SOCIAL_SCIENCES_COMPUTING
 
 
-UT 1303
+UT 41
 AR Cai C.W., 2018, ACCOUNT FINANC, V58, P965
 TI Disruption of financial intermediation by FinTech: a review on crowdfunding
    and blockchain
@@ -623,7 +623,7 @@ AB based on A_SYSTEMATIC_REVIEW of INFLUENTIAL_PUBLICATIONS among 402 papers
 DE BLOCKCHAIN; CROWDFUNDING; FINANCIAL_INTERMEDIATION; FINTECH
 
 
-UT 1220
+UT 19
 AR Gimpel H., 2018, ELECTRON MARK, V28, P245
 TI Understanding FinTech start-ups – a taxonomy of consumer-oriented service
    offerings
@@ -646,13 +646,13 @@ AB THE_FINANCIAL_SECTOR is facing RADICAL_TRANSFORMATION . leveraging
    of 227 FINTECH_START_UPS and by identifying ARCHETYPES via
    A_CLUSTER_ANALYSIS . our TAXONOMY_CONTRIBUTES to THE_DESCRIPTIVE_KNOWLEDGE
    on FINTECH_START_UPS , enabling RESEARCHERS and PRACTITIONERS to analyze
-   THE_SERVICE_OFFERINGS of FINTECH_START_UP in A_STRUCTURED_MANNER . 2017 ,
+   THE_SERVICE_OFFERINGS of FINTECH start up in A_STRUCTURED_MANNER . 2017 ,
    the author ( s ) .
 DE BUSINESS_MODEL; FINANCIAL_SERVICES; FINANCIAL_TECHNOLOGY; FINTECH; SERVICES;
    TAXONOMY
 
 
-UT 935
+UT 1
 AR Kim Y., 2016, INT J APPL ENG RES, V11, P1058
 TI The adoption of mobile payment services for “fintech”
 AU Kim Y.; Choi J.; Park Y.-J.; Yeon J.
@@ -662,21 +662,21 @@ PY 2016
 AB this paper examined THE_ACCEPTANCE of PAYMENT_TYPE_FINTECH_SERVICES of USERS
    by utilizing THE_ELABORATION_LIKELIHOOD_MODEL by petty and CACIOPPO [ 1 ]
    and by applying VARIABLES associated with THE_TECHNOLOGY_ACCEPTANCE_MODEL .
-   in_addition , it analyzed THE_CAUSAL_RELATIONSHIP between
-   CONCERN_FOR_INFORMATION_PRIVACY and SELF_EFFICACY by adopting them as
-   moderating VARIABLES . RESULTS suggested that USEFULNESS , EASE_OF_USE and
-   CREDIBILITY had AN_EFFECT on INTENTION_TO_USE , and SELF_EFFICACY was found
-   to have AN_MODERATING_EFFECT on INDEPENDENT_AND_DEPENDENT_VARIABLES .
-   further , CONCERN_FOR_INFORMATION_PRIVACY was found to be A_FACTOR
-   obstructing THE_PATH to INTENTION_TO_USE . THE_IMPLICATIONS of THIS_STUDY
-   are that in THE_PROMOTION of PAYMENT_TYPE_FINTECH_SERVICES , CONVENIENCE and
-   USEFULNESS are THE_MOST_CRITICAL_AND_INFLUENTIAL_VARIABLES in_terms_of USAGE
-   , while GOVERNMENT_DEREGULATION and STRONGER_SECURITY are called for from
+   in_addition , it analyzed THE_CAUSAL_RELATIONSHIP between CONCERN for
+   INFORMATION_PRIVACY and SELF_EFFICACY by adopting them as moderating
+   VARIABLES . RESULTS suggested that USEFULNESS , EASE_OF_USE and CREDIBILITY
+   had AN_EFFECT on INTENTION_TO_USE , and SELF_EFFICACY was found to have
+   AN_MODERATING_EFFECT on INDEPENDENT_AND_DEPENDENT_VARIABLES . further ,
+   CONCERN for INFORMATION_PRIVACY was found to be A_FACTOR obstructing
+   THE_PATH to INTENTION_TO_USE . THE_IMPLICATIONS of THIS_STUDY are that in
+   THE_PROMOTION of PAYMENT_TYPE_FINTECH_SERVICES , CONVENIENCE and USEFULNESS
+   are THE_MOST_CRITICAL_AND_INFLUENTIAL_VARIABLES in_terms_of USAGE , while
+   GOVERNMENT_DEREGULATION and STRONGER_SECURITY are called for from
    AN_INSTITUTIONAL_ASPECT . RESEARCH_INDIA_PUBLICATIONS .
 DE ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; MOBILE_PAYMENT_SERVICE
 
 
-UT 1296
+UT 38
 AR Lim S.H., 2019, INT J HUMCOMPUT INTERACT, V35, P886
 TI An Empirical Study of the Impacts of Perceived Security and Knowledge on
    Continuous Intention to Use Mobile Fintech Payment Services
@@ -688,7 +688,7 @@ AB FINANCIAL_TECHNOLOGY_SERVICES using EMERGING_TECHNOLOGY such_as the
    INTERNET_OF_THINGS ( IOT ) is becoming more prevalent .
    THE_RECENT_PROLIFERATION of THE_MOBILE_PAYMENT_SECTOR led by
    INNOVATIVE_MOBILE_FINTECH_PAYMENT_SERVICES such_as APPLE_PAY and SAMSUNG_PAY
-   is THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES from CONSUMERS '
+   is THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES from consumers '
    perspective . although BUSINESSES have been making EFFORTS to spread THE_USE
    of THE_SERVICES , SECURITY is crucial in THE_DIFFUSION of THE_SERVICES .
    despite THE_IMPORTANCE , THE_ROLE of PERCEIVED_SECURITY in
@@ -701,7 +701,7 @@ AB FINANCIAL_TECHNOLOGY_SERVICES using EMERGING_TECHNOLOGY such_as the
    THE_DATA collected from THE_SERVICE_USERS . THE_ANALYZED_RESULTS show that
    KNOWLEDGE and PERCEIVED_SECURITY in MOBILE_FINTECH_SERVICES have
    A_SIGNIFICANT_INFLUENCE on users ' CONFIRMATION and PERCEIVED_USEFULNESS .
-   however , PERCEIVED_SECURITY does not directly INFLUENCE users '
+   however , PERCEIVED_SECURITY does not directly influence users '
    SATISFACTION and continual INTENTION_TO_USE . we further find
    SIGNIFICANT_RELATIONSHIPS among CONFIRMATION , PERCEIVED_USEFULNESS ,
    SATISFACTION , and continual INTENTION_TO_USE of THE_SERVICES . we discuss
@@ -713,7 +713,7 @@ ID ELECTRONIC_MONEY; ACCEPTANCE_MODELS; EMERGING_TECHNOLOGIES;
    INTERNET_OF_THINGS
 
 
-UT 1263
+UT 31
 AR Gozman D., 2018, J MANAGE INF SYST, V35, P145
 TI The Innovation Mechanisms of Fintech Start-Ups: Insights from SWIFT’s
    Innotribe Competition
@@ -729,16 +729,16 @@ AB THE_EMERGENCE of FINANCIAL_TECHNOLOGY around THE_GLOBE is driven by EFFORTS
    INFRASTRUCTURES , and TECHNOLOGIES . this study aims to improve
    COMPREHENSION of THE_GLOBAL_FINTECH_LANDSCAPE . it is based on THE_ANALYSIS
    of START_UPS that participated in SWIFT_INNOTRIBE_COMPETITION . we used
-   CLUSTER_ANALYSIS to group 402 FINTECH_START_UP FIRMS , and then selected
+   CLUSTER_ANALYSIS to group 402 FINTECH start up FIRMS , and then selected
    REPRESENTATIVE_CASES to create A_FOUNDATIONAL_UNDERSTANDING of THE_STRUCTURE
    of THE_FINTECH_LANDSCAPE . THE_MAIN_FINDINGS of THIS_WORK are : ( 1 ) the
-   DEVELOPMENT of FINTECH_CLUSTERS to CLASSIFY_CORE_SERVICES ,
+   development of FINTECH_CLUSTERS to CLASSIFY_CORE_SERVICES ,
    BUSINESS_INFRASTRUCTURES , and UNDERLYING_COMPONENT_TECHNOLOGIES , which
-   CHARACTERIZE_FINTECH . ( 2 ) an ANALYSIS of how
+   CHARACTERIZE_FINTECH . ( 2 ) an analysis of how
    FINTECHS_SYNTHESIZE_DIFFERENT_TECHNOLOGIES to restructure FLOWS of
    FINANCIAL_INFORMATION through COMPETITIVE_AND_COOPERATIVE_MECHANISMS of
    DISINTER_MEDIATION , EXTENSION of ACCESS , FINANCIALIZATION , HYBRIDIZATION
-   , and PERSONALIZATION . ( 3 ) an ANALYSIS of RELATED_STRATEGIES for
+   , and PERSONALIZATION . ( 3 ) an analysis of RELATED_STRATEGIES for
    VALUE_CREATION connected with THE_COMPETITIVE_AND_COOPERATIVE_MECHANISMS
    that were identified . collectively , OUR_RESULTS offer NEW_INSIGHTS into
    THE_DIVERSITY and RANGE of EMERGENT_INNOVATIONS and TECHNOLOGIES that q2 are
@@ -750,7 +750,7 @@ ID CLASSIFICATION (OF_INFORMATION); CLUSTER_ANALYSIS; BUSINESS_INFRASTRUCTURE;
    UNDERLYING_COMPONENTS; FINANCE
 
 
-UT 1306
+UT 43
 AR Zavolokina L., 2016, FINANCIAL INNOV, V2
 TI The FinTech phenomenon: antecedents of financial innovation perceived by the
    popular press
@@ -778,7 +778,7 @@ AB THE_FINANCIAL_INDUSTRY has been strongly influenced by DIGITALIZATION in
 DE CONTENT_ANALYSIS; DIGITALIZATION; FINTECH; INNOVATION; POPULAR_PRESS
 
 
-UT 1247
+UT 25
 AR Stewart H., 2018, INF COMPUT SECURITY, V26, P109
 TI Data security and consumer trust in FinTech innovation in Germany
 AU Stewart H.; Jürjens J.
@@ -786,7 +786,7 @@ TC 104
 SO Information and Computer Security
 PY 2018
 AB purpose : the purpose of this study is to empirically analyse
-   THE_KEY_FACTORS that INFLUENCE_THE_ADOPTION of
+   THE_KEY_FACTORS that influence THE_ADOPTION of
    FINANCIAL_TECHNOLOGY_INNOVATION in THE_COUNTRY_GERMANY . THE_ADVANCEMENT of
    MOBILE_DEVICES and THEIR_USAGE have increased THE_UPTAKE of
    FINANCIAL_TECHNOLOGY_INNOVATION . FINANCIAL_SECTORS and STARTUPS see FINTECH
@@ -795,7 +795,7 @@ AB purpose : the purpose of this study is to empirically analyse
    SUCH_OPPORTUNITIES . MOBILE_APPLICATION_SECURITY_THREATS have increased
    tremendously and have become A_CHALLENGE for BOTH_USERS and
    FINTECH_INNOVATORS . in this paper , THE_AUTHORS empirically inspect
-   THE_COMPONENTS that INFLUENCE_THE_EXPECTATIONS of BOTH_USERS and
+   THE_COMPONENTS that influence THE_EXPECTATIONS of BOTH_USERS and
    ORGANIZATIONS to adopt FINTECH , such_as CUSTOMER_TRUST , DATA_SECURITY ,
    VALUE added , USER_INTERFACE_DESIGN_AND_FINTECH_PROMOTION .
    THE_EMPIRICAL_RESULTS definitely confirm that DATA_SECURITY , CUSTOMER_TRUST
@@ -803,10 +803,10 @@ AB purpose : the purpose of this study is to empirically analyse
    EXISTING_STUDIES have used THE_TECHNOLOGY_ACCEPTANCE_MODEL ( TAM ) to
    address THIS_ISSUE . THE_OUTCOMES of this study can be used to improve
    THE_PERFORMANCE of FINTECH_STRATEGIES and ENABLE_BANKS to achieve
-   ECONOMIES_OF_SCALE for GLOBAL_INTENSITY . DESIGN/METHODOLOGY/approach : in
-   this paper , THE_AUTHORS empirically consider FACTORS that
-   INFLUENCE_THE_EXPECTATIONS of BOTH_USERS and ORGANIZATIONS in adopting
-   FINTECH , such_as CUSTOMER_TRUST , DATA_SECURITY , VALUE added ,
+   ECONOMIES_OF_SCALE for GLOBAL_INTENSITY . DESIGN/methodology/approach : in
+   this paper , THE_AUTHORS empirically consider FACTORS that influence
+   THE_EXPECTATIONS of BOTH_USERS and ORGANIZATIONS in adopting FINTECH ,
+   such_as CUSTOMER_TRUST , DATA_SECURITY , VALUE added ,
    THE_USER_DESIGN_INTERFACE and FINTECH_PROMOTION . THE_RESULTS confirm that
    CUSTOMER_TRUST , DATA_SECURITY and THE_USER_DESIGN_INTERFACE affect the
    ADOPTION_OF_FINTECH . this research proposes A_MODEL called
@@ -823,7 +823,7 @@ AB purpose : the purpose of this study is to empirically analyse
    cent of THE_SURVEYED_RESPONDENTS . it is obvious that THE_FINTECH_INCUBATORS
    and BANKS_OFFERING_FINTECH_SERVICES_NEED to persuade THEIR_CUSTOMERS
    regarding THE_USEFULNESS_AND_VALUE_ADDED_ADVANTAGES of FINTECH . this study
-   has been carried out to determine THE_KEY_FACTORS that INFLUENCE and
+   has been carried out to determine THE_KEY_FACTORS that influence and
    PROVOKE_FINTECH_ADOPTION . RESEARCH_LIMITATIONS/IMPLICATIONS : there are
    A_FEW_LIMITATIONS in this study . initially , this study focuses on
    FINTECH_IMPLEMENTATION in GERMANY and NOT_THE_WHOLE of EUROPE . in_addition
@@ -835,7 +835,7 @@ AB purpose : the purpose of this study is to empirically analyse
    UPGRADE_POLICES to enhance THE_FINTECH_ADOPTION_PROCESS . FUTURE_ANALYSTS
    can assist EXPLORATION of THIS_TOPIC by altering DETERMINANTS in the
    UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY_MODEL . additionally ,
-   because_the cluster SAMPLING technique was used , THE_REPORTED_OUTCOMES are
+   because_the cluster sampling technique was used , THE_REPORTED_OUTCOMES are
    not 100 per cent generalized to THE_GERMAN_POPULATION . to accomplish
    A_COMPLETE_GENERALIZATION , A_BASIC_RANDOM_SAMPLING_STRATEGY for
    THE_WHOLE_POPULATION is essential . THE_AUTHORS could also alleviate
@@ -879,7 +879,7 @@ ID CUSTOMER_SATISFACTION; ECONOMICS; FINANCE; INVESTMENTS; MOBILE_COMPUTING;
    ECONOMIC_AND_SOCIAL_EFFECTS
 
 
-UT 1266
+UT 32
 AR Jakšič M., 2019, RISK MANAGE, V21, P1
 TI Relationship banking and information technology: the role of artificial
    intelligence and FinTech
@@ -899,13 +899,13 @@ AB BANKS have NO_TIME for COMPLACENCY . they need to re evaluate
    in THIS_LIGHT , the article evaluates THE_ROLE of DISTANCES ,
    ARTIFICIAL_INTELLIGENCE , and BEHAVIORAL_BIASES . IMPLICATIONS for STABILITY
    in BANKING are explored . we argue that RELATIONSHIP_BANKING can overcome
-   ITS_DRAWBACKS , but it NEEDS to adjust to THE_NEW_REALITY in_order_to
+   ITS_DRAWBACKS , but it needs to adjust to THE_NEW_REALITY in_order_to
    survive . 2018 , macmillan publishers ltd . , part of springer nature .
 DE ARTIFICIAL_INTELLIGENCE; FINTECH; INFORMATION_TECHNOLOGY;
    RELATIONSHIP_BANKING; FUTURE_OF_BANKING
 
 
-UT 1277
+UT 34
 AR Iman N., 2018, ELECT COMMER RES APPL, V30, P72
 TI Is mobile payment still relevant in the fintech era?
 AU Iman N.
@@ -938,7 +938,7 @@ ID DEVELOPING_COUNTRIES; FINANCE; GLOBAL_SYSTEM_FOR_MOBILE_COMMUNICATIONS;
    TECHNOLOGY_ECOSYSTEM; ELECTRONIC_MONEY
 
 
-UT 1326
+UT 54
 AR Demertzis M., 2018, J  FINANC REGUL, V4, P157
 TI Capital markets union and the Fintech opportunity
 AU Demertzis M.; Merler S.; Wolff G.B.
@@ -969,7 +969,7 @@ AB complementing EUROPE_BANK_BASED_SYSTEM with DEEPER_CAPITAL_MARKETS and
    s ) 2018 . published by oxford university press . all rights reserved .
 
 
-UT 1226
+UT 23
 AR Dorfleitner G., 2017, FINTECH IN GER, P1
 TI FinTech in Germany
 AU Dorfleitner G.; Hornuf L.; Schmitt M.; Weber M.
@@ -977,7 +977,7 @@ TC 100
 SO FinTech in Germany
 PY 2017
 AB THIS_BOOK focuses on MARKET_DEVELOPMENTS of CROWDFUNDING , CROWDINVESTING ,
-   CROWDLENDING , SOCIAL_TRADING , ROBO_ADVICE , PERSONAL_FINANCIAL_MANAGEMENT
+   crowdlending , SOCIAL_TRADING , ROBO_ADVICE , PERSONAL_FINANCIAL_MANAGEMENT
    , ONLINE_PAYMENT and MOBILE_PAYMENT in GERMANY . FINTECH_COMPANIES are
    AN_IMPORTANT_DRIVER of INNOVATION in THE_FINANCIAL_INDUSTRY . by making
    FINANCIAL_TRANSACTIONS more user friendly and transparent , THESE_FIRMS
@@ -1002,7 +1002,7 @@ AB THIS_BOOK focuses on MARKET_DEVELOPMENTS of CROWDFUNDING , CROWDINVESTING ,
 DE CROWDFUNDING; FINANCIAL_MANAGEMENT; FINTECH; ROBO_ADVICE; SOCIAL_TRADING
 
 
-UT 1361
+UT 73
 AR Jagtiani J., 2019, FINANC MANAGE, V48, P1009
 TI The roles of alternative data and machine learning in fintech lending:
    Evidence from the LendingClub consumer platform
@@ -1019,7 +1019,7 @@ AB there have been CONCERNS about THE_USE of ALTERNATIVE_DATA_SOURCES by
    NONTRADITIONAL_DATA ( not already accounted for in THE_FICO_SCORES ) have
    been increasingly used by FINTECH_LENDERS . THE_RATING_GRADES perform well
    in predicting LOAN_DEFAULT . THE_USE of ALTERNATIVE_DATA has allowed
-   SOME_BORROWERS who would have been classified as SUBPRIME by
+   SOME_BORROWERS who would have been classified as subprime by
    TRADITIONAL_CRITERIA to be slotted into BETTER_LOAN_GRADES , allowing them
    to obtain LOWER_PRICED_CREDIT . 2019 financial management association
    international
@@ -1027,10 +1027,10 @@ DE ALTERNATIVE_DATA; FINTECH; LENDINGCLUB; MARKETPLACE_LENDING; P2P_LENDING;
    PEER_TO_PEER_LENDING; SHADOW_BANKING
 
 
-UT 1032
-AR Chen L./1, 2016, CHINA ECON J, V9, P225
+UT 4
+AR Chen L., 2016, CHINA ECON J, V9, P225
 TI From Fintech to Finlife: the case of Fintech Development in China
-AU Chen L./1
+AU Chen L.
 TC 96
 SO China Economic Journal
 PY 2016
@@ -1045,7 +1045,7 @@ AB THE_PURPOSE of TECHNOLOGY is not to make FINANCE better , but to make
 DE FINANCIAL_INCLUSION; FINANCIAL_SCENARIZATION; FINTECH
 
 
-UT 1060
+UT 5
 AR Romanova I., 2016, CONTEMP STUD ECON FINANC ANAL, V98, P21
 TI Banking and fintech: A challenge or opportunity?
 AU Romanova I.; Kudinska M.
@@ -1057,7 +1057,7 @@ AB GLOBAL_ECONOMY , GROWING_IMPORTANCE of INNOVATIONS as_well_as WIDE_USE of
    FINANCIAL_TECHNOLOGIES ( FINTECH ) have become AN_INTEGRAL_PART of BANKING ,
    and NOWADAYS_BANKS have started to compete beyond FINANCIAL_SERVICES facing
    INCREASING_COMPETITION from NONFINANCIAL_INSTITUTIONS providing ,
-   for_example , PAYMENT_SERVICES . START_UP_SERVICE_PROVIDERS , SEARCH_ENGINES
+   for_example , PAYMENT_SERVICES . start up SERVICE_PROVIDERS , SEARCH_ENGINES
    , and SOCIAL_NETWORKS have expanded THEIR_SERVICES ' ' interfering ' ' in
    THE_FIELDS traditionally covered by BANKS . THE_RAPID_RISE of FINTECH has
    changed THE_BUSINESS_LANDSCAPE in BANKING asking for
@@ -1092,7 +1092,7 @@ AB GLOBAL_ECONOMY , GROWING_IMPORTANCE of INNOVATIONS as_well_as WIDE_USE of
 DE BANKING_INNOVATIONS; FINTECH; RISKS
 
 
-UT 1320
+UT 51
 AR Anshari M., 2019, ENERGY PROCEDIA, V156, P234
 TI Digital marketplace and FinTech to support agriculture sustainability
 AU Anshari M.; Almunawar M.N.; Masri M.; Hamdan M.
@@ -1125,7 +1125,7 @@ ID COMMERCE; CROWDSOURCING; FINANCE; FOOD_SUPPLY; SUSTAINABLE_DEVELOPMENT;
    PAYMENT_SYSTEMS; PUBLIC_ENGAGEMENT; AGRICULTURE
 
 
-UT 1113
+UT 7
 AR Gai K., 2017, LECT NOTES COMPUT SCI, V10135 LNCS, P236
 TI Security and privacy issues: A survey on fintech
 AU Gai K.; Qiu M.; Sun X.; Zhao H.
@@ -1151,24 +1151,24 @@ ID DATA_MINING; DATA_PRIVACY; SURVEYS; FINANCIAL_INDUSTRY; FINTECH;
    FINANCE
 
 
-UT 1313
-AR Li Y./1, 2017, FINANCIAL INNOV, V3
+UT 47
+AR Li Y., 2017, FINANCIAL INNOV, V3
 TI The impact of FinTech start-ups on incumbent retail banks’ share prices
-AU Li Y./1; Spigt R.; Swinkels L.
+AU Li Y.; Spigt R.; Swinkels L.
 TC 84
 SO Financial Innovation
 PY 2017
 AB background : this study aims to_clarify THE_ROLE of
    FINTECH_DIGITAL_BANKING_START_UPS in THE_FINANCIAL_INDUSTRY . we examine
    THE_IMPACT of THE_FUNDING of SUCH_START_UPS on THE_STOCK_RETURNS of 47
-   INCUMBENT us RETAIL_BANKS for 2010 to 2016 . METHODS : to capture
+   incumbent us RETAIL_BANKS for 2010 to 2016 . METHODS : to capture
    THE_IMPORTANCE of FINTECH_START_UPS , we use DATA on BOTH_THE_DOLLAR_VOLUME
    of FUNDING and NUMBER of DEALS . we relate these to THE_STOCK_RETURNS with
    PANEL_DATA_REGRESSION_METHODS . results : OUR_RESULTS indicate a
    POSITIVE_RELATIONSHIP_EXISTS between THE_GROWTH in FINTECH_FUNDING or DEALS
    and THE_CONTEMPORANEOUS_STOCK_RETURNS of INCUMBENT_RETAIL_BANKS .
    conclusions : although THESE_RESULTS suggest COMPLEMENTARITY between FINTECH
-   and TRADITIONAL_BANKING , we NOTE that OUR_RESULTS at
+   and TRADITIONAL_BANKING , we note that OUR_RESULTS at
    THE_BANKING_INDUSTRY_LEVEL are not statistically significant , and
    THAT_THE_COEFFICIENT_SIGNS for about one third of THE_BANKS are negative ,
    but not statistically significant . since THE_FINTECH_INDUSTRY is young and
@@ -1178,7 +1178,7 @@ DE BANKS; DIGITAL_BANKING; FINANCE; FINTECH; INNOVATION; RETAIL_BANKS;
    START_UPS; STOCK_RETURNS; TECHNOLOGY; VENTURE_CAPITAL
 
 
-UT 1312
+UT 46
 AR Kang J., 2018, HUMCENTRIC COMPUT INF SCI, V8
 TI Mobile payment in Fintech environment: trends, security challenges, and
    services
@@ -1217,7 +1217,7 @@ ID AUTHENTICATION; ELECTRONIC_MONEY; GLOBAL_SYSTEM_FOR_MOBILE_COMMUNICATIONS;
    SECURITY_CHALLENGES; FINTECH
 
 
-UT 1253
+UT 27
 AR Magnuson W., 2018, VANDERBILT LAW REV, V71, P1167
 TI Regulating fintech
 AU Magnuson W.
@@ -1248,7 +1248,7 @@ AB THE_FINANCIAL_CRISIS of 2008 has led to DRAMATIC_CHANGES in THE_WAY that
    VANDERBILT_LAW_REVIEW . all rights reserved .
 
 
-UT 1327
+UT 55
 AR Zhao Q., 2019, SUSTAINABILITY, V11
 TI Improving financial service innovation strategies for enhancing China's
    banking industry competitive advantage during the fintech revolution: A
@@ -1288,7 +1288,7 @@ ID CHINA; BANKING; BUSINESS_DEVELOPMENT; COMPETITION (ECONOMICS);
    LABORATORY_METHOD
 
 
-UT 1225
+UT 22
 AR Mackenzie A., 2015, LONDON BUS SCH REV, V26, P50
 TI THE FINTECH REVOLUTION
 AU Mackenzie A.
@@ -1299,7 +1299,7 @@ AB how INNOVATORS are using TECHNOLOGY to take on THE_WORLD of FINANCE . 2015
    london business school
 
 
-UT 1121
+UT 8
 AR Zavolokina L., 2016, INT CONF INF SYST ICIS
 TI FinTech - What's in a name?
 AU Zavolokina L.; Dolata M.; Schwabe G.
@@ -1325,8 +1325,8 @@ ID INFORMATION_SYSTEMS; INNOVATION; CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS;
    (MACHINE_TOOLS)
 
 
-UT 1365
-AR Deng X., 2019, SUSTAINABILITY, V11, FINTECH AND SUSTAINABLE DEVEL
+UT 76
+AR Deng X., 2019, SUSTAINABILITY, V11
 TI FinTech and sustainable development: Evidence from China based on P2P data
 AU Deng X.; Huang Z.; Cheng X.
 TC 71
@@ -1359,7 +1359,7 @@ ID CHINA; ECONOMIC_GROWTH; EMPIRICAL_ANALYSIS; ENVIRONMENTAL_ECONOMICS;
    SUSTAINABLE_DEVELOPMENT
 
 
-UT 1333
+UT 59
 AR Brummer C., 2019, GEORGET LAW J, V107, P235
 TI Fintech and the innovation trilemma
 AU Brummer C.; Yadav Y.
@@ -1395,7 +1395,7 @@ AB whether in response to ROBO_ADVISING , ARTIFICIAL_INTELLIGENCE , or
    yesha yadav .
 
 
-UT 1208
+UT 17
 AR Saksonova S., 2017, EUR RES STUD, V20, P961
 TI Fintech as financial innovation - The possibilities and problems of
    implementation
@@ -1422,12 +1422,12 @@ AB there is A_GROWING_COMPETITION between BANKS and FINTECH not only in
    FAVOUR of THIS_HYPOTHESIS : they show that RESPONDENTS are generally unaware
    about FINTECH_SERVICES in LATVIA and THEIR_ASSOCIATED_INNOVATIONS and
    NEW_FINANCIAL_PRODUCTS . this paper makes SEVERAL_RECOMMENDATIONS for
-   MANAGERS of FINTECH_ENTERPRISES , association of START_UP_ENTERPRISES and
+   MANAGERS of FINTECH_ENTERPRISES , association of start up ENTERPRISES and
    RISK_CAPITAL_FUNDS as_well_as STATE_INSTITUTIONS .
 DE COMPETITION; FINTECH; INNOVATION_IN_FINANCIAL_SERVICES
 
 
-UT 1352
+UT 69
 AR Hinson R., 2019, CURR OPIN ENVIRON SUSTAINABILITY, V41, P1
 TI Transforming agribusiness in developing countries: SDGs and the role of
    FinTech
@@ -1454,7 +1454,7 @@ ID AGROINDUSTRY; CAPACITY_BUILDING; DEVELOPING_WORLD; DIGITIZATION;
    SUSTAINABILITY; SUSTAINABLE_DEVELOPMENT; TRADE_OFF
 
 
-UT 1223
+UT 20
 AR Wonglimpiyarat J., 2017, FORESIGHT, V19, P590
 TI FinTech banking industry: a systemic approach
 AU Wonglimpiyarat J.
@@ -1469,7 +1469,7 @@ AB purpose : this paper aims to EXPLORE_FINTECH and ITS_DYNAMIC_TRANSITIONS in
    THE_PROGRESS and PATTERN of TECHNOLOGY_DEVELOPMENT and DIFFUSION .
    THE_RESEARCH also discusses THE_LATEST_FINANCIAL_INNOVATION of
    PROMPTPAY_FINTECH_THE_E_PAYMENT_SYSTEM in THAILAND .
-   DESIGN/METHODOLOGY/approach : this research uses THE_CASE_STUDY_APPROACH to
+   DESIGN/methodology/approach : this research uses THE_CASE_STUDY_APPROACH to
    ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS of FINTECH_BASED_INNOVATIONS
    . this research offers A_NEW_SYSTEMIC_INNOVATION_MODEL which is developed
    and can be used as A_DYNAMIC_TOOL to track THE_PROGRESS and PATTERN of
@@ -1499,7 +1499,7 @@ AB purpose : this paper aims to EXPLORE_FINTECH and ITS_DYNAMIC_TRANSITIONS in
 DE BANKING; ECONOMIC_FORECASTING; INNOVATION; STRATEGY
 
 
-UT 1363
+UT 74
 AR Das S.R., 2019, FINANC MANAGE, V48, P981
 TI The future of fintech
 AU Das S.R.
@@ -1519,7 +1519,7 @@ AB this article describes THE_GROWING_FIELD of FINANCIAL_TECHNOLOGY ( FINTECH )
 DE AI; BLOCKCHAINS; FINTECH; PAYMENTS; REGTECH; ROBOTS; TRADING
 
 
-UT 1316
+UT 48
 AR Jagtiani J., 2018, J ECON BUS, V100, P1
 TI Fintech: The Impact on Consumers and Regulatory Responses
 AU Jagtiani J.; John K.

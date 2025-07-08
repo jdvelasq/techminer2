@@ -16,11 +16,9 @@ Example:
     >>> # python3 -m techminer2.database.ingest.import_scopus_data
 
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="example/").run() # doctest: +ELLIPSIS +SKIP
+    >>> IngestScopus(root_directory="example/").run() # doctest: +ELLIPSIS
 
-    >>> # Additional test cases
-    >>> # IngestScopus(root_directory="../tm2_13_xxx_revistas_scielo_en_scopus/").run() # doctest: +ELLIPSIS
-    >>> # IngestScopus(root_directory="../tm2_karla_marzo_2025/").run() # doctest: +ELLIPSIS
+
 
 
 """
