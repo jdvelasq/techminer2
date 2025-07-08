@@ -56,11 +56,11 @@ Example:
     ... ).head()
     cluster                                                    0  ...         9
     article                                                       ...
-    Alt R., 2018, ELECTRON MARK, V28, P235              0.033341  ...  0.033343
-    Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.939989  ...  0.006668
-    Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.012502  ...  0.012503
-    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.008336  ...  0.008335
-    Brummer C., 2019, GEORGET LAW J, V107, P235         0.012504  ...  0.012504
+    Alt R., 2018, ELECTRON MARK, V28, P235              0.699955  ...  0.033339
+    Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.006668  ...  0.006668
+    Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.012506  ...  0.012504
+    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.909981  ...  0.010001
+    Belanche D., 2019, IND MANAGE DATA SYS, V119, P...  0.008335  ...  0.008335
     <BLANKLINE>
     [5 rows x 10 columns]
 
