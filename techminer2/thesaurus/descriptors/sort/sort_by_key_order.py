@@ -37,7 +37,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus alphabetically
@@ -80,7 +80,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by key length
