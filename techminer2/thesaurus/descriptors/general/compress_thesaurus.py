@@ -14,13 +14,16 @@ Compress Thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CompressThesaurus
+    >>> from techminer2.thesaurus.descriptors import CompressThesaurus, CreateThesaurus
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
+    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+
+    >>> # Compress the thesaurus
     >>> compressor = (
     ...     CompressThesaurus(tqdm_disable=True)
     ...     .where_root_directory_is("example/")
@@ -33,7 +36,7 @@ Example:
     >>> print(output)
     Compressing thesaurus keys
                       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1716 to 1716
+      Keys reduced from 1729 to 1729
       Keys compressing completed successfully
     <BLANKLINE>
     <BLANKLINE>
