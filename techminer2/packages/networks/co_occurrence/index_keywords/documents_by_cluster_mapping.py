@@ -42,47 +42,30 @@ Example:
     ...     .run()
     ... )
     >>> print(len(documents_by_cluster))
-    4
+    3
     >>> print(documents_by_cluster[0][0])
-    UT 1346
-    AR Gracia D.B., 2019, IND MANAGE DATA SYS, V119, P1411
-    TI Artificial Intelligence in FinTech: understanding robo-advisors adoption
-       among customers
-    AU Gracia D.B.; Casaló-Ariño L.V.; Flavián C.
-    TC 225
-    SO Industrial Management and Data Systems
+    UT 26
+    AR Haddad C., 2019, SMALL BUS ECON, V53, P81
+    TI The emergence of the global fintech market: economic and technological
+       determinants
+    AU Haddad C.; Hornuf L.
+    TC 258
+    SO Small Business Economics
     PY 2019
-    AB purpose : considering THE_INCREASING_IMPACT of ARTIFICIAL_INTELLIGENCE ( AI
-       ) on FINANCIAL_TECHNOLOGY ( FINTECH ) , the purpose of this paper is to
-       propose A_RESEARCH_FRAMEWORK to better understand ROBO_ADVISOR_ADOPTION by
-       A_WIDE_RANGE of POTENTIAL_CUSTOMERS . it also predicts that
-       PERSONAL_AND_SOCIODEMOGRAPHIC_VARIABLES ( FAMILIARITY with ROBOTS , AGE ,
-       GENDER and COUNTRY ) moderate THE_MAIN_RELATIONSHIPS .
-       DESIGN/METHODOLOGY/approach : DATA from A_WEB_SURVEY of 765 north american ,
-       british and PORTUGUESE_POTENTIAL_USERS of ROBO_ADVISOR_SERVICES confirm
-       THE_VALIDITY of THE_MEASUREMENT_SCALES and provide THE_INPUT for
-       STRUCTURAL_EQUATION_MODELING and MULTISAMPLE_ANALYSES of THE_HYPOTHESES .
-       findings : CONSUMERS ' attitudes toward ROBO_ADVISORS , together_with
-       MASS_MEDIA and INTERPERSONAL_SUBJECTIVE_NORMS , are found to be
-       THE_KEY_DETERMINANTS of ADOPTION . THE_INFLUENCES of PERCEIVED_USEFULNESS
-       and ATTITUDE are slightly higher for USERS with A_HIGHER_LEVEL of
-       FAMILIARITY with ROBOTS . in_turn , SUBJECTIVE_NORMS are significantly more
-       relevant for USERS with A_LOWER_FAMILIARITY and for CUSTOMERS from
-       ANGLO_SAXON_COUNTRIES . practical implications : BANKS and OTHER_FIRMS in
-       THE_FINANCE_INDUSTRY should DESIGN_ROBO_ADVISORS to be used by
-       A_WIDE_SPECTRUM of CONSUMERS . MARKETING_TACTICS applied should consider
-       THE_CUSTOMER_LEVEL of FAMILIARITY with ROBOTS . originality/VALUE : this
-       research identifies THE_KEY_DRIVERS of ROBO_ADVISOR_ADOPTION and
-       THE_MODERATING_EFFECT of PERSONAL_AND_SOCIODEMOGRAPHIC_VARIABLES . it
-       contributes to UNDERSTANDING_CONSUMERS ' perceptions regarding
-       THE_INTRODUCTION of AI_IN_FINTECH . 2019 , emerald publishing limited .
-    DE ARTIFICIAL_INTELLIGENCE; FINANCE; ROBO_ADVISORS; ROBOTS; TECHNOLOGY_ADOPTION
-    ID FINANCE; FINTECH; INTELLIGENT_ROBOTS; ROBOTS; SALES;
-       DESIGN_METHODOLOGY_APPROACH; PERCEIVED_USEFULNESS; POTENTIAL_CUSTOMERS;
-       RESEARCH_FRAMEWORKS; ROBO_ADVISORS; SOCIO_DEMOGRAPHIC_VARIABLES;
-       STRUCTURAL_EQUATION_MODELING; TECHNOLOGY_ADOPTION; ARTIFICIAL_INTELLIGENCE
+    AB we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing
+       ENTREPRENEURS to establish VENTURES with THE_PURPOSE of reinventing
+       FINANCIAL_TECHNOLOGY ( FINTECH ) . we find that COUNTRIES witness more
+       FINTECH_STARTUP_FORMATIONS when THE_ECONOMY is
+       WELL_DEVELOPED_AND_VENTURE_CAPITAL is readily available . furthermore ,
+       THE_NUMBER of SECURE_INTERNET_SERVERS , MOBILE_TELEPHONE_SUBSCRIPTIONS , and
+       THE_AVAILABLE_LABOR_FORCE has A_POSITIVE_IMPACT on THE_DEVELOPMENT of
+       THIS_NEW_MARKET_SEGMENT . finally , the more difficult it is for COMPANIES
+       to ACCESS_LOANS , the higher is THE_NUMBER of FINTECH_STARTUPS in A_COUNTRY
+       . overall , THE_EVIDENCE suggests that FINTECH_STARTUP_FORMATION_NEED not be
+       left to CHANCE , but ACTIVE_POLICIES can influence THE_EMERGENCE of
+       THIS_NEW_SECTOR . 2018 , the author ( s ) .
+    DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
     <BLANKLINE>
-
 
 
 
