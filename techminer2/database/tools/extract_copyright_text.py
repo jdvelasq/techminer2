@@ -21,9 +21,8 @@ Example:
     TORS , REGULATORS , etc . ) , who explore THE_FIELD of FINTECH . 2016 , the author ( s ) .
     E_SERVICE_OFFERINGS of FINTECH_START_UP in A_STRUCTURED_MANNER . 2017 , the author ( s ) .
     IOD short , we can not rule out that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
-    ACTIVE_POLICIES can INFLUENCE_THE_EMERGENCE of THIS_NEW_SECTOR . 2018 , the author ( s ) .
+    ACTIVE_POLICIES can influence THE_EMERGENCE of THIS_NEW_SECTOR . 2018 , the author ( s ) .
     _SERVICES will develop into MORE_SECURE_SERVICES in_the_future . 2018 , the author ( s ) .
-
 
 
 """
