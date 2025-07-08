@@ -33,7 +33,7 @@ Example:
     AGRICULTURE                      1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
     AGROPAY                          1.0  144694.0 NaN  ...  2019.0  2019.0  2019.0
     <BLANKLINE>
-    [5 rows x 56 columns]
+    [5 rows x 96 columns]
 
 
 
