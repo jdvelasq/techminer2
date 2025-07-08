@@ -84,14 +84,14 @@ Example:
                       Index keywords (cleaned)                          177
                       Keywords (raw)                                    279
                       Keywords (cleaned)                                266
-    NOUNS AND PHRASES Document title nouns and phrases (raw)            126
-                      Document title nouns and phrases (cleaned)        124
+    NOUNS AND PHRASES Document title nouns and phrases (raw)            125
+                      Document title nouns and phrases (cleaned)        123
                       Abstract nouns and phrases (raw)                 1555
-                      Abstract nouns and phrases (cleaned)             1524
-                      Nouns and phrases (raw)                          1613
-                      Nouns and phrases (cleaned)                      1578
-    DESCRIPTORS       Descriptors (raw)                                1793
-                      Descriptors (cleaned)                            1729
+                      Abstract nouns and phrases (cleaned)             1522
+                      Nouns and phrases (raw)                          1612
+                      Nouns and phrases (cleaned)                      1575
+    DESCRIPTORS       Descriptors (raw)                                1792
+                      Descriptors (cleaned)                            1726
 
 
 
