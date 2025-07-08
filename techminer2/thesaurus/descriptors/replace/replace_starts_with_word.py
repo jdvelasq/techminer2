@@ -39,7 +39,7 @@ Example:
              File : ...e/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
-      38 replacements made successfully
+      39 replacements made successfully
       Word replacing completed successfully
     <BLANKLINE>
     Printing thesaurus header
