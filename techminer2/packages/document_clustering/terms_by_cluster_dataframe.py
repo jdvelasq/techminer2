@@ -54,20 +54,19 @@ Example:
     ...     #
     ...     .run()
     ... ).head(10)
-                                     0  ...                         3
-    0           SUSTAINABILITY 03:0227  ...  CONTENT_ANALYSIS 02:0181
-    1  SUSTAINABLE_DEVELOPMENT 03:0227  ...    DIGITALIZATION 02:0181
-    2        LITERATURE_REVIEW 02:0560  ...     POPULAR_PRESS 02:0181
-    3         FINANCIAL_SYSTEM 02:0385  ...
-    4             DIGITIZATION 02:0319  ...
-    5                    CHINA 02:0150  ...
-    6                                   ...
-    7                                   ...
-    8                                   ...
-    9                                   ...
+                                   0  ...                             3
+    0     FINANCIAL_SERVICES 05:0746  ...               FINTECH 32:5393
+    1        BUSINESS_MODELS 03:1335  ...            BLOCKCHAIN 03:0881
+    2  FINANCIAL_INSTITUTION 03:0488  ...   FINANCIAL_INCLUSION 03:0590
+    3   FINANCIAL_TECHNOLOGY 03:0461  ...          CROWDFUNDING 03:0335
+    4                BANKING 03:0370  ...   MARKETPLACE_LENDING 03:0317
+    5             TECHNOLOGY 02:0310  ...      ELECTRONIC_MONEY 03:0305
+    6                REGTECH 02:0266  ...           LENDINGCLUB 02:0253
+    7                  CHINA 02:0150  ...  PEER_TO_PEER_LENDING 02:0253
+    8                                 ...        SHADOW_BANKING 02:0253
+    9                                 ...           P2P_LENDING 02:0161
     <BLANKLINE>
     [10 rows x 4 columns]
-
 
 
 """
