@@ -69,8 +69,10 @@ Example:
     A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet
     unfolding SOCIAL_AND_POLITICAL_CONTEXT . it also DISCUSSES_POLICY_IMPLICATIONS
     for CHINA_FINTECH_INDUSTRY , focusing_on THE_CHANGING_ROLE of THE_STATE in
-    fostering THE_GROWTH of NATIONAL_INDUSTRY within and outside_of CHINA . 2015
+    fostering THE_GROWTH of NATIONAL_INDUSTRY within_and_outside_of CHINA . 2015
     elsevier ltd .
+
+
 
     >>> # Deletes the fields
     >>> field_deleter = (
