@@ -11,8 +11,6 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-import spacy
-from textblob import TextBlob  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ....._internals import Params
@@ -54,15 +52,7 @@ def prepare_dest_field(dataframe, source, dest):
 
 
 # ------------------------------------------------------------------------------
-def collect_all_keywords(root_directory):
-
-    database_file = pathlib.Path(root_directory) / "data/processed/database.csv.zip"
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+def collect_all_keywords(dataframe):
 
     terms = []
     for column in [
@@ -74,6 +64,25 @@ def collect_all_keywords(root_directory):
 
     terms = pd.concat(terms)
     terms = terms.reset_index(drop=True)
+
+    return terms
+
+
+# ------------------------------------------------------------------------------
+def collect_all_noun_phrases(dataframe, dest):
+
+    terms = []
+    for column in [
+        "raw_textblob_phrases",
+        "raw_spacy_phrases",
+    ]:
+        if column in dataframe.columns:
+            terms.append(dataframe[column].dropna().copy())
+
+    terms = pd.concat(terms)
+    terms = terms.str.split("; ")
+    terms = terms.explode()
+    terms = terms.to_list()
 
     return terms
 
@@ -120,37 +129,6 @@ def extract_abbreviations_from_text(text):
     abbreviations = [t for t in abbreviations if all(c.isalnum() for c in t)]
     abbreviations = list(set(abbreviations))
     return abbreviations
-
-
-# ------------------------------------------------------------------------------
-def collect_textblob_noun_phrases(text):
-    return [str(phrase) for phrase in TextBlob(text).noun_phrases]
-
-
-# ------------------------------------------------------------------------------
-def collect_spacy_noun_phrases(spacy_nlp, text):
-    phrases = [chunk.text for chunk in spacy_nlp(text).noun_chunks]
-    phrases = [term for term in phrases if "." not in term]
-    phrases = [term for term in phrases if "(" not in term]
-    phrases = [term for term in phrases if ")" not in term]
-    phrases = [term for term in phrases if "[" not in term]
-    phrases = [term for term in phrases if "]" not in term]
-    phrases = [term for term in phrases if "%" not in term]
-    phrases = [term for term in phrases if "&" not in term]
-    phrases = [term for term in phrases if "!" not in term]
-    phrases = [term for term in phrases if "'" not in term]
-    phrases = [term for term in phrases if '"' not in term]
-    phrases = [term for term in phrases if "+" not in term]
-    phrases = [term for term in phrases if "<" not in term]
-    phrases = [term for term in phrases if ">" not in term]
-    phrases = [term for term in phrases if "=" not in term]
-
-    phrases = [
-        term
-        for term in phrases
-        if "a" in term or "e" in term or "i" in term or "o" in term or "u" in term
-    ]
-    return phrases
 
 
 # ------------------------------------------------------------------------------
@@ -424,11 +402,12 @@ def internal__highlight_nouns_and_phrases(
 
     dataframe = prepare_dest_field(dataframe, source, dest)
 
-    all_keywords = collect_all_keywords(root_directory)
+    all_keywords = collect_all_keywords(dataframe)
     frequent_keywords, all_keywords = clean_all_keywords(all_keywords)
-    known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
 
-    spacy_nlp = spacy.load("en_core_web_sm")
+    all_noun_phrases = collect_all_noun_phrases(dataframe, dest)
+    known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
+    all_noun_phrases += known_noun_phrases
 
     connectors = internal__load_text_processing_terms("connectors.txt")
     copyright_regex = internal__load_text_processing_terms("copyright_regex.txt")
@@ -462,15 +441,14 @@ def internal__highlight_nouns_and_phrases(
         #
         # Algorithm:
         #
-        key_terms += collect_textblob_noun_phrases(text)
-        key_terms += collect_spacy_noun_phrases(spacy_nlp, text)
+        key_terms += [k for k in all_noun_phrases if k in row[dest]]
+
         text_noun_phrases += key_terms
 
         key_terms += extract_abbreviations_from_text(text)
         key_terms = clean_key_terms(stopwords, key_terms)
 
         key_terms += [k for k in all_keywords if k in row[dest]]
-        key_terms += [k for k in known_noun_phrases if k in row[dest]]
 
         url_matches = collect_urls(text)
 
