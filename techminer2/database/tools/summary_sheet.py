@@ -30,9 +30,8 @@ Example:
     5             author_keywords                 38       76.00%
     6                     authors                 50      100.00%
     7                  authors_id                 50      100.00%
-    8   authors_with_affiliations                 50      100.00%
+    8   authors_with_affiliations                 49       98.00%
     9                       coden                 12       24.00%
-
 
 
 """
