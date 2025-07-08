@@ -17,15 +17,14 @@ Example:
     ...         Params(root_directory="example/")
     ...     ).head() # doctest: +ELLIPSIS
     ... )
-        abbr_source_title abstract  ... volume  year
-    0          Econ. Soc.      NaN  ...     30  2001
-    1       Psychometrika      NaN  ...     46  1981
-    2  Strategic Manage J      NaN  ...     20  1999
-    3         J. Classif.      NaN  ...      5  1988
-    4         Theor Decis      NaN  ...      9  1978
+                        abbr_source_title  ...  year
+    0             Int. J. Appl. Eng. Res.  ...  2016
+    1                   Telecommun Policy  ...  2016
+    2                 Comput. Hum. Behav.  ...  2016
+    3                      China Econ. J.  ...  2016
+    4  Contemp. Stud. Econ. Financ. Anal.  ...  2016
     <BLANKLINE>
-    [5 rows x 75 columns]
-
+    [5 rows x 79 columns]
 
 
 
