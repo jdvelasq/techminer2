@@ -54,6 +54,13 @@ Example:
     ...     #
     ...     .run()
     ... )
+       Cluster  ...                                              Terms
+    0        0  ...  FINANCIAL_SERVICES 05:0746; BUSINESS_MODELS 03...
+    1        1  ...  SUSTAINABILITY 03:0227; SUSTAINABLE_DEVELOPMEN...
+    2        2  ...  FINANCE 11:1950; INNOVATION 08:0990; FINANCIAL...
+    3        3  ...  FINTECH 32:5393; BLOCKCHAIN 03:0881; FINANCIAL...
+    <BLANKLINE>
+    [4 rows x 4 columns]
 
 
 
