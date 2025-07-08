@@ -38,14 +38,14 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by fuzzy match
                 File : example/data/thesaurus/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
-      91 matching keys found
+      92 matching keys found
       Thesaurus sorting completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -63,12 +63,13 @@ Example:
           A_PLATFORM
         BUSINESS_INFRASTRUCTURE
           BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
+          CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
         CLASSIFICATION (OF_INFORMATION)
           CLASSIFICATION (OF_INFORMATION)
-        COMPETITORS
-          COMPETITORS
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """
