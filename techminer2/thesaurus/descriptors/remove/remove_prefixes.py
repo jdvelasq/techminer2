@@ -33,7 +33,7 @@ Example:
     Removing prefixes from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-      189 prefixes removed successfully
+      191 prefixes removed successfully
       Prefix removal successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -57,6 +57,7 @@ Example:
           COMPLEX_AI/ML_ALGORITHMS
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """
