@@ -41,7 +41,7 @@ Example:
     >>> print(output)
     Spell checking thesaurus keys
       File : example/data/thesaurus/demo.the.txt
-      Potential misspelled words (71):
+      Potential misspelled words (69):
     <BLANKLINE>
         - affordance
         - agroindustry
@@ -55,7 +55,7 @@ Example:
         - centricity
         ...
     <BLANKLINE>
-      Matching keys found : 86
+      Matching keys found : 85
       Spell checking completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -73,12 +73,13 @@ Example:
           AGROINDUSTRY
         AGROPAY
           AGROPAY
+        ANALYSE_THE_KEY_FACTORS
+          ANALYSE_THE_KEY_FACTORS
         ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
           ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
+
 
     >>> # Restaring the stderr
     >>> sys.stderr = StringIO()
@@ -96,7 +97,7 @@ Example:
     >>> print(output)
     Spell checking thesaurus keys
       File : example/data/thesaurus/demo.the.txt
-      Potential misspelled words (71):
+      Potential misspelled words (69):
     <BLANKLINE>
         - affordance
         - agroindustry
@@ -110,7 +111,7 @@ Example:
         - centricity
         ...
     <BLANKLINE>
-      Matching keys found : 86
+      Matching keys found : 85
       Spell checking completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -128,12 +129,14 @@ Example:
           AGROINDUSTRY
         AGROPAY
           AGROPAY
+        ANALYSE_THE_KEY_FACTORS
+          ANALYSE_THE_KEY_FACTORS
         ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
           ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
+
+
 
 """
 import sys
