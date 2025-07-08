@@ -83,7 +83,7 @@ Example:
     ...         print(file=f)
 
     >>> print(documents[0])
-    UT 1260
+    UT 30
     AR Gomber P., 2018, J MANAGE INF SYST, V35, P220
     TI On the Fintech Revolution: Interpreting the Forces of Innovation,
        Disruption, and Transformation in Financial Services
