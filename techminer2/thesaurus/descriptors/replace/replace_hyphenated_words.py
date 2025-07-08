@@ -35,7 +35,7 @@ Example:
     >>> print(output)
     Transforming hyphenated words in thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      49 hypenated words transformed successfully
+      47 hypenated words transformed successfully
       Hyphenated words transformation completed successfully
     <BLANKLINE>
     Printing thesaurus header
