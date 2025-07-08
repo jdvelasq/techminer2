@@ -54,16 +54,15 @@ Example:
     ...     #
     ...     .run()
     ... ).head()
-    cluster                             0  ...                           9
-    term                                   ...
-    0                     FINTECH 44:6942  ...             FINANCE 21:3481
-    1        FINANCIAL_TECHNOLOGY 13:1909  ...             FINTECH 44:6942
-    2                  TECHNOLOGY 13:1594  ...               CHINA 06:0673
-    3                  REGULATORS 08:0974  ...          INNOVATION 12:2290
-    4             THE_DEVELOPMENT 07:1073  ...  FINANCIAL_SERVICES 11:1862
+    cluster                               0  ...                     9
+    term                                     ...
+    0                       FINTECH 44:6942  ...       FINTECH 44:6942
+    1                       FINANCE 21:3481  ...       FINANCE 21:3481
+    2          THE_FINANCIAL_SECTOR 05:1147  ...    INNOVATION 12:2290
+    3                    TECHNOLOGY 13:1594  ...  THE_RESEARCH 05:0839
+    4        THE_FINANCIAL_INDUSTRY 09:2006  ...         VALUE 05:0612
     <BLANKLINE>
     [5 rows x 10 columns]
-
 
 
 
