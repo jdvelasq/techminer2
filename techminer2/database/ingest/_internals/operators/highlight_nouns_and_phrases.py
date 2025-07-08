@@ -210,8 +210,8 @@ def mark_connectors(connectors, text):
 
 # ------------------------------------------------------------------------------
 def join_consequtive_separate_terms_in_uppercase(text):
-    for n_terms in range(1, 5):
-        pattern = r"\b[A-Z][A-Z_]+" + " [A-Z][A-Z_]+" * n_terms
+    for _ in range(5, 1, -1):
+        pattern = "[A-Z][A-Z_]+" + " [A-Z][A-Z_]+"
         matches = re.findall(pattern, text)
 
         if len(matches) > 0:
@@ -334,7 +334,7 @@ def report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
     ]
     undetected_keywords = sorted(set(undetected_keywords))
     undetected_keywords = [
-        word for word in undetected_keywords if len(word.split()) > 2
+        word for word in undetected_keywords if len(word.split()) > 1
     ]
     undetected_keywords = [
         word.replace(" ", "_").upper() for word in undetected_keywords
@@ -407,7 +407,7 @@ def internal__highlight_nouns_and_phrases(
 
     all_noun_phrases = collect_all_noun_phrases(dataframe, dest)
     known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
-    all_noun_phrases += known_noun_phrases
+    ## all_noun_phrases += known_noun_phrases
 
     connectors = internal__load_text_processing_terms("connectors.txt")
     copyright_regex = internal__load_text_processing_terms("copyright_regex.txt")
@@ -442,13 +442,11 @@ def internal__highlight_nouns_and_phrases(
         # Algorithm:
         #
         key_terms += [k for k in all_noun_phrases if k in row[dest]]
-
         text_noun_phrases += key_terms
-
         key_terms += extract_abbreviations_from_text(text)
         key_terms = clean_key_terms(stopwords, key_terms)
-
         key_terms += [k for k in all_keywords if k in row[dest]]
+        key_terms += [k for k in known_noun_phrases if k in row[dest]]
 
         url_matches = collect_urls(text)
 
@@ -457,6 +455,7 @@ def internal__highlight_nouns_and_phrases(
         text = mark_discursive_patterns(discursive_patterns, text)
         text = mark_connectors(connectors, text)
         text = highlight_key_terms(key_terms, text)
+
         text = join_consequtive_separate_terms_in_uppercase(text)
 
         text = replace_urls(text, url_matches)
