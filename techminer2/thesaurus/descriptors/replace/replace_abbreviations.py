@@ -38,7 +38,7 @@ Example:
     Replacing abbreviations in keys
           Thesaurus : ...e/data/thesaurus/descriptors.the.txt
       Abbreviations : ...data/thesaurus/abbreviations.the.txt
-      131 replacements made successfully
+      132 replacements made successfully
       Abbreviations replacement completed successfully
     <BLANKLINE>
     Printing thesaurus header
