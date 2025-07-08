@@ -94,7 +94,7 @@ Example:
      'TC': 576,
      'TI': 'On the Fintech Revolution: Interpreting the Forces of Innovation, '
            'Disruption, and Transformation in Financial Services',
-     'UT': 1260}
+     'UT': 30}
 
 
 """
