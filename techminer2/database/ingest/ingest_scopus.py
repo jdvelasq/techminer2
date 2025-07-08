@@ -70,6 +70,8 @@ from ._internals.preprocessors import (  # type: ignore
     internal__preprocess_raw_index_keywords,
     internal__preprocess_raw_keywords,
     internal__preprocess_raw_noun_and_phrases,
+    internal__preprocess_raw_spacy_phrases,
+    internal__preprocess_raw_textblob_phrases,
     internal__preprocess_record_id,
     internal__preprocess_record_no,
     internal__preprocess_references,
@@ -127,8 +129,7 @@ class IngestScopus(
         # ---------------------------------------------------------------------------------
         #
         #
-        internal__preprocess_abstract(root_directory)
-        internal__preprocess_document_title(root_directory)
+
         #
         internal__preprocess_eissn(root_directory)
         internal__preprocess_issn(root_directory)
@@ -161,6 +162,7 @@ class IngestScopus(
         #
         #
 
+        # Author & index keywords
         internal__preprocess_raw_index_keywords(root_directory)
         internal__check_empty_terms("raw_index_keywords", root_directory=root_directory)
         internal__preprocess_index_keywords(root_directory)
@@ -176,6 +178,13 @@ class IngestScopus(
         internal__preprocess_raw_keywords(root_directory)
         internal__check_empty_terms("raw_keywords", root_directory=root_directory)
 
+        # Preprocess noun and phrases
+        internal__preprocess_abstract(root_directory)
+        internal__preprocess_document_title(root_directory)
+        internal__preprocess_raw_textblob_phrases(root_directory)
+        internal__preprocess_raw_spacy_phrases(root_directory)
+
+        #
         internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
         internal__check_empty_terms(
             "raw_abstract_nouns_and_phrases", root_directory=root_directory
