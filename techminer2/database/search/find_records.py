@@ -36,7 +36,7 @@ Example:
     ... )
     >>> docs = finder.run()
     >>> print(docs[0])
-    UT 1251
+    UT 26
     AR Haddad C., 2019, SMALL BUS ECON, V53, P81
     TI The emergence of the global fintech market: economic and technological
        determinants
@@ -54,7 +54,7 @@ Example:
        THIS_NEW_MARKET_SEGMENT . finally , the more difficult it is for COMPANIES
        to ACCESS_LOANS , the higher is THE_NUMBER of FINTECH_STARTUPS in A_COUNTRY
        . overall , THE_EVIDENCE suggests that FINTECH_STARTUP_FORMATION_NEED not be
-       left to CHANCE , but ACTIVE_POLICIES can INFLUENCE_THE_EMERGENCE of
+       left to CHANCE , but ACTIVE_POLICIES can influence THE_EMERGENCE of
        THIS_NEW_SECTOR . 2018 , the author ( s ) .
     DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
     <BLANKLINE>
