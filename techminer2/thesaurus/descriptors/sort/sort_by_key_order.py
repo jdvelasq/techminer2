@@ -66,6 +66,8 @@ Example:
     <BLANKLINE>
     <BLANKLINE>
 
+
+
     >>> # Configure and run the sorter
     >>> sorter = (
     ...     SortByKeyOrder()
@@ -109,6 +111,8 @@ Example:
     <BLANKLINE>
     <BLANKLINE>
 
+
+
     >>> # Configure and run the sorter
     >>> sorter = (
     ...     SortByKeyOrder()
@@ -123,7 +127,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1729 to 1729
+      Keys reduced from 1726 to 1726
       Keys reduction completed successfully
     <BLANKLINE>
     Sorting thesaurus by word length
@@ -133,6 +137,8 @@ Example:
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
+        DESIGN/METHODOLOGY/APPROACH
+          DESIGN/METHODOLOGY/APPROACH
         RESEARCH_LIMITATIONS/IMPLICATIONS
           RESEARCH_LIMITATIONS/IMPLICATIONS
         COMPETITION (ECONOMICS)
@@ -147,10 +153,10 @@ Example:
           THE_RECONCEPTUALIZATION
         CLASSIFICATION (OF_INFORMATION)
           CLASSIFICATION (OF_INFORMATION)
-        EXPLORE_INTERRELATIONSHIPS
-          EXPLORE_INTERRELATIONSHIPS
     <BLANKLINE>
     <BLANKLINE>
+
+
 
 
 """
