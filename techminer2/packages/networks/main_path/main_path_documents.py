@@ -39,7 +39,7 @@ Example:
     >>> len(documents)
     5
     >>> print(documents[0])
-    UT 1178
+    UT 11
     AR Gomber P., 2017, J BUS ECON, V87, P537
     TI Digital Finance and FinTech: current research and future research directions
     AU Gomber P.; Koch J.-A.; Siering M.
@@ -60,7 +60,7 @@ Example:
        THIS_BACKDROP , THE_RESEARCH on FINANCE and INFORMATION_SYSTEMS has started
        to analyze THESE_CHANGES and THE_IMPACT of DIGITAL_PROGRESS on
        THE_FINANCIAL_SECTOR . therefore , this article reviews the
-       CURRENT_STATE_OF_RESEARCH in DIGITAL_FINANCE that deals with
+       CURRENT_STATE_OF_RESEARCH in DIGITAL_FINANCE that DEALS with
        THESE_NOVEL_AND_INNOVATIVE_BUSINESS_FUNCTIONS . moreover , it gives
        AN_OUTLOOK on POTENTIAL_FUTURE_RESEARCH_DIRECTIONS . as A_CONCEPTUAL_BASIS
        for reviewing THIS_FIELD , the DIGITAL_FINANCE_CUBE , which embraces
@@ -75,6 +75,8 @@ Example:
     DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
        LITERATURE_REVIEW; STATE_OF_THE_ART
     <BLANKLINE>
+
+
 
 
 
