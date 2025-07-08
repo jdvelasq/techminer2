@@ -38,7 +38,7 @@ Example:
     >>> print(output)
     Converting British to American English
       File : example/data/thesaurus/demo.the.txt
-      12 replacements made successfully
+      13 replacements made successfully
     Translation completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -46,6 +46,8 @@ Example:
     <BLANKLINE>
         ANALOG_PROCESSES
           ANALOGUE_PROCESSES
+        ANALYZE_THE_KEY_FACTORS
+          ANALYSE_THE_KEY_FACTORS
         ANALYZE_THE_SYSTEMIC_CHARACTERISTICS
           ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
         ANALYZE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
@@ -58,8 +60,6 @@ Example:
           FAVOUR
         HARMONIZE_TECHNOLOGICAL_ADVANCEMENTS
           HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
-        INSTILL_CULTURE_CHANGE
-          INSTIL_CULTURE_CHANGE
     <BLANKLINE>
     <BLANKLINE>
 
