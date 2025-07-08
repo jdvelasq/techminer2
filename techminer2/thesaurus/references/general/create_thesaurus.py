@@ -46,7 +46,7 @@ Example:
           Buchak G., Matvos G., Piskorski T., Seru A., Fintech, regulatory arbitrag...
         Cai C.W., 2018, ACCOUNT FINANC, V58, P965
           Cai C.W., Disruption of financial intermediation by FinTech: A review on ...
-        Chen L./1, 2016, CHINA ECON J, V9, P225
+        Chen L., 2016, CHINA ECON J, V9, P225
           Chen L., From Fintech to Finlife: The case of Fintech development in Chin...
         Dorfleitner G., 2017, FINTECH IN GER, P1
           Dorfleitner G., Hornuf L., Schmitt M., Weber M., FinTech in Germany, (2017)
@@ -54,6 +54,8 @@ Example:
           Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
     <BLANKLINE>
     <BLANKLINE>
+
+
 
 
 """
