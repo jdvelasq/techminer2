@@ -40,9 +40,10 @@ Example:
        Node                       Name  Degree
     0     0            FINTECH 44:6942      19
     1     1            FINANCE 21:3481      19
-    2     2       TECHNOLOGIES 15:1810      19
+    2     2       TECHNOLOGIES 17:1943      19
     3     3  FINANCIAL_SERVICE 12:2100      19
-    4     4         INNOVATION 15:2741      18
+    4     4         REGULATORS 08:0974      19
+
 
 
 """
