@@ -24,7 +24,7 @@ Example:
     3                      China Econ. J.  ...  2016
     4  Contemp. Stud. Econ. Financ. Anal.  ...  2016
     <BLANKLINE>
-    [5 rows x 79 columns]
+    [5 rows x 80 columns]
 
 
 
