@@ -29,11 +29,9 @@ docs_source/source/
 docs_source/_source/
 
 # Ignore results generated during development
-example/databases/
-example/my_keywords/
-example/reports/
-example/rules/
-example/thesaurus/
+example/data/
+example/outputs/
+example/src/
 
 debug.ipynb
 
