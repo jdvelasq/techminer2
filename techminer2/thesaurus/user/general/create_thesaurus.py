@@ -36,7 +36,7 @@ Example:
     >>> print(output)
     Creating thesaurus from 'raw_descriptors' field
       File : example/data/thesaurus/demo.the.txt
-      1729 keys found
+      1726 keys found
       Thesaurus creation completed successfully
     <BLANKLINE>
     Printing thesaurus header
