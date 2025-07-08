@@ -25,8 +25,8 @@ vscode-extension/*.vsix
 
 
 # Files generated automatically
-docs_src/source/
-docs_src/_source/
+docs_source/source/
+docs_source/_source/
 
 # Ignore results generated during development
 example/databases/
