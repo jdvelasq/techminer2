@@ -8,10 +8,10 @@
 # pylint: disable=too-many-branches
 
 
-from ...basecli import BaseCLI
+from ...baseshell import BaseShell
 
 
-class TranslateCLI(BaseCLI):
+class TranslateCLI(BaseShell):
     prompt = "tm2 > descriptors > translate > "
 
     def do_ame2bri(self, arg):

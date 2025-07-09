@@ -8,10 +8,10 @@
 # pylint: disable=too-many-branches
 
 
-from ...basecli import BaseCLI
+from ...baseshell import BaseShell
 
 
-class RemoveCLI(BaseCLI):
+class RemoveCLI(BaseShell):
     prompt = "tm2 > descriptors > remove > "
 
     # Sub-submenu commands

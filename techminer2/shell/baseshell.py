@@ -11,7 +11,7 @@ import cmd
 import textwrap
 
 
-class BaseCLI(cmd.Cmd):
+class BaseShell(cmd.Cmd):
     def __init__(self):
         super().__init__()
         commands = [name[3:] for name in self.get_names() if name.startswith("do_")]

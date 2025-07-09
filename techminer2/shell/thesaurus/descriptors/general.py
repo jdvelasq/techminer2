@@ -8,10 +8,10 @@
 # pylint: disable=too-many-branches
 
 
-from ...basecli import BaseCLI
+from ...baseshell import BaseShell
 
 
-class GeneralCLI(BaseCLI):
+class GeneralCLI(BaseShell):
     prompt = "tm2 > descriptors > general > "
 
     # Sub-submenu commands

@@ -8,13 +8,13 @@
 # pylint: disable=too-many-branches
 """Command line interface."""
 
-from ...basecli import BaseCLI
+from ...baseshell import BaseShell
 from .general import GeneralCLI
 from .remove import RemoveCLI
 from .translate import TranslateCLI
 
 
-class DescriptorsCLI(BaseCLI):
+class DescriptorsCLI(BaseShell):
 
     prompt = "tm2 > descriptors > "
 

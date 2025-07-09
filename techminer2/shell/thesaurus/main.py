@@ -6,22 +6,22 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-"""Command line interface for thesaurus descriptor operations."""
+"""Command line interface for the Thesaurus subsystem."""
 
 
 import cmd
 import readline
 import rlcompleter  # type: ignore
 
-from .basecli import BaseCLI
-from .thesaurus.shell import ThesaurusShell
+from ..baseshell import BaseShell
+from .descriptors.main import DescriptorsCLI
 
 readline.parse_and_bind("bind ^I rl_complete")
 
 
-class MainShell(BaseCLI):
-    intro = "Welcome. Type help or ? to list commands.\n"
-    prompt = "tm2 > "
+class ThesaurusShell(BaseShell):
+
+    prompt = "tm2 > Thesaurus > "
 
     # Main menu commands
     # def do_abbreviations(self, arg):
@@ -34,9 +34,9 @@ class MainShell(BaseCLI):
     #     print("Entering countries menu...")
     #     CountriesCLI().cmdloop()
 
-    def do_thesaurus(self, arg):
-        """Enters to the Thesaurus subsystem."""
-        ThesaurusShell().cmdloop()
+    def do_descriptors(self, arg):
+        """Commands for manipulating descriptors.the.txt thesaurus file."""
+        DescriptorsCLI().cmdloop()
 
     # def do_organizations(self, arg):
     #     """Organizations-related commands."""
@@ -58,4 +58,4 @@ class MainShell(BaseCLI):
 
 
 if __name__ == "__main__":
-    MainShell().cmdloop()
+    ThesaurusShell().cmdloop()
