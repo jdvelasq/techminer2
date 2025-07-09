@@ -9,36 +9,35 @@
 
 
 from ....baseshell import BaseShell
+from .commands import (
+    execute_abbreviations_command,
+    execute_endswith_command,
+    execute_hyphenated_command,
+    execute_startswith_command,
+    execute_word_command,
+)
 
 
-class RemoveCLI(BaseShell):
-    prompt = "tm2 > descriptors > remove > "
+class ReplaceCLI(BaseShell):
+    prompt = "tm2 > descriptors > replace > "
 
     # Sub-submenu commands
-    def do_prefixes(self, arg):
-        """Remove common prefixes from keys."""
-        print("Removing prefixes from keys...")
-        # Add your removing logic here
+    def do_abbreviations(self, arg):
+        """Replace abbreviations."""
+        execute_abbreviations_command()
 
-    def do_suffixes(self, arg):
-        """Remove common suffixes from keys."""
-        print("Removing suffixes from keys...")
-        # Add your removing logic here
+    def do_endswith(self, arg):
+        """Replace words that end with a specific string."""
+        execute_endswith_command()
 
-    def do_determiners(self, arg):
-        """Remove common determiners from keys."""
-        print("Removing determiners from keys...")
+    def do_hyphenated(self, arg):
+        """Replace hyphenated words."""
+        execute_hyphenated_command()
 
-    def do_stopwords(self, arg):
-        """Remove initial stopwords from keys."""
-        print("Removing stopwords from keys...")
+    def do_startswith(self, arg):
+        """Replace words that start with a specific string."""
+        execute_startswith_command()
 
-    def do_parentheses(self, arg):
-        """Remove parentheses from keys."""
-        print("Removing parentheses from keys...")
-
-    # --- Back command ---
-    def do_back(self, arg):
-        """Go back to the previous menu."""
-        print("Returning to the thesaurus menu...")
-        return True
+    def do_word(self, arg):
+        """Replace specific words."""
+        execute_word_command()

@@ -9,36 +9,34 @@
 
 
 from ....baseshell import BaseShell
+from .commands import (
+    execute_determiners_command,
+    execute_parentheses_command,
+    execute_prefixes_command,
+    execute_stopwords_command,
+    execute_suffixes_command,
+)
 
 
 class RemoveCLI(BaseShell):
-    prompt = "tm2 > descriptors > remove > "
-
-    # Sub-submenu commands
-    def do_prefixes(self, arg):
-        """Remove common prefixes from keys."""
-        print("Removing prefixes from keys...")
-        # Add your removing logic here
-
-    def do_suffixes(self, arg):
-        """Remove common suffixes from keys."""
-        print("Removing suffixes from keys...")
-        # Add your removing logic here
+    prompt = "tm2 > thesaurus > descriptors > remove > "
 
     def do_determiners(self, arg):
         """Remove common determiners from keys."""
-        print("Removing determiners from keys...")
-
-    def do_stopwords(self, arg):
-        """Remove initial stopwords from keys."""
-        print("Removing stopwords from keys...")
+        execute_determiners_command()
 
     def do_parentheses(self, arg):
         """Remove parentheses from keys."""
-        print("Removing parentheses from keys...")
+        execute_parentheses_command()
 
-    # --- Back command ---
-    def do_back(self, arg):
-        """Go back to the previous menu."""
-        print("Returning to the thesaurus menu...")
-        return True
+    def do_prefixes(self, arg):
+        """Remove common prefixes from keys."""
+        execute_prefixes_command()
+
+    def do_stopwords(self, arg):
+        """Remove initial stopwords from keys."""
+        execute_stopwords_command()
+
+    def do_suffixes(self, arg):
+        """Remove common suffixes from keys."""
+        execute_suffixes_command()

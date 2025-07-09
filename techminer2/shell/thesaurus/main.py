@@ -37,6 +37,7 @@ class ThesaurusShell(BaseShell):
     def do_descriptors(self, arg):
         """Commands for manipulating descriptors.the.txt thesaurus file."""
         DescriptorsCLI().cmdloop()
+        self.do_help(arg)
 
     # def do_organizations(self, arg):
     #     """Organizations-related commands."""
@@ -47,10 +48,6 @@ class ThesaurusShell(BaseShell):
     #     """References-related commands."""
     #     print("Entering references menu...")
     #     ReferencesCLI().cmdloop()
-
-    def do_back(self, arg):
-        """Exit the CLI."""
-        return True
 
 
 if __name__ == "__main__":

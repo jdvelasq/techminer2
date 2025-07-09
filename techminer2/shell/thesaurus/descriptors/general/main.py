@@ -40,9 +40,3 @@ class GeneralCLI(BaseShell):
     def do_reduce(self, arg):
         """Reduce the keys of the thesaurus."""
         execute_reduce_command()
-
-    # --- Back command ---
-    def do_back(self, arg):
-        """Go back to the previous menu."""
-        print("Returning to the thesaurus menu...")
-        return True

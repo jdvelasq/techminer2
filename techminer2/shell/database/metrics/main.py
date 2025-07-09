@@ -20,7 +20,7 @@ readline.parse_and_bind("bind ^I rl_complete")
 
 class MetricsShell(BaseShell):
 
-    prompt = "tm2 > database > ingest > "
+    prompt = "tm2 > database > ingest > metrics >"
 
     def do_general(self, arg):
         """General metrics."""

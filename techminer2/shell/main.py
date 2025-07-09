@@ -27,10 +27,12 @@ class MainShell(BaseShell):
     def do_database(self, arg):
         """Database commands."""
         DatabaseShell().cmdloop()
+        self.do_help(arg)
 
     def do_thesaurus(self, arg):
         """Thesaurus transformation subsystem."""
         ThesaurusShell().cmdloop()
+        self.do_help(arg)
 
     def do_back(self, arg):
         """Return to the previous menu."""

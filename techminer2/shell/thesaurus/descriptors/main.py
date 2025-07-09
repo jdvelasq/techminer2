@@ -21,9 +21,11 @@ class DescriptorsCLI(BaseShell):
     def do_general(self, arg):
         """General commands"""
         GeneralCLI().cmdloop()
+        self.do_help(arg)
 
     def do_remove(self, arg):
         RemoveCLI().cmdloop()
+        self.do_help(arg)
 
     # def do_replace(self, arg):
     #     ReplaceCLI().cmdloop()
@@ -32,8 +34,6 @@ class DescriptorsCLI(BaseShell):
     #     SortCLI().cmdloop()
 
     def do_translate(self, arg):
+        """Convert between American and British spelling."""
         TranslateCLI().cmdloop()
-
-    def do_back(self, arg):
-        """Return a menu level."""
-        return True
+        self.do_help(arg)
