@@ -21,7 +21,7 @@ readline.parse_and_bind("bind ^I rl_complete")
 
 class ThesaurusShell(BaseShell):
 
-    prompt = "tm2 > Thesaurus > "
+    prompt = "tm2 > thesaurus > "
 
     # Main menu commands
     # def do_abbreviations(self, arg):
@@ -47,10 +47,6 @@ class ThesaurusShell(BaseShell):
     #     """References-related commands."""
     #     print("Entering references menu...")
     #     ReferencesCLI().cmdloop()
-
-    def do_exit(self, arg):
-        """Exit the CLI."""
-        return True
 
     def do_back(self, arg):
         """Exit the CLI."""

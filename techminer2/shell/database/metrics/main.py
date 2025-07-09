@@ -8,34 +8,28 @@
 # pylint: disable=too-many-branches
 """Command line interface for the Thesaurus subsystem."""
 
-
 import cmd
 import readline
 import rlcompleter  # type: ignore
 
-from ..baseshell import BaseShell
-from .ingest.main import IngestShell
-from .metrics.main import MetricsShell
+from ...baseshell import BaseShell
+from .general.main import GeneralShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 
 
-class DatabaseShell(BaseShell):
+class MetricsShell(BaseShell):
 
-    prompt = "tm2 > database > "
+    prompt = "tm2 > database > ingest > "
 
-    def do_ingest(self, arg):
-        """Commands for raw data ingestion."""
-        IngestShell().cmdloop()
-
-    def do_metrics(self, arg):
-        """Commands for dataset metrics."""
-        MetricsShell().cmdloop()
+    def do_general(self, arg):
+        """General metrics."""
+        GeneralShell().cmdloop()
 
     def do_back(self, arg):
-        """Return to the previous menu."""
+        """Exit the CLI."""
         return True
 
 
 if __name__ == "__main__":
-    DatabaseShell().cmdloop()
+    MetricsShell().cmdloop()

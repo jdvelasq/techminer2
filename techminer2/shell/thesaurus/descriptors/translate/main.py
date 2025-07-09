@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 
 
-from ...baseshell import BaseShell
+from ....baseshell import BaseShell
 
 
 class TranslateCLI(BaseShell):

@@ -98,9 +98,7 @@ class IngestScopus(
         tqdm.pandas()
 
         # Elapsed time report
-        sys.stderr.write(
-            "\n___________________________________ PROGRESS ___________________________________\n"
-        )
+        sys.stderr.write("\n")
         sys.stderr.flush()
         start_time = time.time()
 
@@ -235,7 +233,7 @@ class IngestScopus(
         internal__report_imported_records(root_directory)
 
         sys.stderr.write(
-            f"INFO  Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}\n"
+            f"INFO  Execution time: {int(hours):02}:{int(minutes):02}:{seconds:06.3f}\n\n"
         )
 
         sys.stderr.flush()

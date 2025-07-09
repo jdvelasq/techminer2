@@ -9,14 +9,14 @@
 """Command line interface."""
 
 from ...baseshell import BaseShell
-from .general import GeneralCLI
-from .remove import RemoveCLI
-from .translate import TranslateCLI
+from .general.main import GeneralCLI
+from .remove.main import RemoveCLI
+from .translate.main import TranslateCLI
 
 
 class DescriptorsCLI(BaseShell):
 
-    prompt = "tm2 > descriptors > "
+    prompt = "tm2 > thesaurus > descriptors > "
 
     def do_general(self, arg):
         """General commands"""
