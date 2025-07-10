@@ -9,35 +9,28 @@
 """Command line interface for thesaurus descriptor operations."""
 
 
-import cmd
 import readline
 import rlcompleter  # type: ignore
 
-from .baseshell import BaseShell
-from .database.main import DatabaseShell
-from .thesaurus.main import ThesaurusShell
+from .base_shell import BaseShell
+from .database.database_shell import DatabaseShell
+from .thesaurus.thesaurus_shell import ThesaurusShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 
 
 class MainShell(BaseShell):
+
     intro = "Welcome. Type help or ? to list commands.\n"
+
     prompt = "tm2 > "
 
     def do_database(self, arg):
-        """Database commands."""
+        """Manage database operations."""
         DatabaseShell().cmdloop()
         self.do_help(arg)
 
     def do_thesaurus(self, arg):
-        """Thesaurus transformation subsystem."""
+        """Manage thesaurus operations."""
         ThesaurusShell().cmdloop()
         self.do_help(arg)
-
-    def do_back(self, arg):
-        """Return to the previous menu."""
-        return True
-
-
-if __name__ == "__main__":
-    MainShell().cmdloop()

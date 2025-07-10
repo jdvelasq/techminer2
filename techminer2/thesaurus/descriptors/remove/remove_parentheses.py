@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Parentheses Remover
+Parentheses
 ===============================================================================
 
 

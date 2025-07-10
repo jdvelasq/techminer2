@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 
 
-from ....baseshell import BaseShell
+from ....base_shell import BaseShell
 from .commands import (
     execute_determiners_command,
     execute_parentheses_command,
@@ -18,7 +18,7 @@ from .commands import (
 )
 
 
-class RemoveCLI(BaseShell):
+class RemoveShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > remove > "
 
     def do_determiners(self, arg):

@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Common Ending Words Remover
+Last Words
 ===============================================================================
 
 
@@ -34,7 +34,7 @@ Example:
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
     <BLANKLINE>
-      12 ending words removed successfully
+      12 last words removed successfully
       Common last words removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -137,7 +137,7 @@ class RemoveCommonLastWords(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stderr.write(f"  {n_matches} ending words removed successfully\n")
+        sys.stderr.write(f"  {n_matches} last words removed successfully\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------

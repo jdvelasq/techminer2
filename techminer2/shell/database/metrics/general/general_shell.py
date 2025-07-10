@@ -6,16 +6,9 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-"""Command line interface for the Thesaurus subsystem."""
 
-import cmd
-import readline
-import rlcompleter  # type: ignore
-
-from ....baseshell import BaseShell
-from .commands.dataframe import execute_dataframe_command
-
-readline.parse_and_bind("bind ^I rl_complete")
+from ....base_shell import BaseShell
+from .commands import execute_dataframe_command
 
 
 class GeneralShell(BaseShell):
@@ -25,11 +18,3 @@ class GeneralShell(BaseShell):
     def do_dataframe(self, arg):
         """Prints the dataset general metrics."""
         execute_dataframe_command()
-
-    def do_back(self, arg):
-        """Exit the CLI."""
-        return True
-
-
-if __name__ == "__main__":
-    GeneralShell().cmdloop()

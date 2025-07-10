@@ -1,7 +1,7 @@
-from ......thesaurus.descriptors import RemoveInitialDeterminers
+from ......thesaurus.descriptors import RemoveDeterminers
 
 
 def execute_determiners_command():
 
     print()
-    RemoveInitialDeterminers().where_root_directory_is("./").run()
+    RemoveDeterminers().where_root_directory_is("./").run()

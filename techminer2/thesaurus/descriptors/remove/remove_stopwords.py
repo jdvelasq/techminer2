@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Starting Stopwords Remover
+Stopwords
 ===============================================================================
 
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialStopwords
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveStopwords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -24,16 +24,16 @@ Example:
     >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Remove initial stopwords
-    >>> RemoveInitialStopwords(root_directory="example/", tqdm_disable=True).run()
+    >>> RemoveStopwords(root_directory="example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Removing starting stopwords from thesaurus keys
+    Removing initial stopwords from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       551 initial stopwords removed successfully
-      Starting stopwords removal completed successfully
+      Initial stopwords removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -71,7 +71,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class RemoveInitialStopwords(
+class RemoveStopwords(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -84,14 +84,14 @@ class RemoveInitialStopwords(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("Removing starting stopwords from thesaurus keys\n")
+        sys.stderr.write("Removing initial stopwords from thesaurus keys\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Starting stopwords removal completed successfully\n\n")
+        sys.stderr.write("  Initial stopwords removal completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
@@ -99,7 +99,7 @@ class RemoveInitialStopwords(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__remove_starting_stopwords_from_keys(self):
+    def internal__remove_initial_stopwords_from_keys(self):
 
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
@@ -145,7 +145,7 @@ class RemoveInitialStopwords(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
-        self.internal__remove_starting_stopwords_from_keys()
+        self.internal__remove_initial_stopwords_from_keys()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()

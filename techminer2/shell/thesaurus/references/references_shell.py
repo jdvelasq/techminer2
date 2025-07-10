@@ -6,17 +6,10 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-"""Command line interface."""
 
-import cmd
+from ...base_shell import BaseShell
 
 
-class ReferencesCLI(cmd.Cmd):
-    intro = "Type help or ? to list commands.\n"
-    prompt = "(references) "
+class ReferencesShell(BaseShell):
 
-    # Submenu commands
-
-    def do_back(self, arg):
-        """Go back to the main menu."""
-        return True
+    prompt = "tm2 > thesaurus > references > "

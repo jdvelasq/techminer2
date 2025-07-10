@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 
 
-from ....baseshell import BaseShell
+from ....base_shell import BaseShell
 from .commands import (
     execute_endswith_command,
     execute_exact_command,
@@ -20,7 +20,8 @@ from .commands import (
 )
 
 
-class ReplaceCLI(BaseShell):
+class SortShell(BaseShell):
+
     prompt = "tm2 > thesaurus > descriptors > sort > "
 
     def do_endswith(self, arg):

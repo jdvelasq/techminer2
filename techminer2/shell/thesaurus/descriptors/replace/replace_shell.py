@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 
 
-from ....baseshell import BaseShell
+from ....base_shell import BaseShell
 from .commands import (
     execute_abbreviations_command,
     execute_endswith_command,
@@ -18,10 +18,10 @@ from .commands import (
 )
 
 
-class ReplaceCLI(BaseShell):
-    prompt = "tm2 > descriptors > replace > "
+class ReplaceShell(BaseShell):
 
-    # Sub-submenu commands
+    prompt = "tm2 > thesaurus > descriptors > replace > "
+
     def do_abbreviations(self, arg):
         """Replace abbreviations."""
         execute_abbreviations_command()

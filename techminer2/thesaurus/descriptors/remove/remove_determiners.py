@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Initial Determiner Remover
+Determiners
 ===============================================================================
 
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialDeterminers
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveDeterminers
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -26,16 +26,16 @@ Example:
 
 
     >>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminers
-    >>> RemoveInitialDeterminers(root_directory="example/", tqdm_disable=True).run()
+    >>> RemoveDeterminers(root_directory="example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Removing initial determiner from thesaurus keys
+    Removing initial determiners from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       595 initial determiners removed successfully
-      Initial determiner removal completed successfully
+      Initial determiners removal completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -73,7 +73,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class RemoveInitialDeterminers(
+class RemoveDeterminers(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -86,14 +86,14 @@ class RemoveInitialDeterminers(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("Removing initial determiner from thesaurus keys\n")
+        sys.stderr.write("Removing initial determiners from thesaurus keys\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Initial determiner removal completed successfully\n\n")
+        sys.stderr.write("  Initial determiners removal completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

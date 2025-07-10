@@ -1,7 +1,7 @@
-from ......thesaurus.descriptors import RemovePrefixes
+from ......thesaurus.descriptors import RemoveInitialWords
 
 
 def execute_prefixes_command():
 
     print()
-    RemovePrefixes().where_root_directory_is("./").run()
+    RemoveInitialWords().where_root_directory_is("./").run()

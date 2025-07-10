@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 
 
-from ....baseshell import BaseShell
+from ....base_shell import BaseShell
 from .commands import (
     execute_apply_command,
     execute_cleanup_command,
@@ -18,7 +18,7 @@ from .commands import (
 )
 
 
-class GeneralCLI(BaseShell):
+class GeneralShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > general > "
 
     def do_apply(self, arg):
@@ -34,7 +34,7 @@ class GeneralCLI(BaseShell):
         execute_reset_command()
 
     def do_integrity(self, arg):
-        """Check the integrity of the thesaurus file."""
+        """Check the integrity of the thesaurus."""
         execute_integrity_command()
 
     def do_reduce(self, arg):

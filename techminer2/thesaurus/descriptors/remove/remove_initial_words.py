@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Prefix Remover
+Initial Words
 ===============================================================================
 
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemovePrefixes
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialWords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -24,17 +24,17 @@ Example:
     >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Remove common initial words
-    >>> RemovePrefixes(root_directory="example/", tqdm_disable=True).run()
+    >>> RemoveInitialWords(root_directory="example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Removing prefixes from thesaurus keys
+    Removing common initial words from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-      191 prefixes removed successfully
-      Prefix removal successfully
+      191 common initial words removed successfully
+      Common initial words removal successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -75,7 +75,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class RemovePrefixes(
+class RemoveInitialWords(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -88,14 +88,14 @@ class RemovePrefixes(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("Removing prefixes from thesaurus keys\n")
+        sys.stderr.write("Removing common initial words from thesaurus keys\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(f"  Prefix removal successfully\n\n")
+        sys.stderr.write(f"  Common initial words removal successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
@@ -103,7 +103,7 @@ class RemovePrefixes(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__prefixes_from_keys(self):
+    def internal__remove_initial_words_from_keys(self):
 
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
@@ -142,7 +142,7 @@ class RemovePrefixes(
 
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stderr.write(f"  {n_matches} prefixes removed successfully\n")
+        sys.stderr.write(f"  {n_matches} common initial words removed successfully\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -155,7 +155,7 @@ class RemovePrefixes(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
-        self.internal__prefixes_from_keys()
+        self.internal__remove_initial_words_from_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
