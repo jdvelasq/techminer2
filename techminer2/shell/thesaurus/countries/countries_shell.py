@@ -18,11 +18,11 @@ class CountriesShell(BaseShell):
     prompt = "tm2 > thesaurus > countries > "
 
     def do_general(self, arg):
-        """General commands"""
+        """General thesaurus operations."""
         GeneralShell().cmdloop()
         self.do_help(arg)
 
     def do_sort(self, arg):
-        """Sort the thesaurus."""
+        """Sort the thesaurus by different criteria."""
         SortShell().cmdloop()
         self.do_help(arg)

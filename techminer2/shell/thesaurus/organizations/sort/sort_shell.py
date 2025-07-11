@@ -16,7 +16,6 @@ from .commands import (
     execute_fuzzy_command,
     execute_keylength_command,
     execute_match_command,
-    execute_occurrences_command,
     execute_startswith_command,
     execute_wordlength_command,
     execute_wordmatch_command,
@@ -25,7 +24,7 @@ from .commands import (
 
 class SortShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > descriptors > sort > "
+    prompt = "tm2 > thesaurus > organizations > sort > "
 
     def do_alphabet(self, arg):
         """Sort keys alphabetically."""
@@ -50,10 +49,6 @@ class SortShell(BaseShell):
     def do_match(self, arg):
         """Sort keys by pattern match."""
         execute_match_command()
-
-    def do_occurrences(self, arg):
-        """Sort keys by occurrences."""
-        execute_occurrences_command()
 
     def do_startswith(self, arg):
         """Sort keys by starting pattern."""

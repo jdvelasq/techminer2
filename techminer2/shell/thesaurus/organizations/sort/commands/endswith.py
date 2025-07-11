@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import SortByEndsWithMatch
+from ......thesaurus.organizations import SortByEndsWithMatch
 
 
 def execute_endswith_command():

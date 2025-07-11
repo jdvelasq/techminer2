@@ -11,5 +11,6 @@ def execute_wordmatch_command():
             break
         patterns.append(pattern)
     if not patterns:
+        print()
         return
     SortByWordMatch().where_root_directory_is("./").having_pattern(patterns).run()

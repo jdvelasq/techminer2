@@ -11,5 +11,6 @@ def execute_exact_command():
             break
         patterns.append(pattern)
     if not patterns:
+        print()
         return
     SortByExactMatch().where_root_directory_is("./").having_pattern(patterns).run()

@@ -1,7 +1,7 @@
-from ......thesaurus.descriptors import SortByEndsWithMatch
+from ......thesaurus.organizations import SortByWordMatch
 
 
-def execute_endswith_command():
+def execute_wordmatch_command():
 
     print()
     patterns = []
@@ -13,4 +13,4 @@ def execute_endswith_command():
     if not patterns:
         print()
         return
-    SortByEndsWithMatch().where_root_directory_is("./").having_pattern(patterns).run()
+    SortByWordMatch().where_root_directory_is("./").having_pattern(patterns).run()

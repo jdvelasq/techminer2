@@ -26,10 +26,6 @@ class ReplaceShell(BaseShell):
         """Replace abbreviations."""
         execute_abbreviations_command()
 
-    def do_last(self, arg):
-        """Replace common last words."""
-        execute_last_command()
-
     def do_hyphenated(self, arg):
         """Replace hyphenated words."""
         execute_hyphenated_command()
@@ -37,6 +33,10 @@ class ReplaceShell(BaseShell):
     def do_initial(self, arg):
         """Replace common initial words."""
         execute_initial_command()
+
+    def do_last(self, arg):
+        """Replace common last words."""
+        execute_last_command()
 
     def do_word(self, arg):
         """Replace a specific word."""

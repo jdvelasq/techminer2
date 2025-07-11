@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import SortByMatch
+from ......thesaurus.organizations import SortByMatch
 
 
 def execute_match_command():

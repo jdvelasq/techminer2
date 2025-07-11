@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import SortByFuzzyMatch
+from ......thesaurus.organizations import SortByFuzzyMatch
 
 
 def execute_fuzzy_command():

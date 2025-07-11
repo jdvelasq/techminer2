@@ -21,11 +21,12 @@ class DescriptorsShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > "
 
     def do_general(self, arg):
-        """General commands"""
+        """General thesaurus operations."""
         GeneralShell().cmdloop()
         self.do_help(arg)
 
     def do_remove(self, arg):
+        """Remove words from the thesaurus."""
         RemoveShell().cmdloop()
         self.do_help(arg)
 
@@ -40,6 +41,6 @@ class DescriptorsShell(BaseShell):
         self.do_help(arg)
 
     def do_translate(self, arg):
-        """Convert between American and British spelling."""
+        """Translate American and British spelling."""
         TranslateShell().cmdloop()
         self.do_help(arg)

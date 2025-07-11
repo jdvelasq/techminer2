@@ -11,6 +11,7 @@ def execute_startswith_command():
             break
         patterns.append(pattern)
     if not patterns:
+        print()
         return
     (
         SortByStartsWithMatch()
