@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Sort by Starts With Key Match
+Sort by Starts With Match
 ===============================================================================
 
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByStartsWithKeyMatch
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByStartsWithMatch
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
@@ -24,7 +24,7 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> sorter = (
-    ...     SortByStartsWithKeyMatch()
+    ...     SortByStartsWithMatch()
     ...     .having_pattern("Germ")
     ...     .where_root_directory_is("example/")
     ... )
@@ -72,7 +72,7 @@ from ...._internals.mixins import ParamsMixin
 from ...user import SortByStartsWithMatch as UserSortByStartsWithMatch
 
 
-class SortByStartsWithKeyMatch(
+class SortByStartsWithMatch(
     ParamsMixin,
 ):
     """:meta private:"""

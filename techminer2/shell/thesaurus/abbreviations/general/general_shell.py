@@ -17,5 +17,5 @@ class GeneralShell(BaseShell):
     prompt = "tm2 > thesaurus > abbreviations > general > "
 
     def do_initialize(self, arg):
-        """Create or reset the thesaurus to its initial state."""
+        """Reset or create the thesaurus."""
         execute_initialize_command()

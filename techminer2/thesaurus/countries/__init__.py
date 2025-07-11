@@ -10,10 +10,10 @@ from .sort.sort_by_endswith_match import SortByEndsWithMatch
 from .sort.sort_by_exact_match import SortByExactMatch
 from .sort.sort_by_fuzzy_match import SortByFuzzyMatch
 from .sort.sort_by_key_length import SortByKeyLength
-from .sort.sort_by_match import SortByKeyMatch
-from .sort.sort_by_startswith_match import SortByStartsWithKeyMatch
+from .sort.sort_by_match import SortByMatch
+from .sort.sort_by_startswith_match import SortByStartsWithMatch
 from .sort.sort_by_word_length import SortByWordLength
-from .sort.sort_by_word_match import SortByWordKeyMatch
+from .sort.sort_by_word_match import SortByWordMatch
 
 __all__ = [
     "ApplyThesaurus",
@@ -26,8 +26,8 @@ __all__ = [
     "SortByExactMatch",
     "SortByFuzzyMatch",
     "SortByKeyLength",
-    "SortByKeyMatch",
-    "SortByStartsWithKeyMatch",
+    "SortByMatch",
+    "SortByStartsWithMatch",
     "SortByWordLength",
-    "SortByWordKeyMatch",
+    "SortByWordMatch",
 ]

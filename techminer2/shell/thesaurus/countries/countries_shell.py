@@ -9,8 +9,20 @@
 
 
 from ...base_shell import BaseShell
+from .general.general_shell import GeneralShell
+from .sort.sort_shell import SortShell
 
 
 class CountriesShell(BaseShell):
 
     prompt = "tm2 > thesaurus > countries > "
+
+    def do_general(self, arg):
+        """General commands"""
+        GeneralShell().cmdloop()
+        self.do_help(arg)
+
+    def do_sort(self, arg):
+        """Sort the thesaurus."""
+        SortShell().cmdloop()
+        self.do_help(arg)
