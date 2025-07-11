@@ -6,6 +6,8 @@ from .general.compress_thesaurus import CompressThesaurus
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
+from .remove.register_initial_word import RegisterInitialWord
+from .remove.register_last_word import RegisterLastWord
 from .remove.remove_determiners import RemoveDeterminers
 from .remove.remove_initial_words import RemoveInitialWords
 from .remove.remove_last_words import RemoveLastWords
@@ -66,4 +68,6 @@ __all__ = [
     "reset_thesaurus",
     "sort_by_occurrences",
     "startswith",
+    "RegisterInitialWord",
+    "RegisterLastWord",
 ]

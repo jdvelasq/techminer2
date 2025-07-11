@@ -135,6 +135,20 @@ def sort_technical_stopwords(file_name):
         file.write("\n".join(lines))
 
 
+def sort_common_words(file_name):
+
+    with open(file_name, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+    #
+    lines = [line.strip().upper() for line in lines]
+    lines = list(set(lines))
+    lines = sorted(lines)
+    lines = [line for line in lines if line != ""]
+    #
+    with open(file_name, "w", encoding="utf-8") as file:
+        file.write("\n".join(lines))
+
+
 def internal__sort_text_processing_terms():
     """:meta private:"""
 
@@ -169,19 +183,10 @@ def internal__sort_text_processing_terms():
             sort_technical_stopwords(file_name)
             continue
 
+        if file_name.endswith("common_initial_words.txt"):
+            sort_common_words(file_name)
+            continue
 
-# def default_sorting(file_name):
-#
-#     with open(file_name, "r", encoding="utf-8") as file:
-#         connectors = file.readlines()
-#
-#     connectors = [
-#         connector.lower().strip().replace("_", " ") for connector in connectors
-#     ]
-#     connectors = sorted(set(connectors))
-#     connectors = [connector.strip() for connector in connectors]
-#     connectors = [connector for connector in connectors if len(connector.split()) > 1]
-#
-#     with open(file_name, "w", encoding="utf-8") as file:
-#         for connector in connectors:
-#             file.write(connector + "\n")
+        if file_name.endswith("common_last_words.txt"):
+            sort_common_words(file_name)
+            continue

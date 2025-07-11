@@ -13,6 +13,8 @@ from .commands import (
     execute_determiners_command,
     execute_initial_command,
     execute_last_command,
+    execute_newinitial_command,
+    execute_newlast_command,
     execute_parentheses_command,
     execute_stopwords_command,
 )
@@ -33,6 +35,14 @@ class RemoveShell(BaseShell):
     def do_last(self, arg):
         """Remove common trailing words."""
         execute_last_command()
+
+    def do_newinitial(self, arg):
+        """Register new initial word."""
+        execute_newinitial_command()
+
+    def do_newlast(self, arg):
+        """Register new last word."""
+        execute_newlast_command()
 
     def do_parentheses(self, arg):
         """Remove expressions between parentheses."""
