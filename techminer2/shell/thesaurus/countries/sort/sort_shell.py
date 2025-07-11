@@ -27,37 +27,37 @@ class SortShell(BaseShell):
     prompt = "tm2 > thesaurus > countries > sort > "
 
     def do_alphabet(self, arg):
-
+        """Sort thesaurus alphabetically."""
         execute_alphabet_command()
 
     def do_endswith(self, arg):
-
+        """Sort thesaurus by ends with match."""
         execute_endswith_command()
 
     def do_exact(self, arg):
-
+        """Sort thesaurus by exact match."""
         execute_exact_command()
 
     def do_fuzzy(self, arg):
-
+        """Sort thesaurus by fuzzy match."""
         execute_fuzzy_command()
 
     def do_keylength(self, arg):
-
+        """Sort thesaurus by key length."""
         execute_keylength_command()
 
     def do_match(self, arg):
-
+        """Sort thesaurus by pattern match."""
         execute_match_command()
 
     def do_startswith(self, arg):
-
+        """Sort thesaurus by starts with match."""
         execute_startswith_command()
 
     def do_wordlength(self, arg):
-
+        """Sort thesaurus by word length."""
         execute_wordlength_command()
 
     def do_wordmatch(self, arg):
-
+        """Sort thesaurus by word match."""
         execute_wordmatch_command()
