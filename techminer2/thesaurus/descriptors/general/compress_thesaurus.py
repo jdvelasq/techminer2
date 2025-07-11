@@ -14,14 +14,14 @@ Compress Thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CompressThesaurus, CreateThesaurus
+    >>> from techminer2.thesaurus.descriptors import CompressThesaurus, InitializeThesaurus
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Compress the thesaurus
     >>> compressor = (

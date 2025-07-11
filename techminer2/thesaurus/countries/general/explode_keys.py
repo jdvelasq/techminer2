@@ -13,14 +13,14 @@ Explode Keys
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import CreateThesaurus, ExplodeKeys
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, ExplodeKeys
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Explode thesaurus keys
     >>> ExplodeKeys().where_root_directory_is("example/").run()

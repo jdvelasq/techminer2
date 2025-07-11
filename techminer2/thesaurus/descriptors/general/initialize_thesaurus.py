@@ -7,34 +7,34 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Create Thesaurus
+Initialiize Thesaurus
 ===============================================================================
 
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> creator = (
-    ...     CreateThesaurus()
+    >>> initializator = (
+    ...     InitializeThesaurus()
     ...     .where_root_directory_is("example/")
     ... )
-    >>> creator.run()
+    >>> initializator.run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Creating thesaurus from 'raw_descriptors' field
+    Initializing thesaurus from 'raw_descriptors' field
       File : example/data/thesaurus/descriptors.the.txt
       1726 keys found
-      Creation process completed successfully
+      Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -62,12 +62,12 @@ Example:
 """
 
 from ...._internals.mixins import ParamsMixin
-from ...user import CreateThesaurus as UserCreateThesaurus
+from ...user import InitializeThesaurus as UserInitializeThesaurus
 
 
 #
 #
-class CreateThesaurus(
+class InitializeThesaurus(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -75,7 +75,7 @@ class CreateThesaurus(
     def run(self):
 
         (
-            UserCreateThesaurus(
+            UserInitializeThesaurus(
                 field="raw_descriptors",
                 thesaurus_file="descriptors.the.txt",
                 root_directory=self.params.root_directory,
@@ -91,9 +91,9 @@ def reset_thesaurus():
     """:meta private:"""
 
     from techminer2.thesaurus.descriptors import (  # type: ignore
-        CreateThesaurus,
+        InitializeThesaurus,
         IntegrityCheck,
     )
 
-    CreateThesaurus(root_directory="../").run()
+    InitializeThesaurus(root_directory="../").run()
     IntegrityCheck().where_root_directory_is("../").run()

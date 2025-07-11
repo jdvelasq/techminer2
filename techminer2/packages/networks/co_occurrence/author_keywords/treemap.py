@@ -15,8 +15,8 @@ Example:
     >>> #
     >>> # TEST PREPARATION
     >>> #
-    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, InitializeThesaurus
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
 

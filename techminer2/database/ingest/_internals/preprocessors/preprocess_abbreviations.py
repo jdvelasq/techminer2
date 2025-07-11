@@ -12,9 +12,9 @@ import sys
 
 def internal__preprocess_abbreviations(root_dir):
 
-    from .....thesaurus.abbreviations import CreateThesaurus
+    from .....thesaurus.abbreviations import InitializeThesaurus
 
     sys.stderr.write("INFO  Preprocessing abbreviations\n")
     sys.stderr.flush()
 
-    CreateThesaurus(root_directory=root_dir).run()
+    InitializeThesaurus(root_directory=root_dir).run()

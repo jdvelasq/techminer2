@@ -14,14 +14,14 @@ Parentheses
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveParentheses
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, RemoveParentheses
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Remove parentheses
     >>> RemoveParentheses(root_directory="example/").run()

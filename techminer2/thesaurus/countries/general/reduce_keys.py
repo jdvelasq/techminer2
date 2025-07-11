@@ -13,14 +13,14 @@ Reduce Keys
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import CreateThesaurus, ReduceKeys
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, ReduceKeys
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Reduce thesaurus keys
     >>> ReduceKeys().where_root_directory_is("example/").run()

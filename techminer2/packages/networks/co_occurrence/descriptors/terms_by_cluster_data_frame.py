@@ -12,10 +12,10 @@ Terms by Cluster Frame
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import TermsByClusterDataFrame
-    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
+    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, InitializeThesaurus
 
     >>> # Restore the column values to initial values
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Generate terms by cluster data frame

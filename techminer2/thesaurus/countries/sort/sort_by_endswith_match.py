@@ -13,14 +13,14 @@ Sort By EndsWith Match
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByEndsWithMatch
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByEndsWithMatch
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Sorts thesaurus by key match
     >>> (

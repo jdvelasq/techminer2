@@ -3,7 +3,7 @@
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.cleanup_thesaurus import CleanupThesaurus
 from .general.compress_thesaurus import CompressThesaurus
-from .general.create_thesaurus import CreateThesaurus
+from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
 from .remove.remove_determiners import RemoveDeterminers
@@ -34,7 +34,7 @@ __all__ = [
     "ApplyThesaurus",
     "CleanupThesaurus",
     "CompressThesaurus",
-    "CreateThesaurus",
+    "InitializeThesaurus",
     "IntegrityCheck",
     "ReduceKeys",
     "RemoveInitialWords",

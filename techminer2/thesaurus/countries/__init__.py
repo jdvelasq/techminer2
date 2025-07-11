@@ -1,8 +1,8 @@
 """Country Thesaurus"""
 
 from .general.apply_thesaurus import ApplyThesaurus
-from .general.create_thesaurus import CreateThesaurus
 from .general.explode_keys import ExplodeKeys
+from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
 from .sort.sort_by_alphabet import SortByAlphabet
@@ -17,7 +17,7 @@ from .sort.sort_by_word_match import SortByWordKeyMatch
 
 __all__ = [
     "ApplyThesaurus",
-    "CreateThesaurus",
+    "InitializeThesaurus",
     "ExplodeKeys",
     "IntegrityCheck",
     "ReduceKeys",

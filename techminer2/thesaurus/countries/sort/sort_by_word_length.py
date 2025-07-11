@@ -14,14 +14,14 @@ Sort by Word Length
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByWordLength
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByWordLength
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Sort thesaurus by alphabetical order
     >>> sorter = (

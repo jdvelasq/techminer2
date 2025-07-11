@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Create Thesaurus
+Initialize Thesaurus
 ===============================================================================
 
 
@@ -15,29 +15,29 @@ Example:
     >>> # TEST:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import CreateThesaurus
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-    >>> # Reset the thesaurus to initial state
-    >>> reseter = (
-    ...     CreateThesaurus()
+    >>> # Initialize the thesaurus
+    >>> initializator = (
+    ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory_is("example/")
     ... )
-    >>> reseter.run()
+    >>> initializator.run()
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Creating thesaurus from 'raw_descriptors' field
+    Initializing thesaurus from 'raw_descriptors' field
       File : example/data/thesaurus/demo.the.txt
       1726 keys found
-      Creation process completed successfully
+      Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -74,7 +74,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class CreateThesaurus(
+class InitializeThesaurus(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -91,7 +91,7 @@ class CreateThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
             sys.stderr.write(f"  File : {truncated_path}\n")
             sys.stderr.flush()
 
@@ -101,7 +101,7 @@ class CreateThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Creation process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)

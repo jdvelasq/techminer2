@@ -1,7 +1,7 @@
-from ......thesaurus.abbreviations import CreateThesaurus
+from ......thesaurus.abbreviations import InitializeThesaurus
 
 
 def execute_initialize_command():
 
     print()
-    CreateThesaurus().where_root_directory_is("./").run()
+    InitializeThesaurus().where_root_directory_is("./").run()

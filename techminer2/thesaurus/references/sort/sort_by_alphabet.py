@@ -13,7 +13,7 @@ Sort by Alphabet
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.references import CreateThesaurus, SortByAlphabet
+    >>> from techminer2.thesaurus.references import InitializeThesaurus, SortByAlphabet
 
 
     >>> # Redirecting stderr to avoid messages
@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory = "example/", quiet=True, tqdm_disable=True).run()
+    >>> InitializeThesaurus(root_directory = "example/", quiet=True, tqdm_disable=True).run()
 
     >>> # Create, configure, and run the sorter
     >>> sorter = (

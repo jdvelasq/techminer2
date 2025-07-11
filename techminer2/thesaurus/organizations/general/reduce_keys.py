@@ -15,14 +15,14 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.organizations import CreateThesaurus, ReduceKeys
+    >>> from techminer2.thesaurus.organizations import InitializeThesaurus, ReduceKeys
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Creates and run the reducer
     >>> reducer = (

@@ -14,14 +14,14 @@ British to American Spelling
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import BritishToAmericanSpelling, CreateThesaurus
+    >>> from techminer2.thesaurus.descriptors import BritishToAmericanSpelling, InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Creates, configures, an run the translator
     >>> translator = (

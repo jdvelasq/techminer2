@@ -7,31 +7,31 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Create thesaurus
+Initialize thesaurus
 ===============================================================================
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.references import CreateThesaurus
+    >>> from techminer2.thesaurus.references import InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory = "example/", tqdm_disable=True).run()
+    >>> InitializeThesaurus(root_directory = "example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Creating thesaurus from 'global_references' field
+    Initializing thesaurus from 'global_references' field
       File : example/data/thesaurus/references.the.txt
       Creating main_documents data frame
       Creating references data frame
       62 keys found
-      Creation process completed successfully
+      Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/references.the.txt
@@ -93,7 +93,7 @@ def clean_text(text):
     return text
 
 
-class CreateThesaurus(
+class InitializeThesaurus(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -110,7 +110,7 @@ class CreateThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
             sys.stderr.write(f"  File : {truncated_path}\n")
             sys.stderr.flush()
 
@@ -120,7 +120,7 @@ class CreateThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Creation process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)

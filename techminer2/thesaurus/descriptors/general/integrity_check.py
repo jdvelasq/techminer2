@@ -13,14 +13,14 @@ Integrity Check
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, IntegrityCheck
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, IntegrityCheck
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Run the integrity check
     >>> checker = (

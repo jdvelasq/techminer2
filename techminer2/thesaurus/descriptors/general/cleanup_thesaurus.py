@@ -14,14 +14,14 @@ Cleanup Thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CleanupThesaurus, CreateThesaurus
+    >>> from techminer2.thesaurus.descriptors import CleanupThesaurus, InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> cleaner = (
     ...     CleanupThesaurus()
@@ -100,7 +100,7 @@ class CleanupThesaurus(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(". Cleanup process completed successfully\n\n")
+        sys.stderr.write("  Cleanup process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

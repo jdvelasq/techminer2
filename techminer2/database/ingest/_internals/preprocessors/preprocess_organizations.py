@@ -12,12 +12,12 @@ import sys
 
 def internal__preprocess_organizations(root_directory):
 
-    from .....thesaurus.organizations import ApplyThesaurus, CreateThesaurus
+    from .....thesaurus.organizations import ApplyThesaurus, InitializeThesaurus
 
     sys.stderr.write("INFO  Creating 'organizations' column\n")
     sys.stderr.flush()
 
-    CreateThesaurus(root_directory=root_directory).run()
+    InitializeThesaurus(root_directory=root_directory).run()
     ApplyThesaurus(root_directory=root_directory).run()
 
 

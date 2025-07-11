@@ -15,7 +15,7 @@ def internal__preprocess_global_references(root_directory):
     sys.stderr.write("INFO  Processing 'references' column\n")
     sys.stderr.flush()
 
-    from .....thesaurus.references import ApplyThesaurus, CreateThesaurus
+    from .....thesaurus.references import ApplyThesaurus, InitializeThesaurus
 
-    CreateThesaurus(root_directory=root_directory).run()
+    InitializeThesaurus(root_directory=root_directory).run()
     ApplyThesaurus(root_directory=root_directory).run()

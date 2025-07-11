@@ -14,14 +14,14 @@ Sort by Word Key Match
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import CreateThesaurus, SortByWordKeyMatch
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByWordKeyMatch
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Sort the thesaurus by word match
     >>> sorter = (

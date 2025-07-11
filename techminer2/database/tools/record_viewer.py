@@ -12,15 +12,15 @@ Record Viewer
 
 Example:
     >>> from techminer2.thesaurus.countries import (
-    ...     CreateThesaurus as CreateCountryThesaurus,
+    ...     InitializeThesaurus as CreateCountryThesaurus,
     ...     ApplyThesaurus as ApplyCountryThesaurus,
     ... )
     >>> from techminer2.thesaurus.organizations import (
-    ...     CreateThesaurus as CreateOrganizationsThesaurus,
+    ...     InitializeThesaurus as CreateOrganizationsThesaurus,
     ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
     ... )
     >>> from techminer2.thesaurus.descriptors import (
-    ...     CreateThesaurus as CreateDescriptorsThesaurus,
+    ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
     >>> from techminer2.database.tools import RecordViewer

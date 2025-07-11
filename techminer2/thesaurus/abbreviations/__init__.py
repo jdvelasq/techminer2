@@ -1,3 +1,3 @@
 """Abbreviations"""
 
-from .general.create_thesaurus import CreateThesaurus
+from .general.initialize_thesaurus import InitializeThesaurus

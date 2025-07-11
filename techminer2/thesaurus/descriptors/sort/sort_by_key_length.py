@@ -14,14 +14,14 @@ Sort by Key Length
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByKeyLength
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, SortByKeyLength
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Configure and run the sorter
     >>> sorter = (

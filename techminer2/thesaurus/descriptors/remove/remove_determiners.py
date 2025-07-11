@@ -20,8 +20,8 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> from techminer2.thesaurus.descriptors import RemoveDeterminers
     >>> RemoveDeterminers(root_directory="example/", tqdm_disable=True).run()

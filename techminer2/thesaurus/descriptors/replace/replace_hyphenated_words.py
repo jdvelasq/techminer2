@@ -13,14 +13,14 @@ Replace hyphenated words
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceHyphenatedWords
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, ReplaceHyphenatedWords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Configure and run the replacer
     >>> replacer = (
@@ -33,7 +33,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Transforming hyphenated words in thesaurus keys
+    Replacing hyphenated words in thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       47 hypenated words transformed successfully
       Replacement process completed successfully

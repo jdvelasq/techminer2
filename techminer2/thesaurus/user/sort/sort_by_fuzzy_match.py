@@ -14,14 +14,14 @@ Sort By Fuzzy Match
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import CreateThesaurus, SortByFuzzyMatch
+    >>> from techminer2.thesaurus.user import InitializeThesaurus, SortByFuzzyMatch
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
-    >>> CreateThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
+    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="example/", quiet=True).run()
 
     >>> # Creates, configures, an run the sorter

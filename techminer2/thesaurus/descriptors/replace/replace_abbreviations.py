@@ -14,7 +14,7 @@ Example:
     >>> import shutil
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ReplaceAbbreviations
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, ReplaceAbbreviations
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -25,7 +25,7 @@ Example:
     'example/data/thesaurus/abbreviations.the.txt'
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Configure and run the replacer
     >>> replacer = ReplaceAbbreviations(root_directory="example/", tqdm_disable=True)

@@ -15,7 +15,7 @@ Finds a string in the terms of a thesaurus.
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.references import CreateThesaurus, SortByMatch
+    >>> from techminer2.thesaurus.references import InitializeThesaurus, SortByMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr

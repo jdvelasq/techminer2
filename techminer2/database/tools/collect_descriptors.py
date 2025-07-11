@@ -39,7 +39,7 @@ class CollectDescriptors(
 
     def run(self):
 
-        from ...thesaurus.descriptors import CreateThesaurus
+        from ...thesaurus.descriptors import InitializeThesaurus
 
         sys.stderr.write("\nINFO  Collecting Descriptors\n")
         sys.stderr.flush()
@@ -52,4 +52,4 @@ class CollectDescriptors(
         internal__preprocess_descriptors(root_directory)
         internal__preprocess_abbreviations(root_directory)
 
-        CreateThesaurus().update(**self.params.__dict__).run()
+        InitializeThesaurus().update(**self.params.__dict__).run()

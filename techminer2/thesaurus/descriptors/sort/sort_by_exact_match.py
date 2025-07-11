@@ -14,14 +14,14 @@ Sort By Exact Match
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, SortByExactMatch
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, SortByExactMatch
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Configure and run the sorter
     >>> sorter = (

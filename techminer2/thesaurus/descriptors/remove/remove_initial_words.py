@@ -14,14 +14,14 @@ Initial Words
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveInitialWords
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, RemoveInitialWords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Remove common initial words
     >>> RemoveInitialWords(root_directory="example/", tqdm_disable=True).run()

@@ -14,14 +14,14 @@ Apply Thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, CreateThesaurus
+    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> applier = (
     ...     ApplyThesaurus()

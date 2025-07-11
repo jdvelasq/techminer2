@@ -15,22 +15,22 @@ Example:
 
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.abbreviations import CreateThesaurus
+    >>> from techminer2.thesaurus.abbreviations import InitializeThesaurus
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> CreateThesaurus(root_directory="example/").run()
+    >>> InitializeThesaurus(root_directory="example/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Creating thesaurus
+    Initializing thesaurus
       12 abbreviations found
-      Creation process completed successfully
+      Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/abbreviations.the.txt
@@ -64,15 +64,16 @@ from textblob import TextBlob  # type: ignore
 
 from ...._internals.log_message import internal__log_message
 from ...._internals.mixins import ParamsMixin
-from ....thesaurus._internals import (
+from ..._internals import (
+    ThesaurusMixin,
     internal__generate_system_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
+    internal__print_thesaurus_header,
 )
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 from ..._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
 
 
-class CreateThesaurus(
+class InitializeThesaurus(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -85,7 +86,7 @@ class CreateThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"Creating thesaurus\n")
+            sys.stderr.write(f"Initializing thesaurus\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -94,7 +95,7 @@ class CreateThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} abbreviations found\n")
-            sys.stderr.write("  Creation process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)

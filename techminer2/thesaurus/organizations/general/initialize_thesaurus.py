@@ -14,27 +14,27 @@ Create thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.organizations import CreateThesaurus
+    >>> from techminer2.thesaurus.organizations import InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-    >>> # Create and run the thesaurus creator
-    >>> creator = (
-    ...     CreateThesaurus()
+    >>> # Create and run the thesaurus initializator
+    >>> initializator = (
+    ...     InitializeThesaurus()
     ...     .where_root_directory_is("example/")
     ... )
-    >>> creator.run()
+    >>> initializator.run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Creating thesaurus from 'affiliations' field
+    Initializing thesaurus from 'affiliations' field
       File : example/data/thesaurus/organizations.the.txt
       90 keys found
-      Creation process completed successfully
+      Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/organizations.the.txt
@@ -158,7 +158,7 @@ ABBR = [
 ]
 
 
-class CreateThesaurus(
+class InitializeThesaurus(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -175,7 +175,7 @@ class CreateThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Creating thesaurus from '{field}' field\n")
+            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
             sys.stderr.write(f"  File : {truncated_path}\n")
             sys.stderr.flush()
 
@@ -185,7 +185,7 @@ class CreateThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Creation process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)

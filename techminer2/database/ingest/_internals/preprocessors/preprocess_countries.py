@@ -14,12 +14,12 @@ import sys
 def internal__preprocess_countries(root_directory):
     """:meta private:"""
 
-    from .....thesaurus.countries import ApplyThesaurus, CreateThesaurus
+    from .....thesaurus.countries import ApplyThesaurus, InitializeThesaurus
 
     sys.stderr.write("INFO  Creating 'countries' column\n")
     sys.stderr.flush()
 
-    CreateThesaurus(root_directory=root_directory).run()
+    InitializeThesaurus(root_directory=root_directory).run()
     ApplyThesaurus(root_directory=root_directory).run()
 
 

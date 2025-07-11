@@ -14,18 +14,18 @@ Example:
     >>> # TEST PREPARATION
     >>> #
     >>> # Countries:
-    >>> from techminer2.thesaurus.countries import CreateThesaurus, ApplyThesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus, ApplyThesaurus
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Organizations:
-    >>> from techminer2.thesaurus.organizations import CreateThesaurus, ApplyThesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> from techminer2.thesaurus.organizations import InitializeThesaurus, ApplyThesaurus
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Descriptors:
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, ApplyThesaurus
-    >>> CreateThesaurus(root_directory="example/", quiet=True).run()
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, ApplyThesaurus
+    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
 
     >>> #
