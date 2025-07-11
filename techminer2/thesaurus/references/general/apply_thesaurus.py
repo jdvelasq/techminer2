@@ -30,7 +30,7 @@ Example:
               File : example/data/thesaurus/references.the.txt
       Source field : raw_global_references
       Target field : global_references
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -83,7 +83,7 @@ class ApplyThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Thesaurus application completed successfully\n\n")
+            sys.stderr.write(f"  Application process completed successfully\n\n")
             sys.stderr.flush()
 
     #

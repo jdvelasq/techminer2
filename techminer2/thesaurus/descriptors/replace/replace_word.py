@@ -40,7 +40,7 @@ Example:
              Word : FINTECH
       Replacement : fintech
       105 replacements made successfully
-      Word replacing completed successfully
+      Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt

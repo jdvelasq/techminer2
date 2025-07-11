@@ -31,19 +31,19 @@ Example:
               File : example/data/thesaurus/countries.the.txt
       Source field : affiliations
       Target field : countries
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     Applying system thesaurus to database
               File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
       Source field : countries
       Target field : regions
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     Applying system thesaurus to database
               File : ...ackage_data/thesaurus/geography/country_to_subregion.the.txt
       Source field : countries
       Target field : subregions
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 

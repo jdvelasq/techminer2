@@ -44,7 +44,7 @@ Example:
              Word : BUSINESS
       Replacement : business
       19 replacements made successfully
-      Word replacing completed successfully
+      Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -105,7 +105,7 @@ class ReplaceWord(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Word replacing completed successfully\n\n")
+        sys.stderr.write("  Replacement process completed successfully\n\n")
         internal__print_thesaurus_header(self.thesaurus_path)
 
     #

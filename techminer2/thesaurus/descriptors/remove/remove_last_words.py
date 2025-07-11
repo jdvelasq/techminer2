@@ -14,7 +14,7 @@ Last Words
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveCommonLastWords
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveLastWords
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -24,7 +24,7 @@ Example:
     >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Remove common last words
-    >>> RemoveCommonLastWords(root_directory="example/", tqdm_disable=True).run()
+    >>> RemoveLastWords(root_directory="example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -35,7 +35,7 @@ Example:
     <BLANKLINE>
     <BLANKLINE>
       12 last words removed successfully
-      Common last words removal completed successfully
+      Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -75,7 +75,7 @@ from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 tqdm.pandas()
 
 
-class RemoveCommonLastWords(
+class RemoveLastWords(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -95,7 +95,7 @@ class RemoveCommonLastWords(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(f"  Common last words removal completed successfully\n\n")
+        sys.stderr.write(f"  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

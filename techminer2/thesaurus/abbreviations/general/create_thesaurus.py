@@ -30,7 +30,7 @@ Example:
     >>> print(output)
     Creating thesaurus
       12 abbreviations found
-      Thesaurus creation completed successfully
+      Creation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/abbreviations.the.txt
@@ -94,7 +94,7 @@ class CreateThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} abbreviations found\n")
-            sys.stderr.write("  Thesaurus creation completed successfully\n\n")
+            sys.stderr.write("  Creation process completed successfully\n\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)

@@ -37,7 +37,7 @@ Example:
     Converting British to American English
       File : example/data/thesaurus/descriptors.the.txt
       13 replacements made successfully
-    Translation completed successfully
+    Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt

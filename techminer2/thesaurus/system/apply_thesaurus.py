@@ -37,7 +37,7 @@ Example:
               File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
       Source field : countries
       Target field : regions
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -83,7 +83,7 @@ class ApplyThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Thesaurus application completed successfully\n\n")
+            sys.stderr.write(f"  Application process completed successfully\n\n")
             sys.stderr.flush()
 
     #

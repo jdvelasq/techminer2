@@ -34,7 +34,7 @@ Example:
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
       191 common initial words removed successfully
-      Common initial words removal successfully
+      Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -95,7 +95,7 @@ class RemoveInitialWords(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(f"  Common initial words removal successfully\n\n")
+        sys.stderr.write(f"  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

@@ -36,7 +36,7 @@ Example:
     Transforming hyphenated words in thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       47 hypenated words transformed successfully
-      Hyphenated words transformation completed successfully
+      Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -89,15 +89,13 @@ class ReplaceHyphenatedWords(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("Transforming hyphenated words in thesaurus keys\n")
+        sys.stderr.write("Replacing hyphenated words in thesaurus keys\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
-        sys.stderr.write(
-            f"  Hyphenated words transformation completed successfully\n\n"
-        )
+        sys.stderr.write(f"  Replacement process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

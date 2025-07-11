@@ -7,41 +7,43 @@ from .general.explode_keys import ExplodeKeys
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
 from .general.spell_check import SpellCheck
-from .replace.replace_ends_with_word import ReplaceEndsWithWord
-from .replace.replace_starts_with_word import ReplaceStartsWithWord
+from .replace.replace_initial_word import ReplaceInitialWord
+from .replace.replace_last_word import ReplaceLastWord
 from .replace.replace_word import ReplaceWord
-from .sort.sort_by_ends_with_key_match import SortByEndsWithKeyMatch
-from .sort.sort_by_exact_key_match import SortByExactKeyMatch
-from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
-from .sort.sort_by_key_match import SortByKeyMatch
-from .sort.sort_by_key_order import SortByKeyOrder
+from .sort.sort_by_alphabet import SortByAlphabet
+from .sort.sort_by_endswith_match import SortByEndsWithMatch
+from .sort.sort_by_exact_match import SortByExactMatch
+from .sort.sort_by_fuzzy_match import SortByFuzzyMatch
+from .sort.sort_by_key_length import SortByKeyLength
 from .sort.sort_by_match import SortByMatch
 from .sort.sort_by_occurrences import SortByOccurrences
-from .sort.sort_by_starts_with_key_match import SortByStartsWithKeyMatch
-from .sort.sort_by_word_key_match import SortByWordKeyMatch
+from .sort.sort_by_startswith_match import SortByStartsWithMatch
+from .sort.sort_by_word_length import SortByWordLength
+from .sort.sort_by_word_match import SortByWordMatch
 from .translate.american_to_british_spelling import AmericanToBritishSpelling
 from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
-    "AmericanToBritishSpelling",
     "ApplyThesaurus",
-    "BritishToAmericanSpelling",
     "CompressThesaurus",
     "CreateThesaurus",
     "ExplodeKeys",
     "IntegrityCheck",
     "ReduceKeys",
-    "ReplaceEndsWithWord",
-    "ReplaceStartsWithWord",
+    "SpellCheck",
+    "ReplaceInitialWord",
+    "ReplaceLastWord",
     "ReplaceWord",
-    "SortByEndsWithKeyMatch",
-    "SortByExactKeyMatch",
-    "SortByFuzzyKeyMatch",
-    "SortByKeyMatch",
-    "SortByKeyOrder",
+    "SortByAlphabet",
+    "SortByEndsWithMatch",
+    "SortByExactMatch",
+    "SortByFuzzyMatch",
+    "SortByKeyLength",
     "SortByMatch",
     "SortByOccurrences",
-    "SortByStartsWithKeyMatch",
-    "SortByWordKeyMatch",
-    "SpellCheck",
+    "SortByStartsWithMatch",
+    "SortByWordLength",
+    "SortByWordMatch",
+    "AmericanToBritishSpelling",
+    "BritishToAmericanSpelling",
 ]

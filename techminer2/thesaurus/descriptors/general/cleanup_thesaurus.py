@@ -36,7 +36,7 @@ Example:
     Cleanup Thesaurus
       File : example/data/thesaurus/descriptors.the.txt
       21 replacements made successfully
-    Cleanup completed successfully
+    Cleanup process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -100,7 +100,7 @@ class CleanupThesaurus(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("Cleanup completed successfully\n\n")
+        sys.stderr.write(". Cleanup process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

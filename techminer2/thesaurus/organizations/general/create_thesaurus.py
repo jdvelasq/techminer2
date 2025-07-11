@@ -34,7 +34,7 @@ Example:
     Creating thesaurus from 'affiliations' field
       File : example/data/thesaurus/organizations.the.txt
       90 keys found
-      Thesaurus creation completed successfully
+      Creation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/organizations.the.txt
@@ -185,7 +185,7 @@ class CreateThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Thesaurus creation completed successfully\n\n")
+            sys.stderr.write("  Creation process completed successfully\n\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(self.thesaurus_path)

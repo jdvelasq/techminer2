@@ -56,7 +56,7 @@ Example:
         ...
     <BLANKLINE>
       Matching keys found : 85
-      Spell checking completed successfully
+      Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -112,7 +112,7 @@ Example:
         ...
     <BLANKLINE>
       Matching keys found : 85
-      Spell checking completed successfully
+      Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -169,7 +169,7 @@ class SpellCheck(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Spell checking completed successfully\n\n")
+        sys.stderr.write("  Spell checking process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

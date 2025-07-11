@@ -11,9 +11,9 @@
 from ....base_shell import BaseShell
 from .commands import (
     execute_abbreviations_command,
-    execute_endswith_command,
     execute_hyphenated_command,
-    execute_startswith_command,
+    execute_initial_command,
+    execute_last_command,
     execute_word_command,
 )
 
@@ -23,21 +23,21 @@ class ReplaceShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > replace > "
 
     def do_abbreviations(self, arg):
-        """Replace abbreviations."""
+        """Replace abbreviations in keys."""
         execute_abbreviations_command()
 
-    def do_endswith(self, arg):
-        """Replace words that end with a specific string."""
-        execute_endswith_command()
+    def do_last(self, arg):
+        """Replace the last word in keys."""
+        execute_last_command()
 
     def do_hyphenated(self, arg):
-        """Replace hyphenated words."""
+        """Replace hyphenated words in keys."""
         execute_hyphenated_command()
 
-    def do_startswith(self, arg):
-        """Replace words that start with a specific string."""
-        execute_startswith_command()
+    def do_initial(self, arg):
+        """Replace the initial word in keys."""
+        execute_initial_command()
 
     def do_word(self, arg):
-        """Replace specific words."""
+        """Replace a specific word in keys."""
         execute_word_command()

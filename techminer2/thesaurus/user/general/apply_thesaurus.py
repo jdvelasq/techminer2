@@ -45,7 +45,7 @@ Example:
               File : example/data/thesaurus/descriptors.the.txt
       Source field : raw_descriptors
       Target field : descriptors_cleaned
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -113,7 +113,7 @@ class ApplyThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Thesaurus application completed successfully\n\n")
+            sys.stderr.write(f"  Application process completed successfully\n\n")
             sys.stderr.flush()
 
     #

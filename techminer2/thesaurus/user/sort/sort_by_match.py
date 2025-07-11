@@ -44,16 +44,16 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1726 to 1726
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
-    Sorting thesaurus file by match
+    Sorting thesaurus by match
                 File : example/data/thesaurus/demo.the.txt
              Pattern : BUSINESS
       Case sensitive : False
          Regex Flags : 0
         Regex Search : False
-      21 matching keys/values found
-      Thesaurus sorting by match completed successfully
+      21 matching keys found
+      Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -107,7 +107,7 @@ class SortByMatch(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stderr.write("Sorting thesaurus file by match\n")
+        sys.stderr.write("Sorting thesaurus by match\n")
         sys.stderr.write(f"            File : {file_path}\n")
         sys.stderr.write(f"         Pattern : {pattern}\n")
         sys.stderr.write(f"  Case sensitive : {case_sensitive}\n")
@@ -118,7 +118,7 @@ class SortByMatch(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Thesaurus sorting by match completed successfully\n\n")
+        sys.stderr.write("  Sorting process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)
@@ -149,19 +149,9 @@ class SortByMatch(
                 "__row_selected__",
             ] = True
 
-            self.data_frame.loc[
-                self.data_frame.value.str.contains(
-                    pat=pat,
-                    case=self.params.case_sensitive,
-                    flags=self.params.regex_flags,
-                    regex=self.params.regex_search,
-                ),
-                "__row_selected__",
-            ] = True
-
         n_matches = self.data_frame.__row_selected__.sum()
 
-        sys.stderr.write(f"  {n_matches} matching keys/values found\n")
+        sys.stderr.write(f"  {n_matches} matching keys found\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------

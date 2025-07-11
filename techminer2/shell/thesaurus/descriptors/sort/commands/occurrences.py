@@ -1,2 +1,7 @@
+from ......thesaurus.descriptors import SortByOccurrences
+
+
 def execute_occurrences_command():
-    pass
+
+    print()
+    SortByOccurrences().where_root_directory_is("./").run()

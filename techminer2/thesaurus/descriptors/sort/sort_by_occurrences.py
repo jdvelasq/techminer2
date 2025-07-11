@@ -37,11 +37,11 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       Keys reduced from 1726 to 1726
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
     Sorting thesaurus by occurrences
       File : example/data/thesaurus/descriptors.the.txt
-      Thesaurus sorting completed successfully
+      Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -84,11 +84,6 @@ class SortByOccurrences(
             .with_field("raw_descriptors")
             .run()
         )
-
-
-def sort_by_occurrences():
-    """:meta private:"""
-    SortByOccurrences().where_root_directory_is("../").run()
 
 
 # =============================================================================

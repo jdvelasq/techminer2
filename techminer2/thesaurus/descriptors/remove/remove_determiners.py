@@ -14,18 +14,16 @@ Determiners
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CreateThesaurus, RemoveDeterminers
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
+    >>> from techminer2.thesaurus.descriptors import CreateThesaurus
     >>> CreateThesaurus(root_directory="example/", quiet=True).run()
 
-
-
-    >>> from techminer2.thesaurus.descriptors import RemoveInitialDeterminers
+    >>> from techminer2.thesaurus.descriptors import RemoveDeterminers
     >>> RemoveDeterminers(root_directory="example/", tqdm_disable=True).run()
 
     >>> # Capture and print stderr output
@@ -35,7 +33,7 @@ Example:
     Removing initial determiners from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       595 initial determiners removed successfully
-      Initial determiners removal completed successfully
+      Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -93,7 +91,7 @@ class RemoveDeterminers(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Initial determiners removal completed successfully\n\n")
+        sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

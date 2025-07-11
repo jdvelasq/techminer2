@@ -32,12 +32,12 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
     Exploding thesaurus keys
       File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 106
-      Keys exploding completed successfully
+      Exploding process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 

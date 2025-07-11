@@ -1,2 +1,7 @@
+from ......thesaurus.descriptors import SortByStartsWithMatch
+
+
 def execute_startswith_command():
-    pass
+
+    print()
+    SortByStartsWithMatch().where_root_directory_is("./").run()

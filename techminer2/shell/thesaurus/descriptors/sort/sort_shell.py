@@ -10,12 +10,11 @@
 
 from ....base_shell import BaseShell
 from .commands import (
+    execute_alphabet_command,
     execute_endswith_command,
     execute_exact_command,
     execute_fuzzy_command,
-    execute_key_command,
     execute_occurrences_command,
-    execute_order_command,
     execute_startswith_command,
 )
 
@@ -24,8 +23,12 @@ class SortShell(BaseShell):
 
     prompt = "tm2 > thesaurus > descriptors > sort > "
 
+    def do_alphabet(self, arg):
+        """Replace abbreviations in."""
+        execute_alphabet_command()
+
     def do_endswith(self, arg):
-        """Replace abbreviations."""
+        """Replace abbreviations in."""
         execute_endswith_command()
 
     def do_exact(self, arg):

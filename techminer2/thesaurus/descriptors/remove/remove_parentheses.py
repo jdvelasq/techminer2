@@ -34,7 +34,7 @@ Example:
     <BLANKLINE>
       File : example/data/thesaurus/descriptors.the.txt
       6 removals made successfully
-      Parentheses removal completed successfully
+      Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -91,7 +91,7 @@ class RemoveParentheses(
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
-        sys.stderr.write("  Parentheses removal completed successfully\n\n")
+        sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

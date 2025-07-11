@@ -38,7 +38,7 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 

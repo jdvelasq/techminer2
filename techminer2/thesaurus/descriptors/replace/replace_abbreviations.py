@@ -39,7 +39,7 @@ Example:
           Thesaurus : ...e/data/thesaurus/descriptors.the.txt
       Abbreviations : ...data/thesaurus/abbreviations.the.txt
       132 replacements made successfully
-      Abbreviations replacement completed successfully
+      Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -107,7 +107,7 @@ class ReplaceAbbreviations(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Abbreviations replacement completed successfully\n\n")
+        sys.stderr.write("  Replacement process completed successfully\n\n")
         internal__print_thesaurus_header(self.thesaurus_path)
 
     #

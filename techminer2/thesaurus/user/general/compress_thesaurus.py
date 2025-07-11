@@ -41,7 +41,7 @@ Example:
     Compressing thesaurus keys
                       File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1726 to 1726
-      Keys compressing completed successfully
+      Compression process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -83,7 +83,7 @@ class CompressThesaurus(
         sys.stderr.write(
             f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
         )
-        sys.stderr.write(f"  Keys compressing completed successfully\n\n")
+        sys.stderr.write(f"  Compression process completed successfully\n\n")
         sys.stderr.flush()
 
     #

@@ -11,10 +11,10 @@
 from ....base_shell import BaseShell
 from .commands import (
     execute_determiners_command,
+    execute_initial_command,
+    execute_last_command,
     execute_parentheses_command,
-    execute_prefixes_command,
     execute_stopwords_command,
-    execute_suffixes_command,
 )
 
 
@@ -22,21 +22,21 @@ class RemoveShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > remove > "
 
     def do_determiners(self, arg):
-        """Remove common determiners from keys."""
+        """Remove determiners at the beginning of keys."""
         execute_determiners_command()
+
+    def do_initial(self, arg):
+        """Remove common words at the beginning of keys."""
+        execute_initial_command()
+
+    def do_last(self, arg):
+        """Remove common words at the end of keys."""
+        execute_last_command()
 
     def do_parentheses(self, arg):
         """Remove parentheses from keys."""
         execute_parentheses_command()
 
-    def do_prefixes(self, arg):
-        """Remove common prefixes from keys."""
-        execute_prefixes_command()
-
     def do_stopwords(self, arg):
-        """Remove initial stopwords from keys."""
+        """Remove stopwords at the beginning of keys."""
         execute_stopwords_command()
-
-    def do_suffixes(self, arg):
-        """Remove common suffixes from keys."""
-        execute_suffixes_command()

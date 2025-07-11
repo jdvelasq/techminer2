@@ -33,7 +33,7 @@ Example:
     Removing initial stopwords from thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       551 initial stopwords removed successfully
-      Initial stopwords removal completed successfully
+      Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
@@ -91,7 +91,7 @@ class RemoveStopwords(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Initial stopwords removal completed successfully\n\n")
+        sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

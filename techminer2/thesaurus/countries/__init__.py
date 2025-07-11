@@ -5,13 +5,15 @@ from .general.create_thesaurus import CreateThesaurus
 from .general.explode_keys import ExplodeKeys
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
-from .sort.sort_by_ends_with_key_match import SortByEndsWithKeyMatch
-from .sort.sort_by_exact_key_match import SortByExactKeyMatch
-from .sort.sort_by_fuzzy_key_match import SortByFuzzyKeyMatch
-from .sort.sort_by_key_match import SortByKeyMatch
-from .sort.sort_by_key_order import SortByKeyOrder
-from .sort.sort_by_starts_with_key_match import SortByStartsWithKeyMatch
-from .sort.sort_by_word_key_match import SortByWordKeyMatch
+from .sort.sort_by_alphabet import SortByAlphabet
+from .sort.sort_by_endswith_match import SortByEndsWithMatch
+from .sort.sort_by_exact_match import SortByExactMatch
+from .sort.sort_by_fuzzy_match import SortByFuzzyMatch
+from .sort.sort_by_key_length import SortByKeyLength
+from .sort.sort_by_match import SortByKeyMatch
+from .sort.sort_by_startswith_match import SortByStartsWithKeyMatch
+from .sort.sort_by_word_length import SortByWordLength
+from .sort.sort_by_word_match import SortByWordKeyMatch
 
 __all__ = [
     "ApplyThesaurus",
@@ -19,11 +21,13 @@ __all__ = [
     "ExplodeKeys",
     "IntegrityCheck",
     "ReduceKeys",
-    "SortByEndsWithKeyMatch",
-    "SortByFuzzyKeyMatch",
+    "SortByAlphabet",
+    "SortByEndsWithMatch",
+    "SortByExactMatch",
+    "SortByFuzzyMatch",
+    "SortByKeyLength",
     "SortByKeyMatch",
-    "SortByKeyOrder",
     "SortByStartsWithKeyMatch",
+    "SortByWordLength",
     "SortByWordKeyMatch",
-    "SortByExactKeyMatch",
 ]

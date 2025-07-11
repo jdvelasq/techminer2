@@ -38,7 +38,7 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/descriptors.the.txt
       Keys reduced from 1726 to 1726
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 

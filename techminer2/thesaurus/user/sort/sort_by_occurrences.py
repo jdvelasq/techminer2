@@ -41,11 +41,11 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1726 to 1726
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
     Sorting thesaurus by occurrences
       File : example/data/thesaurus/demo.the.txt
-      Thesaurus sorting completed successfully
+      Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -106,7 +106,7 @@ class SortByOccurrences(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("  Thesaurus sorting completed successfully\n\n")
+        sys.stderr.write("  Sorting process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

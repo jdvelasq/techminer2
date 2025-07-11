@@ -32,7 +32,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Thesaurus integrity check
+    Checking thesaurus integrity
       File : example/data/thesaurus/organizations.the.txt
       106 terms checked
       Integrity check completed successfully

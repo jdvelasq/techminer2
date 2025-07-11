@@ -1,7 +1,7 @@
-from ......thesaurus.descriptors import SortByEndsWithKeyMatch
+from ......thesaurus.descriptors import SortByEndsWithMatch
 
 
 def execute_endswith_command():
 
     print()
-    SortByEndsWithKeyMatch().where_root_directory_is("./").run()
+    SortByEndsWithMatch().where_root_directory_is("./").run()

@@ -39,7 +39,7 @@ Example:
     Converting British to American English
       File : example/data/thesaurus/demo.the.txt
       13 replacements made successfully
-    Translation completed successfully
+      Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/demo.the.txt
@@ -105,7 +105,7 @@ class BritishToAmericanSpelling(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write("Translation completed successfully\n\n")
+        sys.stderr.write("Translation process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(self.thesaurus_path)

@@ -39,7 +39,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Thesaurus integrity check
+    Checking thesaurus integrity
       File : example/data/thesaurus/demo.the.txt
       1792 terms checked
       Integrity check completed successfully
@@ -68,7 +68,7 @@ class IntegrityCheck(
 
         file_path = self.thesaurus_path
 
-        sys.stderr.write("Thesaurus integrity check\n")
+        sys.stderr.write("Checking thesaurus integrity\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 

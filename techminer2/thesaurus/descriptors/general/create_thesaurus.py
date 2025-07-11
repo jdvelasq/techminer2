@@ -34,7 +34,7 @@ Example:
     Creating thesaurus from 'raw_descriptors' field
       File : example/data/thesaurus/descriptors.the.txt
       1726 keys found
-      Thesaurus creation completed successfully
+      Creation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt

@@ -41,12 +41,12 @@ Example:
     Reducing thesaurus keys
       File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1726 to 1726
-      Keys reduction completed successfully
+      Reduction process completed successfully
     <BLANKLINE>
     Exploding thesaurus keys
       File : example/data/thesaurus/demo.the.txt
       Keys reduced from 1726 to 1792
-      Keys exploding completed successfully
+      Exploding process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -87,7 +87,7 @@ class ExplodeKeys(
         sys.stderr.write(
             f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
         )
-        sys.stderr.write(f"  Keys exploding completed successfully\n\n")
+        sys.stderr.write(f"  Exploding process completed successfully\n\n")
         sys.stderr.flush()
 
     #

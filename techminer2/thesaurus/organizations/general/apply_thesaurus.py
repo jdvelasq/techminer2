@@ -40,7 +40,7 @@ Example:
               File : example/data/thesaurus/organizations.the.txt
       Source field : affiliations
       Target field : organizations
-      Thesaurus application completed successfully
+      Application process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
