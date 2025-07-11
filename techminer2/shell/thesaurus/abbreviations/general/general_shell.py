@@ -9,13 +9,13 @@
 
 
 from ....base_shell import BaseShell
-from .commands import execute_create_command
+from .commands import execute_initialize_command
 
 
 class GeneralShell(BaseShell):
 
     prompt = "tm2 > thesaurus > abbreviations > general > "
 
-    def do_create(self, arg):
-        """Reset the thesaurus to their initial state."""
-        execute_create_command()
+    def do_initialize(self, arg):
+        """Create or reset the thesaurus to its initial state."""
+        execute_initialize_command()

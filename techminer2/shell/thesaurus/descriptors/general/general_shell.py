@@ -12,9 +12,9 @@ from ....base_shell import BaseShell
 from .commands import (
     execute_apply_command,
     execute_cleanup_command,
+    execute_initialize_command,
     execute_integrity_command,
     execute_reduce_command,
-    execute_reset_command,
 )
 
 
@@ -29,9 +29,9 @@ class GeneralShell(BaseShell):
         """Cleanup the thesaurus."""
         execute_cleanup_command()
 
-    def do_reset(self, arg):
-        """Reset the thesaurus."""
-        execute_reset_command()
+    def do_initialize(self, arg):
+        """Create or reset the thesaurus to its initial state."""
+        execute_initialize_command()
 
     def do_integrity(self, arg):
         """Check the integrity of the thesaurus."""
