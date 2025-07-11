@@ -23,21 +23,21 @@ class ReplaceShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > replace > "
 
     def do_abbreviations(self, arg):
-        """Replace abbreviations in keys."""
+        """Replace abbreviations."""
         execute_abbreviations_command()
 
     def do_last(self, arg):
-        """Replace the last word in keys."""
+        """Replace common last words."""
         execute_last_command()
 
     def do_hyphenated(self, arg):
-        """Replace hyphenated words in keys."""
+        """Replace hyphenated words."""
         execute_hyphenated_command()
 
     def do_initial(self, arg):
-        """Replace the initial word in keys."""
+        """Replace common initial words."""
         execute_initial_command()
 
     def do_word(self, arg):
-        """Replace a specific word in keys."""
+        """Replace a specific word."""
         execute_word_command()

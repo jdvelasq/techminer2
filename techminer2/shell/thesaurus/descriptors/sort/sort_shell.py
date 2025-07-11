@@ -14,8 +14,12 @@ from .commands import (
     execute_endswith_command,
     execute_exact_command,
     execute_fuzzy_command,
+    execute_keylength_command,
+    execute_match_command,
     execute_occurrences_command,
     execute_startswith_command,
+    execute_wordlength_command,
+    execute_wordmatch_command,
 )
 
 
@@ -24,33 +28,41 @@ class SortShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > sort > "
 
     def do_alphabet(self, arg):
-        """Replace abbreviations in."""
+
         execute_alphabet_command()
 
     def do_endswith(self, arg):
-        """Replace abbreviations in."""
+
         execute_endswith_command()
 
     def do_exact(self, arg):
-        """Replace abbreviations."""
+
         execute_exact_command()
 
     def do_fuzzy(self, arg):
-        """Replace abbreviations."""
+
         execute_fuzzy_command()
 
-    def do_key(self, arg):
-        """Replace abbreviations."""
-        execute_key_command()
+    def do_keylength(self, arg):
+
+        execute_keylength_command()
+
+    def do_match(self, arg):
+
+        execute_match_command()
 
     def do_occurrences(self, arg):
-        """Replace abbreviations."""
+
         execute_occurrences_command()
 
-    def do_order(self, arg):
-        """Replace abbreviations."""
-        execute_order_command()
-
     def do_startswith(self, arg):
-        """Replace abbreviations."""
+
         execute_startswith_command()
+
+    def do_wordlength(self, arg):
+
+        execute_wordlength_command()
+
+    def do_wordmatch(self, arg):
+
+        execute_wordmatch_command()

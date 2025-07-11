@@ -14,6 +14,7 @@ from .commands.bri2ame import execute_bri2ame_command
 
 
 class TranslateShell(BaseShell):
+
     prompt = "tm2 > thesaurus > descriptors > translate > "
 
     def do_ame2bri(self, arg):

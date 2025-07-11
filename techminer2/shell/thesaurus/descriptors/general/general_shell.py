@@ -22,21 +22,21 @@ class GeneralShell(BaseShell):
     prompt = "tm2 > thesaurus > descriptors > general > "
 
     def do_apply(self, arg):
-        """Apply the thesaurus to the database."""
+        """Apply the thesaurus."""
         execute_apply_command()
 
     def do_cleanup(self, arg):
-        """Cleanup the thesaurus."""
+        """Clean up the thesaurus."""
         execute_cleanup_command()
 
     def do_initialize(self, arg):
-        """Create or reset the thesaurus to its initial state."""
+        """Reset or create the thesaurus."""
         execute_initialize_command()
 
     def do_integrity(self, arg):
-        """Check the integrity of the thesaurus."""
+        """Verify thesaurus integrity."""
         execute_integrity_command()
 
     def do_reduce(self, arg):
-        """Reduce the keys of the thesaurus."""
+        """Reduce thesaurus keys."""
         execute_reduce_command()

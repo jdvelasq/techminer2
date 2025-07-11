@@ -19,24 +19,25 @@ from .commands import (
 
 
 class RemoveShell(BaseShell):
+
     prompt = "tm2 > thesaurus > descriptors > remove > "
 
     def do_determiners(self, arg):
-        """Remove determiners at the beginning of keys."""
+        """Remove initial determiners."""
         execute_determiners_command()
 
     def do_initial(self, arg):
-        """Remove common words at the beginning of keys."""
+        """Remove common initial words."""
         execute_initial_command()
 
     def do_last(self, arg):
-        """Remove common words at the end of keys."""
+        """Remove common trailing words."""
         execute_last_command()
 
     def do_parentheses(self, arg):
-        """Remove parentheses from keys."""
+        """Remove expressions between parentheses."""
         execute_parentheses_command()
 
     def do_stopwords(self, arg):
-        """Remove stopwords at the beginning of keys."""
+        """Remove initial stopwords."""
         execute_stopwords_command()
