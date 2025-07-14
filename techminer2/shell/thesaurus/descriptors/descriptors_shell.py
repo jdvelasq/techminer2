@@ -32,7 +32,7 @@ class DescriptorsShell(BaseShell):
         RemoveShell().cmdloop()
         self.do_help(arg)
 
-    def do_regiter(self, arg):
+    def do_register(self, arg):
         """Register new terms in the system."""
         RegisterShell().cmdloop()
         self.do_help(arg)
