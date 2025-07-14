@@ -25,7 +25,7 @@ Example:
 
     >>> # Creates, configures, an run the translator
     >>> translator = (
-    ...     BritishToAmericanSpelling(tqdm_disable=True)
+    ...     BritishToAmericanSpelling(tqdm_disable=True, use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> translator.run()
@@ -34,7 +34,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Converting British to American English
+    Converting British to American English...
       File : example/data/thesaurus/descriptors.the.txt
       13 replacements made successfully
       Translation process completed successfully

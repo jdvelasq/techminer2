@@ -9,6 +9,7 @@
 
 
 from ....base_shell import BaseShell
+from ....colorized_prompt import make_colorized_prompt
 from .commands import (
     execute_apply_command,
     execute_cleanup_command,
@@ -19,7 +20,8 @@ from .commands import (
 
 
 class GeneralShell(BaseShell):
-    prompt = "tm2 > thesaurus > descriptors > general > "
+
+    prompt = make_colorized_prompt("tm2:thesaurus:descriptors:general")
 
     def do_apply(self, arg):
         """Apply the thesaurus."""

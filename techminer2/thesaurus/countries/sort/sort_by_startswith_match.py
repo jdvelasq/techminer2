@@ -24,7 +24,7 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> sorter = (
-    ...     SortByStartsWithMatch()
+    ...     SortByStartsWithMatch(use_colorama=False)
     ...     .having_pattern("Germ")
     ...     .where_root_directory_is("example/")
     ... )
@@ -34,12 +34,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by startswith match
+    Sorting thesaurus by startswith match...
          File : example/data/thesaurus/countries.the.txt
       Pattern : Germ
       1 matching keys found

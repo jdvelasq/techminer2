@@ -24,7 +24,7 @@ Example:
 
     >>> # Create, configure, and run the sorter
     >>> sorter = (
-    ...     SortByFuzzyMatch()
+    ...     SortByFuzzyMatch(use_colorama=False)
     ...     .having_pattern("ACCOU")
     ...     .having_match_threshold(50)
     ...     .where_root_directory_is("example/")
@@ -35,12 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/references.the.txt
-      Keys reduced from 27 to 27
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by fuzzy match
+    Sorting thesaurus by fuzzy match...
                 File : example/data/thesaurus/references.the.txt
            Keys like : ACCOU
       Match thresold : 50

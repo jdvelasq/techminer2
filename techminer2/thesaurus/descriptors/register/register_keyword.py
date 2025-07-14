@@ -7,22 +7,22 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Register Initial Word
+Register Keyword
 ===============================================================================
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, RegisterInitialWord
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, RegisterKeyword
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-    >>> # Register a new initial word
+    >>> # Register a new keyword
     >>> (
-    ...     RegisterInitialWord()
-    ...     .having_word("ABDUCT")
+    ...     RegisterKeyword()
+    ...     .having_word("ARTIFICIAL_NEURAL_NETWORK")
     ...     .run()
     ... )
 
@@ -30,6 +30,10 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Registering new keyword...
+      Registration process completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """
@@ -41,7 +45,7 @@ from ...._internals.mixins import ParamsMixin
 from ....package_data.text_processing import internal__sort_text_processing_terms
 
 
-class RegisterInitialWord(
+class RegisterKeyword(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -51,7 +55,7 @@ class RegisterInitialWord(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        sys.stderr.write("Registering new common initial word\n")
+        sys.stderr.write("Registering new keyword...\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -65,7 +69,7 @@ class RegisterInitialWord(
     # -------------------------------------------------------------------------
     def internal__register_new_word(self):
 
-        data_path = "package_data/text_processing/data/common_initial_words.txt"
+        data_path = "package_data/text_processing/data/known_noun_phrases.txt"
         data_path = pkg_resources.resource_filename("techminer2", data_path)
 
         with open(data_path, "a", encoding="utf-8") as file:

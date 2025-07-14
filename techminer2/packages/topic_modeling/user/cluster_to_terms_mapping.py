@@ -57,16 +57,13 @@ Example:
     >>> import pprint
     >>> pprint.pprint(mapping) # doctest: +ELLIPSIS
     {0: ['FINTECH 44:6942',
-         'FINANCE 21:3481',
          'THE_FINANCIAL_SECTOR 05:1147',
-         'TECHNOLOGY 13:1594',
-         'THE_FINANCIAL_INDUSTRY 09:2006',
          'FINANCIAL_TECHNOLOGY 13:1909',
-         'PRACTITIONERS 05:0992',
-         'CHINA 06:0673',
-         'REGULATORS 08:0974',
+         'FINANCE 21:3481',
+         'TECHNOLOGY 13:1594',
          'DATA 07:1086',
-         'THE_IMPACT 05:0787',
+         'INNOVATION 12:2290',
+         'REGULATORS 08:0974',
     ...
 
 

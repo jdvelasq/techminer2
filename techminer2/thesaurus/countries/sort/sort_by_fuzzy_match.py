@@ -24,7 +24,7 @@ Example:
 
     >>> # Sorts thesaurus by fuzzy match
     >>> (
-    ...     SortByFuzzyMatch()
+    ...     SortByFuzzyMatch(use_colorama=False)
     ...     .having_pattern("china")
     ...     .having_match_threshold(90)
     ...     .where_root_directory_is("example/")
@@ -35,12 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by fuzzy match
+    Sorting thesaurus by fuzzy match...
                 File : example/data/thesaurus/countries.the.txt
            Keys like : china
       Match thresold : 90

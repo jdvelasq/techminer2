@@ -28,14 +28,14 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Configure and run the replacer
-    >>> replacer = ReplaceAbbreviations(root_directory="example/", tqdm_disable=True)
+    >>> replacer = ReplaceAbbreviations(root_directory="example/", tqdm_disable=True, use_colorama=False)
     >>> replacer.run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Replacing abbreviations in keys
+    Replacing abbreviations in keys...
           Thesaurus : ...e/data/thesaurus/descriptors.the.txt
       Abbreviations : ...data/thesaurus/abbreviations.the.txt
       132 replacements made successfully
@@ -68,6 +68,7 @@ Example:
 import re
 import sys
 
+from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import Params, ParamsMixin
@@ -91,16 +92,29 @@ class ReplaceAbbreviations(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        thesaurus_path = str(self.thesaurus_path)
-        if len(thesaurus_path) > 40:
-            thesaurus_path = "..." + thesaurus_path[-36:]
+        file_path = str(self.thesaurus_path)
+
+        if len(file_path) > 40:
+            file_path = "..." + file_path[-36:]
+
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
 
         abbreviations_path = str(self.abbreviations_path)
         if len(abbreviations_path) > 40:
             abbreviations_path = "..." + abbreviations_path[-36:]
 
-        sys.stderr.write("Replacing abbreviations in keys\n")
-        sys.stderr.write(f"      Thesaurus : {thesaurus_path}\n")
+        if self.params.use_colorama:
+            filename = str(abbreviations_path).split("/")[-1]
+            abbreviations_path = abbreviations_path.replace(
+                filename, f"{Fore.RESET}{filename}"
+            )
+            abbreviations_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Replacing abbreviations in keys...\n")
+        sys.stderr.write(f"      Thesaurus : {file_path}\n")
         sys.stderr.write(f"  Abbreviations : {abbreviations_path}\n")
         sys.stderr.flush()
 
@@ -108,7 +122,9 @@ class ReplaceAbbreviations(
     def internal__notify_process_end(self):
 
         sys.stderr.write("  Replacement process completed successfully\n\n")
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:

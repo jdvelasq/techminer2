@@ -1,4 +1,5 @@
 from ......thesaurus.organizations import SortByMatch
+from .....colorized_input import colorized_input
 
 
 def execute_match_command():
@@ -6,12 +7,12 @@ def execute_match_command():
     print()
 
     # Pattern input
-    pattern = input(". having pattern > ").strip()
+    pattern = colorized_input(". having pattern > ").strip()
     if pattern == "":
         return
 
     # Case sensitivity
-    case_sensitive = input(". case sensitive? (y/[n]) > ").strip().lower()
+    case_sensitive = colorized_input(". case sensitive? (y/[n]) > ").strip().lower()
     if case_sensitive == "":
         case_sensitive = "n"
     if case_sensitive not in ["y", "n"]:
@@ -19,7 +20,7 @@ def execute_match_command():
     case_sensitive = case_sensitive == "y"
 
     # Regex flags
-    regex_flags = input(". regex flags (default: 0) > ").strip()
+    regex_flags = colorized_input(". regex flags (default: 0) > ").strip()
     if regex_flags == "":
         regex_flags = 0
     else:
@@ -29,7 +30,7 @@ def execute_match_command():
             regex_flags = 0
 
     # Regex search
-    regex_search = input(". regex search? (y/[n]) > ").strip().lower()
+    regex_search = colorized_input(". regex search? (y/[n]) > ").strip().lower()
     if regex_search == "":
         regex_search = "n"
     if regex_search not in ["y", "n"]:
@@ -37,6 +38,7 @@ def execute_match_command():
     regex_search = regex_search == "y"
 
     # Execute the sort command
+    print()
     (
         SortByMatch()
         .where_root_directory_is("./")

@@ -21,13 +21,13 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/").run()
+    >>> InitializeThesaurus(root_directory="example/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Initializing thesaurus from 'affiliations' field
+    Initializing thesaurus from 'affiliations' field...
       File : example/data/thesaurus/countries.the.txt
       24 keys found
       Initialization process completed successfully
@@ -58,6 +58,7 @@ Example:
 import sys
 
 import pkg_resources  # type: ignore
+from colorama import Fore, init
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
@@ -78,11 +79,18 @@ class InitializeThesaurus(
         if not self.params.quiet:
 
             field = self.params.field
-            truncated_path = str(self.thesaurus_path)
-            if len(truncated_path) > 72:
-                truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
-            sys.stderr.write(f"  File : {truncated_path}\n")
+
+            file_path = str(self.thesaurus_path)
+            if len(file_path) > 72:
+                file_path = "..." + file_path[-68:]
+
+            if self.params.use_colorama:
+                filename = str(file_path).split("/")[-1]
+                file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+                file_path = Fore.LIGHTBLACK_EX + file_path
+
+            sys.stderr.write(f"Initializing thesaurus from '{field}' field...\n")
+            sys.stderr.write(f"  File : {file_path}\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -94,7 +102,10 @@ class InitializeThesaurus(
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
-            internal__print_thesaurus_header(self.thesaurus_path)
+            internal__print_thesaurus_header(
+                thesaurus_path=self.thesaurus_path,
+                use_colorama=self.params.use_colorama,
+            )
 
     #
     # ALGORITHM:

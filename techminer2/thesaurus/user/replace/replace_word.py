@@ -27,7 +27,7 @@ Example:
 
     >>> # Creates, configures, an run the replacer
     >>> replacer = (
-    ...     ReplaceWord()
+    ...     ReplaceWord(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_word("BUSINESS")
     ...     .having_replacement("business")
@@ -39,7 +39,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Replacing word in keys
+    Replacing word in keys...
              File : example/data/thesaurus/demo.the.txt
              Word : BUSINESS
       Replacement : business
@@ -73,6 +73,7 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
+from colorama import Fore, init
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
@@ -96,7 +97,12 @@ class ReplaceWord(
         if len(file_path) > 40:
             file_path = "..." + file_path[-36:]
 
-        sys.stderr.write("Replacing word in keys\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Replacing word in keys...\n")
         sys.stderr.write(f"         File : {file_path}\n")
         sys.stderr.write(f"         Word : {word}\n")
         sys.stderr.write(f"  Replacement : {replacement}\n")
@@ -106,7 +112,10 @@ class ReplaceWord(
     def internal__notify_process_end(self):
 
         sys.stderr.write("  Replacement process completed successfully\n\n")
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path,
+            use_colorama=self.params.use_colorama,
+        )
 
     #
     # ALGORITHM:

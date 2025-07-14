@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByWordLength()
+    ...     SortByWordLength(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> sorter.run()
@@ -34,22 +34,13 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by word length
+    Sorting thesaurus by word length...
       File : example/data/thesaurus/descriptors.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        DESIGN/METHODOLOGY/APPROACH
-          DESIGN/METHODOLOGY/APPROACH
-        RESEARCH_LIMITATIONS/IMPLICATIONS
-          RESEARCH_LIMITATIONS/IMPLICATIONS
         COMPETITION (ECONOMICS)
           COMPETITION (ECONOMICS)
         FINANCIAL_TECHNOLOGY (FINTECH)
@@ -62,9 +53,12 @@ Example:
           THE_RECONCEPTUALIZATION
         CLASSIFICATION (OF_INFORMATION)
           CLASSIFICATION (OF_INFORMATION)
+        EXPLORE_INTERRELATIONSHIPS
+          EXPLORE_INTERRELATIONSHIPS
+        A_DISINTERMEDIATION_FORCE
+          A_DISINTERMEDIATION_FORCE
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

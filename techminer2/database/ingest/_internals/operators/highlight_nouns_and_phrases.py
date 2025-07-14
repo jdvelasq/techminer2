@@ -14,7 +14,6 @@ import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ....._internals import Params
-from ....._internals.log_message import internal__log_message
 from .....package_data.text_processing import internal__load_text_processing_terms
 from ...._internals.io import (
     internal__load_all_records_from_database,
@@ -156,29 +155,34 @@ def mark_template_abstract_compound_markers(text):
         "? academic practical relevance :",
         "? data visualization tools :",
         "? design methodology approach :",
+        "? design/methodology/approach :",
         "? implications of the_study :",
         "? managerial implications :",
         "? methodological quality assessment tools include :",
         "? methodology results :",
         "? originality value :",
+        "? originality/value :",
         "? practical implications :",
         "? problem definition :",
         "? research limitations :",
         "? research limitations implications :",
-        "? research methodology :",
+        "? research limitations/implications :" "? research methodology :",
         ". academic practical relevance :",
         ". data visualization tools :",
         ". design methodology approach :",
+        ". design/methodology/approach :",
         ". implications of the study :",
         ". managerial implications :",
         ". methodological quality assessment tools include :",
         ". methodology results :",
         ". originality value :",
+        ". originality/value :",
         ". practical implications :",
         ". problem definition :",
         ". reporting quality assessment tool :",
         ". research limitations :",
         ". research limitations implications :",
+        ". research limitations/implications :",
         ". research methodology :",
     ]:
         regex = re.escape(regex)

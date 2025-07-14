@@ -27,7 +27,7 @@ Example:
     >>> # Create and run the sorter
     >>> from techminer2.thesaurus.organizations import SortByWordLength
     >>> sorter = (
-    ...     SortByWordLength()
+    ...     SortByWordLength(use_colorama=False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("example/")
@@ -38,12 +38,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/organizations.the.txt
-      Keys reduced from 90 to 90
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by word length
+    Sorting thesaurus by word length...
       File : example/data/thesaurus/organizations.the.txt
       Sorting process completed successfully
     <BLANKLINE>

@@ -24,13 +24,13 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> from techminer2.thesaurus.descriptors import RemoveDeterminers
-    >>> RemoveDeterminers(root_directory="example/", tqdm_disable=True).run()
+    >>> RemoveDeterminers(root_directory="example/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Removing initial determiners from thesaurus keys
+    Removing initial determiners from thesaurus keys...
       File : example/data/thesaurus/descriptors.the.txt
       595 initial determiners removed successfully
       Removal process completed successfully
@@ -62,6 +62,7 @@ Example:
 import re
 import sys
 
+from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
@@ -82,9 +83,14 @@ class RemoveDeterminers(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = self.thesaurus_path
+        file_path = str(self.thesaurus_path)
 
-        sys.stderr.write("Removing initial determiners from thesaurus keys\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Removing initial determiners from thesaurus keys...\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
@@ -94,7 +100,9 @@ class RemoveDeterminers(
         sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:

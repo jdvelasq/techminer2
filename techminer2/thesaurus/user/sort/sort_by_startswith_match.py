@@ -26,7 +26,7 @@ Example:
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
-    ...     SortByStartsWithMatch()
+    ...     SortByStartsWithMatch(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern("BUSINESS")
     ...     .where_root_directory_is("example/")
@@ -37,12 +37,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by startswith match
+    Sorting thesaurus by startswith match...
          File : example/data/thesaurus/demo.the.txt
       Pattern : BUSINESS
       8 matching keys found
@@ -74,6 +69,7 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
+from colorama import Fore, init
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
@@ -91,14 +87,19 @@ class SortByStartsWithMatch(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        truncated_path = str(self.thesaurus_path)
+        file_path = str(self.thesaurus_path)
         pattern = self.params.pattern
 
-        if len(truncated_path) > 64:
-            truncated_path = "..." + truncated_path[-60:]
+        if len(file_path) > 64:
+            file_path = "..." + file_path[-60:]
 
-        sys.stderr.write("Sorting thesaurus by startswith match\n")
-        sys.stderr.write(f"     File : {truncated_path}\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Sorting thesaurus by startswith match...\n")
+        sys.stderr.write(f"     File : {file_path}\n")
         sys.stderr.write(f"  Pattern : {pattern}\n")
         sys.stderr.flush()
 
@@ -108,7 +109,9 @@ class SortByStartsWithMatch(
         sys.stderr.write("  Sorting process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:
@@ -142,7 +145,7 @@ class SortByStartsWithMatch(
     def run(self):
         """:meta private:"""
 
-        self.internal__reduce_keys()
+        # self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()

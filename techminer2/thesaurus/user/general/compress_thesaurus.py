@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the compressor
     >>> compressor = (
-    ...     CompressThesaurus(tqdm_disable=True)
+    ...     CompressThesaurus(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("example/")
     ... )
@@ -38,9 +38,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
-    Compressing thesaurus keys
+    Compressing thesaurus keys...
                       File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1726 to 1726
+      Keys reduced from 1723 to 1723
       Compression process completed successfully
     <BLANKLINE>
     <BLANKLINE>
@@ -52,6 +52,7 @@ import re
 import sys
 
 import pandas as pd
+from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
@@ -70,11 +71,17 @@ class CompressThesaurus(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 72:
-            truncated_path = "..." + truncated_path[-68:]
-        sys.stderr.write(f"Compressing thesaurus keys\n")
-        sys.stderr.write(f"                  File : {truncated_path}\n")
+        file_path = str(self.thesaurus_path)
+        if len(file_path) > 72:
+            file_path = "..." + file_path[-68:]
+
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write(f"Compressing thesaurus keys...\n")
+        sys.stderr.write(f"                  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------

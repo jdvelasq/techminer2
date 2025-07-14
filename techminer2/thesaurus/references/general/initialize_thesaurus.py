@@ -20,7 +20,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory = "example/", tqdm_disable=True).run()
+    >>> InitializeThesaurus(root_directory = "example/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -123,7 +123,10 @@ class InitializeThesaurus(
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
-            internal__print_thesaurus_header(self.thesaurus_path)
+            internal__print_thesaurus_header(
+                thesaurus_path=self.thesaurus_path,
+                use_colorama=self.params.use_colorama,
+            )
 
     #
     # ALGORITHM:

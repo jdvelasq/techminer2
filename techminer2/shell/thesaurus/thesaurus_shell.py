@@ -10,6 +10,7 @@
 
 
 from ..base_shell import BaseShell
+from ..colorized_prompt import make_colorized_prompt
 from .abbreviations.abbreviations_shell import AbbreviationsShell
 from .countries.countries_shell import CountriesShell
 from .descriptors.descriptors_shell import DescriptorsShell
@@ -19,7 +20,7 @@ from .references.references_shell import ReferencesShell
 
 class ThesaurusShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > "
+    prompt = make_colorized_prompt("tm2:thesaurus")
 
     def do_abbreviations(self, arg):
         """Manage thesaurus for abbreviations."""

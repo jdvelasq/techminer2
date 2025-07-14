@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByMatch()
+    ...     SortByMatch(use_colorama=False)
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Sch")
@@ -43,12 +43,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/organizations.the.txt
-      Keys reduced from 90 to 90
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by match
+    Sorting thesaurus by match...
                 File : example/data/thesaurus/organizations.the.txt
              Pattern : Sch
       Case sensitive : False

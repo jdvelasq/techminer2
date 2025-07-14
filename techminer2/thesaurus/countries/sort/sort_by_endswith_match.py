@@ -24,7 +24,7 @@ Example:
 
     >>> # Sorts thesaurus by key match
     >>> (
-    ...     SortByEndsWithMatch()
+    ...     SortByEndsWithMatch(use_colorama=False)
     ...     .having_pattern("Darussalam")
     ...     .where_root_directory_is("example/")
     ...     .run()
@@ -34,12 +34,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by endswith match
+    Sorting thesaurus by endswith match...
          File : example/data/thesaurus/countries.the.txt
       Pattern : Darussalam
       1 matching keys found

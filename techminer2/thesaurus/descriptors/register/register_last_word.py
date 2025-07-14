@@ -30,6 +30,10 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
+    Registering new common last word...
+      Registration process completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 """
@@ -51,7 +55,7 @@ class RegisterLastWord(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        sys.stderr.write("Registering new common last word\n")
+        sys.stderr.write("Registering new common last word...\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------

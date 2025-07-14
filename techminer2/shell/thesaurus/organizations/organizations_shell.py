@@ -9,13 +9,14 @@
 
 
 from ...base_shell import BaseShell
+from ...colorized_prompt import make_colorized_prompt
 from .general.general_shell import GeneralShell
 from .sort.sort_shell import SortShell
 
 
 class OrganizationsShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > organizations > "
+    prompt = make_colorized_prompt("tm2:thesaurus:organizations")
 
     def do_general(self, arg):
         """General thesaurus operations."""

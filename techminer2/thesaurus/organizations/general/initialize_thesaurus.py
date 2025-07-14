@@ -22,7 +22,7 @@ Example:
 
     >>> # Create and run the thesaurus initializator
     >>> initializator = (
-    ...     InitializeThesaurus()
+    ...     InitializeThesaurus(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> initializator.run()
@@ -188,7 +188,10 @@ class InitializeThesaurus(
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
-            internal__print_thesaurus_header(self.thesaurus_path)
+            internal__print_thesaurus_header(
+                thesaurus_path=self.thesaurus_path,
+                use_colorama=self.params.use_colorama,
+            )
 
     #
     # ALGORITHM:

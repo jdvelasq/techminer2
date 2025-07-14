@@ -167,6 +167,7 @@ class Params:
     # U
     #
     unit_of_analysis: Optional[str] = None
+    use_colorama: bool = True
     use_idf: bool = False  # using_idf_reweighting
 
     #

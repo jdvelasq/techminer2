@@ -841,6 +841,7 @@ all right reserved
 \d{4} terra latinoamericana
 \d{4} tec empresarial
 \d{4} plos pathogens
+\d{4} owner/author \.$
 \d{4} owner author
 \d{4} mdpi ag
 \d{4} kluwer((, )*\s\b[a-z\+]+\b)*

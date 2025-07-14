@@ -21,25 +21,25 @@ Example:
 
     >>> # Create and apply the thesaurus
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyThesaurus().where_root_directory_is("example/").run()
+    >>> ApplyThesaurus(use_colorama=False).where_root_directory_is("example/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Applying user thesaurus to database
+    Applying user thesaurus to database...
               File : example/data/thesaurus/countries.the.txt
       Source field : affiliations
       Target field : countries
       Application process completed successfully
     <BLANKLINE>
-    Applying system thesaurus to database
+    Applying system thesaurus to database...
               File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
       Source field : countries
       Target field : regions
       Application process completed successfully
     <BLANKLINE>
-    Applying system thesaurus to database
+    Applying system thesaurus to database...
               File : ...ackage_data/thesaurus/geography/country_to_subregion.the.txt
       Source field : countries
       Target field : subregions
@@ -127,7 +127,7 @@ class ApplyThesaurus(
     def run(self):
 
         # Affiliations to countries mmapping
-        ApplyUserThesaurus(
+        ApplyUserThesaurus().update(**self.params.__dict__).update(
             thesaurus_file="countries.the.txt",
             field="affiliations",
             other_field="countries",
@@ -146,7 +146,7 @@ class ApplyThesaurus(
         )
 
         # Country to region mapping
-        ApplySystemThesaurus(
+        ApplySystemThesaurus().update(**self.params.__dict__).update(
             thesaurus_file="geography/country_to_region.the.txt",
             field="countries",
             other_field="regions",
@@ -155,7 +155,7 @@ class ApplyThesaurus(
         ).run()
 
         # Country to subregion mapping
-        ApplySystemThesaurus(
+        ApplySystemThesaurus().update(**self.params.__dict__).update(
             thesaurus_file="geography/country_to_subregion.the.txt",
             field="countries",
             other_field="subregions",

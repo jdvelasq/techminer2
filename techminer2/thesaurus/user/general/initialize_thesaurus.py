@@ -23,7 +23,7 @@ Example:
 
     >>> # Initialize the thesaurus
     >>> initializator = (
-    ...     InitializeThesaurus()
+    ...     InitializeThesaurus(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory_is("example/")
@@ -34,9 +34,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Initializing thesaurus from 'raw_descriptors' field
+    Initializing thesaurus from 'raw_descriptors' field...
       File : example/data/thesaurus/demo.the.txt
-      1726 keys found
+      1723 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -65,6 +65,7 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
+from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
@@ -88,11 +89,17 @@ class InitializeThesaurus(
         if not self.params.quiet:
 
             field = self.params.field
-            truncated_path = str(self.thesaurus_path)
-            if len(truncated_path) > 72:
-                truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
-            sys.stderr.write(f"  File : {truncated_path}\n")
+            file_path = str(self.thesaurus_path)
+            if len(file_path) > 72:
+                file_path = "..." + file_path[-68:]
+
+            if self.params.use_colorama:
+                filename = str(file_path).split("/")[-1]
+                file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+                file_path = Fore.LIGHTBLACK_EX + file_path
+
+            sys.stderr.write(f"Initializing thesaurus from '{field}' field...\n")
+            sys.stderr.write(f"  File : {file_path}\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -104,7 +111,10 @@ class InitializeThesaurus(
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
-            internal__print_thesaurus_header(self.thesaurus_path)
+            internal__print_thesaurus_header(
+                thesaurus_path=self.thesaurus_path,
+                use_colorama=self.params.use_colorama,
+            )
 
     #
     # ALGORITHM:

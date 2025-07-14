@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the integrity checker
     >>> checker = (
-    ...     IntegrityCheck()
+    ...     IntegrityCheck(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory_is("example/")
@@ -39,9 +39,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Checking thesaurus integrity
+    Checking thesaurus integrity...
       File : example/data/thesaurus/demo.the.txt
-      1792 terms checked
+      1789 terms checked
       Integrity check completed successfully
     <BLANKLINE>
     <BLANKLINE>
@@ -49,6 +49,8 @@ Example:
 
 """
 import sys
+
+from colorama import Fore, init
 
 from ...._internals.mixins import ParamsMixin
 from ....database._internals.io import internal__load_filtered_records_from_database
@@ -66,9 +68,14 @@ class IntegrityCheck(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = self.thesaurus_path
+        file_path = str(self.thesaurus_path)
 
-        sys.stderr.write("Checking thesaurus integrity\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Checking thesaurus integrity...\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 

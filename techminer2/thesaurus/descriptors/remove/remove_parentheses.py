@@ -24,14 +24,13 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Remove parentheses
-    >>> RemoveParentheses(root_directory="example/").run()
+    >>> RemoveParentheses(root_directory="example/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Removing parentheses from thesaurus keys
-    <BLANKLINE>
+    Removing parentheses from thesaurus keys...
       File : example/data/thesaurus/descriptors.the.txt
       6 removals made successfully
       Removal process completed successfully
@@ -63,6 +62,7 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
+from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
@@ -83,10 +83,15 @@ class RemoveParentheses(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = self.thesaurus_path
+        file_path = str(self.thesaurus_path)
 
-        sys.stderr.write("Removing parentheses from thesaurus keys\n")
-        sys.stderr.write(f"\n  File : {file_path}\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Removing parentheses from thesaurus keys...\n")
+        sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -94,7 +99,9 @@ class RemoveParentheses(
         sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:

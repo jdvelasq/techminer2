@@ -29,7 +29,7 @@ Example:
 
     >>> # Creates, configures, and runs the applier
     >>> applier = (
-    ...     ApplyThesaurus()
+    ...     ApplyThesaurus(use_colorama=False)
     ...     .with_thesaurus_file("descriptors.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .with_other_field("descriptors_cleaned")
@@ -41,7 +41,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Applying user thesaurus to database
+    Applying user thesaurus to database...
               File : example/data/thesaurus/descriptors.the.txt
       Source field : raw_descriptors
       Target field : descriptors_cleaned
@@ -74,6 +74,8 @@ Example:
 """
 import sys
 
+from colorama import Fore, init
+
 from ...._internals.mixins import ParamsMixin
 from ....database._internals.io import (
     internal__load_all_records_from_database,
@@ -102,7 +104,12 @@ class ApplyThesaurus(
             if len(file_path) > 64:
                 file_path = "..." + file_path[-60:]
 
-            sys.stderr.write("Applying user thesaurus to database\n")
+            if self.params.use_colorama:
+                filename = str(file_path).split("/")[-1]
+                file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+                file_path = Fore.LIGHTBLACK_EX + file_path
+
+            sys.stderr.write("Applying user thesaurus to database...\n")
             sys.stderr.write(f"          File : {file_path}\n")
             sys.stderr.write(f"  Source field : {field}\n")
             sys.stderr.write(f"  Target field : {other_field}\n")

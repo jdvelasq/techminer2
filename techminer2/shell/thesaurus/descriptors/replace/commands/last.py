@@ -1,17 +1,22 @@
 from ......thesaurus.descriptors import ReplaceLastWord
+from .....colorized_input import colorized_input
 
 
 def execute_last_command():
 
     print()
-    word = input(". Enter word to replace > ").strip()
+
+    word = colorized_input(". Enter word to replace > ").strip()
     if not word:
         print()
         return
-    replacement = input(". Enter replacement word  > ").strip()
+
+    replacement = colorized_input(". Enter replacement word  > ").strip()
     if not replacement:
         print()
         return
+
+    print()
     (
         ReplaceLastWord()
         .where_root_directory_is("./")

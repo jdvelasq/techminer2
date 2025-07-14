@@ -23,18 +23,18 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Explode thesaurus keys
-    >>> ExplodeKeys().where_root_directory_is("example/").run()
+    >>> ExplodeKeys(use_colorama=False).where_root_directory_is("example/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
+    Reducing thesaurus keys...
       File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Reduction process completed successfully
     <BLANKLINE>
-    Exploding thesaurus keys
+    Exploding thesaurus keys...
       File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 106
       Exploding process completed successfully
@@ -54,10 +54,13 @@ class ExplodeKeys(
     # -------------------------------------------------------------------------
     def run(self):
         (
-            UserExplodeKeys(
+            UserExplodeKeys()
+            .update(**self.params.__dict__)
+            .update(
                 thesaurus_file="organizations.the.txt",
                 root_directory=self.params.root_directory,
-            ).run()
+            )
+            .run()
         )
 
 

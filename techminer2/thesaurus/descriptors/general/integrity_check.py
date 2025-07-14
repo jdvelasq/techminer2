@@ -20,11 +20,11 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="example/", quiet=True, use_colorama=False).run()
 
     >>> # Run the integrity check
     >>> checker = (
-    ...     IntegrityCheck()
+    ...     IntegrityCheck(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> checker.run()
@@ -33,9 +33,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Checking thesaurus integrity
+    Checking thesaurus integrity...
       File : example/data/thesaurus/descriptors.the.txt
-      1792 terms checked
+      1789 terms checked
       Integrity check completed successfully
     <BLANKLINE>
     <BLANKLINE>
@@ -58,6 +58,7 @@ class IntegrityCheck(
 
         (
             UserIntegrityCheck()
+            .update(**self.params.__dict__)
             .with_thesaurus_file("descriptors.the.txt")
             .with_field("raw_descriptors")
             .where_root_directory_is(self.params.root_directory)

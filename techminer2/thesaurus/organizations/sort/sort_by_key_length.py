@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByKeyLength()
+    ...     SortByKeyLength(use_colorama=False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("example/")
@@ -37,12 +37,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/organizations.the.txt
-      Keys reduced from 90 to 90
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by key length
+    Sorting thesaurus by key length...
       File : example/data/thesaurus/organizations.the.txt
       Sorting process completed successfully
     <BLANKLINE>

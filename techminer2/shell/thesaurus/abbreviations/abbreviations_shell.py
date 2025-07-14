@@ -9,12 +9,13 @@
 
 
 from ...base_shell import BaseShell
+from ...colorized_prompt import make_colorized_prompt
 from .general.general_shell import GeneralShell
 
 
 class AbbreviationsShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > abbreviations > "
+    prompt = make_colorized_prompt("tm2:thesaurus:abbreviations")
 
     def do_general(self, arg):
         """General commands."""

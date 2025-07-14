@@ -14,10 +14,13 @@ from .sort.sort_by_alphabet import SortByAlphabet
 from .sort.sort_by_endswith_match import SortByEndsWithMatch
 from .sort.sort_by_exact_match import SortByExactMatch
 from .sort.sort_by_fuzzy_match import SortByFuzzyMatch
+from .sort.sort_by_initial_words import SortByInitialWords
 from .sort.sort_by_key_length import SortByKeyLength
+from .sort.sort_by_last_words import SortByLastWords
 from .sort.sort_by_match import SortByMatch
 from .sort.sort_by_occurrences import SortByOccurrences
 from .sort.sort_by_startswith_match import SortByStartsWithMatch
+from .sort.sort_by_stopwords import SortByStopwords
 from .sort.sort_by_word_length import SortByWordLength
 from .sort.sort_by_word_match import SortByWordMatch
 from .translate.american_to_british_spelling import AmericanToBritishSpelling
@@ -26,8 +29,8 @@ from .translate.british_to_american_spelling import BritishToAmericanSpelling
 __all__ = [
     "ApplyThesaurus",
     "CompressThesaurus",
-    "InitializeThesaurus",
     "ExplodeKeys",
+    "InitializeThesaurus",
     "IntegrityCheck",
     "ReduceKeys",
     "SpellCheck",
@@ -38,10 +41,13 @@ __all__ = [
     "SortByEndsWithMatch",
     "SortByExactMatch",
     "SortByFuzzyMatch",
+    "SortByInitialWords",
     "SortByKeyLength",
+    "SortByLastWords",
     "SortByMatch",
     "SortByOccurrences",
     "SortByStartsWithMatch",
+    "SortByStopwords",
     "SortByWordLength",
     "SortByWordMatch",
     "AmericanToBritishSpelling",

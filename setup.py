@@ -39,6 +39,7 @@ setup(
         "textblob",
         "urllib3==1.26.6",
         "wordcloud",
+        "colorama",
     ],
     packages=find_packages(),
     package_dir={"techminer2": "techminer2"},

@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByOccurrences()
+    ...     SortByOccurrences(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> sorter.run()
@@ -34,12 +34,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by occurrences
+    Sorting thesaurus by occurrences...
       File : example/data/thesaurus/descriptors.the.txt
       Sorting process completed successfully
     <BLANKLINE>

@@ -27,7 +27,7 @@ Example:
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
-    ...     SortByExactMatch()
+    ...     SortByExactMatch(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern(
     ...         [
@@ -43,12 +43,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by exact match
+    Sorting thesaurus by exact match...
          File : example/data/thesaurus/demo.the.txt
       Pattern : ['BUSINESS_INFRASTRUCTURE', 'BUSINESS_OPPORTUNITIES']
       2 matching keys found
@@ -80,6 +75,8 @@ Example:
 """
 import sys
 
+from colorama import Fore, init
+
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 from ..general.reduce_keys import ReduceKeys
@@ -102,7 +99,12 @@ class SortByExactMatch(
         if len(file_path) > 64:
             file_path = "..." + file_path[-60:]
 
-        sys.stderr.write("Sorting thesaurus by exact match\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Sorting thesaurus by exact match...\n")
         sys.stderr.write(f"     File : {file_path}\n")
         sys.stderr.write(f"  Pattern : {pattern}\n")
 
@@ -114,7 +116,9 @@ class SortByExactMatch(
         sys.stderr.write("  Sorting process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:
@@ -146,7 +150,7 @@ class SortByExactMatch(
     def run(self):
         """:meta private:"""
 
-        self.internal__reduce_keys()
+        # self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()

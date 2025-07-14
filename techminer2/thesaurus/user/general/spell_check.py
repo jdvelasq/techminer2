@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the spell checker
     >>> checker = (
-    ...     SpellCheck()
+    ...     SpellCheck(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_maximum_occurrence(3)
     ...     .where_root_directory_is("example/")
@@ -39,7 +39,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Spell checking thesaurus keys
+    Spell checking thesaurus keys...
       File : example/data/thesaurus/demo.the.txt
       Potential misspelled words (69):
     <BLANKLINE>
@@ -89,13 +89,14 @@ Example:
     ...     thesaurus_file="demo.the.txt",
     ...     maximum_occurrence=3,
     ...     root_directory="example/",
+    ...     use_colorama=False,
     ... ).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Spell checking thesaurus keys
+    Spell checking thesaurus keys...
       File : example/data/thesaurus/demo.the.txt
       Potential misspelled words (69):
     <BLANKLINE>
@@ -142,6 +143,7 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
+from colorama import Fore, init
 from spellchecker import SpellChecker as ExternalSpellChecker
 
 from ...._internals.mixins import ParamsMixin
@@ -159,11 +161,18 @@ class SpellCheck(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 72:
-            truncated_path = "..." + truncated_path[-68:]
-        sys.stderr.write("Spell checking thesaurus keys\n")
-        sys.stderr.write(f"  File : {truncated_path}\n")
+        file_path = str(self.thesaurus_path)
+
+        if len(file_path) > 72:
+            file_path = "..." + file_path[-68:]
+
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Spell checking thesaurus keys...\n")
+        sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -172,7 +181,9 @@ class SpellCheck(
         sys.stderr.write("  Spell checking process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:

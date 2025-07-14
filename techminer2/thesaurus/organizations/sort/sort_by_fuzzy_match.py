@@ -25,7 +25,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByFuzzyMatch()
+    ...     SortByFuzzyMatch(use_colorama=False)
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Texas")
@@ -40,12 +40,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/organizations.the.txt
-      Keys reduced from 90 to 90
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by fuzzy match
+    Sorting thesaurus by fuzzy match...
                 File : example/data/thesaurus/organizations.the.txt
            Keys like : Texas
       Match thresold : 70

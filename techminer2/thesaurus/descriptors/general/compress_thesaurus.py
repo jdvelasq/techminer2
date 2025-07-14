@@ -25,7 +25,7 @@ Example:
 
     >>> # Compress the thesaurus
     >>> compressor = (
-    ...     CompressThesaurus(tqdm_disable=True)
+    ...     CompressThesaurus(tqdm_disable=True, use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> compressor.run()
@@ -34,9 +34,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Compressing thesaurus keys
+    Compressing thesaurus keys...
                       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1726 to 1726
+      Keys reduced from 1723 to 1723
       Compression process completed successfully
     <BLANKLINE>
     <BLANKLINE>
@@ -62,11 +62,14 @@ class CompressThesaurus(
     def run(self):
 
         (
-            UserCompressThesaurus(
+            UserCompressThesaurus()
+            .update(**self.params.__dict__)
+            .update(
                 field="raw_descriptors",
                 thesaurus_file="descriptors.the.txt",
                 root_directory=self.params.root_directory,
                 tqdm_disable=self.params.tqdm_disable,
                 quiet=self.params.quiet,
-            ).run()
+            )
+            .run()
         )

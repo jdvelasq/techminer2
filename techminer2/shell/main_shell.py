@@ -13,6 +13,7 @@ import readline
 import rlcompleter  # type: ignore
 
 from .base_shell import BaseShell
+from .colorized_prompt import make_colorized_prompt
 from .database.database_shell import DatabaseShell
 from .thesaurus.thesaurus_shell import ThesaurusShell
 
@@ -23,7 +24,7 @@ class MainShell(BaseShell):
 
     intro = "Welcome. Type help or ? to list commands.\n"
 
-    prompt = "tm2 > "
+    prompt = make_colorized_prompt("tm2")
 
     def do_database(self, arg):
         """Manage database operations."""

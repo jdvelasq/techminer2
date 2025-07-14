@@ -9,7 +9,9 @@
 
 
 from ...base_shell import BaseShell
+from ...colorized_prompt import make_colorized_prompt
 from .general.general_shell import GeneralShell
+from .register.register_shell import RegisterShell
 from .remove.remove_shell import RemoveShell
 from .replace.replace_shell import ReplaceShell
 from .sort.sort_shell import SortShell
@@ -18,7 +20,7 @@ from .translate.translate_shell import TranslateShell
 
 class DescriptorsShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > descriptors > "
+    prompt = make_colorized_prompt("tm2:thesaurus:descriptors")
 
     def do_general(self, arg):
         """General thesaurus operations."""
@@ -28,6 +30,11 @@ class DescriptorsShell(BaseShell):
     def do_remove(self, arg):
         """Remove words from the thesaurus."""
         RemoveShell().cmdloop()
+        self.do_help(arg)
+
+    def do_regiter(self, arg):
+        """Register new terms in the system."""
+        RegisterShell().cmdloop()
         self.do_help(arg)
 
     def do_replace(self, arg):

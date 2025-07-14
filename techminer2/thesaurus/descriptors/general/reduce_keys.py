@@ -26,7 +26,7 @@ Example:
 
     >>> # Reduce thesaurus keys
     >>> reducer = (
-    ...     ReduceKeys()
+    ...     ReduceKeys(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> reducer.run()
@@ -35,9 +35,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
+    Reducing thesaurus keys...
       File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1726 to 1726
+      Keys reduced from 1723 to 1723
       Reduction process completed successfully
     <BLANKLINE>
     <BLANKLINE>
@@ -56,22 +56,14 @@ class ReduceKeys(
     # -------------------------------------------------------------------------
     def run(self):
         (
-            UserReduceKeys(
+            UserReduceKeys()
+            .update(**self.params.__dict__)
+            .update(
                 thesaurus_file="descriptors.the.txt",
                 root_directory=self.params.root_directory,
-            ).run()
+            )
+            .run()
         )
-
-
-# -----------------------------------------------------------------------------
-# SHORTCUTS
-# -----------------------------------------------------------------------------
-def reduce_keys():
-    """:meta private:"""
-
-    from techminer2.thesaurus.descriptors import ReduceKeys  # type: ignore
-
-    ReduceKeys(root_directory="../").run()
 
 
 # =============================================================================

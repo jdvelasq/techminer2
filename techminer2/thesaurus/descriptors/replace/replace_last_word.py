@@ -24,7 +24,7 @@ Example:
 
     >>> # Configure and run the replacer
     >>> replacer = (
-    ...     ReplaceLastWord()
+    ...     ReplaceLastWord(use_colorama=False)
     ...     .having_word("FINTECH")
     ...     .having_replacement("fintech")
     ...     .where_root_directory_is("example/")
@@ -35,7 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Replacing last word in keys
+    Replacing last word in keys...
              File : ...e/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech

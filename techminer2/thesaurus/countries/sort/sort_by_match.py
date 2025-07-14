@@ -26,7 +26,7 @@ Example:
 
     >>> # Sorts thesaurus by key match
     >>> (
-    ...     SortByMatch()
+    ...     SortByMatch(use_colorama=False)
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("china")
@@ -44,12 +44,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by match
+    Sorting thesaurus by match...
                 File : example/data/thesaurus/countries.the.txt
              Pattern : china
       Case sensitive : False

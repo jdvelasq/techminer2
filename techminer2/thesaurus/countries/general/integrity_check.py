@@ -22,13 +22,13 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Run the integrity check
-    >>> IntegrityCheck().where_root_directory_is("example/").run()
+    >>> IntegrityCheck(use_colorama=False).where_root_directory_is("example/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Checking thesaurus integrity
+    Checking thesaurus integrity...
       File : example/data/thesaurus/countries.the.txt
       106 terms checked
       Integrity check completed successfully
@@ -49,11 +49,14 @@ class IntegrityCheck(
     # -------------------------------------------------------------------------
     def run(self):
         (
-            UserIntegrityCheck(
+            UserIntegrityCheck()
+            .update(**self.params.__dict__)
+            .update(
                 thesaurus_file="countries.the.txt",
                 field="affiliations",
                 root_directory=self.params.root_directory,
-            ).run()
+            )
+            .run()
         )
 
 

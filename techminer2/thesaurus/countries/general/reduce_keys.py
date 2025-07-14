@@ -23,13 +23,13 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Reduce thesaurus keys
-    >>> ReduceKeys().where_root_directory_is("example/").run()
+    >>> ReduceKeys(use_colorama=False).where_root_directory_is("example/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
+    Reducing thesaurus keys...
       File : example/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Reduction process completed successfully
@@ -49,10 +49,11 @@ class ReduceKeys(
     # -------------------------------------------------------------------------
     def run(self):
         (
-            UserReduceKeys(
-                thesaurus_file="countries.the.txt",
-                root_directory=self.params.root_directory,
-            ).run()
+            UserReduceKeys()
+            .update(**self.params.__dict__)
+            .update(thesaurus_file="countries.the.txt")
+            .update(root_directory=self.params.root_directory)
+            .run()
         )
 
 

@@ -8,7 +8,10 @@
 # pylint: disable=too-many-branches
 
 import cmd
-import textwrap
+
+from colorama import Fore, Style, init
+
+init(autoreset=True)
 
 
 class BaseShell(cmd.Cmd):
@@ -27,7 +30,7 @@ class BaseShell(cmd.Cmd):
                 print(f"No help available for '{arg}'")
         else:
 
-            print("\nCommands:\n")
+            print(f"\n{Fore.LIGHTBLACK_EX}Commands:{Style.RESET_ALL}\n")
             commands = [name[3:] for name in self.get_names() if name.startswith("do_")]
             commands = [
                 command
@@ -35,13 +38,22 @@ class BaseShell(cmd.Cmd):
                 if command not in ["help", "back", "q", "quit", "exit"]
             ]
             for command in commands:
-                print(f"  {command.ljust(15)} {getattr(self, f'do_{command}').__doc__}")
+                print(
+                    f"  {command.ljust(15)} {Fore.LIGHTBLACK_EX}{getattr(self, f'do_{command}').__doc__}{Style.RESET_ALL}"
+                )
             print()
 
     def do_q(self, arg):
         """Go back or exit."""
+        print()
         return True
 
     def emptyline(self):
         """Do nothing on empty input line."""
+        self.do_help(None)
+
+    def default(self, line):
+        """Handle unknown commands."""
+        print()
+        print(f"*** Unknown command: '{line}'.")
         self.do_help(None)

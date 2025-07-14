@@ -9,13 +9,14 @@
 
 
 from ....base_shell import BaseShell
+from ....colorized_prompt import make_colorized_prompt
 from .commands.ame2bri import execute_ame2bri_command
 from .commands.bri2ame import execute_bri2ame_command
 
 
 class TranslateShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > descriptors > translate > "
+    prompt = make_colorized_prompt("tm2:thesaurus:descriptors:translate")
 
     def do_ame2bri(self, arg):
         """Translate American English to British English."""

@@ -9,13 +9,15 @@
 
 
 from ..base_shell import BaseShell
+from ..colorized_prompt import make_colorized_prompt
 from .ingest.ingest_shell import IngestShell
 from .metrics.metrics_shell import MetricsShell
+from .tools.tools_shell import ToolsShell
 
 
 class DatabaseShell(BaseShell):
 
-    prompt = "tm2 > database > "
+    prompt = make_colorized_prompt("tm2:database")
 
     def do_ingest(self, arg):
         """Ingest raw data into the database."""
@@ -25,4 +27,9 @@ class DatabaseShell(BaseShell):
     def do_metrics(self, arg):
         """Analyze and compute dataset metrics."""
         MetricsShell().cmdloop()
+        self.do_help(arg)
+
+    def do_tools(self, arg):
+        """Access the tools for data processing."""
+        ToolsShell().cmdloop()
         self.do_help(arg)

@@ -24,7 +24,7 @@ Example:
 
     >>> # Configure and run the replacer
     >>> replacer = (
-    ...     ReplaceHyphenatedWords(tqdm_disable=True)
+    ...     ReplaceHyphenatedWords(tqdm_disable=True, use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> replacer.run()
@@ -33,7 +33,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Replacing hyphenated words in thesaurus keys
+    Replacing hyphenated words in thesaurus keys...
       File : example/data/thesaurus/descriptors.the.txt
       47 hypenated words transformed successfully
       Replacement process completed successfully
@@ -66,6 +66,7 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
+from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
@@ -87,9 +88,14 @@ class ReplaceHyphenatedWords(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = self.thesaurus_path
+        file_path = str(self.thesaurus_path)
 
-        sys.stderr.write("Replacing hyphenated words in thesaurus keys\n")
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Replacing hyphenated words in thesaurus keys...\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
@@ -98,7 +104,9 @@ class ReplaceHyphenatedWords(
         sys.stderr.write(f"  Replacement process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:

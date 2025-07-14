@@ -23,7 +23,7 @@ Example:
 
 
     >>> (
-    ...     ApplyThesaurus()
+    ...     ApplyThesaurus(use_colorama=False)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("example/")
@@ -36,7 +36,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Applying user thesaurus to database
+    Applying user thesaurus to database...
               File : example/data/thesaurus/organizations.the.txt
       Source field : affiliations
       Target field : organizations
@@ -65,6 +65,7 @@ class ApplyThesaurus(
         # Affiliations to countries mmapping
         (
             ApplyUserThesaurus(quiet=self.params.quiet)
+            .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
             .with_other_field("organizations")

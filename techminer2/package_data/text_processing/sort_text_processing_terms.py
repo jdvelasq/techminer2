@@ -67,6 +67,7 @@ def sort_known_noun_phrases(file_name):
     #
     lines = [line.strip().upper() for line in lines]
     lines = [line.replace(" ", "_") for line in lines]
+    lines = [line for line in lines if line != ""]
     lines = list(set(lines))
     lines = sorted(lines)
     #

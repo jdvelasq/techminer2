@@ -25,7 +25,7 @@ Example:
 
     >>> # Sort the thesaurus by word match
     >>> sorter = (
-    ...     SortByWordMatch()
+    ...     SortByWordMatch(use_colorama=False)
     ...     .having_pattern("Germany")
     ...     .where_root_directory_is("example/")
     ... )
@@ -35,12 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by word match
+    Sorting thesaurus by word match...
       File : example/data/thesaurus/countries.the.txt
       Word : Germany
       1 matching keys found

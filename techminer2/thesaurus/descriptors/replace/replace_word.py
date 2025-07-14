@@ -24,7 +24,7 @@ Example:
 
     >>> # Configure and run the replacer
     >>> replacer = (
-    ...     ReplaceWord()
+    ...     ReplaceWord(use_colorama=False)
     ...     .having_word("FINTECH")
     ...     .having_replacement("fintech")
     ...     .where_root_directory_is("example/")
@@ -35,7 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Replacing word in keys
+    Replacing word in keys...
              File : ...e/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
@@ -83,25 +83,6 @@ class ReplaceWord(
             .with_thesaurus_file("descriptors.the.txt")
             .run()
         )
-
-
-# -----------------------------------------------------------------------------
-# SHORTCUTS
-# -----------------------------------------------------------------------------
-def replace(replace, by):
-    """:meta private:"""
-
-    from techminer2.thesaurus.descriptors import ReduceKeys  # type: ignore
-    from techminer2.thesaurus.descriptors import ReplaceWord  # type: ignore
-
-    (
-        ReplaceWord()
-        .having_word(replace)
-        .having_replacement(by)
-        .where_root_directory_is("../")
-    ).run()
-
-    ReduceKeys(root_directory="../").run()  #  type: ignore
 
 
 # ===============================================================================

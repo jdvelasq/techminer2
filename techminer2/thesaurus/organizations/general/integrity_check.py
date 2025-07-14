@@ -23,7 +23,7 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> checker = (
-    ...     IntegrityCheck()
+    ...     IntegrityCheck(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> checker.run()
@@ -32,7 +32,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Checking thesaurus integrity
+    Checking thesaurus integrity...
       File : example/data/thesaurus/organizations.the.txt
       106 terms checked
       Integrity check completed successfully
@@ -57,6 +57,7 @@ class IntegrityCheck(
 
         (
             UserIntegrityCheck()
+            .update(**self.params.__dict__)
             .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
             .where_root_directory_is(self.params.root_directory)

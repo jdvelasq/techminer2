@@ -22,7 +22,7 @@ Example:
 
     >>> # Create the thesaurus
     >>> initializator = (
-    ...     InitializeThesaurus()
+    ...     InitializeThesaurus(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> initializator.run()
@@ -31,9 +31,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Initializing thesaurus from 'raw_descriptors' field
+    Initializing thesaurus from 'raw_descriptors' field...
       File : example/data/thesaurus/descriptors.the.txt
-      1726 keys found
+      1723 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -80,20 +80,6 @@ class InitializeThesaurus(
                 thesaurus_file="descriptors.the.txt",
                 root_directory=self.params.root_directory,
                 quiet=self.params.quiet,
+                use_colorama=getattr(self.params, "use_colorama", False),
             ).run()
         )
-
-
-# -----------------------------------------------------------------------------
-# SHORTCUTS
-# -----------------------------------------------------------------------------
-def reset_thesaurus():
-    """:meta private:"""
-
-    from techminer2.thesaurus.descriptors import (  # type: ignore
-        InitializeThesaurus,
-        IntegrityCheck,
-    )
-
-    InitializeThesaurus(root_directory="../").run()
-    IntegrityCheck().where_root_directory_is("../").run()

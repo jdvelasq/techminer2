@@ -9,6 +9,7 @@
 
 
 from ....base_shell import BaseShell
+from ....colorized_prompt import make_colorized_prompt
 from .commands import (
     execute_alphabet_command,
     execute_endswith_command,
@@ -24,7 +25,7 @@ from .commands import (
 
 class SortShell(BaseShell):
 
-    prompt = "tm2 > thesaurus > organizations > sort > "
+    prompt = make_colorized_prompt("tm2:thesaurus:organizations:sort")
 
     def do_alphabet(self, arg):
         """Sort keys alphabetically."""

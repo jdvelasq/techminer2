@@ -22,13 +22,13 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/").run()
+    >>> InitializeThesaurus(root_directory="example/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Initializing thesaurus
+    Initializing thesaurus...
       12 abbreviations found
       Initialization process completed successfully
     <BLANKLINE>
@@ -86,7 +86,7 @@ class InitializeThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"Initializing thesaurus\n")
+            sys.stderr.write(f"Initializing thesaurus...\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -98,7 +98,10 @@ class InitializeThesaurus(
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
-            internal__print_thesaurus_header(self.thesaurus_path)
+            internal__print_thesaurus_header(
+                thesaurus_path=self.thesaurus_path,
+                use_colorama=self.params.use_colorama,
+            )
 
     #
     # ALGORITHM:

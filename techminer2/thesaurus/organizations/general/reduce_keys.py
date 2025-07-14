@@ -26,7 +26,7 @@ Example:
 
     >>> # Creates and run the reducer
     >>> reducer = (
-    ...     ReduceKeys()
+    ...     ReduceKeys(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> reducer.run()
@@ -35,7 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
+    Reducing thesaurus keys...
       File : example/data/thesaurus/organizations.the.txt
       Keys reduced from 90 to 90
       Reduction process completed successfully
@@ -55,10 +55,13 @@ class ReduceKeys(
     # -------------------------------------------------------------------------
     def run(self):
         (
-            UserReduceKeys(
+            UserReduceKeys()
+            .update(**self.params.__dict__)
+            .update(
                 thesaurus_file="organizations.the.txt",
                 root_directory=self.params.root_directory,
-            ).run()
+            )
+            .run()
         )
 
 

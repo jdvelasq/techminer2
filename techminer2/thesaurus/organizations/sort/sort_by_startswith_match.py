@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByStartsWithMatch()
+    ...     SortByStartsWithMatch(use_colorama=False)
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Univ")
@@ -40,12 +40,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/organizations.the.txt
-      Keys reduced from 90 to 90
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by startswith match
+    Sorting thesaurus by startswith match...
          File : example/data/thesaurus/organizations.the.txt
       Pattern : Univ
       26 matching keys found

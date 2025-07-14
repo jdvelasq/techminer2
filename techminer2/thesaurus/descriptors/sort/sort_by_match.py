@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByMatch()
+    ...     SortByMatch(use_colorama=False)
     ...     .having_pattern("BLOCK")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
@@ -38,12 +38,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by match
+    Sorting thesaurus by match...
                 File : example/data/thesaurus/descriptors.the.txt
              Pattern : BLOCK
       Case sensitive : False

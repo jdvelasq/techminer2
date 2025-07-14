@@ -2,12 +2,17 @@
 
 import sys
 
+from colorama import Fore, init
+
 from .load_thesaurus_as_data_frame import internal__load_thesaurus_as_data_frame
+
+init(autoreset=True)
 
 
 def internal__print_thesaurus_header(
     thesaurus_path,
     n=8,
+    use_colorama=True,
 ):
     """:meta private:"""
 
@@ -28,10 +33,19 @@ def internal__print_thesaurus_header(
         lambda x: x[:73] + "..." if len(x) > 76 else x
     )
 
-    sys.stderr.write(f"Printing thesaurus header\n  File : {thesaurus_path}\n\n")
+    msg = f"Printing thesaurus header\n  File : {thesaurus_path}\n\n"
+    if use_colorama:
+        filename = str(thesaurus_path).split("/")[-1]
+        msg = msg.replace("File :", f"{Fore.LIGHTBLACK_EX}File :")
+        msg = msg.replace(filename, f"{Fore.RESET}{filename}")
+    sys.stderr.write(msg)
+
     for _, row in data_frame.iterrows():
         sys.stderr.write(f"    {row.key}\n")
-        sys.stderr.write(f"      {row.value}\n")
+        if use_colorama:
+            sys.stderr.write(f"      {Fore.LIGHTBLACK_EX}{row.value}{Fore.RESET}\n")
+        else:
+            sys.stderr.write(f"      {row.value}\n")
     sys.stderr.write("\n")
     sys.stderr.flush()
 

@@ -86,12 +86,12 @@ Example:
                       Keywords (cleaned)                                266
     NOUNS AND PHRASES Document title nouns and phrases (raw)            125
                       Document title nouns and phrases (cleaned)        123
-                      Abstract nouns and phrases (raw)                 1555
-                      Abstract nouns and phrases (cleaned)             1522
-                      Nouns and phrases (raw)                          1612
-                      Nouns and phrases (cleaned)                      1575
-    DESCRIPTORS       Descriptors (raw)                                1792
-                      Descriptors (cleaned)                            1726
+                      Abstract nouns and phrases (raw)                 1552
+                      Abstract nouns and phrases (cleaned)             1519
+                      Nouns and phrases (raw)                          1609
+                      Nouns and phrases (cleaned)                      1572
+    DESCRIPTORS       Descriptors (raw)                                1789
+                      Descriptors (cleaned)                            1723
 
 
 

@@ -26,7 +26,7 @@ Example:
 
     >>> # Creates, configures, an run the translator
     >>> translaator = (
-    ...     AmericanToBritishSpelling(tqdm_disable=True)
+    ...     AmericanToBritishSpelling(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("example/")
     ... )
@@ -36,7 +36,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
-    Converting American to British English
+    Converting American to British English...
       File : example/data/thesaurus/demo.the.txt
       21 replacements made successfully
       Translation process completed successfully
@@ -69,6 +69,7 @@ Example:
 import re
 import sys
 
+from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
@@ -93,11 +94,17 @@ class AmericanToBritishSpelling(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        truncated_path = str(self.thesaurus_path)
-        if len(truncated_path) > 72:
-            truncated_path = "..." + truncated_path[-68:]
-        sys.stderr.write("Converting American to British English\n")
-        sys.stderr.write(f"  File : {truncated_path}\n")
+        file_path = str(self.thesaurus_path)
+        if len(file_path) > 72:
+            file_path = "..." + file_path[-68:]
+
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
+
+        sys.stderr.write("Converting American to British English...\n")
+        sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -106,7 +113,9 @@ class AmericanToBritishSpelling(
         sys.stderr.write("  Translation process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:

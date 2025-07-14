@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByEndsWithMatch()
+    ...     SortByEndsWithMatch(use_colorama=False)
     ...     .having_pattern("BANKS")
     ...     .where_root_directory_is("example/")
     ... )
@@ -35,12 +35,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by endswith match
+    Sorting thesaurus by endswith match...
          File : example/data/thesaurus/descriptors.the.txt
       Pattern : BANKS
       14 matching keys found

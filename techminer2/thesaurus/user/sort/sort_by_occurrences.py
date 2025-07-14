@@ -27,7 +27,7 @@ Example:
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
-    ...     SortByOccurrences()
+    ...     SortByOccurrences(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory_is("example/")
@@ -38,12 +38,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1726 to 1726
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus by occurrences
+    Sorting thesaurus by occurrences...
       File : example/data/thesaurus/demo.the.txt
       Sorting process completed successfully
     <BLANKLINE>
@@ -73,6 +68,8 @@ Example:
 """
 import sys
 
+from colorama import Fore, init
+
 from ...._internals.mixins import ParamsMixin
 from ....database._internals.io import internal__load_filtered_records_from_database
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
@@ -92,14 +89,12 @@ class SortByOccurrences(
 
         file_path = self.thesaurus_path
 
-        self.order_by = {
-            "alphabetical": "alphabetically",
-            "key_length": "by key length",
-            "word_length": "by word length",
-        }[self.params.keys_order_by]
-        order_by = self.order_by
+        if self.params.use_colorama:
+            filename = str(file_path).split("/")[-1]
+            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
+            file_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write("Sorting thesaurus by occurrences\n")
+        sys.stderr.write("Sorting thesaurus by occurrences...\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
@@ -109,7 +104,9 @@ class SortByOccurrences(
         sys.stderr.write("  Sorting process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(self.thesaurus_path)
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
+        )
 
     #
     # ALGORITHM:
@@ -162,7 +159,7 @@ class SortByOccurrences(
     def run(self):
         """:meta private:"""
 
-        self.internal__reduce_keys()
+        # self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()

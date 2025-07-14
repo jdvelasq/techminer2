@@ -25,7 +25,7 @@ Example:
 
     >>> # Create, configure, and run the sorter
     >>> sorter = (
-    ...     SortByAlphabet()
+    ...     SortByAlphabet(use_colorama=False)
     ...     .where_root_directory_is("example/")
     ... )
     >>> sorter.run()
@@ -34,12 +34,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Reducing thesaurus keys
-      File : example/data/thesaurus/references.the.txt
-      Keys reduced from 27 to 27
-      Reduction process completed successfully
-    <BLANKLINE>
-    Sorting thesaurus alphabetically
+    Sorting thesaurus alphabetically...
       File : example/data/thesaurus/references.the.txt
       Sorting process completed successfully
     <BLANKLINE>
