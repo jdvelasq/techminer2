@@ -72,8 +72,17 @@ class RegisterKeyword(
         data_path = "package_data/text_processing/data/known_noun_phrases.txt"
         data_path = pkg_resources.resource_filename("techminer2", data_path)
 
+        words = self.params.word
+        if isinstance(words, str):
+            words = [words]
+
+        words = [word.strip().upper() for word in words]
+
         with open(data_path, "a", encoding="utf-8") as file:
-            file.write(f"\n{self.params.word}\n")
+            for word in words:
+                if word == "":
+                    continue
+                file.write(f"\n{word}")
 
         internal__sort_text_processing_terms()
 
