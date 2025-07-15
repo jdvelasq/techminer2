@@ -12,6 +12,7 @@ from ..base_shell import BaseShell
 from ..colorized_prompt import make_colorized_prompt
 from .ingest.ingest_shell import IngestShell
 from .metrics.metrics_shell import MetricsShell
+from .search.search_shell import SearchShell
 from .tools.tools_shell import ToolsShell
 
 
@@ -27,6 +28,11 @@ class DatabaseShell(BaseShell):
     def do_metrics(self, arg):
         """Analyze and compute dataset metrics."""
         MetricsShell().cmdloop()
+        self.do_help(arg)
+
+    def do_search(self, arg):
+        """Access the search tools."""
+        SearchShell().cmdloop()
         self.do_help(arg)
 
     def do_tools(self, arg):

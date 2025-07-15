@@ -57,6 +57,7 @@ from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
 from ....database.metrics.performance import DataFrame
+from ....package_data.text_processing import internal__load_text_processing_terms
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
@@ -97,6 +98,7 @@ class CompressThesaurus(
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__get_keywords(self):
+
         self.keywords = (
             DataFrame()
             .with_field("raw_keywords")
@@ -104,6 +106,11 @@ class CompressThesaurus(
             .where_root_directory_is(self.params.root_directory)
             .where_database_is("main")
         ).run()
+
+        known_keywords = internal__load_text_processing_terms("known_noun_phrases.txt")
+
+        self.keywords = self.keywords[self.keywords.index.isin(known_keywords)]
+
         self.keywords["length"] = self.keywords.index.str.split("_").str.len()
         self.keywords = self.keywords.sort_values(
             by=["length", "rank_occ"], ascending=[False, True]
@@ -138,6 +145,7 @@ class CompressThesaurus(
             total=self.keywords.shape[0],
             desc="      Compressing keywords ",
             disable=self.params.tqdm_disable,
+            ncols=80,
         ):
 
             regex = keyword.replace("_", " ")

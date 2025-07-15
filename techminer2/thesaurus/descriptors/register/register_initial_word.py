@@ -71,8 +71,13 @@ class RegisterInitialWord(
         data_path = "package_data/text_processing/data/common_initial_words.txt"
         data_path = pkg_resources.resource_filename("techminer2", data_path)
 
+        words = self.params.word
+        if isinstance(words, str):
+            words = [words]
+
         with open(data_path, "a", encoding="utf-8") as file:
-            file.write(f"\n{self.params.word}\n")
+            for word in words:
+                file.write(f"\n{word}")
 
         internal__sort_text_processing_terms()
 

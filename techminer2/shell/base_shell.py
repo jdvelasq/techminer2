@@ -35,7 +35,7 @@ class BaseShell(cmd.Cmd):
             commands = [
                 command
                 for command in commands
-                if command not in ["help", "back", "q", "quit", "exit"]
+                if command not in ["help", "back", "q", "quit", "exit", "Q"]
             ]
             for command in commands:
                 print(
@@ -48,6 +48,11 @@ class BaseShell(cmd.Cmd):
         print()
         return True
 
+    def do_Q(self, arg):
+        """Go back or exit."""
+        print()
+        return True
+
     def emptyline(self):
         """Do nothing on empty input line."""
         self.do_help(None)
@@ -55,5 +60,5 @@ class BaseShell(cmd.Cmd):
     def default(self, line):
         """Handle unknown commands."""
         print()
-        print(f"*** Unknown command: '{line}'.")
+        print(f"*** Unknown command: <{line}>.")
         self.do_help(None)

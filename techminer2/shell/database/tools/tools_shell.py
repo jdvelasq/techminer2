@@ -9,7 +9,12 @@
 
 from ...base_shell import BaseShell
 from ...colorized_prompt import make_colorized_prompt
-from .commands import execute_copyright_command
+from .commands import (
+    execute_copyright_command,
+    execute_doctypes_command,
+    execute_summary_command,
+    execute_view_command,
+)
 
 
 class ToolsShell(BaseShell):
@@ -19,3 +24,15 @@ class ToolsShell(BaseShell):
     def do_copyright(self, arg):
         """Extract copyright text."""
         execute_copyright_command()
+
+    def do_doctypes(self, arg):
+        """List document types."""
+        execute_doctypes_command()
+
+    def do_summary(self, arg):
+        """Generate a summary."""
+        execute_summary_command()
+
+    def do_view(self, arg):
+        """View records."""
+        execute_view_command()
