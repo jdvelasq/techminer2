@@ -19,6 +19,7 @@ def read_package_directories():
         "techminer2/packages",
         "techminer2/search",
         "techminer2/thesaurus",
+        "techminer2/zotero",
     ]
     files = []
     for directory in directories:
