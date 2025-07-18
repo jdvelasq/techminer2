@@ -40,6 +40,7 @@ setup(
         "urllib3==1.26.6",
         "wordcloud",
         "colorama",
+        "pyzotero",
     ],
     packages=find_packages(),
     package_dir={"techminer2": "techminer2"},
