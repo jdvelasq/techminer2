@@ -16,6 +16,7 @@ from .base_shell import BaseShell
 from .colorized_prompt import make_colorized_prompt
 from .database.database_shell import DatabaseShell
 from .thesaurus.thesaurus_shell import ThesaurusShell
+from .zotero.zotero_shell import ZoteroShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 
@@ -34,4 +35,9 @@ class MainShell(BaseShell):
     def do_thesaurus(self, arg):
         """Manage thesaurus operations."""
         ThesaurusShell().cmdloop()
+        self.do_help(arg)
+
+    def do_zotero(self, arg):
+        """Manage Zotero operations."""
+        ZoteroShell().cmdloop()
         self.do_help(arg)
