@@ -192,6 +192,13 @@ class Params:
     #
     word: Optional[str] = None
 
+    #
+    # Z
+    #
+    zotero_api_key: Optional[str] = None
+    zotero_library_id: Optional[str] = None
+    zotero_library_type: Optional[str] = None
+
     ##########
     ##########
     ##########
@@ -556,6 +563,18 @@ class ParamsMixin:
 
     def using_sublinear_tf_scaling(self, scaling):
         self.params.sublinear_tf_scaling = scaling
+        return self
+
+    def using_zotero_api_key(self, api_key):
+        self.params.zotero_api_key = api_key
+        return self
+
+    def using_zotero_library_id(self, library_id):
+        self.params.zotero_library_id = library_id
+        return self
+
+    def using_zotero_library_type(self, library_type):
+        self.params.zotero_library_type = library_type
         return self
 
     #
