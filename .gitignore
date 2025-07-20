@@ -173,4 +173,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-example/zotero.txt
+example/zotero.log
