@@ -118,7 +118,7 @@ class ExportRecordNoToZotero(ParamsMixin):
             sys.stderr.write("  Some records were not updated in Zotero\n")
             sys.stderr.flush()
 
-            filepath = pathlib.Path(self.params.root_directory) / "zotero.txt"
+            filepath = pathlib.Path(self.params.root_directory) / "zotero.log"
 
             with open(filepath, "w") as f:
                 for record_no, title in logs:
