@@ -246,7 +246,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="database.ingest.html">Ingest</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Ingest</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="database.ingest.import_scopus_data.html">Import Scopus Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.ingest.ingest_scopus.html">Ingest Scopus</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="database.metrics.html">Metrics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Metrics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -383,11 +383,11 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="thesaurus.descriptors.remove.html">Remove</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle navigation of Remove</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_common_last_words.html">Common Ending Words Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_initial_determiners.html">Initial Determiner Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_initial_stopwords.html">Starting Stopwords Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_parentheses.html">Parentheses Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_prefixes.html">Prefix Remover</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_determiners.html">Determiners</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_initial_words.html">Initial Words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_last_words.html">Last Words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_parentheses.html">Parentheses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_stopwords.html">Stopwords</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="thesaurus.descriptors.replace.html">Replace</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle navigation of Replace</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -926,14 +926,14 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">original_stderr</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 <span class="go">Replacing ending word in keys</span>
-<span class="go">         File : example/thesaurus/demo.the.txt</span>
+<span class="go">         File : example/data/thesaurus/demo.the.txt</span>
 <span class="go">         Word : BUSINESS</span>
 <span class="go">  Replacement : business</span>
 <span class="go">  2 replacements made successfully</span>
 <span class="go">  Word replacing completed successfully</span>
 
 <span class="go">Printing thesaurus header</span>
-<span class="go">  File : example/thesaurus/demo.the.txt</span>
+<span class="go">  File : example/data/thesaurus/demo.the.txt</span>
 
 <span class="go">    business</span>
 <span class="go">      BUSINESS; BUSINESSES</span>

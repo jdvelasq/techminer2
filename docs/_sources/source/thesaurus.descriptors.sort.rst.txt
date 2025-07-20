@@ -6,11 +6,16 @@ Sort
     :hidden:
 
     thesaurus.descriptors.sort.find_editorials
-    thesaurus.descriptors.sort.sort_by_ends_with_key_match
-    thesaurus.descriptors.sort.sort_by_exact_key_match
-    thesaurus.descriptors.sort.sort_by_fuzzy_key_match
-    thesaurus.descriptors.sort.sort_by_key_match
-    thesaurus.descriptors.sort.sort_by_key_order
+    thesaurus.descriptors.sort.sort_by_alphabet
+    thesaurus.descriptors.sort.sort_by_endswith_match
+    thesaurus.descriptors.sort.sort_by_exact_match
+    thesaurus.descriptors.sort.sort_by_fuzzy_match
+    thesaurus.descriptors.sort.sort_by_initial_words
+    thesaurus.descriptors.sort.sort_by_key_length
+    thesaurus.descriptors.sort.sort_by_last_word
+    thesaurus.descriptors.sort.sort_by_match
     thesaurus.descriptors.sort.sort_by_occurrences
-    thesaurus.descriptors.sort.sort_by_starts_with_key_match
-    thesaurus.descriptors.sort.sort_by_word_key_match
+    thesaurus.descriptors.sort.sort_by_startswith_match
+    thesaurus.descriptors.sort.sort_by_stopwords
+    thesaurus.descriptors.sort.sort_by_word_length
+    thesaurus.descriptors.sort.sort_by_word_match

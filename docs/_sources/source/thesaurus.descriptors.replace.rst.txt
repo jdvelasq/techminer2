@@ -6,7 +6,7 @@ Replace
     :hidden:
 
     thesaurus.descriptors.replace.replace_abbreviations
-    thesaurus.descriptors.replace.replace_ends_with_word
     thesaurus.descriptors.replace.replace_hyphenated_words
-    thesaurus.descriptors.replace.replace_starts_with_word
+    thesaurus.descriptors.replace.replace_initial_word
+    thesaurus.descriptors.replace.replace_last_word
     thesaurus.descriptors.replace.replace_word

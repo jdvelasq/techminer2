@@ -6,5 +6,5 @@ General
     :hidden:
 
     thesaurus.references.general.apply_thesaurus
-    thesaurus.references.general.create_thesaurus
+    thesaurus.references.general.initialize_thesaurus
     thesaurus.references.general.integrity_check

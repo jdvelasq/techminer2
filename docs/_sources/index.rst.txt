@@ -11,4 +11,5 @@ Techminer 2+
     source/thesaurus
     source/search
     source/packages
+    source/zotero
 

@@ -8,6 +8,6 @@ General
     thesaurus.descriptors.general.apply_thesaurus
     thesaurus.descriptors.general.cleanup_thesaurus
     thesaurus.descriptors.general.compress_thesaurus
-    thesaurus.descriptors.general.create_thesaurus
+    thesaurus.descriptors.general.initialize_thesaurus
     thesaurus.descriptors.general.integrity_check
     thesaurus.descriptors.general.reduce_keys

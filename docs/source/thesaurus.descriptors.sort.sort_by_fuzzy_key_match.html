@@ -246,7 +246,7 @@
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="database.ingest.html">Ingest</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Ingest</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="database.ingest.import_scopus_data.html">Import Scopus Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.ingest.ingest_scopus.html">Ingest Scopus</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="database.metrics.html">Metrics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Metrics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -383,18 +383,18 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="thesaurus.descriptors.remove.html">Remove</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><div class="visually-hidden">Toggle navigation of Remove</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_common_last_words.html">Common Ending Words Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_initial_determiners.html">Initial Determiner Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_initial_stopwords.html">Starting Stopwords Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_parentheses.html">Parentheses Remover</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_prefixes.html">Prefix Remover</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_determiners.html">Determiners</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_initial_words.html">Initial Words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_last_words.html">Last Words</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_parentheses.html">Parentheses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.remove.remove_stopwords.html">Stopwords</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="thesaurus.descriptors.replace.html">Replace</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><div class="visually-hidden">Toggle navigation of Replace</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_abbreviations.html">Replace Abbreviations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_ends_with_word.html">Replace Ends With Word</a></li>
 <li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_hyphenated_words.html">Replace hyphenated words</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_starts_with_word.html">Replace Starts With Word</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_initial_word.html">Replace Initial Word</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_last_word.html">Replace Last Word</a></li>
 <li class="toctree-l4"><a class="reference internal" href="thesaurus.descriptors.replace.replace_word.html">Replace Word</a></li>
 </ul>
 </li>
@@ -471,8 +471,8 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="thesaurus.user.replace.html">Replace</a><input class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><div class="visually-hidden">Toggle navigation of Replace</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.user.replace.replace_ends_with_word.html">Replace Ends With Word</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thesaurus.user.replace.replace_starts_with_word.html">Replace Starts With Word</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.user.replace.replace_initial_word.html">Replace Initial Word</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thesaurus.user.replace.replace_last_word.html">Replace Last Word</a></li>
 <li class="toctree-l4"><a class="reference internal" href="thesaurus.user.replace.replace_word.html">Replace Starts With Word</a></li>
 </ul>
 </li>
@@ -923,19 +923,19 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">original_stderr</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 <span class="go">Reducing thesaurus keys</span>
-<span class="go">  File : example/thesaurus/descriptors.the.txt</span>
-<span class="go">  Keys reduced from 1729 to 1729</span>
+<span class="go">  File : example/data/thesaurus/descriptors.the.txt</span>
+<span class="go">  Keys reduced from 1726 to 1726</span>
 <span class="go">  Keys reduction completed successfully</span>
 
 <span class="go">Sorting thesaurus by fuzzy match</span>
-<span class="go">            File : example/thesaurus/descriptors.the.txt</span>
+<span class="go">            File : example/data/thesaurus/descriptors.the.txt</span>
 <span class="go">       Keys like : INFORM</span>
 <span class="go">  Match thresold : 50</span>
-<span class="go">  91 matching keys found</span>
+<span class="go">  92 matching keys found</span>
 <span class="go">  Thesaurus sorting completed successfully</span>
 
 <span class="go">Printing thesaurus header</span>
-<span class="go">  File : example/thesaurus/descriptors.the.txt</span>
+<span class="go">  File : example/data/thesaurus/descriptors.the.txt</span>
 
 <span class="go">    A_DISINTERMEDIATION_FORCE</span>
 <span class="go">      A_DISINTERMEDIATION_FORCE</span>
@@ -949,10 +949,10 @@
 <span class="go">      A_PLATFORM</span>
 <span class="go">    BUSINESS_INFRASTRUCTURE</span>
 <span class="go">      BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES</span>
+<span class="go">    CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES</span>
+<span class="go">      CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES</span>
 <span class="go">    CLASSIFICATION (OF_INFORMATION)</span>
 <span class="go">      CLASSIFICATION (OF_INFORMATION)</span>
-<span class="go">    COMPETITORS</span>
-<span class="go">      COMPETITORS</span>
 
 </pre></div>
 </div>
