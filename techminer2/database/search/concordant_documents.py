@@ -33,7 +33,7 @@ Example:
     >>> docs = finder.run()
 
     >>> print(len(docs))
-    31
+    46
 
     >>> print(docs[0])
     UT 26
@@ -44,9 +44,15 @@ Example:
     TC 258
     SO Small Business Economics
     PY 2019
-    AB we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing
-       ENTREPRENEURS to establish VENTURES with THE_PURPOSE of reinventing
-       FINANCIAL_TECHNOLOGY ( FINTECH )
+    AB we investigate the economic and technological determinants inducing
+       entrepreneurs to establish ventures with the purpose of reinventing
+       financial technology ( fintech ) . we find that countries witness more
+       fintech startup formations when the economy is well developed and venture
+       capital is readily available . finally , the more difficult it is for
+       companies to access loans , the higher is the number of fintech startups in
+       a country . overall , the evidence suggests that fintech startup formation
+       need not be left to chance , but active policies can influence the emergence
+       of this new sector
     DE ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS
     <BLANKLINE>
 

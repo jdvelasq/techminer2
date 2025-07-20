@@ -32,16 +32,16 @@ Example:
     ... )
     >>> contexts = finder.run()
     >>> for t in contexts[:10]: print(t) # doctest: +NORMALIZE_WHITESPACE
-    <<< S with THE_PURPOSE of reinventing FINANCIAL_TECHNOLOGY ( FINTECH )
-    <<< ARTIFICIAL_INTELLIGENCE ( AI ) on FINANCIAL_TECHNOLOGY ( FINTECH ) , the purpose of this paper is to propose A_RESEARCH_F >>>
-                                                                 FINTECH is about THE_INTRODUCTION of NEW_TECHNOLOGIES into THE_F >>>
-    <<< _ACADEMIC_FINANCE_COMMUNITY was not actively researching FINTECH , THE_EDITORIAL_TEAM of THE_REVIEW of FINANCIAL_STUDIES  >>>
-    <<< NS to help guide FUTURE_RESEARCH in THE_EMERGING_AREA of FINTECH
-                                   along_with THE_DEVELOPMENT of FINTECH , MANY_SCHOLARS have studied how INFORMATION_TECHNOLOGY  >>>
-    <<< DERLYING_BITCOIN , is AN_EMERGING_FINANCIAL_TECHNOLOGY ( FINTECH ) that_is poised to have STRATEGIC_IMPACTS on ORGANIZATIONS
-    <<< AN_INNOVATION of SERVICES such_as FINANCIAL_TECHNOLOGY ( FINTECH ) , and DIGITAL_MARKETPLACE
-                                        DIGITAL_MARKETPLACE with FINTECH enabled might TRANSFORM_AGRICULTURE_BUSINESS_PROCESS int >>>
-                                                                 FINTECH offers FARMERS_CONVENIENT_WAYS of getting SOURCES of FUN >>>
+    <<< s with the purpose of reinventing financial technology ( FINTECH )
+                             we find that countries witness more FINTECH startup formations when the economy is well developed an >>>
+    <<<  companies to access loans , the higher is the number of FINTECH startups in a country
+                            overall , the evidence suggests that FINTECH startup formation need not be left to chance , but activ >>>
+    <<< vide large scale evidence on the occurrence and value of FINTECH innovation
+                                               we find that most FINTECH innovations yield substantial value to innovators , with >>>
+    <<< artificial intelligence ( ai ) on financial technology ( FINTECH ) , the purpose of this paper is to propose a research f >>>
+    <<< sumers ' perceptions regarding the introduction of ai in FINTECH
+                                                                 FINTECH is about the introduction of new technologies into the f >>>
+    <<<  academic finance community was not actively researching FINTECH , the editorial team of the review of financial studies  >>>
 
 
 """
@@ -49,6 +49,7 @@ import pandas as pd  # type: ignore
 
 from ..._internals.mixins import ParamsMixin
 from .._internals.io import internal__load_filtered_records_from_database
+from ..ingest._internals.operators.clean_text import internal__clean_text
 
 
 class ConcordantContexts(
@@ -57,40 +58,46 @@ class ConcordantContexts(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_1_load_the_database(self):
+    def _step_1_clean_abstracts(self):
+
+        internal__clean_text(
+            source="raw_abstract",
+            dest="cleaned_abstract",
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_directory,
+        )
+
+    # -------------------------------------------------------------------------
+    def _step_2_load_the_database(self):
         return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
-    def _step_2_extract_context_phrases(self, records):
+    def _step_3_extract_context_phrases(self, records):
 
-        search_for = self.params.pattern
+        search_for = self.params.pattern.lower().replace("_", " ")
 
         records = records.set_index(
             pd.Index(records.record_id + " / " + records.raw_document_title)
         )
 
-        # sorted_records = records.sort_values(
-        #     ["global_citations", "local_citations", "year"],
-        #     ascending=[False, False, True],
-        # )
-
         records["_found_"] = (
-            records["abstract"]
+            records["cleaned_abstract"]
             .astype(str)
             .str.contains(r"\b" + search_for + r"\b", regex=True)
         )
 
         records = records[records["_found_"]]
-        abstracts = records["abstract"]
+        abstracts = records["cleaned_abstract"]
         phrases = abstracts.str.replace(";", ".").str.split(".").explode().str.strip()
         context_phrases = phrases[phrases.map(lambda x: search_for in x)]
 
         return context_phrases
 
     # -------------------------------------------------------------------------
-    def _step_3_create_contexts_dataframe(self, context_phrases):
+    def _step_4_create_contexts_dataframe(self, context_phrases):
 
-        search_for = self.params.pattern
+        search_for = self.params.pattern.lower().replace("_", " ")
 
         regex = r"\b" + search_for + r"\b"
         contexts = context_phrases.str.extract(
@@ -111,7 +118,7 @@ class ConcordantContexts(
         return contexts
 
     # -------------------------------------------------------------------------
-    def _step_4_transform_context_dataframe_to_texts(self, contexts):
+    def _step_5_transform_context_dataframe_to_texts(self, contexts):
 
         search_for = self.params.pattern
         contexts = contexts.copy()
@@ -136,8 +143,9 @@ class ConcordantContexts(
     # -------------------------------------------------------------------------
     def run(self):
 
-        records = self._step_1_load_the_database()
-        context_phrases = self._step_2_extract_context_phrases(records=records)
-        contexts_dataframe = self._step_3_create_contexts_dataframe(context_phrases)
-        texts = self._step_4_transform_context_dataframe_to_texts(contexts_dataframe)
+        self._step_1_clean_abstracts()
+        records = self._step_2_load_the_database()
+        context_phrases = self._step_3_extract_context_phrases(records=records)
+        contexts_dataframe = self._step_4_create_contexts_dataframe(context_phrases)
+        texts = self._step_5_transform_context_dataframe_to_texts(contexts_dataframe)
         return texts

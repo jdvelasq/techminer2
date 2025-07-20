@@ -34,9 +34,15 @@ Example:
     ... )
     >>> mapping = mapper.run()
     >>> pprint(mapping[0])
-    {'AB': 'we investigate THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS inducing '
-           'ENTREPRENEURS to establish VENTURES with THE_PURPOSE of reinventing '
-           'FINANCIAL_TECHNOLOGY ( FINTECH )',
+    {'AB': 'we investigate the economic and technological determinants inducing '
+           'entrepreneurs to establish ventures with the purpose of reinventing '
+           'financial technology ( fintech ) . we find that countries witness more '
+           'fintech startup formations when the economy is well developed and '
+           'venture capital is readily available . finally , the more difficult it '
+           'is for companies to access loans , the higher is the number of fintech '
+           'startups in a country . overall , the evidence suggests that fintech '
+           'startup formation need not be left to chance , but active policies can '
+           'influence the emergence of this new sector',
      'AR': 'Haddad C., 2019, SMALL BUS ECON, V53, P81',
      'AU': 'Haddad C.; Hornuf L.',
      'DE': 'ENTREPRENEURSHIP; FINANCIAL_INSTITUTIONS; FINTECH; STARTUPS',
@@ -49,6 +55,7 @@ Example:
      'UT': 26}
 
 
+
 """
 import re
 
@@ -58,6 +65,7 @@ from ..._internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMi
 from .._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
+from ..ingest._internals.operators.clean_text import internal__clean_text
 
 
 class ConcordantMapping(
@@ -68,12 +76,25 @@ class ConcordantMapping(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_01_load_the_database(self):
+    def _step_1_clean_abstracts(self):
+
+        internal__clean_text(
+            source="raw_abstract",
+            dest="cleaned_abstract",
+            #
+            # DATABASE PARAMS:
+            root_dir=self.params.root_directory,
+        )
+
+    # -------------------------------------------------------------------------
+    def _step_2_load_the_database(self):
         return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
-    def _step_02__filter_by_concordance(self, records):
-        search_for = self.params.pattern
+    def _step_3__filter_by_concordance(self, records):
+
+        search_for = self.params.pattern.lower().replace("_", " ")
+
         found = (
             records["abstract"]
             .astype(str)
@@ -83,8 +104,10 @@ class ConcordantMapping(
         return records
 
     # -------------------------------------------------------------------------
-    def _step_03_process_abstracts(self, records):
-        search_for = self.params.pattern
+    def _step_4_process_abstracts(self, records):
+
+        search_for = self.params.pattern.lower().replace("_", " ")
+
         #
         # extract phrases.
         records["abstract"] = records["abstract"].map(lambda x: TextBlob(x).sentences)
@@ -105,9 +128,11 @@ class ConcordantMapping(
     # -------------------------------------------------------------------------
     def run(self):
 
-        records = self._step_01_load_the_database()
-        records = self._step_02__filter_by_concordance(records)
-        records = self._step_03_process_abstracts(records)
+        self._step_1_clean_abstracts
+        records = self._step_2_load_the_database()
+        records["abstract"] = records["cleaned_abstract"]
+        records = self._step_3__filter_by_concordance(records)
+        records = self._step_4_process_abstracts(records)
         mapping = self.build_record_mapping(records)
 
         return mapping
