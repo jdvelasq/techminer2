@@ -35,6 +35,7 @@ muhammad ali memon , mohamed hedi karray , agnes letouzey and bernard archimede 
 \. joseph featherall , brittany lapin , alexander chaitoff , sonia a havele , nicolas thompson , irene katzan \.
 \. elizabeth heitkemper , scott hulse , betty bekemeier , melinda schultz , greg whitman , anne m turner \.$
 \. dewi nur aisyah , logan manikam , thifal kiasatina , maryan naman , wiku adisasmito , zisis kozlakidis \.$
+\. \d{4} the authors intelligent systems in accounting , finance and management published by john wiley and sons ltd \.
 \. \d{4} iwendi , bashir , peshkar , sujatha , chatterjee , pasupuleti , mishra , pillai and jo \.$
 proceedings of the \d{2}rd pacific asia conference on information systems : secure ict platform for the 4th industrial revolution
 \. joshua fuller , alexey abramov , dana mullin , james beck , philippe lemaitre , elham azizi \.$
@@ -176,6 +177,7 @@ icst institute for computer sciences , social informatics and telecommunications
 harbor , maritime and multimodal logistics modeling and simulation , hms
 evolution and process published by john wiley and sons ltd \.
 by rajbala , pawan kumar singh nain and avadhesh kumar \.$
+\d{4} the korean statistical society , and korean international statistical society
 \d{4} is held by the owner author \( s \) \.$
 \d{4} academy of medical sciences of i \. r \. iran
 \. no commercial use is permitted unless otherwise expressly granted \.$
@@ -549,6 +551,7 @@ a link to the original publication
 \. no commercial re use \.
 \. melinda fitzgerald et al \.
 \. lippincott williams and wilkins \.$
+\. infopro digital limited \d{4} \.
 \. iberamia and the authors \.
 \. gka ediciones , authors \.
 \. d{4} zeitschrift fur rechtssoziologie \.
