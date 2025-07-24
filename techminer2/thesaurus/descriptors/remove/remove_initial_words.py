@@ -33,7 +33,7 @@ Example:
     Removing common initial words from thesaurus keys...
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-      191 common initial words removed successfully
+      198 common initial words removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
