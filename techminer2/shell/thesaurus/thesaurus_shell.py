@@ -16,6 +16,7 @@ from .countries.countries_shell import CountriesShell
 from .descriptors.descriptors_shell import DescriptorsShell
 from .organizations.organizations_shell import OrganizationsShell
 from .references.references_shell import ReferencesShell
+from .system.system_shell import SystemShell
 
 
 class ThesaurusShell(BaseShell):
@@ -45,4 +46,10 @@ class ThesaurusShell(BaseShell):
     def do_references(self, arg):
         """Manage thesaurus for references."""
         ReferencesShell().cmdloop()
+        self.do_help(arg)
+
+    def do_system(self, arg):
+        """Manage system thesaurus."""
+        SystemShell().cmdloop()
+        self.do_help(arg)
         self.do_help(arg)
