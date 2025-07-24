@@ -31,7 +31,7 @@ Example:
     6                     authors                 50      100.00%
     7                  authors_id                 50      100.00%
     8   authors_with_affiliations                 49       98.00%
-    9                       coden                 12       24.00%
+    9            cleaned_abstract                 48       96.00%
 
 
 """
