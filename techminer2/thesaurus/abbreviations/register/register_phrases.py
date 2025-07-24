@@ -91,11 +91,12 @@ class RegisterPhrases(
     def internal__make_new_terms_list(self):
 
         self.new_terms = []
-        for abbr, value in self.mapping.items():
+        for abbr, values in self.mapping.items():
             if "_" in abbr:
                 self.new_terms.append(abbr)
-            if "_" in value:
-                self.new_terms.append(value)
+            for value in values:
+                if "_" in value:
+                    self.new_terms.append(value)
 
     # -------------------------------------------------------------------------
     def internal__register_new_terms(self):
@@ -106,6 +107,8 @@ class RegisterPhrases(
         with open(data_path, "a", encoding="utf-8") as file:
             for term in self.new_terms:
                 file.write(f"\n{term}")
+
+                print(term)
 
         internal__sort_text_processing_terms()
 
