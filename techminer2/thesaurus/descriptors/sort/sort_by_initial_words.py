@@ -36,7 +36,7 @@ Example:
     >>> print(output)
     Sorting thesaurus by common initial words...
       File : example/data/thesaurus/descriptors.the.txt
-      202 matching keys found
+      217 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header

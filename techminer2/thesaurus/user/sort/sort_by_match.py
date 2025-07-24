@@ -158,11 +158,8 @@ class SortByMatch(
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
-    def run(self):
-        """:meta private:"""
+    def internal__run(self):
 
-        # self.internal__reduce_keys()
-        self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
@@ -170,6 +167,14 @@ class SortByMatch(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+
+    # -------------------------------------------------------------------------
+    def run(self):
+        """:meta private:"""
+
+        # self.internal__reduce_keys()
+        self.internal__build_user_thesaurus_path()
+        self.internal__run()
 
 
 # =============================================================================

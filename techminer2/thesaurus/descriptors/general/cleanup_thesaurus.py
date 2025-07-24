@@ -35,35 +35,34 @@ Example:
     >>> print(output) # doctest: +NORMALIZE_WHITESPACE
     Cleanup Thesaurus...
       File : example/data/thesaurus/descriptors.the.txt
-      21 replacements made successfully
+      7 replacements made successfully
       Cleanup process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : example/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        *GEOGRAPHIC_REGIONS*
-          AUSTRALIA_AND_NEW_ZEALAND; BRAZIL; CHINA; EUROPE; GERMANY; INDONESIA; KEN...
-        *LITERATURE_REVIEW*
-          LITERATURE_REVIEW
-        *PUBLISHERS*
-          RESEARCH_INDIA_PUBLICATIONS
-        *STUDY*
-          CASE_STUDIES; CASE_STUDY
+        *SURVEY*
+          SURVEYS
         APPROACH
           APPROACHES
         CONSTRUCT
           CONSTRUCTS
         ORGANIZATION
-          BUSINESS; BUSINESSES; COMPANIES; FIRMS; INTERNATIONAL_ORGANIZATION; ORGAN...
-        RESEARCH
-          ACADEMIC_RESEARCH; RESEARCH
+          BUSINESS; BUSINESSES; COMPANIES; FIRMS; ORGANIZATIONS
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """
-import glob
-import re
 import sys
 
 import pkg_resources  # type: ignore
@@ -123,16 +122,13 @@ class CleanupThesaurus(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        file_paths = pkg_resources.resource_filename(
+        file_path = pkg_resources.resource_filename(
             "techminer2",
-            "package_data/thesaurus/cleanup/*.the.txt",
+            "package_data/thesaurus/system/descriptors.the.txt",
         )
 
-        for file_path in glob.glob(file_paths):
-            mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
-            self.data_frame["key"] = self.data_frame["key"].map(
-                lambda x: mapping.get(x, x)
-            )
+        mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
+        self.data_frame["key"] = self.data_frame["key"].map(lambda x: mapping.get(x, x))
 
         self.data_frame.loc[
             self.data_frame.key != self.data_frame.org_key,

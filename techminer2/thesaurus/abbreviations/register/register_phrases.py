@@ -108,8 +108,6 @@ class RegisterPhrases(
             for term in self.new_terms:
                 file.write(f"\n{term}")
 
-                print(term)
-
         internal__sort_text_processing_terms()
 
     # -------------------------------------------------------------------------
