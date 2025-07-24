@@ -52,7 +52,7 @@ Example:
     4  Contemp. Stud. Econ. Financ. Anal.  ...  2016
     5                    New Polit. Econ.  ...  2017
     <BLANKLINE>
-    [5 rows x 78 columns]
+    [5 rows x 79 columns]
 
 
 
