@@ -19,6 +19,7 @@ def internal__load_reversed_thesaurus_as_mapping(file_path):
 
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
+            line = line.replace("\t", "    ")
             if not line.startswith(" "):
                 key_phrase = line.strip()
             else:

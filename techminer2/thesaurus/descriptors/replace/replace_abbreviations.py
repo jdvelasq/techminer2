@@ -29,6 +29,7 @@ Example:
 
     >>> # Configure and run the replacer
     >>> replacer = ReplaceAbbreviations(root_directory="example/", tqdm_disable=True, use_colorama=False)
+
     >>> replacer.run()
 
     >>> # Capture and print stderr output

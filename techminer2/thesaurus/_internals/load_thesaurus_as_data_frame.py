@@ -11,6 +11,7 @@ def internal__load_thesaurus_as_data_frame(file_path):
     key_phrase = None
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
+            line = line.replace("\t", "    ")
             if not line.startswith(" "):
                 key_phrase = line.strip()
             else:
