@@ -28,7 +28,10 @@ def internal__assign_edge_color_opacity(
     widths = np.array([nx_graph.edges[edge]["width"] for edge in nx_graph.edges()])
 
     # Compute opacity based on edge width
-    opacities = (widths - widths.min()) / (widths.max() - widths.min())
+    if widths.max() == widths.min():
+        opacities = np.full_like(widths, 1.0)
+    else:
+        opacities = (widths - widths.min()) / (widths.max() - widths.min())
     opacities = (
         opacities * (params.edge_opacity_range[1] - params.edge_opacity_range[0])
         + params.edge_opacity_range[0]
