@@ -1,4 +1,4 @@
-from ......thesaurus.system.descriptors import SortByInitialWords
+from .......thesaurus.system.descriptors import SortByInitialWords
 
 
 def execute_initial_command():

@@ -1,4 +1,4 @@
-from ......thesaurus.system.descriptors import SortByLastWords
+from .......thesaurus.system.descriptors import SortByLastWords
 
 
 def execute_last_command():

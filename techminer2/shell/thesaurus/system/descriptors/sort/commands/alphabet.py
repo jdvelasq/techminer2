@@ -1,4 +1,4 @@
-from ......thesaurus.system.descriptors import SortByAlphabet
+from .......thesaurus.system.descriptors import SortByAlphabet
 
 
 def execute_alphabet_command():

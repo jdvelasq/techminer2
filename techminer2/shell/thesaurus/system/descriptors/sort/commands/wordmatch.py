@@ -1,5 +1,5 @@
+from .......thesaurus.system.descriptors import SortByWordMatch
 from ......colorized_input import colorized_input
-from ......thesaurus.system.descriptors import SortByWordMatch
 
 
 def execute_wordmatch_command():

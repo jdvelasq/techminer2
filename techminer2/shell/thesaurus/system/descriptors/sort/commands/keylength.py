@@ -1,4 +1,4 @@
-from ......thesaurus.system.descriptors import SortByKeyLength
+from .......thesaurus.system.descriptors import SortByKeyLength
 
 
 def execute_keylength_command():

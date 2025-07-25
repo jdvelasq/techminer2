@@ -1,5 +1,5 @@
+from .......thesaurus.system.descriptors import SortByFuzzyMatch
 from ......colorized_input import colorized_input
-from ......thesaurus.system.descriptors import SortByFuzzyMatch
 
 
 def execute_fuzzy_command():

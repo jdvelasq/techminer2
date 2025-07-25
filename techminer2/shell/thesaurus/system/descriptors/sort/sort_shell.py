@@ -19,9 +19,7 @@ from .commands import (
     execute_keylength_command,
     execute_last_command,
     execute_match_command,
-    execute_occurrences_command,
     execute_startswith_command,
-    execute_stopwords_command,
     execute_wordlength_command,
     execute_wordmatch_command,
 )

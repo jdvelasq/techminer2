@@ -1,4 +1,4 @@
-from ......thesaurus.system.descriptors import SortByWordLength
+from .......thesaurus.system.descriptors import SortByWordLength
 
 
 def execute_wordlength_command():

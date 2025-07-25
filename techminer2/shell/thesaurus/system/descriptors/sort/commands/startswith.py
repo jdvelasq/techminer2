@@ -1,5 +1,5 @@
+from .......thesaurus.system.descriptors import SortByStartsWithMatch
 from ......colorized_input import colorized_input
-from ......thesaurus.system.descriptors import SortByStartsWithMatch
 
 
 def execute_startswith_command():

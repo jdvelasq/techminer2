@@ -1,5 +1,5 @@
+from .......thesaurus.system.descriptors import SortByExactMatch
 from ......colorized_input import colorized_input
-from ......thesaurus.system.descriptors import SortByExactMatch
 
 
 def execute_exact_command():
