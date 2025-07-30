@@ -1,3 +1,5 @@
+import os
+
 from colorama import Fore, init
 from openai import OpenAI
 
@@ -66,9 +68,7 @@ def execute_desambiguate_command():
     contexts_2 = contexts_2[:n_contexts]
 
     ###
-    client = OpenAI(
-        api_key="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"
-    )
+    client = os.getenv("OPENAI_API_KEY")
 
     query = PROMPT.format(
         pattern_1=pattern_1,
@@ -106,5 +106,7 @@ def execute_desambiguate_command():
     except Exception as e:
         print()
         print(f"Error processing the query!")
+        print()
+        print()
         print()
         print()
