@@ -6,6 +6,7 @@ from .extract_copyright_text import ExtractCopyrightText
 from .query import Query
 from .record_mapping import RecordMapping
 from .record_viewer import RecordViewer
+from .search_string import SearchString
 from .statistics import Statistics
 from .summary_sheet import SummarySheet
 
@@ -16,6 +17,7 @@ __all__ = [
     "Query",
     "RecordMapping",
     "RecordViewer",
+    "SearchString",
     "Statistics",
     "SummarySheet",
 ]
