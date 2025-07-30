@@ -11,7 +11,7 @@
 
 from ..base_shell import BaseShell
 from ..colorized_prompt import make_colorized_prompt
-from .commands import execute_update_command
+from .commands import execute_search_command, execute_update_command
 
 
 class ZoteroShell(BaseShell):
@@ -21,3 +21,7 @@ class ZoteroShell(BaseShell):
     def do_update(self, arg):
         """Update Zotero database."""
         execute_update_command()
+
+    def do_search(self, arg):
+        """Search database by UTs."""
+        execute_search_command()
