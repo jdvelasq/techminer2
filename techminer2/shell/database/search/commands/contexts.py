@@ -1,4 +1,4 @@
-from techminer2.database.search import ConcordantContexts
+from techminer2.database.search import ConcordantRawContexts
 
 from ....colorized_input import colorized_input
 
@@ -62,7 +62,7 @@ def execute_contexts_command():
     # RUN:
 
     contexts = (
-        ConcordantContexts()
+        ConcordantRawContexts()
         #
         .with_abstract_having_pattern(pattern)
         .where_root_directory_is("./")

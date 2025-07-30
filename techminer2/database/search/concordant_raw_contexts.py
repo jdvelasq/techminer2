@@ -5,11 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Concordant Contexts
+Concordant Raw Contexts
 =========================================================================================
 
 Example:
-    >>> from techminer2.database.search import ConcordantContexts
+    >>> from techminer2.database.search import ConcordantRawContexts
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:
@@ -18,7 +18,7 @@ Example:
     >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
     >>> #
     >>> finder = (
-    ...     ConcordantContexts()
+    ...     ConcordantRawContexts()
     ...     #
     ...     # PATTERN:
     ...     .with_abstract_having_pattern("FINTECH")
@@ -52,7 +52,7 @@ from .._internals.io import internal__load_filtered_records_from_database
 from ..ingest._internals.operators.clean_text import internal__clean_text
 
 
-class ConcordantContexts(
+class ConcordantRawContexts(
     ParamsMixin,
 ):
     """:meta private:"""
