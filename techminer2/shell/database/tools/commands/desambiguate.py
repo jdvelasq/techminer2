@@ -30,10 +30,10 @@ def execute_desambiguate_command():
 
     # n_contexts:
     n_contexts = colorized_input(
-        ". Enter the number of contexts [default: 10] > "
+        ". Enter the number of contexts [default: 20] > "
     ).strip()
     if n_contexts == "":
-        n_contexts = 10
+        n_contexts = 20
     else:
         n_contexts = int(n_contexts)
 
@@ -84,7 +84,6 @@ def execute_desambiguate_command():
         )
         answer = response.output_text
 
-        print()
         text = (
             Fore.LIGHTBLACK_EX
             + f"The terms '{pattern_1}' and '{pattern_2}' "
