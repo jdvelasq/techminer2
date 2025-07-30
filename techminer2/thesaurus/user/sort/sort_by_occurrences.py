@@ -87,10 +87,10 @@ class SortByOccurrences(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = self.thesaurus_path
+        file_path = str(self.thesaurus_path)
 
         if self.params.use_colorama:
-            filename = str(file_path).split("/")[-1]
+            filename = file_path.split("/")[-1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
