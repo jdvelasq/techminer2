@@ -13,6 +13,7 @@ from .commands import (
     execute_copyright_command,
     execute_doctypes_command,
     execute_summary_command,
+    execute_titles_command,
     execute_view_command,
 )
 
@@ -32,6 +33,10 @@ class ToolsShell(BaseShell):
     def do_summary(self, arg):
         """Generate a summary."""
         execute_summary_command()
+
+    def do_titles(self, arg):
+        """Generate a Scopus search string for titles."""
+        execute_titles_command()
 
     def do_view(self, arg):
         """View records."""
