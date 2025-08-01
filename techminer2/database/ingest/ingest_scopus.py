@@ -148,6 +148,7 @@ class IngestScopus(
         #
         internal__preprocess_references(root_directory)
         #
+        internal__preprocess_document_title(root_directory)
         internal__preprocess_record_id(root_directory)
         internal__preprocess_record_no(root_directory)
         #
@@ -178,7 +179,7 @@ class IngestScopus(
 
         # Preprocess noun and phrases
         internal__preprocess_abstract(root_directory)
-        internal__preprocess_document_title(root_directory)
+        ## internal__preprocess_document_title(root_directory)
         internal__preprocess_raw_textblob_phrases(root_directory)
         internal__preprocess_raw_spacy_phrases(root_directory)
 
