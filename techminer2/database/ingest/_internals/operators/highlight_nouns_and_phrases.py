@@ -193,6 +193,8 @@ def mark_template_abstract_compound_markers(text):
         ". research limitations/implications :",
         ". research methodology :",
         ". research background :",
+        ". INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
+        "? INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
     ]:
         regex = re.escape(regex)
         regex = r"(" + regex + r")"
@@ -294,29 +296,79 @@ def remove_roman_numbers(text):
 # ------------------------------------------------------------------------------
 def remove_marker_words(text):
     for regex in [
-        ". APPROACH :",
-        ". FINDINGS :",
-        ". LIMITATIONS :",
-        ". METHOD :",
-        ". METHODS :",
-        ". METHODOLOGY :",
-        ". ORIGINALITY :",
-        ". RESULT :",
-        ". RESULTS :",
-        ". UNIQUENESS :",
+        "? AIMS :",
         "? APPROACH :",
+        "? BACKGROUND :",
+        "? CONCLUSION , SIGNIFICANCE and IMPACT_STUDY :",
+        "? CONCLUSION :",
+        "? CONCLUSIONS :",
+        "? design/METHODOLOGY/approach :",
+        "? DISCUSSION :",
         "? FINDINGS :",
+        "? FINDINGS and VALUE added :",
+        "? GRAPHICAL_ABSTRACT :",
+        "? HIGHLIGHTS :",
+        "? IMPACT_STATEMENT :",
+        "? INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
         "? LIMITATIONS :",
+        "? LIMITATIONS and IMPLICATIONS :",
         "? METHOD :",
-        "? METHODS :",
         "? METHODOLOGY :",
+        "? METHODOLOGY and RESULTS :",
+        "? METHODS , PROCEDURES , PROCESS :",
+        "? METHODS :",
+        "? NOVEL/ADDITIVE_INFORMATION :",
+        "? OBJECTIVE :",
+        "? OBJECTIVES :",
         "? ORIGINALITY :",
+        "? ORIGINALITY/VALUE :",
+        "? PURPOSE of THE_ARTICLE :",
+        "? RECOMMENDATIONS :",
+        "? RESEARCH_BACKGROUND :",
         "? RESULT :",
+        "? RESULTS , OBSERVATIONS , CONCLUSIONS :",
         "? RESULTS :",
+        "? RESULTS and DISCUSSION :",
         "? UNIQUENESS :",
+        ". AIMS :",
+        ". APPROACH :",
+        ". BACKGROUND :",
+        ". CONCLUSION , SIGNIFICANCE and IMPACT_STUDY :",
+        ". CONCLUSION :",
+        ". CONCLUSIONS :",
+        ". design/METHODOLOGY/approach :",
+        ". DISCUSSION :",
+        ". FINDINGS :",
+        ". FINDINGS and VALUE added :",
+        ". GRAPHICAL_ABSTRACT :",
+        ". HIGHLIGHTS :",
+        ". IMPACT_STATEMENT :",
+        ". INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
+        ". LIMITATIONS :",
+        ". LIMITATIONS and IMPLICATIONS :",
+        ". METHOD :",
+        ". METHODOLOGY :",
+        ". METHODOLOGY and RESULTS :",
+        ". METHODS , PROCEDURES , PROCESS :",
+        ". METHODS :",
+        ". NOVEL/ADDITIVE_INFORMATION :",
+        ". OBJECTIVE :",
+        ". OBJECTIVES :",
+        ". ORIGINALITY :",
+        ". ORIGINALITY/VALUE :",
+        ". PURPOSE of THE_ARTICLE :",
+        ". RECOMMENDATIONS :",
+        ". RESEARCH_BACKGROUND :",
+        ". RESULT :",
+        ". RESULTS , OBSERVATIONS , CONCLUSIONS :",
+        ". RESULTS :",
+        ". RESULTS and DISCUSSION :",
+        ". UNIQUENESS :",
     ]:
         text = text.replace(regex, regex.lower())
 
+    if text.startswith("AIMS :"):
+        text = text.replace("AIMS :", "aims :")
     if text.startswith("AIM :"):
         text = text.replace("AIM :", "aim :")
     if text.startswith("PURPOSE :"):
@@ -325,17 +377,94 @@ def remove_marker_words(text):
         text = text.replace("PROBLEM_DEFINITION :", "problem definition :")
     if text.startswith("GRAPHICAL_ABSTRACT :"):
         text = text.replace("GRAPHICAL_ABSTRACT :", "graphical abstract :")
+    if text.startswith("SUMMARY :"):
+        text = text.replace("SUMMARY :", "summary :")
+    if text.startswith("BACKGROUND :"):
+        text = text.replace("BACKGROUND :", "background :")
+
+    if text.startswith("OBJECTIVES/SCOPE :"):
+        text = text.replace("OBJECTIVES/SCOPE :", "objectives/scope :")
+    if text.startswith("OBJECTIVE :"):
+        text = text.replace("OBJECTIVE :", "objective :")
+    if text.startswith("INTRODUCTION :"):
+        text = text.replace("INTRODUCTION :", "introduction :")
+    if text.startswith("HIGHLIGHTS :"):
+        text = text.replace("HIGHLIGHTS :", "highlights :")
 
     return text
 
 
 # ------------------------------------------------------------------------------
 def make_final_corrections(text):
+
     text = text.replace("_,_", "_")
     text = text.replace("_._", "_")
     text = text.replace(" :_", " : ")
+    text = text.replace("_:_", " : ")
     text = text.replace("_S_", "_")
     text = text.replace("_http", " http")
+    text = text.replace(" i . E . ", " i . e . ")
+    text = text.replace(" ( III ) ", " ( iii ) ")
+    text = text.replace(" ( IV ) ", " ( iv ) ")
+    text = text.replace(" ( V ) ", " ( v ) ")
+    text = text.replace(" ( VI ) ", " ( vi ) ")
+    text = text.replace(" ( VII ) ", " ( vii ) ")
+    text = text.replace(" ( VIII ) ", " ( viii ) ")
+    text = text.replace(" ( IX ) ", " ( ix ) ")
+    text = text.replace(" ( X ) ", " ( x ) ")
+    text = text.replace(" ( AND_III ) ", " ( and iii ) ")
+    text = text.replace(" ( AND_IV ) ", " ( and iv ) ")
+    text = text.replace(" ( AND_V ) ", " ( and v ) ")
+    text = text.replace(" ( AND_VI ) ", " ( and vi ) ")
+    text = text.replace(" ( AND_VII ) ", " ( and vii ) ")
+    text = text.replace(" ( AND_VIII ) ", " ( and viii ) ")
+    text = text.replace(" ( AND_IX ) ", " ( and ix ) ")
+    text = text.replace(" ( AND_X ) ", " ( and x ) ")
+    text = text.replace(" . S . ", " . s . ")
+
+    text = text.replace(" /MONTH ", " /month ")
+    text = text.replace(" EQ./mwh ", " eq./mwh ")
+    text = text.replace(" EQ/kw ", " eq/kw ")
+    text = text.replace(" EQ/mwh ", " eq/mwh ")
+    text = text.replace(" gj/YEAR ", " gj/year ")
+    text = text.replace(" gwh/YEAR ", " gwh/year ")
+    text = text.replace(" h/DAY ", " h/day ")
+    text = text.replace(" HK_$ /KWH ", " hk $ /kwh ")
+    text = text.replace(" innwind.EU ", " innwind . eu ")
+    text = text.replace(" IRR/kwh ", " irr/kwh ")
+    text = text.replace(" kg/YEAR ", " kg/year ")
+    text = text.replace(" kwh/DAY ", " kwh/day ")
+    text = text.replace(" l/YEAR ", " l/year ")
+    text = text.replace(" TONS/YEAR ", " tons/year ")
+    text = text.replace(" TON/YEAR ", " ton/year ")
+    text = text.replace(" twh/YEAR ", " twh/year ")
+    text = text.replace(" US_CENTS/kwh ", " us cents/kwh ")
+    text = text.replace(" USD/KW_HR ", " usd/kw_hr ")
+    text = text.replace(" USD/kwh ", " usd/kwh ")
+    text = text.replace(" USD/mwh ", " usd/mwh ")
+    text = text.replace(" you.s ", " you . s ")
+    text = text.replace("POLENERGIA/EQUINOR", "polenergia/equinor")
+    text = text.replace(" USD/barrel ", " usd/barrel ")
+    text = text.replace(" yuan/TON ", " yuan/ton ")
+    text = text.replace(" EUR/mwh ", " eur/mwh ")
+    text = text.replace(" kwh/MONTH ", " kwh/month ")
+    text = text.replace(" EURO/mwh ", " euro/mwh ")
+    text = text.replace("/KW_H ", "/kw_h ")
+    text = text.replace(" mwh/YEAR ", " mwh/year ")
+    text = text.replace(" THE_F . E . c .", " the f . e . c .")
+    text = text.replace(" i.E. ", " i.e. ")
+    text = text.replace(
+        " . THE_CONTRIBUTIONS of THIS_PAPER are : ",
+        " . the contributions of this paper are : ",
+    )
+    text = text.replace(
+        ". THE_CONCLUSIONS can be summarized as follows :",
+        ". the conclusions can be summarized as follows :",
+    )
+    text = text.replace("", "")
+    text = text.replace("", "")
+    text = text.replace("", "")
+
     return text
 
 
