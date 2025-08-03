@@ -412,6 +412,7 @@ def make_final_corrections(text):
     text = text.replace(" ( VIII ) ", " ( viii ) ")
     text = text.replace(" ( IX ) ", " ( ix ) ")
     text = text.replace(" ( X ) ", " ( x ) ")
+    text = text.replace(" ( AND_II ) ", " ( and ii ) ")
     text = text.replace(" ( AND_III ) ", " ( and iii ) ")
     text = text.replace(" ( AND_IV ) ", " ( and iv ) ")
     text = text.replace(" ( AND_V ) ", " ( and v ) ")
