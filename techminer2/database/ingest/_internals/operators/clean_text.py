@@ -84,13 +84,7 @@ def clean_text(text):
     text = text.str.replace("mail : ", "mail:", regex=False)
     text = text.str.replace(" @ ", "@", regex=False)
 
-    text = text.str.replace(" .(", " . ()", regex=False)
-    # ) /YEAR
-    # text = text.str.replace(
-    #     r"\s\/([a-zA-Z0-9])+\s",
-    #     r" / \1 ",
-    #     regex=True,
-    # )
+    text = text.str.replace(" .(", " . (", regex=False)
 
     text = text.str.replace(
         r"\s([a-zA-Z])\.\s",
