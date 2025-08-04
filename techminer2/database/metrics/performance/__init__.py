@@ -1,4 +1,4 @@
-"""Performance metrics."""
+"""Public API."""
 
 from .bar_plot import BarPlot
 from .cleveland_dot_plot import ClevelandDotPlot
