@@ -1,4 +1,4 @@
-"""TF-IDF metrics."""
+"""Public API."""
 
 from .data_frame import DataFrame
 
