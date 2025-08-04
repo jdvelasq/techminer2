@@ -1,4 +1,4 @@
-"""Trending Words per Year Plot."""
+"""Public API."""
 
 from .bar_chart import BarChart
 from .data_frame import DataFrame
