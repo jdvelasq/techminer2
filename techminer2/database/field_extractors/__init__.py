@@ -1,4 +1,4 @@
-"""Objects for data extraction from fields."""
+"""Private API."""
 
 from .contains_extractor import ContainsExtractor
 from .ends_with_extractor import EndsWithExtractor
