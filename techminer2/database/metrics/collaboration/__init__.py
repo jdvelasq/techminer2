@@ -1,4 +1,4 @@
-"""Collaboration metrics."""
+"""Public API."""
 
 from .bar_plot import BarPlot
 from .data_frame import DataFrame
