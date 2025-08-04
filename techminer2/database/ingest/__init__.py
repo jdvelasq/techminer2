@@ -1,4 +1,4 @@
-"""Ingestion data module."""
+"""Public API."""
 
 from .ingest_scopus import IngestScopus
 
