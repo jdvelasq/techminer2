@@ -1,4 +1,4 @@
-"""Load filtered records from the database."""
+"""Public API."""
 
 from .get_database_file_path import internal__get_database_file_path
 from .load_all_records_from_database import internal__load_all_records_from_database
