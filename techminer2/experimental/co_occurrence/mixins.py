@@ -29,24 +29,30 @@ class RecursiveClusteringMixin:
 
             for terms in discovered_clusters:
 
-                mapping = (
-                    ClustersToTermsMapping()
-                    .update(**self.params.__dict__)
-                    #
-                    # rewrite the parameters used by the recursive clustering:
-                    .having_terms_in_top(None)
-                    .having_terms_ordered_by("OCC")
-                    .having_term_occurrences_between(None, None)
-                    .having_term_citations_between(None, None)
-                    .having_terms_in(terms)
-                    #
-                    .using_term_counters(False)
-                    #
-                    .run()
-                )
+                if len(terms) <= self.params.minimum_terms_in_cluster:
 
-                for key in mapping.keys():
-                    new_clusters.append(mapping[key])
+                    new_clusters.append(terms)
+
+                else:
+
+                    mapping = (
+                        ClustersToTermsMapping()
+                        .update(**self.params.__dict__)
+                        #
+                        # rewrite the parameters used by the recursive clustering:
+                        .having_terms_in_top(None)
+                        .having_terms_ordered_by("OCC")
+                        .having_term_occurrences_between(None, None)
+                        .having_term_citations_between(None, None)
+                        .having_terms_in(terms)
+                        #
+                        .using_term_counters(False)
+                        #
+                        .run()
+                    )
+
+                    for key in mapping.keys():
+                        new_clusters.append(mapping[key])
 
             if len(new_clusters) == len(discovered_clusters):
                 break

@@ -78,6 +78,7 @@ class Params:
     marker_size: float = 7
     match_threshold: float = 80.0
     maximum_occurrence: int = 10
+    minimum_terms_in_cluster: int = 5
 
     #
     # N
@@ -443,6 +444,10 @@ class ParamsMixin:
 
     def using_marker_size(self, size):
         self.params.marker_size = size
+        return self
+
+    def using_minimum_terms_in_cluster(self, minimum):
+        self.params.minimum_terms_in_cluster = minimum
         return self
 
     def using_node_colors(self, colors):
