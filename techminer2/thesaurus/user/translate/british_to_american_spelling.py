@@ -28,7 +28,7 @@ Example:
     >>> translator = (
     ...     BritishToAmericanSpelling(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> translator.run()
 

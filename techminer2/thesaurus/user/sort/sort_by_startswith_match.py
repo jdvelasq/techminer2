@@ -29,7 +29,7 @@ Example:
     ...     SortByStartsWithMatch(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern("BUSINESS")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 

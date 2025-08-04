@@ -22,7 +22,7 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Run the integrity check
-    >>> IntegrityCheck(use_colorama=False).where_root_directory_is("example/").run()
+    >>> IntegrityCheck(use_colorama=False).where_root_directory_is("examples/fintech/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

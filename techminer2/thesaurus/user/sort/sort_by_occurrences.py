@@ -30,7 +30,7 @@ Example:
     ...     SortByOccurrences(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 

@@ -28,7 +28,7 @@ Example:
     ...     .with_other_field("cleaned_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> cleaner.run()
 
@@ -41,7 +41,7 @@ Example:
     ...     .with_other_field("highlighted_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> highlighter.run()
 
@@ -49,7 +49,7 @@ Example:
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT highlighted_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
@@ -77,7 +77,7 @@ Example:
     >>> # Deletes the fields
     >>> field_deleter = (
     ...     DeleteFieldOperator()
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> field_deleter.with_field("cleaned_raw_abstract").run()
     >>> field_deleter.with_field("highlighted_raw_abstract").run()

@@ -30,7 +30,7 @@ Example:
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     .having_regex_search(False)
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 

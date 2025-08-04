@@ -26,7 +26,7 @@ Example:
     >>> # Sort thesaurus by alphabetical order
     >>> sorter = (
     ...     SortByAlphabet(use_colorama=False)
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 

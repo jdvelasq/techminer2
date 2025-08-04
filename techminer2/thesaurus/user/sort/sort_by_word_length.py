@@ -30,7 +30,7 @@ Example:
     ...     SortByWordLength(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_keys_ordered_by("alphabetical")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 

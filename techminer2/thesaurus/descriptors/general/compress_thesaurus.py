@@ -26,7 +26,7 @@ Example:
     >>> # Compress the thesaurus
     >>> compressor = (
     ...     CompressThesaurus(tqdm_disable=True, use_colorama=False)
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> compressor.run()
 

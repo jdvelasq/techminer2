@@ -33,7 +33,7 @@ Example:
     ...     .with_thesaurus_file("descriptors.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .with_other_field("descriptors_cleaned")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> applier.run()
 

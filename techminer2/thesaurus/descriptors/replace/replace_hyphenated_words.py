@@ -25,7 +25,7 @@ Example:
     >>> # Configure and run the replacer
     >>> replacer = (
     ...     ReplaceHyphenatedWords(tqdm_disable=True, use_colorama=False)
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> replacer.run()
 

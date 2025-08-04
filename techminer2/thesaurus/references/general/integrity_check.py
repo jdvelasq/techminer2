@@ -21,7 +21,7 @@ Example:
     >>> # Configure and run the integrity check
     >>> checker = (
     ...     IntegrityCheck()
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> checker.run()
 

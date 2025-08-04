@@ -31,7 +31,7 @@ Example:
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_word("BUSINESS")
     ...     .having_replacement("business")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> replacer.run()
 

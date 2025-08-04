@@ -33,7 +33,7 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)

@@ -21,7 +21,7 @@ Example:
 
     >>> # Create and apply the thesaurus
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyThesaurus(use_colorama=False).where_root_directory_is("example/").run()
+    >>> ApplyThesaurus(use_colorama=False).where_root_directory_is("examples/fintech/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

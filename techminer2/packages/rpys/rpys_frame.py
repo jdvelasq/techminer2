@@ -15,7 +15,7 @@ Example:
     ...     RPYSDataFrame()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .run()
     ... ).head()
           Num References  Median

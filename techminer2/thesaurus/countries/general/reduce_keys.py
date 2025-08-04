@@ -23,7 +23,7 @@ Example:
     >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
 
     >>> # Reduce thesaurus keys
-    >>> ReduceKeys(use_colorama=False).where_root_directory_is("example/").run()
+    >>> ReduceKeys(use_colorama=False).where_root_directory_is("examples/fintech/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

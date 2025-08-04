@@ -25,7 +25,7 @@ Example:
     ...     .with_thesaurus_file("geography/country_to_region.the.txt")
     ...     .with_field("countries")
     ...     .with_other_field("regions")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> applier.run()
 

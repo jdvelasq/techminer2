@@ -26,7 +26,7 @@ Example:
     >>> (
     ...     SortByEndsWithMatch(use_colorama=False)
     ...     .having_pattern("Darussalam")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .run()
     ... )
 

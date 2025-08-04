@@ -12,13 +12,13 @@
 ## ...     unit_of_analysis='authors', # authors, countries, organizations, sources
 ## ...     #
 ## ...     # COLUMN PARAMS:
-## ...     top_n=20, 
+## ...     top_n=20,
 ## ...     citations_threshold=0,
 ## ...     occurrence_threshold=2,
 ## ...     custom_terms=None,
 ## ...     #
 ## ...     # DATABASE:
-## ...     .where_root_directory_is("example/")
+## ...     .where_root_directory_is("examples/fintech/")
 ## ...     .where_database_is("main")
 ## ...     .where_record_years_range_is(None, None)
 ## ...     .where_record_citations_range_is(None, None)

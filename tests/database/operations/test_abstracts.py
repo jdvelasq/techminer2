@@ -22,7 +22,7 @@ Example:
     ...     CleanTextOperator()
     ...     .with_field("raw_abstract")
     ...     .with_other_field("raw_abstract_copy")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .run()
     ... )
 
@@ -30,7 +30,7 @@ Example:
     ...     HighlightNounAndPhrasesOperator()
     ...     .with_field("raw_abstract_copy")
     ...     .with_other_field("raw_abstract_copy")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .run()
     ... )
 
@@ -38,7 +38,7 @@ Example:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT raw_abstract_copy FROM database LIMIT 50;")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
@@ -66,7 +66,7 @@ Example:
     >>> (
     ...     DeleteFieldOperator()
     ...     .with_field("raw_abstract_copy")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .run()
     ... )
 

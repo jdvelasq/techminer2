@@ -26,7 +26,7 @@ Example:
     ...     .with_other_field("cleaned_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> clean_operator.run()
 
@@ -34,7 +34,7 @@ Example:
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT cleaned_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
@@ -61,7 +61,7 @@ Example:
     >>> field_deleter = (
     ...     DeleteFieldOperator()
     ...     .with_field("cleaned_raw_abstract")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> field_deleter.run()
 

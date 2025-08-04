@@ -30,7 +30,7 @@ Example:
     ...     SortByWordLength(use_colorama=False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 

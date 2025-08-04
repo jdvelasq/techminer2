@@ -26,7 +26,7 @@ Example:
     ...     .with_other_field("num_authors_test")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> counter.run()
 
@@ -34,7 +34,7 @@ Example:
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT authors, num_authors_test FROM database LIMIT 5;")
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)

@@ -26,7 +26,7 @@ Example:
     >>> # Configure and run the sorter
     >>> sorter = (
     ...     SortByWordLength(use_colorama=False)
-    ...     .where_root_directory_is("example/")
+    ...     .where_root_directory_is("examples/fintech/")
     ... )
     >>> sorter.run()
 
