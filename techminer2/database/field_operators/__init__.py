@@ -1,6 +1,4 @@
-# flake8: noqa
-# pylint: disable=line-too-long
-"""User-faced functions for database operations."""
+"""Public API."""
 
 from .clean_text_operator import CleanTextOperator
 from .collect_nouns_and_phrases_operator import CollectNounAndPhrasesOperator
