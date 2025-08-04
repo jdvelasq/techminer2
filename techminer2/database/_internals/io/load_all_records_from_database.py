@@ -31,7 +31,6 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from ...._internals.mixins import ParamsMixin
 from .get_database_file_path import internal__get_database_file_path
 
 
