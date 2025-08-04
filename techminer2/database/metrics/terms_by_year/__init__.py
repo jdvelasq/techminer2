@@ -1,4 +1,4 @@
-"""Terms by Year metrics and plots."""
+"""Public API."""
 
 from .data_frame import DataFrame
 from .gantt_plot import GanttPlot
