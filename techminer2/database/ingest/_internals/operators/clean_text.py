@@ -98,7 +98,11 @@ def clean_text(text):
         regex=True,
     )
 
-    text = re.sub(r" '(\d+)", r" ' \1 ", text)
+    text = text.str.replace(
+        r" '(\d+)",
+        r" ' \1",
+        regex=True,
+    )
 
     text = text.str.replace(
         r"\s([a-zA-Z])\.([a-zA-Z])\s",
