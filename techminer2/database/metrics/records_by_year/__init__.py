@@ -1,4 +1,4 @@
-"""Trand metrics."""
+"""Public API."""
 
 from .data_frame import DataFrame
 from .ranking_plot import RankingPlot
