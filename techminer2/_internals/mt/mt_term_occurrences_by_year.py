@@ -6,24 +6,24 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Term Occurrences by Year 
+Term Occurrences by Year
 ===============================================================================
 
 Computes the annual occurrence matrix for the items in a given field.
 
 ## >>> from techminer2._core.metrics.term_occurrences_by_year import term_occurrences_by_year
 ## >>> term_occurrences_by_year(
-## ...     field='authors',  
+## ...     field='authors',
 ## ...     cumulative=False,
 ## ...     #
 ## ...     # DATABASE PARAMS:
-## ...     root_dir="example/", 
+## ...     root_dir="example/",
 ## ...     database="main",
 ## ...     year_filter=(None, None),
 ## ...     cited_by_filter=(None, None),
 ## ... ).head(10)
 year                2015  2016  2017  2018  2019
-authors                                         
+authors
 Almunawar M.N.         0     0     0     0     1
 Alt R.                 0     0     0     1     0
 Anagnostopoulos I.     0     0     0     1     0

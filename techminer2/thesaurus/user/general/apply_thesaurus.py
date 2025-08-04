@@ -76,11 +76,10 @@ import sys
 
 from colorama import Fore, init
 
+from techminer2.database._internals.io import internal__load_all_records_from_database
+
 from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import (
-    internal__load_all_records_from_database,
-    internal__write_records_to_database,
-)
+from ....database._internals.io import internal__write_records_to_database
 from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
 
 

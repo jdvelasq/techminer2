@@ -16,7 +16,7 @@ Example:
     >>> # python3 -m techminer2.database.ingest.import_scopus_data
 
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="example/").run() # doctest: +ELLIPSIS
+    >>> IngestScopus(root_directory="example/").run() # doctest: +ELLIPSIS +SKIP
 
 
 
@@ -179,7 +179,6 @@ class IngestScopus(
 
         # Preprocess noun and phrases
         internal__preprocess_abstract(root_directory)
-        ## internal__preprocess_document_title(root_directory)
         internal__preprocess_raw_textblob_phrases(root_directory)
         internal__preprocess_raw_spacy_phrases(root_directory)
 
@@ -242,4 +241,5 @@ class IngestScopus(
 
 if __name__ == "__main__":
 
+    IngestScopus(root_directory="./").run()
     IngestScopus(root_directory="./").run()

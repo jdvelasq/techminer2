@@ -64,13 +64,14 @@ import sys
 
 import pandas as pd  # type: ignore
 from textblob import Word  # type: ignore
-from tqdm import tqdm  # type: ignore
+from tqdm import tqdm
+
+from techminer2.database._internals.io import (
+    internal__load_all_records_from_database,  # type: ignore
+)
 
 from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import (
-    internal__load_all_records_from_database,
-    internal__load_filtered_records_from_database,
-)
+from ....database._internals.io import internal__load_filtered_records_from_database
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
