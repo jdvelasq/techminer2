@@ -29,6 +29,7 @@ Example:
     ...     # NETWORK:
     ...     .using_clustering_algorithm_or_dict("louvain")
     ...     .using_association_index("association")
+    ...     .using_minimum_terms_in_cluster(5)
     ...     #
     ...     # PLOT:
     ...     .using_spring_layout_k(None)

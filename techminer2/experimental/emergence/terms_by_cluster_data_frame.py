@@ -29,6 +29,7 @@ Example:
     ...     .using_total_records_threshold(7)
     ...     .using_periods_with_at_least_one_record(3)
     ...     .using_ratio_threshold(0.5)
+    ...     .using_minimum_terms_in_cluster(5)
     ...     #
     ...     # NETWORK:
     ...     .using_clustering_algorithm_or_dict("louvain")
