@@ -1,4 +1,4 @@
-"""Growht metrics."""
+"""Public API."""
 
 from .bar_chart import BarChart
 from .data_frame import DataFrame
