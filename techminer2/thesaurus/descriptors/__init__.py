@@ -1,4 +1,4 @@
-"Thesaurus."
+"Public API for descriptors."
 
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.cleanup_thesaurus import CleanupThesaurus
