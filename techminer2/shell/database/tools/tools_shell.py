@@ -13,6 +13,7 @@ from .commands import (
     execute_copyright_command,
     execute_desambiguate_command,
     execute_doctypes_command,
+    execute_generic_command,
     execute_summary_command,
     execute_titles_command,
     execute_view_command,
@@ -34,6 +35,10 @@ class ToolsShell(BaseShell):
     def do_doctypes(self, arg):
         """List document types."""
         execute_doctypes_command()
+
+    def do_generic(self, arg):
+        """Determine if a term is too generic, vague or ambiguous."""
+        execute_generic_command()
 
     def do_summary(self, arg):
         """Generate a summary."""
