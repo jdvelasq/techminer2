@@ -31,9 +31,17 @@ docs_source/_build/
 
 
 # Ignore results generated during development
-example/data/
-example/outputs/
-example/src/
+examples/fintech/data/
+examples/fintech/outputs/
+examples/fintech/src/
+
+examples/structured/data/
+examples/structured/outputs/
+examples/structured/src/
+
+examples/html/data/
+examples/html/outputs/
+examples/html/src/
 
 debug.ipynb
 
