@@ -12,11 +12,8 @@ Ingest Scopus
 # doctest: +SKIP
 
 Example:
-    >>> # Command line interface
-    >>> # python3 -m techminer2.database.ingest.import_scopus_data
-
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="example/").run() # doctest: +ELLIPSIS +SKIP
+    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS
 
 
 
@@ -47,6 +44,8 @@ from ._internals.preprocessors import (  # type: ignore
     internal__preprocess_author_names,
     internal__preprocess_authors,
     internal__preprocess_authors_id,
+    internal__preprocess_cleaned_abstract,
+    internal__preprocess_cleaned_document_title,
     internal__preprocess_countries,
     internal__preprocess_descriptors,
     internal__preprocess_document_title,
@@ -123,7 +122,38 @@ class IngestScopus(
 
         #
         #
-        # PHASE 2: Process each column in isolation
+        # PHASE 2: Keywords & noun phrases & abstracts
+        # ---------------------------------------------------------------------------------
+        #
+        #
+        internal__preprocess_cleaned_document_title(root_directory)
+        internal__preprocess_cleaned_abstract(root_directory)
+        #
+        internal__preprocess_raw_textblob_phrases(root_directory)
+        internal__preprocess_raw_spacy_phrases(root_directory)
+        internal__preprocess_abstract(root_directory)
+        internal__preprocess_document_title(root_directory)
+
+        #
+        internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
+        internal__check_empty_terms(
+            "raw_abstract_nouns_and_phrases", root_directory=root_directory
+        )
+        #
+        internal__preprocess_raw_document_title_nouns_and_phrases(root_directory)
+        internal__check_empty_terms(
+            "raw_document_title_nouns_and_phrases", root_directory=root_directory
+        )
+        internal__preprocess_raw_noun_and_phrases(root_directory)
+        internal__check_empty_terms(
+            "raw_noun_and_phrases", root_directory=root_directory
+        )
+        internal__preprocess_raw_descriptors(root_directory)
+        internal__check_empty_terms("raw_descriptors", root_directory=root_directory)
+
+        #
+        #
+        # PHASE 3: Process each column in isolation
         # ---------------------------------------------------------------------------------
         #
         #
@@ -148,18 +178,11 @@ class IngestScopus(
         #
         internal__preprocess_references(root_directory)
         #
-        internal__preprocess_document_title(root_directory)
+
         internal__preprocess_record_id(root_directory)
         internal__preprocess_record_no(root_directory)
         #
         internal__preprocess_subject_areas(root_directory)
-
-        #
-        #
-        # PHASE 2: Keywords & noun phrases & abstracts
-        # ---------------------------------------------------------------------------------
-        #
-        #
 
         # Author & index keywords
         internal__preprocess_raw_index_keywords(root_directory)
@@ -176,27 +199,6 @@ class IngestScopus(
 
         internal__preprocess_raw_keywords(root_directory)
         internal__check_empty_terms("raw_keywords", root_directory=root_directory)
-
-        # Preprocess noun and phrases
-        internal__preprocess_abstract(root_directory)
-        internal__preprocess_raw_textblob_phrases(root_directory)
-        internal__preprocess_raw_spacy_phrases(root_directory)
-
-        #
-        internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
-        internal__check_empty_terms(
-            "raw_abstract_nouns_and_phrases", root_directory=root_directory
-        )
-        internal__preprocess_raw_document_title_nouns_and_phrases(root_directory)
-        internal__check_empty_terms(
-            "raw_document_title_nouns_and_phrases", root_directory=root_directory
-        )
-        internal__preprocess_raw_noun_and_phrases(root_directory)
-        internal__check_empty_terms(
-            "raw_noun_and_phrases", root_directory=root_directory
-        )
-        internal__preprocess_raw_descriptors(root_directory)
-        internal__check_empty_terms("raw_descriptors", root_directory=root_directory)
 
         #
         #
@@ -241,5 +243,6 @@ class IngestScopus(
 
 if __name__ == "__main__":
 
+    IngestScopus(root_directory="./").run()
     IngestScopus(root_directory="./").run()
     IngestScopus(root_directory="./").run()

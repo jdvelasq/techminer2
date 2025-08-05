@@ -36,12 +36,15 @@ def internal__preprocess_raw_textblob_phrases(root_dir):
 
         phrases = []
 
-        if not pd.isna(row["abstract"]):
-            phrases += [phrase for phrase in TextBlob(row["abstract"]).noun_phrases]
-
-        if not pd.isna(row["document_title"]):
+        if not pd.isna(row["cleaned_abstract"]):
             phrases += [
-                phrase for phrase in TextBlob(row["document_title"]).noun_phrases
+                phrase for phrase in TextBlob(row["cleaned_abstract"]).noun_phrases
+            ]
+
+        if not pd.isna(row["cleaned_document_title"]):
+            phrases += [
+                phrase
+                for phrase in TextBlob(row["cleaned_document_title"]).noun_phrases
             ]
 
         phrases = [term for term in phrases if "." not in term]

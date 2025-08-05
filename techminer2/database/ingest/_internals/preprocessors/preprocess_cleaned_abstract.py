@@ -5,19 +5,21 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+
 import sys
 
 from ....._internals.log_message import internal__log_message
-from ..operators.collect_nouns_and_phrases import internal__collect_nouns_and_phrases
+from ..operators.clean_text import internal__clean_text
 
 
-def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
+def internal__preprocess_cleaned_abstract(root_dir):
+    """:meta private:"""
 
-    sys.stderr.write("INFO  Collecting raw noun and phrases from abstract\n")
+    sys.stderr.write("INFO  Creating 'cleaned_abstract' column\n")
     sys.stderr.flush()
 
-    internal__collect_nouns_and_phrases(
-        source="abstract",
-        dest="raw_abstract_nouns_and_phrases",
+    internal__clean_text(
+        source="raw_abstract",
+        dest="cleaned_abstract",
         root_dir=root_dir,
     )

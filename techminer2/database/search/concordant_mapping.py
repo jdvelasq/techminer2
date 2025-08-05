@@ -76,37 +76,24 @@ class ConcordantMapping(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_1_clean_abstracts(self):
-
-        internal__clean_text(
-            source="raw_abstract",
-            dest="cleaned_abstract",
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
-        )
-
-    # -------------------------------------------------------------------------
-    def _step_2_load_the_database(self):
+    def _step_1_load_the_database(self):
         return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
-    def _step_3__filter_by_concordance(self, records):
+    def _step_2_filter_by_concordance(self, records):
 
-        search_for = self.params.pattern.lower().replace("_", " ")
+        self.search_for = self.params.pattern.lower().replace("_", " ")
 
         found = (
             records["abstract"]
             .astype(str)
-            .str.contains(r"\b" + search_for + r"\b", regex=True)
+            .str.contains(r"\b" + self.search_for + r"\b", regex=True)
         )
         records = records[found]
         return records
 
     # -------------------------------------------------------------------------
-    def _step_4_process_abstracts(self, records):
-
-        search_for = self.params.pattern.lower().replace("_", " ")
+    def _step_3_process_abstracts(self, records):
 
         #
         # extract phrases.
@@ -116,7 +103,7 @@ class ConcordantMapping(
             lambda x: [y[:-2] if y[-2:] == " ." else y for y in x]
         )
         #
-        regex = r"\b" + search_for + r"\b"
+        regex = r"\b" + self.search_for + r"\b"
         #
         records["abstract"] = records["abstract"].map(
             lambda x: [y for y in x if re.search(regex, y)]
@@ -128,11 +115,10 @@ class ConcordantMapping(
     # -------------------------------------------------------------------------
     def run(self):
 
-        self._step_1_clean_abstracts
-        records = self._step_2_load_the_database()
+        records = self._step_1_load_the_database()
         records["abstract"] = records["cleaned_abstract"]
-        records = self._step_3__filter_by_concordance(records)
-        records = self._step_4_process_abstracts(records)
+        records = self._step_2_filter_by_concordance(records)
+        records = self._step_3_process_abstracts(records)
         mapping = self.build_record_mapping(records)
 
         return mapping

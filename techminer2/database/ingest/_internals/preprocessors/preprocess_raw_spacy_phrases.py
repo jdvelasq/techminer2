@@ -39,12 +39,15 @@ def internal__preprocess_raw_spacy_phrases(root_dir):
 
         phrases = []
 
-        if not pd.isna(row["abstract"]):
-            phrases += [chunk.text for chunk in spacy_nlp(row["abstract"]).noun_chunks]
-
-        if not pd.isna(row["document_title"]):
+        if not pd.isna(row["cleaned_abstract"]):
             phrases += [
-                chunk.text for chunk in spacy_nlp(row["document_title"]).noun_chunks
+                chunk.text for chunk in spacy_nlp(row["cleaned_abstract"]).noun_chunks
+            ]
+
+        if not pd.isna(row["cleaned_document_title"]):
+            phrases += [
+                chunk.text
+                for chunk in spacy_nlp(row["cleaned_document_title"]).noun_chunks
             ]
 
         if phrases == []:

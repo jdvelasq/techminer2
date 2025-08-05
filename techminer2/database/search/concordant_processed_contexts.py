@@ -48,7 +48,7 @@ class ConcordantProcessedContexts(
 ):
     """:meta private:"""
 
-    def _step_3_extract_context_phrases(self, records):
+    def _step_2_extract_context_phrases(self, records):
 
         search_for = self.params.pattern.lower().replace("_", " ")
 

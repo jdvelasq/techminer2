@@ -58,22 +58,11 @@ class ConcordantRawContexts(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def _step_1_clean_abstracts(self):
-
-        internal__clean_text(
-            source="raw_abstract",
-            dest="cleaned_abstract",
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
-        )
-
-    # -------------------------------------------------------------------------
-    def _step_2_load_the_database(self):
+    def _step_1_load_the_database(self):
         return internal__load_filtered_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
-    def _step_3_extract_context_phrases(self, records):
+    def _step_2_extract_context_phrases(self, records):
 
         search_for = self.params.pattern.lower().replace("_", " ")
 
@@ -95,7 +84,7 @@ class ConcordantRawContexts(
         return context_phrases
 
     # -------------------------------------------------------------------------
-    def _step_4_create_contexts_dataframe(self, context_phrases):
+    def _step_3_create_contexts_dataframe(self, context_phrases):
 
         search_for = self.params.pattern.lower().replace("_", " ")
 
@@ -118,7 +107,7 @@ class ConcordantRawContexts(
         return contexts
 
     # -------------------------------------------------------------------------
-    def _step_5_transform_context_dataframe_to_texts(self, contexts):
+    def _step_4_transform_context_dataframe_to_texts(self, contexts):
 
         search_for = self.params.pattern
         contexts = contexts.copy()
@@ -143,9 +132,8 @@ class ConcordantRawContexts(
     # -------------------------------------------------------------------------
     def run(self):
 
-        self._step_1_clean_abstracts()
-        records = self._step_2_load_the_database()
-        context_phrases = self._step_3_extract_context_phrases(records=records)
-        contexts_dataframe = self._step_4_create_contexts_dataframe(context_phrases)
-        texts = self._step_5_transform_context_dataframe_to_texts(contexts_dataframe)
+        records = self._step_1_load_the_database()
+        context_phrases = self._step_2_extract_context_phrases(records=records)
+        contexts_dataframe = self._step_3_create_contexts_dataframe(context_phrases)
+        texts = self._step_4_transform_context_dataframe_to_texts(contexts_dataframe)
         return texts

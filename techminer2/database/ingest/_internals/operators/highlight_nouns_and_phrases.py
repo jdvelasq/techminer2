@@ -20,6 +20,168 @@ from ...._internals.io import (
     internal__write_records_to_database,
 )
 
+SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
+    "abstract",
+    "aim",
+    "aims",
+    "analysis",
+    "applications",
+    "approach",
+    "background",
+    "conclusion",
+    "conclusions",
+    "context",
+    "contribution",
+    "design",
+    "discussion",
+    "evaluation",
+    "evidence",
+    "features",
+    "findings",
+    "funding",
+    "goal",
+    "highlights",
+    "impact",
+    "implementation",
+    "implications",
+    "interpretation",
+    "intervention",
+    "interventions",
+    "introduction",
+    "keywords",
+    "limitations",
+    "method",
+    "methodology",
+    "methods",
+    "objective",
+    "objectives",
+    "originality",
+    "outcomes",
+    "participants",
+    "patients",
+    "place",
+    "program",
+    "purpose",
+    "recommendations",
+    "result",
+    "results",
+    "setting",
+    "settings",
+    "significance",
+    "subjects",
+    "suggestions",
+    "summary",
+    "uniqueness",
+    "value",
+]
+
+COMPOUND_STRUCTURED_ABSTRACT_MARKERS = [
+    "actionable insights",
+    "aim and background",
+    "aim and methods",
+    "aims / objectives",
+    "application design",
+    "applications of this study",
+    "authors ' conclusions",
+    "background / objectives",
+    "background and aims",
+    "background and objective",
+    "background and purpose",
+    "clinical impact",
+    "clinical relevance",
+    "clinical significance",
+    "conclusion , significance and impact study",
+    "conclusion and relevance",
+    "contribution of the_paper",
+    "data collection and analysis",
+    "data sources",
+    "data visualization tools",
+    "design / methodology / approach",
+    "design / methods",
+    "design / settings",
+    "design methodology approach",
+    "discussion and conclusions",
+    "diverse perspectives",
+    "ethical considerations",
+    "ethics and dissemination",
+    "findings and originality",
+    "findings and value added",
+    "graphical abstract",
+    "impact and implications",
+    "impact statement",
+    "implications for practice and policy",
+    "implications for practice",
+    "implications for theory and practice",
+    "improvements / applications",
+    "intended outcomes",
+    "key findings",
+    "key messages",
+    "key results",
+    "main findings",
+    "main measures",
+    "main outcome ( s )",
+    "main outcome measure",
+    "main outcome measures",
+    "main outcomes and measures",
+    "main results",
+    "managerial implications",
+    "material / methods",
+    "material and methods",
+    "materials and methods",
+    "methodological quality assessment tools include",
+    "methodology / results",
+    "methodology and results",
+    "methods , procedures , process",
+    "methods / statistical analysis",
+    "methods and analysis",
+    "methods and findings",
+    "methods and results",
+    "novel / additive information",
+    "novelty / originality of this study",
+    "novelty / originality",
+    "objectives / scope",
+    "originality / value",
+    "originality and value",
+    "outcome measures",
+    "paper aims",
+    "patient or public contribution",
+    "place and duration of study",
+    "practical examples",
+    "practical implications",
+    "practical relevance",
+    "practice implications",
+    "problem definition",
+    "public interest summary",
+    "purpose of review",
+    "purpose of the article",
+    "purpose of the study",
+    "recent findings",
+    "reporting quality assessment tool",
+    "research background",
+    "research design",
+    "research limitations / implications",
+    "research method",
+    "research question",
+    "results , observations , conclusions",
+    "results and discussion",
+    "results show",
+    "review methods",
+    "scholarly critique",
+    "scientific discussion",
+    "search methods",
+    "selection criteria",
+    "setting / participants / intervention",
+    "settings and participants",
+    "social implications",
+    "some key results",
+    "study design",
+    "subjects and methods",
+    "subjects and methods",
+    "teaching implications",
+    "the topics include",
+    "theoretical framework",
+]
+
 
 # ------------------------------------------------------------------------------
 def notify_process_start(source):
@@ -44,9 +206,7 @@ def write_records_to_database(dataframe, root_directory):
 def prepare_dest_field(dataframe, source, dest):
 
     dataframe = dataframe.copy()
-    dataframe[dest] = (
-        dataframe[source].str.lower().str.replace("_", " ").str.replace(" / ", " ")
-    )
+    # .str.lower().str.replace("_", " ").str.replace(" / ", " ")
     return dataframe
 
 
@@ -150,57 +310,57 @@ def mark_copyright_text(copyright_regex, text):
 
 
 # ------------------------------------------------------------------------------
-def mark_template_abstract_compound_markers(text):
-    for regex in [
-        "? academic practical relevance :",
-        "? data visualization tools :",
-        "? design methodology approach :",
-        "? design/methodology/approach :",
-        "? findings and value added :",
-        "? implications of the_study :",
-        "? managerial implications :",
-        "? methodological quality assessment tools include :",
-        "? methodology results :",
-        "? methods :",
-        "? originality value :",
-        "? originality/value :",
-        "? practical implications :",
-        "? problem definition :",
-        "? purpose of the article :",
-        "? research limitations :",
-        "? research limitations implications :",
-        "? research limitations/implications :",
-        "? research methodology :",
-        "? research background :",
-        ". academic practical relevance :",
-        ". data visualization tools :",
-        ". design methodology approach :",
-        ". design/methodology/approach :",
-        ". implications of the study :",
-        ". findings and value added :",
-        ". managerial implications :",
-        ". methodological quality assessment tools include :",
-        ". methodology results :",
-        ". methods :",
-        ". originality value :",
-        ". originality/value :",
-        ". practical implications :",
-        ". problem definition :",
-        ". purpose of the article :",
-        ". reporting quality assessment tool :",
-        ". research limitations :",
-        ". research limitations implications :",
-        ". research limitations/implications :",
-        ". research methodology :",
-        ". research background :",
-        ". INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
-        "? INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
-    ]:
-        regex = re.escape(regex)
-        regex = r"(" + regex + r")"
-        regex = re.compile(regex)
-        text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
-    return text
+# def mark_template_abstract_compound_markers(text):
+#     for regex in [
+#         "? academic practical relevance :",
+#         "? data visualization tools :",
+#         "? design methodology approach :",
+#         "? design/methodology/approach :",
+#         "? findings and value added :",
+#         "? implications of the_study :",
+#         "? managerial implications :",
+#         "? methodological quality assessment tools include :",
+#         "? methodology results :",
+#         "? methods :",
+#         "? originality value :",
+#         "? originality/value :",
+#         "? practical implications :",
+#         "? problem definition :",
+#         "? purpose of the article :",
+#         "? research limitations :",
+#         "? research limitations implications :",
+#         "? research limitations/implications :",
+#         "? research methodology :",
+#         "? research background :",
+#         ". academic practical relevance :",
+#         ". data visualization tools :",
+#         ". design methodology approach :",
+#         ". design/methodology/approach :",
+#         ". implications of the study :",
+#         ". findings and value added :",
+#         ". managerial implications :",
+#         ". methodological quality assessment tools include :",
+#         ". methodology results :",
+#         ". methods :",
+#         ". originality value :",
+#         ". originality/value :",
+#         ". practical implications :",
+#         ". problem definition :",
+#         ". purpose of the article :",
+#         ". reporting quality assessment tool :",
+#         ". research limitations :",
+#         ". research limitations implications :",
+#         ". research limitations/implications :",
+#         ". research methodology :",
+#         ". research background :",
+#         ". INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
+#         "? INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
+#     ]:
+#         regex = re.escape(regex)
+#         regex = r"(" + regex + r")"
+#         regex = re.compile(regex)
+#         text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
+#     return text
 
 
 # ------------------------------------------------------------------------------
@@ -294,102 +454,25 @@ def remove_roman_numbers(text):
 
 
 # ------------------------------------------------------------------------------
-def remove_marker_words(text):
-    for regex in [
-        "? AIMS :",
-        "? APPROACH :",
-        "? BACKGROUND :",
-        "? CONCLUSION , SIGNIFICANCE and IMPACT_STUDY :",
-        "? CONCLUSION :",
-        "? CONCLUSIONS :",
-        "? design/METHODOLOGY/approach :",
-        "? DISCUSSION :",
-        "? FINDINGS :",
-        "? FINDINGS and VALUE added :",
-        "? GRAPHICAL_ABSTRACT :",
-        "? HIGHLIGHTS :",
-        "? IMPACT_STATEMENT :",
-        "? INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
-        "? LIMITATIONS :",
-        "? LIMITATIONS and IMPLICATIONS :",
-        "? METHOD :",
-        "? METHODOLOGY :",
-        "? METHODOLOGY and RESULTS :",
-        "? METHODS , PROCEDURES , PROCESS :",
-        "? METHODS :",
-        "? NOVEL/ADDITIVE_INFORMATION :",
-        "? OBJECTIVE :",
-        "? OBJECTIVES :",
-        "? ORIGINALITY :",
-        "? ORIGINALITY/VALUE :",
-        "? PURPOSE of THE_ARTICLE :",
-        "? RECOMMENDATIONS :",
-        "? RESEARCH_BACKGROUND :",
-        "? RESULT :",
-        "? RESULTS , OBSERVATIONS , CONCLUSIONS :",
-        "? RESULTS :",
-        "? RESULTS and DISCUSSION :",
-        "? UNIQUENESS :",
-        ". AIMS :",
-        ". APPROACH :",
-        ". BACKGROUND :",
-        ". CONCLUSION , SIGNIFICANCE and IMPACT_STUDY :",
-        ". CONCLUSION :",
-        ". CONCLUSIONS :",
-        ". design/METHODOLOGY/approach :",
-        ". DISCUSSION :",
-        ". FINDINGS :",
-        ". FINDINGS and VALUE added :",
-        ". GRAPHICAL_ABSTRACT :",
-        ". HIGHLIGHTS :",
-        ". IMPACT_STATEMENT :",
-        ". INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
-        ". LIMITATIONS :",
-        ". LIMITATIONS and IMPLICATIONS :",
-        ". METHOD :",
-        ". METHODOLOGY :",
-        ". METHODOLOGY and RESULTS :",
-        ". METHODS , PROCEDURES , PROCESS :",
-        ". METHODS :",
-        ". NOVEL/ADDITIVE_INFORMATION :",
-        ". OBJECTIVE :",
-        ". OBJECTIVES :",
-        ". ORIGINALITY :",
-        ". ORIGINALITY/VALUE :",
-        ". PURPOSE of THE_ARTICLE :",
-        ". RECOMMENDATIONS :",
-        ". RESEARCH_BACKGROUND :",
-        ". RESULT :",
-        ". RESULTS , OBSERVATIONS , CONCLUSIONS :",
-        ". RESULTS :",
-        ". RESULTS and DISCUSSION :",
-        ". UNIQUENESS :",
-    ]:
-        text = text.replace(regex, regex.lower())
+def unmark_single_structured_abstract_markers(text):
 
-    if text.startswith("AIMS :"):
-        text = text.replace("AIMS :", "aims :")
-    if text.startswith("AIM :"):
-        text = text.replace("AIM :", "aim :")
-    if text.startswith("PURPOSE :"):
-        text = text.replace("PURPOSE :", "purpose :")
-    if text.startswith("PROBLEM_DEFINITION :"):
-        text = text.replace("PROBLEM_DEFINITION :", "problem definition :")
-    if text.startswith("GRAPHICAL_ABSTRACT :"):
-        text = text.replace("GRAPHICAL_ABSTRACT :", "graphical abstract :")
-    if text.startswith("SUMMARY :"):
-        text = text.replace("SUMMARY :", "summary :")
-    if text.startswith("BACKGROUND :"):
-        text = text.replace("BACKGROUND :", "background :")
+    # Corrects structured abstract markers at the beginning of the paragraph:
+    # Converts uppercase markers (e.g., "AIM :") to lowercase (e.g., "aim :").
+    for regex in SINGLE_STRUCTURED_ABSTRACT_MARKERS:
+        pattern = regex + " : "
+        if text.startswith(pattern.upper()):
+            text = text.replace(pattern.upper(), pattern.lower())
 
-    if text.startswith("OBJECTIVES/SCOPE :"):
-        text = text.replace("OBJECTIVES/SCOPE :", "objectives/scope :")
-    if text.startswith("OBJECTIVE :"):
-        text = text.replace("OBJECTIVE :", "objective :")
-    if text.startswith("INTRODUCTION :"):
-        text = text.replace("INTRODUCTION :", "introduction :")
-    if text.startswith("HIGHLIGHTS :"):
-        text = text.replace("HIGHLIGHTS :", "highlights :")
+    # Corrects structured abstract markers inside the paragraph:
+    # Converts uppercase markers (e.g., ". AIM :") to lowercase (e.g., ". aim :").
+    for regex in SINGLE_STRUCTURED_ABSTRACT_MARKERS:
+
+        pattern = ". " + regex + " : "
+        text = text.replace(pattern.upper(), pattern.lower())
+        pattern = "? " + regex + " : "
+        text = text.replace(pattern.upper(), pattern.lower())
+        pattern = ") " + regex + " : "
+        text = text.replace(pattern.upper(), pattern.lower())
 
     return text
 
@@ -528,6 +611,17 @@ def transform_email_addresses_to_lower_case(text):
 
 
 # ------------------------------------------------------------------------------
+def mark_template_abstract_separators(text):
+
+    for marker in COMPOUND_STRUCTURED_ABSTRACT_MARKERS:
+        pattern = r"\b" + re.escape(marker) + r"\b"
+        regex = re.compile(pattern, re.IGNORECASE)
+        text = regex.sub(lambda z: z.group().lower().replace(" ", "_"), text)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
 def internal__highlight_nouns_and_phrases(
     source,
     dest,
@@ -538,19 +632,19 @@ def internal__highlight_nouns_and_phrases(
     """:meta private:"""
 
     notify_process_start(source)
+
     dataframe = load_all_records_from_database(root_directory)
 
     if source not in dataframe.columns:
         return
 
-    dataframe = prepare_dest_field(dataframe, source, dest)
+    dataframe[dest] = dataframe[source].copy()
 
     all_keywords = collect_all_keywords(dataframe)
     frequent_keywords, all_keywords = clean_all_keywords(all_keywords)
 
     all_noun_phrases = collect_all_noun_phrases(dataframe, dest)
     known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
-    ## all_noun_phrases += known_noun_phrases
 
     connectors = internal__load_text_processing_terms("connectors.txt")
     copyright_regex = internal__load_text_processing_terms("copyright_regex.txt")
@@ -594,7 +688,7 @@ def internal__highlight_nouns_and_phrases(
         url_matches = collect_urls(text)
 
         text = mark_copyright_text(copyright_regex, text)
-        text = mark_template_abstract_compound_markers(text)
+        text = mark_template_abstract_separators(text)
         text = mark_discursive_patterns(discursive_patterns, text)
         text = mark_connectors(connectors, text)
         text = highlight_key_terms(key_terms, text)
@@ -604,15 +698,12 @@ def internal__highlight_nouns_and_phrases(
         text = replace_urls(text, url_matches)
 
         text = unmark_lowercase_text(text)
+        text = unmark_single_structured_abstract_markers(text)
         text = mark_connectors(connectors, text)
         text = remove_roman_numbers(text)
-        text = remove_marker_words(text)
 
         text = transform_email_addresses_to_lower_case(text)
 
-        #
-        # Step 14: make_final_corrections
-        #
         text = make_final_corrections(text)
 
         dataframe.loc[index, dest] = text

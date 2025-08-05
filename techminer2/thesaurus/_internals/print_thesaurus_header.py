@@ -17,6 +17,8 @@ def internal__print_thesaurus_header(
     """:meta private:"""
 
     data_frame = internal__load_thesaurus_as_data_frame(thesaurus_path)
+    if data_frame.empty:
+        return
 
     keys = data_frame.key
     keys = keys.drop_duplicates().head(n).tolist()

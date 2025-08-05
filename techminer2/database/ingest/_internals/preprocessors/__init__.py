@@ -8,6 +8,10 @@ from .preprocess_author_keywords import internal__preprocess_author_keywords
 from .preprocess_author_names import internal__preprocess_author_names
 from .preprocess_authors import internal__preprocess_authors
 from .preprocess_authors_id import internal__preprocess_authors_id
+from .preprocess_cleaned_abstract import internal__preprocess_cleaned_abstract
+from .preprocess_cleaned_document_title import (
+    internal__preprocess_cleaned_document_title,
+)
 from .preprocess_countries import internal__preprocess_countries
 from .preprocess_descriptors import internal__preprocess_descriptors
 from .preprocess_document_title import internal__preprocess_document_title
@@ -46,11 +50,13 @@ from .preprocess_subject_areas import internal__preprocess_subject_areas
 __all__ = [
     "internal__preprocess_abbr_source_title",
     "internal__preprocess_abbreviations",
-    "internal__preprocess_abstract",
     "internal__preprocess_author_keywords",
+    "internal__preprocess_abstract",
     "internal__preprocess_author_names",
     "internal__preprocess_authors_id",
     "internal__preprocess_authors",
+    "internal__preprocess_cleaned_abstract",
+    "internal__preprocess_cleaned_document_title",
     "internal__preprocess_countries",
     "internal__preprocess_descriptors",
     "internal__preprocess_document_title",

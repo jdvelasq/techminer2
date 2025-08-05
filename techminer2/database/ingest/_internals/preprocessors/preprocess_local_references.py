@@ -46,6 +46,20 @@ def internal__preprocess_local_references(root_dir):
     # dataframe.loc[dataframe.db_main, "local_references"] = dataframe.loc[
     #     dataframe.db_main, "global_references"
     # ]
+
+    # if all column are NaN, return
+    if dataframe["local_references"].isna().all():
+
+        dataframe.to_csv(
+            pathlib.Path(root_dir) / "data/processed/database.csv.zip",
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
+        )
+
+        return
+
     dataframe["local_references"] = dataframe["local_references"].str.split("; ")
     dataframe["local_references"] = dataframe["local_references"].map(
         lambda x: [y for y in x if y in main_records_id], na_action="ignore"
