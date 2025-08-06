@@ -15,7 +15,7 @@ class. The process involves configuring the fields and database parameters.
 Example:
     >>> import textwrap
     >>> from techminer2.database.field_operators import CleanTextOperator, DeleteFieldOperator
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.tools import Query
 
     >>> # Creates, configure, and run the clean_operator
     >>> clean_operator = (

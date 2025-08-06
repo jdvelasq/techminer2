@@ -50,7 +50,7 @@ Example:
     <BLANKLINE>
 
     >>> # Query the database to check the results
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.tools import Query
     >>> Query(
     ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
     ...     root_directory="example/",

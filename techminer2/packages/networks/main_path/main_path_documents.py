@@ -82,7 +82,7 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ....database.tools import RecordViewer
+from ....tools import RecordViewer
 from ._internals.compute_main_path import internal__compute_main_path
 
 

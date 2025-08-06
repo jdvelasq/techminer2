@@ -1,4 +1,4 @@
-from techminer2.database.tools import SummarySheet
+from techminer2.tools import SummarySheet
 
 from ....colorized_input import colorized_input
 

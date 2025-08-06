@@ -9,7 +9,7 @@ Summary Sheet
 ===============================================================================
 
 Example:
-    >>> from techminer2.database.tools import SummarySheet
+    >>> from techminer2.tools import SummarySheet
     >>> result = (
     ...     SummarySheet()
     ...     #
@@ -37,8 +37,10 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals.io import internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class SummarySheet(

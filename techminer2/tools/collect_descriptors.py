@@ -11,7 +11,7 @@ Collect Descriptors
 
 
 Example:
-    >>> from techminer2.database.tools import CollectDescriptors
+    >>> from techminer2.tools import CollectDescriptors
     >>> CollectDescriptors(root_directory="example/").run()
 
 
@@ -21,8 +21,8 @@ Example:
 """
 import sys
 
-from ..._internals.mixins import ParamsMixin
-from ...database.ingest._internals.preprocessors import (  # type: ignore
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.ingest._internals.preprocessors import (  # type: ignore
     internal__preprocess_abbreviations,
     internal__preprocess_descriptors,
     internal__preprocess_raw_abstract_nouns_and_phrases,
@@ -39,7 +39,7 @@ class CollectDescriptors(
 
     def run(self):
 
-        from ...thesaurus.descriptors import InitializeThesaurus
+        from ..thesaurus.descriptors import InitializeThesaurus
 
         sys.stderr.write("\nINFO  Collecting Descriptors\n")
         sys.stderr.flush()

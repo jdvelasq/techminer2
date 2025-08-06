@@ -11,7 +11,7 @@ Coverage
 
 
 Example:
-    >>> from techminer2.database.tools import Coverage
+    >>> from techminer2.tools import Coverage
     >>> (
     ...     Coverage()
     ...     #
@@ -38,11 +38,13 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from .._internals.io.load_filtered_records_from_database import (
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
-from .._internals.io.load_user_stopwords import internal__load_user_stopwords
+from techminer2.database._internals.io.load_user_stopwords import (
+    internal__load_user_stopwords,
+)
 
 
 class Coverage(
@@ -120,5 +122,7 @@ class Coverage(
                 "cum_sum_items": "cum num items",
             }
         )
+
+        return documents
 
         return documents

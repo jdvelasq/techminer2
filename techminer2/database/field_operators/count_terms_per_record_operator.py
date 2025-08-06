@@ -15,7 +15,7 @@ Example:
     ...     CountTermsPerRecordOperator,
     ...     DeleteFieldOperator,
     ... )
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.tools import Query
 
     >>> # Creates, configure, and run the operator
     >>> counter = (

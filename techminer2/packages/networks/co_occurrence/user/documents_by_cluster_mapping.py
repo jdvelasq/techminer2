@@ -72,7 +72,7 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from .....database.tools import RecordViewer
+from .....tools import RecordViewer
 from .clusters_to_terms_mapping import ClustersToTermsMapping
 
 

@@ -18,7 +18,7 @@ Example:
     ...     FillNAOperator,
     ...     TransformFieldOperator,
     ... )
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.tools import Query
 
     >>> # Copy the field to fill to avoid losing the original data
     >>> TransformFieldOperator(

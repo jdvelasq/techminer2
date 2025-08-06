@@ -11,7 +11,7 @@ Search String
 
 
 Example:
-    >>> from techminer2.database.tools import SearchString
+    >>> from techminer2.tools import SearchString
 
     >>> (
     ...     SearchString()
@@ -26,8 +26,8 @@ Example:
 """
 import os.path
 
-from ..._internals.mixins import ParamsMixin
-from .._internals.io.load_filtered_records_from_database import (
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
 

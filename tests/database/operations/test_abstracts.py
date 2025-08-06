@@ -16,7 +16,7 @@ Example:
     >>> from techminer2.database.field_operators import CleanTextOperator
     >>> from techminer2.database.field_operators import DeleteFieldOperator
     >>> from techminer2.database.field_operators import HighlightNounAndPhrasesOperator
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.tools import Query
 
     >>> (
     ...     CleanTextOperator()

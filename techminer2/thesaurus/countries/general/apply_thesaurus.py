@@ -48,7 +48,7 @@ Example:
     <BLANKLINE>
 
     >>> # Query the database to verify the results
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.tools import Query
     >>> result = Query(
     ...     query_expression="SELECT countries FROM database LIMIT 10;",
     ...     root_directory="example/",

@@ -1,6 +1,6 @@
 from colorama import Fore, init
 
-from techminer2.database.tools import RecordViewer
+from techminer2.tools import RecordViewer
 
 
 def execute_view_command():
