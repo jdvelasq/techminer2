@@ -239,10 +239,3 @@ class IngestScopus(
         )
 
         sys.stderr.flush()
-
-
-if __name__ == "__main__":
-
-    IngestScopus(root_directory="./").run()
-    IngestScopus(root_directory="./").run()
-    IngestScopus(root_directory="./").run()

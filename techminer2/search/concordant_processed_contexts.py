@@ -9,7 +9,7 @@ Concordant Processed Contexts
 =========================================================================================
 
 Example:
-    >>> from techminer2.database.search import ConcordantProcessedContexts
+    >>> from techminer2.search import ConcordantProcessedContexts
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:

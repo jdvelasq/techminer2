@@ -11,7 +11,7 @@ Concordant Mapping
 
 Example:
     >>> from pprint import pprint
-    >>> from techminer2.database.search import ConcordantMapping
+    >>> from techminer2.search import ConcordantMapping
 
     >>> # Create, configure, and run the mapper
     >>> # order_records_by:
@@ -61,11 +61,14 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from ..._internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
-from .._internals.io.load_filtered_records_from_database import (
+from techminer2._internals.mixins import (
+    ParamsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
+)
+from techminer2.database._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
-from ..ingest._internals.operators.clean_text import internal__clean_text
 
 
 class ConcordantMapping(
@@ -116,6 +119,12 @@ class ConcordantMapping(
     def run(self):
 
         records = self._step_1_load_the_database()
+        records["abstract"] = records["cleaned_abstract"]
+        records = self._step_2_filter_by_concordance(records)
+        records = self._step_3_process_abstracts(records)
+        mapping = self.build_record_mapping(records)
+
+        return mapping
         records["abstract"] = records["cleaned_abstract"]
         records = self._step_2_filter_by_concordance(records)
         records = self._step_3_process_abstracts(records)

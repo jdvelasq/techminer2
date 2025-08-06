@@ -12,7 +12,7 @@ Find records
 
 
 Example:
-    >>> from techminer2.database.search import FindRecords
+    >>> from techminer2.search import FindRecords
 
     >>> # Create, configure, and run the finder
     >>> finder = (
@@ -62,8 +62,8 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
-from .._internals.io.load_filtered_records_from_database import (
+from .._internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
+from ..database._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
 

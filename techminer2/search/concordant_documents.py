@@ -10,7 +10,7 @@ Concordant Documents
 
 
 Example:
-    >>> from techminer2.database.search import ConcordantDocuments
+    >>> from techminer2.search import ConcordantDocuments
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:
@@ -58,7 +58,8 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin, RecordViewerMixin
+from techminer2._internals.mixins import ParamsMixin, RecordViewerMixin
+
 from .concordant_mapping import ConcordantMapping
 
 
@@ -72,4 +73,5 @@ class ConcordantDocuments(
 
         mapping = ConcordantMapping().update(**self.params.__dict__).run()
         documents = self.build_record_viewer(mapping)
+        return documents
         return documents

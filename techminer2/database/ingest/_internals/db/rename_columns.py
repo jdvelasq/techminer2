@@ -6,8 +6,6 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from ....._internals.log_message import internal__log_message
-
 SCOPUS_2_TECHMINER_TAGS = {
     "Abbreviated Source Title": "abbr_source_title",
     "Abstract": "raw_abstract",

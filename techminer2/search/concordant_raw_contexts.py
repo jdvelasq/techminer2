@@ -9,7 +9,7 @@ Concordant Raw Contexts
 =========================================================================================
 
 Example:
-    >>> from techminer2.database.search import ConcordantRawContexts
+    >>> from techminer2.search import ConcordantRawContexts
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:
@@ -47,9 +47,10 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .._internals.io import internal__load_filtered_records_from_database
-from ..ingest._internals.operators.clean_text import internal__clean_text
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class ConcordantRawContexts(
@@ -136,4 +137,5 @@ class ConcordantRawContexts(
         context_phrases = self._step_2_extract_context_phrases(records=records)
         contexts_dataframe = self._step_3_create_contexts_dataframe(context_phrases)
         texts = self._step_4_transform_context_dataframe_to_texts(contexts_dataframe)
+        return texts
         return texts
