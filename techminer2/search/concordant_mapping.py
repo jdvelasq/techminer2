@@ -125,9 +125,3 @@ class ConcordantMapping(
         mapping = self.build_record_mapping(records)
 
         return mapping
-        records["abstract"] = records["cleaned_abstract"]
-        records = self._step_2_filter_by_concordance(records)
-        records = self._step_3_process_abstracts(records)
-        mapping = self.build_record_mapping(records)
-
-        return mapping
