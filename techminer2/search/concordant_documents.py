@@ -74,4 +74,3 @@ class ConcordantDocuments(
         mapping = ConcordantMapping().update(**self.params.__dict__).run()
         documents = self.build_record_viewer(mapping)
         return documents
-        return documents
