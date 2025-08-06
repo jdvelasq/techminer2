@@ -62,8 +62,12 @@ Example:
 
 
 """
-from .._internals.mixins import ParamsMixin, RecordMappingMixin, RecordViewerMixin
-from ..database._internals.io.load_filtered_records_from_database import (
+from techminer2._internals.mixins import (
+    ParamsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
+)
+from techminer2.database._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
 
@@ -104,6 +108,9 @@ class FindRecords(
         mapping = self.build_record_mapping(records)
         documents = self.build_record_viewer(mapping)
 
+        return documents
+
+        # =============================================================================
         return documents
 
 
