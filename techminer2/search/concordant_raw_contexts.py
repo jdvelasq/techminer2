@@ -138,4 +138,3 @@ class ConcordantRawContexts(
         contexts_dataframe = self._step_3_create_contexts_dataframe(context_phrases)
         texts = self._step_4_transform_context_dataframe_to_texts(contexts_dataframe)
         return texts
-        return texts
