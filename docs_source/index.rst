@@ -4,12 +4,34 @@ Techminer 2+
 
 .. toctree::
     :hidden:
-    :caption: CONTENT
+    :caption: DATA
     :maxdepth: 1
 
     source/database
+
+.. toctree::
+    :hidden:
+    :caption: PREPARATION
+    :maxdepth: 1
+
+
     source/thesaurus
+    source/tools
     source/search
+
+
+.. toctree::
+    :hidden:
+    :caption: ANALYSIS
+    :maxdepth: 1
+
     source/packages
+
+
+.. toctree::
+    :hidden:
+    :caption: REFERENCES
+    :maxdepth: 1
+
     source/zotero
 
