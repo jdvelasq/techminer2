@@ -21,11 +21,11 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Copy the abbreviations file
-    >>> shutil.copy("example/abbreviations.the.txt", "example/data/thesaurus/abbreviations.the.txt")
-    'example/data/thesaurus/abbreviations.the.txt'
+    >>> shutil.copy("examples/fintech/abbreviations.the.txt", "examples/fintech/data/thesaurus/abbreviations.the.txt")
+    'examples/fintech/data/thesaurus/abbreviations.the.txt'
 
     >>> # Register new thesaurus phrases
-    >>> RegisterPhrases(root_directory="example/", use_colorama=False).run()
+    >>> RegisterPhrases(root_directory="examples/fintech/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

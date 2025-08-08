@@ -21,22 +21,22 @@ Example:
 
     >>> # Create the thesaurus
     >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> from techminer2.thesaurus.descriptors import RemoveDeterminers
-    >>> RemoveDeterminers(root_directory="example/", tqdm_disable=True, use_colorama=False).run()
+    >>> RemoveDeterminers(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing initial determiners from thesaurus keys...
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
       595 initial determiners removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_THEORY
           A_A_THEORY

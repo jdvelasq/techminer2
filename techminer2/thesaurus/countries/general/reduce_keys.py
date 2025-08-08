@@ -20,7 +20,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Reduce thesaurus keys
     >>> ReduceKeys(use_colorama=False).where_root_directory_is("examples/fintech/").run()
@@ -30,7 +30,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys...
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
       Keys reduced from 24 to 24
       Reduction process completed successfully
     <BLANKLINE>

@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> cleaner = (
     ...     CleanupThesaurus(use_colorama=False)
@@ -34,13 +34,15 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +NORMALIZE_WHITESPACE
     Cleanup Thesaurus...
-      File : example/data/thesaurus/descriptors.the.txt
-      7 replacements made successfully
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
+      16 replacements made successfully
       Cleanup process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
+        *GEOGRAPHIC_REGIONS*
+          AUSTRALIA_AND_NEW_ZEALAND; BRAZIL; CHINA; EUROPE; GERMANY; INDONESIA; KEN...
         *SURVEY*
           SURVEYS
         APPROACH
@@ -55,8 +57,6 @@ Example:
           A_BASIC_RANDOM_SAMPLING_STRATEGY
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
-        A_BETTER_UNDERSTANDING
-          A_BETTER_UNDERSTANDING
     <BLANKLINE>
     <BLANKLINE>
 

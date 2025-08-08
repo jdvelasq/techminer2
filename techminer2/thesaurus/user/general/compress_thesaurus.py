@@ -24,7 +24,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the compressor
     >>> compressor = (
@@ -39,8 +39,8 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
     Compressing thesaurus keys...
-                      File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1723 to 1723
+                      File : examples/fintech/data/thesaurus/demo.the.txt
+      Keys reduced from 1572 to 1572
       Compression process completed successfully
     <BLANKLINE>
     <BLANKLINE>

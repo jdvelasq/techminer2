@@ -22,7 +22,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the translator
     >>> translator = (
@@ -37,12 +37,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Converting British to American English...
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
       13 replacements made successfully
       Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         ANALOG_PROCESSES
           ANALOGUE_PROCESSES

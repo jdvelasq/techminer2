@@ -15,7 +15,7 @@ Example:
     >>> text = ExtractCopyrightText(
     ...     pattern=None,
     ...     n_chars=90,
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ... ).run()
     >>> for t in text[:5]: print(t)
     TORS , REGULATORS , etc . ) , who explore THE_FIELD of FINTECH . 2016 , the author ( s ) .

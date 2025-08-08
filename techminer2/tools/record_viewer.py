@@ -11,34 +11,32 @@ Record Viewer
 
 
 Example:
+    >>> # Countries:
     >>> from techminer2.thesaurus.countries import (
     ...     InitializeThesaurus as CreateCountryThesaurus,
     ...     ApplyThesaurus as ApplyCountryThesaurus,
     ... )
+    >>> CreateCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
+
+
+    >>> # Organizations:
     >>> from techminer2.thesaurus.organizations import (
     ...     InitializeThesaurus as CreateOrganizationsThesaurus,
     ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
     ... )
+    >>> CreateOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
+
+    >>> # Descriptors:
     >>> from techminer2.thesaurus.descriptors import (
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
+    >>> CreateDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
+
     >>> from techminer2.tools import RecordViewer
-    >>> from pprint import pprint
-
-    >>> # Countries:
-    >>> CreateCountryThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyCountryThesaurus(root_directory="example/", quiet=True).run()
-
-    >>> # Organizations:
-    >>> CreateOrganizationsThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyOrganizationsThesaurus(root_directory="example/", quiet=True).run()
-
-    >>> # Descriptors:
-    >>> CreateDescriptorsThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyDescriptorsThesaurus(root_directory="example/", quiet=True).run()
-
-
     >>> # Create, configure, and run the viewer
     >>> # order_records_by:
     >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
@@ -61,7 +59,6 @@ Example:
     >>> #    .where_database_is("references")
     >>> #    .where_records_ordered_by("local_cited_by_highest")
     >>> #
-
     >>> viewer = (
     ...     RecordViewer()
     ...     #
@@ -77,7 +74,7 @@ Example:
     >>> len(documents)
     50
 
-    >>> with open("example/record_viewer.txt", "w", encoding="utf-8") as f:
+    >>> with open("examples/fintech/record_viewer.txt", "w", encoding="utf-8") as f:
     ...     for doc in documents:
     ...         print(doc, file=f)
     ...         print(file=f)

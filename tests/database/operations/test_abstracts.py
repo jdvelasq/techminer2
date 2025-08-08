@@ -13,13 +13,13 @@
 Example:
     >>> import textwrap
     >>> import pandas as pd
-    >>> from techminer2.database.field_operators import CleanTextOperator
+    >>> from techminer2.database.field_operators import TokenizeOperator
     >>> from techminer2.database.field_operators import DeleteFieldOperator
     >>> from techminer2.database.field_operators import HighlightNounAndPhrasesOperator
     >>> from techminer2.tools import Query
 
     >>> (
-    ...     CleanTextOperator()
+    ...     TokenizeOperator()
     ...     .with_field("raw_abstract")
     ...     .with_other_field("raw_abstract_copy")
     ...     .where_root_directory_is("examples/fintech/")

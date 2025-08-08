@@ -20,7 +20,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Configure and run the replacer
     >>> replacer = (
@@ -34,12 +34,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing hyphenated words in thesaurus keys...
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
       47 hypenated words transformed successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_FINTECH_ECO_SYSTEM
           A_FINTECH_ECOSYSTEM

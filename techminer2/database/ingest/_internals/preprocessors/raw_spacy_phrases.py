@@ -9,16 +9,17 @@ import pathlib
 import sys
 
 import pandas as pd  # type: ignore
+import spacy
 from textblob import TextBlob  # type: ignore
 
 from ....._internals.log_message import internal__log_message
 from ..operators.clean_raw_keywords import internal__clean_raw_keywords
 
 
-def internal__preprocess_raw_textblob_phrases(root_dir):
+def internal__preprocess_raw_spacy_phrases(root_dir):
     """Run importer."""
 
-    sys.stderr.write("INFO  Creating 'raw_textblob_phrases' column\n")
+    sys.stderr.write("INFO  Creating 'raw_spacy_phrases' column\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
@@ -30,22 +31,27 @@ def internal__preprocess_raw_textblob_phrases(root_dir):
         low_memory=False,
     )
 
-    dataframe["raw_textblob_phrases"] = pd.NA
+    spacy_nlp = spacy.load("en_core_web_sm")
+
+    dataframe["raw_abstract_spacy_phrases"] = pd.NA
 
     for index, row in dataframe.iterrows():
 
         phrases = []
 
-        if not pd.isna(row["cleaned_abstract"]):
+        if not pd.isna(row["tokenized_abstract"]):
             phrases += [
-                phrase for phrase in TextBlob(row["cleaned_abstract"]).noun_phrases
+                chunk.text for chunk in spacy_nlp(row["tokenized_abstract"]).noun_chunks
             ]
 
-        if not pd.isna(row["cleaned_document_title"]):
+        if not pd.isna(row["tokenized_document_title"]):
             phrases += [
-                phrase
-                for phrase in TextBlob(row["cleaned_document_title"]).noun_phrases
+                chunk.text
+                for chunk in spacy_nlp(row["tokenized_document_title"]).noun_chunks
             ]
+
+        if phrases == []:
+            continue
 
         phrases = [term for term in phrases if "." not in term]
         phrases = [term for term in phrases if "(" not in term]
@@ -61,14 +67,18 @@ def internal__preprocess_raw_textblob_phrases(root_dir):
         phrases = [term for term in phrases if "<" not in term]
         phrases = [term for term in phrases if ">" not in term]
         phrases = [term for term in phrases if "=" not in term]
-
-        if phrases == []:
-            continue
-
+        #
+        phrases = [
+            term
+            for term in phrases
+            if "a" in term or "e" in term or "i" in term or "o" in term or "u" in term
+        ]
+        #
         phrases = set(phrases)
+
         #
         #
-        dataframe.at[index, "raw_textblob_phrases"] = "; ".join(phrases)
+        dataframe.at[index, "raw_spacy_phrases"] = "; ".join(phrases)
 
     dataframe.to_csv(
         database_file,

@@ -20,14 +20,14 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Applying thesaurus
-    >>> ApplyThesaurus(root_directory="example/").run()
+    >>> ApplyThesaurus(root_directory="examples/fintech/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database
-              File : example/data/thesaurus/references.the.txt
+              File : examples/fintech/data/thesaurus/references.the.txt
       Source field : raw_global_references
       Target field : global_references
       Application process completed successfully

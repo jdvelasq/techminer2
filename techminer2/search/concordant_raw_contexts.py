@@ -72,13 +72,13 @@ class ConcordantRawContexts(
         )
 
         records["_found_"] = (
-            records["cleaned_abstract"]
+            records["tokenized_abstract"]
             .astype(str)
             .str.contains(r"\b" + search_for + r"\b", regex=True)
         )
 
         records = records[records["_found_"]]
-        abstracts = records["cleaned_abstract"]
+        abstracts = records["tokenized_abstract"]
         phrases = abstracts.str.replace(";", ".").str.split(".").explode().str.strip()
         context_phrases = phrases[phrases.map(lambda x: search_for in x)]
 

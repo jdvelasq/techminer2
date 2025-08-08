@@ -14,33 +14,33 @@ Translate American to British Spelling
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, AmericanToBritishSpelling
-
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the translator
-    >>> translaator = (
+    >>> from techminer2.thesaurus.descriptors import AmericanToBritishSpelling
+    >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, use_colorama=False)
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> translaator.run()
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
     Converting American to British English...
-      File : example/data/thesaurus/descriptors.the.txt
-      21 replacements made successfully
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
+      17 replacements made successfully
       Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_COMPLETE_GENERALISATION
           A_COMPLETE_GENERALIZATION

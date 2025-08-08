@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> # Creates, configures, an run the sorter
@@ -40,32 +40,33 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word match...
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
       Word : BUSINESS
-      19 matching keys found
+      17 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         BUSINESS
           BUSINESS; BUSINESSES
-        BUSINESS_DEVELOPMENT
-          BUSINESS_DEVELOPMENT
         BUSINESS_GERMANY
           BUSINESS_GERMANY
-        BUSINESS_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-        BUSINESS_MODEL
-          BUSINESS_MODEL; BUSINESS_MODELS
+        BUSINESS_INFRASTRUCTURES
+          BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODELS
+          BUSINESS_MODELS
         BUSINESS_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
-        BUSINESS_PROCESS
-          BUSINESS_PROCESS
         BUSINESS_TO_CONSUMERS_MODELS
           BUSINESS_TO_CONSUMERS_MODELS
+        FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+          FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+        NEW_BUSINESS_MODELS
+          NEW_BUSINESS_MODELS
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 

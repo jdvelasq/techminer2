@@ -35,15 +35,15 @@ Example:
     >>> transformer.run()
 
     >>> # Query the database to test the cleaner
-    >>> query = (
+    >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 10;")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
+    ...     .run()
     ... )
-    >>> df = query.run()
     >>> df
                                     author_keywords_copy
     0  elaboration_likelihood_model; fintech; k_pay; ...
@@ -61,7 +61,7 @@ Example:
     >>> # Deletes the field
     >>> DeleteFieldOperator(
     ...     field="author_keywords_copy",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ... ).run()
 
 """

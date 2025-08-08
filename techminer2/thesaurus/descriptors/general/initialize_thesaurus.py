@@ -14,30 +14,30 @@ Initialiize Thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
-
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> initializator = (
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
+    >>> (
     ...     InitializeThesaurus(use_colorama=False)
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> initializator.run()
+
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Initializing thesaurus from 'raw_descriptors' field...
-      File : example/data/thesaurus/descriptors.the.txt
-      1723 keys found
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
+      1572 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_A_THEORY
           A_A_THEORY
@@ -57,6 +57,7 @@ Example:
           A_CLUSTER_ANALYSIS
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

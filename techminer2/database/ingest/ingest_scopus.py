@@ -13,7 +13,7 @@ Ingest Scopus
 
 Example:
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS
+    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS +SKIP
 
 
 
@@ -44,8 +44,6 @@ from ._internals.preprocessors import (  # type: ignore
     internal__preprocess_author_names,
     internal__preprocess_authors,
     internal__preprocess_authors_id,
-    internal__preprocess_cleaned_abstract,
-    internal__preprocess_cleaned_document_title,
     internal__preprocess_countries,
     internal__preprocess_descriptors,
     internal__preprocess_document_title,
@@ -76,6 +74,8 @@ from ._internals.preprocessors import (  # type: ignore
     internal__preprocess_references,
     internal__preprocess_source_title,
     internal__preprocess_subject_areas,
+    internal__preprocess_tokenized_abstract,
+    internal__preprocess_tokenized_document_title,
 )
 
 
@@ -126,8 +126,8 @@ class IngestScopus(
         # ---------------------------------------------------------------------------------
         #
         #
-        internal__preprocess_cleaned_document_title(root_directory)
-        internal__preprocess_cleaned_abstract(root_directory)
+        internal__preprocess_tokenized_document_title(root_directory)
+        internal__preprocess_tokenized_abstract(root_directory)
         #
         internal__preprocess_raw_textblob_phrases(root_directory)
         internal__preprocess_raw_spacy_phrases(root_directory)

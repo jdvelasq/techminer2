@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> # Creates, configures, an run the sorter
@@ -39,12 +39,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by stopwords...
-      File : example/data/thesaurus/demo.the.txt
-      670 matching keys found
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      679 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_A_THEORY
           A_A_THEORY

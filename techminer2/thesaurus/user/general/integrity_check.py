@@ -24,7 +24,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the integrity checker
     >>> checker = (
@@ -40,8 +40,8 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Checking thesaurus integrity...
-      File : example/data/thesaurus/demo.the.txt
-      1789 terms checked
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      1611 terms checked
       Integrity check completed successfully
     <BLANKLINE>
     <BLANKLINE>

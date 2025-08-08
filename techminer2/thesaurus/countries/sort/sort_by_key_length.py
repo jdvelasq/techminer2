@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Sort thesaurus by key length
     >>> sorter = (
@@ -35,11 +35,11 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by key length...
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Brunei Darussalam
           Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...

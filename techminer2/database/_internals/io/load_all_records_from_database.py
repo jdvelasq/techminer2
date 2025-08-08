@@ -14,7 +14,7 @@ Example:
     >>> from techminer2.database._internals.io import internal__load_all_records_from_database
     >>> (
     ...     internal__load_all_records_from_database(
-    ...         Params(root_directory="example/")
+    ...         Params(root_directory="examples/fintech/")
     ...     ).head() # doctest: +ELLIPSIS
     ... )
                         abbr_source_title  ...  year
@@ -24,7 +24,7 @@ Example:
     3                      China Econ. J.  ...  2016
     4  Contemp. Stud. Econ. Financ. Anal.  ...  2016
     <BLANKLINE>
-    [5 rows x 79 columns]
+    [5 rows x 80 columns]
 
 
 

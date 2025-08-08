@@ -11,35 +11,34 @@ Sort by Alphabet
 ===============================================================================
 
 Example:
+    >>> # Redirecting stderr to avoid messages
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.references import InitializeThesaurus, SortByAlphabet
-
-
-    >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory = "example/", quiet=True, tqdm_disable=True).run()
+    >>> from techminer2.thesaurus.references import InitializeThesaurus
+    >>> InitializeThesaurus(root_directory = "examples/fintech/", quiet=True, tqdm_disable=True).run()
 
     >>> # Create, configure, and run the sorter
-    >>> sorter = (
+    >>> from techminer2.thesaurus.references import SortByAlphabet
+    >>> (
     ...     SortByAlphabet(use_colorama=False)
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> sorter.run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus alphabetically...
-      File : example/data/thesaurus/references.the.txt
+      File : examples/fintech/data/thesaurus/references.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/references.the.txt
+      File : examples/fintech/data/thesaurus/references.the.txt
     <BLANKLINE>
         Alt R., 2018, ELECTRON MARK, V28, P235
           Alt R., Beck R., Smits M.T., Fintech and the Transformation of the Financ...

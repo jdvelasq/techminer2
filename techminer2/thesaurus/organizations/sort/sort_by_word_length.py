@@ -22,7 +22,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create and run the sorter
     >>> from techminer2.thesaurus.organizations import SortByWordLength
@@ -39,11 +39,11 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word length...
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Transport and Telecomunication Inst (LVA)
           Transport and Telecomunication Institute, Latvia

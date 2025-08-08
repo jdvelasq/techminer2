@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
@@ -38,11 +38,11 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Sorting thesaurus by key length...
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         CONTINUOUS_INTENTION_TO_USE_MOBILE_FINTECH_PAYMENT_SERVICES
           CONTINUOUS_INTENTION_TO_USE_MOBILE_FINTECH_PAYMENT_SERVICES
@@ -58,10 +58,11 @@ Example:
           THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
         FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
           FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-        UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-          UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
+        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 

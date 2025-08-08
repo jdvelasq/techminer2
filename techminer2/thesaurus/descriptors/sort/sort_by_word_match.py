@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Configure and run the sorter
     >>> sorter = (
@@ -36,13 +36,13 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word match...
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
       Word : CREDIT
       4 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         ALTERNATIVE_CREDIT_SCORES
           ALTERNATIVE_CREDIT_SCORES

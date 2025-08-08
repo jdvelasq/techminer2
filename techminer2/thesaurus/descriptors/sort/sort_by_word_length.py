@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Configure and run the sorter
     >>> sorter = (
@@ -35,28 +35,28 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word length...
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-        COMPETITION (ECONOMICS)
-          COMPETITION (ECONOMICS)
-        FINANCIAL_TECHNOLOGY (FINTECH)
-          FINANCIAL_TECHNOLOGY (FINTECH)
         A_WIDE_RANGING_RECONCEPTUALIZATION
           A_WIDE_RANGING_RECONCEPTUALIZATION
-        NETWORKS (CIRCUITS)
-          NETWORKS (CIRCUITS)
         THE_RECONCEPTUALIZATION
           THE_RECONCEPTUALIZATION
-        CLASSIFICATION (OF_INFORMATION)
-          CLASSIFICATION (OF_INFORMATION)
         EXPLORE_INTERRELATIONSHIPS
           EXPLORE_INTERRELATIONSHIPS
         A_DISINTERMEDIATION_FORCE
           A_DISINTERMEDIATION_FORCE
+        CONCEPTUALIZATION_SUPPORTS_RESEARCHERS
+          CONCEPTUALIZATION_SUPPORTS_RESEARCHERS
+        INTERDISCIPLINARY_SOCIAL_SCIENCES
+          INTERDISCIPLINARY_SOCIAL_SCIENCES
+        VISEKRITERIJUMSKO_KOMPROMISNO_RANGIRANJE
+          VISEKRITERIJUMSKO_KOMPROMISNO_RANGIRANJE
+        CRYPTOCURRENCIES
+          CRYPTOCURRENCIES
     <BLANKLINE>
     <BLANKLINE>
 

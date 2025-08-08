@@ -22,7 +22,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create and run the sorter
     >>> sorter = (
@@ -41,13 +41,13 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by startswith match...
-         File : example/data/thesaurus/organizations.the.txt
+         File : examples/fintech/data/thesaurus/organizations.the.txt
       Pattern : Univ
       26 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Univ Brunei Darussalam (BRN)
           Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...

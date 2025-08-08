@@ -21,22 +21,22 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Remove initial stopwords
-    >>> RemoveStopwords(root_directory="example/", tqdm_disable=True, use_colorama=False).run()
+    >>> RemoveStopwords(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing initial stopwords from thesaurus keys...
-      File : example/data/thesaurus/descriptors.the.txt
-      551 initial stopwords removed successfully
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
+      548 initial stopwords removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         ACADEMIC_FINANCE_COMMUNITY
           THE_ACADEMIC_FINANCE_COMMUNITY

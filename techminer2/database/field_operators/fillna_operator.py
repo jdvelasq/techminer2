@@ -24,7 +24,7 @@ Example:
     >>> TransformFieldOperator(
     ...     field="raw_index_keywords",
     ...     other_field="na_field",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ...     transformation_function=lambda x: pd.NA,
     ... ).run()
 
@@ -39,7 +39,7 @@ Example:
     ... )
     >>> df = query.run()
     >>> df.na_field.isna().sum()
-    np.int64(50)
+    50
 
     >>> # Creates, configures, and runs the operator
     >>> fillna_operator = (
@@ -65,12 +65,12 @@ Example:
     ... )
     >>> df = query.run()
     >>> df.na_field.isna().sum()
-    np.int64(31)
+    31
 
     >>> # Deletes the field
     >>> DeleteFieldOperator(
     ...     field="na_field",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ... ).run()
 
 

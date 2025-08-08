@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Configure and run the sorter
     >>> sorter = (
@@ -37,14 +37,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by fuzzy match...
-                File : example/data/thesaurus/descriptors.the.txt
+                File : examples/fintech/data/thesaurus/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
-      92 matching keys found
+      81 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_DISINTERMEDIATION_FORCE
           A_DISINTERMEDIATION_FORCE
@@ -56,16 +56,14 @@ Example:
           A_NEW_INTERMEDIARY
         A_PLATFORM
           A_PLATFORM
-        BUSINESS_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_INFRASTRUCTURES
+          BUSINESS_INFRASTRUCTURES
         CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
           CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
-        CLASSIFICATION (OF_INFORMATION)
-          CLASSIFICATION (OF_INFORMATION)
+        COMPETITORS
+          COMPETITORS
     <BLANKLINE>
     <BLANKLINE>
-
-
 
 """
 from ...._internals.mixins import ParamsMixin

@@ -15,18 +15,18 @@ Example:
     >>> #
     >>> # Countries:
     >>> from techminer2.thesaurus.countries import InitializeThesaurus, ApplyThesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Organizations:
     >>> from techminer2.thesaurus.organizations import InitializeThesaurus, ApplyThesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Descriptors:
     >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, ApplyThesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> #
     >>> # CODE TESTED
@@ -41,7 +41,7 @@ Example:
     ...             record_citations_range=(None, None),
     ...             records_order_by=None,
     ...             records_match=None,
-    ...             root_directory="example/",
+    ...             root_directory="examples/fintech/",
     ...         )
     ...     ).head()
     ... ) # doctest: +ELLIPSIS
@@ -52,7 +52,7 @@ Example:
     4  Contemp. Stud. Econ. Financ. Anal.  ...  2016
     5                    New Polit. Econ.  ...  2017
     <BLANKLINE>
-    [5 rows x 79 columns]
+    [5 rows x 80 columns]
 
 
 

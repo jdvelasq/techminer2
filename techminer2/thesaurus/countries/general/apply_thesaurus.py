@@ -20,7 +20,7 @@ Example:
 
 
     >>> # Create and apply the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(use_colorama=False).where_root_directory_is("examples/fintech/").run()
 
     >>> # Capture and print stderr output
@@ -28,7 +28,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database...
-              File : example/data/thesaurus/countries.the.txt
+              File : examples/fintech/data/thesaurus/countries.the.txt
       Source field : affiliations
       Target field : countries
       Application process completed successfully
@@ -51,7 +51,7 @@ Example:
     >>> from techminer2.tools import Query
     >>> result = Query(
     ...     query_expression="SELECT countries FROM database LIMIT 10;",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ...     database="main",
     ...     record_years_range=(None, None),
     ...     record_citations_range=(None, None),
@@ -71,7 +71,7 @@ Example:
 
     >>> result = Query(
     ...     query_expression="SELECT regions FROM database LIMIT 10;",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ...     database="main",
     ...     record_years_range=(None, None),
     ...     record_citations_range=(None, None),
@@ -91,7 +91,7 @@ Example:
 
     >>> result = Query(
     ...     query_expression="SELECT subregions FROM database LIMIT 10;",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ...     database="main",
     ...     record_years_range=(None, None),
     ...     record_citations_range=(None, None),

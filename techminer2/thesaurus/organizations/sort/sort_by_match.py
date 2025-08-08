@@ -22,7 +22,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create and run the sorter
     >>> sorter = (
@@ -44,7 +44,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by match...
-                File : example/data/thesaurus/organizations.the.txt
+                File : examples/fintech/data/thesaurus/organizations.the.txt
              Pattern : Sch
       Case sensitive : False
          Regex Flags : 0
@@ -53,7 +53,7 @@ Example:
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
           CESifo, Poschingerstr. 5, Munich, 81679, Germany

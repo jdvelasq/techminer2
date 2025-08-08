@@ -21,19 +21,19 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", use_colorama=False).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Initializing thesaurus from 'affiliations' field...
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
       24 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Australia
           Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...

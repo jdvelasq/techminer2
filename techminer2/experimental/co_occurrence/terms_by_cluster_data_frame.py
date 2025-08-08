@@ -15,8 +15,8 @@ Example:
     >>> from techminer2.thesaurus.descriptors import ApplyThesaurus, InitializeThesaurus
 
     >>> # Restore the column values to initial values
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Generate terms by cluster data frame
     >>> df = (

@@ -9,17 +9,17 @@
 import sys
 
 from ....._internals.log_message import internal__log_message
-from ..operators.clean_text import internal__clean_text
+from ..operators.tokenize import internal__tokenize
 
 
-def internal__preprocess_cleaned_abstract(root_dir):
+def internal__preprocess_tokenized_abstract(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Creating 'cleaned_abstract' column\n")
+    sys.stderr.write("INFO  Creating 'tokenized_abstract' column\n")
     sys.stderr.flush()
 
-    internal__clean_text(
+    internal__tokenize(
         source="raw_abstract",
-        dest="cleaned_abstract",
+        dest="tokenized_abstract",
         root_dir=root_dir,
     )

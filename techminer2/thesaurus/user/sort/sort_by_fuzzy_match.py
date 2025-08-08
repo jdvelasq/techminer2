@@ -14,46 +14,46 @@ Sort By Fuzzy Match
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, SortByFuzzyMatch
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the sorter
-    >>> sorter = (
+    >>> from techminer2.thesaurus.user import SortByFuzzyMatch
+    >>> (
     ...     SortByFuzzyMatch(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern("INTELL")
     ...     .having_match_threshold(70)
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> sorter.run()
+
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by fuzzy match...
-                File : example/data/thesaurus/demo.the.txt
+                File : examples/fintech/data/thesaurus/demo.the.txt
            Keys like : INTELL
       Match thresold : 70
-      3 matching keys found
+      2 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         ARTIFICIAL_INTELLIGENCE
           ARTIFICIAL_INTELLIGENCE
         INTELLIGENT_ALGORITHMS
           INTELLIGENT_ALGORITHMS
-        INTELLIGENT_ROBOTS
-          INTELLIGENT_ROBOTS
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -64,8 +64,13 @@ Example:
           A_BETTER_UNDERSTANDING
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
     <BLANKLINE>
     <BLANKLINE>
+
+
+
 
 """
 import re

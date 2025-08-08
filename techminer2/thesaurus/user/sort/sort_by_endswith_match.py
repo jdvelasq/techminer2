@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, and runs the sorter
     >>> sorter = (
@@ -39,13 +39,13 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by endswith match...
-         File : example/data/thesaurus/demo.the.txt
+         File : examples/fintech/data/thesaurus/demo.the.txt
       Pattern : BUSINESS
       3 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         AGRIBUSINESS
           AGRIBUSINESS

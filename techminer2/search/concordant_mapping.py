@@ -119,7 +119,7 @@ class ConcordantMapping(
     def run(self):
 
         records = self._step_1_load_the_database()
-        records["abstract"] = records["cleaned_abstract"]
+        records["abstract"] = records["tokenized_abstract"]
         records = self._step_2_filter_by_concordance(records)
         records = self._step_3_process_abstracts(records)
         mapping = self.build_record_mapping(records)

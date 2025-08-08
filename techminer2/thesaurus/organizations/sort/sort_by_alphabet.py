@@ -22,7 +22,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create and run the sorter
     >>> sorter = (
@@ -39,11 +39,11 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus alphabetically...
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
     <BLANKLINE>
         Anhui Univ of Finan and Econ (CHN)
           School of Finance, Anhui University of Finance and Economics, Bengbu, 233...

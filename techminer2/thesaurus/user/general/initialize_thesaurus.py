@@ -35,12 +35,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Initializing thesaurus from 'raw_descriptors' field...
-      File : example/data/thesaurus/demo.the.txt
-      1723 keys found
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      1572 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_A_THEORY
           A_A_THEORY

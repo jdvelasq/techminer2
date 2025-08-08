@@ -25,10 +25,10 @@ Example:
     'example/data/thesaurus/abbreviations.the.txt'
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Configure and run the replacer
-    >>> replacer = ReplaceAbbreviations(root_directory="example/", tqdm_disable=True, use_colorama=False)
+    >>> replacer = ReplaceAbbreviations(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False)
 
     >>> replacer.run()
 
@@ -43,7 +43,7 @@ Example:
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         A_EUROPEAN_OR_NATIONAL_FINANCIAL_TECHNOLOGY_MARKET
           A_EUROPEAN_OR_NATIONAL_FINTECH_MARKET

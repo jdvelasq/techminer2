@@ -20,7 +20,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory = "example/", quiet=True, tqdm_disable=True).run()
+    >>> InitializeThesaurus(root_directory = "examples/fintech/", quiet=True, tqdm_disable=True).run()
 
     >>> # Create, configure, and run the sorter
     >>> sorter = (
@@ -36,14 +36,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by fuzzy match...
-                File : example/data/thesaurus/references.the.txt
+                File : examples/fintech/data/thesaurus/references.the.txt
            Keys like : ACCOU
       Match thresold : 50
       2 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/references.the.txt
+      File : examples/fintech/data/thesaurus/references.the.txt
     <BLANKLINE>
         Cai C.W., 2018, ACCOUNT FINANC, V58, P965
           Cai C.W., Disruption of financial intermediation by FinTech: A review on ...

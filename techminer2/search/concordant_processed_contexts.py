@@ -57,7 +57,7 @@ class ConcordantProcessedContexts(
         )
 
         records["_found_"] = (
-            records["cleaned_abstract"]
+            records["tokenized_abstract"]
             .astype(str)
             .str.contains(r"\b" + search_for + r"\b", regex=True)
         )

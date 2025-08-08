@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
@@ -39,11 +39,11 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Sorting thesaurus alphabetically...
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         ACADEMIA
           ACADEMIA
@@ -55,14 +55,15 @@ Example:
           ACADEMIC_RESEARCH
         ACCELERATE_ACCESS
           ACCELERATE_ACCESS
-        ACCEPTANCE_MODELS
-          ACCEPTANCE_MODELS
         ACCESS
           ACCESS
         ACCESS_LOANS
           ACCESS_LOANS
+        ACCOUNTING
+          ACCOUNTING
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 import sys

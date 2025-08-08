@@ -7,12 +7,11 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-import os.path  # type: ignore
+
 import pathlib
 import sys
 
 import pandas as pd  # type: ignore
-import pkg_resources  # type: ignore
 
 from ....._internals.log_message import internal__log_message
 from .....package_data.database.load_subject_areas import internal__load_subject_areas

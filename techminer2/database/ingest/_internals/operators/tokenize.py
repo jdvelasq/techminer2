@@ -15,7 +15,7 @@ import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize
 
 
-def internal__clean_text(
+def internal__tokenize(
     source,
     dest,
     #
@@ -34,7 +34,7 @@ def internal__clean_text(
     )
 
     if source in dataframe.columns and not dataframe[source].dropna().empty:
-        dataframe[dest] = clean_text(dataframe[source])
+        dataframe[dest] = tokenize(dataframe[source])
 
     dataframe.to_csv(
         database_file,
@@ -45,13 +45,23 @@ def internal__clean_text(
     )
 
 
-def clean_text(text):
+def tokenize(text):
     """:meta private:"""
 
     # remove [...]
     text = text.map(
         lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
     )
+
+    # find all URLs in the pandas series
+    url_pattern = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+    urls = text.str.findall(url_pattern).explode().dropna().unique()
+
+    # Replace URLs with the by "__url{i}__" where i is the index
+    # of the URL in the list of unique URLs.
+    for i, url in enumerate(urls):
+        placeholder = f" . . . url{i} . . . "
+        text = text.str.replace(url, placeholder, regex=False)
 
     text = text.str.lower()
 
@@ -104,9 +114,11 @@ def clean_text(text):
     # (e.g., " A. " becomes " A . ").
     text = text.str.replace(r"\s([a-zA-Z])\.\s", r" \1 . ", regex=True)
 
+    text = text.str.replace(":. ", ": . ", regex=False)
+
     # Correction: Add a space after an apostrophe if followed by alphanumeric
     # characters or a period. (e.g., " 's " becomes " ' s ").
-    text = text.str.replace(r" '([a-zA-Z0-9\.]+)\s", r" ' \1", regex=True)
+    text = text.str.replace(r" '([a-zA-Z0-9\.]+)\s", r" ' \1 ", regex=True)
 
     # Correction: Add a space after an apostrophe if followed by numeric characters.
     # (e.g., " '123" becomes " ' 123").
@@ -131,7 +143,7 @@ def clean_text(text):
     # Correction: Add spaces around a text separated by a two points.
     # (e.g., "xxx:yyy " becomes "xxx : yyy ").
     text = text.str.replace(
-        r"([a-zA-Z]):([a-zA-Z])",
+        r"([a-zA-Z]+):([a-zA-Z]+)",
         r"\1 : \2",
         regex=True,
     )
@@ -208,7 +220,7 @@ def clean_text(text):
     # Correction: Replace "trial registration :" with "trial_registration:"
     # to standardize the format.
     text = text.str.replace(
-        " trial registration : ", " trial_registration:", regex=True
+        " trial registration : ", " trial_registration :", regex=True
     )
 
     # Remove all non-ASCII characters:
@@ -220,5 +232,43 @@ def clean_text(text):
     # Remove multiple spaces and trim leading/trailing whitespace.
     text = text.str.replace(r"\s+", r" ", regex=True)
     text = text.str.strip()
+
+    # URLs
+    urls = [url.replace("_", "-") for url in urls]
+
+    for i, url in enumerate(urls):
+
+        #
+        if url.endswith(")."):
+            url = url[:-2] + " ) ."
+            urls[i] = url
+            continue
+
+        if url.endswith("),"):
+            url = url[:-2] + " ) ,"
+            urls[i] = url
+            continue
+
+        if url.endswith(","):
+            url = url[:-1] + " ,"
+            urls[i] = url
+            continue
+
+        if url.endswith("."):
+            url = url[:-1] + " ."
+            urls[i] = url
+            continue
+
+        if url.endswith(")"):
+            url = url[:-1] + " )"
+            urls[i] = url
+            continue
+
+    # Restore URLs
+    for i, url in enumerate(urls):
+        placeholder = f". . . url{i} . . ."
+        text = text.str.replace(placeholder, url, regex=False)
+
+    text = text.str.replace(" :http", " : http", regex=False)
 
     return text

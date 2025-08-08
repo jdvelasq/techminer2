@@ -1,5 +1,4 @@
-TITLE("Identifying Representation Bias in Large Language Models Used in Financial") 
-OR TITLE("Bitcoin Price Forecasting with Generative Adversarial Networks") 
+TITLE("Bitcoin Price Forecasting with Generative Adversarial Networks") 
 OR TITLE("FinGAN: Chaotic generative adversarial network for analytical customer")
 OR TITLE(" Is GPT-4 a Good Data Analyst?")
 OR TITLE("Learning to Generate Explainable Stock Predictions using Self-Reflective")

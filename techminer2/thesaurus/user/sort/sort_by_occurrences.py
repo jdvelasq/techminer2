@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
@@ -39,28 +39,28 @@ Example:
     >>> sys.stderr = StringIO()
     >>> print(output)
     Sorting thesaurus by occurrences...
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         FINTECH
           FINTECH; FINTECHS
-        FINANCE
-          FINANCE
         TECHNOLOGIES
           TECHNOLOGIES; TECHNOLOGY
-        INNOVATION
-          INNOVATION; INNOVATIONS
-        FINANCIAL_SERVICE
-          FINANCIAL_SERVICE; FINANCIAL_SERVICES
         FINANCIAL_TECHNOLOGIES
           FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY
-        BANKS
-          BANKS
+        FINANCE
+          FINANCE
+        INNOVATION
+          INNOVATION; INNOVATIONS
         THE_DEVELOPMENT
           THE_DEVELOPMENT; THE_DEVELOPMENTS
+        THE_FINANCIAL_INDUSTRY
+          THE_FINANCIAL_INDUSTRY
+        BANKS
+          BANKS
     <BLANKLINE>
     <BLANKLINE>
 

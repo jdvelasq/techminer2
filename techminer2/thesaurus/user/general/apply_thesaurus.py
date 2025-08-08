@@ -25,7 +25,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, and runs the applier
     >>> applier = (
@@ -42,7 +42,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_descriptors
       Target field : descriptors_cleaned
       Application process completed successfully
@@ -53,7 +53,7 @@ Example:
     >>> from techminer2.tools import Query
     >>> Query(
     ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ...     database="main",
     ...     record_years_range=(None, None),
     ...     record_citations_range=(None, None),
@@ -63,7 +63,7 @@ Example:
     1  ACTOR_NETWORK_THEORY; ANT; AN_UNPRECEDENTED_LE...
     2  AN_INITIAL_TECHNOLOGY_ADVANTAGE; CHINA; FINANC...
     3  AGGREGATION; ANALYSIS; AN_ADVANTAGE; AN_EXTENS...
-    4  ACCELERATE_ACCESS; A_FORM; BEHAVIORAL_ECONOMIC...
+    4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
 
 
     >>> # Deletes the created field in the database

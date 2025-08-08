@@ -10,7 +10,7 @@ Summary Sheet
 
 Example:
     >>> from techminer2.tools import SummarySheet
-    >>> result = (
+    >>> df = (
     ...     SummarySheet()
     ...     #
     ...     .where_root_directory_is("examples/fintech/")
@@ -20,18 +20,89 @@ Example:
     ...     #
     ...     .run()
     ... )
-    >>> result.head(10)
-                           column  number of records coverage (%)
-    0           abbr_source_title                 50      100.00%
-    1                    abstract                 48       96.00%
-    2  abstract_nouns_and_phrases                 48       96.00%
-    3                affiliations                 49       98.00%
-    4           author_full_names                 50      100.00%
-    5             author_keywords                 38       76.00%
-    6                     authors                 50      100.00%
-    7                  authors_id                 50      100.00%
-    8   authors_with_affiliations                 49       98.00%
-    9            cleaned_abstract                 48       96.00%
+    >>> print(df.to_string(index=True))
+                                      column  number of records coverage (%)
+    0                      abbr_source_title                 50      100.00%
+    1                               abstract                 48       96.00%
+    2             abstract_nouns_and_phrases                 48       96.00%
+    3                           affiliations                 49       98.00%
+    4                      author_full_names                 50      100.00%
+    5                        author_keywords                 38       76.00%
+    6                                authors                 50      100.00%
+    7                             authors_id                 50      100.00%
+    8              authors_with_affiliations                 49       98.00%
+    9                                  coden                 12       24.00%
+    10                       conference_code                  3        6.00%
+    11                       conference_date                  3        6.00%
+    12                   conference_location                  3        6.00%
+    13                       conference_name                  3        6.00%
+    14                correspondence_address                 34       68.00%
+    15                             countries                 49       98.00%
+    16                    country_1st_author                 49       98.00%
+    17                           db_cited_by                 50      100.00%
+    18                               db_main                 50      100.00%
+    19                         db_references                 50      100.00%
+    20                           descriptors                 50      100.00%
+    21                   descriptors_cleaned                 50      100.00%
+    22                        document_title                 50      100.00%
+    23      document_title_nouns_and_phrases                 50      100.00%
+    24                         document_type                 50      100.00%
+    25                                   doi                 45       90.00%
+    26                               editors                  2        4.00%
+    27                                   eid                 50      100.00%
+    28                       funding_details                 17       34.00%
+    29                         funding_texts                 17       34.00%
+    30                      global_citations                 50      100.00%
+    31                     global_references                 19       38.00%
+    32                        index_keywords                 19       38.00%
+    33                                  isbn                  3        6.00%
+    34                                  issn                 48       96.00%
+    35                                 issue                 39       78.00%
+    36                              keywords                 42       84.00%
+    37                              language                 50      100.00%
+    38                                  link                 50      100.00%
+    39                       local_citations                 50      100.00%
+    40                      local_references                 19       38.00%
+    41                     nouns_and_phrases                 50      100.00%
+    42                           num_authors                 50      100.00%
+    43                           open_access                 25       50.00%
+    44               organization_1st_author                 49       98.00%
+    45                         organizations                 49       98.00%
+    46                            page_count                 43       86.00%
+    47                              page_end                 43       86.00%
+    48                            page_start                 43       86.00%
+    49                     publication_stage                 50      100.00%
+    50                             publisher                 50      100.00%
+    51                          raw_abstract                 50      100.00%
+    52        raw_abstract_nouns_and_phrases                 48       96.00%
+    53            raw_abstract_spacy_phrases                  0        0.00%
+    54                   raw_author_keywords                 38       76.00%
+    55                           raw_authors                 50      100.00%
+    56                        raw_authors_id                 50      100.00%
+    57                       raw_descriptors                 50      100.00%
+    58                    raw_document_title                 50      100.00%
+    59  raw_document_title_nouns_and_phrases                 50      100.00%
+    60                     raw_document_type                 50      100.00%
+    61                 raw_global_references                 49       98.00%
+    62                    raw_index_keywords                 19       38.00%
+    63                          raw_keywords                 42       84.00%
+    64                 raw_nouns_and_phrases                 50      100.00%
+    65                      raw_source_title                 50      100.00%
+    66                     raw_spacy_phrases                 50      100.00%
+    67                  raw_textblob_phrases                 49       98.00%
+    68                             record_id                 50      100.00%
+    69                             record_no                 50      100.00%
+    70                               regions                 49       98.00%
+    71                         scopus_art_no                  6       12.00%
+    72                                source                 50      100.00%
+    73                          source_title                 50      100.00%
+    74                              sponsors                  1        2.00%
+    75                         subject_areas                 47       94.00%
+    76                            subregions                 49       98.00%
+    77                    tokenized_abstract                 48       96.00%
+    78              tokenized_document_title                 50      100.00%
+    79                                volume                 48       96.00%
+    80                                  year                 50      100.00%
 
 
 """

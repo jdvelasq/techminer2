@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Sort the thesaurus by word match
     >>> sorter = (
@@ -36,13 +36,13 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by word match...
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
       Word : Germany
       1 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Germany
           CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...

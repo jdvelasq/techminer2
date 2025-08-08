@@ -19,7 +19,6 @@ from .replace.replace_hyphenated_words import ReplaceHyphenatedWords
 from .replace.replace_initial_word import ReplaceInitialWord
 from .replace.replace_last_word import ReplaceLastWord
 from .replace.replace_word import ReplaceWord
-from .sort.find_editorials import FindEditorials
 from .sort.sort_by_alphabet import SortByAlphabet
 from .sort.sort_by_endswith_match import SortByEndsWithMatch
 from .sort.sort_by_exact_match import SortByExactMatch
@@ -40,7 +39,6 @@ __all__ = [
     "ApplyThesaurus",
     "CleanupThesaurus",
     "CompressThesaurus",
-    "FindEditorials",
     "IntegrityCheck",
     "InitializeThesaurus",
     "ReduceKeys",

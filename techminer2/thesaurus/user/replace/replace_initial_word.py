@@ -15,56 +15,58 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, ReplaceInitialWord
+
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the replacer
-    >>> replacer = (
+    >>> from techminer2.thesaurus.user import ReplaceInitialWord
+    >>> (
     ...     ReplaceInitialWord(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_word("BUSINESS")
     ...     .having_replacement("business")
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> replacer.run()
 
     >>> # Capture and print stderr output to test the algorithm using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing initial word in keys...
-             File : example/data/thesaurus/demo.the.txt
+             File : .../fintech/data/thesaurus/demo.the.txt
              Word : BUSINESS
       Replacement : business
-      8 replacements made successfully
+      6 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         business
           BUSINESS; BUSINESSES
-        business_DEVELOPMENT
-          BUSINESS_DEVELOPMENT
         business_GERMANY
           BUSINESS_GERMANY
-        business_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-        business_MODEL
-          BUSINESS_MODEL; BUSINESS_MODELS
+        business_INFRASTRUCTURES
+          BUSINESS_INFRASTRUCTURES
+        business_MODELS
+          BUSINESS_MODELS
         business_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
-        business_PROCESS
-          BUSINESS_PROCESS
         business_TO_CONSUMERS_MODELS
           BUSINESS_TO_CONSUMERS_MODELS
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
     <BLANKLINE>
     <BLANKLINE>
 

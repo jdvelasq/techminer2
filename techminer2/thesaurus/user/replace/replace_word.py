@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the replacer
     >>> replacer = (
@@ -40,33 +40,34 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing word in keys...
-             File : example/data/thesaurus/demo.the.txt
+             File : .../fintech/data/thesaurus/demo.the.txt
              Word : BUSINESS
       Replacement : business
-      19 replacements made successfully
+      17 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         business
           BUSINESS; BUSINESSES
-        business_DEVELOPMENT
-          BUSINESS_DEVELOPMENT
         business_GERMANY
           BUSINESS_GERMANY
-        business_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-        business_MODEL
-          BUSINESS_MODEL; BUSINESS_MODELS
+        business_INFRASTRUCTURES
+          BUSINESS_INFRASTRUCTURES
+        business_MODELS
+          BUSINESS_MODELS
         business_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
-        business_PROCESS
-          BUSINESS_PROCESS
         business_TO_CONSUMERS_MODELS
           BUSINESS_TO_CONSUMERS_MODELS
+        FUNDAMENTALLY_NEW_business_OPPORTUNITIES
+          FUNDAMENTALLY_NEW_BUSINESS_OPPORTUNITIES
+        NEW_business_MODELS
+          NEW_BUSINESS_MODELS
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 import re

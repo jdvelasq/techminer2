@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Configure and run the sorter
     >>> sorter = (
@@ -36,16 +36,16 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by exact match...
-         File : example/data/thesaurus/descriptors.the.txt
+         File : examples/fintech/data/thesaurus/descriptors.the.txt
       Pattern : BLOCKCHAIN
       1 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         BLOCKCHAIN
-          BLOCKCHAIN; BLOCKCHAINS
+          BLOCKCHAIN
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -62,7 +62,6 @@ Example:
           A_CHALLENGE
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

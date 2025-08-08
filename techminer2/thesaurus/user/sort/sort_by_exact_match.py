@@ -22,7 +22,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> # Creates, configures, an run the sorter
@@ -44,16 +44,14 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by exact match...
-         File : example/data/thesaurus/demo.the.txt
+         File : examples/fintech/data/thesaurus/demo.the.txt
       Pattern : ['BUSINESS_INFRASTRUCTURE', 'BUSINESS_OPPORTUNITIES']
-      2 matching keys found
+      1 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
-        BUSINESS_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
         BUSINESS_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
         A_A_THEORY
@@ -68,8 +66,11 @@ Example:
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
         A_CASE_STUDY
           A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

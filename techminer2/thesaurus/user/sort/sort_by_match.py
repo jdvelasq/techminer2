@@ -22,7 +22,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> # Creates, configures, an run the sorter
@@ -42,35 +42,37 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by match...
-                File : example/data/thesaurus/demo.the.txt
+                File : examples/fintech/data/thesaurus/demo.the.txt
              Pattern : BUSINESS
       Case sensitive : False
          Regex Flags : 0
         Regex Search : False
-      21 matching keys found
+      19 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         AGRIBUSINESS
           AGRIBUSINESS
         BUSINESS
           BUSINESS; BUSINESSES
-        BUSINESS_DEVELOPMENT
-          BUSINESS_DEVELOPMENT
         BUSINESS_GERMANY
           BUSINESS_GERMANY
-        BUSINESS_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-        BUSINESS_MODEL
-          BUSINESS_MODEL; BUSINESS_MODELS
+        BUSINESS_INFRASTRUCTURES
+          BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODELS
+          BUSINESS_MODELS
         BUSINESS_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
-        BUSINESS_PROCESS
-          BUSINESS_PROCESS
+        BUSINESS_TO_CONSUMERS_MODELS
+          BUSINESS_TO_CONSUMERS_MODELS
+        FINANCIAL_BUSINESSES
+          FINANCIAL_BUSINESSES
     <BLANKLINE>
     <BLANKLINE>
+
+
 
 """
 import sys

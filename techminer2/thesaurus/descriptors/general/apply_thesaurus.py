@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> applier = (
     ...     ApplyThesaurus(use_colorama=False)
@@ -34,43 +34,43 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_author_keywords
       Target field : author_keywords
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_index_keywords
       Target field : index_keywords
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_keywords
       Target field : keywords
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_document_title_nouns_and_phrases
       Target field : document_title_nouns_and_phrases
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_abstract_nouns_and_phrases
       Target field : abstract_nouns_and_phrases
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_nouns_and_phrases
       Target field : nouns_and_phrases
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
-              File : example/data/thesaurus/descriptors.the.txt
+              File : examples/fintech/data/thesaurus/descriptors.the.txt
       Source field : raw_descriptors
       Target field : descriptors
       Application process completed successfully

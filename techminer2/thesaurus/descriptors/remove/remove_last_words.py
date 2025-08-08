@@ -21,29 +21,29 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Remove common last words
-    >>> RemoveLastWords(root_directory="example/", tqdm_disable=True, use_colorama=False).run()
+    >>> RemoveLastWords(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing common last words from thesaurus keys...
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
     <BLANKLINE>
-      12 last words removed successfully
+      13 last words removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         AGRICULTURE
           AGRICULTURE; AGRICULTURE_PLAYS
         CONTINUANCE_INTENTION
-          CONTINUANCE_INTENTION; CONTINUANCE_INTENTIONS; CONTINUANCE_INTENTION_DIFFERS
+          CONTINUANCE_INTENTION_DIFFERS
         ENTREPRENEURIAL
           ENTREPRENEURIAL_ENDEAVOURS
         FOUR_SPECIFIC
@@ -54,8 +54,8 @@ Example:
           POSITIVE_RELATIONSHIP_EXISTS
         RESIDENTIAL_MORTGAGE
           RESIDENTIAL_MORTGAGE_ORIGINATION
-        TAXONOMY
-          TAXONOMY; TAXONOMY_CONTRIBUTES
+        S
+          S_EASTERN
     <BLANKLINE>
     <BLANKLINE>
 

@@ -7,17 +7,17 @@
 # pylint: disable=too-many-statements
 import sys
 
-from ..operators.clean_text import internal__clean_text
+from ..operators.tokenize import internal__tokenize
 
 
-def internal__preprocess_cleaned_document_title(root_dir):
+def internal__preprocess_tokenized_document_title(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Creating 'cleaned_document_title' column\n")
+    sys.stderr.write("INFO  Creating 'tokenized_document_title' column\n")
     sys.stderr.flush()
 
-    internal__clean_text(
+    internal__tokenize(
         source="raw_document_title",
-        dest="cleaned_document_title",
+        dest="tokenized_document_title",
         root_dir=root_dir,
     )

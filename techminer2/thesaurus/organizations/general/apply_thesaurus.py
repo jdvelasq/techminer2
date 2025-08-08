@@ -19,7 +19,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> (
@@ -37,7 +37,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Applying user thesaurus to database...
-              File : example/data/thesaurus/organizations.the.txt
+              File : examples/fintech/data/thesaurus/organizations.the.txt
       Source field : affiliations
       Target field : organizations
       Application process completed successfully

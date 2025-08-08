@@ -11,15 +11,9 @@ Rename a Field
 
 
 Example:
-    >>> from techminer2.database.field_operators import (
-    ...     CopyFieldOperator,
-    ...     DeleteFieldOperator,
-    ...     RenameFieldOperator,
-    ... )
-    >>> from techminer2.tools import Query
-
     >>> # Creates, configures, and runs the operator to copy the field
-    >>> copier = (
+    >>> from techminer2.database.field_operators import CopyFieldOperator
+    >>> (
     ...     CopyFieldOperator()
     ...     #
     ...     # FIELDS:
@@ -28,11 +22,13 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> copier.run()
 
     >>> # Creates, configures, and runs the operator to rename the field
-    >>> renamer = (
+    >>> from techminer2.database.field_operators import RenameFieldOperator
+    >>> (
     ...     RenameFieldOperator()
     ...     #
     ...     # FIELDS:
@@ -41,19 +37,21 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> renamer.run()
+
 
     >>> # Query the database to test the operator
-    >>> query = (
+    >>> from techminer2.tools import Query
+    >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_renamed FROM database LIMIT 5;")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
+    ...     .run()
     ... )
-    >>> df = query.run()
     >>> df
                                  author_keywords_renamed
     0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
@@ -63,9 +61,10 @@ Example:
     4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; F...
 
     >>> # Deletes the field
+    >>> from techminer2.database.field_operators import DeleteFieldOperator
     >>> DeleteFieldOperator(
     ...     field="author_keywords_renamed",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ... ).run()
 
 

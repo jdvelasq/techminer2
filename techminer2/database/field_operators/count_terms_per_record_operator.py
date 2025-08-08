@@ -53,7 +53,7 @@ Example:
     >>> # Deletes the field
     >>> DeleteFieldOperator(
     ...     field="num_authors_test",
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ... ).run()
 
 """

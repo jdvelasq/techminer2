@@ -26,16 +26,16 @@ Example:
     >>> from pprint import pprint
 
     >>> # Countries:
-    >>> CreateCountryThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyCountryThesaurus(root_directory="example/", quiet=True).run()
+    >>> CreateCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Organizations:
-    >>> CreateOrganizationsThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyOrganizationsThesaurus(root_directory="example/", quiet=True).run()
+    >>> CreateOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Descriptors:
-    >>> CreateDescriptorsThesaurus(root_directory="example/", quiet=True).run()
-    >>> ApplyDescriptorsThesaurus(root_directory="example/", quiet=True).run()
+    >>> CreateDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
 
 

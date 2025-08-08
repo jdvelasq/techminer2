@@ -15,42 +15,42 @@ Example:
 
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.abbreviations import InitializeThesaurus
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", use_colorama=False).run()
+    >>> from techminer2.thesaurus.abbreviations import InitializeThesaurus
+    >>> InitializeThesaurus(root_directory="examples/fintech/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Initializing thesaurus...
-      12 abbreviations found
+      11 abbreviations found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/abbreviations.the.txt
+      File : examples/fintech/data/thesaurus/abbreviations.the.txt
     <BLANKLINE>
         DEMATEL
           ... CRITERIA is constructed and both the DECISION_MAKING_TRIAL_AND_EVALUA...
-        E_FINANCE
-          ELECTRONIC_FINANCE
         E_PAYMENT
           ELECTRONIC_PAYMENT
         EPAM
           we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPAM )
         FINTECH
-          FINANCIAL_TECHNOLOGY
+          FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGIES ( FINTECH ); this article de...
         IOT
-          INTERNET_OF_THING; INTERNET_OF_THINGS
+          INTERNET_OF_THINGS; for THE_OVERALL_FINANCIAL_SECTOR , INTERNET_OF_THINGS...
         ISED
           THE_DIGITAL_REVOLUTION adds NEW_LAYERS to THE_MATERIAL_CULTURES of financ...
         MCDM
           MULTI_CRITERIA_DECISION_MAKING; ... _INNOVATION_THEORY , we propose A_NOV...
+        P2P
+          PEER_TO_PEER; MULTIPLE_INNOVATIONS that have affected LENDING_AND_DEPOSIT...
     <BLANKLINE>
     <BLANKLINE>
 

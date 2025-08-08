@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Sort thesaurus by alphabetical order
     >>> sorter = (
@@ -34,11 +34,11 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> print(output)
     Sorting thesaurus alphabetically...
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
     <BLANKLINE>
         Australia
           Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...

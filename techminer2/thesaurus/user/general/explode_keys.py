@@ -24,7 +24,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the exploder
     >>> exploder = (
@@ -39,16 +39,17 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Reducing thesaurus keys...
-      File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1723 to 1723
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      Keys reduced from 1572 to 1572
       Reduction process completed successfully
     <BLANKLINE>
     Exploding thesaurus keys...
-      File : example/data/thesaurus/demo.the.txt
-      Keys reduced from 1723 to 1789
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      Keys reduced from 1572 to 1611
       Exploding process completed successfully
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

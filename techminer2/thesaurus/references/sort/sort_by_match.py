@@ -34,7 +34,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by match...
-                File : example/data/thesaurus/references.the.txt
+                File : examples/fintech/data/thesaurus/references.the.txt
              Pattern : ECON
       Case sensitive : False
          Regex Flags : 0
@@ -43,7 +43,7 @@ Example:
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/references.the.txt
+      File : examples/fintech/data/thesaurus/references.the.txt
     <BLANKLINE>
         Anagnostopoulos I., 2018, J ECON BUS, V100, P7
           Anagnostopoulos, Ioannis, FinTech and RegTech: Impact on regulators and b...

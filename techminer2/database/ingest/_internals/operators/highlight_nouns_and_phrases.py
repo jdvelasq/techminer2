@@ -90,6 +90,8 @@ COMPOUND_STRUCTURED_ABSTRACT_MARKERS = [
     "clinical impact",
     "clinical relevance",
     "clinical significance",
+    "clinical registration",
+    "clinical trial registration",
     "conclusion , significance and impact study",
     "conclusion and relevance",
     "contribution of the_paper",
@@ -310,60 +312,6 @@ def mark_copyright_text(copyright_regex, text):
 
 
 # ------------------------------------------------------------------------------
-# def mark_template_abstract_compound_markers(text):
-#     for regex in [
-#         "? academic practical relevance :",
-#         "? data visualization tools :",
-#         "? design methodology approach :",
-#         "? design/methodology/approach :",
-#         "? findings and value added :",
-#         "? implications of the_study :",
-#         "? managerial implications :",
-#         "? methodological quality assessment tools include :",
-#         "? methodology results :",
-#         "? methods :",
-#         "? originality value :",
-#         "? originality/value :",
-#         "? practical implications :",
-#         "? problem definition :",
-#         "? purpose of the article :",
-#         "? research limitations :",
-#         "? research limitations implications :",
-#         "? research limitations/implications :",
-#         "? research methodology :",
-#         "? research background :",
-#         ". academic practical relevance :",
-#         ". data visualization tools :",
-#         ". design methodology approach :",
-#         ". design/methodology/approach :",
-#         ". implications of the study :",
-#         ". findings and value added :",
-#         ". managerial implications :",
-#         ". methodological quality assessment tools include :",
-#         ". methodology results :",
-#         ". methods :",
-#         ". originality value :",
-#         ". originality/value :",
-#         ". practical implications :",
-#         ". problem definition :",
-#         ". purpose of the article :",
-#         ". reporting quality assessment tool :",
-#         ". research limitations :",
-#         ". research limitations implications :",
-#         ". research limitations/implications :",
-#         ". research methodology :",
-#         ". research background :",
-#         ". INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
-#         "? INTERESTS_DESIGN/METHODOLOGY/APPROACH :",
-#     ]:
-#         regex = re.escape(regex)
-#         regex = r"(" + regex + r")"
-#         regex = re.compile(regex)
-#         text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
-#     return text
-
-
-# ------------------------------------------------------------------------------
 def mark_discursive_patterns(discursive_patterns, text):
     pattern = [t for t in discursive_patterns if t in text]
     if len(pattern) > 0:
@@ -450,30 +398,6 @@ def remove_roman_numbers(text):
         regex = r"(\( {roman_number.upper()} )\)"
         regex = re.compile(regex, re.IGNORECASE)
         text = re.sub(regex, lambda z: z.group().lower(), text)
-    return text
-
-
-# ------------------------------------------------------------------------------
-def unmark_single_structured_abstract_markers(text):
-
-    # Corrects structured abstract markers at the beginning of the paragraph:
-    # Converts uppercase markers (e.g., "AIM :") to lowercase (e.g., "aim :").
-    for regex in SINGLE_STRUCTURED_ABSTRACT_MARKERS:
-        pattern = regex + " : "
-        if text.startswith(pattern.upper()):
-            text = text.replace(pattern.upper(), pattern.lower())
-
-    # Corrects structured abstract markers inside the paragraph:
-    # Converts uppercase markers (e.g., ". AIM :") to lowercase (e.g., ". aim :").
-    for regex in SINGLE_STRUCTURED_ABSTRACT_MARKERS:
-
-        pattern = ". " + regex + " : "
-        text = text.replace(pattern.upper(), pattern.lower())
-        pattern = "? " + regex + " : "
-        text = text.replace(pattern.upper(), pattern.lower())
-        pattern = ") " + regex + " : "
-        text = text.replace(pattern.upper(), pattern.lower())
-
     return text
 
 
@@ -614,9 +538,48 @@ def transform_email_addresses_to_lower_case(text):
 def mark_template_abstract_separators(text):
 
     for marker in COMPOUND_STRUCTURED_ABSTRACT_MARKERS:
-        pattern = r"\b" + re.escape(marker) + r"\b"
-        regex = re.compile(pattern, re.IGNORECASE)
-        text = regex.sub(lambda z: z.group().lower().replace(" ", "_"), text)
+
+        regex = re.compile(r"^" + marker + " :", re.IGNORECASE)
+        text = re.sub(regex, marker.lower().replace(" ", "_") + " :", text)
+
+        pattern_1 = ". " + marker + " :"
+        pattern_2 = ". " + marker.replace(" ", "_") + " :"
+        text = text.replace(pattern_1, pattern_2)
+
+        pattern_1 = "? " + marker + " :"
+        pattern_2 = "? " + marker.replace(" ", "_") + " :"
+        text = text.replace(pattern_1, pattern_2)
+
+        pattern_1 = ") " + marker + " :"
+        pattern_2 = ") " + marker.replace(" ", "_") + " :"
+        text = text.replace(pattern_1, pattern_2)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
+def unmark_template_abstract_markers(text):
+
+    # Corrects structured abstract markers at the beginning of the paragraph:
+    # Converts uppercase markers (e.g., "AIM :") to lowercase (e.g., "aim :").
+
+    for term in (
+        COMPOUND_STRUCTURED_ABSTRACT_MARKERS + SINGLE_STRUCTURED_ABSTRACT_MARKERS
+    ):
+
+        # Corrects structured abstract markers at the beginning of the paragraph:
+        regex = re.compile(r"^" + term.replace(" ", "_") + " :", re.IGNORECASE)
+        text = re.sub(regex, term.lower() + " :", text)
+
+        # Corrects structured abstract markers inside the paragraph:
+        regex = re.compile("\. " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        text = re.sub(regex, ". " + term.lower() + " :", text)
+
+        regex = re.compile("\) " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        text = re.sub(regex, ") " + term.lower() + " :", text)
+
+        regex = re.compile("\? " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        text = re.sub(regex, "? " + term.lower() + " :", text)
 
     return text
 
@@ -631,7 +594,7 @@ def internal__highlight_nouns_and_phrases(
 ):
     """:meta private:"""
 
-    notify_process_start(source)
+    notify_process_start(dest)
 
     dataframe = load_all_records_from_database(root_directory)
 
@@ -691,14 +654,19 @@ def internal__highlight_nouns_and_phrases(
         text = mark_template_abstract_separators(text)
         text = mark_discursive_patterns(discursive_patterns, text)
         text = mark_connectors(connectors, text)
+
+        #
+        #
         text = highlight_key_terms(key_terms, text)
+        #
+        #
 
         text = join_consequtive_separate_terms_in_uppercase(text)
 
         text = replace_urls(text, url_matches)
 
         text = unmark_lowercase_text(text)
-        text = unmark_single_structured_abstract_markers(text)
+        text = unmark_template_abstract_markers(text)
         text = mark_connectors(connectors, text)
         text = remove_roman_numbers(text)
 

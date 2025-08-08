@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> # Sorts thesaurus by key match
@@ -45,7 +45,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Sorting thesaurus by match...
-                File : example/data/thesaurus/countries.the.txt
+                File : examples/fintech/data/thesaurus/countries.the.txt
              Pattern : china
       Case sensitive : False
          Regex Flags : 0
@@ -54,7 +54,7 @@ Example:
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/countries.the.txt
+      File : examples/fintech/data/thesaurus/countries.the.txt
     <BLANKLINE>
         China
           Cheung Kong Graduate School of Business, and Institute of Internet Financ...

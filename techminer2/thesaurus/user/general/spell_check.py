@@ -23,7 +23,7 @@ Example:
 
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
 
     >>> # Creates, configures, an run the spell checker
@@ -40,12 +40,11 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Spell checking thesaurus keys...
-      File : example/data/thesaurus/demo.the.txt
-      Potential misspelled words (69):
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      Potential misspelled words (62):
     <BLANKLINE>
         - affordance
-        - agroindustry
-        - agropay
+        - affordances
         - analyse
         - backoffice
         - behavioural
@@ -53,13 +52,14 @@ Example:
         - burdencapital
         - cacioppo
         - centricity
+        - crowdfunding
         ...
     <BLANKLINE>
-      Matching keys found : 85
+      Matching keys found : 77
       Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
@@ -69,16 +69,17 @@ Example:
           A_WIDE_RANGING_RECONCEPTUALIZATION
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AGROINDUSTRY
-          AGROINDUSTRY
-        AGROPAY
-          AGROPAY
+        AFFORDANCES
+          AFFORDANCES
         ANALYSE_THE_KEY_FACTORS
           ANALYSE_THE_KEY_FACTORS
         ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
           ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
+
 
 
     >>> # Restaring the stderr
@@ -88,7 +89,7 @@ Example:
     >>> SpellCheck(
     ...     thesaurus_file="demo.the.txt",
     ...     maximum_occurrence=3,
-    ...     root_directory="example/",
+    ...     root_directory="examples/fintech/",
     ...     use_colorama=False,
     ... ).run()
 
@@ -97,12 +98,11 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Spell checking thesaurus keys...
-      File : example/data/thesaurus/demo.the.txt
-      Potential misspelled words (69):
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      Potential misspelled words (62):
     <BLANKLINE>
         - affordance
-        - agroindustry
-        - agropay
+        - affordances
         - analyse
         - backoffice
         - behavioural
@@ -110,13 +110,14 @@ Example:
         - burdencapital
         - cacioppo
         - centricity
+        - crowdfunding
         ...
     <BLANKLINE>
-      Matching keys found : 85
+      Matching keys found : 77
       Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
@@ -126,14 +127,14 @@ Example:
           A_WIDE_RANGING_RECONCEPTUALIZATION
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AGROINDUSTRY
-          AGROINDUSTRY
-        AGROPAY
-          AGROPAY
+        AFFORDANCES
+          AFFORDANCES
         ANALYSE_THE_KEY_FACTORS
           ANALYSE_THE_KEY_FACTORS
         ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
           ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
+        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
     <BLANKLINE>
     <BLANKLINE>
 

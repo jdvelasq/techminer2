@@ -20,7 +20,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> checker = (
     ...     IntegrityCheck(use_colorama=False)
@@ -33,7 +33,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Checking thesaurus integrity...
-      File : example/data/thesaurus/organizations.the.txt
+      File : examples/fintech/data/thesaurus/organizations.the.txt
       106 terms checked
       Integrity check completed successfully
     <BLANKLINE>

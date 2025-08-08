@@ -7,15 +7,17 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+import sys
+
 from ..operators.highlight_nouns_and_phrases import (
     internal__highlight_nouns_and_phrases,
 )
 
 
-def internal__preprocess_document_title(root_dir):
+def internal__preprocess_abstract(root_dir):
 
     internal__highlight_nouns_and_phrases(
-        source="cleaned_document_title",
-        dest="document_title",
+        source="tokenized_abstract",
+        dest="abstract",
         root_directory=root_dir,
     )

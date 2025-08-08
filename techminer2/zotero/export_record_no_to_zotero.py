@@ -17,7 +17,7 @@ Example:
     ...     .using_zotero_library_id(5242364)   # https://www.zotero.org/groups/5242364/fintech-scopus
     ...     .using_zotero_library_type("group")  # "user" or "group"
     ...     .where_root_directory_is("examples/fintech/")
-    ... ).run()
+    ... ).run() # doctest: +ELLIPSIS +SKIP
 
 """
 import pathlib

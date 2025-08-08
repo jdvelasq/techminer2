@@ -21,23 +21,23 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="example/", quiet=True).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Remove common initial words
-    >>> RemoveInitialWords(root_directory="example/", tqdm_disable=True, use_colorama=False).run()
+    >>> RemoveInitialWords(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
     Removing common initial words from thesaurus keys...
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-      213 common initial words removed successfully
+      212 common initial words removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/descriptors.the.txt
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         ACADEMICS
           ACADEMICS; OTHER_ACADEMICS
@@ -49,12 +49,12 @@ Example:
           LATE_ACTION
         ACTORS
           ACTORS; HETEROGENEOUS_ACTORS
-        AGRICULTURE_BUSINESS_PROCESS
-          TRANSFORM_AGRICULTURE_BUSINESS_PROCESS
-        AGRICULTURE_ECOSYSTEM
-          BROADER_AGRICULTURE_ECOSYSTEM
-        AI/ML_ALGORITHMS
-          COMPLEX_AI/ML_ALGORITHMS
+        ADDITIONAL_COMPONENTS
+          FIVE_ADDITIONAL_COMPONENTS
+        AFFORDANCES
+          AFFORDANCES; THREE_AFFORDANCES
+        AGRICULTURE
+          AGRICULTURE; BROADER_AGRICULTURE; TRANSFORM_AGRICULTURE
     <BLANKLINE>
     <BLANKLINE>
 

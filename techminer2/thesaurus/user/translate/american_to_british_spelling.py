@@ -12,37 +12,38 @@ Translate American to British Spelling
 
 
 Example:
+    >>> # Redirecting stderr to avoid messages during doctests
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, AmericanToBritishSpelling
-
-    >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Reset the thesaurus to initial state
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="example/", quiet=True).run()
+    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the translator
-    >>> translaator = (
+    >>> from techminer2.thesaurus.user import AmericanToBritishSpelling
+    >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> translaator.run()
+
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
     Converting American to British English...
-      File : example/data/thesaurus/demo.the.txt
-      21 replacements made successfully
+      File : examples/fintech/data/thesaurus/demo.the.txt
+      17 replacements made successfully
       Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : example/data/thesaurus/demo.the.txt
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
         A_COMPLETE_GENERALISATION
           A_COMPLETE_GENERALIZATION
