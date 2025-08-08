@@ -40,7 +40,7 @@ Example:
                 File : examples/fintech/data/thesaurus/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
-      81 matching keys found
+      92 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -56,14 +56,17 @@ Example:
           A_NEW_INTERMEDIARY
         A_PLATFORM
           A_PLATFORM
-        BUSINESS_INFRASTRUCTURES
-          BUSINESS_INFRASTRUCTURES
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
         CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
           CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
-        COMPETITORS
-          COMPETITORS
+        CLASSIFICATION (OF_INFORMATION)
+          CLASSIFICATION (OF_INFORMATION)
     <BLANKLINE>
     <BLANKLINE>
+
+
+
 
 """
 from ...._internals.mixins import ParamsMixin

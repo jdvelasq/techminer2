@@ -61,6 +61,7 @@ Example:
      'SUSTAINABILITY 03:0227': 1,
      'SUSTAINABLE_DEVELOPMENT 03:0227': 1}
 
+
     >>> mapping = (
     ...     TermsToClustersMapping()
     ...     #

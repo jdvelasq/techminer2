@@ -66,9 +66,10 @@ Example:
     4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
 
 
+
     >>> # Deletes the created field in the database
     >>> from techminer2.database.field_operators import DeleteFieldOperator
-    >>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="example/").run()
+    >>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="examples/fintech/").run()
 
 
 """

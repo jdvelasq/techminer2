@@ -50,7 +50,6 @@ Example:
     <BLANKLINE>
     [11 rows x 3 columns]
 
-
 """
 from ....._internals.mixins import ParamsMixin
 from ..user.terms_by_cluster_data_frame import (

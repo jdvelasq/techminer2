@@ -55,12 +55,12 @@ Example:
           ACADEMIC_RESEARCH
         ACCELERATE_ACCESS
           ACCELERATE_ACCESS
+        ACCEPTANCE_MODELS
+          ACCEPTANCE_MODELS
         ACCESS
           ACCESS
         ACCESS_LOANS
           ACCESS_LOANS
-        ACCOUNTING
-          ACCOUNTING
     <BLANKLINE>
     <BLANKLINE>
 

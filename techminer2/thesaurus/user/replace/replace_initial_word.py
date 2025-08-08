@@ -45,7 +45,7 @@ Example:
              File : .../fintech/data/thesaurus/demo.the.txt
              Word : BUSINESS
       Replacement : business
-      6 replacements made successfully
+      8 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -53,20 +53,20 @@ Example:
     <BLANKLINE>
         business
           BUSINESS; BUSINESSES
+        business_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
         business_GERMANY
           BUSINESS_GERMANY
-        business_INFRASTRUCTURES
-          BUSINESS_INFRASTRUCTURES
-        business_MODELS
-          BUSINESS_MODELS
+        business_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        business_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
         business_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
+        business_PROCESS
+          BUSINESS_PROCESS
         business_TO_CONSUMERS_MODELS
           BUSINESS_TO_CONSUMERS_MODELS
-        A_A_THEORY
-          A_A_THEORY
-        A_BASIC_RANDOM_SAMPLING_STRATEGY
-          A_BASIC_RANDOM_SAMPLING_STRATEGY
     <BLANKLINE>
     <BLANKLINE>
 

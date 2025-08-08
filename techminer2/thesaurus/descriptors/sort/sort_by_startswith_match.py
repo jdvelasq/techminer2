@@ -38,12 +38,14 @@ Example:
     Sorting thesaurus by startswith match...
          File : examples/fintech/data/thesaurus/descriptors.the.txt
       Pattern : COMM
-      2 matching keys found
+      3 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
+        COMMERCE
+          COMMERCE
         COMMERCIAL_BANKS
           COMMERCIAL_BANKS
         COMMUNICATION_AND_INTERACTION
@@ -58,11 +60,8 @@ Example:
           A_BETTER_UNDERSTANDING
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-        A_CASE_STUDY
-          A_CASE_STUDY
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

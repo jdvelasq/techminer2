@@ -56,51 +56,48 @@ Example:
 
 
 
-
-
->>> from techminer2.packages.networks.co_occurrence.index_keywords import NetworkMetrics
->>> (
-...     NetworkMetrics()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(False)
-...     #
-...     # NETWORK:
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("examples/fintech/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head(15)
-                               Degree  Betweenness  Closeness  PageRank
-FINANCE                            17     0.293665   0.904762  0.158323
-FINTECH                            16     0.239669   0.863636  0.145196
-FINANCIAL_SERVICE                  11     0.057505   0.678571  0.074187
-CYBER_SECURITY                      9     0.028947   0.655172  0.052388
-COMMERCE                            7     0.031384   0.612903  0.047843
-SURVEYS                             6     0.000000   0.575758  0.050608
-ELECTRONIC_MONEY                    6     0.009259   0.575758  0.037268
-BLOCKCHAIN                          6     0.019006   0.575758  0.033923
-INVESTMENT                          6     0.069103   0.593750  0.036107
-DESIGN_METHODOLOGY_APPROACH         6     0.004094   0.593750  0.045469
-SALES                               6     0.004094   0.593750  0.045469
-FINANCIAL_INDUSTRIES                6     0.000000   0.575758  0.046643
-SECURITY_AND_PRIVACY                6     0.000000   0.575758  0.046643
-PERCEIVED_USEFULNESS                5     0.003899   0.558824  0.028316
-FINANCIAL_SERVICES_INDUSTRIES       4     0.000000   0.542857  0.032397
-
+    >>> from techminer2.packages.networks.co_occurrence.index_keywords import NetworkMetrics
+    >>> (
+    ...     NetworkMetrics()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(False)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head(15)
+                                   Degree  Betweenness  Closeness  PageRank
+    FINANCE                            17     0.293665   0.904762  0.158323
+    FINTECH                            16     0.239669   0.863636  0.145196
+    FINANCIAL_SERVICE                  11     0.057505   0.678571  0.074187
+    CYBER_SECURITY                      9     0.028947   0.655172  0.052388
+    COMMERCE                            7     0.031384   0.612903  0.047843
+    SURVEYS                             6     0.000000   0.575758  0.050608
+    ELECTRONIC_MONEY                    6     0.009259   0.575758  0.037268
+    BLOCKCHAIN                          6     0.019006   0.575758  0.033923
+    INVESTMENT                          6     0.069103   0.593750  0.036107
+    DESIGN_METHODOLOGY_APPROACH         6     0.004094   0.593750  0.045469
+    SALES                               6     0.004094   0.593750  0.045469
+    FINANCIAL_INDUSTRIES                6     0.000000   0.575758  0.046643
+    SECURITY_AND_PRIVACY                6     0.000000   0.575758  0.046643
+    PERCEIVED_USEFULNESS                5     0.003899   0.558824  0.028316
+    FINANCIAL_SERVICES_INDUSTRIES       4     0.000000   0.542857  0.032397
 
 
 

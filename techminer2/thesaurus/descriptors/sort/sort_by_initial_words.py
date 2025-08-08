@@ -36,7 +36,7 @@ Example:
     >>> print(output)
     Sorting thesaurus by common initial words...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      217 matching keys found
+      228 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -60,6 +60,7 @@ Example:
           ADVANCED_ECONOMIES
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

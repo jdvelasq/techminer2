@@ -58,7 +58,6 @@ Example:
     [4 rows x 4 columns]
 
 
-
     >>> #
     >>> # CODE TESTED
     >>> #
@@ -96,7 +95,6 @@ Example:
     3        3  ...           ARTIFICIAL_INTELLIGENCE; FINANCE; ROBOTS
     <BLANKLINE>
     [4 rows x 4 columns]
-
 
 
 

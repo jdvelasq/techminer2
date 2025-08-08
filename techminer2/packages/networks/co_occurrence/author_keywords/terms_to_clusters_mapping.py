@@ -75,58 +75,60 @@ Example:
 
 
 
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2.packages.networks.co_occurrence.author_keywords import TermsToClustersMapping
->>> mapping = (
-...     TermsToClustersMapping()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(False)
-...     #
-...     # NETWORK:
-...     .using_clustering_algorithm_or_dict("louvain")
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("examples/fintech/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... )
->>> from pprint import pprint
->>> pprint(mapping)
-{'ARTIFICIAL_INTELLIGENCE': 3,
- 'BANKING': 1,
- 'BLOCKCHAIN': 0,
- 'BUSINESS_MODEL': 0,
- 'CASE_STUDIES': 0,
- 'CROWDFUNDING': 0,
- 'CYBER_SECURITY': 0,
- 'FINANCE': 3,
- 'FINANCIAL_INCLUSION': 0,
- 'FINANCIAL_INSTITUTION': 1,
- 'FINANCIAL_SERVICE': 1,
- 'FINANCIAL_TECHNOLOGIES': 0,
- 'FINTECH': 0,
- 'INNOVATION': 1,
- 'LENDINGCLUB': 2,
- 'MARKETPLACE_LENDING': 2,
- 'PEER_TO_PEER_LENDING': 2,
- 'REGTECH': 0,
- 'ROBOTS': 3,
- 'TECHNOLOGIES': 1}
+
+    >>> #
+    >>> # CODE TESTED
+    >>> #
+    >>> from techminer2.packages.networks.co_occurrence.author_keywords import TermsToClustersMapping
+    >>> mapping = (
+    ...     TermsToClustersMapping()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(False)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_clustering_algorithm_or_dict("louvain")
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> from pprint import pprint
+    >>> pprint(mapping)
+    {'ARTIFICIAL_INTELLIGENCE': 3,
+     'BANKING': 1,
+     'BLOCKCHAIN': 0,
+     'BUSINESS_MODEL': 0,
+     'CASE_STUDIES': 0,
+     'CROWDFUNDING': 0,
+     'CYBER_SECURITY': 0,
+     'FINANCE': 3,
+     'FINANCIAL_INCLUSION': 0,
+     'FINANCIAL_INSTITUTION': 1,
+     'FINANCIAL_SERVICE': 1,
+     'FINANCIAL_TECHNOLOGIES': 0,
+     'FINTECH': 0,
+     'INNOVATION': 1,
+     'LENDINGCLUB': 2,
+     'MARKETPLACE_LENDING': 2,
+     'PEER_TO_PEER_LENDING': 2,
+     'REGTECH': 0,
+     'ROBOTS': 3,
+     'TECHNOLOGIES': 1}
+
 
 
 """

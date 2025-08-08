@@ -33,7 +33,7 @@ Example:
     Removing common initial words from thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-      212 common initial words removed successfully
+      221 common initial words removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -53,8 +53,8 @@ Example:
           FIVE_ADDITIONAL_COMPONENTS
         AFFORDANCES
           AFFORDANCES; THREE_AFFORDANCES
-        AGRICULTURE
-          AGRICULTURE; BROADER_AGRICULTURE; TRANSFORM_AGRICULTURE
+        AGRICULTURE_BUSINESS_PROCESS
+          TRANSFORM_AGRICULTURE_BUSINESS_PROCESS
     <BLANKLINE>
     <BLANKLINE>
 

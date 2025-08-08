@@ -61,7 +61,6 @@ Example:
          'SECURITY_AND_PRIVACY 02:0323']}
 
 
-
 """
 from ....._internals.mixins import ParamsMixin
 from ..user.clusters_to_terms_mapping import (

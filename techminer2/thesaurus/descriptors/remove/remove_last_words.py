@@ -34,7 +34,7 @@ Example:
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
     <BLANKLINE>
-      13 last words removed successfully
+      17 last words removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -42,20 +42,20 @@ Example:
     <BLANKLINE>
         AGRICULTURE
           AGRICULTURE; AGRICULTURE_PLAYS
+        CHINA
+          CHINA; CHINA_EASTERN
         CONTINUANCE_INTENTION
-          CONTINUANCE_INTENTION_DIFFERS
+          CONTINUANCE_INTENTION; CONTINUANCE_INTENTIONS; CONTINUANCE_INTENTION_DIFFERS
+        DIGITAL_FINANCE
+          DIGITAL_FINANCE; DIGITAL_FINANCE_ENCOMPASSES
         ENTREPRENEURIAL
           ENTREPRENEURIAL_ENDEAVOURS
         FOUR_SPECIFIC
           FOUR_SPECIFIC_INCREASES
+        INNOVATIONS
+          INNOVATIONS_EXACERBATE
         LENDINGCLUB_LOANS
           LENDINGCLUB_LOANS_INCREASES
-        POSITIVE_RELATIONSHIP
-          POSITIVE_RELATIONSHIP_EXISTS
-        RESIDENTIAL_MORTGAGE
-          RESIDENTIAL_MORTGAGE_ORIGINATION
-        S
-          S_EASTERN
     <BLANKLINE>
     <BLANKLINE>
 

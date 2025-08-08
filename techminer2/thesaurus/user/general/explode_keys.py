@@ -40,12 +40,12 @@ Example:
     >>> print(output)
     Reducing thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1572 to 1572
+      Keys reduced from 1724 to 1724
       Reduction process completed successfully
     <BLANKLINE>
     Exploding thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1572 to 1611
+      Keys reduced from 1724 to 1790
       Exploding process completed successfully
     <BLANKLINE>
     <BLANKLINE>

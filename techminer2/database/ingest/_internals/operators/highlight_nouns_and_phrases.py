@@ -332,13 +332,18 @@ def mark_connectors(connectors, text):
 
 
 # ------------------------------------------------------------------------------
-def join_consequtive_separate_terms_in_uppercase(text):
+def join_consequtive_separate_terms_in_uppercase(text, stopwords):
+
     for _ in range(5, 1, -1):
-        pattern = "[A-Z][A-Z_]+" + " [A-Z][A-Z_]+"
+        pattern = "[A-Z][A-Z_]+ [A-Z][A-Z_]+"
         matches = re.findall(pattern, text)
 
         if len(matches) > 0:
             for match in matches:
+                word = match.split(" ")[1]
+                word = word.split("_")[0]
+                if word.lower() in stopwords:
+                    continue
                 regex = re.compile(r"\b" + re.escape(match) + r"\b")
                 text = re.sub(
                     regex, lambda z: z.group().upper().replace(" ", "_"), text
@@ -348,6 +353,7 @@ def join_consequtive_separate_terms_in_uppercase(text):
     matches = re.findall(pattern, text)
     if len(matches) > 0:
         for match in matches:
+
             full_match = f"{match[0]} ( {match[1]} ) {match[2]}"
             replacement = f"{match[0]}_{match[2]}"
             regex = re.compile(r"\b" + re.escape(full_match) + r"\b")
@@ -585,6 +591,22 @@ def unmark_template_abstract_markers(text):
 
 
 # ------------------------------------------------------------------------------
+def repair_appostrophes(text):
+
+    # Case 1: lowercase letter followed by space and an appostrophe followed by an "S_"
+    # for example:
+    # in WAYS that address THE_NEEDS of today ' S_STUDENTS and THE_COMPLEXITY of
+    text = re.sub(r"([a-z]) ' S_([A-Z])", r"\1 ' s \2", text)
+
+    # Case 1: upper letter followed by space and an appostrophe followed by an "S_"
+    # for example:
+    # THE_FLIPPED_CLASSROOM_INTERVENTION ' S_EFFECTIVENESS for
+    text = re.sub(r"([A-Z]) ' S_([A-Z])", r"\1_\2", text)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
 def internal__highlight_nouns_and_phrases(
     source,
     dest,
@@ -661,7 +683,9 @@ def internal__highlight_nouns_and_phrases(
         #
         #
 
-        text = join_consequtive_separate_terms_in_uppercase(text)
+        text = repair_appostrophes(text)
+
+        text = join_consequtive_separate_terms_in_uppercase(text, stopwords)
 
         text = replace_urls(text, url_matches)
 

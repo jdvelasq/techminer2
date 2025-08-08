@@ -40,7 +40,7 @@ Example:
     >>> print(output)
     Sorting thesaurus by common initial words...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      217 matching keys found
+      228 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header

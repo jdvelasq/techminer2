@@ -48,7 +48,6 @@ Example:
 
 
 
-
 """
 from ....._internals.mixins import ParamsMixin
 from ..user.terms_by_cluster_summary import (

@@ -40,7 +40,7 @@ Example:
     Sorting thesaurus by startswith match...
          File : examples/fintech/data/thesaurus/demo.the.txt
       Pattern : BUSINESS
-      6 matching keys found
+      8 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -48,23 +48,24 @@ Example:
     <BLANKLINE>
         BUSINESS
           BUSINESS; BUSINESSES
+        BUSINESS_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
         BUSINESS_GERMANY
           BUSINESS_GERMANY
-        BUSINESS_INFRASTRUCTURES
-          BUSINESS_INFRASTRUCTURES
-        BUSINESS_MODELS
-          BUSINESS_MODELS
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
         BUSINESS_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
+        BUSINESS_PROCESS
+          BUSINESS_PROCESS
         BUSINESS_TO_CONSUMERS_MODELS
           BUSINESS_TO_CONSUMERS_MODELS
-        A_A_THEORY
-          A_A_THEORY
-        A_BASIC_RANDOM_SAMPLING_STRATEGY
-          A_BASIC_RANDOM_SAMPLING_STRATEGY
     <BLANKLINE>
     <BLANKLINE>
 
+/Volumes/Gi
 
 
 """

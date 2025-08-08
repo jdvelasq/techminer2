@@ -40,7 +40,7 @@ Example:
     >>> print(output)
     Sorting thesaurus by common last words...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      12 matching keys found
+      17 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -48,23 +48,22 @@ Example:
     <BLANKLINE>
         AGRICULTURE_PLAYS
           AGRICULTURE_PLAYS
+        CHINA_EASTERN
+          CHINA_EASTERN
         CONTINUANCE_INTENTION_DIFFERS
           CONTINUANCE_INTENTION_DIFFERS
+        DIGITAL_FINANCE_ENCOMPASSES
+          DIGITAL_FINANCE_ENCOMPASSES
         ENTREPRENEURIAL_ENDEAVOURS
           ENTREPRENEURIAL_ENDEAVOURS
         FOUR_SPECIFIC_INCREASES
           FOUR_SPECIFIC_INCREASES
+        INNOVATIONS_EXACERBATE
+          INNOVATIONS_EXACERBATE
         LENDINGCLUB_LOANS_INCREASES
           LENDINGCLUB_LOANS_INCREASES
-        POSITIVE_RELATIONSHIP_EXISTS
-          POSITIVE_RELATIONSHIP_EXISTS
-        RESIDENTIAL_MORTGAGE_ORIGINATION
-          RESIDENTIAL_MORTGAGE_ORIGINATION
-        TAXONOMY_CONTRIBUTES
-          TAXONOMY_CONTRIBUTES
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """

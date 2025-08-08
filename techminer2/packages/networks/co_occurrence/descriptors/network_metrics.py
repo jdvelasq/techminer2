@@ -56,6 +56,7 @@ Example:
 
 
 
+
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import NetworkMetrics
     >>> (
@@ -99,7 +100,6 @@ Example:
     BUSINESS_MODEL              17     0.004242   0.904762  0.034400
     SERVICES                    16     0.001096   0.863636  0.040660
     CONSUMERS                   16     0.003093   0.863636  0.033560
-
 
 
 

@@ -40,7 +40,7 @@ Example:
     >>> print(output)
     Sorting thesaurus by stopwords...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      679 matching keys found
+      677 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header

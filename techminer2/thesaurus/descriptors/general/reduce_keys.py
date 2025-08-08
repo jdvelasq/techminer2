@@ -37,7 +37,7 @@ Example:
     >>> print(output)
     Reducing thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1572 to 1572
+      Keys reduced from 1724 to 1724
       Reduction process completed successfully
     <BLANKLINE>
     <BLANKLINE>

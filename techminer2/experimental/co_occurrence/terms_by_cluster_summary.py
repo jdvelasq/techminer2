@@ -42,13 +42,11 @@ Example:
        Cluster  ...                                              Terms
     0        0  ...  FINANCIAL_TECHNOLOGIES 14:2005; FINANCIAL_SERV...
     1        1  ...  FINTECH 44:6942; FINANCE 21:3481; TECHNOLOGIES...
-    2        2  ...     BANKS 09:1133; DATA 07:1086; CONSUMERS 07:0925
-    3        3  ...                  THE_IMPACT 06:0908; CHINA 06:0673
-    4        4  ...               SERVICES 07:1226; INVESTMENT 06:1294
-    5        5  ...       PRACTITIONER 06:1194; BUSINESS_MODEL 05:1578
+    2        2  ...  SERVICES 07:1226; INVESTMENT 06:1294; PRACTITI...
+    3        3  ...     BANKS 09:1133; DATA 07:1086; CONSUMERS 07:0925
+    4        4  ...                  THE_IMPACT 06:0908; CHINA 06:0673
     <BLANKLINE>
-    [6 rows x 4 columns]
-
+    [5 rows x 4 columns]
 
 
 """

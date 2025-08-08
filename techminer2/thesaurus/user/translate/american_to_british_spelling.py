@@ -39,7 +39,7 @@ Example:
     >>> print(output) # doctest: +ELLIPSIS
     Converting American to British English...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      17 replacements made successfully
+      21 replacements made successfully
       Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header

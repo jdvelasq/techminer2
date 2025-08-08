@@ -38,7 +38,7 @@ Example:
     >>> print(output)
     Converting British to American English...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      13 replacements made successfully
+      11 replacements made successfully
       Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -46,12 +46,8 @@ Example:
     <BLANKLINE>
         ANALOG_PROCESSES
           ANALOGUE_PROCESSES
-        ANALYZE_THE_KEY_FACTORS
-          ANALYSE_THE_KEY_FACTORS
-        ANALYZE_THE_SYSTEMIC_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-        ANALYZE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+        ANALYZE
+          ANALYSE
         BEHAVIORAL_ECONOMICS
           BEHAVIOURAL_ECONOMICS
         ENTREPRENEURIAL_ENDEAVORS
@@ -60,6 +56,10 @@ Example:
           FAVOUR
         HARMONIZE_TECHNOLOGICAL_ADVANCEMENTS
           HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
+        INSTILL_CULTURE_CHANGE
+          INSTIL_CULTURE_CHANGE
+        INTERNATIONAL_DEVELOPMENT_ORGANIZATIONS
+          INTERNATIONAL_DEVELOPMENT_ORGANISATIONS
     <BLANKLINE>
     <BLANKLINE>
 

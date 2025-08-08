@@ -61,6 +61,7 @@ Example:
      'SURVEYS 03:0484': 3,
      'SUSTAINABLE_DEVELOPMENT 03:0227': 0}
 
+
     >>> mapping = (
     ...     TermsToClustersMapping()
     ...     #
@@ -109,7 +110,6 @@ Example:
      'SECURITY_AND_PRIVACY': 3,
      'SURVEYS': 3,
      'SUSTAINABLE_DEVELOPMENT': 0}
-
 
 
 """

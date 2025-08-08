@@ -38,7 +38,7 @@ def internal__drop_empty_columns(root_dir):
 
         for i_col, col in enumerate(removed_cols):
             if i_col == 0:
-                sys.stderr.write("        Columns:\n")
-            sys.stderr.write(f"          - {col}\n")
+                sys.stderr.write("Dropped columns:\n")
+            sys.stderr.write(f"  - {col}\n")
 
     sys.stderr.flush()

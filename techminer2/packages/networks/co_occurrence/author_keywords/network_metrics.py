@@ -68,52 +68,51 @@ Example:
 
 
 
-
->>> #
->>> # CODE TESTED
->>> #
->>> from techminer2.packages.networks.co_occurrence.author_keywords import NetworkMetrics
->>> (
-...     NetworkMetrics()
-...     #
-...     # FIELD:
-...     .having_terms_in_top(20)
-...     .having_terms_ordered_by("OCC")
-...     .having_term_occurrences_between(None, None)
-...     .having_term_citations_between(None, None)
-...     .having_terms_in(None)
-...     #
-...     # COUNTERS:
-...     .using_term_counters(False)
-...     #
-...     # NETWORK:
-...     .using_association_index("association")
-...     #
-...     # DATABASE:
-...     .where_root_directory_is("examples/fintech/")
-...     .where_database_is("main")
-...     .where_record_years_range_is(None, None)
-...     .where_record_citations_range_is(None, None)
-...     .where_records_match(None)
-...     #
-...     .run()
-... ).head(15)
-                         Degree  Betweenness  Closeness  PageRank
-FINTECH                      18     0.701977   0.950000  0.235612
-FINANCIAL_SERVICE             8     0.053718   0.633333  0.072599
-INNOVATION                    7     0.033055   0.612903  0.084031
-TECHNOLOGIES                  6     0.023308   0.593750  0.045900
-BLOCKCHAIN                    5     0.014620   0.558824  0.048082
-FINANCIAL_INSTITUTION         5     0.014676   0.575758  0.034275
-FINANCE                       5     0.015316   0.575758  0.036884
-ROBOTS                        5     0.011696   0.558824  0.037662
-REGTECH                       5     0.013701   0.575758  0.040572
-BUSINESS_MODEL                4     0.001949   0.558824  0.044621
-FINANCIAL_TECHNOLOGIES        4     0.001949   0.558824  0.033433
-BANKING                       4     0.000000   0.431818  0.034247
-MARKETPLACE_LENDING           3     0.000000   0.527778  0.045739
-CASE_STUDIES                  3     0.002924   0.527778  0.029823
-ARTIFICIAL_INTELLIGENCE       3     0.000000   0.527778  0.025308
+    >>> #
+    >>> # CODE TESTED
+    >>> #
+    >>> from techminer2.packages.networks.co_occurrence.author_keywords import NetworkMetrics
+    >>> (
+    ...     NetworkMetrics()
+    ...     #
+    ...     # FIELD:
+    ...     .having_terms_in_top(20)
+    ...     .having_terms_ordered_by("OCC")
+    ...     .having_term_occurrences_between(None, None)
+    ...     .having_term_citations_between(None, None)
+    ...     .having_terms_in(None)
+    ...     #
+    ...     # COUNTERS:
+    ...     .using_term_counters(False)
+    ...     #
+    ...     # NETWORK:
+    ...     .using_association_index("association")
+    ...     #
+    ...     # DATABASE:
+    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     .where_records_match(None)
+    ...     #
+    ...     .run()
+    ... ).head(15)
+                             Degree  Betweenness  Closeness  PageRank
+    FINTECH                      18     0.701977   0.950000  0.235612
+    FINANCIAL_SERVICE             8     0.053718   0.633333  0.072599
+    INNOVATION                    7     0.033055   0.612903  0.084031
+    TECHNOLOGIES                  6     0.023308   0.593750  0.045900
+    BLOCKCHAIN                    5     0.014620   0.558824  0.048082
+    FINANCIAL_INSTITUTION         5     0.014676   0.575758  0.034275
+    FINANCE                       5     0.015316   0.575758  0.036884
+    ROBOTS                        5     0.011696   0.558824  0.037662
+    REGTECH                       5     0.013701   0.575758  0.040572
+    BUSINESS_MODEL                4     0.001949   0.558824  0.044621
+    FINANCIAL_TECHNOLOGIES        4     0.001949   0.558824  0.033433
+    BANKING                       4     0.000000   0.431818  0.034247
+    MARKETPLACE_LENDING           3     0.000000   0.527778  0.045739
+    CASE_STUDIES                  3     0.002924   0.527778  0.029823
+    ARTIFICIAL_INTELLIGENCE       3     0.000000   0.527778  0.025308
 
 
 

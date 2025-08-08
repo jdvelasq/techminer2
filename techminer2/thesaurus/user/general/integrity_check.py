@@ -41,7 +41,7 @@ Example:
     >>> print(output)
     Checking thesaurus integrity...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      1611 terms checked
+      1790 terms checked
       Integrity check completed successfully
     <BLANKLINE>
     <BLANKLINE>

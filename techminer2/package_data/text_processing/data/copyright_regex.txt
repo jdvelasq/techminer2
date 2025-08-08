@@ -675,6 +675,7 @@ a link to the original publication
 \. \d{4} seventh sense research group$
 \. \d{4} selection and editorial matter.*$
 \. \d{4} pakistan medical association \.
+\. \d{4} owner / author \.$
 \. \d{4} korean medical association \.
 \. \d{4} intellect ltd article \.
 \. \d{4} iise , incose \.

@@ -12,7 +12,7 @@ Collect Descriptors
 
 Example:
     >>> from techminer2.tools import CollectDescriptors
-    >>> CollectDescriptors(root_directory="example/").run()
+    >>> CollectDescriptors(root_directory="examples/fintech/").run()
 
 
 

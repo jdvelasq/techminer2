@@ -47,7 +47,7 @@ Example:
       Case sensitive : False
          Regex Flags : 0
         Regex Search : False
-      19 matching keys found
+      21 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -57,18 +57,18 @@ Example:
           AGRIBUSINESS
         BUSINESS
           BUSINESS; BUSINESSES
+        BUSINESS_DEVELOPMENT
+          BUSINESS_DEVELOPMENT
         BUSINESS_GERMANY
           BUSINESS_GERMANY
-        BUSINESS_INFRASTRUCTURES
-          BUSINESS_INFRASTRUCTURES
-        BUSINESS_MODELS
-          BUSINESS_MODELS
+        BUSINESS_INFRASTRUCTURE
+          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_MODEL
+          BUSINESS_MODEL; BUSINESS_MODELS
         BUSINESS_OPPORTUNITIES
           BUSINESS_OPPORTUNITIES
-        BUSINESS_TO_CONSUMERS_MODELS
-          BUSINESS_TO_CONSUMERS_MODELS
-        FINANCIAL_BUSINESSES
-          FINANCIAL_BUSINESSES
+        BUSINESS_PROCESS
+          BUSINESS_PROCESS
     <BLANKLINE>
     <BLANKLINE>
 

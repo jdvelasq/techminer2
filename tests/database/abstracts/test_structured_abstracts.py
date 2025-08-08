@@ -32,7 +32,7 @@ Example:
     ...     print()
     background : THE_FLIPPED_CLASSROOM has generated interest in HIGHER_EDUCATION providing
     A_STUDENT_CENTRED_APPROACH to LEARNING . this has THE_POTENTIAL to engage NURSING_STUDENTS
-    in WAYS that address THE_NEEDS of today ' sstudents and THE_COMPLEXITY of
+    in WAYS that address THE_NEEDS of today ' s STUDENTS and THE_COMPLEXITY of
     CONTEMPORARY_HEALTHCARE . calls for EDUCATIONAL_REFORM , particularly in
     HEALTHCARE_PROGRAMS such_as NURSING , highlight THE_NEED for STUDENTS to PROBLEM solve ,
     reason and apply THEORY into PRACTICE . THE_DRIVERS towards STUDENT_BASED_LEARNING have
@@ -83,7 +83,7 @@ Example:
     purpose : BLENDED_LEARNING is rapidly emerging as A_DOMAIN for PRACTICE and RESEARCH .
     across DISCIPLINES and CONTEXTS , at INDIVIDUAL_INSTRUCTOR and INSTITUTION_LEVELS ,
     EDUCATORS are experimenting with THE_BLENDED_LEARNING_MODEL of INSTRUCTION .
-    THE_CURRENT_GENERATION of LEARNERS have been referred to as ' digitalnatives ' in
+    THE_CURRENT_GENERATION of LEARNERS have been referred to as ' DIGITAL_NATIVES ' in
     REFL_ECTION of THEIR_APPARENT_EASE and FAMILIARITY with DIGITAL_TECHNOLOGY . however ,
     QUESTIONS remain about how READY_STUDENTS are for A_BLENDED_LEARNING_MODEL of INSTRUCTION
     . THE_PURPOSE of the study was to investigate STUDENTS ' readiness for
@@ -107,8 +107,8 @@ Example:
     HOMEWORK , it is important to understand and implement THE_FUNDAMENTAL_DESIGN_PRINCIPLES
     of FLIPPED_LEARNING . A_NEW_NOTION is proposed called FLIPPED_LEARNING_DESIGN_FIDELITY ,
     defined as THE_DEGREE to which A_CLASS is faithfully designed to be close to
-    AN_IDEAL_FLIPPED_LEARNING_CLASS operationalised with FOUR_PROXY_INDICATORS of
-    THE_F_L_I_PTM_MODEL ( FLEXIBLE_ENVIRONMENT , LEARNING_CULTURE , INTENTIONAL_CONTENT , and
+    AN_IDEAL_FLIPPED_LEARNING_CLASS operationalised with FOUR_PROXY_INDICATORS of THE_F_L
+    I_PTM_MODEL ( FLEXIBLE_ENVIRONMENT , LEARNING_CULTURE , INTENTIONAL_CONTENT , and
     PROFESSIONAL_EDUCATOR ) . THIS_STUDY empirically examines THE_EFFECT of
     BOTH_LEARNER_RELATED_FACTOR ( SELF_REGULATED_LEARNING ) and DESIGN_RELATED_FACTOR (
     DESIGN_FIDELITY ) on LEARNING_OUTCOMES ( SATISFACTION , CONTINUANCE_INTENTION ) in
@@ -122,13 +122,13 @@ Example:
     . drawn from THE_KEY_FINDINGS , we suggest IMPLICATIONS for THE_DESIGN of
     FLIPPED_LEARNING_COURSES in A_UNIVERSITY_CONTEXT . implications for practice :
     INSTRUCTIONAL_DESIGNERS and INSTRUCTORS can apply THE_CONCEPT of
-    FLIPPED_LEARNING_DESIGN_FIDELITY to fully implement THE_FOUR_PILLARS of
-    THE_F_L_I_PTM_MODEL . SELF_REGULATED_STUDENTS are likely to be satisfied with
-    FLIPPED_LEARNING and want to_continue taking FLIPPED_LEARNING_COURSES . 2021 . articles
-    published in the australasian journal of educational technology ( AJET ) are available
-    under creative commons attribution NON commercial NO_DERIVATIVES_LICENCE ( cc by nc nd 4.0
-    ) . AUTHORS retain COPYRIGHT in THEIR_WORK and GRANT_AJET_RIGHT of FIRST_PUBLICATION under
-    cc by nc nd 4.0 .
+    FLIPPED_LEARNING_DESIGN_FIDELITY to fully implement THE_FOUR_PILLARS of THE_F_L
+    I_PTM_MODEL . SELF_REGULATED_STUDENTS are likely to be satisfied with FLIPPED_LEARNING and
+    want to_continue taking FLIPPED_LEARNING_COURSES . 2021 . articles published in the
+    australasian journal of educational technology ( AJET ) are available under creative
+    commons attribution NON commercial NO_DERIVATIVES_LICENCE ( cc by nc nd 4.0 ) . AUTHORS
+    retain COPYRIGHT in THEIR_WORK and GRANT_AJET_RIGHT of FIRST_PUBLICATION under cc by nc nd
+    4.0 .
     <BLANKLINE>
     clinical relevance : THE_SYNCHRONOUS_HYBRID_LEARNING_ENVIRONMENT is associated with
     INCREASED_TIME spent by STUDENTS working with vdt and INCREASED_PREVALENCE of
@@ -166,7 +166,7 @@ Example:
     EMOTIONAL_ENGAGEMENT , and PSYCHOLOGICAL_CAPITAL all IMPACT_ACADEMIC_PERFORMANCE .
     EXTRINSIC_LEARNING_MOTIVATION has SIGNIFICANT_POSITIVE_DIRECT_EFFECTS on
     INTRINSIC_LEARNING_MOTIVATION , EMOTIONAL_ENGAGEMENT , and PSYCHOLOGICAL_CAPITAL .
-    INTRINSIC_MOTIVATION_MEDIATES_THE_RELATIONSHIP between EXTRINSIC_MOTIVATION and
+    INTRINSIC_MOTIVATION_MEDIATES THE_RELATIONSHIP between EXTRINSIC_MOTIVATION and
     ACADEMIC_PERFORMANCE . discussion : in FUTURE_BLENDED_LEARNING_PRACTICES , it is essential
     to CULTIVATE_STUDENTS ' INTRINSIC_LEARNING_MOTIVATION while maintaining A_CERTAIN_LEVEL of
     EXTERNAL_LEARNING_MOTIVATION . it is also crucial to stimulate and maintain STUDENTS '
@@ -238,7 +238,7 @@ Example:
     compared to TRADITIONAL_CLASS_LEARNING ( smd = 0.48 , 95 % CI = 0.15 to 0.82 , 2 : 0.19 ,
     i2:89 % , p < 0.00001 , 8 STUDIES n = 1696 ) . all being LOW_CERTAINTY of EVIDENCE .
     authors ' conclusions : in THIS_REVIEW , we aimed to find EVIDENCE of
-    THE_FLIPPED_CLASSROOM_INTERVENTION ' seffectiveness for
+    THE_FLIPPED_CLASSROOM_INTERVENTION_EFFECTIVENESS for
     UNDERGRADUATE_HEALTH_PROFESSIONAL_STUDENTS . we found ONLY_A_FEW_RCTS , and the
     RISK_OF_BIAS in THE_INCLUDED_NON_RANDOMISED_STUDIES was high . overall , implementing
     FLIPPED_CLASSES may improve ACADEMIC_PERFORMANCE , and may SUPPORT_STUDENT_SATISFACTION in
@@ -261,7 +261,7 @@ Example:
     second one in THE_FIFTEENTH_WEEK , using A_VALID_INSTRUMENT with A_TOTAL_RELIABILITY_INDEX
     of 0.79. THE_EDOOME_EDUCATIONAL_PLATFORM was also used . it has CHARACTERISTICS of an
     OPEN_SOURCE_LEARNING_MANAGEMENT_SYSTEM . results : 93.8 % stated that THE_TEACHER and
-    THE_STUDENTS develop THE_CLASS , 29.6 % previously STUDY_THE_CONTENTS , and 39.5 % make
+    THE_STUDENTS develop THE_CLASS , 29.6 % previously STUDY THE_CONTENTS , and 39.5 % make
     A_SUMMARY of THE_CLASS , meaning that THE_COLLABORATIVE_WORK predominates . 74.0 % stated
     that THE_FLIPPED_LEARNING facilitated THEIR_LEARNING and obtained BETTER_GRADES in
     THE_FINAL_EXAM . conclusion : THE_FLIPPED_CLASSROOM_MODEL proved to be effective to
@@ -303,19 +303,20 @@ Example:
     on THE_ACQUISITION and DEVELOPMENT of EFL_KNOWLEDGE , SKILLS and ABILITIES . that STUDENTS
     like LEARNING in A_FLIPPED_LEARNING_ENVIRONMENT is THE_STRONGEST_FINDING emerging . many
     linking it to THE_FACILITATION of SELF_REGULATED_LEARNING_BEHAVIORS . however ,
-    RESEARCH_EVIDENCE for FLIPPED_LEARNING ' scontribution to IMPORTANT_EDUCATIONAL_OUTCOMES
-    is not robust and this remains A_PROBLEM for UNDERSTANDING where or how to target
-    THE_IMPACT or VALUE of THIS_PEDAGOGY . nonetheless , OTHER_ENCOURAGING_FINDINGS include
-    that using FLIPPED_LEARNING to teach EFL was linked to ITS_CAPACITY to improve
-    IDIOMATIC_KNOWLEDGE , ORAL_AND_WRITING_PERFORMANCE , MOTIVATION , and
-    HIGHER_ORDER_THINKING_SKILLS . FUTURE_RESEARCH should FOCUS on improving RESEARCH_DESIGN
-    and REPORTING for FLIPPED_LEARNING_INTERVENTIONS , and FOCUS on investigating
-    KEY_EFL_LEARNING_SKILLS particularly reading which is comparatively understudied despite
-    ITS_IMPORTANCE to LANGUAGE_ACQUISITION . value : THE_RESULTS clarify for EDUCATORS that
-    FLIPPED_LEARNING ' scapacity to influence THE_ACQUISITION of KEY_LEARNING_SKILLS remains
+    RESEARCH_EVIDENCE for FLIPPED_LEARNING_CONTRIBUTION to IMPORTANT_EDUCATIONAL_OUTCOMES is
+    not robust and this remains A_PROBLEM for UNDERSTANDING where or how to target THE_IMPACT
+    or VALUE of THIS_PEDAGOGY . nonetheless , OTHER_ENCOURAGING_FINDINGS include that using
+    FLIPPED_LEARNING to teach EFL was linked to ITS_CAPACITY to improve IDIOMATIC_KNOWLEDGE ,
+    ORAL_AND_WRITING_PERFORMANCE , MOTIVATION , and HIGHER_ORDER_THINKING_SKILLS .
+    FUTURE_RESEARCH should FOCUS on improving RESEARCH_DESIGN and REPORTING for
+    FLIPPED_LEARNING_INTERVENTIONS , and FOCUS on investigating KEY_EFL_LEARNING_SKILLS
+    particularly reading which is comparatively understudied despite ITS_IMPORTANCE to
+    LANGUAGE_ACQUISITION . value : THE_RESULTS clarify for EDUCATORS that
+    FLIPPED_LEARNING_CAPACITY to influence THE_ACQUISITION of KEY_LEARNING_SKILLS remains
     largely unproven . 2024 the author ( s ) . published by informa uk limited , trading as
     taylor and francis group .
     <BLANKLINE>
+
 
 
     >>> for i in range(10, 20):
@@ -394,14 +395,14 @@ Example:
     EVIDENCE from THE_LITERATURE , but THE_CASE_STUDY is used to_illustrate how
     THE_MBF_DESIGN_PRINCIPLES can be implemented in PRACTICE . findings : THE_RESULTS suggest
     that THE_MBF_METHODOLOGY is A_GROWING_TREND in UNDERGRADUATE_ENGINEERING_EDUCATION with
-    THE_POTENTIAL to FACILITATE_STUDENT ' SACTIVE_LEARNING in synchronous
+    THE_POTENTIAL to FACILITATE_STUDENT ' s ACTIVE_LEARNING in synchronous
     FACE_TO_FACE_SESSIONS while fostering the ADOPTION_AND_USAGE of MOOCS . 1963 2012 ieee .
     <BLANKLINE>
     introduction : THE_LAST_TWO_DECADES have seen A_SHIFT towards BLENDED_LEARNING in
     EDUCATION due_to TECHNOLOGICAL_ADVANCEMENTS . this study focuses on DENTAL_EDUCATION ,
     comparing TWO_BLENDED_LEARNING_MODELS enriched VIRTUAL_AND_FULLY_ONLINE_FLIPPED_CLASSROOM
     in_terms_of ACADEMIC_ACHIEVEMENT , aligning with THE_ASSOCIATION for DENTAL_EDUCATION in
-    europe ' scompetencies . materials and methods : the research was modelled in
+    europe ' s COMPETENCIES . materials and methods : the research was modelled in
     A_QUANTITATIVE_DESIGN with A_PREPOST_TEST_CONTROL_GROUP_EXPERIMENTAL_DESIGN . the study
     was conducted at EGE_UNIVERSITY_FACULTY of DENTISTRY in TURKEY for 4 weeks with the
     experimental ( n = 44 ) and control ( n = 39 ) GROUPS divided into TWO_GROUPS by
@@ -420,7 +421,7 @@ Example:
     THE_IMPACT of FULLY_ONLINE_TEACHING_METHODS on ACADEMIC_ACHIEVEMENT . in THIS_CONTEXT ,
     THE_FLIPPED_CLASSROOM_METHOD can be preferred both in CASES where EDUCATION is blocked and
     in DENTAL_EDUCATION_INSTITUTIONS that want to ENSURE_DIGITAL_TRANSFORMATION efficiently
-    and partially remotely . 2023 JOHN_WILEY and SONS_A_/_S . published by john wiley and sons
+    and partially remotely . 2023 JOHN_WILEY and SONS A_/_S . published by john wiley and sons
     ltd .
     <BLANKLINE>
     background and objective : THE_FLIPPED_CLASSROOM ( FC ) approach has become increasingly
@@ -436,7 +437,7 @@ Example:
     THE_TRADITIONAL_LECTURE , among them 100 ( 68.5 % ) MALES and 56 ( 82.3 ) FEMALES agreed .
     almost ~79 % of STUDENTS liked FC as it enabled them knowing THE_MATERIAL in ADVANCE , and
     THE_CLASS_TIME was spent clarifying THE_FACTS and PRINCIPLES with ACTIVE_INTERACTION , as
-    commented during FOCUS_GROUP_DISCUSSION_MORE_CHANCE for discussing with THE_DOCTORS , and
+    commented during FOCUS_GROUP_DISCUSSION MORE_CHANCE for discussing with THE_DOCTORS , and
     i got THE_CHANCE to answer ( st . 6 ) . conclusion : THE_RESULTS showed THAT_THE_STUDENTS
     like THE_FC more than THE_CONVENTIONAL_CLASSROOM . SUGGESTIONS were given by STUDENTS to
     improve THE_ACTIVE_LEARNING_SESSIONS within THE_FC_MODALITY . 2022 , professional medical
@@ -448,8 +449,8 @@ Example:
     ONE_OBJECTIVE was to compare THE_ACADEMIC_PERFORMANCE_SCORES aligned to
     WORKED_COMPETENCIES during PHYSIOTHERAPY_INTERNSHIPS between TWO_GROUPS : one exposed to
     A_BLENDED_LEARNING_EDUCATIONAL_MODEL and another exposed to a FACE_TO_FACE_TEACHING system
-    during INTERNSHIPS . ANOTHER_OBJECTIVE was to STUDY_THE_CORRELATION of THE_MARKS of the
-    following year ' SINTERNSHIP_SUBJECT . design : ANALYTICAL_STUDY of RETROSPECTIVE_COHORTS
+    during INTERNSHIPS . ANOTHER_OBJECTIVE was to STUDY THE_CORRELATION of THE_MARKS of the
+    following year ' s INTERNSHIP_SUBJECT . design : ANALYTICAL_STUDY of RETROSPECTIVE_COHORTS
     . SETTINGS : PHYSIOTHERAPY_UNIVERSITY_DEGREE_PROGRAM . participants :
     THREE_HUNDRED_STUDENTS working towards attaining PHYSIOTHERAPY_DEGREES . methods :
     TWO_GROUPS were studied : THE_NON_EXPOSED_COHORT , which had 100 % FACE_TO_FACE_ATTENDANCE
@@ -459,7 +460,7 @@ Example:
     that both in THE_EXPOSED_COHORT and in THE_NON_EXPOSED_COHORT , the qualifications and ,
     therefore , THE_COMPETENCE_DEVELOPMENT achieved by THE_STUDENTS were similar .
     A_STRONGER_CORRELATION with SKILLS_ACTIVITIES developed in THE_EXPOSED_COHORT in RELATION
-    to THE_FINAL_MARK of the following year ' SINTERNSHIP_SUBJECT has been found . discussion
+    to THE_FINAL_MARK of the following year ' s INTERNSHIP_SUBJECT has been found . discussion
     and conclusions : for ALL_THE_COMPETENCIES developed during CS_II , PARTICIPANTS obtained
     THE_SAME_GRADES in BOTH_GROUPS , so it is concluded that THE_ONLINE_ACTIVITIES implemented
     during CONFINEMENT mixed with FACE_TO_FACE_TEACHING were useful for THE_ACHIEVEMENT of
@@ -496,7 +497,7 @@ Example:
     DISTANCE_LEARNING , is paramount . THESE_TUTORIALS can catalyze SELF_REGULATED_LEARNING ,
     CRITICAL_THINKING_AND_COMMUNICATION_SKILLS , especially for
     PROSPECTIVE_AND_IN_SERVICE_TEACHERS pursuing HIGHER_EDUCATION . this paper aims to develop
-    A_CONCEPTUAL_FRAMEWORK and REPORT_THE_RESULTS of implementing A_FLIPPED_CLASSROOM with
+    A_CONCEPTUAL_FRAMEWORK and REPORT THE_RESULTS of implementing A_FLIPPED_CLASSROOM with
     WHITEBOARD_ANIMATION and MODULES . THIS_INNOVATIVE_APPROACH seeks to ENHANCE_STUDENTS '
     SELF_REGULATION , CRITICAL_THINKING_AND_COMMUNICATION_ABILITIES . design / methodology /
     approach : this study employs A_MIXED_METHODS_APPROACH . in THE_FIRST_PHASE ,
@@ -582,6 +583,7 @@ Example:
     <BLANKLINE>
 
 
+
     >>> for i in range(20, 30):
     ...     print(textwrap.fill(mapping[i]["AB"], width=90))
     ...     print()
@@ -636,7 +638,7 @@ Example:
     STUDENT_SATISFACTION and MOTIVATION , and THE_EFFECTIVE_USE of
     INFORMATION_AND_COMMUNICATION_TECHNOLOGIES in THE_LEARNING_PROCESS . theoretical framework
     : THE_MAIN_CONCEPTS and ACADEMIC_LITERATURE that underpin THE_RESEARCH are presented ,
-    providing A_SOLID_FOUNDATION for UNDERSTANDING_THE_CONTEXT of the study . method :
+    providing A_SOLID_FOUNDATION for UNDERSTANDING THE_CONTEXT of the study . method :
     THE_METHODOLOGY adopted for THIS_RESEARCH is quantitative in NATURE , with
     A_CROSS_SECTIONAL_DESIGN , and EXPLORATORY_AND_DESCRIPTIVE_SCOPE . DATA_COLLECTION was
     conducted using A_QUESTIONNAIRE composed of FIVE_DIMENSIONS , in_order_to cover
@@ -663,7 +665,7 @@ Example:
     ENHANCE_INCLUSIVITY in SYNCHRONOUS_WORKING_ACTIVITIES where GROUPS of PEOPLE may be
     present either FACE_TO_FACE or ONLINE focusing_on BLENDED_LEARNING in THE_HIGHER_EDUCATION
     ( he ) CONTEXT . design / methodology / approach : in A_RESEARCH_METHODS_MODULE , 140
-    UNIVERSITY_MASTER ' SLEVEL_STUDENTS were given THE_OPTION to attend and engage in
+    UNIVERSITY_MASTER_LEVEL_STUDENTS were given THE_OPTION to attend and engage in
     SEMINARS_/_PRACTICAL_SESSIONS either in A_REAL_LECTURE_ROOM or ONLINE through
     A_VIRTUAL_VERSION of AN_EQUIVALENT_ENVIRONMENT , accessible on EVERYDAY_DEVICES .
     THE_MR_PLATFORM provided TWO_WAY_VIDEO_WINDOWS enabling ALL_STUDENTS on THE_MODULE to
@@ -684,15 +686,15 @@ Example:
     ultimately LEARNING_/_PRODUCTIVITY_OUTCOMES . originality / value : THIS_STUDY
     investigated how a large ( > 100 ) cohort of STUDENTS responded to
     AN_MR_BLENDED_LEARNING_EXPERIENCE across A_WHOLE_SEMESTER . in_this_respect , to the best
-    of THE_AUTHOR ' sknowledge , this is THE_FIRST_STUDY to consider SUCH_ISSUES at_this scale
-    in A_UNIVERSITY_EDUCATION_SETTING . 2024 , emerald publishing limited .
+    of THE_AUTHOR_KNOWLEDGE , this is THE_FIRST_STUDY to consider SUCH_ISSUES at_this scale in
+    A_UNIVERSITY_EDUCATION_SETTING . 2024 , emerald publishing limited .
     <BLANKLINE>
     introduction : THE_CURRENT_STUDY was conducted to compare THE_EFFECTS of
-    THE_LECTURE_METHOD of TEACHING and THE_FLIPPED_CLASSROOM_MODEL based on bloom ' staxonomy
+    THE_LECTURE_METHOD of TEACHING and THE_FLIPPED_CLASSROOM_MODEL based on bloom ' s TAXONOMY
     of EDUCATIONAL_OBJECTIVES on THE_TEACHING of ENDODONTICS_CURRICULUM to
     UNDERGRADUATE_STUDENTS majoring in STOMATOLOGY , and to develop
     A_STANDARDIZED_TEACHING_PROCESS based on THE_FLIPPED_CLASSROOM_MODEL . materials and
-    methods : A_STANDARDIZED_FLIPPED_CLASSROOM_MODEL based on bloom ' staxonomy of
+    methods : A_STANDARDIZED_FLIPPED_CLASSROOM_MODEL based on bloom ' s TAXONOMY of
     EDUCATIONAL_OBJECTIVES was established . TWO_GROUPS of UNDERGRADUATE_STUDENTS majoring in
     STOMATOLOGY received INSTRUCTION in A_PORTION of THE_ENDODONTICS_CURRICULUM using
     EITHER_THE_LECTURE_METHOD or FLIPPED_CLASSROOM model of TEACHING .
@@ -719,7 +721,7 @@ Example:
     SATISFACTION with THE_PREVIEW_METHOD and CURRICULUM increased by 8.1 % ( t = 1.804 , p =
     0.081 ) and 11.1 % ( t = 1.861 , p = 0.072 ) , respectively . there was
     NO_STATISTICALLY_SIGNIFICANT_DIFFERENCE between THE_TWO_GROUPS . conclusions :
-    THE_FLIPPED_CLASSROOM_TEACHING_MODEL based on bloom ' staxonomy of EDUCATIONAL_OBJECTIVES
+    THE_FLIPPED_CLASSROOM_TEACHING_MODEL based on bloom ' s TAXONOMY of EDUCATIONAL_OBJECTIVES
     , combined with HUMANISTIC_TEACHING_OBJECTIVES , can improve THE_EFFICACY of INSTRUCTION ,
     and merits popularizing and applying in THE_TEACHING of UNDERGRADUATE_STUDENTS majoring in
     STOMATOLOGY . copyright 2025 wei and peng .
@@ -727,7 +729,7 @@ Example:
     background : SOCIAL_PSYCHOLOGY has A_VERY_IMPORTANT_ROLE in analyzing INDIVIDUAL_BEHAVIOR
     , GROUP_BEHAVIOR and INTERPERSONAL_RELATIONSHIPS . based on THE_ANALYSIS of
     SOCIAL_PSYCHOLOGY and UNIVERSITY_STUDENTS ' AVERSION_TO_LEARNING , the study proposes
-    A_FLIPPED_CLASSROOM_CIVICS_TEACHING_MODEL , and analyzes in DEPTH_THE_EFFECT of THE_MODEL
+    A_FLIPPED_CLASSROOM_CIVICS_TEACHING_MODEL , and analyzes in DEPTH THE_EFFECT of THE_MODEL
     on STUDENTS ' AVERSION_TO_LEARNING . subjects and methods : the study selected
     UNIVERSITY_STUDENTS from FIVE_UNIVERSITIES as THE_RESEARCH_SUBJECTS to analyses THE_EFFECT
     of THE_FLIPPED_CLASSROOM_CIVICS_TEACHING_MODEL combined with SOCIAL_PSYCHOLOGY on STUDENTS
@@ -741,7 +743,7 @@ Example:
     AVERSION_TO_LEARNING is significant , mainly in_terms_of THE_LOW_QUALITY of LEARNING and
     EDUCATION and THE_EXISTENCE of BAD_SOCIAL_CLIMATE in SOCIETY , while THE_IMPROVEMENT in
     THE_SUBJECTIVE_AVERSION to LEARNING is slightly weaker . conclusions :
-    SOCIAL_PSYCHOLOGY_PLAYS_AN_IMPORTANT_ROLE in THE_ANALYSIS of INDIVIDUAL_BEHAVIOR ,
+    SOCIAL_PSYCHOLOGY_PLAYS AN_IMPORTANT_ROLE in THE_ANALYSIS of INDIVIDUAL_BEHAVIOR ,
     GROUP_BEHAVIOR and INTERPERSONAL_RELATIONSHIPS . THE_FLIPPED_CLASSROOM_MODEL of
     TEACHING_CIVICS combined with SOCIAL_PSYCHOLOGY can positively improve STUDENTS '
     AVERSION_TO_LEARNING . MEDICINSKA_NAKLADA_ZAGREB , CROATIA .
@@ -755,16 +757,16 @@ Example:
     PERSONALITY_DIAGNOSTIC_TOOL was used to measure CREATIVITY and PERSONALITY_CAPABILITY
     which is categorized mainly as CREATIVITY , PERSONALITY and CREATIVITY and
     PERSONALITY_TEACHING_EFFICACY . findings : this study has proven THE_EFFECTS of
-    FLIPPED_LEARNING aiming to improve PRELIMINARY_INSTRUCTOR ' screativity and
+    FLIPPED_LEARNING aiming to improve PRELIMINARY_INSTRUCTOR_CREATIVITY and
     PERSONALITY_EDUCATIONAL_CAPABILITIES . according to THE_RESULTS , it is effective
-    first_of_all to lead THE_STUDENTS to STUDY_THE_MATERIAL_ONLINE ahead , and then lead them
+    first_of_all to lead THE_STUDENTS to STUDY THE_MATERIAL ONLINE ahead , and then lead them
     to VARIOUS_ACTUAL_ACTIVITIES aiming to increase THE_CREATIVITY and
     PERSONALITY_EDUCATIONAL_CAPABILITY in_order_to improve THE_CREATIVITY , PERSONALITY and
     THE_CREATIVITY and PERSONALITY_TEACHING_EFFICACY of THE_PRELIMINARY_INSTRUCTOR . first ,
     it is critical to induce PERCEPTION_SHIFTS of PRELIMINARY_INSTRUCTORS regarding CURRICULA
     for TEACHING_PROFESSION . second , change in THE_OPERATION of UNIVERSITY_CURRICULA for
     TEACHING is required alongside THE_CHANGE of PERCEPTION of THE_INSTRUCTORS . third , to
-    DESIGN_A_CONSTRUCTIVE_ACTIVITY for enhancing CREATIVITY and PERSONALITY_CAPABILITIES ,
+    DESIGN A_CONSTRUCTIVE_ACTIVITY for enhancing CREATIVITY and PERSONALITY_CAPABILITIES ,
     A_FOUNDATION_SYSTEM is required to actually put THE_IDEAS in PRACTICE . improvements /
     applications : it need to WORK on A_TEACHING_PROCESS that aims to ENHANCE_CREATIVITY .
     PERSONALITY_CAPABILITY on VARIOUS_SUBJECTS as_well_as to FOCUS on THE_THEORIES of
@@ -785,7 +787,7 @@ Example:
     designed that showed THE_USE of VARIOUS_FORMATS and NAMES . conclusions :
     THE_IN_DEPTH_STUDY carried out demonstrated THE_FEASIBILITY of using
     THE_FLIPPED_CLASSROOM_METHODOLOGY in THE_STATISTICAL_TRAINING of POSTGRADUATE_STUDENTS and
-    THE_POSSIBILITY of ITS_GENERALIZATION . ITS_APPLICATION and DESIGN_REFLECT_THE_POTENTIAL
+    THE_POSSIBILITY of ITS_GENERALIZATION . ITS_APPLICATION and DESIGN_REFLECT THE_POTENTIAL
     of THE_ACTIVITY_SYSTEM for THE_DEVELOPMENT of STATISTICAL_SKILLS . 2025 , editorial
     ciencias medicas . all rights reserved .
     <BLANKLINE>
@@ -815,14 +817,15 @@ Example:
     in ITS_HISTOLOGY_AND_EMBRYOLOGY_COURSE . in THIS_MODE , STUDENTS ' participation and
     LEARNING_OUTCOMES are not satisfactory . objective : to solve THIS_PROBLEM , we integrated
     DESIGN_THINKING into THE_LARGE_CLASS_FLIPPED_TEACHING . method : A_MIXED_METHODOLOGY (
-    qualitative and quantitative ) was employed . PARTICIPANTS were from THE_UNIVERSITY '
-    SCLINICAL_MEDICINE_PROGRAM , randomly assigned to THE_EXPERIMENTAL_AND_CONTROL_GROUPS .
-    THE_EXPERIMENTAL_GROUP received INTEGRATED_FLIPPED_CLASSROOM_INSTRUCTIONS , whereas
-    THE_CONTROL_GROUP received TRADITIONAL_LARGE_CLASS_TEACHING . DATA were collected using
-    AN_EMPATHY_CANVAS , QUESTIONNAIRES , and CLASSROOM_ASSESSMENTS . results : ANALYSIS of 24
-    EMPATHY_MAPS identified 32 LEARNING_GAINS and 18 PAIN_POINTS , categorized into
-    FOUR_DIMENSIONS : SELF_AWARENESS , TEAMWORK , LEARNING_EFFICIENCY , and
-    COMPREHENSIVE_COMPETENCIES . SURVEY_RESULTS showed 89.3 % of STUDENTS found
+    qualitative and quantitative ) was employed . PARTICIPANTS were from
+    THE_UNIVERSITY_CLINICAL_MEDICINE_PROGRAM , randomly assigned to
+    THE_EXPERIMENTAL_AND_CONTROL_GROUPS . THE_EXPERIMENTAL_GROUP received
+    INTEGRATED_FLIPPED_CLASSROOM_INSTRUCTIONS , whereas THE_CONTROL_GROUP received
+    TRADITIONAL_LARGE_CLASS_TEACHING . DATA were collected using AN_EMPATHY_CANVAS ,
+    QUESTIONNAIRES , and CLASSROOM_ASSESSMENTS . results : ANALYSIS of 24 EMPATHY_MAPS
+    identified 32 LEARNING_GAINS and 18 PAIN_POINTS , categorized into FOUR_DIMENSIONS :
+    SELF_AWARENESS , TEAMWORK , LEARNING_EFFICIENCY , and COMPREHENSIVE_COMPETENCIES .
+    SURVEY_RESULTS showed 89.3 % of STUDENTS found
     THIS_TEACHING_MODEL_ENHANCED_KNOWLEDGE_COMPREHENSION , 85.3 % reported
     NO_INCREASED_LEARNING_BURDEN , and 80 % acknowledged IMPROVED_COMPREHENSIVE_ABILITIES .
     SIGNIFICANT_GENDER_DIFFERENCES emerged in RESOURCE_PREFERENCES ( MALES favored
@@ -834,6 +837,7 @@ Example:
     is needed to confirm ITS_APPLICABILITY across DIFFERENT_CONTENT_AREAS and
     LEARNING_ENVIRONMENTS . the author ( s ) 2025 .
     <BLANKLINE>
+
 
 
 
@@ -886,7 +890,7 @@ Example:
     <BLANKLINE>
     importance : HYBRID_DOCTOR of PHYSICAL_THERAPY_PROGRAMS , which combine ONLINE and
     IN_PERSON_INSTRUCTION , are becoming AN_INCREASINGLY_COMMON_MODEL for delivering
-    PHYSICAL_THERAPIST_EDUCATION . UNDERSTANDING_THEIR_CHARACTERISTICS , TRENDS , and
+    PHYSICAL_THERAPIST_EDUCATION . UNDERSTANDING THEIR_CHARACTERISTICS , TRENDS , and
     IMPLICATIONS is critical to guiding THEIR_DEVELOPMENT and ensuring
     EQUITABLE_AND_EFFECTIVE_EDUCATIONAL_OUTCOMES . objective : the objective of this study was
     to examine CHARACTERISTICS and TRENDS in HYBRID_EDUCATION_PROGRAMS through
@@ -897,9 +901,9 @@ Example:
     PROGRAM_LEVEL_DATA . main outcomes and measures : KEY_VARIABLES included INSTITUTION_TYPE
     , INSTITUTION and PROGRAM_CHARACTERISTICS , ADMISSIONS and ENROLLMENT_DATA , and
     PROGRAM_OUTCOMES . results : there are 33 HDPT_PROGRAMS at 25 UNIQUE_INSTITUTIONS in
-    THE_UNITED_STATES , located in 21 states .
-    HDPT_PROGRAMS_ENROLL_A_MORE_RACIALLY_AND_ETHNICALLY_DIVERSE_BODY compared to
-    NATIONAL_AVERAGES . MEAN_HDPT_PROGRAM_COHORT_SIZE was 32 % larger than NATIONAL_AVERAGE .
+    THE_UNITED_STATES , located in 21 states . HDPT_PROGRAMS_ENROLL
+    A_MORE_RACIALLY_AND_ETHNICALLY_DIVERSE_BODY compared to NATIONAL_AVERAGES .
+    MEAN_HDPT_PROGRAM_COHORT_SIZE was 32 % larger than NATIONAL_AVERAGE .
     MEAN_FIRST_TIME_PASS_RATE for THE_NATIONAL_PHYSICAL_THERAPY_EXAMINATION ( NPTE ) for
     HDPT_GRADUATES was reported at 71 % , while ULTIMATE_PASS_RATES , GRADUATION_RATES , and
     EMPLOYMENT_RATES ranged from 96 % to 99 % . MEAN_PROGRAM_DURATION and COSTS were
@@ -922,9 +926,9 @@ Example:
     PARENTS ( 34 ) . PERSONALIZED_QUESTIONNAIRES , comprising both open
     ENDED_AND_CLOSED_ENDED_QUESTIONS , were designed to gather INSIGHTS from EACH_GROUP .
     findings : THE_RESEARCH_FINDINGS demonstrate THE_EFFECTIVENESS of HYBRID_LEARNING in
-    CRISIS_MANAGEMENT , FLEXIBILITY and INCLUSIVITY , particularly in BANGLADESH '
-    SEDUCATIONAL_LANDSCAPE . HYBRID_MODELS provide A_PRACTICAL_SOLUTION during
-    POLITICAL_UNREST , ensuring UNINTERRUPTED_EDUCATION through A_COMBINATION of ONLINE and
+    CRISIS_MANAGEMENT , FLEXIBILITY and INCLUSIVITY , particularly in BANGLADESH ' s
+    EDUCATIONAL_LANDSCAPE . HYBRID_MODELS provide A_PRACTICAL_SOLUTION during POLITICAL_UNREST
+    , ensuring UNINTERRUPTED_EDUCATION through A_COMBINATION of ONLINE and
     FACE_TO_FACE_CLASSES . PARTICIPANTS expressed SATISFACTION with THE_FLEXIBILITY offered by
     HYBRID_LEARNING , emphasizing ITS_ACCESSIBILITY for DIVERSE_LEARNERS and
     WORKING_PROFESSIONALS . moreover , while HYBRID_LEARNING holds PROMISE for enhancing
@@ -968,9 +972,9 @@ Example:
     SOME_EDUCATION . however , prior_to THE_DEVELOPMENT of
     THE_ORTHO_ACTING_INTERN_COORDINATED_CLINICAL_EDUCATION and SURGICAL_SKILLS_CURRICULUM in
     2019 , NO_STANDARDIZED_DIDACTIC_CURRICULUM existed . over TIME , STUDENTS desired
-    interactive , CASE_BASED_LEARNING_OPPORTUNITIES . OUR_OBJECTIVE was to
-    DESIGN_A_FLIPPED_CLASSROOM , BLENDED_LEARNING_CURRICULUM and evaluate ITS_ABILITY to
-    improve MEDICAL_STUDENT_ORTHOPAEDIC_KNOWLEDGE . design : ORTHOACCESS 2.0 is a 16 week ,
+    interactive , CASE_BASED_LEARNING_OPPORTUNITIES . OUR_OBJECTIVE was to DESIGN
+    A_FLIPPED_CLASSROOM , BLENDED_LEARNING_CURRICULUM and evaluate ITS_ABILITY to improve
+    MEDICAL_STUDENT_ORTHOPAEDIC_KNOWLEDGE . design : ORTHOACCESS 2.0 is a 16 week ,
     OPEN_ACCESS_CURRICULUM consisting of DIDACTIC_LECTURES , CASE_DISCUSSIONS , and
     LEARNING_RESOURCES . THE_CURRICULUM was evaluated using PRE_CURRICULUM ,
     POST_CASE_DISCUSSION , and POST_CURRICULUM_SURVEYS . LIKERT_ITEM_QUESTIONS were evaluated
@@ -1055,7 +1059,7 @@ Example:
     CONFIRMATORY_FACTOR_ANALYSIS ) . THE_FINAL_VERSION of THE_SCALE was piloted on
     A_SUFFICIENT_SAMPLE of UNDERGRADUATE_STUDENT_NURSES from THREE_SPANISH_UNIVERSITIES .
     results : A_TOTAL of 455 STUDENTS completed THE_QUESTIONNAIRE . 373 women and 82 men . the
-    TOTAL_CRONBACH ' SALPHA_VALUE for THE_COMPLETE_INSTRUMENT was 0.893. cronbach ALPHA for
+    TOTAL_CRONBACH_ALPHA_VALUE for THE_COMPLETE_INSTRUMENT was 0.893. cronbach ALPHA for
     EACH_SEPARATE_DIMENSION ranged between 0.660 and 0.897. GOODNESS_OF_FIT values were
     acceptable , implying that THE_MODEL was validated . conclusion :
     THE_FLIPPED_LEARNING_APPROACH has become increasingly popular in ACADEMIC_SETTINGS .
@@ -1094,6 +1098,7 @@ Example:
     <BLANKLINE>
 
 
+
     >>> for i in range(40, len(mapping)):
     ...     print(textwrap.fill(mapping[i]["AB"], width=90))
     ...     print()
@@ -1113,5 +1118,6 @@ Example:
     of THE_SUBJECT_SUBJECT_MODEL in THE_CONDITIONS of MIXED_LEARNING is presented in
     A_COMPREHENSIVE_AND_COMPLETE_MANNER . ZANFIR
     <BLANKLINE>
+
 
 """

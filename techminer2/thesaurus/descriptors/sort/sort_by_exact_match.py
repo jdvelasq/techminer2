@@ -45,7 +45,7 @@ Example:
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
         BLOCKCHAIN
-          BLOCKCHAIN
+          BLOCKCHAIN; BLOCKCHAINS
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY

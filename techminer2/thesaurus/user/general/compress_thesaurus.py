@@ -40,10 +40,11 @@ Example:
     >>> print(output) # doctest: +ELLIPSIS
     Compressing thesaurus keys...
                       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1572 to 1572
+      Keys reduced from 1724 to 1724
       Compression process completed successfully
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

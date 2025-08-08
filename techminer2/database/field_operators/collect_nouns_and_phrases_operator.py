@@ -13,7 +13,7 @@ Collect Nouns and Phrases
 Example:
     >>> import textwrap
     >>> from techminer2.database.field_operators import (
-    ...     CleanTextOperator,
+    ...     TokenizeOperator,
     ...     CollectNounAndPhrasesOperator,
     ...     DeleteFieldOperator,
     ...     HighlightNounAndPhrasesOperator,
@@ -21,8 +21,8 @@ Example:
     >>> from techminer2.tools import Query
 
     >>> # Creates, configure, and run the cleaner to prepare the field
-    >>> cleaner = (
-    ...     CleanTextOperator()
+    >>> (
+    ...     TokenizeOperator()
     ...     #
     ...     # FIELDS:
     ...     .with_field("raw_abstract")
@@ -30,11 +30,13 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> cleaner.run()
+
 
     >>> # Creates, configure, and run the highlighter
-    >>> highlighter = (
+    >>> (
     ...     HighlightNounAndPhrasesOperator()
     ...     #
     ...     # FIELDS:
@@ -43,11 +45,13 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> highlighter.run()
+
 
     >>> # Collect terms in upper case from the field
-    >>> collector = (
+    >>> (
     ...     CollectNounAndPhrasesOperator()
     ...     #
     ...     # FIELDS:
@@ -56,27 +60,29 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> collector.run()
+
 
 
     >>> # Query the database to test the cleaner
-    >>> query = (
+    >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT extracted_nouns_and_phrases FROM database LIMIT 10;")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
+    ...     .run()
     ... )
-    >>> df = query.run()
     >>> print(textwrap.fill(df.values[1][0], width=80))
     THE_RAPID_DEVELOPMENT; INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY;
     THE_ENTIRE_INDUSTRY_LANDSCAPE; A_NEW_ERA; CONVERGENCE_SERVICES;
     THE_DEVELOPING_COUNTRIES; THE_FINANCIAL_SECTOR; CHINA; AN_UNPRECEDENTED_LEVEL;
     CONVERGENCE; FINANCE; TECHNOLOGY; THE_LENS; ACTOR_NETWORK_THEORY; ANT;
-    A_MULTI_LEVEL_ANALYSIS; THE_HISTORICAL_DEVELOPMENT;
-    CHINA_FINANCIAL_TECHNOLOGY_INDUSTRY; THE_PROCESS; BUILDING; A_VARIETY; NETWORKS;
+    A_MULTI_LEVEL_ANALYSIS; THE_HISTORICAL_DEVELOPMENT; CHINA;
+    FINANCIAL_TECHNOLOGY_INDUSTRY; THE_PROCESS; BUILDING; A_VARIETY; NETWORKS;
     HETEROGENEOUS_ACTORS; THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY; A_STEPPING_STONE;
     THE_INTERACTION; FINTECH; SOCIAL_AND_POLITICAL_CONTEXT;
     DISCUSSES_POLICY_IMPLICATIONS; CHINA_FINTECH_INDUSTRY; THE_CHANGING_ROLE;

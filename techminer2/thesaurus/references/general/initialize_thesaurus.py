@@ -13,14 +13,13 @@ Initialize thesaurus
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.references import InitializeThesaurus
-
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory = "example/", tqdm_disable=True, use_colorama=False).run()
+    >>> from techminer2.thesaurus.references import InitializeThesaurus
+    >>> InitializeThesaurus(root_directory = "examples/fintech/", tqdm_disable=True, use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -54,6 +53,7 @@ Example:
           Gabor D., Brooks S., The Digital Revolution in Financial Inclusion: Inter...
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 

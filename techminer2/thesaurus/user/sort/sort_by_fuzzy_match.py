@@ -44,7 +44,7 @@ Example:
                 File : examples/fintech/data/thesaurus/demo.the.txt
            Keys like : INTELL
       Match thresold : 70
-      2 matching keys found
+      3 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -54,6 +54,8 @@ Example:
           ARTIFICIAL_INTELLIGENCE
         INTELLIGENT_ALGORITHMS
           INTELLIGENT_ALGORITHMS
+        INTELLIGENT_ROBOTS
+          INTELLIGENT_ROBOTS
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -64,10 +66,9 @@ Example:
           A_BETTER_UNDERSTANDING
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-        A_CASE_STUDY
-          A_CASE_STUDY
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 

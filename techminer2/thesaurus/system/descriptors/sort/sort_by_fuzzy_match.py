@@ -36,30 +36,31 @@ Example:
                 File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
-      0 matching keys found
+      5 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
+        BI_LSTM_TRANSFORMER
+          BILSTM_TRANSFORMER_MODELS; BILSTM_TRANSFORMER_MODEL
+        MULTI_TRANSFORMER
+          MULTI_TRANSFORMER_MODELS; MULTI_TRANSFORMER_MODEL
+        SYNTHESIZER_TRANSFORMER
+          SYNTHESIZER_TRANSFORMER_MODELS; SYNTHESIZER_TRANSFORMER_MODEL
+        TEMPORAL_FUSION_TRANSFORMER
+          TEMPORAL_FUSION_TRANSFORMER_METHODS; TEMPORAL_FUSION_TRANSFORMER_METHOD
+        TRANSFORMER_NETWORK
+          TRANSFORMER_NETWORK_ARCHITECTURE
         *ARTICLE*
           ACADEMIC_ARTICLE; ACADEMIC_ARTICLES; ARTICLE; ARTICLES
         *AUTHOR*
           AUTHOR; AUTHORS
         *BIBLIOMETRICS*
           BIBLIOMETRIC; BIBLIOMETRICS
-        *BOOK*
-          BOOK; BOOKS
-        *CHAPTER*
-          CHAPTER; CHAPTERS
-        *EDITORIAL*
-          EDITORIAL
-        *ERROR_METRICS*
-          ABSOLUTE_AVERAGE_DEVIATION; ABSOLUTE_AVERAGE_DEVIATIONS; ABSOLUTE_ERROR; ...
-        *OVERVIEW*
-          OVERVIEW
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """

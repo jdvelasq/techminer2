@@ -35,7 +35,7 @@ Example:
     >>> print(output)
     Replacing hyphenated words in thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      47 hypenated words transformed successfully
+      42 hypenated words transformed successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header

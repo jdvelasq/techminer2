@@ -38,7 +38,7 @@ Example:
     Sorting thesaurus by endswith match...
          File : examples/fintech/data/thesaurus/descriptors.the.txt
       Pattern : BANKS
-      14 matching keys found
+      13 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -52,14 +52,14 @@ Example:
           COMMERCIAL_BANKS
         ENABLE_BANKS
           ENABLE_BANKS
-        FINTECH_AND_FINANCIAL_INNOVATIONS_THE_BANKS
-          FINTECH_AND_FINANCIAL_INNOVATIONS_THE_BANKS
         FIVE_MAJOR_COMMERCIAL_BANKS
           FIVE_MAJOR_COMMERCIAL_BANKS
         INCUMBENT_RETAIL_BANKS
           INCUMBENT_RETAIL_BANKS
         LEADING_EUROPEAN_AND_US_BANKS
           LEADING_EUROPEAN_AND_US_BANKS
+        NOWADAYS_BANKS
+          NOWADAYS_BANKS
     <BLANKLINE>
     <BLANKLINE>
 

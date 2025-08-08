@@ -35,31 +35,6 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Converting British to American English...
-      File : examples/fintech/data/thesaurus/descriptors.the.txt
-      13 replacements made successfully
-      Translation process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/descriptors.the.txt
-    <BLANKLINE>
-        ANALOG_PROCESSES
-          ANALOGUE_PROCESSES
-        ANALYZE_THE_KEY_FACTORS
-          ANALYSE_THE_KEY_FACTORS
-        ANALYZE_THE_SYSTEMIC_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-        ANALYZE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-        BEHAVIORAL_ECONOMICS
-          BEHAVIOURAL_ECONOMICS
-        ENTREPRENEURIAL_ENDEAVORS
-          ENTREPRENEURIAL_ENDEAVOURS
-        FAVOR
-          FAVOUR
-        HARMONIZE_TECHNOLOGICAL_ADVANCEMENTS
-          HARMONISE_TECHNOLOGICAL_ADVANCEMENTS
-    <BLANKLINE>
-    <BLANKLINE>
 
 
 

@@ -58,16 +58,15 @@ Example:
     ... )
     >>> import pprint
     >>> pprint.pprint(mapping)  # doctest: +ELLIPSIS
-    {0: ['Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373',
-         'Brummer C., 2019, GEORGET LAW J, V107, P235',
+    {0: ['Anshari M., 2019, ENERGY PROCEDIA, V156, P234',
+         'Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373',
          'Deng X., 2019, SUSTAINABILITY, V11',
          'Dorfleitner G., 2017, FINTECH IN GER, P1',
          'Du W.D., 2019, J STRATEGIC INFORM SYST, V28, P50',
          'Gimpel H., 2018, ELECTRON MARK, V28, P245',
          'Goldstein I., 2019, REV FINANC STUD, V32, P1647',
+         'Gomber P., 2017, J BUS ECON, V87, P537',
     ...
-
-
 
 """
 from ...._internals.mixins import ParamsMixin

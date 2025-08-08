@@ -36,10 +36,10 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)
     Replacing initial word in keys...
-             File : ...e/data/thesaurus/descriptors.the.txt
+             File : ...h/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
-      39 replacements made successfully
+      38 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -47,12 +47,12 @@ Example:
     <BLANKLINE>
         fintech
           FINTECH; FINTECHS
-        fintech_AND_FINANCIAL_INNOVATIONS_THE_BANKS
-          FINTECH_AND_FINANCIAL_INNOVATIONS_THE_BANKS
-        fintech_AND_REGTECH_:_IMPACT
-          FINTECH_AND_REGTECH_:_IMPACT
-        fintech_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
-          FINTECH_AND_SUSTAINABLE_DEVELOPMENT_:_EVIDENCE
+        fintech_AND_FINANCIAL_INNOVATIONS
+          FINTECH_AND_FINANCIAL_INNOVATIONS
+        fintech_AND_REGTECH
+          FINTECH_AND_REGTECH
+        fintech_AND_SUSTAINABLE_DEVELOPMENT
+          FINTECH_AND_SUSTAINABLE_DEVELOPMENT
         fintech_BANKING_INDUSTRY
           FINTECH_BANKING_INDUSTRY
         fintech_BASED_INNOVATION_DEVELOPMENT

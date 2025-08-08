@@ -41,10 +41,11 @@ Example:
     >>> print(output)
     Spell checking thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Potential misspelled words (62):
+      Potential misspelled words (69):
     <BLANKLINE>
         - affordance
-        - affordances
+        - agroindustry
+        - agropay
         - analyse
         - backoffice
         - behavioural
@@ -52,10 +53,9 @@ Example:
         - burdencapital
         - cacioppo
         - centricity
-        - crowdfunding
         ...
     <BLANKLINE>
-      Matching keys found : 77
+      Matching keys found : 83
       Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -69,14 +69,14 @@ Example:
           A_WIDE_RANGING_RECONCEPTUALIZATION
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AFFORDANCES
-          AFFORDANCES
-        ANALYSE_THE_KEY_FACTORS
-          ANALYSE_THE_KEY_FACTORS
-        ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+        AGROINDUSTRY
+          AGROINDUSTRY
+        AGROPAY
+          AGROPAY
+        ANALYSE
+          ANALYSE
+        BACKOFFICE_FUNCTIONS
+          BACKOFFICE_FUNCTIONS
     <BLANKLINE>
     <BLANKLINE>
 
@@ -99,10 +99,11 @@ Example:
     >>> print(output)
     Spell checking thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Potential misspelled words (62):
+      Potential misspelled words (69):
     <BLANKLINE>
         - affordance
-        - affordances
+        - agroindustry
+        - agropay
         - analyse
         - backoffice
         - behavioural
@@ -110,10 +111,9 @@ Example:
         - burdencapital
         - cacioppo
         - centricity
-        - crowdfunding
         ...
     <BLANKLINE>
-      Matching keys found : 77
+      Matching keys found : 83
       Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -127,14 +127,14 @@ Example:
           A_WIDE_RANGING_RECONCEPTUALIZATION
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AFFORDANCES
-          AFFORDANCES
-        ANALYSE_THE_KEY_FACTORS
-          ANALYSE_THE_KEY_FACTORS
-        ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_CHARACTERISTICS
-        ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
-          ANALYSE_THE_SYSTEMIC_INNOVATION_CHARACTERISTICS
+        AGROINDUSTRY
+          AGROINDUSTRY
+        AGROPAY
+          AGROPAY
+        ANALYSE
+          ANALYSE
+        BACKOFFICE_FUNCTIONS
+          BACKOFFICE_FUNCTIONS
     <BLANKLINE>
     <BLANKLINE>
 

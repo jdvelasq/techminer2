@@ -45,7 +45,6 @@ Example:
     4     4         REGULATORS 08:0974      19
 
 
-
 """
 from ....._internals.mixins import ParamsMixin
 from ..user.node_degree_data_frame import NodeDegreeDataFrame as UserNodeDegreeDataFrame

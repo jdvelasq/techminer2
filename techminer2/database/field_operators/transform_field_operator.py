@@ -58,6 +58,7 @@ Example:
     9  digital_finance; e_finance; fintech; future_re...
 
 
+
     >>> # Deletes the field
     >>> DeleteFieldOperator(
     ...     field="author_keywords_copy",

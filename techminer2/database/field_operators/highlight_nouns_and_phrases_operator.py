@@ -13,15 +13,15 @@ Highlight Nouns and Noun Phrases
 Example:
     >>> import textwrap
     >>> from techminer2.database.field_operators import (
-    ...     CleanTextOperator,
+    ...     TokenizeOperator,
     ...     DeleteFieldOperator,
     ...     HighlightNounAndPhrasesOperator,
     ... )
     >>> from techminer2.tools import Query
 
     >>> # Creates, configure, and run the cleaner to prepare the field
-    >>> cleaner = (
-    ...     CleanTextOperator()
+    >>> (
+    ...     TokenizeOperator()
     ...     #
     ...     # FIELDS:
     ...     .with_field("raw_abstract")
@@ -29,8 +29,9 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> cleaner.run()
+
 
     >>> # Creates, configure, and run the highlighter
     >>> highlighter = (
@@ -62,15 +63,17 @@ Example:
     THE_FINANCIAL_SECTOR , CHINA is experiencing AN_UNPRECEDENTED_LEVEL of
     CONVERGENCE between FINANCE and TECHNOLOGY . this study applies THE_LENS of
     ACTOR_NETWORK_THEORY ( ANT ) to conduct A_MULTI_LEVEL_ANALYSIS of
-    THE_HISTORICAL_DEVELOPMENT of CHINA_FINANCIAL_TECHNOLOGY_INDUSTRY . it attempts
-    to elucidate THE_PROCESS of BUILDING and disrupting A_VARIETY of NETWORKS
-    comprising HETEROGENEOUS_ACTORS involved in
+    THE_HISTORICAL_DEVELOPMENT of CHINA ' s FINANCIAL_TECHNOLOGY_INDUSTRY . it
+    attempts to elucidate THE_PROCESS of BUILDING and disrupting A_VARIETY of
+    NETWORKS comprising HETEROGENEOUS_ACTORS involved in
     THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY . this research represents
     A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet
     unfolding SOCIAL_AND_POLITICAL_CONTEXT . it also DISCUSSES_POLICY_IMPLICATIONS
     for CHINA_FINTECH_INDUSTRY , focusing_on THE_CHANGING_ROLE of THE_STATE in
     fostering THE_GROWTH of NATIONAL_INDUSTRY within_and_outside_of CHINA . 2015
     elsevier ltd .
+
+
 
 
 

@@ -46,8 +46,6 @@ Example:
     [3 rows x 4 columns]
 
 
-
-
 """
 from ....._internals.mixins import ParamsMixin
 from ..user.terms_by_cluster_summary import (
