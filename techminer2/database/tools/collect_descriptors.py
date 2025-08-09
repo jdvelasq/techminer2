@@ -39,7 +39,7 @@ class CollectDescriptors(
 
     def run(self):
 
-        from ..thesaurus.descriptors import InitializeThesaurus
+        from ...thesaurus.descriptors import InitializeThesaurus
 
         sys.stderr.write("\nINFO  Collecting Descriptors\n")
         sys.stderr.flush()

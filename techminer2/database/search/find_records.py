@@ -12,7 +12,7 @@ Find records
 
 
 Example:
-    >>> from techminer2.search import FindRecords
+    >>> from techminer2.database.search import FindRecords
 
     >>> # Create, configure, and run the finder
     >>> finder = (

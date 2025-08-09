@@ -11,7 +11,7 @@ Concordant Mapping
 
 Example:
     >>> from pprint import pprint
-    >>> from techminer2.search import ConcordantMapping
+    >>> from techminer2.database.search import ConcordantMapping
 
     >>> # Create, configure, and run the mapper
     >>> # order_records_by:

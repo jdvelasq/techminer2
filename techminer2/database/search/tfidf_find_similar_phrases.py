@@ -8,7 +8,7 @@
 Find Similar Records
 ===============================================================================
 
-## >>> from techminer2.search import tfidf_find_similar_phrases
+## >>> from techminer2.database.search import tfidf_find_similar_phrases
 ## >>> documents = tfidf_find_similar_phrases(
 ## ...     #
 ## ...     # SEARCH PARAMS:
@@ -63,7 +63,7 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 # from ..database.load.load__database import load__filtered_database
-from ..thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
 

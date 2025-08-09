@@ -10,7 +10,7 @@ Lemma Associations
 =========================================================================================
 
 
-## >>> from techminer2.search import lemma_associations
+## >>> from techminer2.database.search import lemma_associations
 ## >>> lemmas = lemma_associations(
 ## ...     #
 ## ...     # FUNCTION PARAMS:
@@ -41,10 +41,10 @@ from dataclasses import dataclass
 from textblob import TextBlob  # type: ignore
 
 # from ..database.load.load__database import load__filtered_database
-from .._internals.utils.utils_format_prompt_for_paragraphs import (
+from ..._internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from ..thesaurus._internals.load_thesaurus_as_mapping import (
+from ...thesaurus._internals.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
 )
 

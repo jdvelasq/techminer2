@@ -9,7 +9,7 @@ Find Similar Records
 ===============================================================================
 
 
-## >>> from techminer2.search import find_similar_records
+## >>> from techminer2.database.search import find_similar_records
 ## >>> documents = find_similar_records(
 ## ...     #
 ## ...     # SEARCH PARAMS:

@@ -9,7 +9,7 @@ Extract Descriptors from Text
 ===============================================================================
 
 
-## >>> from techminer2.search import extract_descriptors_from_text
+## >>> from techminer2.database.search import extract_descriptors_from_text
 ## >>> extract_descriptors_from_text(
 ## ...    text = (
 ## ...        "They highlight the limited adoption of Regulatory Technology (RegTech) and "
@@ -37,7 +37,7 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+from ....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
 

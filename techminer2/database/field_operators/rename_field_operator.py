@@ -43,7 +43,7 @@ Example:
 
     >>> # Query the database to test the operator
     >>> from techminer2.tools import Query
-    >>> df = (
+    >>> (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_renamed FROM database LIMIT 5;")
     ...     .where_root_directory_is("examples/fintech/")
@@ -52,7 +52,6 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     .run()
     ... )
-    >>> df
                                  author_keywords_renamed
     0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
     1  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; FINTECH...
@@ -69,7 +68,8 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import ParamsMixin
+
 from .._internals.protected_fields import PROTECTED_FIELDS
 from ..ingest._internals.operators.rename_field import internal__rename_field
 

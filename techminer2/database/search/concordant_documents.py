@@ -10,7 +10,7 @@ Concordant Documents
 
 
 Example:
-    >>> from techminer2.search import ConcordantDocuments
+    >>> from techminer2.database.search import ConcordantDocuments
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:

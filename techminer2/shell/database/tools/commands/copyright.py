@@ -1,4 +1,4 @@
-from .....tools import CollectDescriptors, ExtractCopyrightText
+from .....database.tools import CollectDescriptors, ExtractCopyrightText
 from ....colorized_input import colorized_input
 
 

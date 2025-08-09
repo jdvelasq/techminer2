@@ -9,7 +9,7 @@ Highlight phrase
 ===============================================================================
 
 
-## >>> from techminer2.search import highlight_phrase
+## >>> from techminer2.database.search import highlight_phrase
 ## >>> highlight_phrase(
 ## ...    text = (
 ## ...        "They highlight the limited adoption of Regulatory Technology (RegTech) and "
@@ -48,7 +48,7 @@ import os.path
 import re
 import textwrap
 
-from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+from ....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
 

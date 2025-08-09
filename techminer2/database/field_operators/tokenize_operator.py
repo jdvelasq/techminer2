@@ -67,7 +67,8 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import ParamsMixin
+
 from .._internals.protected_fields import PROTECTED_FIELDS
 from ..ingest._internals.operators.tokenize import internal__tokenize
 

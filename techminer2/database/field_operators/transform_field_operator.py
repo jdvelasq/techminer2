@@ -12,14 +12,9 @@ Process a Field
 
 
 Example:
-    >>> from techminer2.database.field_operators import (
-    ...     DeleteFieldOperator,
-    ...     TransformFieldOperator,
-    ... )
-    >>> from techminer2.tools import Query
-
-    >>> # Creates, configures, and runs the transformer
-    >>> transformer = (
+    >>> # Creates, configures, and runs the operator
+    >>> from techminer2.database.field_operators import TransformFieldOperator
+    >>> (
     ...     TransformFieldOperator()
     ...     #
     ...     # FIELDS:
@@ -31,11 +26,13 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> transformer.run()
 
-    >>> # Query the database to test the cleaner
-    >>> df = (
+    >>> # Query the database to test the operation
+    >>> from techminer2.tools import Query
+    >>> (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 10;")
     ...     .where_root_directory_is("examples/fintech/")
@@ -44,7 +41,6 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     .run()
     ... )
-    >>> df
                                     author_keywords_copy
     0  elaboration_likelihood_model; fintech; k_pay; ...
     1  actor_network_theory; chinese_telecom; fintech...
@@ -60,13 +56,15 @@ Example:
 
 
     >>> # Deletes the field
+    >>> from techminer2.database.field_operators import DeleteFieldOperator
     >>> DeleteFieldOperator(
     ...     field="author_keywords_copy",
     ...     root_directory="examples/fintech/",
     ... ).run()
 
 """
-from ..._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import ParamsMixin
+
 from .._internals.protected_fields import PROTECTED_FIELDS
 from ..ingest._internals.operators.transform_field import internal__transform_field
 

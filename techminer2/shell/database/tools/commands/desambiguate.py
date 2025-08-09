@@ -3,7 +3,7 @@ import os
 from colorama import Fore, init
 from openai import OpenAI
 
-from .....search import ConcordantProcessedContexts
+from .....database.search import ConcordantProcessedContexts
 from ....colorized_input import colorized_input
 
 PROMPT = """
