@@ -40,7 +40,8 @@ MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
 from ....._internals.mixins import ParamsMixin
-from ....._internals.nx.compute_network_metrics import internal__compute_network_metrics
+from ....._internals.nx.compute_network_metrics import \
+    internal__compute_network_metrics
 from .create_nx_graph import internal__create_nx_graph
 
 

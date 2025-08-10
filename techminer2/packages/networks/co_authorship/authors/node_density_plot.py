@@ -54,9 +54,8 @@ Example:
 """
 
 from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.node_density_plot import (
-    NodeDensityPlot as UserNodeDensityPlot,
-)
+from ...co_occurrence.user.node_density_plot import \
+    NodeDensityPlot as UserNodeDensityPlot
 
 
 class NodeDensityPlot(

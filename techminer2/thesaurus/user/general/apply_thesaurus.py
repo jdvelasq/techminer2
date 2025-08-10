@@ -50,7 +50,7 @@ Example:
     <BLANKLINE>
 
     >>> # Query the database to check the results
-    >>> from techminer2.tools import Query
+    >>> from techminer2.database.tools import Query
     >>> Query(
     ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
     ...     root_directory="examples/fintech/",
@@ -68,8 +68,8 @@ Example:
 
 
     >>> # Deletes the created field in the database
-    >>> from techminer2.database.field_operators import DeleteFieldOperator
-    >>> DeleteFieldOperator(field="descriptors_cleaned", root_directory="examples/fintech/").run()
+    >>> from techminer2.database.operators import DeleteOperator
+    >>> DeleteOperator(field="descriptors_cleaned", root_directory="examples/fintech/").run()
 
 
 """
@@ -77,11 +77,13 @@ import sys
 
 from colorama import Fore, init
 
-from techminer2.database._internals.io import internal__load_all_records_from_database
+from techminer2.database._internals.io import \
+    internal__load_all_records_from_database
 
 from ...._internals.mixins import ParamsMixin
 from ....database._internals.io import internal__write_records_to_database
-from ..._internals import ThesaurusMixin, internal__load_reversed_thesaurus_as_mapping
+from ..._internals import (ThesaurusMixin,
+                           internal__load_reversed_thesaurus_as_mapping)
 
 
 class ApplyThesaurus(

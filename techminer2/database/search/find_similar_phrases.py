@@ -59,10 +59,10 @@ from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 # from ..database.load.load__database import load__filtered_database
-from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import (
-    internal__load_reversed_thesaurus_as_mapping,
-)
-from .deprecated.extract_descriptors_from_text import extract_descriptors_from_text
+from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import \
+    internal__load_reversed_thesaurus_as_mapping
+from .deprecated.extract_descriptors_from_text import \
+    extract_descriptors_from_text
 
 TEXTWRAP_WIDTH = 79
 THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"

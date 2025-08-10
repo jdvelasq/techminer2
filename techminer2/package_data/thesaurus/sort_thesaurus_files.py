@@ -21,9 +21,8 @@ import os.path
 
 import pkg_resources  # type: ignore
 
-from ...thesaurus._internals.load_thesaurus_as_mapping import (
-    internal__load_thesaurus_as_mapping,
-)
+from ...thesaurus._internals.load_thesaurus_as_mapping import \
+    internal__load_thesaurus_as_mapping
 
 
 def sort_thesaurus_files():

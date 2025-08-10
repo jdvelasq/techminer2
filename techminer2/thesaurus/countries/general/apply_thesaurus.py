@@ -48,7 +48,7 @@ Example:
     <BLANKLINE>
 
     >>> # Query the database to verify the results
-    >>> from techminer2.tools import Query
+    >>> from techminer2.database.tools import Query
     >>> result = Query(
     ...     query_expression="SELECT countries FROM database LIMIT 10;",
     ...     root_directory="examples/fintech/",
@@ -111,12 +111,11 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ....database.ingest._internals.operators.transform_field import (
-    internal__transform_field,
-)
-from ...system import ApplyThesaurus as ApplySystemThesaurus
-from ...user import ApplyThesaurus as ApplyUserThesaurus
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.operators.transform import \
+    internal__transform
+from techminer2.thesaurus.system import ApplyThesaurus as ApplySystemThesaurus
+from techminer2.thesaurus.user import ApplyThesaurus as ApplyUserThesaurus
 
 
 class ApplyThesaurus(
@@ -136,7 +135,7 @@ class ApplyThesaurus(
         ).run()
 
         # Country of first author
-        internal__transform_field(
+        internal__transform(
             #
             # FIELD:
             field="countries",

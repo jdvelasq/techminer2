@@ -115,9 +115,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from ..user.terms_to_clusters_mapping import (
-    TermsToClustersMapping as UserTermsToClusterMapping,
-)
+from ..user.terms_to_clusters_mapping import \
+    TermsToClustersMapping as UserTermsToClusterMapping
 
 
 class TermsToClustersMapping(

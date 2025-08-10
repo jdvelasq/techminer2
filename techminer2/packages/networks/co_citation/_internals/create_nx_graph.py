@@ -9,7 +9,8 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from .....database._internals.io import internal__load_filtered_records_from_database
+from .....database._internals.io import \
+    internal__load_filtered_records_from_database
 
 
 # -------------------------------------------------------------------------

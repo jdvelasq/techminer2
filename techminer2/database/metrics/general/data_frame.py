@@ -22,7 +22,7 @@ Example:
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
-    >>> from techminer2.database.metrics.general import DataFrame
+    
 
     >>> # Create and appli thesauri
     >>> CreateCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
@@ -33,7 +33,8 @@ Example:
     >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create, configure, and run the DataFrame geneartor
-    >>> processor = (
+    >>> from techminer2.database.metrics.general import DataFrame
+    >>> (
     ...     DataFrame()
     ...     #
     ...     # DATABASE:
@@ -42,9 +43,9 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
-    ... )
-    >>> df = processor.run()
-    >>> df # doctest: +NORMALIZE_WHITESPACE
+    ...     #
+    ...     .run()
+    ... ) # doctest: +NORMALIZE_WHITESPACE    
                                                                       Value
     Category          Item
     GENERAL           Timespan                                    2015:2019
@@ -106,8 +107,10 @@ from dataclasses import dataclass, field
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 @dataclass
@@ -721,3 +724,9 @@ class DataFrame(
         )
         frame = frame.set_index(["Category", "Item"])
         return frame
+
+
+#
+
+#
+#

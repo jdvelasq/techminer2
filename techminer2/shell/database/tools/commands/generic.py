@@ -3,7 +3,8 @@ import os
 from colorama import Fore, init
 from openai import OpenAI
 
-from .....database.search import ConcordantProcessedContexts
+from techminer2.database.search import ConcordantProcessedContexts
+
 from ....colorized_input import colorized_input
 
 PROMPT = """
@@ -87,7 +88,4 @@ def execute_generic_command():
     except Exception as e:
         print()
         print(f"Error processing the query!")
-        print()
-        print()
-        print()
         print()

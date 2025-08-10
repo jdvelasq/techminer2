@@ -56,7 +56,8 @@ Example:
 """
 import plotly.express as px  # type: ignore
 
-from ...._internals.params_mixin import ParamsMixin
+from techminer2._internals.params_mixin import ParamsMixin
+
 from .data_frame import DataFrame
 
 
@@ -143,3 +144,7 @@ class BarPlot(
         metrics = self.get_collaboration_metrics()
         fig = self.build_collaboration_bar_plot(metrics)
         return fig
+
+
+#
+#

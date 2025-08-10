@@ -4,9 +4,8 @@ import glob
 
 import pkg_resources  # type: ignore
 
-from .load_reversed_thesaurus_as_mapping import (
-    internal__load_reversed_thesaurus_as_mapping,
-)
+from .load_reversed_thesaurus_as_mapping import \
+    internal__load_reversed_thesaurus_as_mapping
 
 
 def internal__load_cleanup_thesaurus_as_mapping():

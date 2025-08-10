@@ -10,13 +10,9 @@
 
 from ....base_shell import BaseShell
 from ....colorized_prompt import make_colorized_prompt
-from .commands import (
-    execute_abbreviations_command,
-    execute_hyphenated_command,
-    execute_initial_command,
-    execute_last_command,
-    execute_word_command,
-)
+from .commands import (execute_abbreviations_command,
+                       execute_hyphenated_command, execute_initial_command,
+                       execute_last_command, execute_word_command)
 
 
 class ReplaceShell(BaseShell):

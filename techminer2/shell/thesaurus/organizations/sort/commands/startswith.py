@@ -1,4 +1,5 @@
-from ......thesaurus.organizations import SortByStartsWithMatch
+from techminer2.thesaurus.organizations import SortByStartsWithMatch
+
 from .....colorized_input import colorized_input
 
 
@@ -24,3 +25,6 @@ def execute_startswith_command():
         .having_pattern(patterns)
         .run()
     )
+
+
+##

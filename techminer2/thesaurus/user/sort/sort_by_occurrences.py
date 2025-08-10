@@ -73,7 +73,8 @@ import sys
 from colorama import Fore, init
 
 from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import internal__load_filtered_records_from_database
+from ....database._internals.io import \
+    internal__load_filtered_records_from_database
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 from ..general.reduce_keys import ReduceKeys
 

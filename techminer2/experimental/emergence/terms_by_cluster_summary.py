@@ -42,11 +42,10 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from ...packages.networks.co_occurrence.descriptors import (
-    TermsByClusterSummary as ClassicalTermsByClusterSummary,
-)
-from .mixins import RecursiveClusteringMixin
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.experimental.emergence.mixins import RecursiveClusteringMixin
+from techminer2.packages.networks.co_occurrence.descriptors import \
+    TermsByClusterSummary as ClassicalTermsByClusterSummary
 
 
 class TermsByClusterSummary(
@@ -105,3 +104,6 @@ class TermsByClusterSummary(
         self.internal__notify_process_end()
 
         return self.data_frame
+
+
+#

@@ -14,8 +14,7 @@ with the DataFrame class. The process involves configuring the database paramete
 
 Example:
     >>> from techminer2.database.metrics.bradford_law import DataFrame
-
-    >>> generator = (
+    >>> (
     ...     DataFrame()
     ...     #
     ...     # DATABASE:
@@ -24,9 +23,9 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
+    ...     #
+    ...     .run()
     ... )
-    >>> df = generator.run()
-    >>> df
        Num Sources        %  ...  Tot Documents Bradford's Group
     0            1   2.44 %  ...          6.0 %                1
     1            7  17.07 %  ...         34.0 %                2
@@ -37,8 +36,10 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class DataFrame(
@@ -128,3 +129,9 @@ class DataFrame(
         self.internal__compute_bradors_zone_groups()
 
         return self.sources
+
+
+#
+
+#
+#

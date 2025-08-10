@@ -1,7 +1,10 @@
-from ......thesaurus.descriptors import SortByKeyLength
+from techminer2.thesaurus.descriptors import SortByKeyLength
 
 
 def execute_keylength_command():
 
     print()
     SortByKeyLength().where_root_directory_is("./").run()
+
+
+#

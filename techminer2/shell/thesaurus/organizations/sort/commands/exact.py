@@ -1,4 +1,5 @@
-from ......thesaurus.organizations import SortByExactMatch
+from techminer2.thesaurus.organizations import SortByExactMatch
+
 from .....colorized_input import colorized_input
 
 
@@ -18,3 +19,6 @@ def execute_exact_command():
         return
 
     SortByExactMatch().where_root_directory_is("./").having_pattern(patterns).run()
+
+
+##

@@ -9,15 +9,10 @@
 
 from ...base_shell import BaseShell
 from ...colorized_prompt import make_colorized_prompt
-from .commands import (
-    execute_copyright_command,
-    execute_desambiguate_command,
-    execute_doctypes_command,
-    execute_generic_command,
-    execute_summary_command,
-    execute_titles_command,
-    execute_view_command,
-)
+from .commands import (execute_copyright_command, execute_desambiguate_command,
+                       execute_doctypes_command, execute_generic_command,
+                       execute_summary_command, execute_titles_command,
+                       execute_view_command)
 
 
 class ToolsShell(BaseShell):

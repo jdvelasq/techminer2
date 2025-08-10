@@ -49,10 +49,8 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ..._internals.io import (
-    internal__load_filtered_records_from_database,
-    internal__load_user_stopwords,
-)
+from ..._internals.io import (internal__load_filtered_records_from_database,
+                              internal__load_user_stopwords)
 
 SELECTED_COLUMNS = {
     "OCC": [
@@ -355,3 +353,6 @@ class DataFrame(
         self.step_14_add_term_with_counters_column()
 
         return self.grouped
+
+
+#

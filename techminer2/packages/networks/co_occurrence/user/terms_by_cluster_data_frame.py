@@ -55,10 +55,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import (
-    internal__cluster_nx_graph,
-    internal__extract_communities_to_frame,
-)
+from ....._internals.nx import (internal__cluster_nx_graph,
+                                internal__extract_communities_to_frame)
 from .._internals.create_nx_graph import internal__create_nx_graph
 
 

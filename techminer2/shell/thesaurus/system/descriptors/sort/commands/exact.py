@@ -1,4 +1,5 @@
-from .......thesaurus.system.descriptors import SortByExactMatch
+from techminer2.thesaurus.system.descriptors import SortByExactMatch
+
 from ......colorized_input import colorized_input
 
 
@@ -19,3 +20,7 @@ def execute_exact_command():
 
     print()
     SortByExactMatch().having_pattern(patterns).run()
+
+
+#
+#

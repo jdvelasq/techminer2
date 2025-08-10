@@ -9,10 +9,10 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ......database._internals.io import internal__load_filtered_records_from_database
-from ......database.metrics.performance.data_frame import (
-    DataFrame as TermsByYearMetricsDataFrame,
-)
+from ......database._internals.io import \
+    internal__load_filtered_records_from_database
+from ......database.metrics.performance.data_frame import \
+    DataFrame as TermsByYearMetricsDataFrame
 
 
 # ------------------------------------------------------------------------------

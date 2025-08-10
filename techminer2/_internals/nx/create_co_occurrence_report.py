@@ -21,13 +21,15 @@ from collections import defaultdict
 import pandas as pd  # type: ignore
 
 # from ...search.concordances import concordances_from_records
-from ...thesaurus._internals.load_thesaurus_as_mapping import (
-    internal__load_thesaurus_as_mapping,
-)
-from ..utils.utils_format_prompt_for_records import _utils_format_prompt_for_records
-from ..utils.utils_format_report_for_records import _utils_format_report_for_records
+from ...thesaurus._internals.load_thesaurus_as_mapping import \
+    internal__load_thesaurus_as_mapping
+from ..utils.utils_format_prompt_for_records import \
+    _utils_format_prompt_for_records
+from ..utils.utils_format_report_for_records import \
+    _utils_format_report_for_records
 from ..utils.utils_make_report_dir import _utils_make_report_dir
-from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
+from .create_clusters_to_terms_mapping import \
+    internal__create_clusters_to_terms_mapping
 
 # from ...database.load.load__database import load__filtered_database
 

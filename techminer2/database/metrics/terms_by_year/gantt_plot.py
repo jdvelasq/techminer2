@@ -129,3 +129,6 @@ class GanttPlot(
         self.internal__create_gantt_diagram()
 
         return self.fig
+
+
+#

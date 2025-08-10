@@ -48,9 +48,8 @@ import os.path
 import re
 import textwrap
 
-from ....thesaurus._internals.load_reversed_thesaurus_as_mapping import (
-    internal__load_reversed_thesaurus_as_mapping,
-)
+from ....thesaurus._internals.load_reversed_thesaurus_as_mapping import \
+    internal__load_reversed_thesaurus_as_mapping
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"

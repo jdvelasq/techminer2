@@ -11,7 +11,7 @@ Extract Copyright Text
 
 
 Example:
-    >>> from techminer2.tools import ExtractCopyrightText
+    >>> from techminer2.database.tools import ExtractCopyrightText
     >>> text = ExtractCopyrightText(
     ...     pattern=None,
     ...     n_chars=90,

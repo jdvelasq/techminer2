@@ -11,7 +11,7 @@ Coverage
 
 
 Example:
-    >>> from techminer2.tools import Coverage
+    >>> from techminer2.database.tools import Coverage
     >>> (
     ...     Coverage()
     ...     #
@@ -125,4 +125,4 @@ class Coverage(
 
         return documents
 
-        return documents
+#

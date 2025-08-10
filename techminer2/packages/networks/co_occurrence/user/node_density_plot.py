@@ -58,10 +58,8 @@ Example:
 from ....._internals.mixins import ParamsMixin
 from ....._internals.nx import (
     internal__assign_textfont_sizes_based_on_occurrences,
-    internal__cluster_nx_graph,
-    internal__compute_spring_layout_positions,
-    internal__create_network_density_plot,
-)
+    internal__cluster_nx_graph, internal__compute_spring_layout_positions,
+    internal__create_network_density_plot)
 from .._internals.create_nx_graph import internal__create_nx_graph
 
 

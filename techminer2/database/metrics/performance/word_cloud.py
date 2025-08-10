@@ -62,3 +62,6 @@ class WordCloud(
         fig = internal__word_cloud(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#

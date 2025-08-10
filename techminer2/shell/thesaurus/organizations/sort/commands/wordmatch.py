@@ -1,4 +1,5 @@
-from ......thesaurus.organizations import SortByWordMatch
+from techminer2.thesaurus.organizations import SortByWordMatch
+
 from .....colorized_input import colorized_input
 
 
@@ -19,3 +20,7 @@ def execute_wordmatch_command():
 
     print()
     SortByWordMatch().where_root_directory_is("./").having_pattern(patterns).run()
+
+
+#
+#

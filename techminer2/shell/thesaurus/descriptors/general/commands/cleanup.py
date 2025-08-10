@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import CleanupThesaurus
+from techminer2.thesaurus.descriptors import CleanupThesaurus
 
 
 def execute_cleanup_command():

@@ -11,21 +11,13 @@
 from ....base_shell import BaseShell
 from ....colorized_prompt import make_colorized_prompt
 from ..general.commands import execute_reduce_command
-from .commands import (
-    execute_alphabet_command,
-    execute_endswith_command,
-    execute_exact_command,
-    execute_fuzzy_command,
-    execute_initial_command,
-    execute_keylength_command,
-    execute_last_command,
-    execute_match_command,
-    execute_occurrences_command,
-    execute_startswith_command,
-    execute_stopwords_command,
-    execute_wordlength_command,
-    execute_wordmatch_command,
-)
+from .commands import (execute_alphabet_command, execute_endswith_command,
+                       execute_exact_command, execute_fuzzy_command,
+                       execute_initial_command, execute_keylength_command,
+                       execute_last_command, execute_match_command,
+                       execute_occurrences_command, execute_startswith_command,
+                       execute_stopwords_command, execute_wordlength_command,
+                       execute_wordmatch_command)
 
 
 class SortShell(BaseShell):

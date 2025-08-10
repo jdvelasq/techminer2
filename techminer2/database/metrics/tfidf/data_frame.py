@@ -196,3 +196,6 @@ class DataFrame(
         df_matrix = self.step_10_remove_counters_from_axes(df_matrix)
 
         return df_matrix
+
+
+#

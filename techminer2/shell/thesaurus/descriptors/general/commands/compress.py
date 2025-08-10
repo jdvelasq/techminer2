@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import CompressThesaurus
+from techminer2.thesaurus.descriptors import CompressThesaurus
 
 
 def execute_compress_command():

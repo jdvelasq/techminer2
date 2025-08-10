@@ -41,12 +41,10 @@ from dataclasses import dataclass
 from textblob import TextBlob  # type: ignore
 
 # from ..database.load.load__database import load__filtered_database
-from ..._internals.utils.utils_format_prompt_for_paragraphs import (
-    _utils_format_prompt_for_paragraphs,
-)
-from ...thesaurus._internals.load_thesaurus_as_mapping import (
-    internal__load_thesaurus_as_mapping,
-)
+from ..._internals.utils.utils_format_prompt_for_paragraphs import \
+    _utils_format_prompt_for_paragraphs
+from ...thesaurus._internals.load_thesaurus_as_mapping import \
+    internal__load_thesaurus_as_mapping
 
 
 def lemma_associations(

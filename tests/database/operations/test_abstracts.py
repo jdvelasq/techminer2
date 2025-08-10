@@ -13,10 +13,10 @@
 Example:
     >>> import textwrap
     >>> import pandas as pd
-    >>> from techminer2.database.field_operators import TokenizeOperator
-    >>> from techminer2.database.field_operators import DeleteFieldOperator
-    >>> from techminer2.database.field_operators import HighlightNounAndPhrasesOperator
-    >>> from techminer2.tools import Query
+    >>> from techminer2.database.operators import TokenizeOperator
+    >>> from techminer2.database.operators import DeleteOperator
+    >>> from techminer2.database.operators import HighlightOperator
+    >>> from techminer2.database.tools import Query
 
     >>> (
     ...     TokenizeOperator()
@@ -27,7 +27,7 @@ Example:
     ... )
 
     >>> (
-    ...     HighlightNounAndPhrasesOperator()
+    ...     HighlightOperator()
     ...     .with_field("raw_abstract_copy")
     ...     .with_other_field("raw_abstract_copy")
     ...     .where_root_directory_is("examples/fintech/")
@@ -64,7 +64,7 @@ Example:
 
 
     >>> (
-    ...     DeleteFieldOperator()
+    ...     DeleteOperator()
     ...     .with_field("raw_abstract_copy")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .run()

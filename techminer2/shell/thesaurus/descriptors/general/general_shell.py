@@ -10,14 +10,9 @@
 
 from ....base_shell import BaseShell
 from ....colorized_prompt import make_colorized_prompt
-from .commands import (
-    execute_apply_command,
-    execute_cleanup_command,
-    execute_compress_command,
-    execute_initialize_command,
-    execute_integrity_command,
-    execute_reduce_command,
-)
+from .commands import (execute_apply_command, execute_cleanup_command,
+                       execute_compress_command, execute_initialize_command,
+                       execute_integrity_command, execute_reduce_command)
 
 
 class GeneralShell(BaseShell):

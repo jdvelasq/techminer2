@@ -10,9 +10,8 @@ This module implements
 """
 import numpy as np
 
-from ..mt.mt_calculate_global_performance_metrics import (
-    _mt_calculate_global_performance_metrics,
-)
+from ..mt.mt_calculate_global_performance_metrics import \
+    _mt_calculate_global_performance_metrics
 
 
 def _utils_compute_occurrences_and_citations(

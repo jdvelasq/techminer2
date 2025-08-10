@@ -7,8 +7,9 @@
 # pylint: disable=too-many-statements
 import sys
 
-from ...packages.emergence import DataFrame
-from ...packages.networks.co_occurrence.descriptors import ClustersToTermsMapping
+from techminer2.packages.emergence import DataFrame
+from techminer2.packages.networks.co_occurrence.descriptors import \
+    ClustersToTermsMapping
 
 
 class RecursiveClusteringMixin:
@@ -76,3 +77,7 @@ class RecursiveClusteringMixin:
         self.discovered_clusters = sorted(
             discovered_clusters, key=lambda x: len(x), reverse=True
         )
+
+
+#        )
+#

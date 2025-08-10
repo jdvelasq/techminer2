@@ -10,10 +10,9 @@ Bar Chart
 
 
 Example:
-    >>> from techminer2.database.metrics.trending_terms_by_year.user import BarChart
-
     >>> # Create, configure, and run the plotter
-    >>> plotter = (
+    >>> from techminer2.database.metrics.trending_terms_by_year.user import BarChart
+    >>> (
     ...     BarChart()
     ...     #
     ...     # FIELD:
@@ -27,9 +26,9 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
-    ... )
-    >>> plot = plotter.run()
-    >>> plot.write_html("docs_source/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
+    ...     #
+    ...     .run()    
+    ... ).write_html("docs_source/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
 
 .. raw:: html
 
@@ -89,3 +88,6 @@ class BarChart(
         )
 
         return fig
+
+
+#

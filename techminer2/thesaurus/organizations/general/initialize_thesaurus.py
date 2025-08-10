@@ -65,15 +65,14 @@ import sys
 import pandas as pd  # type: ignore
 
 from ...._internals.mixins import Params, ParamsMixin
-from ....package_data.text_processing import internal__load_text_processing_terms
-from ..._internals import (
-    ThesaurusMixin,
-    internal__generate_system_thesaurus_file_path,
-    internal__generate_user_thesaurus_file_path,
-    internal__load_reversed_thesaurus_as_mapping,
-    internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
-)
+from ....package_data.text_processing import \
+    internal__load_text_processing_terms
+from ..._internals import (ThesaurusMixin,
+                           internal__generate_system_thesaurus_file_path,
+                           internal__generate_user_thesaurus_file_path,
+                           internal__load_reversed_thesaurus_as_mapping,
+                           internal__load_thesaurus_as_mapping,
+                           internal__print_thesaurus_header)
 
 # names sorted by proirity
 ABBR = [

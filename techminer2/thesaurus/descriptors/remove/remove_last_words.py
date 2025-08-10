@@ -70,7 +70,8 @@ from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from ...._internals import ParamsMixin
-from ....package_data.text_processing import internal__load_text_processing_terms
+from ....package_data.text_processing import \
+    internal__load_text_processing_terms
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()

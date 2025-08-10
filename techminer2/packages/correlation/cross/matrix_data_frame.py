@@ -55,8 +55,10 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ...co_occurrence_matrix import MatrixDataFrame as CoOccurrenceMatrixDataFrame
-from .._internals.internal__compute_corr_matrix import internal__compute_corr_matrix
+from ...co_occurrence_matrix import \
+    MatrixDataFrame as CoOccurrenceMatrixDataFrame
+from .._internals.internal__compute_corr_matrix import \
+    internal__compute_corr_matrix
 
 
 class MatrixDataFrame(

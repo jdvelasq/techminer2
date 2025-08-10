@@ -50,9 +50,7 @@ Example:
 from ....._internals.mixins import ParamsMixin
 from ....._internals.nx import (
     internal__assign_node_colors_based_on_group_attribute,
-    internal__cluster_nx_graph,
-    internal__plot_node_treemap,
-)
+    internal__cluster_nx_graph, internal__plot_node_treemap)
 from .._internals.create_nx_graph import internal__create_nx_graph
 
 

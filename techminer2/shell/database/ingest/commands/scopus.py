@@ -1,4 +1,4 @@
-from .....database.ingest import IngestScopus
+from techminer2.database.ingest import IngestScopus
 
 
 def execute_scopus_command():

@@ -10,11 +10,8 @@
 
 from ....base_shell import BaseShell
 from ....colorized_prompt import make_colorized_prompt
-from .commands import (
-    execute_alphabet_command,
-    execute_fuzzy_command,
-    execute_match_command,
-)
+from .commands import (execute_alphabet_command, execute_fuzzy_command,
+                       execute_match_command)
 
 
 class SortShell(BaseShell):

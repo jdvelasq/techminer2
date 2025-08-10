@@ -4,7 +4,8 @@ import sys
 
 from colorama import Fore, init
 
-from .load_thesaurus_as_data_frame import internal__load_thesaurus_as_data_frame
+from .load_thesaurus_as_data_frame import \
+    internal__load_thesaurus_as_data_frame
 
 init(autoreset=True)
 

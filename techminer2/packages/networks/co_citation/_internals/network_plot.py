@@ -65,10 +65,8 @@ from ....._internals.nx import (
     internal__assign_text_positions_based_on_quadrants,
     internal__assign_textfont_opacity_based_on_citations,
     internal__assign_textfont_sizes_based_on_citations,
-    internal__cluster_nx_graph,
-    internal__compute_spring_layout_positions,
-    internal__plot_nx_graph,
-)
+    internal__cluster_nx_graph, internal__compute_spring_layout_positions,
+    internal__plot_nx_graph)
 from .create_nx_graph import internal__create_nx_graph
 
 

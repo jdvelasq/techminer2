@@ -53,7 +53,8 @@ Example:
 """
 """Node Degree Plot"""
 from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.node_degree_plot import NodeDegreePlot as UserNodeDegreePlot
+from ...co_occurrence.user.node_degree_plot import \
+    NodeDegreePlot as UserNodeDegreePlot
 
 
 class NodeDegreePlot(

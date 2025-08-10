@@ -6,7 +6,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""Loads determiners in English language."""
+
 
 import pandas as pd  # type: ignore
 import pkg_resources  # type: ignore

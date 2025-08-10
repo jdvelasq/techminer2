@@ -1,4 +1,5 @@
-from ......thesaurus.countries import SortByExactMatch
+from techminer2.thesaurus.countries import SortByExactMatch
+
 from .....colorized_input import colorized_input
 
 

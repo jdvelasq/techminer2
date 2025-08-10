@@ -1,4 +1,4 @@
-from ......thesaurus.countries import ApplyThesaurus
+from techminer2.thesaurus.countries import ApplyThesaurus
 
 
 def execute_apply_command():

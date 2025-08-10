@@ -57,9 +57,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.terms_by_cluster_summary import (
-    TermsByClusterSummary as UserTermsByClusterSummary,
-)
+from ...co_occurrence.user.terms_by_cluster_summary import \
+    TermsByClusterSummary as UserTermsByClusterSummary
 
 
 class TermsByClusterSummary(

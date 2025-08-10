@@ -215,8 +215,10 @@ Example:
 
 """
 from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import internal__load_filtered_records_from_database
-from ...database.metrics.performance import DataFrame as PerformanceMetricsDataFrame
+from ...database._internals.io import \
+    internal__load_filtered_records_from_database
+from ...database.metrics.performance import \
+    DataFrame as PerformanceMetricsDataFrame
 
 
 class MatrixDataFrame(

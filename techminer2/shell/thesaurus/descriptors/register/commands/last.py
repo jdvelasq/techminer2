@@ -1,6 +1,8 @@
-from ......thesaurus.descriptors import RegisterLastWord
+from techminer2.thesaurus.descriptors import RegisterLastWord
+
 from .....colorized_input import colorized_input
-from ...remove.commands.last import execute_last_command as execute_removelast_command
+from ...remove.commands.last import \
+    execute_last_command as execute_removelast_command
 
 
 def execute_last_command():
@@ -23,3 +25,6 @@ def execute_last_command():
         execute_removelast_command()
     else:
         print()
+
+
+#

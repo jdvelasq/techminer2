@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import ReduceKeys
+from techminer2.thesaurus.descriptors import ReduceKeys
 
 
 def execute_reduce_command():

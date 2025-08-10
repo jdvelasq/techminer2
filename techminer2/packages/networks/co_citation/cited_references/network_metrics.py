@@ -94,7 +94,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from .._internals.network_metrics import NetworkMetrics as InternalNetworkMetrics
+from .._internals.network_metrics import \
+    NetworkMetrics as InternalNetworkMetrics
 
 
 class NetworkMetrics(

@@ -21,7 +21,7 @@ Replace text in column
 """
 import os.path
 
-import pandas as pd  #  type: ignore
+import pandas as pd  # type: ignore
 
 # Replace text in columns
 # INPUTS:

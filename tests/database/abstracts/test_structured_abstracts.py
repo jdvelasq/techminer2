@@ -14,7 +14,7 @@ Example:
     >>> IngestScopus(root_directory="examples/structured/").run() # doctest: +ELLIPSIS
 
     >>> import textwrap
-    >>> from techminer2.tools import RecordMapping
+    >>> from techminer2.database.tools import RecordMapping
     >>> mapping = (
     ...     RecordMapping()
     ...     #

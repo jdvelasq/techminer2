@@ -11,8 +11,7 @@ Zones
 
 Example:
     >>> from techminer2.database.metrics.bradford_law import ZonesDataFrame
-
-    >>> generator = (
+    >>> (
     ...     ZonesDataFrame()
     ...     #
     ...     # DATABASE:
@@ -21,9 +20,9 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
-    ... )
-    >>> df = generator.run()
-    >>> df.head() # doctest: +NORMALIZE_WHITESPACE
+    ...     #
+    ...     .run()
+    ... ).head() # doctest: +NORMALIZE_WHITESPACE
                          no  OCC  cum_OCC  global_citations  zone
     abbr_source_title
     J. Econ. Bus.         1    3        3               422     1
@@ -34,8 +33,10 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class ZonesDataFrame(
@@ -88,3 +89,9 @@ class ZonesDataFrame(
         self.internal__compute_zones()
 
         return self.indicators
+
+
+#
+
+#
+#

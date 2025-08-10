@@ -78,3 +78,6 @@ class ColumnPlot(
         fig = internal__column_plot(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#

@@ -1,4 +1,4 @@
-from ......thesaurus.countries import InitializeThesaurus
+from techminer2.thesaurus.countries import InitializeThesaurus
 
 
 def execute_initialize_command():

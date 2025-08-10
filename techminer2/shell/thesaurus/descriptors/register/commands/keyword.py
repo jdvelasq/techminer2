@@ -1,4 +1,5 @@
-from ......thesaurus.descriptors import RegisterKeyword
+from techminer2.thesaurus.descriptors import RegisterKeyword
+
 from .....colorized_input import colorized_input
 
 

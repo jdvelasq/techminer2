@@ -10,13 +10,9 @@
 
 from ....base_shell import BaseShell
 from ....colorized_prompt import make_colorized_prompt
-from .commands import (
-    execute_determiners_command,
-    execute_initial_command,
-    execute_last_command,
-    execute_parentheses_command,
-    execute_stopwords_command,
-)
+from .commands import (execute_determiners_command, execute_initial_command,
+                       execute_last_command, execute_parentheses_command,
+                       execute_stopwords_command)
 
 
 class RemoveShell(BaseShell):

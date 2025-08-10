@@ -77,3 +77,6 @@ class LinePlot(
         fig = internal__line_plot(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#

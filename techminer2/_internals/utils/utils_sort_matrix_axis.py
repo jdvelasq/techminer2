@@ -26,9 +26,8 @@ def _utils_sort_matrix_axis(
 ):
     """Sorts the axis of the matrix by 'OCC', 'global_citations', and 'local_citations'."""
 
-    from ..mt.mt_calculate_global_performance_metrics import (
-        _mt_calculate_global_performance_metrics,
-    )
+    from ..mt.mt_calculate_global_performance_metrics import \
+        _mt_calculate_global_performance_metrics
     from ..mt.mt_sort_records_by_metric import _mt_sort_records_by_metric
 
     matrix = matrix.copy()

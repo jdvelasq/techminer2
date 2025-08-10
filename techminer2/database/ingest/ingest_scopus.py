@@ -25,58 +25,41 @@ import time
 
 from tqdm import tqdm
 
-from ..._internals.mixins import ParamsMixin
-from ._internals.datatests.check_empty_terms import internal__check_empty_terms
-from ._internals.db import (
-    internal__compress_raw_files,
-    internal__create_project_structure,
-    internal__drop_empty_columns,
-    internal__load_raw_files,
-    internal__remove_non_english_abstracts,
-    internal__rename_columns,
-)
-from ._internals.db.report_imported_records import internal__report_imported_records
-from ._internals.preprocessors import (  # type: ignore
-    internal__preprocess_abbr_source_title,
-    internal__preprocess_abbreviations,
-    internal__preprocess_abstract,
-    internal__preprocess_author_keywords,
-    internal__preprocess_author_names,
-    internal__preprocess_authors,
-    internal__preprocess_authors_id,
-    internal__preprocess_countries,
-    internal__preprocess_descriptors,
-    internal__preprocess_document_title,
-    internal__preprocess_document_type,
-    internal__preprocess_doi,
-    internal__preprocess_eissn,
-    internal__preprocess_global_citations,
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.datatests.check_empty_terms import \
+    internal__check_empty_terms
+from techminer2.database._internals.db import (
+    internal__compress_raw_files, internal__create_project_structure,
+    internal__drop_empty_columns, internal__load_raw_files,
+    internal__remove_non_english_abstracts, internal__rename_columns)
+from techminer2.database._internals.db.report_imported_records import \
+    internal__report_imported_records
+from techminer2.database._internals.preprocessors import (  # type: ignore
+    internal__preprocess_abbr_source_title, internal__preprocess_abbreviations,
+    internal__preprocess_abstract, internal__preprocess_author_keywords,
+    internal__preprocess_author_names, internal__preprocess_authors,
+    internal__preprocess_authors_id, internal__preprocess_countries,
+    internal__preprocess_descriptors, internal__preprocess_document_title,
+    internal__preprocess_document_type, internal__preprocess_doi,
+    internal__preprocess_eissn, internal__preprocess_global_citations,
     internal__preprocess_global_references,
-    internal__preprocess_index_keywords,
-    internal__preprocess_isbn,
-    internal__preprocess_issn,
-    internal__preprocess_local_citations,
-    internal__preprocess_local_references,
-    internal__preprocess_num_authors,
+    internal__preprocess_index_keywords, internal__preprocess_isbn,
+    internal__preprocess_issn, internal__preprocess_local_citations,
+    internal__preprocess_local_references, internal__preprocess_num_authors,
     internal__preprocess_num_global_references,
     internal__preprocess_organizations,
     internal__preprocess_raw_abstract_nouns_and_phrases,
     internal__preprocess_raw_author_keywords,
     internal__preprocess_raw_descriptors,
     internal__preprocess_raw_document_title_nouns_and_phrases,
-    internal__preprocess_raw_index_keywords,
-    internal__preprocess_raw_keywords,
+    internal__preprocess_raw_index_keywords, internal__preprocess_raw_keywords,
     internal__preprocess_raw_noun_and_phrases,
     internal__preprocess_raw_spacy_phrases,
-    internal__preprocess_raw_textblob_phrases,
-    internal__preprocess_record_id,
-    internal__preprocess_record_no,
-    internal__preprocess_references,
-    internal__preprocess_source_title,
-    internal__preprocess_subject_areas,
+    internal__preprocess_raw_textblob_phrases, internal__preprocess_record_id,
+    internal__preprocess_record_no, internal__preprocess_references,
+    internal__preprocess_source_title, internal__preprocess_subject_areas,
     internal__preprocess_tokenized_abstract,
-    internal__preprocess_tokenized_document_title,
-)
+    internal__preprocess_tokenized_document_title)
 
 
 class IngestScopus(
@@ -239,3 +222,6 @@ class IngestScopus(
         )
 
         sys.stderr.flush()
+
+
+#

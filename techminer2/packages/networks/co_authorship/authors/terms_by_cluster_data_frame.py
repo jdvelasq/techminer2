@@ -51,9 +51,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.terms_by_cluster_data_frame import (
-    TermsByClusterDataFrame as UserTermsByClusterDataFrame,
-)
+from ...co_occurrence.user.terms_by_cluster_data_frame import \
+    TermsByClusterDataFrame as UserTermsByClusterDataFrame
 
 
 class TermsByClusterDataFrame(

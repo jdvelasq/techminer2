@@ -48,9 +48,11 @@ Example:
     [5 rows x 6 columns]
 
 """
-from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_records_from_database
-from ..performance.data_frame import DataFrame as TermsByYearMetricsDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import \
+    internal__load_filtered_records_from_database
+from techminer2.database.metrics.performance.data_frame import \
+    DataFrame as TermsByYearMetricsDataFrame
 
 
 class DataFrame(
@@ -145,3 +147,9 @@ class DataFrame(
         data_frame = self._step_2_compute_collaboration_metrics(database)
         data_frame = self._step_3_filter_terms(data_frame)
         return data_frame
+
+        #
+        return data_frame
+
+
+#

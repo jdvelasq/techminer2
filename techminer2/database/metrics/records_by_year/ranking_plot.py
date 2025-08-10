@@ -71,3 +71,6 @@ class RankingPlot(
         fig = internal__ranking_plot(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#

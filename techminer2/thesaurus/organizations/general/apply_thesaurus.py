@@ -47,9 +47,7 @@ Example:
 
 """
 from ...._internals.mixins import ParamsMixin
-from ....database.ingest._internals.operators.transform_field import (
-    internal__transform_field,
-)
+from ....database._internals.operators.transform import internal__transform
 from ...user import ApplyThesaurus as ApplyUserThesaurus
 
 
@@ -74,7 +72,7 @@ class ApplyThesaurus(
         )
 
         # Country of first author
-        internal__transform_field(
+        internal__transform(
             #
             # FIELD:
             field="organizations",

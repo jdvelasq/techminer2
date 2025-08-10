@@ -65,3 +65,6 @@ class WorldMap(
         fig = internal__world_map(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#

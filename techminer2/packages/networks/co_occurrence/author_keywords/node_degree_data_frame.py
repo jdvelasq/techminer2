@@ -118,7 +118,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from ..user.node_degree_data_frame import NodeDegreeDataFrame as UserNodeDegreeDataFrame
+from ..user.node_degree_data_frame import \
+    NodeDegreeDataFrame as UserNodeDegreeDataFrame
 
 
 class NodeDegreeDataFrame(

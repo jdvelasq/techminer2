@@ -13,7 +13,7 @@ Example:
     >>> from techminer2.database.metrics.trending_terms_by_year.user import DataFrame
 
     >>> # Create, configure, and run the generator
-    >>> generator = (
+    >>> (
     ...     DataFrame()
     ...     #
     ...     # FIELD:
@@ -27,9 +27,9 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
-    ... )
-    >>> df = generator.run()
-    >>> df.head()
+    ...     #
+    ...     .run()
+    ... ).head()
     year                      OCC  global_citations  year_q1  ...  rn    height  width
     raw_author_keywords                                       ...
     CONTENT_ANALYSIS 02:0181    2               181     2016  ...   2  0.177333      1
@@ -41,7 +41,7 @@ Example:
     [5 rows x 8 columns]
 
 
-    >>> generator = (
+    >>> (
     ...     DataFrame()
     ...     #
     ...     # FIELD:
@@ -61,9 +61,9 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
-    ... )
-    >>> df = generator.run()
-    >>> df.head()
+    ...     #
+    ...     .run()    
+    ... ).head()
     year                             OCC  global_citations  ...  height  width
     raw_author_keywords                                     ...
     FINTECH 31:5168                   31              5168  ...    0.97      2
@@ -76,8 +76,8 @@ Example:
 """
 import numpy as np
 
-from ....._internals.mixins import ParamsMixin
-from ...terms_by_year import DataFrame as TermsByYearDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.terms_by_year import DataFrame as TermsByYearDataFrame
 
 
 class DataFrame(
@@ -176,3 +176,6 @@ class DataFrame(
         self.internal__select_top_terms_per_year()
         self.internal__compute_bar_height_and_width()
         return self.terms_by_year
+
+
+#

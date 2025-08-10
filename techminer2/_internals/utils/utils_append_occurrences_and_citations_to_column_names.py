@@ -8,9 +8,8 @@ This module implements
 
 
 """
-from .utils_compute_occurrences_and_citations import (
-    _utils_compute_occurrences_and_citations,
-)
+from .utils_compute_occurrences_and_citations import \
+    _utils_compute_occurrences_and_citations
 
 
 def _utils_append_occurrences_and_citations_to_column_names(

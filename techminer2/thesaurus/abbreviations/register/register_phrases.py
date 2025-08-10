@@ -42,11 +42,10 @@ import sys
 import pkg_resources  # type: ignore
 
 from ...._internals.mixins import Params, ParamsMixin
-from ....package_data.text_processing import internal__sort_text_processing_terms
-from ..._internals import (
-    internal__generate_user_thesaurus_file_path,
-    internal__load_thesaurus_as_mapping,
-)
+from ....package_data.text_processing import \
+    internal__sort_text_processing_terms
+from ..._internals import (internal__generate_user_thesaurus_file_path,
+                           internal__load_thesaurus_as_mapping)
 
 
 class RegisterPhrases(

@@ -73,13 +73,11 @@ from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import Params, ParamsMixin
-from ..._internals import (
-    ThesaurusMixin,
-    internal__generate_user_thesaurus_file_path,
-    internal__load_thesaurus_as_data_frame,
-    internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
-)
+from ..._internals import (ThesaurusMixin,
+                           internal__generate_user_thesaurus_file_path,
+                           internal__load_thesaurus_as_data_frame,
+                           internal__load_thesaurus_as_mapping,
+                           internal__print_thesaurus_header)
 
 
 class ReplaceAbbreviations(

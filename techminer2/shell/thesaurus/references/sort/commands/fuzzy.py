@@ -1,4 +1,5 @@
-from ......thesaurus.references import SortByFuzzyMatch
+from techminer2.thesaurus.references import SortByFuzzyMatch
+
 from .....colorized_input import colorized_input
 
 
@@ -25,3 +26,6 @@ def execute_fuzzy_command():
         .having_match_threshold(threshold)
         .run()
     )
+
+
+##

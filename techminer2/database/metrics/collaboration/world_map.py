@@ -37,8 +37,9 @@ Example:
 """
 import plotly.express as px  # type: ignore
 
-from ...._internals.mixins import ParamsMixin
-from ....packages.co_occurrence_matrix import DataFrame as CoOccurrenceDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.co_occurrence_matrix import \
+    DataFrame as CoOccurrenceDataFrame
 
 
 class WorldMap(
@@ -106,3 +107,6 @@ class WorldMap(
         self.internal__plot_world_map()
 
         return self.fig
+
+
+#

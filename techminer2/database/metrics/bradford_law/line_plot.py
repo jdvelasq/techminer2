@@ -11,8 +11,7 @@ Line Plot
 
 Example:
     >>> from techminer2.database.metrics.bradford_law import LinePlot
-
-    >>> plotter = (
+    >>> (
     ...     LinePlot()
     ...     #
     ...     # DATABASE:
@@ -20,9 +19,9 @@ Example:
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
-    ... )
-    >>> plot = plotter.run()
-    >>> plot.write_html("docs_source/_generated/px.database.metrics.bradford_law.line_plot.html")
+    ...     #
+    ...     .run()
+    ... ).write_html("docs_source/_generated/px.database.metrics.bradford_law.line_plot.html")
 
 .. raw:: html
 
@@ -33,7 +32,8 @@ Example:
 """
 import plotly.express as px  # type: ignore
 
-from ...._internals.params_mixin import ParamsMixin
+from techminer2._internals.params_mixin import ParamsMixin
+
 from .zones import ZonesDataFrame
 
 
@@ -101,3 +101,7 @@ class LinePlot(
         fig.data = fig.data[::-1]
 
         return fig
+
+
+#
+#

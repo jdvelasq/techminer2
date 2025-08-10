@@ -65,11 +65,10 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from ...packages.networks.co_occurrence.descriptors import (
-    NetworkPlot as ClassicalNetworkPlot,
-)
-from .mixins import RecursiveClusteringMixin
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.experimental.emergence.mixins import RecursiveClusteringMixin
+from techminer2.packages.networks.co_occurrence.descriptors import \
+    NetworkPlot as ClassicalNetworkPlot
 
 
 class NetworkPlot(
@@ -128,3 +127,6 @@ class NetworkPlot(
         self.internal__notify_process_end()
 
         return self.network_plot
+
+
+#

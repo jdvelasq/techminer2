@@ -9,7 +9,8 @@
 
 import pandas as pd  # type: ignore
 
-from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
+from .create_clusters_to_terms_mapping import \
+    internal__create_clusters_to_terms_mapping
 
 
 def internal__summarize_communities(

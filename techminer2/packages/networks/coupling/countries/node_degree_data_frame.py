@@ -41,7 +41,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from .._internals.from_others.node_degree_data_frame import InternalNodeDegreeDataFrame
+from .._internals.from_others.node_degree_data_frame import \
+    InternalNodeDegreeDataFrame
 
 
 class NodeDegreeDataFrame(

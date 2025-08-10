@@ -1,4 +1,5 @@
-from ......thesaurus.references import SortByMatch
+from techminer2.thesaurus.references import SortByMatch
+
 from .....colorized_input import colorized_input
 
 
@@ -48,3 +49,7 @@ def execute_match_command():
         .having_regex_search(regex_search)
         .run()
     )
+
+
+#
+#

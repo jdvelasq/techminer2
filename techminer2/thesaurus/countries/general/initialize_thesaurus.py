@@ -62,7 +62,8 @@ from colorama import Fore, init
 
 from ...._internals.mixins import ParamsMixin
 from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
-from ..._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
+from ..._internals.load_thesaurus_as_mapping import \
+    internal__load_thesaurus_as_mapping
 
 
 class InitializeThesaurus(

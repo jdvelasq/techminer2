@@ -66,3 +66,6 @@ class PiePlot(
         fig = internal__pie_plot(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#

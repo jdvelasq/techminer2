@@ -12,7 +12,7 @@ Query
 ===============================================================================
 
 Example:
-    >>> from techminer2.tools import Query
+    >>> from techminer2.database.tools import Query
     >>> (
     ...     Query()
     ...     #
@@ -52,3 +52,4 @@ class Query(
     def run(self):
         database = internal__load_filtered_records_from_database(params=self.params)
         return duckdb.query(self.params.query_expression).df()
+        

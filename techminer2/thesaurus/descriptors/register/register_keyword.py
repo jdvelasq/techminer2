@@ -42,7 +42,8 @@ import sys
 import pkg_resources  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import internal__sort_text_processing_terms
+from ....package_data.text_processing import \
+    internal__sort_text_processing_terms
 
 
 class RegisterKeyword(

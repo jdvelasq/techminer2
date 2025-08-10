@@ -54,7 +54,8 @@ Example:
 """
 from ...._internals.mixins import ParamsMixin
 from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
-from .._internals.internal__compute_corr_matrix import internal__compute_corr_matrix
+from .._internals.internal__compute_corr_matrix import \
+    internal__compute_corr_matrix
 
 
 class MatrixDataFrame(

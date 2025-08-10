@@ -13,9 +13,8 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 import networkx as nx  # type: ignore
 
 from ....co_occurrence_matrix import MatrixDataFrame as CoOccurrenceMatrix
-from ....co_occurrence_matrix._internals.normalize_matrix import (
-    internal__normalize_matrix,
-)
+from ....co_occurrence_matrix._internals.normalize_matrix import \
+    internal__normalize_matrix
 
 
 # -------------------------------------------------------------------------

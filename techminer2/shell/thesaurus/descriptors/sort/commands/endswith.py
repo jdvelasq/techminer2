@@ -1,5 +1,5 @@
-from ......thesaurus.descriptors import SortByEndsWithMatch
-from .....colorized_input import colorized_input
+from techminer2.shell.colorized_input import colorized_input
+from techminer2.thesaurus.descriptors import SortByEndsWithMatch
 
 
 def execute_endswith_command():
@@ -19,3 +19,6 @@ def execute_endswith_command():
 
     print()
     SortByEndsWithMatch().where_root_directory_is("./").having_pattern(patterns).run()
+
+
+##

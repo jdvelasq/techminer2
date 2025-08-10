@@ -8,7 +8,8 @@
 
 import graphviz
 
-from .extract_communities_to_frame import internal__extract_communities_to_frame
+from .extract_communities_to_frame import \
+    internal__extract_communities_to_frame
 from .summarize_communities import internal__summarize_communities
 
 

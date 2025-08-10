@@ -32,8 +32,9 @@ Example:
     [3 rows x 5 columns]
 
 """
-from ...._internals.mixins import ParamsMixin
-from ..performance.data_frame import DataFrame as PerformanceDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.performance.data_frame import \
+    DataFrame as PerformanceDataFrame
 
 
 class DataFrame(
@@ -101,3 +102,8 @@ class DataFrame(
         self.internal__compute_number_of_written_documents_per_number_of_authors()
         self.internal__compute_the_theoretical_number_of_authors()
         return self.indicators
+
+
+#
+
+#

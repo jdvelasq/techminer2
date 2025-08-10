@@ -48,9 +48,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from .._internals.terms_by_cluster_data_frame import (
-    TermsByClusterDataFrame as InternalTermsByClusterDataFrame,
-)
+from .._internals.terms_by_cluster_data_frame import \
+    TermsByClusterDataFrame as InternalTermsByClusterDataFrame
 
 
 class TermsByClusterDataFrame(

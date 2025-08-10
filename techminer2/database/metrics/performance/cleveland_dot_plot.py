@@ -47,10 +47,10 @@ Example:
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...._internals.params_mixin import ParamsMixin
-from ...._internals.plots.internal__cleveland_dot_plot import (
-    internal__cleveland_dot_plot,
-)
+from techminer2._internals.params_mixin import ParamsMixin
+from techminer2._internals.plots.internal__cleveland_dot_plot import \
+    internal__cleveland_dot_plot
+
 from .data_frame import DataFrame
 
 
@@ -77,3 +77,7 @@ class ClevelandDotPlot(
         fig = internal__cleveland_dot_plot(params=self.params, data_frame=data_frame)
 
         return fig
+
+
+#
+#

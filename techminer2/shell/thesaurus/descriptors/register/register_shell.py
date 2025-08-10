@@ -10,12 +10,8 @@
 
 from ....base_shell import BaseShell
 from ....colorized_prompt import make_colorized_prompt
-from .commands import (
-    execute_abbreviations_command,
-    execute_initial_command,
-    execute_keyword_command,
-    execute_last_command,
-)
+from .commands import (execute_abbreviations_command, execute_initial_command,
+                       execute_keyword_command, execute_last_command)
 
 
 class RegisterShell(BaseShell):

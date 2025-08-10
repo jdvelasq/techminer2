@@ -64,13 +64,12 @@ from textblob import TextBlob  # type: ignore
 
 from ...._internals.log_message import internal__log_message
 from ...._internals.mixins import ParamsMixin
-from ..._internals import (
-    ThesaurusMixin,
-    internal__generate_system_thesaurus_file_path,
-    internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
-)
-from ..._internals.load_thesaurus_as_mapping import internal__load_thesaurus_as_mapping
+from ..._internals import (ThesaurusMixin,
+                           internal__generate_system_thesaurus_file_path,
+                           internal__load_thesaurus_as_mapping,
+                           internal__print_thesaurus_header)
+from ..._internals.load_thesaurus_as_mapping import \
+    internal__load_thesaurus_as_mapping
 
 
 class InitializeThesaurus(

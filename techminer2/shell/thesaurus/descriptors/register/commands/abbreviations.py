@@ -3,11 +3,11 @@ import pathlib
 import pkg_resources  # type: ignore
 from colorama import Fore, init
 
-from ......package_data.text_processing import internal__sort_text_processing_terms
-from ......thesaurus._internals import (
-    internal__load_thesaurus_as_data_frame,
-    internal__print_thesaurus_header,
-)
+from techminer2.package_data.text_processing import \
+    internal__sort_text_processing_terms
+from techminer2.thesaurus._internals import (
+    internal__load_thesaurus_as_data_frame, internal__print_thesaurus_header)
+
 from .....colorized_input import colorized_input
 
 
@@ -76,4 +76,3 @@ def execute_abbreviations_command():
         + " added terms to known_noun_phrases.txt"
         + Fore.RESET
     )
-    print()

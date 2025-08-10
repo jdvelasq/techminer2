@@ -10,8 +10,7 @@ Statistics
 
 
 Example:
-    >>> from techminer2.tools import Statistics
-
+    >>> from techminer2.database.tools import Statistics
     >>> (
     ...     Statistics()
     ...     #
@@ -61,3 +60,4 @@ class Statistics(
         summary = records.groupby(field).describe()
 
         return summary
+#

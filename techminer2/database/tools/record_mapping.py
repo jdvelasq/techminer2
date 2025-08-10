@@ -22,7 +22,7 @@ Example:
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
-    >>> from techminer2.tools import RecordMapping
+    >>> from techminer2.database.tools import RecordMapping
     >>> from pprint import pprint
 
     >>> # Countries:
@@ -99,14 +99,10 @@ Example:
 
 """
 
-from techminer2._internals.mixins import (
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-)
-from techminer2.database._internals.io.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.mixins import (ParamsMixin, RecordMappingMixin,
+                                          RecordViewerMixin)
+from techminer2.database._internals.io.load_filtered_records_from_database import \
+    internal__load_filtered_records_from_database
 
 
 class RecordMapping(

@@ -259,3 +259,6 @@ class DataFrame(
         terms_by_year = self._step_8_sort_index(terms_by_year)
         terms_by_year = self._step_9_remove_counter_from_axis(terms_by_year)
         return terms_by_year
+
+
+#

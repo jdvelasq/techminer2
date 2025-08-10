@@ -1,4 +1,5 @@
-from .....database.tools import CollectDescriptors, ExtractCopyrightText
+from techminer2.database.tools import CollectDescriptors, ExtractCopyrightText
+
 from ....colorized_input import colorized_input
 
 

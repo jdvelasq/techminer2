@@ -85,10 +85,8 @@ Example:
 
 """
 from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import (
-    internal__cluster_nx_graph,
-    internal__summarize_communities,
-)
+from ....._internals.nx import (internal__cluster_nx_graph,
+                                internal__summarize_communities)
 from .._internals.create_nx_graph import internal__create_nx_graph
 
 

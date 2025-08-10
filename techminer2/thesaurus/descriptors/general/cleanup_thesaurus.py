@@ -70,11 +70,9 @@ from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
 from ...._internals.mixins import ParamsMixin
-from ..._internals import (
-    ThesaurusMixin,
-    internal__load_reversed_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
-)
+from ..._internals import (ThesaurusMixin,
+                           internal__load_reversed_thesaurus_as_mapping,
+                           internal__print_thesaurus_header)
 
 tqdm.pandas()
 

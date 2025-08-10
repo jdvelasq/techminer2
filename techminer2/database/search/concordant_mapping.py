@@ -61,14 +61,10 @@ import re
 
 from textblob import TextBlob  # type: ignore
 
-from techminer2._internals.mixins import (
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-)
-from techminer2.database._internals.io.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.mixins import (ParamsMixin, RecordMappingMixin,
+                                          RecordViewerMixin)
+from techminer2.database._internals.io.load_filtered_records_from_database import \
+    internal__load_filtered_records_from_database
 
 
 class ConcordantMapping(
