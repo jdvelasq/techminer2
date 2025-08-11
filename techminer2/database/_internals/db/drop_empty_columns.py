@@ -1,6 +1,5 @@
 # flake8: noqa
 """Drop empty columns in databases."""
-
 import pathlib
 import sys
 

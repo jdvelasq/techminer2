@@ -1,5 +1,4 @@
 """Creates the project subdirectories and files."""
-
 import os
 import sys
 

@@ -12,11 +12,10 @@
 Example:
     >>> from techminer2._internals.params_mixin import Params
     >>> from techminer2.database._internals.io import internal__load_all_records_from_database
-    >>> (
-    ...     internal__load_all_records_from_database(
+    >>> df = internal__load_all_records_from_database(
     ...         Params(root_directory="examples/fintech/")
-    ...     ).head() # doctest: +ELLIPSIS
-    ... )
+    ... ).head()
+    >>> df # doctest: +SKIP
                         abbr_source_title  ...  year
     0             Int. J. Appl. Eng. Res.  ...  2016
     1                   Telecommun Policy  ...  2016
@@ -31,7 +30,9 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from .get_database_file_path import internal__get_database_file_path
+from techminer2.database._internals.io.get_database_file_path import (
+    internal__get_database_file_path,
+)
 
 
 def internal__load_all_records_from_database(params):

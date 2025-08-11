@@ -1,11 +1,11 @@
 """Thesaurus internal functions"""
-
 import sys
 
-from colorama import Fore, init
-
-from .load_thesaurus_as_data_frame import \
-    internal__load_thesaurus_as_data_frame
+from colorama import Fore
+from colorama import init
+from techminer2.thesaurus._internals.load_thesaurus_as_data_frame import (
+    internal__load_thesaurus_as_data_frame,
+)
 
 init(autoreset=True)
 

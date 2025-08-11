@@ -1,5 +1,4 @@
 """Public API."""
-
 from .bar_plot import BarPlot
 from .cleveland_dot_plot import ClevelandDotPlot
 from .column_plot import ColumnPlot

@@ -62,8 +62,8 @@ Network Plot
 
 
 """
-from ......_internals.mixins import ParamsMixin
-from ......_internals.nx import (
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import (
     internal__assign_constant_to_edge_colors,
     internal__assign_edge_widths_based_on_weight,
     internal__assign_node_colors_based_on_group_attribute,
@@ -71,9 +71,13 @@ from ......_internals.nx import (
     internal__assign_text_positions_based_on_quadrants,
     internal__assign_textfont_opacity_based_on_occurrences,
     internal__assign_textfont_sizes_based_on_occurrences,
-    internal__cluster_nx_graph, internal__compute_spring_layout_positions,
-    internal__plot_nx_graph)
-from .create_nx_graph import internal__create_nx_graph
+    internal__cluster_nx_graph,
+    internal__compute_spring_layout_positions,
+    internal__plot_nx_graph,
+)
+from techminer2.packages.networks.citation._internals.from_others.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class NetworkPlot(
@@ -101,6 +105,10 @@ class NetworkPlot(
         #
         # Sets the edge attributes
         nx_graph = internal__assign_edge_widths_based_on_weight(self.params, nx_graph)
+        nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
+        nx_graph = internal__assign_constant_to_edge_colors(self.params, nx_graph)
+
+        return internal__plot_nx_graph(self.params, nx_graph)
         nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
         nx_graph = internal__assign_constant_to_edge_colors(self.params, nx_graph)
 

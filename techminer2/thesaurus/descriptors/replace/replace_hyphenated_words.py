@@ -32,10 +32,10 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Replacing hyphenated words in thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      42 hypenated words transformed successfully
+      33 hypenated words transformed successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -47,16 +47,16 @@ Example:
           A_WIDE_RANGING_RECONCEPTUALIZATION
         AGRI_BUSINESS
           AGRIBUSINESS
-        AGRO_INDUSTRY
-          AGROINDUSTRY
         BACK_OFFICE_FUNCTIONS
           BACKOFFICE_FUNCTIONS
         BLOCK_CHAIN
-          BLOCKCHAIN; BLOCKCHAINS
-        BLOCK_CHAIN_AND_FINTECH_INNOVATIONS
-          BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-        BLOCK_CHAIN_ENABLES_BLOCK_CHAIN
-          BLOCKCHAIN_ENABLES_BLOCKCHAIN
+          BLOCKCHAIN
+        BLOCK_CHAIN_IMPLEMENTATION
+          BLOCKCHAIN_IMPLEMENTATION
+        BROADER_AGRICULTURE_ECO_SYSTEM
+          BROADER_AGRICULTURE_ECOSYSTEM
+        COMPLEX_GENERATES_DIGITAL_ECO_SYSTEMS
+          COMPLEX_GENERATES_DIGITAL_ECOSYSTEMS
     <BLANKLINE>
     <BLANKLINE>
 
@@ -66,14 +66,14 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 

@@ -86,8 +86,12 @@ Manifold Terms by Dimensions Map
 
 
 """
-from .._internals.manifold_2d_map import manifold_2d_map
-from .terms_by_dimension_data_frame import terms_by_dimension_frame
+from techminer2.packages.factor_analysis._internals.manifold_2d_map import (
+    manifold_2d_map,
+)
+from techminer2.packages.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+    terms_by_dimension_frame,
+)
 
 
 def manifold_terms_by_dimension_map(
@@ -163,3 +167,6 @@ def manifold_terms_by_dimension_map(
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
     )
+
+
+#

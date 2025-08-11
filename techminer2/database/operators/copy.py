@@ -11,14 +11,13 @@ Copy a Field
 
 
 Example:
-    >>> from techminer2.database.operators import (
-    ...     CopyOperator,
-    ...     DeleteOperator,
-    ... )
-    >>> from techminer2.database.tools import Query
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
 
     >>> # Creates, configures, and runs the copy operator
-    >>> copy_operator = (
+    >>> from techminer2.database.operators import CopyOperator
+    >>> (
     ...     CopyOperator()
     ...     #
     ...     # FIELDS:
@@ -27,20 +26,23 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> copy_operator.run()
+
 
     >>> # Query the database to test the operator
-    >>> query = (
+    >>> from techminer2.database.tools import Query
+    >>> (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 5;")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
     ... )
-    >>> df = query.run()
-    >>> df
                                     author_keywords_copy
     0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
     1  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; FINTECH...
@@ -49,6 +51,7 @@ Example:
     4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; F...
 
     >>> # Deletes the field
+    >>> from techminer2.database.operators import DeleteOperator
     >>> DeleteOperator(
     ...     field="author_keywords_copy",
     ...     root_directory="examples/fintech/",

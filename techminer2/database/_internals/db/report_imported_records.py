@@ -1,5 +1,4 @@
 """Report imported records per file"""
-
 import pathlib
 import sys
 

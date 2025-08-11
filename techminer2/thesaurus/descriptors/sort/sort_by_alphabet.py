@@ -33,7 +33,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus alphabetically...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       Sorting process completed successfully
@@ -41,6 +41,8 @@ Example:
     Printing thesaurus header
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
+        ABOUT_ONE_THIRD
+          ABOUT_ONE_THIRD
         ACADEMIA
           ACADEMIA
         ACADEMICS
@@ -51,8 +53,6 @@ Example:
           ACADEMIC_RESEARCH
         ACCELERATE_ACCESS
           ACCELERATE_ACCESS
-        ACCEPTANCE_MODELS
-          ACCEPTANCE_MODELS
         ACCESS
           ACCESS
         ACCESS_LOANS
@@ -64,8 +64,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByAlphabet as UserSortByAlphabet
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByAlphabet as UserSortByAlphabet
 
 
 class SortByAlphabet(

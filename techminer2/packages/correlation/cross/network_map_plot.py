@@ -72,9 +72,11 @@ Example:
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from ...._internals.mixins import ParamsMixin
-from .._internals.internal__correlation_map import internal__correlation_map
-from .matrix_data_frame import MatrixDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.correlation._internals.internal__correlation_map import (
+    internal__correlation_map,
+)
+from techminer2.packages.correlation.cross.matrix_data_frame import MatrixDataFrame
 
 
 class NetworkMapPlot(
@@ -91,5 +93,7 @@ class NetworkMapPlot(
             index=data_frame.index,
             columns=data_frame.columns,
         )
+
+        return internal__correlation_map(self.params, data_frame)
 
         return internal__correlation_map(self.params, data_frame)

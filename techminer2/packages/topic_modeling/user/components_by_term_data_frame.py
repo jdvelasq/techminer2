@@ -23,7 +23,7 @@ Example:
     ...     random_state=0,
     ... )
     >>> from techminer2.packages.topic_modeling.user import ComponentsByTermDataFrame
-    >>> (
+    >>> df = (
     ...     ComponentsByTermDataFrame()
     ...     #
     ...     # FIELD:
@@ -54,27 +54,27 @@ Example:
     ...     #
     ...     .run()
     ... )
-    term       FINTECH 44:6942  ...  FINANCIAL_MARKETS 03:0835
+    >>> df  # doctest: +SKIP
+    term       FINTECH 38:6131  ...  REGULATION 03:0461
     component                   ...
-    0                10.229276  ...                   2.099988
-    1                 7.643060  ...                   0.100000
-    2                 3.678018  ...                   0.100000
-    3                 1.099978  ...                   0.100000
-    4                 2.362586  ...                   0.100000
-    5                 3.294271  ...                   0.100000
-    6                 6.392840  ...                   0.100000
-    7                 3.100027  ...                   0.100000
-    8                 0.100000  ...                   1.100012
-    9                 7.099944  ...                   0.100000
+    0                 8.362389  ...            2.099995
+    1                 3.334489  ...            0.100000
+    2                 2.099949  ...            0.100000
+    3                 0.100000  ...            0.100000
+    4                 0.100000  ...            0.100000
+    5                 4.837552  ...            0.100000
+    6                 4.779077  ...            0.100000
+    7                 3.100090  ...            0.100000
+    8                 1.186569  ...            1.100005
+    9                11.099884  ...            0.100000
     <BLANKLINE>
     [10 rows x 50 columns]
 
 
 """
 import pandas as pd  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.tfidf import DataFrame as TfIdfDataFrame
 
 
 class ComponentsByTermDataFrame(

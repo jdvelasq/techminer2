@@ -80,10 +80,8 @@ Example:
 
 
 """
-
-
-from ...._internals.mixins import ParamsMixin
-from ...user import ApplyThesaurus as ApplyUserThesaurus
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import ApplyThesaurus as ApplyUserThesaurus
 
 PAIRS = [
     ("raw_author_keywords", "author_keywords"),

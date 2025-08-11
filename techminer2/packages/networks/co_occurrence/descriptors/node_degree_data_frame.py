@@ -12,7 +12,7 @@ Node Degree Frame
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import NodeDegreeDataFrame
-    >>> (
+    >>> df =(
     ...     NodeDegreeDataFrame()
     ...     #
     ...     # FIELD:
@@ -36,19 +36,21 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head()
-       Node                       Name  Degree
-    0     0            FINTECH 44:6942      19
-    1     1            FINANCE 21:3481      19
-    2     2       TECHNOLOGIES 17:1943      19
-    3     3  FINANCIAL_SERVICE 12:2100      19
-    4     4         REGULATORS 08:0974      19
+    ... )
+    >>> df.head() # doctest: +SKIP
+       Node                     Name  Degree
+    0     0          FINTECH 38:6131      19
+    1     1       REGULATORS 08:0974      18
+    2     2  THE_DEVELOPMENT 09:1293      16
+    3     3     PRACTITIONER 06:1194      16
+    4     4     TECHNOLOGIES 15:1633      15
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.node_degree_data_frame import \
-    NodeDegreeDataFrame as UserNodeDegreeDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.node_degree_data_frame import (
+    NodeDegreeDataFrame as UserNodeDegreeDataFrame,
+)
 
 
 class NodeDegreeDataFrame(

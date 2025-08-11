@@ -63,8 +63,8 @@ Example:
     <BLANKLINE>
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByStartsWithMatch as UserSortByStartsWithMatch
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByStartsWithMatch as UserSortByStartsWithMatch
 
 
 class SortByStartsWithMatch(

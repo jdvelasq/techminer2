@@ -48,10 +48,10 @@ Example:
 
 """
 from techminer2._internals.params_mixin import ParamsMixin
-from techminer2._internals.plots.internal__cleveland_dot_plot import \
-    internal__cleveland_dot_plot
-
-from .data_frame import DataFrame
+from techminer2._internals.plots.internal__cleveland_dot_plot import (
+    internal__cleveland_dot_plot,
+)
+from techminer2.database.metrics.performance.data_frame import DataFrame
 
 
 class ClevelandDotPlot(

@@ -37,7 +37,6 @@ Example:
 
 """
 import duckdb
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
@@ -52,4 +51,3 @@ class Query(
     def run(self):
         database = internal__load_filtered_records_from_database(params=self.params)
         return duckdb.query(self.params.query_expression).df()
-        

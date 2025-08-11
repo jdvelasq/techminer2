@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-few-public-methods
 "Record Report Mixin."
-
 import textwrap
 
 

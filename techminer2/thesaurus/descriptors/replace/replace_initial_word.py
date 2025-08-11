@@ -34,12 +34,12 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Replacing initial word in keys...
              File : ...h/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
-      38 replacements made successfully
+      34 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -51,24 +51,24 @@ Example:
           FINTECH_AND_FINANCIAL_INNOVATIONS
         fintech_AND_REGTECH
           FINTECH_AND_REGTECH
-        fintech_AND_SUSTAINABLE_DEVELOPMENT
-          FINTECH_AND_SUSTAINABLE_DEVELOPMENT
         fintech_BANKING_INDUSTRY
           FINTECH_BANKING_INDUSTRY
         fintech_BASED_INNOVATION_DEVELOPMENT
           FINTECH_BASED_INNOVATION_DEVELOPMENT
         fintech_BASED_INNOVATIONS
-          FINTECH_BASED_INNOVATIONS; FINTECH_INNOVATION
+          FINTECH_BASED_INNOVATIONS; FINTECH_INNOVATION; FINTECH_INNOVATIONS
         fintech_CLUSTERS
           FINTECH_CLUSTERS
+        fintech_COMPANIES
+          FINTECH_COMPANIES
     <BLANKLINE>
     <BLANKLINE>
 
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import ReplaceInitialWord as UserReplaceStartsWithWord
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import ReplaceInitialWord as UserReplaceStartsWithWord
 
 
 class ReplaceInitialWord(

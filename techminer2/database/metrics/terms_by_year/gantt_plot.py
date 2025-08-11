@@ -41,9 +41,10 @@ Example:
 
 """
 import plotly.express as px  # type: ignore
-
-from ...._internals.params_mixin import ParamsMixin
-from .data_frame import DataFrame as TermsByYearMetricsDataFrame
+from techminer2._internals.params_mixin import ParamsMixin
+from techminer2.database.metrics.terms_by_year.data_frame import (
+    DataFrame as TermsByYearMetricsDataFrame,
+)
 
 COLOR = "#465c6b"
 TEXTLEN = 40

@@ -56,7 +56,7 @@ Example:
 
 
 """
-from ....user import SortByLastWords as UserSortByLastWords
+from techminer2.thesaurus.user import SortByLastWords as UserSortByLastWords
 
 
 class SortByLastWords(

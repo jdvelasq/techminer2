@@ -70,9 +70,12 @@ import sys
 
 from colorama import Fore, init
 
-from ...._internals.mixins import ParamsMixin
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
-from ..general.reduce_keys import ReduceKeys
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__print_thesaurus_header,
+)
+from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 
 
 class SortByWordLength(

@@ -6,8 +6,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
-
 import pathlib
 import sys
 
@@ -20,8 +18,9 @@ def internal__preprocess_subject_areas(
     root_dir="./",
 ):
 
-    from techminer2.package_data.database.load_subject_areas import \
-        internal__load_subject_areas
+    from techminer2.package_data.database.load_subject_areas import (
+        internal__load_subject_areas,
+    )
 
     sys.stderr.write("INFO  Assign subject areas to each record\n")
     sys.stderr.flush()

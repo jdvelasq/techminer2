@@ -37,8 +37,10 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ..._internals.io import internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class DataFrame(

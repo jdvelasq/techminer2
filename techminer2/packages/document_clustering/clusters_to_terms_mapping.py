@@ -110,8 +110,10 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from .term_occurrence_by_cluster import TermOccurrenceByCluster
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.document_clustering.term_occurrence_by_cluster import (
+    TermOccurrenceByCluster,
+)
 
 
 class ClustersToTermsMapping(
@@ -132,5 +134,7 @@ class ClustersToTermsMapping(
             if theme not in mapping:
                 mapping[theme] = []
             mapping[theme].append(word)
+
+        return mapping
 
         return mapping

@@ -47,9 +47,9 @@ Example:
 
 
 """
-from ...._internals.params_mixin import ParamsMixin
-from ...._internals.plots.internal__line_plot import internal__line_plot
-from .data_frame import DataFrame
+from techminer2._internals.params_mixin import ParamsMixin
+from techminer2._internals.plots.internal__line_plot import internal__line_plot
+from techminer2.database.metrics.performance.data_frame import DataFrame
 
 
 class LinePlot(

@@ -84,10 +84,14 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import (internal__cluster_nx_graph,
-                                internal__summarize_communities)
-from .._internals.create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import (
+    internal__cluster_nx_graph,
+    internal__summarize_communities,
+)
+from techminer2.packages.networks.co_occurrence._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class TermsByClusterSummary(
@@ -97,6 +101,10 @@ class TermsByClusterSummary(
 
     def run(self):
         """:meta private:"""
+
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        return internal__summarize_communities(self.params, nx_graph)
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)

@@ -6,14 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-
-from ..base_shell import BaseShell
-from ..colorized_prompt import make_colorized_prompt
-from .ingest.ingest_shell import IngestShell
-from .metrics.metrics_shell import MetricsShell
-from .search.search_shell import SearchShell
-from .tools.tools_shell import ToolsShell
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.database.ingest.ingest_shell import IngestShell
+from techminer2.shell.database.metrics.metrics_shell import MetricsShell
+from techminer2.shell.database.search.search_shell import SearchShell
+from techminer2.shell.database.tools.tools_shell import ToolsShell
 
 
 class DatabaseShell(BaseShell):

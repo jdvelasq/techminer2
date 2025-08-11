@@ -33,7 +33,6 @@ Example:
 
 """
 import plotly.graph_objects as go  # type: ignore
-
 from techminer2._internals.params_mixin import ParamsMixin
 from techminer2.database.metrics.lotka_law.data_frame import DataFrame
 

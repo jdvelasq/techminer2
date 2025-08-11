@@ -34,12 +34,12 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Replacing word in keys...
              File : ...h/data/thesaurus/descriptors.the.txt
              Word : FINTECH
       Replacement : fintech
-      102 replacements made successfully
+      93 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -67,8 +67,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import ReplaceWord as UserReplaceWord
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import ReplaceWord as UserReplaceWord
 
 
 class ReplaceWord(

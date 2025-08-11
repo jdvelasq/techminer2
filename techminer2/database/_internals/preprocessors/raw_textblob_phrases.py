@@ -58,7 +58,10 @@ def internal__preprocess_raw_textblob_phrases(root_dir):
         phrases = [term for term in phrases if "<" not in term]
         phrases = [term for term in phrases if ">" not in term]
         phrases = [term for term in phrases if "=" not in term]
-
+        #
+        # phrases = [term for term in phrases if not term.endswith(" et al")]
+        # phrases = [term for term in phrases if term != "et al"]
+        #
         if phrases == []:
             continue
 

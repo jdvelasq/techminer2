@@ -11,16 +11,12 @@ Collect Nouns and Phrases
 
 
 Example:
-    >>> import textwrap
-    >>> from techminer2.database.operators import (
-    ...     TokenizeOperator,
-    ...     CollectOperator,
-    ...     DeleteOperator,
-    ...     HighlightOperator,
-    ... )
-    >>> from techminer2.database.tools import Query
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
 
     >>> # Creates, configure, and run the cleaner to prepare the field
+    >>> from techminer2.database.operators import TokenizeOperator
     >>> (
     ...     TokenizeOperator()
     ...     #
@@ -35,7 +31,8 @@ Example:
     ... )
 
 
-    >>> # Creates, configure, and run the highlighter
+    >>> # Creates, configure, and run the operator
+    >>> from techminer2.database.operators import HighlightOperator
     >>> (
     ...     HighlightOperator()
     ...     #
@@ -51,6 +48,7 @@ Example:
 
 
     >>> # Collect terms in upper case from the field
+    >>> from techminer2.database.operators import CollectOperator
     >>> (
     ...     CollectOperator()
     ...     #
@@ -67,6 +65,7 @@ Example:
 
 
     >>> # Query the database to test the cleaner
+    >>> from techminer2.database.tools import Query
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT extracted_nouns_and_phrases FROM database LIMIT 10;")
@@ -76,6 +75,7 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     .run()
     ... )
+    >>> import textwrap
     >>> print(textwrap.fill(df.values[1][0], width=80))
     THE_RAPID_DEVELOPMENT; INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY;
     THE_ENTIRE_INDUSTRY_LANDSCAPE; A_NEW_ERA; CONVERGENCE_SERVICES;
@@ -107,12 +107,11 @@ Example:
     >>> #   ELSEVIER_LTD .
 
     >>> # Deletes the fields
+    >>> from techminer2.database.operators import DeleteOperator
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .where_root_directory_is("examples/fintech/")
     ... )
-
-
     >>> field_deleter.with_field("cleaned_raw_abstract").run()
     >>> field_deleter.with_field("highlighted_raw_abstract").run()
     >>> field_deleter.with_field("extracted_nouns_and_phrases").run()

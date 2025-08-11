@@ -49,7 +49,6 @@ AB this PAPER_AIMS to evaluate FINTECH_LEVEL of DEVELOPMENT in latvia compared t
 <BLANKLINE>
 
 """
-import os
 import os.path
 import re
 import textwrap
@@ -58,11 +57,12 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-# from ..database.load.load__database import load__filtered_database
-from ...thesaurus._internals.load_reversed_thesaurus_as_mapping import \
-    internal__load_reversed_thesaurus_as_mapping
-from .deprecated.extract_descriptors_from_text import \
-    extract_descriptors_from_text
+from techminer2.database.search.deprecated.extract_descriptors_from_text import (
+    extract_descriptors_from_text,
+)
+from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
+)
 
 TEXTWRAP_WIDTH = 79
 THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"

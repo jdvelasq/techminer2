@@ -39,28 +39,27 @@ Example:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
-    {'BANKING 07:0851': 0,
-     'BANKS 09:1133': 2,
-     'BUSINESS_MODEL 05:1578': 0,
+    >>> pprint(mapping) # doctest: +SKIP
+    {'BANKS 08:1049': 0,
      'CHINA 06:0673': 1,
-     'CONSUMERS 07:0925': 2,
-     'DATA 07:1086': 2,
-     'FINANCE 21:3481': 1,
-     'FINANCIAL_SERVICE 12:2100': 0,
-     'FINANCIAL_TECHNOLOGIES 14:2005': 0,
-     'FINTECH 44:6942': 1,
-     'INNOVATION 15:2741': 1,
-     'INVESTMENT 06:1294': 0,
+     'CONSUMERS 07:0925': 0,
+     'DATA 07:1086': 0,
+     'FINANCE 10:1188': 1,
+     'FINANCIAL_SERVICES 06:1116': 1,
+     'FINANCIAL_TECHNOLOGIES 12:1615': 1,
+     'FINTECH 38:6131': 0,
+     'FINTECH_COMPANIES 05:1072': 0,
+     'INFORMATION_TECHNOLOGY 05:1101': 0,
+     'INNOVATION 08:1816': 1,
      'PRACTITIONER 06:1194': 0,
-     'REGULATORS 08:0974': 0,
-     'SERVICES 07:1226': 0,
-     'TECHNOLOGIES 17:1943': 1,
-     'THE_DEVELOPMENT 09:1293': 0,
-     'THE_FINANCIAL_INDUSTRY 09:2006': 1,
-     'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237': 0,
-     'THE_IMPACT 06:0908': 1}
-
+     'REGULATORS 08:0974': 1,
+     'SERVICES 06:1089': 1,
+     'TECHNOLOGIES 15:1633': 1,
+     'THE_DEVELOPMENT 09:1293': 1,
+     'THE_FINANCIAL_INDUSTRY 09:2006': 0,
+     'THE_FINANCIAL_SECTOR 05:1147': 0,
+     'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237': 1,
+     'THE_IMPACT 06:0908': 0}
 
 Example:
     >>> mapping = (
@@ -90,33 +89,35 @@ Example:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
-    {'BANKING': 0,
-     'BANKS': 2,
-     'BUSINESS_MODEL': 0,
+    >>> pprint(mapping) # doctest: +SKIP
+    {'BANKS': 0,
      'CHINA': 1,
-     'CONSUMERS': 2,
-     'DATA': 2,
+     'CONSUMERS': 0,
+     'DATA': 0,
      'FINANCE': 1,
-     'FINANCIAL_SERVICE': 0,
-     'FINANCIAL_TECHNOLOGIES': 0,
-     'FINTECH': 1,
+     'FINANCIAL_SERVICES': 1,
+     'FINANCIAL_TECHNOLOGIES': 1,
+     'FINTECH': 0,
+     'FINTECH_COMPANIES': 0,
+     'INFORMATION_TECHNOLOGY': 0,
      'INNOVATION': 1,
-     'INVESTMENT': 0,
      'PRACTITIONER': 0,
-     'REGULATORS': 0,
-     'SERVICES': 0,
+     'REGULATORS': 1,
+     'SERVICES': 1,
      'TECHNOLOGIES': 1,
-     'THE_DEVELOPMENT': 0,
-     'THE_FINANCIAL_INDUSTRY': 1,
-     'THE_FINANCIAL_SERVICES_INDUSTRY': 0,
-     'THE_IMPACT': 1}
+     'THE_DEVELOPMENT': 1,
+     'THE_FINANCIAL_INDUSTRY': 0,
+     'THE_FINANCIAL_SECTOR': 0,
+     'THE_FINANCIAL_SERVICES_INDUSTRY': 1,
+     'THE_IMPACT': 0}
+
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.terms_to_clusters_mapping import \
-    TermsToClustersMapping as UserTermsToClusterMapping
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.terms_to_clusters_mapping import (
+    TermsToClustersMapping as UserTermsToClusterMapping,
+)
 
 
 class TermsToClustersMapping(

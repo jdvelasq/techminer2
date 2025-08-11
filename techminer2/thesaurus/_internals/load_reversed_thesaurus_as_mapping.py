@@ -3,7 +3,6 @@ This module implement generic thesaurus functions.
 
 
 """
-
 import os.path
 
 

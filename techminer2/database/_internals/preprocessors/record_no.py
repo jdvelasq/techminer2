@@ -1,5 +1,4 @@
 """Create art_no column in databses."""
-
 import pathlib
 import sys
 

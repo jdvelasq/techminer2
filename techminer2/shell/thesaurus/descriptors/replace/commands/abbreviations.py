@@ -1,4 +1,4 @@
-from ......thesaurus.descriptors import ReplaceAbbreviations
+from techminer2.thesaurus.descriptors import ReplaceAbbreviations
 
 
 def execute_abbreviations_command():

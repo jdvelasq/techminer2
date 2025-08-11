@@ -1,5 +1,4 @@
 """Commands"""
-
 from .apply import execute_apply_command
 from .cleanup import execute_cleanup_command
 from .compress import execute_compress_command

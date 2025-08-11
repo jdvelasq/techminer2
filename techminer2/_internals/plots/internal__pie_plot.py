@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-few-public-methods
 """Pie Plot Mixin."""
-
 import plotly.express as px  # type: ignore
 
 

@@ -5,8 +5,9 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
-from .get_values_from_field import internal__get_values_from_field
+from techminer2.database._internals.extractors.get_values_from_field import (
+    internal__get_values_from_field,
+)
 
 
 def internal__starts_with(params):
@@ -16,5 +17,7 @@ def internal__starts_with(params):
     dataframe = dataframe.dropna()
     dataframe = dataframe.sort_values("term", ascending=True)
     terms = dataframe.term.tolist()
+
+    return terms
 
     return terms

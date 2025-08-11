@@ -1,6 +1,5 @@
 # flake8: noqa
 """Functions for preprocessing database fields."""
-
 from .abbr_source_title import internal__preprocess_abbr_source_title
 from .abbreviations import internal__preprocess_abbreviations
 from .abstract import internal__preprocess_abstract
@@ -24,12 +23,14 @@ from .local_references import internal__preprocess_local_references
 from .num_authors import internal__preprocess_num_authors
 from .num_global_references import internal__preprocess_num_global_references
 from .organizations import internal__preprocess_organizations
-from .raw_abstract_nouns_and_phrases import \
-    internal__preprocess_raw_abstract_nouns_and_phrases
+from .raw_abstract_nouns_and_phrases import (
+    internal__preprocess_raw_abstract_nouns_and_phrases,
+)
 from .raw_author_keywords import internal__preprocess_raw_author_keywords
 from .raw_descriptors import internal__preprocess_raw_descriptors
-from .raw_document_title_nouns_and_phrases import \
-    internal__preprocess_raw_document_title_nouns_and_phrases
+from .raw_document_title_nouns_and_phrases import (
+    internal__preprocess_raw_document_title_nouns_and_phrases,
+)
 from .raw_index_keywords import internal__preprocess_raw_index_keywords
 from .raw_keywords import internal__preprocess_raw_keywords
 from .raw_nouns_and_phrases import internal__preprocess_raw_noun_and_phrases
@@ -41,8 +42,7 @@ from .references import internal__preprocess_references
 from .source_title import internal__preprocess_source_title
 from .subject_areas import internal__preprocess_subject_areas
 from .tokenized_abstract import internal__preprocess_tokenized_abstract
-from .tokenized_document_title import \
-    internal__preprocess_tokenized_document_title
+from .tokenized_document_title import internal__preprocess_tokenized_document_title
 
 __all__ = [
     "internal__preprocess_abbr_source_title",

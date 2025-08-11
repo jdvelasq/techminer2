@@ -11,6 +11,10 @@ Rename a Field
 
 
 Example:
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
+
     >>> # Creates, configures, and runs the operator to copy the field
     >>> from techminer2.database.operators import CopyOperator
     >>> (
@@ -69,9 +73,8 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-
-from .._internals.operators.rename import internal__rename
-from .._internals.protected_fields import PROTECTED_FIELDS
+from techminer2.database._internals.operators.rename import internal__rename
+from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
 
 
 class RenameOperator(

@@ -53,9 +53,8 @@ Example:
     [10 rows x 3 columns]
 
 """
-
-from ..._internals.mixins import ParamsMixin
-from ..co_occurrence_matrix import MatrixDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.co_occurrence_matrix import MatrixDataFrame
 
 
 class DataFrame(

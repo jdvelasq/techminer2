@@ -1,5 +1,4 @@
 """Commands"""
-
 from .abbreviations import execute_abbreviations_command
 from .hyphenated import execute_hyphenated_command
 from .initial import execute_initial_command

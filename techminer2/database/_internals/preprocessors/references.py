@@ -5,14 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """Replace journal name in references."""
-
 import pathlib
 import sys
 
 import pandas as pd  # type: ignore
-from tqdm import tqdm  # type: ignore
-
 from techminer2._dtypes import DTYPES
+from tqdm import tqdm  # type: ignore
 
 
 def _get_sources_info(root_dir):

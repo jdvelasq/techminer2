@@ -57,7 +57,7 @@ Example:
 
 
 """
-from ....user import SortByWordLength as UserSortByWordLength
+from techminer2.thesaurus.user import SortByWordLength as UserSortByWordLength
 
 
 class SortByWordLength(

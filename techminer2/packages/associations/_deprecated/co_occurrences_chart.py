@@ -51,13 +51,9 @@ Co-occurrences Chart
 
 """
 # import plotly.express as px  # type: ignore
-
 # # from .associated_matrix_data_frame import SubMatrixDataFrame
-
 # MARKER_COLOR = "#7793a5"
 # MARKER_LINE_COLOR = "#465c6b"
-
-
 # def co_occurrences_chart(
 #     #
 #     # FUNCTION PARAMS:
@@ -95,7 +91,6 @@ Co-occurrences Chart
 #     **filters,
 # ):
 #     """:meta private:"""
-
 #     associations = term_associations_frame(
 #         #
 #         # FUNCTION PARAMS:
@@ -124,7 +119,6 @@ Co-occurrences Chart
 #         cited_by_filter=cited_by_filter,
 #         **filters,
 #     )
-
 #     associations = associations.copy()
 #     associations["occ"] = associations.index.copy()
 #     associations["occ"] = associations["occ"].str.split(" ")
@@ -132,30 +126,22 @@ Co-occurrences Chart
 #     associations["occ"] = associations["occ"].str.split(":")
 #     associations["gc"] = associations["occ"].str[1]
 #     associations["occ"] = associations["occ"].str[0]
-
 #     associations["percentage"] = (
 #         associations.iloc[:, 0] / associations["occ"].astype(float) * 100
 #     )
 #     associations["percentage"] = associations["percentage"].round(2)
 #     associations["name"] = associations.index.copy()
-
 #     associations = associations.sort_values(
 #         by=["percentage", "occ", "gc", "name"], ascending=[False, False, False, True]
 #     )
-
 #     #
 #     # Graph
 #     associations["Rank"] = list(range(1, len(associations) + 1))
-
 #     y_label = r"% of Co-occurrence with " + item if y_label is None else y_label
-
 #     title = f"(%) Co-occurrences with '{item}'"
-
 #     if field_label is None:
 #         field_label = columns.replace("_", " ").upper() + " RANKING"
-
 #     data_frame = associations.copy()
-
 #     fig = px.line(
 #         data_frame,
 #         x="Rank",
@@ -163,7 +149,6 @@ Co-occurrences Chart
 #         hover_data=data_frame.columns.to_list(),
 #         markers=True,
 #     )
-
 #     fig.update_traces(
 #         marker={
 #             "size": marker_size,
@@ -191,7 +176,6 @@ Co-occurrences Chart
 #         griddash="dot",
 #         title=field_label,
 #     )
-
 #     for name, row in data_frame.iterrows():
 #         fig.add_annotation(
 #             x=row["Rank"],
@@ -203,5 +187,4 @@ Co-occurrences Chart
 #             font={"size": textfont_size},
 #             yshift=yshift,
 #         )
-
 #     return fig

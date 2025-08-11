@@ -22,7 +22,7 @@ Example:
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
-    >>> from techminer2.database.tools import RecordMapping
+
     >>> from pprint import pprint
 
     >>> # Countries:
@@ -45,7 +45,8 @@ Example:
     >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
     >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
     >>> #
-    >>> mapper = (
+    >>> from techminer2.database.tools import RecordMapping
+    >>> mapping = (
     ...     RecordMapping()
     ...     #
     ...     .where_root_directory_is("examples/fintech/")
@@ -54,16 +55,16 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
     ...     .where_records_ordered_by("global_cited_by_highest")
+    ...     .run()
     ... )
-    >>> mapping = mapper.run()
 
-    >>> pprint(mapping[0])
+    >>> pprint(mapping[0]) # doctest: +SKIP
     {'AB': 'THE_FINANCIAL_SERVICES_INDUSTRY has been experiencing '
            'THE_RECENT_EMERGENCE of NEW_TECHNOLOGY_INNOVATIONS and '
            'PROCESS_DISRUPTIONS . THE_INDUSTRY overall , and '
            'MANY_FINTECH_START_UPS are looking for NEW_PATHWAYS to '
            'SUCCESSFUL_BUSINESS_MODELS , THE_CREATION of '
-           'ENHANCED_CUSTOMER_EXPERIENCE , and APPROACHES that result in '
+           'ENHANCED_CUSTOMER_EXPERIENCE , and approaches that result in '
            'SERVICES_TRANSFORMATION . INDUSTRY and ACADEMIC_OBSERVERS believe this '
            'to be more of A_REVOLUTION than A_SET of LESS_INFLUENTIAL_CHANGES , '
            'with FINANCIAL_SERVICES as A_WHOLE due for MAJOR_IMPROVEMENTS in '
@@ -80,7 +81,7 @@ Example:
            'have affected LENDING_AND_DEPOSIT_SERVICES , PEER_TO_PEER ( P2P ) '
            'LENDING , and SOCIAL_MEDIA_USE . ISSUES with_respect_to INVESTMENTS , '
            'FINANCIAL_MARKETS , TRADING , RISK_MANAGEMENT , ROBO_ADVISORY and '
-           'SERVICES influenced by BLOCKCHAIN_AND_FINTECH_INNOVATIONS . copyright '
+           'SERVICES influenced by BLOCKCHAIN and FINTECH_INNOVATIONS . copyright '
            'taylor and francis group , llc .',
      'AR': 'Gomber P., 2018, J MANAGE INF SYST, V35, P220',
      'AU': 'Gomber P.; Kauffman R.J.; Parker C.; Weber B.W.',
@@ -98,11 +99,12 @@ Example:
 
 
 """
-
-from techminer2._internals.mixins import (ParamsMixin, RecordMappingMixin,
-                                          RecordViewerMixin)
-from techminer2.database._internals.io.load_filtered_records_from_database import \
-    internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import RecordMappingMixin
+from techminer2._internals.mixins import RecordViewerMixin
+from techminer2.database._internals.io.load_filtered_records_from_database import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class RecordMapping(

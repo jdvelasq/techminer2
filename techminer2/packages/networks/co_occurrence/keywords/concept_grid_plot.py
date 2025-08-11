@@ -45,8 +45,10 @@ Concept Grid Plot
 #     :align: center
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.concept_grid_plot import ConceptGridPlot as UserConceptGridPlot
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.concept_grid_plot import (
+    ConceptGridPlot as UserConceptGridPlot,
+)
 
 
 class ConceptGridPlot(

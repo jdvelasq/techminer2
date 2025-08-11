@@ -135,10 +135,14 @@ Example:
 
 
 """
-
-from ...._internals.mixins import ParamsMixin, SortAxesMixin
-from ..._internals.io import internal__load_filtered_records_from_database
-from ..performance.data_frame import DataFrame as PerformanceDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import SortAxesMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
+from techminer2.database.metrics.performance.data_frame import (
+    DataFrame as PerformanceDataFrame,
+)
 
 
 class DataFrame(

@@ -46,8 +46,10 @@ Example:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.treemap import Treemap as UserTreemap
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.treemap import (
+    Treemap as UserTreemap,
+)
 
 
 class Treemap(
@@ -61,3 +63,6 @@ class Treemap(
         return (
             UserTreemap().update(**self.params.__dict__).with_field("countries").run()
         )
+
+
+#

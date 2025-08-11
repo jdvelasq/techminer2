@@ -116,10 +116,14 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import (internal__cluster_nx_graph,
-                                internal__create_terms_to_clusters_mapping)
-from .._internals.create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import (
+    internal__cluster_nx_graph,
+    internal__create_terms_to_clusters_mapping,
+)
+from techminer2.packages.networks.co_occurrence._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class TermsToClustersMapping(
@@ -129,6 +133,10 @@ class TermsToClustersMapping(
 
     def run(self):
         """:meta private:"""
+
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        return internal__create_terms_to_clusters_mapping(self.params, nx_graph)
 
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)

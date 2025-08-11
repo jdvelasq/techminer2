@@ -1,5 +1,4 @@
 """Public API."""
-
 from .collect import CollectOperator
 from .copy import CopyOperator
 from .count import CountOperator

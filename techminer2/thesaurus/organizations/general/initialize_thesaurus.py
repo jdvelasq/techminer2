@@ -63,16 +63,15 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-
-from ...._internals.mixins import Params, ParamsMixin
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..._internals import (ThesaurusMixin,
-                           internal__generate_system_thesaurus_file_path,
-                           internal__generate_user_thesaurus_file_path,
-                           internal__load_reversed_thesaurus_as_mapping,
-                           internal__load_thesaurus_as_mapping,
-                           internal__print_thesaurus_header)
+from techminer2._internals.mixins import Params
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import internal__generate_system_thesaurus_file_path
+from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
+from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 # names sorted by proirity
 ABBR = [

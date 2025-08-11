@@ -1,5 +1,4 @@
 """Public API for user thesaurus."""
-
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.compress_thesaurus import CompressThesaurus
 from .general.explode_keys import ExplodeKeys

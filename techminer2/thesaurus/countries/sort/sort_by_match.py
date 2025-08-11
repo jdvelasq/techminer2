@@ -79,8 +79,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByMatch as UserSortByMatch
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByMatch as UserSortByMatch
 
 
 class SortByMatch(

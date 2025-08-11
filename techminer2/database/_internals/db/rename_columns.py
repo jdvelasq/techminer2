@@ -1,6 +1,5 @@
 # flake8: noqa
 """Chnage Scopus default column names to TechMiner2 default column names."""
-
 import pathlib
 import sys
 

@@ -64,7 +64,7 @@ Example:
 
 
 """
-from ....user import SortByFuzzyMatch as UserSortByFuzzyMatch
+from techminer2.thesaurus.user import SortByFuzzyMatch as UserSortByFuzzyMatch
 
 
 class SortByFuzzyMatch(

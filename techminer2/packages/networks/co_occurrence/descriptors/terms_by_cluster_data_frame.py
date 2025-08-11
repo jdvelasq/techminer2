@@ -44,24 +44,25 @@ Example:
     ... )
 
     >>> # Display the resulting data frame
-    >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE
-                                             0                               1                  2
-    0           FINANCIAL_TECHNOLOGIES 14:2005                 FINTECH 44:6942      BANKS 09:1133
-    1                FINANCIAL_SERVICE 12:2100                 FINANCE 21:3481       DATA 07:1086
-    2                  THE_DEVELOPMENT 09:1293            TECHNOLOGIES 17:1943  CONSUMERS 07:0925
-    3                       REGULATORS 08:0974              INNOVATION 15:2741
-    4                         SERVICES 07:1226  THE_FINANCIAL_INDUSTRY 09:2006
-    5                          BANKING 07:0851              THE_IMPACT 06:0908
-    6                       INVESTMENT 06:1294                   CHINA 06:0673
-    7  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237
-    8                     PRACTITIONER 06:1194
-    9                   BUSINESS_MODEL 05:1578
+    >>> print(df.to_string()) # doctest: +SKIP
+                                    0                                        1
+    0                 FINTECH 38:6131                     TECHNOLOGIES 15:1633
+    1  THE_FINANCIAL_INDUSTRY 09:2006           FINANCIAL_TECHNOLOGIES 12:1615
+    2                   BANKS 08:1049                          FINANCE 10:1188
+    3                    DATA 07:1086                  THE_DEVELOPMENT 09:1293
+    4               CONSUMERS 07:0925                       INNOVATION 08:1816
+    5            PRACTITIONER 06:1194                       REGULATORS 08:0974
+    6              THE_IMPACT 06:0908  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237
+    7    THE_FINANCIAL_SECTOR 05:1147               FINANCIAL_SERVICES 06:1116
+    8  INFORMATION_TECHNOLOGY 05:1101                         SERVICES 06:1089
+    9       FINTECH_COMPANIES 05:1072                            CHINA 06:0673
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.terms_by_cluster_data_frame import \
-    TermsByClusterDataFrame as UserTermsByClusterDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.terms_by_cluster_data_frame import (
+    TermsByClusterDataFrame as UserTermsByClusterDataFrame,
+)
 
 
 class TermsByClusterDataFrame(

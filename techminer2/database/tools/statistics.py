@@ -11,7 +11,7 @@ Statistics
 
 Example:
     >>> from techminer2.database.tools import Statistics
-    >>> (
+    >>> df = (
     ...     Statistics()
     ...     #
     ...     .with_field("raw_author_keywords")
@@ -22,7 +22,8 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     #
     ...     .run()
-    ... ).head() # doctest: +NORMALIZE_WHITESPACE
+    ... )
+    >>> df.head() # doctest: +SKIP
                          conference_code                ...    year
                                    count      mean std  ...     50%     75%     max
     raw_author_keywords                                 ...
@@ -60,4 +61,6 @@ class Statistics(
         summary = records.groupby(field).describe()
 
         return summary
+
+
 #

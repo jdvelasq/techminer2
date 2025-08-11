@@ -1,8 +1,6 @@
 # flake8: noqa
 # pylint: disable=too-many-arguments
 # pylint: disable=line-too-long
-
-
 # from ....prepare.operations.process_database_field import fields__process
 #
 #

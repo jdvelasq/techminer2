@@ -1,6 +1,5 @@
+from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.system.descriptors import SortByEndsWithMatch
-
-from ......colorized_input import colorized_input
 
 
 def execute_endswith_command():

@@ -35,10 +35,14 @@
 
 
 """
-from ......_internals.mixins import ParamsMixin
-from ......_internals.nx import (internal__cluster_nx_graph,
-                                 internal__extract_communities_to_frame)
-from .create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import (
+    internal__cluster_nx_graph,
+    internal__extract_communities_to_frame,
+)
+from techminer2.packages.networks.coupling._internals.from_others.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class InternalTermsByClusterDataFrame(
@@ -51,3 +55,6 @@ class InternalTermsByClusterDataFrame(
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
         return internal__extract_communities_to_frame(self.params, nx_graph)
+
+
+#

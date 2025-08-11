@@ -44,7 +44,6 @@ Example:
 
 
 """
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.extractors.intersection import (
     internal__intersection,

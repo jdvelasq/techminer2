@@ -5,7 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import plotly.express as px  # type: ignore
 
 CLUSTER_COLORS = (

@@ -55,10 +55,13 @@ Cosine Similarities
 
 """
 import pandas as pd  # type: ignore
-from sklearn.metrics.pairwise import \
-    cosine_similarity as sklearn_cosine_similarity  # type: ignore
+from sklearn.metrics.pairwise import (
+    cosine_similarity as sklearn_cosine_similarity,  # type: ignore
+)
 
-from .terms_by_dimension_dataframe import terms_by_dimension_frame
+from techminer2.packages.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+    terms_by_dimension_frame,
+)
 
 
 def cosine_similarities(
@@ -148,5 +151,7 @@ def cosine_similarities(
         {"cosine_similariries": term_similarities},
         index=embedding.index,
     )
+
+    return term_similarities
 
     return term_similarities

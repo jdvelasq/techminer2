@@ -7,16 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """Command line interface for thesaurus descriptor operations."""
-
-
 import readline
 import rlcompleter  # type: ignore
 
-from .base_shell import BaseShell
-from .colorized_prompt import make_colorized_prompt
-from .database.database_shell import DatabaseShell
-from .thesaurus.thesaurus_shell import ThesaurusShell
-from .zotero.zotero_shell import ZoteroShell
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.database.database_shell import DatabaseShell
+from techminer2.shell.thesaurus.thesaurus_shell import ThesaurusShell
+from techminer2.shell.zotero.zotero_shell import ZoteroShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 

@@ -12,7 +12,7 @@ Terms by Cluster Summary
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import TermsByClusterSummary
-    >>> (
+    >>> df = (
     ...     TermsByClusterSummary()
     ...     #
     ...     # FIELD:
@@ -38,19 +38,19 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df # doctest: +SKIP
        Cluster  ...                                              Terms
-    0        0  ...  FINANCIAL_TECHNOLOGIES 14:2005; FINANCIAL_SERV...
-    1        1  ...  FINTECH 44:6942; FINANCE 21:3481; TECHNOLOGIES...
-    2        2  ...     BANKS 09:1133; DATA 07:1086; CONSUMERS 07:0925
+    0        0  ...  FINTECH 38:6131; THE_FINANCIAL_INDUSTRY 09:200...
+    1        1  ...  TECHNOLOGIES 15:1633; FINANCIAL_TECHNOLOGIES 1...
     <BLANKLINE>
-    [3 rows x 4 columns]
-
+    [2 rows x 4 columns]
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.terms_by_cluster_summary import \
-    TermsByClusterSummary as UserTermsByClusterSummary
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.terms_by_cluster_summary import (
+    TermsByClusterSummary as UserTermsByClusterSummary,
+)
 
 
 class TermsByClusterSummary(

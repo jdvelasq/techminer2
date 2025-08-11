@@ -12,7 +12,7 @@ import sys
 def internal__preprocess_global_references(root_directory):
     """:meta private:"""
 
-    from ....thesaurus.references import ApplyThesaurus, InitializeThesaurus
+    from techminer2.thesaurus.references import ApplyThesaurus, InitializeThesaurus
 
     sys.stderr.write("INFO  Processing 'references' column\n")
     sys.stderr.flush()

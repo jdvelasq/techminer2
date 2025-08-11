@@ -71,8 +71,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByFuzzyMatch as UserSortByFuzzyMatch
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByFuzzyMatch as UserSortByFuzzyMatch
 
 
 class SortByFuzzyMatch(

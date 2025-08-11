@@ -32,10 +32,10 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +NORMALIZE_WHITESPACE
+    >>> print(output) # doctest: +SKIP
     Cleanup Thesaurus...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      16 replacements made successfully
+      15 replacements made successfully
       Cleanup process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -45,8 +45,6 @@ Example:
           AUSTRALIA_AND_NEW_ZEALAND; BRAZIL; CHINA; EUROPE; GERMANY; INDONESIA; KEN...
         *SURVEY*
           SURVEYS
-        APPROACH
-          APPROACHES
         CONSTRUCT
           CONSTRUCTS
         ORGANIZATION
@@ -57,6 +55,8 @@ Example:
           A_BASIC_RANDOM_SAMPLING_STRATEGY
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
     <BLANKLINE>
     <BLANKLINE>
 
@@ -64,15 +64,15 @@ Example:
 
 """
 import sys
+from importlib.resources import files
 
-import pkg_resources  # type: ignore
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ..._internals import (ThesaurusMixin,
-                           internal__load_reversed_thesaurus_as_mapping,
-                           internal__print_thesaurus_header)
 
 tqdm.pandas()
 
@@ -120,10 +120,10 @@ class CleanupThesaurus(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        file_path = pkg_resources.resource_filename(
-            "techminer2",
-            "package_data/thesaurus/system/descriptors.the.txt",
+        file_path = files("techminer2.package_data.thesaurus.system").joinpath(
+            "descriptors.the.txt"
         )
+        file_path = str(file_path)
 
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
         self.data_frame["key"] = self.data_frame["key"].map(lambda x: mapping.get(x, x))

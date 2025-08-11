@@ -38,14 +38,13 @@ Example:
 
 """
 import sys
+from importlib.resources import files
 
-import pkg_resources  # type: ignore
-
-from ...._internals.mixins import Params, ParamsMixin
-from ....package_data.text_processing import \
-    internal__sort_text_processing_terms
-from ..._internals import (internal__generate_user_thesaurus_file_path,
-                           internal__load_thesaurus_as_mapping)
+from techminer2._internals.mixins import Params
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__sort_text_processing_terms
+from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
 
 
 class RegisterPhrases(
@@ -100,8 +99,10 @@ class RegisterPhrases(
     # -------------------------------------------------------------------------
     def internal__register_new_terms(self):
 
-        data_path = "package_data/text_processing/data/known_noun_phrases.txt"
-        data_path = pkg_resources.resource_filename("techminer2", data_path)
+        data_path = files("techminer2.package_data.text_processing.data").joinpath(
+            "known_noun_phrases.txt"
+        )
+        data_path = str(data_path)
 
         with open(data_path, "a", encoding="utf-8") as file:
             for term in self.new_terms:

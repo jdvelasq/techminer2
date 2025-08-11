@@ -1,6 +1,4 @@
 """Creates the report directory for different modules"""
-
-import os
 import os.path
 
 

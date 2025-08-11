@@ -27,8 +27,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-
-from .record_mapping import RecordMapping  # type: ignore
+from techminer2.database.tools.record_mapping import RecordMapping  # type: ignore
 
 
 class ExtractCopyrightText(

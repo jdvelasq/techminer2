@@ -56,14 +56,16 @@ Example:
 
 """
 import sys
+from importlib.resources import files
 
-import pkg_resources  # type: ignore
-from colorama import Fore, init
-
-from ...._internals.mixins import ParamsMixin
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
-from ..._internals.load_thesaurus_as_mapping import \
-    internal__load_thesaurus_as_mapping
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
+)
 
 
 class InitializeThesaurus(
@@ -145,10 +147,10 @@ class InitializeThesaurus(
             )
 
         # loads country valid names
-        file_path = pkg_resources.resource_filename(
-            "techminer2",
-            "package_data/thesaurus/geography/country_to_alpha3.the.txt",
+        file_path = files("techminer2.package_data.thesaurus.geography").joinpath(
+            "country_to_alpha3.the.txt"
         )
+        file_path = str(file_path)
         mapping = internal__load_thesaurus_as_mapping(file_path)
         valid_names = list(mapping.keys())
 

@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Clean abstract and title texts."""
-
 import pathlib
 import re
 

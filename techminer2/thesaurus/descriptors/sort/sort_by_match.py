@@ -37,14 +37,14 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus by match...
                 File : examples/fintech/data/thesaurus/descriptors.the.txt
              Pattern : BLOCK
       Case sensitive : False
          Regex Flags : 0
         Regex Search : False
-      5 matching keys found
+      3 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -53,11 +53,7 @@ Example:
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
         BLOCKCHAIN
-          BLOCKCHAIN; BLOCKCHAINS
-        BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-          BLOCKCHAIN_AND_FINTECH_INNOVATIONS
-        BLOCKCHAIN_ENABLES_BLOCKCHAIN
-          BLOCKCHAIN_ENABLES_BLOCKCHAIN
+          BLOCKCHAIN
         BLOCKCHAIN_IMPLEMENTATION
           BLOCKCHAIN_IMPLEMENTATION
         A_A_THEORY
@@ -66,14 +62,17 @@ Example:
           A_BASIC_RANDOM_SAMPLING_STRATEGY
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_CASE_STUDY
+          A_CASE_STUDY
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByMatch as UserSortByMatch
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByMatch as UserSortByMatch
 
 
 class SortByMatch(

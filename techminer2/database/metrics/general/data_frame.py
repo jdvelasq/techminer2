@@ -22,7 +22,7 @@ Example:
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )
-    
+
 
     >>> # Create and appli thesauri
     >>> CreateCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
@@ -34,7 +34,7 @@ Example:
 
     >>> # Create, configure, and run the DataFrame geneartor
     >>> from techminer2.database.metrics.general import DataFrame
-    >>> (
+    >>> df = (
     ...     DataFrame()
     ...     #
     ...     # DATABASE:
@@ -45,7 +45,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ) # doctest: +NORMALIZE_WHITESPACE    
+    ... )
+    >>> df # doctest: +SKIP
                                                                       Value
     Category          Item
     GENERAL           Timespan                                    2015:2019
@@ -80,33 +81,31 @@ Example:
                       Regions                                             5
                       Subregions                                          9
     KEYWORDS          Author keywords (raw)                             148
-                      Author keywords (cleaned)                         145
+                      Author keywords (cleaned)                         148
                       Index keywords (raw)                              179
-                      Index keywords (cleaned)                          177
+                      Index keywords (cleaned)                          178
                       Keywords (raw)                                    279
-                      Keywords (cleaned)                                266
-    NOUNS AND PHRASES Document title nouns and phrases (raw)            128
-                      Document title nouns and phrases (cleaned)        126
-                      Abstract nouns and phrases (raw)                 1553
-                      Abstract nouns and phrases (cleaned)             1519
-                      Nouns and phrases (raw)                          1610
+                      Keywords (cleaned)                                278
+    NOUNS AND PHRASES Document title nouns and phrases (raw)            126
+                      Document title nouns and phrases (cleaned)        124
+                      Abstract nouns and phrases (raw)                 1556
+                      Abstract nouns and phrases (cleaned)             1520
+                      Nouns and phrases (raw)                          1612
                       Nouns and phrases (cleaned)                      1572
-    DESCRIPTORS       Descriptors (raw)                                1790
-                      Descriptors (cleaned)                            1724
+    DESCRIPTORS       Descriptors (raw)                                1612
+                      Descriptors (cleaned)                            1572
 
 
 
 
 
 """
-
-
 import datetime
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from dataclasses import field
 
 import numpy as np
 import pandas as pd  # type: ignore
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,

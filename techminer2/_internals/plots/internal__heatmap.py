@@ -5,8 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """Base Heatmap Class."""
-
-
 import numpy as np
 import plotly.express as px  # type: ignore
 

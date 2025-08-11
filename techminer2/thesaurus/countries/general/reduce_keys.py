@@ -37,8 +37,8 @@ Example:
     <BLANKLINE>
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import ReduceKeys as UserReduceKeys
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import ReduceKeys as UserReduceKeys
 
 
 class ReduceKeys(

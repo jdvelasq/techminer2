@@ -6,11 +6,9 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-
-from ....base_shell import BaseShell
-from ....colorized_prompt import make_colorized_prompt
-from .sort.sort_shell import SortShell
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.thesaurus.system.descriptors.sort.sort_shell import SortShell
 
 
 class DescriptorsShell(BaseShell):

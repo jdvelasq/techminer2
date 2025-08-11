@@ -1,18 +1,18 @@
 # flake8: noqa
 """Create database files."""
-
 # Create databse files by:
 # 1. Concatenating raw ZIP files in the specified directory
 # 2. Saving the concatenated file in the database directory
 # 3. Creating a _DO_NOT_TOUCH_.txt file in the database directory
-
 import os
 import pathlib
 import sys
 
 import pandas as pd  # type: ignore
 
-from .get_subdirectories import internal__get_subdirectories
+from techminer2.database._internals.db.get_subdirectories import (
+    internal__get_subdirectories,
+)
 
 
 def list_zip_filenames_in_raw_data(root_dir):

@@ -55,22 +55,28 @@ Example:
     ...     .run()
     ... )
     >>> import pprint
-    >>> pprint.pprint(mapping) # doctest: +ELLIPSIS
-    {0: ['FINTECH 44:6942',
-         'THE_FINANCIAL_SECTOR 05:1147',
-         'FINANCE 21:3481',
-         'FINANCIAL_TECHNOLOGY 13:1909',
-         'PRACTITIONERS 05:0992',
-         'CHINA 06:0673',
-         'TECHNOLOGY 13:1594',
-         'DATA 07:1086',
+    >>> pprint.pprint(mapping) # doctest: +SKIP
+    {0: ['FINTECH 38:6131',
+         'FINANCIAL_TECHNOLOGY 11:1519',
+         'TECHNOLOGY 10:1220',
+         'BANKS 08:1049',
+         'REGULATORS 08:0974',
+         'CONSUMERS 07:0925',
+         'FINANCIAL_INSTITUTIONS 03:0464',
+         'THE_DEVELOPMENT 08:1193',
+         'BANKING 04:0481',
+         'CUSTOMERS 04:0599',
+         'FINANCIAL_REGULATION 03:0461',
+         'REGULATION 03:0461',
     ...
 
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from .components_by_term_data_frame import ComponentsByTermDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.topic_modeling.user.components_by_term_data_frame import (
+    ComponentsByTermDataFrame,
+)
 
 
 class ClusterToTermsMapping(

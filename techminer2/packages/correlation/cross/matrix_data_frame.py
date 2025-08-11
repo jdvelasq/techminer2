@@ -54,11 +54,13 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...co_occurrence_matrix import \
-    MatrixDataFrame as CoOccurrenceMatrixDataFrame
-from .._internals.internal__compute_corr_matrix import \
-    internal__compute_corr_matrix
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.co_occurrence_matrix import (
+    MatrixDataFrame as CoOccurrenceMatrixDataFrame,
+)
+from techminer2.packages.correlation._internals.internal__compute_corr_matrix import (
+    internal__compute_corr_matrix,
+)
 
 
 class MatrixDataFrame(

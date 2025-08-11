@@ -48,19 +48,18 @@ Example:
 
 
 """
-
 import re
 import sys
 
 import pandas as pd
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.performance import DataFrame
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....database.metrics.performance import DataFrame
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 
 class CompressThesaurus(

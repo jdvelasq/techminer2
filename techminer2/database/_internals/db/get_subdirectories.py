@@ -1,5 +1,4 @@
 """Obtain a list of subdirectories in a directory."""
-
 import os
 
 

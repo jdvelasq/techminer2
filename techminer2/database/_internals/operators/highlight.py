@@ -5,19 +5,16 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """Replace descriptors in abstracts and titles"""
-
 import pathlib
 import re
 import sys
 
 import pandas as pd  # type: ignore
+from techminer2._internals import Params
+from techminer2.database._internals.io import internal__load_all_records_from_database
+from techminer2.database._internals.io import internal__write_records_to_database
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
 from tqdm import tqdm  # type: ignore
-
-from ...._internals import Params
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..io import (internal__load_all_records_from_database,
-                  internal__write_records_to_database)
 
 SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
     "abstract",
@@ -590,6 +587,16 @@ def unmark_template_abstract_markers(text):
 
 
 # ------------------------------------------------------------------------------
+def unmark_et_al(text):
+
+    # search uppercase strings where spaces are replaced by "_" and finish in "_et_al"
+    regex = re.compile(r"\b[A-Z][A-Z_]+_ET_AL\b")
+    text = re.sub(regex, lambda z: z.group().replace("_", " ").lower(), text)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
 def repair_appostrophes(text):
 
     # Case 1: lowercase letter followed by space and an appostrophe followed by an "S_"
@@ -690,6 +697,7 @@ def internal__highlight(
 
         text = unmark_lowercase_text(text)
         text = unmark_template_abstract_markers(text)
+        text = unmark_et_al(text)
         text = mark_connectors(connectors, text)
         text = remove_roman_numbers(text)
 

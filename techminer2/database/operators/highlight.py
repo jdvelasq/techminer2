@@ -11,15 +11,12 @@ Highlight Nouns and Noun Phrases
 
 
 Example:
-    >>> import textwrap
-    >>> from techminer2.database.operators import (
-    ...     TokenizeOperator,
-    ...     DeleteOperator,
-    ...     HighlightOperator,
-    ... )
-    >>> from techminer2.database.tools import Query
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
 
     >>> # Creates, configure, and run the cleaner to prepare the field
+    >>> from techminer2.database.operators import TokenizeOperator
     >>> (
     ...     TokenizeOperator()
     ...     #
@@ -34,6 +31,7 @@ Example:
 
 
     >>> # Creates, configure, and run the highlighter
+    >>> from techminer2.database.operators import HighlightOperator
     >>> highlighter = (
     ...     HighlightOperator()
     ...     #
@@ -47,15 +45,17 @@ Example:
     >>> highlighter.run()
 
     >>> # Query the database to test the cleaner
-    >>> query = (
+    >>> from techminer2.database.tools import Query
+    >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT highlighted_raw_abstract FROM database LIMIT 10;")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
+    ...     .run()
     ... )
-    >>> df = query.run()
+    >>> import textwrap
     >>> print(textwrap.fill(df.values[1][0], width=80))
     THE_RAPID_DEVELOPMENT of INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY is
     transforming THE_ENTIRE_INDUSTRY_LANDSCAPE , heralding A_NEW_ERA of
@@ -73,11 +73,8 @@ Example:
     fostering THE_GROWTH of NATIONAL_INDUSTRY within_and_outside_of CHINA . 2015
     elsevier ltd .
 
-
-
-
-
     >>> # Deletes the fields
+    >>> from techminer2.database.operators import DeleteOperator
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .where_root_directory_is("examples/fintech/")
@@ -88,9 +85,9 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from .._internals.operators.highlight import internal__highlight
-from .._internals.protected_fields import PROTECTED_FIELDS
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.operators.highlight import internal__highlight
+from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
 
 
 class HighlightOperator(

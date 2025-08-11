@@ -1,6 +1,6 @@
-from techminer2.database.tools import CollectDescriptors, ExtractCopyrightText
-
-from ....colorized_input import colorized_input
+from techminer2.database.tools import CollectDescriptors
+from techminer2.database.tools import ExtractCopyrightText
+from techminer2.shell.colorized_input import colorized_input
 
 
 def execute_copyright_command():

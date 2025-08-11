@@ -50,8 +50,8 @@ Example:
 """
 import plotly.graph_objects as go  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .matrix_data_frame import MatrixDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.co_occurrence_matrix.matrix_data_frame import MatrixDataFrame
 
 
 class SankeyPlot(

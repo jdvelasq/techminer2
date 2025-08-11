@@ -53,9 +53,9 @@ Terms by Dimension Frame
 """
 import pandas as pd  # type: ignore
 
-# from ...cross_co_occurrence import co_occurrence_matrix
-from ...co_occurrence_matrix._internals.normalize_matrix import \
-    internal__normalize_matrix
+from techminer2.packages.co_occurrence_matrix._internals.normalize_matrix import (
+    internal__normalize_matrix,
+)
 
 
 def terms_by_dimension_frame(

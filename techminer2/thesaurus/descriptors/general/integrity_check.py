@@ -35,16 +35,15 @@ Example:
     >>> print(output)
     Checking thesaurus integrity...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      1790 terms checked
+      1791 terms checked
       Integrity check completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
 
 """
-
-from ...._internals.mixins import ParamsMixin
-from ...user import IntegrityCheck as UserIntegrityCheck
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import IntegrityCheck as UserIntegrityCheck
 
 
 #

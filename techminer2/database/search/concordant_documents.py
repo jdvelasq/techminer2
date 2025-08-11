@@ -59,8 +59,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin, RecordViewerMixin
-
-from .concordant_mapping import ConcordantMapping
+from techminer2.database.search.concordant_mapping import ConcordantMapping
 
 
 class ConcordantDocuments(

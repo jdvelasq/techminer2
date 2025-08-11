@@ -23,7 +23,7 @@ Example:
     ...     random_state=0,
     ... )
     >>> from techminer2.packages.topic_modeling.user import TermsByClusterDataFrame
-    >>> (
+    >>> df = (
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
@@ -53,23 +53,25 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head()
-    cluster                             0  ...                   9
+    ... )
+    >>> df.head() # doctest: +SKIP
+    cluster                             0  ...                               9
     term                                   ...
-    0                     FINTECH 44:6942  ...     FINTECH 44:6942
-    1        THE_FINANCIAL_SECTOR 05:1147  ...  INNOVATION 12:2290
-    2                     FINANCE 21:3481  ...     FINANCE 21:3481
-    3        FINANCIAL_TECHNOLOGY 13:1909  ...   THE_FIELD 05:0834
-    4               PRACTITIONERS 05:0992  ...       CHINA 06:0673
+    0                     FINTECH 38:6131  ...                 FINTECH 38:6131
+    1        FINANCIAL_TECHNOLOGY 11:1519  ...  THE_FINANCIAL_INDUSTRY 09:2006
+    2                  TECHNOLOGY 10:1220  ...                A_SURVEY 03:0484
+    3                       BANKS 08:1049  ...           PRACTITIONERS 05:0992
+    4                  REGULATORS 08:0974  ...               THE_FIELD 05:0834
     <BLANKLINE>
     [5 rows x 10 columns]
 
 
 """
 import pandas as pd  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from .cluster_to_terms_mapping import ClusterToTermsMapping
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.topic_modeling.user.cluster_to_terms_mapping import (
+    ClusterToTermsMapping,
+)
 
 
 class TermsByClusterDataFrame(

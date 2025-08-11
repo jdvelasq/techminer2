@@ -5,12 +5,13 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import graphviz
-
-from .extract_communities_to_frame import \
-    internal__extract_communities_to_frame
-from .summarize_communities import internal__summarize_communities
+from techminer2._internals.nx.extract_communities_to_frame import (
+    internal__extract_communities_to_frame,
+)
+from techminer2._internals.nx.summarize_communities import (
+    internal__summarize_communities,
+)
 
 
 def internal__concept_grid_plot(

@@ -1,5 +1,4 @@
 """Reference Publication Year Spectroscopy module."""
-
 from .rpys_frame import RPYSDataFrame
 from .rpys_plot import RPYSPlot
 

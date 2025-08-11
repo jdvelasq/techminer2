@@ -18,20 +18,18 @@ Sort Thesaurus Files
 """
 import glob
 import os.path
+from importlib.resources import files
 
-import pkg_resources  # type: ignore
-
-from ...thesaurus._internals.load_thesaurus_as_mapping import \
-    internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
+)
 
 
 def sort_thesaurus_files():
     """:meta private:"""
 
-    file_paths = pkg_resources.resource_filename(
-        "techminer2",
-        "thesaurus/_data/_*.the.txt",
-    )
+    file_paths = files("techminer2.thesaurus._data").joinpath("_*.the.txt")
+    file_paths = str(file_paths)
 
     for file_path in glob.glob(file_paths):
 

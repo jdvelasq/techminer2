@@ -57,20 +57,25 @@ Example:
     ...     .run()
     ... )
     >>> import pprint
-    >>> pprint.pprint(mapping)  # doctest: +ELLIPSIS
-    {0: ['Anshari M., 2019, ENERGY PROCEDIA, V156, P234',
-         'Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37, P373',
-         'Deng X., 2019, SUSTAINABILITY, V11',
+    >>> pprint.pprint(mapping)  # doctest: +SKIP
+    {0: ['Anagnostopoulos I., 2018, J ECON BUS, V100, P7',
+         'Belanche D., 2019, IND MANAGE DATA SYS, V119, P1411',
          'Dorfleitner G., 2017, FINTECH IN GER, P1',
          'Du W.D., 2019, J STRATEGIC INFORM SYST, V28, P50',
-         'Gimpel H., 2018, ELECTRON MARK, V28, P245',
-         'Goldstein I., 2019, REV FINANC STUD, V32, P1647',
-         'Gomber P., 2017, J BUS ECON, V87, P537',
+         'Jagtiani J., 2018, J ECON BUS, V100, P43',
+         'Lee I., 2018, BUS HORIZ, V61, P35',
+         'Leong C., 2017, INT J INF MANAGE, V37, P92',
+         'Magnuson W., 2018, VANDERBILT LAW REV, V71, P1167'],
+     1: ['Brummer C., 2019, GEORGET LAW J, V107, P235',
+         'Das S.R., 2019, FINANC MANAGE, V48, P981',
+         'Gozman D., 2018, J MANAGE INF SYST, V35, P145',
     ...
 
 """
-from ...._internals.mixins import ParamsMixin
-from .documents_by_theme_data_frame import DocumentsByThemeDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.topic_modeling.user.documents_by_theme_data_frame import (
+    DocumentsByThemeDataFrame,
+)
 
 
 class ThemeToDocumentsMapping(

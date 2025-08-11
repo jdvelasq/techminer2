@@ -11,8 +11,9 @@ import sys
 def internal__preprocess_raw_index_keywords(root_dir):
     """Run importer."""
 
-    from techminer2.database._internals.operators.clean_raw_keywords import \
-        internal__clean_raw_keywords
+    from techminer2.database._internals.operators.clean_raw_keywords import (
+        internal__clean_raw_keywords,
+    )
 
     sys.stderr.write("INFO  Cleaning 'raw_index_keywords' column\n")
     sys.stderr.flush()

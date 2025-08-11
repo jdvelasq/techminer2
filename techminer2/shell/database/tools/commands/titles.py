@@ -1,5 +1,5 @@
-from colorama import Fore, init
-
+from colorama import Fore
+from colorama import init
 from techminer2.database.tools import SearchString  # type: ignore
 
 

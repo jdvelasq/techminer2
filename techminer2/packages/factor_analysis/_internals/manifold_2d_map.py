@@ -5,17 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import plotly.graph_objects as go
 
-from ...._internals.utils.utils_compute_textposition_from_x_and_y import \
-    _utils_compute_textposition_from_x_and_y
-
-# from .._network_lib import (
-#     nx_compute_node_textposition_from_node_coordinates,
-#     nx_node_occ_to_node_textfont_color,
-#     nx_scale_node_occ,
-# )
+from techminer2._internals.utils.utils_compute_textposition_from_x_and_y import (
+    _utils_compute_textposition_from_x_and_y,
+)
 
 
 def manifold_2d_map(

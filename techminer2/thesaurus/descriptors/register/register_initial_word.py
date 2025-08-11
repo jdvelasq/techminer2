@@ -37,12 +37,10 @@ Example:
 
 """
 import sys
+from importlib.resources import files
 
-import pkg_resources  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import \
-    internal__sort_text_processing_terms
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__sort_text_processing_terms
 
 
 class RegisterInitialWord(
@@ -69,8 +67,10 @@ class RegisterInitialWord(
     # -------------------------------------------------------------------------
     def internal__register_new_word(self):
 
-        data_path = "package_data/text_processing/data/common_initial_words.txt"
-        data_path = pkg_resources.resource_filename("techminer2", data_path)
+        data_path = files("techminer2.package_data.text_processing.data").joinpath(
+            "common_initial_words.txt"
+        )
+        data_path = str(data_path)
 
         words = self.params.word
         if isinstance(words, str):

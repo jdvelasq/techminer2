@@ -6,10 +6,11 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
 import cmd
 
-from colorama import Fore, Style, init
+from colorama import Fore
+from colorama import init
+from colorama import Style
 
 init(autoreset=True)
 

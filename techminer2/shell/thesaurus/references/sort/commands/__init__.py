@@ -1,5 +1,4 @@
 """Commands"""
-
 from .alphabet import execute_alphabet_command
 from .fuzzy import execute_fuzzy_command
 from .match import execute_match_command

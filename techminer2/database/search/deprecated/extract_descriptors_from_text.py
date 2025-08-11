@@ -31,14 +31,13 @@ Extract Descriptors from Text
 ['ADOPTION', 'ARTIFICIAL_INTELLIGENCE', 'FINANCE', ...
 
 """
-import os
 import os.path
 import re
 
+from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
+)
 from textblob import TextBlob  # type: ignore
-
-from ....thesaurus._internals.load_reversed_thesaurus_as_mapping import \
-    internal__load_reversed_thesaurus_as_mapping
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"

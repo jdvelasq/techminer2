@@ -40,8 +40,10 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ._internals.compute_main_path import internal__compute_main_path
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.main_path._internals.compute_main_path import (
+    internal__compute_main_path,
+)
 
 
 class NetworkEdgesDataFrame(

@@ -5,7 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """Bubble plot."""
-
 import plotly.express as px  # type: ignore
 
 

@@ -65,10 +65,14 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import (internal__cluster_nx_graph,
-                                internal__create_clusters_to_terms_mapping)
-from .._internals.create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import (
+    internal__cluster_nx_graph,
+    internal__create_clusters_to_terms_mapping,
+)
+from techminer2.packages.networks.co_occurrence._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class ClustersToTermsMapping(

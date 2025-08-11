@@ -67,8 +67,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByKeyLength as UserSortByKeyLength
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByKeyLength as UserSortByKeyLength
 
 
 class SortByKeyLength(

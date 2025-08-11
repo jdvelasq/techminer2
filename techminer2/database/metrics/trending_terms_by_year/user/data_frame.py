@@ -75,7 +75,6 @@ Example:
 
 """
 import numpy as np
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database.metrics.terms_by_year import DataFrame as TermsByYearDataFrame
 

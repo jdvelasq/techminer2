@@ -43,13 +43,13 @@ diverse sectors, ultimately aiming to improve compliance, efficiency, and
 ethical practices in the FINANCIAL_INDUSTRY.
 
 """
-import os
 import os.path
 import re
 import textwrap
 
-from ....thesaurus._internals.load_reversed_thesaurus_as_mapping import \
-    internal__load_reversed_thesaurus_as_mapping
+from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+    internal__load_reversed_thesaurus_as_mapping,
+)
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"

@@ -5,12 +5,9 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
-
 #
 # Compute network metrics
 #
-
 import networkx as nx  # type: ignore
 import pandas as pd  # type: ignore
 

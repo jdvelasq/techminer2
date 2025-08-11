@@ -25,7 +25,9 @@ def _mt_extract_top_n_terms_by_metric(
 
     """
 
-    from .mt_sort_records_by_metric import _mt_sort_records_by_metric
+    from techminer2._internals.mt.mt_sort_records_by_metric import (
+        _mt_sort_records_by_metric,
+    )
 
     def filter_by_top_n(indicators, top_n):
 

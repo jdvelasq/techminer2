@@ -1,5 +1,4 @@
 """Database file path"""
-
 import pathlib
 
 

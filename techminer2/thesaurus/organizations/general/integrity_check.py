@@ -41,9 +41,8 @@ Example:
 
 
 """
-
-from ...._internals.mixins import ParamsMixin
-from ...user import IntegrityCheck as UserIntegrityCheck
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import IntegrityCheck as UserIntegrityCheck
 
 
 #

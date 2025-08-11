@@ -54,18 +54,19 @@ Example:
 
 """
 import networkx as nx  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ...._internals.nx import (
-    internal__assign_constant_to_edge_colors,
-    internal__assign_constant_to_node_colors,
-    internal__assign_edge_widths_based_on_weight,
-    internal__assign_node_sizes_based_on_citations,
-    internal__assign_text_positions_based_on_quadrants,
-    internal__assign_textfont_opacity_based_on_citations,
-    internal__assign_textfont_sizes_based_on_citations,
-    internal__compute_spring_layout_positions, internal__plot_nx_graph)
-from .network_edges_data_frame import NetworkEdgesDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import internal__assign_constant_to_edge_colors
+from techminer2._internals.nx import internal__assign_constant_to_node_colors
+from techminer2._internals.nx import internal__assign_edge_widths_based_on_weight
+from techminer2._internals.nx import internal__assign_node_sizes_based_on_citations
+from techminer2._internals.nx import internal__assign_text_positions_based_on_quadrants
+from techminer2._internals.nx import internal__assign_textfont_opacity_based_on_citations
+from techminer2._internals.nx import internal__assign_textfont_sizes_based_on_citations
+from techminer2._internals.nx import internal__compute_spring_layout_positions
+from techminer2._internals.nx import internal__plot_nx_graph
+from techminer2.packages.networks.main_path.network_edges_data_frame import (
+    NetworkEdgesDataFrame,
+)
 
 
 class NetworkPlot(

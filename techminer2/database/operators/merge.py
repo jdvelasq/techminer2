@@ -11,13 +11,12 @@ Merge Fields
 
 
 Example:
-    >>> from techminer2.database.operators import (
-    ...     DeleteOperator,
-    ...     MergeOperator,
-    ... )
-    >>> from techminer2.database.tools import Query
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
 
     >>> # Creates, configure, and run the merger
+    >>> from techminer2.database.operators import MergeOperator
     >>> merger = (
     ...     MergeOperator()
     ...     #
@@ -31,6 +30,7 @@ Example:
     >>> merger.run()
 
     >>> # Query the database to test the merger
+    >>> from techminer2.database.tools import Query
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT merged_keywords FROM database LIMIT 10;")
@@ -49,12 +49,13 @@ Example:
     4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; E...
     5  DATA_MINING; DATA_PRIVACY; FINANCE; FINANCIAL_...
     6  CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS; DIGIT...
-    7  CASE_STUDIES; COMMERCE; DIGITAL_TECHNOLOGIES; ...
-    8  DIGITIZATION; FINANCIAL_SERVICES_INDUSTRIES; F...
+    7  CASE_STUDY; COMMERCE; DIGITAL_TECHNOLOGIES; EC...
+    8  DIGITIZATION; FINANCIAL_SERVICES_INDUSTRY; FIN...
     9  DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RE...
 
 
     >>> # Deletes the fields
+    >>> from techminer2.database.operators import DeleteOperator
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("merged_keywords")
@@ -64,9 +65,9 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from .._internals.operators.merge import internal__merge
-from .._internals.protected_fields import PROTECTED_FIELDS
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.operators.merge import internal__merge
+from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
 
 
 class MergeOperator(

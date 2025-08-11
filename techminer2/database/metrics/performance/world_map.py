@@ -45,9 +45,9 @@ Example:
 
 
 """
-from ...._internals.params_mixin import ParamsMixin
-from ...._internals.plots.internal__world_map import internal__world_map
-from .data_frame import DataFrame
+from techminer2._internals.params_mixin import ParamsMixin
+from techminer2._internals.plots.internal__world_map import internal__world_map
+from techminer2.database.metrics.performance.data_frame import DataFrame
 
 
 class WorldMap(

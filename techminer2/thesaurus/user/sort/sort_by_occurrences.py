@@ -72,11 +72,15 @@ import sys
 
 from colorama import Fore, init
 
-from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import \
-    internal__load_filtered_records_from_database
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
-from ..general.reduce_keys import ReduceKeys
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__print_thesaurus_header,
+)
+from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 
 
 class SortByOccurrences(
@@ -176,6 +180,9 @@ class SortByOccurrences(
         # self.internal__reduce_keys()
         self.internal__build_user_thesaurus_path()
         self.internal__run()
+
+
+# =============================================================================
 
 
 # =============================================================================

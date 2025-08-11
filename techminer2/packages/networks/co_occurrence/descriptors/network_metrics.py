@@ -12,7 +12,7 @@ Metrics
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import NetworkMetrics
-    >>> (
+    >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # FIELD:
@@ -36,30 +36,32 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
-                                    Degree  Betweenness  Closeness  PageRank
-    FINTECH 44:6942                     19     0.011241   1.000000  0.133687
-    FINANCE 21:3481                     19     0.011241   1.000000  0.075377
-    TECHNOLOGIES 17:1943                19     0.011241   1.000000  0.073365
-    FINANCIAL_SERVICE 12:2100           19     0.011241   1.000000  0.063524
-    REGULATORS 08:0974                  19     0.011241   1.000000  0.050305
-    INNOVATION 15:2741                  18     0.009759   0.950000  0.063445
-    FINANCIAL_TECHNOLOGIES 14:2005      18     0.007445   0.950000  0.065707
-    BANKS 09:1133                       18     0.006604   0.950000  0.047331
-    PRACTITIONER 06:1194                18     0.006604   0.950000  0.034435
-    THE_DEVELOPMENT 09:1293             17     0.008148   0.904762  0.046894
-    DATA 07:1086                        17     0.009528   0.904762  0.033658
-    BANKING 07:0851                     17     0.006714   0.904762  0.041254
-    BUSINESS_MODEL 05:1578              17     0.004242   0.904762  0.034400
-    SERVICES 07:1226                    16     0.001096   0.863636  0.040660
-    CONSUMERS 07:0925                   16     0.003093   0.863636  0.033560
-
+    ... )
+    >>> df.head(15) # doctest: +SKIP
+                                             Degree  ...  PageRank
+    FINTECH 38:6131                              19  ...  0.149865
+    REGULATORS 08:0974                           18  ...  0.062888
+    THE_DEVELOPMENT 09:1293                      16  ...  0.059116
+    PRACTITIONER 06:1194                         16  ...  0.041293
+    TECHNOLOGIES 15:1633                         15  ...  0.080583
+    FINANCIAL_TECHNOLOGIES 12:1615               15  ...  0.070783
+    INNOVATION 08:1816                           15  ...  0.047284
+    FINANCE 10:1188                              14  ...  0.043346
+    BANKS 08:1049                                14  ...  0.048601
+    DATA 07:1086                                 14  ...  0.035925
+    SERVICES 06:1089                             14  ...  0.041161
+    CONSUMERS 07:0925                            13  ...  0.040264
+    THE_FINANCIAL_SERVICES_INDUSTRY 06:1237      13  ...  0.046934
+    FINANCIAL_SERVICES 06:1116                   13  ...  0.043357
+    FINTECH_COMPANIES 05:1072                    13  ...  0.031250
+    <BLANKLINE>
+    [15 rows x 4 columns]
 
 
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.descriptors import NetworkMetrics
-    >>> (
+    >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # FIELD:
@@ -83,30 +85,33 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
-                            Degree  Betweenness  Closeness  PageRank
-    FINTECH                     19     0.011241   1.000000  0.133687
-    FINANCE                     19     0.011241   1.000000  0.075377
-    TECHNOLOGIES                19     0.011241   1.000000  0.073365
-    FINANCIAL_SERVICE           19     0.011241   1.000000  0.063524
-    REGULATORS                  19     0.011241   1.000000  0.050305
-    INNOVATION                  18     0.009759   0.950000  0.063445
-    FINANCIAL_TECHNOLOGIES      18     0.007445   0.950000  0.065707
-    BANKS                       18     0.006604   0.950000  0.047331
-    PRACTITIONER                18     0.006604   0.950000  0.034435
-    THE_DEVELOPMENT             17     0.008148   0.904762  0.046894
-    DATA                        17     0.009528   0.904762  0.033658
-    BANKING                     17     0.006714   0.904762  0.041254
-    BUSINESS_MODEL              17     0.004242   0.904762  0.034400
-    SERVICES                    16     0.001096   0.863636  0.040660
-    CONSUMERS                   16     0.003093   0.863636  0.033560
+    ... )
+    >>> df.head(15) # doctest: +SKIP
+                                     Degree  Betweenness  Closeness  PageRank
+    FINTECH                              19     0.040223   1.000000  0.149865
+    REGULATORS                           18     0.036134   0.950000  0.062888
+    THE_DEVELOPMENT                      16     0.024057   0.863636  0.059116
+    PRACTITIONER                         16     0.024195   0.863636  0.041293
+    TECHNOLOGIES                         15     0.014720   0.826087  0.080583
+    FINANCIAL_TECHNOLOGIES               15     0.017453   0.826087  0.070783
+    INNOVATION                           15     0.015292   0.826087  0.047284
+    FINANCE                              14     0.018000   0.791667  0.043346
+    BANKS                                14     0.010319   0.791667  0.048601
+    DATA                                 14     0.017852   0.791667  0.035925
+    SERVICES                             14     0.010865   0.791667  0.041161
+    CONSUMERS                            13     0.010131   0.760000  0.040264
+    THE_FINANCIAL_SERVICES_INDUSTRY      13     0.006532   0.760000  0.046934
+    FINANCIAL_SERVICES                   13     0.008387   0.760000  0.043357
+    FINTECH_COMPANIES                    13     0.017973   0.760000  0.031250
 
 
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.network_metrics import NetworkMetrics as UserNetworkMetrics
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.network_metrics import (
+    NetworkMetrics as UserNetworkMetrics,
+)
 
 
 class NetworkMetrics(

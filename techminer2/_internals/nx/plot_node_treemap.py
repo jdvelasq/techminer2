@@ -26,9 +26,9 @@ Treemap
 
 """
 import plotly.graph_objs as go  # type: ignore
-
-from .create_clusters_to_terms_mapping import \
-    internal__create_clusters_to_terms_mapping
+from techminer2._internals.nx.create_clusters_to_terms_mapping import (
+    internal__create_clusters_to_terms_mapping,
+)
 
 
 def internal__plot_node_treemap(

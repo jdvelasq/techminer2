@@ -6,12 +6,11 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-
-from ....base_shell import BaseShell
-from ....colorized_prompt import make_colorized_prompt
-from .commands import (execute_alphabet_command, execute_fuzzy_command,
-                       execute_match_command)
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.thesaurus.references.sort.commands import execute_alphabet_command
+from techminer2.shell.thesaurus.references.sort.commands import execute_fuzzy_command
+from techminer2.shell.thesaurus.references.sort.commands import execute_match_command
 
 
 class SortShell(BaseShell):

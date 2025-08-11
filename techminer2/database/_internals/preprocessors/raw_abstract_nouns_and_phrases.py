@@ -10,8 +10,7 @@ import sys
 
 def internal__preprocess_raw_abstract_nouns_and_phrases(root_dir):
 
-    from techminer2.database._internals.operators.collect import \
-        internal__collect
+    from techminer2.database._internals.operators.collect import internal__collect
 
     sys.stderr.write("INFO  Collecting raw noun and phrases from abstract\n")
     sys.stderr.flush()

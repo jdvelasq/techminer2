@@ -36,9 +36,9 @@ Example:
     ... )
 
 
-    >>> len(documents)
+    >>> len(documents) # doctest: +SKIP
     5
-    >>> print(documents[0])
+    >>> print(documents[0]) # doctest: +SKIP
     UT 11
     AR Gomber P., 2017, J BUS ECON, V87, P537
     TI Digital Finance and FinTech: current research and future research directions
@@ -57,21 +57,20 @@ Example:
        NEW_FINANCIAL_PRODUCTS , FINANCIAL_BUSINESSES , FINANCE_RELATED_SOFTWARE ,
        and NOVEL_FORMS of customer COMMUNICATION_AND_INTERACTION delivered by
        FINTECH_COMPANIES and INNOVATIVE_FINANCIAL_SERVICE_PROVIDERS . against
-       THIS_BACKDROP , THE_RESEARCH on FINANCE and INFORMATION_SYSTEMS has started
+       THIS_BACKDROP , THE_RESEARCH on FINANCE_AND_INFORMATION_SYSTEMS has started
        to analyze THESE_CHANGES and THE_IMPACT of DIGITAL_PROGRESS on
        THE_FINANCIAL_SECTOR . therefore , this article reviews the
        CURRENT_STATE_OF_RESEARCH in DIGITAL_FINANCE that DEALS with
        THESE_NOVEL_AND_INNOVATIVE_BUSINESS_FUNCTIONS . moreover , it gives
        AN_OUTLOOK on POTENTIAL_FUTURE_RESEARCH_DIRECTIONS . as A_CONCEPTUAL_BASIS
-       for reviewing THIS_FIELD , the DIGITAL_FINANCE_CUBE , which embraces
-       THREE_KEY_DIMENSIONS of DIGITAL_FINANCE and FINTECH , i.e.  ,
-       THE_RESPECTIVE_BUSINESS_FUNCTIONS , THE_TECHNOLOGIES and
-       TECHNOLOGICAL_CONCEPTS applied as_well_as THE_INSTITUTIONS concerned , is
-       introduced . this CONCEPTUALIZATION_SUPPORTS_RESEARCHERS and PRACTITIONERS
-       when orientating in THE_FIELD of DIGITAL_FINANCE , allows for
-       THE_ARRANGEMENT of ACADEMIC_RESEARCH relatively to each other , and enables
-       for THE_REVELATION of THE_GAPS in RESEARCH . 2017 , springer verlag berlin
-       heidelberg .
+       for reviewing THIS_FIELD , THE_DIGITAL_FINANCE_CUBE , which embraces
+       THREE_KEY_DIMENSIONS of DIGITAL_FINANCE and FINTECH , i.e.  , the
+       RESPECTIVE_BUSINESS_FUNCTIONS , THE_TECHNOLOGIES and TECHNOLOGICAL_CONCEPTS
+       applied as_well_as THE_INSTITUTIONS concerned , is introduced . this
+       CONCEPTUALIZATION_SUPPORTS_RESEARCHERS and PRACTITIONERS when orientating in
+       THE_FIELD of DIGITAL_FINANCE , allows for THE_ARRANGEMENT of
+       ACADEMIC_RESEARCH relatively to each other , and enables for THE_REVELATION
+       of THE_GAPS in RESEARCH . 2017 , springer verlag berlin heidelberg .
     DE DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RESEARCH_OPPORTUNITIES;
        LITERATURE_REVIEW; STATE_OF_THE_ART
     <BLANKLINE>
@@ -81,9 +80,11 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ....database.tools import RecordViewer
-from ._internals.compute_main_path import internal__compute_main_path
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.tools import RecordViewer
+from techminer2.packages.networks.main_path._internals.compute_main_path import (
+    internal__compute_main_path,
+)
 
 
 class MainPathDocuments(

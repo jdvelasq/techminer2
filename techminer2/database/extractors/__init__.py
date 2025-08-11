@@ -1,5 +1,4 @@
 """Private API."""
-
 from .contains import ContainsExtractor
 from .difference import DifferenceExtractor
 from .ends_with import EndsWithExtractor

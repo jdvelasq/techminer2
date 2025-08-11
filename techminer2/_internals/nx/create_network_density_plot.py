@@ -5,7 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import numpy as np
 import pandas as pd  # type: ignore
 import plotly.graph_objects as go

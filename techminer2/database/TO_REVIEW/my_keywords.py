@@ -21,13 +21,9 @@ MyKeywords
 """
 # import glob
 # import os
-
 # from .._parameters import RootDirMixin
-
-
 # class MyKeywords(RootDirMixin):
 #     """:meta private:"""
-
 #     def __init__(
 #         self,
 #         #
@@ -41,14 +37,11 @@ MyKeywords
 #             # DATABASE PARAMS:
 #             root_dir=root_dir,
 #         )
-
 #     def sort_my_keywords(self):
 #         """:meta private:"""
-
 #         dir_path = os.path.join(self.root_dir, "my_keywords")
 #         if not os.path.isdir(dir_path):
 #             raise FileNotFoundError(f"The directory '{dir_path}' does not exist.")
-
 #         for file in glob.glob(os.path.join(dir_path, "*.txt")):
 #             #
 #             with open(file, "r", encoding="utf-8") as in_file:
@@ -57,5 +50,4 @@ MyKeywords
 #             #
 #             with open(file, "w", encoding="utf-8") as out_file:
 #                 out_file.write("\n".join(keywords))
-
 #             print(f"--INFO-- The file {file} has been sorted.")

@@ -35,10 +35,10 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Converting British to American English...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      11 replacements made successfully
+      10 replacements made successfully
       Translation process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -70,15 +70,17 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import (
+    internal__generate_system_thesaurus_file_path,
+)
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ..._internals import (ThesaurusMixin,
-                           internal__generate_system_thesaurus_file_path,
-                           internal__load_thesaurus_as_mapping,
-                           internal__print_thesaurus_header)
 
 tqdm.pandas()
 

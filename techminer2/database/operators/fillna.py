@@ -12,15 +12,16 @@ Fill NA
 
 
 Example:
-    >>> import pandas as pd
-    >>> from techminer2.database.operators import (
-    ...     DeleteOperator,
-    ...     FillNAOperator,
-    ...     TransformOperator,
-    ... )
-    >>> from techminer2.database.tools import Query
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
 
-    >>> # Copy the field to fill to avoid losing the original data
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
+
+    >>> import pandas as pd
+    >>> from techminer2.database.operators import TransformOperator
     >>> TransformOperator(
     ...     field="raw_index_keywords",
     ...     other_field="na_field",
@@ -29,6 +30,7 @@ Example:
     ... ).run()
 
     >>> # Query the database to obtain the number of NA values
+    >>> from techminer2.database.tools import Query
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT na_field FROM database;")
@@ -38,10 +40,11 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ... )
     >>> df = query.run()
-    >>> df.na_field.isna().sum()
+    >>> int(df.na_field.isna().sum())
     50
 
     >>> # Creates, configures, and runs the operator
+    >>> from techminer2.database.operators import FillNAOperator
     >>> fillna_operator = (
     ...     FillNAOperator()
     ...     #
@@ -55,6 +58,7 @@ Example:
     >>> fillna_operator.run()
 
     >>> # Query the database to test the operator
+    >>> from techminer2.database.tools import Query
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT na_field FROM database;")
@@ -64,10 +68,11 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ... )
     >>> df = query.run()
-    >>> df.na_field.isna().sum()
+    >>> int(df.na_field.isna().sum())
     31
 
     >>> # Deletes the field
+    >>> from techminer2.database.operators import DeleteOperator
     >>> DeleteOperator(
     ...     field="na_field",
     ...     root_directory="examples/fintech/",
@@ -75,9 +80,9 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from .._internals.operators.fillna import internal__fillna
-from .._internals.protected_fields import PROTECTED_FIELDS
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.operators.fillna import internal__fillna
+from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
 
 
 class FillNAOperator(

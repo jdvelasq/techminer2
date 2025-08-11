@@ -56,13 +56,16 @@ Example:
 
 
 """
-
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
-
-from ...._internals.mixins import ParamsMixin, SortAxesMixin
-from ..._internals.io import internal__load_filtered_records_from_database
-from ..performance.data_frame import DataFrame as TermsByYearMetricsDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import SortAxesMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
+from techminer2.database.metrics.performance.data_frame import (
+    DataFrame as TermsByYearMetricsDataFrame,
+)
 
 
 class DataFrame(

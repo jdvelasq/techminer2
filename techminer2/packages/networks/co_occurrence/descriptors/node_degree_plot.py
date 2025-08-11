@@ -52,8 +52,10 @@ Example:
 
 """
 """Node Degree Plot"""
-from ....._internals.mixins import ParamsMixin
-from ..user.node_degree_plot import NodeDegreePlot as UserNodeDegreePlot
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.node_degree_plot import (
+    NodeDegreePlot as UserNodeDegreePlot,
+)
 
 
 class NodeDegreePlot(

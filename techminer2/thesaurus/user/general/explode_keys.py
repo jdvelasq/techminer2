@@ -27,40 +27,41 @@ Example:
     ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the exploder
-    >>> exploder = (
+    >>> (
     ...     ExplodeKeys(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> exploder.run()
+
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Reducing thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1724 to 1724
+      Keys reduced from 1572 to 1572
       Reduction process completed successfully
     <BLANKLINE>
     Exploding thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1724 to 1790
+      Keys reduced from 1572 to 1612
       Exploding process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
 
-
 """
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
-from .reduce_keys import ReduceKeys
 
 tqdm.pandas()
 

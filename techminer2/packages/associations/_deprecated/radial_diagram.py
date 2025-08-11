@@ -65,7 +65,6 @@ Radial Diagram
 
 """
 # import networkx as nx  # type: ignore
-
 # from ...internals.nx.assign_constant_to_edge_colors import (
 #     internal__assign_constant_to_edge_colors,
 # )
@@ -88,10 +87,7 @@ Radial Diagram
 #     internal__compute_spring_layout_positions,
 # )
 # from ...internals.nx.plot_network_graph import internal__plot_network_graph
-
 # # from ..cross_co_occurrence.matrix import co_occurrence_matrix
-
-
 # def radial_diagram(
 #     #
 #     # FUNCTION PARAMS:
@@ -141,20 +137,16 @@ Radial Diagram
 #     **filters,
 # ):
 #     """Makes a butterfly chart.
-
 #     :meta private:
 #     """
-
 #     def extract_item_position_and_name(candidate_items, item):
 #         """Obtains the positions of topics in a list."""
-
 #         org_candidate_items = candidate_items[:]
 #         candidate_items = [col.split(" ")[:-1] for col in candidate_items]
 #         candidate_items = [" ".join(col) for col in candidate_items]
 #         pos = candidate_items.index(item)
 #         name = org_candidate_items[pos]
 #         return pos, name
-
 #     #
 #     # MAIN CODE:
 #     #
@@ -183,12 +175,10 @@ Radial Diagram
 #         cited_by_filter=cited_by_filter,
 #         **filters,
 #     )
-
 #     #
 #     # Extracts name and position for item_a and item_b
 #     if isinstance(items, str):
 #         items = [items]
-
 #     positions = []
 #     names = []
 #     for item in items:
@@ -197,30 +187,24 @@ Radial Diagram
 #         )
 #         positions.append(position)
 #         names.append(name)
-
 #     associations = associations.iloc[:, positions]
-
 #     #
 #     # Delete names from matrix.index if exists
 #     for name in names:
 #         associations = associations.drop([name])
-
 #     #
 #     # delete rows with all zeros
 #     associations = associations.loc[(associations != 0).any(axis=1)]
-
 #     #
 #     # Create the networkx graph
 #     nx_graph = nx.Graph()
 #     nx_graph = __add_nodes_from(nx_graph, associations)
 #     nx_graph = __add_weighted_edges_from(nx_graph, associations)
-
 #     #
 #     # Sets the layout
 #     nx_graph = internal__compute_spring_layout_positions(
 #         nx_graph, nx_k, nx_iterations, nx_random_state
 #     )
-
 #     #
 #     # Sets the node attributes
 #     nx_graph = internal__assign_node_sizes_based_on_occurrences(
@@ -232,13 +216,11 @@ Radial Diagram
 #     nx_graph = internal__assign_textfont_opacity_based_on_occurrences(
 #         nx_graph, textfont_opacity_range
 #     )
-
 #     #
 #     # Sets the edge attributes
 #     nx_graph = internal__assign_edge_widths_based_on_weight(nx_graph, edge_width_range)
 #     nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
 #     nx_graph = internal__assign_constant_to_edge_colors(nx_graph, edge_color)
-
 #     return internal__plot_network_graph(
 #         #
 #         # FUNCTION PARAMS:
@@ -249,38 +231,29 @@ Radial Diagram
 #         yaxes_range=yaxes_range,
 #         show_axes=show_axes,
 #     )
-
-
 # def __add_nodes_from(
 #     nx_graph,
 #     associations,
 # ):
 #     associations = associations.copy()
-
 #     #
 #     # Adds the rows with  group=0
 #     nodes = associations.index.tolist()
 #     nx_graph.add_nodes_from(nodes, group=0, node_color="#7793a5")
-
 #     #
 #     # Adds the column with  group=1
 #     nodes = associations.columns.to_list()
 #     nx_graph.add_nodes_from(nodes, group=1, node_color="#465c6b")
-
 #     #
 #     # sets the labels of nodes
 #     for node in nx_graph.nodes():
 #         nx_graph.nodes[node]["text"] = node
-
 #     return nx_graph
-
-
 # def __add_weighted_edges_from(
 #     nx_graph,
 #     associations,
 # ):
 #     associations = associations.copy()
-
 #     for item in associations.columns.tolist():
 #         for row in associations.index.tolist():
 #             weight = associations.loc[row, item]
@@ -288,5 +261,4 @@ Radial Diagram
 #                 ebunch_to_add=[(row, item, weight)],
 #                 dash="solid",
 #             )
-
 #     return nx_graph

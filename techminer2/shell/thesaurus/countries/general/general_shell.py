@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-
-from ....base_shell import BaseShell
-from ....colorized_prompt import make_colorized_prompt
-from .commands import (execute_apply_command, execute_explode_command,
-                       execute_initialize_command, execute_integrity_command,
-                       execute_reduce_command)
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.thesaurus.countries.general.commands import execute_apply_command
+from techminer2.shell.thesaurus.countries.general.commands import execute_explode_command
+from techminer2.shell.thesaurus.countries.general.commands import execute_initialize_command
+from techminer2.shell.thesaurus.countries.general.commands import execute_integrity_command
+from techminer2.shell.thesaurus.countries.general.commands import execute_reduce_command
 
 
 class GeneralShell(BaseShell):

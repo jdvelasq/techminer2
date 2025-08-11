@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-few-public-methods
 "World Map Plot Mixin."
-
 import pandas as pd  # type: ignore
 import plotly.express as px  # type: ignore
 

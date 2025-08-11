@@ -33,8 +33,9 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database.metrics.performance.data_frame import \
-    DataFrame as PerformanceDataFrame
+from techminer2.database.metrics.performance.data_frame import (
+    DataFrame as PerformanceDataFrame,
+)
 
 
 class DataFrame(

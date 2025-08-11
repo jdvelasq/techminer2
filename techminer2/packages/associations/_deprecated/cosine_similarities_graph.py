@@ -14,13 +14,9 @@ Cosine Similarities Graph
 # import pandas as pd  # type: ignore
 # import plotly.express as px  # type: ignore
 # from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
-
 # # from ..cross_co_occurrence.matrix import co_occurrence_matrix
-
 # MARKER_COLOR = "#7793a5"
 # MARKER_LINE_COLOR = "#465c6b"
-
-
 # def cosine_similarities_graph(
 #     #
 #     # FUNCTION PARAMS:
@@ -57,10 +53,8 @@ Cosine Similarities Graph
 #     **filters,
 # ):
 #     """:meta private:"""
-
 #     def extract_item_position_and_name(candidate_items, item):
 #         """Obtains the positions of topics in a list."""
-
 #         item = item[0]
 #         org_candidate_items = candidate_items[:]
 #         candidate_items = [col.split(" ")[:-1] for col in candidate_items]
@@ -68,7 +62,6 @@ Cosine Similarities Graph
 #         pos = candidate_items.index(item)
 #         name = org_candidate_items[pos]
 #         return pos, name
-
 #     #
 #     # MAIN CODE:
 #     #
@@ -97,35 +90,27 @@ Cosine Similarities Graph
 #         cited_by_filter=cited_by_filter,
 #         **filters,
 #     )
-
 #     similarities = pd.DataFrame(
 #         cosine_similarity(cooc_matrix),
 #         index=cooc_matrix.index,
 #         columns=cooc_matrix.columns,
 #     )
-
 #     item = [item]
-
 #     position, name = extract_item_position_and_name(similarities.columns.tolist(), item)
-
 #     similarities = similarities.iloc[:, [position]]
 #     similarities = similarities.sort_values(by=similarities.columns[0], ascending=False)
-
 #     #
 #     # Delete names from matrix.index if exists
 #     similarities = similarities.drop([name])
-
 #     #
 #     # Graph
 #     similarities["Rank"] = list(range(1, len(similarities) + 1))
 #     y_label = "Cosine similarity with " + item[0] if y_label is None else y_label
-
 #     field_label = (
 #         columns.replace("_", " ").upper() + " RANKING"
 #         if field_label is None
 #         else field_label
 #     )
-
 #     fig = px.line(
 #         similarities,
 #         x="Rank",
@@ -133,7 +118,6 @@ Cosine Similarities Graph
 #         hover_data=similarities.columns.to_list(),
 #         markers=True,
 #     )
-
 #     fig.update_traces(
 #         marker={
 #             "size": marker_size,
@@ -161,7 +145,6 @@ Cosine Similarities Graph
 #         griddash="dot",
 #         title=field_label,
 #     )
-
 #     for name, row in similarities.iterrows():
 #         fig.add_annotation(
 #             x=row["Rank"],
@@ -173,5 +156,4 @@ Cosine Similarities Graph
 #             font={"size": textfont_size},
 #             yshift=yshift,
 #         )
-
 #     return fig

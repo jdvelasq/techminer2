@@ -63,7 +63,7 @@ Example:
 
 
 """
-from ....user import SortByExactMatch as UserSortByExactMatch
+from techminer2.thesaurus.user import SortByExactMatch as UserSortByExactMatch
 
 
 class SortByExactMatch(

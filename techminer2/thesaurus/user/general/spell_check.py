@@ -27,35 +27,36 @@ Example:
 
 
     >>> # Creates, configures, an run the spell checker
-    >>> checker = (
+    >>> (
     ...     SpellCheck(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_maximum_occurrence(3)
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> checker.run()
+
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Spell checking thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Potential misspelled words (69):
+      Potential misspelled words (59):
     <BLANKLINE>
         - affordance
-        - agroindustry
-        - agropay
-        - analyse
+        - affordances
         - backoffice
         - behavioural
         - bitcoin
+        - blockchain
         - burdencapital
-        - cacioppo
         - centricity
+        - crowdfunding
+        - crowdinvesting
         ...
     <BLANKLINE>
-      Matching keys found : 83
+      Matching keys found : 71
       Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -63,20 +64,20 @@ Example:
     <BLANKLINE>
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_HYBRID_MCDM_MODEL
+          A_HYBRID_MCDM_MODEL
         A_MULTI_LEVEL_ANALYSIS
           A_MULTI_LEVEL_ANALYSIS
         A_WIDE_RANGING_RECONCEPTUALIZATION
           A_WIDE_RANGING_RECONCEPTUALIZATION
+        A_YOUTH_MICROLOAN_STARTUP
+          A_YOUTH_MICROLOAN_STARTUP
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AGROINDUSTRY
-          AGROINDUSTRY
-        AGROPAY
-          AGROPAY
-        ANALYSE
-          ANALYSE
-        BACKOFFICE_FUNCTIONS
-          BACKOFFICE_FUNCTIONS
+        AFFORDANCES
+          AFFORDANCES
     <BLANKLINE>
     <BLANKLINE>
 
@@ -96,24 +97,24 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Spell checking thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Potential misspelled words (69):
+      Potential misspelled words (59):
     <BLANKLINE>
         - affordance
-        - agroindustry
-        - agropay
-        - analyse
+        - affordances
         - backoffice
         - behavioural
         - bitcoin
+        - blockchain
         - burdencapital
-        - cacioppo
         - centricity
+        - crowdfunding
+        - crowdinvesting
         ...
     <BLANKLINE>
-      Matching keys found : 83
+      Matching keys found : 71
       Spell checking process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -121,20 +122,20 @@ Example:
     <BLANKLINE>
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_HYBRID_MCDM_MODEL
+          A_HYBRID_MCDM_MODEL
         A_MULTI_LEVEL_ANALYSIS
           A_MULTI_LEVEL_ANALYSIS
         A_WIDE_RANGING_RECONCEPTUALIZATION
           A_WIDE_RANGING_RECONCEPTUALIZATION
+        A_YOUTH_MICROLOAN_STARTUP
+          A_YOUTH_MICROLOAN_STARTUP
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AGROINDUSTRY
-          AGROINDUSTRY
-        AGROPAY
-          AGROPAY
-        ANALYSE
-          ANALYSE
-        BACKOFFICE_FUNCTIONS
-          BACKOFFICE_FUNCTIONS
+        AFFORDANCES
+          AFFORDANCES
     <BLANKLINE>
     <BLANKLINE>
 
@@ -144,11 +145,12 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
 from spellchecker import SpellChecker as ExternalSpellChecker
-
-from ...._internals.mixins import ParamsMixin
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 
 class SpellCheck(

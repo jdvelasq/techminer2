@@ -5,16 +5,17 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import networkx as nx  # type: ignore
 import numpy as np
 
-from ...._internals.nx import (
+from techminer2._internals.nx import (
     internal__assign_node_sizes_based_on_occurrences,
     internal__assign_text_positions_based_on_quadrants,
     internal__assign_textfont_opacity_based_on_occurrences,
     internal__assign_textfont_sizes_based_on_occurrences,
-    internal__compute_spring_layout_positions, internal__plot_nx_graph)
+    internal__compute_spring_layout_positions,
+    internal__plot_nx_graph,
+)
 
 
 def add_nodes_from(params, nx_graph, data_frame):
@@ -125,5 +126,7 @@ def internal__correlation_map(
     nx_graph = internal__assign_text_positions_based_on_quadrants(nx_graph)
 
     nx_graph = set_edge_properties(params, nx_graph)
+
+    return internal__plot_nx_graph(params=params, nx_graph=nx_graph)
 
     return internal__plot_nx_graph(params=params, nx_graph=nx_graph)

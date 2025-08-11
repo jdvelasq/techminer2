@@ -1,5 +1,4 @@
 """Porter stemmer."""
-
 from functools import lru_cache  # type: ignore
 
 from nltk.stem import PorterStemmer  # type: ignore

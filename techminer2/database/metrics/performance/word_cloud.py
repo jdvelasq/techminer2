@@ -45,10 +45,9 @@ Example:
     :align: center
 
 """
-
-from ...._internals.params_mixin import ParamsMixin
-from ...._internals.plots.internal__word_cloud import internal__word_cloud
-from .data_frame import DataFrame
+from techminer2._internals.params_mixin import ParamsMixin
+from techminer2._internals.plots.internal__word_cloud import internal__word_cloud
+from techminer2.database.metrics.performance.data_frame import DataFrame
 
 
 class WordCloud(

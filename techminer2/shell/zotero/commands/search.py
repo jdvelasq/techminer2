@@ -1,6 +1,6 @@
-from ...._internals.params_mixin import Params
-from ....database._internals.io import internal__load_all_records_from_database
-from ...colorized_input import colorized_input
+from techminer2._internals.params_mixin import Params
+from techminer2.database._internals.io import internal__load_all_records_from_database
+from techminer2.shell.colorized_input import colorized_input
 
 
 def execute_search_command():

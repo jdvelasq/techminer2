@@ -6,13 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-from ...base_shell import BaseShell
-from ...colorized_prompt import make_colorized_prompt
-from .commands import (execute_copyright_command, execute_desambiguate_command,
-                       execute_doctypes_command, execute_generic_command,
-                       execute_summary_command, execute_titles_command,
-                       execute_view_command)
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.database.tools.commands import execute_copyright_command
+from techminer2.shell.database.tools.commands import execute_desambiguate_command
+from techminer2.shell.database.tools.commands import execute_doctypes_command
+from techminer2.shell.database.tools.commands import execute_generic_command
+from techminer2.shell.database.tools.commands import execute_summary_command
+from techminer2.shell.database.tools.commands import execute_titles_command
+from techminer2.shell.database.tools.commands import execute_view_command
 
 
 class ToolsShell(BaseShell):

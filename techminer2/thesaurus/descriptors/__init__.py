@@ -1,5 +1,4 @@
 "Public API for descriptors."
-
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.cleanup_thesaurus import CleanupThesaurus
 from .general.compress_thesaurus import CompressThesaurus

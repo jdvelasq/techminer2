@@ -27,7 +27,7 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
     ...     #
-    ...     .run()    
+    ...     .run()
     ... ).write_html("docs_source/_generated/px.database.metrics.ternding_terms_by_year.user.bar_chart.html")
 
 .. raw:: html
@@ -38,9 +38,8 @@ Example:
 
 """
 import plotly.graph_objects as go  # type: ignore
-
-from ....._internals.mixins import ParamsMixin
-from .data_frame import DataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.trending_terms_by_year.user.data_frame import DataFrame
 
 
 class BarChart(

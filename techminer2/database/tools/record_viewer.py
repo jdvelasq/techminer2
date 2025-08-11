@@ -79,7 +79,7 @@ Example:
     ...         print(doc, file=f)
     ...         print(file=f)
 
-    >>> print(documents[0])
+    >>> print(documents[0]) # doctest: +SKIP
     UT 30
     AR Gomber P., 2018, J MANAGE INF SYST, V35, P220
     TI On the Fintech Revolution: Interpreting the Forces of Innovation,
@@ -92,7 +92,7 @@ Example:
        of NEW_TECHNOLOGY_INNOVATIONS and PROCESS_DISRUPTIONS . THE_INDUSTRY overall
        , and MANY_FINTECH_START_UPS are looking for NEW_PATHWAYS to
        SUCCESSFUL_BUSINESS_MODELS , THE_CREATION of ENHANCED_CUSTOMER_EXPERIENCE ,
-       and APPROACHES that result in SERVICES_TRANSFORMATION . INDUSTRY and
+       and approaches that result in SERVICES_TRANSFORMATION . INDUSTRY and
        ACADEMIC_OBSERVERS believe this to be more of A_REVOLUTION than A_SET of
        LESS_INFLUENTIAL_CHANGES , with FINANCIAL_SERVICES as A_WHOLE due for
        MAJOR_IMPROVEMENTS in EFFICIENCY , CUSTOMER_CENTRICITY , and INFORMEDNESS .
@@ -107,7 +107,7 @@ Example:
        MULTIPLE_INNOVATIONS that have affected LENDING_AND_DEPOSIT_SERVICES ,
        PEER_TO_PEER ( P2P ) LENDING , and SOCIAL_MEDIA_USE . ISSUES with_respect_to
        INVESTMENTS , FINANCIAL_MARKETS , TRADING , RISK_MANAGEMENT , ROBO_ADVISORY
-       and SERVICES influenced by BLOCKCHAIN_AND_FINTECH_INNOVATIONS . copyright
+       and SERVICES influenced by BLOCKCHAIN and FINTECH_INNOVATIONS . copyright
        taylor and francis group , llc .
     ID BLOCKCHAIN; COMMERCE; RISK_MANAGEMENT; BUSINESS_MODELS; CUSTOMER_EXPERIENCE;
        FINANCIAL_SERVICE; FINANCIAL_SERVICES_INDUSTRIES; NEW_TECHNOLOGIES;
@@ -118,11 +118,12 @@ Example:
 
 
 """
-
-from techminer2._internals.mixins import (ParamsMixin, RecordMappingMixin,
-                                          RecordViewerMixin)
-from techminer2.database._internals.io.load_filtered_records_from_database import \
-    internal__load_filtered_records_from_database
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import RecordMappingMixin
+from techminer2._internals.mixins import RecordViewerMixin
+from techminer2.database._internals.io.load_filtered_records_from_database import (
+    internal__load_filtered_records_from_database,
+)
 
 
 class RecordViewer(

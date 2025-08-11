@@ -4,9 +4,11 @@
 # pylint: disable=too-many-public-methods
 # pylint: disable=too-many-instance-attributes
 """Define a mixin class for input functions."""
-
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
+from typing import Dict
+from typing import List
+from typing import Optional
+from typing import Tuple
 
 
 @dataclass

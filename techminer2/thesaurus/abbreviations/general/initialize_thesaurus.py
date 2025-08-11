@@ -60,16 +60,16 @@ import sys
 
 import pandas as pd  # type: ignore
 from nltk.corpus import words
+from techminer2._internals.log_message import internal__log_message
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import internal__generate_system_thesaurus_file_path
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
+)
 from textblob import TextBlob  # type: ignore
-
-from ...._internals.log_message import internal__log_message
-from ...._internals.mixins import ParamsMixin
-from ..._internals import (ThesaurusMixin,
-                           internal__generate_system_thesaurus_file_path,
-                           internal__load_thesaurus_as_mapping,
-                           internal__print_thesaurus_header)
-from ..._internals.load_thesaurus_as_mapping import \
-    internal__load_thesaurus_as_mapping
 
 
 class InitializeThesaurus(

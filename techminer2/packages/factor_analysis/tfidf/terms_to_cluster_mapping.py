@@ -69,8 +69,12 @@ Terms to Cluster Mapping
 
 
 """
-from .._internals.terms_to_cluster_mapping import _terms_to_cluster_mapping
-from .terms_by_dimension_dataframe import terms_by_dimension_frame
+from techminer2.packages.factor_analysis._internals.terms_to_cluster_mapping import (
+    _terms_to_cluster_mapping,
+)
+from techminer2.packages.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+    terms_by_dimension_frame,
+)
 
 
 def terms_to_cluster_mapping(

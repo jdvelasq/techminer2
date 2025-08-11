@@ -5,12 +5,13 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 from typing import Dict, List, Optional, Tuple
 
 from textblob import TextBlob  # type: ignore
 
-from .get_values_from_field import internal__get_values_from_field
+from techminer2.database._internals.extractors.get_values_from_field import (
+    internal__get_values_from_field,
+)
 
 
 def internal__stemming_and(params):

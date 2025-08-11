@@ -10,8 +10,7 @@
 
 def internal__preprocess_abstract(root_dir):
 
-    from techminer2.database._internals.operators.highlight import \
-        internal__highlight
+    from techminer2.database._internals.operators.highlight import internal__highlight
 
     internal__highlight(
         source="tokenized_abstract",

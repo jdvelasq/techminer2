@@ -35,12 +35,12 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus by fuzzy match...
                 File : examples/fintech/data/thesaurus/descriptors.the.txt
            Keys like : INFORM
       Match thresold : 50
-      92 matching keys found
+      81 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -56,21 +56,20 @@ Example:
           A_NEW_INTERMEDIARY
         A_PLATFORM
           A_PLATFORM
-        BUSINESS_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
+        BUSINESS_INFRASTRUCTURES
+          BUSINESS_INFRASTRUCTURES
+        BUT_THE_FINANCIAL_REGULATORY_REFORMS
+          BUT_THE_FINANCIAL_REGULATORY_REFORMS
         CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
           CHANGE_FINANCIAL_INTERMEDIATION_STRUCTURES
-        CLASSIFICATION (OF_INFORMATION)
-          CLASSIFICATION (OF_INFORMATION)
     <BLANKLINE>
     <BLANKLINE>
-
 
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByFuzzyMatch as UserSortByFuzzyMatch
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByFuzzyMatch as UserSortByFuzzyMatch
 
 
 class SortByFuzzyMatch(

@@ -17,7 +17,9 @@ Example:
 
 
 """
-from .get_database_file_path import internal__get_database_file_path
+from techminer2.database._internals.io.get_database_file_path import (
+    internal__get_database_file_path,
+)
 
 
 def internal__write_records_to_database(params, records):
@@ -32,5 +34,7 @@ def internal__write_records_to_database(params, records):
         compression="zip",
     )
 
+
+# =============================================================================
 
 # =============================================================================

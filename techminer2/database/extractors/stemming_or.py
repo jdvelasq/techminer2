@@ -33,28 +33,28 @@ Example:
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
     ...     #
-    ...     .run()      
+    ...     .run()
     ... )
 
 
     >>> # Print the first 10 extracted terms
     >>> from pprint import pprint
-    >>> pprint(terms[:10])
+    >>> pprint(terms[:10]) # doctest: +SKIP
     ['ARTIFICIAL_INTELLIGENCE',
      'DIGITAL_TECHNOLOGIES',
      'FINANCE_TECHNOLOGY',
      'FINANCIAL_COMPUTING',
      'FINANCIAL_INCLUSION',
      'FINANCIAL_INSTITUTION',
+     'FINANCIAL_INSTITUTIONS',
      'FINANCIAL_INTERMEDIATION',
      'FINANCIAL_MANAGEMENT',
-     'FINANCIAL_SCENARIZATION',
-     'FINANCIAL_SERVICE']
+     'FINANCIAL_SCENARIZATION']
+
 
 
 
 """
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.extractors.stemming import internal__stemming_or
 

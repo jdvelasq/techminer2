@@ -105,9 +105,11 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import internal__compute_network_metrics
-from .._internals.create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import internal__compute_network_metrics
+from techminer2.packages.networks.co_occurrence._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class NetworkMetrics(
@@ -118,5 +120,7 @@ class NetworkMetrics(
     def run(self):
         """:meta private:"""
 
+        nx_graph = internal__create_nx_graph(self.params)
+        return internal__compute_network_metrics(params=self.params, nx_graph=nx_graph)
         nx_graph = internal__create_nx_graph(self.params)
         return internal__compute_network_metrics(params=self.params, nx_graph=nx_graph)

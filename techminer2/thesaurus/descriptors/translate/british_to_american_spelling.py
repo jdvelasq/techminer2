@@ -39,8 +39,10 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import BritishToAmericanSpelling as UserBritishToAmericanSpelling
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import (
+    BritishToAmericanSpelling as UserBritishToAmericanSpelling,
+)
 
 
 class BritishToAmericanSpelling(

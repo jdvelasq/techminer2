@@ -39,10 +39,10 @@ Example:
 
 
 """
-
-from ....._internals.mixins import ParamsMixin
-from .._internals.from_others.node_degree_data_frame import \
-    NodeDegreeDataFrame as OtherNodeDegreeDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.citation._internals.from_others.node_degree_data_frame import (
+    NodeDegreeDataFrame as OtherNodeDegreeDataFrame,
+)
 
 
 class NodeDegreeDataFrame(

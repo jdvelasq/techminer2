@@ -1,6 +1,5 @@
 # flake8: noqa
 """Disambiguate author names using Scopus Author(s) ID."""
-
 import pathlib
 import sys
 

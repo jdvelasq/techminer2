@@ -6,13 +6,13 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-
-from ....base_shell import BaseShell
-from ....colorized_prompt import make_colorized_prompt
-from .commands import (execute_determiners_command, execute_initial_command,
-                       execute_last_command, execute_parentheses_command,
-                       execute_stopwords_command)
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.thesaurus.descriptors.remove.commands import execute_determiners_command
+from techminer2.shell.thesaurus.descriptors.remove.commands import execute_initial_command
+from techminer2.shell.thesaurus.descriptors.remove.commands import execute_last_command
+from techminer2.shell.thesaurus.descriptors.remove.commands import execute_parentheses_command
+from techminer2.shell.thesaurus.descriptors.remove.commands import execute_stopwords_command
 
 
 class RemoveShell(BaseShell):

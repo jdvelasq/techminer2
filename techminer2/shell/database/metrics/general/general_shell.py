@@ -6,10 +6,9 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-from ....base_shell import BaseShell
-from ....colorized_prompt import make_colorized_prompt
-from .commands import execute_dataframe_command
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.database.metrics.general.commands import execute_dataframe_command
 
 
 class GeneralShell(BaseShell):

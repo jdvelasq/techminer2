@@ -5,12 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
-
 import pandas as pd  # type: ignore
 
-from .create_clusters_to_terms_mapping import \
-    internal__create_clusters_to_terms_mapping
+from techminer2._internals.nx.create_clusters_to_terms_mapping import (
+    internal__create_clusters_to_terms_mapping,
+)
 
 
 def internal__summarize_communities(
@@ -43,5 +42,7 @@ def internal__summarize_communities(
 
     summary = summary.sort_values("Cluster", ascending=True)
     summary = summary.reset_index(drop=True)
+
+    return summary
 
     return summary

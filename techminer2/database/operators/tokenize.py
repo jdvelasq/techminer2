@@ -13,6 +13,10 @@ This module demonstrates how to tokenize text in a specified field using the Tok
 class. The process involves configuring the fields and database parameters.
 
 Example:
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
+
     >>> from techminer2.database.operators import TokenizeOperator
     >>> # Creates, configure, and run the tokenize_
     >>> (
@@ -68,9 +72,8 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-
-from .._internals.operators.tokenize import internal__tokenize
-from .._internals.protected_fields import PROTECTED_FIELDS
+from techminer2.database._internals.operators.tokenize import internal__tokenize
+from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
 
 
 class TokenizeOperator(

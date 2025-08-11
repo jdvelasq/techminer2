@@ -1,13 +1,14 @@
 # flake8: noqa
 """Compress all CSV files in the root_dir/raw_data/ subdirectories."""
-
 import os
 import sys
 
 import pandas as pd  # type: ignore
 from langdetect import detect  # type: ignore
 
-from .get_subdirectories import internal__get_subdirectories
+from techminer2.database._internals.db.get_subdirectories import (
+    internal__get_subdirectories,
+)
 
 
 def internal__remove_non_english_abstracts(root_dir):

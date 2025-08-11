@@ -4,7 +4,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=missing-docstring
 """Format chatbot prompt for paragraphs."""
-
 import textwrap
 
 TEXTWRAP_WIDTH = 73

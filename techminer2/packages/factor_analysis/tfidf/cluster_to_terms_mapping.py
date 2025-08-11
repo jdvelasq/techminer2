@@ -70,7 +70,9 @@ Cluster to Terms Mapping
 
 
 """
-from .terms_to_cluster_mapping import terms_to_cluster_mapping
+from techminer2.packages.factor_analysis.tfidf.terms_to_cluster_mapping import (
+    terms_to_cluster_mapping,
+)
 
 
 def cluster_to_terms_mapping(
@@ -151,3 +153,6 @@ def cluster_to_terms_mapping(
         mapping[cluster].append(term)
 
     return mapping
+
+
+#

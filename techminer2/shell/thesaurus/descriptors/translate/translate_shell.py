@@ -6,12 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
-
-from ....base_shell import BaseShell
-from ....colorized_prompt import make_colorized_prompt
-from .commands.ame2bri import execute_ame2bri_command
-from .commands.bri2ame import execute_bri2ame_command
+from techminer2.shell.base_shell import BaseShell
+from techminer2.shell.colorized_prompt import make_colorized_prompt
+from techminer2.shell.thesaurus.descriptors.translate.commands.ame2bri import (
+    execute_ame2bri_command,
+)
+from techminer2.shell.thesaurus.descriptors.translate.commands.bri2ame import (
+    execute_bri2ame_command,
+)
 
 
 class TranslateShell(BaseShell):

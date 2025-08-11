@@ -2,7 +2,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=line-too-long
 """
-This module implements 
+This module implements
 
 
 
@@ -10,8 +10,9 @@ This module implements
 """
 import numpy as np
 
-from ..mt.mt_calculate_global_performance_metrics import \
-    _mt_calculate_global_performance_metrics
+from techminer2._internals.mt.mt_calculate_global_performance_metrics import (
+    _mt_calculate_global_performance_metrics,
+)
 
 
 def _utils_compute_occurrences_and_citations(

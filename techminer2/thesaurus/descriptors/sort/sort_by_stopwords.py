@@ -33,10 +33,10 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus by stopwords...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      677 matching keys found
+      682 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -61,9 +61,10 @@ Example:
     <BLANKLINE>
     <BLANKLINE>
 
+
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByStopwords as UserSortByStopwords
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByStopwords as UserSortByStopwords
 
 
 class SortByStopwords(

@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-few-public-methods
 """Word Cloud Mixin."""
-
 import numpy as np
 from wordcloud import WordCloud as WordCloudExternal  # type: ignore
 

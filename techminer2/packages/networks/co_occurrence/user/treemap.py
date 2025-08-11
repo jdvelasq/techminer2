@@ -47,11 +47,15 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ....._internals.nx import (
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import (
     internal__assign_node_colors_based_on_group_attribute,
-    internal__cluster_nx_graph, internal__plot_node_treemap)
-from .._internals.create_nx_graph import internal__create_nx_graph
+    internal__cluster_nx_graph,
+    internal__plot_node_treemap,
+)
+from techminer2.packages.networks.co_occurrence._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class Treemap(
@@ -62,6 +66,10 @@ class Treemap(
     def run(self):
         """:meta private:"""
 
+        nx_graph = internal__create_nx_graph(self.params)
+        nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
+        nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)
+        return internal__plot_node_treemap(self.params, nx_graph)
         nx_graph = internal__create_nx_graph(self.params)
         nx_graph = internal__cluster_nx_graph(self.params, nx_graph)
         nx_graph = internal__assign_node_colors_based_on_group_attribute(nx_graph)

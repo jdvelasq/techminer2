@@ -55,9 +55,9 @@ Example:
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..._internals.mixins import ParamsMixin
-from ..._internals.plots.internal__bubble_plot import internal__bubble_plot
-from .data_frame import DataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.plots.internal__bubble_plot import internal__bubble_plot
+from techminer2.packages.co_occurrence_matrix.data_frame import DataFrame
 
 
 class BubblePlot(

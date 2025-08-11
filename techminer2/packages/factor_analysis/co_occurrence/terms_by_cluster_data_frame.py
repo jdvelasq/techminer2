@@ -66,7 +66,9 @@ Terms by Cluster Frame
 """
 import pandas as pd  # type: ignore
 
-from .cluster_to_terms_mapping import cluster_to_terms_mapping
+from techminer2.packages.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
+    cluster_to_terms_mapping,
+)
 
 
 def terms_by_cluster_frame(
@@ -125,5 +127,7 @@ def terms_by_cluster_frame(
     frame = pd.DataFrame.from_dict(c2t_mapping, orient="index").T
     frame = frame.fillna("")
     frame = frame.sort_index(axis=1)
+
+    return frame
 
     return frame

@@ -36,10 +36,8 @@ Example:
 
 """
 import plotly.express as px  # type: ignore
-
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.packages.co_occurrence_matrix import \
-    DataFrame as CoOccurrenceDataFrame
+from techminer2.packages.co_occurrence_matrix import DataFrame as CoOccurrenceDataFrame
 
 
 class WorldMap(

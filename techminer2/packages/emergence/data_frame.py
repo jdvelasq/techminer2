@@ -44,16 +44,17 @@ Example:
 """
 import numpy as np
 
-from ..._internals.mixins import ParamsMixin
-from ..._internals.mt.mt_term_occurrences_by_year import \
-    _mt_term_occurrences_by_year
-from ...database.metrics.general import DataFrame as GeneralMetricsDataFrame
-from ...database.metrics.records_by_year.data_frame import \
-    DataFrame as TrendMetricsDataFrame
-from ...database.metrics.terms_by_year.data_frame import \
-    DataFrame as TermsByYearDataFrame
-
-# from ..metrics.trend_metrics._compute_trend_metrics import compute_trend_metrics
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.mt.mt_term_occurrences_by_year import (
+    _mt_term_occurrences_by_year,
+)
+from techminer2.database.metrics.general import DataFrame as GeneralMetricsDataFrame
+from techminer2.database.metrics.records_by_year.data_frame import (
+    DataFrame as TrendMetricsDataFrame,
+)
+from techminer2.database.metrics.terms_by_year.data_frame import (
+    DataFrame as TermsByYearDataFrame,
+)
 
 
 class DataFrame(
@@ -193,5 +194,7 @@ class DataFrame(
         # data_frame["selected"] = data_frame["selected"] & (
         #     data_frame["OCC_recent"] / data_frame["OCC_baseline"] >= ratio_threshold
         # )
+
+        return data_frame[data_frame.selected]
 
         return data_frame[data_frame.selected]

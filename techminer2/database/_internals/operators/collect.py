@@ -4,7 +4,6 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-
 import pathlib
 
 import pandas as pd  # type: ignore

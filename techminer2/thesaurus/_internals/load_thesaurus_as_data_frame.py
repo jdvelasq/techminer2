@@ -1,5 +1,4 @@
 """Thesaurus internal functions"""
-
 import pandas as pd  # type: ignore
 
 

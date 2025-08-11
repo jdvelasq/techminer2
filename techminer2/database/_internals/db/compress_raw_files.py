@@ -1,12 +1,13 @@
 # flake8: noqa
 """Compress all CSV files in the root_dir/raw_data/ subdirectories."""
-
 import os
 import sys
 
 import pandas as pd  # type: ignore
 
-from .get_subdirectories import internal__get_subdirectories
+from techminer2.database._internals.db.get_subdirectories import (
+    internal__get_subdirectories,
+)
 
 
 def internal__compress_raw_files(root_dir):
@@ -26,3 +27,6 @@ def internal__compress_raw_files(root_dir):
             df = pd.read_csv(csv_file_path, encoding="utf-8", low_memory=False)
             df.to_csv(zip_file_path, encoding="utf-8", index=False, compression="zip")
             os.remove(csv_file_path)
+
+
+#

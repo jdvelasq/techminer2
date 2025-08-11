@@ -35,9 +35,11 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 """
-from ......_internals.mixins import ParamsMixin
-from ......_internals.nx import internal__compute_network_metrics
-from .create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx import internal__compute_network_metrics
+from techminer2.packages.networks.coupling._internals.from_others.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class InternalNetworkMetrics(

@@ -5,7 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """Base Column Plot Class."""
-
 import plotly.express as px  # type: ignore
 
 MARKER_COLOR = "#7793a5"

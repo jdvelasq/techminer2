@@ -57,7 +57,7 @@ Example:
 
 
 """
-from ....user import SortByKeyLength as UserSortByKeyLength
+from techminer2.thesaurus.user import SortByKeyLength as UserSortByKeyLength
 
 
 class SortByKeyLength(

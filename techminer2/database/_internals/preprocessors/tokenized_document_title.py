@@ -11,8 +11,7 @@ import sys
 def internal__preprocess_tokenized_document_title(root_dir):
     """:meta private:"""
 
-    from techminer2.database._internals.operators.tokenize import \
-        internal__tokenize
+    from techminer2.database._internals.operators.tokenize import internal__tokenize
 
     sys.stderr.write("INFO  Creating 'tokenized_document_title' column\n")
     sys.stderr.flush()

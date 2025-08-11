@@ -47,9 +47,10 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.node_degree_data_frame import \
-    NodeDegreeDataFrame as UserNodeDegreeDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.node_degree_data_frame import (
+    NodeDegreeDataFrame as UserNodeDegreeDataFrame,
+)
 
 
 class NodeDegreeDataFrame(

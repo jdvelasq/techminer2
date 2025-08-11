@@ -46,9 +46,9 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ....database._internals.operators.transform import internal__transform
-from ...user import ApplyThesaurus as ApplyUserThesaurus
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.operators.transform import internal__transform
+from techminer2.thesaurus.user import ApplyThesaurus as ApplyUserThesaurus
 
 
 #

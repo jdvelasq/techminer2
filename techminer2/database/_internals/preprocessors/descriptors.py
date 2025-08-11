@@ -10,8 +10,7 @@ import sys
 
 def internal__preprocess_descriptors(root_directory):
 
-    from techminer2.thesaurus.descriptors import (ApplyThesaurus,
-                                                  InitializeThesaurus)
+    from techminer2.thesaurus.descriptors import ApplyThesaurus, InitializeThesaurus
 
     sys.stderr.write("INFO  Creating 'descriptors' column\n")
     sys.stderr.flush()

@@ -50,9 +50,10 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from .._internals.from_others.node_degree_plot import \
-    NodeDegreePlot as OtherNodeDegreePlot
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.citation._internals.from_others.node_degree_plot import (
+    NodeDegreePlot as OtherNodeDegreePlot,
+)
 
 
 class NodeDegreePlot(

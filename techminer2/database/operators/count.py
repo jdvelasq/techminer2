@@ -11,14 +11,13 @@ Count Terms per Record
 
 
 Example:
-    >>> from techminer2.database.operators import (
-    ...     CountOperator,
-    ...     DeleteOperator,
-    ... )
-    >>> from techminer2.database.tools import Query
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
 
     >>> # Creates, configure, and run the operator
-    >>> counter = (
+    >>> from techminer2.database.operators import CountOperator
+    >>> (
     ...     CountOperator()
     ...     #
     ...     # FIELDS:
@@ -27,20 +26,21 @@ Example:
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
+    ...     #
+    ...     .run()
     ... )
-    >>> counter.run()
 
     >>> # Query the database to test the operator
-    >>> query = (
+    >>> from techminer2.database.tools import Query
+    >>> (
     ...     Query()
     ...     .with_query_expression("SELECT authors, num_authors_test FROM database LIMIT 5;")
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
     ...     .where_record_citations_range_is(None, None)
+    ...     .run()
     ... )
-    >>> df = query.run()
-    >>> df
                                     authors  num_authors_test
     0  Kim Y.; Choi J.; Park Y.-J.; Yeon J.                 4
     1                   Shim Y.; Shin D.-H.                 2
@@ -51,6 +51,7 @@ Example:
 
 
     >>> # Deletes the field
+    >>> from techminer2.database.operators import DeleteOperator
     >>> DeleteOperator(
     ...     field="num_authors_test",
     ...     root_directory="examples/fintech/",

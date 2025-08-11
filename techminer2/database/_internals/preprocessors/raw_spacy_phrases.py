@@ -5,7 +5,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import pathlib
 import sys
 
@@ -28,7 +27,7 @@ def internal__preprocess_raw_spacy_phrases(root_dir):
         low_memory=False,
     )
 
-    spacy_nlp = spacy.load("en_core_web_sm")
+    spacy_nlp = spacy.load("en_core_web_lg")
 
     dataframe["raw_abstract_spacy_phrases"] = pd.NA
 
@@ -70,6 +69,9 @@ def internal__preprocess_raw_spacy_phrases(root_dir):
             for term in phrases
             if "a" in term or "e" in term or "i" in term or "o" in term or "u" in term
         ]
+        #
+        # phrases = [term for term in phrases if not term.endswith(" et al")]
+        # phrases = [term for term in phrases if term != "et al"]
         #
         phrases = set(phrases)
 

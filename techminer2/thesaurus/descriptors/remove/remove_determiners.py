@@ -32,7 +32,7 @@ Example:
     >>> print(output)
     Removing initial determiners from thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      599 initial determiners removed successfully
+      602 initial determiners removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -62,13 +62,13 @@ Example:
 import re
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 

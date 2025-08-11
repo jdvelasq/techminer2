@@ -61,9 +61,8 @@ Example:
 
 
 """
-
-from ...._internals.mixins import ParamsMixin
-from ...user import InitializeThesaurus as UserInitializeThesaurus
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import InitializeThesaurus as UserInitializeThesaurus
 
 
 #

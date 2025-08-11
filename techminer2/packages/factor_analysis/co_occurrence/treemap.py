@@ -72,7 +72,9 @@ Treemap
 import plotly.express as px  # type: ignore
 import plotly.graph_objs as go  # type: ignore
 
-from .terms_to_cluster_mapping import terms_to_cluster_mapping
+from techminer2.packages.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
+    terms_to_cluster_mapping,
+)
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24
@@ -203,5 +205,7 @@ def treemap(
     #
     # Change the font size of the labels
     fig.update_traces(textfont_size=12)
+
+    return fig
 
     return fig

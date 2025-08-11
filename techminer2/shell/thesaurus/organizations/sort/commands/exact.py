@@ -1,6 +1,5 @@
+from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.organizations import SortByExactMatch
-
-from .....colorized_input import colorized_input
 
 
 def execute_exact_command():

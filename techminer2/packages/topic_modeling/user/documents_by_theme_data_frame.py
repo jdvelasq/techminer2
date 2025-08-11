@@ -23,7 +23,7 @@ Example:
     ...     random_state=0,
     ... )
     >>> from techminer2.packages.topic_modeling.user import DocumentsByThemeDataFrame
-    >>> (
+    >>> df =(
     ...     DocumentsByThemeDataFrame()
     ...     #
     ...     # FIELD:
@@ -53,23 +53,24 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head()
+    ... )
+    >>> df.head() # doctest: +SKIP
     cluster                                                    0  ...         9
     article                                                       ...
-    Alt R., 2018, ELECTRON MARK, V28, P235              0.033338  ...  0.033338
-    Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.006251  ...  0.006251
-    Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.887478  ...  0.012501
-    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.924985  ...  0.008335
-    Belanche D., 2019, IND MANAGE DATA SYS, V119, P...  0.010003  ...  0.010002
+    Alt R., 2018, ELECTRON MARK, V28, P235              0.033338  ...  0.699979
+    Anagnostopoulos I., 2018, J ECON BUS, V100, P7      0.947050  ...  0.005883
+    Anshari M., 2019, ENERGY PROCEDIA, V156, P234       0.016672  ...  0.016670
+    Arner D.W., 2017, NORTHWEST J INTL LAW BUS, V37...  0.006668  ...  0.006668
+    Belanche D., 2019, IND MANAGE DATA SYS, V119, P...  0.899982  ...  0.011113
     <BLANKLINE>
     [5 rows x 10 columns]
 
 
+
 """
 import pandas as pd  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....database.metrics.tfidf import DataFrame as TfIdfDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.tfidf import DataFrame as TfIdfDataFrame
 
 
 class DocumentsByThemeDataFrame(

@@ -51,9 +51,10 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from .._internals.from_others.node_density_plot import \
-    NodeDensityPlot as OtherNodeDensityPlot
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.citation._internals.from_others.node_density_plot import (
+    NodeDensityPlot as OtherNodeDensityPlot,
+)
 
 
 class NodeDensityPlot(

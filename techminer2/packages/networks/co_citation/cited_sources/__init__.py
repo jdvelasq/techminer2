@@ -1,5 +1,4 @@
 """Co-citation Network Aanalysis: Cited Authors."""
-
 from .network_metrics import NetworkMetrics
 from .network_plot import NetworkPlot
 from .node_degree_data_frame import NodeDegreeDataFrame

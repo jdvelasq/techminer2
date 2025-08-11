@@ -67,8 +67,10 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from ..._internals.mixins import ParamsMixin
-from .clusters_to_terms_mapping import ClustersToTermsMapping
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.document_clustering.clusters_to_terms_mapping import (
+    ClustersToTermsMapping,
+)
 
 
 class TermsByClusterSummary(
@@ -92,5 +94,7 @@ class TermsByClusterSummary(
                 "Terms": terms,
             }
         )
+
+        return summary
 
         return summary

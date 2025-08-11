@@ -12,6 +12,10 @@ Process a Field
 
 
 Example:
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
+
     >>> # Creates, configures, and runs the operator
     >>> from techminer2.database.operators import TransformOperator
     >>> (
@@ -49,8 +53,8 @@ Example:
     4  behavioural_economics; digital_technologies; f...
     5            data_mining; fintech; privacy; security
     6  content_analysis; digitalization; fintech; inn...
-    7  case_studies; ecosystem_development; financial...
-    8  digitization; financial_services_industries; f...
+    7  case_study; ecosystem_development; financial_i...
+    8  digitization; financial_services_industry; fin...
     9  digital_finance; e_finance; fintech; future_re...
 
 
@@ -64,8 +68,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.transform import \
-    internal__transform
+from techminer2.database._internals.operators.transform import internal__transform
 from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
 
 

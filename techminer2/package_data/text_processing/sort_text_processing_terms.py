@@ -16,16 +16,14 @@
 """
 import glob
 import unicodedata  # type: ignore
-
-import pkg_resources  # type: ignore
+from importlib.resources import files
 
 
 def get_file_names():
-    dir_path = pkg_resources.resource_filename(
-        "techminer2",
-        "package_data/text_processing/data/*.txt",
-    )
-    file_names = glob.glob(dir_path)
+
+    data_path = files("techminer2.package_data.text_processing.data").joinpath("*.txt")
+    data_path = str(data_path)
+    file_names = glob.glob(data_path)
     return file_names
 
 

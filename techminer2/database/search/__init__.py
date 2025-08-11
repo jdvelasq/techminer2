@@ -1,5 +1,4 @@
 """Search functions."""
-
 from .concordant_documents import ConcordantDocuments
 from .concordant_mapping import ConcordantMapping
 from .concordant_processed_contexts import ConcordantProcessedContexts

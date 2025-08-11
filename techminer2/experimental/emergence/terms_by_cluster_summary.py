@@ -44,8 +44,9 @@ Example:
 """
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.experimental.emergence.mixins import RecursiveClusteringMixin
-from techminer2.packages.networks.co_occurrence.descriptors import \
-    TermsByClusterSummary as ClassicalTermsByClusterSummary
+from techminer2.packages.networks.co_occurrence.descriptors import (
+    TermsByClusterSummary as ClassicalTermsByClusterSummary,
+)
 
 
 class TermsByClusterSummary(

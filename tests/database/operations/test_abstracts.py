@@ -11,6 +11,10 @@
 # Check abstrats highlight
 """
 Example:
+    >>> import shutil
+    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
+    'examples/fintech/data/processed/database.csv.zip'
+
     >>> import textwrap
     >>> import pandas as pd
     >>> from techminer2.database.operators import TokenizeOperator
@@ -57,10 +61,10 @@ Example:
     THE_CONTEMPORANEOUS_STOCK_RETURNS of INCUMBENT_RETAIL_BANKS . conclusions :
     although THESE_RESULTS suggest COMPLEMENTARITY between FINTECH and
     TRADITIONAL_BANKING , we note that OUR_RESULTS at THE_BANKING_INDUSTRY_LEVEL are
-    not statistically significant , and THAT_THE_COEFFICIENT_SIGNS for about one
-    third of THE_BANKS are negative , but not statistically significant . since
-    THE_FINTECH_INDUSTRY is young and our SAMPLE_PERIOD short , we can not rule out
-    that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
+    not statistically significant , and that THE_COEFFICIENT signs for
+    ABOUT_ONE_THIRD of THE_BANKS are negative , but not statistically significant .
+    since THE_FINTECH_INDUSTRY is young and our SAMPLE_PERIOD short , we can not
+    rule out that OUR_FINDINGS are spurious . 2017 , the author ( s ) .
 
 
     >>> (

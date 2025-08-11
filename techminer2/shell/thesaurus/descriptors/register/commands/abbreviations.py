@@ -1,14 +1,12 @@
 import pathlib
+from importlib.resources import files
 
-import pkg_resources  # type: ignore
-from colorama import Fore, init
-
-from techminer2.package_data.text_processing import \
-    internal__sort_text_processing_terms
-from techminer2.thesaurus._internals import (
-    internal__load_thesaurus_as_data_frame, internal__print_thesaurus_header)
-
-from .....colorized_input import colorized_input
+from colorama import Fore
+from colorama import init
+from techminer2.package_data.text_processing import internal__sort_text_processing_terms
+from techminer2.shell.colorized_input import colorized_input
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_data_frame
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
 
 
 def execute_abbreviations_command():
@@ -42,10 +40,10 @@ def execute_abbreviations_command():
     new_terms = [t1 for t1, t2 in new_terms if t2 > 2]
 
     # insertion
-
-    data_path = pathlib.Path("package_data/text_processing/data/known_noun_phrases.txt")
+    data_path = files("techminer2.package_data.text_processing.data").joinpath(
+        "known_noun_phrases.txt"
+    )
     data_path = str(data_path)
-    data_path = pkg_resources.resource_filename("techminer2", data_path)
 
     # count the number of lines of the datapath file
     with open(data_path, "r", encoding="utf-8") as file:

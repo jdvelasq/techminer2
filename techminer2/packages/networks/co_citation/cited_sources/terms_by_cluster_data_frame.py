@@ -43,9 +43,10 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from .._internals.terms_by_cluster_data_frame import \
-    TermsByClusterDataFrame as InternalTermsByClusterDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_citation._internals.terms_by_cluster_data_frame import (
+    TermsByClusterDataFrame as InternalTermsByClusterDataFrame,
+)
 
 
 class TermsByClusterDataFrame(

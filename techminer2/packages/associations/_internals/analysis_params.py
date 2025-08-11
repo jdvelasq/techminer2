@@ -7,7 +7,6 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """Analysis Params for Basic Plots."""
-
 from dataclasses import dataclass
 from typing import Optional
 

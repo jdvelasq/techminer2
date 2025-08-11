@@ -29,9 +29,8 @@ Example:
 
 """
 import plotly.graph_objects as go
-
-from ..._internals.mixins import ParamsMixin
-from .rpys_frame import RPYSDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.rpys.rpys_frame import RPYSDataFrame
 
 
 class RPYSPlot(

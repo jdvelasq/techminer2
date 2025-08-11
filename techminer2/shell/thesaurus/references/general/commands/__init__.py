@@ -1,5 +1,4 @@
 """Commands"""
-
 from .apply import execute_apply_command
 from .initialize import execute_initialize_command
 from .integrity import execute_integrity_command

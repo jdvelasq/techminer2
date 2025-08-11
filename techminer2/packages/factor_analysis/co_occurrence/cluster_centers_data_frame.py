@@ -65,8 +65,12 @@ Cluster Centers Frame
 
 
 """
-from .terms_by_dimension_data_frame import terms_by_dimension_frame
-from .terms_to_cluster_mapping import terms_to_cluster_mapping
+from techminer2.packages.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+    terms_by_dimension_frame,
+)
+from techminer2.packages.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
+    terms_to_cluster_mapping,
+)
 
 
 def cluster_centers_frame(
@@ -147,6 +151,10 @@ def cluster_centers_frame(
 
     n_clusters = len(set(t2c_mapping.values()))
     embedding = embedding.iloc[:, :n_clusters]
+    embedding["cluster"] = embedding.index.map(t2c_mapping)
+    embedding = embedding.groupby("cluster").mean()
+
+    return embedding
     embedding["cluster"] = embedding.index.map(t2c_mapping)
     embedding = embedding.groupby("cluster").mean()
 

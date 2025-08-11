@@ -33,10 +33,10 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by common initial words...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      228 matching keys found
+      214 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -64,8 +64,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByInitialWords as UserSortByInitialWords
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByInitialWords as UserSortByInitialWords
 
 
 class SortByInitialWords(

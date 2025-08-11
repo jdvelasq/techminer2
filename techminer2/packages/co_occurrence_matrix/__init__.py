@@ -1,5 +1,4 @@
 """Co-occurrence matrix."""
-
 from .bubble_plot import BubblePlot
 from .data_frame import DataFrame
 from .heatmap import Heatmap

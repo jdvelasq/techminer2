@@ -5,12 +5,11 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import pathlib
 
 import pandas as pd  # type: ignore
 
-from ...._dtypes import DTYPES
+from techminer2._dtypes import DTYPES
 
 
 def internal__delete_field(

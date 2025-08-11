@@ -5,16 +5,19 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import glob
 import os
-from typing import Dict, List, Optional, Tuple
+from typing import Dict
+from typing import List
+from typing import Optional
+from typing import Tuple
 
 import numpy as np
 import pandas as pd  # type: ignore
 
-from ....thesaurus._internals.load_thesaurus_as_mapping import \
-    internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
+)
 
 
 def internal__extract_country(params):

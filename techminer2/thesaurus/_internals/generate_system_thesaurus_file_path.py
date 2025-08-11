@@ -6,14 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
 import pathlib
-
-import pkg_resources  # type: ignore
+from importlib.resources import files
 
 
 def internal__generate_system_thesaurus_file_path(thesaurus_file):
-    internal_file_path = pathlib.Path("package_data/thesaurus/") / thesaurus_file
-    internal_file_path = str(internal_file_path)
-    file_path = pkg_resources.resource_filename("techminer2", internal_file_path)
+
+    file_path = files("techminer2.package_data.thesaurus").joinpath(thesaurus_file)
+    file_path = str(file_path)
     return file_path

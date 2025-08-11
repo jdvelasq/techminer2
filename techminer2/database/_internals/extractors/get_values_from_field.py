@@ -5,8 +5,9 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
-from ..io import internal__load_filtered_records_from_database
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 def internal__get_values_from_field(params):
@@ -21,5 +22,7 @@ def internal__get_values_from_field(params):
     data_frame = data_frame.drop_duplicates()
     data_frame = data_frame.reset_index(drop=True)
     data_frame = data_frame.rename(columns={field: "term"})
+
+    return data_frame
 
     return data_frame

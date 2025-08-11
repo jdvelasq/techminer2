@@ -14,9 +14,9 @@ import copy
 import sys
 
 import numpy as np
-
-from .....database._internals.io import \
-    internal__load_filtered_records_from_database
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 # ------------------------------------------------------------------------------

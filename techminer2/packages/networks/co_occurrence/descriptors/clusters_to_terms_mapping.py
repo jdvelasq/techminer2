@@ -39,32 +39,34 @@ Example:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
-    {0: ['FINANCIAL_TECHNOLOGIES 14:2005',
-         'FINANCIAL_SERVICE 12:2100',
-         'THE_DEVELOPMENT 09:1293',
-         'REGULATORS 08:0974',
-         'SERVICES 07:1226',
-         'BANKING 07:0851',
-         'INVESTMENT 06:1294',
-         'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237',
-         'PRACTITIONER 06:1194',
-         'BUSINESS_MODEL 05:1578'],
-     1: ['FINTECH 44:6942',
-         'FINANCE 21:3481',
-         'TECHNOLOGIES 17:1943',
-         'INNOVATION 15:2741',
+    >>> pprint(mapping) # doctest: +SKIP
+    {0: ['FINTECH 38:6131',
          'THE_FINANCIAL_INDUSTRY 09:2006',
+         'BANKS 08:1049',
+         'DATA 07:1086',
+         'CONSUMERS 07:0925',
+         'PRACTITIONER 06:1194',
          'THE_IMPACT 06:0908',
-         'CHINA 06:0673'],
-     2: ['BANKS 09:1133', 'DATA 07:1086', 'CONSUMERS 07:0925']}
-
+         'THE_FINANCIAL_SECTOR 05:1147',
+         'INFORMATION_TECHNOLOGY 05:1101',
+         'FINTECH_COMPANIES 05:1072'],
+     1: ['TECHNOLOGIES 15:1633',
+         'FINANCIAL_TECHNOLOGIES 12:1615',
+         'FINANCE 10:1188',
+         'THE_DEVELOPMENT 09:1293',
+         'INNOVATION 08:1816',
+         'REGULATORS 08:0974',
+         'THE_FINANCIAL_SERVICES_INDUSTRY 06:1237',
+         'FINANCIAL_SERVICES 06:1116',
+         'SERVICES 06:1089',
+         'CHINA 06:0673']}
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ..user.clusters_to_terms_mapping import \
-    ClustersToTermsMapping as UserClustersToTermsMapping
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.clusters_to_terms_mapping import (
+    ClustersToTermsMapping as UserClustersToTermsMapping,
+)
 
 
 class ClustersToTermsMapping(

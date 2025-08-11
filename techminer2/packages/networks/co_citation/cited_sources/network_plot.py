@@ -56,8 +56,10 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from .._internals.network_plot import NetworkPlot as InternalNetworkPlot
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_citation._internals.network_plot import (
+    NetworkPlot as InternalNetworkPlot,
+)
 
 
 class NetworkPlot(

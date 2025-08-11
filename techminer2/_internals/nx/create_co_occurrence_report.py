@@ -13,26 +13,25 @@ Network Report
 
 
 """
-import os
 import os.path
 import textwrap
 from collections import defaultdict
 
 import pandas as pd  # type: ignore
 
-# from ...search.concordances import concordances_from_records
-from ...thesaurus._internals.load_thesaurus_as_mapping import \
-    internal__load_thesaurus_as_mapping
-from ..utils.utils_format_prompt_for_records import \
-    _utils_format_prompt_for_records
-from ..utils.utils_format_report_for_records import \
-    _utils_format_report_for_records
-from ..utils.utils_make_report_dir import _utils_make_report_dir
-from .create_clusters_to_terms_mapping import \
-    internal__create_clusters_to_terms_mapping
-
-# from ...database.load.load__database import load__filtered_database
-
+from techminer2._internals.nx.create_clusters_to_terms_mapping import (
+    internal__create_clusters_to_terms_mapping,
+)
+from techminer2._internals.utils.utils_format_prompt_for_records import (
+    _utils_format_prompt_for_records,
+)
+from techminer2._internals.utils.utils_format_report_for_records import (
+    _utils_format_report_for_records,
+)
+from techminer2._internals.utils.utils_make_report_dir import _utils_make_report_dir
+from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+    internal__load_thesaurus_as_mapping,
+)
 
 TEXTWRAP_WIDTH = 73
 
@@ -447,6 +446,11 @@ def __generate_conclusions_prompt(
         )
 
         file_name = f"{cluster}_conclusions_prompt.txt"
+        file_path = os.path.join(root_dir, "reports", report_dir, file_name)
+        with open(file_path, "w", encoding="utf-8") as file:
+            print(prompt, file=file)
+
+        print(f"--INFO-- The file '{file_path}' was created.")
         file_path = os.path.join(root_dir, "reports", report_dir, file_name)
         with open(file_path, "w", encoding="utf-8") as file:
             print(prompt, file=file)

@@ -56,9 +56,10 @@ Example:
 
 
 """
-from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.clusters_to_terms_mapping import \
-    ClustersToTermsMapping as UserClustersToTermsMapping
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.clusters_to_terms_mapping import (
+    ClustersToTermsMapping as UserClustersToTermsMapping,
+)
 
 
 class ClustersToTermsMapping(

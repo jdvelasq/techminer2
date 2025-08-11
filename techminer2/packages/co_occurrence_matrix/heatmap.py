@@ -57,9 +57,9 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from ..._internals.plots.internal__heatmap import internal__heatmap
-from .matrix_data_frame import MatrixDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.plots.internal__heatmap import internal__heatmap
+from techminer2.packages.co_occurrence_matrix.matrix_data_frame import MatrixDataFrame
 
 
 class Heatmap(

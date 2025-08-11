@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
 import sys
 
 
@@ -14,8 +13,7 @@ import sys
 def internal__preprocess_countries(root_directory):
     """:meta private:"""
 
-    from techminer2.thesaurus.countries import (ApplyThesaurus,
-                                                InitializeThesaurus)
+    from techminer2.thesaurus.countries import ApplyThesaurus, InitializeThesaurus
 
     sys.stderr.write("INFO  Creating 'countries' column\n")
     sys.stderr.flush()

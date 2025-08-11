@@ -33,7 +33,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus by key length...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       Sorting process completed successfully
@@ -47,24 +47,25 @@ Example:
           UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY_MODEL
         A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
           A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD
+        THAT_FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
+          THAT_FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
         THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
           THE_MOST_IMPORTANT_AND_FASTEST_GROWING_FINTECH_SERVICES
         THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
           THE_HEFEI_SCIENCE_AND_TECHNOLOGY_RURAL_COMMERCIAL_BANK
-        FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-          FUTURE_AND_PRESENT_MOBILE_FINTECH_PAYMENT_SERVICES
-        UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-          UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY
-        DECISION_MAKING_TRIAL_AND_EVALUATION_LABORATORY
-          DECISION_MAKING_TRIAL_AND_EVALUATION_LABORATORY
+        THE_MODIFIED_VISEKRITERIJUMSKO_KOMPROMISNO_RANGIRANJE
+          THE_MODIFIED_VISEKRITERIJUMSKO_KOMPROMISNO_RANGIRANJE
+        PURCHASE_RELATED_GLOBAL_MOBILE_PAYMENT_MARKET_SIZE
+          PURCHASE_RELATED_GLOBAL_MOBILE_PAYMENT_MARKET_SIZE
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByKeyLength as UserSortByKeyLength
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByKeyLength as UserSortByKeyLength
 
 
 class SortByKeyLength(

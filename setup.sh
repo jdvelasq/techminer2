@@ -19,7 +19,7 @@ pip3 install --quiet \
     sphinx-intl \
     sphinx-toggleprompt
 
-python3 -m spacy download en_core_web_sm
+python3 -m spacy download en_core_web_lg
 python3 -m nltk.downloader averaged_perceptron_tagger
 python3 -m nltk.downloader punkt
 

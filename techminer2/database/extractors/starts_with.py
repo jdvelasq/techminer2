@@ -49,7 +49,6 @@ Example:
 
 
 """
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.extractors.starts_with import internal__starts_with
 

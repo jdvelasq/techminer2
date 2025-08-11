@@ -89,8 +89,12 @@ Manifold Terms by Dimensions Map
 
 
 """
-from .._internals.manifold_2d_map import manifold_2d_map
-from .terms_by_dimension_dataframe import terms_by_dimension_frame
+from techminer2.packages.factor_analysis._internals.manifold_2d_map import (
+    manifold_2d_map,
+)
+from techminer2.packages.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+    terms_by_dimension_frame,
+)
 
 
 def manifold_terms_by_dimension_map(

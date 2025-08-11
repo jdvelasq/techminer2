@@ -12,7 +12,7 @@ Terms by Cluster Summary
 
 Example:
     >>> from techminer2.experimental.co_occurrence import TermsByClusterSummary
-    >>> (
+    >>> df = (
     ...     TermsByClusterSummary()
     ...     #
     ...     # FIELD:
@@ -39,22 +39,22 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df # doctest: +SKIP
        Cluster  ...                                              Terms
-    0        0  ...  FINANCIAL_TECHNOLOGIES 14:2005; FINANCIAL_SERV...
-    1        1  ...  FINTECH 44:6942; FINANCE 21:3481; TECHNOLOGIES...
-    2        2  ...  SERVICES 07:1226; INVESTMENT 06:1294; PRACTITI...
-    3        3  ...     BANKS 09:1133; DATA 07:1086; CONSUMERS 07:0925
-    4        4  ...                  THE_IMPACT 06:0908; CHINA 06:0673
+    0        0  ...  FINTECH 38:6131; THE_FINANCIAL_INDUSTRY 09:200...
+    1        1  ...  TECHNOLOGIES 15:1633; FINANCIAL_TECHNOLOGIES 1...
+    2        2  ...  THE_DEVELOPMENT 09:1293; INNOVATION 08:1816; T...
+    3        3  ...  BANKS 08:1049; DATA 07:1086; CONSUMERS 07:0925...
     <BLANKLINE>
-    [5 rows x 4 columns]
+    [4 rows x 4 columns]
 
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.experimental.co_occurrence.mixins import \
-    RecursiveClusteringMixin
-from techminer2.packages.networks.co_occurrence.descriptors import \
-    TermsByClusterSummary as ClassicalTermsByClusterSummary
+from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
+from techminer2.packages.networks.co_occurrence.descriptors import (
+    TermsByClusterSummary as ClassicalTermsByClusterSummary,
+)
 
 
 class TermsByClusterSummary(

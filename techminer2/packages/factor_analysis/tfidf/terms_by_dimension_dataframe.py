@@ -58,7 +58,7 @@ Terms by Dimension Frane
 """
 import pandas as pd  # type: ignore
 
-from ....database.metrics.tfidf.data_frame import DataFrame as TfIdfDataFrame
+from techminer2.database.metrics.tfidf.data_frame import DataFrame as TfIdfDataFrame
 
 
 def terms_by_dimension_frame(

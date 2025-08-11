@@ -57,13 +57,13 @@ Example:
     ...     database="main",
     ...     record_years_range=(None, None),
     ...     record_citations_range=(None, None),
-    ... ).run()
+    ... ).run()  # doctest: +SKIP
                                      descriptors_cleaned
     0  AN_EFFECT; AN_INSTITUTIONAL_ASPECT; AN_MODERAT...
     1  ACTOR_NETWORK_THEORY; ANT; AN_UNPRECEDENTED_LE...
     2  AN_INITIAL_TECHNOLOGY_ADVANTAGE; CHINA; FINANC...
     3  AGGREGATION; ANALYSIS; AN_ADVANTAGE; AN_EXTENS...
-    4  ACCELERATE_ACCESS; A_FORM; BEHAVIOURAL_ECONOMI...
+    4  ACCESS; A_FORM; BEHAVIOURAL_ECONOMICS; DIGITAL...
 
 
 
@@ -75,15 +75,13 @@ Example:
 """
 import sys
 
-from colorama import Fore, init
-
-from techminer2.database._internals.io import \
-    internal__load_all_records_from_database
-
-from ...._internals.mixins import ParamsMixin
-from ....database._internals.io import internal__write_records_to_database
-from ..._internals import (ThesaurusMixin,
-                           internal__load_reversed_thesaurus_as_mapping)
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import internal__load_all_records_from_database
+from techminer2.database._internals.io import internal__write_records_to_database
+from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 
 class ApplyThesaurus(

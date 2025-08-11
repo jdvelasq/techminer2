@@ -16,13 +16,10 @@ TODO: Thematic Document Classification
 
 """
 # import pandas as pd  # type: ignore
-
 # from ... import vantagepoint
 # from ...make_report_dir import make_report_dir
 # from ...records_lib import create_records_report, read_records
 # from ..matrix import co_occurrence_matrix
-
-
 # def thematic_document_classification(
 #     tf_idf_matrix,
 #     estimator,
@@ -30,18 +27,13 @@ TODO: Thematic Document Classification
 #     root_dir="./",
 # ):
 #     """Document Thematic Analysis."""
-
 #     def extract_records_per_cluster(dt_matrix):
 #         """Creates a dict of records per cluster."""
-
 #         clusters = dt_matrix["CLUSTER"].drop_duplicates().to_list()
-
 #         records_main = read_records(
 #             root_dir=root_dir,
 #         )
-
 #         records_per_cluster = {}
-
 #         for cluster in clusters:
 #             articles_in_cluster = dt_matrix[dt_matrix.CLUSTER == cluster].index.to_list()
 #             clustered_records = records_main[records_main.article.isin(articles_in_cluster)].copy()
@@ -49,14 +41,10 @@ TODO: Thematic Document Classification
 #                 ["global_citations", "local_citations"],
 #                 ascending=[False, False],
 #             )
-
 #             records_per_cluster[cluster] = clustered_records.copy()
-
 #         return records_per_cluster
-
 #     def create_report(records_per_cluster):
 #         """Creates the report."""
-
 #         for cluster in sorted(records_per_cluster.keys()):
 #             records = records_per_cluster[cluster]
 #             report_filename = f"{cluster}_abstracts_report.txt"
@@ -66,19 +54,13 @@ TODO: Thematic Document Classification
 #                 records=records,
 #                 report_filename=report_filename,
 #             )
-
 #     dt_matrix = tf_idf_matrix.table_.copy()
 #     estimator.fit(dt_matrix)
 #     dt_matrix["CLUSTER"] = [f"CL_{label:>02d}" for label in estimator.labels_]
-
 #     make_report_dir(root_dir, report_dir)
-
 #     records_per_cluster = extract_records_per_cluster(dt_matrix)
 #     create_report(records_per_cluster)
-
 #     cooc_matrix = co_occurrence_matrix()
-
-
 # class _ThematicAnalysis:
 #     def __init__(
 #         self,
@@ -126,7 +108,6 @@ TODO: Thematic Document Classification
 #         self._documents = None
 #         #
 #         self._run()
-
 #     def _run(self):
 #         self._build_tf_idf_matrix()
 #         self._apply_clustering()
@@ -134,21 +115,18 @@ TODO: Thematic Document Classification
 #         self._compute_themes()
 #         self._obtain_documents()
 #         self._compute_partitions()
-
 #     def _compute_partitions(self):
 #         value_counts = self._tfidf_matrix.CLUSTER.value_counts()
 #         value_counts.index = [
 #             "CL_{:>02d}".format(i) for i in range(len(value_counts))
 #         ]
 #         self._partitions = value_counts
-
 #     def _obtain_documents(self):
 #         documents = self._tfidf_matrix[["CLUSTER"]].copy()
 #         documents = documents.reset_index(drop=False)
 #         documents = documents.groupby("CLUSTER").agg(list)
 #         documents.columns = ["article"]
 #         self._documents = documents
-
 #     def _compute_themes(self):
 #         themes = {}
 #         for cluster in self._clusters.columns:
@@ -159,16 +137,12 @@ TODO: Thematic Document Classification
 #                 )
 #                 if value > 0
 #             ]
-
 #         for theme in themes:
 #             themes[theme].sort(key=lambda x: x[0], reverse=True)
-
 #         for theme in themes:
 #             themes[theme] = [word for _, word in themes[theme]]
-
 #         self._themes = pd.DataFrame.from_dict(themes, orient="index").T
 #         self._themes = self._themes.fillna("")
-
 #     def _compute_clusters(self):
 #         self._tfidf_matrix = self._tfidf_matrix.assign(
 #             CLUSTER=self.clustering_method.labels_
@@ -179,10 +153,8 @@ TODO: Thematic Document Classification
 #             "TH_{:>02d}".format(i) for i in range(n_clusters)
 #         ]
 #         self._clusters = self._clusters.transpose()
-
 #     def _apply_clustering(self):
 #         self.clustering_method.fit(self._tfidf_matrix)
-
 #     def _build_tf_idf_matrix(self):
 #         self._tfidf_matrix = vantagepoint.analyze.tfidf.tfidf_matrix(
 #             criterion=self.criterion,
@@ -201,20 +173,15 @@ TODO: Thematic Document Classification
 #             sublinear_tf=self.sublinear_tf,
 #             **self.filters,
 #         )
-
 #     ######
-
 #     @property
 #     def partitions_(self):
 #         """Returns partitions"""
 #         return self._partitions
-
 #     @property
 #     def themes_(self):
 #         """Returns themes"""
 #         return self._themes
-
-
 # def thematic_analysis_of_contexts(
 #     criterion,
 #     topic_occ_min=None,
@@ -230,7 +197,6 @@ TODO: Thematic Document Classification
 #     **filters,
 # ):
 #     """Thematic Analysis of Elementary Contexts."""
-
 #     return _ThematicAnalysis(
 #         criterion=criterion,
 #         topic_occ_min=topic_occ_min,

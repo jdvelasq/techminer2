@@ -214,11 +214,13 @@ Example:
 
 
 """
-from ..._internals.mixins import ParamsMixin
-from ...database._internals.io import \
-    internal__load_filtered_records_from_database
-from ...database.metrics.performance import \
-    DataFrame as PerformanceMetricsDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
+from techminer2.database.metrics.performance import (
+    DataFrame as PerformanceMetricsDataFrame,
+)
 
 
 class MatrixDataFrame(

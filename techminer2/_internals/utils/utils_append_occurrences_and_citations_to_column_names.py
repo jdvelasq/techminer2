@@ -2,14 +2,15 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=line-too-long
 """
-This module implements 
+This module implements
 
 
 
 
 """
-from .utils_compute_occurrences_and_citations import \
-    _utils_compute_occurrences_and_citations
+from techminer2._internals.utils.utils_compute_occurrences_and_citations import (
+    _utils_compute_occurrences_and_citations,
+)
 
 
 def _utils_append_occurrences_and_citations_to_column_names(

@@ -39,8 +39,7 @@ Example:
 
 """
 import pandas as pd  # type: ignore
-
-from .concordant_raw_contexts import ConcordantRawContexts
+from techminer2.database.search.concordant_raw_contexts import ConcordantRawContexts
 
 
 class ConcordantProcessedContexts(

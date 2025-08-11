@@ -1,4 +1,6 @@
-from colorama import Fore, Style, init
+from colorama import Fore
+from colorama import init
+from colorama import Style
 
 init(autoreset=True)
 

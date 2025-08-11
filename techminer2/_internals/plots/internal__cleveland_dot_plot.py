@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-few-public-methods
 """Cleveland Dot Plot Mixin."""
-
 import plotly.express as px  # type: ignore
 
 MARKER_COLOR = "#7793a5"

@@ -1,5 +1,4 @@
 """Public API for countries thesaurus."""
-
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.explode_keys import ExplodeKeys
 from .general.initialize_thesaurus import InitializeThesaurus

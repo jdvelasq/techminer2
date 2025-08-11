@@ -1,5 +1,5 @@
-from ......thesaurus.descriptors import ReplaceLastWord
-from .....colorized_input import colorized_input
+from techminer2.shell.colorized_input import colorized_input
+from techminer2.thesaurus.descriptors import ReplaceLastWord
 
 
 def execute_last_command():

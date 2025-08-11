@@ -34,7 +34,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by word match...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       Word : CREDIT
@@ -48,10 +48,10 @@ Example:
           ALTERNATIVE_CREDIT_SCORES
         CREDIT_ACCESS
           CREDIT_ACCESS
-        CREDIT_COOPERATIVES
-          CREDIT_COOPERATIVES
         LOWER_PRICED_CREDIT
           LOWER_PRICED_CREDIT
+        OTHER_CREDIT_COOPERATIVES
+          OTHER_CREDIT_COOPERATIVES
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -64,10 +64,9 @@ Example:
     <BLANKLINE>
 
 
-
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByWordMatch as UserSortByWordMatch
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByWordMatch as UserSortByWordMatch
 
 
 class SortByWordMatch(

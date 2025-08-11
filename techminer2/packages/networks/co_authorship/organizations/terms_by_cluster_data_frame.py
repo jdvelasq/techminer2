@@ -45,9 +45,10 @@ Example:
     [4 rows x 10 columns]
 
 """
-from ....._internals.mixins import ParamsMixin
-from ...co_occurrence.user.terms_by_cluster_data_frame import \
-    TermsByClusterDataFrame as UserTermsByClusterDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.packages.networks.co_occurrence.user.terms_by_cluster_data_frame import (
+    TermsByClusterDataFrame as UserTermsByClusterDataFrame,
+)
 
 
 class TermsByClusterDataFrame(

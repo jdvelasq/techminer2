@@ -1,11 +1,10 @@
 import os
 
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
 from openai import OpenAI
-
 from techminer2.database.search import ConcordantProcessedContexts
-
-from ....colorized_input import colorized_input
+from techminer2.shell.colorized_input import colorized_input
 
 PROMPT = """
 Using the contexts presented below, determine if the terms <<{pattern_1}>> and <<{pattern_2}>> are synonyms or not,

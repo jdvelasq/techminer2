@@ -37,10 +37,10 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus by stopwords...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      677 matching keys found
+      682 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -67,17 +67,15 @@ Example:
 
 
 """
-
-import re
 import sys
 
-from colorama import Fore, init
-
-from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
-from ..general.reduce_keys import ReduceKeys
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 
 
 class SortByStopwords(

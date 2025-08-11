@@ -1,5 +1,4 @@
 """Message output."""
-
 import sys
 
 COUNTER = 0

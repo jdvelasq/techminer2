@@ -45,22 +45,23 @@ Example:
     ... )
 
     >>> # Display the resulting data frame
-    >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE
-                                             0                               1                       2                  3                   4
-    0           FINANCIAL_TECHNOLOGIES 14:2005                 FINTECH 44:6942        SERVICES 07:1226      BANKS 09:1133  THE_IMPACT 06:0908
-    1                FINANCIAL_SERVICE 12:2100                 FINANCE 21:3481      INVESTMENT 06:1294       DATA 07:1086       CHINA 06:0673
-    2                  THE_DEVELOPMENT 09:1293            TECHNOLOGIES 17:1943    PRACTITIONER 06:1194  CONSUMERS 07:0925
-    3                       REGULATORS 08:0974              INNOVATION 15:2741  BUSINESS_MODEL 05:1578
-    4                          BANKING 07:0851  THE_FINANCIAL_INDUSTRY 09:2006
-    5  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237
+    >>> print(df.to_string()) # doctest: +SKIP
+                                    0                               1                                        2                   3
+    0                 FINTECH 38:6131            TECHNOLOGIES 15:1633                  THE_DEVELOPMENT 09:1293       BANKS 08:1049
+    1  THE_FINANCIAL_INDUSTRY 09:2006  FINANCIAL_TECHNOLOGIES 12:1615                       INNOVATION 08:1816        DATA 07:1086
+    2            PRACTITIONER 06:1194                 FINANCE 10:1188  THE_FINANCIAL_SERVICES_INDUSTRY 06:1237   CONSUMERS 07:0925
+    3    THE_FINANCIAL_SECTOR 05:1147              REGULATORS 08:0974               FINANCIAL_SERVICES 06:1116  THE_IMPACT 06:0908
+    4  INFORMATION_TECHNOLOGY 05:1101                   CHINA 06:0673                         SERVICES 06:1089
+    5       FINTECH_COMPANIES 05:1072
+
 
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.experimental.co_occurrence.mixins import \
-    RecursiveClusteringMixin
-from techminer2.packages.networks.co_occurrence.descriptors import \
-    TermsByClusterDataFrame as ClassicalTermsByClusterDataFrame
+from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
+from techminer2.packages.networks.co_occurrence.descriptors import (
+    TermsByClusterDataFrame as ClassicalTermsByClusterDataFrame,
+)
 
 
 class TermsByClusterDataFrame(

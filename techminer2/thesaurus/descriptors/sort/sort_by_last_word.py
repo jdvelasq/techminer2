@@ -63,8 +63,8 @@ Example:
 
 
 """
-from ...._internals.mixins import ParamsMixin
-from ...user import SortByLastWords as UserSortByLastWords
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus.user import SortByLastWords as UserSortByLastWords
 
 
 class SortByLastWords(

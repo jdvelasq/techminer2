@@ -1,5 +1,4 @@
 """Co-occurrence network analysis."""
-
 from .clusters_to_terms_mapping import ClustersToTermsMapping
 from .network_metrics import NetworkMetrics
 from .network_plot import NetworkPlot

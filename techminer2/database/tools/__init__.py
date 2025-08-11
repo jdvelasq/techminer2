@@ -1,5 +1,4 @@
 """Database management functions"""
-
 from .collect_descriptors import CollectDescriptors
 from .coverage import Coverage
 from .extract_copyright_text import ExtractCopyrightText

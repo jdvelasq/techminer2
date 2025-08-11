@@ -5,15 +5,13 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import sys
 
 
 def internal__preprocess_abbr_source_title(root_dir):
     """:meta private:"""
 
-    from techminer2.database._internals.operators.fillna import \
-        internal__fillna
+    from techminer2.database._internals.operators.fillna import internal__fillna
 
     sys.stderr.write("INFO  Processing 'abbr_source_title' column\n")
     sys.stderr.flush()

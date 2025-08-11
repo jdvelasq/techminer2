@@ -6,7 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Create WoS style article column in databases."""
-
 import pathlib
 import sys
 

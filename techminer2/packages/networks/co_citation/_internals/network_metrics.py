@@ -39,16 +39,23 @@ COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
 MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
-from ....._internals.mixins import ParamsMixin
-from ....._internals.nx.compute_network_metrics import \
-    internal__compute_network_metrics
-from .create_nx_graph import internal__create_nx_graph
+from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.nx.compute_network_metrics import (
+    internal__compute_network_metrics,
+)
+from techminer2.packages.networks.co_citation._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class NetworkMetrics(
     ParamsMixin,
 ):
     """:meta private:"""
+
+    def run(self):
+        nx_graph = internal__create_nx_graph(self.params)
+        return internal__compute_network_metrics(params=self.params, nx_graph=nx_graph)
 
     def run(self):
         nx_graph = internal__create_nx_graph(self.params)

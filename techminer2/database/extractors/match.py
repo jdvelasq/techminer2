@@ -40,7 +40,6 @@ Example:
     ['LENDING', 'LENDINGCLUB', 'LITERATURE_REVIEW']
 
 """
-
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.extractors.match import internal__match
 

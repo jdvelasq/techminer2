@@ -1,5 +1,4 @@
 """Constants for techminer2."""
-
 # Define the names of databases
 CITED_BY_DATABASE = "cited_by"
 MAIN_DATABASE = "main"

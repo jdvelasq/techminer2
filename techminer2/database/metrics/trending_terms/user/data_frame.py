@@ -86,10 +86,11 @@ Example:
 #
 # If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 #
-
-from ....._internals.mixins import ParamsMixin
-from ...performance import DataFrame as PerformanceMetricsDataFrame
-from ...terms_by_year import DataFrame as TermsByYearDataFrame
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.database.metrics.performance import (
+    DataFrame as PerformanceMetricsDataFrame,
+)
+from techminer2.database.metrics.terms_by_year import DataFrame as TermsByYearDataFrame
 
 
 class DataFrame(

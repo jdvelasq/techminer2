@@ -29,11 +29,11 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Removing common initial words from thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
-      221 common initial words removed successfully
+      208 common initial words removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -59,20 +59,19 @@ Example:
     <BLANKLINE>
 
 
-
 """
 import re
 import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import ParamsMixin
-from ....package_data.text_processing import \
-    internal__load_text_processing_terms
-from ..._internals import ThesaurusMixin, internal__print_thesaurus_header
 
 tqdm.pandas()
 

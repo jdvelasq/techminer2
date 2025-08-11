@@ -5,12 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-
 import networkx as nx  # type: ignore
 import numpy as np
 
-from .....database._internals.io import \
-    internal__load_filtered_records_from_database
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+)
 
 
 # -------------------------------------------------------------------------

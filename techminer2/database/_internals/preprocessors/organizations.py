@@ -6,13 +6,12 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
-
 import sys
 
 
 def internal__preprocess_organizations(root_directory):
 
-    from ....thesaurus.organizations import ApplyThesaurus, InitializeThesaurus
+    from techminer2.thesaurus.organizations import ApplyThesaurus, InitializeThesaurus
 
     sys.stderr.write("INFO  Creating 'organizations' column\n")
     sys.stderr.flush()

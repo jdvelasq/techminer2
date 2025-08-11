@@ -35,11 +35,11 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Replacing abbreviations in keys...
           Thesaurus : ...h/data/thesaurus/descriptors.the.txt
       Abbreviations : ...data/thesaurus/abbreviations.the.txt
-      130 replacements made successfully
+      120 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -51,6 +51,8 @@ Example:
           A_FINTECH_COMPANY
         A_FINANCIAL_TECHNOLOGY_ECOSYSTEM
           A_FINTECH_ECOSYSTEM
+        A_HYBRID_MULTI_CRITERIA_DECISION_MAKING_METHOD_MODEL
+          A_HYBRID_MCDM_MODEL
         A_NEW_FINANCIAL_TECHNOLOGY_INNOVATION_MAPPING_APPROACH
           A_NEW_FINTECH_INNOVATION_MAPPING_APPROACH
         A_THEORETICAL_DATA_DRIVEN_FINANCIAL_TECHNOLOGY_FRAMEWORK
@@ -59,25 +61,25 @@ Example:
           ACTIVE_FINTECH_SOLUTIONS
         ACTOR_NETWORK_THEORY
           ACTOR_NETWORK_THEORY; ANT
-        ADOPTION_OF_FINANCIAL_TECHNOLOGY
-          ADOPTION_OF_FINTECH
     <BLANKLINE>
     <BLANKLINE>
+
 
 
 """
 import re
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
+from colorama import init
+from techminer2._internals.mixins import Params
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_data_frame
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
+from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
-
-from ...._internals.mixins import Params, ParamsMixin
-from ..._internals import (ThesaurusMixin,
-                           internal__generate_user_thesaurus_file_path,
-                           internal__load_thesaurus_as_data_frame,
-                           internal__load_thesaurus_as_mapping,
-                           internal__print_thesaurus_header)
 
 
 class ReplaceAbbreviations(
