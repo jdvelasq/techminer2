@@ -23,7 +23,7 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-     Checking last word in system noun phrases
+    Checking last word in system noun phrases
       Checking process completed successfully
     <BLANKLINE>
     <BLANKLINE>
@@ -72,7 +72,7 @@ def replace_pair(noun_phrases, word1, word2):
 
 def internal__check_noun_phrases(disable_tqdm=False):
 
-    sys.stderr.write(f" Checking last word in system noun phrases\n")
+    sys.stderr.write(f"Checking last word in system noun phrases\n")
     sys.stderr.flush()
 
     noun_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
