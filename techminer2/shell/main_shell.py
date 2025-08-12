@@ -15,6 +15,7 @@ from techminer2.shell.colorized_prompt import make_colorized_prompt
 from techminer2.shell.database.database_shell import DatabaseShell
 from techminer2.shell.thesaurus.thesaurus_shell import ThesaurusShell
 from techminer2.shell.zotero.zotero_shell import ZoteroShell
+from techminer2.shell.system.system_shell import SystemShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 
@@ -33,6 +34,11 @@ class MainShell(BaseShell):
     def do_thesaurus(self, arg):
         """Manage thesaurus operations."""
         ThesaurusShell().cmdloop()
+        self.do_help(arg)
+
+    def do_system(self, arg):
+        """Manage system operations."""
+        SystemShell().cmdloop()
         self.do_help(arg)
 
     def do_zotero(self, arg):

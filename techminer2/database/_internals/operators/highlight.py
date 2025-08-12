@@ -250,6 +250,7 @@ def clean_all_keywords(terms):
     terms = terms.str.translate(str.maketrans("", "", "\"'#!"))
     terms = terms.str.replace(re.compile(r"\(.*\)"), "", regex=True)
     terms = terms.str.replace(re.compile(r"\[.*\]"), "", regex=True)
+    terms = terms.str.translate(str.maketrans("-", " "))  # added
     terms = terms.str.translate(str.maketrans("_", " "))
     terms = terms.str.lower()
     terms = terms.str.split("; ")
@@ -493,6 +494,12 @@ def report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
     ]
 
     undetected_keywords = [word for word in undetected_keywords if len(word) < 100]
+    undetected_keywords = [term for term in undetected_keywords if "__" not in term]
+
+    for symbol in "!\"#$%&'()*+,-./:;<=>?@[\]^`{|}~":
+        undetected_keywords = [
+            term for term in undetected_keywords if symbol not in term
+        ]
 
     file_path = (
         pathlib.Path(root_directory) / "data/my_keywords/undetected_keywords.txt"

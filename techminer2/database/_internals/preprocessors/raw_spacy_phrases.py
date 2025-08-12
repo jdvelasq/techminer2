@@ -49,20 +49,24 @@ def internal__preprocess_raw_spacy_phrases(root_dir):
         if phrases == []:
             continue
 
-        phrases = [term for term in phrases if "." not in term]
-        phrases = [term for term in phrases if "(" not in term]
-        phrases = [term for term in phrases if ")" not in term]
-        phrases = [term for term in phrases if "[" not in term]
-        phrases = [term for term in phrases if "]" not in term]
-        phrases = [term for term in phrases if "%" not in term]
-        phrases = [term for term in phrases if "&" not in term]
-        phrases = [term for term in phrases if "!" not in term]
-        phrases = [term for term in phrases if "'" not in term]
-        phrases = [term for term in phrases if '"' not in term]
-        phrases = [term for term in phrases if "+" not in term]
-        phrases = [term for term in phrases if "<" not in term]
-        phrases = [term for term in phrases if ">" not in term]
-        phrases = [term for term in phrases if "=" not in term]
+        for symbol in "!\"#$%&'()*+,-./:;<=>?@[\]^`{|}~":
+            phrases = [term for term in phrases if symbol not in term]
+
+        # phrases = [term for term in phrases if "." not in term]
+        # phrases = [term for term in phrases if "(" not in term]
+        # phrases = [term for term in phrases if ")" not in term]
+        # phrases = [term for term in phrases if "[" not in term]
+        # phrases = [term for term in phrases if "]" not in term]
+        # phrases = [term for term in phrases if "%" not in term]
+        # phrases = [term for term in phrases if "&" not in term]
+        # phrases = [term for term in phrases if "!" not in term]
+        # phrases = [term for term in phrases if "'" not in term]
+        # phrases = [term for term in phrases if '"' not in term]
+        # phrases = [term for term in phrases if "+" not in term]
+        # phrases = [term for term in phrases if "<" not in term]
+        # phrases = [term for term in phrases if ">" not in term]
+        # phrases = [term for term in phrases if "=" not in term]
+        # phrases = [term for term in phrases if ":" not in term]
         #
         phrases = [
             term

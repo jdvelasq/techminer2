@@ -33,6 +33,7 @@ which permits unlimited use , distribution and reproduction in any medium so lon
 under exclusive licence to iranian society of environmentalists \( irsen \) and science and research branch , islamic azad university \.$
 series c \( applied statistics \) published by john wiley and sons ltd on behalf of the royal statistical society \.
 european management review published by john wiley and sons ltd on behalf of european academy of management \( euram \) \.
+\. the author \( s \) under exclusive licence to societa italiana di economia \( italian economic association \) \d{4} \.$
 \. sripriya rajamani , robin austin , elena geiger simpson , ratchada jantraporn , suhyun park , karen a monsen \.$
 \. neil jay sehgal , shuo huang , neil mason johnson , john dickerson , devlon jackson , cynthia baur \.$
 \. madhur thakur , eric w maurer , kim ngan tran , anthony tholkes , sripriya rajamani , roli dwivedi \.$
@@ -50,12 +51,15 @@ muhammad ali memon , mohamed hedi karray , agnes letouzey and bernard archimede 
 \. \d{4} , european association for the development of renewable energy , environment and power quality \( ea4epq \) \.
 series c \( applied statistics \) published by john wiley and sons ltd on behalf of royal statistical society$
 proceedings of the \d{2}rd pacific asia conference on information systems : secure ict platform for the 4th industrial revolution
+\. this open access article is distributed under a creative commons attribution \( cc by \) \d\.0 license \.$
 \. this article is categorized under : wind power > economics and policy \. \d{4} wiley periodicals llc \.
+\. the economic history review published by john wiley and sons ltd on behalf of economic history society \.$
 \. production and operations management published by wiley periodicals llc on behalf of production and operations management society \.
 \. joshua fuller , alexey abramov , dana mullin , james beck , philippe lemaitre , elham azizi \.$
 \. felix camirand lemyre , simon levesque , marie pier domingue , klaus herrmann , jean francois ethier \.$
 \. energy science and engineering published by the society of chemical industry and john wiley and sons ltd \.
 \. \d{4} singleton , noble , sanchez vizcaino , dawson , pinchbeck , williams , radford and jones \.$
+\. \d{4} \. the authors license this article under the terms of the creative commons attribution \d\.0 license \.
 this work is written by us government employees and is in the public domain in the us \.$
 \. the editor and contributors severally \d{4} , international bank for reconstruction and development the world bank \.
 \. katie allen , nimish valvi , p joseph gibson , timothy mcfarlane , brian e dixon \.$
@@ -73,10 +77,15 @@ association for the advancement of artificial intelligence \( www \. aaai\.org \
 \d{4} , international organization on 'technical and physical problems of engineering ' \. all rights reserved \.$
 \d{2}th european conference on information systems : beyond digitization facets of socio technical change , ecis \d{4}\.
 \. the editor \( s \) \( ifapplicable \) and the author \( s \) \d{4} \.$
+\. journal of global business and technology , volume \d{1,3} , number \d{1,3} , spring \d{4} .$
+\. journal of engineering education published by wiley periodicals , inc \. on behalf of asee \.$
 \. jake luo , guo qiang zhang , susan wentz , licong cui , rong xu \.$
 \. arriel benis , nissim harel , refael barak barkan , einav srulovici , calanit key \.$
+\. applying artificial intelligence in taiwan fin tech : exploring usage intention of robo advisor service \.
+\. \d{4} the author \( s \) , published by de gruyter , berlin / boston \.$
 \. \d{4} pijush samui , sanjiban sekhar roy , wengang zhang , and y h taguchi \.
 \. \d{4} , academy of sciences of the czech republic , institute of state and law \.
+\. \( \d{4} \) , \( uikten association for information communication technology education and science \) \.
 upon the material in any medium so long as the original work is properly cited \.
 under exclusive licence to european association for predictive , preventive and personalised medicine \( epma \)
 copying or distributing in print or electronic forms without written permission of igi global is prohibited
@@ -90,6 +99,7 @@ copying or distributing in print or electronic forms without written permission 
 \. \d{4} regional energy resources information center \( reric \) , asian institute of technology \.
 \. \d{4} hiba alsaidi and david crowther published under exclusive licence by emerald publishing limited \.
 \. \d{4} bremer , plaisance , walker , bonn , love , perrone and sarker \.$
+\. \d{4} amer \. soc \. heating , ref \. air conditoning eng \. inc \.
 \. \d{4} , association for industry , engineering , and management systems \( aiems \) \.
 \. \( \d{4} \) by association for information systems \( ais \) all rights reserved \.
 under the terms and conditions of the creative commons attribution \( cc by \) license
@@ -109,6 +119,7 @@ learning health systems published by wiley periodicals llc on behalf of universi
 \. giulia pullano , lucila gisele alvarez zuzek , vittoria colizza , shweta bansal \.$
 \. \d{4} the authors , faculty of law , masaryk university and ios press \.
 \. \d{4} tanushri banerjee , arindam banerjee , dhaval maheta , and vivek gupta \.
+\. \d{4} selection and editorial matter , oscar a \. garcia and prashanth kotturi \.
 \. \d{4} , thomas a \. lyson center for civic agriculture and food systems \.
 \. \d{3} , no copyright protection is available for such works under us law \.
 \. \( \d{4} \) , \( iscap information systems and computing academic professionals \) \.
@@ -128,6 +139,7 @@ author \( s \) \( or their employer \( s \) \) \d{4} \.
 \. yasmin abdelaal , michael aupetit , abdelkader baggag , dena al thani \.$
 \. this is an open access article under the cc by 4\.0 license \.
 \. keisuke nakagawa , nuen tsang yang , machelle wilson , peter yellowlees \.$
+\. gupta you\. , agarwal b \. , nautiyal n \. , \d{4} \.$
 \. copy right in bulk will be transferred to ieee by bharati vidyapeeth \.$
 \. benjamin l schooley , abdulaziz ahmed , justine maxwell , sue feldman \.$
 \. author \( s \) \( or their employer \( s \) \) \d{4}$
@@ -163,8 +175,10 @@ and reproduction in any medium , provided the original work is properly cited
 \. \d{4} verein zur forderung des open access publizierens in den quantenwissenschaften \.
 \. \d{4} the authors wind energy published by john wiley and sons ltd$
 \. \d{4} khademi , delir haghighi , lewis , burstein and palmer \.$
+\. \d{4} h \. kent baker , greg filbeck and keith black \.
 \. \d{4} fundacao getulio vargas , escola de direito de sao paulo \.
 \. \d{4} copyright is held by the owner author \( s \) \.
+\. \d{4} copyright held by the owner / author \( s \) \.
 \. \d{4} canadian association of geographers l ' association canadienne des geographes \.
 \. \d{4} by georgetown university , pew case study center , usa \.
 \. \d{4} by dr \. umesh r \. hodeghatta and umesha nayak \.
@@ -173,9 +187,11 @@ and reproduction in any medium , provided the original work is properly cited
 \. \d{4} , university of zagreb , faculty of organization and informatics \.
 \. \d{4} , societa italiana degli economisti \( italian economic association \) \.
 \. \d{4} , russian presidental academy of national economy and public administration \.
+\. \d{4} , journal of economic issues / association for evolutionary economics \.$
 \. \d{4} , facultad de informatica , universidad nacional de la plata \.
 \. \d{4} , cognitione foundation for the dissemination of knowledge and science \.
 2018 antai college of economics and management , shanghai jiao tong university \.$
+. instytut badan gospodarczych / institute of economic research \( poland \) \.
 with in the international federation of operational research societies \( ifors \)
 which permits unrestricted use , distribution , and reproduction in any medium
 this is an open access article under the cc by sa license
@@ -195,10 +211,14 @@ beijing paike culture commu \. co \. , ltd \. \d{4} \.$
 \. icope \d{4} \d{1}th international conference on power engineering , proceedings \.
 \. government work and not under copyright protection in the you\.s \.
 \. downloading of the abstract is permitted for personal use only \.
+\. \d{4} school of law , city university of hong kong \.$
 \. \d{4} international conferences e society \d{4} and mobile learning \d{4} \.
 \. \d{4} int \. j \. manag \. bus \. res \.$
 \. \d{4} fan , wang , huang , liu and hooten \.$
 \. \d{4} danube adria association for automation and manufacturing , daaam \.
+\. \d{4} copyright held by the owner / author \( s \)$
+\. \d{4} china international book trading corp\. \( guoji shudian \) \.
+\. \d{4} by koninklijke brill nv , leiden , the netherlands \.$
 \. \d{4} asociacion cuadernos de economia . todos los derechos reservados \.$
 \. \d{4} , world academy of research in science and engineering \.
 \. \d{4} , national research university , higher school of econoimics \.
@@ -207,8 +227,10 @@ beijing paike culture commu \. co \. , ltd \. \d{4} \.$
 \. \d{4} , japan section of the regional science association international \.
 \. \d{4} , associacao iberica de sistemas e tecnologias de informacao \.
 \. \d{4} , algerian centre for the development of renewable energy \.
+\. \( \d{4} \) , \( social sciences research society \) \.
 \. \( \d{4} \) , \( science and information organization \) .
 \. \( \d{4} \) , \( neutrosophic sets and systems \) \.
+\. \( \d{4} \) , \( brno university of technology \) \.
 \( regional inform \. center for sci \. and technol \. \)
 \( \d{4} \) , \( institut za arhitekturu i urbanizam srbije \)
 world multi conference on systemics , cybernetics and informatics , proceedings
@@ -235,14 +257,21 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. this project was funded by the beijing financial fund \.
 \. references \d+ , tables \d+ , fig \. \d+ \.
 \. no commercial use is permitted unless otherwise expressly granted \.$
+\. emergent telemedicine practice in india : challenge and response \.$
 \. david maddison , katrin rehdanz and heinz welsch \d{4} \.
+\. a \d{4} pranay gupta and t \. mandy tham \.
+\. \d{4} walter de gruyter gmbh , berlin / boston \.$
+\. \d{4} vilnius gediminas technical university \( vgtu \) press \.$
 \. \d{4} qing ye , jin zhou , hong wu \.$
 \. \d{4} publishing house of the higher school of economics \.
 \. \d{4} macmillan publishers limited , part of springer nature \.
 \. \d{4} international business information management association \( ibima \) \.
+\. \d{4} institute for far eastern studies , kyungnam university \.$
 \. \d{4} gheorghe asachi technical university of iasi , romania \.
+\. \d{4} faculty of management , warsaw university of technology \.$
 \. \d{4} editorial board of china offshore oil and gas \.
 \. \d{4} de silva , burstein , jelinek , stranieri \.$
+\. \d{4} certified financial planner board of standards , inc \.
 \. \d{4} by the authors \. licensee esj , italy \.
 \. \d{4} babita singla , kumar shalender and nripendra singh \.
 \. \d{4} asean university network\/southeast asia engineering education development network \.
@@ -256,7 +285,9 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. \d{4} , global energy interconnection development and cooperation organization \.
 \. \d{4} , american scientific publishing group \( aspg \) \.
 \. \d{4 babita singla , kumar shalender and nripendra singh \.$
+\. \( \d{4} \) , \( universiti putra malaysia \) \.
 \. \( \d{4} \) , \( kluwer law international \) \.
+\. \( \d{4} \) , \( elite scientific publications \) \.
 2019 , mary ann liebert , inc \. , publishers \.$
 which permits unrestricted use distribution and reproduction in any medium
 society for imaging informatics in medicine \d{4} , \d{4} \.
@@ -305,20 +336,26 @@ article s contents are provided on an attribution non commercial
 \. mayda alrige , riad alharbey , samir chatterjee \.$
 \. lizhou fan , lingyao li , libby hemphill \.$
 \. lextenso \. tous droits reserves pour tous pays \.
+\. kevin p \. kearns and wenjiun wang \d{4} \.
 \. jiancheng ye , zidan wang , jiarui hai \.$
 \. it must not be used for commercial purposes \.
 \. intelligent systems in accounting , finance and management published
+\. in adv neural inf process syst , \d{4} \.
 \. european language resources association \( elra \) , licensed
+\. emmanuel kojo oseifuah , agyapong gyekye , \d{4} \.
 \. \d{4} volkan , kose , cece and elmas \.$
 \. \d{4} university of wollongong , faculty of business \.
 \. \d{4} university of florida , fisher school of accounting$
 \. \d{4} system safety : human technical facility environment \.
 \. \d{4} pfohl , kim , coan and mitchell \.$
+\. \d{4} natale , paikan , randazzo and domenichelli \.
+\. \d{4} korean distribution science association \( kodisa \) \.
 \. \d{4} kelley school of business , indiana university \.
 \. \d{4} infopro digital risk \( ip \) limited \.
 \. \d{4} hisin \( history of information systems \) \.
 \. \d{4} editorial department of electric power engineering technology \.
 \. \d{4} department of economics , university of calcutta \.
+\. \d{4} by the authors . licensee : region \.
 \. \d{4} by gert h \. n \. laursen \.
 \. \d{4} aubrey milunsky and jeff m \. milunsky \.
 \. \d{4} association pour le traitement automatique des langues \.
@@ -326,6 +363,7 @@ article s contents are provided on an attribution non commercial
 \. \d{4} , srac societatea romana pentru asigurarea calitatii \.
 \. \d{4} , research and innovation centre pro akademia \.
 \. \d{4} , periodicals of engineering and natural sciences \.
+\. \d{4} , malaysian consumer and family economics association \.
 \. \d{4} , journalof industrial engineering and engineering management \.
 \. \d{4} , istituto zooprofilattico dell'abruzzo e del molise \.
 \. \d{4} , canadian center of science and education \.
@@ -370,16 +408,19 @@ american college of medical quality \( acmq \) \d{4}
 \d{4} , hisin \( history of information systems \)
 \d{4} , department for e governance and administration \.
 \[ figure not available : see fulltext \. \]
+\. university enterprises cooperation in ukrainian game industry \.$
 \. unep collaborating centre on energy and environme \.
 \. the editor and contributing authors severally \d{4} \.
 \. the authors , published by edp sciences \.
 \. society for industrial and organizational psychology \d{4} \.
 \. ref \. \d+ , fig \. \d+ \.
 \. re use permitted under cc by nc \.
+\. pinku paul , subhajit bhattacharya , \d{4} \.
 \. originally published in jmir ai \( http://ai\.jmir\.org \)
 \. mariana traldi , \d{4} and scripta nova \.$
 \. li censee mdpi , basel , switzerland \.
 \. korean distribution science association \( kodisa \) \.
+\. husieva nataliia , niemets oleksii , \d{4} \.
 \. dmitry nikolayev , vinctor sazonov , \d{4} \.
 \. david robert grimes , david h gorski \.$
 \. copyright the author \( s \) \d{4} \.
@@ -399,6 +440,7 @@ american college of medical quality \( acmq \) \d{4}
 \. \d{4} educational autonomous non profit organization nephrology \.
 \. \d{4} editorial department of zhejiang electric power \.
 \. \d{4} editorial department of modern electric power \.
+\. \d{4} convivium , association loi de \d{4} \.$
 \. \d{4} by the haworth press , inc \.
 \. \d{4} by nova science publishers , inc \.
 \. \d{4} by author\/s and licensed by modestum \.$
@@ -449,17 +491,22 @@ advanced science published by wiley vch gmbh \.
 \. the institution of engineering and technology \.$
 \. the editors and contributors severally \d{4} \.
 \. the editor and contributors severally \d{4} \.
+\. tamkang university , all rights reserved .$
 \. sakun boon itt , yukolpat skunkan \.$
 \. risk management and insurance review , \d{4}$
 \. re use permitted under cc by \.
+\. mohamed ariff and shamsher mohamad \d{4} \.
 \. licensee iust , tehran , iran \.
+\. karen o'brien and elin selboe \d{4} \.
 \. european association of hospital pharmacists \d{4} \.
 \. editorial department of electric power construction \.
 \. dialogue \d{4} \. all rights reserved \.$
 \. copyright jes \d{4} on line : journal/esrgroups.org/jes
+\. copyright : \d{4} gudmundarson , peters \.
 \. brody foster , matthew david krasowski \.$
 \. bezhan a \. v. , \d{4} \.$
 \. author \( s \) retain copyright ,
+\. \d{4} valdone darskuviene , nomeda lisauskiene \.$
 \. \d{4} university of california , berkeley \.
 \. \d{4} universidade federal de campina grande \.
 \. \d{4} the american risk and insurance association$
@@ -469,6 +516,8 @@ advanced science published by wiley vch gmbh \.
 \. \d{4} peter lang group ag , lausanne
 \. \d{4} nova science publishers , inc \.
 \. \d{4} nicholas rosso , philippe giabbanelli \.$
+\. \d{4} law and development review 2018 \.
+\. \d{4} latin american perspectives , inc \.
 \. \d{4} ivan nygaard , et al \.
 \. \d{4} international association for housing science \.
 \. \d{4} institution of engineering and technology \.
@@ -480,6 +529,7 @@ advanced science published by wiley vch gmbh \.
 \. \d{4} apple academic press , inc \.
 \. \d{4} american public health association inc \.
 \. \d{4} , russian academy of sciences \.
+\. \d{4} , penerbit universiti kebangsaan malaysia \.
 \. \d{4} , pan american health organization \.
 \. \d{4} , national environmental health association \.
 \. \d{4} , international association of engineers \.
@@ -489,6 +539,8 @@ advanced science published by wiley vch gmbh \.
 \. \d{4} , centro universitario curitiba unicuritiba \.
 \. \d{4} , bulgarska akademiya na naukite \.
 \. \d{4} , association for information systems \.
+\. \d{4} , \d{4} economic research forum \.
+\. \d{4} , \d{4} american statistical association \.
 \. \d{4} ((\b[a-z]+\b\s)*, )*published by de gruyter \.
 . copyright jes \d{4} on line : journal/esrgroups\.org/jes$
 , wiesbaden \d{4} \. alle rechte vorbehalten \.
@@ -515,6 +567,7 @@ international association of traffic and safety sciences
 international association for computer information systems \.$
 faculty of computer science and information technology
 este es un articulo en acceso abierto
+copyright the author \( s \) \.$
 centro de ciencias aplicadas y desarrollo tecnologico$
 centro de ciencias aplicadas y desarrollo tecnologico
 by apple academic press , inc \.
@@ -534,6 +587,7 @@ aidi italian association of industrial operations professors
 \d{4} academic conferences and publishing international limited
 \d{4} , korean society of medical informatics
 \d{4} , el profesional de la informacion
+\. vilnius university , \d{4} \d{4} \.$
 \. the institution of engineering and technology$
 \. the author \( \d{4} \) \.
 \. sven festag , cord spreckelsen \.
@@ -572,6 +626,7 @@ aidi italian association of industrial operations professors
 \. \d{4} energy observer magazine co \.
 \. \d{4} common ground research networks \.
 \. \d{4} chinese academy of sciences \.
+\. \d{4} beijing xintong media co \.
 \. \d{4} author \( s \) \.
 \. \d{4} association for computing machinery \.
 \. \d{4} ais icis administrative office \.
@@ -579,10 +634,12 @@ aidi italian association of industrial operations professors
 \. \d{4} \( tojia cinque \) \.
 \. \d{4} , world health organization \.
 \. \d{4} , verlag barbara budrich \.
+\. \d{4} , universiti teknologi mara \.
 \. \d{4} , politeknik negeri padang \.
 \. \d{4} , penerbit akademia baru \.
 \. \d{4} , marketing management association \.
 \. \d{4} , lexxion verlagsgesellschaft mbh \.
+\. \d{4} , lembaga contrarius indonesia \.
 \. \d{4} , korean marketing association \.
 \. \d{4} , korean finance association \.
 \. \d{4} , iquz galaxy publisher \.
@@ -594,6 +651,7 @@ aidi italian association of industrial operations professors
 \. \d{4} , academy of management \.
 \( cc by 4\.0 \) share adapt
 \( \d{4} \) , universidad del zulia
+/ licenses / by/ 4\.0/ \) \.$
 , chinese academy of agricultural sciences \.
 , applied solar energy , \d{4} ,
 www : biopharm mag com \.
@@ -654,7 +712,9 @@ a link to the original publication
 \. world scientific publishing co \.
 \. the authors , \d{4} \.
 \. societa editrice il mulino \.
+\. seventh sense research group \.$
 \. see rights and permissions \.
+\. presses de sciences po \.$
 \. no commercial re use \.
 \. melinda fitzgerald et al \.
 \. lippincott williams and wilkins \.$
@@ -674,6 +734,8 @@ a link to the original publication
 \. \d{4} society for risk analysis$
 \. \d{4} seventh sense research group$
 \. \d{4} selection and editorial matter.*$
+\. \d{4} publishing house akademperiodyka \.
+\. \d{4} portfolio management research \.
 \. \d{4} pakistan medical association \.
 \. \d{4} owner / author \.$
 \. \d{4} korean medical association \.
@@ -685,6 +747,7 @@ a link to the original publication
 \. \d{4} financial management association international$
 \. \d{4} emerald publishing limited \.
 \. \d{4} author \( s \)$
+\. \d{4} annual reviews inc \.
 \. \d{4} american statistical association \.
 \. \d{4} academy of management \.
 \. \d{4} a. carbone editore \.
@@ -705,6 +768,7 @@ a link to the original publication
 \. \d{4} , agricultural economics \.
 \. \d{4} , ((\b[a-z]+\b\s)*, )*((\b[a-z]+\b\s)*and )(\b[a-z]+\b\s)*\.$
 \( \d{4} \) universidad del zulia
+/ licenses / by/4\.0/ \) .$
 this work is licensed under
 this work is licenced under
 the editor \( s \)
@@ -780,15 +844,18 @@ american society of civil engineers
 \. the research publication \.
 \. the author s \d{4}$
 \. the author \d{4} \.
+\. sabine baumann \d{4} \.
 \. little lion scientific \.
 \. li and li \.
 \. korean medical association \.
 \. instytut badan gospodarczych \.$
+\. ijer serials publications \.$
 \. emerald publishing limited :
 \. copyright nuova cultura \.
 \. copyright \d{4} \[.*\] \.
 \. by the authors \.$
 \. astes publishers \d{4} \.
+\. all rights reservwd \.$
 \. \d{4}\. los autores \.
 \. \d{4}\. asers publishing \.
 \. \d{4} society for (\b[a-z]+\b\s)+\.
@@ -846,6 +913,7 @@ escuela de construccion civil
 elsevier b \. v
 dimeg university of calabria
 creative commons international license
+corrected publication \d{4} \.$
 corporacion universitaria lasallista \.$
 computers and industrial engineering
 centro de informacion tecnologica
@@ -904,8 +972,10 @@ a creative commons attribution
 \. henry publications \.
 \. english language \.
 \. copyright spie \.
+\. copyright francoangeli \.
 \. authors \d{4} \.
 \. articles the authors$
+\. armand colin \.$
 \. \d{4} windeurope \.
 \. \d{4} karnov group$
 \. \d{4} corien prins$
@@ -983,6 +1053,7 @@ all right reserved
 \d{4} editora champagnat
 \d{4} by (\b[a-z]+\b\s)+bank
 \d{4} by (\b[a-z]+\b\s)+
+\d{4} authors \.$
 \d{4} alconpat internacional
 \d{4} , omniascience
 \d{4} , formacionuniversitaria
@@ -1000,9 +1071,11 @@ all right reserved
 \. thieme \.
 \. sausages \.
 \. preface \.$
+\. ijcesen \.$
 \. gesis \.
 \. from publisher$
 \. from author$
+\. fecap \.
 \. copyright :$
 \. beiesp \.
 \. authors \d{4}$
@@ -1028,6 +1101,7 @@ interciencia association
 interciencia \d{4}
 igi global
 iaeme publication
+http:// creativecommons
 facultad(\s\b[a-z\+]+\b)+ \.$
 excelingtech pub
 elfos scientiae
@@ -1087,4 +1161,3 @@ australis
 (\b[a-z]+\b\s)*conferencia(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*asociacion(\s\b[a-z\+]+\b)*
-\. in adv neural inf process syst , \d{4} \.
