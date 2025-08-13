@@ -506,10 +506,10 @@ def report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
     )
 
     # if file exists, open and load the content as a list
-    if file_path.exists():
-        with open(file_path, "r", encoding="utf-8") as file:
-            existing_keywords = file.read().splitlines()
-        undetected_keywords = list(set(existing_keywords) | set(undetected_keywords))
+    # if file_path.exists():
+    #     with open(file_path, "r", encoding="utf-8") as file:
+    #         existing_keywords = file.read().splitlines()
+    #     undetected_keywords = list(set(existing_keywords) | set(undetected_keywords))
 
     with open(file_path, "w", encoding="utf-8") as file:
         for keyword in sorted(undetected_keywords):
