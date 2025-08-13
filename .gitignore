@@ -39,9 +39,9 @@ examples/structured/data/
 examples/structured/outputs/
 examples/structured/src/
 
-examples/html/data/
-examples/html/outputs/
-examples/html/src/
+examples/url/data/
+examples/url/outputs/
+examples/url/src/
 
 debug.ipynb
 
