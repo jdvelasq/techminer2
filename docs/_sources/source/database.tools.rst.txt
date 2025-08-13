@@ -11,5 +11,6 @@ Tools
     database.tools.query
     database.tools.record_mapping
     database.tools.record_viewer
+    database.tools.search_string
     database.tools.statistics
     database.tools.summary_sheet

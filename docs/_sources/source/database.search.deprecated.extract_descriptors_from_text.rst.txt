@@ -1,0 +1,5 @@
+.. automodule:: techminer2.database.search.deprecated.extract_descriptors_from_text
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

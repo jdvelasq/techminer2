@@ -1,0 +1,5 @@
+.. automodule:: techminer2.database.extractors.top_terms
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

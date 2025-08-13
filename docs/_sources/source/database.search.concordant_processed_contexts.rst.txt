@@ -1,0 +1,5 @@
+.. automodule:: techminer2.database.search.concordant_processed_contexts
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

@@ -1,0 +1,5 @@
+.. automodule:: techminer2.database.operators.copy
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

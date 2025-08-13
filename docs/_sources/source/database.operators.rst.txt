@@ -1,0 +1,17 @@
+Operators
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    database.operators.collect
+    database.operators.copy
+    database.operators.count
+    database.operators.delete
+    database.operators.fillna
+    database.operators.highlight
+    database.operators.merge
+    database.operators.rename
+    database.operators.tokenize
+    database.operators.transform

@@ -6,3 +6,4 @@ Abbreviations
     :hidden:
 
     thesaurus.abbreviations.general
+    thesaurus.abbreviations.register

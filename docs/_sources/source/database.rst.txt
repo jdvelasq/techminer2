@@ -6,9 +6,9 @@ Database
     :hidden:
 
     database.TO_REVIEW
-    database.field_extractors
-    database.field_operators
+    database.extractors
     database.ingest
     database.metrics
+    database.operators
     database.search
     database.tools

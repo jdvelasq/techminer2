@@ -1,0 +1,17 @@
+Extractors
+################################################################################
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    database.extractors.contains
+    database.extractors.difference
+    database.extractors.ends_with
+    database.extractors.full_match
+    database.extractors.intersection
+    database.extractors.match
+    database.extractors.starts_with
+    database.extractors.stemming_and
+    database.extractors.stemming_or
+    database.extractors.top_terms

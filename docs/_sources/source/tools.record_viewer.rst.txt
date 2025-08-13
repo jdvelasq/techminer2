@@ -1,0 +1,5 @@
+.. automodule:: techminer2.tools.record_viewer
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

@@ -1,0 +1,5 @@
+.. automodule:: techminer2.database.operators.highlight
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

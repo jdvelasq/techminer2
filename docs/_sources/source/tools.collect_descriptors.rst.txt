@@ -1,0 +1,5 @@
+.. automodule:: techminer2.tools.collect_descriptors
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

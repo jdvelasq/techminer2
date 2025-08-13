@@ -1,0 +1,5 @@
+.. automodule:: techminer2.thesaurus.descriptors.general.combine_keys
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

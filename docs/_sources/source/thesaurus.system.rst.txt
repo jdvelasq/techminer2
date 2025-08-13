@@ -6,3 +6,4 @@ System
     :hidden:
 
     thesaurus.system.apply_thesaurus
+    thesaurus.system.descriptors

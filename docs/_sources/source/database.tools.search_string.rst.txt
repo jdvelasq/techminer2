@@ -1,0 +1,5 @@
+.. automodule:: techminer2.database.tools.search_string
+     :members:
+     :undoc-members:
+     :show-inheritance:
+

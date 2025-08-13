@@ -5,6 +5,11 @@ Search
     :maxdepth: 1
     :hidden:
 
+    search.concordant_documents
+    search.concordant_mapping
+    search.concordant_processed_contexts
+    search.concordant_raw_contexts
+    search.find_records
     search.find_similar_phrases
     search.find_similar_records
     search.lemma_associations
