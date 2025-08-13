@@ -7,14 +7,14 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Compress Thesaurus
+Combine Keys
 ===============================================================================
 
 
 Example:
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CompressThesaurus, InitializeThesaurus
+    >>> from techminer2.thesaurus.descriptors import CombineKeys, InitializeThesaurus
 
     >>> # Redirect stderr to capture output
     >>> original_stderr = sys.stderr
@@ -23,21 +23,21 @@ Example:
     >>> # Create the thesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Compress the thesaurus
-    >>> compressor = (
-    ...     CompressThesaurus(tqdm_disable=True, use_colorama=False)
+    >>> # Combine the thesaurus
+    >>> combiner = (
+    ...     CombineKeys(tqdm_disable=True, use_colorama=False)
     ...     .where_root_directory_is("examples/fintech/")
     ... )
-    >>> compressor.run()
+    >>> combiner.run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Compressing thesaurus keys...
+    Combining thesaurus keys...
                       File : examples/fintech/data/thesaurus/descriptors.the.txt
       Keys reduced from 1724 to 1724
-      Compression process completed successfully
+      Combination process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -48,12 +48,12 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus.user import CompressThesaurus as UserCompressThesaurus
+from techminer2.thesaurus.user import CombineKeys as UserCombineKeys
 
 
 #
 #
-class CompressThesaurus(
+class CombineKeys(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -61,7 +61,7 @@ class CompressThesaurus(
     def run(self):
 
         (
-            UserCompressThesaurus()
+            UserCombineKeys()
             .update(**self.params.__dict__)
             .update(
                 field="raw_descriptors",

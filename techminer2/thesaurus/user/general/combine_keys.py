@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Compress Thesaurus
+Combine Keys
 ===============================================================================
 
 
@@ -15,7 +15,7 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, CompressThesaurus
+    >>> from techminer2.thesaurus.user import InitializeThesaurus, CombineKeys
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
@@ -26,22 +26,22 @@ Example:
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Creates, configures, an run the compressor
-    >>> compressor = (
-    ...     CompressThesaurus(tqdm_disable=True, use_colorama=False)
+    >>> # Creates, configures, an run the combiner
+    >>> combiner = (
+    ...     CombineKeys(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("examples/fintech/")
     ... )
-    >>> compressor.run()
+    >>> combiner.run()
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
-    Compressing thesaurus keys...
+    Combining thesaurus keys...
                       File : examples/fintech/data/thesaurus/demo.the.txt
       Keys reduced from 1724 to 1724
-      Compression process completed successfully
+      Combination process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -51,7 +51,6 @@ Example:
 import re
 import sys
 
-import pandas as pd
 from colorama import Fore
 from colorama import init
 from techminer2._internals.mixins import ParamsMixin
@@ -62,7 +61,7 @@ from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
 
 
-class CompressThesaurus(
+class CombineKeys(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -82,7 +81,7 @@ class CompressThesaurus(
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write(f"Compressing thesaurus keys...\n")
+        sys.stderr.write(f"Combining thesaurus keys...\n")
         sys.stderr.write(f"                  File : {file_path}\n")
         sys.stderr.flush()
 
@@ -92,7 +91,7 @@ class CompressThesaurus(
         sys.stderr.write(
             f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
         )
-        sys.stderr.write(f"  Compression process completed successfully\n\n")
+        sys.stderr.write(f"  Combination process completed successfully\n\n")
         sys.stderr.flush()
 
     #
@@ -118,20 +117,6 @@ class CompressThesaurus(
         )
 
     # -------------------------------------------------------------------------
-    # def internal__get_nlp_terms(self):
-    #     self.nlp_terms = (
-    #         DataFrame()
-    #         .with_field("raw_nouns_and_phrases")
-    #         .having_terms_ordered_by("OCC")
-    #         .where_root_directory_is(self.params.root_directory)
-    #         .where_database_is("main")
-    #     ).run()
-    #     self.nlp_terms["length"] = self.nlp_terms.index.str.split("_").str.len()
-    #     self.nlp_terms = self.nlp_terms.sort_values(
-    #         by=["length", "rank_occ"], ascending=[True, True]
-    #     )
-
-    # -------------------------------------------------------------------------
     def internal__mark_keywords(self):
         self.data_frame["is_keyword"] = False
         self.data_frame.loc[
@@ -139,12 +124,12 @@ class CompressThesaurus(
         ] = True
 
     # -------------------------------------------------------------------------
-    def internal__compress_keywords(self):
+    def internal__combine_keywords(self):
 
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="      Compressing keywords ",
+            desc="      Combining keywords ",
             disable=self.params.tqdm_disable,
             ncols=80,
         ):
@@ -164,7 +149,7 @@ class CompressThesaurus(
             self.data_frame.loc[candidates.index, "is_keyword"] = True
 
     # -------------------------------------------------------------------------
-    def internal__compress_by_words(self):
+    def internal__combine_words(self):
 
         self.data_frame["phrase"] = self.data_frame["phrase"].str.split()
         self.data_frame["phrase"] = self.data_frame["phrase"].map(sorted)
@@ -173,7 +158,7 @@ class CompressThesaurus(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="         Compressing words ",
+            desc="         Combining words ",
             disable=self.params.tqdm_disable,
         ):
 
@@ -195,12 +180,12 @@ class CompressThesaurus(
             self.data_frame.loc[candidates.index, "is_keyword"] = True
 
     # -------------------------------------------------------------------------
-    def internal__compress_keys(self):
+    def internal__combine_keys(self):
 
         self.n_initial_keys = len(self.data_frame.key.drop_duplicates())
         self.data_frame["phrase"] = self.data_frame["key"].str.replace("_", " ")
-        self.internal__compress_keywords()
-        self.internal__compress_by_words()
+        self.internal__combine_keywords()
+        self.internal__combine_words()
         self.data_frame.pop("phrase")
         self.data_frame.pop("is_keyword")
         self.n_final_keys = len(self.data_frame.key.drop_duplicates())
@@ -222,11 +207,8 @@ class CompressThesaurus(
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         self.internal__get_keywords()
-        # self.internal__get_nlp_terms()
         self.internal__mark_keywords()
-        self.internal__compress_keys()
-
-        ## self.internal__group_values_by_key()
+        self.internal__combine_keys()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()

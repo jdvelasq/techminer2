@@ -1,6 +1,7 @@
 """Public API for user thesaurus."""
+
 from .general.apply_thesaurus import ApplyThesaurus
-from .general.compress_thesaurus import CompressThesaurus
+from .general.combine_keys import CombineKeys
 from .general.explode_keys import ExplodeKeys
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
@@ -27,7 +28,7 @@ from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
     "ApplyThesaurus",
-    "CompressThesaurus",
+    "CombineKeys",
     "ExplodeKeys",
     "InitializeThesaurus",
     "IntegrityCheck",

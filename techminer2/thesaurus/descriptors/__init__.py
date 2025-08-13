@@ -1,7 +1,8 @@
 "Public API for descriptors."
+
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.cleanup_thesaurus import CleanupThesaurus
-from .general.compress_thesaurus import CompressThesaurus
+from .general.combine_keys import CombineKeys
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.reduce_keys import ReduceKeys
@@ -37,7 +38,7 @@ from .translate.british_to_american_spelling import BritishToAmericanSpelling
 __all__ = [
     "ApplyThesaurus",
     "CleanupThesaurus",
-    "CompressThesaurus",
+    "CombineKeys",
     "IntegrityCheck",
     "InitializeThesaurus",
     "ReduceKeys",

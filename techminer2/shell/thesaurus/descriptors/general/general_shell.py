@@ -8,12 +8,24 @@
 # pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.thesaurus.descriptors.general.commands import execute_apply_command
-from techminer2.shell.thesaurus.descriptors.general.commands import execute_cleanup_command
-from techminer2.shell.thesaurus.descriptors.general.commands import execute_compress_command
-from techminer2.shell.thesaurus.descriptors.general.commands import execute_initialize_command
-from techminer2.shell.thesaurus.descriptors.general.commands import execute_integrity_command
-from techminer2.shell.thesaurus.descriptors.general.commands import execute_reduce_command
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_apply_command,
+)
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_cleanup_command,
+)
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_combine_command,
+)
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_initialize_command,
+)
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_integrity_command,
+)
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_reduce_command,
+)
 
 
 class GeneralShell(BaseShell):
@@ -28,9 +40,9 @@ class GeneralShell(BaseShell):
         """Clean up the thesaurus."""
         execute_cleanup_command()
 
-    def do_compress(self, arg):
-        """Compress the thesaurus."""
-        execute_compress_command()
+    def do_combine(self, arg):
+        """Combine thesaurus keys."""
+        execute_combine_command()
 
     def do_initialize(self, arg):
         """Reset or create the thesaurus."""

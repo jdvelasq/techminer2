@@ -124,7 +124,7 @@ Example:
     providing A_SOLID_FOUNDATION for UNDERSTANDING THE_CONTEXT of the study . method :
     HIGHER_EDUCATION . originality / value : THIS_STUDY stands out for
     ( he ) CONTEXT . design / methodology / approach : in A_RESEARCH_METHODS_MODULE , 140
-    . findings : ATTENDANCE was high throughout THE_SEMESTER and STUDENTS were very positive
+    VIDEO recorded within BOTH_THE_REAL_AND_VIRTUAL_SPACES . findings : ATTENDANCE was high
     ultimately LEARNING_/_PRODUCTIVITY_OUTCOMES . originality / value : THIS_STUDY
     THE_FLIPPED_CLASSROOM_MODEL . materials and methods :
     THE_DIFFERENCES between THE_TWO_GROUPS . results : both LEARNING_MODEL_COHORTS filled out
@@ -183,7 +183,7 @@ Example:
     acceptable , implying that THE_MODEL was validated . conclusion :
     ' experience of FLIPPED_LEARNING . impact : FLIPPED_LEARNING has been
     THIS_TEACHING_AND_LEARNING_METHODOLOGY . patient or public contribution : none . 2024 the
-    of EMPLOYEES , 2020 . materials and methods : A_QUALITATIVE_STUDY using
+    IN_SERVICE_TRAINING_OF_EMPLOYEES , 2020 . materials and methods : A_QUALITATIVE_STUDY
     . results : flipped LEARNING_PROCESS in MAZANDARAN_UNIVERSITY_OF_MEDICAL_SCIENCES has 12
     QUALITY_OF_EDUCATION , and LEARNING_QUALITY . conclusion : acknowledging FLIPPED_LEARNING
     THE_SUBJECT_SUBJECT_MODEL in THE_CONDITIONS of BLENDED_LEARNING . methodology : we have

@@ -9,20 +9,20 @@
 """
 
 Example:
-    >>> # Redirect stderr to capture output
-    >>> import sys
-    >>> from io import StringIO
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
+    # >>> # Redirect stderr to capture output
+    # >>> import sys
+    # >>> from io import StringIO
+    # >>> original_stderr = sys.stderr
+    # >>> sys.stderr = StringIO()
 
-    >>> # Check last word in noun phrases
-    >>> from techminer2.package_data.text_processing import internal__testing
-    >>> internal__testing()
+    # >>> # Check last word in noun phrases
+    # >>> from techminer2.package_data.text_processing import internal__testing
+    # >>> internal__testing()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
+    # >>> # Capture and print stderr output
+    # >>> output = sys.stderr.getvalue()
+    # >>> sys.stderr = original_stderr
+    # >>> print(output)
 
 
 """
