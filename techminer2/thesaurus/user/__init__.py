@@ -1,39 +1,49 @@
 """Public API for user thesaurus."""
 
-from .general.apply_thesaurus import ApplyThesaurus
-from .general.clump_keys import ClumpKeys
-from .general.explode_keys import ExplodeKeys
-from .general.initialize_thesaurus import InitializeThesaurus
-from .general.integrity_check import IntegrityCheck
-from .general.reduce_keys import ReduceKeys
-from .general.spell_check import SpellCheck
-from .replace.replace_initial_word import ReplaceInitialWord
-from .replace.replace_last_word import ReplaceLastWord
-from .replace.replace_word import ReplaceWord
-from .sort.sort_by_alphabet import SortByAlphabet
-from .sort.sort_by_endswith_match import SortByEndsWithMatch
-from .sort.sort_by_exact_match import SortByExactMatch
-from .sort.sort_by_fuzzy_match import SortByFuzzyMatch
-from .sort.sort_by_initial_words import SortByInitialWords
-from .sort.sort_by_key_length import SortByKeyLength
-from .sort.sort_by_last_words import SortByLastWords
-from .sort.sort_by_match import SortByMatch
-from .sort.sort_by_occurrences import SortByOccurrences
-from .sort.sort_by_startswith_match import SortByStartsWithMatch
-from .sort.sort_by_stopwords import SortByStopwords
-from .sort.sort_by_word_length import SortByWordLength
-from .sort.sort_by_word_match import SortByWordMatch
-from .translate.american_to_british_spelling import AmericanToBritishSpelling
-from .translate.british_to_american_spelling import BritishToAmericanSpelling
+from techminer2.thesaurus.user.general.apply_thesaurus import ApplyThesaurus
+from techminer2.thesaurus.user.general.clump_keys import ClumpKeys
+from techminer2.thesaurus.user.general.explode_keys import ExplodeKeys
+from techminer2.thesaurus.user.general.initialize_thesaurus import InitializeThesaurus
+from techminer2.thesaurus.user.general.integrity_check import IntegrityCheck
+from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
+from techminer2.thesaurus.user.general.spell_check import SpellCheck
+from techminer2.thesaurus.user.replace.replace_initial_word import ReplaceInitialWord
+from techminer2.thesaurus.user.replace.replace_last_word import ReplaceLastWord
+from techminer2.thesaurus.user.replace.replace_word import ReplaceWord
+from techminer2.thesaurus.user.sort.sort_by_alphabet import SortByAlphabet
+from techminer2.thesaurus.user.sort.sort_by_endswith_match import SortByEndsWithMatch
+from techminer2.thesaurus.user.sort.sort_by_exact_match import SortByExactMatch
+from techminer2.thesaurus.user.sort.sort_by_fuzzy_match import SortByFuzzyMatch
+from techminer2.thesaurus.user.sort.sort_by_initial_words import SortByInitialWords
+from techminer2.thesaurus.user.sort.sort_by_key_length import SortByKeyLength
+from techminer2.thesaurus.user.sort.sort_by_last_words import SortByLastWords
+from techminer2.thesaurus.user.sort.sort_by_match import SortByMatch
+from techminer2.thesaurus.user.sort.sort_by_occurrences import SortByOccurrences
+from techminer2.thesaurus.user.sort.sort_by_startswith_match import (
+    SortByStartsWithMatch,
+)
+from techminer2.thesaurus.user.sort.sort_by_stopwords import SortByStopwords
+from techminer2.thesaurus.user.sort.sort_by_word_length import SortByWordLength
+from techminer2.thesaurus.user.sort.sort_by_word_match import SortByWordMatch
+from techminer2.thesaurus.user.translate.american_to_british_spelling import (
+    AmericanToBritishSpelling,
+)
+from techminer2.thesaurus.user.translate.british_to_american_spelling import (
+    BritishToAmericanSpelling,
+)
+from techminer2.thesaurus.user.general.combine_keys import CombineKeys
+
 
 __all__ = [
+    "AmericanToBritishSpelling",
     "ApplyThesaurus",
+    "BritishToAmericanSpelling",
     "ClumpKeys",
+    "CombineKeys",
     "ExplodeKeys",
     "InitializeThesaurus",
     "IntegrityCheck",
     "ReduceKeys",
-    "SpellCheck",
     "ReplaceInitialWord",
     "ReplaceLastWord",
     "ReplaceWord",
@@ -50,6 +60,5 @@ __all__ = [
     "SortByStopwords",
     "SortByWordLength",
     "SortByWordMatch",
-    "AmericanToBritishSpelling",
-    "BritishToAmericanSpelling",
+    "SpellCheck",
 ]

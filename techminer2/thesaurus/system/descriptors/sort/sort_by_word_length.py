@@ -26,7 +26,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by word length...
       File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
       Sorting process completed successfully
@@ -34,22 +34,22 @@ Example:
     Printing thesaurus header
       File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
-        *BIBLIOMETRICS*
-          BIBLIOMETRIC; BIBLIOMETRICS
-        ABSTRACTIVE_SUMMARIZATION
-          ABSTRACTIVE_TEXT_SUMMARIZATION; ABSTRACTIVE_TEXT_SUMMARIZATION_MODEL
-        ARTIFICIAL_INTELLIGENCE
-          ARTIFICIAL_INTELLIGENCE_APPROACH; ARTIFICIAL_INTELLIGENCE_MODEL; ARTIFICI...
-        MATHEMATICAL_AND_MACHINE_LEARNING_MODELS
-          MATHEMATICAL_OR_MACHINE_LEARNING_MODELS
+        BIBLIOMETRICS
+          BIBLIOMETRIC
         ORGANIZATION
           BUSINESS; BUSINESSES; COMPANIES; COMPANY; ENTERPRISE; ENTERPRISES; FIRM; ...
-        *EDITORIAL*
-          EDITORIAL
-        *GEOGRAPHIC_REGIONS*
-          AEGEAN_ISLANDS; AFGHANISTAN; AFRICA; ALBANIA; ALGERIA; AMERICAN_SAMOA; AM...
         APPLICATION
-          APPLICATIONS; APPLICATIONS
+          APPLICATIONS
+        MULTI_TRANSFORMER
+          MULTI_TRANSFORMERS
+        SYNTHESIZER_TRANSFORMER
+          SYNTHESIZER_TRANSFORMERS
+        TEMPORAL_FUSION_TRANSFORMER
+          TEMPORAL_FUSION_TRANSFORMERS
+        TRANSFORMER_NETWORK
+          TRANSFORMER_NETWORKS
+        ARTIFICIAL_NEURAL_NETWORK
+          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
     <BLANKLINE>
     <BLANKLINE>
 

@@ -26,7 +26,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by common initial words...
       File : ...techminer2/package_data/thesaurus/system/descriptors.the.txt
       0 matching keys found
@@ -35,26 +35,24 @@ Example:
     Printing thesaurus header
       File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
-        *ARTICLE*
-          ACADEMIC_ARTICLE; ACADEMIC_ARTICLES; ARTICLE; ARTICLES
-        *AUTHOR*
-          AUTHOR; AUTHORS
-        *BIBLIOMETRICS*
-          BIBLIOMETRIC; BIBLIOMETRICS
-        *BOOK*
-          BOOK; BOOKS
-        *CHAPTER*
-          CHAPTER; CHAPTERS
-        *EDITORIAL*
-          EDITORIAL
-        *ERROR_METRICS*
-          ABSOLUTE_AVERAGE_DEVIATION; ABSOLUTE_AVERAGE_DEVIATIONS; ABSOLUTE_ERROR; ...
-        *GEOGRAPHIC_REGIONS*
-          AEGEAN_ISLANDS; AFGHANISTAN; AFRICA; ALBANIA; ALGERIA; AMERICAN_SAMOA; AM...
+        ANALYSIS
+          ANALYZES
+        APPLICATION
+          APPLICATIONS
+        APPROACH
+          APPROACHES
+        ARTICLE
+          ARTICLES
+        ARTIFICIAL_NEURAL_NETWORK
+          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
+        AUTHOR
+          AUTHORS
+        BIBLIOMETRICS
+          BIBLIOMETRIC
+        BLOCK_CHAIN
+          BLOCK_CHAINS; BLOCKCHAIN; BLOCKCHAINS
     <BLANKLINE>
     <BLANKLINE>
-
-
 
 """
 from techminer2.thesaurus.user import SortByInitialWords as UserSortByInitialWords

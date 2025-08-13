@@ -1,7 +1,7 @@
-from techminer2.thesaurus.descriptors import CleanupThesaurus
+from techminer2.thesaurus.descriptors import NormalizeKeys
 
 
 def execute_cleanup_command():
 
     print()
-    CleanupThesaurus().where_root_directory_is("./").run()
+    NormalizeKeys().where_root_directory_is("./").run()

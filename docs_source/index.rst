@@ -9,15 +9,13 @@ Techminer 2+
 
     source/database
 
+
 .. toctree::
     :hidden:
     :caption: PREPARATION
     :maxdepth: 1
 
-
     source/thesaurus
-    source/tools
-    source/search
 
 
 .. toctree::
@@ -26,6 +24,7 @@ Techminer 2+
     :maxdepth: 1
 
     source/packages
+    source/experimental
 
 
 .. toctree::

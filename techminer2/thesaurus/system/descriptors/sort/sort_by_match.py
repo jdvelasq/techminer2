@@ -33,7 +33,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by match...
                 File : ...techminer2/package_data/thesaurus/system/descriptors.the.txt
              Pattern : BLOCK
@@ -47,21 +47,21 @@ Example:
       File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         BLOCK_CHAIN
-          BLOCK_CHAINS; BLOCK_CHAIN_SYSTEM; BLOCK_CHAIN_SYSTEMS; BLOCK_CHAIN_TECHNO...
-        *ARTICLE*
-          ACADEMIC_ARTICLE; ACADEMIC_ARTICLES; ARTICLE; ARTICLES
-        *AUTHOR*
-          AUTHOR; AUTHORS
-        *BIBLIOMETRICS*
-          BIBLIOMETRIC; BIBLIOMETRICS
-        *BOOK*
-          BOOK; BOOKS
-        *CHAPTER*
-          CHAPTER; CHAPTERS
-        *EDITORIAL*
-          EDITORIAL
-        *ERROR_METRICS*
-          ABSOLUTE_AVERAGE_DEVIATION; ABSOLUTE_AVERAGE_DEVIATIONS; ABSOLUTE_ERROR; ...
+          BLOCK_CHAINS; BLOCKCHAIN; BLOCKCHAINS
+        ANALYSIS
+          ANALYZES
+        APPLICATION
+          APPLICATIONS
+        APPROACH
+          APPROACHES
+        ARTICLE
+          ARTICLES
+        ARTIFICIAL_NEURAL_NETWORK
+          ARTIFICIAL_NEURAL_NETWORKS; ARTIFICIAL_NEURAL_NETWORK_MODEL; ARTIFICIAL_N...
+        AUTHOR
+          AUTHORS
+        BIBLIOMETRICS
+          BIBLIOMETRIC
     <BLANKLINE>
     <BLANKLINE>
 

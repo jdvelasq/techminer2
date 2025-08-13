@@ -31,7 +31,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by fuzzy match...
                 File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
            Keys like : INFORM

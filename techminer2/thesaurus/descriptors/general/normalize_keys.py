@@ -7,36 +7,37 @@
 # pylint: disable=too-many-statements
 # mypy: ignore-errors
 """
-Cleanup Thesaurus
+Normalize Keys
 ===============================================================================
 
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import CleanupThesaurus, InitializeThesaurus
 
     >>> # Redirecting stderr to avoid messages
+    >>> import sys
+    >>> from io import StringIO
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-    >>> # Create the thesaurus
+    >>> # Restore the thesaurus
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> cleaner = (
-    ...     CleanupThesaurus(use_colorama=False)
+    >>> from techminer2.thesaurus.descriptors import NormalizeKeys
+    >>> (
+    ...     NormalizeKeys(use_colorama=False)
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> cleaner.run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +SKIP
-    Cleanup Thesaurus...
+    Normalizing Keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       15 replacements made successfully
-      Cleanup process completed successfully
+      Normalization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : examples/fintech/data/thesaurus/descriptors.the.txt
@@ -77,7 +78,7 @@ from tqdm import tqdm  # type: ignore
 tqdm.pandas()
 
 
-class CleanupThesaurus(
+class NormalizeKeys(
     ParamsMixin,
     ThesaurusMixin,
 ):
