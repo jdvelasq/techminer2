@@ -15,7 +15,7 @@ from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_cleanup_command,
 )
 from techminer2.shell.thesaurus.descriptors.general.commands import (
-    execute_combine_command,
+    execute_clump_command,
 )
 from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_initialize_command,
@@ -40,9 +40,9 @@ class GeneralShell(BaseShell):
         """Clean up the thesaurus."""
         execute_cleanup_command()
 
-    def do_combine(self, arg):
-        """Combine thesaurus keys."""
-        execute_combine_command()
+    def do_clump(self, arg):
+        """Clump thesaurus keys."""
+        execute_clump_command()
 
     def do_initialize(self, arg):
         """Reset or create the thesaurus."""

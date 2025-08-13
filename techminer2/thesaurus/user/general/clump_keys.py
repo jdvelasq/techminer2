@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Combine Keys
+Clump Keys
 ===============================================================================
 
 
@@ -15,7 +15,7 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, CombineKeys
+    >>> from techminer2.thesaurus.user import InitializeThesaurus, ClumpKeys
 
     >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
@@ -26,22 +26,23 @@ Example:
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Creates, configures, an run the combiner
-    >>> combiner = (
-    ...     CombineKeys(tqdm_disable=True, use_colorama=False)
+    >>> # Creates, configures, an run the clumper
+    >>> (
+    ...     ClumpKeys(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> combiner.run()
+
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output) # doctest: +ELLIPSIS
-    Combining thesaurus keys...
+    Clumping thesaurus keys...
                       File : examples/fintech/data/thesaurus/demo.the.txt
       Keys reduced from 1724 to 1724
-      Combination process completed successfully
+      Clumping process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -56,12 +57,11 @@ from colorama import init
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database.metrics.performance import DataFrame
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import internal__print_thesaurus_header
 from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
 
 
-class CombineKeys(
+class ClumpKeys(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -81,7 +81,7 @@ class CombineKeys(
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write(f"Combining thesaurus keys...\n")
+        sys.stderr.write(f"Clumping thesaurus keys...\n")
         sys.stderr.write(f"                  File : {file_path}\n")
         sys.stderr.flush()
 
@@ -91,7 +91,7 @@ class CombineKeys(
         sys.stderr.write(
             f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
         )
-        sys.stderr.write(f"  Combination process completed successfully\n\n")
+        sys.stderr.write(f"  Clumping process completed successfully\n\n")
         sys.stderr.flush()
 
     #
@@ -129,7 +129,7 @@ class CombineKeys(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="      Combining keywords ",
+            desc="      Clumping keywords ",
             disable=self.params.tqdm_disable,
             ncols=80,
         ):
@@ -158,7 +158,7 @@ class CombineKeys(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="         Combining words ",
+            desc="         Clumping words ",
             disable=self.params.tqdm_disable,
         ):
 
