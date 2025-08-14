@@ -113,6 +113,7 @@ COMPOUND_STRUCTURED_ABSTRACT_MARKERS = [
     "implications for theory and practice",
     "improvements / applications",
     "intended outcomes",
+    "interests design / methodology / approach",
     "key findings",
     "key messages",
     "key results",
@@ -437,63 +438,68 @@ def make_final_corrections(text):
 
     text = re.sub(r"(\d)/([a-zA-Z_0-9]+)", r"\1 /\2", text)
 
-    text = text.replace(" DKK_/_MWH ", " dkk/mwh ")
-    text = text.replace(" EQ./mwh ", " eq./mwh ")
-    text = text.replace(" EQ/kw ", " eq/kw ")
-    text = text.replace(" EQ/mwh ", " eq/mwh ")
-    text = text.replace(" EUR/mwh ", " eur/mwh ")
-    text = text.replace(" EURO/mwh ", " euro/mwh ")
-    text = text.replace(" G_/_KWH ", " g/kwh ")
-    text = text.replace(" gj/YEAR ", " gj/year ")
-    text = text.replace(" gwh/YEAR ", " gwh/year ")
-    text = text.replace(" h/DAY ", " h/day ")
-    text = text.replace(" HK_$ /KWH ", " hk$/kwh ")
     text = text.replace(" i.E. ", " i.e. ")
+    text = text.replace(" E.g. ", " e.g. ")
     text = text.replace(" innwind.EU ", " innwind . eu ")
-    text = text.replace(" IRR/kwh ", " irr/kwh ")
-    text = text.replace(" kg/YEAR ", " kg/year ")
-    text = text.replace(" kwh/DAY ", " kwh/day ")
-    text = text.replace(" kwh/MONTH ", " kwh/month ")
-    text = text.replace(" l/YEAR ", " l/year ")
-    text = text.replace(" MWH_/_YR ", " mhw/yr ")
-    text = text.replace(" mwh/YEAR ", " mwh/year ")
-    text = text.replace(" OMR_/_KWH ", " omr/kwh ")
-    text = text.replace(" THE_F . E . c .", " the f . e . c .")
-    text = text.replace(" TON/YEAR ", " ton/year ")
-    text = text.replace(" TONS ", " tons ")
-    text = text.replace(" TONS/YEAR ", " tons/year ")
-    text = text.replace(" twh/YEAR ", " twh/year ")
-    text = text.replace(" US_CENTS/kwh ", " us cents/kwh ")
-    text = text.replace(" USD/barrel ", " usd/barrel ")
-    text = text.replace(" USD/KW_HR ", " usd/kw_hr ")
-    text = text.replace(" USD/kwh ", " usd/kwh ")
-    text = text.replace(" USD/mwh ", " usd/mwh ")
-    text = text.replace(" CT / KWH ", " ct/kwh ")
     text = text.replace(" you.s ", " you . s ")
-    text = text.replace(" yuan/TON ", " yuan/ton ")
-    text = text.replace("/DAY ", "/day ")
-    text = text.replace("/KW_H ", "/kw_h ")
-    text = text.replace("/KWH ", "/kwh ")
-    text = text.replace("/LEVEL ", "/level ")
-    text = text.replace("/MONTH ", "/month ")
-    text = text.replace("/MW ", "/mw ")
-    text = text.replace("/MW_H ", "/mwh ")
-    text = text.replace("/MWH ", "/mwh ")
-    text = text.replace("/TON ", "/ton ")
-    text = text.replace("/YEAR ", "/year ")
-    text = text.replace("/YR ", "/year ")
-    text = text.replace("/KWEL ", "/kwel ")
+    text = text.replace(" THE_F . E . c .", " the f . e . c .")
 
-    text = text.replace(" DKK/", " dkk/")
-    text = text.replace(" EQ/", " eq/")
-    text = text.replace(" EURO/", " euro/")
-    text = text.replace(" EUROS/", " euros/")
-    text = text.replace(" USD/", " usd/")
-    text = text.replace(" HK $ /", " hk$/")
-    text = text.replace(" MWH/", " mwh/")
-    text = text.replace(" OMR/", " omr/")
-    text = text.replace(" TON/", " ton/")
-    text = text.replace(" TONS/", " tons/")
+    # Units
+    for unit in [
+        "cad",
+        "capex",
+        "cent usd",
+        "cent",
+        "cents",
+        "cny",
+        "ct",
+        "day",
+        "dkk",
+        "dollars",
+        "e",
+        "eq.",
+        "eq",
+        "eur",
+        "euro",
+        "gwh",
+        "h",
+        "hr",
+        "irr",
+        "kg",
+        "kw h",
+        "kw_hr",
+        "kw",
+        "kwel",
+        "kwh",
+        "kwh",
+        "kwhr",
+        "l",
+        "level",
+        "m",
+        "month",
+        "mw",
+        "mwh",
+        "mwwp",
+        "nt",
+        "omr",
+        "omr",
+        "rmb",
+        "t",
+        "ton",
+        "tons",
+        "twh",
+        "unit",
+        "us_cents",
+        "uscents",
+        "usd",
+        "year",
+        "yr",
+        "yuan",
+    ]:
+        text = text.replace(f" {unit.upper().replace(' ', '_')}/", f" {unit.lower()}/")
+        text = text.replace(f" {unit.upper().replace(' ', '_')}_/", f" {unit.lower()}/")
+        text = text.replace(f"/{unit.upper().replace(' ', '_')} ", f"/{unit.lower()} ")
+        text = text.replace(f"/_{unit.upper().replace(' ', '_')} ", f"/{unit.lower()} ")
 
     text = text.replace("POLENERGIA/EQUINOR", "polenergia/equinor")
 
@@ -509,6 +515,7 @@ def make_final_corrections(text):
     text = text.replace("", "")
     text = text.replace("", "")
     text = text.replace(" ISSN ", " issn ")
+    text = text.replace(" EISSN ", " eissn ")
     text = text.replace(" ISBN ", " isbn ")
     text = text.replace(" DOI ", " doi ")
 
@@ -625,6 +632,9 @@ def unmark_template_abstract_markers(text):
 
         regex = re.compile("\? " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, "? " + term.lower() + " :", text)
+
+        regex = re.compile("' " + term.replace(" ", "_") + " :", re.IGNORECASE)
+        text = re.sub(regex, "' " + term.lower() + " :", text)
 
     return text
 
