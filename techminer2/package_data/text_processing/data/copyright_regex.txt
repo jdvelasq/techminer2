@@ -808,6 +808,7 @@ instituto tecnologico de costa rica
 inorganic materials : applied research
 iise annual conference and expo
 formacion universitaria all rights reserved
+for permissions , please email
 facultad de economia y negocios
 electron \. j \. biotechnol
 copyright \( \d{4} \) by
@@ -1169,4 +1170,3 @@ australis
 (\b[a-z]+\b\s)*conferencia(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*asociacion(\s\b[a-z\+]+\b)*
-for PERMISSIONS , please email
