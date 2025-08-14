@@ -8,13 +8,13 @@
 # pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.system.nounphrases.commands import execute_last_command
+from techminer2.shell.package.sort.commands import execute_textprocessing_command
 
 
-class NounPhrasesShell(BaseShell):
+class SortShell(BaseShell):
 
-    prompt = make_colorized_prompt("tm2:system:nounphrases")
+    prompt = make_colorized_prompt("tm2:package:sort")
 
-    def do_last(self, arg):
-        """Check variations of last word in noun phrases."""
-        execute_last_command()
+    def do_textprocessing(self, arg):
+        """Sort all text processing package files."""
+        execute_textprocessing_command()

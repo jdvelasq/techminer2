@@ -464,6 +464,11 @@ def make_final_corrections(text):
     text = text.replace(" mwh/YEAR ", " mwh/year ")
     text = text.replace(" THE_F . E . c .", " the f . e . c .")
     text = text.replace(" i.E. ", " i.e. ")
+    text = text.replace(" MWH_/_YR ", " mhw / yr ")
+    text = text.replace(" TONS ", " tons ")
+    text = text.replace(" G_/_KWH ", " g / kwh ")
+    text = text.replace(" OMR_/_KWH ", " omr / kwh ")
+    text = text.replace(" DKK_/_MWH ", " dkk / mwh ")
     text = text.replace(
         " . THE_CONTRIBUTIONS of THIS_PAPER are : ",
         " . the contributions of this paper are : ",
@@ -475,6 +480,9 @@ def make_final_corrections(text):
     text = text.replace("", "")
     text = text.replace("", "")
     text = text.replace("", "")
+    text = text.replace(" ISSN ", " issn ")
+    text = text.replace(" ISBN ", " isbn ")
+    text = text.replace(" DOI ", " doi ")
 
     return text
 

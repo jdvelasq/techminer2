@@ -121,6 +121,7 @@ learning health systems published by wiley periodicals llc on behalf of universi
 \. \d{4} tanushri banerjee , arindam banerjee , dhaval maheta , and vivek gupta \.
 \. \d{4} selection and editorial matter , oscar a \. garcia and prashanth kotturi \.
 \. \d{4} , thomas a \. lyson center for civic agriculture and food systems \.
+\. \d{4} , international organization on ' technical and physical problems of engineering ' \.
 \. \d{3} , no copyright protection is available for such works under us law \.
 \. \( \d{4} \) , \( iscap information systems and computing academic professionals \) \.
 under exclusive licence to international center for numerical methods in engineering \( cimne \)
@@ -140,6 +141,7 @@ author \( s \) \( or their employer \( s \) \) \d{4} \.
 \. this is an open access article under the cc by 4\.0 license \.
 \. keisuke nakagawa , nuen tsang yang , machelle wilson , peter yellowlees \.$
 \. gupta you\. , agarwal b \. , nautiyal n \. , \d{4} \.$
+\. copyright jes \d{4} on line : journal / esrgroups \. org / jes$
 \. copy right in bulk will be transferred to ieee by bharati vidyapeeth \.$
 \. benjamin l schooley , abdulaziz ahmed , justine maxwell , sue feldman \.$
 \. author \( s \) \( or their employer \( s \) \) \d{4}$
@@ -150,6 +152,7 @@ author \( s \) \( or their employer \( s \) \) \d{4} \.
 \. \d{4} icst institute for computer science , social informatics and telecommunications engineering \.
 \. \d{4} harris , bonnici , keen , lilaonitkul , white and swanepoel \.$
 \. \d{4} f \. allen , x \. gu and j \. jagtiani \.$
+\. \d{4} canadian association of geographers / l ' association canadienne des geographes \.
 \. \d{4} brian towers \( britow \) and john wiley and sons ltd \.
 \. \d{4} author \( s \) \( or their employer \( s \) \.
 \. \d{4} antai college of economics and management , shanghai jiao tong university \.
@@ -182,6 +185,7 @@ and reproduction in any medium , provided the original work is properly cited
 \. \d{4} canadian association of geographers l ' association canadienne des geographes \.
 \. \d{4} by georgetown university , pew case study center , usa \.
 \. \d{4} by dr \. umesh r \. hodeghatta and umesha nayak \.
+\. \d{4} asean university network / southeast asia engineering education development network \.
 \. \d{4} anpad associacao nacional de pos graduacao e pesquisa them administracao \.
 \. \d{4} african journal of science , technology , innovation and development \.$
 \. \d{4} , university of zagreb , faculty of organization and informatics \.
@@ -273,6 +277,7 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \. \d{4} de silva , burstein , jelinek , stranieri \.$
 \. \d{4} certified financial planner board of standards , inc \.
 \. \d{4} by the authors \. licensee esj , italy \.
+\. \d{4} by author / s and licensed by modestum \.
 \. \d{4} babita singla , kumar shalender and nripendra singh \.
 \. \d{4} asean university network\/southeast asia engineering education development network \.
 \. \d{4} academy of medical sciences of i\.r \. iran \.
@@ -352,6 +357,7 @@ article s contents are provided on an attribution non commercial
 \. \d{4} korean distribution science association \( kodisa \) \.
 \. \d{4} kelley school of business , indiana university \.
 \. \d{4} infopro digital risk \( ip \) limited \.
+\. \d{4} incisive risk information \( ip \) limited \.
 \. \d{4} hisin \( history of information systems \) \.
 \. \d{4} editorial department of electric power engineering technology \.
 \. \d{4} department of economics , university of calcutta \.
@@ -491,6 +497,7 @@ advanced science published by wiley vch gmbh \.
 \. the institution of engineering and technology \.$
 \. the editors and contributors severally \d{4} \.
 \. the editor and contributors severally \d{4} \.
+\. the authors published by edp sciences \.
 \. tamkang university , all rights reserved .$
 \. sakun boon itt , yukolpat skunkan \.$
 \. risk management and insurance review , \d{4}$
@@ -506,6 +513,7 @@ advanced science published by wiley vch gmbh \.
 \. brody foster , matthew david krasowski \.$
 \. bezhan a \. v. , \d{4} \.$
 \. author \( s \) retain copyright ,
+\. \d{4} zhongguo dianli / electric power \.
 \. \d{4} valdone darskuviene , nomeda lisauskiene \.$
 \. \d{4} university of california , berkeley \.
 \. \d{4} universidade federal de campina grande \.

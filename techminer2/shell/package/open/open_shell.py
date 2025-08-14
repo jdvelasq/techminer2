@@ -8,7 +8,8 @@
 # pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.system.open.commands import execute_copyright_command
+from techminer2.shell.package.open.commands import execute_copyright_command
+from techminer2.shell.package.open.commands import execute_nounphrases_command
 
 
 class OpenShell(BaseShell):
@@ -18,3 +19,7 @@ class OpenShell(BaseShell):
     def do_copyright(self, arg):
         """Open copyright regex system file."""
         execute_copyright_command()
+
+    def do_nounphrases(self, arg):
+        """Open known noun phrases system file."""
+        execute_nounphrases_command()
