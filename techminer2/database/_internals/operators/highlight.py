@@ -18,6 +18,7 @@ from tqdm import tqdm  # type: ignore
 
 SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
     "abstract",
+    "abbreviations",
     "aim",
     "aims",
     "analysis",
@@ -115,6 +116,7 @@ COMPOUND_STRUCTURED_ABSTRACT_MARKERS = [
     "key findings",
     "key messages",
     "key results",
+    "limitations and implications",
     "main findings",
     "main measures",
     "main outcome ( s )",
@@ -433,42 +435,68 @@ def make_final_corrections(text):
     text = text.replace(" ( AND_X ) ", " ( and x ) ")
     text = text.replace(" . S . ", " . s . ")
 
-    text = text.replace(" /MONTH ", " /month ")
+    text = re.sub(r"(\d)/([a-zA-Z_0-9]+)", r"\1 /\2", text)
+
+    text = text.replace(" DKK_/_MWH ", " dkk/mwh ")
     text = text.replace(" EQ./mwh ", " eq./mwh ")
     text = text.replace(" EQ/kw ", " eq/kw ")
     text = text.replace(" EQ/mwh ", " eq/mwh ")
+    text = text.replace(" EUR/mwh ", " eur/mwh ")
+    text = text.replace(" EURO/mwh ", " euro/mwh ")
+    text = text.replace(" G_/_KWH ", " g/kwh ")
     text = text.replace(" gj/YEAR ", " gj/year ")
     text = text.replace(" gwh/YEAR ", " gwh/year ")
     text = text.replace(" h/DAY ", " h/day ")
-    text = text.replace(" HK_$ /KWH ", " hk $ /kwh ")
+    text = text.replace(" HK_$ /KWH ", " hk$/kwh ")
+    text = text.replace(" i.E. ", " i.e. ")
     text = text.replace(" innwind.EU ", " innwind . eu ")
     text = text.replace(" IRR/kwh ", " irr/kwh ")
     text = text.replace(" kg/YEAR ", " kg/year ")
     text = text.replace(" kwh/DAY ", " kwh/day ")
+    text = text.replace(" kwh/MONTH ", " kwh/month ")
     text = text.replace(" l/YEAR ", " l/year ")
-    text = text.replace(" TONS/YEAR ", " tons/year ")
+    text = text.replace(" MWH_/_YR ", " mhw/yr ")
+    text = text.replace(" mwh/YEAR ", " mwh/year ")
+    text = text.replace(" OMR_/_KWH ", " omr/kwh ")
+    text = text.replace(" THE_F . E . c .", " the f . e . c .")
     text = text.replace(" TON/YEAR ", " ton/year ")
+    text = text.replace(" TONS ", " tons ")
+    text = text.replace(" TONS/YEAR ", " tons/year ")
     text = text.replace(" twh/YEAR ", " twh/year ")
     text = text.replace(" US_CENTS/kwh ", " us cents/kwh ")
+    text = text.replace(" USD/barrel ", " usd/barrel ")
     text = text.replace(" USD/KW_HR ", " usd/kw_hr ")
     text = text.replace(" USD/kwh ", " usd/kwh ")
     text = text.replace(" USD/mwh ", " usd/mwh ")
+    text = text.replace(" CT / KWH ", " ct/kwh ")
     text = text.replace(" you.s ", " you . s ")
-    text = text.replace("POLENERGIA/EQUINOR", "polenergia/equinor")
-    text = text.replace(" USD/barrel ", " usd/barrel ")
     text = text.replace(" yuan/TON ", " yuan/ton ")
-    text = text.replace(" EUR/mwh ", " eur/mwh ")
-    text = text.replace(" kwh/MONTH ", " kwh/month ")
-    text = text.replace(" EURO/mwh ", " euro/mwh ")
+    text = text.replace("/DAY ", "/day ")
     text = text.replace("/KW_H ", "/kw_h ")
-    text = text.replace(" mwh/YEAR ", " mwh/year ")
-    text = text.replace(" THE_F . E . c .", " the f . e . c .")
-    text = text.replace(" i.E. ", " i.e. ")
-    text = text.replace(" MWH_/_YR ", " mhw / yr ")
-    text = text.replace(" TONS ", " tons ")
-    text = text.replace(" G_/_KWH ", " g / kwh ")
-    text = text.replace(" OMR_/_KWH ", " omr / kwh ")
-    text = text.replace(" DKK_/_MWH ", " dkk / mwh ")
+    text = text.replace("/KWH ", "/kwh ")
+    text = text.replace("/LEVEL ", "/level ")
+    text = text.replace("/MONTH ", "/month ")
+    text = text.replace("/MW ", "/mw ")
+    text = text.replace("/MW_H ", "/mwh ")
+    text = text.replace("/MWH ", "/mwh ")
+    text = text.replace("/TON ", "/ton ")
+    text = text.replace("/YEAR ", "/year ")
+    text = text.replace("/YR ", "/year ")
+    text = text.replace("/KWEL ", "/kwel ")
+
+    text = text.replace(" DKK/", " dkk/")
+    text = text.replace(" EQ/", " eq/")
+    text = text.replace(" EURO/", " euro/")
+    text = text.replace(" EUROS/", " euros/")
+    text = text.replace(" USD/", " usd/")
+    text = text.replace(" HK $ /", " hk$/")
+    text = text.replace(" MWH/", " mwh/")
+    text = text.replace(" OMR/", " omr/")
+    text = text.replace(" TON/", " ton/")
+    text = text.replace(" TONS/", " tons/")
+
+    text = text.replace("POLENERGIA/EQUINOR", "polenergia/equinor")
+
     text = text.replace(
         " . THE_CONTRIBUTIONS of THIS_PAPER are : ",
         " . the contributions of this paper are : ",

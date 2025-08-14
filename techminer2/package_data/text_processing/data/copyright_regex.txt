@@ -1169,3 +1169,4 @@ australis
 (\b[a-z]+\b\s)*conferencia(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*conference(\s\b[a-z\+]+\b)*
 (\b[a-z]+\b\s)*asociacion(\s\b[a-z\+]+\b)*
+for PERMISSIONS , please email

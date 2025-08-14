@@ -8,13 +8,16 @@
 # pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.database.tools.commands import execute_copyright_command
-from techminer2.shell.database.tools.commands import execute_desambiguate_command
-from techminer2.shell.database.tools.commands import execute_doctypes_command
-from techminer2.shell.database.tools.commands import execute_generic_command
-from techminer2.shell.database.tools.commands import execute_summary_command
-from techminer2.shell.database.tools.commands import execute_titles_command
-from techminer2.shell.database.tools.commands import execute_view_command
+from techminer2.shell.database.tools.commands import (
+    execute_colons_command,
+    execute_copyright_command,
+    execute_desambiguate_command,
+    execute_doctypes_command,
+    execute_summary_command,
+    execute_titles_command,
+    execute_view_command,
+    execute_generic_command,
+)
 
 
 class ToolsShell(BaseShell):
@@ -24,6 +27,10 @@ class ToolsShell(BaseShell):
     def do_copyright(self, arg):
         """Extract copyright text."""
         execute_copyright_command()
+
+    def do_colons(self, arg):
+        """Extract colons text."""
+        execute_colons_command()
 
     def do_desambiguate(self, arg):
         """Disambiguate terms."""
@@ -48,3 +55,6 @@ class ToolsShell(BaseShell):
     def do_view(self, arg):
         """View records."""
         execute_view_command()
+
+
+#

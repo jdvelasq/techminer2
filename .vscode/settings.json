@@ -1,7 +1,7 @@
 {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    // "editor.defaultFormatter": "ms-python.black-formatter",
     "notebook.defaultFormatter": "ms-python.black-formatter",
-    "editor.codeActionsOnSave": {},
+    // "editor.codeActionsOnSave": {},
     "flake8.args": [
         "--config=pyproject.toml"
     ],
@@ -14,11 +14,10 @@
     "makefile.configureOnOpen": false,
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
-        "editor.formatOnSave": true
-        /*,
+        "editor.formatOnSave": true ,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
-        },*/
+        }
     },
     "isort.args": [
         "--profile",

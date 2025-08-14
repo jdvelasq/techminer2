@@ -8,11 +8,11 @@
 """
 Collect Descriptors
 ===============================================================================
-
+# >>> CollectDescriptors(root_directory="examples/fintech/").run()
 
 Example:
     >>> from techminer2.database.tools import CollectDescriptors
-    >>> CollectDescriptors(root_directory="examples/fintech/").run()
+    >>> CollectDescriptors(root_directory="../tm2_economics_of_wind_energy/").run()
 
 
 
@@ -22,12 +22,24 @@ Example:
 import sys
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.preprocessors import internal__preprocess_abbreviations
-from techminer2.database._internals.preprocessors import internal__preprocess_descriptors
-from techminer2.database._internals.preprocessors import internal__preprocess_raw_abstract_nouns_and_phrases
-from techminer2.database._internals.preprocessors import internal__preprocess_raw_descriptors
-from techminer2.database._internals.preprocessors import internal__preprocess_raw_document_title_nouns_and_phrases
-from techminer2.database._internals.preprocessors import internal__preprocess_raw_noun_and_phrases
+from techminer2.database._internals.preprocessors import (
+    internal__preprocess_abbreviations,
+)
+from techminer2.database._internals.preprocessors import (
+    internal__preprocess_descriptors,
+)
+from techminer2.database._internals.preprocessors import (
+    internal__preprocess_raw_abstract_nouns_and_phrases,
+)
+from techminer2.database._internals.preprocessors import (
+    internal__preprocess_raw_descriptors,
+)
+from techminer2.database._internals.preprocessors import (
+    internal__preprocess_raw_document_title_nouns_and_phrases,
+)
+from techminer2.database._internals.preprocessors import (
+    internal__preprocess_raw_noun_and_phrases,
+)
 
 
 class CollectDescriptors(

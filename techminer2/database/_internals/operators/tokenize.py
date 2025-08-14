@@ -147,7 +147,7 @@ def tokenize(text):
         regex=True,
     )
 
-    # ACorrection: add spaces around three-letter abbreviations separated by periods.
+    # Correction: add spaces around three-letter abbreviations separated by periods.
     # (e.g., " A.B.C " becomes " A . B . C ").
     text = text.str.replace(
         r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s",
@@ -176,11 +176,7 @@ def tokenize(text):
 
     # Correction: Add a space before an equals sign if followed by numeric characters.
     # (e.g., " =123" becomes " = 123").
-    text = text.str.replace(
-        r"\s=(\d+)",
-        r" = \1",
-        regex=True,
-    )
+    text = text.str.replace(r"\s=(\d+)", r" = \1", regex=True)
 
     # Correction: Add a space around a four-digit year followed by a period.
     # (e.g., " 2020. " becomes " 2020 . ").
@@ -216,11 +212,21 @@ def tokenize(text):
     # with spaced periods (" . .").
     text = text.str.replace(" \.\.$", " . .", regex=True)
 
+    # Correction: Add spacing between the point and the letter in " .LETTER"
+    text = text.str.replace(r" \.([a-z])", r" . \1", regex=True)
+
     # Correction: Replace "trial registration :" with "trial_registration:"
     # to standardize the format.
     text = text.str.replace(
         " trial registration : ", " trial_registration :", regex=True
     )
+
+    # Correction: energy units
+    text = text.str.replace(" g / kwh ", " g/kwh ", regex=False)
+    text = text.str.replace("/mw h ", "/mwh ", regex=False)
+    text = text.str.replace("/kw h ", "/kwh ", regex=False)
+    text = text.str.replace("/kw hr ", "/kwh ", regex=False)
+    text = text.str.replace("us cents/kwh ", "uscents/kwh ", regex=False)
 
     # Remove all non-ASCII characters:
     # Normalize text to NFKD form, encode to ASCII (ignoring errors), and decode back to UTF-8.
