@@ -43,6 +43,11 @@ examples/url/data/
 examples/url/outputs/
 examples/url/src/
 
+examples/punctuation/data/
+examples/punctuation/outputs/
+examples/punctuation/src/
+
+
 debug.ipynb
 
 # Sphinx documentation
