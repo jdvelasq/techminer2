@@ -12,6 +12,7 @@ import re
 import contractions  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize
+import unicodedata
 
 
 def internal__tokenize(
@@ -51,6 +52,33 @@ def tokenize(text):
     text = text.map(
         lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
     )
+
+    # Normalize unicode
+    text = text.map(
+        lambda w: unicodedata.normalize("NFKD", w) if isinstance(w, str) else w
+    )
+
+    # Replace full-width punctuation with ASCII equivalents
+    full_width_to_ascii = {
+        "。": ".",  # Full-width period
+        "，": ",",  # Full-width comma
+        "：": ":",  # Full-width colon
+        "；": ";",  # Full-width semicolon
+        "！": "!",  # Full-width exclamation mark
+        "？": "?",  # Full-width question mark
+        "（": "(",  # Full-width opening parenthesis
+        "）": ")",  # Full-width closing parenthesis
+        "“": '"',  # Full-width double quote
+        "”": '"',  # Full-width double quote
+        "‘": "'",  # Full-width single quote
+        "’": "'",  # Full-width single quote
+    }
+    for full_width, ascii_char in full_width_to_ascii.items():
+        text = text.str.replace(full_width, ascii_char)
+
+    # Add spaces around punctuation (e.g., "word.word" -> "word . word")
+    text = text.str.replace(r"([a-zA-Z])([.,!?;:])", r"\1 \2", regex=True)
+    text = text.str.replace(r"([.,!?;:])([a-zA-Z])", r"\1 \2", regex=True)
 
     # find all URLs in the pandas series
     url_pattern = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
@@ -125,34 +153,40 @@ def tokenize(text):
 
     # Correction: Add spaces around single-letter abbreviations separated by periods.
     # (e.g., " A.B " becomes " A . B ").
-    text = text.str.replace(
-        r"\s([a-zA-Z])\.([a-zA-Z])\s",
-        r" \1 . \2 ",
-        regex=True,
-    )
+    text = text.str.replace(r"\s([a-zA-Z])\.([a-zA-Z])\s", r" \1 . \2 ", regex=True)
 
     # Correction: Add spaces around tokens separated by periods.
     # (e.g., "xxx.yyy " becomes " xxx . yyy ").
-    text = text.str.replace(
-        r"\s([a-zA-Z]+)\.([a-zA-Z]+)\s",
-        r" \1 . \2 ",
-        regex=True,
-    )
+    text = text.str.replace(r"\s([a-zA-Z]+)\.([a-zA-Z]+)\s", r" \1 . \2 ", regex=True)
 
     # Correction: Add spaces around a text separated by a two points.
     # (e.g., "xxx:yyy " becomes "xxx : yyy ").
-    text = text.str.replace(
-        r"([a-zA-Z]+):([a-zA-Z]+)",
-        r"\1 : \2",
-        regex=True,
-    )
+    text = text.str.replace(r"([a-zA-Z]+):([a-zA-Z]+)", r"\1 : \2", regex=True)
+
+    # Correction: Add spaces around a text separated by a comma.
+    # (e.g., "xxx, " becomes "xxx , ").
+    text = text.str.replace(r" ([a-z]+), ", r" \1 , ", regex=True)
+
+    # Correction: Add spaces around a text separated by a comma.
+    # (e.g., "xxx,yyy " becomes "xxx , yyy ").
+    text = text.str.replace(r" ([a-z]+),([a-z]+) ", r" \1 , \2 ", regex=True)
+
+    # Correction: Add spaces around a text separated by a point.
+    # (e.g., "xxx. yyy " becomes "xxx . yyy ").
+    text = text.str.replace(r"([a-zA-Z]+)\. ([a-zA-Z]+)", r"\1 . \2", regex=True)
+
+    # Correction: Add spaces around a text finished with two points.
+    # (e.g., "xxx.. " becomes "xxx . . ").
+    text = text.str.replace(r"([a-zA-Z]+)\.\. ", r"\1 . . ", regex=True)
+
+    # Correction: Add spaces around a text finished with thee points.
+    # (e.g., "xxx... " becomes "xxx . . . ").
+    text = text.str.replace(r"([a-zA-Z]+)\.\.\. ", r"\1 . . . ", regex=True)
 
     # Correction: add spaces around three-letter abbreviations separated by periods.
     # (e.g., " A.B.C " becomes " A . B . C ").
     text = text.str.replace(
-        r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s",
-        r" \1 . \2 . \3 ",
-        regex=True,
+        r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s", r" \1 . \2 . \3 ", regex=True
     )
 
     # Correction: Add spaces around four-letter abbreviations separated by periods.

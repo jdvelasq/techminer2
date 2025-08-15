@@ -213,7 +213,7 @@ class ReplaceHyphenatedWords(
     def internal__fix_bad_hyphenated_words_in_keys(self):
 
         # replace the word by this hyphenated version
-        words = internal__load_text_processing_terms("non_hypened_words.txt")
+        words = internal__load_text_processing_terms("non_hyphenated_words.txt")
 
         patterns = []
 
