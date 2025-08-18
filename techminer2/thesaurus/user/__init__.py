@@ -3,6 +3,7 @@
 from techminer2.thesaurus.user.general.apply_thesaurus import ApplyThesaurus
 from techminer2.thesaurus.user.general.clump_keys import ClumpKeys
 from techminer2.thesaurus.user.general.explode_keys import ExplodeKeys
+from techminer2.thesaurus.user.general.cutoff_fuzzy_merging import CutoffFuzzyMerging
 from techminer2.thesaurus.user.general.initialize_thesaurus import InitializeThesaurus
 from techminer2.thesaurus.user.general.integrity_check import IntegrityCheck
 from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
@@ -40,6 +41,7 @@ __all__ = [
     "BritishToAmericanSpelling",
     "ClumpKeys",
     "CombineKeys",
+    "CutoffFuzzyMerging",
     "ExplodeKeys",
     "InitializeThesaurus",
     "IntegrityCheck",

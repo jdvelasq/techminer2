@@ -13,7 +13,7 @@ Ingest Scopus
 
 Example:
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS +SKIP
+    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS
 
 
 
@@ -22,6 +22,8 @@ Example:
 import pathlib
 import sys
 import time
+
+from techminer2.database._internals.db import internal__check_hyphenated_form
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.datatests.check_empty_terms import (
@@ -157,12 +159,15 @@ class IngestScopus(
         start_time = time.time()
 
         #### delete file
-        file_path = (
-            pathlib.Path(self.params.root_directory)
-            / "my_keywords/undetected_keywords.txt"
-        )
-        if file_path.exists():
-            file_path.unlink()
+        for file in [
+            "my_keywords/undetected_keywords.txt",
+            "my_keywords/hyphenated_is_incorrect.txt",
+            "my_keywords/hyphenated_is_correct.txt",
+        ]:
+
+            file_path = pathlib.Path(self.params.root_directory) / file
+            if file_path.exists():
+                file_path.unlink()
 
         #
         # PHASE 1: Preparing database files and folders
@@ -174,6 +179,9 @@ class IngestScopus(
         internal__load_raw_files(root_directory)
         internal__rename_columns(root_directory)
         internal__drop_empty_columns(root_directory)
+
+        #
+        internal__check_hyphenated_form(root_directory)
 
         #
         #

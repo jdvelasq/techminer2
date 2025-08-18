@@ -1,4 +1,5 @@
 """Commands"""
+
 from .alphabet import execute_alphabet_command
 from .endswith import execute_endswith_command
 from .exact import execute_exact_command
@@ -12,6 +13,7 @@ from .startswith import execute_startswith_command
 from .stopwords import execute_stopwords_command
 from .wordlength import execute_wordlength_command
 from .wordmatch import execute_wordmatch_command
+
 
 __all__ = [
     "execute_alphabet_command",

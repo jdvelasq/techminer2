@@ -35,12 +35,14 @@ from .sort.sort_by_word_length import SortByWordLength
 from .sort.sort_by_word_match import SortByWordMatch
 from .translate.american_to_british_spelling import AmericanToBritishSpelling
 from .translate.british_to_american_spelling import BritishToAmericanSpelling
+from .general.cutoff_fuzzy_merging import CutoffFuzzyMerging
 
 __all__ = [
     "ApplyThesaurus",
     "CombineKeys",
     "NormalizeKeys",
     "ClumpKeys",
+    "CutoffFuzzyMerging",
     "IntegrityCheck",
     "InitializeThesaurus",
     "ReduceKeys",

@@ -170,7 +170,11 @@ def internal__sort_text_processing_terms():
             sort_known_organizations(file_name)
             continue
 
-        if file_name.endswith("hyphenated_words.txt"):
+        if file_name.endswith("hyphenated_is_correct.txt"):
+            sort_hypened_words(file_name)
+            continue
+
+        if file_name.endswith("hyphenated_is_incorrect.txt"):
             sort_hypened_words(file_name)
             continue
 
