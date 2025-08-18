@@ -112,13 +112,13 @@ class ReplaceHyphenatedWords(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__transform_hyphenated_words_in_keys(self):
+    def internal__fix_when_hyphenated_form_is_correct(self):
 
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         # replace the word by this hyphenated version
-        words = internal__load_text_processing_terms("hyphenated_words.txt")
+        words = internal__load_text_processing_terms("hyphenated_is_correct.txt")
 
         patterns = []
 
@@ -210,10 +210,10 @@ class ReplaceHyphenatedWords(
         tqdm.pandas(desc=None)
 
     # -------------------------------------------------------------------------
-    def internal__fix_bad_hyphenated_words_in_keys(self):
+    def internal__fix_when_hyphenated_form_is_incorrect(self):
 
         # replace the word by this hyphenated version
-        words = internal__load_text_processing_terms("non_hyphenated_words.txt")
+        words = internal__load_text_processing_terms("hyphenated_is_incorrect.txt")
 
         patterns = []
 
@@ -319,11 +319,10 @@ class ReplaceHyphenatedWords(
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         #
-        self.internal__transform_hyphenated_words_in_keys()
-        self.internal__fix_bad_hyphenated_words_in_keys()
+        self.internal__fix_when_hyphenated_form_is_correct()
+        self.internal__fix_when_hyphenated_form_is_incorrect()
         #
         self.internal__reduce_keys()
-
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
