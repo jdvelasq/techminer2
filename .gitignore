@@ -187,3 +187,5 @@ dmypy.json
 .pyre/
 
 example/zotero.log
+hyphenated_is_correct.txt
+hyphenated_is_incorrect.txt
