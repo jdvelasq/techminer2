@@ -7,7 +7,7 @@ def execute_nonhyphenated_command():
     print()
 
     file_path = files("techminer2.package_data.text_processing.data").joinpath(
-        "non_hyphenated_words.txt"
+        "hyphenated_is_incorrect.txt"
     )
     file_path = str(file_path)
 
