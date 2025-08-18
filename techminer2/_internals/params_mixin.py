@@ -37,6 +37,7 @@ class Params:
     contour_opacity: float = 0.6
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
+    cutoff_threshold: float = 85.0
 
     #
     # D
@@ -78,7 +79,7 @@ class Params:
     #
     manifold_algorithm = None
     marker_size: float = 7
-    match_threshold: float = 80.0
+    match_threshold: float = 95.0
     maximum_occurrence: int = 10
     minimum_terms_in_cluster: int = 5
 
@@ -248,6 +249,10 @@ class ParamsMixin:
 
     def having_citation_threshold(self, threshold):
         self.params.citation_threshold = threshold
+        return self
+
+    def having_cutoff_threshold(self, threshold):
+        self.params.cutoff_threshold = threshold
         return self
 
     def having_keys_ordered_by(self, order):
