@@ -7,7 +7,7 @@ def execute_hyphenated_command():
     print()
 
     file_path = files("techminer2.package_data.text_processing.data").joinpath(
-        "hyphenated_words.txt"
+        "hyphenated_is_correct.txt"
     )
     file_path = str(file_path)
 
