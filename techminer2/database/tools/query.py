@@ -13,7 +13,7 @@ Query
 
 Example:
     >>> from techminer2.database.tools import Query
-    >>> (
+    >>> df = (
     ...     Query()
     ...     #
     ...     .with_query_expression("SELECT source_title FROM database LIMIT 5;")
@@ -25,12 +25,34 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df
                                             source_title
     0  International Journal of Applied Engineering R...
     1                          Telecommunications Policy
     2                             China Economic Journal
     3  Contemporary Studies in Economic and Financial...
     4                              New Political Economy
+
+    >>> df = (
+    ...     Query()
+    ...     #
+    ...     .with_query_expression("SELECT raw_descriptors, raw_nouns_and_phrases, raw_keywords FROM database;")
+    ...     #
+    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_database_is("main")
+    ...     .where_record_years_range_is(None, None)
+    ...     .where_record_citations_range_is(None, None)
+    ...     #
+    ...     .run()
+    ... )
+    >>> for i, row in df.iterrows():
+    ...     if row["raw_keywords"] is None:
+    ...         set_a = set()
+    ...     else:
+    ...         set_a = set(row["raw_keywords"].split("; "))
+    ...     set_b = set(row["raw_nouns_and_phrases"].split("; "))
+    ...     set_c = set(row["raw_descriptors"].split("; "))
+    ...     assert (set_a | set_b) == set_c, f"Row {i} mismatch: {set_a} + {set_b} != {set_c}"
 
 
 
