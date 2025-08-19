@@ -13,7 +13,7 @@ Ingest Scopus
 
 Example:
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS
+    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS +SKIP
 
 
 

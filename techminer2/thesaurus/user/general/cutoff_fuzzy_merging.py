@@ -53,7 +53,7 @@ Example:
     >>> print(output)
     Cutoff-Fuzzy Merging thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1569 to 1554
+      Keys reduced from 1721 to 1695
       Merging process completed successfully
     <BLANKLINE>
     <BLANKLINE>

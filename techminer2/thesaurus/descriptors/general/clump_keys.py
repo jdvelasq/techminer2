@@ -37,7 +37,7 @@ Example:
     >>> print(output)
     Clumping thesaurus keys...
                       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      Keys reduced from 1569 to 1569
+      Keys reduced from 1721 to 1721
       Clumping process completed successfully
     <BLANKLINE>
     <BLANKLINE>

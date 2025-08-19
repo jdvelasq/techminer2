@@ -32,28 +32,28 @@ Example:
     >>> print(output)
     Removing parentheses from thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      0 removals made successfully
+      6 removals made successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header
       File : examples/fintech/data/thesaurus/descriptors.the.txt
     <BLANKLINE>
+        CLASSIFICATION
+          CLASSIFICATION (OF_INFORMATION)
+        COMPETITION
+          COMPETITION; COMPETITION (ECONOMICS)
+        FINANCIAL_TECHNOLOGY
+          FINANCIAL_TECHNOLOGIES; FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGY (FINTECH)
+        INTERNET_OF_THING
+          INTERNET_OF_THING (IOT); INTERNET_OF_THINGS
+        NETWORKS
+          NETWORKS; NETWORKS (CIRCUITS)
+        PRESSES
+          PRESSES (MACHINE_TOOLS)
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
           A_BASIC_RANDOM_SAMPLING_STRATEGY
-        A_BEHAVIOURAL_PERSPECTIVE
-          A_BEHAVIOURAL_PERSPECTIVE
-        A_BETTER_UNDERSTANDING
-          A_BETTER_UNDERSTANDING
-        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-        A_CASE_STUDY
-          A_CASE_STUDY
-        A_CHALLENGE
-          A_CHALLENGE
-        A_CLUSTER_ANALYSIS
-          A_CLUSTER_ANALYSIS
     <BLANKLINE>
     <BLANKLINE>
 

@@ -61,10 +61,10 @@ Example:
     HPE ) sector ( E . g . , engineering , ECONOMICS ) . outcomes : THE_INCLUDED_STUDIES used
     QUALITATIVE_RESEARCH . data collection and analysis : TWO_MEMBERS of THE_REVIEW_TEAM
     THE_INCLUDED_STUDIES . main results : we found 5873 potentially RELEVANT_RECORDS , of
-    mean difference [ smd ] = 0.57 , 95 % confidence interval [ ci ] = 0.25 to 0.90 , 2 :
-    1.16. i2 : 98 % . p < 0.00001 , 44 STUDIES , n = 7813 ) . in A_SENSITIVITY_ANALYSIS that
-    TRADITIONAL_CLASS_LEARNING ( smd = 0.54 , 95 % ci = 0.24 to 0.85 , 2 : 0.76. i2 : 97 % . p
-    TRADITIONAL_CLASS_LEARNING ( smd = 0.48 , 95 % ci = 0.15 to 0.82 , 2 : 0.19 , i2:89 % , p
+    interval [ ci ] = 0.25 to 0.90 , 2 : 1.16. i2 : 98 % . p < 0.00001 , 44 STUDIES , n = 7813
+    , 2 : 0.76. i2 : 97 % . p < 0.00001 , 33 STUDIES , n = 5924 ) . all being LOW_CERTAINTY of
+    compared to TRADITIONAL_CLASS_LEARNING ( smd = 0.48 , 95 % ci = 0.15 to 0.82 , 2 : 0.19 ,
+    i2:89 % , p < 0.00001 , 8 STUDIES n = 1696 ) . all being LOW_CERTAINTY of EVIDENCE .
     promote LEARNING through A_WORK jointly led by TEACHERS_AND_STUDENTS . objective : to
     THE_RESEARCH_METHODOLOGY_COURSE . methodology : a prospective , longitudinal ,
     QUASI_EXPERIMENTAL_RESEARCH_DESIGN . place : HEALTH_SCIENCES_FACULTY , at
@@ -167,7 +167,7 @@ Example:
     MEDICAL_STUDENT_ORTHOPAEDIC_KNOWLEDGE . design : ORTHOACCESS 2.0 is a 16 week ,
     EMERGING_THEMES . setting : LECTURES were presented weekly in PERSON for STUDENTS at
     posted to THE_WEBSITE . participants : ORTHOACCESS 2.0 was hosted from JUNE to OCTOBER
-    attended at_least 8 /16 CASE_DISCUSSIONS . results : in THE_POST_CURRICULUM_SURVEY , 68 %
+    attended at_least 8/16 CASE_DISCUSSIONS . results : in THE_POST_CURRICULUM_SURVEY , 68 %
     n=44 ) . conclusions : this FLIPPED_CLASSROOM , BLENDED_LEARNING_CURRICULUM has improved
     FLIPPED_CLASSROOM model for THE_EMPOWERMENT of NEW_GRADUATE_NURSES ( NGNS ) . design :
     SINGLE_CENTER , PARALLEL_GROUP , RANDOMIZED_CONTROLLED_TRIAL . methods : the study was

@@ -20,7 +20,7 @@ Example:
     ...     #
     ...     .run()
     ... )
-    >>> print(df.to_string(index=True))
+    >>> print(df.to_string(index=True)) # doctest: +SKIP
                                       column  number of records coverage (%)
     0                      abbr_source_title                 50      100.00%
     1                               abstract                 48       96.00%

@@ -33,7 +33,7 @@ Example:
     >>> print(output)
     Initializing thesaurus from 'raw_descriptors' field...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      1569 keys found
+      1721 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header

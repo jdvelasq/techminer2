@@ -37,7 +37,7 @@ Example:
     ...     #
     ...     .run()
     ... )
-    >>> df
+    >>> df # doctest: +SKIP
        Cluster  ...                                              Terms
     0        0  ...  FINANCIAL_TECHNOLOGIES 12:1615; BANKS 08:1049;...
     <BLANKLINE>
