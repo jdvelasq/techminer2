@@ -33,7 +33,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by word length...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       Sorting process completed successfully

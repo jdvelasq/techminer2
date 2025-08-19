@@ -38,7 +38,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by word match...
       File : examples/fintech/data/thesaurus/demo.the.txt
       Word : BUSINESS

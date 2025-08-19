@@ -1,7 +1,7 @@
 # flake8: noqa
 """Functions for preprocessing database fields."""
 from .abbr_source_title import internal__preprocess_abbr_source_title
-from .abbreviations import internal__preprocess_abbreviations
+from .acronyms import internal__preprocess_acronyms
 from .abstract import internal__preprocess_abstract
 from .author_keywords import internal__preprocess_author_keywords
 from .author_names import internal__preprocess_author_names
@@ -46,7 +46,7 @@ from .tokenized_document_title import internal__preprocess_tokenized_document_ti
 
 __all__ = [
     "internal__preprocess_abbr_source_title",
-    "internal__preprocess_abbreviations",
+    "internal__preprocess_acronyms",
     "internal__preprocess_abstract",
     "internal__preprocess_author_keywords",
     "internal__preprocess_author_names",

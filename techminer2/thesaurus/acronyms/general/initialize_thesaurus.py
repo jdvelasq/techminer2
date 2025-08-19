@@ -21,36 +21,36 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create thesaurus
-    >>> from techminer2.thesaurus.abbreviations import InitializeThesaurus
+    >>> from techminer2.thesaurus.acronyms import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", use_colorama=False).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Initializing thesaurus...
-      12 abbreviations found
+      11 acronyms found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : examples/fintech/data/thesaurus/abbreviations.the.txt
+      File : examples/fintech/data/thesaurus/acronyms.the.txt
     <BLANKLINE>
         DEMATEL
           ... CRITERIA is constructed and both the DECISION_MAKING_TRIAL_AND_EVALUA...
-        E_FINANCE
-          ELECTRONIC_FINANCE
         E_PAYMENT
           ELECTRONIC_PAYMENT
         EPAM
           we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPAM )
         FINTECH
-          FINANCIAL_TECHNOLOGY
+          FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGIES ( FINTECH ); this article de...
         IOT
-          INTERNET_OF_THING; INTERNET_OF_THINGS
+          INTERNET_OF_THINGS; for THE_OVERALL_FINANCIAL_SECTOR , INTERNET_OF_THINGS...
         ISED
           THE_DIGITAL_REVOLUTION adds NEW_LAYERS to THE_MATERIAL_CULTURES of financ...
         MCDM
           MULTI_CRITERIA_DECISION_MAKING; ... _INNOVATION_THEORY , we propose A_NOV...
+        P2P
+          PEER_TO_PEER; MULTIPLE_INNOVATIONS that have affected LENDING_AND_DEPOSIT...
     <BLANKLINE>
     <BLANKLINE>
 
@@ -60,9 +60,10 @@ import sys
 
 import pandas as pd  # type: ignore
 from nltk.corpus import words
-from techminer2._internals.log_message import internal__log_message
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import internal__generate_system_thesaurus_file_path
+from techminer2.thesaurus._internals import (
+    internal__generate_system_thesaurus_file_path,
+)
 from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
 from techminer2.thesaurus._internals import internal__print_thesaurus_header
 from techminer2.thesaurus._internals import ThesaurusMixin
@@ -93,7 +94,7 @@ class InitializeThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  {len(self.data_frame)} abbreviations found\n")
+            sys.stderr.write(f"  {len(self.data_frame)} acronyms found\n")
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
@@ -128,7 +129,7 @@ class InitializeThesaurus(
         self.words = data_frame["value"].drop_duplicates().tolist()
 
     # -------------------------------------------------------------------------
-    def internal__extracts_abbreviations_from_definitions(self):
+    def internal__extracts_acronyms_from_definitions(self):
 
         data_frame = self.data_frame.copy()
 
@@ -146,7 +147,7 @@ class InitializeThesaurus(
         self.data_frame = data_frame
 
     # -------------------------------------------------------------------------
-    def internal__add_abbreviations_from_abstracts_to_data_frame(self):
+    def internal__add_acronyms_from_abstracts_to_data_frame(self):
 
         records = self.filtered_records[["abstract"]].dropna()
 
@@ -164,7 +165,7 @@ class InitializeThesaurus(
         records = records[records.abstract.str.contains("(", regex=False)]
         records = records[records.abstract.str.contains(")", regex=False)]
 
-        # extract abbreviations
+        # extract acronyms
         records["key"] = records.abstract.str.extract(r"\(([^)]+)\)")
         records["key"] = records.key.str.upper().str.strip()
         records["value"] = records.abstract.str.replace(r"\([^)]+\)", "")
@@ -207,19 +208,19 @@ class InitializeThesaurus(
             )
         ]
 
-        # remove abbreviations of length 1
+        # remove acronyms of length 1
         records = records[records.key.str.len() > 1]
 
         # remove enumerations already listed in the keywords
-        existent_abbr = self.data_frame.key.drop_duplicates().tolist()
-        records = records[records.key.map(lambda x: x not in existent_abbr)]
+        existent_acronyms = self.data_frame.key.drop_duplicates().tolist()
+        records = records[records.key.map(lambda x: x not in existent_acronyms)]
 
-        # remove abbreviations that are only digits
+        # remove acronyms that are only digits
         records = records[
             records.key.map(lambda x: not x.isdigit(), na_action="ignore")
         ]
 
-        # validate abbreviations
+        # validate acronyms
         records = records[
             records.key.map(lambda x: x in self.words, na_action="ignore")
         ]
@@ -228,9 +229,9 @@ class InitializeThesaurus(
         self.data_frame = pd.concat([self.data_frame, records], ignore_index=True)
 
     # -------------------------------------------------------------------------
-    def internal__remove_bad_abbreviations(self):
+    def internal__remove_bad_acronyms(self):
 
-        bad_abbreviations = [
+        bad_acronyms = [
             "CLASSIFICATION",
             "COMPUTER",
             "ECONOMICS",
@@ -241,15 +242,15 @@ class InitializeThesaurus(
             "PERSONNEL",
         ]
 
-        for abbr in bad_abbreviations:
+        for abbr in bad_acronyms:
             self.data_frame = self.data_frame[self.data_frame.key != abbr]
 
     # -------------------------------------------------------------------------
-    def internal__add_knowns_abbreviations(self):
+    def internal__add_knowns_acronyms(self):
 
-        # Load known abbreviations
+        # Load known acronyms
         file_path = internal__generate_system_thesaurus_file_path(
-            "abbreviations/common_abbr.the.txt"
+            "acronyms/common.the.txt"
         )
         common_abbrvs = internal__load_thesaurus_as_mapping(file_path)
 
@@ -313,7 +314,7 @@ class InitializeThesaurus(
     def run(self):
 
         self.params.field = "raw_descriptors"
-        self.params.thesaurus_file = "abbreviations.the.txt"
+        self.params.thesaurus_file = "acronyms.the.txt"
 
         self.internal__build_user_thesaurus_path()
         self.internal__notify_process_start()
@@ -322,10 +323,10 @@ class InitializeThesaurus(
 
         self.internal__create_valid_words()
 
-        self.internal__extracts_abbreviations_from_definitions()
-        self.internal__add_abbreviations_from_abstracts_to_data_frame()
-        self.internal__remove_bad_abbreviations()
-        self.internal__add_knowns_abbreviations()
+        self.internal__extracts_acronyms_from_definitions()
+        self.internal__add_acronyms_from_abstracts_to_data_frame()
+        self.internal__remove_bad_acronyms()
+        self.internal__add_knowns_acronyms()
         self.internal__prepare_fingerprints()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()

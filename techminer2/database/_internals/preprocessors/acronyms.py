@@ -6,15 +6,15 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""Search for abbreviations in a thesaurus."""
+"""Search for acronyms in a thesaurus."""
 import sys
 
 
-def internal__preprocess_abbreviations(root_dir):
+def internal__preprocess_acronyms(root_dir):
 
-    from techminer2.thesaurus.abbreviations import InitializeThesaurus
+    from techminer2.thesaurus.acronyms import InitializeThesaurus
 
-    sys.stderr.write("INFO  Preprocessing abbreviations\n")
+    sys.stderr.write("INFO  Preprocessing acronyms\n")
     sys.stderr.flush()
 
     InitializeThesaurus(root_directory=root_dir).run()

@@ -8,9 +8,15 @@
 # pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.thesaurus.descriptors.replace.commands import execute_abbreviations_command
-from techminer2.shell.thesaurus.descriptors.replace.commands import execute_hyphenated_command
-from techminer2.shell.thesaurus.descriptors.replace.commands import execute_initial_command
+from techminer2.shell.thesaurus.descriptors.replace.commands import (
+    execute_acronyms_command,
+)
+from techminer2.shell.thesaurus.descriptors.replace.commands import (
+    execute_hyphenated_command,
+)
+from techminer2.shell.thesaurus.descriptors.replace.commands import (
+    execute_initial_command,
+)
 from techminer2.shell.thesaurus.descriptors.replace.commands import execute_last_command
 from techminer2.shell.thesaurus.descriptors.replace.commands import execute_word_command
 
@@ -19,9 +25,9 @@ class ReplaceShell(BaseShell):
 
     prompt = make_colorized_prompt("tm2:thesaurus:descriptors:replace")
 
-    def do_abbreviations(self, arg):
-        """Replace abbreviations."""
-        execute_abbreviations_command()
+    def do_acronyms(self, arg):
+        """Replace acronyms."""
+        execute_acronyms_command()
 
     def do_hyphenated(self, arg):
         """Replace hyphenated words."""

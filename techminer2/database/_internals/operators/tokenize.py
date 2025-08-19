@@ -151,7 +151,7 @@ def tokenize(text):
     # (e.g., " '123" becomes " ' 123").
     text = text.str.replace(r" '(\d+)", r" ' \1", regex=True)
 
-    # Correction: Add spaces around single-letter abbreviations separated by periods.
+    # Correction: Add spaces around single-letter acronyms separated by periods.
     # (e.g., " A.B " becomes " A . B ").
     text = text.str.replace(r"\s([a-zA-Z])\.([a-zA-Z])\s", r" \1 . \2 ", regex=True)
 
@@ -183,13 +183,13 @@ def tokenize(text):
     # (e.g., "xxx... " becomes "xxx . . . ").
     text = text.str.replace(r"([a-zA-Z]+)\.\.\. ", r"\1 . . . ", regex=True)
 
-    # Correction: add spaces around three-letter abbreviations separated by periods.
+    # Correction: add spaces around three-letter acronyms separated by periods.
     # (e.g., " A.B.C " becomes " A . B . C ").
     text = text.str.replace(
         r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s", r" \1 . \2 . \3 ", regex=True
     )
 
-    # Correction: Add spaces around four-letter abbreviations separated by periods.
+    # Correction: Add spaces around four-letter acronyms separated by periods.
     # (e.g., " A.B.C.D " becomes " A . B . C . D ").
     text = text.str.replace(
         r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s",
@@ -197,7 +197,7 @@ def tokenize(text):
         regex=True,
     )
 
-    # Correction: Add spaces around two-letter abbreviations followed by a period.
+    # Correction: Add spaces around two-letter acronyms followed by a period.
     # (e.g., " AB. " becomes " AB . ").
     text = text.str.replace(r"\s([a-zA-Z][a-zA-Z])\.\s", r" \1 . ", regex=True)
 

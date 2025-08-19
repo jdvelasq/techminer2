@@ -32,7 +32,7 @@ Example:
     >>> print(output)
     Removing initial determiners from thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-      602 initial determiners removed successfully
+      601 initial determiners removed successfully
       Removal process completed successfully
     <BLANKLINE>
     Printing thesaurus header

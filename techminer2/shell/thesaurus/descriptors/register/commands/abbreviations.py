@@ -9,11 +9,11 @@ from techminer2.thesaurus._internals import internal__load_thesaurus_as_data_fra
 from techminer2.thesaurus._internals import internal__print_thesaurus_header
 
 
-def execute_abbreviations_command():
+def execute_acronyms_command():
 
     print()
 
-    thesaurus_path = "./data/thesaurus/abbreviations.the.txt"
+    thesaurus_path = "./data/thesaurus/acronyms.the.txt"
     internal__print_thesaurus_header(
         thesaurus_path,
         n=10,
@@ -21,14 +21,14 @@ def execute_abbreviations_command():
     )
 
     answer = colorized_input(
-        ". do you want to register new noun phrases from abbreviations (y/[n]) > "
+        ". do you want to register new noun phrases from acronyms (y/[n]) > "
     ).strip()
     if answer.lower() == "n":
         print()
         return
 
     df = internal__load_thesaurus_as_data_frame(thesaurus_path)
-    n_abbreviations = len(df)
+    n_acronyms = len(df)
 
     # prepare terms to insert in the register
     new_terms = df.key.to_list() + df.value.to_list()
@@ -63,9 +63,9 @@ def execute_abbreviations_command():
 
     print()
     print(
-        f"{n_abbreviations}"
+        f"{n_acronyms}"
         + Fore.LIGHTBLACK_EX
-        + " terms founded in abbreviations.the.txt"
+        + " terms founded in acronyms.the.txt"
         + Fore.RESET
     )
     print(

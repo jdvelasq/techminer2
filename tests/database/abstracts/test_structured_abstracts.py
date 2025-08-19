@@ -12,6 +12,7 @@
 Example:
     >>> from techminer2.database.ingest import IngestScopus
     >>> IngestScopus(root_directory="examples/structured/").run() # doctest: +ELLIPSIS
+    N...
 
     >>> import textwrap
     >>> from techminer2.database.tools import RecordMapping
@@ -54,16 +55,16 @@ Example:
     in A_BLENDED_LEARNING_ENVIRONMENT . method : THE_RESEARCH consists of TWO_STUDIES : STUDY
     CHINA . results : FINDINGS revealed that INTRINSIC_MOTIVATION , EXTRINSIC_MOTIVATION ,
     ACADEMIC_PERFORMANCE . discussion : in FUTURE_BLENDED_LEARNING_PRACTICES , it is essential
-    or flipped ' . objectives : THE_PRIMARY_OBJECTIVES of THIS_REVIEW were to assess
+    or ' flipped ' . objectives : THE_PRIMARY_OBJECTIVES of THIS_REVIEW were to assess
     THEIR_COURSE_SATISFACTION . search methods : we identified RELEVANT_STUDIES by searching
     STUDY . intervention : we included ANY_EDUCATIONAL_INTERVENTION that included
-    HPE ) sector ( E.g. , engineering , ECONOMICS ) . outcomes : THE_INCLUDED_STUDIES used
+    HPE ) sector ( E . g . , engineering , ECONOMICS ) . outcomes : THE_INCLUDED_STUDIES used
     QUALITATIVE_RESEARCH . data collection and analysis : TWO_MEMBERS of THE_REVIEW_TEAM
     THE_INCLUDED_STUDIES . main results : we found 5873 potentially RELEVANT_RECORDS , of
-    interval [ ci ] = 0.25 to 0.90 , 2 : 1.16. i2 : 98 % . p < 0.00001 , 44 STUDIES , n = 7813
-    , 2 : 0.76. i2 : 97 % . p < 0.00001 , 33 STUDIES , n = 5924 ) . all being LOW_CERTAINTY of
-    compared to TRADITIONAL_CLASS_LEARNING ( smd = 0.48 , 95 % ci = 0.15 to 0.82 , 2 : 0.19 ,
-    i2:89 % , p < 0.00001 , 8 STUDIES n = 1696 ) . all being LOW_CERTAINTY of EVIDENCE .
+    mean difference [ smd ] = 0.57 , 95 % confidence interval [ ci ] = 0.25 to 0.90 , 2 :
+    1.16. i2 : 98 % . p < 0.00001 , 44 STUDIES , n = 7813 ) . in A_SENSITIVITY_ANALYSIS that
+    TRADITIONAL_CLASS_LEARNING ( smd = 0.54 , 95 % ci = 0.24 to 0.85 , 2 : 0.76. i2 : 97 % . p
+    TRADITIONAL_CLASS_LEARNING ( smd = 0.48 , 95 % ci = 0.15 to 0.82 , 2 : 0.19 , i2:89 % , p
     promote LEARNING through A_WORK jointly led by TEACHERS_AND_STUDENTS . objective : to
     THE_RESEARCH_METHODOLOGY_COURSE . methodology : a prospective , longitudinal ,
     QUASI_EXPERIMENTAL_RESEARCH_DESIGN . place : HEALTH_SCIENCES_FACULTY , at
@@ -93,13 +94,13 @@ Example:
     higher in FAVOUR of THE_FLIPPED_CLASSROOM_MODEL . conclusion : this study provides
     THEIR_ADAPTATION_CHALLENGES . methods : THE_PRESENT_STUDY was A_MIXED_METHOD accomplished
     THEIR_FIRST_EXPERIENCE and OPINION of THE_FC . results : A_TOTAL of 234 QUESTIONNAIRES
-    i got THE_CHANCE to answer ( st . 6 ) . conclusion : THE_RESULTS showed that THE_STUDENTS
+    and i got THE_CHANCE to answer ' ' ( st . 6 ) . conclusion : THE_RESULTS showed that
     , including FACE_TO_FACE_LEARNING combined with ONLINE_LEARNING . objectives :
     following year ' s INTERNSHIP_SUBJECT . design : ANALYTICAL_STUDY of RETROSPECTIVE_COHORTS
     . settings : PHYSIOTHERAPY_UNIVERSITY_DEGREE_PROGRAM . participants :
     THREE_HUNDRED_STUDENTS working towards attaining PHYSIOTHERAPY_DEGREES . methods :
     ASYNCHRONOUS_ONLINE_COMPLEMENTARY_TRAINING during LOCKDOWN . results : THE_RESULTS show
-    CLINICAL_PRACTICE_COMPETENCIES in PHYSIOTHERAPY_STUDENTS . CONTRIBUTION of THE_PAPER :
+    CLINICAL_PRACTICE_COMPETENCIES in PHYSIOTHERAPY_STUDENTS . contribution of the paper :
     TWO_EMERGING_UK_HIGHER_EDUCATION_INSTITUTIONS ( HEIS ) . design / methodology / approach :
     descriptively analysed . findings : the findings revealed that there is some
     THE_USE of BLENDED_TECHNOLOGY and A_FLIPPED_CLASSROOM . practical implications : the study
@@ -124,7 +125,7 @@ Example:
     providing A_SOLID_FOUNDATION for UNDERSTANDING THE_CONTEXT of the study . method :
     HIGHER_EDUCATION . originality / value : THIS_STUDY stands out for
     ( he ) CONTEXT . design / methodology / approach : in A_RESEARCH_METHODS_MODULE , 140
-    VIDEO recorded within BOTH_THE_REAL_AND_VIRTUAL_SPACES . findings : ATTENDANCE was high
+    was VIDEO recorded within BOTH_THE_REAL_AND_VIRTUAL_SPACES . findings : ATTENDANCE was
     ultimately LEARNING_/_PRODUCTIVITY_OUTCOMES . originality / value : THIS_STUDY
     THE_FLIPPED_CLASSROOM_MODEL . materials and methods :
     THE_DIFFERENCES between THE_TWO_GROUPS . results : both LEARNING_MODEL_COHORTS filled out
@@ -165,9 +166,9 @@ Example:
     CONTENT_ANALYSIS were used to generate THE_FINDINGS . results :
     MEDICAL_STUDENT_ORTHOPAEDIC_KNOWLEDGE . design : ORTHOACCESS 2.0 is a 16 week ,
     EMERGING_THEMES . setting : LECTURES were presented weekly in PERSON for STUDENTS at
-    THE_WEBSITE . participants : ORTHOACCESS 2.0 was hosted from JUNE to OCTOBER 2023 with 35
-    attended at_least 8/16 CASE_DISCUSSIONS . results : in THE_POST_CURRICULUM_SURVEY , 68 %
-    ATTENDANCE was CLINICAL_OBLIGATIONS during CASE_DISCUSSIONS ( n=44 ) . conclusions : this
+    posted to THE_WEBSITE . participants : ORTHOACCESS 2.0 was hosted from JUNE to OCTOBER
+    attended at_least 8 /16 CASE_DISCUSSIONS . results : in THE_POST_CURRICULUM_SURVEY , 68 %
+    n=44 ) . conclusions : this FLIPPED_CLASSROOM , BLENDED_LEARNING_CURRICULUM has improved
     FLIPPED_CLASSROOM model for THE_EMPOWERMENT of NEW_GRADUATE_NURSES ( NGNS ) . design :
     SINGLE_CENTER , PARALLEL_GROUP , RANDOMIZED_CONTROLLED_TRIAL . methods : the study was
     randomly assigned to THE_INTERVENTION_GROUP ( n : 32 ) and CONTROL_GROUP ( n : 32 ) .

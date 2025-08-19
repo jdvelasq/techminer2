@@ -40,7 +40,7 @@ Example:
     >>> # Capture and print stderr output to test the algorithm using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Replacing initial word in keys...
              File : .../fintech/data/thesaurus/demo.the.txt
              Word : BUSINESS

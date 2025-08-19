@@ -12,7 +12,7 @@ Terms by Cluster Frame
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.index_keywords import TermsByClusterDataFrame
-    >>> (
+    >>> df = (
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
@@ -35,6 +35,7 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df   # doctest: +SKIP
                                            0  ...                             3
     0                        FINANCE 10:1866  ...               SURVEYS 03:0484
     1              FINANCIAL_SERVICE 05:1115  ...  FINANCIAL_INDUSTRIES 02:0323

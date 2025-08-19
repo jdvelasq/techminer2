@@ -66,7 +66,9 @@ import pandas as pd  # type: ignore
 from techminer2._internals.mixins import Params
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import internal__generate_system_thesaurus_file_path
+from techminer2.thesaurus._internals import (
+    internal__generate_system_thesaurus_file_path,
+)
 from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
 from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
 from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
@@ -313,11 +315,11 @@ class InitializeThesaurus(
         # loads the abbreviation thesaurus
         # loads the country thesaurus as a mapping
         file_path = internal__generate_system_thesaurus_file_path(
-            "abbreviations/organizations_abbr.the.txt"
+            "acronyms/organizations.the.txt"
         )
         mapping = internal__load_thesaurus_as_mapping(file_path)
 
-        # replaces the abbreviations
+        # replaces the acronyms
         for word, abbr in mapping.items():
             self.data_frame["key"] = self.data_frame["key"].str.replace(
                 r"\b" + word + r"\b", abbr[0].replace(".", ""), regex=True

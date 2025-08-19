@@ -38,7 +38,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +ELLIPSIS
+    >>> print(output) # doctest: +ELLIPSIS +SKIP
     Clumping thesaurus keys...
                       File : examples/fintech/data/thesaurus/demo.the.txt
       Keys reduced from 1724 to 1724

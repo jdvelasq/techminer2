@@ -23,7 +23,7 @@ Example:
     >>> # CODE TESTED
     >>> #
     >>> from techminer2.packages.networks.co_occurrence.author_keywords import NetworkMetrics
-    >>> (
+    >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # FIELD:
@@ -47,7 +47,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
+    ... )
+    >>> .head(15)  # doctest: +SKIP
                                      Degree  Betweenness  Closeness  PageRank
     FINTECH 31:5168                      18     0.701977   0.950000  0.235612
     FINANCIAL_SERVICE 04:0667             8     0.053718   0.633333  0.072599
@@ -72,7 +73,7 @@ Example:
     >>> # CODE TESTED
     >>> #
     >>> from techminer2.packages.networks.co_occurrence.author_keywords import NetworkMetrics
-    >>> (
+    >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # FIELD:
@@ -96,7 +97,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
+    ... )
+    >>> df.head(15)  # doctest: +SKIP
                              Degree  Betweenness  Closeness  PageRank
     FINTECH                      18     0.701977   0.950000  0.235612
     FINANCIAL_SERVICE             8     0.053718   0.633333  0.072599

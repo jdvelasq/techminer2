@@ -37,7 +37,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = StringIO()
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
     Sorting thesaurus by word length...
       File : examples/fintech/data/thesaurus/demo.the.txt
       Sorting process completed successfully

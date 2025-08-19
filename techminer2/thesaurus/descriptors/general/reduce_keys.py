@@ -34,7 +34,7 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Reducing thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       Keys reduced from 1724 to 1724

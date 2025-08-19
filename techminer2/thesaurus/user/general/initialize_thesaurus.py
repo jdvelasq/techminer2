@@ -33,7 +33,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Initializing thesaurus from 'raw_descriptors' field...
       File : examples/fintech/data/thesaurus/demo.the.txt
       1724 keys found

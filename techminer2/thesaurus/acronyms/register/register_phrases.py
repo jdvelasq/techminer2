@@ -14,15 +14,15 @@ Example:
     >>> import shutil
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.abbreviations import RegisterPhrases
+    >>> from techminer2.thesaurus.acronyms import RegisterPhrases
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-    >>> # Copy the abbreviations file
-    >>> shutil.copy("examples/fintech/abbreviations.the.txt", "examples/fintech/data/thesaurus/abbreviations.the.txt")
-    'examples/fintech/data/thesaurus/abbreviations.the.txt'
+    >>> # Copy the acronyms file
+    >>> shutil.copy("examples/fintech/acronyms.the.txt", "examples/fintech/data/thesaurus/acronyms.the.txt")
+    'examples/fintech/data/thesaurus/acronyms.the.txt'
 
     >>> # Register new thesaurus phrases
     >>> RegisterPhrases(root_directory="examples/fintech/", use_colorama=False).run()
@@ -74,16 +74,14 @@ class RegisterPhrases(
         params = (
             Params()
             .update(**self.params.__dict__)
-            .update(thesaurus_file="abbreviations.the.txt")
+            .update(thesaurus_file="acronyms.the.txt")
         )
 
-        self.abbreviations_path = internal__generate_user_thesaurus_file_path(
-            params=params
-        )
+        self.acronyms_path = internal__generate_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
-    def internal__load_abbreviations_thesaurus_as_mapping(self):
-        self.mapping = internal__load_thesaurus_as_mapping(self.abbreviations_path)
+    def internal__load_acronyms_thesaurus_as_mapping(self):
+        self.mapping = internal__load_thesaurus_as_mapping(self.acronyms_path)
 
     # -------------------------------------------------------------------------
     def internal__make_new_terms_list(self):
@@ -116,7 +114,7 @@ class RegisterPhrases(
 
         self.internal__notify_process_start()
         self.internal__get_abbrevaviations_thesaurus_file_path()
-        self.internal__load_abbreviations_thesaurus_as_mapping()
+        self.internal__load_acronyms_thesaurus_as_mapping()
         self.internal__make_new_terms_list()
         self.internal__register_new_terms()
         self.internal__notify_process_end()

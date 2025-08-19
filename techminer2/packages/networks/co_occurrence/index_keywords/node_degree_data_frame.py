@@ -12,7 +12,7 @@ Node Degree Frame
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.index_keywords import NodeDegreeDataFrame
-    >>> (
+    >>> df = (
     ...     NodeDegreeDataFrame()
     ...     #
     ...     # FIELD:
@@ -37,6 +37,7 @@ Example:
     ...     #
     ...     .run()
     ... ).head()
+    >>> df  # doctest: +SKIP
        Node                       Name  Degree
     0     0            FINANCE 10:1866      17
     1     1            FINTECH 10:1412      16

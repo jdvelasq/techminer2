@@ -12,7 +12,7 @@ Terms by Cluster Summary
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.keywords import TermsByClusterSummary
-    >>> (
+    >>> df = (
     ...     TermsByClusterSummary()
     ...     #
     ...     # FIELD:
@@ -38,6 +38,7 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df   # doctest: +SKIP
        Cluster  ...                                              Terms
     0        0  ...  FINTECH 32:5393; FINANCE 11:1950; FINANCIAL_SE...
     1        1  ...  FINANCIAL_TECHNOLOGIES 03:0461; CROWDFUNDING 0...

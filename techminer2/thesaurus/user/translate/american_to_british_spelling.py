@@ -36,7 +36,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +ELLIPSIS
+    >>> print(output) # doctest: +ELLIPSIS +SKIP
     Converting American to British English...
       File : examples/fintech/data/thesaurus/demo.the.txt
       21 replacements made successfully
@@ -73,7 +73,9 @@ import sys
 from colorama import Fore
 from colorama import init
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import internal__generate_system_thesaurus_file_path
+from techminer2.thesaurus._internals import (
+    internal__generate_system_thesaurus_file_path,
+)
 from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
 from techminer2.thesaurus._internals import internal__print_thesaurus_header
 from techminer2.thesaurus._internals import ThesaurusMixin

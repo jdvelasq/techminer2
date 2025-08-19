@@ -1,4 +1,4 @@
-from techminer2.thesaurus.abbreviations import InitializeThesaurus
+from techminer2.thesaurus.acronyms import InitializeThesaurus
 
 
 def execute_initialize_command():

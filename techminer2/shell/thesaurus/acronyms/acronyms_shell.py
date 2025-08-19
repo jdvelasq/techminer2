@@ -8,15 +8,15 @@
 # pylint: disable=too-many-branches
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
-from techminer2.shell.thesaurus.abbreviations.general.general_shell import GeneralShell
-from techminer2.shell.thesaurus.abbreviations.register.register_shell import (
+from techminer2.shell.thesaurus.acronyms.general.general_shell import GeneralShell
+from techminer2.shell.thesaurus.acronyms.register.register_shell import (
     RegisterShell,
 )
 
 
-class AbbreviationsShell(BaseShell):
+class AcronymsShell(BaseShell):
 
-    prompt = make_colorized_prompt("tm2:thesaurus:abbreviations")
+    prompt = make_colorized_prompt("tm2:thesaurus:acronyms")
 
     def do_general(self, arg):
         """General commands."""

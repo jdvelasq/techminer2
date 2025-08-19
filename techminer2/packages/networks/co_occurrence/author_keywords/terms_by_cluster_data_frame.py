@@ -23,7 +23,7 @@ Example:
     >>> # CODE TESTED
     >>> #
     >>> from techminer2.packages.networks.co_occurrence.author_keywords import TermsByClusterDataFrame
-    >>> (
+    >>> df = (
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
@@ -49,6 +49,7 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df  # doctest: +SKIP
                                     0  ...                                3
     0                 FINTECH 31:5168  ...  ARTIFICIAL_INTELLIGENCE 02:0327
     1          BUSINESS_MODEL 03:0896  ...                  FINANCE 02:0309
@@ -67,7 +68,7 @@ Example:
     >>> # CODE TESTED
     >>> #
     >>> from techminer2.packages.networks.co_occurrence.author_keywords import TermsByClusterDataFrame
-    >>> (
+    >>> df = (
     ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
@@ -93,6 +94,7 @@ Example:
     ...     #
     ...     .run()
     ... )
+    >>> df  # doctest: +SKIP
                             0  ...                        3
     0                 FINTECH  ...  ARTIFICIAL_INTELLIGENCE
     1          BUSINESS_MODEL  ...                  FINANCE

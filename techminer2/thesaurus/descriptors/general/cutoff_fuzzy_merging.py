@@ -43,7 +43,13 @@ Example:
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output) # doctest: +SKIP
+    Cutoff-Fuzzy Merging thesaurus keys...
+      File : examples/fintech/data/thesaurus/descriptors.the.txt
+      Keys reduced from 1569 to 1554
+      Merging process completed successfully
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 

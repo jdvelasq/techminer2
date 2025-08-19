@@ -12,7 +12,7 @@ Terms by Cluster Summary
 
 Example:
     >>> from techminer2.experimental.emergence import TermsByClusterSummary
-    >>> (
+    >>> df = (
     ...     TermsByClusterSummary()
     ...     #
     ...     # EMERGENCE:
@@ -37,8 +37,11 @@ Example:
     ...     #
     ...     .run()
     ... )
-       Cluster  Num Terms  Percentage                          Terms
-    0        0          2       100.0  DATA 7:1086; CONSUMERS 7:0925
+    >>> df
+       Cluster  ...                                              Terms
+    0        0  ...  FINANCIAL_TECHNOLOGIES 12:1615; BANKS 08:1049;...
+    <BLANKLINE>
+    [1 rows x 4 columns]
 
 
 """

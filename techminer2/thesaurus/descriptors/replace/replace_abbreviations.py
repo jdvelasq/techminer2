@@ -20,9 +20,9 @@ Example:
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-    >>> # Copy the abbreviations file
-    >>> shutil.copy("examples/fintech/abbreviations.the.txt", "examples/fintech/data/thesaurus/abbreviations.the.txt")
-    'examples/fintech/data/thesaurus/abbreviations.the.txt'
+    >>> # Copy the acronyms file
+    >>> shutil.copy("examples/fintech/acronyms.the.txt", "examples/fintech/data/thesaurus/acronyms.the.txt")
+    'examples/fintech/data/thesaurus/acronyms.the.txt'
 
     >>> # Create thesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
@@ -36,9 +36,9 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
-    Replacing abbreviations in keys...
-          Thesaurus : ...h/data/thesaurus/descriptors.the.txt
-      Abbreviations : ...data/thesaurus/abbreviations.the.txt
+    Replacing acronyms in keys...
+      Thesaurus : ...h/data/thesaurus/descriptors.the.txt
+       Acronyms : ...data/thesaurus/acronyms.the.txt
       120 replacements made successfully
       Replacement process completed successfully
     <BLANKLINE>
@@ -103,20 +103,18 @@ class ReplaceAbbreviations(
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
-        abbreviations_path = str(self.abbreviations_path)
-        if len(abbreviations_path) > 40:
-            abbreviations_path = "..." + abbreviations_path[-36:]
+        acronyms_path = str(self.acronyms_path)
+        if len(acronyms_path) > 40:
+            acronyms_path = "..." + acronyms_path[-36:]
 
         if self.params.use_colorama:
-            filename = str(abbreviations_path).split("/")[-1]
-            abbreviations_path = abbreviations_path.replace(
-                filename, f"{Fore.RESET}{filename}"
-            )
-            abbreviations_path = Fore.LIGHTBLACK_EX + file_path
+            filename = str(acronyms_path).split("/")[-1]
+            acronyms_path = acronyms_path.replace(filename, f"{Fore.RESET}{filename}")
+            acronyms_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write("Replacing abbreviations in keys...\n")
-        sys.stderr.write(f"      Thesaurus : {file_path}\n")
-        sys.stderr.write(f"  Abbreviations : {abbreviations_path}\n")
+        sys.stderr.write("Replacing acronyms in keys...\n")
+        sys.stderr.write(f"  Thesaurus : {file_path}\n")
+        sys.stderr.write(f"   Acronyms : {acronyms_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -146,23 +144,21 @@ class ReplaceAbbreviations(
         params = (
             Params()
             .update(**self.params.__dict__)
-            .update(thesaurus_file="abbreviations.the.txt")
+            .update(thesaurus_file="acronyms.the.txt")
         )
 
-        self.abbreviations_path = internal__generate_user_thesaurus_file_path(
-            params=params
-        )
+        self.acronyms_path = internal__generate_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
     def internal__load_descriptor_thesaurus_as_data_frame(self):
         self.data_frame = internal__load_thesaurus_as_data_frame(self.thesaurus_path)
 
     # -------------------------------------------------------------------------
-    def internal__load_abbreviations_thesaurus_as_mapping(self):
-        self.mapping = internal__load_thesaurus_as_mapping(self.abbreviations_path)
+    def internal__load_acronyms_thesaurus_as_mapping(self):
+        self.mapping = internal__load_thesaurus_as_mapping(self.acronyms_path)
 
     # -------------------------------------------------------------------------
-    def internal__replace_abbreviations(self):
+    def internal__replace_acronyms(self):
 
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
@@ -174,7 +170,7 @@ class ReplaceAbbreviations(
             ncols=80,
         ):
             #
-            # Replace abbreviations in descriptor keys
+            # Replace acronyms in descriptor keys
             value = value[0]
 
             self.data_frame["key"] = self.data_frame["key"].str.replace(
@@ -222,8 +218,8 @@ class ReplaceAbbreviations(
         self.internal__get_abbrevaviations_thesaurus_file_path()
         self.internal__notify_process_start()
         self.internal__load_descriptor_thesaurus_as_data_frame()
-        self.internal__load_abbreviations_thesaurus_as_mapping()
-        self.internal__replace_abbreviations()
+        self.internal__load_acronyms_thesaurus_as_mapping()
+        self.internal__replace_acronyms()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()

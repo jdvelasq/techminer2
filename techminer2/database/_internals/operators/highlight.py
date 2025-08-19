@@ -91,7 +91,7 @@ COMPOUND_STRUCTURED_ABSTRACT_MARKERS = [
     "clinical trial registration",
     "conclusion , significance and impact study",
     "conclusion and relevance",
-    "contribution of the_paper",
+    "contribution of the paper",
     "data collection and analysis",
     "data sources",
     "data visualization tools",
@@ -281,15 +281,15 @@ def load_known_noun_phrases(root_directory):
 
 
 # ------------------------------------------------------------------------------
-def extract_abbreviations_from_text(text):
+def extract_acronyms_from_text(text):
     #
     # Extract all texts between parentheses and then, add them to the key_terms
     #
-    abbreviations = re.findall(r"\((.*?)\)", text)
-    abbreviations = [t.strip() for t in abbreviations]
-    abbreviations = [t for t in abbreviations if all(c.isalnum() for c in t)]
-    abbreviations = list(set(abbreviations))
-    return abbreviations
+    acronyms = re.findall(r"\((.*?)\)", text)
+    acronyms = [t.strip() for t in acronyms]
+    acronyms = [t for t in acronyms if all(c.isalnum() for c in t)]
+    acronyms = list(set(acronyms))
+    return acronyms
 
 
 # ------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ def internal__highlight(
         #
         key_terms += [k for k in all_noun_phrases if k in row[dest]]
         text_noun_phrases += key_terms
-        key_terms += extract_abbreviations_from_text(text)
+        key_terms += extract_acronyms_from_text(text)
         key_terms = clean_key_terms(stopwords, key_terms)
         key_terms += [k for k in all_keywords if k in row[dest]]
         key_terms += [k for k in known_noun_phrases if k in row[dest]]

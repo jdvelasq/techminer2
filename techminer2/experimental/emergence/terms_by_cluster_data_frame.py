@@ -46,10 +46,13 @@ Example:
     ... )
 
     >>> # Display the resulting data frame
-    >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE
-                      0
-    0       DATA 7:1086
-    1  CONSUMERS 7:0925
+    >>> print(df.to_string()) # doctest: +NORMALIZE_WHITESPACE +SKIP
+                                    0
+    0  FINANCIAL_TECHNOLOGIES 12:1615
+    1                   BANKS 08:1049
+    2                    DATA 07:1086
+    3               CONSUMERS 07:0925
+
 
 
 

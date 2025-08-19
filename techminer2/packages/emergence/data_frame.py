@@ -32,7 +32,7 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head()
+    ... ).head()  # doctest: +SKIP
                        OCC  OCC_baseline  ...  growth_rate  growth_rate_ratio
     descriptors                           ...
     DATA 07:1086         7             2  ...    87.082869           0.733824

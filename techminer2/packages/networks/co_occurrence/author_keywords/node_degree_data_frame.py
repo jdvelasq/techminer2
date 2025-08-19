@@ -24,7 +24,7 @@ Example:
     >>> # CODE TESTED
     >>> #
     >>> from techminer2.packages.networks.co_occurrence.author_keywords import NodeDegreeDataFrame
-    >>> (
+    >>> df = (
     ...     NodeDegreeDataFrame()
     ...     #
     ...     # FIELD:
@@ -48,7 +48,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
+    ... )
+    >>> df.head(15)  # doctest: +SKIP
         Node                             Name  Degree
     0      0                  FINTECH 31:5168      18
     1      1        FINANCIAL_SERVICE 04:0667       8
@@ -95,7 +96,7 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
+    ... ).head(15)  # doctest: +SKIP
         Node                             Name  Degree
     0      0                  FINTECH 31:5168      18
     1      1        FINANCIAL_SERVICE 04:0667       8

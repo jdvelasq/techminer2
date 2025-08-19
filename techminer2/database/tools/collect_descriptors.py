@@ -23,7 +23,7 @@ import sys
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.preprocessors import (
-    internal__preprocess_abbreviations,
+    internal__preprocess_acronyms,
 )
 from techminer2.database._internals.preprocessors import (
     internal__preprocess_descriptors,
@@ -60,6 +60,6 @@ class CollectDescriptors(
         internal__preprocess_raw_noun_and_phrases(root_directory)
         internal__preprocess_raw_descriptors(root_directory)
         internal__preprocess_descriptors(root_directory)
-        internal__preprocess_abbreviations(root_directory)
+        internal__preprocess_acronyms(root_directory)
 
         InitializeThesaurus().update(**self.params.__dict__).run()

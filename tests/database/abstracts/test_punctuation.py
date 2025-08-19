@@ -12,7 +12,7 @@
 Example:
     >>> from techminer2.database.ingest import IngestScopus
     >>> IngestScopus(root_directory="examples/punctuation/", ).run() # doctest: +ELLIPSIS
-    Note: ...
+    N...
 
 
     >>> from techminer2.database.tools import Query

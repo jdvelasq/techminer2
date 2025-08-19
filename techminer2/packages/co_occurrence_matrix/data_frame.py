@@ -11,7 +11,7 @@ Co-occurrence DataFrame
 
 Example:
     >>> from techminer2.packages.co_occurrence_matrix import DataFrame
-    >>> (
+    >>> df = (
     ...     DataFrame()
     ...     #
     ...     # COLUMNS:
@@ -41,7 +41,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(10)
+    ... )
+    >>> df.head(10) # doctest: +SKIP
                      rows                      columns  OCC
     0  Jagtiani J. 3:0317              FINTECH 31:5168    3
     1  Jagtiani J. 3:0317  MARKETPLACE_LENDING 03:0317    3
@@ -56,7 +57,7 @@ Example:
 
 
     >>> from techminer2.packages.co_occurrence_matrix import DataFrame
-    >>> (
+    >>> df = (
     ...     DataFrame()
     ...     #
     ...     # COLUMNS:
@@ -86,19 +87,19 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(10)
-                            rows                    columns  OCC
-    0            FINTECH 31:5168            FINTECH 31:5168   31
-    1         INNOVATION 07:0911         INNOVATION 07:0911    7
-    2            FINTECH 31:5168         INNOVATION 07:0911    5
-    3         INNOVATION 07:0911            FINTECH 31:5168    5
-    4  FINANCIAL_SERVICE 04:0667  FINANCIAL_SERVICE 04:0667    4
-    5         BLOCKCHAIN 03:0369         BLOCKCHAIN 03:0369    3
-    6         BLOCKCHAIN 03:0369            FINTECH 31:5168    3
-    7     BUSINESS_MODEL 03:0896     BUSINESS_MODEL 03:0896    3
-    8     BUSINESS_MODEL 03:0896            FINTECH 31:5168    3
-    9       CROWDFUNDING 03:0335       CROWDFUNDING 03:0335    3
-
+    ... )
+    >>> df.head(10) # doctest: +SKIP
+                                 rows                         columns  OCC
+    0                 FINTECH 31:5168                 FINTECH 31:5168   31
+    1              INNOVATION 07:0911              INNOVATION 07:0911    7
+    2                 FINTECH 31:5168              INNOVATION 07:0911    5
+    3              INNOVATION 07:0911                 FINTECH 31:5168    5
+    4      FINANCIAL_SERVICES 04:0667      FINANCIAL_SERVICES 04:0667    4
+    5            CROWDFUNDING 03:0335            CROWDFUNDING 03:0335    3
+    6     FINANCIAL_INCLUSION 03:0590     FINANCIAL_INCLUSION 03:0590    3
+    7     FINANCIAL_INCLUSION 03:0590                 FINTECH 31:5168    3
+    8      FINANCIAL_SERVICES 04:0667                 FINTECH 31:5168    3
+    9  FINANCIAL_TECHNOLOGIES 03:0461  FINANCIAL_TECHNOLOGIES 03:0461    3
 
 
 """

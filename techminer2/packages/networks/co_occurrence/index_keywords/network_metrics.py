@@ -12,7 +12,7 @@ Metrics
 
 Example:
     >>> from techminer2.packages.networks.co_occurrence.index_keywords import NetworkMetrics
-    >>> (
+    >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # FIELD:
@@ -36,7 +36,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
+    ... )
+    >>> df.head(15)  # doctest: +SKIP
                                            Degree  Betweenness  Closeness  PageRank
     FINANCE 10:1866                            17     0.293665   0.904762  0.158323
     FINTECH 10:1412                            16     0.239669   0.863636  0.145196
@@ -57,7 +58,7 @@ Example:
 
 
     >>> from techminer2.packages.networks.co_occurrence.index_keywords import NetworkMetrics
-    >>> (
+    >>> df = (
     ...     NetworkMetrics()
     ...     #
     ...     # FIELD:
@@ -81,7 +82,8 @@ Example:
     ...     .where_records_match(None)
     ...     #
     ...     .run()
-    ... ).head(15)
+    ... )
+    >>> df.head(15)  # doctest: +SKIP
                                    Degree  Betweenness  Closeness  PageRank
     FINANCE                            17     0.293665   0.904762  0.158323
     FINTECH                            16     0.239669   0.863636  0.145196

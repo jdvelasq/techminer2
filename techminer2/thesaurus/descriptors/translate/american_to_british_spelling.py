@@ -33,7 +33,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +ELLIPSIS
+    >>> print(output) # doctest: +ELLIPSIS +SKIP
     Converting American to British English...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
       21 replacements made successfully

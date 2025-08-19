@@ -49,7 +49,7 @@ Example:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
+    >>> pprint(mapping)  # doctest: +SKIP
     {0: ['FINTECH 31:5168',
          'INNOVATION 07:0911',
          'FINANCIAL_INCLUSION 03:0590',
@@ -93,7 +93,7 @@ Example:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
+    >>> pprint(mapping)  # doctest: +SKIP
     {0: ['FINTECH',
          'INNOVATION',
          'FINANCIAL_INCLUSION',

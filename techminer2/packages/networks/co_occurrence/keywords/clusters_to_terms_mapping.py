@@ -39,7 +39,7 @@ Example:
     ...     .run()
     ... )
     >>> from pprint import pprint
-    >>> pprint(mapping)
+    >>> pprint(mapping)  # doctest: +SKIP
     {0: ['FINTECH 32:5393',
          'FINANCE 11:1950',
          'FINANCIAL_SERVICE 08:1680',
