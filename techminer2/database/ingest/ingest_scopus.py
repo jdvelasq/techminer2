@@ -13,7 +13,7 @@ Ingest Scopus
 
 Example:
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS +SKIP
+    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS
 
 
 
@@ -211,6 +211,23 @@ class IngestScopus(
         internal__check_empty_terms(
             "raw_noun_and_phrases", root_directory=root_directory
         )
+
+        # Author & index keywords
+        internal__preprocess_raw_index_keywords(root_directory)
+        internal__check_empty_terms("raw_index_keywords", root_directory=root_directory)
+        internal__preprocess_index_keywords(root_directory)
+        internal__check_empty_terms("index_keywords", root_directory=root_directory)
+
+        internal__preprocess_raw_author_keywords(root_directory)
+        internal__check_empty_terms(
+            "raw_author_keywords", root_directory=root_directory
+        )
+        internal__preprocess_author_keywords(root_directory)
+        internal__check_empty_terms("author_keywords", root_directory=root_directory)
+
+        internal__preprocess_raw_keywords(root_directory)
+        internal__check_empty_terms("raw_keywords", root_directory=root_directory)
+
         internal__preprocess_raw_descriptors(root_directory)
         internal__check_empty_terms("raw_descriptors", root_directory=root_directory)
 
@@ -246,22 +263,6 @@ class IngestScopus(
         internal__preprocess_record_no(root_directory)
         #
         internal__preprocess_subject_areas(root_directory)
-
-        # Author & index keywords
-        internal__preprocess_raw_index_keywords(root_directory)
-        internal__check_empty_terms("raw_index_keywords", root_directory=root_directory)
-        internal__preprocess_index_keywords(root_directory)
-        internal__check_empty_terms("index_keywords", root_directory=root_directory)
-
-        internal__preprocess_raw_author_keywords(root_directory)
-        internal__check_empty_terms(
-            "raw_author_keywords", root_directory=root_directory
-        )
-        internal__preprocess_author_keywords(root_directory)
-        internal__check_empty_terms("author_keywords", root_directory=root_directory)
-
-        internal__preprocess_raw_keywords(root_directory)
-        internal__check_empty_terms("raw_keywords", root_directory=root_directory)
 
         #
         #
