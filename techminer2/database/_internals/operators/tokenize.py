@@ -53,6 +53,20 @@ def tokenize(text):
         lambda w: pd.NA if w[0] == "[" and w[-1] == "]" else w, na_action="ignore"
     )
 
+    # -------------------------------------------------------------------------
+    # find all URLs in the pandas series
+    url_pattern = (
+        r"http[s]?://(?:[a-z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+    )
+    urls = text.str.findall(url_pattern).explode().dropna().unique()
+
+    # Replace URLs with the by "__url{i}__" where i is the index
+    # of the URL in the list of unique URLs.
+    for i, url in enumerate(urls):
+        placeholder = f" . . . url{i} . . . "
+        text = text.str.replace(url, placeholder, regex=False)
+    # -------------------------------------------------------------------------
+
     # Normalize unicode
     text = text.map(
         lambda w: unicodedata.normalize("NFKD", w) if isinstance(w, str) else w
@@ -77,18 +91,8 @@ def tokenize(text):
         text = text.str.replace(full_width, ascii_char)
 
     # Add spaces around punctuation (e.g., "word.word" -> "word . word")
-    text = text.str.replace(r"([a-zA-Z])([.,!?;:])", r"\1 \2", regex=True)
-    text = text.str.replace(r"([.,!?;:])([a-zA-Z])", r"\1 \2", regex=True)
-
-    # find all URLs in the pandas series
-    url_pattern = r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
-    urls = text.str.findall(url_pattern).explode().dropna().unique()
-
-    # Replace URLs with the by "__url{i}__" where i is the index
-    # of the URL in the list of unique URLs.
-    for i, url in enumerate(urls):
-        placeholder = f" . . . url{i} . . . "
-        text = text.str.replace(url, placeholder, regex=False)
+    text = text.str.replace(r"([a-z])([.,!?;:])", r"\1 \2", regex=True)
+    text = text.str.replace(r"([.,!?;:])([a-z])", r"\1 \2", regex=True)
 
     text = text.str.lower()
 
@@ -131,7 +135,7 @@ def tokenize(text):
 
     # Correction: Add spaces around slashes between words for clarity.
     # (e.g., "setting/participants/intervention" becomes "setting / participants / intervention").
-    text = text.str.replace(r"([a-zA-Z])/([a-zA-Z])", r"\1 / \2", regex=True)
+    text = text.str.replace(r"([a-z])/([a-z])", r"\1 / \2", regex=True)
 
     # Correction: Standardize punctuation for edge cases not handled by word_tokenize.
     # Add a space before an opening parenthesis if it follows a period.
@@ -139,13 +143,13 @@ def tokenize(text):
 
     # Correction: Ensure proper spacing around single letters followed by a period
     # (e.g., " A. " becomes " A . ").
-    text = text.str.replace(r"\s([a-zA-Z])\.\s", r" \1 . ", regex=True)
+    text = text.str.replace(r"\s([a-z])\.\s", r" \1 . ", regex=True)
 
     text = text.str.replace(":. ", ": . ", regex=False)
 
     # Correction: Add a space after an apostrophe if followed by alphanumeric
     # characters or a period. (e.g., " 's " becomes " ' s ").
-    text = text.str.replace(r" '([a-zA-Z0-9\.]+)\s", r" ' \1 ", regex=True)
+    text = text.str.replace(r" '([a-z0-9\.]+)\s", r" ' \1 ", regex=True)
 
     # Correction: Add a space after an apostrophe if followed by numeric characters.
     # (e.g., " '123" becomes " ' 123").
@@ -153,15 +157,15 @@ def tokenize(text):
 
     # Correction: Add spaces around single-letter acronyms separated by periods.
     # (e.g., " A.B " becomes " A . B ").
-    text = text.str.replace(r"\s([a-zA-Z])\.([a-zA-Z])\s", r" \1 . \2 ", regex=True)
+    text = text.str.replace(r"\s([a-z])\.([a-z])\s", r" \1 . \2 ", regex=True)
 
     # Correction: Add spaces around tokens separated by periods.
     # (e.g., "xxx.yyy " becomes " xxx . yyy ").
-    text = text.str.replace(r"\s([a-zA-Z]+)\.([a-zA-Z]+)\s", r" \1 . \2 ", regex=True)
+    text = text.str.replace(r"\s([a-z]+)\.([a-z]+)\s", r" \1 . \2 ", regex=True)
 
     # Correction: Add spaces around a text separated by a two points.
     # (e.g., "xxx:yyy " becomes "xxx : yyy ").
-    text = text.str.replace(r"([a-zA-Z]+):([a-zA-Z]+)", r"\1 : \2", regex=True)
+    text = text.str.replace(r"([a-z]+):([a-z]+)", r"\1 : \2", regex=True)
 
     # Correction: Add spaces around a text separated by a comma.
     # (e.g., "xxx, " becomes "xxx , ").
@@ -173,37 +177,37 @@ def tokenize(text):
 
     # Correction: Add spaces around a text separated by a point.
     # (e.g., "xxx. yyy " becomes "xxx . yyy ").
-    text = text.str.replace(r"([a-zA-Z]+)\. ([a-zA-Z]+)", r"\1 . \2", regex=True)
+    text = text.str.replace(r"([a-z]+)\. ([a-z]+)", r"\1 . \2", regex=True)
 
     # Correction: Add spaces around a text finished with two points.
     # (e.g., "xxx.. " becomes "xxx . . ").
-    text = text.str.replace(r"([a-zA-Z]+)\.\. ", r"\1 . . ", regex=True)
+    text = text.str.replace(r"([a-z]+)\.\. ", r"\1 . . ", regex=True)
 
     # Correction: Add spaces around a text finished with thee points.
     # (e.g., "xxx... " becomes "xxx . . . ").
-    text = text.str.replace(r"([a-zA-Z]+)\.\.\. ", r"\1 . . . ", regex=True)
+    text = text.str.replace(r"([a-z]+)\.\.\. ", r"\1 . . . ", regex=True)
 
     # Correction: add spaces around three-letter acronyms separated by periods.
     # (e.g., " A.B.C " becomes " A . B . C ").
     text = text.str.replace(
-        r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s", r" \1 . \2 . \3 ", regex=True
+        r"\s([a-z])\.([a-z])\.([a-z])\s", r" \1 . \2 . \3 ", regex=True
     )
 
     # Correction: Add spaces around four-letter acronyms separated by periods.
     # (e.g., " A.B.C.D " becomes " A . B . C . D ").
     text = text.str.replace(
-        r"\s([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\.([a-zA-Z])\s",
+        r"\s([a-z])\.([a-z])\.([a-z])\.([a-z])\s",
         r" \1 . \2 . \3 . \4 ",
         regex=True,
     )
 
     # Correction: Add spaces around two-letter acronyms followed by a period.
     # (e.g., " AB. " becomes " AB . ").
-    text = text.str.replace(r"\s([a-zA-Z][a-zA-Z])\.\s", r" \1 . ", regex=True)
+    text = text.str.replace(r"\s([a-z][a-z])\.\s", r" \1 . ", regex=True)
 
     # Correction: Add a space before a closing parenthesis if preceded by a word and a period.
     # (e.g., " AB.) " becomes " AB . ) ").
-    text = text.str.replace(r"\s([a-zA-Z]+)\.\s\)", r" \1 . )", regex=True)
+    text = text.str.replace(r"\s([a-z]+)\.\s\)", r" \1 . )", regex=True)
 
     # Correction: Replace ellipses (" .. ") with spaced periods (" . . ") for consistency.
     text = text.str.replace(r"\s\.\.\s", r" . . ", regex=True)
@@ -260,7 +264,7 @@ def tokenize(text):
     text = text.str.replace("/mw h ", "/mwh ", regex=False)
     text = text.str.replace("/kw h ", "/kwh ", regex=False)
     text = text.str.replace("/kw hr ", "/kwh ", regex=False)
-    text = text.str.replace("us cents/kwh ", "uscents/kwh ", regex=False)
+    text = text.str.replace(" us cents/kwh ", " uscents/kwh ", regex=False)
 
     # Remove all non-ASCII characters:
     # Normalize text to NFKD form, encode to ASCII (ignoring errors), and decode back to UTF-8.

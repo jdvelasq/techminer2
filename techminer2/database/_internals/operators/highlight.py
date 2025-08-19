@@ -436,13 +436,33 @@ def make_final_corrections(text):
     text = text.replace(" ( AND_X ) ", " ( and x ) ")
     text = text.replace(" . S . ", " . s . ")
 
-    text = re.sub(r"(\d)/([a-zA-Z_0-9]+)", r"\1 /\2", text)
-
     text = text.replace(" i.E. ", " i.e. ")
     text = text.replace(" E.g. ", " e.g. ")
     text = text.replace(" innwind.EU ", " innwind . eu ")
     text = text.replace(" you.s ", " you . s ")
     text = text.replace(" THE_F . E . c .", " the f . e . c .")
+
+    text = text.replace(
+        " . THE_CONTRIBUTIONS of THIS_PAPER are : ",
+        " . the contributions of this paper are : ",
+    )
+    text = text.replace(
+        ". THE_CONCLUSIONS can be summarized as follows :",
+        ". the conclusions can be summarized as follows :",
+    )
+
+    text = text.replace(" ISSN ", " issn ")
+    text = text.replace(" EISSN ", " eissn ")
+    text = text.replace(" ISBN ", " isbn ")
+
+    return text
+
+
+# ------------------------------------------------------------------------------
+def fix_units(text):
+
+    # Introduces errors in URLs
+    # text = re.sub(r"(\d)/([a-zA-Z_0-9]+)", r"\1 /\2", text)
 
     # Units
     for unit in [
@@ -496,28 +516,24 @@ def make_final_corrections(text):
         "yr",
         "yuan",
     ]:
-        text = text.replace(f" {unit.upper().replace(' ', '_')}/", f" {unit.lower()}/")
-        text = text.replace(f" {unit.upper().replace(' ', '_')}_/", f" {unit.lower()}/")
-        text = text.replace(f"/{unit.upper().replace(' ', '_')} ", f"/{unit.lower()} ")
-        text = text.replace(f"/_{unit.upper().replace(' ', '_')} ", f"/{unit.lower()} ")
+        text = text.replace(
+            f" {unit.upper().replace(' ', '_')}/",
+            f" {unit.lower().replace(' ', '_')}/",
+        )
+        text = text.replace(
+            f" {unit.upper().replace(' ', '_')}_/",
+            f" {unit.lower().replace(' ', '_')}/",
+        )
+        text = text.replace(
+            f"/{unit.upper().replace(' ', '_')} ",
+            f"/{unit.lower().replace(' ', '_')} ",
+        )
+        text = text.replace(
+            f"/_{unit.upper().replace(' ', '_')} ",
+            f"/{unit.lower()}.replace(' ', '_') ",
+        )
 
     text = text.replace("POLENERGIA/EQUINOR", "polenergia/equinor")
-
-    text = text.replace(
-        " . THE_CONTRIBUTIONS of THIS_PAPER are : ",
-        " . the contributions of this paper are : ",
-    )
-    text = text.replace(
-        ". THE_CONCLUSIONS can be summarized as follows :",
-        ". the conclusions can be summarized as follows :",
-    )
-    text = text.replace("", "")
-    text = text.replace("", "")
-    text = text.replace("", "")
-    text = text.replace(" ISSN ", " issn ")
-    text = text.replace(" EISSN ", " eissn ")
-    text = text.replace(" ISBN ", " isbn ")
-    text = text.replace(" DOI ", " doi ")
 
     return text
 
@@ -739,6 +755,8 @@ def internal__highlight(
         text = repair_appostrophes(text)
 
         text = join_consequtive_separate_terms_in_uppercase(text, stopwords)
+
+        text = fix_units(text)
 
         text = replace_urls(text, url_matches)
 

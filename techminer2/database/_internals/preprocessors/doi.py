@@ -15,9 +15,9 @@ def _process_text(text):
     #   https://doi.org/10.7688/j.issn.1000-1646.2014.02.06
     # http://dx.doi.org/10.7688/j.issn.1000-1646.2014.02.06
     #
-    text = text.str.replace("https://doi.org/", "")
-    text = text.str.replace("http://dx.doi.org/", "")
-    text = text.str.upper()
+    # text = text.str.replace("https://doi.org/", "")
+    # text = text.str.replace("http://dx.doi.org/", "")
+    # text = text.str.upper()
     return text
 
 
