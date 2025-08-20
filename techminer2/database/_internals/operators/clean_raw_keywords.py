@@ -128,6 +128,7 @@ def clean_raw_keywords(text):
     text = text.str.replace(",", "", regex=False)
     text = text.str.replace(":", "", regex=False)
     text = text.str.replace("-", "_", regex=False)
+    text = text.str.replace("\u2013", "_", regex=False)
 
     # Remove spaces
     text = text.str.replace(" ", "_", regex=False)
