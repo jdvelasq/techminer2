@@ -202,7 +202,7 @@ class ReplaceHyphenatedWords(
             return x
 
         tqdm.pandas(
-            desc="  Processing hyphenated words ",
+            desc="  Processing correct hyphenated words ",
             disable=self.params.tqdm_disable,
             ncols=80,
         )
@@ -296,7 +296,13 @@ class ReplaceHyphenatedWords(
                 x = pattern.sub(replacement, x)
             return x
 
-        self.data_frame["key"] = self.data_frame["key"].apply(f)
+        tqdm.pandas(
+            desc="  Processing incorrect hyphenated words ",
+            disable=self.params.tqdm_disable,
+            ncols=80,
+        )
+        self.data_frame["key"] = self.data_frame["key"].progress_apply(f)
+        tqdm.pandas(desc=None)
 
         self.data_frame.loc[
             self.data_frame.key != self.data_frame.org_key,

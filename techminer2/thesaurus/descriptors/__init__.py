@@ -15,7 +15,7 @@ from .remove.remove_initial_words import RemoveInitialWords
 from .remove.remove_last_words import RemoveLastWords
 from .remove.remove_parentheses import RemoveParentheses
 from .remove.remove_stopwords import RemoveStopwords
-from .replace.replace_abbreviations import ReplaceAbbreviations
+from .replace.replace_acronyms import ReplaceAcronyms
 from .replace.replace_hyphenated_words import ReplaceHyphenatedWords
 from .replace.replace_initial_word import ReplaceInitialWord
 from .replace.replace_last_word import ReplaceLastWord
@@ -54,7 +54,7 @@ __all__ = [
     "RemoveLastWords",
     "RemoveParentheses",
     "RemoveStopwords",
-    "ReplaceAbbreviations",
+    "ReplaceAcronyms",
     "ReplaceHyphenatedWords",
     "ReplaceInitialWord",
     "ReplaceLastWord",

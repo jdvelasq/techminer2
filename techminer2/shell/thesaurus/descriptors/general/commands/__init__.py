@@ -7,11 +7,13 @@ from .initialize import execute_initialize_command
 from .integrity import execute_integrity_command
 from .reduce import execute_reduce_command
 from .cutofffuzzy import execute_cutofffuzzy_command
+from .combine import execute_combine_command
 
 __all__ = [
     "execute_apply_command",
     "execute_cleanup_command",
     "execute_clump_command",
+    "execute_combine_command",
     "execute_cutofffuzzy_command",
     "execute_initialize_command",
     "execute_integrity_command",

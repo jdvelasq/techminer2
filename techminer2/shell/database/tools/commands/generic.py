@@ -3,7 +3,7 @@ import os
 from colorama import Fore
 from colorama import init
 from openai import OpenAI
-from techminer2.database.search import ConcordantProcessedContexts
+from techminer2.database.search import ConcordantRawContexts
 from techminer2.shell.colorized_input import colorized_input
 
 PROMPT = """
@@ -13,6 +13,7 @@ to be used for co-word analysis or not.
 Your answer should be a single word: "yes" or "no".
 
 Contexts for the term <<{pattern}>>:
+
 {contexts}
 
 """
@@ -38,7 +39,7 @@ def execute_generic_command():
     # RUN:
 
     contexts = (
-        ConcordantProcessedContexts()
+        ConcordantRawContexts()
         #
         .with_abstract_having_pattern(pattern)
         .where_root_directory_is("./")
@@ -51,19 +52,27 @@ def execute_generic_command():
     contexts = contexts[:n_contexts]
 
     ###
-    client = os.getenv("OPENAI_API_KEY")
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     query = PROMPT.format(
         pattern=pattern,
         contexts="\n".join(contexts),
     )
 
+    ##
+    # print(query)
+    ##
+
+    query = "say hello!"
+
     try:
+
         response = client.responses.create(
-            model="o4-mini",
+            model="gpt-5-nano",
             input=query,
         )
         answer = response.output_text
+        answer = answer.strip().lower()
 
         text = (
             Fore.LIGHTBLACK_EX
@@ -77,7 +86,7 @@ def execute_generic_command():
 
         if answer.lower() == "yes":
             text = text.format(result="IS")
-        elif answer.lower() == "no":
+        else:
             text = text.format(result="IS NOT")
 
         print()
@@ -86,5 +95,5 @@ def execute_generic_command():
 
     except Exception as e:
         print()
-        print(f"Error processing the query!")
+        print(f"Error processing the query: {e}")
         print()

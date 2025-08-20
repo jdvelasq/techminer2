@@ -3,7 +3,7 @@ import os
 from colorama import Fore
 from colorama import init
 from openai import OpenAI
-from techminer2.database.search import ConcordantProcessedContexts
+from techminer2.database.search import ConcordantRawContexts
 from techminer2.shell.colorized_input import colorized_input
 
 PROMPT = """
@@ -42,7 +42,7 @@ def execute_desambiguate_command():
     # RUN:
 
     contexts_1 = (
-        ConcordantProcessedContexts()
+        ConcordantRawContexts()
         #
         .with_abstract_having_pattern(pattern_1)
         .where_root_directory_is("./")
@@ -55,7 +55,7 @@ def execute_desambiguate_command():
     contexts_1 = contexts_1[:n_contexts]
 
     contexts_2 = (
-        ConcordantProcessedContexts()
+        ConcordantRawContexts()
         #
         .with_abstract_having_pattern(pattern_2)
         .where_root_directory_is("./")
@@ -68,7 +68,7 @@ def execute_desambiguate_command():
     contexts_2 = contexts_2[:n_contexts]
 
     ###
-    client = os.getenv("OPENAI_API_KEY")
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     query = PROMPT.format(
         pattern_1=pattern_1,
@@ -78,11 +78,17 @@ def execute_desambiguate_command():
     )
 
     try:
+
+        ##
+        print(query)
+        ##
+        #
         response = client.responses.create(
-            model="o4-mini",
+            model="gpt-5-nano",
             input=query,
         )
         answer = response.output_text
+        answer = answer.strip().lower()
 
         text = (
             Fore.LIGHTBLACK_EX
@@ -105,8 +111,8 @@ def execute_desambiguate_command():
 
     except Exception as e:
         print()
-        print(f"Error processing the query!")
+        print(f"Error processing the query: {e}")
         print()
-        print()
-        print()
-        print()
+
+
+#

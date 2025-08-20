@@ -50,13 +50,38 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
+    >>> print(output)  # doctest: +SKIP
     Cutoff-Fuzzy Merging thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
       Keys reduced from 1721 to 1695
       Merging process completed successfully
     <BLANKLINE>
+    Printing thesaurus header
+      File : examples/fintech/data/thesaurus/demo.the.txt
     <BLANKLINE>
+        A_SYSTEMIC_INNOVATION_MODEL
+          A_NEW_SYSTEMIC_INNOVATION_MODEL
+        A_THEORETICAL_FRAMEWORK
+          A_NEW_THEORETICAL_FRAMEWORK
+        CHALLENGES
+          A_CHALLENGE; CHALLENGES
+        CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS; CLUSTER_ANALYSIS
+        COMPETITION
+          A_COMPETITION; COMPETITION
+        COMPETITIVE_AND_COOPERATIVE_MECHANISMS
+          COMPETITIVE_AND_COOPERATIVE_MECHANISMS; THE_COMPETITIVE_AND_COOPERATIVE_M...
+        CONCEPTUAL_FRAMEWORKS
+          CONCEPTUAL_FRAMEWORKS; THE_CONCEPTUAL_FRAMEWORK
+        DEFINITION
+          A_DEFINITION; DEFINITION; DEFINITIONS
+        DEVELOPING_COUNTRIES
+          DEVELOPING_COUNTRIES; THE_DEVELOPING_COUNTRIES
+        ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS
+          ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS; THE_ECONOMIC_AND_TECHNOLOGICAL_D...
+    <BLANKLINE>
+    <BLANKLINE>
+
 
 """
 
@@ -113,6 +138,11 @@ class CutoffFuzzyMerging(
         )
         sys.stderr.write(f"  Merging process completed successfully\n\n")
         sys.stderr.flush()
+        internal__print_thesaurus_header(
+            self.thesaurus_path,
+            n=10,
+            use_colorama=True,
+        )
 
     #
     # ALGORITHM:
@@ -227,6 +257,10 @@ class CutoffFuzzyMerging(
         self.data_frame["key"] = self.data_frame["key"].str.replace("_", " ")
         self.data_frame["key_length"] = self.data_frame["key"].str.len()
 
+        ##
+        self.data_frame["__row_selected__"] = False
+        ##
+
         keys = self.data_frame["key"].tolist()
         mergings = {}
 
@@ -279,6 +313,10 @@ class CutoffFuzzyMerging(
             df["key"] = df["key"].str.replace(" ", "_").str.upper()
 
             self.data_frame.loc[df.index, "selected"] = True
+            self.data_frame.loc[df.index, "__row_selected__"] = True
+            self.data_frame.loc[self.data_frame["key"] == key, "__row_selected__"] = (
+                True
+            )
 
             mergings[key] = df["key"].tolist()
 

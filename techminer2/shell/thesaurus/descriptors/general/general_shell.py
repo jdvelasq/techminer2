@@ -29,6 +29,9 @@ from techminer2.shell.thesaurus.descriptors.general.commands import (
 from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_cutofffuzzy_command,
 )
+from techminer2.shell.thesaurus.descriptors.general.commands import (
+    execute_combine_command,
+)
 
 
 class GeneralShell(BaseShell):
@@ -46,6 +49,10 @@ class GeneralShell(BaseShell):
     def do_clump(self, arg):
         """Clump thesaurus keys."""
         execute_clump_command()
+
+    def do_combine(self, arg):
+        """Combine thesaurus keys."""
+        execute_combine_command()
 
     def do_cutofffuzzy(self, arg):
         """Cutoff fuzzy merge thesaurus keys."""

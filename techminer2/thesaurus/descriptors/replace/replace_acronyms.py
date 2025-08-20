@@ -11,26 +11,28 @@ Replace Abbreviations
 ===============================================================================
 
 Example:
-    >>> import shutil
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, ReplaceAbbreviations
-
-    >>> # Redirecting stderr to avoid messages
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
     >>> # Copy the acronyms file
+    >>> import shutil
     >>> shutil.copy("examples/fintech/acronyms.the.txt", "examples/fintech/data/thesaurus/acronyms.the.txt")
     'examples/fintech/data/thesaurus/acronyms.the.txt'
 
     >>> # Create thesaurus
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Configure and run the replacer
-    >>> replacer = ReplaceAbbreviations(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False)
+    >>> # Redirecting stderr to avoid messages
+    >>> import sys
+    >>> from io import StringIO
+    >>> original_stderr = sys.stderr
+    >>> sys.stderr = StringIO()
 
-    >>> replacer.run()
+    >>> # Configure and run the replacer
+    >>> from techminer2.thesaurus.descriptors import ReplaceAcronyms
+    >>> ReplaceAcronyms(
+    ...     root_directory="examples/fintech/",
+    ...     tqdm_disable=True,
+    ...     use_colorama=False,
+    ... ).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -82,7 +84,7 @@ from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
 
 
-class ReplaceAbbreviations(
+class ReplaceAcronyms(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -93,27 +95,30 @@ class ReplaceAbbreviations(
     # -------------------------------------------------------------------------
     def internal__notify_process_start(self):
 
-        file_path = str(self.thesaurus_path)
+        # Prepare thesaurus path
+        thesaurus_path = str(self.thesaurus_path)
 
-        if len(file_path) > 40:
-            file_path = "..." + file_path[-36:]
+        if len(thesaurus_path) > 40:
+            thesaurus_path = "..." + thesaurus_path[-36:]
 
         if self.params.use_colorama:
-            filename = str(file_path).split("/")[-1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
+            filename = str(thesaurus_path).split("/")[-1]
+            thesaurus_path = thesaurus_path.replace(filename, f"{Fore.RESET}{filename}")
+            thesaurus_path = Fore.LIGHTBLACK_EX + thesaurus_path
 
+        # Prepare acronyms path
         acronyms_path = str(self.acronyms_path)
+
         if len(acronyms_path) > 40:
             acronyms_path = "..." + acronyms_path[-36:]
 
         if self.params.use_colorama:
             filename = str(acronyms_path).split("/")[-1]
             acronyms_path = acronyms_path.replace(filename, f"{Fore.RESET}{filename}")
-            acronyms_path = Fore.LIGHTBLACK_EX + file_path
+            acronyms_path = Fore.LIGHTBLACK_EX + thesaurus_path
 
         sys.stderr.write("Replacing acronyms in keys...\n")
-        sys.stderr.write(f"  Thesaurus : {file_path}\n")
+        sys.stderr.write(f"  Thesaurus : {thesaurus_path}\n")
         sys.stderr.write(f"   Acronyms : {acronyms_path}\n")
         sys.stderr.flush()
 
@@ -139,7 +144,7 @@ class ReplaceAbbreviations(
         self.thesaurus_path = internal__generate_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
-    def internal__get_abbrevaviations_thesaurus_file_path(self):
+    def internal__get_acronyms_thesaurus_file_path(self):
 
         params = (
             Params()
@@ -215,7 +220,7 @@ class ReplaceAbbreviations(
     def run(self):
         """:meta private:"""
         self.internal__get_descriptors_thesaurus_file_path()
-        self.internal__get_abbrevaviations_thesaurus_file_path()
+        self.internal__get_acronyms_thesaurus_file_path()
         self.internal__notify_process_start()
         self.internal__load_descriptor_thesaurus_as_data_frame()
         self.internal__load_acronyms_thesaurus_as_mapping()

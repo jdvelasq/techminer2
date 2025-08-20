@@ -21,7 +21,6 @@ Example:
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
-
     >>> # Reset the thesaurus to initial state
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="examples/fintech/", quiet=True).run()
@@ -38,11 +37,35 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +ELLIPSIS +SKIP
+    >>> print(output)  # doctest: +SKIP
     Clumping thesaurus keys...
-                      File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1724 to 1724
+                   File : examples/fintech/data/thesaurus/demo.the.txt
+      Keys reduced from 1721 to 1693
       Clumping process completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : examples/fintech/data/thesaurus/demo.the.txt
+    <BLANKLINE>
+        DATA_SECURITY
+          DATA_SECURITY; DATA_SECURITY_AND_CONSUMER_TRUST; SECURITY_OF_DATA
+        ELABORATION_LIKELIHOOD_MODEL
+          ELABORATION_LIKELIHOOD_MODEL; THE_ELABORATION_LIKELIHOOD_MODEL
+        FINANCIAL_TECHNOLOGY
+          AN_EMERGING_FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGY (FINTECH); FINANCI...
+        INFORMATION_TECHNOLOGY
+          INFORMATION_TECHNOLOGY; INFORMATION_TECHNOLOGY_INFRASTRUCTURE; PARTICULAR...
+        INTENTION_TO_USE
+          CONTINUOUS_INTENTION_TO_USE_MOBILE; CONTINUOUS_INTENTION_TO_USE_MOBILE_FI...
+        LITERATURE_REVIEW
+          LITERATURE_REVIEW; THE_CURRENT_LITERATURE_REVIEW
+        MULTI_LEVEL_ANALYSIS
+          A_MULTI_LEVEL_ANALYSIS; MULTI_LEVEL_ANALYSIS
+        PEER_TO_PEER
+          PEER_TO_PEER; PEER_TO_PEER_MONEY_EXCHANGES; PEER_TO_PEER_PLATFORMS
+        SECURITY_AND_PRIVACY
+          SECURITY_AND_PRIVACY; THE_SECURITY_AND_PRIVACY_DIMENSION
+        START_UPS
+          CONSUMER_ORIENTED_FINTECH_START_UPS; FINTECH_DIGITAL_BANKING_START_UPS; M...
     <BLANKLINE>
     <BLANKLINE>
 
@@ -59,6 +82,7 @@ from techminer2.database.metrics.performance import DataFrame
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
 from techminer2.thesaurus._internals import ThesaurusMixin
 from tqdm import tqdm  # type: ignore
+from techminer2.thesaurus._internals import internal__print_thesaurus_header
 
 
 class ClumpKeys(
@@ -82,17 +106,24 @@ class ClumpKeys(
             file_path = Fore.LIGHTBLACK_EX + file_path
 
         sys.stderr.write(f"Clumping thesaurus keys...\n")
-        sys.stderr.write(f"                  File : {file_path}\n")
+        sys.stderr.write(f"               File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
+        self.n_final_keys = len(self.data_frame.key.drop_duplicates())
         sys.stderr.write(
             f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
         )
         sys.stderr.write(f"  Clumping process completed successfully\n\n")
         sys.stderr.flush()
+
+        internal__print_thesaurus_header(
+            self.thesaurus_path,
+            n=10,
+            use_colorama=True,
+        )
 
     #
     # ALGORITHM:
@@ -129,7 +160,7 @@ class ClumpKeys(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="      Clumping keywords ",
+            desc="  Clumping keywords ",
             disable=self.params.tqdm_disable,
             ncols=80,
         ):
@@ -147,6 +178,11 @@ class ClumpKeys(
                 continue
             self.data_frame.loc[candidates.index, "key"] = keyword
             self.data_frame.loc[candidates.index, "is_keyword"] = True
+            #
+            self.data_frame.loc[
+                self.data_frame["key"] == keyword, "__row_selected__"
+            ] = True
+            #
 
     # -------------------------------------------------------------------------
     def internal__combine_words(self):
@@ -158,7 +194,8 @@ class ClumpKeys(
         for keyword, _ in tqdm(
             self.keywords.iterrows(),
             total=self.keywords.shape[0],
-            desc="         Clumping words ",
+            desc="     Clumping words ",
+            ncols=80,
             disable=self.params.tqdm_disable,
         ):
 
@@ -178,17 +215,24 @@ class ClumpKeys(
                 continue
             self.data_frame.loc[candidates.index, "key"] = keyword
             self.data_frame.loc[candidates.index, "is_keyword"] = True
+            #
+            self.data_frame.loc[
+                self.data_frame["key"] == keyword, "__row_selected__"
+            ] = True
+            #
 
     # -------------------------------------------------------------------------
     def internal__combine_keys(self):
 
         self.n_initial_keys = len(self.data_frame.key.drop_duplicates())
         self.data_frame["phrase"] = self.data_frame["key"].str.replace("_", " ")
+        #
+        self.data_frame["__row_selected__"] = False
+        #
         self.internal__combine_keywords()
         self.internal__combine_words()
         self.data_frame.pop("phrase")
         self.data_frame.pop("is_keyword")
-        self.n_final_keys = len(self.data_frame.key.drop_duplicates())
 
     # -------------------------------------------------------------------------
     def internal__group_values_by_key(self):
@@ -209,7 +253,7 @@ class ClumpKeys(
         self.internal__get_keywords()
         self.internal__mark_keywords()
         self.internal__combine_keys()
-        self.internal__reduce_keys()
+        # self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
