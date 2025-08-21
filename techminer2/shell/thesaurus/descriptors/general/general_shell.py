@@ -6,31 +6,18 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
+# pylint: disable=unused-argument
+
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
 from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_apply_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_cleanup_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_clump_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
-    execute_initialize_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
-    execute_integrity_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
-    execute_reduce_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_cutofffuzzy_command,
-)
-from techminer2.shell.thesaurus.descriptors.general.commands import (
-    execute_combine_command,
+    execute_initialize_command,
+    execute_integrity_command,
+    execute_reduce_command,
 )
 
 
@@ -49,10 +36,6 @@ class GeneralShell(BaseShell):
     def do_clump(self, arg):
         """Clump thesaurus keys."""
         execute_clump_command()
-
-    def do_combine(self, arg):
-        """Combine thesaurus keys."""
-        execute_combine_command()
 
     def do_cutofffuzzy(self, arg):
         """Cutoff fuzzy merge thesaurus keys."""

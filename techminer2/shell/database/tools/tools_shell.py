@@ -11,12 +11,10 @@ from techminer2.shell.colorized_prompt import make_colorized_prompt
 from techminer2.shell.database.tools.commands import (
     execute_colons_command,
     execute_copyright_command,
-    execute_desambiguate_command,
     execute_doctypes_command,
     execute_summary_command,
     execute_titles_command,
     execute_view_command,
-    execute_generic_command,
 )
 
 
@@ -32,17 +30,9 @@ class ToolsShell(BaseShell):
         """Extract colons text."""
         execute_colons_command()
 
-    def do_desambiguate(self, arg):
-        """Disambiguate terms."""
-        execute_desambiguate_command()
-
     def do_doctypes(self, arg):
         """List document types."""
         execute_doctypes_command()
-
-    def do_generic(self, arg):
-        """Determine if a term is too generic, vague or ambiguous."""
-        execute_generic_command()
 
     def do_summary(self, arg):
         """Generate a summary."""

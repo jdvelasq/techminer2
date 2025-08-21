@@ -5,10 +5,7 @@
 # pylint: disable=too-many-instance-attributes
 """Define a mixin class for input functions."""
 from dataclasses import dataclass
-from typing import Dict
-from typing import List
-from typing import Optional
-from typing import Tuple
+from typing import Dict, List, Optional, Tuple
 
 
 @dataclass
@@ -642,6 +639,10 @@ class ParamsMixin:
 
     def with_other_field(self, field):
         self.params.other_field = field
+        return self
+
+    def with_patterns(self, patterns):
+        self.params.pattern = patterns
         return self
 
     def with_query_expression(self, expr):
