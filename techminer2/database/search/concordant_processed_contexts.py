@@ -32,9 +32,9 @@ Example:
     ... )
     >>> contexts = finder.run()
     >>> for t in contexts[:10]: print(t) # doctest: +NORMALIZE_WHITESPACE
-           in THIS_INTRODUCTORY_ARTICLE , we describe the recent FINTECH phenomenon and the novel editorial protocol employed for >>>
-    <<<  learned from the submitted proposals about the field of FINTECH and which ones we selected to be completed and ultimatel >>>
-            in this study , we unveil the drivers motivating the FINTECH phenomenon perceived by the english and german popular p >>>
+           in THIS_INTRODUCTORY_ARTICLE , we describe the recent FINTECH phenomenon and the novel editorial protocol employed for…
+      …e learned from the submitted proposals about the field of FINTECH and which ones we selected to be completed and ultimately…
+            in this study , we unveil the drivers motivating the FINTECH phenomenon perceived by the english and german popular pr…
 
 
 """
