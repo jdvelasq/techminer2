@@ -32,16 +32,16 @@ Example:
     ... )
     >>> contexts = finder.run()
     >>> for t in contexts[:10]: print(t) # doctest: +NORMALIZE_WHITESPACE
-    <<< s with the purpose of reinventing financial technology ( FINTECH )
-                             we find that countries witness more FINTECH startup formations when the economy is well developed an >>>
-    <<<  companies to access loans , the higher is the number of FINTECH startups in a country
-                            overall , the evidence suggests that FINTECH startup formation need not be left to chance , but activ >>>
-    <<< vide large scale evidence on the occurrence and value of FINTECH innovation
-                                               we find that most FINTECH innovations yield substantial value to innovators , with >>>
-    <<< artificial intelligence ( ai ) on financial technology ( FINTECH ) , the purpose of this paper is to propose a research f >>>
-    <<< sumers ' perceptions regarding the introduction of ai in FINTECH
-                                                                 FINTECH is about the introduction of new technologies into the f >>>
-    <<<  academic finance community was not actively researching FINTECH , the editorial team of the review of financial studies  >>>
+      …es with the purpose of reinventing financial technology ( FINTECH )
+                             we find that countries witness more FINTECH startup formations when the economy is well developed and…
+      …r companies to access loans , the higher is the number of FINTECH startups in a country
+                            overall , the evidence suggests that FINTECH startup formation need not be left to chance , but active…
+      …ovide large scale evidence on the occurrence and value of FINTECH innovation
+                                               we find that most FINTECH innovations yield substantial value to innovators , with…
+       …artificial intelligence ( ai ) on financial technology ( FINTECH ) , the purpose of this paper is to propose a research fr…
+      …nsumers ' perceptions regarding the introduction of ai in FINTECH
+                                                                 FINTECH is about the introduction of new technologies into the fi…
+      …e academic finance community was not actively researching FINTECH , the editorial team of the review of financial studies l…
 
 
 """
@@ -114,10 +114,18 @@ class ConcordantRawContexts(
         contexts["left_r"] = contexts["left_context"].str[::-1]
 
         contexts["left_context"] = contexts["left_context"].map(
-            lambda x: "<<< " + x[-56:] if len(x) > 60 else x
+            lambda x: "<<<" + x[-57:] if len(x) > 60 else x
         )
         contexts["right_context"] = contexts["right_context"].map(
-            lambda x: x[:56] + " >>>" if len(x) > 60 else x
+            lambda x: x[:57] + ">>>" if len(x) > 60 else x
+        )
+
+        contexts["left_context"] = contexts["left_context"].str.replace(
+            r"(<<<\s*)", "\u2026", regex=True
+        )
+
+        contexts["right_context"] = contexts["right_context"].str.replace(
+            r"(\s*>>>)", "\u2026", regex=True
         )
 
         texts = []
