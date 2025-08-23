@@ -15,7 +15,7 @@ from openai import OpenAI
 
 from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus.descriptors import GetValues
+from techminer2.thesaurus.descriptors import GetValues, MergeKeys
 
 PROMPT = """
 ROLE:
@@ -264,6 +264,24 @@ def internal__print_answer(answer):
 
 
 # -----------------------------------------------------------------------------
+def internal__merge_keys(lead_term, candidate_term):
+
+    answer = colorized_input(". Merge lead and candidate terms (y/[n])? > ").strip()
+    if answer.lower() in ["n", "no", "not", ""]:
+        print()
+        return
+
+    (
+        MergeKeys(use_colorama=False)
+        .with_patterns([lead_term, candidate_term])
+        .where_root_directory_is("./")
+        .run()
+    )
+
+    print()
+
+
+# -----------------------------------------------------------------------------
 def execute_synonyms_command():
 
     print()
@@ -300,7 +318,7 @@ def execute_synonyms_command():
         internal__print_answer(answer)
 
         if answer == "yes":
-            pass
+            internal__merge_keys(lead_term, candidate_term)
 
 
 #

@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Reduce Keys
+Merge Keys
 ===============================================================================
 
 
@@ -15,33 +15,33 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, ReduceKeys
-
-    >>> # Redirecting stderr to avoid messages during doctests
     >>> original_stderr = sys.stderr
     >>> sys.stderr = StringIO()
 
 
-    >>> # Reset the thesaurus to initial state
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Creates, configures, an run the reducer
-    >>> reducer = (
-    ...     ReduceKeys(use_colorama=False)
+
+    >>> from techminer2.thesaurus.user import MergeKeys
+    >>> (
+    ...     MergeKeys(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_patterns(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
     ...     .where_root_directory_is("examples/fintech/")
+    ...     .run()
     ... )
-    >>> reducer.run()
+
 
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-    Reducing thesaurus keys...
+    >>> print(output)
+    Merging thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1724 to 1724
-      Reduction process completed successfully
+      Keys : FINTECH; FINANCIAL_TECHNOLOGIES
+      Merging process completed successfully
     <BLANKLINE>
     <BLANKLINE>
 
@@ -61,7 +61,7 @@ from techminer2.thesaurus._internals import (
 tqdm.pandas()
 
 
-class ReduceKeys(
+class MergeKeys(
     ParamsMixin,
     ThesaurusMixin,
 ):
@@ -82,21 +82,28 @@ class ReduceKeys(
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write("Reducing thesaurus keys...\n")
+        sys.stderr.write("Merging thesaurus keys...\n")
         sys.stderr.write(f"  File : {file_path}\n")
+        sys.stderr.write(f"  Keys : {'; '.join(self.params.pattern)}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(
-            f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        )
-        sys.stderr.write("  Reduction process completed successfully\n\n")
+        sys.stderr.write("  Merging process completed successfully\n\n")
         sys.stderr.flush()
 
     #
     # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__merge_keys(self):
+
+        lead_key = self.params.pattern[0]
+        candidate_keys = self.params.pattern[1:]
+
+        for candidate in candidate_keys:
+            self.data_frame.loc[self.data_frame["key"] == candidate, "key"] = lead_key
+
     # -------------------------------------------------------------------------
     def run(self):
         """:meta private:"""
@@ -105,7 +112,7 @@ class ReduceKeys(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
-        self.internal__reduce_keys()
+        self.internal__merge_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()

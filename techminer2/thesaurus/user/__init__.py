@@ -8,6 +8,7 @@ from techminer2.thesaurus.user.general.explode_keys import ExplodeKeys
 from techminer2.thesaurus.user.general.get_values import GetValues
 from techminer2.thesaurus.user.general.initialize_thesaurus import InitializeThesaurus
 from techminer2.thesaurus.user.general.integrity_check import IntegrityCheck
+from techminer2.thesaurus.user.general.merge_keys import MergeKeys
 from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 from techminer2.thesaurus.user.general.spell_check import SpellCheck
 from techminer2.thesaurus.user.replace.replace_initial_word import ReplaceInitialWord
@@ -64,4 +65,5 @@ __all__ = [
     "SortByWordLength",
     "SortByWordMatch",
     "SpellCheck",
+    "MergeKeys",
 ]

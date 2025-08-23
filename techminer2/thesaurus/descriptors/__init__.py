@@ -7,6 +7,7 @@ from .general.cutoff_fuzzy_merging import CutoffFuzzyMerging
 from .general.get_values import GetValues
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
+from .general.merge_keys import MergeKeys
 from .general.normalize_keys import NormalizeKeys
 from .general.reduce_keys import ReduceKeys
 from .register.register_initial_word import RegisterInitialWord
@@ -76,4 +77,5 @@ __all__ = [
     "SortByWordMatch",
     "AmericanToBritishSpelling",
     "BritishToAmericanSpelling",
+    "MergeKeys",
 ]
