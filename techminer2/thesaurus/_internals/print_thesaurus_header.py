@@ -1,8 +1,9 @@
 """Thesaurus internal functions"""
+
 import sys
 
-from colorama import Fore
-from colorama import init
+from colorama import Fore, init
+
 from techminer2.thesaurus._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
 )
@@ -38,7 +39,7 @@ def internal__print_thesaurus_header(
 
     msg = f"Printing thesaurus header\n  File : {thesaurus_path}\n\n"
     if use_colorama:
-        filename = str(thesaurus_path).split("/")[-1]
+        filename = str(thesaurus_path).rsplit("/", maxsplit=1)
         msg = msg.replace("File :", f"{Fore.LIGHTBLACK_EX}File :")
         msg = msg.replace(filename, f"{Fore.RESET}{filename}")
     sys.stderr.write(msg)

@@ -72,16 +72,17 @@ Example:
 import re
 import sys
 
-from colorama import Fore
-from colorama import init
-from techminer2._internals.mixins import Params
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
-from techminer2.thesaurus._internals import internal__load_thesaurus_as_data_frame
-from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
-from techminer2.thesaurus._internals import internal__print_thesaurus_header
-from techminer2.thesaurus._internals import ThesaurusMixin
+from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
+
+from techminer2._internals.mixins import Params, ParamsMixin
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_thesaurus_as_data_frame,
+    internal__load_thesaurus_as_mapping,
+    internal__print_thesaurus_header,
+)
 
 
 class ReplaceAcronyms(
@@ -102,7 +103,7 @@ class ReplaceAcronyms(
             thesaurus_path = "..." + thesaurus_path[-36:]
 
         if self.params.use_colorama:
-            filename = str(thesaurus_path).split("/")[-1]
+            filename = str(thesaurus_path).rsplit("/", maxsplit=1)
             thesaurus_path = thesaurus_path.replace(filename, f"{Fore.RESET}{filename}")
             thesaurus_path = Fore.LIGHTBLACK_EX + thesaurus_path
 
@@ -113,9 +114,9 @@ class ReplaceAcronyms(
             acronyms_path = "..." + acronyms_path[-36:]
 
         if self.params.use_colorama:
-            filename = str(acronyms_path).split("/")[-1]
+            filename = str(acronyms_path).rsplit("/", maxsplit=1)
             acronyms_path = acronyms_path.replace(filename, f"{Fore.RESET}{filename}")
-            acronyms_path = Fore.LIGHTBLACK_EX + thesaurus_path
+            acronyms_path = Fore.LIGHTBLACK_EX + acronyms_path
 
         sys.stderr.write("Replacing acronyms in keys...\n")
         sys.stderr.write(f"  Thesaurus : {thesaurus_path}\n")

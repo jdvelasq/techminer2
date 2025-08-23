@@ -8,7 +8,7 @@ def execute_colons_command():
     file_path = "./outputs/texts/colons.txt"
 
     file_path_text = file_path
-    filename = str(file_path_text).split("/")[-1]
+    filename = str(file_path_text).rsplit("/", maxsplit=1)
     file_path_text = file_path_text.replace(filename, f"{Fore.RESET}{filename}")
     file_path_text = Fore.LIGHTBLACK_EX + file_path_text
 

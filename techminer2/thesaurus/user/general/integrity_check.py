@@ -50,14 +50,16 @@ Example:
 """
 import sys
 
-from colorama import Fore
-from colorama import init
+from colorama import Fore, init
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__load_reversed_thesaurus_as_mapping,
+)
 
 
 class IntegrityCheck(
@@ -74,7 +76,7 @@ class IntegrityCheck(
         file_path = str(self.thesaurus_path)
 
         if self.params.use_colorama:
-            filename = str(file_path).split("/")[-1]
+            filename = str(file_path).rsplit("/", maxsplit=1)
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 

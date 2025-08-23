@@ -18,28 +18,30 @@ from techminer2.shell.colorized_input import colorized_input
 
 PROMPT = """
 TASK:
-Determine whether the provided two terms (keyword or noun phrase) are conceptual synonyms in scientific or technical language, based solely on the provided contexts.
+Decide whether the two provided terms (keywords or noun phrases) are conceptual synonyms in scientific or technical language, based solely on the provided contexts.
 
 INSTRUCTIONS:
 1. Carefully review all provided contexts for each term.
-2. Consider the meaning, usage, and any differences in context.
+2. Compare the meaning, usage, and roles of each term within their respective contexts.
 3. Use only the provided contexts for your analysis. Do not use external information or prior knowledge.
-4. If the terms represent the same concept and can be merged into a single term, respond with "yes".
-5. If the terms do not represent the same concept and should remain separate, respond with "no".
+4. If both terms consistently refer to the same concept, idea, or entity in these contexts—and merging them would not lose any meaningful distinction—respond with "yes".
+5. If the terms clearly represent different concepts, have distinct roles, or merging them would obscure important differences, respond with "no".
 6. Your answer must be a single word: "yes" or "no".
 7. If you are uncertain or the contexts are insufficient to decide, respond with "no".
 
 
 TERMS:
-- Term 1: <<{pattern_1}>>
-- Term 2: <<{pattern_2}>>
+Term 1: <<{pattern_1}>>
+Term 2: <<{pattern_2}>>
 
 
 CONTEXTS FOR TERM 1:
 {contexts_1}
 
+
 CONTEXTS FOR TERM 2:
 {contexts_2}
+
 
 """
 

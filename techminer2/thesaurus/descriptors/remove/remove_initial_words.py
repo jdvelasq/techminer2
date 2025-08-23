@@ -64,14 +64,16 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore
-from colorama import init
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import internal__print_thesaurus_header
-from techminer2.thesaurus._internals import ThesaurusMixin
+from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
+
+from techminer2._internals.mixins import ParamsMixin
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__print_thesaurus_header,
+)
 
 tqdm.pandas()
 
@@ -90,7 +92,7 @@ class RemoveInitialWords(
         file_path = str(self.thesaurus_path)
 
         if self.params.use_colorama:
-            filename = str(file_path).split("/")[-1]
+            filename = str(file_path).rsplit("/", maxsplit=1)
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 

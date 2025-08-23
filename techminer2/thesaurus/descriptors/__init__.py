@@ -1,11 +1,13 @@
 "Public API for descriptors."
 
 from .general.apply_thesaurus import ApplyThesaurus
-from .general.combine_keys import CombineKeys
-from .general.normalize_keys import NormalizeKeys
 from .general.clump_keys import ClumpKeys
+from .general.combine_keys import CombineKeys
+from .general.cutoff_fuzzy_merging import CutoffFuzzyMerging
+from .general.get_values import GetValues
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
+from .general.normalize_keys import NormalizeKeys
 from .general.reduce_keys import ReduceKeys
 from .register.register_initial_word import RegisterInitialWord
 from .register.register_keyword import RegisterKeyword
@@ -35,11 +37,11 @@ from .sort.sort_by_word_length import SortByWordLength
 from .sort.sort_by_word_match import SortByWordMatch
 from .translate.american_to_british_spelling import AmericanToBritishSpelling
 from .translate.british_to_american_spelling import BritishToAmericanSpelling
-from .general.cutoff_fuzzy_merging import CutoffFuzzyMerging
 
 __all__ = [
     "ApplyThesaurus",
     "CombineKeys",
+    "GetValues",
     "NormalizeKeys",
     "ClumpKeys",
     "CutoffFuzzyMerging",
