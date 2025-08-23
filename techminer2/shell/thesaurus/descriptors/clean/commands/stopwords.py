@@ -261,9 +261,6 @@ def execute_stopwords_command():
     print()
     core_area = None
 
-    # internal__run_diagnostics()
-    # return
-
     while True:
 
         core_area, pattern, n_contexts = internal__user_input(core_area)
@@ -271,8 +268,6 @@ def execute_stopwords_command():
         if pattern is None:
             print()
             return
-
-        ## pattern = pattern.lower().replace("_", " ")
 
         contexts = internal__get_contexts(pattern, n_contexts)
         if not contexts:
