@@ -8,6 +8,7 @@
 # pylint: disable=too-many-branches
 
 import os
+import textwrap
 
 import openai
 from colorama import Fore
@@ -25,7 +26,6 @@ You are an expert in scientometrics and text mining, with experience in co-word 
 CONTEXT:
 This task is part of a process to refine the thesaurus for co-word and tech-mining analysis in the core area <<{core_area}>>. 
 The goal is to determine whether two terms are conceptual synonyms—meaning they refer to the same concept or idea in the provided context phrases and core area.
-
 
 Important extraction assumption:
 -   The corpus has been pre-processed to extract meaningful terms (noun phrases / keywords).
@@ -72,6 +72,49 @@ CONSTRAINTS:
 OUTPUT:
 Return exactly one word with no quotes: "yes" or "no".
 
+
+TERMS:
+LEAD-TERM: <<{lead_term}>>
+CANDIDATE-TERM: <<{candidate_term}>>
+
+
+CONTEXT PHRASES FOR THE LEAD-TERM:
+{contexts_lead}
+
+
+CONTEXT PHRASES FOR THE CANDIDATE-TERM:
+{contexts_candidate}
+
+"""
+
+EXPLAIN = """
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word and tech-mining studies.
+
+
+CONTEXT:
+This task is part of a process to refine the thesaurus for co-word and tech-mining analysis in the core area <<{core_area}>>. 
+The provided terms are NOT conceptual synonyms—meaning they refer to different concepts or ideas in the provided context phrases and core area.
+
+Important extraction assumption:
+-   The corpus has been pre-processed to extract meaningful terms (noun phrases / keywords).
+-   Multi-word terms are indexed separately from their headwords. Therefore, phrases for an isolated term
+    do not include occurrences that belong to its multi-word variants (e.g., phrases for "value" exclude
+    "market value", "net present value", etc.).
+
+
+TASK:
+Write a paragraph explaining why the provided terms are not conceptual synonyms in the context of <<{core_area}>>.
+
+
+REQUERIMENTS:
+-   Provide a clear and concise explanation based on the provided context phrases.
+-   Use specific examples from the context phrases to support your explanation.
+-   Avoid vague statements and ensure your reasoning is grounded in the provided context.
+
+
+LENGTH:
+100 to 150 words.
 
 TERMS:
 LEAD-TERM: <<{lead_term}>>
@@ -282,6 +325,49 @@ def internal__merge_keys(lead_term, candidate_term):
 
 
 # -----------------------------------------------------------------------------
+def internal__explain(
+    core_area,
+    lead_term,
+    candidate_term,
+    contexts_lead,
+    contexts_candidate,
+):
+
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+    query = EXPLAIN.format(
+        lead_term=lead_term,
+        candidate_term=candidate_term,
+        contexts_lead="\n".join(contexts_lead),
+        contexts_candidate="\n".join(contexts_candidate),
+        core_area=core_area,
+    )
+
+    try:
+
+        response = client.responses.create(
+            model="gpt-4o",
+            input=query,
+            temperature=0,
+        )
+
+        answer = response.output_text
+        answer = answer.strip()
+        return answer
+
+    except openai.OpenAIError as e:
+        print()
+        print(f"Error processing the query: {e}")
+        print()
+        return None
+
+
+# -----------------------------------------------------------------------------
+def internal__print(msg):
+    print(Fore.LIGHTBLACK_EX + msg + Fore.RESET)
+
+
+# -----------------------------------------------------------------------------
 def execute_synonyms_command():
 
     print()
@@ -293,15 +379,20 @@ def execute_synonyms_command():
             core_area
         )
 
+        print()
+        internal__print("Evaluating synonyms...")
+
         if lead_term is None or candidate_term is None:
             print()
             return
 
+        internal__print("  Building contexts for the lead term...")
         contexts_lead = internal__get_contexts(lead_term, n_contexts)
         if not contexts_lead:
             internal__print_answer("na-lead")
             continue
 
+        internal__print("  Building contexts for the candidate term...")
         contexts_candidate = internal__get_contexts(candidate_term, n_contexts)
         if not contexts_candidate:
             internal__print_answer("na-candidate")
@@ -311,14 +402,28 @@ def execute_synonyms_command():
             n_contexts, contexts_lead, contexts_candidate
         )
 
+        internal__print("  Executing the query...")
         answer = internal__execute_query(
             core_area, lead_term, candidate_term, contexts_lead, contexts_candidate
         )
+        internal__print("  Evaluation process completed successfully.")
 
         internal__print_answer(answer)
 
         if answer == "yes":
             internal__merge_keys(lead_term, candidate_term)
+        else:
+            explanation = internal__explain(
+                core_area,
+                lead_term,
+                candidate_term,
+                contexts_lead,
+                contexts_candidate,
+            )
+            explanation = textwrap.fill(explanation, width=80)
+            if explanation:
+                print(explanation)
+                print()
 
 
 #
