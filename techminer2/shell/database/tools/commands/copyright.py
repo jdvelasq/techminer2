@@ -1,5 +1,4 @@
-from techminer2.database.tools import CollectDescriptors
-from techminer2.database.tools import ExtractCopyrightText
+from techminer2.database.tools import CollectDescriptors, ExtractCopyrightText
 from techminer2.shell.colorized_input import colorized_input
 
 
@@ -8,7 +7,7 @@ def execute_copyright_command():
     print()
 
     while True:
-        n_chars = colorized_input(". Enter n_chars (140) >").strip()
+        n_chars = colorized_input(". Enter n_chars (140) > ").strip()
         if n_chars.isdigit() or n_chars == "":
             break
 
