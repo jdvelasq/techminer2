@@ -16,7 +16,7 @@ from openai import OpenAI
 
 from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus.descriptors import GetValues, MergeKeys
+from techminer2.thesaurus.descriptors import GetValues
 
 PROMPT = """
 ROLE:
