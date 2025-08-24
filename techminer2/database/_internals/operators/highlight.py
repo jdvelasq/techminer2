@@ -10,11 +10,14 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-from techminer2._internals import Params
-from techminer2.database._internals.io import internal__load_all_records_from_database
-from techminer2.database._internals.io import internal__write_records_to_database
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
 from tqdm import tqdm  # type: ignore
+
+from techminer2._internals import Params
+from techminer2.database._internals.io import (
+    internal__load_all_records_from_database,
+    internal__write_records_to_database,
+)
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
 
 SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
     "abstract",
@@ -504,6 +507,7 @@ def fix_units(text):
         "omr",
         "omr",
         "rmb",
+        "s",
         "t",
         "ton",
         "tons",
@@ -530,7 +534,7 @@ def fix_units(text):
         )
         text = text.replace(
             f"/_{unit.upper().replace(' ', '_')} ",
-            f"/{unit.lower()}.replace(' ', '_') ",
+            f"/{unit.lower().replace(' ', '_')} ",
         )
 
     text = text.replace("POLENERGIA/EQUINOR", "polenergia/equinor")
