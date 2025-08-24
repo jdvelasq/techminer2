@@ -259,6 +259,7 @@ by rajbala , pawan kumar singh nain and avadhesh kumar \.$
 \d{4} academy of medical sciences of i \. r \. iran
 \. wind energy published by john wiley and sons ltd \.$
 \. this project was funded by the beijing financial fund \.
+\. this article is categorized under :( ([a-z0-9]+ )+>)+( ([a-z0-9]+ )+\.)
 \. references \d+ , tables \d+ , fig \. \d+ \.
 \. no commercial use is permitted unless otherwise expressly granted \.$
 \. emergent telemedicine practice in india : challenge and response \.$
@@ -731,6 +732,7 @@ a link to the original publication
 \. infopro digital limited \d{4} \.
 \. iberamia and the authors \.
 \. gka ediciones , authors \.
+\. esrel \d{4} psam15 organizers \.
 \. d{4} zeitschrift fur rechtssoziologie \.
 \. de beaumont foundation \d{4} \.
 \. copyright esrel2020 psam15 organizers \.
@@ -1104,6 +1106,7 @@ series transport
 revista dyna
 published with(\s\b[a-z\+]+\b)+
 proceedings of(\s\b[a-z0-9\+]+\b)+
+leontyeva yu
 kedge bs
 ista dyna
 interciencia association
