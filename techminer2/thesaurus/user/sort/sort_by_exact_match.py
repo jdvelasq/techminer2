@@ -103,7 +103,7 @@ class SortByExactMatch(
             file_path = "..." + file_path[-60:]
 
         if self.params.use_colorama:
-            filename = str(file_path).rsplit("/", maxsplit=1)
+            filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 

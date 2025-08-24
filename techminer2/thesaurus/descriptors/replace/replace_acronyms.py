@@ -103,7 +103,7 @@ class ReplaceAcronyms(
             thesaurus_path = "..." + thesaurus_path[-36:]
 
         if self.params.use_colorama:
-            filename = str(thesaurus_path).rsplit("/", maxsplit=1)
+            filename = str(thesaurus_path).rsplit("/", maxsplit=1)[1]
             thesaurus_path = thesaurus_path.replace(filename, f"{Fore.RESET}{filename}")
             thesaurus_path = Fore.LIGHTBLACK_EX + thesaurus_path
 
@@ -114,7 +114,7 @@ class ReplaceAcronyms(
             acronyms_path = "..." + acronyms_path[-36:]
 
         if self.params.use_colorama:
-            filename = str(acronyms_path).rsplit("/", maxsplit=1)
+            filename = str(acronyms_path).rsplit("/", maxsplit=1)[1]
             acronyms_path = acronyms_path.replace(filename, f"{Fore.RESET}{filename}")
             acronyms_path = Fore.LIGHTBLACK_EX + acronyms_path
 

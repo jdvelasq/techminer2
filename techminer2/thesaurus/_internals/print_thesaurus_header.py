@@ -39,7 +39,7 @@ def internal__print_thesaurus_header(
 
     msg = f"Printing thesaurus header\n  File : {thesaurus_path}\n\n"
     if use_colorama:
-        filename = str(thesaurus_path).rsplit("/", maxsplit=1)
+        filename = str(thesaurus_path).rsplit("/", maxsplit=1)[1]
         msg = msg.replace("File :", f"{Fore.LIGHTBLACK_EX}File :")
         msg = msg.replace(filename, f"{Fore.RESET}{filename}")
     sys.stderr.write(msg)
