@@ -551,8 +551,8 @@ def internal__extend_stopwords(pattern):
 def execute_stopwords_command():
 
     print()
-    internal__run_diagnostics()
-    return
+    # internal__run_diagnostics()
+    # return
     core_area = None
 
     while True:
