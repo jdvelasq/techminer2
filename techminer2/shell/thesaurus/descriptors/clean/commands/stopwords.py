@@ -21,85 +21,85 @@ from techminer2.database.tools import ExtendStopwords
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.descriptors import GetValues
 
-PROMPT = """
+# -----------------------------------------------------------------------------
+
+PROMPT_PHASE_1_WITH_CONTEXT_PHRASES = """
 ROLE:
-You are an expert in scientometrics and text mining, with experience in co-word and tech-mining studies.
-
-
-CONTEXT:
-Decide whether a candidate TERM should be treated as a stopword for bibliometric/tech-mining theme discovery
-in the core area <<{core_area}>>. A stopword is a generic or non-discriminative term that does not help surface
-dominant/emergent themes.
-
-Important extraction assumption:
--   The corpus has been pre-processed to extract meaningful terms (noun phrases / keywords).
--   Multi-word terms are indexed separately from their headwords. Therefore, contexts for an isolated TERM
-    do not include occurrences that belong to its multi-word variants (e.g., contexts for "value" exclude
-    "market value", "net present value", etc.).
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
 
 
 TASK:
-Return exactly one lowercase word with no punctuation:
--   "yes": exclude the TERM as a stopword
--   "no": retain the TERM as useful
+Determine whether the candidate TERM is a technical or domain-specific concept,
+term, or entity in the current core area <<{core_area}>>, or in any closely 
+related technical, scientific, business, analytics, or technology domain.
 
 
-CLASSIFICATION RULES:
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
 
-Step 0 — Knowledge & extraction prior (apply once to the TERM):
--   Classify the TERM as one of:
-    A)  Likely compound headword (common head of domain collocations).
-    B)  Linguistic scaffolding operator (generic connector).
-    C)  Core technical/economic variable that often stands alone with units/quantification.
-
- - Priors:
-    *   If (A) compound headword → exclude ("yes") only if virtually all (e.g., >95%) 
-        of its own contexts show repeated, explicit technical anchoring (units, equations, 
-        explicit variable/measure). Generic labeling of types, cases, or examples is 
-        not sufficient for retention unless it is present in nearly all contexts.
-    *   If (B) scaffolding operator → default GS unless a clear majority of contexts show domain-specific meaning.
-    *   If (C) core variable → default TS unless all contexts are GS.
-
-Step 1 — Phrase-level labeling (for each context phrase independently):
--   Label the TERM as:
-    *   TS (technical-specific) if, in that phrase, the TERM itself is measured/defined/parametrized
-        (e.g., units, numeric comparison, equation, optimization/forecasting of this TERM, or it names
-        a domain construct).
-    *   GS (generic-scaffolding) if the TERM only frames language (label/connector/quantifier) and does not
-        denote a domain construct in that phrase.
-
-
-Step 2 — Deterministic aggregation:
--   Count TS and GS across the phrases (each phrase = one vote).
--   Decision rule:
-    *   Exclude the TERM ("yes") only if GS votes are virtually unanimous and there is clear, 
-        unambiguous evidence across all context phrases that the TERM is generic, vague, or 
-        ambiguous. For compound headwords, this is the default unless technical anchoring is 
-        clear and frequent.
-    *   Otherwise, retain the TERM ("no").
-- Tie-break:
-    * If TS = GS → use Step 0 prior:
-        * (A) or (B) → "yes"
-        * (C) → "no"
-
-
-CONSTRAINTS:
--   Use only the provided phrases plus general scientific knowledge of <<{core_area}>>.
--   Many stopwords are generic across domains; if a term is generic in most fields, it is 
-    likely a stopword here unless strong domain-specific evidence is present.
--   Do not infer meaning from multi-word variants that are indexed as separate terms.
--   Always return the same answer for the same TERM + contexts. 
--   The decision should be robust to minor variations in context phrasing.
--   Output exactly one word: yes or no.
--   If any context phrase could reasonably be interpreted as technical or domain-specific 
-    within the current core area, always retain ("no"), regardless of the majority or any other rule.
--   Only exclude ("yes") if all context phrases are clearly generic, vague, or ambiguous, 
-    and none can reasonably be interpreted as technical or domain-specific in the current core area.
+    
+DEFINITION:
+A technical or domain-specific concept, term, or entity is any word or phrase 
+that refers to a device, technology, organization type, scientific method, 
+model, algorithm, application, business concept, process, metric, standard, 
+regulation, framework, protocol, system, tool, platform, product, service, data 
+type, analytical approach, or any other concept that is specific and meaningful 
+within <<{core_area}>> or any of the related interest areas listed above.
 
 
-   
+Important extraction assumption:
+-   The corpus has been pre-processed to extract meaningful terms (noun phrases 
+    / keywords).
+-   Multi-word terms are indexed separately from their headwords. Therefore, 
+    contexts for an isolated TERM do not include occurrences that belong to its 
+    multi-word variants.
+
+
+INSTRUCTIONS:
+-   Use your domain knowledge, the provided core area, interest areas, and the 
+    CONTEXT PHRASES below to make the determination.
+-   Consider whether the TERM is recognized as technical or domain-specific in 
+    <<{core_area}>> or in any other related domain.
+-   Do not rely solely on frequency or CONTEXT PHRASES; focus on the TERM's 
+    recognized meaning and relevance.
+-   If you are unsure or the TERM is ambiguous, default to "no".
+
+
 OUTPUT:
-Return exactly one word with no quotes: yes or no.
+Return ONLY one word: "yes" or "no". Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
 
 
 TERM:
@@ -108,6 +108,270 @@ TERM:
 
 CONTEXT PHRASES:
 {contexts}
+
+"""
+
+# -----------------------------------------------------------------------------
+
+PROMPT_PHASE_1_WITHOUT_CONTEXT_PHRASES = """
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+
+TASK:
+Determine whether the candidate TERM is a technical or domain-specific concept,
+term, or entity in the current core area <<{core_area}>>, or in any closely 
+related technical, scientific, business, analytics, or technology domain.
+
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+    
+DEFINITION:
+A technical or domain-specific concept, term, or entity is any word or phrase 
+that refers to a device, technology, organization type, scientific method, 
+model, algorithm, application, business concept, process, metric, standard, 
+regulation, framework, protocol, system, tool, platform, product, service, data 
+type, analytical approach, or any other concept that is specific and meaningful 
+within <<{core_area}>> or any of the related interest areas listed above.
+
+
+INSTRUCTIONS:
+-   Use your domain knowledge, the provided core area, and interest areas, to 
+    make the determination.
+-   Consider whether the TERM is recognized as technical or domain-specific in 
+    <<{core_area}>> or in any other related domain.
+-   Focus on the TERM's recognized meaning and relevance.
+-   If you are unsure or the TERM is ambiguous, default to "no".
+
+
+OUTPUT:
+OUTPUT:
+Return ONLY one word: "yes" or "no". Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+TERM:
+<<{pattern}>>
+
+
+"""
+
+# -----------------------------------------------------------------------------
+
+PROMPT_PHASE_2_WITH_CONTEXT_PHRASES = """
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+
+CONTEXT:
+Decide whether a candidate TERM should be treated as a stopword for 
+bibliometric/tech-mining theme discovery in the core area <<{core_area}>> or 
+related interest areas. A stopword is a generic or non-discriminative term that 
+does not help surface dominant or emergent themes. A stopword does not have a 
+clear and specific meaning in the domain or related core areas.
+
+Important extraction assumption:
+-   The corpus has been pre-processed to extract meaningful terms (noun phrases 
+    / keywords).
+-   Multi-word terms are indexed separately from their headwords. Therefore, 
+    contexts for an isolated TERM do not include occurrences that belong to its 
+    multi-word variants.
+
+    
+NOTE:
+Technical or domain-specific terms have already been filtered out by a previous 
+step. Only generic, ambiguous, or non-discriminative terms remain for 
+evaluation.
+
+
+TASK:
+Return exactly one lowercase word with no punctuation:
+- "yes": exclude the TERM as a stopword
+- "no": retain the TERM as useful
+
+
+INSTRUCTIONS:
+1.  Use your domain knowledge, the provided core area, interest areas, and the 
+    CONTEXT PHRASES below to make your analysis.
+2.  List reasons why the TERM should be excluded as a stopword (e.g., it is 
+    generic, lacks specific meaning, or does not help identify 
+    dominant/emergent themes) in the core area of <<{core_area}>> or in any 
+    other related domain.
+3.  List reasons why the TERM should be retained (e.g., it is contextually 
+    meaningful, helps distinguish themes, or is used in a specific way in 
+    the core area of <<{core_area}>> or in any other related domain).
+4.  Decide based on the strength and clarity of the arguments. Exclude ("yes") 
+    only if the TERM is clearly generic or non-discriminative. If arguments are 
+    balanced or ambiguous, default to "no" (retain).
+5.  Always return the same answer for the same TERM + contexts.
+
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+
+OUTPUT:
+Return ONLY one word: "yes" or "no". Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+
+TERM:
+<<{pattern}>>
+
+
+CONTEXT PHRASES:
+{contexts}
+
+"""
+
+# -----------------------------------------------------------------------------
+
+PROMPT_PHASE_2_WITHOUT_CONTEXT_PHRASES = """
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+
+CONTEXT:
+Decide whether a candidate TERM should be treated as a stopword for 
+bibliometric/tech-mining theme discovery in the core area <<{core_area}>> or 
+related interest areas. A stopword is a generic or non-discriminative term that 
+does not help surface dominant or emergent themes. A stopword does not have a 
+clear and specific meaning in the domain or related core areas.
+
+    
+NOTE:
+Technical or domain-specific terms have already been filtered out by a previous 
+step. Only generic, ambiguous, or non-discriminative terms remain for 
+evaluation.
+
+
+TASK:
+Return exactly one lowercase word with no punctuation:
+- "yes": exclude the TERM as a stopword
+- "no": retain the TERM as useful
+
+
+INSTRUCTIONS:
+1.  Use your domain knowledge, the provided core area, and the interest areas,
+    to make your analysis.
+2.  List reasons why the TERM should be excluded as a stopword (e.g., it is 
+    generic, lacks specific meaning, or does not help identify 
+    dominant/emergent themes) in the core area of <<{core_area}>> or in any 
+    other related domain.
+3.  List reasons why the TERM should be retained (e.g., it is contextually 
+    meaningful, helps distinguish themes, or is used in a specific way in 
+    the core area of <<{core_area}>> or in any other related domain).
+4.  Decide based on the strength and clarity of the arguments. Exclude ("yes") 
+    only if the TERM is clearly generic or non-discriminative. If arguments are 
+    balanced or ambiguous, default to "no" (retain).
+5.  Always return the same answer for the same TERM + contexts.
+
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+
+OUTPUT:
+Return ONLY one word: "yes" or "no". Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+
+TERM:
+<<{pattern}>>
 
 """
 
@@ -180,42 +444,70 @@ def internal__get_contexts(pattern, n_contexts):
 # -----------------------------------------------------------------------------
 def internal__execute_query(core_area, pattern, contexts):
 
-    if contexts is None:
-        return "yes"
-
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    query = PROMPT.format(
-        pattern=pattern,
-        core_area=core_area,
-        contexts="\n".join(contexts),
-    )
+    # Phase 1: Domain-specific terms
+    # ----------------------------------------------------------
 
-    answer = []
+    if contexts is None:
+        query = PROMPT_PHASE_1_WITHOUT_CONTEXT_PHRASES.format(
+            pattern=pattern,
+            core_area=core_area,
+        )
+    else:
+        query = PROMPT_PHASE_1_WITH_CONTEXT_PHRASES.format(
+            pattern=pattern,
+            core_area=core_area,
+            contexts="\n".join(contexts),
+        )
 
     try:
 
-        for _ in range(3):
-            response = client.responses.create(
-                model="gpt-4o",
-                input=query,
-                temperature=0,
-            )
+        response = client.responses.create(
+            model="gpt-4o",
+            input=query,
+            temperature=0,
+        )
 
-            response = response.output_text
-            response = response.strip().lower()
-            answer.append(response)
-
-        yes_count = answer.count("yes")
-
-        if yes_count < 3:
+        is_domain_specific = response.output_text
+        is_domain_specific = is_domain_specific.strip().lower()
+        if is_domain_specific == "yes":
             return "no"
-        return "yes"
 
     except openai.OpenAIError as e:
-        print()
         print(f"Error processing the query: {e}")
-        print()
+        return None
+
+    # Phase 2: Other terms
+    # ----------------------------------------------------------
+
+    if contexts is None:
+        query = PROMPT_PHASE_2_WITHOUT_CONTEXT_PHRASES.format(
+            pattern=pattern,
+            core_area=core_area,
+        )
+    else:
+        query = PROMPT_PHASE_2_WITH_CONTEXT_PHRASES.format(
+            pattern=pattern,
+            core_area=core_area,
+            contexts="\n".join(contexts),
+        )
+
+    try:
+
+        response = client.responses.create(
+            model="gpt-4o",
+            input=query,
+            temperature=0,
+        )
+
+        is_stopword = response.output_text
+        is_stopword = is_stopword.strip().lower()
+
+        return is_stopword
+
+    except openai.OpenAIError as e:
+        print(f"Error processing the query: {e}")
         return None
 
 
@@ -259,6 +551,8 @@ def internal__extend_stopwords(pattern):
 def execute_stopwords_command():
 
     print()
+    internal__run_diagnostics()
+    return
     core_area = None
 
     while True:
@@ -285,49 +579,50 @@ def execute_stopwords_command():
 def internal__run_diagnostics():
 
     patterns = [
-        "WIND_POWER",
-        "MODEL",
-        "STUDY_CASE",
-        "POWER",
-        "SCENARIO",
-        "BENEFIT",
-        "APPROACH",
-        "AMOUNTS",
-        "EFFICIENCY",
-        "GOALS",
-        "BASIS",
-        "CONDITION",
-        "POWER_PLANTS",
-        "MODELING",
-        "LOSS",
-        "FORMS",
-        "SITUATION",
-        "RESULTS",
-        "WIND_TURBINE",
-        "YEAR",
-        "TURBINE",
-        "METHOD",
-        "VALUE",
-        "TYPE",
-        "PERFORMANCE",
-        "INSTALLATION",
-        "ENERGY_PRODUCTION",
-        "PERFORMANCE_ASSESSMENT",
-        "RATED_POWER",
-        "ENERGY_GENERATION",
-        "WIND_FARMS",
         "ELECTRIC_UTILITIES",
-        "ACCOUNT",
-        "OPERATIONS",
-        "NUMBERS",
-        "COMPARISONS",
-        "SIZES",
-        "OBJECTIVES",
-        "CONSIDERATIONS",
-        "CONFIGURATION",
+        "ENERGY_GENERATION",
+        "ENERGY_PRODUCTION",
         "FARMS",
-        "TRADE_OFF",
+        "INDUSTRY",
+        "INSTALLED_CAPACITY",
+        "PERFORMANCE",
+        "POWER_PLANTS",
+        "POWER",
+        "TURBINE",
+        "WIND_FARMS",
+        "WIND_POWER_INDUSTRY",
+        "WIND_POWER",
+        "WIND_TURBINE",
+        #
+        "ACCOUNT",
+        "AMOUNTS",
+        "ANALYZES",
+        "APPROACH",
         "BALANCE",
+        "BASIS",
+        "BENEFIT",
+        "COMPARISONS",
+        "CONDITION",
+        "CONFIGURATION",
+        "CONSIDERATIONS",
+        "EFFICIENCY",
+        "FORMS",
+        "GOALS",
+        "LOSS",
+        "METHOD",
+        "MODEL",
+        "MODELING",
+        "NUMBERS",
+        "OBJECTIVES",
+        "RESULTS",
+        "SCENARIO",
+        "SITUATION",
+        "SIZES",
+        "STUDY_CASE",
+        "TRADE_OFF",
+        "TYPE",
+        "VALUE",
+        "YEAR",
     ]
 
     summary = {}

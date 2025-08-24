@@ -12,6 +12,7 @@ from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
 from techminer2.shell.thesaurus.descriptors.clean.commands import (
     execute_combine_command,
+    execute_define_command,
     execute_stopwords_command,
     execute_synonyms_command,
 )
@@ -24,6 +25,10 @@ class CleanShell(BaseShell):
     def do_combine(self, arg):
         """Combine thesaurus keys."""
         execute_combine_command()
+
+    def do_define(self, arg):
+        """Define a thesaurus key."""
+        execute_define_command()
 
     def do_synonyms(self, arg):
         """Determine if two terms are conceptual synonyms."""
