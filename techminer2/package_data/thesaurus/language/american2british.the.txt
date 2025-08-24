@@ -1760,6 +1760,8 @@ levelers
     levellers
 leveling
     levelling
+levelized
+    levelised
 libeled
     libelled
 libeling
