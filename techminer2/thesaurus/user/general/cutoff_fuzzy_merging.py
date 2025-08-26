@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
+# pylint: disable=attribute-defined-outside-init
 """
 Cutoff Fuzzy Merging
 ===============================================================================
@@ -50,7 +51,7 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
+    >>> print(output) # doctest: +SKIP
     Cutoff-Fuzzy Merging thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
       Keys reduced from 1721 to 1695
@@ -88,7 +89,8 @@ Example:
 
 import sys
 
-from colorama import Fore, init
+import textdistance
+from colorama import Fore
 from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
 
@@ -98,11 +100,7 @@ from techminer2.database._internals.io import (
 )
 from techminer2.database.metrics.performance import DataFrame
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
-from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
 
@@ -128,23 +126,17 @@ class CutoffFuzzyMerging(
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write(f"Cutoff-Fuzzy Merging thesaurus keys...\n")
+        sys.stderr.write("Cutoff-Fuzzy Merging thesaurus keys...\n")
         sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(
-            f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        )
-        sys.stderr.write(f"  Merging process completed successfully\n\n")
+        msg = f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
+        sys.stderr.write(msg)
+        sys.stderr.write("  Merging process completed successfully\n\n")
         sys.stderr.flush()
-        internal__print_thesaurus_header(
-            self.thesaurus_path,
-            n=10,
-            use_colorama=True,
-        )
 
     #
     # ALGORITHM:
@@ -240,6 +232,21 @@ class CutoffFuzzyMerging(
             best_match = 0
             for candidate_word in lengthen_string:
                 score = fuzz.ratio(base_word, candidate_word)
+                #
+                # For fixing misspelling errors
+                #
+                # if len(string1) == len(string2):
+                #     distance = textdistance.damerau_levenshtein(
+                #         base_word, candidate_word
+                #     )
+                #     max_len = max(len(base_word), len(candidate_word))
+                #     if max_len <= 7 and distance == 1:
+                #         score = 100
+                #     if max_len > 7 and max_len <= 12 and distance in [1, 2]:
+                #         score = 100
+                #     if max_len > 12 and distance in [1, 2, 3]:
+                #         score = 100
+                # #
                 if score > best_match:
                     best_match = score
             scores_per_word.append(best_match)
@@ -269,13 +276,10 @@ class CutoffFuzzyMerging(
         for index, key in tqdm(
             enumerate(keys),
             total=len(keys),
-            desc=f"  Progress",
+            desc="  Progress",
             ncols=80,
             disable=self.params.tqdm_disable,
         ):
-
-            if self.data_frame.loc[index, "selected"] is False:
-                continue
 
             if self.data_frame.loc[index, "selected"] is True:
                 continue
@@ -284,7 +288,11 @@ class CutoffFuzzyMerging(
             df = self.data_frame[self.data_frame.index > index]
 
             # Only evaluate noun phrases
-            df = df[df.is_keyword == False]
+            key_length = len(key.split(" "))
+            df = df[
+                df.is_keyword.apply(lambda x: x is False)
+                | (df.key_length == key_length)
+            ]
 
             # Preselect
             diff_in_length = (
@@ -306,7 +314,7 @@ class CutoffFuzzyMerging(
                 lambda x: self.internal__compute_fuzzy_match(key, x)
             )
 
-            df = df[df["fuzzy"] == True]
+            df = df[df["fuzzy"].apply(lambda x: x is True)]
 
             if df.empty:
                 continue
@@ -345,21 +353,20 @@ class CutoffFuzzyMerging(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
+        self.internal__set_n_initial_keys()
         self.internal__get_keywords()
         self.internal__mark_keywords()
-        #
-        self.n_initial_keys = self.data_frame.shape[0]
-        #
         self.internal__get_raw_occurrences()
         self.internal__compute_key_occurrences()
         self.internal__sort_by_keylength()
-        #
         self.internal__compute_mergings()
         self.internal__make_mergings()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
-        #
-        self.n_final_keys = self.data_frame.shape[0]
-        #
         self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__set_n_final_keys()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header(
+            n=10,
+            use_colorama=self.params.use_colorama,
+        )
