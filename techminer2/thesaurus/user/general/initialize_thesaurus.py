@@ -33,10 +33,10 @@ Example:
     >>> # Capture and print stderr output to test the code using doctest
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
+    >>> print(output)
     Initializing thesaurus from 'raw_descriptors' field...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      1724 keys found
+      1721 keys found
       Initialization process completed successfully
     <BLANKLINE>
     Printing thesaurus header
@@ -58,22 +58,22 @@ Example:
           A_CHALLENGE
         A_CLUSTER_ANALYSIS
           A_CLUSTER_ANALYSIS
+        A_COMMON_TOOL
+          A_COMMON_TOOL
+        A_COMMON_UNDERSTANDING
+          A_COMMON_UNDERSTANDING
     <BLANKLINE>
     <BLANKLINE>
+
 
 """
 import sys
 
-import pandas as pd  # type: ignore
-from colorama import Fore, init
-from textblob import Word  # type: ignore
+from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
 
@@ -114,11 +114,6 @@ class InitializeThesaurus(
             sys.stderr.write("  Initialization process completed successfully\n\n")
             sys.stderr.flush()
 
-            internal__print_thesaurus_header(
-                thesaurus_path=self.thesaurus_path,
-                use_colorama=self.params.use_colorama,
-            )
-
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
@@ -134,3 +129,9 @@ class InitializeThesaurus(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+
+        if not self.params.quiet:
+            self.internal__print_thesaurus_header(
+                n=10,
+                use_colorama=self.params.use_colorama,
+            )
