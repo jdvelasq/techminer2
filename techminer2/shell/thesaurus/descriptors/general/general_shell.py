@@ -18,6 +18,7 @@ from techminer2.shell.thesaurus.descriptors.general.commands import (
     execute_initialize_command,
     execute_integrity_command,
     execute_reduce_command,
+    execute_spellcheck_command,
 )
 
 
@@ -52,3 +53,7 @@ class GeneralShell(BaseShell):
     def do_reduce(self, arg):
         """Reduce thesaurus keys."""
         execute_reduce_command()
+
+    def do_spellcheck(self, arg):
+        """Check spelling in thesaurus keys."""
+        execute_spellcheck_command()
