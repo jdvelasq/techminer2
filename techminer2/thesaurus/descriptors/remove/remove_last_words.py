@@ -98,7 +98,7 @@ class RemoveLastWords(
             file_path = Fore.LIGHTBLACK_EX + file_path
 
         sys.stderr.write("Removing common last words from thesaurus keys...\n")
-        sys.stderr.write(f"  File : {file_path}\n\n")
+        sys.stderr.write(f"  File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -137,7 +137,6 @@ class RemoveLastWords(
             return text
 
         tqdm.pandas(desc="  Progress ", disable=self.params.tqdm_disable, ncols=80)
-        sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
