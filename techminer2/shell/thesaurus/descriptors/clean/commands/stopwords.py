@@ -377,29 +377,29 @@ TERM:
 
 
 # -----------------------------------------------------------------------------
-def internal__user_input(core_area):
+def internal__user_input(core_area, n_contexts):
 
+    # -------------------------------------------------------------------------
     if core_area is None:
         answer = colorized_input(". Enter the core area > ").strip()
         if answer == "":
             return None, None, None
-    else:
-        answer = colorized_input(f". Enter the core area [{core_area}] > ").strip()
-
-    if answer != "":
         core_area = answer.upper()
 
+    # -------------------------------------------------------------------------
+    if n_contexts is None:
+        n_contexts = colorized_input(
+            ". Enter the number of contexts [default: 30] > "
+        ).strip()
+        if n_contexts == "":
+            n_contexts = 30
+        else:
+            n_contexts = int(n_contexts)
+
+    # -------------------------------------------------------------------------
     pattern = colorized_input(". Enter the pattern > ").strip()
     if pattern == "":
         return None, None, None
-
-    n_contexts = colorized_input(
-        ". Enter the number of contexts [default: 30] > "
-    ).strip()
-    if n_contexts == "":
-        n_contexts = 30
-    else:
-        n_contexts = int(n_contexts)
 
     return core_area, pattern, n_contexts
 
@@ -538,7 +538,7 @@ def internal__print_answer(answer):
 def internal__extend_stopwords(pattern):
 
     answer = colorized_input(". Extend stopwords with pattern (y/[n])? > ").strip()
-    if answer.lower() not in ["n", "no", "not", ""]:
+    if answer.lower() in ["n", "no", "not", ""]:
         print()
         return
 
@@ -554,10 +554,11 @@ def execute_stopwords_command():
     # internal__run_diagnostics()
     # return
     core_area = None
+    n_contexts = None
 
     while True:
 
-        core_area, pattern, n_contexts = internal__user_input(core_area)
+        core_area, pattern, n_contexts = internal__user_input(core_area, n_contexts)
 
         if pattern is None:
             print()
