@@ -6,6 +6,9 @@ from techminer2.shell.thesaurus.descriptors.clean.commands.combine import (
 from techminer2.shell.thesaurus.descriptors.clean.commands.define import (
     execute_define_command,
 )
+from techminer2.shell.thesaurus.descriptors.clean.commands.merge import (
+    execute_merge_command,
+)
 from techminer2.shell.thesaurus.descriptors.clean.commands.stopwords import (
     execute_stopwords_command,
 )
@@ -18,4 +21,5 @@ __all__ = [
     "execute_define_command",
     "execute_stopwords_command",
     "execute_synonyms_command",
+    "execute_merge_command",
 ]
