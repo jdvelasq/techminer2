@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
+# pylint: disable=attribute-defined-outside-init
 """
 Clump Keys
 ===============================================================================
@@ -75,16 +76,13 @@ Example:
 import re
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database.metrics.performance import DataFrame
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 
 class ClumpKeys(
@@ -107,25 +105,17 @@ class ClumpKeys(
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
 
-        sys.stderr.write(f"Clumping thesaurus keys...\n")
+        sys.stderr.write("Clumping thesaurus keys...\n")
         sys.stderr.write(f"               File : {file_path}\n")
         sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        self.n_final_keys = len(self.data_frame.key.drop_duplicates())
-        sys.stderr.write(
-            f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        )
-        sys.stderr.write(f"  Clumping process completed successfully\n\n")
+        msg = f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
+        sys.stderr.write(msg)
+        sys.stderr.write("  Clumping process completed successfully\n\n")
         sys.stderr.flush()
-
-        internal__print_thesaurus_header(
-            self.thesaurus_path,
-            n=10,
-            use_colorama=True,
-        )
 
     #
     # ALGORITHM:
@@ -172,7 +162,9 @@ class ClumpKeys(
             regex = r"\b" + regex + r"\b"
 
             candidates = self.data_frame.copy()
-            candidates = candidates[candidates.is_keyword == False].copy()
+            candidates = candidates[
+                candidates.is_keyword.apply(lambda x: x is False)
+            ].copy()
             candidates = candidates[
                 candidates["phrase"].str.contains(regex, regex=True)
             ]
@@ -239,7 +231,7 @@ class ClumpKeys(
     # -------------------------------------------------------------------------
     def internal__group_values_by_key(self):
         self.data_frame = self.data_frame.groupby("key", as_index=False).agg(
-            {"value": lambda x: "; ".join(x)}
+            {"value": "; ".join}
         )
         self.data_frame = self.data_frame.sort_values("key")
         self.data_frame = self.data_frame.reset_index(drop=True)
@@ -252,11 +244,17 @@ class ClumpKeys(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
+        self.internal__set_n_initial_keys()
         self.internal__get_keywords()
         self.internal__mark_keywords()
         self.internal__combine_keys()
-        # self.internal__reduce_keys()
+        self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__set_n_final_keys()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header(
+            n=10,
+            use_colorama=self.params.use_colorama,
+        )
