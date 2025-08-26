@@ -38,18 +38,12 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
-    Reducing thesaurus keys...
-      File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1724 to 1724
-      Reduction process completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
 
 
 """
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
@@ -89,9 +83,8 @@ class ReduceKeys(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(
-            f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        )
+        msg = f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
+        sys.stderr.write(msg)
         sys.stderr.write("  Reduction process completed successfully\n\n")
         sys.stderr.flush()
 
@@ -105,8 +98,14 @@ class ReduceKeys(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
+        self.internal__set_n_initial_keys()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__set_n_final_keys()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header(
+            n=10,
+            use_colorama=self.params.use_colorama,
+        )
