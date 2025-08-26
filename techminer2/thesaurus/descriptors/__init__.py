@@ -10,6 +10,7 @@ from .general.integrity_check import IntegrityCheck
 from .general.merge_keys import MergeKeys
 from .general.normalize_keys import NormalizeKeys
 from .general.reduce_keys import ReduceKeys
+from .general.spell_check import SpellCheck
 from .register.register_initial_word import RegisterInitialWord
 from .register.register_keyword import RegisterKeyword
 from .register.register_last_word import RegisterLastWord
@@ -78,4 +79,5 @@ __all__ = [
     "AmericanToBritishSpelling",
     "BritishToAmericanSpelling",
     "MergeKeys",
+    "SpellCheck",
 ]
