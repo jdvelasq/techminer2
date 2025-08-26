@@ -6,6 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
+# pylint: disable=attribute-defined-outside-init
 """
 Explode Keys
 ===============================================================================
@@ -41,13 +42,37 @@ Example:
     >>> print(output) # doctest: +SKIP
     Reducing thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1572 to 1572
+      Keys reduced from 1721 to 1721
       Reduction process completed successfully
     <BLANKLINE>
     Exploding thesaurus keys...
       File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1572 to 1612
+      Keys expanded from 1721 to 1788
       Exploding process completed successfully
+    <BLANKLINE>
+    Printing thesaurus header
+      File : examples/fintech/data/thesaurus/demo.the.txt
+    <BLANKLINE>
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+        A_COMMON_TOOL
+          A_COMMON_TOOL
+        A_COMMON_UNDERSTANDING
+          A_COMMON_UNDERSTANDING
     <BLANKLINE>
     <BLANKLINE>
 
@@ -55,14 +80,11 @@ Example:
 """
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 
 tqdm.pandas()
@@ -95,22 +117,19 @@ class ExplodeKeys(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(
-            f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        )
-        sys.stderr.write(f"  Exploding process completed successfully\n\n")
+        msg = f"  Keys expanded from {self.n_initial_keys} to {self.n_final_keys}\n"
+        sys.stderr.write(msg)
+        sys.stderr.write("  Exploding process completed successfully\n\n")
         sys.stderr.flush()
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
     def internal__explode_values(self):
-        self.n_initial_keys = len(self.data_frame)
         self.data_frame["value"] = self.data_frame["value"].str.split("; ")
         self.data_frame = self.data_frame.explode("value")
         self.data_frame["value"] = self.data_frame["value"].str.strip()
         self.data_frame = self.data_frame.reset_index(drop=True)
-        self.n_final_keys = len(self.data_frame)
 
     # -------------------------------------------------------------------------
     def run(self):
@@ -122,7 +141,13 @@ class ExplodeKeys(
         self.internal__notify_process_start()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
+        self.internal__set_n_initial_keys()
         self.internal__explode_values()
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__set_n_final_keys()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header(
+            n=10,
+            use_colorama=self.params.use_colorama,
+        )
