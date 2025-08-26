@@ -1,16 +1,29 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
+# pylint: disable=attribute-defined-outside-init
+
 """ "Thesaurus common functions."""
-import sys
+
 
 import pandas as pd
+from textblob import Word
+from tqdm import tqdm  # type: ignore
+
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.thesaurus._internals import internal__generate_system_thesaurus_file_path
-from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
-from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
-from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
-from textblob import Word
-from tqdm import tqdm  # type: ignore
+from techminer2.thesaurus._internals import (
+    internal__generate_system_thesaurus_file_path,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_reversed_thesaurus_as_mapping,
+    internal__load_thesaurus_as_mapping,
+)
 
 tqdm.pandas()
 
@@ -73,7 +86,7 @@ class ThesaurusMixin:
         if "__row_selected__" in self.data_frame.columns.tolist():
             self.data_frame["__row_selected__"] = self.data_frame[
                 "__row_selected__"
-            ].map(lambda x: any(x))
+            ].map(any)
 
         self.data_frame = self.data_frame.reset_index(drop=True)
 
@@ -205,6 +218,25 @@ class ThesaurusMixin:
 
         # final number of keys
         self.n_final_keys = len(self.data_frame)
+
+    # -------------------------------------------------------------------------
+    def internal__set_n_initial_keys(self):
+        self.n_initial_keys = len(self.data_frame)
+
+    # -------------------------------------------------------------------------
+    def internal__set_n_final_keys(self):
+        self.n_final_keys = len(self.data_frame)
+
+    # -------------------------------------------------------------------------
+    def internal__print_thesaurus_header(self, n, use_colorama):
+
+        from techminer2.thesaurus._internals import internal__print_thesaurus_header
+
+        internal__print_thesaurus_header(
+            thesaurus_path=self.thesaurus_path,
+            n=n,
+            use_colorama=use_colorama,
+        )
 
     # -------------------------------------------------------------------------
     def internal__sort_data_frame_by_rows_and_key(self):
