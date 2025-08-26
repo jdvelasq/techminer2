@@ -21,6 +21,9 @@ from techminer2.shell.thesaurus.descriptors.general.commands.integrity import (
 from techminer2.shell.thesaurus.descriptors.general.commands.reduce import (
     execute_reduce_command,
 )
+from techminer2.shell.thesaurus.descriptors.general.commands.spellcheck import (
+    execute_spellcheck_command,
+)
 
 __all__ = [
     "execute_apply_command",
@@ -30,4 +33,5 @@ __all__ = [
     "execute_initialize_command",
     "execute_integrity_command",
     "execute_reduce_command",
+    "execute_spellcheck_command",
 ]
