@@ -26,11 +26,14 @@ class RecursiveClusteringMixin:
         # ------------------------------------------------------------------
         # remove the first 0 in the metrics
         #
-        if all([t.split(" ")[1].startswith("0") for t in self.terms_with_metrics]):
-            self.terms_with_metrics = [
-                t.split(" ")[0] + " " + t.split(" ")[1][1:]
-                for t in self.terms_with_metrics
-            ]
+        for _ in range(10):
+            if all(t.split(" ")[1].startswith("0") for t in self.terms_with_metrics):
+                self.terms_with_metrics = [
+                    t.split(" ")[0] + " " + t.split(" ")[1][1:]
+                    for t in self.terms_with_metrics
+                ]
+            else:
+                break
         #
         # ------------------------------------------------------------------
 
