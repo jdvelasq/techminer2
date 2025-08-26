@@ -32,7 +32,6 @@ Example:
     >>> print(output) # doctest: +SKIP
     Removing common initial words from thesaurus keys...
       File : examples/fintech/data/thesaurus/descriptors.the.txt
-    <BLANKLINE>
       208 common initial words removed successfully
       Removal process completed successfully
     <BLANKLINE>
@@ -103,7 +102,7 @@ class RemoveInitialWords(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(f"  Removal process completed successfully\n\n")
+        sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
 
         internal__print_thesaurus_header(
@@ -141,7 +140,7 @@ class RemoveInitialWords(
             disable=self.params.tqdm_disable,
             ncols=80,
         )
-        sys.stderr.write("\n")
+        # sys.stderr.write("\n")
         self.data_frame["key"] = self.data_frame.key.progress_apply(replace_patterns)
         tqdm.pandas(desc=None)
 
