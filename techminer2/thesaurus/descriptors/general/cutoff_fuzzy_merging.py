@@ -34,7 +34,8 @@ Example:
     >>> from techminer2.thesaurus.descriptors import CutoffFuzzyMerging
     >>> (
     ...     CutoffFuzzyMerging(tqdm_disable=True, use_colorama=False)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     # .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory_is("../tm2_economics_of_wind_energy/")
     ...     .having_cutoff_threshold(85)
     ...     .having_match_threshold(95)
     ...     .run()
