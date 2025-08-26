@@ -117,7 +117,7 @@ class CombineKeys(
         self.cooc_matrix = self.cooc_matrix[self.cooc_matrix["combine?"] == "yes"]
 
         self.cooc_matrix = self.cooc_matrix.sort_values(
-            by=["probability", "rows_occ", "rows_gc", "rows"], ascending=False
+            by=["rows_occ", "rows_gc", "probability", "rows"], ascending=False
         )
 
         self.cooc_matrix = self.cooc_matrix.reset_index(drop=True)
