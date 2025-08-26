@@ -10,6 +10,8 @@ Creates a co-occurrence networkx graph from a co-occurrence matrix.
 
 
 """
+import sys
+
 from cdlib import algorithms  # type: ignore
 
 
@@ -28,7 +30,10 @@ def internal__cluster_nx_graph(
         # The group is assigned using and external algorithm. It is designed
         # to provide analysis capabilities to the system when other types of
         # analysis are conducted, for example, factor analysis.
+
         for node, group in algorithm_or_dict.items():
+            if node not in nx_graph.nodes:
+                node = node.split(":")[0] + ":" + node.split(":")[1][1:]
             nx_graph.nodes[node]["group"] = group
 
     return nx_graph
