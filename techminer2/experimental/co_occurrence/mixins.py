@@ -61,6 +61,8 @@ class RecursiveClusteringMixin:
             else:
                 discovered_clusters = new_clusters
                 sys.stderr.write(f"\n  New clusters generated: {len(new_clusters)}")
+                if len(new_clusters) >= self.params.minimum_number_of_clusters:
+                    break
 
         sys.stderr.write("\n")
         self.discovered_clusters = sorted(
