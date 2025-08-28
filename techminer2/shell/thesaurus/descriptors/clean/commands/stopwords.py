@@ -9,6 +9,7 @@
 # pylint: disable=unused-argument
 
 import os
+from operator import is_
 from pprint import pprint  # type: ignore
 
 import openai
@@ -187,10 +188,143 @@ TERM:
 
 
 """
-
 # -----------------------------------------------------------------------------
 
 PROMPT_PHASE_2_WITH_CONTEXT_PHRASES = """
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word and tech-mining studies.
+
+TASK:
+Determine whether the candidate TERM, which is already classified as domain-specific in the core area <<{core_area}>>, is general across the major thematic areas (widely used and non-discriminative), or specific to a particular topic area (used mainly in one or a few themes).
+
+CONTEXT:
+- If the TERM is general and appears broadly across multiple major themes in <<{core_area}>>, it does not help identify or distinguish major thematic areas and should be considered a stopword.
+- If the TERM is specific and mainly associated with one or a few topic areas, it is useful for discovering and defining major thematic areas and should not be considered a stopword.
+
+INSTRUCTIONS:
+- Use your domain knowledge, the provided core area, interest areas, and the CONTEXT PHRASES below to make your determination.
+- Consider whether the TERM is broadly used across many major themes, or is mainly associated with a specific topic area.
+- Do not rely solely on frequency; focus on the TERM's thematic relevance and specificity.
+- If you are unsure or the TERM is ambiguous, default to "yes" (consider it a stopword).
+
+OUTPUT:
+Return ONLY one word with no quotes:
+- "yes": the TERM is general and should be considered a stopword.
+- "no": the TERM is specific and should not be considered a stopword.
+Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+
+TERM:
+<<{pattern}>>
+
+CONTEXT PHRASES:
+{contexts}
+"""
+
+# -----------------------------------------------------------------------------
+
+PROMPT_PHASE_2_WITHOUT_CONTEXT_PHRASES = """
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word and tech-mining studies.
+
+TASK:
+Determine whether the candidate TERM, which is already classified as domain-specific in the core area <<{core_area}>>, is general across the major thematic areas (widely used and non-discriminative), or specific to a particular topic area (used mainly in one or a few themes).
+
+CONTEXT:
+- If the TERM is general and appears broadly across multiple major themes in <<{core_area}>>, it does not help identify or distinguish major thematic areas and should be considered a stopword.
+- If the TERM is specific and mainly associated with one or a few topic areas, it is useful for discovering and defining major thematic areas and should not be considered a stopword.
+
+INSTRUCTIONS:
+- Use your domain knowledge, the provided core area, and interest areas to make your determination.
+- Consider whether the TERM is broadly used across many major themes, or is mainly associated with a specific topic area.
+- Do not rely solely on frequency; focus on the TERM's thematic relevance and specificity.
+- If you are unsure or the TERM is ambiguous, default to "yes" (consider it a stopword).
+
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+
+OUTPUT:
+Return ONLY one word with no quotes:
+- "yes": the TERM is general and should be considered a stopword.
+- "no": the TERM is specific and should not be considered a stopword.
+Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+TERM:
+<<{pattern}>>
+
+"""
+
+
+# -----------------------------------------------------------------------------
+
+PROMPT_PHASE_3_WITH_CONTEXT_PHRASES = """
 ROLE:
 You are an expert in scientometrics and text mining, with experience in co-word 
 and tech-mining studies.
@@ -289,7 +423,7 @@ CONTEXT PHRASES:
 
 # -----------------------------------------------------------------------------
 
-PROMPT_PHASE_2_WITHOUT_CONTEXT_PHRASES = """
+PROMPT_PHASE_3_WITHOUT_CONTEXT_PHRASES = """
 ROLE:
 You are an expert in scientometrics and text mining, with experience in co-word 
 and tech-mining studies.
@@ -401,6 +535,7 @@ def internal__user_input(core_area, n_contexts):
     if pattern == "":
         return None, None, None
 
+    # -------------------------------------------------------------------------
     return core_area, pattern, n_contexts
 
 
@@ -429,11 +564,11 @@ def internal__get_contexts(pattern, n_contexts):
         contexts = [c for c in contexts if len(c) > 80]
         contexts = [f"- {c} ." for c in contexts]
         contexts = [c.lower().replace("_", " ") for c in contexts]
+        contexts = [c for c in contexts if pattern.lower().replace("_", " ") in c]
 
         complete_contexts.extend(contexts)
-
-    pattern = pattern.lower().replace("_", " ")
-    complete_contexts = [c for c in complete_contexts if pattern in c]
+        if len(complete_contexts) >= n_contexts:
+            break
 
     if len(complete_contexts) < 5:
         return None
@@ -471,23 +606,55 @@ def internal__execute_query(core_area, pattern, contexts):
 
         is_domain_specific = response.output_text
         is_domain_specific = is_domain_specific.strip().lower()
+
         if is_domain_specific == "yes":
-            return "no"
+            print()
+            print(Fore.LIGHTBLACK_EX + "The term is domain-specific." + Fore.RESET)
+        else:
+            print()
+            print(Fore.LIGHTBLACK_EX + "The term is no domain-specific." + Fore.RESET)
 
     except openai.OpenAIError as e:
         print(f"Error processing the query: {e}")
         return None
 
-    # Phase 2: Other terms
+    # Phase 2: Domain-specific very generic terms
+    # ----------------------------------------------------------
+    if is_domain_specific == "yes":
+
+        if contexts is None:
+            query = PROMPT_PHASE_2_WITHOUT_CONTEXT_PHRASES.format(
+                pattern=pattern,
+                core_area=core_area,
+            )
+        else:
+            query = PROMPT_PHASE_2_WITH_CONTEXT_PHRASES.format(
+                pattern=pattern,
+                core_area=core_area,
+                contexts="\n".join(contexts),
+            )
+
+        response = client.responses.create(
+            model="gpt-4o",
+            input=query,
+            temperature=0,
+        )
+
+        is_stopword = response.output_text
+        is_stopword = is_stopword.strip().lower()
+
+        return is_stopword
+
+    # Phase 3: Non-domain-specific terms
     # ----------------------------------------------------------
 
     if contexts is None:
-        query = PROMPT_PHASE_2_WITHOUT_CONTEXT_PHRASES.format(
+        query = PROMPT_PHASE_3_WITHOUT_CONTEXT_PHRASES.format(
             pattern=pattern,
             core_area=core_area,
         )
     else:
-        query = PROMPT_PHASE_2_WITH_CONTEXT_PHRASES.format(
+        query = PROMPT_PHASE_3_WITH_CONTEXT_PHRASES.format(
             pattern=pattern,
             core_area=core_area,
             contexts="\n".join(contexts),
@@ -520,7 +687,7 @@ def internal__print_answer(answer):
         + Fore.RESET
         + "{result}"
         + Fore.LIGHTBLACK_EX
-        + " is a STOPWORD."
+        + " a STOPWORD."
         + Fore.RESET
     )
 
@@ -529,7 +696,7 @@ def internal__print_answer(answer):
     else:
         text = text.format(result="IS NOT")
 
-    print()
+    # print()
     print(text)
     print()
 
@@ -565,10 +732,7 @@ def execute_stopwords_command():
             return
 
         contexts = internal__get_contexts(pattern, n_contexts)
-        if not contexts:
-            answer = "yes"
-        else:
-            answer = internal__execute_query(core_area, pattern, contexts)
+        answer = internal__execute_query(core_area, pattern, contexts)
 
         internal__print_answer(answer)
 
