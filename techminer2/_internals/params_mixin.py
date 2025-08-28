@@ -79,6 +79,7 @@ class Params:
     match_threshold: float = 95.0
     maximum_occurrence: int = 10
     minimum_terms_in_cluster: int = 5
+    minimum_number_of_clusters: int = 10
 
     #
     # N
@@ -450,6 +451,10 @@ class ParamsMixin:
         self.params.marker_size = size
         return self
 
+    def using_minimum_number_of_clusters(self, minimum):
+        self.params.minimum_number_of_clusters = minimum
+        return self
+
     def using_minimum_terms_in_cluster(self, minimum):
         self.params.minimum_terms_in_cluster = minimum
         return self
@@ -639,6 +644,10 @@ class ParamsMixin:
 
     def with_other_field(self, field):
         self.params.other_field = field
+        return self
+
+    def with_params(self, params):
+        self.update(**params.__dict__)
         return self
 
     def with_patterns(self, patterns):
