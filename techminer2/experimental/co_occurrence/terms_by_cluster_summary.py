@@ -29,6 +29,7 @@ Example:
     ...     .using_clustering_algorithm_or_dict("louvain")
     ...     .using_association_index("association")
     ...     .using_minimum_terms_in_cluster(5)
+    ...     .using_minimum_number_of_clusters(10)
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
