@@ -14,50 +14,51 @@ import openai
 from colorama import Fore
 from openai import OpenAI
 
+from techminer2._internals.load_template import internal_load_template
 from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.descriptors import GetValues
 
-PROMPT = """
-ROLE:
-You are an expert in the core area <<{core_area}>>. 
+# PROMPT = """
+# ROLE:
+# You are an expert in the core area <<{core_area}>>.
 
 
-CONTEXT:
-This task is part of a process to refine the thesaurus for co-word and 
-tech-mining analysis in the core area of <<{core_area}>>. The goal is to build 
-a definition of the <<{term}>> based on the provided context phrases.
+# CONTEXT:
+# This task is part of a process to refine the thesaurus for co-word and
+# tech-mining analysis in the core area of <<{core_area}>>. The goal is to build
+# a definition of the <<{term}>> based on the provided context phrases.
 
-Important extraction assumption:
--   The corpus has been pre-processed to extract meaningful terms 
-    (noun phrases / keywords).
--   Multi-word terms are indexed separately from their headwords. Therefore, 
-    phrases for an isolated term do not include occurrences that belong to its 
-    multi-word variants (e.g., phrases for "value" exclude "market value", 
-    "net present value", etc.).
-
-
-TASK:
-Build a definition of the <<{term}>> in the core area of <<{core_area}>>, based 
-on the provided context phrases.
-
-CONSTRAINTS:
--   Use only the provided context phrases plus general scientific knowledge 
-    of <<{core_area}>>.
+# Important extraction assumption:
+# -   The corpus has been pre-processed to extract meaningful terms
+#     (noun phrases / keywords).
+# -   Multi-word terms are indexed separately from their headwords. Therefore,
+#     phrases for an isolated term do not include occurrences that belong to its
+#     multi-word variants (e.g., phrases for "value" exclude "market value",
+#     "net present value", etc.).
 
 
-OUTPUT:
-A text paragraph.
+# TASK:
+# Build a definition of the <<{term}>> in the core area of <<{core_area}>>, based
+# on the provided context phrases.
+
+# CONSTRAINTS:
+# -   Use only the provided context phrases plus general scientific knowledge
+#     of <<{core_area}>>.
 
 
-LENGTH:
-80 to 120 words.
+# OUTPUT:
+# A text paragraph.
 
 
-CONTEXT PHRASES:
-{contexts}
+# LENGTH:
+# 80 to 120 words.
 
-"""
+
+# CONTEXT PHRASES:
+# {contexts}
+
+# """
 
 
 # -----------------------------------------------------------------------------
@@ -151,8 +152,9 @@ def internal__execute_query(
 ):
 
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    prompt = internal_load_template("shell-thesaurus-descriptors-clean-define.txt")
 
-    query = PROMPT.format(
+    query = prompt.format(
         term=term,
         contexts="\n".join(contexts),
         core_area=core_area,
