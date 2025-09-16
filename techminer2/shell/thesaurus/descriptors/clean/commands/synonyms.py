@@ -14,6 +14,7 @@ import openai
 from colorama import Fore
 from openai import OpenAI
 
+from techminer2._internals.load_template import internal_load_template
 from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.descriptors import GetValues, MergeKeys
@@ -21,171 +22,18 @@ from techminer2.thesaurus.descriptors import GetValues, MergeKeys
 # -----------------------------------------------------------------------------
 
 PROMPT_WITH_CONTEXTS = """
-ROLE:
-You are an expert in scientometrics and text mining, with experience in co-word 
-and tech-mining studies.
-
-
-CONTEXT:
-This task is part of a process to refine the thesaurus for co-word and 
-tech-mining analysis in the core area <<{core_area}>>. 
-The goal is to determine whether two terms are conceptual synonyms—meaning they 
-refer to the same concept or idea in the provided context phrases and core area.
-
-Important extraction assumption:
--   The corpus has been pre-processed to extract meaningful terms 
-    (noun phrases / keywords).
--   Both terms have co-word occurrences greater than zero, indicating they are 
-    present together in at least one document.
--   Multi-word terms are indexed separately from their headwords. Therefore, 
-    phrases for an isolated term do not include occurrences that belong to its 
-    multi-word variants (e.g., phrases for "value" exclude "market value", 
-    "net present value", etc.).
-
-
-TASK:
-Return exactly one lowercase word with no punctuation:
--   "yes": when the LEAD-TERM and CANDIDATE-TERM are conceptual synonyms.
--   "no": when the LEAD-TERM and CANDIDATE-TERM are not conceptual synonyms.
-
-
-DECISION RULES:
-Step 0 - Isolated analysis: 
--   Analyze the LEAD-TERM and determine its meaning and usage using the provided phrases 
-    plus general scientific knowledge of <<{core_area}>>.
--   Analyze the CANDIDATE-TERM and determine its meaning and usage using the provided phrases
-    plus general scientific knowledge of <<{core_area}>>.
-
-Step 1 - Comparative analysis.
--   Compare the meanings and usages of the LEAD-TERM and CANDIDATE-TERM based on the provided context phrases.
--   Decide "yes" if both terms are very similar and likely refer to the same concept in practice, even if there 
-    are minor differences in wording, singular/plural form, or inclusion of generic words, as long as the 
-    context and domain indicate they are used interchangeably.
--   Decide "no" only if there is clear and consistent evidence that the terms refer to different concepts or 
-    ideas in <<{core_area}>>.
--   Do not guess or speculate, but allow for practical synonymy when the context and domain usage support it.
-
-
-
-CONSTRAINTS:
--   Use only the provided context phrases plus general scientific knowledge of <<{core_area}>>.
--   If, in the context of <<{core_area}>>, it is clear from the provided context phrases and domain 
-    knowledge that both terms consistently refer to the same concept, you must consider them conceptual 
-    synonyms, even if not every phrase explicitly qualifies the term.
--   Minor differences in wording, singular/plural, or inclusion of generic words should not prevent synonymy 
-    if the terms are used interchangeably in the domain.
--   For the same terms and context phrases, always return the same answer.
--   The decision should be robust to minor variations in context phrasing.
-
-
-OUTPUT:
-Return exactly one word with no quotes: "yes" or "no".
-
-
-TERMS:
-LEAD-TERM: <<{lead_term}>>
-CANDIDATE-TERM: <<{candidate_term}>>
-
-
-CONTEXT PHRASES FOR THE LEAD-TERM:
-{contexts_lead}
-
-
-CONTEXT PHRASES FOR THE CANDIDATE-TERM:
-{contexts_candidate}
 
 """
 
 # -----------------------------------------------------------------------------
 
 PROMPT_WITHOUT_CONTEXTS = """
-ROLE:
-You are an expert in scientometrics and text mining, with experience in co-word 
-and tech-mining studies.
 
-CONTEXT:
-This task is part of a process to refine the thesaurus for co-word and 
-tech-mining analysis in the core area <<{core_area}>>. The goal is to determine 
-whether two terms are conceptual synonyms—meaning they refer to the same concept 
-or idea in the core area <<{core_area}>>.
-
-Important extraction assumption:
--   The corpus has been pre-processed to extract meaningful terms (noun phrases / keywords).
--   Both terms have co-word occurrences greater than zero, indicating they are 
-    present together in at least one document.
--   Multi-word terms are indexed separately from their headwords.
-
-TASK:
-Return exactly one lowercase word with no punctuation:
--   "yes": when the LEAD-TERM and CANDIDATE-TERM are conceptual synonyms.
--   "no": when the LEAD-TERM and CANDIDATE-TERM are not conceptual synonyms.
-
-DECISION RULES:
-- Analyze the LEAD-TERM and CANDIDATE-TERM using your scientific and domain knowledge of <<{core_area}>>.
-- Decide "yes" if both terms are very similar and likely refer to the same concept in practice, even if there are minor differences in wording, singular/plural form, or inclusion of generic words, as long as the context and domain indicate they are used interchangeably.
-- Decide "no" only if there is clear and consistent evidence that the terms refer to different concepts or ideas in <<{core_area}>>.
-- Do not guess or speculate, but allow for practical synonymy when domain usage supports it.
-- For the same terms, always return the same answer.
-
-OUTPUT:
-Return exactly one word with no quotes: yes or no.
-
-TERMS:
-LEAD-TERM: <<{lead_term}>>
-CANDIDATE-TERM: <<{candidate_term}>>
 """
 
 # -----------------------------------------------------------------------------
 
 EXPLAIN = """
-ROLE:
-You are an expert in scientometrics and text mining, with experience in co-word 
-and tech-mining studies.
-
-
-CONTEXT:
-This task is part of a process to refine the thesaurus for co-word and 
-tech-mining analysis in the core area <<{core_area}>>. The provided terms are 
-NOT conceptual synonyms—meaning they refer to different concepts or ideas in 
-the provided context phrases and core area.
-
-Important extraction assumption:
--   The corpus has been pre-processed to extract meaningful terms 
-    (noun phrases / keywords).
--   Both terms have co-word occurrences greater than zero, indicating they are 
-    present together in at least one document.    
--   Multi-word terms are indexed separately from their headwords. 
-    Therefore, phrases for an isolated term do not include occurrences that 
-    belong to its multi-word variants (e.g., phrases for "value" exclude
-    "market value", "net present value", etc.).
-
-
-TASK:
-Write a paragraph explaining why the provided terms are not conceptual synonyms 
-in the context of <<{core_area}>>.
-
-
-REQUERIMENTS:
--   Provide a clear and concise explanation based on the provided context phrases.
--   Use specific examples from the context phrases to support your explanation.
--   Avoid vague statements and ensure your reasoning is grounded in the provided context.
-
-
-LENGTH:
-100 to 150 words.
-
-TERMS:
-LEAD-TERM: <<{lead_term}>>
-CANDIDATE-TERM: <<{candidate_term}>>
-
-
-CONTEXT PHRASES FOR THE LEAD-TERM:
-{contexts_lead}
-
-
-CONTEXT PHRASES FOR THE CANDIDATE-TERM:
-{contexts_candidate}
-
 
 """
 
@@ -294,7 +142,9 @@ def internal__execute_query_with_contexts(
     if isinstance(contexts_candidate, list):
         contexts_candidate = "\n".join(contexts_candidate)
 
-    query = PROMPT_WITH_CONTEXTS.format(
+    template = "shell.thesaurus.descriptors.clean.synonyms.with_contexts.txt"
+    prompt = internal_load_template(template)
+    query = prompt.format(
         lead_term=lead_term,
         candidate_term=candidate_term,
         contexts_lead=contexts_lead,
@@ -339,7 +189,9 @@ def internal__execute_query_without_contexts(
 
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    query = PROMPT_WITHOUT_CONTEXTS.format(
+    template = "shell.thesaurus.descriptors.clean.synonyms.without_contexts.txt"
+    prompt = internal_load_template(template)
+    query = prompt.format(
         lead_term=lead_term,
         candidate_term=candidate_term,
         core_area=core_area,
@@ -439,7 +291,9 @@ def internal__explain(
     else:
         contexts_candidate = "N/A"
 
-    query = EXPLAIN.format(
+    template = "shell.thesaurus.descriptors.clean.synonyms.explain.txt"
+    prompt = internal_load_template(template)
+    query = prompt.format(
         lead_term=lead_term,
         candidate_term=candidate_term,
         contexts_lead=contexts_lead,
