@@ -23,7 +23,7 @@ def internal__cluster_nx_graph(
     algorithm_or_dict = params.clustering_algorithm_or_dict
 
     if isinstance(algorithm_or_dict, str):
-        return _apply_cdlib_algorithm(nx_graph, algorithm_or_dict)
+        nx_graph = _apply_cdlib_algorithm(nx_graph, algorithm_or_dict)
 
     if isinstance(algorithm_or_dict, dict):
         #
@@ -35,6 +35,25 @@ def internal__cluster_nx_graph(
             if node not in nx_graph.nodes:
                 node = node.split(":")[0] + ":" + node.split(":")[1][1:]
             nx_graph.nodes[node]["group"] = group
+
+    for node in nx_graph.nodes:
+        nx_graph.nodes[node]["top_n"] = False
+
+    clusters = {}
+    for node in nx_graph.nodes:
+        group = nx_graph.nodes[node]["group"]
+        if group not in clusters:
+            clusters[group] = []
+        clusters[group].append(node)
+
+    for _, value in clusters.items():
+        sorted_value = sorted(
+            value,
+            key=lambda x: int(x.split(" ")[-1].split(":")[0]),
+            reverse=False,
+        )
+        for node in sorted_value[:8]:
+            nx_graph.nodes[node]["top_n"] = True
 
     return nx_graph
 
