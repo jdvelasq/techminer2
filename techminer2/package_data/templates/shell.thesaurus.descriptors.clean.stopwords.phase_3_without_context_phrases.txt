@@ -1,0 +1,84 @@
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+
+CONTEXT:
+Decide whether a candidate TERM should be treated as a stopword for 
+bibliometric/tech-mining theme discovery in the core area <<{core_area}>> or 
+related interest areas. A stopword is a generic or non-discriminative term that 
+does not help surface dominant or emergent themes. A stopword does not have a 
+clear and specific meaning in the domain or related core areas.
+
+    
+NOTE:
+Technical or domain-specific terms have already been filtered out by a previous 
+step. Only generic, ambiguous, or non-discriminative terms remain for 
+evaluation.
+
+
+TASK:
+Return exactly one lowercase word with no punctuation:
+- "yes": exclude the TERM as a stopword
+- "no": retain the TERM as useful
+
+
+INSTRUCTIONS:
+1.  Use your domain knowledge, the provided core area, and the interest areas,
+    to make your analysis.
+2.  List reasons why the TERM should be excluded as a stopword (e.g., it is 
+    generic, lacks specific meaning, or does not help identify 
+    dominant/emergent themes) in the core area of <<{core_area}>> or in any 
+    other related domain.
+3.  List reasons why the TERM should be retained (e.g., it is contextually 
+    meaningful, helps distinguish themes, or is used in a specific way in 
+    the core area of <<{core_area}>> or in any other related domain).
+4.  Decide based on the strength and clarity of the arguments. Exclude ("yes") 
+    only if the TERM is clearly generic or non-discriminative. If arguments are 
+    balanced or ambiguous, default to "no" (retain).
+5.  Always return the same answer for the same TERM + contexts.
+
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+
+OUTPUT:
+Return ONLY one word: "yes" or "no". Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+
+TERM:
+<<{pattern}>>
+
+
