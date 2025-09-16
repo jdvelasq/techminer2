@@ -1,0 +1,85 @@
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+
+TASK:
+Determine whether the candidate TERM is a technical or domain-specific concept,
+term, or entity in the current core area <<{core_area}>>, or in any closely 
+related technical, scientific, business, analytics, or technology domain.
+
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+    
+DEFINITION:
+A technical or domain-specific concept, term, or entity is any word or phrase 
+that refers to a device, technology, organization type, scientific method, 
+model, algorithm, application, business concept, process, metric, standard, 
+regulation, framework, protocol, system, tool, platform, product, service, data 
+type, analytical approach, or any other concept that is specific and meaningful 
+within <<{core_area}>> or any of the related interest areas listed above.
+
+
+Important extraction assumption:
+-   The corpus has been pre-processed to extract meaningful terms (noun phrases 
+    / keywords).
+-   Multi-word terms are indexed separately from their headwords. Therefore, 
+    contexts for an isolated TERM do not include occurrences that belong to its 
+    multi-word variants.
+
+
+INSTRUCTIONS:
+-   Use your domain knowledge, the provided core area, interest areas, and the 
+    CONTEXT PHRASES below to make the determination.
+-   Consider whether the TERM is recognized as technical or domain-specific in 
+    <<{core_area}>> or in any other related domain.
+-   Do not rely solely on frequency or CONTEXT PHRASES; focus on the TERM's 
+    recognized meaning and relevance.
+-   If you are unsure or the TERM is ambiguous, default to "no".
+
+
+OUTPUT:
+Return ONLY one word: "yes" or "no". Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+
+
+TERM:
+<<{pattern}>>
+
+
+CONTEXT PHRASES:
+{contexts}
+
