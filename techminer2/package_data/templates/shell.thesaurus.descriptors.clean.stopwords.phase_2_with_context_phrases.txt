@@ -1,0 +1,63 @@
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word and tech-mining studies.
+
+TASK:
+Determine whether the candidate TERM, which is already classified as domain-specific in the core area <<{core_area}>>, is general across the major thematic areas (widely used and non-discriminative), or specific to a particular topic area (used mainly in one or a few themes).
+
+CONTEXT:
+- If the TERM is general and appears broadly across multiple major themes in <<{core_area}>>, it does not help identify or distinguish major thematic areas and should be considered a stopword.
+- If the TERM is specific and mainly associated with one or a few topic areas, it is useful for discovering and defining major thematic areas and should not be considered a stopword.
+
+INSTRUCTIONS:
+- Use your domain knowledge, the provided core area, interest areas, and the CONTEXT PHRASES below to make your determination.
+- Consider whether the TERM is broadly used across many major themes, or is mainly associated with a specific topic area.
+- Do not rely solely on frequency; focus on the TERM's thematic relevance and specificity.
+- If you are unsure or the TERM is ambiguous, default to "yes" (consider it a stopword).
+
+OUTPUT:
+Return ONLY one word with no quotes:
+- "yes": the TERM is general and should be considered a stopword.
+- "no": the TERM is specific and should not be considered a stopword.
+Do not include any explanation, reasoning, or 
+punctuation. If your answer contains anything other than "yes" or "no", it will 
+be considered invalid.
+
+RELATED INTEREST AREAS:
+-   Business analytics (risk analytics, people analytics, health analytics, 
+    consumer analytics, retail analytics, fraud analytics, operational 
+    research, customer analytics, marketing analytics, supply chain analytics, 
+    human resources analytics, workforce analytics, data governance, data 
+    privacy)
+-   Machine learning and generative AI (deep learning, neural networks, 
+    reinforcement learning, supervised/unsupervised learning, generative 
+    models)
+-   Technology-driven business domains (prop-tech, govtech, adtech, martech, 
+    regtech, insurtech, legaltech, fintech, edutech, wealth tech, retailtech, 
+    regulatory technology)
+-   Teaching and learning analytics (blended learning, educational data mining, 
+    adaptive learning, edutech)
+-   Business intelligence and big data (big data analytics, chain analytics, 
+    blockchain, cloud computing, data warehousing, data lakes)
+-   Digital twins (virtual modeling, simulation, cyber-physical systems, IoT 
+    integration)
+-   Energy economics and sustainable energy (energy modeling, energy markets, 
+    renewable energy, forecasting, AI in energy, smart grids)
+-   Industry 4.0, Fourth Industrial Revolution, Fifth Industrial Revolution 
+    (smart manufacturing, cyber-physical systems, IoT, automation, robotics, 
+    human-centric innovation, edge computing, quantum computing)
+-   Cybersecurity (information security, network security, data protection, 
+    threat intelligence)
+-   Biotechnology and bioinformatics (genomics, proteomics, biomedical 
+    analytics, health informatics)
+-   Smart cities and urban analytics (urban mobility, transportation 
+    analytics, infrastructure analytics, sustainability, IoT for cities)
+-   Mobility and transportation analytics (traffic modeling, logistics, 
+    autonomous vehicles, public transport optimization)
+
+
+TERM:
+<<{pattern}>>
+
+CONTEXT PHRASES:
+{contexts}
+
