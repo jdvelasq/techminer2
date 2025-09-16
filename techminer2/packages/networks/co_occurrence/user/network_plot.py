@@ -113,7 +113,6 @@ class NetworkPlot(
         nx_graph = internal__assign_edge_color_opacity(self.params, nx_graph)
 
         return internal__plot_nx_graph(self.params, nx_graph)
-        ## nx_graph = internal__assign_edge_colors_based_on_weight(nx_graph)
-        nx_graph = internal__assign_edge_color_opacity(self.params, nx_graph)
 
-        return internal__plot_nx_graph(self.params, nx_graph)
+
+#
