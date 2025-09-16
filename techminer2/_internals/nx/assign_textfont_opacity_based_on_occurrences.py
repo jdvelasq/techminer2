@@ -42,6 +42,10 @@ def internal__assign_textfont_opacity_based_on_occurrences(
     #
     # Sets the value of node_size
     for opacity, node in zip(textfont_opacities, nx_graph.nodes()):
-        nx_graph.nodes[node]["textfont_opacity"] = np.sqrt(opacity)
+        # nx_graph.nodes[node]["textfont_opacity"] = np.sqrt(opacity)
+        # nx_graph.nodes[node]["textfont_opacity"] = np.cbrt(opacity)
+        nx_graph.nodes[node]["textfont_opacity"] = np.sqrt(
+            np.sqrt(np.sqrt(np.sqrt(opacity)))
+        )
 
     return nx_graph
