@@ -209,6 +209,7 @@ def __create_network_fig(
 def __add_node_labels_to_fig(fig, nx_graph):
     """Adds node names to a network figure."""
 
+    note_top_n = [data["top_n"] for _, data in nx_graph.nodes(data=True)]
     node_x = [data["x"] for _, data in nx_graph.nodes(data=True)]
     node_y = [data["y"] for _, data in nx_graph.nodes(data=True)]
     node_labels = [data["text"] for _, data in nx_graph.nodes(data=True)]
@@ -230,8 +231,14 @@ def __add_node_labels_to_fig(fig, nx_graph):
 
     #
 
-    for pos_x, pos_y, name, textfont_size, textpos, textcolor in zip(
-        node_x, node_y, node_labels, textfont_sizes, textpositions, textfont_opacities
+    for pos_x, pos_y, name, textfont_size, textpos, textcolor, top_n in zip(
+        node_x,
+        node_y,
+        node_labels,
+        textfont_sizes,
+        textpositions,
+        textfont_opacities,
+        note_top_n,
     ):
         if textpos == "top right":
             xanchor = "left"
@@ -257,19 +264,20 @@ def __add_node_labels_to_fig(fig, nx_graph):
             xanchor = "center"
             yanchor = "center"
 
-        fig.add_annotation(
-            x=pos_x,
-            y=pos_y,
-            text=name,
-            showarrow=False,
-            font={"size": textfont_size},
-            bordercolor="grey",
-            bgcolor="white",
-            xanchor=xanchor,
-            yanchor=yanchor,
-            xshift=xshift,
-            yshift=yshift,
-            opacity=textcolor,
-        )
+        if top_n is True:
+            fig.add_annotation(
+                x=pos_x,
+                y=pos_y,
+                text=name,
+                showarrow=False,
+                font={"size": textfont_size},
+                bordercolor="grey",
+                bgcolor="white",
+                xanchor=xanchor,
+                yanchor=yanchor,
+                xshift=xshift,
+                yshift=yshift,
+                opacity=textcolor,
+            )
 
     return fig
