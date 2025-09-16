@@ -19,47 +19,6 @@ from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.descriptors import GetValues
 
-# PROMPT = """
-# ROLE:
-# You are an expert in the core area <<{core_area}>>.
-
-
-# CONTEXT:
-# This task is part of a process to refine the thesaurus for co-word and
-# tech-mining analysis in the core area of <<{core_area}>>. The goal is to build
-# a definition of the <<{term}>> based on the provided context phrases.
-
-# Important extraction assumption:
-# -   The corpus has been pre-processed to extract meaningful terms
-#     (noun phrases / keywords).
-# -   Multi-word terms are indexed separately from their headwords. Therefore,
-#     phrases for an isolated term do not include occurrences that belong to its
-#     multi-word variants (e.g., phrases for "value" exclude "market value",
-#     "net present value", etc.).
-
-
-# TASK:
-# Build a definition of the <<{term}>> in the core area of <<{core_area}>>, based
-# on the provided context phrases.
-
-# CONSTRAINTS:
-# -   Use only the provided context phrases plus general scientific knowledge
-#     of <<{core_area}>>.
-
-
-# OUTPUT:
-# A text paragraph.
-
-
-# LENGTH:
-# 80 to 120 words.
-
-
-# CONTEXT PHRASES:
-# {contexts}
-
-# """
-
 
 # -----------------------------------------------------------------------------
 def internal__user_input(core_area):
@@ -152,7 +111,7 @@ def internal__execute_query(
 ):
 
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    prompt = internal_load_template("shell-thesaurus-descriptors-clean-define.txt")
+    prompt = internal_load_template("shell.thesaurus.descriptors.clean.define.txt")
 
     query = prompt.format(
         term=term,
