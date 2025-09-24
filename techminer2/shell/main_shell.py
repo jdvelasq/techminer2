@@ -13,9 +13,9 @@ import rlcompleter  # type: ignore
 from techminer2.shell.base_shell import BaseShell
 from techminer2.shell.colorized_prompt import make_colorized_prompt
 from techminer2.shell.database.database_shell import DatabaseShell
+from techminer2.shell.package.package_shell import PackageShell
 from techminer2.shell.thesaurus.thesaurus_shell import ThesaurusShell
 from techminer2.shell.zotero.zotero_shell import ZoteroShell
-from techminer2.shell.package.package_shell import PackageShell
 
 readline.parse_and_bind("bind ^I rl_complete")
 
