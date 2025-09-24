@@ -18,8 +18,3 @@ def internal_load_template(template_name):
         text = file.read()
 
     return text
-
-
-if __name__ == "__main__":
-    template = internal_load_template("shell.thesaurus.descriptors.clean.define.txt")
-    print(template)
