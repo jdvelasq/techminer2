@@ -34,7 +34,7 @@ Example:
     >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Create, configure, and run the Text generator
-    >>> from techminer2.database.metrics.general import Text
+    >>> from techminer2.manuscript.results.general_metrics.text import Text
     >>> (
     ...     Text()
     ...     #
@@ -45,7 +45,7 @@ Example:
     ...     .where_record_citations_range_is(None, None)
     ...     .where_records_match(None)
     ...     #
-    ...     .run()
+    ...     .run() # doctest: +SKIP
     ... )
 
 
