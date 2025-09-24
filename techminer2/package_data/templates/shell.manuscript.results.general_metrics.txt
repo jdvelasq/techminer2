@@ -1,0 +1,15 @@
+
+
+
+The analyzed corpus consists of 228 peer-reviewed publications disseminated between January 2015 and June
+2025. On average, these works are 2.21 years old and have received 15.28 citations, corresponding to an annualized
+citation rate of 1.39. The documents originate from 137 distinct academic outlets, averaging 1.66 contributions per
+source, reflecting a wide dissemination across journals and conferences. The publication mix is weighted toward
+journal articles (148) and conference proceedings (77), indicative of both the theoretical maturation and ongoing
+methodological innovation characteristic of this research domain. A total of 670 unique scholars contribute to the
+corpus, yielding an average of 3.21 authors per article and 3.46 co-authors per publication, which underscores the
+collaborative and interdisciplinary nature of the field. International collaboration features prominently: 23.25% of all
+contributions involve co-authors from multiple countries, pointing to the global relevance and policy implications of
+the research themes addressed. These authors are affiliated with 380 institutions spanning 50 countries, reinforcing
+the geographically distributed yet thematically convergent interest in the integration of advanced analytical techniques
+in finance and economics.
