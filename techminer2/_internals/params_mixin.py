@@ -32,6 +32,7 @@ class Params:
     color: Optional[str] = None
     colormap: str = "Blues"
     contour_opacity: float = 0.6
+    core_area: Optional[str] = None
     correlation_method: str = "pearson"
     cumulative_sum: bool = False
     cutoff_threshold: float = 85.0
@@ -620,6 +621,10 @@ class ParamsMixin:
 
     def with_abstract_having_pattern(self, pattern):
         self.params.pattern = pattern
+        return self
+
+    def with_core_area(self, core_area):
+        self.params.core_area = core_area
         return self
 
     def with_correlation_method(self, method):
