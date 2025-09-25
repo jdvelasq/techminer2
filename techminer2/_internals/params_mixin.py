@@ -194,6 +194,7 @@ class Params:
     # W
     #
     word: Optional[str] = None
+    word_length: int = 50
 
     #
     # Z
@@ -677,4 +678,8 @@ class ParamsMixin:
 
     def with_transformation_function(self, transformation_function):
         self.params.transformation_function = transformation_function
+        return self
+
+    def with_word_length(self, word_length):
+        self.params.word_length = word_length
         return self

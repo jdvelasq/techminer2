@@ -108,6 +108,5 @@ class ConcordantSentences(
     def run(self):
 
         self.internal__load_the_database()
-        # self.internal__extract_raw_context_phrases()
         self.internal__extract_processed_context_phrases()
         return self.context_phrases
