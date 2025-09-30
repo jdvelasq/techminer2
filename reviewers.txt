@@ -1,0 +1,119 @@
+ROLE:
+You are an automated scientific writing assistant specializing in academic synthesis for literature reviews using systematic literature review and tech-mining.
+
+
+CONTEXT:
+You are assisting in the preparation of a literature review paper. 
+
+
+GOAL:
+The list presented below, contains the commentaries of the reviewers for several papers of my authorship. All the papers aims to determine the dominant and emergent clusters in the literature in the last 10 years. The used approach is a combination between bibliometric analysis, systematic literature review, and tech-mining methods. Your goal is to analyze the commentaries in detail and generate a consolidated list that can be used as a check list for future manuscripts.
+
+METHODOLOGY:
+- Compare the commentaries line by line. 
+- Group commentaries with similitaritis.
+- Consolide the commentaries.
+
+OUTPUT:
+A list of reviewer's commentaries to check the manuscript. The commentaries must be adecuate to use in an GenAI system, to analyze the current manuscript and suggest minimal changes.
+
+
+REVIEWER'S COMMENTARIES:
+
+The manuscript presents a thematic analysis of publications over a ten-year period, identifying eight clusters, but should discuss more clearly how to interpret the Louvain algorithm’s non-overlapping clusters, especially since healthcare analytics subdomains often overlap.
+
+The louvain algorithm seem to generate arbiratry cluster divisions; the authors should explain this outcome with respect to the method and, if warranted, consider manual curation or merging of clusters to provide more meaningful integration.
+
+The literature review section lacks an integrative synthesis. Instead of reading like a collection of mini-abstracts, it should include a paragraph that compares and contrasts the main findings across domains, showing commonalities and differences. It is still unclear how the thematic review described in the current submission differs from the seven reviews listed in Table 1.
+
+
+The Conclusions section should be reorganized and made more explicit, clearly outlining how dominant topics intersect, evolve, or align with broader biomedical challenges.
+
+
+The manuscript should emphasize methodological, conceptual, and translational dimensions more prominently, potentially by restructuring the results and discussion along these lines.
+
+
+Key topics seems missing. The authors should clarify whether this omission stems from keyword/algorithm limitations or deliberate choice and ideally integrate it for completeness.
+
+The phrase “However, challenges persist…” is overused as a stylistic separator, reducing readability. Consider varying the phrasing.
+
+
+Network clusters plot is difficult to interpret due to too many nodes/edges. The authors should consider an alternative visualization to highlight relationship strengths more clearly.
+
+
+The are abbreviations that should be defined and referenced upon first mention.
+
+The manuscript lacks a Limitations section, which should explicitly describe the study’s constraints and boundaries of interpretation.
+
+Lack of novelty in terms of novel approach used
+
+Authors need to compare with existing models
+
+More categorized literature survey required
+
+Show some results and discussion sections clearly
+
+With the inclusion and exclusion criteria described in the main text and figures, it is still unclear how the authors selected those literatures related to machine learning or real-world data applications among the literatures.
+
+Abstract to be updated on par with the title of the paper. I am not finding any technical details and conclusion taken out of all papers as per the title of the paper.
+
+The materials and methods section, there is no technical details of methods discussed. This is to be updated.
+
+The abstract effectively summarizes the study's scope, methodology, and key findings. However, it would benefit from a clearer statement of the specific contribution this review makes compared to existing reviews in the field. The authors mention that their approach differs from other reviews, but the unique value proposition could be more explicitly stated.
+
+The introduction provides adequate context on TinyML and its importance in various applications. The authors identify a gap in the literature regarding comprehensive analyses of global research trends in TinyML, which justifies their study. However, the research questions or objectives could be more explicitly stated to guide readers' expectations.
+
+The literature review section thoroughly examines existing reviews on TinyML, providing a solid foundation for understanding the current state of knowledge. The authors effectively demonstrate that while there are several reviews focusing on specific aspects of TinyML, there is a need for a broader examination of interconnected challenges and emerging research fields.
+
+The methodology section is detailed and transparent, explaining the data collection, preparation, and analysis processes. The use of the Louvain algorithm for community detection to identify thematic clusters is appropriate. However, more information on the validation of the thematic clusters would strengthen the methodological rigor.
+
+The results section presents a comprehensive analysis of the 21 identified themes. The authors provide detailed descriptions of each theme, including key trends, challenges, and opportunities. The inclusion of specific examples from the literature enhances the credibility of the analysis.
+
+The discussion of each theme is thorough and insightful, offering valuable perspectives on the current state and future directions of TinyML research. The authors effectively highlight the interconnections between different themes, demonstrating a holistic understanding of the field.
+
+The manuscript would benefit from a more explicit discussion of the limitations of the study. While the authors mention that they focused on Scopus-indexed documents, they do not address potential biases in their dataset or analysis approach.
+
+The writing quality is generally good, with clear organization and logical flow. However, there are some instances of repetitive language and unnecessarily complex sentences that could be simplified for better readability.
+
+Some sections, particularly in the discussion of individual themes, contain repetitive information. Streamlining these sections would improve the overall readability and impact of the manuscript.
+
+The paper would benefit from a more explicit discussion of the practical implications of the findings for researchers, practitioners, and industry stakeholders. While the authors identify opportunities for future research, more concrete recommendations would enhance the practical value of the review.
+
+The figures and tables are informative and well-presented, providing useful visualizations of the methodology and results. However, additional visualizations showing the relationships between different themes would further enhance the presentation of the findings.
+
+15) The conclusion section effectively summarizes the key findings and contributions of the study. However, it could be strengthened by more explicitly stating the implications for different stakeholders and providing clearer directions for future research.
+
+The paper would benefit from a more critical evaluation of the quality and rigor of the existing literature. While the authors identify gaps and opportunities, a more explicit assessment of the methodological strengths and weaknesses of current research would enhance the value of the review.
+
+The manuscript occasionally uses technical terminology without adequate explanation, which may limit its accessibility to readers who are not familiar with TinyML or text mining techniques.
+
+
+Although the paper makes reference to a technology-mining approach, there is a lack of detail regarding the specific methodologies employed in the analysis of the literature. A more comprehensive presentation of the analytical techniques utilized, particularly with regard to the identification of dominant themes, would enhance the rigor and replicability of the review. For example, in the methodology section, the authors state:
+
+“The methodology used consists of the following steps: Study design, Data collection and preparation, Data analysis, and Data interpretation… dominant themes are used as dimensions of analysis of the documents covering RA”.
+
+While the authors mention steps like data preparation, descriptor clustering, and the use of a thesaurus to unify keywords, they do not clarify how these steps were executed in practical terms. For instance, it’s unclear which specific algorithms or tools were employed for clustering keywords into themes, or whether any validation techniques (such as inter-rater reliability or topic coherence metrics) were applied to ensure the robustness of these clusters.
+
+Additionally, Figure 3 outlines a methodology for obtaining dominant themes but lacks detail on the criteria or computational processes used to establish these themes conclusively. The lack of clarity surrounding the analytical technique in question makes it challenging for other researchers to replicate the process. This is due to the absence of crucial details, including the clustering criteria and theme validation, which are essential for understanding the technique and replicating it accurately.
+
+Expanding this section with technical specifics, such as detailing the algorithms or software (e.g., topic modeling algorithms like Latent Dirichlet Allocation or clustering tools), would clarify how dominant themes were identified and would substantially enhance the replicability and rigor of the review.
+
+Moreover, the processes of data cleaning and clustering for thematic analysis are introduced yet require further elaboration. Including a clear flow of how keywords were processed and mapped to themes would improve clarity for readers unfamiliar with tech-mining methodologies.
+
+
+
+Detailed Actionable Recommendations:
+
+While the paper identifies challenges and future directions, it would be enhanced by the inclusion of more specific, actionable recommendations within each thematic cluster. For example, suggestions for overcoming data privacy challenges in retail could be expanded upon to provide industry practitioners with concrete steps or frameworks.
+
+Furthermore, the practical implications, particularly for clusters such as "Data-Driven Decision Making" and "Customer Behavior Analysis," could be enhanced by the provision of more comprehensive examples that directly translate findings into strategic or operational guidance for retailers.
+
+Theoretical Underpinning and Conceptual Framework:
+
+The paper would be enhanced by the addition of a more developed theoretical framework to support its review structure. While the thematic clusters are informative, explicitly linking them to established theories in consumer behavior, decision science, or technology adoption could serve to enhance the academic rigor of the review.
+
+Additionally, presenting an integrative conceptual framework that visually maps the relationships among the identified themes could further clarify the study's findings for readers and facilitate understanding of the interdependencies in retail analytics.
+
+
+
+
