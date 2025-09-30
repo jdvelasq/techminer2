@@ -16,9 +16,11 @@ Example:
     >>> (
     ...     FirstParagraph()
     ...     #
+    ...     # TEXT:
     ...     .with_abstract_having_pattern(['FINTECH', 'FINANCIAL_TECHNOLOGIES'])
     ...     .with_word_length((200, 400))
     ...     #
+    ...     # DATABASE:
     ...     .where_root_directory_is("examples/fintech/")
     ...     .where_database_is("main")
     ...     .where_record_years_range_is(None, None)
