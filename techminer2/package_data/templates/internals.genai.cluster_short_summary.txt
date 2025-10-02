@@ -35,7 +35,7 @@ KEYWORDS DEFINING THE THEMATIC FAMILY:
 
 
 LENGTH:
-{word_length} words (+/- 10% margin allowed for completeness and readability).
+{word_length} words.
 
 
 REQUIREMENTS:
