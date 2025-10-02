@@ -64,7 +64,7 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2.database.metrics.general import DataFrame
 
 
-class Text(
+class GeneralMetrics(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -213,10 +213,20 @@ class Text(
             "Value",
         ]
 
+    def documents(self):
+        return self.df.loc[
+            (
+                "GENERAL",
+                "Documents",
+            ),
+            "Value",
+        ]
+
     def build_template(self):
         template = internal_load_template("internals.genai.general_metrics.txt")
         self.prompt = template.format(
             timespan=self.timespan(),
+            documents=self.documents(),
             annual_growth_rate=self.annual_growth_rate(),
             document_average_age=self.document_average_age(),
             average_citations_per_document=self.average_citations_per_document(),

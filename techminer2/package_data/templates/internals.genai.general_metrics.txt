@@ -12,6 +12,7 @@ You are assisting in the preparation of a literature review paper. Your current 
 GOAL:
 Write a well-structured paragraph that clearly and concisely describes the following key bibliographic indicators of the dataset:
 - Timespan: {timespan}
+- Total documents: {documents}
 - Annual growth rate (%): {annual_growth_rate}
 - Document average age: {document_average_age}
 - Average citations per document: {average_citations_per_document}

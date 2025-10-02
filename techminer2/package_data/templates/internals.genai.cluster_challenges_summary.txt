@@ -30,6 +30,12 @@ Follow these steps to ensure analytical rigor and textual coherence:
 4. Construct a seamless, logically organized paragraph that maintains the 
    academic tone, incorporates all relevant insights, and preserves all 
    citations verbatim.
+5. The  keywords defining the thematic family are naturally integrated into the 
+   paragraph when appropriate to support the discussion.
+
+
+KEYWORDS DEFINING THE THEMATIC FAMILY:
+{cluster_keywords}
 
 
 MAX LENGTH:

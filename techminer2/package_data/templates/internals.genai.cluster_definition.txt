@@ -51,9 +51,11 @@ REQUIREMENTS:
   abstracts to ensure internal consistency.
 - Structure the five required paragraphs clearly and distinctly; do not add an 
   introduction or conclusion.
-- The DEFINITION dimension must not present a list of the keywords. For 
-  example, the phrase "The thematic cluster defined by the keywords ..." is
-  invalid.
+- Each paragraph should avoid presenting the keywords as a simple list (e.g., 
+  "The thematic cluster defined by the keywords ...” is not acceptable). 
+  However, relevant keywords may be naturally integrated into the paragraph 
+  when appropriate to support the discussion.
+- Each paragraph must begin with "This cluster ..." or "In this cluster ..."
 
 
 OUTPUT:
@@ -85,4 +87,5 @@ LENGTH OF EACH PARAGRAPH:
 
 
 ABSTRACTS:
+
 {abstracts}

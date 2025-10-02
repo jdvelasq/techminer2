@@ -30,6 +30,10 @@ Follow the instructions below to combine the provided paragraphs:
 4. Write the new paragraph.
 
 
+KEYWORDS DEFINING THE THEMATIC FAMILY:
+{cluster_keywords}
+
+
 LENGTH:
 {word_length} words (+/- 10% margin allowed for completeness and readability).
 
@@ -40,6 +44,9 @@ REQUIREMENTS:
 - Do not list tools or techniques used in the cluster.
 - Be sure to respect the word limit.
 - Do not remove reference numbers from the text.
+- The keywords defining the thematic family are naturally integrated into the 
+  paragraph when appropriate to support the discussion.
+
 - Be sure to discuss:
     - Definition
     - Trends

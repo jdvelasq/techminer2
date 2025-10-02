@@ -119,20 +119,28 @@ class ClusterDefinition(
         for cluster in tqdm(
             range(self.terms_by_cluster_mapping.__len__()),
             total=self.terms_by_cluster_mapping.__len__(),
-            desc="  Clusters ",
+            desc="         Clusters ",
+            ncols=80,
         ):
 
             cluster_keywords = self.terms_by_cluster_mapping[cluster]
             cluster_keywords = cluster_keywords.lower().replace("_", " ")
 
             documents = self.documents_by_cluster_mapping.get(cluster, [])
+            ##
             documents = documents[:100]
+            # documents = documents[:20]  ## borrar
+            ##
             documents = [documents[i : i + 10] for i in range(0, len(documents), 10)]
 
             answers = []
 
             for docs in tqdm(
-                documents, total=len(documents), desc="    Chunks ", leave=False
+                documents,
+                total=len(documents),
+                desc="           Chunks ",
+                leave=False,
+                ncols=80,
             ):
 
                 docs = "\n\n" + "\n---\n\n".join(docs) + "\n\n"
@@ -172,7 +180,7 @@ class ClusterDefinition(
         if os.path.exists(path):
             for file in os.listdir(path):
                 file_path = os.path.join(path, file)
-                if os.path.isfile(file_path):
+                if os.path.isfile(file_path) and file.endswith("summary.txt"):
                     os.remove(file_path)
 
         os.makedirs(path, exist_ok=True)
@@ -183,7 +191,11 @@ class ClusterDefinition(
             range(self.raw_summaries_by_cluster.__len__()),
             total=self.raw_summaries_by_cluster.__len__(),
             desc="  Final summaries ",
+            ncols=80,
         ):
+
+            cluster_keywords = self.terms_by_cluster_mapping[i_cluster]
+            cluster_keywords = cluster_keywords.lower().replace("_", " ")
 
             complete_text = []
             self.cluster_full_definitions[i_cluster] = []
@@ -197,7 +209,11 @@ class ClusterDefinition(
                 "opportunities",
                 "value",
             ]:
-                text = [definition[section] for definition in definitions]
+                text = [
+                    definition[section]
+                    for definition in definitions
+                    if section in definition
+                ]
                 text = "\n\n--\n\n".join(text)
                 template = internal_load_template(
                     f"internals.genai.cluster_{section}_summary.txt"
@@ -206,6 +222,7 @@ class ClusterDefinition(
                     core_area=self.params.core_area,
                     word_length=self.params.word_length[1],
                     paragraphs_to_combine=text,
+                    cluster_keywords=cluster_keywords,
                 )
 
                 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -248,7 +265,11 @@ class ClusterDefinition(
             range(self.cluster_full_definitions.__len__()),
             total=self.cluster_full_definitions.__len__(),
             desc="  Short summaries ",
+            ncols=80,
         ):
+
+            cluster_keywords = self.terms_by_cluster_mapping[i_cluster]
+            cluster_keywords = cluster_keywords.lower().replace("_", " ")
 
             paragraphs_to_combine = "\n\n".join(
                 self.cluster_full_definitions[i_cluster]
@@ -258,6 +279,7 @@ class ClusterDefinition(
                 core_area=self.params.core_area,
                 word_length=self.params.word_length[2],
                 paragraphs_to_combine=paragraphs_to_combine,
+                cluster_keywords=cluster_keywords,
             )
 
             try:
