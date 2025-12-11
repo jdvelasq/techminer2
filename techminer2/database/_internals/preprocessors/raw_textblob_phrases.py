@@ -9,13 +9,54 @@ import pathlib
 import sys
 
 import pandas as pd  # type: ignore
+from pandarallel import pandarallel
 from textblob import TextBlob  # type: ignore
+
+pandarallel.initialize(progress_bar=True)
+
+
+def internal__process_row(row):
+
+    phrases = []
+
+    if not pd.isna(row["tokenized_abstract"]):
+        phrases += [
+            phrase for phrase in TextBlob(row["tokenized_abstract"]).noun_phrases
+        ]
+
+    if not pd.isna(row["tokenized_document_title"]):
+        phrases += [
+            phrase for phrase in TextBlob(row["tokenized_document_title"]).noun_phrases
+        ]
+
+    phrases = [term for term in phrases if "." not in term]
+    phrases = [term for term in phrases if "(" not in term]
+    phrases = [term for term in phrases if ")" not in term]
+    phrases = [term for term in phrases if "[" not in term]
+    phrases = [term for term in phrases if "]" not in term]
+    phrases = [term for term in phrases if "%" not in term]
+    phrases = [term for term in phrases if "&" not in term]
+    phrases = [term for term in phrases if "!" not in term]
+    phrases = [term for term in phrases if "'" not in term]
+    phrases = [term for term in phrases if '"' not in term]
+    phrases = [term for term in phrases if "+" not in term]
+    phrases = [term for term in phrases if "<" not in term]
+    phrases = [term for term in phrases if ">" not in term]
+    phrases = [term for term in phrases if "=" not in term]
+
+    if phrases == []:
+        return pd.NA
+
+    phrases = set(phrases)
+    phrases = "; ".join(phrases)
+
+    return phrases
 
 
 def internal__preprocess_raw_textblob_phrases(root_dir):
     """Run importer."""
 
-    sys.stderr.write("INFO  Creating 'raw_textblob_phrases' column\n")
+    sys.stderr.write("INFO  Creating 'raw_textblob_phrases' column\n\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
@@ -27,48 +68,51 @@ def internal__preprocess_raw_textblob_phrases(root_dir):
         low_memory=False,
     )
 
-    dataframe["raw_textblob_phrases"] = pd.NA
+    # dataframe["raw_textblob_phrases"] = pd.NA
 
-    for index, row in dataframe.iterrows():
+    dataframe["raw_textblob_phrases"] = dataframe.parallel_apply(
+        internal__process_row, axis=1
+    )
+    sys.stderr.write("\n\n")
+    sys.stderr.flush()
 
-        phrases = []
+    # for index, row in dataframe.iterrows():
 
-        if not pd.isna(row["tokenized_abstract"]):
-            phrases += [
-                phrase for phrase in TextBlob(row["tokenized_abstract"]).noun_phrases
-            ]
+    # phrases = []
 
-        if not pd.isna(row["tokenized_document_title"]):
-            phrases += [
-                phrase
-                for phrase in TextBlob(row["tokenized_document_title"]).noun_phrases
-            ]
+    # if not pd.isna(row["tokenized_abstract"]):
+    #     phrases += [
+    #         phrase for phrase in TextBlob(row["tokenized_abstract"]).noun_phrases
+    #     ]
 
-        phrases = [term for term in phrases if "." not in term]
-        phrases = [term for term in phrases if "(" not in term]
-        phrases = [term for term in phrases if ")" not in term]
-        phrases = [term for term in phrases if "[" not in term]
-        phrases = [term for term in phrases if "]" not in term]
-        phrases = [term for term in phrases if "%" not in term]
-        phrases = [term for term in phrases if "&" not in term]
-        phrases = [term for term in phrases if "!" not in term]
-        phrases = [term for term in phrases if "'" not in term]
-        phrases = [term for term in phrases if '"' not in term]
-        phrases = [term for term in phrases if "+" not in term]
-        phrases = [term for term in phrases if "<" not in term]
-        phrases = [term for term in phrases if ">" not in term]
-        phrases = [term for term in phrases if "=" not in term]
-        #
-        # phrases = [term for term in phrases if not term.endswith(" et al")]
-        # phrases = [term for term in phrases if term != "et al"]
-        #
-        if phrases == []:
-            continue
+    # if not pd.isna(row["tokenized_document_title"]):
+    #     phrases += [
+    #         phrase
+    #         for phrase in TextBlob(row["tokenized_document_title"]).noun_phrases
+    #     ]
 
-        phrases = set(phrases)
-        #
-        #
-        dataframe.at[index, "raw_textblob_phrases"] = "; ".join(phrases)
+    # phrases = [term for term in phrases if "." not in term]
+    # phrases = [term for term in phrases if "(" not in term]
+    # phrases = [term for term in phrases if ")" not in term]
+    # phrases = [term for term in phrases if "[" not in term]
+    # phrases = [term for term in phrases if "]" not in term]
+    # phrases = [term for term in phrases if "%" not in term]
+    # phrases = [term for term in phrases if "&" not in term]
+    # phrases = [term for term in phrases if "!" not in term]
+    # phrases = [term for term in phrases if "'" not in term]
+    # phrases = [term for term in phrases if '"' not in term]
+    # phrases = [term for term in phrases if "+" not in term]
+    # phrases = [term for term in phrases if "<" not in term]
+    # phrases = [term for term in phrases if ">" not in term]
+    # phrases = [term for term in phrases if "=" not in term]
+
+    # if phrases == []:
+    #     continue
+
+    # phrases = set(phrases)
+    # #
+    # #
+    # dataframe.at[index, "raw_textblob_phrases"] = "; ".join(phrases)
 
     dataframe.to_csv(
         database_file,
