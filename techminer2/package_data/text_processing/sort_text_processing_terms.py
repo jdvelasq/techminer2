@@ -67,8 +67,8 @@ def sort_known_noun_phrases(file_name):
     lines = [line.strip().upper() for line in lines]
     lines = [line.replace(" ", "_") for line in lines]
     lines = [line for line in lines if line != ""]
-    lines = list(set(lines))
-    lines = sorted(lines)
+    lines = sorted(set(lines))
+
     #
     with open(file_name, "w", encoding="utf-8") as file:
         file.write("\n".join(lines))
@@ -103,7 +103,7 @@ def sort_hypened_words(file_name):
         lines = file.readlines()
 
     lines = [line.strip() for line in lines]
-    lines = sorted(lines)
+    lines = sorted(set(lines))
 
     with open(file_name, "w", encoding="utf-8") as file:
         file.write("\n".join(lines))
@@ -129,7 +129,7 @@ def sort_technical_stopwords(file_name):
     #
     lines = [line.strip().lower() for line in lines]
     lines = list(set(lines))
-    lines = sorted(lines)
+    lines = sorted(set(lines))
     #
     with open(file_name, "w", encoding="utf-8") as file:
         file.write("\n".join(lines))
