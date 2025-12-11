@@ -1,6 +1,6 @@
 """Setup module for TechMiner2+"""
-from setuptools import find_packages
-from setuptools import setup
+
+from setuptools import find_packages, setup
 
 setup(
     # cmdclass={"build_py": BuildPyCommand},
@@ -43,6 +43,8 @@ setup(
         "textblob",
         "urllib3==1.26.6",
         "wordcloud",
+        "pandarallel",
+        "textdistance",
     ],
     packages=find_packages(),
     package_dir={"techminer2": "techminer2"},

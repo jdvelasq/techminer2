@@ -13,7 +13,7 @@ Ingest Scopus
 
 Example:
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +ELLIPSIS +SKIP
+    >>> IngestScopus(root_directory="examples/fintech/").run()
 
 
 
@@ -23,117 +23,65 @@ import pathlib
 import sys
 import time
 
-from techminer2.database._internals.db import internal__check_hyphenated_form
+from tqdm import tqdm
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.datatests.check_empty_terms import (
     internal__check_empty_terms,
 )
-from techminer2.database._internals.db import internal__compress_raw_files
-from techminer2.database._internals.db import internal__create_project_structure
-from techminer2.database._internals.db import internal__drop_empty_columns
-from techminer2.database._internals.db import internal__load_raw_files
-from techminer2.database._internals.db import internal__remove_non_english_abstracts
-from techminer2.database._internals.db import internal__rename_columns
+from techminer2.database._internals.db import (
+    internal__check_hyphenated_form,
+    internal__compress_raw_files,
+    internal__create_project_structure,
+    internal__drop_empty_columns,
+    internal__load_raw_files,
+    internal__remove_non_english_abstracts,
+    internal__rename_columns,
+)
 from techminer2.database._internals.db.report_imported_records import (
     internal__report_imported_records,
 )
 from techminer2.database._internals.preprocessors import (
     internal__preprocess_abbr_source_title,
-)
-from techminer2.database._internals.preprocessors import (
+    internal__preprocess_abstract,
     internal__preprocess_acronyms,
-)
-from techminer2.database._internals.preprocessors import internal__preprocess_abstract
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_author_keywords,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_author_names,
-)
-from techminer2.database._internals.preprocessors import internal__preprocess_authors
-from techminer2.database._internals.preprocessors import internal__preprocess_authors_id
-from techminer2.database._internals.preprocessors import internal__preprocess_countries
-from techminer2.database._internals.preprocessors import (
+    internal__preprocess_authors,
+    internal__preprocess_authors_id,
+    internal__preprocess_countries,
     internal__preprocess_descriptors,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_document_title,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_document_type,
-)
-from techminer2.database._internals.preprocessors import internal__preprocess_doi
-from techminer2.database._internals.preprocessors import internal__preprocess_eissn
-from techminer2.database._internals.preprocessors import (
+    internal__preprocess_doi,
+    internal__preprocess_eissn,
     internal__preprocess_global_citations,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_global_references,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_index_keywords,
-)
-from techminer2.database._internals.preprocessors import internal__preprocess_isbn
-from techminer2.database._internals.preprocessors import internal__preprocess_issn
-from techminer2.database._internals.preprocessors import (
+    internal__preprocess_isbn,
+    internal__preprocess_issn,
     internal__preprocess_local_citations,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_local_references,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_num_authors,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_num_global_references,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_organizations,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_abstract_nouns_and_phrases,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_author_keywords,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_descriptors,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_document_title_nouns_and_phrases,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_index_keywords,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_keywords,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_noun_and_phrases,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_spacy_phrases,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_textblob_phrases,
-)
-from techminer2.database._internals.preprocessors import internal__preprocess_record_id
-from techminer2.database._internals.preprocessors import internal__preprocess_record_no
-from techminer2.database._internals.preprocessors import internal__preprocess_references
-from techminer2.database._internals.preprocessors import (
+    internal__preprocess_record_id,
+    internal__preprocess_record_no,
+    internal__preprocess_references,
     internal__preprocess_source_title,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_subject_areas,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_tokenized_abstract,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_tokenized_document_title,
 )
-from tqdm import tqdm
 
 
 class IngestScopus(
@@ -181,7 +129,7 @@ class IngestScopus(
         internal__drop_empty_columns(root_directory)
 
         #
-        internal__check_hyphenated_form(root_directory)
+        # internal__check_hyphenated_form(root_directory)
 
         #
         #

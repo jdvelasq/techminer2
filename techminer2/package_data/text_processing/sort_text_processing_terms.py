@@ -48,11 +48,12 @@ def sort_copyright_regex(file_name):
     #
     lines = [line.strip().lower() for line in lines]
     lines = [line.replace("_", " ").lower() for line in lines]
+
     lines = list(set(lines))
     lines = [(len(line.split(" ")), line) for line in lines]
     lines = sorted(lines, reverse=True)
     lines = [line[1] for line in lines]
-    #
+
     with open(file_name, "w", encoding="utf-8") as file:
         file.write("\n".join(lines))
 

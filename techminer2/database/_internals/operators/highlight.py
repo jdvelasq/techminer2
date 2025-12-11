@@ -10,6 +10,7 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
+from pandarallel import pandarallel
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import Params
@@ -18,6 +19,8 @@ from techminer2.database._internals.io import (
     internal__write_records_to_database,
 )
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
+
+pandarallel.initialize(progress_bar=True)
 
 SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
     "abstract",
@@ -307,10 +310,13 @@ def clean_key_terms(stopwords, key_terms):
 
 # ------------------------------------------------------------------------------
 def mark_copyright_text(copyright_regex, text):
+
     for regex in copyright_regex:
+
         regex = r"(" + regex + r")"
         regex = re.compile(regex)
         text = re.sub(regex, lambda z: z.group().replace(" ", "_"), text)
+
     return text
 
 
@@ -650,6 +656,19 @@ def unmark_template_abstract_markers(text):
         regex = re.compile("' " + term.replace(" ", "_") + " :", re.IGNORECASE)
         text = re.sub(regex, "' " + term.lower() + " :", text)
 
+        ## ending with [
+        regex = re.compile("\. " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        text = re.sub(regex, ". " + term.lower() + " [", text)
+
+        regex = re.compile("\) " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        text = re.sub(regex, ") " + term.lower() + " [", text)
+
+        regex = re.compile("\? " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        text = re.sub(regex, "? " + term.lower() + " [", text)
+
+        regex = re.compile("' " + term.replace(" ", "_") + " \[", re.IGNORECASE)
+        text = re.sub(regex, "' " + term.lower() + " [", text)
+
     return text
 
 
@@ -680,6 +699,78 @@ def repair_appostrophes(text):
 
 
 # ------------------------------------------------------------------------------
+global all_noun_phrases
+global stopwords
+global all_keywords
+global connectors
+global copyright_regex
+global known_noun_phrases
+global discursive_patterns
+global text_noun_phrases
+
+
+# ------------------------------------------------------------------------------
+def process_column(text):
+
+    global all_noun_phrases
+    global stopwords
+    global all_keywords
+    global connectors
+    global copyright_regex
+    global known_noun_phrases
+    global discursive_patterns
+    global text_noun_phrases
+
+    if pd.isna(text):
+        return pd.NA
+
+    key_terms = []
+
+    #
+    # Algorithm:
+    #
+    key_terms += [k for k in all_noun_phrases if k in text]
+    text_noun_phrases += key_terms
+    key_terms += extract_acronyms_from_text(text)
+    key_terms = clean_key_terms(stopwords, key_terms)
+    key_terms += [k for k in all_keywords if k in text]
+    key_terms += [k for k in known_noun_phrases if k in text]
+
+    url_matches = collect_urls(text)
+
+    text = mark_copyright_text(copyright_regex, text)
+    text = mark_template_abstract_separators(text)
+    text = mark_discursive_patterns(discursive_patterns, text)
+    text = mark_connectors(connectors, text)
+
+    #
+    #
+    text = highlight_key_terms(key_terms, text)
+    #
+    #
+
+    text = repair_appostrophes(text)
+
+    text = join_consequtive_separate_terms_in_uppercase(text, stopwords)
+
+    text = fix_units(text)
+
+    text = replace_urls(text, url_matches)
+
+    text = unmark_lowercase_text(text)
+    text = unmark_template_abstract_markers(text)
+    text = unmark_et_al(text)
+    text = mark_connectors(connectors, text)
+    text = remove_roman_numbers(text)
+
+    text = transform_email_addresses_to_lower_case(text)
+
+    text = make_final_corrections(text)
+
+    return text
+
+
+# ------------------------------------------------------------------------------
 def internal__highlight(
     source,
     dest,
@@ -688,6 +779,15 @@ def internal__highlight(
     root_directory,
 ):
     """:meta private:"""
+
+    global all_noun_phrases
+    global stopwords
+    global all_keywords
+    global connectors
+    global copyright_regex
+    global known_noun_phrases
+    global discursive_patterns
+    global text_noun_phrases
 
     notify_process_start(dest)
 
@@ -719,62 +819,10 @@ def internal__highlight(
 
     text_noun_phrases = []
 
-    for index, row in tqdm(
-        dataframe.iterrows(),
-        total=len(dataframe),
-        desc=f"  Progress",
-        ncols=80,
-    ):
-
-        if pd.isna(row[dest]):
-            continue
-
-        text = row[dest]
-
-        key_terms = []
-
-        #
-        # Algorithm:
-        #
-        key_terms += [k for k in all_noun_phrases if k in row[dest]]
-        text_noun_phrases += key_terms
-        key_terms += extract_acronyms_from_text(text)
-        key_terms = clean_key_terms(stopwords, key_terms)
-        key_terms += [k for k in all_keywords if k in row[dest]]
-        key_terms += [k for k in known_noun_phrases if k in row[dest]]
-
-        url_matches = collect_urls(text)
-
-        text = mark_copyright_text(copyright_regex, text)
-        text = mark_template_abstract_separators(text)
-        text = mark_discursive_patterns(discursive_patterns, text)
-        text = mark_connectors(connectors, text)
-
-        #
-        #
-        text = highlight_key_terms(key_terms, text)
-        #
-        #
-
-        text = repair_appostrophes(text)
-
-        text = join_consequtive_separate_terms_in_uppercase(text, stopwords)
-
-        text = fix_units(text)
-
-        text = replace_urls(text, url_matches)
-
-        text = unmark_lowercase_text(text)
-        text = unmark_template_abstract_markers(text)
-        text = unmark_et_al(text)
-        text = mark_connectors(connectors, text)
-        text = remove_roman_numbers(text)
-
-        text = transform_email_addresses_to_lower_case(text)
-
-        text = make_final_corrections(text)
-
-        dataframe.loc[index, dest] = text
+    sys.stderr.write("\n")
+    dataframe[dest] = dataframe[dest].parallel_apply(process_column)
+    sys.stderr.write("\n\n")
+    sys.stderr.flush()
 
     write_records_to_database(dataframe, root_directory)
 
@@ -783,3 +831,110 @@ def internal__highlight(
         text_noun_phrases + known_noun_phrases,
         root_directory,
     )
+
+
+# ------------------------------------------------------------------------------
+
+## def internal__highlight(
+##     source,
+##     dest,
+##     #
+##     # DATABASE PARAMS:
+##     root_directory,
+## ):
+##     """:meta private:"""
+##
+##     notify_process_start(dest)
+##
+##     dataframe = load_all_records_from_database(root_directory)
+##
+##     if source not in dataframe.columns:
+##         return
+##
+##     dataframe[dest] = dataframe[source].copy()
+##
+##     all_keywords = collect_all_keywords(dataframe)
+##     frequent_keywords, all_keywords = clean_all_keywords(all_keywords)
+##
+##     all_noun_phrases = collect_all_noun_phrases(dataframe, dest)
+##     known_noun_phrases = load_known_noun_phrases("known_noun_phrases.txt")
+##
+##     connectors = internal__load_text_processing_terms("connectors.txt")
+##     copyright_regex = internal__load_text_processing_terms("copyright_regex.txt")
+##     stopwords = internal__load_text_processing_terms("technical_stopwords.txt")
+##     discursive_patterns = internal__load_text_processing_terms(
+##         "discursive_patterns.txt"
+##     )
+##
+##     determiners = internal__load_text_processing_terms("determiners.txt")
+##     determiners = (
+##         "(" + "|".join(["^" + determiner + r"\s" for determiner in determiners]) + ")"
+##     )
+##     determiners = re.compile(determiners)
+##
+##     text_noun_phrases = []
+##
+##     for index, row in tqdm(
+##         dataframe.iterrows(),
+##         total=len(dataframe),
+##         desc=f"  Progress",
+##         ncols=80,
+##     ):
+##
+##         if pd.isna(row[dest]):
+##             continue
+##
+##         text = row[dest]
+##
+##         key_terms = []
+##
+##         #
+##         # Algorithm:
+##         #
+##         key_terms += [k for k in all_noun_phrases if k in row[dest]]
+##         text_noun_phrases += key_terms
+##         key_terms += extract_acronyms_from_text(text)
+##         key_terms = clean_key_terms(stopwords, key_terms)
+##         key_terms += [k for k in all_keywords if k in row[dest]]
+##         key_terms += [k for k in known_noun_phrases if k in row[dest]]
+##
+##         url_matches = collect_urls(text)
+##
+##         text = mark_copyright_text(copyright_regex, text)
+##         text = mark_template_abstract_separators(text)
+##         text = mark_discursive_patterns(discursive_patterns, text)
+##         text = mark_connectors(connectors, text)
+##
+##         #
+##         #
+##         text = highlight_key_terms(key_terms, text)
+##         #
+##         #
+##
+##         text = repair_appostrophes(text)
+##
+##         text = join_consequtive_separate_terms_in_uppercase(text, stopwords)
+##
+##         text = fix_units(text)
+##
+##         text = replace_urls(text, url_matches)
+##
+##         text = unmark_lowercase_text(text)
+##         text = unmark_template_abstract_markers(text)
+##         text = unmark_et_al(text)
+##         text = mark_connectors(connectors, text)
+##         text = remove_roman_numbers(text)
+##
+##         text = transform_email_addresses_to_lower_case(text)
+##
+##         text = make_final_corrections(text)
+##
+##         dataframe.loc[index, dest] = text
+##
+##     write_records_to_database(dataframe, root_directory)
+##
+##     report_undetected_keywords(
+##         frequent_keywords,
+##         text_noun_phrases + known_noun_phrases,
+##         root_directory,
+##     )

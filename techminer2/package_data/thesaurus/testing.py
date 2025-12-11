@@ -28,10 +28,16 @@ Example:
 """
 
 
-from .load_text_processing_terms import internal__load_text_processing_terms
-from .save_text_processing_terms import internal__save_text_processing_terms
 import sys
+
 from colorama import Fore, init
+
+from ..text_processing.load_text_processing_terms import (
+    internal__load_text_processing_terms,
+)
+from ..text_processing.save_text_processing_terms import (
+    internal__save_text_processing_terms,
+)
 
 
 def internal__testing():

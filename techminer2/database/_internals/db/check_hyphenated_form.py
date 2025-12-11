@@ -4,17 +4,23 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-import os.path
-import pandas as pd
-from tqdm import tqdm
-from openai import OpenAI
+import json
 import os
+import os.path
+import sys
+
+import pandas as pd
+from openai import OpenAI
+from pandarallel import pandarallel
+from tqdm import tqdm
+
 from techminer2._internals import Params
 from techminer2.database._internals.io import internal__load_all_records_from_database
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
-import sys
 
-PROMPT = """
+pandarallel.initialize(progress_bar=True)
+
+SYSTEM_PROMPT = """
 INSTRUCTION:
 You will be provided with two variations of the same word: one in hyphenated form and the other in non-hyphenated form.
 
@@ -30,7 +36,20 @@ TASK:
     - The non-hyphenated form is the only form correct.
     - The correct form is different from both provided forms.
 
+    
+OUTPUT FORMAT (STRICT — JSON ONLY):
+The output MUST be a JSON object with the following structure:
 
+{{
+    "answer": "yes" or "no",
+}}
+
+Any output different of this must be considered invalid.
+
+"""
+
+USER_PROMPT = """
+    
 WORDS:
 - Hyphenated: "{}"
 - Non-hyphenated: "{}"
@@ -142,17 +161,34 @@ def internal__check_hyphenated_form(root_dir):
             hyphenated_is_correct.append(term)
             continue
 
-        query = PROMPT.format(
+        query = USER_PROMPT.format(
             term.lower().replace("_", "-"), term.lower().replace("_", "")
         )
 
         try:
-            response = client.responses.create(
-                model="gpt-5-nano",
-                input=query,
+
+            response = client.chat.completions.create(
+                model="gpt-4.1-mini",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": SYSTEM_PROMPT,
+                        "cache_control": {"type": "ephemeral"},
+                    },
+                    {
+                        "role": "user",
+                        "content": query,
+                    },
+                ],
+                temperature=0,
+                response_format={"type": "json_object"},
             )
-            answer = response.output_text
-            answer = answer.strip().lower()
+
+            answer = response.choices[0].message.content
+            answer = answer.strip()
+            answer = json.loads(answer)
+            answer = answer["answer"]
+            answer = answer.lower()
 
             if answer == "no":
                 hyphenated_is_incorrect.append(term)

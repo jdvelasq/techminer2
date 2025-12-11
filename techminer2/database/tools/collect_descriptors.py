@@ -23,21 +23,13 @@ import sys
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.preprocessors import (
+    internal__preprocess_abstract,
     internal__preprocess_acronyms,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_descriptors,
-)
-from techminer2.database._internals.preprocessors import (
+    internal__preprocess_document_title,
     internal__preprocess_raw_abstract_nouns_and_phrases,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_descriptors,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_document_title_nouns_and_phrases,
-)
-from techminer2.database._internals.preprocessors import (
     internal__preprocess_raw_noun_and_phrases,
 )
 
@@ -55,6 +47,9 @@ class CollectDescriptors(
         sys.stderr.flush()
 
         root_directory = self.params.root_directory
+
+        internal__preprocess_abstract(root_directory)
+        internal__preprocess_document_title(root_directory)
         internal__preprocess_raw_abstract_nouns_and_phrases(root_directory)
         internal__preprocess_raw_document_title_nouns_and_phrases(root_directory)
         internal__preprocess_raw_noun_and_phrases(root_directory)
