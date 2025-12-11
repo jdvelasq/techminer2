@@ -13,7 +13,7 @@ def internal__preprocess_organizations(root_directory):
 
     from techminer2.thesaurus.organizations import ApplyThesaurus, InitializeThesaurus
 
-    sys.stderr.write("INFO  Creating 'organizations' column\n")
+    sys.stderr.write("INFO: Creating 'organizations' column\n")
     sys.stderr.flush()
 
     InitializeThesaurus(root_directory=root_directory).run()

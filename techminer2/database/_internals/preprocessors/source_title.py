@@ -25,7 +25,7 @@ def internal__preprocess_source_title(root_dir):
 
     from techminer2.database.operators.transform import internal__transform
 
-    sys.stderr.write("INFO  Processing 'source_title' column\n")
+    sys.stderr.write("INFO: Processing 'source_title' column\n")
     sys.stderr.flush()
 
     internal__transform(

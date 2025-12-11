@@ -13,7 +13,7 @@ from techminer2.database._internals.db.get_subdirectories import (
 def internal__compress_raw_files(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Compressing raw data files.\n")
+    sys.stderr.write("INFO: Compressing raw data files.\n")
     sys.stderr.flush()
 
     raw_dir = os.path.join(root_dir, "data/raw/")

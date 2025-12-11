@@ -79,7 +79,7 @@ def read_and_concatenate_files(files):
 def internal__load_raw_files(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Creating database file\n")
+    sys.stderr.write("INFO: Creating database file\n")
     sys.stderr.flush()
 
     files = list_zip_filenames_in_raw_data(root_dir)

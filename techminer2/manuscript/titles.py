@@ -127,4 +127,4 @@ class Titles(
         self.internal__load_template()
         self.internal__generate_titles()
         self.internal__save_titles()
-        print("INFO  Done!")
+        print("INFO: Done!")

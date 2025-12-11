@@ -14,7 +14,7 @@ def internal__preprocess_acronyms(root_dir):
 
     from techminer2.thesaurus.acronyms import InitializeThesaurus
 
-    sys.stderr.write("INFO  Preprocessing acronyms\n")
+    sys.stderr.write("INFO: Preprocessing acronyms\n")
     sys.stderr.flush()
 
     InitializeThesaurus(root_directory=root_dir).run()

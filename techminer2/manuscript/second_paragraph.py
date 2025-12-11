@@ -122,5 +122,5 @@ class SecondParagraph(
         self.internal__run_prompt()
         self.internal__save_paragraph()
 
-        sys.stderr.write("INFO  Done\n")
+        sys.stderr.write("INFO: Done\n")
         sys.stderr.flush()

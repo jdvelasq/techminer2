@@ -13,7 +13,7 @@ def internal__preprocess_abbr_source_title(root_dir):
 
     from techminer2.database._internals.operators.fillna import internal__fillna
 
-    sys.stderr.write("INFO  Processing 'abbr_source_title' column\n")
+    sys.stderr.write("INFO: Processing 'abbr_source_title' column\n")
     sys.stderr.flush()
 
     internal__fillna(

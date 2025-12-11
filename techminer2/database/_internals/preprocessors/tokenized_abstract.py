@@ -13,7 +13,7 @@ def internal__preprocess_tokenized_abstract(root_dir):
 
     from techminer2.database._internals.operators.tokenize import internal__tokenize
 
-    sys.stderr.write("INFO  Creating 'tokenized_abstract' column\n")
+    sys.stderr.write("INFO: Creating 'tokenized_abstract' column\n")
     sys.stderr.flush()
 
     internal__tokenize(

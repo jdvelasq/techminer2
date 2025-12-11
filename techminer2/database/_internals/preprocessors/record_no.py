@@ -1,4 +1,5 @@
 """Create art_no column in databses."""
+
 import pathlib
 import sys
 
@@ -8,7 +9,7 @@ import pandas as pd  # type: ignore
 def internal__preprocess_record_no(root_dir):
     """Create art_no column in databases."""
     #
-    sys.stderr.write("INFO  Assign 'record_no' identifier to each record\n")
+    sys.stderr.write("INFO: Assign 'record_no' identifier to each record\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"

@@ -22,7 +22,7 @@ def internal__preprocess_subject_areas(
         internal__load_subject_areas,
     )
 
-    sys.stderr.write("INFO  Assign subject areas to each record\n")
+    sys.stderr.write("INFO: Assign subject areas to each record\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"

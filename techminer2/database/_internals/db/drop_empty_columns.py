@@ -9,7 +9,7 @@ import pandas as pd  # type: ignore
 def internal__drop_empty_columns(root_dir):
     """Drop NA columns in database/ directory"""
 
-    sys.stderr.write("INFO  Dropping NA columns in database file\n")
+    sys.stderr.write("INFO: Dropping NA columns in database file\n")
     sys.stderr.flush()
 
     dataframe = pd.read_csv(

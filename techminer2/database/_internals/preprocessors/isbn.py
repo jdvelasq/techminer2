@@ -13,7 +13,7 @@ def internal__preprocess_isbn(root_dir):
 
     from techminer2.database.operators.transform import internal__transform
 
-    sys.stderr.write("INFO  Processing 'isbn' column\n")
+    sys.stderr.write("INFO: Processing 'isbn' column\n")
     sys.stderr.flush()
 
     internal__transform(

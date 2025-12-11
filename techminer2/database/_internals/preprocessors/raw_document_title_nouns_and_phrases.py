@@ -12,7 +12,7 @@ def internal__preprocess_raw_document_title_nouns_and_phrases(root_dir):
 
     from techminer2.database._internals.operators.collect import internal__collect
 
-    sys.stderr.write("INFO  Collecting raw nouns and phrases from document title\n")
+    sys.stderr.write("INFO: Collecting raw nouns and phrases from document title\n")
     sys.stderr.flush()
 
     internal__collect(

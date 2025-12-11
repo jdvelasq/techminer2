@@ -67,7 +67,7 @@ def internal__preprocess_record_id(root_dir):
     # Create a WoS style reference column.
     # First Author, year, abbr_source_title, 'V'volumne, 'P'page_start, ' DOI ' doi
     #
-    sys.stderr.write("INFO  Creating 'record_id' column\n")
+    sys.stderr.write("INFO: Creating 'record_id' column\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"

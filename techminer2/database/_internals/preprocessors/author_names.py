@@ -99,7 +99,7 @@ def _repair_names(root_dir, author_id2name):
 def internal__preprocess_author_names(root_dir):
     """Disambiguate author names using Scopus Author(s) ID."""
 
-    sys.stderr.write("INFO  Disambiguating author names\n")
+    sys.stderr.write("INFO: Disambiguating author names\n")
     sys.stderr.flush()
 
     authors_data = _load_authors_data(root_dir)

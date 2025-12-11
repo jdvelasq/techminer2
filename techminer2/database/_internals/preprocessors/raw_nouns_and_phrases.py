@@ -12,7 +12,7 @@ def internal__preprocess_raw_noun_and_phrases(root_dir):
 
     from techminer2.database.operators.merge import internal__merge
 
-    sys.stderr.write("INFO  Creating 'raw_nouns_and_phrases' column\n")
+    sys.stderr.write("INFO: Creating 'raw_nouns_and_phrases' column\n")
     sys.stderr.flush()
 
     internal__merge(

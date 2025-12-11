@@ -9,8 +9,9 @@ import pathlib
 import sys
 
 import pandas as pd  # type: ignore
-from techminer2._dtypes import DTYPES
 from tqdm import tqdm  # type: ignore
+
+from techminer2._dtypes import DTYPES
 
 
 def _get_sources_info(root_dir):
@@ -43,7 +44,7 @@ def internal__preprocess_references(root_dir):
         dtype=DTYPES,
     )
 
-    sys.stderr.write("INFO  Processing 'references' column\n")
+    sys.stderr.write("INFO: Processing 'references' column\n")
     sys.stderr.flush()
 
     for source, abbr_source_title in tqdm(

@@ -158,7 +158,7 @@ class FirstParagraph(
         for phrases in tqdm(
             self.context_phrases,
             total=len(self.context_phrases),
-            desc="INFO  Generating definitions ",
+            desc="INFO: Generating definitions ",
         ):
 
             prompt = self.definition_template.format(
@@ -200,7 +200,7 @@ class FirstParagraph(
             paragraphs_to_combine="\n\n---\n\n".join(self.definitions),
         )
 
-        sys.stderr.write("INFO  Summarizing definitions\n")
+        sys.stderr.write("INFO: Summarizing definitions\n")
         sys.stderr.flush()
 
         try:
@@ -213,7 +213,7 @@ class FirstParagraph(
         except Exception as e:
             print(f"Error processing: {e}")
 
-        sys.stderr.write("INFO  Done\n")
+        sys.stderr.write("INFO: Done\n")
         sys.stderr.flush()
         self.summary = answer
 

@@ -13,7 +13,7 @@ def internal__preprocess_num_global_references(root_dir):
 
     from techminer2.database._internals.operators.count import internal__count
 
-    sys.stderr.write("INFO  Counting global references per document\n")
+    sys.stderr.write("INFO: Counting global references per document\n")
     sys.stderr.flush()
 
     internal__count(

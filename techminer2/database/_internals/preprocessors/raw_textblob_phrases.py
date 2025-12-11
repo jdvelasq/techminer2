@@ -56,7 +56,7 @@ def internal__process_row(row):
 def internal__preprocess_raw_textblob_phrases(root_dir):
     """Run importer."""
 
-    sys.stderr.write("INFO  Creating 'raw_textblob_phrases' column\n\n")
+    sys.stderr.write("INFO: Creating 'raw_textblob_phrases' column\n\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"

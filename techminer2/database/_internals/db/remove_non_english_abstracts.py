@@ -14,7 +14,7 @@ from techminer2.database._internals.db.get_subdirectories import (
 def internal__remove_non_english_abstracts(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Removing non-english abstracts\n")
+    sys.stderr.write("INFO: Removing non-english abstracts\n")
     sys.stderr.flush()
 
     raw_dir = os.path.join(root_dir, "data/raw/")

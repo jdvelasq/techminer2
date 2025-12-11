@@ -26,7 +26,7 @@ import pandas as pd  # type: ignore
 def internal__preprocess_local_references(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Homogenizing local references\n")
+    sys.stderr.write("INFO: Homogenizing local references\n")
     sys.stderr.flush()
 
     dataframe = pd.read_csv(

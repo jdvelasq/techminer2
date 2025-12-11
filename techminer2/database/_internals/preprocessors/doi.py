@@ -26,7 +26,7 @@ def internal__preprocess_doi(root_dir):
 
     from techminer2.database.operators.transform import internal__transform
 
-    sys.stderr.write("INFO  Processing 'doi' column\n")
+    sys.stderr.write("INFO: Processing 'doi' column\n")
     sys.stderr.flush()
 
     internal__transform(

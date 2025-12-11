@@ -58,7 +58,7 @@ SCOPUS_2_TECHMINER_TAGS = {
 def internal__rename_columns(root_dir):
     """Change Scopus original names."""
 
-    sys.stderr.write("INFO  Applying Scopus tags to database files\n")
+    sys.stderr.write("INFO: Applying Scopus tags to database files\n")
     sys.stderr.flush()
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"

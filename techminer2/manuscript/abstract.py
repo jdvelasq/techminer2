@@ -199,4 +199,4 @@ class Abstract(
         self.internal__load_template()
         self.internal__generate_abstract()
         self.internal__save_abstract()
-        print("INFO  Done!")
+        print("INFO: Done!")

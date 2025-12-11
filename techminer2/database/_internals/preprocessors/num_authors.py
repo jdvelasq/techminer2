@@ -13,7 +13,7 @@ def internal__preprocess_num_authors(root_dir):
 
     from techminer2.database._internals.operators.count import internal__count
 
-    sys.stderr.write("INFO  Counting authors per document\n")
+    sys.stderr.write("INFO: Counting authors per document\n")
     sys.stderr.flush()
 
     internal__count(

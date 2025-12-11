@@ -32,7 +32,7 @@ def internal__preprocess_authors_id(root_dir):
 
     from techminer2.database.operators.transform import internal__transform
 
-    sys.stderr.write("INFO  Processing 'authors_id' column\n")
+    sys.stderr.write("INFO: Processing 'authors_id' column\n")
     sys.stderr.flush()
 
     internal__transform(

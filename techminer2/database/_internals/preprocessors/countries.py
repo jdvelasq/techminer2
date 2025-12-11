@@ -15,7 +15,7 @@ def internal__preprocess_countries(root_directory):
 
     from techminer2.thesaurus.countries import ApplyThesaurus, InitializeThesaurus
 
-    sys.stderr.write("INFO  Creating 'countries' column\n")
+    sys.stderr.write("INFO: Creating 'countries' column\n")
     sys.stderr.flush()
 
     InitializeThesaurus(root_directory=root_directory).run()

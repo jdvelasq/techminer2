@@ -15,7 +15,7 @@ import pandas as pd  # type: ignore
 def internal__preprocess_local_citations(root_dir):
     """:meta private:"""
 
-    sys.stderr.write("INFO  Counting local citations\n")
+    sys.stderr.write("INFO: Counting local citations\n")
     sys.stderr.flush()
 
     dataframe = pd.read_csv(

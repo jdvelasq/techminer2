@@ -131,7 +131,7 @@ def collect_system_hyphenated_words():
 
 def internal__check_hyphenated_form(root_dir):
 
-    sys.stderr.write("INFO  Checking hyphenated words\n")
+    sys.stderr.write("INFO: Checking hyphenated words\n")
     sys.stderr.flush()
 
     project_words = collect_project_hyphenated_words(root_dir)

@@ -1,4 +1,5 @@
 """Creates the project subdirectories and files."""
+
 import os
 import sys
 
@@ -45,7 +46,7 @@ def internal__create_project_structure(root_dir):
     """
 
     # Create working directories
-    sys.stderr.write("INFO  Creating working directories\n")
+    sys.stderr.write("INFO: Creating working directories\n")
     sys.stderr.flush()
 
     create_directory(os.path.join(root_dir, "data"))

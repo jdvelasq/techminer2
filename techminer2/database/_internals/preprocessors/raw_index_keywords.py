@@ -15,7 +15,7 @@ def internal__preprocess_raw_index_keywords(root_dir):
         internal__clean_raw_keywords,
     )
 
-    sys.stderr.write("INFO  Cleaning 'raw_index_keywords' column\n")
+    sys.stderr.write("INFO: Cleaning 'raw_index_keywords' column\n")
     sys.stderr.flush()
 
     internal__clean_raw_keywords(

@@ -14,7 +14,7 @@ def internal__preprocess_global_references(root_directory):
 
     from techminer2.thesaurus.references import ApplyThesaurus, InitializeThesaurus
 
-    sys.stderr.write("INFO  Processing 'references' column\n")
+    sys.stderr.write("INFO: Processing 'references' column\n")
     sys.stderr.flush()
 
     InitializeThesaurus(root_directory=root_directory).run()
