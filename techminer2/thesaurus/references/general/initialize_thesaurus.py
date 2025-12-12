@@ -63,6 +63,9 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
+from textblob import Word  # type: ignore
+from tqdm import tqdm
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_all_records_from_database,  # type: ignore
@@ -70,10 +73,10 @@ from techminer2.database._internals.io import (
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.thesaurus._internals import internal__print_thesaurus_header
-from techminer2.thesaurus._internals import ThesaurusMixin
-from textblob import Word  # type: ignore
-from tqdm import tqdm
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__print_thesaurus_header,
+)
 
 tqdm.pandas()
 
@@ -112,8 +115,8 @@ class InitializeThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
-            sys.stderr.write(f"  File : {truncated_path}\n")
+            sys.stderr.write(f"INFO: Initializing thesaurus from '{field}' field\n")
+            sys.stderr.write(f"  Initializing {truncated_path}\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -122,7 +125,7 @@ class InitializeThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Initialization process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(
@@ -203,7 +206,7 @@ class InitializeThesaurus(
             total=self.main_documents.shape[0],
             desc="  Homogenizing global references ",
             disable=self.params.tqdm_disable,
-            ncols=80,
+            ncols=100,
         ):
 
             refs = self.references.copy()

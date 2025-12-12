@@ -8,11 +8,11 @@
 """Clean abstract and title texts."""
 import pathlib
 import re
+import unicodedata
 
 import contractions  # type: ignore
 import pandas as pd  # type: ignore
 from nltk.tokenize import word_tokenize
-import unicodedata
 
 
 def internal__tokenize(
@@ -313,5 +313,43 @@ def tokenize(text):
         text = text.str.replace(placeholder, url, regex=False)
 
     text = text.str.replace(" :http", " : http", regex=False)
+
+    noun_phrases = [
+        (
+            "architectural , engineering , construction , and operation",
+            "architectural engineering construction and operation",
+        ),
+        (
+            "agriculture , forestry , and other land use",
+            "agriculture forestry and other land use",
+        ),
+        (
+            "combined cooling , heating , and power systems",
+            "combined cooling heating and power systems",
+        ),
+        (
+            "energy consumption carbon emission and cost",
+            "energy consumption carbon emission and cost",
+        ),
+        (
+            "environmental , social , governance",
+            "environmental social and governance",
+        ),
+        (
+            "green building council south africa",
+            "green building council of south africa",
+        ),
+        (
+            "political , economic , social , technological , environmental , and legal",
+            "political economic social technological environmental and legal",
+        ),
+        (
+            "repair , maintenance and improvement",
+            "repair maintenance and improvement",
+        ),
+    ]
+
+    for old, new in noun_phrases:
+        text = text.str.replace(old, new, regex=False)
 
     return text

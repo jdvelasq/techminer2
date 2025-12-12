@@ -63,17 +63,17 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-from techminer2._internals.mixins import Params
-from techminer2._internals.mixins import ParamsMixin
+
+from techminer2._internals.mixins import Params, ParamsMixin
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
 from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
     internal__generate_system_thesaurus_file_path,
+    internal__generate_user_thesaurus_file_path,
+    internal__load_reversed_thesaurus_as_mapping,
+    internal__load_thesaurus_as_mapping,
+    internal__print_thesaurus_header,
 )
-from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
-from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
-from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
-from techminer2.thesaurus._internals import internal__print_thesaurus_header
-from techminer2.thesaurus._internals import ThesaurusMixin
 
 # names sorted by proirity
 ABBR = [
@@ -175,8 +175,8 @@ class InitializeThesaurus(
             truncated_path = str(self.thesaurus_path)
             if len(truncated_path) > 72:
                 truncated_path = "..." + truncated_path[-68:]
-            sys.stderr.write(f"Initializing thesaurus from '{field}' field\n")
-            sys.stderr.write(f"  File : {truncated_path}\n")
+            sys.stderr.write(f"INFO: Initializing thesaurus from '{field}' field\n")
+            sys.stderr.write(f"  Initializing {truncated_path}\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -185,7 +185,7 @@ class InitializeThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Initialization process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(

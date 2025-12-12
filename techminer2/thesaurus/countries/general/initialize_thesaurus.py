@@ -94,8 +94,8 @@ class InitializeThesaurus(
                 file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
                 file_path = Fore.LIGHTBLACK_EX + file_path
 
-            sys.stderr.write(f"Initializing thesaurus from '{field}' field...\n")
-            sys.stderr.write(f"  File : {file_path}\n")
+            sys.stderr.write(f"INFO: Initializing thesaurus from '{field}' field...\n")
+            sys.stderr.write(f"  Initializing {file_path}\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -104,7 +104,7 @@ class InitializeThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Initialization process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(

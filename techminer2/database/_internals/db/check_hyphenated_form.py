@@ -5,6 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 import json
+import logging
 import os
 import os.path
 import sys
@@ -18,7 +19,9 @@ from techminer2._internals import Params
 from techminer2.database._internals.io import internal__load_all_records_from_database
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
 
-pandarallel.initialize(progress_bar=True)
+logging.getLogger("pandarallel").setLevel(logging.WARNING)
+
+# pandarallel.initialize(progress_bar=True)
 
 SYSTEM_PROMPT = """
 INSTRUCTION:

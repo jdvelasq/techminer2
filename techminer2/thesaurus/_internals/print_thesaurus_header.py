@@ -37,7 +37,7 @@ def internal__print_thesaurus_header(
         lambda x: x[:73] + "..." if len(x) > 76 else x
     )
 
-    msg = f"Printing thesaurus header\n  File : {thesaurus_path}\n\n"
+    msg = f"INFO: Printing thesaurus header\n  Reading {thesaurus_path}\n\n"
     if use_colorama:
         filename = str(thesaurus_path).rsplit("/", maxsplit=1)[1]
         msg = msg.replace("File :", f"{Fore.LIGHTBLACK_EX}File :")

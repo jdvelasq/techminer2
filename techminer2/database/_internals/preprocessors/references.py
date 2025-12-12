@@ -50,8 +50,9 @@ def internal__preprocess_references(root_dir):
     for source, abbr_source_title in tqdm(
         zip(abbrs.source, abbrs.abbr_source_title),
         total=len(abbrs),
-        desc="  Progress",
-        ncols=80,
+        bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
+        ascii=(" ", ":"),
+        ncols=74,
     ):
 
         dataframe["raw_global_references"] = dataframe[

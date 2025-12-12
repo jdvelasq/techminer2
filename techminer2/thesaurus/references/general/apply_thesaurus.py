@@ -41,11 +41,16 @@ import pathlib
 import sys
 
 import pandas as pd
+
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import internal__load_all_records_from_database
-from techminer2.database._internals.io import internal__write_records_to_database
-from techminer2.thesaurus._internals import internal__load_reversed_thesaurus_as_mapping
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.database._internals.io import (
+    internal__load_all_records_from_database,
+    internal__write_records_to_database,
+)
+from techminer2.thesaurus._internals import (
+    ThesaurusMixin,
+    internal__load_reversed_thesaurus_as_mapping,
+)
 
 
 #
@@ -70,8 +75,8 @@ class ApplyThesaurus(
             if len(file_path) > 64:
                 file_path = "..." + file_path[-60:]
 
-            sys.stderr.write("Applying user thesaurus to database\n")
-            sys.stderr.write(f"          File : {file_path}\n")
+            sys.stderr.write("INFO: Applying user thesaurus to database\n")
+            sys.stderr.write(f"  File         : {file_path}\n")
             sys.stderr.write(f"  Source field : {field}\n")
             sys.stderr.write(f"  Target field : {other_field}\n")
             sys.stderr.flush()
@@ -81,7 +86,7 @@ class ApplyThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Application process completed successfully\n\n")
+            sys.stderr.write(f"  Application process completed successfully\n")
             sys.stderr.flush()
 
     #

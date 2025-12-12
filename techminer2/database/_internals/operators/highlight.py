@@ -20,8 +20,6 @@ from techminer2.database._internals.io import (
 )
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
 
-pandarallel.initialize(progress_bar=True)
-
 SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
     "abstract",
     "abbreviations",
@@ -192,7 +190,7 @@ COMPOUND_STRUCTURED_ABSTRACT_MARKERS = [
 
 # ------------------------------------------------------------------------------
 def notify_process_start(source):
-    sys.stderr.write(f"Highlighting tokens in '{source}' field\n")
+    sys.stderr.write(f"INFO: Highlighting tokens in '{source}' field\n")
     sys.stderr.flush()
 
 
@@ -213,7 +211,6 @@ def write_records_to_database(dataframe, root_directory):
 def prepare_dest_field(dataframe, source, dest):
 
     dataframe = dataframe.copy()
-    # .str.lower().str.replace("_", " ").str.replace(" / ", " ")
     return dataframe
 
 
@@ -789,6 +786,8 @@ def internal__highlight(
     global discursive_patterns
     global text_noun_phrases
 
+    pandarallel.initialize(progress_bar=True)
+
     notify_process_start(dest)
 
     dataframe = load_all_records_from_database(root_directory)
@@ -819,9 +818,9 @@ def internal__highlight(
 
     text_noun_phrases = []
 
-    sys.stderr.write("\n")
+    # sys.stderr.write("\n")
     dataframe[dest] = dataframe[dest].parallel_apply(process_column)
-    sys.stderr.write("\n\n")
+    sys.stderr.write("\n")
     sys.stderr.flush()
 
     write_records_to_database(dataframe, root_directory)

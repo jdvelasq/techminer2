@@ -87,7 +87,7 @@ class InitializeThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write("Initializing thesaurus...\n")
+            sys.stderr.write("INFO: Initializing thesaurus...\n")
             sys.stderr.flush()
 
     # -------------------------------------------------------------------------
@@ -96,7 +96,7 @@ class InitializeThesaurus(
         if not self.params.quiet:
 
             sys.stderr.write(f"  {len(self.data_frame)} acronyms found\n")
-            sys.stderr.write("  Initialization process completed successfully\n\n")
+            sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
 
             internal__print_thesaurus_header(

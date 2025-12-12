@@ -82,8 +82,8 @@ class ApplyThesaurus(
                 file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
                 file_path = Fore.LIGHTBLACK_EX + file_path
 
-            sys.stderr.write("Applying system thesaurus to database...\n")
-            sys.stderr.write(f"          File : {file_path}\n")
+            sys.stderr.write("INFO: Applying system thesaurus to database...\n")
+            sys.stderr.write(f"  Thesaurus    : {file_path}\n")
             sys.stderr.write(f"  Source field : {field}\n")
             sys.stderr.write(f"  Target field : {other_field}\n")
             sys.stderr.flush()
@@ -93,7 +93,7 @@ class ApplyThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Application process completed successfully\n\n")
+            sys.stderr.write(f"  Application process completed successfully\n")
             sys.stderr.flush()
 
     #
