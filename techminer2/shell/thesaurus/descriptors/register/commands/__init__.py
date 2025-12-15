@@ -1,6 +1,6 @@
 """Commands"""
 
-from .abbreviations import execute_acronyms_command
+from .acronyms import execute_acronyms_command
 from .initial import execute_initial_command
 from .keyword import execute_keyword_command
 from .last import execute_last_command
