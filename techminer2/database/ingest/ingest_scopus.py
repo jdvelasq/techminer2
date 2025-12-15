@@ -247,7 +247,7 @@ class IngestScopus(
         internal__report_imported_records(root_directory)
 
         sys.stderr.write(
-            f"INFO: Execution time : {int(hours):02}:{int(minutes):02}:{seconds:06.2f}\n\n"
+            f"INFO: Execution time : {int(hours):02}:{int(minutes):02}:{seconds:04.1f}\n\n"
         )
 
         sys.stderr.flush()
