@@ -328,7 +328,7 @@ def tokenize(text):
             "combined cooling heating and power systems",
         ),
         (
-            "energy consumption carbon emission and cost",
+            "energy consumption , carbon emission and cost",
             "energy consumption carbon emission and cost",
         ),
         (
@@ -346,6 +346,10 @@ def tokenize(text):
         (
             "repair , maintenance and improvement",
             "repair maintenance and improvement",
+        ),
+        (
+            "swedish national board of housing , building , and planning",
+            "swedish national board of housing building and planning",
         ),
     ]
 
