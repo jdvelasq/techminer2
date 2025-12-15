@@ -355,6 +355,18 @@ def join_consequtive_separate_terms_in_uppercase(text, stopwords):
                     regex, lambda z: z.group().upper().replace(" ", "_"), text
                 )
 
+    ##
+    pattern = r"' ([A-Z][A-Z_]+) ' ([A-Z][A-Z_]+)\b"
+    matches = re.findall(pattern, text)
+    if len(matches) > 0:
+        for match in matches:
+
+            full_match = f"' {match[0]} ' {match[1]}"
+            replacement = f"{match[0]}_{match[1]}"
+            regex = re.compile(re.escape(full_match))
+            text = re.sub(regex, replacement, text)
+
+    ##
     pattern = r"\b([A-Z][A-Z_]+) \( ([A-Z][A-Z_]+) \) ([A-Z][A-Z_]+)\b"
     matches = re.findall(pattern, text)
     if len(matches) > 0:
