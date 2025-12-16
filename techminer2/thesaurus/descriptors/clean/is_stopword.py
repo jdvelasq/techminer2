@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-Populate Stopwords
+Is Stopword?
 ===============================================================================
 
 
@@ -15,7 +15,7 @@ Example:
     >>> # TEST PREPARATION
     >>> import sys
     >>> from io import StringIO
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, PopulateStopwords
+    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, IsStopword
 
     >>> # Redirecting stderr to avoid messages
     >>> original_stderr = sys.stderr
@@ -24,9 +24,9 @@ Example:
     >>> # Create the thesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Populate stopwords
+    >>> # Is stopword?
     >>> (
-    ...     PopulateStopwords(use_colorama=False)
+    ...     IsStopword()
     ...     .with_core_area("FINTECH - FINANCIAL TECHNOLOGIES")
     ...     .having_n_contexts(10)
     ...     .having_terms_in_top(40)
@@ -35,12 +35,53 @@ Example:
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
     ...     .where_root_directory_is("examples/fintech/")
-    ... ).run()
+    ... ).run() # doctest: +SKIP
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
+                             descriptor  is_domain_specific?  is_stopword?
+    0                           FINTECH                 True          True
+    1                           FINANCE                 True          True
+    2                      TECHNOLOGIES                False         False
+    3                        INNOVATION                 True          True
+    4            FINANCIAL_TECHNOLOGIES                 True          True
+    5                 FINANCIAL_SERVICE                 True          True
+    6            THE_FINANCIAL_INDUSTRY                 True          True
+    7                   THE_DEVELOPMENT                False         False
+    8                             BANKS                 True          True
+    9                        REGULATORS                 True          True
+    10                         SERVICES                False         False
+    11                             DATA                False         False
+    12                        CONSUMERS                False         False
+    13                          BANKING                 True          True
+    14                       INVESTMENT                 True          True
+    15  THE_FINANCIAL_SERVICES_INDUSTRY                 True          True
+    16                     PRACTITIONER                False         False
+    17                       THE_IMPACT                False         False
+    18                            CHINA                False         False
+    19                   BUSINESS_MODEL                 True          True
+    20                       BLOCKCHAIN                 True         False
+    21             THE_FINANCIAL_SECTOR                 True          True
+    22           INFORMATION_TECHNOLOGY                 True          True
+    23                FINTECH_COMPANIES                 True          True
+    24            FINANCIAL_INSTITUTION                 True          True
+    25                     THE_RESEARCH                False         False
+    26                            USERS                False         False
+    27                           SURVEY                False         False
+    28                            VALUE                False         False
+    29                         THE_ROLE                False         False
+    30        FINTECH_BASED_INNOVATIONS                 True          True
+    31                          THE_USE                False         False
+    32                 FINANCIAL_MARKET                 True          True
+    33                      APPLICATION                False         False
+    34                    ENTREPRENEURS                False         False
+    35                    THE_EMERGENCE                False         False
+    36                 FINANCIAL_SYSTEM                 True          True
+    37                        CUSTOMERS                False         False
+    38                    THE_POTENTIAL                False          True
+    39          ARTIFICIAL_INTELLIGENCE                 True          True
 
 
 
@@ -60,13 +101,11 @@ from techminer2.database._internals.io import (
     internal__save_user_stopwords,
 )
 from techminer2.database.metrics.performance import DataFrame as MetricsDataFrame
-from techminer2.database.search import ConcordantSentences
-from techminer2.thesaurus.descriptors import GetValues
 
 # -----------------------------------------------------------------------------
 
 
-class PopulateStopwords(
+class IsStopword(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -81,62 +120,25 @@ class PopulateStopwords(
         )
 
         self.descriptors = pd.DataFrame({"descriptor": descriptors.index})
+        self.descriptors["is_domain_specific?"] = False
+        self.descriptors["is_stopword?"] = False
 
     # -------------------------------------------------------------------------
     def internal__get_contexts(self):
 
-        n_contexts = self.params.n_contexts
-        get_values = GetValues().update(**self.params.__dict__)
+        from techminer2.thesaurus.descriptors import GetContexts
 
-        def internal__get_row_contexts(pattern):
-
-            terms = get_values.with_patterns([pattern]).run()
-            terms = [term for term in terms if pattern in term]
-
-            complete_contexts = []
-
-            for term in terms:
-
-                contexts = (
-                    ConcordantSentences()
-                    .update(**self.params.__dict__)
-                    #
-                    .with_abstract_having_pattern(term)
-                    .where_database_is("main")
-                    .where_record_years_range_is(None, None)
-                    .where_record_citations_range_is(None, None)
-                    #
-                    .run()
-                )
-
-                contexts = [c for c in contexts if len(c) > 80]
-                contexts = [f"- {c} ." for c in contexts]
-                contexts = [c.lower().replace("_", " ") for c in contexts]
-                contexts = [
-                    c for c in contexts if pattern.lower().replace("_", " ") in c
-                ]
-
-                complete_contexts.extend(contexts)
-                if len(complete_contexts) >= n_contexts:
-                    break
-
-            if len(complete_contexts) < 5:
-                return None
-
-            return "\n".join(complete_contexts[:n_contexts])
-
+        get_contexts = GetContexts().update(**self.params.__dict__)
         self.descriptors["contexts"] = self.descriptors["descriptor"].apply(
-            internal__get_row_contexts
+            lambda x: "\n".join(get_contexts.with_patterns([x]).run())
         )
 
     # -------------------------------------------------------------------------
-    def internal__check_if_term_is_domain_specific(self):
+    def internal__is_domain_specific_term(self):
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
         core_area = self.params.core_area
-
-        self.descriptors["is_domain_specific"] = False
 
         for idx, row in tqdm(
             self.descriptors.iterrows(),
@@ -209,16 +211,14 @@ class PopulateStopwords(
                 else:
                     answer = False
 
-                self.descriptors.loc[idx, "is_domain_specific"] = answer
+                self.descriptors.loc[idx, "is_domain_specific?"] = answer
 
     # -------------------------------------------------------------------------
-    def internal__check_if_term_is_domain_specific_stopword(self):
+    def internal__is_domain_specific_stopword(self):
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        self.descriptors["is_stopword"] = False
-
-        df = self.descriptors[self.descriptors["is_domain_specific"]]
+        df = self.descriptors[self.descriptors["is_domain_specific?"]]
         core_area = self.params.core_area
 
         for idx, row in tqdm(
@@ -291,16 +291,14 @@ class PopulateStopwords(
                 else:
                     answer = False
 
-                self.descriptors.loc[idx, "is_stopword"] = answer
+                self.descriptors.loc[idx, "is_stopword?"] = answer
 
     # -------------------------------------------------------------------------
-    def internal__check_if_term_in_non_domain_stopwords(self):
+    def internal__is_non_domain_specific_stopword(self):
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        self.descriptors["is_stopword"] = False
-
-        df = self.descriptors[~self.descriptors["is_domain_specific"]]
+        df = self.descriptors[~self.descriptors["is_domain_specific?"]]
         core_area = self.params.core_area
 
         for idx, row in tqdm(
@@ -374,28 +372,24 @@ class PopulateStopwords(
             else:
                 answer = False
 
-            self.descriptors.loc[idx, "is_stopword"] = answer
-
-    # -------------------------------------------------------------------------
-    def internal__update_stopwords_file(self):
-
-        new_stopwords = self.descriptors[
-            self.descriptors["is_stopword"]
-        ].descriptor.tolist()
-
-        stopwords = internal__load_user_stopwords(params=self.params)
-        stopwords = sorted(set(stopwords).union(set(new_stopwords)))
-        internal__save_user_stopwords(self.params, stopwords)
+            self.descriptors.loc[idx, "is_stopword?"] = answer
 
     # -------------------------------------------------------------------------
     def run(self):
 
         self.internal__get_descriptors()
         self.internal__get_contexts()
-        self.internal__check_if_term_is_domain_specific()
-        self.internal__check_if_term_is_domain_specific_stopword()
-        self.internal__check_if_term_in_non_domain_stopwords()
-        self.internal__update_stopwords_file()
+        self.internal__is_domain_specific_term()
+        self.internal__is_domain_specific_stopword()
+        self.internal__is_non_domain_specific_stopword()
+
+        return self.descriptors[
+            [
+                "descriptor",
+                "is_domain_specific?",
+                "is_stopword?",
+            ]
+        ]
 
 
 # =============================================================================

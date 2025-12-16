@@ -13,6 +13,7 @@ INSTRUCTIONS:
 - Consider whether the TERM is broadly used across many major themes, or is mainly associated with a specific topic area.
 - Do not rely solely on frequency; focus on the TERM's thematic relevance and specificity.
 - If you are unsure or the TERM is ambiguous, default to "yes" (consider it a stopword).
+- If the TERM is equivalent or corresponds to the CORE AREA, default to "yes".
 
 
 OUTPUT FORMAT (STRICT — JSON ONLY):

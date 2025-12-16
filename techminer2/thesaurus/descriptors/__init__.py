@@ -2,6 +2,8 @@
 
 from .clean.combine_keys import CombineKeys
 from .clean.define_term import DefineTerm
+from .clean.is_stopword import IsStopword
+from .clean.populate_stopwords import PopulateStopwords
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.clump_keys import ClumpKeys
 from .general.cutoff_fuzzy_merging import CutoffFuzzyMerging
@@ -12,7 +14,6 @@ from .general.integrity_check import IntegrityCheck
 from .general.merge_keys import MergeKeys
 from .general.merge_synonymous import MergeSynonymous
 from .general.normalize_keys import NormalizeKeys
-from .general.populate_stopwords import PopulateStopwords
 from .general.reduce_keys import ReduceKeys
 from .general.spell_check import SpellCheck
 from .register.register_initial_word import RegisterInitialWord
@@ -56,6 +57,7 @@ __all__ = [
     "GetValues",
     "InitializeThesaurus",
     "IntegrityCheck",
+    "IsStopword",
     "MergeKeys",
     "MergeSynonymous",
     "NormalizeKeys",

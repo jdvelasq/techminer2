@@ -58,6 +58,7 @@ INSTRUCTIONS:
     <<{core_area}>> or in any other related domain.
 -   Focus on the TERM's recognized meaning and relevance.
 -   If you are unsure or the TERM is ambiguous, default to "no".
+-   If the TERM is equivalent or corresponds to the CORE AREA, default to "yes"
 
 
 OUTPUT:

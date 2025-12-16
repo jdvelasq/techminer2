@@ -28,7 +28,7 @@ TASK:
 Return exactly one lowercase word with no punctuation:
 - "yes": exclude the TERM as a stopword
 - "no": retain the TERM as useful
-
+- If the TERM is equivalent or corresponds to the CORE AREA, default to "yes".
 
 INSTRUCTIONS:
 1.  Use your domain knowledge, the provided core area, interest areas, and the 

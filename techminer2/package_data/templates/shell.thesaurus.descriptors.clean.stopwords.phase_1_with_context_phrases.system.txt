@@ -67,6 +67,7 @@ INSTRUCTIONS:
 -   Do not rely solely on frequency or CONTEXT PHRASES; focus on the TERM's 
     recognized meaning and relevance.
 -   If you are unsure or the TERM is ambiguous, default to "no".
+-   If the TERM is equivalent or corresponds to the CORE AREA, default to "yes"
 
 
 OUTPUT FORMAT (STRICT — JSON ONLY):
