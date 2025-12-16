@@ -1,0 +1,15 @@
+
+CORE AREA:
+<<{core_area}>>
+
+LEAD-TERM: 
+<<{lead_term}>>
+
+CANDIDATE-TERM: 
+<<{candidate_term}>>
+
+CONTEXT PHRASES FOR THE LEAD-TERM:
+{lead_contexts}
+
+CONTEXT PHRASES FOR THE CANDIDATE-TERM:
+{candidate_contexts}

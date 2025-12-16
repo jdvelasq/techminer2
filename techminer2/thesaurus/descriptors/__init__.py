@@ -1,8 +1,10 @@
 "Public API for descriptors."
 
+from .clean.are_synonymous import AreSynonymous
 from .clean.combine_keys import CombineKeys
 from .clean.define_term import DefineTerm
 from .clean.is_stopword import IsStopword
+from .clean.merge_synonymous import MergeSynonymous
 from .clean.populate_stopwords import PopulateStopwords
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.clump_keys import ClumpKeys
@@ -12,7 +14,6 @@ from .general.get_values import GetValues
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.merge_keys import MergeKeys
-from .general.merge_synonymous import MergeSynonymous
 from .general.normalize_keys import NormalizeKeys
 from .general.reduce_keys import ReduceKeys
 from .general.spell_check import SpellCheck
@@ -48,6 +49,7 @@ from .translate.british_to_american_spelling import BritishToAmericanSpelling
 __all__ = [
     "AmericanToBritishSpelling",
     "ApplyThesaurus",
+    "AreSynonymous",
     "BritishToAmericanSpelling",
     "ClumpKeys",
     "CombineKeys",

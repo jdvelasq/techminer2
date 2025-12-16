@@ -19,24 +19,6 @@ from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.descriptors import GetValues, MergeKeys
 
-# -----------------------------------------------------------------------------
-
-PROMPT_WITH_CONTEXTS = """
-
-"""
-
-# -----------------------------------------------------------------------------
-
-PROMPT_WITHOUT_CONTEXTS = """
-
-"""
-
-# -----------------------------------------------------------------------------
-
-EXPLAIN = """
-
-"""
-
 
 # -----------------------------------------------------------------------------
 def internal__user_input(core_area, n_contexts):
