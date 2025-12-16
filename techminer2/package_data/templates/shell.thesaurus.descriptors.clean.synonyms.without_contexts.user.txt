@@ -1,0 +1,4 @@
+
+TERMS:
+LEAD-TERM: <<{lead_term}>>
+CANDIDATE-TERM: <<{candidate_term}>>

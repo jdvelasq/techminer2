@@ -1,13 +1,16 @@
 "Public API for descriptors."
 
+from .clean.combine_keys import CombineKeys
+from .clean.define_term import DefineTerm
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.clump_keys import ClumpKeys
-from .general.combine_keys import CombineKeys
 from .general.cutoff_fuzzy_merging import CutoffFuzzyMerging
+from .general.get_contexts import GetContexts
 from .general.get_values import GetValues
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.merge_keys import MergeKeys
+from .general.merge_synonymous import MergeSynonymous
 from .general.normalize_keys import NormalizeKeys
 from .general.populate_stopwords import PopulateStopwords
 from .general.reduce_keys import ReduceKeys
@@ -48,10 +51,13 @@ __all__ = [
     "ClumpKeys",
     "CombineKeys",
     "CutoffFuzzyMerging",
+    "DefineTerm",
+    "GetContexts",
     "GetValues",
     "InitializeThesaurus",
     "IntegrityCheck",
     "MergeKeys",
+    "MergeSynonymous",
     "NormalizeKeys",
     "PopulateStopwords",
     "ReduceKeys",

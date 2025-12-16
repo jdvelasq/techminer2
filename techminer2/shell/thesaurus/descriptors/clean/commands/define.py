@@ -7,176 +7,95 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 
-import os
+
 import textwrap
 
-import openai
-from colorama import Fore
-from openai import OpenAI
-
-from techminer2._internals.load_template import internal_load_template
-from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus.descriptors import GetValues
+from techminer2.thesaurus.descriptors import DefineTerm
 
 
 # -----------------------------------------------------------------------------
-def internal__user_input(core_area):
-
-    #
-    # Core Area
-    #
+def internal__get_core_area(core_area):
     if core_area is None:
         answer = colorized_input(". Enter the core area > ").strip()
         if answer == "":
-            return None, None, None
-    else:
-        answer = colorized_input(f". Enter the core area [{core_area}] > ").strip()
+            return None
+        return answer.upper()
 
-    if answer != "":
-        core_area = answer.upper()
+    answer = colorized_input(f". Enter the core area [{core_area}] > ").strip()
+    return core_area if answer == "" else answer.upper()
 
-    #
-    # Term
-    #
+
+# -----------------------------------------------------------------------------
+def internal__get_term():
     term = colorized_input(". Enter the term > ").strip()
     if term == "":
-        return None, None, None
+        return None
+    return term
 
-    #
-    # Number of Contexts
-    #
-    n_contexts = colorized_input(
-        ". Enter the number of contexts [default: 30] > "
+
+# -----------------------------------------------------------------------------
+def internal__get_n_contexts(n_contexts):
+    answer = colorized_input(
+        f". Enter the number of contexts [{n_contexts}] > "
     ).strip()
-    if n_contexts == "":
-        n_contexts = 30
-    else:
-        n_contexts = int(n_contexts)
-
-    return core_area, term, n_contexts
+    if answer == "":
+        return n_contexts
+    return int(answer)
 
 
 # -----------------------------------------------------------------------------
-def internal__filter_contexts(
-    n_contexts,
-    contexts,
-):
-    contexts = contexts[:n_contexts]
-    return contexts
+def internal__generate_definition(core_area, term, n_contexts):
+    return (
+        DefineTerm()
+        #
+        # FIELD:
+        .with_core_area(core_area)
+        .with_patterns([term])
+        .having_n_contexts(n_contexts)
+        #
+        # DATABASE:
+        .where_root_directory_is("./")
+        .where_database_is("main")
+        .where_record_years_range_is(None, None)
+        .where_record_citations_range_is(None, None)
+        .where_records_match(None)
+        #
+        .run()
+    )[0]
 
 
 # -----------------------------------------------------------------------------
-def internal__get_contexts(pattern, n_contexts):
-
-    terms = GetValues().with_patterns([pattern]).where_root_directory_is("./").run()
-    terms = [term for term in terms if pattern in term]
-
-    complete_contexts = []
-
-    for term in terms:
-
-        contexts = (
-            ConcordantSentences()
-            #
-            .with_abstract_having_pattern(term)
-            .where_root_directory_is("./")
-            .where_database_is("main")
-            .where_record_years_range_is(None, None)
-            .where_record_citations_range_is(None, None)
-            #
-            .run()
-        )
-
-        contexts = [c for c in contexts if len(c) > 80]
-        contexts = [f"- {c} ." for c in contexts]
-        contexts = [c.lower().replace("_", " ") for c in contexts]
-
-        complete_contexts.extend(contexts)
-
-    pattern = pattern.lower().replace("_", " ")
-    complete_contexts = [c for c in complete_contexts if pattern in c]
-
-    if len(complete_contexts) < 5:
-        return None
-
-    return complete_contexts[:n_contexts]
-
-
-# -----------------------------------------------------------------------------
-def internal__execute_query(
-    core_area,
-    term,
-    contexts,
-):
-
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    prompt = internal_load_template("shell.thesaurus.descriptors.clean.define.txt")
-
-    query = prompt.format(
-        term=term,
-        contexts="\n".join(contexts),
-        core_area=core_area,
-    )
-
-    try:
-
-        response = client.responses.create(
-            model="gpt-4o",
-            input=query,
-            temperature=0,
-        )
-
-        answer = response.output_text
-        answer = answer.strip()
-
-        return answer
-
-    except openai.OpenAIError as e:
-        print(f"Error processing the query: {e}")
-        return None
-
-
-# -----------------------------------------------------------------------------
-def internal__print(msg):
-    print(Fore.LIGHTBLACK_EX + msg + Fore.RESET)
+def internal__format_definition(definition):
+    return textwrap.fill(definition, width=70)
 
 
 # -----------------------------------------------------------------------------
 def execute_define_command():
 
-    print()
     core_area = None
+    n_contexts = 30
 
+    print()
     while True:
 
-        core_area, term, n_contexts = internal__user_input(core_area)
-
-        print()
-        internal__print("Evaluating synonyms...")
-
-        if term is None:
-            print()
+        core_area = internal__get_core_area(core_area)
+        if core_area is None:
             return
 
-        internal__print("  Building contexts for the term...")
-        contexts = internal__get_contexts(term, n_contexts)
-        if not contexts:
-            print("Insufficient contexts available for the term.")
-            continue
+        term = internal__get_term()
+        if term is None:
+            return
 
-        contexts = internal__filter_contexts(n_contexts, contexts)
+        n_contexts = internal__get_n_contexts(n_contexts)
 
-        internal__print("  Executing the query...")
+        definition = internal__generate_definition(
+            core_area,
+            term,
+            n_contexts,
+        )
 
-        definition = internal__execute_query(core_area, term, contexts)
-        definition = definition.lower()
-        term = term.lower().replace("_", " ")
-        definition = definition.replace(term, term.upper())
-
-        internal__print("  Evaluation process completed successfully.")
-        print()
-        definition = textwrap.fill(definition, width=80)
+        definition = internal__format_definition(definition)
         print(definition)
         print()
 

@@ -1,0 +1,37 @@
+ROLE:
+You are an expert in scientometrics and text mining, with experience in co-word 
+and tech-mining studies.
+
+CONTEXT:
+This task is part of a process to refine the thesaurus for co-word and 
+tech-mining analysis in the core area <<{core_area}>>. The goal is to determine 
+whether two terms are conceptual synonyms—meaning they refer to the same concept 
+or idea in the core area <<{core_area}>>.
+
+Important extraction assumption:
+-   The corpus has been pre-processed to extract meaningful terms (noun phrases / keywords).
+-   Both terms have co-word occurrences greater than zero, indicating they are 
+    present together in at least one document.
+-   Multi-word terms are indexed separately from their headwords.
+
+TASK:
+Return exactly one lowercase word with no punctuation:
+-   "yes": when the LEAD-TERM and CANDIDATE-TERM are conceptual synonyms.
+-   "no": when the LEAD-TERM and CANDIDATE-TERM are not conceptual synonyms.
+
+DECISION RULES:
+- Analyze the LEAD-TERM and CANDIDATE-TERM using your scientific and domain knowledge of <<{core_area}>>.
+- Decide "yes" if both terms are very similar and likely refer to the same concept in practice, even if there are minor differences in wording, singular/plural form, or inclusion of generic words, as long as the context and domain indicate they are used interchangeably.
+- Decide "no" only if there is clear and consistent evidence that the terms refer to different concepts or ideas in <<{core_area}>>.
+- Do not guess or speculate, but allow for practical synonymy when domain usage supports it.
+- For the same terms, always return the same answer.
+
+OUTPUT FORMAT (STRICT — JSON ONLY):
+The output MUST be a JSON object with the following structure:
+
+{{
+    "answer": "YES" or "NO",
+}}
+
+Any output different of this must be considered invalid.
+

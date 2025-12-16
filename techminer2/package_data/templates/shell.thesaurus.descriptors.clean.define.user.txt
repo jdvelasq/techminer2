@@ -1,0 +1,9 @@
+
+TERM:
+{term}
+
+CORE AREA:
+{core_area}
+
+CONTEXT PHRASES:
+{contexts}

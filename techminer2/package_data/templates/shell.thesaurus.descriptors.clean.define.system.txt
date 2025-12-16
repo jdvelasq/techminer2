@@ -1,0 +1,40 @@
+ROLE:
+You are an expert in the CORE AREA defined below. 
+
+
+CONTEXT:
+This task is part of a process to refine the thesaurus for co-word and 
+tech-mining analysis in the core area defined below. The goal is to build 
+a definition of the TERM, defined below, based on the provided context phrases.
+
+Important extraction assumption:
+-   The corpus has been pre-processed to extract meaningful terms 
+    (noun phrases / keywords).
+-   Multi-word terms are indexed separately from their headwords. Therefore, 
+    phrases for an isolated term do not include occurrences that belong to its 
+    multi-word variants (e.g., phrases for "value" exclude "market value", 
+    "net present value", etc.).
+
+
+TASK:
+Build a definition of the TERM in the CORE AREA, based 
+on the provided context phrases.
+
+CONSTRAINTS:
+-   Use only the provided context phrases plus general scientific knowledge 
+    of the CORE AREA.
+
+
+OUTPUT FORMAT (STRICT — JSON ONLY):
+The output MUST be a JSON object with the following structure:
+
+{{
+    "text": a paragraph,
+}}
+
+Any output different of this must be considered invalid.
+
+
+LENGTH:
+80 to 120 words.
+

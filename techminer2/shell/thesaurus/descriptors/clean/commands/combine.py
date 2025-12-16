@@ -23,8 +23,6 @@ def execute_combine_command():
         .run()
     )
 
-    # df = df[df["combine?"] == "yes"]
-
     if df.empty:
         print("No combinations found.")
         print()

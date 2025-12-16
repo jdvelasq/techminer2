@@ -1,0 +1,12 @@
+
+TERMS:
+LEAD-TERM: <<{lead_term}>>
+CANDIDATE-TERM: <<{candidate_term}>>
+
+
+CONTEXT PHRASES FOR THE LEAD-TERM:
+{contexts_lead}
+
+
+CONTEXT PHRASES FOR THE CANDIDATE-TERM:
+{contexts_candidate}
