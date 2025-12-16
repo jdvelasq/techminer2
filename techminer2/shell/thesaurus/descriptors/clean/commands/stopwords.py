@@ -9,7 +9,6 @@
 # pylint: disable=unused-argument
 
 import os
-from operator import is_
 from pprint import pprint  # type: ignore
 
 import openai

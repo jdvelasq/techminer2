@@ -92,6 +92,7 @@ class Params:
     node_size_range: Tuple[int, int] = (5, 20)
     novelty_threshold: float = 0.15
     n_chars: int = 100
+    n_contexts: int = 10
 
     #
     # O
@@ -270,6 +271,10 @@ class ParamsMixin:
 
     def having_n_chars(self, n_chars):
         self.params.n_chars = n_chars
+        return self
+
+    def having_n_contexts(self, n_contexts):
+        self.params.n_contexts = n_contexts
         return self
 
     def having_occurrence_threshold(self, threshold):

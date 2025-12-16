@@ -1,0 +1,8 @@
+
+TERM:
+<<{pattern}>>
+
+
+CONTEXT PHRASES:
+{contexts}
+

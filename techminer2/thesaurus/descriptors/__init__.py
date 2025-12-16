@@ -9,6 +9,7 @@ from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
 from .general.merge_keys import MergeKeys
 from .general.normalize_keys import NormalizeKeys
+from .general.populate_stopwords import PopulateStopwords
 from .general.reduce_keys import ReduceKeys
 from .general.spell_check import SpellCheck
 from .register.register_initial_word import RegisterInitialWord
@@ -41,14 +42,18 @@ from .translate.american_to_british_spelling import AmericanToBritishSpelling
 from .translate.british_to_american_spelling import BritishToAmericanSpelling
 
 __all__ = [
+    "AmericanToBritishSpelling",
     "ApplyThesaurus",
-    "CombineKeys",
-    "GetValues",
-    "NormalizeKeys",
+    "BritishToAmericanSpelling",
     "ClumpKeys",
+    "CombineKeys",
     "CutoffFuzzyMerging",
-    "IntegrityCheck",
+    "GetValues",
     "InitializeThesaurus",
+    "IntegrityCheck",
+    "MergeKeys",
+    "NormalizeKeys",
+    "PopulateStopwords",
     "ReduceKeys",
     "RegisterInitialWord",
     "RegisterKeyword",
@@ -76,8 +81,5 @@ __all__ = [
     "SortByStopwords",
     "SortByWordLength",
     "SortByWordMatch",
-    "AmericanToBritishSpelling",
-    "BritishToAmericanSpelling",
-    "MergeKeys",
     "SpellCheck",
 ]
