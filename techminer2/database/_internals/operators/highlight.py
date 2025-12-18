@@ -11,14 +11,20 @@ import sys
 
 import pandas as pd  # type: ignore
 from pandarallel import pandarallel
-from tqdm import tqdm  # type: ignore
+from tqdm import tqdm
 
-from techminer2._internals import Params
+from techminer2._internals import Params, stdout_to_stderr
 from techminer2.database._internals.io import (
     internal__load_all_records_from_database,
     internal__write_records_to_database,
 )
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
+
+with stdout_to_stderr():
+    pandarallel.initialize(progress_bar=True)
+
+tqdm.pandas(desc="✓ Processing", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt}")
+
 
 SINGLE_STRUCTURED_ABSTRACT_MARKERS = [
     "abstract",
@@ -798,8 +804,6 @@ def internal__highlight(
     global discursive_patterns
     global text_noun_phrases
 
-    pandarallel.initialize(progress_bar=True)
-
     notify_process_start(dest)
 
     dataframe = load_all_records_from_database(root_directory)
@@ -830,8 +834,9 @@ def internal__highlight(
 
     text_noun_phrases = []
 
-    # sys.stderr.write("\n")
-    dataframe[dest] = dataframe[dest].parallel_apply(process_column)
+    with stdout_to_stderr():
+        dataframe[dest] = dataframe[dest].parallel_apply(process_column)
+
     sys.stderr.write("\n")
     sys.stderr.flush()
 

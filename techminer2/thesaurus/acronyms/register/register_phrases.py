@@ -40,11 +40,12 @@ Example:
 import sys
 from importlib.resources import files
 
-from techminer2._internals.mixins import Params
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.mixins import Params, ParamsMixin
 from techminer2.package_data.text_processing import internal__sort_text_processing_terms
-from techminer2.thesaurus._internals import internal__generate_user_thesaurus_file_path
-from techminer2.thesaurus._internals import internal__load_thesaurus_as_mapping
+from techminer2.thesaurus._internals import (
+    internal__generate_user_thesaurus_file_path,
+    internal__load_thesaurus_as_mapping,
+)
 
 
 class RegisterPhrases(

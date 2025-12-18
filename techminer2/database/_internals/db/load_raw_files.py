@@ -85,7 +85,7 @@ def internal__load_raw_files(root_dir):
     files = list_zip_filenames_in_raw_data(root_dir)
     dataframe = read_and_concatenate_files(files)
 
-    os.environ["TQDM_DISABLE"] = "True" if len(dataframe) < 500 else "False"
+    # os.environ["TQDM_DISABLE"] = "True" if len(dataframe) < 500 else "False"
 
     dataframe.to_csv(
         pathlib.Path(root_dir) / "data/processed/database.csv.zip",

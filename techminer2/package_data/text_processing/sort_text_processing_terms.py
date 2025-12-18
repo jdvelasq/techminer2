@@ -149,6 +149,21 @@ def sort_common_words(file_name):
         file.write("\n".join(lines))
 
 
+def sort_geography(file_name):
+
+    with open(file_name, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+    #
+    lines = [line.strip().upper() for line in lines]
+    lines = list(set(lines))
+    lines = sorted(lines)
+    lines = [line for line in lines if line != ""]
+    lines = [line.replace(" ", "_") for line in lines]
+    #
+    with open(file_name, "w", encoding="utf-8") as file:
+        file.write("\n".join(lines))
+
+
 def internal__sort_text_processing_terms():
     """:meta private:"""
 
@@ -193,4 +208,8 @@ def internal__sort_text_processing_terms():
 
         if file_name.endswith("common_last_words.txt"):
             sort_common_words(file_name)
+            continue
+
+        if file_name.endswith("geography.txt"):
+            sort_geography(file_name)
             continue

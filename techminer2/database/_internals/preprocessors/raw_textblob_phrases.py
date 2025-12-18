@@ -6,15 +6,18 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
+
 import pathlib
 import sys
-import warnings
 
 import pandas as pd  # type: ignore
 from pandarallel import pandarallel
 from textblob import TextBlob  # type: ignore
 
-warnings.filterwarnings("ignore", category=UserWarning)
+from techminer2._internals import stdout_to_stderr
+
+with stdout_to_stderr():
+    pandarallel.initialize(progress_bar=True, verbose=2)
 
 
 def internal__process_row(row):
@@ -70,12 +73,12 @@ def internal__preprocess_raw_textblob_phrases(root_dir):
         low_memory=False,
     )
 
-    pandarallel.initialize(progress_bar=True)
+    with stdout_to_stderr():
+        dataframe["raw_textblob_phrases"] = dataframe.parallel_apply(
+            internal__process_row,
+            axis=1,
+        )
 
-    dataframe["raw_textblob_phrases"] = dataframe.parallel_apply(
-        internal__process_row,
-        axis=1,
-    )
     sys.stderr.write("\n")
     sys.stderr.flush()
 

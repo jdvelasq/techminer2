@@ -58,6 +58,8 @@ Example:
 
 
 """
+import sys
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database.search import ConcordantSentences
 
@@ -71,7 +73,11 @@ class GetContexts(
 
         from techminer2.thesaurus.descriptors import GetValues
 
-        terms = GetValues().update(**self.params.__dict__).run()
+        if self.params.quiet is False:
+            sys.stderr.write("Getting contexts...\n")
+            sys.stderr.flush()
+
+        terms = GetValues(quiet=self.params.quiet).update(**self.params.__dict__).run()
 
         complete_contexts = []
 
@@ -96,5 +102,9 @@ class GetContexts(
         complete_contexts = [
             c for c in complete_contexts if any(pattern in c for pattern in patterns)
         ]
+
+        if self.params.quiet is False:
+            sys.stderr.write("Getting contexts completed successfully\n")
+            sys.stderr.flush()
 
         return complete_contexts[: self.params.n_contexts]

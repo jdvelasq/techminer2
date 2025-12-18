@@ -24,12 +24,12 @@ import pathlib
 import sys
 
 import pandas as pd
-from colorama import Fore
-from colorama import init
+from colorama import Fore, init
 from pyzotero import zotero
+from tqdm import tqdm  # type: ignore
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import internal__load_all_records_from_database
-from tqdm import tqdm  # type: ignore
 
 
 class ExportRecordNoToZotero(ParamsMixin):

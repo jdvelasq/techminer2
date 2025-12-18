@@ -32,10 +32,12 @@ Example:
 """
 
 
+import sys
+
+from colorama import Fore, init
+
 from .load_text_processing_terms import internal__load_text_processing_terms
 from .save_text_processing_terms import internal__save_text_processing_terms
-import sys
-from colorama import Fore, init
 
 
 def internal__sort_noun_phrases_by_last_word():

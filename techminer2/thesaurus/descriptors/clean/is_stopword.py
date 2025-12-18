@@ -13,20 +13,15 @@ Is Stopword?
 
 Example:
     >>> # TEST PREPARATION
-    >>> import sys
-    >>> from io import StringIO
     >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, IsStopword
-
-    >>> # Redirecting stderr to avoid messages
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Is stopword?
-    >>> (
-    ...     IsStopword()
+    >>> from techminer2.thesaurus.descriptors import IsStopword
+    >>> df = (
+    ...     IsStopword(quiet=False)
     ...     .with_core_area("FINTECH - FINANCIAL TECHNOLOGIES")
     ...     .having_n_contexts(10)
     ...     .having_terms_in_top(40)
@@ -35,81 +30,311 @@ Example:
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
     ...     .where_root_directory_is("examples/fintech/")
-    ... ).run() # doctest: +SKIP
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-                             descriptor  is_domain_specific?  is_stopword?
-    0                           FINTECH                 True          True
-    1                           FINANCE                 True          True
-    2                      TECHNOLOGIES                False         False
-    3                        INNOVATION                 True          True
-    4            FINANCIAL_TECHNOLOGIES                 True          True
-    5                 FINANCIAL_SERVICE                 True          True
-    6            THE_FINANCIAL_INDUSTRY                 True          True
-    7                   THE_DEVELOPMENT                False         False
-    8                             BANKS                 True          True
-    9                        REGULATORS                 True          True
-    10                         SERVICES                False         False
-    11                             DATA                False         False
-    12                        CONSUMERS                False         False
-    13                          BANKING                 True          True
-    14                       INVESTMENT                 True          True
-    15  THE_FINANCIAL_SERVICES_INDUSTRY                 True          True
-    16                     PRACTITIONER                False         False
-    17                       THE_IMPACT                False         False
-    18                            CHINA                False         False
-    19                   BUSINESS_MODEL                 True          True
-    20                       BLOCKCHAIN                 True         False
-    21             THE_FINANCIAL_SECTOR                 True          True
-    22           INFORMATION_TECHNOLOGY                 True          True
-    23                FINTECH_COMPANIES                 True          True
-    24            FINANCIAL_INSTITUTION                 True          True
-    25                     THE_RESEARCH                False         False
-    26                            USERS                False         False
-    27                           SURVEY                False         False
-    28                            VALUE                False         False
-    29                         THE_ROLE                False         False
-    30        FINTECH_BASED_INNOVATIONS                 True          True
-    31                          THE_USE                False         False
-    32                 FINANCIAL_MARKET                 True          True
-    33                      APPLICATION                False         False
-    34                    ENTREPRENEURS                False         False
-    35                    THE_EMERGENCE                False         False
-    36                 FINANCIAL_SYSTEM                 True          True
-    37                        CUSTOMERS                False         False
-    38                    THE_POTENTIAL                False          True
-    39          ARTIFICIAL_INTELLIGENCE                 True          True
+    ... ).run()  # doctest: +SKIP
+    >>> df # doctest: +SKIP
+                           descriptor  is_domain_specific?  is_stopword?
+    0                    CASE_STUDIES                False          True
+    1                           CHINA                False          True
+    2                     COMPETITION                False          True
+    3                        RESEARCH                False          True
+    4                        SERVICES                False          True
+    5                         SURVEYS                False          True
+    6                      TECHNOLOGY                False          True
+    7         ARTIFICIAL_INTELLIGENCE                 True          True
+    8                            BANK                 True          True
+    9                         BANKING                 True          True
+    10                       BIG_DATA                 True          True
+    11                 BUSINESS_MODEL                 True          True
+    12                        FINANCE                 True          True
+    13           FINANCIAL_INDUSTRIES                 True          True
+    14           FINANCIAL_INNOVATION                 True          True
+    15          FINANCIAL_INSTITUTION                 True          True
+    16               FINANCIAL_MARKET                 True          True
+    17               FINANCIAL_SECTOR                 True          True
+    18              FINANCIAL_SERVICE                 True          True
+    19               FINANCIAL_SYSTEM                 True          True
+    20            INFORMATION_SYSTEMS                 True          True
+    21         INFORMATION_TECHNOLOGY                 True          True
+    22                     INNOVATION                 True          True
+    23                     INVESTMENT                 True          True
+    24                     REGULATION                 True          True
+    25                          RISKS                 True          True
+    26                 SUSTAINABILITY                 True          True
+    27        SUSTAINABLE_DEVELOPMENT                 True          True
+    28                       ADOPTION                 True         False
+    29                     BLOCKCHAIN                 True         False
+    30  FINANCIAL_SERVICES_INDUSTRIES                 True         False
+    31         FINANCIAL_TECHNOLOGIES                 True         False
+    32                        FINTECH                 True         False
+    33              FINTECH_COMPANIES                 True         False
+    34             FINTECH_INNOVATION                 True         False
+    35                 FINTECH_MARKET                 True         False
+    36               FINTECH_SERVICES                 True         False
+    37               FINTECH_STARTUPS                 True         False
+    38               FINTECH_START_UP                 True         False
+    39                        LENDING                 True         False
 
 
 
 """
 import json
 import os
+import re
+import sys
 
 import openai
 import pandas as pd
+from colorama import Fore, init
 from openai import OpenAI
-from tqdm import tqdm  # type: ignore
+from pandarallel import pandarallel
 
-from techminer2._internals.load_template import internal_load_template
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin, internal_load_template, stdout_to_stderr
 from techminer2.database._internals.io import (
     internal__load_user_stopwords,
     internal__save_user_stopwords,
 )
 from techminer2.database.metrics.performance import DataFrame as MetricsDataFrame
+from techminer2.package_data.text_processing import internal__load_text_processing_terms
+
+with stdout_to_stderr():
+    pandarallel.initialize(progress_bar=True)
 
 # -----------------------------------------------------------------------------
+system_prompt_without_contexts = None
+system_prompt_with_contexts = None
+user_template_without_contexts = None
+user_template_with_contexts = None
+geographic_names = None
+core_area = None
+client = None
 
 
+# -----------------------------------------------------------------------------
+def internal__is_domain_specific_term(row):
+
+    pattern = row.descriptor
+    contexts = row["contexts"]
+
+    if pattern in geographic_names:
+        return False
+
+    if contexts is None:
+        system_prompt = system_prompt_without_contexts
+        user_prompt = user_template_without_contexts.format(
+            pattern=pattern,
+            core_area=core_area,
+        )
+    else:
+        system_prompt = system_prompt_with_contexts
+        user_prompt = user_template_with_contexts.format(
+            pattern=pattern,
+            core_area=core_area,
+            contexts=contexts,
+        )
+
+    try:
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt,
+                    "cache_control": {"type": "ephemeral"},
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt,
+                },
+            ],
+            temperature=0,
+            response_format={"type": "json_object"},
+        )
+
+    except openai.OpenAIError as e:
+        print(f"Error processing the query: {e}")
+        raise ValueError("API error")
+
+    if response is not None:
+
+        answer = response.choices[0].message.content
+        answer = answer.strip()
+        answer = json.loads(answer)
+        answer = answer["answer"]
+        answer = answer.lower().strip()
+
+        if answer == "yes":
+            return True
+
+        return False
+
+    return False
+
+
+# -----------------------------------------------------------------------------
+def internal__is_domain_specific_stopword(row):
+
+    if row["is_domain_specific?"] is False:
+        return row["is_stopword?"]
+
+    contexts = row["contexts"]
+    pattern = row.descriptor
+
+    if pattern in geographic_names:
+        return True
+
+    if contexts is None:
+        system_prompt = system_prompt_without_contexts
+        user_prompt = user_template_without_contexts.format(
+            pattern=pattern,
+            core_area=core_area,
+        )
+    else:
+        system_prompt = system_prompt_with_contexts
+        user_prompt = user_template_with_contexts.format(
+            pattern=pattern,
+            core_area=core_area,
+            contexts=contexts,
+        )
+
+    try:
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt,
+                    "cache_control": {"type": "ephemeral"},
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt,
+                },
+            ],
+            temperature=0,
+            response_format={"type": "json_object"},
+        )
+
+    except openai.OpenAIError as e:
+        print(f"Error processing the query: {e}")
+        raise ValueError("API error")
+
+    if response is not None:
+
+        answer = response.choices[0].message.content
+        answer = answer.strip()
+        answer = json.loads(answer)
+        answer = answer["answer"]
+        answer = answer.lower().strip()
+
+        if answer == "yes":
+            return True
+
+        return False
+
+    return False
+
+
+# -----------------------------------------------------------------------------
+def internal__is_non_domain_specific_stopword(row):
+
+    if row["is_domain_specific?"] is True:
+        return row["is_stopword?"]
+
+    contexts = row["contexts"]
+    pattern = row.descriptor
+
+    if pattern in geographic_names:
+        return True
+
+    if contexts is None:
+        system_prompt = system_prompt_without_contexts
+        user_prompt = user_template_without_contexts.format(
+            pattern=pattern,
+            core_area=core_area,
+        )
+    else:
+        system_prompt = system_prompt_with_contexts
+        user_prompt = user_template_with_contexts.format(
+            pattern=pattern,
+            core_area=core_area,
+            contexts=contexts,
+        )
+
+    try:
+
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_prompt,
+                    "cache_control": {"type": "ephemeral"},
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt,
+                },
+            ],
+            temperature=0,
+            response_format={"type": "json_object"},
+        )
+
+    except openai.OpenAIError as e:
+        print(f"Error processing the query: {e}")
+        raise ValueError("API error")
+
+    if response is not None:
+
+        answer = response.choices[0].message.content
+        answer = answer.strip()
+        answer = json.loads(answer)
+        answer = answer["answer"]
+        answer = answer.lower().strip()
+
+        if answer == "yes":
+            return True
+
+        return False
+
+
+# -----------------------------------------------------------------------------
 class IsStopword(
     ParamsMixin,
 ):
     """:meta private:"""
 
+    #
+    # NOTIFICATIONS:
+    # -------------------------------------------------------------------------
+    def internal__notify_process_start(self):
+
+        if not self.params.quiet:
+            sys.stderr.write("\nINFO: Searching for stopwords...\n")
+            sys.stderr.flush()
+
+    # -------------------------------------------------------------------------
+    def internal__notify_process_end(self):
+
+        if not self.params.quiet:
+            sys.stderr.write("  Searching for stopwords... Done\n")
+            sys.stderr.flush()
+
+    #
+    # ALGORITHM:
+    # -------------------------------------------------------------------------
+    def internal__load_global_params(self):
+
+        global client
+        global core_area
+        global geographic_names
+
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        core_area = self.params.core_area
+        geographic_names = internal__load_text_processing_terms("geography.txt")
+
+    # -------------------------------------------------------------------------
     def internal__get_descriptors(self):
 
         descriptors = (
@@ -128,260 +353,135 @@ class IsStopword(
 
         from techminer2.thesaurus.descriptors import GetContexts
 
-        get_contexts = GetContexts().update(**self.params.__dict__)
-        self.descriptors["contexts"] = self.descriptors["descriptor"].apply(
-            lambda x: "\n".join(get_contexts.with_patterns([x]).run())
-        )
+        get_contexts = GetContexts().update(**self.params.__dict__).update(quiet=True)
+
+        sys.stderr.write("  Retrieving contexts for descriptors\n")
+        sys.stderr.flush()
+
+        with stdout_to_stderr():
+            self.descriptors["contexts"] = self.descriptors[
+                "descriptor"
+            ].parallel_apply(
+                lambda x: "\n".join(get_contexts.with_patterns([re.escape(x)]).run())
+            )
+
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__is_domain_specific_term(self):
 
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        global system_prompt_without_contexts
+        global user_template_without_contexts
+        global system_prompt_with_contexts
+        global user_template_with_contexts
 
-        core_area = self.params.core_area
+        system_prompt_without_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.system.txt"
+        )
+        user_template_without_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.user.txt"
+        )
 
-        for idx, row in tqdm(
-            self.descriptors.iterrows(),
-            total=len(self.descriptors),
-            desc=f"  Checking domain-specific terms",
-            ncols=80,
-        ):
+        system_prompt_with_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.system.txt"
+        )
+        user_template_with_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.user.txt"
+        )
 
-            pattern = row.descriptor
-            contexts = row["contexts"]
+        sys.stderr.write("  Determining if descriptors are non-domain specific\n")
+        sys.stderr.flush()
 
-            if contexts is None:
-                system_prompt = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.system.txt"
-                )
-                user_template = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.user.txt"
-                )
-                user_prompt = user_template.format(
-                    pattern=pattern,
-                    core_area=core_area,
-                )
-            else:
-                system_prompt = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.system.txt"
-                )
-                user_template = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.user.txt"
-                )
-                user_prompt = user_template.format(
-                    pattern=pattern,
-                    core_area=core_area,
-                    contexts=contexts,
-                )
+        with stdout_to_stderr():
+            self.descriptors["is_domain_specific?"] = self.descriptors.parallel_apply(
+                internal__is_domain_specific_term, axis=1
+            )
 
-            try:
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
-                response = client.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[
-                        {
-                            "role": "system",
-                            "content": system_prompt,
-                            "cache_control": {"type": "ephemeral"},
-                        },
-                        {
-                            "role": "user",
-                            "content": user_prompt,
-                        },
-                    ],
-                    temperature=0,
-                    response_format={"type": "json_object"},
-                )
-
-            except openai.OpenAIError as e:
-                print(f"Error processing the query: {e}")
-                response = None
-                raise ValueError("API error")
-
-            if response is not None:
-
-                answer = response.choices[0].message.content
-                answer = answer.strip()
-                answer = json.loads(answer)
-                answer = answer["answer"]
-                answer = answer.lower().strip()
-
-                if answer == "yes":
-                    answer = True
-                else:
-                    answer = False
-
-                self.descriptors.loc[idx, "is_domain_specific?"] = answer
-
-    # -------------------------------------------------------------------------
     def internal__is_domain_specific_stopword(self):
 
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        global system_prompt_without_contexts
+        global user_template_without_contexts
+        global system_prompt_with_contexts
+        global user_template_with_contexts
 
-        df = self.descriptors[self.descriptors["is_domain_specific?"]]
-        core_area = self.params.core_area
+        system_prompt_without_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.system.txt"
+        )
+        user_template_without_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.user.txt"
+        )
 
-        for idx, row in tqdm(
-            df.iterrows(),
-            total=len(df),
-            desc=f"  Identifying domain-specific stopwords",
-            ncols=80,
-        ):
-            contexts = row["contexts"]
-            pattern = row.index
+        system_prompt_with_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.system.txt"
+        )
+        user_template_with_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.user.txt"
+        )
 
-            if contexts is None:
-                system_prompt = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.system.txt"
-                )
-                user_template = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.user.txt"
-                )
-                user_prompt = user_template.format(
-                    pattern=pattern,
-                    core_area=core_area,
-                )
-            else:
-                system_prompt = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.system.txt"
-                )
-                user_template = internal_load_template(
-                    "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.user.txt"
-                )
-                user_prompt = user_template.format(
-                    pattern=pattern,
-                    core_area=core_area,
-                    contexts=contexts,
-                )
+        sys.stderr.write("  Evaluating domain specific descriptors\n")
+        sys.stderr.flush()
 
-            try:
+        with stdout_to_stderr():
+            self.descriptors["is_stopword?"] = self.descriptors.parallel_apply(
+                internal__is_domain_specific_stopword, axis=1
+            )
 
-                response = client.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[
-                        {
-                            "role": "system",
-                            "content": system_prompt,
-                            "cache_control": {"type": "ephemeral"},
-                        },
-                        {
-                            "role": "user",
-                            "content": user_prompt,
-                        },
-                    ],
-                    temperature=0,
-                    response_format={"type": "json_object"},
-                )
-
-            except openai.OpenAIError as e:
-                print(f"Error processing the query: {e}")
-                response = None
-                raise ValueError("API error")
-
-            if response is not None:
-
-                answer = response.choices[0].message.content
-                answer = answer.strip()
-                answer = json.loads(answer)
-                answer = answer["answer"]
-                answer = answer.lower().strip()
-
-                if answer == "yes":
-                    answer = True
-                else:
-                    answer = False
-
-                self.descriptors.loc[idx, "is_stopword?"] = answer
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def internal__is_non_domain_specific_stopword(self):
 
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        global system_prompt_without_contexts
+        global user_template_without_contexts
+        global system_prompt_with_contexts
+        global user_template_with_contexts
 
-        df = self.descriptors[~self.descriptors["is_domain_specific?"]]
-        core_area = self.params.core_area
+        system_prompt_without_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.system.txt"
+        )
+        user_template_without_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.user.txt"
+        )
 
-        for idx, row in tqdm(
-            df.iterrows(),
-            total=len(df),
-            desc=f"  Identifying domain-specific stopwords",
-            ncols=80,
-        ):
+        system_prompt_with_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.system.txt"
+        )
+        user_template_with_contexts = internal_load_template(
+            "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.user.txt"
+        )
 
-            contexts = row["contexts"]
-            pattern = row.index
+        sys.stderr.write("  Evaluating non-domain specific descriptors\n")
+        sys.stderr.flush()
 
-        if contexts is None:
-            system_prompt = internal_load_template(
-                "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.system.txt"
-            )
-            user_template = internal_load_template(
-                "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.user.txt"
-            )
-            user_prompt = user_template.format(
-                pattern=pattern,
-                core_area=core_area,
-            )
-        else:
-            system_prompt = internal_load_template(
-                "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.system.txt"
-            )
-            user_template = internal_load_template(
-                "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.user.txt"
-            )
-            user_prompt = user_template.format(
-                pattern=pattern,
-                core_area=core_area,
-                contexts=contexts,
+        with stdout_to_stderr():
+            self.descriptors["is_stopword?"] = self.descriptors.parallel_apply(
+                internal__is_non_domain_specific_stopword, axis=1
             )
 
-        try:
-
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt,
-                        "cache_control": {"type": "ephemeral"},
-                    },
-                    {
-                        "role": "user",
-                        "content": user_prompt,
-                    },
-                ],
-                temperature=0,
-                response_format={"type": "json_object"},
-            )
-
-        except openai.OpenAIError as e:
-            print(f"Error processing the query: {e}")
-            response = None
-            raise ValueError("API error")
-
-        if response is not None:
-
-            answer = response.choices[0].message.content
-            answer = answer.strip()
-            answer = json.loads(answer)
-            answer = answer["answer"]
-            answer = answer.lower().strip()
-
-            if answer == "yes":
-                answer = True
-            else:
-                answer = False
-
-            self.descriptors.loc[idx, "is_stopword?"] = answer
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
     # -------------------------------------------------------------------------
     def run(self):
 
+        self.internal__notify_process_start()
+        self.internal__load_global_params()
         self.internal__get_descriptors()
         self.internal__get_contexts()
         self.internal__is_domain_specific_term()
         self.internal__is_domain_specific_stopword()
         self.internal__is_non_domain_specific_stopword()
+        self.internal__notify_process_end()
+
+        self.descriptors = self.descriptors.sort_values(
+            by=["is_stopword?", "is_domain_specific?", "descriptor"],
+            ascending=[False, True, True],
+        ).reset_index(drop=True)
 
         return self.descriptors[
             [

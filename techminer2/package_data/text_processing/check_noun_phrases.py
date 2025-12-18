@@ -33,12 +33,13 @@ Example:
 """
 
 
-from .load_text_processing_terms import internal__load_text_processing_terms
-from .save_text_processing_terms import internal__save_text_processing_terms
 import sys
 
 from textblob import Word
 from tqdm import tqdm
+
+from .load_text_processing_terms import internal__load_text_processing_terms
+from .save_text_processing_terms import internal__save_text_processing_terms
 
 
 def get_plural_pairs(last_words):

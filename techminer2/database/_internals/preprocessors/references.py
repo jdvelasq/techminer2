@@ -52,7 +52,7 @@ def internal__preprocess_references(root_dir):
         total=len(abbrs),
         bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
         ascii=(" ", ":"),
-        ncols=74,
+        ncols=73,
     ):
 
         dataframe["raw_global_references"] = dataframe[

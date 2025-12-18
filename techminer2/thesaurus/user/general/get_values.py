@@ -44,8 +44,9 @@ Example:
 
 
 """
+import sys
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import ThesaurusMixin
 
 
@@ -68,8 +69,17 @@ class GetValues(
     def run(self):
         """:meta private:"""
 
+        if self.params.quiet is False:
+            sys.stderr.write("Getting thesaurus values...\n")
+            sys.stderr.flush()
+
         self.internal__build_user_thesaurus_path()
         self.internal__load_thesaurus_as_mapping()
         self.internal__transform_mapping_to_data_frame()
         self.internal__get_values()
+
+        if self.params.quiet is False:
+            sys.stderr.write("Getting thesaurus values completed successfully\n")
+            sys.stderr.flush()
+
         return self.values

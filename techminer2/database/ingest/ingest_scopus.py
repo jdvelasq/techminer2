@@ -13,17 +13,13 @@ Ingest Scopus
 
 Example:
     >>> from techminer2.database.ingest import IngestScopus
-    >>> IngestScopus(root_directory="examples/fintech/").run()
-
-
+    >>> IngestScopus(root_directory="examples/fintech/").run() # doctest: +SKIP
 
 
 """
 import pathlib
 import sys
 import time
-
-from tqdm import tqdm
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.datatests.check_empty_terms import (
@@ -99,7 +95,7 @@ class IngestScopus(
         #
 
         # Register tqdm pandas progress bar
-        tqdm.pandas()
+        # tqdm.pandas()
 
         # Elapsed time report
         sys.stderr.write("\n")

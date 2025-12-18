@@ -200,13 +200,17 @@ class InitializeThesaurus(
     # -------------------------------------------------------------------------
     def internal__create_thesaurus(self):
 
+        sys.stderr.write(f"  Homogenizing global references\n")
+        sys.stderr.flush()
+
         thesaurus = {}
         for _, row in tqdm(
             self.main_documents.iterrows(),
             total=self.main_documents.shape[0],
-            desc="  Homogenizing global references ",
+            bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
+            ascii=(" ", ":"),
+            ncols=73,
             disable=self.params.tqdm_disable,
-            ncols=100,
         ):
 
             refs = self.references.copy()

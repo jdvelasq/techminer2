@@ -13,8 +13,12 @@ import pandas as pd  # type: ignore
 import spacy
 from pandarallel import pandarallel
 
+from techminer2._internals import stdout_to_stderr
+
 spacy_nlp = spacy.load("en_core_web_lg")
-# pandarallel.initialize(progress_bar=True)
+
+with stdout_to_stderr():
+    pandarallel.initialize(progress_bar=True)
 
 
 def internal__process_row(row):
@@ -65,9 +69,11 @@ def internal__preprocess_raw_spacy_phrases(root_dir):
         low_memory=False,
     )
 
-    dataframe["raw_abstract_spacy_phrases"] = dataframe.parallel_apply(
-        internal__process_row, axis=1
-    )
+    with stdout_to_stderr():
+        dataframe["raw_abstract_spacy_phrases"] = dataframe.parallel_apply(
+            internal__process_row, axis=1
+        )
+
     sys.stderr.write("\n")
     sys.stderr.flush()
 
