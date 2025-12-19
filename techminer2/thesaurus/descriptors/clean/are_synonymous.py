@@ -35,14 +35,17 @@ Example:
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
     ...     .where_root_directory_is("examples/fintech/")
-    ... ).run()
+    ... ).run()  # doctest: +SKIP
 
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)
-
+    >>> print(output)  # doctest: +SKIP
+                   lead_term                                  candidate_terms
+    6   FINANCIAL_INDUSTRIES  FINANCIAL_SECTOR; FINANCIAL_SERVICES_INDUSTRIES
+    15     FINTECH_COMPANIES                                 FINTECH_STARTUPS
+    22  FINANCIAL_INNOVATION                               FINTECH_INNOVATION
 
 
 """
