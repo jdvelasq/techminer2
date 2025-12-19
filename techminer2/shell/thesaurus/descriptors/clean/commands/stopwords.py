@@ -8,17 +8,11 @@
 # pylint: disable=too-many-branches
 # pylint: disable=unused-argument
 
-import os
+
 from pprint import pprint  # type: ignore
 
-import openai
 from colorama import Fore
-from openai import OpenAI
-from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.load_template import internal_load_template
-from techminer2.database.search import ConcordantSentences
-from techminer2.database.tools import ExtendStopwords
 from techminer2.shell.colorized_input import colorized_input
 from techminer2.thesaurus.descriptors import IsStopword
 
