@@ -35,54 +35,13 @@ Example:
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
     ...     .where_root_directory_is("examples/fintech/")
-    ... ).run()  # doctest: +SKIP
-                            lead_term candidate_terms
-    0                    TECHNOLOGIES
-    1                 THE_DEVELOPMENT
-    2                        SERVICES
-    3                            DATA
-    4                       CONSUMERS
-    5                    PRACTITIONER
-    6                      THE_IMPACT
-    7                           CHINA
-    8                      BLOCKCHAIN
-    9                    THE_RESEARCH
-    10                          USERS
-    11                         SURVEY
-    12                          VALUE
-    13                       THE_ROLE
-    14                        THE_USE
-    15                    APPLICATION
-    16                  ENTREPRENEURS
-    17                  THE_EMERGENCE
-    18                      CUSTOMERS
-    19               FINTECH_SERVICES
-    20                       BIG_DATA
-    21               FINTECH_START_UP
-    22                         EUROPE
-    23                        LENDING
-    24  FINANCIAL_SERVICES_INDUSTRIES
-    25                     INDUSTRIES
-    26                     DISRUPTION
-    27                         CHANGE
-    28                       COMMERCE
-    29                       RESEARCH
-    30         THE_FINTECH_REVOLUTION
-    31                    CONVENIENCE
-    32                 DIGITALIZATION
-    33           DIGITAL_TECHNOLOGIES
-    34            FINANCIAL_INCLUSION
-    35                       NETWORKS
-    36           FINANCIAL_INDUSTRIES
-    37               THE_IMPLICATIONS
-    38                       A_SURVEY
-    39                 THE_HYPOTHESES
+    ... ).run()
 
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
+    >>> print(output)
 
 
 
@@ -93,6 +52,7 @@ import os
 import openai
 import pandas as pd
 from openai import OpenAI
+from textblob import Word
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.load_template import internal_load_template
@@ -120,27 +80,107 @@ class AreSynonymous(
             .run()
         )
 
-        self.dataframe = pd.DataFrame({"lead_term": descriptors.index})
-        self.dataframe["merged"] = False
-        self.dataframe["keys"] = [[] for _ in range(len(self.dataframe))]
-        self.dataframe["candidate_terms"] = [[] for _ in range(len(self.dataframe))]
+        self.data_frame = pd.DataFrame({"lead_term": descriptors.index})
+        self.data_frame["merged"] = False
+        self.data_frame["fingerprint"] = None
+        self.data_frame["keys"] = [[] for _ in range(len(self.data_frame))]
+        self.data_frame["candidate_terms"] = [[] for _ in range(len(self.data_frame))]
+
+    # -------------------------------------------------------------------------
+    def internal__generate_fingerprints(self):
+
+        particles = [
+            "aided",
+            "and the",
+            "and",
+            "applied to",
+            "assisted",
+            "at",
+            "based",
+            "for",
+            "in",
+            "like",
+            "of the",
+            "of using",
+            "of",
+            "on",
+            "s",
+            "sized",
+            "to",
+            "under",
+            "using",
+        ]
+
+        # Based on the basic TheVantagePoint algorithm to group terms
+        data_frame = self.data_frame.copy()
+        data_frame["fingerprint"] = data_frame["lead_term"].copy()
+
+        # hyphen-insensitive matching
+        data_frame["fingerprint"] = (
+            data_frame["fingerprint"]
+            .str.replace("_", " ")
+            .str.replace("-", " ")
+            .str.replace(".", "")
+        )
+
+        # case-insensitive matching
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.lower()
+
+        # accents removal
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.normalize("NFKD")
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.encode(
+            "ascii", errors="ignore"
+        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.decode("utf-8")
+
+        # particles remotion
+        for particle in particles:
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+                f" {particle} ", " "
+            )
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+                f"^{particle} ", ""
+            )
+            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
+                f" {particle}$", ""
+            )
+
+        # singular and plural matching
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.strip()
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: [w.strip() for w in x]
+        )
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: [Word(w).singularize().singularize().singularize() for w in x]
+        )
+
+        # word order insensitive matching
+        data_frame["fingerprint"] = data_frame["fingerprint"].map(
+            lambda x: sorted(set(x))
+        )
+
+        # final fingerprint
+        data_frame["fingerprint"] = data_frame["fingerprint"].str.join(" ")
+
+        self.data_frame["fingerprint"] = data_frame["fingerprint"]
 
     # -------------------------------------------------------------------------
     def internal__build_merging_keys(self):
 
-        for idx, row in self.dataframe.iterrows():
+        for idx, row in self.data_frame.iterrows():
 
-            pattern = row.lead_term
+            pattern = row.fingerprint
             pattern = pattern.replace("_", " ")
             pattern = pattern.split()
 
             # first word + key length
-            self.dataframe.at[idx, "keys"].append(
+            self.data_frame.at[idx, "keys"].append(
                 (pattern[0] + "-" + str(len(pattern)))
             )
 
             # last word + key length
-            self.dataframe.at[idx, "keys"].append(
+            self.data_frame.at[idx, "keys"].append(
                 (pattern[-1] + "-" + str(len(pattern)))
             )
 
@@ -148,9 +188,9 @@ class AreSynonymous(
             if len(pattern) >= 2:
                 for i in range(len(pattern) - 1):
                     bigram = pattern[i] + "-" + pattern[i + 1]
-                    self.dataframe.at[idx, "keys"].append(bigram)
+                    self.data_frame.at[idx, "keys"].append(bigram)
 
-        self.dataframe["keys"] = self.dataframe["keys"].apply(lambda x: list(set(x)))
+        self.data_frame["keys"] = self.data_frame["keys"].apply(lambda x: list(set(x)))
 
     # -------------------------------------------------------------------------
     def internal__get_contexts(self):
@@ -168,7 +208,7 @@ class AreSynonymous(
 
             return "\n".join(contexts)
 
-        self.dataframe["contexts"] = self.dataframe["lead_term"].apply(
+        self.data_frame["contexts"] = self.data_frame["lead_term"].apply(
             internal__get_row_contexts
         )
 
@@ -241,24 +281,24 @@ class AreSynonymous(
     # -------------------------------------------------------------------------
     def internal__evaluate_merging(self):
 
-        for idx0, row0 in self.dataframe.iterrows():
+        for idx0, row0 in self.data_frame.iterrows():
 
-            if idx0 == self.dataframe.index[-1]:
+            if idx0 == self.data_frame.index[-1]:
                 break
 
-            if self.dataframe.at[idx0, "merged"] is True:
+            if self.data_frame.at[idx0, "merged"] is True:
                 continue
 
             lead_keys = row0["keys"]
             lead_term = row0.lead_term
             lead_contexts = row0["contexts"]
 
-            for idx1, row1 in self.dataframe.iterrows():
+            for idx1, row1 in self.data_frame.iterrows():
 
                 if idx0 >= idx1:
                     continue
 
-                if self.dataframe.at[idx1, "merged"] is True:
+                if self.data_frame.at[idx1, "merged"] is True:
                     continue
 
                 candidate_keys = row1["keys"]
@@ -277,26 +317,31 @@ class AreSynonymous(
                 )
 
                 if answer is True:
-                    self.dataframe.at[idx1, "merged"] = True
-                    self.dataframe.at[idx0, "candidate_terms"].append(candidate_term)
+                    self.data_frame.at[idx1, "merged"] = True
+                    self.data_frame.at[idx0, "candidate_terms"].append(candidate_term)
 
     # -------------------------------------------------------------------------
     def internal__format_output(self):
 
-        self.dataframe["candidate_terms"] = self.dataframe["candidate_terms"].str.join(
-            "; "
-        )
+        self.data_frame = self.data_frame[
+            self.data_frame.candidate_terms.apply(lambda x: x != [])
+        ]
+
+        self.data_frame["candidate_terms"] = self.data_frame[
+            "candidate_terms"
+        ].str.join("; ")
 
     # -------------------------------------------------------------------------
     def run(self):
 
         self.internal__get_descriptors()
+        self.internal__generate_fingerprints()
         self.internal__build_merging_keys()
         self.internal__get_contexts()
         self.internal__evaluate_merging()
         self.internal__format_output()
 
-        return self.dataframe[["lead_term", "candidate_terms"]]
+        return self.data_frame[["lead_term", "candidate_terms"]]
 
 
 # =============================================================================
