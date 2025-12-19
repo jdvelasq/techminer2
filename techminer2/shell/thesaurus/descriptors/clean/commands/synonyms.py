@@ -7,304 +7,37 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 
-import os
-import textwrap
 
-import openai
-from colorama import Fore
-from openai import OpenAI
-
-from techminer2._internals.load_template import internal_load_template
-from techminer2.database.search import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus.descriptors import GetValues, MergeKeys
+from techminer2.thesaurus.descriptors import AreSynonymous
 
 
 # -----------------------------------------------------------------------------
-def internal__user_input(core_area, n_contexts):
+def internal__user_input(core_area, n_contexts, occ):
 
     # -------------------------------------------------------------------------
     if core_area is None:
         answer = colorized_input(". Enter the core area > ").strip()
         if answer == "":
-            return None, None, None, None
+            return None, None
         core_area = answer.upper()
 
     # -------------------------------------------------------------------------
-    if n_contexts is None:
-        n_contexts = colorized_input(
-            ". Enter the number of contexts [default: 30] > "
-        ).strip()
-        if n_contexts == "":
-            n_contexts = 30
-        else:
-            n_contexts = int(n_contexts)
+    user_n_contexts = colorized_input(
+        f". Enter the number of contexts [{n_contexts}] > "
+    ).strip()
+
+    if user_n_contexts != "":
+        n_contexts = int(n_contexts)
 
     # -------------------------------------------------------------------------
-    lead_term = colorized_input(". Enter the lead term > ").strip()
-    if lead_term == "":
-        return None, None, None, None
+    user_occ = colorized_input(f". Enter the mininum occ [{occ}] > ").strip()
+
+    if user_occ != "":
+        occ = int(user_occ)
 
     # -------------------------------------------------------------------------
-    candidate_term = colorized_input(". Enter the candidate term > ").strip()
-    if candidate_term == "":
-        return None, None, None, None
-
-    return core_area, lead_term, candidate_term, n_contexts
-
-
-# -----------------------------------------------------------------------------
-def internal__filter_contexts(
-    n_contexts,
-    contexts_lead_term,
-    contexts_candidate_term,
-):
-    if contexts_lead_term:
-        contexts_lead_term = contexts_lead_term[:n_contexts]
-    if contexts_candidate_term:
-        contexts_candidate_term = contexts_candidate_term[:n_contexts]
-
-    return contexts_lead_term, contexts_candidate_term
-
-
-# -----------------------------------------------------------------------------
-def internal__get_contexts(pattern, n_contexts):
-
-    terms = GetValues().with_patterns([pattern]).where_root_directory_is("./").run()
-    terms = [term for term in terms if pattern in term]
-
-    complete_contexts = []
-
-    for term in terms:
-
-        contexts = (
-            ConcordantSentences()
-            #
-            .with_abstract_having_pattern(term)
-            .where_root_directory_is("./")
-            .where_database_is("main")
-            .where_record_years_range_is(None, None)
-            .where_record_citations_range_is(None, None)
-            #
-            .run()
-        )
-
-        contexts = [c for c in contexts if len(c) > 80]
-        contexts = [f"- {c} ." for c in contexts]
-        contexts = [c.lower().replace("_", " ") for c in contexts]
-        contexts = [c for c in contexts if pattern in c]
-
-        complete_contexts.extend(contexts)
-
-        if len(complete_contexts) >= n_contexts:
-            break
-
-    pattern = pattern.lower().replace("_", " ")
-    complete_contexts = [c for c in complete_contexts if pattern in c]
-
-    if len(complete_contexts) < 5:
-        return None
-
-    return complete_contexts[:n_contexts]
-
-
-# -----------------------------------------------------------------------------
-def internal__execute_query_with_contexts(
-    core_area,
-    lead_term,
-    candidate_term,
-    contexts_lead,
-    contexts_candidate,
-):
-
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-    if isinstance(contexts_lead, list):
-        contexts_lead = "\n".join(contexts_lead)
-    if isinstance(contexts_candidate, list):
-        contexts_candidate = "\n".join(contexts_candidate)
-
-    template = "shell.thesaurus.descriptors.clean.synonyms.with_contexts.txt"
-    prompt = internal_load_template(template)
-    query = prompt.format(
-        lead_term=lead_term,
-        candidate_term=candidate_term,
-        contexts_lead=contexts_lead,
-        contexts_candidate=contexts_candidate,
-        core_area=core_area,
-    )
-
-    answer = []
-
-    try:
-
-        for _ in range(3):
-            response = client.responses.create(
-                model="gpt-4o",
-                input=query,
-                temperature=0,
-            )
-
-            response = response.output_text
-            response = response.strip().lower()
-            answer.append(response)
-
-        yes_count = answer.count("yes")
-
-        if yes_count < 3:
-            return "no"
-        return "yes"
-
-    except openai.OpenAIError as e:
-        print()
-        print(f"Error processing the query: {e}")
-        print()
-        return None
-
-
-# -----------------------------------------------------------------------------
-def internal__execute_query_without_contexts(
-    core_area,
-    lead_term,
-    candidate_term,
-):
-
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-    template = "shell.thesaurus.descriptors.clean.synonyms.without_contexts.txt"
-    prompt = internal_load_template(template)
-    query = prompt.format(
-        lead_term=lead_term,
-        candidate_term=candidate_term,
-        core_area=core_area,
-    )
-
-    answer = []
-
-    try:
-
-        for _ in range(3):
-            response = client.responses.create(
-                model="gpt-4o",
-                input=query,
-                temperature=0,
-            )
-
-            response = response.output_text
-            response = response.strip().lower()
-            answer.append(response)
-
-        yes_count = answer.count("yes")
-
-        if yes_count < 3:
-            return "no"
-        return "yes"
-
-    except openai.OpenAIError as e:
-        print(f"Error processing the query: {e}")
-        return None
-
-
-# -----------------------------------------------------------------------------
-def internal__print_answer(answer):
-
-    text = (
-        Fore.LIGHTBLACK_EX
-        + "The terms "
-        + Fore.RESET
-        + "{result}"
-        + Fore.LIGHTBLACK_EX
-        + " synonymous."
-        + Fore.RESET
-    )
-
-    if answer.lower() == "yes":
-        text = text.format(result="ARE")
-    elif answer.lower() == "no":
-        text = text.format(result="ARE NOT")
-    elif answer.lower() == "na-lead":
-        text = "No context available for the lead term."
-    elif answer.lower() == "na-candidate":
-        text = "No context available for the candidate term."
-    else:
-        text = f"Obtained answer: {answer}"
-
-    print()
-    print(text)
-    print()
-
-
-# -----------------------------------------------------------------------------
-def internal__merge_keys(lead_term, candidate_term):
-
-    answer = colorized_input(". Merge lead and candidate terms (y/[n])? > ").strip()
-    if answer.lower() in ["n", "no", "not", ""]:
-        print()
-        return
-
-    (
-        MergeKeys(use_colorama=False)
-        .with_patterns([lead_term, candidate_term])
-        .where_root_directory_is("./")
-        .run()
-    )
-
-    print()
-
-
-# -----------------------------------------------------------------------------
-def internal__explain(
-    core_area,
-    lead_term,
-    candidate_term,
-    contexts_lead,
-    contexts_candidate,
-):
-
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-    if contexts_lead:
-        contexts_lead = "\n".join(contexts_lead)
-    else:
-        contexts_lead = "N/A"
-
-    if contexts_candidate:
-        contexts_candidate = "\n".join(contexts_candidate)
-    else:
-        contexts_candidate = "N/A"
-
-    template = "shell.thesaurus.descriptors.clean.synonyms.explain.txt"
-    prompt = internal_load_template(template)
-    query = prompt.format(
-        lead_term=lead_term,
-        candidate_term=candidate_term,
-        contexts_lead=contexts_lead,
-        contexts_candidate=contexts_candidate,
-        core_area=core_area,
-    )
-
-    try:
-
-        response = client.responses.create(
-            model="gpt-4o",
-            input=query,
-            temperature=0,
-        )
-
-        answer = response.output_text
-        answer = answer.strip()
-        return answer
-
-    except openai.OpenAIError as e:
-        print()
-        print(f"Error processing the query: {e}")
-        print()
-        return None
-
-
-# -----------------------------------------------------------------------------
-def internal__print(msg):
-    print(Fore.LIGHTBLACK_EX + msg + Fore.RESET)
+    return core_area, n_contexts, occ
 
 
 # -----------------------------------------------------------------------------
@@ -312,73 +45,32 @@ def execute_synonyms_command():
 
     print()
     core_area = None
-    n_contexts = None
+    n_contexts = 30
+    occ = 7
 
-    while True:
+    core_area, n_contexts, occ = internal__user_input(core_area, n_contexts, occ)
 
-        core_area, lead_term, candidate_term, n_contexts = internal__user_input(
-            core_area, n_contexts
-        )
-
+    if core_area is None:
         print()
-        internal__print("Evaluating synonyms...")
+        return
 
-        if lead_term is None or candidate_term is None:
-            print()
-            return
+    df = (
+        AreSynonymous(quiet=False)
+        .with_core_area(core_area)
+        .having_n_contexts(n_contexts)
+        .having_terms_in_top(None)
+        .having_terms_ordered_by("OCC")
+        .having_term_occurrences_between(occ, None)
+        .having_term_citations_between(None, None)
+        .having_terms_in(None)
+        .where_root_directory_is("./")
+    ).run()
 
-        internal__print("  Building contexts for the lead term...")
-        contexts_lead = internal__get_contexts(lead_term, n_contexts)
-        if not contexts_lead:
-            internal__print(
-                "  No sufficient contextual information found for the lead term."
-            )
+    with open("./outputs/tables/synonyms.txt", "w") as f:
+        f.write(df.to_string(index=False))
 
-        if contexts_lead:
-            internal__print("  Building contexts for the candidate term...")
-            contexts_candidate = internal__get_contexts(candidate_term, n_contexts)
-            if not contexts_candidate:
-                internal__print(
-                    "  No sufficient contextual information found for the candidate term."
-                )
-        else:
-            contexts_candidate = None
-
-        internal__print("  Executing the query...")
-        if not contexts_lead and not contexts_candidate:
-            answer = internal__execute_query_without_contexts(
-                core_area, lead_term, candidate_term
-            )
-        else:
-            contexts_lead, contexts_candidate = internal__filter_contexts(
-                n_contexts, contexts_lead, contexts_candidate
-            )
-            if not contexts_lead:
-                contexts_lead = "N/A"
-            if not contexts_candidate:
-                contexts_candidate = "N/A"
-            answer = internal__execute_query_with_contexts(
-                core_area, lead_term, candidate_term, contexts_lead, contexts_candidate
-            )
-
-        internal__print("  Evaluation process completed successfully.")
-
-        internal__print_answer(answer)
-
-        if answer == "yes":
-            internal__merge_keys(lead_term, candidate_term)
-        else:
-            explanation = internal__explain(
-                core_area,
-                lead_term,
-                candidate_term,
-                contexts_lead,
-                contexts_candidate,
-            )
-            explanation = textwrap.fill(explanation, width=80)
-            if explanation:
-                print(explanation)
-                print()
+    print("INFO: The report has been saved in: ./outputs/tables/synonyms.txt")
+    print()
 
 
 #
