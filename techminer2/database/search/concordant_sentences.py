@@ -47,6 +47,8 @@ Example:
 
 
 """
+import re
+
 import pandas as pd  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
@@ -96,7 +98,7 @@ class ConcordantSentences(
         records["_found_"] = (
             records["abstract"]
             .astype(str)
-            .str.contains(r"\b" + search_for + r"\b", regex=True)
+            .str.contains(r"\b" + re.escape(search_for) + r"\b", regex=True)
         )
 
         records = records[records["_found_"]]

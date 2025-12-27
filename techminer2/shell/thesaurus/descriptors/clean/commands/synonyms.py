@@ -13,7 +13,7 @@ from techminer2.thesaurus.descriptors import AreSynonymous
 
 
 # -----------------------------------------------------------------------------
-def internal__user_input(core_area, n_contexts, occ):
+def internal__user_input(core_area, occ):
 
     # -------------------------------------------------------------------------
     if core_area is None:
@@ -23,21 +23,13 @@ def internal__user_input(core_area, n_contexts, occ):
         core_area = answer.upper()
 
     # -------------------------------------------------------------------------
-    user_n_contexts = colorized_input(
-        f". Enter the number of contexts [{n_contexts}] > "
-    ).strip()
-
-    if user_n_contexts != "":
-        n_contexts = int(n_contexts)
-
-    # -------------------------------------------------------------------------
     user_occ = colorized_input(f". Enter the mininum occ [{occ}] > ").strip()
 
     if user_occ != "":
         occ = int(user_occ)
 
     # -------------------------------------------------------------------------
-    return core_area, n_contexts, occ
+    return core_area, occ
 
 
 # -----------------------------------------------------------------------------
@@ -48,7 +40,7 @@ def execute_synonyms_command():
     n_contexts = 30
     occ = 7
 
-    core_area, n_contexts, occ = internal__user_input(core_area, n_contexts, occ)
+    core_area, occ = internal__user_input(core_area, occ)
 
     if core_area is None:
         print()
@@ -67,7 +59,12 @@ def execute_synonyms_command():
     ).run()
 
     with open("./outputs/tables/synonyms.txt", "w") as f:
-        f.write(df.to_string(index=False))
+        for _, row in df.iterrows():
+            lead_term = row["lead_term"]
+            candidate_terms = row["candidate_terms"].split("; ")
+            f.write(f"{lead_term}\n")
+            for candidate in candidate_terms:
+                f.write(f"    {candidate}\n")
 
     print("INFO: The report has been saved in: ./outputs/tables/synonyms.txt")
     print()

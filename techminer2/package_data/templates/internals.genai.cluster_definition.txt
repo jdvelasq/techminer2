@@ -13,6 +13,8 @@ clusters based on the supplied abstracts.
 
 GOAL:
 Your task is to write a critical review of the thematic cluster specified below. 
+The review is focused on the themes defined by the cluster name and cluster 
+coverage, presented below. 
 The analysis must articulate a clear scholarly position about the thematic 
 cluster, specifically addressing the relationships among its defining keywords, 
 and drawing insights from the abstracts provided. Your review should be 
@@ -85,6 +87,13 @@ EXAMPLE:
 LENGTH OF EACH PARAGRAPH:
 {word_length} words.
 
+
+CLUSTER NAME:
+{cluster_name}
+
+
+CLUSTER COVERAGE:
+{cluster_coverage}
 
 ABSTRACTS:
 

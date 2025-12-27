@@ -49,8 +49,10 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import internal__load_filtered_records_from_database
-from techminer2.database._internals.io import internal__load_user_stopwords
+from techminer2.database._internals.io import (
+    internal__load_filtered_records_from_database,
+    internal__load_user_stopwords,
+)
 
 SELECTED_COLUMNS = {
     "OCC": [
@@ -275,7 +277,10 @@ class DataFrame(
             return grouped
 
         if self.params.terms_in is not None:
-            grouped = grouped.loc[self.params.terms_in, :]
+            # TODO
+            terms_in = [t for t in self.params.terms_in if t in grouped.index]
+            #
+            grouped = grouped.loc[terms_in, :]
 
         self.grouped = grouped
 

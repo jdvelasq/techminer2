@@ -89,11 +89,7 @@ from openai import OpenAI
 from pandarallel import pandarallel
 
 from techminer2._internals import ParamsMixin, internal_load_template, stdout_to_stderr
-from techminer2.database._internals.io import (
-    internal__load_user_stopwords,
-    internal__save_user_stopwords,
-)
-from techminer2.database.metrics.performance import DataFrame as MetricsDataFrame
+from techminer2.database.metrics.performance import DataFrame as DominantDataFrame
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
 
 with stdout_to_stderr():
@@ -338,7 +334,7 @@ class IsStopword(
     def internal__get_descriptors(self):
 
         descriptors = (
-            MetricsDataFrame()
+            DominantDataFrame()
             .update(**self.params.__dict__)
             .with_field("descriptors")
             .run()

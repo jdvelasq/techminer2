@@ -129,7 +129,6 @@ class ClusterDefinition(
             documents = self.documents_by_cluster_mapping.get(cluster, [])
             ##
             documents = documents[:100]
-            # documents = documents[:20]  ## borrar
             ##
             documents = [documents[i : i + 10] for i in range(0, len(documents), 10)]
 
@@ -150,6 +149,8 @@ class ClusterDefinition(
                     word_length=self.params.word_length[0],
                     abstracts=docs,
                     cluster_keywords=cluster_keywords,
+                    cluster_name=self.params.cluster_names[cluster],
+                    cluster_coverage=self.params.cluster_coverages[cluster],
                 )
 
                 try:

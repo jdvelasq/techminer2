@@ -6,6 +6,7 @@ from techminer2.manuscript.conclusions import Conclusions
 from techminer2.manuscript.count_references import CountReferences
 from techminer2.manuscript.first_paragraph import FirstParagraph
 from techminer2.manuscript.general_metrics import GeneralMetrics
+from techminer2.manuscript.literature_review import LiteratureReview
 from techminer2.manuscript.second_paragraph import SecondParagraph
 from techminer2.manuscript.synthesis import Synthesis
 from techminer2.manuscript.titles import Titles
@@ -18,6 +19,7 @@ __all__ = [
     "CountReferences",
     "FirstParagraph",
     "GeneralMetrics",
+    "LiteratureReview",
     "SecondParagraph",
     "Synthesis",
     "Titles",

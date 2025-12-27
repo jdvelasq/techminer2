@@ -28,8 +28,9 @@ class Params:
     #
     case_sensitive: bool = False
     citation_threshold: int = 0
-    clustering_algorithm_or_dict: Optional[str] = None
+    cluster_coverages: Optional[list] = None
     cluster_names: Optional[list] = None
+    clustering_algorithm_or_dict: Optional[str] = None
     color: Optional[str] = None
     colormap: str = "Blues"
     contour_opacity: float = 0.6
@@ -628,6 +629,10 @@ class ParamsMixin:
 
     def with_abstract_having_pattern(self, pattern):
         self.params.pattern = pattern
+        return self
+
+    def with_cluster_coverages(self, cluster_coverages):
+        self.params.cluster_coverages = cluster_coverages
         return self
 
     def with_cluster_names(self, cluster_names):

@@ -35,13 +35,18 @@ Example:
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
     ...     .where_root_directory_is("examples/fintech/")
-    ... ).run()  # doctest: +SKIP
+    ... ).run()
+                   lead_term                                    candidate_terms
+    11  FINANCIAL_INDUSTRIES           FINANCIAL_SECTOR; FINANCIAL_TECHNOLOGIES
+    12  FINANCIAL_INNOVATION                                 FINTECH_INNOVATION
+    14      FINANCIAL_MARKET  FINANCIAL_SERVICE; FINANCIAL_SYSTEM; FINTECH_M...
+    27   INFORMATION_SYSTEMS                             INFORMATION_TECHNOLOGY
 
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
+    >>> print(output)
                    lead_term                                  candidate_terms
     6   FINANCIAL_INDUSTRIES  FINANCIAL_SECTOR; FINANCIAL_SERVICES_INDUSTRIES
     15     FINTECH_COMPANIES                                 FINTECH_STARTUPS
@@ -49,23 +54,38 @@ Example:
 
 
 """
-import json
-import os
 
-import openai
+import os
+import sys
+
+import numpy as np
 import pandas as pd
 from openai import OpenAI
-from textblob import Word
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.load_template import internal_load_template
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
-    internal__load_user_stopwords,
-    internal__save_user_stopwords,
-)
-from techminer2.database.metrics.performance import DataFrame as MetricsDataFrame
+from techminer2.database.metrics.performance import DataFrame as DominantDataFrame
+from techminer2.packages.emergence import DataFrame as EmergentDataFrame
 
+# -----------------------------------------------------------------------------
+PROMPT = """
+You are a domain terminology judge for research-paper keywords.
+
+Domain: {domain}
+
+Decide whether the following two keywords are synonymous in scholarly usage within this domain.
+If they are merely related (broader/narrower, adjacent, often co-occurring) then they are NOT-SYNONYM.
+
+Keyword A: {lead_term}
+Keyword B: {candidate_term}
+
+Answer with exactly one of:
+SYNONYM
+NOT-SYNONYM
+UNSURE
+Any output different from these three options will be considered invalid.
+"""
 # -----------------------------------------------------------------------------
 
 
@@ -74,107 +94,54 @@ class AreSynonymous(
 ):
     """:meta private:"""
 
+    # -------------------------------------------------------------------------
     def internal__get_descriptors(self):
 
-        descriptors = (
-            MetricsDataFrame()
+        if self.params.quiet is False:
+            sys.stderr.write("  Getting descriptors\n")
+            sys.stderr.flush()
+
+        dominant_descriptors = (
+            DominantDataFrame()
             .update(**self.params.__dict__)
+            .update(quiet=True)
             .with_field("descriptors")
             .run()
         )
 
-        self.data_frame = pd.DataFrame({"lead_term": descriptors.index})
+        emergent_descriptors = (
+            EmergentDataFrame()
+            .update(**self.params.__dict__)
+            .update(quiet=True)
+            .with_field("descriptors")
+            .run()
+        )
+        emergent_descriptors = emergent_descriptors.index.to_list()
+        emergent_descriptors = [d.split(" ")[0] for d in emergent_descriptors]
+
+        descriptors = set(dominant_descriptors.index).union(emergent_descriptors)
+        descriptors = sorted(descriptors)
+
+        self.data_frame = pd.DataFrame({"lead_term": descriptors})
+
+        self.data_frame["lead_term"] = (
+            self.data_frame["lead_term"].str.lower().str.replace("_", " ")
+        )
         self.data_frame["merged"] = False
-        self.data_frame["fingerprint"] = None
         self.data_frame["keys"] = [[] for _ in range(len(self.data_frame))]
+        self.data_frame["contexts"] = [None for _ in range(len(self.data_frame))]
         self.data_frame["candidate_terms"] = [[] for _ in range(len(self.data_frame))]
-
-    # -------------------------------------------------------------------------
-    def internal__generate_fingerprints(self):
-
-        particles = [
-            "aided",
-            "and the",
-            "and",
-            "applied to",
-            "assisted",
-            "at",
-            "based",
-            "for",
-            "in",
-            "like",
-            "of the",
-            "of using",
-            "of",
-            "on",
-            "s",
-            "sized",
-            "to",
-            "under",
-            "using",
-        ]
-
-        # Based on the basic TheVantagePoint algorithm to group terms
-        data_frame = self.data_frame.copy()
-        data_frame["fingerprint"] = data_frame["lead_term"].copy()
-
-        # hyphen-insensitive matching
-        data_frame["fingerprint"] = (
-            data_frame["fingerprint"]
-            .str.replace("_", " ")
-            .str.replace("-", " ")
-            .str.replace(".", "")
-        )
-
-        # case-insensitive matching
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.lower()
-
-        # accents removal
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.normalize("NFKD")
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.encode(
-            "ascii", errors="ignore"
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.decode("utf-8")
-
-        # particles remotion
-        for particle in particles:
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                f" {particle} ", " "
-            )
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                f"^{particle} ", ""
-            )
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                f" {particle}$", ""
-            )
-
-        # singular and plural matching
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.strip()
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [w.strip() for w in x]
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [Word(w).singularize().singularize().singularize() for w in x]
-        )
-
-        # word order insensitive matching
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: sorted(set(x))
-        )
-
-        # final fingerprint
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.join(" ")
-
-        self.data_frame["fingerprint"] = data_frame["fingerprint"]
 
     # -------------------------------------------------------------------------
     def internal__build_merging_keys(self):
 
+        if self.params.quiet is False:
+            sys.stderr.write("  Building merging keys\n")
+            sys.stderr.flush()
+
         for idx, row in self.data_frame.iterrows():
 
-            pattern = row.fingerprint
-            pattern = pattern.replace("_", " ")
+            pattern = row.lead_term
             pattern = pattern.split()
 
             # first word + key length
@@ -196,130 +163,164 @@ class AreSynonymous(
         self.data_frame["keys"] = self.data_frame["keys"].apply(lambda x: list(set(x)))
 
     # -------------------------------------------------------------------------
-    def internal__get_contexts(self):
-
-        from techminer2.thesaurus.descriptors import GetContexts
-
-        get_contexts = GetContexts().update(**self.params.__dict__)
-
-        def internal__get_row_contexts(pattern):
-
-            contexts = get_contexts.with_patterns([pattern]).run()
-            contexts = [c for c in contexts if len(c) > 80]
-            contexts = [c.lower().replace("_", " ") for c in contexts]
-            contexts = [c for c in contexts if pattern.lower().replace("_", " ") in c]
-
-            return "\n".join(contexts)
-
-        self.data_frame["contexts"] = self.data_frame["lead_term"].apply(
-            internal__get_row_contexts
-        )
-
-    # -------------------------------------------------------------------------
     def internal__compare_terms(
         self,
         lead_term,
-        lead_contexts,
         candidate_term,
-        candidate_contexts,
     ):
+        def cosine_similarity(a, b):
+            a = np.array(a, dtype=np.float32)
+            b = np.array(b, dtype=np.float32)
+            return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        def embed_texts(texts, model="text-embedding-3-small"):
+            resp = self.client.embeddings.create(model=model, input=texts)
+            return [item.embedding for item in resp.data]
 
-        core_area = self.params.core_area
+        def verify_synonym_llm(domain, lead_term, candidate_term, model="gpt-5-nano"):
 
-        system_prompt = internal_load_template(
-            "shell.thesaurus.descriptors.clean.synonyms.system.txt"
-        )
-        user_template = internal_load_template(
-            "shell.thesaurus.descriptors.clean.synonyms.user.txt"
-        )
-        user_prompt = user_template.format(
-            core_area=core_area,
-            lead_term=lead_term,
-            lead_contexts=lead_contexts,
-            candidate_term=candidate_term,
-            candidate_contexts=candidate_contexts,
-        )
-
-        try:
-
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_prompt,
-                        "cache_control": {"type": "ephemeral"},
-                    },
-                    {
-                        "role": "user",
-                        "content": user_prompt,
-                    },
-                ],
-                temperature=0,
-                response_format={"type": "json_object"},
+            resp = self.client.responses.create(
+                model=model,
+                input=PROMPT.format(
+                    domain=domain,
+                    lead_term=lead_term,
+                    candidate_term=candidate_term,
+                ),
             )
+            if resp.output_text.strip() == "SYNONYM":
+                return True
+            return False
 
-        except openai.OpenAIError as e:
-            print(f"Error processing the query: {e}")
-            response = None
-            raise ValueError("API error")
+        domain = self.params.core_area.lower()
+        a = f"{domain} keyword: {lead_term}."
+        b = f"{domain} keyword: {candidate_term}."
 
-        if response is not None:
+        emb_a, emb_b = embed_texts([a, b], model="text-embedding-3-small")
+        sim = cosine_similarity(emb_a, emb_b)
 
-            answer = response.choices[0].message.content
-            answer = answer.strip()
-            answer = json.loads(answer)
-            answer = answer["answer"]
-            answer = answer.lower().strip()
+        if sim >= 0.94:
+            return True
+        return False
 
-            if answer == "yes":
-                answer = True
-            else:
-                answer = False
+        if sim < 0.96:
+            return False
 
-        return answer
+        return verify_synonym_llm(
+            domain=domain,
+            lead_term=lead_term,
+            candidate_term=candidate_term,
+            model="gpt-5-nano",
+        )
 
+    # -------------------------------------------------------------------------
+    # def internal__compare_terms(
+    #     self,
+    #     lead_term,
+    #     lead_contexts,
+    #     candidate_term,
+    #     candidate_contexts,
+    # ):
+    #
+    #     user_prompt = self.user_template.format(
+    #         core_area=self.params.core_area,
+    #         lead_term=lead_term,
+    #         lead_contexts=lead_contexts,
+    #         candidate_term=candidate_term,
+    #         candidate_contexts=candidate_contexts,
+    #     )
+    #
+    #     try:
+    #
+    #         response = self.client.chat.completions.create(
+    #             model="gpt-4o",
+    #             messages=[
+    #                 {
+    #                     "role": "system",
+    #                     "content": self.system_prompt,
+    #                     "cache_control": {"type": "ephemeral"},
+    #                 },
+    #                 {
+    #                     "role": "user",
+    #                     "content": user_prompt,
+    #                 },
+    #             ],
+    #             temperature=0,
+    #             response_format={"type": "json_object"},
+    #         )
+    #
+    #     except openai.OpenAIError as e:
+    #         print(f"Error processing the query: {e}")
+    #         response = None
+    #         raise ValueError("API error")
+    #
+    #     if response is not None:
+    #
+    #         answer = response.choices[0].message.content
+    #         answer = answer.strip()
+    #         answer = json.loads(answer)
+    #         answer = answer["answer"]
+    #         answer = answer.lower().strip()
+    #
+    #         if answer == "yes":
+    #             answer = True
+    #         else:
+    #             answer = False
+    #
+    #     return answer
+    #
     # -------------------------------------------------------------------------
     def internal__evaluate_merging(self):
 
-        for idx0, row0 in self.data_frame.iterrows():
+        if self.params.quiet is False:
+            sys.stderr.write("  Comparing pairs of keywords\n")
+            sys.stderr.flush()
+
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+        for idx0, row0 in tqdm(
+            self.data_frame.iterrows(),
+            total=len(self.data_frame),
+            bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
+            ascii=(" ", ":"),
+            ncols=73,
+        ):
 
             if idx0 == self.data_frame.index[-1]:
                 break
 
-            if self.data_frame.at[idx0, "merged"] is True:
+            if bool(self.data_frame.at[idx0, "merged"]) is True:
                 continue
 
             lead_keys = row0["keys"]
             lead_term = row0.lead_term
-            lead_contexts = row0["contexts"]
 
-            for idx1, row1 in self.data_frame.iterrows():
+            for idx1, row1 in tqdm(
+                self.data_frame.iterrows(),
+                total=len(self.data_frame),
+                leave=False,
+                bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
+                ascii=(" ", ":"),
+                ncols=73,
+            ):
 
                 if idx0 >= idx1:
                     continue
 
-                if self.data_frame.at[idx1, "merged"] is True:
+                if bool(self.data_frame.at[idx1, "merged"]) is True:
                     continue
 
                 candidate_keys = row1["keys"]
                 candidate_term = row1.lead_term
-                candidate_contexts = row1["contexts"]
 
-                # Check if they share at least one key
                 if len(set(lead_keys).intersection(set(candidate_keys))) == 0:
                     continue
 
                 answer = self.internal__compare_terms(
                     lead_term,
-                    lead_contexts,
                     candidate_term,
-                    candidate_contexts,
                 )
 
-                if answer is True:
+                if bool(answer) is True:
                     self.data_frame.at[idx1, "merged"] = True
                     self.data_frame.at[idx0, "candidate_terms"].append(candidate_term)
 
@@ -330,21 +331,34 @@ class AreSynonymous(
             self.data_frame.candidate_terms.apply(lambda x: x != [])
         ]
 
+        self.data_frame["candidate_terms"] = self.data_frame["candidate_terms"].apply(
+            lambda x: [y.upper().replace(" ", "_") for y in x]
+        )
+
         self.data_frame["candidate_terms"] = self.data_frame[
             "candidate_terms"
         ].str.join("; ")
+
+        self.data_frame["lead_term"] = (
+            self.data_frame["lead_term"]
+            .str.upper()
+            .str.replace(
+                " ",
+                "_",
+            )
+        )
+
+        self.data_frame = self.data_frame[["lead_term", "candidate_terms"]]
 
     # -------------------------------------------------------------------------
     def run(self):
 
         self.internal__get_descriptors()
-        self.internal__generate_fingerprints()
         self.internal__build_merging_keys()
-        self.internal__get_contexts()
         self.internal__evaluate_merging()
         self.internal__format_output()
 
-        return self.data_frame[["lead_term", "candidate_terms"]]
+        return self.data_frame
 
 
 # =============================================================================

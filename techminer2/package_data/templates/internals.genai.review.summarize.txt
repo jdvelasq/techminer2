@@ -17,10 +17,6 @@ paragraph. The tone, style, and content must strongly align with the AIMS AND
 SCOPE OF THE TARGET JOURNAL.
 
 
-AIMS AND SCOPE OF THE TARGET JOURNAL:
-{aims_and_scope}
-
-
 MAX LENGTH:
 {word_length} words (+/- 10% margin allowed for completeness and readability).
 
