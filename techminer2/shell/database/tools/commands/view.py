@@ -29,10 +29,10 @@ def execute_view_command():
     viewer = (
         RecordViewer()
         #
-        .where_root_directory_is("./")
-        .where_database_is("main")
-        .where_record_years_range_is(None, None)
-        .where_record_citations_range_is(None, None)
+        .where_root_directory("./")
+        .where_database("main")
+        .where_record_years_range(None, None)
+        .where_record_citations_range(None, None)
         .where_records_match(None)
         .where_records_ordered_by(None)
     )

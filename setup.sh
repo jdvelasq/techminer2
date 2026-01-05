@@ -10,14 +10,14 @@ pip3 install --quiet \
     furo \
     ipykernel \
     nbsphinx \
-    pytest \
     pygments \
+    pytest \
     sphinx \
     sphinx_copybutton \
     sphinx_rtd_theme \
     sphinx-autodoc-typehints \
     sphinx-intl \
-    sphinx-toggleprompt
+    sphinx-toggleprompt 
 
 python3 -m spacy download en_core_web_lg
 python3 -m nltk.downloader averaged_perceptron_tagger

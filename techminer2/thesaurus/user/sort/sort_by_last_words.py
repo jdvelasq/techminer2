@@ -30,7 +30,7 @@ Example:
     >>> sorter = (
     ...     SortByLastWords(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()
 

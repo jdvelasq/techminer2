@@ -27,7 +27,7 @@ Example:
     ...     SortByFuzzyMatch(use_colorama=False)
     ...     .having_pattern("china")
     ...     .having_match_threshold(90)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 

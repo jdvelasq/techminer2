@@ -55,7 +55,9 @@ def internal__user_input(core_area, n_contexts):
 # -----------------------------------------------------------------------------
 def internal__get_contexts(pattern, n_contexts):
 
-    terms = GetValues().with_patterns([pattern]).where_root_directory_is("./").run()
+    terms = (
+        GetValues().having_patterns_matching([pattern]).where_root_directory("./").run()
+    )
     terms = [term for term in terms if pattern in term]
 
     complete_contexts = []
@@ -65,11 +67,11 @@ def internal__get_contexts(pattern, n_contexts):
         contexts = (
             ConcordantSentences()
             #
-            .with_abstract_having_pattern(term)
-            .where_root_directory_is("./")
-            .where_database_is("main")
-            .where_record_years_range_is(None, None)
-            .where_record_citations_range_is(None, None)
+            .having_abstract_matching(term)
+            .where_root_directory("./")
+            .where_database("main")
+            .where_record_years_range(None, None)
+            .where_record_citations_range(None, None)
             #
             .run()
         )
@@ -229,7 +231,9 @@ def internal__extend_stopwords(pattern):
         return
 
     pattern = pattern.upper().replace(" ", "_")
-    ExtendStopwords().with_patterns([pattern]).where_root_directory_is("./").run()
+    ExtendStopwords().having_patterns_matching([pattern]).where_root_directory(
+        "./"
+    ).run()
     print()
 
 

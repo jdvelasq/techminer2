@@ -27,7 +27,7 @@ Example:
     ...     ReplaceLastWord(use_colorama=False)
     ...     .having_word("FINTECH")
     ...     .having_replacement("fintech")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> replacer.run()
 

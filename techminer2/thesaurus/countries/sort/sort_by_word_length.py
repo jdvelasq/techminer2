@@ -26,7 +26,7 @@ Example:
     >>> # Sort thesaurus by alphabetical order
     >>> sorter = (
     ...     SortByWordLength()
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()
 

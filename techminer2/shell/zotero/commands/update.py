@@ -21,6 +21,6 @@ def execute_update_command():
         .using_zotero_api_key(zotero_api_key)
         .using_zotero_library_id(zotero_library_id)
         .using_zotero_library_type("group")
-        .where_root_directory_is("./")
+        .where_root_directory("./")
         .run()
     )

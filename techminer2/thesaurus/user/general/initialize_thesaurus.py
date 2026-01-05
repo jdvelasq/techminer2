@@ -26,7 +26,7 @@ Example:
     ...     InitializeThesaurus(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> initializator.run()
 

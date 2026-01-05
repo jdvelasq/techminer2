@@ -26,7 +26,7 @@ Example:
     ...     ApplyThesaurus(use_colorama=False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     #
     ...     .run()
     ... )
@@ -67,7 +67,7 @@ class ApplyThesaurus(
             .with_thesaurus_file("organizations.the.txt")
             .with_field("affiliations")
             .with_other_field("organizations")
-            .where_root_directory_is(self.params.root_directory)
+            .where_root_directory(self.params.root_directory)
             .run()
         )
 

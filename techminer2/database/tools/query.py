@@ -18,10 +18,10 @@ Example:
     ...     #
     ...     .with_query_expression("SELECT source_title FROM database LIMIT 5;")
     ...     #
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
@@ -38,10 +38,10 @@ Example:
     ...     #
     ...     .with_query_expression("SELECT raw_descriptors, raw_nouns_and_phrases, raw_keywords FROM database;")
     ...     #
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... )
@@ -59,6 +59,7 @@ Example:
 
 """
 import duckdb
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,

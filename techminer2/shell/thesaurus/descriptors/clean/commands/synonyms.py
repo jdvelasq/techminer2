@@ -55,7 +55,7 @@ def execute_synonyms_command():
         .having_term_occurrences_between(occ, None)
         .having_term_citations_between(None, None)
         .having_terms_in(None)
-        .where_root_directory_is("./")
+        .where_root_directory("./")
     ).run()
 
     with open("./outputs/tables/synonyms.txt", "w") as f:

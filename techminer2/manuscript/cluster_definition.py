@@ -39,10 +39,10 @@ Example:
     ...     .with_word_length((200, 400, 300))
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -57,7 +57,7 @@ Example:
 """
 import os
 
-from openai import OpenAI
+from openai import OpenAI  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.load_template import internal_load_template

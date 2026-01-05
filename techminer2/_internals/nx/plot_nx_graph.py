@@ -145,7 +145,7 @@ def __create_network_fig(
     node_trace,
     xaxes_range,
     yaxes_range,
-    show_axes,
+    axes_visible,
 ):
     """Creates a network graph from traces using plotly express."""
 
@@ -174,7 +174,7 @@ def __create_network_fig(
         layout=layout,
     )
 
-    if show_axes is False:
+    if axes_visible is False:
         fig.update_layout(
             xaxis={
                 "showgrid": False,

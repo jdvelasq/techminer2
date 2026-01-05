@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.manuscript import CountReferences
     >>> (
     ...     CountReferences()
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 

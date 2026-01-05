@@ -17,7 +17,7 @@ def execute_combine_command():
 
     df = (
         CombineKeys()
-        .where_root_directory_is("./")
+        .where_root_directory("./")
         .having_terms_ordered_by("OCC")
         .having_term_occurrences_between(5, None)
         .run()

@@ -31,7 +31,7 @@ Example:
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern("INTELL")
     ...     .having_match_threshold(70)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 

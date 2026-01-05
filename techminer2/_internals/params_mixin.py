@@ -1,11 +1,42 @@
 # flake8: noqa
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-function-docstring
-# pylint: disable=too-many-public-methods
+# pylint: disable=missing-module-docstring
 # pylint: disable=too-many-instance-attributes
-"""Define a mixin class for input functions."""
+# pylint: disable=too-many-lines
+# pylint: disable=too-many-public-methods
+
+
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union, cast
+
+from sklearn.base import BaseEstimator  # type: ignore
+from typing_extensions import Self
+
+from techminer2._internals.validation import (
+    internal__check_optional_base_estimator,
+    internal__check_optional_color_list,
+    internal__check_optional_positive_float,
+    internal__check_optional_positive_int,
+    internal__check_optional_str,
+    internal__check_optional_str_list,
+    internal__check_optional_str_or_dict,
+    internal__check_plotly_color,
+    internal__check_required_bool,
+    internal__check_required_float,
+    internal__check_required_float_0_1,
+    internal__check_required_float_0_1_range,
+    internal__check_required_float_range,
+    internal__check_required_int,
+    internal__check_required_int_range,
+    internal__check_required_non_negative_int,
+    internal__check_required_open_ended_int_range,
+    internal__check_required_positive_float,
+    internal__check_required_positive_float_range,
+    internal__check_required_positive_int,
+    internal__check_required_str,
+    internal__check_tuple_of_ordered_four_floats,
+)
 
 
 @dataclass
@@ -28,9 +59,9 @@ class Params:
     #
     case_sensitive: bool = False
     citation_threshold: int = 0
-    cluster_coverages: Optional[list] = None
-    cluster_names: Optional[list] = None
-    clustering_algorithm_or_dict: Optional[str] = None
+    cluster_coverages: Optional[list[str]] = None
+    cluster_names: Optional[list[str]] = None
+    clustering_algorithm_or_dict: Optional[Union[str, dict]] = None
     color: Optional[str] = None
     colormap: str = "Blues"
     contour_opacity: float = 0.6
@@ -44,12 +75,12 @@ class Params:
     #
     database: str = "main"
     draw_arrows: bool = False
-    decomposition_algorithm = None
+    decomposition_algorithm: Optional[BaseEstimator] = None
 
     #
     # E
     #
-    edge_colors: Optional[List] = None
+    edge_colors: Optional[list[Any]] = None
     edge_top_n: Optional[int] = None
     edge_width_range: Tuple[float, float] = (0.5, 0.8)
     edge_widths: Tuple[float, float, float, float] = (0.5, 0.8, 1.0, 1.2)
@@ -59,8 +90,12 @@ class Params:
     #
     # F
     #
-    field: Optional[str] = None  # with_selected_field
-    transformation_function = None
+    field: Optional[str] = None
+
+    #
+    # I
+    #
+    initial_newline: bool = False
 
     #
     # K
@@ -71,24 +106,23 @@ class Params:
     #
     # L
     #
-    line_color: str = "black"
+    line_color: Union[str, float, Sequence[float]] = "black"
     line_width: float = 1.5
 
     #
     # M
     #
-    manifold_algorithm = None
+    manifold_algorithm: Optional[BaseEstimator] = None
     marker_size: float = 7
     match_threshold: float = 95.0
-    maximum_occurrence: int = 10
     minimum_terms_in_cluster: int = 5
     minimum_number_of_clusters: int = 10
+    maximum_occurrence: int = 10
 
     #
     # N
     #
-    initial_newline: bool = False
-    node_colors: Optional[List] = None
+    node_colors: Optional[List[Union[str, float, Sequence[float]]]] = None
     node_size: int = 10
     node_size_range: Tuple[int, int] = (5, 20)
     novelty_threshold: float = 0.15
@@ -102,7 +136,7 @@ class Params:
     other_field: Optional[str] = None
     other_term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     other_term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_terms_in: Optional[list] = None
+    other_terms_in: Optional[list[str]] = None
     other_terms_order_by: Optional[str] = None
     other_top_n: Optional[int] = None
 
@@ -126,26 +160,21 @@ class Params:
     ratio_threshold: float = 0.5
     recent_periods: int = 3
     record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    record_filters: Optional[dict] = None
     record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
     records_match: Optional[Dict[str, List[str]]] = None
     records_order_by: Optional[str] = None  # order_records_by
-    regex_flags: int = 0  # with_regex_flags
+    regex_flags: int = 0
     regex_search: bool = False
     replacement: Optional[str] = None
     root_directory: str = "./"  # root_dir
-    row_normalization: Optional[str] = None
 
     #
     # S
     #
-    # show_progress: bool = True
-    smooth_idf_weights: bool = False
     spring_layout_iterations: int = 50
-    spring_layout_k: float = 0.1
+    spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42
-    stemming_fn: Optional[callable] = None
-    sublinear_tf_scaling: bool = False  # sublinear_tf
+    stemming_fn: Optional[Callable] = None
 
     #
     # T
@@ -153,14 +182,18 @@ class Params:
     term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     term_counters: bool = True
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    terms_in: Optional[list] = None
+    terms_in: Optional[list[str]] = None
     terms_order_by: Optional[str] = None
     terms_per_year: int = 5
-    textfont_color: str = "#465c6b"
+    textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_opacity: float = 1.0
     textfont_size_range: Tuple[int, int] = (8, 16)
     textfont_size: float = 10
+    tfidf_norm: Optional[str] = None
+    tfidf_smooth_idf: bool = False
+    tfidf_sublinear_tf: bool = False  # sublinear_tf
+    tfidf_use_idf: bool = False  # using_idf_reweighting
     thesaurus_file: str = "no_name.the.txt"
     time_window: int = 2
     title_text: Optional[str] = None
@@ -168,13 +201,13 @@ class Params:
     top_terms_by_theme: int = 5
     total_records_threshold: int = 7
     tqdm_disable: bool = False
+    transformation_function: Optional[Callable[[Any], Any]] = None
 
     #
     # U
     #
     unit_of_analysis: Optional[str] = None
     use_colorama: bool = True
-    use_idf: bool = False  # using_idf_reweighting
 
     #
     # V
@@ -232,6 +265,11 @@ class Params:
         return self
 
 
+# ==============================================================================
+# PARAMS MIXIN
+# ==============================================================================
+
+
 class ParamsMixin:
 
     def __init__(self, **kwargs):
@@ -243,114 +281,189 @@ class ParamsMixin:
             setattr(self.params, key, value)
         return self
 
-    #
-    # H
-    #
-    def having_case_sensitive(self, case_sensitive):
+    # ==========================================================================
+    # HAVING_* → Term filtering (WHICH terms?)
+    # ==========================================================================
+
+    def having_case_sensitive(self, case_sensitive: bool) -> Self:
+        case_sensitive = internal__check_required_bool(
+            value=case_sensitive,
+            param_name="case_sensitive",
+        )
         self.params.case_sensitive = case_sensitive
         return self
 
-    def having_citation_threshold(self, threshold):
-        self.params.citation_threshold = threshold
+    def having_keys_ordered_by(self, keys_order_by: str) -> Self:
+        keys_order_by = internal__check_required_str(
+            value=keys_order_by,
+            param_name="keys_order_by",
+        )
+        self.params.keys_order_by = keys_order_by
         return self
 
-    def having_cutoff_threshold(self, threshold):
-        self.params.cutoff_threshold = threshold
-        return self
-
-    def having_keys_ordered_by(self, order):
-        self.params.keys_order_by = order
-        return self
-
-    def having_match_threshold(self, threshold):
-        self.params.match_threshold = threshold
-        return self
-
-    def having_maximum_occurrence(self, maximum_occurrence):
+    def having_maximum_occurrence(self, maximum_occurrence: int) -> Self:
+        maximum_occurrence = internal__check_required_positive_int(
+            value=maximum_occurrence,
+            param_name="maximum_occurrence",
+        )
         self.params.maximum_occurrence = maximum_occurrence
         return self
 
-    def having_n_chars(self, n_chars):
+    def having_n_chars(self, n_chars: int) -> Self:
+        n_chars = internal__check_required_positive_int(
+            value=n_chars,
+            param_name="n_chars",
+        )
         self.params.n_chars = n_chars
         return self
 
-    def having_n_contexts(self, n_contexts):
+    def having_n_contexts(self, n_contexts: int) -> Self:
+        n_contexts = internal__check_required_positive_int(
+            value=n_contexts,
+            param_name="n_contexts",
+        )
         self.params.n_contexts = n_contexts
         return self
 
-    def having_occurrence_threshold(self, threshold):
-        self.params.occurrence_threshold = threshold
-        return self
-
-    def having_other_term_citations_between(self, start, end):
+    def having_other_term_citations_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = internal__check_required_open_ended_int_range(
+            (start, end), "other_term_citations_range"
+        )
         self.params.other_term_citations_range = (start, end)
         return self
 
-    def having_other_term_occurrences_between(self, start, end):
+    def having_other_term_occurrences_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = internal__check_required_open_ended_int_range(
+            (start, end), "other_term_occurrences_range"
+        )
         self.params.other_term_occurrences_range = (start, end)
         return self
 
-    def having_other_terms_in(self, term_list):
-        self.params.other_terms_in = term_list
+    def having_other_terms_in(self, other_terms_in: Optional[list[str]]) -> Self:
+        other_terms_in = internal__check_optional_str_list(
+            value=other_terms_in,
+            param_name="other_terms_in",
+        )
+        self.params.other_terms_in = other_terms_in
         return self
 
-    def having_other_terms_in_top(self, n):
-        self.params.other_top_n = n
+    def having_other_terms_in_top(self, other_top_n: Optional[int]) -> Self:
+        other_top_n = internal__check_optional_positive_int(
+            value=other_top_n,
+            param_name="other_top_n",
+        )
+        self.params.other_top_n = other_top_n
         return self
 
-    def having_other_terms_ordered_by(self, criteria):
-        self.params.other_terms_order_by = criteria
+    def having_other_terms_ordered_by(
+        self, other_terms_order_by: Optional[str]
+    ) -> Self:
+        other_terms_order_by = internal__check_optional_str(
+            value=other_terms_order_by,
+            param_name="other_terms_order_by",
+        )
+        self.params.other_terms_order_by = other_terms_order_by
         return self
 
-    def having_pattern(self, pattern):
+    def having_pattern(self, pattern: str) -> Self:
+        pattern = internal__check_required_str(
+            value=pattern,
+            param_name="pattern",
+        )
         self.params.pattern = pattern
         return self
 
-    def having_regex_flags(self, flags):
-        self.params.regex_flags = flags
+    def having_regex_flags(self, regex_flags: int) -> Self:
+        regex_flags = internal__check_required_non_negative_int(
+            value=regex_flags,
+            param_name="regex_flags",
+        )
+        self.params.regex_flags = regex_flags
         return self
 
-    def having_regex_search(self, regex_search):
+    def having_regex_search(self, regex_search: bool) -> Self:
+        regex_search = internal__check_required_bool(
+            value=regex_search,
+            param_name="regex_search",
+        )
         self.params.regex_search = regex_search
         return self
 
-    def having_replacement(self, replacement):
+    def having_replacement(self, replacement: Optional[str]) -> Self:
+        replacement = internal__check_optional_str(
+            value=replacement,
+            param_name="replacement",
+        )
         self.params.replacement = replacement
         return self
 
-    def having_term_citations_between(self, start, end):
+    def having_term_citations_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = internal__check_required_open_ended_int_range(
+            (start, end), "term_citations_range"
+        )
         self.params.term_citations_range = (start, end)
         return self
 
-    def having_term_occurrences_between(self, start, end):
+    def having_term_occurrences_between(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        start, end = internal__check_required_open_ended_int_range(
+            (start, end), "term_occurrences_range"
+        )
         self.params.term_occurrences_range = (start, end)
         return self
 
-    def having_terms_associated_with(self, terms):
-        self.params.terms_associated_with = terms
-        return self
-
-    def having_terms_in(self, term_list):
+    def having_terms_in(self, term_list: Optional[list[str]]) -> Self:
+        term_list = internal__check_optional_str_list(
+            value=term_list,
+            param_name="terms_in",
+        )
         self.params.terms_in = term_list
         return self
 
-    def having_terms_in_top(self, n):
-        self.params.top_n = n
+    def having_terms_in_top(self, top_n: Optional[int]) -> Self:
+        top_n = internal__check_optional_positive_int(
+            value=top_n,
+            param_name="top_n",
+        )
+        self.params.top_n = top_n
         return self
 
-    def having_terms_like(self, pattern):
+    def having_terms_like(self, pattern: str) -> Self:
+        pattern = internal__check_required_str(
+            value=pattern,
+            param_name="pattern",
+        )
         self.params.pattern = pattern
         return self
 
-    def having_terms_ordered_by(self, criteria):
-        self.params.terms_order_by = criteria
+    def having_terms_ordered_by(self, terms_order_by: str) -> Self:
+        terms_order_by = internal__check_required_str(
+            value=terms_order_by,
+            param_name="terms_order_by",
+        )
+        self.params.terms_order_by = terms_order_by
         return self
 
-    def having_terms_per_year(self, n):
-        self.params.terms_per_year = n
+    def having_terms_per_year(self, terms_per_year: int) -> Self:
+        terms_per_year = internal__check_required_positive_int(
+            value=terms_per_year,
+            param_name="terms_per_year",
+        )
+        self.params.terms_per_year = terms_per_year
         return self
 
-    def having_word(self, word):
+    def having_word(self, word: str) -> Self:
+        word = internal__check_required_str(
+            value=word,
+            param_name="word",
+        )
         self.params.word = word
         return self
 
@@ -364,337 +477,710 @@ class ParamsMixin:
     #
     # U
     #
-    def unit_of_analysis(self, unit_of_analysis):
+    def unit_of_analysis(self, unit_of_analysis) -> Self:
         self.params.unit_of_analysis = unit_of_analysis
         return self
 
-    def using_association_index(self, association_index):
+    # ==========================================================================
+    # USING_* → Parameters (HOW to analyze/display?)
+    # ==========================================================================
+
+    def using_association_index(self, association_index: Optional[str]) -> Self:
+        association_index = internal__check_optional_str(
+            value=association_index,
+            param_name="association_index",
+        )
         self.params.association_index = association_index
         return self
 
-    def using_clustering_algorithm_or_dict(self, clustering_algorithm_or_dict):
+    def using_clustering_algorithm_or_dict(
+        self, clustering_algorithm_or_dict: Optional[Union[str, dict]]
+    ) -> Self:
+        clustering_algorithm_or_dict = internal__check_optional_str_or_dict(
+            value=clustering_algorithm_or_dict,
+            param_name="clustering_algorithm_or_dict",
+        )
         self.params.clustering_algorithm_or_dict = clustering_algorithm_or_dict
         return self
 
-    def using_decomposition_algorithm(self, algorithm):
-        self.params.decomposition_algorithm = algorithm
+    def using_citation_threshold(self, citation_threshold: int) -> Self:
+        citation_threshold = internal__check_required_positive_int(
+            value=citation_threshold,
+            param_name="citation_threshold",
+        )
+        self.params.citation_threshold = citation_threshold
         return self
 
-    def using_draw_arrows(self, draw):
-        self.params.draw_arrows = draw
+    def using_cutoff_threshold(self, cutoff_threshold: float) -> Self:
+        cutoff_threshold = internal__check_required_positive_float(
+            value=cutoff_threshold,
+            param_name="cutoff_threshold",
+        )
+        self.params.cutoff_threshold = cutoff_threshold
         return self
 
-    def using_axes_visible(self, visible):
-        self.params.axes_visible = visible
+    def using_occurrence_threshold(self, occurrence_threshold: int) -> Self:
+        occurrence_threshold = internal__check_required_positive_int(
+            value=occurrence_threshold,
+            param_name="occurrence_threshold",
+        )
+        self.params.occurrence_threshold = occurrence_threshold
         return self
 
-    def using_baseline_periods(self, periods):
-        self.params.baseline_periods = periods
+    def using_decomposition_algorithm(
+        self, decomposition_algorithm: Optional[BaseEstimator]
+    ) -> Self:
+        decomposition_algorithm = internal__check_optional_base_estimator(
+            value=decomposition_algorithm,
+            param_name="decomposition_algorithm",
+        )
+        self.params.decomposition_algorithm = decomposition_algorithm
         return self
 
-    def using_binary_term_frequencies(self, binary):
-        self.params.binary_term_frequencies = binary
+    def using_draw_arrows(self, draw_arrows: bool) -> Self:
+        draw_arrows = internal__check_required_bool(
+            value=draw_arrows,
+            param_name="draw",
+        )
+        self.params.draw_arrows = draw_arrows
         return self
 
-    def using_color(self, color):
-        self.params.color = color
+    def using_axes_visible(self, axes_visible: bool) -> Self:
+        axes_visible = internal__check_required_bool(
+            value=axes_visible,
+            param_name="axes_visible",
+        )
+        self.params.axes_visible = axes_visible
         return self
 
-    def using_colormap(self, colormap):
-        self.params.colormap = colormap
+    def using_baseline_periods(self, baseline_periods: int) -> Self:
+        baseline_periods = internal__check_required_positive_int(
+            value=baseline_periods,
+            param_name="baseline_periods",
+        )
+        self.params.baseline_periods = baseline_periods
         return self
 
-    def using_contour_opacity(self, opacity):
-        self.params.contour_opacity = opacity
+    def using_binary_term_frequencies(self, binary_term_frequencies: bool) -> Self:
+        binary_term_frequencies = internal__check_required_bool(
+            value=binary_term_frequencies,
+            param_name="binary_term_frequencies",
+        )
+        self.params.binary_term_frequencies = binary_term_frequencies
         return self
 
-    def using_edge_colors(self, colors):
-        self.params.edge_colors = colors
-        return self
-
-    def using_edge_similarity_threshold(self, threshold):
-        self.params.edge_similarity_threshold = threshold
-        return self
-
-    def using_edge_top_n(self, top_n):
-        self.params.edge_top_n = top_n
-        return self
-
-    def using_edge_opacity_range(self, min_opacity, max_opacity):
-        self.params.edge_opacity_range = (min_opacity, max_opacity)
-        return self
-
-    def using_edge_width_range(self, min_width, max_width):
-        self.params.edge_width_range = (min_width, max_width)
-        return self
-
-    def using_edge_widths(self, widths):
-        self.params.edge_widths = widths
-        return self
-
-    def using_idf_reweighting(self, smooth):  # use_idf
-        self.params.use_idf = smooth
-        return self
-
-    def using_idf_weights_smoothing(self, smooth):  # smooth_idf
-        self.params.smooth_idf_weights = smooth
-        return self
-
-    def using_kernel_bandwidth(self, bandwidth):
-        self.params.kernel_bandwidth = bandwidth
-        return self
-
-    def using_line_color(self, color):
-        self.params.line_color = color
-        return self
-
-    def using_line_width(self, width):
-        self.params.line_width = width
-        return self
-
-    def using_manifold_algorithm(self, algorithm):
-        self.params.manifold_algorithm = algorithm
-        return self
-
-    def using_marker_size(self, size):
-        self.params.marker_size = size
-        return self
-
-    def using_minimum_number_of_clusters(self, minimum):
-        self.params.minimum_number_of_clusters = minimum
-        return self
-
-    def using_minimum_terms_in_cluster(self, minimum):
-        self.params.minimum_terms_in_cluster = minimum
-        return self
-
-    def using_node_colors(self, colors):
-        self.params.node_colors = colors
-        return self
-
-    def using_node_size(self, size):
-        self.params.node_size = size
-        return self
-
-    def using_node_size_range(self, min_size, max_size):
-        self.params.node_size_range = (min_size, max_size)
-        return self
-
-    def using_novelty_threshold(self, threshold):
-        self.params.novelty_threshold = threshold
-        return self
-
-    def using_periods_with_at_least_one_record(self, periods):
-        self.params.periods_with_at_least_one_record = periods
-        return self
-
-    def using_pie_hole(self, pie_hole):
-        self.params.pie_hole = pie_hole
-        return self
-
-    def using_plot_dimensions(self, dim_x, dim_y):
-        self.params.plot_dimensions = (dim_x, dim_y)
-        return self
-
-    def using_plot_height(self, height):
-        self.params.height = height
-        return self
-
-    def using_plot_width(self, width):
-        self.params.width = width
-        return self
-
-    def using_ratio_threshold(self, threshold):
-        self.params.ratio_threshold = threshold
-        return self
-
-    def using_recent_periods(self, periods):
-        self.params.recent_periods = periods
-        return self
-
-    def using_row_normalization(self, normalization):  # nowm: L1, L2, None
-        self.params.row_normalization = normalization
-        return self
-
-    def using_spring_layout_iterations(self, iterations):
-        self.params.spring_layout_iterations = iterations
-        return self
-
-    def using_spring_layout_k(self, k):
-        self.params.spring_layout_k = k
-        return self
-
-    def using_spring_layout_seed(self, seed):
-        self.params.spring_layout_seed = seed
-        return self
-
-    def using_term_counters(self, counters):
-        self.params.term_counters = counters
-        return self
-
-    def using_textfont_color(self, color):
-        self.params.textfont_color = color
-        return self
-
-    def using_textfont_opacity(self, opacity):
-        self.params.textfont_opacity = opacity
-        return
-
-    def using_textfont_opacity_range(self, min_opacity, max_opacity):
-        self.params.textfont_opacity_range = (min_opacity, max_opacity)
-        return self
-
-    def using_textfont_size(self, size):
-        self.params.textfont_size = size
-        return self
-
-    def using_textfont_size_range(self, min_size, max_size):
-        self.params.textfont_size_range = (min_size, max_size)
-        return self
-
-    def using_title_text(self, text):
-        self.params.title_text = text
-        return self
-
-    def using_top_terms_by_theme(self, n):
-        self.params.top_terms_by_theme = n
-        return self
-
-    def using_total_records_threshold(self, threshold):
-        self.params.total_records_threshold = threshold
-        return self
-
-    def using_xaxes_range(self, x_min, x_max):
-        self.params.xaxes_range = (x_min, x_max)
-        return self
-
-    def using_xaxes_title_text(self, text):
-        self.params.xaxes_title_text = text
-        return self
-
-    def using_yaxes_range(self, y_min, y_max):
-        self.params.yaxes_range = (y_min, y_max)
-        return self
-
-    def using_yaxes_title_text(self, text):
-        self.params.yaxes_title_text = text
-        return self
-
-    def using_yshift(self, yshift):
-        self.params.yshift = yshift
-        return self
-
-    def using_sublinear_tf_scaling(self, scaling):
-        self.params.sublinear_tf_scaling = scaling
-        return self
-
-    def using_zotero_api_key(self, api_key):
-        self.params.zotero_api_key = api_key
-        return self
-
-    def using_zotero_library_id(self, library_id):
-        self.params.zotero_library_id = library_id
-        return self
-
-    def using_zotero_library_type(self, library_type):
-        self.params.zotero_library_type = library_type
-        return self
-
-    #
-    # W
-    #
-    def where_database_is(self, database):
-        self.params.database = database
-        return self
-
-    def where_root_directory_is(self, directory):
-        self.params.root_directory = directory
-        return self
-
-    def where_record_citations_range_is(self, start, end):
-        self.params.record_citations_range = (start, end)
-        return self
-
-    def where_record_years_range_is(self, start, end):
-        self.params.record_years_range = (start, end)
-        return self
-
-    def where_records_match(self, records_match):
-        self.params.records_match = records_match
-        return self
-
-    def where_records_ordered_by(self, records_order_by):
-        self.params.records_order_by = records_order_by
-        return self
-
-    def with_abstract_having_pattern(self, pattern):
-        self.params.pattern = pattern
-        return self
-
-    def with_cluster_coverages(self, cluster_coverages):
+    def using_cluster_coverages(self, cluster_coverages: Optional[list[str]]) -> Self:
+        cluster_coverages = internal__check_optional_str_list(
+            value=cluster_coverages,
+            param_name="cluster_coverages",
+        )
         self.params.cluster_coverages = cluster_coverages
         return self
 
-    def with_cluster_names(self, cluster_names):
+    def using_cluster_names(self, cluster_names: Optional[list[str]]) -> Self:
+        cluster_names = internal__check_optional_str_list(
+            value=cluster_names,
+            param_name="cluster_names",
+        )
         self.params.cluster_names = cluster_names
         return self
 
-    def with_core_area(self, core_area):
-        self.params.core_area = core_area
+    def using_color(self, color: str) -> Self:
+        color = internal__check_required_str(
+            value=color,
+            param_name="color",
+        )
+        self.params.color = color
         return self
 
-    def with_correlation_method(self, method):
-        self.params.correlation_method = method
+    def using_colormap(self, colormap: str) -> Self:
+        colormap = internal__check_required_str(
+            value=colormap,
+            param_name="colormap",
+        )
+        self.params.colormap = colormap
         return self
 
-    def with_cumulative_sum(self, cumulative_sum):
+    def using_contour_opacity(self, contour_opacity: float) -> Self:
+        contour_opacity = internal__check_required_float_0_1(
+            value=contour_opacity,
+            param_name="contour_opacity",
+        )
+        self.params.contour_opacity = contour_opacity
+        return self
+
+    def using_cumulative_sum(self, cumulative_sum: bool) -> Self:
+        cumulative_sum = internal__check_required_bool(
+            value=cumulative_sum,
+            param_name="cumulative_sum",
+        )
         self.params.cumulative_sum = cumulative_sum
         return self
 
-    def with_field(self, field):
-        self.params.field = field
+    def using_edge_colors(self, edge_colors: Optional[list[Any]]) -> Self:
+        edge_colors = internal__check_optional_color_list(
+            value=edge_colors,
+            param_name="edge_colors",
+        )
+        self.params.edge_colors = edge_colors
         return self
 
-    def with_field_pattern(self, pattern):
-        self.params.pattern = pattern
+    def using_edge_similarity_threshold(self, edge_similarity_threshold: float) -> Self:
+        edge_similarity_threshold = internal__check_required_positive_float(
+            value=edge_similarity_threshold,
+            param_name="edge_similarity_threshold",
+        )
+        self.params.edge_similarity_threshold = edge_similarity_threshold
         return self
 
-    def with_initial_newline(self, initial_newline):
+    def using_edge_top_n(self, edge_top_n: Optional[int]) -> Self:
+        edge_top_n = internal__check_optional_positive_int(
+            value=edge_top_n,
+            param_name="edge_top_n",
+        )
+        self.params.edge_top_n = edge_top_n
+        return self
+
+    def using_edge_opacity_range(self, min_opacity: float, max_opacity: float) -> Self:
+        min_opacity, max_opacity = internal__check_required_float_0_1_range(
+            min_value=min_opacity,
+            max_value=max_opacity,
+            min_param_name="min_opacity",
+            max_param_name="max_opacity",
+        )
+        self.params.edge_opacity_range = (min_opacity, max_opacity)
+        return self
+
+    def using_edge_width_range(self, min_width: float, max_width: float) -> Self:
+        min_width, max_width = internal__check_required_positive_float_range(
+            range_tuple=(min_width, max_width),
+            param_name="edge_width_range",
+        )
+        self.params.edge_width_range = (min_width, max_width)
+        return self
+
+    def using_edge_widths(self, edge_widths: Tuple[float, float, float, float]) -> Self:
+        edge_widths = internal__check_tuple_of_ordered_four_floats(
+            value=edge_widths,
+            param_name="edge_widths",
+        )
+        self.params.edge_widths = edge_widths
+        return self
+
+    def using_initial_newline(self, initial_newline) -> Self:
+        initial_newline = internal__check_required_bool(
+            value=initial_newline,
+            param_name="initial_newline",
+        )
         self.params.initial_newline = initial_newline
         return self
 
-    def with_other_field(self, field):
-        self.params.other_field = field
+    def using_kernel_bandwidth(self, kernel_bandwidth: float) -> Self:
+        kernel_bandwidth = internal__check_required_positive_float(
+            value=kernel_bandwidth,
+            param_name="kernel_bandwidth",
+        )
+        self.params.kernel_bandwidth = kernel_bandwidth
         return self
 
-    def with_params(self, params):
+    def using_line_color(self, line_color: Union[str, float, Sequence[float]]) -> Self:
+        line_color = internal__check_plotly_color(
+            value=line_color,
+            param_name="line_color",
+        )
+        self.params.line_color = line_color
+        return self
+
+    def using_line_width(self, line_width) -> Self:
+        line_width = internal__check_required_positive_float(
+            value=line_width,
+            param_name="line_width",
+        )
+        self.params.line_width = line_width
+        return self
+
+    def using_manifold_algorithm(
+        self, manifold_algorithm: Optional[BaseEstimator]
+    ) -> Self:
+        manifold_algorithm = internal__check_optional_base_estimator(
+            value=manifold_algorithm,
+            param_name="manifold_algorithm",
+        )
+        self.params.manifold_algorithm = manifold_algorithm
+        return self
+
+    def using_marker_size(self, marker_size: float) -> Self:
+        marker_size = internal__check_required_positive_float(
+            value=marker_size,
+            param_name="marker_size",
+        )
+        self.params.marker_size = marker_size
+        return self
+
+    def using_match_threshold(self, match_threshold: float) -> Self:
+        match_threshold = internal__check_required_positive_float(
+            value=match_threshold,
+            param_name="match_threshold",
+        )
+        self.params.match_threshold = match_threshold
+        return self
+
+    def using_minimum_number_of_clusters(self, minimum_number_of_clusters: int) -> Self:
+        minimum_number_of_clusters = internal__check_required_positive_int(
+            value=minimum_number_of_clusters,
+            param_name="minimum_number_of_clusters",
+        )
+        self.params.minimum_number_of_clusters = minimum_number_of_clusters
+        return self
+
+    def using_minimum_terms_in_cluster(self, minimum_terms_in_cluster: int) -> Self:
+        minimum_terms_in_cluster = internal__check_required_positive_int(
+            value=minimum_terms_in_cluster,
+            param_name="minimum_terms_in_cluster",
+        )
+        self.params.minimum_terms_in_cluster = minimum_terms_in_cluster
+        return self
+
+    def using_node_colors(
+        self, node_colors: Optional[List[Union[str, float, Sequence[float]]]]
+    ) -> Self:
+        node_colors = internal__check_optional_color_list(
+            value=node_colors,
+            param_name="node_colors",
+        )
+        self.params.node_colors = node_colors
+        return self
+
+    def using_node_size(self, node_size: int) -> Self:
+        node_size = internal__check_required_positive_int(
+            value=node_size,
+            param_name="node_size",
+        )
+        self.params.node_size = node_size
+        return self
+
+    def using_node_size_range(self, min_size: int, max_size: int) -> Self:
+        min_size, max_size = internal__check_required_int_range(
+            range_tuple=(min_size, max_size),
+            param_name="node_size_range",
+        )
+        self.params.node_size_range = (min_size, max_size)
+        return self
+
+    def using_novelty_threshold(self, novelty_threshold: float) -> Self:
+        novelty_threshold = internal__check_required_float_0_1(
+            value=novelty_threshold,
+            param_name="novelty_threshold",
+        )
+        self.params.novelty_threshold = novelty_threshold
+        return self
+
+    def using_periods_with_at_least_one_record(self, periods: int) -> Self:
+        periods = internal__check_required_positive_int(
+            value=periods,
+            param_name="periods_with_at_least_one_record",
+        )
+        self.params.periods_with_at_least_one_record = periods
+        return self
+
+    def using_pie_hole(self, pie_hole: float) -> Self:
+        pie_hole = internal__check_required_float_0_1(
+            value=pie_hole,
+            param_name="pie_hole",
+        )
+        self.params.pie_hole = pie_hole
+        return self
+
+    def using_plot_dimensions(self, dim_x, dim_y) -> Self:
+        self.params.plot_dimensions = (dim_x, dim_y)
+        return self
+
+    def using_plot_height(self, height) -> Self:
+        self.params.height = height
+        return self
+
+    def using_plot_width(self, width) -> Self:
+        self.params.width = width
+        return self
+
+    def using_ratio_threshold(self, threshold: float) -> Self:
+        threshold = internal__check_required_positive_float(
+            value=threshold,
+            param_name="ratio_threshold",
+        )
+        self.params.ratio_threshold = threshold
+        return self
+
+    def using_recent_periods(self, recent_periods: int) -> Self:
+        recent_periods = internal__check_required_positive_int(
+            value=recent_periods,
+            param_name="recent_periods",
+        )
+        self.params.recent_periods = recent_periods
+        return self
+
+    def using_spring_layout_iterations(self, spring_layout_iterations: int) -> Self:
+        spring_layout_iterations = internal__check_required_positive_int(
+            value=spring_layout_iterations,
+            param_name="spring_layout_iterations",
+        )
+        self.params.spring_layout_iterations = spring_layout_iterations
+        return self
+
+    def using_spring_layout_k(self, spring_layout_k: Optional[float]) -> Self:
+        spring_layout_k = internal__check_optional_positive_float(
+            value=spring_layout_k,
+            param_name="spring_layout_k",
+        )
+        self.params.spring_layout_k = spring_layout_k
+        return self
+
+    def using_spring_layout_seed(self, spring_layout_seed: int) -> Self:
+        spring_layout_seed = internal__check_required_int(
+            value=spring_layout_seed,
+            param_name="spring_layout_seed",
+        )
+        self.params.spring_layout_seed = spring_layout_seed
+        return self
+
+    def using_term_counters(self, term_counters: bool) -> Self:
+        term_counters = internal__check_required_bool(
+            value=term_counters,
+            param_name="term_counters",
+        )
+        self.params.term_counters = term_counters
+        return self
+
+    def using_textfont_color(
+        self, textfont_color: Union[str, float, Sequence[float]]
+    ) -> Self:
+        textfont_color = internal__check_plotly_color(
+            value=textfont_color,
+            param_name="textfont_color",
+        )
+        self.params.textfont_color = textfont_color
+        return self
+
+    def using_textfont_opacity(self, textfont_opacity: float) -> Self:
+        textfont_opacity = internal__check_required_float_0_1(
+            value=textfont_opacity,
+            param_name="textfont_opacity",
+        )
+        self.params.textfont_opacity = textfont_opacity
+        return self
+
+    def using_textfont_opacity_range(
+        self, min_opacity: float, max_opacity: float
+    ) -> Self:
+        min_opacity, max_opacity = internal__check_required_float_0_1_range(
+            min_value=min_opacity,
+            max_value=max_opacity,
+            min_param_name="min_opacity",
+            max_param_name="max_opacity",
+        )
+        self.params.textfont_opacity_range = (min_opacity, max_opacity)
+        return self
+
+    def using_textfont_size(self, textfont_size: float) -> Self:
+        textfont_size = internal__check_required_positive_float(
+            value=textfont_size,
+            param_name="textfont_size",
+        )
+        self.params.textfont_size = textfont_size
+        return self
+
+    def using_textfont_size_range(self, min_size: float, max_size: float) -> Self:
+        min_size, max_size = internal__check_required_positive_float_range(
+            range_tuple=(min_size, max_size),
+            param_name="textfont_size_range",
+        )
+        self.params.textfont_size_range = (min_size, max_size)
+        return self
+
+    def using_tfidf_norm(self, tfidf_norm: Optional[str]) -> Self:
+        tfidf_norm = internal__check_optional_str(
+            value=tfidf_norm,
+            param_name="tfidf_norm",
+        )
+        self.params.tfidf_norm = tfidf_norm
+        return self
+
+    def using_tfidf_smooth_idf(self, tfidf_smooth_idf: bool) -> Self:
+        tfidf_smooth_idf = internal__check_required_bool(
+            value=tfidf_smooth_idf,
+            param_name="tfidf_smooth_idf",
+        )
+        self.params.tfidf_smooth_idf = tfidf_smooth_idf
+        return self
+
+    def using_tfidf_sublinear_tf(self, tfidf_sublinear_tf: bool) -> Self:
+        tfidf_sublinear_tf = internal__check_required_bool(
+            value=tfidf_sublinear_tf,
+            param_name="tfidf_sublinear_tf",
+        )
+        self.params.tfidf_sublinear_tf = tfidf_sublinear_tf
+        return self
+
+    def using_tfidf_use_idf(self, tfidf_use_idf: bool) -> Self:
+        tfidf_use_idf = internal__check_required_bool(
+            value=tfidf_use_idf,
+            param_name="tfidf_use_idf",
+        )
+        self.params.tfidf_use_idf = tfidf_use_idf
+        return self
+
+    def using_title_text(self, title_text: Optional[str]) -> Self:
+        title_text = internal__check_optional_str(
+            value=title_text,
+            param_name="title_text",
+        )
+        self.params.title_text = title_text
+        return self
+
+    def using_top_terms_by_theme(self, top_terms_by_theme: int) -> Self:
+        top_terms_by_theme = internal__check_required_positive_int(
+            value=top_terms_by_theme,
+            param_name="top_terms_by_theme",
+        )
+        self.params.top_terms_by_theme = top_terms_by_theme
+        return self
+
+    def using_total_records_threshold(self, total_records_threshold: int) -> Self:
+        total_records_threshold = internal__check_required_positive_int(
+            value=total_records_threshold,
+            param_name="total_records_threshold",
+        )
+        self.params.total_records_threshold = total_records_threshold
+        return self
+
+    def using_xaxes_range(self, x_min: Optional[float], x_max: Optional[float]) -> Self:
+
+        if x_min is None and x_max is None:
+            self.params.xaxes_range = None
+            return self
+        x_min, x_max = internal__check_required_float_range(
+            min_value=cast(float, x_min),
+            max_value=cast(float, x_max),
+            min_param_name="x_min",
+            max_param_name="x_max",
+        )
+        self.params.xaxes_range = (x_min, x_max)
+        return self
+
+    def using_xaxes_title_text(self, xaxes_title_text: Optional[str]) -> Self:
+        xaxes_title_text = internal__check_optional_str(
+            value=xaxes_title_text,
+            param_name="xaxes_title_text",
+        )
+        self.params.xaxes_title_text = xaxes_title_text
+        return self
+
+    def using_yaxes_range(self, y_min: Optional[float], y_max: Optional[float]) -> Self:
+
+        if y_min is None and y_max is None:
+            self.params.yaxes_range = None
+            return self
+        y_min, y_max = internal__check_required_float_range(
+            min_value=cast(float, y_min),
+            max_value=cast(float, y_max),
+            min_param_name="y_min",
+            max_param_name="y_max",
+        )
+        self.params.yaxes_range = (y_min, y_max)
+        return self
+
+    def using_yaxes_title_text(self, yaxes_title_text: Optional[str]) -> Self:
+        yaxes_title_text = internal__check_optional_str(
+            value=yaxes_title_text,
+            param_name="yaxes_title_text",
+        )
+        self.params.yaxes_title_text = yaxes_title_text
+        return self
+
+    def using_yshift(self, yshift: float) -> Self:
+        yshift = internal__check_required_float(
+            value=yshift,
+            param_name="yshift",
+        )
+        self.params.yshift = yshift
+        return self
+
+    def using_word_length(self, word_length: int) -> Self:
+        word_length = internal__check_required_positive_int(
+            value=word_length,
+            param_name="word_length",
+        )
+        self.params.word_length = word_length
+        return self
+
+    def using_zotero_api_key(self, zotero_api_key: str) -> Self:
+        zotero_api_key = internal__check_required_str(
+            value=zotero_api_key,
+            param_name="api_key",
+        )
+        self.params.zotero_api_key = zotero_api_key
+        return self
+
+    def using_zotero_library_id(self, zotero_library_id: str) -> Self:
+        zotero_library_id = internal__check_required_str(
+            value=zotero_library_id,
+            param_name="library_id",
+        )
+        self.params.zotero_library_id = zotero_library_id
+        return self
+
+    def using_zotero_library_type(self, zotero_library_type: str) -> Self:
+        zotero_library_type = internal__check_required_str(
+            value=zotero_library_type,
+            param_name="library_type",
+        )
+        self.params.zotero_library_type = zotero_library_type
+        return self
+
+    # ==========================================================================
+    # WHERE_* → Data filtering (WHICH records?)
+    # ==========================================================================
+
+    def where_database(self, database: str) -> Self:
+        database = internal__check_required_str(
+            value=database,
+            param_name="database",
+        )
+        self.params.database = database
+        return self
+
+    def where_root_directory(self, root_directory: str) -> Self:
+        root_directory = internal__check_required_str(
+            value=root_directory,
+            param_name="root_directory",
+        )
+        self.params.root_directory = root_directory
+        return self
+
+    def where_record_citations_range(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        self.params.record_citations_range = (
+            internal__check_required_open_ended_int_range(
+                (start, end), "record_citations_range"
+            )
+        )
+        return self
+
+    def where_record_years_range(
+        self, start: Optional[int], end: Optional[int]
+    ) -> Self:
+        (start, end) = internal__check_required_open_ended_int_range(
+            (start, end), "record_years_range"
+        )
+        self.params.record_years_range = (start, end)
+        return self
+
+    def where_records_match(
+        self, records_match: Optional[Dict[str, List[str]]]
+    ) -> Self:
+        self.params.records_match = records_match
+        return self
+
+    def where_records_ordered_by(self, records_order_by: Optional[str]) -> Self:
+        records_order_by = internal__check_optional_str(
+            value=records_order_by,
+            param_name="records_order_by",
+        )
+        self.params.records_order_by = records_order_by
+        return self
+
+    # ==========================================================================
+    # WITH_* → Configuration (WHAT to analyze?)
+    # ==========================================================================
+
+    def having_abstract_matching(self, pattern: str) -> Self:
+        pattern = internal__check_required_str(
+            value=pattern,
+            param_name="pattern",
+        )
+        self.params.pattern = pattern
+        return self
+
+    def with_core_area(self, core_area: Optional[str]) -> Self:
+        core_area = internal__check_optional_str(
+            value=core_area,
+            param_name="core_area",
+        )
+        self.params.core_area = core_area
+        return self
+
+    def with_correlation_method(self, correlation_method: str) -> Self:
+        correlation_method = internal__check_required_str(
+            value=correlation_method,
+            param_name="correlation_method",
+        )
+        self.params.correlation_method = correlation_method
+        return self
+
+    def with_field(self, field: str) -> Self:
+        field = internal__check_required_str(
+            value=field,
+            param_name="field",
+        )
+        self.params.field = field
+        return self
+
+    def having_field_matching(self, pattern: str) -> Self:
+        pattern = internal__check_required_str(
+            value=pattern,
+            param_name="pattern",
+        )
+        self.params.pattern = pattern
+        return self
+
+    def with_other_field(self, other_field: Optional[str]) -> Self:
+        other_field = internal__check_optional_str(
+            value=other_field,
+            param_name="other_field",
+        )
+        self.params.other_field = other_field
+        return self
+
+    def with_params(self, params) -> Self:
         self.update(**params.__dict__)
         return self
 
-    def with_patterns(self, patterns):
+    def having_patterns_matching(self, patterns) -> Self:
         self.params.pattern = patterns
         return self
 
-    def with_query_expression(self, expr):
-        self.params.query_expression = expr
+    def with_query_expression(self, query_expression: str) -> Self:
+        query_expression = internal__check_required_str(
+            value=query_expression,
+            param_name="query_expression",
+        )
+        self.params.query_expression = query_expression
         return self
 
-    def with_terms_having_stem_match(self, stem):
+    def having_terms_with_stem(self, stem: str) -> Self:
+
         self.params.pattern = stem
         return self
 
-    def with_thesaurus_file(self, thesaurus_file):
+    def with_thesaurus_file(self, thesaurus_file: str) -> Self:
+        thesaurus_file = internal__check_required_str(
+            value=thesaurus_file,
+            param_name="thesaurus_file",
+        )
         self.params.thesaurus_file = thesaurus_file
         return self
 
-    def with_time_window(self, time_window):
+    def with_time_window(self, time_window: int) -> Self:
+        time_window = internal__check_required_positive_int(
+            value=time_window,
+            param_name="time_window",
+        )
         self.params.time_window = time_window
         return self
 
-    def with_transformation_function(self, transformation_function):
+    def with_transformation_function(
+        self, transformation_function: Optional[Callable[[Any], Any]]
+    ) -> Self:
         self.params.transformation_function = transformation_function
-        return self
-
-    def with_word_length(self, word_length):
-        self.params.word_length = word_length
         return self

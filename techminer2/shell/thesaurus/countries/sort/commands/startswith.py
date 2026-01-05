@@ -18,9 +18,4 @@ def execute_startswith_command():
         return
 
     print()
-    (
-        SortByStartsWithMatch()
-        .where_root_directory_is("./")
-        .having_pattern(patterns)
-        .run()
-    )
+    (SortByStartsWithMatch().where_root_directory("./").having_pattern(patterns).run())

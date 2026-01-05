@@ -25,7 +25,7 @@ Example:
     >>> # Run the integrity check
     >>> checker = (
     ...     IntegrityCheck(use_colorama=False)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> checker.run()
 
@@ -60,6 +60,6 @@ class IntegrityCheck(
             .update(**self.params.__dict__)
             .with_thesaurus_file("descriptors.the.txt")
             .with_field("raw_descriptors")
-            .where_root_directory_is(self.params.root_directory)
+            .where_root_directory(self.params.root_directory)
             .run()
         )

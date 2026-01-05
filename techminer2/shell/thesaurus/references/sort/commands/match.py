@@ -41,7 +41,7 @@ def execute_match_command():
     print()
     (
         SortByMatch()
-        .where_root_directory_is("./")
+        .where_root_directory("./")
         .having_pattern(pattern)
         .having_case_sensitive(case_sensitive)
         .having_regex_flags(regex_flags)

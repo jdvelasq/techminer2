@@ -15,10 +15,10 @@ Example:
     ...     LinePlot()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     #
     ...     .run()
     ... ).write_html("docs_source/_generated/px.database.metrics.bradford_law.line_plot.html")
@@ -31,6 +31,7 @@ Example:
 
 """
 import plotly.express as px  # type: ignore
+
 from techminer2._internals.params_mixin import ParamsMixin
 from techminer2.database.metrics.bradford_law.zones import ZonesDataFrame
 

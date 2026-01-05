@@ -30,7 +30,7 @@ Example:
     ...     SortByAlphabet(use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_keys_ordered_by("alphabetical")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 

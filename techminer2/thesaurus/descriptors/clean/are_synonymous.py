@@ -34,7 +34,7 @@ Example:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... ).run()
                    lead_term                                    candidate_terms
     11  FINANCIAL_INDUSTRIES           FINANCIAL_SECTOR; FINANCIAL_TECHNOLOGIES

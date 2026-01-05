@@ -56,7 +56,7 @@ class ExtractColons(
         return (
             ConcordantProcessedContexts()
             .update(**self.params.__dict__)
-            .with_abstract_having_pattern(" : ")
+            .having_abstract_matching(" : ")
             .run()
         )
 

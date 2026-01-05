@@ -15,7 +15,7 @@ Example:
     ...     RPYSDataFrame()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... ).head()
           Num References  Median
@@ -29,6 +29,7 @@ Example:
 
 """
 import pandas as pd  # type: ignore
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,

@@ -17,7 +17,7 @@ Example:
     ...     #
     ...     # UNIT OF ANALYSIS:
     ...     .having_terms_in_top(20)
-    ...     .having_citation_threshold(0)
+    ...     .using_citation_threshold(0)
     ...     #
     ...     # CLUSTERING:
     ...     .using_clustering_algorithm_or_dict("louvain")
@@ -34,10 +34,10 @@ Example:
     ...     .using_textfont_size_range(10, 20)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -52,10 +52,12 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.nx import internal__assign_textfont_sizes_based_on_citations
-from techminer2._internals.nx import internal__cluster_nx_graph
-from techminer2._internals.nx import internal__compute_spring_layout_positions
-from techminer2._internals.nx import internal__create_network_density_plot
+from techminer2._internals.nx import (
+    internal__assign_textfont_sizes_based_on_citations,
+    internal__cluster_nx_graph,
+    internal__compute_spring_layout_positions,
+    internal__create_network_density_plot,
+)
 from techminer2.packages.networks.coupling._internals.from_documents.create_nx_graph import (
     internal__create_nx_graph,
 )

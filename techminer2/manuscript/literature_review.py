@@ -22,10 +22,10 @@ Example:
     ...     .with_word_length(150)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     .where_records_ordered_by(None)
     ...     #

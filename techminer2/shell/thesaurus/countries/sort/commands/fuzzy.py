@@ -20,8 +20,8 @@ def execute_fuzzy_command():
     print()
     (
         SortByFuzzyMatch()
-        .where_root_directory_is("./")
+        .where_root_directory("./")
         .having_pattern(pattern)
-        .having_match_threshold(threshold)
+        .using_match_threshold(threshold)
         .run()
     )

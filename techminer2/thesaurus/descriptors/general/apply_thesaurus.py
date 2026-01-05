@@ -25,7 +25,7 @@ Example:
 
     >>> applier = (
     ...     ApplyThesaurus(use_colorama=False)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> applier.run()
 
@@ -109,6 +109,6 @@ class ApplyThesaurus(
                 .with_thesaurus_file("descriptors.the.txt")
                 .with_field(raw_column)
                 .with_other_field(column)
-                .where_root_directory_is(self.params.root_directory)
+                .where_root_directory(self.params.root_directory)
                 .run()
             )

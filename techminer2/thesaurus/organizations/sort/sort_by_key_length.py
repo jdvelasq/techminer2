@@ -29,7 +29,7 @@ Example:
     ...     SortByKeyLength(use_colorama=False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()
 

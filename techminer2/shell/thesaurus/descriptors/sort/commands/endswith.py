@@ -18,7 +18,7 @@ def execute_endswith_command():
         return
 
     print()
-    SortByEndsWithMatch().where_root_directory_is("./").having_pattern(patterns).run()
+    SortByEndsWithMatch().where_root_directory("./").having_pattern(patterns).run()
 
 
 ##

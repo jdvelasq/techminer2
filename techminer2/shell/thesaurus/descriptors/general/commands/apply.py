@@ -4,4 +4,4 @@ from techminer2.thesaurus.descriptors import ApplyThesaurus
 def execute_apply_command():
 
     print()
-    ApplyThesaurus().where_root_directory_is("./").run()
+    ApplyThesaurus().where_root_directory("./").run()

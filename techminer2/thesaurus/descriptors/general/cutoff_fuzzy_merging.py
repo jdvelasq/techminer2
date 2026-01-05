@@ -19,7 +19,7 @@ Example:
     >>> from techminer2.thesaurus.descriptors import ReduceKeys
     >>> (
     ...     ReduceKeys(use_colorama=False)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 
@@ -35,7 +35,7 @@ Example:
     >>> (
     ...     CutoffFuzzyMerging(tqdm_disable=True, use_colorama=False)
     ...     # .where_root_directory_is("examples/fintech/")
-    ...     .where_root_directory_is("../tm2_economics_of_wind_energy/")
+    ...     .where_root_directory("../tm2_economics_of_wind_energy/")
     ...     .having_cutoff_threshold(85)
     ...     .having_match_threshold(95)
     ...     .run()

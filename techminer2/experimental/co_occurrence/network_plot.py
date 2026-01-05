@@ -31,7 +31,7 @@ Example:
     ...     .using_minimum_terms_in_cluster(5)
     ...     #
     ...     # PLOT:
-    ...     .using_spring_layout_k(None)
+    ...     .using_spring_layout_k(0.1)
     ...     .using_spring_layout_iterations(30)
     ...     .using_spring_layout_seed(0)
     ...     #
@@ -46,10 +46,10 @@ Example:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()

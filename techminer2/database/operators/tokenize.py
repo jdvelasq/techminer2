@@ -27,7 +27,7 @@ Example:
     ...     .with_other_field("tokenized_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     #
     ...     .run()
     ... )
@@ -37,10 +37,10 @@ Example:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT tokenized_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .run()
     ... )
 
@@ -65,7 +65,7 @@ Example:
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("tokenized_raw_abstract")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> field_deleter.run()
 

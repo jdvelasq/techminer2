@@ -34,7 +34,7 @@ Example:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... ).run()
 
 
@@ -205,7 +205,7 @@ class AreSynonymous(
 
         def internal__get_row_contexts(pattern):
 
-            contexts = self.get_contexts.with_patterns([pattern]).run()
+            contexts = self.get_contexts.having_patterns_matching([pattern]).run()
             contexts = [c for c in contexts if len(c) > 80]
             contexts = [c.lower().replace("_", " ") for c in contexts]
             contexts = [c for c in contexts if pattern.lower().replace("_", " ") in c]

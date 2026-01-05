@@ -26,7 +26,7 @@ Example:
     >>> (
     ...     MergeKeys(use_colorama=False)
     ...     .with_patterns(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 

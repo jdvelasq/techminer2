@@ -25,16 +25,16 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # PARAMS:
-    ...     .with_cumulative_sum(False)
+    ...     .using_cumulative_sum(False)
     ...     #
     ...     # COUNTERS:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ... )
     >>> df = generator.run()
@@ -65,16 +65,16 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # PARAMS:
-    ...     .with_cumulative_sum(False)
+    ...     .using_cumulative_sum(False)
     ...     #
     ...     # COUNTERS:
     ...     .using_term_counters(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ... )
     >>> df = generator.run()
@@ -105,16 +105,16 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # PARAMS:
-    ...     .with_cumulative_sum(True)
+    ...     .using_cumulative_sum(True)
     ...     #
     ...     # COUNTERS:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ... )
     >>> df = generator.run()
@@ -135,8 +135,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.mixins import SortAxesMixin
+from techminer2._internals.mixins import ParamsMixin, SortAxesMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )

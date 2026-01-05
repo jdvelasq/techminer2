@@ -27,7 +27,7 @@ Example:
     >>> sorter = (
     ...     SortByWordMatch(use_colorama=False)
     ...     .having_pattern("Germany")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()
 

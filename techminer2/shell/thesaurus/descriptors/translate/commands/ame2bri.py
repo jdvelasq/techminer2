@@ -4,7 +4,7 @@ from techminer2.thesaurus.descriptors import AmericanToBritishSpelling
 def execute_ame2bri_command():
 
     print()
-    AmericanToBritishSpelling().where_root_directory_is("./").run()
+    AmericanToBritishSpelling().where_root_directory("./").run()
 
 
 #

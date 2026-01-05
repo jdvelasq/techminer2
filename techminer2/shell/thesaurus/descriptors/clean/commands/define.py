@@ -51,14 +51,14 @@ def internal__generate_definition(core_area, term, n_contexts):
         #
         # FIELD:
         .with_core_area(core_area)
-        .with_patterns([term])
+        .having_patterns_matching([term])
         .having_n_contexts(n_contexts)
         #
         # DATABASE:
-        .where_root_directory_is("./")
-        .where_database_is("main")
-        .where_record_years_range_is(None, None)
-        .where_record_citations_range_is(None, None)
+        .where_root_directory("./")
+        .where_database("main")
+        .where_record_years_range(None, None)
+        .where_record_citations_range(None, None)
         .where_records_match(None)
         #
         .run()

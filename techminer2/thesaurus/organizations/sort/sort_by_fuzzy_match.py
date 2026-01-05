@@ -29,10 +29,10 @@ Example:
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Texas")
-    ...     .having_match_threshold(70)
+    ...     .using_match_threshold(70)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()
 

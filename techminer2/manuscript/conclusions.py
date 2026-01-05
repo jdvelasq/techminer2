@@ -21,7 +21,7 @@ Example:
     ...     .with_word_length(200)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     #
     ...     .run()
     ... )

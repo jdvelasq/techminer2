@@ -17,7 +17,7 @@ def execute_exact_command():
     if not patterns:
         return
 
-    SortByExactMatch().where_root_directory_is("./").having_pattern(patterns).run()
+    SortByExactMatch().where_root_directory("./").having_pattern(patterns).run()
 
 
 ##

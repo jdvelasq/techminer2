@@ -29,7 +29,7 @@ Example:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... ).run()  # doctest: +SKIP
     >>> df # doctest: +SKIP
                            descriptor  is_domain_specific?  is_stopword?
@@ -358,7 +358,9 @@ class IsStopword(
             self.descriptors["contexts"] = self.descriptors[
                 "descriptor"
             ].parallel_apply(
-                lambda x: "\n".join(get_contexts.with_patterns([re.escape(x)]).run())
+                lambda x: "\n".join(
+                    get_contexts.having_patterns_matching([re.escape(x)]).run()
+                )
             )
 
         sys.stderr.write("\n")

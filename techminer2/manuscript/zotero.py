@@ -15,8 +15,8 @@ Example:
     >>> from techminer2.manuscript import Zotero
     >>> (
     ...     Zotero()
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_root_directory_is("../tm2_economics_of_wind_energy/")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("../tm2_economics_of_wind_energy/")
     ...     .run()
     ... )
 

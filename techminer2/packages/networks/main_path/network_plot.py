@@ -16,7 +16,7 @@ Example:
     ...     #
     ...     # UNIT OF ANALYSIS:
     ...     .having_terms_in_top(None)
-    ...     .having_citation_threshold(0)
+    ...     .using_citation_threshold(0)
     ...     #
     ...     # NETWORK:
     ...     .using_spring_layout_k(None)
@@ -35,10 +35,10 @@ Example:
     ...     .using_axes_visible(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -54,16 +54,19 @@ Example:
 
 """
 import networkx as nx  # type: ignore
+
 from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.nx import internal__assign_constant_to_edge_colors
-from techminer2._internals.nx import internal__assign_constant_to_node_colors
-from techminer2._internals.nx import internal__assign_edge_widths_based_on_weight
-from techminer2._internals.nx import internal__assign_node_sizes_based_on_citations
-from techminer2._internals.nx import internal__assign_text_positions_based_on_quadrants
-from techminer2._internals.nx import internal__assign_textfont_opacity_based_on_citations
-from techminer2._internals.nx import internal__assign_textfont_sizes_based_on_citations
-from techminer2._internals.nx import internal__compute_spring_layout_positions
-from techminer2._internals.nx import internal__plot_nx_graph
+from techminer2._internals.nx import (
+    internal__assign_constant_to_edge_colors,
+    internal__assign_constant_to_node_colors,
+    internal__assign_edge_widths_based_on_weight,
+    internal__assign_node_sizes_based_on_citations,
+    internal__assign_text_positions_based_on_quadrants,
+    internal__assign_textfont_opacity_based_on_citations,
+    internal__assign_textfont_sizes_based_on_citations,
+    internal__compute_spring_layout_positions,
+    internal__plot_nx_graph,
+)
 from techminer2.packages.networks.main_path.network_edges_data_frame import (
     NetworkEdgesDataFrame,
 )

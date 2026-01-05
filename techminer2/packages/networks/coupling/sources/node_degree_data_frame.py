@@ -17,7 +17,7 @@ Example:
     ...     #
     ...     # UNIT OF ANALYSIS:
     ...     .having_terms_in_top(20)
-    ...     .having_citation_threshold(0)
+    ...     .using_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_terms_in(None)
     ...     #
@@ -25,10 +25,10 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -51,7 +51,7 @@ Example:
     ...     #
     ...     # UNIT OF ANALYSIS:
     ...     .having_terms_in_top(20)
-    ...     .having_citation_threshold(0)
+    ...     .using_citation_threshold(0)
     ...     .having_occurrence_threshold(2)
     ...     .having_terms_in(None)
     ...     #
@@ -59,10 +59,10 @@ Example:
     ...     .using_term_counters(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()

@@ -28,16 +28,16 @@ Example:
     ...     #
     ...     # TFIDF:
     ...     .using_binary_term_frequencies(False)
-    ...     .using_row_normalization(None)
-    ...     .using_idf_reweighting(False)
-    ...     .using_idf_weights_smoothing(False)
-    ...     .using_sublinear_tf_scaling(False)
+    ...     .using_tfidf_norm(None)
+    ...     .using_tfidf_smooth_idf(False)
+    ...     .using_tfidf_sublinear_tf(False)
+    ...     .using_tfidf_use_idf(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ... )
     >>> df = generator.run()
@@ -58,8 +58,8 @@ Example:
 """
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.mixins import SortAxesMixin
+
+from techminer2._internals.mixins import ParamsMixin, SortAxesMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )
@@ -154,10 +154,10 @@ class DataFrame(
 
     def step_7_apply_tfidf_transformations(self, matrix):
 
-        norm = self.params.row_normalization
-        use_idf = self.params.use_idf
-        smooth_idf = self.params.smooth_idf_weights
-        sublinear_tf = self.params.sublinear_tf_scaling
+        norm = self.params.tfidf_norm
+        smooth_idf = self.params.tfidf_smooth_idf
+        sublinear_tf = self.params.tfidf_sublinear_tf
+        use_idf = self.params.tfidf_use_idf
 
         if norm is not None or use_idf or smooth_idf or sublinear_tf:
 

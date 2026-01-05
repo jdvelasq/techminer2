@@ -38,10 +38,10 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -101,11 +101,11 @@ Example:
 
 """
 import datetime
-from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import dataclass, field
 
 import numpy as np
 import pandas as pd  # type: ignore
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,

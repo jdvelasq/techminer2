@@ -26,5 +26,3 @@ def internal__contains(params):
     terms = dataframe.term.tolist()
 
     return terms
-
-    return terms

@@ -30,7 +30,7 @@ Example:
     ...     .having_keys_ordered_by("alphabetical")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()
 

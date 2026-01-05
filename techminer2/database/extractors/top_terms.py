@@ -16,7 +16,7 @@ parameters, and database parameters.
 
 Example:
     >>> # Creates, configures, and runs the extractor
-    >>> from techminer2.database.extractors import TopTermsExtractor    
+    >>> from techminer2.database.extractors import TopTermsExtractor
     >>> terms = (
     ...     TopTermsExtractor()
     ...     #
@@ -31,12 +31,12 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     #
-    ...     .run()  
+    ...     .run()
     ... )
 
     >>> # Print the first 10 extracted terms

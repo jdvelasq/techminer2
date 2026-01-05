@@ -26,7 +26,7 @@ Example:
     >>> # Creates, configures, an run the translator
     >>> translator = (
     ...     BritishToAmericanSpelling(tqdm_disable=True, use_colorama=False)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> translator.run()
 

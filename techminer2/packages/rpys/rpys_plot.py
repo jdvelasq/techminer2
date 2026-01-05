@@ -16,7 +16,7 @@ Example:
     ...     RPYSPlot()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
     >>> plot.write_html("docs_source/_generated/px.packages.rpys.rpys_plot.html")
@@ -29,6 +29,7 @@ Example:
 
 """
 import plotly.graph_objects as go
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.packages.rpys.rpys_frame import RPYSDataFrame
 

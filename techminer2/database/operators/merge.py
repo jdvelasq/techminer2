@@ -25,7 +25,7 @@ Example:
     ...     .with_other_field("merged_keywords")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> merger.run()
 
@@ -34,10 +34,10 @@ Example:
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT merged_keywords FROM database LIMIT 10;")
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ... )
     >>> df = query.run()
     >>> df
@@ -59,7 +59,7 @@ Example:
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("merged_keywords")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> field_deleter.run()
 

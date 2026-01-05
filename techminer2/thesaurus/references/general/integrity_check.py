@@ -21,7 +21,7 @@ Example:
     >>> # Configure and run the integrity check
     >>> checker = (
     ...     IntegrityCheck()
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ... )
     >>> checker.run()
 
@@ -49,6 +49,6 @@ class IntegrityCheck(
             UserIntegrityCheck()
             .with_thesaurus_file("references.the.txt")
             .with_field("global_references")
-            .where_root_directory_is(self.params.root_directory)
+            .where_root_directory(self.params.root_directory)
             .run()
         )

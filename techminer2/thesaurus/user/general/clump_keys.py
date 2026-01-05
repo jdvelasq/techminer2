@@ -30,7 +30,7 @@ Example:
     >>> (
     ...     ClumpKeys(tqdm_disable=True, use_colorama=False)
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 
@@ -126,8 +126,8 @@ class ClumpKeys(
             DataFrame()
             .with_field("raw_keywords")
             .having_terms_ordered_by("OCC")
-            .where_root_directory_is(self.params.root_directory)
-            .where_database_is("main")
+            .where_root_directory(self.params.root_directory)
+            .where_database("main")
         ).run()
 
         known_keywords = internal__load_text_processing_terms("known_noun_phrases.txt")

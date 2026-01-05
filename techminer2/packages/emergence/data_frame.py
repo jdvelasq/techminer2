@@ -25,10 +25,10 @@ Example:
     ...     .using_ratio_threshold(0.5)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -68,7 +68,7 @@ class DataFrame(
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
             .update(terms_order_by="OCC")
-            .with_cumulative_sum(False)
+            .using_cumulative_sum(False)
             .run()
         )
 
@@ -142,7 +142,7 @@ class DataFrame(
             TermsByYearDataFrame()
             .update(**self.params.__dict__)
             .update(terms_order_by="OCC")
-            .with_cumulative_sum(True)
+            .using_cumulative_sum(True)
             .run()
         )
 

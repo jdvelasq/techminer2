@@ -26,7 +26,7 @@ Example:
     ...     TokenizeOperator()
     ...     .with_field("raw_abstract")
     ...     .with_other_field("raw_abstract_copy")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 
@@ -34,7 +34,7 @@ Example:
     ...     HighlightOperator()
     ...     .with_field("raw_abstract_copy")
     ...     .with_other_field("raw_abstract_copy")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 
@@ -42,15 +42,15 @@ Example:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT raw_abstract_copy FROM database LIMIT 50;")
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .run()
     ... )
 
     >>> print(textwrap.fill(df.values[35][0], width=80))
-    background : this study aims to_clarify THE_ROLE of
+    background : this_study_aims_to clarify THE_ROLE of
     FINTECH_DIGITAL_BANKING_START_UPS in THE_FINANCIAL_INDUSTRY . we examine
     THE_IMPACT of THE_FUNDING of SUCH_START_UPS on THE_STOCK_RETURNS of 47 incumbent
     us RETAIL_BANKS for 2010 to 2016 . methods : to capture THE_IMPORTANCE of
@@ -70,7 +70,7 @@ Example:
     >>> (
     ...     DeleteOperator()
     ...     .with_field("raw_abstract_copy")
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 

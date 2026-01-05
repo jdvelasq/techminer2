@@ -17,13 +17,13 @@ Example:
     ...     #
     ...     # UNIT OF ANALYSIS:
     ...     .having_terms_in_top(30)
-    ...     .having_citation_threshold(0)
+    ...     .using_citation_threshold(0)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
@@ -39,9 +39,11 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.nx import internal__assign_degree_to_nodes
-from techminer2._internals.nx import internal__collect_node_degrees
-from techminer2._internals.nx import internal__create_node_degrees_data_frame
+from techminer2._internals.nx import (
+    internal__assign_degree_to_nodes,
+    internal__collect_node_degrees,
+    internal__create_node_degrees_data_frame,
+)
 from techminer2.packages.networks.citation._internals.from_documents.create_nx_graph import (
     internal__create_nx_graph,
 )

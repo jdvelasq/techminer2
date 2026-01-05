@@ -31,7 +31,7 @@ Example:
     ...     GetContexts()
     ...     .with_patterns(["FINTECH"])
     ...     .having_n_contexts(10)
-    ...     .where_root_directory_is("examples/fintech/")
+    ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
     >>> from pprint import pprint
@@ -86,7 +86,7 @@ class GetContexts(
             contexts = (
                 ConcordantSentences()
                 .update(**self.params.__dict__)
-                .with_abstract_having_pattern(term)
+                .having_abstract_matching(term)
                 .run()
             )
 

@@ -49,10 +49,10 @@ Example:
     >>> mapping = (
     ...     RecordMapping()
     ...     #
-    ...     .where_root_directory_is("examples/fintech/")
-    ...     .where_database_is("main")
-    ...     .where_record_years_range_is(None, None)
-    ...     .where_record_citations_range_is(None, None)
+    ...     .where_root_directory("examples/fintech/")
+    ...     .where_database("main")
+    ...     .where_record_years_range(None, None)
+    ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     .where_records_ordered_by("global_cited_by_highest")
     ...     .run()
@@ -99,9 +99,11 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.mixins import RecordMappingMixin
-from techminer2._internals.mixins import RecordViewerMixin
+from techminer2._internals.mixins import (
+    ParamsMixin,
+    RecordMappingMixin,
+    RecordViewerMixin,
+)
 from techminer2.database._internals.io.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )

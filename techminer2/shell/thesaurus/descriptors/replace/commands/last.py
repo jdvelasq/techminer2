@@ -19,7 +19,7 @@ def execute_last_command():
     print()
     (
         ReplaceLastWord()
-        .where_root_directory_is("./")
+        .where_root_directory("./")
         .having_word(word)
         .having_replacement(replacement)
         .run()

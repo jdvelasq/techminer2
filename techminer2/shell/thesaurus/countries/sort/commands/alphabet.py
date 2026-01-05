@@ -4,4 +4,4 @@ from techminer2.thesaurus.countries import SortByAlphabet
 def execute_alphabet_command():
 
     print()
-    SortByAlphabet().where_root_directory_is("./").run()
+    SortByAlphabet().where_root_directory("./").run()
