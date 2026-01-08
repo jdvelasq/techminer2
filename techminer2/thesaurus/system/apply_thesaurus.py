@@ -21,7 +21,7 @@ Example:
 
     >>> #  Creating, configuring, and running the system thesaurus
     >>> applier = (
-    ...     ApplyThesaurus(use_colorama=False)
+    ...     ApplyThesaurus()
     ...     .with_thesaurus_file("geography/country_to_region.the.txt")
     ...     .with_field("countries")
     ...     .with_other_field("regions")
@@ -33,18 +33,17 @@ Example:
     >>> output = sys.stderr.getvalue()
     >>> sys.stderr = original_stderr
     >>> print(output)
-    Applying system thesaurus to database...
-              File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
+    INFO: Applying system thesaurus to database...
+      Thesaurus    : ...2/package_data/thesaurus/geography/country_to_region.the.txt
       Source field : countries
       Target field : regions
       Application process completed successfully
-    <BLANKLINE>
     <BLANKLINE>
 
 """
 import sys
 
-from colorama import Fore, init
+from colorama import Fore
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.io import (
@@ -77,7 +76,7 @@ class ApplyThesaurus(
             if len(file_path) > 64:
                 file_path = "..." + file_path[-60:]
 
-            if self.params.use_colorama:
+            if self.params.colored_stderr:
                 filename = str(file_path).rsplit("/", maxsplit=1)[1]
                 file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
                 file_path = Fore.LIGHTBLACK_EX + file_path
@@ -93,7 +92,7 @@ class ApplyThesaurus(
 
         if not self.params.quiet:
 
-            sys.stderr.write(f"  Application process completed successfully\n")
+            sys.stderr.write("  Application process completed successfully\n")
             sys.stderr.flush()
 
     #
@@ -144,12 +143,6 @@ class ApplyThesaurus(
         self.records[self.params.other_field] = self.records[
             self.params.other_field
         ].map(f, na_action="ignore")
-
-    # -------------------------------------------------------------------------
-    def internal__split_other_field(self):
-        self.records[self.params.other_field] = self.records[
-            self.params.other_field
-        ].str.split("; ")
 
     # -------------------------------------------------------------------------
     def internal__join_record_values(self):

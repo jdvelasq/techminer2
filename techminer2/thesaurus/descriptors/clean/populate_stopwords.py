@@ -26,7 +26,7 @@ Example:
 
     >>> # Populate stopwords
     >>> (
-    ...     PopulateStopwords(use_colorama=False)
+    ...     PopulateStopwords()
     ...     .with_core_area("FINTECH - FINANCIAL TECHNOLOGIES")
     ...     .having_n_contexts(10)
     ...     .having_terms_in_top(40)

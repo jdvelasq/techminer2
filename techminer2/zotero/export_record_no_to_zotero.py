@@ -12,7 +12,7 @@ Export Record No to Zotero
 Example:
     >>> from techminer2.zotero import ExportRecordNoToZotero
     >>> zot = (
-    ...     ExportRecordNoToZotero(use_colorama=False)
+    ...     ExportRecordNoToZotero()
     ...     .using_zotero_api_key("MifzqqRsPK5OHvmNoW4Y9Zre")  # https://www.zotero.org/settings/keys/new
     ...     .using_zotero_library_id(5242364)   # https://www.zotero.org/groups/5242364/fintech-scopus
     ...     .using_zotero_library_type("group")  # "user" or "group"

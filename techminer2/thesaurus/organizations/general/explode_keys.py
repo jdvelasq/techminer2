@@ -23,7 +23,7 @@ Example:
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Explode thesaurus keys
-    >>> ExplodeKeys(use_colorama=False).where_root_directory_is("examples/fintech/").run()
+    >>> ExplodeKeys().where_root_directory("examples/fintech/").run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

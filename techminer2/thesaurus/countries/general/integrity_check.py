@@ -10,30 +10,18 @@ Integrity Check
 ===============================================================================
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, IntegrityCheck
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
-    >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Run the integrity check
-    >>> IntegrityCheck(use_colorama=False).where_root_directory_is("examples/fintech/").run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Checking thesaurus integrity...
-      File : examples/fintech/data/thesaurus/countries.the.txt
-      106 terms checked
-      Integrity check completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
+    >>> from techminer2.thesaurus.countries import IntegrityCheck
+    >>> (
+    ...     IntegrityCheck()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 
 """

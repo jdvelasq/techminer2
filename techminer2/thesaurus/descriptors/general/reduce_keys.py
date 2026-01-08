@@ -26,7 +26,7 @@ Example:
 
     >>> # Reduce thesaurus keys
     >>> reducer = (
-    ...     ReduceKeys(use_colorama=False)
+    ...     ReduceKeys()
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> reducer.run()

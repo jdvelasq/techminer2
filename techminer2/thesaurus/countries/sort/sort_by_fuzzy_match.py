@@ -11,57 +11,44 @@ Sort by Fuzzy Match
 ===============================================================================
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByFuzzyMatch
-
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Create and apply the thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Sorts thesaurus by fuzzy match
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus
     >>> (
-    ...     SortByFuzzyMatch(use_colorama=False)
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
+
+
+    >>> from techminer2.thesaurus.countries import SortByFuzzyMatch
+    >>> (
+    ...     SortByFuzzyMatch()
     ...     .having_pattern("china")
-    ...     .having_match_threshold(90)
+    ...     .using_match_threshold(90)
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Sorting thesaurus by fuzzy match...
-                File : examples/fintech/data/thesaurus/countries.the.txt
-           Keys like : china
-      Match thresold : 90
-      1 matching keys found
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/countries.the.txt
-    <BLANKLINE>
-        China
-          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-        Australia
-          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-        Belgium
-          Brussels, Belgium
-        Brunei Darussalam
-          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-        Denmark
-          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-        France
-          SKEMA Business School, Lille, France; University of Lille Nord de France,...
-        Germany
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-        Ghana
-          University of the Free State and University of Ghana Business School, Uni...
-    <BLANKLINE>
+    >>> from techminer2.thesaurus.countries import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
+    China
+      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+    Australia
+      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+    Belgium
+      Brussels, Belgium
+    Brunei Darussalam
+      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+    Denmark
+      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+    France
+      SKEMA Business School, Lille, France; University of Lille Nord de France,...
+    Germany
+      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+    Ghana
+      University of the Free State and University of Ghana Business School, Uni...
     <BLANKLINE>
 
 

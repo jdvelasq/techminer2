@@ -5,10 +5,7 @@ from colorama import Fore, init
 
 from techminer2.package_data.text_processing import internal__sort_text_processing_terms
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus._internals import (
-    internal__load_thesaurus_as_data_frame,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import internal__load_thesaurus_as_data_frame
 
 
 def execute_acronyms_command():
@@ -16,11 +13,11 @@ def execute_acronyms_command():
     print()
 
     thesaurus_path = "./data/thesaurus/acronyms.the.txt"
-    internal__print_thesaurus_header(
-        thesaurus_path,
-        n=10,
-        use_colorama=True,
-    )
+    # internal__print_thesaurus_header(
+    #     thesaurus_path,
+    #     n=10,
+    #     use_colorama=True,
+    # )
 
     answer = colorized_input(
         ". do you want to register new noun phrases from acronyms (y/[n]) > "

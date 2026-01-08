@@ -25,7 +25,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByFuzzyMatch(use_colorama=False)
+    ...     SortByFuzzyMatch()
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Texas")

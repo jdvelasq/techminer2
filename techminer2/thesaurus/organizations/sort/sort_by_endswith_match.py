@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByEndsWithMatch(use_colorama=False)
+    ...     SortByEndsWithMatch()
     ...     .having_pattern("(AUS)")
     ...     .where_root_directory("examples/fintech/")
     ... )

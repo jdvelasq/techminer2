@@ -1,14 +1,11 @@
-"""
-This module implement generic thesaurus functions.
+from typing import Dict, List
 
-
-"""
 from techminer2.thesaurus._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,
 )
 
 
-def internal__load_thesaurus_as_mapping(file_path):
+def internal__load_thesaurus_as_mapping(file_path: str) -> Dict[str, List[str]]:
     """Load existence thesaurus as a dataframe."""
 
     frame = internal__load_thesaurus_as_data_frame(file_path)

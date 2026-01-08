@@ -1,0 +1,31 @@
+[MASTER]
+# Ignore certain directories
+ignore=CVS,.git,__pycache__,build,dist,.venv,venv
+
+[MESSAGES CONTROL]
+# Disable docstring requirements for internal code
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    too-few-public-methods,
+    too-many-arguments,
+    too-many-locals,
+    too-many-branches,
+    too-many-statements,
+    line-too-long
+
+[FORMAT]
+# Match Black's line length
+max-line-length=88
+
+[BASIC]
+# Allow shorter variable names (common in data science)
+good-names=i,j,k,e,x,y,df,ax,fig,n
+
+[DESIGN]
+# More relaxed limits for solo development
+max-args=7
+max-locals=20
+max-branches=15
+max-statements=60

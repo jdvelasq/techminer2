@@ -23,7 +23,7 @@ Example:
 
     >>> # Initialize the thesaurus
     >>> initializator = (
-    ...     InitializeThesaurus(use_colorama=False)
+    ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
@@ -96,7 +96,7 @@ class InitializeThesaurus(
             if len(file_path) > 72:
                 file_path = "..." + file_path[-68:]
 
-            if self.params.use_colorama:
+            if self.params.colored_stderr:
                 filename = str(file_path).rsplit("/", maxsplit=1)[1]
                 file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
                 file_path = Fore.LIGHTBLACK_EX + file_path
@@ -131,7 +131,7 @@ class InitializeThesaurus(
         self.internal__notify_process_end()
 
         if not self.params.quiet:
-            self.internal__print_thesaurus_header(
+            self.internal__print_thesaurus_header_to_stream(
                 n=10,
-                use_colorama=self.params.use_colorama,
+                stream=sys.stderr,
             )

@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByKeyLength(use_colorama=False)
+    ...     SortByKeyLength()
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/fintech/")

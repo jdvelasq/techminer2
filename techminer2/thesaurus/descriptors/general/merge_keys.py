@@ -24,7 +24,7 @@ Example:
 
     >>> from techminer2.thesaurus.descriptors import MergeKeys
     >>> (
-    ...     MergeKeys(use_colorama=False)
+    ...     MergeKeys()
     ...     .with_patterns(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
     ...     .where_root_directory("examples/fintech/")
     ...     .run()

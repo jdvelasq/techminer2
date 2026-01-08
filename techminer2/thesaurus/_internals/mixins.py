@@ -1,51 +1,77 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
-# pylint: disable=attribute-defined-outside-init
+"""
+Thesaurus manipulation internals.
 
-""" "Thesaurus common functions."""
+This module provides mixins for thesaurus operations including
+loading, processing, and saving thesaurus data.
+"""
 
+import sys
+from pathlib import Path
+from typing import TYPE_CHECKING, Dict, TextIO
 
 import pandas as pd
-from textblob import Word
+from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )
 from techminer2.thesaurus._internals import (
-    internal__generate_system_thesaurus_file_path,
+    internal__create_fingerprint,
     internal__generate_user_thesaurus_file_path,
+    internal__get_system_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_mapping,
     internal__load_thesaurus_as_mapping,
 )
 
+if TYPE_CHECKING:
+    from techminer2._internals.params_mixin import Params
+
 tqdm.pandas()
+
+
+# Add after imports (line ~32):
+class ThesaurusError(Exception):
+    """Base exception for thesaurus operations."""
+
+
+class ThesaurusIOError(ThesaurusError):
+    """I/O operation failed."""
+
+
+class ThesaurusValidationError(ThesaurusError):
+    """Validation failed."""
 
 
 class ThesaurusMixin:
 
+    # Expected from host class:
+    params: "Params"
+
+    # Set by this mixin (ADD THESE):
+    thesaurus_path: Path
+    data_frame: pd.DataFrame
+    mapping: Dict[str, str]
+    filtered_records: pd.DataFrame
+    n_initial_keys: int
+    n_final_keys: int
+
     # -------------------------------------------------------------------------
-    def internal__build_user_thesaurus_path(self):
+    def internal__build_user_thesaurus_path(self) -> None:
 
         self.thesaurus_path = internal__generate_user_thesaurus_file_path(
             params=self.params
         )
 
     # -------------------------------------------------------------------------
-    def internal__build_system_thesaurus_path(self):
+    def internal__build_system_thesaurus_path(self) -> None:
 
-        self.thesaurus_path = internal__generate_system_thesaurus_file_path(
+        self.thesaurus_path = internal__get_system_thesaurus_file_path(
             thesaurus_file=self.params.thesaurus_file
         )
 
     # -------------------------------------------------------------------------
-    def internal__create_thesaurus_data_frame_from_field(self):
+    def internal__create_thesaurus_data_frame_from_field(self) -> None:
 
         keys = self.filtered_records[self.params.field].dropna()
         keys = keys.str.split("; ")
@@ -63,7 +89,7 @@ class ThesaurusMixin:
         self.data_frame = data_frame
 
     # -------------------------------------------------------------------------
-    def internal__explode_and_group_values_by_key(self):
+    def internal__explode_and_group_values_by_key(self) -> None:
 
         self.data_frame["value"] = self.data_frame["value"].str.split("; ")
         self.data_frame = self.data_frame.explode("value")
@@ -91,101 +117,32 @@ class ThesaurusMixin:
         self.data_frame = self.data_frame.reset_index(drop=True)
 
     # -------------------------------------------------------------------------
-    def internal__load_filtered_records(self):
+    def internal__load_filtered_records(self) -> None:
 
         self.filtered_records = internal__load_filtered_records_from_database(
             params=self.params
         )
 
     # -------------------------------------------------------------------------
-    def internal__load_reversed_thesaurus_as_mapping(self):
+    def internal__load_reversed_thesaurus_as_mapping(self) -> None:
         self.mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
 
     # -------------------------------------------------------------------------
-    def internal__load_thesaurus_as_mapping(self):
-
+    def internal__load_thesaurus_as_mapping(self) -> None:
         mapping = internal__load_thesaurus_as_mapping(self.thesaurus_path)
         self.mapping = {key: "; ".join(value) for key, value in mapping.items()}
 
     # -------------------------------------------------------------------------
-    def internal__reduce_keys(self):
-
-        particles = [
-            "aided",
-            "and the",
-            "and",
-            "applied to",
-            "assisted",
-            "at",
-            "based",
-            "for",
-            "in",
-            "like",
-            "of the",
-            "of using",
-            "of",
-            "on",
-            "s",
-            "sized",
-            "to",
-            "under",
-            "using",
-        ]
+    def internal__reduce_keys(self) -> None:
 
         # initial number of keys:
         self.n_initial_keys = len(self.data_frame)
 
         # Based on the basic TheVantagePoint algorithm to group terms
         data_frame = self.data_frame.copy()
-        data_frame["fingerprint"] = data_frame["key"].copy()
-
-        # hyphen-insensitive matching
-        data_frame["fingerprint"] = (
-            data_frame["fingerprint"]
-            .str.replace("_", " ")
-            .str.replace("-", " ")
-            .str.replace(".", "")
+        data_frame["fingerprint"] = data_frame["key"].apply(
+            internal__create_fingerprint
         )
-
-        # case-insensitive matching
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.lower()
-
-        # accents removal
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.normalize("NFKD")
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.encode(
-            "ascii", errors="ignore"
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.decode("utf-8")
-
-        # particles remotion
-        for particle in particles:
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                f" {particle} ", " "
-            )
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                f"^{particle} ", ""
-            )
-            data_frame["fingerprint"] = data_frame["fingerprint"].str.replace(
-                f" {particle}$", ""
-            )
-
-        # singular and plural matching
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.strip()
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.split(" ")
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [w.strip() for w in x]
-        )
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: [Word(w).singularize().singularize().singularize() for w in x]
-        )
-
-        # word order insensitive matching
-        data_frame["fingerprint"] = data_frame["fingerprint"].map(
-            lambda x: sorted(set(x))
-        )
-
-        # final fingerprint
-        data_frame["fingerprint"] = data_frame["fingerprint"].str.join(" ")
 
         # preserve the key with the largest number of values
         data_frame["count"] = data_frame["value"].map(lambda x: len(x.split("; ")))
@@ -194,10 +151,10 @@ class ThesaurusMixin:
         )
 
         # mapping
-        mapping = data_frame[["key", "fingerprint"]].copy()
-        mapping = mapping.drop_duplicates()
-        mapping = mapping.set_index("fingerprint")
-        mapping = mapping["key"].to_dict()
+        mapping_df = data_frame[["key", "fingerprint"]].copy()
+        mapping_df = mapping_df.drop_duplicates()
+        mapping_df = mapping_df.set_index("fingerprint")
+        mapping = mapping_df["key"].to_dict()
 
         data_frame["key"] = data_frame["fingerprint"].apply(lambda x: mapping[x])
         data_frame = data_frame[["key", "value"]].copy()
@@ -208,11 +165,11 @@ class ThesaurusMixin:
                 .groupby("key")
                 .agg({"__row_selected__": list})
             )
-            groupby["__row_selected__"] = groupby["__row_selected__"].map(
-                lambda x: any(x)
+            groupby["__row_selected__"] = groupby["__row_selected__"].map(any)
+            groupby_dict = groupby["__row_selected__"].to_dict()
+            data_frame["__row_selected__"] = data_frame["key"].map(
+                lambda x: groupby_dict[x]
             )
-            groupby = groupby["__row_selected__"].to_dict()
-            data_frame["__row_selected__"] = data_frame["key"].map(lambda x: groupby[x])
 
         self.data_frame = data_frame
 
@@ -220,26 +177,59 @@ class ThesaurusMixin:
         self.n_final_keys = len(self.data_frame)
 
     # -------------------------------------------------------------------------
-    def internal__set_n_initial_keys(self):
+    def internal__set_n_initial_keys(self) -> None:
         self.n_initial_keys = len(self.data_frame)
 
     # -------------------------------------------------------------------------
-    def internal__set_n_final_keys(self):
+    def internal__set_n_final_keys(self) -> None:
         self.n_final_keys = len(self.data_frame)
 
     # -------------------------------------------------------------------------
-    def internal__print_thesaurus_header(self, n, use_colorama):
+    def internal__print_thesaurus_header_to_stream(
+        self, n: int, stream: TextIO
+    ) -> None:
 
-        from techminer2.thesaurus._internals import internal__print_thesaurus_header
+        max_key_display = 80
+        max_value_display = 76
+        key_truncate_at = 77
+        value_truncate_at = 73
 
-        internal__print_thesaurus_header(
-            thesaurus_path=self.thesaurus_path,
-            n=n,
-            use_colorama=use_colorama,
+        if self.params.quiet:
+            return
+
+        thesaurus_path = self.thesaurus_path
+        colored_stderr = self.params.colored_stderr
+        colored_output = self.params.colored_output
+        data_frame = self.data_frame.head(n).copy()
+
+        data_frame["key"] = data_frame["key"].map(
+            lambda x: x[:key_truncate_at] + "..." if len(x) > max_key_display else x
+        )
+        data_frame["value"] = data_frame["value"].map(
+            lambda x: x[:value_truncate_at] + "..." if len(x) > max_value_display else x
         )
 
+        msg = f"INFO: Printing thesaurus header\n  Reading {thesaurus_path}\n\n"
+        if colored_stderr:
+            filename = str(thesaurus_path).rsplit("/", maxsplit=1)[1]
+            msg = msg.replace("File :", f"{Fore.LIGHTBLACK_EX}File :")
+            msg = msg.replace(filename, f"{Fore.RESET}{filename}")
+        sys.stderr.write(msg)
+        sys.stderr.flush()
+
+        for _, row in data_frame.iterrows():
+            stream.write(f"{row.key}\n")
+            if (stream == sys.stdout and colored_output) or (
+                stream == sys.stderr and colored_stderr
+            ):
+                stream.write(f"  {Fore.LIGHTBLACK_EX}{row.value}{Fore.RESET}\n")
+            else:
+                stream.write(f"  {row.value}\n")
+        stream.write("\n")
+        stream.flush()
+
     # -------------------------------------------------------------------------
-    def internal__sort_data_frame_by_rows_and_key(self):
+    def internal__sort_data_frame_by_rows_and_key(self) -> None:
 
         self.data_frame["lower_key"] = (
             self.data_frame["key"].str.lower().str.replace("_", " ")
@@ -254,24 +244,45 @@ class ThesaurusMixin:
 
         self.data_frame = self.data_frame.drop(columns=["lower_key"])
         self.data_frame = self.data_frame[
-            self.data_frame.key.map(lambda x: x.strip() != "")
+            self.data_frame.key.fillna("").str.strip() != ""
         ]
 
     # -------------------------------------------------------------------------
-    def internal__transform_mapping_to_data_frame(self):
+    def internal__transform_mapping_to_data_frame(self) -> None:
 
         keys = list(self.mapping.keys())
         values = list(self.mapping.values())
         self.data_frame = pd.DataFrame({"key": keys, "value": values})
 
     # -------------------------------------------------------------------------
-    def internal__write_thesaurus_data_frame_to_disk(self):
+    def internal__write_thesaurus_data_frame_to_disk(self) -> None:
 
-        with open(self.thesaurus_path, "w", encoding="utf-8") as file:
-            for _, row in self.data_frame.iterrows():
-                file.write(row.key + "\n")
-                for value in row.value.split("; "):
-                    file.write(f"    {value}\n")
+        if not hasattr(self, "data_frame"):
+            raise ThesaurusValidationError("data_frame not initialized")
+
+        if self.data_frame.empty:
+            raise ThesaurusValidationError("Cannot write empty thesaurus")
+
+        try:
+            self.thesaurus_path.parent.mkdir(parents=True, exist_ok=True)
+        except PermissionError as e:
+            raise ThesaurusIOError(
+                f"The parent directory {self.thesaurus_path.parent} not exists: {e}"
+            ) from e
+
+        try:
+            with open(self.thesaurus_path, "w", encoding="utf-8") as file:
+                for _, row in self.data_frame.iterrows():
+                    file.write(row.key + "\n")
+                    for value in row.value.split("; "):
+                        file.write(f"    {value}\n")
+        except PermissionError as e:
+            raise ThesaurusIOError(
+                f"The thesaurus file {self.thesaurus_path} cannot be opened: {e}"
+            ) from e
+
+        except OSError as e:
+            raise ThesaurusIOError(f"Failed to write thesaurus: {e}") from e
 
 
 # =============================================================================

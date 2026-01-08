@@ -24,7 +24,7 @@ Example:
     >>> # Create, configure, and run the sorter
     >>> from techminer2.thesaurus.references import SortByAlphabet
     >>> (
-    ...     SortByAlphabet(use_colorama=False)
+    ...     SortByAlphabet()
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )

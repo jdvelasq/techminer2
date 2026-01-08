@@ -26,7 +26,7 @@ Example:
 
     >>> # Populate stopwords
     >>> (
-    ...     AreSynonymous(use_colorama=False)
+    ...     AreSynonymous()
     ...     .with_core_area("fintech (financial technologies)")
     ...     .having_n_contexts(10)
     ...     .having_terms_in_top(40)

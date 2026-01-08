@@ -24,7 +24,7 @@ Example:
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> applier = (
-    ...     ApplyThesaurus(use_colorama=False)
+    ...     ApplyThesaurus()
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> applier.run()

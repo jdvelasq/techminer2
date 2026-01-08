@@ -23,7 +23,7 @@ Example:
 
     >>> # Create, configure, and run the sorter
     >>> sorter = (
-    ...     SortByMatch(use_colorama=False)
+    ...     SortByMatch()
     ...     .having_pattern("ECON")
     ...     .where_root_directory("examples/fintech/")
     ... )

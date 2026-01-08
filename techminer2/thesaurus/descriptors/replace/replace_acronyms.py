@@ -31,7 +31,7 @@ Example:
     >>> ReplaceAcronyms(
     ...     root_directory="examples/fintech/",
     ...     tqdm_disable=True,
-    ...     use_colorama=False,
+    ...     ,
     ... ).run()
 
     >>> # Capture and print stderr output
@@ -81,7 +81,6 @@ from techminer2.thesaurus._internals import (
     internal__generate_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
 )
 
 
@@ -102,7 +101,7 @@ class ReplaceAcronyms(
         if len(thesaurus_path) > 40:
             thesaurus_path = "..." + thesaurus_path[-36:]
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(thesaurus_path).rsplit("/", maxsplit=1)[1]
             thesaurus_path = thesaurus_path.replace(filename, f"{Fore.RESET}{filename}")
             thesaurus_path = Fore.LIGHTBLACK_EX + thesaurus_path
@@ -113,7 +112,7 @@ class ReplaceAcronyms(
         if len(acronyms_path) > 40:
             acronyms_path = "..." + acronyms_path[-36:]
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(acronyms_path).rsplit("/", maxsplit=1)[1]
             acronyms_path = acronyms_path.replace(filename, f"{Fore.RESET}{filename}")
             acronyms_path = Fore.LIGHTBLACK_EX + acronyms_path
@@ -127,9 +126,6 @@ class ReplaceAcronyms(
     def internal__notify_process_end(self):
 
         sys.stderr.write("  Replacement process completed successfully\n\n")
-        internal__print_thesaurus_header(
-            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
-        )
 
     #
     # ALGORITHM:
@@ -231,3 +227,4 @@ class ReplaceAcronyms(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

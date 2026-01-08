@@ -12,45 +12,35 @@ Initialize Thesaurus
 
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
     >>> from techminer2.thesaurus.countries import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
-    >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", use_colorama=False).run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Initializing thesaurus from 'affiliations' field...
-      File : examples/fintech/data/thesaurus/countries.the.txt
-      24 keys found
-      Initialization process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/countries.the.txt
-    <BLANKLINE>
-        Australia
-          Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
-        Belgium
-          Brussels, Belgium
-        Brunei Darussalam
-          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-        China
-          Cheung Kong Graduate School of Business, and Institute of Internet Financ...
-        Denmark
-          Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
-        France
-          SKEMA Business School, Lille, France; University of Lille Nord de France,...
-        Germany
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
-        Ghana
-          University of the Free State and University of Ghana Business School, Uni...
+    >>> from techminer2.thesaurus.countries import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
+    Australia
+      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+    Belgium
+      Brussels, Belgium
+    Brunei Darussalam
+      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+    China
+      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+    Denmark
+      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+    France
+      SKEMA Business School, Lille, France; University of Lille Nord de France,...
+    Germany
+      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+    Ghana
+      University of the Free State and University of Ghana Business School, Uni...
     <BLANKLINE>
 
 
@@ -58,13 +48,10 @@ Example:
 import sys
 from importlib.resources import files
 
-from colorama import Fore, init
+from colorama import Fore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
 )
@@ -89,7 +76,7 @@ class InitializeThesaurus(
             if len(file_path) > 72:
                 file_path = "..." + file_path[-68:]
 
-            if self.params.use_colorama:
+            if self.params.colored_stderr:
                 filename = str(file_path).rsplit("/", maxsplit=1)[1]
                 file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
                 file_path = Fore.LIGHTBLACK_EX + file_path
@@ -106,11 +93,6 @@ class InitializeThesaurus(
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
             sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
-
-            internal__print_thesaurus_header(
-                thesaurus_path=self.thesaurus_path,
-                use_colorama=self.params.use_colorama,
-            )
 
     #
     # ALGORITHM:
@@ -180,6 +162,7 @@ class InitializeThesaurus(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 
 
 # =============================================================================

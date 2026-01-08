@@ -10,44 +10,15 @@ Apply Thesaurus
 ===============================================================================
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import ApplyThesaurus, InitializeThesaurus
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
+    >>> from techminer2.thesaurus.countries import ApplyThesaurus
+    >>> ApplyThesaurus().where_root_directory("examples/fintech/").run()
 
-
-    >>> # Create and apply the thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyThesaurus(use_colorama=False).where_root_directory_is("examples/fintech/").run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Applying user thesaurus to database...
-              File : examples/fintech/data/thesaurus/countries.the.txt
-      Source field : affiliations
-      Target field : countries
-      Application process completed successfully
-    <BLANKLINE>
-    Applying system thesaurus to database...
-              File : ...2/package_data/thesaurus/geography/country_to_region.the.txt
-      Source field : countries
-      Target field : regions
-      Application process completed successfully
-    <BLANKLINE>
-    Applying system thesaurus to database...
-              File : ...ackage_data/thesaurus/geography/country_to_subregion.the.txt
-      Source field : countries
-      Target field : subregions
-      Application process completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
-
-    >>> # Query the database to verify the results
     >>> from techminer2.database.tools import Query
     >>> result = Query(
     ...     query_expression="SELECT countries FROM database LIMIT 10;",

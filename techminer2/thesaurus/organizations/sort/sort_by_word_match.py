@@ -27,7 +27,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByWordMatch(use_colorama=False)
+    ...     SortByWordMatch()
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Bank")

@@ -23,7 +23,7 @@ Example:
 
 
     >>> (
-    ...     ApplyThesaurus(use_colorama=False)
+    ...     ApplyThesaurus()
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/fintech/")

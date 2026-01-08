@@ -2,9 +2,9 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "notebook.defaultFormatter": "ms-python.black-formatter",
     // "editor.codeActionsOnSave": {},
-    "flake8.args": [
-        "--config=pyproject.toml"
-    ],
+    // "flake8.args": [
+    //     "--config=pyproject.toml"
+    // ],
     "python.testing.pytestArgs": [
         ".",
         "--doctest-modules"

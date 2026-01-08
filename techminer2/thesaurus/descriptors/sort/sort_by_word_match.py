@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByWordMatch(use_colorama=False)
+    ...     SortByWordMatch()
     ...     .having_pattern("CREDIT")
     ...     .where_root_directory("examples/fintech/")
     ... )

@@ -21,7 +21,7 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Configure and run the sorter
-    >>> SortByLastWords(use_colorama=False).run()
+    >>> SortByLastWords().run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

@@ -25,7 +25,7 @@ Example:
     >>> # Reduce thesaurus keys
     >>> from techminer2.thesaurus.descriptors import SpellCheck
     >>> (
-    ...     SpellCheck(use_colorama=False)
+    ...     SpellCheck()
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )

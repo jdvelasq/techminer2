@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByOccurrences(use_colorama=False)
+    ...     SortByOccurrences()
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()

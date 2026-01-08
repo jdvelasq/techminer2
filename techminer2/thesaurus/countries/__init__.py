@@ -1,8 +1,10 @@
 """Public API for countries thesaurus."""
+
 from .general.apply_thesaurus import ApplyThesaurus
 from .general.explode_keys import ExplodeKeys
 from .general.initialize_thesaurus import InitializeThesaurus
 from .general.integrity_check import IntegrityCheck
+from .general.print_header import PrintHeader
 from .general.reduce_keys import ReduceKeys
 from .sort.sort_by_alphabet import SortByAlphabet
 from .sort.sort_by_endswith_match import SortByEndsWithMatch
@@ -16,9 +18,10 @@ from .sort.sort_by_word_match import SortByWordMatch
 
 __all__ = [
     "ApplyThesaurus",
-    "InitializeThesaurus",
     "ExplodeKeys",
+    "InitializeThesaurus",
     "IntegrityCheck",
+    "PrintHeader",
     "ReduceKeys",
     "SortByAlphabet",
     "SortByEndsWithMatch",

@@ -11,30 +11,40 @@ Reduce Keys
 ===============================================================================
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, ReduceKeys
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
-    >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
+    >>> from techminer2.thesaurus.countries import ReduceKeys
+    >>> ReduceKeys().where_root_directory("examples/fintech/").run()
 
-    >>> # Reduce thesaurus keys
-    >>> ReduceKeys(use_colorama=False).where_root_directory_is("examples/fintech/").run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Reducing thesaurus keys...
-      File : examples/fintech/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
+    >>> from techminer2.thesaurus.countries import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
+    Australia
+      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+    Belgium
+      Brussels, Belgium
+    Brunei Darussalam
+      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+    China
+      Cheung Kong Graduate School of Business, and Institute of Internet Financ...
+    Denmark
+      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+    France
+      SKEMA Business School, Lille, France; University of Lille Nord de France,...
+    Germany
+      CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
+    Ghana
+      University of the Free State and University of Ghana Business School, Uni...
     <BLANKLINE>
-    <BLANKLINE>
+
 
 """
 from techminer2._internals.mixins import ParamsMixin

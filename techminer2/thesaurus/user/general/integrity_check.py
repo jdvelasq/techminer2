@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the integrity checker
     >>> checker = (
-    ...     IntegrityCheck(use_colorama=False)
+    ...     IntegrityCheck()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
@@ -75,7 +75,7 @@ class IntegrityCheck(
 
         file_path = str(self.thesaurus_path)
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path

@@ -19,7 +19,7 @@ Example:
 
     >>> # Create the thesaurus
     >>> from techminer2.thesaurus.references import InitializeThesaurus
-    >>> InitializeThesaurus(root_directory = "examples/fintech/", tqdm_disable=True, use_colorama=False).run()
+    >>> InitializeThesaurus(root_directory = "examples/fintech/", tqdm_disable=True, ).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -63,7 +63,6 @@ import re
 import sys
 
 import pandas as pd  # type: ignore
-from textblob import Word  # type: ignore
 from tqdm import tqdm
 
 from techminer2._internals.mixins import ParamsMixin
@@ -73,10 +72,7 @@ from techminer2.database._internals.io import (
 from techminer2.database._internals.io import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
 
@@ -127,11 +123,6 @@ class InitializeThesaurus(
             sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
             sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
-
-            internal__print_thesaurus_header(
-                thesaurus_path=self.thesaurus_path,
-                use_colorama=self.params.use_colorama,
-            )
 
     #
     # ALGORITHM:
@@ -260,6 +251,7 @@ class InitializeThesaurus(
         self.internal__create_thesaurus()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 
 
 # =============================================================================

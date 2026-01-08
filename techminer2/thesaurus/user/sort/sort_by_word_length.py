@@ -27,7 +27,7 @@ Example:
 
     >>> # Creates, configures, an run the sorter
     >>> sorter = (
-    ...     SortByWordLength(use_colorama=False)
+    ...     SortByWordLength()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_keys_ordered_by("alphabetical")
     ...     .where_root_directory("examples/fintech/")
@@ -71,10 +71,7 @@ import sys
 from colorama import Fore, init
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 
 
@@ -91,7 +88,7 @@ class SortByWordLength(
 
         file_path = str(self.thesaurus_path)
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
@@ -105,10 +102,6 @@ class SortByWordLength(
 
         sys.stderr.write("  Sorting process completed successfully\n\n")
         sys.stderr.flush()
-
-        internal__print_thesaurus_header(
-            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
-        )
 
     #
     # ALGORITHM:
@@ -142,6 +135,7 @@ class SortByWordLength(
         self.internal__sort_keys()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 
     # -------------------------------------------------------------------------
     def run(self):

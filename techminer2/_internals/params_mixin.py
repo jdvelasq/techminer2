@@ -63,6 +63,8 @@ class Params:
     cluster_names: Optional[list[str]] = None
     clustering_algorithm_or_dict: Optional[Union[str, dict]] = None
     color: Optional[str] = None
+    colored_output: bool = True
+    colored_stderr: bool = True
     colormap: str = "Blues"
     contour_opacity: float = 0.6
     core_area: Optional[str] = None
@@ -207,7 +209,6 @@ class Params:
     # U
     #
     unit_of_analysis: Optional[str] = None
-    use_colorama: bool = True
 
     #
     # V
@@ -509,6 +510,22 @@ class ParamsMixin:
             param_name="citation_threshold",
         )
         self.params.citation_threshold = citation_threshold
+        return self
+
+    def using_colored_output(self, colored_output: bool) -> Self:
+        colored_output = internal__check_required_bool(
+            value=colored_output,
+            param_name="colored_output",
+        )
+        self.params.colored_output = colored_output
+        return self
+
+    def using_colored_stderr(self, colored_stderr: bool) -> Self:
+        colored_stderr = internal__check_required_bool(
+            value=colored_stderr,
+            param_name="colored_stderr",
+        )
+        self.params.colored_stderr = colored_stderr
         return self
 
     def using_cutoff_threshold(self, cutoff_threshold: float) -> Self:

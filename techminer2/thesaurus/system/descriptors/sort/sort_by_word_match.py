@@ -22,7 +22,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> (
-    ...     SortByWordMatch(use_colorama=False)
+    ...     SortByWordMatch()
     ...     .having_pattern("CREDIT")
     ...     .run()
     ... )

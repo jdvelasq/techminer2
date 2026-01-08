@@ -25,7 +25,7 @@ Example:
     'examples/fintech/data/thesaurus/acronyms.the.txt'
 
     >>> # Register new thesaurus phrases
-    >>> RegisterPhrases(root_directory="examples/fintech/", use_colorama=False).run()
+    >>> RegisterPhrases(root_directory="examples/fintech/", ).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()

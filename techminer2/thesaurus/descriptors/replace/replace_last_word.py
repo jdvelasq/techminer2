@@ -24,7 +24,7 @@ Example:
 
     >>> # Configure and run the replacer
     >>> replacer = (
-    ...     ReplaceLastWord(use_colorama=False)
+    ...     ReplaceLastWord()
     ...     .having_word("FINTECH")
     ...     .having_replacement("fintech")
     ...     .where_root_directory("examples/fintech/")

@@ -21,7 +21,7 @@ Example:
     >>> # Create the thesaurus
     >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
     >>> (
-    ...     InitializeThesaurus(use_colorama=False)
+    ...     InitializeThesaurus()
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
@@ -65,8 +65,6 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2.thesaurus.user import InitializeThesaurus as UserInitializeThesaurus
 
 
-#
-#
 class InitializeThesaurus(
     ParamsMixin,
 ):

@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByExactMatch(use_colorama=False)
+    ...     SortByExactMatch()
     ...     .having_pattern("BLOCKCHAIN")
     ...     .where_root_directory("examples/fintech/")
     ... )

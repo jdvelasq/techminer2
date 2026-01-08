@@ -20,11 +20,11 @@ Example:
     >>> sys.stderr = StringIO()
 
     >>> # Create the thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True, use_colorama=False).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True, ).run()
 
     >>> # Run the integrity check
     >>> checker = (
-    ...     IntegrityCheck(use_colorama=False)
+    ...     IntegrityCheck()
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> checker.run()

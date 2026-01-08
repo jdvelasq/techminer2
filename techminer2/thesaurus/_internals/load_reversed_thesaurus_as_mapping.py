@@ -1,17 +1,13 @@
-"""
-This module implement generic thesaurus functions.
-
-
-"""
 import os.path
+from typing import Dict, List, Optional
 
 
-def internal__load_reversed_thesaurus_as_mapping(file_path):
-    """Load existence thesaurus as a dataframe."""
+def internal__load_reversed_thesaurus_as_mapping(file_path: str) -> Dict[str, str]:
+    """Load existence thesaurus as a mapping."""
 
-    value_phrases = []
-    key_phrases = []
-    key_phrase = None
+    value_phrases: List[str] = []
+    key_phrases: List[str] = []
+    key_phrase: Optional[str] = None
 
     if not os.path.isfile(file_path):
         raise FileNotFoundError(f"The file {file_path} does not exist.")
@@ -23,6 +19,9 @@ def internal__load_reversed_thesaurus_as_mapping(file_path):
                 key_phrase = line.strip()
             else:
                 value_phrase = line.strip()
+                # skip value lines that appear before any key header
+                if key_phrase is None:
+                    continue
                 value_phrases.append(value_phrase)
                 key_phrases.append(key_phrase)
 

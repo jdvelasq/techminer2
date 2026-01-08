@@ -24,7 +24,7 @@ Example:
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Remove common last words
-    >>> RemoveLastWords(root_directory="examples/fintech/", tqdm_disable=True, use_colorama=False).run()
+    >>> RemoveLastWords(root_directory="examples/fintech/", tqdm_disable=True, ).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -71,10 +71,7 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
 
@@ -92,7 +89,7 @@ class RemoveLastWords(
 
         file_path = str(self.thesaurus_path)
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
@@ -104,12 +101,8 @@ class RemoveLastWords(
     # -------------------------------------------------------------------------
     def internal__notify_process_end(self):
 
-        sys.stderr.write(f"  Removal process completed successfully\n\n")
+        sys.stderr.write("  Removal process completed successfully\n\n")
         sys.stderr.flush()
-
-        internal__print_thesaurus_header(
-            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
-        )
 
     #
     # ALGORITHM:
@@ -165,3 +158,4 @@ class RemoveLastWords(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

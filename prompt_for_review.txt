@@ -1,0 +1,7 @@
+review and grade again. take into accoun that:
+* The package is only and absolutely only for my own use
+* The package is a competitive advantage for increasing my productivity.
+* The code and variables are self-documented and easy to understand, to avoid commentaries and docstrings.
+* Package imported functions will be or have been reviewed for improving their professional grade
+* Testability is critical
+

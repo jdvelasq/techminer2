@@ -25,7 +25,7 @@ Example:
 
     >>> # Clump the thesaurus
     >>> (
-    ...     ClumpKeys(tqdm_disable=True, use_colorama=False)
+    ...     ClumpKeys(tqdm_disable=True, )
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )

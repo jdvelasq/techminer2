@@ -25,7 +25,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByAlphabet(use_colorama=False)
+    ...     SortByAlphabet()
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()

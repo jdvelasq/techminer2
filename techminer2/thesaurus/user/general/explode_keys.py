@@ -29,7 +29,7 @@ Example:
 
     >>> # Creates, configures, an run the exploder
     >>> (
-    ...     ExplodeKeys(use_colorama=False)
+    ...     ExplodeKeys()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
@@ -105,7 +105,7 @@ class ExplodeKeys(
         if len(file_path) > 72:
             file_path = "..." + file_path[-68:]
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
@@ -147,7 +147,4 @@ class ExplodeKeys(
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__set_n_final_keys()
         self.internal__notify_process_end()
-        self.internal__print_thesaurus_header(
-            n=10,
-            use_colorama=self.params.use_colorama,
-        )
+        self.internal__print_thesaurus_header_to_stream(n=10, stream=sys.stderr)

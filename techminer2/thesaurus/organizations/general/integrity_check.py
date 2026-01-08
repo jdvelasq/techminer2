@@ -23,7 +23,7 @@ Example:
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> checker = (
-    ...     IntegrityCheck(use_colorama=False)
+    ...     IntegrityCheck()
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> checker.run()

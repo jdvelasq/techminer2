@@ -22,7 +22,7 @@ Example:
 
     >>> # Create thesaurus
     >>> from techminer2.thesaurus.acronyms import InitializeThesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", use_colorama=False).run()
+    >>> InitializeThesaurus(root_directory="examples/fintech/", ).run()
 
     >>> # Capture and print stderr output
     >>> output = sys.stderr.getvalue()
@@ -65,9 +65,8 @@ from textblob import TextBlob  # type: ignore
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
-    internal__generate_system_thesaurus_file_path,
+    internal__get_system_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
 )
 from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
@@ -98,11 +97,6 @@ class InitializeThesaurus(
             sys.stderr.write(f"  {len(self.data_frame)} acronyms found\n")
             sys.stderr.write("  Initialization process completed successfully\n")
             sys.stderr.flush()
-
-            internal__print_thesaurus_header(
-                thesaurus_path=self.thesaurus_path,
-                use_colorama=self.params.use_colorama,
-            )
 
     #
     # ALGORITHM:
@@ -250,9 +244,7 @@ class InitializeThesaurus(
     def internal__add_knowns_acronyms(self):
 
         # Load known acronyms
-        file_path = internal__generate_system_thesaurus_file_path(
-            "acronyms/common.the.txt"
-        )
+        file_path = internal__get_system_thesaurus_file_path("acronyms/common.the.txt")
         common_abbrvs = internal__load_thesaurus_as_mapping(file_path)
 
         # Load raw descriptors from records
@@ -336,3 +328,4 @@ class InitializeThesaurus(
         self.interval__validate_keys()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

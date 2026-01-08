@@ -22,7 +22,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> (
-    ...     SortByExactMatch(use_colorama=False)
+    ...     SortByExactMatch()
     ...     .having_pattern("BLOCKCHAIN")
     ...     .run()
     ... )

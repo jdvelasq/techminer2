@@ -245,7 +245,7 @@ def internal__merge_keys(lead_term, candidate_term):
         return
 
     (
-        MergeKeys(use_colorama=False)
+        MergeKeys()
         .having_patterns_matching([lead_term, candidate_term])
         .where_root_directory("./")
         .run()

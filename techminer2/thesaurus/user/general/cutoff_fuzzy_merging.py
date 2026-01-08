@@ -24,64 +24,24 @@ Example:
 
     >>> from techminer2.thesaurus.user import ReduceKeys
     >>> (
-    ...     ReduceKeys(use_colorama=False)
+    ...     ReduceKeys()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
 
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> import sys
-    >>> from io import StringIO
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
     >>> # Cutoff Fuzzy Merging
     >>> from techminer2.thesaurus.user import CutoffFuzzyMerging
     >>> (
-    ...     CutoffFuzzyMerging(use_colorama=False, tqdm_disable=True)
+    ...     CutoffFuzzyMerging(, tqdm_disable=True)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
-    ...     .having_cutoff_threshold(85)
-    ...     .having_match_threshold(95)
+    ...     .using_cutoff_threshold(85)
+    ...     .using_match_threshold(95)
     ...     .run()
     ... )
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +SKIP
-    Cutoff-Fuzzy Merging thesaurus keys...
-      File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1721 to 1695
-      Merging process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
-        A_SYSTEMIC_INNOVATION_MODEL
-          A_NEW_SYSTEMIC_INNOVATION_MODEL
-        A_THEORETICAL_FRAMEWORK
-          A_NEW_THEORETICAL_FRAMEWORK
-        CHALLENGES
-          A_CHALLENGE; CHALLENGES
-        CLUSTER_ANALYSIS
-          A_CLUSTER_ANALYSIS; CLUSTER_ANALYSIS
-        COMPETITION
-          A_COMPETITION; COMPETITION
-        COMPETITIVE_AND_COOPERATIVE_MECHANISMS
-          COMPETITIVE_AND_COOPERATIVE_MECHANISMS; THE_COMPETITIVE_AND_COOPERATIVE_M...
-        CONCEPTUAL_FRAMEWORKS
-          CONCEPTUAL_FRAMEWORKS; THE_CONCEPTUAL_FRAMEWORK
-        DEFINITION
-          A_DEFINITION; DEFINITION; DEFINITIONS
-        DEVELOPING_COUNTRIES
-          DEVELOPING_COUNTRIES; THE_DEVELOPING_COUNTRIES
-        ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS
-          ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS; THE_ECONOMIC_AND_TECHNOLOGICAL_D...
-    <BLANKLINE>
-    <BLANKLINE>
 
 
 """
@@ -89,7 +49,6 @@ Example:
 
 import sys
 
-import textdistance
 from colorama import Fore
 from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
@@ -121,7 +80,7 @@ class CutoffFuzzyMerging(
         if len(file_path) > 72:
             file_path = "..." + file_path[-68:]
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
@@ -366,7 +325,7 @@ class CutoffFuzzyMerging(
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__set_n_final_keys()
         self.internal__notify_process_end()
-        self.internal__print_thesaurus_header(
+        self.internal__print_thesaurus_header_to_stream(
             n=10,
-            use_colorama=self.params.use_colorama,
+            use_colorama=self.params.colored_stderr,
         )

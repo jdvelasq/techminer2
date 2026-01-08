@@ -12,23 +12,42 @@ Sort by Word Length
 
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, SortByWordLength
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Sort thesaurus by alphabetical order
-    >>> sorter = (
+    >>> from techminer2.thesaurus.countries import SortByWordLength
+    >>> (
     ...     SortByWordLength()
     ...     .where_root_directory("examples/fintech/")
+    ...     .run()
     ... )
-    >>> sorter.run()
+
+    >>> from techminer2.thesaurus.countries import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
+    Netherlands
+      Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...
+    Switzerland
+      Department of Informatics, University of Zurich, Binzmuehlestrasse 14, Zu...
+    Brunei Darussalam
+      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+    Kazakhstan
+      Department of Accounting and Finance, Bang College of Business, KIMEP Uni...
+    Australia
+      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+    Indonesia
+      Department of Management, Faculty of Economics and Business, Universitas ...
+    Singapore
+      School of Information Systems, Singapore Management University (SMU), Sin...
+    Slovenia
+      Faculty of Economics, University of Ljubljana, Kardeljeva pl. 17, Ljublja...
+    <BLANKLINE>
 
 
 """

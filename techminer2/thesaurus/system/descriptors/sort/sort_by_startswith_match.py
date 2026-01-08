@@ -22,7 +22,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> (
-    ...     SortByStartsWithMatch(use_colorama=False)
+    ...     SortByStartsWithMatch()
     ...     .having_pattern("COMM")
     ...     .run()
     ... )

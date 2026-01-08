@@ -22,7 +22,7 @@ Example:
 
     >>> # Configure and run the sorter
     >>> (
-    ...     SortByMatch(use_colorama=False)
+    ...     SortByMatch()
     ...     .having_pattern("BLOCK")
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)

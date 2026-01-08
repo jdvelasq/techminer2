@@ -11,35 +11,40 @@ Explode Keys
 ===============================================================================
 
 Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, ExplodeKeys
+    >>> from techminer2.thesaurus.countries import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
-    >>> # Create thesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True, use_colorama=False).run()
+    >>> from techminer2.thesaurus.countries import ExplodeKeys
+    >>> ExplodeKeys().where_root_directory("examples/fintech/").run()
 
-    >>> # Explode thesaurus keys
-    >>> ExplodeKeys(use_colorama=False).where_root_directory_is("examples/fintech/").run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Reducing thesaurus keys...
-      File : examples/fintech/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 24
-      Reduction process completed successfully
+    >>> from techminer2.thesaurus.countries import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
+    Australia
+      Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
+    Belgium
+      Brussels, Belgium
+    Brunei Darussalam
+      Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
+    China
+      The Research center of information technology & economic and social devel...
+    Denmark
+      Copenhagen Business School, Department of IT Management, Howitzvej 60, Fr...
+    France
+      SKEMA Business School, Lille, France; University of Lille Nord de France,...
+    Germany
+      Leipzig University, Leipzig, Germany; University of Trier, Trier, Germany...
+    Ghana
+      University of the Free State and University of Ghana Business School, Uni...
     <BLANKLINE>
-    Exploding thesaurus keys...
-      File : examples/fintech/data/thesaurus/countries.the.txt
-      Keys reduced from 24 to 106
-      Exploding process completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
+
 
 
 """

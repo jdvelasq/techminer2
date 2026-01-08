@@ -1,3 +1,12 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
+
 """Public API for user thesaurus."""
 
 from techminer2.thesaurus.user.general.apply_thesaurus import ApplyThesaurus
@@ -9,6 +18,7 @@ from techminer2.thesaurus.user.general.get_values import GetValues
 from techminer2.thesaurus.user.general.initialize_thesaurus import InitializeThesaurus
 from techminer2.thesaurus.user.general.integrity_check import IntegrityCheck
 from techminer2.thesaurus.user.general.merge_keys import MergeKeys
+from techminer2.thesaurus.user.general.print_header import PrintHeader
 from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 from techminer2.thesaurus.user.general.spell_check import SpellCheck
 from techminer2.thesaurus.user.replace.replace_initial_word import ReplaceInitialWord
@@ -47,6 +57,8 @@ __all__ = [
     "GetValues",
     "InitializeThesaurus",
     "IntegrityCheck",
+    "MergeKeys",
+    "PrintHeader",
     "ReduceKeys",
     "ReplaceInitialWord",
     "ReplaceLastWord",
@@ -65,5 +77,4 @@ __all__ = [
     "SortByWordLength",
     "SortByWordMatch",
     "SpellCheck",
-    "MergeKeys",
 ]

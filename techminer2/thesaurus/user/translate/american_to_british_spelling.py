@@ -26,7 +26,7 @@ Example:
     >>> # Creates, configures, an run the translator
     >>> from techminer2.thesaurus.user import AmericanToBritishSpelling
     >>> (
-    ...     AmericanToBritishSpelling(tqdm_disable=True, use_colorama=False)
+    ...     AmericanToBritishSpelling(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
@@ -76,9 +76,8 @@ from tqdm import tqdm  # type: ignore
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
-    internal__generate_system_thesaurus_file_path,
+    internal__get_system_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
-    internal__print_thesaurus_header,
 )
 
 tqdm.pandas()
@@ -99,7 +98,7 @@ class AmericanToBritishSpelling(
         if len(file_path) > 72:
             file_path = "..." + file_path[-68:]
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
@@ -114,10 +113,6 @@ class AmericanToBritishSpelling(
         sys.stderr.write("  Translation process completed successfully\n\n")
         sys.stderr.flush()
 
-        internal__print_thesaurus_header(
-            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
-        )
-
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
@@ -126,7 +121,7 @@ class AmericanToBritishSpelling(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        file_path = internal__generate_system_thesaurus_file_path(
+        file_path = internal__get_system_thesaurus_file_path(
             "language/american2british.the.txt"
         )
         mapping = internal__load_thesaurus_as_mapping(file_path)
@@ -183,3 +178,4 @@ class AmericanToBritishSpelling(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

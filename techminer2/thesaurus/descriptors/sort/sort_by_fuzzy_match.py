@@ -25,9 +25,9 @@ Example:
 
     >>> # Configure and run the sorter
     >>> sorter = (
-    ...     SortByFuzzyMatch(use_colorama=False)
+    ...     SortByFuzzyMatch()
     ...     .having_pattern("INFORM")
-    ...     .having_match_threshold(50)
+    ...     .using_match_threshold(50)
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> sorter.run()

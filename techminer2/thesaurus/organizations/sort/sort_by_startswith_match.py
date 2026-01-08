@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByStartsWithMatch(use_colorama=False)
+    ...     SortByStartsWithMatch()
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Univ")

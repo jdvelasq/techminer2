@@ -27,7 +27,7 @@ Example:
     >>> # Create and run the sorter
     >>> from techminer2.thesaurus.organizations import SortByWordLength
     >>> sorter = (
-    ...     SortByWordLength(use_colorama=False)
+    ...     SortByWordLength()
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/fintech/")

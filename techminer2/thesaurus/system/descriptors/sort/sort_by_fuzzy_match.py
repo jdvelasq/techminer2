@@ -22,9 +22,9 @@ Example:
 
     >>> # Configure and run the sorter
     >>> (
-    ...     SortByFuzzyMatch(use_colorama=False)
+    ...     SortByFuzzyMatch()
     ...     .having_pattern("INFORM")
-    ...     .having_match_threshold(50)
+    ...     .using_match_threshold(50)
     ...     .run()
     ... )
 

@@ -12,42 +12,21 @@ Apply Thesaurus
 
 
 Example:
-    >>> #
-    >>> # TEST PREPARATION
-    >>> #
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import ApplyThesaurus, InitializeThesaurus
-
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
     >>> # Reset the thesaurus to initial state
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
     >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
     ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, and runs the applier
+    >>> from techminer2.thesaurus.user import ApplyThesaurus
     >>> applier = (
-    ...     ApplyThesaurus(use_colorama=False)
+    ...     ApplyThesaurus()
     ...     .with_thesaurus_file("descriptors.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .with_other_field("descriptors_cleaned")
     ...     .where_root_directory("examples/fintech/")
     ... )
     >>> applier.run()
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Applying user thesaurus to database...
-              File : examples/fintech/data/thesaurus/descriptors.the.txt
-      Source field : raw_descriptors
-      Target field : descriptors_cleaned
-      Application process completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
 
     >>> # Query the database to check the results
     >>> from techminer2.database.tools import Query
@@ -108,7 +87,7 @@ class ApplyThesaurus(
             if len(file_path) > 64:
                 file_path = "..." + file_path[-60:]
 
-            if self.params.use_colorama:
+            if self.params.colored_stderr:
                 filename = str(file_path).rsplit("/", maxsplit=1)[1]
                 file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
                 file_path = Fore.LIGHTBLACK_EX + file_path

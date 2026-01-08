@@ -28,7 +28,7 @@ Example:
 
     >>> # Creates, configures, an run the spell checker
     >>> (
-    ...     SpellCheck(use_colorama=False)
+    ...     SpellCheck()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_maximum_occurrence(3)
     ...     .where_root_directory("examples/fintech/")
@@ -91,7 +91,7 @@ Example:
     ...     thesaurus_file="demo.the.txt",
     ...     maximum_occurrence=3,
     ...     root_directory="examples/fintech/",
-    ...     use_colorama=False,
+    ...     ,
     ... ).run()
 
     >>> # Capture and print stderr output
@@ -145,14 +145,11 @@ Example:
 import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore, init
+from colorama import Fore
 from spellchecker import SpellChecker as ExternalSpellChecker
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__print_thesaurus_header,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin
 
 
 class SpellCheck(
@@ -171,7 +168,7 @@ class SpellCheck(
         if len(file_path) > 72:
             file_path = "..." + file_path[-68:]
 
-        if self.params.use_colorama:
+        if self.params.colored_stderr:
             filename = str(file_path).rsplit("/", maxsplit=1)[1]
             file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
             file_path = Fore.LIGHTBLACK_EX + file_path
@@ -185,10 +182,6 @@ class SpellCheck(
 
         sys.stderr.write("  Spell checking process completed successfully\n\n")
         sys.stderr.flush()
-
-        internal__print_thesaurus_header(
-            thesaurus_path=self.thesaurus_path, use_colorama=self.params.use_colorama
-        )
 
     #
     # ALGORITHM:
@@ -269,6 +262,7 @@ class SpellCheck(
         self.internal__sort_data_frame_by_rows_and_key()
         self.internal__write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
+        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 
 
 # =============================================================================

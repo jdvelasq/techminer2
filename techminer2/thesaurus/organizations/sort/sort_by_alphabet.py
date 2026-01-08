@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByAlphabet(use_colorama=False)
+    ...     SortByAlphabet()
     ...     .having_keys_ordered_by("alphabetical")
     ...     #
     ...     # DATABASE:

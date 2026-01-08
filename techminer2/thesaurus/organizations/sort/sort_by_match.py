@@ -26,7 +26,7 @@ Example:
 
     >>> # Create and run the sorter
     >>> sorter = (
-    ...     SortByMatch(use_colorama=False)
+    ...     SortByMatch()
     ...     #
     ...     # THESAURUS:
     ...     .having_pattern("Sch")
