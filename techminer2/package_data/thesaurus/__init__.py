@@ -1,1 +1,0 @@
-from .sort_thesaurus_files import sort_thesaurus_files

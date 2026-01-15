@@ -29,7 +29,7 @@ from pyzotero import zotero
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import internal__load_all_records_from_database
+from techminer2._internals.user_data import internal__load_all_records_from_database
 
 
 class ExportRecordNoToZotero(ParamsMixin):

@@ -78,7 +78,7 @@ from tqdm import tqdm  # type: ignore
 from techminer2._internals.mixins import Params, ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
-    internal__generate_user_thesaurus_file_path,
+    internal__get_user_thesaurus_file_path,
     internal__load_thesaurus_as_data_frame,
     internal__load_thesaurus_as_mapping,
 )
@@ -138,7 +138,7 @@ class ReplaceAcronyms(
             .update(thesaurus_file="descriptors.the.txt")
         )
 
-        self.thesaurus_path = internal__generate_user_thesaurus_file_path(params=params)
+        self.thesaurus_path = internal__get_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
     def internal__get_acronyms_thesaurus_file_path(self):
@@ -149,7 +149,7 @@ class ReplaceAcronyms(
             .update(thesaurus_file="acronyms.the.txt")
         )
 
-        self.acronyms_path = internal__generate_user_thesaurus_file_path(params=params)
+        self.acronyms_path = internal__get_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
     def internal__load_descriptor_thesaurus_as_data_frame(self):
@@ -224,7 +224,7 @@ class ReplaceAcronyms(
         self.internal__replace_acronyms()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

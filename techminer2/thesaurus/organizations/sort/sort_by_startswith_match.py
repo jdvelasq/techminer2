@@ -36,37 +36,12 @@ Example:
     ... )
     >>> sorter.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Sorting thesaurus by startswith match...
-         File : examples/fintech/data/thesaurus/organizations.the.txt
-      Pattern : Univ
-      26 matching keys found
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-    <BLANKLINE>
-        Univ Brunei Darussalam (BRN)
-          Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
-        Univ di Padova (ITA)
-          Università di Padova, Italy
-        Univ Gadjah Mada (IDN)
-          Department of Management, Faculty of Economics and Business, Universitas ...
-        Univ Koblenz-Landau (DEU)
-          Institute for Software Technology IST, Universität Koblenz-Landau, Koblen...
-        Univ of Augsburg (DEU)
-          FIM Research Center, University of Augsburg, Augsburg, 86135, Germany
-        Univ of Bremen (DEU)
-          Faculty of Business Studies and Economics, University of Bremen, Wilhelm-...
-        Univ of Chicago (USA)
-          University of Chicago, United States
-        Univ of Delaware (USA)
-          Lerner College of Business and Economics, University of Delaware, United ...
-    <BLANKLINE>
-    <BLANKLINE>
+    >>> from techminer2.thesaurus.organizations import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 
 """

@@ -11,43 +11,78 @@ Reduce Keys
 ===============================================================================
 
 
-Example:
-    >>> # TEST PREPARATION
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, ReduceKeys
+Smoke tests:
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-
-    >>> # Reset the thesaurus to initial state
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Creates, configures, an run the reducer
-    >>> reducer = (
+    >>> from techminer2.thesaurus.user import ReduceKeys
+    >>> (
     ...     ReduceKeys()
     ...     .with_thesaurus_file("demo.the.txt")
+    ...     .using_colored_output(False)
     ...     .where_root_directory("examples/fintech/")
+    ...     .run()
     ... )
-    >>> reducer.run()
+    INFO: Thesaurus keys reduced successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 0 changed keys
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
 
 
 """
-import sys
 
-from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 tqdm.pandas()
 
@@ -59,47 +94,27 @@ class ReduceKeys(
     """:meta private:"""
 
     #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-
-        if len(file_path) > 72:
-            file_path = "..." + file_path[-68:]
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Reducing thesaurus keys...\n")
-        sys.stderr.write(f"  File : {file_path}\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        msg = f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        sys.stderr.write(msg)
-        sys.stderr.write("  Reduction process completed successfully\n\n")
-        sys.stderr.flush()
-
-    #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def run(self):
+    def run(self) -> ThesaurusResult:
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
-        self.internal__set_n_initial_keys()
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
+        self.internal__set_initial_keys()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__set_n_final_keys()
-        self.internal__notify_process_end()
-        self.internal__print_thesaurus_header_to_stream(n=10, stream=sys.stderr)
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
+        self.internal__set_final_keys()
+        self.internal__compute_changed_keys()
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus keys reduced successfully.",
+            success=True,
+            status=f"{self.total_key_changes} changed keys",
+            data_frame=self.data_frame,
+        )

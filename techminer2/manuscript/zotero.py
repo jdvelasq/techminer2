@@ -24,6 +24,7 @@ Example:
 
 """
 
+import fileinput
 import glob
 import os
 import re
@@ -31,7 +32,7 @@ import re
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
 
@@ -41,26 +42,41 @@ class Zotero(
 ):
     """:meta private:"""
 
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        self.zotero_ris_records = []
+        self.first_paragraph = ""
+        self.second_paragraph = ""
+        self.cluster_full_summaries = ""
+        self.text = ""
+        self.uts = []
+        self.titles = []
+        self.selected_ris_records = []
+
     # -------------------------------------------------------------------------
     def internal__load_zotero_ris_records(self):
 
-        filepath = os.path.join(
-            self.params.root_directory,
-            "zotero.ris",
-        )
+        files = sorted(glob.glob(os.path.join(self.params.root_directory, "*.ris")))
+        files = [f for f in files if os.path.basename(f) != "zotero_selected.ris"]
 
         records = []
         stack = []
-        with open(filepath, "r", encoding="utf-8") as f:
-            for line in f:
 
-                if line.strip() == "":
-                    # Begins a new record
-                    text = "".join(stack)
-                    records.append(text)
+        for line in fileinput.input(
+            files=files, openhook=fileinput.hook_encoded("utf-8")
+        ):
+            if line.strip() == "":
+                if stack:
+                    records.append("".join(stack))
                     stack = []
-                else:
-                    stack.append(line)
+            else:
+                stack.append(line)
+
+        # if file didn't end with a blank line, append last record
+        if stack:
+            records.append("".join(stack))
 
         self.zotero_ris_records = records
 

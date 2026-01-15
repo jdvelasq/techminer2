@@ -28,12 +28,12 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by common initial words...
-      File : ...techminer2/package_data/thesaurus/system/descriptors.the.txt
+      File : ...techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
       0 matching keys found
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         ANALYSIS
           ANALYZES

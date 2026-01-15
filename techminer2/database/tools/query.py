@@ -61,7 +61,7 @@ Example:
 import duckdb
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
 

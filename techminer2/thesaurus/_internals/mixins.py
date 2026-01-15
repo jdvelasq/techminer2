@@ -13,13 +13,13 @@ import pandas as pd
 from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
 from techminer2.thesaurus._internals import (
     internal__create_fingerprint,
-    internal__generate_user_thesaurus_file_path,
     internal__get_system_thesaurus_file_path,
+    internal__get_user_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_mapping,
     internal__load_thesaurus_as_mapping,
 )
@@ -57,17 +57,17 @@ class ThesaurusMixin:
     n_final_keys: int
 
     # -------------------------------------------------------------------------
-    def internal__build_user_thesaurus_path(self) -> None:
+    def _build_user_thesaurus_path(self) -> None:
 
-        self.thesaurus_path = internal__generate_user_thesaurus_file_path(
-            params=self.params
-        )
+        self.thesaurus_path = internal__get_user_thesaurus_file_path(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__build_system_thesaurus_path(self) -> None:
 
-        self.thesaurus_path = internal__get_system_thesaurus_file_path(
-            thesaurus_file=self.params.thesaurus_file
+        self.thesaurus_path = Path(
+            internal__get_system_thesaurus_file_path(
+                thesaurus_file=self.params.thesaurus_file
+            )
         )
 
     # -------------------------------------------------------------------------
@@ -125,11 +125,13 @@ class ThesaurusMixin:
 
     # -------------------------------------------------------------------------
     def internal__load_reversed_thesaurus_as_mapping(self) -> None:
-        self.mapping = internal__load_reversed_thesaurus_as_mapping(self.thesaurus_path)
+        self.mapping = internal__load_reversed_thesaurus_as_mapping(
+            str(self.thesaurus_path)
+        )
 
     # -------------------------------------------------------------------------
-    def internal__load_thesaurus_as_mapping(self) -> None:
-        mapping = internal__load_thesaurus_as_mapping(self.thesaurus_path)
+    def _load_thesaurus_as_mapping(self) -> None:
+        mapping = internal__load_thesaurus_as_mapping(str(self.thesaurus_path))
         self.mapping = {key: "; ".join(value) for key, value in mapping.items()}
 
     # -------------------------------------------------------------------------
@@ -173,16 +175,27 @@ class ThesaurusMixin:
 
         self.data_frame = data_frame
 
-        # final number of keys
-        self.n_final_keys = len(self.data_frame)
+    # -------------------------------------------------------------------------
+    def internal__set_initial_keys(self) -> None:
+        self.initial_keys = set(self.data_frame.key.to_list())
 
     # -------------------------------------------------------------------------
-    def internal__set_n_initial_keys(self) -> None:
-        self.n_initial_keys = len(self.data_frame)
+    def internal__set_final_keys(self) -> None:
+        self.final_keys = set(self.data_frame.key.to_list())
 
     # -------------------------------------------------------------------------
-    def internal__set_n_final_keys(self) -> None:
-        self.n_final_keys = len(self.data_frame)
+    def internal__compute_changed_keys(self) -> None:
+
+        set_a = self.initial_keys
+        set_b = self.final_keys
+
+        added = set_b - set_a
+        removed = set_a - set_b
+
+        len_added = len(added)
+        len_removed = len(removed)
+
+        self.total_key_changes = len_added + len_removed
 
     # -------------------------------------------------------------------------
     def internal__print_thesaurus_header_to_stream(
@@ -229,7 +242,7 @@ class ThesaurusMixin:
         stream.flush()
 
     # -------------------------------------------------------------------------
-    def internal__sort_data_frame_by_rows_and_key(self) -> None:
+    def _sort_data_frame_by_rows_and_key(self) -> None:
 
         self.data_frame["lower_key"] = (
             self.data_frame["key"].str.lower().str.replace("_", " ")
@@ -248,14 +261,14 @@ class ThesaurusMixin:
         ]
 
     # -------------------------------------------------------------------------
-    def internal__transform_mapping_to_data_frame(self) -> None:
+    def _transform_mapping_to_data_frame(self) -> None:
 
         keys = list(self.mapping.keys())
         values = list(self.mapping.values())
         self.data_frame = pd.DataFrame({"key": keys, "value": values})
 
     # -------------------------------------------------------------------------
-    def internal__write_thesaurus_data_frame_to_disk(self) -> None:
+    def _write_thesaurus_data_frame_to_disk(self) -> None:
 
         if not hasattr(self, "data_frame"):
             raise ThesaurusValidationError("data_frame not initialized")

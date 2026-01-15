@@ -1,61 +1,23 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 """
 Sort By Exact Key Match
 ===============================================================================
 
 
-Example:
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, SortByExactMatch
-
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Reset the thesaurus to initial state
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
-
-
-    >>> # Creates, configures, an run the sorter
-    >>> sorter = (
-    ...     SortByExactMatch()
+Smoke tests:
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .having_pattern(
-    ...         [
-    ...             "BUSINESS_INFRASTRUCTURE",
-    ...             "BUSINESS_OPPORTUNITIES",
-    ...         ]
-    ...     )
+    ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
     ... )
-    >>> sorter.run()
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-    Sorting thesaurus by exact match...
-         File : examples/fintech/data/thesaurus/demo.the.txt
-      Pattern : ['BUSINESS_INFRASTRUCTURE', 'BUSINESS_OPPORTUNITIES']
-      2 matching keys found
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
-        BUSINESS_INFRASTRUCTURE
-          BUSINESS_INFRASTRUCTURE; BUSINESS_INFRASTRUCTURES
-        BUSINESS_OPPORTUNITIES
-          BUSINESS_OPPORTUNITIES
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -68,18 +30,35 @@ Example:
           A_BLOCKCHAIN_IMPLEMENTATION_STUDY
         A_CASE_STUDY
           A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
     <BLANKLINE>
-    <BLANKLINE>
+
+
+    >>> from techminer2.thesaurus.user import SortByExactMatch
+    >>> (
+    ...     SortByExactMatch()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .having_pattern(
+    ...         [
+    ...             "BUSINESS_INFRASTRUCTURE",
+    ...             "BUSINESS_OPPORTUNITIES",
+    ...         ]
+    ...     )
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+
+
 
 
 """
-import sys
-
-from colorama import Fore, init
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import ThesaurusMixin
-from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 
 class SortByExactMatch(
@@ -88,42 +67,19 @@ class SortByExactMatch(
 ):
     """:meta private:"""
 
-    #
-    # NOTIFICATIONS:
     # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-        pattern = self.params.pattern
-
-        if len(file_path) > 64:
-            file_path = "..." + file_path[-60:]
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Sorting thesaurus by exact match...\n")
-        sys.stderr.write(f"     File : {file_path}\n")
-        sys.stderr.write(f"  Pattern : {pattern}\n")
-
-        sys.stderr.flush()
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.n_matches: int = 0
 
     # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        sys.stderr.write("  Sorting process completed successfully\n\n")
-        sys.stderr.flush()
-
-    #
-    # ALGORITHM:
-    # -------------------------------------------------------------------------
-    def internal__reduce_keys(self):
-        ReduceKeys().update(**self.params.__dict__).run()
+    def _prepare_data(self):
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
 
     # -------------------------------------------------------------------------
-    def internal__select_data_frame_rows(self):
+    def _select_data_frame_rows(self):
 
         self.data_frame["__row_selected__"] = False
 
@@ -137,30 +93,37 @@ class SortByExactMatch(
                 "__row_selected__",
             ] = True
 
-        n_matches = self.data_frame.__row_selected__.sum()
-
-        sys.stderr.write(f"  {n_matches} matching keys found\n")
-        sys.stderr.flush()
+        self.n_matches = self.data_frame.__row_selected__.sum()
 
     # -------------------------------------------------------------------------
-    def internal__run(self):
-
-        self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
-        self.internal__select_data_frame_rows()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__notify_process_end()
-        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
+    def _sort_data(self):
+        self._select_data_frame_rows()
+        self._sort_data_frame_by_rows_and_key()
 
     # -------------------------------------------------------------------------
-    def run(self):
-        """:meta private:"""
+    def _save_results(self):
+        self._write_thesaurus_data_frame_to_disk()
 
-        # self.internal__reduce_keys()
-        self.internal__build_user_thesaurus_path()
-        self.internal__run()
+    # -------------------------------------------------------------------------
+    def _create_result(self) -> ThesaurusResult:
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus sorted successfully.",
+            success=True,
+            status=f"{self.n_matches} matches found",
+            data_frame=self.data_frame,
+        )
+
+    # -------------------------------------------------------------------------
+    def run(self) -> ThesaurusResult:
+
+        self._prepare_data()
+        self._sort_data()
+        self._save_results()
+
+        return self._create_result()
 
 
 # =============================================================================

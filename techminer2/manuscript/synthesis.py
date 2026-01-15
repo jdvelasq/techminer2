@@ -34,8 +34,10 @@ import os
 
 from openai import OpenAI
 
-from techminer2._internals.load_template import internal_load_template
 from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals.package_data.templates.load_template import (
+    internal__load_template,
+)
 
 
 class Synthesis(
@@ -67,7 +69,7 @@ class Synthesis(
 
     # -------------------------------------------------------------------------
     def internal__load_template(self):
-        self.template = internal_load_template("internals.genai.synthesis.txt")
+        self.template = internal__load_template("internals.genai.synthesis.txt")
 
     # -------------------------------------------------------------------------
     def internal__generate_synthesis(self):

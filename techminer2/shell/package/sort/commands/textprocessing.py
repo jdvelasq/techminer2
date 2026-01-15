@@ -1,4 +1,6 @@
-from techminer2.package_data.text_processing import internal__sort_text_processing_terms
+from techminer2._internals.package_data.text_processing import (
+    internal__sort_text_processing_terms,
+)
 
 
 def execute_textprocessing_command():

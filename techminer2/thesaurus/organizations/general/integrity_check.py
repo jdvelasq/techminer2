@@ -28,16 +28,7 @@ Example:
     ... )
     >>> checker.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Checking thesaurus integrity...
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-      106 terms checked
-      Integrity check completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
+
 
 
 """

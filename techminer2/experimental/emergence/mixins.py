@@ -7,10 +7,8 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.packages.emergence import DataFrame
-from techminer2.packages.networks.co_occurrence.descriptors import (
-    ClustersToTermsMapping,
-)
+from techminer2.co_occurrence_network.descriptors import ClustersToTermsMapping
+from techminer2.emergence import DataFrame
 
 
 class RecursiveClusteringMixin:

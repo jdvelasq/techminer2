@@ -43,7 +43,7 @@ Example:
 """
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database.search import ConcordantProcessedContexts
+from techminer2.concordances import ConcordantProcessedContexts
 
 
 class ExtractColons(

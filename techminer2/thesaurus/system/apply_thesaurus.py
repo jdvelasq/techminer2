@@ -46,7 +46,7 @@ import sys
 from colorama import Fore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_all_records_from_database,
     internal__write_records_to_database,
 )
@@ -98,7 +98,7 @@ class ApplyThesaurus(
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__load_thesaurus_as_mapping(self):
+    def _load_thesaurus_as_mapping(self):
         self.mapping = internal__load_thesaurus_as_mapping(self.thesaurus_path)
         self.mapping = {k: v[0].strip() for k, v in self.mapping.items()}
 
@@ -160,7 +160,7 @@ class ApplyThesaurus(
 
         self.internal__build_system_thesaurus_path()
         self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
+        self._load_thesaurus_as_mapping()
         self.internal__load_records()
         self.internal__copy_field()
         self.internal__split_other_field()

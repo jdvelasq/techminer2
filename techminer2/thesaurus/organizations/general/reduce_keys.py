@@ -31,16 +31,12 @@ Example:
     ... )
     >>> reducer.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Reducing thesaurus keys...
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-      Keys reduced from 90 to 90
-      Reduction process completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
+>>> from techminer2.thesaurus.organizations import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 """
 from techminer2._internals.mixins import ParamsMixin

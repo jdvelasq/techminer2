@@ -18,7 +18,7 @@ def internal__preprocess_subject_areas(
     root_dir="./",
 ):
 
-    from techminer2.package_data.database.load_subject_areas import (
+    from techminer2._internals.package_data.database.load_subject_areas import (
         internal__load_subject_areas,
     )
 

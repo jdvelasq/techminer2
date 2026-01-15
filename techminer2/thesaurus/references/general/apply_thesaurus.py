@@ -43,7 +43,7 @@ import sys
 import pandas as pd
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_all_records_from_database,
     internal__write_records_to_database,
 )
@@ -127,7 +127,7 @@ class ApplyThesaurus(
         self.params.field = "raw_global_references"
         self.params.other_field = "global_references"
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_reversed_thesaurus_as_mapping()
         self.internal__load_records()

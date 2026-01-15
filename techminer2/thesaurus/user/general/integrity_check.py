@@ -11,40 +11,28 @@ Integrity Check
 ===============================================================================
 
 
-Example:
-    >>> # TEST PREPARATION
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, IntegrityCheck
+Smoke tests:
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
 
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-    >>> #
-
-    >>> # Reset the thesaurus to initial state
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Creates, configures, an run the integrity checker
-    >>> checker = (
+    >>> (
     ...     IntegrityCheck()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
     ... )
-    >>> checker.run()
 
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-    Checking thesaurus integrity...
-      File : examples/fintech/data/thesaurus/demo.the.txt
-      1791 terms checked
-      Integrity check completed successfully
-    <BLANKLINE>
-    <BLANKLINE>
 
 
 """
@@ -53,11 +41,12 @@ import sys
 from colorama import Fore, init
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
+    ThesaurusResult,
     internal__load_reversed_thesaurus_as_mapping,
 )
 
@@ -67,30 +56,6 @@ class IntegrityCheck(
     ThesaurusMixin,
 ):
     """:meta private:"""
-
-    #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Checking thesaurus integrity...\n")
-        sys.stderr.write(f"  File : {file_path}\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        n_terms = max(len(self.terms_in_thesaurus), len(self.terms_in_database))
-        sys.stderr.write(f"  {n_terms} terms checked\n")
-        sys.stderr.write(f"  Integrity check completed successfully\n\n")
-        sys.stderr.flush()
 
     #
     # ALGORITHM:
@@ -160,13 +125,20 @@ class IntegrityCheck(
     # -------------------------------------------------------------------------
     def run(self):
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
+        self._build_user_thesaurus_path()
         self.internal__load_terms_in_thesaurus()
         self.internal__load_terms_in_database()
         self.internal__compare_terms()
         self.internal__report_missing_terms()
-        self.internal__notify_process_end()
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus applied successfully.",
+            success=True,
+            status=f"{len(self.mapping.keys())} keys applied",
+            data_frame=None,
+        )
 
 
 # =============================================================================

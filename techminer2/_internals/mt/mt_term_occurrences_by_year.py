@@ -40,7 +40,7 @@ Buchak G.              0     0     0     1     0
 from techminer2._internals.mt.mt_global_metrics_by_field_per_year import (
     _mt_global_metrics_by_field_per_year,
 )
-from techminer2.database._internals.io.load_user_stopwords import (
+from techminer2._internals.user_data.load_user_stopwords import (
     internal__load_user_stopwords,
 )
 

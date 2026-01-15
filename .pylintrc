@@ -13,7 +13,8 @@ disable=
     too-many-locals,
     too-many-branches,
     too-many-statements,
-    line-too-long
+    line-too-long,
+    too-many-positional-arguments
 
 [FORMAT]
 # Match Black's line length

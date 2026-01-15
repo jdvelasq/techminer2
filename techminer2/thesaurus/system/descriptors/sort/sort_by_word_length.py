@@ -28,11 +28,11 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by word length...
-      File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         BIBLIOMETRICS
           BIBLIOMETRIC

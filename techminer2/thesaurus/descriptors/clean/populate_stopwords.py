@@ -46,7 +46,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_user_stopwords,
     internal__save_user_stopwords,
 )

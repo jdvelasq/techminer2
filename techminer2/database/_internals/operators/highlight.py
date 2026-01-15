@@ -14,11 +14,13 @@ from pandarallel import pandarallel
 from tqdm import tqdm
 
 from techminer2._internals import Params, stdout_to_stderr
-from techminer2.database._internals.io import (
+from techminer2._internals.package_data.text_processing import (
+    internal__load_text_processing_terms,
+)
+from techminer2._internals.user_data import (
     internal__load_all_records_from_database,
     internal__write_records_to_database,
 )
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)

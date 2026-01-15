@@ -1,34 +1,59 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 """
 Apply Thesaurus
 ===============================================================================
 
 
-Example:
-    >>> # Reset the thesaurus to initial state
+Smoke tests:
     >>> from techminer2.thesaurus.user import InitializeThesaurus
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Creates, configures, and runs the applier
+
     >>> from techminer2.thesaurus.user import ApplyThesaurus
-    >>> applier = (
+    >>> (
     ...     ApplyThesaurus()
-    ...     .with_thesaurus_file("descriptors.the.txt")
+    ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .with_other_field("descriptors_cleaned")
     ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
     ... )
-    >>> applier.run()
+    INFO: Thesaurus applied successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1788 keys applied
+    <BLANKLINE>
 
-    >>> # Query the database to check the results
+
     >>> from techminer2.database.tools import Query
     >>> Query(
     ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
@@ -46,25 +71,23 @@ Example:
 
 
 
-    >>> # Deletes the created field in the database
     >>> from techminer2.database.operators import DeleteOperator
-    >>> DeleteOperator(field="descriptors_cleaned", root_directory="examples/fintech/").run()
+    >>> (
+    ...     DeleteOperator()
+    ...     .with_field("descriptors_cleaned")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .run()
+    ... )
 
 
 """
-import sys
-
-from colorama import Fore, init
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_all_records_from_database,
     internal__write_records_to_database,
 )
-from techminer2.thesaurus._internals import (
-    ThesaurusMixin,
-    internal__load_reversed_thesaurus_as_mapping,
-)
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 
 class ApplyThesaurus(
@@ -74,59 +97,26 @@ class ApplyThesaurus(
     """:meta private:"""
 
     #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        if not self.params.quiet:
-
-            file_path = str(self.thesaurus_path)
-            field = self.params.field
-            other_field = self.params.other_field
-
-            if len(file_path) > 64:
-                file_path = "..." + file_path[-60:]
-
-            if self.params.colored_stderr:
-                filename = str(file_path).rsplit("/", maxsplit=1)[1]
-                file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-                file_path = Fore.LIGHTBLACK_EX + file_path
-
-            sys.stderr.write("INFO: Applying user thesaurus to database...\n")
-            sys.stderr.write(f"  Thesaurus    : {file_path}\n")
-            sys.stderr.write(f"  Source field : {field}\n")
-            sys.stderr.write(f"  Target field : {other_field}\n")
-            sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        if not self.params.quiet:
-
-            sys.stderr.write(f"  Application process completed successfully\n")
-            sys.stderr.flush()
-
-    #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__load_records(self):
+    def internal__load_records(self) -> None:
         self.records = internal__load_all_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
-    def internal__copy_field(self):
+    def internal__copy_field(self) -> None:
         if self.params.field != self.params.other_field:
             self.records[self.params.other_field] = self.records[
                 self.params.field
             ].copy()
 
     # -------------------------------------------------------------------------
-    def internal__split_other_field(self):
+    def internal__split_other_field(self) -> None:
         self.records[self.params.other_field] = self.records[
             self.params.other_field
         ].str.split("; ")
 
     # -------------------------------------------------------------------------
-    def internal__apply_thesaurus_to_other_field(self):
+    def internal__apply_thesaurus_to_other_field(self) -> None:
 
         self.records[self.params.other_field] = self.records[
             self.params.other_field
@@ -136,7 +126,7 @@ class ApplyThesaurus(
         )
 
     # -------------------------------------------------------------------------
-    def internal__remove_duplicates_from_other_field(self):
+    def internal__remove_duplicates_from_other_field(self) -> None:
         #
         def f(x):
             # remove duplicated terms preserving the order
@@ -151,21 +141,20 @@ class ApplyThesaurus(
         ].map(f, na_action="ignore")
 
     # -------------------------------------------------------------------------
-    def internal__join_record_values(self):
+    def internal__join_record_values(self) -> None:
         self.records[self.params.other_field] = self.records[
             self.params.other_field
         ].str.join("; ")
 
     # -------------------------------------------------------------------------
-    def internal__write_records(self):
+    def internal__write_records(self) -> None:
         internal__write_records_to_database(params=self.params, records=self.records)
 
     # -------------------------------------------------------------------------
-    def run(self):
+    def run(self) -> ThesaurusResult:
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
+        self._build_user_thesaurus_path()
         self.internal__load_reversed_thesaurus_as_mapping()
         self.internal__load_records()
         self.internal__copy_field()
@@ -174,7 +163,15 @@ class ApplyThesaurus(
         self.internal__remove_duplicates_from_other_field()
         self.internal__join_record_values()
         self.internal__write_records()
-        self.internal__notify_process_end()
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus applied successfully.",
+            success=True,
+            status=f"{len(self.mapping.keys())} keys applied",
+            data_frame=None,
+        )
 
 
 # =============================================================================

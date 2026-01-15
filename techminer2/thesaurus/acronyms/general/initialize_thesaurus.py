@@ -1,65 +1,49 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 """
-Create Thesaurus
+Initialize Thesaurus
 ===============================================================================
 
 
 Example:
-
-    >>> import sys
-    >>> from io import StringIO
-
-    >>> # Redirect stderr to capture output
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
     >>> # Create thesaurus
     >>> from techminer2.thesaurus.acronyms import InitializeThesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", ).run()
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .where_root_directory("examples/fintech/")
+    ...     .run()
+    ... )
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +SKIP
-    Initializing thesaurus...
-      11 acronyms found
-      Initialization process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/acronyms.the.txt
-    <BLANKLINE>
-        DEMATEL
-          ... CRITERIA is constructed and both the DECISION_MAKING_TRIAL_AND_EVALUA...
-        E_PAYMENT
-          ELECTRONIC_PAYMENT
-        EPAM
-          we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPAM )
-        FINTECH
-          FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGIES ( FINTECH ); this article de...
-        IOT
-          INTERNET_OF_THINGS; for THE_OVERALL_FINANCIAL_SECTOR , INTERNET_OF_THINGS...
-        ISED
-          THE_DIGITAL_REVOLUTION adds NEW_LAYERS to THE_MATERIAL_CULTURES of financ...
-        MCDM
-          MULTI_CRITERIA_DECISION_MAKING; ... _INNOVATION_THEORY , we propose A_NOV...
-        P2P
-          PEER_TO_PEER; MULTIPLE_INNOVATIONS that have affected LENDING_AND_DEPOSIT...
-    <BLANKLINE>
+    >>> from techminer2.thesaurus.acronyms import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    DEMATEL
+      ... CRITERIA is constructed and both the DECISION_MAKING_TRIAL_AND_EVALUA...
+    E_FINANCE
+      ELECTRONIC_FINANCE
+    E_PAYMENT
+      ELECTRONIC_PAYMENT
+    EPAM
+      we propose A_RESEARCH_MODEL using AN_EXTENDED_POST_ACCEPTANCE_MODEL ( EPAM )
+    FINTECH
+      FINANCIAL_TECHNOLOGY
+    IOT
+      INTERNET_OF_THING; INTERNET_OF_THINGS
+    ISED
+      THE_DIGITAL_REVOLUTION adds NEW_LAYERS to THE_MATERIAL_CULTURES of financ...
+    MCDM
+      MULTI_CRITERIA_DECISION_MAKING; ... _INNOVATION_THEORY , we propose A_NOV...
     <BLANKLINE>
 
 
 """
+
 import sys
 
 import pandas as pd  # type: ignore
-from nltk.corpus import words
+from nltk.corpus import words  # type: ignore
 from textblob import TextBlob  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
@@ -68,9 +52,24 @@ from techminer2.thesaurus._internals import (
     internal__get_system_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
 )
-from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
-    internal__load_thesaurus_as_mapping,
-)
+
+EXCLUDED_COMMON_WORDS = [
+    "CLASSIFICATION",
+    "COMPUTER",
+    "ECONOMICS",
+    "ELECTRONICS",
+    "ELECTRONIC",
+    "IRRATIONAL",
+    "ONLINE",
+    "PERSONNEL",
+]
+
+EXCLUDED_ENUMERATIONS = ["I", "II", "III", "IV", "V", "1", "2", "3", "4", "5"]
+
+TRUNCATION_MARKER = "... "
+MAX_VALUE_DISPLAY_LENGTH = 100
+MIN_ACRONYM_LENGTH = 1
+TRUNCATION_SUFFIX_LENGTH = 96
 
 
 class InitializeThesaurus(
@@ -78,6 +77,11 @@ class InitializeThesaurus(
     ThesaurusMixin,
 ):
     """:meta private:"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Initialize attributes to avoid defining them outside __init__
+        self.words = []
 
     #
     # NOTIFICATIONS:
@@ -124,7 +128,7 @@ class InitializeThesaurus(
         self.words = data_frame["value"].drop_duplicates().tolist()
 
     # -------------------------------------------------------------------------
-    def internal__extracts_acronyms_from_definitions(self):
+    def internal__extract_acronyms_from_definitions(self):
 
         data_frame = self.data_frame.copy()
 
@@ -142,7 +146,7 @@ class InitializeThesaurus(
         self.data_frame = data_frame
 
     # -------------------------------------------------------------------------
-    def internal__add_acronyms_from_abstracts_to_data_frame(self):
+    def internal__extract_acronyms_from_abstracts(self):
 
         records = self.filtered_records[["abstract"]].dropna()
 
@@ -176,20 +180,19 @@ class InitializeThesaurus(
             )[0]
             abbr = "( " + row.key.upper() + " )"
             records.loc[index, "value"] += abbr
-            if len(records.loc[index, "value"]) > 100:
-                records.loc[index, "value"] = "... " + records.loc[index, "value"][-96:]
+            if len(records.loc[index, "value"]) > MAX_VALUE_DISPLAY_LENGTH:
+                records.loc[index, "value"] = (
+                    TRUNCATION_MARKER
+                    + records.loc[index, "value"][-TRUNCATION_SUFFIX_LENGTH:]
+                )
 
         # remove enumerations
         records = records[
             records.key.map(
-                lambda x: x not in ["I", "II", "III", "IV", "V"], na_action="ignore"
+                lambda x: x not in EXCLUDED_ENUMERATIONS, na_action="ignore"
             )
         ]
-        records = records[
-            records.key.map(
-                lambda x: x not in ["1", "2", "3", "4", "5"], na_action="ignore"
-            )
-        ]
+
         records = records[records.key.map(lambda x: "," not in x, na_action="ignore")]
         records = records[records.key.map(lambda x: " " not in x, na_action="ignore")]
         records = records[records.key.map(lambda x: x != "_S_", na_action="ignore")]
@@ -204,7 +207,7 @@ class InitializeThesaurus(
         ]
 
         # remove acronyms of length 1
-        records = records[records.key.str.len() > 1]
+        records = records[records.key.str.len() > MIN_ACRONYM_LENGTH]
 
         # remove enumerations already listed in the keywords
         existent_acronyms = self.data_frame.key.drop_duplicates().tolist()
@@ -224,24 +227,13 @@ class InitializeThesaurus(
         self.data_frame = pd.concat([self.data_frame, records], ignore_index=True)
 
     # -------------------------------------------------------------------------
-    def internal__remove_bad_acronyms(self):
+    def internal__filter_common_word_acronyms(self):
 
-        bad_acronyms = [
-            "CLASSIFICATION",
-            "COMPUTER",
-            "ECONOMICS",
-            "ELECTRONICS",
-            "ELECTRONIC",
-            "IRRATIONAL",
-            "ONLINE",
-            "PERSONNEL",
-        ]
-
-        for abbr in bad_acronyms:
+        for abbr in EXCLUDED_COMMON_WORDS:
             self.data_frame = self.data_frame[self.data_frame.key != abbr]
 
     # -------------------------------------------------------------------------
-    def internal__add_knowns_acronyms(self):
+    def internal__add_known_acronyms(self):
 
         # Load known acronyms
         file_path = internal__get_system_thesaurus_file_path("acronyms/common.the.txt")
@@ -295,7 +287,7 @@ class InitializeThesaurus(
         self.data_frame["value"] = self.data_frame["value"].str.join("; ")
 
     # -------------------------------------------------------------------------
-    def interval__validate_keys(self):
+    def internal__validate_keys(self):
         english_words = set(words.words())
         self.data_frame = self.data_frame[
             self.data_frame.key.map(
@@ -309,23 +301,23 @@ class InitializeThesaurus(
         self.params.field = "raw_descriptors"
         self.params.thesaurus_file = "acronyms.the.txt"
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
 
         self.internal__create_valid_words()
 
-        self.internal__extracts_acronyms_from_definitions()
-        self.internal__add_acronyms_from_abstracts_to_data_frame()
-        self.internal__remove_bad_acronyms()
-        self.internal__add_knowns_acronyms()
+        self.internal__extract_acronyms_from_definitions()
+        self.internal__extract_acronyms_from_abstracts()
+        self.internal__filter_common_word_acronyms()
+        self.internal__add_known_acronyms()
         self.internal__prepare_fingerprints()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
+        self._sort_data_frame_by_rows_and_key()
         self.internal__sort_mapping_values()
-        self.interval__validate_keys()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self.internal__validate_keys()
+        self._write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

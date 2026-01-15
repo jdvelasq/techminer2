@@ -34,35 +34,12 @@ Example:
     ... )
     >>> sorter.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Sorting thesaurus by word length...
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-    <BLANKLINE>
-        Transport and Telecomunication Inst (LVA)
-          Transport and Telecomunication Institute, Latvia
-        Fraunhofer-Inst for Soft and Syst Eng ISST (DEU)
-          Fraunhofer-Institute for Software and Systems Engineering ISST, Dortmund,...
-        Univ Koblenz-Landau (DEU)
-          Institute for Software Technology IST, Universität Koblenz-Landau, Koblen...
-        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany
-        Fed Reserv Bank of Philadelphia (USA)
-          Federal Reserve Bank of Philadelphia, Philadelphia, PA, United States; Fe...
-        Pennsylvania State Univ (USA)
-          Department of Supply Chain and Information Systems, Smeal College of Busi...
-        Sungkyunkwan Univ (KOR)
-          Software College, Sungkyunkwan University, Suwon, South Korea; Sungkyunkw...
-        Univ of Pennsylvania (USA)
-          University of Pennsylvania, United States
-    <BLANKLINE>
-    <BLANKLINE>
+    >>> from techminer2.thesaurus.organizations import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 
 

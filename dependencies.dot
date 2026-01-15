@@ -1,0 +1,47 @@
+digraph techminer2_dependencies {
+    rankdir=LR;
+    node [shape=box, style=rounded];
+
+    "TO_DO" [fillcolor="lightgreen", style="filled"];
+    "_deprecated" [fillcolor="lightgreen", style="filled"];
+    "_internals" [fillcolor="lightyellow", style="filled"];
+    "database" [fillcolor="lightcoral", style="filled"];
+    "experimental" [fillcolor="lightcoral", style="filled"];
+    "manuscript" [fillcolor="lightcoral", style="filled"];
+    "package_data" [fillcolor="lightyellow", style="filled"];
+    "packages" [fillcolor="lightcoral", style="filled"];
+    "prisma" [fillcolor="lightgreen", style="filled"];
+    "shell" [fillcolor="lightcoral", style="filled"];
+    "thesaurus" [fillcolor="lightcoral", style="filled"];
+    "zotero" [fillcolor="lightyellow", style="filled"];
+
+    "_internals" -> "database";
+    "_internals" -> "thesaurus";
+    "database" -> "_internals";
+    "database" -> "packages";
+    "database" -> "thesaurus";
+    "database" -> "package_data";
+    "experimental" -> "_internals";
+    "experimental" -> "database";
+    "experimental" -> "packages";
+    "experimental" -> "thesaurus";
+    "manuscript" -> "_internals";
+    "manuscript" -> "database";
+    "manuscript" -> "packages";
+    "manuscript" -> "thesaurus";
+    "package_data" -> "thesaurus";
+    "packages" -> "_internals";
+    "packages" -> "database";
+    "packages" -> "thesaurus";
+    "shell" -> "_internals";
+    "shell" -> "thesaurus";
+    "shell" -> "zotero";
+    "shell" -> "package_data";
+    "shell" -> "database";
+    "thesaurus" -> "_internals";
+    "thesaurus" -> "database";
+    "thesaurus" -> "packages";
+    "thesaurus" -> "package_data";
+    "zotero" -> "_internals";
+    "zotero" -> "database";
+}

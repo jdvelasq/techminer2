@@ -88,9 +88,11 @@ from colorama import Fore, init
 from openai import OpenAI
 from pandarallel import pandarallel
 
-from techminer2._internals import ParamsMixin, internal_load_template, stdout_to_stderr
-from techminer2.database.metrics.performance import DataFrame as DominantDataFrame
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2._internals import ParamsMixin, internal__load_template, stdout_to_stderr
+from techminer2._internals.package_data.text_processing import (
+    internal__load_text_processing_terms,
+)
+from techminer2.performance import DataFrame as DominantDataFrame
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)
@@ -374,17 +376,17 @@ class IsStopword(
         global system_prompt_with_contexts
         global user_template_with_contexts
 
-        system_prompt_without_contexts = internal_load_template(
+        system_prompt_without_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.system.txt"
         )
-        user_template_without_contexts = internal_load_template(
+        user_template_without_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_without_context_phrases.user.txt"
         )
 
-        system_prompt_with_contexts = internal_load_template(
+        system_prompt_with_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.system.txt"
         )
-        user_template_with_contexts = internal_load_template(
+        user_template_with_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_1_with_context_phrases.user.txt"
         )
 
@@ -406,17 +408,17 @@ class IsStopword(
         global system_prompt_with_contexts
         global user_template_with_contexts
 
-        system_prompt_without_contexts = internal_load_template(
+        system_prompt_without_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.system.txt"
         )
-        user_template_without_contexts = internal_load_template(
+        user_template_without_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_without_context_phrases.user.txt"
         )
 
-        system_prompt_with_contexts = internal_load_template(
+        system_prompt_with_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.system.txt"
         )
-        user_template_with_contexts = internal_load_template(
+        user_template_with_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_2_with_context_phrases.user.txt"
         )
 
@@ -439,17 +441,17 @@ class IsStopword(
         global system_prompt_with_contexts
         global user_template_with_contexts
 
-        system_prompt_without_contexts = internal_load_template(
+        system_prompt_without_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.system.txt"
         )
-        user_template_without_contexts = internal_load_template(
+        user_template_without_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_without_context_phrases.user.txt"
         )
 
-        system_prompt_with_contexts = internal_load_template(
+        system_prompt_with_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.system.txt"
         )
-        user_template_with_contexts = internal_load_template(
+        user_template_with_contexts = internal__load_template(
             "shell.thesaurus.descriptors.clean.stopwords.phase_3_with_context_phrases.user.txt"
         )
 

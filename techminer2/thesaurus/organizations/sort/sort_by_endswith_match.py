@@ -32,37 +32,12 @@ Example:
     ... )
     >>> sorter.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Sorting thesaurus by endswith match...
-         File : examples/fintech/data/thesaurus/organizations.the.txt
-      Pattern : (AUS)
-      4 matching keys found
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-    <BLANKLINE>
-        Cent for Law (AUS)
-          Centre for Law, Markets & Regulation, UNSW Australia, Australia
-        Charles Sturt Univ Melbourne Study Group Cent (AUS)
-          Charles Sturt University Melbourne Study Group Centre, Melbourne, VIC, Au...
-        Univ of New South Wales (AUS)
-          UNSW Business School, University of New South Wales, Australia; Universit...
-        Univ of Sydney (AUS)
-          The University of Sydney, The University of Sydney Business School, Rm407...
-        [UKN] Brussels, Belgium (BEL)
-          Brussels, Belgium
-        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany
-        [UKN] FinTech HK, Hong Kong (HKG)
-          FinTech HK, Hong Kong
-        [UKN] Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
-          Hochschule für Wirtschaft Fribourg, Switzerland
-    <BLANKLINE>
-    <BLANKLINE>
+>>> from techminer2.thesaurus.organizations import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 
 """

@@ -12,7 +12,7 @@ Print Header
 ===============================================================================
 
 
-Example:
+Smoke tests:
     >>> # Reset the thesaurus to initial state
     >>> from techminer2.thesaurus.user import InitializeThesaurus
     >>> (
@@ -56,7 +56,7 @@ class PrintHeader(
 
     def run(self):
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__load_thesaurus_as_data_frame()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stdout)
 

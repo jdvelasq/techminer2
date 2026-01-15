@@ -12,77 +12,86 @@ Clump Keys
 ===============================================================================
 
 
-Example:
-    >>> # TEST PREPARATION
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, ClumpKeys
+Smoke tests:
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
-    >>> # Reset the thesaurus to initial state
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Creates, configures, an run the clumper
+    >>> from techminer2.thesaurus.user import ClumpKeys
     >>> (
     ...     ClumpKeys(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
+    ...     .using_colored_output(False)
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
-
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-    Clumping thesaurus keys...
-                   File : examples/fintech/data/thesaurus/demo.the.txt
-      Keys reduced from 1721 to 1693
-      Clumping process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
+    INFO: Thesaurus clumped successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 64 changed keys
+      Header  :
+        BUSINESS_MODELS
+          BUSINESS_MODEL; BUSINESS_MODELS; NEW_BUSINESS_MODELS; REIMAGINE_BUSINESS_...
+        CAPACITY_BUILDING
+          CAPACITY_BUILDING; LARGE_SCALE_CAPACITY_BUILDING
+        CASE_STUDY
+          A_CASE_STUDY; CASE_STUDIES; CASE_STUDY; CASE_STUDY_SAMPLES; THE_CASE_STUD...
+        CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS; CLUSTER_ANALYSIS
+        DATA_DRIVEN
+          A_THEORETICAL_DATA_DRIVEN_FINTECH_FRAMEWORK; DATA_DRIVEN
         DATA_SECURITY
           DATA_SECURITY; DATA_SECURITY_AND_CONSUMER_TRUST; SECURITY_OF_DATA
-        ELABORATION_LIKELIHOOD_MODEL
-          ELABORATION_LIKELIHOOD_MODEL; THE_ELABORATION_LIKELIHOOD_MODEL
-        FINANCIAL_TECHNOLOGY
-          AN_EMERGING_FINANCIAL_TECHNOLOGY; FINANCIAL_TECHNOLOGY (FINTECH); FINANCI...
-        INFORMATION_TECHNOLOGY
-          INFORMATION_TECHNOLOGY; INFORMATION_TECHNOLOGY_INFRASTRUCTURE; PARTICULAR...
-        INTENTION_TO_USE
-          CONTINUOUS_INTENTION_TO_USE_MOBILE; CONTINUOUS_INTENTION_TO_USE_MOBILE_FI...
-        LITERATURE_REVIEW
-          LITERATURE_REVIEW; THE_CURRENT_LITERATURE_REVIEW
-        MULTI_LEVEL_ANALYSIS
-          A_MULTI_LEVEL_ANALYSIS; MULTI_LEVEL_ANALYSIS
-        PEER_TO_PEER
-          PEER_TO_PEER; PEER_TO_PEER_MONEY_EXCHANGES; PEER_TO_PEER_PLATFORMS
-        SECURITY_AND_PRIVACY
-          SECURITY_AND_PRIVACY; THE_SECURITY_AND_PRIVACY_DIMENSION
-        START_UPS
-          CONSUMER_ORIENTED_FINTECH_START_UPS; FINTECH_DIGITAL_BANKING_START_UPS; M...
+        DECISION_MAKING
+          A_NOVEL_HYBRID_MULTIPLE_CRITERIA_DECISION_MAKING_METHOD; DECISION_MAKING;...
+        DEVELOPING_COUNTRIES
+          DEVELOPING_COUNTRIES; THE_DEVELOPING_COUNTRIES
     <BLANKLINE>
-    <BLANKLINE>
+
+
 
 
 
 """
 import re
-import sys
 
-from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database.metrics.performance import DataFrame
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2._internals.package_data.text_processing import (
+    internal__load_text_processing_terms,
+)
+from techminer2.performance import DataFrame
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 
 class ClumpKeys(
@@ -90,32 +99,6 @@ class ClumpKeys(
     ThesaurusMixin,
 ):
     """:meta private:"""
-
-    #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-        if len(file_path) > 72:
-            file_path = "..." + file_path[-68:]
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Clumping thesaurus keys...\n")
-        sys.stderr.write(f"               File : {file_path}\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        msg = f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        sys.stderr.write(msg)
-        sys.stderr.write("  Clumping process completed successfully\n\n")
-        sys.stderr.flush()
 
     #
     # ALGORITHM:
@@ -176,7 +159,6 @@ class ClumpKeys(
             self.data_frame.loc[
                 self.data_frame["key"] == keyword, "__row_selected__"
             ] = True
-            #
 
     # -------------------------------------------------------------------------
     def internal__combine_words(self):
@@ -213,7 +195,6 @@ class ClumpKeys(
             self.data_frame.loc[
                 self.data_frame["key"] == keyword, "__row_selected__"
             ] = True
-            #
 
     # -------------------------------------------------------------------------
     def internal__combine_keys(self):
@@ -240,21 +221,25 @@ class ClumpKeys(
     def run(self):
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
-        self.internal__set_n_initial_keys()
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
+        self.internal__set_initial_keys()
         self.internal__get_keywords()
         self.internal__mark_keywords()
         self.internal__combine_keys()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__set_n_final_keys()
-        self.internal__notify_process_end()
-        self.internal__print_thesaurus_header_to_stream(
-            n=8,
-            use_colorama=self.params.colored_stderr,
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
+        self.internal__set_final_keys()
+        self.internal__compute_changed_keys()
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus clumped successfully.",
+            success=True,
+            status=f"{self.total_key_changes} changed keys",
+            data_frame=self.data_frame,
         )

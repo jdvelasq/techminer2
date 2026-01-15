@@ -1,4 +1,4 @@
-from techminer2.database.search import ConcordantRawContexts
+from techminer2.concordances import ConcordantRawContexts
 from techminer2.shell.colorized_input import colorized_input
 
 

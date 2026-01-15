@@ -68,7 +68,9 @@ from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2._internals.package_data.text_processing import (
+    internal__load_text_processing_terms,
+)
 from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
@@ -153,13 +155,13 @@ class RemoveInitialWords(
 
         self.with_thesaurus_file("descriptors.the.txt")
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
         self.internal__remove_initial_words_from_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)

@@ -152,15 +152,15 @@ class InitializeThesaurus(
         self.with_thesaurus_file("countries.the.txt")
         self.with_field("affiliations")
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
         self.internal__extract_country_from_affiliation()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 

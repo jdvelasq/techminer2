@@ -35,7 +35,7 @@ Example:
     >>> sys.stderr = original_stderr
     >>> print(output)  # doctest: +SKIP
     Sorting thesaurus by match...
-                File : ...techminer2/package_data/thesaurus/system/descriptors.the.txt
+                File : ...techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
              Pattern : BLOCK
       Case sensitive : False
          Regex Flags : 0
@@ -44,7 +44,7 @@ Example:
       Sorting process completed successfully
     <BLANKLINE>
     Printing thesaurus header
-      File : /Volumes/GitHub/techminer2/techminer2/package_data/thesaurus/system/descriptors.the.txt
+      File : /Volumes/GitHub/techminer2/techminer2/_internals/package_data/thesaurus/system/descriptors.the.txt
     <BLANKLINE>
         BLOCK_CHAIN
           BLOCK_CHAINS; BLOCKCHAIN; BLOCKCHAINS

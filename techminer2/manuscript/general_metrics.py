@@ -59,9 +59,11 @@ import os
 
 from openai import OpenAI
 
-from techminer2._internals.load_template import internal_load_template
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database.metrics.general import DataFrame
+from techminer2._internals.package_data.templates.load_template import (
+    internal__load_template,
+)
+from techminer2.metrics.general import DataFrame
 
 
 class GeneralMetrics(
@@ -223,7 +225,7 @@ class GeneralMetrics(
         ]
 
     def build_template(self):
-        template = internal_load_template("internals.genai.general_metrics.txt")
+        template = internal__load_template("internals.genai.general_metrics.txt")
         self.prompt = template.format(
             timespan=self.timespan(),
             documents=self.documents(),

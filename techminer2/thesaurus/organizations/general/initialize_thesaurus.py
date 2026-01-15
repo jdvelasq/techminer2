@@ -27,36 +27,12 @@ Example:
     ... )
     >>> initializator.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Initializing thesaurus from 'affiliations' field
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-      90 keys found
-      Initialization process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-    <BLANKLINE>
-        [UKN] Brussels, Belgium (BEL)
-          Brussels, Belgium
-        [UKN] CESifo, Poschingerstr. 5, Munich, 81679, Germany (DEU)
-          CESifo, Poschingerstr. 5, Munich, 81679, Germany
-        [UKN] FinTech HK, Hong Kong (HKG)
-          FinTech HK, Hong Kong
-        [UKN] Hochschule für Wirtschaft Fribourg, Switzerland (CHE)
-          Hochschule für Wirtschaft Fribourg, Switzerland
-        [UKN] Information Technol, Univeril, Germany (DEU)
-          Information Technology, Univeril, Germany
-        [UKN] Johns Hopkins SAIS, Washington, DC, United States (USA)
-          Johns Hopkins SAIS, Washington, DC, United States
-        [UKN] SK Telecom, Seoul, South Korea (KOR)
-          SK Telecom, Seoul, South Korea
-        [UKN] Stanford GSB and the Hoover Inst, United States (USA)
-          Stanford GSB and the Hoover Institution, United States
-    <BLANKLINE>
-    <BLANKLINE>
+>>> from techminer2.thesaurus.organizations import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 """
 import re
@@ -65,11 +41,13 @@ import sys
 import pandas as pd  # type: ignore
 
 from techminer2._internals.mixins import Params, ParamsMixin
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2._internals.package_data.text_processing import (
+    internal__load_text_processing_terms,
+)
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
-    internal__generate_user_thesaurus_file_path,
     internal__get_system_thesaurus_file_path,
+    internal__get_user_thesaurus_file_path,
     internal__load_reversed_thesaurus_as_mapping,
     internal__load_thesaurus_as_mapping,
 )
@@ -268,7 +246,7 @@ class InitializeThesaurus(
             thesaurus_file="countries.the.txt",
             root_directory=self.params.root_directory,
         )
-        file_path = internal__generate_user_thesaurus_file_path(params)
+        file_path = internal__get_user_thesaurus_file_path(params)
         mapping = internal__load_reversed_thesaurus_as_mapping(file_path)
 
         # adds a column with the country
@@ -329,7 +307,7 @@ class InitializeThesaurus(
         self.with_thesaurus_file("organizations.the.txt")
         self.with_field("affiliations")
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
@@ -348,8 +326,8 @@ class InitializeThesaurus(
         #
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 

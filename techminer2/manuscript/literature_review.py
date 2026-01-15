@@ -43,10 +43,12 @@ import os
 from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.load_template import internal_load_template
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database.metrics.records import DataFrame  # type: ignore
+from techminer2._internals.package_data.templates.load_template import (
+    internal__load_template,
+)
 from techminer2.database.tools import RecordViewer  # type: ignore
+from techminer2.metrics.records import DataFrame  # type: ignore
 
 
 class LiteratureReview(
@@ -90,7 +92,7 @@ class LiteratureReview(
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        template = internal_load_template("internals.genai.review.summarize.txt")
+        template = internal__load_template("internals.genai.review.summarize.txt")
         records = self.internal_load_records()
         documents = self.internal_get_documents(records)
 

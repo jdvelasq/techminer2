@@ -34,35 +34,12 @@ Example:
     ... )
     >>> sorter.run()
 
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Sorting thesaurus alphabetically...
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-      Sorting process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/organizations.the.txt
-    <BLANKLINE>
-        Anhui Univ of Finan and Econ (CHN)
-          School of Finance, Anhui University of Finance and Economics, Bengbu, 233...
-        Baekseok Univ (KOR)
-          Division of Tourism, Baekseok University, South Korea
-        Baewha Women’s Univ (KOR)
-          Department of Information Security, Baewha Women’s University, Seoul, Sou...
-        Baylor Univ (USA)
-          Baylor University, United States; Hankamer School of Business, Baylor Uni...
-        Beihang Univ (CHN)
-          School of Economics and Management, Beihang University, China
-        Cent for Law (AUS)
-          Centre for Law, Markets & Regulation, UNSW Australia, Australia
-        Charles Sturt Univ Melbourne Study Group Cent (AUS)
-          Charles Sturt University Melbourne Study Group Centre, Melbourne, VIC, Au...
-        Chung-ang Univ (KOR)
-          School of Business, Chung-ang University, Seoul, South Korea
-    <BLANKLINE>
-    <BLANKLINE>
+>>> from techminer2.thesaurus.organizations import PrintHeader
+    >>> (
+    ...     PrintHeader()
+    ...     .using_colored_output(False)
+    ...     .where_root_directory("examples/fintech/")
+    ... ).run()
 
 
 

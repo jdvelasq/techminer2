@@ -11,13 +11,15 @@ import os
 
 from openai import OpenAI
 
-from techminer2._internals.load_template import internal_load_template
+from techminer2._internals.package_data.templates.load_template import (
+    internal__load_template,
+)
 
 
 def internal__paraphrase(text):
 
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    template = internal_load_template("internals.genai.paraphrase.txt")
+    template = internal__load_template("internals.genai.paraphrase.txt")
     prompt = template.format(text=text)
 
     try:

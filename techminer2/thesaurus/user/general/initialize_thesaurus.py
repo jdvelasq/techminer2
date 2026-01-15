@@ -11,37 +11,21 @@ Initialize Thesaurus
 ===============================================================================
 
 
-Example:
-    >>> # TEST:
-    >>> import sys
-    >>> from io import StringIO
+Smoke tests:
     >>> from techminer2.thesaurus.user import InitializeThesaurus
-
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Initialize the thesaurus
-    >>> initializator = (
+    >>> (
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
     ... )
-    >>> initializator.run()
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Initializing thesaurus from 'raw_descriptors' field...
-      File : examples/fintech/data/thesaurus/demo.the.txt
-      1721 keys found
-      Initialization process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
         A_A_THEORY
           A_A_THEORY
         A_BASIC_RANDOM_SAMPLING_STRATEGY
@@ -58,22 +42,28 @@ Example:
           A_CHALLENGE
         A_CLUSTER_ANALYSIS
           A_CLUSTER_ANALYSIS
-        A_COMMON_TOOL
-          A_COMMON_TOOL
-        A_COMMON_UNDERSTANDING
-          A_COMMON_UNDERSTANDING
-    <BLANKLINE>
     <BLANKLINE>
 
+```
+python3 - <<'PY'
+from techminer2.thesaurus.user import InitializeThesaurus
+print(
+    InitializeThesaurus()
+    .with_thesaurus_file("demo.the.txt")
+    .with_field("raw_descriptors")
+    .where_root_directory("examples/fintech/")
+    .run()
+)
+PY
+```
 
 """
-import sys
 
-from colorama import Fore
+
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 tqdm.pandas()
 
@@ -85,53 +75,24 @@ class InitializeThesaurus(
     """:meta private:"""
 
     #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        if not self.params.quiet:
-
-            field = self.params.field
-            file_path = str(self.thesaurus_path)
-            if len(file_path) > 72:
-                file_path = "..." + file_path[-68:]
-
-            if self.params.colored_stderr:
-                filename = str(file_path).rsplit("/", maxsplit=1)[1]
-                file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-                file_path = Fore.LIGHTBLACK_EX + file_path
-
-            sys.stderr.write(f"INFO: Initializing thesaurus from '{field}' field...\n")
-            sys.stderr.write(f"  Initializing {file_path}\n")
-            sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        if not self.params.quiet:
-
-            sys.stderr.write(f"  {len(self.data_frame)} keys found\n")
-            sys.stderr.write("  Initialization process completed successfully\n")
-            sys.stderr.flush()
-
-    #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def run(self):
+    def run(self) -> ThesaurusResult:
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
+        self._build_user_thesaurus_path()
         self.internal__load_filtered_records()
         self.internal__create_thesaurus_data_frame_from_field()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__notify_process_end()
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
 
-        if not self.params.quiet:
-            self.internal__print_thesaurus_header_to_stream(
-                n=10,
-                stream=sys.stderr,
-            )
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus initialized successfully.",
+            success=True,
+            status=f"{self.data_frame.shape[0]} keys found",
+            data_frame=self.data_frame,
+        )

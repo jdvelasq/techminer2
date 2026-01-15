@@ -67,7 +67,7 @@ from techminer2._internals.mixins import (
     RecordMappingMixin,
     RecordViewerMixin,
 )
-from techminer2.database._internals.io.load_filtered_records_from_database import (
+from techminer2._internals.user_data.load_filtered_records_from_database import (
     internal__load_filtered_records_from_database,
 )
 

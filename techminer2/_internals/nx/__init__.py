@@ -1,5 +1,3 @@
-# flake8: noqa
-"""Networkx utilities."""
 from .assign_constant_to_edge_colors import internal__assign_constant_to_edge_colors
 from .assign_constant_to_node_colors import internal__assign_constant_to_node_colors
 from .assign_constant_to_node_sizes import internal__assign_constant_to_node_sizes
@@ -58,7 +56,6 @@ from .compute_circular_layout_positions import (
 from .compute_network_metrics import internal__compute_network_metrics
 from .compute_spring_layout_positions import internal__compute_spring_layout_positions
 from .create_clusters_to_terms_mapping import internal__create_clusters_to_terms_mapping
-from .create_co_occurrence_report import internal__create_co_occurrence_report
 from .create_concept_grid_plot import internal__concept_grid_plot
 from .create_network_density_plot import internal__create_network_density_plot
 from .create_node_degree_data_frame import internal__create_node_degrees_data_frame
@@ -97,7 +94,6 @@ __all__ = [
     "internal__compute_spring_layout_positions",
     "internal__concept_grid_plot",
     "internal__create_clusters_to_terms_mapping",
-    "internal__create_co_occurrence_report",
     "internal__create_network_density_plot",
     "internal__create_node_degree_plot",
     "internal__create_node_degrees_data_frame",

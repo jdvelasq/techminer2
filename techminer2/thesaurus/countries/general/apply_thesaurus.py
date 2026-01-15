@@ -83,7 +83,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.transform import internal__transform
+from techminer2.thesaurus._internals import internal__transform
 from techminer2.thesaurus.system import ApplyThesaurus as ApplySystemThesaurus
 from techminer2.thesaurus.user import ApplyThesaurus as ApplyUserThesaurus
 

@@ -1,54 +1,58 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-branches
 """
 Replace Last Word
 ===============================================================================
 
 
 Example:
-    >>> # TEST PREPARATION
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, ReplaceLastWord
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
 
-    >>> # Reset the thesaurus to initial state
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
 
-    >>> # Creates, configures, and run the replacer
-    >>> replacer = (
+    >>> from techminer2.thesaurus.user import ReplaceLastWord
+    >>> (
     ...     ReplaceLastWord()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_word("BUSINESS")
     ...     .having_replacement("business")
     ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
     ... )
-    >>> replacer.run()
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)
-    Replacing last word in keys...
-             File : .../fintech/data/thesaurus/demo.the.txt
-             Word : BUSINESS
-      Replacement : business
-      2 replacements made successfully
-      Replacement process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
+    INFO: Word replacement successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys changed
+      Header  :
         business
           BUSINESS; BUSINESSES
         THE_BANKING_business
@@ -66,10 +70,12 @@ Example:
         A_CASE_STUDY
           A_CASE_STUDY
     <BLANKLINE>
-    <BLANKLINE>
+
+
 
 
 """
+
 import re
 import sys
 
@@ -77,7 +83,7 @@ import pandas as pd  # type: ignore
 from colorama import Fore, init
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 
 class ReplaceLastWord(
@@ -85,34 +91,6 @@ class ReplaceLastWord(
     ThesaurusMixin,
 ):
     """:meta private:"""
-
-    #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-        word = self.params.word
-        replacement = self.params.replacement
-
-        if len(file_path) > 40:
-            file_path = "..." + file_path[-36:]
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Replacing last word in keys...\n")
-        sys.stderr.write(f"         File : {file_path}\n")
-        sys.stderr.write(f"         Word : {word}\n")
-        sys.stderr.write(f"  Replacement : {replacement}\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        sys.stderr.write("  Replacement process completed successfully\n\n")
 
     #
     # ALGORITHM:
@@ -154,17 +132,26 @@ class ReplaceLastWord(
     def run(self):
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
+        self.internal__set_initial_keys()
         self.internal__replace_word()
         self.internal__reduce_keys()
         self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__notify_process_end()
-        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
+        self.internal__set_final_keys()
+        self.internal__compute_changed_keys()
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Word replacement successfully.",
+            success=True,
+            status=f"{len(self.mapping.keys())} keys changed",
+            data_frame=self.data_frame,
+        )
 
 
 # =============================================================================

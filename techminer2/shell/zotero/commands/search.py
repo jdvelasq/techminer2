@@ -1,9 +1,25 @@
+import os
+
 from techminer2._internals.params_mixin import Params
-from techminer2.database._internals.io import internal__load_all_records_from_database
+from techminer2._internals.user_data import internal__load_all_records_from_database
 from techminer2.shell.colorized_input import colorized_input
 
 
 def execute_search_command():
+
+    dirpath = os.path.join("./", "outputs", "section_8_references")
+
+    output_filepath = os.path.join(
+        dirpath,
+        "reference_counts.txt",
+    )
+
+    mapping = {}
+    with open(output_filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            ut, count = line.split("\t")
+            ut = ut.replace("UT ", "")
+            mapping[ut.strip()] = int(count.strip())
 
     while True:
 
@@ -18,6 +34,7 @@ def execute_search_command():
         # [UT 1, UT 2, UT 3]
         # [UT 1], [UT 2], [UT 3]
         # [UT 1][UT 2][UT 3]
+        ut_string = ut_string.replace("] [", "][")
         ut_string = ut_string.replace("], [", "; ")
         ut_string = ut_string.replace(",", ";")
         ut_string = ut_string.replace("][", "; ")
@@ -29,6 +46,7 @@ def execute_search_command():
         ut_list = ut_string.split(";")
 
         ut_list = [int(t) for t in ut_list]
+        ut_list = sorted(ut_list, key=lambda x: mapping.get(str(x), 0), reverse=True)
         print(ut_list)
 
         records = internal__load_all_records_from_database(

@@ -59,7 +59,7 @@ database based on the specified parameters. The output includes the first 10 ext
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database.metrics.performance import DataFrame
+from techminer2.performance import DataFrame
 
 
 class TopTermsExtractor(

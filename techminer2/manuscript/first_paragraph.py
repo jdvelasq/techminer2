@@ -45,9 +45,11 @@ import pandas as pd  # type: ignore
 from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.load_template import internal_load_template
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.package_data.templates.load_template import (
+    internal__load_template,
+)
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
 
@@ -136,7 +138,7 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__load_definition_template(self):
 
-        self.definition_template = internal_load_template(
+        self.definition_template = internal__load_template(
             "internals.genai.first_paragraph_define.txt"
         )
 
@@ -182,7 +184,7 @@ class FirstParagraph(
     # -------------------------------------------------------------------------
     def internal__load_summarization_template(self):
 
-        self.summarization_template = internal_load_template(
+        self.summarization_template = internal__load_template(
             "internals.genai.first_paragraph_summarize.txt"
         )
 

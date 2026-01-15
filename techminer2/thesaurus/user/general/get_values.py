@@ -12,35 +12,50 @@ Get Values
 ===============================================================================
 
 
-Example:
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> import sys
-    >>> from io import StringIO
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Reset the thesaurus to initial state
+Smoke tests:
     >>> from techminer2.thesaurus.user import InitializeThesaurus
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Creates, configures, an run the exploder
     >>> from techminer2.thesaurus.user import GetValues
     >>> terms = (
     ...     GetValues()
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .with_patterns(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
+    ...     .using_pattern(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
     >>> terms[:5]
     ['FINANCIAL_TECHNOLOGIES', 'FINANCIAL_TECHNOLOGY', 'FINTECH', 'FINTECHS']
 
-
-    # >>> # Capture and print stderr output to test the code using doctest
-    # >>> output = sys.stderr.getvalue()
-    # >>> sys.stderr = original_stderr
-    # >>> print(output) # doctest: +SKIP
 
 
 """
@@ -73,9 +88,9 @@ class GetValues(
             sys.stderr.write("Getting thesaurus values...\n")
             sys.stderr.flush()
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
         self.internal__get_values()
 
         if self.params.quiet is False:

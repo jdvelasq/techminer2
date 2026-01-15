@@ -66,10 +66,10 @@ import pandas as pd  # type: ignore
 from tqdm import tqdm
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_all_records_from_database,  # type: ignore
 )
-from techminer2.database._internals.io import (
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
 from techminer2.thesaurus._internals import ThesaurusMixin
@@ -244,12 +244,12 @@ class InitializeThesaurus(
             field="global_references",
         )
 
-        self.internal__build_user_thesaurus_path()
+        self._build_user_thesaurus_path()
         self.internal__notify_process_start()
         self.internal__create_main_documents_data_frame()
         self.internal__create_references_data_frame()
         self.internal__create_thesaurus()
-        self.internal__write_thesaurus_data_frame_to_disk()
+        self._write_thesaurus_data_frame_to_disk()
         self.internal__notify_process_end()
         self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
 

@@ -41,9 +41,11 @@ import sys
 from importlib.resources import files
 
 from techminer2._internals.mixins import Params, ParamsMixin
-from techminer2.package_data.text_processing import internal__sort_text_processing_terms
+from techminer2._internals.package_data.text_processing import (
+    internal__sort_text_processing_terms,
+)
 from techminer2.thesaurus._internals import (
-    internal__generate_user_thesaurus_file_path,
+    internal__get_user_thesaurus_file_path,
     internal__load_thesaurus_as_mapping,
 )
 
@@ -78,7 +80,7 @@ class RegisterPhrases(
             .update(thesaurus_file="acronyms.the.txt")
         )
 
-        self.acronyms_path = internal__generate_user_thesaurus_file_path(params=params)
+        self.acronyms_path = internal__get_user_thesaurus_file_path(params=params)
 
     # -------------------------------------------------------------------------
     def internal__load_acronyms_thesaurus_as_mapping(self):

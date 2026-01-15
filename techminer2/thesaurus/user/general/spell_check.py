@@ -10,58 +10,54 @@ Spell Check
 ===============================================================================
 
 
+Smoke tests:
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-Example:
-    >>> # TEST PREPARATION
-    >>> import sys
-    >>> from io import StringIO
-    >>> from techminer2.thesaurus.user import InitializeThesaurus, SpellCheck
 
-    >>> # Redirecting stderr to avoid messages during doctests
-    >>> original_stderr = sys.stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Reset the thesaurus to initial state
-    >>> InitializeThesaurus(thesaurus_file="demo.the.txt", field="raw_descriptors",
-    ...     root_directory="examples/fintech/", quiet=True).run()
-
-
-    >>> # Creates, configures, an run the spell checker
+    >>> from techminer2.thesaurus.user import SpellCheck
     >>> (
     ...     SpellCheck()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_maximum_occurrence(3)
+    ...     .using_colored_output(False)
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
-
-
-    >>> # Capture and print stderr output to test the code using doctest
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output)  # doctest: +SKIP
-    Spell checking thesaurus keys...
-      File : examples/fintech/data/thesaurus/demo.the.txt
-      Potential misspelled words (59):
-    <BLANKLINE>
-        - affordance
-        - affordances
-        - backoffice
-        - behavioural
-        - bitcoin
-        - blockchain
-        - burdencapital
-        - centricity
-        - crowdfunding
-        - crowdinvesting
-        ...
-    <BLANKLINE>
-      Matching keys found : 71
-      Spell checking process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
+    INFO: Thesaurus keys reduced successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 82 misspelled keys found.
+      Header  :
         A_BEHAVIOURAL_PERSPECTIVE
           A_BEHAVIOURAL_PERSPECTIVE
         A_BLOCKCHAIN_IMPLEMENTATION_STUDY
@@ -76,80 +72,19 @@ Example:
           A_YOUTH_MICROLOAN_STARTUP
         AFFORDANCE_ACTUALIZATION
           AFFORDANCE_ACTUALIZATION
-        AFFORDANCES
-          AFFORDANCES
-    <BLANKLINE>
-    <BLANKLINE>
-
-
-
-    >>> # Restaring the stderr
-    >>> sys.stderr = StringIO()
-
-    >>> # Creates, configures, an run the spell checker
-    >>> SpellCheck(
-    ...     thesaurus_file="demo.the.txt",
-    ...     maximum_occurrence=3,
-    ...     root_directory="examples/fintech/",
-    ...     ,
-    ... ).run()
-
-    >>> # Capture and print stderr output
-    >>> output = sys.stderr.getvalue()
-    >>> sys.stderr = original_stderr
-    >>> print(output) # doctest: +SKIP
-    Spell checking thesaurus keys...
-      File : examples/fintech/data/thesaurus/demo.the.txt
-      Potential misspelled words (59):
-    <BLANKLINE>
-        - affordance
-        - affordances
-        - backoffice
-        - behavioural
-        - bitcoin
-        - blockchain
-        - burdencapital
-        - centricity
-        - crowdfunding
-        - crowdinvesting
-        ...
-    <BLANKLINE>
-      Matching keys found : 71
-      Spell checking process completed successfully
-    <BLANKLINE>
-    Printing thesaurus header
-      File : examples/fintech/data/thesaurus/demo.the.txt
-    <BLANKLINE>
-        A_BEHAVIOURAL_PERSPECTIVE
-          A_BEHAVIOURAL_PERSPECTIVE
-        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
-        A_HYBRID_MCDM_MODEL
-          A_HYBRID_MCDM_MODEL
-        A_MULTI_LEVEL_ANALYSIS
-          A_MULTI_LEVEL_ANALYSIS
-        A_WIDE_RANGING_RECONCEPTUALIZATION
-          A_WIDE_RANGING_RECONCEPTUALIZATION
-        A_YOUTH_MICROLOAN_STARTUP
-          A_YOUTH_MICROLOAN_STARTUP
-        AFFORDANCE_ACTUALIZATION
-          AFFORDANCE_ACTUALIZATION
-        AFFORDANCES
-          AFFORDANCES
-    <BLANKLINE>
+        AGROINDUSTRY
+          AGROINDUSTRY
     <BLANKLINE>
 
 
 
 """
-import sys
 
 import pandas as pd  # type: ignore
-from colorama import Fore
 from spellchecker import SpellChecker as ExternalSpellChecker
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 
 class SpellCheck(
@@ -158,73 +93,34 @@ class SpellCheck(
 ):
     """:meta private:"""
 
-    #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-
-        if len(file_path) > 72:
-            file_path = "..." + file_path[-68:]
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Spell checking thesaurus keys...\n")
-        sys.stderr.write(f"  File : {file_path}\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        sys.stderr.write("  Spell checking process completed successfully\n\n")
-        sys.stderr.flush()
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.words: list[str] = []
+        self.misspelled_words: list[str] = []
+        self.misspelled_keys: int = 0
 
     #
     # ALGORITHM:
     # -------------------------------------------------------------------------
-    def internal__extract_words_from_mapping(self):
+    def internal__extract_words_from_mapping(self) -> None:
 
         terms = list(self.mapping.keys())
         terms = [t.replace("_", " ") for t in terms]
-        words = [word for term in terms for word in term.split(" ")]
-        words = pd.Series(words).value_counts()
-        words = words[words <= self.params.maximum_occurrence]
-        words = [word for word in words.index if word.isalpha()]
+        tokens = [word for term in terms for word in term.split(" ")]
+        counts = pd.Series(tokens).value_counts()
+        counts = counts[counts <= self.params.maximum_occurrence]
+        words = [word for word in counts.index if word.isalpha()]
         self.words = words
 
     # -------------------------------------------------------------------------
-    def internal__search_mispelled_words(self):
+    def internal__search_mispelled_words(self) -> None:
 
         spell = ExternalSpellChecker()
-        misspelled_words = spell.unknown(self.words)
-        misspelled_words = sorted(misspelled_words)
-        self.misspelled_words = misspelled_words
+        misspelled_set = spell.unknown(self.words)
+        self.misspelled_words = sorted(misspelled_set)
 
     # -------------------------------------------------------------------------
-    def internal__print_mispelled_words_to_sysout(self):
-
-        if len(self.misspelled_words) == 0:
-            sys.stderr.write("  No misspelled words found\n")
-            sys.stderr.flush()
-            return
-
-        misspelled_words = self.misspelled_words[:10]
-        for i_word, word in enumerate(misspelled_words):
-            if i_word == 0:
-                sys.stderr.write(
-                    f"  Potential misspelled words ({len(self.misspelled_words)}):\n\n"
-                )
-            sys.stderr.write(f"    - {word}\n")
-        if len(misspelled_words) == 10:
-            sys.stderr.write("    ...\n\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__select_data_frame_rows(self):
+    def internal__select_data_frame_rows(self) -> None:
 
         self.data_frame["__row_selected__"] = False
 
@@ -242,27 +138,29 @@ class SpellCheck(
                 "__row_selected__",
             ] = True
 
-        n_matches = self.data_frame.__row_selected__.sum()
-
-        sys.stderr.write(f"  Matching keys found : {n_matches}\n")
-        sys.stderr.flush()
+        self.misspelled_keys = self.data_frame.__row_selected__.sum()
 
     # -------------------------------------------------------------------------
-    def run(self):
+    def run(self) -> ThesaurusResult:
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
         self.internal__extract_words_from_mapping()
         self.internal__search_mispelled_words()
-        self.internal__print_mispelled_words_to_sysout()
         self.internal__select_data_frame_rows()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__notify_process_end()
-        self.internal__print_thesaurus_header_to_stream(n=8, stream=sys.stderr)
+        self._sort_data_frame_by_rows_and_key()
+        self._write_thesaurus_data_frame_to_disk()
+
+        return ThesaurusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.thesaurus_path),
+            msg="Thesaurus keys reduced successfully.",
+            success=True,
+            status=f"{self.misspelled_keys} misspelled keys found.",
+            data_frame=self.data_frame,
+        )
 
 
 # =============================================================================

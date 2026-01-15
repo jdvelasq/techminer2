@@ -10,20 +10,62 @@
 Combine Keys
 ===============================================================================
 
-Example:
-    >>> # Preparation
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus
-    >>> from techminer2.thesaurus.descriptors import ApplyThesaurus
-    >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
+Smoke tests:
+    >>> from techminer2.thesaurus.user import InitializeThesaurus
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
-    >>> # Use
+    >>> from techminer2.thesaurus.user import ApplyThesaurus
+    >>> (
+    ...     ApplyThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .with_other_field("descriptors_cleaned")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus applied successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1788 keys applied
+    <BLANKLINE>
+
+
     >>> from techminer2.thesaurus.user import CombineKeys
     >>> df = (
     ...     CombineKeys()
     ...     #
     ...     # FIELD:
-    ...     .with_field("descriptors")
+    ...     .with_field("descriptors_cleaned")
     ...     .having_terms_in_top(100)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(5, None)
@@ -39,19 +81,18 @@ Example:
     ...     #
     ...     .run()
     ... )
-    >>> df.head() # doctest: +SKIP
+    >>> df.head()
                        lead               candidate  probability combine?
-    0      SERVICES 07:1226      INVESTMENT 06:1294        0.571      yes
-    1       FINANCE 20:2992    TECHNOLOGIES 16:1847        0.550      yes
+    0       FINANCE 20:2992    TECHNOLOGIES 16:1847        0.550      yes
+    1      SERVICES 07:1226      INVESTMENT 06:1294        0.571      yes
     2  PRACTITIONER 06:1194  BUSINESS_MODEL 05:1578        0.500      yes
-
 
 
 
 """
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.packages.co_occurrence_matrix import DataFrame as CoocDataFrame
+from techminer2.co_occurrence_matrix import DataFrame as CoocDataFrame
 
 
 class CombineKeys(

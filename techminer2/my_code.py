@@ -1,7 +1,7 @@
 """text"""
 
 with open(
-    "techminer2/package_data/text_processing/data/hyphenated_is_correct.txt",
+    "techminer2/_internals/package_data/text_processing/data/hyphenated_is_correct.txt",
     "r",
     encoding="utf-8",
 ) as file:
@@ -9,7 +9,7 @@ with open(
 
 
 with open(
-    "techminer2/package_data/text_processing/data/hyphenated_is_incorrect.txt",
+    "techminer2/_internals/package_data/text_processing/data/hyphenated_is_incorrect.txt",
     "r",
     encoding="utf-8",
 ) as file:

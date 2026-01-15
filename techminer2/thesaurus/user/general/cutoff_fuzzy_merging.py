@@ -12,53 +12,129 @@ Cutoff Fuzzy Merging
 ===============================================================================
 
 
-Example:
-    >>> # Reset the thesaurus to initial state
+Smoke tests:
     >>> from techminer2.thesaurus.user import InitializeThesaurus
-    >>> InitializeThesaurus(
-    ...     thesaurus_file="demo.the.txt",
-    ...     field="raw_descriptors",
-    ...     root_directory="examples/fintech/",
-    ...     quiet=True,
-    ... ).run()
+    >>> (
+    ...     InitializeThesaurus()
+    ...     .with_thesaurus_file("demo.the.txt")
+    ...     .with_field("raw_descriptors")
+    ...     .where_root_directory("examples/fintech/")
+    ...     .using_colored_output(False)
+    ...     .run()
+    ... )
+    INFO: Thesaurus initialized successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 1721 keys found
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
+
 
     >>> from techminer2.thesaurus.user import ReduceKeys
     >>> (
     ...     ReduceKeys()
     ...     .with_thesaurus_file("demo.the.txt")
+    ...     .using_colored_output(False)
     ...     .where_root_directory("examples/fintech/")
     ...     .run()
     ... )
+    INFO: Thesaurus keys reduced successfully.
+      Success : True
+      File    : examples/fintech/data/thesaurus/demo.the.txt
+      Status  : 0 changed keys
+      Header  :
+        A_A_THEORY
+          A_A_THEORY
+        A_BASIC_RANDOM_SAMPLING_STRATEGY
+          A_BASIC_RANDOM_SAMPLING_STRATEGY
+        A_BEHAVIOURAL_PERSPECTIVE
+          A_BEHAVIOURAL_PERSPECTIVE
+        A_BETTER_UNDERSTANDING
+          A_BETTER_UNDERSTANDING
+        A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+          A_BLOCKCHAIN_IMPLEMENTATION_STUDY
+        A_CASE_STUDY
+          A_CASE_STUDY
+        A_CHALLENGE
+          A_CHALLENGE
+        A_CLUSTER_ANALYSIS
+          A_CLUSTER_ANALYSIS
+    <BLANKLINE>
 
 
-    >>> # Cutoff Fuzzy Merging
     >>> from techminer2.thesaurus.user import CutoffFuzzyMerging
-    >>> (
-    ...     CutoffFuzzyMerging(, tqdm_disable=True)
+    >>> r = (
+    ...     CutoffFuzzyMerging(tqdm_disable=True)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .where_root_directory("examples/fintech/")
     ...     .using_cutoff_threshold(85)
     ...     .using_match_threshold(95)
     ...     .run()
-    ... )
+    ... ).to_string()
+    >>> print(r)
+                                                      lead                                                 candidate  fuzzy  cutoff
+    0                            SYSTEMIC_INNOVATION_MODEL                               A_SYSTEMIC_INNOVATION_MODEL  100.0    96.0
+    1               COMPETITIVE_AND_COOPERATIVE_MECHANISMS                THE_COMPETITIVE_AND_COOPERATIVE_MECHANISMS  100.0    95.0
+    2              ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS               THE_ECONOMIC_AND_TECHNOLOGICAL_DETERMINANTS  100.0    95.0
+    3                                  GROWING_COMPETITION                                     A_GROWING_COMPETITION  100.0    95.0
+    4                                 MULTI_LEVEL_ANALYSIS                                    A_MULTI_LEVEL_ANALYSIS  100.0    95.0
+    5                                THEORETICAL_FRAMEWORK                                   A_THEORETICAL_FRAMEWORK  100.0    95.0
+    6                                     CLUSTER_ANALYSIS                                        A_CLUSTER_ANALYSIS  100.0    94.0
+    7                                    HYBRID_MCDM_MODEL                                       A_HYBRID_MCDM_MODEL  100.0    94.0
+    8   UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY  UNIFIED_THEORY_OF_ACCEPTANCE_AND_USE_OF_TECHNOLOGY_MODEL  100.0    94.0
+    9                          A_SYSTEMIC_INNOVATION_MODEL                           A_NEW_SYSTEMIC_INNOVATION_MODEL  100.0    93.0
+    10                        ELABORATION_LIKELIHOOD_MODEL                          THE_ELABORATION_LIKELIHOOD_MODEL  100.0    93.0
+    11                         TECHNOLOGY_ACCEPTANCE_MODEL                           THE_TECHNOLOGY_ACCEPTANCE_MODEL  100.0    93.0
+    12                             A_THEORETICAL_FRAMEWORK                               A_NEW_THEORETICAL_FRAMEWORK  100.0    92.0
+    13                                         COMPETITION                                             A_COMPETITION  100.0    92.0
+    14                              HISTORICAL_DEVELOPMENT                                THE_HISTORICAL_DEVELOPMENT  100.0    92.0
+    15                              INFORMATION_TECHNOLOGY                                THE_INFORMATION_TECHNOLOGY  100.0    92.0
+    16                             SUSTAINABLE_DEVELOPMENT                               THE_SUSTAINABLE_DEVELOPMENT  100.0    92.0
+    17                            SYSTEMIC_CHARACTERISTICS                              THE_SYSTEMIC_CHARACTERISTICS  100.0    92.0
+    18                                          DEFINITION                                              A_DEFINITION  100.0    91.0
+    19                                DEVELOPING_COUNTRIES                                  THE_DEVELOPING_COUNTRIES  100.0    91.0
+    20                               INNOVATION_MECHANISMS                                 THE_INNOVATION_MECHANISMS  100.0    91.0
+    21                                STRATEGIC_CAPABILITY                                  THE_STRATEGIC_CAPABILITY  100.0    91.0
+    22                               THEORETICAL_FRAMEWORK                                 THE_THEORETICAL_FRAMEWORK  100.0    91.0
+    23                                            TAXONOMY                                                A_TAXONOMY  100.0    89.0
+    24                                       ORGANIZATIONS                                           AN_ORGANIZATION   96.0    86.0
+    25                                 RESEARCH_FRAMEWORKS                                      A_RESEARCH_FRAMEWORK   95.0    92.0
+    26                               CONCEPTUAL_FRAMEWORKS                                  THE_CONCEPTUAL_FRAMEWORK   95.0    89.0
+    27                                          CHALLENGES                                               A_CHALLENGE   95.0    86.0
 
 
 """
 
 
-import sys
-
-from colorama import Fore
+import pandas as pd
 from fuzzywuzzy import fuzz  # type: ignore
 from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.io import (
+from techminer2._internals.package_data.text_processing import (
+    internal__load_text_processing_terms,
+)
+from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.database.metrics.performance import DataFrame
-from techminer2.package_data.text_processing import internal__load_text_processing_terms
+from techminer2.performance import DataFrame
 from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
@@ -69,33 +145,6 @@ class CutoffFuzzyMerging(
     ThesaurusMixin,
 ):
     """:meta private:"""
-
-    #
-    # NOTIFICATIONS:
-    # -------------------------------------------------------------------------
-    def internal__notify_process_start(self):
-
-        file_path = str(self.thesaurus_path)
-
-        if len(file_path) > 72:
-            file_path = "..." + file_path[-68:]
-
-        if self.params.colored_stderr:
-            filename = str(file_path).rsplit("/", maxsplit=1)[1]
-            file_path = file_path.replace(filename, f"{Fore.RESET}{filename}")
-            file_path = Fore.LIGHTBLACK_EX + file_path
-
-        sys.stderr.write("Cutoff-Fuzzy Merging thesaurus keys...\n")
-        sys.stderr.write(f"  File : {file_path}\n")
-        sys.stderr.flush()
-
-    # -------------------------------------------------------------------------
-    def internal__notify_process_end(self):
-
-        msg = f"  Keys reduced from {self.n_initial_keys} to {self.n_final_keys}\n"
-        sys.stderr.write(msg)
-        sys.stderr.write("  Merging process completed successfully\n\n")
-        sys.stderr.flush()
 
     #
     # ALGORITHM:
@@ -191,28 +240,14 @@ class CutoffFuzzyMerging(
             best_match = 0
             for candidate_word in lengthen_string:
                 score = fuzz.ratio(base_word, candidate_word)
-                #
-                # For fixing misspelling errors
-                #
-                # if len(string1) == len(string2):
-                #     distance = textdistance.damerau_levenshtein(
-                #         base_word, candidate_word
-                #     )
-                #     max_len = max(len(base_word), len(candidate_word))
-                #     if max_len <= 7 and distance == 1:
-                #         score = 100
-                #     if max_len > 7 and max_len <= 12 and distance in [1, 2]:
-                #         score = 100
-                #     if max_len > 12 and distance in [1, 2, 3]:
-                #         score = 100
-                # #
                 if score > best_match:
                     best_match = score
             scores_per_word.append(best_match)
 
+        score = min(scores_per_word)
         match = all(score >= self.params.match_threshold for score in scores_per_word)
 
-        return match
+        return score, match
 
     # -------------------------------------------------------------------------
     def internal__compute_mergings(self):
@@ -269,11 +304,14 @@ class CutoffFuzzyMerging(
             if df.empty:
                 continue
 
-            df["fuzzy"] = df["key"].apply(
+            results = df["key"].apply(
                 lambda x: self.internal__compute_fuzzy_match(key, x)
             )
 
-            df = df[df["fuzzy"].apply(lambda x: x is True)]
+            df["fuzzy"] = results.map(lambda x: x[0])
+            df["fuzzy_match"] = results.map(lambda x: x[1])
+
+            df = df[df["fuzzy_match"].apply(lambda x: x is True)]
 
             if df.empty:
                 continue
@@ -281,6 +319,8 @@ class CutoffFuzzyMerging(
             key = key.replace(" ", "_").upper()
             df["key"] = df["key"].str.replace(" ", "_").str.upper()
 
+            self.data_frame.loc[df.index, "fuzzy"] = df.fuzzy
+            self.data_frame.loc[df.index, "cutoff"] = df.cutoff
             self.data_frame.loc[df.index, "selected"] = True
             self.data_frame.loc[df.index, "__row_selected__"] = True
             self.data_frame.loc[self.data_frame["key"] == key, "__row_selected__"] = (
@@ -291,41 +331,49 @@ class CutoffFuzzyMerging(
 
         self.mergings = mergings
 
-        # print(mergings)
-
         self.data_frame["key"] = self.data_frame["key"].str.upper()
         self.data_frame["key"] = self.data_frame["key"].str.replace(" ", "_")
 
     # -------------------------------------------------------------------------
-    def internal__make_mergings(self):
+    def internal__generate_merging_data_frame(self):
 
-        reversed_mergings = {v: k for k, vs in self.mergings.items() for v in vs}
-        self.data_frame["key"] = self.data_frame["key"].map(
-            lambda x: reversed_mergings.get(x, x)
+        # reversed_mergings = {v: k for k, vs in self.mergings.items() for v in vs}
+        # self.data_frame["key"] = self.data_frame["key"].map(
+        #     lambda x: reversed_mergings.get(x, x)
+        # )
+
+        fuzzy_mapping = {row.key: row.fuzzy for _, row in self.data_frame.iterrows()}
+        cutoff_mapping = {row.key: row.cutoff for _, row in self.data_frame.iterrows()}
+
+        keys = [key for key, values in self.mergings.items() for _ in values]
+        values = [value for _, values in self.mergings.items() for value in values]
+        self.result = pd.DataFrame(
+            {
+                "lead": keys,
+                "candidate": values,
+            }
         )
+
+        self.result["fuzzy"] = self.result["candidate"].map(fuzzy_mapping)
+        self.result["cutoff"] = self.result["candidate"].map(cutoff_mapping)
+        self.result = self.result.sort_values(
+            by=["fuzzy", "cutoff", "lead"], ascending=[False, False, True]
+        ).reset_index(drop=True)
 
     # -------------------------------------------------------------------------
     def run(self):
         """:meta private:"""
 
-        self.internal__build_user_thesaurus_path()
-        self.internal__notify_process_start()
-        self.internal__load_thesaurus_as_mapping()
-        self.internal__transform_mapping_to_data_frame()
-        self.internal__set_n_initial_keys()
+        self._build_user_thesaurus_path()
+        self._load_thesaurus_as_mapping()
+        self._transform_mapping_to_data_frame()
+        self.internal__set_initial_keys()
         self.internal__get_keywords()
         self.internal__mark_keywords()
         self.internal__get_raw_occurrences()
         self.internal__compute_key_occurrences()
         self.internal__sort_by_keylength()
         self.internal__compute_mergings()
-        self.internal__make_mergings()
-        self.internal__explode_and_group_values_by_key()
-        self.internal__sort_data_frame_by_rows_and_key()
-        self.internal__write_thesaurus_data_frame_to_disk()
-        self.internal__set_n_final_keys()
-        self.internal__notify_process_end()
-        self.internal__print_thesaurus_header_to_stream(
-            n=10,
-            use_colorama=self.params.colored_stderr,
-        )
+        self.internal__generate_merging_data_frame()
+
+        return self.result

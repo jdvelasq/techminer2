@@ -1,7 +1,24 @@
-review and grade again. take into accoun that:
-* The package is only and absolutely only for my own use
-* The package is a competitive advantage for increasing my productivity.
-* The code and variables are self-documented and easy to understand, to avoid commentaries and docstrings.
-* Package imported functions will be or have been reviewed for improving their professional grade
-* Testability is critical
+Review and grade the code’s adherence to professional coding style.
 
+Perform the evaluation under the following constraints:
+- The package is strictly for private, personal use (no public API, no onboarding concerns).
+- The package represents a competitive productivity advantage, so clarity, consistency, and efficiency are critical.
+- The code relies on self-documenting structure (clear naming, logical decomposition); comments and docstrings are intentionally avoided.
+- Trust at 2 a.m. is essential. 
+- The code will be production-ready for my research.
+- The code will be exactly how professional Python code should be written
+- Doctests are the primary technique of testing
+- Doctests must be strong.
+- All recommendations must be aligned with the practices in Python's major libraries (pandas, requests, matplotlib, scikit-learn, numpy, scipy, statsmodels, etc.)
+- All imported or external functions are assumed to be already reviewed and should not be re-evaluated unless their usage degrades code quality.
+
+Focus the review on:
+- Naming precision and semantic clarity
+- Structural consistency and logical flow
+- Readability without explanatory comments
+- Professional-grade design decisions that improve long-term maintainability
+
+Provide:
+- A numeric score (0–100) for professional style
+- A brief justification for the score
+- Concrete, minimal suggestions that would measurably improve the score, without adding comments or docstrings

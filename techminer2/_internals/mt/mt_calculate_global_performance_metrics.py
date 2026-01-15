@@ -13,7 +13,7 @@ This function computes global performance (bibliometric) metrics for a given fie
 from techminer2._internals.mt.mt_sort_records_by_metric import (
     _mt_sort_records_by_metric,
 )
-from techminer2.database._internals.io.load_user_stopwords import (
+from techminer2._internals.user_data.load_user_stopwords import (
     internal__load_user_stopwords,
 )
 
