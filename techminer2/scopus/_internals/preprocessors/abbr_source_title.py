@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.database._internals.operators.fillna import internal__fillna
+from techminer2.scopus._internals.operators.fillna import internal__fillna
 
 
 def _preprocess_abbr_source_title(root_dir):

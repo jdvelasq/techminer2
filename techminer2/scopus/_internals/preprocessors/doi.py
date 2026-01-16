@@ -24,7 +24,7 @@ def _process_text(text):
 def _preprocess_doi(root_dir):
     """Run authors importer."""
 
-    from techminer2.scopus._internals.operators.transform import internal__transform
+    from techminer2.database.operators.transform import internal__transform
 
     sys.stderr.write("INFO: Processing 'doi' column\n")
     sys.stderr.flush()

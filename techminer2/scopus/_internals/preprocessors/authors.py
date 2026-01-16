@@ -50,7 +50,7 @@ def _local_processing(text):
 def _preprocess_authors(root_dir):
     """Run authors importer."""
 
-    from techminer2.scopus._internals.operators.transform import internal__transform
+    from techminer2.database.operators.transform import internal__transform
 
     sys.stderr.write("INFO: Processing 'authors' column\n")
     sys.stderr.flush()

@@ -1,46 +1,86 @@
 """Functions for preprocessing database fields."""
 
-from .abbr_source_title import _preprocess_abbr_source_title
-from .abstract import _preprocess_abstract
-from .acronyms import _preprocess_acronyms
-from .author_keywords import _preprocess_author_keywords
-from .author_names import _preprocess_author_names
-from .authors import _preprocess_authors
-from .authors_id import _preprocess_authors_id
-from .countries import _preprocess_countries
-from .descriptors import _preprocess_descriptors
-from .document_title import _preprocess_document_title
-from .document_type import _preprocess_document_type
-from .doi import _preprocess_doi
-from .eissn import _preprocess_eissn
-from .global_citations import _preprocess_global_citations
-from .global_references import _preprocess_global_references
-from .index_keywords import _preprocess_index_keywords
-from .isbn import _preprocess_isbn
-from .issn import _preprocess_issn
-from .local_citations import _preprocess_local_citations
-from .local_references import _preprocess_local_references
-from .num_authors import _preprocess_num_authors
-from .num_global_references import _preprocess_num_global_references
-from .organizations import _preprocess_organizations
-from .raw_abstract_nouns_and_phrases import _preprocess_raw_abstract_nouns_and_phrases
-from .raw_author_keywords import _preprocess_raw_author_keywords
-from .raw_descriptors import _preprocess_raw_descriptors
-from .raw_document_title_nouns_and_phrases import (
+from techminer2.scopus._internals.preprocessors.abbr_source_title import (
+    _preprocess_abbr_source_title,
+)
+from techminer2.scopus._internals.preprocessors.abstract import _preprocess_abstract
+from techminer2.scopus._internals.preprocessors.acronyms import _preprocess_acronyms
+from techminer2.scopus._internals.preprocessors.author_keywords import (
+    _preprocess_author_keywords,
+)
+from techminer2.scopus._internals.preprocessors.author_names import (
+    _preprocess_author_names,
+)
+from techminer2.scopus._internals.preprocessors.authors import _preprocess_authors
+from techminer2.scopus._internals.preprocessors.authors_id import _preprocess_authors_id
+from techminer2.scopus._internals.preprocessors.countries import _preprocess_countries
+from techminer2.scopus._internals.preprocessors.descriptors import (
+    _preprocess_descriptors,
+)
+from techminer2.scopus._internals.preprocessors.document_title import (
+    _preprocess_document_title,
+)
+from techminer2.scopus._internals.preprocessors.document_type import (
+    _preprocess_document_type,
+)
+from techminer2.scopus._internals.preprocessors.doi import _preprocess_doi
+from techminer2.scopus._internals.preprocessors.eissn import _preprocess_eissn
+from techminer2.scopus._internals.preprocessors.global_citations import (
+    _preprocess_global_citations,
+)
+from techminer2.scopus._internals.preprocessors.global_references import (
+    _preprocess_global_references,
+)
+from techminer2.scopus._internals.preprocessors.index_keywords import (
+    _preprocess_index_keywords,
+)
+from techminer2.scopus._internals.preprocessors.isbn import _preprocess_isbn
+from techminer2.scopus._internals.preprocessors.issn import _preprocess_issn
+from techminer2.scopus._internals.preprocessors.local_citations import (
+    _preprocess_local_citations,
+)
+from techminer2.scopus._internals.preprocessors.local_references import (
+    _preprocess_local_references,
+)
+from techminer2.scopus._internals.preprocessors.num_authors import (
+    _preprocess_num_authors,
+)
+from techminer2.scopus._internals.preprocessors.num_global_references import (
+    _preprocess_num_global_references,
+)
+from techminer2.scopus._internals.preprocessors.organizations import (
+    _preprocess_organizations,
+)
+from techminer2.scopus._internals.preprocessors.raw_abstract_nouns_and_phrases import (
+    _preprocess_raw_abstract_nouns_and_phrases,
+)
+from techminer2.scopus._internals.preprocessors.raw_author_keywords import (
+    _preprocess_raw_author_keywords,
+)
+from techminer2.scopus._internals.preprocessors.raw_descriptors import (
+    _preprocess_raw_descriptors,
+)
+from techminer2.scopus._internals.preprocessors.raw_document_title_nouns_and_phrases import (
     _preprocess_raw_document_title_nouns_and_phrases,
 )
-from .raw_index_keywords import _preprocess_raw_index_keywords
-from .raw_keywords import _preprocess_raw_keywords
-from .raw_nouns_and_phrases import _preprocess_raw_noun_and_phrases
-from .raw_spacy_phrases import _preprocess_raw_spacy_phrases
-from .raw_textblob_phrases import _preprocess_raw_textblob_phrases
-from .record_id import _preprocess_record_id
-from .record_no import _preprocess_record_no
-from .references import _preprocess_references
-from .source_title import _preprocess_source_title
-from .subject_areas import _preprocess_subject_areas
-from .tokenized_abstract import _preprocess_tokenized_abstract
-from .tokenized_document_title import _preprocess_tokenized_document_title
+from techminer2.scopus._internals.preprocessors.raw_index_keywords import (
+    _preprocess_raw_index_keywords,
+)
+from techminer2.scopus._internals.preprocessors.raw_keywords import (
+    _preprocess_raw_keywords,
+)
+from techminer2.scopus._internals.preprocessors.raw_nouns_and_phrases import (
+    _preprocess_raw_noun_and_phrases,
+)
+from techminer2.scopus._internals.preprocessors.record_id import _preprocess_record_id
+from techminer2.scopus._internals.preprocessors.record_no import _preprocess_record_no
+from techminer2.scopus._internals.preprocessors.references import _preprocess_references
+from techminer2.scopus._internals.preprocessors.source_title import (
+    _preprocess_source_title,
+)
+from techminer2.scopus._internals.preprocessors.subject_areas import (
+    _preprocess_subject_areas,
+)
 
 __all__ = [
     "_preprocess_abbr_source_title",
@@ -52,7 +92,6 @@ __all__ = [
     "_preprocess_authors",
     "_preprocess_countries",
     "_preprocess_descriptors",
-    "_preprocess_document_title",
     "_preprocess_document_type",
     "_preprocess_doi",
     "_preprocess_eissn",
@@ -73,13 +112,9 @@ __all__ = [
     "_preprocess_raw_index_keywords",
     "_preprocess_raw_keywords",
     "_preprocess_raw_noun_and_phrases",
-    "_preprocess_raw_spacy_phrases",
-    "_preprocess_raw_textblob_phrases",
     "_preprocess_record_id",
     "_preprocess_record_no",
     "_preprocess_references",
     "_preprocess_source_title",
     "_preprocess_subject_areas",
-    "_preprocess_tokenized_abstract",
-    "_preprocess_tokenized_document_title",
 ]

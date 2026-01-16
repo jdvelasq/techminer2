@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.scopus._internals.operators.merge import internal__merge
+from techminer2.database.operators.merge import internal__merge
 
 
 def _preprocess_raw_descriptors(root_dir):

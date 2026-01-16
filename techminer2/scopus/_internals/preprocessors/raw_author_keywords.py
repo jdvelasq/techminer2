@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.database._internals.operators.clean_raw_keywords import (
+from techminer2.scopus._internals.operators.clean_raw_keywords import (
     internal__clean_raw_keywords,
 )
 

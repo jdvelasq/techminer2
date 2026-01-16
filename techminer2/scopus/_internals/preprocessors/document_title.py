@@ -7,7 +7,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from techminer2.database._internals.operators.highlight import internal__highlight
+from techminer2.scopus._internals.operators.highlight import internal__highlight
 
 
 def _preprocess_document_title(root_dir):

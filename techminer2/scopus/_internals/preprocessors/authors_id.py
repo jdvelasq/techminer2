@@ -30,7 +30,7 @@ def _local_processing_func(text):
 def _preprocess_authors_id(root_dir):
     """:meta private:"""
 
-    from techminer2.scopus._internals.operators.transform import internal__transform
+    from techminer2.database.operators.transform import internal__transform
 
     sys.stderr.write("INFO: Processing 'authors_id' column\n")
     sys.stderr.flush()

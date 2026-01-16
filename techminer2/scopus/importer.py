@@ -21,6 +21,12 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2.database._internals.datatests.check_empty_terms import (
     internal__check_empty_terms,
 )
+from techminer2.scopus._internals.descriptors import (
+    extract_spacy_noun_phrases,
+    extract_textblob_noun_phrases,
+    tokenize_abstract,
+    tokenize_document_title,
+)
 from techminer2.scopus._internals.preparation import (
     compress_raw_files,
     create_database_files,
@@ -59,15 +65,11 @@ from techminer2.scopus._internals.preprocessors import (
     _preprocess_raw_index_keywords,
     _preprocess_raw_keywords,
     _preprocess_raw_noun_and_phrases,
-    _preprocess_raw_spacy_phrases,
-    _preprocess_raw_textblob_phrases,
     _preprocess_record_id,
     _preprocess_record_no,
     _preprocess_references,
     _preprocess_source_title,
     _preprocess_subject_areas,
-    _preprocess_tokenized_abstract,
-    _preprocess_tokenized_document_title,
 )
 from techminer2.scopus._internals.report_imported_records import (
     internal__report_imported_records,
@@ -81,34 +83,35 @@ class Importer(
 ):
     """:meta private:"""
 
-    # ------------------------------------------------------------------------
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         self._phase: int = 0
 
     # ------------------------------------------------------------------------
+    # Message printing methods
+    # ------------------------------------------------------------------------
+
     def _print_header(self) -> None:
         sys.stderr.write("\n" + "=" * 70 + "\n")
         sys.stderr.write("Importing Scopus Data\n")
         sys.stderr.write("=" * 70 + "\n")
         sys.stderr.flush()
 
-    # ------------------------------------------------------------------------
     def _print_phase(self, description: str) -> None:
         sys.stderr.write(f"\n[{self._phase}] {description}\n")
         sys.stderr.flush()
 
-    # ------------------------------------------------------------------------
     def _print_step(self, message: str):
         sys.stderr.write(f"  → {message}...\n")
         sys.stderr.flush()
 
-    # ------------------------------------------------------------------------
-    def _print_detail(self, message: str) -> None:
-        """Print step result or additional detail."""
-        sys.stderr.write(f"    {message}\n")
+    def _print_detail(self, message: str, leading_newline: bool = False) -> None:
+        prefix = "\n" if leading_newline else ""
+        sys.stderr.write(f"{prefix}    {message}\n")
         sys.stderr.flush()
 
+    # ------------------------------------------------------------------------
+    # Phases
     # ------------------------------------------------------------------------
     def _run_phase_1_preparation(self) -> None:
 
@@ -153,6 +156,36 @@ class Importer(
                     self._print_detail(f"  • ... and {len(cols)-5} more")
 
     # ------------------------------------------------------------------------
+    def _run_phase_2_descriptors(self) -> None:
+
+        self._phase += 1
+        self._print_phase("Preparing descriptors")
+
+        self._print_step("Tokenizing document titles")
+        n_processed = tokenize_document_title(self.params.root_directory)
+        if n_processed > 0:
+            self._print_detail(f"Tokenized {n_processed} document titles")
+
+        self._print_step("Tokenizing abstracts")
+        n_processed = tokenize_abstract(self.params.root_directory)
+        if n_processed > 0:
+            self._print_detail(f"Tokenized {n_processed} abstracts")
+
+        self._print_step("Extracting TextBlob noun phrases")
+        n_processed = extract_textblob_noun_phrases(self.params.root_directory)
+        if n_processed > 0:
+            self._print_detail(
+                f"Extracted {n_processed} TextBlob noun phrases", leading_newline=True
+            )
+
+        self._print_step("Extracting SpaCy noun phrases")
+        n_processed = extract_spacy_noun_phrases(self.params.root_directory)
+        if n_processed > 0:
+            self._print_detail(
+                f"Extracted {n_processed} SpaCy noun phrases", leading_newline=True
+            )
+
+    # ------------------------------------------------------------------------
     def run(self) -> None:
 
         # root_directory = self.params.root_directory
@@ -175,6 +208,7 @@ class Importer(
         #
         self._print_header()
         self._run_phase_1_preparation()
+        self._run_phase_2_descriptors()
 
         #
 
@@ -186,9 +220,6 @@ class Importer(
         # PHASE 2: Keywords & noun phrases & abstracts
         # ---------------------------------------------------------------------------------
         #
-        #
-        # _preprocess_tokenized_document_title(root_directory)
-        # _preprocess_tokenized_abstract(root_directory)
         #
         # _preprocess_raw_textblob_phrases(root_directory)
         # _preprocess_raw_spacy_phrases(root_directory)

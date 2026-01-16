@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from techminer2.scopus._internals.operators.transform import internal__transform
+from techminer2.database.operators.transform import internal__transform
 
 
 def _preprocess_author_keywords(root_dir):

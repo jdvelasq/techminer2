@@ -1,30 +1,18 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-"""Clean abstract and title texts."""
-import pathlib
-import re
 import unicodedata
+from pathlib import Path
 
 import contractions  # type: ignore
 import pandas as pd  # type: ignore
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize  # type: ignore
 
 
-def internal__tokenize(
-    source,
-    dest,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-):
-    """:meta private:"""
+def tokenize_column(
+    source: str,
+    target: str,
+    root_directory: str,
+) -> int:
 
-    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
+    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
     dataframe = pd.read_csv(
         database_file,
@@ -34,7 +22,7 @@ def internal__tokenize(
     )
 
     if source in dataframe.columns and not dataframe[source].dropna().empty:
-        dataframe[dest] = tokenize(dataframe[source])
+        dataframe[target] = _tokenize(dataframe[source])
 
     dataframe.to_csv(
         database_file,
@@ -44,9 +32,10 @@ def internal__tokenize(
         compression="zip",
     )
 
+    return len(dataframe[target].dropna())
 
-def tokenize(text):
-    """:meta private:"""
+
+def _tokenize(text: pd.Series) -> pd.Series:
 
     # remove [...]
     text = text.map(
@@ -55,10 +44,10 @@ def tokenize(text):
 
     # -------------------------------------------------------------------------
     # find all URLs in the pandas series
-    url_pattern = (
+    url_pattern: str = (
         r"http[s]?://(?:[a-z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
     )
-    urls = text.str.findall(url_pattern).explode().dropna().unique()
+    urls = text.str.findall(url_pattern).explode().dropna().unique().tolist()
 
     # Replace URLs with the by "__url{i}__" where i is the index
     # of the URL in the list of unique URLs.

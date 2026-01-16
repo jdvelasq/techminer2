@@ -5,81 +5,38 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""
-Count Terms per Record
-===============================================================================
+import pathlib
+
+import pandas as pd  # type: ignore
 
 
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configure, and run the operator
-    >>> from techminer2.database.operators import CountOperator
-    >>> (
-    ...     CountOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("authors")
-    ...     .with_other_field("num_authors_test")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
-    ...     #
-    ...     .run()
-    ... )
-
-    >>> # Query the database to test the operator
-    >>> from techminer2.database.tools import Query
-    >>> (
-    ...     Query()
-    ...     .with_query_expression("SELECT authors, num_authors_test FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/fintech/")
-    ...     .where_database("main")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ...     .run()
-    ... )
-                                    authors  num_authors_test
-    0  Kim Y.; Choi J.; Park Y.-J.; Yeon J.                 4
-    1                   Shim Y.; Shin D.-H.                 2
-    2                               Chen L.                 1
-    3              Romanova I.; Kudinska M.                 2
-    4                   Gabor D.; Brooks S.                 2
-
-
-
-    >>> # Deletes the field
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> DeleteOperator(
-    ...     field="num_authors_test",
-    ...     root_directory="examples/fintech/",
-    ... ).run()
-
-"""
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.count import internal__count
-from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
-
-
-class CountOperator(
-    ParamsMixin,
+def internal__count(
+    source,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
 ):
-    """:meta private:"""
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
-    def run(self):
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+        low_memory=False,
+    )
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+    if source not in dataframe.columns:
+        return
 
-        internal__count(
-            source=self.params.field,
-            dest=self.params.other_field,
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
-        )
+    dataframe[dest] = dataframe[source].str.split("; ")
+    dataframe[dest] = dataframe[dest].map(len, na_action="ignore")
+    dataframe[dest] = dataframe[dest].fillna(0).astype(int)
 
-
-#
+    dataframe.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )

@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.database._internals.operators.count import internal__count
+from techminer2.scopus._internals.operators.count import internal__count
 
 
 def _preprocess_num_authors(root_dir):

@@ -72,8 +72,8 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.tokenize import internal__tokenize
 from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
+from techminer2.scopus._internals.operators.tokenize_column import tokenize_column
 
 
 class TokenizeOperator(
@@ -86,12 +86,12 @@ class TokenizeOperator(
         if self.params.other_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.other_field}` is protected")
 
-        internal__tokenize(
+        tokenize_column(
             source=self.params.field,
-            dest=self.params.other_field,
+            target=self.params.other_field,
             #
             # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
+            root_directory=self.params.root_directory,
         )
 
 

@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.database._internals.operators.collect import internal__collect
+from techminer2.scopus._internals.operators.collect import internal__collect
 
 
 def _preprocess_raw_abstract_nouns_and_phrases(root_dir):

@@ -5,82 +5,37 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""
-Copy a Field
-===============================================================================
+import pathlib
+
+import pandas as pd  # type: ignore
 
 
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configures, and runs the copy operator
-    >>> from techminer2.database.operators import CopyOperator
-    >>> (
-    ...     CopyOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("author_keywords")
-    ...     .with_other_field("author_keywords_copy")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
-    ...     #
-    ...     .run()
-    ... )
-
-
-    >>> # Query the database to test the operator
-    >>> from techminer2.database.tools import Query
-    >>> (
-    ...     Query()
-    ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/fintech/")
-    ...     .where_database("main")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ...     #
-    ...     .run()
-    ... )
-                                    author_keywords_copy
-    0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
-    1  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; FINTECH...
-    2  FINANCIAL_INCLUSION; FINANCIAL_SCENARIZATION; ...
-    3                 BANKING_INNOVATIONS; FINTECH; RISK
-    4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; F...
-
-    >>> # Deletes the field
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> DeleteOperator(
-    ...     field="author_keywords_copy",
-    ...     root_directory="examples/fintech/",
-    ... ).run()
-
-
-"""
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.copy import internal__copy
-from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
-
-
-class CopyOperator(
-    ParamsMixin,
+def internal__copy(
+    source,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
 ):
     """:meta private:"""
 
-    def run(self):
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+        low_memory=False,
+    )
 
-        internal__copy(
-            source=self.params.field,
-            dest=self.params.other_field,
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
+    if source in dataframe.columns:
+
+        dataframe[dest] = dataframe[source].copy()
+
+        dataframe.to_csv(
+            database_file,
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
         )
-
-
-#

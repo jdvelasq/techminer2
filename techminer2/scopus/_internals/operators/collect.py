@@ -4,141 +4,48 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-"""
-Collect Nouns and Phrases
-===============================================================================
+import pathlib
+
+import pandas as pd  # type: ignore
 
 
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configure, and run the cleaner to prepare the field
-    >>> from techminer2.database.operators import TokenizeOperator
-    >>> (
-    ...     TokenizeOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("raw_abstract")
-    ...     .with_other_field("cleaned_raw_abstract")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
-    ...     #
-    ...     .run()
-    ... )
-
-
-    >>> # Creates, configure, and run the operator
-    >>> from techminer2.database.operators import HighlightOperator
-    >>> (
-    ...     HighlightOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("cleaned_raw_abstract")
-    ...     .with_other_field("highlighted_raw_abstract")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
-    ...     #
-    ...     .run()
-    ... )
-
-
-    >>> # Collect terms in upper case from the field
-    >>> from techminer2.database.operators import CollectOperator
-    >>> (
-    ...     CollectOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("highlighted_raw_abstract")
-    ...     .with_other_field("extracted_nouns_and_phrases")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
-    ...     #
-    ...     .run()
-    ... )
-
-
-
-    >>> # Query the database to test the cleaner
-    >>> from techminer2.database.tools import Query
-    >>> df = (
-    ...     Query()
-    ...     .with_query_expression("SELECT extracted_nouns_and_phrases FROM database LIMIT 10;")
-    ...     .where_root_directory("examples/fintech/")
-    ...     .where_database("main")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ...     .run()
-    ... )
-    >>> import textwrap
-    >>> print(textwrap.fill(df.values[1][0], width=80))
-    THE_RAPID_DEVELOPMENT; INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY;
-    THE_ENTIRE_INDUSTRY_LANDSCAPE; A_NEW_ERA; CONVERGENCE_SERVICES;
-    THE_DEVELOPING_COUNTRIES; THE_FINANCIAL_SECTOR; CHINA; AN_UNPRECEDENTED_LEVEL;
-    CONVERGENCE; FINANCE; TECHNOLOGY; THE_LENS; ACTOR_NETWORK_THEORY; ANT;
-    A_MULTI_LEVEL_ANALYSIS; THE_HISTORICAL_DEVELOPMENT; CHINA;
-    FINANCIAL_TECHNOLOGY_INDUSTRY; THE_PROCESS; BUILDING; A_VARIETY; NETWORKS;
-    HETEROGENEOUS_ACTORS; THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY; A_STEPPING_STONE;
-    THE_INTERACTION; FINTECH; SOCIAL_AND_POLITICAL_CONTEXT;
-    DISCUSSES_POLICY_IMPLICATIONS; CHINA_FINTECH_INDUSTRY; THE_CHANGING_ROLE;
-    THE_STATE; THE_GROWTH; NATIONAL_INDUSTRY; CHINA
-
-
-    >>> # Highlighted abstract:
-    >>> #   THE_RAPID_DEVELOPMENT of INFORMATION_AND_COMMUNICATIONS_TECHNOLOGY is
-    >>> #   transforming THE_ENTIRE_INDUSTRY_LANDSCAPE , heralding A_NEW_ERA of
-    >>> #   CONVERGENCE_SERVICES . as one of THE_DEVELOPING_COUNTRIES in
-    >>> #   THE_FINANCIAL_SECTOR , CHINA is experiencing AN_UNPRECEDENTED_LEVEL of
-    >>> #   CONVERGENCE between FINANCE and TECHNOLOGY . THIS_STUDY applies THE_LENS of
-    >>> #   ACTOR_NETWORK_THEORY ( ant ) to conduct A_MULTI_LEVEL_ANALYSIS of
-    >>> #   THE_HISTORICAL_DEVELOPMENT of CHINA FINANCIAL_TECHNOLOGY ( FINTECH ) INDUSTRY .
-    >>> #   it attempts to elucidate THE_PROCESS of BUILDING and disrupting A_VARIETY of
-    >>> #   NETWORKS comprising HETEROGENEOUS_ACTORS involved in
-    >>> #   THE_NEWLY_EMERGING_CONVERGENCE_INDUSTRY . THIS_RESEARCH represents
-    >>> #   A_STEPPING_STONE in exploring THE_INTERACTION between FINTECH and its yet
-    >>> #   unfolding SOCIAL_AND_POLITICAL_CONTEXT . it also DISCUSSES_POLICY_IMPLICATIONS
-    >>> #   for CHINA_FINTECH_INDUSTRY , focusing_on THE_CHANGING_ROLE of THE_STATE in
-    >>> #   fostering THE_GROWTH of NATIONAL_INDUSTRY within and outside_of CHINA . 2015
-    >>> #   ELSEVIER_LTD .
-
-    >>> # Deletes the fields
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> field_deleter = (
-    ...     DeleteOperator()
-    ...     .where_root_directory("examples/fintech/")
-    ... )
-    >>> field_deleter.with_field("cleaned_raw_abstract").run()
-    >>> field_deleter.with_field("highlighted_raw_abstract").run()
-    >>> field_deleter.with_field("extracted_nouns_and_phrases").run()
-
-"""
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.collect import internal__collect
-from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
-
-
-class CollectOperator(
-    ParamsMixin,
+def internal__collect(
+    source,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
 ):
     """:meta private:"""
 
-    def run(self):
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+        low_memory=False,
+    )
 
-        internal__collect(
-            source=self.params.field,
-            dest=self.params.other_field,
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
-        )
+    if source not in dataframe.columns:
+        return
 
+    text_column = dataframe[source]
+    text_column = text_column.str.split()
+    text_column = text_column.map(
+        lambda y: [word for word in y if word.isupper()], na_action="ignore"
+    )
+    text_column = text_column.map(
+        lambda y: pd.NA if len(y) == 0 else y, na_action="ignore"
+    )
+    text_column = text_column.str.join("; ")
 
-#
+    dataframe[dest] = text_column
+
+    dataframe.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )

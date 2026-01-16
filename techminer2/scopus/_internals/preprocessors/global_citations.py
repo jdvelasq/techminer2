@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.scopus._internals.operators.transform import internal__transform
+from techminer2.database.operators.transform import internal__transform
 
 
 def _preprocess_global_citations(root_dir):

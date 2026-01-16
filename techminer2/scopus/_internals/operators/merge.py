@@ -5,88 +5,71 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-"""
-Merge Fields
-===============================================================================
+import pathlib
+
+import pandas as pd  # type: ignore
 
 
-Example:
-    >>> import shutil
-    >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
-    'examples/fintech/data/processed/database.csv.zip'
-
-    >>> # Creates, configure, and run the merger
-    >>> from techminer2.database.operators import MergeOperator
-    >>> merger = (
-    ...     MergeOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field(["author_keywords", "index_keywords"])
-    ...     .with_other_field("merged_keywords")
-    ...     #
-    ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
-    ... )
-    >>> merger.run()
-
-    >>> # Query the database to test the merger
-    >>> from techminer2.database.tools import Query
-    >>> query = (
-    ...     Query()
-    ...     .with_query_expression("SELECT merged_keywords FROM database LIMIT 10;")
-    ...     .where_root_directory("examples/fintech/")
-    ...     .where_database("main")
-    ...     .where_record_years_range(None, None)
-    ...     .where_record_citations_range(None, None)
-    ... )
-    >>> df = query.run()
-    >>> df
-                                         merged_keywords
-    0  ELABORATION_LIKELIHOOD_MODEL; FINTECH; K_PAY; ...
-    1  ACTOR_NETWORK_THEORY; CHINESE_TELECOM; CONVERG...
-    2  FINANCIAL_INCLUSION; FINANCIAL_SCENARIZATION; ...
-    3                 BANKING_INNOVATIONS; FINTECH; RISK
-    4  BEHAVIOURAL_ECONOMICS; DIGITAL_TECHNOLOGIES; E...
-    5  DATA_MINING; DATA_PRIVACY; FINANCE; FINANCIAL_...
-    6  CONCEPTUAL_FRAMEWORKS; CONTENT_ANALYSIS; DIGIT...
-    7  CASE_STUDIES; COMMERCE; DIGITAL_TECHNOLOGIES; ...
-    8  DIGITIZATION; FINANCIAL_SERVICES_INDUSTRIES; F...
-    9  DIGITAL_FINANCE; E_FINANCE; FINTECH; FUTURE_RE...
-
-
-    >>> # Deletes the fields
-    >>> from techminer2.database.operators import DeleteOperator
-    >>> field_deleter = (
-    ...     DeleteOperator()
-    ...     .with_field("merged_keywords")
-    ...     .where_root_directory("examples/fintech/")
-    ... )
-    >>> field_deleter.run()
-
-
-"""
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.operators.merge import internal__merge
-from techminer2.database._internals.protected_fields import PROTECTED_FIELDS
-
-
-class MergeOperator(
-    ParamsMixin,
+def internal__merge(
+    source,
+    dest,
+    #
+    # DATABASE PARAMS:
+    root_dir,
 ):
     """:meta private:"""
 
-    def run(self):
+    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+    data_frame = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+        low_memory=False,
+    )
 
-        internal__merge(
-            source=self.params.field,
-            dest=self.params.other_field,
-            #
-            # DATABASE PARAMS:
-            root_dir=self.params.root_directory,
-        )
+    #
+    data_frame[dest] = [[] for _ in range(len(data_frame))]
+    for index, row in data_frame.iterrows():
+        for field in source:
+            if field in data_frame.columns:
+                if not pd.isna(row[field]):
+                    data_frame.at[index, dest].extend(
+                        [x.strip() for x in row[field].split("; ") if x.strip() != ""]
+                    )
 
+    data_frame[dest] = data_frame[dest].map(lambda x: [z for z in x if z != "nan"])
+    data_frame[dest] = data_frame[dest].map(
+        lambda x: sorted(set(x)), na_action="ignore"
+    )
+    data_frame[dest] = data_frame[dest].map("; ".join, na_action="ignore")
+    data_frame[dest] = data_frame[dest].map(lambda x: x if x != "" else pd.NA)
 
-#
+    #
+
+    ## new_field = None
+    ## for field in source:
+    ##     if field in data_frame.columns:
+    ##         if new_field is None:
+    ##             new_field = data_frame[field].astype(str).str.split("; ")
+    ##         else:
+    ##             new_field = new_field + data_frame[field].astype(str).str.split("; ")
+
+    #
+    # Remove duplicates and sort
+    ## new_field = new_field.map(lambda x: [z for z in x if z != "nan"])
+    ## new_field = new_field.map(lambda x: sorted(set(x)), na_action="ignore")
+    ## new_field = new_field.map("; ".join, na_action="ignore")
+    ## new_field = new_field.map(lambda x: x if x != "" else pd.NA)
+
+    #
+    # Create the new field
+    ## dataframe[dest] = new_field
+
+    data_frame.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )
