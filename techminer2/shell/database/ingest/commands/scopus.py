@@ -1,6 +1,6 @@
-from techminer2.database.ingest import IngestScopus
+from techminer2.scopus import Importer
 
 
 def execute_scopus_command():
 
-    IngestScopus(root_directory="./").run()
+    Importer(root_directory="./").run()
