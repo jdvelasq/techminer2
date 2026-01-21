@@ -139,7 +139,7 @@ from techminer2._internals.mixins import ParamsMixin, SortAxesMixin
 from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.performance.data_frame import DataFrame as PerformanceDataFrame
+from techminer2.visualization.data_frame import DataFrame as PerformanceDataFrame
 
 
 class DataFrame(

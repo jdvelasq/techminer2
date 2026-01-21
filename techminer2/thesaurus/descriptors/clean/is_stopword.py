@@ -90,9 +90,9 @@ from pandarallel import pandarallel
 
 from techminer2._internals import ParamsMixin, internal__load_template, stdout_to_stderr
 from techminer2._internals.package_data.text_processing import (
-    internal__load_text_processing_terms,
+    load_text_processing_terms,
 )
-from techminer2.performance import DataFrame as DominantDataFrame
+from techminer2.visualization import DataFrame as DominantDataFrame
 
 with stdout_to_stderr():
     pandarallel.initialize(progress_bar=True)
@@ -330,7 +330,7 @@ class IsStopword(
 
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         core_area = self.params.core_area
-        geographic_names = internal__load_text_processing_terms("geography.txt")
+        geographic_names = load_text_processing_terms("geography.txt")
 
     # -------------------------------------------------------------------------
     def internal__get_descriptors(self):

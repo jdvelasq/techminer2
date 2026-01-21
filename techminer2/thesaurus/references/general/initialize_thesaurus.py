@@ -67,7 +67,7 @@ from tqdm import tqdm
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.user_data import (
-    internal__load_all_records_from_database,  # type: ignore
+    load_all_records_from_database,  # type: ignore
 )
 from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
@@ -174,7 +174,7 @@ class InitializeThesaurus(
             sys.stderr.flush()
 
         # loads the dataframe
-        references = internal__load_all_records_from_database(self.params)
+        references = load_all_records_from_database(self.params)
         references = references[["raw_global_references"]].dropna()
         references = references.rename({"raw_global_references": "text"}, axis=1)
 

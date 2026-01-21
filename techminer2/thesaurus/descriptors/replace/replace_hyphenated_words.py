@@ -72,7 +72,7 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
-    internal__load_text_processing_terms,
+    load_text_processing_terms,
 )
 from techminer2.thesaurus._internals import ThesaurusMixin
 
@@ -115,7 +115,7 @@ class ReplaceHyphenatedWords(
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         # replace the word by this hyphenated version
-        words = internal__load_text_processing_terms("hyphenated_is_correct.txt")
+        words = load_text_processing_terms("hyphenated_is_correct.txt")
 
         patterns = []
 
@@ -210,7 +210,7 @@ class ReplaceHyphenatedWords(
     def internal__fix_when_hyphenated_form_is_incorrect(self):
 
         # replace the word by this hyphenated version
-        words = internal__load_text_processing_terms("hyphenated_is_incorrect.txt")
+        words = load_text_processing_terms("hyphenated_is_incorrect.txt")
 
         patterns = []
 

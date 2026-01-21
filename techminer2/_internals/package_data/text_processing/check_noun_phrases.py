@@ -38,7 +38,7 @@ import sys
 from textblob import Word
 from tqdm import tqdm
 
-from .load_text_processing_terms import internal__load_text_processing_terms
+from .load_text_processing_terms import load_text_processing_terms
 from .save_text_processing_terms import internal__save_text_processing_terms
 
 
@@ -76,7 +76,7 @@ def internal__check_noun_phrases(disable_tqdm=False):
     sys.stderr.write(f"Checking last word in system noun phrases\n")
     sys.stderr.flush()
 
-    noun_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
+    noun_phrases = load_text_processing_terms("known_noun_phrases.txt")
     last_words = [phrase.split("_")[-1] for phrase in noun_phrases]
     plurals = get_plural_pairs(last_words)
     singulars = get_singular_pairs(last_words)

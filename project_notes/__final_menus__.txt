@@ -1,0 +1,36 @@
+import/
+explore/
+    overview/
+    documents/
+    words/
+performance/
+    authors/
+    sources/
+    countries/
+    affiliations/
+thesaurus/
+
+prepare/
+├─ duplicates/
+├─ fields/
+├─ filters/
+├─ search/
+│  ├─ find_records.py
+│  ├─ find_similar.py
+│  ├─ concordance_contexts.py      ← Add this
+│  ├─ concordance_documents.py     ← Add this
+│  └─ word_trees.py                ← Add this (TLab feature)
+
+networks/
+    co_occurrence/
+    coupling/
+    citation/
+    collaboration/
+    ...
+topics/
+    lda/, nmf/, bertopic/, thematic_analysis/
+analyze/
+    clustering/, factorial/, matrices/, emergence/, historiograph/
+
+report/
+    charts/, maps/, text_viz/, temporal/

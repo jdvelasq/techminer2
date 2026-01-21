@@ -42,7 +42,7 @@ import pandas as pd  # type: ignore
 
 from techminer2._internals.mixins import Params, ParamsMixin
 from techminer2._internals.package_data.text_processing import (
-    internal__load_text_processing_terms,
+    load_text_processing_terms,
 )
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
@@ -185,7 +185,7 @@ class InitializeThesaurus(
     # -------------------------------------------------------------------------
     def internal__assign_names_for_known_organizations(self):
 
-        known_names = internal__load_text_processing_terms("known_organizations.txt")
+        known_names = load_text_processing_terms("known_organizations.txt")
         for name in known_names:
             # escaped_name = re.escape(name)
             escaped_name = name

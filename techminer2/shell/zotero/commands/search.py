@@ -1,7 +1,7 @@
 import os
 
 from techminer2._internals.params_mixin import Params
-from techminer2._internals.user_data import internal__load_all_records_from_database
+from techminer2._internals.user_data import load_all_records_from_database
 from techminer2.shell.colorized_input import colorized_input
 
 
@@ -49,9 +49,7 @@ def execute_search_command():
         ut_list = sorted(ut_list, key=lambda x: mapping.get(str(x), 0), reverse=True)
         print(ut_list)
 
-        records = internal__load_all_records_from_database(
-            params=Params(root_directory="./")
-        )
+        records = load_all_records_from_database(params=Params(root_directory="./"))
         records = records[records["record_no"].isin(ut_list)]
         records = records.sort_values("year", ascending=False)
         print()

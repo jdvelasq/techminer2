@@ -65,9 +65,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence_network.descriptors import (
-    NetworkPlot as ClassicalNetworkPlot,
-)
+from techminer2.co_occurrence.descriptors import NetworkPlot as ClassicalNetworkPlot
 from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
 
 

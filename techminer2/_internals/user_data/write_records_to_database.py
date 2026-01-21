@@ -22,7 +22,7 @@ from techminer2._internals.user_data.get_database_file_path import (
 )
 
 
-def internal__write_records_to_database(params, records):
+def write_records_to_database(params, records):
 
     file_path = internal__get_database_file_path(params)
 

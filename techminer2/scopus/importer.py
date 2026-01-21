@@ -1,3 +1,4 @@
+# pylint: disable=import-outside-toplevel
 """
 Importer
 ===============================================================================
@@ -18,64 +19,14 @@ import sys
 import time
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.database._internals.datatests.check_empty_terms import (
-    internal__check_empty_terms,
+
+from ..io._internals.pipeline import (
+    Step,
+    build_funding_details_steps,
+    build_other_information_steps,
+    build_scaffolding_steps,
+    build_title_abstract_keywords_steps,
 )
-from techminer2.scopus._internals.descriptors import (
-    extract_spacy_noun_phrases,
-    extract_textblob_noun_phrases,
-    tokenize_abstract,
-    tokenize_document_title,
-)
-from techminer2.scopus._internals.preparation import (
-    compress_raw_files,
-    create_database_files,
-    drop_empty_columns,
-    remove_non_english_abstracts,
-    rename_columns,
-)
-from techminer2.scopus._internals.preprocessors import (
-    _preprocess_abbr_source_title,
-    _preprocess_abstract,
-    _preprocess_acronyms,
-    _preprocess_author_keywords,
-    _preprocess_author_names,
-    _preprocess_authors,
-    _preprocess_authors_id,
-    _preprocess_countries,
-    _preprocess_descriptors,
-    _preprocess_document_title,
-    _preprocess_document_type,
-    _preprocess_doi,
-    _preprocess_eissn,
-    _preprocess_global_citations,
-    _preprocess_global_references,
-    _preprocess_index_keywords,
-    _preprocess_isbn,
-    _preprocess_issn,
-    _preprocess_local_citations,
-    _preprocess_local_references,
-    _preprocess_num_authors,
-    _preprocess_num_global_references,
-    _preprocess_organizations,
-    _preprocess_raw_abstract_nouns_and_phrases,
-    _preprocess_raw_author_keywords,
-    _preprocess_raw_descriptors,
-    _preprocess_raw_document_title_nouns_and_phrases,
-    _preprocess_raw_index_keywords,
-    _preprocess_raw_keywords,
-    _preprocess_raw_noun_and_phrases,
-    _preprocess_record_id,
-    _preprocess_record_no,
-    _preprocess_references,
-    _preprocess_source_title,
-    _preprocess_subject_areas,
-)
-from techminer2.scopus._internals.report_imported_records import (
-    internal__report_imported_records,
-)
-from techminer2.scopus._internals.scaffolding import create_project_structure
-from techminer2.scopus._internals.validation import internal__check_hyphenated_form
 
 
 class Importer(
@@ -111,82 +62,103 @@ class Importer(
         sys.stderr.flush()
 
     # ------------------------------------------------------------------------
-    # Phases
+    # Pipeline definition
     # ------------------------------------------------------------------------
-    def _run_phase_1_preparation(self) -> None:
 
-        self._phase += 1
-        self._print_phase("Preparing database files and folders")
+    def _build_pipeline(self) -> dict[str, list[Step]]:
 
-        self._print_step("Creating project structure")
-        create_project_structure(self.params.root_directory)
-
-        self._print_step("Removing non-English abstracts")
-        n_removed = remove_non_english_abstracts(self.params.root_directory)
-        if n_removed > 0:
-            self._print_detail(
-                f"Removed {n_removed} records with non-English abstracts"
-            )
-
-        self._print_step("Compressing raw files")
-        n_compressed = compress_raw_files(self.params.root_directory)
-        if n_compressed > 0:
-            self._print_detail(f"Compressed {n_compressed} raw files")
-
-        self._print_step("Creating database files")
-        n_created = create_database_files(self.params.root_directory)
-        if n_created:
-            for key, value in n_created.items():
-                self._print_detail(f"Created {value} records in {key} database file")
-
-        self._print_step("Renaming columns")
-        processed = rename_columns(self.params.root_directory)
-        if processed > 0:
-            self._print_detail(f"Renamed columns in {processed} files")
-
-        self._print_step("Renaming columns")
-        dropped = drop_empty_columns(self.params.root_directory)
-
-        for file_type, cols in dropped.items():
-            if cols:
-                self._print_detail(f"{file_type}: dropped {len(cols)} empty columns")
-                for col in cols[:5]:  # Show first 5
-                    self._print_detail(f"  • {col}")
-                if len(cols) > 5:
-                    self._print_detail(f"  • ... and {len(cols)-5} more")
-
-    # ------------------------------------------------------------------------
-    def _run_phase_2_descriptors(self) -> None:
-
-        self._phase += 1
-        self._print_phase("Preparing descriptors")
-
-        self._print_step("Tokenizing document titles")
-        n_processed = tokenize_document_title(self.params.root_directory)
-        if n_processed > 0:
-            self._print_detail(f"Tokenized {n_processed} document titles")
-
-        self._print_step("Tokenizing abstracts")
-        n_processed = tokenize_abstract(self.params.root_directory)
-        if n_processed > 0:
-            self._print_detail(f"Tokenized {n_processed} abstracts")
-
-        self._print_step("Extracting TextBlob noun phrases")
-        n_processed = extract_textblob_noun_phrases(self.params.root_directory)
-        if n_processed > 0:
-            self._print_detail(
-                f"Extracted {n_processed} TextBlob noun phrases", leading_newline=True
-            )
-
-        self._print_step("Extracting SpaCy noun phrases")
-        n_processed = extract_spacy_noun_phrases(self.params.root_directory)
-        if n_processed > 0:
-            self._print_detail(
-                f"Extracted {n_processed} SpaCy noun phrases", leading_newline=True
-            )
+        return {
+            # ----------------------------------------------------------------
+            "Building project scaffold": build_scaffolding_steps(self.params),
+            "Preparing title, abstract, and keywords": build_title_abstract_keywords_steps(
+                self.params
+            ),
+            # ----------------------------------------------------------------
+            "Preparing descriptors": [
+                Step(
+                    name="Repairing strange cases in abstracts",
+                    function=repair_strange_cases,
+                    kwargs={
+                        "root_directory": self.params.root_directory,
+                        "source": "abstract",
+                        "target": "abstract",
+                    },
+                    count_message="{count} abstracts with repaired strange cases",
+                ),
+                # _preprocess_raw_abstract_nouns_and_phrases(root_directory)
+                # internal__check_empty_terms(
+                #     "raw_abstract_nouns_and_phrases", root_directory=root_directory
+                # )
+                #
+                # _preprocess_raw_document_title_nouns_and_phrases(root_directory)
+                # internal__check_empty_terms(
+                #     "raw_document_title_nouns_and_phrases", root_directory=root_directory
+                # )
+                # _preprocess_raw_noun_and_phrases(root_directory)
+                # internal__check_empty_terms(
+                #     "raw_noun_and_phrases", root_directory=root_directory
+                # )
+            ],
+            # ----------------------------------------------------------------
+            "Creating record identifiers": [],
+            # ----------------------------------------------------------------
+            # ----------------------------------------------------------------
+            "Processing funding details": build_funding_details_steps(self.params),
+            "Processing other information": build_other_information_steps(self.params),
+            # ----------------------------------------------------------------
+        }
 
     # ------------------------------------------------------------------------
+    # Pipeline execution
+    # ------------------------------------------------------------------------
+
+    def _execute_step(self, step: Step) -> None:
+
+        self._print_step(step.name)
+
+        result = step.function(self.params.root_directory, **step.kwargs)
+
+        if not step.count_message:
+            return
+
+        if isinstance(result, dict):
+            for key, value in result.items():
+                self._print_detail(f"{key}: {value}")
+        elif isinstance(result, (list, int)):
+            count = len(result) if isinstance(result, list) else result
+            if count > 0:
+                self._print_detail(step.count_message.format(count=count))
+
     def run(self) -> None:
+
+        self._print_header()
+
+        for phase_name, steps in self._build_pipeline().items():
+            self._phase += 1
+            self._print_phase(phase_name)
+            for step in steps:
+                self._execute_step(step)
+
+            #
+            # Elapsed time report
+            # end_time = time.time()
+            # elapsed_time = end_time - start_time
+            # hours, rem = divmod(elapsed_time, 3600)
+            # minutes, seconds = divmod(rem, 60)
+
+            # internal__report_imported_records(root_directory)
+
+            # sys.stderr.write(
+            #     f"INFO: Execution time : {int(hours):02}:{int(minutes):02}:{seconds:04.1f}\n\n"
+            # )
+
+            # sys.stderr.flush()
+
+    # ------------------------------------------------------------------------
+
+    # ------------------------------------------------------------------------
+    def run_(self) -> None:
+        pass
 
         # root_directory = self.params.root_directory
         #
@@ -203,14 +175,6 @@ class Importer(
         # start_time = time.time()
 
         #
-        # PHASE 1: Preparing database files and folders
-        # ---------------------------------------------------------------------------------
-        #
-        self._print_header()
-        self._run_phase_1_preparation()
-        self._run_phase_2_descriptors()
-
-        #
 
         #
         # internal__check_hyphenated_form(root_directory)
@@ -220,45 +184,10 @@ class Importer(
         # PHASE 2: Keywords & noun phrases & abstracts
         # ---------------------------------------------------------------------------------
         #
-        #
-        # _preprocess_raw_textblob_phrases(root_directory)
-        # _preprocess_raw_spacy_phrases(root_directory)
         # _preprocess_abstract(root_directory)
         # _preprocess_document_title(root_directory)
 
         #
-        # _preprocess_raw_abstract_nouns_and_phrases(root_directory)
-        # internal__check_empty_terms(
-        #     "raw_abstract_nouns_and_phrases", root_directory=root_directory
-        # )
-        #
-        # _preprocess_raw_document_title_nouns_and_phrases(root_directory)
-        # internal__check_empty_terms(
-        #     "raw_document_title_nouns_and_phrases", root_directory=root_directory
-        # )
-        # _preprocess_raw_noun_and_phrases(root_directory)
-        # internal__check_empty_terms(
-        #     "raw_noun_and_phrases", root_directory=root_directory
-        # )
-
-        # Author & index keywords
-        # _preprocess_raw_index_keywords(root_directory)
-        # _preprocess_index_keywords(root_directory)
-        # internal__check_empty_terms("index_keywords", root_directory=root_directory)
-        # internal__check_empty_terms("raw_index_keywords", root_directory=root_directory)
-
-        # _preprocess_raw_author_keywords(root_directory)
-        # internal__check_empty_terms(
-        #     "raw_author_keywords", root_directory=root_directory
-        # )
-        # _preprocess_author_keywords(root_directory)
-        # internal__check_empty_terms("author_keywords", root_directory=root_directory)
-
-        # _preprocess_raw_keywords(root_directory)
-        # internal__check_empty_terms("raw_keywords", root_directory=root_directory)
-
-        # _preprocess_raw_descriptors(root_directory)
-        # internal__check_empty_terms("raw_descriptors", root_directory=root_directory)
 
         #
         #
@@ -268,30 +197,9 @@ class Importer(
         #
 
         #
-        # _preprocess_eissn(root_directory)
-        # _preprocess_issn(root_directory)
-        # _preprocess_isbn(root_directory)
-        # _preprocess_document_type(root_directory)
-        #
-        # _preprocess_source_title(root_directory)
-        # _preprocess_abbr_source_title(root_directory)
-        # _preprocess_doi(root_directory)
-        # _preprocess_global_citations(root_directory)
-        #
-        # _preprocess_authors_id(root_directory)
-        # _preprocess_authors(root_directory)
-        # _preprocess_author_names(root_directory)
-        #
-        # _preprocess_num_authors(root_directory)
-        # _preprocess_num_global_references(root_directory)
-        #
-        # _preprocess_references(root_directory)
         #
 
-        # _preprocess_record_id(root_directory)
-        # _preprocess_record_no(root_directory)
         #
-        # _preprocess_subject_areas(root_directory)
 
         #
         #
@@ -300,10 +208,6 @@ class Importer(
         #
         #
 
-        # _preprocess_global_references(root_directory)  # ok
-        # _preprocess_local_references(root_directory)  # ok
-        # _preprocess_local_citations(root_directory)  # ok
-
         #
         #
         # PHASE 5: Thesaurus files
@@ -311,27 +215,7 @@ class Importer(
         #
         #
 
-        # _preprocess_countries(root_directory)  # ok
-        # _preprocess_organizations(root_directory)  # ok
-        # _preprocess_descriptors(root_directory)  # ok
-        # _preprocess_acronyms(root_directory)  # ok
-
         ## ------------------------------------------------------------------------------------------
-
-        #
-        # Elapsed time report
-        # end_time = time.time()
-        # elapsed_time = end_time - start_time
-        # hours, rem = divmod(elapsed_time, 3600)
-        # minutes, seconds = divmod(rem, 60)
-
-        # internal__report_imported_records(root_directory)
-
-        # sys.stderr.write(
-        #     f"INFO: Execution time : {int(hours):02}:{int(minutes):02}:{seconds:04.1f}\n\n"
-        # )
-
-        # sys.stderr.flush()
 
 
 #

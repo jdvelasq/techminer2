@@ -47,8 +47,8 @@ from colorama import Fore
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.user_data import (
-    internal__load_all_records_from_database,
-    internal__write_records_to_database,
+    load_all_records_from_database,
+    write_records_to_database,
 )
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
@@ -104,7 +104,7 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def internal__load_records(self):
-        self.records = internal__load_all_records_from_database(params=self.params)
+        self.records = load_all_records_from_database(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__copy_field(self):
@@ -152,7 +152,7 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def internal__write_records(self):
-        internal__write_records_to_database(params=self.params, records=self.records)
+        write_records_to_database(params=self.params, records=self.records)
 
     # -------------------------------------------------------------------------
     def run(self):

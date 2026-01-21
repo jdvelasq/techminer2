@@ -11,7 +11,7 @@ from importlib.resources import files
 import pandas as pd  # type: ignore
 
 
-def internal__load_subject_areas():
+def _load_subject_areas():
     """:meta private:"""
 
     data_path = files("techminer2.package_data.database.data").joinpath(

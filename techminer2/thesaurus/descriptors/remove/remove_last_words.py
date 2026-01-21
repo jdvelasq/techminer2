@@ -71,7 +71,7 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
-    internal__load_text_processing_terms,
+    load_text_processing_terms,
 )
 from techminer2.thesaurus._internals import ThesaurusMixin
 
@@ -114,8 +114,8 @@ class RemoveLastWords(
         self.data_frame["__row_selected__"] = False
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
-        words = internal__load_text_processing_terms("common_last_words.txt")
-        known_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
+        words = load_text_processing_terms("common_last_words.txt")
+        known_phrases = load_text_processing_terms("known_noun_phrases.txt")
 
         # create regular expressions
         patterns = []

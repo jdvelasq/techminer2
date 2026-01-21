@@ -129,13 +129,13 @@ from tqdm import tqdm  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
-    internal__load_text_processing_terms,
+    load_text_processing_terms,
 )
 from techminer2._internals.user_data import (
     internal__load_filtered_records_from_database,
 )
-from techminer2.performance import DataFrame
 from techminer2.thesaurus._internals import ThesaurusMixin
+from techminer2.visualization import DataFrame
 
 tqdm.pandas()
 
@@ -159,7 +159,7 @@ class CutoffFuzzyMerging(
             .where_database("main")
         ).run()
 
-        known_keywords = internal__load_text_processing_terms("known_noun_phrases.txt")
+        known_keywords = load_text_processing_terms("known_noun_phrases.txt")
 
         self.keywords = self.keywords[self.keywords.index.isin(known_keywords)]
 

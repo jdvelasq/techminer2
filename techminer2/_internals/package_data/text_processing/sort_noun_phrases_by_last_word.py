@@ -36,7 +36,7 @@ import sys
 
 from colorama import Fore, init
 
-from .load_text_processing_terms import internal__load_text_processing_terms
+from .load_text_processing_terms import load_text_processing_terms
 from .save_text_processing_terms import internal__save_text_processing_terms
 
 
@@ -46,7 +46,7 @@ def internal__sort_noun_phrases_by_last_word():
     sys.stderr.write(f"Sorting system noun phrases by last word\n")
     sys.stderr.flush()
 
-    noun_phrases = internal__load_text_processing_terms("known_noun_phrases.txt")
+    noun_phrases = load_text_processing_terms("known_noun_phrases.txt")
 
     noun_phrases.sort(key=lambda x: x[::-1])
 

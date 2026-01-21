@@ -10,7 +10,7 @@
 from importlib.resources import files
 
 
-def internal__load_text_processing_terms(file_name):
+def load_text_processing_terms(file_name):
     """:meta private:"""
 
     data_path = files(

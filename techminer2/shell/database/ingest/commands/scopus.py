@@ -1,6 +1,6 @@
-from techminer2.scopus import Importer
+from techminer2.io import Scopus
 
 
 def execute_scopus_command():
 
-    Importer(root_directory="./").run()
+    Scopus(root_directory="./").run()

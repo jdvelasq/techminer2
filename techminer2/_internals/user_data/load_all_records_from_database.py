@@ -35,7 +35,7 @@ from techminer2._internals.user_data.get_database_file_path import (
 )
 
 
-def internal__load_all_records_from_database(params):
+def load_all_records_from_database(params):
     """:meta private:"""
 
     file_path = internal__get_database_file_path(params)
