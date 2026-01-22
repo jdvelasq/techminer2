@@ -92,14 +92,14 @@ Factor Map
 import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
-from techminer2.correlation._internals.internal__correlation_map import (
-    internal__correlation_map,
-)
-from techminer2.factor_analysis.co_occurrence.cluster_centers_data_frame import (
+from techminer2.decomposition.factor_analysis.co_occurrence.cluster_centers_data_frame import (
     cluster_centers_frame,
 )
-from techminer2.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
+from techminer2.decomposition.factor_analysis.co_occurrence.cluster_to_terms_mapping import (
     cluster_to_terms_mapping,
+)
+from techminer2.metrics.correlation._internals.internal__correlation_map import (
+    internal__correlation_map,
 )
 
 

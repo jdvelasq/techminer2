@@ -70,8 +70,10 @@ Terms by Dimensions Map
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from techminer2.factor_analysis._internals.manifold_2d_map import manifold_2d_map
-from techminer2.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.decomposition.factor_analysis._internals.manifold_2d_map import (
+    manifold_2d_map,
+)
+from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
 

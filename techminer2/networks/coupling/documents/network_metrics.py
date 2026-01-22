@@ -42,7 +42,7 @@ Example:
 """
 from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.nx import internal__compute_network_metrics
-from techminer2.coupling._internals.from_documents.create_nx_graph import (
+from techminer2.networks.coupling._internals.from_documents.create_nx_graph import (
     internal__create_nx_graph,
 )
 

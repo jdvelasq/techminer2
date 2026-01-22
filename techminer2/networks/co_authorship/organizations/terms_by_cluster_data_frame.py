@@ -46,7 +46,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.terms_by_cluster_data_frame import (
+from techminer2.networks.co_occurrence.usr.terms_by_cluster_data_frame import (
     TermsByClusterDataFrame as UserTermsByClusterDataFrame,
 )
 

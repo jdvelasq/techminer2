@@ -57,9 +57,9 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from techminer2.database.search.deprecated.extract_descriptors_from_text import (
-    extract_descriptors_from_text,
-)
+# from techminer2.database.search.deprecated.extract_descriptors_from_text import (
+#     extract_descriptors_from_text,
+# )
 from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )

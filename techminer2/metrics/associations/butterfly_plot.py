@@ -56,7 +56,7 @@ Example:
 import plotly.graph_objects as go  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.associations.data_frame import DataFrame
+from techminer2.metrics.associations.data_frame import DataFrame
 
 
 class ButterflyPlot(

@@ -69,10 +69,10 @@ Terms to Cluster Mapping
 
 
 """
-from techminer2.factor_analysis._internals.terms_to_cluster_mapping import (
+from techminer2.decomposition.factor_analysis._internals.terms_to_cluster_mapping import (
     _terms_to_cluster_mapping,
 )
-from techminer2.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
 

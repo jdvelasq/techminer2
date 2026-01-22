@@ -45,7 +45,7 @@ Example:
     >>> highlighter.run()
 
     >>> # Query the database to test the cleaner
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT highlighted_raw_abstract FROM database LIMIT 10;")

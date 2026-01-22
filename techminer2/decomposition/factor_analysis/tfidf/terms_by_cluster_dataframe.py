@@ -69,7 +69,7 @@ Terms by Cluster Frame
 """
 import pandas as pd  # type: ignore
 
-from techminer2.factor_analysis.tfidf.cluster_to_terms_mapping import (
+from techminer2.decomposition.factor_analysis.tfidf.cluster_to_terms_mapping import (
     cluster_to_terms_mapping,
 )
 

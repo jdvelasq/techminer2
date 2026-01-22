@@ -70,7 +70,7 @@ Cluster to Terms Mapping
 
 
 """
-from techminer2.factor_analysis.tfidf.terms_to_cluster_mapping import (
+from techminer2.decomposition.factor_analysis.tfidf.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )
 

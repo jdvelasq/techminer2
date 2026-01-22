@@ -9,7 +9,7 @@ Summary Sheet
 ===============================================================================
 
 Example:
-    >>> from techminer2.database.tools import SummarySheet
+    >>> from techminer2.explore import SummarySheet
     >>> df = (
     ...     SummarySheet()
     ...     #

@@ -55,10 +55,10 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence_matrix import (
+from techminer2.metrics.co_occurrence_matrix import (
     MatrixDataFrame as CoOccurrenceMatrixDataFrame,
 )
-from techminer2.correlation._internals.internal__compute_corr_matrix import (
+from techminer2.metrics.correlation._internals.internal__compute_corr_matrix import (
     internal__compute_corr_matrix,
 )
 

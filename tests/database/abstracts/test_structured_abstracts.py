@@ -15,7 +15,7 @@ Example:
     N...
 
     >>> import textwrap
-    >>> from techminer2.database.tools import RecordMapping
+    >>> from techminer2.explore import RecordMapping
     >>> mapping = (
     ...     RecordMapping()
     ...     #

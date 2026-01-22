@@ -111,7 +111,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.document_clustering.term_occurrence_by_cluster import (
+from techminer2.clustering.document_clustering.term_occurrence_by_cluster import (
     TermOccurrenceByCluster,
 )
 

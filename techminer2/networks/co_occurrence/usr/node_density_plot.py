@@ -61,7 +61,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__create_network_density_plot,
 )
-from techminer2.co_occurrence._internals.create_nx_graph import (
+from techminer2.networks.co_occurrence._internals.create_nx_graph import (
     internal__create_nx_graph,
 )
 

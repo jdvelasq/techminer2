@@ -65,10 +65,10 @@ Cluster Centers Frame
 
 
 """
-from techminer2.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
+from techminer2.decomposition.factor_analysis.co_occurrence.terms_by_dimension_data_frame import (
     terms_by_dimension_frame,
 )
-from techminer2.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
+from techminer2.decomposition.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )
 

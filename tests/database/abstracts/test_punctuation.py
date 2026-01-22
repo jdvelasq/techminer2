@@ -15,7 +15,7 @@ Example:
     N...
 
 
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> df = (
     ...     Query()
     ...     #
@@ -400,7 +400,7 @@ Example:
 
 
     # >>> import textwrap
-    # >>> from techminer2.database.tools import RecordMapping
+    # >>> from techminer2.explore import RecordMapping
     # >>> mapping = (
     # ...     RecordMapping()
     # ...     #

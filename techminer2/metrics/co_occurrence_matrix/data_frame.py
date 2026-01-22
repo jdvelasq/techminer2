@@ -104,7 +104,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence_matrix.matrix_data_frame import MatrixDataFrame
+from techminer2.metrics.co_occurrence_matrix.matrix_data_frame import MatrixDataFrame
 
 
 class DataFrame(

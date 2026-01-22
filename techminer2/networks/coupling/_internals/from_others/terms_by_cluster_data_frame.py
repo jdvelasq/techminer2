@@ -40,7 +40,7 @@ from techminer2._internals.nx import (
     internal__cluster_nx_graph,
     internal__extract_communities_to_frame,
 )
-from techminer2.coupling._internals.from_others.create_nx_graph import (
+from techminer2.networks.coupling._internals.from_others.create_nx_graph import (
     internal__create_nx_graph,
 )
 

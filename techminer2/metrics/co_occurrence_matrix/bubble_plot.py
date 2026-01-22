@@ -57,7 +57,7 @@ Example:
 """
 from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.plots.internal__bubble_plot import internal__bubble_plot
-from techminer2.co_occurrence_matrix.data_frame import DataFrame
+from techminer2.metrics.co_occurrence_matrix.data_frame import DataFrame
 
 
 class BubblePlot(

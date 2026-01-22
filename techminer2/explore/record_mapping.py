@@ -45,7 +45,7 @@ Example:
     >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
     >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
     >>> #
-    >>> from techminer2.database.tools import RecordMapping
+    >>> from techminer2.explore import RecordMapping
     >>> mapping = (
     ...     RecordMapping()
     ...     #

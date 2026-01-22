@@ -88,7 +88,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.tfidf import DataFrame as TfIdfDataFrame
+from techminer2.text.tfidf import DataFrame as TfIdfDataFrame
 
 
 class TermOccurrenceByCluster(

@@ -59,7 +59,9 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.coupling._internals.from_others.network_plot import InternalNetworkPlot
+from techminer2.networks.coupling._internals.from_others.network_plot import (
+    InternalNetworkPlot,
+)
 
 
 class NetworkPlot(

@@ -41,7 +41,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.main_path._internals.compute_main_path import (
+from techminer2.networks.main_path._internals.compute_main_path import (
     internal__compute_main_path,
 )
 

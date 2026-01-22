@@ -13,7 +13,7 @@ Extend Stopwords
 
 
 Example:
-    >>> from techminer2.database.tools import ExtendStopwords
+    >>> from techminer2.io import ExtendStopwords
     >>> (
     ...     ExtendStopwords()
     ...     .with_patterns(["finance", "investment"])

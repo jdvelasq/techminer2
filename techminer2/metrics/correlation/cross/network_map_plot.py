@@ -73,10 +73,10 @@ import pandas as pd  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.correlation._internals.internal__correlation_map import (
+from techminer2.metrics.correlation._internals.internal__correlation_map import (
     internal__correlation_map,
 )
-from techminer2.correlation.cross.matrix_data_frame import MatrixDataFrame
+from techminer2.metrics.correlation.cross.matrix_data_frame import MatrixDataFrame
 
 
 class NetworkMapPlot(

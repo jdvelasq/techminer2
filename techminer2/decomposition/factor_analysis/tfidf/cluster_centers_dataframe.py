@@ -68,10 +68,10 @@ Cluster Centers Frame
 
 
 """
-from techminer2.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
-from techminer2.factor_analysis.tfidf.terms_to_cluster_mapping import (
+from techminer2.decomposition.factor_analysis.tfidf.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )
 

@@ -141,7 +141,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from techminer2.co_occurrence_matrix.matrix_data_frame import MatrixDataFrame
+from techminer2.metrics.co_occurrence_matrix.matrix_data_frame import MatrixDataFrame
 
 
 class MatrixPlot(

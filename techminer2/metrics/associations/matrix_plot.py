@@ -80,7 +80,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from techminer2.associations.data_frame import DataFrame
+from techminer2.metrics.associations.data_frame import DataFrame
 
 
 class MatrixPlot(

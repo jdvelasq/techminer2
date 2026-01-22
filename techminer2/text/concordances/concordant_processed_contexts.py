@@ -9,7 +9,7 @@ Concordant Processed Contexts
 =========================================================================================
 
 Example:
-    >>> from techminer2.concordances import ConcordantProcessedContexts
+    >>> from techminer2.text.concordances import ConcordantProcessedContexts
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:
@@ -40,7 +40,7 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from techminer2.concordances.concordant_raw_contexts import ConcordantRawContexts
+from techminer2.text.concordances.concordant_raw_contexts import ConcordantRawContexts
 
 
 class ConcordantProcessedContexts(

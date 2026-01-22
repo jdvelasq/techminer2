@@ -11,7 +11,7 @@ Extract Colons
 
 
 Example:
-    >>> from techminer2.database.tools import ExtractColons
+    >>> from techminer2.io import ExtractColons
     >>> text = ExtractColons(
     ...     pattern=None,
     ...     n_chars=20,
@@ -43,7 +43,7 @@ Example:
 """
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.concordances import ConcordantProcessedContexts
+from techminer2.text.concordances import ConcordantProcessedContexts
 
 
 class ExtractColons(

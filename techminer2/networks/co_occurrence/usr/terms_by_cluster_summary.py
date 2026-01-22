@@ -89,7 +89,7 @@ from techminer2._internals.nx import (
     internal__cluster_nx_graph,
     internal__summarize_communities,
 )
-from techminer2.co_occurrence._internals.create_nx_graph import (
+from techminer2.networks.co_occurrence._internals.create_nx_graph import (
     internal__create_nx_graph,
 )
 

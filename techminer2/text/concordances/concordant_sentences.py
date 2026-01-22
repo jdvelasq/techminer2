@@ -10,7 +10,7 @@ Concordant Sentences
 =========================================================================================
 
 Example:
-    >>> from techminer2.concordances import ConcordantSentences
+    >>> from techminer2.text.concordances import ConcordantSentences
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:

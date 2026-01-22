@@ -19,7 +19,7 @@ Example:
     >>> from techminer2.thesaurus.countries import ApplyThesaurus
     >>> ApplyThesaurus().where_root_directory("examples/fintech/").run()
 
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> result = Query(
     ...     query_expression="SELECT countries FROM database LIMIT 10;",
     ...     root_directory="examples/fintech/",

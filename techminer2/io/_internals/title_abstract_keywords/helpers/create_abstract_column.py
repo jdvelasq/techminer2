@@ -1,4 +1,4 @@
-from techminer2.io._internals.operators.copy_column import internal__copy
+from techminer2.io._internals.operators.copy_column import copy_column
 
 
 def create_abstract_column(root_directory: str) -> int:

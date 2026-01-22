@@ -46,7 +46,7 @@ Concept Grid Plot
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.concept_grid_plot import (
+from techminer2.networks.co_occurrence.usr.concept_grid_plot import (
     ConceptGridPlot as UserConceptGridPlot,
 )
 

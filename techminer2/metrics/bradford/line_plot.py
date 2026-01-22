@@ -33,7 +33,7 @@ Example:
 import plotly.express as px  # type: ignore
 
 from techminer2._internals.params_mixin import ParamsMixin
-from techminer2.bradford.zones import ZonesDataFrame
+from techminer2.metrics.bradford.zones import ZonesDataFrame
 
 
 class LinePlot(

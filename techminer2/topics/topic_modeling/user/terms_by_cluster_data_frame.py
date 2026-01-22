@@ -5,9 +5,8 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Theme to Documents Mapping
+Terms by Cluster Frame
 ===============================================================================
-
 
 Example:
     >>> from sklearn.decomposition import LatentDirichletAllocation
@@ -23,9 +22,9 @@ Example:
     ...     max_doc_update_iter=100,
     ...     random_state=0,
     ... )
-    >>> from techminer2.packages.topic_modeling.user import ThemeToDocumentsMapping
-    >>> mapping = (
-    ...     ThemeToDocumentsMapping()
+    >>> from techminer2.packages.topic_modeling.user import TermsByClusterDataFrame
+    >>> df = (
+    ...     TermsByClusterDataFrame()
     ...     #
     ...     # FIELD:
     ...     .with_field("raw_descriptors")
@@ -46,7 +45,6 @@ Example:
     ...     .using_idf_weights_smoothing(False)
     ...     .using_sublinear_tf_scaling(False)
     ...     #
-    ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/fintech/")
     ...     .where_database("main")
@@ -56,29 +54,28 @@ Example:
     ...     #
     ...     .run()
     ... )
-    >>> import pprint
-    >>> pprint.pprint(mapping)  # doctest: +SKIP
-    {0: ['Anagnostopoulos I., 2018, J ECON BUS, V100, P7',
-         'Belanche D., 2019, IND MANAGE DATA SYS, V119, P1411',
-         'Dorfleitner G., 2017, FINTECH IN GER, P1',
-         'Du W.D., 2019, J STRATEGIC INFORM SYST, V28, P50',
-         'Jagtiani J., 2018, J ECON BUS, V100, P43',
-         'Lee I., 2018, BUS HORIZ, V61, P35',
-         'Leong C., 2017, INT J INF MANAGE, V37, P92',
-         'Magnuson W., 2018, VANDERBILT LAW REV, V71, P1167'],
-     1: ['Brummer C., 2019, GEORGET LAW J, V107, P235',
-         'Das S.R., 2019, FINANC MANAGE, V48, P981',
-         'Gozman D., 2018, J MANAGE INF SYST, V35, P145',
-    ...
+    >>> df.head() # doctest: +SKIP
+    cluster                             0  ...                               9
+    term                                   ...
+    0                     FINTECH 38:6131  ...                 FINTECH 38:6131
+    1        FINANCIAL_TECHNOLOGY 11:1519  ...  THE_FINANCIAL_INDUSTRY 09:2006
+    2                  TECHNOLOGY 10:1220  ...                A_SURVEY 03:0484
+    3                       BANKS 08:1049  ...           PRACTITIONERS 05:0992
+    4                  REGULATORS 08:0974  ...               THE_FIELD 05:0834
+    <BLANKLINE>
+    [5 rows x 10 columns]
+
 
 """
+import pandas as pd  # type: ignore
+
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.topic_modeling.usr.documents_by_theme_data_frame import (
-    DocumentsByThemeDataFrame,
+from techminer2.topics.topic_modeling.user.cluster_to_terms_mapping import (
+    ClusterToTermsMapping,
 )
 
 
-class ThemeToDocumentsMapping(
+class TermsByClusterDataFrame(
     ParamsMixin,
 ):
     """:meta private:"""
@@ -86,16 +83,11 @@ class ThemeToDocumentsMapping(
     def run(self):
         """:meta private:"""
 
-        frame = DocumentsByThemeDataFrame().update(**self.params.__dict__).run()
+        mapping = ClusterToTermsMapping().update(**self.params.__dict__).run()
 
-        assigned_topics_to_documents = frame.idxmax(axis=1)
-
-        mapping = {}
-        for article, theme in zip(
-            assigned_topics_to_documents.index, assigned_topics_to_documents
-        ):
-            if theme not in mapping:
-                mapping[theme] = []
-            mapping[theme].append(article)
-
-        return mapping
+        frame = pd.DataFrame.from_dict(mapping, orient="index").T
+        frame = frame.fillna("")
+        frame = frame.sort_index(axis=1)
+        frame.columns.name = "cluster"
+        frame.index.name = "term"
+        return frame

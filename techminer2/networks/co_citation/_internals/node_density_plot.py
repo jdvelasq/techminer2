@@ -59,7 +59,9 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__create_network_density_plot,
 )
-from techminer2.co_citation._internals.create_nx_graph import internal__create_nx_graph
+from techminer2.networks.co_citation._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class NodeDensityPlot(

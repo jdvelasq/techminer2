@@ -30,7 +30,7 @@ Example:
     ... ).run()
 
     >>> # Query the database to obtain the number of NA values
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT na_field FROM database;")
@@ -58,7 +58,7 @@ Example:
     >>> fillna_operator.run()
 
     >>> # Query the database to test the operator
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT na_field FROM database;")

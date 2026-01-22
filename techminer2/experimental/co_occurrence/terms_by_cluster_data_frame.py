@@ -59,10 +59,10 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.descriptors import (
+from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
+from techminer2.networks.co_occurrence.descriptors import (
     TermsByClusterDataFrame as ClassicalTermsByClusterDataFrame,
 )
-from techminer2.experimental.co_occurrence.mixins import RecursiveClusteringMixin
 
 
 class TermsByClusterDataFrame(

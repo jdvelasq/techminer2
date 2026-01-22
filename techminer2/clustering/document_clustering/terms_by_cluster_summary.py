@@ -68,7 +68,7 @@ Example:
 import pandas as pd  # type: ignore
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.document_clustering.clusters_to_terms_mapping import (
+from techminer2.clustering.document_clustering.clusters_to_terms_mapping import (
     ClustersToTermsMapping,
 )
 

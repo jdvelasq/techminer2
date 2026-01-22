@@ -54,7 +54,7 @@ Smoke tests:
     <BLANKLINE>
 
 
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> Query(
     ...     query_expression="SELECT descriptors_cleaned FROM database LIMIT 5;",
     ...     root_directory="examples/fintech/",

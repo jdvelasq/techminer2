@@ -35,7 +35,7 @@ Example:
     ... )
 
     >>> # Query the database to test the operation
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 10;")

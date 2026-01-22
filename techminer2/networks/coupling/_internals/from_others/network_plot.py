@@ -68,7 +68,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from techminer2.coupling._internals.from_others.create_nx_graph import (
+from techminer2.networks.coupling._internals.from_others.create_nx_graph import (
     internal__create_nx_graph,
 )
 

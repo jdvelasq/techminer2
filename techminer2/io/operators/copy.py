@@ -32,7 +32,7 @@ Example:
 
 
     >>> # Query the database to test the operator
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_copy FROM database LIMIT 5;")
@@ -61,7 +61,7 @@ Example:
 """
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.io._internals.extractors.protected_fields import PROTECTED_FIELDS
-from techminer2.io._internals.operators.copy_column import internal__copy
+from techminer2.io._internals.operators.copy_column import copy_column
 
 
 class CopyOperator(

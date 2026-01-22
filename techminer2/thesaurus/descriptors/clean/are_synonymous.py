@@ -67,7 +67,7 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )
-from techminer2.emergence import DataFrame as EmergentDataFrame
+from techminer2.metrics.emergence import DataFrame as EmergentDataFrame
 from techminer2.visualization import DataFrame as DominantDataFrame
 
 # -----------------------------------------------------------------------------

@@ -84,7 +84,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.documents_by_cluster_mapping import (
+from techminer2.networks.co_occurrence.usr.documents_by_cluster_mapping import (
     DocumentsByClusterMapping as UserDocumentsByClusterMapping,
 )
 

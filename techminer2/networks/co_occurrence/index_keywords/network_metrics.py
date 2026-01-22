@@ -105,7 +105,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.network_metrics import (
+from techminer2.networks.co_occurrence.usr.network_metrics import (
     NetworkMetrics as UserNetworkMetrics,
 )
 

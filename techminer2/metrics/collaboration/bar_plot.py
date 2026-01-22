@@ -57,7 +57,7 @@ Example:
 import plotly.express as px  # type: ignore
 
 from techminer2._internals.params_mixin import ParamsMixin
-from techminer2.collaboration.data_frame import DataFrame
+from techminer2.metrics.collaboration.data_frame import DataFrame
 
 
 class BarPlot(

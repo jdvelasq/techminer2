@@ -7,21 +7,16 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.io._internals.operators.clean_raw_keywords import (
-    internal__clean_raw_keywords,
-)
+from techminer2.io._internals.operators.clean_raw_keywords import clean_raw_keywords
 
 
-def _preprocess_raw_author_keywords(root_dir):
+def preprocess_raw_author_keywords(root_directory):
     """Run importer."""
 
-    sys.stderr.write("INFO: Cleaning 'raw_author_keywords' column\n")
-    sys.stderr.flush()
-
-    internal__clean_raw_keywords(
+    clean_raw_keywords(
         source="raw_author_keywords",
-        dest="raw_author_keywords",
-        root_dir=root_dir,
+        target="raw_author_keywords",
+        root_directory=root_directory,
     )
 
 

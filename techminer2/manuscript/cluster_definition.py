@@ -64,7 +64,7 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )
-from techminer2.co_occurrence.usr import (
+from techminer2.networks.co_occurrence.usr import (
     DocumentsByClusterMapping,
     TermsByClusterSummary,
 )

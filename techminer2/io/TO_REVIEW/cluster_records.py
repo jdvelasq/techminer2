@@ -40,7 +40,7 @@ import plotly.graph_objects as go  # type: ignore
 from sklearn.manifold import MDS  # type: ignore
 from sklearn.neighbors import KernelDensity  # type: ignore
 
-from techminer2.tfidf.data_frame import DataFrame as tfidf_frame
+from techminer2.text.tfidf.data_frame import DataFrame as tfidf_frame
 
 
 def cluster_records(

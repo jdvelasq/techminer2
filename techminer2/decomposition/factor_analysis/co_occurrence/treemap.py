@@ -72,7 +72,7 @@ Treemap
 import plotly.express as px  # type: ignore
 import plotly.graph_objs as go  # type: ignore
 
-from techminer2.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
+from techminer2.decomposition.factor_analysis.co_occurrence.terms_to_cluster_mapping import (
     terms_to_cluster_mapping,
 )
 

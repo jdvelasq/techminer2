@@ -67,7 +67,7 @@ from techminer2._internals.nx import (
     internal__compute_spring_layout_positions,
     internal__plot_nx_graph,
 )
-from techminer2.main_path.network_edges_data_frame import NetworkEdgesDataFrame
+from techminer2.networks.main_path.network_edges_data_frame import NetworkEdgesDataFrame
 
 
 class NetworkPlot(

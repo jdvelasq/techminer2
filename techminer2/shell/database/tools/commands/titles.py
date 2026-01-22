@@ -1,6 +1,6 @@
 from colorama import Fore, init
 
-from techminer2.database.tools import SearchString  # type: ignore
+from techminer2.explore import SearchString  # type: ignore
 
 
 def execute_titles_command():

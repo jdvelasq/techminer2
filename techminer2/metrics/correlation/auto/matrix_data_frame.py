@@ -9,7 +9,7 @@ Data Frame
 ===============================================================================
 
 
-Example:
+Smoke Test:
     >>> from techminer2.packages.correlation.auto import MatrixDataFrame
     >>> (
     ...     MatrixDataFrame()
@@ -53,10 +53,10 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.correlation._internals.internal__compute_corr_matrix import (
+from techminer2.metrics.correlation._internals.internal__compute_corr_matrix import (
     internal__compute_corr_matrix,
 )
-from techminer2.tfidf import DataFrame as TfIdfDataFrame
+from techminer2.text.tfidf import DataFrame as TfIdfDataFrame
 
 
 class MatrixDataFrame(

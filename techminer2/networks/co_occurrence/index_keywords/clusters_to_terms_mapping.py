@@ -63,7 +63,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.clusters_to_terms_mapping import (
+from techminer2.networks.co_occurrence.usr.clusters_to_terms_mapping import (
     ClustersToTermsMapping as UserClustersToTermsMapping,
 )
 

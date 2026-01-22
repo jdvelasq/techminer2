@@ -61,7 +61,7 @@ Example:
 import sys
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.concordances import ConcordantSentences
+from techminer2.text.concordances import ConcordantSentences
 
 
 class GetContexts(

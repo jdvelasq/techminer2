@@ -64,7 +64,9 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.network_plot import NetworkPlot as UserNetworkPlot
+from techminer2.networks.co_occurrence.usr.network_plot import (
+    NetworkPlot as UserNetworkPlot,
+)
 
 
 class NetworkPlot(

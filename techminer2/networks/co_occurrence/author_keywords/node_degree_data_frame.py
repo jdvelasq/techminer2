@@ -119,7 +119,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.node_degree_data_frame import (
+from techminer2.networks.co_occurrence.usr.node_degree_data_frame import (
     NodeDegreeDataFrame as UserNodeDegreeDataFrame,
 )
 

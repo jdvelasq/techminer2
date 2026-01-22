@@ -9,7 +9,7 @@ Concordant Raw Contexts
 =========================================================================================
 
 Example:
-    >>> from techminer2.concordances import ConcordantRawContexts
+    >>> from techminer2.text.concordances import ConcordantRawContexts
 
     >>> # Create, configure, and run the finder
     >>> # order_records_by:

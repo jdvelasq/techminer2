@@ -33,7 +33,7 @@ Example:
     ... )
 
     >>> # Query the database to test the TokenizeOperator
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT tokenized_raw_abstract FROM database LIMIT 10;")

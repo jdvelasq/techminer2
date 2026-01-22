@@ -65,7 +65,7 @@ Example:
 
 
     >>> # Query the database to test the cleaner
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT extracted_nouns_and_phrases FROM database LIMIT 10;")

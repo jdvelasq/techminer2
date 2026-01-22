@@ -11,7 +11,7 @@ Search String
 
 
 Example:
-    >>> from techminer2.database.tools import SearchString
+    >>> from techminer2.explore import SearchString
 
     >>> (
     ...     SearchString()

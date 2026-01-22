@@ -55,7 +55,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.coupling._internals.from_others.node_density_plot import (
+from techminer2.networks.coupling._internals.from_others.node_density_plot import (
     InternalNodeDensityPlot,
 )
 

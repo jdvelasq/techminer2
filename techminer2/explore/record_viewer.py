@@ -36,7 +36,7 @@ Example:
     >>> CreateDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
-    >>> from techminer2.database.tools import RecordViewer
+    >>> from techminer2.explore import RecordViewer
     >>> # Create, configure, and run the viewer
     >>> # order_records_by:
     >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest

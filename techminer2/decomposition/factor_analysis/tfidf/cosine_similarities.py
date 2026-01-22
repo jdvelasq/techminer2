@@ -59,7 +59,7 @@ from sklearn.metrics.pairwise import (
     cosine_similarity as sklearn_cosine_similarity,  # type: ignore
 )
 
-from techminer2.factor_analysis.tfidf.terms_by_dimension_dataframe import (
+from techminer2.decomposition.factor_analysis.tfidf.terms_by_dimension_dataframe import (
     terms_by_dimension_frame,
 )
 

@@ -46,7 +46,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_citation._internals.node_degree_plot import (
+from techminer2.networks.co_citation._internals.node_degree_plot import (
     NodeDegreePlot as InternalNodeDegreePlot,
 )
 

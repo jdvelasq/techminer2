@@ -10,7 +10,7 @@
 # Check imported data
 """
 
-# >>> from techminer2.database.tools import Query
+# >>> from techminer2.io import Query
 # >>> (
 # ...     Query()
 # ...     .set_analysis_params(

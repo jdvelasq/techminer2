@@ -80,7 +80,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.coupling._internals.from_others.network_metrics import (
+from techminer2.networks.coupling._internals.from_others.network_metrics import (
     InternalNetworkMetrics,
 )
 

@@ -92,7 +92,7 @@ Smoke tests:
 """
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence_matrix import DataFrame as CoocDataFrame
+from techminer2.metrics.co_occurrence_matrix import DataFrame as CoocDataFrame
 
 
 class CombineKeys(

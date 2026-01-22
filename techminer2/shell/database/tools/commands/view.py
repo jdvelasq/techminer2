@@ -10,7 +10,7 @@
 
 from colorama import Fore
 
-from techminer2.database.tools import RecordViewer
+from techminer2.explore import RecordViewer
 
 
 def execute_view_command():

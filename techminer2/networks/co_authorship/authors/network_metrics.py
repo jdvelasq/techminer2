@@ -102,7 +102,7 @@ Piskorski T.        2     0.000000   0.105263  0.052219
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.co_occurrence.usr.network_metrics import (
+from techminer2.networks.co_occurrence.usr.network_metrics import (
     NetworkMetrics as UserNetworkMetrics,
 )
 

@@ -17,8 +17,8 @@ from openai import OpenAI
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )
-from techminer2.concordances import ConcordantSentences
 from techminer2.shell.colorized_input import colorized_input
+from techminer2.text.concordances import ConcordantSentences
 from techminer2.thesaurus.descriptors import GetValues, MergeKeys
 
 

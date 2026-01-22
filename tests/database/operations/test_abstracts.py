@@ -20,7 +20,7 @@ Example:
     >>> from techminer2.database.operators import TokenizeOperator
     >>> from techminer2.database.operators import DeleteOperator
     >>> from techminer2.database.operators import HighlightOperator
-    >>> from techminer2.database.tools import Query
+    >>> from techminer2.io import Query
 
     >>> (
     ...     TokenizeOperator()

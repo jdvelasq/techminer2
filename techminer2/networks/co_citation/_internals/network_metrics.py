@@ -43,7 +43,9 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2._internals.nx.compute_network_metrics import (
     internal__compute_network_metrics,
 )
-from techminer2.co_citation._internals.create_nx_graph import internal__create_nx_graph
+from techminer2.networks.co_citation._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class NetworkMetrics(

@@ -51,7 +51,9 @@ from techminer2._internals.nx import (
     internal__create_node_degree_plot,
     internal__create_node_degrees_data_frame,
 )
-from techminer2.co_citation._internals.create_nx_graph import internal__create_nx_graph
+from techminer2.networks.co_citation._internals.create_nx_graph import (
+    internal__create_nx_graph,
+)
 
 
 class NodeDegreePlot(
