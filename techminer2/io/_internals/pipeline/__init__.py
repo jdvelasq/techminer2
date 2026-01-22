@@ -1,10 +1,14 @@
-from .funding_details import build_funding_details_steps
-from .other_information import build_other_information_steps
-from .scaffolding import build_scaffolding_steps
+from .build_bibliographical_information_steps import (
+    build_bibliographical_information_steps,
+)
+from .build_funding_details_steps import build_funding_details_steps
+from .build_other_information_steps import build_other_information_steps
+from .build_scaffolding_steps import build_scaffolding_steps
+from .build_title_abstract_keywords_steps import build_title_abstract_keywords_steps
 from .step import Step
-from .title_abstract_keywords import build_title_abstract_keywords_steps
 
 __all__ = [
+    "build_bibliographical_information_steps",
     "build_funding_details_steps",
     "build_other_information_steps",
     "build_scaffolding_steps",

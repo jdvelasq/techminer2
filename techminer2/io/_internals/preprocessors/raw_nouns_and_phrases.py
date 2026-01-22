@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.io.operators.merge import merge_columns
+from techminer2.operations.merge import merge_columns
 
 
 def _preprocess_raw_noun_and_phrases(root_dir):

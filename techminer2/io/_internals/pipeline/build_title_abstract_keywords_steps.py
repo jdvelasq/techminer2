@@ -1,18 +1,18 @@
 # pylint: disable=import-outside-toplevel
 
 
-from ..title_abstract_keywords import (
-    normalize_acronyms,
-    normalize_raw_author_keywords,
-    normalize_raw_index_keywords,
-    normalize_raw_spacy_phrases,
-)
 from .step import Step
 
 
 def build_title_abstract_keywords_steps(params) -> list[Step]:
 
-    from ..title_abstract_keywords import normalize_raw_textblob_phrases
+    from .title_abstract_keywords import (
+        normalize_acronyms,
+        normalize_raw_author_keywords,
+        normalize_raw_index_keywords,
+        normalize_raw_spacy_phrases,
+        normalize_raw_textblob_phrases,
+    )
 
     return [
         Step(

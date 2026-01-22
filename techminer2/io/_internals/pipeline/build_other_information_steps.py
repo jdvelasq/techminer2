@@ -1,17 +1,14 @@
 # pylint: disable=import-outside-toplevel
 
 
-from techminer2.io._internals.other_information import (
-    assign_record_no,
-    calculate_num_authors,
-)
-
 from .step import Step
 
 
 def build_other_information_steps(params) -> list[Step]:
 
-    from techminer2.io._internals.other_information import (
+    from techminer2.io._internals.pipeline.other_information import (
+        assign_record_no,
+        calculate_num_authors,
         calculate_num_global_references,
     )
 

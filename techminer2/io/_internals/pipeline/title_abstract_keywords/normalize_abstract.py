@@ -22,6 +22,7 @@ from .helpers import (
     repair_lowercase_text,
     repair_measurement_units,
     repair_roman_numbers,
+    repair_strange_cases,
 )
 
 
@@ -44,6 +45,7 @@ def _normalize_text(text: str) -> str:
     text = repair_roman_numbers(text)
     text = repair_emails(text)
     text = repair_isbn_issn(text)
+    text = repair_strange_cases(text)
 
     return text
 

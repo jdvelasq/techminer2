@@ -1,27 +1,30 @@
 """Functions for preprocessing database fields."""
 
-from ..bibliographical_information.create_raw_keywords import create_raw_keywords
-from ..bibliographical_information.normalize_abbr_source_title import (
+from ..pipeline.bibliographical_information.create_raw_keywords import (
+    create_raw_keywords,
+)
+from ..pipeline.bibliographical_information.normalize_abbr_source_title import (
     normalize_abbr_source_title,
 )
-from ..bibliographical_information.normalize_document_type import (
+from ..pipeline.bibliographical_information.normalize_document_type import (
     normalize_document_type,
 )
-from ..bibliographical_information.normalize_global_citations import (
+from ..pipeline.bibliographical_information.normalize_global_citations import (
     normalize_global_citations,
 )
-from ..bibliographical_information.normalize_source_title import normalize_source_title
-from ..bibliographical_information.normalize_subject_areas import (
+from ..pipeline.bibliographical_information.normalize_source_title import (
+    normalize_source_title,
+)
+from ..pipeline.bibliographical_information.normalize_subject_areas import (
     normalize_subject_areas,
 )
-from ..citation_information.normalize_authors import normalize_authors
-from ..other_information.assign_record_no import assign_record_no
-from ..other_information.calculate_num_authors import calculate_num_authors
-from ..other_information.calculate_num_global_references import (
+from ..pipeline.citation_information.normalize_authors import normalize_authors
+from ..pipeline.other_information.assign_record_no import assign_record_no
+from ..pipeline.other_information.calculate_num_authors import calculate_num_authors
+from ..pipeline.other_information.calculate_num_global_references import (
     calculate_num_global_references,
 )
-from ..title_abstract_keywords.helpers.__preprocess_abstract import preprocess_abstract
-from ..title_abstract_keywords.normalize_raw_index_keywords import (
+from ..pipeline.title_abstract_keywords.normalize_raw_index_keywords import (
     normalize_raw_index_keywords,
 )
 from .acronyms import _preprocess_acronyms

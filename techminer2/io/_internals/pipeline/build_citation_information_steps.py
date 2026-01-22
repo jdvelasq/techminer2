@@ -1,17 +1,14 @@
 # pylint: disable=import-outside-toplevel
 
 
-from techminer2.io._internals.citation_information import (
-    normalize_doi,
-    normalize_tokenized_abstract,
-)
-
 from .step import Step
 
 
 def build_citation_information_steps(params) -> list[Step]:
 
-    from techminer2.io._internals.citation_information import (
+    from techminer2.io._internals.pipeline.citation_information import (
+        normalize_doi,
+        normalize_tokenized_abstract,
         normalize_tokenized_document_title,
     )
 

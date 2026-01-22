@@ -1,4 +1,4 @@
-from techminer2.io.operators.transform import transform_column
+from techminer2.operations.transform import transform_column
 
 
 def normalize_document_type(root_directory: str) -> int:

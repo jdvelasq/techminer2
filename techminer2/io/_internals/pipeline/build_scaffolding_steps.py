@@ -1,18 +1,18 @@
 # pylint: disable=import-outside-toplevel
-from techminer2.io._internals.scaffolding import (
-    compress_raw_files,
-    create_database_files,
-    create_project_structure,
-    drop_empty_columns,
-    remove_non_english_abstracts,
-)
 
 from .step import Step
 
 
 def build_scaffolding_steps(params) -> list[Step]:
 
-    from techminer2.io._internals.scaffolding import rename_columns
+    from techminer2.io._internals.pipeline.scaffolding import (
+        compress_raw_files,
+        create_database_files,
+        create_project_structure,
+        drop_empty_columns,
+        remove_non_english_abstracts,
+        rename_columns,
+    )
 
     return [
         Step(

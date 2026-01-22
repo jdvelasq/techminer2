@@ -1,15 +1,5 @@
 # pylint: disable=import-outside-toplevel
 
-from techminer2.io._internals.bibliographical_information import (
-    create_raw_keywords,
-    normalize_abbr_source_title,
-    normalize_document_type,
-    normalize_eissn,
-    normalize_global_citations,
-    normalize_isbn,
-    normalize_issn,
-    normalize_source_title,
-)
 
 from .step import Step
 
@@ -21,7 +11,15 @@ from .step import Step
 
 def build_bibliographical_information_steps(params) -> list[Step]:
 
-    from techminer2.io._internals.bibliographical_information import (
+    from techminer2.io._internals.pipeline.bibliographical_information import (
+        create_raw_keywords,
+        normalize_abbr_source_title,
+        normalize_document_type,
+        normalize_eissn,
+        normalize_global_citations,
+        normalize_isbn,
+        normalize_issn,
+        normalize_source_title,
         normalize_subject_areas,
     )
 
