@@ -173,6 +173,7 @@ class Params:
     #
     # S
     #
+    source_field: Optional[str] = None
     spring_layout_iterations: int = 50
     spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42
@@ -181,6 +182,7 @@ class Params:
     #
     # T
     #
+    target_field: Optional[str] = None
     term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     term_counters: bool = True
     term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
@@ -1173,6 +1175,22 @@ class ParamsMixin:
             param_name="query_expression",
         )
         self.params.query_expression = query_expression
+        return self
+
+    def with_source_field(self, field: str) -> Self:
+        field = internal__check_required_str(
+            value=field,
+            param_name="source_field",
+        )
+        self.params.source_field = field
+        return self
+
+    def with_target_field(self, field: str) -> Self:
+        field = internal__check_required_str(
+            value=field,
+            param_name="target_field",
+        )
+        self.params.target_field = field
         return self
 
     def having_terms_with_stem(self, stem: str) -> Self:

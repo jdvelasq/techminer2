@@ -1,32 +1,20 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
-Copy a Field
+Copy Column
 ===============================================================================
 
 
-Example:
+Smoke Test:
     >>> import shutil
     >>> shutil.copy("examples/fintech/database.csv.zip", "examples/fintech/data/processed/database.csv.zip")
     'examples/fintech/data/processed/database.csv.zip'
 
-    >>> # Creates, configures, and runs the copy operator
-    >>> from techminer2.database.operators import CopyOperator
+
+    >>> from techminer2.operations import CopyColumn
     >>> (
-    ...     CopyOperator()
-    ...     #
-    ...     # FIELDS:
-    ...     .with_field("author_keywords")
-    ...     .with_other_field("author_keywords_copy")
-    ...     #
-    ...     # DATABASE:
+    ...     CopyColumn()
+    ...     .with_source_field("author_keywords")
+    ...     .with_target_field("author_keywords_copy")
     ...     .where_root_directory("examples/fintech/")
-    ...     #
     ...     .run()
     ... )
 
@@ -59,26 +47,31 @@ Example:
 
 
 """
+
 from techminer2._internals.mixins import ParamsMixin
 from techminer2.io._internals.operators.copy_column import copy_column
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 
 
-class CopyOperator(
+class CopyColumn(
     ParamsMixin,
 ):
-    """:meta private:"""
 
-    def run(self):
+    def run(self) -> int:
 
-        if self.params.other_field in PROTECTED_FIELDS:
-            raise ValueError(f"Field `{self.params.other_field}` is protected")
+        if self.params.source_field == self.params.target_field:
+            raise ValueError(
+                f"Source and target fields must differ (got `{self.params.source_field}`)"
+            )
 
-        internal__copy(
-            source=self.params.field,
-            target=self.params.other_field,
-            #
-            # DATABASE PARAMS:
+        if self.params.target_field in PROTECTED_FIELDS:
+            raise ValueError(
+                f"Cannot overwrite protected field `{self.params.target_field}`"
+            )
+
+        return copy_column(
+            source=self.params.source_field,
+            target=self.params.target_field,
             root_directory=self.params.root_directory,
         )
 
