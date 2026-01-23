@@ -20,11 +20,11 @@ import time
 
 from techminer2._internals.mixins import ParamsMixin
 
-from ._internals.pipeline import (
-    Step,
-    build_funding_details_steps,
-    build_other_information_steps,
-    build_scaffolding_steps,
+from ._internals import Step
+from ._internals.funding_details.build_steps import build_funding_details_steps
+from ._internals.other_information.build_steps import build_other_information_steps
+from ._internals.scaffolding.build_steps import build_scaffolding_steps
+from ._internals.title_abstract_keywords.build_steps import (
     build_title_abstract_keywords_steps,
 )
 
@@ -73,32 +73,19 @@ class Scopus(
             "Preparing title, abstract, and keywords": build_title_abstract_keywords_steps(
                 self.params
             ),
-            # ----------------------------------------------------------------
-            "Preparing descriptors": [
-                Step(
-                    name="Repairing strange cases in abstracts",
-                    function=repair_strange_cases,
-                    kwargs={
-                        "root_directory": self.params.root_directory,
-                        "source": "abstract",
-                        "target": "abstract",
-                    },
-                    count_message="{count} abstracts with repaired strange cases",
-                ),
-                # _preprocess_raw_abstract_nouns_and_phrases(root_directory)
-                # internal__check_empty_terms(
-                #     "raw_abstract_nouns_and_phrases", root_directory=root_directory
-                # )
-                #
-                # _preprocess_raw_document_title_nouns_and_phrases(root_directory)
-                # internal__check_empty_terms(
-                #     "raw_document_title_nouns_and_phrases", root_directory=root_directory
-                # )
-                # _preprocess_raw_noun_and_phrases(root_directory)
-                # internal__check_empty_terms(
-                #     "raw_noun_and_phrases", root_directory=root_directory
-                # )
-            ],
+            # _preprocess_raw_abstract_nouns_and_phrases(root_directory)
+            # internal__check_empty_terms(
+            #     "raw_abstract_nouns_and_phrases", root_directory=root_directory
+            # )
+            #
+            # _preprocess_raw_document_title_nouns_and_phrases(root_directory)
+            # internal__check_empty_terms(
+            #     "raw_document_title_nouns_and_phrases", root_directory=root_directory
+            # )
+            # _preprocess_raw_noun_and_phrases(root_directory)
+            # internal__check_empty_terms(
+            #     "raw_noun_and_phrases", root_directory=root_directory
+            # )
             # ----------------------------------------------------------------
             "Creating record identifiers": [],
             # ----------------------------------------------------------------

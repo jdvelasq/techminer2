@@ -41,7 +41,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.match import internal__match
+from techminer2.text.extract._helpers.match import internal__match
 
 
 class MatchExtractor(

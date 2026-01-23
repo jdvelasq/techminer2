@@ -1,7 +1,7 @@
 # pylint: disable=import-outside-toplevel
 
 
-from .step import Step
+from ..step import Step
 
 # _preprocess_document_type(root_directory)
 # _preprocess_countries(root_directory)  # ok
@@ -11,7 +11,7 @@ from .step import Step
 
 def build_bibliographical_information_steps(params) -> list[Step]:
 
-    from techminer2.io._internals.pipeline.bibliographical_information import (
+    from . import (
         create_raw_keywords,
         normalize_abbr_source_title,
         normalize_document_type,

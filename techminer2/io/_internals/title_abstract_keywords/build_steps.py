@@ -1,12 +1,12 @@
 # pylint: disable=import-outside-toplevel
 
 
-from .step import Step
+from ..step import Step
 
 
 def build_title_abstract_keywords_steps(params) -> list[Step]:
 
-    from .title_abstract_keywords import (
+    from . import (
         normalize_acronyms,
         normalize_raw_author_keywords,
         normalize_raw_index_keywords,

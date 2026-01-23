@@ -2,9 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from techminer2.io._internals.pipeline.scaffolding.get_subdirectories import (
-    get_subdirectories,
-)
+from techminer2.io._internals.scaffolding.get_subdirectories import get_subdirectories
 
 
 def _compress_file(csv_file: Path) -> bool:

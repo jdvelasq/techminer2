@@ -50,7 +50,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.starts_with import internal__starts_with
+from techminer2.text.extract._helpers.starts_with import internal__starts_with
 
 
 class StartsWithExtractor(

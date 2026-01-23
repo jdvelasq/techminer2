@@ -1,4 +1,4 @@
-from techminer2.io import CollectDescriptors, ExtractCopyrightText
+# from techminer2.io import CollectDescriptors, ExtractCopyrightText
 from techminer2.shell.colorized_input import colorized_input
 
 

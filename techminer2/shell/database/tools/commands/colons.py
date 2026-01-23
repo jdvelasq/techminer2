@@ -1,6 +1,6 @@
 from colorama import Fore, init
 
-from techminer2.io import ExtractColons
+# from techminer2.io import ExtractColons
 
 
 def execute_colons_command():

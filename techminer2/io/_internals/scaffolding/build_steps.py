@@ -1,11 +1,11 @@
 # pylint: disable=import-outside-toplevel
 
-from .step import Step
+from ..step import Step
 
 
 def build_scaffolding_steps(params) -> list[Step]:
 
-    from techminer2.io._internals.pipeline.scaffolding import (
+    from . import (
         compress_raw_files,
         create_database_files,
         create_project_structure,

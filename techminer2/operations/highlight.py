@@ -86,10 +86,10 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.protected_fields import PROTECTED_FIELDS
 from techminer2.io._internals.operators.highlight_descriptors import (
     highlight_descriptors,
 )
+from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 
 
 class HighlightOperator(

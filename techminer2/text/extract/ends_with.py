@@ -49,7 +49,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.ends_with import internal__ends_with
+from techminer2.text.extract._helpers.ends_with import internal__ends_with
 
 
 class EndsWithExtractor(

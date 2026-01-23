@@ -47,7 +47,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.difference import internal__difference
+from techminer2.text.extract._helpers.difference import internal__difference
 
 
 class DifferenceExtractor(

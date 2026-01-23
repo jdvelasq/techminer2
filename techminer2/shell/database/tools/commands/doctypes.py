@@ -2,7 +2,7 @@ from pprint import pprint  # type: ignore
 
 from colorama import Fore, init
 
-from techminer2.io import Query  # type: ignore
+from techminer2.operations.query import Query  # type: ignore
 
 
 def execute_doctypes_command():

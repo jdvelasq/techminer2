@@ -46,7 +46,7 @@ that contain the pattern "FINTECH". The output includes the first 10 extracted t
 """
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.contains import internal__contains
+from techminer2.text.extract._helpers.contains import internal__contains
 
 
 class ContainsExtractor(

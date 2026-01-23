@@ -45,7 +45,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.intersection import internal__intersection
+from techminer2.text.extract._helpers.intersection import internal__intersection
 
 
 class IntersectionExtractor(

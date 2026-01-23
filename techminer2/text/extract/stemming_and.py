@@ -47,7 +47,7 @@ Example:
 
 """
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.extractors.stemming import internal__stemming_and
+from techminer2.text.extract._helpers.stemming import internal__stemming_and
 
 
 class StemmingAndExtractor(

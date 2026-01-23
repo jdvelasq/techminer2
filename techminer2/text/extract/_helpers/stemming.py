@@ -9,7 +9,7 @@ from typing import Dict, List, Optional, Tuple
 
 from textblob import TextBlob  # type: ignore
 
-from techminer2.io._internals.extractors.get_values_from_field import (
+from techminer2.text.extract._helpers.get_values_from_field import (
     internal__get_values_from_field,
 )
 
