@@ -1,7 +1,7 @@
 from techminer2.io._internals.operations import uppercase_descriptors
 
 
-def normalize_abstract(root_directory: str) -> int:
+def uppercase_abstract(root_directory: str) -> int:
 
     return uppercase_descriptors(
         source="tokenized_abstract",

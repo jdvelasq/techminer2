@@ -1,7 +1,7 @@
 from techminer2.io._internals.operations import extract_uppercase
 
 
-def normalize_raw_abstract_nouns_and_phrases(root_directory: str) -> int:
+def create_raw_abstract_noun_phrases(root_directory: str) -> int:
 
     return extract_uppercase(
         source="abstract",

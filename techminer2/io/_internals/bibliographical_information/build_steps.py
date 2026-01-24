@@ -3,7 +3,6 @@
 
 from ..step import Step
 
-# _preprocess_document_type(root_directory)
 # _preprocess_countries(root_directory)  # ok
 # _preprocess_organizations(root_directory)  # ok
 # _preprocess_descriptors(root_directory)  # ok
@@ -11,7 +10,6 @@ from ..step import Step
 
 def build_bibliographical_information_steps(params) -> list[Step]:
 
-    from .create_raw_keywords import create_raw_keywords
     from .normalize_abbr_source_title import normalize_abbr_source_title
     from .normalize_document_type import normalize_document_type
     from .normalize_eissn import normalize_eissn
@@ -71,10 +69,4 @@ def build_bibliographical_information_steps(params) -> list[Step]:
             count_message="Subject Areas normalized",
         ),
         # ----------------------------------------
-        Step(
-            name="Creating Raw Keywords",
-            function=create_raw_keywords,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Raw keywords created",
-        ),
     ]

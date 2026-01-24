@@ -6,7 +6,7 @@ import pandas as pd  # type: ignore
 KEYWORDS_MAX_LENGTH = 60
 
 
-def clean_raw_keywords(source: str, target: str, root_directory: str) -> int:
+def clean_raw_keyterms(source: str, target: str, root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 

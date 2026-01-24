@@ -1,4 +1,4 @@
-from techminer2.io._internals.operations.count_column_items import count_column_items
+from techminer2.io._internals.operations import count_column_items
 
 
 def calculate_num_authors(root_directory):
