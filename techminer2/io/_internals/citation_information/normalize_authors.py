@@ -1,6 +1,6 @@
 import pandas as pd  # type: ignore
 
-from techminer2.operations.transform import transform_column
+from techminer2.operations.transform_column import transform_column
 
 
 def _local_processing(text):

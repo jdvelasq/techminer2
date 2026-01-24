@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 
-from techminer2.operations.transform import transform_column
+from techminer2.operations.transform_column import transform_column
 
 
 def _preprocess_index_keywords(root_dir):

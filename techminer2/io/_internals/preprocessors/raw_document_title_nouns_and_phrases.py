@@ -7,9 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.io._internals.operators.collect_uppercase_words import (
-    collect_uppercase_words,
-)
+from techminer2.io._internals.operations.extract_uppercase import extract_uppercase
 
 
 def _preprocess_raw_document_title_nouns_and_phrases(root_dir):
@@ -17,7 +15,7 @@ def _preprocess_raw_document_title_nouns_and_phrases(root_dir):
     sys.stderr.write("INFO: Collecting raw nouns and phrases from document title\n")
     sys.stderr.flush()
 
-    collect_uppercase_words(
+    extract_uppercase(
         source="document_title",
         target="raw_document_title_nouns_and_phrases",
         root_directory=root_dir,

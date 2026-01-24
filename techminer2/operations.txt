@@ -1,0 +1,14 @@
+io/_internals/operations
+io/_internals/operations/uppercase_descriptors.py
+io/_internals/operations/clean_raw_keywords.py
+io/_internals/operations/rename_column.py
+io/_internals/operations/__init__.py
+io/_internals/operations/tokenize_column.py
+io/_internals/operations/copy_column.py
+io/_internals/operations/assert_no_empty_terms.py
+io/_internals/operations/merge_columns.py
+io/_internals/operations/coalesce_column.py
+io/_internals/operations/collect_uppercase_words.py
+io/_internals/operations/transform_column.py
+io/_internals/operations/count_column_items.py
+io/_internals/operations/delete_column.py

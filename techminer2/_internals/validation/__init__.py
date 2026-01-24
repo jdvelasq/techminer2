@@ -26,6 +26,7 @@ from .check_required_positive_float_range import (
 )
 from .check_required_positive_int import internal__check_required_positive_int
 from .check_required_str import internal__check_required_str
+from .check_required_str_list import internal__check_required_str_list
 from .check_tuple_of_ordered_four_floats import (
     internal__check_tuple_of_ordered_four_floats,
 )
@@ -54,4 +55,5 @@ __all__ = [
     "internal__check_required_positive_int",
     "internal__check_required_str",
     "internal__check_tuple_of_ordered_four_floats",
+    "internal__check_required_str_list",
 ]

@@ -1,4 +1,4 @@
-from techminer2.operations.merge import merge_columns
+from techminer2.operations.merge_columns import merge_columns
 
 
 def create_raw_keywords(root_directory: str) -> int:

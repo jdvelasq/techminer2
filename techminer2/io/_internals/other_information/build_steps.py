@@ -6,11 +6,9 @@ from ..step import Step
 
 def build_other_information_steps(params) -> list[Step]:
 
-    from . import (
-        assign_record_no,
-        calculate_num_authors,
-        calculate_num_global_references,
-    )
+    from .assign_record_no import assign_record_no
+    from .calculate_num_authors import calculate_num_authors
+    from .calculate_num_global_references import calculate_num_global_references
 
     return [
         Step(

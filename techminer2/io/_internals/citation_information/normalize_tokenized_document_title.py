@@ -1,4 +1,4 @@
-from techminer2.io._internals.operators.tokenize_column import tokenize_column
+from techminer2.io._internals.operations.tokenize_column import tokenize_column
 
 
 def normalize_tokenized_document_title(root_directory: str) -> int:

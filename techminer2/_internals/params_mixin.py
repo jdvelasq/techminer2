@@ -35,6 +35,7 @@ from techminer2._internals.validation import (
     internal__check_required_positive_float_range,
     internal__check_required_positive_int,
     internal__check_required_str,
+    internal__check_required_str_list,
     internal__check_tuple_of_ordered_four_floats,
 )
 
@@ -66,6 +67,7 @@ class Params:
     colored_output: bool = True
     colored_stderr: bool = True
     colormap: str = "Blues"
+    column: Optional[str] = None
     contour_opacity: float = 0.6
     core_area: Optional[str] = None
     correlation_method: str = "pearson"
@@ -174,6 +176,7 @@ class Params:
     # S
     #
     source_field: Optional[str] = None
+    source_fields: Optional[list[str]] = None
     spring_layout_iterations: int = 50
     spring_layout_k: Optional[float] = 0.1
     spring_layout_seed: int = 42
@@ -1121,6 +1124,14 @@ class ParamsMixin:
         self.params.pattern = pattern
         return self
 
+    def with_column(self, column: str) -> Self:
+        column = internal__check_required_str(
+            value=column,
+            param_name="column",
+        )
+        self.params.column = column
+        return self
+
     def with_core_area(self, core_area: Optional[str]) -> Self:
         core_area = internal__check_optional_str(
             value=core_area,
@@ -1183,6 +1194,14 @@ class ParamsMixin:
             param_name="source_field",
         )
         self.params.source_field = field
+        return self
+
+    def with_source_fields(self, fields: list[str]) -> Self:
+        fields = internal__check_required_str_list(
+            value=fields,
+            param_name="source_fields",
+        )
+        self.params.source_fields = fields
         return self
 
     def with_target_field(self, field: str) -> Self:

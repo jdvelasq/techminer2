@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 import sys
 
-from techminer2.io._internals.operators.clean_raw_keywords import clean_raw_keywords
+from techminer2.io._internals.operations.clean_raw_keywords import clean_raw_keywords
 
 
 def preprocess_raw_author_keywords(root_directory):
