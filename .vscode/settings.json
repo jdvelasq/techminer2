@@ -46,4 +46,16 @@
     "peacock.color": "#393a3f",
     "editor.codeActions.triggerOnFocusChange": true,
     "editor.codeActionsOnSave": {},
+      "todo-tree.general.tags": ["CODE_REVIEW"],
+
+  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+  "search.exclude": {
+    "**/*.html": true,
+    "docs//**": true
+  },
+
+  "todo-tree.ripgrep.ripgrepArgs": [
+    "--glob=!**/*.html",
+    "--glob=!**/docs/_generated/**"
+  ]
 }

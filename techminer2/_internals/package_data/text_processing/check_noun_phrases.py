@@ -39,7 +39,7 @@ from textblob import Word
 from tqdm import tqdm
 
 from .load_text_processing_terms import load_text_processing_terms
-from .save_text_processing_terms import internal__save_text_processing_terms
+from .save_text_processing_terms import save_text_processing_terms
 
 
 def get_plural_pairs(last_words):
@@ -88,7 +88,7 @@ def internal__check_noun_phrases(disable_tqdm=False):
     ):
         noun_phrases = replace_pair(noun_phrases, word1, word2)
 
-    internal__save_text_processing_terms("known_noun_phrases.txt", noun_phrases)
+    save_text_processing_terms("known_noun_phrases.txt", noun_phrases)
 
     sys.stderr.write("  Checking process completed successfully\n\n")
     sys.stderr.flush()

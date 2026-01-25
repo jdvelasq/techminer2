@@ -37,7 +37,7 @@ import sys
 from colorama import Fore, init
 
 from .load_text_processing_terms import load_text_processing_terms
-from .save_text_processing_terms import internal__save_text_processing_terms
+from .save_text_processing_terms import save_text_processing_terms
 
 
 def internal__sort_noun_phrases_by_last_word():
@@ -50,7 +50,7 @@ def internal__sort_noun_phrases_by_last_word():
 
     noun_phrases.sort(key=lambda x: x[::-1])
 
-    internal__save_text_processing_terms("known_noun_phrases.txt", noun_phrases)
+    save_text_processing_terms("known_noun_phrases.txt", noun_phrases)
 
     sys.stderr.write("  Sorting process completed successfully\n\n")
     sys.stderr.flush()

@@ -9,6 +9,7 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
     from .clean_raw_author_keywords import clean_raw_author_keywords
     from .clean_raw_index_keywords import clean_raw_index_keywords
     from .create_author_keywords import create_author_keywords
+    from .create_cleaned_keywords import create_cleaned_keywords
     from .create_descriptors import create_descriptors
     from .create_index_keywords import create_index_keywords
     from .create_keywords import create_keywords
@@ -17,13 +18,13 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
     from .create_raw_document_title_noun_phrases import (
         create_raw_document_title_noun_phrases,
     )
-    from .create_raw_keywords import create_raw_keywords
     from .create_raw_noun_phrases import create_raw_noun_phrases
     from .normalize_acronyms import normalize_acronyms
     from .normalize_raw_spacy_phrases import normalize_raw_spacy_phrases
     from .normalize_raw_textblob_phrases import normalize_raw_textblob_phrases
     from .tokenize_abstract import tokenize_abstract
     from .tokenize_document_title import tokenize_document_title
+    from .update_builtin_noun_phrases import update_builtin_noun_phrases
     from .uppercase_abstract import uppercase_abstract
     from .uppercase_document_title import uppercase_document_title
 
@@ -47,10 +48,10 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
             count_message="{count} raw index keywords cleaned",
         ),
         Step(
-            name="Creating Raw Keywords",
-            function=create_raw_keywords,
+            name="Creating Cleaned Keywords",
+            function=create_cleaned_keywords,
             kwargs={"root_directory": params.root_directory},
-            count_message="Raw keywords created",
+            count_message="Cleaned keywords created",
         ),
         Step(
             name="Creating Author Keywords",
@@ -144,8 +145,10 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
             kwargs={"root_directory": params.root_directory},
             count_message="{count} descriptors created",
         ),
-        # -----
-        # -----
-        # Author & index keywords
-        # _preprocess_raw_descriptors(root_directory)
+        Step(
+            name="Updating builtin noun phrases",
+            function=update_builtin_noun_phrases,
+            kwargs={"root_directory": params.root_directory},
+            count_message="{count} new builtin noun phrases found",
+        ),
     ]

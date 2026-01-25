@@ -6,9 +6,6 @@ from pandarallel import pandarallel  # type: ignore
 
 from techminer2._internals import stdout_to_stderr
 
-with stdout_to_stderr():
-    pandarallel.initialize(progress_bar=True, verbose=2)
-
 ACRONYMS_PATTERN = re.compile(r"\((.*?)\)")
 
 
@@ -34,6 +31,7 @@ def normalize_acronyms(root_directory: str, source: str, target: str) -> int:
         return 0
 
     with stdout_to_stderr():
+        pandarallel.initialize(progress_bar=True, verbose=2)
         dataframe[target] = dataframe[source].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
 
     dataframe.to_csv(

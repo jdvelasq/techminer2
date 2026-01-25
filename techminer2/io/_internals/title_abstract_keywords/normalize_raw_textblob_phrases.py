@@ -8,9 +8,6 @@ from textblob import TextBlob  # type: ignore
 
 from techminer2._internals import stdout_to_stderr
 
-with stdout_to_stderr():
-    pandarallel.initialize(progress_bar=True, verbose=2)
-
 
 def _process_row(row: pd.Series) -> Optional[str]:
 
@@ -48,6 +45,7 @@ def normalize_raw_textblob_phrases(root_directory: str) -> int:
     )
 
     with stdout_to_stderr():
+        pandarallel.initialize(progress_bar=True, verbose=2)
         dataframe["raw_textblob_phrases"] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,

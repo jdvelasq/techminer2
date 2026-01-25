@@ -21,9 +21,13 @@ import time
 from techminer2._internals.mixins import ParamsMixin
 
 from ._internals import Step
+from ._internals.bibliographical_information.build_steps import (
+    build_bibliographical_information_steps,
+)
 from ._internals.funding_details.build_steps import build_funding_details_steps
 from ._internals.other_information.build_steps import build_other_information_steps
 from ._internals.scaffolding.build_steps import build_scaffolding_steps
+from ._internals.scopus_result import ScopusResult
 from ._internals.title_abstract_keywords.build_steps import (
     build_title_abstract_keywords_steps,
 )
@@ -69,30 +73,23 @@ class Scopus(
 
         return {
             # ----------------------------------------------------------------
-            "Building project scaffold": build_scaffolding_steps(self.params),
-            "Preparing title, abstract, and keywords": build_title_abstract_keywords_steps(
-                self.params
+            "Building project scaffold": build_scaffolding_steps(
+                self.params,
             ),
-            # _preprocess_raw_abstract_nouns_and_phrases(root_directory)
-            # internal__check_empty_terms(
-            #     "raw_abstract_nouns_and_phrases", root_directory=root_directory
-            # )
-            #
-            # _preprocess_raw_document_title_nouns_and_phrases(root_directory)
-            # internal__check_empty_terms(
-            #     "raw_document_title_nouns_and_phrases", root_directory=root_directory
-            # )
-            # _preprocess_raw_noun_and_phrases(root_directory)
-            # internal__check_empty_terms(
-            #     "raw_noun_and_phrases", root_directory=root_directory
-            # )
+            "Preparing title, abstract, and keywords": build_title_abstract_keywords_steps(
+                self.params,
+            ),
+            "Processing bibliographical information": build_bibliographical_information_steps(
+                self.params,
+            ),
+            "Processing funding details": build_funding_details_steps(
+                self.params,
+            ),
+            "Processing other information": build_other_information_steps(
+                self.params,
+            ),
             # ----------------------------------------------------------------
             "Creating record identifiers": [],
-            # ----------------------------------------------------------------
-            # ----------------------------------------------------------------
-            "Processing funding details": build_funding_details_steps(self.params),
-            "Processing other information": build_other_information_steps(self.params),
-            # ----------------------------------------------------------------
         }
 
     # ------------------------------------------------------------------------
@@ -116,7 +113,9 @@ class Scopus(
             if count > 0:
                 self._print_detail(step.count_message.format(count=count))
 
-    def run(self) -> None:
+    def run(self) -> ScopusResult:
+
+        start_time = time.time()
 
         self._print_header()
 
@@ -126,83 +125,16 @@ class Scopus(
             for step in steps:
                 self._execute_step(step)
 
-            #
-            # Elapsed time report
-            # end_time = time.time()
-            # elapsed_time = end_time - start_time
-            # hours, rem = divmod(elapsed_time, 3600)
-            # minutes, seconds = divmod(rem, 60)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        hours, rem = divmod(elapsed_time, 3600)
+        minutes, seconds = divmod(rem, 60)
+        status = f"Execution time : {int(hours):02}:{int(minutes):02}:{seconds:04.1f}"
 
-            # internal__report_imported_records(root_directory)
-
-            # sys.stderr.write(
-            #     f"INFO: Execution time : {int(hours):02}:{int(minutes):02}:{seconds:04.1f}\n\n"
-            # )
-
-            # sys.stderr.flush()
-
-    # ------------------------------------------------------------------------
-
-    # ------------------------------------------------------------------------
-    def run_(self) -> None:
-        pass
-
-        # root_directory = self.params.root_directory
-        #
-        # Preparation
-        # ---------------------------------------------------------------------------------
-        #
-
-        # Register tqdm pandas progress bar
-        # tqdm.pandas()
-
-        # Elapsed time report
-        # sys.stderr.write("\n")
-        # sys.stderr.flush()
-        # start_time = time.time()
-
-        #
-
-        #
-        # internal__check_hyphenated_form(root_directory)
-
-        #
-        #
-        # PHASE 2: Keywords & noun phrases & abstracts
-        # ---------------------------------------------------------------------------------
-        #
-        # _preprocess_abstract(root_directory)
-        # _preprocess_document_title(root_directory)
-
-        #
-
-        #
-        #
-        # PHASE 3: Process each column in isolation
-        # ---------------------------------------------------------------------------------
-        #
-        #
-
-        #
-        #
-
-        #
-
-        #
-        #
-        # PHASE 4: References
-        # ---------------------------------------------------------------------------------
-        #
-        #
-
-        #
-        #
-        # PHASE 5: Thesaurus files
-        # ---------------------------------------------------------------------------------
-        #
-        #
-
-        ## ------------------------------------------------------------------------------------------
-
-
-#
+        return ScopusResult(
+            colored_output=self.params.colored_output,
+            file_path=str(self.params.root_directory),
+            msg="Data imported successfully.",
+            success=True,
+            status=status,
+        )

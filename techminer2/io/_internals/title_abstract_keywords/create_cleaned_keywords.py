@@ -1,7 +1,7 @@
 from techminer2.io._internals.operations import merge_columns
 
 
-def create_raw_keywords(root_directory: str) -> int:
+def create_cleaned_keywords(root_directory: str) -> int:
 
     return merge_columns(
         sources=[
