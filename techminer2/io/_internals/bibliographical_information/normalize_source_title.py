@@ -1,7 +1,7 @@
-from techminer2.operations.transform_column import transform_column
+from techminer2.io._internals.operations import transform_column
 
 
-def _local_processing_func(text):
+def _normalize(text):
     #
     #              DYNA (Colombia)
     # Sustainability (Switzerland)
@@ -18,6 +18,6 @@ def normalize_source_title(root_directory: str) -> int:
     return transform_column(
         source="raw_source_title",
         target="source_title",
-        function=_local_processing_func,
+        function=_normalize,
         root_directory=root_directory,
     )

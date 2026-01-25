@@ -11,6 +11,8 @@ from ..step import Step
 def build_bibliographical_information_steps(params) -> list[Step]:
 
     from .normalize_abbr_source_title import normalize_abbr_source_title
+    from .normalize_author_names import normalize_author_names
+    from .normalize_authors_id import normalize_authors_id
     from .normalize_document_type import normalize_document_type
     from .normalize_eissn import normalize_eissn
     from .normalize_global_citations import normalize_global_citations
@@ -67,6 +69,18 @@ def build_bibliographical_information_steps(params) -> list[Step]:
             function=normalize_subject_areas,
             kwargs={"root_directory": params.root_directory},
             count_message="Subject Areas normalized",
+        ),
+        Step(
+            name="Normalizing Authors ID",
+            function=normalize_authors_id,
+            kwargs={"root_directory": params.root_directory},
+            count_message="Authors ID normalized",
+        ),
+        Step(
+            name="Normalizing Author Names",
+            function=normalize_author_names,
+            kwargs={"root_directory": params.root_directory},
+            count_message="Author names normalized",
         ),
         # ----------------------------------------
     ]

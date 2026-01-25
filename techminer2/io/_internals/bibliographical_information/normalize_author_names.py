@@ -1,19 +1,10 @@
-import pathlib
-import sys
+from pathlib import Path
 
 import pandas as pd  # type: ignore
 
 
-def _load_authors_data(root_dir):
-
-    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
-    authors_data = dataframe[["authors", "authors_id"]]
+def _load_authors_data(dataframe):
+    authors_data = dataframe[["authors", "authors_id"]].copy()
     authors_data = authors_data.dropna()
     return authors_data
 
@@ -70,17 +61,11 @@ def _build_dict_names(dataframe):
     return author_id2name
 
 
-def _repair_names(root_dir, author_id2name):
+def _normalize(dataframe: pd.DataFrame) -> pd.Series:
 
-    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
-
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
-
+    authors_data = _load_authors_data(dataframe)
+    authors_df = _generate_author_and_author_id_dataframe(authors_data)
+    author_id2name = _build_dict_names(authors_df)
     dataframe = dataframe.assign(authors=dataframe.authors_id.copy())
     dataframe["authors"] = dataframe["authors"].str.split(";")
     dataframe["authors"] = dataframe["authors"].map(
@@ -89,21 +74,28 @@ def _repair_names(root_dir, author_id2name):
     )
     dataframe["authors"] = dataframe["authors"].str.join("; ")
 
-    dataframe.to_csv(
-        database_file, sep=",", encoding="utf-8", index=False, compression="zip"
+    return dataframe["authors"].copy()
+
+
+def normalize_author_names(root_directory: str) -> int:
+
+    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+
+    dataframe = pd.read_csv(
+        database_file,
+        encoding="utf-8",
+        compression="zip",
+        low_memory=False,
     )
 
+    dataframe["authors"] = _normalize(dataframe)
 
-def _preprocess_author_names(root_dir):
-    """Disambiguate author names using Scopus Author(s) ID."""
+    dataframe.to_csv(
+        database_file,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+        compression="zip",
+    )
 
-    sys.stderr.write("INFO: Disambiguating author names\n")
-    sys.stderr.flush()
-
-    authors_data = _load_authors_data(root_dir)
-    dataframe = _generate_author_and_author_id_dataframe(authors_data)
-    author_id2name = _build_dict_names(dataframe)
-    _repair_names(root_dir, author_id2name)
-
-
-#
+    return len(dataframe["authors"].dropna())

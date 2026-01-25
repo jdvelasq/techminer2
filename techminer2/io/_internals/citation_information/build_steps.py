@@ -7,22 +7,8 @@ from ..step import Step
 def build_citation_information_steps(params) -> list[Step]:
 
     from .normalize_doi import normalize_doi
-    from .normalize_tokenized_abstract import normalize_tokenized_abstract
-    from .normalize_tokenized_document_title import normalize_tokenized_document_title
 
     return [
-        Step(
-            name="Tokenizing document titles",
-            function=normalize_tokenized_document_title,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} document titles tokenized",
-        ),
-        Step(
-            name="Tokenizing abstracts",
-            function=normalize_tokenized_abstract,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} abstracts tokenized",
-        ),
         Step(
             name="Normalizing DOI",
             function=normalize_doi,

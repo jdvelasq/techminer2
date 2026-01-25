@@ -1,4 +1,4 @@
-from techminer2.operations.transform_column import transform_column
+from techminer2.io._internals.operations import transform_column
 
 
 def normalize_global_citations(root_directory: str) -> int:
