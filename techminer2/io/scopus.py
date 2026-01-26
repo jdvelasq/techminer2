@@ -30,7 +30,7 @@ Smoke test - fluent interface:
 import sys
 import time
 from datetime import timedelta
-from typing import Any, List, Tuple
+from typing import Any
 
 from techminer2._internals.mixins import ParamsMixin
 
@@ -84,24 +84,32 @@ class Scopus(ParamsMixin):
     def _print_step(self, message: str) -> None:
         self._write(f"{self._STEP_PREFIX}{message}...\n")
 
-    def _print_detail(self, message: str, leading_newline: bool = False) -> None:
-        prefix = "\n" if leading_newline else ""
-        self._write(f"{prefix}{self._DETAIL_PREFIX}{message}\n")
+    def _print_detail(self, message: str) -> None:
+        self._write(f"{self._DETAIL_PREFIX}{message}\n")
 
     def _print_step_result(self, result: Any, count_message: str) -> None:
         if isinstance(result, dict):
             for key, value in result.items():
                 self._print_detail(f"{key}: {value}")
-        elif isinstance(result, (list, int)) and result:
-            count = len(result) if isinstance(result, list) else result
+        elif isinstance(result, list):
+            count = len(result)
             if count > 0:
                 self._print_detail(count_message.format(count=count))
+        elif isinstance(result, int):
+            if result > 0:
+                self._print_detail(count_message.format(count=result))
+
+    def _format_elapsed_time(self, elapsed: timedelta) -> str:
+        total_seconds = int(elapsed.total_seconds())
+        hours, remainder = divmod(total_seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        return f"{hours:02}:{minutes:02}:{seconds:02}"
 
     # ------------------------------------------------------------------------
     # Execution
     # ------------------------------------------------------------------------
 
-    def _pipeline(self) -> Tuple[Tuple[str, List[Step]], ...]:
+    def _pipeline(self) -> tuple[tuple[str, list[Step]], ...]:
         return (
             (
                 self._PHASE_SCAFFOLDING,
@@ -147,8 +155,9 @@ class Scopus(ParamsMixin):
             for step in steps:
                 self._execute_step(step)
 
-        elapsed = timedelta(seconds=time.monotonic() - start_time)
-        status = f"Execution time : {str(elapsed).split('.', maxsplit=1)[0]}"
+        end_time = time.monotonic()
+        elapsed = timedelta(seconds=end_time - start_time)
+        status = f"Execution time : {self._format_elapsed_time(elapsed)}"
 
         return ScopusResult(
             colored_output=self.params.colored_output,
