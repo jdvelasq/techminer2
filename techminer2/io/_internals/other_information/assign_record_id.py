@@ -60,7 +60,7 @@ def _get_page_start(dataframe):
     )
 
 
-def _preprocess_record_id(root_dir):
+def assign_record_id(root_dir):
     """:meta private:"""
 
     #

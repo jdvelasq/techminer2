@@ -1,10 +1,10 @@
 from techminer2.io._internals.operations import extract_uppercase
 
 
-def create_raw_abstract_noun_phrases(root_directory: str) -> int:
+def extract_abstract_noun_phrases_raw(root_directory: str) -> int:
 
     return extract_uppercase(
         source="abstract",
-        target="raw_abstract_nouns_and_phrases",
+        target="abstract_noun_phrases_raw",
         root_directory=root_directory,
     )

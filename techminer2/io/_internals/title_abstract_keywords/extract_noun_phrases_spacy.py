@@ -15,15 +15,15 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    if not pd.isna(row["tokenized_abstract"]):
+    if not pd.isna(row["abstract_tokenized"]):
         phrases.extend(
-            chunk.text for chunk in spacy_nlp(row["tokenized_abstract"]).noun_chunks
+            chunk.text for chunk in spacy_nlp(row["abstract_tokenized"]).noun_chunks
         )
 
-    if not pd.isna(row["tokenized_document_title"]):
+    if not pd.isna(row["document_title_tokenized"]):
         phrases.extend(
             chunk.text
-            for chunk in spacy_nlp(row["tokenized_document_title"]).noun_chunks
+            for chunk in spacy_nlp(row["document_title_tokenized"]).noun_chunks
         )
 
     if not phrases:
@@ -43,7 +43,7 @@ def _process_row(row: pd.Series) -> Optional[str]:
     return phrases_str
 
 
-def normalize_raw_spacy_phrases(root_directory: str) -> int:
+def extract_noun_phrases_spacy(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
@@ -56,7 +56,7 @@ def normalize_raw_spacy_phrases(root_directory: str) -> int:
 
     with stdout_to_stderr():
         pandarallel.initialize(progress_bar=True)
-        dataframe["raw_spacy_phrases"] = dataframe.parallel_apply(  # type: ignore
+        dataframe["noun_phrases_spacy"] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -69,7 +69,7 @@ def normalize_raw_spacy_phrases(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe["raw_spacy_phrases"].dropna()
+    phrases = dataframe["noun_phrases_spacy"].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

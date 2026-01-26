@@ -1,13 +1,13 @@
 from techminer2.io._internals.operations import merge_columns
 
 
-def create_raw_descriptors(root_directory: str) -> int:
+def compose_keywords_norm(root_directory: str) -> int:
 
     return merge_columns(
         sources=[
-            "raw_keywords",
-            "raw_noun_phrases",
+            "author_keywords_norm",
+            "index_keywords_norm",
         ],
-        target="raw_descriptors",
+        target="keywords_norm",
         root_directory=root_directory,
     )

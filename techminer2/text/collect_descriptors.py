@@ -22,15 +22,7 @@ Example:
 import sys
 
 from techminer2._internals.mixins import ParamsMixin
-from techminer2.io._internals.preprocessors import (
-    _preprocess_acronyms,
-    _preprocess_descriptors,
-    _preprocess_document_title,
-    _preprocess_raw_abstract_nouns_and_phrases,
-    _preprocess_raw_descriptors,
-    _preprocess_raw_document_title_nouns_and_phrases,
-    _preprocess_raw_noun_and_phrases,
-)
+from techminer2.io._internals.preprocessors import _preprocess_acronyms
 
 
 class CollectDescriptors(

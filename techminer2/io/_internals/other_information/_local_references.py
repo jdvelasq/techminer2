@@ -74,6 +74,3 @@ def _preprocess_local_references(root_dir):
         index=False,
         compression="zip",
     )
-
-
-#

@@ -24,6 +24,10 @@ from ._internals import Step
 from ._internals.bibliographical_information.build_steps import (
     build_bibliographical_information_steps,
 )
+from ._internals.citation_information.build_steps import (
+    build_citation_information_steps,
+)
+from ._internals.descriptors.build_steps import build_descriptors_steps
 from ._internals.funding_details.build_steps import build_funding_details_steps
 from ._internals.other_information.build_steps import build_other_information_steps
 from ._internals.scaffolding.build_steps import build_scaffolding_steps
@@ -76,10 +80,16 @@ class Scopus(
             "Building project scaffold": build_scaffolding_steps(
                 self.params,
             ),
-            "Preparing title, abstract, and keywords": build_title_abstract_keywords_steps(
+            "Processing citation information": build_citation_information_steps(
                 self.params,
             ),
             "Processing bibliographical information": build_bibliographical_information_steps(
+                self.params,
+            ),
+            "Preparing title, abstract, and keywords": build_title_abstract_keywords_steps(
+                self.params,
+            ),
+            "Processing descriptors": build_descriptors_steps(
                 self.params,
             ),
             "Processing funding details": build_funding_details_steps(

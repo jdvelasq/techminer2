@@ -13,12 +13,11 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    if not pd.isna(row["tokenized_abstract"]):
-        phrases.extend(TextBlob(row["tokenized_abstract"]).noun_phrases)
+    if not pd.isna(row["abstract_tokenized"]):
+        phrases.extend(TextBlob(row["abstract_tokenized"]).noun_phrases)
 
-    if not pd.isna(row["tokenized_document_title"]):
-        phrases.extend(TextBlob(row["tokenized_document_title"]).noun_phrases)
-
+    if not pd.isna(row["document_title_tokenized"]):
+        phrases.extend(TextBlob(row["document_title_tokenized"]).noun_phrases)
     if not phrases:
         return None
 
@@ -33,7 +32,7 @@ def _process_row(row: pd.Series) -> Optional[str]:
     return result
 
 
-def normalize_raw_textblob_phrases(root_directory: str) -> int:
+def extract_raw_textblob_phrases(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
@@ -46,7 +45,7 @@ def normalize_raw_textblob_phrases(root_directory: str) -> int:
 
     with stdout_to_stderr():
         pandarallel.initialize(progress_bar=True, verbose=2)
-        dataframe["raw_textblob_phrases"] = dataframe.parallel_apply(  # type: ignore
+        dataframe["noun_phrases_textblob"] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -59,7 +58,7 @@ def normalize_raw_textblob_phrases(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe["raw_textblob_phrases"].dropna()
+    phrases = dataframe["noun_phrases_textblob"].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

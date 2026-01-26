@@ -11,13 +11,15 @@ import sys
 from techminer2.thesaurus.organizations import ApplyThesaurus, InitializeThesaurus
 
 
-def _preprocess_organizations(root_directory):
+def normalize_organizations(root_directory: str) -> int:
 
     sys.stderr.write("INFO: Creating 'organizations' column\n")
     sys.stderr.flush()
 
     InitializeThesaurus(root_directory=root_directory).run()
     ApplyThesaurus(root_directory=root_directory).run()
+
+    return 0
 
 
 # =============================================================================

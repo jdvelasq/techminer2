@@ -16,7 +16,7 @@ def _extract_acronyms_from_text(text: str) -> str:
     return "; ".join(matches)
 
 
-def normalize_acronyms(root_directory: str, source: str, target: str) -> int:
+def extract_abstract_acronyms(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
@@ -27,12 +27,12 @@ def normalize_acronyms(root_directory: str, source: str, target: str) -> int:
         low_memory=False,
     )
 
-    if source not in dataframe.columns:
+    if "abstract_tokenized" not in dataframe.columns:
         return 0
 
     with stdout_to_stderr():
         pandarallel.initialize(progress_bar=True, verbose=2)
-        dataframe[target] = dataframe[source].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
+        dataframe["abstract_acronyms"] = dataframe["abstract_tokenized"].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
 
     dataframe.to_csv(
         database_file,
@@ -42,4 +42,4 @@ def normalize_acronyms(root_directory: str, source: str, target: str) -> int:
         compression="zip",
     )
 
-    return len(dataframe[target].dropna())
+    return len(dataframe["abstract_acronyms"].dropna())

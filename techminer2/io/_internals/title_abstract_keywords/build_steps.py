@@ -6,89 +6,47 @@ from ..step import Step
 
 def build_title_abstract_keywords_steps(params) -> list[Step]:
 
-    from .clean_raw_author_keywords import clean_raw_author_keywords
-    from .clean_raw_index_keywords import clean_raw_index_keywords
-    from .create_author_keywords import create_author_keywords
-    from .create_cleaned_keywords import create_cleaned_keywords
-    from .create_descriptors import create_descriptors
-    from .create_index_keywords import create_index_keywords
-    from .create_keywords import create_keywords
-    from .create_raw_abstract_noun_phrases import create_raw_abstract_noun_phrases
-    from .create_raw_descriptors import create_raw_descriptors
-    from .create_raw_document_title_noun_phrases import (
-        create_raw_document_title_noun_phrases,
-    )
-    from .create_raw_noun_phrases import create_raw_noun_phrases
-    from .normalize_acronyms import normalize_acronyms
-    from .normalize_raw_spacy_phrases import normalize_raw_spacy_phrases
-    from .normalize_raw_textblob_phrases import normalize_raw_textblob_phrases
+    from .compose_keywords_norm import compose_keywords_norm
+    from .compose_keywords_raw import compose_keywords_raw
+    from .extract_abstract_acronyms import extract_abstract_acronyms
+    from .extract_noun_phrases_spacy import extract_noun_phrases_spacy
+    from .extract_noun_phrases_textblob import extract_raw_textblob_phrases
+    from .normalize_author_keywords import normalize_author_keywords
+    from .normalize_index_keywords import normalize_index_keywords
     from .tokenize_abstract import tokenize_abstract
     from .tokenize_document_title import tokenize_document_title
-    from .update_builtin_noun_phrases import update_builtin_noun_phrases
-    from .uppercase_abstract import uppercase_abstract
-    from .uppercase_document_title import uppercase_document_title
 
     return [
         Step(
-            name="Normalizing acronyms",
-            function=normalize_acronyms,
+            name="Compose keywords raw",
+            function=compose_keywords_raw,
             kwargs={"root_directory": params.root_directory},
-            count_message="{count} acronyms extracted",
+            count_message="Keywords raw composed",
         ),
         Step(
-            name="Cleaning raw author keywords",
-            function=clean_raw_author_keywords,
+            name="Normalizing author keywords",
+            function=normalize_author_keywords,
             kwargs={"root_directory": params.root_directory},
-            count_message="{count} raw author keywords cleaned",
+            count_message="{count} author keywords normalized",
         ),
         Step(
-            name="Cleaning raw index keywords",
-            function=clean_raw_index_keywords,
+            name="Normalizing index keywords",
+            function=normalize_index_keywords,
             kwargs={"root_directory": params.root_directory},
-            count_message="{count} raw index keywords cleaned",
+            count_message="{count} index keywords normalized",
         ),
         Step(
-            name="Creating Cleaned Keywords",
-            function=create_cleaned_keywords,
+            name="Compose Keywords",
+            function=compose_keywords_norm,
             kwargs={"root_directory": params.root_directory},
-            count_message="Cleaned keywords created",
-        ),
-        Step(
-            name="Creating Author Keywords",
-            function=create_author_keywords,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Author keywords created",
-        ),
-        Step(
-            name="Creating Index Keywords",
-            function=create_index_keywords,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Index keywords created",
-        ),
-        Step(
-            name="Creating Keywords",
-            function=create_keywords,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Keywords created",
-        ),
-        Step(
-            name="Normalizing raw TextBlob phrases",
-            function=normalize_raw_textblob_phrases,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} TextBlob noun phrases extracted",
-        ),
-        Step(
-            name="Normalizing raw spaCy phrases",
-            function=normalize_raw_spacy_phrases,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} SpaCy noun phrases extracted",
+            count_message="{count} keywords composed",
         ),
         Step(
             name="Tokenizing abstract",
             function=tokenize_abstract,
             kwargs={
-                "source": "raw_abstract",
-                "target": "tokenized_abstract",
+                "source": "abstract_raw",
+                "target": "abstract_tokenized",
                 "root_directory": params.root_directory,
             },
             count_message="{count} abstracts tokenized",
@@ -97,58 +55,29 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
             name="Tokenizing document title",
             function=tokenize_document_title,
             kwargs={
-                "source": "raw_document_title",
-                "target": "tokenized_document_title",
+                "source": "document_title_raw",
+                "target": "document_title_tokenized",
                 "root_directory": params.root_directory,
             },
             count_message="{count} document titles tokenized",
         ),
         Step(
-            name="Uppercase abstract",
-            function=uppercase_abstract,
+            name="Extracting TextBlob noun phrases",
+            function=extract_raw_textblob_phrases,
             kwargs={"root_directory": params.root_directory},
-            count_message="{count} abstracts uppercased",
+            count_message="{count} TextBlob noun phrases extracted",
         ),
         Step(
-            name="Uppercase document title",
-            function=uppercase_document_title,
+            name="Extracting spaCy noun phrases",
+            function=extract_noun_phrases_spacy,
             kwargs={"root_directory": params.root_directory},
-            count_message="{count} document titles uppercased",
+            count_message="{count} spaCy noun phrases extracted",
         ),
+        #
         Step(
-            name="Creating raw abstract noun phrases",
-            function=create_raw_abstract_noun_phrases,
+            name="Extracting abstract acronyms",
+            function=extract_abstract_acronyms,
             kwargs={"root_directory": params.root_directory},
-            count_message="{count} raw abstract noun phrases created",
-        ),
-        Step(
-            name="Creating raw document title noun phrases",
-            function=create_raw_document_title_noun_phrases,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} raw document title noun phrases created",
-        ),
-        Step(
-            name="Creating raw noun phrases",
-            function=create_raw_noun_phrases,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} raw noun phrases created",
-        ),
-        Step(
-            name="Creating raw descriptors",
-            function=create_raw_descriptors,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} raw descriptors created",
-        ),
-        Step(
-            name="Creating descriptors",
-            function=create_descriptors,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} descriptors created",
-        ),
-        Step(
-            name="Updating builtin noun phrases",
-            function=update_builtin_noun_phrases,
-            kwargs={"root_directory": params.root_directory},
-            count_message="{count} new builtin noun phrases found",
+            count_message="{count} abstract acronyms extracted",
         ),
     ]
