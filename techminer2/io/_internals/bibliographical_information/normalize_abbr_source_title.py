@@ -1,7 +1,7 @@
 from techminer2.io._internals.operations.coalesce_column import coalesce_column
 
 
-def normalize_abbr_source_title(root_directory):
+def normalize_abbr_source_title(root_directory: str) -> int:
 
     return coalesce_column(
         source="abbr_source_title",
