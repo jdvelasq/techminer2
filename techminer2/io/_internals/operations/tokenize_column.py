@@ -289,7 +289,7 @@ def _tokenize(text: pd.Series) -> pd.Series:
 
     # Correction: Replace trailing ellipses (" ..") at the end of a sentence
     # with spaced periods (" . .").
-    text = text.str.replace(" \.\.$", " . .", regex=True)
+    text = text.str.replace(r" \.\.$", " . .", regex=True)
 
     # Correction: Add spacing between the point and the letter in " .LETTER"
     text = text.str.replace(r" \.([a-z])", r" . \1", regex=True)
