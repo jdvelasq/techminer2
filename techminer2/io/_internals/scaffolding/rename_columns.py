@@ -67,27 +67,33 @@ def rename_columns(root_directory: str) -> int:
 
         files_processed += 1
 
-        data_frame = pd.read_csv(
+        dataframe = pd.read_csv(
             file,
             encoding="utf-8",
             compression="zip",
             low_memory=False,
         )
 
-        data_frame.rename(columns=SCOPUS_2_TECHMINER_TAGS, inplace=True)
-        data_frame.columns = pd.Index(
+        dataframe.rename(columns=SCOPUS_2_TECHMINER_TAGS, inplace=True)
+        mapped_names = set(SCOPUS_2_TECHMINER_TAGS.values())
+        dataframe.columns = pd.Index(
             [
-                # Other columns names not in the standard Scopus format
-                name.lower().replace(".", "").replace(" ", "_")
-                for name in data_frame.columns
+                (
+                    name.lower().replace(".", "").replace(" ", "_")
+                    if name not in mapped_names
+                    else name
+                )
+                for name in dataframe.columns
             ]
         )
-        data_frame.to_csv(
-            file,
+        temp_file = file.with_suffix(".tmp")
+        dataframe.to_csv(
+            temp_file,
             sep=",",
             encoding="utf-8",
             index=False,
             compression="zip",
         )
+        temp_file.replace(file)
 
     return files_processed

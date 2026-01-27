@@ -7,7 +7,6 @@ from ..step import Step
 
 def build_bibliographical_information_steps(params: Params) -> list[Step]:
 
-    from .normalize_abbr_source_title import normalize_abbr_source_title
     from .normalize_affiliations import normalize_affiliations
     from .normalize_correspondence_address import normalize_correspondence_address
     from .normalize_editors import normalize_editors
@@ -17,6 +16,7 @@ def build_bibliographical_information_steps(params: Params) -> list[Step]:
     from .normalize_language import normalize_language
     from .normalize_publisher import normalize_publisher
     from .normalize_pubmed_id import normalize_pubmed_id
+    from .normalize_source_title_abbr import normalize_source_title_abbr
     from .normalize_subject_areas import normalize_subject_areas
 
     common_kwargs = {"root_directory": params.root_directory}
@@ -78,7 +78,7 @@ def build_bibliographical_information_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Normalizing abbreviated source title",
-            function=normalize_abbr_source_title,
+            function=normalize_source_title_abbr,
             kwargs=common_kwargs,
             count_message="{count} abbreviated source titles normalized",
         ),

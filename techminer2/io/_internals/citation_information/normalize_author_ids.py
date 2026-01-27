@@ -11,20 +11,19 @@ def _normalize(series: pd.Series) -> pd.Series:
     #                          [No author id available]
     #  58065524100;58065658300;57190620397;55567227600;
     #
-    series = series.map(lambda x: pd.NA if isinstance(x, str) and x == "1" else x)
-    series = series.map(
-        lambda x: (
-            pd.NA if isinstance(x, str) and x.startswith("[") and x.endswith("]") else x
-        )
-    )
-    series = series.str.replace(";$", "", regex=True)
+    series = series.astype("string")
+
+    mask = series.eq("1") | (series.str.startswith("[") & series.str.endswith("]"))
+    series = series.mask(mask.fillna(False), pd.NA)
+
+    series = series.str.replace(r";$", "", regex=True)
     return series
 
 
 def normalize_author_ids(root_directory: str) -> int:
 
     return transform_column(
-        source="raw_author_ids",
+        source="author_ids_raw",
         target="author_ids",
         function=_normalize,
         root_directory=root_directory,

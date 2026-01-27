@@ -1,19 +1,16 @@
+from functools import lru_cache
 from importlib.resources import files
 from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-_SUBJECT_AREAS_CACHE = None
 
-
+@lru_cache(maxsize=1)
 def _load_subject_areas() -> pd.DataFrame:
-    global _SUBJECT_AREAS_CACHE
-    if _SUBJECT_AREAS_CACHE is None:
-        data_path = files(
-            "techminer2.scopus._internals.bibliographical_information.data"
-        ).joinpath("subject_areas.csv")
-        _SUBJECT_AREAS_CACHE = pd.read_csv(str(data_path), encoding="utf-8")
-    return _SUBJECT_AREAS_CACHE
+    data_path = files(
+        "techminer2.scopus._internals.bibliographical_information.data"
+    ).joinpath("subject_areas.csv")
+    return pd.read_csv(str(data_path), encoding="utf-8")
 
 
 def normalize_subject_areas(
@@ -25,10 +22,14 @@ def normalize_subject_areas(
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",
         compression="zip",
+        low_memory=False,
     )
 
     if issn_column not in dataframe.columns and eissn_column not in dataframe.columns:
@@ -59,12 +60,16 @@ def normalize_subject_areas(
             dataframe[eissn_column].map(eissn_mapping)
         )
 
+    non_null_count = int(dataframe[target].notna().sum())
+
+    temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(
-        database_file,
+        temp_file,
         sep=",",
         encoding="utf-8",
         index=False,
         compression="zip",
     )
+    temp_file.replace(database_file)
 
-    return len(dataframe[target].dropna())
+    return non_null_count
