@@ -1,6 +1,6 @@
 # pylint: disable=unused-argument
 
 
-def normalize_eissn(root_directory: str) -> None:
+def normalize_eissn(root_directory: str) -> int:
 
-    pass
+    return 0

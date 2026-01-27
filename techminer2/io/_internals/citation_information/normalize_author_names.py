@@ -81,6 +81,9 @@ def normalize_author_names(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",

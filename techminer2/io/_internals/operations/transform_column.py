@@ -1,13 +1,14 @@
 from pathlib import Path
 from typing import Callable
 
-import pandas as pd  # type: ignore
+import pandas as pd
+from pandas import Series
 
 
 def transform_column(
     source: str,
     target: str,
-    function: Callable,
+    function: Callable[[Series], Series],
     root_directory: str,
 ) -> int:
 

@@ -1,6 +1,6 @@
 # pylint: disable=unused-argument
 
 
-def normalize_correspondence_address(root_directory: str) -> None:
+def normalize_correspondence_address(root_directory: str) -> int:
 
-    pass
+    return 0

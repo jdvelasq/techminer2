@@ -72,6 +72,9 @@ def assign_record_id(root_dir):
 
     database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",

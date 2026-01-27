@@ -26,7 +26,7 @@ Do not penalize:
 
 Provide all of the following:
 - A numeric score (0–100) for professional style
-- A brief justification for the score
+- No commentaries are necessary if score is 100
 - Concrete, minimal changes that would measurably improve the score: no speculative refactors, no stylistic preferences, no added comments or docstrings
 
 100/100 means that you cannot propose a concrete, minimal change that objectively improves clarity, consistency, robustness, or maintainability under the constraints above.

@@ -1,3 +1,4 @@
+from .coalesce_column import coalesce_column
 from .copy_column import copy_column
 from .count_column_items import count_column_items
 from .delete_column import delete_column
@@ -9,6 +10,7 @@ from .transform_column import transform_column
 from .uppercase_descriptors import uppercase_descriptors
 
 __all__ = [
+    "coalesce_column",
     "copy_column",
     "count_column_items",
     "delete_column",

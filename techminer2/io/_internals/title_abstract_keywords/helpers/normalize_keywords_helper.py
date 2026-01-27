@@ -112,7 +112,7 @@ def _strip_surrounding_chars(string_list: list[str]) -> list[str]:
 def _remove_possessives_and_ampersands(text: pd.Series) -> pd.Series:
     text = text.str.replace("'S ", " ", regex=False)
     text = text.str.replace("'", " ", regex=False)
-    text = text.str.replace("^\s+", "", regex=True)
+    text = text.str.replace(r"^\s+", "", regex=True)
     text = text.str.replace("&", " AND ", regex=False)
     return text
 

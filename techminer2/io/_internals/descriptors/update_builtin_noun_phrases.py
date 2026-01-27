@@ -12,6 +12,9 @@ def _load_dataframe(root_directory: str) -> pd.DataFrame:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     return pd.read_csv(
         database_file,
         encoding="utf-8",
