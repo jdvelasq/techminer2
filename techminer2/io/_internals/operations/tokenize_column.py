@@ -1,4 +1,5 @@
 # CODE_REVIEW: 2026-01-23
+
 import unicodedata
 from pathlib import Path
 
