@@ -1,14 +1,14 @@
-# pylint: disable=import-outside-toplevel
+# CODE_REVIEW: 2026-01-26
 
-
+from ...._internals.params_mixin import Params
 from ..step import Step
 
 
-def build_citation_information_steps(params) -> list[Step]:
+def build_citation_information_steps(params: Params) -> list[Step]:
 
+    from .normalize_author_ids import normalize_author_ids
     from .normalize_author_names import normalize_author_names
     from .normalize_authors import normalize_authors
-    from .normalize_authors_id import normalize_authors_id
     from .normalize_document_type import normalize_document_type
     from .normalize_doi import normalize_doi
     from .normalize_eid import normalize_eid
@@ -21,89 +21,91 @@ def build_citation_information_steps(params) -> list[Step]:
     from .normalize_volume import normalize_volume
     from .normalize_year import normalize_year
 
+    common_kwargs = {"root_directory": params.root_directory}
+
     return [
         Step(
-            name="Normalizing authors ID",
-            function=normalize_authors_id,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Authors ID normalized",
+            name="Normalizing author IDs",
+            function=normalize_author_ids,
+            kwargs=common_kwargs,
+            count_message="{count} author IDs normalized",
         ),
         Step(
             name="Normalizing authors",
             function=normalize_authors,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Authors normalized",
+            kwargs=common_kwargs,
+            count_message="{count} author records normalized",
         ),
         Step(
             name="Normalizing author names",
             function=normalize_author_names,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Author names normalized",
+            kwargs=common_kwargs,
+            count_message="{count} author names normalized",
         ),
         Step(
             name="Normalizing year",
             function=normalize_year,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Years normalized",
+            kwargs=common_kwargs,
+            count_message="{count} year records normalized",
         ),
         Step(
             name="Normalizing EID",
             function=normalize_eid,
-            kwargs={"root_directory": params.root_directory},
-            count_message="EIDs normalized",
+            kwargs=common_kwargs,
+            count_message="{count} EID records normalized",
         ),
         Step(
             name="Normalizing source title",
             function=normalize_source_title,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Source titles normalized",
+            kwargs=common_kwargs,
+            count_message="{count} source title records normalized",
         ),
         Step(
             name="Normalizing volume",
             function=normalize_volume,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Volumes normalized",
+            kwargs=common_kwargs,
+            count_message="{count} volume records normalized",
         ),
         Step(
             name="Normalizing issue",
             function=normalize_issue,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Issues normalized",
+            kwargs=common_kwargs,
+            count_message="{count} issue records normalized",
         ),
         Step(
             name="Normalizing pages",
             function=normalize_pages,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Pages normalized",
+            kwargs=common_kwargs,
+            count_message="{count} page records normalized",
         ),
         Step(
             name="Normalizing global citation count",
             function=normalize_global_citation_count,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Global citation count normalized",
+            kwargs=common_kwargs,
+            count_message="{count} global citation count records normalized",
         ),
         Step(
             name="Normalizing document type",
             function=normalize_document_type,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Document types normalized",
+            kwargs=common_kwargs,
+            count_message="{count} document type records normalized",
         ),
         Step(
             name="Normalizing publication stage",
             function=normalize_publication_stage,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Publication stages normalized",
+            kwargs=common_kwargs,
+            count_message="{count} publication stage records normalized",
         ),
         Step(
             name="Normalizing DOI",
             function=normalize_doi,
-            kwargs={"root_directory": params.root_directory},
-            count_message="DOI normalized",
+            kwargs=common_kwargs,
+            count_message="{count} DOI records normalized",
         ),
         Step(
             name="Normalizing open access",
             function=normalize_open_access,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Open access normalized",
+            kwargs=common_kwargs,
+            count_message="{count} open access records normalized",
         ),
     ]

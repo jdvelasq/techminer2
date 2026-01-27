@@ -1,14 +1,11 @@
-# pylint: disable=import-outside-toplevel
+# CODE_REVIEW: 2026-01-26
 
+from techminer2._internals.params_mixin import Params
 
 from ..step import Step
 
-# _preprocess_countries(root_directory)  # ok
-# _preprocess_organizations(root_directory)  # ok
-# _preprocess_descriptors(root_directory)  # ok
 
-
-def build_bibliographical_information_steps(params) -> list[Step]:
+def build_bibliographical_information_steps(params: Params) -> list[Step]:
 
     from .normalize_abbr_source_title import normalize_abbr_source_title
     from .normalize_affiliations import normalize_affiliations
@@ -22,71 +19,73 @@ def build_bibliographical_information_steps(params) -> list[Step]:
     from .normalize_pubmed_id import normalize_pubmed_id
     from .normalize_subject_areas import normalize_subject_areas
 
+    common_kwargs = {"root_directory": params.root_directory}
+
     return [
         Step(
             name="Normalizing affiliations",
             function=normalize_affiliations,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Affiliations normalized",
+            kwargs=common_kwargs,
+            count_message="{count} affiliations normalized",
         ),
         Step(
             name="Normalizing EISSN",
             function=normalize_eissn,
-            kwargs={"root_directory": params.root_directory},
-            count_message="EISSN normalized",
+            kwargs=common_kwargs,
+            count_message="{count} EISSN entries normalized",
         ),
         Step(
             name="Normalizing ISBN",
             function=normalize_isbn,
-            kwargs={"root_directory": params.root_directory},
-            count_message="ISBN normalized",
+            kwargs=common_kwargs,
+            count_message="{count} ISBN entries normalized",
         ),
         Step(
             name="Normalizing ISSN",
             function=normalize_issn,
-            kwargs={"root_directory": params.root_directory},
-            count_message="ISSN normalized",
+            kwargs=common_kwargs,
+            count_message="{count} ISSN entries normalized",
         ),
         Step(
             name="Normalizing PubMed ID",
             function=normalize_pubmed_id,
-            kwargs={"root_directory": params.root_directory},
-            count_message="PubMed ID normalized",
+            kwargs=common_kwargs,
+            count_message="{count} PubMed IDs normalized",
         ),
         Step(
             name="Normalizing publishers",
             function=normalize_publisher,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Publishers normalized",
+            kwargs=common_kwargs,
+            count_message="{count} publishers normalized",
         ),
         Step(
             name="Normalizing editors",
             function=normalize_editors,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Editors normalized",
+            kwargs=common_kwargs,
+            count_message="{count} editors normalized",
         ),
         Step(
             name="Normalizing correspondence address",
             function=normalize_correspondence_address,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Correspondence address normalized",
+            kwargs=common_kwargs,
+            count_message="{count} correspondence addresses normalized",
         ),
         Step(
             name="Normalizing language",
             function=normalize_language,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Language normalized",
+            kwargs=common_kwargs,
+            count_message="{count} language entries normalized",
         ),
         Step(
-            name="Normalizing Abbreviated Source Title",
+            name="Normalizing abbreviated source title",
             function=normalize_abbr_source_title,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Abbreviated Source titles normalized",
+            kwargs=common_kwargs,
+            count_message="{count} abbreviated source titles normalized",
         ),
         Step(
-            name="Normalizing Subject Areas",
+            name="Normalizing subject areas",
             function=normalize_subject_areas,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Subject Areas normalized",
+            kwargs=common_kwargs,
+            count_message="{count} subject areas normalized",
         ),
     ]

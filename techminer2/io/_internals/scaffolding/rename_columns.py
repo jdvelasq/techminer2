@@ -9,7 +9,7 @@ SCOPUS_2_TECHMINER_TAGS = {
     "Art. No.": "scopus_art_no",
     "Author full names": "author_full_names",
     "Author Keywords": "author_keywords_raw",
-    "Author(s) ID": "authors_id_raw",
+    "Author(s) ID": "author_ids_raw",
     "Authors with affiliations": "authors_with_affiliations",
     "Authors": "authors_raw",
     "Chemicals/CAS": "casregnumber",

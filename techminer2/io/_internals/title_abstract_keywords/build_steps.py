@@ -1,10 +1,10 @@
-# pylint: disable=import-outside-toplevel
+# CODE_REVIEW: 2026-01-26
 
-
+from ...._internals.params_mixin import Params
 from ..step import Step
 
 
-def build_title_abstract_keywords_steps(params) -> list[Step]:
+def build_title_abstract_keywords_steps(params: Params) -> list[Step]:
 
     from .compose_keywords_norm import compose_keywords_norm
     from .compose_keywords_raw import compose_keywords_raw
@@ -16,29 +16,31 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
     from .tokenize_abstract import tokenize_abstract
     from .tokenize_document_title import tokenize_document_title
 
+    common_kwargs = {"root_directory": params.root_directory}
+
     return [
         Step(
-            name="Compose keywords raw",
+            name="Composing raw keywords",
             function=compose_keywords_raw,
-            kwargs={"root_directory": params.root_directory},
-            count_message="Keywords raw composed",
+            kwargs=common_kwargs,
+            count_message="{count} raw keywords composed",
         ),
         Step(
             name="Normalizing author keywords",
             function=normalize_author_keywords,
-            kwargs={"root_directory": params.root_directory},
+            kwargs=common_kwargs,
             count_message="{count} author keywords normalized",
         ),
         Step(
             name="Normalizing index keywords",
             function=normalize_index_keywords,
-            kwargs={"root_directory": params.root_directory},
+            kwargs=common_kwargs,
             count_message="{count} index keywords normalized",
         ),
         Step(
-            name="Compose Keywords",
+            name="Composing keywords",
             function=compose_keywords_norm,
-            kwargs={"root_directory": params.root_directory},
+            kwargs=common_kwargs,
             count_message="{count} keywords composed",
         ),
         Step(
@@ -64,20 +66,19 @@ def build_title_abstract_keywords_steps(params) -> list[Step]:
         Step(
             name="Extracting TextBlob noun phrases",
             function=extract_raw_textblob_phrases,
-            kwargs={"root_directory": params.root_directory},
+            kwargs=common_kwargs,
             count_message="{count} TextBlob noun phrases extracted",
         ),
         Step(
             name="Extracting spaCy noun phrases",
             function=extract_noun_phrases_spacy,
-            kwargs={"root_directory": params.root_directory},
+            kwargs=common_kwargs,
             count_message="{count} spaCy noun phrases extracted",
         ),
-        #
         Step(
             name="Extracting abstract acronyms",
             function=extract_abstract_acronyms,
-            kwargs={"root_directory": params.root_directory},
+            kwargs=common_kwargs,
             count_message="{count} abstract acronyms extracted",
         ),
     ]

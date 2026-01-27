@@ -21,11 +21,11 @@ def _normalize(series: pd.Series) -> pd.Series:
     return series
 
 
-def normalize_authors_id(root_directory: str) -> int:
+def normalize_author_ids(root_directory: str) -> int:
 
     return transform_column(
-        source="raw_authors_id",
-        target="authors_id",
+        source="raw_author_ids",
+        target="author_ids",
         function=_normalize,
         root_directory=root_directory,
     )
