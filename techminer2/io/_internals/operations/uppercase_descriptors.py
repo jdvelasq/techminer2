@@ -195,6 +195,9 @@ def uppercase_descriptors(
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",
@@ -211,44 +214,16 @@ def uppercase_descriptors(
         pandarallel.initialize(progress_bar=True)
         dataframe[target] = dataframe[source].parallel_apply(_normalize)
 
+    non_null_count = int(dataframe[target].notna().sum())
+
+    temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(
-        database_file,
+        temp_file,
         sep=",",
         encoding="utf-8",
         index=False,
         compression="zip",
     )
+    temp_file.replace(database_file)
 
-    return len(dataframe[target].dropna())
-
-
-# ------------------------------------------------------------------------------
-# def _report_undetected_keywords(frequent_keywords, all_phrases, root_directory):
-
-#     undetected_keywords = [
-#         word for word in frequent_keywords if word not in all_phrases
-#     ]
-#     undetected_keywords = sorted(set(undetected_keywords))
-#     undetected_keywords = [
-#         word for word in undetected_keywords if len(word.split()) > 1
-#     ]
-#     undetected_keywords = [
-#         word.replace(" ", "_").upper() for word in undetected_keywords
-#     ]
-
-#     undetected_keywords = [word for word in undetected_keywords if len(word) < 100]
-#     undetected_keywords = [term for term in undetected_keywords if "__" not in term]
-
-#     for symbol in "!\"#$%&'()*+,-./:;<=>?@[\]^`{|}~":
-#         undetected_keywords = [
-#             term for term in undetected_keywords if symbol not in term
-#         ]
-
-#     file_path = Path(root_directory) / "data/my_keywords/undetected_keywords.txt"
-
-#     with open(file_path, "w", encoding="utf-8") as file:
-#         for keyword in sorted(undetected_keywords):
-#             file.write(f"{keyword}\n")
-
-
-# ------------------------------------------------------------------------------
+    return non_null_count

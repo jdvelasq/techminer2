@@ -13,6 +13,9 @@ def transform_column(
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",
@@ -25,12 +28,16 @@ def transform_column(
 
     dataframe[target] = function(dataframe[source])
 
+    non_null_count = int(dataframe[target].notna().sum())
+
+    temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(
-        database_file,
+        temp_file,
         sep=",",
         encoding="utf-8",
         index=False,
         compression="zip",
     )
+    temp_file.replace(database_file)
 
-    return len(dataframe[target].dropna())
+    return non_null_count

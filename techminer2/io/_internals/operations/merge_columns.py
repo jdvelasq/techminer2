@@ -7,6 +7,9 @@ def merge_columns(sources: list[str], target: str, root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
+    if not database_file.exists():
+        raise AssertionError(f"{database_file.name} not found")
+
     dataframe = pd.read_csv(
         database_file,
         encoding="utf-8",
@@ -24,17 +27,22 @@ def merge_columns(sources: list[str], target: str, root_directory: str) -> int:
         items = dataframe[source].astype(str).str.split("; ")
         all_items = items if all_items is None else all_items + items
 
+    assert all_items is not None
     all_items = all_items.map(lambda x: [item for item in x if item and item != "nan"])
     all_items = all_items.map(lambda x: sorted(set(x)) if x else [])
 
     dataframe[target] = all_items.map(lambda x: "; ".join(x) if x else pd.NA)
 
+    non_null_count = int(dataframe[target].notna().sum())
+
+    temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(
-        database_file,
+        temp_file,
         sep=",",
         encoding="utf-8",
         index=False,
         compression="zip",
     )
+    temp_file.replace(database_file)
 
-    return len(dataframe[target].dropna())
+    return non_null_count
