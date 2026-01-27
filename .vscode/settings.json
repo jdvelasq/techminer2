@@ -57,5 +57,6 @@
   "todo-tree.ripgrep.ripgrepArgs": [
     "--glob=!**/*.html",
     "--glob=!**/docs/_generated/**"
-  ],
+],
+"python.languageServer": "None",
 }
