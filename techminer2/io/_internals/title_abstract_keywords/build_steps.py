@@ -46,39 +46,31 @@ def build_title_abstract_keywords_steps(params: Params) -> list[Step]:
         Step(
             name="Tokenizing abstract",
             function=tokenize_abstract,
-            kwargs={
-                "source": "abstract_raw",
-                "target": "abstract_tokenized",
-                "root_directory": params.root_directory,
-            },
+            kwargs=common_kwargs,
             count_message="{count} abstracts tokenized",
         ),
         Step(
             name="Tokenizing document title",
             function=tokenize_document_title,
-            kwargs={
-                "source": "document_title_raw",
-                "target": "document_title_tokenized",
-                "root_directory": params.root_directory,
-            },
+            kwargs=common_kwargs,
             count_message="{count} document titles tokenized",
         ),
         Step(
             name="Extracting TextBlob noun phrases",
             function=extract_raw_textblob_phrases,
             kwargs=common_kwargs,
-            count_message="{count} TextBlob noun phrases extracted",
+            count_message="\n    {count} TextBlob noun phrases extracted",
         ),
         Step(
             name="Extracting spaCy noun phrases",
             function=extract_noun_phrases_spacy,
             kwargs=common_kwargs,
-            count_message="{count} spaCy noun phrases extracted",
+            count_message="\n    {count} spaCy noun phrases extracted",
         ),
         Step(
             name="Extracting abstract acronyms",
             function=extract_abstract_acronyms,
             kwargs=common_kwargs,
-            count_message="{count} abstract acronyms extracted",
+            count_message="\n    {count} abstract acronyms extracted",
         ),
     ]

@@ -1,13 +1,4 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
-"""Create WoS style article column in databases."""
-import pathlib
-import sys
+from pathlib import Path
 
 import numpy as np
 import pandas as pd  # type: ignore
@@ -21,7 +12,7 @@ def _get_author(dataframe):
 
 def _get_source_title(dataframe):
 
-    source_title = dataframe.abbr_source_title.copy()
+    source_title = dataframe.source_title_abbr.copy()
     source_title_isna = source_title.map(pd.isna)
     source_title = pd.Series(
         np.where(
@@ -60,17 +51,14 @@ def _get_page_start(dataframe):
     )
 
 
-def assign_record_id(root_dir):
-    """:meta private:"""
+def assign_record_id(root_directory: str) -> int:
 
     #
     # Create a WoS style reference column.
-    # First Author, year, abbr_source_title, 'V'volumne, 'P'page_start, ' DOI ' doi
+    # First Author, year, source_title_abbr, 'V'volumne, 'P'page_start, ' DOI ' doi
     #
-    sys.stderr.write("INFO: Creating 'record_id' column\n")
-    sys.stderr.flush()
 
-    database_file = pathlib.Path(root_dir) / "data/processed/database.csv.zip"
+    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
     if not database_file.exists():
         raise AssertionError(f"{database_file.name} not found")
@@ -109,6 +97,8 @@ def assign_record_id(root_dir):
     dataframe["record_id"] = wos_ref.copy()
     dataframe = dataframe.drop_duplicates(subset=["record_id"])
 
+    non_null_count = int(dataframe["record_id"].notna().sum())
+
     dataframe.to_csv(
         database_file,
         sep=",",
@@ -117,5 +107,4 @@ def assign_record_id(root_dir):
         compression="zip",
     )
 
-
-#
+    return non_null_count

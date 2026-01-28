@@ -46,11 +46,11 @@ def internal__sort_noun_phrases_by_last_word():
     sys.stderr.write(f"Sorting system noun phrases by last word\n")
     sys.stderr.flush()
 
-    noun_phrases = load_text_processing_terms("known_noun_phrases.txt")
+    noun_phrases = load_text_processing_terms("noun_phrases.txt")
 
     noun_phrases.sort(key=lambda x: x[::-1])
 
-    save_text_processing_terms("known_noun_phrases.txt", noun_phrases)
+    save_text_processing_terms("noun_phrases.txt", noun_phrases)
 
     sys.stderr.write("  Sorting process completed successfully\n\n")
     sys.stderr.flush()

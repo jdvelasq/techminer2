@@ -15,7 +15,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(10)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
@@ -31,7 +31,7 @@ Example:
     ...     .run()
     ... )
                           rank_occ  rank_gcs  ...  m_index                      counters
-    raw_author_keywords                       ...
+    author_keywords_raw                       ...
     FINTECH                      1         1  ...     7.75               FINTECH 31:5168
     INNOVATION                   2         2  ...     1.75            INNOVATION 07:0911
     FINANCIAL_SERVICES           3         4  ...     1.00    FINANCIAL_SERVICES 04:0667

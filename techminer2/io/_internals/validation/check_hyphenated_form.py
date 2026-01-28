@@ -62,8 +62,8 @@ def collect_project_hyphenated_words(root_dir):
 
     words = []
     for column in [
-        "raw_author_keywords",
-        "raw_index_keywords",
+        "author_keywords_raw",
+        "index_keywords_raw",
     ]:
         if column in dataframe.columns:
             words.append(dataframe[column].dropna().copy())

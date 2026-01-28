@@ -1,16 +1,10 @@
 import re
 
 import pandas as pd  # type: ignore
-from pandarallel import pandarallel  # type: ignore
 
-from techminer2._internals import stdout_to_stderr
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
-
-with stdout_to_stderr():
-    pandarallel.initialize(progress_bar=True)
-
 
 _COMPILED_PATTERNS: list[re.Pattern] = []
 

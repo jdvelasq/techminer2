@@ -21,7 +21,7 @@ Example:
     ...     TopTermsExtractor()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     #
     ...     # SEARCH:
     ...     .having_terms_in_top(10)
@@ -54,7 +54,7 @@ Example:
      'MARKETPLACE_LENDING']
 
 
-This example shows how to extract the top terms from the "raw_author_keywords" field in the
+This example shows how to extract the top terms from the "author_keywords_raw" field in the
 database based on the specified parameters. The output includes the first 10 extracted terms.
 
 """

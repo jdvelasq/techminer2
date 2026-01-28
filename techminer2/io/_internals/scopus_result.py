@@ -4,94 +4,20 @@ Scopus Result
 
 
 Smoke tests:
-    >>> import pandas as pd
-    >>> df = pd.DataFrame(
-    ...     {
-    ...         "key": ["KEY_1", "KEY_2", "KEY_3"],
-    ...         "value": [
-    ...             "VALUE_1_A; VALUE_1_B; VALUE_1_C; VALUE_1_D; VALUE_1_E; VALUE_1_F; VALUE_1_G; VALUE_1_H",
-    ...             "VALUE_2_A; VALUE_2_B",
-    ...             "VALUE_3_A; VALUE_3_B; VALUE_3_C"
-    ...         ],
-    ...     }
-    ... )
-    >>> # Create thesaurus
-    >>> from techminer2.io._internals import ScopusResult
+    >>> from techminer2.io._internals.scopus_result import ScopusResult
     >>> ScopusResult(
     ...     colored_output=False,
     ...     file_path="examples/fintech/thesauri/organizations.the.txt",
     ...     msg="Thesaurus 'organizations.the.txt' loaded successfully.",
     ...     success=True,
     ...     status=None,
-    ...     data_frame=df,
     ... )
     INFO: Thesaurus 'organizations.the.txt' loaded successfully.
       Success : True
       File    : examples/fintech/thesauri/organizations.the.txt
-      Header  :
-        KEY_1
-          VALUE_1_A; VALUE_1_B; VALUE_1_C; VALUE_1_D; VALUE_1_E; VALUE_1_F; VALUE_1...
-        KEY_2
-          VALUE_2_A; VALUE_2_B
-        KEY_3
-          VALUE_3_A; VALUE_3_B; VALUE_3_C
     <BLANKLINE>
-
-
-
-    >>> ThesaurusResult(
-    ...     colored_output=False,
-    ...     file_path="examples/fintech/thesauri/organizations.the.txt",
-    ...     msg="Thesaurus 'organizations.the.txt' loaded successfully.",
-    ...     success=True,
-    ...     status="Loaded 10 entries.",
-    ...     data_frame=df,
-    ... )
-    INFO: Thesaurus 'organizations.the.txt' loaded successfully.
-      Success : True
-      File    : examples/fintech/thesauri/organizations.the.txt
-      Status  : Loaded 10 entries.
-      Header  :
-        KEY_1
-          VALUE_1_A; VALUE_1_B; VALUE_1_C; VALUE_1_D; VALUE_1_E; VALUE_1_F; VALUE_1...
-        KEY_2
-          VALUE_2_A; VALUE_2_B
-        KEY_3
-          VALUE_3_A; VALUE_3_B; VALUE_3_C
-    <BLANKLINE>
-
 
 """
-
-# python3 - <<'PY'
-# import pandas as pd
-# from colorama import init
-# from techminer2.thesaurus._internals.result import ThesaurusResult
-#
-# # enable colorama (autoreset keeps colors from leaking)
-# init(autoreset=True)
-#
-# df = pd.DataFrame(
-#     {
-#         "key": ["KEY_1", "KEY_2", "KEY_3"],
-#         "value": [
-#             "VALUE_1_A; VALUE_1_B; VALUE_1_C; VALUE_1_D; VALUE_1_E; VALUE_1_F; VALUE_1_G; VALUE_1_H",
-#             "VALUE_2_A; VALUE_2_B",
-#             "VALUE_3_A; VALUE_3_B; VALUE_3_C"
-#         ],
-#     }
-# )
-#
-# r = ThesaurusResult(
-#     colorized_output=True,
-#     file_path="examples/fintech/thesauri/organizations.the.txt",
-#     msg="Thesaurus loaded successfully.",
-#     success=True,
-#     status="Found 42 entries.",
-#     data_frame=df,
-# )
-# print(r)
-# PY
 
 import os
 import re

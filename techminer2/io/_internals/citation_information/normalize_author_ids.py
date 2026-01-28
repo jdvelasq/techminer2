@@ -20,13 +20,14 @@ def _normalize(series: pd.Series) -> pd.Series:
     return series
 
 
-def normalize_author_ids(root_directory: str) -> int:
+def normalize_author_ids(root_directory: str, file: str) -> int:
 
     return transform_column(
         source="author_ids_raw",
         target="author_ids",
         function=_normalize,
         root_directory=root_directory,
+        file=file,
     )
 
 

@@ -22,7 +22,7 @@ Example:
     ... )
     >>> print(df.to_string(index=True)) # doctest: +SKIP
                                       column  number of records coverage (%)
-    0                      abbr_source_title                 50      100.00%
+    0                      source_title_abbr                 50      100.00%
     1                               abstract                 48       96.00%
     2             abstract_nouns_and_phrases                 48       96.00%
     3                           affiliations                 49       98.00%
@@ -75,7 +75,7 @@ Example:
     50                          raw_abstract                 50      100.00%
     51        raw_abstract_nouns_and_phrases                 48       96.00%
     52            raw_abstract_spacy_phrases                  0        0.00%
-    53                   raw_author_keywords                 38       76.00%
+    53                   author_keywords_raw                 38       76.00%
     54                           raw_authors                 50      100.00%
     55                        raw_authors_id                 50      100.00%
     56                       raw_descriptors                 50      100.00%
@@ -83,7 +83,7 @@ Example:
     58  raw_document_title_nouns_and_phrases                 50      100.00%
     59                     raw_document_type                 50      100.00%
     60                 raw_global_references                 49       98.00%
-    61                    raw_index_keywords                 19       38.00%
+    61                    index_keywords_raw                 19       38.00%
     62                          raw_keywords                 42       84.00%
     63                 raw_nouns_and_phrases                 50      100.00%
     64                      raw_source_title                 50      100.00%

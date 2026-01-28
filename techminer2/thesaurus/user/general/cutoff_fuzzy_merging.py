@@ -159,7 +159,7 @@ class CutoffFuzzyMerging(
             .where_database("main")
         ).run()
 
-        known_keywords = load_text_processing_terms("known_noun_phrases.txt")
+        known_keywords = load_text_processing_terms("noun_phrases.txt")
 
         self.keywords = self.keywords[self.keywords.index.isin(known_keywords)]
 

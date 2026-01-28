@@ -16,7 +16,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(20)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
@@ -36,7 +36,7 @@ Example:
     >>> df = generator.run()
     >>> df.head()
                           rank_occ  ...  average_docs_per_year
-    raw_author_keywords             ...
+    author_keywords_raw             ...
     FINTECH                      1  ...                    9.0
     INNOVATION                   2  ...                    0.5
     FINANCIAL_SERVICES           3  ...                    1.5

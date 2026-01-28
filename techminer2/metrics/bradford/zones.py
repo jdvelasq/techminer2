@@ -24,7 +24,7 @@ Example:
     ...     .run()
     ... ).head() # doctest: +NORMALIZE_WHITESPACE
                          no  OCC  cum_OCC  global_citations  zone
-    abbr_source_title
+    source_title_abbr
     J. Econ. Bus.         1    3        3               422     1
     J Manage Inf Syst     2    2        5               696     1
     Rev. Financ. Stud.    3    2        7               432     1
@@ -51,9 +51,9 @@ class ZonesDataFrame(
     # -------------------------------------------------------------------------
     def internal__compute_citations_and_occurrences_by_source(self):
 
-        indicators = self.records[["abbr_source_title", "global_citations"]]
+        indicators = self.records[["source_title_abbr", "global_citations"]]
         indicators = indicators.assign(OCC=1)
-        indicators = indicators.groupby(["abbr_source_title"], as_index=False).sum()
+        indicators = indicators.groupby(["source_title_abbr"], as_index=False).sum()
         indicators = indicators.sort_values(
             by=["OCC", "global_citations"], ascending=False
         )
@@ -76,7 +76,7 @@ class ZonesDataFrame(
         indicators.zone = indicators.zone.where(
             indicators.cum_OCC >= int(cum_occ / 3), 1
         )
-        indicators = indicators.set_index("abbr_source_title")
+        indicators = indicators.set_index("source_title_abbr")
         indicators = indicators[["no", "OCC", "cum_OCC", "global_citations", "zone"]]
 
         self.indicators = indicators

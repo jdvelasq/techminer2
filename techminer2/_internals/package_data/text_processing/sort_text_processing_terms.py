@@ -178,7 +178,7 @@ def internal__sort_text_processing_terms():
             sort_copyright_regex(file_name)
             continue
 
-        if file_name.endswith("known_noun_phrases.txt"):
+        if file_name.endswith("noun_phrases.txt"):
             sort_known_noun_phrases(file_name)
             continue
 

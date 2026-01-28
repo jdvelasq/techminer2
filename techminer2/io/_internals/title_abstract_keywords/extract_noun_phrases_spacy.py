@@ -58,7 +58,8 @@ def extract_noun_phrases_spacy(root_directory: str) -> int:
     )
 
     with stdout_to_stderr():
-        pandarallel.initialize(progress_bar=True)
+        progress_bar = True
+        pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         dataframe["noun_phrases_spacy"] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,

@@ -6,8 +6,8 @@ from ..step import Step
 
 def build_citation_information_steps(params: Params) -> list[Step]:
 
+    from .disambiguate_authors import disambiguate_authors
     from .normalize_author_ids import normalize_author_ids
-    from .normalize_author_names import normalize_author_names
     from .normalize_authors import normalize_authors
     from .normalize_document_type import normalize_document_type
     from .normalize_doi import normalize_doi
@@ -25,22 +25,46 @@ def build_citation_information_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name="Normalizing author IDs",
+            name="Normalizing author IDs in main.csv.zip",
             function=normalize_author_ids,
-            kwargs=common_kwargs,
+            kwargs={
+                "root_directory": params.root_directory,
+                "file": "main.csv.zip",
+            },
             count_message="{count} author IDs normalized",
         ),
         Step(
-            name="Normalizing authors",
+            name="Normalizing author IDs in references.csv.zip",
+            function=normalize_author_ids,
+            kwargs={
+                "root_directory": params.root_directory,
+                "file": "references.csv.zip",
+            },
+            count_message="{count} author IDs normalized",
+        ),
+        Step(
+            name="Normalizing authors in main.csv.zip",
             function=normalize_authors,
-            kwargs=common_kwargs,
+            kwargs={
+                "root_directory": params.root_directory,
+                "file": "main.csv.zip",
+            },
             count_message="{count} author records normalized",
         ),
         Step(
-            name="Normalizing author names",
-            function=normalize_author_names,
+            name="Normalizing authors in references.csv.zip",
+            function=normalize_authors,
+            kwargs={
+                "root_directory": params.root_directory,
+                "file": "references.csv.zip",
+            },
+            count_message="{count} author records normalized",
+        ),
+        Step(
+            name="Disambiguating author names",
+            function=disambiguate_authors,
             kwargs=common_kwargs,
-            count_message="{count} author names normalized",
+            count_message="{count} author names disambiguated",
         ),
         Step(
             name="Normalizing year",

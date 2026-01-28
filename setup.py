@@ -1,6 +1,6 @@
 """Setup module for TechMiner2+"""
 
-from setuptools import find_packages, setup
+from setuptools import find_packages, setup  # type: ignore[import]
 
 setup(
     # cmdclass={"build_py": BuildPyCommand},
@@ -43,7 +43,8 @@ setup(
         "textblob",
         "textdistance",
         "typing_extensions",
-        "urllib3==1.26.6",
+        "urllib3<2.0",
+        "pyparsing<3.1",
         "wordcloud",
     ],
     packages=find_packages(),

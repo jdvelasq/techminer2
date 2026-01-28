@@ -16,7 +16,7 @@ Example:
     ...     BarChart()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_per_year(5)
     ...     .having_terms_in(None)
     ...     #

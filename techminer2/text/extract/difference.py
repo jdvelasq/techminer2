@@ -18,8 +18,8 @@ Example:
     ...     DifferenceExtractor()
     ...     #
     ...     # FIELDS:
-    ...     .with_field("raw_author_keywords")
-    ...     .with_other_field("raw_index_keywords")
+    ...     .with_field("author_keywords_raw")
+    ...     .with_other_field("index_keywords_raw")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/fintech/")

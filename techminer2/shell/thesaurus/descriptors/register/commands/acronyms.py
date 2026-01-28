@@ -42,7 +42,7 @@ def execute_acronyms_command():
 
     # insertion
     data_path = files("techminer2.package_data.text_processing.data").joinpath(
-        "known_noun_phrases.txt"
+        "noun_phrases.txt"
     )
     data_path = str(data_path)
 
@@ -72,6 +72,6 @@ def execute_acronyms_command():
     print(
         f"{n_added_terms}"
         + Fore.LIGHTBLACK_EX
-        + " added terms to known_noun_phrases.txt"
+        + " added terms to noun_phrases.txt"
         + Fore.RESET
     )

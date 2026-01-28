@@ -31,8 +31,8 @@ def _utils_format_report_for_records(
             "source_title",
             "year",
             "abstract",
-            "raw_author_keywords",
-            "raw_index_keywords",
+            "author_keywords_raw",
+            "index_keywords_raw",
             "raw_nlp_phrases",
         ]
 
@@ -92,10 +92,10 @@ def _utils_format_report_for_records(
                     if criterion == "abstract":
                         print("AB ", end="", file=file)
 
-                    if criterion == "raw_author_keywords":
+                    if criterion == "author_keywords_raw":
                         print("DE ", end="", file=file)
 
-                    if criterion == "raw_index_keywords":
+                    if criterion == "index_keywords_raw":
                         print("ID ", end="", file=file)
 
                     if criterion == "raw_nlp_phrases":

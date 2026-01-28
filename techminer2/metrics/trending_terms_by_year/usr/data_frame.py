@@ -17,7 +17,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_per_year(5)
     ...     .having_terms_in(None)
     ...     #
@@ -31,7 +31,7 @@ Example:
     ...     .run()
     ... ).head()
     year                      OCC  global_citations  year_q1  ...  rn    height  width
-    raw_author_keywords                                       ...
+    author_keywords_raw                                       ...
     CONTENT_ANALYSIS 02:0181    2               181     2016  ...   2  0.177333      1
     DIGITALIZATION 02:0181      2               181     2016  ...   3  0.177333      1
     POPULAR_PRESS 02:0181       2               181     2016  ...   4  0.177333      1
@@ -45,7 +45,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_per_year(5)
     ...     .having_terms_in(
     ...         [
@@ -65,7 +65,7 @@ Example:
     ...     .run()
     ... ).head()
     year                             OCC  global_citations  ...  height  width
-    raw_author_keywords                                     ...
+    author_keywords_raw                                     ...
     FINTECH 31:5168                   31              5168  ...    0.97      2
     BLOCKCHAIN 02:0305                 2               305  ...    0.15      2
     ARTIFICIAL_INTELLIGENCE 02:0327    2               327  ...    0.15      1

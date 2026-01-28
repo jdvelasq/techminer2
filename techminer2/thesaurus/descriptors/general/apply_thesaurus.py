@@ -35,13 +35,13 @@ Example:
     >>> print(output)
     Applying user thesaurus to database...
               File : examples/fintech/data/thesaurus/descriptors.the.txt
-      Source field : raw_author_keywords
+      Source field : author_keywords_raw
       Target field : author_keywords
       Application process completed successfully
     <BLANKLINE>
     Applying user thesaurus to database...
               File : examples/fintech/data/thesaurus/descriptors.the.txt
-      Source field : raw_index_keywords
+      Source field : index_keywords_raw
       Target field : index_keywords
       Application process completed successfully
     <BLANKLINE>
@@ -84,8 +84,8 @@ from techminer2._internals.mixins import ParamsMixin
 from techminer2.thesaurus.user import ApplyThesaurus as ApplyUserThesaurus
 
 PAIRS = [
-    ("raw_author_keywords", "author_keywords"),
-    ("raw_index_keywords", "index_keywords"),
+    ("author_keywords_raw", "author_keywords"),
+    ("index_keywords_raw", "index_keywords"),
     ("raw_keywords", "keywords"),
     ("raw_document_title_nouns_and_phrases", "document_title_nouns_and_phrases"),
     ("raw_abstract_nouns_and_phrases", "abstract_nouns_and_phrases"),

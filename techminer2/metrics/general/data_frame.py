@@ -562,7 +562,7 @@ class DataFrame(
             item="Author keywords (raw)",
             value=self.count_unique_terms(
                 data_frame,
-                "raw_author_keywords",
+                "author_keywords_raw",
             ),
         )
 
@@ -582,7 +582,7 @@ class DataFrame(
             item="Index keywords (raw)",
             value=self.count_unique_terms(
                 data_frame,
-                "raw_index_keywords",
+                "index_keywords_raw",
             ),
         )
 

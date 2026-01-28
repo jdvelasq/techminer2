@@ -11,8 +11,6 @@ import sys
 import pandas as pd  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from techminer2._dtypes import DTYPES
-
 
 def _get_sources_info(root_dir):
 
@@ -23,7 +21,7 @@ def _get_sources_info(root_dir):
         compression="zip",
         low_memory=False,
     )
-    sources_info = database[["source", "abbr_source_title"]]
+    sources_info = database[["source", "source_title_abbr"]]
     sources_info = sources_info.dropna()
     sources_info = sources_info.drop_duplicates()
     sources_info = sources_info.reset_index(drop=True)
@@ -47,8 +45,8 @@ def _preprocess_references(root_dir):
     sys.stderr.write("INFO: Processing 'references' column\n")
     sys.stderr.flush()
 
-    for source, abbr_source_title in tqdm(
-        zip(abbrs.source, abbrs.abbr_source_title),
+    for source, source_title_abbr in tqdm(
+        zip(abbrs.source, abbrs.source_title_abbr),
         total=len(abbrs),
         bar_format="  {percentage:3.2f}% {bar} | {n_fmt}/{total_fmt} [{rate_fmt}] |",
         ascii=(" ", ":"),
@@ -57,7 +55,7 @@ def _preprocess_references(root_dir):
 
         dataframe["raw_global_references"] = dataframe[
             "raw_global_references"
-        ].str.replace(source, abbr_source_title, regex=False)
+        ].str.replace(source, source_title_abbr, regex=False)
 
     dataframe.to_csv(
         database_file,

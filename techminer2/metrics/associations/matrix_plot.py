@@ -15,7 +15,7 @@ Example:
     ...     MatrixPlot()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(10)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)

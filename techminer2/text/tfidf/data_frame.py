@@ -16,7 +16,7 @@ Example:
     >>> generator = (
     ...     DataFrame()
     ...     #
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(10)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
@@ -42,7 +42,7 @@ Example:
     ... )
     >>> df = generator.run()
     >>> df.head()  # doctest: +NORMALIZE_WHITESPACE
-    raw_author_keywords                             FINTECH 31:5168  ...  CASE_STUDY 02:0340
+    author_keywords_raw                             FINTECH 31:5168  ...  CASE_STUDY 02:0340
     record_id                                                        ...
     Anagnostopoulos I., 2018, J ECON BUS, V100, P7                1  ...                   0
     Anshari M., 2019, ENERGY PROCEDIA, V156, P234                 0  ...                   0

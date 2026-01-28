@@ -34,7 +34,8 @@ def extract_abstract_acronyms(root_directory: str) -> int:
         return 0
 
     with stdout_to_stderr():
-        pandarallel.initialize(progress_bar=True, verbose=2)
+        progress_bar = True
+        pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         dataframe["abstract_acronyms"] = dataframe["abstract_tokenized"].parallel_apply(_extract_acronyms_from_text)  # type: ignore[call-arg]
 
     dataframe.to_csv(

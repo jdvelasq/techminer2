@@ -66,6 +66,6 @@ class NodeDegreePlot(
             OtherNodeDegreePlot()
             .update(**self.params.__dict__)
             .update(terms_order_by="OCC")
-            .unit_of_analysis("abbr_source_title")
+            .unit_of_analysis("source_title_abbr")
             .run()
         )

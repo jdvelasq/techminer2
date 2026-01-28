@@ -111,7 +111,7 @@ class RemoveDeterminers(
         self.data_frame["org_key"] = self.data_frame["key"].copy()
 
         words = load_text_processing_terms("determiners.txt")
-        known_phrases = load_text_processing_terms("known_noun_phrases.txt")
+        known_phrases = load_text_processing_terms("noun_phrases.txt")
 
         # create regular expressions
         patterns = []

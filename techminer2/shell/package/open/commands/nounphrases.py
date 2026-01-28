@@ -7,7 +7,7 @@ def execute_nounphrases_command():
     print()
 
     file_path = files("techminer2.package_data.text_processing.data").joinpath(
-        "known_noun_phrases.txt"
+        "noun_phrases.txt"
     )
     file_path = str(file_path)
 

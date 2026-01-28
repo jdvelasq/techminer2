@@ -76,7 +76,7 @@ def internal__check_noun_phrases(disable_tqdm=False):
     sys.stderr.write(f"Checking last word in system noun phrases\n")
     sys.stderr.flush()
 
-    noun_phrases = load_text_processing_terms("known_noun_phrases.txt")
+    noun_phrases = load_text_processing_terms("noun_phrases.txt")
     last_words = [phrase.split("_")[-1] for phrase in noun_phrases]
     plurals = get_plural_pairs(last_words)
     singulars = get_singular_pairs(last_words)
@@ -88,7 +88,7 @@ def internal__check_noun_phrases(disable_tqdm=False):
     ):
         noun_phrases = replace_pair(noun_phrases, word1, word2)
 
-    save_text_processing_terms("known_noun_phrases.txt", noun_phrases)
+    save_text_processing_terms("noun_phrases.txt", noun_phrases)
 
     sys.stderr.write("  Checking process completed successfully\n\n")
     sys.stderr.flush()

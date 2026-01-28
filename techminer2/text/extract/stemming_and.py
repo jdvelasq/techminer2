@@ -17,7 +17,7 @@ Example:
     ...     StemmingAndExtractor()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     #
     ...     # SEARCH:
     ...     .having_pattern(

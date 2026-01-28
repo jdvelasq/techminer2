@@ -17,11 +17,13 @@ def _local_processing(text):
     text = text.str.replace(r", \(\d\)", "", regex=True)
 
     text = text.str.replace(", Jr.", " Jr.", regex=False)
+
+    text = text.str.replace(", ", "", regex=False)
     text = text.str.replace("; ", ";", regex=False)
     text = text.str.replace(";", "; ", regex=False)
     #
     # some old database records uses ',' as separator
-    text = text.str.replace(", ", ",", regex=False).str.replace(",", "; ", regex=False)
+    # text = text.str.replace(", ", ",", regex=False).str.replace(",", "; ", regex=False)
 
     text = text.str.title()
     text = text.fillna(pd.NA)
@@ -40,12 +42,13 @@ def _local_processing(text):
     return text
 
 
-def normalize_authors(root_dir):
+def normalize_authors(root_directory, file: str) -> int:
     """Run authors importer."""
 
-    transform_column(
-        source="raw_authors",
+    return transform_column(
+        source="authors_raw",
         target="authors",
         function=_local_processing,
-        root_directory=root_dir,
+        root_directory=root_directory,
+        file=file,
     )

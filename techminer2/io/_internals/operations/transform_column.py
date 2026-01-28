@@ -10,9 +10,10 @@ def transform_column(
     target: str,
     function: Callable[[Series], Series],
     root_directory: str,
+    file: str = "main.csv.zip",
 ) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    database_file = Path(root_directory) / "data" / "processed" / file
 
     if not database_file.exists():
         raise AssertionError(f"{database_file.name} not found")

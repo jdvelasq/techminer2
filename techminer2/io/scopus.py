@@ -4,7 +4,7 @@ Scopus
 ===============================================================================
 
 Smoke test - successful import:
-    >>> from techminer2.scopus import Scopus
+    >>> from techminer2.io.scopus import Scopus
     >>> result = (
     ...     Scopus()
     ...     .where_root_directory("examples/small/")

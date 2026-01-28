@@ -85,7 +85,12 @@ def build_bibliographical_information_steps(params: Params) -> list[Step]:
         Step(
             name="Normalizing subject areas",
             function=normalize_subject_areas,
-            kwargs=common_kwargs,
+            kwargs={
+                "issn_column": "issn",
+                "eissn_column": "eissn",
+                "target": "subject_areas",
+                "root_directory": params.root_directory,
+            },
             count_message="{count} subject areas normalized",
         ),
     ]

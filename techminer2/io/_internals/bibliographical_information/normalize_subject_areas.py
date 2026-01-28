@@ -7,9 +7,9 @@ import pandas as pd  # type: ignore
 
 @lru_cache(maxsize=1)
 def _load_subject_areas() -> pd.DataFrame:
-    data_path = files(
-        "techminer2.scopus._internals.bibliographical_information.data"
-    ).joinpath("subject_areas.csv")
+    data_path = files("techminer2._internals.package_data.database.data").joinpath(
+        "subject_areas.csv"
+    )
     return pd.read_csv(str(data_path), encoding="utf-8")
 
 

@@ -45,8 +45,8 @@ class RecordMappingMixin:
             "source_title": "SO",
             "year": "PY",
             "abstract": "AB",
-            "raw_author_keywords": "DE",
-            "raw_index_keywords": "ID",
+            "author_keywords_raw": "DE",
+            "index_keywords_raw": "ID",
         }
 
         candiate_columns = names_mapping.keys()

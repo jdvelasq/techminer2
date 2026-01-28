@@ -1,8 +1,18 @@
 import re
 
+from techminer2._internals.package_data.text_processing.load_text_processing_terms import (
+    load_text_processing_terms,
+)
+
 PATTERN_1 = re.compile(r"[A-Z][A-Z_]+ [A-Z][A-Z_]+")
 PATTERN_2 = re.compile(r"' ([A-Z][A-Z_]+) ' ([A-Z][A-Z_]+)\b")
 PATTERN_3 = re.compile(r"\b([A-Z][A-Z_]+) \( ([A-Z][A-Z_]+) \) ([A-Z][A-Z_]+)\b")
+
+STOPWORDS: set[str] = set(
+    phrase.strip().lower()
+    for phrase in load_text_processing_terms("technical_stopwords.txt")
+    if phrase.strip()
+)
 
 
 def join_consecutive_descriptors(text):
@@ -12,7 +22,7 @@ def join_consecutive_descriptors(text):
         for match in matches:
             word = match.split(" ")[1]
             word = word.split("_")[0]
-            if word.lower() in stopwords:
+            if word.lower() in STOPWORDS:
                 continue
             regex = re.compile(r"\b" + re.escape(match) + r"\b")
             text = re.sub(regex, lambda z: z.group().upper().replace(" ", "_"), text)

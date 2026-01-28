@@ -45,7 +45,7 @@ def _extract_frequent_raw_keywords(dataframe: pd.DataFrame) -> set:
 
     keywords = set()
 
-    for col in ["raw_author_keywords", "raw_index_keywords"]:
+    for col in ["author_keywords_raw", "index_keywords_raw"]:
 
         if col in dataframe.columns:
 

@@ -71,7 +71,7 @@ class RegisterKeyword(
     def internal__register_new_word(self):
 
         data_path = files("techminer2.package_data.text_processing.data").joinpath(
-            "known_noun_phrases.txt"
+            "noun_phrases.txt"
         )
         data_path = str(data_path)
 

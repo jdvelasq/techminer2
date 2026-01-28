@@ -15,7 +15,7 @@ Example:
     >>> (
     ...     Coverage()
     ...     #
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     #
     ...     .where_root_directory("examples/fintech/")
     ...     .where_database("main")

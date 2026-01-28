@@ -16,7 +16,7 @@ Example:
     ...         Params(root_directory="examples/fintech/")
     ... ).head()
     >>> df # doctest: +SKIP
-                        abbr_source_title  ...  year
+                        source_title_abbr  ...  year
     0             Int. J. Appl. Eng. Res.  ...  2016
     1                   Telecommun Policy  ...  2016
     2                 Comput. Hum. Behav.  ...  2016

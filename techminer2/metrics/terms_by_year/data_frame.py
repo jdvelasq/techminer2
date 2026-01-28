@@ -17,7 +17,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(20)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
@@ -40,7 +40,7 @@ Example:
     >>> df = generator.run()
     >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
     year                          2015  2016  2017  2018  2019
-    raw_author_keywords
+    author_keywords_raw
     FINTECH 31:5168                  0     5     8    12     6
     INNOVATION 07:0911               0     3     3     1     0
     FINANCIAL_SERVICES 04:0667       0     1     0     3     0
@@ -57,7 +57,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(20)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
@@ -80,7 +80,7 @@ Example:
     >>> df = generator.run()
     >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
     year                  2015  2016  2017  2018  2019
-    raw_author_keywords
+    author_keywords_raw
     FINTECH                  0     5     8    12     6
     INNOVATION               0     3     3     1     0
     FINANCIAL_SERVICES       0     1     0     3     0
@@ -97,7 +97,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # FIELD:
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     .having_terms_in_top(20)
     ...     .having_terms_ordered_by("OCC")
     ...     .having_term_occurrences_between(None, None)
@@ -120,7 +120,7 @@ Example:
     >>> df = generator.run()
     >>> df.head(10) # doctest: +NORMALIZE_WHITESPACE
     year                          2015  2016  2017  2018  2019
-    raw_author_keywords
+    author_keywords_raw
     FINTECH 31:5168                  0     5    13    25    31
     INNOVATION 07:0911               0     3     6     7     7
     FINANCIAL_SERVICES 04:0667       0     1     1     4     4

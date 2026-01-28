@@ -1,13 +1,4 @@
-from pathlib import Path
-
 import pandas as pd  # type: ignore
-from pandarallel import pandarallel  # type: ignore
-
-from techminer2._internals import stdout_to_stderr
-
-with stdout_to_stderr():
-    pandarallel.initialize(progress_bar=True, verbose=2)
-
 
 UNITS = [
     "cad",
@@ -65,7 +56,7 @@ UNITS = [
 
 def repair_measurement_units(text: str) -> str:
     if pd.isna(text):
-        return text
+        return ""
     text = str(text)
     for unit in UNITS:
         text = text.replace(

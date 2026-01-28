@@ -14,7 +14,7 @@ Example:
     >>> df = (
     ...     Statistics()
     ...     #
-    ...     .with_field("raw_author_keywords")
+    ...     .with_field("author_keywords_raw")
     ...     #
     ...     .where_root_directory("examples/fintech/")
     ...     .where_database("main")
@@ -26,7 +26,7 @@ Example:
     >>> df.head() # doctest: +SKIP
                          conference_code                ...    year
                                    count      mean std  ...     50%     75%     max
-    raw_author_keywords                                 ...
+    author_keywords_raw                                 ...
     ACTOR_NETWORK_THEORY             0.0       NaN NaN  ...  2016.0  2016.0  2016.0
     ACTUALIZATION                    0.0       NaN NaN  ...  2019.0  2019.0  2019.0
     ADOPTION                         0.0       NaN NaN  ...  2019.0  2019.0  2019.0

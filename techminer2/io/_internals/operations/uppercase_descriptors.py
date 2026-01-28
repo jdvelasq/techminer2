@@ -35,7 +35,7 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 
     noun_phrases = set()
 
-    for column in ["raw_textblob_phrases", "raw_spacy_phrases"]:
+    for column in ["noun_phrases_textblob", "noun_phrases_spacy"]:
         if column in dataframe.columns:
             for entry in dataframe[column].dropna():
                 phrases = [phrase.strip() for phrase in entry.split(";")]
@@ -46,7 +46,7 @@ def _get_project_noun_phrases(dataframe: pd.DataFrame) -> set[str]:
 
 # ----------------------------------------------------------------------------
 def _get_system_noun_phrases() -> set[str]:
-    noun_phrases = load_text_processing_terms("known_noun_phrases.txt")
+    noun_phrases = load_text_processing_terms("noun_phrases.txt")
     noun_phrases = [
         phrase.strip().lower().replace("_", " ")
         for phrase in noun_phrases
@@ -71,7 +71,7 @@ def _get_acronyms(dataframe: pd.DataFrame) -> set[str]:
 # ----------------------------------------------------------------------------
 def _clean_terms(terms: set[str]) -> set[str]:
 
-    stopwords = load_text_processing_terms("stopwords.txt")
+    stopwords = load_text_processing_terms("technical_stopwords.txt")
     cleaned_terms = set()
     for term in terms:
         term_lower = term.lower()
@@ -91,7 +91,10 @@ def _get_project_keywords(dataframe: pd.DataFrame) -> set[str]:
 
     keywords = set()
 
-    for column in ["raw_author_keywords", "raw_index_keywords"]:
+    for column in [
+        "author_keywords_raw",
+        "index_keywords_raw",
+    ]:
         if column in dataframe.columns:
             for entry in dataframe[column].dropna():
                 phrases = [phrase.strip() for phrase in entry.split(";")]
@@ -211,7 +214,8 @@ def uppercase_descriptors(
     _get_compiled_patterns(dataframe)
 
     with stdout_to_stderr():
-        pandarallel.initialize(progress_bar=True)
+        progress_bar = True
+        pandarallel.initialize(progress_bar=progress_bar, verbose=0)
         dataframe[target] = dataframe[source].parallel_apply(_normalize)
 
     non_null_count = int(dataframe[target].notna().sum())

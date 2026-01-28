@@ -23,7 +23,7 @@ Example:
     >>> import pandas as pd
     >>> from techminer2.database.operators import TransformOperator
     >>> TransformOperator(
-    ...     field="raw_index_keywords",
+    ...     field="index_keywords_raw",
     ...     other_field="na_field",
     ...     root_directory="examples/fintech/",
     ...     transformation_function=lambda x: pd.NA,
@@ -50,7 +50,7 @@ Example:
     ...     #
     ...     # FIELDS:
     ...     .with_field("na_field")
-    ...     .with_other_field("raw_index_keywords")
+    ...     .with_other_field("index_keywords_raw")
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/fintech/")
