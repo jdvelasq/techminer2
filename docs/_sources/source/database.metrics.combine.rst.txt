@@ -1,8 +1,0 @@
-Combine
-################################################################################
-
-.. toctree::
-    :maxdepth: 1
-    :hidden:
-
-    database.metrics.combine.data_frame

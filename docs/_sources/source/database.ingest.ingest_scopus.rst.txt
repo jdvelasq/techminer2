@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.ingest.ingest_scopus
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

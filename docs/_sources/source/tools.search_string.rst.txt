@@ -1,5 +1,0 @@
-.. automodule:: techminer2.tools.search_string
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

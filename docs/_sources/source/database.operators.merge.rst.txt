@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.operators.merge
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.operators.transform
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

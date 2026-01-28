@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.search.lemma_associations
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

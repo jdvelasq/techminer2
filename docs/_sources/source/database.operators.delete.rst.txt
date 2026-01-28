@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.operators.delete
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

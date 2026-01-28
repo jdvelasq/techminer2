@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.extractors.difference
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

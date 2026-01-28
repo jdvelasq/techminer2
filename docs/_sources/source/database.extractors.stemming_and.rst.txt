@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.extractors.stemming_and
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.extractors.match
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

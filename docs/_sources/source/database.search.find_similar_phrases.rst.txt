@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.search.find_similar_phrases
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

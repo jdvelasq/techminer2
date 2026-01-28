@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.extractors.intersection
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

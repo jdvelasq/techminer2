@@ -1,5 +1,0 @@
-.. automodule:: techminer2.database.search.deprecated.highlight_phrase
-     :members:
-     :undoc-members:
-     :show-inheritance:
-

@@ -1,8 +1,0 @@
-Ingest
-################################################################################
-
-.. toctree::
-    :maxdepth: 1
-    :hidden:
-
-    database.ingest.ingest_scopus

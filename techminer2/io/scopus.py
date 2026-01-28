@@ -50,6 +50,8 @@ from ._internals.title_abstract_keywords.build_steps import (
     build_title_abstract_keywords_steps,
 )
 
+__reviewed__ = "2026-01-28"
+
 
 class Scopus(ParamsMixin):
     """:meta private:"""
