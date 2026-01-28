@@ -1,70 +1,31 @@
+# ============================================================================
+# OS Generated Files
+# ============================================================================
 .DS_Store
+.DS_Store?
+._*
+Thumbs.db
+*~
 
+# ============================================================================
+# IDEs and Editors
+# ============================================================================
+.vscode/
+.idea/
+*.sublime-*
+.project
+.pydevproject
+*.swp
+*.swo
 
-# Node.js dependencies
-vscode-extension/node_modules/
-
-# Build artifacts
-vscode-extension/dist/
-
-# TypeScript cache
-vscode-extension/*.tsbuildinfo
-
-# Logs
-vscode-extension/*.log
-
-
-# Temporary files
-vscode-extension/*.tmp
-vscode-extension/*.temp
-
-
-# Extension packaging files
-*.vsix
-vscode-extension/*.vsix
-
-
-# Files generated automatically
-docs_source/source/
-docs_source/_generated/
-docs_source/_build/
-
-
-# Ignore results generated during development
-examples/fintech/data/
-examples/fintech/outputs/
-examples/fintech/src/
-
-examples/structured/data/
-examples/structured/outputs/
-examples/structured/src/
-
-examples/url/data/
-examples/url/outputs/
-examples/url/src/
-
-examples/punctuation/data/
-examples/punctuation/outputs/
-examples/punctuation/src/
-
-
-debug.ipynb
-
-# Sphinx documentation
-docs_src/_build/**/*
-# sphinx/_static/**/*
-
-tmp/*
-debug/
-trash/
-
+# ============================================================================
+# Python
+# ============================================================================
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
 
 # Distribution / packaging
@@ -89,8 +50,6 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -98,7 +57,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Testing
 htmlcov/
 .tox/
 .nox/
@@ -112,21 +71,31 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
+# Type checking & linting
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Profiling
+*.prof
+*.lprof
+
 # Translations
 *.mo
 *.pot
 
-# Django stuff:
+# Django/Flask
 *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-
-# Flask stuff:
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy
 .scrapy
 
 # PyBuilder
@@ -139,27 +108,8 @@ target/
 profile_default/
 ipython_config.py
 
-# pyenv
+# Environment management
 .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
 .env
 .venv
 env/
@@ -167,25 +117,73 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.envrc
 
-# Spyder project settings
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath
+*.sage.py
+
+# Spyder
 .spyderproject
 .spyproject
 
-# Rope project settings
+# Rope
 .ropeproject
 
-# mkdocs documentation
+# mkdocs
 /site
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# ============================================================================
+# Project-Specific: Documentation
+# ============================================================================
+docsrc/source/         # Auto-generated .rst files
+docsrc/_build/         # Sphinx build artifacts
+docsrc/_generated/     # Auto-generated content
 
-# Pyre type checker
-.pyre/
+# ============================================================================
+# Project-Specific: Examples
+# ============================================================================
+examples/fintech/data/
+examples/fintech/outputs/
+examples/fintech/src/
+
+examples/structured/data/
+examples/structured/outputs/
+examples/structured/src/
+
+examples/url/data/
+examples/url/outputs/
+examples/url/src/
+
+examples/punctuation/data/
+examples/punctuation/outputs/
+examples/punctuation/src/
 
 example/zotero.log
-hyphenated_is_correct.txt
-hyphenated_is_incorrect.txt
+
+# ============================================================================
+# Project-Specific: Development
+# ============================================================================
+debug.ipynb
+debug/
+trash/
+tmp/
+first_level.txt
+hyphenated_*.txt
+
+# ============================================================================
+# Project-Specific: VSCode Extension (if applicable)
+# ============================================================================
+vscode-extension/node_modules/
+vscode-extension/dist/
+vscode-extension/*.tsbuildinfo
+vscode-extension/*.log
+vscode-extension/*.tmp
+vscode-extension/*.temp
+*.vsix
