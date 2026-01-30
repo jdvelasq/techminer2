@@ -6,6 +6,7 @@ import pandas as pd  # type: ignore
 from pandarallel import pandarallel  # type: ignore
 from textblob import TextBlob  # type: ignore
 
+from techminer2 import Field
 from techminer2._internals import stdout_to_stderr
 
 
@@ -13,11 +14,11 @@ def _process_row(row: pd.Series) -> Optional[str]:
 
     phrases: list[str] = []
 
-    if not pd.isna(row["abstract_tokenized"]):
-        phrases.extend(TextBlob(row["abstract_tokenized"]).noun_phrases)
+    if not pd.isna(row[Field.ABS_TOK.value]):
+        phrases.extend(TextBlob(row[Field.ABS_TOK.value]).noun_phrases)
 
-    if not pd.isna(row["document_title_tokenized"]):
-        phrases.extend(TextBlob(row["document_title_tokenized"]).noun_phrases)
+    if not pd.isna(row[Field.TITLE_TOK.value]):
+        phrases.extend(TextBlob(row[Field.TITLE_TOK.value]).noun_phrases)
     if not phrases:
         return None
 
@@ -49,7 +50,7 @@ def extract_raw_textblob_phrases(root_directory: str) -> int:
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe["noun_phrases_textblob"] = dataframe.parallel_apply(  # type: ignore
+        dataframe[Field.NOUNPH_TEXTBLOB.value] = dataframe.parallel_apply(  # type: ignore
             _process_row,
             axis=1,
         )
@@ -62,7 +63,7 @@ def extract_raw_textblob_phrases(root_directory: str) -> int:
         compression="zip",
     )
 
-    phrases = dataframe["noun_phrases_textblob"].dropna()
+    phrases = dataframe[Field.NOUNPH_TEXTBLOB.value].dropna()
     phrases = phrases.str.split("; ").explode()
     phrases = phrases.drop_duplicates()
     n_phrases = len(phrases)

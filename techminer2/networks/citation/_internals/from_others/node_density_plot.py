@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Node density plot."""
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
     internal__assign_textfont_sizes_based_on_occurrences,
     internal__cluster_nx_graph,

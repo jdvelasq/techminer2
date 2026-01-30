@@ -29,7 +29,7 @@ Example:
     ...     .using_association_index("association")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -73,7 +73,7 @@ Example:
     ...     .using_association_index("association")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -103,7 +103,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.networks.co_occurrence.usr.network_metrics import (
     NetworkMetrics as UserNetworkMetrics,
 )

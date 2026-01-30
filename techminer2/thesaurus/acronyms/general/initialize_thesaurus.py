@@ -8,14 +8,14 @@ Example:
     >>> from techminer2.thesaurus.acronyms import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
     >>> from techminer2.thesaurus.acronyms import PrintHeader
     >>> (
     ...     PrintHeader()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -46,7 +46,7 @@ import pandas as pd  # type: ignore
 from nltk.corpus import words  # type: ignore
 from textblob import TextBlob  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
     internal__get_system_thesaurus_file_path,

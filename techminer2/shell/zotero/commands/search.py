@@ -1,7 +1,7 @@
 import os
 
-from techminer2._internals.params_mixin import Params
-from techminer2._internals.user_data import load_all_records_from_database
+from techminer2._internals import Params
+from techminer2._internals.data_access import load_all_records_from_database
 from techminer2.shell.colorized_input import colorized_input
 
 

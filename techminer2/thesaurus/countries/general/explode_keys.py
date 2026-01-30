@@ -14,7 +14,7 @@ Example:
     >>> from techminer2.thesaurus.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
 
@@ -25,7 +25,7 @@ Example:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
     Australia
       Centre for Law, Markets & Regulation, UNSW Australia, Australia; Charles ...
@@ -48,7 +48,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import ExplodeKeys as UserExplodeKeys
 
 

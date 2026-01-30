@@ -5,7 +5,7 @@ import pandas as pd  # type: ignore
 from langdetect import LangDetectException, detect  # type: ignore
 
 
-def _detect_language(text) -> Optional[str]:
+def _detect_language(text: Optional[str]) -> Optional[str]:
     if pd.isna(text):
         return None
 

@@ -1,3 +1,4 @@
+from techminer2 import Field
 from techminer2.io._internals.operations import transform_column
 
 
@@ -16,8 +17,8 @@ def _normalize(text):
 def normalize_source_title(root_directory: str) -> int:
 
     return transform_column(
-        source="raw_source_title",
-        target="source_title",
+        source=Field.SRCTITLE_RAW,
+        target=Field.SRCTITLE_NORM,
         function=_normalize,
         root_directory=root_directory,
     )

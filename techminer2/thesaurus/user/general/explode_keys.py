@@ -18,7 +18,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -50,7 +50,7 @@ Smoke tests:
     ...     ExplodeKeys()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
     INFO: Thesaurus exploded successfully.
@@ -84,7 +84,7 @@ import sys
 from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 from techminer2.thesaurus.user.general.reduce_keys import ReduceKeys
 

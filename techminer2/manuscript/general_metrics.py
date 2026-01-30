@@ -39,7 +39,7 @@ Example:
     ...     Text()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -59,7 +59,7 @@ import os
 
 from openai import OpenAI
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )

@@ -1,18 +1,10 @@
-# flake8: noqa
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-module-docstring
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=too-many-lines
-# pylint: disable=too-many-public-methods
-
-
-from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union, cast
 
+import pandas as pd  # type: ignore
 from sklearn.base import BaseEstimator  # type: ignore
 from typing_extensions import Self
 
+from techminer2 import Field, RecordsOrderBy
 from techminer2._internals.validation import (
     internal__check_optional_base_estimator,
     internal__check_optional_color_list,
@@ -23,6 +15,7 @@ from techminer2._internals.validation import (
     internal__check_optional_str_or_dict,
     internal__check_plotly_color,
     internal__check_required_bool,
+    internal__check_required_field,
     internal__check_required_float,
     internal__check_required_float_0_1,
     internal__check_required_float_0_1_range,
@@ -39,241 +32,47 @@ from techminer2._internals.validation import (
     internal__check_tuple_of_ordered_four_floats,
 )
 
-
-@dataclass
-class Params:
-
-    #
-    # A
-    #
-    axes_visible: bool = False
-    association_index: Optional[str] = None
-
-    #
-    # B
-    #
-    baseline_periods: int = 3
-    binary_term_frequencies: bool = False
-
-    #
-    # C
-    #
-    case_sensitive: bool = False
-    citation_threshold: int = 0
-    cluster_coverages: Optional[list[str]] = None
-    cluster_names: Optional[list[str]] = None
-    clustering_algorithm_or_dict: Optional[Union[str, dict]] = None
-    color: Optional[str] = None
-    colored_output: bool = True
-    colored_stderr: bool = True
-    colormap: str = "Blues"
-    column: Optional[str] = None
-    contour_opacity: float = 0.6
-    core_area: Optional[str] = None
-    correlation_method: str = "pearson"
-    cumulative_sum: bool = False
-    cutoff_threshold: float = 85.0
-
-    #
-    # D
-    #
-    database: str = "main"
-    draw_arrows: bool = False
-    decomposition_algorithm: Optional[BaseEstimator] = None
-
-    #
-    # E
-    #
-    edge_colors: Optional[list[Any]] = None
-    edge_top_n: Optional[int] = None
-    edge_width_range: Tuple[float, float] = (0.5, 0.8)
-    edge_widths: Tuple[float, float, float, float] = (0.5, 0.8, 1.0, 1.2)
-    edge_similarity_threshold: float = 0.0
-    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
-
-    #
-    # F
-    #
-    field: Optional[str] = None
-
-    #
-    # I
-    #
-    initial_newline: bool = False
-
-    #
-    # K
-    #
-    kernel_bandwidth: float = 0.1
-    keys_order_by: str = "alphabetical"
-
-    #
-    # L
-    #
-    line_color: Union[str, float, Sequence[float]] = "black"
-    line_width: float = 1.5
-
-    #
-    # M
-    #
-    manifold_algorithm: Optional[BaseEstimator] = None
-    marker_size: float = 7
-    match_threshold: float = 95.0
-    minimum_terms_in_cluster: int = 5
-    minimum_number_of_clusters: int = 10
-    maximum_occurrence: int = 10
-
-    #
-    # N
-    #
-    node_colors: Optional[List[Union[str, float, Sequence[float]]]] = None
-    node_size: int = 10
-    node_size_range: Tuple[int, int] = (5, 20)
-    novelty_threshold: float = 0.15
-    n_chars: int = 100
-    n_contexts: int = 10
-
-    #
-    # O
-    #
-    occurrence_threshold: int = 2
-    other_field: Optional[str] = None
-    other_term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_terms_in: Optional[list[str]] = None
-    other_terms_order_by: Optional[str] = None
-    other_top_n: Optional[int] = None
-
-    #
-    # P
-    #
-    pattern: Optional[str] = None
-    periods_with_at_least_one_record: int = 3
-    pie_hole: float = 0.4
-    plot_dimensions: Tuple[int, int] = (0, 1)
-
-    #
-    # Q
-    #
-    query_expression: Optional[str] = None
-    quiet: bool = False
-
-    #
-    # R
-    #
-    ratio_threshold: float = 0.5
-    recent_periods: int = 3
-    record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    records_match: Optional[Dict[str, List[str]]] = None
-    records_order_by: Optional[str] = None  # order_records_by
-    regex_flags: int = 0
-    regex_search: bool = False
-    replacement: Optional[str] = None
-    root_directory: str = "./"  # root_dir
-
-    #
-    # S
-    #
-    source_field: Optional[str] = None
-    source_fields: Optional[list[str]] = None
-    spring_layout_iterations: int = 50
-    spring_layout_k: Optional[float] = 0.1
-    spring_layout_seed: int = 42
-    stemming_fn: Optional[Callable] = None
-
-    #
-    # T
-    #
-    target_field: Optional[str] = None
-    term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    term_counters: bool = True
-    term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    terms_in: Optional[list[str]] = None
-    terms_order_by: Optional[str] = None
-    terms_per_year: int = 5
-    textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
-    textfont_opacity_range: Tuple[float, float] = (0.5, 1)
-    textfont_opacity: float = 1.0
-    textfont_size_range: Tuple[int, int] = (8, 16)
-    textfont_size: float = 10
-    tfidf_norm: Optional[str] = None
-    tfidf_smooth_idf: bool = False
-    tfidf_sublinear_tf: bool = False  # sublinear_tf
-    tfidf_use_idf: bool = False  # using_idf_reweighting
-    thesaurus_file: str = "no_name.the.txt"
-    time_window: int = 2
-    title_text: Optional[str] = None
-    top_n: Optional[int] = None
-    top_terms_by_theme: int = 5
-    total_records_threshold: int = 7
-    tqdm_disable: bool = False
-    transformation_function: Optional[Callable[[Any], Any]] = None
-
-    #
-    # U
-    #
-    unit_of_analysis: Optional[str] = None
-
-    #
-    # V
-    #
-
-    #
-    # X
-    #
-    xaxes_range: Optional[Tuple[float, float]] = None
-    xaxes_title_text: Optional[str] = None
-
-    #
-    # Y
-    #
-    yaxes_range: Optional[Tuple[float, float]] = None
-    yaxes_title_text: Optional[str] = None
-    yshift: float = 4
-
-    #
-    # W
-    #
-    word: Optional[str] = None
-    word_length: int = 50
-
-    #
-    # Z
-    #
-    zotero_api_key: Optional[str] = None
-    zotero_library_id: Optional[str] = None
-    zotero_library_type: Optional[str] = None
-
-    ##########
-    ##########
-    ##########
-    ##########
-
-    # -------------------------------------------------------------------------
-    # PLOT PROPERTIES:
-    # -------------------------------------------------------------------------
-
-    #
-    width: float = 400
-    height: float = 400
-    #
-
-    # -------------------------------------------------------------------------
-    def __init__(self, **kwargs):
-        self.update(**kwargs)
-
-    def update(self, **kwargs):
-        for key, value in kwargs.items():
-            if key not in self.__annotations__:
-                raise ValueError(f"Unknown parameter: {key}")
-            setattr(self, key, value)
-        return self
+from .params import Params
 
 
-# ==============================================================================
-# PARAMS MIXIN
-# ==============================================================================
+class SortAxesMixin:
+
+    def sort_columns(self, data_frame):
+        counters = pd.DataFrame({"term": data_frame.columns.tolist()})
+        counters = self._extract_term_occurrences(counters)
+        counters = self._extract_citation_counts(counters)
+        sorted_topics = self._rank_terms_by_count_and_citations(counters)
+        data_frame = data_frame[sorted_topics]
+        return data_frame
+
+    def sort_index(self, data_frame):
+        counters = pd.DataFrame({"term": data_frame.index.tolist()})
+        counters = self._extract_term_occurrences(counters)
+        counters = self._extract_citation_counts(counters)
+        sorted_topics = self._rank_terms_by_count_and_citations(counters)
+        data_frame = data_frame.loc[sorted_topics, :]
+        return data_frame
+
+    def _rank_terms_by_count_and_citations(self, counters):
+        counters = counters.sort_values(
+            by=["OCC", "citations", "term"], ascending=[False, False, True]
+        )
+        sorted_topics = counters.term.tolist()
+        return sorted_topics
+
+    def _extract_citation_counts(self, counters):
+        counters["citations"] = counters.term.str.split()
+        counters["citations"] = counters["citations"].map(lambda x: x[-1])
+        counters["citations"] = counters["citations"].str.split(":")
+        counters["citations"] = counters["citations"].map(lambda x: x[1]).astype(int)
+        return counters
+
+    def _extract_term_occurrences(self, counters):
+        counters["OCC"] = counters.term.str.split()
+        counters["OCC"] = counters["OCC"].map(lambda x: x[-1])
+        counters["OCC"] = counters["OCC"].str.split(":")
+        counters["OCC"] = counters["OCC"].map(lambda x: x[0]).astype(int)
+        return counters
 
 
 class ParamsMixin:
@@ -297,6 +96,26 @@ class ParamsMixin:
             param_name="case_sensitive",
         )
         self.params.case_sensitive = case_sensitive
+        return self
+
+    def having_field_matching(self, pattern: str) -> Self:
+        pattern = internal__check_required_str(
+            value=pattern,
+            param_name="pattern",
+        )
+        self.params.pattern = pattern
+        return self
+
+    def having_patterns_matching(self, patterns) -> Self:
+        self.params.pattern = patterns
+        return self
+
+    def having_text_matching(self, pattern: Optional[str]) -> Self:
+        pattern = internal__check_optional_str(
+            value=pattern,
+            param_name="pattern",
+        )
+        self.params.pattern = pattern
         return self
 
     def having_keys_ordered_by(self, keys_order_by: str) -> Self:
@@ -1104,25 +923,17 @@ class ParamsMixin:
         self.params.records_match = records_match
         return self
 
-    def where_records_ordered_by(self, records_order_by: Optional[str]) -> Self:
-        records_order_by = internal__check_optional_str(
-            value=records_order_by,
-            param_name="records_order_by",
-        )
+    def where_records_ordered_by(self, records_order_by: RecordsOrderBy) -> Self:
+        if not isinstance(records_order_by, RecordsOrderBy):
+            raise TypeError(
+                "records_order_by must be an instance of RecordsOrderBy enum"
+            )
         self.params.records_order_by = records_order_by
         return self
 
     # ==========================================================================
     # WITH_* → Configuration (WHAT to analyze?)
     # ==========================================================================
-
-    def having_abstract_matching(self, pattern: str) -> Self:
-        pattern = internal__check_required_str(
-            value=pattern,
-            param_name="pattern",
-        )
-        self.params.pattern = pattern
-        return self
 
     def with_column(self, column: str) -> Self:
         column = internal__check_required_str(
@@ -1148,20 +959,12 @@ class ParamsMixin:
         self.params.correlation_method = correlation_method
         return self
 
-    def with_field(self, field: str) -> Self:
-        field = internal__check_required_str(
+    def with_field(self, field: Field) -> Self:
+        field = internal__check_required_field(
             value=field,
             param_name="field",
         )
         self.params.field = field
-        return self
-
-    def having_field_matching(self, pattern: str) -> Self:
-        pattern = internal__check_required_str(
-            value=pattern,
-            param_name="pattern",
-        )
-        self.params.pattern = pattern
         return self
 
     def with_other_field(self, other_field: Optional[str]) -> Self:
@@ -1174,10 +977,6 @@ class ParamsMixin:
 
     def with_params(self, params) -> Self:
         self.update(**params.__dict__)
-        return self
-
-    def having_patterns_matching(self, patterns) -> Self:
-        self.params.pattern = patterns
         return self
 
     def with_query_expression(self, query_expression: str) -> Self:

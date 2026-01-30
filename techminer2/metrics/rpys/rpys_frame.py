@@ -15,7 +15,7 @@ Example:
     ...     RPYSDataFrame()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... ).head()
           Num References  Median
@@ -30,10 +30,8 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 
 
 class RPYSDataFrame(
@@ -44,7 +42,7 @@ class RPYSDataFrame(
     def run(self):
         """:meta private:"""
 
-        references = internal__load_filtered_records_from_database(params=self.params)
+        references = load_filtered_main_data(params=self.params)
 
         references = references[["year"]]
         references = references.dropna()

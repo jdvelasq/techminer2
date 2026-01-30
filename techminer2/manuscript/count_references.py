@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.manuscript import CountReferences
     >>> (
     ...     CountReferences()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -27,7 +27,7 @@ import glob
 import os
 import re
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 
 
 class CountReferences(

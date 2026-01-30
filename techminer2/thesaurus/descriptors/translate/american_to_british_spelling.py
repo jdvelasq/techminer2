@@ -26,7 +26,7 @@ Example:
     >>> from techminer2.thesaurus.descriptors import AmericanToBritishSpelling
     >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, )
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -64,7 +64,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import (
     AmericanToBritishSpelling as UserAmericanToBritishSpelling,
 )

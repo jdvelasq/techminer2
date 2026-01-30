@@ -23,7 +23,7 @@ Example:
     >>> # Create and run the thesaurus initializator
     >>> initializator = (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> initializator.run()
 
@@ -31,7 +31,7 @@ Example:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
 """
@@ -40,7 +40,7 @@ import sys
 
 import pandas as pd  # type: ignore
 
-from techminer2._internals.mixins import Params, ParamsMixin
+from techminer2._internals import Params, ParamsMixin
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )

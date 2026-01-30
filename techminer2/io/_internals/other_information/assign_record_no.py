@@ -2,6 +2,8 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
+from techminer2 import Field
+
 
 def assign_record_no(root_directory):
 
@@ -18,7 +20,7 @@ def assign_record_no(root_directory):
     )
 
     num_zeros = len(str(len(dataframe)))
-    dataframe["record_no"] = [
+    dataframe[Field.RECNO.value] = [
         f"{i:0{num_zeros}d}" for i in range(1, len(dataframe) + 1)
     ]
 

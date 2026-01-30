@@ -11,6 +11,7 @@ Perform the evaluation under the following non-negotiable constraints:
 - The code should reflect how professional Python code is written in practice, not academic or tutorial style.
 - All recommendations must be aligned with the practices in Python's major libraries (pandas, requests, matplotlib, scikit-learn, numpy, scipy, statsmodels, etc.)
 - Imported or external functions are assumed correct and reviewed and must not be re-evaluated unless their usage degrades clarity, correctness, or maintainability.
+- Doctest must be robusts.
 
 Focus the review and evaluate the code strictly on:
 - Naming precision and semantic correctness

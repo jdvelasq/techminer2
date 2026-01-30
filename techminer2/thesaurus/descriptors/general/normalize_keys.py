@@ -26,7 +26,7 @@ Example:
     >>> from techminer2.thesaurus.descriptors import NormalizeKeys
     >>> (
     ...     NormalizeKeys()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -70,7 +70,7 @@ from importlib.resources import files
 from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
     internal__load_reversed_thesaurus_as_mapping,

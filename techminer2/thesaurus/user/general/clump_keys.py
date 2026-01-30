@@ -18,7 +18,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -51,7 +51,7 @@ Smoke tests:
     ...     ClumpKeys(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
     INFO: Thesaurus clumped successfully.
@@ -86,7 +86,7 @@ import re
 
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )

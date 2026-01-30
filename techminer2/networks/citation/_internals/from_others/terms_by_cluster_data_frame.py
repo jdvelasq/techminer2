@@ -11,7 +11,7 @@ Builds a terms by cluster frame from other fields.
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
     internal__cluster_nx_graph,
     internal__extract_communities_to_frame,

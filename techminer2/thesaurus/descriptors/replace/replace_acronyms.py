@@ -75,7 +75,7 @@ import sys
 from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import Params, ParamsMixin
+from techminer2._internals import Params, ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
     internal__get_user_thesaurus_file_path,

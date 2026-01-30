@@ -18,7 +18,7 @@
 ## ...     custom_terms=None,
 ## ...     #
 ## ...     # DATABASE:
-## ...     .where_root_directory("examples/fintech/")
+## ...     .where_root_directory("examples/small/")
 ## ...     .where_database("main")
 ## ...     .where_record_years_range(None, None)
 ## ...     .where_record_citations_range(None, None)
@@ -35,7 +35,7 @@ Dolata M. 2:0181         2          0.0   0.222222  0.100000
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import internal__compute_network_metrics
 from techminer2.networks.coupling._internals.from_others.create_nx_graph import (
     internal__create_nx_graph,

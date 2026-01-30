@@ -1,0 +1,161 @@
+from enum import Enum
+
+
+class RecordsOrderBy(Enum):
+
+    DATE_NEWEST = "date_newest"
+    DATE_OLDEST = "date_oldest"
+    GLOBAL_CITED_BY_HIGHEST = "global_cited_by_highest"
+    GLOBAL_CITED_BY_LOWEST = "global_cited_by_lowest"
+    LOCAL_CITED_BY_HIGHEST = "local_cited_by_highest"
+    LOCAL_CITED_BY_LOWEST = "local_cited_by_lowest"
+    FIRST_AUTHOR_A_TO_Z = "first_author_a_to_z"
+    FIRST_AUTHOR_Z_TO_A = "first_author_z_to_a"
+    SOURCE_TITLE_A_TO_Z = "source_title_a_to_z"
+    SOURCE_TITLE_Z_TO_A = "source_title_z_to_a"
+
+
+class Field(Enum):
+
+    #
+    # A
+    #
+    ABS_RAW = "abstract_raw"
+    ABS_TOK = "abstract_tokenized"
+    ABS_UPPER = "abstract_uppercase"
+    AFFIL = "affiliations"
+    ARTNUM = "scopus_art_no"
+    AUTH = "authors"
+    AUTH_AFFIL = "authors_with_affiliations"
+    AUTH_FULL = "author_full_names"
+    AUTH_ID = "author_ids"
+    AUTH_ID_RAW = "author_ids_raw"
+    AUTH_RAW = "authors_raw"
+    AUTHKEY = "author_keywords"
+    AUTHKEY_NORM = "author_keywords_norm"
+    AUTHKEY_RAW = "author_keywords_raw"
+
+    #
+    # C
+    #
+    CASREGNUMBER = "cas_reg_number"
+    CITCOUNT_GLOBAL = "citation_count_global"
+    CITCOUNT_LOCAL = "citation_count_local"
+    CODEN = "coden"
+    CONFCODE = "conference_code"
+    CONFDATE = "conference_date"
+    CONFLOC = "conference_location"
+    CONFNAME = "conference_name"
+    CORRESP = "correspondence_address"
+
+    #
+    # D
+    #
+    DOCTYPE = "document_type"
+    DOCTYPE_RAW = "document_type_raw"
+    DOI = "doi"
+    EDITOR = "editors"
+
+    #
+    # E
+    #
+    EID = "document_identifier"
+    EISSN = "eissn"
+
+    #
+    # F
+    #
+    FUND_DETAILS = "funding_details"
+    FUND_SPONSORS = "funding_sponsors"
+    FUND_TEXTS = "funding_texts"
+
+    #
+    # I
+    #
+    IDXKEY = "index_keywords"
+    IDXKEY_NORM = "index_keywords_norm"
+    IDXKEY_RAW = "index_keywords_raw"
+    ISBN = "isbn"
+    ISSN = "issn"
+    ISSNP = "issnp"
+    ISSUE = "issue"
+
+    #
+    # K
+    #
+    KEY = "keywords"
+    KEY_NORM = "keywords_norm"
+    KEY_RAW = "keywords_raw"
+    KEYTERMS_RAW = "keyterms_raw"
+    KEYTERMS = "keyterms"
+
+    #
+    # L
+    #
+    LANGUAGE = "language"
+    LINK = "link"
+
+    #
+    # M
+    #
+    MANUFACTURER = "manufacturer"
+
+    #
+    # N
+    #
+    NOUNPH = "noun_phrases"
+    NOUNPH_ABS = "noun_phrases_abstract"
+    NOUNPH_ABS_RAW = "noun_phrases_abstract_raw"
+    NOUNPH_RAW = "noun_phrases_raw"
+    NOUNPH_TITLE = "noun_phrases_title"
+    NOUNPH_TITLE_RAW = "noun_phrases_title_raw"
+    NOUNPH_SPACY = "noun_phrases_spacy"
+    NOUNPH_TEXTBLOB = "noun_phrases_textblob"
+    NUMAUTH = "number_of_authors"
+    NUMREF = "number_of_references"
+
+    #
+    # O
+    #
+    OA = "open_access"
+
+    #
+    # P
+    #
+    PAGEFIRST = "page_start"
+    PAGELAST = "page_end"
+    PAGES = "page_count"
+    PUBLISHER = "publisher"
+    PUBMED = "pubmed"
+    PUBSTAGE = "publication_stage"
+    PUBYEAR = "year"
+
+    #
+    # R
+    #
+    RECID = "record_id"
+    RECNO = "record_no"
+    REF_GLOBAL_RAW = "references_global_raw"
+
+    #
+    # S
+    #
+    SEQNUM = "sequence_numbers"
+    SOURCE = "source"
+    SRCTITLE_NORM = "source_title_norm"
+    SRCTITLE_ABBR = "source_title_abbr"
+    SRCTITLE_RAW = "source_title_raw"
+    SUBJAREA = "subject_areas"
+
+    #
+    # T
+    #
+    TITLE_RAW = "title_raw"
+    TITLE_TOK = "title_tokenized"
+    TITLE_UPPER = "title_uppercase"
+    TRADENAME = "tradenames"
+
+    #
+    # V
+    #
+    VOL = "volume"

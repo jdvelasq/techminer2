@@ -34,7 +34,7 @@ Example:
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT na_field FROM database;")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -53,7 +53,7 @@ Example:
     ...     .with_other_field("index_keywords_raw")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> fillna_operator.run()
 
@@ -62,7 +62,7 @@ Example:
     >>> query = (
     ...     Query()
     ...     .with_query_expression("SELECT na_field FROM database;")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -80,7 +80,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.io._internals.operations.coalesce_column import coalesce_column
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 

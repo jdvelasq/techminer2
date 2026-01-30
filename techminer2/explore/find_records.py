@@ -27,7 +27,7 @@ Example:
     ...     .having_case_sensitive(False)
     ...     .having_regex_flags(0)
     ...     #
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -62,26 +62,19 @@ Example:
 
 
 """
-from techminer2._internals.mixins import (
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access.load_filtered_main_data import (
+    load_filtered_main_data,
 )
-from techminer2._internals.user_data.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.record_builders import dicts_to_strings, records_to_dicts
 
 
-class FindRecords(
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-):
+class FindRecords(ParamsMixin):
     """:meta private:"""
 
     # -------------------------------------------------------------------------
     def _step_01_load_the_database(self):
-        return internal__load_filtered_records_from_database(params=self.params)
+        return load_filtered_main_data(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_02_filter_the_records(self, records):
@@ -105,10 +98,7 @@ class FindRecords(
 
         records = self._step_01_load_the_database()
         records = self._step_02_filter_the_records(records)
-        mapping = self.build_record_mapping(records)
-        documents = self.build_record_viewer(mapping)
+        mapping = records_to_dicts(records)
+        documents = dicts_to_strings(mapping)
 
         return documents
-
-
-# =============================================================================

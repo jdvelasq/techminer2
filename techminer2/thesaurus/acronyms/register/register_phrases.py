@@ -40,7 +40,7 @@ Example:
 import sys
 from importlib.resources import files
 
-from techminer2._internals.mixins import Params, ParamsMixin
+from techminer2._internals import Params, ParamsMixin
 from techminer2._internals.package_data.text_processing import (
     internal__sort_text_processing_terms,
 )

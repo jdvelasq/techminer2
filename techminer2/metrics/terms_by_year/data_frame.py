@@ -31,7 +31,7 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -71,7 +71,7 @@ Example:
     ...     .using_term_counters(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -111,7 +111,7 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -135,10 +135,8 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin, SortAxesMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin, SortAxesMixin
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.visualization.data_frame import DataFrame as PerformanceDataFrame
 
 
@@ -150,7 +148,7 @@ class DataFrame(
 
     # ----------------------------------------------------------------------------------------------------
     def _step_1_load_the_database(self):
-        return internal__load_filtered_records_from_database(params=self.params)
+        return load_filtered_main_data(params=self.params)
 
     def _step_2_get_years_range(self, data_frame):
         return data_frame.year.min(), data_frame.year.max()

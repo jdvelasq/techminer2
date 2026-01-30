@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Node Degree Frame"""
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
     internal__assign_degree_to_nodes,
     internal__collect_node_degrees,

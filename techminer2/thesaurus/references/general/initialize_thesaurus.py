@@ -65,13 +65,11 @@ import sys
 import pandas as pd  # type: ignore
 from tqdm import tqdm
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import (
     load_all_records_from_database,  # type: ignore
 )
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.thesaurus._internals import ThesaurusMixin
 
 tqdm.pandas()
@@ -134,7 +132,7 @@ class InitializeThesaurus(
             sys.stderr.flush()
 
         # loads the dataframe
-        main_documents = internal__load_filtered_records_from_database(self.params)
+        main_documents = load_filtered_main_data(self.params)
         main_documents = main_documents[main_documents.global_citations > 0]
         main_documents = main_documents[
             ["record_id", "document_title", "authors", "year"]

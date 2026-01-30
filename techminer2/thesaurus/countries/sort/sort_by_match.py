@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.thesaurus.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> from techminer2.thesaurus.countries import SortByMatch
@@ -29,7 +29,7 @@ Example:
     ...     .having_regex_search(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     #
     ...     .run()
     ... )
@@ -38,7 +38,7 @@ Example:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
     China
       Cheung Kong Graduate School of Business, and Institute of Internet Financ...
@@ -60,7 +60,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByMatch as UserSortByMatch
 
 

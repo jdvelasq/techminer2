@@ -23,7 +23,7 @@ Network Metrics
 ## ...     .having_terms_in(None)
 ## ...     #
 ## ...     # DATABASE:
-## ...     .where_root_directory("examples/fintech/")
+## ...     .where_root_directory("examples/small/")
 ## ...     .where_database("main")
 ## ...     .where_record_years_range(None, None)
 ## ...     .where_record_citations_range(None, None)
@@ -39,7 +39,7 @@ COMMUN ACM 1:12                     25     0.070961   0.878788  0.044207
 MANAGE SCI 1:30                     25     0.016051   0.878788  0.041488
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.nx.compute_network_metrics import (
     internal__compute_network_metrics,
 )

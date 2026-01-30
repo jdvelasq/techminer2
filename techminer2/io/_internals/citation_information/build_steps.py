@@ -1,6 +1,7 @@
 # CODE_REVIEW: 2026-01-26
 
-from ...._internals.params_mixin import Params
+from ...._internals import Params
+from ..operations import DataFile
 from ..step import Step
 
 
@@ -29,7 +30,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
             function=normalize_author_ids,
             kwargs={
                 "root_directory": params.root_directory,
-                "file": "main.csv.zip",
+                "file": DataFile.MAIN,
             },
             count_message="{count} author IDs normalized",
         ),
@@ -38,7 +39,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
             function=normalize_author_ids,
             kwargs={
                 "root_directory": params.root_directory,
-                "file": "references.csv.zip",
+                "file": DataFile.REFERENCES,
             },
             count_message="{count} author IDs normalized",
         ),
@@ -47,7 +48,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
             function=normalize_authors,
             kwargs={
                 "root_directory": params.root_directory,
-                "file": "main.csv.zip",
+                "file": DataFile.MAIN,
             },
             count_message="{count} author records normalized",
         ),
@@ -56,7 +57,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
             function=normalize_authors,
             kwargs={
                 "root_directory": params.root_directory,
-                "file": "references.csv.zip",
+                "file": DataFile.REFERENCES,
             },
             count_message="{count} author records normalized",
         ),

@@ -16,7 +16,7 @@ Example:
     ...     .using_zotero_api_key("MifzqqRsPK5OHvmNoW4Y9Zre")  # https://www.zotero.org/settings/keys/new
     ...     .using_zotero_library_id(5242364)   # https://www.zotero.org/groups/5242364/fintech-scopus
     ...     .using_zotero_library_type("group")  # "user" or "group"
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run() # doctest: +ELLIPSIS +SKIP
 
 """
@@ -28,8 +28,8 @@ from colorama import Fore, init
 from pyzotero import zotero
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import load_all_records_from_database
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_all_records_from_database
 
 
 class ExportRecordNoToZotero(ParamsMixin):

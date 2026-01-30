@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Data Frame
 ===============================================================================
@@ -23,7 +17,7 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -48,11 +42,10 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-    internal__load_user_stopwords,
-)
+
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
+from techminer2._internals.stopwords import load_user_stopwords
 
 SELECTED_COLUMNS = {
     "OCC": [
@@ -85,9 +78,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def step_01_load_the_database(self):
-        self.data_frame = internal__load_filtered_records_from_database(
-            params=self.params
-        )
+        self.data_frame = load_filtered_main_data(params=self.params)
 
     # -------------------------------------------------------------------------
     def step_02_select_metric_fields(self):
@@ -214,7 +205,7 @@ class DataFrame(
     def step_07_remove_stopwords(self):
 
         grouped = self.grouped.copy()
-        stopwords = internal__load_user_stopwords(params=self.params)
+        stopwords = load_user_stopwords(params=self.params)
         grouped = grouped.drop(stopwords, axis=0, errors="ignore")
         self.grouped = grouped
 

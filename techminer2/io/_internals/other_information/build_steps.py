@@ -1,6 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
-from ...._internals.params_mixin import Params
+from ...._internals import Params
 from ..step import Step
 
 
@@ -10,6 +10,7 @@ def build_other_information_steps(params: Params) -> list[Step]:
     from .assign_record_no import assign_record_no
     from .calculate_num_authors import calculate_num_authors
     from .calculate_num_global_references import calculate_num_global_references
+    from .create_local_citation_count import create_local_citation_count
     from .normalize_casregnumber import normalize_casregnumber
     from .normalize_conference_code import normalize_conference_code
     from .normalize_conference_date import normalize_conference_date
@@ -95,6 +96,12 @@ def build_other_information_steps(params: Params) -> list[Step]:
             function=calculate_num_global_references,
             kwargs=common_kwargs,
             count_message="{count} reference counts calculated",
+        ),
+        Step(
+            name="Creating local citation count",
+            function=create_local_citation_count,
+            kwargs=common_kwargs,
+            count_message="{count} local citation counts created",
         ),
     ]
 

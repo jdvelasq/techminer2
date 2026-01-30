@@ -1,9 +1,3 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 """
 Bar Plot
 ===============================================================================
@@ -30,7 +24,7 @@ Example:
     ...     .using_yaxes_title_text("OCC")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -45,7 +39,8 @@ Example:
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from techminer2._internals.params_mixin import ParamsMixin
+
+from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.internal__bar_plot import internal__bar_plot
 from techminer2.visualization.data_frame import DataFrame
 

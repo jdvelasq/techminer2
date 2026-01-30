@@ -1,6 +1,7 @@
 import pandas as pd  # type: ignore
 
-from techminer2.io._internals.operations import transform_column
+from techminer2 import Field
+from techminer2.io._internals.operations import DataFile, transform_column
 
 
 def _normalize(series: pd.Series) -> pd.Series:
@@ -20,11 +21,11 @@ def _normalize(series: pd.Series) -> pd.Series:
     return series
 
 
-def normalize_author_ids(root_directory: str, file: str) -> int:
+def normalize_author_ids(root_directory: str, file: DataFile) -> int:
 
     return transform_column(
-        source="author_ids_raw",
-        target="author_ids",
+        source=Field.AUTH_ID_RAW,
+        target=Field.AUTH_ID,
         function=_normalize,
         root_directory=root_directory,
         file=file,

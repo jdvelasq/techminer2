@@ -21,7 +21,7 @@ Example:
     ...     .with_word_length((200, 400))
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -45,12 +45,10 @@ import pandas as pd  # type: ignore
 from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
-)
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
 )
 
 
@@ -61,7 +59,7 @@ class FirstParagraph(
 
     # -------------------------------------------------------------------------
     def internal__load_the_database(self):
-        self.records = internal__load_filtered_records_from_database(params=self.params)
+        self.records = load_filtered_main_data(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__set_record_index(self):

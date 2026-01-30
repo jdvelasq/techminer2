@@ -8,15 +8,13 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.visualization.data_frame import DataFrame as TermsByYearMetricsDataFrame
 
 
 # ------------------------------------------------------------------------------
 def step_01_load_and_select_records(params):
-    records = internal__load_filtered_records_from_database(params=params)
+    records = load_filtered_main_data(params=params)
     return records
 
 

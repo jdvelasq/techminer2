@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
+from techminer2 import Field
+
 
 @lru_cache(maxsize=1)
 def _load_subject_areas() -> pd.DataFrame:
@@ -13,12 +15,7 @@ def _load_subject_areas() -> pd.DataFrame:
     return pd.read_csv(str(data_path), encoding="utf-8")
 
 
-def normalize_subject_areas(
-    issn_column: str,
-    eissn_column: str,
-    target: str,
-    root_directory: str,
-) -> int:
+def normalize_subject_areas(root_directory: str) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
@@ -32,35 +29,38 @@ def normalize_subject_areas(
         low_memory=False,
     )
 
-    if issn_column not in dataframe.columns and eissn_column not in dataframe.columns:
+    if (
+        Field.ISSN.value not in dataframe.columns
+        and Field.EISSN.value not in dataframe.columns
+    ):
         return 0
 
     subject_areas_df = _load_subject_areas()
 
     issn_mapping = dict(
         zip(
-            subject_areas_df["issn"].dropna(),
-            subject_areas_df["subject_areas"].dropna(),
+            subject_areas_df[Field.ISSN.value].dropna(),
+            subject_areas_df[Field.SUBJAREA.value].dropna(),
         )
     )
     eissn_mapping = dict(
         zip(
-            subject_areas_df["eissn"].dropna(),
-            subject_areas_df["subject_areas"].dropna(),
+            subject_areas_df[Field.EISSN.value].dropna(),
+            subject_areas_df[Field.SUBJAREA.value].dropna(),
         )
     )
 
-    dataframe[target] = None
+    dataframe[Field.SUBJAREA.value] = None
 
-    if issn_column in dataframe.columns:
-        dataframe[target] = dataframe[issn_column].map(issn_mapping)
+    if Field.ISSN.value in dataframe.columns:
+        dataframe[Field.SUBJAREA.value] = dataframe[Field.ISSN.value].map(issn_mapping)
 
-    if eissn_column in dataframe.columns:
-        dataframe[target] = dataframe[target].fillna(
-            dataframe[eissn_column].map(eissn_mapping)
+    if Field.EISSN.value in dataframe.columns:
+        dataframe[Field.SUBJAREA.value] = dataframe[Field.SUBJAREA.value].fillna(
+            dataframe[Field.EISSN.value].map(eissn_mapping)
         )
 
-    non_null_count = int(dataframe[target].notna().sum())
+    non_null_count = int(dataframe[Field.SUBJAREA.value].notna().sum())
 
     temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(

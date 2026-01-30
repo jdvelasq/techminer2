@@ -25,7 +25,7 @@ Example:
     ...     .with_other_field("author_keywords_copy")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     #
     ...     .run()
     ... )
@@ -40,7 +40,7 @@ Example:
     ...     .with_other_field("author_keywords_renamed")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -50,7 +50,7 @@ Example:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT author_keywords_renamed FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -72,7 +72,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.io._internals.operations.rename_column import rename_column
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 

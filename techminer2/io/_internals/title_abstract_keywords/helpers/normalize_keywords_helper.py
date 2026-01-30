@@ -3,10 +3,16 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
+from techminer2 import Field
+
 KEYWORDS_MAX_LENGTH = 60
 
 
-def normalize_keywords_helper(source: str, target: str, root_directory: str) -> int:
+def normalize_keywords_helper(
+    source: Field,
+    target: Field,
+    root_directory: str,
+) -> int:
 
     database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 

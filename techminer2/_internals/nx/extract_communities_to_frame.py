@@ -6,10 +6,11 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 import pandas as pd  # type: ignore
+
+from techminer2._internals import Params
 from techminer2._internals.nx.create_clusters_to_terms_mapping import (
     internal__create_clusters_to_terms_mapping,
 )
-from techminer2._internals.params_mixin import Params
 
 
 def internal__extract_communities_to_frame(

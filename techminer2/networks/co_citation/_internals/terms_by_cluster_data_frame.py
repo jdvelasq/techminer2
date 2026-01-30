@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """Terms by Cluster Frame."""
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.nx import (
     internal__cluster_nx_graph,
     internal__extract_communities_to_frame,

@@ -25,7 +25,7 @@ Example:
     >>> from techminer2.thesaurus.references import SortByAlphabet
     >>> (
     ...     SortByAlphabet()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -63,7 +63,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByAlphabet as UserSortByAlphabet
 
 

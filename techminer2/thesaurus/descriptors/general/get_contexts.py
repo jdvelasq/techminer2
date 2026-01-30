@@ -31,7 +31,7 @@ Example:
     ...     GetContexts()
     ...     .with_patterns(["FINTECH"])
     ...     .having_n_contexts(10)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
     >>> from pprint import pprint
@@ -60,8 +60,8 @@ Example:
 """
 import sys
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2.text.concordances import ConcordantSentences
+from techminer2._internals import ParamsMixin
+from techminer2.text.concordances import ConcordanceSentences
 
 
 class GetContexts(
@@ -84,9 +84,9 @@ class GetContexts(
         for term in terms:
 
             contexts = (
-                ConcordantSentences()
+                ConcordanceSentences()
                 .update(**self.params.__dict__)
-                .having_abstract_matching(term)
+                .having_text_matching(term)
                 .run()
             )
 

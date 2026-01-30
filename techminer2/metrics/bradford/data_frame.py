@@ -18,7 +18,7 @@ Example:
     ...     DataFrame()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -36,10 +36,8 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 
 
 class DataFrame(
@@ -49,7 +47,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def internal__load_filtered_records(self):
-        self.records = internal__load_filtered_records_from_database(params=self.params)
+        self.records = load_filtered_main_data(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__compute_num_docs_published_by_source(self):

@@ -16,7 +16,7 @@ Example:
     >>> (
     ...     SearchString()
     ...     #
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -26,9 +26,9 @@ Example:
 """
 import os.path
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access.load_filtered_main_data import (
+    load_filtered_main_data,
 )
 
 
@@ -39,7 +39,7 @@ class SearchString(
 
     def run(self):
 
-        records = internal__load_filtered_records_from_database(params=self.params)
+        records = load_filtered_main_data(params=self.params)
         titles = records.raw_document_title.to_list()
 
         # divide titles into chunks of 10

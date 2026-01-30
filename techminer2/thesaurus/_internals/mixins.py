@@ -13,9 +13,7 @@ import pandas as pd
 from colorama import Fore
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.thesaurus._internals import (
     internal__create_fingerprint,
     internal__get_system_thesaurus_file_path,
@@ -25,7 +23,7 @@ from techminer2.thesaurus._internals import (
 )
 
 if TYPE_CHECKING:
-    from techminer2._internals.params_mixin import Params
+    from techminer2._internals import Params
 
 tqdm.pandas()
 
@@ -119,9 +117,7 @@ class ThesaurusMixin:
     # -------------------------------------------------------------------------
     def internal__load_filtered_records(self) -> None:
 
-        self.filtered_records = internal__load_filtered_records_from_database(
-            params=self.params
-        )
+        self.filtered_records = load_filtered_main_data(params=self.params)
 
     # -------------------------------------------------------------------------
     def internal__load_reversed_thesaurus_as_mapping(self) -> None:

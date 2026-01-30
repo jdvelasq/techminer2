@@ -26,7 +26,7 @@ Example:
     >>> # Creates, configures, an run the translator
     >>> translator = (
     ...     BritishToAmericanSpelling(tqdm_disable=True, )
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> translator.run()
 
@@ -39,7 +39,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import (
     BritishToAmericanSpelling as UserBritishToAmericanSpelling,
 )

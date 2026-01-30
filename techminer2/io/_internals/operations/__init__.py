@@ -1,6 +1,7 @@
 from .coalesce_column import coalesce_column
 from .copy_column import copy_column
 from .count_column_items import count_column_items
+from .data_file import DataFile
 from .delete_column import delete_column
 from .extract_uppercase import extract_uppercase
 from .merge_columns import merge_columns
@@ -13,6 +14,7 @@ __all__ = [
     "coalesce_column",
     "copy_column",
     "count_column_items",
+    "DataFile",
     "delete_column",
     "extract_uppercase",
     "merge_columns",

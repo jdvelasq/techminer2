@@ -27,7 +27,7 @@ Example:
     >>> sorter = (
     ...     SortByWordMatch()
     ...     .having_pattern("CREDIT")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> sorter.run()
 
@@ -65,7 +65,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByWordMatch as UserSortByWordMatch
 
 

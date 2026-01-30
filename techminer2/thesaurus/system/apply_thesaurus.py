@@ -25,7 +25,7 @@ Example:
     ...     .with_thesaurus_file("geography/country_to_region.the.txt")
     ...     .with_field("countries")
     ...     .with_other_field("regions")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> applier.run()
 
@@ -45,10 +45,10 @@ import sys
 
 from colorama import Fore
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import (
     load_all_records_from_database,
-    write_records_to_database,
+    save_main_data,
 )
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
@@ -152,7 +152,7 @@ class ApplyThesaurus(
 
     # -------------------------------------------------------------------------
     def internal__write_records(self):
-        write_records_to_database(params=self.params, records=self.records)
+        save_main_data(params=self.params, records=self.records)
 
     # -------------------------------------------------------------------------
     def run(self):

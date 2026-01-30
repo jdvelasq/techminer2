@@ -24,7 +24,7 @@ Example:
     ...     .with_other_field("num_authors_test")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     #
     ...     .run()
     ... )
@@ -34,7 +34,7 @@ Example:
     >>> (
     ...     Query()
     ...     .with_query_expression("SELECT authors, num_authors_test FROM database LIMIT 5;")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -57,7 +57,7 @@ Example:
     ... ).run()
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.io._internals.operations.count_column_items import count_column_items
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 

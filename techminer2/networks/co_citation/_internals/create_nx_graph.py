@@ -8,14 +8,12 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.data_access import load_filtered_main_data
 
 
 # -------------------------------------------------------------------------
 def _step_01_load_records(params):
-    return internal__load_filtered_records_from_database(params=params)
+    return load_filtered_main_data(params=params)
 
 
 # -------------------------------------------------------------------------

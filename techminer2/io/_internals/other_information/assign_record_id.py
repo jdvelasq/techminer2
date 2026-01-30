@@ -3,21 +3,25 @@ from pathlib import Path
 import numpy as np
 import pandas as pd  # type: ignore
 
+from techminer2 import Field
+
 
 def _get_author(dataframe):
-    return dataframe.authors.map(
-        lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]"
+    return dataframe[Field.AUTH.value].map(
+        lambda x: (
+            x.split("; ")[0].strip().split()[0] if not pd.isna(x) else "[Anonymous]"
+        )
     )
 
 
 def _get_source_title(dataframe):
 
-    source_title = dataframe.source_title_abbr.copy()
+    source_title = dataframe[Field.SRCTITLE_ABBR.value].copy()
     source_title_isna = source_title.map(pd.isna)
     source_title = pd.Series(
         np.where(
             source_title_isna,
-            dataframe.source_title.str[:29],
+            dataframe[Field.SRCTITLE_NORM.value].str[:29],
             source_title,
         )
     )
@@ -36,17 +40,17 @@ def _get_source_title(dataframe):
 
 
 def _get_year(dataframe):
-    return dataframe.year.map(str)
+    return dataframe[Field.PUBYEAR.value].map(str)
 
 
 def _get_volume(dataframe):
-    return dataframe.volume.map(
+    return dataframe[Field.VOL.value].map(
         lambda x: ", V" + str(x).replace(".0", "") if not pd.isna(x) else ""
     )
 
 
 def _get_page_start(dataframe):
-    return dataframe.page_start.map(
+    return dataframe[Field.PAGEFIRST.value].map(
         lambda x: ", P" + str(x).replace(".0", "") if not pd.isna(x) else ""
     )
 
@@ -82,7 +86,7 @@ def assign_record_id(root_directory: str) -> int:
 
     index = wos_ref[wos_ref.duplicated()].index
     if len(index) > 0:
-        wos_ref.loc[index] += ", " + dataframe.document_title.loc[index].str[
+        wos_ref.loc[index] += ", " + dataframe[Field.TITLE_RAW.value].loc[index].str[
             :29
         ].str.upper().str.replace(".", "").str.replace(" - ", " ").str.replace(
             ",", ""
@@ -94,10 +98,10 @@ def assign_record_id(root_directory: str) -> int:
             "'", ""
         )
 
-    dataframe["record_id"] = wos_ref.copy()
-    dataframe = dataframe.drop_duplicates(subset=["record_id"])
+    dataframe[Field.RECID.value] = wos_ref.copy()
+    dataframe = dataframe.drop_duplicates(subset=[Field.RECID.value])
 
-    non_null_count = int(dataframe["record_id"].notna().sum())
+    non_null_count = int(dataframe[Field.RECID.value].notna().sum())
 
     dataframe.to_csv(
         database_file,

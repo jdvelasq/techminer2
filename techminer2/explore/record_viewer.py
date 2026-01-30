@@ -62,7 +62,7 @@ Example:
     >>> viewer = (
     ...     RecordViewer()
     ...     #
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -118,26 +118,18 @@ Example:
 
 
 """
-from techminer2._internals.mixins import (
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access.load_filtered_main_data import (
+    load_filtered_main_data,
 )
-from techminer2._internals.user_data.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.record_builders import dicts_to_strings
 
 
-class RecordViewer(
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-):
+class RecordViewer(ParamsMixin):
     """:meta private:"""
 
     def run(self):
 
-        records = internal__load_filtered_records_from_database(params=self.params)
-        mapping = self.build_record_mapping(records)
-        documents = self.build_record_viewer(mapping)
-        return documents
+        dataframe = load_filtered_main_data(params=self.params)
+        string_list = dicts_to_strings(dataframe)
+        return string_list

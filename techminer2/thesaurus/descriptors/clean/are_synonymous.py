@@ -34,7 +34,7 @@ Example:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
                    lead_term                                    candidate_terms
     11  FINANCIAL_INDUSTRIES           FINANCIAL_SECTOR; FINANCIAL_TECHNOLOGIES
@@ -63,7 +63,7 @@ import pandas as pd
 from openai import OpenAI
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.templates.load_template import (
     internal__load_template,
 )

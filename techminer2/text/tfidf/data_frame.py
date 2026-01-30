@@ -34,7 +34,7 @@ Example:
     ...     .using_tfidf_use_idf(False)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -59,10 +59,8 @@ Example:
 import pandas as pd  # type: ignore
 from sklearn.feature_extraction.text import TfidfTransformer  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin, SortAxesMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin, SortAxesMixin
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.visualization.data_frame import DataFrame as TermsByYearMetricsDataFrame
 
 
@@ -73,7 +71,7 @@ class DataFrame(
     """:meta private:"""
 
     def _step_1_load_the_database(self):
-        return internal__load_filtered_records_from_database(params=self.params)
+        return load_filtered_main_data(params=self.params)
 
     def step_2_explode_data_frame(self, data_frame):
 

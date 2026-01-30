@@ -20,7 +20,7 @@ Smoke test:
     ...     df.to_csv(file_path, index=False, compression="zip")
     ...
     ...     # Case 1: Valid Copy
-    ...     n = copy_column("A", "B", root)
+    ...     n = copy_column(Fields.A, Fields.B, root)
     ...     df_new = pd.read_csv(file_path, compression="zip")
     ...     print(f"Copied: {n}")
     ...     print(df_new.columns.tolist())
@@ -28,7 +28,7 @@ Smoke test:
     ...
     ...     # Case 2: Missing Source (Fail Loudly)
     ...     try:
-    ...         copy_column("Z", "X", root)
+    ...         copy_column(Fields.Z, Fields.X, root)
     ...     except KeyError as e:
     ...         print("Caught expected error")
     Copied: 2
@@ -37,40 +37,31 @@ Smoke test:
     Caught expected error
 
 """
-from pathlib import Path
 
-import pandas as pd
+from techminer2 import Field
+
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
 
-def copy_column(source: str, target: str, root_directory: str) -> int:
+def copy_column(
+    source: Field,
+    target: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    load_data, save_data, get_path = get_file_operations(file)
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+    dataframe = load_data(root_directory=root_directory, usecols=None)
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+    if source.value not in dataframe.columns:
+        raise KeyError(
+            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+        )
 
-    if source not in dataframe.columns:
-        raise KeyError(f"Source column '{source}' not found in {database_file.name}")
+    dataframe[target.value] = dataframe[source.value]
 
-    dataframe[target] = dataframe[source]
+    save_data(df=dataframe, root_directory=root_directory)
 
-    non_null_count = int(dataframe[target].notna().sum())
-
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
-
-    return non_null_count
+    return int(dataframe[target.value].notna().sum())

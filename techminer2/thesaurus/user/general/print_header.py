@@ -19,7 +19,7 @@ Smoke tests:
     ...     InitializeThesaurus(quit=True)
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> from techminer2.thesaurus.user import PrintHeader
@@ -27,7 +27,7 @@ Smoke tests:
     ...     PrintHeader()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
 
@@ -38,7 +38,7 @@ Smoke tests:
 
 import sys
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import ThesaurusMixin
 from techminer2.thesaurus._internals.load_thesaurus_as_data_frame import (
     internal__load_thesaurus_as_data_frame,

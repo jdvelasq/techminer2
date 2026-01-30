@@ -8,7 +8,7 @@ Example:
     >>> from techminer2.thesaurus.acronyms.general import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus(quit=True)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> from techminer2.thesaurus.acronyms.general import PrintHeader
@@ -16,7 +16,7 @@ Example:
     ...     PrintHeader()
 
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
 
@@ -25,7 +25,7 @@ Example:
 
 """
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import PrintHeader as UserPrintHeader
 
 

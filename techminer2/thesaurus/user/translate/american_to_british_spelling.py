@@ -28,7 +28,7 @@ Example:
     >>> (
     ...     AmericanToBritishSpelling(tqdm_disable=True, )
     ...     .with_thesaurus_file("demo.the.txt")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -73,7 +73,7 @@ import sys
 from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import (
     ThesaurusMixin,
     internal__get_system_thesaurus_file_path,

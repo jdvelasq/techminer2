@@ -14,14 +14,14 @@ Example:
     >>> from techminer2.thesaurus.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> from techminer2.thesaurus.countries import SortByEndsWithMatch
     >>> (
     ...     SortByEndsWithMatch()
     ...     .having_pattern("Darussalam")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -29,7 +29,7 @@ Example:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
     Brunei Darussalam
       Universiti Brunei Darussalam, School of Business and Economics, Jln Tungk...
@@ -51,7 +51,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByEndsWithMatch as UserSortByEndsWithMatch
 
 

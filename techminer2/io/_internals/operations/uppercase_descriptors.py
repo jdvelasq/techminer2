@@ -1,14 +1,16 @@
 import re
-from pathlib import Path
 
 import pandas as pd  # type: ignore
 from pandarallel import pandarallel  # type: ignore
 
+from techminer2 import Field
 from techminer2._internals import stdout_to_stderr
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
 
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 from .helpers import (
     extract_urls,
     join_consecutive_descriptors,
@@ -191,43 +193,28 @@ def _normalize(text):
 
 
 def uppercase_descriptors(
-    source: str,
-    target: str,
+    source: Field,
+    target: Field,
     root_directory: str,
+    file: DataFile = DataFile.MAIN,
 ) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    load_data, save_data, get_path = get_file_operations(file)
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+    dataframe = load_data(root_directory=root_directory, usecols=None)
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
-
-    if source not in dataframe.columns:
-        return 0
+    if source.value not in dataframe.columns:
+        raise KeyError(
+            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+        )
 
     _get_compiled_patterns(dataframe)
 
     with stdout_to_stderr():
         progress_bar = True
         pandarallel.initialize(progress_bar=progress_bar, verbose=0)
-        dataframe[target] = dataframe[source].parallel_apply(_normalize)
+        dataframe[target.value] = dataframe[source.value].parallel_apply(_normalize)
 
-    non_null_count = int(dataframe[target].notna().sum())
+    save_data(df=dataframe, root_directory=root_directory)
 
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
-
-    return non_null_count
+    return int(dataframe[target.value].notna().sum())

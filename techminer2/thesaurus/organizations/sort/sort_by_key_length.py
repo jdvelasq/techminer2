@@ -29,7 +29,7 @@ Example:
     ...     SortByKeyLength()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> sorter.run()
 
@@ -67,7 +67,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByKeyLength as UserSortByKeyLength
 
 

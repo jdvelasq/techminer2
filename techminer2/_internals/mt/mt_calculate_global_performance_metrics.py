@@ -13,9 +13,7 @@ This function computes global performance (bibliometric) metrics for a given fie
 from techminer2._internals.mt.mt_sort_records_by_metric import (
     _mt_sort_records_by_metric,
 )
-from techminer2._internals.user_data.load_user_stopwords import (
-    internal__load_user_stopwords,
-)
+from techminer2._internals.stopwords import load_user_stopwords
 
 
 def _mt_calculate_global_performance_metrics(
@@ -212,7 +210,7 @@ def _mt_calculate_global_performance_metrics(
 
     # --------------------------------------------------------------------------------------------
     def remove_stopwords(indicators):
-        stopwords = internal__load_user_stopwords(root_dir=root_dir)
+        stopwords = load_user_stopwords(root_dir=root_dir)
         indicators = indicators.drop(stopwords, axis=0, errors="ignore")
         indicators = indicators.drop(field, axis=1)
         return indicators

@@ -15,13 +15,13 @@ Example:
     >>> from techminer2.thesaurus.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> from techminer2.thesaurus.countries import SortByWordLength
     >>> (
     ...     SortByWordLength()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -29,7 +29,7 @@ Example:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
     Netherlands
       Erasmus University Rotterdam, Burgemeester Oudlaan, Rotterdam, 50, Nether...
@@ -51,7 +51,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByWordLength as UserSortByWordLength
 
 

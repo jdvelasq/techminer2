@@ -25,7 +25,7 @@ Example:
     ...     .with_other_field("cleaned_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -40,7 +40,7 @@ Example:
     ...     .with_other_field("highlighted_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> highlighter.run()
 
@@ -49,7 +49,7 @@ Example:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT highlighted_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -77,7 +77,7 @@ Example:
     >>> from techminer2.database.operators import DeleteOperator
     >>> field_deleter = (
     ...     DeleteOperator()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> field_deleter.with_field("cleaned_raw_abstract").run()
     >>> field_deleter.with_field("highlighted_raw_abstract").run()
@@ -85,7 +85,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.io._internals.operations.uppercase_descriptors import (
     uppercase_descriptors,
 )

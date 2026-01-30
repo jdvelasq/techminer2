@@ -1,7 +1,9 @@
-# CODE_REVIEW: 2026-01-23
-from pathlib import Path
-
 import pandas as pd  # type: ignore
+
+from techminer2 import Field
+
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
 
 def _extract_uppercase_words(text):
@@ -11,35 +13,24 @@ def _extract_uppercase_words(text):
     return "; ".join(words) if words else pd.NA
 
 
-def extract_uppercase(source: str, target: str, root_directory: str) -> int:
+def extract_uppercase(
+    source: Field,
+    target: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    load_data, save_data, get_path = get_file_operations(file)
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+    dataframe = load_data(root_directory=root_directory, usecols=None)
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+    if source.value not in dataframe.columns:
+        raise KeyError(
+            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+        )
 
-    if source not in dataframe.columns:
-        return 0
+    dataframe[target.value] = dataframe[source.value].apply(_extract_uppercase_words)
 
-    dataframe[target] = dataframe[source].apply(_extract_uppercase_words)
+    save_data(df=dataframe, root_directory=root_directory)
 
-    non_null_count = int(dataframe[target].notna().sum())
-
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
-
-    return non_null_count
+    return int(dataframe[target.value].notna().sum())

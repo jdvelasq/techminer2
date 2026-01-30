@@ -17,7 +17,7 @@ Example:
     ...     #
     ...     .with_field("author_keywords_raw")
     ...     #
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -38,13 +38,11 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access.load_filtered_main_data import (
+    load_filtered_main_data,
 )
-from techminer2._internals.user_data.load_user_stopwords import (
-    internal__load_user_stopwords,
-)
+from techminer2._internals.stopwords.load_user_stopwords import load_user_stopwords
 
 
 class Coverage(
@@ -56,9 +54,9 @@ class Coverage(
 
         field = self.params.field
 
-        stopwords = internal__load_user_stopwords(params=self.params)
+        stopwords = load_user_stopwords(params=self.params)
 
-        documents = internal__load_filtered_records_from_database(params=self.params)
+        documents = load_filtered_main_data(params=self.params)
         documents = documents.reset_index()
         documents = documents[[field, "record_id"]]
 

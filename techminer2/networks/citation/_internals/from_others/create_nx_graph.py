@@ -8,9 +8,7 @@
 import networkx as nx  # type: ignore
 import numpy as np
 
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.visualization.data_frame import DataFrame as TermsByYearMetricsDataFrame
 
 
@@ -33,7 +31,7 @@ def __add_weighted_edges_from(
 ):
     unit_of_analysis = params.unit_of_analysis
 
-    records = internal__load_filtered_records_from_database(params)
+    records = load_filtered_main_data(params)
 
     #
     # data_frame contains the citing and cited articles.

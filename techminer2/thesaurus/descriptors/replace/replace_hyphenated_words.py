@@ -25,7 +25,7 @@ Example:
     >>> # Configure and run the replacer
     >>> replacer = (
     ...     ReplaceHyphenatedWords(tqdm_disable=True, )
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> replacer.run()
 
@@ -70,7 +70,7 @@ from colorama import Fore, init
 from textblob import Word  # type: ignore
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )

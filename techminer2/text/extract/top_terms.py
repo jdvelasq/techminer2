@@ -31,7 +31,7 @@ Example:
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -58,7 +58,7 @@ This example shows how to extract the top terms from the "author_keywords_raw" f
 database based on the specified parameters. The output includes the first 10 extracted terms.
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.visualization import DataFrame
 
 

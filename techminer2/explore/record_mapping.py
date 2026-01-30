@@ -9,56 +9,20 @@
 Record Mapping
 ===============================================================================
 
-Example:
-    >>> from techminer2.thesaurus.countries import (
-    ...     InitializeThesaurus as CreateCountryThesaurus,
-    ...     ApplyThesaurus as ApplyCountryThesaurus,
-    ... )
-    >>> from techminer2.thesaurus.organizations import (
-    ...     InitializeThesaurus as CreateOrganizationsThesaurus,
-    ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
-    ... )
-    >>> from techminer2.thesaurus.descriptors import (
-    ...     InitializeThesaurus as CreateDescriptorsThesaurus,
-    ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
-    ... )
-
-    >>> from pprint import pprint
-
-    >>> # Countries:
-    >>> CreateCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Organizations:
-    >>> CreateOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Descriptors:
-    >>> CreateDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-
-
-    >>> # Create, configure, and run the mapper
-    >>> # order_records_by:
-    >>> #   date_newest, date_oldest, global_cited_by_highest, global_cited_by_lowest
-    >>> #   local_cited_by_highest, local_cited_by_lowest, first_author_a_to_z
-    >>> #   first_author_z_to_a, source_title_a_to_z, source_title_z_to_a
-    >>> #
-    >>> from techminer2.explore import RecordMapping
+Smoke Test:
+    >>> from techminer2.explore import RecordMapping, RecordsOrderBy
     >>> mapping = (
     ...     RecordMapping()
     ...     #
-    ...     .where_root_directory("examples/fintech/")
-    ...     .where_database("main")
+    ...     .where_root_directory("examples/small/")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
-    ...     .where_records_ordered_by("global_cited_by_highest")
+    ...     .where_records_ordered_by(RecordsOrderBy.GLOBAL_CITED_BY_HIGHEST)
     ...     .run()
     ... )
 
-    >>> pprint(mapping[0]) # doctest: +SKIP
+    >>> pprint(mapping[0])
     {'AB': 'THE_FINANCIAL_SERVICES_INDUSTRY has been experiencing '
            'THE_RECENT_EMERGENCE of NEW_TECHNOLOGY_INNOVATIONS and '
            'PROCESS_DISRUPTIONS . THE_INDUSTRY overall , and '
@@ -99,25 +63,18 @@ Example:
 
 
 """
-from techminer2._internals.mixins import (
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access.load_filtered_main_data import (
+    load_filtered_main_data,
 )
-from techminer2._internals.user_data.load_filtered_records_from_database import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals.record_builders import records_to_dicts
 
 
-class RecordMapping(
-    ParamsMixin,
-    RecordMappingMixin,
-    RecordViewerMixin,
-):
+class RecordMapping(ParamsMixin):
     """:meta private:"""
 
     def run(self):
 
-        records = internal__load_filtered_records_from_database(params=self.params)
-        mapping = self.build_record_mapping(records)
+        records = load_filtered_main_data(params=self.params)
+        mapping = records_to_dicts(records)
         return mapping

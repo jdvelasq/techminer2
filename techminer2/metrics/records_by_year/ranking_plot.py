@@ -23,7 +23,7 @@ Example:
     ...     .using_textfont_size(10)
     ...     .using_yshift(4)
     ...     #
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -39,7 +39,7 @@ Example:
 
 
 """
-from techminer2._internals.params_mixin import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.internal__ranking_plot import internal__ranking_plot
 from techminer2.metrics.records_by_year.data_frame import DataFrame
 

@@ -2,53 +2,100 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-SCOPUS_2_TECHMINER_TAGS = {
-    "Abbreviated Source Title": "source_title_abbr",
-    "Abstract": "abstract_raw",
-    "Affiliations": "affiliations",
-    "Art. No.": "scopus_art_no",
-    "Author full names": "author_full_names",
-    "Author Keywords": "author_keywords_raw",
-    "Author(s) ID": "author_ids_raw",
-    "Authors with affiliations": "authors_with_affiliations",
-    "Authors": "authors_raw",
-    "Chemicals/CAS": "casregnumber",
-    "Cited by": "global_citation_count",
-    "CODEN": "coden",
-    "Conference code": "conference_code",
-    "Conference date": "conference_date",
-    "Conference location": "conference_location",
-    "Conference name": "conference_name",
-    "Correspondence Address": "correspondence_address",
-    "Document Type": "document_type_raw",
-    "DOI": "doi",
-    "Editors": "editors",
-    "EID": "eid",
-    "Funding Details": "funding_details",
-    "Funding Texts": "funding_texts",
-    "Index Keywords": "index_keywords_raw",
-    "ISBN": "isbn",
-    "ISSN": "issn",
-    "Issue": "issue",
-    "Language of Original Document": "language",
-    "Link": "link",
-    "Manufacturers": "manufacturers",
-    "Molecular Sequence Numbers": "molecular_sequence_numbers",
-    "Open Access": "open_access",
-    "Page count": "page_count",
-    "Page end": "page_end",
-    "Page start": "page_start",
-    "Publication Stage": "publication_stage",
-    "Publisher": "publisher",
-    "PubMed ID": "pubmed",
-    "References": "global_references_raw",
-    "Source title": "source_title_raw",
-    "Source": "source",
-    "Sponsors": "sponsors",
-    "Title": "document_title_raw",
-    "Tradenames": "tradenames",
-    "Volume": "volume",
-    "Year": "year",
+from techminer2.enums import Field
+
+SCOPUS_TO_TM2 = {
+    #
+    # A
+    #
+    "Abbreviated Source Title": Field.SRCTITLE_ABBR.value,
+    "Abstract": Field.ABS_RAW.value,
+    "Affiliations": Field.AFFIL.value,
+    "Art. No.": Field.ARTNUM.value,
+    "Author full names": Field.AUTH_FULL.value,
+    "Author Keywords": Field.AUTHKEY_RAW.value,
+    "Author(s) ID": Field.AUTH_ID_RAW.value,
+    "Authors with affiliations": Field.AUTH_AFFIL.value,
+    "Authors": Field.AUTH_RAW.value,
+    #
+    # C
+    #
+    "Chemicals/CAS": Field.CASREGNUMBER.value,
+    "Cited by": Field.CITCOUNT_GLOBAL.value,
+    "CODEN": Field.CODEN.value,
+    "Conference code": Field.CONFCODE.value,
+    "Conference date": Field.CONFDATE.value,
+    "Conference location": Field.CONFLOC.value,
+    "Conference name": Field.CONFNAME.value,
+    "Correspondence Address": Field.CORRESP.value,
+    #
+    # D
+    #
+    "Document Type": Field.DOCTYPE_RAW.value,
+    "DOI": Field.DOI.value,
+    #
+    # E
+    #
+    "Editors": Field.EDITOR.value,
+    "EID": Field.EID.value,
+    #
+    # F
+    #
+    "Funding Details": Field.FUND_DETAILS.value,
+    "Funding Texts": Field.FUND_TEXTS.value,
+    #
+    # I
+    #
+    "Index Keywords": Field.IDXKEY_RAW.value,
+    "ISBN": Field.ISBN.value,
+    "ISSN": Field.ISSN.value,
+    "Issue": Field.ISSUE.value,
+    #
+    # L
+    #
+    "Language of Original Document": Field.LANGUAGE.value,
+    "Link": Field.LINK.value,
+    #
+    # M
+    #
+    "Manufacturers": Field.MANUFACTURER.value,
+    "Molecular Sequence Numbers": Field.SEQNUM.value,
+    #
+    # O
+    #
+    "Open Access": Field.OA.value,
+    #
+    # P
+    #
+    "Page count": Field.PAGES.value,
+    "Page end": Field.PAGELAST.value,
+    "Page start": Field.PAGEFIRST.value,
+    "Publication Stage": Field.PUBSTAGE.value,
+    "Publisher": Field.PUBLISHER.value,
+    "PubMed ID": Field.PUBMED.value,
+    #
+    # R
+    #
+    "References": Field.REF_GLOBAL_RAW.value,
+    #
+    # S
+    #
+    "Source title": Field.SRCTITLE_RAW.value,
+    "Source": Field.SOURCE.value,
+    "Sponsors": Field.FUND_SPONSORS.value,
+    #
+    # T
+    #
+    "Title": Field.TITLE_RAW.value,
+    "Tradenames": Field.TRADENAME.value,
+    #
+    # V
+    #
+    "Volume": Field.VOL.value,
+    #
+    # Y
+    #
+    "Year": Field.PUBYEAR.value,
 }
 
 
@@ -74,8 +121,8 @@ def rename_columns(root_directory: str) -> int:
             low_memory=False,
         )
 
-        dataframe.rename(columns=SCOPUS_2_TECHMINER_TAGS, inplace=True)
-        mapped_names = set(SCOPUS_2_TECHMINER_TAGS.values())
+        dataframe.rename(columns=SCOPUS_TO_TM2, inplace=True)
+        mapped_names = set(SCOPUS_TO_TM2.values())
         dataframe.columns = pd.Index(
             [
                 (

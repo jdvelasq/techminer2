@@ -21,7 +21,7 @@ Example:
     >>> generator = (
     ...     DataFrame()
     ...     #
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -40,10 +40,8 @@ Example:
     [5 rows x 9 columns]
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 
 
 class DataFrame(
@@ -53,7 +51,7 @@ class DataFrame(
 
     def run(self):
 
-        data_frame = internal__load_filtered_records_from_database(params=self.params)
+        data_frame = load_filtered_main_data(params=self.params)
         data_frame = data_frame.assign(_order_=range(1, len(data_frame) + 1))
         data_frame = data_frame.reset_index(drop=True)
 

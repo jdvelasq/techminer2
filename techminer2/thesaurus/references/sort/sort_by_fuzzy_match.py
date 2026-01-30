@@ -27,7 +27,7 @@ Example:
     ...     SortByFuzzyMatch()
     ...     .having_pattern("ACCOU")
     ...     .using_match_threshold(50)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> sorter.run()
 
@@ -66,7 +66,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByFuzzyMatch as UserSortByFuzzyMatch
 
 

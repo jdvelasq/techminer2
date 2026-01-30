@@ -34,7 +34,7 @@ Example:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> # Capture and print stderr output
@@ -51,11 +51,8 @@ import os
 import pandas as pd
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_user_stopwords,
-    internal__save_user_stopwords,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.stopwords import load_user_stopwords, save_user_stopwords
 
 # -----------------------------------------------------------------------------
 

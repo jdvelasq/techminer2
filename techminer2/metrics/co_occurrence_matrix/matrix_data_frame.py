@@ -33,7 +33,7 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -81,7 +81,7 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -131,7 +131,7 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -184,7 +184,7 @@ Example:
     ...     .using_term_counters(True)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -214,10 +214,8 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.visualization import DataFrame as PerformanceMetricsDataFrame
 
 
@@ -277,7 +275,7 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_04_load_the_database(self):
-        return internal__load_filtered_records_from_database(params=self.params)
+        return load_filtered_main_data(params=self.params)
 
     # -------------------------------------------------------------------------
     def _step_05_create_raw_matrix_list(self, records):

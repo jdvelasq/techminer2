@@ -8,31 +8,29 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-Records Writer
-===============================================================================
-
-Example:
+Smoke test:
     >>> from techminer2.database._internals.io import internal__write_records_to_database
     >>> internal__write_records_to_database(params, records) # doctest: +SKIP
 
 
 """
-from techminer2._internals.user_data.get_database_file_path import (
-    internal__get_database_file_path,
-)
+import pandas as pd
+
+from techminer2._internals.data_access.get_main_data_path import get_main_data_path
+
+from .get_main_data_path import get_main_data_path
 
 
-def write_records_to_database(params, records):
+def save_main_data(df: pd.DataFrame, root_directory: str) -> None:
 
-    file_path = internal__get_database_file_path(params)
+    main_data_path = get_main_data_path(root_directory)
 
-    records.to_csv(
-        file_path,
+    temp_file = main_data_path.with_suffix(".tmp")
+    df.to_csv(
+        temp_file,
         sep=",",
         encoding="utf-8",
         index=False,
         compression="zip",
     )
-
-
-# =============================================================================
+    temp_file.replace(main_data_path)

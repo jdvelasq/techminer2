@@ -14,10 +14,10 @@ from openai import OpenAI
 from tqdm import tqdm
 
 from techminer2._internals import Params
+from techminer2._internals.data_access import load_all_records_from_database
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )
-from techminer2._internals.user_data import load_all_records_from_database
 
 SYSTEM_PROMPT = """
 INSTRUCTION:

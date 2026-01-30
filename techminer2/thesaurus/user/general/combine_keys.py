@@ -16,7 +16,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -49,7 +49,7 @@ Smoke tests:
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
     ...     .with_other_field("descriptors_cleaned")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -73,7 +73,7 @@ Smoke tests:
     ...     .having_terms_in(None)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -91,7 +91,7 @@ Smoke tests:
 
 """
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.metrics.co_occurrence_matrix import DataFrame as CoocDataFrame
 
 

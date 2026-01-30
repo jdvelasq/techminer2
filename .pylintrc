@@ -4,7 +4,7 @@ ignore=CVS,.git,__pycache__,build,dist,.venv,venv
 
 
 [MESSAGES CONTROL]
-# Disable docstring requirements for internal code
+# Disable docstring requirements for internal code 
 disable=
     import-outside-toplevel,
     line-too-long,
@@ -14,8 +14,11 @@ disable=
     too-few-public-methods,
     too-many-arguments,
     too-many-branches,
+    too-many-instance-attributes,
+    too-many-lines,
     too-many-locals,
     too-many-positional-arguments,
+    too-many-public-methods,
     too-many-statements
 
 [FORMAT]

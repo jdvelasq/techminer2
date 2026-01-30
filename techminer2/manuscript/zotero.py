@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.manuscript import Zotero
     >>> (
     ...     Zotero()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_root_directory("../tm2_economics_of_wind_energy/")
     ...     .run()
     ... )
@@ -31,10 +31,8 @@ import re
 
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 
 
 class Zotero(
@@ -154,7 +152,7 @@ class Zotero(
     # -------------------------------------------------------------------------
     def internal__load_titles(self):
 
-        records = internal__load_filtered_records_from_database(params=self.params)
+        records = load_filtered_main_data(params=self.params)
         records = records[records["record_no"].isin([int(ut[3:]) for ut in self.uts])]
         self.titles = records.raw_document_title.to_list()
 

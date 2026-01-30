@@ -35,38 +35,28 @@ Smoke test:
     Caught expected error
 
 """
-from pathlib import Path
 
-import pandas as pd
+from techminer2 import Field
+
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
 
-def delete_column(column: str, root_directory: str) -> int:
+def delete_column(
+    column: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    load_data, save_data, get_path = get_file_operations(file)
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+    dataframe = load_data(root_directory=root_directory, usecols=None)
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
-
-    if column not in dataframe.columns:
-        raise KeyError(f"Column '{column}' not found in {database_file.name}")
-
-    dataframe = dataframe.drop(columns=column)
-
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
+    if column.value not in dataframe.columns:
+        raise KeyError(
+            f"Column '{column.value}' not found in {get_path(root_directory).name}"
+        )
+    dataframe = dataframe.drop(columns=column.value)
+    save_data(df=dataframe, root_directory=root_directory)
 
     return len(dataframe)

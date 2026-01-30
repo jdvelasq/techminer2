@@ -37,42 +37,36 @@ Smoke test:
     Caught expected error
 
 """
-from pathlib import Path
 
-import pandas as pd
+from techminer2 import Field
+
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
 
-def count_column_items(source: str, target: str, root_directory: str) -> int:
+def count_column_items(
+    source: Field,
+    target: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    assert isinstance(source, Field)
+    assert isinstance(target, Field)
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+    load_data, save_data, get_path = get_file_operations(file)
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
+    dataframe = load_data(root_directory=root_directory, usecols=None)
+
+    if source.value not in dataframe.columns:
+        raise KeyError(
+            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+        )
+
+    dataframe[target.value] = (
+        dataframe[source.value].str.split("; ").str.len().fillna(0).astype(int)
     )
 
-    if source not in dataframe.columns:
-        raise KeyError(f"Source column '{source}' not found in {database_file.name}")
+    save_data(df=dataframe, root_directory=root_directory)
 
-    dataframe[target] = (
-        dataframe[source].str.split("; ").str.len().fillna(0).astype(int)
-    )
-
-    non_null_count = int(len(dataframe))
-
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
-
-    return non_null_count
+    return int(len(dataframe))

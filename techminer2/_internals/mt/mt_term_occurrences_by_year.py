@@ -40,9 +40,7 @@ Buchak G.              0     0     0     1     0
 from techminer2._internals.mt.mt_global_metrics_by_field_per_year import (
     _mt_global_metrics_by_field_per_year,
 )
-from techminer2._internals.user_data.load_user_stopwords import (
-    internal__load_user_stopwords,
-)
+from techminer2._internals.stopwords import load_user_stopwords
 
 
 # pylint: disable=too-many-arguments
@@ -83,7 +81,7 @@ def _mt_term_occurrences_by_year(
     indicators_by_year = indicators_by_year.fillna(0)
     indicators_by_year = indicators_by_year.astype(int)
 
-    stopwords = internal__load_user_stopwords(root_dir=root_dir)
+    stopwords = load_user_stopwords(root_dir=root_dir)
     indicators_by_year = indicators_by_year.drop(stopwords, axis=0, errors="ignore")
 
     records = load__filtered_database(

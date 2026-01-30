@@ -27,7 +27,7 @@ Example:
     ...     ReplaceLastWord()
     ...     .having_word("FINTECH")
     ...     .having_replacement("fintech")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> replacer.run()
 
@@ -67,7 +67,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import ReplaceLastWord as UserReplaceEndsWithWord
 
 

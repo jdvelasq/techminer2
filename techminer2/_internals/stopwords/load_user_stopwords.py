@@ -1,15 +1,14 @@
-"""Loads user stopwords."""
+from pathlib import Path
 
-import os
-import pathlib
+from techminer2._internals import Params
 
 
-def internal__load_user_stopwords(params):
+def load_user_stopwords(params: Params) -> list[str]:
     """:meta private:"""
 
-    file_path = pathlib.Path(params.root_directory) / "data/my_keywords/stopwords.txt"
+    file_path = Path(params.root_directory) / "data" / "my_keywords" / "stopwords.txt"
 
-    if not os.path.isfile(file_path):
+    if not file_path.is_file():
         raise FileNotFoundError(f"The file '{file_path}' does not exist.")
 
     with open(file_path, "r", encoding="utf-8") as file:

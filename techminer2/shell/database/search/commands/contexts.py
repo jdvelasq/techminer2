@@ -1,5 +1,5 @@
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.text.concordances import ConcordantRawContexts
+from techminer2.text.concordances import ConcordanceRaw
 
 
 def execute_contexts_command():
@@ -19,9 +19,9 @@ def execute_contexts_command():
 
     # RUN:
     contexts = (
-        ConcordantRawContexts()
+        ConcordanceRaw()
         #
-        .having_abstract_matching(pattern)
+        .having_text_matching(pattern)
         .where_root_directory("./")
         .where_database("main")
         .where_record_years_range(None, None)

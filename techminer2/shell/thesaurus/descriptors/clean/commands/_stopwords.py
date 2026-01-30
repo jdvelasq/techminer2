@@ -22,7 +22,7 @@ from techminer2._internals.package_data.templates.load_template import (
 
 # from techminer2.io import ExtendStopwords
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.text.concordances import ConcordantSentences
+from techminer2.text.concordances import ConcordanceSentences
 from techminer2.thesaurus.descriptors import GetValues
 
 
@@ -68,9 +68,9 @@ def internal__get_contexts(pattern, n_contexts):
     for term in terms:
 
         contexts = (
-            ConcordantSentences()
+            ConcordanceSentences()
             #
-            .having_abstract_matching(term)
+            .having_text_matching(term)
             .where_root_directory("./")
             .where_database("main")
             .where_record_years_range(None, None)

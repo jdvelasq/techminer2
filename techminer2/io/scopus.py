@@ -32,7 +32,7 @@ import time
 from datetime import timedelta
 from typing import Any
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 
 from ._internals import Step
 from ._internals.bibliographical_information.build_steps import (

@@ -17,7 +17,7 @@ Example:
     >>> (
     ...     ExtendStopwords()
     ...     .with_patterns(["finance", "investment"])
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -33,7 +33,7 @@ Example:
 
 import pathlib
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 
 
 class ExtendStopwords(

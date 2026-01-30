@@ -30,7 +30,7 @@ Example:
     ...     .using_pie_hole(0.4)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -46,7 +46,7 @@ Example:
 
 
 """
-from techminer2._internals.params_mixin import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.plots.internal__pie_plot import internal__pie_plot
 from techminer2.visualization.data_frame import DataFrame
 

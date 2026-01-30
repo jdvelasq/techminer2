@@ -26,7 +26,7 @@ Example:
     ...     ApplyThesaurus()
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     #
     ...     .run()
     ... )
@@ -46,7 +46,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import internal__transform
 from techminer2.thesaurus.user import ApplyThesaurus as ApplyUserThesaurus
 

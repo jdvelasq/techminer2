@@ -34,7 +34,7 @@ Example:
     ...     .having_term_occurrences_between(None, None)
     ...     .having_term_citations_between(None, None)
     ...     .having_terms_in(None)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
     >>> # Capture and print stderr output
@@ -45,11 +45,8 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_user_stopwords,
-    internal__save_user_stopwords,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.stopwords import load_user_stopwords, save_user_stopwords
 from techminer2.thesaurus.descriptors import IsStopword
 
 # -----------------------------------------------------------------------------
@@ -64,9 +61,6 @@ class PopulateStopwords(
 
         df = IsStopword().update(**self.params.__dict__).run()
         new_stopwords = df[df["is_stopword?"]]["descriptor"].tolist()
-        stopwords = internal__load_user_stopwords(params=self.params)
+        stopwords = load_user_stopwords(params=self.params)
         stopwords = sorted(set(stopwords).union(set(new_stopwords)))
-        internal__save_user_stopwords(self.params, stopwords)
-
-
-# =============================================================================
+        save_user_stopwords(self.params, stopwords)

@@ -9,7 +9,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -43,7 +43,7 @@ Smoke tests:
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .having_pattern("INTELL")
     ...     .using_match_threshold(70)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -56,7 +56,7 @@ import re
 
 from fuzzywuzzy import process  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 

@@ -1,35 +1,27 @@
-from pathlib import Path
+from techminer2 import Field
 
-import pandas as pd  # type: ignore
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
 
-def rename_column(source: str, target: str, root_directory: str) -> int:
+def rename_column(
+    source: Field,
+    target: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    load_data, save_data, get_path = get_file_operations(file)
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+    dataframe = load_data(root_directory=root_directory, usecols=None)
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+    if source.value not in dataframe.columns:
+        raise KeyError(
+            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+        )
 
-    if source not in dataframe.columns:
-        return 0
+    dataframe = dataframe.rename(columns={source.value: target.value})
 
-    dataframe = dataframe.rename(columns={source: target})
-
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
+    save_data(df=dataframe, root_directory=root_directory)
 
     return len(dataframe)

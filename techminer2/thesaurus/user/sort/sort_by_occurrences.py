@@ -9,7 +9,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -41,7 +41,7 @@ Smoke tests:
     ...     SortByOccurrences()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -71,10 +71,8 @@ Smoke tests:
 
 """
 
-from techminer2._internals.mixins import ParamsMixin
-from techminer2._internals.user_data import (
-    internal__load_filtered_records_from_database,
-)
+from techminer2._internals import ParamsMixin
+from techminer2._internals.data_access import load_filtered_main_data
 from techminer2.thesaurus._internals import ThesaurusMixin, ThesaurusResult
 
 
@@ -104,7 +102,7 @@ class SortByOccurrences(
     # -------------------------------------------------------------------------
     def _get_raw_occurrences(self):
 
-        records = internal__load_filtered_records_from_database(params=self.params)
+        records = load_filtered_main_data(params=self.params)
         records = records[[self.params.field]]
         records = records.dropna()
         records[self.params.field] = records[self.params.field].str.split("; ")

@@ -18,7 +18,7 @@ Smoke tests:
     ...     InitializeThesaurus()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .with_field("raw_descriptors")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .using_colored_output(False)
     ...     .run()
     ... )
@@ -50,7 +50,7 @@ Smoke tests:
     ...     GetValues()
     ...     .with_thesaurus_file("demo.the.txt")
     ...     .using_pattern(["FINTECH", "FINANCIAL_TECHNOLOGIES"])
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
     >>> terms[:5]

@@ -26,7 +26,7 @@ Example:
     ...     .with_other_field("tokenized_raw_abstract")
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     #
     ...     .run()
     ... )
@@ -36,7 +36,7 @@ Example:
     >>> df = (
     ...     Query()
     ...     .with_query_expression("SELECT tokenized_raw_abstract FROM database LIMIT 10;")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -64,13 +64,13 @@ Example:
     >>> field_deleter = (
     ...     DeleteOperator()
     ...     .with_field("tokenized_raw_abstract")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... )
     >>> field_deleter.run()
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.io._internals.operations.tokenize_column import tokenize_column
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 

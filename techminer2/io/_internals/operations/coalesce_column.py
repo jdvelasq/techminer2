@@ -30,43 +30,42 @@ Smoke test:
     [1.0, 2.0, 3.0]
 
 """
-from pathlib import Path
-
-import pandas as pd
 
 
-def coalesce_column(source: str, target: str, root_directory: str) -> int:
+from techminer2 import Field
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+def coalesce_column(
+    source: Field,
+    target: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    if source not in dataframe.columns:
-        raise KeyError(f"Source column '{source}' not found in {database_file.name}")
+    assert isinstance(source, Field)
+    assert isinstance(target, Field)
+    assert isinstance(root_directory, str)
+    assert isinstance(file, DataFile)
 
-    if target in dataframe.columns:
-        dataframe[target] = dataframe[target].fillna(dataframe[source])
+    load_data, save_data, get_path = get_file_operations(file)
+
+    dataframe = load_data(root_directory=root_directory, usecols=None)
+
+    if source.value not in dataframe.columns:
+        raise KeyError(
+            f"Source column '{source.value}' not found in {get_path(root_directory).name}"
+        )
+
+    if target.value in dataframe.columns:
+        dataframe[target.value] = dataframe[target.value].fillna(
+            dataframe[source.value]
+        )
     else:
-        dataframe[target] = dataframe[source]
+        dataframe[target.value] = dataframe[source.value]
 
-    non_null_count = int(dataframe[target].notna().sum())
+    save_data(df=dataframe, root_directory=root_directory)
 
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
-
-    return non_null_count
+    return int(dataframe[target.value].notna().sum())

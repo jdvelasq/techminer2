@@ -10,7 +10,7 @@
 """
 
 Example:
-    >>> from techminer2._internals.params_mixin import Params
+    >>> from techminer2._internals import Params
     >>> from techminer2.database._internals.io import internal__load_all_records_from_database
     >>> df = internal__load_all_records_from_database(
     ...         Params(root_directory="examples/fintech/")
@@ -30,15 +30,13 @@ Example:
 """
 import pandas as pd  # type: ignore
 
-from techminer2._internals.user_data.get_database_file_path import (
-    internal__get_database_file_path,
-)
+from techminer2._internals.data_access.get_main_data_path import get_main_data_path
 
 
 def load_all_records_from_database(params):
     """:meta private:"""
 
-    file_path = internal__get_database_file_path(params)
+    file_path = get_main_data_path(params)
     records = pd.read_csv(
         file_path,
         encoding="utf-8",

@@ -65,7 +65,7 @@ import sys
 from colorama import Fore, init
 from tqdm import tqdm  # type: ignore
 
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2._internals.package_data.text_processing import (
     load_text_processing_terms,
 )

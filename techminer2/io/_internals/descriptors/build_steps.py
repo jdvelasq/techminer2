@@ -1,6 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
-from ...._internals.params_mixin import Params
+from ...._internals import Params
 from ..step import Step
 
 

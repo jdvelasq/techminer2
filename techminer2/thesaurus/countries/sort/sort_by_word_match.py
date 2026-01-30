@@ -15,7 +15,7 @@ Example:
     >>> from techminer2.thesaurus.countries import InitializeThesaurus
     >>> (
     ...     InitializeThesaurus()
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
 
 
@@ -23,7 +23,7 @@ Example:
     >>> sorter = (
     ...     SortByWordMatch()
     ...     .having_pattern("Germany")
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .run()
     ... )
 
@@ -31,7 +31,7 @@ Example:
     >>> (
     ...     PrintHeader()
     ...     .using_colored_output(False)
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ... ).run()
     Germany
       CESifo, Poschingerstr. 5, Munich, 81679, Germany; Chair of e-Finance, Goe...
@@ -54,7 +54,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.thesaurus.user import SortByWordMatch as UserSortByWordMatch
 
 

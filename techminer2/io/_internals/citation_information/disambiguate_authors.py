@@ -18,7 +18,9 @@ from pathlib import Path
 
 import pandas as pd  # type: ignore
 
-from ..operations import transform_column
+from techminer2 import Field
+
+from ..operations import DataFile, transform_column
 
 
 def _load_authors_data(root_directory: Path) -> pd.DataFrame:
@@ -77,6 +79,7 @@ def _build_author_mapping(df: pd.DataFrame) -> dict[str, str]:
 
 
 def disambiguate_authors(root_directory: str) -> int:
+
     root = Path(root_directory)
 
     raw_data = _load_authors_data(root)
@@ -92,19 +95,19 @@ def disambiguate_authors(root_directory: str) -> int:
         )
 
     count = transform_column(
-        source="author_ids",
-        target="authors",
+        source=Field.AUTH_ID,
+        target=Field.AUTH,
         function=_apply_normalization,
         root_directory=root_directory,
-        file="main.csv.zip",
+        file=DataFile.MAIN,
     )
 
     count += transform_column(
-        source="author_ids",
-        target="authors",
+        source=Field.AUTH_ID,
+        target=Field.AUTH,
         function=_apply_normalization,
         root_directory=root_directory,
-        file="references.csv.zip",
+        file=DataFile.REFERENCES,
     )
 
     return count

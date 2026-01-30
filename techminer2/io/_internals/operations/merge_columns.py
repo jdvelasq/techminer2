@@ -1,48 +1,39 @@
-from pathlib import Path
-
 import pandas as pd  # type: ignore
 
+from techminer2 import Field
 
-def merge_columns(sources: list[str], target: str, root_directory: str) -> int:
+from ._file_dispatch import get_file_operations
+from .data_file import DataFile
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+def merge_columns(
+    sources: list[Field],
+    target: Field,
+    root_directory: str,
+    file: DataFile = DataFile.MAIN,
+) -> int:
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+    load_data, save_data, _ = get_file_operations(file)
 
-    existing_sources = [col for col in sources if col in dataframe.columns]
+    dataframe = load_data(root_directory=root_directory, usecols=None)
 
+    existing_sources = [col for col in sources if col.value in dataframe.columns]
     if not existing_sources:
         return 0
 
     all_items = None
     for source in existing_sources:
-        items = dataframe[source].astype(str).str.split("; ")
+        items = dataframe[source.value].astype(str).str.split("; ")
         all_items = items if all_items is None else all_items + items
 
     assert all_items is not None
     all_items = all_items.map(lambda x: [item for item in x if item and item != "nan"])
     all_items = all_items.map(lambda x: sorted(set(x)) if x else [])
 
-    dataframe[target] = all_items.map(lambda x: "; ".join(x) if x else pd.NA)
+    dataframe[target.value] = all_items.map(lambda x: "; ".join(x) if x else pd.NA)
 
-    non_null_count = int(dataframe[target].notna().sum())
+    non_null_count = int(dataframe[target.value].notna().sum())
 
-    temp_file = database_file.with_suffix(".tmp")
-    dataframe.to_csv(
-        temp_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
-    temp_file.replace(database_file)
+    save_data(df=dataframe, root_directory=root_directory)
 
     return non_null_count

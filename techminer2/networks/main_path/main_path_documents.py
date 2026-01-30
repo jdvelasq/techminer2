@@ -25,7 +25,7 @@ Example:
     ...     .using_citation_threshold(0)
     ...     #
     ...     # DATABASE:
-    ...     .where_root_directory("examples/fintech/")
+    ...     .where_root_directory("examples/small/")
     ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
@@ -80,7 +80,7 @@ Example:
 
 
 """
-from techminer2._internals.mixins import ParamsMixin
+from techminer2._internals import ParamsMixin
 from techminer2.explore import RecordViewer
 from techminer2.networks.main_path._internals.compute_main_path import (
     internal__compute_main_path,

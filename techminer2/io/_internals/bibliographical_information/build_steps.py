@@ -1,6 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
-from techminer2._internals.params_mixin import Params
+from techminer2._internals import Params
 
 from ..step import Step
 
@@ -85,12 +85,7 @@ def build_bibliographical_information_steps(params: Params) -> list[Step]:
         Step(
             name="Normalizing subject areas",
             function=normalize_subject_areas,
-            kwargs={
-                "issn_column": "issn",
-                "eissn_column": "eissn",
-                "target": "subject_areas",
-                "root_directory": params.root_directory,
-            },
+            kwargs=common_kwargs,
             count_message="{count} subject areas normalized",
         ),
     ]
