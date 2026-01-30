@@ -15,14 +15,19 @@ Smoke test:
     >>> assert all(isinstance(t, str) for t in text)
     >>> assert all(len(t) <= 90 for t in text)
     >>> assert len(text) > 0
-    >>> sorted_check = text == sorted([t[::-1] for t in text], key=lambda x: x[::-1])
-    >>> assert sorted_check
-    >>> for t in text[:5]: print(t) # doctest: +SKIP
+    >>> for t in text[:10]: print(t)
     th THE_DEMANDS of INDUSTRY . 2010 edsig ( EDUCATION_SPECIAL_INTEREST_GROUP of THE_AITP ) .
     TORS , REGULATORS , etc . ) , who explore THE_FIELD of FINTECH . 2016 , the author ( s ) .
     how COMPANIES_COLLABORATE or compete in SPECIFIC_FINTECH_AREAS . 2016 , the author ( s ) .
     HADOW has been brought to THE_LIGHT . springer international publishing switzerland 2016 .
     _LENDING and CROWDFUNDING platforms . springer international publishing switzerland 2016 .
+    SOCIAL_ENVIRONMENT . 2016 . faculty of management , warsaw university of technology 2016 .
+    we provide OBJECTIVE_UNDERSTANDING of FINTECH , how it is reflected in THE_POPULAR_MEDIA .
+    ANKING , CASH , CREDIT , and DEBIT_CARDS in DIFFERENT_COUNTRIES and REGIONS of THE_WORLD .
+    examining CONCEPTS such_as THE_DEVELOPMENT of BUSINESS_APPLICATIONS that use embedded AI .
+    ORMATION . 4 ) OUR_RESULTS inform PRACTITIONERS how to time THE_DECISION of MONETIZATION .
+
+
 
 """
 

@@ -5,8 +5,8 @@ import pandas as pd  # type: ignore
 from .mark_abstract_headings import COMPOUND_STRUCTURED_ABSTRACT_HEADINGS
 
 SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
-    "abstract",
     "abbreviations",
+    "abstract",
     "aim",
     "aims",
     "analysis",
@@ -42,6 +42,7 @@ SINGLE_STRUCTURED_ABSTRACT_HEADINGS = [
     "objectives",
     "originality",
     "outcomes",
+    "overview",
     "participants",
     "patients",
     "place",

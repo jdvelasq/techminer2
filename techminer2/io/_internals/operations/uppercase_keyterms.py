@@ -192,7 +192,7 @@ def _normalize(text):
 # ----------------------------------------------------------------------------
 
 
-def uppercase_descriptors(
+def uppercase_keyterms(
     source: Field,
     target: Field,
     root_directory: str,

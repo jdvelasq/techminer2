@@ -86,9 +86,7 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.io._internals.operations.uppercase_descriptors import (
-    uppercase_descriptors,
-)
+from techminer2.io._internals.operations.uppercase_keyterms import uppercase_keyterms
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 
 
@@ -102,7 +100,7 @@ class HighlightOperator(
         if self.params.other_field in PROTECTED_FIELDS:
             raise ValueError(f"Field `{self.params.other_field}` is protected")
 
-        uppercase_descriptors(
+        uppercase_keyterms(
             source=self.params.field,
             target=self.params.other_field,
             #

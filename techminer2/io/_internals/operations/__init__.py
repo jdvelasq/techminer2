@@ -8,7 +8,7 @@ from .merge_columns import merge_columns
 from .rename_column import rename_column
 from .tokenize_column import tokenize_column
 from .transform_column import transform_column
-from .uppercase_descriptors import uppercase_descriptors
+from .uppercase_keyterms import uppercase_keyterms
 
 __all__ = [
     "coalesce_column",
@@ -21,5 +21,5 @@ __all__ = [
     "rename_column",
     "tokenize_column",
     "transform_column",
-    "uppercase_descriptors",
+    "uppercase_keyterms",
 ]
