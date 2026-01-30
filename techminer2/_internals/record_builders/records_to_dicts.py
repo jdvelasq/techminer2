@@ -29,7 +29,7 @@ def records_to_dicts(dataframe):
         "record_no": "UT",
         Field.RECID.value: "AR",
         Field.TITLE_RAW.value: "TI",
-        Field.AUTH.value: "AU",
+        Field.AUTH_NORM.value: "AU",
         Field.CITCOUNT_GLOBAL.value: "TC",
         Field.SRCTITLE_ABBR.value: "SO",
         Field.PUBYEAR.value: "PY",

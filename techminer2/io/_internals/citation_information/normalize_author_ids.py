@@ -25,7 +25,7 @@ def normalize_author_ids(root_directory: str, file: DataFile) -> int:
 
     return transform_column(
         source=Field.AUTH_ID_RAW,
-        target=Field.AUTH_ID,
+        target=Field.AUTH_ID_NORM,
         function=_normalize,
         root_directory=root_directory,
         file=file,

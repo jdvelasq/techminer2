@@ -24,14 +24,14 @@ class Field(Enum):
     ABS_TOK = "abstract_tokenized"
     ABS_UPPER = "abstract_uppercase"
     AFFIL = "affiliations"
-    ARTNUM = "scopus_art_no"
-    AUTH = "authors"
+    ARTNO = "art_no"
     AUTH_AFFIL = "authors_with_affiliations"
     AUTH_FULL = "author_full_names"
-    AUTH_ID = "author_ids"
+    AUTH_ID_NORM = "author_ids_norm"
     AUTH_ID_RAW = "author_ids_raw"
+    AUTH_DISAMB = "authors_disambiguated"
+    AUTH_NORM = "authors_norm"
     AUTH_RAW = "authors_raw"
-    AUTHKEY = "author_keywords"
     AUTHKEY_NORM = "author_keywords_norm"
     AUTHKEY_RAW = "author_keywords_raw"
 
@@ -51,7 +51,7 @@ class Field(Enum):
     #
     # D
     #
-    DOCTYPE = "document_type"
+    DOCTYPE_NORM = "document_type_norm"
     DOCTYPE_RAW = "document_type_raw"
     DOI = "doi"
     EDITOR = "editors"
@@ -72,7 +72,6 @@ class Field(Enum):
     #
     # I
     #
-    IDXKEY = "index_keywords"
     IDXKEY_NORM = "index_keywords_norm"
     IDXKEY_RAW = "index_keywords_raw"
     ISBN = "isbn"
@@ -83,11 +82,10 @@ class Field(Enum):
     #
     # K
     #
-    KEY = "keywords"
     KEY_NORM = "keywords_norm"
     KEY_RAW = "keywords_raw"
     KEYTERMS_RAW = "keyterms_raw"
-    KEYTERMS = "keyterms"
+    KEYTERMS_NORM = "keyterms"
 
     #
     # L
@@ -103,14 +101,14 @@ class Field(Enum):
     #
     # N
     #
-    NOUNPH = "noun_phrases"
-    NOUNPH_ABS = "noun_phrases_abstract"
+    NOUNPH_ABS_NORM = "noun_phrases_abstract"
     NOUNPH_ABS_RAW = "noun_phrases_abstract_raw"
+    NOUNPH_NORM = "noun_phrases_norm"
     NOUNPH_RAW = "noun_phrases_raw"
-    NOUNPH_TITLE = "noun_phrases_title"
-    NOUNPH_TITLE_RAW = "noun_phrases_title_raw"
     NOUNPH_SPACY = "noun_phrases_spacy"
     NOUNPH_TEXTBLOB = "noun_phrases_textblob"
+    NOUNPH_TITLE_NORM = "noun_phrases_title"
+    NOUNPH_TITLE_RAW = "noun_phrases_title_raw"
     NUMAUTH = "number_of_authors"
     NUMREF = "number_of_references"
 

@@ -218,7 +218,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.FIRST_AUTHOR_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
-                Field.AUTH.value,
+                Field.AUTH_NORM.value,
                 Field.CITCOUNT_GLOBAL.value,
                 Field.CITCOUNT_LOCAL.value,
             ],
@@ -228,7 +228,7 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     elif sort_by == RecordsOrderBy.FIRST_AUTHOR_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
-                Field.AUTH.value,
+                Field.AUTH_NORM.value,
                 Field.CITCOUNT_GLOBAL.value,
                 Field.CITCOUNT_LOCAL.value,
             ],

@@ -7,7 +7,7 @@ from techminer2 import Field
 
 
 def _get_author(dataframe):
-    return dataframe[Field.AUTH.value].map(
+    return dataframe[Field.AUTH_NORM.value].map(
         lambda x: (
             x.split("; ")[0].strip().split()[0] if not pd.isna(x) else "[Anonymous]"
         )

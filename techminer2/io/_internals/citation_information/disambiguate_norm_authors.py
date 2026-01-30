@@ -3,8 +3,8 @@
 Smoke test:
     >>> import pandas as pd
     >>> df = pd.DataFrame({
-    ...     "authors": ["Doe, J.; Doe, J.", "Smith, A."],
-    ...     "author_ids": ["id1; id2", "id3"]
+    ...     "authors_norm": ["Doe, J.; Doe, J.", "Smith, A."],
+    ...     "author_ids_norm": ["id1; id2", "id3"]
     ... })
     >>> mapping = _build_author_mapping(df)
     >>> mapping["id1"]
@@ -25,27 +25,31 @@ from ..operations import DataFile, transform_column
 
 def _load_authors_data(root_directory: Path) -> pd.DataFrame:
 
-    data_path = root_directory / "data" / "processed"
-    main_file = data_path / "main.csv.zip"
+    main_file = root_directory / "data" / "processed" / "main.csv.zip"
+    ref_file = root_directory / "data" / "processed" / "references.csv.zip"
 
     if not main_file.exists():
         raise FileNotFoundError(f"{main_file} not found")
 
     df = pd.read_csv(
         main_file,
-        usecols=["authors", "author_ids"],
+        usecols=[
+            Field.AUTH_NORM.value,
+            Field.AUTH_ID_NORM.value,
+        ],
         compression="zip",
         encoding="utf-8",
         low_memory=False,
     )
 
-    ref_file = data_path / "references.csv.zip"
-
     if ref_file.exists():
 
         ref_df = pd.read_csv(
             ref_file,
-            usecols=["authors", "author_ids"],
+            usecols=[
+                Field.AUTH_NORM.value,
+                Field.AUTH_ID_NORM.value,
+            ],
             compression="zip",
             encoding="utf-8",
             low_memory=False,
@@ -57,28 +61,38 @@ def _load_authors_data(root_directory: Path) -> pd.DataFrame:
 
 def _build_author_mapping(df: pd.DataFrame) -> dict[str, str]:
 
-    df = df.assign(
-        authors=df["authors"].str.split("; "),
-        author_ids=df["author_ids"].str.split("; "),
-    ).explode(["authors", "author_ids"])
+    df[Field.AUTH_NORM.value] = df[Field.AUTH_NORM.value].str.split("; ")
+    df[Field.AUTH_ID_NORM.value] = df[Field.AUTH_ID_NORM.value].str.split("; ")
 
-    df["authors"] = df["authors"].str.strip()
-    df["author_ids"] = df["author_ids"].str.strip()
-
-    df = df.drop_duplicates(subset=["author_ids"])
-
-    df = df.sort_values("authors")
-    df["counter"] = df.groupby("authors").cumcount()
-
-    mask_collision = df["counter"] > 0
-    df.loc[mask_collision, "authors"] += "/" + df.loc[mask_collision, "counter"].astype(
-        str
+    df = df.explode(
+        [
+            Field.AUTH_NORM.value,
+            Field.AUTH_ID_NORM.value,
+        ]
     )
 
-    return dict(zip(df["author_ids"], df["authors"]))
+    df[Field.AUTH_NORM.value] = df[Field.AUTH_NORM.value].str.strip()
+    df[Field.AUTH_ID_NORM.value] = df[Field.AUTH_ID_NORM.value].str.strip()
+
+    df = df.drop_duplicates(subset=[Field.AUTH_ID_NORM.value])
+
+    df = df.sort_values(Field.AUTH_NORM.value)
+    df["counter"] = df.groupby(Field.AUTH_NORM.value).cumcount()
+
+    mask_collision = df["counter"] > 0
+    df.loc[mask_collision, Field.AUTH_NORM.value] += "/" + df.loc[
+        mask_collision, "counter"
+    ].astype(str)
+
+    return dict(
+        zip(
+            df[Field.AUTH_ID_NORM.value],
+            df[Field.AUTH_NORM.value],
+        )
+    )
 
 
-def disambiguate_authors(root_directory: str) -> int:
+def disambiguate_norm_authors(root_directory: str) -> int:
 
     root = Path(root_directory)
 
@@ -95,16 +109,16 @@ def disambiguate_authors(root_directory: str) -> int:
         )
 
     count = transform_column(
-        source=Field.AUTH_ID,
-        target=Field.AUTH,
+        source=Field.AUTH_ID_NORM,
+        target=Field.AUTH_DISAMB,
         function=_apply_normalization,
         root_directory=root_directory,
         file=DataFile.MAIN,
     )
 
     count += transform_column(
-        source=Field.AUTH_ID,
-        target=Field.AUTH,
+        source=Field.AUTH_ID_NORM,
+        target=Field.AUTH_DISAMB,
         function=_apply_normalization,
         root_directory=root_directory,
         file=DataFile.REFERENCES,

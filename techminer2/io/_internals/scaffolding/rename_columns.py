@@ -11,7 +11,7 @@ SCOPUS_TO_TM2 = {
     "Abbreviated Source Title": Field.SRCTITLE_ABBR.value,
     "Abstract": Field.ABS_RAW.value,
     "Affiliations": Field.AFFIL.value,
-    "Art. No.": Field.ARTNUM.value,
+    "Art. No.": Field.ARTNO.value,
     "Author full names": Field.AUTH_FULL.value,
     "Author Keywords": Field.AUTHKEY_RAW.value,
     "Author(s) ID": Field.AUTH_ID_RAW.value,

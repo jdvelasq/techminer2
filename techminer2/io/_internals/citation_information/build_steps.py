@@ -7,9 +7,8 @@ from ..step import Step
 
 def build_citation_information_steps(params: Params) -> list[Step]:
 
-    from .disambiguate_authors import disambiguate_authors
+    from .disambiguate_norm_authors import disambiguate_norm_authors
     from .normalize_author_ids import normalize_author_ids
-    from .normalize_authors import normalize_authors
     from .normalize_document_type import normalize_document_type
     from .normalize_doi import normalize_doi
     from .normalize_eid import normalize_eid
@@ -18,6 +17,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
     from .normalize_open_access import normalize_open_access
     from .normalize_pages import normalize_pages
     from .normalize_publication_stage import normalize_publication_stage
+    from .normalize_raw_authors import normalize_raw_authors
     from .normalize_source_title import normalize_source_title
     from .normalize_volume import normalize_volume
     from .normalize_year import normalize_year
@@ -45,7 +45,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Normalizing authors in main.csv.zip",
-            function=normalize_authors,
+            function=normalize_raw_authors,
             kwargs={
                 "root_directory": params.root_directory,
                 "file": DataFile.MAIN,
@@ -54,7 +54,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Normalizing authors in references.csv.zip",
-            function=normalize_authors,
+            function=normalize_raw_authors,
             kwargs={
                 "root_directory": params.root_directory,
                 "file": DataFile.REFERENCES,
@@ -63,7 +63,7 @@ def build_citation_information_steps(params: Params) -> list[Step]:
         ),
         Step(
             name="Disambiguating author names",
-            function=disambiguate_authors,
+            function=disambiguate_norm_authors,
             kwargs=common_kwargs,
             count_message="{count} author names disambiguated",
         ),
