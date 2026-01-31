@@ -131,7 +131,7 @@ class DataFrame(
         )
         matrix = matrix.fillna(0)
 
-        if self.params.binary_term_frequencies is True:
+        if self.params.binary_item_frequencies is True:
             matrix = matrix.map(lambda w: 1 if w > 0 else 0)
 
         return matrix
@@ -177,7 +177,7 @@ class DataFrame(
         return self.sort_columns(data_frame)
 
     def step_10_remove_counters_from_axes(self, data_frame):
-        if self.params.term_counters is False:
+        if self.params.item_counters is False:
             data_frame.columns = [" ".join(x.split()[:-1]) for x in data_frame.columns]
         return data_frame
 

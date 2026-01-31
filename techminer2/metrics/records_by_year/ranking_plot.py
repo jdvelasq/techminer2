@@ -55,7 +55,7 @@ class RankingPlot(
 
         data_frame["Rank"] = range(1, len(data_frame) + 1)
 
-        self.having_terms_ordered_by("OCC")
+        self.having_items_ordered_by("OCC")
 
         if self.params.title_text is None:
             self.using_title_text("Trend Metrics")
@@ -65,7 +65,7 @@ class RankingPlot(
 
         if self.params.yaxes_title_text is None:
             self.using_yaxes_title_text(
-                self.params.terms_order_by.replace("_", " ").upper()
+                self.params.items_order_by.replace("_", " ").upper()
             )
 
         fig = internal__ranking_plot(params=self.params, data_frame=data_frame)

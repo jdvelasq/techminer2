@@ -55,13 +55,13 @@ class RecursiveClusteringMixin:
                         .update(**self.params.__dict__)
                         #
                         # rewrite the parameters used by the recursive clustering:
-                        .having_terms_in_top(None)
-                        .having_terms_ordered_by("OCC")
-                        .having_term_occurrences_between(None, None)
-                        .having_term_citations_between(None, None)
-                        .having_terms_in(terms)
+                        .having_items_in_top(None)
+                        .having_items_ordered_by("OCC")
+                        .having_item_occurrences_between(None, None)
+                        .having_item_citations_between(None, None)
+                        .having_items_in(terms)
                         #
-                        .using_term_counters(False)
+                        .using_item_counters(False)
                         #
                         .run()
                     )

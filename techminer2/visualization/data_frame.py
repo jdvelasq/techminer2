@@ -230,10 +230,10 @@ class DataFrame(
 
         grouped = self.grouped.copy()
 
-        if self.params.term_occurrences_range is None:
+        if self.params.item_occurrences_range is None:
             return grouped
 
-        min_value, max_value = self.params.term_occurrences_range
+        min_value, max_value = self.params.item_occurrences_range
 
         if min_value is not None:
             grouped = grouped[grouped["OCC"] >= min_value]
@@ -247,10 +247,10 @@ class DataFrame(
 
         grouped = self.grouped.copy()
 
-        if self.params.term_citations_range is None:
+        if self.params.item_citations_range is None:
             return grouped
 
-        min_value, max_value = self.params.term_citations_range
+        min_value, max_value = self.params.item_citations_range
 
         if min_value is not None:
             grouped = grouped[grouped["global_citations"] >= min_value]
@@ -264,12 +264,12 @@ class DataFrame(
 
         grouped = self.grouped.copy()
 
-        if self.params.terms_in is None:
+        if self.params.items_in is None:
             return grouped
 
-        if self.params.terms_in is not None:
+        if self.params.items_in is not None:
             # TODO
-            terms_in = [t for t in self.params.terms_in if t in grouped.index]
+            terms_in = [t for t in self.params.items_in if t in grouped.index]
             #
             grouped = grouped.loc[terms_in, :]
 
@@ -280,7 +280,7 @@ class DataFrame(
 
         grouped = self.sort_data_frame_by_metric(
             data_frame=self.grouped.copy(),
-            metric=self.params.terms_order_by,
+            metric=self.params.items_order_by,
         )
 
         if self.params.top_n is not None:

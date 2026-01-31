@@ -87,7 +87,7 @@ class ParamsMixin:
         return self
 
     # ==========================================================================
-    # HAVING_* → Term filtering (WHICH terms?)
+    # HAVING_* → Item filtering (WHICH items?)
     # ==========================================================================
 
     def having_case_sensitive(self, case_sensitive: bool) -> Self:
@@ -150,33 +150,33 @@ class ParamsMixin:
         self.params.n_contexts = n_contexts
         return self
 
-    def having_other_term_citations_between(
+    def having_other_item_citations_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
         start, end = internal__check_required_open_ended_int_range(
-            (start, end), "other_term_citations_range"
+            (start, end), "other_item_citations_range"
         )
-        self.params.other_term_citations_range = (start, end)
+        self.params.other_item_citations_range = (start, end)
         return self
 
-    def having_other_term_occurrences_between(
+    def having_other_item_occurrences_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
         start, end = internal__check_required_open_ended_int_range(
-            (start, end), "other_term_occurrences_range"
+            (start, end), "other_item_occurrences_range"
         )
-        self.params.other_term_occurrences_range = (start, end)
+        self.params.other_item_occurrences_range = (start, end)
         return self
 
-    def having_other_terms_in(self, other_terms_in: Optional[list[str]]) -> Self:
-        other_terms_in = internal__check_optional_str_list(
-            value=other_terms_in,
-            param_name="other_terms_in",
+    def having_other_items_in(self, other_items_in: Optional[list[str]]) -> Self:
+        other_items_in = internal__check_optional_str_list(
+            value=other_items_in,
+            param_name="other_items_in",
         )
-        self.params.other_terms_in = other_terms_in
+        self.params.other_items_in = other_items_in
         return self
 
-    def having_other_terms_in_top(self, other_top_n: Optional[int]) -> Self:
+    def having_other_items_in_top(self, other_top_n: Optional[int]) -> Self:
         other_top_n = internal__check_optional_positive_int(
             value=other_top_n,
             param_name="other_top_n",
@@ -184,14 +184,14 @@ class ParamsMixin:
         self.params.other_top_n = other_top_n
         return self
 
-    def having_other_terms_ordered_by(
-        self, other_terms_order_by: Optional[str]
+    def having_other_items_ordered_by(
+        self, other_items_order_by: Optional[str]
     ) -> Self:
-        other_terms_order_by = internal__check_optional_str(
-            value=other_terms_order_by,
-            param_name="other_terms_order_by",
+        other_items_order_by = internal__check_optional_str(
+            value=other_items_order_by,
+            param_name="other_items_order_by",
         )
-        self.params.other_terms_order_by = other_terms_order_by
+        self.params.other_items_order_by = other_items_order_by
         return self
 
     def having_pattern(self, pattern: str) -> Self:
@@ -226,33 +226,33 @@ class ParamsMixin:
         self.params.replacement = replacement
         return self
 
-    def having_term_citations_between(
+    def having_item_citations_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
         start, end = internal__check_required_open_ended_int_range(
-            (start, end), "term_citations_range"
+            (start, end), "item_citations_range"
         )
-        self.params.term_citations_range = (start, end)
+        self.params.item_citations_range = (start, end)
         return self
 
-    def having_term_occurrences_between(
+    def having_item_occurrences_between(
         self, start: Optional[int], end: Optional[int]
     ) -> Self:
         start, end = internal__check_required_open_ended_int_range(
-            (start, end), "term_occurrences_range"
+            (start, end), "item_occurrences_range"
         )
-        self.params.term_occurrences_range = (start, end)
+        self.params.item_occurrences_range = (start, end)
         return self
 
-    def having_terms_in(self, term_list: Optional[list[str]]) -> Self:
-        term_list = internal__check_optional_str_list(
-            value=term_list,
-            param_name="terms_in",
+    def having_items_in(self, item_list: Optional[list[str]]) -> Self:
+        item_list = internal__check_optional_str_list(
+            value=item_list,
+            param_name="items_in",
         )
-        self.params.terms_in = term_list
+        self.params.items_in = item_list
         return self
 
-    def having_terms_in_top(self, top_n: Optional[int]) -> Self:
+    def having_items_in_top(self, top_n: Optional[int]) -> Self:
         top_n = internal__check_optional_positive_int(
             value=top_n,
             param_name="top_n",
@@ -260,7 +260,7 @@ class ParamsMixin:
         self.params.top_n = top_n
         return self
 
-    def having_terms_like(self, pattern: str) -> Self:
+    def having_items_like(self, pattern: str) -> Self:
         pattern = internal__check_required_str(
             value=pattern,
             param_name="pattern",
@@ -268,20 +268,20 @@ class ParamsMixin:
         self.params.pattern = pattern
         return self
 
-    def having_terms_ordered_by(self, terms_order_by: str) -> Self:
-        terms_order_by = internal__check_required_str(
-            value=terms_order_by,
-            param_name="terms_order_by",
+    def having_items_ordered_by(self, items_order_by: str) -> Self:
+        items_order_by = internal__check_required_str(
+            value=items_order_by,
+            param_name="items_order_by",
         )
-        self.params.terms_order_by = terms_order_by
+        self.params.items_order_by = items_order_by
         return self
 
-    def having_terms_per_year(self, terms_per_year: int) -> Self:
-        terms_per_year = internal__check_required_positive_int(
-            value=terms_per_year,
-            param_name="terms_per_year",
+    def having_items_per_year(self, items_per_year: int) -> Self:
+        items_per_year = internal__check_required_positive_int(
+            value=items_per_year,
+            param_name="items_per_year",
         )
-        self.params.terms_per_year = terms_per_year
+        self.params.items_per_year = items_per_year
         return self
 
     def having_word(self, word: str) -> Self:
@@ -402,12 +402,12 @@ class ParamsMixin:
         self.params.baseline_periods = baseline_periods
         return self
 
-    def using_binary_term_frequencies(self, binary_term_frequencies: bool) -> Self:
-        binary_term_frequencies = internal__check_required_bool(
-            value=binary_term_frequencies,
-            param_name="binary_term_frequencies",
+    def using_binary_item_frequencies(self, frequencies: bool) -> Self:
+        frequencies = internal__check_required_bool(
+            value=frequencies,
+            param_name="binary_item_frequencies",
         )
-        self.params.binary_term_frequencies = binary_term_frequencies
+        self.params.binary_item_frequencies = frequencies
         return self
 
     def using_cluster_coverages(self, cluster_coverages: Optional[list[str]]) -> Self:
@@ -574,12 +574,12 @@ class ParamsMixin:
         self.params.minimum_number_of_clusters = minimum_number_of_clusters
         return self
 
-    def using_minimum_terms_in_cluster(self, minimum_terms_in_cluster: int) -> Self:
-        minimum_terms_in_cluster = internal__check_required_positive_int(
-            value=minimum_terms_in_cluster,
-            param_name="minimum_terms_in_cluster",
+    def using_minimum_items_in_cluster(self, minimum_items_in_cluster: int) -> Self:
+        minimum_items_in_cluster = internal__check_required_positive_int(
+            value=minimum_items_in_cluster,
+            param_name="minimum_items_in_cluster",
         )
-        self.params.minimum_terms_in_cluster = minimum_terms_in_cluster
+        self.params.minimum_items_in_cluster = minimum_items_in_cluster
         return self
 
     def using_node_colors(
@@ -684,12 +684,12 @@ class ParamsMixin:
         self.params.spring_layout_seed = spring_layout_seed
         return self
 
-    def using_term_counters(self, term_counters: bool) -> Self:
-        term_counters = internal__check_required_bool(
-            value=term_counters,
-            param_name="term_counters",
+    def using_item_counters(self, item_counters: bool) -> Self:
+        item_counters = internal__check_required_bool(
+            value=item_counters,
+            param_name="item_counters",
         )
-        self.params.term_counters = term_counters
+        self.params.item_counters = item_counters
         return self
 
     def using_textfont_color(
@@ -778,12 +778,12 @@ class ParamsMixin:
         self.params.title_text = title_text
         return self
 
-    def using_top_terms_by_theme(self, top_terms_by_theme: int) -> Self:
-        top_terms_by_theme = internal__check_required_positive_int(
-            value=top_terms_by_theme,
-            param_name="top_terms_by_theme",
+    def using_top_items_by_theme(self, top_items_by_theme: int) -> Self:
+        top_items_by_theme = internal__check_required_positive_int(
+            value=top_items_by_theme,
+            param_name="top_items_by_theme",
         )
-        self.params.top_terms_by_theme = top_terms_by_theme
+        self.params.top_items_by_theme = top_items_by_theme
         return self
 
     def using_total_records_threshold(self, total_records_threshold: int) -> Self:
@@ -1011,7 +1011,7 @@ class ParamsMixin:
         self.params.target_field = field
         return self
 
-    def having_terms_with_stem(self, stem: str) -> Self:
+    def having_items_with_stem(self, stem: str) -> Self:
 
         self.params.pattern = stem
         return self

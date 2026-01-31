@@ -6,8 +6,8 @@ def compose_descriptors_raw(root_directory: str) -> int:
 
     return merge_columns(
         sources=[
-            Field.KEY_RAW,
-            Field.NOUNPH_RAW,
+            Field.ALLKEY_RAW,
+            Field.NP,
         ],
         target=Field.KEYTERMS_RAW,
         root_directory=root_directory,

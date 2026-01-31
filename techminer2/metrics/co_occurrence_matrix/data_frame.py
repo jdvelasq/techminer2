@@ -118,7 +118,7 @@ class DataFrame(
             MatrixDataFrame()
             .update(**self.params.__dict__)
             .update(terms_order_by="OCC")
-            .using_term_counters(True)
+            .using_item_counters(True)
             .run()
         )
 

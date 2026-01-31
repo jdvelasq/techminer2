@@ -152,7 +152,7 @@ class CutoffFuzzyMerging(
         self.keywords = (
             DataFrame()
             .with_field("raw_keywords")
-            .having_terms_ordered_by("OCC")
+            .having_items_ordered_by("OCC")
             .where_root_directory(self.params.root_directory)
             .where_database("main")
         ).run()

@@ -102,11 +102,11 @@ class TermsByClusterDataFrame(
             #
             .using_clustering_algorithm_or_dict(mapping)
             #
-            .having_terms_in_top(None)
-            .having_terms_ordered_by("OCC")
-            .having_term_occurrences_between(None, None)
-            .having_term_citations_between(None, None)
-            .having_terms_in(self.selected_terms)
+            .having_items_in_top(None)
+            .having_items_ordered_by("OCC")
+            .having_item_occurrences_between(None, None)
+            .having_item_citations_between(None, None)
+            .having_items_in(self.selected_terms)
             #
             .run()
         )

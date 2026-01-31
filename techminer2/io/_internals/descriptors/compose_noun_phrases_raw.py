@@ -6,9 +6,9 @@ def compose_noun_phrases_raw(root_directory: str) -> int:
 
     return merge_columns(
         sources=[
-            Field.NOUNPH_ABS_RAW,
-            Field.NOUNPH_TITLE_RAW,
+            Field.NP_ABS_RAW,
+            Field.NP,
         ],
-        target=Field.NOUNPH_RAW,
+        target=Field.NP,
         root_directory=root_directory,
     )

@@ -73,7 +73,7 @@ class MatrixDataFrame(
         data_matrix = (
             CoOccurrenceMatrixDataFrame()
             .update(**self.params.__dict__)
-            .having_other_terms_ordered_by("OCC")
+            .having_other_items_ordered_by("OCC")
             .run()
         )
 

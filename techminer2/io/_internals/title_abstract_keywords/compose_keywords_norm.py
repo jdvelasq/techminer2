@@ -9,6 +9,6 @@ def compose_keywords_norm(root_directory: str) -> int:
             Field.AUTHKEY_NORM,
             Field.IDXKEY_NORM,
         ],
-        target=Field.KEY_NORM,
+        target=Field.ALLKEY_NORM,
         root_directory=root_directory,
     )

@@ -89,7 +89,7 @@ class DocumentsByClusterMapping(
         c2t_mapping = (
             ClustersToTermsMapping()
             .update(**self.params.__dict__)
-            .using_term_counters(False)
+            .using_item_counters(False)
             .run()
         )
 

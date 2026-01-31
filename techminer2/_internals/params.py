@@ -12,14 +12,14 @@ class Params:
     #
     # A
     #
-    axes_visible: bool = False
     association_index: Optional[str] = None
+    axes_visible: bool = False
 
     #
     # B
     #
     baseline_periods: int = 3
-    binary_term_frequencies: bool = False
+    binary_item_frequencies: bool = False
 
     #
     # C
@@ -43,28 +43,36 @@ class Params:
     #
     # D
     #
-    draw_arrows: bool = False
     decomposition_algorithm: Optional[BaseEstimator] = None
+    draw_arrows: bool = False
 
     #
     # E
     #
     edge_colors: Optional[list[Any]] = None
+    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
+    edge_similarity_threshold: float = 0.0
     edge_top_n: Optional[int] = None
     edge_width_range: Tuple[float, float] = (0.5, 0.8)
     edge_widths: Tuple[float, float, float, float] = (0.5, 0.8, 1.0, 1.2)
-    edge_similarity_threshold: float = 0.0
-    edge_opacity_range: Tuple[float, float] = (0.1, 0.9)
 
     #
     # F
     #
     field: Optional[str] = None
+    fig_width: float = 400
+    fig_height: float = 400
 
     #
     # I
     #
     initial_newline: bool = False
+    item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    item_counters: bool = True
+    item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    items_in: Optional[list[str]] = None
+    items_order_by: Optional[str] = None
+    items_per_year: int = 5
 
     #
     # K
@@ -84,29 +92,29 @@ class Params:
     manifold_algorithm: Optional[BaseEstimator] = None
     marker_size: float = 7
     match_threshold: float = 95.0
-    minimum_terms_in_cluster: int = 5
-    minimum_number_of_clusters: int = 10
     maximum_occurrence: int = 10
+    minimum_items_in_cluster: int = 5
+    minimum_number_of_clusters: int = 10
 
     #
     # N
     #
-    node_colors: Optional[List[Union[str, float, Sequence[float]]]] = None
-    node_size: int = 10
-    node_size_range: Tuple[int, int] = (5, 20)
-    novelty_threshold: float = 0.15
     n_chars: int = 100
     n_contexts: int = 10
+    node_colors: Optional[List[Union[str, float, Sequence[float]]]] = None
+    node_size_range: Tuple[int, int] = (5, 20)
+    node_size: int = 10
+    novelty_threshold: float = 0.15
 
     #
     # O
     #
     occurrence_threshold: int = 2
     other_field: Optional[str] = None
-    other_term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    other_terms_in: Optional[list[str]] = None
-    other_terms_order_by: Optional[str] = None
+    other_item_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    other_item_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
+    other_items_in: Optional[list[str]] = None
+    other_items_order_by: Optional[str] = None
     other_top_n: Optional[int] = None
 
     #
@@ -151,12 +159,6 @@ class Params:
     # T
     #
     target_field: Optional[str] = None
-    term_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    term_counters: bool = True
-    term_occurrences_range: Tuple[Optional[int], Optional[int]] = (None, None)
-    terms_in: Optional[list[str]] = None
-    terms_order_by: Optional[str] = None
-    terms_per_year: int = 5
     textfont_color: Union[str, float, Sequence[float]] = "#465c6b"
     textfont_opacity_range: Tuple[float, float] = (0.5, 1)
     textfont_opacity: float = 1.0
@@ -169,8 +171,8 @@ class Params:
     thesaurus_file: str = "no_name.the.txt"
     time_window: int = 2
     title_text: Optional[str] = None
+    top_items_by_theme: int = 5
     top_n: Optional[int] = None
-    top_terms_by_theme: int = 5
     total_records_threshold: int = 7
     tqdm_disable: bool = False
     transformation_function: Optional[Callable[[Any], Any]] = None
@@ -210,16 +212,6 @@ class Params:
     zotero_library_id: Optional[str] = None
     zotero_library_type: Optional[str] = None
 
-    # -------------------------------------------------------------------------
-    # PLOT PROPERTIES:
-    # -------------------------------------------------------------------------
-
-    #
-    fig_width: float = 400
-    fig_height: float = 400
-    #
-
-    # -------------------------------------------------------------------------
     def __init__(self, **kwargs):
         self.update(**kwargs)
 

@@ -23,15 +23,19 @@ class Field(Enum):
     ABS_RAW = "abstract_raw"
     ABS_TOK = "abstract_tokenized"
     ABS_UPPER = "abstract_uppercase"
-    AFFIL = "affiliations"
+    AFFIL = "affiliation"
+    ALLKEY_NORM = "all_keywords_norm"
+    ALLKEY_RAW = "all_keywords_raw"
+    ALLNP_NORM = "all_noun_phrases_norm"
+    ALLNP_RAW = "all_noun_phrases_raw"
     ARTNO = "art_no"
-    AUTH_AFFIL = "authors_with_affiliations"
+    AUTH_AFFIL = "author_with_affiliation"
+    AUTH_DISAMB = "author_disambiguated"
     AUTH_FULL = "author_full_names"
-    AUTH_ID_NORM = "author_ids_norm"
-    AUTH_ID_RAW = "author_ids_raw"
-    AUTH_DISAMB = "authors_disambiguated"
-    AUTH_NORM = "authors_norm"
-    AUTH_RAW = "authors_raw"
+    AUTH_ID_NORM = "author_id_norm"
+    AUTH_ID_RAW = "author_id_raw"
+    AUTH_NORM = "author_norm"
+    AUTH_RAW = "author_raw"
     AUTHKEY_NORM = "author_keywords_norm"
     AUTHKEY_RAW = "author_keywords_raw"
 
@@ -54,11 +58,11 @@ class Field(Enum):
     DOCTYPE_NORM = "document_type_norm"
     DOCTYPE_RAW = "document_type_raw"
     DOI = "doi"
-    EDITOR = "editors"
 
     #
     # E
     #
+    EDITOR = "editor"
     EID = "document_identifier"
     EISSN = "eissn"
 
@@ -82,10 +86,8 @@ class Field(Enum):
     #
     # K
     #
-    KEY_NORM = "keywords_norm"
-    KEY_RAW = "keywords_raw"
     KEYTERMS_RAW = "keyterms_raw"
-    KEYTERMS_NORM = "keyterms"
+    KEYTERMS_NORM = "keyterms_norm"
 
     #
     # L
@@ -101,14 +103,12 @@ class Field(Enum):
     #
     # N
     #
-    NOUNPH_ABS_NORM = "noun_phrases_abstract"
-    NOUNPH_ABS_RAW = "noun_phrases_abstract_raw"
-    NOUNPH_NORM = "noun_phrases_norm"
-    NOUNPH_RAW = "noun_phrases_raw"
-    NOUNPH_SPACY = "noun_phrases_spacy"
-    NOUNPH_TEXTBLOB = "noun_phrases_textblob"
-    NOUNPH_TITLE_NORM = "noun_phrases_title"
-    NOUNPH_TITLE_RAW = "noun_phrases_title_raw"
+    NP_ABS_NORM = "noun_phrases_abstract_norm"
+    NP_ABS_RAW = "noun_phrases_abstract_raw"
+    NP_SPACY_RAW = "noun_phrases_spacy_raw"
+    NP_TEXTBLOB_RAW = "noun_phrases_textblob_raw"
+    NP_TITLE_NORM = "noun_phrases_title_norm"
+    NP_TITLE_RAW = "noun_phrases_title_raw"
     NUMAUTH = "number_of_authors"
     NUMREF = "number_of_references"
 
@@ -120,8 +120,8 @@ class Field(Enum):
     #
     # P
     #
-    PAGEFIRST = "page_start"
-    PAGELAST = "page_end"
+    PAGEFIRST = "page_first"
+    PAGELAST = "page_last"
     PAGES = "page_count"
     PUBLISHER = "publisher"
     PUBMED = "pubmed"
@@ -151,7 +151,7 @@ class Field(Enum):
     TITLE_RAW = "title_raw"
     TITLE_TOK = "title_tokenized"
     TITLE_UPPER = "title_uppercase"
-    TRADENAME = "tradenames"
+    TRADENAME = "tradename"
 
     #
     # V

@@ -242,7 +242,7 @@ class DataFrame(
         return self.sort_index(data_frame)
 
     def _step_9_remove_counter_from_axis(self, data_frame):
-        if self.params.term_counters is False:
+        if self.params.item_counters is False:
             data_frame.index = data_frame.index.str.split().str[0]
         return data_frame
 

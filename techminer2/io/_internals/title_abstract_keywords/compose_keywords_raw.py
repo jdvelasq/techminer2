@@ -10,6 +10,6 @@ def compose_keywords_raw(root_directory: str) -> int:
             Field.AUTHKEY_RAW,
             Field.IDXKEY_RAW,
         ],
-        target=Field.KEY_RAW,
+        target=Field.ALLKEY_RAW,
         root_directory=root_directory,
     )

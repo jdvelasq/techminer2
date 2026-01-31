@@ -71,7 +71,7 @@ class LinePlot(
 
         if self.params.yaxes_title_text is None:
             self.using_yaxes_title_text(
-                self.params.terms_order_by.replace("_", " ").upper()
+                self.params.items_order_by.replace("_", " ").upper()
             )
 
         fig = internal__line_plot(params=self.params, data_frame=data_frame)

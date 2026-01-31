@@ -230,22 +230,22 @@ class MatrixDataFrame(
             self.with_other_field(
                 self.params.field,
             )
-            self.having_other_terms_in_top(
+            self.having_other_items_in_top(
                 self.params.top_n,
             )
-            self.having_other_terms_ordered_by(
-                self.params.terms_order_by,
+            self.having_other_items_ordered_by(
+                self.params.items_order_by,
             )
-            self.having_other_term_occurrences_between(
-                self.params.term_occurrences_range[0],
-                self.params.term_occurrences_range[1],
+            self.having_other_item_occurrences_between(
+                self.params.item_occurrences_range[0],
+                self.params.item_occurrences_range[1],
             )
-            self.having_other_term_citations_between(
-                self.params.term_citations_range[0],
-                self.params.term_citations_range[1],
+            self.having_other_item_citations_between(
+                self.params.item_citations_range[0],
+                self.params.item_citations_range[1],
             )
-            self.having_other_terms_in(
-                self.params.terms_in,
+            self.having_other_items_in(
+                self.params.items_in,
             )
 
     # -------------------------------------------------------------------------
@@ -258,17 +258,17 @@ class MatrixDataFrame(
             PerformanceMetricsDataFrame()
             .update(**self.params.__dict__)
             .with_field(self.params.other_field)
-            .having_terms_in_top(self.params.other_top_n)
-            .having_terms_ordered_by(self.params.other_terms_order_by)
-            .having_term_occurrences_between(
-                self.params.other_term_occurrences_range[0],
-                self.params.other_term_occurrences_range[1],
+            .having_items_in_top(self.params.other_top_n)
+            .having_items_ordered_by(self.params.other_items_order_by)
+            .having_item_occurrences_between(
+                self.params.other_item_occurrences_range[0],
+                self.params.other_item_occurrences_range[1],
             )
-            .having_term_citations_between(
-                self.params.other_term_citations_range[0],
-                self.params.other_term_citations_range[1],
+            .having_item_citations_between(
+                self.params.other_item_citations_range[0],
+                self.params.other_item_citations_range[1],
             )
-            .having_terms_in(self.params.other_terms_in)
+            .having_items_in(self.params.other_items_in)
             .run()
         )
         return metrics
@@ -381,7 +381,7 @@ class MatrixDataFrame(
 
     # -------------------------------------------------------------------------
     def _step_13_remove_counters(self, matrix):
-        if self.params.term_counters is False:
+        if self.params.item_counters is False:
             matrix_cols = [" ".join(col.split()[:-1]) for col in matrix.columns]
             matrix_rows = [" ".join(row.split()[:-1]) for row in matrix.index]
             matrix.columns = matrix_cols

@@ -146,7 +146,7 @@ class DataFrame(
         ).sort_values(["year_med", "rn"], ascending=[True, True])
 
         self.terms_by_year = self.terms_by_year.query(
-            f"rn < {self.params.terms_per_year}"
+            f"rn < {self.params.items_per_year}"
         )
 
     # ---------------------------------------------------------------------------

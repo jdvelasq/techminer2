@@ -67,7 +67,7 @@ class DataFrame(
         return (
             MatrixDataFrame()
             .update(**self.params.__dict__)
-            .using_term_counters(True)
+            .using_item_counters(True)
             .with_other_field(self.params.field)
             .run()
         )
@@ -78,7 +78,7 @@ class DataFrame(
 
     # -------------------------------------------------------------------------
     def _step_03_remove_counters(self, matrix):
-        if self.params.term_counters:
+        if self.params.item_counters:
             return matrix
         matrix.columns = [col.split(" ")[0] for col in matrix.columns]
         matrix.index = [idx.split(" ")[0] for idx in matrix.index]

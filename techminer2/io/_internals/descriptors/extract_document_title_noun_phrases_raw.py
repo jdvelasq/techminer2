@@ -6,6 +6,6 @@ def extract_document_title_noun_phrases_raw(root_directory: str) -> int:
 
     return extract_uppercase(
         source=Field.TITLE_TOK,
-        target=Field.NOUNPH_TITLE_RAW,
+        target=Field.NP,
         root_directory=root_directory,
     )

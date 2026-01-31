@@ -75,44 +75,44 @@ class SankeyPlot(
                 .with_field(
                     col_field,
                 )
-                .having_terms_ordered_by(
+                .having_items_ordered_by(
                     "OCC",
                 )
-                .having_terms_in_top(
+                .having_items_in_top(
                     self.params.top_n,
                 )
-                .having_term_occurrences_between(
-                    self.params.term_occurrences_range[0],
-                    self.params.term_occurrences_range[1],
+                .having_item_occurrences_between(
+                    self.params.item_occurrences_range[0],
+                    self.params.item_occurrences_range[1],
                 )
-                .having_term_citations_between(
-                    self.params.term_citations_range[0],
-                    self.params.term_citations_range[1],
+                .having_item_citations_between(
+                    self.params.item_citations_range[0],
+                    self.params.item_citations_range[1],
                 )
-                .having_terms_in(
-                    self.params.terms_in,
+                .having_items_in(
+                    self.params.items_in,
                 )
                 #
                 # ROWS:
                 .with_other_field(
                     row_field,
                 )
-                .having_other_terms_ordered_by(
+                .having_other_items_ordered_by(
                     "OCC",
                 )
-                .having_other_terms_in_top(
+                .having_other_items_in_top(
                     self.params.top_n,
                 )
-                .having_other_term_occurrences_between(
-                    self.params.term_occurrences_range[0],
-                    self.params.term_occurrences_range[1],
+                .having_other_item_occurrences_between(
+                    self.params.item_occurrences_range[0],
+                    self.params.item_occurrences_range[1],
                 )
-                .having_other_term_citations_between(
-                    self.params.term_citations_range[0],
-                    self.params.term_citations_range[1],
+                .having_other_item_citations_between(
+                    self.params.item_citations_range[0],
+                    self.params.item_citations_range[1],
                 )
-                .having_other_terms_in(
-                    self.params.terms_in,
+                .having_other_items_in(
+                    self.params.items_in,
                 )
                 .run()
             )
