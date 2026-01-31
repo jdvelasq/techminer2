@@ -25,9 +25,17 @@ class Field(Enum):
     ABS_UPPER = "abstract_uppercase"
     AFFIL = "affiliation"
     ALLKEY_NORM = "all_keywords_norm"
+    ALLKEY_NP_NORM = "all_keywords_noun_phrase_norm"
+    ALLKEY_NP_RAW = "all_keywords_noun_phrase_raw"
     ALLKEY_RAW = "all_keywords_raw"
+    ALLKEY_WORD_NORM = "all_keywords_word_norm"
+    ALLKEY_WORD_RAW = "all_keywords_word_raw"
     ALLNP_NORM = "all_noun_phrases_norm"
     ALLNP_RAW = "all_noun_phrases_raw"
+    ALLTERMS_NORM = "all_terms_norm"
+    ALLTERMS_RAW = "all_terms_raw"
+    ALLWORD_NORM = "all_word_norm"
+    ALLWORD_RAW = "all_word_raw"
     ARTNO = "art_no"
     AUTH_AFFIL = "author_with_affiliation"
     AUTH_DISAMB = "author_disambiguated"
@@ -157,3 +165,9 @@ class Field(Enum):
     # V
     #
     VOL = "volume"
+
+    #
+    # W
+    #
+    WORD_ABS_RAW = "word_abs_raw"
+    WORD_TITLE_RAW = "word_title_raw"
