@@ -23,7 +23,7 @@ class Field(Enum):
     ABS_RAW = "abstract_raw"
     ABS_TOK = "abstract_tokenized"
     ABS_UPPER = "abstract_uppercase"
-    AFFIL = "affiliation"
+    AFFIL_RAW = "affiliation"
     ALLKEY_NORM = "all_keywords_norm"
     ALLKEY_NP_NORM = "all_keywords_noun_phrase_norm"
     ALLKEY_NP_RAW = "all_keywords_noun_phrase_raw"
@@ -118,7 +118,8 @@ class Field(Enum):
     NP_TITLE_NORM = "noun_phrases_title_norm"
     NP_TITLE_RAW = "noun_phrases_title_raw"
     NUMAUTH = "number_of_authors"
-    NUMREF = "number_of_references"
+    NUMREF_GLOBAL = "number_of_global_references"
+    NUMREF_LOCAL = "number_of_local_references"
 
     #
     # O
@@ -149,7 +150,8 @@ class Field(Enum):
     SEQNUM = "sequence_numbers"
     SOURCE = "source"
     SRCTITLE_NORM = "source_title_norm"
-    SRCTITLE_ABBR = "source_title_abbr"
+    SRCTITLE_ABBR_RAW = "source_title_abbr_raw"
+    SRCTITLE_ABBR_NORM = "source_title_abbr_norm"
     SRCTITLE_RAW = "source_title_raw"
     SUBJAREA = "subject_areas"
 

@@ -35,20 +35,14 @@ from typing import Any
 from techminer2._internals import ParamsMixin
 
 from ._internals import Step
-from ._internals.bibliographical_information.build_steps import (
-    build_bibliographical_information_steps,
-)
-from ._internals.citation_information.build_steps import (
-    build_citation_information_steps,
-)
-from ._internals.descriptors.build_steps import build_descriptors_steps
-from ._internals.funding_details.build_steps import build_funding_details_steps
-from ._internals.other_information.build_steps import build_other_information_steps
+from ._internals.affiliations.build_steps import build_affiliation_steps
+from ._internals.authors.build_steps import build_author_steps
+from ._internals.document.build_steps import build_document_steps
+from ._internals.keywords.build_steps import build_keyword_steps
+from ._internals.references.build_steps import build_reference_steps
 from ._internals.scaffolding.build_steps import build_scaffolding_steps
 from ._internals.scopus_result import ScopusResult
-from ._internals.title_abstract_keywords.build_steps import (
-    build_title_abstract_keywords_steps,
-)
+from ._internals.source_title.build_steps import build_source_title_steps
 
 __reviewed__ = "2026-01-28"
 
@@ -60,13 +54,13 @@ class Scopus(ParamsMixin):
     _STEP_PREFIX = "  → "
     _DETAIL_PREFIX = "    "
 
-    _PHASE_SCAFFOLDING = "Building project scaffold"
-    _PHASE_CITATION = "Processing citation information"
-    _PHASE_BIBLIOGRAPHICAL = "Processing bibliographical information"
-    _PHASE_TEXT_CONTENT = "Processing title, abstract, and keywords"
-    _PHASE_DESCRIPTORS = "Processing descriptors"
-    _PHASE_FUNDING = "Processing funding details"
-    _PHASE_OTHER = "Processing other information"
+    _AFFILIATIONS = "Processing affiliations"
+    _AUTHORS = "Processing authors"
+    _DOCUMENT = "Processing document information"
+    _KEYWORDS = "Processing keywords"
+    _REFERENCES = "Processing references"
+    _SCAFFOLDING = "Building project scaffold"
+    _SOURCE_TITLE = "Processing source titles"
 
     # -------------------------------------------------------------------------
     # I/O
@@ -113,31 +107,13 @@ class Scopus(ParamsMixin):
 
     def _pipeline(self) -> tuple[tuple[str, list[Step]], ...]:
         return (
-            (
-                self._PHASE_SCAFFOLDING,
-                build_scaffolding_steps(self.params),
-            ),
-            (self._PHASE_CITATION, build_citation_information_steps(self.params)),
-            (
-                self._PHASE_BIBLIOGRAPHICAL,
-                build_bibliographical_information_steps(self.params),
-            ),
-            (
-                self._PHASE_TEXT_CONTENT,
-                build_title_abstract_keywords_steps(self.params),
-            ),
-            (
-                self._PHASE_DESCRIPTORS,
-                build_descriptors_steps(self.params),
-            ),
-            (
-                self._PHASE_FUNDING,
-                build_funding_details_steps(self.params),
-            ),
-            (
-                self._PHASE_OTHER,
-                build_other_information_steps(self.params),
-            ),
+            (self._SCAFFOLDING, build_scaffolding_steps(self.params)),
+            (self._AFFILIATIONS, build_affiliation_steps(self.params)),
+            (self._AUTHORS, build_author_steps(self.params)),
+            (self._DOCUMENT, build_document_steps(self.params)),
+            (self._KEYWORDS, build_keyword_steps(self.params)),
+            (self._SOURCE_TITLE, build_source_title_steps(self.params)),
+            (self._REFERENCES, build_reference_steps(self.params)),
         )
 
     def _execute_step(self, step: Step) -> None:

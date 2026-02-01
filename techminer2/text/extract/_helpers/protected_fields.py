@@ -2,7 +2,7 @@ from techminer2 import Field
 
 PROTECTED_FIELDS = [
     Field.ABS_RAW.value,
-    Field.AFFIL.value,
+    Field.AFFIL_RAW.value,
     Field.ARTNO.value,
     Field.AUTH_AFFIL.value,
     Field.AUTH_ID_RAW.value,
@@ -25,8 +25,6 @@ PROTECTED_FIELDS = [
     Field.ALLKEY_RAW.value,
     Field.LINK.value,
     Field.NP_ABS_RAW.value,
-    Field.NP.value,
-    Field.NP.value,
     Field.NUMAUTH.value,
     Field.OA.value,
     Field.PAGEFIRST.value,
@@ -37,7 +35,7 @@ PROTECTED_FIELDS = [
     Field.REF_GLOBAL_RAW.value,
     Field.REF_GLOBAL_RAW.value,
     Field.SOURCE.value,
-    Field.SRCTITLE_ABBR.value,
+    Field.SRCTITLE_ABBR_RAW.value,
     Field.SRCTITLE_RAW.value,
     Field.TITLE_RAW.value,
     Field.VOL.value,

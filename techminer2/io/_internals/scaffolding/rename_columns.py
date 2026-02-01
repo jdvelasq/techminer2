@@ -8,9 +8,9 @@ SCOPUS_TO_TM2 = {
     #
     # A
     #
-    "Abbreviated Source Title": Field.SRCTITLE_ABBR.value,
+    "Abbreviated Source Title": Field.SRCTITLE_ABBR_RAW.value,
     "Abstract": Field.ABS_RAW.value,
-    "Affiliations": Field.AFFIL.value,
+    "Affiliations": Field.AFFIL_RAW.value,
     "Art. No.": Field.ARTNO.value,
     "Author full names": Field.AUTH_FULL.value,
     "Author Keywords": Field.AUTHKEY_RAW.value,
