@@ -1,0 +1,99 @@
+5 Jalan Universiti
+    5 Jalan Universiti, Sunway University, Sunway City, Selangor, Malaysia
+Addis Ababa University
+    Addis Ababa University, Addis Ababa, Ethiopia
+Agricultural Bank of China
+    Agricultural Bank of China, Beijing, China
+Baekseok University
+    Division of Tourism, Baekseok University, Cheonan, Chungcheongnam-do, South Korea
+Beijing Normal-Hong Kong Baptist University
+    Beijing Normal-Hong Kong Baptist University, Zhuhai, Guangdong, China
+Beijing University of Technology
+    Beijing University of Technology, Beijing, China
+Boise State University
+    Boise State University, Boise, ID, United States
+Brunel University London
+    Brunel University London, Uxbridge, Middlesex, United Kingdom
+Chung-Ang University Business School
+    Chung-Ang University Business School, Seoul, South Korea
+Dankook University
+    Dankook University, Seoul, Seoul, South Korea
+De Montfort University
+    De Montfort University, Leicester, Leicestershire, United Kingdom
+E-Business Technology Institute
+    E-Business Technology Institute, The University of Hong Kong, Hong Kong, Hong Kong
+Economic Research Institute
+    Economic Research Institute, Bank of Korea, Seoul, South Korea
+Finance Department
+    Finance Department, Latvijas Universitāte, Riga, Latvia
+Financial Information Systems Division
+    Financial Information Systems Division, Hitachi, Ltd., Tokyo, Japan
+GSK Stockmann and Kollegen
+    GSK Stockmann and Kollegen, Munich, Germany
+German Institute for Economic Research
+    German Institute for Economic Research, Berlin, Germany
+Global Center for Social Innovation - Tokyo
+    Global Center for Social Innovation - Tokyo, Hitachi, Ltd., Tokyo, Japan
+HCMC University of Technical Education
+    Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam
+Hochschule für Wirtschaft Fribourg
+    Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland
+Latvijas Universitāte
+    Faculty of Economics and Management, Latvijas Universitāte, Riga, Latvia
+London Office
+    London Office, London, England, United Kingdom
+McKinsey & Company
+    McKinsey & Company, Hungary, Budapest, Hungary
+Moscow School of Management SKOLKOVO
+    Moscow School of Management SKOLKOVO, Moscow, Moscow Region, Russian Federation
+Nagoya University
+    Graduate School of Economics, Nagoya University, Nagoya, Aichi, Japan
+National Chengchi University
+    National Chengchi University, Taipei, Taiwan
+National University of Singapore
+    Department of Information Systems, National University of Singapore, Singapore City, Singapore
+Pace University
+    Pace University, New York, NY, United States
+Peking University
+    Institute of Internet Finance, Peking University, Beijing, China
+Politechnika Warszawska
+    Faculty of Management, Politechnika Warszawska, Warsaw, MA, Poland
+Reykjavík University
+    School of Business, Reykjavík University, Reykjavik, Iceland
+Ruhr-Universitat Bochum
+    Lehrstuhl für Finanzierung und Kreditwirtschaft, Ruhr-Universitat Bochum, Bochum, Nordrhein-Westfalen, Germany
+SK Telecom Co.
+    SK Telecom Co., Ltd., Seoul, South Korea
+Sapporo Gakuin University
+    Department of Economics, Sapporo Gakuin University, Ebetsu, Hokkaido, Japan
+Singapore Management University
+    School of Information Systems, Singapore Management University, Singapore City, Singapore
+Soongsil University
+    Graduate School of Business, Soongsil University, Seoul, South Korea
+    College of Business Administration, Soongsil University, Seoul, South Korea
+Strategic Management group
+    Strategic Management group, Indian Institute of Management, India
+Sungkyunkwan University
+    Sungkyunkwan University, Seoul, South Korea
+Sungshin Women's University
+    Department of Computer Science, Sungshin Women's University, Seoul, South Korea
+    School of Information Technology, Sungshin Women's University, Seoul, South Korea
+The University of Hong Kong
+    Faculty of Law, The University of Hong Kong, Hong Kong, Hong Kong
+Tianjin University
+    Tianjin University, Tianjin, China
+United States
+    Kasasa®, United States
+Universiteit van Amsterdam
+    Universiteit van Amsterdam, Amsterdam, Noord-Holland, Netherlands
+Universität Bamberg
+    Universität Bamberg, Bamberg, Bayern, Germany
+Universität Zürich
+    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
+    Universität Zürich, Zurich, ZH, Switzerland
+Walton Design and Consulting Engineering Co
+    Walton Design and Consulting Engineering Co,LTD, China
+Westerdals Oslo ACT
+    Westerdals Oslo ACT, Oslo, Oslo, Norway
+c/o SBS Treuhand GmbH
+    c/o SBS Treuhand GmbH, Ludwig-Maximilians-Universität München, Munich, Bayern, Germany

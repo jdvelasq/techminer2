@@ -61,6 +61,7 @@ class Field(Enum):
     CONFLOC = "conference_location"
     CONFNAME = "conference_name"
     CORRESP = "correspondence_address"
+    COUNTRY = "country"
 
     #
     # D
@@ -79,6 +80,9 @@ class Field(Enum):
     #
     # F
     #
+    FIRSTAUTH = "first_author"
+    FIRSTAUTH_COUNTRY = "first_author_country"
+    FIRSTAUTH_ORGANIZATION = "first_author_organization"
     FUND_DETAILS = "funding_details"
     FUND_SPONSORS = "funding_sponsors"
     FUND_TEXTS = "funding_texts"
@@ -127,6 +131,7 @@ class Field(Enum):
     # O
     #
     OA = "open_access"
+    ORGANIZATION = "organization"
 
     #
     # P
@@ -145,17 +150,19 @@ class Field(Enum):
     RECID = "record_id"
     RECNO = "record_no"
     REF_GLOBAL_RAW = "references_global_raw"
+    REGION = "region"
 
     #
     # S
     #
     SEQNUM = "sequence_numbers"
     SOURCE = "source"
-    SRCTITLE_NORM = "source_title_norm"
-    SRCTITLE_ABBR_RAW = "source_title_abbr_raw"
     SRCTITLE_ABBR_NORM = "source_title_abbr_norm"
+    SRCTITLE_ABBR_RAW = "source_title_abbr_raw"
+    SRCTITLE_NORM = "source_title_norm"
     SRCTITLE_RAW = "source_title_raw"
     SUBJAREA = "subject_areas"
+    SUBREGION = "subregion"
 
     #
     # T

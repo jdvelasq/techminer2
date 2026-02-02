@@ -33,7 +33,7 @@ from techminer2 import Field
 from techminer2.operations.transform_column import transform_column
 
 
-def _process(text):
+def _normalize(series: pd.Series) -> pd.Series:
     #
     # Chang V.; Chen Y.; (Justin) Zhang Z.; Xu Q.A.; Baudier P.; Liu B.S.C.
     #                 Guo Y., (1); Klink A., (2); Bartolo P., (1); Guo W.G.
@@ -44,42 +44,54 @@ def _process(text):
     #                                                             Anonymous
     #                                                                  Anon
     #
-    text = text.str.replace(r", \(\d\)", "", regex=True)
+    series = series.str.replace(r", \(\d\)", "", regex=True)
 
     #
 
-    text = text.str.replace(",", "", regex=False)
-    text = text.str.replace("; ", ";", regex=False)
-    text = text.str.replace(";", "; ", regex=False)
-    text = text.str.replace(" Jr.", ", Jr.", regex=False)
+    series = series.str.replace(",", "", regex=False)
+    series = series.str.replace("; ", ";", regex=False)
+    series = series.str.replace(";", "; ", regex=False)
+    series = series.str.replace(" Jr.", ", Jr.", regex=False)
     #
     # some old database records uses ',' as separator
     # text = text.str.replace(", ", ",", regex=False).str.replace(",", "; ", regex=False)
 
-    text = text.str.title()
-    text = text.fillna(pd.NA)
-    text = text.map(
+    series = series.str.title()
+    series = series.fillna(pd.NA)
+    series = series.map(
         lambda x: (
             pd.NA if isinstance(x, str) and x.startswith("[") and x.endswith("]") else x
         )
     )
-    text = text.map(
+    series = series.map(
         lambda x: pd.NA if isinstance(x, str) and x.lower() == "anonymous" else x
     )
-    text = text.map(
+    series = series.map(
         lambda x: pd.NA if isinstance(x, str) and x.lower() == "anon" else x
     )
 
-    return text
+    return series
+
+
+def _extract_first_author(series: pd.Series) -> pd.Series:
+    return series.str.split(";").str[0].str.strip()
 
 
 def normalize_auth_raw(root_directory, file: str) -> int:
     """Run authors importer."""
 
-    return transform_column(
+    transform_column(
         source=Field.AUTH_RAW,
         target=Field.AUTH_NORM,
-        function=_process,
+        function=_normalize,
+        root_directory=root_directory,
+        file=file,
+    )
+
+    return transform_column(
+        source=Field.AUTH_NORM,
+        target=Field.FIRSTAUTH,
+        function=_extract_first_author,
         root_directory=root_directory,
         file=file,
     )
