@@ -6,7 +6,7 @@ from ._file_dispatch import get_file_operations
 from .data_file import DataFile
 
 
-def _extract_uppercase_words(text):
+def _extract_uppercase_words_and_np(text):
     if pd.isna(text):
         return pd.NA
     words = [word for word in str(text).split() if word.isupper()]
@@ -29,7 +29,9 @@ def extract_uppercase(
             f"Source column '{source.value}' not found in {get_path(root_directory).name}"
         )
 
-    dataframe[target.value] = dataframe[source.value].apply(_extract_uppercase_words)
+    dataframe[target.value] = dataframe[source.value].apply(
+        _extract_uppercase_words_and_np
+    )
 
     save_data(df=dataframe, root_directory=root_directory)
 

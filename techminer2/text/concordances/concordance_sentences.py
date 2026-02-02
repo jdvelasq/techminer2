@@ -68,12 +68,12 @@ class ConcordanceSentences(
     ) -> pd.Series:
 
         found = (
-            dataframe[Field.ABS_UPPER.value]
+            dataframe[Field.ABS_UPPER_NP.value]
             .astype(str)
             .str.contains(search_for, regex=True, flags=re.IGNORECASE)
         )
         dataframe = dataframe[found]
-        abstracts = dataframe[Field.ABS_UPPER.value]
+        abstracts = dataframe[Field.ABS_UPPER_NP.value]
         return abstracts
 
     def _transform_abstracts_to_sentences(

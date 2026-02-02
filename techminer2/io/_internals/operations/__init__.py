@@ -9,6 +9,7 @@ from .rename_column import rename_column
 from .tokenize_column import tokenize_column
 from .transform_column import transform_column
 from .uppercase_keyterms import uppercase_keyterms
+from .uppercase_words import uppercase_words
 
 __all__ = [
     "coalesce_column",
@@ -22,4 +23,5 @@ __all__ = [
     "tokenize_column",
     "transform_column",
     "uppercase_keyterms",
+    "uppercase_words",
 ]

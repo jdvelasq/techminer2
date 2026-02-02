@@ -33,7 +33,7 @@ def records_to_dicts(dataframe):
         Field.CITCOUNT_GLOBAL.value: "TC",
         Field.SRCTITLE_ABBR.value: "SO",
         Field.PUBYEAR.value: "PY",
-        Field.ABS_UPPER.value: "AB",
+        Field.ABS_UPPER_NP.value: "AB",
         Field.AUTHKEY_RAW.value: "DE",
         Field.IDXKEY_RAW.value: "ID",
     }

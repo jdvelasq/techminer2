@@ -22,7 +22,9 @@ class Field(Enum):
     #
     ABS_RAW = "abstract_raw"
     ABS_TOK = "abstract_tokenized"
-    ABS_UPPER = "abstract_uppercase"
+    ABS_UPPER_NP = "abstract_uppercase_noun_phrase"
+    ABS_UPPER_WORD = "abstract_uppercase_word"
+    ACRONYM = "acronym"
     AFFIL_RAW = "affiliation"
     ALLKEY_NORM = "all_keywords_norm"
     ALLKEY_NP_NORM = "all_keywords_noun_phrase_norm"
@@ -113,8 +115,8 @@ class Field(Enum):
     #
     NP_ABS_NORM = "noun_phrases_abstract_norm"
     NP_ABS_RAW = "noun_phrases_abstract_raw"
-    NP_SPACY_RAW = "noun_phrases_spacy_raw"
-    NP_TEXTBLOB_RAW = "noun_phrases_textblob_raw"
+    NP_SPACY = "noun_phrases_spacy"
+    NP_TEXTBLOB = "noun_phrases_textblob"
     NP_TITLE_NORM = "noun_phrases_title_norm"
     NP_TITLE_RAW = "noun_phrases_title_raw"
     NUMAUTH = "number_of_authors"
@@ -160,7 +162,8 @@ class Field(Enum):
     #
     TITLE_RAW = "title_raw"
     TITLE_TOK = "title_tokenized"
-    TITLE_UPPER = "title_uppercase"
+    TITLE_UPPER_NP = "title_uppercase_noun_phrase"
+    TITLE_UPPER_WORD = "title_uppercase_word"
     TRADENAME = "tradename"
 
     #

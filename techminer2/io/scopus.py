@@ -43,6 +43,7 @@ from ._internals.references.build_steps import build_reference_steps
 from ._internals.scaffolding.build_steps import build_scaffolding_steps
 from ._internals.scopus_result import ScopusResult
 from ._internals.source_title.build_steps import build_source_title_steps
+from ._internals.words_and_np.build_steps import build_words_and_np_steps
 
 __reviewed__ = "2026-01-28"
 
@@ -61,6 +62,7 @@ class Scopus(ParamsMixin):
     _REFERENCES = "Processing references"
     _SCAFFOLDING = "Building project scaffold"
     _SOURCE_TITLE = "Processing source titles"
+    _WORDS_AND_NP = "Processing words and noun phrases"
 
     # -------------------------------------------------------------------------
     # I/O
@@ -114,6 +116,7 @@ class Scopus(ParamsMixin):
             (self._KEYWORDS, build_keyword_steps(self.params)),
             (self._SOURCE_TITLE, build_source_title_steps(self.params)),
             (self._REFERENCES, build_reference_steps(self.params)),
+            (self._WORDS_AND_NP, build_words_and_np_steps(self.params)),
         )
 
     def _execute_step(self, step: Step) -> None:

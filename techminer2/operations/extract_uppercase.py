@@ -118,7 +118,7 @@ Example:
 
 """
 from techminer2._internals import ParamsMixin
-from techminer2.io._internals.operations.extract_uppercase import extract_uppercase
+from techminer2.io._internals.operations import extract_uppercase
 from techminer2.text.extract._helpers.protected_fields import PROTECTED_FIELDS
 
 

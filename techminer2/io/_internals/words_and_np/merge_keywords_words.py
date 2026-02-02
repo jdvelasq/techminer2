@@ -2,13 +2,13 @@ from techminer2 import Field
 from techminer2.io._internals.operations import merge_columns
 
 
-def compose_noun_phrases_raw(root_directory: str) -> int:
+def merge_keywords_words(root_directory: str) -> int:
 
     return merge_columns(
         sources=[
-            Field.NP_ABS_RAW,
-            Field.NP,
+            Field.ALLKEY_RAW,
+            Field.ALLWORD_RAW,
         ],
-        target=Field.NP,
+        target=Field.ALLKEY_WORD_RAW,
         root_directory=root_directory,
     )
