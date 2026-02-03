@@ -178,7 +178,7 @@ def _extract_country_from_string(affiliation: str) -> str:
         country = country.replace(pat, repl)
 
     if country not in COUNTRY_NAMES:
-        country = "[UNKNOWN]"
+        country = "[N/A]"
 
     return country
 
@@ -268,7 +268,7 @@ def _extract_organization_from_string(affiliation: str) -> str:
     parts = [p for p in parts if p]
 
     if not parts:
-        return "[UNKNOWN]"
+        return "[N/A]"
 
     parts = _remove_duplicate_segments(parts)
 
@@ -293,7 +293,7 @@ def _extract_organization_from_string(affiliation: str) -> str:
     if len(parts) >= 1 and _is_organization(parts[0]):
         return parts[0]
 
-    return "[UNKNOWN]"
+    return "[N/A]"
 
 
 # ----------------------------------------------------------------------------
@@ -336,13 +336,13 @@ def _create_country_column(
     df = df.copy()
 
     df[Field.COUNTRY.value] = df[Field.AFFIL_RAW.value].copy()
-    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].fillna("[UNKNOWN]")
+    df[Field.COUNTRY.value] = df[Field.COUNTRY.value].fillna("[N/A]")
     df[Field.COUNTRY.value] = df[Field.COUNTRY.value].str.split("; ")
     df[Field.COUNTRY.value] = df[Field.COUNTRY.value].map(
-        lambda affils: [country_mapping.get(affil, "[UNKNOWN]") for affil in affils],
+        lambda affils: [country_mapping.get(affil, "[N/A]") for affil in affils],
     )
     df[Field.FIRSTAUTH_COUNTRY.value] = df[Field.COUNTRY.value].map(
-        lambda countries: countries[0] if countries else "[UNKNOWN]",
+        lambda countries: countries[0] if countries else "[N/A]",
     )
     df[Field.COUNTRY.value] = df[Field.COUNTRY.value].map(set)
     df[Field.COUNTRY.value] = df[Field.COUNTRY.value].str.join("; ")
@@ -356,15 +356,13 @@ def _create_organization_column(
     df = df.copy()
 
     df[Field.ORGANIZATION.value] = df[Field.AFFIL_RAW.value].copy()
-    df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].fillna("[UNKNOWN]")
+    df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].fillna("[N/A]")
     df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].str.split("; ")
     df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
-        lambda affils: [
-            organization_mapping.get(affil, "[UNKNOWN]") for affil in affils
-        ]
+        lambda affils: [organization_mapping.get(affil, "[N/A]") for affil in affils]
     )
     df[Field.FIRSTAUTH_ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
-        lambda orgs: orgs[0] if orgs else "[UNKNOWN]"
+        lambda orgs: orgs[0] if orgs else "[N/A]"
     )
     df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].str.join("; ")
 

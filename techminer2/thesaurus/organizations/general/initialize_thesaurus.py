@@ -251,7 +251,7 @@ class InitializeThesaurus(
 
         # adds a column with the country
         self.data_frame["country"] = self.data_frame["value"].apply(
-            lambda x: mapping.get(x, "[UNKNOWN]")
+            lambda x: mapping.get(x, "[N/A]")
         )
 
     # -------------------------------------------------------------------------

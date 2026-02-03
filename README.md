@@ -25,3 +25,12 @@ General metrics and indicators
 Bibliometrix provides a well-established, publication-ready snapshot of a bibliographic dataset, focusing on core productivity and collaboration indicators. tm2+ retains this foundation but improves semantic precision, separates overlapping concepts, extends collaboration and affiliation analytics, and—critically—integrates NLP and lexical diagnostics that prepare the dataset for advanced modeling. As a result, tm2+ shifts descriptive statistics from a reporting artifact into an active quality-control and readiness layer for end-to-end bibliometric and text-based analysis.
 
 
+Review of recgonized noun phrases
+------------------------------------------------------------------------------
+
+tm2+ allows the user to inspect and validate noun phrase extraction directly on the original abstracts**, highlighting extracted noun phrases in uppercase to distinguish them from surrounding text. It also supports focused review of abstract suffixes, where copyright and publisher boilerplate are often appended and mistakenly identified as noun phrases. In addition, tm2+ exposes colon-delimited headings in structured abstracts, which can otherwise be confused with meaningful concepts. By making these artifacts explicit, tm2+ enables manual correction and re-execution of noun phrase extraction, turning NLP preprocessing into an iterative, transparent, and quality-controlled process.
+
+
+
+
+

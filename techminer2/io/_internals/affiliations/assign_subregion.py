@@ -10,10 +10,7 @@ def _process(series):
     series = series.apply(
         lambda countries: "; ".join(
             sorted(
-                set(
-                    COUNTRY_TO_SUBREGION.get(country, "[UNKNOWN]")
-                    for country in countries
-                )
+                set(COUNTRY_TO_SUBREGION.get(country, "[N/A]") for country in countries)
             )
         )
     )
