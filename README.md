@@ -19,6 +19,9 @@ References
 Web of Science (WoS) provides cited references in a standardized, preprocessed format that can be directly used for citation-based analyses, whereas Scopus delivers references as unstructured text strings. To address this limitation, TechMiner2+ scans and parses Scopus document references to generate a normalized Rec-ID field that mirrors the structure of WoS reference identifiers. This Rec-ID is then used to reformat Scopus references, effectively emulating WoS-style downloaded data and enabling consistent citation, co-citation, and coupling analyses across data sources. This field is used to compute local citation counts and build citation networks from Scopus data.
 
 
+General metrics and indicators
+------------------------------------------------------------------------------
 
+Bibliometrix provides a well-established, publication-ready snapshot of a bibliographic dataset, focusing on core productivity and collaboration indicators. tm2+ retains this foundation but improves semantic precision, separates overlapping concepts, extends collaboration and affiliation analytics, and—critically—integrates NLP and lexical diagnostics that prepare the dataset for advanced modeling. As a result, tm2+ shifts descriptive statistics from a reporting artifact into an active quality-control and readiness layer for end-to-end bibliometric and text-based analysis.
 
 
