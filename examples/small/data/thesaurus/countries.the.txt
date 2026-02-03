@@ -55,9 +55,9 @@ South Korea
     SK Telecom Co., Ltd., Seoul, South Korea
     Sungkyunkwan University, Seoul, South Korea
 Switzerland
+    Universität Zürich, Zurich, ZH, Switzerland
     Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
     Hochschule für Wirtschaft Fribourg, Fribourg, Switzerland
-    Universität Zürich, Zurich, ZH, Switzerland
 Taiwan
     National Chengchi University, Taipei, Taiwan
 United Kingdom
@@ -65,8 +65,8 @@ United Kingdom
     London Office, London, England, United Kingdom
     De Montfort University, Leicester, Leicestershire, United Kingdom
 United States
-    Boise State University, Boise, ID, United States
     Kasasa®, United States
+    Boise State University, Boise, ID, United States
     Pace University, New York, NY, United States
 Vietnam
     Faculty of Economics, HCMC University of Technical Education, Ho Chi Minh City, Viet Nam

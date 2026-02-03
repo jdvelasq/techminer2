@@ -61,54 +61,62 @@ def assign_recid(root_directory: str) -> int:
     # Create a WoS style reference column.
     # First Author, year, source_title_abbr, 'V'volumne, 'P'page_start, ' DOI ' doi
     #
+    path = Path(root_directory) / "data" / "processed"
 
-    database_file = Path(root_directory) / "data" / "processed" / "main.csv.zip"
+    for file in ["references.csv.zip", "main.csv.zip"]:
 
-    if not database_file.exists():
-        raise AssertionError(f"{database_file.name} not found")
+        database_file = path / file
 
-    dataframe = pd.read_csv(
-        database_file,
-        encoding="utf-8",
-        compression="zip",
-        low_memory=False,
-    )
+        if file == "references.csv.zip" and not database_file.exists():
+            continue
 
-    wos_ref = (
-        _get_author(dataframe)
-        + ", "
-        + _get_year(dataframe)
-        + ", "
-        + _get_source_title(dataframe)
-        + _get_volume(dataframe)
-        + _get_page_start(dataframe)
-    )
+        if file == "main.csv.zip" and not database_file.exists():
+            raise AssertionError(f"{database_file.name} not found")
 
-    index = wos_ref[wos_ref.duplicated()].index
-    if len(index) > 0:
-        wos_ref.loc[index] += ", " + dataframe[Field.TITLE_RAW.value].loc[index].str[
-            :29
-        ].str.upper().str.replace(".", "").str.replace(" - ", " ").str.replace(
-            ",", ""
-        ).str.replace(
-            ":", ""
-        ).str.replace(
-            "-", ""
-        ).str.replace(
-            "'", ""
+        dataframe = pd.read_csv(
+            database_file,
+            encoding="utf-8",
+            compression="zip",
+            low_memory=False,
         )
 
-    dataframe[Field.RECID.value] = wos_ref.copy()
-    dataframe = dataframe.drop_duplicates(subset=[Field.RECID.value])
+        wos_ref = (
+            _get_author(dataframe)
+            + ", "
+            + _get_year(dataframe)
+            + ", "
+            + _get_source_title(dataframe)
+            + _get_volume(dataframe)
+            + _get_page_start(dataframe)
+        )
 
-    non_null_count = int(dataframe[Field.RECID.value].notna().sum())
+        index = wos_ref[wos_ref.duplicated()].index
+        if len(index) > 0:
+            wos_ref.loc[index] += ", " + dataframe[Field.TITLE_RAW.value].loc[
+                index
+            ].str[:29].str.upper().str.replace(".", "").str.replace(
+                " - ", " "
+            ).str.replace(
+                ",", ""
+            ).str.replace(
+                ":", ""
+            ).str.replace(
+                "-", ""
+            ).str.replace(
+                "'", ""
+            )
 
-    dataframe.to_csv(
-        database_file,
-        sep=",",
-        encoding="utf-8",
-        index=False,
-        compression="zip",
-    )
+        dataframe[Field.RECID.value] = wos_ref.copy()
+        dataframe = dataframe.drop_duplicates(subset=[Field.RECID.value])
+
+        non_null_count = int(dataframe[Field.RECID.value].notna().sum())
+
+        dataframe.to_csv(
+            database_file,
+            sep=",",
+            encoding="utf-8",
+            index=False,
+            compression="zip",
+        )
 
     return non_null_count

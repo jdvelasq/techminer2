@@ -149,7 +149,8 @@ class Field(Enum):
     #
     RECID = "record_id"
     RECNO = "record_no"
-    REF_GLOBAL_RAW = "references_global_raw"
+    REF_NORM = "references_norm"
+    REF_RAW = "references_raw"
     REGION = "region"
 
     #

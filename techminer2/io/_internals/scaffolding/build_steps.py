@@ -12,6 +12,7 @@ def build_scaffolding_steps(params: Params) -> list[Step]:
     from .drop_empty_columns import drop_empty_columns
     from .remove_non_english_abstracts import remove_non_english_abstracts
     from .rename_columns import rename_columns
+    from .validate_required_columns import validate_required_columns
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -50,5 +51,11 @@ def build_scaffolding_steps(params: Params) -> list[Step]:
             function=drop_empty_columns,
             kwargs=common_kwargs,
             count_message="{count} empty columns dropped",
+        ),
+        Step(
+            name="Validating required columns",
+            function=validate_required_columns,
+            kwargs=common_kwargs,
+            count_message="{count} files with all required columns",
         ),
     ]

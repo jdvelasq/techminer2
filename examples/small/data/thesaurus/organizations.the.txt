@@ -89,8 +89,8 @@ Universiteit van Amsterdam
 Universität Bamberg
     Universität Bamberg, Bamberg, Bayern, Germany
 Universität Zürich
-    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
     Universität Zürich, Zurich, ZH, Switzerland
+    Department of Informatics, Universität Zürich, Zurich, ZH, Switzerland
 Walton Design and Consulting Engineering Co
     Walton Design and Consulting Engineering Co,LTD, China
 Westerdals Oslo ACT

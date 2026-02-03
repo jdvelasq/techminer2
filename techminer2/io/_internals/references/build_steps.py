@@ -12,7 +12,8 @@ def build_reference_steps(params: Params) -> list[Step]:
     from .assign_recid import assign_recid
     from .assign_recno import assign_recno
     from .calculate_numref_global import calculate_numref_global
-    from .create_citcount_local import create_citcount_local
+    from .compute_citcount_local import compute_citcount_local
+    from .normalize_references import normalize_references
 
     common_kwargs = {"root_directory": params.root_directory}
 
@@ -42,8 +43,14 @@ def build_reference_steps(params: Params) -> list[Step]:
             count_message="{count} reference counts calculated",
         ),
         Step(
-            name=f"Creating '{Field.CITCOUNT_LOCAL.value}'",
-            function=create_citcount_local,
+            name=f"Normalizing '{Field.REF_RAW.value}'",
+            function=normalize_references,
+            kwargs=common_kwargs,
+            count_message="{count} references normalized",
+        ),
+        Step(
+            name=f"Compute '{Field.CITCOUNT_LOCAL.value}'",
+            function=compute_citcount_local,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
