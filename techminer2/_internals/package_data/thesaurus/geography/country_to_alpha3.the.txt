@@ -530,7 +530,5 @@ Zambia
     ZMB
 Zimbabwe
     ZWE
-[UNKNWON]
-    [UNKNWON]
 Åland Islands
     ALA

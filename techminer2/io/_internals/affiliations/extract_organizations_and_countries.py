@@ -5,7 +5,7 @@ from typing import List
 import pandas as pd  # type: ignore
 
 from techminer2 import Field
-from techminer2._constants import COUNTRY_NAMES
+from techminer2._constants import COUNTRY_NAMES, COUNTRY_TO_ALPHA3
 from techminer2._internals.data_access import load_main_data, save_main_data
 
 _AMBIGUOUS_INDICATOR = [
@@ -390,6 +390,15 @@ def _create_thesaurus(
                 file.write(f"    {value}\n")
 
 
+def _assign_country_code(df: pd.DataFrame) -> pd.Series:
+
+    df = df.copy()
+    df[Field.ORGANIZATION.value] += df[Field.COUNTRY.value].map(
+        lambda country: " [" + COUNTRY_TO_ALPHA3.get(country, "N/A") + "]"
+    )
+    return df[Field.ORGANIZATION.value]
+
+
 def extract_organizations_and_countries(root_directory: str) -> int:
 
     dataframe = load_main_data(root_directory=root_directory)
@@ -401,6 +410,9 @@ def extract_organizations_and_countries(root_directory: str) -> int:
     affil_df[Field.ORGANIZATION.value] = affil_df[Field.AFFIL_RAW.value].apply(
         _extract_organization_from_string
     )
+
+    affil_df[Field.ORGANIZATION.value] = _assign_country_code(affil_df)
+
     country_mapping = _get_country_mapping(affil_df)
     organization_mapping = _get_organization_mapping(affil_df)
 
