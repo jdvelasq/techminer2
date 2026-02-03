@@ -34,3 +34,7 @@ tm2+ allows the user to inspect and validate noun phrase extraction directly on 
 
 
 
+
+
+
+
