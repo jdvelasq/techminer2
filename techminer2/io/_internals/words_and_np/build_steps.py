@@ -1,5 +1,6 @@
 # CODE_REVIEW: 2026-01-26
 
+
 from ...._internals import Params
 from ..step import Step
 
@@ -7,12 +8,15 @@ from ..step import Step
 def build_words_and_np_steps(params: Params) -> list[Step]:
 
     from .extract_abstract_acronyms import extract_abstract_acronyms
+    from .extract_abstract_phrases import extract_abstract_phrases
     from .extract_abstract_words import extract_abstract_words
     from .extract_text_phrases_spacy import extract_text_phrases_spacy
     from .extract_text_phrases_textblob import extract_text_phrases_textblob
+    from .extract_title_phrases import extract_title_phrases
     from .extract_title_words import extract_title_words
     from .merge_keywords_phrases import merge_keywords_phrases
     from .merge_keywords_words import merge_keywords_words
+    from .merge_title_abstract_phrases import merge_title_abstract_phrases
     from .merge_title_abstract_words import merge_title_abstract_words
     from .tokenize_raw_abstract import tokenize_raw_abstract
     from .tokenize_raw_title import tokenize_raw_title
@@ -96,6 +100,24 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
             function=merge_title_abstract_words,
             kwargs=common_kwargs,
             count_message="{count} title and abstract words merged",
+        ),
+        Step(
+            name="Extracting abstract phrases",
+            function=extract_abstract_phrases,
+            kwargs=common_kwargs,
+            count_message="{count} records processed",
+        ),
+        Step(
+            name="Extracting title phrases",
+            function=extract_title_phrases,
+            kwargs=common_kwargs,
+            count_message="{count}  records processed",
+        ),
+        Step(
+            name="Merging title and abstract phrases",
+            function=merge_title_abstract_phrases,
+            kwargs=common_kwargs,
+            count_message="{count}  records processed",
         ),
         Step(
             name="Merging keywords and NP",

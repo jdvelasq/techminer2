@@ -1,113 +1,107 @@
-# flake8: noqa
-# pylint: disable=invalid-name
-# pylint: disable=line-too-long
-# pylint: disable=missing-docstring
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
 General Metrics Data Frame
 ===============================================================================
 
-Example:
-    >>> from techminer2.thesaurus.countries import (
-    ...     InitializeThesaurus as CreateCountryThesaurus,
-    ...     ApplyThesaurus as ApplyCountryThesaurus,
-    ... )
-    >>> from techminer2.thesaurus.organizations import (
-    ...     InitializeThesaurus as CreateOrganizationsThesaurus,
-    ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
-    ... )
-    >>> from techminer2.thesaurus.descriptors import (
-    ...     InitializeThesaurus as CreateDescriptorsThesaurus,
-    ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
-    ... )
-
-
-    >>> # Create and appli thesauri
-    >>> CreateCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyCountryThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> CreateOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> CreateDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-    >>> ApplyDescriptorsThesaurus(root_directory="examples/fintech/", quiet=True).run()
-
-    >>> # Create, configure, and run the DataFrame geneartor
+Smoke test:
     >>> from techminer2.metrics.general import DataFrame
     >>> df = (
     ...     DataFrame()
     ...     #
     ...     # DATABASE:
     ...     .where_root_directory("examples/small/")
-    ...     .where_database("main")
     ...     .where_record_years_range(None, None)
     ...     .where_record_citations_range(None, None)
     ...     .where_records_match(None)
     ...     #
     ...     .run()
     ... )
-    >>> df # doctest: +SKIP
-                                                                      Value
-    Category          Item
-    GENERAL           Timespan                                    2015:2019
-                      Documents                                          50
-                      Annual growth rate %                           118.67
-                      Document average age                             7.24
-                      References                                       3213
-                      Average citations per document                  162.7
-                      Average citations per document per year         32.54
-                      Average references per document                 64.26
-                      Sources                                            41
-                      Average documents per source                     1.22
-    DOCUMENT TYPES    Article                                            37
-                      Book                                                1
-                      Conference paper                                    4
-                      Editorial                                           2
-                      Review                                              6
-    AUTHORS           Authors                                           115
-                      Authors of single-authored documents               12
-                      Single-authored documents                          12
-                      Multi-authored documents                           38
-                      Authors per document                             2.52
-                      Co-authors per document                           3.0
-                      International co-authorship %                   30.61
-                      Author appearances                                126
-                      Documents per author                              0.4
-                      Collaboration index                              3.32
-                      organizations                                      90
-                      Organizations (1st author)                         42
-                      Countries                                          24
-                      Countries (1st author)                             18
-                      Regions                                             5
-                      Subregions                                          9
-    KEYWORDS          Author keywords (raw)                             148
-                      Author keywords (cleaned)                         148
-                      Index keywords (raw)                              179
-                      Index keywords (cleaned)                          178
-                      Keywords (raw)                                    279
-                      Keywords (cleaned)                                278
-    NOUNS AND PHRASES Document title nouns and phrases (raw)            126
-                      Document title nouns and phrases (cleaned)        124
-                      Abstract nouns and phrases (raw)                 1556
-                      Abstract nouns and phrases (cleaned)             1520
-                      Nouns and phrases (raw)                          1612
-                      Nouns and phrases (cleaned)                      1572
-    DESCRIPTORS       Descriptors (raw)                                1612
-                      Descriptors (cleaned)                            1572
+    >>> isinstance(df.index, pd.MultiIndex)
+    True
+    >>> df.index.names
+    FrozenList(['Category', 'Item'])
+    >>> len(df) > 0
+    True
+    >>> 'Value' in df.columns
+    True
+    >>> df.loc[('GENERAL', 'Documents'), 'Value'] > 0
+    True
+    >>> df  # doctest: +SKIP
+                                                                       Value
+    Category       Item
+    GENERAL        Annual growth rate %                                51.71
+                   Average annual citations per document                8.24
+                   Average citations per document                       57.7
+                   Average documents per source                         1.16
+                   Average references per document                      7.73
+                   Documents                                              37
+                   Document average age                                10.97
+                   Number of sources                                      32
+                   Timespan                                        2010:2016
+                   Total cited references                                286
+    DOCUMENT TYPES Article                                                18
+                   Book                                                    5
+                   Book chapter                                            2
+                   Conference paper                                        8
+                   Editorial                                               1
+                   Review                                                  2
+                   Short survey                                            1
+    AUTHORS        Author appearances                                     81
+                   Average authors per document                         2.19
+                   Average authors per multi-authored documents         2.83
+                   Collaboration index                                  2.83
+                   Documents per author appearance                      0.46
+                   Internationally co-authored documents %             13.51
+                   Number of authors                                      72
+                   Number of authors of single-authored documents         13
+                   Number of multi-authored documents                     24
+                   Number of single-authored documents                    13
+    AFFILIATIONS   Number of countries                                    22
+                   Number of countries (1st author)                       19
+                   Number of organizations                                49
+                   Number of organizations (1st author)                   30
+                   Number of regions                                      21
+                   Number of subregions                                   27
+    KEYWORDS       Number of author keywords (norm)                        0
+                   Number of author keywords (raw)                        97
+                   Number of index keywords (norm)                         0
+                   Number of index keywords (raw)                        140
+                   Number of keywords (norm)                               0
+                   Number of keywords (raw)                              211
+    NLP            Number of abstract words (raw)                       1584
+                   Number of abstract NP phrases (norm)                    0
+                   Number of abstract NP phrases (raw)                  1112
+                   Number of NP phrases (norm)                             0
+                   Number of NP phrases (raw)                           1176
+                   Number of SpaCy NP phrases                           1233
+                   Number of TextBlob NP phrases                         576
+                   Number of title NP phrases (norm)                       0
+                   Number of title NP phrases (raw)                      121
+                   Number of title words (raw)                           202
+                   Number of words (raw)                                1615
+                   Number of words (norm)                                  0
+    KEYWORDS + NLP Number of keywords + NP phrases (norm)                  0
+                   Number of keywords + NP phrases (raw)                1385
+                   Number of keywords + words (norm)                       0
+                   Number of keywords + words (raw)                     1823
 
 
 
 
 
 """
+
 import datetime
 from dataclasses import dataclass, field
+from typing import Union
 
 import numpy as np
 import pandas as pd  # type: ignore
 
+from techminer2 import Field
 from techminer2._internals import ParamsMixin
 from techminer2._internals.data_access import load_filtered_main_data
+
+__reviewed__ = "2026-02-03"
 
 
 @dataclass
@@ -125,35 +119,34 @@ class DataFrame(
     """:meta private:"""
 
     # -------------------------------------------------------------------------
-    def insert_stats(self, stats, category, item, value):
-        """Inserts stats"""
-
+    def insert_stats(
+        self, stats: Stats, category: str, item: str, value: Union[int, float]
+    ):
         stats.category.append(category)
         stats.item.append(item)
         stats.value.append(value)
-
         return stats
 
     # -------------------------------------------------------------------------
-    def count_unique_terms(self, data_frame, column):
+    def count_unique_items(self, dataframe: pd.DataFrame, column: Field) -> int:
 
-        if column not in data_frame:
+        if column.value not in dataframe:
             return 0
 
-        data_frame = data_frame[column].copy()
-        data_frame = data_frame.dropna()
-        data_frame = data_frame.str.split(";")
-        data_frame = data_frame.explode()
-        data_frame = data_frame.str.strip()
-        data_frame = data_frame.drop_duplicates()
+        series = dataframe[column.value].copy()
+        series = series.dropna()
+        series = series.str.split(";")
+        series = series.explode()
+        series = series.str.strip()
+        series = series.drop_duplicates()
 
-        return len(data_frame)
+        return len(series)
 
     # -------------------------------------------------------------------------
 
     def run(self):
 
-        data_frame = load_filtered_main_data(params=self.params)
+        dataframe = load_filtered_main_data(params=self.params)
 
         stats = Stats()
 
@@ -162,27 +155,21 @@ class DataFrame(
         # COMPUTE GENERAL STATS
         #
         # =====================================================================
-        stats = self.insert_stats(
-            stats,
-            category="GENERAL",
-            item="Timespan",
-            value=str(min(data_frame.year)) + ":" + str(max(data_frame.year)),
-        )
 
-        # ---------------------------------------------------------------------
-        stats = self.insert_stats(
-            stats,
-            category="GENERAL",
-            item="Documents",
-            value=len(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
         def annual_growth_rate():
-            n_records = len(data_frame)
-            n_years = max(data_frame.year) - min(data_frame.year) + 1
-            po_ = len(data_frame.year[data_frame.year == min(data_frame.year)])
-            return round(100 * (np.power(n_records / po_, 1 / n_years) - 1), 2)
+            n_records = len(dataframe)
+            n_years = (
+                max(dataframe[Field.PUBYEAR.value])
+                - min(dataframe[Field.PUBYEAR.value])
+                + 1
+            )
+            po = len(
+                dataframe[Field.PUBYEAR.value][
+                    dataframe[Field.PUBYEAR.value]
+                    == min(dataframe[Field.PUBYEAR.value])
+                ]
+            )
+            return round(100 * (np.power(n_records / po, 1 / n_years) - 1), 2)
 
         stats = self.insert_stats(
             stats,
@@ -192,8 +179,77 @@ class DataFrame(
         )
 
         # ---------------------------------------------------------------------
+        def average_annual_citations_per_document():
+            return round(
+                dataframe[Field.CITCOUNT_GLOBAL.value].mean()
+                / (
+                    dataframe[Field.PUBYEAR.value].max()
+                    - dataframe[Field.PUBYEAR.value].min()
+                    + 1
+                ),
+                2,
+            )
+
+        stats = self.insert_stats(
+            stats,
+            category="GENERAL",
+            item="Average annual citations per document",
+            value=average_annual_citations_per_document(),
+        )
+
+        # ---------------------------------------------------------------------
+        def average_citations_per_document():
+            return round(dataframe[Field.CITCOUNT_GLOBAL.value].mean(), 2)
+
+        stats = self.insert_stats(
+            stats,
+            category="GENERAL",
+            item="Average citations per document",
+            value=average_citations_per_document(),
+        )
+
+        # ---------------------------------------------------------------------
+        def average_documents_per_source():
+            sources = dataframe[Field.SRCTITLE_RAW.value].copy()
+            sources = sources.dropna()
+            n_records = len(sources)
+            sources = sources.drop_duplicates()
+            n_sources = len(sources)
+            return round(n_records / n_sources, 2)
+
+        stats = self.insert_stats(
+            stats,
+            category="GENERAL",
+            item="Average documents per source",
+            value=average_documents_per_source(),
+        )
+
+        # ---------------------------------------------------------------------
+        def average_references_per_document():
+            num_references = dataframe[Field.REF_RAW.value].copy()
+            num_references = num_references.dropna()
+            num_references = num_references.str.split(";")
+            num_references = num_references.map(len)
+            return round(num_references.sum() / len(dataframe), 2)
+
+        stats = self.insert_stats(
+            stats,
+            category="GENERAL",
+            item="Average references per document",
+            value=average_references_per_document(),
+        )
+
+        # ---------------------------------------------------------------------
+        stats = self.insert_stats(
+            stats,
+            category="GENERAL",
+            item="Documents",
+            value=len(dataframe),
+        )
+
+        # ---------------------------------------------------------------------
         def document_average_age():
-            mean_years = data_frame.year.copy()
+            mean_years = dataframe[Field.PUBYEAR.value].copy()
             mean_years = mean_years.dropna()
             mean_years = mean_years.mean()
             current_year = datetime.datetime.now().year
@@ -207,102 +263,48 @@ class DataFrame(
         )
 
         # ---------------------------------------------------------------------
-        def cited_references():
-            if "raw_global_references" in data_frame.columns:
-                records = data_frame.raw_global_references.copy()
-                records = records.dropna()
-                records = records.str.split(";")
-                records = records.explode()
-                records = records.str.strip()
-                return len(records)
-            return pd.NA
+        def number_of_sources():
+            records = dataframe[Field.SRCTITLE_RAW.value].copy()
+            records = records.dropna()
+            records = records.drop_duplicates()
+            return len(records)
 
         stats = self.insert_stats(
             stats,
             category="GENERAL",
-            item="References",
-            value=cited_references(),
+            item="Number of sources",
+            value=number_of_sources(),
         )
 
         # ---------------------------------------------------------------------
-        def average_citations_per_document():
-            if "global_citations" in data_frame.columns:
-                return round(data_frame.global_citations.mean(), 2)
-            return pd.NA
+        def timespan():
+            return (
+                str(min(dataframe[Field.PUBYEAR.value]))
+                + ":"
+                + str(max(dataframe[Field.PUBYEAR.value]))
+            )
 
         stats = self.insert_stats(
             stats,
             category="GENERAL",
-            item="Average citations per document",
-            value=average_citations_per_document(),
+            item="Timespan",
+            value=timespan(),
         )
 
         # ---------------------------------------------------------------------
-        def average_citations_per_document_per_year():
-            if "global_citations" in data_frame.columns:
-                return round(
-                    data_frame.global_citations.mean()
-                    / (data_frame.year.max() - data_frame.year.min() + 1),
-                    2,
-                )
-            return pd.NA
+        def total_cited_references():
+            records = dataframe[Field.REF_RAW.value].copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            return len(records)
 
         stats = self.insert_stats(
             stats,
             category="GENERAL",
-            item="Average citations per document per year",
-            value=average_citations_per_document_per_year(),
-        )
-
-        # ---------------------------------------------------------------------
-        def average_references_per_document():
-            if "raw_global_references" in data_frame.columns:
-                num_references = data_frame.raw_global_references.copy()
-                num_references = num_references.dropna()
-                num_references = num_references.str.split(";")
-                num_references = num_references.map(len)
-                return round(num_references.sum() / len(data_frame), 2)
-            return pd.NA
-
-        stats = self.insert_stats(
-            stats,
-            category="GENERAL",
-            item="Average references per document",
-            value=average_references_per_document(),
-        )
-
-        # ---------------------------------------------------------------------
-        def n_sources():
-            if "source_title" in data_frame.columns:
-                records = data_frame.source_title.copy()
-                records = records.dropna()
-                records = records.drop_duplicates()
-                return len(records)
-            return pd.NA
-
-        stats = self.insert_stats(
-            stats,
-            category="GENERAL",
-            item="Sources",
-            value=n_sources(),
-        )
-
-        # ---------------------------------------------------------------------
-        def average_documents_per_source():
-            if "source_title" in data_frame.columns:
-                sources = data_frame.source_title.copy()
-                sources = sources.dropna()
-                n_records = len(sources)
-                sources = sources.drop_duplicates()
-                n_sources = len(sources)
-                return round(n_records / n_sources, 2)
-            return pd.NA
-
-        stats = self.insert_stats(
-            stats,
-            category="GENERAL",
-            item="Average documents per source",
-            value=average_documents_per_source(),
+            item="Total cited references",
+            value=total_cited_references(),
         )
 
         # =====================================================================
@@ -311,9 +313,11 @@ class DataFrame(
         #
         # =====================================================================
         def compute_document_type_stats(stats):
-            records = data_frame[["document_type"]].dropna()
+            records = dataframe[[Field.DOCTYPE_NORM.value]].dropna()
             document_types_count = (
-                records[["document_type"]].groupby("document_type").size()
+                records[[Field.DOCTYPE_NORM.value]]
+                .groupby(Field.DOCTYPE_NORM.value)
+                .size()
             )
             for document_type, count in zip(
                 document_types_count.index, document_types_count
@@ -327,7 +331,7 @@ class DataFrame(
 
             return stats
 
-        stats = compute_document_type_stats(stats=stats)
+        compute_document_type_stats(stats=stats)
 
         # =====================================================================
         #
@@ -335,101 +339,8 @@ class DataFrame(
         #
         # =====================================================================
 
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Authors",
-            value=self.count_unique_terms(
-                data_frame,
-                "authors",
-            ),
-        )
-
-        # ---------------------------------------------------------------------
-        def authors_of_single_authored_documents(data_frame):
-
-            records = data_frame[data_frame["num_authors"] == 1]
-            authors = records.authors.dropna()
-            authors = authors.drop_duplicates()
-            return len(authors)
-
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Authors of single-authored documents",
-            value=authors_of_single_authored_documents(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
-        def count_single_authored_documents(data_frame):
-            """Computes the number of single-authored documents"""
-            return len(data_frame[data_frame["num_authors"] == 1])
-
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Single-authored documents",
-            value=count_single_authored_documents(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
-        def count_multi_authored_documents(data_frame):
-            """Computes the number of multi-authored documents"""
-            return len(data_frame[data_frame["num_authors"] > 1])
-
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Multi-authored documents",
-            value=count_multi_authored_documents(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
-        def average_authors_per_document(data_frame):
-            """Computes the average number of authors per document"""
-            num_authors = data_frame["num_authors"].dropna()
-            return round(num_authors.mean(), 2)
-
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Authors per document",
-            value=average_authors_per_document(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
-        def co_authors_per_document(data_frame):
-            """Computes the average number of co-authors per document"""
-            num_authors = data_frame[data_frame.num_authors > 1].num_authors
-            return round(num_authors.mean(), 2)
-
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Co-authors per document",
-            value=co_authors_per_document(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
-        def international_co_authorship(data_frame):
-            """Computes the percentage of international co-authorship"""
-            countries = data_frame.countries.copy()
-            countries = countries.dropna()
-            countries = countries.str.split(";")
-            countries = countries.map(len)
-            return round(len(countries[countries > 1]) / len(countries) * 100, 2)
-
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="International co-authorship %",
-            value=international_co_authorship(data_frame),
-        )
-
-        # ---------------------------------------------------------------------
         def author_appearances(data_frame):
-            """Computes the number of author appearances"""
-            data_frame = data_frame.authors.copy()
+            data_frame = data_frame[Field.AUTH_RAW.value].copy()
             data_frame = data_frame.dropna()
             data_frame = data_frame.str.split(";")
             data_frame = data_frame.explode()
@@ -440,13 +351,54 @@ class DataFrame(
             stats,
             category="AUTHORS",
             item="Author appearances",
-            value=author_appearances(data_frame),
+            value=author_appearances(dataframe),
         )
 
         # ---------------------------------------------------------------------
-        def average_documents_per_author(data_frame):
-            """Computes the average number of documents per author"""
-            data_frame = data_frame.authors.copy()
+        def average_authors_per_document(data_frame):
+            num_authors = data_frame[Field.NUMAUTH.value].dropna()
+            return round(num_authors.mean(), 2)
+
+        stats = self.insert_stats(
+            stats,
+            category="AUTHORS",
+            item="Average authors per document",
+            value=average_authors_per_document(dataframe),
+        )
+
+        # ---------------------------------------------------------------------
+        def average_authors_per_multi_authored_documents(data_frame):
+            num_authors = data_frame[data_frame[Field.NUMAUTH.value] > 1][
+                Field.NUMAUTH.value
+            ]
+            return round(num_authors.mean(), 2)
+
+        stats = self.insert_stats(
+            stats,
+            category="AUTHORS",
+            item="Average authors per multi-authored documents",
+            value=average_authors_per_multi_authored_documents(dataframe),
+        )
+
+        # ---------------------------------------------------------------------
+        def collaboration_index(data_frame):
+            records = data_frame[[Field.AUTH_RAW.value, Field.NUMAUTH.value]].dropna()
+            records = records[records[Field.NUMAUTH.value] > 1]
+            n_records = len(records)
+            authors = records[Field.AUTH_RAW.value].str.split(";").explode().str.strip()
+            n_authors = int(authors.notna().sum())
+            return round(n_authors / n_records, 2)
+
+        stats = self.insert_stats(
+            stats,
+            category="AUTHORS",
+            item="Collaboration index",
+            value=collaboration_index(dataframe),
+        )
+
+        # ---------------------------------------------------------------------
+        def documents_per_author_appearance(data_frame):
+            data_frame = data_frame[Field.AUTH_RAW.value].copy()
             data_frame = data_frame.dropna()
             n_records = len(data_frame)
             data_frame = data_frame.str.split(";")
@@ -457,94 +409,141 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="AUTHORS",
-            item="Documents per author",
-            value=average_documents_per_author(data_frame),
+            item="Documents per author appearance",
+            value=documents_per_author_appearance(dataframe),
         )
 
         # ---------------------------------------------------------------------
-        def collaboration_index(data_frame):
-            """Computes the collaboration index"""
-            n_records = data_frame[["authors", "num_authors"]].copy()
-            n_records = n_records.dropna()
-            n_records = n_records[data_frame.num_authors > 1]
-            n_records = len(n_records)
-
-            n_authors = data_frame.authors.copy()
-            n_authors = n_authors.str.split(";")
-            n_authors = n_authors.explode()
-            n_authors = len(n_authors)
-            return round(n_authors / n_records, 2)
+        def internationally_co_authored_documents(data_frame):
+            countries = data_frame[Field.COUNTRY.value].copy()
+            countries = countries.dropna()
+            countries = countries.str.split(";")
+            countries = countries.map(len)
+            return round(len(countries[countries > 1]) / len(countries) * 100, 2)
 
         stats = self.insert_stats(
             stats,
             category="AUTHORS",
-            item="Collaboration index",
-            value=collaboration_index(data_frame),
+            item="Internationally co-authored documents %",
+            value=internationally_co_authored_documents(dataframe),
         )
 
         # ---------------------------------------------------------------------
         stats = self.insert_stats(
             stats,
             category="AUTHORS",
-            item="organizations",
-            value=self.count_unique_terms(
-                data_frame,
-                "organizations",
+            item="Number of authors",
+            value=self.count_unique_items(
+                dataframe,
+                Field.AUTH_RAW,
+            ),
+        )
+
+        # ---------------------------------------------------------------------
+        def number_of_authors_of_single_authored_documents(data_frame):
+            records = data_frame[data_frame[Field.NUMAUTH.value] == 1]
+            authors = records[Field.AUTH_RAW.value].dropna()
+            authors = authors.drop_duplicates()
+            return len(authors)
+
+        stats = self.insert_stats(
+            stats,
+            category="AUTHORS",
+            item="Number of authors of single-authored documents",
+            value=number_of_authors_of_single_authored_documents(dataframe),
+        )
+
+        # ---------------------------------------------------------------------
+        def number_of_multi_authored_documents(data_frame):
+            return len(data_frame[data_frame[Field.NUMAUTH.value] > 1])
+
+        stats = self.insert_stats(
+            stats,
+            category="AUTHORS",
+            item="Number of multi-authored documents",
+            value=number_of_multi_authored_documents(dataframe),
+        )
+
+        # ---------------------------------------------------------------------
+        def number_of_single_authored_documents(data_frame):
+            return len(data_frame[data_frame[Field.NUMAUTH.value] == 1])
+
+        stats = self.insert_stats(
+            stats,
+            category="AUTHORS",
+            item="Number of single-authored documents",
+            value=number_of_single_authored_documents(dataframe),
+        )
+
+        # =====================================================================
+        #
+        # COMPUTE AFFILIATION STATS
+        #
+        # =====================================================================
+
+        stats = self.insert_stats(
+            stats,
+            category="AFFILIATIONS",
+            item="Number of countries",
+            value=self.count_unique_items(
+                dataframe,
+                Field.COUNTRY,
             ),
         )
 
         # ---------------------------------------------------------------------
         stats = self.insert_stats(
             stats,
-            category="AUTHORS",
-            item="Organizations (1st author)",
-            value=self.count_unique_terms(
-                data_frame,
-                "organization_1st_author",
+            category="AFFILIATIONS",
+            item="Number of countries (1st author)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.FIRSTAUTH_COUNTRY,
             ),
         )
 
         # ---------------------------------------------------------------------
         stats = self.insert_stats(
             stats,
-            category="AUTHORS",
-            item="Countries",
-            value=self.count_unique_terms(
-                data_frame,
-                "countries",
+            category="AFFILIATIONS",
+            item="Number of organizations",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ORGANIZATION,
             ),
         )
 
         # ---------------------------------------------------------------------
         stats = self.insert_stats(
             stats,
-            category="AUTHORS",
-            item="Countries (1st author)",
-            value=self.count_unique_terms(
-                data_frame,
-                "country_1st_author",
+            category="AFFILIATIONS",
+            item="Number of organizations (1st author)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.FIRSTAUTH_ORGANIZATION,
+            ),
+        )
+
+        # ---------------------------------------------------------------------
+
+        stats = self.insert_stats(
+            stats,
+            category="AFFILIATIONS",
+            item="Number of regions",
+            value=self.count_unique_items(
+                dataframe,
+                Field.REGION,
             ),
         )
 
         # ---------------------------------------------------------------------
         stats = self.insert_stats(
             stats,
-            category="AUTHORS",
-            item="Regions",
-            value=self.count_unique_terms(
-                data_frame,
-                "regions",
-            ),
-        )
-
-        # ---------------------------------------------------------------------
-        stats = self.insert_stats(
-            stats,
-            category="AUTHORS",
-            item="Subregions",
-            value=self.count_unique_terms(
-                data_frame,
-                "subregions",
+            category="AFFILIATIONS",
+            item="Number of subregions",
+            value=self.count_unique_items(
+                dataframe,
+                Field.SUBREGION,
             ),
         )
 
@@ -557,152 +556,232 @@ class DataFrame(
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Author keywords (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "author_keywords_raw",
+            item="Number of author keywords (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.AUTHKEY_NORM,
             ),
         )
 
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Author keywords (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "author_keywords",
+            item="Number of author keywords (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.AUTHKEY_RAW,
             ),
         )
 
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Index keywords (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "index_keywords_raw",
+            item="Number of index keywords (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.IDXKEY_NORM,
             ),
         )
 
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Index keywords (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "index_keywords",
+            item="Number of index keywords (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.IDXKEY_RAW,
             ),
         )
 
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Keywords (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "raw_keywords",
+            item="Number of keywords (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLKEY_NORM,
             ),
         )
 
         stats = self.insert_stats(
             stats,
             category="KEYWORDS",
-            item="Keywords (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "keywords",
+            item="Number of keywords (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLKEY_RAW,
             ),
         )
 
         # =====================================================================
         #
-        # COMPUTE NLP PHRASES STATS
+        # COMPUTE NLP STATS
         #
         # =====================================================================
 
         stats = self.insert_stats(
             stats,
-            category="NOUNS AND PHRASES",
-            item="Document title nouns and phrases (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "raw_document_title_nouns_and_phrases",
+            category="NLP",
+            item="Number of abstract words (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.WORD_ABS_RAW,
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NOUNS AND PHRASES",
-            item="Document title nouns and phrases (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "document_title_nouns_and_phrases",
+            category="NLP",
+            item="Number of abstract NP phrases (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.NP_ABS_NORM,
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NOUNS AND PHRASES",
-            item="Abstract nouns and phrases (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "raw_abstract_nouns_and_phrases",
+            category="NLP",
+            item="Number of abstract NP phrases (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.NP_ABS_RAW,
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NOUNS AND PHRASES",
-            item="Abstract nouns and phrases (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "abstract_nouns_and_phrases",
+            category="NLP",
+            item="Number of NP phrases (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLNP_NORM,
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NOUNS AND PHRASES",
-            item="Nouns and phrases (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "raw_nouns_and_phrases",
+            category="NLP",
+            item="Number of NP phrases (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLNP_RAW,
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="NOUNS AND PHRASES",
-            item="Nouns and phrases (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "nouns_and_phrases",
+            category="NLP",
+            item="Number of SpaCy NP phrases",
+            value=self.count_unique_items(
+                dataframe,
+                Field.NP_SPACY,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="NLP",
+            item="Number of TextBlob NP phrases",
+            value=self.count_unique_items(
+                dataframe,
+                Field.NP_TEXTBLOB,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="NLP",
+            item="Number of title NP phrases (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.NP_TITLE_NORM,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="NLP",
+            item="Number of title NP phrases (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.NP_TITLE_RAW,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="NLP",
+            item="Number of title words (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.WORD_TITLE_RAW,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="NLP",
+            item="Number of words (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLWORD_RAW,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="NLP",
+            item="Number of words (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLWORD_NORM,
             ),
         )
 
         # =====================================================================
         #
-        # COMPUTE DESCRIPTOR STATS
+        # COMPUTE KEYWORDS + NLP STATS
         #
         # =====================================================================
 
         stats = self.insert_stats(
             stats,
-            category="DESCRIPTORS",
-            item="Descriptors (raw)",
-            value=self.count_unique_terms(
-                data_frame,
-                "raw_descriptors",
+            category="KEYWORDS + NLP",
+            item="Number of keywords + NP phrases (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLKEY_NP_NORM,
             ),
         )
 
         stats = self.insert_stats(
             stats,
-            category="DESCRIPTORS",
-            item="Descriptors (cleaned)",
-            value=self.count_unique_terms(
-                data_frame,
-                "descriptors",
+            category="KEYWORDS + NLP",
+            item="Number of keywords + NP phrases (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLKEY_NP_RAW,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="KEYWORDS + NLP",
+            item="Number of keywords + words (norm)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLKEY_WORD_NORM,
+            ),
+        )
+
+        stats = self.insert_stats(
+            stats,
+            category="KEYWORDS + NLP",
+            item="Number of keywords + words (raw)",
+            value=self.count_unique_items(
+                dataframe,
+                Field.ALLKEY_WORD_RAW,
             ),
         )
 
@@ -720,10 +799,5 @@ class DataFrame(
             }
         )
         frame = frame.set_index(["Category", "Item"])
+
         return frame
-
-
-#
-
-#
-#
