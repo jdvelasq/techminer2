@@ -59,29 +59,29 @@ Smoke test:
                    Number of countries (1st author)                       19
                    Number of organizations                                49
                    Number of organizations (1st author)                   30
-                   Number of regions                                      21
-                   Number of subregions                                   27
-    KEYWORDS       Number of author keywords (norm)                        0
+                   Number of regions                                      18
+                   Number of subregions                                   25
+    KEYWORDS       Number of author keywords (norm)                       96
                    Number of author keywords (raw)                        97
-                   Number of index keywords (norm)                         0
+                   Number of index keywords (norm)                       139
                    Number of index keywords (raw)                        140
-                   Number of keywords (norm)                               0
+                   Number of keywords (norm)                             208
                    Number of keywords (raw)                              211
     NLP            Number of abstract words (raw)                       1584
-                   Number of abstract NP phrases (norm)                    0
+                   Number of abstract NP phrases (norm)                 1112
                    Number of abstract NP phrases (raw)                  1112
-                   Number of NP phrases (norm)                             0
+                   Number of NP phrases (norm)                          1176
                    Number of NP phrases (raw)                           1176
                    Number of SpaCy NP phrases                           1233
                    Number of TextBlob NP phrases                         576
-                   Number of title NP phrases (norm)                       0
+                   Number of title NP phrases (norm)                     121
                    Number of title NP phrases (raw)                      121
                    Number of title words (raw)                           202
                    Number of words (raw)                                1615
-                   Number of words (norm)                                  0
-    KEYWORDS + NLP Number of keywords + NP phrases (norm)                  0
+                   Number of words (norm)                               1615
+    KEYWORDS + NLP Number of keywords + NP phrases (norm)               1385
                    Number of keywords + NP phrases (raw)                1385
-                   Number of keywords + words (norm)                       0
+                   Number of keywords + words (norm)                    1823
                    Number of keywords + words (raw)                     1823
 
 
@@ -181,7 +181,7 @@ class DataFrame(
         # ---------------------------------------------------------------------
         def average_annual_citations_per_document():
             return round(
-                dataframe[Field.CITCOUNT_GLOBAL.value].mean()
+                dataframe[Field.CIT_COUNT_GLOBAL.value].mean()
                 / (
                     dataframe[Field.PUBYEAR.value].max()
                     - dataframe[Field.PUBYEAR.value].min()
@@ -199,7 +199,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_citations_per_document():
-            return round(dataframe[Field.CITCOUNT_GLOBAL.value].mean(), 2)
+            return round(dataframe[Field.CIT_COUNT_GLOBAL.value].mean(), 2)
 
         stats = self.insert_stats(
             stats,
@@ -210,7 +210,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_documents_per_source():
-            sources = dataframe[Field.SRCTITLE_RAW.value].copy()
+            sources = dataframe[Field.SRC_TITLE_RAW.value].copy()
             sources = sources.dropna()
             n_records = len(sources)
             sources = sources.drop_duplicates()
@@ -264,7 +264,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_sources():
-            records = dataframe[Field.SRCTITLE_RAW.value].copy()
+            records = dataframe[Field.SRC_TITLE_RAW.value].copy()
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)
@@ -313,10 +313,10 @@ class DataFrame(
         #
         # =====================================================================
         def compute_document_type_stats(stats):
-            records = dataframe[[Field.DOCTYPE_NORM.value]].dropna()
+            records = dataframe[[Field.DOC_TYPE_NORM.value]].dropna()
             document_types_count = (
-                records[[Field.DOCTYPE_NORM.value]]
-                .groupby(Field.DOCTYPE_NORM.value)
+                records[[Field.DOC_TYPE_NORM.value]]
+                .groupby(Field.DOC_TYPE_NORM.value)
                 .size()
             )
             for document_type, count in zip(
@@ -356,7 +356,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_authors_per_document(data_frame):
-            num_authors = data_frame[Field.NUMAUTH.value].dropna()
+            num_authors = data_frame[Field.NUM_AUTH.value].dropna()
             return round(num_authors.mean(), 2)
 
         stats = self.insert_stats(
@@ -368,8 +368,8 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def average_authors_per_multi_authored_documents(data_frame):
-            num_authors = data_frame[data_frame[Field.NUMAUTH.value] > 1][
-                Field.NUMAUTH.value
+            num_authors = data_frame[data_frame[Field.NUM_AUTH.value] > 1][
+                Field.NUM_AUTH.value
             ]
             return round(num_authors.mean(), 2)
 
@@ -382,8 +382,8 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def collaboration_index(data_frame):
-            records = data_frame[[Field.AUTH_RAW.value, Field.NUMAUTH.value]].dropna()
-            records = records[records[Field.NUMAUTH.value] > 1]
+            records = data_frame[[Field.AUTH_RAW.value, Field.NUM_AUTH.value]].dropna()
+            records = records[records[Field.NUM_AUTH.value] > 1]
             n_records = len(records)
             authors = records[Field.AUTH_RAW.value].str.split(";").explode().str.strip()
             n_authors = int(authors.notna().sum())
@@ -441,7 +441,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_authors_of_single_authored_documents(data_frame):
-            records = data_frame[data_frame[Field.NUMAUTH.value] == 1]
+            records = data_frame[data_frame[Field.NUM_AUTH.value] == 1]
             authors = records[Field.AUTH_RAW.value].dropna()
             authors = authors.drop_duplicates()
             return len(authors)
@@ -455,7 +455,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_multi_authored_documents(data_frame):
-            return len(data_frame[data_frame[Field.NUMAUTH.value] > 1])
+            return len(data_frame[data_frame[Field.NUM_AUTH.value] > 1])
 
         stats = self.insert_stats(
             stats,
@@ -466,7 +466,7 @@ class DataFrame(
 
         # ---------------------------------------------------------------------
         def number_of_single_authored_documents(data_frame):
-            return len(data_frame[data_frame[Field.NUMAUTH.value] == 1])
+            return len(data_frame[data_frame[Field.NUM_AUTH.value] == 1])
 
         stats = self.insert_stats(
             stats,
@@ -498,7 +498,7 @@ class DataFrame(
             item="Number of countries (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                Field.FIRSTAUTH_COUNTRY,
+                Field.FIRST_AUTH_COUNTRY,
             ),
         )
 
@@ -520,7 +520,7 @@ class DataFrame(
             item="Number of organizations (1st author)",
             value=self.count_unique_items(
                 dataframe,
-                Field.FIRSTAUTH_ORGANIZATION,
+                Field.FIRST_AUTH_ORGANIZATION,
             ),
         )
 
@@ -559,7 +559,7 @@ class DataFrame(
             item="Number of author keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.AUTHKEY_NORM,
+                Field.AUTH_KEY_NORM,
             ),
         )
 
@@ -569,7 +569,7 @@ class DataFrame(
             item="Number of author keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.AUTHKEY_RAW,
+                Field.AUTH_KEY_RAW,
             ),
         )
 
@@ -579,7 +579,7 @@ class DataFrame(
             item="Number of index keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.IDXKEY_NORM,
+                Field.IDX_KEY_NORM,
             ),
         )
 
@@ -589,7 +589,7 @@ class DataFrame(
             item="Number of index keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.IDXKEY_RAW,
+                Field.IDX_KEY_RAW,
             ),
         )
 
@@ -599,7 +599,7 @@ class DataFrame(
             item="Number of keywords (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLKEY_NORM,
+                Field.ALL_KEY_NORM,
             ),
         )
 
@@ -609,7 +609,7 @@ class DataFrame(
             item="Number of keywords (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLKEY_RAW,
+                Field.ALL_KEY_RAW,
             ),
         )
 
@@ -655,7 +655,7 @@ class DataFrame(
             item="Number of NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLNP_NORM,
+                Field.ALL_NP_NORM,
             ),
         )
 
@@ -665,7 +665,7 @@ class DataFrame(
             item="Number of NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLNP_RAW,
+                Field.ALL_NP_RAW,
             ),
         )
 
@@ -725,7 +725,7 @@ class DataFrame(
             item="Number of words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLWORD_RAW,
+                Field.ALL_WORD_RAW,
             ),
         )
 
@@ -735,7 +735,7 @@ class DataFrame(
             item="Number of words (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLWORD_NORM,
+                Field.ALL_WORD_NORM,
             ),
         )
 
@@ -751,7 +751,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLKEY_NP_NORM,
+                Field.ALL_KEY_NP_NORM,
             ),
         )
 
@@ -761,7 +761,7 @@ class DataFrame(
             item="Number of keywords + NP phrases (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLKEY_NP_RAW,
+                Field.ALL_KEY_NP_RAW,
             ),
         )
 
@@ -771,7 +771,7 @@ class DataFrame(
             item="Number of keywords + words (norm)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLKEY_WORD_NORM,
+                Field.ALL_KEY_WORD_NORM,
             ),
         )
 
@@ -781,7 +781,7 @@ class DataFrame(
             item="Number of keywords + words (raw)",
             value=self.count_unique_items(
                 dataframe,
-                Field.ALLKEY_WORD_RAW,
+                Field.ALL_KEY_WORD_RAW,
             ),
         )
 

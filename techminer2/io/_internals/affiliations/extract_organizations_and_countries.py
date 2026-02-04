@@ -341,7 +341,7 @@ def _create_country_column(
     df[Field.COUNTRY.value] = df[Field.COUNTRY.value].map(
         lambda affils: [country_mapping.get(affil, "[N/A]") for affil in affils],
     )
-    df[Field.FIRSTAUTH_COUNTRY.value] = df[Field.COUNTRY.value].map(
+    df[Field.FIRST_AUTH_COUNTRY.value] = df[Field.COUNTRY.value].map(
         lambda countries: countries[0] if countries else "[N/A]",
     )
     df[Field.COUNTRY.value] = df[Field.COUNTRY.value].map(set)
@@ -361,7 +361,7 @@ def _create_organization_column(
     df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
         lambda affils: [organization_mapping.get(affil, "[N/A]") for affil in affils]
     )
-    df[Field.FIRSTAUTH_ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
+    df[Field.FIRST_AUTH_ORGANIZATION.value] = df[Field.ORGANIZATION.value].map(
         lambda orgs: orgs[0] if orgs else "[N/A]"
     )
     df[Field.ORGANIZATION.value] = df[Field.ORGANIZATION.value].str.join("; ")

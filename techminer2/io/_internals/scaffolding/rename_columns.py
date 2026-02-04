@@ -8,30 +8,30 @@ SCOPUS_TO_TM2 = {
     #
     # A
     #
-    "Abbreviated Source Title": Field.SRCTITLE_ABBR_RAW.value,
+    "Abbreviated Source Title": Field.SRC_TITLE_ABBR_RAW.value,
     "Abstract": Field.ABS_RAW.value,
     "Affiliations": Field.AFFIL_RAW.value,
-    "Art. No.": Field.ARTNO.value,
+    "Art. No.": Field.ART_NO.value,
     "Author full names": Field.AUTH_FULL.value,
-    "Author Keywords": Field.AUTHKEY_RAW.value,
+    "Author Keywords": Field.AUTH_KEY_RAW.value,
     "Author(s) ID": Field.AUTH_ID_RAW.value,
     "Authors with affiliations": Field.AUTH_AFFIL.value,
     "Authors": Field.AUTH_RAW.value,
     #
     # C
     #
-    "Chemicals/CAS": Field.CASREGNUMBER.value,
-    "Cited by": Field.CITCOUNT_GLOBAL.value,
+    "Chemicals/CAS": Field.CAS_REG_NUMBER.value,
+    "Cited by": Field.CIT_COUNT_GLOBAL.value,
     "CODEN": Field.CODEN.value,
-    "Conference code": Field.CONFCODE.value,
-    "Conference date": Field.CONFDATE.value,
-    "Conference location": Field.CONFLOC.value,
-    "Conference name": Field.CONFNAME.value,
+    "Conference code": Field.CONF_CODE.value,
+    "Conference date": Field.CONF_DATE.value,
+    "Conference location": Field.CONF_LOC.value,
+    "Conference name": Field.CONF_NAME.value,
     "Correspondence Address": Field.CORRESP.value,
     #
     # D
     #
-    "Document Type": Field.DOCTYPE_RAW.value,
+    "Document Type": Field.DOC_TYPE_RAW.value,
     "DOI": Field.DOI.value,
     #
     # E
@@ -46,7 +46,7 @@ SCOPUS_TO_TM2 = {
     #
     # I
     #
-    "Index Keywords": Field.IDXKEY_RAW.value,
+    "Index Keywords": Field.IDX_KEY_RAW.value,
     "ISBN": Field.ISBN.value,
     "ISSN": Field.ISSN.value,
     "Issue": Field.ISSUE.value,
@@ -59,7 +59,7 @@ SCOPUS_TO_TM2 = {
     # M
     #
     "Manufacturers": Field.MANUFACTURER.value,
-    "Molecular Sequence Numbers": Field.SEQNUM.value,
+    "Molecular Sequence Numbers": Field.SEQ_NUM.value,
     #
     # O
     #
@@ -67,10 +67,10 @@ SCOPUS_TO_TM2 = {
     #
     # P
     #
-    "Page count": Field.PAGES.value,
-    "Page end": Field.PAGELAST.value,
-    "Page start": Field.PAGEFIRST.value,
-    "Publication Stage": Field.PUBSTAGE.value,
+    "Page count": Field.PAGE_COUNT.value,
+    "Page end": Field.PAGE_LAST.value,
+    "Page start": Field.PAGE_FIRST.value,
+    "Publication Stage": Field.PUB_STAGE.value,
     "Publisher": Field.PUBLISHER.value,
     "PubMed ID": Field.PUBMED.value,
     #
@@ -80,7 +80,7 @@ SCOPUS_TO_TM2 = {
     #
     # S
     #
-    "Source title": Field.SRCTITLE_RAW.value,
+    "Source title": Field.SRC_TITLE_RAW.value,
     "Source": Field.SOURCE.value,
     "Sponsors": Field.FUND_SPONSORS.value,
     #

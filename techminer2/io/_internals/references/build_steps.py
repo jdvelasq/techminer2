@@ -19,25 +19,25 @@ def build_reference_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Assigning '{Field.RECNO.value}'",
+            name=f"Assigning '{Field.REC_NO.value}'",
             function=assign_recno,
             kwargs=common_kwargs,
             count_message="{count} record numbers assigned",
         ),
         Step(
-            name=f"Assigning '{Field.RECID.value}'",
+            name=f"Assigning '{Field.REC_ID.value}'",
             function=assign_recid,
             kwargs=common_kwargs,
             count_message="{count} record IDs assigned",
         ),
         Step(
-            name=f"Calculating '{Field.NUMAUTH.value}'",
+            name=f"Calculating '{Field.NUM_AUTH.value}'",
             function=calculate_numauth,
             kwargs=common_kwargs,
             count_message="{count} records calculated",
         ),
         Step(
-            name=f"Calculating '{Field.NUMREF_GLOBAL.value}'",
+            name=f"Calculating '{Field.NUM_REF_GLOBAL.value}'",
             function=calculate_numref_global,
             kwargs=common_kwargs,
             count_message="{count} reference counts calculated",
@@ -49,7 +49,7 @@ def build_reference_steps(params: Params) -> list[Step]:
             count_message="{count} references normalized",
         ),
         Step(
-            name=f"Compute '{Field.CITCOUNT_LOCAL.value}'",
+            name=f"Compute '{Field.CIT_COUNT_LOCAL.value}'",
             function=compute_citcount_local,
             kwargs=common_kwargs,
             count_message="{count} records processed",

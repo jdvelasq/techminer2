@@ -60,7 +60,7 @@ def build_author_steps(params: Params) -> list[Step]:
             count_message="{count} records disambiguated",
         ),
         Step(
-            name=f"Calculating '{Field.NUMAUTH.value}'",
+            name=f"Calculating '{Field.NUM_AUTH.value}'",
             function=calculate_numauth,
             kwargs=common_kwargs,
             count_message="{count} records calculated",

@@ -127,7 +127,7 @@ def _filter_dataframe_by_match(params: Params, dataframe: pd.DataFrame) -> pd.Da
 
     for filter_name, filter_value in filters.items():
 
-        if filter_name == Field.RECID.value:
+        if filter_name == Field.REC_ID.value:
 
             dataframe = dataframe[dataframe["record_id"].isin(filter_value)]
 
@@ -158,98 +158,98 @@ def _sort_dataframe_by(params: Params, dataframe: pd.DataFrame) -> pd.DataFrame:
     if sort_by is None:
         return dataframe
 
-    if sort_by == RecordsOrderBy.DATE_NEWEST:
+    if sort_by == RecordsOrderBy.PUBYEAR_NEWEST:
         dataframe = dataframe.sort_values(
             [
                 Field.PUBYEAR.value,
-                Field.CITCOUNT_GLOBAL.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.CIT_COUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )
-    elif sort_by == RecordsOrderBy.DATE_OLDEST:
+    elif sort_by == RecordsOrderBy.PUBYEAR_OLDEST:
         dataframe = dataframe.sort_values(
             [
                 Field.PUBYEAR.value,
-                Field.CITCOUNT_GLOBAL.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.CIT_COUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
-    elif sort_by == RecordsOrderBy.GLOBAL_CITED_BY_HIGHEST:
+    elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_HIGHEST:
         dataframe = dataframe.sort_values(
             [
-                Field.CITCOUNT_GLOBAL.value,
+                Field.CIT_COUNT_GLOBAL.value,
                 Field.PUBYEAR.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )
-    elif sort_by == RecordsOrderBy.GLOBAL_CITED_BY_LOWEST:
+    elif sort_by == RecordsOrderBy.CIT_COUNT_GLOBAL_BY_LOWEST:
         dataframe = dataframe.sort_values(
             [
-                Field.CITCOUNT_GLOBAL.value,
+                Field.CIT_COUNT_GLOBAL.value,
                 Field.PUBYEAR.value,
-                Field.CITCOUNT_LOCAL.value,
-            ],
-            ascending=[True, False, False],
-        )
-
-    elif sort_by == RecordsOrderBy.LOCAL_CITED_BY_HIGHEST:
-        dataframe = dataframe.sort_values(
-            [
-                Field.CITCOUNT_LOCAL.value,
-                Field.PUBYEAR.value,
-                Field.CITCOUNT_GLOBAL.value,
-            ],
-            ascending=[False, False, False],
-        )
-
-    elif sort_by == RecordsOrderBy.LOCAL_CITED_BY_LOWEST:
-        dataframe = dataframe.sort_values(
-            [
-                Field.CITCOUNT_LOCAL.value,
-                Field.PUBYEAR.value,
-                Field.CITCOUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.FIRST_AUTHOR_A_TO_Z:
+    elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_HIGHEST:
+        dataframe = dataframe.sort_values(
+            [
+                Field.CIT_COUNT_LOCAL.value,
+                Field.PUBYEAR.value,
+                Field.CIT_COUNT_GLOBAL.value,
+            ],
+            ascending=[False, False, False],
+        )
+
+    elif sort_by == RecordsOrderBy.CIT_COUNT_LOCAL_BY_LOWEST:
+        dataframe = dataframe.sort_values(
+            [
+                Field.CIT_COUNT_LOCAL.value,
+                Field.PUBYEAR.value,
+                Field.CIT_COUNT_GLOBAL.value,
+            ],
+            ascending=[True, False, False],
+        )
+
+    elif sort_by == RecordsOrderBy.FIRST_AUTH_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
                 Field.AUTH_NORM.value,
-                Field.CITCOUNT_GLOBAL.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.CIT_COUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.FIRST_AUTHOR_Z_TO_A:
+    elif sort_by == RecordsOrderBy.FIRST_AUTH_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
                 Field.AUTH_NORM.value,
-                Field.CITCOUNT_GLOBAL.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.CIT_COUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )
-    elif sort_by == RecordsOrderBy.SOURCE_TITLE_A_TO_Z:
+    elif sort_by == RecordsOrderBy.SRC_TITLE_A_TO_Z:
         dataframe = dataframe.sort_values(
             [
-                Field.SRCTITLE_NORM.value,
-                Field.CITCOUNT_GLOBAL.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.SRC_TITLE_NORM.value,
+                Field.CIT_COUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[True, False, False],
         )
 
-    elif sort_by == RecordsOrderBy.SOURCE_TITLE_Z_TO_A:
+    elif sort_by == RecordsOrderBy.SRE_TITLE_Z_TO_A:
         dataframe = dataframe.sort_values(
             [
-                Field.SRCTITLE_NORM.value,
-                Field.CITCOUNT_GLOBAL.value,
-                Field.CITCOUNT_LOCAL.value,
+                Field.SRC_TITLE_NORM.value,
+                Field.CIT_COUNT_GLOBAL.value,
+                Field.CIT_COUNT_LOCAL.value,
             ],
             ascending=[False, False, False],
         )

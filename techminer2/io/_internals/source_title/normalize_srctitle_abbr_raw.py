@@ -12,15 +12,15 @@ def normalize_srctitle_abbr_raw(root_directory: str) -> int:
 
     if ref_file.exists():
         coalesce_column(
-            source=Field.SRCTITLE_ABBR_RAW,
-            target=Field.SRCTITLE_ABBR_NORM,
+            source=Field.SRC_TITLE_ABBR_RAW,
+            target=Field.SRC_TITLE_ABBR_NORM,
             root_directory=root_directory,
             file=DataFile.REFERENCES,
         )
 
     return coalesce_column(
-        source=Field.SRCTITLE_ABBR_RAW,
-        target=Field.SRCTITLE_ABBR_NORM,
+        source=Field.SRC_TITLE_ABBR_RAW,
+        target=Field.SRC_TITLE_ABBR_NORM,
         root_directory=root_directory,
         file=DataFile.MAIN,
     )

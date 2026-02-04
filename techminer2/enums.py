@@ -3,16 +3,16 @@ from enum import Enum
 
 class RecordsOrderBy(Enum):
 
-    DATE_NEWEST = "date_newest"
-    DATE_OLDEST = "date_oldest"
-    GLOBAL_CITED_BY_HIGHEST = "global_cited_by_highest"
-    GLOBAL_CITED_BY_LOWEST = "global_cited_by_lowest"
-    LOCAL_CITED_BY_HIGHEST = "local_cited_by_highest"
-    LOCAL_CITED_BY_LOWEST = "local_cited_by_lowest"
-    FIRST_AUTHOR_A_TO_Z = "first_author_a_to_z"
-    FIRST_AUTHOR_Z_TO_A = "first_author_z_to_a"
-    SOURCE_TITLE_A_TO_Z = "source_title_a_to_z"
-    SOURCE_TITLE_Z_TO_A = "source_title_z_to_a"
+    CIT_COUNT_GLOBAL_BY_HIGHEST = "cit_count_global_by_highest"
+    CIT_COUNT_GLOBAL_BY_LOWEST = "cit_count_global_by_lowest"
+    CIT_COUNT_LOCAL_BY_HIGHEST = "cit_count_local_by_highest"
+    CIT_COUNT_LOCAL_BY_LOWEST = "cit_count_local_by_lowest"
+    FIRST_AUTH_A_TO_Z = "first_auth_a_to_z"
+    FIRST_AUTH_Z_TO_A = "first_auth_z_to_a"
+    PUBYEAR_NEWEST = "pubyear_newest"
+    PUBYEAR_OLDEST = "pubyear_oldest"
+    SRC_TITLE_A_TO_Z = "src_title_a_to_z"
+    SRE_TITLE_Z_TO_A = "src_title_z_to_a"
 
 
 class Field(Enum):
@@ -20,54 +20,54 @@ class Field(Enum):
     #
     # A
     #
-    ABS_RAW = "abstract_raw"
-    ABS_TOK = "abstract_tokenized"
-    ABS_UPPER_NP = "abstract_uppercase_noun_phrase"
-    ABS_UPPER_WORD = "abstract_uppercase_word"
+    ABS_RAW = "abs_raw"
+    ABS_TOK = "abs_tok"
+    ABS_UPPER_NP = "abs_upper_np"
+    ABS_UPPER_WORD = "abs_upper_word"
     ACRONYM = "acronym"
-    AFFIL_RAW = "affiliation"
-    ALLKEY_NORM = "all_keywords_norm"
-    ALLKEY_NP_NORM = "all_keywords_noun_phrase_norm"
-    ALLKEY_NP_RAW = "all_keywords_noun_phrase_raw"
-    ALLKEY_RAW = "all_keywords_raw"
-    ALLKEY_WORD_NORM = "all_keywords_word_norm"
-    ALLKEY_WORD_RAW = "all_keywords_word_raw"
-    ALLNP_NORM = "all_noun_phrases_norm"
-    ALLNP_RAW = "all_noun_phrases_raw"
-    ALLTERMS_NORM = "all_terms_norm"
-    ALLTERMS_RAW = "all_terms_raw"
-    ALLWORD_NORM = "all_word_norm"
-    ALLWORD_RAW = "all_word_raw"
-    ARTNO = "art_no"
-    AUTH_AFFIL = "author_with_affiliation"
-    AUTH_DISAMB = "author_disambiguated"
-    AUTH_FULL = "author_full_names"
-    AUTH_ID_NORM = "author_id_norm"
-    AUTH_ID_RAW = "author_id_raw"
-    AUTH_NORM = "author_norm"
-    AUTH_RAW = "author_raw"
-    AUTHKEY_NORM = "author_keywords_norm"
-    AUTHKEY_RAW = "author_keywords_raw"
+    AFFIL_RAW = "affil_raw"
+    ALL_KEY_NORM = "all_key_norm"
+    ALL_KEY_NP_NORM = "all_key_np_norm"
+    ALL_KEY_NP_RAW = "all_key_np_raw"
+    ALL_KEY_NP_WORD_RAW = "all_key_np_word_raw"
+    ALL_KEY_NP_WORD_NORM = "all_key_np_word_norm"
+    ALL_KEY_RAW = "all_key_raw"
+    ALL_KEY_WORD_NORM = "all_key_word_norm"
+    ALL_KEY_WORD_RAW = "all_key_word_raw"
+    ALL_NP_NORM = "all_np_norm"
+    ALL_NP_RAW = "all_np_raw"
+    ALL_WORD_NORM = "all_word_norm"
+    ALL_WORD_RAW = "all_word_raw"
+    ART_NO = "art_no"
+    AUTH_AFFIL = "auth_affil"
+    AUTH_DISAMB = "auth_disamb"
+    AUTH_FULL = "auth_full"
+    AUTH_ID_NORM = "auth_id_norm"
+    AUTH_ID_RAW = "auth_id_raw"
+    AUTH_KEY_NORM = "auth_key_norm"
+    AUTH_KEY_RAW = "auth_key_raw"
+    AUTH_NORM = "auth_norm"
+    AUTH_RAW = "auth_raw"
 
     #
     # C
     #
-    CASREGNUMBER = "cas_reg_number"
-    CITCOUNT_GLOBAL = "citation_count_global"
-    CITCOUNT_LOCAL = "citation_count_local"
+    CAS_REG_NUMBER = "cas_reg_num"
+    CIT_COUNT_GLOBAL = "cit_count_global"
+    CIT_COUNT_LOCAL = "cit_count_local"
     CODEN = "coden"
-    CONFCODE = "conference_code"
-    CONFDATE = "conference_date"
-    CONFLOC = "conference_location"
-    CONFNAME = "conference_name"
-    CORRESP = "correspondence_address"
+    CONF_CODE = "conf_code"
+    CONF_DATE = "conf_date"
+    CONF_LOC = "conf_location"
+    CONF_NAME = "conf_name"
+    CORRESP = "corresp"
     COUNTRY = "country"
 
     #
     # D
     #
-    DOCTYPE_NORM = "document_type_norm"
-    DOCTYPE_RAW = "document_type_raw"
+    DOC_TYPE_NORM = "doc_type_norm"
+    DOC_TYPE_RAW = "doc_type_raw"
     DOI = "doi"
 
     #
@@ -80,18 +80,18 @@ class Field(Enum):
     #
     # F
     #
-    FIRSTAUTH = "first_author"
-    FIRSTAUTH_COUNTRY = "first_author_country"
-    FIRSTAUTH_ORGANIZATION = "first_author_organization"
-    FUND_DETAILS = "funding_details"
-    FUND_SPONSORS = "funding_sponsors"
-    FUND_TEXTS = "funding_texts"
+    FIRST_AUTH = "first_auth"
+    FIRST_AUTH_COUNTRY = "first_auth_country"
+    FIRST_AUTH_ORGANIZATION = "first_auth_organization"
+    FUND_DETAILS = "fund_details"
+    FUND_SPONSORS = "fund_sponsors"
+    FUND_TEXTS = "fund_texts"
 
     #
     # I
     #
-    IDXKEY_NORM = "index_keywords_norm"
-    IDXKEY_RAW = "index_keywords_raw"
+    IDX_KEY_NORM = "idx_key_norm"
+    IDX_KEY_RAW = "idx_key_raw"
     ISBN = "isbn"
     ISSN = "issn"
     ISSNP = "issnp"
@@ -100,8 +100,6 @@ class Field(Enum):
     #
     # K
     #
-    KEYTERMS_RAW = "keyterms_raw"
-    KEYTERMS_NORM = "keyterms_norm"
 
     #
     # L
@@ -117,15 +115,15 @@ class Field(Enum):
     #
     # N
     #
-    NP_ABS_NORM = "noun_phrases_abstract_norm"
-    NP_ABS_RAW = "noun_phrases_abstract_raw"
-    NP_SPACY = "noun_phrases_spacy"
-    NP_TEXTBLOB = "noun_phrases_textblob"
-    NP_TITLE_NORM = "noun_phrases_title_norm"
-    NP_TITLE_RAW = "noun_phrases_title_raw"
-    NUMAUTH = "number_of_authors"
-    NUMREF_GLOBAL = "number_of_global_references"
-    NUMREF_LOCAL = "number_of_local_references"
+    NP_ABS_NORM = "np_abs_norm"
+    NP_ABS_RAW = "np_abs_raw"
+    NP_SPACY = "np_spacy"
+    NP_TEXTBLOB = "np_textblob"
+    NP_TITLE_NORM = "np_title_norm"
+    NP_TITLE_RAW = "np_title_raw"
+    NUM_AUTH = "num_auths"
+    NUM_REF_GLOBAL = "num_ref_global"
+    NUM_REF_LOCAL = "num_ref_local"
 
     #
     # O
@@ -136,42 +134,42 @@ class Field(Enum):
     #
     # P
     #
-    PAGEFIRST = "page_first"
-    PAGELAST = "page_last"
-    PAGES = "page_count"
+    PAGE_FIRST = "page_first"
+    PAGE_LAST = "page_last"
+    PAGE_COUNT = "page_count"
     PUBLISHER = "publisher"
     PUBMED = "pubmed"
-    PUBSTAGE = "publication_stage"
-    PUBYEAR = "year"
+    PUB_STAGE = "pub_stage"
+    PUBYEAR = "pubyear"
 
     #
     # R
     #
-    RECID = "record_id"
-    RECNO = "record_no"
-    REF_NORM = "references_norm"
-    REF_RAW = "references_raw"
+    REC_ID = "rec_id"
+    REC_NO = "rec_no"
+    REF_NORM = "ref_norm"
+    REF_RAW = "ref_raw"
     REGION = "region"
 
     #
     # S
     #
-    SEQNUM = "sequence_numbers"
+    SEQ_NUM = "sequence_nums"
     SOURCE = "source"
-    SRCTITLE_ABBR_NORM = "source_title_abbr_norm"
-    SRCTITLE_ABBR_RAW = "source_title_abbr_raw"
-    SRCTITLE_NORM = "source_title_norm"
-    SRCTITLE_RAW = "source_title_raw"
-    SUBJAREA = "subject_areas"
+    SRC_TITLE_ABBR_NORM = "src_title_abbr_norm"
+    SRC_TITLE_ABBR_RAW = "src_title_abbr_raw"
+    SRC_TITLE_NORM = "src_title_norm"
+    SRC_TITLE_RAW = "src_title_raw"
+    SUBJ_AREA = "subj_areas"
     SUBREGION = "subregion"
 
     #
     # T
     #
     TITLE_RAW = "title_raw"
-    TITLE_TOK = "title_tokenized"
-    TITLE_UPPER_NP = "title_uppercase_noun_phrase"
-    TITLE_UPPER_WORD = "title_uppercase_word"
+    TITLE_TOK = "title_tok"
+    TITLE_UPPER_NP = "title_upper_np"
+    TITLE_UPPER_WORD = "title_upper_word"
     TRADENAME = "tradename"
 
     #

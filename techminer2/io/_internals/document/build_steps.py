@@ -16,13 +16,13 @@ def build_document_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Repairing '{Field.CITCOUNT_GLOBAL.value}'",
+            name=f"Repairing '{Field.CIT_COUNT_GLOBAL.value}'",
             function=repair_citcount_global,
             kwargs=common_kwargs,
             count_message="{count} records repaired",
         ),
         Step(
-            name=f"Normalizing '{Field.DOCTYPE_RAW.value}'",
+            name=f"Normalizing '{Field.DOC_TYPE_RAW.value}'",
             function=normalize_doctype_raw,
             kwargs=common_kwargs,
             count_message="{count} records normalized",

@@ -13,7 +13,7 @@ from techminer2._internals.data_access import (
 )
 
 _SELECTED_FIELDS = [
-    Field.RECID.value,
+    Field.REC_ID.value,
     Field.TITLE_RAW.value,
     Field.AUTH_RAW.value,
     Field.PUBYEAR.value,
@@ -68,7 +68,7 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
     else:
         dataframe = main_df
 
-    dataframe[Field.FIRSTAUTH.value] = (
+    dataframe[Field.FIRST_AUTH.value] = (
         dataframe[Field.AUTH_RAW.value]
         .str.split(" ")
         .map(lambda x: x[0].lower().replace(",", ""))
@@ -77,7 +77,7 @@ def _prepare_main_documents(root_directory: str) -> pd.DataFrame:
     dataframe[Field.TITLE_RAW.value] = _clean_text(dataframe[Field.TITLE_RAW.value])
     dataframe[Field.AUTH_RAW.value] = _clean_text(dataframe[Field.AUTH_RAW.value])
     dataframe[Field.PUBYEAR.value] = dataframe[Field.PUBYEAR.value].astype(str)
-    dataframe = dataframe.sort_values(by=[Field.RECID.value])
+    dataframe = dataframe.sort_values(by=[Field.REC_ID.value])
 
     return dataframe
 
@@ -113,7 +113,7 @@ def _create_mapping(
         refs = remaining_references.copy()
 
         refs = refs.loc[
-            refs.key.str.lower().str.contains(row[Field.FIRSTAUTH.value].lower()), :
+            refs.key.str.lower().str.contains(row[Field.FIRST_AUTH.value].lower()), :
         ]
         refs = refs.loc[refs.key.str.lower().str.contains(row[Field.PUBYEAR.value]), :]
 
@@ -125,7 +125,7 @@ def _create_mapping(
         ]
 
         if len(refs) > 0:
-            mapping[row[Field.RECID.value]] = sorted(refs.text.tolist())
+            mapping[row[Field.REC_ID.value]] = sorted(refs.text.tolist())
             remaining_references = remaining_references.drop(refs.index)
 
     return mapping

@@ -16,19 +16,19 @@ def build_source_title_steps(params: Params) -> list[Step]:
 
     return [
         Step(
-            name=f"Normalizing {Field.SUBJAREA.value}",
+            name=f"Normalizing {Field.SUBJ_AREA.value}",
             function=assign_subjarea,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
-            name=f"Normalizing {Field.SRCTITLE_ABBR_RAW.value}",
+            name=f"Normalizing {Field.SRC_TITLE_ABBR_RAW.value}",
             function=normalize_srctitle_abbr_raw,
             kwargs=common_kwargs,
             count_message="{count} records processed",
         ),
         Step(
-            name=f"Normalizing {Field.SRCTITLE_RAW.value}",
+            name=f"Normalizing {Field.SRC_TITLE_RAW.value}",
             function=normalize_srctitle_raw,
             kwargs=common_kwargs,
             count_message="{count} records processed",

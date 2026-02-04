@@ -20,7 +20,7 @@ def assign_recno(root_directory):
     )
 
     num_zeros = len(str(len(dataframe)))
-    dataframe[Field.RECNO.value] = [
+    dataframe[Field.REC_NO.value] = [
         f"{i:0{num_zeros}d}" for i in range(1, len(dataframe) + 1)
     ]
 

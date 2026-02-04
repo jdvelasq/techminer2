@@ -59,7 +59,7 @@ class ConcordanceSentences(
     def _set_dataframe_index(self, dataframe: pd.DataFrame) -> pd.DataFrame:
         return dataframe.set_index(
             pd.Index(
-                dataframe[Field.RECID.value] + " / " + dataframe[Field.TITLE_RAW.value]
+                dataframe[Field.REC_ID.value] + " / " + dataframe[Field.TITLE_RAW.value]
             )
         )
 

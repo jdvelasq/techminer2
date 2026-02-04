@@ -40,27 +40,27 @@ def assign_subjarea(root_directory: str) -> int:
     issn_mapping = dict(
         zip(
             subject_areas_df[Field.ISSN.value].dropna(),
-            subject_areas_df[Field.SUBJAREA.value].dropna(),
+            subject_areas_df[Field.SUBJ_AREA.value].dropna(),
         )
     )
     eissn_mapping = dict(
         zip(
             subject_areas_df[Field.EISSN.value].dropna(),
-            subject_areas_df[Field.SUBJAREA.value].dropna(),
+            subject_areas_df[Field.SUBJ_AREA.value].dropna(),
         )
     )
 
-    dataframe[Field.SUBJAREA.value] = None
+    dataframe[Field.SUBJ_AREA.value] = None
 
     if Field.ISSN.value in dataframe.columns:
-        dataframe[Field.SUBJAREA.value] = dataframe[Field.ISSN.value].map(issn_mapping)
+        dataframe[Field.SUBJ_AREA.value] = dataframe[Field.ISSN.value].map(issn_mapping)
 
     if Field.EISSN.value in dataframe.columns:
-        dataframe[Field.SUBJAREA.value] = dataframe[Field.SUBJAREA.value].fillna(
+        dataframe[Field.SUBJ_AREA.value] = dataframe[Field.SUBJ_AREA.value].fillna(
             dataframe[Field.EISSN.value].map(eissn_mapping)
         )
 
-    non_null_count = int(dataframe[Field.SUBJAREA.value].notna().sum())
+    non_null_count = int(dataframe[Field.SUBJ_AREA.value].notna().sum())
 
     temp_file = database_file.with_suffix(".tmp")
     dataframe.to_csv(

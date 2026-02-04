@@ -25,16 +25,16 @@ def normalize_srctitle_raw(root_directory: str) -> int:
     if ref_file.exists():
 
         transform_column(
-            source=Field.SRCTITLE_RAW,
-            target=Field.SRCTITLE_NORM,
+            source=Field.SRC_TITLE_RAW,
+            target=Field.SRC_TITLE_NORM,
             function=_normalize,
             root_directory=root_directory,
             file=DataFile.REFERENCES,
         )
 
     return transform_column(
-        source=Field.SRCTITLE_RAW,
-        target=Field.SRCTITLE_NORM,
+        source=Field.SRC_TITLE_RAW,
+        target=Field.SRC_TITLE_NORM,
         function=_normalize,
         root_directory=root_directory,
         file=DataFile.MAIN,

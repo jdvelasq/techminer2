@@ -139,7 +139,7 @@ class Params:
     record_citations_range: Tuple[Optional[int], Optional[int]] = (None, None)
     record_years_range: Tuple[Optional[int], Optional[int]] = (None, None)
     records_match: Optional[Dict[str, List[str]]] = None
-    records_order_by: RecordsOrderBy = RecordsOrderBy.DATE_NEWEST
+    records_order_by: RecordsOrderBy = RecordsOrderBy.PUBYEAR_NEWEST
     regex_flags: int = 0
     regex_search: bool = False
     replacement: Optional[str] = None

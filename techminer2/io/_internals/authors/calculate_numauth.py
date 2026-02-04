@@ -6,6 +6,6 @@ def calculate_numauth(root_directory):
 
     return count_column_items(
         source=Field.AUTH_NORM,
-        target=Field.NUMAUTH,
+        target=Field.NUM_AUTH,
         root_directory=root_directory,
     )

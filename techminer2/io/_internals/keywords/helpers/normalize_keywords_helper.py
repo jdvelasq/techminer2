@@ -23,10 +23,10 @@ def normalize_keywords_helper(
         low_memory=False,
     )
 
-    if source not in dataframe.columns:
+    if source.value not in dataframe.columns:
         return 0
 
-    text = dataframe[source]
+    text = dataframe[source.value]
     text = _normalize_empty_strings(text)
     text = _uppercase_keywords(text)
     text = _fix_separators(text)
@@ -40,7 +40,7 @@ def normalize_keywords_helper(
     text = _fix_separator_formatting(text)
     text = _remove_empty_terms(text)
 
-    dataframe[target] = text
+    dataframe[target.value] = text
 
     dataframe.to_csv(
         database_file,
@@ -50,7 +50,7 @@ def normalize_keywords_helper(
         compression="zip",
     )
 
-    return len(dataframe[target].dropna())
+    return len(dataframe[target.value].dropna())
 
 
 def _normalize_empty_strings(text: pd.Series) -> pd.Series:

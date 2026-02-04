@@ -1,14 +1,22 @@
 from techminer2 import Field
-from techminer2.io._internals.operations import merge_columns
+from techminer2.io._internals.operations import copy_column, merge_columns
 
 
 def merge_keywords_words(root_directory: str) -> int:
 
-    return merge_columns(
+    result = merge_columns(
         sources=[
-            Field.ALLKEY_RAW,
-            Field.ALLWORD_RAW,
+            Field.ALL_KEY_RAW,
+            Field.ALL_WORD_RAW,
         ],
-        target=Field.ALLKEY_WORD_RAW,
+        target=Field.ALL_KEY_WORD_RAW,
         root_directory=root_directory,
     )
+
+    copy_column(
+        source=Field.ALL_KEY_WORD_RAW,
+        target=Field.ALL_KEY_WORD_NORM,
+        root_directory=root_directory,
+    )
+
+    return result

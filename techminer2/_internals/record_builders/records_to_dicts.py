@@ -27,15 +27,15 @@ def records_to_dicts(dataframe):
 
     names_mapping = {
         "record_no": "UT",
-        Field.RECID.value: "AR",
+        Field.REC_ID.value: "AR",
         Field.TITLE_RAW.value: "TI",
         Field.AUTH_NORM.value: "AU",
-        Field.CITCOUNT_GLOBAL.value: "TC",
+        Field.CIT_COUNT_GLOBAL.value: "TC",
         Field.SRCTITLE_ABBR.value: "SO",
         Field.PUBYEAR.value: "PY",
         Field.ABS_UPPER_NP.value: "AB",
-        Field.AUTHKEY_RAW.value: "DE",
-        Field.IDXKEY_RAW.value: "ID",
+        Field.AUTH_KEY_RAW.value: "DE",
+        Field.IDX_KEY_RAW.value: "ID",
     }
 
     candiate_columns = names_mapping.keys()

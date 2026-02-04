@@ -6,22 +6,22 @@ def compute_citcount_local(root_directory: str) -> int:
 
     dataframe = load_main_data(root_directory=root_directory, usecols=None)
 
-    rec_id = dataframe[Field.RECID.value].tolist()
+    rec_id = dataframe[Field.REC_ID.value].tolist()
 
-    dataframe[Field.CITCOUNT_LOCAL.value] = dataframe[Field.REF_NORM.value]
-    dataframe[Field.CITCOUNT_LOCAL.value] = dataframe[
-        Field.CITCOUNT_LOCAL.value
+    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.REF_NORM.value]
+    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[
+        Field.CIT_COUNT_LOCAL.value
     ].fillna("")
-    dataframe[Field.CITCOUNT_LOCAL.value] = dataframe[
-        Field.CITCOUNT_LOCAL.value
+    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[
+        Field.CIT_COUNT_LOCAL.value
     ].str.split("; ")
-    dataframe[Field.CITCOUNT_LOCAL.value] = dataframe[Field.CITCOUNT_LOCAL.value].map(
+    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.CIT_COUNT_LOCAL.value].map(
         lambda refs: [ref.strip() for ref in refs],
     )
-    dataframe[Field.CITCOUNT_LOCAL.value] = dataframe[Field.CITCOUNT_LOCAL.value].map(
+    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.CIT_COUNT_LOCAL.value].map(
         lambda refs: [ref for ref in refs if ref in rec_id],
     )
-    dataframe[Field.CITCOUNT_LOCAL.value] = dataframe[Field.CITCOUNT_LOCAL.value].map(
+    dataframe[Field.CIT_COUNT_LOCAL.value] = dataframe[Field.CIT_COUNT_LOCAL.value].map(
         len,
     )
     save_main_data(df=dataframe, root_directory=root_directory)

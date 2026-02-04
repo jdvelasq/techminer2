@@ -15,6 +15,7 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
     from .extract_title_phrases import extract_title_phrases
     from .extract_title_words import extract_title_words
     from .merge_keywords_phrases import merge_keywords_phrases
+    from .merge_keywords_phrases_words import merge_keywords_phrases_words
     from .merge_keywords_words import merge_keywords_words
     from .merge_title_abstract_phrases import merge_title_abstract_phrases
     from .merge_title_abstract_words import merge_title_abstract_words
@@ -130,6 +131,12 @@ def build_words_and_np_steps(params: Params) -> list[Step]:
             function=merge_keywords_words,
             kwargs=common_kwargs,
             count_message="{count} keywords and words merged",
+        ),
+        Step(
+            name="Merging keywords, NP, and words",
+            function=merge_keywords_phrases_words,
+            kwargs=common_kwargs,
+            count_message="{count} records processed",
         ),
         Step(
             name="Updating builtin noun phrases",

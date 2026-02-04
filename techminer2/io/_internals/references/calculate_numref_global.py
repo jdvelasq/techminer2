@@ -6,7 +6,7 @@ def calculate_numref_global(root_directory: str) -> int:
 
     return count_column_items(
         source=Field.REF_RAW,
-        target=Field.NUMREF_GLOBAL,
+        target=Field.NUM_REF_GLOBAL,
         root_directory=root_directory,
     )
 
