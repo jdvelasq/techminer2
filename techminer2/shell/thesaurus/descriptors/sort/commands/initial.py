@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import SortByInitialWords
+from techminer2.thesaurus_old.descriptors import SortByInitialWords
 
 
 def execute_initial_command():

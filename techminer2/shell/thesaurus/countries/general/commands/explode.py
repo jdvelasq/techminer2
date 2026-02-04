@@ -1,4 +1,4 @@
-from techminer2.thesaurus.countries import ExplodeKeys
+from techminer2.thesaurus_old.countries import ExplodeKeys
 
 
 def execute_explode_command():

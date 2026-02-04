@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import CutoffFuzzyMerging
+from techminer2.thesaurus_old.descriptors import CutoffFuzzyMerging
 
 
 def execute_cutofffuzzy_command():

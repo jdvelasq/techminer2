@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import SpellCheck
+from techminer2.thesaurus_old.descriptors import SpellCheck
 
 
 def execute_spellcheck_command():

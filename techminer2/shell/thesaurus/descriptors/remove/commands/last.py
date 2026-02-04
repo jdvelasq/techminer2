@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import RemoveLastWords
+from techminer2.thesaurus_old.descriptors import RemoveLastWords
 
 
 def execute_last_command():

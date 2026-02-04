@@ -1,5 +1,5 @@
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus.organizations import SortByWordMatch
+from techminer2.thesaurus_old.organizations import SortByWordMatch
 
 
 def execute_wordmatch_command():

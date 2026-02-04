@@ -1,4 +1,4 @@
-from techminer2.thesaurus.system.descriptors import SortByAlphabet
+from techminer2.thesaurus_old.system.descriptors import SortByAlphabet
 
 
 def execute_alphabet_command():

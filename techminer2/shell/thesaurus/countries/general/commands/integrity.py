@@ -1,4 +1,4 @@
-from techminer2.thesaurus.countries import IntegrityCheck
+from techminer2.thesaurus_old.countries import IntegrityCheck
 
 
 def execute_integrity_command():

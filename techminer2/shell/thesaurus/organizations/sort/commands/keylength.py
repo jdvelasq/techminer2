@@ -1,4 +1,4 @@
-from techminer2.thesaurus.organizations import SortByKeyLength
+from techminer2.thesaurus_old.organizations import SortByKeyLength
 
 
 def execute_keylength_command():

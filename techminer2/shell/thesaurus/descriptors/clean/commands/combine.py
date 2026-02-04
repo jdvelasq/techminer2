@@ -8,7 +8,7 @@
 # pylint: disable=too-many-branches
 # pylint: disable=unused-argument
 
-from techminer2.thesaurus.descriptors import CombineKeys
+from techminer2.thesaurus_old.descriptors import CombineKeys
 
 
 def execute_combine_command():

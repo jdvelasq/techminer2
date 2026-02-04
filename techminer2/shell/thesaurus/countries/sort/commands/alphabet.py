@@ -1,4 +1,4 @@
-from techminer2.thesaurus.countries import SortByAlphabet
+from techminer2.thesaurus_old.countries import SortByAlphabet
 
 
 def execute_alphabet_command():

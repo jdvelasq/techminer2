@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import ApplyThesaurus
+from techminer2.thesaurus_old.descriptors import ApplyThesaurus
 
 
 def execute_apply_command():

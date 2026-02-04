@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import BritishToAmericanSpelling
+from techminer2.thesaurus_old.descriptors import BritishToAmericanSpelling
 
 
 def execute_bri2ame_command():

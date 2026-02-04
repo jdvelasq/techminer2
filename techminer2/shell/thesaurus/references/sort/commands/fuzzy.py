@@ -1,5 +1,5 @@
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus.references import SortByFuzzyMatch
+from techminer2.thesaurus_old.references import SortByFuzzyMatch
 
 
 def execute_fuzzy_command():

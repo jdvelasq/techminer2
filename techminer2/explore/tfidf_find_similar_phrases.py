@@ -59,10 +59,11 @@ import textwrap
 import pandas as pd  # type: ignore
 from nltk.stem import PorterStemmer  # type: ignore
 from sklearn.metrics.pairwise import cosine_similarity  # type: ignore
-from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+from textblob import TextBlob  # type: ignore
+
+from techminer2.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
-from textblob import TextBlob  # type: ignore
 
 # from ..database.load.load__database import load__filtered_database
 

@@ -1,0 +1,90 @@
+--- Main ---
+
+- ExactMatch (words-based): 
+    Detects exact string equality (after minimal normalization such as trimming).
+    Used as a baseline and for sanity checks.
+    Case-senstive or insensitive based on configuration.
+
+- FuzzyCutoffMatch (words-based): 
+    Detects near-duplicate strings using surface-form fuzzy similarity with a cutoff threshold.
+    Produces candidate pairs only, never merges.
+    Scope: Keywords, noun phrases, organizations, sources (very conservative), authors (high cutoff).
+    Case-insensitive.
+
+- StemMatch (words-based):
+    Finds words sharing the same root (Singular/Plural identification). It uses NLP lemmatization / stemming.
+    Compare words in the same order.
+    Case-insensitive.
+
+- SignatureMatch (words-based):
+    Detects equivalence by comparing normalized string signatures (fingerprints).
+    Typical signature steps:
+        lowercase
+        remove punctuation
+        tokenize
+        optional stemming
+        sort tokens
+    Case-insensitive.
+
+--- Selectors ----
+
+- PrefixMatch (string-based): 
+    Scans for terms starting with a specific string and proposes merging them into a standardized Key.
+    Case-insensitive.
+
+- SuffixMatch (string-based): 
+    Scans for terms ending with a specific string (often to strip it).
+    Case-insensitive.
+
+- ContainsMatch (string-based): 
+    Present strings that contain a specific pattern or substring
+    Case-insensitive.
+
+- EditDistanceMatch (string-based): 
+    Present strings within a specified edit distance (Levenshtein distance)
+    Case-insensitive.
+
+- FindCloseMatch (string-based): 
+    Present strings similar to a user-selected string within cutoff threshold
+    Case-insensitive.
+
+- RegexMatch (string-based): 
+    Present strings matching a regular expression pattern
+    Case-sensitive or insensitive based on regex flags.
+
+- SubsetMatch (words-based): 
+    Finds terms where one is a strict subset of the words in another.
+    Case-insensitive.
+
+--- Secundary ---
+
+- HyphenationMatch (words-based): 
+    Detects variants caused by hyphenation and spacing differences.
+    Reduces fuzzy noise and catches high-confidence variants early.
+    Case-insensitive.
+
+- CaseVariationMatch (words-based): 
+    Present strings that differ only in capitalization
+    Case-sensitive.
+
+- PunctuationVariationMatch (words-based): 
+    Present strings that differ only in punctuation.
+    Case-insensitive.
+
+- AbbreviationMatch (words-based): 
+    Detects acronym ↔ long-form relationships using first-letter logic and token alignment.
+    Explicitly used by ClusterSuite (Acronym Identifier) and essential for keyword cleanup.
+    Case-senstive or insensitive based on configuration.
+
+- WordOrderMatch (words-based): 
+    Detects strings composed of the same tokens in different orders.
+    Case-insensitive.
+
+- PluralSingularMatch (words-based):
+    Present strings that differ only by pluralization.
+    Case-insensitive.
+
+- NumericVariationMatch (string-based): 
+    Present strings with numeric variations (e.g., "test1" vs "test2")
+
+

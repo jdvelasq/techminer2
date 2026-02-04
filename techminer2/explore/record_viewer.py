@@ -12,7 +12,7 @@ Record Viewer
 
 Example:
     >>> # Countries:
-    >>> from techminer2.thesaurus.countries import (
+    >>> from techminer2.thesaurus_old.countries import (
     ...     InitializeThesaurus as CreateCountryThesaurus,
     ...     ApplyThesaurus as ApplyCountryThesaurus,
     ... )
@@ -21,7 +21,7 @@ Example:
 
 
     >>> # Organizations:
-    >>> from techminer2.thesaurus.organizations import (
+    >>> from techminer2.thesaurus_old.organizations import (
     ...     InitializeThesaurus as CreateOrganizationsThesaurus,
     ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
     ... )
@@ -29,7 +29,7 @@ Example:
     >>> ApplyOrganizationsThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Descriptors:
-    >>> from techminer2.thesaurus.descriptors import (
+    >>> from techminer2.thesaurus_old.descriptors import (
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )

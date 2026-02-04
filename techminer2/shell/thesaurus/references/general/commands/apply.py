@@ -1,4 +1,4 @@
-from techminer2.thesaurus.references import ApplyThesaurus
+from techminer2.thesaurus_old.references import ApplyThesaurus
 
 
 def execute_apply_command():

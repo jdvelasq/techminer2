@@ -5,17 +5,17 @@ Smoke test:
     >>> # TEST PREPARATION
     >>> #
     >>> # Countries:
-    >>> from techminer2.thesaurus.countries import InitializeThesaurus, ApplyThesaurus
+    >>> from techminer2.thesaurus_old.countries import InitializeThesaurus, ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Organizations:
-    >>> from techminer2.thesaurus.organizations import InitializeThesaurus, ApplyThesaurus
+    >>> from techminer2.thesaurus_old.organizations import InitializeThesaurus, ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 
     >>> # Descriptors:
-    >>> from techminer2.thesaurus.descriptors import InitializeThesaurus, ApplyThesaurus
+    >>> from techminer2.thesaurus_old.descriptors import InitializeThesaurus, ApplyThesaurus
     >>> InitializeThesaurus(root_directory="examples/fintech/", quiet=True).run()
     >>> ApplyThesaurus(root_directory="examples/fintech/", quiet=True).run()
 

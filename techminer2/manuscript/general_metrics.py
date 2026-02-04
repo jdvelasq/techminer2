@@ -10,16 +10,16 @@ General Metrics Text
 ===============================================================================
 
 Example:
-    >>> from techminer2.thesaurus.countries import (
+    >>> from techminer2.thesaurus_old.countries import (
     ...     InitializeThesaurus as CreateCountryThesaurus,
     ...     ApplyThesaurus as ApplyCountryThesaurus,
     ... )  # doctest: +ELLIPSIS
     Note...
-    >>> from techminer2.thesaurus.organizations import (
+    >>> from techminer2.thesaurus_old.organizations import (
     ...     InitializeThesaurus as CreateOrganizationsThesaurus,
     ...     ApplyThesaurus as ApplyOrganizationsThesaurus,
     ... )
-    >>> from techminer2.thesaurus.descriptors import (
+    >>> from techminer2.thesaurus_old.descriptors import (
     ...     InitializeThesaurus as CreateDescriptorsThesaurus,
     ...     ApplyThesaurus as ApplyDescriptorsThesaurus,
     ... )

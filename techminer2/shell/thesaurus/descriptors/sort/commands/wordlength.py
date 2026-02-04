@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import SortByWordLength
+from techminer2.thesaurus_old.descriptors import SortByWordLength
 
 
 def execute_wordlength_command():

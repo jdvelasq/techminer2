@@ -1,4 +1,4 @@
-from techminer2.thesaurus.references import IntegrityCheck
+from techminer2.thesaurus_old.references import IntegrityCheck
 
 
 def execute_integrity_command():

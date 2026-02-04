@@ -31,7 +31,65 @@ Review of recgonized noun phrases
 tm2+ allows the user to inspect and validate noun phrase extraction directly on the original abstracts**, highlighting extracted noun phrases in uppercase to distinguish them from surrounding text. It also supports focused review of abstract suffixes, where copyright and publisher boilerplate are often appended and mistakenly identified as noun phrases. In addition, tm2+ exposes colon-delimited headings in structured abstracts, which can otherwise be confused with meaningful concepts. By making these artifacts explicit, tm2+ enables manual correction and re-execution of noun phrase extraction, turning NLP preprocessing into an iterative, transparent, and quality-controlled process.
 
 
+Thesaurus
+------------------------------------------------------------------------------
 
+In VantagePoint, thesaurus management is implemented as an interactive, exploratory process in which fuzzy-cutoff algorithms are used to identify candidate key matches and the user manually decides which keys to merge, with no automatic consolidation. In tm2+, the same conceptual approach is preserved but implemented in a console-based, scriptable workflow: matchers generate explicit candidate pairs, merge decisions are applied explicitly and logged, and recomputation is triggered deliberately rather than implicitly. Unlike VantagePoint, tm2+ exposes the matching and merging steps as repeatable operations that can be integrated into analytical pipelines, while still respecting the core VantagePoint principle that similarity detection suggests merges but never performs them automatically. The main matchers implemented in tm2+ are:
+
+- ExactMatch (words-based):     
+    Detects exact string equality (after minimal normalization such as trimming).
+    Used as a baseline and for sanity checks.
+    Case-senstive or insensitive based on configuration.
+
+- FuzzyCutoffMatch (words-based): 
+    Detects near-duplicate strings using surface-form fuzzy similarity with a cutoff threshold.
+    Produces candidate pairs only, never merges.
+    Scope: Keywords, noun phrases, organizations, sources (very conservative), authors (high cutoff).
+    Case-insensitive.
+
+- StemMatch (words-based):
+    Finds words sharing the same root (Singular/Plural identification). It uses NLP lemmatization / stemming.
+    Compare words in the same order.
+    Case-insensitive.
+
+- SignatureMatch (words-based):
+    Detects equivalence by comparing normalized string signatures (fingerprints).
+    Typical signature steps:
+        lowercase
+        remove punctuation
+        tokenize
+        optional stemming
+        sort tokens
+    Case-insensitive.
+
+- HyphenationMatch (words-based): 
+    Detects variants caused by hyphenation and spacing differences.
+    Reduces fuzzy noise and catches high-confidence variants early.
+    Case-insensitive.
+
+- CaseVariationMatch (words-based): 
+    Present strings that differ only in capitalization
+    Case-sensitive.
+
+- PunctuationVariationMatch (words-based): 
+    Present strings that differ only in punctuation.
+    Case-insensitive.
+
+- AbbreviationMatch (words-based): 
+    Detects acronym ↔ long-form relationships using first-letter logic and token alignment.
+    Explicitly used by ClusterSuite (Acronym Identifier) and essential for keyword cleanup.
+    Case-senstive or insensitive based on configuration.
+
+- WordOrderMatch (words-based): 
+    Detects strings composed of the same tokens in different orders.
+    Case-insensitive.
+
+- PluralSingularMatch (words-based):
+    Present strings that differ only by pluralization.
+    Case-insensitive.
+
+- NumericVariationMatch (string-based): 
+    Present strings with numeric variations (e.g., "test1" vs "test2")
 
 
 

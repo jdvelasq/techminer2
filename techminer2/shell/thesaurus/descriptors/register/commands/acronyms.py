@@ -7,7 +7,7 @@ from techminer2._internals.package_data.text_processing import (
     internal__sort_text_processing_terms,
 )
 from techminer2.shell.colorized_input import colorized_input
-from techminer2.thesaurus._internals import internal__load_thesaurus_as_data_frame
+from techminer2.thesaurus_old._internals import internal__load_thesaurus_as_data_frame
 
 
 def execute_acronyms_command():

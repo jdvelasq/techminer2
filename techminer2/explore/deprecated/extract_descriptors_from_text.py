@@ -34,10 +34,11 @@ Extract Descriptors from Text
 import os.path
 import re
 
-from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+from textblob import TextBlob  # type: ignore
+
+from techminer2.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
-from textblob import TextBlob  # type: ignore
 
 TEXTWRAP_WIDTH = 73
 THESAURUS_FILE = "data/thesaurus/descriptors.the.txt"

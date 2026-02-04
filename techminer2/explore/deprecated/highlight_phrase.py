@@ -47,7 +47,7 @@ import os.path
 import re
 import textwrap
 
-from techminer2.thesaurus._internals.load_reversed_thesaurus_as_mapping import (
+from techminer2.thesaurus_old._internals.load_reversed_thesaurus_as_mapping import (
     internal__load_reversed_thesaurus_as_mapping,
 )
 

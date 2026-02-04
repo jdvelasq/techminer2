@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import IntegrityCheck
+from techminer2.thesaurus_old.descriptors import IntegrityCheck
 
 
 def execute_integrity_command():

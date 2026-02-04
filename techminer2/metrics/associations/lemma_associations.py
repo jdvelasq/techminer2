@@ -43,7 +43,7 @@ from textblob import TextBlob  # type: ignore
 from techminer2._internals.utils.utils_format_prompt_for_paragraphs import (
     _utils_format_prompt_for_paragraphs,
 )
-from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+from techminer2.thesaurus_old._internals.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
 )
 

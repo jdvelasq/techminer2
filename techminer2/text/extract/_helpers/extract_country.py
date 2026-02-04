@@ -7,15 +7,12 @@
 # pylint: disable=too-many-statements
 import glob
 import os
-from typing import Dict
-from typing import List
-from typing import Optional
-from typing import Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd  # type: ignore
 
-from techminer2.thesaurus._internals.load_thesaurus_as_mapping import (
+from techminer2.thesaurus_old._internals.load_thesaurus_as_mapping import (
     internal__load_thesaurus_as_mapping,
 )
 

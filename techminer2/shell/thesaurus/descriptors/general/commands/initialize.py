@@ -1,4 +1,4 @@
-from techminer2.thesaurus.descriptors import InitializeThesaurus
+from techminer2.thesaurus_old.descriptors import InitializeThesaurus
 
 
 def execute_initialize_command():
